@@ -1139,6 +1139,7 @@ const UTILITIES = [
   { id: 'x12-837-check', name: 'X12 837 Claim File Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'x12-271-reader', name: 'X12 271 Eligibility Response Reader', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'x12-277-reader', name: 'X12 277 Claim Status Reader', group: 'P', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'x12-999-reader', name: 'X12 999 Acknowledgment Reader', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'hpt-price-compare', name: 'Compare One Service Across Hospital Price Files', group: 'P', audiences: ['billers', 'patients'], clinical: false },
   { id: 'hpt-file-check', name: 'Hospital Price Transparency File Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'pas-bundle-check', name: 'Prior Authorization FHIR Bundle Check (Da Vinci)', group: 'P', audiences: ['billers', 'coders'], clinical: false },

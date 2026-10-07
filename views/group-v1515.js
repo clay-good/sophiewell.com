@@ -12,6 +12,7 @@ const workerUrl = new URL('../lib/x12-835-worker.js', import.meta.url);
 const claimWorkerUrl = new URL('../lib/x12-837-worker.js', import.meta.url);
 const eligibilityWorkerUrl = new URL('../lib/x12-271-worker.js', import.meta.url);
 const statusWorkerUrl = new URL('../lib/x12-277-worker.js', import.meta.url);
+const ackWorkerUrl = new URL('../lib/x12-999-worker.js', import.meta.url);
 const hptWorkerUrl = new URL('../lib/hpt-worker.js', import.meta.url);
 const hptCompareWorkerUrl = new URL('../lib/hpt-compare-worker.js', import.meta.url);
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
@@ -316,6 +317,44 @@ function reader277(root) {
   });
 }
 
+function reader999(root) {
+  root.appendChild(el('p', { class: 'notice', text: 'Reads X12 999 implementation acknowledgments locally: for each claim or other transaction set you sent, whether it was accepted, accepted with errors, or rejected, with the segment and element positions of each error. Rejected sets are listed first.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'Choose one or more X12 text files, up to 50 MB each. The reader shows raw error codes and positions; it does not ship code-list descriptions.' }));
+  const input = el('input', { id: 'x999-files', type: 'file', multiple: true, accept: '.999,.txt,text/plain,application/octet-stream' });
+  const status = el('p', { id: 'x999-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
+  root.appendChild(el('label', { for: 'x999-files', text: 'Choose acknowledgment files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  let worker = null;
+  input.addEventListener('change', async () => {
+    if (worker) worker.terminate(); clear(results);
+    const files = [...(input.files || [])]; if (!files.length) return;
+    if (files.some((file) => file.size > MAX_FILE_BYTES)) { status.textContent = 'Each file must be 50 MB or smaller.'; return; }
+    status.textContent = 'Reading the acknowledgment files locally...'; const payload = await transferFiles(files);
+    worker = new window.Worker(ackWorkerUrl, { type: 'module' });
+    worker.addEventListener('error', () => { status.textContent = 'The acknowledgment files could not be read.'; });
+    worker.addEventListener('message', (event) => {
+      const message = event.data || {};
+      if (message.type === 'error') { status.textContent = message.message; return; }
+      if (message.type === 'download') { downloadMessage(worker, message); return; }
+      if (message.type !== 'parsed') return;
+      const v = message.totals; status.textContent = `${v.files.toLocaleString('en-US')} ${v.files === 1 ? 'file' : 'files'} read.`;
+      const sets = v.sets
+        ? `${v.rejected.toLocaleString('en-US')} rejected, ${v.acceptedWithErrors.toLocaleString('en-US')} accepted with errors and ${v.accepted.toLocaleString('en-US')} accepted transaction sets.`
+        : `${v.groups.toLocaleString('en-US')} acknowledged ${v.groups === 1 ? 'group' : 'groups'}, ${v.groupsRejected.toLocaleString('en-US')} rejected; no transaction set is listed one by one.`;
+      resultRow(results, [{ text: sets, cls: v.rejected || v.groupsRejected ? 'warn' : null }, { label: 'Errors reported', value: v.errors.toLocaleString('en-US') }]);
+      for (const f of v.findings) results.appendChild(el('p', { class: 'warn', text: f }));
+      const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} rows.` : `Showing all ${shown} rows.` }));
+      table(results, 'Acknowledgments, rejected first', message.preview.headers, message.preview.rows);
+      const wrap = el('p'); const button = el('button', { type: 'button', text: 'Download results CSV' });
+      button.addEventListener('click', () => worker.postMessage({ type: 'download', flavor: 'full' })); wrap.appendChild(button); results.appendChild(wrap);
+      results.appendChild(el('p', { class: 'muted', text: 'Accepted, accepted with errors and rejected are groupings of the raw IK5 and AK9 codes. A 999 says whether the file was readable, not whether a claim will be paid; the 277CA that may follow says that.' }));
+      results.appendChild(el('p', {}, [el('a', { href: 'https://x12.org/codes', target: '_blank', rel: 'noreferrer', text: 'Look up raw codes' })]));
+      renderReceipt(results, message);
+    });
+    worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
+  });
+}
+
 function hptFileCheck(root) {
   root.appendChild(el('p', { class: 'notice', text: 'Streams a CMS Hospital Price Transparency v3.0.0 CSV tall, CSV wide or JSON file locally and checks its required fields, accepted values and conditional rules.' }));
   root.appendChild(el('p', { class: 'muted', text: 'The file stays in this tab. There is no 50 MB workbench limit: memory stays tied to the current CSV row or JSON charge item, so the practical limit is what your browser can open.' }));
@@ -435,7 +474,7 @@ function pasBundleCheck(root) {
   });
 }
 
-export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'hpt-file-check': hptFileCheck, 'hpt-price-compare': hptPriceCompare, 'pas-bundle-check': pasBundleCheck, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'x12-999-reader': reader999, 'hpt-file-check': hptFileCheck, 'hpt-price-compare': hptPriceCompare, 'pas-bundle-check': pasBundleCheck, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
 
 // spec-v1623 step 3: files handed off from a drop go through each tool's own
 // input. underpayment-check takes the remittances; its fee schedule is chosen
@@ -447,6 +486,7 @@ export const acceptFiles = {
   'x12-837-check': acceptVia('x837-files'),
   'x12-271-reader': acceptVia('x271-file'),
   'x12-277-reader': acceptVia('x277-files'),
+  'x12-999-reader': acceptVia('x999-files'),
   'hpt-file-check': acceptVia('hpt-file'),
   'hpt-price-compare': acceptVia('hptc-files'),
   'pas-bundle-check': acceptVia('pas-file'),

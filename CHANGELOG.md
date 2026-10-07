@@ -54,6 +54,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- X12 999 Acknowledgment Reader: after you send an 837 or another X12 file, read
+  the 999 that comes back. It shows each transaction set as accepted, accepted
+  with errors or rejected, where each error is, and whether the group's counts
+  add up. The file stays in your browser.
 - X12 837 Claim File Check now reads dental claim files (837D) too, with the
   same total, identifier and date checks.
 - Every "from a file" section now also takes JSON: a list of records, an API

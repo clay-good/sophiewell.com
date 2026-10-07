@@ -33,6 +33,7 @@ export const FILE_INPUTS = {
   'x837-files': 'x12-837-check',
   'x271-file': 'x12-271-reader',
   'x277-files': 'x12-277-reader',
+  'x999-files': 'x12-999-reader',
   'hpt-file': 'hpt-file-check',
   'hptc-files': 'hpt-price-compare',
   'tic-files': 'tic-file-check',

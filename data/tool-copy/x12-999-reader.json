@@ -1,0 +1,19 @@
+{
+  "whatThisIs": "Read X12 999 implementation acknowledgments without uploading them. For each claim batch or other transaction set you sent, it shows whether it was accepted, accepted with errors, or rejected, and where each error is.",
+  "whenToUse": "Use this when a clearinghouse or payer returns a 999 after you submit an 837 or another X12 file, to find which transaction sets were turned away before anyone looked at the claims.",
+  "inputs": "One or more X12 999 005010X231A1 text files, up to 50 MB each. Files remain in the browser tab.",
+  "output": "Rejected, accepted-with-errors and accepted counts; a rejected-first table with the group and set control numbers, raw IK5 and AK9 codes, and segment and element error positions; a check of AK9's counts against the sets listed; and a CSV download.",
+  "example": {
+    "rows": [
+      [
+        "837 set 0002",
+        "Rejected; IK5 R, NM1 at position 12 loop 2010BA code 8, element 9 code 7"
+      ],
+      [
+        "837 set 0001",
+        "Accepted; IK5 A"
+      ]
+    ],
+    "result": "1 rejected, 0 accepted with errors and 1 accepted transaction sets."
+  }
+}

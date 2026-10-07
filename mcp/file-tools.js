@@ -16,6 +16,7 @@ import { CSV_TOOLS } from '../lib/upload-fields.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import * as R835 from '../lib/x12-835-run.js';
 import * as R837 from '../lib/x12-837-run.js';
+import * as R999 from '../lib/x12-999-run.js';
 import * as R271 from '../lib/x12-271-run.js';
 import * as R277 from '../lib/x12-277-run.js';
 import { runHpt } from '../lib/hpt-run.js';
@@ -26,7 +27,7 @@ import { fileFacts, receiptFor } from '../lib/receipt-worker.js';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const X12_RUNS = { 'x12-835-reader': R835, 'x12-837-check': R837, 'x12-271-reader': R271, 'x12-277-reader': R277 };
+const X12_RUNS = { 'x12-835-reader': R835, 'x12-837-check': R837, 'x12-271-reader': R271, 'x12-277-reader': R277, 'x12-999-reader': R999 };
 export const ANALYZABLE = [...Object.keys(X12_RUNS), 'hpt-file-check', 'tic-file-check', 'carin-eob-reader', 'pas-bundle-check'];
 const PREVIEW_ROWS = 20;
 
@@ -36,7 +37,7 @@ const refusal = ({ code }, message) => ({ valid: false, code, message });
 export const FILE_TOOL_DEFS = [
   {
     name: 'recognize_file',
-    description: 'Says what a file on the user\'s machine is -- an 835, 837, 271 or 277 X12 file, a hospital or insurer price file, a FHIR or C-CDA health record, a CSV one of the tools reads, a CMS reference table -- from its first 256 KB, with the facts that decided it and the tools that read it. The file is read locally and never leaves the machine. The path must be inside a directory the client shares.',
+    description: 'Says what a file on the user\'s machine is -- an 835, 837, 271, 277 or 999 X12 file, a hospital or insurer price file, a FHIR or C-CDA health record, a CSV one of the tools reads, a CMS reference table -- from its first 256 KB, with the facts that decided it and the tools that read it. The file is read locally and never leaves the machine. The path must be inside a directory the client shares.',
     annotations: readOnly('Recognize a file'),
     inputSchema: {
       type: 'object',

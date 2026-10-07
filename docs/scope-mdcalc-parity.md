@@ -456,3 +456,5 @@ experience**.
 > v1554, Pediatric ARV Doses by Weight (WHO May 2026, corrigendum June 2026) — [spec-v1554](spec-v1554.md), which adds `who-pediatric-arv-dose` — is 2053.)
 
 > v1562, Arpraziquantel for Preschool Children With Schistosomiasis (Tablets by Weight) — [spec-v1562](spec-v1562.md), which adds `arpraziquantel-dose` — is 2054.)
+
+> v1501, X12 999 Acknowledgment Reader — [spec-v1501](spec-v1501.md), which adds `x12-999-reader` — is 2055.)

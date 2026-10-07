@@ -54,7 +54,7 @@ read with those separators:
 | 271 | HB | 005010X279A1 | `x12-271` | `x12-271-reader` |
 | 277 | HN | 005010X212 | `x12-277` | `x12-277-reader` |
 | 277 | HN | 005010X214 | `x12-277ca` | `x12-277-reader` |
-| 999 | FA | 005010X231A1 | `x12-999` | none; named as an acknowledgment |
+| 999 | FA | 005010X231A1 | `x12-999` | `x12-999-reader` (since October 7, 2026) |
 | other | — | — | `x12-other` | none; the result names the transaction set number |
 
 The 277 and 277CA share GS01 `HN`; GS08 tells them apart. Versions are from the CMS 835

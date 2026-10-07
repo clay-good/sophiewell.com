@@ -11354,6 +11354,16 @@
     },
     {
       "phrases": [
+        "999 reader",
+        "999 acknowledgment",
+        "implementation acknowledgment",
+        "rejected 837 batch"
+      ],
+      "tile": "x12-999-reader",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "hospital price file validator",
         "hospital price transparency file check",
         "hpt machine readable file",
