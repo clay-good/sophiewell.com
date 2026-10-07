@@ -123,6 +123,9 @@ deterministic answer the page gives, and the file never leaves the reader's mach
   - A program and year with reports from fewer than **three payers** gets no market summary (two payers describe
     those payers): the Marketplace rows (UnitedHealthcare and Kaiser only) are in the table, and the tool says
     why it does not compare them.
+  - **Third pass, the same day:** 15 Marketplace issuer reports from Oscar (12 issuers, percentages only, denials
+    including partial denials) and HCSC (Texas, Montana and Oklahoma; whole percentages; Illinois and New Mexico
+    were not at the same address). With four payers the Marketplace now has a market summary (34 reports).
   - **Not in this edition:** Elevance and Centene (Wellcare, Ambetter) reports (per-contract PDFs with no landing
-    page, or refusing scripted requests), Aetna's Medicaid plans, Molina, Oscar, HCSC, Florida Blue, BCBS North
+    page, or refusing scripted requests), Aetna's Medicaid plans, Molina (its pages render by script), HCSC Illinois and New Mexico, Florida Blue, BCBS North
     Carolina and L.A. Care. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.

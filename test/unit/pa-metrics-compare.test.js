@@ -78,9 +78,7 @@ test('spec-v1605: with no reports for the program or year, the result says so an
   }
 });
 
-test('spec-v1605: reports from fewer than three payers are named but not used as a market', () => {
-  const r = m({ ...full, program: 'qhp' });
-  assert.deepEqual(r.market, []);
-  assert.ok(r.notes.some((n) => /^The bundled table has 19 Marketplace issuer reports for 2025, from Kaiser Permanente and UnitedHealthcare only: too few payers to stand for a market/.test(n)));
+test('spec-v1605: Marketplace and Medicaid managed care rates are set beside their own markets', () => {
+  assert.ok(m({ ...full, program: 'qhp' }).market.some((l) => /^Standard denied: 7\.6% is below the middle half of 34 reports \(median 17\.35%/.test(l)));
   assert.ok(m({ ...full, program: 'medicaid-mco' }).market.some((l) => / of 52 reports \(median /.test(l)));
 });

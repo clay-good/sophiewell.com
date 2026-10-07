@@ -54,6 +54,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Payer Prior Authorization Report Check now compares Marketplace plans too:
+  34 calendar-2025 issuer reports from UnitedHealthcare, Kaiser Permanente,
+  Oscar and HCSC, read from each payer's own posted report.
 - X12 278 Prior Authorization Response Reader: read a payer's 278 answer to a
   prior authorization request. Each request and service shows its decision,
   review or tracking number, reason code, certified dates and the payer's
