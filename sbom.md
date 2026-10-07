@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `34edc4c9a34a9920`
-Generated: 2026-10-07T16:25:46.125Z
+Build ID: `d9008b3500eb5311`
+Generated: 2026-10-07T16:33:46.066Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1191,8 +1191,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
 | `lib/upload-fields.js` | 13445 | `39f92dfe104e33b6d83ec9c6a381b119eaebc5f9491d6688630f7c99a0f58f19` |
-| `lib/upload-intake.js` | 6297 | `b9d99e65bfa09d6c016e7db1a49c22bf748c6c73c84b9c1a62c4c4dc5319f53f` |
-| `lib/upload-worker.js` | 13345 | `11a48f5d7037c780060bbe8ffe525f281e6a9ae4ad39394293482a48cef41e37` |
+| `lib/upload-intake.js` | 9419 | `bb6f9ead318186954c9329d0e7bd66d099c7d943714bc538200492c360528ea2` |
+| `lib/upload-worker.js` | 13343 | `b3bd04c9d419917b09ddb2547741424eb23f4584a7a15cdcc20069d7246206e4` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
 | `lib/uro-v131.js` | 16748 | `68ef5eb787708cadacbd1bd66dc39f0777f3f20456298cd7a883204797fe5440` |
 | `lib/urology-v153.js` | 9694 | `700af96b614bda45a67eda2835bb8087c9e2895ac62db7123fa9c765af5b75a9` |
@@ -3297,7 +3297,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/receipt.js` | 2588 | `d6720c0745b06259c7cbf82b0e602d3c7dd7de6962e32f9e671be3158ee49d47` |
 | `views/record-panel.js` | 4950 | `eb826237e65f3fdc8b189b3698174dfe87e9940e6c5cdd3a321d9d9659539c18` |
 | `views/rx-match-workbench.js` | 9324 | `c663ee4af7544888cd5c3a6ceeda46978f2fcad04fe242971db7b5204dd334fb` |
-| `views/upload-workbench.js` | 8397 | `695a7b3b99cb376aa779d0211b9f9af850984e1d238abf445c226cf5275eeadd` |
+| `views/upload-workbench.js` | 8442 | `cdc12be67ef3f8a73be7f5e9ef79e6e9f9db181c808a61a693fc245976ec408c` |
 
 ## Verifying this SBOM
 

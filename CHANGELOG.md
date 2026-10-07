@@ -54,6 +54,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Every "from a file" section now also takes JSON: a list of records, an API
+  export that holds one list, or one record per line. It runs exactly like a
+  CSV; a nested value is refused by name rather than guessed at.
 - Earliest Refill Date now checks a CSV of fills (fill date, days supply and
   the plan's refill threshold), each row through the same rule as the form.
 - Medicare IRMAA now checks a CSV of people (filing status and income). A

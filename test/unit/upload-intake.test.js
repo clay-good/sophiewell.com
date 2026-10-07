@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseDelimited, matchColumns, validateColumnMapping, serializeCsv, MAX_FILE_BYTES, MAX_DATA_ROWS } from '../../lib/upload-intake.js';
+import { parseDelimited, parseJsonTable, parseTable, matchColumns, validateColumnMapping, serializeCsv, MAX_FILE_BYTES, MAX_DATA_ROWS } from '../../lib/upload-intake.js';
 
 test('CSV preserves quoted delimiters, escaped quotes, newlines and identifier zeros', () => {
   const result = parseDelimited('\uFEFFpatient,notes,date\r\n001,"a, b\r\nsaid ""yes""",2026-09-28\r\n');
@@ -119,4 +119,22 @@ test('serializeCsv: an optional trailer is one closing comment row, on one line'
   assert.equal(csv.split('\r\n').at(-2), '# Made by x, result abc');
   assert.ok(csv.includes("'=1+1"), 'the formula guard still applies to cells');
   assert.equal(serializeCsv(['a'], [['1']]).split('\r\n').length, 3, 'no trailer, no extra row');
+});
+
+test('spec-v1501 §3 JSON intake: an array, an object holding one array, or NDJSON becomes headers and string rows', () => {
+  const want = { delimiter: 'json', headers: ['id', 'size', 'income', 'note'], rows: [['00123', '3', '40000', ''], ['B', '2', '', 'x']] };
+  const recs = [{ id: '00123', size: 3, income: 40000 }, { id: 'B', size: 2, income: null, note: 'x' }];
+  assert.deepEqual(parseJsonTable(JSON.stringify(recs)), want);
+  assert.deepEqual(parseJsonTable(JSON.stringify({ households: recs, meta: { v: 1 } })), want);
+  assert.deepEqual(parseJsonTable(recs.map((r) => JSON.stringify(r)).join('\n') + '\n'), want);
+  assert.deepEqual(parseTable('﻿' + JSON.stringify(recs)), want);
+  assert.equal(parseTable('a,b\n1,2\n').delimiter, ',');
+});
+
+test('JSON intake refuses what it would have to guess at', () => {
+  assert.throws(() => parseJsonTable('[{"a":{"b":1}}]'), /Record 1, "a" holds a nested value/);
+  assert.throws(() => parseJsonTable('{"x":[{"a":1}],"y":[{"b":2}]}'), /holds 2 lists \(x, y\)/);
+  assert.throws(() => parseJsonTable('[1,2]'), /Record 1 is not an object/);
+  assert.throws(() => parseJsonTable('{"a":1}\nnot json'), /Line 2 is not valid JSON/);
+  assert.throws(() => parseJsonTable('[]'), /no named values/);
 });

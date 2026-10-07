@@ -203,7 +203,12 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   general terms, so a cell like "Tx." would have been answered quietly instead of refused; a strict field
   refuses the row and names the cell. States can be spelled out ("Texas", "District of Columbia").
   Tests: `test/unit/batch-tools.test.js`, `test/integration/fpl-batch.spec.js`.
-- **Not yet built:** §3's JSON intake, the remaining X12 transactions, batch mode for the
+- **Built 2026-10-07:** §3's JSON intake, `parseJsonTable` and `parseTable` in `lib/upload-intake.js`, used by
+  the upload workbench: a JSON array of flat records, an object holding exactly one such array, or NDJSON
+  becomes the same headers and rows as a CSV (keys in first-seen order, cells as strings, null or missing as
+  blank). A nested value is refused by record and key rather than flattened by guess. **Scope:** a JSON file
+  chosen on a tool's page; a JSON table dropped on the home page is still recognized only by its kind.
+- **Not yet built:** the remaining X12 transactions, batch mode for the
   other scalar tools (each needs its fields listed in `lib/batch-tools.js`), and upload integration for
   the remaining file-based tools.
 - **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which

@@ -99,3 +99,14 @@ test('a fills file is checked for the earliest refill date, each with its plan t
   await expect(table).toContainText('Refill from 2026-09-24');
   await expect(table).toContainText('Refill from 2026-11-21');
 });
+
+test('spec-v1501 §3: a JSON export of households runs through the same workbench as a CSV', async ({ page }) => {
+  await page.goto('/#fpl-percent');
+  await page.locator('#fpl-region').selectOption('us');
+  await page.locator('#fpl-program').selectOption('current');
+  await page.locator('#fpl-year').fill('2026');
+  await page.locator('#fpl-upload-file').setInputFiles(fileURLToPath(new URL('../fixtures/upload-households.json', import.meta.url)));
+  await page.getByRole('button', { name: 'Use 2 rows' }).click();
+  await expect(page.locator('#q-results')).toContainText('1 household of 2 computed. 1 row needs corrected inputs.');
+  await expect(page.locator('.upload-file-results')).toContainText('146.4%');
+});

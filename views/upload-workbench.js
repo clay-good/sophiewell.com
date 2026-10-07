@@ -10,11 +10,11 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
   section.appendChild(el('h2', { id: `${id}-title`, text: label }));
   section.appendChild(el('p', {
     class: 'muted',
-    text: `CSV or TSV, up to 50 MB and ${MAX_DATA_ROWS.toLocaleString('en-US')} rows. The file stays in this tab.`,
+    text: `CSV, TSV or JSON records, up to 50 MB and ${MAX_DATA_ROWS.toLocaleString('en-US')} rows. The file stays in this tab.`,
   }));
   const inputLabel = el('label', { for: `${id}-file`, text: 'Choose file' });
   const input = el('input', {
-    id: `${id}-file`, type: 'file', accept: '.csv,.tsv,text/csv,text/tab-separated-values',
+    id: `${id}-file`, type: 'file', accept: '.csv,.tsv,.json,.ndjson,text/csv,text/tab-separated-values,application/json',
   });
   const status = el('p', { id: `${id}-status`, class: 'muted', role: 'status', 'aria-live': 'polite' });
   const mappingRoot = el('div', { class: 'upload-mapping', hidden: true });
