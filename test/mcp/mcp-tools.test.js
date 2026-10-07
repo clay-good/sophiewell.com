@@ -321,7 +321,7 @@ test('spec-v629 wave 5: em/critical-care/split-shared/prolonged/therapy/anesthes
   assert.equal(emm.result.code, '99284');
   assert.equal(emm.domain, 'administrative');
 
-  const cc = computeCalculator({ id: 'critical-care-time', inputs: { 'cc-total': '104', 'cc-proc': '0' } });
+  const cc = computeCalculator({ id: 'critical-care-time', inputs: { 'cc-payer': 'medicare', 'cc-total': '104', 'cc-proc': '0' } });
   assert.deepEqual(cc.result.codes, ['99291', '99292']);
 
   const ps = computeCalculator({ id: 'prolonged-services', inputs: { 'ps-code': '99205', 'ps-payer': 'medicare', 'ps-min': '90' } });

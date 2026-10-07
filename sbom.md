@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `09f5712d82119d85`
-Generated: 2026-10-07T15:11:17.840Z
+Build ID: `e6ba9ebd7c5c62d6`
+Generated: 2026-10-07T15:33:47.401Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -139,9 +139,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/bi-rads-v322.js` | 5295 | `22615c3018830dc91339396fc952be1aa0e111df6eaef1fdb5f223942fdc4ccb` |
 | `lib/biffl-bcvi-v436.js` | 3300 | `a1bfde85051febe4916a21db1bf8850bada786470c51db16ffe7f2aeaccccc0e` |
 | `lib/bigliani-acromion-v488.js` | 2861 | `52b33e049e6db1a656f37ce906fe5035a3ad1a32ba42b68e817b919813f211ae` |
-| `lib/billing-v78.js` | 12519 | `13db6b513736f810c10be3f1b1fd8cfdf7474f4caedf95d0f004a0509171d5ac` |
+| `lib/billing-v78.js` | 13316 | `183769d22468e7c6aa2bacd3c7a0fe6799d2ff38620c8382c3e8043f52038537` |
 | `lib/billing-v79.js` | 23592 | `38855e98322bcb40f603c1255fdc32f784ecccef5f861e72ae27732a67413d1d` |
-| `lib/billing-v80.js` | 23695 | `8c2e7c4a5cd5cee409aed1536f182c6983903f79eecb06bc2207f31681c4d590` |
+| `lib/billing-v80.js` | 24914 | `fd8a6626f72ce957b6b1abd3d12cd125b710002ad90a7056aa73b64ee80905c5` |
 | `lib/billing-v81.js` | 16760 | `a6fab93c9220fdd227e21f3dd6c5f624f246ce3ea0741e6dab46a906ae759c05` |
 | `lib/billing-v82.js` | 25393 | `3b1fa62195f91b7c21b1b44dee355aa1f16ad9edafa230cc95ea713e4d2d0ab8` |
 | `lib/billing-v83.js` | 21528 | `284251bb90c87242d8982a29c6f05c452e320fc79af24f2a918fd5a2f635b863` |
@@ -694,7 +694,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2746857 | `334317abc7ce925939631ad819dcfb0cb975ba2dbeafc25ffd914588ebc6453a` |
+| `lib/meta.js` | 2746886 | `89a6cc741a396c97259b3516a6c84d58822b39236768f36e74889d16b1723417` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -823,7 +823,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ophtho-v164.js` | 11132 | `767972d725c90fad993c53ff3c7d03b9ca8444a5291f85372458ac2f54962510` |
 | `lib/ophtho-v236.js` | 8025 | `ec4343dd702be732b3e98cc736dfbd4dc3884a1a9d5ce9fc687059338452b7dc` |
 | `lib/opioid-risk-tool-v709.js` | 4291 | `f7045644de232186fc1701f97df7d861b885bcb0f7e65f61ea735576f30a6dda` |
-| `lib/ops-v63.js` | 11356 | `d32ec3f6e80a93bb6d541052ad8d53964d73fa337877b6a6bd4447b4b6720d27` |
+| `lib/ops-v63.js` | 13835 | `1be3fc0104b29da8d6dc9f757242e037f82e940d4c39db657600934156890284` |
 | `lib/ortho-v144.js` | 17827 | `0356389ca72f53f295f6734cf34e7981c111b15010f161e253e05b1227d2e33c` |
 | `lib/ortho-v145.js` | 15893 | `4e63d18902b0b51368b60635c8dd75004f32cc8dc8d3f65af53617d47f409439` |
 | `lib/orthospine-v252.js` | 7329 | `f1ba93384570eb23ff335624c2facc37666daaf0cf9577cf988504897564c046` |
@@ -849,7 +849,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/report.js` | 9691 | `d19c531e5ee3d480c96dd548c348b314ebcb37beaa3d5e8f87f70680e783e08d` |
 | `lib/pa/rule-sources.js` | 9357 | `6096fc0fc01b68c012dc97cd18de3e82257cb601cdac1a74ee9421d8e5f2add4` |
 | `lib/pa/rules.js` | 1567339 | `d61a3e1474798f5ca9808af4609e19ccb0e0ee741881141929e489863334a5f3` |
-| `lib/pa/staleness-ledger.js` | 72794 | `25d3938de9726eac1b4d201a6f334363c01cfc81107211312bc66c83c4c1fd84` |
+| `lib/pa/staleness-ledger.js` | 73251 | `ed3dee32cf9613255fa2dc2658e88d3c64279e1ac924aa11f2eab51978766427` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/paed-delirium-v1499.js` | 3969 | `c8836be1003c2235bb05d8ce78a07baf922b3039ac798b4bf4a3ae8bb20aca20` |
 | `lib/page-title.js` | 1458 | `575f7d045fda35d9bc5c6a04f70fd76dbf3364a987983ccde90d84fa54b12925` |
@@ -1359,7 +1359,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/bigliani-acromion-v488.js` | 1174 | `4ac4314dfb60784e8227d224c7f2ff04d86a843670d654ddf996f24111a4d169` |
 | `mcp/adapters/billing-v78.js` | 4835 | `d5f2fafafe7bb3a5d5c678ff8caf6387ba4db373c408748907ea94fc710c3e6e` |
 | `mcp/adapters/billing-v79.js` | 4039 | `f1494df76861d1d8fd52718a150bd22c8ef648639d1f90d4c91b579caffa809a` |
-| `mcp/adapters/billing-v80.js` | 5097 | `de84738c6cbfbea2af2493e6be9479eb521ce3cb97c2c92a1a709e8a2a68710f` |
+| `mcp/adapters/billing-v80.js` | 5347 | `791936418ab2b60043ffaf3a4e191806001d990c4b7a7977f74faeb627d4138a` |
 | `mcp/adapters/billing-v81.js` | 5117 | `775deac55c581a985d50672e9a183cab3abd7b7d563454b32de5c776973390e1` |
 | `mcp/adapters/billing-v82.js` | 4985 | `1497a5aad506033d5cabefeea15ece883528e664f63374125e8f112e6da71ef9` |
 | `mcp/adapters/billing-v83.js` | 6167 | `22a1f41341055e4a0a2780e6e8063eb9ba4f4cea4c560983a3b55ca7dcbeae27` |
@@ -1986,7 +1986,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ophtho-v164.js` | 2153 | `837985d6e5ded0d6102bee0f375e0ce11c08e42862927a7a7240cb486b72edf8` |
 | `mcp/adapters/ophtho-v236.js` | 2887 | `651b07313fe7d5f56636a552f1d4f64b905b5c3fa47ec17351fb6aa89a7b776e` |
 | `mcp/adapters/opioid-risk-tool-v709.js` | 2331 | `5c48d7a23650ac85f253b35c556425eeea50168fd0f1f09f6279826f87d0cfc6` |
-| `mcp/adapters/ops-v63.js` | 3733 | `9bc46dd141107b7853701b69c3015d19d7c5ca4551186b585e7ed093f1248479` |
+| `mcp/adapters/ops-v63.js` | 4219 | `4c3f5feda00a18d224746b17d97b6d59aa21e7300ee737b865ed90fb201c2cda` |
 | `mcp/adapters/ortho-v144.js` | 3799 | `2901f97711e370d1f4bb7bcd54b65a1c7ae5198db5aca4f6bdab2a6a59bb1686` |
 | `mcp/adapters/ortho-v145.js` | 3455 | `e096092b9b21544729e2ac4db4478178b20b30a9d984c4a08f91b03400bd0462` |
 | `mcp/adapters/orthospine-v252.js` | 3127 | `f078d83b49d3a0fdd1ad3b3bfbebefc6a1e8dd02d3b0edc3bcdd8476033fc761` |
@@ -2382,7 +2382,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `vendored/tesseract/tesseract.min.js` | 66695 | `a8e29918d098b2b06e1012bdaeffb4aec0445c5d5654709023e0bd1f442a80e8` |
 | `vendored/tesseract/worker.min.js` | 123724 | `aca1229639fc9907d86f96e825955a2b7c5716d17f3bc3acd71f9c7ab66181fc` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
-| `views/group-b.js` | 74804 | `70419be26b5db5b973673fbfe380c460eaadecf39f63b3db836b5896b8fab5dd` |
+| `views/group-b.js` | 75367 | `9bf50f8e80d42f4c2c55c083aeeb8ca02de8e5c75f5f14f91291980cae19fcb3` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 51582 | `de3e12aad8357addb28c635c98160e1feb4f3a497430898fd54937aca5850abf` |
 | `views/group-f.js` | 54290 | `93098b21bd8a2bab4a67ae2cfcc6c3c10d2b59ab9c39fe26a744845b93b96cb7` |
@@ -3034,7 +3034,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v616.js` | 3263 | `55b04e24f3ccb99664fd32b027f1ac8c87e5a9e444a19d89bf808ce31711ab39` |
 | `views/group-v617.js` | 3062 | `988087344ef4f977e8c80a63c60a94268b78bd1b58055f6fde6deb7d2ad8c720` |
 | `views/group-v618.js` | 3594 | `332cb2304d3d4e5428d26ca8fdf0c237d6de4fc19bb6b6e62f68825ab22f9b38` |
-| `views/group-v63.js` | 15526 | `7c05515915f4d50986900a4de9e59d464f9e7bb375e74b63f711ba2e6eb00b2c` |
+| `views/group-v63.js` | 16949 | `f44e06c0df5c45a22ef30f51627d5ac65b9b3335e73c5e49c69fffb483032a2b` |
 | `views/group-v638.js` | 5689 | `2d964ab7fd88c6fa40db0f22bbbb8cc0794bebd3125c73c4079d72da37454fbd` |
 | `views/group-v639.js` | 4623 | `5112e4a7815db3bd1184faa4b3671650207c3ec6bdec1a97a146a4e583e04edf` |
 | `views/group-v640.js` | 3824 | `afb14025ae48078f4b3cd66123d312db0898cc89159bd8cf713db2a131d847fb` |

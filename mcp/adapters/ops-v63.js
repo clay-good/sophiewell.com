@@ -52,12 +52,14 @@ export default [
   },
   {
     id: 'overpayment-60day',
-    summary: 'Medicare 60-day overpayment report-and-return deadline from the identification date (42 CFR 401.305).',
+    summary: 'Medicare 60-day overpayment report-and-return deadline from the identification date (42 CFR 401.305). A timely, good-faith investigation of related overpayments suspends it up to day 180, then the rest of the 60 days runs.',
     compute: O.overpayment60Day,
     // strip the clock-relative fields and surface the statutory 60-day window.
     formatResult: (raw) => ({ ...stripNow(raw), windowDays: 60 }),
     fields: [
       { dom: 'ov-date', arg: 'identificationDate', kind: 'string', required: true, label: 'Overpayment identification date (YYYY-MM-DD)' },
+      { dom: 'ov-inv-start', arg: 'investigationStart', kind: 'string', label: 'Date a good-faith investigation of related overpayments began (YYYY-MM-DD); suspends the deadline' },
+      { dom: 'ov-inv-end', arg: 'investigationEnd', kind: 'string', label: 'Date that investigation concluded with the total calculated (YYYY-MM-DD); blank means it is still open' },
     ],
   },
 ];

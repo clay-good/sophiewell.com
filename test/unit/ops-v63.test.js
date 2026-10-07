@@ -146,3 +146,29 @@ test('paTurnaround: an expedited request with a time is 72 hours, and the scope 
   assert.match(r.scopeNote, /Marketplace/);
   assert.equal(paTurnaround({ requestDate: '2026-10-31', type: 'standard', requestTime: '09:30', now: NOW }).deadlineTime, null);
 });
+test('overpayment60Day: a good-faith investigation suspends the deadline from its start; the rest of the 60 days runs after (89 FR 97710)', () => {
+  // The rule's own example: begun on day 20, 40 days remain after the suspension ends.
+  const r = overpayment60Day({ identificationDate: '2026-05-01', investigationStart: '2026-05-21', investigationEnd: '2026-07-01', now: NOW });
+  assert.equal(r.suspended, true);
+  assert.equal(r.daysUsedBeforeSuspension, 20);
+  assert.equal(r.daysLeftAfterSuspension, 40);
+  assert.equal(r.suspensionEnds, '2026-07-01');
+  assert.equal(r.deadline, '2026-08-10');
+});
+test('overpayment60Day: an open or overlong investigation suspends only to day 180 after identification', () => {
+  for (const end of ['', '2027-03-01']) {
+    const r = overpayment60Day({ identificationDate: '2026-05-01', investigationStart: '2026-05-21', investigationEnd: end, now: NOW });
+    assert.equal(r.suspensionEnds, '2026-10-28');
+    assert.equal(r.deadline, '2026-12-07');
+    assert.match(r.suspensionEndsBy, /^day 180/);
+  }
+});
+test('overpayment60Day: an investigation begun on or after day 60 does not suspend; impossible orders are refused', () => {
+  const r = overpayment60Day({ identificationDate: '2026-05-01', investigationStart: '2026-06-30', now: NOW });
+  assert.equal(r.suspended, false);
+  assert.equal(r.deadline, '2026-06-30');
+  assert.match(r.suspensionNote, /day 60 after identification, on or after the 60-day deadline \(2026-06-30\)/);
+  assert.throws(() => overpayment60Day({ identificationDate: '2026-05-01', investigationStart: '2026-04-01', now: NOW }), /before the overpayment was identified/);
+  assert.throws(() => overpayment60Day({ identificationDate: '2026-05-01', investigationStart: '2026-05-21', investigationEnd: '2026-05-10', now: NOW }), /concluded before it began/);
+  assert.throws(() => overpayment60Day({ identificationDate: '2026-05-01', investigationEnd: '2026-06-01', now: NOW }), /Enter the date the investigation began/);
+});

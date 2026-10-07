@@ -1,1 +1,1 @@
-{"overpayment-60day":[{"d":"ov-date","k":"string","l":"Overpayment identification date (YYYY-MM-DD)","r":1}]}
+{"overpayment-60day":[{"d":"ov-date","k":"string","l":"Overpayment identification date (YYYY-MM-DD)","r":1},{"d":"ov-inv-start","k":"string","l":"Date a good-faith investigation of related overpayments began (YYYY-MM-DD); suspends the deadline"},{"d":"ov-inv-end","k":"string","l":"Date that investigation concluded with the total calculated (YYYY-MM-DD); blank means it is still open"}]}

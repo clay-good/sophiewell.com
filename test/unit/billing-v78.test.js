@@ -176,3 +176,12 @@ test('sequestration-adjust: an unstated cost-share is named in the reading', () 
   assert.equal(zeroed.note, null);
   assert.equal(zeroed.sequestrationCents, 200);
 });
+
+test('mppr: past five surgical procedures, the sixth and later are by report with a 50% floor, and the total is a minimum (Ch. 12 40.6)', () => {
+  const r = mppr({ lines: [1000, 900, 800, 700, 600, 500, 400].map((d) => ({ feeCents: d * 100 })) });
+  assert.deepEqual(r.lines.map((l) => Boolean(l.byReport)), [false, false, false, false, false, true, true]);
+  assert.equal(r.atLeast, true);
+  assert.equal(r.note, 'More than five procedures: ranked lines 6 to 7 are suspended for manual review and paid by report, never below 50% of the fee, so the total shown is a minimum (Ch. 12 40.6).');
+  assert.equal(mppr({ lines: [{ feeCents: 100000 }, { feeCents: 50000 }] }).atLeast, undefined);
+  assert.equal(mppr({ lines: Array.from({ length: 6 }, () => ({ feeCents: 1000 })), mode: 'endoscopy' }).atLeast, undefined, 'the endoscopy rule has no five-procedure cap');
+});

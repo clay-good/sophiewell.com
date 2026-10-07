@@ -10314,14 +10314,14 @@
           "label": "Federal holidays (5 U.S.C. 6103) backing lib/deadline.js business-day deadline math (fixed + floating holidays, federal weekend observance)",
           "url": "https://www.law.cornell.edu/uscode/text/5/6103",
           "ruleFamily": "ops-v63",
-          "lastVerified": "2026-06-10"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "ops-medicare-appeal-deadlines",
           "label": "Medicare claim appeal-level filing deadlines (42 CFR Part 405 Subpart I: redetermination 120 d, QIC 180 d, ALJ/OMHA 60 d, Council 60 d, federal court 60 d) backing appeal-deadline and the OA2 denial routing",
           "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-405/subpart-I",
           "ruleFamily": "ops-v63",
-          "lastVerified": "2026-06-10"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "irs-36b-applicable-percentage",
@@ -10384,14 +10384,14 @@
           "label": "Medicare claim timely-filing one-calendar-year basis (42 CFR 424.44; ACA 6404) backing timely-filing",
           "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-424/subpart-C/section-424.44",
           "ruleFamily": "ops-v63",
-          "lastVerified": "2026-06-10"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "ops-cms-0057f-pa-windows",
           "label": "CMS Interoperability and Prior Authorization Final Rule (CMS-0057-F, 2024) decision windows (standard 7 calendar days, expedited 72 hours; effective 2026 for impacted payers) backing pa-turnaround",
           "url": "https://www.federalregister.gov/documents/2024/02/08/2024-00895/medicare-and-medicaid-programs-patient-protection-and-affordable-care-act-advancing-interoperability",
           "ruleFamily": "ops-v63",
-          "lastVerified": "2026-06-10"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "ops-ama-em-2021",
@@ -10402,10 +10402,10 @@
         },
         {
           "id": "ops-medicare-overpayment-60day",
-          "label": "Medicare 60-day overpayment report-and-return rule (42 CFR 401.305; ACA 6402(a) / 42 U.S.C. 1320a-7k(d)) backing overpayment-60day",
+          "label": "Medicare 60-day overpayment report-and-return rule (42 CFR 401.305 as amended by the CY 2025 PFS final rule, 89 FR 97710, from 2025-01-01: identification on knowing receipt or retention; a timely good-faith investigation suspends the deadline up to 180 days, then the rest of the 60 days runs; ACA 6402(a) / 42 U.S.C. 1320a-7k(d)) backing overpayment-60day",
           "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-A/part-401/subpart-D/section-401.305",
           "ruleFamily": "ops-v63",
-          "lastVerified": "2026-06-10"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-pfs-conversion-factor",
@@ -10419,28 +10419,28 @@
           "label": "Medicare sequestration rate (2% of the program-payment portion; Budget Control Act of 2011 Pub. L. 112-25 251A) backing sequestration-adjust. Overridable to model the suspended/phased rates Congress has set.",
           "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title2-section901a&num=0&edition=prelim",
           "ruleFamily": "billing-v78",
-          "lastVerified": "2026-06-13"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-surgical-payment-percentages",
           "label": "MPFS surgical payment percentages (assistant at surgery 16%; co-surgeon 62.5% to each; CMS Pub. 100-04 Ch. 12 20.4.3/40.8) backing multi-surgeon-pay.",
           "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
           "ruleFamily": "billing-v78",
-          "lastVerified": "2026-06-13"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-mppr-bilateral-factors",
-          "label": "Multiple-procedure (100% highest / 50% each subsequent) and bilateral (150%) reduction factors and the MPFS MULT PROC / BILAT SURG indicator semantics (CMS Pub. 100-04 Ch. 12 40.6/40.7) backing mppr and bilateral-pay.",
+          "label": "Multiple-procedure (indicator 2: 100% highest, 50% for the second through fifth; the sixth and later suspended and paid by report, never below 50%) and bilateral (150%) reduction factors and the MPFS MULT PROC / BILAT SURG indicator semantics (CMS Pub. 100-04 Ch. 12 40.6/40.7) backing mppr and bilateral-pay.",
           "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
           "ruleFamily": "billing-v78",
-          "lastVerified": "2026-06-13"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-ncci-ptp-indicators",
           "label": "NCCI procedure-to-procedure modifier-indicator semantics (0 = no modifier permitted; 1 = a permitted NCCI-associated modifier may bypass; 9 = edit deleted/not active) and the NCCI-associated-modifier set (anatomic, global-surgery, 59/X{EPSU}) backing ncci-ptp. NCCI Policy Manual Ch. I; Pub. 100-04 Ch. 23. No PTP edit file ships -- the indicator is entered.",
           "url": "https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits",
           "ruleFamily": "billing-v79",
-          "lastVerified": "2026-06-13"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-mue-mai-semantics",
@@ -10454,14 +10454,14 @@
           "label": "The 59 / X{EPSU} distinct-procedural-service hierarchy (XE separate encounter, XS separate structure, XP separate practitioner, XU unusual non-overlapping; 59 only when no X-modifier fits) backing modifier-x-selector. CMS MLN 'Proper Use of Modifiers 59 & X{EPSU}'.",
           "url": "https://www.cms.gov/files/document/mln1783722-proper-use-modifiers-59-xe-xp-xs-xu.pdf",
           "ruleFamily": "billing-v79",
-          "lastVerified": "2026-06-13"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-global-surgery-days",
           "label": "MPFS GLOB DAYS definitions (000/010/090 = 0/10/90 postoperative days, 090 adds 1 preoperative day; XXX/YYY/ZZZ/MMM non-numeric) and the global-package modifiers (24/25/57/58/78/79) backing global-period. CMS Pub. 100-04 Ch. 12 40; MLN Global Surgery Booklet.",
           "url": "https://www.cms.gov/files/document/mln907166-global-surgery-booklet.pdf",
           "ruleFamily": "billing-v79",
-          "lastVerified": "2026-06-13"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-modifier-ordering",
@@ -10479,17 +10479,17 @@
         },
         {
           "id": "billing-critical-care-bands",
-          "label": "The 99291 (first 30-74 min) / 99292 (each additional 30 min) critical-care time bands and the separately-reported-procedure subtraction rule backing critical-care-time. AMA CPT; CMS Pub. 100-04 Ch. 12 30.6.12.",
+          "label": "The 99291 (first 30-74 min) / 99292 time bands by payer: CPT from 75 minutes, Medicare only for each full 30 minutes after 74 (from 104), and the separately-reported-procedure subtraction rule, backing critical-care-time. AMA CPT; CMS Pub. 100-04 Ch. 12 30.6.12.",
           "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
           "ruleFamily": "billing-v80",
-          "lastVerified": "2026-06-15"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-split-shared-fs",
           "label": "The split (or shared) visit substantive-portion policy, the FS modifier, and the 85% NPP payment percentage backing split-shared. CMS Pub. 100-04 Ch. 12 30.6.18; PFS split/shared visit policy (2024 rule).",
           "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
           "ruleFamily": "billing-v80",
-          "lastVerified": "2026-06-15"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-prolonged-thresholds",
@@ -10503,14 +10503,14 @@
           "label": "The Medicare 8-minute rule band table (8-22=1, 23-37=2, 38-52=3, 53-67=4, each +15 adds a unit) and the AMA Rule of Eights per-service contrast backing therapy-units. CMS Pub. 100-04 Ch. 5 20.2; 42 CFR 410.",
           "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c05.pdf",
           "ruleFamily": "billing-v80",
-          "lastVerified": "2026-06-15"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-anesthesia-cf-direction",
-          "label": "The anesthesia payment formula ((base+time+modifying units) x CF; time unit = 15 min), the default national anesthesia conversion factor (CY2025 $20.3178, overridable), and the medical-direction percentages (AA/QZ 100%, QK/QY/QX 50%, AD flat 3 base units) backing anesthesia-units. CMS Pub. 100-04 Ch. 12 50; ASA RVG base units entered, not shipped.",
+          "label": "The anesthesia payment formula ((base+time+modifying units) x CF; time units = minutes / 15, to one decimal), the national anesthesia conversion factor placeholder (CY2026 $20.4975 non-qualifying APM, ANES2026 in the RVU26D file; entered, never assumed), and the medical-direction percentages (AA/QZ 100%, QK/QY/QX 50%, AD flat 3 base units) backing anesthesia-units. CMS Pub. 100-04 Ch. 12 50; ASA RVG base units entered, not shipped.",
           "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
           "ruleFamily": "billing-v80",
-          "lastVerified": "2026-06-15"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-hcpcs-drug-units",
@@ -10524,7 +10524,7 @@
           "label": "The single-dose-vial drug-wastage rule (administered on one line, discarded with modifier JW; JZ to attest zero waste, required since 2023-07-01) and the multi-dose-vial JW ineligibility gate backing drug-wastage. CMS Pub. 100-04 Ch. 17 §40; CMS JW/JZ modifier guidance.",
           "url": "https://www.cms.gov/medicare/payment/part-b-drugs/discarded-drugs",
           "ruleFamily": "billing-v81",
-          "lastVerified": "2026-06-15"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-infusion-hierarchy",
@@ -10538,7 +10538,7 @@
           "label": "The CMS CY2026 Medicare cost-sharing amounts (announced 2025-11-14) backing medicare-cost-share: Part A inpatient deductible $1,736/benefit period, days 61-90 coinsurance $434/day, lifetime-reserve $868/day, SNF days 21-100 $217/day; Part B annual deductible $283 then 20% of the approved amount; Part B standard premium $202.90 (backing partb-late-penalty); premium Part A $311 (30-39 quarters) and $565 (under 30) (backing parta-premium); the 2026 Part B and Part D IRMAA brackets (backing irmaa). SSA Title XVIII; CMS annual cost-sharing notice. Overridable per call for a prior year.",
           "url": "https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles",
           "ruleFamily": "billing-v82",
-          "lastVerified": "2026-06-15"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "billing-cob-msp-methods",
@@ -10573,7 +10573,7 @@
           "label": "The CMS Medicare Beneficiary Identifier (MBI) 11-character position grammar (numeric / alphabetic / alphanumeric by position) and the excluded-letter set S, L, O, I, B, Z backing mbi-validate. Validates format only, not active entitlement. CMS new Medicare card specification.",
           "url": "https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis",
           "ruleFamily": "billing-v83",
-          "lastVerified": "2026-06-15"
+          "lastVerified": "2026-10-07"
         },
         {
           "id": "cms-preventive-services-chart",

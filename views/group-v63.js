@@ -242,15 +242,23 @@ export const renderers = {
   'overpayment-60day'(root) {
     root.appendChild(el('p', { class: 'notice', text: 'Surfaces the 60-day report-and-return deadline only. It makes no judgment that an overpayment occurred (the breach-clock posture).' }));
     root.appendChild(dateField('Identification date', 'ov-date', '2026-05-01'));
+    root.appendChild(dateField('Investigation of related overpayments began (optional)', 'ov-inv-start', ''));
+    root.appendChild(dateField('Investigation concluded, the total calculated (optional)', 'ov-inv-end', ''));
     const o = out(); root.appendChild(o);
-    wire(['ov-date'], () => safe(o, () => {
+    wire(['ov-date', 'ov-inv-start', 'ov-inv-end'], () => safe(o, () => {
       if (!str('ov-date')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the identification date.' })); return; }
-      const r = Ops.overpayment60Day({ identificationDate: str('ov-date') });
-      o.appendChild(el('ul', {}, [
-        li(`Identified ${r.identificationDate}: report and return by ${r.deadline} (60-day clock).`, r.pastDue ? 'flag' : null),
-        remainingLi(r),
-      ]));
-      o.appendChild(el('p', { class: 'muted', text: 'ACA 6402(a) (42 U.S.C. 1320a-7k(d)); 42 CFR 401.305. The rule allows reasonable diligence before the 60-day clock starts.' }));
+      const r = Ops.overpayment60Day({ identificationDate: str('ov-date'), investigationStart: str('ov-inv-start'), investigationEnd: str('ov-inv-end') });
+      const items = [];
+      if (r.suspended) {
+        items.push(li(`Identified ${r.identificationDate}; the investigation began ${r.investigationStart} (day ${r.daysUsedBeforeSuspension}), which suspends the deadline until ${r.suspensionEnds}, ${r.suspensionEndsBy === 'conclusion' ? 'when it concluded' : r.suspensionEndsBy}. Then ${r.daysLeftAfterSuspension} days of the 60 remain: report and return by ${r.deadline}.`, r.pastDue ? 'flag' : null));
+        if (r.suspensionEndsBy !== 'conclusion') items.push(li(`If the investigation concludes and the total is calculated before ${r.suspensionEnds}, the deadline is ${r.daysLeftAfterSuspension} days after that day instead.`));
+      } else {
+        items.push(li(`Identified ${r.identificationDate}: report and return by ${r.deadline} (60-day clock).`, r.pastDue ? 'flag' : null));
+        if (r.suspensionNote) items.push(li(r.suspensionNote));
+      }
+      items.push(remainingLi(r));
+      o.appendChild(el('ul', {}, items));
+      o.appendChild(el('p', { class: 'muted', text: 'ACA 6402(a) (42 U.S.C. 1320a-7k(d)); 42 CFR 401.305 as amended from January 1, 2025: an overpayment is identified when it is knowingly received or kept. A timely, good-faith investigation of related overpayments suspends the deadline for up to 180 days after identification. The deadline is the later of this date and any cost report due date, and a self-disclosure or an extended repayment schedule request also suspends it.' }));
     }));
   },
 };

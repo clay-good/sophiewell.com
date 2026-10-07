@@ -47,31 +47,44 @@ test('em-mdm-2023: office defers to em-mdm (returns both new and established cod
 });
 
 // ---- 2.2 critical-care-time -------------------------------------------------
-test('critical-care-time: every band boundary the spec names (29/30/74/75/104/134)', () => {
-  assert.equal(criticalCareTime({ totalMinutes: 29 }).isCriticalCare, false);
-  const m30 = criticalCareTime({ totalMinutes: 30 });
+test('critical-care-time: every CPT band boundary (29/30/74/75/104/134/135)', () => {
+  const cpt = (m) => criticalCareTime({ totalMinutes: m, payer: 'ama' });
+  assert.equal(cpt(29).isCriticalCare, false);
+  const m30 = cpt(30);
   assert.equal(m30.code99291, 1); assert.equal(m30.units99292, 0);
-  assert.equal(criticalCareTime({ totalMinutes: 74 }).units99292, 0);
-  assert.equal(criticalCareTime({ totalMinutes: 75 }).units99292, 1);
-  assert.equal(criticalCareTime({ totalMinutes: 104 }).units99292, 1);
-  assert.equal(criticalCareTime({ totalMinutes: 134 }).units99292, 2);
-  assert.equal(criticalCareTime({ totalMinutes: 135 }).units99292, 3);
+  assert.equal(cpt(74).units99292, 0);
+  assert.equal(cpt(75).units99292, 1);
+  assert.equal(cpt(104).units99292, 1);
+  assert.equal(cpt(134).units99292, 2);
+  assert.equal(cpt(135).units99292, 3);
+});
+
+test('critical-care-time: Medicare counts 99292 only for full 30 minutes after 74 (Ch. 12 30.6.12: 74 + 30 = 104)', () => {
+  const mcr = (m) => criticalCareTime({ totalMinutes: m, payer: 'medicare' });
+  assert.deepEqual([75, 103, 104, 133, 134, 164].map((m) => mcr(m).units99292), [0, 0, 1, 1, 2, 3]);
+  assert.match(mcr(90).note, /A CPT \/ commercial payer counts 1 unit of 99292 here \(its first 99292 at 75 minutes\)\.$/);
+  assert.match(mcr(110).note, /counts 2 units of 99292 here/);
+  assert.doesNotMatch(mcr(104).note, /counts/, 'no divergence line where both rules agree');
+});
+
+test('critical-care-time: the payer is required, since the rules differ between 75 and 103 minutes', () => {
+  assert.throws(() => criticalCareTime({ totalMinutes: 90 }), /payer/);
 });
 
 test('critical-care-time: the procedure-time subtraction can drop below the 30-minute floor', () => {
-  const r = criticalCareTime({ totalMinutes: 100, procedureMinutes: 40 });
+  const r = criticalCareTime({ totalMinutes: 100, procedureMinutes: 40, payer: 'medicare' });
   assert.equal(r.netMinutes, 60);
   assert.equal(r.units99292, 0);
-  const below = criticalCareTime({ totalMinutes: 50, procedureMinutes: 25 });
+  const below = criticalCareTime({ totalMinutes: 50, procedureMinutes: 25, payer: 'medicare' });
   assert.equal(below.netMinutes, 25);
   assert.equal(below.isCriticalCare, false);
   assert.match(below.note, /NOT critical care/);
 });
 
 test('critical-care-time: bad inputs throw; over-subtraction reports a safe note, never a negative unit', () => {
-  assert.throws(() => criticalCareTime({ totalMinutes: -1 }), RangeError);
-  assert.throws(() => criticalCareTime({ totalMinutes: 'x' }), TypeError);
-  const neg = criticalCareTime({ totalMinutes: 10, procedureMinutes: 40 });
+  assert.throws(() => criticalCareTime({ totalMinutes: -1, payer: 'medicare' }), RangeError);
+  assert.throws(() => criticalCareTime({ totalMinutes: 'x', payer: 'medicare' }), TypeError);
+  const neg = criticalCareTime({ totalMinutes: 10, procedureMinutes: 40, payer: 'ama' });
   assert.equal(neg.isCriticalCare, false);
   assert.equal(neg.units99292, 0);
 });

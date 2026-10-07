@@ -247,11 +247,12 @@ export const renderers = {
           subsequentPct: mode === 'custom' ? (Number(str('mppr-pct')) || 50) : 50,
           baseFeeCents: mode === 'endoscopy' ? Math.round((Number(str('mppr-base')) || 0) * 100) : 0,
         });
-        o.appendChild(el('h2', { text: `Total expected allowed: ${usd(r.allowedTotalCents)}` }));
+        o.appendChild(el('h2', { text: `Total expected allowed: ${r.atLeast ? 'at least ' : ''}${usd(r.allowedTotalCents)}` }));
+        if (r.note) o.appendChild(el('p', { text: r.note }));
         o.appendChild(el('p', { text: `Withheld by the reduction: ${usd(r.withheldCents)} (full ${usd(r.fullCents)}).` }));
         o.appendChild(el('h3', { text: 'Per-line, ranked by fee' }));
         o.appendChild(el('ul', {}, r.lines.map((l) =>
-          li(`Rank ${l.rank}: ${usd(l.feeCents)} fee -> ${usd(l.allowedCents)} allowed (${l.appliedPct}%).`))));
+          li(`Rank ${l.rank}: ${usd(l.feeCents)} fee -> ${l.byReport ? 'by report, at least ' : ''}${usd(l.allowedCents)} allowed (${l.appliedPct}%${l.byReport ? ' floor' : ''}).`))));
         o.appendChild(postureNote('CMS Pub. 100-04 Claims Processing Manual, Ch. 12 40.6 (surgical 100/50/50) / 40.7 (endoscopy base rule). Pair with Bilateral (Modifier 50) Payment by Indicator for a single line at 150%.'));
       });
     }
@@ -565,12 +566,16 @@ export const renderers = {
   // ----- 2.2 critical-care-time ---------------------------------------------
   'critical-care-time'(root) {
     root.appendChild(el('p', { class: 'notice', text: 'Converts the day\'s aggregated critical-care minutes into 99291 + 99292 units. Below 30 minutes is not critical care (report an E/M instead). Subtract any separately billable procedure time -- the rule that trips most coders. Aggregate bedside + unit time per CMS before entering it.' }));
+    root.appendChild(selectField('Payer', 'cc-payer', [
+      { value: 'medicare', text: 'Medicare (99292 from 104 minutes)' },
+      { value: 'ama', text: 'CPT / commercial (99292 from 75 minutes)' },
+    ]));
     root.appendChild(field('Total critical-care minutes for the day', 'cc-total', { type: 'number', inputmode: 'numeric', placeholder: '104' }));
     root.appendChild(field('Minutes of separately billable procedures to subtract', 'cc-proc', { type: 'number', inputmode: 'numeric', placeholder: '0' }));
     const o = out(); root.appendChild(o);
-    wire(['cc-total', 'cc-proc'], () => safe(o, () => {
+    wire(['cc-payer', 'cc-total', 'cc-proc'], () => safe(o, () => {
       if (rawEmpty('cc-total')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the total critical-care minutes.' })); return; }
-      const r = Em.criticalCareTime({ totalMinutes: Math.round(numv('cc-total')), procedureMinutes: Math.round(numv('cc-proc') || 0) });
+      const r = Em.criticalCareTime({ totalMinutes: Math.round(numv('cc-total')), procedureMinutes: Math.round(numv('cc-proc') || 0), payer: str('cc-payer') });
       o.appendChild(el('h2', { text: r.isCriticalCare ? (r.units99292 ? `99291 + 99292 x${r.units99292}` : '99291') : 'Not critical care' }));
       verdictLine(o, r.note, r.isCriticalCare ? null : 'flag');
       o.appendChild(derivation([
@@ -578,9 +583,9 @@ export const renderers = {
         ['Less separately billable procedure time', String(r.procedureMinutes)],
         ['Net critical-care minutes', String(r.netMinutes)],
         ['99291 (first 30-74 min)', r.code99291 ? '1' : '0 -- below the 30-minute floor'],
-        ['99292 units (each +30 min)', String(r.units99292)],
+        [`99292 units (from ${r.first99292 || '-'} min, each +30)`, String(r.units99292)],
       ]));
-      o.appendChild(postureNote('AMA CPT 99291 / 99292; CMS Pub. 100-04 Ch. 12 30.6.12. The <30-minute floor and the procedure-time subtraction are the two miscoding traps.'));
+      o.appendChild(postureNote('AMA CPT 99291 / 99292; CMS Pub. 100-04 Ch. 12 30.6.12 (Medicare: 99292 only for each full 30 minutes after 74, so from 104). The <30-minute floor and the procedure-time subtraction are the other two miscoding traps.'));
     }));
   },
 
@@ -695,7 +700,7 @@ export const renderers = {
     root.appendChild(field('Base units (from the ASA Relative Value Guide)', 'an-base', { type: 'number', inputmode: 'decimal', placeholder: '5' }));
     root.appendChild(field('Anesthesia time (minutes)', 'an-time', { type: 'number', inputmode: 'numeric', placeholder: '60' }));
     root.appendChild(field('Modifying units (physical status / qualifying circumstances)', 'an-mod', { type: 'number', inputmode: 'decimal', placeholder: '0' }));
-    root.appendChild(moneyField('Anesthesia conversion factor ($ per unit)', 'an-cf', '20.3178'));
+    root.appendChild(moneyField('Anesthesia conversion factor ($ per unit; CY2026 national, non-qualifying APM: 20.4975)', 'an-cf', '20.4975'));
     root.appendChild(selectField('Medical-direction modifier', 'an-dir', [
       // spec-v1143 (rule 8/9): a select always carries a value, and this one
       // opened on the highest-paying row of the table. The reader chooses.

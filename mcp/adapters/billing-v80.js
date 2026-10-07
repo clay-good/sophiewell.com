@@ -29,9 +29,10 @@ export default [
   },
   {
     id: 'critical-care-time',
-    summary: 'Critical-care time coding: net minutes (total minus separately-billable procedure time) mapped to 99291 and additional 99292 units.',
+    summary: 'Critical-care time coding: net minutes (total minus separately-billable procedure time) mapped to 99291 and additional 99292 units, by the payer\'s rule (Medicare from 104 minutes, CPT from 75).',
     compute: C.criticalCareTime,
     fields: [
+      { dom: 'cc-payer', arg: 'payer', kind: 'enum', values: ['medicare', 'ama'], required: true, label: 'Whose 99292 rule to apply: medicare (from 104 minutes) or ama (CPT, from 75)' },
       { dom: 'cc-total', arg: 'totalMinutes', kind: 'number', required: true, label: 'Total critical-care minutes' },
       { dom: 'cc-proc', arg: 'procedureMinutes', kind: 'number', label: 'Separately-billable procedure minutes to subtract' },
     ],

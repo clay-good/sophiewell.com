@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- 60-Day Overpayment Report-and-Return Clock now follows 42 CFR 401.305 as
+  amended from January 1, 2025. An optional investigation start date (and
+  conclusion date) suspends the deadline up to 180 days after identification,
+  then the rest of the 60 days runs. The old note that "reasonable diligence"
+  delays the clock was the 2016 rule and is gone.
+- Critical-care time coding now asks which payer. Medicare counts 99292 only
+  for each full 30 minutes after the first 74, so from 104 minutes; CPT counts
+  it from 75. For a Medicare day of 75 to 103 minutes, a 99292 was added that
+  Medicare does not pay.
+- Multiple-procedure reduction: with more than five surgical procedures, the
+  sixth and later are paid by report (at least 50%), so the total is shown as a
+  minimum rather than as exact.
+- The anesthesia conversion factor hint now shows the CY2026 national figure
+  ($20.4975, non-qualifying APM) instead of CY2025's.
 - WHO growth z-scores: a weight-for-age z beyond ±3 is now WHO's restricted
   value, so it matches WHO Anthro (a boy of 1 year at 5.5 kg is −4.75, not
   −5.05). A value WHO flags as implausible now says to check the measurement.
