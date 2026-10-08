@@ -252,6 +252,8 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   refused by name) and event date per row, the other dates where the row has them, and whether the employer
   administers the plan from the row or the form. Each row leads with the employer's own next deadline (the result
   now carries it as `noticeBy`).
+- **Built 2026-10-07:** `partb-late-penalty` batch, a counselor's list: months late per row, the premium year and
+  any premium override from the row or the form.
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which

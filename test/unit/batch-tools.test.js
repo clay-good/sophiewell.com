@@ -244,3 +244,9 @@ test('cobra-clock runs over an HR list: the employer\'s next deadline first, the
   assert.match(r.rows[1].detail, /^Tell the plan administrator by 2026-10-15 \(30 days after the event\)\. COBRA can last 36 months/);
   assert.match(r.rows[3].detail, /"open enrollment" is not one of the choices\. Write termination, reduced hours/);
 });
+
+test('partb-late-penalty runs over a people file: 10% per full 12 months late, the year from the form', () => {
+  const r = runBatch('partb-late-penalty', [{ monthsLate: '26' }, { monthsLate: '11' }, { monthsLate: '' }], { year: '2026' });
+  assert.equal(r.band, '2 people of 3 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['20% penalty', 'No penalty', 'Needs corrected inputs']);
+});

@@ -55,6 +55,7 @@ const EXPECT = {
   'gfe-schedule.csv': ['csv-mapped', 'likely', 'Good Faith Estimate Deadline (schedule file)'],
   'nomnc-census.csv': ['csv-mapped', 'likely', 'NOMNC Delivery Deadline (patients file)'],
   'cobra-events.csv': ['csv-mapped', 'likely', 'COBRA Deadlines and End Date (events file)'],
+  'partb-late.csv': ['csv-mapped', 'likely', 'Part B Late Enrollment Penalty (people file)'],
   'overpayments.csv': ['csv-mapped', 'likely', '60-Day Overpayment Report-and-Return Clock (overpayments file)'],
   'pa-requests.csv': ['csv-mapped', 'likely', 'Prior-Authorization Decision-Deadline Clock (requests file)'],
   'unknown.csv': ['csv-unknown', 'none', 'alpha, beta, gamma'],

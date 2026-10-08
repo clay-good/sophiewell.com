@@ -66,16 +66,25 @@ export const renderers = {
     numField(root, 'Premium year (blank for this year)', 'pbl-year', 'e.g. 2026', '2100', '1');
     numField(root, 'Standard Part B premium, if not the published figure', 'pbl-premium', 'e.g. 202.90', '10000', '0.01');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = MP.partbLatePenalty(args);
+    const o = out();
+    const formArgs = () => Object.fromEntries(pairs.map(([dom, arg]) => [arg, val(dom)]));
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Penalty', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a counselor's list of people, each row's months late; the year and premium above apply
+    // to every row that leaves them blank.
+    const upload = uploadWorkbench(root, {
+      id: 'pbl-upload', fields: BATCH_TOOLS['partb-late-penalty'].fields, label: 'Compute penalties for people from a file',
+      compute: 'partb-late-penalty', getInput: formArgs, onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) upload.compute(formArgs());
+      else show(MP.partbLatePenalty(formArgs()));
+    });
   },
   'partd-late-penalty'(root) {
     const pairs = [['pdl-g1s', 'gap1Start'], ['pdl-g1e', 'gap1End'], ['pdl-g2s', 'gap2Start'], ['pdl-g2e', 'gap2End'], ['pdl-g3s', 'gap3Start'], ['pdl-g3e', 'gap3End'], ['pdl-year', 'year'], ['pdl-base', 'base']];
@@ -267,4 +276,5 @@ export const renderers = {
 export const acceptFiles = {
   'extra-help-msp-screen': acceptVia('msp-upload-file'),
   'cobra-clock': acceptVia('cb-upload-file'),
+  'partb-late-penalty': acceptVia('pbl-upload-file'),
 };
