@@ -247,8 +247,14 @@ export const renderers = {
     ]));
     root.appendChild(field('Plan-specified window in days', 'pat-days', { type: 'number', placeholder: '14' }));
     root.appendChild(field('Time the request arrived (expedited, optional)', 'pat-time', { type: 'time' }));
-    const o = out(); root.appendChild(o);
-    wire(['pat-date', 'pat-type', 'pat-days', 'pat-time'], () => safe(o, () => {
+    const o = out();
+    // spec-v1501 §3: a list of open requests from a file, each row's type and request date.
+    const upload = uploadWorkbench(root, {
+      id: 'pat-upload', fields: BATCH_TOOLS['pa-turnaround'].fields, label: 'Check decision deadlines for requests from a file',
+      compute: 'pa-turnaround', getInput: () => ({}), onResult: (r) => showBatch(o, r),
+    });
+    root.appendChild(o);
+    const single = () => safe(o, () => {
       if (!str('pat-date')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the submission date.' })); return; }
       const type = str('pat-type');
       if (type === 'custom' && !(numv('pat-days') > 0)) {
@@ -268,7 +274,11 @@ export const renderers = {
       o.appendChild(el('p', { class: 'muted', text: r.scopeNote }));
       if (r.unusedWindowNote) o.appendChild(el('p', { class: 'muted', text: r.unusedWindowNote }));
       o.appendChild(el('p', { class: 'muted', text: 'CMS Interoperability and Prior Authorization Final Rule (CMS-0057-F, 2024), effective 2026 for impacted payers.' }));
-    }));
+    });
+    wire(['pat-date', 'pat-type', 'pat-days', 'pat-time'], () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      single();
+    });
   },
 
   // ----- 3.5 overpayment-60day ----------------------------------------------
@@ -299,5 +309,6 @@ export const renderers = {
 // spec-v1501 §3: a claims list dropped on the home page lands in the timely-filing upload.
 export const acceptFiles = {
   'appeal-deadline': acceptVia('apd-upload-file'),
+  'pa-turnaround': acceptVia('pat-upload-file'),
   'timely-filing': acceptVia('tf-upload-file'),
 };

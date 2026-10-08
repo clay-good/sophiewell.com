@@ -172,3 +172,19 @@ test('appeal-deadline runs over a list of Medicare decisions: receipt presumed 5
   assert.match(r.rows[4].detail, /receipt date cannot come before the notice date/);
   assert.deepEqual(r.notes, ['Every value is the row\'s own; the form above is not used for file rows.', 'Rows that need corrected inputs say why in the result table and download.']);
 });
+
+test('pa-turnaround runs over a list of open requests: the CMS-0057-F window by type, a plan window only for a plan-specified row', () => {
+  const r = runBatch('pa-turnaround', [
+    { type: 'Standard', requestDate: '10/01/2026' },
+    { type: 'urgent', requestDate: '2026-10-06', requestTime: '14:30' },
+    { type: 'plan-specified', requestDate: '2026-09-01', windowDays: '15' },
+    { type: 'custom', requestDate: '2026-09-01' },
+    { type: 'priority 1', requestDate: '2026-09-01' },
+    { type: 'standard', requestDate: '2026-10-01', windowDays: '14' },
+  ], {}, new Date('2026-10-07T12:00:00Z'));
+  assert.equal(r.band, '4 requests of 6 computed. 2 rows need corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Decide by 2026-10-08', 'Decide by 2026-10-09 14:30', 'Past due (2026-09-16)', 'Needs corrected inputs', 'Needs corrected inputs', 'Decide by 2026-10-08']);
+  assert.equal(r.rows[3].detail, 'Plan window: blank. A plan-specified request needs its window in days.');
+  assert.equal(r.rows[4].detail, 'Request type: "priority 1" is not one of the choices. Write standard, expedited or plan-specified.');
+  assert.match(r.rows[5].detail, /The plan window of 14 days was not used: the standard window is the one CMS-0057-F sets\.$/);
+});

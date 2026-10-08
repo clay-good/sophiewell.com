@@ -37,6 +37,7 @@ const CASES = {
   'refill-eligible-date': ['group-v1511', 'refill-fills.csv', 'rf-upload-file', 'csv-mapped'],
   'timely-filing': ['group-v63', 'timely-claims.csv', 'tf-upload-file', 'csv-mapped'],
   'appeal-deadline': ['group-v63', 'appeal-decisions.csv', 'apd-upload-file', 'csv-mapped'],
+  'pa-turnaround': ['group-v63', 'pa-requests.csv', 'pat-upload-file', 'csv-mapped'],
   'pa-lint': ['pa-lint', 'packet.pdf', 'pa-file-picker', 'pdf'],
 };
 

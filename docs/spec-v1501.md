@@ -235,6 +235,10 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
 - **Built 2026-10-07:** `appeal-deadline` batch, a list of Medicare decisions: the level just completed (required,
   and refused by name when it is not one of the five, never guessed) and the notice date per row, with a receipt
   date only where the row has proof of one; receipt is otherwise presumed 5 days after the notice, as the form does.
+- **Built 2026-10-07:** `pa-turnaround` batch, a list of open prior authorization requests: type (standard,
+  expedited or plan-specified; required and refused by name otherwise) and request date per row, a window in days
+  only for a plan-specified row (a window on a standard or expedited row is reported as not used), and an arrival
+  time that only an expedited row uses.
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which

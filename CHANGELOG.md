@@ -64,6 +64,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Prior-Authorization Decision-Deadline Clock now reads a list of open
+  requests (type and request date per row) and gives each one's decision
+  deadline and the days left.
 - Medicare Appeal-Level Deadline Calculator now reads a list of decisions
   (level just completed and notice date per row) and gives each one's next
   level and filing deadline.
