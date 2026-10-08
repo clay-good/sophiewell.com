@@ -916,6 +916,7 @@ import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT, acceptFiles as AFPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson, datasetStatus, stampDetail } from './lib/data.js';
+import { isPrivateField } from './lib/private-fields.js';
 import { createHomeFiles } from './views/home-files.js';
 import { longDate as recordDate } from './lib/record-pick.js';
 import { copyButton } from './lib/clipboard.js';
@@ -4763,9 +4764,10 @@ function trackHashState(body) {
         // Skip ephemeral pieces (search boxes inside lookup tools, the bill
         // textarea, free-text fields with no semantic meaning), a file input
         // (its value is a fake path that cannot be restored), and a field
-        // marked data-private: a name or member ID typed into a letter must
-        // never land in a link someone shares.
-        if (node.tagName === 'TEXTAREA' || node.type === 'file' || node.hasAttribute('data-private')) return;
+        // private (marked data-private, or labelled with a person's name, ID,
+        // birth date or contact; lib/private-fields.js): a name or member ID
+        // typed into a letter must never land in a link someone shares.
+        if (node.tagName === 'TEXTAREA' || node.type === 'file' || isPrivateField(node)) return;
         if (node.type === 'checkbox') {
           if (node.checked) state[node.id] = '1';
         } else if (node.value !== '' && node.value != null) {

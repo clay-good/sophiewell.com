@@ -13,10 +13,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - A households, people, patients or fills file dropped on the home page now
   opens the poverty-level, premium credit, IRMAA, Extra Help, financial
   assistance or refill-date tool it fits, instead of the file inventory.
-- Names, member IDs, birth dates and account numbers typed into a letter
-  (the appeal and request letters, the HIPAA authorization, the records
-  request and the wallet card) no longer appear in the page's address, so a
-  shared link cannot carry them. Chosen file names are left out too.
+- Names, member IDs, birth dates, contacts and account numbers typed into a
+  page no longer appear in its address, so a shared link cannot carry them.
+  A field is private when its label names a person's identifier, so the
+  appeal and request letters, the records-access request, the HIPAA
+  authorization, the wallet card and the Medicare enrollment window's birth
+  date are all covered, and a new field is too. Chosen file names are left
+  out as well.
 - Direct primary care and HSA check now knows the 2027 monthly limit ($150 for
   one person, $300 for more), unchanged in the IRS's first indexed year (Rev.
   Proc. 2026-24), instead of asking for it.

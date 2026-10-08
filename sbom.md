@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `83364b1f1d11284b`
-Generated: 2026-10-08T01:54:21.510Z
+Build ID: `a1f05478d285e9b3`
+Generated: 2026-10-08T02:11:25.914Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -27,7 +27,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 |---|---:|---|
 | `index.html` | 133083 | `467af90e0d1a362fa7381490e10e07a34000cac9efdabe4347df08973ab93e5f` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 590726 | `34a6f419b1deb56a493a565c0bfe079e1df53b1931e18a4bdcf893e0f7d99059` |
+| `app.js` | 590876 | `2d98602a01863b57bb70e61a915576c6228e1e9209a51fb729c9328099611a58` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -936,6 +936,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/priapism-gas-v859.js` | 10757 | `64a551a208b4f1430a62b0d16669339f61c853a2af7db33e5612ce32a559d6cf` |
 | `lib/primaquine-single-low-dose-v1552.js` | 3459 | `0b55deef84f6413e2e078375bcabb903146b729d9d2003d1cd5753157ccb7d90` |
 | `lib/print.js` | 4948 | `b94c3f3322dbee349c43f11ee513bf80e2b7d63ee8508423bfc64ca8111e3df4` |
+| `lib/private-fields.js` | 1163 | `305f86bce586741c4a388ffa2d7f8f1208859ba149d8c96f42d10541a6f9c5ca` |
 | `lib/prognostic-v231.js` | 7745 | `656bc7330019dc7bcc842abdf695a2479b2720bc1ccff858e7fd38357173fbf5` |
 | `lib/prompt.js` | 27570 | `14035e7e8d1537ae3975760cecf4d920e6df8830191cca1d4ce6855544ae0f6b` |
 | `lib/propkd-v564.js` | 12565 | `a92acd4c8f065df50dcfffd0ad8dde4a6d1a6a9dddf8118bc4351307633d5c25` |

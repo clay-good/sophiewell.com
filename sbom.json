@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:83364b1f-1d11-584b-89db-d42757e91e07",
+  "serialNumber": "urn:uuid:a1f05478-d285-59b3-8763-e6ea55960d5f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-08T01:54:21.510Z",
+    "timestamp": "2026-10-08T02:11:25.914Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "34a6f419b1deb56a493a565c0bfe079e1df53b1931e18a4bdcf893e0f7d99059"
+          "content": "2d98602a01863b57bb70e61a915576c6228e1e9209a51fb729c9328099611a58"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "590726"
+          "value": "590876"
         }
       ]
     },
@@ -18973,6 +18973,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4948"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/private-fields.js",
+      "type": "file",
+      "name": "lib/private-fields.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "305f86bce586741c4a388ffa2d7f8f1208859ba149d8c96f42d10541a6f9c5ca"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1163"
         }
       ]
     },
@@ -85159,6 +85180,7 @@
         "urn:sophiewell:file:source:lib/priapism-gas-v859.js",
         "urn:sophiewell:file:source:lib/primaquine-single-low-dose-v1552.js",
         "urn:sophiewell:file:source:lib/print.js",
+        "urn:sophiewell:file:source:lib/private-fields.js",
         "urn:sophiewell:file:source:lib/prognostic-v231.js",
         "urn:sophiewell:file:source:lib/prompt.js",
         "urn:sophiewell:file:source:lib/propkd-v564.js",
@@ -87631,7 +87653,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "83364b1f1d11284b"
+      "value": "a1f05478d285e9b3"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87643,7 +87665,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3249"
+      "value": "3250"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
