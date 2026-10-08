@@ -64,6 +64,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Part D Late Enrollment Penalty now reads a list of people (up to three
+  coverage gaps per row) and gives each one's monthly penalty.
 - Part B Late Enrollment Penalty now reads a list of people (months late per
   row) and gives each one's penalty.
 - COBRA Deadlines and End Date now reads a list of qualifying events and gives

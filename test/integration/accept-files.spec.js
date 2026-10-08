@@ -42,6 +42,7 @@ const CASES = {
   'nomnc-deadline': ['group-v1514', 'nomnc-census.csv', 'nomnc-upload-file', 'csv-mapped'],
   'cobra-clock': ['group-v1507', 'cobra-events.csv', 'cb-upload-file', 'csv-mapped'],
   'partb-late-penalty': ['group-v1507', 'partb-late.csv', 'pbl-upload-file', 'csv-mapped'],
+  'partd-late-penalty': ['group-v1507', 'partd-gaps.csv', 'pdl-upload-file', 'csv-mapped'],
   'overpayment-60day': ['group-v63', 'overpayments.csv', 'ov-upload-file', 'csv-mapped'],
   'pa-lint': ['pa-lint', 'packet.pdf', 'pa-file-picker', 'pdf'],
 };

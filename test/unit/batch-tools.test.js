@@ -250,3 +250,14 @@ test('partb-late-penalty runs over a people file: 10% per full 12 months late, t
   assert.equal(r.band, '2 people of 3 computed. 1 row needs corrected inputs.');
   assert.deepEqual(r.rows.map((x) => x.label), ['20% penalty', 'No penalty', 'Needs corrected inputs']);
 });
+
+test('partd-late-penalty runs over a people file: each row\'s gaps, a gap under 63 days no penalty', () => {
+  const r = runBatch('partd-late-penalty', [
+    { gap1Start: '01/01/2024', gap1End: '06/30/2025' },
+    { gap1Start: '2024-01-01', gap1End: '2024-02-15' },
+    { gap1Start: '2024-01-01', gap1End: 'June' },
+  ], { year: '2026' });
+  assert.equal(r.band, '2 people of 3 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['$7.00 a month', 'No penalty', 'Needs corrected inputs']);
+  assert.equal(r.rows[2].detail, 'Gap 1 last day: "June" is not a date.');
+});
