@@ -230,3 +230,17 @@ test('nomnc-deadline runs over a census: 2 days before each last covered day, th
   assert.equal(r.rows[2].detail, 'Setting: "acute" is not one of the choices. Write SNF, home health, hospice or CORF.');
   assert.equal(r.rows[3].detail, 'Last covered day: "Friday" is not a date.');
 });
+
+test('cobra-clock runs over an HR list: the employer\'s next deadline first, the administrator answer from the form', () => {
+  const r = runBatch('cobra-clock', [
+    { event: 'Termination', eventDate: '09/15/2026' },
+    { event: 'divorce', eventDate: '2026-09-15', employerAdministers: 'no' },
+    { event: 'Termination', eventDate: '2026-09-15', noticeDate: '2026-09-30' },
+    { event: 'open enrollment', eventDate: '2026-09-15' },
+  ], { employerAdministers: 'yes' });
+  assert.equal(r.band, '3 events of 4 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Notice by 2026-10-29', 'Notice by 2026-10-15', 'Elect by 2026-11-29', 'Needs corrected inputs']);
+  assert.equal(r.rows[0].detail, 'Send the election notice by 2026-10-29 (44 days after the event). COBRA can last 18 months after the event, to March 15, 2028 (26 CFR 54.4980B-7).');
+  assert.match(r.rows[1].detail, /^Tell the plan administrator by 2026-10-15 \(30 days after the event\)\. COBRA can last 36 months/);
+  assert.match(r.rows[3].detail, /"open enrollment" is not one of the choices\. Write termination, reduced hours/);
+});

@@ -64,6 +64,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- COBRA Deadlines and End Date now reads a list of qualifying events and gives
+  each one's notice deadline, election deadline and how long coverage can last.
 - NOMNC Delivery Deadline now reads a census (last covered day per patient)
   and gives each patient's notice deadline.
 - Good Faith Estimate Deadline now reads a schedule (booking date and service

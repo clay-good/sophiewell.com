@@ -109,16 +109,26 @@ export const renderers = {
     dateInput(root, 'Date COBRA was elected (optional)', 'cb-elect', 'date');
     selectField(root, 'Disability extension (Social Security disability)?', 'cb-disab', CB.YES_NO);
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = CB.cobraClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Coverage', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: an HR list of qualifying events; whether the employer administers the plan comes from
+    // the form when the file has no such column.
+    const upload = uploadWorkbench(root, {
+      id: 'cb-upload', fields: BATCH_TOOLS['cobra-clock'].fields, label: 'Check COBRA deadlines for events from a file',
+      compute: 'cobra-clock', getInput: () => ({ employerAdministers: val('cb-admin') }), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({ employerAdministers: val('cb-admin') }); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(CB.cobraClock(args));
+    });
   },
   'parta-premium'(root) {
     const pairs = [['pap-quarters', 'quarters'], ['pap-late', 'monthsLate'], ['pap-year', 'year']];
@@ -256,4 +266,5 @@ export const renderers = {
 
 export const acceptFiles = {
   'extra-help-msp-screen': acceptVia('msp-upload-file'),
+  'cobra-clock': acceptVia('cb-upload-file'),
 };
