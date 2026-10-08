@@ -188,3 +188,18 @@ test('pa-turnaround runs over a list of open requests: the CMS-0057-F window by 
   assert.equal(r.rows[4].detail, 'Request type: "priority 1" is not one of the choices. Write standard, expedited or plan-specified.');
   assert.match(r.rows[5].detail, /The plan window of 14 days was not used: the standard window is the one CMS-0057-F sets\.$/);
 });
+
+test('overpayment-60day runs over a list of overpayments: 60 days from identification, suspended by a recorded investigation', () => {
+  const r = runBatch('overpayment-60day', [
+    { identificationDate: '09/01/2026' },
+    { identificationDate: '2026-05-01', investigationStart: '2026-05-21' },
+    { identificationDate: '2026-05-01', investigationStart: '2026-05-21', investigationEnd: '2026-06-30' },
+    { identificationDate: '2026-05-01', investigationStart: '2026-04-01' },
+    { identificationDate: 'May 2026' },
+  ], {}, new Date('2026-10-07T12:00:00Z'));
+  assert.equal(r.band, '3 overpayments of 5 computed. 2 rows need corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Report and return by 2026-10-31', 'Report and return by 2026-12-07', 'Past due (2026-08-09)', 'Needs corrected inputs', 'Needs corrected inputs']);
+  assert.equal(r.rows[1].detail, 'Identified 2026-05-01; the investigation from 2026-05-21 suspends the clock until 2026-10-28, day 180 (no conclusion date entered); then 40 of the 60 days remain: due by 2026-12-07; 61 days left.');
+  assert.match(r.rows[3].detail, /^The investigation began before the overpayment was identified/);
+  assert.equal(r.rows[4].detail, 'Identification date: "May 2026" is not a date.');
+});

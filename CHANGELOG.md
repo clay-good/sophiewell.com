@@ -64,6 +64,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- 60-Day Overpayment Report-and-Return Clock now reads a list of identified
+  overpayments, with any investigation dates per row, and gives each one's
+  deadline.
 - Prior-Authorization Decision-Deadline Clock now reads a list of open
   requests (type and request date per row) and gives each one's decision
   deadline and the days left.

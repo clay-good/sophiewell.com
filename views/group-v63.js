@@ -287,8 +287,14 @@ export const renderers = {
     root.appendChild(dateField('Identification date', 'ov-date', '2026-05-01'));
     root.appendChild(dateField('Investigation of related overpayments began (optional)', 'ov-inv-start', ''));
     root.appendChild(dateField('Investigation concluded, the total calculated (optional)', 'ov-inv-end', ''));
-    const o = out(); root.appendChild(o);
-    wire(['ov-date', 'ov-inv-start', 'ov-inv-end'], () => safe(o, () => {
+    const o = out();
+    // spec-v1501 §3: a list of identified overpayments from a file, each row's own dates.
+    const upload = uploadWorkbench(root, {
+      id: 'ov-upload', fields: BATCH_TOOLS['overpayment-60day'].fields, label: 'Check deadlines for overpayments from a file',
+      compute: 'overpayment-60day', getInput: () => ({}), onResult: (r) => showBatch(o, r),
+    });
+    root.appendChild(o);
+    const single = () => safe(o, () => {
       if (!str('ov-date')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the identification date.' })); return; }
       const r = Ops.overpayment60Day({ identificationDate: str('ov-date'), investigationStart: str('ov-inv-start'), investigationEnd: str('ov-inv-end') });
       const items = [];
@@ -302,7 +308,11 @@ export const renderers = {
       items.push(remainingLi(r));
       o.appendChild(el('ul', {}, items));
       o.appendChild(el('p', { class: 'muted', text: 'ACA 6402(a) (42 U.S.C. 1320a-7k(d)); 42 CFR 401.305 as amended from January 1, 2025: an overpayment is identified when it is knowingly received or kept. A timely, good-faith investigation of related overpayments suspends the deadline for up to 180 days after identification. The deadline is the later of this date and any cost report due date, and a self-disclosure or an extended repayment schedule request also suspends it.' }));
-    }));
+    });
+    wire(['ov-date', 'ov-inv-start', 'ov-inv-end'], () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      single();
+    });
   },
 };
 
@@ -310,5 +320,6 @@ export const renderers = {
 export const acceptFiles = {
   'appeal-deadline': acceptVia('apd-upload-file'),
   'pa-turnaround': acceptVia('pat-upload-file'),
+  'overpayment-60day': acceptVia('ov-upload-file'),
   'timely-filing': acceptVia('tf-upload-file'),
 };

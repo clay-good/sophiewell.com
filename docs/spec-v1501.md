@@ -239,6 +239,9 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   expedited or plan-specified; required and refused by name otherwise) and request date per row, a window in days
   only for a plan-specified row (a window on a standard or expedited row is reported as not used), and an arrival
   time that only an expedited row uses.
+- **Built 2026-10-07:** `overpayment-60day` batch, a list of identified overpayments: the identification date per
+  row and, where the row records one, an investigation of related overpayments that suspends the clock
+  (42 CFR 401.305(b)(3)), with the same order checks as the form.
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which
