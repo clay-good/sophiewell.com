@@ -64,6 +64,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Observation Notice (MOON) Deadline now reads an observation list (start
+  date and time per patient) and gives each patient's notice deadline.
 - Part D Late Enrollment Penalty now reads a list of people (up to three
   coverage gaps per row) and gives each one's monthly penalty.
 - Part B Late Enrollment Penalty now reads a list of people (months late per

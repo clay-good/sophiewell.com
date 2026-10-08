@@ -53,6 +53,7 @@ const EXPECT = {
   'timely-claims.csv': ['csv-mapped', 'likely', 'Claim Timely-Filing Deadline (claims file)'],
   'appeal-decisions.csv': ['csv-mapped', 'likely', 'Medicare Appeal-Level Deadline (decisions file)'],
   'gfe-schedule.csv': ['csv-mapped', 'likely', 'Good Faith Estimate Deadline (schedule file)'],
+  'observation-list.csv': ['csv-mapped', 'likely', 'Observation Notice (MOON) Deadline (patients file)'],
   'nomnc-census.csv': ['csv-mapped', 'likely', 'NOMNC Delivery Deadline (patients file)'],
   'cobra-events.csv': ['csv-mapped', 'likely', 'COBRA Deadlines and End Date (events file)'],
   'partb-late.csv': ['csv-mapped', 'likely', 'Part B Late Enrollment Penalty (people file)'],

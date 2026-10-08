@@ -2,7 +2,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { BATCH_TOOLS, cellValue, rowArgs, runBatch } from '../../lib/batch-tools.js';
+import { BATCH_TOOLS, cellValue, isoDateTime, rowArgs, runBatch } from '../../lib/batch-tools.js';
 import { fplPercent } from '../../lib/income-screens-v1506.js';
 import { CSV_TOOLS } from '../../lib/upload-fields.js';
 
@@ -260,4 +260,22 @@ test('partd-late-penalty runs over a people file: each row\'s gaps, a gap under 
   assert.equal(r.band, '2 people of 3 computed. 1 row needs corrected inputs.');
   assert.deepEqual(r.rows.map((x) => x.label), ['$7.00 a month', 'No penalty', 'Needs corrected inputs']);
   assert.equal(r.rows[2].detail, 'Gap 1 last day: "June" is not a date.');
+});
+
+test('moon-deadline runs over an observation list: 36 hours from the start, a date with no time refused', () => {
+  const r = runBatch('moon-deadline', [
+    { observationStart: '10/01/2026 2:30 PM' },
+    { observationStart: '2026-10-01 14:30', endTime: '2026-10-02 09:00' },
+    { observationStart: '2026-10-01' },
+  ], {});
+  assert.equal(r.band, '2 patients of 3 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Due by 2026-10-03 02:30', 'Not required', 'Needs corrected inputs']);
+  assert.equal(r.rows[2].detail, 'Observation began: "2026-10-01" is not a date and time.');
+});
+
+test('isoDateTime reads the common spreadsheet forms and refuses a bare date or an impossible hour', () => {
+  assert.equal(isoDateTime('10/01/2026 12:05 AM'), '2026-10-01T00:05');
+  assert.equal(isoDateTime('10/01/2026 12:05 pm'), '2026-10-01T12:05');
+  assert.equal(isoDateTime('2026-10-01T07:09:30'), '2026-10-01T07:09');
+  for (const bad of ['2026-10-01', '10/01/2026 13:00 PM', '2026-10-01 24:00', '']) assert.equal(isoDateTime(bad), null, bad);
 });

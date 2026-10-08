@@ -53,16 +53,25 @@ export const renderers = {
     dateInput(root, 'Observation began (date and time)', 'moon-start', 'datetime-local');
     dateInput(root, 'Released, transferred or admitted (optional)', 'moon-end', 'datetime-local');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = PA.moonDeadline(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'MOON', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: an observation list from a file, each row's own start and end times.
+    const upload = uploadWorkbench(root, {
+      id: 'moon-upload', fields: BATCH_TOOLS['moon-deadline'].fields, label: 'Check notice deadlines for patients from a file',
+      compute: 'moon-deadline', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PA.moonDeadline(args));
+    });
   },
   'nomnc-deadline'(root) {
     const pairs = [['nomnc-setting', 'setting'], ['nomnc-last', 'lastCovered'], ['nomnc-delivered', 'delivered']];
@@ -248,5 +257,6 @@ export const renderers = {
 
 // spec-v1501 §3: a census dropped on the home page lands in the NOMNC upload.
 export const acceptFiles = {
+  'moon-deadline': acceptVia('moon-upload-file'),
   'nomnc-deadline': acceptVia('nomnc-upload-file'),
 };
