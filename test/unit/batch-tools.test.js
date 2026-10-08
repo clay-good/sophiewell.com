@@ -203,3 +203,17 @@ test('overpayment-60day runs over a list of overpayments: 60 days from identific
   assert.match(r.rows[3].detail, /^The investigation began before the overpayment was identified/);
   assert.equal(r.rows[4].detail, 'Identification date: "May 2026" is not a date.');
 });
+
+test('gfe-deadline runs over a schedule: the deadline by business days ahead, a request date where the row has one', () => {
+  const r = runBatch('gfe-deadline', [
+    { scheduled: '10/01/2026', serviceDate: '10/20/2026' },
+    { scheduled: '2026-10-01', serviceDate: '2026-10-07' },
+    { scheduled: '2026-10-01', serviceDate: '2026-10-02' },
+    { scheduled: '2026-10-01', serviceDate: 'next week' },
+    { scheduled: '2026-10-05', serviceDate: '2026-10-01' },
+  ], {});
+  assert.equal(r.band, '3 services of 5 computed. 2 rows need corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Due 2026-10-06', 'Due 2026-10-02', 'No deadline', 'Needs corrected inputs', 'Needs corrected inputs']);
+  assert.equal(r.rows[3].detail, 'Service date: "next week" is not a date.');
+  assert.match(r.rows[4].detail, /the service comes after scheduling/);
+});

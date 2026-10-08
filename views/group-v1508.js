@@ -128,16 +128,25 @@ export const renderers = {
     dateInput(root, 'Service date', 'gfe-svc', 'date');
     dateInput(root, 'Or: date the patient asked for an estimate', 'gfe-req', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = HF.gfeDeadline(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a schedule from a file, each row's own scheduling and service dates.
+    const upload = uploadWorkbench(root, {
+      id: 'gfe-upload', fields: BATCH_TOOLS['gfe-deadline'].fields, label: 'Check estimate deadlines for a schedule from a file',
+      compute: 'gfe-deadline', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(HF.gfeDeadline(args));
+    });
   },
   'ppdr-eligibility'(root) {
     const pairs = [['pp-e1', 'est1'], ['pp-b1', 'billed1'], ['pp-e2', 'est2'], ['pp-b2', 'billed2'], ['pp-e3', 'est3'], ['pp-b3', 'billed3'], ['pp-first', 'firstBill']];
@@ -164,4 +173,5 @@ export const renderers = {
 
 export const acceptFiles = {
   'fap-discount': acceptVia('fd-upload-file'),
+  'gfe-deadline': acceptVia('gfe-upload-file'),
 };

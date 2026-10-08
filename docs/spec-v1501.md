@@ -242,6 +242,9 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
 - **Built 2026-10-07:** `overpayment-60day` batch, a list of identified overpayments: the identification date per
   row and, where the row records one, an investigation of related overpayments that suspends the clock
   (42 CFR 401.305(b)(3)), with the same order checks as the form.
+- **Built 2026-10-07:** `gfe-deadline` batch, a schedule: the date each service was booked and its service date
+  (both required, so a list with one date column is not offered it), and a request date where the row has one;
+  the deadline is the form's, by federal business days (45 CFR 149.610).
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which
