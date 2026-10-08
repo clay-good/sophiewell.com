@@ -44,6 +44,8 @@ const CASES = {
   'cobra-clock': ['group-v1507', 'cobra-events.csv', 'cb-upload-file', 'csv-mapped'],
   'partb-late-penalty': ['group-v1507', 'partb-late.csv', 'pbl-upload-file', 'csv-mapped'],
   'partd-late-penalty': ['group-v1507', 'partd-gaps.csv', 'pdl-upload-file', 'csv-mapped'],
+  'medicare-enrollment-window': ['group-v1507', 'enrollment-people.csv', 'mew-upload-file', 'csv-mapped'],
+  'aca-sep-window': ['group-v1507', 'sep-households.csv', 'sep-upload-file', 'csv-mapped'],
   'overpayment-60day': ['group-v63', 'overpayments.csv', 'ov-upload-file', 'csv-mapped'],
   'pa-lint': ['pa-lint', 'packet.pdf', 'pa-file-picker', 'pdf'],
 };

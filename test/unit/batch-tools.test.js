@@ -279,3 +279,20 @@ test('isoDateTime reads the common spreadsheet forms and refuses a bare date or 
   assert.equal(isoDateTime('2026-10-01T07:09:30'), '2026-10-01T07:09');
   for (const bad of ['2026-10-01', '10/01/2026 13:00 PM', '2026-10-01 24:00', '']) assert.equal(isoDateTime(bad), null, bad);
 });
+
+test('medicare-enrollment-window and aca-sep-window run over lists, each row\'s own dates', () => {
+  const m = runBatch('medicare-enrollment-window', [
+    { birthDate: '07/01/1961', enrollDate: '05/10/2026' },
+    { enrollDate: 'soon', birthDate: '1961-07-01' },
+  ], {});
+  assert.equal(m.band, '1 person of 2 computed. 1 row needs corrected inputs.');
+  assert.equal(m.rows[0].label, 'Initial enrollment period');
+  assert.equal(m.rows[1].detail, 'Sign-up date: "soon" is not a date.');
+  const s = runBatch('aca-sep-window', [
+    { event: 'Lost coverage', eventDate: '09/15/2026' },
+    { event: 'divorce', eventDate: '2026-09-15' },
+  ], {});
+  assert.equal(s.band, '1 household of 2 computed. 1 row needs corrected inputs.');
+  assert.equal(s.rows[0].label, 'Choose a plan by 2026-11-14');
+  assert.match(s.rows[1].detail, /"divorce" is not one of the choices\. Write loss of coverage/);
+});

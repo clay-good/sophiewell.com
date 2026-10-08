@@ -265,7 +265,10 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
 - **Built 2026-10-07:** `moon-deadline` batch, an observation list: the start (required) and end of each stay as a
   date and time, read as a spreadsheet writes them ("10/01/2026 2:30 PM"); a date with no time is refused.
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
-  (each needs its fields listed in `lib/batch-tools.js`). Not yet: the enrollment-window tools (a person's own dates, rarely a list).
+  (each needs its fields listed in `lib/batch-tools.js`).
+- **Built 2026-10-07:** `medicare-enrollment-window` and `aca-sep-window` batches, for a counselor's caseload: each
+  row's own dates (a birth date is a sensitive column, left out of the redacted download), and for the special
+  enrollment window the qualifying event, refused by name when it is not one of the six. 19 form tools in all.
 - **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which
   adds "Download as Word (.docx)". The file is built on click by `renderDocumentDocx` in `lib/pa/docx.js`,
   the same deterministic first-party writer the PA lint report uses. While any bracketed blank is left, the

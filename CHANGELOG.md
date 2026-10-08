@@ -71,6 +71,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medicare Enrollment Window and Start Date and the Marketplace Special
+  Enrollment Window now read a caseload file and give each person's or
+  household's window.
 - Observation Notice (MOON) Deadline now reads an observation list (start
   date and time per patient) and gives each patient's notice deadline.
 - Part D Late Enrollment Penalty now reads a list of people (up to three

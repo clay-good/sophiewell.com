@@ -58,6 +58,8 @@ const EXPECT = {
   'cobra-events.csv': ['csv-mapped', 'likely', 'COBRA Deadlines and End Date (events file)'],
   'partb-late.csv': ['csv-mapped', 'likely', 'Part B Late Enrollment Penalty (people file)'],
   'partd-gaps.csv': ['csv-mapped', 'likely', 'Part D Late Enrollment Penalty (people file)'],
+  'enrollment-people.csv': ['csv-mapped', 'likely', 'Medicare Enrollment Window and Start Date (people file)'],
+  'sep-households.csv': ['csv-mapped', 'likely', 'Marketplace Special Enrollment Window (households file)'],
   'overpayments.csv': ['csv-mapped', 'likely', '60-Day Overpayment Report-and-Return Clock (overpayments file)'],
   'pa-requests.csv': ['csv-mapped', 'likely', 'Prior-Authorization Decision-Deadline Clock (requests file)'],
   'unknown.csv': ['csv-unknown', 'none', 'alpha, beta, gamma'],

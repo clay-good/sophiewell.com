@@ -172,16 +172,25 @@ export const renderers = {
     dateInput(root, 'Date of signing up (or the date to check)', 'mew-enroll', 'date');
     dateInput(root, 'Last day of employer coverage from current work (optional)', 'mew-cov', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = MW.medicareEnrollmentWindow(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Window', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a counselor's list of people, each row's own dates.
+    const upload = uploadWorkbench(root, {
+      id: 'mew-upload', fields: BATCH_TOOLS['medicare-enrollment-window'].fields, label: 'Check enrollment windows for people from a file',
+      compute: 'medicare-enrollment-window', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(MW.medicareEnrollmentWindow(args));
+    });
   },
   'aca-sep-window'(root) {
     const pairs = [['sep-event', 'event'], ['sep-date', 'eventDate'], ['sep-learned', 'learnedDate'], ['sep-selected', 'selectionDate']];
@@ -190,16 +199,25 @@ export const renderers = {
     dateInput(root, 'Date the person learned of it, if later (optional)', 'sep-learned', 'date');
     dateInput(root, 'Date the plan was chosen (optional)', 'sep-selected', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = SE.acaSepWindow(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Window', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a list of households, each row's event and dates.
+    const upload = uploadWorkbench(root, {
+      id: 'sep-upload', fields: BATCH_TOOLS['aca-sep-window'].fields, label: 'Check special enrollment windows for households from a file',
+      compute: 'aca-sep-window', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SE.acaSepWindow(args));
+    });
   },
   'medicaid-work-requirement-check'(root) {
     const pairs = [['wr-exception', 'exception'], ['wr-age', 'age'], ['wr-medicare', 'medicare'], ['wr-work', 'workHours'], ['wr-service', 'serviceHours'], ['wr-program', 'programHours'], ['wr-halftime', 'halfTime'], ['wr-school', 'schoolHours'], ['wr-income', 'income'], ['wr-seasonal', 'seasonal'], ['wr-avg', 'sixMonthIncome']];
@@ -287,4 +305,6 @@ export const acceptFiles = {
   'cobra-clock': acceptVia('cb-upload-file'),
   'partb-late-penalty': acceptVia('pbl-upload-file'),
   'partd-late-penalty': acceptVia('pdl-upload-file'),
+  'medicare-enrollment-window': acceptVia('mew-upload-file'),
+  'aca-sep-window': acceptVia('sep-upload-file'),
 };
