@@ -1257,11 +1257,15 @@
     },
     {
       "id": "billing-cob-msp-methods",
-      "label": "The coordination-of-benefits methods (lesser-of, come-out-whole / benefits-less-paid, non-duplication) and the Medicare Secondary Payer calculation backing cob-calc. 42 CFR Part 411; CMS Pub. 100-05 (Medicare Secondary Payer Manual).",
+      "label": "The Medicare Secondary Payer calculation (42 CFR 411.33(a), its worked example in (b)) and the coordination-of-benefits methods backing cob-calc: lesser-of is the NAIC model's secondary-plan rule (COB Model Regulation section 7, as adopted in N.D. Admin. Code 45-08-01.2-05); come-out-whole and non-duplication are plan-contract methods no regulation defines.",
       "ruleFamily": "billing-v82",
       "rules": [],
-      "url": "https://www.cms.gov/medicare/coordination-benefits-recovery/overview",
-      "lastVerified": "2026-06-15"
+      "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-411/subpart-B/section-411.33",
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://ndlegis.gov/api/acdata/pdf/45-08-01.2.pdf",
+        "https://www.cms.gov/medicare/coordination-benefits-recovery/overview"
+      ]
     },
     {
       "id": "billing-nsa-qpa-cost-share",

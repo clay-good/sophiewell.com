@@ -176,3 +176,15 @@ test('cob-calc: the three methods defined by the secondary would-pay refuse with
   assert.equal(zeroed.secondaryPaysCents, 0);
   assert.equal(zeroed.patientResidualCents, 12000);
 });
+
+test('cob-calc msp: 42 CFR 411.33(b)\'s own example -- charge $175, primary allowed $150 and paid $120, Medicare would pay $100 -- pays $30', () => {
+  const r = cobCalc({ method: 'msp', billedChargeCents: 17500, primaryAllowedCents: 15000, primaryPaidCents: 12000, secondaryAllowedCents: 12500, secondaryWouldPayCents: 10000 });
+  assert.equal(r.secondaryPaysCents, 3000);
+  assert.equal(r.patientResidualCents, 0);
+});
+
+test('cob-calc lesser-of is the NAIC model\'s secondary rule: its normal benefit, capped so both plans total at most the allowable expense', () => {
+  const base = { billedChargeCents: 20000, primaryAllowedCents: 10000, secondaryAllowedCents: 12000 };
+  assert.equal(cobCalc({ ...base, method: 'lesser-of', primaryPaidCents: 8000, secondaryWouldPayCents: 9600 }).secondaryPaysCents, 2000, 'capped at the allowable expense left unpaid');
+  assert.equal(cobCalc({ ...base, method: 'lesser-of', primaryPaidCents: 5000, secondaryWouldPayCents: 3000 }).secondaryPaysCents, 3000, 'never more than its own benefit');
+});

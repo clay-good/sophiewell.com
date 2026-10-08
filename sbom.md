@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1fca1771031aed54`
-Generated: 2026-10-08T01:26:03.479Z
+Build ID: `83364b1f1d11284b`
+Generated: 2026-10-08T01:54:21.510Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -143,7 +143,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/billing-v79.js` | 23592 | `38855e98322bcb40f603c1255fdc32f784ecccef5f861e72ae27732a67413d1d` |
 | `lib/billing-v80.js` | 25327 | `adebf31567014b687bd7fdcb9e0a60a4b3518185cb29ea0baf64cd11ec5b17c5` |
 | `lib/billing-v81.js` | 16760 | `a6fab93c9220fdd227e21f3dd6c5f624f246ce3ea0741e6dab46a906ae759c05` |
-| `lib/billing-v82.js` | 25393 | `3b1fa62195f91b7c21b1b44dee355aa1f16ad9edafa230cc95ea713e4d2d0ab8` |
+| `lib/billing-v82.js` | 25884 | `dbc4291dbcb05782e6fc34c0c063bc3cbba0bb675736761a4e5afbb00a69726a` |
 | `lib/billing-v83.js` | 21528 | `284251bb90c87242d8982a29c6f05c452e320fc79af24f2a918fd5a2f635b863` |
 | `lib/bilsky-escc-v604.js` | 10899 | `001a75fe88ef711e5693d88ff5bdd4c9a4656fc04c5a0c8b6977567c562acc6a` |
 | `lib/biological-variation-goals-v923.js` | 7894 | `6905603246b9b3305ad2ef4e0aaab94a7e043c907533e3f983025f0cb2eabaf1` |
@@ -849,7 +849,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/report.js` | 9691 | `d19c531e5ee3d480c96dd548c348b314ebcb37beaa3d5e8f87f70680e783e08d` |
 | `lib/pa/rule-sources.js` | 9357 | `6096fc0fc01b68c012dc97cd18de3e82257cb601cdac1a74ee9421d8e5f2add4` |
 | `lib/pa/rules.js` | 1568416 | `250288eadd4ceaf4a29f4e37aa21358697f34dda3f05fc4acab2923a19b9052b` |
-| `lib/pa/staleness-ledger.js` | 75447 | `186d1a7cce64b8921f881e9b56c02cbc2e96d1d5b2c070ab713517f387fefcd7` |
+| `lib/pa/staleness-ledger.js` | 75770 | `ac3f75c20f217b02d23e888742a1f074d75302518245286e83869621271645cf` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/paed-delirium-v1499.js` | 3969 | `c8836be1003c2235bb05d8ce78a07baf922b3039ac798b4bf4a3ae8bb20aca20` |
 | `lib/page-title.js` | 1458 | `575f7d045fda35d9bc5c6a04f70fd76dbf3364a987983ccde90d84fa54b12925` |

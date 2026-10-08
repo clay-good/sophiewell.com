@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Coordination of Benefits and Medicare Secondary Payer now cites what each
+  method rests on: the Medicare secondary payment is 42 CFR 411.33(a) (its own
+  worked example is now a test), lesser-of is the NAIC model's secondary-plan
+  rule, and come-out-whole and non-duplication are plan-contract methods.
 - A households, people, patients or fills file dropped on the home page now
   opens the poverty-level, premium credit, IRMAA, Extra Help, financial
   assistance or refill-date tool it fits, instead of the file inventory.
