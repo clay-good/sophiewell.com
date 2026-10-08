@@ -217,3 +217,16 @@ test('gfe-deadline runs over a schedule: the deadline by business days ahead, a 
   assert.equal(r.rows[3].detail, 'Service date: "next week" is not a date.');
   assert.match(r.rows[4].detail, /the service comes after scheduling/);
 });
+
+test('nomnc-deadline runs over a census: 2 days before each last covered day, the setting from the form when the row has none', () => {
+  const r = runBatch('nomnc-deadline', [
+    { lastCovered: '10/10/2026' },
+    { lastCovered: '2026-10-10', setting: 'Home Health' },
+    { lastCovered: '2026-10-10', setting: 'acute' },
+    { lastCovered: 'Friday' },
+  ], { setting: 'snf' });
+  assert.equal(r.band, '2 patients of 4 computed. 2 rows need corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Deliver by 2026-10-08', 'Deliver by 2026-10-08', 'Needs corrected inputs', 'Needs corrected inputs']);
+  assert.equal(r.rows[2].detail, 'Setting: "acute" is not one of the choices. Write SNF, home health, hospice or CORF.');
+  assert.equal(r.rows[3].detail, 'Last covered day: "Friday" is not a date.');
+});

@@ -4,6 +4,9 @@ import { el, clear } from '../lib/dom.js';
 import * as PA from '../lib/post-acute-clocks-v1514.js';
 import * as HC from '../lib/hospice-cap-v1514.js';
 import { resultRow } from '../lib/result-copy.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { BATCH_TOOLS } from '../lib/batch-tools.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -67,16 +70,25 @@ export const renderers = {
     dateInput(root, 'Last covered day of services', 'nomnc-last', 'date');
     dateInput(root, 'Date the notice was delivered (optional)', 'nomnc-delivered', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = PA.nomncDeadline(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'NOMNC', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a census from a file, each row's own last covered day; the setting above fills a blank one.
+    const upload = uploadWorkbench(root, {
+      id: 'nomnc-upload', fields: BATCH_TOOLS['nomnc-deadline'].fields, label: 'Check notice deadlines for patients from a file',
+      compute: 'nomnc-deadline', getInput: () => ({ setting: val('nomnc-setting') }), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({ setting: val('nomnc-setting') }); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PA.nomncDeadline(args));
+    });
   },
   'snf-qualifying-stay'(root) {
     const pairs = [['snf-admit', 'inpatientAdmit'], ['snf-discharge', 'inpatientDischarge'], ['snf-snfadmit', 'snfAdmit'], ['snf-used', 'daysUsed']];
@@ -232,4 +244,9 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+};
+
+// spec-v1501 §3: a census dropped on the home page lands in the NOMNC upload.
+export const acceptFiles = {
+  'nomnc-deadline': acceptVia('nomnc-upload-file'),
 };

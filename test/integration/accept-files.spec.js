@@ -39,6 +39,7 @@ const CASES = {
   'appeal-deadline': ['group-v63', 'appeal-decisions.csv', 'apd-upload-file', 'csv-mapped'],
   'pa-turnaround': ['group-v63', 'pa-requests.csv', 'pat-upload-file', 'csv-mapped'],
   'gfe-deadline': ['group-v1508', 'gfe-schedule.csv', 'gfe-upload-file', 'csv-mapped'],
+  'nomnc-deadline': ['group-v1514', 'nomnc-census.csv', 'nomnc-upload-file', 'csv-mapped'],
   'overpayment-60day': ['group-v63', 'overpayments.csv', 'ov-upload-file', 'csv-mapped'],
   'pa-lint': ['pa-lint', 'packet.pdf', 'pa-file-picker', 'pdf'],
 };

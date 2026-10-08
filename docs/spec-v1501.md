@@ -245,6 +245,8 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
 - **Built 2026-10-07:** `gfe-deadline` batch, a schedule: the date each service was booked and its service date
   (both required, so a list with one date column is not offered it), and a request date where the row has one;
   the deadline is the form's, by federal business days (45 CFR 149.610).
+- **Built 2026-10-07:** `nomnc-deadline` batch, a census: each row's last covered day (and delivery date, if the
+  notice went out), with the setting from the row or the form (refused by name when it is not one of the four).
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which

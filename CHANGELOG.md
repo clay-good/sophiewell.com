@@ -64,6 +64,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- NOMNC Delivery Deadline now reads a census (last covered day per patient)
+  and gives each patient's notice deadline.
 - Good Faith Estimate Deadline now reads a schedule (booking date and service
   date per row) and gives each service's estimate deadline.
 - 60-Day Overpayment Report-and-Return Clock now reads a list of identified

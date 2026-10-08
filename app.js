@@ -858,7 +858,7 @@ import { renderers as RV1503 } from './views/group-v1503.js';
 import { renderers as RV1502, acceptFiles as AF1502 } from './views/group-v1502.js';
 import { renderers as RV1507, acceptFiles as AF1507 } from './views/group-v1507.js';
 import { renderers as RV1511, acceptFiles as AF1511 } from './views/group-v1511.js';
-import { renderers as RV1514 } from './views/group-v1514.js';
+import { renderers as RV1514, acceptFiles as AF1514 } from './views/group-v1514.js';
 import { renderers as RV1506, acceptFiles as AF1506 } from './views/group-v1506.js';
 import { renderers as RV1508, acceptFiles as AF1508 } from './views/group-v1508.js';
 import { renderers as RV1512, acceptFiles as AF1512 } from './views/group-v1512.js';
@@ -5955,7 +5955,7 @@ let currentRouteId = null;
 
 // spec-v1623 step 4: dropped and chosen files. The hand-off maps come from the
 // views that read files; see views/home-files.js.
-const ACCEPT_FILES = { ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AF1604, ...AF1602, ...AF1502, ...AF1510, ...AF1512, ...AF1506, ...AF1507, ...AF1508, ...AF1511, ...AF63, ...AFPALINT };
+const ACCEPT_FILES = { ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AF1604, ...AF1602, ...AF1502, ...AF1510, ...AF1512, ...AF1506, ...AF1507, ...AF1508, ...AF1511, ...AF63, ...AF1514, ...AFPALINT };
 function navigateTo(hash) {
   currentRouteId = null;
   if (window.location.hash === hash) route();
