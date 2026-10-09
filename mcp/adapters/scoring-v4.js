@@ -124,7 +124,7 @@ export default [
   },
   {
     id: 'ecmo-titration',
-    summary: 'ELSO 2022 ECMO sweep/flow titration helper: suggested sweep from the linear PaCO2-sweep heuristic, suggested pump flow, and DO2i (target >= 6 mL/kg/min) from Hb and saturation.',
+    summary: 'ECMO sweep and flow titration helper. A suggested sweep from the proportional PaCO2 rule, and DO2i from Hb and saturation set against the ELSO oxygen delivery figure for the age group (neonate 6, child 4-5, adult 3 mL/kg/min).',
     compute: F.ecmoTitration,
     fields: [
       { dom: 'ec-mod', arg: 'modality', kind: 'enum', values: ['VV', 'VA'], required: true, label: 'Modality' },
@@ -141,6 +141,7 @@ export default [
       { dom: 'ec-tgt', arg: 'targetPaCO2', kind: 'number', label: 'Target PaCO2 (defaults to 40 mmHg, which the reading names)', unit: 'mmHg' },
       { dom: 'ec-hb', arg: 'hb', kind: 'number', label: 'Hemoglobin (with the saturation, for DO2i and the flow suggestion)', unit: 'g/dL' },
       { dom: 'ec-sat', arg: 'sao2', kind: 'number', label: 'SaO2 or post-oxygenator SatO2 (with the hemoglobin, for DO2i)', unit: '% or fraction' },
+      { dom: 'ec-age', arg: 'ageGroup', kind: 'enum', values: ['neonate', 'child', 'adult'], label: 'Age group (sets the ELSO oxygen delivery figure; without it the flow is not titrated)' },
     ],
   },
   {

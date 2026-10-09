@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- ECMO sweep and flow titration held every patient to an oxygen delivery of
+  6 mL/kg/min, which is ELSO's figure for neonates; an adult above ELSO's
+  3 mL/kg/min was told to raise the pump flow. The figure now follows the
+  age group (neonate 6, child 4-5, adult 3), the flow suggestion only ever
+  raises the flow, and the citation names ELSO's General Guidelines v1.4
+  instead of a "v1.5, 2022" guideline that does not exist.
 - The Medicare Advantage Coverage Decision Clock and the Medicaid managed care
   appeal clock counted the 14-day extension of an expedited 72-hour deadline as
   336 elapsed hours, so across a daylight-saving change the extended deadline

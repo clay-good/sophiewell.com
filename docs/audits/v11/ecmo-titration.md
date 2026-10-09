@@ -31,3 +31,10 @@
 
 ## Status
 - PASS
+
+**Correction, October 9, 2026.** The citation above was not verifiable: ELSO publishes no "Adult and Paediatric
+Respiratory Failure Guidelines, Version 1.5, 2022". Read in ELSO's own documents that day: the General Guidelines for
+all ECLS Cases v1.4 (August 2017) set circuit oxygen delivery at least equal to normal metabolism, 6 mL/kg/min for
+neonates, 4-5 for children and 3 for adults. The 6 the tile applied to every patient was the neonatal figure; the tile
+now takes the age group, and cites v1.4. The PaCO2-sweep step is the proportional rule, not an ELSO formula.
+

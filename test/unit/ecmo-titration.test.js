@@ -36,14 +36,23 @@ test('ecmo-titration: SaO2 accepted as fraction too', () => {
   assert.equal(r.do2iMlPerKgPerMin, 6.9);
 });
 
-test('ecmo-titration: DO2i below 6 triggers banner', () => {
+// ELSO General Guidelines v1.4 (2017): circuit oxygen delivery at least normal metabolism, 6 mL/kg/min for
+// neonates, 4-5 for children, 3 for adults. The tile held everyone to the neonatal 6 and cited a "v1.5, 2022"
+// guideline that does not exist; an adult at 3.9 was told to raise the flow.
+test('ecmo-titration: the DO2i figure follows the age group; an adult at 3.9 is not told to raise flow', () => {
   // DO2 = 3 * 10 * 1.34 * 8 * 0.85 = 273.36 / 70 = 3.9.
-  const r = ecmoTitration({
-    modality: 'VV', weightKg: 70, currentSweepLpm: 4, currentFlowLpm: 3,
-    currentPaCO2: 40, hb: 8, sao2: 85,
-  });
-  assert.ok(r.do2iMlPerKgPerMin < 6);
-  assert.ok(r.banners.some((b) => b.includes('below ELSO 2022 target')));
+  const base = { modality: 'VV', weightKg: 70, currentSweepLpm: 4, currentFlowLpm: 3, currentPaCO2: 40, hb: 8, sao2: 85 };
+  const adult = ecmoTitration({ ...base, ageGroup: 'adult' });
+  assert.equal(adult.do2iMlPerKgPerMin, 3.9);
+  assert.equal(adult.elsoDo2Target, '3');
+  assert.equal(adult.suggestedFlowLpm, 3, 'above the floor, the flow stays as given; never a lower suggestion');
+  assert.ok(!adult.banners.some((b) => /increase pump flow/.test(b)));
+  const neonate = ecmoTitration({ ...base, weightKg: 3.5, currentFlowLpm: 0.15, ageGroup: 'neonate' });
+  assert.ok(neonate.banners.some((b) => /below ELSO's 6 mL\/kg\/min for this age group/.test(b)));
+  const none = ecmoTitration(base);
+  assert.equal(none.flowTitrated, false);
+  assert.equal(none.suggestedFlowLpm, 3);
+  assert.ok(none.banners.some((b) => /^Choose the age group/.test(b)));
 });
 
 test('ecmo-titration: VA modality returns perfusion banner', () => {
@@ -78,7 +87,7 @@ test('ecmo-titration: rejects unknown modality', () => {
 test('ecmo-titration: it says which half it did not titrate', () => {
   const base = {
     modality: 'VV', weightKg: 70, currentSweepLpm: 4, currentFlowLpm: 4,
-    currentPaCO2: 50, targetPaCO2: 40, hb: 10, sao2: 90,
+    currentPaCO2: 50, targetPaCO2: 40, hb: 10, sao2: 90, ageGroup: 'adult',
   };
   const full = ecmoTitration(base);
   assert.equal(full.sweepTitrated, true);

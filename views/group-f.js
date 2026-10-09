@@ -12,7 +12,7 @@ import {
   beersCheck, BEERS_PIM, BEERS_DISEASE,
 } from '../lib/medication-v4.js';
 import {
-  insulinCorrection, electrolyteReplacement, crrtDose, ecmoTitration,
+  insulinCorrection, electrolyteReplacement, crrtDose, ecmoTitration, ECMO_AGE_GROUPS,
 } from '../lib/scoring-v4.js';
 import { insulinDripRate } from '../lib/insulin-drip.js';
 import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, CALCIUM_MMOL_UNITS } from '../lib/field-units.js';
@@ -873,6 +873,7 @@ export const renderers = {
     root.appendChild(field('Target PaCO2 (mmHg; default 40)', 'ec-tgt'));
     root.appendChild(field('Hemoglobin (g/dL)', 'ec-hb'));
     root.appendChild(field('SaO2 or post-oxygenator SatO2 (% or fraction)', 'ec-sat'));
+    root.appendChild(selectField('Age group (sets the ELSO oxygen delivery figure)', 'ec-age', [{ value: '', text: '— choose —' }, ...ECMO_AGE_GROUPS]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       // spec-v1153: the library rejects a sweep below 0 and a flow at or below 0,
@@ -891,15 +892,16 @@ export const renderers = {
         targetPaCO2:     nvOrNull('ec-tgt'),
         hb:              nvOrNull('ec-hb'),
         sao2:            nvOrNull('ec-sat'),
+        ageGroup:        document.getElementById('ec-age').value,
       });
       o.appendChild(el('h2', { text: r.sweepTitrated || r.flowTitrated
         ? `Sweep ${r.suggestedSweepLpm} L/min / Flow ${r.suggestedFlowLpm} L/min`
         : `Sweep ${r.suggestedSweepLpm} L/min / Flow ${r.suggestedFlowLpm} L/min (unchanged: nothing to titrate against yet)` }));
-      if (r.do2iMlPerKgPerMin !== null) o.appendChild(el('p', { text: `DO2i ${r.do2iMlPerKgPerMin} mL/kg/min (ELSO 2022 target >= 6)` }));
+      if (r.do2iMlPerKgPerMin !== null) o.appendChild(el('p', { text: `DO2i ${r.do2iMlPerKgPerMin} mL/kg/min${r.elsoDo2Target ? ` (ELSO figure for this age group: ${r.elsoDo2Target} mL/kg/min)` : ''}` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
     });
     ['ec-w', 'ec-sw', 'ec-fl', 'ec-pco', 'ec-tgt', 'ec-hb', 'ec-sat'].forEach((id) => document.getElementById(id).addEventListener('input', run));
-    ['ec-mod', 'ec-w-unit'].forEach((id) => document.getElementById(id).addEventListener('change', run));
+    ['ec-mod', 'ec-w-unit', 'ec-age'].forEach((id) => document.getElementById(id).addEventListener('change', run));
   },
 
   // spec-v31 §2.1: Beers Criteria (AGS 2023) deprescribing checker.
