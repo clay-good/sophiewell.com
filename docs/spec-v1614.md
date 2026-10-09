@@ -184,4 +184,7 @@ refresh.
   effect on its fill date (the latest effective date on or before it) while the file's weeks reach that date, so
   fills older than the bundled week, which had no benchmark, now have one. The file is named in the stamp and the
   receipt.
+- **October 9, 2026:** `tic-rate-lookup` takes the same Addendum B, so an insurer's outpatient institutional rate for a
+  CPT or HCPCS code is set beside the national OPPS rate (`repriceOutpatient` in `lib/medicare-reprice.js` now prices
+  from it); inpatient rates stay unpriced.
 

@@ -139,7 +139,14 @@ function ticRateLookup(root) {
   const input = el('input', { id: 'trl-files', type: 'file', multiple: true, accept: '.json,.gz,application/json,application/gzip' });
   const status = el('p', { id: 'trl-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = out();
-  root.appendChild(el('label', { for: 'trl-files', text: 'Choose one or more in-network rates files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'trl-files', text: 'Choose one or more in-network rates files' })); root.appendChild(input);
+  // spec-v1614 §6: the reader's own Addendum B prices outpatient facility rates.
+  const addbNote = el('span', { id: 'trl-ref-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  let opps = null;
+  root.appendChild(el('label', { for: 'trl-addb', text: 'Optional: your copy of the CMS OPPS Addendum B (CSV), to compare outpatient facility rates' }));
+  const addbInput = el('input', { id: 'trl-addb', type: 'file', accept: '.csv,text/csv' });
+  root.appendChild(addbInput); root.appendChild(addbNote);
+  root.appendChild(status); root.appendChild(results);
   let fee = null;
   const ready = loadLocalities().then((r) => {
     fee = r;
@@ -188,11 +195,19 @@ function ticRateLookup(root) {
         });
         wrap.appendChild(button); results.appendChild(wrap);
       }
-      results.appendChild(el('p', { class: 'muted', text: 'A percent of Medicare is shown only for a professional dollar rate with a stated place of service, priced at the locality and fee schedule edition beside it, before any Medicare adjustment for multiple procedures, assistants or bilateral surgery. Facility rates are not priced here: the site does not hold the full outpatient (OPPS) table or hospital inpatient base rates.' }));
+      results.appendChild(el('p', { class: 'muted', text: 'A percent of Medicare is shown only for a professional dollar rate with a stated place of service, priced at the locality and fee schedule edition beside it, before any Medicare adjustment for multiple procedures, assistants or bilateral surgery. An outpatient facility rate is priced only from your own Addendum B, at the national OPPS rate for status indicators S, T and V, before the hospital\'s wage index; inpatient rates are not priced: the site does not hold hospital inpatient base rates.' }));
       renderReceipt(results, m);
     });
-    worker.postMessage({ type: 'lookup', files, input: { codes: val('trl-codes'), providers: val('trl-providers') }, mpfs });
+    worker.postMessage({ type: 'lookup', files, input: { codes: val('trl-codes'), providers: val('trl-providers') }, mpfs, opps });
   };
+  addbInput.addEventListener('change', async () => {
+    const f = addbInput.files && addbInput.files[0];
+    opps = null; addbNote.textContent = '';
+    if (f) {
+      try { opps = parseAddendumB(new TextDecoder('latin1').decode(await f.arrayBuffer())); addbNote.textContent = ` ${opps.edition}: ${opps.count.toLocaleString('en-US')} code${opps.count === 1 ? '' : 's'} read.`; } catch (err) { addbNote.textContent = ` ${err.message}`; }
+    }
+    run();
+  });
   input.addEventListener('change', run);
   for (const id of ['trl-codes', 'trl-providers']) root.querySelector(`#${id}`).addEventListener('change', run);
   locality.addEventListener('change', run);
@@ -394,7 +409,7 @@ export const acceptFiles = {
   // A dropped NADAC file (spec-v1614 §6) goes to its own input; a claims file to the workbench.
   'pharmacy-spread-check': (root, files, { kind } = {}) => handOff(root, kind === 'reference-nadac' ? 'psc-nadac-file' : 'psc-upload-file', files),
   'tic-file-check': acceptVia('tic-files'),
-  'tic-rate-lookup': acceptVia('trl-files'),
+  'tic-rate-lookup': (root, files, { kind } = {}) => handOff(root, kind === 'reference-opps-addb' ? 'trl-addb' : 'trl-files', files),
   // A dropped Addendum B (spec-v1614 §6) goes to its own input; a claims extract to the workbench.
   'claims-pct-medicare': (root, files, { kind } = {}) => handOff(root, kind === 'reference-opps-addb' ? 'cpm-addb' : kind === 'reference-mpfs-rvu' ? 'cpm-rvu' : 'cpm-upload-file', files),
 };

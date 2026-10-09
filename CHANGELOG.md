@@ -71,6 +71,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Find Negotiated Rates in an Insurer Price File sets an insurer's outpatient
+  facility rate beside the national OPPS rate when you add your own copy of
+  the CMS Addendum B.
 - Pharmacy Spread Check takes your own copy of a CMS NADAC file, a week or a
   whole year from data.medicaid.gov, and prices each fill at the NADAC in
   effect on its fill date, so older claims that had no benchmark now have one.

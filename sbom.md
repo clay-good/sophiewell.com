@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0f67b6bde54cbc6d`
-Generated: 2026-10-09T15:54:29.813Z
+Build ID: `371bd7551cfe2556`
+Generated: 2026-10-09T16:05:55.382Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -396,7 +396,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/figo-pas-v833.js` | 7409 | `2680f161b34ab92db39cf745ff07fd99d1e160fb926b8f118a98a1f0bb0a6059` |
 | `lib/filarial-lymphedema-stage-v1561.js` | 4499 | `26b789405e1541e0b498e99f8a9665ff2fe6c661068c9c9c8af5c579e2ff115e` |
 | `lib/file-head.js` | 388 | `e46fe9833ecc5f46c47141750e041f5e98a0342faaadda5f3bdee52fe3224bea` |
-| `lib/file-kinds.js` | 29165 | `330a27d8f4ecc50d72792b652b7272f2709c6316cf6c59bc864ede71c7fe3fac` |
+| `lib/file-kinds.js` | 29190 | `fc0c796785b12c99e811aa962e077ce23a6f98f9f6c854ac37d7e359f801060e` |
 | `lib/fisher-grade-v600.js` | 10299 | `e9155f9fdefe95d66f6fa2ec622a908cb15ddc858a3dd1d3275d4384cff93a44` |
 | `lib/fitzpatrick-v331.js` | 3746 | `aa2e8153f5e4f4821db4aeffe966810bc8068f00d0bd77789b723f8c613691b1` |
 | `lib/fluidresp-v113.js` | 8862 | `b6a605fd55a8d672d87aeb73818cd415ccd9530f683a28b93cb899bdfc21e4cd` |
@@ -690,7 +690,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/medicare-enrollment-window-v1507.js` | 7140 | `a8f803861ad2ed79384db7b6bdf81da301c543af15c5adef68998378c9272a97` |
 | `lib/medicare-ffs-pa-required.js` | 16901 | `7f37f62121b94fe9bf5533dcad83c21a694bf8a95d183de311c26eb475ce7684` |
 | `lib/medicare-penalties-v1507.js` | 11757 | `adff9d120b04bab73e32a46931587ad3a29b402c47f20242c8f5947ce38aa4a0` |
-| `lib/medicare-reprice.js` | 4867 | `19019847eafa39ed4bb948a992ec88e630b2da4737cee025936d9db675cf661f` |
+| `lib/medicare-reprice.js` | 5486 | `cc45eddf3a4d8121cc87cc3661f5179750663e0249c30b3a90c5bce56b744d34` |
 | `lib/medication-v4.js` | 18896 | `91f62c34cbf997e6009d98356bcc0506bf4a2c06a344dde66820ced5f6ee8457` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/meld3-v678.js` | 6453 | `e04e977ebe609d49b7c132b73aa4ae59fb58744362931d47b2acf4c0d1b39651` |
@@ -1155,9 +1155,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/thompson-epstein-v459.js` | 3276 | `3952607d4d19cb032c2a30aa175392e917a89ea63555efc8177e76d727b61155` |
 | `lib/thwaites-v529.js` | 9004 | `11927f9c5d35a3086c8b8ed2d6deb46fe3cc766aa3b561c7d089c42476be549a` |
 | `lib/tic-file-check.js` | 11801 | `cbbb3b6590952c3867d7b22a4efe2e993661b0d36e28b4e127edd96fa7841115` |
-| `lib/tic-rate-lookup.js` | 10945 | `ec8727aadbdf4044a96c0a0e744bf29bf53d971fb760f9ee826d5054721f3fc4` |
-| `lib/tic-rate-run.js` | 2234 | `bb1945e881ee652c250b024287dfea5d6d53df2a5865fd4abaec0107502436e2` |
-| `lib/tic-rate-worker.js` | 1272 | `2ae67fac20f4abb85c477fee3475aa03034b39038ef01982aefba71af38bd44e` |
+| `lib/tic-rate-lookup.js` | 11083 | `8053aa36dda8c78ccf86dbccec3d31560dd31f3a825a71ac2982193bae61c772` |
+| `lib/tic-rate-run.js` | 2449 | `9a99abaeab7c4bab443e2334b6a6299c7c3eff4376829ffdaff1fc214e3c2eb5` |
+| `lib/tic-rate-worker.js` | 1294 | `841dc95b20f6ba2fdb39ccb7bca6c588fe62aab0bb3509399aeba99a01cf9ecb` |
 | `lib/tic-run.js` | 1382 | `d6a95c2f9c1f55340f4740f73e6f0fd7223429a73e7d2bd1c0cd1138bab733a5` |
 | `lib/tic-schemas.js` | 11865 | `defe0099a44f1e85ce33c33751175e428ef9a0c9122ad79166a5b59cfff42df1` |
 | `lib/tic-worker.js` | 1228 | `8bc88cc6606d196854b66da8f504372c73c353263d70305452fa56b162c83c12` |
@@ -2592,7 +2592,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1601.js` | 9488 | `b5fc09413d7a4658a477d2ed5d8a5dd88f332597d9198f4a1622f4d32047b439` |
 | `views/group-v1602.js` | 17481 | `b65ebf07cf6882e90939ef374d2fef7e2e68328ffd14e0c2e3c9bf85a90fc44a` |
 | `views/group-v1603.js` | 7098 | `f74b3fd9569ae95a0df44972a0a68738c120179b054d9a76016c4881011d2cd9` |
-| `views/group-v1604.js` | 28367 | `459a8632cfc29fc4d91880c8b261ba1adb458b80574a7a09b97346e7f4fdec4c` |
+| `views/group-v1604.js` | 29568 | `94dc26948d365146362dd13c52a893b4e9f754b1b8c37b93727c696efae5bc7e` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |

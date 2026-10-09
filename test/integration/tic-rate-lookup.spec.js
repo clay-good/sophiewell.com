@@ -43,3 +43,16 @@ test('a fee schedule past its review date prices nothing and says so', async ({ 
   await page.locator('#trl-files').setInputFiles({ name: 'rates.json', mimeType: 'application/json', buffer });
   await expect(page.locator('#q-results')).toContainText('choose a Medicare locality to compare');
 });
+
+// spec-v1614 §6: with the reader's own Addendum B, the sample's institutional outpatient 99285 rate is priced.
+test('with the reader\'s Addendum B, an outpatient facility rate is priced against the OPPS rate', async ({ page }) => {
+  await page.goto('/#tic-rate-lookup');
+  await page.fill('#trl-codes', '99285');
+  const addb = 'Addendum B.-Final OPPS Payment by HCPCS Code for CY 2026,,,,,\r\nHCPCS Code,Short Descriptor,SI,APC,Relative Weight,Payment Rate\r\n99285,,V,5025,5.0,$500.00\r\n';
+  await page.locator('#trl-addb').setInputFiles({ name: 'addendum-b.csv', mimeType: 'text/csv', buffer: Buffer.from(addb, 'latin1') });
+  await expect(page.locator('#trl-ref-status')).toContainText('Final OPPS Payment by HCPCS Code for CY 2026: 1 code read.');
+  await page.locator('#trl-files').setInputFiles({ name: 'rates.json', mimeType: 'application/json', buffer });
+  const out = page.locator('#q-results');
+  await expect(out).toContainText('OPPS national rate, APC 5025, status indicator V, Final OPPS Payment by HCPCS Code for CY 2026');
+  await expect(out).toContainText('500%');
+});

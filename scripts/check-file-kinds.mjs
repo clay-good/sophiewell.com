@@ -40,6 +40,7 @@ export const FILE_INPUTS = {
   'tic-files': 'tic-file-check',
   'trl-files': 'tic-rate-lookup',
   'cpm-addb': 'claims-pct-medicare',
+  'trl-addb': 'tic-rate-lookup',
   'cpm-rvu': 'claims-pct-medicare',
   'psc-nadac-file': 'pharmacy-spread-check',
   'cer-files': 'carin-eob-reader',

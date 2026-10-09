@@ -105,3 +105,17 @@ test('a run has a receipt naming the fee schedule edition, and a CSV ending with
   assert.deepEqual(receipts.receipt.options, { codes: ['99214'], providers: [], locality: 'TEST LOCALITY' });
   assert.match(csv.trimEnd().split(/\r?\n/).at(-1), /^# Made by sophiewell\.com tic-rate-lookup, build [^,]+, data mpfs RVU26D, result [0-9a-f]{64}\./);
 });
+
+// spec-v1614 §6: an outpatient institutional rate is priced from the reader's own Addendum B; without it, or for
+// an inpatient or non-HCPCS row, it says why.
+test('outpatient institutional rates priced from the reader\'s Addendum B', async () => {
+  const { medicareFor } = await import('../../lib/tic-rate-lookup.js');
+  const { parseAddendumB } = await import('../../lib/opps-addendum-b.js');
+  const opps = parseAddendumB('Addendum B.-Final OPPS Payment by HCPCS Code for CY 2026,,,,,\nHCPCS Code,Short Descriptor,SI,APC,Relative Weight,Payment Rate\n71046,,S,5521,0.9726,$88.91\nG0463,,J2,5012,1.4879,$136.02\n');
+  const row = { code: '71046', codeType: 'CPT', arrangement: 'ffs', negotiatedType: 'negotiated', rate: 150, billingClass: 'institutional', setting: 'outpatient', serviceCodes: [], modifiers: [] };
+  assert.deepEqual(medicareFor(row, null, opps), { amount: 88.91, method: 'OPPS national rate, APC 5521, status indicator S', edition: 'Final OPPS Payment by HCPCS Code for CY 2026' });
+  assert.match(medicareFor(row, null).unpriced, /add your copy of the CMS Addendum B/);
+  assert.match(medicareFor({ ...row, code: 'G0463', codeType: 'HCPCS' }, null, opps).unpriced, /^status indicator J2/);
+  assert.match(medicareFor({ ...row, codeType: 'RC' }, null, opps).unpriced, /RC codes are not in the OPPS Addendum B/);
+  assert.match(medicareFor({ ...row, setting: 'inpatient' }, null, opps).unpriced, /IPPS/);
+});
