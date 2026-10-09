@@ -272,6 +272,9 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   and the stage refused by name when not one of the choices, an urgent or concurrent claim's received cell read as a
   date and time (it runs in hours) and refused without one, the appeal levels from the row or the form. 21 form tools
   in all.
+- **Built 2026-10-09:** `dme-rental-clock` batch, a supplier's rental roster: the item type (capped rental or oxygen,
+  refused by name otherwise), the delivery date and any break in use. The written-order check stays on the form.
+  22 form tools in all.
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-07:** `medicare-enrollment-window` and `aca-sep-window` batches, for a counselor's caseload: each

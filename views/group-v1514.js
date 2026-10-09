@@ -213,16 +213,26 @@ export const renderers = {
     dateInput(swo, 'Date the supplier received the order', 'dme-order-received', 'date');
     root.appendChild(swo);
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = PA.dmeRentalClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Status', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a rental roster from a file, each rental's item type, delivery date and any break in use. The
+    // written-order check stays on the form.
+    const upload = uploadWorkbench(root, {
+      id: 'dme-upload', fields: BATCH_TOOLS['dme-rental-clock'].fields, label: 'Check rental months for rentals from a file',
+      compute: 'dme-rental-clock', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PA.dmeRentalClock(args));
+    });
   },
   'irf-compliance-clock'(root) {
     const pairs = [['irf-admit', 'admission'], ['irf-screen', 'screening'], ['irf-update', 'screeningUpdate'], ['irf-therapy', 'firstTherapy'], ['irf-team', 'teamMeeting'], ['irf-discharge', 'discharge']];
@@ -269,5 +279,6 @@ export const renderers = {
 export const acceptFiles = {
   'moon-deadline': acceptVia('moon-upload-file'),
   'hospice-period-clock': acceptVia('hosp-upload-file'),
+  'dme-rental-clock': acceptVia('dme-upload-file'),
   'nomnc-deadline': acceptVia('nomnc-upload-file'),
 };

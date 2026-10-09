@@ -75,6 +75,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- DME Capped Rental and Oxygen Clock now reads a rental roster and gives each
+  rental's title or end-of-rental date and whether a break in use was temporary.
 - Employer Plan Claim and Appeal Clock (ERISA) now reads a claims or appeals
   list and gives each one's decision deadline.
 - Hospice Benefit Period Clock now reads a census file: each patient's

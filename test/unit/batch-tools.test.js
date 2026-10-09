@@ -320,3 +320,15 @@ test('erisa-claim-clock runs over a claims list: urgent claims need a time, kind
   assert.match(r.rows[2].detail, /urgent and concurrent claims run in hours/);
   assert.match(r.rows[3].detail, /"dental" is not one of the choices/);
 });
+
+test('dme-rental-clock runs over a rental roster: title date for capped rentals, a break in use checked', () => {
+  const r = runBatch('dme-rental-clock', [
+    { item: 'capped rental', delivered: '01/15/2026' },
+    { item: 'oxygen', delivered: '2025-06-01', lastUse: '2026-02-10', resumed: '2026-03-01' },
+    { item: 'wheelchair', delivered: '2026-01-15' },
+  ], {});
+  assert.equal(r.band, '2 rentals of 3 computed. 1 row needs corrected inputs.');
+  assert.equal(r.rows[0].label, 'Title 2027-02-15');
+  assert.ok(r.rows[1].ok);
+  assert.match(r.rows[2].detail, /"wheelchair" is not one of the choices\. Write capped rental or oxygen\./);
+});
