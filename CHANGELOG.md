@@ -80,6 +80,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medicare Fast Appeal Clock (QIO) now reads a discharge or end-of-services
+  list and gives each patient's fast appeal deadline.
 - Collection Action Timeline (501(r)) now reads a billing office's accounts
   and gives each one's earliest extraordinary collection action date.
 - Home Health Certification and OASIS Clock now reads an agency's admissions

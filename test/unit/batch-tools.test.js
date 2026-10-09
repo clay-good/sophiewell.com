@@ -384,3 +384,13 @@ test('fap-collection-clock runs over accounts: day 120, the notice, and an appli
   assert.equal(r.band, '2 accounts of 3 computed. 1 row needs corrected inputs.');
   assert.deepEqual(r.rows.map((x) => x.label), ['No ECA before 2026-06-30', 'Suspended: application pending', 'Needs corrected inputs']);
 });
+
+test('qio-discharge-appeal-clock runs over a discharge list: by the day of discharge, or noon the next day', () => {
+  const r = runBatch('qio-discharge-appeal-clock', [
+    { setting: 'hospital discharge', keyDate: '10/12/2026' },
+    { setting: 'home health', keyDate: '2026-10-12' },
+    { setting: 'ICU', keyDate: '2026-10-12' },
+  ], {});
+  assert.equal(r.band, '2 patients of 3 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Ask by 2026-10-12', 'Ask by 2026-10-13 12:00', 'Needs corrected inputs']);
+});

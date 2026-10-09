@@ -225,16 +225,25 @@ export const renderers = {
     dateInput(root, 'Other services only: QIO received the request (optional)', 'qio-requested', 'datetime-local');
     dateInput(root, 'Other services only: date services are to end (optional)', 'qio-end', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = QI.qioDischargeAppealClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a case management team's discharge or end-of-services list from a file.
+    const upload = uploadWorkbench(root, {
+      id: 'qio-upload', fields: BATCH_TOOLS['qio-discharge-appeal-clock'].fields, label: 'Check fast appeal deadlines for patients from a file',
+      compute: 'qio-discharge-appeal-clock', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(QI.qioDischargeAppealClock(args));
+    });
   },
 };
 
@@ -244,4 +253,5 @@ export const acceptFiles = {
   'ma-org-determination-clock': acceptVia('mao-upload-file'),
   'partd-coverage-clock': acceptVia('pdc-upload-file'),
   'aca-external-review-clock': acceptVia('acx-upload-file'),
+  'qio-discharge-appeal-clock': acceptVia('qio-upload-file'),
 };
