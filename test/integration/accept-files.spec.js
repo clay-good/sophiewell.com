@@ -44,6 +44,7 @@ const CASES = {
   'erisa-claim-clock': ['group-v1503', 'erisa-claims.csv', 'er-upload-file', 'csv-mapped'],
   'dme-rental-clock': ['group-v1514', 'dme-rentals.csv', 'dme-upload-file', 'csv-mapped'],
   'home-health-cert-clock': ['group-v1514', 'home-health-admissions.csv', 'hh-upload-file', 'csv-mapped'],
+  'fap-collection-clock': ['group-v1508', 'collection-accounts.csv', 'fcc-upload-file', 'csv-mapped'],
   'ma-org-determination-clock': ['group-v1503', 'ma-requests.csv', 'mao-upload-file', 'csv-mapped'],
   'partd-coverage-clock': ['group-v1503', 'partd-requests.csv', 'pdc-upload-file', 'csv-mapped'],
   'aca-external-review-clock': ['group-v1503', 'external-review-cases.csv', 'acx-upload-file', 'csv-mapped'],

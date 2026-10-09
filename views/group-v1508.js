@@ -72,16 +72,25 @@ export const renderers = {
     dateInput(root, 'Date the 30-day written notice was sent (optional)', 'fcc-notice', 'date');
     dateInput(root, 'Date of a financial assistance application (optional)', 'fcc-app', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = HF.fapCollectionClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Status', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a billing office's accounts from a file, each with its own dates.
+    const upload = uploadWorkbench(root, {
+      id: 'fcc-upload', fields: BATCH_TOOLS['fap-collection-clock'].fields, label: 'Check collection timelines for accounts from a file',
+      compute: 'fap-collection-clock', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(HF.fapCollectionClock(args));
+    });
   },
   'fap-discount'(root) {
     const pairs = [['fd-size', 'size'], ['fd-income', 'income'], ['fd-region', 'region'], ['fd-year', 'year'], ['fd-gross', 'gross'], ['fd-t1l', 'tier1Limit'], ['fd-t1d', 'tier1Discount'], ['fd-t2l', 'tier2Limit'], ['fd-t2d', 'tier2Discount'], ['fd-t3l', 'tier3Limit'], ['fd-t3d', 'tier3Discount'], ['fd-agb', 'agb']];
@@ -174,4 +183,5 @@ export const renderers = {
 export const acceptFiles = {
   'fap-discount': acceptVia('fd-upload-file'),
   'gfe-deadline': acceptVia('gfe-upload-file'),
+  'fap-collection-clock': acceptVia('fcc-upload-file'),
 };

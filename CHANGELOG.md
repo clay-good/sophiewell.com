@@ -80,6 +80,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Collection Action Timeline (501(r)) now reads a billing office's accounts
+  and gives each one's earliest extraordinary collection action date.
 - Home Health Certification and OASIS Clock now reads an agency's admissions
   and flags each face-to-face encounter outside its window.
 - External Review Clock (Marketplace and Employer Plans) now reads a case

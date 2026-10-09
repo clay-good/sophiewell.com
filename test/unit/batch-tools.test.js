@@ -374,3 +374,13 @@ test('home-health-cert-clock runs over admissions: a face-to-face outside its wi
   assert.equal(r.band, '2 patients of 2 computed.');
   assert.deepEqual(r.rows.map((x) => x.label), ['Recertify by 2026-10-30', 'Face-to-face outside window']);
 });
+
+test('fap-collection-clock runs over accounts: day 120, the notice, and an application that suspends actions', () => {
+  const r = runBatch('fap-collection-clock', [
+    { firstBill: '03/02/2026' },
+    { firstBill: '2026-01-05', notice: '2026-05-01', application: '2026-06-15' },
+    { firstBill: 'x' },
+  ], {});
+  assert.equal(r.band, '2 accounts of 3 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['No ECA before 2026-06-30', 'Suspended: application pending', 'Needs corrected inputs']);
+});
