@@ -71,6 +71,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Oral Antibiotic Dose for a Child by Weight Band (WHO AWaRe) gives the WHO
+  AWaRe antibiotic book's weight-band dose for amoxicillin,
+  amoxicillin+clavulanate, cefalexin, ciprofloxacin, cloxacillin,
+  metronidazole, sulfamethoxazole+trimethoprim and trimethoprim, from 3 kg,
+  with the mg/kg basis and the AWaRe group. See docs/spec-v1564.md.
 - Itemized Bill Check can now check code pairs: add your own copy of the CMS
   NCCI procedure-to-procedure edits (the text files or the zips CMS posts),
   and a code billed the same day as one that includes it is flagged, with the

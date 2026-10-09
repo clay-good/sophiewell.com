@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:94b2ef9d-2c10-5cb8-879d-ea8ff326f194",
+  "serialNumber": "urn:uuid:a1cfbc46-60cf-5ae8-80c5-3ee1f59c2066",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-09T13:50:01.754Z",
+    "timestamp": "2026-10-09T14:02:30.543Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2058 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2059 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ea9bd95f40d857b47958db973f6bb285bae29bf6db1ab9d7717ab5b611a603b3"
+          "content": "a006276b8718283fe1c1a407b62e8a028c80fdd48531c51d2d7fbf254c16e8ed"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133224"
+          "value": "133299"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ea927cee6e8f2cd493473427c970b2272483d62f5b907f1a2cbf18596c9def0f"
+          "content": "2a30c95413f30b57b0a3201a742ccabc8917ab95bf976239b44404562dcdc0f0"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "591308"
+          "value": "591489"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4579a5a6e1960e5d08abeda79548fd5d5061532252157b23e04d1a6ba9445afe"
+          "content": "67095483cb0bf66e234efd29bd481417680dffb1f3538bc8ffbfa43cba318464"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "257643"
+          "value": "257775"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4c26dd2f197eec520a10775e2f54aba120d43666931cc7a4a63792b5323e1ceb"
+          "content": "8f357077a1805da9ee326b3cf2106e90730c78b22a955f80531ab1f204463589"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "120910"
+          "value": "120996"
         }
       ]
     },
@@ -1816,6 +1816,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4050"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/aware-child-oral-dose-v1564.js",
+      "type": "file",
+      "name": "lib/aware-child-oral-dose-v1564.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8999dda1a225363d37ebde9615a99a2ac6ced70739095e2747c53fb4b5bcd105"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6431"
         }
       ]
     },
@@ -13964,7 +13985,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b09c8b34fbeb78c25f606cd9e2bbe2b180ff2331cc4db5057fc751027e9d30e4"
+          "content": "d65d69d06ce5c6b6331c820dd8624e5f13dda2aa63880907101d39f73fe84361"
         }
       ],
       "properties": [
@@ -13974,7 +13995,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2749771"
+          "value": "2750402"
         }
       ]
     },
@@ -27751,6 +27772,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1503"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aware-child-oral-dose-v1564.js",
+      "type": "file",
+      "name": "mcp/adapters/aware-child-oral-dose-v1564.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ae246eee583e7a931992776707fe2dc169660564df2ca1de38c58648995afaa4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "906"
         }
       ]
     },
@@ -49265,7 +49307,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "202debc5246add974c75e36d7b35f32eeb151e7fea102dbd9d1ed4789a5172e7"
+          "content": "305cbc2db46368f5ffd05477e8582469478b1dc1f00b375d8aa7df4f384c3910"
         }
       ],
       "properties": [
@@ -49275,7 +49317,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127167"
+          "value": "127308"
         }
       ]
     },
@@ -53465,7 +53507,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6775ded67e187e9597837e09bcfa4c95827e4670bdd4a1320ea197041484d7e7"
+          "content": "7029d95fafe6f06f122a416c188245c306bc9ec08cdcc2fc790b9b5d1378bea5"
         }
       ],
       "properties": [
@@ -53475,7 +53517,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4109"
+          "value": "4998"
         }
       ]
     },
@@ -84594,6 +84636,7 @@
         "urn:sophiewell:file:source:lib/auto-peep-v928.js",
         "urn:sophiewell:file:source:lib/autoimmune-encephalitis-v824.js",
         "urn:sophiewell:file:source:lib/av-fistula-v300.js",
+        "urn:sophiewell:file:source:lib/aware-child-oral-dose-v1564.js",
         "urn:sophiewell:file:source:lib/awol-v777.js",
         "urn:sophiewell:file:source:lib/baden-walker-v432.js",
         "urn:sophiewell:file:source:lib/bado-v454.js",
@@ -86767,6 +86810,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/auto-peep-v928.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/autoimmune-encephalitis-v824.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/av-fistula-v300.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/aware-child-oral-dose-v1564.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/awol-v777.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/baden-walker-v432.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bado-v454.js",
@@ -87895,7 +87939,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "94b2ef9d2c10bcb8"
+      "value": "a1cfbc4660cf0ae8"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87907,7 +87951,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3261"
+      "value": "3263"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

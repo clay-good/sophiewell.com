@@ -1,10 +1,12 @@
-// spec-v1564 §3: renderers for podoconiosis-stage (the Tekola 5-stage staging of one leg, Group J) and
+// spec-v1564 §3: renderers for aware-child-oral-dose (the WHO AWaRe oral weight bands for a child, Group F),
+// podoconiosis-stage (the Tekola 5-stage staging of one leg, Group J) and
 // foodborne-trematode-treatment -- the WHO praziquantel or triclabendazole dose for a
 // liver or lung fluke, by weight, for one person or for preventive chemotherapy (Group F); field-health program.
 
 import { el, clear } from '../lib/dom.js';
 import * as T from '../lib/foodborne-trematode-treatment-v1564.js';
 import * as P from '../lib/podoconiosis-stage-v1564.js';
+import * as AW from '../lib/aware-child-oral-dose-v1564.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -71,6 +73,21 @@ export const renderers = {
       const r = P.podoconiosisStage(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Podoconiosis', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'aware-child-oral-dose'(root) {
+    const pairs = [['awc-drug', 'drug'], ['awc-weight', 'weight']];
+    selectField(root, 'Antibiotic (by mouth)', 'awc-drug', AW.DRUGS);
+    numField(root, 'Weight, kg', 'awc-weight', 'e.g. 12', '150', 'any');
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' }); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = AW.awareChildOralDose(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO AWaRe', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

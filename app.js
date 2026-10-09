@@ -3522,6 +3522,7 @@ const UTILITIES = [
   { id: 'vitamin-a-dose-child', name: 'Vitamin A Dose for a Child: Routine, Diarrhea, Measles or Eye Signs (WHO)', group: 'N', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'deworming-dose-who', name: 'Deworming Dose and Frequency (WHO Preventive Chemotherapy)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'foodborne-trematode-treatment', name: 'Liver and Lung Fluke Treatment Dose (WHO Foodborne Trematodes)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'aware-child-oral-dose', name: 'Oral Antibiotic Dose for a Child by Weight Band (WHO AWaRe)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // spec-v1553, spec-v1558, spec-v1562, spec-v1563: field-health (spec-v1540).
   { id: 'mgso4-im-regimen', name: 'Magnesium Sulfate IM Regimen and Next-Dose Check (WHO)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'who-tb-fdc-dose', name: 'First-Line TB Tablets by Weight: Child Dispersible and Adult FDCs (WHO)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },

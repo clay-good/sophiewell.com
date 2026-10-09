@@ -464,3 +464,5 @@ experience**.
 > v1564, Liver and Lung Fluke Treatment Dose (WHO Foodborne Trematodes) — [spec-v1564](spec-v1564.md), which adds `foodborne-trematode-treatment` — is 2057.)
 
 > v1564, Podoconiosis Stage (Tekola, 5 Stages) — [spec-v1564](spec-v1564.md), which adds `podoconiosis-stage` — is 2058.)
+
+> v1564, Oral Antibiotic Dose for a Child by Weight Band (WHO AWaRe) — [spec-v1564](spec-v1564.md), which adds `aware-child-oral-dose` — is 2059.)

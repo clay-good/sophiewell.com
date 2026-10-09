@@ -827,6 +827,7 @@ const PROBES = [
   ['seasonal malaria chemoprevention sp aq dose by age', ['smc-spaq-dose']],
   ['deworming albendazole how often prevalence', ['deworming-dose-who']],
   ['praziquantel dose for liver fluke from raw fish', ['foodborne-trematode-treatment']],
+  ['amoxicillin dose for a 12 kg child weight band', ['aware-child-oral-dose']],
   ['pritchard magnesium sulfate im eclampsia', ['mgso4-im-regimen']],
   ['tb tablets by weight hrze dispersible', ['who-tb-fdc-dose']],
   ['praziquantel dose pole height tablets', ['pc-dose-pole']],
