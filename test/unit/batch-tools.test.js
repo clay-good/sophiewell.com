@@ -342,3 +342,15 @@ test('ma-org-determination-clock runs over a request worklist: each from the hou
   assert.equal(r.band, '2 requests of 3 computed. 1 row needs corrected inputs.');
   assert.deepEqual(r.rows.map((x) => x.label), ['Due 2026-03-09, or 2026-03-23 if extended', 'Due 2026-03-05 14:30, or 2026-03-19 14:30 if extended', 'Needs corrected inputs']);
 });
+
+test('partd-coverage-clock runs over a request list: hours from receipt, an exception from its statement', () => {
+  const r = runBatch('partd-coverage-clock', [
+    { requestType: 'expedited', received: '10/01/2026 9:00 AM' },
+    { requestType: 'formulary exception', received: '2026-10-01 08:00', statement: '2026-10-02 10:00' },
+    { requestType: 'step therapy', received: '2026-10-01 08:00' },
+  ], {});
+  assert.equal(r.band, '2 requests of 3 computed. 1 row needs corrected inputs.');
+  assert.ok(r.rows[0].ok && r.rows[1].ok);
+  assert.match(r.rows[0].label, /2026-10-02 09:00/);
+  assert.match(r.rows[2].detail, /"step therapy" is not one of the choices/);
+});

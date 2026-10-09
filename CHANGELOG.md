@@ -80,6 +80,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Part D Coverage Decision Clock now reads a request list and gives each
+  request's deadline, from the supporting statement for an exception.
 - Medicare Advantage Coverage Decision Clock now reads a request worklist and
   gives each request's decision deadline from the hour it was received.
 - DME Capped Rental and Oxygen Clock now reads a rental roster and gives each

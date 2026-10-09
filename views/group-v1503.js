@@ -58,16 +58,25 @@ export const renderers = {
     dateInput(root, 'Plan received the request (date and time)', 'pdc-received', 'datetime-local');
     dateInput(root, 'Exceptions only: supporting statement received (blank if none yet)', 'pdc-statement', 'datetime-local');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = PD.partdCoverageClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a pharmacy's or clinic's Part D request list from a file.
+    const upload = uploadWorkbench(root, {
+      id: 'pdc-upload', fields: BATCH_TOOLS['partd-coverage-clock'].fields, label: 'Check decision deadlines for requests from a file',
+      compute: 'partd-coverage-clock', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PD.partdCoverageClock(args));
+    });
   },
   'partd-appeal-ladder'(root) {
     const pairs = [['pda-level', 'level'], ['pda-notice', 'noticeDate'], ['pda-received', 'receivedDate'], ['pda-amount', 'amount']];
@@ -224,4 +233,5 @@ export const renderers = {
 export const acceptFiles = {
   'erisa-claim-clock': acceptVia('er-upload-file'),
   'ma-org-determination-clock': acceptVia('mao-upload-file'),
+  'partd-coverage-clock': acceptVia('pdc-upload-file'),
 };
