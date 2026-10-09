@@ -75,6 +75,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   NCCI procedure-to-procedure edits (the text files or the zips CMS posts),
   and a code billed the same day as one that includes it is flagged, with the
   request letter asking the hospital to confirm it was a separate service.
+- Itemized Bill Check also takes your own copy of the CMS outpatient hospital
+  MUE table and uses it instead of the bundled one, so a newer quarter can be
+  checked the day CMS posts it.
 - Claims Paid as a Percent of Medicare can now price hospital outpatient lines:
   add your own copy of the CMS OPPS Addendum B and lines with status
   indicator S, T or V are priced at the national OPPS rate. Packaged,

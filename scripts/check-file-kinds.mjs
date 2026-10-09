@@ -44,6 +44,7 @@ export const FILE_INPUTS = {
   'ibc-price-file': 'itemized-bill-check',
   'ibc-bill-file': 'itemized-bill-check',
   'ibc-ptp-files': 'itemized-bill-check',
+  'ibc-mue-file': 'itemized-bill-check',
   'mrr-835': 'mfp-refund-reconcile',
   'pas-file': 'pas-bundle-check',
   'aw-835-files': 'appeal-worklist',

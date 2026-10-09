@@ -7,6 +7,7 @@ import { acceptVia } from '../lib/hand-off.js';
 import { usd, OUTCOME_LABEL } from '../lib/carin-eob-reader.js';
 import * as IBC from '../lib/itemized-bill-check.js';
 import { loadMue } from '../lib/mue-load.js';
+import { readMueFile } from '../lib/mue-reference.js';
 import { MAX_FILE_BYTES, parseDelimited, matchColumns } from '../lib/upload-intake.js';
 import { handOff } from '../lib/hand-off.js';
 import { renderPrintable } from '../lib/print.js';
@@ -124,6 +125,9 @@ function itemizedBillCheck(root) {
   // spec-v1614 §6: the reader's own NCCI PTP edits (the text files or the zips CMS posts), to check code pairs.
   const ptpFiles = el('input', { id: 'ibc-ptp-files', type: 'file', multiple: true, accept: '.txt,.zip,text/plain,application/zip' });
   root.appendChild(el('label', { for: 'ibc-ptp-files', text: 'Optional: your copy of the CMS NCCI procedure-to-procedure edits (hospital outpatient), to check code pairs' })); root.appendChild(ptpFiles);
+  // spec-v1614 §6: the reader's own MUE table, used for this run instead of the bundled one.
+  const mueFile = el('input', { id: 'ibc-mue-file', type: 'file', accept: '.csv,.zip,text/csv,application/zip' });
+  root.appendChild(el('label', { for: 'ibc-mue-file', text: 'Optional: your copy of the CMS outpatient hospital MUE table, to use instead of the bundled one' })); root.appendChild(mueFile);
   root.appendChild(status); root.appendChild(results);
 
   // The request to the billing office, drafted from the last check once it flags a line (spec-v1501 §4).
@@ -168,7 +172,14 @@ function itemizedBillCheck(root) {
     if (!setting.value || !payment.value) { status.textContent = 'Choose whether the care was inpatient or outpatient, and how the bill is being paid.'; return; }
     if (!pf) { status.textContent = 'Choose the hospital\'s price file.'; return; }
     const codes = [...new Set(lines.map((l) => String(l.code ?? '').trim().toUpperCase()).filter(Boolean))];
-    const mue = setting.value === 'outpatient' ? await loadMue(codes) : null;
+    let mue = null;
+    const own = mueFile.files && mueFile.files[0];
+    if (setting.value === 'outpatient' && own) {
+      let t;
+      try { t = await readMueFile(own); } catch (err) { status.textContent = err.message; return; }
+      if (t.setting && t.setting !== 'hospital') { status.textContent = `${own.name} is the ${t.setting === 'dme' ? 'DME supplier' : 'practitioner'} MUE table; a hospital bill is checked against the facility outpatient hospital table.`; return; }
+      mue = { rows: Object.fromEntries(codes.filter((c) => t.rows[c]).map((c) => [c, t.rows[c]])), edition: `${t.edition}, your copy` };
+    } else if (setting.value === 'outpatient') mue = await loadMue(codes);
     status.textContent = `Reading ${pf.name} locally...`;
     worker = new window.Worker(billWorkerUrl, { type: 'module' });
     worker.addEventListener('error', () => { status.textContent = 'The hospital price file could not be read.'; });
@@ -191,7 +202,7 @@ function itemizedBillCheck(root) {
     const billBlob = billFile.files && billFile.files[0];
     worker.postMessage({ type: 'check', priceFile: pf, billFile: billBlob || null, lines, setting: setting.value, payment: payment.value, plan: root.querySelector('#ibc-plan').value.trim(), mue: mue && mue.rows ? mue : null, ptpFiles: [...(ptpFiles.files || [])] });
   };
-  for (const n of [priceFile, billFile, ptpFiles, setting, payment]) n.addEventListener('change', run);
+  for (const n of [priceFile, billFile, ptpFiles, mueFile, setting, payment]) n.addEventListener('change', run);
   root.querySelector('#ibc-bill').addEventListener('change', run);
   root.querySelector('#ibc-plan').addEventListener('change', run);
 }
@@ -202,5 +213,5 @@ export const renderers = { 'carin-eob-reader': carinEobReader, 'itemized-bill-ch
 export const acceptFiles = {
   'carin-eob-reader': acceptVia('cer-files'),
   // A hospital price file goes to the price input; anything else (the bill CSV) to the bill input.
-  'itemized-bill-check': (root, files, { kind } = {}) => handOff(root, /^hpt-/.test(kind || '') ? 'ibc-price-file' : kind === 'reference-ncci-ptp' ? 'ibc-ptp-files' : 'ibc-bill-file', files),
+  'itemized-bill-check': (root, files, { kind } = {}) => handOff(root, /^hpt-/.test(kind || '') ? 'ibc-price-file' : kind === 'reference-ncci-ptp' ? 'ibc-ptp-files' : kind === 'reference-mue' ? 'ibc-mue-file' : 'ibc-bill-file', files),
 };

@@ -51,3 +51,21 @@ test('with the reader\'s PTP edits, a column 2 code billed the same day is flagg
   await expect(out).toContainText('billed with 99284 on 2026-03-02: an NCCI pair edit, so 36415 is not paid separately unless a modifier');
   await expect(out).toContainText('checked against your NCCI procedure-to-procedure edits (version 32.2, revision 0)');
 });
+
+// spec-v1614 §6: the reader's own outpatient hospital MUE table is used for the run instead of the bundled one,
+// and named; the practitioner table is refused for a hospital bill.
+test('the reader\'s MUE table is used and named; the practitioner table is refused', async ({ page }) => {
+  await page.goto('/#itemized-bill-check');
+  await page.fill('#ibc-bill', '2026-03-02, 99284, 3, 1900, ED visit');
+  await page.selectOption('#ibc-setting', 'outpatient');
+  await page.selectOption('#ibc-payment', 'insured');
+  const pre = '"Copyright American Medical Association.",,,\r\n';
+  const table = (col) => `${pre}"HCPCS/\r\nCPT Code",${col} MUE Values,MUE Adjudication Indicator,MUE Rationale\r\n99284,1,2 Date of Service Edit: Policy,CMS Policy\r\n`;
+  await page.locator('#ibc-mue-file').setInputFiles({ name: 'MCR_MUE_PractitionerServices_Eff_10-01-2026.csv', mimeType: 'text/csv', buffer: Buffer.from(table('Practitioner Services')) });
+  await page.locator('#ibc-price-file').setInputFiles({ name: 'alpha.csv', mimeType: 'text/csv', buffer: Buffer.from(price) });
+  await expect(page.locator('#ibc-status')).toContainText('is the practitioner MUE table; a hospital bill is checked against the facility outpatient hospital table.');
+  await page.locator('#ibc-mue-file').setInputFiles({ name: 'MCR_MUE_OutpatientHospitalServices_Eff_10-01-2026.csv', mimeType: 'text/csv', buffer: Buffer.from(table('Outpatient Hospital Services')) });
+  const out = page.locator('#q-results');
+  await expect(out).toContainText('3 units of 99284 on 2026-03-02, above the 1 Medicare would pay (outpatient hospital MUE, MAI 2)');
+  await expect(out).toContainText('medically unlikely edits (effective 2026-10-01, your copy)');
+});

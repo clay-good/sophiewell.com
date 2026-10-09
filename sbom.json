@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:7dc29c8a-3220-5ae7-862b-85da610c088f",
+  "serialNumber": "urn:uuid:5262f887-be14-5d6b-82aa-601a0df93bd5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-09T13:01:23.015Z",
+    "timestamp": "2026-10-09T13:28:06.398Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -7601,7 +7601,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6d4d0ecc193142c71a16da3b592b90516784675e84200cf9d8442e9131b4e8f7"
+          "content": "00ddbb88688dde1cb2d75c1538729529f983fa27f8a5c6e99609974b9d5850d3"
         }
       ],
       "properties": [
@@ -7611,7 +7611,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "29082"
+          "value": "29109"
         }
       ]
     },
@@ -14689,6 +14689,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1396"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/mue-reference.js",
+      "type": "file",
+      "name": "lib/mue-reference.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d16cfe956fdcfcea94a294d58799c422a8e2fb81f4ddee57814eedcb8f2c8a22"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3658"
         }
       ]
     },
@@ -53591,7 +53612,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cc817d3271a4af1a77a24feb488572bb6507f2701411b4e935567906f825656c"
+          "content": "b65ebf07cf6882e90939ef374d2fef7e2e68328ffd14e0c2e3c9bf85a90fc44a"
         }
       ],
       "properties": [
@@ -53601,7 +53622,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "16359"
+          "value": "17481"
         }
       ]
     },
@@ -85144,6 +85165,7 @@
         "urn:sophiewell:file:source:lib/msu-disc-herniation-v1468.js",
         "urn:sophiewell:file:source:lib/mswat-v557.js",
         "urn:sophiewell:file:source:lib/mue-load.js",
+        "urn:sophiewell:file:source:lib/mue-reference.js",
         "urn:sophiewell:file:source:lib/myeloid-prognosis-v199.js",
         "urn:sophiewell:file:source:lib/myxedema-coma-v599.js",
         "urn:sophiewell:file:source:lib/nac-attr-stage-v583.js",
@@ -87829,7 +87851,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "7dc29c8a3220dae7"
+      "value": "5262f887be146d6b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87841,7 +87863,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3258"
+      "value": "3259"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
