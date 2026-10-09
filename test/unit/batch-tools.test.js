@@ -296,3 +296,14 @@ test('medicare-enrollment-window and aca-sep-window run over lists, each row\'s 
   assert.equal(s.rows[0].label, 'Choose a plan by 2026-11-14');
   assert.match(s.rows[1].detail, /"divorce" is not one of the choices\. Write loss of coverage/);
 });
+
+test('hospice-period-clock runs over a census: each election date, the date to check from the row or the form', () => {
+  const r = runBatch('hospice-period-clock', [
+    { electionDate: '01/01/2024', asOf: '10/09/2026' },
+    { electionDate: '2026-08-01' },
+    { electionDate: 'August' },
+  ], { asOf: '2026-10-09' });
+  assert.equal(r.band, '2 patients of 3 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Period 16', 'Period 1', 'Needs corrected inputs']);
+  assert.equal(r.rows[2].detail, 'Election date: "August" is not a date.');
+});

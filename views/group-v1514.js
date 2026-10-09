@@ -122,16 +122,26 @@ export const renderers = {
     dateInput(root, 'Hospice election date', 'hosp-elect', 'date');
     dateInput(root, 'Date to check (optional)', 'hosp-asof', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = PA.hospicePeriodClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Period', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a hospice census from a file, each patient's election date; the date to check is the row's
+    // own or the one entered above.
+    const upload = uploadWorkbench(root, {
+      id: 'hosp-upload', fields: BATCH_TOOLS['hospice-period-clock'].fields, label: 'Check benefit periods for patients from a file',
+      compute: 'hospice-period-clock', getInput: () => ({ asOf: val('hosp-asof') }), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({ asOf: val('hosp-asof') }); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PA.hospicePeriodClock(args));
+    });
   },
   'hospice-aggregate-cap'(root) {
     const pairs = [['hac-year', 'capYear'], ['hac-benes', 'beneficiaries'], ['hac-method', 'method'], ['hac-paid', 'payments']];
@@ -258,5 +268,6 @@ export const renderers = {
 // spec-v1501 §3: a census dropped on the home page lands in the NOMNC upload.
 export const acceptFiles = {
   'moon-deadline': acceptVia('moon-upload-file'),
+  'hospice-period-clock': acceptVia('hosp-upload-file'),
   'nomnc-deadline': acceptVia('nomnc-upload-file'),
 };

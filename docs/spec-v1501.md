@@ -264,6 +264,10 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   unambiguous.
 - **Built 2026-10-07:** `moon-deadline` batch, an observation list: the start (required) and end of each stay as a
   date and time, read as a spreadsheet writes them ("10/01/2026 2:30 PM"); a date with no time is refused.
+- **Built 2026-10-09:** `hospice-period-clock` batch, a hospice census: each patient's election date, and the date
+  to check from the row or the form. Building it found a defect in the clock itself: it stopped after six benefit
+  periods (420 days), so a patient on service longer than that got no current period; 42 CFR 418.21(a)(3) allows
+  an unlimited number of 60-day periods, and the clock now runs on as far as the date to check. 20 form tools in all.
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-07:** `medicare-enrollment-window` and `aca-sep-window` batches, for a counselor's caseload: each

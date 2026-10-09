@@ -40,6 +40,7 @@ const CASES = {
   'pa-turnaround': ['group-v63', 'pa-requests.csv', 'pat-upload-file', 'csv-mapped'],
   'gfe-deadline': ['group-v1508', 'gfe-schedule.csv', 'gfe-upload-file', 'csv-mapped'],
   'moon-deadline': ['group-v1514', 'observation-list.csv', 'moon-upload-file', 'csv-mapped'],
+  'hospice-period-clock': ['group-v1514', 'hospice-census.csv', 'hosp-upload-file', 'csv-mapped'],
   'nomnc-deadline': ['group-v1514', 'nomnc-census.csv', 'nomnc-upload-file', 'csv-mapped'],
   'cobra-clock': ['group-v1507', 'cobra-events.csv', 'cb-upload-file', 'csv-mapped'],
   'partb-late-penalty': ['group-v1507', 'partb-late.csv', 'pbl-upload-file', 'csv-mapped'],

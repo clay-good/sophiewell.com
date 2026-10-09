@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Hospice Benefit Period Clock stopped after the sixth benefit period, so a
+  patient on hospice longer than 420 days got no current period or
+  recertification window. Medicare allows an unlimited number of 60-day
+  periods (42 CFR 418.21), and the clock now runs on to the date checked.
 - Coordination of Benefits and Medicare Secondary Payer now cites what each
   method rests on: the Medicare secondary payment is 42 CFR 411.33(a) (its own
   worked example is now a test), lesser-of is the NAIC model's secondary-plan
@@ -71,6 +75,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Hospice Benefit Period Clock now reads a census file: each patient's
+  election date gives their current period and next recertification window.
 - Find Negotiated Rates in an Insurer Price File sets an insurer's outpatient
   facility rate beside the national OPPS rate when you add your own copy of
   the CMS Addendum B.

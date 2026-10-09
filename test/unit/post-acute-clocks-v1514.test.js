@@ -184,3 +184,14 @@ test('dme: an item on the face-to-face list needs the order before delivery; oth
   assert.match(dme({ ...base }).notes.at(-1), /was not answered/);
 });
 
+
+// 42 CFR 418.21(a)(3): an unlimited number of 60-day periods. The clock used to stop at six (420 days), so a
+// patient on service longer than that got no current period at all.
+test('hospice periods run past the sixth: a patient on day 1,012 is in period 16', async () => {
+  const { hospicePeriodClock } = await import('../../lib/post-acute-clocks-v1514.js');
+  const r = hospicePeriodClock({ electionDate: '2024-01-01', asOf: '2026-10-09' });
+  assert.equal(r.bandLabel, 'Period 16');
+  assert.match(r.band, /period 16, which ends October 16, 2026\. Recertify for period 17 between October 2, 2026 and October 19, 2026/);
+  assert.ok(r.notes.some((n) => /^Period 17 \(60 days\)/.test(n)));
+  assert.equal(hospicePeriodClock({ electionDate: '2026-01-01' }).notes.length, 7);
+});
