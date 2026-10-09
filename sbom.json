@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:5262f887-be14-5d6b-82aa-601a0df93bd5",
+  "serialNumber": "urn:uuid:94b2ef9d-2c10-5cb8-879d-ea8ff326f194",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-09T13:28:06.398Z",
+    "timestamp": "2026-10-09T13:50:01.754Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -5222,6 +5222,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/csv-rows.js",
+      "type": "file",
+      "name": "lib/csv-rows.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b699e28b0fc719d09535666919b22d778d6e820b2af7a439794e6ab25cb06d49"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "861"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/cts6-v773.js",
       "type": "file",
       "name": "lib/cts6-v773.js",
@@ -7601,7 +7622,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "00ddbb88688dde1cb2d75c1538729529f983fa27f8a5c6e99609974b9d5850d3"
+          "content": "f780778c94aa3f158ac594b859f062ee788a4482c1749551cd2a801c349a5839"
         }
       ],
       "properties": [
@@ -7611,7 +7632,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "29109"
+          "value": "29136"
         }
       ]
     },
@@ -14699,7 +14720,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d16cfe956fdcfcea94a294d58799c422a8e2fb81f4ddee57814eedcb8f2c8a22"
+          "content": "cff86c9778d0ac2ea5ee79b76ec89067a55d7554fd81a2312f4adf02c37a6880"
         }
       ],
       "properties": [
@@ -14709,7 +14730,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3658"
+          "value": "3119"
         }
       ]
     },
@@ -21094,6 +21115,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7705"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/rvu-reference.js",
+      "type": "file",
+      "name": "lib/rvu-reference.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "29fc964869500daf4ff60a32559f000be7684ccd755f6daf1ebff8f4dff9d41c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3921"
         }
       ]
     },
@@ -53654,7 +53696,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c83b603d7e3407bb23233012507347f0b405ec14982cc0a208157abea656e330"
+          "content": "7424276fe4a4f72532579e119d8b9f60d4f1654c70f74bcc4fef1bcb35ff67b8"
         }
       ],
       "properties": [
@@ -53664,7 +53706,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "24604"
+          "value": "26490"
         }
       ]
     },
@@ -84714,6 +84756,7 @@
         "urn:sophiewell:file:source:lib/crs-v305.js",
         "urn:sophiewell:file:source:lib/cs-dispensing-v1511.js",
         "urn:sophiewell:file:source:lib/csendes-mirizzi-v1240.js",
+        "urn:sophiewell:file:source:lib/csv-rows.js",
         "urn:sophiewell:file:source:lib/cts6-v773.js",
         "urn:sophiewell:file:source:lib/cuff-leak-v903.js",
         "urn:sophiewell:file:source:lib/cutaneous-leishmaniasis-americas-v1563.js",
@@ -85470,6 +85513,7 @@
         "urn:sophiewell:file:source:lib/russe-scaphoid-v416.js",
         "urn:sophiewell:file:source:lib/russell-taylor-subtroch-v482.js",
         "urn:sophiewell:file:source:lib/rutherford-ali-v1242.js",
+        "urn:sophiewell:file:source:lib/rvu-reference.js",
         "urn:sophiewell:file:source:lib/rx-match-worker.js",
         "urn:sophiewell:file:source:lib/sad-persons-v701.js",
         "urn:sophiewell:file:source:lib/sade-retraction-v451.js",
@@ -87851,7 +87895,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "5262f887be146d6b"
+      "value": "94b2ef9d2c10bcb8"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87863,7 +87907,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3259"
+      "value": "3261"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

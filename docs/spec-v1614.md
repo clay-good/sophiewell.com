@@ -161,7 +161,7 @@ refresh.
   packaging) and 10.8 (60% of the rate is wage-adjusted). Every other status indicator is left out with its
   reason; the wage index, the second-T reduction and claim-level packaging are named as not applied. The
   file's title row is its edition, shown on the page and named in the receipt. **Not yet:** the other reference
-  kinds (RVU, NADAC) have no consumer yet. An Addendum B dropped on the home page opens this tool with
+  kind NADAC has no consumer yet (its bundled weekly data refreshes on its own). An Addendum B dropped on the home page opens this tool with
   the file in its Addendum B input.
 - **§6, second consumer, built October 9, 2026:** `itemized-bill-check` takes the reader's own NCCI
   procedure-to-procedure edit files (`lib/ncci-ptp.js`): the text files or the zips CMS posts, streamed in the
@@ -174,4 +174,9 @@ refresh.
   (`lib/mue-reference.js`: the CMS CSV or its zip) and uses it for that run instead of the bundled `data/mue`, named
   in the notes and the receipt by the effective date in its file name ("effective 2026-10-01, your copy"). A
   practitioner or DME table is refused for a hospital bill, with the reason.
+- **§6, fourth consumer, built October 9, 2026 (this spec's test "a dropped RVU file of a newer edition is used for
+  the run and named in the receipt"):** `claims-pct-medicare` takes the reader's own relative value file
+  (`lib/rvu-reference.js`: CMS's RVU zip, from which the nonQPP PPRRVU file and the GPCIs are read, or a bare PPRRVU
+  CSV, priced with the bundled GPCIs and saying so). Its single conversion factor and RVUs replace the bundle's for
+  the run; the member name is the edition, shown in the notes and named in the receipt.
 

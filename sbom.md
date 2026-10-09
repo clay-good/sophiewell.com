@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5262f887be146d6b`
-Generated: 2026-10-09T13:28:06.398Z
+Build ID: `94b2ef9d2c10bcb8`
+Generated: 2026-10-09T13:50:01.754Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -281,6 +281,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/crs-v305.js` | 5412 | `ef4acb9a6090b2dee839747bc0cc8b5b7adecc9c3d96e89fdc601b72fa835c71` |
 | `lib/cs-dispensing-v1511.js` | 11102 | `8562c4675e0dab86beb6b6ab1bb14465a0ab251e55148dc66bc37b976a0e610c` |
 | `lib/csendes-mirizzi-v1240.js` | 6926 | `a1725f3613e479c96d32f940cc281b60fb120d1e9b5ab4c8d435e7bd2c2ad9ac` |
+| `lib/csv-rows.js` | 861 | `b699e28b0fc719d09535666919b22d778d6e820b2af7a439794e6ab25cb06d49` |
 | `lib/cts6-v773.js` | 3589 | `50ab3a3aa777a4ed12077b73c3a3a3dc707df6ff98e36a7c579aec5451333c8e` |
 | `lib/cuff-leak-v903.js` | 7823 | `0cf0d0afa2741c0d26f357fe35a05cfd0092146f4282d32e3d331b3adad04faa` |
 | `lib/cutaneous-leishmaniasis-americas-v1563.js` | 6733 | `cc404d281a4e292dc3a14e22eecd56334dca3c3a961e18633767de665a2f9301` |
@@ -394,7 +395,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/figo-pas-v833.js` | 7409 | `2680f161b34ab92db39cf745ff07fd99d1e160fb926b8f118a98a1f0bb0a6059` |
 | `lib/filarial-lymphedema-stage-v1561.js` | 4499 | `26b789405e1541e0b498e99f8a9665ff2fe6c661068c9c9c8af5c579e2ff115e` |
 | `lib/file-head.js` | 388 | `e46fe9833ecc5f46c47141750e041f5e98a0342faaadda5f3bdee52fe3224bea` |
-| `lib/file-kinds.js` | 29109 | `00ddbb88688dde1cb2d75c1538729529f983fa27f8a5c6e99609974b9d5850d3` |
+| `lib/file-kinds.js` | 29136 | `f780778c94aa3f158ac594b859f062ee788a4482c1749551cd2a801c349a5839` |
 | `lib/fisher-grade-v600.js` | 10299 | `e9155f9fdefe95d66f6fa2ec622a908cb15ddc858a3dd1d3275d4384cff93a44` |
 | `lib/fitzpatrick-v331.js` | 3746 | `aa2e8153f5e4f4821db4aeffe966810bc8068f00d0bd77789b723f8c613691b1` |
 | `lib/fluidresp-v113.js` | 8862 | `b6a605fd55a8d672d87aeb73818cd415ccd9530f683a28b93cb899bdfc21e4cd` |
@@ -732,7 +733,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/msu-disc-herniation-v1468.js` | 5974 | `906036d1d64a50fc4829686cc511bc06e14357834de7f64113a8ff860c42f4a2` |
 | `lib/mswat-v557.js` | 12726 | `42864d2132d5a9190cb5e39258683442aa5f4f0bf48f1436a0e2e84ebab34b42` |
 | `lib/mue-load.js` | 1396 | `b041386112a0e4aeaff46956efb6985c62d0ca6596340e27a9b5dbad2c22249f` |
-| `lib/mue-reference.js` | 3658 | `d16cfe956fdcfcea94a294d58799c422a8e2fb81f4ddee57814eedcb8f2c8a22` |
+| `lib/mue-reference.js` | 3119 | `cff86c9778d0ac2ea5ee79b76ec89067a55d7554fd81a2312f4adf02c37a6880` |
 | `lib/myeloid-prognosis-v199.js` | 12222 | `041504929805fb1abd2c6098c5cf666dae34858d87d6cd4d6bd552fd86b03bab` |
 | `lib/myxedema-coma-v599.js` | 15439 | `76c6237db1eafb935ba2908633c46d61b59545cb05488f892d4d599eadd17637` |
 | `lib/nac-attr-stage-v583.js` | 12479 | `3894987b3a1f91c1326058d110806a5357f3d646e4f411654984fef80332dd00` |
@@ -1037,6 +1038,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/russe-scaphoid-v416.js` | 4054 | `393fb761d9bcfb169b583f73ec59e807a0894591bc9c4726821d7597796440f2` |
 | `lib/russell-taylor-subtroch-v482.js` | 3448 | `b8995ea5fb16e414172af1b8ce1aacc45c2bdadd69441e3ed73168f28d4a52b8` |
 | `lib/rutherford-ali-v1242.js` | 7705 | `6faaa5a67ab6e8b1f60df856dc5bd91183cfbec829175a41a211bafa3d9b9b67` |
+| `lib/rvu-reference.js` | 3921 | `29fc964869500daf4ff60a32559f000be7684ccd755f6daf1ebff8f4dff9d41c` |
 | `lib/rx-match-worker.js` | 5854 | `c271dfe96eeb931faf6b0578391e28f1fc46ce8dc80d39c4fcce660e91e482ce` |
 | `lib/sad-persons-v701.js` | 3994 | `b504e0fef9dbf7fea46baabcd029a0691726700319a7d08b9233dd0b175db6f1` |
 | `lib/sade-retraction-v451.js` | 3151 | `d77221ce115d599b6c79b5d9936ecd360673ca2c7c2d16a252fd86142dceb481` |
@@ -2587,7 +2589,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1601.js` | 9488 | `b5fc09413d7a4658a477d2ed5d8a5dd88f332597d9198f4a1622f4d32047b439` |
 | `views/group-v1602.js` | 17481 | `b65ebf07cf6882e90939ef374d2fef7e2e68328ffd14e0c2e3c9bf85a90fc44a` |
 | `views/group-v1603.js` | 7098 | `f74b3fd9569ae95a0df44972a0a68738c120179b054d9a76016c4881011d2cd9` |
-| `views/group-v1604.js` | 24604 | `c83b603d7e3407bb23233012507347f0b405ec14982cc0a208157abea656e330` |
+| `views/group-v1604.js` | 26490 | `7424276fe4a4f72532579e119d8b9f60d4f1654c70f74bcc4fef1bcb35ff67b8` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |

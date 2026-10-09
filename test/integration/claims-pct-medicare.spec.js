@@ -51,3 +51,20 @@ test('with the reader\'s Addendum B, an outpatient S line is priced and a J2 lin
   await expect(out).toContainText('status indicator J2: a comprehensive APC pays for the whole claim');
   await expect(out).toContainText('priced from your Addendum B (Final OPPS Payment by HCPCS Code for CY 2026)');
 });
+
+// spec-v1614 §6 (the spec's own test): a dropped relative value file of a newer edition is used for the run and
+// named. A bare PPRRVU CSV has no GPCIs, so the bundled localities are used and the edition says so.
+test('the reader\'s relative value file prices the line at its own conversion factor and is named', async ({ page }) => {
+  await page.goto('/#claims-pct-medicare');
+  const cells = Array(32).fill('');
+  Object.assign(cells, { 0: '99214', 3: 'A', 5: '2.00', 6: '1.00', 8: '0.50', 10: '0.00', 25: '40.0000' });
+  const csv = `,,2027 National Physician Fee Schedule Relative Value File January Release\r\nHCPCS,MOD,DESCRIPTION,${Array(29).fill('X').join(',')}\r\n${cells.join(',')}\r\n`;
+  await page.locator('#cpm-rvu').setInputFiles({ name: 'PPRRVU2027_Jan_nonQPP.csv', mimeType: 'text/csv', buffer: Buffer.from(csv, 'latin1') });
+  await expect(page.locator('#cpm-rvu-status')).toContainText('PPRRVU2027_Jan_nonQPP: 1 row, conversion factor 40; GPCIs from the bundled file.');
+  await page.fill('#cpm-claims', '2027-01-15, Alpha Clinic, 99214, 11, 180, 1');
+  await page.fill('#cpm-locality', 'TX-18');
+  await page.locator('#cpm-locality').dispatchEvent('change');
+  const out = page.locator('#q-results');
+  await expect(out).toContainText('on 1 of 1 claim line (0 left out).');
+  await expect(out).toContainText('PPRRVU2027_Jan_nonQPP, your copy, with the GPCIs of the bundled');
+});

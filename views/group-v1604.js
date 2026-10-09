@@ -14,6 +14,7 @@ import { TIC_SCHEMA } from '../lib/tic-schemas.js';
 import { loadLocalities, loadCodeRows } from '../lib/mpfs-load.js';
 import { parseQuery } from '../lib/tic-rate-lookup.js';
 import { parseAddendumB } from '../lib/opps-addendum-b.js';
+import { readRvuFile } from '../lib/rvu-reference.js';
 
 const ticWorkerUrl = new URL('../lib/tic-worker.js', import.meta.url);
 const ticRateWorkerUrl = new URL('../lib/tic-rate-worker.js', import.meta.url);
@@ -289,6 +290,16 @@ export const renderers = {
     addb.appendChild(addbInput);
     addb.appendChild(addbStatus);
     root.appendChild(addb);
+    // The reader's own relative value file (the CMS RVU zip, or its PPRRVU CSV), used instead of the bundled one.
+    let rvuOwn = null;
+    const rvuStatus = el('span', { id: 'cpm-rvu-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+    const rvuWrap = el('p');
+    rvuWrap.appendChild(el('label', { for: 'cpm-rvu', text: 'Optional: your copy of the CMS physician fee schedule relative value file (the RVU zip or its PPRRVU CSV), to use instead of the bundled one' }));
+    rvuWrap.appendChild(el('br'));
+    const rvuInput = el('input', { id: 'cpm-rvu', type: 'file', accept: '.zip,.csv,application/zip,text/csv' });
+    rvuWrap.appendChild(rvuInput);
+    rvuWrap.appendChild(rvuStatus);
+    root.appendChild(rvuWrap);
     const o = out();
     let stamp = '';
     const input = () => ({ claims: val('cpm-claims'), locality: val('cpm-locality'), ...(opps ? { opps } : {}) });
@@ -316,7 +327,11 @@ export const renderers = {
       safe(o, () => note(o, 'Looking up the fee schedule for the codes in these claims...'));
       fee.then(async (f) => {
         let mpfs;
-        if (f.expired) mpfs = { status: 'expired' };
+        const gpci = rvuOwn && rvuOwn.localities.length ? rvuOwn.localities : f.localities;
+        if (rvuOwn && gpci) {
+          const rows = Object.fromEntries(codes.filter((c) => rvuOwn.rows[c]).map((c) => [c, rvuOwn.rows[c]]));
+          mpfs = { status: 'ok', rows, localities: gpci, conversionFactor: rvuOwn.conversionFactor, edition: `${rvuOwn.edition}, your copy${rvuOwn.localities.length ? '' : `, with the GPCIs of the bundled ${f.edition}`}` };
+        } else if (f.expired) mpfs = { status: 'expired' };
         else if (!f.localities) mpfs = { status: 'unavailable' };
         else { try { mpfs = { status: 'ok', rows: await loadCodeRows(codes), localities: f.localities, conversionFactor: f.conversionFactor, edition: f.edition }; } catch { mpfs = { status: 'unavailable' }; } }
         if (mine === seq) again(mpfs);
@@ -337,6 +352,14 @@ export const renderers = {
     document.getElementById('cpm-claims').addEventListener('input', () => {
       if (upload.isActive()) upload.clear('Using the claim lines entered above.');
     });
+    rvuInput.addEventListener('change', async () => {
+      const f = rvuInput.files && rvuInput.files[0];
+      rvuOwn = null; rvuStatus.textContent = '';
+      if (f) {
+        try { rvuOwn = await readRvuFile(f); rvuStatus.textContent = ` ${rvuOwn.edition}: ${rvuOwn.count.toLocaleString('en-US')} row${rvuOwn.count === 1 ? '' : 's'}, conversion factor ${rvuOwn.conversionFactor}${rvuOwn.localities.length ? `, ${rvuOwn.localities.length} localities` : '; GPCIs from the bundled file'}.`; } catch (err) { rvuStatus.textContent = ` ${err.message}`; }
+      }
+      run();
+    });
     addbInput.addEventListener('change', async () => {
       const f = addbInput.files && addbInput.files[0];
       opps = null; addbStatus.textContent = '';
@@ -356,5 +379,5 @@ export const acceptFiles = {
   'tic-file-check': acceptVia('tic-files'),
   'tic-rate-lookup': acceptVia('trl-files'),
   // A dropped Addendum B (spec-v1614 §6) goes to its own input; a claims extract to the workbench.
-  'claims-pct-medicare': (root, files, { kind } = {}) => handOff(root, kind === 'reference-opps-addb' ? 'cpm-addb' : 'cpm-upload-file', files),
+  'claims-pct-medicare': (root, files, { kind } = {}) => handOff(root, kind === 'reference-opps-addb' ? 'cpm-addb' : kind === 'reference-mpfs-rvu' ? 'cpm-rvu' : 'cpm-upload-file', files),
 };

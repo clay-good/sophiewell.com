@@ -78,6 +78,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Itemized Bill Check also takes your own copy of the CMS outpatient hospital
   MUE table and uses it instead of the bundled one, so a newer quarter can be
   checked the day CMS posts it.
+- Claims Paid as a Percent of Medicare also takes your own copy of the CMS
+  physician fee schedule relative value file (the RVU zip or its PPRRVU CSV),
+  so claims can be priced against a newer quarter than the bundled one.
 - Claims Paid as a Percent of Medicare can now price hospital outpatient lines:
   add your own copy of the CMS OPPS Addendum B and lines with status
   indicator S, T or V are priced at the national OPPS rate. Packaged,
