@@ -78,9 +78,10 @@ export const renderers = {
     }));
   },
   'aware-child-oral-dose'(root) {
-    const pairs = [['awc-drug', 'drug'], ['awc-weight', 'weight']];
-    selectField(root, 'Antibiotic (by mouth)', 'awc-drug', AW.ALL_DRUGS);
+    const pairs = [['awc-drug', 'drug'], ['awc-weight', 'weight'], ['awc-age', 'ageDays']];
+    selectField(root, 'Antibiotic and route', 'awc-drug', AW.ALL_DRUGS);
     numField(root, 'Weight, kg', 'awc-weight', 'e.g. 12', '150', 'any');
+    numField(root, 'Age in days (for IV doses that differ in newborns)', 'awc-age', 'e.g. 5', '6600', '1');
     const o = el('div', { id: 'q-results', 'aria-live': 'polite' }); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};

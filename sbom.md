@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `44c7f68d922b6a0f`
-Generated: 2026-10-09T20:17:15.282Z
+Build ID: `3362c977e2fadf3d`
+Generated: 2026-10-09T20:59:22.855Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 133294 | `fbbb22972312652b4f9b9c4ebde3bd57ccbcad3159e83ec32afdb714e82ee1a6` |
+| `index.html` | 133289 | `d879e556c5ef512e31fc5a87c00d66f057f52a8cdbe04973548b0ab7ca350f94` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 591518 | `bd4ca0b43ef486aa8d445df5d896ba58c27bb89dadffcff3dd6fb6e9c737358b` |
+| `app.js` | 591513 | `bd294ba7ee20fc67f0fbb10f64547359717a16da39417587711df56a563865b1` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 120991 | `cbb88a7330186e0759440cc741b8f3030d60e75e250f22a3a806f72562aa9aeb` |
+| `report-catalog.js` | 120986 | `c176ec4fb26ab37919ac10dd0e6f24ff759231c0322551fbd9b0074941b4c821` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -119,7 +119,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/auto-peep-v928.js` | 7813 | `e4ca4bf52c90213c8c2ced767c3fcf56be90467bcd3ff396fa6e4f07ed867a34` |
 | `lib/autoimmune-encephalitis-v824.js` | 8413 | `aea180929a1c3e96008ff75d6138ee7ee6cb7230d2e327bc6aadd89e2844eb79` |
 | `lib/av-fistula-v300.js` | 4050 | `9fa354a34bd21ab3dc8c93762767d54f281b1c4e605e00af36917098787fc1e8` |
-| `lib/aware-child-oral-dose-v1564.js` | 10761 | `8bb3f48d4550db30d7f4ee749648176dfdf6b54570d6276f9200702f3067f510` |
+| `lib/aware-child-oral-dose-v1564.js` | 19053 | `95d7d631a52f7207dbe3022d567cbc08c0046b543faa78b9707103dcfcfc7a75` |
 | `lib/awol-v777.js` | 3543 | `ad621e07b766cf100663ce54f64aad1e3a8326e594683988ebd998845186acbd` |
 | `lib/baden-walker-v432.js` | 2796 | `99e92cc137873d36e8221adc282a9cc13fdea88b4c2adf613afafc37be4aa49b` |
 | `lib/bado-v454.js` | 3443 | `d884e0f012577e7b5a56df69b9327484f9fafa3399545411a6945d7dde1659cb` |
@@ -1356,7 +1356,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/auto-peep-v928.js` | 2154 | `6f8c8a09705917ad83db21ececc4a4e55a2ed1d16c9455a1ab8685052dd6c57f` |
 | `mcp/adapters/autoimmune-encephalitis-v824.js` | 2236 | `29adfb372281b90f340d12c79f803b7fbaf8d948057d3afd3edb5fb7cb594803` |
 | `mcp/adapters/av-fistula-v300.js` | 1503 | `76d24c2dc9a76fe9c85626ccc56ec4bfcbfed4f2fd751ff7aabdec1b265117c1` |
-| `mcp/adapters/aware-child-oral-dose-v1564.js` | 1038 | `8e7cb600955919923d207a3f1c58570a27d30baa5d5748acd1d84e0500daa777` |
+| `mcp/adapters/aware-child-oral-dose-v1564.js` | 1280 | `67288ee581e778f0f04307e4b179add04bf60989989fa8c9abc8bc1ec8501528` |
 | `mcp/adapters/awol-v777.js` | 1333 | `e35021efc7dbae282d7aacedaaaf1893f202289104761ed4aea26457b8d2e124` |
 | `mcp/adapters/baden-walker-v432.js` | 1155 | `733f9a62bb77cf05f46391b084d8e87db129ef8985b1a5b633e79ad8d0c5dd7d` |
 | `mcp/adapters/bado-v454.js` | 1190 | `14954ead8d0439dd72bf476f4fd56dc89e86da4261ca0dc7cb85c7d711df1d5e` |
@@ -2581,7 +2581,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1561.js` | 17130 | `5fa19560928bdc54e8b26f10b671715331889ed24de61988f6a6b26c862da20f` |
 | `views/group-v1562.js` | 10529 | `3311c186d7a014584754b07fca0e7bce2f682204d4cd62c45b880484c2855de2` |
 | `views/group-v1563.js` | 18419 | `e3f7b29d2503e6077555c3416bead1678c11fc080ce9d36f8d7e1598fce941b5` |
-| `views/group-v1564.js` | 5002 | `46c681d6e2ff563522e67165ecb7c1e95a9279199f80d06a7ce794dd6786f5dc` |
+| `views/group-v1564.js` | 5133 | `19c21a029f0697e310f4aff3c9e95d1047e4592c0ec53b9bfa3c2bfdda4e3007` |
 | `views/group-v1570.js` | 2059 | `57632b7d4c7ea54d44b1ecaff89fd27e7489b287aa0ca9c1046c4116c7464d5a` |
 | `views/group-v1571.js` | 2312 | `5cc3b66be55b7e203deb7dc8e5db315c820a6355a9f63ed337c3f86ac59ad454` |
 | `views/group-v1572.js` | 2102 | `3551e331ca4b1e2ae863f02700c4212aba097cff170f290787a898ec2ecf1f12` |

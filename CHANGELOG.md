@@ -106,13 +106,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Pharmacy Spread Check takes your own copy of a CMS NADAC file, a week or a
   whole year from data.medicaid.gov, and prices each fill at the NADAC in
   effect on its fill date, so older claims that had no benchmark now have one.
-- Oral Antibiotic Dose for a Child by Weight (WHO AWaRe) gives the WHO AWaRe
-  antibiotic book's dose: the weight band for amoxicillin,
-  amoxicillin+clavulanate, cefalexin, ciprofloxacin, cloxacillin,
-  metronidazole, sulfamethoxazole+trimethoprim and trimethoprim, and the mg/kg
-  dose held to the daily maximum for azithromycin, cefixime, clarithromycin,
-  nitrofurantoin, penicillin V, oral vancomycin and doxycycline for cholera,
-  with the AWaRe group. See docs/spec-v1564.md.
+- Antibiotic Dose for a Child by Weight (WHO AWaRe) gives the WHO AWaRe
+  antibiotic book's dose: the weight band for eight oral antibiotics, the
+  mg/kg dose held to the daily maximum for seven more and doxycycline for
+  cholera, and the IV and IM doses of the Access and Watch antibiotics, by age
+  where a newborn's dose differs, with the AWaRe group. See docs/spec-v1564.md.
 - Itemized Bill Check can now check code pairs: add your own copy of the CMS
   NCCI procedure-to-procedure edits (the text files or the zips CMS posts),
   and a code billed the same day as one that includes it is flagged, with the
