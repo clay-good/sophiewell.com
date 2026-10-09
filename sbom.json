@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:a1cfbc46-60cf-5ae8-80c5-3ee1f59c2066",
+  "serialNumber": "urn:uuid:0f67b6bd-e54c-5c6d-88b9-7323152ec744",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-09T14:02:30.543Z",
+    "timestamp": "2026-10-09T15:54:29.813Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -7643,7 +7643,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f780778c94aa3f158ac594b859f062ee788a4482c1749551cd2a801c349a5839"
+          "content": "330a27d8f4ecc50d72792b652b7272f2709c6316cf6c59bc864ede71c7fe3fac"
         }
       ],
       "properties": [
@@ -7653,7 +7653,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "29136"
+          "value": "29165"
         }
       ]
     },
@@ -14861,6 +14861,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/nadac-reference.js",
+      "type": "file",
+      "name": "lib/nadac-reference.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0a41ccc56d1c75d8bdf4b0dc9cc168170a800603d0d2bc2c994f46c546d699ef"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4279"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/name-match.js",
       "type": "file",
       "name": "lib/name-match.js",
@@ -18437,7 +18458,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9e1a34d3db1f3211ba73ed2590335f2cd02ea63f50cb6da119bdd01f498b0f79"
+          "content": "98f806bc66ec51439e458acd9a070c3c29578f376c493fc8f4a73f3f60514add"
         }
       ],
       "properties": [
@@ -18447,7 +18468,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8951"
+          "value": "9390"
         }
       ]
     },
@@ -53738,7 +53759,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7424276fe4a4f72532579e119d8b9f60d4f1654c70f74bcc4fef1bcb35ff67b8"
+          "content": "459a8632cfc29fc4d91880c8b261ba1adb458b80574a7a09b97346e7f4fdec4c"
         }
       ],
       "properties": [
@@ -53748,7 +53769,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "26490"
+          "value": "28367"
         }
       ]
     },
@@ -85257,6 +85278,7 @@
         "urn:sophiewell:file:source:lib/nac-attr-stage-v583.js",
         "urn:sophiewell:file:source:lib/nadac-load.js",
         "urn:sophiewell:file:source:lib/nadac-margin.js",
+        "urn:sophiewell:file:source:lib/nadac-reference.js",
         "urn:sophiewell:file:source:lib/name-match.js",
         "urn:sophiewell:file:source:lib/nancy-index-v578.js",
         "urn:sophiewell:file:source:lib/narakas-obpp-v498.js",
@@ -87939,7 +87961,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "a1cfbc4660cf0ae8"
+      "value": "0f67b6bde54cbc6d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87951,7 +87973,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3263"
+      "value": "3264"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -15,6 +15,7 @@ import { loadLocalities, loadCodeRows } from '../lib/mpfs-load.js';
 import { parseQuery } from '../lib/tic-rate-lookup.js';
 import { parseAddendumB } from '../lib/opps-addendum-b.js';
 import { readRvuFile } from '../lib/rvu-reference.js';
+import { readNadacFile, nadacHistory } from '../lib/nadac-reference.js';
 
 const ticWorkerUrl = new URL('../lib/tic-worker.js', import.meta.url);
 const ticRateWorkerUrl = new URL('../lib/tic-rate-worker.js', import.meta.url);
@@ -228,6 +229,15 @@ export const renderers = {
   'pharmacy-spread-check'(root) {
     note(root, 'Claims one per line: NDC, quantity, fill date, plan paid, member paid, and the pharmacy paid if the PBM discloses it. Or load the plan\'s claims file below.');
     textareaField(root, 'Claims', 'psc-claims', '00002-1433-80, 2, 2026-09-24, 1000, 25, 950');
+    // spec-v1614 §6: the reader's own NADAC file (a week, or a year from data.medicaid.gov) replaces the bundled
+    // week, so older fills have a benchmark. It is read on the page, keeping only the claims' labelers.
+    const nadacStatus = el('span', { id: 'psc-nadac-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+    const nw = el('p');
+    nw.appendChild(el('label', { for: 'psc-nadac-file', text: 'Optional: your copy of a CMS NADAC file (CSV), to price fills from the weeks it covers instead of the current week' }));
+    nw.appendChild(el('br'));
+    const nadacInput = el('input', { id: 'psc-nadac-file', type: 'file', accept: '.csv,text/csv' });
+    nw.appendChild(nadacInput); nw.appendChild(nadacStatus);
+    root.appendChild(nw);
     const o = out();
     const input = () => ({ claims: val('psc-claims') });
     const show = (r) => safe(o, () => {
@@ -249,7 +259,12 @@ export const renderers = {
     const withNadac = (labelers, again) => {
       const mine = ++seq;
       safe(o, () => note(o, 'Looking up NADAC for the drugs in these claims...'));
-      loadNadac(labelers).then((nadac) => { if (mine === seq) again(nadac); });
+      const own = nadacInput.files && nadacInput.files[0];
+      const got = own ? readNadacFile(own, labelers).then((n) => {
+        nadacStatus.textContent = ` ${own.name}: ${n.rows.length.toLocaleString('en-US')} row${n.rows.length === 1 ? '' : 's'} for these drugs${n.asOfDate ? `, weeks ${n.firstAsOf} to ${n.asOfDate}` : ''}.`;
+        return { status: 'ok', asOfDate: n.asOfDate, edition: { id: 'nadac', sourceEdition: `${own.name}, your copy${n.asOfDate ? ` (as of ${n.asOfDate})` : ''}`, coverage: 'supplied by the reader' }, labelers: Object.fromEntries(labelers.map((l) => [l, 'listed'])), rows: [], history: nadacHistory(n.rows) };
+      }).catch((err) => { nadacStatus.textContent = ` ${err.message}`; return { status: 'unavailable' }; }) : loadNadac(labelers);
+      got.then((nadac) => { if (mine === seq) again(nadac); });
     };
     const run = () => {
       const args = input();
@@ -266,6 +281,7 @@ export const renderers = {
     document.getElementById('psc-claims').addEventListener('input', () => {
       if (upload.isActive()) upload.clear('Using the claims entered above.');
     });
+    nadacInput.addEventListener('change', () => { nadacStatus.textContent = ''; run(); });
     root.appendChild(o);
     wire(['psc-claims'], run);
   },
@@ -375,7 +391,8 @@ export const renderers = {
 
 // spec-v1623 step 3: a claims CSV goes to the tool's workbench.
 export const acceptFiles = {
-  'pharmacy-spread-check': acceptVia('psc-upload-file'),
+  // A dropped NADAC file (spec-v1614 §6) goes to its own input; a claims file to the workbench.
+  'pharmacy-spread-check': (root, files, { kind } = {}) => handOff(root, kind === 'reference-nadac' ? 'psc-nadac-file' : 'psc-upload-file', files),
   'tic-file-check': acceptVia('tic-files'),
   'tic-rate-lookup': acceptVia('trl-files'),
   // A dropped Addendum B (spec-v1614 §6) goes to its own input; a claims extract to the workbench.

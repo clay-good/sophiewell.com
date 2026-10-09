@@ -160,9 +160,8 @@ refresh.
   2026): sec. 10.1.1 (T's multiple-procedure reduction), 10.2.3 (comprehensive APCs), 10.4 (N, Q1, Q2, Q3
   packaging) and 10.8 (60% of the rate is wage-adjusted). Every other status indicator is left out with its
   reason; the wage index, the second-T reduction and claim-level packaging are named as not applied. The
-  file's title row is its edition, shown on the page and named in the receipt. **Not yet:** the other reference
-  kind NADAC has no consumer yet (its bundled weekly data refreshes on its own). An Addendum B dropped on the home page opens this tool with
-  the file in its Addendum B input.
+  file's title row is its edition, shown on the page and named in the receipt. An Addendum B dropped on the home page opens this tool with the file
+  in its Addendum B input.
 - **§6, second consumer, built October 9, 2026:** `itemized-bill-check` takes the reader's own NCCI
   procedure-to-procedure edit files (`lib/ncci-ptp.js`): the text files or the zips CMS posts, streamed in the
   Worker, keeping only pairs whose two codes are both on the bill. Pairs on the same date with an edit active that
@@ -179,4 +178,10 @@ refresh.
   (`lib/rvu-reference.js`: CMS's RVU zip, from which the nonQPP PPRRVU file and the GPCIs are read, or a bare PPRRVU
   CSV, priced with the bundled GPCIs and saying so). Its single conversion factor and RVUs replace the bundle's for
   the run; the member name is the edition, shown in the notes and named in the receipt.
+- **§6, fifth consumer, built October 9, 2026 (every reference kind now has one):** `pharmacy-spread-check` takes the
+  reader's own NADAC file (`lib/nadac-reference.js`: one week, or a year's file from data.medicaid.gov, its
+  underscore headers read too), streamed and filtered to the claims' labelers. Each claim is priced at the NADAC in
+  effect on its fill date (the latest effective date on or before it) while the file's weeks reach that date, so
+  fills older than the bundled week, which had no benchmark, now have one. The file is named in the stamp and the
+  receipt.
 

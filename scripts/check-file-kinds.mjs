@@ -41,6 +41,7 @@ export const FILE_INPUTS = {
   'trl-files': 'tic-rate-lookup',
   'cpm-addb': 'claims-pct-medicare',
   'cpm-rvu': 'claims-pct-medicare',
+  'psc-nadac-file': 'pharmacy-spread-check',
   'cer-files': 'carin-eob-reader',
   'ibc-price-file': 'itemized-bill-check',
   'ibc-bill-file': 'itemized-bill-check',

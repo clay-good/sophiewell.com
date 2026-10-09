@@ -48,3 +48,13 @@ test('a claims CSV runs in the workbench with NADAC the page loaded', async ({ p
   await expect(page.locator('.upload-file-results')).toContainText('Data: nadac fixture week.');
   await expect(page.locator('.upload-file-results')).not.toContainText('TRULICITY');
 });
+
+// spec-v1614 §6: the reader's own NADAC file gives a 2020 fill a benchmark the current week cannot.
+test('with the reader\'s NADAC year file, a 2020 fill is priced at the step in effect that day', async ({ page }) => {
+  await page.goto('/#pharmacy-spread-check');
+  const csv = 'NDC_Description,NDC,NADAC_Per_Unit,Effective_Date,Pricing_Unit,As_of_Date\r\n"METFORMIN HCL 500 MG TABLET",00093104801,0.02000,01/15/2020,EA,01/22/2020\r\n"METFORMIN HCL 500 MG TABLET",00093104801,0.01800,02/12/2020,EA,02/19/2020\r\n';
+  await page.locator('#psc-nadac-file').setInputFiles({ name: 'nadac-2020.csv', mimeType: 'text/csv', buffer: Buffer.from(csv) });
+  await page.fill('#psc-claims', '00093-1048-01, 100, 2020-02-15, 10, 0');
+  await expect(page.locator('#psc-nadac-status')).toContainText('nadac-2020.csv: 2 rows for these drugs, weeks 2020-01-22 to 2020-02-19.');
+  await expect(page.locator('#q-results')).toContainText('1 of 1 claim priced against NADAC: $10.00 paid by the plan and members where NADAC totals $1.80');
+});

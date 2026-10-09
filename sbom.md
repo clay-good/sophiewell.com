@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a1cfbc4660cf0ae8`
-Generated: 2026-10-09T14:02:30.543Z
+Build ID: `0f67b6bde54cbc6d`
+Generated: 2026-10-09T15:54:29.813Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -396,7 +396,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/figo-pas-v833.js` | 7409 | `2680f161b34ab92db39cf745ff07fd99d1e160fb926b8f118a98a1f0bb0a6059` |
 | `lib/filarial-lymphedema-stage-v1561.js` | 4499 | `26b789405e1541e0b498e99f8a9665ff2fe6c661068c9c9c8af5c579e2ff115e` |
 | `lib/file-head.js` | 388 | `e46fe9833ecc5f46c47141750e041f5e98a0342faaadda5f3bdee52fe3224bea` |
-| `lib/file-kinds.js` | 29136 | `f780778c94aa3f158ac594b859f062ee788a4482c1749551cd2a801c349a5839` |
+| `lib/file-kinds.js` | 29165 | `330a27d8f4ecc50d72792b652b7272f2709c6316cf6c59bc864ede71c7fe3fac` |
 | `lib/fisher-grade-v600.js` | 10299 | `e9155f9fdefe95d66f6fa2ec622a908cb15ddc858a3dd1d3275d4384cff93a44` |
 | `lib/fitzpatrick-v331.js` | 3746 | `aa2e8153f5e4f4821db4aeffe966810bc8068f00d0bd77789b723f8c613691b1` |
 | `lib/fluidresp-v113.js` | 8862 | `b6a605fd55a8d672d87aeb73818cd415ccd9530f683a28b93cb899bdfc21e4cd` |
@@ -740,6 +740,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nac-attr-stage-v583.js` | 12479 | `3894987b3a1f91c1326058d110806a5357f3d646e4f411654984fef80332dd00` |
 | `lib/nadac-load.js` | 1118 | `c981f8f85621a5f824080c6d12f34d85ad84dcdf57690f889626ff66b96af23c` |
 | `lib/nadac-margin.js` | 14125 | `fb61bd5a517f75e53f5ac813a19c4919da63a894ec2d2f2b50c3333e4f12c787` |
+| `lib/nadac-reference.js` | 4279 | `0a41ccc56d1c75d8bdf4b0dc9cc168170a800603d0d2bc2c994f46c546d699ef` |
 | `lib/name-match.js` | 8308 | `514247a8980fec31da9fc07c88f45a7d05ac8b8e904cc709078276293578ce54` |
 | `lib/nancy-index-v578.js` | 13756 | `9ad406fe2f9ab2f84d2d321db7de21bfa2f53ce5e00ee92b4f700952ab243c24` |
 | `lib/narakas-obpp-v498.js` | 3267 | `255a2ed868495c515b280b54793fe7787a70d2134c1abe289f32245209584b6b` |
@@ -910,7 +911,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pfiq7-v776.js` | 5161 | `e03ec8c7c563207cedc8b10a0d7c80dc9622d09aaa8f1cbe738f96cfbb9a8b90` |
 | `lib/pfirrmann-disc-v434.js` | 3552 | `cd219b3462006d853f88f88cb4d271b49d4c254eec61a0af4a228f320351d2c9` |
 | `lib/ph-hemodynamics-2022-v826.js` | 7915 | `70cf4c387cf44e6b5fbab5408c18d2da54ee1684930c7ec611c09f1c984202d8` |
-| `lib/pharmacy-spread-check.js` | 8951 | `9e1a34d3db1f3211ba73ed2590335f2cd02ea63f50cb6da119bdd01f498b0f79` |
+| `lib/pharmacy-spread-check.js` | 9390 | `98f806bc66ec51439e458acd9a070c3c29578f376c493fc8f4a73f3f60514add` |
 | `lib/phq15-v734.js` | 2898 | `7b7affd6a2e2f0c972afe4414d12842b9bba4b1d5fba515e994b15a4a5357e1f` |
 | `lib/pi-ll-mismatch-v705.js` | 3418 | `5a03417d1e1b28570245a4bea9595c9bddbb3435a738185882cbeb8413fc9100` |
 | `lib/pipkin-femoral-head-v375.js` | 3888 | `98e119fb2b90e4b5b5a4ca6e221306793ee9a7bfae003b66b99bbdfb5ac3bb95` |
@@ -2591,7 +2592,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1601.js` | 9488 | `b5fc09413d7a4658a477d2ed5d8a5dd88f332597d9198f4a1622f4d32047b439` |
 | `views/group-v1602.js` | 17481 | `b65ebf07cf6882e90939ef374d2fef7e2e68328ffd14e0c2e3c9bf85a90fc44a` |
 | `views/group-v1603.js` | 7098 | `f74b3fd9569ae95a0df44972a0a68738c120179b054d9a76016c4881011d2cd9` |
-| `views/group-v1604.js` | 26490 | `7424276fe4a4f72532579e119d8b9f60d4f1654c70f74bcc4fef1bcb35ff67b8` |
+| `views/group-v1604.js` | 28367 | `459a8632cfc29fc4d91880c8b261ba1adb458b80574a7a09b97346e7f4fdec4c` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
