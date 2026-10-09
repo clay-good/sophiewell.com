@@ -8,6 +8,9 @@ import * as AC from '../lib/aca-external-review-v1503.js';
 import * as MD from '../lib/medicaid-appeal-clock-v1503.js';
 import * as QI from '../lib/qio-discharge-appeal-v1503.js';
 import { resultRow } from '../lib/result-copy.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { BATCH_TOOLS } from '../lib/batch-tools.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -129,16 +132,26 @@ export const renderers = {
     selectField(root, 'Appeals only: levels of appeal the plan has', 'er-levels', ER.LEVELS);
     dateInput(root, 'Date the denial was received (for the 180-day appeal window)', 'er-denial', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = ER.erisaClaimClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a plan administrator's claims or appeals list from a file; the appeal levels are the row's
+    // own or the one chosen above.
+    const upload = uploadWorkbench(root, {
+      id: 'er-upload', fields: BATCH_TOOLS['erisa-claim-clock'].fields, label: 'Check deadlines for claims or appeals from a file',
+      compute: 'erisa-claim-clock', getInput: () => ({ levels: val('er-levels') }), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({ levels: val('er-levels') }); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(ER.erisaClaimClock(args));
+    });
   },
   'aca-external-review-clock'(root) {
     const pairs = [['acx-notice', 'noticeReceived'], ['acx-request', 'requestReceived'], ['acx-iro', 'iroReceived']];
@@ -196,4 +209,9 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+};
+
+// spec-v1623 step 3: a claims or appeals list goes to the ERISA clock's workbench.
+export const acceptFiles = {
+  'erisa-claim-clock': acceptVia('er-upload-file'),
 };

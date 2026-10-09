@@ -75,6 +75,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Employer Plan Claim and Appeal Clock (ERISA) now reads a claims or appeals
+  list and gives each one's decision deadline.
 - Hospice Benefit Period Clock now reads a census file: each patient's
   election date gives their current period and next recertification window.
 - Find Negotiated Rates in an Insurer Price File sets an insurer's outpatient

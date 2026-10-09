@@ -268,6 +268,10 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   to check from the row or the form. Building it found a defect in the clock itself: it stopped after six benefit
   periods (420 days), so a patient on service longer than that got no current period; 42 CFR 418.21(a)(3) allows
   an unlimited number of 60-day periods, and the clock now runs on as far as the date to check. 20 form tools in all.
+- **Built 2026-10-09:** `erisa-claim-clock` batch, a plan administrator's claims or appeals list: the kind of claim
+  and the stage refused by name when not one of the choices, an urgent or concurrent claim's received cell read as a
+  date and time (it runs in hours) and refused without one, the appeal levels from the row or the form. 21 form tools
+  in all.
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-07:** `medicare-enrollment-window` and `aca-sep-window` batches, for a counselor's caseload: each

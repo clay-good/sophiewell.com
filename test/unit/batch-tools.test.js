@@ -307,3 +307,16 @@ test('hospice-period-clock runs over a census: each election date, the date to c
   assert.deepEqual(r.rows.map((x) => x.label), ['Period 16', 'Period 1', 'Needs corrected inputs']);
   assert.equal(r.rows[2].detail, 'Election date: "August" is not a date.');
 });
+
+test('erisa-claim-clock runs over a claims list: urgent claims need a time, kinds are refused by name', () => {
+  const r = runBatch('erisa-claim-clock', [
+    { claimType: 'post service', stage: 'claim', received: '03/02/2026' },
+    { claimType: 'urgent', stage: 'claim', received: '03/02/2026 2:30 PM' },
+    { claimType: 'urgent', stage: 'claim', received: '03/02/2026' },
+    { claimType: 'dental', stage: 'claim', received: '2026-03-02' },
+  ], { levels: 'one' });
+  assert.equal(r.band, '2 claims of 4 computed. 2 rows need corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Due 2026-04-01, or 2026-04-16 if extended', 'Due 2026-03-05 14:30', 'Needs corrected inputs', 'Needs corrected inputs']);
+  assert.match(r.rows[2].detail, /urgent and concurrent claims run in hours/);
+  assert.match(r.rows[3].detail, /"dental" is not one of the choices/);
+});
