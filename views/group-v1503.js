@@ -177,16 +177,25 @@ export const renderers = {
     dateInput(root, 'Plan received the external review request (optional)', 'acx-request', 'date');
     dateInput(root, 'Independent reviewer received the request (optional)', 'acx-iro', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = AC.acaExternalReviewClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: an appeals desk's list of cases from a file.
+    const upload = uploadWorkbench(root, {
+      id: 'acx-upload', fields: BATCH_TOOLS['aca-external-review-clock'].fields, label: 'Check external review deadlines for cases from a file',
+      compute: 'aca-external-review-clock', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(AC.acaExternalReviewClock(args));
+    });
   },
   'medicaid-appeal-clock'(root) {
     const pairs = [['mdc-notice', 'noticeDate'], ['mdc-effective', 'effectiveDate'], ['mdc-received', 'appealReceived'], ['mdc-type', 'appealType'], ['mdc-extended', 'extended'], ['mdc-resolution', 'resolutionDate'], ['mdc-window', 'stateWindow']];
@@ -234,4 +243,5 @@ export const acceptFiles = {
   'erisa-claim-clock': acceptVia('er-upload-file'),
   'ma-org-determination-clock': acceptVia('mao-upload-file'),
   'partd-coverage-clock': acceptVia('pdc-upload-file'),
+  'aca-external-review-clock': acceptVia('acx-upload-file'),
 };

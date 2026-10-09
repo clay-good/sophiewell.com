@@ -80,6 +80,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- External Review Clock (Marketplace and Employer Plans) now reads a case
+  list and gives each case's external review deadlines.
 - Part D Coverage Decision Clock now reads a request list and gives each
   request's deadline, from the supporting statement for an exception.
 - Medicare Advantage Coverage Decision Clock now reads a request worklist and

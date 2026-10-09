@@ -354,3 +354,14 @@ test('partd-coverage-clock runs over a request list: hours from receipt, an exce
   assert.match(r.rows[0].label, /2026-10-02 09:00/);
   assert.match(r.rows[2].detail, /"step therapy" is not one of the choices/);
 });
+
+test('aca-external-review-clock runs over a case list: the 4-month request window from each final denial', () => {
+  const r = runBatch('aca-external-review-clock', [
+    { noticeReceived: '08/03/2026' },
+    { noticeReceived: '2026-06-01', requestReceived: '2026-07-15' },
+    { noticeReceived: 'soon' },
+  ], {});
+  assert.equal(r.band, '2 cases of 3 computed. 1 row needs corrected inputs.');
+  assert.ok(r.rows[0].ok && r.rows[1].ok);
+  assert.equal(r.rows[2].detail, 'Final internal denial received: "soon" is not a date.');
+});
