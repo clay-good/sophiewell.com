@@ -797,6 +797,7 @@ const PROBES = [
   ['leprosy disability grade ehf score', ['leprosy-disability-grade']],
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
+  ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
   ['noma cancrum oris stage', ['noma-stage']],
   ['who clinical stage of hiv', ['who-hiv-staging']],
   ['advanced hiv disease package of care', ['who-advanced-hiv']],

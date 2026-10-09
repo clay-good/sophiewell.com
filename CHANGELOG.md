@@ -71,6 +71,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Podoconiosis Stage (Tekola, 5 Stages) stages one leg by how far persistent
+  swelling reaches, where the knobs are and whether the ankle or toe joints are
+  fixed, and gives the record line with the mossy-change mark and the
+  below-knee circumference. See docs/spec-v1564.md.
 - Liver and Lung Fluke Treatment Dose (WHO Foodborne Trematodes) gives the
   praziquantel or triclabendazole dose by weight for clonorchiasis and
   opisthorchiasis, fascioliasis and paragonimiasis, for one person or for

@@ -1038,6 +1038,7 @@ import iptpSpScheduleV1552 from './adapters/iptp-sp-schedule-v1552.js';
 import smcSpaqDoseV1552 from './adapters/smc-spaq-dose-v1552.js';
 import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
+import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
 import mgso4ImRegimenV1558 from './adapters/mgso4-im-regimen-v1558.js';
 import whoTbFdcDoseV1553 from './adapters/who-tb-fdc-dose-v1553.js';
 import pcDosePoleV1562 from './adapters/pc-dose-pole-v1562.js';
@@ -2126,6 +2127,7 @@ const ADAPTER_MODULES = [
   ['smc-spaq-dose-v1552', smcSpaqDoseV1552],
   ['deworming-dose-who-v1550', dewormingDoseWhoV1550],
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
+  ['podoconiosis-stage-v1564', podoconiosisStageV1564],
   ['mgso4-im-regimen-v1558', mgso4ImRegimenV1558],
   ['who-tb-fdc-dose-v1553', whoTbFdcDoseV1553],
   ['pc-dose-pole-v1562', pcDosePoleV1562],

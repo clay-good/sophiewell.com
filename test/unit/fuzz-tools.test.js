@@ -768,6 +768,7 @@ import * as iptpSpScheduleV1552 from '../../lib/iptp-sp-schedule-v1552.js';
 import * as smcSpaqDoseV1552 from '../../lib/smc-spaq-dose-v1552.js';
 import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
+import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
 import * as mgso4ImRegimenV1558 from '../../lib/mgso4-im-regimen-v1558.js';
 import * as whoTbFdcDoseV1553 from '../../lib/who-tb-fdc-dose-v1553.js';
 import * as pcDosePoleV1562 from '../../lib/pc-dose-pole-v1562.js';
@@ -1640,6 +1641,7 @@ const MODULES = {
   'smc-spaq-dose-v1552.js': smcSpaqDoseV1552,
   'deworming-dose-who-v1550.js': dewormingDoseWhoV1550,
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
+  'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
   'mgso4-im-regimen-v1558.js': mgso4ImRegimenV1558,
   'who-tb-fdc-dose-v1553.js': whoTbFdcDoseV1553,
   'pc-dose-pole-v1562.js': pcDosePoleV1562,

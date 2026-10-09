@@ -3481,6 +3481,7 @@ const UTILITIES = [
   { id: 'leprosy-disability-grade', name: 'WHO Leprosy Disability Grade and Eye-Hand-Foot (EHF) Score', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'scabies-diagnosis-mda', name: 'Scabies: Confirmed, Clinical or Suspected, and Ivermectin Mass Treatment (WHO 2025)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'filarial-lymphedema-stage', name: 'Lymphedema Stage in Lymphatic Filariasis (Dreyer, 7 Stages)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'podoconiosis-stage', name: 'Podoconiosis Stage (Tekola, 5 Stages)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'noma-stage', name: 'Noma (Cancrum Oris) Stage and Urgency (WHO)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // field-health batch (spec-v1540).
   { id: 'helminth-intensity', name: 'Worm Infection Intensity From an Egg Count (Kato-Katz and Urine Filtration, WHO)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },

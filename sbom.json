@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b8d9a1ea-74f7-567f-8fb3-a1c1c1c6d1f4",
+  "serialNumber": "urn:uuid:4a5320a5-a177-5f0b-875c-a7a785c8ed96",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-09T11:49:30.585Z",
+    "timestamp": "2026-10-09T12:29:20.769Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2057 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2058 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "66ee3505404a4d759d9e7c2c937ffa47772517ccad72f21081c0cd686ca7e42c"
+          "content": "ea9bd95f40d857b47958db973f6bb285bae29bf6db1ab9d7717ab5b611a603b3"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133171"
+          "value": "133224"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "904ff99db93b830ca1157937a8bd5b8395250bfdda7ce1f05829b18fb89be896"
+          "content": "ea927cee6e8f2cd493473427c970b2272483d62f5b907f1a2cbf18596c9def0f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "591152"
+          "value": "591308"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "01bd63e575d83d217deedbd139b669d3c39f6bea369f0126442e24de6bec83a7"
+          "content": "4579a5a6e1960e5d08abeda79548fd5d5061532252157b23e04d1a6ba9445afe"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "257514"
+          "value": "257643"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1f8168413085b1a92c726dca4dff226ad6ce69974eb0451e414ef1e6537857be"
+          "content": "4c26dd2f197eec520a10775e2f54aba120d43666931cc7a4a63792b5323e1ceb"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "120849"
+          "value": "120910"
         }
       ]
     },
@@ -13943,7 +13943,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "16decc61cd71305e02e34e0ef06b451363b006b4f3d5b7982bb532445f919b93"
+          "content": "b09c8b34fbeb78c25f606cd9e2bbe2b180ff2331cc4db5057fc751027e9d30e4"
         }
       ],
       "properties": [
@@ -13953,7 +13953,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2748990"
+          "value": "2749771"
         }
       ]
     },
@@ -16568,7 +16568,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ec7d37d430c4e16f9c8c0aa3dca23eaf05d319aec5fa2aad74615ad31129a4f2"
+          "content": "90758b34c22e5915fef19b556b147f0d0d4412059e10c1b46d261d10ec71c62e"
         }
       ],
       "properties": [
@@ -16578,7 +16578,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4909"
+          "value": "5161"
         }
       ]
     },
@@ -18553,6 +18553,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7249"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/podoconiosis-stage-v1564.js",
+      "type": "file",
+      "name": "lib/podoconiosis-stage-v1564.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "25ff97dae3c12175d0ae216a9a16272727502e15783b5fb2b877752193766aa9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5411"
         }
       ]
     },
@@ -42728,6 +42749,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/podoconiosis-stage-v1564.js",
+      "type": "file",
+      "name": "mcp/adapters/podoconiosis-stage-v1564.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3081fdf8c8bc157ac523b6e7546c1e00114d2e869d1ee0f12e8442f03bc94a59"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1272"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/poi-diagnosis-v834.js",
       "type": "file",
       "name": "mcp/adapters/poi-diagnosis-v834.js",
@@ -49118,7 +49160,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e91b696e781dd3081bfbfe74461ac7b77640bb54ba861ddd1d61158523edf473"
+          "content": "202debc5246add974c75e36d7b35f32eeb151e7fea102dbd9d1ed4789a5172e7"
         }
       ],
       "properties": [
@@ -49128,7 +49170,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127034"
+          "value": "127167"
         }
       ]
     },
@@ -53318,7 +53360,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a3897735d7af8e0faf585fcdfd63ed110bbb82146d43aa3e5dc96e337b9fa25e"
+          "content": "6775ded67e187e9597837e09bcfa4c95827e4670bdd4a1320ea197041484d7e7"
         }
       ],
       "properties": [
@@ -53328,7 +53370,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2825"
+          "value": "4109"
         }
       ]
     },
@@ -85244,6 +85286,7 @@
         "urn:sophiewell:file:source:lib/plaque-control-record-v721.js",
         "urn:sophiewell:file:source:lib/pmp-check-required-v1393.js",
         "urn:sophiewell:file:source:lib/pneumonia-risk-v260.js",
+        "urn:sophiewell:file:source:lib/podoconiosis-stage-v1564.js",
         "urn:sophiewell:file:source:lib/poi-diagnosis-v834.js",
         "urn:sophiewell:file:source:lib/pollock-flickinger-v601.js",
         "urn:sophiewell:file:source:lib/polyp-surveillance-v882.js",
@@ -87333,6 +87376,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/plaque-control-record-v721.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pmp-check-required-v1393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pneumonia-risk-v260.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/podoconiosis-stage-v1564.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/poi-diagnosis-v834.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pollock-flickinger-v601.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/polyp-surveillance-v882.js",
@@ -87741,7 +87785,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "b8d9a1ea74f7267f"
+      "value": "4a5320a5a1773f0b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87753,7 +87797,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3254"
+      "value": "3256"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -8881,6 +8881,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/scabies-diagnosis-mda-v1561.js (spec-v1561: WHO scabies diagnosis, ivermectin and MDA thresholds — clinical disclaimer)
 - `scabies-diagnosis-mda`
 
+### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
+- `podoconiosis-stage`
+
 ### lib/filarial-lymphedema-stage-v1561.js (spec-v1561: Dreyer 7-stage lymphedema staging — clinical disclaimer)
 - `filarial-lymphedema-stage`
 

@@ -673,6 +673,7 @@ and thresholds) is a stable rule in every case (Class A).
 | leprosy-disability-grade | WHO leprosy disability grading and EHF score | WHO SEARO leprosy operational guidelines (2009) | same | 2026-10-06 | current - pp. 22-23 and 54 read October 6, 2026 |
 | scabies-diagnosis-mda | WHO scabies diagnosis, ivermectin and MDA thresholds | WHO scabies control guide (2025) | same | 2026-10-06 | current - Box 1 and Box 7 read October 6, 2026 |
 | filarial-lymphedema-stage | Dreyer 7-stage lymphedema staging | WHO lymphoedema staff manual (2001) | same | 2026-10-06 | current - pp. 9-13 read October 6, 2026 |
+| podoconiosis-stage | Tekola 5-stage podoconiosis staging | Tekola et al., Trop Med Int Health (2008) | same | 2026-10-09 | current - Annex A read October 9, 2026 |
 | noma-stage | WHO noma stages and urgency | WHO AFRO noma brochure (2017) | same | 2026-10-06 | current - pp. 7-19 read October 6, 2026 |
 | helminth-intensity | WHO helminth infection intensity classes | WHO Helminth control in school-age children (2011), Table 5.1 | same | 2026-10-06 | current - read October 6, 2026 |
 | schisto-community-treatment | WHO schistosomiasis preventive chemotherapy thresholds | WHO schistosomiasis guideline (2022) | same | 2026-10-06 | current - recommendations 1-3 read October 6, 2026 |
@@ -769,6 +770,7 @@ guideline's citation carries its version date and DOI.
 | leprosy-disability-grade | WHO leprosy disability grading and EHF score | WHO SEARO leprosy operational guidelines (2009) | same | 2026-10-06 | low | current |
 | scabies-diagnosis-mda | WHO scabies diagnosis, ivermectin and MDA thresholds | WHO scabies control guide (2025) | same | 2026-10-06 | low | current |
 | filarial-lymphedema-stage | Dreyer 7-stage lymphedema staging | WHO lymphoedema staff manual (2001) | same | 2026-10-06 | low | current |
+| podoconiosis-stage | Tekola 5-stage podoconiosis staging | Tekola et al., Trop Med Int Health (2008) | same | 2026-10-09 | low | current |
 | noma-stage | WHO noma stages and urgency | WHO AFRO noma brochure (2017) | same | 2026-10-06 | low | current |
 | helminth-intensity | WHO helminth infection intensity classes | WHO Helminth control in school-age children (2011), Table 5.1 | same | 2026-10-06 | low | current |
 | schisto-community-treatment | WHO schistosomiasis preventive chemotherapy thresholds | WHO schistosomiasis guideline (2022) | same | 2026-10-06 | low | current |

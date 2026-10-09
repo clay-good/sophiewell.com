@@ -7477,6 +7477,16 @@
     },
     {
       "phrases": [
+        "podoconiosis stage",
+        "podoconiosis staging",
+        "non-filarial elephantiasis",
+        "tekola staging"
+      ],
+      "tile": "podoconiosis-stage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "noma",
         "cancrum oris",
         "necrotizing gingivitis child",
