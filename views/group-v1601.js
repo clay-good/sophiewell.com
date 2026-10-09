@@ -98,8 +98,8 @@ export const renderers = {
       note(o, r.note);
     }));
   },
-  // spec-v1601 tool 1: the USPSTF A and B recommendations a plan must cover at $0, filtered to the person. The
-  // descriptions are the USPSTF's own words, verbatim, each linked to its page.
+  // spec-v1601 tool 1: the USPSTF A and B recommendations and the HRSA women's guidelines a plan must cover at $0,
+  // filtered to the person. The USPSTF descriptions are its own words, verbatim; the HRSA ones are summarized.
   'preventive-owed'(root) {
     numField(root, 'Age in years', 'pow-age', 'e.g. 52', '120', '0.5');
     selectField(root, 'Sex at birth', 'pow-sex', PO.SEXES);
@@ -123,11 +123,13 @@ export const renderers = {
       const ul = el('ul');
       for (const r of items) {
         const li = el('li');
-        li.appendChild(el('strong', { text: `${r.topic} (grade ${r.grade}, ${r.releasedLabel})` }));
+        const hrsa = r.source === 'HRSA';
+        li.appendChild(el('strong', { text: hrsa ? `${r.topic} (HRSA women's guideline, ${r.releasedLabel})` : `${r.topic} (grade ${r.grade}, ${r.releasedLabel})` }));
         li.appendChild(el('br'));
-        li.appendChild(document.createTextNode(r.description));
+        li.appendChild(document.createTextNode(r.note ? `${r.description} ${r.note}` : r.description));
         li.appendChild(el('br'));
-        li.appendChild(el('a', { href: r.url, target: '_blank', rel: 'noreferrer', text: 'The USPSTF recommendation' }));
+        li.appendChild(el('a', { href: r.url, target: '_blank', rel: 'noreferrer', text: hrsa ? 'The HRSA guidelines' : 'The USPSTF recommendation' }));
+        if (hrsa) { li.appendChild(document.createTextNode(' ')); li.appendChild(el('a', { href: r.noticeUrl, target: '_blank', rel: 'noreferrer', text: 'HRSA\'s notice of this version' })); }
         if (withQuestions && r.questions.length) { const q = el('ul'); for (const t of r.questions) q.appendChild(el('li', { text: t })); li.appendChild(q); }
         ul.appendChild(li);
       }
@@ -144,7 +146,7 @@ export const renderers = {
       section('Covered at $0 in network', r.owed, false);
       section('Depends on an answer', r.depends, true);
       section('Not yet required for this plan year', r.notYet, false);
-      note(o, `${data.stamp} The descriptions are the USPSTF's own words, reproduced as its terms require.`);
+      note(o, `${data.stamp} The USPSTF descriptions are its own words, reproduced as its terms require; the HRSA women's guidelines (December 2025 list, read October 9, 2026) are summarized in our words.`);
     });
     loadUspstf().then((d) => { data = d; run(); });
     wire(['pow-age', 'pow-sex', 'pow-preg', 'pow-plan', 'pow-start', ...Object.keys(PO.RISKS).map((id) => `pow-risk-${id}`)], run);

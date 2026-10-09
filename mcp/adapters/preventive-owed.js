@@ -1,5 +1,6 @@
 // spec-v1601 tool 1: MCP adapter for preventive-owed. The dom keys mirror views/group-v1601.js. The USPSTF list
-// is the data/uspstf shard the website ships, read from disk; a list past its review date is not used.
+// is the data/uspstf shard the website ships, read from disk; a list past its review date is not used. The HRSA
+// women's guidelines are a bundled constant the library reads itself.
 
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -26,7 +27,7 @@ function compute(a) {
 export default [
   {
     id: 'preventive-owed',
-    summary: 'The preventive care a private plan must cover at no cost. The USPSTF A and B recommendations a non-grandfathered plan must cover in network, filtered to the person by age, sex, pregnancy and the risk questions answered, with the one-year rule; anything conditioned on an unanswered question is listed with that question, never dropped. Descriptions are the USPSTF\'s verbatim.',
+    summary: 'The preventive care a private plan must cover at no cost. The USPSTF A and B recommendations and the HRSA women\'s preventive services guidelines a non-grandfathered plan must cover in network, filtered to the person by age, sex, pregnancy and the risk questions answered, with the one-year rule; anything conditioned on an unanswered question is listed with that question, never dropped. USPSTF descriptions are verbatim; HRSA ones are summarized.',
     compute,
     fields: [
       { dom: 'pow-plan', arg: 'plan', kind: 'enum', required: true, label: 'Coverage', values: PLANS.map((p) => p.value) },

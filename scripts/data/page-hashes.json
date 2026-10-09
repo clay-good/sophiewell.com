@@ -35,6 +35,10 @@
     "sha256": "d283724ea08f40f47c397b4104218191c510b6ae4ccea635ffe77a1f0644f218",
     "recorded": "2026-10-03"
   },
+  "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=%22Women%27s+Preventive+Services+Guidelines%22&conditions%5Bagencies%5D%5B%5D=health-resources-and-services-administration&fields%5B%5D=document_number&order=newest&per_page=5": {
+    "sha256": "b20af67eb531062b6880582fa7e3075b95fa040c3b43b407ace5fc0e3dea53d6",
+    "recorded": "2026-10-09"
+  },
   "https://www.federalregister.gov/d/2025-21879": {
     "sha256": "fc128f65ca713c60b0362b2c1b2deb9e6e84343ad4b67088eb779e92b53381fc",
     "recorded": "2026-10-03"
