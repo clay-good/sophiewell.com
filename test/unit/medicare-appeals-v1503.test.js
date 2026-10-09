@@ -65,3 +65,11 @@ test('blanks are asked for', () => {
     assert.match(r.message, ASKING);
   }
 });
+
+// 42 CFR 422.572(b): the extension adds up to 14 calendar days to the 72-hour deadline. Across the March 8, 2026
+// daylight-saving change it used to be counted as 336 elapsed hours, moving the deadline from 2:30 pm to 3:30 pm.
+test('an expedited extension keeps the 72-hour deadline\'s clock time across a daylight-saving change', async () => {
+  const { maOrgDeterminationClock } = await import('../../lib/ma-appeals-v1503.js');
+  assert.equal(maOrgDeterminationClock({ requestType: 'expedited-service', received: '2026-03-02T14:30' }).bandLabel, 'Due 2026-03-05 14:30, or 2026-03-19 14:30 if extended');
+  assert.match(maOrgDeterminationClock({ requestType: 'expedited-service', received: '2026-03-02T14:30', extended: 'yes' }).band, /March 19, 2026, 2:30 pm, 407 h after receipt/);
+});

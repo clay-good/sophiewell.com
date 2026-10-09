@@ -93,16 +93,25 @@ export const renderers = {
     dateInput(root, 'Plan received the request (date and time)', 'mao-received', 'datetime-local');
     selectField(root, 'Did the plan take the 14-day extension, with written notice?', 'mao-extended', MA.YES_NO);
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = MA.maOrgDeterminationClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a practice's Medicare Advantage request worklist from a file.
+    const upload = uploadWorkbench(root, {
+      id: 'mao-upload', fields: BATCH_TOOLS['ma-org-determination-clock'].fields, label: 'Check decision deadlines for requests from a file',
+      compute: 'ma-org-determination-clock', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(MA.maOrgDeterminationClock(args));
+    });
   },
   'ma-appeal-ladder'(root) {
     const pairs = [['maa-level', 'level'], ['maa-notice', 'noticeDate'], ['maa-received', 'receivedDate'], ['maa-amount', 'amount']];
@@ -211,7 +220,8 @@ export const renderers = {
   },
 };
 
-// spec-v1623 step 3: a claims or appeals list goes to the ERISA clock's workbench.
+// spec-v1623 step 3: a claims, appeals or request list goes to its clock's workbench.
 export const acceptFiles = {
   'erisa-claim-clock': acceptVia('er-upload-file'),
+  'ma-org-determination-clock': acceptVia('mao-upload-file'),
 };

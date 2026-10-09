@@ -275,6 +275,11 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
 - **Built 2026-10-09:** `dme-rental-clock` batch, a supplier's rental roster: the item type (capped rental or oxygen,
   refused by name otherwise), the delivery date and any break in use. The written-order check stays on the form.
   22 form tools in all.
+- **Built 2026-10-09:** `ma-org-determination-clock` batch, a practice's Medicare Advantage request worklist: the kind
+  of request (refused by name otherwise) and the date and time received. Building it found that the 14-day extension
+  of an expedited (72-hour) deadline was counted as 336 elapsed hours, so across a daylight-saving change the deadline
+  moved by an hour; 42 CFR 422.572(b) and 438.408(c) add "up to 14 calendar days", so the extension now keeps the
+  deadline's clock time, here and in `medicaid-appeal-clock`. 23 form tools in all.
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-07:** `medicare-enrollment-window` and `aca-sep-window` batches, for a counselor's caseload: each

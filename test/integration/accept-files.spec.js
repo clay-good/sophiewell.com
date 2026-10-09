@@ -43,6 +43,7 @@ const CASES = {
   'hospice-period-clock': ['group-v1514', 'hospice-census.csv', 'hosp-upload-file', 'csv-mapped'],
   'erisa-claim-clock': ['group-v1503', 'erisa-claims.csv', 'er-upload-file', 'csv-mapped'],
   'dme-rental-clock': ['group-v1514', 'dme-rentals.csv', 'dme-upload-file', 'csv-mapped'],
+  'ma-org-determination-clock': ['group-v1503', 'ma-requests.csv', 'mao-upload-file', 'csv-mapped'],
   'nomnc-deadline': ['group-v1514', 'nomnc-census.csv', 'nomnc-upload-file', 'csv-mapped'],
   'cobra-clock': ['group-v1507', 'cobra-events.csv', 'cb-upload-file', 'csv-mapped'],
   'partb-late-penalty': ['group-v1507', 'partb-late.csv', 'pbl-upload-file', 'csv-mapped'],

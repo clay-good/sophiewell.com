@@ -61,3 +61,10 @@ test('blanks that decide the answer are asked for', () => {
     assert.match(r.message, ASKING);
   }
 });
+
+// 42 CFR 438.408(c)(1): the same rule for a Medicaid managed care expedited appeal's 14-day extension.
+test('a Medicaid expedited appeal extension keeps the clock time across a daylight-saving change', async () => {
+  const { medicaidAppealClock } = await import('../../lib/medicaid-appeal-clock-v1503.js');
+  const r = medicaidAppealClock({ noticeDate: '2026-02-20', appealReceived: '2026-03-02T14:30', appealType: 'expedited', extended: 'yes' });
+  assert.ok(r.notes.some((n) => /by Thursday, March 19, 2026, 2:30 pm/.test(n)), JSON.stringify(r.notes));
+});

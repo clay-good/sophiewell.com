@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The Medicare Advantage Coverage Decision Clock and the Medicaid managed care
+  appeal clock counted the 14-day extension of an expedited 72-hour deadline as
+  336 elapsed hours, so across a daylight-saving change the extended deadline
+  moved by an hour. The rules add 14 calendar days (42 CFR 422.572(b),
+  438.408(c)), and the extended deadline now keeps its clock time.
 - Hospice Benefit Period Clock stopped after the sixth benefit period, so a
   patient on hospice longer than 420 days got no current period or
   recertification window. Medicare allows an unlimited number of 60-day
@@ -75,6 +80,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medicare Advantage Coverage Decision Clock now reads a request worklist and
+  gives each request's decision deadline from the hour it was received.
 - DME Capped Rental and Oxygen Clock now reads a rental roster and gives each
   rental's title or end-of-rental date and whether a break in use was temporary.
 - Employer Plan Claim and Appeal Clock (ERISA) now reads a claims or appeals

@@ -332,3 +332,13 @@ test('dme-rental-clock runs over a rental roster: title date for capped rentals,
   assert.ok(r.rows[1].ok);
   assert.match(r.rows[2].detail, /"wheelchair" is not one of the choices\. Write capped rental or oxygen\./);
 });
+
+test('ma-org-determination-clock runs over a request worklist: each from the hour received', () => {
+  const r = runBatch('ma-org-determination-clock', [
+    { requestType: 'standard prior authorization', received: '03/02/2026 9:00 AM' },
+    { requestType: 'expedited', received: '2026-03-02 14:30' },
+    { requestType: 'expedited', received: '2026-03-02' },
+  ], {});
+  assert.equal(r.band, '2 requests of 3 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Due 2026-03-09, or 2026-03-23 if extended', 'Due 2026-03-05 14:30, or 2026-03-19 14:30 if extended', 'Needs corrected inputs']);
+});
