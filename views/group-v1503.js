@@ -207,16 +207,25 @@ export const renderers = {
     dateInput(root, 'Date of the plan\'s notice of resolution (optional)', 'mdc-resolution', 'date');
     numField(root, 'State fair hearing window in days (90 to 120)', 'mdc-window', 'e.g. 120', '120', '1');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = MD.medicaidAppealClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: an appeals list from a file; the state's fair hearing window is the row's own or the one above.
+    const upload = uploadWorkbench(root, {
+      id: 'mdc-upload', fields: BATCH_TOOLS['medicaid-appeal-clock'].fields, label: 'Check appeal deadlines for members from a file',
+      compute: 'medicaid-appeal-clock', getInput: () => ({ stateWindow: val('mdc-window') }), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({ stateWindow: val('mdc-window') }); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(MD.medicaidAppealClock(args));
+    });
   },
   'qio-discharge-appeal-clock'(root) {
     const pairs = [['qio-setting', 'setting'], ['qio-key', 'keyDate'], ['qio-requested', 'requested'], ['qio-end', 'servicesEnd']];
@@ -254,4 +263,5 @@ export const acceptFiles = {
   'partd-coverage-clock': acceptVia('pdc-upload-file'),
   'aca-external-review-clock': acceptVia('acx-upload-file'),
   'qio-discharge-appeal-clock': acceptVia('qio-upload-file'),
+  'medicaid-appeal-clock': acceptVia('mdc-upload-file'),
 };

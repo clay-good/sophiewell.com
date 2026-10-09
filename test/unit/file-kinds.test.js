@@ -55,6 +55,7 @@ const EXPECT = {
   'gfe-schedule.csv': ['csv-mapped', 'likely', 'Good Faith Estimate Deadline (schedule file)'],
   'observation-list.csv': ['csv-mapped', 'likely', 'Observation Notice (MOON) Deadline (patients file)'],
   'hospice-census.csv': ['csv-mapped', 'likely', 'Hospice Benefit Period Clock (census file)'],
+  'medicaid-appeals.csv': ['csv-mapped', 'likely', 'Medicaid Managed Care Appeal Clock (appeals file)'],
   'discharge-appeals.csv': ['csv-mapped', 'likely', 'Medicare Fast Appeal Clock (QIO) (patients file)'],
   'external-review-cases.csv': ['csv-mapped', 'likely', 'External Review Clock (Marketplace and Employer Plans) (cases file)'],
   'partd-requests.csv': ['csv-mapped', 'likely', 'Part D Coverage Decision Clock (requests file)'],

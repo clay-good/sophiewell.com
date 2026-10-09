@@ -80,6 +80,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medicaid Managed Care Appeal Clock now reads an appeals list: each member's
+  filing deadline, or the plan's resolution deadline once the appeal is filed.
 - Medicare Fast Appeal Clock (QIO) now reads a discharge or end-of-services
   list and gives each patient's fast appeal deadline.
 - Collection Action Timeline (501(r)) now reads a billing office's accounts

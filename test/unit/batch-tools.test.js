@@ -394,3 +394,14 @@ test('qio-discharge-appeal-clock runs over a discharge list: by the day of disch
   assert.equal(r.band, '2 patients of 3 computed. 1 row needs corrected inputs.');
   assert.deepEqual(r.rows.map((x) => x.label), ['Ask by 2026-10-12', 'Ask by 2026-10-13 12:00', 'Needs corrected inputs']);
 });
+
+test('medicaid-appeal-clock runs over an appeals list: a filed appeal leads with the plan\'s resolution deadline', () => {
+  const r = runBatch('medicaid-appeal-clock', [
+    { noticeDate: '09/01/2026' },
+    { noticeDate: '2026-09-01', appealReceived: '2026-09-20', appealType: 'standard' },
+    { noticeDate: '2026-09-01', appealReceived: '2026-09-20 10:00', appealType: 'expedited', extended: 'yes' },
+    { noticeDate: '2026-09-01', appealReceived: '2026-09-20', appealType: 'expedited' },
+  ], { stateWindow: '120' });
+  assert.equal(r.band, '3 appeals of 4 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Appeal by 2026-10-31', 'Resolve by October 20, 2026', 'Resolve by Wednesday, October 7, 2026, 10:00 am', 'Needs corrected inputs']);
+});

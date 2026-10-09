@@ -294,6 +294,11 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
 - **Built 2026-10-09:** `qio-discharge-appeal-clock` batch, a case management team's list: what is ending (refused by
   name otherwise), the planned discharge or notice date, and the QIO request time and services end where known.
   28 form tools in all.
+- **Built 2026-10-09:** `medicaid-appeal-clock` batch, a plan's or advocate's appeals list: each adverse benefit
+  determination notice date, with the appeal's receipt (a date and time when expedited), type, extension and
+  resolution where known, and the state's fair hearing window from the row or the form. A row whose appeal is
+  already filed leads with the plan's resolution deadline rather than the member's filing deadline. 29 form tools in
+  all.
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-07:** `medicare-enrollment-window` and `aca-sep-window` batches, for a counselor's caseload: each
