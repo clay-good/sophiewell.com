@@ -79,7 +79,7 @@ export const renderers = {
   },
   'aware-child-oral-dose'(root) {
     const pairs = [['awc-drug', 'drug'], ['awc-weight', 'weight']];
-    selectField(root, 'Antibiotic (by mouth)', 'awc-drug', AW.DRUGS);
+    selectField(root, 'Antibiotic (by mouth)', 'awc-drug', AW.ALL_DRUGS);
     numField(root, 'Weight, kg', 'awc-weight', 'e.g. 12', '150', 'any');
     const o = el('div', { id: 'q-results', 'aria-live': 'polite' }); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {

@@ -34,3 +34,23 @@ test('under 3 kg is outside the table; a missing weight or antibiotic asks', () 
   assert.equal(d({ drug: 'amoxicillin' }).valid, false);
   assert.equal(d({ weight: '10' }).valid, false);
 });
+
+test('mg/kg rows: computed from the weight, a range where the table gives one, held to the daily maximum', async () => {
+  const { ALL_DRUGS } = await import('../../lib/aware-child-oral-dose-v1564.js');
+  assert.equal(ALL_DRUGS.length, 16);
+  assert.equal(d({ drug: 'azithromycin-10', weight: '12' }).band, 'Azithromycin, lower dose (10 mg/kg): 120 mg by mouth once a day (12 kg).');
+  const capped = d({ drug: 'azithromycin-20', weight: '30' });
+  assert.equal(capped.bandLabel, '500 mg');
+  assert.match(capped.notes[0], /^Held to the table's daily maximum of 500 mg/);
+  assert.equal(d({ drug: 'clarithromycin', weight: '80' }).bandLabel, '500 mg', '1 g a day in two doses');
+  assert.equal(d({ drug: 'nitrofurantoin', weight: '4' }).bandLabel, '8 mg');
+  assert.equal(d({ drug: 'phenoxymethylpenicillin', weight: '12' }).bandLabel, '120 to 180 mg');
+  assert.equal(d({ drug: 'vancomycin-oral', weight: '20' }).bandLabel, '100 to 200 mg');
+  assert.match(d({ drug: 'cefixime', weight: '15' }).notes[0], /the daily maximum is the adult dose/);
+});
+
+test('doxycycline for cholera: by mg/kg under 45 kg, 300 mg over, and exactly 45 kg is named as a gap', () => {
+  assert.equal(d({ drug: 'doxycycline-cholera', weight: '20' }).bandLabel, '40 to 80 mg once');
+  assert.equal(d({ drug: 'doxycycline-cholera', weight: '50' }).bandLabel, '300 mg once');
+  assert.equal(d({ drug: 'doxycycline-cholera', weight: '45' }).bandLabel, 'Between the lines');
+});
