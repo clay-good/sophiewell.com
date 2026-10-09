@@ -42,6 +42,17 @@ for (const [file, route, rows] of [['households.csv', 'fpl-percent', 'households
   });
 }
 
+// spec-v1614 §6: a reference table now has a consumer. A chosen Addendum B opens claims-pct-medicare with the file
+// in its own Addendum B input, not in the claims workbench.
+test('a chosen OPPS Addendum B opens the claims tool with the file in its Addendum B input', async ({ page }) => {
+  await page.goto('/');
+  const chooser = page.waitForEvent('filechooser');
+  await page.locator('#hero-files-button').click();
+  await (await chooser).setFiles(fixture('reference-addb.csv'));
+  await expect(page).toHaveURL(/#claims-pct-medicare(&|$)/);
+  await expect(page.locator('#cpm-ref-status')).toContainText('Final OPPS Payment by HCPCS Code for CY 2026: 1 code read.');
+});
+
 test('a file dropped on the home page opens its tool', async ({ page, browserName }) => {
   test.skip(browserName === 'webkit', 'WebKit drops the dataTransfer of a script-made DragEvent; the choose path covers WebKit');
   await page.goto('/');

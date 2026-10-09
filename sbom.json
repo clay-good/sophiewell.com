@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:4a5320a5-a177-5f0b-875c-a7a785c8ed96",
+  "serialNumber": "urn:uuid:bc349717-7c14-5353-847a-72b4274a2c34",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-09T12:29:20.769Z",
+    "timestamp": "2026-10-09T12:46:51.243Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -4325,7 +4325,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "27afd7a3c41a6c7ada6fec958a4902e517d55e4157fc1757e05a77120e40ec88"
+          "content": "d132e5a75cbac3692d881381345dbf48384b26c8d8c48b70f02135675fdbae65"
         }
       ],
       "properties": [
@@ -4335,7 +4335,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8855"
+          "value": "10441"
         }
       ]
     },
@@ -7601,7 +7601,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "01c1b29f02fa5f4d42848ae29767e08065bd5c44c80fff9e4fb5771018499329"
+          "content": "1b09f59c7020337129b3d6f607dea26ef2383f0b29356a4fc32ced3c659a8eb6"
         }
       ],
       "properties": [
@@ -7611,7 +7611,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "29028"
+          "value": "29055"
         }
       ]
     },
@@ -16646,6 +16646,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/opps-addendum-b.js",
+      "type": "file",
+      "name": "lib/opps-addendum-b.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "687323f62e3df7e73b23cd7a837b584e50edb9104d88052908a3dd9047b64621"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5099"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ops-v63.js",
       "type": "file",
       "name": "lib/ops-v63.js",
@@ -24443,7 +24464,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b3bd04c9d419917b09ddb2547741424eb23f4584a7a15cdcc20069d7246206e4"
+          "content": "e529634905347376cb020a321aeeffc34ee8cf4a1929ad6011eae668abf979ac"
         }
       ],
       "properties": [
@@ -24453,7 +24474,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "13343"
+          "value": "13567"
         }
       ]
     },
@@ -53591,7 +53612,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "60ab59e78a8575057a34586cc2b5c43c4c7c17c1880e34c1c4fe2ebf7b0eaabb"
+          "content": "c83b603d7e3407bb23233012507347f0b405ec14982cc0a208157abea656e330"
         }
       ],
       "properties": [
@@ -53601,7 +53622,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "23127"
+          "value": "24604"
         }
       ]
     },
@@ -85195,6 +85216,7 @@
         "urn:sophiewell:file:source:lib/ophtho-v164.js",
         "urn:sophiewell:file:source:lib/ophtho-v236.js",
         "urn:sophiewell:file:source:lib/opioid-risk-tool-v709.js",
+        "urn:sophiewell:file:source:lib/opps-addendum-b.js",
         "urn:sophiewell:file:source:lib/ops-v63.js",
         "urn:sophiewell:file:source:lib/ortho-v144.js",
         "urn:sophiewell:file:source:lib/ortho-v145.js",
@@ -87785,7 +87807,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "4a5320a5a1773f0b"
+      "value": "bc3497177c146353"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87797,7 +87819,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3256"
+      "value": "3257"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

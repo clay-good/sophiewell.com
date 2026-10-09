@@ -71,6 +71,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Claims Paid as a Percent of Medicare can now price hospital outpatient lines:
+  add your own copy of the CMS OPPS Addendum B and lines with status
+  indicator S, T or V are priced at the national OPPS rate. Packaged,
+  comprehensive and other lines say why they are left out.
 - Podoconiosis Stage (Tekola, 5 Stages) stages one leg by how far persistent
   swelling reaches, where the knobs are and whether the ankle or toe joints are
   fixed, and gives the record line with the mossy-change mark and the

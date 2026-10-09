@@ -150,3 +150,17 @@ refresh.
 - The page stamp shows edition and checked date; no view contains the string "fetched"
   for a `sample` dataset.
 - A dropped RVU file of a newer edition is used for the run and named in the receipt.
+
+## Build status
+
+- **§6, first consumer, built October 9, 2026:** `claims-pct-medicare` takes the reader's own CMS OPPS Addendum B
+  (`lib/opps-addendum-b.js`; the site does not bundle it, since CMS serves it behind the AMA click-through,
+  [spec-v1621](spec-v1621.md) §3.4) and prices facility outpatient lines with status indicators S, T and V at
+  the national rate. Read in the Medicare Claims Processing Manual, Pub. 100-04 ch. 4 (rev. 13799, May 28,
+  2026): sec. 10.1.1 (T's multiple-procedure reduction), 10.2.3 (comprehensive APCs), 10.4 (N, Q1, Q2, Q3
+  packaging) and 10.8 (60% of the rate is wage-adjusted). Every other status indicator is left out with its
+  reason; the wage index, the second-T reduction and claim-level packaging are named as not applied. The
+  file's title row is its edition, shown on the page and named in the receipt. **Not yet:** the other reference
+  kinds (RVU, NADAC, MUE, PTP) have no consumer yet. An Addendum B dropped on the home page opens this tool with
+  the file in its Addendum B input.
+

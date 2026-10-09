@@ -39,6 +39,7 @@ export const FILE_INPUTS = {
   'hptc-files': 'hpt-price-compare',
   'tic-files': 'tic-file-check',
   'trl-files': 'tic-rate-lookup',
+  'cpm-addb': 'claims-pct-medicare',
   'cer-files': 'carin-eob-reader',
   'ibc-price-file': 'itemized-bill-check',
   'ibc-bill-file': 'itemized-bill-check',

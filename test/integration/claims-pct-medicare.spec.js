@@ -12,7 +12,7 @@ test('typed lines: professional lines priced for the locality, a DRG line left o
   await page.locator('#cpm-locality').dispatchEvent('change');
   const out = page.locator('#q-results');
   await expect(out).toContainText('% of Medicare, on 1 of 3 claim lines (2 left out).');
-  await expect(out).toContainText('a facility claim: Medicare pays it under the OPPS or IPPS');
+  await expect(out).toContainText('an inpatient or revenue-code-only facility line: Medicare pays inpatient stays under the IPPS');
   await expect(out).toContainText('modifier 80 changes the Medicare amount');
   await expect(out).toContainText('physician fee schedule for HOUSTON (TX 18)');
   await expectNoHScroll(page, 'claims-pct-medicare');
@@ -34,4 +34,20 @@ test('without a locality it asks for one instead of answering', async ({ page })
   await page.fill('#cpm-locality', '');
   await page.locator('#cpm-locality').dispatchEvent('change');
   await expect(page.locator('#q-results')).toContainText('Choose the Medicare locality the claims are priced against.');
+});
+
+// spec-v1614 §6: the reader's own Addendum B prices a hospital outpatient line at its national OPPS rate.
+test('with the reader\'s Addendum B, an outpatient S line is priced and a J2 line says why it is not', async ({ page }) => {
+  await page.goto('/#claims-pct-medicare');
+  await page.fill('#cpm-locality', 'TX-18');
+  const addb = 'Addendum B.-Final OPPS Payment by HCPCS Code for CY 2026,,,,,\r\n,,,,,\r\nHCPCS Code,Short Descriptor,SI,APC,Relative Weight,Payment Rate\r\nG0463,,J2,5012,1.4879,$136.02 \r\n71046,,S,5521,0.9726,$88.91 \r\n';
+  await page.locator('#cpm-addb').setInputFiles({ name: 'addendum-b.csv', mimeType: 'text/csv', buffer: Buffer.from(addb, 'latin1') });
+  await expect(page.locator('#cpm-ref-status')).toContainText('Final OPPS Payment by HCPCS Code for CY 2026: 2 codes read.');
+  const csv = 'Date of Service,Billing Provider,HCPCS Code,Place of Service,Allowed Amount,Units,Claim Type\n2026-03-02,City Hospital,71046,22,177.82,1,institutional\n2026-03-02,City Hospital,G0463,22,300,1,institutional\n';
+  await page.locator('#cpm-upload-file').setInputFiles({ name: 'claims.csv', mimeType: 'text/csv', buffer: Buffer.from(csv) });
+  await page.getByRole('button', { name: 'Use 2 rows' }).click();
+  const out = page.locator('#q-results');
+  await expect(out).toContainText('The plan allowed $177.82 where Medicare would pay $88.91: 200% of Medicare, on 1 of 2 claim lines (1 left out).');
+  await expect(out).toContainText('status indicator J2: a comprehensive APC pays for the whole claim');
+  await expect(out).toContainText('priced from your Addendum B (Final OPPS Payment by HCPCS Code for CY 2026)');
 });

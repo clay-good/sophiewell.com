@@ -8,11 +8,12 @@ import { loadNadac } from '../lib/nadac-load.js';
 import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { CLAIM_FIELDS, CLAIM_LINE_FIELDS } from '../lib/upload-fields.js';
-import { acceptVia } from '../lib/hand-off.js';
+import { acceptVia, handOff } from '../lib/hand-off.js';
 import { renderReceipt } from './receipt.js';
 import { TIC_SCHEMA } from '../lib/tic-schemas.js';
 import { loadLocalities, loadCodeRows } from '../lib/mpfs-load.js';
 import { parseQuery } from '../lib/tic-rate-lookup.js';
+import { parseAddendumB } from '../lib/opps-addendum-b.js';
 
 const ticWorkerUrl = new URL('../lib/tic-worker.js', import.meta.url);
 const ticRateWorkerUrl = new URL('../lib/tic-rate-worker.js', import.meta.url);
@@ -277,9 +278,20 @@ export const renderers = {
     const datalist = el('datalist', { id: 'cpm-localities' });
     loc.appendChild(datalist);
     root.appendChild(loc);
+    const addbStatus = el('span', { id: 'cpm-ref-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+    // spec-v1614 §6: the reader's own Addendum B prices facility outpatient lines. It is read here, on the page;
+    // the parsed rates go to the worker with the run.
+    let opps = null;
+    const addb = el('p');
+    addb.appendChild(el('label', { for: 'cpm-addb', text: 'Optional: your copy of the CMS OPPS Addendum B (CSV), to price hospital outpatient lines' }));
+    addb.appendChild(el('br'));
+    const addbInput = el('input', { id: 'cpm-addb', type: 'file', accept: '.csv,text/csv' });
+    addb.appendChild(addbInput);
+    addb.appendChild(addbStatus);
+    root.appendChild(addb);
     const o = out();
     let stamp = '';
-    const input = () => ({ claims: val('cpm-claims'), locality: val('cpm-locality') });
+    const input = () => ({ claims: val('cpm-claims'), locality: val('cpm-locality'), ...(opps ? { opps } : {}) });
     const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); if (r.rows) table(o, 'Lines left out', ['Line', 'Code', 'Why'], r.rows.filter((x) => x.status !== 'priced').slice(0, 50).map((x) => [x.line, x.code || '', x.reason])); return; }
       resultRow(o, [{ text: r.band, cls: null }, { label: 'Priced lines', value: r.bandLabel }]);
@@ -325,6 +337,14 @@ export const renderers = {
     document.getElementById('cpm-claims').addEventListener('input', () => {
       if (upload.isActive()) upload.clear('Using the claim lines entered above.');
     });
+    addbInput.addEventListener('change', async () => {
+      const f = addbInput.files && addbInput.files[0];
+      opps = null; addbStatus.textContent = '';
+      if (f) {
+        try { opps = parseAddendumB(new TextDecoder('latin1').decode(await f.arrayBuffer())); addbStatus.textContent = ` ${opps.edition}: ${opps.count.toLocaleString('en-US')} code${opps.count === 1 ? '' : 's'} read.`; } catch (err) { addbStatus.textContent = ` ${err.message}`; }
+      }
+      run();
+    });
     root.appendChild(o);
     wire(['cpm-claims', 'cpm-locality'], run);
   },
@@ -335,5 +355,6 @@ export const acceptFiles = {
   'pharmacy-spread-check': acceptVia('psc-upload-file'),
   'tic-file-check': acceptVia('tic-files'),
   'tic-rate-lookup': acceptVia('trl-files'),
-  'claims-pct-medicare': acceptVia('cpm-upload-file'),
+  // A dropped Addendum B (spec-v1614 §6) goes to its own input; a claims extract to the workbench.
+  'claims-pct-medicare': (root, files, { kind } = {}) => handOff(root, kind === 'reference-opps-addb' ? 'cpm-addb' : 'cpm-upload-file', files),
 };
