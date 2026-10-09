@@ -884,6 +884,7 @@ import { renderers as RV1561 } from './views/group-v1561.js';
 import { renderers as RV1555b } from './views/group-v1555b.js';
 import { renderers as RV1556 } from './views/group-v1556.js';
 import { renderers as RV1550b } from './views/group-v1550b.js';
+import { renderers as RV1564 } from './views/group-v1564.js';
 import { renderers as RV1546b } from './views/group-v1546b.js';
 import { renderers as RV1603 } from './views/group-v1603.js';
 import { renderers as RV1604, acceptFiles as AF1604 } from './views/group-v1604.js';
@@ -985,7 +986,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1515, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV1601, ...RV1550, ...RV1548, ...RV1551, ...RV1546, ...RV1560, ...RV1555, ...RV1557, ...RV1558, ...RV1553, ...RV1562, ...RV1563, ...RV1552, ...RV1549, ...RV1559, ...RV1554, ...RV1560b, ...RV1561, ...RV1555b, ...RV1556, ...RV1550b, ...RV1546b, ...RV1602, ...RV1603, ...RV1604, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1515, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV1601, ...RV1550, ...RV1548, ...RV1551, ...RV1546, ...RV1560, ...RV1555, ...RV1557, ...RV1558, ...RV1553, ...RV1562, ...RV1563, ...RV1552, ...RV1549, ...RV1559, ...RV1554, ...RV1560b, ...RV1561, ...RV1555b, ...RV1556, ...RV1550b, ...RV1564, ...RV1546b, ...RV1602, ...RV1603, ...RV1604, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1128,7 +1129,7 @@ const UTILITIES = [
   { id: 'which-appeal-path', name: 'Which Appeal Rules Apply?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'itemized-bill-check', name: 'Check My Hospital Bill Against Its Posted Prices', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'carin-eob-reader', name: 'Read My Health Insurance Claims File', group: 'C', audiences: ['patients', 'billers'], clinical: false },
-  { id: 'preventive-owed', name: 'Preventive Services Covered at $0 (USPSTF A and B List)', group: 'C', audiences: ['patients', 'clinicians'], clinical: false },
+  { id: 'preventive-owed', name: 'Preventive Services Covered at $0 (USPSTF and HRSA Women\'s Lists)', group: 'C', audiences: ['patients', 'clinicians'], clinical: false },
   { id: 'preventive-cost-share-check', name: 'Should I Have Paid for This Preventive Care?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'hsa-predeductible-check', name: 'HSA Safe Harbors: What Can Be Covered Before the Deductible?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'dpc-hsa-check', name: 'Does My Direct Primary Care Plan Keep HSA Eligibility?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
@@ -3519,6 +3520,7 @@ const UTILITIES = [
   // spec-v1550: field-health (spec-v1540).
   { id: 'vitamin-a-dose-child', name: 'Vitamin A Dose for a Child: Routine, Diarrhea, Measles or Eye Signs (WHO)', group: 'N', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'deworming-dose-who', name: 'Deworming Dose and Frequency (WHO Preventive Chemotherapy)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'foodborne-trematode-treatment', name: 'Liver and Lung Fluke Treatment Dose (WHO Foodborne Trematodes)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // spec-v1553, spec-v1558, spec-v1562, spec-v1563: field-health (spec-v1540).
   { id: 'mgso4-im-regimen', name: 'Magnesium Sulfate IM Regimen and Next-Dose Check (WHO)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'who-tb-fdc-dose', name: 'First-Line TB Tablets by Weight: Child Dispersible and Adult FDCs (WHO)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },

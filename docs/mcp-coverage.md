@@ -8968,6 +8968,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/deworming-dose-who-v1550.js (spec-v1550: WHO deworming dose and frequency by group and prevalence — clinical disclaimer)
 - `deworming-dose-who`
 
+### lib/foodborne-trematode-treatment-v1564.js (spec-v1564: WHO praziquantel and triclabendazole doses for liver and lung flukes — clinical disclaimer)
+- `foodborne-trematode-treatment`
+
 ### lib/mgso4-im-regimen-v1558.js (spec-v1558: WHO magnesium sulfate IM (Pritchard) regimen and the next-dose hold limits — clinical disclaimer)
 - `mgso4-im-regimen`
 

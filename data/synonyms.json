@@ -7775,6 +7775,19 @@
     },
     {
       "phrases": [
+        "liver fluke treatment",
+        "clonorchiasis praziquantel dose",
+        "opisthorchiasis treatment",
+        "fascioliasis triclabendazole",
+        "paragonimiasis treatment",
+        "lung fluke dose",
+        "foodborne trematode"
+      ],
+      "tile": "foodborne-trematode-treatment",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "pritchard regimen",
         "magnesium sulfate im",
         "mgso4 im regimen",
@@ -11470,7 +11483,11 @@
         "uspstf a and b",
         "what screenings are free",
         "preventive care no copay",
-        "aca preventive services list"
+        "aca preventive services list",
+        "hrsa women's preventive services",
+        "well-woman visit covered",
+        "is a breast pump covered",
+        "free contraception insurance"
       ],
       "tile": "preventive-owed",
       "audience": "patients"

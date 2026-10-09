@@ -55,17 +55,17 @@ implementing published thresholds in our own code with citation is acceptable.*
 | `modified-faine-leptospirosis` | The primary Indian guideline (API 2013). Read only in a CC BY 2016 reproduction, which does not say whether the triad's 10 points replace or add to its three items |
 | `neurocysticercosis-del-brutto` (2017 revised criteria) | The primary (*J Neurol Sci* 2017;372:202–210); read only in a 2021 review, and one definitive pathway needs checking |
 | `podoconiosis-stage` (Tekola 5 stages) | The primary (*Trop Med Int Health* 2006;11:1136); read only in a 2024 restatement |
-| `foodborne-trematode-treatment` | WHO's primary (2011 expert consultation); read only through a summarizer, and the clonorchiasis duration disagrees with the usual 1-day course |
+| `foodborne-trematode-treatment` | **Built October 9, 2026** (catalog 2,057). Read in the primary (IRIS 10665/75209, chapter 5) and in both WHO formularies it cites (Model Formulary 2008, IRIS 10665/44053, section 6.1.3; Model Formulary for Children 2010, IRIS 10665/44309). **The duration conflict is real and inside WHO:** the consultation gives no regimen for treating one person with clonorchiasis or opisthorchiasis, the 2008 formulary gives 25 mg/kg three times a day for 2 days (or 40 mg/kg once), and the 2010 children's formulary 1 day. The tile gives the 2008 regimen and states the 1-day course beside it. Paragonimiasis praziquantel is 3 days in the consultation and 2 in the formularies; the tile follows the consultation. |
 | `skin-ntd-triage` (WHO 2026 integrated skin-NTD guide, six decision trees) | A full visual transcription of pp. 14–27; the trees span two-page spreads. **The highest-value CHW tile in the NTD area**, worth the transcription |
 | `trachoma-mda-rounds` | A current WHO rule for rounds per TF level (only the superseded 2006 rules were found) |
 | Trachoma azithromycin height stick | The ITI table (the link returned a web page, not the table) |
 | `vl-rk39-algorithm` (South Asia elimination definition) | A WHO primary for the national case definition |
 | Khattabi scorpion classes; Abroug grade III | The full papers (paywalled); the abstract's four classes conflict with a three-class summary |
 | Prazosin dose for scorpion sting | A guideline, not a single trial whose stop rule contains an evident misprint |
-| WHO weight-based pralidoxime (30 mg/kg then 8 mg/kg/h) | The WHO primary |
+| WHO weight-based pralidoxime (30 mg/kg then 8 mg/kg/h) | **Read October 9, 2026; not built.** The WHO primary (WHO/IPCS pesticide poisoning resource tool, WHO/PCS/2006.4, module 7 B 2, p. 283, read from the page image: the text layer is font-shifted and drops its digits) gives no weight-based adult regimen: a 1 g dose (child 20-50 mg/kg), or the regimen "supported by WHO", 2 g loading then 500 mg an hour. `op-atropine-titration` already prints a 2 g load then 0.5-1 g an hour, which agrees, so no tile is added. |
 | Brazil *Latrodectus* (widow spider) drug doses | The 2001 FUNASA manual; the 2024 child calcium dose looks like a unit error |
 | Pediatric epinephrine maximum for antivenom reactions | Not stated in SEARO, AFRO or India's guideline |
-| CB14 iron treatment table by weight | Re-read from the page image (the text extraction was garbled) |
+| CB14 iron treatment table by weight | **Closed:** built October 6, 2026 in `imci-oral-drug-bands` ([spec-v1546](spec-v1546.md)), re-read from the CB14 page images (p. 14). |
 | Pregnant and adult MUAC cutoffs | Sphere 2018 and FANTA 2016 (both blocked); no single WHO cutoff found |
 | WHO AWaRe book weight bands as a general dosing tile | A dedicated read of the whole book; flagged as a strong future wave |
 

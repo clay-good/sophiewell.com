@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:77367c62-b5ae-539f-87bb-e0ae8aae624c",
+  "serialNumber": "urn:uuid:b8d9a1ea-74f7-567f-8fb3-a1c1c1c6d1f4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-08T02:22:58.161Z",
+    "timestamp": "2026-10-09T11:49:30.585Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2056 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2057 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "467af90e0d1a362fa7381490e10e07a34000cac9efdabe4347df08973ab93e5f"
+          "content": "66ee3505404a4d759d9e7c2c937ffa47772517ccad72f21081c0cd686ca7e42c"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133083"
+          "value": "133171"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2d98602a01863b57bb70e61a915576c6228e1e9209a51fb729c9328099611a58"
+          "content": "904ff99db93b830ca1157937a8bd5b8395250bfdda7ce1f05829b18fb89be896"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "590876"
+          "value": "591152"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ec0787f477da32e99289d62d384759b9edd3b2b3ccc82d123440475ccef49a08"
+          "content": "01bd63e575d83d217deedbd139b669d3c39f6bea369f0126442e24de6bec83a7"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "257374"
+          "value": "257514"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3d6af4a226482af051cafa57720014628df0f1cc9288bbe74f0a070b67ccbf8f"
+          "content": "1f8168413085b1a92c726dca4dff226ad6ce69974eb0451e414ef1e6537857be"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "120742"
+          "value": "120849"
         }
       ]
     },
@@ -7742,6 +7742,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/foodborne-trematode-treatment-v1564.js",
+      "type": "file",
+      "name": "lib/foodborne-trematode-treatment-v1564.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3a72f99299b879284fe9950c7770ec66ed96c3d997df9df868a8b4d55a0f564e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8676"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/forrest-classification-v809.js",
       "type": "file",
       "name": "lib/forrest-classification-v809.js",
@@ -10090,6 +10111,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5530"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hrsa-womens-guidelines.js",
+      "type": "file",
+      "name": "lib/hrsa-womens-guidelines.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a6cd000bf2761a092f621fa1e968e22f5cf3bc1f29a1cbfccb89883f192ce7bc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10999"
         }
       ]
     },
@@ -13901,7 +13943,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e12f51848bd028680d8513af89a0de29bfb76d955e78844105004c01c458dccc"
+          "content": "16decc61cd71305e02e34e0ef06b451363b006b4f3d5b7982bb532445f919b93"
         }
       ],
       "properties": [
@@ -13911,7 +13953,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2748171"
+          "value": "2748990"
         }
       ]
     },
@@ -18899,7 +18941,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7874d4516699952bc455cf982a39a90a35995ad51fcd16080d8f014240076d3f"
+          "content": "f69e3ea631313e80d718a447860bfac0f8a21991603918397b13d334f03b2de0"
         }
       ],
       "properties": [
@@ -18909,7 +18951,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9357"
+          "value": "12877"
         }
       ]
     },
@@ -33047,6 +33089,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/foodborne-trematode-treatment-v1564.js",
+      "type": "file",
+      "name": "mcp/adapters/foodborne-trematode-treatment-v1564.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8e4b91c3234f32f0c04a5eee8482c7b552678914d59b55b692c2ea56cd0ea171"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1317"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/forrest-classification-v809.js",
       "type": "file",
       "name": "mcp/adapters/forrest-classification-v809.js",
@@ -43028,7 +43091,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "589f05ee97310d30860c6a8512e150c36e79908fcd4b97bb70dc0d36e0e1f4b6"
+          "content": "37b6c70320cf84bbef9131206f8ce3445b3e58724ce486ccd5c17982d4ce8548"
         }
       ],
       "properties": [
@@ -43038,7 +43101,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2452"
+          "value": "2604"
         }
       ]
     },
@@ -49055,7 +49118,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5775c6bb74a88a8619049dd4c440efa1a070cd427908d26edf95edb40425018f"
+          "content": "e91b696e781dd3081bfbfe74461ac7b77640bb54ba861ddd1d61158523edf473"
         }
       ],
       "properties": [
@@ -49065,7 +49128,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126859"
+          "value": "127034"
         }
       ]
     },
@@ -53249,6 +53312,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1564.js",
+      "type": "file",
+      "name": "views/group-v1564.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a3897735d7af8e0faf585fcdfd63ed110bbb82146d43aa3e5dc96e337b9fa25e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2825"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v1570.js",
       "type": "file",
       "name": "views/group-v1570.js",
@@ -53402,7 +53486,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "140f4c8f7160b256ae1f6e2e6c708d6c2a6b8ea60a88831d1b67f3d284888b37"
+          "content": "b5fc09413d7a4658a477d2ed5d8a5dd88f332597d9198f4a1622f4d32047b439"
         }
       ],
       "properties": [
@@ -53412,7 +53496,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8982"
+          "value": "9488"
         }
       ]
     },
@@ -84645,6 +84729,7 @@
         "urn:sophiewell:file:source:lib/fmea-rpn-v918.js",
         "urn:sophiewell:file:source:lib/fnclcc-grade-v651.js",
         "urn:sophiewell:file:source:lib/fois-v727.js",
+        "urn:sophiewell:file:source:lib/foodborne-trematode-treatment-v1564.js",
         "urn:sophiewell:file:source:lib/forrest-classification-v809.js",
         "urn:sophiewell:file:source:lib/forrester-hemodynamic-v362.js",
         "urn:sophiewell:file:source:lib/four-ts-hit-v836.js",
@@ -84757,6 +84842,7 @@
         "urn:sophiewell:file:source:lib/hpt-v1515.js",
         "urn:sophiewell:file:source:lib/hpt-worker.js",
         "urn:sophiewell:file:source:lib/hrs-aki-v808.js",
+        "urn:sophiewell:file:source:lib/hrsa-womens-guidelines.js",
         "urn:sophiewell:file:source:lib/hsa-predeductible-check.js",
         "urn:sophiewell:file:source:lib/hughes-gbs-v800.js",
         "urn:sophiewell:file:source:lib/hvpg-v1416.js",
@@ -85723,6 +85809,7 @@
         "urn:sophiewell:file:source:views/group-v1561.js",
         "urn:sophiewell:file:source:views/group-v1562.js",
         "urn:sophiewell:file:source:views/group-v1563.js",
+        "urn:sophiewell:file:source:views/group-v1564.js",
         "urn:sophiewell:file:source:views/group-v1570.js",
         "urn:sophiewell:file:source:views/group-v1571.js",
         "urn:sophiewell:file:source:views/group-v1572.js",
@@ -86787,6 +86874,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/fmea-rpn-v918.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fnclcc-grade-v651.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fois-v727.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/foodborne-trematode-treatment-v1564.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/forrest-classification-v809.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/forrester-hemodynamic-v362.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/four-ts-hit-v836.js",
@@ -87653,7 +87741,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "77367c62b5aee39f"
+      "value": "b8d9a1ea74f7267f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87665,7 +87753,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3250"
+      "value": "3254"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

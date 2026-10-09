@@ -71,6 +71,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Liver and Lung Fluke Treatment Dose (WHO Foodborne Trematodes) gives the
+  praziquantel or triclabendazole dose by weight for clonorchiasis and
+  opisthorchiasis, fascioliasis and paragonimiasis, for one person or for
+  preventive chemotherapy, with who is left out of mass treatment (under 4,
+  and pregnancy with triclabendazole). Where WHO's own sources give different
+  courses, the page says so. See docs/spec-v1564.md.
+- Preventive Services Covered at $0 now includes the HRSA women's preventive
+  services guidelines beside the USPSTF list: well-woman visits, breast and
+  cervical cancer screening, patient navigation, contraception, breastfeeding
+  supplies, the diabetes screenings in and after pregnancy, and the rest. Each
+  binds from one year after the day HRSA accepted it. A plan year that starts
+  before a revision binds is shown the earlier version where its text is
+  known, so the 2027 cervical screening update shows as not yet required for
+  plan years that begin before December 29, 2026.
 - Medicare Enrollment Window and Start Date and the Marketplace Special
   Enrollment Window now read a caseload file and give each person's or
   household's window.
