@@ -285,6 +285,9 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   24 form tools in all.
 - **Built 2026-10-09:** `aca-external-review-clock` batch, an appeals desk's case list: each final internal denial's
   date, and the request and reviewer dates where known. 25 form tools in all.
+- **Built 2026-10-09:** `home-health-cert-clock` batch, an agency's admissions: each start of care, with the
+  face-to-face and referral dates where known; a face-to-face outside its window is flagged per row. 26 form tools in
+  all.
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-07:** `medicare-enrollment-window` and `aca-sep-window` batches, for a counselor's caseload: each

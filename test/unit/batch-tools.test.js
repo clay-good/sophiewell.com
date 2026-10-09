@@ -365,3 +365,12 @@ test('aca-external-review-clock runs over a case list: the 4-month request windo
   assert.ok(r.rows[0].ok && r.rows[1].ok);
   assert.equal(r.rows[2].detail, 'Final internal denial received: "soon" is not a date.');
 });
+
+test('home-health-cert-clock runs over admissions: a face-to-face outside its window is flagged per row', () => {
+  const r = runBatch('home-health-cert-clock', [
+    { startOfCare: '09/01/2026', faceToFace: '08/20/2026' },
+    { startOfCare: '2026-09-01', faceToFace: '2026-03-01' },
+  ], {});
+  assert.equal(r.band, '2 patients of 2 computed.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Recertify by 2026-10-30', 'Face-to-face outside window']);
+});

@@ -58,6 +58,7 @@ const EXPECT = {
   'external-review-cases.csv': ['csv-mapped', 'likely', 'External Review Clock (Marketplace and Employer Plans) (cases file)'],
   'partd-requests.csv': ['csv-mapped', 'likely', 'Part D Coverage Decision Clock (requests file)'],
   'ma-requests.csv': ['csv-mapped', 'likely', 'Medicare Advantage Coverage Decision Clock (requests file)'],
+  'home-health-admissions.csv': ['csv-mapped', 'likely', 'Home Health Certification and OASIS Clock (patients file)'],
   'dme-rentals.csv': ['csv-mapped', 'likely', 'DME Capped Rental and Oxygen Clock (rentals file)'],
   'erisa-claims.csv': ['csv-mapped', 'likely', 'Employer Plan Claim and Appeal Clock (ERISA) (claims file)'],
   'nomnc-census.csv': ['csv-mapped', 'likely', 'NOMNC Delivery Deadline (patients file)'],

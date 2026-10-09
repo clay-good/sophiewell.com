@@ -184,16 +184,25 @@ export const renderers = {
     dateInput(root, 'Face-to-face encounter date (optional)', 'hh-f2f', 'date');
     dateInput(root, 'Referral date (optional)', 'hh-ref', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = PA.homeHealthCertClock(args);
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Status', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: an agency's admissions from a file; a face-to-face outside its window is flagged per row.
+    const upload = uploadWorkbench(root, {
+      id: 'hh-upload', fields: BATCH_TOOLS['home-health-cert-clock'].fields, label: 'Check certification periods for patients from a file',
+      compute: 'home-health-cert-clock', getInput: () => ({}), onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PA.homeHealthCertClock(args));
+    });
   },
   'dme-rental-clock'(root) {
     const pairs = [['dme-item', 'item'], ['dme-delivered', 'delivered'], ['dme-stop', 'lastUse'], ['dme-resume', 'resumed'], ['dme-swo-name', 'swoName'], ['dme-swo-item', 'swoItem'], ['dme-swo-qty', 'swoQty'], ['dme-swo-date', 'swoDate'], ['dme-swo-prac', 'swoPrac'], ['dme-swo-sig', 'swoSig'], ['dme-wopd', 'wopdList'], ['dme-order-received', 'orderReceived']];
@@ -280,5 +289,6 @@ export const acceptFiles = {
   'moon-deadline': acceptVia('moon-upload-file'),
   'hospice-period-clock': acceptVia('hosp-upload-file'),
   'dme-rental-clock': acceptVia('dme-upload-file'),
+  'home-health-cert-clock': acceptVia('hh-upload-file'),
   'nomnc-deadline': acceptVia('nomnc-upload-file'),
 };

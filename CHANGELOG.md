@@ -80,6 +80,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Home Health Certification and OASIS Clock now reads an agency's admissions
+  and flags each face-to-face encounter outside its window.
 - External Review Clock (Marketplace and Employer Plans) now reads a case
   list and gives each case's external review deadlines.
 - Part D Coverage Decision Clock now reads a request list and gives each
