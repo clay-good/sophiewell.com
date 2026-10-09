@@ -138,6 +138,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "peds-weight-conv",
   "pertussis-case-def",
   "pews",
+  // spec-v1564: the stage comes from two required selects (swelling, joint fixation) and the optional knobs
+  // select; the only number field is the optional below-knee circumference, recorded beside the stage, and with
+  // it blank the record line says "circumference not measured". Nothing is computed from it.
+  "podoconiosis-stage",
   // spec-v1601: the answer is the federal rule for the plan, service and network chosen in the
   // pickers; the only number field is the optional amount charged, which adds a note.
   "preventive-cost-share-check",

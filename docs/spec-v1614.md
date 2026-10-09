@@ -161,6 +161,12 @@ refresh.
   packaging) and 10.8 (60% of the rate is wage-adjusted). Every other status indicator is left out with its
   reason; the wage index, the second-T reduction and claim-level packaging are named as not applied. The
   file's title row is its edition, shown on the page and named in the receipt. **Not yet:** the other reference
-  kinds (RVU, NADAC, MUE, PTP) have no consumer yet. An Addendum B dropped on the home page opens this tool with
+  kinds (RVU, NADAC, MUE) have no consumer yet. An Addendum B dropped on the home page opens this tool with
   the file in its Addendum B input.
-
+- **§6, second consumer, built October 9, 2026:** `itemized-bill-check` takes the reader's own NCCI
+  procedure-to-procedure edit files (`lib/ncci-ptp.js`): the text files or the zips CMS posts, streamed in the
+  Worker, keeping only pairs whose two codes are both on the bill. Pairs on the same date with an edit active that
+  day flag the column 2 line, worded by its modifier indicator (0: no modifier bypasses it; 1: an allowed modifier
+  may; 9: skipped). Undated lines are checked only against edits still active, so the answer does not depend on
+  today's date. The version comes from the member names and is named in the receipt. Inpatient bills are not
+  pair-checked, and practitioner edits on a hospital bill are named as the wrong file.

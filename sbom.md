@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `bc3497177c146353`
-Generated: 2026-10-09T12:46:51.243Z
+Build ID: `7dc29c8a3220dae7`
+Generated: 2026-10-09T13:01:23.015Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -394,7 +394,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/figo-pas-v833.js` | 7409 | `2680f161b34ab92db39cf745ff07fd99d1e160fb926b8f118a98a1f0bb0a6059` |
 | `lib/filarial-lymphedema-stage-v1561.js` | 4499 | `26b789405e1541e0b498e99f8a9665ff2fe6c661068c9c9c8af5c579e2ff115e` |
 | `lib/file-head.js` | 388 | `e46fe9833ecc5f46c47141750e041f5e98a0342faaadda5f3bdee52fe3224bea` |
-| `lib/file-kinds.js` | 29055 | `1b09f59c7020337129b3d6f607dea26ef2383f0b29356a4fc32ced3c659a8eb6` |
+| `lib/file-kinds.js` | 29082 | `6d4d0ecc193142c71a16da3b592b90516784675e84200cf9d8442e9131b4e8f7` |
 | `lib/fisher-grade-v600.js` | 10299 | `e9155f9fdefe95d66f6fa2ec622a908cb15ddc858a3dd1d3275d4384cff93a44` |
 | `lib/fitzpatrick-v331.js` | 3746 | `aa2e8153f5e4f4821db4aeffe966810bc8068f00d0bd77789b723f8c613691b1` |
 | `lib/fluidresp-v113.js` | 8862 | `b6a605fd55a8d672d87aeb73818cd415ccd9530f683a28b93cb899bdfc21e4cd` |
@@ -567,8 +567,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/isi-v726.js` | 3376 | `405787e7482360b7e17c7fe3fecfabcd82b644865ff303b05bc7fef720fd2f19` |
 | `lib/isis-v302.js` | 3468 | `beb50b7954d7abc1d2c89aecbd2a6d7632ba1057d71158cab04e7eb16a35b716` |
 | `lib/isl-lymphedema-v539.js` | 12451 | `90fea9463fa88fd62150f97299a5061e4f8b8505b7810e17532b16138aaa026b` |
-| `lib/itemized-bill-check.js` | 13112 | `f5a7ff997453689dc309afc150b1f77bba0ec60538ae35e8bd16aa22601b94a3` |
-| `lib/itemized-bill-worker.js` | 2315 | `fd2640abb6378deae62662ee99f02e37eae238a5863c1d1cd6163403e116d66d` |
+| `lib/itemized-bill-check.js` | 14804 | `5ec49bd04d6c7081719ae83f13d1a8a271223caf0b07f8671c1a8b4b40b97814` |
+| `lib/itemized-bill-worker.js` | 2862 | `83f3f27fbedfeb66380732de78dd066259e8c1aeda2dc912e38f3faf9b0d3dfb` |
 | `lib/jemt-papilla-v1487.js` | 3382 | `ed174c99d577b1548f2308be50cfdcbc2384001e6cae8343203e81f0ee5f6b07` |
 | `lib/jerger-tympanogram-v506.js` | 3975 | `ed9af7d9feec2f25b555e647a7e1ca4c2a34bb358e9c4aeb7d771f6a99af35c2` |
 | `lib/jnet-v336.js` | 4614 | `367fba74608bdc656ea1a37baa690c87f325d19942168360f1201a754d82fad4` |
@@ -744,6 +744,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nasal-o2-fio2-v1413.js` | 3069 | `6bd5a9399fd010f42a28081beb33dcb32d07b02ff91a8a88f0b53a8e085aafb8` |
 | `lib/nash-moe-rotation-v476.js` | 3250 | `f93c53ace03d4639ba7a6995c1860bddb90842f4075a94632a201017fde9c1ad` |
 | `lib/nassar-gallbladder-v1240.js` | 7993 | `0690648a3bec8b9b3204360c289c01b5aa68c8b4f42c926abccddfb0e6e821ab` |
+| `lib/ncci-ptp.js` | 5802 | `b9c53e9d727c9b3d4fbe06d19a82b5aed88425b357c61ece450b26b4ac02ca84` |
 | `lib/ndc-crosswalk.js` | 4513 | `2f0fa2c6bf492070239f7936430035fa0323153e1122bf3fb0316f6e65b4f5f0` |
 | `lib/neck-zone-v366.js` | 4104 | `f8a37aad930c4430dc8f51a359936800f596919443223714e8fb03b7bbab1f1f` |
 | `lib/neer-distal-clavicle-v1428.js` | 6413 | `f40c3b616bb63e69ac1961658b35dfe06a9b33236d755e1500ab88ceb6b138b4` |
@@ -2583,7 +2584,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v16.js` | 13376 | `3503141aaa8247033b2d1bbb218694ba7aed7f257e62f0c8b66d7fb5044e9671` |
 | `views/group-v160.js` | 11685 | `14ef775c5b8ffbe178e1263f27c806d4c99c02fc86dd79d907213aefd3b7b77f` |
 | `views/group-v1601.js` | 9488 | `b5fc09413d7a4658a477d2ed5d8a5dd88f332597d9198f4a1622f4d32047b439` |
-| `views/group-v1602.js` | 15805 | `f83cfd0fcfe58d7a8f80cf5df090cdf1e89f2be7e9de776bc5bb1eb0b004ab24` |
+| `views/group-v1602.js` | 16359 | `cc817d3271a4af1a77a24feb488572bb6507f2701411b4e935567906f825656c` |
 | `views/group-v1603.js` | 7098 | `f74b3fd9569ae95a0df44972a0a68738c120179b054d9a76016c4881011d2cd9` |
 | `views/group-v1604.js` | 24604 | `c83b603d7e3407bb23233012507347f0b405ec14982cc0a208157abea656e330` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |

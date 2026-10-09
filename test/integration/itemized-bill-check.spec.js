@@ -36,3 +36,18 @@ test('a bill CSV works like typed lines; nothing runs until the setting is chose
   await page.selectOption('#ibc-payment', 'self-pay');
   await expect(page.locator('#q-results')).toContainText('above the $900.00 discounted cash price the hospital posted');
 });
+
+// spec-v1614 §6: the reader's own NCCI PTP edits check code pairs; the venipuncture billed with the ED visit
+// is the column 2 line.
+test('with the reader\'s PTP edits, a column 2 code billed the same day is flagged and named in the letter', async ({ page }) => {
+  await page.goto('/#itemized-bill-check');
+  await page.fill('#ibc-bill', '2026-03-02, 99284, 1, 1900, ED visit\n2026-03-02, 36415, 1, 45, Venipuncture');
+  await page.selectOption('#ibc-setting', 'outpatient');
+  await page.selectOption('#ibc-payment', 'insured');
+  const ptp = 'CPT only copyright American Medical Association.\r\n\r\n\r\n\r\n\r\n\r\nColumn 1\tColumn 2\t*=in existence prior to 1996\tEffective Date\tDeletion Date *=no data\tModifier 0=not allowed 1=allowed 9=not applicable\tPTP Edit Rationale\r\n99284\t36415\t\t20260101\t*\t1\tStandards of medical / surgical practice\r\n';
+  await page.locator('#ibc-ptp-files').setInputFiles({ name: 'ccioph-v322r0-f1.txt', mimeType: 'text/plain', buffer: Buffer.from(ptp, 'latin1') });
+  await page.locator('#ibc-price-file').setInputFiles({ name: 'alpha.csv', mimeType: 'text/csv', buffer: Buffer.from(price) });
+  const out = page.locator('#q-results');
+  await expect(out).toContainText('billed with 99284 on 2026-03-02: an NCCI pair edit, so 36415 is not paid separately unless a modifier');
+  await expect(out).toContainText('checked against your NCCI procedure-to-procedure edits (version 32.2, revision 0)');
+});

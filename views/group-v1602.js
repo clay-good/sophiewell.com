@@ -120,7 +120,11 @@ function itemizedBillCheck(root) {
   const priceFile = el('input', { id: 'ibc-price-file', type: 'file', accept: '.csv,.json,text/csv,application/json' });
   const status = el('p', { id: 'ibc-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'ibc-price-file', text: 'Choose the hospital\'s price file' })); root.appendChild(priceFile); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'ibc-price-file', text: 'Choose the hospital\'s price file' })); root.appendChild(priceFile);
+  // spec-v1614 §6: the reader's own NCCI PTP edits (the text files or the zips CMS posts), to check code pairs.
+  const ptpFiles = el('input', { id: 'ibc-ptp-files', type: 'file', multiple: true, accept: '.txt,.zip,text/plain,application/zip' });
+  root.appendChild(el('label', { for: 'ibc-ptp-files', text: 'Optional: your copy of the CMS NCCI procedure-to-procedure edits (hospital outpatient), to check code pairs' })); root.appendChild(ptpFiles);
+  root.appendChild(status); root.appendChild(results);
 
   // The request to the billing office, drafted from the last check once it flags a line (spec-v1501 §4).
   const ask = el('section', { id: 'ibc-letter', hidden: '' });
@@ -185,9 +189,9 @@ function itemizedBillCheck(root) {
       last = m; drawLetter();
     });
     const billBlob = billFile.files && billFile.files[0];
-    worker.postMessage({ type: 'check', priceFile: pf, billFile: billBlob || null, lines, setting: setting.value, payment: payment.value, plan: root.querySelector('#ibc-plan').value.trim(), mue: mue && mue.rows ? mue : null });
+    worker.postMessage({ type: 'check', priceFile: pf, billFile: billBlob || null, lines, setting: setting.value, payment: payment.value, plan: root.querySelector('#ibc-plan').value.trim(), mue: mue && mue.rows ? mue : null, ptpFiles: [...(ptpFiles.files || [])] });
   };
-  for (const n of [priceFile, billFile, setting, payment]) n.addEventListener('change', run);
+  for (const n of [priceFile, billFile, ptpFiles, setting, payment]) n.addEventListener('change', run);
   root.querySelector('#ibc-bill').addEventListener('change', run);
   root.querySelector('#ibc-plan').addEventListener('change', run);
 }
@@ -198,5 +202,5 @@ export const renderers = { 'carin-eob-reader': carinEobReader, 'itemized-bill-ch
 export const acceptFiles = {
   'carin-eob-reader': acceptVia('cer-files'),
   // A hospital price file goes to the price input; anything else (the bill CSV) to the bill input.
-  'itemized-bill-check': (root, files, { kind } = {}) => handOff(root, /^hpt-/.test(kind || '') ? 'ibc-price-file' : 'ibc-bill-file', files),
+  'itemized-bill-check': (root, files, { kind } = {}) => handOff(root, /^hpt-/.test(kind || '') ? 'ibc-price-file' : kind === 'reference-ncci-ptp' ? 'ibc-ptp-files' : 'ibc-bill-file', files),
 };
