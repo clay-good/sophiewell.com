@@ -88,3 +88,9 @@ test('smart-cop refuses an impossible P/F ratio and keeps the edge', () => {
   assert.match(bad.band, /PaO2\/FiO2 ratio must be between 0 and 1000/);
   assert.equal(smartCop({ ...base, pfRatio: 1000 }).score, 0);
 });
+
+test('smart-cop: over 50, a saturation of exactly 90% scores the oxygenation criterion', () => {
+  const base = { ageYears: 60, sbpLt90: false, multilobar: false, albuminLt35: false, confusion: false, phLt735: false };
+  assert.equal(smartCop({ ...base, spo2: 90 }).score, 2);
+  assert.equal(smartCop({ ...base, spo2: 91 }).score, 0);
+});

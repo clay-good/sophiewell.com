@@ -832,7 +832,7 @@ export default [
   },
   {
     id: 'hospital-score',
-    summary: 'HOSPITAL readmission score (Donze 2013): hemoglobin < 12, oncology discharge (2), sodium < 135, any procedure, urgent admission, prior admissions in 12 months (banded), length of stay >= 5 days (2); low / intermediate / high 30-day avoidable-readmission bands.',
+    summary: 'HOSPITAL readmission score (Donze 2013; bands and rates as validated in Donze 2016): hemoglobin < 12, oncology discharge (2), sodium < 135, any procedure, urgent admission, prior admissions in 12 months (banded), length of stay >= 5 days (2); low / intermediate / high 30-day avoidable-readmission bands.',
     compute: F.hospitalScore,
     fields: [
       { dom: 'hs-hgb', arg: 'hgbLt12', kind: 'bool', label: 'Hemoglobin < 12 g/dL at discharge (1)' },
@@ -840,7 +840,7 @@ export default [
       { dom: 'hs-na', arg: 'sodiumLt135', kind: 'bool', label: 'Sodium < 135 mEq/L at discharge (1)' },
       { dom: 'hs-proc', arg: 'anyProcedure', kind: 'bool', label: 'Any procedure during the hospitalization (1)' },
       { dom: 'hs-urg', arg: 'urgentAdmission', kind: 'bool', label: 'Urgent / emergent index admission (1)' },
-      { dom: 'hs-prior', arg: 'priorAdmissions12mo', kind: 'number', required: true, label: 'Admissions in the past 12 months (0/1-2 = 0; 3-4 = 2; >= 5 = 5)' },
+      { dom: 'hs-prior', arg: 'priorAdmissions12mo', kind: 'number', required: true, label: 'Admissions in the past 12 months (0-1 = 0; 2-5 = 2; more than 5 = 5)' },
       { dom: 'hs-los', arg: 'losGe5', kind: 'bool', label: 'Length of stay >= 5 days (2)' },
     ],
   },
@@ -922,7 +922,7 @@ export default [
       { dom: 'pe-rr', arg: 'rr30', kind: 'bool', label: 'Respiratory rate >= 30 (+20)' },
       { dom: 'pe-tmp', arg: 'tempLt36', kind: 'bool', label: 'Temperature < 36 C (+20)' },
       { dom: 'pe-ams', arg: 'alteredMental', kind: 'bool', label: 'Altered mental status (+60)' },
-      { dom: 'pe-sao2', arg: 'sao2Lt90', kind: 'bool', label: 'SaO2 < 90% on room air (+20)' },
+      { dom: 'pe-sao2', arg: 'sao2Lt90', kind: 'bool', label: 'SaO2 < 90%, with or without supplemental oxygen (+20)' },
     ],
   },
   {
@@ -1907,15 +1907,23 @@ export default [
   // --- wave 74: the deterministic ICU workflow / monitoring tiles ----------
   {
     id: 'lips',
-    summary: 'Lung Injury Prediction Score (Gajic 2011) for ARDS risk: weighted predisposing conditions (shock 2, aspiration 2, sepsis 1, pneumonia 1.5, high-risk surgery 1.5, high-risk trauma 2) and risk modifiers (alcohol, obesity, hypoalbuminemia, chemotherapy, high FiO2 2, tachypnea 1.5, SpO2 < 95, acidosis 1.5, diabetes -1); >= 4 is high risk.',
+    summary: 'Lung Injury Prediction Score (Gajic 2011 worksheet) for ALI/ARDS risk: shock 2, aspiration 2, sepsis 1, pneumonia 1.5; surgery by type (orthopedic spine 1, acute abdomen 2, cardiac 2.5, aortic vascular 3.5, plus 1.5 if emergency); trauma by type (brain injury 2, smoke inhalation 2, near drowning 2, lung contusion 1.5, multiple fractures 1.5); modifiers (alcohol 1, obesity 1, hypoalbuminemia 1, chemotherapy 1, FiO2 > 0.35 2, RR > 30 1.5, SpO2 < 95% 1, pH < 7.35 1.5, diabetes -1 only with sepsis). High risk above 4.',
     compute: F.lips,
     fields: [
       { dom: 'lp-shock', arg: 'shock', kind: 'bool', label: 'Shock (2)' },
       { dom: 'lp-asp', arg: 'aspiration', kind: 'bool', label: 'Aspiration (2)' },
       { dom: 'lp-sep', arg: 'sepsis', kind: 'bool', label: 'Sepsis (1)' },
       { dom: 'lp-pna', arg: 'pneumonia', kind: 'bool', label: 'Pneumonia (1.5)' },
-      { dom: 'lp-surg', arg: 'highRiskSurgery', kind: 'bool', label: 'High-risk surgery (1.5)' },
-      { dom: 'lp-trauma', arg: 'highRiskTrauma', kind: 'bool', label: 'High-risk trauma (2)' },
+      { dom: 'lp-sx-spine', arg: 'orthoSpineSurgery', kind: 'bool', label: 'Surgery: orthopedic spine (1)' },
+      { dom: 'lp-sx-abd', arg: 'acuteAbdomenSurgery', kind: 'bool', label: 'Surgery: acute abdomen (2)' },
+      { dom: 'lp-sx-card', arg: 'cardiacSurgery', kind: 'bool', label: 'Surgery: cardiac (2.5)' },
+      { dom: 'lp-sx-aort', arg: 'aorticVascularSurgery', kind: 'bool', label: 'Surgery: aortic vascular (3.5)' },
+      { dom: 'lp-sx-emerg', arg: 'emergencySurgery', kind: 'bool', label: 'That surgery is an emergency (1.5)' },
+      { dom: 'lp-tr-tbi', arg: 'traumaticBrainInjury', kind: 'bool', label: 'Trauma: traumatic brain injury (2)' },
+      { dom: 'lp-tr-smoke', arg: 'smokeInhalation', kind: 'bool', label: 'Trauma: smoke inhalation (2)' },
+      { dom: 'lp-tr-drown', arg: 'nearDrowning', kind: 'bool', label: 'Trauma: near drowning (2)' },
+      { dom: 'lp-tr-cont', arg: 'lungContusion', kind: 'bool', label: 'Trauma: lung contusion (1.5)' },
+      { dom: 'lp-tr-fx', arg: 'multipleFractures', kind: 'bool', label: 'Trauma: multiple fractures (1.5)' },
       { dom: 'lp-etoh', arg: 'alcoholAbuse', kind: 'bool', label: 'Alcohol abuse (1)' },
       { dom: 'lp-obese', arg: 'obesityBmiGt30', kind: 'bool', label: 'Obesity BMI > 30 (1)' },
       { dom: 'lp-alb', arg: 'hypoalbuminemia', kind: 'bool', label: 'Hypoalbuminemia (1)' },
@@ -1924,7 +1932,7 @@ export default [
       { dom: 'lp-tach', arg: 'tachypneaRrGt30', kind: 'bool', label: 'Tachypnea RR > 30 (1.5)' },
       { dom: 'lp-spo2', arg: 'spo2Lt95', kind: 'bool', label: 'SpO2 < 95% (1)' },
       { dom: 'lp-acid', arg: 'acidosisPhLt735', kind: 'bool', label: 'Acidosis pH < 7.35 (1.5)' },
-      { dom: 'lp-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes mellitus (-1)' },
+      { dom: 'lp-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes mellitus, only if sepsis (-1)' },
     ],
   },
   {

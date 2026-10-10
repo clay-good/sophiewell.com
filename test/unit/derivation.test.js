@@ -2326,8 +2326,8 @@ test('hospital-score components sum equals hospitalScore() (intermediate, 5)', (
   assert.equal(r.score, 5);
 });
 
-test('hospital-score prior-admissions callback bands (0 / 3 / 5)', () => {
-  for (const [prior, expected] of [[0, 0], [2, 0], [3, 2], [4, 2], [5, 5], [10, 5]]) {
+test('hospital-score prior-admissions callback bands (0-1 / 2-5 / more than 5)', () => {
+  for (const [prior, expected] of [[0, 0], [1, 0], [2, 2], [4, 2], [5, 2], [6, 5], [10, 5]]) {
     const inputs = { hgbLt12: false, oncologyDischarge: false, sodiumLt135: false, anyProcedure: false, urgentAdmission: false, priorAdmissions12mo: prior, losGe5: false };
     assert.equal(sumComponents(META['hospital-score'], inputs), expected, `prior=${prior}`);
     assert.equal(hospitalScore(inputs).score, expected, `prior=${prior}`);
@@ -2641,33 +2641,34 @@ test('alvarado-pas PAS +2 weights fire correctly (cough/hop + RLQ -> 4)', () => 
 
 // --- Wave 48-4i: LIPS, Westley, PRAM, PASS ------------------------------
 
-const LIPS_ZERO = { shock: false, aspiration: false, sepsis: false, pneumonia: false, highRiskSurgery: false, highRiskTrauma: false, alcoholAbuse: false, obesityBmiGt30: false, hypoalbuminemia: false, chemotherapy: false, fio2Gt035or4L: false, tachypneaRrGt30: false, spo2Lt95: false, acidosisPhLt735: false, diabetes: false };
+const LIPS_ZERO = {};
 
 test('lips components sum equals lips() (zero)', () => {
   const r = lips(LIPS_ZERO);
-  assert.equal(sumComponents(META.lips, LIPS_ZERO), r.score);
+  assert.equal(sumComponents(META.lips, r.counted), r.score);
   assert.equal(r.score, 0);
 });
 
-test('lips diabetes alone yields -1 (protective)', () => {
-  const inputs = { ...LIPS_ZERO, diabetes: true };
-  const r = lips(inputs);
-  assert.equal(sumComponents(META.lips, inputs), r.score);
-  assert.equal(r.score, -1);
+test('lips diabetes counts only with sepsis; the steps follow what counted', () => {
+  const alone = lips({ diabetes: true });
+  assert.equal(sumComponents(META.lips, alone.counted), alone.score);
+  assert.equal(alone.score, 0);
+  const withSepsis = lips({ diabetes: true, sepsis: true });
+  assert.equal(sumComponents(META.lips, withSepsis.counted), withSepsis.score);
+  assert.equal(withSepsis.score, 0);
 });
 
-test('lips components sum equals lips() (high-risk band; shock + sepsis -> 3 not enough, + pneumonia -> 4.5)', () => {
-  const inputs = { ...LIPS_ZERO, shock: true, sepsis: true, pneumonia: true };
-  const r = lips(inputs);
-  assert.equal(sumComponents(META.lips, inputs), r.score);
+test('lips components sum equals lips() (shock + sepsis + pneumonia -> 4.5, high)', () => {
+  const r = lips({ shock: true, sepsis: true, pneumonia: true });
+  assert.equal(sumComponents(META.lips, r.counted), r.score);
   assert.equal(r.score, 4.5);
 });
 
-test('lips all positive + diabetes (max -1 from protective) -> 19', () => {
-  const inputs = { shock: true, aspiration: true, sepsis: true, pneumonia: true, highRiskSurgery: true, highRiskTrauma: true, alcoholAbuse: true, obesityBmiGt30: true, hypoalbuminemia: true, chemotherapy: true, fio2Gt035or4L: true, tachypneaRrGt30: true, spo2Lt95: true, acidosisPhLt735: true, diabetes: true };
+test('lips every row ticked: components sum equals lips()', () => {
+  const inputs = Object.fromEntries(META.lips.derivation.components.map((c) => [c.inputKey, true]));
   const r = lips(inputs);
-  assert.equal(sumComponents(META.lips, inputs), r.score);
-  assert.equal(r.score, 19);
+  assert.equal(sumComponents(META.lips, r.counted), r.score);
+  assert.equal(r.score, 35);
 });
 
 test('westley components sum equals westley() (zero)', () => {

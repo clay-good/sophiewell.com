@@ -1321,7 +1321,7 @@ export const renderers = {
       ['Respiratory rate >= 30', 'pe-rr'],
       ['Temperature < 36 °C', 'pe-tmp'],
       ['Altered mental status', 'pe-ams'],
-      ['SaO2 < 90% on room air', 'pe-sao2'],
+      ['SaO2 < 90% (with or without supplemental oxygen)', 'pe-sao2'],
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
@@ -1916,7 +1916,7 @@ export const renderers = {
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     root.appendChild(el('p', {}, [
-      el('label', { for: 'hs-prior', text: 'Number of admissions in the past 12 months (0=0; 1-2=0; 3-4=2; >=5=5)' }), el('br'),
+      el('label', { for: 'hs-prior', text: 'Number of admissions in the past 12 months (0-1 = 0; 2-5 = 2; more than 5 = 5)' }), el('br'),
       el('input', { id: 'hs-prior', type: 'number', step: '1', min: '0', value: '0' }),
     ]));
     const o = out(); root.appendChild(o);
@@ -2715,8 +2715,16 @@ export const renderers = {
       ['Aspiration (+2)', 'lp-asp', 'aspiration'],
       ['Sepsis (+1)', 'lp-sep', 'sepsis'],
       ['Pneumonia (+1.5)', 'lp-pna', 'pneumonia'],
-      ['High-risk surgery (+1.5)', 'lp-surg', 'highRiskSurgery'],
-      ['High-risk trauma (+2)', 'lp-trauma', 'highRiskTrauma'],
+      ['Surgery: orthopedic spine (+1)', 'lp-sx-spine', 'orthoSpineSurgery'],
+      ['Surgery: acute abdomen (+2)', 'lp-sx-abd', 'acuteAbdomenSurgery'],
+      ['Surgery: cardiac (+2.5)', 'lp-sx-card', 'cardiacSurgery'],
+      ['Surgery: aortic vascular (+3.5)', 'lp-sx-aort', 'aorticVascularSurgery'],
+      ['That surgery is an emergency (+1.5)', 'lp-sx-emerg', 'emergencySurgery'],
+      ['Trauma: traumatic brain injury (+2)', 'lp-tr-tbi', 'traumaticBrainInjury'],
+      ['Trauma: smoke inhalation (+2)', 'lp-tr-smoke', 'smokeInhalation'],
+      ['Trauma: near drowning (+2)', 'lp-tr-drown', 'nearDrowning'],
+      ['Trauma: lung contusion (+1.5)', 'lp-tr-cont', 'lungContusion'],
+      ['Trauma: multiple fractures (+1.5)', 'lp-tr-fx', 'multipleFractures'],
       ['Alcohol abuse (+1)', 'lp-etoh', 'alcoholAbuse'],
       ['Obesity BMI > 30 (+1)', 'lp-obese', 'obesityBmiGt30'],
       ['Hypoalbuminemia (+1)', 'lp-alb', 'hypoalbuminemia'],
@@ -2725,7 +2733,7 @@ export const renderers = {
       ['Tachypnea RR > 30 (+1.5)', 'lp-tach', 'tachypneaRrGt30'],
       ['SpO2 < 95% (+1)', 'lp-spo2', 'spo2Lt95'],
       ['Acidosis pH < 7.35 (+1.5)', 'lp-acid', 'acidosisPhLt735'],
-      ['Diabetes mellitus (-1)', 'lp-dm', 'diabetes'],
+      ['Diabetes mellitus, only if sepsis (-1)', 'lp-dm', 'diabetes'],
     ];
     for (const [l, id] of items) root.appendChild(checkbox(l, id));
     const o = out(); root.appendChild(o);
@@ -2737,7 +2745,8 @@ export const renderers = {
       const r = S4.lips(args);
       o.appendChild(el('h2', { text: `LIPS ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
-      if (deriv) updateDerivationSteps(deriv, META.lips, args);
+      // The worked steps show what counted: the two conditional rows drop out with their condition.
+      if (deriv) updateDerivationSteps(deriv, META.lips, r.counted);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     run();
@@ -2759,7 +2768,7 @@ export const renderers = {
     root.appendChild(checkbox('Heart rate >= 125 bpm (1)', 'sc-hr'));
     root.appendChild(checkbox('Confusion / new-onset (1)', 'sc-conf'));
     root.appendChild(el('h2', { text: 'Oxygenation (any positive triggers 2 points; age-adjusted)' }));
-    root.appendChild(el('p', { class: 'muted', text: 'Age <=50: PaO2 <70 OR SpO2 <94% OR P/F <333. Age >50: PaO2 <60 OR SpO2 <90% OR P/F <250.' }));
+    root.appendChild(el('p', { class: 'muted', text: 'Age <=50: PaO2 <70 OR SpO2 <94% OR P/F <333. Age >50: PaO2 <60 OR SpO2 <=90% OR P/F <250.' }));
     root.appendChild(el('p', {}, [
       el('label', { for: 'sc-pao2', text: 'PaO2 (mmHg; blank if unknown)' }), el('br'),
       el('input', { id: 'sc-pao2', type: 'number', step: 'any', min: '10', max: '700', value: '90' }),

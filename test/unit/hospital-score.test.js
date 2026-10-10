@@ -29,14 +29,14 @@ test('hospital-score high (maximum) 13', () => {
   assert.match(r.band, /high risk/);
 });
 
-test('hospital-score prior admissions bands: 1-2=0; 3-4=2; >=5=5', () => {
+test('hospital-score prior admissions bands (Donze 2016): 0-1 = 0; 2-5 = 2; more than 5 = 5', () => {
   const f = (n) => hospitalScore({ hgbLt12: false, oncologyDischarge: false,
     sodiumLt135: false, anyProcedure: false, urgentAdmission: false,
     priorAdmissions12mo: n, losGe5: false }).score;
   assert.equal(f(0), 0);
-  assert.equal(f(2), 0);
-  assert.equal(f(3), 2);
-  assert.equal(f(4), 2);
-  assert.equal(f(5), 5);
+  assert.equal(f(1), 0);
+  assert.equal(f(2), 2);
+  assert.equal(f(5), 2);
+  assert.equal(f(6), 5);
   assert.equal(f(10), 5);
 });

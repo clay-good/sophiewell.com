@@ -6,6 +6,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Smaller corrections from reading sources: PESI's saturation item counts below 90% with or without
+  supplemental oxygen (the label said "on room air"); SMART-COP scores a saturation of exactly 90%
+  in patients over 50; ATRIA cites the right tables; and the study-population notes for 4AT, ICDSC,
+  CRB-65, the vasoactive-inotropic score, MODS and Rockall now match their papers.
+
+- HOSPITAL readmission score banded prior admissions as 0-2 = 0, 3-4 = 2, 5 or more = 5, which no
+  published version uses. The validated bands are 0-1 = 0, 2-5 = 2, more than 5 = 5: a patient with
+  two admissions was under-scored by 2 and one with exactly five over-scored by 3. The risk
+  percentages are cited to the 2016 international validation that reported them.
+
+- Lung Injury Prediction Score (LIPS) had one "high-risk surgery" box worth 1.5 and one "high-risk
+  trauma" box worth 2. The Gajic 2011 worksheet scores them by type: orthopedic spine 1, acute
+  abdomen 2, cardiac 2.5, aortic vascular 3.5, plus 1.5 for emergency surgery; traumatic brain
+  injury 2, smoke inhalation 2, near drowning 2, lung contusion 1.5, multiple fractures 1.5. An
+  emergency aortic repair scored 1.5 and now scores 5. Diabetes subtracts a point only with
+  sepsis (it was subtracted always), and high risk is above 4 (exactly 4 was called high risk).
+
+- Braden Scale printed its five risk levels "per Bergstrom 1987". The scale is from that paper;
+  the levels are the cutoffs in common use, and the result now says so.
+
 - Morse Fall Scale printed its risk bands "per Morse 1989". The item weights are Morse's; the
   bands are set by each facility (25-50 moderate and 51 or more high is one common set; the
   Veterans Health Administration calls 45 or more high). The bands are now labeled as a common
