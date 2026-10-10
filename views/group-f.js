@@ -544,9 +544,11 @@ export const renderers = {
       const r = mmeTotal({ rows: valid, factors });
       out.appendChild(el('h2', { text: `Total daily MME: ${r.totalMme.toFixed(1)}` }));
       const flags = [];
-      if (r.totalMme >= 50) flags.push('At/above 50 MME (CDC: reassess)');
-      if (r.totalMme >= 90) flags.push('At/above 90 MME (CDC: justify with documentation)');
-      if (flags.length) out.appendChild(el('p', { text: flags.join(' - ') }));
+      // spec-v1641 row 25 (CDC 2022, PMC9639433, recommendation 4 text): at 50 MME/day or more the guideline adds
+      // precautions and says to offer naloxone. Its "90 MME: justify" line was the 2016 guideline's; 2022 has none.
+      if (r.totalMme >= 50) flags.push('At or above 50 MME/day. CDC 2022: add precautions, follow up more often, and offer naloxone and overdose prevention education to the patient and household members.');
+      if (r.totalMme >= 90) flags.push('At or above 90 MME/day. That threshold is from the 2016 CDC guideline; the 2022 guideline sets no 90 MME line and says increases beyond 50 bring diminishing benefit and rising risk.');
+      for (const f of flags) out.appendChild(el('p', { text: f }));
       out.appendChild(el('h3', { text: 'Per-medication breakdown' }));
       out.appendChild(el('ul', {}, r.breakdown.map((b) =>
         el('li', { text: `${b.drug}: ${b.mgPerDose} mg x ${b.dosesPerDay}/day x factor ${b.factor || '?'} = ${b.mme == null ? '(unknown drug)' : b.mme.toFixed(1) + ' MME'}` }))));

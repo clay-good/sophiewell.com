@@ -106,7 +106,7 @@ export default [
     // conversion factors are read from the shipped data shard (single source of
     // truth). The compute echoes the CDC 50 / 90 MME/day breakpoints so they
     // appear in the JSON alongside the total.
-    summary: 'CDC 2022 opioid morphine-milligram-equivalents (MME): daily MME = mg per dose x doses per day x the drug conversion factor. Reference only (not a prescription), with the CDC reassess (50 MME/day) and justify-with-documentation (90 MME/day) breakpoints.',
+    summary: 'CDC 2022 opioid morphine-milligram-equivalents (MME): daily MME = mg per dose x doses per day x the drug conversion factor. Reference only (not a prescription), with the CDC 2022 action at 50 MME/day or more (added precautions, more frequent follow-up, offer naloxone and overdose prevention education). The 90 MME/day line belonged to the 2016 guideline; 2022 sets none.',
     compute: (a) => {
       const r = F.mmeTotal({ rows: [{ drug: a.drug, mgPerDose: a.mgPerDose, dosesPerDay: a.dosesPerDay }], factors: MME });
       return { ...r, cdcReassessThreshold: 50, cdcJustifyThreshold: 90 };

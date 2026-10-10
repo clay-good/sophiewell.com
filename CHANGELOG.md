@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Time in therapeutic range banded 65% as "good control"; that figure was found in no source read,
+  so the result reports the percentage and day counts and draws no line. spec-v1641 row 13.
+
+- Opioid MME flagged 50 MME/day as "CDC: reassess" and 90 as "CDC: justify with documentation".
+  The 2022 CDC guideline says that at 50 MME/day or more clinicians should add precautions and
+  offer naloxone and overdose prevention education to the patient and household; it has no 90 MME
+  line (that was the 2016 guideline). Both flags now say so. spec-v1641 row 25.
+
 - Corrected phenytoin's ESRD option now carries what the one study of that form found (Soriano
   2017: a 75% error in 21 hemodialysis patients) and says to measure a free level. spec-v1641
   row 7.

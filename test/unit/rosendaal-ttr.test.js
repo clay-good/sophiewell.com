@@ -14,7 +14,8 @@ test('tile example: an out-of-range opening interval', () => {
   assert.equal(r.total, 20);
   assert.equal(r.below, 4);
   assert.equal(r.above, 0);
-  assert.equal(r.bandLabel, 'Good control (≥ 65%)');
+  assert.equal(r.bandLabel, 'TTR 80%');
+  assert.doesNotMatch(r.band + r.detail + r.note.replace(/No quality threshold.*?read\./, ''), /good control|65%/i);
 });
 
 test('all-in-range series is 100% and defaults to the 2.0-3.0 target', () => {
@@ -24,12 +25,12 @@ test('all-in-range series is 100% and defaults to the 2.0-3.0 target', () => {
   assert.equal(r.above, 0);
 });
 
-test('a poorly-controlled series lands below the good-control mark', () => {
+test('a poorly-controlled series reports its percentage and draws no line (spec-v1641 row 13)', () => {
   const r = rosendaalTtr({ series: '2026-03-01 1.2\n2026-03-11 1.6', low: 2.0, high: 3.0 });
   assert.equal(r.inRange, 0);
   assert.equal(r.ttr, 0);
-  assert.equal(r.abnormal, true);
-  assert.equal(r.bandLabel, 'Below good-control threshold');
+  assert.equal(r.abnormal, false);
+  assert.equal(r.bandLabel, 'TTR 0%');
 });
 
 test('guards: fewer than two valid rows, bad target, and same-day span fall back', () => {

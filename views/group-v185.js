@@ -219,7 +219,7 @@ export const renderers = {
 
   // ----- 2.7 rosendaal-ttr ---------------------------------------------------
   'rosendaal-ttr'(root) {
-    note(root, 'Time in therapeutic range (Rosendaal 1993): an INR is linearly interpolated across the days between measurements; TTR = days-in-range / total-days. Good control commonly ≥ 65%.');
+    note(root, 'Time in therapeutic range (Rosendaal 1993): an INR is linearly interpolated across the days between measurements; TTR = days-in-range / total-days.');
     root.appendChild(textareaField('Dated INR values — one per line, "YYYY-MM-DD INR"', 'ttr-series', '2026-01-01 1.5\n2026-01-11 2.5\n2026-01-21 2.8'));
     root.appendChild(field('Target INR low', 'ttr-low', { type: 'number', min: '0', step: 'any', inputmode: 'decimal', value: '2.0' }));
     root.appendChild(field('Target INR high', 'ttr-high', { type: 'number', min: '0', step: 'any', inputmode: 'decimal', value: '3.0' }));

@@ -31,6 +31,8 @@ changed. Rows not listed are not built.
 | 9 | `apap-24h-max` | Built: each ceiling names its source; 2,000 mg is marked as the reader's own limit. The child mode is not built. |
 | 11 | `anticoag-reversal` | Partly built: vitamin K reads 5 to 10 mg by slow IV injection (CHEST 2012 rec. 9.3). Protamine by time and the Balfaxar citation are not built. |
 | 12 | `lean-body-weight` | Built: the agent-facing summary names Janmahasatian. |
+| 13 | `rosendaal-ttr` | Built: the unsourced 65% "good control" line is removed. The count-based fraction in [v1634](spec-v1634.md) backfill 6 is not built. |
+| 25 | `opioid-mme` | Built: the 50 MME/day flag carries the guideline's sentence. Also corrected at build: the 90 MME flag was the 2016 guideline's, which the 2022 guideline dropped. |
 | 19 | `abx-renal` | Partly built: rows rewritten from the labels with each label's set id and revision date. The weekly label watch is not built. |
 
 ## Tier 1: a dose or grade on screen differs from the current source
