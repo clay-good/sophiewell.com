@@ -112,3 +112,9 @@ test('sepsis-bundle-clock: the antibiotic window follows shock or likelihood; un
   assert.equal(sepsisBundleClock({ ...base, antibioticTime: '2026-05-19T15:30' }).items.find((i) => /^broad-spectrum/.test(i.label)).status, 'late');
   assert.equal(sepsisBundleClock({ ...base, antibioticTime: '2026-05-19T12:45' }).items.find((i) => /^broad-spectrum/.test(i.label)).status, 'on-time');
 });
+
+test('code-blue-clock: the ETCO2 figure is labeled a CPR-quality target, never a ROSC sign', () => {
+  const r = codeBlueClock({ codeStartTimestamp: '2026-05-19T12:00', asOf: '2026-05-19T12:06' });
+  assert.match(r.banner, /at least 10 mmHg, ideally 20 or more, is a CPR-quality target, not a sign of ROSC/);
+  assert.doesNotMatch(r.banner, /ROSC ETCO2 sustained/);
+});

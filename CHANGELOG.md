@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Code-blue documentation timer called an ETCO2 above 10 mmHg a ROSC target. That figure
+  (ideally 20 or more) is the target for compression quality; ROSC is suggested
+  by an abrupt sustained rise and confirmed by a pulse check, and the banner
+  now says so.
 - Surviving Sepsis bundle timer marked antibiotics "late" after 60 minutes for every
   patient. The 2021 Surviving Sepsis guideline gives 1 hour for possible shock
   or a high likelihood of sepsis, and 3 hours for possible sepsis without
