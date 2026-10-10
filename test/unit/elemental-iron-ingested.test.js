@@ -35,3 +35,24 @@ test('inputs are validated', () => {
   assert.equal(elementalIronIngested({ tablets: '10', mgPerTablet: '300', saltType: 'ferrous-sulfate' }).field, 'weightKg');
   assert.equal(elementalIronIngested({ tablets: '10', mgPerTablet: '300', saltType: 'bogus', weightKg: '30' }).field, 'saltType');
 });
+
+// spec-v1641 row 18: each printed fraction is shown with the formula mass it comes from.
+test('the result derives each salt fraction from its formula mass', () => {
+  const base = { tablets: '10', mgPerTablet: '300', weightKg: '30' };
+  const cases = [
+    ['ferrous-sulfate', /FeSO4·7H2O.*55\.845 ÷ formula mass 278\.01 = 20\.1%, printed as 20% in the Merck Manual/],
+    ['ferrous-gluconate', /C12H22FeO14·2H2O.*formula mass 482\.17 = 11\.6%, printed as 12%/],
+    ['ferrous-fumarate', /C4H2FeO4.*formula mass 169\.90 = 32\.9%, printed as 33%/],
+  ];
+  for (const [saltType, re] of cases) {
+    const d = elementalIronIngested({ ...base, saltType }).detail;
+    assert.match(d, re);
+    // The derived share rounds to the fraction the dose is computed from.
+    const [, derived, printed] = d.match(/= (\d+\.\d)%, printed as (\d+)%/);
+    assert.equal(Math.round(Number(derived)), Number(printed));
+  }
+  assert.match(elementalIronIngested({ ...base, saltType: 'ferrous-sulfate' }).detail, /Dried ferrous sulfate \(FeSO4·H2O\) is 32\.9% iron/);
+  assert.doesNotMatch(elementalIronIngested({ ...base, saltType: 'ferrous-fumarate' }).detail, /Dried/);
+  assert.doesNotMatch(elementalIronIngested({ ...base, saltType: 'elemental' }).detail, /formula mass/);
+  assert.equal(elementalIronIngested({ ...base, saltType: 'constructor' }).field, 'saltType');
+});

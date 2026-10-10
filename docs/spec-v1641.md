@@ -32,6 +32,9 @@ changed. Rows not listed are not built.
 | 11 | `anticoag-reversal` | Partly built: vitamin K reads 5 to 10 mg by slow IV injection (CHEST 2012 rec. 9.3). Protamine by time and the Balfaxar citation are not built. |
 | 12 | `lean-body-weight` | Built: the agent-facing summary names Janmahasatian. |
 | 13 | `rosendaal-ttr` | Built: the unsourced 65% "good control" line is removed. The count-based fraction in [v1634](spec-v1634.md) backfill 6 is not built. |
+| 14 | `calvert-carboplatin` | Built: the cap names and links FDA's "Carboplatin dosing" communication of October 8, 2010, read in an archived copy (the page is gone from fda.gov). The 2025 Kyxata carboplatin label was also read and carries no cap. |
+| 17 | `partd-year-cost` | Built: the note states the three-way "lesser of" and no deductible, from 42 CFR 423.100 and 423.120(h) as read in the eCFR. `partd-insulin-cost-cap` is not built. |
+| 18 | `elemental-iron-ingested`, `conc-percent` | Built: the iron result shows each fraction's derivation from its formula mass and the hydrate assumed; the converter cites an identity. Found at build: the 20%, 12% and 33% figures are printed in the Merck Manual, which the tool already cited, so they were not unsourced. The Manual gives the 20 and 60 mg/kg lines but not the 150 mg/kg line, and StatPearls (the tool's other source) could not be opened to re-read it. |
 | 23 | `egfr`, `egfr-suite`, `ckd-epi-cystatin` | Built: each shows the de-indexed mL/min value when height and weight are entered (BSA by Mosteller). |
 | 25 | `opioid-mme` | Built: the 50 MME/day flag carries the guideline's sentence. Also corrected at build: the 90 MME flag was the 2016 guideline's, which the 2022 guideline dropped. |
 | 19 | `abx-renal` | Partly built: rows rewritten from the labels with each label's set id and revision date. The weekly label watch is not built. |
@@ -94,7 +97,3 @@ two benzodiazepine equivalence tools should merge.
 - Each Tier 2 row gets a test that the result carries a citation, and that a removed figure is
   gone from the page, the agent summary and the pre-rendered tool page.
 - Tier 3 rows 21 and 22 carry dated behavior; their tests set the clock on each side of the date.
-
-## Build status
-
-Not started. Specified October 10, 2026.

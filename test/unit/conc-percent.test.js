@@ -32,3 +32,14 @@ test('rejects unknown mode and non-positive value', () => {
   assert.throws(() => concPercent({ mode: 'molar', value: 1 }), /mode must be/);
   assert.throws(() => concPercent({ mode: 'ratio', value: 0 }), /value/);
 });
+
+// spec-v1641 row 18: an arithmetic identity is cited as one, not credited to USP.
+test('the citation and the agent summary name an identity, not USP', async () => {
+  const { META } = await import('../../lib/meta.js');
+  const adapters = (await import('../../mcp/adapters/medication-v5.js')).default;
+  const summary = adapters.find((a) => a.id === 'conc-percent').summary;
+  for (const text of [META['conc-percent'].citation, summary]) {
+    assert.match(text, /identit/i);
+    assert.doesNotMatch(text, /USP/);
+  }
+});

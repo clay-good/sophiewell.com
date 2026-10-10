@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Carboplatin (Calvert) credited its 125 mL/min GFR cap to "FDA (2010)" with no link. It now names
+  and links the FDA communication of October 8, 2010 (the page is gone from fda.gov; the link opens
+  an archived copy) and says what it says: consider the cap when GFR is estimated from creatinine
+  measured by the IDMS method, and the carboplatin label itself carries no cap. spec-v1641 row 14.
+- Part D cost through the year said "covered insulin is capped at $35 a month." The rule is no
+  deductible and, per one-month fill, the lesser of $35, 25% of the maximum fair price and 25% of
+  the negotiated price (42 CFR 423.100, 423.120(h)); the note now says so. spec-v1641 row 17.
+- Elemental iron ingested shows where each salt's percentage comes from (iron over the formula
+  mass, with the hydrate assumed) and warns that dried ferrous sulfate is 32.9% iron, not 20%.
+  The concentration converter cites its conversions as arithmetic identities, not as a USP
+  figure. spec-v1641 row 18.
+
 - Time in therapeutic range banded 65% as "good control"; that figure was found in no source read,
   so the result reports the percentage and day counts and draws no line. spec-v1641 row 13.
 

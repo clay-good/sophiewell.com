@@ -71,6 +71,13 @@ test('Part D year: deductible, 25% coinsurance, then $0 at the out-of-pocket cap
   assert.equal(py({ monthlyCost: '800', startMonth: '1', deductible: '900', year: '2026' }).valid, false);
 });
 
+// spec-v1641 row 17: the insulin rule is a three-way "lesser of" with no deductible (42 CFR 423.100, 423.120(h)).
+test('Part D year: the insulin note states the rule, not a flat $35 cap', () => {
+  const notes = py({ monthlyCost: '800', startMonth: '1', year: '2026' }).notes.join(' ');
+  assert.match(notes, /no deductible, and a fill of up to one month costs no more than the lesser of \$35, 25% of its maximum fair price and 25% of its negotiated price \(42 CFR 423\.100, 423\.120\(h\)\)/);
+  assert.doesNotMatch(notes, /capped at \$35 a month/);
+});
+
 test('payment plan: the rule\'s own example, and a schedule that settles to the cent', () => {
   // 42 CFR 423.137(b)'s example ($2,000 in January at the 2025 threshold bills $2,000/12 = $166.67),
   // at the 2026 threshold: $2,100/12 = $175.

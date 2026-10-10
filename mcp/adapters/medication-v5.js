@@ -172,7 +172,7 @@ export default [
   },
   {
     id: 'conc-percent',
-    summary: 'Concentration convention converter (USP): ratio 1:X, percent w/v, and mg/mL expressed in all three forms (1% = 10 mg/mL; 1:1000 = 1 mg/mL).',
+    summary: 'Concentration converter (arithmetic identities from the definitions of percent w/v and ratio strength): ratio 1:X, percent w/v, and mg/mL expressed in all three forms (1% = 10 mg/mL; 1:1000 = 1 mg/mL).',
     compute: F.concPercent,
     fields: [
       { dom: 'cp-mode', arg: 'mode', kind: 'enum', values: ['ratio', 'percent', 'mgml'], required: true, label: 'Enter as' },

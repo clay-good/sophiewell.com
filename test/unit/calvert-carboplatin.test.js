@@ -39,3 +39,16 @@ test('blank or zero GFR/AUC surfaces a guarded fallback, never NaN', () => {
   assert.equal(calvertCarboplatin({ targetAuc: 5, gfr: 0 }).valid, false);
   assert.equal(calvertCarboplatin({}).valid, false);
 });
+
+// spec-v1641 row 14: the cap is FDA's October 8, 2010 communication, linked, not a bare "FDA (2010)".
+test('the 125 mL/min cap names and links the FDA communication', async () => {
+  const { META } = await import('../../lib/meta.js');
+  const m = META['calvert-carboplatin'];
+  assert.match(m.citation, /FDA, Carboplatin dosing \(communication of October 8, 2010\)/);
+  assert.doesNotMatch(m.citation, /\(2010\)/);
+  assert.ok(m.citationUrls.some((u) => /FDA 2010/.test(u.label) && /fda\.gov\/.*ucm228974/.test(u.url)));
+  const r = calvertCarboplatin({ targetAuc: 6, gfr: 140, capGfr: 'on' });
+  assert.match(r.band, /FDA, October 2010/);
+  assert.match(r.note, /October 8, 2010/);
+  assert.match(r.note, /label carries no cap/);
+});

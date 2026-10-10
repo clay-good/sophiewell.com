@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d5882b89443daf77`
-Generated: 2026-10-10T18:04:38.957Z
+Build ID: `19bfd6d6cf77a82f`
+Generated: 2026-10-10T23:05:45.135Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -351,7 +351,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/eichner-index-v1493.js` | 4130 | `af11ddb3ccb76da0478b1c85ccf6da2a65cf8e6f09dc84b1cd54586a69bc4180` |
 | `lib/el-khoury-ar-v397.js` | 3593 | `7a35fd78ff6dbfeee75168d06e8222aa275255d98db3ab9057765a044dcf69dc` |
 | `lib/elderly-mobility-scale-v689.js` | 4532 | `eed51e21c38c640c32d09ed81420ede152196b4296f6615812635c8aafd06880` |
-| `lib/elemental-iron-ingested-v687.js` | 4904 | `6a7947313f2665644860ed27ad42efe9076b3078ca5343b4087bcc6cb0093bc7` |
+| `lib/elemental-iron-ingested-v687.js` | 7106 | `1858b3152b7004f6720cfda7c5ec4fdaeebd6e0738a56d3b3963fb0e851ce724` |
 | `lib/ellis-tooth-fracture-v718.js` | 3158 | `752b44f77a8119e1d747960e57a41733c06c4f7e0afd3f093f1e85a903e7f50e` |
 | `lib/ellman-partial-rc-v1425.js` | 4804 | `1995f7804a120f354fc758bd4fdc5848932e373b48a7dd98403f2b14c5d655f1` |
 | `lib/ems-v149.js` | 8963 | `a5242adc4eb12063911f88a9afec77847abfca348fc79c58c8e3ac74e4483e55` |
@@ -692,15 +692,15 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/medicare-penalties-v1507.js` | 11757 | `adff9d120b04bab73e32a46931587ad3a29b402c47f20242c8f5947ce38aa4a0` |
 | `lib/medicare-reprice.js` | 5486 | `cc45eddf3a4d8121cc87cc3661f5179750663e0249c30b3a90c5bce56b744d34` |
 | `lib/medication-v4.js` | 19275 | `77c4c5e5c6166956f878107a402c4c1109dc0f58de1360453513e3a567054968` |
-| `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
+| `lib/medication-v5.js` | 18949 | `417eedb15a9f68820d0442a9c7d57fff33d95936db727fd47c35351c928ea53d` |
 | `lib/meld3-v678.js` | 6453 | `e04e977ebe609d49b7c132b73aa4ae59fb58744362931d47b2acf4c0d1b39651` |
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2760478 | `8e6020ba33a9997b464e79d30de200ea3178164c260a8fa0208da7035a53f0b5` |
+| `lib/meta.js` | 2760945 | `71b326f6a9ce2fe008ebbf89eb08e9a2b36df6e9aaab62d4900713b63a774572` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
-| `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
+| `lib/metabolic-onc-v88.js` | 19716 | `70987b0743a01bf29b36267679574b76f3b69cb801e02bb2726da0b384de792c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
 | `lib/metabolic-v273.js` | 4021 | `a7237fdf44ea0ab8564369c88197962e7cf4208439f29a89fc249130c94659bc` |
 | `lib/metavir-activity-v505.js` | 3062 | `750a1451913ae545ea922fdb3584efd83e1043cafdb85259a78d4d3c72f6b6a2` |
@@ -874,7 +874,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/part-b-drug-coinsurance.js` | 3062 | `96cc25ad3a1aa74cb661c45a3b76ff2bfa791cc072d975e56ba2cb2c58750f45` |
 | `lib/part-b-or-d.js` | 11017 | `20ae807ade60c91e9cfc71cf5d7370a9bad1c48cd220c94d1cead2239050b121` |
 | `lib/partd-appeals-v1503.js` | 12294 | `1378bcf2b538a7b880a63044f8ce4b7f1c1fd517fabeafbb2c349cb8a9a57325` |
-| `lib/partd-costs-v1506.js` | 8324 | `9770b66032f8fe39571b0c637bb3b7b879f0d4b9baad6a463f660ad0fc427e68` |
+| `lib/partd-costs-v1506.js` | 8541 | `6d3b2ad77e78845caecb14691d0fa02cd21ee2a35339276193173019a7d0703e` |
 | `lib/pas-bundle-check.js` | 5368 | `2a876c49d1315cafa7879fc2b7f5c33f376dc2e3c54a29b346fa15fca04b2f64` |
 | `lib/pas-profiles-load.js` | 955 | `e0396d1b24ed9a7e154c920dce55f7925cd1f2342c2d480c7ab6579f38c95b08` |
 | `lib/pas-swallow-v367.js` | 4492 | `eea0e378665274c79d8ed02f136729764350a00aeb04116f8a7ec0cf20baa49b` |
@@ -1879,7 +1879,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/medicare-ffs-pa-required.js` | 1018 | `eebf12722cfdb13ba2cb6688fc051983b0a304aa3191f706013d7e2c937bdcc1` |
 | `mcp/adapters/medicare-penalties-v1507.js` | 2712 | `d3732bee66bb93fc846a881c145bd6c4b89b264cf49d9c4421097d97e9ba3d4a` |
 | `mcp/adapters/medication-v4.js` | 9923 | `7e3f5fd8ae4a8031286db26b31c22f0d5f6700c45a89025c9807539efc0d909a` |
-| `mcp/adapters/medication-v5.js` | 11290 | `71bbf994882579e2b8b0264da43e4fa93e2c6354c3d13ed9f3be80b79a8c13aa` |
+| `mcp/adapters/medication-v5.js` | 11352 | `1ea797a17f44ca7c7ca31328e2e2fd0a9d82ad66fc6379c81a38aa7cd4b397ce` |
 | `mcp/adapters/meld3-v678.js` | 1809 | `cdd0ac147f46bd4dc5a5ac9f71d3a8fb62e8f008a2609cc05c3369f18f682c33` |
 | `mcp/adapters/membranous-risk-v878.js` | 2992 | `7b6babfdf69026f8522a02f9539b48ebb04e105912e1f4542caacbc00b82d3c5` |
 | `mcp/adapters/meniere-aao-hns-v708.js` | 1323 | `eebbc4b8c31b8cbb2d04595c065ac8bb2aba3d1f4450a43e2d8c48838000d962` |
