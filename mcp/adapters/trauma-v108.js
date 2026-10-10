@@ -73,16 +73,16 @@ export default [
   },
   {
     id: 'nexus-chest-ct',
-    summary: 'NEXUS Chest CT decision instrument (Rodriguez 2015): whether chest CT is indicated after blunt trauma from seven criteria; any positive suggests imaging.',
+    summary: 'NEXUS Chest CT decision instrument (Rodriguez 2015): whether chest CT is indicated after blunt trauma from the seven Chest CT-All criteria (abnormal chest x-ray, rapid deceleration, distracting injury, chest-wall, sternal, thoracic-spine and scapular tenderness); any positive suggests imaging. ctMajorIndicated applies the same list without rapid deceleration.',
     compute: F.nexusChestCt,
     fields: [
       { dom: 'nx-cxr', arg: 'abnormalCxr', kind: 'bool', label: 'Abnormal chest X-ray' },
-      { dom: 'nx-distract', arg: 'distractingInjury', kind: 'bool', label: 'Distracting painful injury' },
-      { dom: 'nx-tender', arg: 'chestTenderness', kind: 'bool', label: 'Chest-wall tenderness' },
       { dom: 'nx-decel', arg: 'rapidDeceleration', kind: 'bool', label: 'Rapid deceleration mechanism' },
-      { dom: 'nx-age', arg: 'ageOver60', kind: 'bool', label: 'Age > 60 years' },
-      { dom: 'nx-intox', arg: 'intoxication', kind: 'bool', label: 'Intoxication' },
-      { dom: 'nx-mental', arg: 'abnormalAlertness', kind: 'bool', label: 'Abnormal alertness / mental status' },
+      { dom: 'nx-distract', arg: 'distractingInjury', kind: 'bool', label: 'Distracting painful injury' },
+      { dom: 'nx-tender', arg: 'chestWallTenderness', kind: 'bool', label: 'Chest wall tenderness' },
+      { dom: 'nx-sternal', arg: 'sternalTenderness', kind: 'bool', label: 'Sternal tenderness' },
+      { dom: 'nx-tspine', arg: 'thoracicSpineTenderness', kind: 'bool', label: 'Thoracic spine tenderness' },
+      { dom: 'nx-scap', arg: 'scapularTenderness', kind: 'bool', label: 'Scapular tenderness' },
     ],
   },
 ];

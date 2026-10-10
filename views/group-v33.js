@@ -101,6 +101,7 @@ export const renderers = {
         { label: 'Coefficient set', value: r.mechanism },
       ]);
       derivation(o, 'Logistic exponent b = sum of:', r.terms);
+      if (r.ctMajorNote) note(o, r.ctMajorNote);
       note(o, r.note);
     }));
     postureNote(root);
@@ -214,21 +215,21 @@ export const renderers = {
     note(root, 'Applies to blunt thoracic trauma. If all seven criteria are negative, chest CT can be deferred.');
     const items = [
       ['Abnormal chest x-ray', 'nx-cxr'],
-      ['Distracting painful injury', 'nx-distract'],
-      ['Chest wall, sternum, thoracic spine, or scapular tenderness', 'nx-tender'],
       ['Rapid-deceleration mechanism (fall > 20 ft or MVC > 40 mph)', 'nx-decel'],
-      ['Age > 60 years', 'nx-age'],
-      ['Intoxication', 'nx-intox'],
-      ['Abnormal alertness or mental status', 'nx-mental'],
+      ['Distracting painful injury', 'nx-distract'],
+      ['Chest wall tenderness', 'nx-tender'],
+      ['Sternal tenderness', 'nx-sternal'],
+      ['Thoracic spine tenderness', 'nx-tspine'],
+      ['Scapular tenderness', 'nx-scap'],
     ];
     for (const [label, id] of items) root.appendChild(checkField(label, id));
     const o = out(); root.appendChild(o);
     const ids = items.map(([, id]) => id);
     wire(ids, () => safe(o, () => {
       const r = M.nexusChestCt({
-        abnormalCxr: chk('nx-cxr'), distractingInjury: chk('nx-distract'), chestTenderness: chk('nx-tender'),
-        rapidDeceleration: chk('nx-decel'), ageOver60: chk('nx-age'), intoxication: chk('nx-intox'),
-        abnormalAlertness: chk('nx-mental'),
+        abnormalCxr: chk('nx-cxr'), rapidDeceleration: chk('nx-decel'), distractingInjury: chk('nx-distract'),
+        chestWallTenderness: chk('nx-tender'), sternalTenderness: chk('nx-sternal'),
+        thoracicSpineTenderness: chk('nx-tspine'), scapularTenderness: chk('nx-scap'),
       });
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },

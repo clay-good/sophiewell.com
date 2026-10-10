@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Both NEXUS chest tools listed age over 60, intoxication and altered alertness as criteria and
+  left out scapular tenderness. The cited instrument (Rodriguez 2015, Chest CT-All) is abnormal
+  chest x-ray, rapid deceleration, distracting injury, and chest-wall, sternal, thoracic-spine and
+  scapular tenderness: isolated scapular tenderness read "may be deferred". Both now use the
+  published seven, and the CT tool also reports Chest CT-Major (the list without deceleration).
+
+- PELOD-2 took the larger of the coma-score points and the 5 points for fixed pupils; the table
+  adds them (GCS 3-4 with fixed pupils is 9, not 5). A white-cell count of exactly 2 now scores 2.
+- Pediatric SOFA: at 1 to 11 months a creatinine of 0.7 mg/dL is 2 points (3 points start at
+  0.8), and patients over 18 years use the table's adult row (MAP 70; creatinine 1.2 / 2.0 / 3.5 /
+  5.0) instead of the 12-to-18-year row.
+
 - NRS-2002: the score-3 BMI option (under 18.5) carries its "with impaired general condition"
   qualifier. Clinical Frailty Scale level 2 is "Fit" (version 2.0). SMART-COP gains its "very high"
   band at 7 or more. CPOT's cutoff is attributed to the 2009 paper that set it. STOP-BANG's

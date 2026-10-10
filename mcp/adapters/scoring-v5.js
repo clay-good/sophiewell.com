@@ -80,16 +80,13 @@ export default [
   },
   {
     id: 'nexus-chest',
-    summary: 'NEXUS Chest CT rule for blunt trauma: imaging indicated if any of abnormal chest x-ray, distracting injury, chest-wall/sternal/thoracic-spine tenderness, age > 60, rapid deceleration, intoxication, or altered alertness.',
+    summary: 'NEXUS Chest CT rule for blunt trauma (Rodriguez 2015, Chest CT-All): imaging indicated if any of abnormal chest x-ray, rapid deceleration, distracting injury, or chest-wall, sternal, thoracic-spine or scapular tenderness; may be deferred only if all are absent.',
     compute: F.nexusChest,
     fields: [
       { dom: 'nc-cxr', arg: 'abnormalCxr', kind: 'bool', label: 'Abnormal chest x-ray' },
       { dom: 'nc-distract', arg: 'distractingInjury', kind: 'bool', label: 'Distracting painful injury' },
-      { dom: 'nc-tender', arg: 'chestWallTender', kind: 'bool', label: 'Chest-wall / sternal / thoracic-spine tenderness' },
-      { dom: 'nc-age60', arg: 'age60', kind: 'bool', label: 'Age > 60 years' },
+      { dom: 'nc-tender', arg: 'chestWallTender', kind: 'bool', label: 'Chest-wall / sternal / thoracic-spine / scapular tenderness' },
       { dom: 'nc-decel', arg: 'rapidDecel', kind: 'bool', label: 'Rapid deceleration mechanism' },
-      { dom: 'nc-intox', arg: 'intoxication', kind: 'bool', label: 'Intoxication' },
-      { dom: 'nc-altered', arg: 'alteredAlertness', kind: 'bool', label: 'Altered alertness / mental status' },
     ],
   },
   {

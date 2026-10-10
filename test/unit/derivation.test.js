@@ -768,7 +768,7 @@ for (const [label, inputs, expected] of [
 
 for (const [label, inputs, expected] of [
   ['example, 24-59 mo band', { ageMonths: 24, gcs: 12, pupilsFixed: false, lactate: 6, map: 50, creatinine: 60, pao2fio2: 300, paco2: 40, invasiveVent: true, wbc: 5, platelets: 100 }, 9],
-  ['neonate band 0, pupils fixed, severe', { ageMonths: 0.5, gcs: 3, pupilsFixed: true, lactate: 12, map: 10, creatinine: 80, pao2fio2: 50, paco2: 100, invasiveVent: true, wbc: 1, platelets: 50 }, 29],
+  ['neonate band 0, pupils fixed, severe', { ageMonths: 0.5, gcs: 3, pupilsFixed: true, lactate: 12, map: 10, creatinine: 80, pao2fio2: 50, paco2: 100, invasiveVent: true, wbc: 1, platelets: 50 }, 33],
   ['healthy adolescent band 5 = 0', { ageMonths: 200, gcs: 15, pupilsFixed: false, lactate: 2, map: 80, creatinine: 50, pao2fio2: 400, paco2: 40, invasiveVent: false, wbc: 10, platelets: 300 }, 0],
 ]) {
   test(`pelod2 components sum equals pelod2() score (${label})`, () => {

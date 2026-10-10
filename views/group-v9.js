@@ -235,14 +235,11 @@ export const renderers = {
   'nexus-chest'(root) {
     root.appendChild(checkField('Abnormal chest x-ray', 'nc-cxr'));
     root.appendChild(checkField('Distracting painful injury', 'nc-distract'));
-    root.appendChild(checkField('Chest-wall, sternal, or thoracic-spine tenderness', 'nc-tender'));
-    root.appendChild(checkField('Age >60 years', 'nc-age60'));
+    root.appendChild(checkField('Chest-wall, sternal, thoracic-spine, or scapular tenderness', 'nc-tender'));
     root.appendChild(checkField('Rapid deceleration mechanism', 'nc-decel'));
-    root.appendChild(checkField('Intoxication', 'nc-intox'));
-    root.appendChild(checkField('Altered alertness / mental status', 'nc-altered'));
     const o = out(); root.appendChild(o);
-    wire(['nc-cxr', 'nc-distract', 'nc-tender', 'nc-age60', 'nc-decel', 'nc-intox', 'nc-altered'], () => safe(o, () => {
-      const r = S.nexusChest({ abnormalCxr: chk('nc-cxr'), distractingInjury: chk('nc-distract'), chestWallTender: chk('nc-tender'), age60: chk('nc-age60'), rapidDecel: chk('nc-decel'), intoxication: chk('nc-intox'), alteredAlertness: chk('nc-altered') });
+    wire(['nc-cxr', 'nc-distract', 'nc-tender', 'nc-decel'], () => safe(o, () => {
+      const r = S.nexusChest({ abnormalCxr: chk('nc-cxr'), distractingInjury: chk('nc-distract'), chestWallTender: chk('nc-tender'), rapidDecel: chk('nc-decel') });
       o.appendChild(list([li(r.band, r.imagingIndicated ? 'warn' : null)]));
     }));
     screenerNote(root);

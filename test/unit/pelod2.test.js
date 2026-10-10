@@ -20,3 +20,15 @@ test('age band changes the MAP cutoff', () => {
 test('out-of-range GCS throws', () => {
   assert.throws(() => pelod2({ ...base, gcs: 2 }));
 });
+
+test('pupils add to the GCS points: GCS 3 with fixed pupils is 9, GCS 8 is 6', () => {
+  const neuro = (gcs) => pelod2({ ...base, gcs, pupilsFixed: true }).parts.find((p) => p[0].startsWith('Neurologic'))[1];
+  assert.equal(neuro(3), 9);
+  assert.equal(neuro(8), 6);
+  assert.equal(neuro(15), 5);
+});
+test('WBC of exactly 2 scores 2 (0 points only above 2)', () => {
+  const wbc = (v) => pelod2({ ...base, wbc: v }).parts.find((p) => p[0] === 'Hematologic (WBC)')[1];
+  assert.equal(wbc(2), 2);
+  assert.equal(wbc(2.1), 0);
+});
