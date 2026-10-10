@@ -1,6 +1,6 @@
 # spec-v1641 — Corrections to live tools found by the pharmacy research
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. No new tools.
+**Status:** In progress, October 10, 2026. Tier 1 is built (see Build status); Tiers 2 and 3 are mostly open. No new tools.
 **Charter:** [spec-v1627](spec-v1627.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 Researching the pharmacy gaps meant reading the labels and rules that live tools already cite.
@@ -13,6 +13,25 @@ people use today.
 Each claim about a live tool was confirmed twice on October 10, 2026: once by the research
 pass and once by an independent pass that read the code path named below and re-fetched the
 source. At build, read both again; this spec is a pointer, not the source.
+
+## Build status
+
+Updated October 10, 2026. Each row below was re-read in its source at build before the code
+changed. Rows not listed are not built.
+
+| Row | Tool | Status |
+|---|---|---|
+| 1 | `co-cn-antidote` | Built: text corrected to both labels; sodium nitrite added. The weight input and mL outputs in [v1636](spec-v1636.md) backfill 2 are not built (the page is still a reference card). |
+| 2 | `nac-dosing` | Built: fixed dose at 100 kg, two-bag from 41 kg only, diluent volumes, no dose under 5 kg. The 110 kg jurisdiction switch is not built. |
+| 3, 4 | `anticoag-reversal` | Built: andexanet marked as no longer sold in the U.S. with the FDA sentence and date; no dose returned for apixaban or rivaroxaban; the 4F-PCC 50 units/kg figure removed (its guideline could not be opened to re-read). |
+| 5 | `anc` | Built: both the CTCAE v6.0 and v5.0 grades are printed. |
+| 6 | `opioid-conversion` | Built: the patch is refused as a source with the label warning; a patch target is read from the label's Table 2 from 60 mg/day oral morphine. `fentanyl-patch-initial-dose` is not built. |
+| 7 | `corrected-phenytoin` | Built: the ESRD result carries the Soriano 2017 finding. The paper was not read in full. |
+| 8 | `peds-dose` | Built: "Max 75 mg/kg/day" removed; the label direction (not more than 5 doses in 24 hours) shown. |
+| 9 | `apap-24h-max` | Built: each ceiling names its source; 2,000 mg is marked as the reader's own limit. The child mode is not built. |
+| 11 | `anticoag-reversal` | Partly built: vitamin K reads 5 to 10 mg by slow IV injection (CHEST 2012 rec. 9.3). Protamine by time and the Balfaxar citation are not built. |
+| 12 | `lean-body-weight` | Built: the agent-facing summary names Janmahasatian. |
+| 19 | `abx-renal` | Partly built: rows rewritten from the labels with each label's set id and revision date. The weekly label watch is not built. |
 
 ## Tier 1: a dose or grade on screen differs from the current source
 

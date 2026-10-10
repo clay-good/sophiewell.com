@@ -24,10 +24,22 @@ test('hydromorphone PO factor 4', () => {
   assert.equal(r.ome, 24); // 6 * 4
 });
 
-test('transdermal fentanyl sizing: 120 OME -> 50 mcg/h before reduction', () => {
-  const r = oc({ source: 'morphine-po', target: 'fentanyl-td', dose: 120, reduction: 'r0' });
-  assert.equal(r.equi, 50); // 120 / 2.4
-  assert.match(r.detail, /patch size/);
+test('to a fentanyl patch: read from the label Table 2, not a factor (120 mg/day -> 25 mcg/h)', () => {
+  const r = oc({ source: 'morphine-po', target: 'fentanyl-td', dose: 120, reduction: 'r50' });
+  assert.equal(r.starting, 25);
+  assert.equal(r.reductionPct, 0);
+  assert.match(r.band, /Table 2/);
+  assert.equal(oc({ source: 'morphine-po', target: 'fentanyl-td', dose: 135 }).starting, 50);
+  assert.equal(oc({ source: 'oxycodone-po', target: 'fentanyl-td', dose: 200 }).starting, 75); // 300 OME
+  assert.equal(oc({ source: 'morphine-po', target: 'fentanyl-td', dose: 1124 }).starting, 300);
+});
+
+test('a patch is not sized under 60 mg/day or above the table, and is never a source', () => {
+  assert.match(oc({ source: 'morphine-po', target: 'fentanyl-td', dose: 40 }).message, /opioid-tolerant/);
+  assert.equal(oc({ source: 'morphine-po', target: 'fentanyl-td', dose: 1200 }).valid, false);
+  const off = oc({ source: 'fentanyl-td', target: 'morphine-po', dose: 50 });
+  assert.equal(off.valid, false);
+  assert.match(off.message, /fatal overdosage/);
 });
 
 test('no reduction shows raw equianalgesic', () => {

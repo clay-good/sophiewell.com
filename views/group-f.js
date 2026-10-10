@@ -352,9 +352,10 @@ export const renderers = {
     root.appendChild(field('Source 3: mg per dose', 'apap-d3', { placeholder: '0' }));
     root.appendChild(field('Source 3: doses per day', 'apap-n3', { placeholder: '0' }));
     root.appendChild(selectField('24-hour ceiling', 'apap-ceiling', [
-      { value: '4000', text: '4000 mg (standard adult)' },
-      { value: '3000', text: '3000 mg (conservative)' },
-      { value: '2000', text: '2000 mg (hepatic impairment / chronic alcohol use)' },
+      // spec-v1641 row 9: each ceiling names where it comes from. 2,000 mg was found in no source read.
+      { value: '4000', text: '4000 mg (the amount in the label liver warning)' },
+      { value: '3000', text: '3000 mg (Extra Strength Tylenol directions: 6 tablets in 24 hours)' },
+      { value: '2000', text: '2000 mg (a lower limit set by you or the prescriber; not a label figure)' },
     ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {

@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Corrected phenytoin's ESRD option now carries what the one study of that form found (Soriano
+  2017: a 75% error in 21 hemodialysis patients) and says to measure a free level. spec-v1641
+  row 7.
+- Pediatric dose panel: the acetaminophen note "Max 75 mg/kg/day" was found in no source and is
+  replaced by the label direction (not more than 5 doses in 24 hours). Acetaminophen 24-hour
+  ceilings now name their sources: 4,000 mg is the label liver warning, 3,000 mg is Extra Strength
+  Tylenol's directions, and 2,000 mg is marked as a limit the reader sets, not a label figure.
+  spec-v1641 rows 8 and 9.
+
+- Opioid conversion used one factor to convert both to and from the fentanyl patch. The fentanyl
+  label says its tables cannot be used to convert from the patch (that overestimates the new
+  opioid and may be fatal), so the patch is no longer accepted as a source. Converting to a patch,
+  the factor gave 50 mcg/h at 120 mg/day of oral morphine where the label's table gives 25 mcg/h;
+  the first patch is now read from the label table, from 60 mg/day up. spec-v1641 row 6.
+
 - Anticoagulant reversal still offered andexanet for apixaban and rivaroxaban. FDA's safety
   communication of December 18, 2025 says it considers the product's risks to outweigh its
   benefits and that it is no longer made for or sold in the U.S. after December 22, 2025; the

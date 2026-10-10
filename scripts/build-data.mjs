@@ -217,7 +217,7 @@ const COVERAGE = {
   'mme-factors': { ...SUBSET('The CDC opioid MME conversion factors.'), sourceEdition: '2022 guideline' },
   'steroid-equiv': { ...SUBSET('Equivalent doses of eight glucocorticoids.'), sourceEdition: 'unversioned' },
   'benzo-equiv': { ...SUBSET('Approximate equivalent doses of common benzodiazepines.'), sourceEdition: 'unversioned' },
-  'abx-renal': { ...SUBSET('Renal dose adjustments for common antibiotics from FDA labels.'), sourceEdition: 'unversioned' },
+  'abx-renal': { ...SUBSET('Renal dose adjustments for common antibiotics from FDA labels.'), sourceEdition: 'FDA labels read 2026-10-10; each row carries its label set id and revision date' },
   'vasopressor-doses': { ...SUBSET('Dose ranges and standard concentrations for common vasopressors.'), sourceEdition: 'unversioned' },
   'tpn-rules': { ...SUBSET('Macronutrient energy densities and limits.'), sourceEdition: 'unversioned' },
   'iv-to-po': { ...SUBSET('IV-to-oral conversions for common drugs.'), sourceEdition: 'unversioned' },

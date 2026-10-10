@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9aa489697b54031b`
-Generated: 2026-10-10T15:22:41.340Z
+Build ID: `b705672494272082`
+Generated: 2026-10-10T16:03:01.444Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -247,8 +247,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v4.js` | 22174 | `04b250dc0c03681202158f417fe2c93f2dc688a46ebcaeb2ebb58bd1aec84172` |
 | `lib/clinical-v5.js` | 26940 | `9d75aa30b97b5dd05ebc62e30eff334027d441bc186ece1d826b3e9238eefa7d` |
 | `lib/clinical-v6.js` | 17029 | `546b3f749b758d099654b8ecdd89742e0a603583846708705e4871e3f6f47612` |
-| `lib/clinical-v7.js` | 19163 | `facb398cfcad3ff668d0c0f8d54fde6aaa1093d3d65df360b272bda4e5554e4b` |
-| `lib/clinical-v8.js` | 20011 | `1bd7594690ee57f0e1971b749cb1248b3f60c9cb568af648c1f1d949d7f2a122` |
+| `lib/clinical-v7.js` | 19432 | `6f50185e325174b3631f7cfe7dae2f6405d61de5b311e13d791078aac8663161` |
+| `lib/clinical-v8.js` | 20051 | `102065b502c2fc2aa35e5b43ed5e761ee599201de1207cbb979ab65fa1c9c17a` |
 | `lib/clinical.js` | 24784 | `e8ad771505902669e2d21252c48c5bf41fdb24916407010bbfb61ec2008f5456` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
@@ -698,7 +698,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2760215 | `2405d1b586478eca5cc3aac8ebe4cb8f3b16b7696024e162e94b8201a4bb1c96` |
+| `lib/meta.js` | 2760421 | `6ecba75b67267f5cecd8266d46f58917dd11f0b7083dbfd2dac447d3d4b09ef9` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1017,7 +1017,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheum-ob-v156.js` | 17427 | `00478a61066705ade80bb2d28b90acd3368634aa6bd4ef041210c4beb4b63e1a` |
 | `lib/rheum-periop-v89.js` | 18677 | `2cfec8417e5d8fc9ac26b04e4bec4e31b73ba0fb4af2e8105eb6e9ec86e6bc68` |
 | `lib/rheum-v147.js` | 28396 | `2684e744e39599fe5bdd32b8447a8078db34ffd2c4fdcba14f7b24c240101040` |
-| `lib/rheum-v148.js` | 29530 | `c4cb0e6ee86e544f6bd1404db9b2d8b477e7b1d95beaa779a33a4ee81dba4f8b` |
+| `lib/rheum-v148.js` | 32277 | `cd3f2f4cd892eed2e173c7e78db1fc9907c405d89d307b15385ecd2358825305` |
 | `lib/rheum-v160.js` | 13178 | `6f9c9caad669edb9cdb844015cbb354104dbbf6be91576aa1107e512efee360c` |
 | `lib/rheumcrit-v256.js` | 10750 | `380f235a90313f395f0269fc179ab983f8285e1dbafe377e3c0a66d941b8bef0` |
 | `lib/ridley-jopling-v534.js` | 13454 | `fb4f0363664d9c1bd23f3d5c8ef32b627ed0c4741342457fb3fdbe253a02c3a2` |
@@ -1635,7 +1635,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/gadolinium-nsf-v895.js` | 1555 | `b06cd988540c35b39ab198a0aa7a3ef5724892b15fc5ec60a2be791cc0c68e1d` |
 | `mcp/adapters/gags-v554.js` | 4750 | `ca91536ddfbd3ac1d20c08ff3811e15db15e1a146efb648a3738731d985b518e` |
 | `mcp/adapters/gapp-v569.js` | 7368 | `28cc0ba61f51da94019b7457ba2b4865ace278feb07c794e1bc07796d027af93` |
-| `mcp/adapters/gaps-v185.js` | 7220 | `b4ddc4e3427679d1005a84476bf51fcf12b26356c034364b24dfe1e34fa604d2` |
+| `mcp/adapters/gaps-v185.js` | 7234 | `64cfcc0a65991b3b40eb23bc7861f7833df828eef9f99f1ca3deaf4bda8868e0` |
 | `mcp/adapters/gardner-robertson-v802.js` | 1218 | `0a1addbb28c2787d7b681d4b62fca7cac1303f553b053c61fb57f8c6d1d2d5a2` |
 | `mcp/adapters/gartland-supracondylar-v377.js` | 1598 | `8903bab27c305b2422ef4b905c0e252ecd841341d3f3b081404d984fa4c5ff55` |
 | `mcp/adapters/gass-macular-hole-v471.js` | 1207 | `3803556ddbe17cc277d9dfa5b902f11bbaff5d9fd1e2bf71fbed9d86c641580d` |
@@ -2150,7 +2150,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/rheum-ob-v156.js` | 5639 | `6eed92f24649feaecd1e481dbe459b1a63d7056df842b78bebb85165866e2082` |
 | `mcp/adapters/rheum-periop-v89.js` | 3674 | `a41886c4c598c309547e51c53143dfc2b3bd52b74962f6e3251d1c4b88381f5b` |
 | `mcp/adapters/rheum-v147.js` | 10157 | `cbf8d662aaf24516d780f1b918289b55ed15d5da0f52fe05ae0fe91b444ed27f` |
-| `mcp/adapters/rheum-v148.js` | 8606 | `862a7f90abd46fab2cedbd8975493cbfcee31f76986c343b4b1f7bb16ebe227a` |
+| `mcp/adapters/rheum-v148.js` | 8808 | `3dc4e543726e553e5146625ccba57f7993f66da405aecf47169f2d9c7800a1f8` |
 | `mcp/adapters/rheum-v160.js` | 7017 | `c1631d777fbb7032c0df2940cf48132919b8d13a1dc8603583a18f2bc3b518a4` |
 | `mcp/adapters/rheumcrit-v256.js` | 5291 | `f1f07f8b961e1c6c1119f817745cabcc361987de3466a91f185971071068a7ec` |
 | `mcp/adapters/ridley-jopling-v534.js` | 5199 | `dc4266d2147a99c69564dd2ef035e856bf31a03f6a9fe22d1edddcbe52081b92` |
@@ -2405,7 +2405,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 51582 | `de3e12aad8357addb28c635c98160e1feb4f3a497430898fd54937aca5850abf` |
-| `views/group-f.js` | 55065 | `70547b23902f0ab2ae65e28743a5f7347d9c1bb94ef8e1a22279c05d06a4c913` |
+| `views/group-f.js` | 55259 | `98d205c771105199c6fa8c16702fe87b7052c285109e1514e58d4c1a824d472e` |
 | `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 26811 | `eac52954ca2dd14577d8c8e31db3e9c143d589426f0602eccc70476da4303540` |
@@ -2516,7 +2516,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1475.js` | 2775 | `c0ef4775d13bba345b9d2fe188166dca00c73caa2fda59d3538694af4e7adfe5` |
 | `views/group-v1476.js` | 2350 | `3df73d839c3d63a7b0787b5d2812fa4715025192cbf788dc6961106277f8fda3` |
 | `views/group-v1479.js` | 2547 | `83f8e30fb1fc2568ed9c9f79d247946a17bcf9da452bb2d4da17dad11208fea5` |
-| `views/group-v148.js` | 19109 | `f34bde6fdff35a3167d9dca89727a221850e5d056a41fe44ff89f90051053dd9` |
+| `views/group-v148.js` | 19202 | `c9960400b396f6a74661778a72c4beda5af6cfaf67f59eb2fb003792d3845291` |
 | `views/group-v1480.js` | 4514 | `9e266c82c03e31c70e79fcc1e50cde25fd50ab1b072c31bc1933054afba83d4d` |
 | `views/group-v1481.js` | 2885 | `4a3659b87236fec9406d736ad252e293ac65c4bd29824351ff674a3edce83ecf` |
 | `views/group-v1482.js` | 1958 | `4de2928d77a298d7cfdd09adef9b6cfc5b6e0d5750add79960791b6ef2eff029` |

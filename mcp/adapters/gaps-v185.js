@@ -83,7 +83,7 @@ export default [
   },
   {
     id: 'lean-body-weight',
-    summary: 'Lean body weight (Boer formula, sex-specific) from total body weight and height — the dosing weight for drugs distributed to lean mass.',
+    summary: 'Lean body weight (Janmahasatian 2005 formula, sex-specific) from total body weight and height — the dosing weight for drugs distributed to lean mass.',
     compute: F.leanBodyWeight,
     fields: [
       { dom: 'lbw-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },

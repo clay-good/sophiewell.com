@@ -84,7 +84,7 @@ export default [
   },
   {
     id: 'opioid-conversion',
-    summary: 'Opioid equianalgesic / rotation converter: the source daily dose is converted to oral morphine equivalents and back to the target opioid, then reduced 0–50% for incomplete cross-tolerance.',
+    summary: 'Opioid equianalgesic / rotation converter: the source daily dose is converted to oral morphine equivalents and back to the target opioid, then reduced 0–50% for incomplete cross-tolerance. A fentanyl patch target is read from the fentanyl transdermal label Table 2 (from 60 mg/day oral morphine, no further reduction); a patch is refused as a source because the label conversion is one-way.',
     compute: F.opioidConversion,
     fields: [
       { dom: 'opc-source', arg: 'source', kind: 'enum', values: OPIOID_AGENTS, required: true, label: 'Source opioid and route' },

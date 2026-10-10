@@ -17,7 +17,7 @@
   ],
   "coverage": "subset",
   "coverageNote": "Renal dose adjustments for common antibiotics from FDA labels.",
-  "sourceEdition": "unversioned",
+  "sourceEdition": "FDA labels read 2026-10-10; each row carries its label set id and revision date",
   "curatedAt": "2026-10-10",
   "contentChangedAt": "2026-10-10",
   "expiresOn": "2028-10-10",
