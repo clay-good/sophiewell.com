@@ -31,9 +31,16 @@ test('classic heat stroke: 41.0 C, coma, anhidrotic, hospital -> CWI preferred, 
   assert.match(r.action, /evaporative/);
 });
 
-test('CNS dysfunction independent of temperature: 39.0 C with seizure-equivalent altered LOC -> heat stroke', () => {
+test('one criterion alone is possible heat stroke: cooled the same, named for what it is', () => {
   const r = heatstrokeDecision({ coreTempC: 39.0, cns: 'altered', sweating: true, setting: 'field' });
-  assert.equal(r.stage, 'heat stroke');
+  assert.equal(r.stage, 'possible heat stroke');
+  assert.equal(r.definitionMet, false);
+  assert.match(r.action, /Cold-water immersion/);
+  assert.ok(r.banners.some((b) => /needs both/.test(b)));
+  assert.doesNotMatch(r.text, /per Bouchama 2002:/);
+  const hot = heatstrokeDecision({ coreTempC: 40.5, cns: 'none' });
+  assert.equal(hot.stage, 'possible heat stroke');
+  assert.equal(heatstrokeDecision({ coreTempC: 41, cns: 'altered' }).definitionMet, true);
   assert.ok(r.cnsDysfunction);
 });
 

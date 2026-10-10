@@ -106,7 +106,7 @@ export default [
   },
   {
     id: 'r-factor',
-    summary: 'R-factor for drug-induced liver injury = (ALT/ALT-ULN) / (ALP/ALP-ULN): > 5 hepatocellular, < 2 cholestatic, 2-5 mixed pattern.',
+    summary: 'R-factor for drug-induced liver injury = (ALT/ALT-ULN) / (ALP/ALP-ULN): >= 5 hepatocellular, <= 2 cholestatic, between 2 and 5 mixed pattern.',
     compute: (a) => F.rFactorLiver(a),
     fields: [
       { dom: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L' },

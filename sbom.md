@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a32acd86314d1992`
-Generated: 2026-10-10T13:09:45.182Z
+Build ID: `8a47f3b7bd660a3a`
+Generated: 2026-10-10T13:47:04.573Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -245,7 +245,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
 | `lib/clinical-v4.js` | 22174 | `04b250dc0c03681202158f417fe2c93f2dc688a46ebcaeb2ebb58bd1aec84172` |
-| `lib/clinical-v5.js` | 26754 | `4df98038ca48fff64abef3add3cd59b7322a5f20545f0fdf6b842cb9d0eaee2e` |
+| `lib/clinical-v5.js` | 26940 | `9d75aa30b97b5dd05ebc62e30eff334027d441bc186ece1d826b3e9238eefa7d` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 19163 | `facb398cfcad3ff668d0c0f8d54fde6aaa1093d3d65df360b272bda4e5554e4b` |
 | `lib/clinical-v8.js` | 18730 | `e5e7be6c9d5f9e11e433eab822fd96e5e29673ad0e76a97fd5a1754c8877a003` |
@@ -691,14 +691,14 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/medicare-ffs-pa-required.js` | 16901 | `7f37f62121b94fe9bf5533dcad83c21a694bf8a95d183de311c26eb475ce7684` |
 | `lib/medicare-penalties-v1507.js` | 11757 | `adff9d120b04bab73e32a46931587ad3a29b402c47f20242c8f5947ce38aa4a0` |
 | `lib/medicare-reprice.js` | 5486 | `cc45eddf3a4d8121cc87cc3661f5179750663e0249c30b3a90c5bce56b744d34` |
-| `lib/medication-v4.js` | 18896 | `91f62c34cbf997e6009d98356bcc0506bf4a2c06a344dde66820ced5f6ee8457` |
+| `lib/medication-v4.js` | 19275 | `77c4c5e5c6166956f878107a402c4c1109dc0f58de1360453513e3a567054968` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/meld3-v678.js` | 6453 | `e04e977ebe609d49b7c132b73aa4ae59fb58744362931d47b2acf4c0d1b39651` |
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2756878 | `6e819d0b9804538274877f5d0df8486b8ff9e439828ba24e1491379141be993d` |
+| `lib/meta.js` | 2757908 | `b626c7d1c2896914a6ad124d1b717269cdac885d49d909c99240658474288a2e` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1064,7 +1064,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 322971 | `f03ffcbc1d25f873ad6230179741240fe498ab8a09bdc91d1fc283e68e388b89` |
+| `lib/scoring-v4.js` | 323918 | `958b5ba1e659a243c4a7620dd6a6399cad50051c9fcc54669f00dc9939094336` |
 | `lib/scoring-v5.js` | 13946 | `ffc233026d33c94caca162c6312ad19be48f9fffa690597cad8656236402d0c7` |
 | `lib/scoring-v6.js` | 28759 | `31398e9cfb7242be0ee6fded992906814e1cf26f33db716d285bb4d36b81f8c9` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
@@ -1474,7 +1474,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/cleveland-constipation-v665.js` | 2348 | `39bbb867c1e4258957d5be2e63e77b711e483906066420a5d8700dbc82a4d93f` |
 | `mcp/adapters/clinical-obesity-v838.js` | 1999 | `aa1e48cb5974a086c583469b65b330c762c91ea793b1669b04a3acf893990575` |
 | `mcp/adapters/clinical-v4.js` | 12789 | `92534eaaeb642010d2516d9c37f614ae684866bff5152e236286f65bb6f53efe` |
-| `mcp/adapters/clinical-v5.js` | 12043 | `64bb75061d67e1bf07dae3f04e9ac2d4638b4f37d61001ee750a9caff98df78c` |
+| `mcp/adapters/clinical-v5.js` | 12057 | `351d76ac0a7dfb00861f91dfa132bbb36e67d21aa3e72502459ab63774914856` |
 | `mcp/adapters/clinical-v6.js` | 8910 | `b58d9619fed1c1e739e0b58a708c42dec8f00eae9fa3699412a3fb8354f6db04` |
 | `mcp/adapters/clinical-v7.js` | 8069 | `083a2078dba3877d854e781c9adc4bfdd49beda72fa8cf735360afde1c9b1d54` |
 | `mcp/adapters/clinical-v8.js` | 15812 | `40b55f1b4da344f15aea9301a1b111543d35265f8b5671c4467c579faebc32c5` |
@@ -2405,7 +2405,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 51582 | `de3e12aad8357addb28c635c98160e1feb4f3a497430898fd54937aca5850abf` |
-| `views/group-f.js` | 54910 | `9db7984a597c2a70915cf4496fdb76c686f4452ec1186cdbef0adcfac008eef6` |
+| `views/group-f.js` | 55177 | `91eb8f878f623c98bc29ebea3a9069d2730590153aba4ceddb672a22d1f86f3c` |
 | `views/group-g.js` | 252548 | `82593c6daf867e6fc1ec17bcaacff6bcacd9b403fabfbb49438fec085b5bcaa5` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 25808 | `e791f223531f946189558bdcb6e950e47ac4c90ded2392e568c4f7458df2c636` |

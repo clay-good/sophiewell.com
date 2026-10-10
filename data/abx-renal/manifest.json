@@ -10,16 +10,16 @@
   "shards": [
     {
       "name": "abx.json",
-      "sha256": "4f7cf1e949fcb27d7794bda81b83df75fe47a774a9868a3a1d81215156265f21",
+      "sha256": "fec3b43a63e918212f1da8c81b3ee43153d028149017f2338fe9f8ceb886e03b",
       "records": 4,
-      "bytes": 966
+      "bytes": 2543
     }
   ],
   "coverage": "subset",
   "coverageNote": "Renal dose adjustments for common antibiotics from FDA labels.",
   "sourceEdition": "unversioned",
-  "curatedAt": "2026-05-05",
-  "contentChangedAt": "2026-05-05",
-  "expiresOn": "2028-05-05",
-  "recordsSha256": "a9acb8d911385ba285674d1f65c1a50ad126600ae7ab65dbf0c7307453ba0304"
+  "curatedAt": "2026-10-10",
+  "contentChangedAt": "2026-10-10",
+  "expiresOn": "2028-10-10",
+  "recordsSha256": "c06636c930c634247fb9c7508e3f6c157fc8fa19d21165d1e6b6ccd81c3f6b75"
 }

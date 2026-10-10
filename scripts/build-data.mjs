@@ -2082,25 +2082,30 @@ const v4Datasets = [
     id: 'abx-renal', label: 'Antibiotic renal dose adjustment subset',
     sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/', agency: 'FDA / NLM DailyMed', status: 'public-domain',
     cadence: 'quarterly', shardName: 'abx.json',
+    // Re-read October 10, 2026 against each label's Dosage and Administration section (openFDA label API). The
+    // earlier rows did not match the labels: piperacillin-tazobactam was shown q8h at 4.5 g / 3.375 g (the label
+    // doses q6h at 3.375 g / 2.25 g, with the higher doses for nosocomial pneumonia), cefepime's bands were
+    // narrower than Table 2, ciprofloxacin omitted the 200 mg end, and vancomycin carried a 25-30 mg/kg loading
+    // dose that is guideline content, not label content. `fromExclusive` / `toInclusive` carry the labels'
+    // "greater than 60" and "20 to 40" edges.
     seed: [
-      { drug: 'cefepime', crClBands: [
-        { crClFrom: 60, crClTo: null, dose: '1-2 g', interval: 'q8-12h' },
-        { crClFrom: 30, crClTo: 60, dose: '1-2 g', interval: 'q12-24h' },
-        { crClFrom: 11, crClTo: 30, dose: '500 mg-1 g', interval: 'q24h' },
-        { crClFrom: 0, crClTo: 11, dose: '250-500 mg', interval: 'q24h' },
+      { drug: 'cefepime', label: 'Cefepime for Injection (Apotex), label revised 2023-05-10, Table 2', setId: '02aa374f-37b4-456a-b5de-cfd3bbb6ce6e', crClBands: [
+        { crClFrom: 60, fromExclusive: true, crClTo: null, dose: '500 mg-2 g', interval: 'q12h', note: 'The usual adult dose by indication; 2 g q8h for febrile neutropenia or Pseudomonas pneumonia.' },
+        { crClFrom: 30, crClTo: 60, toInclusive: true, dose: '500 mg-2 g', interval: 'q24h', note: 'Usual 500 mg q12h: 500 mg q24h. Usual 1 g q12h: 1 g q24h. Usual 2 g q12h: 2 g q24h. Usual 2 g q8h: 2 g q12h.' },
+        { crClFrom: 11, crClTo: 30, dose: '500 mg-2 g', interval: 'q24h', note: 'Usual 500 mg or 1 g q12h: 500 mg q24h. Usual 2 g q12h: 1 g q24h. Usual 2 g q8h: 2 g q24h.' },
+        { crClFrom: 0, crClTo: 11, dose: '250 mg-1 g', interval: 'q24h', note: 'Usual 500 mg or 1 g q12h: 250 mg q24h. Usual 2 g q12h: 500 mg q24h. Usual 2 g q8h: 1 g q24h.' },
       ] },
-      { drug: 'piperacillin-tazobactam', crClBands: [
-        { crClFrom: 40, crClTo: null, dose: '4.5 g', interval: 'q8h' },
-        { crClFrom: 20, crClTo: 40, dose: '3.375 g', interval: 'q8h' },
-        { crClFrom: 0, crClTo: 20, dose: '2.25 g', interval: 'q8h' },
+      { drug: 'piperacillin-tazobactam', label: 'Piperacillin and Tazobactam for Injection (Civica), label revised 2025-12-12, Table 1', setId: '19e89f8b-316b-4dd2-9724-bfe0faeba408', crClBands: [
+        { crClFrom: 40, fromExclusive: true, crClTo: null, dose: '3.375 g', interval: 'q6h', note: 'Nosocomial pneumonia: 4.5 g q6h.' },
+        { crClFrom: 20, crClTo: 40, toInclusive: true, dose: '2.25 g', interval: 'q6h', note: 'Nosocomial pneumonia: 3.375 g q6h.' },
+        { crClFrom: 0, crClTo: 20, dose: '2.25 g', interval: 'q8h', note: 'Nosocomial pneumonia: 2.25 g q6h. Hemodialysis and CAPD have their own rows in the label.' },
       ] },
-      { drug: 'vancomycin', crClBands: [
-        { crClFrom: 0, crClTo: null, dose: 'Weight-based load 25-30 mg/kg, then dose by trough/AUC', interval: 'PK-driven' },
+      { drug: 'vancomycin', label: 'Vancomycin Injection (Gland), label revised 2026-01-30', setId: '00946db3-d6c5-4534-a870-1ec6e63eda43', crClBands: [
+        { crClFrom: 0, crClTo: null, dose: 'Usual adult dose with normal renal function: 2 g/day (500 mg q6h or 1 g q12h)', interval: 'must be adjusted in renal impairment', note: 'The label gives no creatinine-clearance table; it says to adjust the dose in impaired renal function and that serum concentrations can guide it. Loading doses and AUC targets come from your hospital protocol, not the label.' },
       ] },
-      { drug: 'ciprofloxacin', crClBands: [
-        { crClFrom: 50, crClTo: null, dose: '400 mg IV / 500-750 mg PO', interval: 'q12h' },
-        { crClFrom: 30, crClTo: 50, dose: '400 mg IV / 250-500 mg PO', interval: 'q12h' },
-        { crClFrom: 5, crClTo: 30, dose: '400 mg IV / 250-500 mg PO', interval: 'q18-24h' },
+      { drug: 'ciprofloxacin', label: 'Ciprofloxacin Injection, label revised 2025-11-04, Table 4 (intravenous)', setId: '42c758be-4d44-018a-e063-6294a90ae041', crClBands: [
+        { crClFrom: 30, crClTo: null, dose: 'Usual IV dose (200-400 mg)', interval: 'q8-12h', note: 'The label reads "above 30: see usual dosage". Oral dosing has its own label and differs.' },
+        { crClFrom: 5, crClTo: 30, dose: '200-400 mg IV', interval: 'q18-24h', note: 'Label row for 5 to 29 mL/min. Oral dosing has its own label and differs.' },
       ] },
     ],
   }),
@@ -2108,13 +2113,16 @@ const v4Datasets = [
     id: 'vasopressor-doses', label: 'Vasopressor dose / concentration reference',
     sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/', agency: 'FDA', status: 'public-domain',
     cadence: 'annual', shardName: 'vasopressors.json',
+    // Re-read October 10, 2026 against each label's Dosage and Administration section (openFDA label API). Five of
+    // the six "typical ranges" were not the labels' figures (norepinephrine 2-20, epinephrine 1-10, phenylephrine
+    // 40-180, dopamine 2-20, vasopressin 0.01-0.04); each row now quotes its label's dosing.
     seed: [
-      { drug: 'norepinephrine', units: 'mcg/min',          typicalRange: '2-20 mcg/min',     defaultBag: { mg: 4, mL: 250 } },
-      { drug: 'epinephrine',    units: 'mcg/min',          typicalRange: '1-10 mcg/min',     defaultBag: { mg: 1, mL: 250 } },
-      { drug: 'phenylephrine',  units: 'mcg/min',          typicalRange: '40-180 mcg/min',   defaultBag: { mg: 20, mL: 250 } },
-      { drug: 'dopamine',       units: 'mcg/kg/min',       typicalRange: '2-20 mcg/kg/min',  defaultBag: { mg: 400, mL: 250 } },
+      { drug: 'norepinephrine', units: 'mcg/min',          typicalRange: 'start 8-12 mcg/min, typical maintenance 2-4 mcg/min',     defaultBag: { mg: 4, mL: 250 } },
+      { drug: 'epinephrine',    units: 'mcg/min',          typicalRange: '0.05-2 mcg/kg/min for septic shock (the label doses by weight)',     defaultBag: { mg: 1, mL: 250 } },
+      { drug: 'phenylephrine',  units: 'mcg/min',          typicalRange: '10-35 mcg/min, not to exceed 200 mcg/min',   defaultBag: { mg: 20, mL: 250 } },
+      { drug: 'dopamine',       units: 'mcg/kg/min',       typicalRange: 'start 2-5 mcg/kg/min, up to not more than 50 mcg/kg/min',  defaultBag: { mg: 400, mL: 250 } },
       { drug: 'dobutamine',     units: 'mcg/kg/min',       typicalRange: '2-20 mcg/kg/min',  defaultBag: { mg: 500, mL: 250 } },
-      { drug: 'vasopressin',    units: 'units/min',        typicalRange: '0.01-0.04 units/min', defaultBag: { units: 20, mL: 100 } },
+      { drug: 'vasopressin',    units: 'units/min',        typicalRange: 'septic shock 0.01-0.07 units/min; post-cardiotomy shock 0.03-0.1 units/min', defaultBag: { units: 20, mL: 100 } },
     ],
   }),
   v4TableDataset({

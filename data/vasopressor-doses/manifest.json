@@ -10,16 +10,16 @@
   "shards": [
     {
       "name": "vasopressors.json",
-      "sha256": "cf5587887102bd55d42031f2ef6626d445d22a4fbd462de5f3fdac4e097868b9",
+      "sha256": "76a2b479e6ea1b1cfb31e57d54441be012609366b83e839414d37f2288ccf3bf",
       "records": 6,
-      "bytes": 646
+      "bytes": 856
     }
   ],
   "coverage": "subset",
   "coverageNote": "Dose ranges and standard concentrations for common vasopressors.",
   "sourceEdition": "unversioned",
-  "curatedAt": "2026-05-05",
-  "contentChangedAt": "2026-05-05",
-  "expiresOn": "2028-05-05",
-  "recordsSha256": "6fc4687f1c50a33343aa6bd802ddde096a491dde5524118c53e12b08396ef865"
+  "curatedAt": "2026-10-10",
+  "contentChangedAt": "2026-10-10",
+  "expiresOn": "2028-10-10",
+  "recordsSha256": "938b9e049cf57de5ddfb89578cabbad42604ce4833b88f67a7dddc6bf9c8f916"
 }

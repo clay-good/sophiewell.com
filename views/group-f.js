@@ -626,6 +626,8 @@ export const renderers = {
         if (!band) { out.appendChild(el('p', { text: 'No dose band found.' })); return; }
         out.appendChild(el('h2', { text: `${drugSel.value} - CrCl ${crCl} mL/min` }));
         out.appendChild(el('p', { text: `Dose: ${band.dose}; Interval: ${band.interval}` }));
+        if (band.note) out.appendChild(el('p', { text: band.note }));
+        if (band.label) out.appendChild(el('p', { class: 'muted', text: `Source: ${band.label}. Labels differ by manufacturer and change; check the current one and your stewardship guidance.` }));
       };
       ['abx-drug', 'abx-crcl'].forEach((id) => document.getElementById(id).addEventListener(id === 'abx-crcl' ? 'input' : 'change', run));
       // Every other view in this file runs once after wiring. This one did not,
@@ -658,7 +660,7 @@ export const renderers = {
         const dose = Number(document.getElementById('vp-dose').value);
         const rate = Number(document.getElementById('vp-rate').value);
         if (!(conc > 0)) return;
-        out.appendChild(el('h2', { text: `${row.drug} - typical range ${row.typicalRange}` }));
+        out.appendChild(el('h2', { text: `${row.drug} - label dosing: ${row.typicalRange}` }));
         try {
           if (dose > 0) {
             const r = vasopressorRateMlHr({ dose, units, weightKg: w || undefined, concUgPerMl: conc });

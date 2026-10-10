@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Heat illness cooling decision called it heat stroke "per Bouchama 2002" on either a core
+  temperature above 40 C or CNS dysfunction; the definition needs both. One alone is now "possible
+  heat stroke": the cooling advice is unchanged and the result says which half is missing.
+- Liver injury R factor: exactly 5 reads hepatocellular and exactly 2 cholestatic (the edges were
+  exclusive).
+
+- Antibiotic renal dose adjustment did not match the FDA labels it cites. Piperacillin-tazobactam
+  was shown every 8 hours at 4.5 g and 3.375 g; the label doses every 6 hours (3.375 g above 40
+  mL/min, 2.25 g at 20 to 40; the higher doses are for nosocomial pneumonia). Cefepime's bands now
+  follow the label table, ciprofloxacin IV is 200-400 mg at 5 to 29 mL/min, and vancomycin no
+  longer shows a 25-30 mg/kg loading dose as label content. A clearance of exactly 60 (cefepime)
+  or 40 (piperacillin-tazobactam) falls in the reduced-dose row, as the labels write it. Each
+  result names the label and revision date it was read from.
+- Vasopressor infusion: five of the six "typical ranges" were not the labels' figures. Each drug
+  now shows its label dosing (for example norepinephrine start 8-12 mcg/min, maintenance 2-4;
+  phenylephrine 10-35 mcg/min, not above 200; vasopressin 0.01-0.07 units/min in septic shock).
+
 - Cutoffs credited to the papers that set them: BIG score 16 (Davis 2015), SOS withdrawal score 4
   (Ista 2013), COMFORT-B 10 and 23 (Ista 2005, with 11-22 described as indeterminate). LACE's
   low / moderate / high bands are labeled as a convention the 2010 paper does not define, with a

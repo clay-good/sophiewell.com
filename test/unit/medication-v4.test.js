@@ -73,21 +73,30 @@ test('benzo: oxazepam 20 mg <-> lorazepam 1 mg', () => {
 });
 
 // --- Antibiotic renal-dose ---------------------------------------------
-test('abxRenalDose: cefepime CrCl 70 -> q8-12h', () => {
-  const r = abxRenalDose({ drug: 'cefepime', crCl: 70, table: ABX });
-  assert.equal(r.interval, 'q8-12h');
+test('abxRenalDose: cefepime follows the label table, with 60 in the lower band', () => {
+  const at = (c) => abxRenalDose({ drug: 'cefepime', crCl: c, table: ABX });
+  assert.equal(at(70).interval, 'q12h');
+  assert.equal(at(60).interval, 'q24h', 'the label\'s full-dose row is "greater than 60"');
+  assert.equal(at(40).dose, '500 mg-2 g');
+  assert.equal(at(29.5).interval, 'q24h');
+  assert.equal(at(5).dose, '250 mg-1 g');
 });
-test('abxRenalDose: cefepime CrCl 40 -> q12-24h', () => {
-  const r = abxRenalDose({ drug: 'cefepime', crCl: 40, table: ABX });
-  assert.equal(r.interval, 'q12-24h');
+test('abxRenalDose: piperacillin-tazobactam is q6h above 20 mL/min, as labeled', () => {
+  const at = (c) => abxRenalDose({ drug: 'piperacillin-tazobactam', crCl: c, table: ABX });
+  assert.deepEqual([at(80).dose, at(80).interval], ['3.375 g', 'q6h']);
+  assert.match(at(80).note, /Nosocomial pneumonia: 4\.5 g q6h/);
+  assert.deepEqual([at(40).dose, at(40).interval], ['2.25 g', 'q6h'], '40 is in the 20-to-40 row');
+  assert.deepEqual([at(20).dose, at(20).interval], ['2.25 g', 'q6h']);
+  assert.deepEqual([at(19).dose, at(19).interval], ['2.25 g', 'q8h']);
 });
-test('abxRenalDose: cefepime CrCl 5 (low) -> q24h band', () => {
-  const r = abxRenalDose({ drug: 'cefepime', crCl: 5, table: ABX });
-  assert.equal(r.interval, 'q24h');
+test('abxRenalDose: vancomycin carries no loading dose attributed to the label', () => {
+  const r = abxRenalDose({ drug: 'vancomycin', crCl: 50, table: ABX });
+  assert.doesNotMatch(r.dose, /25-30/);
+  assert.match(r.note, /no creatinine-clearance table/);
 });
-test('abxRenalDose: piperacillin-tazobactam normal renal', () => {
-  const r = abxRenalDose({ drug: 'piperacillin-tazobactam', crCl: 80, table: ABX });
-  assert.equal(r.dose, '4.5 g');
+test('abxRenalDose: ciprofloxacin IV 5-29 is 200-400 mg q18-24h; every band names its label', () => {
+  assert.equal(abxRenalDose({ drug: 'ciprofloxacin', crCl: 20, table: ABX }).dose, '200-400 mg IV');
+  for (const row of ABX) assert.match(abxRenalDose({ drug: row.drug, crCl: 25, table: ABX }).label, /label revised \d{4}-\d{2}-\d{2}/);
 });
 test('abxRenalDose: unknown drug returns null', () => {
   assert.equal(abxRenalDose({ drug: 'foo', crCl: 50, table: ABX }), null);
