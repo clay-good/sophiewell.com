@@ -162,7 +162,7 @@ export default [
   },
   {
     id: 'apri',
-    summary: 'AST-to-platelet ratio index (Wai 2003) = (AST/AST-ULN)*100/platelets. Predicts significant fibrosis/cirrhosis.',
+    summary: 'AST-to-platelet ratio index (Wai 2003) = (AST/AST-ULN)*100/platelets. Wai 2003 thresholds: significant fibrosis ruled out at 0.5 or below and ruled in above 1.5; cirrhosis ruled out at 1.0 or below and ruled in above 2.0; between them is indeterminate.',
     compute: F.apri,
     fields: [
       { dom: 'apri-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L' },

@@ -25,19 +25,19 @@ test('epworth 10 of 24 -> still normal band (upper bound)', () => {
   assert.match(r.band, /normal/i);
 });
 
-test('epworth 11 of 24 -> mild band (Johns 1991 cutoff 11-14)', () => {
+test('epworth 11 of 24 -> mild band (11-12)', () => {
   const r = epworth({ reading: 2, tv: 2, publicPlace: 1, carPassenger: 1, lyingDown: 2, sittingTalking: 1, afterLunch: 1, carTraffic: 1 });
   assert.equal(r.score, 11);
   assert.match(r.band, /mild/i);
 });
 
-test('epworth 15 of 24 -> moderate band (Johns 1991 cutoff 15-17)', () => {
+test('epworth 15 of 24 -> moderate band (13-15)', () => {
   const r = epworth({ reading: 2, tv: 2, publicPlace: 2, carPassenger: 2, lyingDown: 3, sittingTalking: 1, afterLunch: 2, carTraffic: 1 });
   assert.equal(r.score, 15);
   assert.match(r.band, /moderate/i);
 });
 
-test('epworth 24 of 24 -> severe band (Johns 1991 cutoff 18-24)', () => {
+test('epworth 24 of 24 -> severe band (16-24)', () => {
   const r = epworth({ reading: 3, tv: 3, publicPlace: 3, carPassenger: 3, lyingDown: 3, sittingTalking: 3, afterLunch: 3, carTraffic: 3 });
   assert.equal(r.score, 24);
   assert.match(r.band, /severe/i);
@@ -77,4 +77,14 @@ test('spec-v1086: an unrated situation is asked for; a rated 0 still scores', ()
   assert.equal(partial.valid, false);
   assert.equal(partial.itemsScored, 7);
   assert.match(partial.text, /in a car stopped in traffic/);
+});
+
+test('epworth bands follow the published interpretation: 13-14 moderate, 16-17 severe', () => {
+  const at = (n) => epworth({ reading: Math.min(3, n), tv: Math.min(3, Math.max(0, n - 3)), publicPlace: Math.min(3, Math.max(0, n - 6)), carPassenger: Math.min(3, Math.max(0, n - 9)), lyingDown: Math.min(3, Math.max(0, n - 12)), sittingTalking: Math.min(3, Math.max(0, n - 15)), afterLunch: Math.min(3, Math.max(0, n - 18)), carTraffic: Math.min(3, Math.max(0, n - 21)) });
+  assert.equal(at(13).score, 13);
+  assert.match(at(12).band, /mild/);
+  assert.match(at(13).band, /moderate/);
+  assert.match(at(14).band, /moderate/);
+  assert.match(at(16).band, /severe/);
+  assert.match(at(5).band, /lower normal/);
 });

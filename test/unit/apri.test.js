@@ -7,32 +7,26 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { apri } from '../../lib/clinical-v4.js';
 
-// Low edge: below the 0.7 significant-fibrosis cutoff.
-test('apri low edge: AST 30, ULN 40, plt 250 -> 0.30 (below 0.7)', () => {
+// Wai 2003: significant fibrosis ruled out at 0.5 or below and in above 1.5; cirrhosis ruled out at 1.0 or below
+// and in above 2.0; between them is indeterminate.
+test('apri 0.30 -> at or below the significant-fibrosis rule-out', () => {
   const r = apri({ ast: 30, astUln: 40, plateletsK: 250 });
   assert.ok(Math.abs(r.score - 0.3) < 0.005);
-  assert.match(r.band, /below the Wai 2003/);
+  assert.match(r.band, /rule-out threshold for significant fibrosis/);
 });
 
-// Mid (tile example): exactly 1.0; significant-fibrosis band, not cirrhosis.
-test('apri mid: AST 60, ULN 40, plt 150 -> 1.00 (significant fibrosis)', () => {
+test('apri 1.00 (tile example) -> indeterminate for fibrosis, not "predicts"', () => {
   const r = apri({ ast: 60, astUln: 40, plateletsK: 150 });
   assert.ok(Math.abs(r.score - 1.0) < 0.005);
-  assert.match(r.band, /significant fibrosis/);
+  assert.match(r.band, /indeterminate for significant fibrosis/);
+  assert.match(r.band, /rule-out threshold for cirrhosis/);
+  assert.doesNotMatch(r.band, /predicts/);
 });
 
-// High edge: deep cirrhosis-band.
-test('apri high edge: AST 200, ULN 40, plt 50 -> 10.00 (cirrhosis)', () => {
-  const r = apri({ ast: 200, astUln: 40, plateletsK: 50 });
-  assert.ok(Math.abs(r.score - 10) < 0.005);
-  assert.match(r.band, /cirrhosis/);
-});
-
-// Cirrhosis threshold check (>1.0).
-test('apri cirrhosis cutoff: score 1.05 -> cirrhosis band', () => {
-  const r = apri({ ast: 63, astUln: 40, plateletsK: 150 });
-  assert.ok(r.score > 1.0);
-  assert.match(r.band, /cirrhosis/);
+test('apri 1.05 -> indeterminate for both; 1.6 -> fibrosis ruled in; 10 -> cirrhosis ruled in', () => {
+  assert.match(apri({ ast: 63, astUln: 40, plateletsK: 150 }).band, /indeterminate for significant fibrosis \(0\.5-1\.5\) and for cirrhosis/);
+  assert.match(apri({ ast: 96, astUln: 40, plateletsK: 150 }).band, /^APRI >1\.5: above the Wai 2003 rule-in threshold for significant fibrosis/);
+  assert.match(apri({ ast: 200, astUln: 40, plateletsK: 50 }).band, /^APRI >2\.0: above the Wai 2003 rule-in threshold for cirrhosis/);
 });
 
 // Invalid input rejection.

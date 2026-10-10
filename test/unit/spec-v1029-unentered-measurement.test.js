@@ -46,7 +46,7 @@ test('charlson: no survival estimate from an unentered age', () => {
 test('charlson: four points cannot move the worst band, so it answers', () => {
   const r = charlson({ items: { aids: true } });
   assert.equal(r.score, 6);
-  assert.match(r.band, /~85%/);
+  assert.match(r.band, /was 85%/);
 });
 
 test('hospitalScore: no low-risk reading without the admission count', () => {

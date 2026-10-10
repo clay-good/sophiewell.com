@@ -6,6 +6,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Epworth Sleepiness Scale banded 11-14 mild, 15-17 moderate and 18-24 severe. The published
+  interpretation is 11-12 mild, 13-15 moderate, 16-24 severe: a score of 13 or 14 read mild and 16
+  or 17 read moderate.
+- CAM-ICU labeled inattention as 2 or more errors; the worksheet counts a score under 8 of 10
+  (more than 2 errors). RASS +1 was printed inside a range labeled "-2 to 0"; the range now reads
+  -2 to +1, as in the PADIS 2018 studies. The LEMON heading said "of 8" for a 7-point total.
+
+- APRI read a value above 0.7 as "predicts significant fibrosis" and above 1.0 as "predicts
+  cirrhosis", both "per Wai 2003". Wai's thresholds are a rule-out and a rule-in for each (0.5 and
+  1.5 for significant fibrosis; 1.0 and 2.0 for cirrhosis) with an indeterminate range between,
+  which the result now reports.
+
+- Rochester criteria had no "appears well" box, although it is the first criterion in Jaskiewicz
+  1994: an ill-appearing febrile infant with normal laboratory values read LOW risk. It is now the
+  first of eight criteria.
+- Philadelphia criteria labeled the age band 29-60 days; Baker 1993 studied infants 29 through 56
+  days.
+
+- Charlson Comorbidity Index printed 12% / 26% / 52% / 85% as "10-year mortality" for the
+  age-adjusted total. In Charlson 1987 those are 1-year mortality rates by comorbidity score alone:
+  a 55-year-old with no comorbidity was told "10-year mortality ~26%". The figure now follows the
+  comorbidity score and is labeled 1-year.
+
 - Smaller corrections from reading sources: PESI's saturation item counts below 90% with or without
   supplemental oxygen (the label said "on room air"); SMART-COP scores a saturation of exactly 90%
   in patients over 50; ATRIA cites the right tables; and the study-population notes for 4AT, ICDSC,

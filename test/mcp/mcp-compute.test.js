@@ -1210,9 +1210,9 @@ test('lib/scoring-v4.js obstetric / maternal cluster worked calls (wave 61)', ()
 
 test('lib/scoring-v4.js pediatric fever / sepsis + respiratory worked calls (wave 62)', () => {
   // All 7 Rochester criteria met -> low risk.
-  const rc = ok('rochester', { 'rc-age': '1', 'rc-term': '1', 'rc-focal': '1', 'rc-wbc': '1', 'rc-bands': '1', 'rc-urine': '1', 'rc-stool': '1' });
+  const rc = ok('rochester', { 'rc-well': '1', 'rc-age': '1', 'rc-term': '1', 'rc-focal': '1', 'rc-wbc': '1', 'rc-bands': '1', 'rc-urine': '1', 'rc-stool': '1' });
   assert.equal(rc.lowRisk, true);
-  assert.equal(rc.metCount, 7);
+  assert.equal(rc.metCount, 8);
   assert.equal(ok('philadelphia', { 'ph-age': '1', 'ph-well': '1', 'ph-wbc': '1', 'ph-bnr': '1', 'ph-ua': '1', 'ph-csf': '1', 'ph-cxr': '0', 'ph-stool': '1' }).lowRisk, false);
   assert.equal(ok('boston-febrile', { 'bf-age': '1', 'bf-well': '1', 'bf-focal': '1', 'bf-wbc': '1', 'bf-ua': '1', 'bf-csf': '1', 'bf-cxr': '1' }).lowRisk, true);
   // Step-by-Step: age <= 21 days -> high, reason from step 2.

@@ -2276,7 +2276,7 @@ export const renderers = {
   // spec-v13 §3.2.3 wave 13-2: CAM-ICU (Ely 2001).
   'cam-icu'(root) {
     root.appendChild(checkbox('Feature 1: Acute onset of mental status change OR fluctuating course', 'ci-f1'));
-    root.appendChild(checkbox('Feature 2: Inattention (Attention Screening Examination >=2 errors)', 'ci-f2'));
+    root.appendChild(checkbox('Feature 2: Inattention (Attention Screening Examination: more than 2 errors, a score under 8 of 10)', 'ci-f2'));
     root.appendChild(checkbox('Feature 3: Altered level of consciousness (current RASS != 0)', 'ci-f3'));
     root.appendChild(checkbox('Feature 4: Disorganized thinking (4-item question set + command)', 'ci-f4'));
     const o = out(); root.appendChild(o);
@@ -3441,7 +3441,7 @@ export const renderers = {
         obstruction: checked('le-obs'),
         neckMobilityLimited: checked('le-neck'),
       });
-      o.appendChild(el('h2', { text: `LEMON ${r.score} of 8` }));
+      o.appendChild(el('h2', { text: `LEMON ${r.score} of 7` }));
       o.appendChild(el('p', { text: r.band }));
       o.appendChild(el('p', { class: 'muted', text: `3-3-2 subtotal: ${r.threeThreeTwo} of 3.` }));
     });
@@ -3632,6 +3632,7 @@ export const renderers = {
   // spec-v15 §3.2.1 wave 15-2: Rochester (Jaskiewicz 1994).
   rochester(root) {
     const items = [
+      ['Appears well', 'rc-well'],
       ['Age <=60 days', 'rc-age'],
       ['Term gestation and previously healthy', 'rc-term'],
       ['No focal infection on physical exam', 'rc-focal'],
@@ -3644,6 +3645,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.rochester({
+        appearsWell: checked('rc-well'),
         ageLte60Days: checked('rc-age'),
         termAndPreviouslyHealthy: checked('rc-term'),
         noFocalInfection: checked('rc-focal'),
@@ -3662,7 +3664,7 @@ export const renderers = {
   // spec-v15 §3.2.2 wave 15-2: Philadelphia (Baker 1993).
   philadelphia(root) {
     const items = [
-      ['Age 29-60 days', 'ph-age'],
+      ['Age 29-56 days', 'ph-age'],
       ['Well-appearing', 'ph-well'],
       ['WBC <15 x10^9/L', 'ph-wbc'],
       ['Band:neutrophil ratio <0.2', 'ph-bnr'],
@@ -3675,7 +3677,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.philadelphia({
-        age29To60Days: checked('ph-age'),
+        age29To56Days: checked('ph-age'),
         wellAppearing: checked('ph-well'),
         wbcLt15: checked('ph-wbc'),
         bandToNeutrophilRatioLt0Point2: checked('ph-bnr'),

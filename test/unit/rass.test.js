@@ -9,12 +9,12 @@ test('rass 0: alert and calm; in PADIS 2018 target band', () => {
   const r = rass({ level: 0 });
   assert.equal(r.level, 0);
   assert.match(r.descriptor, /Alert and calm/);
-  assert.match(r.band, /target band/);
+  assert.match(r.band, /within -2 to \+1/);
 });
 
 test('rass -2: light sedation; in target band', () => {
   const r = rass({ level: -2 });
-  assert.match(r.band, /target band/);
+  assert.match(r.band, /within -2 to \+1/);
 });
 
 test('rass +4: combative; agitated band', () => {
@@ -30,4 +30,9 @@ test('rass -5: unarousable; deeper than target band', () => {
 test('rass clamps out-of-range to -5..+4', () => {
   assert.equal(rass({ level: 99 }).level, 4);
   assert.equal(rass({ level: -99 }).level, -5);
+});
+
+test('rass +1 is inside the printed range', () => {
+  const r = rass({ level: 1 });
+  assert.match(r.band, /RASS 1: within -2 to \+1/);
 });

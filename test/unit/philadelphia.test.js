@@ -10,7 +10,7 @@ test('philadelphia 0/8 (tile example) -> not low risk', () => {
 
 test('philadelphia 7/8 -> not low risk; failing list', () => {
   const r = philadelphia({
-    age29To60Days: true, wellAppearing: true, wbcLt15: true,
+    age29To56Days: true, wellAppearing: true, wbcLt15: true,
     bandToNeutrophilRatioLt0Point2: true, uaLt10WbcAndFewBacteria: true,
     csfLt8WbcAndGramStainNeg: true, cxrClearOrNotObtained: true,
     // stoolNormalOrNoDiarrhea missing
@@ -22,7 +22,7 @@ test('philadelphia 7/8 -> not low risk; failing list', () => {
 
 test('philadelphia 8/8 -> low risk; safe outpatient management', () => {
   const r = philadelphia({
-    age29To60Days: true, wellAppearing: true, wbcLt15: true,
+    age29To56Days: true, wellAppearing: true, wbcLt15: true,
     bandToNeutrophilRatioLt0Point2: true, uaLt10WbcAndFewBacteria: true,
     csfLt8WbcAndGramStainNeg: true, cxrClearOrNotObtained: true,
     stoolNormalOrNoDiarrhea: true,

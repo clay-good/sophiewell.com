@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3caba9f138380cc1`
-Generated: 2026-10-10T11:20:28.063Z
+Build ID: `31a02cd04d31c716`
+Generated: 2026-10-10T11:37:16.410Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -244,7 +244,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clavien-dindo-v320.js` | 5404 | `ae140f525e3d1f6103581f1d1e2eeed46813f69ada14d9c764ed867d51bda76b` |
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
-| `lib/clinical-v4.js` | 21530 | `2ab6e1211f1ae166418be0ee206e6b329876d67386c22dcba26d4dc196105cde` |
+| `lib/clinical-v4.js` | 22174 | `04b250dc0c03681202158f417fe2c93f2dc688a46ebcaeb2ebb58bd1aec84172` |
 | `lib/clinical-v5.js` | 26754 | `4df98038ca48fff64abef3add3cd59b7322a5f20545f0fdf6b842cb9d0eaee2e` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 19163 | `facb398cfcad3ff668d0c0f8d54fde6aaa1093d3d65df360b272bda4e5554e4b` |
@@ -698,7 +698,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2755077 | `2ddb4b2c95a0e30f2450189c28066fd00f28c08a4cd4dd9a0374d2d513080d57` |
+| `lib/meta.js` | 2755638 | `46ad00526e4feca75592981c481fb79e48ef8fd2833eb4f3087684364f7c006f` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1064,7 +1064,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 320028 | `d53f456bb2f3ffb87d2d9561a6cfece388c60450b28700ad4de859dee6f61558` |
+| `lib/scoring-v4.js` | 321758 | `7b88d45d52fec46a71c26696adea1c2a590c2841a1348f48f5e97632c84ee4b4` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27919 | `dfea7e197a961260f40950ce7677c80e0ddd6386c13706d103f738cc412d8627` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
@@ -1473,7 +1473,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clavien-dindo-v320.js` | 1463 | `7d98cc04ea4d21756497e4a30ba83a3ffae2002e60a8c8895014588478d4a352` |
 | `mcp/adapters/cleveland-constipation-v665.js` | 2348 | `39bbb867c1e4258957d5be2e63e77b711e483906066420a5d8700dbc82a4d93f` |
 | `mcp/adapters/clinical-obesity-v838.js` | 1999 | `aa1e48cb5974a086c583469b65b330c762c91ea793b1669b04a3acf893990575` |
-| `mcp/adapters/clinical-v4.js` | 12647 | `1070ff8a039ed5e18ef44708f6d566079423fc11997df4b9b161899da4db035b` |
+| `mcp/adapters/clinical-v4.js` | 12789 | `92534eaaeb642010d2516d9c37f614ae684866bff5152e236286f65bb6f53efe` |
 | `mcp/adapters/clinical-v5.js` | 12043 | `64bb75061d67e1bf07dae3f04e9ac2d4638b4f37d61001ee750a9caff98df78c` |
 | `mcp/adapters/clinical-v6.js` | 8910 | `b58d9619fed1c1e739e0b58a708c42dec8f00eae9fa3699412a3fb8354f6db04` |
 | `mcp/adapters/clinical-v7.js` | 8069 | `083a2078dba3877d854e781c9adc4bfdd49beda72fa8cf735360afde1c9b1d54` |
@@ -2194,7 +2194,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schobinger-avm-v497.js` | 1471 | `0e96c8f38f6ed7c8f2a129d4349ae06ac6bb152a8bf30b388b2c4941698a5dcc` |
 | `mcp/adapters/schofield-v779.js` | 1203 | `877117e8b9a4659faa3164c628509cfa5855c8a9acdebe84b8e4cf9af11a560a` |
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
-| `mcp/adapters/scoring-v4.js` | 163279 | `4c293467a42b8b926b973fe91014bef2f9805b1790e2f94a7cf417ae44a38aa3` |
+| `mcp/adapters/scoring-v4.js` | 163361 | `d91aed4933c9fe5badcb7ec083bfe4c85c89aab50e96fdfb677a7858b9a460f7` |
 | `mcp/adapters/scoring-v5.js` | 12908 | `896f43c3f88f9c53b1179e785443096da266140f0bd58c076e9823a40075eaae` |
 | `mcp/adapters/scoring-v6.js` | 20279 | `27326c97bbc73fc72e19349719020e64da57d56b46742e4d03f92b42316d9030` |
 | `mcp/adapters/scorpion-grade-india-v1556.js` | 1284 | `3cd3d399c2af7f57769e85a6ad4edeb3e77354249b3a6db361b0981e71233aed` |
@@ -2406,7 +2406,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 51582 | `de3e12aad8357addb28c635c98160e1feb4f3a497430898fd54937aca5850abf` |
 | `views/group-f.js` | 54910 | `9db7984a597c2a70915cf4496fdb76c686f4452ec1186cdbef0adcfac008eef6` |
-| `views/group-g.js` | 252404 | `9939a1ca097a864dfac21ed947907a858cfcf84bec52de821e31bab204a356f2` |
+| `views/group-g.js` | 252512 | `a8e510189b3e66772b82c5be06373e3ba605bc5bf4aae458a437098dc29e66db` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 25808 | `e791f223531f946189558bdcb6e950e47ac4c90ded2392e568c4f7458df2c636` |
 | `views/group-j.js` | 10229 | `93acd8660941a9046e98ca70c75255389d49ee1e28c252d4ac76eed91c455e5a` |

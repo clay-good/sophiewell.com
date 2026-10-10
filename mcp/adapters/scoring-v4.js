@@ -1170,9 +1170,10 @@ export default [
   // --- wave 62: the pediatric fever / sepsis and respiratory cluster ------
   {
     id: 'rochester',
-    summary: 'Rochester criteria for the well-appearing febrile infant (Jaskiewicz 1994): seven low-risk criteria (age <= 60 days, term and previously healthy, no focal infection, WBC 5-15, bands <= 1.5, urine WBC <= 10/HPF, stool WBC <= 5/HPF); all must be met to be low risk for serious bacterial infection.',
+    summary: 'Rochester criteria for the febrile infant (Jaskiewicz 1994): eight low-risk criteria (appears well, age <= 60 days, term and previously healthy, no focal infection, WBC 5-15, bands <= 1.5, urine WBC <= 10/HPF, stool WBC <= 5/HPF); all must be met to be low risk for serious bacterial infection.',
     compute: F.rochester,
     fields: [
+      { dom: 'rc-well', arg: 'appearsWell', kind: 'bool', label: 'Appears well' },
       { dom: 'rc-age', arg: 'ageLte60Days', kind: 'bool', label: 'Age <= 60 days' },
       { dom: 'rc-term', arg: 'termAndPreviouslyHealthy', kind: 'bool', label: 'Term gestation and previously healthy' },
       { dom: 'rc-focal', arg: 'noFocalInfection', kind: 'bool', label: 'No focal infection on exam' },
@@ -1184,10 +1185,10 @@ export default [
   },
   {
     id: 'philadelphia',
-    summary: 'Philadelphia criteria for the febrile infant 29-60 days (Baker 1993): eight low-risk criteria (age, well-appearing, WBC < 15, band:neutrophil < 0.2, UA, CSF, chest x-ray, stool); all must be met for safe outpatient management without empiric antibiotics.',
+    summary: 'Philadelphia criteria for the febrile infant 29-56 days (Baker 1993): eight low-risk criteria (age, well-appearing, WBC < 15, band:neutrophil < 0.2, UA, CSF, chest x-ray, stool); all must be met for safe outpatient management without empiric antibiotics.',
     compute: F.philadelphia,
     fields: [
-      { dom: 'ph-age', arg: 'age29To60Days', kind: 'bool', label: 'Age 29-60 days' },
+      { dom: 'ph-age', arg: 'age29To56Days', kind: 'bool', label: 'Age 29-56 days' },
       { dom: 'ph-well', arg: 'wellAppearing', kind: 'bool', label: 'Well-appearing' },
       { dom: 'ph-wbc', arg: 'wbcLt15', kind: 'bool', label: 'WBC < 15 x10^9/L' },
       { dom: 'ph-bnr', arg: 'bandToNeutrophilRatioLt0Point2', kind: 'bool', label: 'Band:neutrophil ratio < 0.2' },

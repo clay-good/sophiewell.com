@@ -49,14 +49,16 @@ test('charlson high (band >=5): age 75 + CHF + COPD + mets -> 11', () => {
   assert.match(r.band, /85%/);
 });
 
-test('charlson 1-2 band: age 55 -> 1 maps to ~26% band', () => {
+test('charlson: the mortality figure follows the comorbidity score, at 1 year (age 55, none -> 12%)', () => {
   const r = charlson({ items: {}, ageYears: 55 });
   assert.equal(r.score, 1);
-  assert.match(r.band, /26%/);
+  assert.match(r.band, /comorbidity score of 0, 1-year mortality .* was 12%/);
+  assert.doesNotMatch(r.band, /10-year/);
 });
 
-test('charlson 3-4 band: age 65 + MI + CHF -> 4 maps to ~52%', () => {
+test('charlson: age 65 + MI + CHF -> total 4, comorbidity 2 -> 26% at 1 year', () => {
   const r = charlson({ items: { mi: true, chf: true }, ageYears: 65 });
   assert.equal(r.score, 4);
-  assert.match(r.band, /52%/);
+  assert.equal(r.oneYearMortalityPct, 26);
+  assert.match(r.band, /score of 1-2, 1-year mortality .* was 26%/);
 });
