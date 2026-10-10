@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Citations matched to what the papers say: corrected calcium's 0.8 factor is a convention (Payne
+  1973, cited for it, used a slope of 1.0); the bedside Schwartz equation was derived in children
+  aged 1 to 16 with chronic kidney disease, not "validated ages 1-18"; the Hartford study dosed
+  gentamicin and tobramycin only, so amikacin 15 mg/kg is marked as an extension; Wells DVT
+  scores the 2003 item list and says so; the Ottawa ankle and foot rules are cited to the 1993
+  refinement they implement.
+
 - Four tools printed a result band that contradicted the interpretation table on the same page.
   Bishop score 8 read "Intermediate" above a table calling 8 favorable; CIWA-Ar 8 or 9 read
   "Moderate" above "minimal-to-mild"; HAS-BLED 1 read "Moderate" above "Low"; AUDIT-C 3 read

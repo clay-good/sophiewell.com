@@ -158,7 +158,7 @@ export const renderers = {
     root.appendChild(selectField('Drug', 'ag-drug', [
       { value: 'gentamicin', text: 'Gentamicin (7 mg/kg)' },
       { value: 'tobramycin', text: 'Tobramycin (7 mg/kg)' },
-      { value: 'amikacin', text: 'Amikacin (15 mg/kg)' },
+      { value: 'amikacin', text: 'Amikacin (15 mg/kg; not from the Hartford study)' },
     ]));
     root.appendChild(field('Dosing weight (kg)', 'ag-wt', { placeholder: 'ABW; AdjBW if obese' }));
     root.appendChild(field('Creatinine clearance (mL/min)', 'ag-crcl', { placeholder: 'e.g. 80' }));

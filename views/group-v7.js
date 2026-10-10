@@ -336,7 +336,7 @@ export const renderers = {
       o.appendChild(list([
         li(`Estimated GFR: ${fmt(r.egfr, { fallback: '(enter values)' })} mL/min/1.73m^2`),
         li(r.band),
-        li('Bedside Schwartz; validated ages 1-18 with IDMS-traceable creatinine. Not for neonates or adults.'),
+        li('Bedside Schwartz; derived in children aged 1 to 16 years with chronic kidney disease, with IDMS-traceable creatinine. Not for neonates or adults.'),
       ]));
     }));
   },

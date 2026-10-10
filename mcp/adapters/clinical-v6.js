@@ -141,7 +141,7 @@ export default [
   },
   {
     id: 'schwartz-egfr',
-    summary: 'Bedside Schwartz pediatric eGFR = 0.413*height(cm)/creatinine; validated ages 1-18 with IDMS-traceable creatinine.',
+    summary: 'Bedside Schwartz pediatric eGFR = 0.413*height(cm)/creatinine; derived in children aged 1 to 16 years with chronic kidney disease (IDMS-traceable creatinine).',
     compute: (a) => {
       const r = F.schwartzEgfr(a);
       return r == null ? r : { ...r, unit: 'mL/min/1.73m^2' };

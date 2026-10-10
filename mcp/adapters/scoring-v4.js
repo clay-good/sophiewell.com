@@ -1803,7 +1803,7 @@ export default [
   },
   {
     id: 'ottawa-ankle',
-    summary: 'Ottawa Ankle and Foot Rules (Stiell 1992): ankle x-ray if malleolar-zone pain plus posterior-malleolus tenderness or inability to bear weight; foot x-ray if midfoot-zone pain plus 5th-metatarsal/navicular tenderness or inability to bear weight. Returns which imaging is indicated.',
+    summary: 'Ottawa Ankle and Foot Rules (derived Stiell 1992; these are the refined rules of Stiell 1993): ankle x-ray if malleolar-zone pain plus posterior-malleolus tenderness or inability to bear weight; foot x-ray if midfoot-zone pain plus 5th-metatarsal/navicular tenderness or inability to bear weight. Returns which imaging is indicated.',
     compute: F.ottawaAnkle,
     fields: [
       { dom: 'oa-mp', arg: 'malleolarPain', kind: 'bool', label: 'Pain in malleolar zone' },
