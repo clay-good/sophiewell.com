@@ -38,3 +38,11 @@ test('rejects out-of-range Hunt-Hess or GCS', () => {
   assert.throws(() => huntHessWfns({ huntHess: 6, gcs: 15 }));
   assert.throws(() => huntHessWfns({ huntHess: 3, gcs: 2 }));
 });
+
+test('GCS 15 with a focal motor deficit is not graded, not grade 1', () => {
+  const r = huntHessWfns({ huntHess: 3, gcs: 15, focalMotorDeficit: true });
+  assert.equal(r.wfns, null);
+  assert.match(r.wfnsNote, /no grade for GCS 15 with a focal motor deficit/);
+  assert.match(r.text, /WFNS not graded/);
+  assert.equal(huntHessWfns({ huntHess: 1, gcs: 15, focalMotorDeficit: false }).wfnsNote, null);
+});

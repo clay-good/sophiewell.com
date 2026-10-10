@@ -4442,7 +4442,7 @@ export const renderers = {
         gcs: nv('hh-gcs'),
         focalMotorDeficit: checked('hh-focal'),
       });
-      o.appendChild(el('h2', { text: `Hunt-Hess ${r.huntHess} / WFNS ${r.wfns}` }));
+      o.appendChild(el('h2', { text: `Hunt-Hess ${r.huntHess} / WFNS ${r.wfns ?? 'not graded'}` }));
       o.appendChild(el('p', { text: r.huntHessLabel }));
       o.appendChild(el('p', { text: r.text }));
     });

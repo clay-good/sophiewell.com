@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Hunt-Hess and WFNS grading returned WFNS grade 1 for GCS 15 with a focal motor deficit ticked.
+  Grade 1 is GCS 15 without a deficit and the scale counts a deficit only at GCS 13-14, so that
+  combination has no grade; it now reads "not graded" instead of the best grade.
+
 - CRRT effluent dose called the dose computed from the prescribed rate "delivered", judged it
   "within target" at 20-25 mL/kg/h and advised reducing a prescription above 25. KDIGO 2012 rec.
   5.8.4 sets 20-25 mL/kg/h for the delivered volume and says that usually requires a higher
