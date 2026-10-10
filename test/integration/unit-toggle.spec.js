@@ -100,12 +100,14 @@ test('pelod2 lactate in mg/dL reproduces the mmol/L example (score 9)', async ({
 
 test('crrt ionised Ca in mg/dL matches the mmol/L banner threshold', async ({ page }) => {
   await page.goto('/#crrt-dose', { waitUntil: 'load' });
-  // 6.0 mg/dL = 1.5 mmol/L systemic ionised Ca -> outside the 1.1-1.2 target banner.
+  // 6.0 mg/dL = 1.5 mmol/L systemic ionised Ca -> outside the 0.95-1.2 mmol/L banner.
   await page.fill('#cr-w', '70');
   await page.fill('#cr-r', '2000');
   await page.locator('#cr-sca-unit').selectOption('mg/dL');
   await page.fill('#cr-sca', '6.0');
-  await expect(page.locator('#q-results')).toContainText('1.5 mmol/L outside 1.1-1.2');
+  await expect(page.locator('#q-results')).toContainText('1.5 mmol/L outside the 0.95-1.2');
+  // Total Ca was left blank: no ratio is printed from an unmeasured total.
+  await expect(page.locator('#q-results')).not.toContainText('ratio');
 });
 
 test('the unit-field pair does not overflow at 320px', async ({ page }) => {

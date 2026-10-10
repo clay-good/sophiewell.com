@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- CRRT effluent dose printed "Total/ionized Ca ratio: 0" when total calcium was left blank. An
+  unmeasured total now yields no ratio.
+
 - Hunt-Hess and WFNS grading returned WFNS grade 1 for GCS 15 with a focal motor deficit ticked.
   Grade 1 is GCS 15 without a deficit and the scale counts a deficit only at GCS 13-14, so that
   combination has no grade; it now reads "not graded" instead of the best grade.

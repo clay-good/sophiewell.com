@@ -62,3 +62,8 @@ test('crrt-dose: an unstated ultrafiltration is absent, not a rate of zero', () 
   assert.equal(crrtDose({ weightKg: 80, effluentRateMlPerHr: 1800, ultrafiltrationMlPerHr: 150 })
     .ultrafiltrationMlPerHr, 150);
 });
+
+test('crrt-dose: a total calcium of 0 (a blank field) yields no ratio', () => {
+  const r = crrtDose({ weightKg: 80, effluentRateMlPerHr: 1800, systemicIonisedCa: 1.1, totalCa: 0 });
+  assert.equal(r.totalIonisedRatio, null);
+});
