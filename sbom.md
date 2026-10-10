@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `bf26160617e098c7`
-Generated: 2026-10-10T14:27:44.347Z
+Build ID: `d21147da23e6ff62`
+Generated: 2026-10-10T14:49:09.090Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -698,7 +698,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2758984 | `6caf887d72f9998408adf55ee40e462cb45f00916efed9f2658aa9a304e3c563` |
+| `lib/meta.js` | 2758894 | `4b3128cd0661557b62f1d931077b91078ceaf0060e2ada630075d97313ae050f` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1064,9 +1064,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 325488 | `7b1f54fc213d4e7a93c94256745b90c89c4250fcbed991ff397c4f36826f04b4` |
+| `lib/scoring-v4.js` | 325971 | `285ccf3c4fd9bdbf42b7069242ac97b94c865f1446d0fbdeb52fd81dd21726d8` |
 | `lib/scoring-v5.js` | 13946 | `ffc233026d33c94caca162c6312ad19be48f9fffa690597cad8656236402d0c7` |
-| `lib/scoring-v6.js` | 28759 | `31398e9cfb7242be0ee6fded992906814e1cf26f33db716d285bb4d36b81f8c9` |
+| `lib/scoring-v6.js` | 28955 | `68cad9165e0175516e4c885e960cefb4fc316e4251e0f1b43ceba39613795fa1` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
 | `lib/screener.js` | 6613 | `e017903130ae2d23cb1560f6ad55990ef3dda443a5ac1e9c289b283e3dcd930b` |
@@ -2194,9 +2194,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schobinger-avm-v497.js` | 1471 | `0e96c8f38f6ed7c8f2a129d4349ae06ac6bb152a8bf30b388b2c4941698a5dcc` |
 | `mcp/adapters/schofield-v779.js` | 1203 | `877117e8b9a4659faa3164c628509cfa5855c8a9acdebe84b8e4cf9af11a560a` |
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
-| `mcp/adapters/scoring-v4.js` | 163655 | `b819c1d638b886195214df39cbfa1af771dd17ddc5e79b6d3f876ece70d5ed4f` |
+| `mcp/adapters/scoring-v4.js` | 163673 | `b44ada400caaa5671d680267d79d9862348113317822989b6aaab511f2d7dec9` |
 | `mcp/adapters/scoring-v5.js` | 12684 | `12ac7aa1a19030cdc27d76fc6fbac1edd0c024171f8a22365bd22da65a0b74f3` |
-| `mcp/adapters/scoring-v6.js` | 20279 | `27326c97bbc73fc72e19349719020e64da57d56b46742e4d03f92b42316d9030` |
+| `mcp/adapters/scoring-v6.js` | 20286 | `ccd686c6f287625d2a83b5142cfcbef5f1c43940e2a67a74088962c9651e15f0` |
 | `mcp/adapters/scorpion-grade-india-v1556.js` | 1284 | `3cd3d399c2af7f57769e85a6ad4edeb3e77354249b3a6db361b0981e71233aed` |
 | `mcp/adapters/scp-pushing-v562.js` | 5791 | `79ec7c5fbd7258c6647f6679be5fd535867c03246e6fd071d291393ab8705fed` |
 | `mcp/adapters/scrub-typhus-icmr-v1560.js` | 1807 | `ba4ba2a4538b9f580aec47168f12387ec29fc9a5254ccda8485599e02b5c6d1d` |
@@ -2406,7 +2406,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 51582 | `de3e12aad8357addb28c635c98160e1feb4f3a497430898fd54937aca5850abf` |
 | `views/group-f.js` | 55177 | `91eb8f878f623c98bc29ebea3a9069d2730590153aba4ceddb672a22d1f86f3c` |
-| `views/group-g.js` | 252566 | `b23a7cd5238d0a0296715d86adb7971bb897fe58c7e014d72d645f494290859f` |
+| `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 25808 | `e791f223531f946189558bdcb6e950e47ac4c90ded2392e568c4f7458df2c636` |
 | `views/group-j.js` | 10229 | `93acd8660941a9046e98ca70c75255389d49ee1e28c252d4ac76eed91c455e5a` |

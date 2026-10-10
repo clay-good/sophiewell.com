@@ -1440,7 +1440,7 @@ export default [
   },
   {
     id: 'npass',
-    summary: 'Neonatal Pain, Agitation and Sedation Scale (Hummel 2008): five items each -2 to +2; positive values sum to a pain score (with a +1/week preterm adjustment below 30 weeks gestation), negative values sum to a sedation score. Returns both scores and bands.',
+    summary: 'Neonatal Pain, Agitation and Sedation Scale (Hummel 2008): five items each -2 to +2; positive values sum to a pain score (with a prematurity adjustment of +3 under 28 weeks, +2 at 28-31, +1 at 32-35), negative values sum to a sedation score. Returns both scores and bands.',
     compute: F.npass,
     fields: [
       { dom: 'np-cry', arg: 'crying', kind: 'number', required: true, label: 'Crying / irritability (-2..+2)' },

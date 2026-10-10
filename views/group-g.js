@@ -4613,7 +4613,7 @@ export const renderers = {
       ]));
     }
     void signedRange;
-    // Gestational age (weeks): preterm <30 wk adds +1/week to pain side.
+    // Gestational age (weeks): +3 under 28, +2 at 28-31, +1 at 32-35 on the pain side.
     const ga = el('p');
     ga.appendChild(el('label', { for: 'np-ga', text: 'Gestational age (weeks, 20-44)' }));
     ga.appendChild(el('br'));

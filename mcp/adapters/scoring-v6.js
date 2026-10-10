@@ -80,7 +80,7 @@ export default [
   },
   {
     id: 'downes',
-    summary: 'Downes score: 5 neonatal respiratory-distress parameters scored 0-2 each (total 0-10); 0-3 mild, 4-6 moderate (impending respiratory failure), >=7 severe (consider assisted ventilation). Higher = worse.',
+    summary: 'Downes score: 5 neonatal respiratory-distress parameters scored 0-2 each (total 0-10); 0-3 mild, 4-6 moderate, >=7 severe (impending respiratory failure above 7; consider assisted ventilation). Higher = worse.',
     compute: F.downes,
     fields: [
       { dom: 'dn-rr', arg: 'respiratoryRate', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Respiratory rate', to: Number },

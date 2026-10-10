@@ -23,10 +23,12 @@ test('npass pain 4 at term -> intervention indicated', () => {
   assert.equal(r.painBand, 'pain/agitation present');
 });
 
-test('npass preterm 26 wk adds +4 to pain side', () => {
+test('npass prematurity adjustment: +3 under 28 wk, +2 at 28-31, +1 at 32-35, none from 36', () => {
   const r = npass({ crying: 1, behavior: 0, facial: 0, extremities: 0, vitals: 0, gestationalAgeWeeks: 26 });
-  assert.equal(r.pretermAdjust, 4);
-  assert.equal(r.painScore, 5);
+  assert.equal(r.pretermAdjust, 3);
+  assert.equal(r.painScore, 4);
+  const adj = (ga) => npass({ crying: 0, behavior: 0, facial: 0, extremities: 0, vitals: 0, gestationalAgeWeeks: ga }).pretermAdjust;
+  assert.deepEqual([adj(22), adj(27), adj(28), adj(31), adj(32), adj(35), adj(36)], [3, 3, 2, 2, 1, 1, 0]);
   assert.equal(r.painBand, 'pain/agitation present');
 });
 
@@ -36,22 +38,23 @@ test('npass max pain at 40 wk -> 10', () => {
   assert.equal(r.sedationScore, 0);
 });
 
-test('npass sedation -3 -> deep sedation', () => {
+test('npass sedation -3 -> light sedation (-2 to -5)', () => {
   const r = npass({ crying: -1, behavior: -1, facial: -1, extremities: 0, vitals: 0, gestationalAgeWeeks: 38 });
   assert.equal(r.sedationScore, -3);
-  assert.equal(r.sedationBand, 'deep sedation');
+  assert.equal(r.sedationBand, 'light sedation');
 });
 
-test('npass sedation -5 -> over-sedation', () => {
+test('npass sedation -5 -> still light; -6 and below -> deep', () => {
   const r = npass({ crying: -1, behavior: -1, facial: -1, extremities: -1, vitals: -1, gestationalAgeWeeks: 38 });
   assert.equal(r.sedationScore, -5);
-  assert.equal(r.sedationBand, 'over-sedation');
+  assert.equal(r.sedationBand, 'light sedation');
+  assert.equal(npass({ crying: -2, behavior: -2, facial: -2, extremities: 0, vitals: 0, gestationalAgeWeeks: 38 }).sedationBand, 'deep sedation');
 });
 
-test('npass sedation -1 -> light sedation', () => {
+test('npass sedation -1 -> below the light-sedation range', () => {
   const r = npass({ crying: -1, behavior: 0, facial: 0, extremities: 0, vitals: 0, gestationalAgeWeeks: 38 });
   assert.equal(r.sedationScore, -1);
-  assert.equal(r.sedationBand, 'light sedation');
+  assert.equal(r.sedationBand, 'below the light-sedation range');
 });
 
 test('npass mixed pain and sedation items', () => {

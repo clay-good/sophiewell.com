@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- N-PASS added 1 point per week of gestation below 30 to the pain score, so a 24-week infant
+  gained 6 points and crossed the treatment threshold on the adjustment alone. The scale adds 3
+  under 28 weeks, 2 at 28-31 and 1 at 32-35. Sedation is light at -2 to -5 and deep at -6 to -10;
+  the tool called -3 "deep" and -5 "over-sedation".
+- Downes score put "impending respiratory failure" on the 4-6 band; it belongs above 7.
+
 - Citations matched to what the papers say: corrected calcium's 0.8 factor is a convention (Payne
   1973, cited for it, used a slope of 1.0); the bedside Schwartz equation was derived in children
   aged 1 to 16 with chronic kidney disease, not "validated ages 1-18"; the Hartford study dosed
