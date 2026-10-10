@@ -38,7 +38,7 @@ export default [
   },
   {
     id: 'anticoag-reversal',
-    summary: 'Anticoagulation reversal dosing: 4F-PCC / idarucizumab / andexanet for warfarin and the DOACs (weight and INR driven), or protamine for unfractionated heparin.',
+    summary: 'Anticoagulation reversal dosing: 4F-PCC for warfarin (weight and INR driven) and idarucizumab for dabigatran, or protamine for unfractionated heparin. For apixaban and rivaroxaban it returns no dose: andexanet is no longer sold in the U.S. (FDA safety communication, December 18, 2025) and the 4F-PCC labels carry no factor Xa inhibitor dose.',
     // The renderer branches on the agent: heparin -> protamineDose(heparinUnits),
     // every other agent -> anticoagReversalDose(weightKg, inr, agent).
     compute: (a) => {

@@ -6,6 +6,30 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Anticoagulant reversal still offered andexanet for apixaban and rivaroxaban. FDA's safety
+  communication of December 18, 2025 says it considers the product's risks to outweigh its
+  benefits and that it is no longer made for or sold in the U.S. after December 22, 2025; the
+  tool now says so and returns no dose. The fallback "4F-PCC 50 units/kg" is removed: neither
+  4F-PCC label carries that indication and the figure could not be re-read in a guideline.
+  Vitamin K reads "5 to 10 mg by slow IV injection (CHEST 2012)" in place of a flat 10 mg.
+  spec-v1641 rows 3, 4 and part of 11.
+
+- Cyanide antidote reference showed pediatric sodium thiosulfate as 400 mg/kg; the Nithiodote
+  label gives 1 mL/kg (250 mg/kg), not over 50 mL. Sodium nitrite, missing entirely, is added
+  (children 0.2 mL/kg, not over 10 mL; adults 10 mL), with the half-dose repeat and the caution
+  under 6 months. Pediatric hydroxocobalamin now carries the Cyanokit label's own statement
+  instead of "70 mg/kg (max 5 g)". spec-v1641 row 1.
+- N-acetylcysteine dosing capped the dosing weight at 110 kg; the Acetadote label fixes the dose
+  at 100 kg and above (the old cap ran 10% over the label from 110 kg up). The two-bag option, mislabeled
+  "SNAP" and cited to a trial of a different protocol, is the label's alternative regimen and is
+  now refused under 41 kg. Diluent volumes are shown and no dose is given under 5 kg.
+  spec-v1641 row 2.
+
+- Absolute neutrophil count labeled 1,000-1,499 "CTCAE grade 1", 500-999 "grade 2-3" and under 500
+  "grade 4", citing v5.0; that matches neither CTCAE version. The result now gives the v6.0 grade
+  (1 below 1,500; 2 below 1,000; 3 below 500; 4 below 100) and the v5.0 grade (2, 3 and 4 at the
+  same first three cut points). spec-v1641 row 5.
+
 - N-PASS added 1 point per week of gestation below 30 to the pain score, so a 24-week infant
   gained 6 points and crossed the treatment threshold on the adjustment alone. The scale adds 3
   under 28 weeks, 2 at 28-31 and 1 at 32-35. Sedation is light at -2 to -5 and deep at -6 to -10;

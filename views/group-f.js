@@ -201,7 +201,7 @@ export const renderers = {
     root.appendChild(selectField('Anticoagulant', 'ar-agent', [
       { value: 'warfarin', text: 'Warfarin (4F-PCC + Vit K)' },
       { value: 'dabigatran', text: 'Dabigatran (idarucizumab)' },
-      { value: 'apixaban-rivaroxaban', text: 'Apixaban / Rivaroxaban (andexanet)' },
+      { value: 'apixaban-rivaroxaban', text: 'Apixaban / Rivaroxaban (andexanet no longer sold in the U.S.)' },
       { value: 'heparin-ufh', text: 'Heparin, UFH (protamine)' },
     ]));
     root.appendChild(unitField('Weight', 'ar-w', WEIGHT_UNITS, { placeholder: '80' }));
@@ -237,7 +237,6 @@ export const renderers = {
       if (r.units != null) items.push({ label: '4F-PCC dose', value: fmt(r.units), units: `units (${r.unitsPerKg} units/kg${r.capped ? ', dosing weight capped at 100 kg' : ''})` });
       if (r.doseG != null) items.push({ label: 'Dose', value: fmt(r.doseG), units: 'g' });
       if (r.adjunct) items.push({ text: `Adjunct: ${r.adjunct}` });
-      if (r.altPcc4Units != null) items.push({ text: `Alt if andexanet unavailable: 4F-PCC ${fmt(r.altPcc4Units)} units (50 units/kg)` });
       if (r.note) items.push({ text: r.note });
       resultRow(o, items);
     });

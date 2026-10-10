@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d21147da23e6ff62`
-Generated: 2026-10-10T14:49:09.090Z
+Build ID: `9aa489697b54031b`
+Generated: 2026-10-10T15:22:41.340Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -246,9 +246,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
 | `lib/clinical-v4.js` | 22174 | `04b250dc0c03681202158f417fe2c93f2dc688a46ebcaeb2ebb58bd1aec84172` |
 | `lib/clinical-v5.js` | 26940 | `9d75aa30b97b5dd05ebc62e30eff334027d441bc186ece1d826b3e9238eefa7d` |
-| `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
+| `lib/clinical-v6.js` | 17029 | `546b3f749b758d099654b8ecdd89742e0a603583846708705e4871e3f6f47612` |
 | `lib/clinical-v7.js` | 19163 | `facb398cfcad3ff668d0c0f8d54fde6aaa1093d3d65df360b272bda4e5554e4b` |
-| `lib/clinical-v8.js` | 18730 | `e5e7be6c9d5f9e11e433eab822fd96e5e29673ad0e76a97fd5a1754c8877a003` |
+| `lib/clinical-v8.js` | 20011 | `1bd7594690ee57f0e1971b749cb1248b3f60c9cb568af648c1f1d949d7f2a122` |
 | `lib/clinical.js` | 24784 | `e8ad771505902669e2d21252c48c5bf41fdb24916407010bbfb61ec2008f5456` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
@@ -698,7 +698,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2758894 | `4b3128cd0661557b62f1d931077b91078ceaf0060e2ada630075d97313ae050f` |
+| `lib/meta.js` | 2760215 | `2405d1b586478eca5cc3aac8ebe4cb8f3b16b7696024e162e94b8201a4bb1c96` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1165,7 +1165,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tile-pelvic-v379.js` | 3632 | `9f8e39fbc8808b9a30860a6fbfee2c3c9170db94bb7db72a0ceb2b6ff4844d27` |
 | `lib/todani-choledochal-v473.js` | 3608 | `e6e1d1726ce48bafecb6edbad0d7f61300adf435b2c1b1427aeeeb98c8fc21ab` |
 | `lib/tonnis-hip-oa-v354.js` | 3924 | `856bbea20809afb3acd30bbdc56331611ceba4deb17726ba2bcde7a36c87d957` |
-| `lib/tox-v110.js` | 15073 | `1436011413243c7416952669fc6cc3ae3bbbd9f77afc92e1e7bbe8abe1ea4ae1` |
+| `lib/tox-v110.js` | 16610 | `d60b512dd8a8860d81ac19fb13c6bf9cdf6744739f27b8abc7547fd701e2cc2d` |
 | `lib/tox-v86.js` | 14404 | `f1166aafbe0807d67a7009faa117eff29cbc9d54d9af29e1a63eab1fe2ee9dad` |
 | `lib/trachoma-grade-v1561.js` | 4055 | `899fd785c08aa0075f51fb10ef1593b9b48d4a8da2ab53fb38fdd032bbeea666` |
 | `lib/transfusion-v292.js` | 5990 | `2b6860941accfff047ddfc6f48801e8fc06cc73beb57801e27b7b83ee8f4a922` |
@@ -1475,9 +1475,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-obesity-v838.js` | 1999 | `aa1e48cb5974a086c583469b65b330c762c91ea793b1669b04a3acf893990575` |
 | `mcp/adapters/clinical-v4.js` | 12789 | `92534eaaeb642010d2516d9c37f614ae684866bff5152e236286f65bb6f53efe` |
 | `mcp/adapters/clinical-v5.js` | 12057 | `351d76ac0a7dfb00861f91dfa132bbb36e67d21aa3e72502459ab63774914856` |
-| `mcp/adapters/clinical-v6.js` | 8954 | `bf222cc3f0a0d8ea6871da1543beb27c3a169ac2127a29df5cd64eedcb9b4c44` |
+| `mcp/adapters/clinical-v6.js` | 9094 | `85dda711c1f5b628041a41ae5218c2ea8909bc51ff6bff06df2b9a81e1674096` |
 | `mcp/adapters/clinical-v7.js` | 8069 | `083a2078dba3877d854e781c9adc4bfdd49beda72fa8cf735360afde1c9b1d54` |
-| `mcp/adapters/clinical-v8.js` | 15812 | `40b55f1b4da344f15aea9301a1b111543d35265f8b5671c4467c579faebc32c5` |
+| `mcp/adapters/clinical-v8.js` | 15995 | `b2fd754e659332e9cfa3899e11134fe5378274cc50bfe39ca263caee90087e00` |
 | `mcp/adapters/clinical.js` | 25925 | `37840f24a9d5da52aeeeb007e600a0a2840989625cb3c8947109a3a029d804cd` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/coagscore-v232.js` | 2450 | `29d9720d14256b871c8c9752ecadd8f5df16342529bf67afacbc1028ed2c3d0c` |
@@ -2279,7 +2279,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/tile-pelvic-v379.js` | 1473 | `70f32c9d62a60bf38ffdd3d212d7f2b066fe15adaf61455a06de3791b9f74d7e` |
 | `mcp/adapters/todani-choledochal-v473.js` | 1244 | `06bc5be9d22287ffdc6a28d14186754083b16c9d8abfe51fad9c71aee5ac5c4d` |
 | `mcp/adapters/tonnis-hip-oa-v354.js` | 1427 | `bb8c618503d661a89c00fbfabae469647a8799821c7923a60f91b26aea3207ed` |
-| `mcp/adapters/tox-v110.js` | 3902 | `f759b5ca55f9574d7c8320d7d08dd928a33e8030ebb5d3fec91fd1cd08eb8adc` |
+| `mcp/adapters/tox-v110.js` | 4036 | `f663afcba268cfe5b3082416437bc32514814a6de45ed57e832da3a228c9519b` |
 | `mcp/adapters/tox-v86.js` | 4261 | `be57be9bae32c5dfe02490a653072b862a131b6fa8573b5a2cbb9591e03bad5b` |
 | `mcp/adapters/trachoma-grade-v1561.js` | 1344 | `0bdfa4067d943aad49d90970a9157f1a6b6f93e5aa842d5f1634608eb0bd99ff` |
 | `mcp/adapters/transfusion-v292.js` | 1766 | `005b74056d7d62f5f6a33328a06286f48e5f2db99883b90e24fb7d81cb506152` |
@@ -2405,10 +2405,10 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 51582 | `de3e12aad8357addb28c635c98160e1feb4f3a497430898fd54937aca5850abf` |
-| `views/group-f.js` | 55177 | `91eb8f878f623c98bc29ebea3a9069d2730590153aba4ceddb672a22d1f86f3c` |
+| `views/group-f.js` | 55065 | `70547b23902f0ab2ae65e28743a5f7347d9c1bb94ef8e1a22279c05d06a4c913` |
 | `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
-| `views/group-i.js` | 25808 | `e791f223531f946189558bdcb6e950e47ac4c90ded2392e568c4f7458df2c636` |
+| `views/group-i.js` | 26811 | `eac52954ca2dd14577d8c8e31db3e9c143d589426f0602eccc70476da4303540` |
 | `views/group-j.js` | 10229 | `93acd8660941a9046e98ca70c75255389d49ee1e28c252d4ac76eed91c455e5a` |
 | `views/group-klmno.js` | 7372 | `c861d44056fed12dd72a01398ea556e5ed560af424f8c0a20ccfee12bc56eeaf` |
 | `views/group-v10.js` | 39171 | `84da9bdd8a68f73321b851da3c1dfa1ef5206989d44d06e6b1541cfa98545692` |
@@ -2780,7 +2780,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v347.js` | 3082 | `a24ac219078dce90e2bce3cb2d86d117608516abecec03ee9039be7f1348af80` |
 | `views/group-v348.js` | 3109 | `959faaedc7197d6becfcba045ae72912a64ae6c18d30e528e34a04c3730fbc58` |
 | `views/group-v349.js` | 3414 | `60145646cd4082df87262bef903f19d6344aa5dbcf2e0a268f1020f8dc384d45` |
-| `views/group-v35.js` | 10393 | `168eae7a27286f77e8df35af85c4b335c29a14ca758e24cb3ae922c6618afd68` |
+| `views/group-v35.js` | 10487 | `111113b3bdbab751351a919ad2714fdd74ddeb24b5d02d82447e733e7b08f8c0` |
 | `views/group-v350.js` | 3161 | `1db2f3d7ae4deb153dd80c6a2d60dc04cf2e6fa7fa8c634a5a84510d20f79488` |
 | `views/group-v351.js` | 2867 | `b50b76371b7e28151b00c8d9437a92a80e4419c2f1a2270ac29e6d06ca540fbd` |
 | `views/group-v352.js` | 3364 | `7ec8f3de4e74cb61cc5109e208e9679fd4e3ea0b05658edc13f1e34a75db4560` |

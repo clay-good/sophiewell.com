@@ -220,3 +220,13 @@ test('anticoag-reversal: the INR is required where it decides and not read elsew
   // And the bands still work.
   assert.equal(C.anticoagReversalDose({ weightKg: 80, inr: 5, agent: 'warfarin' }).unitsPerKg, 35);
 });
+
+test('anticoagReversalDose: apixaban / rivaroxaban returns no dose; andexanet is marked withdrawn (spec-v1641 rows 3-4)', () => {
+  const r = C.anticoagReversalDose({ weightKg: 80, agent: 'apixaban-rivaroxaban' });
+  assert.equal(r.andexanetWithdrawn, true);
+  assert.equal(r.altPcc4Units, undefined);
+  assert.match(r.note, /December 18, 2025/);
+  assert.match(r.note, /no longer be manufactured for or sold in the U\.S\./);
+  assert.doesNotMatch(r.note, /50 units\/kg/);
+  assert.match(C.anticoagReversalDose({ weightKg: 80, inr: 5, agent: 'warfarin' }).adjunct, /5 to 10 mg/);
+});

@@ -415,14 +415,19 @@ export const renderers = {
     root.appendChild(o);
     o.appendChild(el('h2', { text: 'CO / Cyanide / Smoke-Inhalation Antidote Reference' }));
     o.appendChild(el('h3', { text: 'Cyanide - hydroxocobalamin' }));
-    o.appendChild(el('p', { text: 'Adult: 5 g IV over 15 min; may repeat once for total 10 g (FDA label, Cyanokit).' }));
-    o.appendChild(el('p', { text: 'Pediatric: 70 mg/kg IV (max 5 g) over 15 min.' }));
-    o.appendChild(el('h3', { text: 'Cyanide - sodium thiosulfate' }));
-    o.appendChild(el('p', { text: 'Adult: 12.5 g IV (50 mL of 25% solution) over 10-30 min after sodium nitrite or with hydroxocobalamin in some protocols.' }));
-    o.appendChild(el('p', { text: 'Pediatric: 400 mg/kg (max 12.5 g).' }));
+    // spec-v1641 row 1 / spec-v1636 backfill 2, corrected October 10, 2026 on re-reading both labels: pediatric
+    // thiosulfate read "400 mg/kg" (the label is 250 mg/kg), pediatric hydroxocobalamin read "70 mg/kg (max 5 g)" as
+    // if labeled (the label says pediatric safety and effectiveness are not established and states no maximum), and
+    // sodium nitrite had no dose at all.
+    o.appendChild(el('p', { text: 'Adult: 5 g IV over 15 min; a second 5 g may be given over 15 min to 2 hours, 10 g in all (FDA label, Cyanokit).' }));
+    o.appendChild(el('p', { text: 'Pediatric: the label says safety and effectiveness have not been established in children; it notes that 70 mg/kg has been used outside the U.S. and states no maximum.' }));
+    o.appendChild(el('h3', { text: 'Cyanide - sodium nitrite, then sodium thiosulfate (Nithiodote)' }));
+    o.appendChild(el('p', { text: 'Adult: sodium nitrite 10 mL (300 mg) IV at 2.5 to 5 mL/min, then immediately sodium thiosulfate 50 mL (12.5 g) IV.' }));
+    o.appendChild(el('p', { text: 'Pediatric: sodium nitrite 0.2 mL/kg (6 mg/kg) at 2.5 to 5 mL/min, not over 10 mL, then immediately sodium thiosulfate 1 mL/kg (250 mg/kg), not over 50 mL.' }));
+    o.appendChild(el('p', { text: 'If signs of poisoning reappear, repeat both at one-half the original dose. Use sodium nitrite with caution under 6 months of age (higher risk of severe methemoglobinemia). Monitor blood pressure. Do not give in the same IV line as hydroxocobalamin.' }));
     o.appendChild(el('h3', { text: 'Carbon monoxide - hyperbaric oxygen indication' }));
     o.appendChild(el('p', { text: 'Consider HBO if COHb >25% (>15% in pregnancy), syncope or LOC at any point, neurologic deficit, or persistent symptoms after normobaric O2.' }));
-    o.appendChild(el('p', { class: 'muted', text: 'Sources: FDA labeling for Cyanokit (hydroxocobalamin) and Nithiodote (sodium nitrite + sodium thiosulfate). UHMS guidance for HBO indications.' }));
+    o.appendChild(el('p', { class: 'muted', text: 'Sources: FDA labeling for Cyanokit (hydroxocobalamin) and Nithiodote (sodium nitrite + sodium thiosulfate), read October 10, 2026. UHMS guidance for HBO indications.' }));
   },
 
   // spec-v30 §2.1: Swiss hypothermia staging -> rewarming algorithm.

@@ -8,7 +8,7 @@ import * as F from '../../lib/clinical-v6.js';
 export default [
   {
     id: 'anc',
-    summary: 'Absolute neutrophil count = WBC * (segs + bands)/100; grades neutropenia (severe <500). Neutropenic-precautions flag.',
+    summary: 'Absolute neutrophil count = WBC * (segs + bands)/100; grades neutropenia under both CTCAE v6.0 (grade 1 below 1,500, 2 below 1,000, 3 below 500, 4 below 100) and v5.0 (grade 2 below 1,500, 3 below 1,000, 4 below 500). Neutropenic-precautions flag below 500.',
     compute: F.anc,
     fields: [
       { dom: 'anc-wbc', arg: 'wbc', kind: 'number', required: true, label: 'WBC', unit: 'x10^9/L' },
