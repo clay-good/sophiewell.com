@@ -1310,7 +1310,7 @@ export default [
   },
   {
     id: 'morse-falls',
-    summary: 'Morse Fall Scale (Morse 1989): history of falling (25), secondary diagnosis (15), ambulatory aid (0/15/30), IV or heparin lock (20), gait (0/10/20), mental status (0/15); 0-24 low, 25-50 moderate, >= 51 high fall risk.',
+    summary: 'Morse Fall Scale (Morse 1989): history of falling (25), secondary diagnosis (15), ambulatory aid (0/15/30), IV or heparin lock (20), gait (0/10/20), mental status (0/15); 0-24 low, 25-50 moderate, >= 51 high fall risk on the common bands; facilities set their own cutoffs and some call 45 and over high (cutoffVaries is true at 45 and 50).',
     compute: F.morseFalls,
     fields: [
       { dom: 'mf-hist', arg: 'history', kind: 'bool', label: 'History of falling within 3 months (25)' },

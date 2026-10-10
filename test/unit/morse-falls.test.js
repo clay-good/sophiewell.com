@@ -45,3 +45,13 @@ test('morse 125 (all maxima) -> high', () => {
   assert.equal(r.score, 125);
   assert.equal(r.band, 'high');
 });
+
+test('the bands are a convention, and 45-50 says the cutoff varies', () => {
+  const r = morseFalls({ history: true, secondaryDx: true, gait: 'weak' });
+  assert.equal(r.cutoffVaries, true);
+  assert.match(r.text, /call 45 and over high/);
+  assert.doesNotMatch(r.text, /per Morse 1989/);
+  const low = morseFalls({ history: true });
+  assert.equal(low.cutoffVaries, false);
+  assert.match(low.text, /Facilities set their own cutoffs\.$/);
+});

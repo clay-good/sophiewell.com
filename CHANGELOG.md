@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Morse Fall Scale printed its risk bands "per Morse 1989". The item weights are Morse's; the
+  bands are set by each facility (25-50 moderate and 51 or more high is one common set; the
+  Veterans Health Administration calls 45 or more high). The bands are now labeled as a common
+  convention, and a score of 45 or 50 says the cutoff varies.
+
 - VIP and INS infiltration grading advised resiting the cannula only from VIP 3 and called grade 3
   "early phlebitis". On Jackson's scale grade 2 is the early stage with "resite cannula", grade 3
   the medium stage, grade 4 advanced phlebitis or the start of thrombophlebitis. The banner now
