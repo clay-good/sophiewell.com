@@ -230,7 +230,7 @@ export default [
   },
   {
     id: 'egfr-suite',
-    summary: 'Renal-function panel: CKD-EPI 2021 eGFR, MDRD eGFR, and Cockcroft-Gault creatinine clearance side by side.',
+    summary: 'Renal-function panel: CKD-EPI 2021 eGFR, MDRD eGFR, and Cockcroft-Gault creatinine clearance side by side. With height and weight it adds CKD-EPI in mL/min (x BSA / 1.73), the form FDA guidance (March 2024) says to use for drug dosing.',
     compute: (a) => {
       // spec-v1045: Cockcroft-Gault is the only one of the three that needs a
       // weight, and it was holding the other two hostage.
@@ -239,8 +239,13 @@ export default [
       const mdrd = V4.egfrMdrd({ scr: a.scr, age: a.age, sex: a.sex });
       const cockcroftGault = have(a.weightKg)
         ? F.cockcroftGault({ age: a.age, weightKg: a.weightKg, scr: a.scr, sex: a.sex }) : null;
-      return ckdEpi2021 == null && mdrd == null && cockcroftGault == null
-        ? null : { ckdEpi2021, mdrd, cockcroftGault };
+      if (ckdEpi2021 == null && mdrd == null && cockcroftGault == null) return null;
+      const out = { ckdEpi2021, mdrd, cockcroftGault };
+      // spec-v1641 row 23: CKD-EPI in mL/min when height and weight are both given.
+      if (ckdEpi2021 != null && have(a.weightKg, a.heightCm) && Number(a.weightKg) > 0 && Number(a.heightCm) > 0) {
+        out.ckdEpi2021MlMin = F.deIndexEgfr({ egfr: ckdEpi2021, heightCm: Number(a.heightCm), weightKg: Number(a.weightKg) }).egfrMlMin;
+      }
+      return out;
     },
     fields: [
       { dom: 'es-scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
@@ -248,7 +253,8 @@ export default [
       // spec-v1045: the label already says it -- the weight is Cockcroft-Gault's
       // alone, so requiring it withheld both eGFRs from an agent that had no
       // weight to give.
-      { dom: 'es-w', concept: 'body-weight', arg: 'weightKg', kind: 'number', label: 'Weight (Cockcroft-Gault only)', unit: 'kg' },
+      { dom: 'es-w', concept: 'body-weight', arg: 'weightKg', kind: 'number', label: 'Weight (Cockcroft-Gault; with height, CKD-EPI in mL/min)', unit: 'kg' },
+      { dom: 'es-h', concept: 'body-height', arg: 'heightCm', kind: 'number', label: 'Height (optional; with weight gives CKD-EPI in mL/min)', unit: 'cm' },
       { dom: 'es-sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
     ],
   },

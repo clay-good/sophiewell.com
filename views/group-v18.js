@@ -187,11 +187,14 @@ export const renderers = {
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },
     ]));
+    root.appendChild(field('Height (cm) — optional, with weight gives eGFR in mL/min for drug dosing', 'cc-h', { min: 0, placeholder: 'e.g. 170', inputmode: 'decimal' }));
+    root.appendChild(field('Weight (kg) — optional', 'cc-w', { min: 0, placeholder: 'e.g. 80', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);
-    wire(['cc-cys', 'cc-cr', 'cc-age', 'cc-sex'], () => safe(o, () => {
+    wire(['cc-cys', 'cc-cr', 'cc-age', 'cc-sex', 'cc-h', 'cc-w'], () => safe(o, () => {
       const r = M.ckdEpiCystatin({
         cystatinC: optNum('cc-cys'), creatinine: optNum('cc-cr'),
         age: optNum('cc-age'), sex: selVal('cc-sex'),
+        heightCm: optNum('cc-h'), weightKg: optNum('cc-w'),
       });
       if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       const rows = [
@@ -200,6 +203,7 @@ export const renderers = {
       ];
       if (r.egfrCrCys != null) rows.push({ label: 'eGFRcr-cys (combined, confirmatory)', value: `${r.egfrCrCys} mL/min/1.73m²` });
       if (r.egfrCr != null) rows.push({ label: 'eGFRcr (creatinine-only, for comparison)', value: `${r.egfrCr} mL/min/1.73m²` });
+      if (r.egfrCysMlMin != null) rows.push({ label: 'For drug dosing (not indexed)', value: `eGFRcys ${r.egfrCysMlMin} mL/min${r.egfrCrCysMlMin != null ? `; eGFRcr-cys ${r.egfrCrCysMlMin} mL/min` : ''}` });
       resultRow(o, rows);
       note(o, r.note);
     }));

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `4e7564741ed9d165`
-Generated: 2026-10-10T17:28:57.908Z
+Build ID: `d5882b89443daf77`
+Generated: 2026-10-10T18:04:38.957Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -757,7 +757,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/neos-v538.js` | 9054 | `f59d15ba97d1a630c20186f69efc1d6685a39356264be1c5842f91fa37809d3c` |
 | `lib/nephro-fluids-v204.js` | 17556 | `e13764f5a3362c762648f1728875d3e9b23a41ec2d3b0a31cbbbd78e49bb5a21` |
 | `lib/nephro-v127.js` | 16004 | `cb6754a23dbbead68a1a7b95106636ee1560a9d5ee628bd198a067b94517d897` |
-| `lib/nephro-v92.js` | 23916 | `304ecada918417b02d117f4fb4895e3c4979716150e60f3c663632004fbed59a` |
+| `lib/nephro-v92.js` | 24652 | `00a6f0bc7a1157252c9322f5f969d1b3678225e3578bd7308c8bfd699828d371` |
 | `lib/nephrology-v226.js` | 13362 | `86207e643b0c15be1e5e67733de729afc7db81b5a50b35411fca81629e6971ac` |
 | `lib/nerot-sirveaux-v1429.js` | 4806 | `9e8a648e2fc87ea9b376aebd3d84cdfb65416fdd751934e3d9a2deb1ccc34089` |
 | `lib/nerve-injury-v297.js` | 4746 | `13741ba46f672eb344024cfed6d066a3bffd6ea90974a2fa578f282407695d00` |
@@ -1478,7 +1478,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v6.js` | 9094 | `85dda711c1f5b628041a41ae5218c2ea8909bc51ff6bff06df2b9a81e1674096` |
 | `mcp/adapters/clinical-v7.js` | 8069 | `083a2078dba3877d854e781c9adc4bfdd49beda72fa8cf735360afde1c9b1d54` |
 | `mcp/adapters/clinical-v8.js` | 15995 | `b2fd754e659332e9cfa3899e11134fe5378274cc50bfe39ca263caee90087e00` |
-| `mcp/adapters/clinical.js` | 26734 | `f763029067c535a8bb62de227653d01c67b62c28349c199d2d602f83223bbc6a` |
+| `mcp/adapters/clinical.js` | 27423 | `8fa29e2a2e6d31c08e73a8960511222417c880f603ad6ca4f16342376040afa5` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/coagscore-v232.js` | 2450 | `29d9720d14256b871c8c9752ecadd8f5df16342529bf67afacbc1028ed2c3d0c` |
 | `mcp/adapters/cobb-angle-v694.js` | 955 | `efdf4e8553a15070d3c7c82e3feeb677fcc0ec9ad2df5dc35462dc7499f38f76` |
@@ -1934,7 +1934,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/neos-v538.js` | 4395 | `e2bed699cec6788b35b122ea2f392a5404168ce6f1c33d8ff192274e0e859fab` |
 | `mcp/adapters/nephro-fluids-v204.js` | 5144 | `838c877f9fbfe9292126a28429139b73c54aa83f4a8ad9a7b6e8ec463eaf270e` |
 | `mcp/adapters/nephro-v127.js` | 3799 | `4cd6468473946fa6197f361f09fc34e0acf71b555d3f60ef22cf14c95e4e38df` |
-| `mcp/adapters/nephro-v92.js` | 4743 | `c061dc366a6102df5232dcd81a9a3b9d7aacd6dba910f49dba6fb5ad368479ff` |
+| `mcp/adapters/nephro-v92.js` | 5051 | `00948d356e26a0b7542cfd1acf16a0045ff0d5e66f61a176e14eebb590f648ff` |
 | `mcp/adapters/nephrology-v226.js` | 4370 | `0c40e24a22e651930d59066691d1dc738495f9d264eb17dfe85db5590bae00a5` |
 | `mcp/adapters/nerot-sirveaux-v1429.js` | 809 | `5a5b70d26016335e5843986dcad1a616bd0dd937b63207f0a516b3cbbce6b8c6` |
 | `mcp/adapters/nerve-injury-v297.js` | 1209 | `49427c1ab46d7a0ac1cdfc4846d52e99741aa8bb6d9beff4013e7991cd9b8dd4` |
@@ -2404,7 +2404,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
-| `views/group-e.js` | 52619 | `a80e2ec1be6fbad4d5e6d4977bf0773042660db5fc2a1235d6519de2f0e5738b` |
+| `views/group-e.js` | 53171 | `1410686c9d39fecf0bb6661dea18e2f16ed4a17087d99dc6242825016f241d40` |
 | `views/group-f.js` | 55744 | `3dd219d5c2b750235883626ab7648d4a4a6a074ff66829af8aebae3bba078651` |
 | `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
@@ -2608,7 +2608,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v177.js` | 9071 | `24967dbbaa6265bb73790401552e7c8b4901366ea748207456827eadeda81013` |
 | `views/group-v178.js` | 12341 | `3016c5ae6e4ef50e91894d32bd7a19a83ec1b5a9c8ef8dded12b73bc423ae816` |
 | `views/group-v179.js` | 6738 | `4e9bca1f3d6e3cf756ddba43742e194f731f6d0d7e3ed7aed03be77eb0ada5d7` |
-| `views/group-v18.js` | 11038 | `5a1eed75f56deb5034cc6787a0998adc686d78b238462f023f48bf25114f8c31` |
+| `views/group-v18.js` | 11619 | `a2ea1e1c09c05f5e36abf5c7f8a267fa0275514888a2995bdecc77a321f9845d` |
 | `views/group-v180.js` | 7351 | `a5cd0aaced4af92efd84a5cd5fcfa938d16efe014760e34ddda71b08874ef20f` |
 | `views/group-v181.js` | 6087 | `a09a53d955a045e3733b7abc3a556a828d7a47450c7bf73c8e35a6ed2bf89f6a` |
 | `views/group-v182.js` | 11689 | `da1cea638bda919f4c4ef04cfeeb5dde05b56601d5e11dbc96b63f9d57c8ac73` |

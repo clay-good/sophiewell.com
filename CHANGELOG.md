@@ -333,7 +333,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - eGFR (CKD-EPI 2021) takes an optional height and weight and shows eGFR in mL/min beside the
   value per 1.73 m2. FDA's March 2024 guidance says drug dosing in renal impairment should use
   eGFR in mL/min: multiply by the patient's body surface area and divide by 1.73. spec-v1641
-  row 23 (the renal panel and the cystatin C tool are still to do).
+  row 23. The renal panel and the cystatin C tool do the same.
 
 - Norton Scale + PUSH Tool takes the wound's greatest length and width in cm and places the PUSH
   size score from the tool's table, which is now shown on the page; before, the reader had to know

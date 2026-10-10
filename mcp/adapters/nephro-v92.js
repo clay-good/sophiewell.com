@@ -65,6 +65,8 @@ export default [
       { dom: 'cc-cr', concept: 'creatinine', arg: 'creatinine', kind: 'number', required: false, label: 'Serum creatinine (for the combined estimate)', unit: 'mg/dL' },
       { dom: 'cc-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'cc-sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: false, label: 'Sex' },
+      { dom: 'cc-h', concept: 'body-height', arg: 'heightCm', kind: 'number', required: false, label: 'Height (optional; with weight gives eGFR in mL/min)', unit: 'cm' },
+      { dom: 'cc-w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: false, label: 'Weight (optional)', unit: 'kg' },
     ],
   },
 ];

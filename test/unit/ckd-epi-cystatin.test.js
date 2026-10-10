@@ -55,3 +55,14 @@ test('spec-v1116: an unstated sex refuses, as the guard message already asked', 
   assert.equal(r.valid, false);
   assert.match(r.band, /Enter age \(years\), sex/);
 });
+
+test('with height and weight, each estimate is also given in mL/min (spec-v1641 row 23)', () => {
+  const base = { cystatinC: 1.5, creatinine: 1.1, age: 70, sex: 'female' };
+  const plain = ckdEpiCystatin(base);
+  assert.equal(plain.egfrCysMlMin, undefined);
+  const r = ckdEpiCystatin({ ...base, heightCm: 190, weightKg: 100 });
+  assert.equal(r.bsa, 2.3);
+  assert.equal(r.egfrCysMlMin, Math.round((plain.egfrCys * 2.3 / 1.73) * 10) / 10);
+  assert.ok(r.egfrCrCysMlMin > plain.egfrCrCys);
+  assert.match(r.band, /not indexed/);
+});

@@ -662,6 +662,7 @@ export const renderers = {
     root.appendChild(field('Serum creatinine (mg/dL)', 'es-scr'));
     root.appendChild(field('Age (years)', 'es-age'));
     root.appendChild(unitField('Weight (for Cockcroft-Gault)', 'es-w', WEIGHT_UNITS));
+    root.appendChild(unitField('Height (optional; with weight gives CKD-EPI in mL/min)', 'es-h', HEIGHT_UNITS));
     root.appendChild(selectField('Sex', 'es-sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
@@ -682,11 +683,17 @@ export const renderers = {
           ? 'Cockcroft-Gault: enter a weight -- it is the only one of the three that needs one.'
           : `Cockcroft-Gault: ${C.cockcroftGault({ age, weightKg: w, scr, sex }).toFixed(1)} mL/min` },
       ]);
+      // spec-v1641 row 23: the CKD-EPI value in mL/min, the form FDA's 2024 guidance says to dose on.
+      const esH = unitNumOpt('es-h');
+      if (w !== null && esH > 0) {
+        const d = C.deIndexEgfr({ egfr: ckdEpi, heightCm: esH, weightKg: w });
+        o.appendChild(el('p', { text: `CKD-EPI 2021 for drug dosing: ${d.egfrMlMin} mL/min (not indexed; BSA ${d.bsa} m^2), per FDA's 2024 guidance.` }));
+      }
       const adv = boundsAdvisory('scr', scr);
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
       o.appendChild(el('p', { class: 'muted', text: '2021 race-free shift: NIH/NKF removed the race coefficient from CKD-EPI in 2021. Many labs use CKD-EPI; nephrology references increasingly use MDRD race-free for legacy comparison.' }));
     });
-    ['es-scr', 'es-age', 'es-w', 'es-w-unit', 'es-sex'].forEach((id) => document.getElementById(id).addEventListener(id === 'es-sex' ? 'change' : 'input', run));
+    ['es-scr', 'es-age', 'es-w', 'es-w-unit', 'es-h', 'es-h-unit', 'es-sex'].forEach((id) => document.getElementById(id).addEventListener(id === 'es-sex' ? 'change' : 'input', run));
   },
 
   'fena-feurea'(root) {
