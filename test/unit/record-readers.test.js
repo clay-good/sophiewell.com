@@ -98,7 +98,8 @@ test('plan: ready tools, tools with yes/no questions, and tools one value short'
   const { values } = pick(readCcda(read('records/ccd-labs.xml')), CONCEPTS, NOW);
   const p = plan(values, tools, CONCEPTS);
   const ready = Object.fromEntries(p.ready.map((r) => [r.id, r]));
-  assert.deepEqual(ready.egfr.fills, { scr: 1.1, age: 58, sex: 'F' });
+  // The record's height and weight also fill eGFR's optional pair, so the mL/min value shows (spec-v1641 row 23).
+  assert.deepEqual(ready.egfr.fills, { scr: 1.1, age: 58, sex: 'F', 'egfr-h': 165, 'egfr-w': 79.83 });
   assert.deepEqual(ready.egfr.questions, []);
   assert.equal(ready['cockcroft-gault'].fills.w, 79.83);
   // PREVENT: every number from the record; smoking, treatment and diabetes asked.

@@ -21,7 +21,7 @@ test('the first release tags the tools spec-v1613 names', () => {
   for (const id of ['prevent', 'ascvd', 'score2', 'egfr', 'egfr-suite', 'ckd-epi-cystatin', 'cockcroft-gault', 'kfre', 'fib4', 'apri', 'nafld-fibrosis', 'meld-na', 'bmi', 'ldl-calc', 'eag-a1c', 'tyg-index', 'anion-gap', 'corrected-calcium']) {
     assert.ok(tools.has(id), `${id} has no tagged field`);
   }
-  assert.equal(tagged.length, 68);
+  assert.equal(tagged.length, 70); // 68 + eGFR's optional height and weight (spec-v1641 row 23)
 });
 
 test('every tag names a concept the map has, on a field of the right kind', () => {

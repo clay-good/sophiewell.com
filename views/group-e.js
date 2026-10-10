@@ -15,7 +15,7 @@ import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '.
 import { inchesToCm, labConvert } from '../lib/unit-convert.js';
 import { resultRow } from '../lib/result-copy.js';
 import { obstetricShockBand } from '../lib/shock-index-obstetric-v1558.js';
-import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, GLUCOSE_UNITS, BUN_UNITS, CALCIUM_UNITS, ALBUMIN_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, HEIGHT_UNITS, GLUCOSE_UNITS, BUN_UNITS, CALCIUM_UNITS, ALBUMIN_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -329,6 +329,8 @@ export const renderers = {
     root.appendChild(field('Serum creatinine (mg/dL)', 'scr'));
     root.appendChild(field('Age (years)', 'age'));
     root.appendChild(selectField('Sex', 'sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
+    root.appendChild(unitField('Height (optional, for eGFR in mL/min)', 'egfr-h', HEIGHT_UNITS));
+    root.appendChild(unitField('Weight (optional, for eGFR in mL/min)', 'egfr-w', WEIGHT_UNITS));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.egfr);
     if (deriv) root.appendChild(deriv);
@@ -343,9 +345,19 @@ export const renderers = {
       const inputs = { scr: egScr, age: egAge, sex: document.getElementById('sex').value };
       const v = C.egfrCkdEpi2021(inputs);
       o.appendChild(el('p', { text: `eGFR: ${v} mL/min/1.73 m^2 (CKD-EPI 2021 race-free)` }));
+      // spec-v1641 row 23: the value for drug dosing is in mL/min, de-indexed by the patient's own body surface area.
+      const egH = unitNumOpt('egfr-h');
+      const egW = unitNumOpt('egfr-w');
+      if (egH > 0 && egW > 0) {
+        const d = C.deIndexEgfr({ egfr: v, heightCm: egH, weightKg: egW });
+        o.appendChild(el('p', { text: `For drug dosing: ${d.egfrMlMin} mL/min (not indexed; BSA ${d.bsa} m^2). FDA's 2024 guidance says to dose on eGFR in mL/min, not the value per 1.73 m^2.` }));
+      } else {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter height and weight to see eGFR in mL/min, the form FDA\'s 2024 guidance says to use for drug dosing.' }));
+      }
       if (deriv) updateDerivationSteps(deriv, META.egfr, inputs);
     }, deriv);
-    ['scr', 'age', 'sex'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['scr', 'age', 'sex', 'egfr-h', 'egfr-w'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['egfr-h-unit', 'egfr-w-unit'].forEach((id) => document.getElementById(id).addEventListener('change', run));
   },
 
   'cockcroft-gault'(root) {

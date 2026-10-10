@@ -112,15 +112,24 @@ export default [
   },
   {
     id: 'egfr',
-    summary: 'Estimated GFR by CKD-EPI 2021 race-free equation from creatinine, age, sex (mL/min/1.73m^2).',
+    summary: 'Estimated GFR by CKD-EPI 2021 race-free equation from creatinine, age, sex (mL/min/1.73m^2). With height and weight it also returns eGFR in mL/min (multiplied by BSA and divided by 1.73), the form FDA guidance (March 2024) says to use for drug dosing.',
     compute: (a) => {
       const egfr = F.egfrCkdEpi2021(a);
-      return egfr == null ? null : { egfr, unit: 'mL/min/1.73m^2' };
+      if (egfr == null) return null;
+      const out = { egfr, unit: 'mL/min/1.73m^2' };
+      const has = (v) => v !== null && v !== undefined && v !== '' && Number(v) > 0;
+      if (has(a.heightCm) && has(a.weightKg)) {
+        const d = F.deIndexEgfr({ egfr, heightCm: Number(a.heightCm), weightKg: Number(a.weightKg) });
+        out.egfrMlMin = d.egfrMlMin; out.bsaM2 = d.bsa;
+      }
+      return out;
     },
     fields: [
       { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
       { dom: 'age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
+      { dom: 'egfr-h', concept: 'body-height', arg: 'heightCm', kind: 'number', required: false, label: 'Height (optional; with weight gives eGFR in mL/min)', unit: 'cm' },
+      { dom: 'egfr-w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: false, label: 'Weight (optional)', unit: 'kg' },
     ],
   },
   {

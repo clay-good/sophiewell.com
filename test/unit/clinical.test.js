@@ -269,3 +269,13 @@ test('spec-v1082: an unassessed sign is asked for; a real zero still scores', ()
   assert.equal(partial.signsScored, 3);
   assert.match(partial.text, /activity \(tone\), respiration/);
 });
+
+test('deIndexEgfr: eGFR in mL/min = indexed value x BSA / 1.73 (FDA 2024; spec-v1641 row 23)', async () => {
+  const { deIndexEgfr } = await import('../../lib/clinical.js');
+  const big = deIndexEgfr({ egfr: 60, weightKg: 100, heightCm: 190 });
+  assert.equal(big.bsa, 2.3);
+  assert.equal(big.egfrMlMin, 79.8);
+  const small = deIndexEgfr({ egfr: 60, weightKg: 50, heightCm: 155 });
+  assert.equal(small.egfrMlMin, 51);
+  assert.throws(() => deIndexEgfr({ egfr: 60, weightKg: 0, heightCm: 170 }));
+});
