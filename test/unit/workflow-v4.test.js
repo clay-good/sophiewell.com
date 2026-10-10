@@ -98,3 +98,17 @@ test('All builders produce a documented warnings array', () => {
     assert.ok(Array.isArray(r.warnings) && r.warnings.length >= 1);
   }
 });
+
+// 45 CFR 164.508(c), re-read October 9, 2026: the six core elements and three required statements. The template
+// carried only the revocation statement, and a blank expiration printed "12 months from signature".
+test('the HIPAA authorization carries every statement 164.508(c)(2) requires, and never invents an expiration', () => {
+  const all = (r) => r.sections.flatMap((s) => [...(s.paragraphs || []), ...(s.items || [])]).join(' ');
+  const text = all(buildHipaaAuthorization({ patient: 'Jane Doe', plan: 'Acme Health', info: 'records', recipient: 'Dr. B', purpose: 'care' }));
+  assert.match(text, /revoke this authorization in writing/);
+  assert.match(text, /To revoke it, I send a signed written notice/);
+  assert.match(text, /will not be conditioned on whether I sign/);
+  assert.match(text, /may be redisclosed by the recipient and may no longer be protected/);
+  assert.match(text, /personal representative, describe the authority/);
+  assert.match(text, /\[expiration date, or an event that ends this authorization\]/);
+  assert.doesNotMatch(text, /12 months/);
+});

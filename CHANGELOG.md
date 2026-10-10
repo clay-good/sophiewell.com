@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- HIPAA Authorization Form Generator: the printable form was missing two of the three
+  statements 45 CFR 164.508(c)(2) requires (that signing is not a condition of
+  treatment or payment, and that disclosed information may be redisclosed), how
+  to revoke, and the line for a personal representative's authority. A blank
+  expiration printed "12 months from signature"; it is now a blank to fill.
+- Restraint reassessment timer attributed a daily renewal for non-violent
+  restraint and 15-minute checks to 42 CFR 482.13(e). The regulation leaves
+  both to hospital policy; the timers stay, labeled as common policy intervals,
+  and the 24-hour total on renewing a violent-behavior order is now stated.
 - ECMO sweep and flow titration held every patient to an oxygen delivery of
   6 mL/kg/min, which is ELSO's figure for neonates; an adult above ELSO's
   3 mL/kg/min was told to raise the pump flow. The figure now follows the
@@ -1749,6 +1758,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Insurer Price File (Transparency in Coverage) Check now names the rule
+  change of October 6, 2026 (91 FR 63748): the schema it checks is the one in
+  force until March 6, 2027, and a file dated on or after that day is told the
+  amended rule applies to it.
 - The poverty guidelines behind the income-percentage, household-income, Medicare
   Savings Program and premium tax credit calculators now come from the weekly
   data refresh (the ASPE poverty-guidelines API) instead of being typed in, so a

@@ -129,3 +129,16 @@ test('nameOf takes the last path segment, decoded, without .gz', () => {
   assert.equal(nameOf('https://x.example/a/b/2026-09-01_Plan%20A_in-network-rates.json.gz?sig=1'), '2026-09-01_plan a_in-network-rates.json');
   assert.equal(nameOf('not a url/file.json'), 'file.json');
 });
+
+// 91 FR 63748 (October 6, 2026) amends 45 CFR 147.212(b) from March 6, 2027. The note is by the file's own
+// last_updated_on, never the clock.
+test('the rule change is named, and a file dated on or after March 6, 2027 is told the amended rule applies', async () => {
+  const { summarize, RULE_2026 } = await import('../../lib/tic-file-check.js');
+  assert.deepEqual(RULE_2026, { applies: '2027-03-06', contextual: '2027-09-06', fr: '91 FR 63748' });
+  const file = (name, lastUpdatedOn) => ({ name, type: 'in-network-rates', typeLabel: 'In-network rates', valid: true, errorCount: 0, findings: [], advisories: [], locations: [], lastUpdatedOn });
+  const before = summarize([file('a.json', '2027-03-05')]);
+  assert.equal(before.notes.filter((n) => /91 FR 63748/.test(n)).length, 1);
+  assert.ok(!before.notes.some((n) => /amended rule applies to it/.test(n)));
+  const after = summarize([file('a.json', '2027-03-05'), file('b.json', '2027-03-06')]);
+  assert.ok(after.notes.some((n) => /^b\.json says it was last updated on or after March 6, 2027, so the amended rule applies to it/.test(n)));
+});

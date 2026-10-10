@@ -25,3 +25,15 @@ test('a section amended after a tool verified it is listed with that tool only; 
   assert.match(md, /1 tool cites a CFR section with no verification date to compare against: `c`\./);
   assert.match(markdown([], { checked: 9, unchecked: [] }), /No cited CFR section was amended after the tools citing it last verified it \(9 sections checked\)\./);
 });
+
+// "26 CFR 1.501(r)-6" was read as section 1.501, which the eCFR does not have, so the hospital collection rule was
+// never watched. A parenthesized letter belongs to the section only when a -N follows it.
+test('a section with a parenthesized letter and suffix is read whole; a bare paragraph is not part of the section', () => {
+  const s = citedSections({ a: { citation: '26 CFR 1.501(r)-6; 45 CFR 147.130(a)(1)(iv); 26 CFR 1.36B-2', citationAccessed: '2026-10-01' } });
+  assert.deepEqual([...s.keys()], ['26 CFR 1.501(r)-6', '45 CFR 147.130', '26 CFR 1.36B-2']);
+});
+
+test('an eCFR link to a section like 1.501(r)-5 is read whole too', () => {
+  const s = citedSections({ a: { citation: 'the hospital\'s policy', citationUrl: 'https://www.ecfr.gov/current/title-26/section-1.501(r)-5', citationAccessed: '2026-10-01' } });
+  assert.deepEqual([...s.keys()], ['26 CFR 1.501(r)-5']);
+});

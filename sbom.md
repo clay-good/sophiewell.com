@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ade6e8cc9956a831`
-Generated: 2026-10-09T22:24:12.512Z
+Build ID: `ba6fe5076a56723c`
+Generated: 2026-10-10T01:40:20.909Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -698,7 +698,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2750726 | `52886b658ad614bf8bd7a7d0a49b07ade1c196104a81a56d6ef70dda7c96a0d0` |
+| `lib/meta.js` | 2751219 | `15ac5c2f23fdfd8e27d95a5ae1674db200c9dc8c891de702f4b59cbe45f6ab83` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1064,7 +1064,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 305107 | `82216519ae10c7655321471c0409bff7afbea9eb7bf8c39b9432b72c2066c15d` |
+| `lib/scoring-v4.js` | 306274 | `e29bd73d1f4c19b707784792571442ff34fc6e55f2cac17c72a167ab773dba83` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27919 | `dfea7e197a961260f40950ce7677c80e0ddd6386c13706d103f738cc412d8627` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
@@ -1154,7 +1154,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/thomazeau-occupation-v1572.js` | 2553 | `bec8b080947d5cb94909635ec50abf755630d3bc0c58e5c82db12ce02e67406d` |
 | `lib/thompson-epstein-v459.js` | 3276 | `3952607d4d19cb032c2a30aa175392e917a89ea63555efc8177e76d727b61155` |
 | `lib/thwaites-v529.js` | 9004 | `11927f9c5d35a3086c8b8ed2d6deb46fe3cc766aa3b561c7d089c42476be549a` |
-| `lib/tic-file-check.js` | 11801 | `cbbb3b6590952c3867d7b22a4efe2e993661b0d36e28b4e127edd96fa7841115` |
+| `lib/tic-file-check.js` | 13592 | `02b56a0929ec9e5b95e0b7aeff6fa1917096a6d7269c71e348bfa8b46136a771` |
 | `lib/tic-rate-lookup.js` | 11083 | `8053aa36dda8c78ccf86dbccec3d31560dd31f3a825a71ac2982193bae61c772` |
 | `lib/tic-rate-run.js` | 2449 | `9a99abaeab7c4bab443e2334b6a6299c7c3eff4376829ffdaff1fc214e3c2eb5` |
 | `lib/tic-rate-worker.js` | 1294 | `841dc95b20f6ba2fdb39ccb7bca6c588fe62aab0bb3509399aeba99a01cf9ecb` |
@@ -1262,7 +1262,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/who-tpt-dose-v1553.js` | 10110 | `9f5e701d4dd5414ab5dc8fa335a25bbd4aeeecfc1009d5ab2529d13155804c51` |
 | `lib/wiltse-spondylolisthesis-v481.js` | 3497 | `6cc7aba8c22ffdce234a0e6a36d2d607bd25642494da50f5f5add4a06f8163a7` |
 | `lib/winquist-hansen-v381.js` | 4270 | `285352c99d2f0a5d567e14be8216500bdae9e24158cb7bfc4bbf4e192a202e1e` |
-| `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
+| `lib/workflow-v4.js` | 9314 | `d321df2b6df08619c19dfc8382a71924d58c583684b461bc7d6cacd9c34ad605` |
 | `lib/woundid-v248.js` | 8410 | `ad5b79b2a78ea627ba269f3a4be243ada11aecbce612881892375dd0a231473d` |
 | `lib/x12-271-run.js` | 3816 | `44802d7ed3e3c381dd2235be44eb86d9efb70b7efee34786e48db66b632ce6a7` |
 | `lib/x12-271-v1515.js` | 12425 | `cbcad2788066e0e832aa1dc6b5b2bd28bf61f2c8c94feb611fd949df9714613d` |
@@ -2407,7 +2407,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-e.js` | 51582 | `de3e12aad8357addb28c635c98160e1feb4f3a497430898fd54937aca5850abf` |
 | `views/group-f.js` | 54608 | `798d808c28f0110cb534a45c0cbe54d386f7a63ae11b9988e0eae20f82677818` |
 | `views/group-g.js` | 250810 | `89fdc00d7ee59a7de3cd24c7d26193fc523a97b2ff95ca19a1e75cc84319d7bc` |
-| `views/group-h.js` | 32188 | `eaaebf4183ddebb97b85b76c2b0f2110c35a0d76ba508d8642a2834928ae3c7e` |
+| `views/group-h.js` | 32232 | `323c07a66787471a6e5151d343f30d41b9298dab27bb2753d49f5c46089fdd6f` |
 | `views/group-i.js` | 25808 | `e791f223531f946189558bdcb6e950e47ac4c90ded2392e568c4f7458df2c636` |
 | `views/group-j.js` | 10229 | `93acd8660941a9046e98ca70c75255389d49ee1e28c252d4ac76eed91c455e5a` |
 | `views/group-klmno.js` | 7372 | `c861d44056fed12dd72a01398ea556e5ed560af424f8c0a20ccfee12bc56eeaf` |

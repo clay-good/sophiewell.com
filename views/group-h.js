@@ -351,7 +351,7 @@ export const renderers = {
         nyOmh:          v29d('rt-ny'),
       });
       o.appendChild(el('h2', { text: `Next renewal: ${r.nextRenewalIso}` }));
-      o.appendChild(el('p', { text: `Next nursing re-assessment: ${r.nextReassessIso}` }));
+      o.appendChild(el('p', { text: `Next check (a common hospital-policy interval; follow your hospital's): ${r.nextReassessIso}` }));
       if (r.nextFaceToFaceIso) o.appendChild(el('p', { text: `Next physician / LIP face-to-face: ${r.nextFaceToFaceIso}` }));
       if (r.nyOrderExpiresIso) o.appendChild(el('p', { text: `New York OMH: order expires ${r.nyOrderExpiresIso}; RN/NP/PA assessment by ${r.nyAssessIso}; consult the medical director by ${r.nyConsultIso} if it continues.` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));

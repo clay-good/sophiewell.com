@@ -28,3 +28,11 @@
 
 ## Status
 - PASS
+
+**Correction, October 9, 2026.** Re-read in the eCFR that day, 42 CFR 482.13(e) sets the renewal limits for an order
+managing violent or self-destructive behavior (4, 2 and 1 hours by age, up to a total of 24 hours, (e)(8)(i)-(ii))
+and the 1-hour face-to-face ((e)(12)). It does not set a daily renewal for non-violent restraint ("may be renewed as
+authorized by hospital policy", (e)(8)(iii)) or any monitoring interval ("at an interval determined by hospital
+policy", (e)(10)). The tile had attributed both to the regulation; its timers stay, labeled as common hospital-policy
+intervals, and the 24-hour total is now stated.
+

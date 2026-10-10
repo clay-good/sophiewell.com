@@ -88,3 +88,15 @@ test('every worked example on these tiles uses the offset-less form', async () =
     }
   }
 });
+
+// 42 CFR 482.13(e), re-read October 9, 2026: the regulation sets the violent-behavior renewal limits, their
+// 24-hour total and the 1-hour face-to-face. It leaves the non-violent renewal and every monitoring interval to
+// hospital policy, which the tile used to present as the regulation's own.
+test('restraint-timer: policy intervals are labeled as policy, and the 24-hour renewal total is stated', () => {
+  const v = restraintTimer({ type: 'violent', ageYears: 40, orderTimestamp: '2026-05-19T12:00' });
+  assert.ok(v.banners.some((b) => /renewable up to a total of 24 hours/.test(b)));
+  assert.ok(v.banners.some((b) => /15-minute check, a common hospital-policy interval/.test(b)));
+  const n = restraintTimer({ type: 'non-violent', ageYears: 40, orderTimestamp: '2026-05-19T12:00' });
+  assert.ok(n.banners.some((b) => /renewed as hospital policy authorizes \(42 CFR sec 482\.13\(e\)\(8\)\(iii\)\)/.test(b)));
+  assert.ok(!n.banners.some((b) => /renewed each calendar day per 42 CFR/.test(b)));
+});

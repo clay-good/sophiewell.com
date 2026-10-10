@@ -14,8 +14,9 @@ import { getText } from './http.mjs';
 
 const API = 'https://www.ecfr.gov/api/versioner/v1/versions';
 // A trailing -N is part of an IRS-style section (1.36B-2), never the start of a range (414.20-414.22).
-const SECTION_TEXT = /\b(\d{1,2}) C\.?F\.?R\.? (?:(?:§|sec(?:tion)?\.?)\s*)?(\d{1,4})\.(\d+[A-Za-z]*(?:-\d+(?![.\d]))?)/g;
-const SECTION_URL = /ecfr\.gov\/(?:current|on\/[^/]+)\/title-(\d+)\/(?:[^?#]*\/)?section-(\d+)\.(\d+[A-Za-z]*(?:-\d+)?)/;
+// So is a parenthesized letter that a -N follows (1.501(r)-6); a bare paragraph (147.130(a)(1)) is not part of it.
+const SECTION_TEXT = /\b(\d{1,2}) C\.?F\.?R\.? (?:(?:§|sec(?:tion)?\.?)\s*)?(\d{1,4})\.(\d+[A-Za-z]*(?:\([a-z]\)-\d+|-\d+(?![.\d]))?)/g;
+const SECTION_URL = /ecfr\.gov\/(?:current|on\/[^/]+)\/title-(\d+)\/(?:[^?#]*\/)?section-(\d+)\.(\d+[A-Za-z]*(?:\([a-z]\)-\d+|-\d+)?)/;
 
 // citedSections(META) -> Map 'T CFR P.S' -> [{ tile, verified }], from each tile's citation and citationUrl.
 export function citedSections(meta) {
