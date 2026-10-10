@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- CRRT effluent dose called the dose computed from the prescribed rate "delivered", judged it
+  "within target" at 20-25 mL/kg/h and advised reducing a prescription above 25. KDIGO 2012 rec.
+  5.8.4 sets 20-25 mL/kg/h for the delivered volume and says that usually requires a higher
+  prescription; the wording now says so. The citrate checks follow Davenport 2009 as written:
+  systemic ionized calcium 0.95-1.2 mmol/L (was 1.1-1.2, flagging a normal 1.0), post-filter under
+  0.35 mmol/L with no lower bound (was 0.25-0.35), and a total-to-ionized ratio above 2.5 (was 2.5
+  or more). Calcium values print to 2 decimals.
+
 - Foley and central-line day counter listed five catheter indications as "CDC SHEA 2014" and
   showed them for both devices. Two of the six indications in the CDC 2009 guideline (Table 2A)
   were missing (healing of an open sacral or perineal wound in an incontinent patient; prolonged

@@ -110,7 +110,7 @@ export default [
   },
   {
     id: 'crrt-dose',
-    summary: 'CRRT effluent dose (KDIGO 2012 target 20-25 mL/kg/h) from weight and prescribed effluent rate, with optional citrate-circuit calcium ratio (Davenport 2009 targets, mmol/L).',
+    summary: 'CRRT prescribed effluent dose from weight and prescribed effluent rate, against the 20-25 mL/kg/h KDIGO 2012 recommends delivering (which usually requires a higher prescription), with optional citrate-circuit calcium checks (Davenport 2009, mmol/L).',
     compute: F.crrtDose,
     fields: [
       { dom: 'cr-w', arg: 'weightKg', kind: 'number', required: true, label: 'Patient weight', unit: 'kg' },
