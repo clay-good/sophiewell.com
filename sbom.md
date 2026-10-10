@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ba6fe5076a56723c`
-Generated: 2026-10-10T01:40:20.909Z
+Build ID: `2c1432124967c2ff`
+Generated: 2026-10-10T02:59:22.291Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -698,7 +698,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2751219 | `15ac5c2f23fdfd8e27d95a5ae1674db200c9dc8c891de702f4b59cbe45f6ab83` |
+| `lib/meta.js` | 2751580 | `dc69480cdee29e8f5be1bdf83afb00a1830e90e19f7c15b9d57c60511d61faed` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -996,7 +996,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/reference-change-value-v920.js` | 9985 | `669f3638266e118468b105ad6af0a545747c66678acdc8282ca7f7b9eabca419` |
 | `lib/regan-morrey-v404.js` | 3237 | `6b740bafcf5b1f9e8e306ba3b6863513bc950c73c0f6c46d00a095816929c04a` |
 | `lib/region-footing-v1093.js` | 3587 | `ab6509b0a1999202d9fb7783a94d21f6f8b34146baa1bf65d539800d8b778147` |
-| `lib/regulatory.js` | 8261 | `1a5ca3589e7f1c77429db46bc455aa7a98c59136f90f41b135ce977315fd4c10` |
+| `lib/regulatory.js` | 10236 | `5c6ad943f4f3aa86f9d182994a6e3904cded72f4651660946b4ad91958387b5d` |
 | `lib/rehab-v240.js` | 7276 | `e8b9fd62ad9fe90d994cdfd93be11c4632b7a730d3f0b056ad1356c0d047de97` |
 | `lib/reid-bronchiectasis-v450.js` | 3073 | `9809861f8d6ce7f9543cfb95473e2c325891c69181ebe4b3f463f7cdc54c2949` |
 | `lib/reimers-migration-percentage-v703.js` | 3535 | `b9097ac1601a6f03c0561e85ac19de3b2021397e5689f5349b6841816c8dcdfa` |
@@ -1064,7 +1064,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 306274 | `e29bd73d1f4c19b707784792571442ff34fc6e55f2cac17c72a167ab773dba83` |
+| `lib/scoring-v4.js` | 307358 | `35119f91d19e9c53986d0496a54b4e27d5b0545deeebf52d527c35c7051349f2` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27919 | `dfea7e197a961260f40950ce7677c80e0ddd6386c13706d103f738cc412d8627` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
@@ -2133,7 +2133,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/rectal-artesunate-prereferral-v1551.js` | 1403 | `bc16e1abd4c128303447d5e3a55c1fef126a5d7c689184f649e370b01ce8ecd9` |
 | `mcp/adapters/reference-change-value-v920.js` | 2336 | `2dd2447e9769fc4570e2f3ce50313eeedd85e2f95c58d304670265cd09f7b318` |
 | `mcp/adapters/regan-morrey-v404.js` | 1328 | `f0e84ff6cd74cd55acc854e0e403f7cba83add5f62eab4b057904c32c00055a4` |
-| `mcp/adapters/regulatory.js` | 819 | `532f3de67d0c53283ab4a8d32844607951a5ce35a663486af722dd643d19208c` |
+| `mcp/adapters/regulatory.js` | 1062 | `f38019ad6765a033f83b13318b141e79987512ef5e5560436ad1f8f1ac3f201c` |
 | `mcp/adapters/rehab-v240.js` | 4719 | `0df373af959fb9e392ed039c08dcd9181b03d90e65e62f91c61664db267d27ab` |
 | `mcp/adapters/reid-bronchiectasis-v450.js` | 1205 | `b93e4f56fed5a6427b9775f194b4c3b6e47d691cfa5498af9eee96a7a11853ca` |
 | `mcp/adapters/reimers-migration-percentage-v703.js` | 1136 | `6accfa2c508d3391d700b9e16e64025469cf1c1280ddad447ed62d98ca099fac` |
@@ -2407,7 +2407,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-e.js` | 51582 | `de3e12aad8357addb28c635c98160e1feb4f3a497430898fd54937aca5850abf` |
 | `views/group-f.js` | 54608 | `798d808c28f0110cb534a45c0cbe54d386f7a63ae11b9988e0eae20f82677818` |
 | `views/group-g.js` | 250810 | `89fdc00d7ee59a7de3cd24c7d26193fc523a97b2ff95ca19a1e75cc84319d7bc` |
-| `views/group-h.js` | 32232 | `323c07a66787471a6e5151d343f30d41b9298dab27bb2753d49f5c46089fdd6f` |
+| `views/group-h.js` | 32656 | `4260794b9c266df3c13bde0e02cfcff93c83855a9b37071e9c1f97d393bb2ca3` |
 | `views/group-i.js` | 25808 | `e791f223531f946189558bdcb6e950e47ac4c90ded2392e568c4f7458df2c636` |
 | `views/group-j.js` | 10229 | `93acd8660941a9046e98ca70c75255389d49ee1e28c252d4ac76eed91c455e5a` |
 | `views/group-klmno.js` | 7372 | `c861d44056fed12dd72a01398ea556e5ed560af424f8c0a20ccfee12bc56eeaf` |
@@ -2935,7 +2935,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v497.js` | 3205 | `c0b474c55700753713879acb24c3ca8e008329768ee39292e226e9c2cc5dfb87` |
 | `views/group-v498.js` | 3038 | `000f88258d700e6932fcf5c05aca71b775b064948189bfb5e28b3d1d1f14d82c` |
 | `views/group-v499.js` | 2989 | `9c032b263cf8f8693b763d34f11144c9f86aa087c52abf7dd53eb6bbcdc3b943` |
-| `views/group-v5.js` | 37481 | `efa6be69d1f101cc71addaaba02b7fb1b169256c6f456368c1523061eb2256ff` |
+| `views/group-v5.js` | 37780 | `ce2a49c27464a2954d2cdb454c36d943929a51b28c515ef91aa62d47ec8c0f37` |
 | `views/group-v500.js` | 3558 | `910b8e2e06e543d8a8cbd1ec8894a227316a3988f854041807205e6c04afcfba` |
 | `views/group-v501.js` | 3015 | `53f20f7cc95df9d4e795b66164f44a5dd13ee0ba4c42f6d5b304fdca8f1b6031` |
 | `views/group-v502.js` | 3455 | `58a0e11fbcd4fb53e5a2b755890dcf7c51bcca93c2b3c41922847bb12889596f` |

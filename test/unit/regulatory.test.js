@@ -16,13 +16,30 @@ test('breach: small breach (<500) uses individual + HHS-annual deadlines', () =>
   assert.ok(r.recipients.some((s) => /annual log/.test(s)));
 });
 
-test('breach: >=500 triggers media + contemporaneous HHS notice', () => {
+// 45 CFR 164.408(b): HHS at 500 OR MORE individuals. 164.406(a): the media at MORE THAN 500 residents of one state
+// or jurisdiction. The tile used the HHS threshold for both (re-read in the eCFR October 9, 2026).
+test('breach: exactly 500 notifies HHS with the individuals, but not the media', () => {
   const r = breachNotificationDeadlines({ discoveryDate: '2026-01-01', affectedIndividuals: 500 });
   // 60 days after 2026-01-01 = 2026-03-02.
   assert.equal(r.individualNoticeDeadline, '2026-03-02');
-  assert.equal(r.mediaNoticeDeadline, '2026-03-02');
   assert.equal(r.hhsNoticeDeadline, '2026-03-02');
-  assert.ok(r.recipients.some((s) => /media outlets/.test(s)));
+  assert.equal(r.mediaNoticeDeadline, null);
+  assert.equal(r.mediaNotice, 'not-required');
+  assert.ok(!r.recipients.some((s) => /media outlets/.test(s)));
+});
+
+test('breach: the media notice turns on residents of one state, and above 500 in total it depends until that is known', () => {
+  const base = { discoveryDate: '2026-01-01', affectedIndividuals: 900 };
+  const unknown = breachNotificationDeadlines(base);
+  assert.equal(unknown.mediaNotice, 'depends');
+  assert.equal(unknown.mediaNoticeDeadline, null);
+  assert.match(unknown.mediaNote, /required only if more than 500 of them are residents of one state/);
+  const spread = breachNotificationDeadlines({ ...base, largestStateResidents: 500 });
+  assert.equal(spread.mediaNotice, 'not-required', '900 people, no state above 500');
+  const one = breachNotificationDeadlines({ ...base, largestStateResidents: 501 });
+  assert.equal(one.mediaNoticeDeadline, '2026-03-02');
+  assert.ok(one.recipients.some((s) => /^Prominent media outlets serving/.test(s)));
+  assert.throws(() => breachNotificationDeadlines({ ...base, largestStateResidents: 901 }), /cannot exceed/);
 });
 
 test('breach: leap-year boundary is handled', () => {

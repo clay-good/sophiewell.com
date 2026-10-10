@@ -650,6 +650,7 @@ export const renderers = {
   'breach-clock'(root) {
     root.appendChild(field('Discovery date (YYYY-MM-DD)', 'd', { type: 'text', placeholder: '2026-03-15' }));
     root.appendChild(field('Affected individuals', 'n', { value: 1 }));
+    root.appendChild(field('Most affected residents in any one state or jurisdiction (optional; decides the media notice)', 'bc-state'));
     // spec-v63 OA3: optional 45 CFR 164.404(c)(1) notice-content completeness
     // check. Tick each element your individual notice contains; unchecked
     // elements render as flagged "missing" findings with their CFR anchor.
@@ -674,12 +675,14 @@ export const renderers = {
       const r = breachNotificationDeadlines({
         discoveryDate: str('d'),
         affectedIndividuals: Math.floor(Number(affected)),
+        largestStateResidents: String(str('bc-state')).trim() === '' ? undefined : Number(str('bc-state')),
       });
       o.appendChild(el('ul', {}, [
         el('li', { text: `Discovery: ${r.discoveryDate}` }),
         el('li', { text: `Affected: ${r.affectedIndividuals} (${r.threshold})` }),
         el('li', { text: `Individual notice deadline: ${r.individualNoticeDeadline}` }),
         r.mediaNoticeDeadline ? el('li', { text: `Media notice deadline: ${r.mediaNoticeDeadline}` }) : null,
+        el('li', { text: r.mediaNote }),
         el('li', { text: `HHS notice deadline: ${r.hhsNoticeDeadline}` }),
       ]));
       const recipients = el('ul', {}, r.recipients.map((s) => el('li', { text: s })));
@@ -691,7 +694,7 @@ export const renderers = {
         mitigation: bool('bc-mitigation'), contact: bool('bc-contact'),
       }));
     });
-    ['d', 'n', 'bc-what', 'bc-types', 'bc-steps', 'bc-mitigation', 'bc-contact']
+    ['d', 'n', 'bc-state', 'bc-what', 'bc-types', 'bc-steps', 'bc-mitigation', 'bc-contact']
       .forEach((id) => {
         const node = document.getElementById(id);
         node.addEventListener('input', run);

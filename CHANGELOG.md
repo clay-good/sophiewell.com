@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Surviving Sepsis bundle timer marked antibiotics "late" after 60 minutes for every
+  patient. The 2021 Surviving Sepsis guideline gives 1 hour for possible shock
+  or a high likelihood of sepsis, and 3 hours for possible sepsis without
+  shock; a new question sets the window, and unanswered, a dose between 1 and
+  3 hours reads as depending on it. Its explanation also said fluids were due
+  within 60 minutes where the timer (and the guideline) allow 3 hours.
+- HIPAA Breach 60-Day Notification Clock required a media notice at 500 or
+  more affected individuals. The rule is more than 500 residents of one state
+  or jurisdiction (45 CFR 164.406); 500 or more in total is the HHS threshold.
+  A breach of exactly 500, or one spread over several states with none above
+  500, no longer shows a media deadline, and a new field for the most affected
+  residents in one state decides it.
 - HIPAA Authorization Form Generator: the printable form was missing two of the three
   statements 45 CFR 164.508(c)(2) requires (that signing is not a condition of
   treatment or payment, and that disclosed information may be redisclosed), how

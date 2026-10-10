@@ -100,3 +100,15 @@ test('restraint-timer: policy intervals are labeled as policy, and the 24-hour r
   assert.ok(n.banners.some((b) => /renewed as hospital policy authorizes \(42 CFR sec 482\.13\(e\)\(8\)\(iii\)\)/.test(b)));
   assert.ok(!n.banners.some((b) => /renewed each calendar day per 42 CFR/.test(b)));
 });
+
+// SSC 2021 recs. 12-14 (PMC8486643, re-read October 9, 2026): antimicrobials within 1 h for possible shock or a high
+// likelihood of sepsis, within 3 h for possible sepsis without shock. Every dose after 60 minutes used to be "late".
+test('sepsis-bundle-clock: the antibiotic window follows shock or likelihood; unanswered, 1 to 3 hours depends', () => {
+  const base = { t0: '2026-05-19T12:00', antibioticTime: '2026-05-19T14:00' };
+  const abx = (extra) => sepsisBundleClock({ ...base, ...extra }).items.find((i) => /^broad-spectrum/.test(i.label));
+  assert.equal(abx({ shockOrLikely: 'yes' }).status, 'late');
+  assert.equal(abx({ shockOrLikely: 'no' }).status, 'on-time');
+  assert.match(abx({}).status, /^depends: late for shock or likely sepsis, on time for possible sepsis without shock/);
+  assert.equal(sepsisBundleClock({ ...base, antibioticTime: '2026-05-19T15:30' }).items.find((i) => /^broad-spectrum/.test(i.label)).status, 'late');
+  assert.equal(sepsisBundleClock({ ...base, antibioticTime: '2026-05-19T12:45' }).items.find((i) => /^broad-spectrum/.test(i.label)).status, 'on-time');
+});

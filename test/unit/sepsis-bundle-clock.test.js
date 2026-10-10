@@ -15,10 +15,11 @@ test('All hour-1 elements within 60 min -> on-time', () => {
   for (const i of r.items.slice(0, 4)) assert.equal(i.status, 'on-time');
 });
 
-test('Antibiotic at 90 min -> late', () => {
+test('Antibiotic at 90 min -> late when shock or sepsis is highly likely (SSC 2021 rec. 12)', () => {
   const r = sepsisBundleClock({
     t0: T0,
     antibioticTime: '2026-05-19T13:30:00Z',
+    shockOrLikely: 'yes',
   });
   const abx = r.items.find((i) => i.label.startsWith('broad-spectrum antibiotics'));
   assert.equal(abx.status, 'late');

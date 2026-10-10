@@ -367,6 +367,11 @@ export const renderers = {
     root.appendChild(f29d('Initial lactate value (mmol/L)', 'sb-lac1'));
     root.appendChild(f29d('Initial lactate drawn at', 'sb-lact1', { type: 'datetime-local' }));
     root.appendChild(f29d('Blood cultures drawn at', 'sb-cult', { type: 'datetime-local' }));
+    root.appendChild(s29d('Shock, or sepsis highly likely? (sets the antibiotic window)', 'sb-shock', [
+      { value: '', text: '— choose —' },
+      { value: 'yes', text: 'Yes: antibiotics within 1 hour' },
+      { value: 'no', text: 'No, possible sepsis without shock: within 3 hours' },
+    ]));
     root.appendChild(f29d('Broad-spectrum antibiotic at', 'sb-abx', { type: 'datetime-local' }));
     root.appendChild(f29d('30 mL/kg crystalloid started at', 'sb-fluid', { type: 'datetime-local' }));
     root.appendChild(f29d('Vasopressor started at', 'sb-vaso', { type: 'datetime-local' }));
@@ -384,6 +389,7 @@ export const renderers = {
         lactateTime:         v29d('sb-lact1'),
         cultureTime:         v29d('sb-cult'),
         antibioticTime:      v29d('sb-abx'),
+        shockOrLikely:       v29d('sb-shock'),
         fluidStartTime:      v29d('sb-fluid'),
         vasoTime:            v29d('sb-vaso'),
         nyState:             v29d('sb-state'),
@@ -398,6 +404,7 @@ export const renderers = {
       if (r.nyNote) o.appendChild(el('p', { class: 'muted', text: r.nyNote }));
     });
     document.getElementById('sb-state').addEventListener('change', run);
+    document.getElementById('sb-shock').addEventListener('change', run);
     ['sb-t0', 'sb-lac1', 'sb-lact1', 'sb-cult', 'sb-abx', 'sb-fluid', 'sb-vaso', 'sb-lac2', 'sb-lact2'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
