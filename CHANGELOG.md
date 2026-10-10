@@ -6,6 +6,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Foley and central-line day counter listed five catheter indications as "CDC SHEA 2014" and
+  showed them for both devices. Two of the six indications in the CDC 2009 guideline (Table 2A)
+  were missing (healing of an open sacral or perineal wound in an incontinent patient; prolonged
+  immobilization), so those patients were told "remove Foley today"; and a urinary indication
+  counted as a reason to keep a central line. The Foley list is now the CDC six, a central line
+  asks whether it is still essential (CDC 2011), and the count is labeled as time in place, not a
+  surveillance device-day count.
+
+- Insulin correction dose stamped its insulin sensitivity factor "per ADA 2024" and printed the
+  hospital glucose targets as 140-180 mg/dL outside the ICU and 110-180 mg/dL inside it. The ADA
+  2024 hospital chapter states neither the 1800 nor the 1500 rule, and its goals are 100-180 mg/dL
+  outside the ICU and 140-180 mg/dL for most ICU patients (110-140 mg/dL for selected patients).
+  The goals are corrected and the rules are labeled as rules of thumb.
+- Bristol stool and abdominal girth raised an "abdominal compartment syndrome concern per SCCM
+  2013" at a girth rise of 2 cm/h or 20 cm in a day. The 2013 consensus (WSACS) has no girth
+  threshold, calls examination inaccurate for raised abdominal pressure, and defines the syndrome
+  by measured pressure. The trend is still computed; the banner now says so. "Lacking fiber" on
+  type 5 was removed.
+
 - Three high-severity dependency advisories were open on `main`. `@modelcontextprotocol/sdk`
   1.29.0 → 1.31.0 in the MCP server package and → 1.32.1 in the root tree
   (GHSA-6qxp-vccf-f47h, OAuth credentials sent to a server-chosen authorization server), and

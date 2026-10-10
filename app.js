@@ -1612,7 +1612,7 @@ const UTILITIES = [
   { id: 'vip-extravasation',   name: 'VIP + INS infiltration / extravasation grading',   group: 'H', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'blood-compat',        name: 'ABO/Rh blood-product compatibility quick-check',   group: 'H', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v29 §4 wave 29-3c: nurse-bedside math.
-  { id: 'insulin-correction',     name: 'Insulin correction (ADA 2024 ISF / ICR)',          group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'insulin-correction',     name: 'Insulin correction (ISF / ICR)',                   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hypoglycemia-level', name: 'Hypoglycemia Level (ADA) and First Step', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'electrolyte-replacement',name: 'Electrolyte replacement ladder (K / Mg / Phos)',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'crrt-dose',              name: 'CRRT effluent dose + citrate-Ca ratio',            group: 'F', audiences: ['clinicians', 'educators'], clinical: true },

@@ -73,3 +73,10 @@ test('insulin-correction: meal coverage below display precision is disclosed', (
   assert.equal(r.mealUnits, 0);
   assert.match(r.text, /entered carbohydrate coverage is greater than 0 U but below the 0\.1 U display precision/);
 });
+
+test('insulin-correction: the ISF is not attributed to the ADA', () => {
+  const derived = insulinCorrection({ currentBG: 250, targetBG: 150, totalDailyDose: 50, isfRule: 'rapid' });
+  assert.match(derived.text, /from the 1800 rule, a rule of thumb/);
+  assert.doesNotMatch(derived.text, /ADA/);
+  assert.match(insulinCorrection({ currentBG: 250, targetBG: 150, isf: 40 }).text, /ISF 40 as entered/);
+});

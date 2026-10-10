@@ -13,7 +13,7 @@ import {
 } from '../lib/workflow-v4.js';
 import {
   ewsEscalation, restraintTimer, sepsisBundleClock, codeBlueClock,
-  mtpTracker, deviceDayCounter, bristolGirth, ventSbtPeep,
+  mtpTracker, deviceDayCounter, FOLEY_INDICATIONS, CENTRAL_LINE_INDICATIONS, bristolGirth, ventSbtPeep,
 } from '../lib/scoring-v4.js';
 
 // A person's name, birth date or contact is kept out of the page's shareable link (app.js trackHashState).
@@ -494,26 +494,29 @@ export const renderers = {
       { value: 'central-line', text: 'Central venous catheter' },
     ]));
     root.appendChild(f29d('Insertion timestamp', 'dd-ins', { type: 'datetime-local' }));
-    const criteriaWrap = el('fieldset', {}, [el('legend', { text: 'CDC SHEA 2014 daily-removal criteria (check any that apply)' })]);
     const opts = [
-      ['dd-c1', 'Acute urinary retention or bladder outlet obstruction'],
-      ['dd-c2', 'Accurate I/O required for critically ill patient'],
-      ['dd-c3', 'Peri-operative surgical indication'],
-      ['dd-c4', 'End-of-life comfort'],
-      ['dd-c5', 'Hourly urine output required'],
+      ...FOLEY_INDICATIONS.map((lbl, i) => [`dd-c${i + 1}`, lbl, 'foley']),
+      ...CENTRAL_LINE_INDICATIONS.map((lbl, i) => [`dd-l${i + 1}`, lbl, 'central-line']),
     ];
-    for (const [id, lbl] of opts) {
-      criteriaWrap.appendChild(el('p', {}, [el('label', { for: id }, [
+    const wraps = {
+      'foley': el('fieldset', {}, [el('legend', { text: 'CDC 2009 indications for an indwelling urinary catheter (check any that apply)' })]),
+      'central-line': el('fieldset', {}, [el('legend', { text: 'CDC 2011: is the central line still needed?' })]),
+    };
+    for (const [id, lbl, dev] of opts) {
+      wraps[dev].appendChild(el('p', {}, [el('label', { for: id }, [
         el('input', { id, type: 'checkbox' }),
         ' ' + lbl,
       ])]));
     }
-    root.appendChild(criteriaWrap);
+    root.appendChild(wraps.foley);
+    root.appendChild(wraps['central-line']);
     const o = out(); root.appendChild(o);
     const run = () => safe29d(o, () => {
-      const criteriaMet = opts.filter(([id]) => document.getElementById(id).checked).map(([, lbl]) => lbl);
+      const device = v29d('dd-dev');
+      for (const dev of Object.keys(wraps)) wraps[dev].hidden = dev !== device;
+      const criteriaMet = opts.filter(([id, , dev]) => dev === device && document.getElementById(id).checked).map(([, lbl]) => lbl);
       const r = deviceDayCounter({
-        device:              v29d('dd-dev'),
+        device,
         insertionTimestamp:  v29d('dd-ins'),
         criteriaMet,
       });
@@ -521,7 +524,7 @@ export const renderers = {
       // does -- a reader who does not know the count came from the clock reads
       // the number under it as a scenario.
       if (r.dwellNote) o.appendChild(el('p', { class: 'muted', text: r.dwellNote }));
-      o.appendChild(el('h2', { text: `Device-days: ${r.deviceDays} d ${r.deviceHours} h` }));
+      o.appendChild(el('h2', { text: `In place: ${r.deviceDays} d ${r.deviceHours} h` }));
       o.appendChild(el('p', { text: `Insertion: ${r.insertionIso}` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
     });

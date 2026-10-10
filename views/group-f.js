@@ -728,7 +728,7 @@ export const renderers = {
   // iv-to-po removed in spec-v29 wave 29-2 (Group K/O): static
   // equivalence table per sec 7.2 audit decision.
 
-  // spec-v29 sec 4.8.1 wave 29-3c: insulin correction (ADA 2024).
+  // spec-v29 sec 4.8.1 wave 29-3c: insulin correction.
   'insulin-correction'(root) {
     root.appendChild(field('Current BG (mg/dL)', 'ic-bg'));
     root.appendChild(field('Target BG (mg/dL)', 'ic-target'));
@@ -763,7 +763,8 @@ export const renderers = {
         { label: 'Meal coverage', value: r.mealUnits, units: 'U' },
       ]);
       if (r.mealNote) o.appendChild(el('p', { class: 'muted', text: r.mealNote }));
-      o.appendChild(el('p', { class: 'clinical-notice', text: 'ADA 2024 hospital glycemic target: 140-180 mg/dL non-critical; 110-180 mg/dL ICU.' }));
+      if (r.isfDerivedFromTdd) o.appendChild(el('p', { class: 'muted', text: 'The 1800 and 1500 rules are bedside rules of thumb, not part of the ADA Standards. Use the ISF on the order when there is one.' }));
+      o.appendChild(el('p', { class: 'clinical-notice', text: 'ADA 2024 hospital glycemic goals: 100-180 mg/dL outside the ICU; 140-180 mg/dL for most ICU patients (110-140 mg/dL for selected patients if reached without significant hypoglycemia).' }));
     });
     ['ic-bg', 'ic-target', 'ic-isf', 'ic-tdd', 'ic-rule', 'ic-carbs', 'ic-icr'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     document.getElementById('ic-rule').addEventListener('change', run);

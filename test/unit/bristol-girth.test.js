@@ -35,14 +35,19 @@ test('Girth trend computed when both measurements and timestamps present', () =>
   assert.equal(r.deltaPerHourCm, 2);
 });
 
-test('Δ girth >=2 cm/h -> ACS banner per SCCM 2013', () => {
+test('a rising girth says what it cannot show; it sets no threshold', () => {
   const r = bristolGirth({
     bristolType: 4,
     girthT0Cm: 100, girthT1Cm: 104,
     t0Timestamp: '2026-05-19T12:00:00Z',
     t1Timestamp: '2026-05-19T13:00:00Z',
   });
-  assert.ok(r.banners.some((b) => b.includes('abdominal-compartment-syndrome')));
+  assert.equal(r.banners.length, 1);
+  assert.match(r.banners[0], /No published threshold/);
+  assert.match(r.banners[0], /over 20 mmHg/);
+  assert.doesNotMatch(r.banners[0], /SCCM/);
+  const fall = bristolGirth({ bristolType: 4, girthT0Cm: 104, girthT1Cm: 100, t0Timestamp: '2026-05-19T12:00:00Z', t1Timestamp: '2026-05-19T13:00:00Z' });
+  assert.deepEqual(fall.banners, []);
 });
 
 test('Out-of-range Bristol type throws', () => {

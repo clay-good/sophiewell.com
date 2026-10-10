@@ -73,7 +73,7 @@ export default [
   },
   {
     id: 'insulin-correction',
-    summary: 'ADA 2024 hospital insulin correction dose: correction = (current - target BG) / ISF, ISF derivable from TDD via the 1800 (rapid) or 1500 (regular) rule, plus optional carb coverage.',
+    summary: 'Insulin correction dose arithmetic: correction = (current - target BG) / ISF, plus optional carb coverage. The ISF can be derived from the total daily dose by the 1800 (rapid) or 1500 (regular) rule, which are rules of thumb and not from the ADA Standards.',
     // Name the ISF-rule constant (1800 rapid / 1500 regular) when the ISF is
     // derived from the total daily dose.
     compute: (a) => {
@@ -1938,7 +1938,7 @@ export default [
   },
   {
     id: 'bristol-girth',
-    summary: 'Bristol Stool Form Scale (Lewis 1997; type 1-7 mapped to constipation / normal / soft / diarrhea) with an optional abdominal-girth trend (girth and timestamp at two points yields the change per hour).',
+    summary: 'Bristol Stool Form Scale (Lewis 1997; type 1-7 mapped to constipation / normal / soft / diarrhea) with an optional abdominal-girth trend (girth and timestamp at two points yields the change per hour). The girth trend carries no diagnostic threshold: abdominal compartment syndrome is defined by measured pressure (WSACS 2013).',
     compute: F.bristolGirth,
     fields: [
       { dom: 'bg-b', arg: 'bristolType', kind: 'number', required: true, label: 'Bristol stool type (1-7)', values: ['1', '2', '3', '4', '5', '6', '7'] },

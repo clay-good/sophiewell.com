@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { deviceDayCounter } from '../../lib/scoring-v4.js';
+import { deviceDayCounter, FOLEY_INDICATIONS, CENTRAL_LINE_INDICATIONS } from '../../lib/scoring-v4.js';
 
 const INS = '2026-05-15T08:00:00Z';
 const NOW = '2026-05-19T08:00:00Z';
@@ -79,4 +79,21 @@ test('and stays quiet when the reading is pinned, or the dwell is ordinary', () 
   assert.equal(deviceDayCounter({
     device: 'foley', insertionTimestamp: threeDaysAgo, criteriaMet: ['x'],
   }).dwellNote, null);
+});
+
+test('the Foley checklist is the six CDC 2009 Table 2A indications', () => {
+  assert.equal(FOLEY_INDICATIONS.length, 6);
+  assert.ok(FOLEY_INDICATIONS.some((x) => /sacral or perineal wound/.test(x)));
+  assert.ok(FOLEY_INDICATIONS.some((x) => /immobilization/.test(x)));
+  // A central line is never kept for a urinary reason.
+  assert.ok(CENTRAL_LINE_INDICATIONS.every((x) => !/urin/i.test(x)));
+});
+
+test('banners name the CDC guideline that says it, and no surveillance chapter', () => {
+  const f = deviceDayCounter({ device: 'foley', insertionTimestamp: '2026-05-15T08:00', asOf: '2026-05-19T08:00', criteriaMet: [] });
+  assert.ok(f.banners.some((b) => /CDC 2009/.test(b)));
+  assert.ok(f.banners.some((b) => /In place 4 days/.test(b) && /not a surveillance device-day count/.test(b)));
+  const c = deviceDayCounter({ device: 'central-line', insertionTimestamp: '2026-05-15T08:00', asOf: '2026-05-19T08:00', criteriaMet: [] });
+  assert.ok(c.banners.some((b) => /no longer essential/.test(b)));
+  assert.ok([...f.banners, ...c.banners].every((b) => !/NHSN|SHEA/.test(b)));
 });
