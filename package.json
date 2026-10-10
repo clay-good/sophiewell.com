@@ -45,7 +45,7 @@
     "@playwright/test": "1.59.1",
     "eslint": "9.39.4",
     "openlore": "2.1.3",
-    "wrangler": "4.143.1"
+    "wrangler": "4.149.0"
   },
   "overrides": {
     "hono": "^4.13.5",

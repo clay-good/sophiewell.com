@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Three high-severity dependency advisories were open on `main`. `@modelcontextprotocol/sdk`
+  1.29.0 → 1.31.0 in the MCP server package and → 1.32.1 in the root tree
+  (GHSA-6qxp-vccf-f47h, OAuth credentials sent to a server-chosen authorization server), and
+  `wrangler` 4.143.1 → 4.149.0, which brings `sharp` 0.35.5 (GHSA-wq5f-xc86-pv6w, librsvg).
+  `npm audit` reports 0 vulnerabilities in both packages.
+
 - Massive Transfusion 1:1:1 ratio tracker (PROPPR) compared apheresis platelet doses one-to-one with
   red cell units, so after its own first cooler (6 red cells, 6 plasma, 1
   platelet dose) it called for more platelets, up to six times the PROPPR
