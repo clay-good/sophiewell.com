@@ -1098,11 +1098,11 @@ export const renderers = {
 
   cows(root) {
     const items = [
-      ['Resting pulse (0/1/2/4)', 'co-pul'], ['Sweating (0-4)', 'co-swt'],
+      ['Resting pulse (0/1/2/4)', 'co-pul'], ['Sweating (0/1/2/3/4)', 'co-swt'],
       ['Restlessness (0/1/3/5)', 'co-rest'], ['Pupil size (0/1/2/5)', 'co-pup'],
-      ['Bone / joint aches (0/1/2/4)', 'co-jt'], ['Runny nose / tearing (0-4)', 'co-rn'],
-      ['GI upset (0/1/2/3/5)', 'co-gi'], ['Tremor (0-4)', 'co-tre'],
-      ['Yawning (0-4)', 'co-yaw'], ['Anxiety / irritability (0/1/2/4)', 'co-anx'],
+      ['Bone / joint aches (0/1/2/4)', 'co-jt'], ['Runny nose / tearing (0/1/2/4)', 'co-rn'],
+      ['GI upset (0/1/2/3/5)', 'co-gi'], ['Tremor (0/1/2/4)', 'co-tre'],
+      ['Yawning (0/1/2/4)', 'co-yaw'], ['Anxiety / irritability (0/1/2/4)', 'co-anx'],
       ['Gooseflesh skin (0/3/5)', 'co-goose'],
     ];
     for (const [l, id] of items) {

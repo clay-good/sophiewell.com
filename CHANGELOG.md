@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Four tools printed a result band that contradicted the interpretation table on the same page.
+  Bishop score 8 read "Intermediate" above a table calling 8 favorable; CIWA-Ar 8 or 9 read
+  "Moderate" above "minimal-to-mild"; HAS-BLED 1 read "Moderate" above "Low"; AUDIT-C 3 read
+  "Positive" for a man against the tool's own cutoff of 4. Each now has one set of bands, labeled
+  as a convention where the cited paper defines none.
+- COWS accepted any value from 0 to 5 on every item and labeled runny nose, tremor and yawning as
+  0-4. Each item now takes only the values on the scoring sheet (those three are 0, 1, 2 or 4).
+
 - Heat illness cooling decision called it heat stroke "per Bouchama 2002" on either a core
   temperature above 40 C or CNS dysfunction; the definition needs both. One alone is now "possible
   heat stroke": the cooling advice is unchanged and the result says which half is missing.

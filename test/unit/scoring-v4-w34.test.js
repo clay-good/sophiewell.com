@@ -126,8 +126,8 @@ test('GAD-7: max 21 -> Severe', () => assert.match(bandFor(GAD7_CONFIG.severityB
 // --- 153 AUDIT-C ------------------------------------------------------
 test('AUDIT-C: 0 -> Negative', () => assert.match(bandFor(AUDITC_CONFIG.severityBands, 0).label, /Negative/));
 test('AUDIT-C: 4 -> risky drinking', () => assert.match(bandFor(AUDITC_CONFIG.severityBands, 4).label, /risky/));
-test('AUDIT-C: 8 -> high risk', () => assert.match(bandFor(AUDITC_CONFIG.severityBands, 8).label, /high risk/));
-test('AUDIT-C: 12 (max) -> high risk', () => assert.match(bandFor(AUDITC_CONFIG.severityBands, 12).label, /high risk/));
+test('AUDIT-C: 3 -> positive for women only; 4 and up -> positive for both', () => { assert.match(bandFor(AUDITC_CONFIG.severityBands, 3).label, /Positive for women .* below the cutoff for men/); assert.match(bandFor(AUDITC_CONFIG.severityBands, 4).label, /Positive for men and women/); });
+test('AUDIT-C: 12 (max) -> positive', () => assert.match(bandFor(AUDITC_CONFIG.severityBands, 12).label, /Positive for men and women/));
 
 // --- 154 CAGE ---------------------------------------------------------
 test('CAGE: 0 -> Negative', () => assert.match(bandFor(CAGE_CONFIG.severityBands, 0).label, /Negative/));
