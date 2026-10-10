@@ -44,9 +44,9 @@ test('sos parts mirror inputs', () => {
   assert.equal(r.score, 2);
 });
 
-test('sos text mentions Ista 2009 and the >=4 cutoff', () => {
+test('sos text mentions Ista 2013 and the >=4 cutoff', () => {
   const r = sos(zero);
-  assert.match(r.text, /Ista 2009/);
+  assert.match(r.text, /Ista 2013/);
   assert.match(r.text, />=4/);
 });
 

@@ -178,14 +178,14 @@ export default [
   },
   {
     id: 'pecarn-cspine',
-    summary: 'PECARN pediatric cervical-spine injury rule (Leonard 2019): 8 risk factors after blunt trauma; absence of all 8 identifies low risk for cervical spine injury.',
+    summary: 'PECARN pediatric cervical-spine injury rule (Leonard 2019): the 8 risk factors of the model tested there after blunt trauma (high-risk MVC, diving, predisposing condition, neck pain, decreased neck mobility, altered mental status, neurologic deficit, torso injury). Absence of all 8 means lower risk; the model was 90.5% sensitive and is not a validated clearance rule.',
     compute: F.pecarnCspine,
     fields: [
       { dom: 'pc-ams', arg: 'alteredMentalStatus', kind: 'bool', required: true, label: 'Altered mental status' },
-      { dom: 'pc-abc', arg: 'abnormalAirwayBreathingCirculation', kind: 'bool', required: true, label: 'Abnormal airway/breathing/circulation' },
+      { dom: 'pc-dive', arg: 'diving', kind: 'bool', required: true, label: 'Diving mechanism' },
       { dom: 'pc-neuro', arg: 'focalNeurologicDeficit', kind: 'bool', required: true, label: 'Focal neurologic deficit' },
       { dom: 'pc-neck', arg: 'neckPain', kind: 'bool', required: true, label: 'Neck pain' },
-      { dom: 'pc-tort', arg: 'torticollis', kind: 'bool', required: true, label: 'Torticollis' },
+      { dom: 'pc-tort', arg: 'decreasedNeckMobility', kind: 'bool', required: true, label: 'Decreased neck mobility (reported or on exam, including torticollis)' },
       { dom: 'pc-torso', arg: 'substantialTorsoInjury', kind: 'bool', required: true, label: 'Substantial torso injury' },
       { dom: 'pc-pred', arg: 'predisposingCondition', kind: 'bool', required: true, label: 'Predisposing condition (e.g., Down syndrome, juvenile arthritis)' },
       { dom: 'pc-mvc', arg: 'highRiskMvc', kind: 'bool', required: true, label: 'High-risk motor vehicle collision' },

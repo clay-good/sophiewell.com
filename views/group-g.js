@@ -3969,10 +3969,10 @@ export const renderers = {
   'pecarn-cspine'(root) {
     const items = [
       ['Altered mental status', 'pc-ams'],
-      ['Abnormal airway/breathing/circulation', 'pc-abc'],
+      ['Diving mechanism', 'pc-dive'],
       ['Focal neurologic deficit', 'pc-neuro'],
       ['Neck pain', 'pc-neck'],
-      ['Torticollis', 'pc-tort'],
+      ['Decreased neck mobility (reported or on exam, including torticollis)', 'pc-tort'],
       ['Substantial torso injury', 'pc-torso'],
       ['Predisposing condition (e.g., Down syndrome, juvenile arthritis)', 'pc-pred'],
       ['High-risk motor vehicle collision', 'pc-mvc'],
@@ -3982,10 +3982,10 @@ export const renderers = {
     const run = () => safe(o, () => {
       const r = S4.pecarnCspine({
         alteredMentalStatus: checked('pc-ams'),
-        abnormalAirwayBreathingCirculation: checked('pc-abc'),
+        diving: checked('pc-dive'),
         focalNeurologicDeficit: checked('pc-neuro'),
         neckPain: checked('pc-neck'),
-        torticollis: checked('pc-tort'),
+        decreasedNeckMobility: checked('pc-tort'),
         substantialTorsoInjury: checked('pc-torso'),
         predisposingCondition: checked('pc-pred'),
         highRiskMvc: checked('pc-mvc'),

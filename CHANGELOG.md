@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Cutoffs credited to the papers that set them: BIG score 16 (Davis 2015), SOS withdrawal score 4
+  (Ista 2013), COMFORT-B 10 and 23 (Ista 2005, with 11-22 described as indeterminate). LACE's
+  low / moderate / high bands are labeled as a convention the 2010 paper does not define, with a
+  note that its comorbidity term is a modified Charlson.
+
+- PECARN cervical-spine risk factors listed "abnormal airway/breathing/circulation" where the
+  model in Leonard 2019 has a diving mechanism, so a diving injury with nothing else read low
+  risk. With no factor present the result said "cervical-spine imaging not indicated"; the model
+  was 90.5% sensitive and is presented by its authors as groundwork for a rule, which the result
+  now says.
+
 - Both NEXUS chest tools listed age over 60, intoxication and altered alertness as criteria and
   left out scapular tenderness. The cited instrument (Rodriguez 2015, Chest CT-All) is abnormal
   chest x-ray, rapid deceleration, distracting injury, and chest-wall, sternal, thoracic-spine and

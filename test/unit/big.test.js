@@ -12,7 +12,7 @@ test('big BD 8, INR 2, GCS 8 -> 20; high risk', () => {
   const r = big({ baseDeficit: 8, inr: 2, gcs: 8 });
   assert.equal(r.score, 8 + 5 + 7);
   assert.equal(r.highMortalityRisk, true);
-  assert.match(r.band, /high predicted mortality per Borgman 2011/);
+  assert.match(r.band, /high predicted mortality \(score from Borgman 2011; cutoff of 16 from Davis 2015\)/);
 });
 
 test('big boundary 16 -> high risk', () => {
