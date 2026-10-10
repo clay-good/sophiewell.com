@@ -94,3 +94,10 @@ test('smart-cop: over 50, a saturation of exactly 90% scores the oxygenation cri
   assert.equal(smartCop({ ...base, spo2: 90 }).score, 2);
   assert.equal(smartCop({ ...base, spo2: 91 }).score, 0);
 });
+
+test('smart-cop: 7 or more is the very-high band', () => {
+  const r = smartCop({ ageYears: 60, sbpLt90: true, multilobar: true, albuminLt35: true, rr: 32, hrGe125: true,
+    confusion: true, spo2: 85, phLt735: true });
+  assert.ok(r.score >= 7);
+  assert.match(r.band, /very high risk/);
+});

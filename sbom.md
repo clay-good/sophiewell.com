@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `31a02cd04d31c716`
-Generated: 2026-10-10T11:37:16.410Z
+Build ID: `410638a48354be49`
+Generated: 2026-10-10T12:28:06.095Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -698,7 +698,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2755638 | `46ad00526e4feca75592981c481fb79e48ef8fd2833eb4f3087684364f7c006f` |
+| `lib/meta.js` | 2755939 | `e55d7141fc170a60abe3c606f7b6da19280fccb1186b6c94efe95c146c891d7b` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1064,7 +1064,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 321758 | `7b88d45d52fec46a71c26696adea1c2a590c2841a1348f48f5e97632c84ee4b4` |
+| `lib/scoring-v4.js` | 322142 | `f60ad91226b11fc6e4feb229f4eaa1a26e950c47656d4d88a9efbc44ec018044` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27919 | `dfea7e197a961260f40950ce7677c80e0ddd6386c13706d103f738cc412d8627` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
@@ -2406,7 +2406,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 51582 | `de3e12aad8357addb28c635c98160e1feb4f3a497430898fd54937aca5850abf` |
 | `views/group-f.js` | 54910 | `9db7984a597c2a70915cf4496fdb76c686f4452ec1186cdbef0adcfac008eef6` |
-| `views/group-g.js` | 252512 | `a8e510189b3e66772b82c5be06373e3ba605bc5bf4aae458a437098dc29e66db` |
+| `views/group-g.js` | 252528 | `f6c1d34aa797fe21a60d64e7f0180d5b8a5cba3fd6dbe96f5aa1724fcc004d67` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 25808 | `e791f223531f946189558bdcb6e950e47ac4c90ded2392e568c4f7458df2c636` |
 | `views/group-j.js` | 10229 | `93acd8660941a9046e98ca70c75255389d49ee1e28c252d4ac76eed91c455e5a` |

@@ -2058,7 +2058,7 @@ export const renderers = {
   cfs(root) {
     const descriptors = [
       ['1', '1 - Very fit'],
-      ['2', '2 - Well'],
+      ['2', '2 - Fit'],
       ['3', '3 - Managing well'],
       ['4', '4 - Living with very mild frailty'],
       ['5', '5 - Living with mild frailty'],
@@ -2544,7 +2544,7 @@ export const renderers = {
       ['0', '0 - Normal'],
       ['1', '1 - Wt loss >5% in 3 mo OR intake 50-75% in prior week'],
       ['2', '2 - Wt loss >5% in 2 mo OR BMI 18.5-20.5 with impaired GC OR intake 25-50%'],
-      ['3', '3 - Wt loss >5% in 1 mo (>15% in 3 mo) OR BMI <18.5 OR intake <25%'],
+      ['3', '3 - Wt loss >5% in 1 mo (>15% in 3 mo) OR BMI <18.5 with impaired GC OR intake <25%'],
     ]);
     root.appendChild(checkbox('Age >= 70 years (+1)', 'nr-age'));
     const o = out(); root.appendChild(o);

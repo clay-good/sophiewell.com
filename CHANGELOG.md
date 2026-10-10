@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- NRS-2002: the score-3 BMI option (under 18.5) carries its "with impaired general condition"
+  qualifier. Clinical Frailty Scale level 2 is "Fit" (version 2.0). SMART-COP gains its "very high"
+  band at 7 or more. CPOT's cutoff is attributed to the 2009 paper that set it. STOP-BANG's
+  validation note states the 746 patients analyzed at two hospitals.
+
 - Epworth Sleepiness Scale banded 11-14 mild, 15-17 moderate and 18-24 severe. The published
   interpretation is 11-12 mild, 13-15 moderate, 16-24 severe: a score of 13 or 14 read mild and 16
   or 17 read moderate.
