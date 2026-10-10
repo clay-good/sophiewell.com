@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- VIP and INS infiltration grading advised resiting the cannula only from VIP 3 and called grade 3
+  "early phlebitis". On Jackson's scale grade 2 is the early stage with "resite cannula", grade 3
+  the medium stage, grade 4 advanced phlebitis or the start of thrombophlebitis. The banner now
+  starts at 2 and the labels carry each grade's stage and action. The infiltration scale was cited
+  to "INS 2021 sec 38" and an antidote "Table 38-3" that were never read; it is the scale from the
+  INS 2006 standards and is cited as that. A vesicant flagged below grade 4 is now called out,
+  because any amount of vesicant is grade 4 on that scale.
+
 - CRRT effluent dose printed "Total/ionized Ca ratio: 0" when total calcium was left blank. An
   unmeasured total now yields no ratio.
 

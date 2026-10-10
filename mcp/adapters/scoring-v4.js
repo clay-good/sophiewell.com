@@ -1860,7 +1860,7 @@ export default [
   },
   {
     id: 'vip-extravasation',
-    summary: 'Peripheral-IV complication grading: the Visual Infusion Phlebitis score (Jackson 1998; 0-5) and the INS infiltration/extravasation grade (INS 2021; 0-4), with a vesicant flag; returns each grade with its label and the escalation banners the thresholds trigger.',
+    summary: 'Peripheral-IV complication grading: the Visual Infusion Phlebitis score (Jackson 1998; 0-5) and the INS infiltration/extravasation grade (INS Standards 2006; 0-4), with a vesicant flag; returns each grade with its label and the escalation banners the thresholds trigger.',
     compute: F.vipExtravasation,
     fields: [
       { dom: 've-vip', arg: 'vip', kind: 'number', required: false, label: 'Visual Infusion Phlebitis score (0-5)' },

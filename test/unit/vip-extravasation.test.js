@@ -9,14 +9,23 @@ test('vip 0 / ins 0 (tile example) -> no banners', () => {
   assert.equal(r.banners.length, 0);
 });
 
-test('vip 3 -> remove cannula banner', () => {
+test('vip 2 and up -> remove cannula banner (Jackson: resite from grade 2)', () => {
   const r = vipExtravasation({ vip: 3, insGrade: 0 });
-  assert.ok(r.banners.some((b) => b.startsWith('VIP >=3')));
+  assert.ok(r.banners.some((b) => b.startsWith('VIP 3: remove cannula and resite')));
+  assert.ok(vipExtravasation({ vip: 2, insGrade: 0 }).banners.some((b) => /^VIP 2: early stage of phlebitis; remove cannula/.test(b)));
+  assert.equal(vipExtravasation({ vip: 1, insGrade: 0 }).banners.length, 0);
+  assert.match(vipExtravasation({ vip: 3 }).vipLabel, /medium stage/);
 });
 
 test('ins grade 3 -> escalate banner', () => {
   const r = vipExtravasation({ vip: 0, insGrade: 3 });
-  assert.ok(r.banners.some((b) => b.startsWith('INS grade >=3')));
+  assert.ok(r.banners.some((b) => b.startsWith('Infiltration grade 3 or 4')));
+  assert.ok(r.banners.every((b) => !/INS 2021/.test(b)));
+});
+
+test('a vesicant below grade 4 is called out: any amount is grade 4 on the scale', () => {
+  const r = vipExtravasation({ vip: 0, insGrade: 1, vesicant: true });
+  assert.ok(r.banners.some((b) => /any amount of blood product, irritant or vesicant is grade 4/.test(b)));
 });
 
 test('ins grade 4 vesicant -> antidote banner', () => {
@@ -26,7 +35,7 @@ test('ins grade 4 vesicant -> antidote banner', () => {
 
 test('ins grade 4 without vesicant -> escalate but no antidote banner', () => {
   const r = vipExtravasation({ vip: 0, insGrade: 4, vesicant: false });
-  assert.ok(r.banners.some((b) => b.startsWith('INS grade >=3')));
+  assert.ok(r.banners.some((b) => b.startsWith('Infiltration grade 3 or 4')));
   assert.ok(!r.banners.some((b) => b.startsWith('Grade 4 vesicant')));
 });
 

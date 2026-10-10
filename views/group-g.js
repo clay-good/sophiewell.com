@@ -4233,7 +4233,7 @@ export const renderers = {
     run();
   },
 
-  // spec-v29 §4.6.1 wave 29-3b: VIP + INS infiltration (Jackson 1998; INS 2021).
+  // spec-v29 §4.6.1 wave 29-3b: VIP + INS infiltration (Jackson 1998; INS 2006).
   'vip-extravasation'(root) {
     // spec-v1083: both sliders rested at 0, which on these scales means "looked
     // at and clean" rather than "not looked at".
