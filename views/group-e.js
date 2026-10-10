@@ -368,6 +368,7 @@ export const renderers = {
       { unit: 'µmol/L', toCanonical: (v) => labConvert('creatinine', v, 'fromSi') },
     ]));
     root.appendChild(selectField('Sex', 'sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
+    root.appendChild(unitField('Height (optional, for ideal and adjusted weight)', 'cg-h', HEIGHT_UNITS));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['cockcroft-gault']);
     if (deriv) root.appendChild(deriv);
@@ -384,9 +385,22 @@ export const renderers = {
       o.appendChild(el('p', { text: `Creatinine clearance: ${v} mL/min` }));
       const adv = boundsAdvisory('scr', scr);
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
+      // spec-v1641 row 24: labels disagree on the weight, so with a height all three results are shown.
+      const heightCm = unitNumOpt('cg-h');
+      if (heightCm > 0) {
+        const w = C.cockcroftGaultByWeight({ ...inputs, heightCm });
+        const rows = [{ label: 'Actual weight', value: `${w.actual} mL/min` }];
+        if (w.ideal !== null) rows.push({ label: `Ideal weight (${w.idealKg} kg)`, value: `${w.ideal} mL/min` });
+        if (w.adjusted !== null) rows.push({ label: `Adjusted weight (${w.adjustedKg} kg)`, value: `${w.adjusted} mL/min` });
+        resultRow(o, rows);
+        o.appendChild(el('p', { class: 'muted', text: w.note }));
+      } else {
+        o.appendChild(el('p', { class: 'muted', text: 'This uses the weight as entered. Drug labels differ on which weight to use; enter a height to see the result on ideal and adjusted weight too.' }));
+      }
+      if (scr < 1) o.appendChild(el('p', { class: 'muted', text: C.CG_LOW_SCR_NOTE }));
       if (deriv) updateDerivationSteps(deriv, META['cockcroft-gault'], inputs);
     }, deriv);
-    ['age', 'w', 'w-unit', 'scr', 'scr-unit', 'sex'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['age', 'w', 'w-unit', 'scr', 'scr-unit', 'sex', 'cg-h', 'cg-h-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'pack-years'(root) {

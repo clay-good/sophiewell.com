@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Cockcroft-Gault took one weight and used it as entered, though drug labels differ on which
+  weight to use. With an optional height it now shows the clearance on actual, ideal (Devine) and
+  adjusted (0.4) weight, with what Winter 2012 found for each, and says a low creatinine is not
+  rounded up (the same study found rounding did not help). spec-v1641 row 24.
 - Carboplatin (Calvert) credited its 125 mL/min GFR cap to "FDA (2010)" with no link. It now names
   and links the FDA communication of October 8, 2010 (the page is gone from fda.gov; the link opens
   an archived copy) and says what it says: consider the cap when GFR is estimated from creatinine

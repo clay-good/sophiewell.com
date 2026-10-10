@@ -94,6 +94,34 @@ test('cockcroftGault: female multiplier 0.85', () => {
   const f = C.cockcroftGault({ age: 60, weightKg: 80, scr: 1.0, sex: 'F' });
   assert.ok(Math.abs(f - m * 0.85) < 0.05);
 });
+// spec-v1641 row 24: with a height, the clearance on actual, ideal (Devine) and adjusted (0.4) weight.
+test('cockcroftGaultByWeight: actual, ideal and adjusted weight side by side', () => {
+  // 60-year-old man, 120 kg, 177.8 cm (70 in), creatinine 1.0: ideal 73 kg, adjusted 91.8 kg.
+  const r = C.cockcroftGaultByWeight({ age: 60, weightKg: 120, heightCm: 177.8, scr: 1.0, sex: 'M' });
+  assert.equal(r.actual, 133.33);
+  assert.equal(r.idealKg, 73);
+  assert.equal(r.ideal, 81.11);
+  assert.equal(r.adjustedKg, 91.8);
+  assert.equal(r.adjusted, 102);
+  assert.match(r.note, /Winter 2012/);
+  // A woman: ideal 45.5 + 2.3 per inch over 60.
+  assert.equal(C.cockcroftGaultByWeight({ age: 60, weightKg: 90, heightCm: 165.1, scr: 1.0, sex: 'F' }).idealKg, 57);
+});
+test('cockcroftGaultByWeight: no adjusted weight at or below ideal, no ideal weight under 5 ft', () => {
+  const lean = C.cockcroftGaultByWeight({ age: 60, weightKg: 60, heightCm: 177.8, scr: 1.0, sex: 'M' });
+  assert.equal(lean.adjusted, null);
+  assert.equal(lean.ideal, 81.11);
+  const short = C.cockcroftGaultByWeight({ age: 60, weightKg: 60, heightCm: 147, scr: 1.0, sex: 'F' });
+  assert.equal(short.ideal, null);
+  assert.equal(short.adjusted, null);
+  assert.match(short.note, /starts at a height of 5 ft/);
+  assert.throws(() => C.cockcroftGaultByWeight({ age: 60, weightKg: 60, heightCm: 9000, scr: 1.0, sex: 'F' }), /height/i);
+});
+test('cockcroftGault: a low creatinine is never rounded up', () => {
+  // 0.6 stays 0.6: (140-80)*60/(72*0.6) = 83.33, not the 50 that rounding to 1.0 would give.
+  assert.equal(C.cockcroftGault({ age: 80, weightKg: 60, scr: 0.6, sex: 'M' }), 83.33);
+  assert.match(C.CG_LOW_SCR_NOTE, /did not improve bias or accuracy/);
+});
 
 // --- Pack-years ----------------------------------------------------------
 test('packYears: 1.5 ppd x 20y = 30', () => {

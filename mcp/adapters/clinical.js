@@ -134,13 +134,21 @@ export default [
   },
   {
     id: 'cockcroft-gault',
-    summary: 'Cockcroft-Gault creatinine clearance from age, weight, creatinine, sex (mL/min).',
-    compute: F.cockcroftGault,
+    summary: 'Cockcroft-Gault creatinine clearance from age, weight, creatinine, sex (mL/min), on the weight as entered. With a height it returns the clearance on actual, ideal (Devine) and adjusted (0.4) weight, because drug labels differ on which weight to use, with what Winter 2012 found for each. The creatinine is never rounded up.',
+    compute: (a) => {
+      const hasHeight = a.heightCm !== null && a.heightCm !== undefined && a.heightCm !== '' && Number(a.heightCm) > 0;
+      if (!hasHeight) return F.cockcroftGault(a);
+      const w = F.cockcroftGaultByWeight({ ...a, heightCm: Number(a.heightCm) });
+      const out = { crcl: w.actual, unit: 'mL/min', byWeight: { actual: w.actual, ideal: w.ideal, adjusted: w.adjusted }, idealKg: w.idealKg, adjustedKg: w.adjustedKg, note: w.note };
+      if (Number(a.scr) < 1) out.creatinineNote = F.CG_LOW_SCR_NOTE;
+      return out;
+    },
     fields: [
       { dom: 'age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
       { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
       { dom: 'sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
+      { dom: 'cg-h', concept: 'body-height', arg: 'heightCm', kind: 'number', required: false, label: 'Height (optional; gives ideal- and adjusted-weight results)', unit: 'cm' },
     ],
   },
   {

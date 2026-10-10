@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `19bfd6d6cf77a82f`
-Generated: 2026-10-10T23:05:45.135Z
+Build ID: `a93c432283568d98`
+Generated: 2026-10-10T23:22:29.868Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -249,7 +249,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v6.js` | 17029 | `546b3f749b758d099654b8ecdd89742e0a603583846708705e4871e3f6f47612` |
 | `lib/clinical-v7.js` | 19432 | `6f50185e325174b3631f7cfe7dae2f6405d61de5b311e13d791078aac8663161` |
 | `lib/clinical-v8.js` | 20051 | `102065b502c2fc2aa35e5b43ed5e761ee599201de1207cbb979ab65fa1c9c17a` |
-| `lib/clinical.js` | 25473 | `39b2ebea716ca0290db9613e1f01d7d463af12686f1d077fc9be78ce80f27036` |
+| `lib/clinical.js` | 27749 | `1bceb6f592d3867b43265873c25cda7d5cd28b02fdc042b10a46555302f39295` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
 | `lib/coagscore-v232.js` | 3053 | `aff9e82479da5b38deeaf70ade27caa7f5d1a0f21b01d74f764ca147e9846bd8` |
@@ -1478,7 +1478,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v6.js` | 9094 | `85dda711c1f5b628041a41ae5218c2ea8909bc51ff6bff06df2b9a81e1674096` |
 | `mcp/adapters/clinical-v7.js` | 8069 | `083a2078dba3877d854e781c9adc4bfdd49beda72fa8cf735360afde1c9b1d54` |
 | `mcp/adapters/clinical-v8.js` | 15995 | `b2fd754e659332e9cfa3899e11134fe5378274cc50bfe39ca263caee90087e00` |
-| `mcp/adapters/clinical.js` | 27423 | `8fa29e2a2e6d31c08e73a8960511222417c880f603ad6ca4f16342376040afa5` |
+| `mcp/adapters/clinical.js` | 28366 | `ad624394e10626b0542052d537d0b964f6d6f0e2ffb929efc835835243c08f83` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/coagscore-v232.js` | 2450 | `29d9720d14256b871c8c9752ecadd8f5df16342529bf67afacbc1028ed2c3d0c` |
 | `mcp/adapters/cobb-angle-v694.js` | 955 | `efdf4e8553a15070d3c7c82e3feeb677fcc0ec9ad2df5dc35462dc7499f38f76` |
@@ -2404,7 +2404,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
-| `views/group-e.js` | 53171 | `1410686c9d39fecf0bb6661dea18e2f16ed4a17087d99dc6242825016f241d40` |
+| `views/group-e.js` | 54271 | `ae65578954064f09b479a3bd66a83e47e780a7c8c360a0cc228dd13c9edd095d` |
 | `views/group-f.js` | 55744 | `3dd219d5c2b750235883626ab7648d4a4a6a074ff66829af8aebae3bba078651` |
 | `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |

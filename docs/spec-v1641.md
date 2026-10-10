@@ -36,6 +36,7 @@ changed. Rows not listed are not built.
 | 17 | `partd-year-cost` | Built: the note states the three-way "lesser of" and no deductible, from 42 CFR 423.100 and 423.120(h) as read in the eCFR. `partd-insulin-cost-cap` is not built. |
 | 18 | `elemental-iron-ingested`, `conc-percent` | Built: the iron result shows each fraction's derivation from its formula mass and the hydrate assumed; the converter cites an identity. Found at build: the 20%, 12% and 33% figures are printed in the Merck Manual, which the tool already cited, so they were not unsourced. The Manual gives the 20 and 60 mg/kg lines but not the 150 mg/kg line, and StatPearls (the tool's other source) could not be opened to re-read it. |
 | 23 | `egfr`, `egfr-suite`, `ckd-epi-cystatin` | Built: each shows the de-indexed mL/min value when height and weight are entered (BSA by Mosteller). |
+| 24 | `cockcroft-gault` | Partly built: with a height the tool prints the actual, ideal and adjusted (0.4) weight results beside Winter 2012's finding (abstract re-read), and the no-rounding sentence when the creatinine is below 1.0. The "for which drug?" selector waits on the label dataset; the Cockcroft-Gault row of `egfr-suite` is unchanged. |
 | 25 | `opioid-mme` | Built: the 50 MME/day flag carries the guideline's sentence. Also corrected at build: the 90 MME flag was the 2016 guideline's, which the 2022 guideline dropped. |
 | 19 | `abx-renal` | Partly built: rows rewritten from the labels with each label's set id and revision date. The weekly label watch is not built. |
 
