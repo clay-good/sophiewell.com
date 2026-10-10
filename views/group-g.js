@@ -4188,7 +4188,7 @@ export const renderers = {
     run();
   },
 
-  // spec-v29 §4.1.3 wave 29-3b: Norton + PUSH (Norton 1962; NPIAP 2005).
+  // spec-v29 §4.1.3 wave 29-3b: Norton + PUSH (Norton 1962; PUSH Tool 3.0).
   'norton-push'(root) {
     const nortonItems = [
       ['Norton: physical condition (1 very bad - 4 good)', 'nr-pc'],
@@ -4207,9 +4207,16 @@ export const renderers = {
         el('input', { id, type: 'number', min: '1', max: '4', step: '1', inputmode: 'numeric', placeholder: '1-4' }),
       ]));
     }
-    root.appendChild(scoredItemField('PUSH: length x width band (0 closed - 10 >24 cm^2)', 'pu-lw', 10));
-    root.appendChild(scoredItemField('PUSH: exudate amount (0 none - 3 heavy)', 'pu-ex', 3));
-    root.appendChild(scoredItemField('PUSH: tissue type (0 closed - 4 necrotic)', 'pu-tt', 4));
+    for (const [l, id] of [['PUSH: greatest length, head to toe (cm)', 'pu-len'], ['PUSH: greatest width, side to side (cm)', 'pu-wid']]) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', min: '0', step: '0.1', inputmode: 'decimal' }),
+      ]));
+    }
+    root.appendChild(scoredItemField('PUSH: size score 0-10, if you have no measurement', 'pu-lw', 10));
+    root.appendChild(el('p', { class: 'muted', text: `Size score by length x width (cm2): ${S4.PUSH_AREA_TABLE}.` }));
+    root.appendChild(scoredItemField('PUSH: exudate amount (0 none, 1 light, 2 moderate, 3 heavy)', 'pu-ex', 3));
+    root.appendChild(scoredItemField('PUSH: tissue type (0 closed, 1 epithelial, 2 granulation, 3 slough, 4 necrotic)', 'pu-tt', 4));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.nortonPush({
@@ -4221,6 +4228,8 @@ export const renderers = {
         lengthWidthBand:   nvOrNull('pu-lw'),
         exudate:           nvOrNull('pu-ex'),
         tissueType:        nvOrNull('pu-tt'),
+        lengthCm:          nvOrNull('pu-len'),
+        widthCm:           nvOrNull('pu-wid'),
       });
       // Head the panel with whichever halves actually have a score.
       const heads = [];
@@ -4228,8 +4237,9 @@ export const renderers = {
       if (r.pushTotal !== null) heads.push(`PUSH ${r.pushTotal} of 17`);
       if (heads.length) o.appendChild(el('h2', { text: heads.join(' / ') }));
       o.appendChild(el('p', { text: r.text }));
+      if (r.pushAreaCm2 !== null && r.push) o.appendChild(el('p', { text: `Wound area ${r.pushAreaCm2} cm2: size score ${r.push.lengthWidthBand} of 10.` }));
     });
-    ['nr-pc', 'nr-mc', 'nr-act', 'nr-mob', 'nr-inc', 'pu-lw', 'pu-ex', 'pu-tt'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['nr-pc', 'nr-mc', 'nr-act', 'nr-mob', 'nr-inc', 'pu-len', 'pu-wid', 'pu-lw', 'pu-ex', 'pu-tt'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
   },
 

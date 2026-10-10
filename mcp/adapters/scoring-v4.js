@@ -1845,7 +1845,7 @@ export default [
   },
   {
     id: 'norton-push',
-    summary: 'Norton pressure-sore risk scale (Norton 1962; five items 1-4, <= 14 at risk) alongside the PUSH wound-healing tool (NPIAP 2005; length x width band 0-10, exudate 0-3, tissue type 0-4, total 0-17). Returns both totals.',
+    summary: 'Norton pressure-sore risk scale (Norton 1962; five items 1-4, <= 14 at risk) alongside the PUSH wound-healing tool (PUSH Tool 3.0; length x width score 0-10, exudate 0-3, tissue type 0-4, total 0-17). Returns both totals. Size score by length x width in cm2: ' + F.PUSH_AREA_TABLE + '.',
     compute: F.nortonPush,
     fields: [
       { dom: 'nr-pc', arg: 'physicalCondition', kind: 'number', required: true, label: 'Norton: physical condition (1-4)' },
@@ -1853,9 +1853,11 @@ export default [
       { dom: 'nr-act', arg: 'activity', kind: 'number', required: true, label: 'Norton: activity (1-4)' },
       { dom: 'nr-mob', arg: 'mobility', kind: 'number', required: true, label: 'Norton: mobility (1-4)' },
       { dom: 'nr-inc', arg: 'incontinence', kind: 'number', required: true, label: 'Norton: incontinence (1-4)' },
-      { dom: 'pu-lw', arg: 'lengthWidthBand', kind: 'number', required: true, label: 'PUSH: length x width band (0-10)' },
-      { dom: 'pu-ex', arg: 'exudate', kind: 'number', required: true, label: 'PUSH: exudate amount (0-3)' },
-      { dom: 'pu-tt', arg: 'tissueType', kind: 'number', required: true, label: 'PUSH: tissue type (0-4)' },
+      { dom: 'pu-lw', arg: 'lengthWidthBand', kind: 'number', required: true, label: 'PUSH: length x width size score (0-10; see the table in the summary)' },
+      { dom: 'pu-ex', arg: 'exudate', kind: 'number', required: true, label: 'PUSH: exudate amount (0 none, 1 light, 2 moderate, 3 heavy)' },
+      { dom: 'pu-tt', arg: 'tissueType', kind: 'number', required: true, label: 'PUSH: tissue type (0 closed, 1 epithelial, 2 granulation, 3 slough, 4 necrotic)' },
+      { dom: 'pu-len', arg: 'lengthCm', kind: 'number', label: 'PUSH: greatest wound length (optional; with the width it sets the size score)', unit: 'cm' },
+      { dom: 'pu-wid', arg: 'widthCm', kind: 'number', label: 'PUSH: greatest wound width (optional)', unit: 'cm' },
     ],
   },
   {

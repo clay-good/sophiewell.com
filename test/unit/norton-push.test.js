@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { nortonPush } from '../../lib/scoring-v4.js';
+import { nortonPush, pushAreaBand } from '../../lib/scoring-v4.js';
 
 test('norton 20 (all maxima; tile example) -> low risk', () => {
   const r = nortonPush({
@@ -98,4 +98,32 @@ test('spec-v1083: each half reports only if its own items were rated', () => {
   assert.equal(neither.valid, false);
   assert.equal(neither.nortonTotal, null);
   assert.equal(neither.pushTotal, null);
+});
+
+test('PUSH size score from length x width follows the tool table', () => {
+  const band = (l, w) => pushAreaBand(l, w).band;
+  assert.equal(band(0, 0), 0);
+  assert.equal(band(0.5, 0.4), 1);   // 0.2 cm2
+  assert.equal(band(0.5, 0.6), 2);   // 0.3
+  assert.equal(band(1, 0.65), 3);    // 0.65 rounds to 0.7, the table's next step
+  assert.equal(band(1, 1), 3);
+  assert.equal(band(2, 1), 4);
+  assert.equal(band(2, 2), 6);       // 4.0
+  assert.equal(band(4, 2), 7);       // 8.0
+  assert.equal(band(4, 3), 8);       // 12.0
+  assert.equal(band(6, 4), 9);       // 24.0
+  assert.equal(band(6, 4.1), 10);    // 24.6
+  assert.equal(band(0.1, 0.1), 1, 'a tiny open wound is not a closed one');
+  assert.throws(() => pushAreaBand(-1, 2), RangeError);
+});
+
+test('a measured length and width set the PUSH size score', () => {
+  const r = nortonPush({ lengthCm: 3, widthCm: 1.2, exudate: 2, tissueType: 3 });
+  assert.equal(r.pushAreaCm2, 3.6);
+  assert.equal(r.push.lengthWidthBand, 6);
+  assert.equal(r.pushTotal, 11);
+  // One dimension alone is not a measurement: the size is still asked for.
+  const half = nortonPush({ lengthCm: 3, exudate: 2, tissueType: 3 });
+  assert.equal(half.pushTotal, null);
+  assert.equal(half.pushAreaCm2, null);
 });

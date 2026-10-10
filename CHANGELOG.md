@@ -174,6 +174,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Norton Scale + PUSH Tool takes the wound's greatest length and width in cm and places the PUSH
+  size score from the tool's table, which is now shown on the page; before, the reader had to know
+  the eleven size bands and type a number from 0 to 10. Exudate and tissue type name their grades.
+  The PUSH citation no longer names a 2005 paper that did not define the tool.
+
 - Medicaid Managed Care Appeal Clock now reads an appeals list: each member's
   filing deadline, or the plan's resolution deadline once the appeal is filed.
 - Medicare Fast Appeal Clock (QIO) now reads a discharge or end-of-services
