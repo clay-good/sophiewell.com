@@ -99,7 +99,7 @@ export default [
   },
   {
     id: 'electrolyte-replacement',
-    summary: 'Level-banded K / Mg / phosphate replacement ladder with IV vs PO route and a renal-impairment caution (Hammond 2019 and standard references).',
+    summary: 'Level-banded K, Mg and phosphate replacement. Phosphate follows Brown 2006 (0.32, 0.64 or 1 mmol/kg IV by level); the potassium and magnesium ladders are common institutional conventions, labeled so, with IV or PO route and a renal-impairment caution.',
     compute: F.electrolyteReplacement,
     fields: [
       { dom: 'er-e', arg: 'electrolyte', kind: 'enum', values: ['k', 'mg', 'phos'], required: true, label: 'Electrolyte' },
@@ -1932,7 +1932,7 @@ export default [
     fields: [
       { dom: 'mtp-prbc', arg: 'prbcUnits', kind: 'number', required: true, label: 'PRBC units transfused' },
       { dom: 'mtp-ffp', arg: 'ffpUnits', kind: 'number', required: true, label: 'FFP / plasma units transfused' },
-      { dom: 'mtp-plt', arg: 'plateletUnits', kind: 'number', required: true, label: 'Platelet apheresis units transfused' },
+      { dom: 'mtp-plt', arg: 'plateletUnits', kind: 'number', required: true, label: 'Platelet apheresis doses transfused (1 dose counts as 6 units in the ratio)' },
       { dom: 'mtp-cryo', arg: 'cryoUnits', kind: 'number', required: true, label: 'Cryoprecipitate doses transfused' },
     ],
   },

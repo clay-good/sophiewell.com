@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Massive Transfusion 1:1:1 ratio tracker (PROPPR) compared apheresis platelet doses one-to-one with
+  red cell units, so after its own first cooler (6 red cells, 6 plasma, 1
+  platelet dose) it called for more platelets, up to six times the PROPPR
+  ratio. One apheresis dose now counts as 6 units, as in the trial.
+- Electrolyte replacement ladder (K / Mg / Phos) gave half or less of its cited phosphate
+  dose in every band. Brown 2006 doses 2.3-3.0 mg/dL at 0.32 mmol/kg, 1.6-2.2
+  at 0.64 and 1.5 or below at 1 mmol/kg, at 7.5 mmol/hour; the tool gave
+  nothing above 2.3, then 0.16, 0.32 and 0.64. It now follows Brown. The
+  potassium and magnesium ladders were attributed to sources that do not state
+  them; they are now labeled as common institutional conventions.
 - Code-blue documentation timer called an ETCO2 above 10 mmHg a ROSC target. That figure
   (ideally 20 or more) is the target for compression quality; ROSC is suggested
   by an abrupt sustained rise and confirmed by a pulse check, and the banner

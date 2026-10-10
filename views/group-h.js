@@ -480,7 +480,7 @@ export const renderers = {
         plateletUnits:  nv29d('mtp-plt'),
         cryoUnits:      nv29d('mtp-cryo'),
       });
-      o.appendChild(el('h2', { text: `PRBC : FFP : Platelets = ${r.ratio}` }));
+      o.appendChild(el('h2', { text: `PRBC : FFP : Platelets = ${r.ratio} (${r.plateletUnits} apheresis dose${r.plateletUnits === 1 ? '' : 's'} counted as ${r.plateletEquivalentUnits} units)` }));
       o.appendChild(el('p', { text: `Next product: ${r.nextProduct}; cumulative units ${r.cumulativeUnits}; cryo doses due ${r.cryoDoseDue}.` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
     });

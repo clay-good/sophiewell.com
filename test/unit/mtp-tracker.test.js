@@ -9,22 +9,26 @@ test('Zero state -> initial cooler banner', () => {
 });
 
 test('PRBC ahead of FFP -> next product is FFP', () => {
-  const r = mtpTracker({ prbcUnits: 6, ffpUnits: 4, plateletUnits: 6 });
+  const r = mtpTracker({ prbcUnits: 6, ffpUnits: 4, plateletUnits: 1 });
   assert.equal(r.nextProduct, 'FFP');
 });
 
+// PROPPR (PMC4374744): a 1:1:1 container is 6 plasma, 1 platelet dose (a pool of 6 on average), 6 RBC. The field is
+// apheresis doses, so one dose is 6 in the ratio. The tracker used to call for platelets after its own 6:6:1 cooler.
 test('PRBC ahead of platelets -> next product is Platelets', () => {
-  const r = mtpTracker({ prbcUnits: 6, ffpUnits: 6, plateletUnits: 4 });
+  const r = mtpTracker({ prbcUnits: 12, ffpUnits: 12, plateletUnits: 1 });
   assert.equal(r.nextProduct, 'Platelets');
 });
 
-test('All in 1:1:1 -> next product PRBC', () => {
-  const r = mtpTracker({ prbcUnits: 6, ffpUnits: 6, plateletUnits: 6 });
+test('the initial cooler, 6 PRBC : 6 FFP : 1 apheresis dose, is 1:1:1 -> next product PRBC', () => {
+  const r = mtpTracker({ prbcUnits: 6, ffpUnits: 6, plateletUnits: 1 });
   assert.equal(r.nextProduct, 'PRBC');
+  assert.equal(r.ratio, '6:6:6');
+  assert.equal(r.plateletEquivalentUnits, 6);
 });
 
 test('Cryo due once per 6 PRBC (ATLS 2018)', () => {
-  const r = mtpTracker({ prbcUnits: 12, ffpUnits: 12, plateletUnits: 12, cryoUnits: 1 });
+  const r = mtpTracker({ prbcUnits: 12, ffpUnits: 12, plateletUnits: 2, cryoUnits: 1 });
   assert.equal(r.cryoDoseDue, 2);
   assert.ok(r.banners.some((b) => b.includes('Cryoprecipitate due')));
 });
