@@ -9019,6 +9019,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/crrt-drug-clearance-v1631.js (spec-v1631: Drug clearance by CRRT (Li 2020; Corona 2022) — clinical disclaimer)
 - `crrt-drug-clearance`
 
+### lib/fosphenytoin-load-rate-v1631.js (spec-v1631: Fosphenytoin and IV phenytoin loading (two FDA labels; label rows) — clinical disclaimer)
+- `fosphenytoin-load-rate`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -82,7 +82,8 @@
     "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
     "setId": "d4c36fad-0ba2-4cd4-9c5e-dcf843f38a5a",
     "tools": [
-      "iv-label-rate-check"
+      "iv-label-rate-check",
+      "fosphenytoin-load-rate"
     ],
     "splVersion": 38,
     "publishedOn": "2025-08-29",
@@ -390,7 +391,8 @@
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "035a8d4e-2063-4240-83cb-d7eebcabe301",
     "tools": [
-      "iv-label-rate-check"
+      "iv-label-rate-check",
+      "fosphenytoin-load-rate"
     ],
     "splVersion": 27,
     "publishedOn": "2024-04-10",

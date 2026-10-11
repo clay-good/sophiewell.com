@@ -798,6 +798,7 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['fosphenytoin phenytoin loading dose mg pe infusion time', ['fosphenytoin-load-rate']],
   ['sawchuk zaske two levels half-life volume of distribution', ['sawchuk-zaske-dosing']],
   ['kinetic egfr changing creatinine acute kidney injury', ['kinetic-egfr']],
   ['crrt drug clearance sieving coefficient effluent flow', ['crrt-drug-clearance']],

@@ -12083,6 +12083,17 @@
       ],
       "tile": "crrt-drug-clearance",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "fosphenytoin loading dose",
+        "phenytoin load mg per kg",
+        "cerebyx pe dose in ml",
+        "how fast to give a phenytoin load",
+        "when to check a level after fosphenytoin"
+      ],
+      "tile": "fosphenytoin-load-rate",
+      "audience": "clinicians"
     }
   ]
 }

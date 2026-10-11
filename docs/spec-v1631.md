@@ -1,6 +1,6 @@
 # spec-v1631 — Clinical pharmacokinetics and therapeutic drug monitoring
 
-**Status:** In progress, October 11, 2026: 6 of 20 tools built (see Build status). 20 new tools (1 build-gated), 10 backfills.
+**Status:** In progress, October 11, 2026: 7 of 20 tools built (see Build status). 20 new tools (1 build-gated), 10 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A hospital pharmacist's kinetics service does the same arithmetic all day: pick a first
@@ -900,7 +900,7 @@ Backfills 3, 5, 6 and 8 correct or re-source a number in a live tool and are ind
 
 ## Build status
 
-Updated October 11, 2026. 6 of 20 tools built; the backfills are open.
+Updated October 11, 2026. 7 of 20 tools built; the backfills are open.
 
 | Tool | Status |
 |---|---|
@@ -910,4 +910,6 @@ Updated October 11, 2026. 6 of 20 tools built; the backfills are open.
 | 4. `sawchuk-zaske-dosing` | Built (group F). The paper's abstract was re-read on PubMed (PMID 837654) and carries the model sentence the spec quotes; the full text was not opened, and the equations are the model's closed form, tested by recovering the half-life and volume that generated a simulated pair of levels (first dose and steady state). **Decisions:** the regimen is given at the practical intervals on both sides of the exact one, each with the trough it predicts, and the headline is the nearer (the longer on a tie); the dose is shown before rounding, so no "rounded dose" prediction is made. Levels less than half a half-life apart are refused and the refusal says the cutoff is the tool's own. |
 | 18. `kinetic-egfr` | Built (group F). Kwong 2019 (PMC6879155, CC BY 4.0) was re-read through the PubMed Central API: Fig 1 equations A and B and the 0.6 × weight definition are as the spec says; Chen 2013 itself was not opened. Creatinine is in mg/dL only. Exactly one of weight or a maximum daily rise is required. The categories shown are the four Kwong used (60 or more, 30 to 59, 15 to 29, under 15). A negative result is reported as zero with the arithmetic. |
 | 20. `crrt-drug-clearance` | Built (group F). Li 2020 (PMC7273837) and Corona 2022 (PMC9774802), both CC BY 4.0, were re-read; the two relations and the pre-filter form are as the spec says. The pre-filter correction is applied to the convective part only, because the form read is for hemofiltration; it is refused in hemodialysis mode. The sieving and saturation coefficients are separate fields and no table ships. |
-| 1 to 3, 5 to 14, 19 | Not built. |
+| 8. `fosphenytoin-load-rate` | Built (group F) on label rows. Cerebyx (version 38) was re-read: Tables 1 to 3, the 50 mg PE/mL strength, the 1.5 to 25 mg PE/mL dilution, the 2-hour and 4-hour level timing and the IM sentence are as the spec says. The phenytoin sentences were read on Hikma's injection label (035a8d4e-2063-4240-83cb-d7eebcabe301, version 27), not the Henry Schein copy the spec names, and its 70 kg worked check (1,050 mg, 21 minutes) is the page example. **Not built:** oral phenytoin loading (the Dilantin capsules label was not re-read). The pediatric ceilings applied are 2 mg PE/kg/minute and 3 mg/kg/minute, capped as the labels cap them. |
+| 9. `valproate-albumin-normalized` | Not built: held. The paper was re-read (J-STAGE PDF) and Table 1's 25 rows and the formula match the spec, but the paper is marked ©2005 The Japanese Pharmacological Society, free to read, and shipping its table falls under open owner question 11 in [scope-pharmacy-practice.md](scope-pharmacy-practice.md). |
+| 1 to 3, 5 to 7, 10 to 14, 19 | Not built. |

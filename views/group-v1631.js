@@ -1,6 +1,6 @@
 // spec-v1631: clinical pharmacokinetics and therapeutic drug monitoring. Group F.
 // pk-steady-state-predict, auc-trapezoid, tmic-beta-lactam, sawchuk-zaske-dosing, kinetic-egfr and
-// crrt-drug-clearance.
+// crrt-drug-clearance, fosphenytoin-load-rate.
 
 import { el, clear } from '../lib/dom.js';
 import * as PK from '../lib/pk-steady-state-predict-v1631.js';
@@ -9,6 +9,7 @@ import * as TM from '../lib/tmic-beta-lactam-v1631.js';
 import * as SZ from '../lib/sawchuk-zaske-dosing-v1631.js';
 import * as KE from '../lib/kinetic-egfr-v1631.js';
 import * as CR from '../lib/crrt-drug-clearance-v1631.js';
+import * as FL from '../lib/fosphenytoin-load-rate-v1631.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -159,6 +160,26 @@ export const renderers = {
       if (mode && !f) for (const k of ['ultrafiltrateFlow', 'sievingCoefficient', 'plasmaFlow', 'preFilterFlow']) args[k] = '';
       if (mode && !d) for (const k of ['dialysateFlow', 'saturationCoefficient']) args[k] = '';
       show(CR.crrtDrugClearance(args), o);
+    }));
+  },
+
+  'fosphenytoin-load-rate'(root) {
+    const pairs = [['fl-drug', 'drug'], ['fl-pop', 'population'], ['fl-ind', 'indication'], ['fl-route', 'route'], ['fl-weight', 'weight'], ['fl-wunit', 'weightUnit'], ['fl-mgkg', 'mgPerKg'], ['fl-bag', 'bagVolume']];
+    selectField(root, 'Drug', 'fl-drug', FL.DRUG_OPTIONS);
+    selectField(root, 'Patient', 'fl-pop', FL.POPULATIONS);
+    selectField(root, 'Loading for', 'fl-ind', FL.INDICATIONS);
+    selectField(root, 'Route', 'fl-route', FL.ROUTES);
+    numField(root, 'Patient weight', 'fl-weight', '');
+    selectField(root, 'Weight unit', 'fl-wunit', FL.WEIGHT_UNITS);
+    numField(root, 'Dose chosen, per kg (mg PE/kg for fosphenytoin, mg/kg for phenytoin)', 'fl-mgkg', '');
+    numField(root, 'Bag volume for the infusion, mL (optional)', 'fl-bag', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = FL.fosphenytoinLoadRate(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
   },
 };

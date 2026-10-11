@@ -558,3 +558,5 @@ experience**.
 > v1631, Kinetic eGFR When Creatinine Is Changing (Chen) — [spec-v1631](spec-v1631.md), which adds `kinetic-egfr` — is 2104.)
 
 > v1631, Drug Clearance by CRRT (Flow and Sieving Coefficient) — [spec-v1631](spec-v1631.md), which adds `crrt-drug-clearance` — is 2105.)
+
+> v1631, Fosphenytoin and Phenytoin Loading Against the Label — [spec-v1631](spec-v1631.md), which adds `fosphenytoin-load-rate` — is 2106.)

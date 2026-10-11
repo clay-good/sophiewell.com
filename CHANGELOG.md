@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Fosphenytoin and Phenytoin Loading Against the Label: the loading dose for a mg/kg you choose,
+  beside the label's range, with the volume of product, the maximum rate and shortest infusion
+  time, the dilution check, and when a level is meaningful after fosphenytoin.
 - New Dose and Interval From Two Levels (Sawchuk-Zaske): half-life and volume of distribution
   from two levels after an infusion, and, for a peak and trough you choose, the dose at the
   practical intervals on either side of the exact one with the trough each predicts.
