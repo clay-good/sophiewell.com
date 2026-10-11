@@ -8965,6 +8965,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/room-air-changes-v1630.js (spec-v1630: Air changes per hour and clearance time (CDC Appendix B, Table B.1) — administrative disclaimer)
 - `room-air-changes`
 
+### lib/pn-aluminum-load-v1630.js (spec-v1630: Aluminum load of a PN order (21 CFR 201.323) — clinical disclaimer)
+- `pn-aluminum-load`
+
+### lib/mean-kinetic-temperature-v1630.js (spec-v1630: Mean kinetic temperature (ICH Q1A(R2); Jenkins 2022) — administrative disclaimer)
+- `mean-kinetic-temperature`
+
+### lib/storage-excursion-summary-v1630.js (spec-v1630: Temperature log excursions (CDC Vaccine Storage and Handling Toolkit, July 2026) — administrative disclaimer)
+- `storage-excursion-summary`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

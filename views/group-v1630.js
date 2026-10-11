@@ -1,9 +1,13 @@
 // spec-v1630: sterile compounding, IV admixture and drug storage. Group Q.
-// reconstitution-concentration, admixture-concentration, cleanroom-class-check and room-air-changes.
+// reconstitution-concentration, admixture-concentration, pn-aluminum-load, mean-kinetic-temperature,
+// storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
 import { el, clear } from '../lib/dom.js';
 import * as RC from '../lib/reconstitution-concentration-v1630.js';
 import * as AC from '../lib/admixture-concentration-v1630.js';
+import * as PA from '../lib/pn-aluminum-load-v1630.js';
+import * as MK from '../lib/mean-kinetic-temperature-v1630.js';
+import * as SE from '../lib/storage-excursion-summary-v1630.js';
 import * as CR from '../lib/cleanroom-class-check-v1630.js';
 import * as RA from '../lib/room-air-changes-v1630.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -24,6 +28,15 @@ function numField(root, label, id, placeholder) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type: 'number', min: '0', step: 'any', inputmode: 'decimal', placeholder }));
+  root.appendChild(wrap);
+  return wrap;
+}
+// A temperature can be below zero: no minimum, and a keypad that has a minus sign.
+function signedField(root, label, id) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type: 'number', step: 'any', inputmode: 'text' }));
   root.appendChild(wrap);
   return wrap;
 }
@@ -90,6 +103,36 @@ export const renderers = {
     numField(root, 'Strength already in the bag fluid (optional)', 'ac-base', '');
     numField(root, 'Target strength (optional)', 'ac-target', '');
     run(root, [['ac-unit', 'unit'], ['ac-per', 'per'], ['ac-nominal', 'nominalVolume'], ['ac-overfill', 'overfill'], ['ac-withdrawn', 'withdrawn'], ['ac-adds', 'additives'], ['ac-other', 'otherVolume'], ['ac-base', 'baseline'], ['ac-target', 'target']], AC.admixtureConcentration);
+  },
+
+  'pn-aluminum-load'(root) {
+    numField(root, 'Patient weight', 'pal-weight', '');
+    selectField(root, 'Weight unit', 'pal-wunit', PA.WEIGHT_UNITS);
+    textareaField(root, 'Components of the daily bag, one per line: name, volume in mL, and the aluminum figure on its container label in mcg/L', 'pal-parts', '');
+    run(root, [['pal-weight', 'weight'], ['pal-wunit', 'weightUnit'], ['pal-parts', 'components']], PA.pnAluminumLoad);
+  },
+
+  'mean-kinetic-temperature'(root) {
+    selectField(root, 'Unit of the readings', 'mk-unit', MK.UNITS);
+    textareaField(root, 'Readings, one per line, at equal intervals (or on every line: temperature, then its duration in hours)', 'mk-readings', '');
+    // The paper's default, shown and editable; the result names the value used.
+    numField(root, 'Activation energy, kJ/mol', 'mk-ea', '').querySelector('input').value = String(MK.DEFAULT_ACTIVATION_ENERGY);
+    signedField(root, 'Product\'s labeled limit, in the unit of the readings (optional)', 'mk-limit');
+    run(root, [['mk-unit', 'unit'], ['mk-readings', 'readings'], ['mk-ea', 'activationEnergy'], ['mk-limit', 'limit']], MK.meanKineticTemperature);
+  },
+
+  'storage-excursion-summary'(root) {
+    selectField(root, 'Unit of the readings', 'se-unit', SE.UNITS);
+    selectField(root, 'Storage range', 'se-range', SE.RANGE_OPTIONS);
+    const custom = [signedField(root, 'Lowest temperature of the range, from the package insert', 'se-low'), signedField(root, 'Highest temperature of the range, from the package insert', 'se-high')];
+    textareaField(root, 'Readings, one per line: date and time (YYYY-MM-DD HH:MM), then the temperature', 'se-readings', '');
+    const o = out(); root.appendChild(o);
+    wire(['se-unit', 'se-range', 'se-low', 'se-high', 'se-readings'], () => safe(o, () => {
+      const own = val('se-range') === 'custom';
+      for (const w of custom) w.hidden = !own;
+      // A hidden field's leftover value is not part of the question.
+      show(SE.storageExcursionSummary({ unit: val('se-unit'), range: val('se-range'), low: own ? val('se-low') : '', high: own ? val('se-high') : '', readings: val('se-readings') }), o);
+    }));
   },
 
   'cleanroom-class-check'(root) {

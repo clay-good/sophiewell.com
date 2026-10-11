@@ -1,6 +1,6 @@
 # spec-v1630 — Sterile compounding, IV admixture, parenteral nutrition, hazardous drugs and drug storage
 
-**Status:** In progress, October 11, 2026: 4 of 17 tools built (see Build status). 17 new tools; none is gated as a whole (tool 3 has two drugs and tool 12 two rows behind a build gate).
+**Status:** In progress, October 11, 2026: 7 of 17 tools built (see Build status). 17 new tools; none is gated as a whole (tool 3 has two drugs and tool 12 two rows behind a build gate).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 The IV-room pharmacist and technician check the same things all shift: what a vial becomes once
@@ -711,7 +711,7 @@ one figure to the CDC page and ships no part of the table.
 
 ## Build status
 
-Updated October 11, 2026. 4 of 17 tools built; the backfills are open.
+Updated October 11, 2026. 7 of 17 tools built; the backfills are open.
 
 | Tool | Status |
 |---|---|
@@ -719,4 +719,7 @@ Updated October 11, 2026. 4 of 17 tools built; the backfills are open.
 | 2. `admixture-concentration` | Built (group Q). The additive lines are additions of one drug (several vials add up); a separate field takes volume that holds none of it. The strength basis (per mL or per liter) is a required choice and serves the baseline and the target. The baseline strength applies to the fluid left in the bag, overfill included. No overfill table ships. |
 | 16. `cleanroom-class-check` | Built (group Q). FDA's 2004 guidance was re-read (PDF text); Table 1 and its footnotes are as the spec says. FDA's page for the guidance is under the weekly page watch. A microbial sample needs the intended class. A count above the ISO 8 limit is reported as above the table. |
 | 17. `room-air-changes` | Built (group Q). CDC's Appendix B page (dated January 11, 2024) was re-read: the formula and all nine rows of Table B.1 are reproduced by the arithmetic, to the whole minute. The page is under the weekly page watch. **Deviation:** the 12 air changes figure for an isolation room is not shown. It is a row of Table B.2, which CDC reprints with permission, and whether to keep such figures is open question 15 in [scope-pharmacy-practice.md](scope-pharmacy-practice.md). FDA's 20 air changes sentence is shown as a reference point and never applied. Times are shown to one decimal place. |
-| 3 to 15 | Not built. Each needs its labels or documents re-read, and most need the fail-closed label rows of [spec-v1628](spec-v1628.md) section 1, which are not built. |
+| 8. `pn-aluminum-load` | Built (group Q). 21 CFR 201.323 was re-read in the eCFR as of October 7, 2026; paragraphs (a), (c), (d) and (e) say what the spec says. **Deviations:** no 25 mcg/L default for large-volume parenterals: every line carries the figure on the container in hand, and the page says a large-volume parenteral's is 25 or less. The sentence on three labels about keeping total exposure at no more than 5 mcg/kg/day is not shown, because those labels were not re-read for this build; only the regulation's warning is quoted. The result is marked when it is above 4 mcg/kg/day. Weight takes kg, lb or g, and the unit is required. |
+| 14. `mean-kinetic-temperature` | Built (group Q). ICH Q1A(R2) and the paper (Jenkins D, et al. *BMC Public Health.* 2022;22:300, CC BY 4.0) were re-read; the definition, equation 1, R and the 83.144 kJ/mol default are as the spec says. Haynes 1971 was not opened. The activation energy is a required input: the page shows 83.144 in the field, editable, and an agent must send it. Lines are one reading each, or `temperature, hours` on every line for time weighting; a log that mixes the two is refused. Data-logger file intake is not built. |
+| 15. `storage-excursion-summary` | Built (group Q). The July 2026 toolkit was re-read (PDF text): the three ranges in both units, the definition of an excursion, the event record fields, the steps and the 0°C sentence are as the spec says. The PDF is under the weekly page watch. An excursion is timed from the first reading outside the range to the next one back inside, and the page says a log cannot show the moments between readings. A Fahrenheit log is read against the Fahrenheit figures the toolkit prints. **Not built:** the CSV export and data-logger file intake. |
+| 3 to 7, 9 to 13 | Not built. Each needs its labels or documents re-read, and most need the fail-closed label rows of [spec-v1628](spec-v1628.md) section 1, which are not built. |

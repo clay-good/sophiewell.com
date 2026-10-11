@@ -11885,6 +11885,39 @@
       ],
       "tile": "room-air-changes",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "aluminum in tpn",
+        "parenteral nutrition aluminum load",
+        "aluminum mcg per kg per day",
+        "aluminum content calculator pn",
+        "neonatal pn aluminum exposure"
+      ],
+      "tile": "pn-aluminum-load",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mean kinetic temperature calculator",
+        "mkt of a temperature log",
+        "controlled room temperature excursion mkt",
+        "haynes formula",
+        "mkt activation energy 83.144"
+      ],
+      "tile": "mean-kinetic-temperature",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "temperature excursion log",
+        "vaccine fridge out of range how long",
+        "refrigerator temperature log excursion",
+        "time out of range temperature",
+        "data logger excursion summary"
+      ],
+      "tile": "storage-excursion-summary",
+      "audience": "clinicians"
     }
   ]
 }

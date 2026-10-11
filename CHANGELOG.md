@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Aluminum in a PN Order: the most aluminum a daily parenteral nutrition bag can hold, from each
+  component's volume and the figure on its container label, per day and per kilogram, set beside
+  the 4 to 5 mcg/kg/day in the 21 CFR 201.323 labeling warning. No label figure is assumed.
+- Mean Kinetic Temperature of a Storage Log: the mean kinetic temperature of a set of readings
+  (equally spaced, or each with its own duration), with the mean, lowest and highest. The
+  activation energy is shown and editable, and no limit is applied unless you enter one.
+- Temperature Log: Excursions and Time Out of Range: each excursion's start, end, duration and
+  extreme reading against CDC's storage ranges or the package insert's, with total time above and
+  below. It never says a product is still usable. See docs/spec-v1630.md.
 - Reconstitution: Powder Volume and Resulting Strength: from the label's own figures, the powder
   volume, final volume and strength; the strength with a different diluent volume; the diluent for
   a wanted strength; and the volume for a dose. It never assumes the powder takes no space.

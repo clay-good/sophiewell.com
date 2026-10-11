@@ -770,6 +770,9 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as pnAluminumLoadV1630 from '../../lib/pn-aluminum-load-v1630.js';
+import * as meanKineticTemperatureV1630 from '../../lib/mean-kinetic-temperature-v1630.js';
+import * as storageExcursionSummaryV1630 from '../../lib/storage-excursion-summary-v1630.js';
 import * as reconstitutionConcentrationV1630 from '../../lib/reconstitution-concentration-v1630.js';
 import * as admixtureConcentrationV1630 from '../../lib/admixture-concentration-v1630.js';
 import * as cleanroomClassCheckV1630 from '../../lib/cleanroom-class-check-v1630.js';
@@ -1672,6 +1675,9 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'pn-aluminum-load-v1630.js': pnAluminumLoadV1630,
+  'mean-kinetic-temperature-v1630.js': meanKineticTemperatureV1630,
+  'storage-excursion-summary-v1630.js': storageExcursionSummaryV1630,
   'reconstitution-concentration-v1630.js': reconstitutionConcentrationV1630,
   'admixture-concentration-v1630.js': admixtureConcentrationV1630,
   'cleanroom-class-check-v1630.js': cleanroomClassCheckV1630,

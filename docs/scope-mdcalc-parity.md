@@ -522,3 +522,9 @@ experience**.
 > v1630, Cleanroom Particle Count and Microbial Sample (FDA Table) — [spec-v1630](spec-v1630.md), which adds `cleanroom-class-check` — is 2086.)
 
 > v1630, Air Changes per Hour and Clearance Time — [spec-v1630](spec-v1630.md), which adds `room-air-changes` — is 2087.)
+
+> v1630, Aluminum in a PN Order (21 CFR 201.323) — [spec-v1630](spec-v1630.md), which adds `pn-aluminum-load` — is 2088.)
+
+> v1630, Mean Kinetic Temperature of a Storage Log — [spec-v1630](spec-v1630.md), which adds `mean-kinetic-temperature` — is 2089.)
+
+> v1630, Temperature Log: Excursions and Time Out of Range — [spec-v1630](spec-v1630.md), which adds `storage-excursion-summary` — is 2090.)

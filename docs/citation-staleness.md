@@ -878,6 +878,7 @@ carries the specific date that could change it.
 | doxy-pep | CDC doxy-PEP guideline, MMWR Recomm Rep 2024;73(RR-2) | US | 2026-09-18 | 2024 guideline | 2027-06-01 |
 | strongyloides-presumptive | CDC Domestic Refugee Health Guidance: Intestinal Parasites | US | 2026-09-18 | page last updated 2025-01-30 | 2027-06-01 |
 | room-air-changes | CDC Guidelines for Environmental Infection Control in Health-Care Facilities (2003), Appendix B, Table B.1 | US | 2026-10-11 | page dated 2024-01-11; under the weekly page watch | 2027-10-11 |
+| storage-excursion-summary | CDC Vaccine Storage and Handling Toolkit: storage ranges and excursion steps | US | 2026-10-11 | July 2026 edition; under the weekly page watch | 2027-07-31 |
 | nurse-staffing-ratio-check | 22 CCR 70217(a); 22 CCR 71215.1 (emergency); 10 NYCRR 405.22(5) | CA, NY | 2026-09-19 | 71215.1 emergency rule effective 2026-06-01, lasts 180 days unless readopted | 2026-11-28 |
 | ca-wpv-report-clock | 8 CCR 3342(b), (g) | CA | 2026-09-18 | read on dir.ca.gov | 2027-01-02 |
 | mandatory-overtime-check | NY Labor Law 167; N.J.S.A. 34:11-56a33, N.J.A.C. 8:43E-8; TX HSC 258.002-258.005 | NY, NJ, TX | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |

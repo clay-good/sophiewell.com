@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:8352d00a-5c15-564a-8c01-776d77931595",
+  "serialNumber": "urn:uuid:4eb864db-52c5-5761-802d-0fe83c01693a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T06:01:00.007Z",
+    "timestamp": "2026-10-11T06:15:37.373Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2087 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2090 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ac9805ae4c9192b04c5851d3305f75f58439356d451adfa4b71d2ad0b4d76dd3"
+          "content": "743c1b70d474dd723c343b0cc91262c8378407a3dd7ed01f2bc5d6b001c9ba13"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "134861"
+          "value": "135038"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "088f13079e4349f28555f9d0a01a90439909f9bd3fb884341b91f3a339c1f266"
+          "content": "6d48f00a57415bda61ca8be44daa2456eb2bb797ffe7cef706cdb837c27e44ec"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "595823"
+          "value": "596256"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ba6c0f26e3949bcaf5ce5ad3bd4ebb0ca5176ac6136cec342948444220689b02"
+          "content": "0116b247d80f43126ed385669c7e1bb18d61fb5b3801f8a36aaaec2e7fc65f49"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "261376"
+          "value": "261774"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "245a274ee43a38a8e8ad89a21f823224ae4a5217d165c6a0a5dc5e028b86500f"
+          "content": "96a3cad06f2ac7865a71157178d77f95495fe42cabca65e4145f22ae8579cab2"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "122771"
+          "value": "122983"
         }
       ]
     },
@@ -14042,6 +14042,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/mean-kinetic-temperature-v1630.js",
+      "type": "file",
+      "name": "lib/mean-kinetic-temperature-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bbfbfc938824bcb58bad015d3a8b156bc40f84a4377a2cd98f27bf403f81ca63"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7222"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/measles-case-def-v872.js",
       "type": "file",
       "name": "lib/measles-case-def-v872.js",
@@ -14384,7 +14405,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2b05d29c59e8c470088163c90072b6b1791bd61edc7714dd56c5a882565530d8"
+          "content": "46f9ae8f6d9c5d7075a8cf22386ec7e044e9447a5fe3cc7f6b048caf60e5c6bd"
         }
       ],
       "properties": [
@@ -14394,7 +14415,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2782707"
+          "value": "2785205"
         }
       ]
     },
@@ -19145,6 +19166,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/pn-aluminum-load-v1630.js",
+      "type": "file",
+      "name": "lib/pn-aluminum-load-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "21a25db3ffe5fcb8b252bbe98d5a9fd499981cdedd2266eae986f45bc41b3a49"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5432"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/pneumonia-risk-v260.js",
       "type": "file",
       "name": "lib/pneumonia-risk-v260.js",
@@ -23446,6 +23488,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "13053"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/storage-excursion-summary-v1630.js",
+      "type": "file",
+      "name": "lib/storage-excursion-summary-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "25b3744bf9e5105248d36bef71a7a00cf24d79bbd85058f5ff7c75c2501166dd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9440"
         }
       ]
     },
@@ -39599,6 +39662,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mean-kinetic-temperature-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/mean-kinetic-temperature-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d361fdc6f640a197f14b9bc909432f689071727239095a5b8461ff18a42b1a77"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1579"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/measles-case-def-v872.js",
       "type": "file",
       "name": "mcp/adapters/measles-case-def-v872.js",
@@ -43967,6 +44051,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pn-aluminum-load-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/pn-aluminum-load-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab6cbfbd77903369f27976b82d0312ad150cdc6ead20579865be4caaf00a1de2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1200"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pneumonia-risk-v260.js",
       "type": "file",
       "name": "mcp/adapters/pneumonia-risk-v260.js",
@@ -47642,6 +47747,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/storage-excursion-summary-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/storage-excursion-summary-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9518528c1f7d1d28bf532c7684b31f8f637bb239cb0f70b3548cfb35d2786263"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1650"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/strasberg-bdi-v348.js",
       "type": "file",
       "name": "mcp/adapters/strasberg-bdi-v348.js",
@@ -50546,7 +50672,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7c1175e539cac4a2e0871991588826614f7c5d63bb0cb3336cba75cc92c222db"
+          "content": "e31fa8e7f747c4cb5e23bf2027298af5e2bb9dcc9a8e4c0b2fe1d663b1b968ef"
         }
       ],
       "properties": [
@@ -50556,7 +50682,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "130966"
+          "value": "131403"
         }
       ]
     },
@@ -55061,7 +55187,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a26d4678ca98bef430d804c3a61470f2e7e41491dbf4eb5d6b8927df262962a8"
+          "content": "21e106c5800e30c0364fa5476cab6487a9cb7d760d5477233e9396a2c6a32bfd"
         }
       ],
       "properties": [
@@ -55071,7 +55197,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "6486"
+          "value": "9284"
         }
       ]
     },
@@ -86499,6 +86625,7 @@
         "urn:sophiewell:file:source:lib/mcmahon-rhabdo-v677.js",
         "urn:sophiewell:file:source:lib/mcpherson-pji-v1427.js",
         "urn:sophiewell:file:source:lib/mda-psoriatic-v672.js",
+        "urn:sophiewell:file:source:lib/mean-kinetic-temperature-v1630.js",
         "urn:sophiewell:file:source:lib/measles-case-def-v872.js",
         "urn:sophiewell:file:source:lib/medicaid-appeal-clock-v1503.js",
         "urn:sophiewell:file:source:lib/medicaid-ura-v1510.js",
@@ -86742,6 +86869,7 @@
         "urn:sophiewell:file:source:lib/pk-v166.js",
         "urn:sophiewell:file:source:lib/plaque-control-record-v721.js",
         "urn:sophiewell:file:source:lib/pmp-check-required-v1393.js",
+        "urn:sophiewell:file:source:lib/pn-aluminum-load-v1630.js",
         "urn:sophiewell:file:source:lib/pneumonia-risk-v260.js",
         "urn:sophiewell:file:source:lib/podoconiosis-stage-v1564.js",
         "urn:sophiewell:file:source:lib/poi-diagnosis-v834.js",
@@ -86947,6 +87075,7 @@
         "urn:sophiewell:file:source:lib/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:source:lib/step-therapy-v1502.js",
         "urn:sophiewell:file:source:lib/sternbach-v589.js",
+        "urn:sophiewell:file:source:lib/storage-excursion-summary-v1630.js",
         "urn:sophiewell:file:source:lib/strasberg-bdi-v348.js",
         "urn:sophiewell:file:source:lib/stroke-prognosis-v210.js",
         "urn:sophiewell:file:source:lib/stroke-risk-v217.js",
@@ -88656,6 +88785,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mcmahon-rhabdo-v677.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mcpherson-pji-v1427.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mda-psoriatic-v672.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mean-kinetic-temperature-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/measles-case-def-v872.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-appeal-clock-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-ura-v1510.js",
@@ -88864,6 +88994,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pk-v166.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/plaque-control-record-v721.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pmp-check-required-v1393.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pn-aluminum-load-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pneumonia-risk-v260.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/podoconiosis-stage-v1564.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/poi-diagnosis-v834.js",
@@ -89039,6 +89170,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/step-therapy-v1502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sternbach-v589.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/storage-excursion-summary-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/strasberg-bdi-v348.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stroke-prognosis-v210.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stroke-risk-v217.js",
@@ -89281,7 +89413,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "8352d00a5c15d64a"
+      "value": "4eb864db52c54761"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -89293,7 +89425,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3324"
+      "value": "3330"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
