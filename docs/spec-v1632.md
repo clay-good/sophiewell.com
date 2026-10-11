@@ -1,6 +1,6 @@
 # spec-v1632 — Dose checks read from the FDA label (renal, hepatic, weight, age, indication)
 
-**Status:** In progress, October 11, 2026: 17 of 18 tools built (see Build status). 18 new tools, none build-gated.
+**Status:** In progress, October 11, 2026: all 18 tools built; the backfills remain (see Build status). 18 new tools, none build-gated.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 An order-verification pharmacist asks the same question several hundred times a shift: is this
@@ -872,7 +872,7 @@ result string contains "give", "recommend" in the tool's voice, or a dose when t
 
 ## Build status
 
-Updated October 11, 2026. 17 of 18 tools built.
+Updated October 11, 2026. All 18 tools built; the backfills remain.
 
 | Tool | Status |
 |---|---|
@@ -894,4 +894,4 @@ Updated October 11, 2026. 17 of 18 tools built.
 | 16. `ketorolac-limit-check` | Built (group F) on two label rows: ketorolac injection (Hospira, version 36; Dosage and Administration and Contraindications) and ketorolac tablets (Teva, version 19), each re-read. The lower-dose group is the label's own (65 or over, renally impaired, under 50 kg); renal impairment is a three-way question because neither label gives a number, and "advanced" reports the contraindication. The result gives what is left of the daily ceiling and of the 5 days. Adults (17 and older) only. |
 | 17. `gi-drug-dose-check` | Built (group F) on two label rows: famotidine tablets (Teva, version 21) and Reglan (ANI, version 8), each re-read. **Found on re-read:** the famotidine table has a seventh row, reduction of the risk of duodenal ulcer recurrence, which the spec left out and the tool includes; the two Reglan tables put the renal edge differently (60 or below for reflux, below 60 for gastroparesis), and the tool follows each as printed and says so at exactly 60. |
 | 18. `hepatic-label-dose` | Built (group F) on fourteen label rows, seven of them shared with tools 3, 4, 5, 7, 11 and 17 and seven new (Vfend, Cancidas, Tygacil, ondansetron, Strattera, Myrbetriq, solifenacin). Every cell of the spec's table was re-read in its label. A class the label has no sentence for returns "no row". Lacosamide's label does not use Child-Pugh, so the tool shows the label's words for every class and maps none. It takes the class, not the score. |
-| 9 | Not built. `glp1-titration-check` needs eight labels re-read and date arithmetic; it is the one tool left in this wave. |
+| 9 | Built: `glp1-titration-check`. All eight labels re-read on October 11, 2026 at the versions listed above; every step matched. Product and indication are one choice (17 of them), so a dose is checked against the steps of that indication only. A dose above the last step reads "above the highest dose the label lists"; a dose between steps reads "not a step"; when the same label lists the dose for another product or indication (Rybelsus 4 mg, Wegovy 7.2 mg outside adult weight reduction) the result names it. Oral steps are 30 days, weekly injections 28 days, liraglutide 7 days. The as-of date may be left blank, and the result then says it used today. `missed-dose-label-rule` is not built yet, so the result says missed doses are not covered instead of linking it. |

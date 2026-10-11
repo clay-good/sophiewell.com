@@ -3,7 +3,8 @@
 // antiviral-renal-dose, nrti-renal-dose, gabapentinoid-renal-dose, cns-renal-dose-check,
 // diabetes-drug-egfr-check, dofetilide-dose-algorithm, cardiac-renal-dose-check,
 // mra-potassium-dose-check, gout-drug-renal-dose, bisphosphonate-renal-check,
-// tranexamic-acid-renal-dose, ketorolac-limit-check, gi-drug-dose-check, hepatic-label-dose.
+// tranexamic-acid-renal-dose, ketorolac-limit-check, gi-drug-dose-check, hepatic-label-dose,
+// glp1-titration-check.
 
 import { el, clear } from '../lib/dom.js';
 import * as DC from '../lib/doac-dose-check-v1632.js';
@@ -23,6 +24,7 @@ import * as TX from '../lib/tranexamic-acid-renal-dose-v1632.js';
 import * as KT from '../lib/ketorolac-limit-check-v1632.js';
 import * as GI from '../lib/gi-drug-dose-check-v1632.js';
 import * as HP from '../lib/hepatic-label-dose-v1632.js';
+import * as GL from '../lib/glp1-titration-check-v1632.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -41,6 +43,14 @@ function numField(root, label, id, placeholder) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type: 'number', min: '0', step: 'any', inputmode: 'decimal', placeholder }));
+  root.appendChild(wrap);
+  return wrap;
+}
+function dateField(root, label, id) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type: 'date' }));
   root.appendChild(wrap);
   return wrap;
 }
@@ -326,6 +336,21 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = HP.hepaticLabelDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'glp1-titration-check'(root) {
+    const pairs = [['glp-product', 'product'], ['glp-dose', 'currentDose'], ['glp-start', 'startDate'], ['glp-asof', 'asOf']];
+    selectField(root, 'Product and indication', 'glp-product', GL.PRODUCTS);
+    numField(root, 'Current dose, mg', 'glp-dose', '');
+    dateField(root, 'Date the current dose began', 'glp-start');
+    dateField(root, 'Date to check as of (blank uses today)', 'glp-asof');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = GL.glp1TitrationCheck(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

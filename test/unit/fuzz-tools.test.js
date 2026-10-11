@@ -770,6 +770,7 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as glp1TitrationCheckV1632 from '../../lib/glp1-titration-check-v1632.js';
 import * as ketorolacLimitCheckV1632 from '../../lib/ketorolac-limit-check-v1632.js';
 import * as giDrugDoseCheckV1632 from '../../lib/gi-drug-dose-check-v1632.js';
 import * as hepaticLabelDoseV1632 from '../../lib/hepatic-label-dose-v1632.js';
@@ -1719,6 +1720,7 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'glp1-titration-check-v1632.js': glp1TitrationCheckV1632,
   'ketorolac-limit-check-v1632.js': ketorolacLimitCheckV1632,
   'gi-drug-dose-check-v1632.js': giDrugDoseCheckV1632,
   'hepatic-label-dose-v1632.js': hepaticLabelDoseV1632,

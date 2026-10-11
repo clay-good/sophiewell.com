@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:26abc31c-ff58-52db-82e3-1f43857b176a",
+  "serialNumber": "urn:uuid:13fba70c-8491-5096-89cd-5a5c5b4f92a5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T16:23:21.158Z",
+    "timestamp": "2026-10-11T16:39:42.365Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2134 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2135 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f6066bdd1bacc03b45f520760b3515107a683a1ca76bb3ddc99989685a555df5"
+          "content": "61b755ab086c209d5b598357d967dd01aa7125e389025ab6ed3668fb220ef834"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "137868"
+          "value": "137923"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3e886f64fb03a340466af518d467047ff43d186ce217b1c6a49f55269b2db1cc"
+          "content": "b4e843ccd7d46b948a70902c633ee546d41e7c1549267231a8e1cc27f9ac8cd0"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "603364"
+          "value": "603515"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d3310b98b9e7d686de095030cc8899cbda930ef707150903e2cb54b6a7445029"
+          "content": "d208f3664e5d642ee0aab54191dc8d3defa33dcb5542d0a94ebed0536b842076"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "267562"
+          "value": "267693"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "05d430896641af462f0c760c47fedc4514249f1ec2922ee74d415398e474195a"
+          "content": "f17931e9a9c22961e30684568366bf60610d91137c281a93f67b7af95861080c"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126277"
+          "value": "126342"
         }
       ]
     },
@@ -9233,6 +9233,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/glp1-titration-check-v1632.js",
+      "type": "file",
+      "name": "lib/glp1-titration-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d1313dbc96ed88d1c29c96eea9d117cac78718a5ab47fbe7416f88d67d2290fa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "13141"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/glycemia-risk-index-v1473.js",
       "type": "file",
       "name": "lib/glycemia-risk-index-v1473.js",
@@ -12830,7 +12851,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "95a85eaa3775a56f36baccd95b21203a67225294a6e633028f32d3fe44e28c0a"
+          "content": "b2337055edcb385e750e4e2501c9f8653ff634bcbe3bcfdd6645183f5cf49239"
         }
       ],
       "properties": [
@@ -12840,7 +12861,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "25305"
+          "value": "27158"
         }
       ]
     },
@@ -15056,7 +15077,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "55d59cfdcaa659fda4e30ad607f895787bd58660d48b4ad37612b86e208ca0cd"
+          "content": "7df31c13d4a7bd1772b087239cdfb5a719432c7ea61511d9c5c3bad2cc67392e"
         }
       ],
       "properties": [
@@ -15066,7 +15087,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2836690"
+          "value": "2838537"
         }
       ]
     },
@@ -36365,6 +36386,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/glp1-titration-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/glp1-titration-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9abd51473e8c937984ab992c33e6f55388f2b67138e6bf63ac71d1286ad6169b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1446"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/glycemia-risk-index-v1473.js",
       "type": "file",
       "name": "mcp/adapters/glycemia-risk-index-v1473.js",
@@ -52583,7 +52625,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2797d5cd91e8fa88d4c120c4eed490707788016fccec2f583c019419d67ea98f"
+          "content": "190c04a64a4a691307680f1b2cf76985434d940cc3c9c1df63179a17ad3f33c3"
         }
       ],
       "properties": [
@@ -52593,7 +52635,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "137585"
+          "value": "137724"
         }
       ]
     },
@@ -57140,7 +57182,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8bc1e775a1a7b85b6dc93f4d9ee30e63888188b263a3371ef6d3ed36339f4fad"
+          "content": "a9c4db6c976398b567fcf4a39fa1bd52622f1ca6c11ba59f0ed591da13e0743d"
         }
       ],
       "properties": [
@@ -57150,7 +57192,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "20110"
+          "value": "21326"
         }
       ]
     },
@@ -88349,6 +88391,7 @@
         "urn:sophiewell:file:source:lib/glickman-furcation-v725.js",
         "urn:sophiewell:file:source:lib/global-ards-v570.js",
         "urn:sophiewell:file:source:lib/glogau-photoaging-v475.js",
+        "urn:sophiewell:file:source:lib/glp1-titration-check-v1632.js",
         "urn:sophiewell:file:source:lib/glycemia-risk-index-v1473.js",
         "urn:sophiewell:file:source:lib/gmfcs-v462.js",
         "urn:sophiewell:file:source:lib/gmi-v1471.js",
@@ -90583,6 +90626,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/glickman-furcation-v725.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/global-ards-v570.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glogau-photoaging-v475.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/glp1-titration-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glycemia-risk-index-v1473.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gmfcs-v462.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gmi-v1471.js",
@@ -91459,7 +91503,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "26abc31cff58e2db"
+      "value": "13fba70c84919096"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91471,7 +91515,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3423"
+      "value": "3425"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

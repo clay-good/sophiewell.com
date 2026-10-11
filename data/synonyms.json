@@ -12413,6 +12413,25 @@
       ],
       "tile": "hepatic-label-dose",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ozempic",
+        "wegovy",
+        "rybelsus",
+        "semaglutide",
+        "mounjaro",
+        "zepbound",
+        "tirzepatide",
+        "victoza",
+        "saxenda",
+        "liraglutide",
+        "trulicity",
+        "dulaglutide",
+        "glp1"
+      ],
+      "tile": "glp1-titration-check",
+      "audience": "clinicians"
     }
   ]
 }

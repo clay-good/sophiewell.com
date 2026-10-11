@@ -997,6 +997,21 @@
     }
   },
   {
+    "label": "Mounjaro (tirzepatide) injection, Lilly",
+    "labeler": "ELI LILLY AND COMPANY",
+    "setId": "d2d7da5d-ad07-4228-955f-cf7e355c8cc0",
+    "tools": [
+      "glp1-titration-check"
+    ],
+    "splVersion": 40,
+    "publishedOn": "2026-09-02",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "8c9843965cf5e7ac10f02bcf8d15bc6fadab65127715f4bf1569bf4e78bddb34"
+    }
+  },
+  {
     "label": "Multrys (trace elements injection 4), American Regent",
     "labeler": "AMERICAN REGENT, INC.",
     "setId": "995f1efa-aca0-4b6c-9099-f8e757c2133a",
@@ -1103,6 +1118,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "47a6705316682bb910a96bae7dca16f65c45a68aeac05028483da4c9877b832f"
+    }
+  },
+  {
+    "label": "Ozempic (semaglutide) injection, Novo Nordisk",
+    "labeler": "NOVO NORDISK PHARMACEUTICAL INDUSTRIES, LP",
+    "setId": "adec4fd2-6858-4c99-91d4-531f5f2a2d79",
+    "tools": [
+      "glp1-titration-check"
+    ],
+    "splVersion": 20,
+    "publishedOn": "2026-06-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "aa8e1c1330f7ba227f8071bd5ed6bbe5c0fb5463bdf1aa1f3b6073fba38f956f"
     }
   },
   {
@@ -1294,6 +1324,21 @@
     }
   },
   {
+    "label": "Rybelsus and Ozempic (semaglutide) tablets, Novo Nordisk",
+    "labeler": "NOVO NORDISK PHARMACEUTICAL INDUSTRIES, LP",
+    "setId": "27f15fac-7d98-4114-a2ec-92494a91da98",
+    "tools": [
+      "glp1-titration-check"
+    ],
+    "splVersion": 14,
+    "publishedOn": "2026-08-19",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "83a131558305189869e08decd90b0e8af9a6706f0c3010c990c183d428a6674f"
+    }
+  },
+  {
     "label": "Savaysa (edoxaban), Daiichi Sankyo",
     "labeler": "DAIICHI SANKYO INC.",
     "setId": "e77d3400-56ad-11e3-949a-0800200c9a66",
@@ -1324,6 +1369,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "8ff9801873990ac2fbfbdb5a9688489d094d2f19a1968555237117dde8b19dc3"
+    }
+  },
+  {
+    "label": "Saxenda (liraglutide) injection, Novo Nordisk",
+    "labeler": "NOVO NORDISK PHARMACEUTICAL INDUSTRIES, LP",
+    "setId": "3946d389-0926-4f77-a708-0acb8153b143",
+    "tools": [
+      "glp1-titration-check"
+    ],
+    "splVersion": 22,
+    "publishedOn": "2026-06-15",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "53964965bb044977a7ad3609baf47ed3c3f53c8549ee4649f8469c8450f08d74"
     }
   },
   {
@@ -1562,6 +1622,21 @@
     }
   },
   {
+    "label": "Trulicity (dulaglutide) injection, Lilly",
+    "labeler": "ELI LILLY AND COMPANY",
+    "setId": "463050bd-2b1c-40f5-b3c3-0a04bb433309",
+    "tools": [
+      "glp1-titration-check"
+    ],
+    "splVersion": 62,
+    "publishedOn": "2026-08-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "6536b544eeca0f54a71ec5a54b95624d213ecdc59f2cc7ac5a464e464091c474"
+    }
+  },
+  {
     "label": "Truvada (emtricitabine and tenofovir DF), Gilead",
     "labeler": "GILEAD SCIENCES, INC",
     "setId": "54e82b13-a037-49ed-b4b3-030b37c0ecdd",
@@ -1684,6 +1759,21 @@
     }
   },
   {
+    "label": "Victoza (liraglutide) injection, Novo Nordisk",
+    "labeler": "NOVO NORDISK",
+    "setId": "5a9ef4ea-c76a-4d34-a604-27c5b505f5a4",
+    "tools": [
+      "glp1-titration-check"
+    ],
+    "splVersion": 31,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "351a13d8a484f8960100ba26523518e3701691cb53e17670e7126b00062a26dd"
+    }
+  },
+  {
     "label": "Vimpat (lacosamide), UCB",
     "labeler": "UCB, INC.",
     "setId": "9e79b42c-38a3-4b2c-a196-a5a1948250e2",
@@ -1715,6 +1805,21 @@
     }
   },
   {
+    "label": "Wegovy (semaglutide) injection and tablets, Novo Nordisk",
+    "labeler": "NOVO NORDISK PHARMACEUTICAL INDUSTRIES, LP",
+    "setId": "ee06186f-2aa3-4990-a760-757579d8f77b",
+    "tools": [
+      "glp1-titration-check"
+    ],
+    "splVersion": 19,
+    "publishedOn": "2026-06-30",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "c6c3fed138793feeced32d913a1fe6e3112126f85e851bd55b0f5f0fa11a66ff"
+    }
+  },
+  {
     "label": "Xarelto (rivaroxaban), Janssen",
     "labeler": "JANSSEN PHARMACEUTICALS, INC.",
     "setId": "10db92f9-2300-4a80-836b-673e1ae91610",
@@ -1727,6 +1832,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "13698281595712c0fba642e5ce074a149bfe814601b1b5037d2d568688a518e3"
+    }
+  },
+  {
+    "label": "Zepbound (tirzepatide) injection, Lilly",
+    "labeler": "ELI LILLY AND COMPANY",
+    "setId": "487cd7e7-434c-4925-99fa-aa80b1cc776b",
+    "tools": [
+      "glp1-titration-check"
+    ],
+    "splVersion": 40,
+    "publishedOn": "2026-09-02",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "0e884645accf9522ab84a501e3ff9a91f1736255b0d7e77fdffd3f216160cf52"
     }
   },
   {

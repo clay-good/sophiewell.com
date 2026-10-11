@@ -9106,6 +9106,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hepatic-label-dose-v1632.js (spec-v1632: Hepatic row by Child-Pugh class (fourteen label rows) — clinical disclaimer)
 - `hepatic-label-dose`
 
+### lib/glp1-titration-check-v1632.js (spec-v1632: GLP-1 dose escalation steps and dates (eight label rows) — clinical disclaimer)
+- `glp1-titration-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

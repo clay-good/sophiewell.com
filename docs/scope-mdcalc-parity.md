@@ -616,3 +616,5 @@ experience**.
 > v1632, Famotidine and Metoclopramide Adjustments (FDA Label) — [spec-v1632](spec-v1632.md), which adds `gi-drug-dose-check` — is 2133.)
 
 > v1632, Hepatic Dose by Child-Pugh Class (FDA Label) — [spec-v1632](spec-v1632.md), which adds `hepatic-label-dose` — is 2134.)
+
+> v1632, GLP-1 Dose Escalation Check (FDA Label) — [spec-v1632](spec-v1632.md), which adds `glp1-titration-check` — is 2135.)

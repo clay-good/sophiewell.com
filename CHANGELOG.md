@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- GLP-1 Dose Escalation Check (FDA Label): for Ozempic, Wegovy, Rybelsus, Mounjaro, Zepbound,
+  Victoza, Saxenda and Trulicity, whether the current dose is a step the label lists, the next step,
+  and the earliest date the label permits it.
 - Ketorolac Dose and 5-Day Limit (FDA Label): the label dose for the patient group, what is left of
   the daily ceiling, and what is left of the 5 days by any route.
 - Famotidine and Metoclopramide Adjustments (FDA Label): famotidine's maximum dosage by indication
