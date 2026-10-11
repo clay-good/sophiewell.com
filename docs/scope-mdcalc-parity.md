@@ -466,3 +466,7 @@ experience**.
 > v1564, Podoconiosis Stage (Tekola, 5 Stages) — [spec-v1564](spec-v1564.md), which adds `podoconiosis-stage` — is 2058.)
 
 > v1564, Antibiotic Dose for a Child by Weight (WHO AWaRe) — [spec-v1564](spec-v1564.md), which adds `aware-child-oral-dose` — is 2059.)
+
+> v1629, Alligation (Mixing Strengths to a Target) — [spec-v1629](spec-v1629.md), which adds `alligation` — is 2060.)
+
+> v1629, Dilution and Stock Solutions (C1V1) — [spec-v1629](spec-v1629.md), which adds `dilution-c1v1` — is 2061.)

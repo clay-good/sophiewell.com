@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:9fafbfa0-c4cd-5e04-8d40-5182a01531ae",
+  "serialNumber": "urn:uuid:43b552ec-bb23-53d7-81bc-c0d236028990",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T02:20:44.979Z",
+    "timestamp": "2026-10-11T02:44:13.957Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2059 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2061 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "db2cc898d265ca5e87dc7d6f3de05ea3aa2e84763e21c008e8b183038f062750"
+          "content": "80d47d4338be561bc65d6d1c98ac9494f6bbfc71c5fa7ca6817a94f6d7afd7d4"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133280"
+          "value": "133388"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "82db28dab599f3f4f358d9ebdb7b218e88def7a9a4873b8eb58be981109b26f1"
+          "content": "f45d8216f111e29f0fd3823b01a2cc307560560c2016c18620a9cbb7d47c7c61"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "591513"
+          "value": "591871"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "67095483cb0bf66e234efd29bd481417680dffb1f3538bc8ffbfa43cba318464"
+          "content": "d05d69b71eeb01dd7959cb700cc72d668c0cd07492a96d4e7d4ccd91c4be57e9"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "257775"
+          "value": "258020"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5929b8988b21884d12a00e51eaee1844c5953a3b70a500210ebc1e3bf916d5b3"
+          "content": "450779a9facdd4d229292101338ffe5af54d2eef714ca081830aea82fa3020ba"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "120977"
+          "value": "121088"
         }
       ]
     },
@@ -955,6 +955,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9834"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/alligation-v1629.js",
+      "type": "file",
+      "name": "lib/alligation-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "499ecc86725e59f304dc200dde81eb1e840dff8e03e53793c798eaaa2729b925"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8257"
         }
       ]
     },
@@ -5890,6 +5911,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5179"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/dilution-c1v1-v1629.js",
+      "type": "file",
+      "name": "lib/dilution-c1v1-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "03fae4dd8d057e51645a225560d7abd0891365a5c5dc60a883618e126916bb4d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7676"
         }
       ]
     },
@@ -13985,7 +14027,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d63952f94e4bf97b70393fc536e07aa1ef1ef5f87cb8362992e1dd02c927c78e"
+          "content": "cb2809d7d2c373e052f8523f14040fdbb89dcbb7a83803475ab32d4d9de84486"
         }
       ],
       "properties": [
@@ -13995,7 +14037,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2763489"
+          "value": "2764650"
         }
       ]
     },
@@ -26999,6 +27041,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/alligation-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/alligation-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "94a5f493ff9dfbada07a190c75e39a924b117dfdc4189b413c6698dbbfd92796"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2130"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/alsfrs-r-v537.js",
       "type": "file",
       "name": "mcp/adapters/alsfrs-r-v537.js",
@@ -31573,6 +31636,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1562"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dilution-c1v1-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/dilution-c1v1-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1b15c5a071586b6840549d756c31bfd86893ff529ae3f665d164a423f54f51ac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1631"
         }
       ]
     },
@@ -49349,7 +49433,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "305cbc2db46368f5ffd05477e8582469478b1dc1f00b375d8aa7df4f384c3910"
+          "content": "330f05225461a2da96a719a9d851f725c6490111b5df2867c08a7cc2b259a0c8"
         }
       ],
       "properties": [
@@ -49359,7 +49443,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127308"
+          "value": "127524"
         }
       ]
     },
@@ -53812,6 +53896,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8025"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1629.js",
+      "type": "file",
+      "name": "views/group-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "59a65d91fcf5d2d24a7ff0a6884b2e5de6f0e246da12b5703e6fa35ee660c8c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4931"
         }
       ]
     },
@@ -84637,6 +84742,7 @@
         "urn:sophiewell:file:source:lib/ahlback-knee-oa-v480.js",
         "urn:sophiewell:file:source:lib/airway-resistance-v927.js",
         "urn:sophiewell:file:source:lib/allen-ferguson-v1419.js",
+        "urn:sophiewell:file:source:lib/alligation-v1629.js",
         "urn:sophiewell:file:source:lib/alsfrs-r-v537.js",
         "urn:sophiewell:file:source:lib/amsler-krumeich-v707.js",
         "urn:sophiewell:file:source:lib/amsterdam-ii-v592.js",
@@ -84872,6 +84978,7 @@
         "urn:sophiewell:file:source:lib/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:source:lib/diastolic-function-ase-v664.js",
+        "urn:sophiewell:file:source:lib/dilution-c1v1-v1629.js",
         "urn:sophiewell:file:source:lib/dimeglio-clubfoot-v387.js",
         "urn:sophiewell:file:source:lib/diphtheria-antitoxin-dose-v1560.js",
         "urn:sophiewell:file:source:lib/disability-rating-scale-v1433.js",
@@ -86062,6 +86169,7 @@
         "urn:sophiewell:file:source:views/group-v1603.js",
         "urn:sophiewell:file:source:views/group-v1604.js",
         "urn:sophiewell:file:source:views/group-v161.js",
+        "urn:sophiewell:file:source:views/group-v1629.js",
         "urn:sophiewell:file:source:views/group-v163.js",
         "urn:sophiewell:file:source:views/group-v164.js",
         "urn:sophiewell:file:source:views/group-v165.js",
@@ -86815,6 +86923,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ahlback-knee-oa-v480.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/airway-resistance-v927.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/allen-ferguson-v1419.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/alligation-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/alsfrs-r-v537.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/amsler-krumeich-v707.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/amsterdam-ii-v592.js",
@@ -87033,6 +87142,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diastolic-function-ase-v664.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/dilution-c1v1-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dimeglio-clubfoot-v387.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diphtheria-antitoxin-dose-v1560.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/disability-rating-scale-v1433.js",
@@ -87983,7 +88093,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "9fafbfa0c4cd4e04"
+      "value": "43b552ecbb2373d7"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87995,7 +88105,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3265"
+      "value": "3270"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

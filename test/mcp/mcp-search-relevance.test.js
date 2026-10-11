@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['alligation mix two strengths to a target percent', ['alligation']],
+  ['c1v1 stock solution dilution how much stock to make final volume', ['dilution-c1v1']],
   ['noma cancrum oris stage', ['noma-stage']],
   ['who clinical stage of hiv', ['who-hiv-staging']],
   ['advanced hiv disease package of care', ['who-advanced-hiv']],

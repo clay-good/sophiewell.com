@@ -770,6 +770,8 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as alligationV1629 from '../../lib/alligation-v1629.js';
+import * as dilutionC1v1V1629 from '../../lib/dilution-c1v1-v1629.js';
 import * as mgso4ImRegimenV1558 from '../../lib/mgso4-im-regimen-v1558.js';
 import * as whoTbFdcDoseV1553 from '../../lib/who-tb-fdc-dose-v1553.js';
 import * as pcDosePoleV1562 from '../../lib/pc-dose-pole-v1562.js';
@@ -1644,6 +1646,8 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'alligation-v1629.js': alligationV1629,
+  'dilution-c1v1-v1629.js': dilutionC1v1V1629,
   'mgso4-im-regimen-v1558.js': mgso4ImRegimenV1558,
   'who-tb-fdc-dose-v1553.js': whoTbFdcDoseV1553,
   'pc-dose-pole-v1562.js': pcDosePoleV1562,

@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Alligation (Mixing Strengths to a Target): how much of two strengths to mix to reach a target, or
+  the strength of several lots mixed together, with the parts ratio and a mass-balance check. It
+  refuses a target outside the two strengths. See docs/spec-v1629.md.
+- Dilution and Stock Solutions (C1V1): any three of stock strength, stock quantity, final strength
+  and final quantity give the fourth, across % w/v, mg/mL, mcg/mL, ratio and ppm. A % w/w stock made
+  into a weight-in-volume product needs its specific gravity; it is never assumed to be 1. See
+  docs/spec-v1629.md.
 - A weekly watch on the FDA labels the tools read. `scripts/data/watch-dailymed.mjs` checks 22
   labels on DailyMed against the version and section text they were read at: a new version with the
   same wording renews itself, and a changed section holds the data-refresh pull request until a

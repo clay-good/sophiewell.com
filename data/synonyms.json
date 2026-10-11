@@ -11577,6 +11577,28 @@
       ],
       "tile": "imid-rems-fill-window",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "alligation",
+        "alligation alternate",
+        "mix two strengths to make a target strength",
+        "how much of each concentration to mix",
+        "fortify an ointment to a higher strength"
+      ],
+      "tile": "alligation",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "c1v1",
+        "c1v1 = c2v2",
+        "dilution calculator",
+        "stock solution dilution",
+        "how much stock solution to dilute"
+      ],
+      "tile": "dilution-c1v1",
+      "audience": "clinicians"
     }
   ]
 }

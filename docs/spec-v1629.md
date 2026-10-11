@@ -1,6 +1,6 @@
 # spec-v1629 — Pharmaceutical calculations and nonsterile compounding bench math
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 25 new tools, 1 of them build-gated (`compound-interstate-share`).
+**Status:** In progress, October 10, 2026: 2 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A pharmacist or technician at the compounding bench does the same arithmetic every day: mix two
@@ -742,4 +742,10 @@ over the past year that the compounder selected"; the guidance's example is 500 
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+Updated October 10, 2026. 2 of 25 tools built.
+
+| Tool | Status |
+|---|---|
+| 1. `alligation` | Built (group Q). Nothing is defaulted: the mode and both units are required. The parts are shown in lowest terms. The note about alcohol and water does not link `ethanol-proof`, which is not built. |
+| 2. `dilution-c1v1` | Built (group Q). The quantity unit follows the basis (mL, or g for % w/w) instead of being a separate choice. ppm is read as mg/L and the result says so; the NIST citation for ppm was not re-read and is not printed. |
+| 3 to 25 | Not built. |
