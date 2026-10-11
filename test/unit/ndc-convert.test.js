@@ -79,6 +79,46 @@ test('rejects malformed input', () => {
   assert.throws(() => ndcConvert('1234567890'), /Bare 10-digit NDC is ambiguous/);
   assert.throws(() => ndcConvert('12-34'), /three dash-separated segments/);
   assert.throws(() => ndcConvert('ab-cd-ef'), /segments must be digits/);
-  assert.throws(() => ndcConvert('123456789012'), /must be 10 or 11 digits/);
+  assert.throws(() => ndcConvert('1234567890123'), /must be 10, 11 or 12 digits/);
   assert.throws(() => ndcConvert('1-2-3'), /Unrecognized NDC segment lengths/);
+});
+
+// spec-v1641 row 22: FDA's final rule (91 FR 10749) makes every NDC 12 digits, 6-4-2, on March 7, 2033.
+const BEFORE = new Date('2033-03-06T12:00:00Z');
+const ON = new Date('2033-03-07T12:00:00Z');
+
+test('every input also gives the 12-digit form, by leading zeros in each short segment', () => {
+  assert.equal(ndcConvert('0002-1234-01', BEFORE).ndc12, '000002-1234-01');
+  assert.equal(ndcConvert('12345-678-90', BEFORE).ndc12, '012345-0678-90');
+  assert.equal(ndcConvert('12345-6789-0', BEFORE).ndc12, '012345-6789-00');
+  assert.equal(ndcConvert('12345-6789-01', BEFORE).ndc12, '012345-6789-01');
+  assert.equal(ndcConvert('00027597011', BEFORE).ndc12, '000027-5970-11');
+});
+
+test('a 12-digit NDC converts back to the billing and label forms', () => {
+  const r = ndcConvert('000002-7597-01', BEFORE);
+  assert.equal(r.source, '6-4-2');
+  assert.equal(r.billing11, '00002-7597-01');
+  // Two segments carry a zero, so the label form is one of two candidates, as for an 11-digit input.
+  assert.deepEqual(r.fda10Candidates.map((c) => c.value), ['0002-7597-01', '00002-7597-1']);
+  assert.equal(ndcConvert('012345-6789-12', BEFORE).fda10, null);
+  assert.equal(ndcConvert('000002759701', BEFORE).billing11, '00002-7597-01');
+});
+
+test('a six-digit labeler code has no 10- or 11-digit form', () => {
+  const r = ndcConvert('123456-7890-12', ON);
+  assert.equal(r.ndc12, '123456-7890-12');
+  assert.equal(r.billing11, null);
+  assert.equal(r.fda10, null);
+  assert.match(r.note, /six-digit labeler code/);
+});
+
+test('the 12-digit form is labeled by the date on each side of March 7, 2033', () => {
+  const before = ndcConvert('0002-1234-01', BEFORE);
+  assert.equal(before.ndc12InEffect, false);
+  assert.match(before.ndc12Status, /not yet in effect.*takes effect March 7, 2033/);
+  const on = ndcConvert('0002-1234-01', ON);
+  assert.equal(on.ndc12InEffect, true);
+  assert.match(on.ndc12Status, /in effect since March 7, 2033/);
+  assert.doesNotMatch(on.ndc12Status, /not yet/);
 });

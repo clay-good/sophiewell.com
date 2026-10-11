@@ -16,6 +16,10 @@ test('NDC layouts normalize to 11 digits; 10 bare digits are refused, not guesse
   assert.equal(normalizeNdc('00002-1433-80').ndc, '00002143380');
   assert.equal(normalizeNdc('00002143380').ndc, '00002143380');
   assert.match(normalizeNdc('0002143380').error, /could be 4-4-2, 5-3-2 or 5-4-1/);
+  // spec-v1641 row 22: the 12-digit form reaches the same 11 digits; a six-digit labeler has none.
+  assert.equal(normalizeNdc('000002-1433-80').ndc, '00002143380');
+  assert.equal(normalizeNdc('000002143380').ndc, '00002143380');
+  assert.match(normalizeNdc('123456-1433-80').error, /six-digit labeler code/);
   assert.match(normalizeNdc('000-21433-80').error, /none of them/);
   assert.match(normalizeNdc('00002-1433-8x').error, /digits/);
 });

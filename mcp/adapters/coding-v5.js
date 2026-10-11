@@ -27,12 +27,12 @@ export default [
   },
   {
     id: 'ndc-convert',
-    summary: 'Convert an NDC between the 10-digit FDA form and the 11-digit billing (5-4-2) form, inferring the original segment layout.',
+    summary: 'Convert an NDC between the 10-digit FDA label form, the 11-digit billing (5-4-2) form and the 12-digit (6-4-2) form of FDA\'s final rule (91 FR 10749, effective March 7, 2033), inferring the original segment layout. The result says whether the 12-digit format is in effect yet.',
     compute: C.ndcConvert,
     // ndcConvert takes the NDC string directly (via parseNdc), not an args object.
     toArgs: (i) => i.n,
     fields: [
-      { dom: 'n', arg: 'ndc', kind: 'string', required: true, label: 'NDC in any hyphenated form, e.g. 1234-5678-90' },
+      { dom: 'n', arg: 'ndc', kind: 'string', required: true, label: 'NDC in any hyphenated form (10, 11 or 12 digits), e.g. 1234-5678-90' },
     ],
   },
 ];

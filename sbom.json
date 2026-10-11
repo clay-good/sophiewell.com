@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:a93c4322-8356-5d98-8f6d-4ee18107c073",
+  "serialNumber": "urn:uuid:fddd928c-70b2-5cde-88fb-edbf30bd404b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-10T23:22:29.868Z",
+    "timestamp": "2026-10-11T00:00:29.049Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -4682,7 +4682,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c312ab0cf076b4ad7770050c0ddf8de37b9dd13ca9b83b48dcabdd0d5b407ef7"
+          "content": "70e3988c2cb94723e1722ae93eb864be33b929acc3cd7794bc35f395687d6fd6"
         }
       ],
       "properties": [
@@ -4692,7 +4692,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12121"
+          "value": "12332"
         }
       ]
     },
@@ -13985,7 +13985,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "71b326f6a9ce2fe008ebbf89eb08e9a2b36df6e9aaab62d4900713b63a774572"
+          "content": "85f8ab2dd6058f0056bb074aaa93f6abc0abb8e2aa473572b39232aa19bb7051"
         }
       ],
       "properties": [
@@ -13995,7 +13995,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2760945"
+          "value": "2761336"
         }
       ]
     },
@@ -14216,7 +14216,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ebb32afa750d460d00294d8dea9bb4955de33011904e864e4d9d742f09b91b16"
+          "content": "6263b675d1940fda12a7df3950408712f1bfc484aebe6da1ed6832728786bc1b"
         }
       ],
       "properties": [
@@ -14226,7 +14226,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10703"
+          "value": "10697"
         }
       ]
     },
@@ -14846,7 +14846,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fb61bd5a517f75e53f5ac813a19c4919da63a894ec2d2f2b50c3333e4f12c787"
+          "content": "3332dde31c8ccbe2dfea002eb1931fc9b93cbf99c0b5e58e8320d33add8f7f44"
         }
       ],
       "properties": [
@@ -14856,7 +14856,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "14125"
+          "value": "14364"
         }
       ]
     },
@@ -15067,6 +15067,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4513"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ndc.js",
+      "type": "file",
+      "name": "lib/ndc.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c037439dac173e0d282dba3f4876fa4d3ef04095fa97660c64a0b5832bbdfbcc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3836"
         }
       ]
     },
@@ -30470,7 +30491,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fcd792f1a704a24147d69fc2836178aff059cf63642781485378a0a1615d8ba0"
+          "content": "36bb4e9723dd8734e47238777cbac2569190603a5a9d7ba66681da7d059e5593"
         }
       ],
       "properties": [
@@ -30480,7 +30501,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "1889"
+          "value": "2066"
         }
       ]
     },
@@ -60962,7 +60983,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ce2a49c27464a2954d2cdb454c36d943929a51b28c515ef91aa62d47ec8c0f37"
+          "content": "55f1e169872ab28ef6bd1b2acc114120b5d5b6491f181ad92bbd3fef9ec4946b"
         }
       ],
       "properties": [
@@ -60972,7 +60993,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "37780"
+          "value": "38125"
         }
       ]
     },
@@ -85288,6 +85309,7 @@
         "urn:sophiewell:file:source:lib/nassar-gallbladder-v1240.js",
         "urn:sophiewell:file:source:lib/ncci-ptp.js",
         "urn:sophiewell:file:source:lib/ndc-crosswalk.js",
+        "urn:sophiewell:file:source:lib/ndc.js",
         "urn:sophiewell:file:source:lib/neck-zone-v366.js",
         "urn:sophiewell:file:source:lib/neer-distal-clavicle-v1428.js",
         "urn:sophiewell:file:source:lib/nems-v544.js",
@@ -87961,7 +87983,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "a93c432283568d98"
+      "value": "fddd928c70b24cde"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87973,7 +87995,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3264"
+      "value": "3265"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -4,6 +4,14 @@ All notable changes to sophiewell.com are documented here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the
 project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### Added
+
+- NDC converter: the 12-digit (6-4-2) form of FDA's final rule (91 FR 10749), which takes effect
+  March 7, 2033. Any 10-, 11- or 12-digit NDC converts to the other forms, and the result says
+  whether the 12-digit format is in effect on today's date. Every tool that takes an NDC (NADAC
+  margin, spread check, NDC units, MFP price and refund tools) now reads the 12-digit form through
+  one shared parser, `lib/ndc.js`. spec-v1641 row 22.
+
 ### Fixed
 
 - Cockcroft-Gault took one weight and used it as entered, though drug labels differ on which

@@ -454,16 +454,15 @@ export const renderers = {
 
   // ----- T15: NDC converter ----------------------------------------------
   'ndc-convert'(root) {
-    root.appendChild(field('NDC (e.g. 1234-5678-90 or 12345-678-90)', 'n', { type: 'text', placeholder: '12345-6789-01' }));
+    root.appendChild(field('NDC, 10, 11 or 12 digits (e.g. 1234-5678-90 or 12345-678-90)', 'n', { type: 'text', placeholder: '12345-6789-01' }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const v = str('n').trim();
       if (!v) return;
       const r = Code.ndcConvert(v);
-      const items = [
-        el('li', { text: `Source format: ${r.source}` }),
-        el('li', { text: `Billing 11-digit (5-4-2): ${r.billing11}` }),
-      ];
+      const items = [el('li', { text: `Source format: ${r.source}` })];
+      if (r.billing11) items.push(el('li', { text: `Billing 11-digit (5-4-2): ${r.billing11}` }));
+      else items.push(el('li', { class: 'warn', text: r.note }));
       if (r.fda10) {
         items.push(el('li', { text: `FDA 10-digit: ${r.fda10}` }));
       } else if (r.fda10Candidates && r.fda10Candidates.length > 1) {
@@ -471,10 +470,13 @@ export const renderers = {
         const sub = el('ul');
         for (const c of r.fda10Candidates) sub.appendChild(el('li', { text: `${c.value} (${c.form})` }));
         items.push(sub);
-      } else if (r.fda10Candidates && r.fda10Candidates.length === 0) {
+      } else if (r.billing11 && r.fda10Candidates && r.fda10Candidates.length === 0) {
         items.push(el('li', { class: 'muted', text: 'No 10-digit form derivable: no segment carries a leading zero.' }));
       }
+      // spec-v1641 row 22: the 12-digit form of FDA's final rule, labeled by today's date.
+      items.push(el('li', { text: `12-digit (6-4-2): ${r.ndc12}` }));
       o.appendChild(el('ul', {}, items));
+      o.appendChild(el('p', { class: 'muted', text: r.ndc12Status }));
     });
     document.getElementById('n').addEventListener('input', run);
   },
