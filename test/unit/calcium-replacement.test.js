@@ -51,3 +51,21 @@ test('impossible dose throws a TypeError/RangeError (caught by the renderer)', (
   assert.throws(() => calciumReplacement({ product: 'gluconate', doseGrams: -1 }));
   assert.throws(() => calciumReplacement({ product: 'gluconate', doseGrams: Infinity }));
 });
+
+// spec-v1641 row 16: the label's dose range and rate cap for the product chosen.
+test('label rows: range, maximum rate, and the shortest time the dose takes', async () => {
+  const { calciumReplacement: ca } = await import('../../lib/clinical-v7.js');
+  const g = ca({ product: 'gluconate', doseGrams: 2, indication: 'hypocalcemia' });
+  assert.match(g.labelText, /adults 1,000 to 2,000 mg; pediatric patients over 1 month to under 17 years 29 to 60 mg\/kg; neonates 100 to 200 mg\/kg/);
+  assert.match(g.labelText, /200 mg\/minute in adults or 100 mg\/minute in pediatric patients/);
+  assert.match(g.labelRate, /200 mg\/minute, 2 g takes at least 10 minutes/);
+  assert.equal(g.overLabel, null);
+  assert.match(ca({ product: 'gluconate', doseGrams: 3, indication: 'hypocalcemia' }).overLabel, /above the label's adult range, which ends at 2,000 mg/);
+  const c = ca({ product: 'chloride', doseGrams: 1, indication: 'hyperkalemia' });
+  assert.match(c.labelText, /adults 200 to 1,000 mg; pediatric patients 2\.7 to 5 mg\/kg/);
+  assert.match(c.labelText, /not faster than 1 mL\/minute \(100 mg\/minute\), and "do not administer by bolus"/);
+  assert.match(c.labelRate, /100 mg\/minute, 1 g takes at least 10 minutes/);
+  assert.match(ca({ product: 'chloride', doseGrams: 2, indication: 'hyperkalemia' }).overLabel, /ends at 1,000 mg/);
+  assert.doesNotMatch(c.note, /IV push/);
+  assert.equal(ca({ product: 'constructor', doseGrams: 1 }), null);
+});

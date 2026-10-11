@@ -14,6 +14,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Electrolyte replacement gave the Brown 2006 phosphate dose alone. An IV phosphate result now
+  prints the Potassium Phosphates label row for the level beside it (dose band, the 45 mmol
+  single-dose maximum, the 6.8 and 15 mmol/hour rate maximums), says the Brown dose is above the
+  label range, and states the label's contraindication in severe renal impairment. Calcium
+  replacement prints each label's dose range and maximum rate and the shortest time the dose takes
+  at that rate, flags a dose above the label's adult range, and no longer says "IV push" (the
+  calcium chloride label says not to give it by bolus). spec-v1641 row 16.
 - TPN macronutrients cited "standard nutrition references" and used 2 kcal/mL for any lipid. The
   energy figures are now the FDA labels' (dextrose 3.4 and amino acids 4 kcal/g from the Clinimix
   table), the tool takes the lipid product (2 kcal/mL for the 20% emulsions, 3 for Intralipid 30%,

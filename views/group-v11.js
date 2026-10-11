@@ -282,6 +282,9 @@ export const renderers = {
         li(`Elemental calcium delivered: ${fmt(r.elementalMg, { unit: 'mg' })} (${fmt(r.elementalMEq)} mEq).`),
         li(`Equivalent dose: ${fmt(r.equivGrams)} g ${r.equivProduct} (${fmt(r.equivVolumeMl, { unit: 'mL' })}).`),
         r.indicationText ? li(r.indicationText) : null,
+        r.overLabel ? li(r.overLabel, 'warn') : null,
+        li(r.labelRate),
+        li(r.labelText),
       ]));
       note(o, r.note);
     }));

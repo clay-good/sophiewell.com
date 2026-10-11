@@ -64,3 +64,28 @@ test('Rejects unknown electrolyte or route', () => {
   assert.throws(() => electrolyteReplacement({ electrolyte: 'na', level: 130 }));
   assert.throws(() => electrolyteReplacement({ electrolyte: 'k', level: 3.0, route: 'im' }));
 });
+
+// spec-v1641 row 16: the Potassium Phosphates label row for the level sits beside the Brown 2006 dose.
+test('phosphate: the label band, single-dose and rate maximums, and the renal contraindication', async () => {
+  const { phosphateLabelRows } = await import('../../lib/scoring-v4.js');
+  const row = (level) => phosphateLabelRows(level)[0];
+  assert.match(row(0.9), /under 1 mg\/dL, 0\.44 to 0\.64 mmol\/kg/);
+  assert.match(row(1), /1 to 1\.7 mg\/dL, 0\.32 to 0\.43 mmol\/kg/);
+  assert.match(row(1.7), /1 to 1\.7 mg\/dL/);
+  assert.match(row(1.8), /1\.8 mg\/dL to the lower end of the reference range, 0\.16 to 0\.31 mmol\/kg/);
+  assert.match(row(2.5), /0\.16 to 0\.31 mmol\/kg/);
+  assert.match(row(2.6), /no dose is given at this level/);
+  assert.match(row(1.5), /never over 45 mmol of phosphorus \(potassium 66 mEq\) as a single dose/);
+  const r = electrolyteReplacement({ electrolyte: 'phos', level: 1.5, route: 'iv' });
+  assert.equal(r.dose, '1 mmol/kg'); // Brown 2006, unchanged
+  const text = r.banners.join(' ');
+  assert.match(text, /Brown 2006 dose above is higher than this label range/);
+  assert.match(text, /6\.8 mmol\/hour \(potassium 10 mEq\/hour\) by peripheral catheter, 15 mmol\/hour/);
+  assert.match(text, /contraindicates potassium phosphates in severe renal impairment/);
+  const renal = electrolyteReplacement({ electrolyte: 'phos', level: 1.5, route: 'iv', renalImpaired: true }).banners.join(' ');
+  assert.match(renal, /start at the low end of the dose range/);
+  // The label is an IV product: an oral plan carries no label rows.
+  assert.deepEqual(electrolyteReplacement({ electrolyte: 'phos', level: 1.5, route: 'po' }).labelRows, []);
+  // Potassium and magnesium are untouched.
+  assert.equal(electrolyteReplacement({ electrolyte: 'k', level: 3.2, route: 'iv' }).labelRows, undefined);
+});

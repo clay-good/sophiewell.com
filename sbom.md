@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `8abf18f667b36fec`
-Generated: 2026-10-11T01:27:56.608Z
+Build ID: `7d1bfba78a158e9d`
+Generated: 2026-10-11T01:43:26.778Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -247,7 +247,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v4.js` | 22174 | `04b250dc0c03681202158f417fe2c93f2dc688a46ebcaeb2ebb58bd1aec84172` |
 | `lib/clinical-v5.js` | 26940 | `9d75aa30b97b5dd05ebc62e30eff334027d441bc186ece1d826b3e9238eefa7d` |
 | `lib/clinical-v6.js` | 17029 | `546b3f749b758d099654b8ecdd89742e0a603583846708705e4871e3f6f47612` |
-| `lib/clinical-v7.js` | 22511 | `e7a953ce4847435db0e4127db3d26166cb29621a382f73e322a9749f6a61d57d` |
+| `lib/clinical-v7.js` | 24287 | `553bfcbd0b54cf4f5d1b0086bc1628982c8f191a945c96af6e5d6eca93ea88ca` |
 | `lib/clinical-v8.js` | 21791 | `d227095189d9528ae0b6d02711a39ad29fda7103d502bc0e03e52615526ec667` |
 | `lib/clinical.js` | 27749 | `1bceb6f592d3867b43265873c25cda7d5cd28b02fdc042b10a46555302f39295` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
@@ -698,7 +698,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2763016 | `7273ae594e0b223e197050ff10349837c3e0cf787874dc640da66d12a462a7fc` |
+| `lib/meta.js` | 2763489 | `8f4094338a77e8a89a617febee75b3796fec08593032266023a7284886bb6c5f` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19716 | `70987b0743a01bf29b36267679574b76f3b69cb801e02bb2726da0b384de792c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1065,7 +1065,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 325971 | `285ccf3c4fd9bdbf42b7069242ac97b94c865f1446d0fbdeb52fd81dd21726d8` |
+| `lib/scoring-v4.js` | 328387 | `ad9ce458069bc2a472e48b974dc608701adca132f8ff23360264943a54d6ce91` |
 | `lib/scoring-v5.js` | 13946 | `ffc233026d33c94caca162c6312ad19be48f9fffa690597cad8656236402d0c7` |
 | `lib/scoring-v6.js` | 28955 | `68cad9165e0175516e4c885e960cefb4fc316e4251e0f1b43ceba39613795fa1` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
@@ -1477,7 +1477,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v4.js` | 12789 | `92534eaaeb642010d2516d9c37f614ae684866bff5152e236286f65bb6f53efe` |
 | `mcp/adapters/clinical-v5.js` | 12057 | `351d76ac0a7dfb00861f91dfa132bbb36e67d21aa3e72502459ab63774914856` |
 | `mcp/adapters/clinical-v6.js` | 9094 | `85dda711c1f5b628041a41ae5218c2ea8909bc51ff6bff06df2b9a81e1674096` |
-| `mcp/adapters/clinical-v7.js` | 8701 | `e04072d93aee022f3e87e06e518b6cf6b86ad045531807f8fda277e1655287b5` |
+| `mcp/adapters/clinical-v7.js` | 8818 | `a3caceaf138504276a90ebc444aebb9924c83d2be48075c466a7cf5b715df60a` |
 | `mcp/adapters/clinical-v8.js` | 16125 | `48cb7074e7e7c5770c4a6cd8ec85a85b39b32de17b864ec44f657a80c69a0e5d` |
 | `mcp/adapters/clinical.js` | 28366 | `ad624394e10626b0542052d537d0b964f6d6f0e2ffb929efc835835243c08f83` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
@@ -2195,7 +2195,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schobinger-avm-v497.js` | 1471 | `0e96c8f38f6ed7c8f2a129d4349ae06ac6bb152a8bf30b388b2c4941698a5dcc` |
 | `mcp/adapters/schofield-v779.js` | 1203 | `877117e8b9a4659faa3164c628509cfa5855c8a9acdebe84b8e4cf9af11a560a` |
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
-| `mcp/adapters/scoring-v4.js` | 163673 | `b44ada400caaa5671d680267d79d9862348113317822989b6aaab511f2d7dec9` |
+| `mcp/adapters/scoring-v4.js` | 163823 | `468c5a9d2beb8242b3be28ff94d7c6d16a34240ea5a9e8827abf246e1da6a106` |
 | `mcp/adapters/scoring-v5.js` | 12684 | `12ac7aa1a19030cdc27d76fc6fbac1edd0c024171f8a22365bd22da65a0b74f3` |
 | `mcp/adapters/scoring-v6.js` | 20286 | `ccd686c6f287625d2a83b5142cfcbef5f1c43940e2a67a74088962c9651e15f0` |
 | `mcp/adapters/scorpion-grade-india-v1556.js` | 1284 | `3cd3d399c2af7f57769e85a6ad4edeb3e77354249b3a6db361b0981e71233aed` |
@@ -2415,7 +2415,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v10.js` | 39171 | `84da9bdd8a68f73321b851da3c1dfa1ef5206989d44d06e6b1541cfa98545692` |
 | `views/group-v1061.js` | 2720 | `89e9eb196bceb0f67c97c0f9b9aefd0c0820f913ffc6b556d7a5aa809c7b9d25` |
 | `views/group-v1062.js` | 2586 | `ffbf32df0ae17e753e06b756f32e36e7c1f7dcbeb98c6bdefd26e1e342950eca` |
-| `views/group-v11.js` | 26556 | `b385db5c8567f6c5b0474d12e153c5b1bebd7e28af317f66b001fb1cde595b45` |
+| `views/group-v11.js` | 26660 | `dede9e89a996289facbbea5ec99d2c9711f5b15e457da4074eb7090d60ca2d9e` |
 | `views/group-v117.js` | 12166 | `bd791807741fd3275c6f46da19f26f8b39e7b1644759811bfdec6b0cc3557839` |
 | `views/group-v118.js` | 14192 | `37e85f6066e94aa943ab96daf44a6954a8fd58e8d31e7ec894ff7c885d87d27c` |
 | `views/group-v119.js` | 9513 | `1f10862d9aab600674449534502faf78e810ea756704d37066ac0ca7347bf580` |

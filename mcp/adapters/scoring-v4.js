@@ -99,7 +99,7 @@ export default [
   },
   {
     id: 'electrolyte-replacement',
-    summary: 'Level-banded K, Mg and phosphate replacement. Phosphate follows Brown 2006 (0.32, 0.64 or 1 mmol/kg IV by level); the potassium and magnesium ladders are common institutional conventions, labeled so, with IV or PO route and a renal-impairment caution.',
+    summary: 'Level-banded K, Mg and phosphate replacement. Phosphate follows Brown 2006 (0.32, 0.64 or 1 mmol/kg IV by level) and prints the Potassium Phosphates label row for the level beside it (dose band, 45 mmol single-dose maximum, rate maximums, renal contraindication); the potassium and magnesium ladders are common institutional conventions, labeled so, with IV or PO route and a renal-impairment caution.',
     compute: F.electrolyteReplacement,
     fields: [
       { dom: 'er-e', arg: 'electrolyte', kind: 'enum', values: ['k', 'mg', 'phos'], required: true, label: 'Electrolyte' },
