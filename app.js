@@ -2694,6 +2694,7 @@ const UTILITIES = [
   { id: 'nrti-renal-dose', name: 'Tenofovir, Truvada, Entecavir, Lamivudine by Renal Table (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gabapentinoid-renal-dose', name: 'Gabapentin and Pregabalin by Renal Table (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cns-renal-dose-check', name: 'Renal Limits for Eight CNS Drugs (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'diabetes-drug-egfr-check', name: 'Metformin, SGLT2 and DPP-4 Rules by eGFR (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

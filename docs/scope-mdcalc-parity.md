@@ -596,3 +596,5 @@ experience**.
 > v1632, Gabapentin and Pregabalin by Renal Table (FDA Label) — [spec-v1632](spec-v1632.md), which adds `gabapentinoid-renal-dose` — is 2123.)
 
 > v1632, Renal Limits for Eight CNS Drugs (FDA Label) — [spec-v1632](spec-v1632.md), which adds `cns-renal-dose-check` — is 2124.)
+
+> v1632, Metformin, SGLT2 and DPP-4 Rules by eGFR (FDA Label) — [spec-v1632](spec-v1632.md), which adds `diabetes-drug-egfr-check` — is 2125.)

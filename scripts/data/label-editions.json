@@ -485,6 +485,21 @@
     }
   },
   {
+    "label": "Farxiga (dapagliflozin), AstraZeneca",
+    "labeler": "ASTRAZENECA PHARMACEUTICALS LP",
+    "setId": "72ad22ae-efe6-4cd6-a302-98aaee423d69",
+    "tools": [
+      "diabetes-drug-egfr-check"
+    ],
+    "splVersion": 49,
+    "publishedOn": "2026-09-11",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "2f4b8640ad2a263e51a56da5b70d63e4df0d2cedfc32b521a0b2260c7345f1a2"
+    }
+  },
+  {
     "label": "Fentanyl transdermal system",
     "labeler": "ALVOGEN",
     "setId": "242759ef-cb6d-4e3e-9f8d-5e31efa1f289",
@@ -598,6 +613,52 @@
     }
   },
   {
+    "label": "Invokana (canagliflozin), Janssen",
+    "labeler": "JANSSEN PHARMACEUTICALS, INC.",
+    "setId": "b9057d3b-b104-4f09-8a61-c61ef9d4a3f3",
+    "tools": [
+      "diabetes-drug-egfr-check"
+    ],
+    "splVersion": 32,
+    "publishedOn": "2026-06-15",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "474352e487d4e09892e1151682c38f82f65a518c4e8544cbe3b814066a0212f3"
+    }
+  },
+  {
+    "label": "Januvia (sitagliptin), Merck",
+    "labeler": "MERCK SHARP & DOHME LLC",
+    "setId": "f85a48d0-0407-4c50-b0fa-7673a160bf01",
+    "tools": [
+      "diabetes-drug-egfr-check"
+    ],
+    "splVersion": 71,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "197316ef483fc7c3c299f9e5aac34b7492f2bd14015fef248a52d3ea378343d8"
+    }
+  },
+  {
+    "label": "Jardiance (empagliflozin), Boehringer Ingelheim",
+    "labeler": "BOEHRINGER INGELHEIM PHARMACEUTICALS, INC.",
+    "setId": "faf3dd6a-9cd0-39c2-0d2e-232cb3f67565",
+    "tools": [
+      "diabetes-drug-egfr-check"
+    ],
+    "splVersion": 31,
+    "publishedOn": "2026-02-02",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "7034c74ae08991d0808cc7efdb2e16e1db642418883728c237ea579b47b8505d",
+      "43684-0": "5213783d5952f911f71b7036a7b5e16184bb9629cb4adccaf13e3ab38b1d9f3b"
+    }
+  },
+  {
     "label": "Kabiven, Fresenius Kabi",
     "labeler": "FRESENIUS KABI USA, LLC",
     "setId": "afeb4837-a759-4484-a76e-e04611c459e7",
@@ -704,6 +765,21 @@
     }
   },
   {
+    "label": "Metformin hydrochloride tablets, Zydus",
+    "labeler": "ZYDUS PHARMACEUTICALS USA INC.",
+    "setId": "c82a10fa-1e8e-46b6-890a-737de3f34ee1",
+    "tools": [
+      "diabetes-drug-egfr-check"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2026-08-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "3175b05297772be7a464b3ab98f95c5c908d61ff414e5d13b00fcaa3e63b93cc"
+    }
+  },
+  {
     "label": "Multrys (trace elements injection 4), American Regent",
     "labeler": "AMERICAN REGENT, INC.",
     "setId": "995f1efa-aca0-4b6c-9099-f8e757c2133a",
@@ -716,6 +792,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "ffaa48c8bf581d13992b35c11986f6e2c26fbab39f49b976b43628f180f29d31"
+    }
+  },
+  {
+    "label": "Nesina (alogliptin), Takeda",
+    "labeler": "TAKEDA PHARMACEUTICALS AMERICA, INC.",
+    "setId": "a3768c7e-aa4c-44d3-bc53-43bb7346c0b0",
+    "tools": [
+      "diabetes-drug-egfr-check"
+    ],
+    "splVersion": 22,
+    "publishedOn": "2025-03-24",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "9810e742997150dcb4007820b94ff17f5f70d5e0abca73a9ae40a27ca88c82f4"
     }
   },
   {
@@ -937,6 +1028,21 @@
       "43684-0": "a85b2ebaa9771f9fe7743a7280a338a7dba95522a6b9fc1688a33eabd3d4c8e6",
       "34073-7": "85a85e0038e6f6d71e7dbf0eb6e0106ac1f93d814381a563f064401b2f877bfc",
       "34092-7": "3ef5f211cf4c9f315f9757ad3e67891802496b679f6d15aacd50567c86ff9b2d"
+    }
+  },
+  {
+    "label": "Saxagliptin tablets, Mylan",
+    "labeler": "MYLAN PHARMACEUTICALS INC.",
+    "setId": "6e8d8c4f-96eb-4b64-9c8c-4a5448a23a78",
+    "tools": [
+      "diabetes-drug-egfr-check"
+    ],
+    "splVersion": 4,
+    "publishedOn": "2025-03-24",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "8ff9801873990ac2fbfbdb5a9688489d094d2f19a1968555237117dde8b19dc3"
     }
   },
   {

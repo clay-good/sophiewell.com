@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Metformin, SGLT2 and DPP-4 Rules by eGFR (FDA Label): the label's kidney rule for metformin,
+  empagliflozin, dapagliflozin, canagliflozin, sitagliptin, saxagliptin or alogliptin, with starting
+  and continuing kept apart where the label separates them.
 - Renal Limits for Eight CNS Drugs (FDA Label): the label's row for levetiracetam, lacosamide,
   topiramate, memantine, tramadol, duloxetine, desvenlafaxine or varenicline at the kidney function
   entered or on dialysis.

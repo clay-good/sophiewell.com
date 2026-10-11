@@ -9076,6 +9076,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cns-renal-dose-check-v1632.js (spec-v1632: Renal limits for eight CNS drugs (eight label rows) — clinical disclaimer)
 - `cns-renal-dose-check`
 
+### lib/diabetes-drug-egfr-check-v1632.js (spec-v1632: Metformin, SGLT2 and DPP-4 rules by eGFR (seven label rows) — clinical disclaimer)
+- `diabetes-drug-egfr-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

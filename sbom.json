@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:4ee347fb-4d8d-5c1c-8c48-05218679aa52",
+  "serialNumber": "urn:uuid:edb458c1-8716-56b4-8406-720347e8bc42",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T14:20:16.956Z",
+    "timestamp": "2026-10-11T14:53:31.291Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2124 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2125 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "53058153e8d396f3bee616bc3332740cd3616c4b1562f1db2649cd5a5c5784a6"
+          "content": "04847e1352daccbb555774813b4d33f44ccbb812290e64b71991de517e19d0d8"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "137174"
+          "value": "137242"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a028f7ce20bf3213551112ed208415f0d3ef846c36db0bf7d0a8e2754c6cb608"
+          "content": "572192bf65bfc12ec17ebea10f169ae7c8609e56eb995f43cc67081f53bd6ec1"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "601684"
+          "value": "601852"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fcc792eb32752fa2b5d739ffb3cb975a674f86ad945d9dcf34878074222fc181"
+          "content": "ce5b3d19c419136751b9aa87eee0d163e63a6807b6f65ed726c6333b8ea9449c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "266226"
+          "value": "266361"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "667f6ef1f77f19d85f8a241ccef27b3127fbfeebc82b8242ed76bf12b6e3de58"
+          "content": "61feaa893ccdffb4852e7742a2baa39d65f0d07b67fde2200473d5d22e323bf9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125457"
+          "value": "125539"
         }
       ]
     },
@@ -6268,6 +6268,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11248"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/diabetes-drug-egfr-check-v1632.js",
+      "type": "file",
+      "name": "lib/diabetes-drug-egfr-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0343f7bcf708f9a6494d0baf8f8c12b8bb4bb211a26107cf5d3e4aa4cd3625d6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9326"
         }
       ]
     },
@@ -12662,7 +12683,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9724eb7b21acbcd72a791dc178efd21c21b93dfc24888dd2df9cdc9f47ca73aa"
+          "content": "646999e55bb4feb40d7147e3ae07f8ce99e5289f924f9a19978e088db85dbba5"
         }
       ],
       "properties": [
@@ -12672,7 +12693,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "17866"
+          "value": "19402"
         }
       ]
     },
@@ -14888,7 +14909,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "df5848b3d0b52112ace72e80b42feebf230d78d62765ce9438a0191339bfdc02"
+          "content": "2fcb0a556b8406c072fb187b1dc5ac71eac56c70657fdf62f403ad14bcceddb7"
         }
       ],
       "properties": [
@@ -14898,7 +14919,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2823803"
+          "value": "2825434"
         }
       ]
     },
@@ -33379,6 +33400,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2014"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-drug-egfr-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/diabetes-drug-egfr-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b9aa17371e294e11bd1dd4419812127b7096605000bdf6e665af43daab90db36"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1275"
         }
       ]
     },
@@ -52163,7 +52205,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4b209da36f124d603dda156d2030ba5491e502c7493e192d396d76e8265c81d4"
+          "content": "d7bc1484573d90a1f3cf7ff2bb53a9b88736e2690a5c080f22e58f9b8cc52079"
         }
       ],
       "properties": [
@@ -52173,7 +52215,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "136103"
+          "value": "136256"
         }
       ]
     },
@@ -56720,7 +56762,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f28c2b955baddea750ccfdb2617857e75021939f88cd3e585d56ae14f5c72ecc"
+          "content": "405836b601bf44f8cd90ccdf3c52fb918c9c6aca32ae879d48bc1713dc5dcc78"
         }
       ],
       "properties": [
@@ -56730,7 +56772,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9472"
+          "value": "10400"
         }
       ]
     },
@@ -87788,6 +87830,7 @@
         "urn:sophiewell:file:source:lib/dermuro-v191.js",
         "urn:sophiewell:file:source:lib/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
+        "urn:sophiewell:file:source:lib/diabetes-drug-egfr-check-v1632.js",
         "urn:sophiewell:file:source:lib/diastolic-function-ase-v664.js",
         "urn:sophiewell:file:source:lib/digoxin-label-dose-v1631.js",
         "urn:sophiewell:file:source:lib/dilution-c1v1-v1629.js",
@@ -90021,6 +90064,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermuro-v191.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-drug-egfr-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diastolic-function-ase-v664.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/digoxin-label-dose-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dilution-c1v1-v1629.js",
@@ -91019,7 +91063,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "4ee347fb4d8dfc1c"
+      "value": "edb458c1871666b4"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91031,7 +91075,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3403"
+      "value": "3405"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

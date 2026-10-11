@@ -12296,6 +12296,24 @@
       ],
       "tile": "cns-renal-dose-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "metformin egfr cutoff",
+        "jardiance egfr cutoff",
+        "empagliflozin egfr cutoff",
+        "farxiga egfr cutoff",
+        "dapagliflozin egfr cutoff",
+        "invokana egfr cutoff",
+        "canagliflozin egfr cutoff",
+        "januvia renal dose",
+        "sitagliptin renal dose",
+        "saxagliptin renal dose",
+        "alogliptin renal dose",
+        "nesina renal dose"
+      ],
+      "tile": "diabetes-drug-egfr-check",
+      "audience": "clinicians"
     }
   ]
 }

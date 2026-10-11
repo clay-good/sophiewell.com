@@ -1,6 +1,7 @@
 // spec-v1632: dose checks read from the FDA label. Group F.
 // doac-dose-check, lmwh-fondaparinux-dose-check, iv-antithrombotic-renal-check,
-// antiviral-renal-dose, nrti-renal-dose, gabapentinoid-renal-dose, cns-renal-dose-check.
+// antiviral-renal-dose, nrti-renal-dose, gabapentinoid-renal-dose, cns-renal-dose-check,
+// diabetes-drug-egfr-check.
 
 import { el, clear } from '../lib/dom.js';
 import * as DC from '../lib/doac-dose-check-v1632.js';
@@ -10,6 +11,7 @@ import * as AV from '../lib/antiviral-renal-dose-v1632.js';
 import * as NR from '../lib/nrti-renal-dose-v1632.js';
 import * as GB from '../lib/gabapentinoid-renal-dose-v1632.js';
 import * as CN from '../lib/cns-renal-dose-check-v1632.js';
+import * as DM from '../lib/diabetes-drug-egfr-check-v1632.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -159,6 +161,20 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = CN.cnsRenalDoseCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'diabetes-drug-egfr-check'(root) {
+    const pairs = [['dme-regimen', 'regimen'], ['dme-dialysis', 'dialysis'], ['dme-kidney', 'kidney']];
+    selectField(root, 'Drug and use', 'dme-regimen', DM.REGIMENS);
+    selectField(root, 'Dialysis', 'dme-dialysis', DM.DIALYSIS);
+    numField(root, 'eGFR, mL/min/1.73 m² (creatinine clearance in mL/min for alogliptin)', 'dme-kidney', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = DM.diabetesDrugEgfrCheck(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
