@@ -6,7 +6,7 @@ import * as SG from '../../lib/specific-gravity-v1629.js';
 export default [
   {
     id: 'specific-gravity',
-    summary: 'Density and specific gravity: the weight of a volume, the volume of a weight, a specific gravity from three weighings, and % w/w to % w/v. Water is taken as 1 g/mL and the result says so.',
+    summary: 'Weight of a volume, volume of a weight, specific gravity from three weighings, and % w/w to % w/v. Water is taken as 1 g/mL and the result says so.',
     compute: SG.specificGravity,
     fields: [
       { dom: 'sg-mode', arg: 'mode', kind: 'enum', required: true, values: SG.MODES.map((m) => m.value), label: 'What to work out: weight of a volume, volume of a weight, specific gravity from three weighings (measure), or % w/w to % w/v (strength)' },

@@ -8899,6 +8899,21 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/specific-gravity-v1629.js (spec-v1629: Density, specific gravity and weight-to-volume — administrative disclaimer)
 - `specific-gravity`
 
+### lib/api-potency-adjust-v1629.js (spec-v1629: Weight to weigh after assay and water correction — administrative disclaimer)
+- `api-potency-adjust`
+
+### lib/tablet-powder-source-v1629.js (spec-v1629: Crushed tablets as a drug source — administrative disclaimer)
+- `tablet-powder-source`
+
+### lib/buffer-ph-v1629.js (spec-v1629: Buffer pH and composition by Henderson-Hasselbalch — administrative disclaimer)
+- `buffer-ph`
+
+### lib/percent-ionized-v1629.js (spec-v1629: Percent ionized at a pH — administrative disclaimer)
+- `percent-ionized`
+
+### lib/dropper-calibration-v1629.js (spec-v1629: Dropper calibration and dose in drops — administrative disclaimer)
+- `dropper-calibration`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

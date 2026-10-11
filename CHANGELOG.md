@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Weight to Weigh After Assay and Water Correction: how much of a lot to weigh for a target of pure
+  active. The basis of the assay (as is, anhydrous or dried) must be chosen; it is never assumed.
+- Crushed Tablets as a Drug Source: the tablets to crush and the powder weight that carries the
+  drug needed.
+- Buffer pH and Composition (Henderson-Hasselbalch): the pH from two concentrations, or the
+  composition for a target pH, from a pKa you enter.
+- Percent Ionized at a pH: for a weak acid or a weak base, from its pKa.
+- Dropper Calibration and Dose in Drops: drops per mL from your own count, and a dose in whole
+  drops with the error rounding makes. All five: see docs/spec-v1629.md.
 - Serial Dilution Plan: the steps from a stock to a target strength, by a fixed factor per step or
   by the smallest volume you can measure, with each transfer and the strength after each step.
 - Minimum Weighable Quantity and Percent Error: the smallest quantity a balance or measuring device

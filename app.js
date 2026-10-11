@@ -1179,6 +1179,11 @@ const UTILITIES = [
   { id: 'min-weighable-quantity', name: 'Minimum Weighable Quantity and Percent Error', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'aliquot-method', name: 'Aliquot Method (Solid or Liquid)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'specific-gravity', name: 'Density, Specific Gravity and Weight-to-Volume', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'api-potency-adjust', name: 'Weight to Weigh After Assay and Water Correction', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'tablet-powder-source', name: 'Crushed Tablets as a Drug Source', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'buffer-ph', name: 'Buffer pH and Composition (Henderson-Hasselbalch)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'percent-ionized', name: 'Percent Ionized at a pH', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'dropper-calibration', name: 'Dropper Calibration and Dose in Drops', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'refill-eligible-date', name: 'Earliest Refill Date', group: 'Q', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
   { id: 'overpayment-60day', name: '60-Day Overpayment Report-and-Return Clock', group: 'C', audiences: ['billers'], clinical: false },
   // spec-v82: patient responsibility & coordination of benefits. v78 computes

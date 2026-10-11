@@ -11643,6 +11643,61 @@
       ],
       "tile": "specific-gravity",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "potency adjustment",
+        "assay correction",
+        "certificate of analysis assay water content",
+        "anhydrous basis correction",
+        "how much active ingredient to weigh after assay"
+      ],
+      "tile": "api-potency-adjust",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "crushed tablets as drug source",
+        "tablet powder weight for a compound",
+        "how many tablets to crush",
+        "weight of crushed tablet powder",
+        "compounding from commercial tablets"
+      ],
+      "tile": "tablet-powder-source",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "henderson hasselbalch buffer",
+        "buffer ph calculator",
+        "acetate buffer composition",
+        "salt to acid ratio for a buffer",
+        "how to make a buffer at a ph"
+      ],
+      "tile": "buffer-ph",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "percent ionized",
+        "fraction ionized at a ph",
+        "weak acid ionization pka ph",
+        "weak base percent ionized",
+        "ionized versus unionized drug"
+      ],
+      "tile": "percent-ionized",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dropper calibration",
+        "drops per ml of a dropper",
+        "calibrate a dropper",
+        "dose in drops",
+        "how many drops is a dose"
+      ],
+      "tile": "dropper-calibration",
+      "audience": "clinicians"
     }
   ]
 }

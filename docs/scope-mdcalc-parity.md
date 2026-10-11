@@ -478,3 +478,13 @@ experience**.
 > v1629, Aliquot Method (Solid or Liquid) — [spec-v1629](spec-v1629.md), which adds `aliquot-method` — is 2064.)
 
 > v1629, Density, Specific Gravity and Weight-to-Volume — [spec-v1629](spec-v1629.md), which adds `specific-gravity` — is 2065.)
+
+> v1629, Weight to Weigh After Assay and Water Correction — [spec-v1629](spec-v1629.md), which adds `api-potency-adjust` — is 2066.)
+
+> v1629, Crushed Tablets as a Drug Source — [spec-v1629](spec-v1629.md), which adds `tablet-powder-source` — is 2067.)
+
+> v1629, Buffer pH and Composition (Henderson-Hasselbalch) — [spec-v1629](spec-v1629.md), which adds `buffer-ph` — is 2068.)
+
+> v1629, Percent Ionized at a pH — [spec-v1629](spec-v1629.md), which adds `percent-ionized` — is 2069.)
+
+> v1629, Dropper Calibration and Dose in Drops — [spec-v1629](spec-v1629.md), which adds `dropper-calibration` — is 2070.)

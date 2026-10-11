@@ -770,6 +770,11 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as apiPotencyAdjustV1629 from '../../lib/api-potency-adjust-v1629.js';
+import * as tabletPowderSourceV1629 from '../../lib/tablet-powder-source-v1629.js';
+import * as bufferPhV1629 from '../../lib/buffer-ph-v1629.js';
+import * as percentIonizedV1629 from '../../lib/percent-ionized-v1629.js';
+import * as dropperCalibrationV1629 from '../../lib/dropper-calibration-v1629.js';
 import * as serialDilutionV1629 from '../../lib/serial-dilution-v1629.js';
 import * as minWeighableQuantityV1629 from '../../lib/min-weighable-quantity-v1629.js';
 import * as aliquotMethodV1629 from '../../lib/aliquot-method-v1629.js';
@@ -1650,6 +1655,11 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'api-potency-adjust-v1629.js': apiPotencyAdjustV1629,
+  'tablet-powder-source-v1629.js': tabletPowderSourceV1629,
+  'buffer-ph-v1629.js': bufferPhV1629,
+  'percent-ionized-v1629.js': percentIonizedV1629,
+  'dropper-calibration-v1629.js': dropperCalibrationV1629,
   'serial-dilution-v1629.js': serialDilutionV1629,
   'min-weighable-quantity-v1629.js': minWeighableQuantityV1629,
   'aliquot-method-v1629.js': aliquotMethodV1629,

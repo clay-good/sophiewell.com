@@ -1040,6 +1040,11 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import apiPotencyAdjustV1629 from './adapters/api-potency-adjust-v1629.js';
+import tabletPowderSourceV1629 from './adapters/tablet-powder-source-v1629.js';
+import bufferPhV1629 from './adapters/buffer-ph-v1629.js';
+import percentIonizedV1629 from './adapters/percent-ionized-v1629.js';
+import dropperCalibrationV1629 from './adapters/dropper-calibration-v1629.js';
 import serialDilutionV1629 from './adapters/serial-dilution-v1629.js';
 import minWeighableQuantityV1629 from './adapters/min-weighable-quantity-v1629.js';
 import aliquotMethodV1629 from './adapters/aliquot-method-v1629.js';
@@ -2136,6 +2141,11 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['api-potency-adjust-v1629', apiPotencyAdjustV1629],
+  ['tablet-powder-source-v1629', tabletPowderSourceV1629],
+  ['buffer-ph-v1629', bufferPhV1629],
+  ['percent-ionized-v1629', percentIonizedV1629],
+  ['dropper-calibration-v1629', dropperCalibrationV1629],
   ['serial-dilution-v1629', serialDilutionV1629],
   ['min-weighable-quantity-v1629', minWeighableQuantityV1629],
   ['aliquot-method-v1629', aliquotMethodV1629],

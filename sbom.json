@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:5867ab63-8f3f-53ec-88ac-3a61ed91bd8f",
+  "serialNumber": "urn:uuid:cc70cb64-61d6-55f9-831e-b7a4dc0fe916",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T03:04:01.881Z",
+    "timestamp": "2026-10-11T03:31:45.347Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2065 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2070 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "535f5a84e2096e91f8a150acf3de17584e42693d392698684725e83f9602b0c9"
+          "content": "08959bc633d7965e9e7a36bc18ccb10e6ba8022715291a9a7c5128bb4d239191"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133594"
+          "value": "133863"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "99d9856d4d816421b492eb6ef96efd559fa0e35e6c166c53179cf335fe4172f4"
+          "content": "047f37dae3b45021b14691bc634c16a8ec063bd1d2a5ff2c3337763f7ee0aba8"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "592452"
+          "value": "593187"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5fc59a54bf52358ac782882062413baebee557fb3b74c2e74c4da7dba02447c2"
+          "content": "65cda0356b158e87869a9ccb55e718bb51d7424b4f9afd31e22c6090ebee5444"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "258531"
+          "value": "259167"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2aebc26780d55fdf1f620f7f5e52202c0662cb387b77ff5a11c2977029e922b6"
+          "content": "88cdf9240632ff32597691f90e9281caa1bac43a4c548b027bc34073de26d616"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "121321"
+          "value": "121621"
         }
       ]
     },
@@ -1417,6 +1417,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8473"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/api-potency-adjust-v1629.js",
+      "type": "file",
+      "name": "lib/api-potency-adjust-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2bb42cb675f5fbc6f932ca84afff91f11bff23e333323666d699eb1fd1797ec5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4215"
         }
       ]
     },
@@ -2950,6 +2971,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10837"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/buffer-ph-v1629.js",
+      "type": "file",
+      "name": "lib/buffer-ph-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5573b7015437858a89240cedcc7303211f438d99cb18d8362764af672dfb5a7a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6209"
         }
       ]
     },
@@ -6289,6 +6331,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3779"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/dropper-calibration-v1629.js",
+      "type": "file",
+      "name": "lib/dropper-calibration-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "92fb014e81295c42415eb0c6d8d51b3e104bc5870305830de4a02dda588828f9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4345"
         }
       ]
     },
@@ -14048,7 +14111,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1e6bafed0fddcf006a128d2e3a65a27b971bb076e6ec21480e7288a566a67fd1"
+          "content": "67cfe886c5a6e793f6d21887f7f22b213df947601186db9e17acb1ff740750f7"
         }
       ],
       "properties": [
@@ -14058,7 +14121,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2766937"
+          "value": "2769783"
         }
       ]
     },
@@ -18301,6 +18364,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "13708"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/percent-ionized-v1629.js",
+      "type": "file",
+      "name": "lib/percent-ionized-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8cbf69420d77c7ee58650e2d449807796224e88d0fd72311a8c9e18f3abdc869"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2574"
         }
       ]
     },
@@ -23387,6 +23471,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/tablet-powder-source-v1629.js",
+      "type": "file",
+      "name": "lib/tablet-powder-source-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fffdb5bc7ef97e6133caee0751b4f7beb8c071d3451f10713c702e1d264b8273"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3616"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/taco-trali-v906.js",
       "type": "file",
       "name": "lib/taco-trali-v906.js",
@@ -27566,6 +27671,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/api-potency-adjust-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/api-potency-adjust-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df573372dc51c965583666436bec06d7480c8c0f5cedf3682393b66344add9ac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1515"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/appeal-path-v1505.js",
       "type": "file",
       "name": "mcp/adapters/appeal-path-v1505.js",
@@ -28990,6 +29116,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6347"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/buffer-ph-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/buffer-ph-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e0c4a2efc7735d294ec8616376aa01c6d7999571d8aea2171323f6d49cecedf0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2246"
         }
       ]
     },
@@ -32056,6 +32203,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2069"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dropper-calibration-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/dropper-calibration-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8226bd238257741d91cb23a48247f17334e75016344be3948bcf701f5a98ed69"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1242"
         }
       ]
     },
@@ -42665,6 +42833,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/percent-ionized-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/percent-ionized-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "06d0388a2ebf23f2a012b69508ee6d44ba667dbe00af59e9e9832a6d0ae5e330"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "913"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/peri-implant-status-v1489.js",
       "type": "file",
       "name": "mcp/adapters/peri-implant-status-v1489.js",
@@ -46451,7 +46640,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a502c18894b9336104ee9149c67daf8b96f47d8c0d4defdb29351a5f85959367"
+          "content": "a06380487970d7ccb5e5e270c73d709048972b2bdccbcd3ba1d1c21f159a4ff1"
         }
       ],
       "properties": [
@@ -46461,7 +46650,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "1746"
+          "value": "1706"
         }
       ]
     },
@@ -47050,6 +47239,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1781"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tablet-powder-source-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/tablet-powder-source-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6e463f20dff6a0e33cca32f171b8962458b19128244cd30a83b4befcd87d3b5b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1194"
         }
       ]
     },
@@ -49601,7 +49811,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ca256be537b504468b0e101b227b6afef06a4e287cbc455cd986d4c08dd13489"
+          "content": "b0d90c0d9f9f901d78634d8e279f363c521e0b45c787e2d1cd27093f3dd6a1c5"
         }
       ],
       "properties": [
@@ -49611,7 +49821,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "128034"
+          "value": "128659"
         }
       ]
     },
@@ -54074,7 +54284,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "33b520c32b0b1f82b1927a8047b3c252ac4e7d18df336d611bd6388b1ea2d2e3"
+          "content": "65d797454d6cae20d40e84bf0f9c4778c0b1d4781b69514ede4c77ecae452175"
         }
       ],
       "properties": [
@@ -54084,7 +54294,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9934"
+          "value": "15222"
         }
       ]
     },
@@ -84932,6 +85142,7 @@
         "urn:sophiewell:file:source:lib/aortic-regurgitation-stage-v846.js",
         "urn:sophiewell:file:source:lib/aortic-stenosis-stage-v844.js",
         "urn:sophiewell:file:source:lib/aospine-sacral-v1424.js",
+        "urn:sophiewell:file:source:lib/api-potency-adjust-v1629.js",
         "urn:sophiewell:file:source:lib/appeal-path-v1505.js",
         "urn:sophiewell:file:source:lib/aqi-pm25-v1398.js",
         "urn:sophiewell:file:source:lib/arbovirus-admission-check-v1563.js",
@@ -85005,6 +85216,7 @@
         "urn:sophiewell:file:source:lib/broset-v866.js",
         "urn:sophiewell:file:source:lib/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:source:lib/brue-v547.js",
+        "urn:sophiewell:file:source:lib/buffer-ph-v1629.js",
         "urn:sophiewell:file:source:lib/build-info.js",
         "urn:sophiewell:file:source:lib/buruli-ulcer-category-v1561.js",
         "urn:sophiewell:file:source:lib/c-rads-v371.js",
@@ -85164,6 +85376,7 @@
         "urn:sophiewell:file:source:lib/doxy-pep-v1401.js",
         "urn:sophiewell:file:source:lib/dpc-hsa-check.js",
         "urn:sophiewell:file:source:lib/dr-severity-v301.js",
+        "urn:sophiewell:file:source:lib/dropper-calibration-v1629.js",
         "urn:sophiewell:file:source:lib/dst-v304.js",
         "urn:sophiewell:file:source:lib/e-faced-v571.js",
         "urn:sophiewell:file:source:lib/eat-sleep-console-v884.js",
@@ -85736,6 +85949,7 @@
         "urn:sophiewell:file:source:lib/pedstox-v247.js",
         "urn:sophiewell:file:source:lib/pef-zones-v891.js",
         "urn:sophiewell:file:source:lib/peradeniya-op-v575.js",
+        "urn:sophiewell:file:source:lib/percent-ionized-v1629.js",
         "urn:sophiewell:file:source:lib/peri-implant-status-v1489.js",
         "urn:sophiewell:file:source:lib/pericarditis-v789.js",
         "urn:sophiewell:file:source:lib/periodontitis-stage-grade-v1480.js",
@@ -85978,6 +86192,7 @@
         "urn:sophiewell:file:source:lib/syphilis-serology-sequence-v1400.js",
         "urn:sophiewell:file:source:lib/systemic-mastocytosis-v813.js",
         "urn:sophiewell:file:source:lib/table.js",
+        "urn:sophiewell:file:source:lib/tablet-powder-source-v1629.js",
         "urn:sophiewell:file:source:lib/taco-trali-v906.js",
         "urn:sophiewell:file:source:lib/takayasu-v638.js",
         "urn:sophiewell:file:source:lib/tanner-staging-v361.js",
@@ -87116,6 +87331,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-regurgitation-stage-v846.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-stenosis-stage-v844.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aospine-sacral-v1424.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/api-potency-adjust-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/appeal-path-v1505.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aqi-pm25-v1398.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arbovirus-admission-check-v1563.js",
@@ -87184,6 +87400,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/broset-v866.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brue-v547.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/buffer-ph-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/buruli-ulcer-category-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/c-rads-v371.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/c2hest-v1434.js",
@@ -87330,6 +87547,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/doxy-pep-v1401.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dpc-hsa-check.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dr-severity-v301.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/dropper-calibration-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dst-v304.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/e-faced-v571.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eat-sleep-console-v884.js",
@@ -87835,6 +88053,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pedstox-v247.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pef-zones-v891.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peradeniya-op-v575.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/percent-ionized-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peri-implant-status-v1489.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pericarditis-v789.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/periodontitis-stage-grade-v1480.js",
@@ -88044,6 +88263,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/surg-v142.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/syphilis-serology-sequence-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/systemic-mastocytosis-v813.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tablet-powder-source-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/taco-trali-v906.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/takayasu-v638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tanner-staging-v361.js",
@@ -88269,7 +88489,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "5867ab638f3f73ec"
+      "value": "cc70cb6461d675f9"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -88281,7 +88501,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3278"
+      "value": "3288"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

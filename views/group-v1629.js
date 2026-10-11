@@ -1,5 +1,6 @@
 // spec-v1629: renderers for the pharmacy bench-math tools (Group Q): alligation, dilution-c1v1,
-// serial-dilution, min-weighable-quantity, aliquot-method and specific-gravity.
+// serial-dilution, min-weighable-quantity, aliquot-method, specific-gravity, api-potency-adjust,
+// tablet-powder-source, buffer-ph, percent-ionized and dropper-calibration.
 
 import { el, clear } from '../lib/dom.js';
 import * as AL from '../lib/alligation-v1629.js';
@@ -8,6 +9,11 @@ import * as SD from '../lib/serial-dilution-v1629.js';
 import * as MW from '../lib/min-weighable-quantity-v1629.js';
 import * as AQ from '../lib/aliquot-method-v1629.js';
 import * as SG from '../lib/specific-gravity-v1629.js';
+import * as AP from '../lib/api-potency-adjust-v1629.js';
+import * as TP from '../lib/tablet-powder-source-v1629.js';
+import * as BP from '../lib/buffer-ph-v1629.js';
+import * as PI from '../lib/percent-ionized-v1629.js';
+import * as DC from '../lib/dropper-calibration-v1629.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -184,6 +190,94 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(SG.specificGravity(args), o);
+    }));
+  },
+
+  'api-potency-adjust'(root) {
+    const pairs = [['ap-target', 'target'], ['ap-unit', 'unit'], ['ap-assay', 'assay'], ['ap-basis', 'basis'], ['ap-water', 'water'], ['ap-salt', 'saltFactor']];
+    numField(root, 'Target amount of pure active', 'ap-target', '');
+    selectField(root, 'Unit of the target', 'ap-unit', AP.UNITS);
+    numField(root, 'Assay of this lot, percent (from its certificate of analysis)', 'ap-assay', '');
+    selectField(root, 'Basis the assay is stated on', 'ap-basis', AP.BASES);
+    numField(root, 'Water content or loss on drying, percent (needed for an anhydrous or dried assay)', 'ap-water', '');
+    numField(root, 'Salt factor (optional: weight of salt per weight of base)', 'ap-salt', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(AP.apiPotencyAdjust(args), o);
+    }));
+  },
+
+  'tablet-powder-source'(root) {
+    const pairs = [['tp-needed', 'needed'], ['tp-strength', 'strength'], ['tp-count', 'count'], ['tp-total', 'totalWeight'], ['tp-extra', 'extra']];
+    numField(root, 'Drug needed (mg)', 'tp-needed', 'e.g. 150');
+    numField(root, 'Labeled strength per tablet (mg)', 'tp-strength', 'e.g. 40');
+    numField(root, 'Number of whole tablets weighed', 'tp-count', 'e.g. 10');
+    numField(root, 'Total weight of those tablets (mg)', 'tp-total', 'e.g. 2500');
+    numField(root, 'Extra tablets to crush (optional)', 'tp-extra', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(TP.tabletPowderSource(args), o);
+    }));
+  },
+
+  'buffer-ph'(root) {
+    const pairs = [['bp-pair', 'pair'], ['bp-mode', 'mode'], ['bp-pka', 'pKa'], ['bp-acceptor', 'acceptor'], ['bp-donor', 'donor'], ['bp-target', 'targetPh'], ['bp-total', 'total'], ['bp-vol', 'volumeMl'], ['bp-mwa', 'acceptorMw'], ['bp-mwd', 'donorMw']];
+    selectField(root, 'Buffer pair', 'bp-pair', BP.PAIRS);
+    selectField(root, 'What to work out', 'bp-mode', BP.BUFFER_MODES);
+    numField(root, 'pKa at your working temperature (for a weak base, the pKa of its conjugate acid)', 'bp-pka', '').querySelector('input').removeAttribute('min');
+    const conc = [
+      numField(root, 'Concentration of the salt (acid pair) or of the base (base pair), mol/L', 'bp-acceptor', ''),
+      numField(root, 'Concentration of the acid (acid pair) or of the salt (base pair), mol/L', 'bp-donor', ''),
+    ];
+    const compose = [
+      numField(root, 'Target pH', 'bp-target', ''),
+      numField(root, 'Total buffer concentration, mol/L', 'bp-total', ''),
+      numField(root, 'Volume, mL (optional, for grams)', 'bp-vol', ''),
+      numField(root, 'Molecular weight of the salt (acid pair) or of the base (base pair), g/mol (optional)', 'bp-mwa', ''),
+      numField(root, 'Molecular weight of the acid (acid pair) or of the salt (base pair), g/mol (optional)', 'bp-mwd', ''),
+    ];
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const mode = val('bp-mode');
+      for (const w of conc) w.hidden = mode === 'compose';
+      for (const w of compose) w.hidden = mode !== 'compose';
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(BP.bufferPh(args), o);
+    }));
+  },
+
+  'percent-ionized'(root) {
+    const pairs = [['pi-type', 'type'], ['pi-pka', 'pKa'], ['pi-ph', 'pH']];
+    selectField(root, 'The drug is a', 'pi-type', PI.DRUG_TYPES);
+    numField(root, 'pKa (for a weak base, the pKa of its conjugate acid)', 'pi-pka', '').querySelector('input').removeAttribute('min');
+    numField(root, 'pH', 'pi-ph', 'e.g. 7.4');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PI.percentIonized(args), o);
+    }));
+  },
+
+  'dropper-calibration'(root) {
+    const pairs = [['dc-drops', 'drops'], ['dc-vol', 'volume'], ['dc-dose', 'dose'], ['dc-unit', 'doseUnit'], ['dc-conc', 'concentration']];
+    note(root, 'Count the drops your own dropper makes with the liquid you will use, into a measured volume.');
+    numField(root, 'Drops counted', 'dc-drops', '');
+    numField(root, 'Volume those drops made (mL)', 'dc-vol', '');
+    numField(root, 'Dose (optional)', 'dc-dose', '');
+    selectField(root, 'Dose unit', 'dc-unit', DC.DOSE_UNITS);
+    const conc = numField(root, 'Concentration (mg/mL)', 'dc-conc', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      conc.hidden = val('dc-unit') !== 'mg';
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(DC.dropperCalibration(args), o);
     }));
   },
 };

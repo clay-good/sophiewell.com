@@ -59,6 +59,8 @@ export const MAP = [
 
 // Tools whose "Height" or "Length" is an organ's dimension, labelled with the bare word.
 export const NOT_A_BODY = new Set(['testicular-volume']);
+// Tools whose "pH" is a solution's or a compartment's (0 to 14), not arterial blood's.
+export const NOT_BLOOD_PH = new Set(['percent-ionized']);
 
 export function candidates({ onlyKey = null } = {}) {
   const rows = [];
@@ -70,6 +72,7 @@ export function candidates({ onlyKey = null } = {}) {
       if (EXCLUDE.test(text)) continue;
       for (const [key, labRe, unitRe, scale = 1] of MAP) {
         if (onlyKey && key !== onlyKey) continue;
+        if (key === 'pH' && NOT_BLOOD_PH.has(tool.id)) continue;
         if (labRe.test(text) && unitRe.test(String(f.unit || ''))) {
           rows.push({
             id: tool.id, dom: f.dom, key, scale,

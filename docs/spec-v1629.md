@@ -1,6 +1,6 @@
 # spec-v1629 — Pharmaceutical calculations and nonsterile compounding bench math
 
-**Status:** In progress, October 10, 2026: 6 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
+**Status:** In progress, October 10, 2026: 11 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A pharmacist or technician at the compounding bench does the same arithmetic every day: mix two
@@ -742,7 +742,7 @@ over the past year that the compounder selected"; the guidance's example is 500 
 
 ## Build status
 
-Updated October 10, 2026. 6 of 25 tools built.
+Updated October 10, 2026. 11 of 25 tools built.
 
 | Tool | Status |
 |---|---|
@@ -752,4 +752,9 @@ Updated October 10, 2026. 6 of 25 tools built.
 | 9. `min-weighable-quantity` | Built (group Q). Three modes: the minimum, the potential error of a quantity, and the percent error of a measurement. No default sensitivity or error limit, no value-like placeholder; the page example uses the percent-error mode, which needs neither. |
 | 10. `aliquot-method` | Built (group Q). With no aliquot weight entered it uses the smallest one that keeps all three weighings at or above the minimum, not the minimum itself (which can leave the diluent unweighable). **Deviation:** the page example carries a minimum of 200 mg so the example can compute; the app marks example values as not the reader's. |
 | 11. `specific-gravity` | Built (group Q). Cited as a definition only: the NIST SP 811 section the spec names was not re-read (its page did not load when the spec was written). |
-| 4 to 8, 12 to 25 | Not built. |
+| 7. `api-potency-adjust` | Built (group Q). The basis is a required three-way choice. A water content entered with an as-is assay is reported as not applied. |
+| 8. `tablet-powder-source` | Built (group Q). Refuses when the average tablet weighs no more than its labeled drug content (grams entered as milligrams, usually). |
+| 14. `buffer-ph` | Built (group Q). Both pairs use the ratio of proton acceptor to proton donor (salt over acid, or base over its salt). Grams need the volume and both molecular weights, typed in: `molecular-weight` is not built. |
+| 15. `percent-ionized` | Built (group Q), in its own module. Far from the pKa the small fraction is shown to six significant figures instead of rounding to 0 or 100. |
+| 21. `dropper-calibration` | Built (group Q). No default drops per mL; the page example uses a count that gives 24 per mL. |
+| 4 to 6, 12, 13, 16 to 20, 22 to 25 | Not built. |
