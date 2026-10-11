@@ -1040,6 +1040,10 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import stoppfallCheckV1634 from './adapters/stoppfall-check-v1634.js';
+import pedsHeparinNomogramV1634 from './adapters/peds-heparin-nomogram-v1634.js';
+import warfarinInrOutOfRangeV1634 from './adapters/warfarin-inr-out-of-range-v1634.js';
+import ninjaNephrotoxinExposureV1634 from './adapters/ninja-nephrotoxin-exposure-v1634.js';
 import riosordV1634 from './adapters/riosord-v1634.js';
 import relativeInfantDoseV1634 from './adapters/relative-infant-dose-v1634.js';
 import badriAdrRiskV1634 from './adapters/badri-adr-risk-v1634.js';
@@ -2238,6 +2242,10 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['stoppfall-check-v1634', stoppfallCheckV1634],
+  ['peds-heparin-nomogram-v1634', pedsHeparinNomogramV1634],
+  ['warfarin-inr-out-of-range-v1634', warfarinInrOutOfRangeV1634],
+  ['ninja-nephrotoxin-exposure-v1634', ninjaNephrotoxinExposureV1634],
   ['riosord-v1634', riosordV1634],
   ['relative-infant-dose-v1634', relativeInfantDoseV1634],
   ['badri-adr-risk-v1634', badriAdrRiskV1634],

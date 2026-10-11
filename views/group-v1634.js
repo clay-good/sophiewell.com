@@ -1,6 +1,7 @@
 // spec-v1634: medication review, medication safety and pharmacovigilance.
 // or-rr-to-nnt, disproportionality-2x2, icer-dominance, liverpool-adr-causality, ncc-merp-index,
-// fda-adverse-event-report-clock, riosord, relative-infant-dose, badri-adr-risk.
+// fda-adverse-event-report-clock, riosord, relative-infant-dose, badri-adr-risk, stoppfall-check,
+// peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -12,6 +13,10 @@ import * as FC from '../lib/fda-adverse-event-report-clock-v1634.js';
 import * as RO from '../lib/riosord-v1634.js';
 import * as RD from '../lib/relative-infant-dose-v1634.js';
 import * as BA from '../lib/badri-adr-risk-v1634.js';
+import * as SF from '../lib/stoppfall-check-v1634.js';
+import * as PH from '../lib/peds-heparin-nomogram-v1634.js';
+import * as WI from '../lib/warfarin-inr-out-of-range-v1634.js';
+import * as NJ from '../lib/ninja-nephrotoxin-exposure-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -184,6 +189,56 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(BA.badriAdrRisk(args), o);
+    }));
+  },
+  'stoppfall-check'(root) {
+    const pairs = SF.CLASSES.map((c) => [`spf-${c.dom}`, c.arg]);
+    root.appendChild(el('p', { text: 'Is a drug of each class on the medication list? Answer all 14.' }));
+    for (const c of SF.CLASSES) selectField(root, c.text, `spf-${c.dom}`, SF.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SF.stoppfallCheck(args), o);
+    }));
+  },
+  'peds-heparin-nomogram'(root) {
+    const pairs = [['phn-weight', 'weight'], ['phn-age', 'age'], ['phn-aptt', 'aptt'], ['phn-rate', 'currentRate']];
+    numField(root, 'Weight, kg', 'phn-weight', '');
+    selectField(root, 'Age group (for the starting rate)', 'phn-age', PH.AGES);
+    numField(root, 'aPTT, seconds (to adjust a running infusion)', 'phn-aptt', '');
+    numField(root, 'Current infusion rate, units/h (with an aPTT)', 'phn-rate', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PH.pedsHeparinNomogram(args), o);
+    }));
+  },
+  'warfarin-inr-out-of-range'(root) {
+    const pairs = [['wio-inr', 'inr'], ['wio-low', 'targetLow'], ['wio-high', 'targetHigh'], ['wio-bleeding', 'bleeding'], ['wio-stable', 'stable']];
+    numField(root, 'INR', 'wio-inr', '');
+    numField(root, 'Target range, lower end', 'wio-low', '');
+    numField(root, 'Target range, upper end', 'wio-high', '');
+    selectField(root, 'Bleeding', 'wio-bleeding', WI.BLEEDING);
+    selectField(root, 'INRs previously stable in range', 'wio-stable', WI.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(WI.warfarinInrOutOfRange(args), o);
+    }));
+  },
+  'ninja-nephrotoxin-exposure'(root) {
+    const pairs = [['nnx-count', 'nephrotoxinCount'], ['nnx-ag', 'aminoglycosideDays'], ['nnx-van', 'vancomycinDays']];
+    numField(root, 'Nephrotoxic medications given on the same day', 'nnx-count', '');
+    numField(root, 'Consecutive days of an IV aminoglycoside (0 if none)', 'nnx-ag', '');
+    numField(root, 'Consecutive days of IV vancomycin (0 if none)', 'nnx-van', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(NJ.ninjaNephrotoxinExposure(args), o);
     }));
   },
 };

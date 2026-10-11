@@ -2739,6 +2739,10 @@ const UTILITIES = [
   { id: 'riosord', name: 'RIOSORD Opioid Overdose Risk Index (Veterans and Commercial Versions)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'relative-infant-dose', name: 'Relative Infant Dose Through Breast Milk (FDA Draft Guidance)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'badri-adr-risk', name: 'BADRI Adverse Drug Reaction Risk in Hospitalized Older Adults', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'stoppfall-check', name: 'STOPPFall Fall-Risk-Increasing Drug Classes (Seppala 2021)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'peds-heparin-nomogram', name: 'Pediatric Heparin Protocol (CHEST 2012)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'warfarin-inr-out-of-range', name: 'Out-of-Range INR on Warfarin (CHEST 2012 Recommendations)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ninja-nephrotoxin-exposure', name: 'Nephrotoxic Medication Exposure in Hospitalized Children (NINJA)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

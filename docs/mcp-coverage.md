@@ -9205,6 +9205,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/badri-adr-risk-v1634.js (spec-v1634: BADRI (Tangiisuran 2014) — clinical disclaimer)
 - `badri-adr-risk`
 
+### lib/stoppfall-check-v1634.js (spec-v1634: STOPPFall (Seppala 2021) — clinical disclaimer)
+- `stoppfall-check`
+
+### lib/peds-heparin-nomogram-v1634.js (spec-v1634: Pediatric heparin protocol (CHEST 2012 Table 3) — clinical disclaimer)
+- `peds-heparin-nomogram`
+
+### lib/warfarin-inr-out-of-range-v1634.js (spec-v1634: Out-of-range INR on warfarin (CHEST 2012) — clinical disclaimer)
+- `warfarin-inr-out-of-range`
+
+### lib/ninja-nephrotoxin-exposure-v1634.js (spec-v1634: NINJA nephrotoxin exposure (Goldstein 2020) — clinical disclaimer)
+- `ninja-nephrotoxin-exposure`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

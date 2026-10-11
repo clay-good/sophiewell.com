@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:7e3fac87-2c98-5088-80fd-3da02c7be6a8",
+  "serialNumber": "urn:uuid:4bd6437f-1529-54b3-8b19-42851d2721f8",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T21:24:12.510Z",
+    "timestamp": "2026-10-11T22:15:24.816Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2167 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2171 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "97e8bbcb9c5b9f2cd1e25df1e92eef544ea066f4169eec24f0ce2e193482fc30"
+          "content": "c77c717dc793b13d9256b1cd075f64d22b15985259a52c1a276050c35669f2a8"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140274"
+          "value": "140556"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cc876c814774371958e75411a46d7f78c9bcc1bd93ab9f8c6cde2991a9de4192"
+          "content": "5a19856776304d8a3ad7227e446b8326d4e1c13ad4ac9be0c6330261bb22dce6"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "609135"
+          "value": "609808"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "843c690257365acfd67062751e39ced8762d70d807535367d87b5f5c7211c66b"
+          "content": "45beea57ccf52ed31d812d1920578f02aa151be6c98dc268b61c09fedac18774"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "271939"
+          "value": "272470"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "318cee2882843538134d91ec63a6f95dcf689881ba6f58e1c819200e75e79cfa"
+          "content": "43ffe9d694ca3a46727129512115a394858c8b4fbf57c2bc4dda7d2576fd6910"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "129067"
+          "value": "129396"
         }
       ]
     },
@@ -15581,7 +15581,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a87d05e185fed4620254fbdcda9917a558ef6d053dae75d58cd40d612eba762a"
+          "content": "803b19ad4d1e3f3369af2749fa8c5ceafe17a78853d02d509ef3420616616f62"
         }
       ],
       "properties": [
@@ -15591,7 +15591,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2874830"
+          "value": "2878351"
         }
       ]
     },
@@ -17398,6 +17398,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "14020"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ninja-nephrotoxin-exposure-v1634.js",
+      "type": "file",
+      "name": "lib/ninja-nephrotoxin-exposure-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "25eb03d4de450322c47cf257fcec45ec4c02ca8704280182efbd7157828fc6d1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2985"
         }
       ]
     },
@@ -19813,6 +19834,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "18695"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/peds-heparin-nomogram-v1634.js",
+      "type": "file",
+      "name": "lib/peds-heparin-nomogram-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5c088e3ee002c58bc092222e00ebe8ea2c1ee7cc77adda69f4d7aa88c9d64a84"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6197"
         }
       ]
     },
@@ -25025,6 +25067,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/stoppfall-check-v1634.js",
+      "type": "file",
+      "name": "lib/stoppfall-check-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "16754b78dbbc1e64a6189e6d523b261fe4234529582e5785c732a6e48b8f1a17"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3615"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/storage-excursion-summary-v1630.js",
       "type": "file",
       "name": "lib/storage-excursion-summary-v1630.js",
@@ -27688,6 +27751,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4866"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/warfarin-inr-out-of-range-v1634.js",
+      "type": "file",
+      "name": "lib/warfarin-inr-out-of-range-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bf75bcb941980d9586a2599e7a7f1deef7a533942fcf971bf16979243d6a3199"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5863"
         }
       ]
     },
@@ -44387,6 +44471,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ninja-nephrotoxin-exposure-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/ninja-nephrotoxin-exposure-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "89d9b2a593e35225c95fa211b6aaa9cde932f76f8badd031b2b560469254a54b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1273"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/niosh-lifting-v885.js",
       "type": "file",
       "name": "mcp/adapters/niosh-lifting-v885.js",
@@ -46315,6 +46420,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3294"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/peds-heparin-nomogram-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/peds-heparin-nomogram-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fd55818cee3153ce48aa5bffa6607e69af0702a02b9f58a9448efcb513a11ada"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1392"
         }
       ]
     },
@@ -50897,6 +51023,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/stoppfall-check-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/stoppfall-check-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c247bb29386c0316a0f79682e3e726b5a3edd5c8f8275783293fe0c73732f228"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "872"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/storage-excursion-summary-v1630.js",
       "type": "file",
       "name": "mcp/adapters/storage-excursion-summary-v1630.js",
@@ -53228,6 +53375,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/warfarin-inr-out-of-range-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/warfarin-inr-out-of-range-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1e41d4f72e177fb50a26daf17ab2405efc0e345f0215ce795110f8e0040fb5dc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1403"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/warfarin-v133.js",
       "type": "file",
       "name": "mcp/adapters/warfarin-v133.js",
@@ -54011,7 +54179,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b43b6aabad3340784ff1baab1833a0845a3133ccf63550991941ff6e69b9ff73"
+          "content": "e8b51637619f53c553d32e8f17cb1c7f779a484b93918387c8aaa1f14e02584f"
         }
       ],
       "properties": [
@@ -54021,7 +54189,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "142386"
+          "value": "142968"
         }
       ]
     },
@@ -58610,7 +58778,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9f90809c41244b52ee32dbfa71516e9f879243e65f30b3c2c1f613e4225cdd00"
+          "content": "f78d4f2272895240ba4c62b79f090f392f0293ddf0c6f9c8893dffd72017d9d5"
         }
       ],
       "properties": [
@@ -58620,7 +58788,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9615"
+          "value": "12574"
         }
       ]
     },
@@ -90208,6 +90376,7 @@
         "urn:sophiewell:file:source:lib/nice-v335.js",
         "urn:sophiewell:file:source:lib/nichd-fhr-v912.js",
         "urn:sophiewell:file:source:lib/nih-cpsi-v566.js",
+        "urn:sophiewell:file:source:lib/ninja-nephrotoxin-exposure-v1634.js",
         "urn:sophiewell:file:source:lib/niosh-lifting-v885.js",
         "urn:sophiewell:file:source:lib/nj-civil-commitment-clock-v1389.js",
         "urn:sophiewell:file:source:lib/nj-death-religious-exemption-v1392.js",
@@ -90323,6 +90492,7 @@
         "urn:sophiewell:file:source:lib/pediatric-acute-v262.js",
         "urn:sophiewell:file:source:lib/pedis-v613.js",
         "urn:sophiewell:file:source:lib/peds-growth-v141.js",
+        "urn:sophiewell:file:source:lib/peds-heparin-nomogram-v1634.js",
         "urn:sophiewell:file:source:lib/peds-percentile-v169.js",
         "urn:sophiewell:file:source:lib/peds-sepsis-v278.js",
         "urn:sophiewell:file:source:lib/peds-v140.js",
@@ -90571,6 +90741,7 @@
         "urn:sophiewell:file:source:lib/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:source:lib/step-therapy-v1502.js",
         "urn:sophiewell:file:source:lib/sternbach-v589.js",
+        "urn:sophiewell:file:source:lib/stoppfall-check-v1634.js",
         "urn:sophiewell:file:source:lib/storage-excursion-summary-v1630.js",
         "urn:sophiewell:file:source:lib/strasberg-bdi-v348.js",
         "urn:sophiewell:file:source:lib/stroke-prognosis-v210.js",
@@ -90698,6 +90869,7 @@
         "urn:sophiewell:file:source:lib/waldenstrom-perthes-v463.js",
         "urn:sophiewell:file:source:lib/walter-index-v669.js",
         "urn:sophiewell:file:source:lib/wang-bronchiolitis-v682.js",
+        "urn:sophiewell:file:source:lib/warfarin-inr-out-of-range-v1634.js",
         "urn:sophiewell:file:source:lib/warfarin-v133.js",
         "urn:sophiewell:file:source:lib/wassel-thumb-v417.js",
         "urn:sophiewell:file:source:lib/wasting-classify-v1548.js",
@@ -92437,6 +92609,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nice-v335.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nichd-fhr-v912.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nih-cpsi-v566.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ninja-nephrotoxin-exposure-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/niosh-lifting-v885.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nj-civil-commitment-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nj-death-religious-exemption-v1392.js",
@@ -92529,6 +92702,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pediatric-acute-v262.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pedis-v613.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-growth-v141.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/peds-heparin-nomogram-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-percentile-v169.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-sepsis-v278.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-v140.js",
@@ -92747,6 +92921,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/step-therapy-v1502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sternbach-v589.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/stoppfall-check-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/storage-excursion-summary-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/strasberg-bdi-v348.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stroke-prognosis-v210.js",
@@ -92858,6 +93033,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/waldenstrom-perthes-v463.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/walter-index-v669.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wang-bronchiolitis-v682.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/warfarin-inr-out-of-range-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/warfarin-v133.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wassel-thumb-v417.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wasting-classify-v1548.js",
@@ -92999,7 +93175,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "7e3fac872c986088"
+      "value": "4bd6437f152994b3"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -93011,7 +93187,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3493"
+      "value": "3501"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

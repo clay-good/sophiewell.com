@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- STOPPFall Fall-Risk-Increasing Drug Classes (Seppala 2021): which of the 14 classes are on a
+  medication list. No score: the paper defines none.
+- Pediatric Heparin Protocol (CHEST 2012): the loading dose and starting rate, or the bolus, hold,
+  new rate and repeat time for an aPTT.
+- Out-of-Range INR on Warfarin (CHEST 2012 Recommendations): the numbered recommendation that
+  matches, quoted with its grade, or a plain statement that none does.
+- Nephrotoxic Medication Exposure in Hospitalized Children (NINJA): whether the program's
+  definition of exposure is met, and by which part.
 - RIOSORD Opioid Overdose Risk Index (Veterans and Commercial Versions): the published points,
   the risk class and its average predicted probability, with the case-control caveat.
 - Relative Infant Dose Through Breast Milk (FDA Draft Guidance): infant dosage and relative infant

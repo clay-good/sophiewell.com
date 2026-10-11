@@ -682,3 +682,11 @@ experience**.
 > v1634, Relative Infant Dose Through Breast Milk (FDA Draft Guidance) — [spec-v1634](spec-v1634.md), which adds `relative-infant-dose` — is 2166.)
 
 > v1634, BADRI Adverse Drug Reaction Risk in Hospitalized Older Adults — [spec-v1634](spec-v1634.md), which adds `badri-adr-risk` — is 2167.)
+
+> v1634, STOPPFall Fall-Risk-Increasing Drug Classes (Seppala 2021) — [spec-v1634](spec-v1634.md), which adds `stoppfall-check` — is 2168.)
+
+> v1634, Pediatric Heparin Protocol (CHEST 2012) — [spec-v1634](spec-v1634.md), which adds `peds-heparin-nomogram` — is 2169.)
+
+> v1634, Out-of-Range INR on Warfarin (CHEST 2012 Recommendations) — [spec-v1634](spec-v1634.md), which adds `warfarin-inr-out-of-range` — is 2170.)
+
+> v1634, Nephrotoxic Medication Exposure in Hospitalized Children (NINJA) — [spec-v1634](spec-v1634.md), which adds `ninja-nephrotoxin-exposure` — is 2171.)

@@ -770,6 +770,10 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as stoppfallCheckV1634 from '../../lib/stoppfall-check-v1634.js';
+import * as pedsHeparinNomogramV1634 from '../../lib/peds-heparin-nomogram-v1634.js';
+import * as warfarinInrOutOfRangeV1634 from '../../lib/warfarin-inr-out-of-range-v1634.js';
+import * as ninjaNephrotoxinExposureV1634 from '../../lib/ninja-nephrotoxin-exposure-v1634.js';
 import * as riosordV1634 from '../../lib/riosord-v1634.js';
 import * as relativeInfantDoseV1634 from '../../lib/relative-infant-dose-v1634.js';
 import * as badriAdrRiskV1634 from '../../lib/badri-adr-risk-v1634.js';
@@ -1752,6 +1756,10 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'stoppfall-check-v1634.js': stoppfallCheckV1634,
+  'peds-heparin-nomogram-v1634.js': pedsHeparinNomogramV1634,
+  'warfarin-inr-out-of-range-v1634.js': warfarinInrOutOfRangeV1634,
+  'ninja-nephrotoxin-exposure-v1634.js': ninjaNephrotoxinExposureV1634,
   'riosord-v1634.js': riosordV1634,
   'relative-infant-dose-v1634.js': relativeInfantDoseV1634,
   'badri-adr-risk-v1634.js': badriAdrRiskV1634,

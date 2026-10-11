@@ -12828,6 +12828,20 @@
       ],
       "tile": "badri-adr-risk",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "stoppfall"
+      ],
+      "tile": "stoppfall-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ninja"
+      ],
+      "tile": "ninja-nephrotoxin-exposure",
+      "audience": "clinicians"
     }
   ]
 }
