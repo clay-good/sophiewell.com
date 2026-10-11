@@ -8932,6 +8932,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/meq-mmol-mg-v1629.js (spec-v1629: Milligrams, millimoles, milliequivalents and ideal milliosmoles — administrative disclaimer)
 - `meq-mmol-mg`
 
+### lib/ethanol-proof-v1629.js (spec-v1629: Alcohol proof, proof gallons, tax and Table 6 reduction (27 CFR part 30) — administrative disclaimer)
+- `ethanol-proof`
+
+### lib/apothecary-household-measures-v1629.js (spec-v1629: Apothecary, avoirdupois and household measures (NIST Handbook 44 Appendix C) — administrative disclaimer)
+- `apothecary-household-measures`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

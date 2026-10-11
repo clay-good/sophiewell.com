@@ -500,3 +500,7 @@ experience**.
 > v1629, Salt, Base and Hydrate Conversion Factor — [spec-v1629](spec-v1629.md), which adds `salt-base-factor` — is 2075.)
 
 > v1629, Milligrams, Millimoles, Milliequivalents and Milliosmoles — [spec-v1629](spec-v1629.md), which adds `meq-mmol-mg` — is 2076.)
+
+> v1629, Alcohol Proof, Proof Gallons and Dilution — [spec-v1629](spec-v1629.md), which adds `ethanol-proof` — is 2077.)
+
+> v1629, Apothecary, Avoirdupois and Household Measures — [spec-v1629](spec-v1629.md), which adds `apothecary-household-measures` — is 2078.)

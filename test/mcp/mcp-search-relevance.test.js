@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['alcohol proof gallons percent by volume reduce proof with water', ['ethanol-proof']],
+  ['convert grains to milligrams apothecary units', ['apothecary-household-measures']],
   ['molecular weight from a chemical formula hydrate', ['molecular-weight']],
   ['salt to base conversion factor from molecular weights', ['salt-base-factor']],
   ['convert mg to meq potassium chloride milliequivalents', ['meq-mmol-mg']],

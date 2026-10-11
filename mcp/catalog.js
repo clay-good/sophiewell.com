@@ -1040,6 +1040,8 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import ethanolProofV1629 from './adapters/ethanol-proof-v1629.js';
+import apothecaryHouseholdMeasuresV1629 from './adapters/apothecary-household-measures-v1629.js';
 import molecularWeightV1629 from './adapters/molecular-weight-v1629.js';
 import saltBaseFactorV1629 from './adapters/salt-base-factor-v1629.js';
 import meqMmolMgV1629 from './adapters/meq-mmol-mg-v1629.js';
@@ -2147,6 +2149,8 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['ethanol-proof-v1629', ethanolProofV1629],
+  ['apothecary-household-measures-v1629', apothecaryHouseholdMeasuresV1629],
   ['molecular-weight-v1629', molecularWeightV1629],
   ['salt-base-factor-v1629', saltBaseFactorV1629],
   ['meq-mmol-mg-v1629', meqMmolMgV1629],

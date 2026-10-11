@@ -1,7 +1,8 @@
 // spec-v1629: renderers for the pharmacy bench-math tools (Group Q): alligation, dilution-c1v1,
 // serial-dilution, min-weighable-quantity, aliquot-method, specific-gravity, api-potency-adjust,
 // tablet-powder-source, buffer-ph, percent-ionized, dropper-calibration, suppository-displacement,
-// capsule-fill, formula-scale, molecular-weight, salt-base-factor and meq-mmol-mg.
+// capsule-fill, formula-scale, molecular-weight, salt-base-factor, meq-mmol-mg, ethanol-proof and
+// apothecary-household-measures.
 
 import { el, clear } from '../lib/dom.js';
 import * as AL from '../lib/alligation-v1629.js';
@@ -21,6 +22,8 @@ import * as FS from '../lib/formula-scale-v1629.js';
 import * as MWT from '../lib/molecular-weight-v1629.js';
 import * as SB from '../lib/salt-base-factor-v1629.js';
 import * as MQ from '../lib/meq-mmol-mg-v1629.js';
+import * as EP from '../lib/ethanol-proof-v1629.js';
+import * as AH from '../lib/apothecary-household-measures-v1629.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -405,6 +408,46 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(MQ.meqMmolMg(args), o);
+    }));
+  },
+
+  'ethanol-proof'(root) {
+    const pairs = [['ep-mode', 'mode'], ['ep-pct', 'percent'], ['ep-proof', 'proof'], ['ep-vol', 'volume'], ['ep-vunit', 'volumeUnit'], ['ep-pg', 'proofGallons'], ['ep-rate', 'rate'], ['ep-from', 'fromProof'], ['ep-to', 'toProof'], ['ep-gal', 'gallons'], ['ep-w1', 'waterFrom'], ['ep-w2', 'waterTo']];
+    selectField(root, 'What to work out', 'ep-mode', EP.MODES);
+    const pct = numField(root, 'Percent ethanol by volume (enter this, or the proof)', 'ep-pct', 'e.g. 95');
+    const proof = numField(root, 'Proof', 'ep-proof', '');
+    const gallons = [numField(root, 'Volume of spirits', 'ep-vol', ''), selectField(root, 'Unit of the volume', 'ep-vunit', EP.VOLUME_UNITS)];
+    const tax = [numField(root, 'Proof gallons', 'ep-pg', ''), numField(root, 'Tax rate, dollars per proof gallon (the result names the rates in the statute)', 'ep-rate', '')];
+    const reduce = [
+      numField(root, 'Starting proof', 'ep-from', ''),
+      numField(root, 'Wanted proof', 'ep-to', ''),
+      numField(root, 'Wine gallons on hand', 'ep-gal', ''),
+      numField(root, 'Parts water at the starting proof, from Table 6 of 27 CFR 30.66', 'ep-w1', ''),
+      numField(root, 'Parts water at the wanted proof, from Table 6', 'ep-w2', ''),
+    ];
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const mode = val('ep-mode');
+      pct.hidden = mode !== 'convert';
+      proof.hidden = mode !== 'convert' && mode !== 'gallons';
+      for (const w of gallons) w.hidden = mode !== 'gallons';
+      for (const w of tax) w.hidden = mode !== 'tax';
+      for (const w of reduce) w.hidden = mode !== 'reduce';
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(EP.ethanolProof(args), o);
+    }));
+  },
+
+  'apothecary-household-measures'(root) {
+    const pairs = [['ah-qty', 'quantity'], ['ah-unit', 'unit']];
+    numField(root, 'Quantity', 'ah-qty', 'e.g. 5');
+    selectField(root, 'Unit', 'ah-unit', AH.UNITS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(AH.apothecaryHouseholdMeasures(args), o);
     }));
   },
 };

@@ -1,6 +1,6 @@
 # spec-v1629 — Pharmaceutical calculations and nonsterile compounding bench math
 
-**Status:** In progress, October 10, 2026: 17 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
+**Status:** In progress, October 10, 2026: 19 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A pharmacist or technician at the compounding bench does the same arithmetic every day: mix two
@@ -742,7 +742,7 @@ over the past year that the compounder selected"; the guidance's example is 500 
 
 ## Build status
 
-Updated October 10, 2026. 17 of 25 tools built.
+Updated October 10, 2026. 19 of 25 tools built.
 
 | Tool | Status |
 |---|---|
@@ -763,4 +763,6 @@ Updated October 10, 2026. 17 of 25 tools built.
 | 4. `molecular-weight` | Built (group Q), on `lib/atomic-weights-2024.js`: the CIAAW 2024 table re-read from the page (118 rows, 84 with a value) and kept as printed. **Deviations:** the table is a library constant under the weekly page watch, not a `data/atomic-weights/` folder. A charge is read only after a caret (`SO4^2-`): a bare trailing sign is refused, because "Fe3+" and "NH4+" cannot be told apart. A decimal atom count is refused; a decimal hydrate multiplier is read. The result prints how the formula was read. `KCl` is given as 74.55 (chlorine is printed to two decimals) with the unrounded sum 74.548 beside it; the spec's test value was the unrounded sum. |
 | 5. `meq-mmol-mg` | Partly built (group Q): the arithmetic, per-liter values and normality. The eight label figures the spec lists come out as computed (the test pins them). **Not built:** the label lines themselves and the lithium oral-solution volume. All four labels were re-read on October 10, 2026 and say what the spec says, but a label line must be withheld when its label changes, and that needs the label rows of [spec-v1628](spec-v1628.md) section 1 that are not built. The sodium bicarbonate tablet label the spec names is a unit-dose packager's; use the injection label for that salt when the lines are added. |
 | 6. `salt-base-factor` | Built (group Q). A blank moiety count is taken as 1 and the result says so. The label's own two numbers as an alternative input are not built. The FDA naming guidance the spec cites for context was not re-read and is not cited. |
-| 12, 13, 19, 20, 22 to 25 | Not built. Each needs a source re-read: the isotonicity paper (12, 13), 27 CFR (19), NIST (20), Griffin (22), section 503A (23 to 25). |
+| 19. `ethanol-proof` | Built (group Q). 27 CFR 30.11, 30.31(a) and 30.66 re-read in the eCFR and 26 U.S.C. 5001 in the 2024 edition on govinfo; all say what the spec says. The parts alcohol are computed as proof ÷ 2, so only the two parts-water values are entered. Table 6 is not shipped (the build gate stands: no hand-checked transcription exists). The tax rate is reader input; the result names the statute's three rates. |
+| 20. `apothecary-household-measures` | Built (group Q). NIST Handbook 44 (2026) Appendix C and 21 CFR 101.9(b)(5)(viii) re-read; every value matches. Volumes are derived from the gallon and masses from the grain, and agree with the digits the handbook prints. The handbook lists the teaspoon as 1⅓ fluid drams; the tool says that and does not claim more. |
+| 12, 13, 22 to 25 | Not built. Each needs a source re-read: the isotonicity paper (12, 13), Griffin (22), section 503A (23 to 25). |

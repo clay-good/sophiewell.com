@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Alcohol Proof, Proof Gallons and Dilution: proof from percent by volume, proof gallons, the
+  federal excise tax at a rate you enter, and the water to add to reduce proof by the Table 6
+  method of 27 CFR 30.66. For the regulation's own two examples it prints the regulation's figure
+  beside the unrounded one and says why they differ.
+- Apothecary, Avoirdupois and Household Measures: grains, scruples, drams, minims, fluid ounces,
+  spoons and cups to metric, from NIST Handbook 44. Where the FDA food-labeling rule defines a unit
+  differently (a 30 mL fluid ounce, a 240 mL cup), both are shown with their sources. Both tools:
+  see docs/spec-v1629.md.
 - Molecular Weight From a Formula: type the formula from the container, the certificate of analysis
   or the label (brackets and hydrates included) and get the molecular weight, each element's share
   and the water of hydration, from the IUPAC 2024 abridged atomic weights. An unknown symbol is

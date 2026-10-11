@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:138372c2-2e4b-5032-8f2f-7986fe354b86",
+  "serialNumber": "urn:uuid:7263ac99-14ca-5ff5-8b6d-fa842f75de18",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T04:54:20.865Z",
+    "timestamp": "2026-10-11T05:15:37.252Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2076 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2078 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "90899c646342e90c7762300eb6b61d71a684c2c8f8949c6730df6e4ee43e5db8"
+          "content": "413367acc265297bd342dfb4f368a6dfc5f1fec079912051b205d8cc8ff64b08"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "134192"
+          "value": "134311"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ed10cd58a6b62eec48d72fd729af577eb743e123fed9dbc8aea15a5f15a29ce0"
+          "content": "386080030249178da40b937ec64800c91ec08d7091cd2b84dbd5c67adeab58a6"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "594070"
+          "value": "594397"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0eada015a74e242ab27e6c4bc4239e606ec8b1639ec269d933ad3d6877652cbf"
+          "content": "83538acdf1909cd9d9e72e3059bc11eac7db669230b60af64c0edb2f35bc93f4"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "259925"
+          "value": "260189"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "77dcc6226167f9928944207caae609b6d93536e184a797411c100a3fe190e4f9"
+          "content": "547cfd392672fbae44b064355b4a99561f044137d3ff3dcb7daa0e840c0898d8"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "121982"
+          "value": "122123"
         }
       ]
     },
@@ -1438,6 +1438,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4215"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/apothecary-household-measures-v1629.js",
+      "type": "file",
+      "name": "lib/apothecary-household-measures-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "033d684be656077d1f89583c66831f09ae0658e07dc631ccfe7d0c1fa62013d4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7773"
         }
       ]
     },
@@ -7318,6 +7339,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9680"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ethanol-proof-v1629.js",
+      "type": "file",
+      "name": "lib/ethanol-proof-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "357bf1e536ca08cbb25e1daf37caf985ec61d74dfad6d0c8f7f1bbbd1e4d5352"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10215"
         }
       ]
     },
@@ -14195,7 +14237,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e5251bf31a386e35aa617a4ae5ef53c968c76458e764ba121c34155c1d14c1c1"
+          "content": "8e70ed07d36b8754338edd1bb45fcb69e75fb0a77cdbbc6471e68db770f3125e"
         }
       ],
       "properties": [
@@ -14205,7 +14247,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2773694"
+          "value": "2775254"
         }
       ]
     },
@@ -27839,6 +27881,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/apothecary-household-measures-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/apothecary-household-measures-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "db112b48889382e8c7e99c2ac1e34337759b872e7efe59f3a8d7fa16cec79052"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1033"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/appeal-path-v1505.js",
       "type": "file",
       "name": "mcp/adapters/appeal-path-v1505.js",
@@ -33316,6 +33379,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2667"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ethanol-proof-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/ethanol-proof-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a5d1ed9a0195bd7df6ae586f2e034a69168a667d8f6a3b682c640bf0ce5554f8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2379"
         }
       ]
     },
@@ -50084,7 +50168,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d916994f9a7bc9917c98da0412c00f759d3cab99221d727989e619dc9d38dea0"
+          "content": "eabf4f1d619412ea5cf6d44cabdf0d1ba606fa8e24dbe79f2f25d565252782ef"
         }
       ],
       "properties": [
@@ -50094,7 +50178,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "129389"
+          "value": "129677"
         }
       ]
     },
@@ -54557,7 +54641,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "92ca4229d83e945dd654f58a50ce63f42ad1fa9b1890de21d22e8c3f8bcc49d0"
+          "content": "3c352b52b0e12cf6e638419448d52c07d754b1a6d63fbb4cbd54294ec7b19a1c"
         }
       ],
       "properties": [
@@ -54567,7 +54651,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "22884"
+          "value": "25318"
         }
       ]
     },
@@ -85416,6 +85500,7 @@
         "urn:sophiewell:file:source:lib/aortic-stenosis-stage-v844.js",
         "urn:sophiewell:file:source:lib/aospine-sacral-v1424.js",
         "urn:sophiewell:file:source:lib/api-potency-adjust-v1629.js",
+        "urn:sophiewell:file:source:lib/apothecary-household-measures-v1629.js",
         "urn:sophiewell:file:source:lib/appeal-path-v1505.js",
         "urn:sophiewell:file:source:lib/aqi-pm25-v1398.js",
         "urn:sophiewell:file:source:lib/arbovirus-admission-check-v1563.js",
@@ -85696,6 +85781,7 @@
         "urn:sophiewell:file:source:lib/erisa-claim-clock-v1503.js",
         "urn:sophiewell:file:source:lib/essex-lopresti-calcaneal-v1498.js",
         "urn:sophiewell:file:source:lib/estimators-v233.js",
+        "urn:sophiewell:file:source:lib/ethanol-proof-v1629.js",
         "urn:sophiewell:file:source:lib/eu-tirads-v796.js",
         "urn:sophiewell:file:source:lib/ewgsop2-v880.js",
         "urn:sophiewell:file:source:lib/f100-rutf-amount-v1549.js",
@@ -87612,6 +87698,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-stenosis-stage-v844.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aospine-sacral-v1424.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/api-potency-adjust-v1629.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/apothecary-household-measures-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/appeal-path-v1505.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aqi-pm25-v1398.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arbovirus-admission-check-v1563.js",
@@ -87873,6 +87960,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/erisa-claim-clock-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/essex-lopresti-calcaneal-v1498.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/estimators-v233.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ethanol-proof-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eu-tirads-v796.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ewgsop2-v880.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/f100-rutf-amount-v1549.js",
@@ -88775,7 +88863,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "138372c22e4b8032"
+      "value": "7263ac9914ca4ff5"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -88787,7 +88875,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3301"
+      "value": "3305"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

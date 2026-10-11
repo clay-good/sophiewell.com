@@ -11764,6 +11764,28 @@
       ],
       "tile": "meq-mmol-mg",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "alcohol proof",
+        "proof gallons",
+        "percent alcohol to proof",
+        "dilute 190 proof alcohol",
+        "alcohol excise tax per proof gallon"
+      ],
+      "tile": "ethanol-proof",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "grains to milligrams",
+        "apothecary units",
+        "fluid dram to ml",
+        "minims to ml",
+        "teaspoon to ml"
+      ],
+      "tile": "apothecary-household-measures",
+      "audience": "clinicians"
     }
   ]
 }

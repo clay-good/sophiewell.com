@@ -770,6 +770,8 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as ethanolProofV1629 from '../../lib/ethanol-proof-v1629.js';
+import * as apothecaryHouseholdMeasuresV1629 from '../../lib/apothecary-household-measures-v1629.js';
 import * as molecularWeightV1629 from '../../lib/molecular-weight-v1629.js';
 import * as saltBaseFactorV1629 from '../../lib/salt-base-factor-v1629.js';
 import * as meqMmolMgV1629 from '../../lib/meq-mmol-mg-v1629.js';
@@ -1661,6 +1663,8 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'ethanol-proof-v1629.js': ethanolProofV1629,
+  'apothecary-household-measures-v1629.js': apothecaryHouseholdMeasuresV1629,
   'molecular-weight-v1629.js': molecularWeightV1629,
   'salt-base-factor-v1629.js': saltBaseFactorV1629,
   'meq-mmol-mg-v1629.js': meqMmolMgV1629,
