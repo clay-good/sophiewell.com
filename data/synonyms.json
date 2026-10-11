@@ -11786,6 +11786,28 @@
       ],
       "tile": "apothecary-household-measures",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sodium chloride equivalent",
+        "e value isotonicity",
+        "make an eye drop isotonic",
+        "white vincent method",
+        "how much sodium chloride to make isotonic"
+      ],
+      "tile": "isotonicity-e-value",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "freezing point depression isotonicity",
+        "cryoscopic method",
+        "isotonic by freezing point",
+        "0.52 freezing point depression",
+        "adjust tonicity freezing point"
+      ],
+      "tile": "isotonicity-freezing-point",
+      "audience": "clinicians"
     }
   ]
 }

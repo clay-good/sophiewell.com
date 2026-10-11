@@ -504,3 +504,7 @@ experience**.
 > v1629, Alcohol Proof, Proof Gallons and Dilution — [spec-v1629](spec-v1629.md), which adds `ethanol-proof` — is 2077.)
 
 > v1629, Apothecary, Avoirdupois and Household Measures — [spec-v1629](spec-v1629.md), which adds `apothecary-household-measures` — is 2078.)
+
+> v1629, Isotonicity by Sodium Chloride Equivalent — [spec-v1629](spec-v1629.md), which adds `isotonicity-e-value` — is 2079.)
+
+> v1629, Isotonicity by Freezing-Point Depression — [spec-v1629](spec-v1629.md), which adds `isotonicity-freezing-point` — is 2080.)

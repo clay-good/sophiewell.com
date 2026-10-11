@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:7263ac99-14ca-5ff5-8b6d-fa842f75de18",
+  "serialNumber": "urn:uuid:d142ddc2-56af-5d05-8c56-13609c6a7257",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T05:15:37.252Z",
+    "timestamp": "2026-10-11T05:29:55.437Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2078 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2080 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "413367acc265297bd342dfb4f368a6dfc5f1fec079912051b205d8cc8ff64b08"
+          "content": "b4baeaa7731e6f37bea1dfde562569bee465732916628826bf71dcfc78c9cf9b"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "134311"
+          "value": "134424"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "386080030249178da40b937ec64800c91ec08d7091cd2b84dbd5c67adeab58a6"
+          "content": "826f5d3815651fe7c80121a418606fe625c5ab17986ad0bedfc18bac2889d0e2"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "594397"
+          "value": "594709"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "83538acdf1909cd9d9e72e3059bc11eac7db669230b60af64c0edb2f35bc93f4"
+          "content": "56ce24556a81df081358990a2b5514c5b3710362bcf887767bdc29ade9884e8a"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "260189"
+          "value": "260456"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "547cfd392672fbae44b064355b4a99561f044137d3ff3dcb7daa0e840c0898d8"
+          "content": "ece9f48cf75db77213e1650564e58e7e765a2f174df8626475db4e40b0fc344b"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "122123"
+          "value": "122261"
         }
       ]
     },
@@ -11501,6 +11501,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/isotonicity-e-value-v1629.js",
+      "type": "file",
+      "name": "lib/isotonicity-e-value-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bc247b77c6b330d199c72501c854bae95d3d301af55ccda092412445a09e5933"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6934"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/isotonicity-freezing-point-v1629.js",
+      "type": "file",
+      "name": "lib/isotonicity-freezing-point-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e3df27ba67f2050b6aca3c40e4a784b7cff2010ce1c6b984d54d8f72229ddc60"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4423"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/itemized-bill-check.js",
       "type": "file",
       "name": "lib/itemized-bill-check.js",
@@ -14237,7 +14279,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8e70ed07d36b8754338edd1bb45fcb69e75fb0a77cdbbc6471e68db770f3125e"
+          "content": "76cded1fc45e1344651f261bace020ac34ea7a9b215e1f7b8e4a6ba12427e548"
         }
       ],
       "properties": [
@@ -14247,7 +14289,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2775254"
+          "value": "2776711"
         }
       ]
     },
@@ -37079,6 +37121,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-e-value-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/isotonicity-e-value-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "732de067c5ae7721cce08897bcbce5c5a37d1ba3c3ba4ea2a8db0ce16b00e0b0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1367"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-freezing-point-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/isotonicity-freezing-point-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d9683c30d5935445d2a908c9d6c035b183abf17061d33a58366b6c6d2ef98926"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1220"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/jemt-papilla-v1487.js",
       "type": "file",
       "name": "mcp/adapters/jemt-papilla-v1487.js",
@@ -50168,7 +50252,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eabf4f1d619412ea5cf6d44cabdf0d1ba606fa8e24dbe79f2f25d565252782ef"
+          "content": "796e02170e7aca4ab6d68f85adf50fa9fabb260b2d34d873d69d27219e0774f6"
         }
       ],
       "properties": [
@@ -50178,7 +50262,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "129677"
+          "value": "129975"
         }
       ]
     },
@@ -54641,7 +54725,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3c352b52b0e12cf6e638419448d52c07d754b1a6d63fbb4cbd54294ec7b19a1c"
+          "content": "ea69b4f3576ff3b6b0bf85dd18e89d83f803e00eff30207d88e1ceeee4e585dd"
         }
       ],
       "properties": [
@@ -54651,7 +54735,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "25318"
+          "value": "27068"
         }
       ]
     },
@@ -85979,6 +86063,8 @@
         "urn:sophiewell:file:source:lib/isi-v726.js",
         "urn:sophiewell:file:source:lib/isis-v302.js",
         "urn:sophiewell:file:source:lib/isl-lymphedema-v539.js",
+        "urn:sophiewell:file:source:lib/isotonicity-e-value-v1629.js",
+        "urn:sophiewell:file:source:lib/isotonicity-freezing-point-v1629.js",
         "urn:sophiewell:file:source:lib/itemized-bill-check.js",
         "urn:sophiewell:file:source:lib/itemized-bill-worker.js",
         "urn:sophiewell:file:source:lib/jemt-papilla-v1487.js",
@@ -88136,6 +88222,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/isi-v726.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isis-v302.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isl-lymphedema-v539.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-e-value-v1629.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-freezing-point-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/jemt-papilla-v1487.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/jerger-tympanogram-v506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/jnet-v336.js",
@@ -88863,7 +88951,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "7263ac9914ca4ff5"
+      "value": "d142ddc256af2d05"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -88875,7 +88963,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3305"
+      "value": "3309"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

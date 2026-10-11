@@ -8938,6 +8938,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/apothecary-household-measures-v1629.js (spec-v1629: Apothecary, avoirdupois and household measures (NIST Handbook 44 Appendix C) — administrative disclaimer)
 - `apothecary-household-measures`
 
+### lib/isotonicity-e-value-v1629.js (spec-v1629: Isotonicity by sodium chloride equivalent and White-Vincent — administrative disclaimer)
+- `isotonicity-e-value`
+
+### lib/isotonicity-freezing-point-v1629.js (spec-v1629: Isotonicity by freezing-point depression — administrative disclaimer)
+- `isotonicity-freezing-point`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

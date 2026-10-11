@@ -1192,6 +1192,8 @@ const UTILITIES = [
   { id: 'meq-mmol-mg', name: 'Milligrams, Millimoles, Milliequivalents and Milliosmoles', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'ethanol-proof', name: 'Alcohol Proof, Proof Gallons and Dilution', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'apothecary-household-measures', name: 'Apothecary, Avoirdupois and Household Measures', group: 'Q', audiences: ['clinicians', 'educators', 'patients'], clinical: false },
+  { id: 'isotonicity-e-value', name: 'Isotonicity by Sodium Chloride Equivalent', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'isotonicity-freezing-point', name: 'Isotonicity by Freezing-Point Depression', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'refill-eligible-date', name: 'Earliest Refill Date', group: 'Q', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
   { id: 'overpayment-60day', name: '60-Day Overpayment Report-and-Return Clock', group: 'C', audiences: ['billers'], clinical: false },
   // spec-v82: patient responsibility & coordination of benefits. v78 computes

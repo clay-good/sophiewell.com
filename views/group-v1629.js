@@ -1,8 +1,8 @@
 // spec-v1629: renderers for the pharmacy bench-math tools (Group Q): alligation, dilution-c1v1,
 // serial-dilution, min-weighable-quantity, aliquot-method, specific-gravity, api-potency-adjust,
 // tablet-powder-source, buffer-ph, percent-ionized, dropper-calibration, suppository-displacement,
-// capsule-fill, formula-scale, molecular-weight, salt-base-factor, meq-mmol-mg, ethanol-proof and
-// apothecary-household-measures.
+// capsule-fill, formula-scale, molecular-weight, salt-base-factor, meq-mmol-mg, ethanol-proof,
+// apothecary-household-measures, isotonicity-e-value and isotonicity-freezing-point.
 
 import { el, clear } from '../lib/dom.js';
 import * as AL from '../lib/alligation-v1629.js';
@@ -24,6 +24,8 @@ import * as SB from '../lib/salt-base-factor-v1629.js';
 import * as MQ from '../lib/meq-mmol-mg-v1629.js';
 import * as EP from '../lib/ethanol-proof-v1629.js';
 import * as AH from '../lib/apothecary-household-measures-v1629.js';
+import * as IE from '../lib/isotonicity-e-value-v1629.js';
+import * as FP from '../lib/isotonicity-freezing-point-v1629.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -448,6 +450,34 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(AH.apothecaryHouseholdMeasures(args), o);
+    }));
+  },
+
+  'isotonicity-e-value'(root) {
+    const pairs = [['ie-mode', 'mode'], ['ie-solutes', 'solutes'], ['ie-vol', 'volumeMl'], ['ie-agent', 'agentE']];
+    selectField(root, 'What to work out', 'ie-mode', IE.MODES);
+    textareaField(root, 'Solutes, one per line: weight in grams, then its sodium chloride equivalent (E-value) from your reference', 'ie-solutes', '');
+    numField(root, 'Final volume (mL)', 'ie-vol', '');
+    const agent = numField(root, 'E-value of the tonicity agent to add (1 for sodium chloride itself)', 'ie-agent', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      agent.hidden = val('ie-mode') === 'white-vincent';
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(IE.isotonicityEValue(args), o);
+    }));
+  },
+
+  'isotonicity-freezing-point'(root) {
+    const pairs = [['fp-solutes', 'solutes'], ['fp-agent', 'agentDepression'], ['fp-vol', 'volumeMl']];
+    textareaField(root, 'Solutes, one per line: strength in % w/v, then the freezing-point depression of its 1% solution (°C) from your reference', 'fp-solutes', '');
+    numField(root, 'Freezing-point depression of a 1% solution of the adjusting agent (°C), from your reference', 'fp-agent', '');
+    numField(root, 'Final volume (mL)', 'fp-vol', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(FP.isotonicityFreezingPoint(args), o);
     }));
   },
 };

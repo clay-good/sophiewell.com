@@ -1,6 +1,6 @@
 # spec-v1629 — Pharmaceutical calculations and nonsterile compounding bench math
 
-**Status:** In progress, October 10, 2026: 19 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
+**Status:** In progress, October 11, 2026: 21 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A pharmacist or technician at the compounding bench does the same arithmetic every day: mix two
@@ -742,7 +742,7 @@ over the past year that the compounder selected"; the guidance's example is 500 
 
 ## Build status
 
-Updated October 10, 2026. 19 of 25 tools built.
+Updated October 11, 2026. 21 of 25 tools built.
 
 | Tool | Status |
 |---|---|
@@ -765,4 +765,6 @@ Updated October 10, 2026. 19 of 25 tools built.
 | 6. `salt-base-factor` | Built (group Q). A blank moiety count is taken as 1 and the result says so. The label's own two numbers as an alternative input are not built. The FDA naming guidance the spec cites for context was not re-read and is not cited. |
 | 19. `ethanol-proof` | Built (group Q). 27 CFR 30.11, 30.31(a) and 30.66 re-read in the eCFR and 26 U.S.C. 5001 in the 2024 edition on govinfo; all say what the spec says. The parts alcohol are computed as proof ÷ 2, so only the two parts-water values are entered. Table 6 is not shipped (the build gate stands: no hand-checked transcription exists). The tax rate is reader input; the result names the statute's three rates. |
 | 20. `apothecary-household-measures` | Built (group Q). NIST Handbook 44 (2026) Appendix C and 21 CFR 101.9(b)(5)(viii) re-read; every value matches. Volumes are derived from the gallon and masses from the grain, and agree with the digits the handbook prints. The handbook lists the teaspoon as 1⅓ fluid drams; the tool says that and does not claim more. |
-| 12, 13, 22 to 25 | Not built. Each needs a source re-read: the isotonicity paper (12, 13), Griffin (22), section 503A (23 to 25). |
+| 12. `isotonicity-e-value` | Built (group Q). The paper was re-read through the PubMed Central API and says what the spec quotes. **Corrections to the spec:** its authors are Umar AK, Wathoni N, Hasanah AN, Kurniawansyah IS and Abdassah M ("Kahar" is the method's name, not an author), and the citation is *J Pharm Bioallied Sci.* 2019;11(Suppl 4):S635-S649. White-Vincent is computed with 100 ÷ 0.9 unrounded, so the paper's worked formula gives 865.222 mL where the paper, using 111.1, prints 865.136; the result says so. The page example is that worked formula (four weights and E-values from the paper), so the example can compute. |
+| 13. `isotonicity-freezing-point` | Built (group Q). No preset for sodium chloride's 1% depression: the build gate stands (no second, primary source for 0.576 was read). The page example is a solute already past 0.52, which needs no agent value. |
+| 22 to 25 | Not built. Each needs a source re-read: Griffin (22), section 503A (23 to 25). |

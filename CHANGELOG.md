@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Isotonicity by Sodium Chloride Equivalent: the tonicity agent to add for a final volume, or the
+  isotonic volume by the White-Vincent method, from E-values you enter. A preparation already past
+  0.9% is reported as hypertonic, not as "add 0 g".
+- Isotonicity by Freezing-Point Depression: the adjusting agent to add to reach a depression of
+  0.52 °C, from 1% depressions you enter. Neither tool ships a table of constants. Both: see
+  docs/spec-v1629.md.
 - Alcohol Proof, Proof Gallons and Dilution: proof from percent by volume, proof gallons, the
   federal excise tax at a rate you enter, and the water to add to reduce proof by the Table 6
   method of 27 CFR 30.66. For the regulation's own two examples it prints the regulation's figure
