@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- PN Amino Acids: an amino acid order as g/kg/day beside the range on the product's own label
+  (Travasol 10%, Prosol 20%, TrophAmine 10%), with the product volume, the grams of nitrogen at
+  the label's own nitrogen content (not grams ÷ 6.25), and the Elcys amount when cysteine is added.
 - PN Order per Kilogram, GIR and Energy: a parenteral nutrition order restated per kilogram, with
   the glucose infusion rate, energy from dextrose, amino acids and lipid at the factors on their
   labels, and non-protein kcal per gram of nitrogen when you enter the nitrogen. No targets.

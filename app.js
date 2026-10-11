@@ -1201,6 +1201,7 @@ const UTILITIES = [
   { id: 'reconstitution-concentration', name: 'Reconstitution: Powder Volume and Resulting Strength', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'admixture-concentration', name: 'What Is Actually in the Bag (Admixture Strength)', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'lipid-emulsion-dose-check', name: 'Lipid Emulsion Dose and Rate Against the Label', group: 'Q', audiences: ['clinicians'], clinical: true },
+  { id: 'pn-amino-acid-order', name: 'PN Amino Acids: Dose, Nitrogen, Volume and Cysteine', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'cleanroom-class-check', name: 'Cleanroom Particle Count and Microbial Sample (FDA Table)', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'room-air-changes', name: 'Air Changes per Hour and Clearance Time', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'pn-aluminum-load', name: 'Aluminum in a PN Order (21 CFR 201.323)', group: 'Q', audiences: ['clinicians'], clinical: true },

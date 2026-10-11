@@ -175,6 +175,21 @@
     }
   },
   {
+    "label": "Elcys (cysteine hydrochloride), Exela",
+    "labeler": "EXELA PHARMA SCIENCES, LLC",
+    "setId": "52317b38-b2e6-4a1c-b5b0-43cada0d205e",
+    "tools": [
+      "pn-amino-acid-order"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2026-04-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "097b55a608fcaf8311a99134b10777cda5e55ce7bc54fab1b7f5e17f32b8f498"
+    }
+  },
+  {
     "label": "Fentanyl transdermal system",
     "labeler": "ALVOGEN",
     "setId": "242759ef-cb6d-4e3e-9f8d-5e31efa1f289",
@@ -310,6 +325,21 @@
     }
   },
   {
+    "label": "Prosol 20%, Baxter",
+    "labeler": "BAXTER HEALTHCARE CORPORATION",
+    "setId": "cc2ace81-5881-43f1-ba94-41b674adc2fc",
+    "tools": [
+      "pn-amino-acid-order"
+    ],
+    "splVersion": 16,
+    "publishedOn": "2026-09-24",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "800bb2919091f285364cfdb4c1806071ab577875a09a03e3801e630c90fe0928"
+    }
+  },
+  {
     "label": "Remicade (infliximab), Janssen",
     "labeler": "JANSSEN BIOTECH, INC.",
     "setId": "a0a046c1-056d-45a9-bfd9-13b47c24f257",
@@ -371,6 +401,37 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34089-3": "60036e085d717f984c2b74eb2f04d847eebc1a726ae8f35ec94116a4be28af78"
+    }
+  },
+  {
+    "label": "Travasol 10%, Baxter",
+    "labeler": "BAXTER HEALTHCARE CORPORATION",
+    "setId": "8543b5be-0f43-4891-9e56-d7c39fe839b5",
+    "tools": [
+      "pn-amino-acid-order"
+    ],
+    "splVersion": 16,
+    "publishedOn": "2025-02-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "6faa307432fef1b8c5e9eb02ed9be1a153224d39e5574badc5f873c9225f075d"
+    }
+  },
+  {
+    "label": "TrophAmine 10%, B. Braun",
+    "labeler": "B. BRAUN MEDICAL INC.",
+    "setId": "cb6d23ff-3ec5-445a-acbe-f88fd57949bf",
+    "tools": [
+      "pn-amino-acid-order"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-08-24",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "d0004ea67c3c40651fe551b227aa07a8807e5fbf6b55b9c38d5884c3d8f1515a",
+      "34089-3": "dbc60d45bbef5a72bc7a0cc6553d74d771c9dffd15a9609e28b5c82e3cd092ac"
     }
   },
   {

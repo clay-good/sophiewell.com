@@ -11962,6 +11962,17 @@
       ],
       "tile": "pn-order-summary",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tpn amino acid dose g per kg",
+        "grams of nitrogen in travasol",
+        "trophamine dose",
+        "cysteine elcys dose per gram amino acids",
+        "prosol nitrogen content"
+      ],
+      "tile": "pn-amino-acid-order",
+      "audience": "clinicians"
     }
   ]
 }

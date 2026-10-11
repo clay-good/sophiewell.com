@@ -1,6 +1,6 @@
 // spec-v1630: sterile compounding, IV admixture and drug storage. Group Q.
 // reconstitution-concentration, admixture-concentration, lipid-emulsion-dose-check, pn-aluminum-load,
-// pn-calcium-phosphate-check, pn-order-summary,
+// pn-calcium-phosphate-check, pn-order-summary, pn-amino-acid-order,
 // mean-kinetic-temperature,
 // in-use-discard-time, storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
@@ -11,6 +11,7 @@ import * as LE from '../lib/lipid-emulsion-dose-check-v1630.js';
 import * as PA from '../lib/pn-aluminum-load-v1630.js';
 import * as CP from '../lib/pn-calcium-phosphate-check-v1630.js';
 import * as IU from '../lib/in-use-discard-time-v1630.js';
+import * as AA from '../lib/pn-amino-acid-order-v1630.js';
 import * as PS from '../lib/pn-order-summary-v1630.js';
 import * as MK from '../lib/mean-kinetic-temperature-v1630.js';
 import * as SE from '../lib/storage-excursion-summary-v1630.js';
@@ -171,6 +172,25 @@ export const renderers = {
       // The vial's own figure is asked for only when the label figure is withheld.
       caOwn.hidden = !(r.withheld === 'calcium' || val('cp-caown') !== '');
       pOwn.hidden = !(r.withheld === 'phosphate' || val('cp-pown') !== '');
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+
+  'pn-amino-acid-order'(root) {
+    const pairs = [['aa-product', 'product'], ['aa-age', 'ageBand'], ['aa-weight', 'weight'], ['aa-wunit', 'weightUnit'], ['aa-order', 'order'], ['aa-ounit', 'orderUnit'], ['aa-cys', 'cysteine']];
+    selectField(root, 'Product', 'aa-product', AA.PRODUCT_OPTIONS);
+    selectField(root, 'Age band', 'aa-age', AA.AGE_BANDS);
+    numField(root, 'Patient weight', 'aa-weight', '');
+    selectField(root, 'Weight unit', 'aa-wunit', AA.WEIGHT_UNITS);
+    numField(root, 'Amino acids ordered', 'aa-order', '');
+    selectField(root, 'Ordered as', 'aa-ounit', AA.ORDER_UNITS);
+    selectField(root, 'Cysteine', 'aa-cys', AA.CYSTEINE);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = AA.pnAminoAcidOrder(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

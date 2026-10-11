@@ -1,6 +1,6 @@
 # spec-v1630 — Sterile compounding, IV admixture, parenteral nutrition, hazardous drugs and drug storage
 
-**Status:** In progress, October 11, 2026: 11 of 17 tools built (see Build status). 17 new tools; none is gated as a whole (tool 3 has two drugs and tool 12 two rows behind a build gate).
+**Status:** In progress, October 11, 2026: 12 of 17 tools built (see Build status). 17 new tools; none is gated as a whole (tool 3 has two drugs and tool 12 two rows behind a build gate).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 The IV-room pharmacist and technician check the same things all shift: what a vial becomes once
@@ -711,7 +711,7 @@ one figure to the CDC page and ships no part of the table.
 
 ## Build status
 
-Updated October 11, 2026. 11 of 17 tools built; the backfills are open.
+Updated October 11, 2026. 12 of 17 tools built; the backfills are open.
 
 | Tool | Status |
 |---|---|
@@ -726,4 +726,5 @@ Updated October 11, 2026. 11 of 17 tools built; the backfills are open.
 | 5. `lipid-emulsion-dose-check` | Built (group Q) on label rows. All five labels were re-read on October 11, 2026 at the versions the spec names; every maximum, rate, duration and energy figure matches. Clinolipid's Dosage and Administration section was added to the weekly watch (only its Description was watched before). The rate is the lipid's own mL/kg/hour in both routes, and inside an admixture the result says the label's figure is a direct infusion rate. Intralipid 30% is refused by Y-connector; its 0.125 g/kg/hour is applied from birth to under 2 years, as section 2 words it, and shown as text for older bands. Omegaven has no adult row and no share-of-energy sentence. The 500 mL first-day sentence and starting rates are shown or left to the label, not checked. When a label is withheld the arithmetic still shows (the product's g/mL is its name) and the comparison is made only against a maximum the reader enters. |
 | 12. `in-use-discard-time` | Built (group Q). CDC's page (dated March 26, 2024) was re-read: the 28-day sentence, the expiration-date cap, the single-dose text and the pointer for multi-dose vaccine vials are as the spec says; the page is under the weekly page watch. **Deviations:** three container choices, not five. The only limit the tool supplies is the 28 days. A pharmacy bulk package's hours and a spiked lipid container's hang time are label figures and are entered by the reader (the lipid hang times are checked in tool 5). An expiration date given as a month and year runs through the end of that month. The two gated USP <797> rows stay out. |
 | 7. `pn-order-summary` | Built (group Q) on label rows. Re-read on October 11, 2026: Dextrose 50% (Hospira, version 34) for 3.4 kcal/g and the 0.5 g/kg/hour sentence (added to the weekly watch, Dosage and Administration and Description); Clinimix (Baxter, the label `tpn-macro` already reads) for 4 kcal/g of amino acids; the lipid labels of tool 5 for kcal/mL. The ICU Medical dextrose label says the same 0.5 g/kg/hour, worded for glycosuria, and was read but is not a row. **Deviations:** dextrose is entered in grams only (`tpn-macro` converts a percent and a volume); nitrogen is reader input with no 6.25 default; when a factor's label is withheld the energy lines are withheld and the per-kilogram and GIR lines still show. |
-| 3, 4, 6, 10, 11, 13 | Not built. Each needs its labels or documents re-read and its figures placed on label rows as tools 5 and 9 do. |
+| 6. `pn-amino-acid-order` | Built (group Q) on label rows. Travasol (version 16), Prosol (16), TrophAmine (10) and Elcys (3) were re-read on October 11, 2026 and added to the weekly watch; every figure matches the spec. **Found at build:** the Prosol label has its own pediatric table with the same g/kg/day ranges as Travasol's (its last row reads "11 to 17 years"), so the ranges apply to both; TrophAmine is dosed by weight, not age (2 to 2.5 g/kg/day to 10 kg, then 20 to 25 g/day plus 1 to 1.25 g/day per kg over 10), and has no adult figure. **Deviations:** the Elcys age cut (12 years) does not line up with the amino acid tables' (10 or 11 years), so cysteine is its own three-way choice; a dose below the range is reported and not marked; "other product" entry is not built (`pn-order-summary` takes any product's nitrogen); the renal figures are left to the label. |
+| 3, 4, 10, 11, 13 | Not built. Each needs its labels or documents re-read and its figures placed on label rows as tools 5 and 9 do. |
