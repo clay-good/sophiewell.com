@@ -1040,6 +1040,12 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import riosordV1634 from './adapters/riosord-v1634.js';
+import relativeInfantDoseV1634 from './adapters/relative-infant-dose-v1634.js';
+import badriAdrRiskV1634 from './adapters/badri-adr-risk-v1634.js';
+import liverpoolAdrCausalityV1634 from './adapters/liverpool-adr-causality-v1634.js';
+import nccMerpIndexV1634 from './adapters/ncc-merp-index-v1634.js';
+import fdaAdverseEventReportClockV1634 from './adapters/fda-adverse-event-report-clock-v1634.js';
 import orRrToNntV1634 from './adapters/or-rr-to-nnt-v1634.js';
 import disproportionality2x2V1634 from './adapters/disproportionality-2x2-v1634.js';
 import icerDominanceV1634 from './adapters/icer-dominance-v1634.js';
@@ -2232,6 +2238,12 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['riosord-v1634', riosordV1634],
+  ['relative-infant-dose-v1634', relativeInfantDoseV1634],
+  ['badri-adr-risk-v1634', badriAdrRiskV1634],
+  ['liverpool-adr-causality-v1634', liverpoolAdrCausalityV1634],
+  ['ncc-merp-index-v1634', nccMerpIndexV1634],
+  ['fda-adverse-event-report-clock-v1634', fdaAdverseEventReportClockV1634],
   ['or-rr-to-nnt-v1634', orRrToNntV1634],
   ['disproportionality-2x2-v1634', disproportionality2x2V1634],
   ['icer-dominance-v1634', icerDominanceV1634],

@@ -770,6 +770,12 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as riosordV1634 from '../../lib/riosord-v1634.js';
+import * as relativeInfantDoseV1634 from '../../lib/relative-infant-dose-v1634.js';
+import * as badriAdrRiskV1634 from '../../lib/badri-adr-risk-v1634.js';
+import * as liverpoolAdrCausalityV1634 from '../../lib/liverpool-adr-causality-v1634.js';
+import * as nccMerpIndexV1634 from '../../lib/ncc-merp-index-v1634.js';
+import * as fdaAdverseEventReportClockV1634 from '../../lib/fda-adverse-event-report-clock-v1634.js';
 import * as orRrToNntV1634 from '../../lib/or-rr-to-nnt-v1634.js';
 import * as disproportionality2x2V1634 from '../../lib/disproportionality-2x2-v1634.js';
 import * as icerDominanceV1634 from '../../lib/icer-dominance-v1634.js';
@@ -1746,6 +1752,12 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'riosord-v1634.js': riosordV1634,
+  'relative-infant-dose-v1634.js': relativeInfantDoseV1634,
+  'badri-adr-risk-v1634.js': badriAdrRiskV1634,
+  'liverpool-adr-causality-v1634.js': liverpoolAdrCausalityV1634,
+  'ncc-merp-index-v1634.js': nccMerpIndexV1634,
+  'fda-adverse-event-report-clock-v1634.js': fdaAdverseEventReportClockV1634,
   'or-rr-to-nnt-v1634.js': orRrToNntV1634,
   'disproportionality-2x2-v1634.js': disproportionality2x2V1634,
   'icer-dominance-v1634.js': icerDominanceV1634,

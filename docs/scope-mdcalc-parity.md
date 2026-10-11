@@ -670,3 +670,15 @@ experience**.
 > v1634, Disproportionality From a 2×2 of Report Counts (ROR, PRR, IC) — [spec-v1634](spec-v1634.md), which adds `disproportionality-2x2` — is 2160.)
 
 > v1634, Incremental Cost-Effectiveness Ratio and Dominance — [spec-v1634](spec-v1634.md), which adds `icer-dominance` — is 2161.)
+
+> v1634, Liverpool ADR Causality Assessment (Gallagher 2011) — [spec-v1634](spec-v1634.md), which adds `liverpool-adr-causality` — is 2162.)
+
+> v1634, Medication Error Category A to I (NCC MERP Index) — [spec-v1634](spec-v1634.md), which adds `ncc-merp-index` — is 2163.)
+
+> v1634, FDA Postmarketing Adverse Event Report Deadlines (21 CFR 314.80, 600.80, 310.305) — [spec-v1634](spec-v1634.md), which adds `fda-adverse-event-report-clock` — is 2164.)
+
+> v1634, RIOSORD Opioid Overdose Risk Index (Veterans and Commercial Versions) — [spec-v1634](spec-v1634.md), which adds `riosord` — is 2165.)
+
+> v1634, Relative Infant Dose Through Breast Milk (FDA Draft Guidance) — [spec-v1634](spec-v1634.md), which adds `relative-infant-dose` — is 2166.)
+
+> v1634, BADRI Adverse Drug Reaction Risk in Hospitalized Older Adults — [spec-v1634](spec-v1634.md), which adds `badri-adr-risk` — is 2167.)

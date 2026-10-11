@@ -12784,6 +12784,50 @@
       ],
       "tile": "icer-dominance",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "liverpool"
+      ],
+      "tile": "liverpool-adr-causality",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "merp",
+        "nccmerp"
+      ],
+      "tile": "ncc-merp-index",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "postmarketing",
+        "icsr"
+      ],
+      "tile": "fda-adverse-event-report-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "riosord"
+      ],
+      "tile": "riosord",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lactation"
+      ],
+      "tile": "relative-infant-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "badri"
+      ],
+      "tile": "badri-adr-risk",
+      "audience": "clinicians"
     }
   ]
 }

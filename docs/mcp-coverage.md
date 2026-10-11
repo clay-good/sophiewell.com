@@ -9187,6 +9187,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/icer-dominance-v1634.js (spec-v1634: ICER and dominance (VA HERC) — administrative disclaimer)
 - `icer-dominance`
 
+### lib/liverpool-adr-causality-v1634.js (spec-v1634: Liverpool ADR causality assessment tool (Gallagher 2011) — clinical disclaimer)
+- `liverpool-adr-causality`
+
+### lib/ncc-merp-index-v1634.js (spec-v1634: NCC MERP Index for Categorizing Medication Errors — administrative disclaimer)
+- `ncc-merp-index`
+
+### lib/fda-adverse-event-report-clock-v1634.js (spec-v1634: FDA postmarketing adverse event report deadlines (21 CFR 314.80, 600.80, 310.305) — administrative disclaimer)
+- `fda-adverse-event-report-clock`
+
+### lib/riosord-v1634.js (spec-v1634: RIOSORD (Zedler 2015 veterans; Zedler 2018 commercial) — clinical disclaimer)
+- `riosord`
+
+### lib/relative-infant-dose-v1634.js (spec-v1634: Relative infant dose (FDA draft lactation guidance 2019) — clinical disclaimer)
+- `relative-infant-dose`
+
+### lib/badri-adr-risk-v1634.js (spec-v1634: BADRI (Tangiisuran 2014) — clinical disclaimer)
+- `badri-adr-risk`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

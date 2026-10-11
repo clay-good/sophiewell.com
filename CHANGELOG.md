@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- RIOSORD Opioid Overdose Risk Index (Veterans and Commercial Versions): the published points,
+  the risk class and its average predicted probability, with the case-control caveat.
+- Relative Infant Dose Through Breast Milk (FDA Draft Guidance): infant dosage and relative infant
+  dose at 150 and 200 mL/kg a day of milk. No cutoff is applied.
+- BADRI Adverse Drug Reaction Risk in Hospitalized Older Adults: five items, the paper's cutoff,
+  and both sets of validation figures the paper prints.
+- Liverpool ADR Causality Assessment (Gallagher 2011): the published flowchart, asked in order,
+  with the path taken.
+- Medication Error Category A to I (NCC MERP Index): the algorithm's questions in order, with the
+  Index's own definitions and copyright notice.
+- FDA Postmarketing Adverse Event Report Deadlines: the 15-day Alert report date, or the periodic
+  report schedule from the approval or license date (21 CFR 314.80, 600.80, 310.305).
 - NNT From an Odds Ratio or Relative Risk and a Baseline Risk: the published formula for each
   measure, the risk with treatment, and an interval that passes through infinity when the effect's
   interval includes no difference.

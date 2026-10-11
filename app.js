@@ -2733,6 +2733,12 @@ const UTILITIES = [
   { id: 'or-rr-to-nnt', name: 'NNT From an Odds Ratio or Relative Risk and a Baseline Risk', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'disproportionality-2x2', name: 'Disproportionality From a 2×2 of Report Counts (ROR, PRR, IC)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'icer-dominance', name: 'Incremental Cost-Effectiveness Ratio and Dominance', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'liverpool-adr-causality', name: 'Liverpool ADR Causality Assessment (Gallagher 2011)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ncc-merp-index', name: 'Medication Error Category A to I (NCC MERP Index)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'fda-adverse-event-report-clock', name: 'FDA Postmarketing Adverse Event Report Deadlines (21 CFR 314.80, 600.80, 310.305)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'riosord', name: 'RIOSORD Opioid Overdose Risk Index (Veterans and Commercial Versions)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'relative-infant-dose', name: 'Relative Infant Dose Through Breast Milk (FDA Draft Guidance)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'badri-adr-risk', name: 'BADRI Adverse Drug Reaction Risk in Hospitalized Older Adults', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

@@ -1230,6 +1230,12 @@
   <url><loc>https://sophiewell.com/tools/or-rr-to-nnt/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/disproportionality-2x2/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/icer-dominance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/liverpool-adr-causality/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/ncc-merp-index/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/fda-adverse-event-report-clock/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/riosord/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/relative-infant-dose/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/badri-adr-risk/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/chlorpromazine-equivalents/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/mean-airway-pressure/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/cerebroplacental-ratio/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
