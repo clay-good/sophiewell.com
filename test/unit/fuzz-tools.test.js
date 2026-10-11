@@ -770,6 +770,10 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as levothyroxineStartDoseV1633 from '../../lib/levothyroxine-start-dose-v1633.js';
+import * as aedFormulationSwitchV1633 from '../../lib/aed-formulation-switch-v1633.js';
+import * as transplantFormulationSwitchV1633 from '../../lib/transplant-formulation-switch-v1633.js';
+import * as labelFormulationSwitchV1633 from '../../lib/label-formulation-switch-v1633.js';
 import * as lamotrigineTitrationCalendarV1633 from '../../lib/lamotrigine-titration-calendar-v1633.js';
 import * as labelTitrationCalendarV1633 from '../../lib/label-titration-calendar-v1633.js';
 import * as esaConversionV1633 from '../../lib/esa-conversion-v1633.js';
@@ -1732,6 +1736,10 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'levothyroxine-start-dose-v1633.js': levothyroxineStartDoseV1633,
+  'aed-formulation-switch-v1633.js': aedFormulationSwitchV1633,
+  'transplant-formulation-switch-v1633.js': transplantFormulationSwitchV1633,
+  'label-formulation-switch-v1633.js': labelFormulationSwitchV1633,
   'lamotrigine-titration-calendar-v1633.js': lamotrigineTitrationCalendarV1633,
   'label-titration-calendar-v1633.js': labelTitrationCalendarV1633,
   'esa-conversion-v1633.js': esaConversionV1633,

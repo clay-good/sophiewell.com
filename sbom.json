@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1cec2775-9fab-55d8-840d-666ad6616b98",
+  "serialNumber": "urn:uuid:8a71cadc-e20d-58f9-834b-db82daff7cd9",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T19:10:03.848Z",
+    "timestamp": "2026-10-11T19:27:02.403Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2147 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2151 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "492fe4101c9a5e3f939928834e76f68ae5643f0f12ed5d1700e55a4130f9b8c3"
+          "content": "fbcd8b6171b81bb5506691424bd43330dfa5293cc12fcc504894a913ae1170c0"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "138731"
+          "value": "139050"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7534093f31ef2572aebaed038f3f543be468998cbeae6a635222b5847baa282f"
+          "content": "770f8bb1518832251845288792359af1e84471c1a48e4f26f23657004386d49d"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "605571"
+          "value": "606293"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "24eae0fb655675aefe0a65f508498dab090ed796672bea0b2c25b252ee24ac17"
+          "content": "cad89021e93273fa5c3c8b29ec9683774b657b47bc167e981f0e6fe012787973"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "269294"
+          "value": "269837"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bdfb054615e4df495555b9450a7ab6a478d6671229d618949fc485e882f25ae3"
+          "content": "cafd3e68b5fdac021100b2f5389b6e1b307c63fe09682cbb60cc44b6e8aa26e8"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127299"
+          "value": "127677"
         }
       ]
     },
@@ -913,6 +913,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4871"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/aed-formulation-switch-v1633.js",
+      "type": "file",
+      "name": "lib/aed-formulation-switch-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e9eedbe4b548692c05e1fce52dc3d5c563c03d90cb1fc272be70faf4540f447a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11888"
         }
       ]
     },
@@ -13061,7 +13082,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a823e1d9c5b5cb60f40d547458d7f278da13f6726c9327b01d6a06c091be16c3"
+          "content": "d4f13bdd5c33ad6c479c96ee73b1ad85da3fd922917bbb9f263d080e1f677254"
         }
       ],
       "properties": [
@@ -13071,7 +13092,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "36115"
+          "value": "38928"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/label-formulation-switch-v1633.js",
+      "type": "file",
+      "name": "lib/label-formulation-switch-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9255"
         }
       ]
     },
@@ -13660,6 +13702,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4146"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/levothyroxine-start-dose-v1633.js",
+      "type": "file",
+      "name": "lib/levothyroxine-start-dose-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b4d57bf8555bdb39d655e2c0b7ec07d485ddc1db5a2cfaa2a53da2f6b6d673fe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8758"
         }
       ]
     },
@@ -15329,7 +15392,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "95ed3a43b48f0b3081853b2c1cb58e5bd556596298302a5e346bef13c9427b2d"
+          "content": "1f10afc0240707d0ba392a533e9a3c6f579a058904a1439e5cd3b6ba6630f099"
         }
       ],
       "properties": [
@@ -15339,7 +15402,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2855933"
+          "value": "2860989"
         }
       ]
     },
@@ -25802,6 +25865,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/transplant-formulation-switch-v1633.js",
+      "type": "file",
+      "name": "lib/transplant-formulation-switch-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0e9ef9c63a49bb29fcf09a467a035861ed391f1e718eca09443be26e29a928a2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7426"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/trauma-v108.js",
       "type": "file",
       "name": "lib/trauma-v108.js",
@@ -28906,6 +28990,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "898"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aed-formulation-switch-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/aed-formulation-switch-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ada1f578c37184dd8a57bcddd3db4fd7f3c4f15cc32c745fe7322ff3887c8c6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1228"
         }
       ]
     },
@@ -39977,6 +40082,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/label-formulation-switch-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/label-formulation-switch-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "205bd2786f92fdca03f59ec3afdb5102aa60e7b17e149bfdc567d88087c28d5c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1206"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/label-titration-calendar-v1633.js",
       "type": "file",
       "name": "mcp/adapters/label-titration-calendar-v1633.js",
@@ -40540,6 +40666,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1454"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/levothyroxine-start-dose-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/levothyroxine-start-dose-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1907845bf298e067de640bbc4cba238cc48e3eacaf8cbec8a77c5770020ef5f4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1277"
         }
       ]
     },
@@ -51044,6 +51191,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/transplant-formulation-switch-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/transplant-formulation-switch-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1a4dcac471f6e54b97a289acd415bfea5bd2fc3ba4426cb25df4ab6855df8c5d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1177"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/trauma-v108.js",
       "type": "file",
       "name": "mcp/adapters/trauma-v108.js",
@@ -53171,7 +53339,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a35443a463af63d6c40f46521794c86366b92e8399d115af379d13cc1c878122"
+          "content": "51d6c71bdafadd850edd6758c2e0f9d632f385491e28359dbdda2791b2219f7f"
         }
       ],
       "properties": [
@@ -53181,7 +53349,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "139506"
+          "value": "140138"
         }
       ]
     },
@@ -57749,7 +57917,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "539304dc1542ff4608fe48dae36191d171cf0707d87611b72061e573d9972fa9"
+          "content": "6e35c2c41e499dd9573328ed8e92afc23ef176362824f76de537c76b11469be6"
         }
       ],
       "properties": [
@@ -57759,7 +57927,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "18949"
+          "value": "22341"
         }
       ]
     },
@@ -88562,6 +88730,7 @@
         "urn:sophiewell:file:source:lib/adiposity-v270.js",
         "urn:sophiewell:file:source:lib/admixture-concentration-v1630.js",
         "urn:sophiewell:file:source:lib/adult-ett-depth-v1412.js",
+        "urn:sophiewell:file:source:lib/aed-formulation-switch-v1633.js",
         "urn:sophiewell:file:source:lib/af-stages-2023-v839.js",
         "urn:sophiewell:file:source:lib/ahlback-knee-oa-v480.js",
         "urn:sophiewell:file:source:lib/airway-resistance-v927.js",
@@ -89141,6 +89310,7 @@
         "urn:sophiewell:file:source:lib/lab-interpret.js",
         "urn:sophiewell:file:source:lib/label-dose.js",
         "urn:sophiewell:file:source:lib/label-editions.js",
+        "urn:sophiewell:file:source:lib/label-formulation-switch-v1633.js",
         "urn:sophiewell:file:source:lib/label-row.js",
         "urn:sophiewell:file:source:lib/label-titration-calendar-v1633.js",
         "urn:sophiewell:file:source:lib/labor-care-guide-alert-v1558.js",
@@ -89169,6 +89339,7 @@
         "urn:sophiewell:file:source:lib/leprosy-reaction-prednisolone-v1561.js",
         "urn:sophiewell:file:source:lib/letournel-acetabulum-v466.js",
         "urn:sophiewell:file:source:lib/levine-edwards-v411.js",
+        "urn:sophiewell:file:source:lib/levothyroxine-start-dose-v1633.js",
         "urn:sophiewell:file:source:lib/lf-mda-regimen-v1562.js",
         "urn:sophiewell:file:source:lib/li-rads-v327.js",
         "urn:sophiewell:file:source:lib/lichtiger-index-v663.js",
@@ -89747,6 +89918,7 @@
         "urn:sophiewell:file:source:lib/trachoma-grade-v1561.js",
         "urn:sophiewell:file:source:lib/tranexamic-acid-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/transfusion-v292.js",
+        "urn:sophiewell:file:source:lib/transplant-formulation-switch-v1633.js",
         "urn:sophiewell:file:source:lib/trauma-v108.js",
         "urn:sophiewell:file:source:lib/traumaclass-v109.js",
         "urn:sophiewell:file:source:lib/traynelis-v448.js",
@@ -90838,6 +91010,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/adiposity-v270.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/admixture-concentration-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/adult-ett-depth-v1412.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/aed-formulation-switch-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/af-stages-2023-v839.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ahlback-knee-oa-v480.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/airway-resistance-v927.js",
@@ -91365,6 +91538,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/kyoto-gastritis-v1442.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/la-esophagitis-v318.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lab-interpret.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/label-formulation-switch-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/label-titration-calendar-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/labor-care-guide-alert-v1558.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lachman-acl-v355.js",
@@ -91392,6 +91566,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-reaction-prednisolone-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/letournel-acetabulum-v466.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/levine-edwards-v411.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/levothyroxine-start-dose-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lf-mda-regimen-v1562.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/li-rads-v327.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lichtiger-index-v663.js",
@@ -91892,6 +92067,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/trachoma-grade-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tranexamic-acid-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/transfusion-v292.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/transplant-formulation-switch-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/trauma-v108.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/traumaclass-v109.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/traynelis-v448.js",
@@ -92097,7 +92273,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1cec27759fabe5d8"
+      "value": "8a71cadce20d18f9"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -92109,7 +92285,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3452"
+      "value": "3460"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -2718,6 +2718,10 @@ const UTILITIES = [
   { id: 'iv-iron-course', name: 'IV Iron Course by Product (FDA Labels)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lamotrigine-titration-calendar', name: 'Lamotrigine Titration Calendar (FDA Label)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'label-titration-calendar', name: 'Step-Up Titration Calendar (Label Schedules or Your Own Steps)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'aed-formulation-switch', name: 'Antiepileptic Formulation and Route Switch (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'transplant-formulation-switch', name: 'Tacrolimus, Cyclosporine and Mycophenolate Product Switch (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'label-formulation-switch', name: 'Formulation Switches Stated on the Label: Cardiac and Other (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'levothyroxine-start-dose', name: 'Levothyroxine Starting Dose and Titration Step (FDA Label)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

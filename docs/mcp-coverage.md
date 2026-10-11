@@ -9145,6 +9145,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/label-titration-calendar-v1633.js (spec-v1633: Step-up titration calendar (five label rows and custom steps) — clinical disclaimer)
 - `label-titration-calendar`
 
+### lib/aed-formulation-switch-v1633.js (spec-v1633: Antiepileptic formulation and route switch (six label rows) — clinical disclaimer)
+- `aed-formulation-switch`
+
+### lib/transplant-formulation-switch-v1633.js (spec-v1633: Transplant formulation switch (four label rows) — clinical disclaimer)
+- `transplant-formulation-switch`
+
+### lib/label-formulation-switch-v1633.js (spec-v1633: Label formulation switch: digoxin, carvedilol, methylphenidate, loop diuretics (four label rows) — clinical disclaimer)
+- `label-formulation-switch`
+
+### lib/levothyroxine-start-dose-v1633.js (spec-v1633: Levothyroxine starting dose and titration step (one label row) — clinical disclaimer)
+- `levothyroxine-start-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

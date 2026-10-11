@@ -336,6 +336,22 @@
     }
   },
   {
+    "label": "Bumetanide tablets, Sun",
+    "labeler": "SUN PHARMACEUTICAL INDUSTRIES, INC.",
+    "setId": "5c753aae-77b7-4add-8453-385a8f62d7db",
+    "tools": [
+      "label-formulation-switch"
+    ],
+    "splVersion": 5,
+    "publishedOn": "2026-03-25",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "5b8ef1524c6d4e8772018faf2e5083bee90ee2ddbd3ea69c20c7e07ef8e45dd3",
+      "34090-1": "9b28973bc8430be7cd0243aa5d0d98624ecf499c89c59dbda3fd0ea8b5a28e52"
+    }
+  },
+  {
     "label": "Busulfan injection, Sagent",
     "labeler": "SAGENT PHARMACEUTICALS",
     "setId": "086a715e-4958-4bb5-9ebd-86171e6b6203",
@@ -459,6 +475,21 @@
     }
   },
   {
+    "label": "CellCept (mycophenolate mofetil)",
+    "labeler": "GENENTECH, INC.",
+    "setId": "37241e87-4af4-4dc3-a1aa-ea6f20d8dc40",
+    "tools": [
+      "transplant-formulation-switch"
+    ],
+    "splVersion": 51,
+    "publishedOn": "2026-08-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "51554fcd8081e3b830ad4be6dbb362a675f9ddc1679c46ba2fc3f62f409db705"
+    }
+  },
+  {
     "label": "Cephalexin capsules, Aurobindo",
     "labeler": "AUROBINDO PHARMA LIMITED",
     "setId": "8e28f049-6110-4473-830f-c494191a7197",
@@ -479,7 +510,8 @@
     "setId": "d4c36fad-0ba2-4cd4-9c5e-dcf843f38a5a",
     "tools": [
       "iv-label-rate-check",
-      "fosphenytoin-load-rate"
+      "fosphenytoin-load-rate",
+      "aed-formulation-switch"
     ],
     "splVersion": 38,
     "publishedOn": "2025-08-29",
@@ -620,6 +652,36 @@
     }
   },
   {
+    "label": "Concerta (methylphenidate)",
+    "labeler": "JANSSEN PHARMACEUTICALS, INC.",
+    "setId": "1a88218c-5b18-4220-8f56-526de1a276cd",
+    "tools": [
+      "label-formulation-switch"
+    ],
+    "splVersion": 30,
+    "publishedOn": "2026-04-22",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "a79cac31e7e84545a5ea70456ca3ffe4d33fadf63fcffb93ca030c23b913ab61"
+    }
+  },
+  {
+    "label": "Coreg CR (carvedilol phosphate)",
+    "labeler": "WAYLIS THERAPEUTICS LLC",
+    "setId": "d3625d78-6eb6-41fe-8f6f-664965c104c4",
+    "tools": [
+      "label-formulation-switch"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2025-04-28",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "9eb0f07fcba07683601e0e96aca88ff3ebbb995dd46058d18e2f4f38c4e8c4a4"
+    }
+  },
+  {
     "label": "Crestor (rosuvastatin), AstraZeneca",
     "labeler": "ASTRAZENECA PHARMACEUTICALS LP",
     "setId": "325a5d0e-9a72-4015-9fcd-1655fb504cee",
@@ -681,6 +743,21 @@
     }
   },
   {
+    "label": "Depakote ER (divalproex sodium)",
+    "labeler": "ABBVIE INC.",
+    "setId": "0dc024ce-efc8-4690-7cb5-639c728fccac",
+    "tools": [
+      "aed-formulation-switch"
+    ],
+    "splVersion": 1658,
+    "publishedOn": "2026-04-13",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "9e3fd7099dfc743745faa08ccadaaaa16dabbfb651dfb6c8e4b1d5997965de9e"
+    }
+  },
+  {
     "label": "Dextrose 50% injection, Hospira",
     "labeler": "HOSPIRA, INC.",
     "setId": "4ed365da-4e62-4329-c1b9-c197ab4fb6e1",
@@ -717,7 +794,8 @@
     "setId": "dfac7f13-28be-423d-9389-9089da29da17",
     "tools": [
       "digoxin",
-      "digoxin-label-dose"
+      "digoxin-label-dose",
+      "label-formulation-switch"
     ],
     "splVersion": 20,
     "publishedOn": "2026-08-17",
@@ -741,6 +819,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "d713b5aeadc67a1503e02c36445043298c7037398f2f11ea0207b1b2f005c179"
+    }
+  },
+  {
+    "label": "Dilantin Infatabs (phenytoin)",
+    "labeler": "PARKE-DAVIS DIV OF PFIZER INC",
+    "setId": "ca119a89-2394-4d34-8078-cd1fa4e8e2f1",
+    "tools": [
+      "aed-formulation-switch"
+    ],
+    "splVersion": 58,
+    "publishedOn": "2026-05-21",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "478733506c9896a2023b0bf37a04fd4b506fdbe9ba027662770e1bc0d0992f5a"
     }
   },
   {
@@ -806,6 +899,22 @@
     "sections": {
       "34068-7": "fa8924c127588623fbbcbc24ad8f9912e19f78632cfb131a759bed1caaa6f8dc",
       "43684-0": "547dc73f83147f71928d30d66f6caa5090da633d908e3b946023849a38eaea3f"
+    }
+  },
+  {
+    "label": "Envarsus XR (tacrolimus extended-release)",
+    "labeler": "VELOXIS PHARMACEUTICALS, INC",
+    "setId": "de2315b0-6344-43ac-9aea-3e3b68d828e7",
+    "tools": [
+      "transplant-formulation-switch"
+    ],
+    "splVersion": 16,
+    "publishedOn": "2025-03-03",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "63edc1cfc99e51aa65f9b60d211be79f67b435c98727b2180e8d05ad3af445b2",
+      "43678-2": "5b66bdb18ac0a4eacf561b824eb3dd8bbc5f6fba1f847ac1313e6d0b322533e5"
     }
   },
   {
@@ -1198,6 +1307,21 @@
     }
   },
   {
+    "label": "Keppra injection (levetiracetam)",
+    "labeler": "UCB, INC.",
+    "setId": "c6d5784d-abf9-45fe-ac5a-d5c53bd50f7e",
+    "tools": [
+      "aed-formulation-switch"
+    ],
+    "splVersion": 29,
+    "publishedOn": "2025-07-02",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "2db67b35f188b72e9ebb976cdee81f76f0502d85cc42c7bfd45e9c7c9c95400c"
+    }
+  },
+  {
     "label": "Ketorolac tromethamine injection, Hospira",
     "labeler": "HOSPIRA, INC.",
     "setId": "8accbb78-fc64-45d5-69b0-35c23a1d2a2e",
@@ -1503,6 +1627,22 @@
     }
   },
   {
+    "label": "Myfortic (mycophenolic acid)",
+    "labeler": "NOVARTIS PHARMACEUTICALS CORPORATION",
+    "setId": "eed26501-890d-4ff6-88e7-6dbea4726e53",
+    "tools": [
+      "transplant-formulation-switch"
+    ],
+    "splVersion": 36,
+    "publishedOn": "2026-08-11",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34067-9": "6a2548517ae0bd150989ef6e3b97e863a2f1f01739d2e7892c6edb543fbdbf16",
+      "34090-1": "19faa237bf95b044f344d6085e2ae943e8b3746cbe4a049bdaf227290ca311e0"
+    }
+  },
+  {
     "label": "Myrbetriq (mirabegron), Astellas",
     "labeler": "ASTELLAS PHARMA US, INC.",
     "setId": "ba9e9e15-e666-4c56-9271-2e24739cfa2d",
@@ -1515,6 +1655,22 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "02941fc27a66ce62769922bfe80e9f1dc48a59b393eee397ca41eddc125927e1"
+    }
+  },
+  {
+    "label": "Neoral (cyclosporine, modified)",
+    "labeler": "NOVARTIS PHARMACEUTICALS CORPORATION",
+    "setId": "94461af3-11f1-4670-95d4-2965b9538ae3",
+    "tools": [
+      "transplant-formulation-switch"
+    ],
+    "splVersion": 30,
+    "publishedOn": "2026-08-11",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "5e453c9466edf6888d9d9a8058fe44398722e3119c7ed780a7155e7e96085079",
+      "34071-1": "a094477e3765ec5301f8b0a4a40a22ac91c94495db067497702a2fac08ab6e62"
     }
   },
   {
@@ -1979,6 +2135,22 @@
     }
   },
   {
+    "label": "Synthroid (levothyroxine sodium)",
+    "labeler": "ABBVIE INC.",
+    "setId": "1e11ad30-1041-4520-10b0-8f9d30d30fcc",
+    "tools": [
+      "levothyroxine-start-dose"
+    ],
+    "splVersion": 1537,
+    "publishedOn": "2024-02-29",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "d65240409f6ef8df919f9d0b7bb86b2312e3f775991e42fcb1152d1124d75fba",
+      "43678-2": "50520ca02cbdad0db251aa55ee1d4c2dbde5a9aec4d2316f5f459fb70ad264f9"
+    }
+  },
+  {
     "label": "Tamiflu (oseltamivir), Genentech",
     "labeler": "GENENTECH, INC.",
     "setId": "ee3c9555-60f2-4f82-a760-11983c86e97b",
@@ -2021,6 +2193,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "02de87a599d3e4f30b7accc157ba9ed93aff541f37cf820907346dcb44877d1b"
+    }
+  },
+  {
+    "label": "Tegretol (carbamazepine)",
+    "labeler": "NOVARTIS PHARMACEUTICALS CORPORATION",
+    "setId": "8d409411-aa9f-4f3a-a52c-fbcb0c3ec053",
+    "tools": [
+      "aed-formulation-switch"
+    ],
+    "splVersion": 39,
+    "publishedOn": "2026-08-21",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "9f40845998fdb0415f8b19e6ec0ea1fa415af04903c0a9a844ab579e453b9192"
     }
   },
   {
@@ -2283,6 +2470,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "13a270286bc75fc7240a2ae615ceab679fdd3f902dfd60ec54cb78ad24f72c13"
+    }
+  },
+  {
+    "label": "Valproate sodium injection, Sagent",
+    "labeler": "SAGENT PHARMACEUTICALS",
+    "setId": "8d5fc1c1-d3c0-497e-971b-6c4dba9a3fad",
+    "tools": [
+      "aed-formulation-switch"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2026-06-22",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "4bc8000af2eb777a68744d5ace7cac937889a046ec36838b817246f3f12ec3ac"
     }
   },
   {

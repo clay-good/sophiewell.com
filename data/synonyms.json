@@ -12600,8 +12600,7 @@
       "phrases": [
         "lamotrigine",
         "lamictal",
-        "lamictal xr",
-        "lamotrigine starting dose with valproate"
+        "lamictal xr"
       ],
       "tile": "lamotrigine-titration-calendar",
       "audience": "clinicians"
@@ -12619,6 +12618,60 @@
         "step up titration calendar by week"
       ],
       "tile": "label-titration-calendar",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "depakote",
+        "valproate",
+        "tegretol",
+        "carbamazepine",
+        "depakote to depakote er",
+        "depakote er conversion",
+        "keppra iv to po conversion",
+        "phenytoin to fosphenytoin conversion"
+      ],
+      "tile": "aed-formulation-switch",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tacrolimus",
+        "prograf",
+        "envarsus",
+        "cyclosporine",
+        "neoral",
+        "sandimmune",
+        "mycophenolate",
+        "cellcept",
+        "myfortic"
+      ],
+      "tile": "transplant-formulation-switch",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "carvedilol",
+        "coreg",
+        "coreg cr",
+        "concerta",
+        "methylphenidate",
+        "ritalin",
+        "bumetanide",
+        "bumex",
+        "lasix to bumex conversion"
+      ],
+      "tile": "label-formulation-switch",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "levothyroxine",
+        "synthroid",
+        "levothyroxine weight based dose",
+        "synthroid dose by weight"
+      ],
+      "tile": "levothyroxine-start-dose",
       "audience": "clinicians"
     }
   ]

@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Antiepileptic Formulation and Route Switch (FDA Labels): Depakote to Depakote ER by the label's
+  table, valproate, levetiracetam, carbamazepine and fosphenytoin switches, and the drug-content
+  difference between phenytoin free acid and sodium salt.
+- Tacrolimus, Cyclosporine and Mycophenolate Product Switch (FDA Labels): what each label states,
+  including where it warns against a milligram-for-milligram switch and gives no dose.
+- Formulation Switches Stated on the Label: Cardiac and Other (FDA Labels): digoxin intravenous and
+  tablets, carvedilol to Coreg CR, methylphenidate to Concerta, and furosemide to bumetanide.
+- Levothyroxine Starting Dose and Titration Step (FDA Label): the Synthroid label's dose by weight
+  for adults and by age row for children, with the tablet strengths either side.
 - Epoetin to Aranesp or Mircera Starting Dose (FDA Labels): the table row for the weekly dose
   entered, adult or pediatric, with the label's interval.
 - IV Iron Course by Product (FDA Labels): each dose in mg and mL, the spacing and the total for

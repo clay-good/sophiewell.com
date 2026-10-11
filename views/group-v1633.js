@@ -2,7 +2,8 @@
 // anticoag-switch-clock, doac-periprocedural-timing, fentanyl-patch-initial-dose,
 // methadone-label-conversion, er-opioid-label-start, buprenorphine-oud-product-switch,
 // basal-insulin-switch, taper-calendar, esa-conversion, iv-iron-course,
-// lamotrigine-titration-calendar, label-titration-calendar.
+// lamotrigine-titration-calendar, label-titration-calendar, aed-formulation-switch,
+// transplant-formulation-switch, label-formulation-switch, levothyroxine-start-dose.
 
 import { el, clear } from '../lib/dom.js';
 import * as AS from '../lib/anticoag-switch-clock-v1633.js';
@@ -17,6 +18,10 @@ import * as ES from '../lib/esa-conversion-v1633.js';
 import * as IC from '../lib/iv-iron-course-v1633.js';
 import * as LT from '../lib/lamotrigine-titration-calendar-v1633.js';
 import * as LC from '../lib/label-titration-calendar-v1633.js';
+import * as AF from '../lib/aed-formulation-switch-v1633.js';
+import * as TF from '../lib/transplant-formulation-switch-v1633.js';
+import * as LF from '../lib/label-formulation-switch-v1633.js';
+import * as LX from '../lib/levothyroxine-start-dose-v1633.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -297,6 +302,59 @@ export const renderers = {
       const r = LC.labelTitrationCalendar(args, new Date());
       show(r, o);
       if (r.valid && r.rows) table(o, 'Schedule', ['Step', 'From', 'To', 'Dose'], r.rows.map((x) => [x.step, x.from, x.to === null ? 'onward' : x.to, x.dose]));
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'aed-formulation-switch'(root) {
+    const pairs = [['afs-switch', 'switch'], ['afs-dose', 'dailyDose']];
+    selectField(root, 'Drug and switch', 'afs-switch', AF.SWITCHES);
+    numField(root, 'Current total daily dose, mg (phenytoin to fosphenytoin: mg PE)', 'afs-dose', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = AF.aedFormulationSwitch(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'transplant-formulation-switch'(root) {
+    const pairs = [['tfs-switch', 'switch'], ['tfs-dose', 'dailyDose']];
+    selectField(root, 'Drug and switch', 'tfs-switch', TF.SWITCHES);
+    numField(root, 'Current total daily dose, mg', 'tfs-dose', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = TF.transplantFormulationSwitch(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'label-formulation-switch'(root) {
+    const pairs = [['lfs-switch', 'switch'], ['lfs-dose', 'dose']];
+    selectField(root, 'Drug and switch', 'lfs-switch', LF.SWITCHES);
+    numField(root, 'Current dose (digoxin in mcg; carvedilol and methylphenidate: the mg taken at each administration; diuretics in mg)', 'lfs-dose', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = LF.labelFormulationSwitch(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'levothyroxine-start-dose'(root) {
+    const pairs = [['lsd-group', 'group'], ['lsd-weight', 'weightKg'], ['lsd-hyper', 'hyperactivityRisk']];
+    selectField(root, 'Patient group', 'lsd-group', LX.GROUPS);
+    numField(root, 'Weight, kg', 'lsd-weight', '');
+    selectField(root, 'Children: at risk for hyperactivity', 'lsd-hyper', LX.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = LX.levothyroxineStartDose(args, new Date());
+      show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
   },
