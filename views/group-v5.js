@@ -189,6 +189,7 @@ export const renderers = {
     root.appendChild(field('Current Hb (g/dL)', 'hb'));
     root.appendChild(field('Target Hb (g/dL)', 'tgt', { value: 15 }));
     root.appendChild(field('Iron stores override (mg, optional)', 'stores'));
+    root.appendChild(el('p', { class: 'muted', text: 'This is the Ganzoni formula on actual body weight. The INFeD (iron dextran) label uses a different formula, on lean body weight, and each IV iron product has its own labeled course.' }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const sRaw = str('stores');

@@ -9178,6 +9178,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hf-gdmt-target-percent-v1633.js (spec-v1633: Percent of guideline target dose in HFrEF (2022 AHA/ACC/HFSA Table 14) — clinical disclaimer)
 - `hf-gdmt-target-percent`
 
+### lib/or-rr-to-nnt-v1634.js (spec-v1634: NNT from an odds ratio or relative risk (Mendes 2017; Altman 1998) — clinical disclaimer)
+- `or-rr-to-nnt`
+
+### lib/disproportionality-2x2-v1634.js (spec-v1634: Disproportionality statistics from a 2x2 (EMA/849944/2016; Noren 2013) — clinical disclaimer)
+- `disproportionality-2x2`
+
+### lib/icer-dominance-v1634.js (spec-v1634: ICER and dominance (VA HERC) — administrative disclaimer)
+- `icer-dominance`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- NNT From an Odds Ratio or Relative Risk and a Baseline Risk: the published formula for each
+  measure, the risk with treatment, and an interval that passes through infinity when the effect's
+  interval includes no difference.
+- Disproportionality From a 2×2 of Report Counts (ROR, PRR, IC): the reporting odds ratio with its
+  interval, the proportional reporting ratio, the information component, and each EudraVigilance
+  signal criterion stated separately.
+- Incremental Cost-Effectiveness Ratio and Dominance: strong and extended dominance over two or
+  more options, with the reason each excluded option was dropped. No threshold is applied.
 - Statin Dose and Mean LDL-C Change (FDA Label Trial Table): the 6-week group mean for a
   rosuvastatin, atorvastatin, simvastatin or pravastatin dose in the comparative trial on the
   Crestor label, applied to a baseline if one is given. No intensity category.
@@ -291,6 +299,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Both benzodiazepine equivalence tools now carry the ASAM 2025 statement that no precise
+  conversion exists, with its low, moderate and high daily-dose estimates. The Ganzoni iron tool
+  says the INFeD label uses a different formula. Opioid conversion, perioperative bridging, the
+  iron deficit tool and the dose calendar link to the label tools added this month.
 - Search: "taper" now opens the Taper Schedule Calendar. It used to open the leprosy prednisolone
   course, which "leprosy steroid taper" still finds.
 - Enoxaparin Dose: hip or knee replacement, unstable angina, and STEMI under and over 75 years

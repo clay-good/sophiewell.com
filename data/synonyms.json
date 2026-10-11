@@ -12765,6 +12765,25 @@
       ],
       "tile": "hf-gdmt-target-percent",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "disproportionality",
+        "faers",
+        "pharmacovigilance",
+        "eudravigilance"
+      ],
+      "tile": "disproportionality-2x2",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "icer",
+        "qaly",
+        "dominance"
+      ],
+      "tile": "icer-dominance",
+      "audience": "clinicians"
     }
   ]
 }

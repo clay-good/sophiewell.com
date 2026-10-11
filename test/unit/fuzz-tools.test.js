@@ -770,6 +770,9 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as orRrToNntV1634 from '../../lib/or-rr-to-nnt-v1634.js';
+import * as disproportionality2x2V1634 from '../../lib/disproportionality-2x2-v1634.js';
+import * as icerDominanceV1634 from '../../lib/icer-dominance-v1634.js';
 import * as statinLdlReductionV1633 from '../../lib/statin-ldl-reduction-v1633.js';
 import * as levodopaEquivalentDoseV1633 from '../../lib/levodopa-equivalent-dose-v1633.js';
 import * as hfGdmtTargetPercentV1633 from '../../lib/hf-gdmt-target-percent-v1633.js';
@@ -1743,6 +1746,9 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'or-rr-to-nnt-v1634.js': orRrToNntV1634,
+  'disproportionality-2x2-v1634.js': disproportionality2x2V1634,
+  'icer-dominance-v1634.js': icerDominanceV1634,
   'statin-ldl-reduction-v1633.js': statinLdlReductionV1633,
   'levodopa-equivalent-dose-v1633.js': levodopaEquivalentDoseV1633,
   'hf-gdmt-target-percent-v1633.js': hfGdmtTargetPercentV1633,

@@ -1,6 +1,6 @@
 # spec-v1634 — Medication review, medication safety and pharmacovigilance
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 30 new tools, 7 of them
+**Status:** In progress, October 11, 2026: 3 of 30 tools built (see Build status). 30 new tools, 7 of them
 build-gated with no numbers stated (tools 24–30). 9 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
@@ -859,4 +859,10 @@ verification pass the same day.
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+| Tool | State |
+|---|---|
+| 6. `disproportionality-2x2` | Built (group Q). EMA/849944/2016 (section 4.1.3 and the ROR annex) and Norén 2013 (equations 12 to 14) were re-read October 11, 2026 and match the spec. Both EMA worked examples are tests. The Evans screen is not printed and no chi-squared is computed: the full paper is still unread. Blank "additional monitoring" reports the case count against both 5 and 3; a blank IME answer is left to the reader. With b or d at 0 the ROR is also reported as not computable. |
+| 18. `or-rr-to-nnt` | Built (group E). Mendes 2017 formulas (1) and (2) and Altman 1998 were re-read on PubMed Central October 11, 2026. The baseline risk is entered as a percent, as in the live `nnt-arr`. The tool does not know whether the event is wanted, so it says "one fewer event" and "one additional event" in place of benefit and harm. A relative risk that would put the risk above 100% is refused. |
+| 20. `icer-dominance` | Built (group Q). The VA HERC page was re-read October 11, 2026; its worked example (standard care and five innovations) is a test. Options are entered one per line as name, cost, effect. Two options of equal effect are not covered by the page: the dearer one is set aside and named. No threshold and no net monetary benefit. |
+
+Not built: the other 27 tools and the backfills. Tool 19's intervals for the relative risk and the risk difference are still gated: the 1988 BMJ paper is a scan behind a bot check on PubMed Central and on Europe PMC, and was not read.

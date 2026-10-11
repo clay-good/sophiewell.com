@@ -664,3 +664,9 @@ experience**.
 > v1633, Levodopa Equivalent Daily Dose (Jost 2023) — [spec-v1633](spec-v1633.md), which adds `levodopa-equivalent-dose` — is 2157.)
 
 > v1633, Percent of Guideline Target Dose in Heart Failure (2022 AHA/ACC/HFSA) — [spec-v1633](spec-v1633.md), which adds `hf-gdmt-target-percent` — is 2158.)
+
+> v1634, NNT From an Odds Ratio or Relative Risk and a Baseline Risk — [spec-v1634](spec-v1634.md), which adds `or-rr-to-nnt` — is 2159.)
+
+> v1634, Disproportionality From a 2×2 of Report Counts (ROR, PRR, IC) — [spec-v1634](spec-v1634.md), which adds `disproportionality-2x2` — is 2160.)
+
+> v1634, Incremental Cost-Effectiveness Ratio and Dominance — [spec-v1634](spec-v1634.md), which adds `icer-dominance` — is 2161.)

@@ -601,6 +601,7 @@ export const renderers = {
     const toSel = el('select', { id: 'bz-to' });
     root.appendChild(el('p', {}, [el('label', { for: 'bz-from', text: 'From drug' }), el('br'), fromSel]));
     root.appendChild(el('p', {}, [el('label', { for: 'bz-to', text: 'To drug' }), el('br'), toSel]));
+    root.appendChild(el('p', { class: 'muted', text: 'Approximate only: the 2025 ASAM guideline on benzodiazepine tapering says that, unlike with opioids, "no precise strategies for conversion exist." This is one published table. The guideline estimates a low daily dose as 10 mg diazepam equivalents or less, a moderate one as 10 to 15 mg, and a high one as more than 15 mg.' }));
     const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
     root.appendChild(out);
     loadFile('benzo-equiv', 'benzo.json').then((table) => {
