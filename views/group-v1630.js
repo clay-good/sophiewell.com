@@ -1,13 +1,14 @@
 // spec-v1630: sterile compounding, IV admixture and drug storage. Group Q.
 // reconstitution-concentration, admixture-concentration, lipid-emulsion-dose-check, pn-aluminum-load,
 // pn-calcium-phosphate-check, pn-order-summary, pn-amino-acid-order, premixed-pn-rate-check,
-// pn-micronutrient-volume, iv-phosphate-order-check,
+// pn-micronutrient-volume, iv-phosphate-order-check, iv-label-rate-check,
 // mean-kinetic-temperature,
 // in-use-discard-time, storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
 import { el, clear } from '../lib/dom.js';
 import * as RC from '../lib/reconstitution-concentration-v1630.js';
 import * as AC from '../lib/admixture-concentration-v1630.js';
+import * as RC3 from '../lib/iv-label-rate-check-v1630.js';
 import * as IP from '../lib/iv-phosphate-order-check-v1630.js';
 import * as LE from '../lib/lipid-emulsion-dose-check-v1630.js';
 import * as PA from '../lib/pn-aluminum-load-v1630.js';
@@ -122,6 +123,33 @@ export const renderers = {
     numField(root, 'Strength already in the bag fluid (optional)', 'ac-base', '');
     numField(root, 'Target strength (optional)', 'ac-target', '');
     run(root, [['ac-unit', 'unit'], ['ac-per', 'per'], ['ac-nominal', 'nominalVolume'], ['ac-overfill', 'overfill'], ['ac-withdrawn', 'withdrawn'], ['ac-adds', 'additives'], ['ac-other', 'otherVolume'], ['ac-base', 'baseline'], ['ac-target', 'target']], AC.admixtureConcentration);
+  },
+
+  'iv-label-rate-check'(root) {
+    const pairs = [['rc3-drug', 'drug'], ['rc3-pop', 'population'], ['rc3-dose', 'dose'], ['rc3-vol', 'finalVolume'], ['rc3-min', 'minutes'], ['rc3-set', 'setting'], ['rc3-weight', 'weight'], ['rc3-wunit', 'weightUnit']];
+    selectField(root, 'Drug', 'rc3-drug', RC3.DRUG_OPTIONS);
+    selectField(root, 'Patient', 'rc3-pop', RC3.POPULATIONS);
+    numField(root, 'Dose, in the drug\'s unit (mg, mg PE or mEq)', 'rc3-dose', '');
+    numField(root, 'Final volume, mL', 'rc3-vol', '');
+    numField(root, 'Infusion time, minutes', 'rc3-min', '');
+    const setting = selectField(root, 'Setting', 'rc3-set', RC3.SETTINGS);
+    const weight = [numField(root, 'Weight', 'rc3-weight', ''), selectField(root, 'Weight unit', 'rc3-wunit', RC3.WEIGHT_UNITS)];
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const drug = RC3.DRUGS[val('rc3-drug')];
+      // The setting and the weight are asked for only where the label uses them.
+      const needsSetting = Boolean(drug && drug.settings);
+      const needsWeight = Boolean(drug && drug.perKg && val('rc3-pop') === 'pediatric');
+      setting.hidden = !needsSetting;
+      for (const w of weight) w.hidden = !needsWeight;
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      if (!needsSetting) args.setting = '';
+      if (!needsWeight) { args.weight = ''; args.weightUnit = ''; }
+      const r = RC3.ivLabelRateCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
   },
 
   'iv-phosphate-order-check'(root) {

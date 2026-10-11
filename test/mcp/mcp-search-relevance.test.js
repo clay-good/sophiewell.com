@@ -798,6 +798,7 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['iv infusion maximum rate label phenytoin vancomycin potassium chloride', ['iv-label-rate-check']],
   ['iv potassium phosphates order concentration rate label maximum', ['iv-phosphate-order-check']],
   ['trace elements parenteral nutrition tralement multrys infuvite pediatric', ['pn-micronutrient-volume']],
   ['premixed parenteral nutrition clinimix kabiven maximum infusion', ['premixed-pn-rate-check']],

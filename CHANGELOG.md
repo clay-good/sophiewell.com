@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- IV Order Against the Label: Speed and Strength: the delivery rate and concentration of an IV
+  order beside the limits on the drug's own label, for phenytoin, fosphenytoin, vancomycin,
+  potassium chloride, magnesium sulfate and calcium gluconate, with the shortest infusion time
+  that meets the rate limit. Each label read is a manufacturer's.
 - IV Phosphate Order Against the Label: the concentrate volume at 3 mmol/mL, the potassium or
   sodium it carries, and the concentration and hourly rate; for potassium phosphates, each beside
   the label's dose range, 45 mmol single-dose maximum, and concentration and rate maximums by age

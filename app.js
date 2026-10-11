@@ -1200,6 +1200,7 @@ const UTILITIES = [
   { id: 'compound-anticipatory-limit', name: 'Anticipatory Compounding Limit (503A)', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'reconstitution-concentration', name: 'Reconstitution: Powder Volume and Resulting Strength', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'admixture-concentration', name: 'What Is Actually in the Bag (Admixture Strength)', group: 'Q', audiences: ['clinicians'], clinical: false },
+  { id: 'iv-label-rate-check', name: 'IV Order Against the Label: Speed and Strength', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'iv-phosphate-order-check', name: 'IV Phosphate Order Against the Label', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'lipid-emulsion-dose-check', name: 'Lipid Emulsion Dose and Rate Against the Label', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'pn-amino-acid-order', name: 'PN Amino Acids: Dose, Nitrogen, Volume and Cysteine', group: 'Q', audiences: ['clinicians'], clinical: true },

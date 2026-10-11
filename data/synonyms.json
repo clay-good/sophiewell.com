@@ -12006,6 +12006,17 @@
       ],
       "tile": "iv-phosphate-order-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "phenytoin max infusion rate",
+        "vancomycin infusion time 10 mg per minute",
+        "potassium chloride max rate meq per hour",
+        "fosphenytoin pe per minute",
+        "magnesium sulfate infusion rate limit"
+      ],
+      "tile": "iv-label-rate-check",
+      "audience": "clinicians"
     }
   ]
 }

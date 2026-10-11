@@ -770,6 +770,7 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as ivLabelRateCheckV1630 from '../../lib/iv-label-rate-check-v1630.js';
 import * as ivPhosphateOrderCheckV1630 from '../../lib/iv-phosphate-order-check-v1630.js';
 import * as pnMicronutrientVolumeV1630 from '../../lib/pn-micronutrient-volume-v1630.js';
 import * as premixedPnRateCheckV1630 from '../../lib/premixed-pn-rate-check-v1630.js';
@@ -1683,6 +1684,7 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'iv-label-rate-check-v1630.js': ivLabelRateCheckV1630,
   'iv-phosphate-order-check-v1630.js': ivPhosphateOrderCheckV1630,
   'pn-micronutrient-volume-v1630.js': pnMicronutrientVolumeV1630,
   'premixed-pn-rate-check-v1630.js': premixedPnRateCheckV1630,

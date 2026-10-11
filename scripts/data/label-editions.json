@@ -51,7 +51,8 @@
     "setId": "16307c00-d0d5-4e05-821f-17b0c1a29fc9",
     "tools": [
       "calcium-replacement",
-      "pn-calcium-phosphate-check"
+      "pn-calcium-phosphate-check",
+      "iv-label-rate-check"
     ],
     "splVersion": 5,
     "publishedOn": "2026-09-18",
@@ -74,6 +75,21 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "2f5ae39ce8edfaf265b3bb2138682f4cbcf5a6771f7d7a3a554cfa40991bc1f3"
+    }
+  },
+  {
+    "label": "Cerebyx (fosphenytoin sodium), Pfizer",
+    "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
+    "setId": "d4c36fad-0ba2-4cd4-9c5e-dcf843f38a5a",
+    "tools": [
+      "iv-label-rate-check"
+    ],
+    "splVersion": 38,
+    "publishedOn": "2025-08-29",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "bfde3ef25e4edb2625dbf5eba1814dd96057eb974e789db21013515ab09b7d5a"
     }
   },
   {
@@ -306,6 +322,21 @@
     }
   },
   {
+    "label": "Magnesium Sulfate 50% injection, Fresenius Kabi",
+    "labeler": "FRESENIUS KABI USA, LLC",
+    "setId": "e9c10579-29f3-4889-8881-0626f63968d4",
+    "tools": [
+      "iv-label-rate-check"
+    ],
+    "splVersion": 9,
+    "publishedOn": "2026-02-12",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "3655fec0795d571d4e6a9debc6731490ee92d222b803231eff31a13e18c6d651"
+    }
+  },
+  {
     "label": "Multrys (trace elements injection 4), American Regent",
     "labeler": "AMERICAN REGENT, INC.",
     "setId": "995f1efa-aca0-4b6c-9099-f8e757c2133a",
@@ -355,6 +386,21 @@
     }
   },
   {
+    "label": "Phenytoin Sodium injection, Hikma",
+    "labeler": "HIKMA PHARMACEUTICALS USA INC.",
+    "setId": "035a8d4e-2063-4240-83cb-d7eebcabe301",
+    "tools": [
+      "iv-label-rate-check"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2024-04-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "3dc750ecdee4a804e8b0bffed9481dc29f60ef3c6103f878f646889e2964f985"
+    }
+  },
+  {
     "label": "Piperacillin and Tazobactam for injection, Civica",
     "labeler": "CIVICA, INC.",
     "setId": "19e89f8b-316b-4dd2-9724-bfe0faeba408",
@@ -367,6 +413,21 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "80d60492f2cb80f363f87e465e83e2620f83aae653882295acdfa0ecd0a7bfca"
+    }
+  },
+  {
+    "label": "Potassium Chloride concentrate, Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "559a0a8c-a8fe-40a5-b196-21f9308780ab",
+    "tools": [
+      "iv-label-rate-check"
+    ],
+    "splVersion": 23,
+    "publishedOn": "2026-07-06",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "4d860424f5f22e4ed58a941fc9b4f091b93b3a86504ede33018f48a7a88933d2"
     }
   },
   {
@@ -527,6 +588,21 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "8e068f11e8adafbe53d19ad8cb93f3cf4b7d6765a3af668fe4dda7a9909a98a2"
+    }
+  },
+  {
+    "label": "Vancomycin pharmacy bulk package, Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "b01aaa02-8f1d-4b57-96a5-337503428af1",
+    "tools": [
+      "iv-label-rate-check"
+    ],
+    "splVersion": 19,
+    "publishedOn": "2026-07-22",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "b0c7155ad7bf9d7a4534aed21fd7bdd52570603e0565f4d648e8114697b96961"
     }
   }
 ]

@@ -544,3 +544,5 @@ experience**.
 > v1630, PN Trace Elements and Pediatric Multivitamin by Weight — [spec-v1630](spec-v1630.md), which adds `pn-micronutrient-volume` — is 2097.)
 
 > v1630, IV Phosphate Order Against the Label — [spec-v1630](spec-v1630.md), which adds `iv-phosphate-order-check` — is 2098.)
+
+> v1630, IV Order Against the Label: Speed and Strength — [spec-v1630](spec-v1630.md), which adds `iv-label-rate-check` — is 2099.)
