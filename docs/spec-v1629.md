@@ -1,6 +1,6 @@
 # spec-v1629 — Pharmaceutical calculations and nonsterile compounding bench math
 
-**Status:** In progress, October 10, 2026: 11 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
+**Status:** In progress, October 10, 2026: 14 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A pharmacist or technician at the compounding bench does the same arithmetic every day: mix two
@@ -742,7 +742,7 @@ over the past year that the compounder selected"; the guidance's example is 500 
 
 ## Build status
 
-Updated October 10, 2026. 11 of 25 tools built.
+Updated October 10, 2026. 14 of 25 tools built.
 
 | Tool | Status |
 |---|---|
@@ -757,4 +757,7 @@ Updated October 10, 2026. 11 of 25 tools built.
 | 14. `buffer-ph` | Built (group Q). Both pairs use the ratio of proton acceptor to proton donor (salt over acid, or base over its salt). Grams need the volume and both molecular weights, typed in: `molecular-weight` is not built. |
 | 15. `percent-ionized` | Built (group Q), in its own module. Far from the pKa the small fraction is shown to six significant figures instead of rounding to 0 or 100. |
 | 21. `dropper-calibration` | Built (group Q). No default drops per mL; the page example uses a count that gives 24 per mL. |
-| 4 to 6, 12, 13, 16 to 20, 22 to 25 | Not built. |
+| 16. `suppository-displacement` | Built (group Q). The definition of the factor is a required choice; no factor table ships, and the page example uses calibration mode, which needs none. The two papers the spec cites for "both are in use" were not re-read; the tool cites only the identity. |
+| 17. `capsule-fill` | Built (group Q). No capsule-size table ships. The result says mixed powders may not pack as each does alone. |
+| 18. `formula-scale` | Built (group Q). Weights convert among mcg, mg, g and kg, and volumes between mL and L, for the footing; a weight and a volume are never added. A master formula whose lines do not add to its stated yield is reported. |
+| 4 to 6, 12, 13, 19, 20, 22 to 25 | Not built. These need a dataset or a source re-read: atomic weights (4 to 6), the isotonicity paper (12, 13), 27 CFR (19), NIST (20), Griffin (22), section 503A (23 to 25). |

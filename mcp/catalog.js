@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import suppositoryDisplacementV1629 from './adapters/suppository-displacement-v1629.js';
+import capsuleFillV1629 from './adapters/capsule-fill-v1629.js';
+import formulaScaleV1629 from './adapters/formula-scale-v1629.js';
 import apiPotencyAdjustV1629 from './adapters/api-potency-adjust-v1629.js';
 import tabletPowderSourceV1629 from './adapters/tablet-powder-source-v1629.js';
 import bufferPhV1629 from './adapters/buffer-ph-v1629.js';
@@ -2141,6 +2144,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['suppository-displacement-v1629', suppositoryDisplacementV1629],
+  ['capsule-fill-v1629', capsuleFillV1629],
+  ['formula-scale-v1629', formulaScaleV1629],
   ['api-potency-adjust-v1629', apiPotencyAdjustV1629],
   ['tablet-powder-source-v1629', tabletPowderSourceV1629],
   ['buffer-ph-v1629', bufferPhV1629],

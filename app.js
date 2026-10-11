@@ -1184,6 +1184,9 @@ const UTILITIES = [
   { id: 'buffer-ph', name: 'Buffer pH and Composition (Henderson-Hasselbalch)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'percent-ionized', name: 'Percent Ionized at a pH', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'dropper-calibration', name: 'Dropper Calibration and Dose in Drops', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'suppository-displacement', name: 'Suppository and Molded-Form Displacement', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'capsule-fill', name: 'Capsule Fill Weight and Diluent', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'formula-scale', name: 'Reduce or Enlarge a Master Formula', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'refill-eligible-date', name: 'Earliest Refill Date', group: 'Q', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
   { id: 'overpayment-60day', name: '60-Day Overpayment Report-and-Return Clock', group: 'C', audiences: ['billers'], clinical: false },
   // spec-v82: patient responsibility & coordination of benefits. v78 computes

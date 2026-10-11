@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Suppository and Molded-Form Displacement: the base and drug for a batch from your mold's blank
+  weight and the drug's factor. The factor is published two opposite ways, so you choose which
+  yours is; a calibration mode finds it from three weighings.
+- Capsule Fill Weight and Diluent: the diluent per capsule and for the batch, from measured fill
+  weights or from the capsule volume and tapped densities. An active that overfills the capsule is
+  reported as not fitting.
+- Reduce or Enlarge a Master Formula: scale to a yield or to a quantity of one ingredient, with
+  formulas in parts, a "qs" line, and a footing check. All three: see docs/spec-v1629.md.
 - Weight to Weigh After Assay and Water Correction: how much of a lot to weigh for a target of pure
   active. The basis of the assay (as is, anhydrous or dried) must be chosen; it is never assumed.
 - Crushed Tablets as a Drug Source: the tablets to crush and the powder weight that carries the

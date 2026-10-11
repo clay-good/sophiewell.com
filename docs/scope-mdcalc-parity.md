@@ -488,3 +488,9 @@ experience**.
 > v1629, Percent Ionized at a pH — [spec-v1629](spec-v1629.md), which adds `percent-ionized` — is 2069.)
 
 > v1629, Dropper Calibration and Dose in Drops — [spec-v1629](spec-v1629.md), which adds `dropper-calibration` — is 2070.)
+
+> v1629, Suppository and Molded-Form Displacement — [spec-v1629](spec-v1629.md), which adds `suppository-displacement` — is 2071.)
+
+> v1629, Capsule Fill Weight and Diluent — [spec-v1629](spec-v1629.md), which adds `capsule-fill` — is 2072.)
+
+> v1629, Reduce or Enlarge a Master Formula — [spec-v1629](spec-v1629.md), which adds `formula-scale` — is 2073.)

@@ -8914,6 +8914,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/dropper-calibration-v1629.js (spec-v1629: Dropper calibration and dose in drops — administrative disclaimer)
 - `dropper-calibration`
 
+### lib/suppository-displacement-v1629.js (spec-v1629: Suppository and molded-form displacement — administrative disclaimer)
+- `suppository-displacement`
+
+### lib/capsule-fill-v1629.js (spec-v1629: Capsule fill weight and diluent — administrative disclaimer)
+- `capsule-fill`
+
+### lib/formula-scale-v1629.js (spec-v1629: Reduce or enlarge a master formula — administrative disclaimer)
+- `formula-scale`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

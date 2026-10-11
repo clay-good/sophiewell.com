@@ -11698,6 +11698,39 @@
       ],
       "tile": "dropper-calibration",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "suppository displacement factor",
+        "density factor suppository base",
+        "suppository base calculation",
+        "how much base for suppositories",
+        "troche mold calibration"
+      ],
+      "tile": "suppository-displacement",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "capsule fill weight",
+        "capsule diluent calculation",
+        "how much filler per capsule",
+        "capsule packing method",
+        "lactose per capsule compounding"
+      ],
+      "tile": "capsule-fill",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "scale a formula",
+        "reduce or enlarge a formula",
+        "compounding formula factor",
+        "scale a master formula to a batch size",
+        "parts formula to grams"
+      ],
+      "tile": "formula-scale",
+      "audience": "clinicians"
     }
   ]
 }

@@ -1,6 +1,7 @@
 // spec-v1629: renderers for the pharmacy bench-math tools (Group Q): alligation, dilution-c1v1,
 // serial-dilution, min-weighable-quantity, aliquot-method, specific-gravity, api-potency-adjust,
-// tablet-powder-source, buffer-ph, percent-ionized and dropper-calibration.
+// tablet-powder-source, buffer-ph, percent-ionized, dropper-calibration, suppository-displacement,
+// capsule-fill and formula-scale.
 
 import { el, clear } from '../lib/dom.js';
 import * as AL from '../lib/alligation-v1629.js';
@@ -14,6 +15,9 @@ import * as TP from '../lib/tablet-powder-source-v1629.js';
 import * as BP from '../lib/buffer-ph-v1629.js';
 import * as PI from '../lib/percent-ionized-v1629.js';
 import * as DC from '../lib/dropper-calibration-v1629.js';
+import * as SP from '../lib/suppository-displacement-v1629.js';
+import * as CF from '../lib/capsule-fill-v1629.js';
+import * as FS from '../lib/formula-scale-v1629.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -278,6 +282,75 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(DC.dropperCalibration(args), o);
+    }));
+  },
+
+  'suppository-displacement'(root) {
+    const pairs = [['sp-mode', 'mode'], ['sp-def', 'definition'], ['sp-units', 'units'], ['sp-extra', 'overage'], ['sp-blank', 'blankWeight'], ['sp-drug', 'drugPerUnit'], ['sp-factor', 'factor'], ['sp-med', 'medicatedWeight']];
+    selectField(root, 'What to work out', 'sp-mode', SP.MODES);
+    const batch = [
+      selectField(root, 'Which definition your factor uses', 'sp-def', SP.DEFINITIONS),
+      numField(root, 'Number of units', 'sp-units', ''),
+      numField(root, 'Extra units to allow for loss (optional)', 'sp-extra', ''),
+    ];
+    numField(root, 'One unit of plain base from your mold (g)', 'sp-blank', '');
+    numField(root, 'Drug per unit (g)', 'sp-drug', '');
+    batch.push(numField(root, 'The drug factor, from your reference or from calibration', 'sp-factor', ''));
+    const med = numField(root, 'One medicated unit from your mold (g)', 'sp-med', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const mode = val('sp-mode');
+      for (const w of batch) w.hidden = mode === 'calibrate';
+      med.hidden = mode !== 'calibrate';
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SP.suppositoryDisplacement(args), o);
+    }));
+  },
+
+  'capsule-fill'(root) {
+    const pairs = [['cf-method', 'method'], ['cf-count', 'capsules'], ['cf-extra', 'overage'], ['cf-active', 'activeMg'], ['cf-afill', 'activeFillMg'], ['cf-dfill', 'diluentFillMg'], ['cf-vol', 'capsuleVolumeMl'], ['cf-adens', 'activeDensity'], ['cf-ddens', 'diluentDensity']];
+    selectField(root, 'Method', 'cf-method', CF.METHODS);
+    numField(root, 'Number of capsules', 'cf-count', '');
+    numField(root, 'Extra capsules to allow for loss (optional)', 'cf-extra', '');
+    numField(root, 'Active per capsule (mg)', 'cf-active', '');
+    const weights = [
+      numField(root, 'Active alone that fills one capsule, as you measured it (mg)', 'cf-afill', ''),
+      numField(root, 'Diluent alone that fills one capsule, as you measured it (mg)', 'cf-dfill', ''),
+    ];
+    const densities = [
+      numField(root, 'Capsule body volume, from the capsule maker\'s sheet (mL)', 'cf-vol', ''),
+      numField(root, 'Tapped density of the active (g/mL)', 'cf-adens', ''),
+      numField(root, 'Tapped density of the diluent (g/mL)', 'cf-ddens', ''),
+    ];
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const method = val('cf-method');
+      for (const w of weights) w.hidden = method === 'densities';
+      for (const w of densities) w.hidden = method !== 'densities';
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(CF.capsuleFill(args), o);
+    }));
+  },
+
+  'formula-scale'(root) {
+    const pairs = [['fs-formula', 'formula'], ['fs-master', 'masterYield'], ['fs-yunit', 'yieldUnit'], ['fs-wanted', 'wantedYield'], ['fs-ing', 'ingredient'], ['fs-ingqty', 'ingredientQuantity']];
+    textareaField(root, 'Master formula, one ingredient per line: name, quantity, unit (the quantity may be "qs"; the unit may be "parts")', 'fs-formula', 'Hydrocortisone, 1, g\nGlycerin, 5, g\nWhite petrolatum, qs, g');
+    numField(root, 'Yield of the master formula (not needed for a formula in parts)', 'fs-master', '');
+    selectField(root, 'Unit of the yield', 'fs-yunit', FS.YIELD_UNITS);
+    numField(root, 'Yield wanted (enter this, or one ingredient below)', 'fs-wanted', '');
+    const ing = el('p');
+    ing.appendChild(el('label', { for: 'fs-ing', text: 'Or: the ingredient to scale by, as written in the formula' }));
+    ing.appendChild(el('br'));
+    ing.appendChild(el('input', { id: 'fs-ing', type: 'text', autocomplete: 'off' }));
+    root.appendChild(ing);
+    numField(root, 'Quantity of that ingredient wanted, in its own unit', 'fs-ingqty', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(FS.formulaScale(args), o);
     }));
   },
 };
