@@ -11819,6 +11819,72 @@
       ],
       "tile": "hlb-blend",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "essentially a copy compounding",
+        "503a copy of a commercially available drug",
+        "compounded strength within 10 percent",
+        "four prescriptions a month compounding",
+        "can i compound a commercially available drug"
+      ],
+      "tile": "compound-copy-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "anticipatory compounding limit",
+        "30 day supply compounding in advance",
+        "how much can i compound before a prescription",
+        "503a limited quantities",
+        "compounding ahead of prescriptions"
+      ],
+      "tile": "compound-anticipatory-limit",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "reconstitution calculator",
+        "powder volume displacement",
+        "vial reconstitution concentration",
+        "how much diluent to add",
+        "oral suspension reconstitution"
+      ],
+      "tile": "reconstitution-concentration",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "iv bag overfill concentration",
+        "actual concentration in the bag",
+        "admixture final concentration",
+        "crrt bag potassium added",
+        "withdraw volume before adding to bag"
+      ],
+      "tile": "admixture-concentration",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "iso class particle count",
+        "cleanroom classification iso 5 iso 7",
+        "class 100 particle limit",
+        "settling plate action level",
+        "viable air sample cfu limit"
+      ],
+      "tile": "cleanroom-class-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "air changes per hour calculator",
+        "acph from cfm",
+        "room clearance time after aerosol",
+        "how long to clear a room 99 percent",
+        "airflow needed for air changes"
+      ],
+      "tile": "room-air-changes",
+      "audience": "clinicians"
     }
   ]
 }

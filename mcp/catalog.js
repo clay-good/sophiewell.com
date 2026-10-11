@@ -1040,6 +1040,12 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import reconstitutionConcentrationV1630 from './adapters/reconstitution-concentration-v1630.js';
+import admixtureConcentrationV1630 from './adapters/admixture-concentration-v1630.js';
+import cleanroomClassCheckV1630 from './adapters/cleanroom-class-check-v1630.js';
+import roomAirChangesV1630 from './adapters/room-air-changes-v1630.js';
+import compoundCopyCheckV1629 from './adapters/compound-copy-check-v1629.js';
+import compoundAnticipatoryLimitV1629 from './adapters/compound-anticipatory-limit-v1629.js';
 import hlbBlendV1629 from './adapters/hlb-blend-v1629.js';
 import isotonicityEValueV1629 from './adapters/isotonicity-e-value-v1629.js';
 import isotonicityFreezingPointV1629 from './adapters/isotonicity-freezing-point-v1629.js';
@@ -2152,6 +2158,12 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['reconstitution-concentration-v1630', reconstitutionConcentrationV1630],
+  ['admixture-concentration-v1630', admixtureConcentrationV1630],
+  ['cleanroom-class-check-v1630', cleanroomClassCheckV1630],
+  ['room-air-changes-v1630', roomAirChangesV1630],
+  ['compound-copy-check-v1629', compoundCopyCheckV1629],
+  ['compound-anticipatory-limit-v1629', compoundAnticipatoryLimitV1629],
   ['hlb-blend-v1629', hlbBlendV1629],
   ['isotonicity-e-value-v1629', isotonicityEValueV1629],
   ['isotonicity-freezing-point-v1629', isotonicityFreezingPointV1629],

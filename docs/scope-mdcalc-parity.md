@@ -510,3 +510,15 @@ experience**.
 > v1629, Isotonicity by Freezing-Point Depression — [spec-v1629](spec-v1629.md), which adds `isotonicity-freezing-point` — is 2080.)
 
 > v1629, Emulsifier Blend for a Required HLB (Griffin) — [spec-v1629](spec-v1629.md), which adds `hlb-blend` — is 2081.)
+
+> v1629, Is a Compounded Drug Essentially a Copy? (503A) — [spec-v1629](spec-v1629.md), which adds `compound-copy-check` — is 2082.)
+
+> v1629, Anticipatory Compounding Limit (503A) — [spec-v1629](spec-v1629.md), which adds `compound-anticipatory-limit` — is 2083.)
+
+> v1630, Reconstitution: Powder Volume and Resulting Strength — [spec-v1630](spec-v1630.md), which adds `reconstitution-concentration` — is 2084.)
+
+> v1630, What Is Actually in the Bag (Admixture Strength) — [spec-v1630](spec-v1630.md), which adds `admixture-concentration` — is 2085.)
+
+> v1630, Cleanroom Particle Count and Microbial Sample (FDA Table) — [spec-v1630](spec-v1630.md), which adds `cleanroom-class-check` — is 2086.)
+
+> v1630, Air Changes per Hour and Clearance Time — [spec-v1630](spec-v1630.md), which adds `room-air-changes` — is 2087.)

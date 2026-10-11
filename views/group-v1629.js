@@ -2,7 +2,8 @@
 // serial-dilution, min-weighable-quantity, aliquot-method, specific-gravity, api-potency-adjust,
 // tablet-powder-source, buffer-ph, percent-ionized, dropper-calibration, suppository-displacement,
 // capsule-fill, formula-scale, molecular-weight, salt-base-factor, meq-mmol-mg, ethanol-proof,
-// apothecary-household-measures, isotonicity-e-value, isotonicity-freezing-point and hlb-blend.
+// apothecary-household-measures, isotonicity-e-value, isotonicity-freezing-point, hlb-blend,
+// compound-copy-check and compound-anticipatory-limit.
 
 import { el, clear } from '../lib/dom.js';
 import * as AL from '../lib/alligation-v1629.js';
@@ -27,6 +28,8 @@ import * as AH from '../lib/apothecary-household-measures-v1629.js';
 import * as IE from '../lib/isotonicity-e-value-v1629.js';
 import * as FP from '../lib/isotonicity-freezing-point-v1629.js';
 import * as HB from '../lib/hlb-blend-v1629.js';
+import * as CC from '../lib/compound-copy-check-v1629.js';
+import * as CA from '../lib/compound-anticipatory-limit-v1629.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -503,6 +506,33 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(HB.hlbBlend(args), o);
+    }));
+  },
+
+  'compound-copy-check'(root) {
+    const pairs = [['cc-api', 'sameApi'], ['cc-avail', 'availability'], ['cc-comp', 'compoundedStrength'], ['cc-comm', 'commercialStrength'], ['cc-route', 'sameRoute'], ['cc-det', 'determination'], ['cc-count', 'priorCount']];
+    selectField(root, 'Same active ingredient as a commercial product?', 'cc-api', CC.YES_NO);
+    selectField(root, 'The commercial product is', 'cc-avail', CC.AVAILABILITY);
+    numField(root, 'Compounded strength (same unit as the commercial strength)', 'cc-comp', '');
+    numField(root, 'Commercial strength', 'cc-comm', '');
+    selectField(root, 'Can the commercial product be used by the route prescribed?', 'cc-route', CC.YES_NO);
+    selectField(root, 'Does the prescription document the prescriber\'s determination of a significant difference for this patient?', 'cc-det', CC.YES_NO);
+    numField(root, 'Prescriptions for this compounded product already filled this calendar month without such a determination', 'cc-count', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(CC.compoundCopyCheck(args), o);
+    }));
+  },
+
+  'compound-anticipatory-limit'(root) {
+    textareaField(root, 'Prescriptions received for this product, one per line: date received (YYYY-MM-DD), then the units', 'ca-rx', '');
+    textField(root, 'As-of date, YYYY-MM-DD (blank for today)', 'ca-asof', '');
+    numField(root, 'Units now held for distribution (optional)', 'ca-hand', '');
+    const o = out(); root.appendChild(o);
+    wire(['ca-rx', 'ca-asof', 'ca-hand'], () => safe(o, () => {
+      show(CA.compoundAnticipatoryLimit({ prescriptions: val('ca-rx'), asOf: val('ca-asof'), onHand: val('ca-hand') }, new Date()), o);
     }));
   },
 };

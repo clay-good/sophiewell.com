@@ -770,6 +770,12 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as reconstitutionConcentrationV1630 from '../../lib/reconstitution-concentration-v1630.js';
+import * as admixtureConcentrationV1630 from '../../lib/admixture-concentration-v1630.js';
+import * as cleanroomClassCheckV1630 from '../../lib/cleanroom-class-check-v1630.js';
+import * as roomAirChangesV1630 from '../../lib/room-air-changes-v1630.js';
+import * as compoundCopyCheckV1629 from '../../lib/compound-copy-check-v1629.js';
+import * as compoundAnticipatoryLimitV1629 from '../../lib/compound-anticipatory-limit-v1629.js';
 import * as hlbBlendV1629 from '../../lib/hlb-blend-v1629.js';
 import * as isotonicityEValueV1629 from '../../lib/isotonicity-e-value-v1629.js';
 import * as isotonicityFreezingPointV1629 from '../../lib/isotonicity-freezing-point-v1629.js';
@@ -1666,6 +1672,12 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'reconstitution-concentration-v1630.js': reconstitutionConcentrationV1630,
+  'admixture-concentration-v1630.js': admixtureConcentrationV1630,
+  'cleanroom-class-check-v1630.js': cleanroomClassCheckV1630,
+  'room-air-changes-v1630.js': roomAirChangesV1630,
+  'compound-copy-check-v1629.js': compoundCopyCheckV1629,
+  'compound-anticipatory-limit-v1629.js': compoundAnticipatoryLimitV1629,
   'hlb-blend-v1629.js': hlbBlendV1629,
   'isotonicity-e-value-v1629.js': isotonicityEValueV1629,
   'isotonicity-freezing-point-v1629.js': isotonicityFreezingPointV1629,

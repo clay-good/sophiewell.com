@@ -8947,6 +8947,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hlb-blend-v1629.js (spec-v1629: Emulsifier blend for a required HLB (Griffin 1949, 1954) — administrative disclaimer)
 - `hlb-blend`
 
+### lib/compound-copy-check-v1629.js (spec-v1629: Essentially-a-copy check for a compounded drug (FDA, January 2018) — administrative disclaimer)
+- `compound-copy-check`
+
+### lib/compound-anticipatory-limit-v1629.js (spec-v1629: Anticipatory compounding ceiling (FDA, December 2016) — administrative disclaimer)
+- `compound-anticipatory-limit`
+
+### lib/reconstitution-concentration-v1630.js (spec-v1630: Reconstitution: powder volume and resulting strength (arithmetic identity) — administrative disclaimer)
+- `reconstitution-concentration`
+
+### lib/admixture-concentration-v1630.js (spec-v1630: IV admixture strength with overfill and additive volume (arithmetic identity) — administrative disclaimer)
+- `admixture-concentration`
+
+### lib/cleanroom-class-check-v1630.js (spec-v1630: Cleanroom class and microbial action levels (FDA aseptic processing guidance, 2004, Table 1) — administrative disclaimer)
+- `cleanroom-class-check`
+
+### lib/room-air-changes-v1630.js (spec-v1630: Air changes per hour and clearance time (CDC Appendix B, Table B.1) — administrative disclaimer)
+- `room-air-changes`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

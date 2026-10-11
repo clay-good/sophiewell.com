@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:3bd256ca-44c3-504c-8bb3-0cf19b0a13b6",
+  "serialNumber": "urn:uuid:8352d00a-5c15-564a-8c01-776d77931595",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T05:41:35.863Z",
+    "timestamp": "2026-10-11T06:01:00.007Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2081 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2087 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a9a5a49c176d6fadbfb361d54cd9df11faaf61c8de102d0611b0e66962d85209"
+          "content": "ac9805ae4c9192b04c5851d3305f75f58439356d451adfa4b71d2ad0b4d76dd3"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "134485"
+          "value": "134861"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bf1a31307bc93ba5a76913ae8fe8dd63e59867b9cf02266d63f0123a72131490"
+          "content": "088f13079e4349f28555f9d0a01a90439909f9bd3fb884341b91f3a339c1f266"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "594856"
+          "value": "595823"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a1d6fa1a6aa19264b6026d0a5e793e85c68713372a0bc386d4cb9a2edac68ce2"
+          "content": "ba6c0f26e3949bcaf5ce5ad3bd4ebb0ca5176ac6136cec342948444220689b02"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "260576"
+          "value": "261376"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cfd7301db28bc3984ba95b67134841a128183c349bf4ad7ae7f64f26f873f0cc"
+          "content": "245a274ee43a38a8e8ad89a21f823224ae4a5217d165c6a0a5dc5e028b86500f"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "122321"
+          "value": "122771"
         }
       ]
     },
@@ -850,6 +850,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3592"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/admixture-concentration-v1630.js",
+      "type": "file",
+      "name": "lib/admixture-concentration-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "768b49a4e60c7830c7aec7e68158c23aeed8dbfeaa6379cb3284ea1b6cc94e2e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8315"
         }
       ]
     },
@@ -4550,6 +4571,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/cleanroom-class-check-v1630.js",
+      "type": "file",
+      "name": "lib/cleanroom-class-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0397d4644e3850719a9de6d5f9acb9a9083ec80c903fe80f9eb2ab34efd52eab"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7226"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/cleveland-constipation-v665.js",
       "type": "file",
       "name": "lib/cleveland-constipation-v665.js",
@@ -4966,6 +5008,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "3731"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/compound-anticipatory-limit-v1629.js",
+      "type": "file",
+      "name": "lib/compound-anticipatory-limit-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c6c5bfdfaf1e3c794ca9fd172f940d6fb822b8563c5280d547194c7fe8a11d21"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7091"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/compound-copy-check-v1629.js",
+      "type": "file",
+      "name": "lib/compound-copy-check-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3a8ce8b80a09de097b3dd4189ae03c83182c66b9defe286a92ee2b2a09948084"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9603"
         }
       ]
     },
@@ -14300,7 +14384,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d1a71ce2792232ed127abe43822b466ab3339d974cd95bf3bcf74fa4508eb5cd"
+          "content": "2b05d29c59e8c470088163c90072b6b1791bd61edc7714dd56c5a882565530d8"
         }
       ],
       "properties": [
@@ -14310,7 +14394,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2777583"
+          "value": "2782707"
         }
       ]
     },
@@ -20405,6 +20489,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/reconstitution-concentration-v1630.js",
+      "type": "file",
+      "name": "lib/reconstitution-concentration-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "008758cc2c9ec0482f4a8d68dd210451b1658c024c5177fd1bf775baaf8ecb03"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7879"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/record-apple.js",
       "type": "file",
       "name": "lib/record-apple.js",
@@ -21346,6 +21451,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8004"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/room-air-changes-v1630.js",
+      "type": "file",
+      "name": "lib/room-air-changes-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "def74a1ff71935a6da4d8cc3f93d10efeaf0eb6df9ed8e7ad4d8843e476fb39b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7279"
         }
       ]
     },
@@ -27377,6 +27503,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/admixture-concentration-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/admixture-concentration-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d2c8e70430d9aae886360782c8e0ac7c6aacec4fba681cb6beb6344e485843b4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2202"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/adult-ett-depth-v1412.js",
       "type": "file",
       "name": "mcp/adapters/adult-ett-depth-v1412.js",
@@ -30842,6 +30989,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cleanroom-class-check-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/cleanroom-class-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3593d19670a65beb0f65aa348e05bacd1dc0ec3306e7e7180dc1a3ba91085090"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1631"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cleveland-constipation-v665.js",
       "type": "file",
       "name": "mcp/adapters/cleveland-constipation-v665.js",
@@ -31237,6 +31405,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "1235"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/compound-anticipatory-limit-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/compound-anticipatory-limit-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8a443ff2da12ae1d8bd651c16124cd0ac0ce750c0feec587526189550715bf0f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1190"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/compound-copy-check-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/compound-copy-check-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cb1da035287c07ecbd98a5f23a2c688058db77217ca103bc261007c9a325af34"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2054"
         }
       ]
     },
@@ -44912,6 +45122,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/reconstitution-concentration-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/reconstitution-concentration-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2d7ac2285bc4bea388655298171b7128062084c3bde0bd207fb6941e8a51da1f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2222"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rectal-artesunate-prereferral-v1551.js",
       "type": "file",
       "name": "mcp/adapters/rectal-artesunate-prereferral-v1551.js",
@@ -45601,6 +45832,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1805"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/room-air-changes-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/room-air-changes-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b739f9bf1445ee0b1db99874bde34ffde50c72484d73c93f57286e8f868a9a7f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1840"
         }
       ]
     },
@@ -50294,7 +50546,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "04ecd11d9d57a5136c1d1b8f736f7e806694bae5662710f449a9c7b4b2684e8c"
+          "content": "7c1175e539cac4a2e0871991588826614f7c5d63bb0cb3336cba75cc92c222db"
         }
       ],
       "properties": [
@@ -50304,7 +50556,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "130072"
+          "value": "130966"
         }
       ]
     },
@@ -54767,7 +55019,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c1d834d594151a54f431839d4c7a99ba2ec7e5925935afd72d27ca02a8ef5ccf"
+          "content": "b56f9d8e3eae0334693a006e1e3bed645bdf2d57ab91786cc89e85a79f7307a0"
         }
       ],
       "properties": [
@@ -54777,7 +55029,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "28778"
+          "value": "30791"
         }
       ]
     },
@@ -54799,6 +55051,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8143"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1630.js",
+      "type": "file",
+      "name": "views/group-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a26d4678ca98bef430d804c3a61470f2e7e41491dbf4eb5d6b8927df262962a8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6486"
         }
       ]
     },
@@ -85598,6 +85871,7 @@
         "urn:sophiewell:file:source:lib/acute-opioid-rx-limit-v1393.js",
         "urn:sophiewell:file:source:lib/adherence-v1513.js",
         "urn:sophiewell:file:source:lib/adiposity-v270.js",
+        "urn:sophiewell:file:source:lib/admixture-concentration-v1630.js",
         "urn:sophiewell:file:source:lib/adult-ett-depth-v1412.js",
         "urn:sophiewell:file:source:lib/af-stages-2023-v839.js",
         "urn:sophiewell:file:source:lib/ahlback-knee-oa-v480.js",
@@ -85774,6 +86048,7 @@
         "urn:sophiewell:file:source:lib/claims-pct-medicare.js",
         "urn:sophiewell:file:source:lib/clark-level-v340.js",
         "urn:sophiewell:file:source:lib/clavien-dindo-v320.js",
+        "urn:sophiewell:file:source:lib/cleanroom-class-check-v1630.js",
         "urn:sophiewell:file:source:lib/cleveland-constipation-v665.js",
         "urn:sophiewell:file:source:lib/clinical-obesity-v838.js",
         "urn:sophiewell:file:source:lib/clinical-v4.js",
@@ -85794,6 +86069,8 @@
         "urn:sophiewell:file:source:lib/columbia-fsgs-v532.js",
         "urn:sophiewell:file:source:lib/compera-2-v574.js",
         "urn:sophiewell:file:source:lib/completeness-cytoreduction-v655.js",
+        "urn:sophiewell:file:source:lib/compound-anticipatory-limit-v1629.js",
+        "urn:sophiewell:file:source:lib/compound-copy-check-v1629.js",
         "urn:sophiewell:file:source:lib/compounding-bud-v1511.js",
         "urn:sophiewell:file:source:lib/concussion-rtl-v308.js",
         "urn:sophiewell:file:source:lib/concussion-rts-v298.js",
@@ -86529,6 +86806,7 @@
         "urn:sophiewell:file:source:lib/rcvs2-v1436.js",
         "urn:sophiewell:file:source:lib/receipt-worker.js",
         "urn:sophiewell:file:source:lib/receipt.js",
+        "urn:sophiewell:file:source:lib/reconstitution-concentration-v1630.js",
         "urn:sophiewell:file:source:lib/record-apple.js",
         "urn:sophiewell:file:source:lib/record-ccda.js",
         "urn:sophiewell:file:source:lib/record-fhir.js",
@@ -86574,6 +86852,7 @@
         "urn:sophiewell:file:source:lib/robinson-clavicle-v1479.js",
         "urn:sophiewell:file:source:lib/rockwood-ac-v487.js",
         "urn:sophiewell:file:source:lib/rome-ecopd-v804.js",
+        "urn:sophiewell:file:source:lib/room-air-changes-v1630.js",
         "urn:sophiewell:file:source:lib/rop-stage-v446.js",
         "urn:sophiewell:file:source:lib/rope-score-v850.js",
         "urn:sophiewell:file:source:lib/ross-hf-peds-v368.js",
@@ -87053,6 +87332,7 @@
         "urn:sophiewell:file:source:views/group-v161.js",
         "urn:sophiewell:file:source:views/group-v1629.js",
         "urn:sophiewell:file:source:views/group-v163.js",
+        "urn:sophiewell:file:source:views/group-v1630.js",
         "urn:sophiewell:file:source:views/group-v164.js",
         "urn:sophiewell:file:source:views/group-v165.js",
         "urn:sophiewell:file:source:views/group-v166.js",
@@ -87800,6 +88080,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-opioid-rx-limit-v1393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/adherence-v1513.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/adiposity-v270.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/admixture-concentration-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/adult-ett-depth-v1412.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/af-stages-2023-v839.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ahlback-knee-oa-v480.js",
@@ -87965,6 +88246,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/claims-pct-medicare.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clark-level-v340.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clavien-dindo-v320.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cleanroom-class-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cleveland-constipation-v665.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-obesity-v838.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-v4.js",
@@ -87984,6 +88266,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/columbia-fsgs-v532.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/compera-2-v574.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/completeness-cytoreduction-v655.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/compound-anticipatory-limit-v1629.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/compound-copy-check-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/compounding-bud-v1511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/concussion-rtl-v308.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/concussion-rts-v298.js",
@@ -88635,6 +88919,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v266.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v279.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcvs2-v1436.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/reconstitution-concentration-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rectal-artesunate-prereferral-v1551.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/reference-change-value-v920.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/regan-morrey-v404.js",
@@ -88668,6 +88953,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/robinson-clavicle-v1479.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rockwood-ac-v487.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rome-ecopd-v804.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/room-air-changes-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rop-stage-v446.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rope-score-v850.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ross-hf-peds-v368.js",
@@ -88995,7 +89281,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "3bd256ca44c3f04c"
+      "value": "8352d00a5c15d64a"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -89007,7 +89293,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3311"
+      "value": "3324"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -1,6 +1,6 @@
 # spec-v1630 — Sterile compounding, IV admixture, parenteral nutrition, hazardous drugs and drug storage
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 17 new tools; none is gated as a whole (tool 3 has two drugs and tool 12 two rows behind a build gate).
+**Status:** In progress, October 11, 2026: 4 of 17 tools built (see Build status). 17 new tools; none is gated as a whole (tool 3 has two drugs and tool 12 two rows behind a build gate).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 The IV-room pharmacist and technician check the same things all shift: what a vial becomes once
@@ -711,4 +711,12 @@ one figure to the CDC page and ships no part of the table.
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+Updated October 11, 2026. 4 of 17 tools built; the backfills are open.
+
+| Tool | Status |
+|---|---|
+| 1. `reconstitution-concentration` | Built (group Q, `views/group-v1630.js`). One unit serves the amount, the strengths and the dose; the tool does not convert between them. Exactly one of the label's concentration, final volume or displacement is required. The three labels behind the worked examples were re-read on DailyMed on October 11, 2026 (ceftriaxone version 18, vancomycin version 19, amoxicillin version 37) and say what the spec says; they are test cases, not shipped values, and the page cites the identity only. The spec's fixed warning about ceftriaxone at 350 mg/mL is given as a general statement whenever a diluent volume other than the label's is used. |
+| 2. `admixture-concentration` | Built (group Q). The additive lines are additions of one drug (several vials add up); a separate field takes volume that holds none of it. The strength basis (per mL or per liter) is a required choice and serves the baseline and the target. The baseline strength applies to the fluid left in the bag, overfill included. No overfill table ships. |
+| 16. `cleanroom-class-check` | Built (group Q). FDA's 2004 guidance was re-read (PDF text); Table 1 and its footnotes are as the spec says. FDA's page for the guidance is under the weekly page watch. A microbial sample needs the intended class. A count above the ISO 8 limit is reported as above the table. |
+| 17. `room-air-changes` | Built (group Q). CDC's Appendix B page (dated January 11, 2024) was re-read: the formula and all nine rows of Table B.1 are reproduced by the arithmetic, to the whole minute. The page is under the weekly page watch. **Deviation:** the 12 air changes figure for an isolation room is not shown. It is a row of Table B.2, which CDC reprints with permission, and whether to keep such figures is open question 15 in [scope-pharmacy-practice.md](scope-pharmacy-practice.md). FDA's 20 air changes sentence is shown as a reference point and never applied. Times are shown to one decimal place. |
+| 3 to 15 | Not built. Each needs its labels or documents re-read, and most need the fail-closed label rows of [spec-v1628](spec-v1628.md) section 1, which are not built. |

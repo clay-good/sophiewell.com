@@ -6,6 +6,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Reconstitution: Powder Volume and Resulting Strength: from the label's own figures, the powder
+  volume, final volume and strength; the strength with a different diluent volume; the diluent for
+  a wanted strength; and the volume for a dose. It never assumes the powder takes no space.
+- What Is Actually in the Bag: the true strength of an IV bag counting overfill, volume withdrawn
+  and additive volume, beside the figure on the nominal volume, with the additive volume for a
+  target strength. Overfill is yours to enter; blank, the result says it is on the nominal volume.
+- Cleanroom Particle Count and Microbial Sample: the cleanest ISO class a count meets in FDA's 2004
+  aseptic processing table, and a sample at, under or over the recommended action level.
+- Air Changes per Hour and Clearance Time: air changes from airflow and room size, with CDC's times
+  to remove 99% and 99.9% of an airborne contaminant. See docs/spec-v1630.md.
+- Is a Compounded Drug Essentially a Copy? (503A): applies FDA's January 2018 guidance to your
+  answers: the percent difference in strength against the commercial product, which conditions are
+  met, and this month's count against four prescriptions. A product in shortage or discontinued is
+  not commercially available. A nonbinding enforcement policy, and the page says so.
+- Anticipatory Compounding Limit (503A): from a dated list of prescriptions, the highest 30-day
+  total in the past year (the ceiling under FDA's December 2016 policy), and how many more units
+  may be made against what is on hand. See docs/spec-v1629.md.
 - Emulsifier Blend for a Required HLB (Griffin): the proportions of two emulsifiers for a required
   HLB, the HLB of a mixture, the required HLB of an oil phase, and Griffin's 1954 estimates from
   composition, with his stated limits. HLB values are yours to enter from the supplier's sheet.

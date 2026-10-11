@@ -7,6 +7,10 @@
     "sha256": "b78f5f019d9690dd467c9107f1e854ab9f6991f443d7e537a86f97706824a4f4",
     "recorded": "2026-10-11"
   },
+  "https://www.cdc.gov/infection-control/hcp/environmental-control/appendix-b-air.html": {
+    "sha256": "141208fca5444d6f7eb20acb938a0d6b01b489df7fe2f8354b95078e2154d08a",
+    "recorded": "2026-10-11"
+  },
   "https://www.cms.gov/data-research/monitoring-programs/medicare-fee-service-compliance-programs/prior-authorization-and-pre-claim-review-initiatives": {
     "sha256": "cbe3888093282af30e01117c061af768d5973529e16da8afd4a094889b4aa56e",
     "recorded": "2026-10-03"
@@ -38,6 +42,18 @@
   "https://www.cms.gov/priorities/innovation/innovation-models/wiser": {
     "sha256": "d283724ea08f40f47c397b4104218191c510b6ae4ccea635ffe77a1f0644f218",
     "recorded": "2026-10-03"
+  },
+  "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/compounded-drug-products-are-essentially-copies-commercially-available-drug-product-under-section": {
+    "sha256": "4d8020aa1745f4f1ce7943432cef08dd13d4ae328d64dfc5eff5f35663d79da8",
+    "recorded": "2026-10-11"
+  },
+  "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/prescription-requirement-under-section-503a-federal-food-drug-and-cosmetic-act-guidance-industry": {
+    "sha256": "d8aa1836cf7ac868c71aeacc371eac17ab4f7d710e81f1b02850728abb64a3bb",
+    "recorded": "2026-10-11"
+  },
+  "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/sterile-drug-products-produced-aseptic-processing-current-good-manufacturing-practice": {
+    "sha256": "7d8b6eb72810398808085fd60380c73687f0cc4fb6d589a38a8d33da9a6f62bc",
+    "recorded": "2026-10-11"
   },
   "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=%22Women%27s+Preventive+Services+Guidelines%22&conditions%5Bagencies%5D%5B%5D=health-resources-and-services-administration&fields%5B%5D=document_number&order=newest&per_page=5": {
     "sha256": "b20af67eb531062b6880582fa7e3075b95fa040c3b43b407ace5fc0e3dea53d6",

@@ -1,6 +1,6 @@
 # spec-v1629 — Pharmaceutical calculations and nonsterile compounding bench math
 
-**Status:** In progress, October 11, 2026: 22 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
+**Status:** October 11, 2026: 24 of 25 tools built (see Build status); the last, `compound-interstate-share`, is build-gated. The backfills are open.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A pharmacist or technician at the compounding bench does the same arithmetic every day: mix two
@@ -742,7 +742,7 @@ over the past year that the compounder selected"; the guidance's example is 500 
 
 ## Build status
 
-Updated October 11, 2026. 22 of 25 tools built.
+Updated October 11, 2026. 24 of 25 tools built; the 25th is build-gated.
 
 | Tool | Status |
 |---|---|
@@ -768,4 +768,6 @@ Updated October 11, 2026. 22 of 25 tools built.
 | 12. `isotonicity-e-value` | Built (group Q). The paper was re-read through the PubMed Central API and says what the spec quotes. **Corrections to the spec:** its authors are Umar AK, Wathoni N, Hasanah AN, Kurniawansyah IS and Abdassah M ("Kahar" is the method's name, not an author), and the citation is *J Pharm Bioallied Sci.* 2019;11(Suppl 4):S635-S649. White-Vincent is computed with 100 ÷ 0.9 unrounded, so the paper's worked formula gives 865.222 mL where the paper, using 111.1, prints 865.136; the result says so. The page example is that worked formula (four weights and E-values from the paper), so the example can compute. |
 | 13. `isotonicity-freezing-point` | Built (group Q). No preset for sodium chloride's 1% depression: the build gate stands (no second, primary source for 0.576 was read). The page example is a solute already past 0.52, which needs no agent value. |
 | 22. `hlb-blend` | Built (group Q). Both Griffin papers re-read in the Society of Cosmetic Chemists library; the additivity sentence, the three formulas, their worked answers and the stated limits are as the spec says. For the paper's three worked inputs the result prints the paper's rounded figure beside the arithmetic. No HLB table ships. |
-| 23 to 25 | Not built. They need section 503A and FDA's compounding guidances re-read; 23 (`compound-interstate-share`) is build-gated. |
+| 23. `compound-interstate-share` | Not built: build-gated. A test holds the id out of the catalog. FDA's page and the docket were not re-checked on October 11, 2026. |
+| 24. `compound-copy-check` | Built (group Q). The January 2018 guidance was re-read on October 11, 2026 and says what the spec quotes; FDA's page still lists it as final (content current as of May 6, 2020) and is under the weekly page watch. Every answer is required. "Easily substitutable" is flagged only when the compounded strength is a whole multiple of the commercial one (the guidance's own example runs that way); a fraction is reported as "the guidance gives no number." The shortage date checked is not an input: the result tells the reader to check the list on the day. 21 U.S.C. 353a was not re-read and is not cited; the tool cites the guidance only. |
+| 25. `compound-anticipatory-limit` | Built (group Q). The December 2016 guidance was re-read on October 11, 2026; FDA's page lists it as final (content current as of August 24, 2018) and is under the page watch. Input is the dated list only (date received, units); the per-period entry is not built, since the highest of a set of typed totals needs no tool. A window is 30 consecutive days starting on a prescription date. A prescription dated exactly one year before the as-of date is counted. Units on hand are optional. Batch upload is not built. |
