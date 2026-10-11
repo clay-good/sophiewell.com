@@ -12521,6 +12521,49 @@
       ],
       "tile": "er-opioid-label-start",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "suboxone",
+        "zubsolv",
+        "brixadi",
+        "sublocade",
+        "suboxone to sublocade",
+        "suboxone to zubsolv",
+        "suboxone to brixadi"
+      ],
+      "tile": "buprenorphine-oud-product-switch",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lantus",
+        "basaglar",
+        "toujeo",
+        "tresiba",
+        "glargine",
+        "degludec",
+        "lantus to toujeo",
+        "toujeo to lantus",
+        "nph to lantus",
+        "basal insulin conversion"
+      ],
+      "tile": "basal-insulin-switch",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "taper",
+        "tapering",
+        "taper schedule",
+        "opioid taper",
+        "benzo taper",
+        "taper calendar",
+        "prednisone taper schedule",
+        "wean off medication"
+      ],
+      "tile": "taper-calendar",
+      "audience": "clinicians"
     }
   ]
 }

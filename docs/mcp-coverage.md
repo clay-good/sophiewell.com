@@ -9124,6 +9124,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/er-opioid-label-start-v1633.js (spec-v1633: Hysingla ER, Butrans and Belbuca starting dose (three label rows, one way) — clinical disclaimer)
 - `er-opioid-label-start`
 
+### lib/buprenorphine-oud-product-switch-v1633.js (spec-v1633: Buprenorphine product switch for opioid use disorder (three label rows) — clinical disclaimer)
+- `buprenorphine-oud-product-switch`
+
+### lib/basal-insulin-switch-v1633.js (spec-v1633: Basal insulin switch starting dose (four label rows) — clinical disclaimer)
+- `basal-insulin-switch`
+
+### lib/taper-calendar-v1633.js (spec-v1633: Taper schedule calendar (CDC 2022, ASAM 2025 and label ranges) — clinical disclaimer)
+- `taper-calendar`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

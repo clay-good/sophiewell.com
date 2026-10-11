@@ -246,6 +246,21 @@
     }
   },
   {
+    "label": "Basaglar (insulin glargine)",
+    "labeler": "ELI LILLY AND COMPANY",
+    "setId": "0ad21db3-2b1c-4ed9-a687-bdd6a74d0aae",
+    "tools": [
+      "basal-insulin-switch"
+    ],
+    "splVersion": 35,
+    "publishedOn": "2026-08-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "eea0870ccde56c7c6a862a7a8ab0cfe6c64c65af049b3f04a0a14615d0578bb0"
+    }
+  },
+  {
     "label": "Belbuca (buprenorphine buccal film)",
     "labeler": "BIODELIVERY SCIENCES INTERNATIONAL INC",
     "setId": "bc2b7a3d-72cf-497c-95b0-ba2b71f63c64",
@@ -288,6 +303,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "67e94681912fc92dba0e0a8419ae5bec58ce9db41fe965515691ad724e73aa6f"
+    }
+  },
+  {
+    "label": "Brixadi (buprenorphine extended-release injection)",
+    "labeler": "BRAEBURN INC.",
+    "setId": "5d8a8fd0-8619-422a-a664-d1d2e8970f48",
+    "tools": [
+      "buprenorphine-oud-product-switch"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2026-01-06",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "d421b0a7cf91df7285df2d1a45f2ec18ccb98091e92f151bdac290fae5600009"
     }
   },
   {
@@ -1137,6 +1167,21 @@
     }
   },
   {
+    "label": "Lantus (insulin glargine)",
+    "labeler": "SANOFI-AVENTIS U.S. LLC",
+    "setId": "d5e07a0c-7e14-4756-9152-9fea485d654a",
+    "tools": [
+      "basal-insulin-switch"
+    ],
+    "splVersion": 35,
+    "publishedOn": "2025-07-02",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "21ec73a5b8f78b0ac3658e35255586cb68cf08abd9317a2351fd74e50b1d525d"
+    }
+  },
+  {
     "label": "Levofloxacin tablets, Aurobindo",
     "labeler": "AUROBINDO PHARMA LIMITED",
     "setId": "529ac72c-c4a0-4001-8cf9-b94f5bf7265c",
@@ -1278,7 +1323,8 @@
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "50f14803-78c0-4d19-8b5d-9a9c17582ac1",
     "tools": [
-      "methadone-label-conversion"
+      "methadone-label-conversion",
+      "taper-calendar"
     ],
     "splVersion": 9,
     "publishedOn": "2026-01-30",
@@ -1765,6 +1811,21 @@
     }
   },
   {
+    "label": "Sublocade (buprenorphine extended-release injection)",
+    "labeler": "INDIVIOR INC.",
+    "setId": "6189fb21-9432-45f8-8481-0bfaf3ccde95",
+    "tools": [
+      "buprenorphine-oud-product-switch"
+    ],
+    "splVersion": 43,
+    "publishedOn": "2026-07-28",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "01ff0be85d4ad70bcd1a9eb78f58b0a077e974bdd62d321fa0fd84dc73bd74cc"
+    }
+  },
+  {
     "label": "Tamiflu (oseltamivir), Genentech",
     "labeler": "GENENTECH, INC.",
     "setId": "ee3c9555-60f2-4f82-a760-11983c86e97b",
@@ -1889,6 +1950,21 @@
     }
   },
   {
+    "label": "Toujeo (insulin glargine 300 units/mL)",
+    "labeler": "SANOFI-AVENTIS U.S. LLC",
+    "setId": "c9561d96-124d-48ca-982f-0aa1575bff36",
+    "tools": [
+      "basal-insulin-switch"
+    ],
+    "splVersion": 25,
+    "publishedOn": "2025-06-12",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "5a846a394fab651d52503c95f77788974f0e0ec101e4205352b0a98dccb76c73"
+    }
+  },
+  {
     "label": "Tralement (trace elements injection 4), American Regent",
     "labeler": "AMERICAN REGENT, INC.",
     "setId": "a49ffb90-f307-433e-a86e-aaea6d6a9982",
@@ -1946,6 +2022,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "6faa307432fef1b8c5e9eb02ed9be1a153224d39e5574badc5f873c9225f075d"
+    }
+  },
+  {
+    "label": "Tresiba (insulin degludec)",
+    "labeler": "NOVO NORDISK",
+    "setId": "456c5e87-3dfd-46fa-8ac0-c6128d4c97c6",
+    "tools": [
+      "basal-insulin-switch"
+    ],
+    "splVersion": 14,
+    "publishedOn": "2022-07-20",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "c3d0498669328e6338951d9c26b1db817e54928afc96c68a8cd859485138aed7"
     }
   },
   {
@@ -2240,6 +2331,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "e8996571fc37917268e48a9ee811e13666955523aa28e3c304cccbc92b1448d3"
+    }
+  },
+  {
+    "label": "Zubsolv (buprenorphine and naloxone), Orexo",
+    "labeler": "OREXO US, INC.",
+    "setId": "5f5cfcfe-d52b-49e6-8fe4-550477332dd2",
+    "tools": [
+      "buprenorphine-oud-product-switch"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2025-12-31",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "1468aca291c22c8259b41e2257d5808b0e7b417486848422fa0149e265e76fbf"
     }
   }
 ]

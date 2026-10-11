@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import taperCalendarV1633 from './adapters/taper-calendar-v1633.js';
+import buprenorphineOudProductSwitchV1633 from './adapters/buprenorphine-oud-product-switch-v1633.js';
+import basalInsulinSwitchV1633 from './adapters/basal-insulin-switch-v1633.js';
 import fentanylPatchInitialDoseV1633 from './adapters/fentanyl-patch-initial-dose-v1633.js';
 import methadoneLabelConversionV1633 from './adapters/methadone-label-conversion-v1633.js';
 import erOpioidLabelStartV1633 from './adapters/er-opioid-label-start-v1633.js';
@@ -2211,6 +2214,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['taper-calendar-v1633', taperCalendarV1633],
+  ['buprenorphine-oud-product-switch-v1633', buprenorphineOudProductSwitchV1633],
+  ['basal-insulin-switch-v1633', basalInsulinSwitchV1633],
   ['fentanyl-patch-initial-dose-v1633', fentanylPatchInitialDoseV1633],
   ['methadone-label-conversion-v1633', methadoneLabelConversionV1633],
   ['er-opioid-label-start-v1633', erOpioidLabelStartV1633],

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2e1f4576-6371-57b8-82d5-3b96b981985a",
+  "serialNumber": "urn:uuid:27e4ae15-08de-5238-87a1-2bcb031d7e38",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T17:51:10.864Z",
+    "timestamp": "2026-10-11T18:35:23.336Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2140 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2143 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e57af8b80c6a2d5a05d13b6e9574049a5805b37146ced0d9c8bac6ec0d4243ca"
+          "content": "b2b95695ed22690112e9b274e1b73810da076ffbcdce452e970550900c88b222"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "138286"
+          "value": "138469"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9007f35966af5687d4f48383b725a36f8fdc64e1456345ebfb03c2392cdfb31f"
+          "content": "ae823d6fe7ba14a50e30e5292102ba0d928d935ba101120f0a5ca209138956a1"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "604446"
+          "value": "604923"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e93a8b1e7ba33d1a9f9cc3aa3fe0af61e8d2ca2a9d21e6203d95ac0e1fe31e6d"
+          "content": "4a911d8b48d13776ea508630b6c4384c53f040089410006a4c28bbad8740753c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "268369"
+          "value": "268768"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9220c44d38902fdb17daa5c51ca472df7ff0c5103d74aacee73d18d18b2e5044"
+          "content": "3995c5f689dc8f6f100ed044c943d70b375a17aea89cc3da176cb2b13887baae"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126776"
+          "value": "126995"
         }
       ]
     },
@@ -2240,6 +2240,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/basal-insulin-switch-v1633.js",
+      "type": "file",
+      "name": "lib/basal-insulin-switch-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a1eac46f84cf90f80d656e489afa5ae0ca91a7b919b0095ceab1b48fe2f29745"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9186"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/batch-tools.js",
       "type": "file",
       "name": "lib/batch-tools.js",
@@ -3223,6 +3244,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "322"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/buprenorphine-oud-product-switch-v1633.js",
+      "type": "file",
+      "name": "lib/buprenorphine-oud-product-switch-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "286f381edc3889e76d772d5fd1735f4e5756da5015f3b0429879cdcb7bbef190"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11258"
         }
       ]
     },
@@ -12977,7 +13019,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "85e3aac264ce02d3ddd41d253ce83f99600d96d5e7ec78cff95df1dfdbf66fd0"
+          "content": "5ed96350aa326091dd2b4c913858b1f27ee1af1e3e4969493e6a6d637b196b36"
         }
       ],
       "properties": [
@@ -12987,7 +13029,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "32168"
+          "value": "33730"
         }
       ]
     },
@@ -15203,7 +15245,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ae2dbae95fff672854fa0a966a3f729ea1e75d3b49e9382855c326bdafe1ff90"
+          "content": "3c8dbe6adaede032c43e62ca757b27ffd32f2df89360c84226a81fa5e16fe454"
         }
       ],
       "properties": [
@@ -15213,7 +15255,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2847096"
+          "value": "2850969"
         }
       ]
     },
@@ -25025,6 +25067,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/taper-calendar-v1633.js",
+      "type": "file",
+      "name": "lib/taper-calendar-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7b7bc29c83557e728aa3dd6a9d70da04a9bb0b4ca0d64bd404ab9d5576d7a645"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "17037"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/tb-4-month-eligibility-v1553.js",
       "type": "file",
       "name": "lib/tb-4-month-eligibility-v1553.js",
@@ -30002,6 +30065,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/basal-insulin-switch-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/basal-insulin-switch-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9a1773a333787ef429889b2d859613f71cd32f4cbf07459b0e520c6e6072a551"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1637"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/bauer-score-v603.js",
       "type": "file",
       "name": "mcp/adapters/bauer-score-v603.js",
@@ -30901,6 +30985,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2246"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/buprenorphine-oud-product-switch-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/buprenorphine-oud-product-switch-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "97de9c6bfffab79fde6eec46dd88c4d13aa1dbbd55046972db9fc226165c355f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1397"
         }
       ]
     },
@@ -50267,6 +50372,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/taper-calendar-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/taper-calendar-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f7488cc9eb7942065a2af1a195951b09a8b777d36b04a700654bbfd0087c6151"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2585"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tb-4-month-eligibility-v1553.js",
       "type": "file",
       "name": "mcp/adapters/tb-4-month-eligibility-v1553.js",
@@ -52877,7 +53003,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9893964f7026e5a40654844cff7e9187fb62fe741a2a94172dbbd5952325c2b7"
+          "content": "c4628deca5cbedb17ccf627a9f50d011f504ad4a370f110fbdf5840c7b7bf3de"
         }
       ],
       "properties": [
@@ -52887,7 +53013,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "138499"
+          "value": "138940"
         }
       ]
     },
@@ -57455,7 +57581,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1f04fb7650be0678df8cc1352c92a2b3eb5013070b7c1add5669b96fe800b2f2"
+          "content": "6431e5bf6395e0fa072367ac0e31460edced3e9ee6a39937a0849739f1dfef28"
         }
       ],
       "properties": [
@@ -57465,7 +57591,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8298"
+          "value": "13491"
         }
       ]
     },
@@ -88331,6 +88457,7 @@
         "urn:sophiewell:file:source:lib/banff-tcmr-v510.js",
         "urn:sophiewell:file:source:lib/barrack-cement-v484.js",
         "urn:sophiewell:file:source:lib/barrow-ccf-v440.js",
+        "urn:sophiewell:file:source:lib/basal-insulin-switch-v1633.js",
         "urn:sophiewell:file:source:lib/batch-tools.js",
         "urn:sophiewell:file:source:lib/bauer-score-v603.js",
         "urn:sophiewell:file:source:lib/bctq-v774.js",
@@ -88378,6 +88505,7 @@
         "urn:sophiewell:file:source:lib/brue-v547.js",
         "urn:sophiewell:file:source:lib/buffer-ph-v1629.js",
         "urn:sophiewell:file:source:lib/build-info.js",
+        "urn:sophiewell:file:source:lib/buprenorphine-oud-product-switch-v1633.js",
         "urn:sophiewell:file:source:lib/buruli-ulcer-category-v1561.js",
         "urn:sophiewell:file:source:lib/busulfan-auc-dose-v1631.js",
         "urn:sophiewell:file:source:lib/c-rads-v371.js",
@@ -89416,6 +89544,7 @@
         "urn:sophiewell:file:source:lib/taco-trali-v906.js",
         "urn:sophiewell:file:source:lib/takayasu-v638.js",
         "urn:sophiewell:file:source:lib/tanner-staging-v361.js",
+        "urn:sophiewell:file:source:lib/taper-calendar-v1633.js",
         "urn:sophiewell:file:source:lib/tb-4-month-eligibility-v1553.js",
         "urn:sophiewell:file:source:lib/tb-testing.js",
         "urn:sophiewell:file:source:lib/tbi-stroke-v206.js",
@@ -90596,6 +90725,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/banff-tcmr-v510.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/barrack-cement-v484.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/barrow-ccf-v440.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/basal-insulin-switch-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bauer-score-v603.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bctq-v774.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bell-nec-v431.js",
@@ -90639,6 +90769,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brue-v547.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/buffer-ph-v1629.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/buprenorphine-oud-product-switch-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/buruli-ulcer-category-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/busulfan-auc-dose-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/c-rads-v371.js",
@@ -91561,6 +91692,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/taco-trali-v906.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/takayasu-v638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tanner-staging-v361.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/taper-calendar-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tb-4-month-eligibility-v1553.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tb-testing.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tbi-stroke-v206.js",
@@ -91789,7 +91921,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "2e1f4576637177b8"
+      "value": "27e4ae1508def238"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91801,7 +91933,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3438"
+      "value": "3444"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

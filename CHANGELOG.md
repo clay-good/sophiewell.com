@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Taper Schedule Calendar: a dated schedule from a starting dose, a reduction and an interval,
+  rounded down to a dose that can be dispensed, shown beside the published range for the class and
+  marked when the pace entered is faster.
+- Buprenorphine Product Switch for Opioid Use Disorder (FDA Labels): Suboxone tablets and Zubsolv,
+  sublingual buprenorphine to Brixadi, Brixadi weekly and monthly, and transmucosal buprenorphine to
+  Sublocade, with the next injection dates.
+- Basal Insulin Switch Starting Dose (FDA Labels): the same dose or 80% of it, as the label of the
+  insulin being started gives for the insulin being stopped, or a plain statement that it gives none.
 - Fentanyl Patch Starting Dose From a Prior Opioid (FDA Label): the patch strength the label's
   one-way tables give, or a plain statement that the label gives none for the dose entered.
 - Methadone Starting Dose From Another Opioid (FDA Label): the label's percentage range for the
@@ -250,6 +258,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Search: "taper" now opens the Taper Schedule Calendar. It used to open the leprosy prednisolone
+  course, which "leprosy steroid taper" still finds.
 - Enoxaparin Dose: hip or knee replacement, unstable angina, and STEMI under and over 75 years
   (with the bolus and the cap on the first two doses), each with the label's row below a creatinine
   clearance of 30 mL/min.

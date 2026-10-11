@@ -628,3 +628,9 @@ experience**.
 > v1633, Methadone Starting Dose From Another Opioid (FDA Label) — [spec-v1633](spec-v1633.md), which adds `methadone-label-conversion` — is 2139.)
 
 > v1633, Hysingla ER, Butrans and Belbuca Starting Dose (FDA Labels) — [spec-v1633](spec-v1633.md), which adds `er-opioid-label-start` — is 2140.)
+
+> v1633, Buprenorphine Product Switch for Opioid Use Disorder (FDA Labels) — [spec-v1633](spec-v1633.md), which adds `buprenorphine-oud-product-switch` — is 2141.)
+
+> v1633, Basal Insulin Switch Starting Dose (FDA Labels) — [spec-v1633](spec-v1633.md), which adds `basal-insulin-switch` — is 2142.)
+
+> v1633, Taper Schedule Calendar — [spec-v1633](spec-v1633.md), which adds `taper-calendar` — is 2143.)

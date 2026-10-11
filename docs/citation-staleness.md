@@ -41,6 +41,7 @@ change in CI.
 | preg-dating | ACOG pregnancy redating thresholds | ACOG Committee Opinion 700 (2017, reaffirmed) | same | 2026-06-05 | current — redating thresholds (7/14/21 d) unchanged |
 | peds-dose | AAP / DailyMed weight-based dosing reference | AAP guidance + current FDA drug labels | same | 2026-06-05 | current — reference table; the governing source is the live drug label, not a fixed edition |
 | opioid-mme | CDC opioid prescribing / MME factors | CDC 2022 Clinical Practice Guideline (MMWR 2022;71(3)) | same | 2026-06-05 | current — the 2022 guideline superseded the 2016 version; no newer edition |
+| taper-calendar | CDC opioid guideline, Recommendation 5 (taper ranges); ASAM joint guideline on benzodiazepine tapering | CDC 2022 Clinical Practice Guideline (MMWR 2022;71(3)); J Gen Intern Med 2025;40:2814 | same | 2026-10-11 | current — both read on PMC (PMC9639433, PMC12463801); the two label ranges are on the methadone tablet label's watched edition |
 | ascvd | ACC/AHA Pooled Cohort Equations | 2013 ACC/AHA PCE (Circulation 2014;129) | 2024 AHA PREVENT (race-free) | 2026-06-05 | behind, justified — the 2013 PCE is retained as the still-widely-charted instrument; the 2024 model ships separately as the `prevent` tile |
 | prevent | AHA PREVENT equations | 2024 (Circulation 2024;149(6)) | same | 2026-06-05 | current |
 | bronchodilator-response | ERS/ATS bronchodilator responsiveness criterion | 2022 ERS/ATS technical standard (Eur Respir J 2022;60:2101499) | same | 2026-07-04 | current — the > 10% of predicted criterion is the 2022 standard |

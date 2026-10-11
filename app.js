@@ -2711,6 +2711,9 @@ const UTILITIES = [
   { id: 'fentanyl-patch-initial-dose', name: 'Fentanyl Patch Starting Dose From a Prior Opioid (FDA Label)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'methadone-label-conversion', name: 'Methadone Starting Dose From Another Opioid (FDA Label)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'er-opioid-label-start', name: 'Hysingla ER, Butrans and Belbuca Starting Dose (FDA Labels)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'buprenorphine-oud-product-switch', name: 'Buprenorphine Product Switch for Opioid Use Disorder (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'basal-insulin-switch', name: 'Basal Insulin Switch Starting Dose (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'taper-calendar', name: 'Taper Schedule Calendar', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-
