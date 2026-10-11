@@ -1,10 +1,14 @@
 // spec-v1631: clinical pharmacokinetics and therapeutic drug monitoring. Group F.
-// pk-steady-state-predict, auc-trapezoid and tmic-beta-lactam.
+// pk-steady-state-predict, auc-trapezoid, tmic-beta-lactam, sawchuk-zaske-dosing, kinetic-egfr and
+// crrt-drug-clearance.
 
 import { el, clear } from '../lib/dom.js';
 import * as PK from '../lib/pk-steady-state-predict-v1631.js';
 import * as AT from '../lib/auc-trapezoid-v1631.js';
 import * as TM from '../lib/tmic-beta-lactam-v1631.js';
+import * as SZ from '../lib/sawchuk-zaske-dosing-v1631.js';
+import * as KE from '../lib/kinetic-egfr-v1631.js';
+import * as CR from '../lib/crrt-drug-clearance-v1631.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -99,5 +103,62 @@ export const renderers = {
     numField(root, 'Unbound fraction, from 0 to 1', 'tm-fu', '');
     numField(root, 'MIC, mg/L', 'tm-mic', '');
     run(root, [['tm-dose', 'dose'], ['tm-tinf', 'infusionHours'], ['tm-tau', 'interval'], ['tm-vd', 'vd'], ['tm-half', 'halfLife'], ['tm-k', 'k'], ['tm-fu', 'unboundFraction'], ['tm-mic', 'mic']], TM.tmicBetaLactam);
+  },
+
+  'sawchuk-zaske-dosing'(root) {
+    selectField(root, 'The levels follow', 'sz-state', SZ.DOSE_STATES);
+    numField(root, 'Dose given, mg', 'sz-dose', '');
+    numField(root, 'Infusion time, hours', 'sz-tinf', '');
+    numField(root, 'Dosing interval, hours', 'sz-tau', '');
+    numField(root, 'First level, mg/L', 'sz-c1', '');
+    numField(root, 'First level: hours after the infusion ended', 'sz-t1', '');
+    numField(root, 'Second level, mg/L', 'sz-c2', '');
+    numField(root, 'Second level: hours after the infusion ended', 'sz-t2', '');
+    numField(root, 'Pre-dose level, mg/L (first dose only; optional)', 'sz-pre', '');
+    numField(root, 'Weight, kg, for L/kg (optional)', 'sz-weight', '');
+    numField(root, 'Desired peak, mg/L (optional)', 'sz-peak', '');
+    numField(root, 'Desired trough, mg/L (optional)', 'sz-trough', '');
+    run(root, [['sz-state', 'doseState'], ['sz-dose', 'dose'], ['sz-tinf', 'infusionHours'], ['sz-tau', 'interval'], ['sz-c1', 'level1'], ['sz-t1', 'time1'], ['sz-c2', 'level2'], ['sz-t2', 'time2'], ['sz-pre', 'preDose'], ['sz-weight', 'weight'], ['sz-peak', 'desiredPeak'], ['sz-trough', 'desiredTrough']], SZ.sawchukZaskeDosing);
+  },
+
+  'kinetic-egfr'(root) {
+    numField(root, 'Baseline (steady-state) creatinine, mg/dL', 'ke-base', '');
+    numField(root, 'Clearance or eGFR at that baseline, mL/min', 'ke-crcl', '');
+    numField(root, 'First creatinine, mg/dL', 'ke-c1', '');
+    numField(root, 'Second creatinine, mg/dL', 'ke-c2', '');
+    numField(root, 'Hours between the two', 'ke-hours', '');
+    numField(root, 'Weight, kg (body water is taken as 0.6 × kg)', 'ke-weight', '');
+    numField(root, 'or maximum creatinine rise, mg/dL per day', 'ke-max', '');
+    run(root, [['ke-base', 'baselineCreatinine'], ['ke-crcl', 'baselineClearance'], ['ke-c1', 'creatinine1'], ['ke-c2', 'creatinine2'], ['ke-hours', 'hours'], ['ke-weight', 'weight'], ['ke-max', 'maxRise']], KE.kineticEgfr);
+  },
+
+  'crrt-drug-clearance'(root) {
+    const pairs = [['cr2-mode', 'mode'], ['cr2-unit', 'flowUnit'], ['cr2-quf', 'ultrafiltrateFlow'], ['cr2-sc', 'sievingCoefficient'], ['cr2-qd', 'dialysateFlow'], ['cr2-sa', 'saturationCoefficient'], ['cr2-qp', 'plasmaFlow'], ['cr2-pre', 'preFilterFlow'], ['cr2-other', 'otherClearance']];
+    selectField(root, 'Mode', 'cr2-mode', CR.MODES);
+    selectField(root, 'Flows are entered in', 'cr2-unit', CR.FLOW_UNITS);
+    const filtration = [
+      numField(root, 'Ultrafiltrate flow', 'cr2-quf', ''),
+      numField(root, 'Sieving coefficient, from your source or effluent ÷ plasma', 'cr2-sc', ''),
+      numField(root, 'Plasma flow (only with fluid given before the filter)', 'cr2-qp', ''),
+      numField(root, 'Pre-filter flow', 'cr2-pre', ''),
+    ];
+    const dialysis = [
+      numField(root, 'Dialysate flow', 'cr2-qd', ''),
+      numField(root, 'Saturation coefficient, from your source or effluent ÷ plasma', 'cr2-sa', ''),
+    ];
+    numField(root, 'Patient\'s other clearance, mL/min (optional)', 'cr2-other', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const mode = val('cr2-mode');
+      const f = mode !== 'hemodialysis'; const d = mode !== 'hemofiltration';
+      for (const w of filtration) w.hidden = Boolean(mode) && !f;
+      for (const w of dialysis) w.hidden = Boolean(mode) && !d;
+      const args = {};
+      // A hidden field's leftover value is not part of the question.
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      if (mode && !f) for (const k of ['ultrafiltrateFlow', 'sievingCoefficient', 'plasmaFlow', 'preFilterFlow']) args[k] = '';
+      if (mode && !d) for (const k of ['dialysateFlow', 'saturationCoefficient']) args[k] = '';
+      show(CR.crrtDrugClearance(args), o);
+    }));
   },
 };

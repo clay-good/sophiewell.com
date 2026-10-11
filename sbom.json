@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:a705ac39-1466-5c2e-8173-cc60605ba14a",
+  "serialNumber": "urn:uuid:42c3b539-9738-5cec-8984-b8dd72f167ad",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T09:13:51.116Z",
+    "timestamp": "2026-10-11T09:54:55.586Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2102 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2105 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3f2214cfd9d14a5aa9a2028eebc3a0d296f5a913f84537d72a024133de12f1e7"
+          "content": "ee11b526d85852307431200826b042ff804951b29d34fdb2e9ca46a65775675f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135732"
+          "value": "135933"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dfca4e2df193621ae851cd5a207a5fae7314a5991f37e05a681fb93dbed8bd02"
+          "content": "5a80eae06198ffea0ed6543a894306eb82eb942e4588cbb59f7a0cf4c5fbeb29"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "598064"
+          "value": "598544"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2895a2c7f179b223f719ddf488119f0416377000da4bfb4a66b8650a56decab0"
+          "content": "9e7146f888675a5d024f2da439cb6fc2d6e13e5186bf23b3b35cdb9e5c463e9e"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "263351"
+          "value": "263735"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "70a942fd6fab1d3688424875f74467d017e8b34c9fda2096040a6a206ce681a3"
+          "content": "bea9e7f42e88b2c912346177c2a96b08f5f59733407158e96810e6d82dd0cebe"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "123802"
+          "value": "124024"
         }
       ]
     },
@@ -5428,6 +5428,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3621"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/crrt-drug-clearance-v1631.js",
+      "type": "file",
+      "name": "lib/crrt-drug-clearance-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "41116ffb472cd43980f00a9ff7cb25c4f82e58e597ce522fc78a02b4ed1a72bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6401"
         }
       ]
     },
@@ -12131,6 +12152,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/kinetic-egfr-v1631.js",
+      "type": "file",
+      "name": "lib/kinetic-egfr-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9feffbb3ac73b280ffb420d308ec060af6ae4639c37ea80e52f5ab9ebfe0787b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4717"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/kings-college-nonapap-v910.js",
       "type": "file",
       "name": "lib/kings-college-nonapap-v910.js",
@@ -14552,7 +14594,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e23390ac88fafa610ad18adc2eae7250f10696e1202861583eea7036784d5923"
+          "content": "277384011ff0b20f70ddc1603dda19dbe989c575f00226741e358618cbf2fee3"
         }
       ],
       "properties": [
@@ -14562,7 +14604,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2798383"
+          "value": "2800887"
         }
       ]
     },
@@ -22333,6 +22375,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11461"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/sawchuk-zaske-dosing-v1631.js",
+      "type": "file",
+      "name": "lib/sawchuk-zaske-dosing-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0ccda5ced486f98ab11383cec446ebcdb906fe5819d6131612134d6e6980003f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8943"
         }
       ]
     },
@@ -32186,6 +32249,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/crrt-drug-clearance-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/crrt-drug-clearance-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "25a75060c72f75bea2908e3b48d529325b3c7b748df1306b9532531bc0a7ede4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2048"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/crs-v305.js",
       "type": "file",
       "name": "mcp/adapters/crs-v305.js",
@@ -38125,6 +38209,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1452"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/kinetic-egfr-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/kinetic-egfr-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f0f3d8b655966d75a7c1d137bfe01ae22a743a539a9dfecbe6573c20ba4dbb7d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1587"
         }
       ]
     },
@@ -46991,6 +47096,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/sawchuk-zaske-dosing-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/sawchuk-zaske-dosing-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "92050c623abf21f8792fb4ea62d3f769d073318af419cf69cbdbd7047e13e085"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2361"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/sbp-ascitic-fluid-v852.js",
       "type": "file",
       "name": "mcp/adapters/sbp-ascitic-fluid-v852.js",
@@ -51218,7 +51344,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c869ccae271d1561b88eec0d12cdf2ac9d572d7d603968b05a7cbcf27ca93658"
+          "content": "b39fb357e3263333324f2173900829e823b5f9cacb31d8ae217f87ccc241a022"
         }
       ],
       "properties": [
@@ -51228,7 +51354,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133077"
+          "value": "133460"
         }
       ]
     },
@@ -55754,7 +55880,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1c8a68094e49d9cf08e55fe6eb0b6e0ba736a24d5dd485c59d57cf2cb94e60fd"
+          "content": "70dd37ba9b5fe2a8fc733512d78df911b109e4824e199d7e779ebc97879cd28f"
         }
       ],
       "properties": [
@@ -55764,7 +55890,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5193"
+          "value": "9207"
         }
       ]
     },
@@ -86782,6 +86908,7 @@
         "urn:sophiewell:file:source:lib/critcare-severity-v200.js",
         "urn:sophiewell:file:source:lib/critcare-v112.js",
         "urn:sophiewell:file:source:lib/crowe-ddh-v353.js",
+        "urn:sophiewell:file:source:lib/crrt-drug-clearance-v1631.js",
         "urn:sophiewell:file:source:lib/crs-v305.js",
         "urn:sophiewell:file:source:lib/cs-dispensing-v1511.js",
         "urn:sophiewell:file:source:lib/csendes-mirizzi-v1240.js",
@@ -87101,6 +87228,7 @@
         "urn:sophiewell:file:source:lib/keyboard.js",
         "urn:sophiewell:file:source:lib/keywords.js",
         "urn:sophiewell:file:source:lib/kikuchi-v333.js",
+        "urn:sophiewell:file:source:lib/kinetic-egfr-v1631.js",
         "urn:sophiewell:file:source:lib/kings-college-nonapap-v910.js",
         "urn:sophiewell:file:source:lib/kings-score-v697.js",
         "urn:sophiewell:file:source:lib/knosp-adenoma-v390.js",
@@ -87587,6 +87715,7 @@
         "urn:sophiewell:file:source:lib/sartorius-hs-v607.js",
         "urn:sophiewell:file:source:lib/savary-miller-v405.js",
         "urn:sophiewell:file:source:lib/save-score-v543.js",
+        "urn:sophiewell:file:source:lib/sawchuk-zaske-dosing-v1631.js",
         "urn:sophiewell:file:source:lib/sbp-ascitic-fluid-v852.js",
         "urn:sophiewell:file:source:lib/scabies-diagnosis-mda-v1561.js",
         "urn:sophiewell:file:source:lib/scadding-v523.js",
@@ -88997,6 +89126,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/critcare-severity-v200.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/critcare-v112.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/crowe-ddh-v353.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/crrt-drug-clearance-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/crs-v305.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cs-dispensing-v1511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/csendes-mirizzi-v1240.js",
@@ -89280,6 +89410,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/katagiri-v606.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kennedy-edentulous-v719.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kikuchi-v333.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/kinetic-egfr-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kings-college-nonapap-v910.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/knosp-adenoma-v390.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kobayashi-kawasaki-v680.js",
@@ -89702,6 +89833,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/sartorius-hs-v607.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/savary-miller-v405.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/save-score-v543.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/sawchuk-zaske-dosing-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sbp-ascitic-fluid-v852.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/scabies-diagnosis-mda-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/scadding-v523.js",
@@ -90007,7 +90139,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "a705ac391466ac2e"
+      "value": "42c3b53997389cec"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -90019,7 +90151,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3357"
+      "value": "3363"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

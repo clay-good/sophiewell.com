@@ -552,3 +552,9 @@ experience**.
 > v1631, AUC From Measured Levels (Trapezoidal Rule) — [spec-v1631](spec-v1631.md), which adds `auc-trapezoid` — is 2101.)
 
 > v1631, Time Above MIC for a Dosing Regimen — [spec-v1631](spec-v1631.md), which adds `tmic-beta-lactam` — is 2102.)
+
+> v1631, New Dose and Interval From Two Levels (Sawchuk-Zaske) — [spec-v1631](spec-v1631.md), which adds `sawchuk-zaske-dosing` — is 2103.)
+
+> v1631, Kinetic eGFR When Creatinine Is Changing (Chen) — [spec-v1631](spec-v1631.md), which adds `kinetic-egfr` — is 2104.)
+
+> v1631, Drug Clearance by CRRT (Flow and Sieving Coefficient) — [spec-v1631](spec-v1631.md), which adds `crrt-drug-clearance` — is 2105.)

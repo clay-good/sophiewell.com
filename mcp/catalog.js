@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import sawchukZaskeDosingV1631 from './adapters/sawchuk-zaske-dosing-v1631.js';
+import kineticEgfrV1631 from './adapters/kinetic-egfr-v1631.js';
+import crrtDrugClearanceV1631 from './adapters/crrt-drug-clearance-v1631.js';
 import pkSteadyStatePredictV1631 from './adapters/pk-steady-state-predict-v1631.js';
 import aucTrapezoidV1631 from './adapters/auc-trapezoid-v1631.js';
 import tmicBetaLactamV1631 from './adapters/tmic-beta-lactam-v1631.js';
@@ -2173,6 +2176,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['sawchuk-zaske-dosing-v1631', sawchukZaskeDosingV1631],
+  ['kinetic-egfr-v1631', kineticEgfrV1631],
+  ['crrt-drug-clearance-v1631', crrtDrugClearanceV1631],
   ['pk-steady-state-predict-v1631', pkSteadyStatePredictV1631],
   ['auc-trapezoid-v1631', aucTrapezoidV1631],
   ['tmic-beta-lactam-v1631', tmicBetaLactamV1631],

@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- New Dose and Interval From Two Levels (Sawchuk-Zaske): half-life and volume of distribution
+  from two levels after an infusion, and, for a peak and trough you choose, the dose at the
+  practical intervals on either side of the exact one with the trough each predicts.
+- Kinetic eGFR When Creatinine Is Changing (Chen): an estimate of kidney function while the
+  creatinine is still moving, with the category it falls in beside the baseline's.
+- Drug Clearance by CRRT: clearance from the effluent flows and a sieving or saturation
+  coefficient you supply, with the correction for fluid given before the filter.
 - Predicted Peak, Trough and Level (One Compartment): steady-state peak and trough, the
   accumulation factor, time to steady state, the level at a time after any dose, and how long a
   level takes to fall to a target, from parameters you enter.

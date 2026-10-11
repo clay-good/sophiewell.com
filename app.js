@@ -2674,6 +2674,9 @@ const UTILITIES = [
   { id: 'pk-steady-state-predict', name: 'Predicted Peak, Trough and Level (One Compartment)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'auc-trapezoid', name: 'AUC From Measured Levels (Trapezoidal Rule)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tmic-beta-lactam', name: 'Time Above MIC for a Dosing Regimen', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sawchuk-zaske-dosing', name: 'New Dose and Interval From Two Levels (Sawchuk-Zaske)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'kinetic-egfr', name: 'Kinetic eGFR When Creatinine Is Changing (Chen)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'crrt-drug-clearance', name: 'Drug Clearance by CRRT (Flow and Sieving Coefficient)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

@@ -12050,6 +12050,39 @@
       ],
       "tile": "tmic-beta-lactam",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sawchuk zaske",
+        "new dose from peak and trough",
+        "two level kinetics aminoglycoside",
+        "individualized dosing from two levels",
+        "calculate ke and vd from levels"
+      ],
+      "tile": "sawchuk-zaske-dosing",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "kinetic egfr",
+        "kegfr chen",
+        "gfr when creatinine is rising",
+        "aki gfr estimate changing creatinine",
+        "kinetic gfr calculator"
+      ],
+      "tile": "kinetic-egfr",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "crrt drug clearance",
+        "sieving coefficient clearance cvvh",
+        "cvvhdf clearance of a drug",
+        "effluent rate drug clearance",
+        "pre dilution correction crrt"
+      ],
+      "tile": "crrt-drug-clearance",
+      "audience": "clinicians"
     }
   ]
 }

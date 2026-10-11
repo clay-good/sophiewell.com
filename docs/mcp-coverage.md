@@ -9010,6 +9010,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/tmic-beta-lactam-v1631.js (spec-v1631: Time above the MIC for an intermittent regimen (model algebra) — clinical disclaimer)
 - `tmic-beta-lactam`
 
+### lib/sawchuk-zaske-dosing-v1631.js (spec-v1631: Dose and interval from two levels (Sawchuk 1977 model) — clinical disclaimer)
+- `sawchuk-zaske-dosing`
+
+### lib/kinetic-egfr-v1631.js (spec-v1631: Kinetic eGFR (Chen 2013, as reproduced in Kwong 2019) — clinical disclaimer)
+- `kinetic-egfr`
+
+### lib/crrt-drug-clearance-v1631.js (spec-v1631: Drug clearance by CRRT (Li 2020; Corona 2022) — clinical disclaimer)
+- `crrt-drug-clearance`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 
