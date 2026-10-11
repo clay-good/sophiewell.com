@@ -62,7 +62,7 @@ export default [
   },
   {
     id: 'digoxin',
-    summary: 'Digoxin maintenance guidance and level interpretation (ACC/AHA/HFSA 2022): renal/age-adjusted dose guidance, indication-specific target range, and a <6 h post-dose timing warning.',
+    summary: 'Digoxin maintenance guidance and level interpretation: renal/age-adjusted dose guidance, an indication-specific target range (the 0.5-0.9 ng/mL heart-failure target is ACC/AHA/HFSA 2022), a <6 h post-dose timing warning, and the digoxin label\'s own level statements, returned separately because the label gives no target range.',
     compute: F.digoxin,
     fields: [
       { dom: 'dig-crcl', arg: 'crCl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },

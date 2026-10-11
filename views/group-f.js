@@ -448,6 +448,9 @@ export const renderers = {
         { label: 'Enoxaparin', value: fmt(r.doseMg), units: `mg ${r.interval}${r.mgPerKg ? ` (${r.mgPerKg} mg/kg)` : ''}` },
         r.renalAdjusted ? { text: 'CrCl <30 mL/min: renal reduction applied.', cls: 'flag' } : null,
       ]);
+      // spec-v1641 row 20: the row's own source, and the label's sentence where it gives no dose.
+      o.appendChild(el('p', { class: 'muted', text: r.source }));
+      if (r.labelNote) o.appendChild(el('p', { class: 'muted', text: r.labelNote }));
     });
     ['vte-w', 'vte-w-unit', 'vte-crcl', 'vte-ind', 'vte-reg'].forEach((id) => {
       const node = document.getElementById(id);

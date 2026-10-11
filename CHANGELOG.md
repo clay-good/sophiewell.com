@@ -14,6 +14,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Enoxaparin dose cited the label and CHEST 2012 together without saying which row was which.
+  Every dose is the Lovenox label's, so the tool now cites the label alone, each result names its
+  label section, the prophylaxis result says hip or knee replacement is 30 mg every 12 hours on the
+  label, and it quotes the label's sentence on obesity. Digoxin says its heart-failure target is
+  the guideline's and prints the label's own level statements beside it. The acetaminophen
+  nomogram names its line and says which acetylcysteine label prints which. spec-v1641 row 20.
 - Part D adherence (PDC by the Star method) and the adherence outreach list removed inpatient and
   skilled nursing stay days for every year. From measurement year 2026 (the 2028 Star Ratings) CMS
   uses risk-adjusted adherence measures that are not adjusted for those stays (CMS Patient Safety

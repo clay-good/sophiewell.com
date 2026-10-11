@@ -205,6 +205,7 @@ export const renderers = {
         li(r.interpretation, r.aboveLine ? 'warn' : null),
       ]));
       o.appendChild(el('p', { class: 'muted', text: 'Valid only for a single acute ingestion with a known time, level drawn >=4 h. Not for staggered/chronic ingestion or unknown timing.' }));
+      o.appendChild(el('p', { class: 'muted', text: r.lineNote }));
     }));
     medNotice(root);
   },
@@ -236,6 +237,9 @@ export const renderers = {
         r.levelInterp ? li(r.levelInterp, /toxic|above/.test(r.levelInterp) ? 'warn' : null) : null,
         r.timingWarn ? li('Level drawn <6 h post-dose: distribution incomplete, the level overestimates the true steady-state concentration.', 'warn') : null,
       ]));
+      // spec-v1641 row 20: which number is the guideline's, and what the label itself says.
+      o.appendChild(el('p', { class: 'muted', text: r.targetSource }));
+      o.appendChild(el('p', { class: 'muted', text: r.labelLevel }));
     }));
     medNotice(root);
   },

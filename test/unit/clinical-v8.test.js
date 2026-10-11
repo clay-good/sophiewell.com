@@ -230,3 +230,21 @@ test('anticoagReversalDose: apixaban / rivaroxaban returns no dose; andexanet is
   assert.doesNotMatch(r.note, /50 units\/kg/);
   assert.match(C.anticoagReversalDose({ weightKg: 80, inr: 5, agent: 'warfarin' }).adjunct, /5 to 10 mg/);
 });
+
+// spec-v1641 row 20: every enoxaparin row names its label section; CHEST is no longer credited.
+test('enoxaparinDose: each row carries its own source', async () => {
+  const { enoxaparinDose, ENOX_SOURCE } = await import('../../lib/clinical-v8.js');
+  const base = { weightKg: 80 };
+  assert.equal(enoxaparinDose({ ...base, crcl: 80, indication: 'prophylaxis' }).source, ENOX_SOURCE.prophylaxis);
+  assert.equal(enoxaparinDose({ ...base, crcl: 20, indication: 'prophylaxis' }).source, ENOX_SOURCE.prophylaxisRenal);
+  assert.equal(enoxaparinDose({ ...base, crcl: 80, indication: 'treatment', regimen: 'q12' }).source, ENOX_SOURCE.q12);
+  assert.equal(enoxaparinDose({ ...base, crcl: 80, indication: 'treatment', regimen: 'daily' }).source, ENOX_SOURCE.daily);
+  assert.equal(enoxaparinDose({ ...base, crcl: 20, indication: 'treatment', regimen: 'daily' }).source, ENOX_SOURCE.treatmentRenal);
+  assert.match(ENOX_SOURCE.prophylaxis, /hip or knee replacement the label gives 30 mg every 12 hours/);
+  assert.match(enoxaparinDose({ ...base, crcl: 80, indication: 'prophylaxis' }).labelNote, /no consensus for dose adjustment/);
+  assert.equal(enoxaparinDose({ ...base, crcl: 80, indication: 'treatment', regimen: 'q12' }).labelNote, undefined);
+  for (const text of Object.values(ENOX_SOURCE)) { assert.match(text, /label/); assert.doesNotMatch(text, /CHEST/); }
+  const { META } = await import('../../lib/meta.js');
+  assert.doesNotMatch(META['vte-prophylaxis-dose'].citation, /CHEST|Gould/);
+  assert.match(META['vte-prophylaxis-dose'].citationUrl, /dailymed.*5017a927/);
+});

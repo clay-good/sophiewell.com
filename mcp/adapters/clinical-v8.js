@@ -148,7 +148,7 @@ export default [
   },
   {
     id: 'vte-prophylaxis-dose',
-    summary: 'Enoxaparin dosing per US PI and CHEST 2012: prophylaxis or treatment (1 mg/kg q12h or 1.5 mg/kg q24h) with the CrCl <30 mL/min renal reduction.',
+    summary: 'Enoxaparin dosing from the Lovenox label: prophylaxis or treatment (1 mg/kg q12h or 1.5 mg/kg q24h) with the CrCl <30 mL/min renal reduction of the label\'s Table 1. Each result names the label section its row comes from, and prophylaxis results quote the label on obesity.',
     compute: F.enoxaparinDose,
     fields: [
       { dom: 'vte-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },

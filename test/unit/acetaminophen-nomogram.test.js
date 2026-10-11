@@ -47,3 +47,13 @@ test('acetaminophen-nomogram: a blank level is a gap, not an undetectable one', 
   assert.equal(above.aboveLine, true);
   assert.match(above.interpretation, /NAC \(acetylcysteine\) indicated/);
 });
+
+// spec-v1641 row 20: the line is named, with which label prints which.
+test('the result names the 150 line and both labels', () => {
+  const r = acetaminophenNomogram({ hours: 4, levelUgMl: 160 });
+  assert.match(r.lineNote, /150 mcg\/mL line/);
+  assert.match(r.lineNote, /Acetadote\) calls its figure the "revised Rumack-Matthew nomogram"/);
+  assert.match(r.lineNote, /oral acetylcysteine label still prints the original line, from 200 mcg\/mL at 4 hours to 50 mcg\/mL at 12 hours/);
+  // 25% below the 200 line is the 150 line the tool computes.
+  assert.equal(200 * 0.75, acetaminophenNomogram({ hours: 4, levelUgMl: 0 }).treatmentLine);
+});

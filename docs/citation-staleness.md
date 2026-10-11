@@ -154,7 +154,7 @@ issuer acronym set, so they are documentation only. The two converted tiles
 | neonatal-feeding-volume | AAP Pediatric Nutrition feeding volume | AAP Pediatric Nutrition (Kleinman & Greer, eds.) | same | 2026-06-09 | current — the 120-180 mL/kg/day term-newborn requirement is stable across editions |
 | oxytocin-titration | ACOG Induction of Labor oxytocin titration | ACOG Practice Bulletin (Induction of Labor) | same | 2026-06-09 | current — standard low-dose / high-dose titration regimens unchanged; the tile's core output is a unit conversion, not a dose recommendation |
 | icu-nutrition-target | ASPEN/SCCM adult critical-care nutrition | McClave 2016 (JPEN 2016;40(2)) | same | 2026-06-09 | foundational guideline; 25-30 kcal/kg and 1.2-2.0 g/kg targets unchanged (documentation only — does not match the issuer pattern) |
-| vte-prophylaxis-dose | Enoxaparin US PI + CHEST VTE prevention | Lovenox US PI; Gould 2012 (Chest 2012;141 Suppl) | same | 2026-06-09 | label-anchored; the CrCl <30 renal reduction and prophylaxis/treatment regimens are unchanged (documentation only) |
+| vte-prophylaxis-dose | Enoxaparin US PI | Lovenox US PI, DailyMed version 33 (May 29, 2026) | same | 2026-10-10 | label re-read (sections 2.2, 2.3 Table 1, 8.9): every dose on the page is the label's, so CHEST 2012 is no longer cited beside it; each result names its section (spec-v1641 row 20) |
 | enteral-free-water | ASPEN enteral-nutrition safe practices | Boullata 2017 (JPEN 2017;41(1)) | same | 2026-06-09 | foundational; free-water-fraction arithmetic is stable (documentation only) |
 
 ## spec-v62 Part B wave 2 (added 2026-06-10)

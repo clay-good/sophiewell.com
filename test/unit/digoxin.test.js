@@ -57,3 +57,14 @@ test('rejects impossible CrCl / level', () => {
   assert.throws(() => digoxin({ crCl: NaN }), /cr\scl/);
   assert.throws(() => digoxin({ crCl: 60, levelNgMl: 99 }), /level\sng\sml/);
 });
+
+// spec-v1641 row 20: the guideline target and the label's statements are named apart.
+test('the result says which number is the guideline\'s and quotes the label', () => {
+  const hf = digoxin({ crCl: 60, indication: 'hf', levelNgMl: 0.7 });
+  assert.match(hf.targetSource, /0\.5-0\.9 ng\/mL heart-failure target is from the ACC\/AHA\/HFSA 2022/);
+  assert.match(hf.labelLevel, /label gives no target range/);
+  assert.match(hf.labelLevel, /less than 0\.5 ng\/mL have been associated with diminished efficacy/);
+  assert.match(hf.labelLevel, /at least 6 hours after the last dose/);
+  assert.match(hf.labelLevel, /10% to 25% lower/);
+  assert.match(digoxin({ crCl: 60, indication: 'af' }).targetSource, /no source cited here/);
+});
