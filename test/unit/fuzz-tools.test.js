@@ -770,6 +770,7 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as premixedPnRateCheckV1630 from '../../lib/premixed-pn-rate-check-v1630.js';
 import * as pnAminoAcidOrderV1630 from '../../lib/pn-amino-acid-order-v1630.js';
 import * as pnOrderSummaryV1630 from '../../lib/pn-order-summary-v1630.js';
 import * as inUseDiscardTimeV1630 from '../../lib/in-use-discard-time-v1630.js';
@@ -1680,6 +1681,7 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'premixed-pn-rate-check-v1630.js': premixedPnRateCheckV1630,
   'pn-amino-acid-order-v1630.js': pnAminoAcidOrderV1630,
   'pn-order-summary-v1630.js': pnOrderSummaryV1630,
   'in-use-discard-time-v1630.js': inUseDiscardTimeV1630,

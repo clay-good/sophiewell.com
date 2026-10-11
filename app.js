@@ -1207,6 +1207,7 @@ const UTILITIES = [
   { id: 'pn-aluminum-load', name: 'Aluminum in a PN Order', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'pn-calcium-phosphate-check', name: 'Calcium and Phosphate Concentrations in a PN Bag', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'pn-order-summary', name: 'PN Order per Kilogram, GIR and Energy', group: 'Q', audiences: ['clinicians'], clinical: true },
+  { id: 'premixed-pn-rate-check', name: 'Premixed PN Bag Against Its Label Maximum', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'mean-kinetic-temperature', name: 'Mean Kinetic Temperature of a Storage Log', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'in-use-discard-time', name: 'Opened Container: When to Discard', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'storage-excursion-summary', name: 'Temperature Log: Excursions and Time Out of Range', group: 'Q', audiences: ['clinicians'], clinical: false },

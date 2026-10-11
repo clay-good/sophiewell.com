@@ -8989,6 +8989,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pn-amino-acid-order-v1630.js (spec-v1630: PN amino acid dose, nitrogen, volume and cysteine (four FDA labels; label rows) — clinical disclaimer)
 - `pn-amino-acid-order`
 
+### lib/premixed-pn-rate-check-v1630.js (spec-v1630: Premixed PN bag rate against the label's adult maximum (Clinimix, Clinimix E, Kabiven; label rows) — clinical disclaimer)
+- `premixed-pn-rate-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

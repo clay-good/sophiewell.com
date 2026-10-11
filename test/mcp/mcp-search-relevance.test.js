@@ -798,6 +798,7 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['premixed parenteral nutrition clinimix kabiven maximum infusion', ['premixed-pn-rate-check']],
   ['parenteral nutrition amino acids nitrogen travasol trophamine cysteine', ['pn-amino-acid-order']],
   ['parenteral nutrition order per kilogram kcal nitrogen ratio', ['pn-order-summary']],
   ['opened multi-dose vial discard date 28 days', ['in-use-discard-time']],

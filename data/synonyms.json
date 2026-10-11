@@ -11973,6 +11973,17 @@
       ],
       "tile": "pn-amino-acid-order",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "clinimix max rate",
+        "clinimix e infusion rate",
+        "kabiven maximum infusion rate",
+        "premixed tpn ml per kg per hour",
+        "clinimix central or peripheral"
+      ],
+      "tile": "premixed-pn-rate-check",
+      "audience": "clinicians"
     }
   ]
 }

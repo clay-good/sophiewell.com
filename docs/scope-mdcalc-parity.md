@@ -538,3 +538,5 @@ experience**.
 > v1630, PN Order per Kilogram, GIR and Energy — [spec-v1630](spec-v1630.md), which adds `pn-order-summary` — is 2094.)
 
 > v1630, PN Amino Acids: Dose, Nitrogen, Volume and Cysteine — [spec-v1630](spec-v1630.md), which adds `pn-amino-acid-order` — is 2095.)
+
+> v1630, Premixed PN Bag Against Its Label Maximum — [spec-v1630](spec-v1630.md), which adds `premixed-pn-rate-check` — is 2096.)

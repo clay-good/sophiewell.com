@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Premixed PN Bag Against Its Label Maximum: the rate of a Clinimix, Clinimix E or Kabiven bag in
+  mL/kg/hour beside the adult maximum for that formulation, the amino acid and dextrose it
+  delivers per kilogram per hour, and whether the label limits it to a central vein.
 - PN Amino Acids: an amino acid order as g/kg/day beside the range on the product's own label
   (Travasol 10%, Prosol 20%, TrophAmine 10%), with the product volume, the grams of nitrogen at
   the label's own nitrogen content (not grams ÷ 6.25), and the Elcys amount when cysteine is added.

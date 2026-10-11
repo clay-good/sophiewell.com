@@ -92,18 +92,35 @@
     }
   },
   {
+    "label": "Clinimix E, Baxter",
+    "labeler": "BAXTER HEALTHCARE COMPANY",
+    "setId": "8469d6fb-d6ef-476f-8cc3-0905192de0a8",
+    "tools": [
+      "premixed-pn-rate-check"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2026-06-08",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "0b7ac273955adf0303fc7571da26b4bb80a325ccc2bdf8710a0a6e40b5ee3b24"
+    }
+  },
+  {
     "label": "Clinimix, Baxter",
     "labeler": "BAXTER HEALTHCARE CORPORATION",
     "setId": "dccff103-8695-400c-a15d-cc2fd078760a",
     "tools": [
       "tpn-macro",
-      "pn-order-summary"
+      "pn-order-summary",
+      "premixed-pn-rate-check"
     ],
     "splVersion": 14,
     "publishedOn": "2026-06-05",
-    "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
     "sections": {
+      "34068-7": "d2b4af416db8a5346d0bf6b0b1679edb2d7c9acb152e2676b6dd76b88467120f",
       "34089-3": "880740b109348bcbbfc8de007fd1ea27d50ea20883fef129b502c651bcc83ea9",
       "43678-2": "d6ace40bf7f4a57c6f1f8e4adf7d6e180cd05641a03ee003e3ce335385bb59c6"
     }
@@ -240,6 +257,21 @@
     "sections": {
       "34068-7": "d92c2532bb80becdadf2c76419a26153b2fe3331fe888efe2896a2a9cff9e918",
       "34089-3": "ea0f090033818d9906651dda877c6b172eceda1022df112a9a3116611a5eb376"
+    }
+  },
+  {
+    "label": "Kabiven, Fresenius Kabi",
+    "labeler": "FRESENIUS KABI USA, LLC",
+    "setId": "afeb4837-a759-4484-a76e-e04611c459e7",
+    "tools": [
+      "premixed-pn-rate-check"
+    ],
+    "splVersion": 9,
+    "publishedOn": "2025-10-06",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "8565869530d9741b33e172972ec119e8248cb72636bce74df819a7d0ad9671b4"
     }
   },
   {

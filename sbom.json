@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:5674efcb-bb00-5c59-8819-37931bb17177",
+  "serialNumber": "urn:uuid:d51a2aaa-837e-5f41-81fc-2848d7a87f7d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T07:55:55.527Z",
+    "timestamp": "2026-10-11T08:24:39.098Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2095 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2096 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "84035ec8d5748623d05e94f2093c4ade290779a00be39a7e334aa056c749d5ce"
+          "content": "f92352cd590b9a82223fe6fadb2356ac5a45ce0d2ce97d8d6c09893de8696fe4"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135315"
+          "value": "135372"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "63ace7fa1f3ea74ffd58bc5c67deee353740e0788c93fe2519a939d6c7d23ba7"
+          "content": "9b6148ef5522ef98f1cacec3ddfcc18f75511499e458ca03841eb440cce09b9d"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "596954"
+          "value": "597096"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "069c874b602cf5d205ae8c12feb78196db828da184d808de5243ddbf149210f8"
+          "content": "6a35ba53e4be152fcbe1d5f013a0f9faa2850de963747217faeeb5427c64dd97"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "262434"
+          "value": "262567"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d94985dd7b40cc04916682ddc42910534ba5b1a5355611c70c37de1fd5516ff3"
+          "content": "770ce9c4fdb611c1006a20461c27235a447f10fff04ab7a96ed21c67ccf1d1c3"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "123315"
+          "value": "123384"
         }
       ]
     },
@@ -12305,7 +12305,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a8b0f524a67ac772a5f2b29f41199d033f0b1d917a9cd0bfeaae67f8283f0775"
+          "content": "0bd3f09dae9545fca55bc502d17448c90b00b0b7a2ab0e968ef75e3fa840e025"
         }
       ],
       "properties": [
@@ -12315,7 +12315,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "6565"
+          "value": "6977"
         }
       ]
     },
@@ -14489,7 +14489,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1fe4d84c323bd7674795480010ca61d0440f8fe87ea1b2287ac2a4b943d8e2b2"
+          "content": "f9f491f9206bc3e2447108a17d719dc6297d7445b702fad640d1b64fada8a9f1"
         }
       ],
       "properties": [
@@ -14499,7 +14499,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2791388"
+          "value": "2792518"
         }
       ]
     },
@@ -19645,6 +19645,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3647"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/premixed-pn-rate-check-v1630.js",
+      "type": "file",
+      "name": "lib/premixed-pn-rate-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "362758b1249502538bcb7e7dd4b59f620df86ad6464f6cedd28fac5f86456816"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8325"
         }
       ]
     },
@@ -44639,6 +44660,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/premixed-pn-rate-check-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/premixed-pn-rate-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d4ed8fcf0e0807ed0ca6e96ca38475ddc3ccf95e8044a46a9663e683d157f744"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1610"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/prenatal-infection-screening-schedule-v1394.js",
       "type": "file",
       "name": "mcp/adapters/prenatal-infection-screening-schedule-v1394.js",
@@ -50924,7 +50966,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d9013db551a6ba3e538238cff7a1a634f61da4e129510d1ca64bff161e1defca"
+          "content": "9254889bd79c434706d4eea3907fd38c7f1129650fa537e82840a1b6eca8256d"
         }
       ],
       "properties": [
@@ -50934,7 +50976,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132110"
+          "value": "132255"
         }
       ]
     },
@@ -55439,7 +55481,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6ba72f45183a19993b92baeb6c393272d6e078ae0af6d4daaa76420e9b4f7ab7"
+          "content": "2dcb6b295757e47fd18ad00be699d5ce41a542a3eb6f4ae1ee5c4d3fc3b3943b"
         }
       ],
       "properties": [
@@ -55449,7 +55491,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "16837"
+          "value": "17996"
         }
       ]
     },
@@ -87144,6 +87186,7 @@
         "urn:sophiewell:file:source:lib/ppm-eoai-v548.js",
         "urn:sophiewell:file:source:lib/prague-barrett-v365.js",
         "urn:sophiewell:file:source:lib/preg-dating.js",
+        "urn:sophiewell:file:source:lib/premixed-pn-rate-check-v1630.js",
         "urn:sophiewell:file:source:lib/prenatal-infection-screening-schedule-v1394.js",
         "urn:sophiewell:file:source:lib/preop-fasting-v897.js",
         "urn:sophiewell:file:source:lib/pressure-injury-stage-v359.js",
@@ -89274,6 +89317,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ppm-eoai-v548.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prague-barrett-v365.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/preg-dating.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/premixed-pn-rate-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prenatal-infection-screening-schedule-v1394.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/preop-fasting-v897.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pressure-injury-stage-v359.js",
@@ -89677,7 +89721,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "5674efcbbb00fc59"
+      "value": "d51a2aaa837e3f41"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -89689,7 +89733,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3342"
+      "value": "3344"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

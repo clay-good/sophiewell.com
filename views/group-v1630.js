@@ -1,6 +1,6 @@
 // spec-v1630: sterile compounding, IV admixture and drug storage. Group Q.
 // reconstitution-concentration, admixture-concentration, lipid-emulsion-dose-check, pn-aluminum-load,
-// pn-calcium-phosphate-check, pn-order-summary, pn-amino-acid-order,
+// pn-calcium-phosphate-check, pn-order-summary, pn-amino-acid-order, premixed-pn-rate-check,
 // mean-kinetic-temperature,
 // in-use-discard-time, storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
@@ -12,6 +12,7 @@ import * as PA from '../lib/pn-aluminum-load-v1630.js';
 import * as CP from '../lib/pn-calcium-phosphate-check-v1630.js';
 import * as IU from '../lib/in-use-discard-time-v1630.js';
 import * as AA from '../lib/pn-amino-acid-order-v1630.js';
+import * as PR from '../lib/premixed-pn-rate-check-v1630.js';
 import * as PS from '../lib/pn-order-summary-v1630.js';
 import * as MK from '../lib/mean-kinetic-temperature-v1630.js';
 import * as SE from '../lib/storage-excursion-summary-v1630.js';
@@ -191,6 +192,24 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = AA.pnAminoAcidOrder(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+
+  'premixed-pn-rate-check'(root) {
+    const pairs = [['pr-form', 'formulation'], ['pr-weight', 'weight'], ['pr-wunit', 'weightUnit'], ['pr-rate', 'rate'], ['pr-vol', 'volume'], ['pr-hours', 'hours']];
+    selectField(root, 'Formulation (amino acid percent / dextrose percent)', 'pr-form', PR.FORMULATION_OPTIONS);
+    numField(root, 'Patient weight (adult)', 'pr-weight', '');
+    selectField(root, 'Weight unit', 'pr-wunit', PR.WEIGHT_UNITS);
+    numField(root, 'Rate, mL/hour', 'pr-rate', '');
+    numField(root, 'or volume per day, mL', 'pr-vol', '');
+    numField(root, 'and the hours it runs over', 'pr-hours', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PR.premixedPnRateCheck(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
