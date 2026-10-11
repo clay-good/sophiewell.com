@@ -8887,6 +8887,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/dilution-c1v1-v1629.js (spec-v1629: Dilution and stock solutions by C1 x Q1 = C2 x Q2 — administrative disclaimer)
 - `dilution-c1v1`
 
+### lib/serial-dilution-v1629.js (spec-v1629: Serial dilution plan, fixed factor or smallest measurable volume — administrative disclaimer)
+- `serial-dilution`
+
+### lib/min-weighable-quantity-v1629.js (spec-v1629: Minimum weighable quantity and percent error — administrative disclaimer)
+- `min-weighable-quantity`
+
+### lib/aliquot-method-v1629.js (spec-v1629: Aliquot method, solid and liquid — administrative disclaimer)
+- `aliquot-method`
+
+### lib/specific-gravity-v1629.js (spec-v1629: Density, specific gravity and weight-to-volume — administrative disclaimer)
+- `specific-gravity`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

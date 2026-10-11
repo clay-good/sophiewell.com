@@ -1175,6 +1175,10 @@ const UTILITIES = [
   { id: 'days-supply', name: 'Days Supply Calculator', group: 'Q', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
   { id: 'alligation', name: 'Alligation (Mixing Strengths to a Target)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'dilution-c1v1', name: 'Dilution and Stock Solutions (C1V1)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'serial-dilution', name: 'Serial Dilution Plan', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'min-weighable-quantity', name: 'Minimum Weighable Quantity and Percent Error', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'aliquot-method', name: 'Aliquot Method (Solid or Liquid)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'specific-gravity', name: 'Density, Specific Gravity and Weight-to-Volume', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'refill-eligible-date', name: 'Earliest Refill Date', group: 'Q', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
   { id: 'overpayment-60day', name: '60-Day Overpayment Report-and-Return Clock', group: 'C', audiences: ['billers'], clinical: false },
   // spec-v82: patient responsibility & coordination of benefits. v78 computes

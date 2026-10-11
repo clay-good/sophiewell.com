@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:43b552ec-bb23-53d7-81bc-c0d236028990",
+  "serialNumber": "urn:uuid:5867ab63-8f3f-53ec-88ac-3a61ed91bd8f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T02:44:13.957Z",
+    "timestamp": "2026-10-11T03:04:01.881Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2061 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2065 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "80d47d4338be561bc65d6d1c98ac9494f6bbfc71c5fa7ca6817a94f6d7afd7d4"
+          "content": "535f5a84e2096e91f8a150acf3de17584e42693d392698684725e83f9602b0c9"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133388"
+          "value": "133594"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f45d8216f111e29f0fd3823b01a2cc307560560c2016c18620a9cbb7d47c7c61"
+          "content": "99d9856d4d816421b492eb6ef96efd559fa0e35e6c166c53179cf335fe4172f4"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "591871"
+          "value": "592452"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d05d69b71eeb01dd7959cb700cc72d668c0cd07492a96d4e7d4ccd91c4be57e9"
+          "content": "5fc59a54bf52358ac782882062413baebee557fb3b74c2e74c4da7dba02447c2"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "258020"
+          "value": "258531"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "450779a9facdd4d229292101338ffe5af54d2eef714ca081830aea82fa3020ba"
+          "content": "2aebc26780d55fdf1f620f7f5e52202c0662cb387b77ff5a11c2977029e922b6"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "121088"
+          "value": "121321"
         }
       ]
     },
@@ -934,6 +934,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8081"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/aliquot-method-v1629.js",
+      "type": "file",
+      "name": "lib/aliquot-method-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ec71bb12e8929cefb8fe22bb708a9a71d528406e2758f482da9ac8719603ab38"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6903"
         }
       ]
     },
@@ -14027,7 +14048,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cb2809d7d2c373e052f8523f14040fdbb89dcbb7a83803475ab32d4d9de84486"
+          "content": "1e6bafed0fddcf006a128d2e3a65a27b971bb076e6ec21480e7288a566a67fd1"
         }
       ],
       "properties": [
@@ -14037,7 +14058,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2764650"
+          "value": "2766937"
         }
       ]
     },
@@ -14395,6 +14416,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4057"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/min-weighable-quantity-v1629.js",
+      "type": "file",
+      "name": "lib/min-weighable-quantity-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0969b7a3d4d8eba7923381a538d42f38e3693a82e060298f4ad1a58874ddbbba"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4834"
         }
       ]
     },
@@ -22022,6 +22064,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/serial-dilution-v1629.js",
+      "type": "file",
+      "name": "lib/serial-dilution-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "74df6c4a7602d71f136340b39b91848bc38c0e5e528109d470fc6ad27c01b28f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6762"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/severe-malaria-injectable-v1551.js",
       "type": "file",
       "name": "lib/severe-malaria-injectable-v1551.js",
@@ -22627,6 +22690,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "16980"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/specific-gravity-v1629.js",
+      "type": "file",
+      "name": "lib/specific-gravity-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8dbc44977b5272e0210f7fac650578190ce42c132278e1288cd49aadf1dd1981"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4789"
         }
       ]
     },
@@ -27016,6 +27100,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1957"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aliquot-method-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/aliquot-method-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c70fa844f33c8a657a04539492f899456f087c918569e03f684500e897bb9060"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1471"
         }
       ]
     },
@@ -39347,6 +39452,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/min-weighable-quantity-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/min-weighable-quantity-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "67d656dcb7828c747eaf93b5720a7314fbb29799cb045a075718b4791a5eb926"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1837"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/minor-self-consent-v1395.js",
       "type": "file",
       "name": "mcp/adapters/minor-self-consent-v1395.js",
@@ -45731,6 +45857,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/serial-dilution-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/serial-dilution-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "57816bc6eceaf63b423746fd6f07f708522e21c570ebabc276aa90e1ece47421"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1597"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/severe-malaria-injectable-v1551.js",
       "type": "file",
       "name": "mcp/adapters/severe-malaria-injectable-v1551.js",
@@ -46294,6 +46441,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4153"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/specific-gravity-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/specific-gravity-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a502c18894b9336104ee9149c67daf8b96f47d8c0d4defdb29351a5f85959367"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1746"
         }
       ]
     },
@@ -49433,7 +49601,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "330f05225461a2da96a719a9d851f725c6490111b5df2867c08a7cc2b259a0c8"
+          "content": "ca256be537b504468b0e101b227b6afef06a4e287cbc455cd986d4c08dd13489"
         }
       ],
       "properties": [
@@ -49443,7 +49611,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127524"
+          "value": "128034"
         }
       ]
     },
@@ -53906,7 +54074,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "59a65d91fcf5d2d24a7ff0a6884b2e5de6f0e246da12b5703e6fa35ee660c8c0"
+          "content": "33b520c32b0b1f82b1927a8047b3c252ac4e7d18df336d611bd6388b1ea2d2e3"
         }
       ],
       "properties": [
@@ -53916,7 +54084,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4931"
+          "value": "9934"
         }
       ]
     },
@@ -84741,6 +84909,7 @@
         "urn:sophiewell:file:source:lib/af-stages-2023-v839.js",
         "urn:sophiewell:file:source:lib/ahlback-knee-oa-v480.js",
         "urn:sophiewell:file:source:lib/airway-resistance-v927.js",
+        "urn:sophiewell:file:source:lib/aliquot-method-v1629.js",
         "urn:sophiewell:file:source:lib/allen-ferguson-v1419.js",
         "urn:sophiewell:file:source:lib/alligation-v1629.js",
         "urn:sophiewell:file:source:lib/alsfrs-r-v537.js",
@@ -85382,6 +85551,7 @@
         "urn:sophiewell:file:source:lib/migraine-ichd3-v815.js",
         "urn:sophiewell:file:source:lib/milch-condyle-v418.js",
         "urn:sophiewell:file:source:lib/miller-gingival-recession-v724.js",
+        "urn:sophiewell:file:source:lib/min-weighable-quantity-v1629.js",
         "urn:sophiewell:file:source:lib/minor-self-consent-v1395.js",
         "urn:sophiewell:file:source:lib/mis-c-v795.js",
         "urn:sophiewell:file:source:lib/mitral-regurgitation-stage-v847.js",
@@ -85745,6 +85915,7 @@
         "urn:sophiewell:file:source:lib/search.js",
         "urn:sophiewell:file:source:lib/secondary-mitral-regurgitation-stage-v849.js",
         "urn:sophiewell:file:source:lib/seinsheimer-subtroch-v413.js",
+        "urn:sophiewell:file:source:lib/serial-dilution-v1629.js",
         "urn:sophiewell:file:source:lib/severe-malaria-injectable-v1551.js",
         "urn:sophiewell:file:source:lib/severin-ddh-v491.js",
         "urn:sophiewell:file:source:lib/sfu-hydronephrosis-v477.js",
@@ -85774,6 +85945,7 @@
         "urn:sophiewell:file:source:lib/spadi-v561.js",
         "urn:sophiewell:file:source:lib/spaulding-classification-v478.js",
         "urn:sophiewell:file:source:lib/specialtymath-v186.js",
+        "urn:sophiewell:file:source:lib/specific-gravity-v1629.js",
         "urn:sophiewell:file:source:lib/spetzler-ponce-v384.js",
         "urn:sophiewell:file:source:lib/spigelman-v520.js",
         "urn:sophiewell:file:source:lib/spine-v146.js",
@@ -86922,6 +87094,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/af-stages-2023-v839.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ahlback-knee-oa-v480.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/airway-resistance-v927.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/aliquot-method-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/allen-ferguson-v1419.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/alligation-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/alsfrs-r-v537.js",
@@ -87509,6 +87682,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/migraine-ichd3-v815.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/milch-condyle-v418.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/miller-gingival-recession-v724.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/min-weighable-quantity-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/minor-self-consent-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mis-c-v795.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mitral-regurgitation-stage-v847.js",
@@ -87813,6 +87987,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/sea-guideline-v861.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/secondary-mitral-regurgitation-stage-v849.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/seinsheimer-subtroch-v413.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/serial-dilution-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/severe-malaria-injectable-v1551.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/severin-ddh-v491.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sfu-hydronephrosis-v477.js",
@@ -87840,6 +88015,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/spadi-v561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/spaulding-classification-v478.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/specialtymath-v186.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/specific-gravity-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/spetzler-ponce-v384.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/spigelman-v520.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/spine-v146.js",
@@ -88093,7 +88269,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "43b552ecbb2373d7"
+      "value": "5867ab638f3f73ec"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -88105,7 +88281,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3270"
+      "value": "3278"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

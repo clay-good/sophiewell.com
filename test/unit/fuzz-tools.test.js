@@ -770,6 +770,10 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as serialDilutionV1629 from '../../lib/serial-dilution-v1629.js';
+import * as minWeighableQuantityV1629 from '../../lib/min-weighable-quantity-v1629.js';
+import * as aliquotMethodV1629 from '../../lib/aliquot-method-v1629.js';
+import * as specificGravityV1629 from '../../lib/specific-gravity-v1629.js';
 import * as alligationV1629 from '../../lib/alligation-v1629.js';
 import * as dilutionC1v1V1629 from '../../lib/dilution-c1v1-v1629.js';
 import * as mgso4ImRegimenV1558 from '../../lib/mgso4-im-regimen-v1558.js';
@@ -1646,6 +1650,10 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'serial-dilution-v1629.js': serialDilutionV1629,
+  'min-weighable-quantity-v1629.js': minWeighableQuantityV1629,
+  'aliquot-method-v1629.js': aliquotMethodV1629,
+  'specific-gravity-v1629.js': specificGravityV1629,
   'alligation-v1629.js': alligationV1629,
   'dilution-c1v1-v1629.js': dilutionC1v1V1629,
   'mgso4-im-regimen-v1558.js': mgso4ImRegimenV1558,

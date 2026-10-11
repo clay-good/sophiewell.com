@@ -1,6 +1,6 @@
 # spec-v1629 — Pharmaceutical calculations and nonsterile compounding bench math
 
-**Status:** In progress, October 10, 2026: 2 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
+**Status:** In progress, October 10, 2026: 6 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A pharmacist or technician at the compounding bench does the same arithmetic every day: mix two
@@ -742,10 +742,14 @@ over the past year that the compounder selected"; the guidance's example is 500 
 
 ## Build status
 
-Updated October 10, 2026. 2 of 25 tools built.
+Updated October 10, 2026. 6 of 25 tools built.
 
 | Tool | Status |
 |---|---|
 | 1. `alligation` | Built (group Q). Nothing is defaulted: the mode and both units are required. The parts are shown in lowest terms. The note about alcohol and water does not link `ethanol-proof`, which is not built. |
 | 2. `dilution-c1v1` | Built (group Q). The quantity unit follows the basis (mL, or g for % w/w) instead of being a separate choice. ppm is read as mg/L and the result says so; the NIST citation for ppm was not re-read and is not printed. |
-| 3 to 25 | Not built. |
+| 3. `serial-dilution` | Built (group Q). In minimum-volume mode the steps use equal factors (total^(1/steps)), the fewest steps in which every transfer is at or above the minimum. Each step is made to the last step's volume unless another is entered, and the result says which. |
+| 9. `min-weighable-quantity` | Built (group Q). Three modes: the minimum, the potential error of a quantity, and the percent error of a measurement. No default sensitivity or error limit, no value-like placeholder; the page example uses the percent-error mode, which needs neither. |
+| 10. `aliquot-method` | Built (group Q). With no aliquot weight entered it uses the smallest one that keeps all three weighings at or above the minimum, not the minimum itself (which can leave the diluent unweighable). **Deviation:** the page example carries a minimum of 200 mg so the example can compute; the app marks example values as not the reader's. |
+| 11. `specific-gravity` | Built (group Q). Cited as a definition only: the NIST SP 811 section the spec names was not re-read (its page did not load when the spec was written). |
+| 4 to 8, 12 to 25 | Not built. |

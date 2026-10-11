@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Serial Dilution Plan: the steps from a stock to a target strength, by a fixed factor per step or
+  by the smallest volume you can measure, with each transfer and the strength after each step.
+- Minimum Weighable Quantity and Percent Error: the smallest quantity a balance or measuring device
+  can measure inside an error limit, and the percent error of a measurement. The sensitivity and
+  the limit are yours to enter; no default is assumed.
+- Aliquot Method (Solid or Liquid): for a drug quantity too small to weigh, the multiple to weigh,
+  the diluent or volume, and the aliquot to take, with every measurement checked against the
+  minimum.
+- Density, Specific Gravity and Weight-to-Volume: the weight of a volume, the volume of a weight, a
+  specific gravity from three weighings, and % w/w to % w/v. All four: see docs/spec-v1629.md.
 - Alligation (Mixing Strengths to a Target): how much of two strengths to mix to reach a target, or
   the strength of several lots mixed together, with the parts ratio and a mass-balance check. It
   refuses a target outside the two strengths. See docs/spec-v1629.md.

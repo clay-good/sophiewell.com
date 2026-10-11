@@ -470,3 +470,11 @@ experience**.
 > v1629, Alligation (Mixing Strengths to a Target) — [spec-v1629](spec-v1629.md), which adds `alligation` — is 2060.)
 
 > v1629, Dilution and Stock Solutions (C1V1) — [spec-v1629](spec-v1629.md), which adds `dilution-c1v1` — is 2061.)
+
+> v1629, Serial Dilution Plan — [spec-v1629](spec-v1629.md), which adds `serial-dilution` — is 2062.)
+
+> v1629, Minimum Weighable Quantity and Percent Error — [spec-v1629](spec-v1629.md), which adds `min-weighable-quantity` — is 2063.)
+
+> v1629, Aliquot Method (Solid or Liquid) — [spec-v1629](spec-v1629.md), which adds `aliquot-method` — is 2064.)
+
+> v1629, Density, Specific Gravity and Weight-to-Volume — [spec-v1629](spec-v1629.md), which adds `specific-gravity` — is 2065.)

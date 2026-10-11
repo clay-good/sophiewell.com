@@ -1,8 +1,13 @@
-// spec-v1629: renderers for the pharmacy bench-math tools (Group Q): alligation and dilution-c1v1.
+// spec-v1629: renderers for the pharmacy bench-math tools (Group Q): alligation, dilution-c1v1,
+// serial-dilution, min-weighable-quantity, aliquot-method and specific-gravity.
 
 import { el, clear } from '../lib/dom.js';
 import * as AL from '../lib/alligation-v1629.js';
 import * as DL from '../lib/dilution-c1v1-v1629.js';
+import * as SD from '../lib/serial-dilution-v1629.js';
+import * as MW from '../lib/min-weighable-quantity-v1629.js';
+import * as AQ from '../lib/aliquot-method-v1629.js';
+import * as SG from '../lib/specific-gravity-v1629.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -48,7 +53,7 @@ function wire(ids, run) {
 }
 function show(r, o) {
   if (!r.valid) { note(o, r.message); return; }
-  resultRow(o, [{ text: r.band, cls: null }, { label: 'Result', value: r.bandLabel }]);
+  resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Result', value: r.bandLabel }]);
   list(o, r.notes);
   note(o, r.note);
 }
@@ -94,6 +99,91 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(DL.dilutionC1V1(args), o);
+    }));
+  },
+
+  'serial-dilution'(root) {
+    const pairs = [['sd-unit', 'unit'], ['sd-stock', 'stock'], ['sd-target', 'target'], ['sd-vol', 'finalVolume'], ['sd-factor', 'factor'], ['sd-min', 'minVolume'], ['sd-step', 'stepVolume']];
+    selectField(root, 'Strength unit (the same for the stock and the target)', 'sd-unit', SD.UNITS);
+    numField(root, 'Stock strength', 'sd-stock', 'e.g. 100');
+    numField(root, 'Target strength', 'sd-target', 'e.g. 0.03');
+    numField(root, 'Volume wanted at the last step (mL)', 'sd-vol', 'e.g. 10');
+    numField(root, 'Dilution factor per step (enter this, or the smallest volume below)', 'sd-factor', 'e.g. 10');
+    numField(root, 'Or: smallest volume you can measure (mL)', 'sd-min', '');
+    numField(root, 'Volume of each earlier step, mL (optional; blank uses the last step\'s volume)', 'sd-step', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SD.serialDilution(args), o);
+    }));
+  },
+
+  'min-weighable-quantity'(root) {
+    const pairs = [['mw-mode', 'mode'], ['mw-unit', 'unit'], ['mw-sens', 'sensitivity'], ['mw-limit', 'errorLimit'], ['mw-qty', 'quantity'], ['mw-wanted', 'wanted'], ['mw-got', 'obtained']];
+    selectField(root, 'What to work out', 'mw-mode', MW.MODES);
+    selectField(root, 'Unit the device measures in', 'mw-unit', MW.UNITS);
+    const sens = numField(root, 'Sensitivity of the device, from its certificate or calibration', 'mw-sens', '');
+    numField(root, 'Largest error accepted, percent (from the standard you work to)', 'mw-limit', '');
+    const qty = numField(root, 'Quantity to be measured', 'mw-qty', '');
+    const wanted = numField(root, 'Quantity wanted', 'mw-wanted', '');
+    const got = numField(root, 'Quantity actually obtained', 'mw-got', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const mode = val('mw-mode');
+      sens.hidden = mode === 'error';
+      qty.hidden = mode !== 'potential';
+      wanted.hidden = mode !== 'error';
+      got.hidden = mode !== 'error';
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(MW.minWeighableQuantity(args), o);
+    }));
+  },
+
+  'aliquot-method'(root) {
+    const pairs = [['aq-form', 'form'], ['aq-needed', 'needed'], ['aq-min', 'minimum'], ['aq-aliquot', 'aliquot'], ['aq-vol', 'volume'], ['aq-minvol', 'minVolume']];
+    selectField(root, 'Method', 'aq-form', AQ.FORMS);
+    numField(root, 'Drug needed (mg)', 'aq-needed', '');
+    numField(root, 'Minimum weighable quantity of your balance (mg)', 'aq-min', '');
+    const aliquot = numField(root, 'Aliquot weight, mg (optional; blank uses the smallest that works)', 'aq-aliquot', '');
+    const vol = numField(root, 'Volume the drug is dissolved to (mL)', 'aq-vol', '');
+    const minVol = numField(root, 'Smallest volume you can measure (mL)', 'aq-minvol', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const form = val('aq-form');
+      aliquot.hidden = form === 'liquid';
+      vol.hidden = form !== 'liquid';
+      minVol.hidden = form !== 'liquid';
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(AQ.aliquotMethod(args), o);
+    }));
+  },
+
+  'specific-gravity'(root) {
+    const pairs = [['sg-mode', 'mode'], ['sg-sg', 'specificGravity'], ['sg-vol', 'volume'], ['sg-wt', 'weight'], ['sg-ww', 'percentWw'], ['sg-empty', 'empty'], ['sg-filled', 'filled'], ['sg-water', 'water']];
+    selectField(root, 'What to work out', 'sg-mode', SG.MODES);
+    const sg = numField(root, 'Specific gravity (or density in g/mL)', 'sg-sg', '');
+    const vol = numField(root, 'Volume (mL)', 'sg-vol', '');
+    const wt = numField(root, 'Weight (g)', 'sg-wt', '');
+    const ww = numField(root, 'Strength, % w/w', 'sg-ww', '');
+    const three = [
+      numField(root, 'Empty container (g)', 'sg-empty', ''),
+      numField(root, 'Container filled with the liquid (g)', 'sg-filled', ''),
+      numField(root, 'Container filled with water (g)', 'sg-water', ''),
+    ];
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const mode = val('sg-mode');
+      sg.hidden = mode === 'measure';
+      vol.hidden = mode !== 'weight';
+      wt.hidden = mode !== 'volume';
+      ww.hidden = mode !== 'strength';
+      for (const w of three) w.hidden = mode !== 'measure';
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SG.specificGravity(args), o);
     }));
   },
 };
