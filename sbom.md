@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7d1bfba78a158e9d`
-Generated: 2026-10-11T01:43:26.778Z
+Build ID: `6a9c10b7f6efdb0f`
+Generated: 2026-10-11T01:44:35.063Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1477,7 +1477,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v4.js` | 12789 | `92534eaaeb642010d2516d9c37f614ae684866bff5152e236286f65bb6f53efe` |
 | `mcp/adapters/clinical-v5.js` | 12057 | `351d76ac0a7dfb00861f91dfa132bbb36e67d21aa3e72502459ab63774914856` |
 | `mcp/adapters/clinical-v6.js` | 9094 | `85dda711c1f5b628041a41ae5218c2ea8909bc51ff6bff06df2b9a81e1674096` |
-| `mcp/adapters/clinical-v7.js` | 8818 | `a3caceaf138504276a90ebc444aebb9924c83d2be48075c466a7cf5b715df60a` |
+| `mcp/adapters/clinical-v7.js` | 8834 | `cac995b64db69eb95be69081f080b8723c1a877f8523466e88a5d39a53e6e8fe` |
 | `mcp/adapters/clinical-v8.js` | 16125 | `48cb7074e7e7c5770c4a6cd8ec85a85b39b32de17b864ec44f657a80c69a0e5d` |
 | `mcp/adapters/clinical.js` | 28366 | `ad624394e10626b0542052d537d0b964f6d6f0e2ffb929efc835835243c08f83` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |

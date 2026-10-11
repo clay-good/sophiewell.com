@@ -85,7 +85,7 @@ export default [
   },
   {
     id: 'calcium-replacement',
-    summary: 'IV calcium product math: elemental calcium (mg and mEq) delivered by a gluconate or chloride dose, the equivalent dose of the other salt, indication text (hyperkalemia per AHA ACLS 2020), and the FDA label\'s dose range and maximum rate for the product, with the shortest time the dose takes at that rate.',
+    summary: 'IV calcium product math: elemental calcium (mg and mEq) delivered by a gluconate or chloride dose, and the equivalent dose of the other salt. Also returns indication text (hyperkalemia per AHA ACLS 2020) and the FDA label\'s dose range and maximum rate for the product, with the shortest time the dose takes at that rate.',
     compute: F.calciumReplacement,
     fields: [
       { dom: 'cap-prod', arg: 'product', kind: 'enum', values: ['gluconate', 'chloride'], required: true, label: 'Calcium product' },
