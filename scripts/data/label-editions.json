@@ -1,5 +1,20 @@
 [
   {
+    "label": "Abilify Maintena (aripiprazole)",
+    "labeler": "OTSUKA AMERICA PHARMACEUTICAL, INC.",
+    "setId": "ee49f3b1-1650-47ff-9fb1-ea53fe0b92b6",
+    "tools": [
+      "lai-antipsychotic-start"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2026-03-30",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "d7562901732bc4776960dbdc31db3ad7b6f733e0cd24901088dca3d51e138a5f"
+    }
+  },
+  {
     "label": "Acetadote (acetylcysteine) injection, Cumberland",
     "labeler": "CUMBERLAND PHARMACEUTICALS INC.",
     "setId": "472f158a-5ab9-4308-8e49-1116e6ea3d39",
@@ -196,6 +211,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "094f11fe309ad3656eff8386a8d082f32bdbd9dd9de4408cc8864e8580f623ea"
+    }
+  },
+  {
+    "label": "Aristada (aripiprazole lauroxil)",
+    "labeler": "ALKERMES, INC.",
+    "setId": "17a8d11b-73b0-4833-a0b4-cf1ef85edefb",
+    "tools": [
+      "lai-antipsychotic-start"
+    ],
+    "splVersion": 32,
+    "publishedOn": "2025-02-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "eb16e6d5a3cb0d73c7aa1942b94dbc66481e86966d11002792847c36008d63d4"
     }
   },
   {
@@ -1227,6 +1257,36 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "f41eddc6be4e465975b64a3a70fd6199e65b780df0cf17e9bb9fcd03881720a0"
+    }
+  },
+  {
+    "label": "Invega Sustenna (paliperidone palmitate)",
+    "labeler": "JANSSEN PHARMACEUTICALS, INC.",
+    "setId": "1af14e42-951d-414d-8564-5d5fce138554",
+    "tools": [
+      "lai-antipsychotic-start"
+    ],
+    "splVersion": 41,
+    "publishedOn": "2025-02-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "596968b1dc04ed50087c0b84ac66a6136f0e40c3a0ce50544549f1f54c948003"
+    }
+  },
+  {
+    "label": "Invega Trinza (paliperidone palmitate, 3-month)",
+    "labeler": "JANSSEN PHARMACEUTICALS, INC",
+    "setId": "c39e65d7-fa44-4e4c-8b12-a654d3ed0eae",
+    "tools": [
+      "lai-antipsychotic-start"
+    ],
+    "splVersion": 25,
+    "publishedOn": "2025-02-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "79f0694f55f5407c4c43f68cb735009f212d9ac318494ef3a802439e7b77b012"
     }
   },
   {

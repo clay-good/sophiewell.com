@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:8a71cadc-e20d-58f9-834b-db82daff7cd9",
+  "serialNumber": "urn:uuid:c565625b-fc51-5bb5-8b0e-4bdc7a843183",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T19:27:02.403Z",
+    "timestamp": "2026-10-11T19:44:13.739Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2151 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2155 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fbcd8b6171b81bb5506691424bd43330dfa5293cc12fcc504894a913ae1170c0"
+          "content": "1d3bf480192ec169db3f3a8d7651f7118861efec13c9354c91fb680cef788a19"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "139050"
+          "value": "139371"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "770f8bb1518832251845288792359af1e84471c1a48e4f26f23657004386d49d"
+          "content": "5e5760517617783b6f7e857f5ed231e0d81ba82877eadc64cdd8d287ddce6383"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "606293"
+          "value": "607022"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cad89021e93273fa5c3c8b29ec9683774b657b47bc167e981f0e6fe012787973"
+          "content": "f400b6f4e2f2faf15ec82b77e5383ad0d08c421a66d04882602c493ee9a81ed1"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "269837"
+          "value": "270385"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cafd3e68b5fdac021100b2f5389b6e1b307c63fe09682cbb60cc44b6e8aa26e8"
+          "content": "a621fbde8be5a3f4c359be54d8cbdab709c686a98255acfd5c05716598bc1410"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127677"
+          "value": "128062"
         }
       ]
     },
@@ -1354,6 +1354,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "20862"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/antidepressant-fluoxetine-equivalent-v1633.js",
+      "type": "file",
+      "name": "lib/antidepressant-fluoxetine-equivalent-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "59471d4605068c4921c11c8abe36e86f4e3e23d5ec65fe8f07f3d9fe5403479f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3961"
         }
       ]
     },
@@ -13082,7 +13103,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d4f13bdd5c33ad6c479c96ee73b1ad85da3fd922917bbb9f263d080e1f677254"
+          "content": "606a8e9b8ddc6708cee524e1e9b50285d0a57fd0408d3e7f6f43523fbfdf5daf"
         }
       ],
       "properties": [
@@ -13092,7 +13113,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "38928"
+          "value": "39822"
         }
       ]
     },
@@ -13198,6 +13219,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3354"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/lai-antipsychotic-start-v1633.js",
+      "type": "file",
+      "name": "lib/lai-antipsychotic-start-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5dad0768906a4f7dcf9e35bdebb3033560b70811ce3672a0196fb20e489cfdac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10049"
         }
       ]
     },
@@ -15392,7 +15434,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1f10afc0240707d0ba392a533e9a3c6f579a058904a1439e5cd3b6ba6630f099"
+          "content": "4f2145f2425737c393770c39228d7c333bf4ebc68538fee2d6ae340fcd54c959"
         }
       ],
       "properties": [
@@ -15402,7 +15444,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2860989"
+          "value": "2864456"
         }
       ]
     },
@@ -20611,6 +20653,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9559"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ppi-omeprazole-equivalent-v1633.js",
+      "type": "file",
+      "name": "lib/ppi-omeprazole-equivalent-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6680839ae8e8d8acea9714949f296f969a00ec342af2a476ddac41fb6400522e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4212"
         }
       ]
     },
@@ -27167,6 +27230,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/vitamin-iu-converter-v1633.js",
+      "type": "file",
+      "name": "lib/vitamin-iu-converter-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b38a493217a9af2e964bd5c12a89bb83d278151140ceee76ec354a7ffe2c3af2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7396"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/vivax-radical-cure-v1552.js",
       "type": "file",
       "name": "lib/vivax-radical-cure-v1552.js",
@@ -29431,6 +29515,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2214"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/antidepressant-fluoxetine-equivalent-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/antidepressant-fluoxetine-equivalent-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a58d5bb1e55c787f03d4bf7e7c58feace3b22d2dceae811a596bfb4ac734f9e4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1133"
         }
       ]
     },
@@ -40166,6 +40271,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lai-antipsychotic-start-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/lai-antipsychotic-start-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0e02a919edfa4018c29567114ed5e7be372b57717ff6f3766c359090f0ab1988"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1397"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lake-louise-cmr-v790.js",
       "type": "file",
       "name": "mcp/adapters/lake-louise-cmr-v790.js",
@@ -46781,6 +46907,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ppi-omeprazole-equivalent-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/ppi-omeprazole-equivalent-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eface1f3e0ee2a001448b44ac31511730759ac1739c0810421778a0be3d60590"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1244"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ppm-eoai-v548.js",
       "type": "file",
       "name": "mcp/adapters/ppm-eoai-v548.js",
@@ -52367,6 +52514,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-iu-converter-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/vitamin-iu-converter-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6a84e27f7029f08972470f087914171a514e48abcef685880528fa4facd43842"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1458"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vivax-radical-cure-v1552.js",
       "type": "file",
       "name": "mcp/adapters/vivax-radical-cure-v1552.js",
@@ -53339,7 +53507,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "51d6c71bdafadd850edd6758c2e0f9d632f385491e28359dbdda2791b2219f7f"
+          "content": "6c28d4dc3ad24e509b077322dc09f9b607550d91003b9ffb3ce74c9ba97fa1ae"
         }
       ],
       "properties": [
@@ -53349,7 +53517,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140138"
+          "value": "140790"
         }
       ]
     },
@@ -57917,7 +58085,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6e35c2c41e499dd9573328ed8e92afc23ef176362824f76de537c76b11469be6"
+          "content": "a2758e6603e3be2fdac4f222ca16475cc0b71e0c2623d6a1a47e1e0de365b78f"
         }
       ],
       "properties": [
@@ -57927,7 +58095,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "22341"
+          "value": "26068"
         }
       ]
     },
@@ -88751,6 +88919,7 @@
         "urn:sophiewell:file:source:lib/anthro-v238.js",
         "urn:sophiewell:file:source:lib/anthro-v272.js",
         "urn:sophiewell:file:source:lib/anticoag-switch-clock-v1633.js",
+        "urn:sophiewell:file:source:lib/antidepressant-fluoxetine-equivalent-v1633.js",
         "urn:sophiewell:file:source:lib/antivenom-repeat-v1555.js",
         "urn:sophiewell:file:source:lib/antiviral-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/ao-spine-neuro-v1241.js",
@@ -89315,6 +89484,7 @@
         "urn:sophiewell:file:source:lib/label-titration-calendar-v1633.js",
         "urn:sophiewell:file:source:lib/labor-care-guide-alert-v1558.js",
         "urn:sophiewell:file:source:lib/lachman-acl-v355.js",
+        "urn:sophiewell:file:source:lib/lai-antipsychotic-start-v1633.js",
         "urn:sophiewell:file:source:lib/lake-louise-cmr-v790.js",
         "urn:sophiewell:file:source:lib/lamotrigine-titration-calendar-v1633.js",
         "urn:sophiewell:file:source:lib/lansky-v352.js",
@@ -89668,6 +89838,7 @@
         "urn:sophiewell:file:source:lib/post-acute-clocks-v1514.js",
         "urn:sophiewell:file:source:lib/powers-ratio-v1454.js",
         "urn:sophiewell:file:source:lib/pph-who-2025-v1558.js",
+        "urn:sophiewell:file:source:lib/ppi-omeprazole-equivalent-v1633.js",
         "urn:sophiewell:file:source:lib/ppm-eoai-v548.js",
         "urn:sophiewell:file:source:lib/prague-barrett-v365.js",
         "urn:sophiewell:file:source:lib/preg-dating.js",
@@ -89980,6 +90151,7 @@
         "urn:sophiewell:file:source:lib/visceral-leishmaniasis-2026-v1563.js",
         "urn:sophiewell:file:source:lib/vitamin-a-dose-child-v1550.js",
         "urn:sophiewell:file:source:lib/vitamin-d-level-v881.js",
+        "urn:sophiewell:file:source:lib/vitamin-iu-converter-v1633.js",
         "urn:sophiewell:file:source:lib/vivax-radical-cure-v1552.js",
         "urn:sophiewell:file:source:lib/vod-sos-v907.js",
         "urn:sophiewell:file:source:lib/vras-v602.js",
@@ -91031,6 +91203,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v238.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v272.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anticoag-switch-clock-v1633.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/antidepressant-fluoxetine-equivalent-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/antivenom-repeat-v1555.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/antiviral-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ao-spine-subaxial-v1241.js",
@@ -91542,6 +91715,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/label-titration-calendar-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/labor-care-guide-alert-v1558.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lachman-acl-v355.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lai-antipsychotic-start-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lake-louise-cmr-v790.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lamotrigine-titration-calendar-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lansky-v352.js",
@@ -91857,6 +92031,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/post-acute-clocks-v1514.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/powers-ratio-v1454.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pph-who-2025-v1558.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ppi-omeprazole-equivalent-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ppm-eoai-v548.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prague-barrett-v365.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/preg-dating.js",
@@ -92123,6 +92298,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/visceral-leishmaniasis-2026-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-a-dose-child-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-d-level-v881.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-iu-converter-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vivax-radical-cure-v1552.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vod-sos-v907.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vras-v602.js",
@@ -92273,7 +92449,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "8a71cadce20d18f9"
+      "value": "c565625bfc518bb5"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -92285,7 +92461,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3460"
+      "value": "3468"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

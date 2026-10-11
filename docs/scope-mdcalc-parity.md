@@ -650,3 +650,11 @@ experience**.
 > v1633, Formulation Switches Stated on the Label: Cardiac and Other (FDA Labels) — [spec-v1633](spec-v1633.md), which adds `label-formulation-switch` — is 2150.)
 
 > v1633, Levothyroxine Starting Dose and Titration Step (FDA Label) — [spec-v1633](spec-v1633.md), which adds `levothyroxine-start-dose` — is 2151.)
+
+> v1633, Long-Acting Injectable Antipsychotic Starting Dose (FDA Labels) — [spec-v1633](spec-v1633.md), which adds `lai-antipsychotic-start` — is 2152.)
+
+> v1633, Vitamin IU Converter: A, D, E, Folate and Niacin (FDA Factors) — [spec-v1633](spec-v1633.md), which adds `vitamin-iu-converter` — is 2153.)
+
+> v1633, Proton-Pump Inhibitor Dose in Omeprazole Equivalents (Kirchheiner 2009) — [spec-v1633](spec-v1633.md), which adds `ppi-omeprazole-equivalent` — is 2154.)
+
+> v1633, Antidepressant Dose in Fluoxetine Equivalents (Hayasaka 2015) — [spec-v1633](spec-v1633.md), which adds `antidepressant-fluoxetine-equivalent` — is 2155.)

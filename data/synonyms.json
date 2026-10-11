@@ -12673,6 +12673,62 @@
       ],
       "tile": "levothyroxine-start-dose",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sustenna",
+        "invega sustenna",
+        "trinza",
+        "aristada",
+        "maintena",
+        "abilify maintena",
+        "paliperidone",
+        "long acting injectable antipsychotic"
+      ],
+      "tile": "lai-antipsychotic-start",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "iu to mcg",
+        "iu to mg",
+        "vitamin d iu to mcg",
+        "vitamin e iu to mg conversion",
+        "vitamin a iu to mcg rae",
+        "folate",
+        "niacin",
+        "folate dfe",
+        "international units conversion"
+      ],
+      "tile": "vitamin-iu-converter",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "omeprazole",
+        "pantoprazole",
+        "esomeprazole",
+        "lansoprazole",
+        "rabeprazole",
+        "nexium",
+        "protonix",
+        "prilosec",
+        "omeprazole equivalent",
+        "proton pump inhibitor equivalent dose"
+      ],
+      "tile": "ppi-omeprazole-equivalent",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "fluoxetine",
+        "sertraline",
+        "fluoxetine equivalent",
+        "antidepressant dose equivalent",
+        "prozac equivalent"
+      ],
+      "tile": "antidepressant-fluoxetine-equivalent",
+      "audience": "clinicians"
     }
   ]
 }

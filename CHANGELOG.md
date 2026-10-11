@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Long-Acting Injectable Antipsychotic Starting Dose (FDA Labels): Invega Sustenna, Invega Trinza,
+  Aristada and Abilify Maintena, from the oral or prior injection dose, with the initiation dates.
+- Vitamin IU Converter: A, D, E, Folate and Niacin (FDA Factors): IU to metric and back by FDA's
+  labeling factors, with the percent of the Daily Value.
+- Proton-Pump Inhibitor Dose in Omeprazole Equivalents (Kirchheiner 2009): the dose times the
+  paper's relative potency, and the matching dose of another drug if asked.
+- Antidepressant Dose in Fluoxetine Equivalents (Hayasaka 2015): a dose-intensity measure for 23
+  antidepressants.
 - Antiepileptic Formulation and Route Switch (FDA Labels): Depakote to Depakote ER by the label's
   table, valproate, levetiracetam, carbamazepine and fosphenytoin switches, and the drug-content
   difference between phenytoin free acid and sodium salt.

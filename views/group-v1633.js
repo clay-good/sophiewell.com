@@ -3,7 +3,9 @@
 // methadone-label-conversion, er-opioid-label-start, buprenorphine-oud-product-switch,
 // basal-insulin-switch, taper-calendar, esa-conversion, iv-iron-course,
 // lamotrigine-titration-calendar, label-titration-calendar, aed-formulation-switch,
-// transplant-formulation-switch, label-formulation-switch, levothyroxine-start-dose.
+// transplant-formulation-switch, label-formulation-switch, levothyroxine-start-dose,
+// lai-antipsychotic-start, vitamin-iu-converter, ppi-omeprazole-equivalent,
+// antidepressant-fluoxetine-equivalent.
 
 import { el, clear } from '../lib/dom.js';
 import * as AS from '../lib/anticoag-switch-clock-v1633.js';
@@ -22,6 +24,10 @@ import * as AF from '../lib/aed-formulation-switch-v1633.js';
 import * as TF from '../lib/transplant-formulation-switch-v1633.js';
 import * as LF from '../lib/label-formulation-switch-v1633.js';
 import * as LX from '../lib/levothyroxine-start-dose-v1633.js';
+import * as LA from '../lib/lai-antipsychotic-start-v1633.js';
+import * as VI from '../lib/vitamin-iu-converter-v1633.js';
+import * as PP from '../lib/ppi-omeprazole-equivalent-v1633.js';
+import * as AE from '../lib/antidepressant-fluoxetine-equivalent-v1633.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -354,6 +360,62 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = LX.levothyroxineStartDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'lai-antipsychotic-start'(root) {
+    const pairs = [['las-product', 'product'], ['las-dose', 'dose'], ['las-date', 'startDate']];
+    selectField(root, 'Product and start', 'las-product', LA.PRODUCTS);
+    numField(root, 'Current dose: oral mg a day (Sustenna, Aristada), or the last Sustenna dose in mg (Trinza)', 'las-dose', '');
+    dateField(root, 'Date of the first injection; for Trinza, the date the next monthly dose is due (optional)', 'las-date');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = LA.laiAntipsychoticStart(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'vitamin-iu-converter'(root) {
+    const pairs = [['viu-quantity', 'quantity'], ['viu-direction', 'direction'], ['viu-amount', 'amount'], ['viu-amount2', 'amount2']];
+    selectField(root, 'Vitamin and form', 'viu-quantity', VI.QUANTITIES);
+    selectField(root, 'Direction (vitamins A, D and E)', 'viu-direction', VI.DIRECTIONS);
+    numField(root, 'Amount (IU or metric; folate: mcg of food folate; niacin: mg of niacin)', 'viu-amount', '');
+    numField(root, 'Folate: mcg of folic acid. Niacin: mg of tryptophan', 'viu-amount2', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = VI.vitaminIuConverter(args);
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'ppi-omeprazole-equivalent'(root) {
+    const pairs = [['poe-ppi', 'ppi'], ['poe-dose', 'dailyDose'], ['poe-target', 'target']];
+    selectField(root, 'Proton-pump inhibitor', 'poe-ppi', PP.PPIS);
+    numField(root, 'Daily dose, mg', 'poe-dose', '');
+    selectField(root, 'Target drug (optional)', 'poe-target', PP.PPIS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PP.ppiOmeprazoleEquivalent(args);
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'antidepressant-fluoxetine-equivalent'(root) {
+    const pairs = [['afe-drug', 'drug'], ['afe-dose', 'dailyDose']];
+    selectField(root, 'Antidepressant', 'afe-drug', AE.DRUGS);
+    numField(root, 'Daily dose, mg', 'afe-dose', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = AE.antidepressantFluoxetineEquivalent(args);
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

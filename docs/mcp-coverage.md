@@ -9157,6 +9157,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/levothyroxine-start-dose-v1633.js (spec-v1633: Levothyroxine starting dose and titration step (one label row) — clinical disclaimer)
 - `levothyroxine-start-dose`
 
+### lib/lai-antipsychotic-start-v1633.js (spec-v1633: Long-acting injectable antipsychotic starting dose (four label rows) — clinical disclaimer)
+- `lai-antipsychotic-start`
+
+### lib/vitamin-iu-converter-v1633.js (spec-v1633: Vitamin unit converter (FDA 2019 labeling guidance) — clinical disclaimer)
+- `vitamin-iu-converter`
+
+### lib/ppi-omeprazole-equivalent-v1633.js (spec-v1633: Proton-pump inhibitor omeprazole equivalents (Kirchheiner 2009) — clinical disclaimer)
+- `ppi-omeprazole-equivalent`
+
+### lib/antidepressant-fluoxetine-equivalent-v1633.js (spec-v1633: Antidepressant fluoxetine equivalents (Hayasaka 2015) — clinical disclaimer)
+- `antidepressant-fluoxetine-equivalent`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

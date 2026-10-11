@@ -2722,6 +2722,10 @@ const UTILITIES = [
   { id: 'transplant-formulation-switch', name: 'Tacrolimus, Cyclosporine and Mycophenolate Product Switch (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'label-formulation-switch', name: 'Formulation Switches Stated on the Label: Cardiac and Other (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'levothyroxine-start-dose', name: 'Levothyroxine Starting Dose and Titration Step (FDA Label)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lai-antipsychotic-start', name: 'Long-Acting Injectable Antipsychotic Starting Dose (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'vitamin-iu-converter', name: 'Vitamin IU Converter: A, D, E, Folate and Niacin (FDA Factors)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ppi-omeprazole-equivalent', name: 'Proton-Pump Inhibitor Dose in Omeprazole Equivalents (Kirchheiner 2009)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'antidepressant-fluoxetine-equivalent', name: 'Antidepressant Dose in Fluoxetine Equivalents (Hayasaka 2015)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-
