@@ -570,3 +570,5 @@ experience**.
 > v1631, Augmented Renal Clearance Risk (ARC and ARCTIC Scores) — [spec-v1631](spec-v1631.md), which adds `arc-risk-scores` — is 2110.)
 
 > v1631, Phenytoin Dose From Two Steady-State Levels (Michaelis-Menten) — [spec-v1631](spec-v1631.md), which adds `phenytoin-mm-dose` — is 2111.)
+
+> v1631, IV Busulfan AUC and Dose Adjustment (Label Method) — [spec-v1631](spec-v1631.md), which adds `busulfan-auc-dose` — is 2112.)

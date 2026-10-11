@@ -12111,7 +12111,7 @@
         "lithium level range",
         "lithium toxicity level",
         "lithium level 12 hours after dose",
-        "lithium dose adjustment from level",
+        "lithium proportional dose",
         "lithium therapeutic range maintenance"
       ],
       "tile": "lithium-level-check",
@@ -12146,6 +12146,16 @@
         "saturable kinetics dose"
       ],
       "tile": "phenytoin-mm-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "busulfan adjusted dose",
+        "busulfan target 1125",
+        "busulfex target 1125",
+        "busulfan micromolar minutes"
+      ],
+      "tile": "busulfan-auc-dose",
       "audience": "clinicians"
     }
   ]

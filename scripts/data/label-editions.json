@@ -31,6 +31,22 @@
     }
   },
   {
+    "label": "Busulfan injection, Sagent",
+    "labeler": "SAGENT PHARMACEUTICALS",
+    "setId": "086a715e-4958-4bb5-9ebd-86171e6b6203",
+    "tools": [
+      "busulfan-auc-dose"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2026-08-07",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "43684-0": "e18019856ceb3959fc211d365120a485d742316eb33a8d532221de4f585baed5",
+      "34089-3": "d908b82d92cc8037df013d9bab9fe8bbe7c8fd7b4a9258862eb184f2054541e9"
+    }
+  },
+  {
     "label": "Caffeine Citrate injection and oral solution, Sagent",
     "labeler": "SAGENT PHARMACEUTICALS",
     "setId": "5f38c395-0093-4afd-89ec-f96e5dc0934a",

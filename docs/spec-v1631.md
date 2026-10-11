@@ -1,6 +1,6 @@
 # spec-v1631 — Clinical pharmacokinetics and therapeutic drug monitoring
 
-**Status:** In progress, October 11, 2026: 12 of 20 tools built (see Build status). 20 new tools (1 build-gated), 10 backfills.
+**Status:** In progress, October 11, 2026: 13 of 20 tools built (see Build status). 20 new tools (1 build-gated), 10 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A hospital pharmacist's kinetics service does the same arithmetic all day: pick a first
@@ -900,7 +900,7 @@ Backfills 3, 5, 6 and 8 correct or re-source a number in a live tool and are ind
 
 ## Build status
 
-Updated October 11, 2026. 12 of 20 tools built; the backfills are open.
+Updated October 11, 2026. 13 of 20 tools built; the backfills are open.
 
 | Tool | Status |
 |---|---|
@@ -917,4 +917,5 @@ Updated October 11, 2026. 12 of 20 tools built; the backfills are open.
 | 10. `digoxin-label-dose` | Built (group F) on the label row `digoxin` already used (Amneal, version 20). Sections 2.2 to 2.6 were re-read: Table 1, the formula, all 70 cells and 10 day counts of Table 3, the starred cell and Table 6 match the spec. The table is read at the row and column at or below the values entered and the result names the cell; above 100 mL/min or 100 kg it reads the last row or column; below 10 mL/min or 40 kg it reports no cell. **Not built:** the corrected clearance from a creatinine alone (the reader enters the clearance) and any IV conversion beyond quoting the label's four equivalent pairs. |
 | 7. `phenytoin-mm-dose` | Built (group F). Ludden 1977's abstract was re-read on PubMed (the full text was not opened; the equations are the Michaelis-Menten steady-state relation through two points, tested by recovering a simulated Km and Vmax). The 8% sentence and the 10 to 20 mcg/mL range were read on Viatris's Dilantin capsules label (86dd27d1-9cee-48ae-b55d-e2d2f7dbc593, version 3), now a watched label row. The predicted-level list uses sodium-salt doses from 200 to 600 mg/day. **Not built:** the one-pair form with a reader's Km. With the label withheld the tool works on doses of one form and refuses to mix forms. |
 | 19. `arc-risk-scores` | Built (group F). Udy 2013 (PMC4056783, CC BY 2.0) and the Barletta 2017 abstract were re-read; the points, the ARCTIC cutoff and its sensitivity and specificity are as the spec says. Every input is required. ARCTIC is not worked out for a non-trauma admission or a creatinine above 1.3 mg/dL; the ARC total carries a note above 1.24 mg/dL (the paper's 110 µmol/L exclusion) and no band. |
-| 1 to 3, 5, 6, 11, 13 | Not built. |
+| 13. `busulfan-auc-dose` | Built (group F) on a label row. The Sagent label (version 7) was re-read and added to the weekly watch on its Use in Specific Populations and Description sections; the formula, the 11 mg example, the sampling schedule, both AUC instructions, the 246 g/mole and the 900 to 1350 µM·min range are as the spec says. Samples are entered as hours and concentration; the terminal rate constant comes from the last two samples, which is the tool's choice and is named. The target is required and the page shows the label's 1125. The initial-dose text of section 2.1 is not shown. It calls the linear trapezoid function of `auc-trapezoid`. |
+| 1 to 3, 5, 6, 11 | Not built. |

@@ -9037,6 +9037,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/phenytoin-mm-dose-v1631.js (spec-v1631: Phenytoin dose from two steady-state levels (Ludden 1977; Dilantin label row) — clinical disclaimer)
 - `phenytoin-mm-dose`
 
+### lib/busulfan-auc-dose-v1631.js (spec-v1631: IV busulfan AUC and dose adjustment (FDA label; label row) — clinical disclaimer)
+- `busulfan-auc-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

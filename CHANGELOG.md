@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- IV Busulfan AUC and Dose Adjustment (Label Method): the area under timed busulfan levels and the
+  adjusted dose, worked the way the label's pediatric section sets out, with its 900 to 1350
+  µM·min range beside the result.
 - Augmented Renal Clearance Risk (ARC and ARCTIC Scores): the two published screening scores,
   each worked out only for the patients it was derived in. Neither is a clearance, and the page
   says so.

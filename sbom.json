@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2996db8b-0535-56b4-8022-b2128c391017",
+  "serialNumber": "urn:uuid:9601d4c0-9cd1-570f-8a26-afcb14449db4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T11:34:15.925Z",
+    "timestamp": "2026-10-11T11:49:21.932Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2111 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2112 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bec6228eb553084e4c5ea37f83e374ebfa3fa297c36978b1e7612762dfcd8ebb"
+          "content": "40ed979eb17a8e1682c9d82dc4c13d34fd8fbc90196c0f07e41947d7adf12318"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "136307"
+          "value": "136373"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "102be991f33839d75211078c344acb4434e85089bb18a4ebbb9a69a28def10dc"
+          "content": "f113627bc176515e92ee9327e7e99f022ab8641d8b73df682ea7334314314318"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "599486"
+          "value": "599645"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ebc17b7a22b2d1dfcf8d6eab93a10e1ea75c8d4492fa3680e57b061c8344a320"
+          "content": "9d243c3a1d404a0288d16b3be556798a78a18984936b5bf0edd2da5f49b19f0f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "264513"
+          "value": "264641"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1da96246e703c995720b51c438de75cee01130636abdd7f7c4b92c12dc94e2ef"
+          "content": "19ca56f4fbf36bd2c89f5e83ed3edaa2477f1e8908199d05c3e719eefa8e921e"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "124450"
+          "value": "124523"
         }
       ]
     },
@@ -3139,6 +3139,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5083"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/busulfan-auc-dose-v1631.js",
+      "type": "file",
+      "name": "lib/busulfan-auc-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f21565f6ebd67273651e9d1b63596df0c6c27595920c41bba1f1edd74c49498"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8218"
         }
       ]
     },
@@ -12494,7 +12515,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0bc60643eb5cb7756ef72a00eb5e71cbab7fe34366ce98a4383088329cea387d"
+          "content": "5e6537083431dab21786d62c8ee71221afb7dfe7feef553426fc2b0927fb9851"
         }
       ],
       "properties": [
@@ -12504,7 +12525,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9500"
+          "value": "9711"
         }
       ]
     },
@@ -14699,7 +14720,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "94c623342966701501c3274d41972dbccac86b1e5fedcd16cf275bee83683fbd"
+          "content": "4d97e50f12f8fe1556885dd94ff33e0e82aea8cf408a3de021a2c4cc0568d4df"
         }
       ],
       "properties": [
@@ -14709,7 +14730,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2806314"
+          "value": "2807159"
         }
       ]
     },
@@ -30166,6 +30187,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1499"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/busulfan-auc-dose-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/busulfan-auc-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "017e7c38b9eede16fce5bf09a3fa5ffce9d93ab538fd16eb6c20a236f188f2df"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1531"
         }
       ]
     },
@@ -51596,7 +51638,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b475fce88f71510c696c359c1dbc7ef17aaf2496d823dd14320fab05055c8f95"
+          "content": "d8d6bd24613627f1d45828fae8df3ae2721824fdab2518c637bc3afa941d1abb"
         }
       ],
       "properties": [
@@ -51606,7 +51648,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "134262"
+          "value": "134389"
         }
       ]
     },
@@ -56132,7 +56174,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7f22f42df74b70882a2ca1f41e6fc1141063bfb923dd21462bd221f4831c654d"
+          "content": "63c68ae1f69126229e8e8086ce818e45847395a4b3a3e743fd752159a26293b2"
         }
       ],
       "properties": [
@@ -56142,7 +56184,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "15890"
+          "value": "17098"
         }
       ]
     },
@@ -87051,6 +87093,7 @@
         "urn:sophiewell:file:source:lib/buffer-ph-v1629.js",
         "urn:sophiewell:file:source:lib/build-info.js",
         "urn:sophiewell:file:source:lib/buruli-ulcer-category-v1561.js",
+        "urn:sophiewell:file:source:lib/busulfan-auc-dose-v1631.js",
         "urn:sophiewell:file:source:lib/c-rads-v371.js",
         "urn:sophiewell:file:source:lib/c2hest-v1434.js",
         "urn:sophiewell:file:source:lib/ca-5150-hold-timeline-v1389.js",
@@ -89279,6 +89322,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/brue-v547.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/buffer-ph-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/buruli-ulcer-category-v1561.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/busulfan-auc-dose-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/c-rads-v371.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/c2hest-v1434.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-5150-hold-timeline-v1389.js",
@@ -90403,7 +90447,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "2996db8b053546b4"
+      "value": "9601d4c09cd1a70f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -90415,7 +90459,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3375"
+      "value": "3377"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

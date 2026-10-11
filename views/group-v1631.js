@@ -1,7 +1,7 @@
 // spec-v1631: clinical pharmacokinetics and therapeutic drug monitoring. Group F.
 // pk-steady-state-predict, auc-trapezoid, tmic-beta-lactam, sawchuk-zaske-dosing, kinetic-egfr and
 // crrt-drug-clearance, fosphenytoin-load-rate, caffeine-citrate-dose, lithium-level-check and
-// digoxin-label-dose, arc-risk-scores, phenytoin-mm-dose.
+// digoxin-label-dose, arc-risk-scores, phenytoin-mm-dose, busulfan-auc-dose.
 
 import { el, clear } from '../lib/dom.js';
 import * as PK from '../lib/pk-steady-state-predict-v1631.js';
@@ -16,6 +16,7 @@ import * as LI from '../lib/lithium-level-check-v1631.js';
 import * as DG from '../lib/digoxin-label-dose-v1631.js';
 import * as AR from '../lib/arc-risk-scores-v1631.js';
 import * as PM from '../lib/phenytoin-mm-dose-v1631.js';
+import * as BU from '../lib/busulfan-auc-dose-v1631.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -266,6 +267,24 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = PM.phenytoinMmDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+
+  'busulfan-auc-dose'(root) {
+    const pairs = [['bu-timing', 'timing'], ['bu-dose', 'dose'], ['bu-unit', 'unit'], ['bu-samples', 'samples'], ['bu-target', 'target']];
+    selectField(root, 'The samples followed', 'bu-timing', BU.TIMINGS);
+    numField(root, 'Dose given, mg', 'bu-dose', '');
+    selectField(root, 'Concentrations are in', 'bu-unit', BU.UNITS);
+    textareaField(root, 'Samples, one per line: hours after the infusion started, then the concentration', 'bu-samples', '');
+    // The label's target, shown and editable; the result names the value used.
+    numField(root, 'Target AUC, µM·min', 'bu-target', '').querySelector('input').value = String(BU.LABEL.target);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = BU.busulfanAucDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
