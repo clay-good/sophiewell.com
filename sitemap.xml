@@ -192,6 +192,7 @@
   <url><loc>https://sophiewell.com/tools/pn-calcium-phosphate-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/pn-order-summary/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/premixed-pn-rate-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/pn-micronutrient-volume/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/mean-kinetic-temperature/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/in-use-discard-time/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/storage-excursion-summary/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>

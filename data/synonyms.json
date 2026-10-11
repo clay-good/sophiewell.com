@@ -11984,6 +11984,17 @@
       ],
       "tile": "premixed-pn-rate-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tralement dose by weight",
+        "multrys volume neonatal",
+        "trace elements in tpn pediatric",
+        "infuvite pediatric dose",
+        "zinc copper selenium tpn shortfall"
+      ],
+      "tile": "pn-micronutrient-volume",
+      "audience": "clinicians"
     }
   ]
 }

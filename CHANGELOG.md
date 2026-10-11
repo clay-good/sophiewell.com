@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- PN Trace Elements and Pediatric Multivitamin by Weight: the daily volume of Tralement, Multrys
+  or Infuvite Pediatric for a weight as the label gives it, the zinc, copper, selenium and
+  manganese it provides, and the shortfall against the label's daily amounts. Where the Multrys
+  table and its own sentence disagree, the table's volume is shown and the difference named.
 - Premixed PN Bag Against Its Label Maximum: the rate of a Clinimix, Clinimix E or Kabiven bag in
   mL/kg/hour beside the adult maximum for that formulation, the amino acid and dextrose it
   delivers per kilogram per hour, and whether the label limits it to a central vein.

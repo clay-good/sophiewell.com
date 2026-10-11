@@ -222,6 +222,21 @@
     }
   },
   {
+    "label": "Infuvite Pediatric, Sandoz",
+    "labeler": "SANDOZ INC",
+    "setId": "4ff223f7-e076-4e81-8151-5c06724fabd9",
+    "tools": [
+      "pn-micronutrient-volume"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2025-08-20",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "8d3df54e3aec2036834ea6d199eb35f0dd2fb7eae7f0f64244a56b2d617a3a17"
+    }
+  },
+  {
     "label": "Intralipid 20%, Fresenius Kabi",
     "labeler": "FRESENIUS KABI USA, LLC",
     "setId": "61e025f1-a38e-4af2-9e18-13ea12977cf5",
@@ -288,6 +303,21 @@
     "sections": {
       "34068-7": "43333c3f2b6dace072ecbd23957d05bc75467373257f9d2e31912dc9667bea69",
       "43684-0": "a217465b286040ea5cc610554ba6511acf88c97fe9debf350a603523f6677e6a"
+    }
+  },
+  {
+    "label": "Multrys (trace elements injection 4), American Regent",
+    "labeler": "AMERICAN REGENT, INC.",
+    "setId": "995f1efa-aca0-4b6c-9099-f8e757c2133a",
+    "tools": [
+      "pn-micronutrient-volume"
+    ],
+    "splVersion": 4,
+    "publishedOn": "2024-08-26",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "ffaa48c8bf581d13992b35c11986f6e2c26fbab39f49b976b43628f180f29d31"
     }
   },
   {
@@ -433,6 +463,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34089-3": "60036e085d717f984c2b74eb2f04d847eebc1a726ae8f35ec94116a4be28af78"
+    }
+  },
+  {
+    "label": "Tralement (trace elements injection 4), American Regent",
+    "labeler": "AMERICAN REGENT, INC.",
+    "setId": "a49ffb90-f307-433e-a86e-aaea6d6a9982",
+    "tools": [
+      "pn-micronutrient-volume"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-07-28",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "89548c68da6c11407fc31a6fcc832d1010c59238dd551a664735c4790b64cb1e"
     }
   },
   {

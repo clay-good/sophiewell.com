@@ -1,6 +1,7 @@
 // spec-v1630: sterile compounding, IV admixture and drug storage. Group Q.
 // reconstitution-concentration, admixture-concentration, lipid-emulsion-dose-check, pn-aluminum-load,
 // pn-calcium-phosphate-check, pn-order-summary, pn-amino-acid-order, premixed-pn-rate-check,
+// pn-micronutrient-volume,
 // mean-kinetic-temperature,
 // in-use-discard-time, storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
@@ -13,6 +14,7 @@ import * as CP from '../lib/pn-calcium-phosphate-check-v1630.js';
 import * as IU from '../lib/in-use-discard-time-v1630.js';
 import * as AA from '../lib/pn-amino-acid-order-v1630.js';
 import * as PR from '../lib/premixed-pn-rate-check-v1630.js';
+import * as MV from '../lib/pn-micronutrient-volume-v1630.js';
 import * as PS from '../lib/pn-order-summary-v1630.js';
 import * as MK from '../lib/mean-kinetic-temperature-v1630.js';
 import * as SE from '../lib/storage-excursion-summary-v1630.js';
@@ -210,6 +212,18 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = PR.premixedPnRateCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+
+  'pn-micronutrient-volume'(root) {
+    selectField(root, 'Product', 'mv-product', MV.PRODUCT_OPTIONS);
+    numField(root, 'Patient weight', 'mv-weight', '');
+    selectField(root, 'Weight unit', 'mv-wunit', MV.WEIGHT_UNITS);
+    const o = out(); root.appendChild(o);
+    wire(['mv-product', 'mv-weight', 'mv-wunit'], () => safe(o, () => {
+      const r = MV.pnMicronutrientVolume({ product: val('mv-product'), weight: val('mv-weight'), weightUnit: val('mv-wunit') }, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

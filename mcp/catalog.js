@@ -1040,6 +1040,7 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import pnMicronutrientVolumeV1630 from './adapters/pn-micronutrient-volume-v1630.js';
 import premixedPnRateCheckV1630 from './adapters/premixed-pn-rate-check-v1630.js';
 import pnAminoAcidOrderV1630 from './adapters/pn-amino-acid-order-v1630.js';
 import pnOrderSummaryV1630 from './adapters/pn-order-summary-v1630.js';
@@ -2167,6 +2168,7 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['pn-micronutrient-volume-v1630', pnMicronutrientVolumeV1630],
   ['premixed-pn-rate-check-v1630', premixedPnRateCheckV1630],
   ['pn-amino-acid-order-v1630', pnAminoAcidOrderV1630],
   ['pn-order-summary-v1630', pnOrderSummaryV1630],
