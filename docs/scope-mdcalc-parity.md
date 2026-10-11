@@ -505,7 +505,7 @@ experience**.
 
 > v1629, Apothecary, Avoirdupois and Household Measures — [spec-v1629](spec-v1629.md), which adds `apothecary-household-measures` — is 2078.)
 
-> v1629, Isotonicity by Sodium Chloride Equivalent — [spec-v1629](spec-v1629.md), which adds `isotonicity-e-value` — is 2079.)
+> v1629, Isotonicity by E-Value (NaCl Equivalent) — [spec-v1629](spec-v1629.md), which adds `isotonicity-e-value` — is 2079.)
 
 > v1629, Isotonicity by Freezing-Point Depression — [spec-v1629](spec-v1629.md), which adds `isotonicity-freezing-point` — is 2080.)
 
@@ -523,7 +523,7 @@ experience**.
 
 > v1630, Air Changes per Hour and Clearance Time — [spec-v1630](spec-v1630.md), which adds `room-air-changes` — is 2087.)
 
-> v1630, Aluminum in a PN Order (21 CFR 201.323) — [spec-v1630](spec-v1630.md), which adds `pn-aluminum-load` — is 2088.)
+> v1630, Aluminum in a PN Order — [spec-v1630](spec-v1630.md), which adds `pn-aluminum-load` — is 2088.)
 
 > v1630, Mean Kinetic Temperature of a Storage Log — [spec-v1630](spec-v1630.md), which adds `mean-kinetic-temperature` — is 2089.)
 

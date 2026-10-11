@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a6bc073a5b55533e`
-Generated: 2026-10-11T07:45:21.978Z
+Build ID: `5674efcbbb00fc59`
+Generated: 2026-10-11T07:55:55.527Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 135333 | `a706c12801d5ea97ce5875194d818ebde6c766c7f62264ba07e6dcf65504ad4f` |
+| `index.html` | 135315 | `84035ec8d5748623d05e94f2093c4ade290779a00be39a7e334aa056c749d5ce` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 596972 | `5057ae0bbc102c3931351f8e0af7bd95d75e97e03a849825fef1f0e90fecdfcf` |
+| `app.js` | 596954 | `63ace7fa1f3ea74ffd58bc5c67deee353740e0788c93fe2519a939d6c7d23ba7` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 123333 | `66660c7395f54f4cffc163d39e4246e5c735c1c00ae00d2bee0479cdce9d59f6` |
+| `report-catalog.js` | 123315 | `d94985dd7b40cc04916682ddc42910534ba5b1a5355611c70c37de1fd5516ff3` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)

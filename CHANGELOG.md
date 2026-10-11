@@ -55,7 +55,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   HLB, the HLB of a mixture, the required HLB of an oil phase, and Griffin's 1954 estimates from
   composition, with his stated limits. HLB values are yours to enter from the supplier's sheet.
   See docs/spec-v1629.md.
-- Isotonicity by Sodium Chloride Equivalent: the tonicity agent to add for a final volume, or the
+- Isotonicity by E-Value (NaCl Equivalent): the tonicity agent to add for a final volume, or the
   isotonic volume by the White-Vincent method, from E-values you enter. A preparation already past
   0.9% is reported as hypertonic, not as "add 0 g".
 - Isotonicity by Freezing-Point Depression: the adjusting agent to add to reach a depression of
@@ -125,6 +125,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Typing "correct the sodium" on the home page offered the new isotonicity tool first and dropped
+  the sodium-correction planner from the choices, because the tool's name carried the word
+  "sodium". It is now named Isotonicity by E-Value (NaCl Equivalent), and Aluminum in a PN Order
+  lost the regulation number from its name, which had made an NDC look like a match for it.
 - Antibiotic renal dosing cited a relabeler's copy of the ciprofloxacin label. It now cites the
   Hospira label, whose dosing section is word-for-word the same. spec-v1628 section 1.
 - Electrolyte replacement gave the Brown 2006 phosphate dose alone. An IV phosphate result now
