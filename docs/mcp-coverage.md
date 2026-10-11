@@ -8983,6 +8983,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/in-use-discard-time-v1630.js (spec-v1630: Opened container discard time (CDC, reporting USP <797>; label limit as reader input) — administrative disclaimer)
 - `in-use-discard-time`
 
+### lib/pn-order-summary-v1630.js (spec-v1630: PN order per kilogram, GIR, energy and calorie-to-nitrogen ratio (FDA label factors; label rows) — clinical disclaimer)
+- `pn-order-summary`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

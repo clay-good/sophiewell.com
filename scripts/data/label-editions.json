@@ -96,7 +96,8 @@
     "labeler": "BAXTER HEALTHCARE CORPORATION",
     "setId": "dccff103-8695-400c-a15d-cc2fd078760a",
     "tools": [
-      "tpn-macro"
+      "tpn-macro",
+      "pn-order-summary"
     ],
     "splVersion": 14,
     "publishedOn": "2026-06-05",
@@ -114,7 +115,8 @@
     "tools": [
       "tpn-macro",
       "iv-osmolarity",
-      "lipid-emulsion-dose-check"
+      "lipid-emulsion-dose-check",
+      "pn-order-summary"
     ],
     "splVersion": 24,
     "publishedOn": "2026-06-11",
@@ -139,6 +141,22 @@
     "sections": {
       "34068-7": "297e3c0c6181468c8c988e4a3bc99083b033feaabbcf04955d913b767afc1403",
       "43684-0": "fba92894cb4738b850df54b462d130258f9a45a99f9540b1b0ecd1fb8fd38556"
+    }
+  },
+  {
+    "label": "Dextrose 50% injection, Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "4ed365da-4e62-4329-c1b9-c197ab4fb6e1",
+    "tools": [
+      "pn-order-summary"
+    ],
+    "splVersion": 34,
+    "publishedOn": "2026-07-15",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "a96eb6ca776c5de6dfe556fe0d19d96ae1ed1d009db9e5861ba6026870542b89",
+      "34089-3": "1472b48e0823b37493d1043d65d3b2abdd23044b07a7e2d61049a24136c8fca7"
     }
   },
   {
@@ -178,7 +196,8 @@
     "tools": [
       "tpn-macro",
       "iv-osmolarity",
-      "lipid-emulsion-dose-check"
+      "lipid-emulsion-dose-check",
+      "pn-order-summary"
     ],
     "splVersion": 3,
     "publishedOn": "2025-11-27",
@@ -196,7 +215,8 @@
     "tools": [
       "tpn-macro",
       "iv-osmolarity",
-      "lipid-emulsion-dose-check"
+      "lipid-emulsion-dose-check",
+      "pn-order-summary"
     ],
     "splVersion": 4,
     "publishedOn": "2025-11-19",
@@ -245,7 +265,8 @@
     "tools": [
       "tpn-macro",
       "iv-osmolarity",
-      "lipid-emulsion-dose-check"
+      "lipid-emulsion-dose-check",
+      "pn-order-summary"
     ],
     "splVersion": 6,
     "publishedOn": "2025-09-29",
@@ -325,7 +346,8 @@
     "tools": [
       "tpn-macro",
       "iv-osmolarity",
-      "lipid-emulsion-dose-check"
+      "lipid-emulsion-dose-check",
+      "pn-order-summary"
     ],
     "splVersion": 11,
     "publishedOn": "2025-09-17",

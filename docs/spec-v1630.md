@@ -1,6 +1,6 @@
 # spec-v1630 — Sterile compounding, IV admixture, parenteral nutrition, hazardous drugs and drug storage
 
-**Status:** In progress, October 11, 2026: 10 of 17 tools built (see Build status). 17 new tools; none is gated as a whole (tool 3 has two drugs and tool 12 two rows behind a build gate).
+**Status:** In progress, October 11, 2026: 11 of 17 tools built (see Build status). 17 new tools; none is gated as a whole (tool 3 has two drugs and tool 12 two rows behind a build gate).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 The IV-room pharmacist and technician check the same things all shift: what a vial becomes once
@@ -711,7 +711,7 @@ one figure to the CDC page and ships no part of the table.
 
 ## Build status
 
-Updated October 11, 2026. 10 of 17 tools built; the backfills are open.
+Updated October 11, 2026. 11 of 17 tools built; the backfills are open.
 
 | Tool | Status |
 |---|---|
@@ -725,4 +725,5 @@ Updated October 11, 2026. 10 of 17 tools built; the backfills are open.
 | 9. `pn-calcium-phosphate-check` | Built (group Q), the first tool on the fail-closed label rows of [spec-v1628](spec-v1628.md) section 1. The three labels were re-read on October 11, 2026: calcium gluconate (WG Critical Care, version 5) 0.465 mEq/mL; potassium phosphates (Civica, version 2) 3 mmol/mL; sodium phosphates (Civica, version 1, an old-format label that says "approximately 3 mM"), added to the weekly watch on its Description section. When a row is superseded or lapsed, that strength is not shown or used: the page asks for the figure on the vial in hand, or for mEq or mmol. The limit kind is a required choice once a limit is entered. The hazard sentences on the Potassium Phosphates and Clinimix E labels are not quoted. |
 | 5. `lipid-emulsion-dose-check` | Built (group Q) on label rows. All five labels were re-read on October 11, 2026 at the versions the spec names; every maximum, rate, duration and energy figure matches. Clinolipid's Dosage and Administration section was added to the weekly watch (only its Description was watched before). The rate is the lipid's own mL/kg/hour in both routes, and inside an admixture the result says the label's figure is a direct infusion rate. Intralipid 30% is refused by Y-connector; its 0.125 g/kg/hour is applied from birth to under 2 years, as section 2 words it, and shown as text for older bands. Omegaven has no adult row and no share-of-energy sentence. The 500 mL first-day sentence and starting rates are shown or left to the label, not checked. When a label is withheld the arithmetic still shows (the product's g/mL is its name) and the comparison is made only against a maximum the reader enters. |
 | 12. `in-use-discard-time` | Built (group Q). CDC's page (dated March 26, 2024) was re-read: the 28-day sentence, the expiration-date cap, the single-dose text and the pointer for multi-dose vaccine vials are as the spec says; the page is under the weekly page watch. **Deviations:** three container choices, not five. The only limit the tool supplies is the 28 days. A pharmacy bulk package's hours and a spiked lipid container's hang time are label figures and are entered by the reader (the lipid hang times are checked in tool 5). An expiration date given as a month and year runs through the end of that month. The two gated USP <797> rows stay out. |
-| 3, 4, 6, 7, 10, 11, 13 | Not built. Each needs its labels or documents re-read and its figures placed on label rows as tools 5 and 9 do. |
+| 7. `pn-order-summary` | Built (group Q) on label rows. Re-read on October 11, 2026: Dextrose 50% (Hospira, version 34) for 3.4 kcal/g and the 0.5 g/kg/hour sentence (added to the weekly watch, Dosage and Administration and Description); Clinimix (Baxter, the label `tpn-macro` already reads) for 4 kcal/g of amino acids; the lipid labels of tool 5 for kcal/mL. The ICU Medical dextrose label says the same 0.5 g/kg/hour, worded for glycosuria, and was read but is not a row. **Deviations:** dextrose is entered in grams only (`tpn-macro` converts a percent and a volume); nitrogen is reader input with no 6.25 default; when a factor's label is withheld the energy lines are withheld and the per-kilogram and GIR lines still show. |
+| 3, 4, 6, 10, 11, 13 | Not built. Each needs its labels or documents re-read and its figures placed on label rows as tools 5 and 9 do. |

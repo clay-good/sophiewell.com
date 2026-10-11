@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b56f0e0d-4645-5615-8edc-83288ac8f90b",
+  "serialNumber": "urn:uuid:cb2fea56-b3c5-5beb-8d9e-66d2b663384c",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T07:21:41.173Z",
+    "timestamp": "2026-10-11T07:34:42.828Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2093 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2094 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "34e131a5e44cae1f2d6c025ec4dfaf9b02a375d78b12dfc0053542867ae700e4"
+          "content": "644b2a83f4c618e9215b96be36a20c619932446b9d644ace3453ad8f76c1e6b8"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135213"
+          "value": "135266"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c0a72c5480077c10eb2672f81ea44a699c6d52b955154c58ad41140b5879dd39"
+          "content": "93d8dda3e5cb8970c75f1c3f704bcdef337f8c362493077186eaab874fba7962"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "596691"
+          "value": "596823"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "90824b821f996116f78eb1b4998aef1efc68a0fc1849565ca8d0ea85804668e1"
+          "content": "24393d23df94d98b3031f0a340eae5e78f775f0cfb93550bc3dc61175a10dcbc"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "262177"
+          "value": "262304"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "17e73dc10c1924a9cbdbda7c15874ce88b3490e13b0cb69d6e9a14c1faa2c8b9"
+          "content": "fc5b838c98cc0417a26db91a2e19ba430d17b253ed8a4c88f3e319061903d04d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "123198"
+          "value": "123257"
         }
       ]
     },
@@ -12305,7 +12305,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "15626d9f0e8a143a6d6f2cb87f239bf142f12aaa6e1038493d0a7539ce0f3fbf"
+          "content": "66ac82ee4e7f9034f8b17137d00c55a700114126ddf7431f34f6de1daa39e4eb"
         }
       ],
       "properties": [
@@ -12315,7 +12315,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5506"
+          "value": "5723"
         }
       ]
     },
@@ -14489,7 +14489,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "76cd30333c4b7cec9f6cb14687670a8e204af14f3bed691c6611b8de7e84988c"
+          "content": "11aeda9a369dcd8d436a3b8e5c380720427cd622c967760a2eec11ecd3fd1653"
         }
       ],
       "properties": [
@@ -14499,7 +14499,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2788867"
+          "value": "2790026"
         }
       ]
     },
@@ -19288,6 +19288,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8634"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pn-order-summary-v1630.js",
+      "type": "file",
+      "name": "lib/pn-order-summary-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d2ebe91899458ecde52c8ae3240b023eee35cab033fd4bf66d5f1d231eaab128"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8428"
         }
       ]
     },
@@ -44240,6 +44261,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pn-order-summary-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/pn-order-summary-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2f999a863831a437a60f6cb4943e787450d90297eae884c5a17bd653e740bbca"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2045"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pneumonia-risk-v260.js",
       "type": "file",
       "name": "mcp/adapters/pneumonia-risk-v260.js",
@@ -50840,7 +50882,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "44c2ca1ebd21ccd9eab69dedc7d54ab9a98eecf6e6d4bbc2647df86e3051166d"
+          "content": "392cc2fa276a5497b743d624675d58e09112c95319ee633bd4353124ac896737"
         }
       ],
       "properties": [
@@ -50850,7 +50892,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "131854"
+          "value": "131977"
         }
       ]
     },
@@ -55355,7 +55397,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "58b7385e0778918c902b3254676ea2fb89af60672c94d4a83384b7096600a9d6"
+          "content": "322d2a4820911538fc7f667a4233dd4e01d94601df5c18bceac621be85a05bae"
         }
       ],
       "properties": [
@@ -55365,7 +55407,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "14224"
+          "value": "15649"
         }
       ]
     },
@@ -87043,6 +87085,7 @@
         "urn:sophiewell:file:source:lib/pmp-check-required-v1393.js",
         "urn:sophiewell:file:source:lib/pn-aluminum-load-v1630.js",
         "urn:sophiewell:file:source:lib/pn-calcium-phosphate-check-v1630.js",
+        "urn:sophiewell:file:source:lib/pn-order-summary-v1630.js",
         "urn:sophiewell:file:source:lib/pneumonia-risk-v260.js",
         "urn:sophiewell:file:source:lib/podoconiosis-stage-v1564.js",
         "urn:sophiewell:file:source:lib/poi-diagnosis-v834.js",
@@ -89171,6 +89214,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pmp-check-required-v1393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pn-aluminum-load-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pn-calcium-phosphate-check-v1630.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pn-order-summary-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pneumonia-risk-v260.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/podoconiosis-stage-v1564.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/poi-diagnosis-v834.js",
@@ -89589,7 +89633,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "b56f0e0d4645f615"
+      "value": "cb2fea56b3c58beb"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -89601,7 +89645,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3338"
+      "value": "3340"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

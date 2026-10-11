@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- PN Order per Kilogram, GIR and Energy: a parenteral nutrition order restated per kilogram, with
+  the glucose infusion rate, energy from dextrose, amino acids and lipid at the factors on their
+  labels, and non-protein kcal per gram of nitrogen when you enter the nitrogen. No targets.
 - Opened Container: When to Discard: the discard date and time for an opened stock container, from
   the time it was opened and its in-use limit, never past the expiration date. It supplies only the
   28 days for a multi-dose vial whose label gives no other date; any other limit is the label's.

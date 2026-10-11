@@ -534,3 +534,5 @@ experience**.
 > v1630, Lipid Emulsion Dose and Rate Against the Label — [spec-v1630](spec-v1630.md), which adds `lipid-emulsion-dose-check` — is 2092.)
 
 > v1630, Opened Container: When to Discard — [spec-v1630](spec-v1630.md), which adds `in-use-discard-time` — is 2093.)
+
+> v1630, PN Order per Kilogram, GIR and Energy — [spec-v1630](spec-v1630.md), which adds `pn-order-summary` — is 2094.)

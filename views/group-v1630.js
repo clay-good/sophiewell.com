@@ -1,6 +1,6 @@
 // spec-v1630: sterile compounding, IV admixture and drug storage. Group Q.
 // reconstitution-concentration, admixture-concentration, lipid-emulsion-dose-check, pn-aluminum-load,
-// pn-calcium-phosphate-check,
+// pn-calcium-phosphate-check, pn-order-summary,
 // mean-kinetic-temperature,
 // in-use-discard-time, storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
@@ -11,6 +11,7 @@ import * as LE from '../lib/lipid-emulsion-dose-check-v1630.js';
 import * as PA from '../lib/pn-aluminum-load-v1630.js';
 import * as CP from '../lib/pn-calcium-phosphate-check-v1630.js';
 import * as IU from '../lib/in-use-discard-time-v1630.js';
+import * as PS from '../lib/pn-order-summary-v1630.js';
 import * as MK from '../lib/mean-kinetic-temperature-v1630.js';
 import * as SE from '../lib/storage-excursion-summary-v1630.js';
 import * as CR from '../lib/cleanroom-class-check-v1630.js';
@@ -170,6 +171,27 @@ export const renderers = {
       // The vial's own figure is asked for only when the label figure is withheld.
       caOwn.hidden = !(r.withheld === 'calcium' || val('cp-caown') !== '');
       pOwn.hidden = !(r.withheld === 'phosphate' || val('cp-pown') !== '');
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+
+  'pn-order-summary'(root) {
+    const pairs = [['ps-weight', 'weight'], ['ps-wunit', 'weightUnit'], ['ps-dex', 'dextroseGrams'], ['ps-aa', 'aminoAcidGrams'], ['ps-n', 'nitrogenGrams'], ['ps-lipid', 'lipidProduct'], ['ps-lipidg', 'lipidGrams'], ['ps-hours', 'hours'], ['ps-vol', 'volume']];
+    numField(root, 'Patient weight', 'ps-weight', '');
+    selectField(root, 'Weight unit', 'ps-wunit', PS.WEIGHT_UNITS);
+    numField(root, 'Dextrose (hydrous), g per day', 'ps-dex', '');
+    numField(root, 'Amino acids, g per day', 'ps-aa', '');
+    numField(root, 'Nitrogen, g per day, from the amino acid label (optional)', 'ps-n', '');
+    selectField(root, 'Lipid product (optional)', 'ps-lipid', PS.LIPID_OPTIONS);
+    numField(root, 'Lipid, g per day (optional)', 'ps-lipidg', '');
+    numField(root, 'Infusion hours per day', 'ps-hours', '');
+    numField(root, 'Total volume, mL per day', 'ps-vol', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PS.pnOrderSummary(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

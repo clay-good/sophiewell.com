@@ -11951,6 +11951,17 @@
       ],
       "tile": "in-use-discard-time",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tpn order per kg",
+        "parenteral nutrition kcal per kg",
+        "non protein calories to nitrogen ratio",
+        "pn gir and calories",
+        "npc n ratio"
+      ],
+      "tile": "pn-order-summary",
+      "audience": "clinicians"
     }
   ]
 }
