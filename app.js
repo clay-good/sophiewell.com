@@ -2743,6 +2743,9 @@ const UTILITIES = [
   { id: 'peds-heparin-nomogram', name: 'Pediatric Heparin Protocol (CHEST 2012)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'warfarin-inr-out-of-range', name: 'Out-of-Range INR on Warfarin (CHEST 2012 Recommendations)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ninja-nephrotoxin-exposure', name: 'Nephrotoxic Medication Exposure in Hospitalized Children (NINJA)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'at-harm10', name: 'AT-HARM10: Was This Admission Medication-Related? (Kempen 2019)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ade-cost-avoidance', name: 'Pharmacist Intervention Cost Avoidance (Nesbit Method)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'anticholinergic-list-score', name: 'Drug-List Anticholinergic Score (German and CRIDECO Lists)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

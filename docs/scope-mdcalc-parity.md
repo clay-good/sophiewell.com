@@ -690,3 +690,9 @@ experience**.
 > v1634, Out-of-Range INR on Warfarin (CHEST 2012 Recommendations) — [spec-v1634](spec-v1634.md), which adds `warfarin-inr-out-of-range` — is 2170.)
 
 > v1634, Nephrotoxic Medication Exposure in Hospitalized Children (NINJA) — [spec-v1634](spec-v1634.md), which adds `ninja-nephrotoxin-exposure` — is 2171.)
+
+> v1634, AT-HARM10: Was This Admission Medication-Related? (Kempen 2019) — [spec-v1634](spec-v1634.md), which adds `at-harm10` — is 2172.)
+
+> v1634, Pharmacist Intervention Cost Avoidance (Nesbit Method) — [spec-v1634](spec-v1634.md), which adds `ade-cost-avoidance` — is 2173.)
+
+> v1634, Drug-List Anticholinergic Score (German and CRIDECO Lists) — [spec-v1634](spec-v1634.md), which adds `anticholinergic-list-score` — is 2174.)

@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import atHarm10V1634 from './adapters/at-harm10-v1634.js';
+import adeCostAvoidanceV1634 from './adapters/ade-cost-avoidance-v1634.js';
+import anticholinergicListScoreV1634 from './adapters/anticholinergic-list-score-v1634.js';
 import stoppfallCheckV1634 from './adapters/stoppfall-check-v1634.js';
 import pedsHeparinNomogramV1634 from './adapters/peds-heparin-nomogram-v1634.js';
 import warfarinInrOutOfRangeV1634 from './adapters/warfarin-inr-out-of-range-v1634.js';
@@ -2242,6 +2245,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['at-harm10-v1634', atHarm10V1634],
+  ['ade-cost-avoidance-v1634', adeCostAvoidanceV1634],
+  ['anticholinergic-list-score-v1634', anticholinergicListScoreV1634],
   ['stoppfall-check-v1634', stoppfallCheckV1634],
   ['peds-heparin-nomogram-v1634', pedsHeparinNomogramV1634],
   ['warfarin-inr-out-of-range-v1634', warfarinInrOutOfRangeV1634],

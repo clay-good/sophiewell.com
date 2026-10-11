@@ -770,6 +770,9 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as atHarm10V1634 from '../../lib/at-harm10-v1634.js';
+import * as adeCostAvoidanceV1634 from '../../lib/ade-cost-avoidance-v1634.js';
+import * as anticholinergicListScoreV1634 from '../../lib/anticholinergic-list-score-v1634.js';
 import * as stoppfallCheckV1634 from '../../lib/stoppfall-check-v1634.js';
 import * as pedsHeparinNomogramV1634 from '../../lib/peds-heparin-nomogram-v1634.js';
 import * as warfarinInrOutOfRangeV1634 from '../../lib/warfarin-inr-out-of-range-v1634.js';
@@ -1756,6 +1759,9 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'at-harm10-v1634.js': atHarm10V1634,
+  'ade-cost-avoidance-v1634.js': adeCostAvoidanceV1634,
+  'anticholinergic-list-score-v1634.js': anticholinergicListScoreV1634,
   'stoppfall-check-v1634.js': stoppfallCheckV1634,
   'peds-heparin-nomogram-v1634.js': pedsHeparinNomogramV1634,
   'warfarin-inr-out-of-range-v1634.js': warfarinInrOutOfRangeV1634,

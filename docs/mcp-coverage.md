@@ -9217,6 +9217,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ninja-nephrotoxin-exposure-v1634.js (spec-v1634: NINJA nephrotoxin exposure (Goldstein 2020) — clinical disclaimer)
 - `ninja-nephrotoxin-exposure`
 
+### lib/at-harm10-v1634.js (spec-v1634: AT-HARM10 (Kempen 2019) — clinical disclaimer)
+- `at-harm10`
+
+### lib/ade-cost-avoidance-v1634.js (spec-v1634: Cost avoidance by the Nesbit method (Abushanab 2023) — administrative disclaimer)
+- `ade-cost-avoidance`
+
+### lib/anticholinergic-list-score-v1634.js (spec-v1634: Anticholinergic burden from open lists (Kiesel 2018; Ramos 2022) — clinical disclaimer)
+- `anticholinergic-list-score`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

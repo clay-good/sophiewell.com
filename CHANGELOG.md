@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- AT-HARM10: Was This Admission Medication-Related? (Kempen 2019): ten questions in order; the
+  first yes decides, and an all-no assessment is reported the way the form and the text each put it.
+- Drug-List Anticholinergic Score (German and CRIDECO Lists): looks each drug up on an open list
+  and adds the scores; a drug that is not listed is named, never counted as zero.
+- Pharmacist Intervention Cost Avoidance (Nesbit Method): probability class times the cost of the
+  event averted, summed, with an optional net of pharmacist time.
 - STOPPFall Fall-Risk-Increasing Drug Classes (Seppala 2021): which of the 14 classes are on a
   medication list. No score: the paper defines none.
 - Pediatric Heparin Protocol (CHEST 2012): the loading dose and starting rate, or the bolus, hold,

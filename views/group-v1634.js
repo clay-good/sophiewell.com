@@ -1,7 +1,8 @@
 // spec-v1634: medication review, medication safety and pharmacovigilance.
 // or-rr-to-nnt, disproportionality-2x2, icer-dominance, liverpool-adr-causality, ncc-merp-index,
 // fda-adverse-event-report-clock, riosord, relative-infant-dose, badri-adr-risk, stoppfall-check,
-// peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure.
+// peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
+// ade-cost-avoidance, anticholinergic-list-score.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -17,6 +18,9 @@ import * as SF from '../lib/stoppfall-check-v1634.js';
 import * as PH from '../lib/peds-heparin-nomogram-v1634.js';
 import * as WI from '../lib/warfarin-inr-out-of-range-v1634.js';
 import * as NJ from '../lib/ninja-nephrotoxin-exposure-v1634.js';
+import * as AH from '../lib/at-harm10-v1634.js';
+import * as CA from '../lib/ade-cost-avoidance-v1634.js';
+import * as AL from '../lib/anticholinergic-list-score-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -239,6 +243,39 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(NJ.ninjaNephrotoxinExposure(args), o);
+    }));
+  },
+  'at-harm10'(root) {
+    const pairs = AH.QUESTIONS.map((q) => [`ath-${q.arg}`, q.arg]);
+    root.appendChild(el('p', { text: 'Answer in order. The first yes ends the assessment, so later questions can be left blank.' }));
+    for (const q of AH.QUESTIONS) selectField(root, `${q.code}. ${q.text}`, `ath-${q.arg}`, AH.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(AH.atHarm10(args), o);
+    }));
+  },
+  'ade-cost-avoidance'(root) {
+    const pairs = [['aca-lines', 'interventions'], ['aca-time', 'timeCost']];
+    areaField(root, 'Interventions, one per line: class (none, very low, low, medium, high), cost of the adverse event averted, count (optional)', 'aca-lines', 'low, 5000, 10');
+    numField(root, 'Pharmacist time cost, total (optional)', 'aca-time', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(CA.adeCostAvoidance(args), o);
+    }));
+  },
+  'anticholinergic-list-score'(root) {
+    const pairs = [['als-scale', 'scale'], ['als-drugs', 'drugs']];
+    selectField(root, 'Scale', 'als-scale', AL.SCALES);
+    areaField(root, 'Drugs by generic name, one per line or separated by commas', 'als-drugs', 'amitriptyline');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(AL.anticholinergicListScore(args), o);
     }));
   },
 };

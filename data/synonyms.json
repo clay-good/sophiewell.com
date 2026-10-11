@@ -12842,6 +12842,27 @@
       ],
       "tile": "ninja-nephrotoxin-exposure",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "atharm10"
+      ],
+      "tile": "at-harm10",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nesbit"
+      ],
+      "tile": "ade-cost-avoidance",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "crideco"
+      ],
+      "tile": "anticholinergic-list-score",
+      "audience": "clinicians"
     }
   ]
 }

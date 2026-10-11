@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:4bd6437f-1529-54b3-8b19-42851d2721f8",
+  "serialNumber": "urn:uuid:b631f688-f75b-59a0-830d-4e78cf487315",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T22:15:24.816Z",
+    "timestamp": "2026-10-11T22:52:43.937Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2171 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2174 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c77c717dc793b13d9256b1cd075f64d22b15985259a52c1a276050c35669f2a8"
+          "content": "8fd2f484b1c32150af6d7b6fd8ffc16ff9af0f74232e0f84e3ef0f870f63eae2"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140556"
+          "value": "140779"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5a19856776304d8a3ad7227e446b8326d4e1c13ad4ac9be0c6330261bb22dce6"
+          "content": "8a7a8cfa7619c586e428b6f52b98a46b871c85127896de0bded63ad10e7880e1"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "609808"
+          "value": "610313"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "45beea57ccf52ed31d812d1920578f02aa151be6c98dc268b61c09fedac18774"
+          "content": "025579d067608c41185fdd1fee8bce451686e6eec7953d33b72decdf8c00ed6a"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "272470"
+          "value": "272856"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "43ffe9d694ca3a46727129512115a394858c8b4fbf57c2bc4dda7d2576fd6910"
+          "content": "5cdf1f44a575e9d980ac0aecb391788027aa4af77a7ab6faa250f632f9595bd2"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "129396"
+          "value": "129642"
         }
       ]
     },
@@ -829,6 +829,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8742"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ade-cost-avoidance-v1634.js",
+      "type": "file",
+      "name": "lib/ade-cost-avoidance-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ed215ca619c98169e5ff5dd78a63a92196bf5e63aecd5dc2ea45605421d4ae16"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4962"
         }
       ]
     },
@@ -1333,6 +1354,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3348"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/anticholinergic-list-score-v1634.js",
+      "type": "file",
+      "name": "lib/anticholinergic-list-score-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "09c48050ae3d14ac41fcb017b845e47518cf83d05640023d190ee091c08c6036"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "13014"
         }
       ]
     },
@@ -1900,6 +1942,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5724"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/at-harm10-v1634.js",
+      "type": "file",
+      "name": "lib/at-harm10-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "afbd473e7973f11c95fa1243f25f169b6dd1d143fd68fb90e8641a6bc48a5d00"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5955"
         }
       ]
     },
@@ -15581,7 +15644,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "803b19ad4d1e3f3369af2749fa8c5ceafe17a78853d02d509ef3420616616f62"
+          "content": "a24f53ec0584c8aaa7318a8bee7a2e11af3893f261950b114af1a183cc893850"
         }
       ],
       "properties": [
@@ -15591,7 +15654,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2878351"
+          "value": "2880846"
         }
       ]
     },
@@ -29330,6 +29393,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ade-cost-avoidance-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/ade-cost-avoidance-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4d56b40035ee00c82aa404c266ae99bfc55546e9bca984d8ba98e8e3fb7f9fc0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1106"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/adherence-v1513.js",
       "type": "file",
       "name": "mcp/adapters/adherence-v1513.js",
@@ -29830,6 +29914,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "712"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/anticholinergic-list-score-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/anticholinergic-list-score-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bac846e216db8be1650511836b495cee8fa393f53b2d18cff9ce2d1fca2ebc33"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1075"
         }
       ]
     },
@@ -30355,6 +30460,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2015"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/at-harm10-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/at-harm10-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7d86eab11c6ba41af6aa4a91b6bfeb34d29239ce2b20406bc262c20da311ad01"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "954"
         }
       ]
     },
@@ -54179,7 +54305,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e8b51637619f53c553d32e8f17cb1c7f779a484b93918387c8aaa1f14e02584f"
+          "content": "cf3a2e1f1b02adf177aef7fa72a52a9271db303c730b57a57d899ba6cd8fef2d"
         }
       ],
       "properties": [
@@ -54189,7 +54315,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "142968"
+          "value": "143359"
         }
       ]
     },
@@ -58778,7 +58904,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f78d4f2272895240ba4c62b79f090f392f0293ddf0c6f9c8893dffd72017d9d5"
+          "content": "a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d"
         }
       ],
       "properties": [
@@ -58788,7 +58914,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12574"
+          "value": "14483"
         }
       ]
     },
@@ -89587,6 +89713,7 @@
         "urn:sophiewell:file:source:lib/acute-abdomen-v261.js",
         "urn:sophiewell:file:source:lib/acute-injury-v213.js",
         "urn:sophiewell:file:source:lib/acute-opioid-rx-limit-v1393.js",
+        "urn:sophiewell:file:source:lib/ade-cost-avoidance-v1634.js",
         "urn:sophiewell:file:source:lib/adherence-v1513.js",
         "urn:sophiewell:file:source:lib/adiposity-v270.js",
         "urn:sophiewell:file:source:lib/admixture-concentration-v1630.js",
@@ -89611,6 +89738,7 @@
         "urn:sophiewell:file:source:lib/angle-malocclusion-v720.js",
         "urn:sophiewell:file:source:lib/anthro-v238.js",
         "urn:sophiewell:file:source:lib/anthro-v272.js",
+        "urn:sophiewell:file:source:lib/anticholinergic-list-score-v1634.js",
         "urn:sophiewell:file:source:lib/anticoag-switch-clock-v1633.js",
         "urn:sophiewell:file:source:lib/antidepressant-fluoxetine-equivalent-v1633.js",
         "urn:sophiewell:file:source:lib/antivenom-repeat-v1555.js",
@@ -89638,6 +89766,7 @@
         "urn:sophiewell:file:source:lib/asrm-mania-v675.js",
         "urn:sophiewell:file:source:lib/asrs-v513.js",
         "urn:sophiewell:file:source:lib/asthma-control-test-v516.js",
+        "urn:sophiewell:file:source:lib/at-harm10-v1634.js",
         "urn:sophiewell:file:source:lib/atlanta-pancreatitis-v445.js",
         "urn:sophiewell:file:source:lib/atomic-weights-2024.js",
         "urn:sophiewell:file:source:lib/atrial-enlargement-v787.js",
@@ -91888,6 +92017,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-abdomen-v261.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-injury-v213.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-opioid-rx-limit-v1393.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ade-cost-avoidance-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/adherence-v1513.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/adiposity-v270.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/admixture-concentration-v1630.js",
@@ -91912,6 +92042,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/angle-malocclusion-v720.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v238.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v272.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/anticholinergic-list-score-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anticoag-switch-clock-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/antidepressant-fluoxetine-equivalent-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/antivenom-repeat-v1555.js",
@@ -91937,6 +92068,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/asrm-mania-v675.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asrs-v513.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asthma-control-test-v516.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/at-harm10-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/atlanta-pancreatitis-v445.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/atrial-enlargement-v787.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/auc-trapezoid-v1631.js",
@@ -93175,7 +93307,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "4bd6437f152994b3"
+      "value": "b631f688f75bf9a0"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -93187,7 +93319,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3501"
+      "value": "3507"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
