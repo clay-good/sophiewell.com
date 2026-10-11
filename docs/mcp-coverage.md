@@ -9067,6 +9067,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/antiviral-renal-dose-v1632.js (spec-v1632: Antiviral dose by kidney function (eight label rows; lib/label-dose.js engine) — clinical disclaimer)
 - `antiviral-renal-dose`
 
+### lib/nrti-renal-dose-v1632.js (spec-v1632: Tenofovir DF, Truvada, entecavir and lamivudine by clearance (four label rows) — clinical disclaimer)
+- `nrti-renal-dose`
+
+### lib/gabapentinoid-renal-dose-v1632.js (spec-v1632: Gabapentin and pregabalin by clearance (two label rows) — clinical disclaimer)
+- `gabapentinoid-renal-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

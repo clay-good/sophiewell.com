@@ -1,12 +1,14 @@
 // spec-v1632: dose checks read from the FDA label. Group F.
 // doac-dose-check, lmwh-fondaparinux-dose-check, iv-antithrombotic-renal-check,
-// antiviral-renal-dose.
+// antiviral-renal-dose, nrti-renal-dose, gabapentinoid-renal-dose.
 
 import { el, clear } from '../lib/dom.js';
 import * as DC from '../lib/doac-dose-check-v1632.js';
 import * as LF from '../lib/lmwh-fondaparinux-dose-check-v1632.js';
 import * as IA from '../lib/iv-antithrombotic-renal-check-v1632.js';
 import * as AV from '../lib/antiviral-renal-dose-v1632.js';
+import * as NR from '../lib/nrti-renal-dose-v1632.js';
+import * as GB from '../lib/gabapentinoid-renal-dose-v1632.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -112,6 +114,35 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = AV.antiviralRenalDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'nrti-renal-dose'(root) {
+    const pairs = [['nrt-regimen', 'regimen'], ['nrt-dialysis', 'dialysis'], ['nrt-kidney', 'kidney']];
+    selectField(root, 'Drug and use', 'nrt-regimen', NR.REGIMENS);
+    selectField(root, 'Dialysis', 'nrt-dialysis', NR.DIALYSIS);
+    numField(root, 'Creatinine clearance, mL/min', 'nrt-kidney', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = NR.nrtiRenalDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'gabapentinoid-renal-dose'(root) {
+    const pairs = [['gbr-drug', 'drug'], ['gbr-crcl', 'crcl'], ['gbr-hd', 'hemodialysis'], ['gbr-normal', 'normalDose']];
+    selectField(root, 'Drug', 'gbr-drug', GB.DRUGS);
+    numField(root, 'Creatinine clearance, mL/min', 'gbr-crcl', '');
+    selectField(root, 'On hemodialysis', 'gbr-hd', GB.YES_NO);
+    selectField(root, 'Pregabalin: total daily dose for normal renal function', 'gbr-normal', GB.NORMAL_DOSES);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = GB.gabapentinoidRenalDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

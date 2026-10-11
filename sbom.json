@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:66660edd-8457-520c-888c-383e644f0b98",
+  "serialNumber": "urn:uuid:948dbad9-b435-54a9-8f94-3c6a731ecc3c",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T13:26:26.546Z",
+    "timestamp": "2026-10-11T13:39:38.649Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2121 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2123 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d4c6ee7f2c2bcd26f44b9512d0197b566be3a761c863b4fc57a04a2d5bcd6740"
+          "content": "49f694b2be8313e66c13e21721ff2bf2f97a091c92cb377883e8777516b6d0e1"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "136962"
+          "value": "137114"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "aeb2daf6ab25eb7360afbbb02aa353e409e62477af82b7a343ce845505abaaff"
+          "content": "52bdeb4710817623c53c6e4756afafcba77638228ec606d91af8a60fc2a8ff79"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "601185"
+          "value": "601528"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a40267cced1b3513fbc49187d565416fbf7ef153bd089254fe5171a63b1d7655"
+          "content": "53b9b036b1eb6b6bb2fda7fd88164e8a7b8a07de8de5d87a0021183577313aed"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "265834"
+          "value": "266095"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a36b5851c11ec1669add8fb4804ea71783521cfa27737bcb7e3f7cf36538e51d"
+          "content": "886cff3cccb3aac6af2a52118ee88fab77516350788f772e6bb2317dad2d57dd"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125216"
+          "value": "125387"
         }
       ]
     },
@@ -1322,7 +1322,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ccf01ee09d272547be6674051029b9d9b20bf443138062dc87aa52dcd1c394af"
+          "content": "8f47f3b5b6c7b5a04bcf34dd5965a013fdb4bf3fcbaba9af67bb67d397c765c2"
         }
       ],
       "properties": [
@@ -1332,7 +1332,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "16281"
+          "value": "13048"
         }
       ]
     },
@@ -8624,6 +8624,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/gabapentinoid-renal-dose-v1632.js",
+      "type": "file",
+      "name": "lib/gabapentinoid-renal-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "500ec9d5cf21471c1978e952b1b354eca1dc484f7be424cbf3e940c38841f5fd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7868"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/gadolinium-nsf-v895.js",
       "type": "file",
       "name": "lib/gadolinium-nsf-v895.js",
@@ -12599,7 +12620,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "34a5bba656c65dd069e7a944600f95701dd6262f528cf7dbe2cebbb68610c7b4"
+          "content": "32955c2d3c6dab36d25f512f012a722c3d6955f7c3ac719e75c3c7f4d44cd99f"
         }
       ],
       "properties": [
@@ -12609,7 +12630,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3642"
+          "value": "8030"
         }
       ]
     },
@@ -12620,7 +12641,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7a8a757337ba2aab06baf60d082f4cb4bf73672e7bdb12beba85fa008ce3efb1"
+          "content": "1bcab1c1ece1df148821b8ad3d314f6c9ab6ece821a2239bbe2bcc84b55fdf40"
         }
       ],
       "properties": [
@@ -12630,7 +12651,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "14789"
+          "value": "16116"
         }
       ]
     },
@@ -14846,7 +14867,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "adaef9a27b8bde6e248b48e09ed28c34e760dd721e29d47b402ce2b97ee0c900"
+          "content": "3477f6f67dc5ee23398c6b7675844ae04fe1c32fa9f44c7336921d7546a971e0"
         }
       ],
       "properties": [
@@ -14856,7 +14877,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2819975"
+          "value": "2822031"
         }
       ]
     },
@@ -16894,6 +16915,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8559"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nrti-renal-dose-v1632.js",
+      "type": "file",
+      "name": "lib/nrti-renal-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "af33e58f2e958eb87712fc34fec65e83c2a7adcd82a155ba7d89f817541c9445"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6494"
         }
       ]
     },
@@ -35504,6 +35546,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gabapentinoid-renal-dose-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/gabapentinoid-renal-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f2161c3f31bdb2b7f932951d0e08712585df6131f6181d31b93afc404fe5bbd9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1354"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gadolinium-nsf-v895.js",
       "type": "file",
       "name": "mcp/adapters/gadolinium-nsf-v895.js",
@@ -42913,6 +42976,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1461"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nrti-renal-dose-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/nrti-renal-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ed201586dcb43c3d6df53f96af30273e05f46da8e23086f821cf92c79c74c5dc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1199"
         }
       ]
     },
@@ -52037,7 +52121,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ed27b2513b02152eb7ba1ba7373e2cb43dd019ceb08e466295989a3b726fe28a"
+          "content": "be02065e2c1882d521c314d64ea39a4875ad23175bd972860962eba61257c9ca"
         }
       ],
       "properties": [
@@ -52047,7 +52131,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135692"
+          "value": "135966"
         }
       ]
     },
@@ -56594,7 +56678,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9547eb12566ccae4b0a1c403260cc9a370086a91a1ace4aa7df30fb3d733806b"
+          "content": "b371bb63206382f5c6221092b4f181e536a8fefe07d4586a3c8982d5d912a5a3"
         }
       ],
       "properties": [
@@ -56604,7 +56688,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "6648"
+          "value": "8495"
         }
       ]
     },
@@ -87774,6 +87858,7 @@
         "urn:sophiewell:file:source:lib/function-v154.js",
         "urn:sophiewell:file:source:lib/furst-ratio-v794.js",
         "urn:sophiewell:file:source:lib/g8-geriatric-v710.js",
+        "urn:sophiewell:file:source:lib/gabapentinoid-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/gadolinium-nsf-v895.js",
         "urn:sophiewell:file:source:lib/gags-v554.js",
         "urn:sophiewell:file:source:lib/gapp-v569.js",
@@ -88168,6 +88253,7 @@
         "urn:sophiewell:file:source:lib/nottingham-grade-v649.js",
         "urn:sophiewell:file:source:lib/nottingham-npi-v330.js",
         "urn:sophiewell:file:source:lib/npep-2025-v1401.js",
+        "urn:sophiewell:file:source:lib/nrti-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/nsofa-v526.js",
         "urn:sophiewell:file:source:lib/ntm-pulmonary-v827.js",
         "urn:sophiewell:file:source:lib/num.js",
@@ -89996,6 +90082,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/function-v154.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/furst-ratio-v794.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/g8-geriatric-v710.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/gabapentinoid-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gadolinium-nsf-v895.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gags-v554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gapp-v569.js",
@@ -90349,6 +90436,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nottingham-grade-v649.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nottingham-npi-v330.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/npep-2025-v1401.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nrti-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nsofa-v526.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ntm-pulmonary-v827.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nunley-vertullo-v455.js",
@@ -90887,7 +90975,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "66660edd8457620c"
+      "value": "948dbad9b43584a9"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -90899,7 +90987,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3397"
+      "value": "3401"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

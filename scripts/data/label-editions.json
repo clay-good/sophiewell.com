@@ -123,6 +123,21 @@
     }
   },
   {
+    "label": "Baraclude (entecavir), E.R. Squibb",
+    "labeler": "E.R. SQUIBB & SONS, L.L.C.",
+    "setId": "046e61c9-9298-4b2e-b76e-b26b81fecd20",
+    "tools": [
+      "nrti-renal-dose"
+    ],
+    "splVersion": 42,
+    "publishedOn": "2025-12-22",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "2e57a5d042ce86a6d838345fa9cdd75c53c7f11f23cd5e61cb05f3969327c2d4"
+    }
+  },
+  {
     "label": "Bivalirudin for injection, Dr. Reddy's",
     "labeler": "DR. REDDY'S LABORATORIES LIMITED",
     "setId": "19beb2ae-6064-3c24-fe50-0cee86896979",
@@ -394,6 +409,21 @@
     }
   },
   {
+    "label": "Epivir (lamivudine), ViiV",
+    "labeler": "VIIV HEALTHCARE COMPANY",
+    "setId": "89226149-47fa-4f7d-bb1f-1aa7034486b8",
+    "tools": [
+      "nrti-renal-dose"
+    ],
+    "splVersion": 24,
+    "publishedOn": "2026-09-14",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "a994ff38292ed8c4cdcadc922d5587598da5b504c16f3195de9d149979b8403f"
+    }
+  },
+  {
     "label": "Eptifibatide injection, Baxter",
     "labeler": "BAXTER HEALTHCARE COMPANY",
     "setId": "5f46b76b-5c83-49b9-ada8-4ad5cf81a38c",
@@ -584,6 +614,21 @@
     }
   },
   {
+    "label": "Lyrica (pregabalin), Pfizer",
+    "labeler": "PARKE-DAVIS DIV OF PFIZER INC",
+    "setId": "60185c88-ecfd-46f9-adb9-b97c6b00a553",
+    "tools": [
+      "gabapentinoid-renal-dose"
+    ],
+    "splVersion": 59,
+    "publishedOn": "2025-09-29",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "14c8724043b99d1a39c384029bc1a3dc517babf470633543b2a55a48bd95fc9a"
+    }
+  },
+  {
     "label": "Magnesium Sulfate 50% injection, Fresenius Kabi",
     "labeler": "FRESENIUS KABI USA, LLC",
     "setId": "e9c10579-29f3-4889-8881-0626f63968d4",
@@ -611,6 +656,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "ffaa48c8bf581d13992b35c11986f6e2c26fbab39f49b976b43628f180f29d31"
+    }
+  },
+  {
+    "label": "Neurontin (gabapentin), Viatris",
+    "labeler": "VIATRIS SPECIALTY LLC",
+    "setId": "97935fd9-1d4a-43b6-a5d9-de994591187b",
+    "tools": [
+      "gabapentinoid-renal-dose"
+    ],
+    "splVersion": 48,
+    "publishedOn": "2026-08-06",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "4107924ec146a8e2be8b261bcb7c727ab3a21a5d5b6cc7b0f036dae97d4bf96a"
     }
   },
   {
@@ -935,6 +995,21 @@
     }
   },
   {
+    "label": "Truvada (emtricitabine and tenofovir DF), Gilead",
+    "labeler": "GILEAD SCIENCES, INC",
+    "setId": "54e82b13-a037-49ed-b4b3-030b37c0ecdd",
+    "tools": [
+      "nrti-renal-dose"
+    ],
+    "splVersion": 32,
+    "publishedOn": "2025-07-25",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "894f1efa63d31375f8888960412e756eedef9d3bd5e70499a4f62115b691b8b8"
+    }
+  },
+  {
     "label": "Valcyte (valganciclovir), H2-Pharma",
     "labeler": "H2-PHARMA, LLC",
     "setId": "4c517a39-2ded-4c5a-8d56-276853414b31",
@@ -1009,6 +1084,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "a5a621b88811f5da92ddc576a050442610e0ae4821a8db88120550dddd913f5a"
+    }
+  },
+  {
+    "label": "Viread (tenofovir disoproxil fumarate), Gilead",
+    "labeler": "GILEAD SCIENCES, INC.",
+    "setId": "33fd6418-fbdc-42ca-a50d-ce2a476a5418",
+    "tools": [
+      "nrti-renal-dose"
+    ],
+    "splVersion": 31,
+    "publishedOn": "2025-02-24",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "ddd826d98bbfea3491009ed4e838d670eaeeca60f13fcb8d95888e50d9f019e1"
     }
   },
   {

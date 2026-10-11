@@ -590,3 +590,7 @@ experience**.
 > v1632, Bivalirudin, Eptifibatide, Tirofiban, Argatroban Rate (FDA Label) — [spec-v1632](spec-v1632.md), which adds `iv-antithrombotic-renal-check` — is 2120.)
 
 > v1632, Antiviral Dose by Renal Table (FDA Label) — [spec-v1632](spec-v1632.md), which adds `antiviral-renal-dose` — is 2121.)
+
+> v1632, Tenofovir, Truvada, Entecavir, Lamivudine by Renal Table (FDA Label) — [spec-v1632](spec-v1632.md), which adds `nrti-renal-dose` — is 2122.)
+
+> v1632, Gabapentin and Pregabalin by Renal Table (FDA Label) — [spec-v1632](spec-v1632.md), which adds `gabapentinoid-renal-dose` — is 2123.)

@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Tenofovir, Truvada, Entecavir, Lamivudine by Renal Table (FDA Label): the row each label gives
+  for the creatinine clearance or for dialysis, with the weight the label says to calculate it on.
+- Gabapentin and Pregabalin by Renal Table (FDA Label): the daily dose range and regimen for the
+  clearance, gabapentin's proportional figure below 15 mL/min, and the supplement after
+  hemodialysis.
 - Antiviral Dose by Renal Table (FDA Label): the row each label gives for acyclovir, valacyclovir,
   famciclovir, ganciclovir, valganciclovir, oseltamivir, Paxlovid or remdesivir at the kidney
   function entered, or its line for dialysis. A value on a shared edge or between two printed

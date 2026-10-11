@@ -52,3 +52,15 @@ test('the status of several rows is the most cautious flag among them', () => {
   assert.equal(worstFlag([{ flag: 'no-adjustment' }]), 'no-adjustment');
   assert.equal(worstFlag([{ flag: 'contraindicated' }, { flag: 'no-recommendation-given' }]), 'contraindicated');
 });
+
+test('a value on an excluded edge sits between that band and its neighbor, not a band further off', () => {
+  // Neurontin prints ">30 to 59" and ">15 to 29": 30 is in neither.
+  const t = [{ from: 60, text: 'a' }, { from: 30, fromExclusive: true, to: 59, text: 'b' }, { from: 15, fromExclusive: true, to: 29, text: 'c' }, { from: 15, to: 15, text: 'd' }];
+  const f = findBands(t, 30);
+  assert.deepEqual([f.between, f.rows.map((r) => r.text)], [true, ['c', 'b']]);
+  assert.deepEqual(findBands(t, 15).rows.map((r) => r.text), ['d']);
+  assert.equal(bandName(t[3]), 'exactly 15');
+  // "less than 15" then "15 to 30" (toExclusive below): 15 itself is only in the upper band.
+  const u = [{ from: 15, to: 30, text: 'x' }, { to: 15, toExclusive: true, text: 'y' }];
+  assert.deepEqual(findBands(u, 15).rows.map((r) => r.text), ['x']);
+});

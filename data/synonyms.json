@@ -11646,7 +11646,7 @@
     },
     {
       "phrases": [
-        "potency adjustment",
+        "potency adjustment for assay and water",
         "assay correction",
         "certificate of analysis assay water content",
         "anhydrous basis correction",
@@ -12252,6 +12252,29 @@
         "remdesivir renal dose"
       ],
       "tile": "antiviral-renal-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tenofovir renal dose",
+        "viread renal dose",
+        "truvada renal dose",
+        "entecavir renal dose",
+        "baraclude renal dose",
+        "lamivudine adult renal dose adjustment",
+        "epivir renal dose"
+      ],
+      "tile": "nrti-renal-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "gabapentin renal dose",
+        "neurontin renal dose",
+        "pregabalin renal dose",
+        "lyrica renal dose"
+      ],
+      "tile": "gabapentinoid-renal-dose",
       "audience": "clinicians"
     }
   ]

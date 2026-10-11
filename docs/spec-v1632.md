@@ -1,6 +1,6 @@
 # spec-v1632 — Dose checks read from the FDA label (renal, hepatic, weight, age, indication)
 
-**Status:** In progress, October 11, 2026: 4 of 18 tools built (see Build status). 18 new tools, none build-gated.
+**Status:** In progress, October 11, 2026: 6 of 18 tools built (see Build status). 18 new tools, none build-gated.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 An order-verification pharmacist asks the same question several hundred times a shift: is this
@@ -872,7 +872,7 @@ result string contains "give", "recommend" in the tool's voice, or a dose when t
 
 ## Build status
 
-Updated October 11, 2026. 4 of 18 tools built.
+Updated October 11, 2026. 6 of 18 tools built.
 
 | Tool | Status |
 |---|---|
@@ -881,4 +881,6 @@ Updated October 11, 2026. 4 of 18 tools built.
 | 3. `iv-antithrombotic-renal-check` | Built (group F) on four label rows: bivalirudin (Dr. Reddy's, version 10), eptifibatide (Baxter, version 13; Dosage and Administration and Contraindications), Aggrastat (Medicure, version 18) and argatroban (Hikma, version 29). Each rate and cutoff was re-read and matches the spec. **Added on re-read:** the eptifibatide dosing chart has a single row for every weight above 121 kg (22.6 mg bolus; 15 mg/h, or 7.5 mg/h below a clearance of 50), so the tool shows that row with the per-kilogram figures beside it; dependency on dialysis is a listed contraindication for eptifibatide. The argatroban label has no row for mild hepatic impairment, and the tool says so and gives no rate. Dialysis is asked only where a label has a line for it. |
 | Section 0, the engine | Built as `lib/label-dose.js`: `findBands` returns the row or rows a value falls in. A value on an edge two bands share returns both rows; a value between two bands printed in whole numbers returns the rows either side, marked as between; a value outside every band returns no row. It never falls back to a nearest band. **Changed from section 0.2:** each class tool keeps its band rows in its own library module, not in a `data/label-dose/` shard, and the edition fields are not repeated there: they live once, in `scripts/data/label-editions.json`, which the weekly watch maintains and `lib/label-row.js` reads. `abx-renal` has not been moved onto the engine. |
 | 4. `antiviral-renal-dose` | Built (group F) on eight label rows through the engine: acyclovir injection (Eugia, version 7), Valtrex (32), famciclovir (Teva, 19), ganciclovir injection (Fresenius Kabi, 8), Valcyte (24), Tamiflu (45), Paxlovid (12) and Veklury (24). Every table was re-read and matches the spec. **Decisions:** one "drug and indication" choice of 21 rows in place of two fields, so no pairing can be wrong; dialysis is always asked, since every one of the eight labels has a line for it, and a label with no peritoneal dialysis line says so; the acyclovir bands share their edges in the label, so 25 and 10 show two rows; the Tamiflu table is open below 10 mL/min without dialysis, where the tool reports the label's "not recommended" for end-stage disease not on dialysis; per-kilogram rows are reported as printed and not multiplied out. |
-| 5 to 18 | Not built. |
+| 5. `nrti-renal-dose` | Built (group F) on four label rows through the engine: Viread (version 31), Truvada (32), Baraclude (42) and Epivir (24), each re-read; every row matches the spec. The engine gained `bandToolAnswer`, the whole of a class tool whose labels are band tables (one drug-and-use choice, a dialysis question, one number), and `antiviral-renal-dose` now runs on it with the same answers. Tenofovir below 10 mL/min off dialysis reports the label's "no data are available"; Truvada for PrEP reports "not recommended" below 60; the ideal-body-weight instruction is printed for both tenofovir labels. |
+| 6. `gabapentinoid-renal-dose` | Built (group F) on two label rows: Neurontin (Viatris, version 48) and Lyrica (Pfizer, version 59), each re-read. Gabapentin below 15 mL/min shows the label's proportion worked out, with its own 7.5 mL/min example. **Found on re-read:** the Neurontin table prints ">30 to 59" and ">15 to 29", so a clearance of exactly 30 is in neither row (as is 59.5); the tool shows both neighbors and says so, and the engine was corrected to treat a band whose excluded edge is the value as the neighbor. Pregabalin's bands share their edges at 30 and 60 and show two rows there; exactly 15 is in the 15 to 30 row only, because the row below reads "less than 15". |
+| 7 to 18 | Not built. |
