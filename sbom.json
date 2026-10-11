@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:13fba70c-8491-5096-89cd-5a5c5b4f92a5",
+  "serialNumber": "urn:uuid:55d7badb-fe21-54f9-856e-d64f407227c0",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T16:39:42.365Z",
+    "timestamp": "2026-10-11T17:10:24.220Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b4e843ccd7d46b948a70902c633ee546d41e7c1549267231a8e1cc27f9ac8cd0"
+          "content": "40b3aa478bfd5b6187e39cceca43b3860c97080521a73e5aaa163c2a7ceb8617"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "603515"
+          "value": "603509"
         }
       ]
     },
@@ -577,6 +577,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11571"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/abx-renal-v1632.js",
+      "type": "file",
+      "name": "lib/abx-renal-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bfa4c834cb341579c09bc98da30f2642c301ad07bf9c3565a8b29b677d59712f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "20348"
         }
       ]
     },
@@ -12851,7 +12872,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b2337055edcb385e750e4e2501c9f8653ff634bcbe3bcfdd6645183f5cf49239"
+          "content": "d384d447d777bc0f534ca730f68c8064c4ed944b21ee72cf70612044c516de59"
         }
       ],
       "properties": [
@@ -12861,7 +12882,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "27158"
+          "value": "31053"
         }
       ]
     },
@@ -14909,7 +14930,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0307d314a1ce99b8ebf0bde3ab0fe692736fa41cfde6559093c503fc683b9db4"
+          "content": "ec1a5b03c1a214b577e1e939df47e290b9302aed73cdf5e8fc2df359674dad5e"
         }
       ],
       "properties": [
@@ -14919,7 +14940,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "20721"
+          "value": "19883"
         }
       ]
     },
@@ -15077,7 +15098,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7df31c13d4a7bd1772b087239cdfb5a719432c7ea61511d9c5c3bad2cc67392e"
+          "content": "6843681da67f527574b08f1fe87e13d46c0f861fb495a2f4a16968d5760406ce"
         }
       ],
       "properties": [
@@ -15087,7 +15108,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2838537"
+          "value": "2841364"
         }
       ]
     },
@@ -41453,7 +41474,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fb7ae2e2fd3078fd5f8c190f6ede0c6af3b488f03dc9ae31929408c3083795ee"
+          "content": "3955d99d90f94ecd9846f7b4fe5f821c83b04ca75c692f2e3eb643b1540ad18e"
         }
       ],
       "properties": [
@@ -41463,7 +41484,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10206"
+          "value": "10586"
         }
       ]
     },
@@ -53129,7 +53150,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0dd70d140f6c25b1dc94b6b6ad623f6025da32664db2af88b70f2cb16ebee8f5"
+          "content": "43e3f6b485f12a06c316d77ad08aad6bd4ab838778f3a6e94ff545a697c50ef0"
         }
       ],
       "properties": [
@@ -53139,7 +53160,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "56463"
+          "value": "54665"
         }
       ]
     },
@@ -57182,7 +57203,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a9c4db6c976398b567fcf4a39fa1bd52622f1ca6c11ba59f0ed591da13e0743d"
+          "content": "c3bfa88797e5bef2edd97efade44b441a2834a146d1388ec383e8ef815853dfb"
         }
       ],
       "properties": [
@@ -57192,7 +57213,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "21326"
+          "value": "22238"
         }
       ]
     },
@@ -87979,6 +88000,7 @@
         "urn:sophiewell:file:source:lib/abc-psi-v1448.js",
         "urn:sophiewell:file:source:lib/abc-scale-v729.js",
         "urn:sophiewell:file:source:lib/ablett-tetanus-v576.js",
+        "urn:sophiewell:file:source:lib/abx-renal-v1632.js",
         "urn:sophiewell:file:source:lib/aca-external-review-v1503.js",
         "urn:sophiewell:file:source:lib/aca-sep-window-v1507.js",
         "urn:sophiewell:file:source:lib/acef-v595.js",
@@ -91503,7 +91525,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "13fba70c84919096"
+      "value": "55d7badbfe2114f9"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91515,7 +91537,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3425"
+      "value": "3426"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

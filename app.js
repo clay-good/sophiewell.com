@@ -5162,12 +5162,12 @@ function applyExample(util, { skip } = {}) {
   return filled;
 }
 
-// Six tiles load their picklist over the network -- opioid-mme, steroid-equiv,
-// benzo-equiv, vasopressor, abx-renal, lab-interpret -- and build their rows
+// Five tiles load their picklist over the network -- opioid-mme, steroid-equiv,
+// benzo-equiv, vasopressor, lab-interpret -- and build their rows
 // and options only once the fetch resolves. applyExample runs in a microtask
 // long before that, so its `select.value = 'prednisone'` landed on a select
 // with no options and was dropped, and on opioid-mme the whole row did not
-// exist yet. All six then rendered nothing at all while the page above them
+// exist yet. All of them then rendered nothing at all while the page above them
 // said "These are example values. Replace them with your own." and the
 // /tools/<id>/ page stated a result nobody could reproduce.
 //

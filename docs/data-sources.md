@@ -132,7 +132,6 @@ ratio from user input.
 
 | Dataset | Drives | Source / status |
 |---|---|---|
-| `data/abx-renal/abx.json` | Antibiotic Renal Dose Adjustment | FDA labels (DailyMed) summarized into renal bands; each row carries its label's set id, and the labels are under the weekly label watch |
 | `data/benzo-equiv/benzo.json` | Benzodiazepine Equivalence (Ashton) | Ashton manual; numeric facts with attribution |
 | `data/steroid-equiv/steroid.json` | Steroid Equivalence Converter | Standard pharmacology references (MIT-licensed original numeric tables) |
 | `data/mme-factors/mme.json` | Opioid MME (CDC 2022) | CDC public-domain conversion factors |

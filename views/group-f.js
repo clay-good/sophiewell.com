@@ -7,7 +7,7 @@ import * as C8 from '../lib/clinical-v8.js';
 import { fmt } from '../lib/num.js';
 import {
   mmeTotal, steroidEquivalent, benzoEquivalent,
-  abxRenalDose, vasopressorRateMlHr, vasopressorDose,
+  vasopressorRateMlHr, vasopressorDose,
   tpnMacro,
   beersCheck, BEERS_PIM, BEERS_DISEASE,
 } from '../lib/medication-v4.js';
@@ -611,35 +611,6 @@ export const renderers = {
         out.appendChild(el('h2', { text: `${dose} mg ${fromSel.value} ≈ ${eq.toFixed(2)} mg ${toSel.value}` }));
       };
       ['bz-dose', 'bz-from', 'bz-to'].forEach((id) => document.getElementById(id).addEventListener(id === 'bz-dose' ? 'input' : 'change', run));
-    });
-  },
-
-  'abx-renal'(root) {
-    const drugSel = el('select', { id: 'abx-drug' });
-    root.appendChild(el('p', {}, [el('label', { for: 'abx-drug', text: 'Antibiotic' }), el('br'), drugSel]));
-    root.appendChild(field('CrCl (mL/min)', 'abx-crcl'));
-    const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
-    root.appendChild(out);
-    loadFile('abx-renal', 'abx.json').then((table) => {
-      if (!root.isConnected) return; // view torn down before fetch resolved
-      for (const r of table) drugSel.appendChild(el('option', { value: r.drug, text: r.drug }));
-      const run = () => {
-        clear(out);
-        const crCl = Number(document.getElementById('abx-crcl').value);
-        if (!(crCl > 0)) return;
-        const band = abxRenalDose({ drug: drugSel.value, crCl, table });
-        if (!band) { out.appendChild(el('p', { text: 'No dose band found.' })); return; }
-        out.appendChild(el('h2', { text: `${drugSel.value} - CrCl ${crCl} mL/min` }));
-        out.appendChild(el('p', { text: `Dose: ${band.dose}; Interval: ${band.interval}` }));
-        if (band.note) out.appendChild(el('p', { text: band.note }));
-        if (band.label) out.appendChild(el('p', { class: 'muted', text: `Source: ${band.label}. Labels differ by manufacturer and change; check the current one and your stewardship guidance.` }));
-      };
-      ['abx-drug', 'abx-crcl'].forEach((id) => document.getElementById(id).addEventListener(id === 'abx-crcl' ? 'input' : 'change', run));
-      // Every other view in this file runs once after wiring. This one did not,
-      // so the tile rendered an empty result region on load even with the
-      // example CrCl already in the field -- the reader had to touch an input
-      // before the page said anything.
-      run();
     });
   },
 

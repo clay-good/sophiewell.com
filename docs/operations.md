@@ -201,7 +201,7 @@ notes for the CI `data-refresh.yml` weekly job:
 - **Monthly**: `npi`, `enforcement`, `rxnorm`. RxNorm follows the NLM
   monthly release cadence.
 - **Quarterly**: `hcpcs`, `ncci`, `mue`, `apc`, `dmepos`, `clfs`, `asp`,
-  `asc`, `therapeutic-drug-levels`, `abx-renal`. CMS quarterly fee
+  `asc`, `therapeutic-drug-levels`. CMS quarterly fee
   schedules and FDA-label refreshes.
 - **Annual**: `icd10cm`, `mpfs`, `gpci`, `wage-index`, `drg`, `icd10-pcs`,
   `cms-deductibles`, `irmaa`, `aca-thresholds`, `hsa-fsa-limits`, `fpl`,

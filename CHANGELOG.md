@@ -239,6 +239,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Antibiotic Renal Dose Adjustment: 22 labels where it had 4 (meropenem, levofloxacin, oral
+  ciprofloxacin, Bactrim, Macrobid, daptomycin, ertapenem, cefazolin, Unasyn, ceftazidime, imipenem,
+  aztreonam, ceftaroline, amoxicillin, amoxicillin-clavulanate, cephalexin, colistimethate and
+  fluconazole are new). The usual dose or indication is now a choice, dialysis has its own answer,
+  and a result is withheld when its label changes.
 - Vancomycin AUC24/MIC: with the current daily dose and a target AUC it now gives the dose by
   proportion, and it prints the guideline's sampling times, its sentence on the MIC and its
   ceilings for children.
@@ -252,6 +257,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Antibiotic Renal Dose Adjustment: vancomycin no longer says the label has no clearance table (it
+  has one), and IV ciprofloxacin at exactly 30 mL/min shows both label rows, since the label prints
+  "above 30" and "5 to 29".
 - Acute malnutrition by MUAC, WHZ and edema: an age outside 6 to 59 months now asks for an age in
   that range. The earlier sentence only stated the range, which read like an answer while the
   edema question was still open.

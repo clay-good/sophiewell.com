@@ -85,7 +85,9 @@ test('option words are indexed only where they discriminate', () => {
     'these option words name too many tiles to tell a reader anything apart');
 
   // And the words that carry the signal survived the cut.
-  for (const w of ['hydromorphone', 'cefepime']) {
+  // (cefepime stood here until abx-renal's own example named it; option words are only the ones the
+  // row's other text does not already carry, and the case above still proves cefepime finds the tool.)
+  for (const w of ['hydromorphone', 'daptomycin']) {
     assert.ok(df.has(w), `${w} is a drug a reader searches for and must stay indexed`);
   }
   // While the generic vocabulary did not.

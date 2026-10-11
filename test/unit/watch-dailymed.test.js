@@ -151,8 +151,6 @@ test('every DailyMed label a tool links, and every label row in a dataset, is un
     }
   }
   const root = join(import.meta.dirname, '..', '..', 'data');
-  const abx = JSON.parse(readFileSync(join(root, 'abx-renal', 'abx.json'), 'utf8'));
-  for (const r of abx) assert.ok(watched.get(r.setId)?.includes('abx-renal'), `abx-renal ${r.drug}: label ${r.setId} is not watched`);
   const tpn = JSON.parse(readFileSync(join(root, 'tpn-rules', 'tpn.json'), 'utf8'));
   for (const r of [tpn.kcalPerGram, ...tpn.lipidProducts]) {
     const w = rows.find((x) => x.setId === r.setId);

@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 import * as F from '../../lib/medication-v4.js';
+import * as AB from '../../lib/abx-renal-v1632.js';
 
 // The equivalence / renal-dosing tables are the exact data/ shards the website
 // ships (single source of truth, spec-v183 §1.2 - never re-typed here). Reading
@@ -17,7 +18,6 @@ const DATA = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'data');
 const readJson = (rel) => JSON.parse(readFileSync(join(DATA, rel), 'utf8'));
 const STEROID = readJson('steroid-equiv/steroid.json');
 const BENZO = readJson('benzo-equiv/benzo.json');
-const ABX = readJson('abx-renal/abx.json');
 const MME = readJson('mme-factors/mme.json');
 const VASO = readJson('vasopressor-doses/vasopressors.json');
 const VASO_UNITS = new Map(VASO.map((r) => [r.drug, r.units]));
@@ -26,7 +26,6 @@ const VASO_UNITS = new Map(VASO.map((r) => [r.drug, r.units]));
 // a text mineralocorticoid note, not a glucocorticoid equivalence).
 const STEROID_DRUGS = STEROID.filter((r) => typeof r.equivDoseMg === 'number').map((r) => r.drug);
 const BENZO_DRUGS = BENZO.map((r) => r.drug);
-const ABX_DRUGS = ABX.map((r) => r.drug);
 
 export default [
   {
@@ -57,18 +56,14 @@ export default [
   },
   {
     id: 'abx-renal',
-    summary: 'Renal antibiotic dose adjustment: the dose and interval band for the selected drug at the given creatinine clearance (reference dosing table).',
-    // The drug select defaults to the first table row when not supplied.
-    // spec-v930: a blank creatinine clearance is not a clearance. Passing '' through produced a
-    // different nothing than passing undefined did.
-    compute: (a) => F.abxRenalDose({
-      drug: a.drug || ABX_DRUGS[0],
-      crCl: a.crCl === null || a.crCl === undefined || (typeof a.crCl !== 'number' && String(a.crCl).trim() === '') ? undefined : a.crCl,
-      table: ABX,
-    }),
+    summary: 'Antibiotic dose by kidney function, read from the renal table of 22 FDA labels (cefepime, piperacillin-tazobactam, vancomycin, ciprofloxacin, meropenem, levofloxacin, trimethoprim-sulfamethoxazole, nitrofurantoin, daptomycin, ertapenem, cefazolin, ampicillin-sulbactam, ceftazidime, imipenem, aztreonam, ceftaroline, amoxicillin, amoxicillin-clavulanate, cephalexin, colistimethate, fluconazole). It reports the label row for the creatinine clearance entered, or the label line for hemodialysis or peritoneal dialysis. It recommends nothing.',
+    // spec-v1632: the rows moved from data/abx-renal to lib/abx-renal-v1632.js on the shared band
+    // engine. Nothing is defaulted: the regimen and the dialysis answer are asked for.
+    compute: (a) => AB.abxRenal({ regimen: a.drug, dialysis: a.dialysis, kidney: a.crCl }),
     fields: [
-      { dom: 'abx-drug', arg: 'drug', kind: 'enum', values: ABX_DRUGS, required: false, label: 'Antibiotic' },
-      { dom: 'abx-crcl', arg: 'crCl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
+      { dom: 'abx-drug', arg: 'drug', kind: 'enum', values: AB.REGIMENS.map((r) => r.value), required: true, label: 'Antibiotic and usual dose' },
+      { dom: 'abx-dialysis', arg: 'dialysis', kind: 'enum', values: AB.DIALYSIS.map((d) => d.value), required: true, label: 'Dialysis: none, hd or pd' },
+      { dom: 'abx-crcl', arg: 'crCl', kind: 'number', label: 'Creatinine clearance (not used on dialysis)', unit: 'mL/min' },
     ],
   },
   {

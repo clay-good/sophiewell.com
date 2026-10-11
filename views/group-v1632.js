@@ -4,7 +4,7 @@
 // diabetes-drug-egfr-check, dofetilide-dose-algorithm, cardiac-renal-dose-check,
 // mra-potassium-dose-check, gout-drug-renal-dose, bisphosphonate-renal-check,
 // tranexamic-acid-renal-dose, ketorolac-limit-check, gi-drug-dose-check, hepatic-label-dose,
-// glp1-titration-check.
+// glp1-titration-check; and abx-renal, moved here from group-f when it joined the band engine.
 
 import { el, clear } from '../lib/dom.js';
 import * as DC from '../lib/doac-dose-check-v1632.js';
@@ -25,6 +25,7 @@ import * as KT from '../lib/ketorolac-limit-check-v1632.js';
 import * as GI from '../lib/gi-drug-dose-check-v1632.js';
 import * as HP from '../lib/hepatic-label-dose-v1632.js';
 import * as GL from '../lib/glp1-titration-check-v1632.js';
+import * as AB from '../lib/abx-renal-v1632.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -351,6 +352,20 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = GL.glp1TitrationCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'abx-renal'(root) {
+    const pairs = [['abx-drug', 'regimen'], ['abx-dialysis', 'dialysis'], ['abx-crcl', 'kidney']];
+    selectField(root, 'Antibiotic and usual dose', 'abx-drug', AB.REGIMENS);
+    selectField(root, 'Dialysis', 'abx-dialysis', AB.DIALYSIS);
+    numField(root, 'Creatinine clearance, mL/min (not used on dialysis)', 'abx-crcl', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = AB.abxRenal(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

@@ -21,7 +21,7 @@ import { join } from 'node:path';
 test.skip(({ browserName }) => browserName !== 'chromium', 'driven through the browser');
 
 const ASYNC_TILES = [
-  'opioid-mme', 'steroid-equiv', 'benzo-equiv', 'abx-renal', 'vasopressor',
+  'opioid-mme', 'steroid-equiv', 'benzo-equiv', 'vasopressor',
   'field-triage',
   'tetanus', 'rabies-pep', 'bbp-exposure', 'tb-testing', 'sti-screening',
   // spec-v1510/v1604: NADAC, loaded by the view (nadac-margin) or by lib/nadac-load.js (pharmacy-spread-check).
@@ -48,7 +48,8 @@ const ASYNC_TILES = [
 // record concept map for the records panel, which has no deep link.
 // spec-v1510 added one: nadac-margin's week.json (pharmacy-spread-check loads through lib/nadac-load.js,
 // which this count does not see, so it is listed above by hand), and asp-payment and part-b-drug-coinsurance their period.json.
-const LOAD_FILE_CALLS = 15;
+// spec-v1632 took one away: abx-renal's rows moved into lib/abx-renal-v1632.js.
+const LOAD_FILE_CALLS = 14;
 
 test('the tiles that fetch their inputs still answer their own link', async ({ page }) => {
   test.setTimeout(300_000);

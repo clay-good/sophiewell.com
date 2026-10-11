@@ -137,6 +137,36 @@
     }
   },
   {
+    "label": "Amoxicillin and clavulanate potassium tablets, Sandoz",
+    "labeler": "SANDOZ INC",
+    "setId": "7cba82f0-9886-46e9-8dbd-43a448aade29",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2025-07-09",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "3db0bfabf9ac679aaa9ab70a14d32a9e28c4bb193d6319ead7e57102bd159f47"
+    }
+  },
+  {
+    "label": "Amoxicillin capsules, USAntibiotics",
+    "labeler": "USANTIBIOTICS, LLC",
+    "setId": "110ba6b1-f175-48a1-8e30-616c02212538",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2026-07-09",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "0e00ad90dbfd82b15f38edeaf3bb81b4a887c3b547173409f651a6dadb1956be"
+    }
+  },
+  {
     "label": "Argatroban injection, Hikma",
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "0cdf3f67-5bf3-4d58-b330-03febdc652bf",
@@ -166,6 +196,36 @@
     "sections": {
       "34068-7": "1bd39db7825c52c1c91be707b4a14b380eee71401c402779b5bb2634d05e242b",
       "34070-3": "8595e247d279fe03ac4e3c470ebc1f316d5048ea37ce995dd44854dd3980b22b"
+    }
+  },
+  {
+    "label": "Azactam (aztreonam)",
+    "labeler": "E.R. SQUIBB & SONS, L.L.C.",
+    "setId": "9a105eaf-ee77-4016-beeb-d425a5565db2",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 15,
+    "publishedOn": "2025-12-23",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "d0349b699b9038304a6e4951339a7b44f50e009945bb265cf551163a02f84904"
+    }
+  },
+  {
+    "label": "Bactrim (sulfamethoxazole and trimethoprim)",
+    "labeler": "SUN PHARMACEUTICAL INDUSTRIES, INC",
+    "setId": "f59d0c04-9c66-4d53-a0e1-cb55570deb62",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 18,
+    "publishedOn": "2025-01-01",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "23047a0768705f5f8e0f72023ce0ad41e77c727549962dd269f2d74c0bf94554"
     }
   },
   {
@@ -293,6 +353,21 @@
     }
   },
   {
+    "label": "Cefazolin for injection, WG Critical Care",
+    "labeler": "WG CRITICAL CARE, LLC",
+    "setId": "f17160d4-fc42-4f9c-abb8-d04f01ae6dd1",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 21,
+    "publishedOn": "2025-04-09",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "1ccbac9385505894230a86e32bbac3b39f87c6e37fc1e2947f94a4f352ae12a7"
+    }
+  },
+  {
     "label": "Cefepime for injection, Apotex",
     "labeler": "APOTEX CORP.",
     "setId": "02aa374f-37b4-456a-b5de-cfd3bbb6ce6e",
@@ -305,6 +380,21 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "2f5ae39ce8edfaf265b3bb2138682f4cbcf5a6771f7d7a3a554cfa40991bc1f3"
+    }
+  },
+  {
+    "label": "Cephalexin capsules, Aurobindo",
+    "labeler": "AUROBINDO PHARMA LIMITED",
+    "setId": "8e28f049-6110-4473-830f-c494191a7197",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 19,
+    "publishedOn": "2026-10-02",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "e36a4e540bbbfb3a1d9763027828888a6e7438446f4b52babb5a22b924320b30"
     }
   },
   {
@@ -336,6 +426,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "aa8c473e5544eb2f9dfa52d94545784d068a01d2bc59bc3a7cb8dca475f44f70"
+    }
+  },
+  {
+    "label": "Cipro (ciprofloxacin) tablets",
+    "labeler": "BAYER HEALTHCARE PHARMACEUTICALS INC.",
+    "setId": "888dc7f9-ad9c-4c00-8d50-8ddfd9bd27c0",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 32,
+    "publishedOn": "2026-03-04",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "df3fb02eaf47aca9fc9bfc8f7721a8cba2d35ab19fb5094c2bc1c002bc5f586f"
     }
   },
   {
@@ -423,6 +528,21 @@
     }
   },
   {
+    "label": "Coly-Mycin M (colistimethate)",
+    "labeler": "PAR HEALTH USA, LLC",
+    "setId": "6d6e13e2-dc33-4b7b-84d0-66146a57c552",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2026-06-22",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "6fd31dc6342c3cb24e3c6a12f8c30d639d9d18b10a612696d99aadb0ea37b777"
+    }
+  },
+  {
     "label": "Crestor (rosuvastatin), AstraZeneca",
     "labeler": "ASTRAZENECA PHARMACEUTICALS LP",
     "setId": "325a5d0e-9a72-4015-9fcd-1655fb504cee",
@@ -435,6 +555,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "ab11d3a6c92578a8c3c0b645354e39c7a3293ee51b0a3f508f34a1479c3c21cd"
+    }
+  },
+  {
+    "label": "Cubicin RF (daptomycin)",
+    "labeler": "MERCK SHARP & DOHME LLC",
+    "setId": "0b1a8885-2198-4a0e-8105-0c76c1cba6c2",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 22,
+    "publishedOn": "2025-06-20",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "62afb097b1b94f49c8704380591e965f0d702ed016992beecfcb19df79090a02"
     }
   },
   {
@@ -482,6 +617,21 @@
     "sections": {
       "34068-7": "a96eb6ca776c5de6dfe556fe0d19d96ae1ed1d009db9e5861ba6026870542b89",
       "34089-3": "1472b48e0823b37493d1043d65d3b2abdd23044b07a7e2d61049a24136c8fca7"
+    }
+  },
+  {
+    "label": "Diflucan (fluconazole)",
+    "labeler": "ROERIG",
+    "setId": "f694c617-3383-416c-91b6-b94fda371204",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 57,
+    "publishedOn": "2026-04-09",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "f401f503ad7d260e12d30afd65fb4abc23ddbc493bf7104708b2baa2f7159f04"
     }
   },
   {
@@ -799,6 +949,21 @@
     }
   },
   {
+    "label": "Invanz (ertapenem)",
+    "labeler": "MERCK SHARP & DOHME LLC",
+    "setId": "33f3b99b-fa82-42e0-26bf-f49891ae3d22",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 42,
+    "publishedOn": "2026-04-09",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "f41eddc6be4e465975b64a3a70fd6199e65b780df0cf17e9bb9fcd03881720a0"
+    }
+  },
+  {
     "label": "Invokana (canagliflozin), Janssen",
     "labeler": "JANSSEN PHARMACEUTICALS, INC.",
     "setId": "b9057d3b-b104-4f09-8a61-c61ef9d4a3f3",
@@ -906,6 +1071,21 @@
     }
   },
   {
+    "label": "Levofloxacin tablets, Aurobindo",
+    "labeler": "AUROBINDO PHARMA LIMITED",
+    "setId": "529ac72c-c4a0-4001-8cf9-b94f5bf7265c",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 23,
+    "publishedOn": "2024-07-01",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "6e2dd740edd6beba56934fb0cf7ec9849e1b437cf02d556d6a0b76f10814ece9"
+    }
+  },
+  {
     "label": "Lithium Carbonate tablets and capsules, Hikma",
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "b839ff4b-f62d-41ab-a823-550a756d58ec",
@@ -952,6 +1132,22 @@
     }
   },
   {
+    "label": "Macrobid (nitrofurantoin)",
+    "labeler": "ALMATICA PHARMA LLC",
+    "setId": "8f270a9f-12a1-44d4-bc7e-873613555801",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 26,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "0dd65d14db707712739aadd0f041527e166f6414ae496ec7434e4281b1336eba",
+      "34070-3": "9d8001df15bf37df532de165986b35d2c66f7ce15520a798e2e773cd8a3daf13"
+    }
+  },
+  {
     "label": "Magnesium Sulfate 50% injection, Fresenius Kabi",
     "labeler": "FRESENIUS KABI USA, LLC",
     "setId": "e9c10579-29f3-4889-8881-0626f63968d4",
@@ -979,6 +1175,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "d8d3a2b602be6c3e741438bb1ac6916dda93c4d0a1dd3dda9a8cbab312ae7d40"
+    }
+  },
+  {
+    "label": "Meropenem for injection, B. Braun",
+    "labeler": "B. BRAUN MEDICAL INC.",
+    "setId": "3b952a55-6ef7-45c8-be21-16eefe37ec2e",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 25,
+    "publishedOn": "2025-08-08",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "8077534759439a19f1647cb7ab991731588b69ae4ff147dc94309a4447b36250"
     }
   },
   {
@@ -1231,6 +1442,21 @@
     }
   },
   {
+    "label": "Primaxin (imipenem and cilastatin)",
+    "labeler": "MERCK SHARP & DOHME LLC",
+    "setId": "f41d8abd-7792-4918-1b93-bd83ea01955e",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 34,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "cde044893086b1e53b8d587f8b6000eb8568d84c11ab3d329eba48fabc4dbb7a"
+    }
+  },
+  {
     "label": "Pristiq (desvenlafaxine), Wyeth",
     "labeler": "WYETH PHARMACEUTICALS LLC, A SUBSIDIARY OF PFIZER INC.",
     "setId": "0f43610c-f290-46ea-d186-4f998ed99fce",
@@ -1468,6 +1694,36 @@
     }
   },
   {
+    "label": "Tazicef (ceftazidime)",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "1ab5ae3e-e303-4499-4c89-472d7cc1e46c",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 30,
+    "publishedOn": "2024-07-05",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "82d37889686b9a5e94d3c3547c95b0e1bd4cf8dfef5d82edf8ea1bdf59c30012"
+    }
+  },
+  {
+    "label": "Teflaro (ceftaroline fosamil)",
+    "labeler": "ALLERGAN, INC.",
+    "setId": "3ecde48b-75a2-4beb-9999-369f3f61bb8a",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 43,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "02de87a599d3e4f30b7accc157ba9ed93aff541f37cf820907346dcb44877d1b"
+    }
+  },
+  {
     "label": "Tenormin (atenolol), Upsher-Smith",
     "labeler": "UPSHER-SMITH LABORATORIES, LLC",
     "setId": "6e850b1e-28a4-4ff8-8ed7-bb0b29faa28a",
@@ -1664,6 +1920,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "b873a4c3b6a2fff8154e233a7e96d62bb30dade73c8d4d27326e14a3c7d87a52"
+    }
+  },
+  {
+    "label": "Unasyn (ampicillin and sulbactam)",
+    "labeler": "ROERIG",
+    "setId": "155c7ec0-5862-404f-b1d0-f278f8a8bbda",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 46,
+    "publishedOn": "2026-07-20",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "a73c2175b8a281d3ce6990b5b084f403a67f6ff10fc9ad301eb74eabc063aa85"
     }
   },
   {

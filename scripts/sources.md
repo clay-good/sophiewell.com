@@ -96,7 +96,6 @@ the canonical sources.
 | mme-factors              | https://www.cdc.gov/opioids/healthcare-professionals/prescribing/guideline.html                             | CDC                   | public domain                     | per-revision  |
 | steroid-equiv            | standard pharmacology references                                                                            | sophiewell.com        | MIT, original                     | static        |
 | benzo-equiv              | https://www.benzo.org.uk/manual/                                                                            | Ashton (public)       | numeric facts with attribution    | static        |
-| abx-renal                | FDA labels via DailyMed                                                                                     | FDA / NLM DailyMed    | public domain                     | quarterly     |
 | vasopressor-doses        | FDA labels                                                                                                  | FDA                   | public domain                     | annual        |
 | tpn-rules                | standard nutrition references                                                                               | sophiewell.com        | MIT, original                     | annual        |
 | iv-to-po                 | FDA labels                                                                                                  | sophiewell.com        | MIT, original                     | annual        |

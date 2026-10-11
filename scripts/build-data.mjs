@@ -217,7 +217,6 @@ const COVERAGE = {
   'mme-factors': { ...SUBSET('The CDC opioid MME conversion factors.'), sourceEdition: '2022 guideline' },
   'steroid-equiv': { ...SUBSET('Equivalent doses of eight glucocorticoids.'), sourceEdition: 'unversioned' },
   'benzo-equiv': { ...SUBSET('Approximate equivalent doses of common benzodiazepines.'), sourceEdition: 'unversioned' },
-  'abx-renal': { ...SUBSET('Renal dose adjustments for common antibiotics from FDA labels.'), sourceEdition: 'FDA labels read 2026-10-10; each row carries its label set id and revision date' },
   'vasopressor-doses': { ...SUBSET('Dose ranges and standard concentrations for common vasopressors.'), sourceEdition: 'unversioned' },
   'tpn-rules': { ...SUBSET('Macronutrient energy densities from FDA labels.'), sourceEdition: 'FDA labels read 2026-10-10; each row carries its label set id and version' },
   'iv-to-po': { ...SUBSET('IV-to-oral conversions for common drugs.'), sourceEdition: 'unversioned' },
@@ -2076,37 +2075,6 @@ const v4Datasets = [
       { drug: 'temazepam', equivDoseMg: 20 },
       { drug: 'midazolam', equivDoseMg: 7.5 },
       { drug: 'chlordiazepoxide', equivDoseMg: 25 },
-    ],
-  }),
-  v4TableDataset({
-    id: 'abx-renal', label: 'Antibiotic renal dose adjustment subset',
-    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/', agency: 'FDA / NLM DailyMed', status: 'public-domain',
-    cadence: 'quarterly', shardName: 'abx.json',
-    // Re-read October 10, 2026 against each label's Dosage and Administration section (openFDA label API). The
-    // earlier rows did not match the labels: piperacillin-tazobactam was shown q8h at 4.5 g / 3.375 g (the label
-    // doses q6h at 3.375 g / 2.25 g, with the higher doses for nosocomial pneumonia), cefepime's bands were
-    // narrower than Table 2, ciprofloxacin omitted the 200 mg end, and vancomycin carried a 25-30 mg/kg loading
-    // dose that is guideline content, not label content. `fromExclusive` / `toInclusive` carry the labels'
-    // "greater than 60" and "20 to 40" edges.
-    seed: [
-      { drug: 'cefepime', label: 'Cefepime for Injection (Apotex), label revised 2023-05-10, Table 2', setId: '02aa374f-37b4-456a-b5de-cfd3bbb6ce6e', crClBands: [
-        { crClFrom: 60, fromExclusive: true, crClTo: null, dose: '500 mg-2 g', interval: 'q12h', note: 'The usual adult dose by indication; 2 g q8h for febrile neutropenia or Pseudomonas pneumonia.' },
-        { crClFrom: 30, crClTo: 60, toInclusive: true, dose: '500 mg-2 g', interval: 'q24h', note: 'Usual 500 mg q12h: 500 mg q24h. Usual 1 g q12h: 1 g q24h. Usual 2 g q12h: 2 g q24h. Usual 2 g q8h: 2 g q12h.' },
-        { crClFrom: 11, crClTo: 30, dose: '500 mg-2 g', interval: 'q24h', note: 'Usual 500 mg or 1 g q12h: 500 mg q24h. Usual 2 g q12h: 1 g q24h. Usual 2 g q8h: 2 g q24h.' },
-        { crClFrom: 0, crClTo: 11, dose: '250 mg-1 g', interval: 'q24h', note: 'Usual 500 mg or 1 g q12h: 250 mg q24h. Usual 2 g q12h: 500 mg q24h. Usual 2 g q8h: 1 g q24h.' },
-      ] },
-      { drug: 'piperacillin-tazobactam', label: 'Piperacillin and Tazobactam for Injection (Civica), label revised 2025-12-12, Table 1', setId: '19e89f8b-316b-4dd2-9724-bfe0faeba408', crClBands: [
-        { crClFrom: 40, fromExclusive: true, crClTo: null, dose: '3.375 g', interval: 'q6h', note: 'Nosocomial pneumonia: 4.5 g q6h.' },
-        { crClFrom: 20, crClTo: 40, toInclusive: true, dose: '2.25 g', interval: 'q6h', note: 'Nosocomial pneumonia: 3.375 g q6h.' },
-        { crClFrom: 0, crClTo: 20, dose: '2.25 g', interval: 'q8h', note: 'Nosocomial pneumonia: 2.25 g q6h. Hemodialysis and CAPD have their own rows in the label.' },
-      ] },
-      { drug: 'vancomycin', label: 'Vancomycin Injection (Gland), label revised 2026-01-30', setId: '00946db3-d6c5-4534-a870-1ec6e63eda43', crClBands: [
-        { crClFrom: 0, crClTo: null, dose: 'Usual adult dose with normal renal function: 2 g/day (500 mg q6h or 1 g q12h)', interval: 'must be adjusted in renal impairment', note: 'The label gives no creatinine-clearance table; it says to adjust the dose in impaired renal function and that serum concentrations can guide it. Loading doses and AUC targets come from your hospital protocol, not the label.' },
-      ] },
-      { drug: 'ciprofloxacin', label: 'Ciprofloxacin in Dextrose Injection (Hospira), label revised 2025-11-04, Table 4 (intravenous)', setId: 'cbbbf939-3219-4515-a48e-ca264daa4d07', crClBands: [
-        { crClFrom: 30, crClTo: null, dose: 'Usual IV dose (200-400 mg)', interval: 'q8-12h', note: 'The label reads "above 30: see usual dosage". Oral dosing has its own label and differs.' },
-        { crClFrom: 5, crClTo: 30, dose: '200-400 mg IV', interval: 'q18-24h', note: 'Label row for 5 to 29 mL/min. Oral dosing has its own label and differs.' },
-      ] },
     ],
   }),
   v4TableDataset({
