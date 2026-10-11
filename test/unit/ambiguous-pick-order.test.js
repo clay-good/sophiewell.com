@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { META } from '../../lib/meta.js';
 import { corpusDesc } from '../../lib/search-corpus.js';
 import { resolvePromptRanked, rankableWords } from '../../lib/prompt.js';
+import { buildNameCounts, buildNameIndex, findNamed } from '../../lib/name-match.js';
 
 const ROOT = fileURLToPath(new URL('../..', import.meta.url));
 const read = (p) => JSON.parse(readFileSync(ROOT + p, 'utf8'));
@@ -77,3 +78,19 @@ test('where a word fits several tools, the older ones are still offered', () => 
   }
 });
 
+
+// The search list promotes the tool a query NAMES with two distinctive words over a curated phrase
+// (app.js, findNamed with minHits 2). A new tool called "DOAC Dose by Indication and Kidney
+// Function" therefore took "kidney function" from the eGFR tool, and again only the browser suite
+// saw it. These are the curated phrases the browser suite types; no tool's name may claim them.
+test('no tool name claims a curated phrase the home box routes by synonym', () => {
+  const named = ORDER.map((id) => ({ id, name: corpus[id].name }));
+  const byId = new Map(named.map((t) => [t.id, t]));
+  const index = buildNameIndex(named);
+  const counts = buildNameCounts(named.map((t) => t.name));
+  for (const [phrase, owner] of [['kidney function', 'egfr'], ['they denied it', 'appeal-letter']]) {
+    const hit = findNamed(phrase, index, counts, (id) => byId.get(id), { minHits: 2 });
+    assert.ok(!hit || hit.id === owner, `"${phrase}" is named by ${hit && hit.id} ("${hit && hit.name}")`);
+    assert.equal(resolvePromptRanked(rankableWords(phrase) || phrase, tiles(true), SYNONYMS, 'all', 3)[0].tileId, owner);
+  }
+});

@@ -93,7 +93,7 @@ export default [
   },
   {
     id: 'bw-bsa-suite',
-    summary: 'Body-weight panel: ideal body weight (Devine), adjusted body weight (IBW + 0.4 x excess), and BSA by Mosteller and Du Bois.',
+    summary: 'Body-weight panel: ideal body weight (Devine), adjusted body weight (IBW + 0.4 x excess, the rule on the tobramycin label), percent of ideal body weight, and BSA by Mosteller and Du Bois.',
     compute: (a) => {
       const ibw = F.ibwDevine({ heightInches: a.heightInches, sex: a.sex });
       if (ibw == null) return null;
@@ -101,7 +101,8 @@ export default [
       const heightCm = a.heightInches == null ? null : a.heightInches * 2.54;
       const bsaMosteller = heightCm == null ? null : C.bsaMosteller({ weightKg: a.actualKg, heightCm });
       const bsaDuBois = heightCm == null ? null : C.bsaDuBois({ weightKg: a.actualKg, heightCm });
-      return { ibw, adjusted, bsaMosteller, bsaDuBois };
+      const percentOfIbw = a.actualKg == null ? null : Math.round((a.actualKg / ibw) * 100);
+      return { ibw, adjusted, percentOfIbw, bsaMosteller, bsaDuBois };
     },
     fields: [
       { dom: 'bw-hin', arg: 'heightInches', kind: 'number', required: true, label: 'Height', unit: 'inches' },

@@ -1,6 +1,6 @@
 # spec-v1631 — Clinical pharmacokinetics and therapeutic drug monitoring
 
-**Status:** In progress, October 11, 2026: 15 of 20 tools built (see Build status). 20 new tools (1 build-gated), 10 backfills.
+**Status:** In progress, October 11, 2026: 18 of 20 tools built and the backfills done (see Build status); tool 6 is build-gated and tool 9 is held on an owner question. 20 new tools (1 build-gated), 10 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A hospital pharmacist's kinetics service does the same arithmetic all day: pick a first
@@ -900,7 +900,18 @@ Backfills 3, 5, 6 and 8 correct or re-source a number in a live tool and are ind
 
 ## Build status
 
-Updated October 11, 2026. 15 of 20 tools built; the backfills are open.
+Updated October 11, 2026. 18 of 20 tools built. Backfills: all ten are done except the build-gated half of 2.
+
+| Backfill | Status |
+|---|---|
+| 1. `vanc-auc` | Done: dose by proportion from the current daily dose and a target AUC24 (both or neither), the guideline's sampling, MIC and pediatric sentences (recommendations 2, 6 and 21, re-read), links to tools 1 to 3. **Not done as written:** the MIC is still required, not defaulted to 1; the guideline's sentence is printed instead. |
+| 2. `aminoglycoside` | (a) Done: the dosing weight is named with the tobramycin label rule and Traynor 1995 (abstract re-read, PMID 7726530); the tool still doses on the weight entered. (b) Not built: gated on reading the Hartford figure. |
+| 3. `corrected-phenytoin` | Done in part: the estimated unbound level against the label's 1 to 2 mcg/mL, the label's unbound-monitoring sentence (Dilantin sections 2.3 and 2.5, re-read; the tool joins that label's watch row), and a coefficient choice of 0.2 or 0.275 (Cheng 2016 abstract). **Left out:** 0.25 (Anderson 1997) and 0.29 (Kane 2013); neither abstract prints its coefficient, PubMed Central serves only the abstract of Cheng, and the papers were not opened. The end-stage renal disease finding was already in place. The agent surface now carries the renal checkbox, which it lacked. |
+| 4. `pk-suite` | Done: salt factor S, top-up loading dose, proportional dose (with the sentence that it does not hold for phenytoin), ln 2. |
+| 5, 6, 8 | Already in the live code, done with [spec-v1641](spec-v1641.md). |
+| 7. `bw-bsa-suite` | Done: the 0.4 rule cited to the tobramycin label (the tool joins that label's watch row) and Traynor 1995; percent of ideal body weight added. |
+| 9. `digoxin` | Label sentences already in place; link to `digoxin-label-dose` added. |
+| 10. `crrt-dose` | Links added. |
 
 | Tool | Status |
 |---|---|
@@ -920,4 +931,7 @@ Updated October 11, 2026. 15 of 20 tools built; the backfills are open.
 | 13. `busulfan-auc-dose` | Built (group F) on a label row. The Sagent label (version 7) was re-read and added to the weekly watch on its Use in Specific Populations and Description sections; the formula, the 11 mg example, the sampling schedule, both AUC instructions, the 246 g/mole and the 900 to 1350 µM·min range are as the spec says. Samples are entered as hours and concentration; the terminal rate constant comes from the last two samples, which is the tool's choice and is named. The target is required and the page shows the label's 1125. The initial-dose text of section 2.1 is not shown. It calls the linear trapezoid function of `auc-trapezoid`. |
 | 5. `aminoglycoside-label-renal` | Built (group F) on three label rows, all manufacturers' copies: gentamicin (Baxter, version 21), tobramycin (Mylan Institutional, version 8) and amikacin (Sagent, version 10), each re-read and added to the weekly watch on Dosage and Administration; the tobramycin row also watches the boxed warning, where its level sentence sits. The factors 8, 6 and 9, both worked examples, Table 4's 12 rows, the 40% rule, the 1.5 g ceiling and the dialysis sentences are as the spec says. **Changed from the spec:** no label gives a formula for lean weight, so the tool takes the reader's own estimate in place of height and sex and derives nothing. Table 4 is read at the creatinine rounded to 0.1, as the table prints its bands. The amikacin label's clearance-proportional formula and the tobramycin nomogram are printed as pictures and are not reproduced. The severity entered changes nothing for amikacin, and the result says so. |
 | 11. `theophylline-label-dose` | Built (group F) on two label rows. **Re-pinned:** the three set ids the spec names are repackagers' copies (HF Acquisition, Medical Purchasing Solutions, Proficient Rx); the tool reads Hospira's aminophylline injection label (set id 9a663ef3-881f-48bd-2689-3713b24545c2, version 29), which carries Table V as text, and Teva's theophylline extended-release label (25eabefa-518b-4030-9b72-01ac8b3deba9, version 4). Both were re-read: 4.6 and 5.7 mg/kg, V 0.5 L/kg, every Table V row and ceiling, the 17 mg/h sentence, both Table VI wordings and the 79% description are as the spec says. **Decisions:** the level is read to one decimal, so only 9.9 itself falls between rows, and it is read as the 10 to 14.9 row with a sentence saying so; with no theophylline in 24 hours the label's fixed 4.6 mg/kg is used and no target is asked for; a level entered beside "none taken" is refused rather than ignored. |
-| 1 to 3, 6 | Not built. |
+| 1. `vanc-initial-dose` | Built (group F). The guideline was re-read in full from the ASHP PDF: recommendations 1, 10 to 12, 24 and 25, the loading-dose infusion sentence and the pediatric section are as the spec says. Matzke 1984 and Rodvold 1988 were re-read as PubMed abstracts only (PMID 6732213, 3415206); each carries its equation and units. The label figures (the 15 × clearance sentence, the ten-row table, 15 mg/kg, 1.9 mg/kg/24 h, the neonatal doses, 10 mg/min or 60 minutes) are a label row on the Gland label already watched (version 10), re-read. The spec's check reproduces: clearance 100 mL/min, 70 kg, AUC 500 gives 2,177, 1,986 and 1,545 mg/day. **Changed from the spec:** all three estimates are always shown, so there is no equation selector; the target AUC is required and the page offers 500; a child's daily mg/kg is the reader's entry, set against the guideline's range for the age; the Crass 2018 option stays out (its coefficients were not read). |
+| 2. `vanc-hd-dose` | Built (group F). Recommendations 13 to 16 and the 25% sentence were re-read in the ASHP PDF and match the spec's table. A loading dose above 3,000 mg is held to the guideline's ceiling (recommendation 11) and the result says so. The hybrid dialysis and CRRT starting doses are printed on the same weight. No label row: every figure is the guideline's. |
+| 3. `vanc-continuous-infusion` | Built (group F). Recommendation 7 and the continuous-infusion section were re-read; the label's 5 and 10 mg/mL sentence is a label row on the Gland label. Values outside the guideline or the label are flagged and never changed. A level, the rate it was drawn on and a target go together or not at all; the target is required, not defaulted. The result repeats the label's sentence that intermittent infusion is the recommended method. |
+| 6 | Not built: build-gated. |

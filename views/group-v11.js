@@ -192,18 +192,22 @@ export const renderers = {
     root.appendChild(field('Measured total phenytoin (µg/mL)', 'cp-meas', { placeholder: 'e.g. 8' }));
     root.appendChild(field('Serum albumin (g/dL)', 'cp-alb', { min: 0, placeholder: 'e.g. 2.0' }));
     root.appendChild(checkField('CrCl <10 mL/min / ESRD (use 0.1 factor)', 'cp-esrd'));
+    root.appendChild(selectField('Albumin coefficient', 'cp-coef', C.PHENYTOIN_COEFFICIENTS));
     const o = out(); root.appendChild(o);
-    wire(['cp-meas', 'cp-alb', 'cp-esrd'], () => safe(o, () => {
+    wire(['cp-meas', 'cp-alb', 'cp-esrd', 'cp-coef'], () => safe(o, () => {
       const measured = optNum('cp-meas'), albumin = optNum('cp-alb');
       if (needValues(o, [['a measured phenytoin level', measured], ['a serum albumin', albumin]])) return;
-      const r = C.correctedPhenytoin({ measured, albumin, esrd: chk('cp-esrd') });
+      const r = C.correctedPhenytoin({ measured, albumin, esrd: chk('cp-esrd'), coefficient: document.getElementById('cp-coef').value });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter a measured level and albumin.' })); return; }
       o.appendChild(list([
         li(`Corrected phenytoin: ${fmt(r.corrected, { digits: 1, unit: 'µg/mL' })}`),
         li(r.band),
+        li(r.freeBand),
       ]));
       advise(o, 'albumin', val('cp-alb'));
+      note(o, r.coefficientNote);
       note(o, r.note);
+      note(o, r.labelNote);
     }));
     estimateNote(root);
   },

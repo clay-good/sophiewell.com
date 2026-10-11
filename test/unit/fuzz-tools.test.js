@@ -770,6 +770,12 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as lmwhFondaparinuxDoseCheckV1632 from '../../lib/lmwh-fondaparinux-dose-check-v1632.js';
+import * as ivAntithromboticRenalCheckV1632 from '../../lib/iv-antithrombotic-renal-check-v1632.js';
+import * as doacDoseCheckV1632 from '../../lib/doac-dose-check-v1632.js';
+import * as vancInitialDoseV1631 from '../../lib/vanc-initial-dose-v1631.js';
+import * as vancHdDoseV1631 from '../../lib/vanc-hd-dose-v1631.js';
+import * as vancContinuousInfusionV1631 from '../../lib/vanc-continuous-infusion-v1631.js';
 import * as aminoglycosideLabelRenalV1631 from '../../lib/aminoglycoside-label-renal-v1631.js';
 import * as theophyllineLabelDoseV1631 from '../../lib/theophylline-label-dose-v1631.js';
 import * as busulfanAucDoseV1631 from '../../lib/busulfan-auc-dose-v1631.js';
@@ -1699,6 +1705,12 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'lmwh-fondaparinux-dose-check-v1632.js': lmwhFondaparinuxDoseCheckV1632,
+  'iv-antithrombotic-renal-check-v1632.js': ivAntithromboticRenalCheckV1632,
+  'doac-dose-check-v1632.js': doacDoseCheckV1632,
+  'vanc-initial-dose-v1631.js': vancInitialDoseV1631,
+  'vanc-hd-dose-v1631.js': vancHdDoseV1631,
+  'vanc-continuous-infusion-v1631.js': vancContinuousInfusionV1631,
   'aminoglycoside-label-renal-v1631.js': aminoglycosideLabelRenalV1631,
   'theophylline-label-dose-v1631.js': theophyllineLabelDoseV1631,
   'busulfan-auc-dose-v1631.js': busulfanAucDoseV1631,

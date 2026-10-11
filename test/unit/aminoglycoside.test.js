@@ -29,3 +29,10 @@ test('rejects unknown drug and impossible weight', () => {
   assert.throws(() => aminoglycoside({ drug: 'vancomycin', weightKg: 70, crCl: 80 }), /drug must be/);
   assert.throws(() => aminoglycoside({ drug: 'gentamicin', weightKg: 0, crCl: 80 }), /weight\skg/);
 });
+
+// spec-v1631 backfill 2: the dosing weight is named, with its two sources; the tool derives none.
+test('the result names the dosing-weight sources and doses on the weight entered', () => {
+  const r = aminoglycoside({ drug: 'tobramycin', weightKg: 90, crCl: 80 });
+  assert.equal(r.doseMg, 630);
+  assert.match(r.weightNote, /lean body weight plus 40% of the excess.*Traynor 1995.*0\.43 × the excess.*1\.13 × total weight/);
+});

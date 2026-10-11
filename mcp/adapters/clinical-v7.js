@@ -29,11 +29,13 @@ export default [
   },
   {
     id: 'corrected-phenytoin',
-    summary: 'Albumin-corrected total phenytoin (Sheiner-Tozer) = measured/(0.2*albumin + 0.1); ESRD uses 0.1 factor.',
+    summary: 'Total phenytoin corrected for a low albumin (Sheiner-Tozer). Corrected = measured/(coefficient*albumin + 0.1), with the coefficient 0.2 (Winter-Tozer) or 0.275 (Cheng 2016); ESRD uses a 0.1 factor. Also gives the estimated unbound level (10% of the corrected level) against the 1 to 2 mcg/mL on the Dilantin label.',
     compute: F.correctedPhenytoin,
     fields: [
       { dom: 'cp-meas', arg: 'measured', kind: 'number', required: true, label: 'Measured total phenytoin', unit: 'ug/mL' },
       { dom: 'cp-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL' },
+      { dom: 'cp-esrd', arg: 'esrd', kind: 'bool', required: false, label: 'CrCl <10 mL/min or ESRD (0.1 factor)' },
+      { dom: 'cp-coef', arg: 'coefficient', kind: 'enum', values: F.PHENYTOIN_COEFFICIENTS.map((c) => c.value), label: 'Albumin coefficient (default 0.2)' },
     ],
   },
   {

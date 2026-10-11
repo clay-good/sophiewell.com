@@ -9046,6 +9046,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/theophylline-label-dose-v1631.js (spec-v1631: Theophylline and aminophylline IV start and level-guided adjustment (two label rows) — clinical disclaimer)
 - `theophylline-label-dose`
 
+### lib/vanc-initial-dose-v1631.js (spec-v1631: Vancomycin first dose and starting regimen (2020 guideline, Matzke, Rodvold, label row) — clinical disclaimer)
+- `vanc-initial-dose`
+
+### lib/vanc-hd-dose-v1631.js (spec-v1631: Vancomycin in intermittent hemodialysis (2020 guideline) — clinical disclaimer)
+- `vanc-hd-dose`
+
+### lib/vanc-continuous-infusion-v1631.js (spec-v1631: Vancomycin continuous infusion (2020 guideline; label row) — clinical disclaimer)
+- `vanc-continuous-infusion`
+
+### lib/doac-dose-check-v1632.js (spec-v1632: DOAC dose by indication and kidney function (four label rows) — clinical disclaimer)
+- `doac-dose-check`
+
+### lib/lmwh-fondaparinux-dose-check-v1632.js (spec-v1632: Dalteparin and fondaparinux dose by weight (two label rows) — clinical disclaimer)
+- `lmwh-fondaparinux-dose-check`
+
+### lib/iv-antithrombotic-renal-check-v1632.js (spec-v1632: Bivalirudin, eptifibatide, tirofiban and argatroban label rates (four label rows) — clinical disclaimer)
+- `iv-antithrombotic-renal-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

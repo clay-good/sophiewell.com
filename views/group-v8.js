@@ -122,8 +122,10 @@ export const renderers = {
     root.appendChild(field('Infusion duration (h)', 'va-tinf', { placeholder: 'e.g. 1' }));
     root.appendChild(field('Dosing interval (h)', 'va-tau', { placeholder: 'e.g. 12' }));
     root.appendChild(field('MIC (mg/L)', 'va-mic', { placeholder: 'e.g. 1' }));
+    root.appendChild(field('Current daily dose (mg/day, optional: to revise the dose)', 'va-dose', { placeholder: 'optional' }));
+    root.appendChild(field('Target AUC24 (mg·h/L, with a daily dose)', 'va-target', { placeholder: 'optional' }));
     const o = out(); root.appendChild(o);
-    wire(['va-peak', 'va-tpeak', 'va-trough', 'va-ttrough', 'va-tinf', 'va-tau', 'va-mic'], () => safe(o, () => {
+    wire(['va-peak', 'va-tpeak', 'va-trough', 'va-ttrough', 'va-tinf', 'va-tau', 'va-mic', 'va-dose', 'va-target'], () => safe(o, () => {
       // spec-v1149: every one of these read through `val()`, which is
       // `Number('')` -- 0. The elimination constant is ln(peak/trough) divided by
       // (tTrough - tPeak), so a draw time nobody recorded read as "at the end of
@@ -133,6 +135,7 @@ export const renderers = {
         peak: optNum('va-peak'), tPeak: optNum('va-tpeak'),
         trough: optNum('va-trough'), tTrough: optNum('va-ttrough'),
         tInf: optNum('va-tinf'), tau: optNum('va-tau'), mic: optNum('va-mic'),
+        dailyDose: optNum('va-dose'), targetAuc: optNum('va-target'),
       };
       if (needValues(o, [
         ['the peak level', args.peak], ['the peak draw time', args.tPeak],
@@ -140,6 +143,9 @@ export const renderers = {
         ['the infusion duration', args.tInf], ['the dosing interval', args.tau],
         ['the MIC', args.mic],
       ])) return;
+      // The dose revision needs both values; one without the other must not blank the AUC above it.
+      const half = (args.dailyDose == null) !== (args.targetAuc == null);
+      if (half) { args.dailyDose = null; args.targetAuc = null; }
       const r = M5.vancAuc(args);
       o.appendChild(list([
         li(`Elimination constant k: ${fmt(r.k, { fallback: '--' })} /h (t1/2 ${fmt(r.halfLife, { fallback: '--' })} h)`),
@@ -147,8 +153,12 @@ export const renderers = {
         li(`AUC24: ${fmt(r.auc24, { fallback: '(enter levels)' })} mg*h/L`),
         li(`AUC24/MIC: ${fmt(r.aucMicRatio, { fallback: '--' })}`),
         li(r.band, r.aucMicRatio > 600 ? 'warn' : null),
+        // spec-v1631 backfill 1: the dose by proportion, and what it assumes.
+        r.revisedDailyDose != null ? li(`Daily dose for an AUC24 of ${fmt(args.targetAuc)} mg·h/L: ${fmt(args.dailyDose)} mg × ${fmt(args.targetAuc)} ÷ ${fmt(r.auc24)} = about ${fmt(r.revisedDailyDose)} mg/day. This proportion assumes clearance has not changed.`) : null,
       ]));
       o.appendChild(el('p', { class: 'muted', text: 'First-order two-level method (Sawchuk-Zaske), not Bayesian. Pharmacy runs population modeling for complex cases.' }));
+      if (half) o.appendChild(el('p', { class: 'muted', text: 'To revise the dose, enter both the current daily dose and the target AUC24.' }));
+      for (const g of r.guideline) o.appendChild(el('p', { class: 'muted', text: g }));
     }));
     medNotice(root);
   },
@@ -180,6 +190,7 @@ export const renderers = {
         li(`Starting interval (from CrCl): ${r.interval}`),
       ]));
       o.appendChild(el('p', { class: 'muted', text: 'Confirm the interval by plotting the single random level on your institution\'s printed Hartford nomogram. Not for synergy dosing.' }));
+      o.appendChild(el('p', { class: 'muted', text: M5.AMINOGLYCOSIDE_WEIGHT_NOTE }));
     }));
     medNotice(root);
   },

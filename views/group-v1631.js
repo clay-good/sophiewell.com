@@ -2,7 +2,8 @@
 // pk-steady-state-predict, auc-trapezoid, tmic-beta-lactam, sawchuk-zaske-dosing, kinetic-egfr and
 // crrt-drug-clearance, fosphenytoin-load-rate, caffeine-citrate-dose, lithium-level-check and
 // digoxin-label-dose, arc-risk-scores, phenytoin-mm-dose, busulfan-auc-dose,
-// aminoglycoside-label-renal, theophylline-label-dose.
+// aminoglycoside-label-renal, theophylline-label-dose, vanc-initial-dose, vanc-hd-dose,
+// vanc-continuous-infusion.
 
 import { el, clear } from '../lib/dom.js';
 import * as PK from '../lib/pk-steady-state-predict-v1631.js';
@@ -20,6 +21,9 @@ import * as PM from '../lib/phenytoin-mm-dose-v1631.js';
 import * as BU from '../lib/busulfan-auc-dose-v1631.js';
 import * as AG from '../lib/aminoglycoside-label-renal-v1631.js';
 import * as TH from '../lib/theophylline-label-dose-v1631.js';
+import * as VI from '../lib/vanc-initial-dose-v1631.js';
+import * as VH from '../lib/vanc-hd-dose-v1631.js';
+import * as VC from '../lib/vanc-continuous-infusion-v1631.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -326,6 +330,57 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = TH.theophyllineLabelDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'vanc-initial-dose'(root) {
+    const pairs = [['vid-pop', 'population'], ['vid-weight', 'weight'], ['vid-crcl', 'crcl'], ['vid-load', 'loadPerKg'], ['vid-auc', 'targetAuc'], ['vid-age', 'ageYears'], ['vid-daily', 'dailyPerKg'], ['vid-week', 'week']];
+    selectField(root, 'Population', 'vid-pop', VI.POPULATIONS);
+    numField(root, 'Actual body weight, kg', 'vid-weight', '');
+    numField(root, 'Adults: creatinine clearance, mL/min', 'vid-crcl', '');
+    numField(root, 'Loading dose, mg/kg (adults; optional for a child)', 'vid-load', '');
+    // The middle of the guideline's 400 to 600, shown and editable; the result names the value used.
+    numField(root, 'Adults: target AUC24, mg·h/L', 'vid-auc', '').querySelector('input').value = '500';
+    numField(root, 'Children: age in years', 'vid-age', '');
+    numField(root, 'Children: daily dose, mg/kg/day', 'vid-daily', '');
+    selectField(root, 'Neonates: age', 'vid-week', VI.WEEKS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = VI.vancInitialDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'vanc-hd-dose'(root) {
+    const pairs = [['vhd-weight', 'weight'], ['vhd-timing', 'timing'], ['vhd-perm', 'permeability'], ['vhd-level', 'preLevel']];
+    numField(root, 'Actual body weight, kg', 'vhd-weight', '');
+    selectField(root, 'The dose is given', 'vhd-timing', VH.TIMINGS);
+    selectField(root, 'Dialyzer', 'vhd-perm', VH.PERMEABILITIES);
+    numField(root, 'Predialysis level, mg/L (optional)', 'vhd-level', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(VH.vancHdDose(args), o);
+    }));
+  },
+  'vanc-continuous-infusion'(root) {
+    const pairs = [['vci-weight', 'weight'], ['vci-load', 'loadPerKg'], ['vci-daily', 'dailyPerKg'], ['vci-conc', 'concentration'], ['vci-level', 'level'], ['vci-rate', 'currentRate'], ['vci-target', 'targetCss']];
+    numField(root, 'Actual body weight, kg', 'vci-weight', '');
+    numField(root, 'Loading dose, mg/kg', 'vci-load', '');
+    numField(root, 'Daily maintenance dose, mg/kg/day', 'vci-daily', '');
+    numField(root, 'Bag concentration, mg/mL', 'vci-conc', '');
+    numField(root, 'Measured steady-state level, mg/L (optional)', 'vci-level', '');
+    numField(root, 'Current rate, mg/h (with a level)', 'vci-rate', '');
+    numField(root, 'Target steady-state level, mg/L (with a level)', 'vci-target', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = VC.vancContinuousInfusion(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

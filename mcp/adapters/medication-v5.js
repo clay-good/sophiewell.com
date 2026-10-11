@@ -24,7 +24,7 @@ export default [
   },
   {
     id: 'vanc-auc',
-    summary: 'AUC-guided vancomycin (ASHP/IDSA 2020, target AUC24/MIC 400-600) by the first-order two-level Sawchuk-Zaske method: k, half-life, extrapolated Cmax/Cmin, AUC24, and AUC24/MIC.',
+    summary: 'AUC-guided vancomycin (ASHP/IDSA 2020, target AUC24/MIC 400-600) by the first-order two-level Sawchuk-Zaske method: k, half-life, extrapolated Cmax/Cmin, AUC24, and AUC24/MIC. With the current daily dose and a target AUC24 it also gives the dose by proportion (dose × target ÷ measured), which assumes unchanged clearance.',
     compute: F.vancAuc,
     fields: [
       { dom: 'va-peak', arg: 'peak', kind: 'number', required: true, label: 'Peak level', unit: 'mg/L' },
@@ -34,6 +34,8 @@ export default [
       { dom: 'va-tinf', arg: 'tInf', kind: 'number', required: true, label: 'Infusion duration', unit: 'h' },
       { dom: 'va-tau', arg: 'tau', kind: 'number', required: true, label: 'Dosing interval', unit: 'h' },
       { dom: 'va-mic', arg: 'mic', kind: 'number', required: true, label: 'MIC', unit: 'mg/L' },
+      { dom: 'va-dose', arg: 'dailyDose', kind: 'number', label: 'Current daily dose (optional; to revise it)', unit: 'mg/day' },
+      { dom: 'va-target', arg: 'targetAuc', kind: 'number', label: 'Target AUC24 (with a daily dose)', unit: 'mg·h/L' },
     ],
   },
   {

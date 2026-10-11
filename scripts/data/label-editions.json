@@ -31,6 +31,21 @@
     }
   },
   {
+    "label": "Aggrastat (tirofiban), Medicure",
+    "labeler": "MEDICURE INTERNATIONAL INC",
+    "setId": "fe0ced75-ccbf-4d2e-bd0d-b57e60ab913f",
+    "tools": [
+      "iv-antithrombotic-renal-check"
+    ],
+    "splVersion": 18,
+    "publishedOn": "2024-12-26",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "9046f254d62c81167fb3582e26d64b09355429f0b2ae19032ca86fcb8ec87e81"
+    }
+  },
+  {
     "label": "Amikacin sulfate injection, Sagent",
     "labeler": "SAGENT PHARMACEUTICALS",
     "setId": "f260ff2a-76a0-4672-9516-91c344b67890",
@@ -59,6 +74,52 @@
     "sections": {
       "34068-7": "8ad06a314e421dcc4ac2eabbb83683b996549eb20ef2011f54c1920c9a82cc6b",
       "34089-3": "01da29a43eb9ac0795c08b90dbeed73e2719e011e48d12031a28ec6a4fcf6146"
+    }
+  },
+  {
+    "label": "Argatroban injection, Hikma",
+    "labeler": "HIKMA PHARMACEUTICALS USA INC.",
+    "setId": "0cdf3f67-5bf3-4d58-b330-03febdc652bf",
+    "tools": [
+      "iv-antithrombotic-renal-check"
+    ],
+    "splVersion": 29,
+    "publishedOn": "2026-06-05",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "094f11fe309ad3656eff8386a8d082f32bdbd9dd9de4408cc8864e8580f623ea"
+    }
+  },
+  {
+    "label": "Arixtra (fondaparinux), Mylan Institutional",
+    "labeler": "MYLAN INSTITUTIONAL LLC",
+    "setId": "d3b30c68-cf45-4b46-8ba6-72090f7ba01a",
+    "tools": [
+      "lmwh-fondaparinux-dose-check"
+    ],
+    "splVersion": 13,
+    "publishedOn": "2025-02-03",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "1bd39db7825c52c1c91be707b4a14b380eee71401c402779b5bb2634d05e242b",
+      "34070-3": "8595e247d279fe03ac4e3c470ebc1f316d5048ea37ce995dd44854dd3980b22b"
+    }
+  },
+  {
+    "label": "Bivalirudin for injection, Dr. Reddy's",
+    "labeler": "DR. REDDY'S LABORATORIES LIMITED",
+    "setId": "19beb2ae-6064-3c24-fe50-0cee86896979",
+    "tools": [
+      "iv-antithrombotic-renal-check"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2024-06-27",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "67e94681912fc92dba0e0a8419ae5bec58ce9db41fe965515691ad724e73aa6f"
     }
   },
   {
@@ -276,6 +337,7 @@
     "labeler": "VIATRIS SPECIALTY LLC",
     "setId": "86dd27d1-9cee-48ae-b55d-e2d2f7dbc593",
     "tools": [
+      "corrected-phenytoin",
       "phenytoin-mm-dose"
     ],
     "splVersion": 3,
@@ -302,6 +364,37 @@
     }
   },
   {
+    "label": "Eliquis (apixaban), E.R. Squibb",
+    "labeler": "E.R. SQUIBB & SONS, L.L.C.",
+    "setId": "e9481622-7cc6-418a-acb6-c5450daae9b0",
+    "tools": [
+      "doac-dose-check"
+    ],
+    "splVersion": 30,
+    "publishedOn": "2025-05-05",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "736d4d82c00b0a32af8260afe954c418fc20303872927ed2451ffbe8317e0588"
+    }
+  },
+  {
+    "label": "Eptifibatide injection, Baxter",
+    "labeler": "BAXTER HEALTHCARE COMPANY",
+    "setId": "5f46b76b-5c83-49b9-ada8-4ad5cf81a38c",
+    "tools": [
+      "iv-antithrombotic-renal-check"
+    ],
+    "splVersion": 13,
+    "publishedOn": "2026-05-21",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "4aa0c02a74152d3e496ac00f16ce71fba02e1961e16cad3b5cbe92f602b08acd",
+      "34070-3": "274eaea4e7862ba551440439f8f4a648e3e21efa3af898ace3d599f92fa4ace4"
+    }
+  },
+  {
     "label": "Fentanyl transdermal system",
     "labeler": "ALVOGEN",
     "setId": "242759ef-cb6d-4e3e-9f8d-5e31efa1f289",
@@ -314,6 +407,21 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "5c6ee95eec415c52ed78b658c64248193715e047a7cc8693a3e3e094665361f8"
+    }
+  },
+  {
+    "label": "Fragmin (dalteparin), Pfizer",
+    "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
+    "setId": "23527b8b-9b28-4e6d-9751-33b143975ac7",
+    "tools": [
+      "lmwh-fondaparinux-dose-check"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2025-10-02",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "4d89e2e074a7539cf249ac6ff82823dab13b08da33dc2fb00f26b43c6cbf031c"
     }
   },
   {
@@ -559,6 +667,21 @@
     }
   },
   {
+    "label": "Pradaxa capsules (dabigatran), Boehringer Ingelheim",
+    "labeler": "BOEHRINGER INGELHEIM PHARMACEUTICALS INC.",
+    "setId": "ba74e3cd-b06f-4145-b284-5fd6b84ff3c9",
+    "tools": [
+      "doac-dose-check"
+    ],
+    "splVersion": 48,
+    "publishedOn": "2025-06-30",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "5880785c3875a8939ae0bf104ca6fb1a5af1b4e2a5f6d20f1943c4244ce3cdc3"
+    }
+  },
+  {
     "label": "Prosol 20%, Baxter",
     "labeler": "BAXTER HEALTHCARE CORPORATION",
     "setId": "cc2ace81-5881-43f1-ba94-41b674adc2fc",
@@ -601,6 +724,24 @@
     "validThrough": "2027-09-26",
     "sections": {
       "34068-7": "fe373d68f7c316265d28382e13b3981644329b969dd64afe2801521e9528e3b1"
+    }
+  },
+  {
+    "label": "Savaysa (edoxaban), Daiichi Sankyo",
+    "labeler": "DAIICHI SANKYO INC.",
+    "setId": "e77d3400-56ad-11e3-949a-0800200c9a66",
+    "tools": [
+      "doac-dose-check"
+    ],
+    "splVersion": 28,
+    "publishedOn": "2025-07-14",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "7a33cd844e37793d85468844110e0f40433b56ce62109eb0bd8446074b24acd2",
+      "43684-0": "a85b2ebaa9771f9fe7743a7280a338a7dba95522a6b9fc1688a33eabd3d4c8e6",
+      "34073-7": "85a85e0038e6f6d71e7dbf0eb6e0106ac1f93d814381a563f064401b2f877bfc",
+      "34092-7": "3ef5f211cf4c9f315f9757ad3e67891802496b679f6d15aacd50567c86ff9b2d"
     }
   },
   {
@@ -659,7 +800,9 @@
     "labeler": "MYLAN INSTITUTIONAL LLC",
     "setId": "ac8134d9-a726-4508-b8b9-a536ef17243d",
     "tools": [
-      "aminoglycoside-label-renal"
+      "aminoglycoside",
+      "aminoglycoside-label-renal",
+      "bw-bsa-suite"
     ],
     "splVersion": 8,
     "publishedOn": "2026-08-27",
@@ -721,12 +864,14 @@
     "labeler": "GLAND PHARMA LIMITED",
     "setId": "00946db3-d6c5-4534-a870-1ec6e63eda43",
     "tools": [
-      "abx-renal"
+      "abx-renal",
+      "vanc-continuous-infusion",
+      "vanc-initial-dose"
     ],
     "splVersion": 10,
     "publishedOn": "2026-02-02",
-    "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "8e068f11e8adafbe53d19ad8cb93f3cf4b7d6765a3af668fe4dda7a9909a98a2"
     }
@@ -744,6 +889,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "b0c7155ad7bf9d7a4534aed21fd7bdd52570603e0565f4d648e8114697b96961"
+    }
+  },
+  {
+    "label": "Xarelto (rivaroxaban), Janssen",
+    "labeler": "JANSSEN PHARMACEUTICALS, INC.",
+    "setId": "10db92f9-2300-4a80-836b-673e1ae91610",
+    "tools": [
+      "doac-dose-check"
+    ],
+    "splVersion": 65,
+    "publishedOn": "2026-09-11",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "13698281595712c0fba642e5ce074a149bfe814601b1b5037d2d568688a518e3"
     }
   }
 ]

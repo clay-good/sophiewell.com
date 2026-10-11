@@ -1040,6 +1040,12 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import lmwhFondaparinuxDoseCheckV1632 from './adapters/lmwh-fondaparinux-dose-check-v1632.js';
+import ivAntithromboticRenalCheckV1632 from './adapters/iv-antithrombotic-renal-check-v1632.js';
+import doacDoseCheckV1632 from './adapters/doac-dose-check-v1632.js';
+import vancInitialDoseV1631 from './adapters/vanc-initial-dose-v1631.js';
+import vancHdDoseV1631 from './adapters/vanc-hd-dose-v1631.js';
+import vancContinuousInfusionV1631 from './adapters/vanc-continuous-infusion-v1631.js';
 import aminoglycosideLabelRenalV1631 from './adapters/aminoglycoside-label-renal-v1631.js';
 import theophyllineLabelDoseV1631 from './adapters/theophylline-label-dose-v1631.js';
 import busulfanAucDoseV1631 from './adapters/busulfan-auc-dose-v1631.js';
@@ -2185,6 +2191,12 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['lmwh-fondaparinux-dose-check-v1632', lmwhFondaparinuxDoseCheckV1632],
+  ['iv-antithrombotic-renal-check-v1632', ivAntithromboticRenalCheckV1632],
+  ['doac-dose-check-v1632', doacDoseCheckV1632],
+  ['vanc-initial-dose-v1631', vancInitialDoseV1631],
+  ['vanc-hd-dose-v1631', vancHdDoseV1631],
+  ['vanc-continuous-infusion-v1631', vancContinuousInfusionV1631],
   ['aminoglycoside-label-renal-v1631', aminoglycosideLabelRenalV1631],
   ['theophylline-label-dose-v1631', theophyllineLabelDoseV1631],
   ['busulfan-auc-dose-v1631', busulfanAucDoseV1631],

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:eff79ddd-bb41-591b-8928-c209649718f2",
+  "serialNumber": "urn:uuid:d62a9291-6414-5d2b-85d5-c30cb80c7002",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T12:04:15.308Z",
+    "timestamp": "2026-10-11T13:14:02.036Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2114 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2120 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "257233c018aca08e241a1d5a4878eec80600bfc5ecdc8b5079d3844143f171ed"
+          "content": "248afc442c2a41bc13fd9baabe18ef0b737bbaa7857e1725bb8800d95e022ad3"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "136526"
+          "value": "136905"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c7023efceaf15e6983cbac6f399bc029e1ced3b91cf3b914d85ed36aa4283839"
+          "content": "9c72eb287f4d2974ea7ef48b91aba6ca314136fe8c7ba5bbf239b669c7df4fc3"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "599999"
+          "value": "601032"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fc3f8847ffad944ac169708c3074077ea4838f72ac9904ddbac546ea105c07ea"
+          "content": "e4f1d3956aafa1f023cb8b4f7427cf1e30626a70f0d55ba5a37146b42b483c60"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "264912"
+          "value": "265703"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f863afc9c3f88a348a0d76a9f5e0bafd04300bf44ac7218abb579be7601671b0"
+          "content": "2e6b70fc6b5a1fcd6225602d5da79572ee7c31b7901443c088af9cfb12ae3c20"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "124705"
+          "value": "125149"
         }
       ]
     },
@@ -4745,7 +4745,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "04b250dc0c03681202158f417fe2c93f2dc688a46ebcaeb2ebb58bd1aec84172"
+          "content": "da5ed7cad07ad8fed0e32570fd5608ce304aee412796a1b33a1bbed57ab4ed4c"
         }
       ],
       "properties": [
@@ -4755,7 +4755,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "22174"
+          "value": "22407"
         }
       ]
     },
@@ -4808,7 +4808,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "553bfcbd0b54cf4f5d1b0086bc1628982c8f191a945c96af6e5d6eca93ea88ca"
+          "content": "591ac16245c21640d93ab22245e39788874108c470ba5a7ed2ad6309ce47e2ed"
         }
       ],
       "properties": [
@@ -4818,7 +4818,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "24287"
+          "value": "26564"
         }
       ]
     },
@@ -6436,6 +6436,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3722"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/doac-dose-check-v1632.js",
+      "type": "file",
+      "name": "lib/doac-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0c42414b7cce0d7743453fb8e2543e93c85d6196038784da239b72d0c31e37a5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "16978"
         }
       ]
     },
@@ -11879,6 +11900,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/iv-antithrombotic-renal-check-v1632.js",
+      "type": "file",
+      "name": "lib/iv-antithrombotic-renal-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bb9c408475cfa5663eaf55dd9ca4afa95e56724862945805a8f8351631dd36d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11126"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/iv-label-rate-check-v1630.js",
       "type": "file",
       "name": "lib/iv-label-rate-check-v1630.js",
@@ -12536,7 +12578,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "adcf83ba194040313e82e5958cd14524b058aa4db4cf77e55136ce7090fca835"
+          "content": "e398b327679035358d0f500e27f4a97f101822717bc8fe9ddd2553feb850babf"
         }
       ],
       "properties": [
@@ -12546,7 +12588,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10822"
+          "value": "13025"
         }
       ]
     },
@@ -13303,6 +13345,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "14094"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/lmwh-fondaparinux-dose-check-v1632.js",
+      "type": "file",
+      "name": "lib/lmwh-fondaparinux-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "21236ac4370de2df3434274798cf260d2f6eb62de41feb28bd1caeeecfeb2b60"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "15415"
         }
       ]
     },
@@ -14594,7 +14657,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7d287c634fbd551ce5360ddc60a211e28682ff38617565c67caccb1ccfa9e509"
+          "content": "3be5c508595399c49650b8dfb3a163c59093083005810b2834f9f7b0b88ffda5"
         }
       ],
       "properties": [
@@ -14604,7 +14667,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "20983"
+          "value": "22894"
         }
       ]
     },
@@ -14741,7 +14804,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "43d6756c0b14846126059095fdda88586db0575da274d14c04f12408e4715bd3"
+          "content": "0e9efdcff9428b2d5edc7065d4df30b5e591345b8277f32aa0ad17d52398f644"
         }
       ],
       "properties": [
@@ -14751,7 +14814,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2809607"
+          "value": "2818167"
         }
       ]
     },
@@ -19487,7 +19550,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1183ec677162e380baf0d90079c14e6aeb5d1e67a4d53198eb31d0b40ccff265"
+          "content": "dd10f1d9c72a5d38966e0fcaa46e2b82612ececd1355e5689f68f0e82a98a463"
         }
       ],
       "properties": [
@@ -19497,7 +19560,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8723"
+          "value": "10529"
         }
       ]
     },
@@ -26033,6 +26096,69 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/vanc-continuous-infusion-v1631.js",
+      "type": "file",
+      "name": "lib/vanc-continuous-infusion-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f5c135ac88c6643deea312a4bf134214440dcd89cbdf6fc2aba6e9ed0d68bb1a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7255"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/vanc-hd-dose-v1631.js",
+      "type": "file",
+      "name": "lib/vanc-hd-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b281d563698a83b4ec27b3e236bd86a7cad09d9ba8574e499b0e4187afe0ceac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5712"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/vanc-initial-dose-v1631.js",
+      "type": "file",
+      "name": "lib/vanc-initial-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "85bd0e4f5e3bf2a46c8c4a349905e4067cb12d4a2f47ba04667a5d1b7c25848c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "15136"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/vancouver-periprosthetic-v483.js",
       "type": "file",
       "name": "lib/vancouver-periprosthetic-v483.js",
@@ -31772,7 +31898,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "92534eaaeb642010d2516d9c37f614ae684866bff5152e236286f65bb6f53efe"
+          "content": "89da622867c522591db41f099619030825ace7e5cf2652222c63da81337b1845"
         }
       ],
       "properties": [
@@ -31782,7 +31908,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12789"
+          "value": "12960"
         }
       ]
     },
@@ -31835,7 +31961,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cac995b64db69eb95be69081f080b8723c1a877f8523466e88a5d39a53e6e8fe"
+          "content": "3e53f0e857f07cb6f80e5efb3ca7bd90d021ef538c4860730bc647ec113a53f4"
         }
       ],
       "properties": [
@@ -31845,7 +31971,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8834"
+          "value": "9320"
         }
       ]
     },
@@ -33316,6 +33442,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1142"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/doac-dose-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/doac-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c507be6d10807b940261d974a15c45f3fd30dd531d9d4fd610cf222b27d4fce8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1733"
         }
       ]
     },
@@ -38213,6 +38360,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/iv-antithrombotic-renal-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/iv-antithrombotic-renal-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "26cbbafaf79fa7794f57cd734a36f21e192058f67b5d27a6643e099ae56e0aba"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1587"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/iv-label-rate-check-v1630.js",
       "type": "file",
       "name": "mcp/adapters/iv-label-rate-check-v1630.js",
@@ -39473,6 +39641,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lmwh-fondaparinux-dose-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/lmwh-fondaparinux-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aed8cfc9d8476797f2997b6ee97c40dbc0c630e36320932f97220e9871b0ac99"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1680"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lodwick-grade-v496.js",
       "type": "file",
       "name": "mcp/adapters/lodwick-grade-v496.js",
@@ -40697,7 +40886,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bb2fa6b760988d88610e362fd7521f4aed1ea59115d7b9773e82a859221ffea5"
+          "content": "d3a2ce7686b7ae49f719dca22d5fd9a863321a55fc1be91f599c1f0757cb48ae"
         }
       ],
       "properties": [
@@ -40707,7 +40896,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11501"
+          "value": "11902"
         }
       ]
     },
@@ -44876,7 +45065,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c82666cabc41425afe0fa5671a4e6aeac74a984870ea853561260bef3200e94f"
+          "content": "6da64d04a3613a34b94e520dca4f9146b38b1f5c79c89b914502c063d7a50c0f"
         }
       ],
       "properties": [
@@ -44886,7 +45075,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "1508"
+          "value": "1942"
         }
       ]
     },
@@ -50456,6 +50645,69 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vanc-continuous-infusion-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/vanc-continuous-infusion-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "63d3d6ec7b470c913b5d895f029784e7502e2d85dba56d6b66128d00ae1a029c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1795"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vanc-hd-dose-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/vanc-hd-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "93a518947d66962bcdb21e319296983e28d29a9509b0d81bc8de90631fa2a293"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1375"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vanc-initial-dose-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/vanc-initial-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e28ae9c7dec200113c1c988a3bf0c31cacb57c963ab59958cad6b0494fea1674"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1904"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vancouver-periprosthetic-v483.js",
       "type": "file",
       "name": "mcp/adapters/vancouver-periprosthetic-v483.js",
@@ -51722,7 +51974,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "47ab846bbf10af6d2d16fc3654cfd7b6aa0d5f0aec18222cb71ba5c03fdbf8ce"
+          "content": "3bc43e366d0c5397de02802ba31ef0556874e3234200745d968505566e61579a"
         }
       ],
       "properties": [
@@ -51732,7 +51984,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "134703"
+          "value": "135553"
         }
       ]
     },
@@ -52205,7 +52457,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ae65578954064f09b479a3bd66a83e47e780a7c8c360a0cc228dd13c9edd095d"
+          "content": "1e33f2b04ff296589f84adaa859fe1481adc6d6b216246a8ea33450bec8eafbd"
         }
       ],
       "properties": [
@@ -52215,7 +52467,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "54271"
+          "value": "54383"
         }
       ]
     },
@@ -52415,7 +52667,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dede9e89a996289facbbea5ec99d2c9711f5b15e457da4074eb7090d60ca2d9e"
+          "content": "c188d9bec5415a050121e21e39a44a6f614fe24effe65a02be3c0e04e6c80a21"
         }
       ],
       "properties": [
@@ -52425,7 +52677,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "26660"
+          "value": "26907"
         }
       ]
     },
@@ -56258,7 +56510,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8b0144620b5193a3f7853b89de14a88c2787fd38dcd5706b7fea7b91d44a8ea0"
+          "content": "40a5ca5420b96dfc912cebce079b624390ab822f93973f48222002562c37e79d"
         }
       ],
       "properties": [
@@ -56268,7 +56520,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "19978"
+          "value": "23479"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1632.js",
+      "type": "file",
+      "name": "views/group-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6de48f81a4f60a63d4f2287307272dfeb68df2eb2d34912ff53cdff57ec1e274"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5718"
         }
       ]
     },
@@ -56321,7 +56594,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3523b74c9885e3e890f5ea8624825fc89b803d716f76148ec2667fd994fcccab"
+          "content": "15f2b9e088bbfd84cc2c31c8014f6d84ecd313459cf16ebe7f401b08871ce8d5"
         }
       ],
       "properties": [
@@ -56331,7 +56604,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5981"
+          "value": "6698"
         }
       ]
     },
@@ -68669,7 +68942,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eddae9dee9b3fd34faa385587adc7f7195604bd8eb40a1c94a2581dc88957a19"
+          "content": "577615bd2164927f628fea407b810a581554ab205bca7168ccfd1c94f21cbafd"
         }
       ],
       "properties": [
@@ -68679,7 +68952,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "25414"
+          "value": "26669"
         }
       ]
     },
@@ -87334,6 +87607,7 @@
         "urn:sophiewell:file:source:lib/dka-resolution-v905.js",
         "urn:sophiewell:file:source:lib/dme-v307.js",
         "urn:sophiewell:file:source:lib/dmft-caries-v716.js",
+        "urn:sophiewell:file:source:lib/doac-dose-check-v1632.js",
         "urn:sophiewell:file:source:lib/dom-fields.js",
         "urn:sophiewell:file:source:lib/dom.js",
         "urn:sophiewell:file:source:lib/dorr-femur-v499.js",
@@ -87593,6 +87867,7 @@
         "urn:sophiewell:file:source:lib/isotonicity-freezing-point-v1629.js",
         "urn:sophiewell:file:source:lib/itemized-bill-check.js",
         "urn:sophiewell:file:source:lib/itemized-bill-worker.js",
+        "urn:sophiewell:file:source:lib/iv-antithrombotic-renal-check-v1632.js",
         "urn:sophiewell:file:source:lib/iv-label-rate-check-v1630.js",
         "urn:sophiewell:file:source:lib/iv-phosphate-order-check-v1630.js",
         "urn:sophiewell:file:source:lib/jemt-papilla-v1487.js",
@@ -87661,6 +87936,7 @@
         "urn:sophiewell:file:source:lib/lithium-level-check-v1631.js",
         "urn:sophiewell:file:source:lib/live.js",
         "urn:sophiewell:file:source:lib/liver-v196.js",
+        "urn:sophiewell:file:source:lib/lmwh-fondaparinux-dose-check-v1632.js",
         "urn:sophiewell:file:source:lib/lodwick-grade-v496.js",
         "urn:sophiewell:file:source:lib/loe-silness-gingival-index-v722.js",
         "urn:sophiewell:file:source:lib/long-note.js",
@@ -88267,6 +88543,9 @@
         "urn:sophiewell:file:source:lib/vaizey-v512.js",
         "urn:sophiewell:file:source:lib/van-herick-v435.js",
         "urn:sophiewell:file:source:lib/van-nuys-vnpi-v652.js",
+        "urn:sophiewell:file:source:lib/vanc-continuous-infusion-v1631.js",
+        "urn:sophiewell:file:source:lib/vanc-hd-dose-v1631.js",
+        "urn:sophiewell:file:source:lib/vanc-initial-dose-v1631.js",
         "urn:sophiewell:file:source:lib/vancouver-periprosthetic-v483.js",
         "urn:sophiewell:file:source:lib/vascular-v105.js",
         "urn:sophiewell:file:source:lib/vasi-v556.js",
@@ -88560,6 +88839,7 @@
         "urn:sophiewell:file:source:views/group-v163.js",
         "urn:sophiewell:file:source:views/group-v1630.js",
         "urn:sophiewell:file:source:views/group-v1631.js",
+        "urn:sophiewell:file:source:views/group-v1632.js",
         "urn:sophiewell:file:source:views/group-v164.js",
         "urn:sophiewell:file:source:views/group-v165.js",
         "urn:sophiewell:file:source:views/group-v166.js",
@@ -89555,6 +89835,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dka-resolution-v905.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dme-v307.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dmft-caries-v716.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/doac-dose-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dorr-femur-v499.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dose-calendar-v1512.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dose-schedule.js",
@@ -89788,6 +90069,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/isl-lymphedema-v539.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-e-value-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-freezing-point-v1629.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/iv-antithrombotic-renal-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iv-label-rate-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iv-phosphate-order-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/jemt-papilla-v1487.js",
@@ -89848,6 +90130,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/lisfranc-myerson-v412.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lithium-level-check-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/liver-v196.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lmwh-fondaparinux-dose-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lodwick-grade-v496.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/loe-silness-gingival-index-v722.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lown-ectopy-v493.js",
@@ -90371,6 +90654,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/vaizey-v512.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/van-herick-v435.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/van-nuys-vnpi-v652.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/vanc-continuous-infusion-v1631.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/vanc-hd-dose-v1631.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/vanc-initial-dose-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vancouver-periprosthetic-v483.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vascular-v105.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vasi-v556.js",
@@ -90535,7 +90821,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "eff79dddbb41d91b"
+      "value": "d62a929164145d2b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -90547,7 +90833,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3381"
+      "value": "3394"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

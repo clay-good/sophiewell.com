@@ -1,6 +1,6 @@
 # spec-v1632 — Dose checks read from the FDA label (renal, hepatic, weight, age, indication)
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 18 new tools, none build-gated.
+**Status:** In progress, October 11, 2026: 3 of 18 tools built (see Build status). 18 new tools, none build-gated.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 An order-verification pharmacist asks the same question several hundred times a shift: is this
@@ -872,4 +872,11 @@ result string contains "give", "recommend" in the tool's voice, or a dose when t
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+Updated October 11, 2026. 3 of 18 tools built.
+
+| Tool | Status |
+|---|---|
+| 1. `doac-dose-check` | Built (group F, `views/group-v1632.js`) on four label rows, all the application holders' copies: Eliquis (version 30), Xarelto (65), Pradaxa capsules (48) and Savaysa (28). Each adult dosing section was re-read and every row and boundary matches the spec. Savaysa is watched on four sections (2, 7, 8 and 14), because its below-15 sentence, its P-gp sentence for atrial fibrillation and its trial's inhibitor list sit outside section 2; the watch learned two section codes for it. **Decisions:** the rules are algorithms, so they live in the tool's library and not in a `data/label-dose/` shard (section 0.2 starts with the first band-table tool); the interacting-drug question is required and means what each label names; apixaban needs no creatinine clearance and says so if one is entered; an indication the label does not carry for the drug is refused with the label's own list. **Named** "DOAC Dose Check by Indication (FDA Label)", not the heading above: a name carrying "kidney function" took that home-page search from the eGFR tool. **Open:** typing a drug name opens the tool but does not preselect the drug. |
+| 2. `lmwh-fondaparinux-dose-check` | Built (group F) on two label rows: Fragmin (Pfizer, version 27) and Arixtra (Mylan Institutional, version 13; watched on Dosage and Administration and Contraindications). Tables 1 to 4 and 6, the 10,000 and 18,000 unit ceilings, the anti-Xa sentence and both fondaparinux contraindications were re-read and match the spec. **Decisions:** the dalteparin tables are printed in whole kilograms, so a weight between two rows (59.5 kg) shows both rows and says so; at a platelet count of exactly 100,000 the label's table reads both ways and no reduction is applied, with a sentence saying so; below a clearance of 30 in cancer the tool reports that the label gives no dose and shows the table row only as a note. |
+| 3. `iv-antithrombotic-renal-check` | Built (group F) on four label rows: bivalirudin (Dr. Reddy's, version 10), eptifibatide (Baxter, version 13; Dosage and Administration and Contraindications), Aggrastat (Medicure, version 18) and argatroban (Hikma, version 29). Each rate and cutoff was re-read and matches the spec. **Added on re-read:** the eptifibatide dosing chart has a single row for every weight above 121 kg (22.6 mg bolus; 15 mg/h, or 7.5 mg/h below a clearance of 50), so the tool shows that row with the per-kilogram figures beside it; dependency on dialysis is a listed contraindication for eptifibatide. The argatroban label has no row for mild hepatic impairment, and the tool says so and gives no rate. Dialysis is asked only where a label has a line for it. |
+| 4 to 18 | Not built. |

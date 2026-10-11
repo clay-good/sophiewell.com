@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Dalteparin and Fondaparinux Dose by Weight (FDA Label): the label's weight-band dose beside its
+  per-kilogram figure, the platelet and kidney rules for dalteparin in cancer, and the two
+  fondaparinux contraindications by weight and clearance.
+- Bivalirudin, Eptifibatide, Tirofiban, Argatroban Rate (FDA Label): the bolus and infusion rate
+  each label gives for the kidney function, dialysis status or liver function entered, in mass per
+  time at the patient's weight.
+- DOAC Dose Check by Indication (FDA Label): the row each label gives for
+  apixaban, rivaroxaban, dabigatran or edoxaban, including where the label says to avoid the drug
+  or gives no recommendation, with the rule that selected it.
+- Vancomycin First Dose and Starting Regimen: the loading dose with its 3,000 mg ceiling and
+  infusion time, and three daily maintenance estimates side by side (Matzke clearance × target AUC,
+  the Rodvold equation, the label table), with the guideline's ranges for children and the label's
+  doses for neonates.
+- Vancomycin Dosing in Intermittent Hemodialysis: the consensus guideline's loading and maintenance
+  doses by timing and dialyzer, the larger dose before the 3-day gap, and the hybrid dialysis and
+  CRRT starting doses.
+- Vancomycin Continuous Infusion Rate: doses and pump rates on body weight, AUC24 from a
+  steady-state level, and the rate for a target level.
 - Gentamicin, Tobramycin, Amikacin: Label Dosing by Creatinine: each label's usual adult dose and
   its two guides for impaired kidneys side by side, the usual dose at a longer interval and a
   smaller dose at the usual interval, with the gentamicin table of percentages.
@@ -180,8 +198,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   margin, spread check, NDC units, MFP price and refund tools) now reads the 12-digit form through
   one shared parser, `lib/ndc.js`. spec-v1641 row 22.
 
+### Changed
+
+- Vancomycin AUC24/MIC: with the current daily dose and a target AUC it now gives the dose by
+  proportion, and it prints the guideline's sampling times, its sentence on the MIC and its
+  ceilings for children.
+- Pharmacokinetics suite: a salt factor beside bioavailability, a top-up loading dose from a
+  measured level, and a proportional dose for drugs with linear kinetics.
+- Corrected phenytoin: a choice of albumin coefficient (0.2 or 0.275, each with its paper), the
+  estimated unbound level against the label's 1 to 2 mcg/mL, and the label's sentence on unbound
+  monitoring. Agents can now choose the renal form, which only the page offered before.
+- Body weight suite and the extended-interval aminoglycoside tool: the 40% rule is cited to the
+  tobramycin label and to Traynor 1995, and the body weight suite adds percent of ideal weight.
+
 ### Fixed
 
+- The weekly data refresh failed its own tests when the USPSTF list was read again and no
+  recommendation had changed: a test expected a new changelog entry that is only written when a
+  record moves.
 - Typing one word on the home page ("vancomycin", "tpn", "gir", "crrt", "aminoglycoside") opened
   one of the new pharmacy tools instead of the tool that had always answered it, because a search
   phrase claims any word inside it. The new tools' phrases were reworded, PN Order Summary per

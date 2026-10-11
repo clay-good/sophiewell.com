@@ -576,3 +576,15 @@ experience**.
 > v1631, Gentamicin, Tobramycin, Amikacin: Label Dosing by Creatinine — [spec-v1631](spec-v1631.md), which adds `aminoglycoside-label-renal` — is 2113.)
 
 > v1631, Theophylline and Aminophylline: IV Start and Level Adjustment — [spec-v1631](spec-v1631.md), which adds `theophylline-label-dose` — is 2114.)
+
+> v1631, Vancomycin First Dose and Starting Regimen — [spec-v1631](spec-v1631.md), which adds `vanc-initial-dose` — is 2115.)
+
+> v1631, Vancomycin Dosing in Intermittent Hemodialysis — [spec-v1631](spec-v1631.md), which adds `vanc-hd-dose` — is 2116.)
+
+> v1631, Vancomycin Continuous Infusion Rate — [spec-v1631](spec-v1631.md), which adds `vanc-continuous-infusion` — is 2117.)
+
+> v1632, DOAC Dose Check by Indication (FDA Label) — [spec-v1632](spec-v1632.md), which adds `doac-dose-check` — is 2118.)
+
+> v1632, Dalteparin and Fondaparinux Dose by Weight (FDA Label) — [spec-v1632](spec-v1632.md), which adds `lmwh-fondaparinux-dose-check` — is 2119.)
+
+> v1632, Bivalirudin, Eptifibatide, Tirofiban, Argatroban Rate (FDA Label) — [spec-v1632](spec-v1632.md), which adds `iv-antithrombotic-renal-check` — is 2120.)

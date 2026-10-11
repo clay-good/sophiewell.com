@@ -6,7 +6,7 @@ import * as F from '../../lib/pk-v166.js';
 export default [
   {
     id: 'pk-suite',
-    summary: 'Pharmacokinetics suite (Rowland & Tozer): loading dose = Vd·Cp/F, maintenance = CL·Css·τ/F, k = CL/Vd, half-life = 0.693·Vd/CL, steady state ≈ 5·t½.',
+    summary: 'Pharmacokinetics suite (Rowland & Tozer): loading dose = Vd·Cp/(S·F), maintenance = CL·Css·τ/(S·F), k = CL/Vd, half-life = ln2·Vd/CL, steady state ≈ 5·t½; with a measured level, a top-up loading dose = Vd·(target − measured)/(S·F) and, for a drug with linear kinetics, a proportional dose = dose·target/measured.',
     compute: F.pkSuite,
     fields: [
       { dom: 'pk-vd', arg: 'vd', kind: 'number', label: 'Volume of distribution Vd (L)' },
@@ -14,6 +14,9 @@ export default [
       { dom: 'pk-cp', arg: 'cp', kind: 'number', label: 'Target concentration Cp (mg/L)' },
       { dom: 'pk-f', arg: 'f', kind: 'number', label: 'Bioavailability F (0–1)' },
       { dom: 'pk-tau', arg: 'tau', kind: 'number', label: 'Dosing interval τ (h)' },
+      { dom: 'pk-s', arg: 's', kind: 'number', label: 'Salt factor S (0–1)' },
+      { dom: 'pk-meas', arg: 'measured', kind: 'number', label: 'Measured concentration (mg/L)' },
+      { dom: 'pk-dose', arg: 'dose', kind: 'number', label: 'Current dose (mg)' },
     ],
   },
   {

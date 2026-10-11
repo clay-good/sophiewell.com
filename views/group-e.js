@@ -660,7 +660,8 @@ export const renderers = {
       const heightCm = heightIn * 2.54;
       const rows = [{ text: `IBW (Devine): ${ibw.toFixed(1)} kg` }];
       if (weightKg != null) {
-        rows.push({ text: `AdjBW (40% rule): ${V4.adjBW({ ibw, actualKg: weightKg }).toFixed(1)} kg` });
+        rows.push({ text: `AdjBW (IBW + 0.4 × excess): ${V4.adjBW({ ibw, actualKg: weightKg }).toFixed(1)} kg` });
+        rows.push({ text: `Percent of ideal body weight: ${Math.round((weightKg / ibw) * 100)}%` });
         rows.push({ text: `BSA Mosteller: ${C.bsaMosteller({ weightKg, heightCm }).toFixed(2)} m^2` });
         rows.push({ text: `BSA Du Bois: ${C.bsaDuBois({ weightKg, heightCm }).toFixed(2)} m^2` });
       }

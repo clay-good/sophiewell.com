@@ -31,3 +31,17 @@ test('vanc rejects peak <= trough and impossible draw times', () => {
 test('vanc rejects non-finite inputs', () => {
   assert.throws(() => vancAuc({ peak: NaN, tPeak: 1, trough: 10, tTrough: 10, tInf: 1, tau: 12, mic: 1 }), /peak/);
 });
+
+// spec-v1631 backfill 1: dose revision by proportion, and the guideline's own sentences.
+test('vancAuc: revised daily dose = dose x target / measured AUC24; both values or neither', () => {
+  const base = { peak: 30, tPeak: 1, trough: 10, tTrough: 10, tInf: 1, tau: 12, mic: 1 };
+  const r = vancAuc({ ...base, dailyDose: 2000, targetAuc: 500 });
+  // The unrounded AUC24 is used: 2000 x 500 / 453.3 = 2206.
+  assert.ok(Math.abs(r.revisedDailyDose - (2000 * 500) / r.auc24) <= 3);
+  assert.equal(vancAuc(base).revisedDailyDose, null);
+  assert.throws(() => vancAuc({ ...base, dailyDose: 2000 }), /both the current daily dose and the target AUC24/);
+  assert.throws(() => vancAuc({ ...base, targetAuc: 500 }), /both the current daily dose and the target AUC24/);
+  assert.throws(() => vancAuc({ ...base, dailyDose: 0, targetAuc: 500 }), RangeError);
+  assert.equal(r.guideline.length, 3);
+  assert.match(r.guideline.join(' '), /1 to 2 hours after the infusion.*assume 1 mg\/L.*800 mg·h\/L and a trough of 15 mg\/L/);
+});

@@ -41,9 +41,14 @@ test('the changelog names what a refresh added, removed and changed, and nothing
   assert.deepEqual(changelogEntry([], after, key, { date: '2026-10-04', edition: 'e1' }), { date: '2026-10-04', edition: 'e1', records: 3, first: true });
 });
 
-test('the uspstf changelog starts at the bundled edition', () => {
+// A refresh that moves no record restamps the manifest's edition (it carries the reading date) and
+// writes no changelog entry, so the newest entry is not always the manifest's edition: the weekly job
+// failed on exactly that on October 11, 2026. What does hold is that the newest entry is no later
+// than the manifest and counts the records the manifest counts.
+test('the uspstf changelog starts at the first edition and its newest entry matches the bundled records', () => {
   const log = JSON.parse(readFileSync('data/uspstf/changelog.json', 'utf8'));
   const m = JSON.parse(readFileSync('data/uspstf/manifest.json', 'utf8'));
   assert.equal(log.at(-1).first, true);
-  assert.equal(log[0].edition, m.sourceEdition);
+  assert.ok(log[0].date <= m.fetchedAt, `newest changelog entry ${log[0].date} is after the manifest's ${m.fetchedAt}`);
+  assert.equal(log[0].records, m.recordCount);
 });

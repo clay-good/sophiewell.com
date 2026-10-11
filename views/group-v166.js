@@ -63,15 +63,18 @@ const CPZ_AGENT_OPTS = [
 export const renderers = {
   // ----- 2.1 pk-suite --------------------------------------------------------
   'pk-suite'(root) {
-    note(root, 'Pharmacokinetics suite (Rowland & Tozer): loading dose = Vd·Cp/F; maintenance = CL·Css·τ/F; k = CL/Vd; half-life = 0.693·Vd/CL; steady state ≈ 5·t½. Each relation is computed only from the inputs you supply.');
+    note(root, 'Pharmacokinetics suite (Rowland & Tozer): loading dose = Vd·Cp/(S·F); maintenance = CL·Css·τ/(S·F); k = CL/Vd; half-life = ln2·Vd/CL; steady state ≈ 5·t½; top-up load = Vd·(target − measured)/(S·F); proportional dose = dose·target/measured. Each relation is computed only from the inputs you supply.');
     root.appendChild(num('Volume of distribution Vd (L)', 'pk-vd'));
     root.appendChild(num('Clearance CL (L/h)', 'pk-cl'));
     root.appendChild(num('Target / desired concentration Cp or Css (mg/L)', 'pk-cp'));
     root.appendChild(num('Bioavailability F (0–1) — default 1 (IV)', 'pk-f', { max: '1' }));
     root.appendChild(num('Dosing interval τ (h) — for the maintenance dose', 'pk-tau'));
+    root.appendChild(num('Salt factor S (0–1) — default 1 (the product is all active drug)', 'pk-s', { max: '1' }));
+    root.appendChild(num('Measured concentration (mg/L) — for a top-up load or a proportional dose', 'pk-meas'));
+    root.appendChild(num('Current dose (mg) — for a proportional dose', 'pk-dose'));
     const o = out(); root.appendChild(o);
-    wire(['pk-vd', 'pk-cl', 'pk-cp', 'pk-f', 'pk-tau'], () => safe(o, () => {
-      const r = M.pkSuite({ vd: val('pk-vd'), cl: val('pk-cl'), cp: val('pk-cp'), f: val('pk-f'), tau: val('pk-tau') });
+    wire(['pk-vd', 'pk-cl', 'pk-cp', 'pk-f', 'pk-tau', 'pk-s', 'pk-meas', 'pk-dose'], () => safe(o, () => {
+      const r = M.pkSuite({ vd: val('pk-vd'), cl: val('pk-cl'), cp: val('pk-cp'), f: val('pk-f'), tau: val('pk-tau'), s: val('pk-s'), measured: val('pk-meas'), dose: val('pk-dose') });
       if (!r.valid) { showInvalid(o, r); return; }
       const items = [{ text: r.band }];
       if (r.halfLife !== null) items.push({ label: 'Half-life', value: `${r.halfLife} h` });
@@ -79,6 +82,8 @@ export const renderers = {
       if (r.k !== null) items.push({ label: 'k', value: `${r.k} /h` });
       if (r.loading !== null) items.push({ label: 'Loading dose', value: `${r.loading} mg` });
       if (r.maintenance !== null) items.push({ label: 'Maintenance', value: `${r.maintenance} mg` });
+      if (r.topUp !== null) items.push({ label: 'Top-up loading dose', value: `${r.topUp} mg` });
+      if (r.adjusted !== null) items.push({ label: 'Proportional dose', value: `${r.adjusted} mg` });
       resultRow(o, items);
       note(o, r.detail); note(o, r.note);
     }));

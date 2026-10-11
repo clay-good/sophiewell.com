@@ -12172,6 +12172,70 @@
       ],
       "tile": "theophylline-label-dose",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "matzke vanc",
+        "rodvold vanc"
+      ],
+      "tile": "vanc-initial-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "vanc intradialytic"
+      ],
+      "tile": "vanc-hd-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "vanc civ"
+      ],
+      "tile": "vanc-continuous-infusion",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "apixaban dose",
+        "eliquis dose",
+        "rivaroxaban dose",
+        "xarelto dose",
+        "dabigatran dose",
+        "pradaxa dose",
+        "edoxaban dose",
+        "savaysa dose",
+        "eliquis renal dose",
+        "xarelto renal dose",
+        "pradaxa renal dose",
+        "apixaban renal dose"
+      ],
+      "tile": "doac-dose-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dalteparin dose",
+        "fragmin dose",
+        "fondaparinux dose",
+        "arixtra dose",
+        "fragmin cancer vte dose"
+      ],
+      "tile": "lmwh-fondaparinux-dose-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "bivalirudin rate",
+        "angiomax rate",
+        "eptifibatide rate",
+        "integrilin rate",
+        "tirofiban rate",
+        "aggrastat rate",
+        "argatroban rate"
+      ],
+      "tile": "iv-antithrombotic-renal-check",
+      "audience": "clinicians"
     }
   ]
 }
