@@ -770,6 +770,9 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as pkSteadyStatePredictV1631 from '../../lib/pk-steady-state-predict-v1631.js';
+import * as aucTrapezoidV1631 from '../../lib/auc-trapezoid-v1631.js';
+import * as tmicBetaLactamV1631 from '../../lib/tmic-beta-lactam-v1631.js';
 import * as ivLabelRateCheckV1630 from '../../lib/iv-label-rate-check-v1630.js';
 import * as ivPhosphateOrderCheckV1630 from '../../lib/iv-phosphate-order-check-v1630.js';
 import * as pnMicronutrientVolumeV1630 from '../../lib/pn-micronutrient-volume-v1630.js';
@@ -1684,6 +1687,9 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'pk-steady-state-predict-v1631.js': pkSteadyStatePredictV1631,
+  'auc-trapezoid-v1631.js': aucTrapezoidV1631,
+  'tmic-beta-lactam-v1631.js': tmicBetaLactamV1631,
   'iv-label-rate-check-v1630.js': ivLabelRateCheckV1630,
   'iv-phosphate-order-check-v1630.js': ivPhosphateOrderCheckV1630,
   'pn-micronutrient-volume-v1630.js': pnMicronutrientVolumeV1630,

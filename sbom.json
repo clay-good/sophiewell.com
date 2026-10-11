@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d3877e62-4d8e-5c45-88c3-0a2f5745409a",
+  "serialNumber": "urn:uuid:a705ac39-1466-5c2e-8173-cc60605ba14a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T09:01:46.522Z",
+    "timestamp": "2026-10-11T09:13:51.116Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2099 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2102 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a3d2bacef0821322181007a82c92e18dddb898d7244ed0166f0b131b72e8aa95"
+          "content": "3f2214cfd9d14a5aa9a2028eebc3a0d296f5a913f84537d72a024133de12f1e7"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135556"
+          "value": "135732"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "52e8216722d0384aeb9fbb5a07a54d9a7585427c9aabfca6f75d62e860d82188"
+          "content": "dfca4e2df193621ae851cd5a207a5fae7314a5991f37e05a681fb93dbed8bd02"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "597535"
+          "value": "598064"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c5da115dae123303d15382c5aa0205b856e381aaa797ec65adc745b0d382ec03"
+          "content": "2895a2c7f179b223f719ddf488119f0416377000da4bfb4a66b8650a56decab0"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "262966"
+          "value": "263351"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "70c158b22bb122e3478e37d0be1513e8756e2794010e8385ea43f4ea91ddfcfc"
+          "content": "70a942fd6fab1d3688424875f74467d017e8b34c9fda2096040a6a206ce681a3"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "123604"
+          "value": "123802"
         }
       ]
     },
@@ -1816,6 +1816,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7825"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/auc-trapezoid-v1631.js",
+      "type": "file",
+      "name": "lib/auc-trapezoid-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a21c6b67c02373bc3eaedd12632f92e40bf7897bf37b261b7c03b47f193b31af"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6760"
         }
       ]
     },
@@ -14531,7 +14552,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0cff40abe8e7f4a66b6b34154fb90cff756a6b18d6810f71d658cfc018b48613"
+          "content": "e23390ac88fafa610ad18adc2eae7250f10696e1202861583eea7036784d5923"
         }
       ],
       "properties": [
@@ -14541,7 +14562,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2796479"
+          "value": "2798383"
         }
       ]
     },
@@ -19225,6 +19246,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6808"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pk-steady-state-predict-v1631.js",
+      "type": "file",
+      "name": "lib/pk-steady-state-predict-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "75ace380c8f7e851dd07a2a5769ad4f99eebaf7b6b279acc1a8b5ffac5ffa696"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8001"
         }
       ]
     },
@@ -24668,6 +24710,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/tmic-beta-lactam-v1631.js",
+      "type": "file",
+      "name": "lib/tmic-beta-lactam-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b1de91db9eab69aa1ab5bdfeddc0904ec665ef78e0a51ea3b068ec161bdc2108"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5267"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/todani-choledochal-v473.js",
       "type": "file",
       "name": "lib/todani-choledochal-v473.js",
@@ -28696,6 +28759,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1755"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/auc-trapezoid-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/auc-trapezoid-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "567d7499d183e25b3aa460711cdc1b50092610a7c11707cea678facf09503325"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1443"
         }
       ]
     },
@@ -44303,6 +44387,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pk-steady-state-predict-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/pk-steady-state-predict-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b3c96ce5f09f6c6665c04a6c633fe4356a51029d3478a70342d5b002921f2ac5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2199"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pk-v166.js",
       "type": "file",
       "name": "mcp/adapters/pk-v166.js",
@@ -48902,6 +49007,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tmic-beta-lactam-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/tmic-beta-lactam-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7ef0999af235517754fee23e4c0d2e7a15d846fe036da3675d459145517e6c6f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1671"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/todani-choledochal-v473.js",
       "type": "file",
       "name": "mcp/adapters/todani-choledochal-v473.js",
@@ -51092,7 +51218,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "20eeaad01b897d46267fd3d2b7111db144459152eaaf78733823bf0c34a131a2"
+          "content": "c869ccae271d1561b88eec0d12cdf2ac9d572d7d603968b05a7cbcf27ca93658"
         }
       ],
       "properties": [
@@ -51102,7 +51228,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132692"
+          "value": "133077"
         }
       ]
     },
@@ -55618,6 +55744,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "22124"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1631.js",
+      "type": "file",
+      "name": "views/group-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1c8a68094e49d9cf08e55fe6eb0b6e0ba736a24d5dd485c59d57cf2cb94e60fd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5193"
         }
       ]
     },
@@ -86463,6 +86610,7 @@
         "urn:sophiewell:file:source:lib/atlanta-pancreatitis-v445.js",
         "urn:sophiewell:file:source:lib/atomic-weights-2024.js",
         "urn:sophiewell:file:source:lib/atrial-enlargement-v787.js",
+        "urn:sophiewell:file:source:lib/auc-trapezoid-v1631.js",
         "urn:sophiewell:file:source:lib/ausdrisk-v711.js",
         "urn:sophiewell:file:source:lib/auth-runout-v1502.js",
         "urn:sophiewell:file:source:lib/auth-units-request-v1502.js",
@@ -87292,6 +87440,7 @@
         "urn:sophiewell:file:source:lib/pipp-v517.js",
         "urn:sophiewell:file:source:lib/pirani-clubfoot-v386.js",
         "urn:sophiewell:file:source:lib/pires-interprosthetic-v1423.js",
+        "urn:sophiewell:file:source:lib/pk-steady-state-predict-v1631.js",
         "urn:sophiewell:file:source:lib/pk-v166.js",
         "urn:sophiewell:file:source:lib/plaque-control-record-v721.js",
         "urn:sophiewell:file:source:lib/pmp-check-required-v1393.js",
@@ -87551,6 +87700,7 @@
         "urn:sophiewell:file:source:lib/tic-worker.js",
         "urn:sophiewell:file:source:lib/tici-v960.js",
         "urn:sophiewell:file:source:lib/tile-pelvic-v379.js",
+        "urn:sophiewell:file:source:lib/tmic-beta-lactam-v1631.js",
         "urn:sophiewell:file:source:lib/todani-choledochal-v473.js",
         "urn:sophiewell:file:source:lib/tonnis-hip-oa-v354.js",
         "urn:sophiewell:file:source:lib/tox-v110.js",
@@ -87893,6 +88043,7 @@
         "urn:sophiewell:file:source:views/group-v1629.js",
         "urn:sophiewell:file:source:views/group-v163.js",
         "urn:sophiewell:file:source:views/group-v1630.js",
+        "urn:sophiewell:file:source:views/group-v1631.js",
         "urn:sophiewell:file:source:views/group-v164.js",
         "urn:sophiewell:file:source:views/group-v165.js",
         "urn:sophiewell:file:source:views/group-v166.js",
@@ -88683,6 +88834,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/asthma-control-test-v516.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/atlanta-pancreatitis-v445.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/atrial-enlargement-v787.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/auc-trapezoid-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ausdrisk-v711.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/auth-runout-v1502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/auth-units-request-v1502.js",
@@ -89426,6 +89578,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pipp-v517.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pirani-clubfoot-v386.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pires-interprosthetic-v1423.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pk-steady-state-predict-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pk-v166.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/plaque-control-record-v721.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pmp-check-required-v1393.js",
@@ -89645,6 +89798,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/thwaites-v529.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tici-v960.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tile-pelvic-v379.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tmic-beta-lactam-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/todani-choledochal-v473.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tonnis-hip-oa-v354.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tox-v110.js",
@@ -89853,7 +90007,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "d3877e624d8e1c45"
+      "value": "a705ac391466ac2e"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -89865,7 +90019,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3350"
+      "value": "3357"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

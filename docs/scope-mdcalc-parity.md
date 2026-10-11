@@ -546,3 +546,9 @@ experience**.
 > v1630, IV Phosphate Order Against the Label — [spec-v1630](spec-v1630.md), which adds `iv-phosphate-order-check` — is 2098.)
 
 > v1630, IV Order Against the Label: Speed and Strength — [spec-v1630](spec-v1630.md), which adds `iv-label-rate-check` — is 2099.)
+
+> v1631, Predicted Peak, Trough and Level (One Compartment) — [spec-v1631](spec-v1631.md), which adds `pk-steady-state-predict` — is 2100.)
+
+> v1631, AUC From Measured Levels (Trapezoidal Rule) — [spec-v1631](spec-v1631.md), which adds `auc-trapezoid` — is 2101.)
+
+> v1631, Time Above MIC for a Dosing Regimen — [spec-v1631](spec-v1631.md), which adds `tmic-beta-lactam` — is 2102.)

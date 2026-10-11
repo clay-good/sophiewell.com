@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Predicted Peak, Trough and Level (One Compartment): steady-state peak and trough, the
+  accumulation factor, time to steady state, the level at a time after any dose, and how long a
+  level takes to fall to a target, from parameters you enter.
+- AUC From Measured Levels (Trapezoidal Rule): the area under measured levels, linear or linear-up
+  log-down, with the extrapolated share, terminal half-life and clearance.
+- Time Above MIC for a Dosing Regimen: the percent of the interval free drug stays above the MIC,
+  with the same dose as a 3-hour and 4-hour infusion beside it. No target is applied. See
+  docs/spec-v1631.md.
 - IV Order Against the Label: Speed and Strength: the delivery rate and concentration of an IV
   order beside the limits on the drug's own label, for phenytoin, fosphenytoin, vancomycin,
   potassium chloride, magnesium sulfate and calcium gluconate, with the shortest infusion time

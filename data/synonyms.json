@@ -12017,6 +12017,39 @@
       ],
       "tile": "iv-label-rate-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "predicted peak and trough",
+        "accumulation factor",
+        "time to steady state half lives",
+        "one compartment model level at time",
+        "how long for a drug level to fall"
+      ],
+      "tile": "pk-steady-state-predict",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "trapezoidal rule auc",
+        "area under the curve from levels",
+        "linear up log down",
+        "auc to infinity extrapolation",
+        "terminal half life from levels"
+      ],
+      "tile": "auc-trapezoid",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "time above mic",
+        "ft mic beta lactam",
+        "extended infusion time above mic",
+        "percent of interval above mic",
+        "free drug above mic"
+      ],
+      "tile": "tmic-beta-lactam",
+      "audience": "clinicians"
     }
   ]
 }

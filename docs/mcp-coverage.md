@@ -9001,6 +9001,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/iv-label-rate-check-v1630.js (spec-v1630: IV rate and concentration against the FDA label (six drugs; label rows) — clinical disclaimer)
 - `iv-label-rate-check`
 
+### lib/pk-steady-state-predict-v1631.js (spec-v1631: One-compartment steady-state prediction (model algebra) — clinical disclaimer)
+- `pk-steady-state-predict`
+
+### lib/auc-trapezoid-v1631.js (spec-v1631: AUC by the trapezoidal rule (arithmetic) — clinical disclaimer)
+- `auc-trapezoid`
+
+### lib/tmic-beta-lactam-v1631.js (spec-v1631: Time above the MIC for an intermittent regimen (model algebra) — clinical disclaimer)
+- `tmic-beta-lactam`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

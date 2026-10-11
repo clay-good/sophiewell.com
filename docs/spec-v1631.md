@@ -1,6 +1,6 @@
 # spec-v1631 — Clinical pharmacokinetics and therapeutic drug monitoring
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 20 new tools (1 build-gated), 10 backfills.
+**Status:** In progress, October 11, 2026: 3 of 20 tools built (see Build status). 20 new tools (1 build-gated), 10 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A hospital pharmacist's kinetics service does the same arithmetic all day: pick a first
@@ -900,4 +900,11 @@ Backfills 3, 5, 6 and 8 correct or re-source a number in a live tool and are ind
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+Updated October 11, 2026. 3 of 20 tools built; the backfills are open.
+
+| Tool | Status |
+|---|---|
+| 15. `pk-steady-state-predict` | Built (group F, `views/group-v1631.js`). The spec's checks hold: an interval of one half-life gives an accumulation factor of 2, 90% of steady state takes 3.32 half-lives, and a bolus does not divide by zero; the closed-form peak is also tested against superposing 60 doses. The time-concentration table is five points through one interval, in the result's lines. Exactly one of half-life, rate constant or clearance is required. The page cites the model only; Sawchuk 1977 was not re-read. |
+| 16. `auc-trapezoid` | Built (group F). A densely sampled exponential returns dose ÷ (k × Vd) within 1% by both methods; two equal falling levels and a zero fall back to the linear form. The terminal slope is a log-linear fit through the last samples the reader chooses, and extrapolating needs that count. `busulfan-auc-dose` is not built, so nothing calls the exported function yet. |
+| 17. `tmic-beta-lactam` | Built (group F). The spec's case reproduces (0.5-hour infusion 1.74 hours, 21.7%; 4-hour infusion 1.02 hours, 12.8%, free peak 33.95 mg/L), and the closed form is tested against a numerical integration to 0.01 hours on five regimens. No target is printed. **Not built:** the continuous-infusion comparison. |
+| 1 to 14, 18 to 20 | Not built. |
