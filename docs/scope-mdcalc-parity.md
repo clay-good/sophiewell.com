@@ -618,3 +618,7 @@ experience**.
 > v1632, Hepatic Dose by Child-Pugh Class (FDA Label) — [spec-v1632](spec-v1632.md), which adds `hepatic-label-dose` — is 2134.)
 
 > v1632, GLP-1 Dose Escalation Check (FDA Label) — [spec-v1632](spec-v1632.md), which adds `glp1-titration-check` — is 2135.)
+
+> v1633, Anticoagulant Switch: When to Start the Next Drug (FDA Labels) — [spec-v1633](spec-v1633.md), which adds `anticoag-switch-clock` — is 2136.)
+
+> v1633, DOAC Hold Before a Procedure (Labels and PAUSE) — [spec-v1633](spec-v1633.md), which adds `doac-periprocedural-timing` — is 2137.)

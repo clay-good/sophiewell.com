@@ -1,6 +1,6 @@
 # spec-v1633 — Conversions, switches, titrations and tapers
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 23 new tools, none gated as a whole. One part of one tool is build-gated (the intensity category of `statin-ldl-reduction`), and tools 19 and 20 rest on abstracts until the full papers are read.
+**Status:** In progress, October 11, 2026: 2 of 23 tools built (see Build status). 23 new tools, none gated as a whole. One part of one tool is build-gated (the intensity category of `statin-ldl-reduction`), and tools 19 and 20 rest on abstracts until the full papers are read.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A pharmacist moving a patient from one drug, route, formulation or dose to another opens the
@@ -1009,4 +1009,9 @@ Papers and agency documents:
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+Updated October 11, 2026. 2 of 23 tools built.
+
+| Tool | Status |
+|---|---|
+| 1. `anticoag-switch-clock` | Built (group Q, `views/group-v1633.js`) on the four DOAC label rows `doac-dose-check` already watches. Eliquis 2.5, Xarelto 2.3, Pradaxa 2.6 and 2.7 and Savaysa 2.4 were re-read on October 11, 2026 and every row of the table above matched. The date-time is optional: without it the rule is the answer and the result says which time to enter. Pradaxa prints 30 mL/min in two rows (30-50 and 15-30), so 30 shows both. The Pradaxa label has no row for a switch to or from another oral anticoagulant other than warfarin; the result says so and shows the other label's row. Warfarin to a heparin, or heparin to heparin, is reported as not covered. The Eliquis switching section gives no separate pediatric rule and the Savaysa label has no pediatric indication; both are said in the result. |
+| 2. `doac-periprocedural-timing` | Built (group G). Label sections re-read October 11, 2026 (Eliquis 2.4, Xarelto 2.4, Pradaxa 2.8, Savaysa 2.5); PAUSE re-read on PMC (Methods, Table 2: dabigatran below 50 mL/min, 2 and 4 days; exclusions below 25 and 30 mL/min; edoxaban not studied). Dosing frequency is not an input: the label lines are in hours before the procedure and PAUSE counts whole days without the drug, so nothing turns on it. The clearance is asked for only where a rule uses it (dabigatran, and any drug under PAUSE). Whether a later CHEST statement changed the days was not checked; the tool cites PAUSE itself. |

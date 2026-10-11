@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Anticoagulant Switch: When to Start the Next Drug (FDA Labels): the INR threshold, overlap plan or
+  timing rule the Eliquis, Xarelto, Pradaxa and Savaysa labels give for a switch, as a date and time
+  when a dose time is entered.
+- DOAC Hold Before a Procedure (Labels and PAUSE): the label's latest time for the last dose and the
+  PAUSE calendar side by side, and a plain statement where PAUSE did not study the patient.
 - GLP-1 Dose Escalation Check (FDA Label): for Ozempic, Wegovy, Rybelsus, Mounjaro, Zepbound,
   Victoza, Saxenda and Trulicity, whether the current dose is a step the label lists, the next step,
   and the earliest date the label permits it.

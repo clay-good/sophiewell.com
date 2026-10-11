@@ -9109,6 +9109,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/glp1-titration-check-v1632.js (spec-v1632: GLP-1 dose escalation steps and dates (eight label rows) — clinical disclaimer)
 - `glp1-titration-check`
 
+### lib/anticoag-switch-clock-v1633.js (spec-v1633: Anticoagulant switch timing (four label rows) — clinical disclaimer)
+- `anticoag-switch-clock`
+
+### lib/doac-periprocedural-timing-v1633.js (spec-v1633: DOAC interruption around a procedure (four label rows and PAUSE) — clinical disclaimer)
+- `doac-periprocedural-timing`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

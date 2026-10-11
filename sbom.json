@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:217d0e0e-830d-57df-8eb4-18789278f54e",
+  "serialNumber": "urn:uuid:afa51c2f-5a7f-5bea-8e1f-0e0dddcc6720",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T17:27:25.327Z",
+    "timestamp": "2026-10-11T17:38:30.893Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2135 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2137 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "61b755ab086c209d5b598357d967dd01aa7125e389025ab6ed3668fb220ef834"
+          "content": "7f781f9a3fd4d4361c59415a7b8fd6fe3e4cebf5aa2b7508793086fd176b880f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "137923"
+          "value": "138064"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "40b3aa478bfd5b6187e39cceca43b3860c97080521a73e5aaa163c2a7ceb8617"
+          "content": "863503323a15e6785234350752a7c5d1163bb03fdb9f6f3704533e88fef1d955"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "603509"
+          "value": "603922"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d208f3664e5d642ee0aab54191dc8d3defa33dcb5542d0a94ebed0536b842076"
+          "content": "6f2b49e42e96c5e6a0bacd22c7f3d78ef941544185131c9a38221edc3fac5471"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "267693"
+          "value": "267962"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f17931e9a9c22961e30684568366bf60610d91137c281a93f67b7af95861080c"
+          "content": "7a8301a98b208fe6a1c0d5e234732d75e682eb89e85b656b99dec2b0d8f54595"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126342"
+          "value": "126510"
         }
       ]
     },
@@ -1312,6 +1312,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3348"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/anticoag-switch-clock-v1633.js",
+      "type": "file",
+      "name": "lib/anticoag-switch-clock-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a9374ae1015ad54bf121111e0806849aeab10cdf49b1e6064afd366244bccd72"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "20862"
         }
       ]
     },
@@ -6604,6 +6625,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "16978"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/doac-periprocedural-timing-v1633.js",
+      "type": "file",
+      "name": "lib/doac-periprocedural-timing-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "12f6b953167c8e14de58d32c4f93f59c6e987cd06ad56f9c7c6198413db2e45e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12763"
         }
       ]
     },
@@ -15119,7 +15161,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d0ce699fbb0b7df2bef2195df74d37f054a75ce2e3658186c323454736035f05"
+          "content": "683afc60e5b7fa9d2f2568805530614ecc132803129c0a9795c92e6aedda68bc"
         }
       ],
       "properties": [
@@ -15129,7 +15171,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2841348"
+          "value": "2844163"
         }
       ]
     },
@@ -29057,6 +29099,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/anticoag-switch-clock-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/anticoag-switch-clock-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b483184e9144a7465b7d103ee35c0f12739ee22cc005725a20f2e39e791b786c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2214"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/antivenom-repeat-v1555.js",
       "type": "file",
       "name": "mcp/adapters/antivenom-repeat-v1555.js",
@@ -33946,6 +34009,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1733"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/doac-periprocedural-timing-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/doac-periprocedural-timing-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "97e0ab456f3c9112d686498b3fbc19e7083352e62a763a771e32dc40f6620202"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1795"
         }
       ]
     },
@@ -52667,7 +52751,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "190c04a64a4a691307680f1b2cf76985434d940cc3c9c1df63179a17ad3f33c3"
+          "content": "f67824794c195c3a82fe78c4d3eec9e848b1e57ac08040d970866ff6cbd43766"
         }
       ],
       "properties": [
@@ -52677,7 +52761,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "137724"
+          "value": "138030"
         }
       ]
     },
@@ -57235,6 +57319,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "22238"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1633.js",
+      "type": "file",
+      "name": "views/group-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "04dbbe9a7c34c366d41060c2001b6b06ee5c07d72e885b85efe37bade33f784e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5129"
         }
       ]
     },
@@ -88056,6 +88161,7 @@
         "urn:sophiewell:file:source:lib/angle-malocclusion-v720.js",
         "urn:sophiewell:file:source:lib/anthro-v238.js",
         "urn:sophiewell:file:source:lib/anthro-v272.js",
+        "urn:sophiewell:file:source:lib/anticoag-switch-clock-v1633.js",
         "urn:sophiewell:file:source:lib/antivenom-repeat-v1555.js",
         "urn:sophiewell:file:source:lib/antiviral-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/ao-spine-neuro-v1241.js",
@@ -88308,6 +88414,7 @@
         "urn:sophiewell:file:source:lib/dme-v307.js",
         "urn:sophiewell:file:source:lib/dmft-caries-v716.js",
         "urn:sophiewell:file:source:lib/doac-dose-check-v1632.js",
+        "urn:sophiewell:file:source:lib/doac-periprocedural-timing-v1633.js",
         "urn:sophiewell:file:source:lib/dofetilide-dose-algorithm-v1632.js",
         "urn:sophiewell:file:source:lib/dom-fields.js",
         "urn:sophiewell:file:source:lib/dom.js",
@@ -89551,6 +89658,7 @@
         "urn:sophiewell:file:source:views/group-v1630.js",
         "urn:sophiewell:file:source:views/group-v1631.js",
         "urn:sophiewell:file:source:views/group-v1632.js",
+        "urn:sophiewell:file:source:views/group-v1633.js",
         "urn:sophiewell:file:source:views/group-v164.js",
         "urn:sophiewell:file:source:views/group-v165.js",
         "urn:sophiewell:file:source:views/group-v166.js",
@@ -90319,6 +90427,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/angle-malocclusion-v720.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v238.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v272.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/anticoag-switch-clock-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/antivenom-repeat-v1555.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/antiviral-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ao-spine-subaxial-v1241.js",
@@ -90552,6 +90661,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dme-v307.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dmft-caries-v716.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/doac-dose-check-v1632.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/doac-periprocedural-timing-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dofetilide-dose-algorithm-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dorr-femur-v499.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dose-calendar-v1512.js",
@@ -91547,7 +91657,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "217d0e0e830d07df"
+      "value": "afa51c2f5a7f9bea"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91559,7 +91669,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3427"
+      "value": "3432"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

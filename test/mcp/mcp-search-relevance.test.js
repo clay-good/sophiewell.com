@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['when to start apixaban after stopping warfarin inr threshold', ['anticoag-switch-clock']],
+  ['how many days to hold apixaban before high bleeding risk surgery', ['doac-periprocedural-timing']],
   ['when can the semaglutide dose be increased by the label', ['glp1-titration-check']],
   ['ketorolac maximum daily dose and five day limit from the label', ['ketorolac-limit-check']],
   ['famotidine and metoclopramide dose adjustments', ['gi-drug-dose-check']],

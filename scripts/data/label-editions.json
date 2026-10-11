@@ -702,7 +702,9 @@
     "labeler": "E.R. SQUIBB & SONS, L.L.C.",
     "setId": "e9481622-7cc6-418a-acb6-c5450daae9b0",
     "tools": [
-      "doac-dose-check"
+      "doac-dose-check",
+      "anticoag-switch-clock",
+      "doac-periprocedural-timing"
     ],
     "splVersion": 30,
     "publishedOn": "2025-05-05",
@@ -1433,7 +1435,9 @@
     "labeler": "BOEHRINGER INGELHEIM PHARMACEUTICALS INC.",
     "setId": "ba74e3cd-b06f-4145-b284-5fd6b84ff3c9",
     "tools": [
-      "doac-dose-check"
+      "doac-dose-check",
+      "anticoag-switch-clock",
+      "doac-periprocedural-timing"
     ],
     "splVersion": 48,
     "publishedOn": "2025-06-30",
@@ -1572,7 +1576,9 @@
     "labeler": "DAIICHI SANKYO INC.",
     "setId": "e77d3400-56ad-11e3-949a-0800200c9a66",
     "tools": [
-      "doac-dose-check"
+      "doac-dose-check",
+      "anticoag-switch-clock",
+      "doac-periprocedural-timing"
     ],
     "splVersion": 28,
     "publishedOn": "2025-07-14",
@@ -2102,7 +2108,9 @@
     "setId": "10db92f9-2300-4a80-836b-673e1ae91610",
     "tools": [
       "cockcroft-gault",
-      "doac-dose-check"
+      "doac-dose-check",
+      "anticoag-switch-clock",
+      "doac-periprocedural-timing"
     ],
     "splVersion": 65,
     "publishedOn": "2026-09-11",

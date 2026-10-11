@@ -1040,6 +1040,8 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import anticoagSwitchClockV1633 from './adapters/anticoag-switch-clock-v1633.js';
+import doacPeriproceduralTimingV1633 from './adapters/doac-periprocedural-timing-v1633.js';
 import glp1TitrationCheckV1632 from './adapters/glp1-titration-check-v1632.js';
 import ketorolacLimitCheckV1632 from './adapters/ketorolac-limit-check-v1632.js';
 import giDrugDoseCheckV1632 from './adapters/gi-drug-dose-check-v1632.js';
@@ -2206,6 +2208,8 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['anticoag-switch-clock-v1633', anticoagSwitchClockV1633],
+  ['doac-periprocedural-timing-v1633', doacPeriproceduralTimingV1633],
   ['glp1-titration-check-v1632', glp1TitrationCheckV1632],
   ['ketorolac-limit-check-v1632', ketorolacLimitCheckV1632],
   ['gi-drug-dose-check-v1632', giDrugDoseCheckV1632],

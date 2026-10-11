@@ -12460,6 +12460,32 @@
       ],
       "tile": "glp1-titration-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "warfarin to apixaban switch",
+        "warfarin to eliquis switch",
+        "switching eliquis to warfarin",
+        "switching xarelto to warfarin",
+        "switch from warfarin to xarelto",
+        "switching blood thinners",
+        "lovenox to eliquis transition",
+        "heparin drip to eliquis"
+      ],
+      "tile": "anticoag-switch-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pause protocol",
+        "stop eliquis before surgery",
+        "stop xarelto before surgery",
+        "hold eliquis before surgery",
+        "hold blood thinner before surgery",
+        "when to stop eliquis before surgery"
+      ],
+      "tile": "doac-periprocedural-timing",
+      "audience": "clinicians"
     }
   ]
 }
