@@ -658,3 +658,9 @@ experience**.
 > v1633, Proton-Pump Inhibitor Dose in Omeprazole Equivalents (Kirchheiner 2009) — [spec-v1633](spec-v1633.md), which adds `ppi-omeprazole-equivalent` — is 2154.)
 
 > v1633, Antidepressant Dose in Fluoxetine Equivalents (Hayasaka 2015) — [spec-v1633](spec-v1633.md), which adds `antidepressant-fluoxetine-equivalent` — is 2155.)
+
+> v1633, Statin Dose and Mean LDL-C Change (FDA Label Trial Table) — [spec-v1633](spec-v1633.md), which adds `statin-ldl-reduction` — is 2156.)
+
+> v1633, Levodopa Equivalent Daily Dose (Jost 2023) — [spec-v1633](spec-v1633.md), which adds `levodopa-equivalent-dose` — is 2157.)
+
+> v1633, Percent of Guideline Target Dose in Heart Failure (2022 AHA/ACC/HFSA) — [spec-v1633](spec-v1633.md), which adds `hf-gdmt-target-percent` — is 2158.)

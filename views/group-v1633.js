@@ -5,7 +5,8 @@
 // lamotrigine-titration-calendar, label-titration-calendar, aed-formulation-switch,
 // transplant-formulation-switch, label-formulation-switch, levothyroxine-start-dose,
 // lai-antipsychotic-start, vitamin-iu-converter, ppi-omeprazole-equivalent,
-// antidepressant-fluoxetine-equivalent.
+// antidepressant-fluoxetine-equivalent, statin-ldl-reduction, levodopa-equivalent-dose,
+// hf-gdmt-target-percent.
 
 import { el, clear } from '../lib/dom.js';
 import * as AS from '../lib/anticoag-switch-clock-v1633.js';
@@ -28,6 +29,9 @@ import * as LA from '../lib/lai-antipsychotic-start-v1633.js';
 import * as VI from '../lib/vitamin-iu-converter-v1633.js';
 import * as PP from '../lib/ppi-omeprazole-equivalent-v1633.js';
 import * as AE from '../lib/antidepressant-fluoxetine-equivalent-v1633.js';
+import * as SL from '../lib/statin-ldl-reduction-v1633.js';
+import * as LE from '../lib/levodopa-equivalent-dose-v1633.js';
+import * as HG from '../lib/hf-gdmt-target-percent-v1633.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -416,6 +420,52 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = AE.antidepressantFluoxetineEquivalent(args);
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'statin-ldl-reduction'(root) {
+    const pairs = [['slr-statin', 'statin'], ['slr-dose', 'dose'], ['slr-ldl', 'baselineLdl']];
+    selectField(root, 'Statin', 'slr-statin', SL.STATINS);
+    numField(root, 'Daily dose, mg', 'slr-dose', '');
+    numField(root, 'Baseline LDL-C, mg/dL (optional)', 'slr-ldl', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = SL.statinLdlReduction(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'levodopa-equivalent-dose'(root) {
+    const pairs = [...LE.DRUGS.map((d) => [`led-${d.dom}`, d.arg]), ['led-comt', 'comt'], ['led-comt-covered', 'comtCoveredLed'], ['led-istradefylline', 'istradefylline'], ['led-safinamide', 'safinamide'], ['led-zonisamide', 'zonisamide'], ['led-anticholinergic', 'anticholinergicDoses']];
+    root.appendChild(el('p', { text: 'Enter the total daily dose in mg of each drug taken; leave the rest blank.' }));
+    for (const d of LE.DRUGS) numField(root, d.text, `led-${d.dom}`, '');
+    selectField(root, 'COMT inhibitor (blank means none)', 'led-comt', LE.COMT);
+    numField(root, 'Entacapone or tolcapone: mg a day of levodopa equivalent taken within its effect (4 hours after entacapone 200 mg, 8 hours after tolcapone 100 mg)', 'led-comt-covered', '');
+    selectField(root, 'Istradefylline', 'led-istradefylline', LE.YES_NO);
+    selectField(root, 'Safinamide 50 or 100 mg a day', 'led-safinamide', LE.YES_NO);
+    selectField(root, 'Zonisamide 25 or 50 mg a day', 'led-zonisamide', LE.YES_NO);
+    numField(root, 'Anticholinergic: single doses a day that improve the UPDRS-III total by at least 5 points', 'led-anticholinergic', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = LE.levodopaEquivalentDose(args);
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'hf-gdmt-target-percent'(root) {
+    const pairs = HG.DRUGS.map((d) => [`hgt-${d.dom}`, d.arg]);
+    root.appendChild(el('p', { text: 'Enter the total daily dose in mg of each drug taken; leave the rest blank.' }));
+    for (const d of HG.DRUGS) numField(root, d.entered ? `${d.text}: ${d.entered}` : d.text, `hgt-${d.dom}`, '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = HG.hfGdmtTargetPercent(args);
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

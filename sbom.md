@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c565625bfc518bb5`
-Generated: 2026-10-11T19:44:13.739Z
+Build ID: `b81ecf06742c83b7`
+Generated: 2026-10-11T20:14:51.567Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 139371 | `1d3bf480192ec169db3f3a8d7651f7118861efec13c9354c91fb680cef788a19` |
+| `index.html` | 139587 | `96eab71b61e8b1388523e16e59dab2b6c3bd92714a64ac0ef90671f22b8df0ba` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 607022 | `5e5760517617783b6f7e857f5ed231e0d81ba82877eadc64cdd8d287ddce6383` |
+| `app.js` | 607532 | `cf164a47dbf10314c07dd14069508e2aaf1adc5f9f052ebe260e93f5ae77524d` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 6994 | `215b6fa7b871cac7b775393d28a00c11ff3ccd1ce1b3230b378bcb8d8f881b40` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 270385 | `f400b6f4e2f2faf15ec82b77e5383ad0d08c421a66d04882602c493ee9a81ed1` |
+| `sitemap.xml` | 270784 | `d5df8c411e520934b0dbb4fc01929f1bac5ab8768023cdd040e26bd8e7597870` |
 | `_headers` | 2063 | `1a500c03dd4add8641287d189c20f15afa3657931417b11ea2a51f39b501773f` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 128062 | `a621fbde8be5a3f4c359be54d8cbdab709c686a98255acfd5c05716598bc1410` |
+| `report-catalog.js` | 128314 | `357d55bbe96bf3221f82a6722f8c5a61cd9449e6144db544ec09f04ea525d32d` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -543,6 +543,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/herbert-scaphoid-v1241.js` | 6072 | `56b3a6e0c50dbaef9aba6b750bee9ffe6e7507963780b04e9bdfc6b956bb8fe1` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
 | `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |
+| `lib/hf-gdmt-target-percent-v1633.js` | 7927 | `e6267f2c8939ea96787f4b2b396717deae9458bc399c1ac89a83b6a090f3fa4d` |
 | `lib/hf-stages-abcd-v842.js` | 7839 | `93bde8395e5ff6baf50da213ef74c1358b09d224c3fdcc6fae245eb1dc8024c2` |
 | `lib/hhie-s-v728.js` | 3138 | `8fb3d7ef12c6fa87552661922e77886a64e03def7f92dbd5fd4f74895bb275d5` |
 | `lib/hijdra-v609.js` | 10151 | `c1ab35e0a425645ccad04f5c61dbf4f59370122a8ff92cf26e2511efb822e998` |
@@ -687,6 +688,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/leprosy-reaction-prednisolone-v1561.js` | 4019 | `9a9d6c9002f643cf45143ccdb42367a61a387fa5a9fc60d1d2b48ae6342d0f01` |
 | `lib/letournel-acetabulum-v466.js` | 5574 | `689cf7aaae5d4dc8c93260f73203ea0f3c96cea278fc61f8fc822f9418000c87` |
 | `lib/levine-edwards-v411.js` | 4146 | `5b8fad3241eb0819b4f66f2a3229cf0a7b2ae1452ca8ed9a928ae81e7f8514e8` |
+| `lib/levodopa-equivalent-dose-v1633.js` | 10098 | `df5a07fcf9f1ff50af8d6e27c494f804790194757af106e260a8534b9fb65160` |
 | `lib/levothyroxine-start-dose-v1633.js` | 8758 | `b4d57bf8555bdb39d655e2c0b7ec07d485ddc1db5a2cfaa2a53da2f6b6d673fe` |
 | `lib/lf-mda-regimen-v1562.js` | 6942 | `ad9f9c6e24fccf39b78fd83e45f498a67265aea09afe782284496d01c8ea220a` |
 | `lib/li-rads-v327.js` | 4931 | `fa89bbfeffee9ee672f964665b42bfe958158a0210f07848595585bbca9ba94c` |
@@ -767,7 +769,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/meq-mmol-mg-v1629.js` | 6820 | `f1f90e79e605edf6d06efa2a5d08841897dd165e68287ef964271107c0ef6dbb` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2864456 | `4f2145f2425737c393770c39228d7c333bf4ebc68538fee2d6ae340fcd54c959` |
+| `lib/meta.js` | 2866495 | `f0e4b9c3c8fad1888e2d66c7e13359b98a3dd1dfe28c1e0206377cdc6054b8ae` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19716 | `70987b0743a01bf29b36267679574b76f3b69cb801e02bb2726da0b384de792c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1208,6 +1210,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/stanford-dissection-v1242.js` | 7111 | `9a3a6f1ccb9877f506ae47b245b08483eaf6afdc649cdba1f920504ffbed1e84` |
 | `lib/startback-v781.js` | 5927 | `da2d968b8a6a00b328e2f3a3f1f1ccb05bd0fa3a6bea26b5ab033857b4c1cfac` |
 | `lib/state-calendar.js` | 20940 | `9cfbeeeb1d3625dbf712a348574e15accfbadbb67b94f64336927b6e9bf5d389` |
+| `lib/statin-ldl-reduction-v1633.js` | 5409 | `91b0c5c34a4e1567cc19f9110fd6548a45bae056beaa2a7e5458cebb35b2dc4a` |
 | `lib/steinberg-avn-v407.js` | 4524 | `ccb1b143de3be3104e76ed0e4250a99d285f9a59a9428fded38d4a5adc07e93f` |
 | `lib/steinbrocker-ra-v469.js` | 3579 | `a2fc9925c8ec0461e7b245f71e15664a453dca69636a548f6cf0f012a185c14f` |
 | `lib/step-therapy-v1502.js` | 7907 | `40287cfc7922d98f235d50fce150a3c873edf69844d4cbab4b80f30f71201ac8` |
@@ -1853,6 +1856,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/herbert-scaphoid-v1241.js` | 1451 | `ac204f8e9d4454173280cc7697c30eddfc91fc55eaf7a81268fe3bf5d5c10475` |
 | `mcp/adapters/herring-pillar-v347.js` | 1572 | `7dd67fd475cf24652fa9a7d739e1b056b4fdc8269a8e6b5602f54feca7f60b97` |
 | `mcp/adapters/hf-ef-classification-v840.js` | 1361 | `466c94db77ae9b1c399bc23205c1cb7e2d247a7fb8359e655f2ddb66945e5ddb` |
+| `mcp/adapters/hf-gdmt-target-percent-v1633.js` | 1017 | `9d944d2a64adf6a5684e048ba9d18974192d0065863afbf361d5e3a1239d060b` |
 | `mcp/adapters/hf-stages-abcd-v842.js` | 1852 | `399ed0e4131296eeee0477708c96458f688a6b4fbc40f957647e1c4f070ba907` |
 | `mcp/adapters/hhie-s-v728.js` | 1266 | `c24ad51f6afc7c875f808a4e1d9fafbbe55c5337efc8582825be59c8bbf98ec5` |
 | `mcp/adapters/hijdra-v609.js` | 4809 | `57f7bb018b389d941cf8f03aadab65b662a93a7d633922896cb88316560abbf2` |
@@ -1975,6 +1979,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/leprosy-reaction-prednisolone-v1561.js` | 981 | `f455566c583ec3d7c3a81bfbe9e42d67eb5349b1efaacad75001fd22d73825a9` |
 | `mcp/adapters/letournel-acetabulum-v466.js` | 1440 | `f79e53e8e1c89d448719b2d69e7638d5da292da3c66ed3a24980e71822a8854c` |
 | `mcp/adapters/levine-edwards-v411.js` | 1454 | `c512f937b8a19142a062be4f1437daa292dfad8067c0311de71e2d3845d22a29` |
+| `mcp/adapters/levodopa-equivalent-dose-v1633.js` | 1783 | `9e2c7ba3d66c10cff3be9632dd9a3078f9062d0e616492d5f0a973e0f42557a7` |
 | `mcp/adapters/levothyroxine-start-dose-v1633.js` | 1277 | `1907845bf298e067de640bbc4cba238cc48e3eacaf8cbec8a77c5770020ef5f4` |
 | `mcp/adapters/lf-mda-regimen-v1562.js` | 1749 | `3468e6bcc0257a5666fb629fb01b34176116443cbf025d57ce683f0f0f8e4f77` |
 | `mcp/adapters/li-rads-v327.js` | 1389 | `57c30c7df1f4fece84e762f04de41867efaee8da468d14d320ea81c814509a1a` |
@@ -2428,6 +2433,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/stamey-incontinence-v465.js` | 1196 | `359869efa08efc90671d988e55ceab6bd73e9641ada5db3bec99f7b8c4d59082` |
 | `mcp/adapters/stanford-dissection-v1242.js` | 1667 | `e4186ba65323cbe3a0e0d4fd111e4afc10183158fda42c8181940e3006ded830` |
 | `mcp/adapters/startback-v781.js` | 1968 | `ffd18b131d9965110246d4c15f39cf0e5bdfa9562bd0e5b95e342a3dcf9129b3` |
+| `mcp/adapters/statin-ldl-reduction-v1633.js` | 1190 | `11ebbfaf1f22702deb768dffba137366714b9e40b0d9d5c81b889c879d51c9ed` |
 | `mcp/adapters/steinberg-avn-v407.js` | 1484 | `3906b96fc0fe4e4b8669743dca37891232b42c80af5d8fdd8a8ff944124f302c` |
 | `mcp/adapters/steinbrocker-ra-v469.js` | 1232 | `a873fae70fa594875d15663f1a2b9c50f1fb0af411b40f5f40754b12bacd8bae` |
 | `mcp/adapters/step-therapy-v1502.js` | 1466 | `4b415224448c737ddf6dbf4212be8896a1e7ba5346ed7bb141b7a7873254eada` |
@@ -2580,7 +2586,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zika-case-def-v1563.js` | 1545 | `09efb04a1b9bceec1819cf865b27f0dfde4579b3c440771247ec65f03b2ba077` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 140790 | `6c28d4dc3ad24e509b077322dc09f9b607550d91003b9ffb3ce74c9ba97fa1ae` |
+| `mcp/catalog.js` | 141229 | `faf53c8b5aa4096d2a54faf03463b25acd2ed5927aba83a25fbe4e15001e1399` |
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10616 | `7a2aa853195af4f25f5eae871bb586bb460aec75c9e0c3cb2aa5a510fd481219` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
@@ -2798,7 +2804,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1630.js` | 22124 | `a6e4fea0e95479908760b1370a9a1e499b3f5d448378470f93bdfc9cd0091d78` |
 | `views/group-v1631.js` | 23479 | `40a5ca5420b96dfc912cebce079b624390ab822f93973f48222002562c37e79d` |
 | `views/group-v1632.js` | 22238 | `c3bfa88797e5bef2edd97efade44b441a2834a146d1388ec383e8ef815853dfb` |
-| `views/group-v1633.js` | 26068 | `a2758e6603e3be2fdac4f222ca16475cc0b71e0c2623d6a1a47e1e0de365b78f` |
+| `views/group-v1633.js` | 29480 | `6028e2b92c997dbc173f03b9afb4dd52e0e085984a4df67c0548a215d25be157` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v165.js` | 10575 | `bc3f3b3fe1cddf43d5b5ab8e99063a80d75ecaf527ed9fe608bbed3c8c59b1a9` |
 | `views/group-v166.js` | 6698 | `15f2b9e088bbfd84cc2c31c8014f6d84ecd313459cf16ebe7f401b08871ce8d5` |

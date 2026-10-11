@@ -9169,6 +9169,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/antidepressant-fluoxetine-equivalent-v1633.js (spec-v1633: Antidepressant fluoxetine equivalents (Hayasaka 2015) — clinical disclaimer)
 - `antidepressant-fluoxetine-equivalent`
 
+### lib/statin-ldl-reduction-v1633.js (spec-v1633: Statin dose and mean LDL-C change (Crestor label trial table) — clinical disclaimer)
+- `statin-ldl-reduction`
+
+### lib/levodopa-equivalent-dose-v1633.js (spec-v1633: Levodopa equivalent daily dose (Jost 2023) — clinical disclaimer)
+- `levodopa-equivalent-dose`
+
+### lib/hf-gdmt-target-percent-v1633.js (spec-v1633: Percent of guideline target dose in HFrEF (2022 AHA/ACC/HFSA Table 14) — clinical disclaimer)
+- `hf-gdmt-target-percent`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

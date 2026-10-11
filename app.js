@@ -2726,6 +2726,9 @@ const UTILITIES = [
   { id: 'vitamin-iu-converter', name: 'Vitamin IU Converter: A, D, E, Folate and Niacin (FDA Factors)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ppi-omeprazole-equivalent', name: 'Proton-Pump Inhibitor Dose in Omeprazole Equivalents (Kirchheiner 2009)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'antidepressant-fluoxetine-equivalent', name: 'Antidepressant Dose in Fluoxetine Equivalents (Hayasaka 2015)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'statin-ldl-reduction', name: 'Statin Dose and Mean LDL-C Change (FDA Label Trial Table)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'levodopa-equivalent-dose', name: 'Levodopa Equivalent Daily Dose (Jost 2023)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hf-gdmt-target-percent', name: 'Percent of Guideline Target Dose in Heart Failure (2022 AHA/ACC/HFSA)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

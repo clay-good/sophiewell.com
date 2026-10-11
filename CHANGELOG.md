@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Statin Dose and Mean LDL-C Change (FDA Label Trial Table): the 6-week group mean for a
+  rosuvastatin, atorvastatin, simvastatin or pravastatin dose in the comparative trial on the
+  Crestor label, applied to a baseline if one is given. No intensity category.
+- Levodopa Equivalent Daily Dose (Jost 2023): each Parkinson's disease drug times the paper's
+  factor, with its rules for COMT inhibitors, istradefylline, safinamide, zonisamide and
+  anticholinergics, and every contribution listed.
+- Percent of Guideline Target Dose in Heart Failure (2022 AHA/ACC/HFSA): each drug's total daily
+  dose against the target dose in the guideline table, both ends shown where the target is a range.
 - Long-Acting Injectable Antipsychotic Starting Dose (FDA Labels): Invega Sustenna, Invega Trinza,
   Aristada and Abilify Maintena, from the oral or prior injection dose, with the initiation dates.
 - Vitamin IU Converter: A, D, E, Folate and Niacin (FDA Factors): IU to metric and back by FDA's

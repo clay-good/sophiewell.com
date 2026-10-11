@@ -716,14 +716,16 @@
     "labeler": "ASTRAZENECA PHARMACEUTICALS LP",
     "setId": "325a5d0e-9a72-4015-9fcd-1655fb504cee",
     "tools": [
-      "cardiac-renal-dose-check"
+      "cardiac-renal-dose-check",
+      "statin-ldl-reduction"
     ],
     "splVersion": 19,
     "publishedOn": "2026-09-30",
     "verifiedOn": "2026-10-11",
     "validThrough": "2027-10-11",
     "sections": {
-      "34068-7": "ab11d3a6c92578a8c3c0b645354e39c7a3293ee51b0a3f508f34a1479c3c21cd"
+      "34068-7": "ab11d3a6c92578a8c3c0b645354e39c7a3293ee51b0a3f508f34a1479c3c21cd",
+      "34092-7": "ca95b18601f60651f47624793294e26e1e967f34f2e5bb7a5bd4aaa2c5545265"
     }
   },
   {

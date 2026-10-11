@@ -12729,6 +12729,42 @@
       ],
       "tile": "antidepressant-fluoxetine-equivalent",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "statin",
+        "atorvastatin",
+        "simvastatin",
+        "pravastatin"
+      ],
+      "tile": "statin-ldl-reduction",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "levodopa equivalent",
+        "ledd",
+        "levodopa",
+        "carbidopa levodopa",
+        "pramipexole",
+        "ropinirole",
+        "rotigotine",
+        "sinemet",
+        "rytary",
+        "carbidopa",
+        "parkinson drug levodopa equivalent"
+      ],
+      "tile": "levodopa-equivalent-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "gdmt",
+        "gdmt dose percent",
+        "heart failure gdmt dose"
+      ],
+      "tile": "hf-gdmt-target-percent",
+      "audience": "clinicians"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c565625b-fc51-5bb5-8b0e-4bdc7a843183",
+  "serialNumber": "urn:uuid:b81ecf06-742c-53b7-8a41-3f8ce161c6fc",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T19:44:13.739Z",
+    "timestamp": "2026-10-11T20:14:51.567Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2155 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2158 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1d3bf480192ec169db3f3a8d7651f7118861efec13c9354c91fb680cef788a19"
+          "content": "96eab71b61e8b1388523e16e59dab2b6c3bd92714a64ac0ef90671f22b8df0ba"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "139371"
+          "value": "139587"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5e5760517617783b6f7e857f5ed231e0d81ba82877eadc64cdd8d287ddce6383"
+          "content": "cf164a47dbf10314c07dd14069508e2aaf1adc5f9f052ebe260e93f5ae77524d"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "607022"
+          "value": "607532"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f400b6f4e2f2faf15ec82b77e5383ad0d08c421a66d04882602c493ee9a81ed1"
+          "content": "d5df8c411e520934b0dbb4fc01929f1bac5ab8768023cdd040e26bd8e7597870"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "270385"
+          "value": "270784"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a621fbde8be5a3f4c359be54d8cbdab709c686a98255acfd5c05716598bc1410"
+          "content": "357d55bbe96bf3221f82a6722f8c5a61cd9449e6144db544ec09f04ea525d32d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "128062"
+          "value": "128314"
         }
       ]
     },
@@ -10724,6 +10724,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hf-gdmt-target-percent-v1633.js",
+      "type": "file",
+      "name": "lib/hf-gdmt-target-percent-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e6267f2c8939ea96787f4b2b396717deae9458bc399c1ac89a83b6a090f3fa4d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7927"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hf-stages-abcd-v842.js",
       "type": "file",
       "name": "lib/hf-stages-abcd-v842.js",
@@ -13748,6 +13769,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/levodopa-equivalent-dose-v1633.js",
+      "type": "file",
+      "name": "lib/levodopa-equivalent-dose-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df5a07fcf9f1ff50af8d6e27c494f804790194757af106e260a8534b9fb65160"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10098"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/levothyroxine-start-dose-v1633.js",
       "type": "file",
       "name": "lib/levothyroxine-start-dose-v1633.js",
@@ -15434,7 +15476,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4f2145f2425737c393770c39228d7c333bf4ebc68538fee2d6ae340fcd54c959"
+          "content": "f0e4b9c3c8fad1888e2d66c7e13359b98a3dd1dfe28c1e0206377cdc6054b8ae"
         }
       ],
       "properties": [
@@ -15444,7 +15486,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2864456"
+          "value": "2866495"
         }
       ]
     },
@@ -24685,6 +24727,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "20940"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/statin-ldl-reduction-v1633.js",
+      "type": "file",
+      "name": "lib/statin-ldl-reduction-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "91b0c5c34a4e1567cc19f9110fd6548a45bae056beaa2a7e5458cebb35b2dc4a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5409"
         }
       ]
     },
@@ -38234,6 +38297,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hf-gdmt-target-percent-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/hf-gdmt-target-percent-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9d944d2a64adf6a5684e048ba9d18974192d0065863afbf361d5e3a1239d060b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1017"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hf-stages-abcd-v842.js",
       "type": "file",
       "name": "mcp/adapters/hf-stages-abcd-v842.js",
@@ -40792,6 +40876,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1454"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/levodopa-equivalent-dose-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/levodopa-equivalent-dose-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9e2c7ba3d66c10cff3be9632dd9a3078f9062d0e616492d5f0a973e0f42557a7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1783"
         }
       ]
     },
@@ -50309,6 +50414,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/statin-ldl-reduction-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/statin-ldl-reduction-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "11ebbfaf1f22702deb768dffba137366714b9e40b0d9d5c81b889c879d51c9ed"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1190"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/steinberg-avn-v407.js",
       "type": "file",
       "name": "mcp/adapters/steinberg-avn-v407.js",
@@ -53507,7 +53633,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6c28d4dc3ad24e509b077322dc09f9b607550d91003b9ffb3ce74c9ba97fa1ae"
+          "content": "faf53c8b5aa4096d2a54faf03463b25acd2ed5927aba83a25fbe4e15001e1399"
         }
       ],
       "properties": [
@@ -53517,7 +53643,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140790"
+          "value": "141229"
         }
       ]
     },
@@ -58085,7 +58211,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a2758e6603e3be2fdac4f222ca16475cc0b71e0c2623d6a1a47e1e0de365b78f"
+          "content": "6028e2b92c997dbc173f03b9afb4dd52e0e085984a4df67c0548a215d25be157"
         }
       ],
       "properties": [
@@ -58095,7 +58221,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "26068"
+          "value": "29480"
         }
       ]
     },
@@ -89365,6 +89491,7 @@
         "urn:sophiewell:file:source:lib/herbert-scaphoid-v1241.js",
         "urn:sophiewell:file:source:lib/herring-pillar-v347.js",
         "urn:sophiewell:file:source:lib/hf-ef-classification-v840.js",
+        "urn:sophiewell:file:source:lib/hf-gdmt-target-percent-v1633.js",
         "urn:sophiewell:file:source:lib/hf-stages-abcd-v842.js",
         "urn:sophiewell:file:source:lib/hhie-s-v728.js",
         "urn:sophiewell:file:source:lib/hijdra-v609.js",
@@ -89509,6 +89636,7 @@
         "urn:sophiewell:file:source:lib/leprosy-reaction-prednisolone-v1561.js",
         "urn:sophiewell:file:source:lib/letournel-acetabulum-v466.js",
         "urn:sophiewell:file:source:lib/levine-edwards-v411.js",
+        "urn:sophiewell:file:source:lib/levodopa-equivalent-dose-v1633.js",
         "urn:sophiewell:file:source:lib/levothyroxine-start-dose-v1633.js",
         "urn:sophiewell:file:source:lib/lf-mda-regimen-v1562.js",
         "urn:sophiewell:file:source:lib/li-rads-v327.js",
@@ -90030,6 +90158,7 @@
         "urn:sophiewell:file:source:lib/stanford-dissection-v1242.js",
         "urn:sophiewell:file:source:lib/startback-v781.js",
         "urn:sophiewell:file:source:lib/state-calendar.js",
+        "urn:sophiewell:file:source:lib/statin-ldl-reduction-v1633.js",
         "urn:sophiewell:file:source:lib/steinberg-avn-v407.js",
         "urn:sophiewell:file:source:lib/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:source:lib/step-therapy-v1502.js",
@@ -91618,6 +91747,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/herbert-scaphoid-v1241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/herring-pillar-v347.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hf-ef-classification-v840.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hf-gdmt-target-percent-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hf-stages-abcd-v842.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hhie-s-v728.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hijdra-v609.js",
@@ -91740,6 +91870,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-reaction-prednisolone-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/letournel-acetabulum-v466.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/levine-edwards-v411.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/levodopa-equivalent-dose-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/levothyroxine-start-dose-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lf-mda-regimen-v1562.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/li-rads-v327.js",
@@ -92193,6 +92324,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/stamey-incontinence-v465.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stanford-dissection-v1242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/startback-v781.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/statin-ldl-reduction-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/steinberg-avn-v407.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/step-therapy-v1502.js",
@@ -92449,7 +92581,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c565625bfc518bb5"
+      "value": "b81ecf06742c83b7"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -92461,7 +92593,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3468"
+      "value": "3474"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

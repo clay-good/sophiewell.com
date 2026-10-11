@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import statinLdlReductionV1633 from './adapters/statin-ldl-reduction-v1633.js';
+import levodopaEquivalentDoseV1633 from './adapters/levodopa-equivalent-dose-v1633.js';
+import hfGdmtTargetPercentV1633 from './adapters/hf-gdmt-target-percent-v1633.js';
 import laiAntipsychoticStartV1633 from './adapters/lai-antipsychotic-start-v1633.js';
 import vitaminIuConverterV1633 from './adapters/vitamin-iu-converter-v1633.js';
 import ppiOmeprazoleEquivalentV1633 from './adapters/ppi-omeprazole-equivalent-v1633.js';
@@ -2226,6 +2229,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['statin-ldl-reduction-v1633', statinLdlReductionV1633],
+  ['levodopa-equivalent-dose-v1633', levodopaEquivalentDoseV1633],
+  ['hf-gdmt-target-percent-v1633', hfGdmtTargetPercentV1633],
   ['lai-antipsychotic-start-v1633', laiAntipsychoticStartV1633],
   ['vitamin-iu-converter-v1633', vitaminIuConverterV1633],
   ['ppi-omeprazole-equivalent-v1633', ppiOmeprazoleEquivalentV1633],
