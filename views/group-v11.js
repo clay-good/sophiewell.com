@@ -347,10 +347,23 @@ export const renderers = {
     root.appendChild(field('Amino acids (%)', 'io-aa', { min: 0, max: 100, placeholder: 'e.g. 2.5' }));
     root.appendChild(field('Sodium additives (mEq/L)', 'io-na', { placeholder: 'e.g. 30' }));
     root.appendChild(field('Potassium additives (mEq/L)', 'io-k', { placeholder: 'e.g. 20' }));
+    // spec-v1641 row 15: a by-component mode, for bags with lipid, calcium, magnesium or phosphate.
+    const compWrap = el('p');
+    compWrap.appendChild(el('label', { for: 'io-comp', text: 'Or by component (optional), one per line: labeled osmolarity in mOsm/L, volume in mL' }));
+    compWrap.appendChild(el('textarea', { id: 'io-comp', rows: '4', placeholder: '998, 500\n260, 250' }));
+    root.appendChild(compWrap);
     const o = out(); root.appendChild(o);
-    wire(['io-dex', 'io-aa', 'io-na', 'io-k'], () => safe(o, () => {
+    wire(['io-dex', 'io-aa', 'io-na', 'io-k', 'io-comp'], () => safe(o, () => {
       const dextrosePct = optNum('io-dex'), aminoAcidPct = optNum('io-aa');
       const naMeqL = optNum('io-na'), kMeqL = optNum('io-k');
+      const compText = document.getElementById('io-comp').value;
+      if (compText.trim()) {
+        const c = C.ivOsmolarityByComponents({ components: compText });
+        if (!c.valid) { note(o, c.message); return; }
+        o.appendChild(list([li(`By component: ${c.band}`, c.central ? 'warn' : null)]));
+        note(o, c.note);
+        if (dextrosePct == null && aminoAcidPct == null && naMeqL == null && kMeqL == null) return;
+      }
       // Every component is optional on its own -- a bag can be dextrose only --
       // but an empty bag has no osmolarity, and "peripheral administration is
       // generally acceptable" is a decision about where the line goes.

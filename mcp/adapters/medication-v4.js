@@ -73,13 +73,14 @@ export default [
   },
   {
     id: 'tpn-macro',
-    summary: 'Total parenteral nutrition macronutrients: grams and kcal of dextrose (3.4 kcal/g), amino acids (4 kcal/g), and 20% lipid (2 kcal/mL) from the final volume and percentages, with total kcal.',
+    summary: 'Total parenteral nutrition macronutrients: grams and kcal of dextrose (3.4 kcal/g), amino acids (4 kcal/g), and lipid by product (2 kcal/mL for the 20% emulsions, 3 for Intralipid 30%, 1.12 for Omegaven; each from its FDA label) from the final volume and percentages, with total kcal.',
     compute: F.tpnMacro,
     fields: [
       { dom: 'tpn-vol', arg: 'volumeMl', kind: 'number', required: true, label: 'Final volume', unit: 'mL' },
       { dom: 'tpn-d', arg: 'dextrosePct', kind: 'number', required: true, label: 'Dextrose (% final)', to: (v) => v || 0 },
       { dom: 'tpn-aa', arg: 'aminoAcidPct', kind: 'number', required: true, label: 'Amino acid (% final)', to: (v) => v || 0 },
-      { dom: 'tpn-lipid', arg: 'lipidPctOfVolume', kind: 'number', required: true, label: '20% lipid (mL as % of final volume)', to: (v) => v || 0 },
+      { dom: 'tpn-lipid', arg: 'lipidPctOfVolume', kind: 'number', required: true, label: 'Lipid emulsion (mL as % of final volume)', to: (v) => v || 0 },
+      { dom: 'tpn-product', arg: 'lipidProduct', kind: 'enum', values: ['lipid-20', 'intralipid-30', 'omegaven'], required: false, label: 'Lipid product (default: a 20% emulsion)' },
     ],
   },
   {

@@ -14,6 +14,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- TPN macronutrients cited "standard nutrition references" and used 2 kcal/mL for any lipid. The
+  energy figures are now the FDA labels' (dextrose 3.4 and amino acids 4 kcal/g from the Clinimix
+  table), the tool takes the lipid product (2 kcal/mL for the 20% emulsions, 3 for Intralipid 30%,
+  1.12 for Omegaven), and the unsourced per-kg goals and peripheral concentration limits are gone
+  from its dataset. spec-v1641 row 10.
+- IV osmolarity cited a society guideline for an "about 900 mOsm/L" central-line threshold. The
+  threshold is now the FDA labels' sentence (900 mOsm/L or greater must go through a central
+  vein), the result says the estimate leaves out lipid, calcium, magnesium and phosphate, and a
+  by-component mode gives the volume-weighted osmolarity from each component's label figure.
+  spec-v1641 row 15.
 - Enoxaparin dose cited the label and CHEST 2012 together without saying which row was which.
   Every dose is the Lovenox label's, so the tool now cites the label alone, each result names its
   label section, the prophylaxis result says hip or knee replacement is 30 mg every 12 hours on the

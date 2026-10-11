@@ -687,7 +687,12 @@ export const renderers = {
     root.appendChild(field('Final volume (mL)', 'tpn-vol', { placeholder: '1500' }));
     root.appendChild(field('Dextrose (% final)', 'tpn-d', { min: 0, max: 100, placeholder: '20' }));
     root.appendChild(field('Amino acid (% final)', 'tpn-aa', { min: 0, max: 100, placeholder: '5' }));
-    root.appendChild(field('Lipid 20% (mL as % of final volume)', 'tpn-lipid', { min: 0, max: 100, placeholder: '10' }));
+    root.appendChild(field('Lipid emulsion (mL as % of final volume)', 'tpn-lipid', { min: 0, max: 100, placeholder: '10' }));
+    root.appendChild(selectField('Lipid product', 'tpn-product', [
+      { value: 'lipid-20', text: '20% emulsion: Intralipid 20%, SMOFlipid, Clinolipid (2 kcal/mL)' },
+      { value: 'intralipid-30', text: 'Intralipid 30% (3 kcal/mL)' },
+      { value: 'omegaven', text: 'Omegaven (1.12 kcal/mL)' },
+    ]));
     const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
     root.appendChild(out);
     const run = () => {
@@ -718,6 +723,7 @@ export const renderers = {
         const r = tpnMacro({
           volumeMl: Number(document.getElementById('tpn-vol').value),
           dextrosePct, aminoAcidPct, lipidPctOfVolume,
+          lipidProduct: document.getElementById('tpn-product').value,
         });
         resultRow(out, [
           { label: 'Total', value: `${r.totalKcal.toFixed(0)} kcal in ${r.volumeMl} mL` },
@@ -725,11 +731,12 @@ export const renderers = {
           { label: 'Protein', value: `${r.proteinG.toFixed(1)} g (${r.kcalProtein.toFixed(0)} kcal)` },
           { label: 'Lipid', value: `${r.lipidG.toFixed(1)} g (${r.kcalLipid.toFixed(0)} kcal)` },
         ]);
+        out.appendChild(el('p', { class: 'muted', text: r.note }));
       } catch (err) {
         out.appendChild(el('p', { class: 'muted', text: err.message }));
       }
     };
-    ['tpn-vol', 'tpn-d', 'tpn-aa', 'tpn-lipid'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['tpn-vol', 'tpn-d', 'tpn-aa', 'tpn-lipid', 'tpn-product'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   // iv-to-po removed in spec-v29 wave 29-2 (Group K/O): static

@@ -2,24 +2,24 @@
   "manifestVersion": 2,
   "dataset": "tpn-rules",
   "label": "TPN macronutrient reference",
-  "sourceUrl": null,
-  "agency": "sophiewell.com (numeric)",
+  "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/",
+  "agency": "FDA labels via DailyMed; curated by sophiewell.com",
   "status": "mit-original",
   "cadence": "annual",
-  "recordCount": 3,
+  "recordCount": 2,
   "shards": [
     {
       "name": "tpn.json",
-      "sha256": "172f421a1724bbb6c499c1fd3fcf2787edc8d05cad39ce2997b2bb5aefd1ca7b",
+      "sha256": "4382f342151ecd038634b892c1d4458b183ab94f249689e20d3bd623e8c39065",
       "records": null,
-      "bytes": 192
+      "bytes": 1061
     }
   ],
   "coverage": "subset",
-  "coverageNote": "Macronutrient energy densities and limits.",
-  "sourceEdition": "unversioned",
-  "curatedAt": "2026-05-05",
-  "contentChangedAt": "2026-05-05",
-  "expiresOn": "2028-05-05",
-  "recordsSha256": "b7183b88773e9e8155c185db3460b8f40b86c9c44fc056426885430318ebc64b"
+  "coverageNote": "Macronutrient energy densities from FDA labels.",
+  "sourceEdition": "FDA labels read 2026-10-10; each row carries its label set id and version",
+  "curatedAt": "2026-10-11",
+  "contentChangedAt": "2026-10-11",
+  "expiresOn": "2028-10-11",
+  "recordsSha256": "45d8541747e668c0f4931f0024e4d4d0103c3cbfeab3dc5efb862feae0888a78"
 }

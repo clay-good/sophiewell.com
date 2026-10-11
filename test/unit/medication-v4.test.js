@@ -141,3 +141,38 @@ test('tpn: rejects zero volume', () => {
 
 // ivToPo tests removed with the iv-to-po tile (spec-v29 wave 29-2
 // Group K/O).
+
+// spec-v1641 row 10: the lipid energy is the product label's, and the rows match the shipped dataset.
+test('tpn: lipid grams and kcal follow the product', () => {
+  const base = { volumeMl: 1000, dextrosePct: 0, aminoAcidPct: 0, lipidPctOfVolume: 10 }; // 100 mL of emulsion
+  const twenty = tpnMacro(base);
+  assert.equal(twenty.kcalLipid, 200);
+  assert.ok(Math.abs(twenty.lipidG - 20) < 1e-9);
+  const thirty = tpnMacro({ ...base, lipidProduct: 'intralipid-30' });
+  assert.equal(thirty.kcalLipid, 300); // not the 200 a fixed 2 kcal/mL gave
+  assert.ok(Math.abs(thirty.lipidG - 30) < 1e-9);
+  const omegaven = tpnMacro({ ...base, lipidProduct: 'omegaven' });
+  assert.ok(Math.abs(omegaven.kcalLipid - 112) < 1e-9); // not 200
+  assert.ok(Math.abs(omegaven.lipidG - 10) < 1e-9);
+  assert.throws(() => tpnMacro({ ...base, lipidProduct: 'constructor' }), /lipid product/);
+  assert.match(twenty.note, /FDA labels/);
+});
+
+test('tpn: the lib rows are the label rows in data/tpn-rules', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const { LIPID_PRODUCTS } = await import('../../lib/medication-v4.js');
+  const data = JSON.parse(await readFile(new URL('../../data/tpn-rules/tpn.json', import.meta.url), 'utf8'));
+  assert.equal(data.kcalPerGram.dextrose, 3.4);
+  assert.equal(data.kcalPerGram.aminoAcid, 4);
+  assert.equal(data.typicalGoalsPerKgPerDay, undefined);
+  assert.equal(data.maxConcentrationsPeripheral, undefined);
+  assert.deepEqual([...new Set(data.lipidProducts.map((r) => r.id))].sort(), Object.keys(LIPID_PRODUCTS).sort());
+  for (const row of data.lipidProducts) {
+    assert.equal(row.kcalPerMl, LIPID_PRODUCTS[row.id].kcalPerMl, row.product);
+    assert.equal(row.gPerMl, LIPID_PRODUCTS[row.id].gPerMl, row.product);
+    assert.match(row.setId, /^[0-9a-f-]{36}$/);
+  }
+  const { META } = await import('../../lib/meta.js');
+  assert.doesNotMatch(JSON.stringify(META['tpn-macro'].source), /nutrition references/);
+  assert.ok(META['tpn-macro'].citationUrls.every((u) => u.url.startsWith('https://dailymed.nlm.nih.gov/')));
+});

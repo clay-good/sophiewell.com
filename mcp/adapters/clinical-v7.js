@@ -95,13 +95,18 @@ export default [
   },
   {
     id: 'iv-osmolarity',
-    summary: 'Estimated IV/PN solution osmolarity (ASPEN 2014): dextrose% x 50 + amino acid% x 100 + (Na + K mEq/L) x 2, with a central-line threshold band.',
-    compute: F.ivOsmolarity,
+    summary: 'Estimated IV/PN solution osmolarity (ASPEN 2014): dextrose% x 50 + amino acid% x 100 + (Na + K mEq/L) x 2, against the FDA labels\' central-vein threshold (900 mOsm/L or greater). The estimate omits lipid, calcium, magnesium and phosphate; pass `components` (one per line: mOsm/L, mL) for a volume-weighted osmolarity from each component\'s label instead.',
+    compute: (a) => {
+      const r = F.ivOsmolarity(a);
+      const has = a.components !== null && a.components !== undefined && String(a.components).trim() !== '';
+      return has ? { ...r, byComponents: F.ivOsmolarityByComponents({ components: a.components }) } : r;
+    },
     fields: [
       { dom: 'io-dex', arg: 'dextrosePct', kind: 'number', required: true, label: 'Dextrose', unit: '%' },
       { dom: 'io-aa', arg: 'aminoAcidPct', kind: 'number', required: true, label: 'Amino acids', unit: '%' },
       { dom: 'io-na', arg: 'naMeqL', kind: 'number', required: true, label: 'Sodium additives', unit: 'mEq/L' },
       { dom: 'io-k', arg: 'kMeqL', kind: 'number', required: true, label: 'Potassium additives', unit: 'mEq/L' },
+      { dom: 'io-comp', arg: 'components', kind: 'string', required: false, label: 'By component (optional), one per line: labeled osmolarity in mOsm/L, volume in mL' },
     ],
   },
   {

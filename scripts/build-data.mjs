@@ -219,7 +219,7 @@ const COVERAGE = {
   'benzo-equiv': { ...SUBSET('Approximate equivalent doses of common benzodiazepines.'), sourceEdition: 'unversioned' },
   'abx-renal': { ...SUBSET('Renal dose adjustments for common antibiotics from FDA labels.'), sourceEdition: 'FDA labels read 2026-10-10; each row carries its label set id and revision date' },
   'vasopressor-doses': { ...SUBSET('Dose ranges and standard concentrations for common vasopressors.'), sourceEdition: 'unversioned' },
-  'tpn-rules': { ...SUBSET('Macronutrient energy densities and limits.'), sourceEdition: 'unversioned' },
+  'tpn-rules': { ...SUBSET('Macronutrient energy densities from FDA labels.'), sourceEdition: 'FDA labels read 2026-10-10; each row carries its label set id and version' },
   'iv-to-po': { ...SUBSET('IV-to-oral conversions for common drugs.'), sourceEdition: 'unversioned' },
   concepts: { ...SUBSET('27 coded values a health record can fill, with units and recency windows; curated by hand.'), sourceEdition: 'unversioned' },
   'pa-metrics': { ...SUBSET('Calendar-2025 reports as posted by 32 payers: the six largest Medicare Advantage insurers (UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene, Elevance), Molina, Oscar, HCSC, Devoted, SCAN, Highmark, Independence, Excellus and Univera, Blue Shield of California, Blue Cross plans of Arizona, Kansas, Tennessee and Wellmark, Select Health, Priority Health, HealthPartners, Point32Health, UPMC, L.A. Care, Blue Cross plans of Alabama, Louisiana, Minnesota and North Carolina, Alignment and EmblemHealth; Medicare Advantage contracts, Medicaid managed care and CHIP plans, and Marketplace issuers. Other payers are not in it yet.'), sourceEdition: 'CY2025 reports, read 2026-10-07' },
@@ -2127,12 +2127,23 @@ const v4Datasets = [
   }),
   v4TableDataset({
     id: 'tpn-rules', label: 'TPN macronutrient reference',
-    sourceUrl: null, agency: 'sophiewell.com (numeric)', status: 'mit-original',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/', agency: 'FDA labels via DailyMed; curated by sophiewell.com', status: 'mit-original',
     cadence: 'annual', shardName: 'tpn.json',
+    // spec-v1641 row 10: every figure is a label's, read on DailyMed 2026-10-10. The earlier
+    // per-kg goals and peripheral concentration limits had no primary source and are gone.
     seed: {
-      kcalPerGram: { dextrose: 3.4, aminoAcid: 4.0, lipid20pct: 2.0 },
-      typicalGoalsPerKgPerDay: { kcal: [25, 30], protein: [1.2, 1.5] },
-      maxConcentrationsPeripheral: { dextrosePct: 12.5, aminoAcidPct: 5 },
+      kcalPerGram: {
+        dextrose: 3.4, aminoAcid: 4.0,
+        source: 'Clinimix label, caloric content table: 170 kcal/L from 5 g/100 mL hydrous dextrose; 170 kcal/L from 4.25 g/100 mL amino acids',
+        setId: 'dccff103-8695-400c-a15d-cc2fd078760a', version: 14, published: '2026-06-05',
+      },
+      lipidProducts: [
+        { id: 'lipid-20', product: 'Intralipid 20%', gPerMl: 0.2, kcalPerMl: 2, setId: '61e025f1-a38e-4af2-9e18-13ea12977cf5', version: 3, published: '2025-11-27' },
+        { id: 'lipid-20', product: 'SMOFlipid', gPerMl: 0.2, kcalPerMl: 2, setId: 'e0e9d917-ff6f-488e-a6a8-0ad59dd17d80', version: 11, published: '2025-09-17' },
+        { id: 'lipid-20', product: 'Clinolipid', gPerMl: 0.2, kcalPerMl: 2, setId: 'ae98eb03-c0e7-49d1-b024-77968e3d9d6e', version: 24, published: '2026-06-11' },
+        { id: 'intralipid-30', product: 'Intralipid 30%', gPerMl: 0.3, kcalPerMl: 3, setId: '98460eae-5195-48d2-ab73-00d276879ef6', version: 4, published: '2025-11-19' },
+        { id: 'omegaven', product: 'Omegaven', gPerMl: 0.1, kcalPerMl: 1.12, setId: '5d9d0b24-e139-48bf-ab2d-536fb59cf8e0', version: 6, published: '2025-09-29' },
+      ],
     },
   }),
   v4TableDataset({

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b388868ece20230c`
-Generated: 2026-10-11T00:51:23.415Z
+Build ID: `8abf18f667b36fec`
+Generated: 2026-10-11T01:27:56.608Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -247,7 +247,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v4.js` | 22174 | `04b250dc0c03681202158f417fe2c93f2dc688a46ebcaeb2ebb58bd1aec84172` |
 | `lib/clinical-v5.js` | 26940 | `9d75aa30b97b5dd05ebc62e30eff334027d441bc186ece1d826b3e9238eefa7d` |
 | `lib/clinical-v6.js` | 17029 | `546b3f749b758d099654b8ecdd89742e0a603583846708705e4871e3f6f47612` |
-| `lib/clinical-v7.js` | 19432 | `6f50185e325174b3631f7cfe7dae2f6405d61de5b311e13d791078aac8663161` |
+| `lib/clinical-v7.js` | 22511 | `e7a953ce4847435db0e4127db3d26166cb29621a382f73e322a9749f6a61d57d` |
 | `lib/clinical-v8.js` | 21791 | `d227095189d9528ae0b6d02711a39ad29fda7103d502bc0e03e52615526ec667` |
 | `lib/clinical.js` | 27749 | `1bceb6f592d3867b43265873c25cda7d5cd28b02fdc042b10a46555302f39295` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
@@ -691,14 +691,14 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/medicare-ffs-pa-required.js` | 16901 | `7f37f62121b94fe9bf5533dcad83c21a694bf8a95d183de311c26eb475ce7684` |
 | `lib/medicare-penalties-v1507.js` | 11757 | `adff9d120b04bab73e32a46931587ad3a29b402c47f20242c8f5947ce38aa4a0` |
 | `lib/medicare-reprice.js` | 5486 | `cc45eddf3a4d8121cc87cc3661f5179750663e0249c30b3a90c5bce56b744d34` |
-| `lib/medication-v4.js` | 19275 | `77c4c5e5c6166956f878107a402c4c1109dc0f58de1360453513e3a567054968` |
+| `lib/medication-v4.js` | 20721 | `0307d314a1ce99b8ebf0bde3ab0fe692736fa41cfde6559093c503fc683b9db4` |
 | `lib/medication-v5.js` | 20983 | `7d287c634fbd551ce5360ddc60a211e28682ff38617565c67caccb1ccfa9e509` |
 | `lib/meld3-v678.js` | 6453 | `e04e977ebe609d49b7c132b73aa4ae59fb58744362931d47b2acf4c0d1b39651` |
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2761808 | `f8fe8fffe0edcaf3d4e6ecdcf3234a7575e363890f64b6c54705ae57a3b32b49` |
+| `lib/meta.js` | 2763016 | `7273ae594e0b223e197050ff10349837c3e0cf787874dc640da66d12a462a7fc` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19716 | `70987b0743a01bf29b36267679574b76f3b69cb801e02bb2726da0b384de792c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1477,7 +1477,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v4.js` | 12789 | `92534eaaeb642010d2516d9c37f614ae684866bff5152e236286f65bb6f53efe` |
 | `mcp/adapters/clinical-v5.js` | 12057 | `351d76ac0a7dfb00861f91dfa132bbb36e67d21aa3e72502459ab63774914856` |
 | `mcp/adapters/clinical-v6.js` | 9094 | `85dda711c1f5b628041a41ae5218c2ea8909bc51ff6bff06df2b9a81e1674096` |
-| `mcp/adapters/clinical-v7.js` | 8069 | `083a2078dba3877d854e781c9adc4bfdd49beda72fa8cf735360afde1c9b1d54` |
+| `mcp/adapters/clinical-v7.js` | 8701 | `e04072d93aee022f3e87e06e518b6cf6b86ad045531807f8fda277e1655287b5` |
 | `mcp/adapters/clinical-v8.js` | 16125 | `48cb7074e7e7c5770c4a6cd8ec85a85b39b32de17b864ec44f657a80c69a0e5d` |
 | `mcp/adapters/clinical.js` | 28366 | `ad624394e10626b0542052d537d0b964f6d6f0e2ffb929efc835835243c08f83` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
@@ -1879,7 +1879,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/medicare-enrollment-window-v1507.js` | 1007 | `3786ee42e578f18681ba86c898d79f2f35a6c4bed0e4daf3bcb431bffad9e9d0` |
 | `mcp/adapters/medicare-ffs-pa-required.js` | 1018 | `eebf12722cfdb13ba2cb6688fc051983b0a304aa3191f706013d7e2c937bdcc1` |
 | `mcp/adapters/medicare-penalties-v1507.js` | 2712 | `d3732bee66bb93fc846a881c145bd6c4b89b264cf49d9c4421097d97e9ba3d4a` |
-| `mcp/adapters/medication-v4.js` | 9923 | `7e3f5fd8ae4a8031286db26b31c22f0d5f6700c45a89025c9807539efc0d909a` |
+| `mcp/adapters/medication-v4.js` | 10206 | `fb7ae2e2fd3078fd5f8c190f6ede0c6af3b488f03dc9ae31929408c3083795ee` |
 | `mcp/adapters/medication-v5.js` | 11501 | `bb2fa6b760988d88610e362fd7521f4aed1ea59115d7b9773e82a859221ffea5` |
 | `mcp/adapters/meld3-v678.js` | 1809 | `cdd0ac147f46bd4dc5a5ac9f71d3a8fb62e8f008a2609cc05c3369f18f682c33` |
 | `mcp/adapters/membranous-risk-v878.js` | 2992 | `7b6babfdf69026f8522a02f9539b48ebb04e105912e1f4542caacbc00b82d3c5` |
@@ -2406,7 +2406,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 54271 | `ae65578954064f09b479a3bd66a83e47e780a7c8c360a0cc228dd13c9edd095d` |
-| `views/group-f.js` | 55995 | `dcd9c339a34caa669b37aab2bf0eae761af6d9aa1fbf68ca55173496b481c96d` |
+| `views/group-f.js` | 56463 | `0dd70d140f6c25b1dc94b6b6ad623f6025da32664db2af88b70f2cb16ebee8f5` |
 | `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 26811 | `eac52954ca2dd14577d8c8e31db3e9c143d589426f0602eccc70476da4303540` |
@@ -2415,7 +2415,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v10.js` | 39171 | `84da9bdd8a68f73321b851da3c1dfa1ef5206989d44d06e6b1541cfa98545692` |
 | `views/group-v1061.js` | 2720 | `89e9eb196bceb0f67c97c0f9b9aefd0c0820f913ffc6b556d7a5aa809c7b9d25` |
 | `views/group-v1062.js` | 2586 | `ffbf32df0ae17e753e06b756f32e36e7c1f7dcbeb98c6bdefd26e1e342950eca` |
-| `views/group-v11.js` | 25680 | `08408f3f89d168c8db559316b9f4402b5fc339883d16fb75d8924083af4178cb` |
+| `views/group-v11.js` | 26556 | `b385db5c8567f6c5b0474d12e153c5b1bebd7e28af317f66b001fb1cde595b45` |
 | `views/group-v117.js` | 12166 | `bd791807741fd3275c6f46da19f26f8b39e7b1644759811bfdec6b0cc3557839` |
 | `views/group-v118.js` | 14192 | `37e85f6066e94aa943ab96daf44a6954a8fd58e8d31e7ec894ff7c885d87d27c` |
 | `views/group-v119.js` | 9513 | `1f10862d9aab600674449534502faf78e810ea756704d37066ac0ca7347bf580` |
