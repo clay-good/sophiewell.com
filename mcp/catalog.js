@@ -1040,6 +1040,10 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import lamotrigineTitrationCalendarV1633 from './adapters/lamotrigine-titration-calendar-v1633.js';
+import labelTitrationCalendarV1633 from './adapters/label-titration-calendar-v1633.js';
+import esaConversionV1633 from './adapters/esa-conversion-v1633.js';
+import ivIronCourseV1633 from './adapters/iv-iron-course-v1633.js';
 import taperCalendarV1633 from './adapters/taper-calendar-v1633.js';
 import buprenorphineOudProductSwitchV1633 from './adapters/buprenorphine-oud-product-switch-v1633.js';
 import basalInsulinSwitchV1633 from './adapters/basal-insulin-switch-v1633.js';
@@ -2214,6 +2218,10 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['lamotrigine-titration-calendar-v1633', lamotrigineTitrationCalendarV1633],
+  ['label-titration-calendar-v1633', labelTitrationCalendarV1633],
+  ['esa-conversion-v1633', esaConversionV1633],
+  ['iv-iron-course-v1633', ivIronCourseV1633],
   ['taper-calendar-v1633', taperCalendarV1633],
   ['buprenorphine-oud-product-switch-v1633', buprenorphineOudProductSwitchV1633],
   ['basal-insulin-switch-v1633', basalInsulinSwitchV1633],

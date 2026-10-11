@@ -168,6 +168,21 @@
     }
   },
   {
+    "label": "Aranesp (darbepoetin alfa)",
+    "labeler": "AMGEN, INC",
+    "setId": "0fd36cb9-c4f6-4167-93c9-8530865db3f9",
+    "tools": [
+      "esa-conversion"
+    ],
+    "splVersion": 161,
+    "publishedOn": "2026-07-21",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "9fbe93abd2ab6f5df44aeb617d838237f5fbabf6ba7262a9adbafd7ad910e38e"
+    }
+  },
+  {
     "label": "Argatroban injection, Hikma",
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "0cdf3f67-5bf3-4d58-b330-03febdc652bf",
@@ -479,7 +494,8 @@
     "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
     "setId": "f0ff4f27-5185-4881-a749-c6b7a0ca5696",
     "tools": [
-      "cns-renal-dose-check"
+      "cns-renal-dose-check",
+      "label-titration-calendar"
     ],
     "splVersion": 49,
     "publishedOn": "2026-01-23",
@@ -780,7 +796,8 @@
     "setId": "000dc81d-ab91-450c-8eae-8eb74e72296f",
     "tools": [
       "cardiac-renal-dose-check",
-      "hepatic-label-dose"
+      "hepatic-label-dose",
+      "label-titration-calendar"
     ],
     "splVersion": 25,
     "publishedOn": "2026-07-07",
@@ -899,6 +916,21 @@
     }
   },
   {
+    "label": "Feraheme (ferumoxytol)",
+    "labeler": "AMAG PHARMACEUTICALS, INC",
+    "setId": "32b0e320-a739-11dc-a704-0002a5d5c51b",
+    "tools": [
+      "iv-iron-course"
+    ],
+    "splVersion": 23,
+    "publishedOn": "2026-06-04",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "2bf09f143a36627b761664abee4392388a4f112d19f22b7d19b755dd73ba57dd"
+    }
+  },
+  {
     "label": "Fosamax (alendronate), Organon",
     "labeler": "ORGANON LLC",
     "setId": "14e931fd-2c5f-4d90-b7db-5980706f4a56",
@@ -975,6 +1007,21 @@
     }
   },
   {
+    "label": "INFeD (iron dextran), Allergan",
+    "labeler": "ALLERGAN, INC.",
+    "setId": "94b01b1e-794b-4bea-8e24-2e54683fc023",
+    "tools": [
+      "iv-iron-course"
+    ],
+    "splVersion": 19,
+    "publishedOn": "2025-05-12",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "03755f325cae7556a7765dcd2120222371fbc43b5c245af3ee5f167173948cab"
+    }
+  },
+  {
     "label": "Infuvite Pediatric, Sandoz",
     "labeler": "SANDOZ INC",
     "setId": "4ff223f7-e076-4e81-8151-5c06724fabd9",
@@ -987,6 +1034,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "8d3df54e3aec2036834ea6d199eb35f0dd2fb7eae7f0f64244a56b2d617a3a17"
+    }
+  },
+  {
+    "label": "Injectafer (ferric carboxymaltose)",
+    "labeler": "AMERICAN REGENT, INC.",
+    "setId": "517b4a19-45b3-4286-9f6a-ced4e10447de",
+    "tools": [
+      "iv-iron-course"
+    ],
+    "splVersion": 30,
+    "publishedOn": "2026-08-20",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "9f7d63a508cca5b838c2de191f481f8f715b040f3c69c7c34b7cc3f9c6bf85fa"
     }
   },
   {
@@ -1167,6 +1229,37 @@
     }
   },
   {
+    "label": "Lamictal (lamotrigine)",
+    "labeler": "GLAXOSMITHKLINE LLC",
+    "setId": "d7e3572d-56fe-4727-2bb4-013ccca22678",
+    "tools": [
+      "lamotrigine-titration-calendar"
+    ],
+    "splVersion": 45,
+    "publishedOn": "2026-08-20",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "971e1a71cc35140804e3310079c4584dfc73e9509c8b5072846cc3f4aae9a49b",
+      "34090-1": "c02758752e909d16ea778b00f40febc7663f5eaff5ab822a6c27b53f9a17556c"
+    }
+  },
+  {
+    "label": "Lamictal XR (lamotrigine extended-release)",
+    "labeler": "GLAXOSMITHKLINE LLC",
+    "setId": "3e2c9a35-6a39-41d7-ad84-3c0bb8894b09",
+    "tools": [
+      "lamotrigine-titration-calendar"
+    ],
+    "splVersion": 44,
+    "publishedOn": "2026-08-20",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "824eb284c1fd8f4090c988cce093694ca619b6a9cf63b46c9dbce89a06bc04e4"
+    }
+  },
+  {
     "label": "Lantus (insulin glargine)",
     "labeler": "SANOFI-AVENTIS U.S. LLC",
     "setId": "d5e07a0c-7e14-4756-9152-9fea485d654a",
@@ -1289,6 +1382,21 @@
     }
   },
   {
+    "label": "Memantine hydrochloride tablets, Lupin",
+    "labeler": "LUPIN PHARMACEUTICALS, INC.",
+    "setId": "1b4a0162-9cb4-4ba6-8c02-95c2955734ae",
+    "tools": [
+      "label-titration-calendar"
+    ],
+    "splVersion": 13,
+    "publishedOn": "2025-12-31",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "0ef8a6f101886ba7324d42af622c4755f37a33d7885bea9b7cfa74e1c22ae9f1"
+    }
+  },
+  {
     "label": "Meropenem for injection, B. Braun",
     "labeler": "B. BRAUN MEDICAL INC.",
     "setId": "3b952a55-6ef7-45c8-be21-16eefe37ec2e",
@@ -1332,6 +1440,36 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "4f56573027fb674d01c00d2bc30c764bcbad9b02f5714bf69b6773848d8805c5"
+    }
+  },
+  {
+    "label": "Mircera (methoxy polyethylene glycol-epoetin beta)",
+    "labeler": "VIFOR (INTERNATIONAL) INC.",
+    "setId": "22c56f2a-f73c-60e7-e054-00144ff88e88",
+    "tools": [
+      "esa-conversion"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-08-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "5ea555ccf011ee0fb42f91604221cec64df452b294cb9f710784bd024351ca2c"
+    }
+  },
+  {
+    "label": "Monoferric (ferric derisomaltose)",
+    "labeler": "PHARMACOSMOS THERAPEUTICS INC.",
+    "setId": "55859d2d-0456-4fa9-b41f-f535accc97db",
+    "tools": [
+      "iv-iron-course"
+    ],
+    "splVersion": 13,
+    "publishedOn": "2025-12-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "799ad58687e72edfdbafe0c3a9ebdd1ed1847d5ef7e6375ce5be30a2ff8d1dd0"
     }
   },
   {
@@ -1456,6 +1594,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "47a6705316682bb910a96bae7dca16f65c45a68aeac05028483da4c9877b832f"
+    }
+  },
+  {
+    "label": "Otezla (apremilast)",
+    "labeler": "AMGEN, INC",
+    "setId": "f6b1f516-4972-4d82-bced-113e47b41cc5",
+    "tools": [
+      "label-titration-calendar"
+    ],
+    "splVersion": 38,
+    "publishedOn": "2026-09-11",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "93e2d71309920155fc7b428724a5c99eadc7a3a5b87988531396bedb397a3d7a"
     }
   },
   {
@@ -1939,7 +2092,8 @@
     "labeler": "JANSSEN PHARMACEUTICALS, INC.",
     "setId": "21628112-0c47-11df-95b3-498d55d89593",
     "tools": [
-      "cns-renal-dose-check"
+      "cns-renal-dose-check",
+      "label-titration-calendar"
     ],
     "splVersion": 31,
     "publishedOn": "2026-10-06",
@@ -2191,6 +2345,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "a5a621b88811f5da92ddc576a050442610e0ae4821a8db88120550dddd913f5a"
+    }
+  },
+  {
+    "label": "Venofer (iron sucrose)",
+    "labeler": "AMERICAN REGENT, INC.",
+    "setId": "626dc9e5-c6b4-4f9c-9bf4-774fd3ae619a",
+    "tools": [
+      "iv-iron-course"
+    ],
+    "splVersion": 45,
+    "publishedOn": "2026-03-20",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "982107c891c7c2e853dc02d81821316f76731be6abb37b6a223b2005353e9ff7"
     }
   },
   {

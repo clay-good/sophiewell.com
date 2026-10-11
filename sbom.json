@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:27e4ae15-08de-5238-87a1-2bcb031d7e38",
+  "serialNumber": "urn:uuid:1cec2775-9fab-55d8-840d-666ad6616b98",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T18:35:23.336Z",
+    "timestamp": "2026-10-11T19:10:03.848Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2143 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2147 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b2b95695ed22690112e9b274e1b73810da076ffbcdce452e970550900c88b222"
+          "content": "492fe4101c9a5e3f939928834e76f68ae5643f0f12ed5d1700e55a4130f9b8c3"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "138469"
+          "value": "138731"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ae823d6fe7ba14a50e30e5292102ba0d928d935ba101120f0a5ca209138956a1"
+          "content": "7534093f31ef2572aebaed038f3f543be468998cbeae6a635222b5847baa282f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "604923"
+          "value": "605571"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4a911d8b48d13776ea508630b6c4384c53f040089410006a4c28bbad8740753c"
+          "content": "24eae0fb655675aefe0a65f508498dab090ed796672bea0b2c25b252ee24ac17"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "268768"
+          "value": "269294"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3995c5f689dc8f6f100ed044c943d70b375a17aea89cc3da176cb2b13887baae"
+          "content": "bdfb054615e4df495555b9450a7ab6a478d6671229d618949fc485e882f25ae3"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126995"
+          "value": "127299"
         }
       ]
     },
@@ -7826,6 +7826,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/esa-conversion-v1633.js",
+      "type": "file",
+      "name": "lib/esa-conversion-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2243a3932150ea3f6f8c5b005ac70c566df3aee44adc7b1f31780b99bb467248"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10982"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/essex-lopresti-calcaneal-v1498.js",
       "type": "file",
       "name": "lib/essex-lopresti-calcaneal-v1498.js",
@@ -12320,6 +12341,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/iv-iron-course-v1633.js",
+      "type": "file",
+      "name": "lib/iv-iron-course-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e617078185e34f5a749fb7af23ba975076876c60610381ac69ead52bd7870047"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "16736"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/iv-label-rate-check-v1630.js",
       "type": "file",
       "name": "lib/iv-label-rate-check-v1630.js",
@@ -13019,7 +13061,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5ed96350aa326091dd2b4c913858b1f27ee1af1e3e4969493e6a6d637b196b36"
+          "content": "a823e1d9c5b5cb60f40d547458d7f278da13f6726c9327b01d6a06c091be16c3"
         }
       ],
       "properties": [
@@ -13029,7 +13071,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "33730"
+          "value": "36115"
         }
       ]
     },
@@ -13051,6 +13093,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2619"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/label-titration-calendar-v1633.js",
+      "type": "file",
+      "name": "lib/label-titration-calendar-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b76605438b5e3f053ab16ab45353089e0fd5af8247e31c1430480da52e920679"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "13059"
         }
       ]
     },
@@ -13114,6 +13177,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4460"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/lamotrigine-titration-calendar-v1633.js",
+      "type": "file",
+      "name": "lib/lamotrigine-titration-calendar-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "72da2be49c7c7bbb9d90ffa9378ff99ac8b85dcd924130a9fe73c8b2f5cdab8e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "13680"
         }
       ]
     },
@@ -15245,7 +15329,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3c8dbe6adaede032c43e62ca757b27ffd32f2df89360c84226a81fa5e16fe454"
+          "content": "95ed3a43b48f0b3081853b2c1cb58e5bd556596298302a5e346bef13c9427b2d"
         }
       ],
       "properties": [
@@ -15255,7 +15339,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2850969"
+          "value": "2855933"
         }
       ]
     },
@@ -35294,6 +35378,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/esa-conversion-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/esa-conversion-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "64ae651f561eb36ba845742a3ed2ecd15ca5e39aa0c920dbb18acedc05706e37"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1806"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/essex-lopresti-calcaneal-v1498.js",
       "type": "file",
       "name": "mcp/adapters/essex-lopresti-calcaneal-v1498.js",
@@ -39284,6 +39389,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/iv-iron-course-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/iv-iron-course-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "52442fe9e44b8ac6827dbbf40397d315a9aca69d9e7a17ebdd26d8ac9689767d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2074"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/iv-label-rate-check-v1630.js",
       "type": "file",
       "name": "mcp/adapters/iv-label-rate-check-v1630.js",
@@ -39851,6 +39977,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/label-titration-calendar-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/label-titration-calendar-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ac612d94710ad1ae75c725428f383f747fc35bae95f546350b67d1f5915e4835"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1753"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/labor-care-guide-alert-v1558.js",
       "type": "file",
       "name": "mcp/adapters/labor-care-guide-alert-v1558.js",
@@ -39910,6 +40057,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1789"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lamotrigine-titration-calendar-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/lamotrigine-titration-calendar-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e11fbd51a8478e4489199fd5dfbc06f4e04b978cdc0384fad27dcff34de4a735"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1536"
         }
       ]
     },
@@ -53003,7 +53171,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c4628deca5cbedb17ccf627a9f50d011f504ad4a370f110fbdf5840c7b7bf3de"
+          "content": "a35443a463af63d6c40f46521794c86366b92e8399d115af379d13cc1c878122"
         }
       ],
       "properties": [
@@ -53013,7 +53181,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "138940"
+          "value": "139506"
         }
       ]
     },
@@ -57581,7 +57749,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6431e5bf6395e0fa072367ac0e31460edced3e9ee6a39937a0849739f1dfef28"
+          "content": "539304dc1542ff4608fe48dae36191d171cf0707d87611b72061e573d9972fa9"
         }
       ],
       "properties": [
@@ -57591,7 +57759,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "13491"
+          "value": "18949"
         }
       ]
     },
@@ -88723,6 +88891,7 @@
         "urn:sophiewell:file:source:lib/erefs-v618.js",
         "urn:sophiewell:file:source:lib/erez-dic-v559.js",
         "urn:sophiewell:file:source:lib/erisa-claim-clock-v1503.js",
+        "urn:sophiewell:file:source:lib/esa-conversion-v1633.js",
         "urn:sophiewell:file:source:lib/essex-lopresti-calcaneal-v1498.js",
         "urn:sophiewell:file:source:lib/estimators-v233.js",
         "urn:sophiewell:file:source:lib/ethanol-proof-v1629.js",
@@ -88937,6 +89106,7 @@
         "urn:sophiewell:file:source:lib/itemized-bill-check.js",
         "urn:sophiewell:file:source:lib/itemized-bill-worker.js",
         "urn:sophiewell:file:source:lib/iv-antithrombotic-renal-check-v1632.js",
+        "urn:sophiewell:file:source:lib/iv-iron-course-v1633.js",
         "urn:sophiewell:file:source:lib/iv-label-rate-check-v1630.js",
         "urn:sophiewell:file:source:lib/iv-phosphate-order-check-v1630.js",
         "urn:sophiewell:file:source:lib/jemt-papilla-v1487.js",
@@ -88972,9 +89142,11 @@
         "urn:sophiewell:file:source:lib/label-dose.js",
         "urn:sophiewell:file:source:lib/label-editions.js",
         "urn:sophiewell:file:source:lib/label-row.js",
+        "urn:sophiewell:file:source:lib/label-titration-calendar-v1633.js",
         "urn:sophiewell:file:source:lib/labor-care-guide-alert-v1558.js",
         "urn:sophiewell:file:source:lib/lachman-acl-v355.js",
         "urn:sophiewell:file:source:lib/lake-louise-cmr-v790.js",
+        "urn:sophiewell:file:source:lib/lamotrigine-titration-calendar-v1633.js",
         "urn:sophiewell:file:source:lib/lansky-v352.js",
         "urn:sophiewell:file:source:lib/larsen-ra-v470.js",
         "urn:sophiewell:file:source:lib/last-lipid-v896.js",
@@ -90974,6 +91146,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/erefs-v618.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erez-dic-v559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erisa-claim-clock-v1503.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/esa-conversion-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/essex-lopresti-calcaneal-v1498.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/estimators-v233.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ethanol-proof-v1629.js",
@@ -91164,6 +91337,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-e-value-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-freezing-point-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iv-antithrombotic-renal-check-v1632.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/iv-iron-course-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iv-label-rate-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iv-phosphate-order-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/jemt-papilla-v1487.js",
@@ -91191,9 +91365,11 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/kyoto-gastritis-v1442.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/la-esophagitis-v318.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lab-interpret.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/label-titration-calendar-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/labor-care-guide-alert-v1558.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lachman-acl-v355.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lake-louise-cmr-v790.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lamotrigine-titration-calendar-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lansky-v352.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/larsen-ra-v470.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/last-lipid-v896.js",
@@ -91921,7 +92097,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "27e4ae1508def238"
+      "value": "1cec27759fabe5d8"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91933,7 +92109,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3444"
+      "value": "3452"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

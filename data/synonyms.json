@@ -12564,6 +12564,62 @@
       ],
       "tile": "taper-calendar",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "aranesp",
+        "mircera",
+        "darbepoetin",
+        "epoetin",
+        "epogen",
+        "procrit",
+        "retacrit",
+        "epoetin to aranesp conversion",
+        "esa conversion from epoetin"
+      ],
+      "tile": "esa-conversion",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "injectafer",
+        "venofer",
+        "feraheme",
+        "monoferric",
+        "infed",
+        "ferumoxytol",
+        "ferric carboxymaltose",
+        "iv iron infusion course",
+        "iron sucrose dose course",
+        "iron dextran dose formula"
+      ],
+      "tile": "iv-iron-course",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lamotrigine",
+        "lamictal",
+        "lamictal xr",
+        "lamotrigine starting dose with valproate"
+      ],
+      "tile": "lamotrigine-titration-calendar",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "otezla",
+        "apremilast",
+        "namenda",
+        "otezla starter pack schedule",
+        "topamax titration schedule by week",
+        "chantix starting week dosing schedule",
+        "memantine titration schedule by week",
+        "entresto titration schedule by week",
+        "step up titration calendar by week"
+      ],
+      "tile": "label-titration-calendar",
+      "audience": "clinicians"
     }
   ]
 }

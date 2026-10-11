@@ -1,7 +1,8 @@
 // spec-v1633: conversions, switches, titrations and tapers, each as its label or paper states it.
 // anticoag-switch-clock, doac-periprocedural-timing, fentanyl-patch-initial-dose,
 // methadone-label-conversion, er-opioid-label-start, buprenorphine-oud-product-switch,
-// basal-insulin-switch, taper-calendar.
+// basal-insulin-switch, taper-calendar, esa-conversion, iv-iron-course,
+// lamotrigine-titration-calendar, label-titration-calendar.
 
 import { el, clear } from '../lib/dom.js';
 import * as AS from '../lib/anticoag-switch-clock-v1633.js';
@@ -12,6 +13,10 @@ import * as EO from '../lib/er-opioid-label-start-v1633.js';
 import * as BS from '../lib/buprenorphine-oud-product-switch-v1633.js';
 import * as BI from '../lib/basal-insulin-switch-v1633.js';
 import * as TC from '../lib/taper-calendar-v1633.js';
+import * as ES from '../lib/esa-conversion-v1633.js';
+import * as IC from '../lib/iv-iron-course-v1633.js';
+import * as LT from '../lib/lamotrigine-titration-calendar-v1633.js';
+import * as LC from '../lib/label-titration-calendar-v1633.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -221,6 +226,77 @@ export const renderers = {
       if (!r.valid) return;
       const withMme = r.rows[0].mme !== undefined;
       table(o, 'Schedule', ['Step', 'Date', `Daily dose (${r.unit})`, 'Change', ...(withMme ? ['MME'] : [])], r.rows.map((x) => [x.step === 0 ? 'Start' : x.step, x.date, x.dose, x.step === 0 ? '' : x.change, ...(withMme ? [x.mme] : [])]));
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'esa-conversion'(root) {
+    const pairs = [['esa-target', 'target'], ['esa-current', 'current'], ['esa-pop', 'population'], ['esa-dose', 'weeklyDose'], ['esa-freq', 'epoetinFrequency'], ['esa-interval', 'mirceraInterval']];
+    selectField(root, 'Product being started', 'esa-target', ES.TARGETS);
+    selectField(root, 'Current ESA', 'esa-current', ES.CURRENT);
+    selectField(root, 'Patient', 'esa-pop', ES.POPULATIONS);
+    numField(root, 'Total weekly dose (epoetin alfa in units, darbepoetin alfa in mcg)', 'esa-dose', '');
+    selectField(root, 'To Aranesp: how often the epoetin alfa is given', 'esa-freq', ES.EPOETIN_FREQUENCIES);
+    selectField(root, 'To Mircera, adults: interval', 'esa-interval', ES.MIRCERA_INTERVALS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = ES.esaConversion(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'iv-iron-course'(root) {
+    const pairs = [['iic-regimen', 'regimen'], ['iic-weight', 'weightKg'], ['iic-hb', 'hb'], ['iic-desired', 'desiredHb'], ['iic-sex', 'sex'], ['iic-height', 'heightCm'], ['iic-loss', 'bloodLossMl'], ['iic-hct', 'hematocrit'], ['iic-start', 'startDate']];
+    selectField(root, 'Product and indication', 'iic-regimen', IC.REGIMENS);
+    numField(root, 'Weight, kg (Injectafer, Monoferric, pediatric Venofer, INFeD)', 'iic-weight', '');
+    numField(root, 'Hemoglobin, g/dL (Injectafer in heart failure; INFeD: observed)', 'iic-hb', '');
+    numField(root, 'INFeD: desired hemoglobin, g/dL (label normal: 14.8 above 15 kg, 12 at 15 kg or less)', 'iic-desired', '');
+    selectField(root, 'INFeD above 15 kg: sex', 'iic-sex', IC.SEXES);
+    numField(root, 'INFeD above 15 kg: height, cm', 'iic-height', '');
+    numField(root, 'INFeD for blood loss: blood loss, mL', 'iic-loss', '');
+    numField(root, 'INFeD for blood loss: hematocrit, %', 'iic-hct', '');
+    dateField(root, 'Date of the first dose (optional)', 'iic-start');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = IC.ivIronCourse(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'lamotrigine-titration-calendar'(root) {
+    const pairs = [['ltc-regimen', 'regimen'], ['ltc-comed', 'comed'], ['ltc-date', 'startDate'], ['ltc-weight', 'weightKg']];
+    selectField(root, 'Formulation and indication', 'ltc-regimen', LT.REGIMENS);
+    selectField(root, 'Co-medication', 'ltc-comed', LT.COMEDS);
+    dateField(root, 'Date of the first dose', 'ltc-date');
+    numField(root, 'Weight, kg (ages 2 to 12)', 'ltc-weight', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = LT.lamotrigineTitrationCalendar(args, new Date());
+      show(r, o);
+      if (r.valid && r.rows) table(o, 'Escalation calendar', ['Weeks', 'From', 'To', 'Dose'], r.rows.map((x) => [x.weeks, x.from, x.to === null ? 'onward' : x.to, x.dose]));
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'label-titration-calendar'(root) {
+    const pairs = [['lcal-preset', 'preset'], ['lcal-date', 'startDate'], ['lcal-weeks', 'weeksPerStep'], ['lcal-double', 'weeksToDouble'], ['lcal-ace', 'lastAceDose'], ['lcal-steps', 'steps']];
+    selectField(root, 'Schedule', 'lcal-preset', LC.PRESETS);
+    dateField(root, 'Start date', 'lcal-date');
+    numField(root, 'Memantine: weeks at each step (the label\'s minimum is 1)', 'lcal-weeks', '');
+    numField(root, 'Sacubitril/valsartan: weeks before the dose is doubled (2 to 4)', 'lcal-double', '');
+    dateField(root, 'Sacubitril/valsartan: last ACE-inhibitor dose (optional)', 'lcal-ace', 'datetime-local');
+    areaField(root, 'My own steps, one per line: dose in mg, times a day, days', 'lcal-steps', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = LC.labelTitrationCalendar(args, new Date());
+      show(r, o);
+      if (r.valid && r.rows) table(o, 'Schedule', ['Step', 'From', 'To', 'Dose'], r.rows.map((x) => [x.step, x.from, x.to === null ? 'onward' : x.to, x.dose]));
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
   },

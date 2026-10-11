@@ -9133,6 +9133,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/taper-calendar-v1633.js (spec-v1633: Taper schedule calendar (CDC 2022, ASAM 2025 and label ranges) — clinical disclaimer)
 - `taper-calendar`
 
+### lib/esa-conversion-v1633.js (spec-v1633: ESA conversion starting dose (two label rows, one way) — clinical disclaimer)
+- `esa-conversion`
+
+### lib/iv-iron-course-v1633.js (spec-v1633: IV iron course by product (five label rows) — clinical disclaimer)
+- `iv-iron-course`
+
+### lib/lamotrigine-titration-calendar-v1633.js (spec-v1633: Lamotrigine titration calendar (two label rows) — clinical disclaimer)
+- `lamotrigine-titration-calendar`
+
+### lib/label-titration-calendar-v1633.js (spec-v1633: Step-up titration calendar (five label rows and custom steps) — clinical disclaimer)
+- `label-titration-calendar`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

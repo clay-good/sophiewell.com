@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Epoetin to Aranesp or Mircera Starting Dose (FDA Labels): the table row for the weekly dose
+  entered, adult or pediatric, with the label's interval.
+- IV Iron Course by Product (FDA Labels): each dose in mg and mL, the spacing and the total for
+  Injectafer, Venofer, Feraheme, Monoferric and INFeD, with dates when a start date is entered.
+- Lamotrigine Titration Calendar (FDA Label): the Lamictal or Lamictal XR escalation table for the
+  co-medication chosen, as dated weeks, with the label's rule for what follows.
+- Step-Up Titration Calendar (Label Schedules or Your Own Steps): topiramate, varenicline,
+  apremilast, memantine and sacubitril/valsartan schedules as dates, or your own steps.
 - Taper Schedule Calendar: a dated schedule from a starting dose, a reduction and an interval,
   rounded down to a dose that can be dispensed, shown beside the published range for the class and
   marked when the pace entered is faster.

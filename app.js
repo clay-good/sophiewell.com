@@ -2714,6 +2714,10 @@ const UTILITIES = [
   { id: 'buprenorphine-oud-product-switch', name: 'Buprenorphine Product Switch for Opioid Use Disorder (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'basal-insulin-switch', name: 'Basal Insulin Switch Starting Dose (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'taper-calendar', name: 'Taper Schedule Calendar', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'esa-conversion', name: 'Epoetin to Aranesp or Mircera Starting Dose (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'iv-iron-course', name: 'IV Iron Course by Product (FDA Labels)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lamotrigine-titration-calendar', name: 'Lamotrigine Titration Calendar (FDA Label)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'label-titration-calendar', name: 'Step-Up Titration Calendar (Label Schedules or Your Own Steps)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-
