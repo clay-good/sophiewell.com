@@ -325,6 +325,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Anticoagulation reversal: the warfarin result names both 4F-PCC labels (Kcentra and Balfaxar)
+  and how their indications differ; the heparin result prints the protamine label's own sentences
+  and, with a time since the last dose, the CHEST 2012 pediatric row, labeled as pediatric.
+- Time in therapeutic range: the count of INR tests in range now prints beside the interpolated
+  percentage. Naranjo, the two anticholinergic count tools, the NNT tool and time in therapeutic
+  range link to the tools added this week.
 - Both benzodiazepine equivalence tools now carry the ASAM 2025 statement that no precise
   conversion exists, with its low, moderate and high daily-dose estimates. The Ganzoni iron tool
   says the INFeD label uses a different formula. Opioid conversion, perioperative bridging, the

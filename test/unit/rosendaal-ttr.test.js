@@ -57,3 +57,13 @@ test('an impossible target INR is refused, not replaced by the 2.0-3.0 default',
   // A real target still moves the answer, which is the whole point of the field.
   assert.notEqual(rosendaalTtr({ series, low: 2.5 }).ttr, base.ttr);
 });
+
+// spec-v1634 backfill 6: the fraction of tests in range, beside the interpolated days.
+test('rosendaalTtr: also counts the INR tests in range', async () => {
+  const { rosendaalTtr } = await import('../../lib/gaps-v185.js');
+  const r = rosendaalTtr({ series: '2026-01-01 2.5\n2026-01-15 3.5\n2026-02-01 2.4\n2026-02-15 1.8' });
+  assert.deepEqual([r.tests, r.testsInRange, r.testsInRangePct], [4, 2, 50]);
+  assert.match(r.detail, /2 of 4 INR tests \(50%\) were in range/);
+  // The two methods need not agree.
+  assert.notEqual(r.ttr, r.testsInRangePct);
+});

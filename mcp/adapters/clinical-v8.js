@@ -43,7 +43,7 @@ export default [
     // every other agent -> anticoagReversalDose(weightKg, inr, agent).
     compute: (a) => {
       if (a.agent === 'heparin-ufh') {
-        const r = F.protamineDose({ heparinUnits: a.heparinUnits });
+        const r = F.protamineDose({ heparinUnits: a.heparinUnits, minutesSince: a.minutesSince });
         return r == null ? r : { ...r, heparinUnits: a.heparinUnits };
       }
       const r = F.anticoagReversalDose({ weightKg: a.weightKg, inr: a.inr, agent: a.agent });
@@ -56,6 +56,7 @@ export default [
       // it -- so both surfaces agree in both directions (rule 25).
       { dom: 'ar-inr', arg: 'inr', kind: 'number', label: 'INR (required for warfarin; not read for the other agents)' },
       { dom: 'ar-heparin', arg: 'heparinUnits', kind: 'number', required: false, label: 'Heparin dose in last 2-3 h (units, UFH branch)' },
+      { dom: 'ar-min', arg: 'minutesSince', kind: 'number', required: false, label: 'Minutes since the last heparin dose (UFH branch, optional; adds the pediatric CHEST 2012 row)', unit: 'min' },
     ],
   },
   {

@@ -275,6 +275,22 @@
     }
   },
   {
+    "label": "Balfaxar (prothrombin complex concentrate, human-lans)",
+    "labeler": "OCTAPHARMA USA INC",
+    "setId": "68fa4f90-8b01-6498-4140-e0be5247c3fe",
+    "tools": [
+      "anticoag-reversal"
+    ],
+    "splVersion": 4,
+    "publishedOn": "2023-11-30",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "daa268ebd25913b8240b4e76166f8c2b358c1addb8bf6b768527b1b7e45b0af7",
+      "34067-9": "967ff12b411f0383acb2b067eb1439298395e5e6705d18560d1b22b5d1be18b3"
+    }
+  },
+  {
     "label": "Baraclude (entecavir), E.R. Squibb",
     "labeler": "E.R. SQUIBB & SONS, L.L.C.",
     "setId": "046e61c9-9298-4b2e-b76e-b26b81fecd20",
@@ -1353,6 +1369,22 @@
     }
   },
   {
+    "label": "Kcentra (prothrombin complex concentrate, human)",
+    "labeler": "CSL BEHRING GMBH",
+    "setId": "eee1afb8-324c-42e4-8bf0-f0c9da5e6d42",
+    "tools": [
+      "anticoag-reversal"
+    ],
+    "splVersion": 13,
+    "publishedOn": "2023-05-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "8ff199027b6b2fe18642f80dd90bccea6f73e68e955d605bbdbe44bafb7369ee",
+      "34067-9": "4413435c98df1495f485414392f0d78418c0962595908c9726db3e145336c558"
+    }
+  },
+  {
     "label": "Keppra (levetiracetam), UCB",
     "labeler": "UCB, INC.",
     "setId": "3ca9df05-a506-4ec8-a4fe-320f1219ab21",
@@ -1985,6 +2017,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "800bb2919091f285364cfdb4c1806071ab577875a09a03e3801e630c90fe0928"
+    }
+  },
+  {
+    "label": "Protamine sulfate injection, Fresenius Kabi",
+    "labeler": "FRESENIUS KABI USA, LLC",
+    "setId": "c76876da-b9a8-45d0-9278-7df3288d3a06",
+    "tools": [
+      "anticoag-reversal"
+    ],
+    "splVersion": 1,
+    "publishedOn": "2025-05-15",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "702ce9516588a3ed3d32e1fc59f83dc8d0535d3f32f741dde3415b700272f344"
     }
   },
   {

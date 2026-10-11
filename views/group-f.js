@@ -207,17 +207,24 @@ export const renderers = {
     root.appendChild(unitField('Weight', 'ar-w', WEIGHT_UNITS, { placeholder: '80' }));
     root.appendChild(field('INR (warfarin only)', 'ar-inr', { min: 0, placeholder: '5' }));
     root.appendChild(field('Heparin units in last 2-3 h (UFH only)', 'ar-heparin', { placeholder: '4000' }));
+    root.appendChild(field('Minutes since the last heparin dose (UFH only, optional)', 'ar-min', { min: 0 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const agent = document.getElementById('ar-agent').value;
       clear(o);
       if (agent === 'heparin-ufh') {
         if (!(nv('ar-heparin') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the heparin units given in the last 2-3 h.' })); return; }
-        const r = C8.protamineDose({ heparinUnits: nv('ar-heparin') });
-        resultRow(o, [
+        const r = C8.protamineDose({ heparinUnits: nv('ar-heparin'), minutesSince: nvOrNull('ar-min') });
+        const rows = [
           { label: 'Protamine', value: fmt(r.protamineMg), units: `mg${r.capped ? ' (capped at 50 mg single dose)' : ''}` },
           { text: '1 mg protamine per 100 units of heparin given in the last 2-3 h; LMWH reversal is partial only.' },
-        ]);
+          { text: r.labelNote },
+        ];
+        if (r.pediatric) {
+          const p = r.pediatric;
+          rows.push({ text: `For a child (${p.row}${p.onBoundary ? ', which the table prints in two rows' : ''}): ${p.perHundredUnits} mg per 100 units, which is ${p.lowMg === p.highMg ? fmt(p.lowMg) : `${fmt(p.lowMg)} to ${fmt(p.highMg)}`} mg. ${p.note}` });
+        }
+        resultRow(o, rows);
         return;
       }
       if (!(unitNum('ar-w') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight (and INR for warfarin).' })); return; }
@@ -237,10 +244,11 @@ export const renderers = {
       if (r.units != null) items.push({ label: '4F-PCC dose', value: fmt(r.units), units: `units (${r.unitsPerKg} units/kg${r.capped ? ', dosing weight capped at 100 kg' : ''})` });
       if (r.doseG != null) items.push({ label: 'Dose', value: fmt(r.doseG), units: 'g' });
       if (r.adjunct) items.push({ text: `Adjunct: ${r.adjunct}` });
+      if (r.labelNote) items.push({ text: r.labelNote });
       if (r.note) items.push({ text: r.note });
       resultRow(o, items);
     });
-    ['ar-agent', 'ar-w', 'ar-w-unit', 'ar-inr', 'ar-heparin'].forEach((id) => {
+    ['ar-agent', 'ar-w', 'ar-w-unit', 'ar-inr', 'ar-heparin', 'ar-min'].forEach((id) => {
       const node = document.getElementById(id);
       node.addEventListener('input', run);
       node.addEventListener('change', run);

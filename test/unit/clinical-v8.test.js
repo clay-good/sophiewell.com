@@ -231,6 +231,33 @@ test('anticoagReversalDose: apixaban / rivaroxaban returns no dose; andexanet is
   assert.match(C.anticoagReversalDose({ weightKg: 80, inr: 5, agent: 'warfarin' }).adjunct, /5 to 10 mg/);
 });
 
+// spec-v1634 backfills 3 and 5.
+test('anticoagReversalDose: warfarin names both 4F-PCC labels and how their indications differ', () => {
+  const r = C.anticoagReversalDose({ weightKg: 80, inr: 5, agent: 'warfarin' });
+  assert.equal(r.product, '4F-PCC (Kcentra or Balfaxar)');
+  assert.match(r.labelNote, /Balfaxar only for an urgent surgery or invasive procedure/);
+  assert.match(r.labelNote, /repeat dosing has not been established and "is not recommended"/);
+});
+test('protamineDose: the label sentence is always printed; the pediatric CHEST row only with a time', () => {
+  const plain = C.protamineDose({ heparinUnits: 4000 });
+  assert.equal(plain.protamineMg, 40);
+  assert.match(plain.labelNote, /one-half the usual dose may be sufficient/);
+  assert.equal(plain.pediatric, undefined);
+  const row = (m) => { const p = C.protamineDose({ heparinUnits: 2000, minutesSince: m }).pediatric; return [p.row, p.lowMg, p.highMg]; };
+  assert.deepEqual(row(10), ['under 30 minutes', 20, 20]);
+  assert.deepEqual(row(30), ['30 to 60 minutes', 10, 15]);
+  assert.deepEqual(row(90), ['60 to 120 minutes', 7.5, 10]);
+  assert.deepEqual(row(120), ['60 to 120 minutes', 7.5, 10]);
+  assert.deepEqual(row(121), ['over 120 minutes', 5, 7.5]);
+  // Exactly 60 minutes is printed in two rows: both are given, as one range.
+  const b = C.protamineDose({ heparinUnits: 2000, minutesSince: 60 }).pediatric;
+  assert.deepEqual([b.onBoundary, b.lowMg, b.highMg], [true, 7.5, 15]);
+  assert.match(b.note, /pediatric table and is not a label dose/);
+  // The 50 mg maximum applies to the pediatric figure too.
+  assert.equal(C.protamineDose({ heparinUnits: 20000, minutesSince: 10 }).pediatric.highMg, 50);
+  assert.throws(() => C.protamineDose({ heparinUnits: 2000, minutesSince: -5 }), RangeError);
+});
+
 // spec-v1641 row 20: every enoxaparin row names its label section; CHEST is no longer credited.
 test('enoxaparinDose: each row carries its own source', async () => {
   const { enoxaparinDose, ENOX_SOURCE } = await import('../../lib/clinical-v8.js');
