@@ -1,6 +1,6 @@
 # spec-v1632 — Dose checks read from the FDA label (renal, hepatic, weight, age, indication)
 
-**Status:** In progress, October 11, 2026: 14 of 18 tools built (see Build status). 18 new tools, none build-gated.
+**Status:** In progress, October 11, 2026: 17 of 18 tools built (see Build status). 18 new tools, none build-gated.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 An order-verification pharmacist asks the same question several hundred times a shift: is this
@@ -872,7 +872,7 @@ result string contains "give", "recommend" in the tool's voice, or a dose when t
 
 ## Build status
 
-Updated October 11, 2026. 14 of 18 tools built.
+Updated October 11, 2026. 17 of 18 tools built.
 
 | Tool | Status |
 |---|---|
@@ -891,4 +891,7 @@ Updated October 11, 2026. 14 of 18 tools built.
 | 13. `gout-drug-renal-dose` | Built (group F) on two label rows through the engine: allopurinol tablets (Dr. Reddy's, version 15) and colchicine tablets (Amneal, version 18; Dosage and Administration and Contraindications), each re-read; every row matches the spec, including the dialysis doses the spec flags (0.3 mg twice a week for prophylaxis; a single 0.6 mg dose for a flare). The colchicine label defines severe impairment as below 30 mL/min in its familial Mediterranean fever paragraph, and that edge is used for all three indications. |
 | 14. `bisphosphonate-renal-check` | Built (group F) on four label rows through the engine: zoledronic acid 4 mg (Heritage, version 22), Reclast (Sandoz, 3), Fosamax (Organon, 10) and Actonel (31). **Found on re-read:** the Fosamax and Actonel cutoffs are in section 8, not section 2, so those two rows are watched on Use in Specific Populations. Below 30 mL/min the 4 mg table gives no dose and the tool says so. Hypercalcemia of malignancy is by serum creatinine and takes no clearance. None of the four labels has a dialysis line. |
 | 15. `tranexamic-acid-renal-dose` | Built (group F) on two label rows: Cyklokapron (Pfizer, version 34) and tranexamic acid tablets (ANI, version 4), each re-read. The field is a serum creatinine and the refusal says so. At exactly 2.83 mg/dL the injection table's two rows both show; the tablet table's edges are exclusive below and inclusive above, as printed. The IV result gives the milligrams at the actual body weight entered. |
-| 9, 16 to 18 | Not built. |
+| 16. `ketorolac-limit-check` | Built (group F) on two label rows: ketorolac injection (Hospira, version 36; Dosage and Administration and Contraindications) and ketorolac tablets (Teva, version 19), each re-read. The lower-dose group is the label's own (65 or over, renally impaired, under 50 kg); renal impairment is a three-way question because neither label gives a number, and "advanced" reports the contraindication. The result gives what is left of the daily ceiling and of the 5 days. Adults (17 and older) only. |
+| 17. `gi-drug-dose-check` | Built (group F) on two label rows: famotidine tablets (Teva, version 21) and Reglan (ANI, version 8), each re-read. **Found on re-read:** the famotidine table has a seventh row, reduction of the risk of duodenal ulcer recurrence, which the spec left out and the tool includes; the two Reglan tables put the renal edge differently (60 or below for reflux, below 60 for gastroparesis), and the tool follows each as printed and says so at exactly 60. |
+| 18. `hepatic-label-dose` | Built (group F) on fourteen label rows, seven of them shared with tools 3, 4, 5, 7, 11 and 17 and seven new (Vfend, Cancidas, Tygacil, ondansetron, Strattera, Myrbetriq, solifenacin). Every cell of the spec's table was re-read in its label. A class the label has no sentence for returns "no row". Lacosamide's label does not use Child-Pugh, so the tool shows the label's words for every class and maps none. It takes the class, not the score. |
+| 9 | Not built. `glp1-titration-check` needs eight labels re-read and date arithmetic; it is the one tool left in this wave. |

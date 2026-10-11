@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ae55cd7f-0d0c-5a5b-88a2-383d84544c26",
+  "serialNumber": "urn:uuid:26abc31c-ff58-52db-82e3-1f43857b176a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T15:47:20.597Z",
+    "timestamp": "2026-10-11T16:23:21.158Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2131 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2134 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f04165351b14429a730f29e9f4afff63e884fffb16b94e844a101496baec4937"
+          "content": "f6066bdd1bacc03b45f520760b3515107a683a1ca76bb3ddc99989685a555df5"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "137681"
+          "value": "137868"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "941370331922e8bf9945784a6723bb08c1c6ec5bc954ecd94a72b3f90aa14a5a"
+          "content": "3e886f64fb03a340466af518d467047ff43d186ce217b1c6a49f55269b2db1cc"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "602892"
+          "value": "603364"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5abcf98ec60885624a161073096768d7a440f20e69bce22b4157ccfccfb98c96"
+          "content": "d3310b98b9e7d686de095030cc8899cbda930ef707150903e2cb54b6a7445029"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "267172"
+          "value": "267562"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5eca7672c3a2a56bc07801db13c9c44ad3e3b4c6de1ad9fbc0b609538fcc441f"
+          "content": "05d430896641af462f0c760c47fedc4514249f1ec2922ee74d415398e474195a"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126063"
+          "value": "126277"
         }
       ]
     },
@@ -9044,6 +9044,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/gi-drug-dose-check-v1632.js",
+      "type": "file",
+      "name": "lib/gi-drug-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d7e3bcaff8dd40a24868fddf430f04fe1932693d20efdabbe211a30e9362507b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8937"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/gi-v126.js",
       "type": "file",
       "name": "lib/gi-v126.js",
@@ -10258,6 +10279,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7202"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hepatic-label-dose-v1632.js",
+      "type": "file",
+      "name": "lib/hepatic-label-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "25d94563d9eebf714fb093f4e2d00de63352315f5818d12d0bfcd9c2ccfdd3de"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8955"
         }
       ]
     },
@@ -12425,6 +12467,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ketorolac-limit-check-v1632.js",
+      "type": "file",
+      "name": "lib/ketorolac-limit-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e5102fc211ef78f6e6302f24b483cba25a3fbe4f9c9909b277a9ba22844733b8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7793"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/keyboard.js",
       "type": "file",
       "name": "lib/keyboard.js",
@@ -12767,7 +12830,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "aabdb6d578b82ceac2693e2c5b0801ffc175161dfc7d6fa02c6727c681751e27"
+          "content": "95a85eaa3775a56f36baccd95b21203a67225294a6e633028f32d3fe44e28c0a"
         }
       ],
       "properties": [
@@ -12777,7 +12840,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "22906"
+          "value": "25305"
         }
       ]
     },
@@ -14993,7 +15056,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6ec282c64d475ec5d4bf9c6fc201d35738affd0afd0ce34c7656e0d0053cfa6f"
+          "content": "55d59cfdcaa659fda4e30ad607f895787bd58660d48b4ad37612b86e208ca0cd"
         }
       ],
       "properties": [
@@ -15003,7 +15066,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2831953"
+          "value": "2836690"
         }
       ]
     },
@@ -36134,6 +36197,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gi-drug-dose-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/gi-drug-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c064de79ab52ed83fe62189aa74562e6ba8f383b8b3d87f9151af042897c46f5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1699"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gi-v126.js",
       "type": "file",
       "name": "mcp/adapters/gi-v126.js",
@@ -37264,6 +37348,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1926"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hepatic-label-dose-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/hepatic-label-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bf8a41366ec2914dcb9a32683b2354ff09d7a46e43ac0213bfedb8ad48b176cc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1137"
         }
       ]
     },
@@ -39091,6 +39196,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1256"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ketorolac-limit-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/ketorolac-limit-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "95d8c5a1cbabaa0bbffe486d3077336405dd6117a60a7299924707d4a29e435a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1621"
         }
       ]
     },
@@ -52457,7 +52583,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b1dca7b9908ea736dd35f51359f0b01616a27cf9d45157414c7a9204f5df6730"
+          "content": "2797d5cd91e8fa88d4c120c4eed490707788016fccec2f583c019419d67ea98f"
         }
       ],
       "properties": [
@@ -52467,7 +52593,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "137182"
+          "value": "137585"
         }
       ]
     },
@@ -57014,7 +57140,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "838380e002c9a320c1fe1f9f5f54c7d91d73263273556de7982a578dedf64ebf"
+          "content": "8bc1e775a1a7b85b6dc93f4d9ee30e63888188b263a3371ef6d3ed36339f4fad"
         }
       ],
       "properties": [
@@ -57024,7 +57150,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "16996"
+          "value": "20110"
         }
       ]
     },
@@ -88214,6 +88340,7 @@
         "urn:sophiewell:file:source:lib/gerdq-v679.js",
         "urn:sophiewell:file:source:lib/geri-v241.js",
         "urn:sophiewell:file:source:lib/ghent-marfan-v821.js",
+        "urn:sophiewell:file:source:lib/gi-drug-dose-check-v1632.js",
         "urn:sophiewell:file:source:lib/gi-v126.js",
         "urn:sophiewell:file:source:lib/gisurg-v239.js",
         "urn:sophiewell:file:source:lib/glass-stage-v550.js",
@@ -88272,6 +88399,7 @@
         "urn:sophiewell:file:source:lib/hep-v124.js",
         "urn:sophiewell:file:source:lib/hep-v125.js",
         "urn:sophiewell:file:source:lib/hepatic-iron-index-v932.js",
+        "urn:sophiewell:file:source:lib/hepatic-label-dose-v1632.js",
         "urn:sophiewell:file:source:lib/hepatology-gibleed-v201.js",
         "urn:sophiewell:file:source:lib/hepatology-prognosis-v220.js",
         "urn:sophiewell:file:source:lib/hepatopulmonary-syndrome-v1243.js",
@@ -88375,6 +88503,7 @@
         "urn:sophiewell:file:source:lib/kanavel-signs-v1444.js",
         "urn:sophiewell:file:source:lib/katagiri-v606.js",
         "urn:sophiewell:file:source:lib/kennedy-edentulous-v719.js",
+        "urn:sophiewell:file:source:lib/ketorolac-limit-check-v1632.js",
         "urn:sophiewell:file:source:lib/keyboard.js",
         "urn:sophiewell:file:source:lib/keywords.js",
         "urn:sophiewell:file:source:lib/kikuchi-v333.js",
@@ -90446,6 +90575,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/gerdq-v679.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/geri-v241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ghent-marfan-v821.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/gi-drug-dose-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gi-v126.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gisurg-v239.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glass-stage-v550.js",
@@ -90500,6 +90630,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hep-v124.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hep-v125.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepatic-iron-index-v932.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hepatic-label-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepatology-gibleed-v201.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepatology-prognosis-v220.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepatopulmonary-syndrome-v1243.js",
@@ -90587,6 +90718,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/kanavel-signs-v1444.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/katagiri-v606.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kennedy-edentulous-v719.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ketorolac-limit-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kikuchi-v333.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kinetic-egfr-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kings-college-nonapap-v910.js",
@@ -91327,7 +91459,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ae55cd7f0d0c3a5b"
+      "value": "26abc31cff58e2db"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91339,7 +91471,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3417"
+      "value": "3423"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import ketorolacLimitCheckV1632 from './adapters/ketorolac-limit-check-v1632.js';
+import giDrugDoseCheckV1632 from './adapters/gi-drug-dose-check-v1632.js';
+import hepaticLabelDoseV1632 from './adapters/hepatic-label-dose-v1632.js';
 import mraPotassiumDoseCheckV1632 from './adapters/mra-potassium-dose-check-v1632.js';
 import goutDrugRenalDoseV1632 from './adapters/gout-drug-renal-dose-v1632.js';
 import bisphosphonateRenalCheckV1632 from './adapters/bisphosphonate-renal-check-v1632.js';
@@ -2202,6 +2205,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['ketorolac-limit-check-v1632', ketorolacLimitCheckV1632],
+  ['gi-drug-dose-check-v1632', giDrugDoseCheckV1632],
+  ['hepatic-label-dose-v1632', hepaticLabelDoseV1632],
   ['mra-potassium-dose-check-v1632', mraPotassiumDoseCheckV1632],
   ['gout-drug-renal-dose-v1632', goutDrugRenalDoseV1632],
   ['bisphosphonate-renal-check-v1632', bisphosphonateRenalCheckV1632],

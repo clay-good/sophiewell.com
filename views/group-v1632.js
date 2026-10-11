@@ -3,7 +3,7 @@
 // antiviral-renal-dose, nrti-renal-dose, gabapentinoid-renal-dose, cns-renal-dose-check,
 // diabetes-drug-egfr-check, dofetilide-dose-algorithm, cardiac-renal-dose-check,
 // mra-potassium-dose-check, gout-drug-renal-dose, bisphosphonate-renal-check,
-// tranexamic-acid-renal-dose.
+// tranexamic-acid-renal-dose, ketorolac-limit-check, gi-drug-dose-check, hepatic-label-dose.
 
 import { el, clear } from '../lib/dom.js';
 import * as DC from '../lib/doac-dose-check-v1632.js';
@@ -20,6 +20,9 @@ import * as MR from '../lib/mra-potassium-dose-check-v1632.js';
 import * as GT from '../lib/gout-drug-renal-dose-v1632.js';
 import * as BP from '../lib/bisphosphonate-renal-check-v1632.js';
 import * as TX from '../lib/tranexamic-acid-renal-dose-v1632.js';
+import * as KT from '../lib/ketorolac-limit-check-v1632.js';
+import * as GI from '../lib/gi-drug-dose-check-v1632.js';
+import * as HP from '../lib/hepatic-label-dose-v1632.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -276,6 +279,53 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = TX.tranexamicAcidRenalDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'ketorolac-limit-check'(root) {
+    const pairs = [['ket-route', 'route'], ['ket-age', 'age'], ['ket-weight', 'weight'], ['ket-renal', 'renal'], ['ket-days', 'daysSoFar'], ['ket-mg', 'mg24h']];
+    selectField(root, 'Route and regimen', 'ket-route', KT.ROUTES);
+    numField(root, 'Age, years', 'ket-age', '');
+    numField(root, 'Weight, kg', 'ket-weight', '');
+    selectField(root, 'Renal impairment', 'ket-renal', KT.RENAL);
+    numField(root, 'Days of ketorolac so far, by any route', 'ket-days', '');
+    numField(root, 'Ketorolac given in the last 24 hours, mg (multiple-dose regimens)', 'ket-mg', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = KT.ketorolacLimitCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'gi-drug-dose-check'(root) {
+    const pairs = [['gid-regimen', 'regimen'], ['gid-dialysis', 'dialysis'], ['gid-kidney', 'kidney'], ['gid-hepatic', 'hepatic'], ['gid-pm', 'poorMetabolizer'], ['gid-inh', 'inhibitor']];
+    selectField(root, 'Drug and indication', 'gid-regimen', GI.REGIMENS);
+    selectField(root, 'Dialysis', 'gid-dialysis', GI.DIALYSIS);
+    numField(root, 'Creatinine clearance, mL/min', 'gid-kidney', '');
+    selectField(root, 'Metoclopramide: hepatic function', 'gid-hepatic', GI.HEPATIC);
+    selectField(root, 'Metoclopramide: CYP2D6 poor metabolizer', 'gid-pm', GI.YES_NO);
+    selectField(root, 'Metoclopramide: takes a strong CYP2D6 inhibitor', 'gid-inh', GI.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = GI.giDrugDoseCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'hepatic-label-dose'(root) {
+    const pairs = [['hep-drug', 'drug'], ['hep-class', 'childPugh']];
+    selectField(root, 'Drug', 'hep-drug', HP.DRUGS);
+    selectField(root, 'Child-Pugh class', 'hep-class', HP.CLASSES);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = HP.hepaticLabelDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

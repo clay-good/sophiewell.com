@@ -610,3 +610,9 @@ experience**.
 > v1632, Zoledronic Acid and Bisphosphonates by Renal Row (FDA Label) — [spec-v1632](spec-v1632.md), which adds `bisphosphonate-renal-check` — is 2130.)
 
 > v1632, Tranexamic Acid by Serum Creatinine (FDA Label) — [spec-v1632](spec-v1632.md), which adds `tranexamic-acid-renal-dose` — is 2131.)
+
+> v1632, Ketorolac Dose and 5-Day Limit (FDA Label) — [spec-v1632](spec-v1632.md), which adds `ketorolac-limit-check` — is 2132.)
+
+> v1632, Famotidine and Metoclopramide Adjustments (FDA Label) — [spec-v1632](spec-v1632.md), which adds `gi-drug-dose-check` — is 2133.)
+
+> v1632, Hepatic Dose by Child-Pugh Class (FDA Label) — [spec-v1632](spec-v1632.md), which adds `hepatic-label-dose` — is 2134.)

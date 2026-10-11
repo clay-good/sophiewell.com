@@ -141,6 +141,7 @@
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "0cdf3f67-5bf3-4d58-b330-03febdc652bf",
     "tools": [
+      "hepatic-label-dose",
       "iv-antithrombotic-renal-check"
     ],
     "splVersion": 29,
@@ -172,6 +173,7 @@
     "labeler": "E.R. SQUIBB & SONS, L.L.C.",
     "setId": "046e61c9-9298-4b2e-b76e-b26b81fecd20",
     "tools": [
+      "hepatic-label-dose",
       "nrti-renal-dose"
     ],
     "splVersion": 42,
@@ -273,6 +275,21 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "23ace05216ff63948d84a99143d7751e777dba0a2bcc45cf2d94a276dc9d8817"
+    }
+  },
+  {
+    "label": "Cancidas (caspofungin), Merck",
+    "labeler": "MERCK SHARP & DOHME LLC",
+    "setId": "3bad23a6-09a6-4194-9182-093ed61bc71c",
+    "tools": [
+      "hepatic-label-dose"
+    ],
+    "splVersion": 41,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "4edb8721cceb197f5adbdc0197f2b91d42642b91e0862ef4c96989033df7d5e4"
     }
   },
   {
@@ -549,7 +566,8 @@
     "labeler": "NOVARTIS PHARMACEUTICALS CORPORATION",
     "setId": "000dc81d-ab91-450c-8eae-8eb74e72296f",
     "tools": [
-      "cardiac-renal-dose-check"
+      "cardiac-renal-dose-check",
+      "hepatic-label-dose"
     ],
     "splVersion": 25,
     "publishedOn": "2026-07-07",
@@ -604,6 +622,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "f7258159e2d61f80d15343ec19ad8c56a2c67b07c6ef6c57371bc18b1fda3791"
+    }
+  },
+  {
+    "label": "Famotidine tablets, Teva",
+    "labeler": "TEVA PHARMACEUTICALS USA, INC.",
+    "setId": "4c6f4f9e-f3f5-4ecf-9f40-887e037e8847",
+    "tools": [
+      "gi-drug-dose-check"
+    ],
+    "splVersion": 21,
+    "publishedOn": "2026-08-14",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "71270de00e1316b0659d0d53154d87f81166a8b964a3da8074a1f6eab499b3d4"
     }
   },
   {
@@ -842,6 +875,37 @@
     }
   },
   {
+    "label": "Ketorolac tromethamine injection, Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "8accbb78-fc64-45d5-69b0-35c23a1d2a2e",
+    "tools": [
+      "ketorolac-limit-check"
+    ],
+    "splVersion": 36,
+    "publishedOn": "2026-07-21",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "5c3c715e15462b71ab91e5c55dc0af83ad6ec4be68e034ed2180f2ac1e5aa115",
+      "34070-3": "be2a95f7ecc04f8735b040ba41f97c6cc1c902e26f7e89d0810977c2b10d2be6"
+    }
+  },
+  {
+    "label": "Ketorolac tromethamine tablets, Teva",
+    "labeler": "TEVA PHARMACEUTICALS USA, INC.",
+    "setId": "688f5dec-a6db-43c6-a1f8-5df99d08d395",
+    "tools": [
+      "ketorolac-limit-check"
+    ],
+    "splVersion": 19,
+    "publishedOn": "2025-01-06",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "4a467e71652784a6f7f82486a0a1510624d5cd9319e707eb966b8bcf4ededd9b"
+    }
+  },
+  {
     "label": "Lithium Carbonate tablets and capsules, Hikma",
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "b839ff4b-f62d-41ab-a823-550a756d58ec",
@@ -948,6 +1012,21 @@
     }
   },
   {
+    "label": "Myrbetriq (mirabegron), Astellas",
+    "labeler": "ASTELLAS PHARMA US, INC.",
+    "setId": "ba9e9e15-e666-4c56-9271-2e24739cfa2d",
+    "tools": [
+      "hepatic-label-dose"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2024-08-20",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "02941fc27a66ce62769922bfe80e9f1dc48a59b393eee397ca41eddc125927e1"
+    }
+  },
+  {
     "label": "Nesina (alogliptin), Takeda",
     "labeler": "TAKEDA PHARMACEUTICALS AMERICA, INC.",
     "setId": "a3768c7e-aa4c-44d3-bc53-43bb7346c0b0",
@@ -1012,11 +1091,27 @@
     }
   },
   {
+    "label": "Ondansetron tablets, Dr. Reddy's",
+    "labeler": "DR. REDDY'S LABORATORIES LIMITED",
+    "setId": "162f2088-9fb1-47e7-b88c-45104be7e7bb",
+    "tools": [
+      "hepatic-label-dose"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2025-07-23",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "47a6705316682bb910a96bae7dca16f65c45a68aeac05028483da4c9877b832f"
+    }
+  },
+  {
     "label": "Paxlovid (nirmatrelvir and ritonavir), Pfizer",
     "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
     "setId": "8a99d6d6-fd9e-45bb-b1bf-48c7f761232a",
     "tools": [
-      "antiviral-renal-dose"
+      "antiviral-renal-dose",
+      "hepatic-label-dose"
     ],
     "splVersion": 12,
     "publishedOn": "2026-02-23",
@@ -1110,7 +1205,8 @@
     "labeler": "WYETH PHARMACEUTICALS LLC, A SUBSIDIARY OF PFIZER INC.",
     "setId": "0f43610c-f290-46ea-d186-4f998ed99fce",
     "tools": [
-      "cns-renal-dose-check"
+      "cns-renal-dose-check",
+      "hepatic-label-dose"
     ],
     "splVersion": 67,
     "publishedOn": "2026-04-27",
@@ -1149,6 +1245,22 @@
     "sections": {
       "34068-7": "48154152204c8d7ab45d1d9e6446f42bfd19046ddd1e27514c237806d3800a11",
       "34070-3": "f1a7112f433b642c434fabda4f3d3d929e1eb86cd7504793123f951aa1ee8227"
+    }
+  },
+  {
+    "label": "Reglan (metoclopramide tablets), ANI",
+    "labeler": "ANI PHARMACEUTICALS, INC.",
+    "setId": "de55c133-eb08-4a35-91a2-5dc093027397",
+    "tools": [
+      "gi-drug-dose-check",
+      "hepatic-label-dose"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2026-02-16",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "3d08243a63a34182327d0810c5d1ecc64613e9af49a2ee161a59b1afde0de187"
     }
   },
   {
@@ -1248,6 +1360,36 @@
     "sections": {
       "34068-7": "b1a82d18c41c93f9cc6be3f162b9cdf40e4770efe21de6c497b7c27917181004",
       "34089-3": "60036e085d717f984c2b74eb2f04d847eebc1a726ae8f35ec94116a4be28af78"
+    }
+  },
+  {
+    "label": "Solifenacin succinate tablets, Glenmark",
+    "labeler": "GLENMARK PHARMACEUTICALS INC., USA",
+    "setId": "010c0657-c907-477f-8bd7-5d455a5f50eb",
+    "tools": [
+      "hepatic-label-dose"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2026-01-29",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "0564128eb15048c5cfdcac85a2cde7666890267328748519c886385ac443773c"
+    }
+  },
+  {
+    "label": "Strattera (atomoxetine), Lilly",
+    "labeler": "ELI LILLY AND COMPANY",
+    "setId": "309de576-c318-404a-bc15-660c2b1876fb",
+    "tools": [
+      "hepatic-label-dose"
+    ],
+    "splVersion": 69,
+    "publishedOn": "2026-07-23",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "036177210154e2d9d0241f4f280c18239ba457b3a3cb7ea4af89e89131d6490e"
     }
   },
   {
@@ -1435,6 +1577,21 @@
     }
   },
   {
+    "label": "Tygacil (tigecycline), Wyeth",
+    "labeler": "WYETH PHARMACEUTICALS LLC, A SUBSIDIARY OF PFIZER INC.",
+    "setId": "2ccdb48e-c14a-4eeb-348c-4920ccfd7465",
+    "tools": [
+      "hepatic-label-dose"
+    ],
+    "splVersion": 50,
+    "publishedOn": "2025-11-19",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "b873a4c3b6a2fff8154e233a7e96d62bb30dade73c8d4d27326e14a3c7d87a52"
+    }
+  },
+  {
     "label": "Valcyte (valganciclovir), H2-Pharma",
     "labeler": "H2-PHARMA, LLC",
     "setId": "4c517a39-2ded-4c5a-8d56-276853414b31",
@@ -1512,11 +1669,27 @@
     }
   },
   {
+    "label": "Vfend (voriconazole), Roerig",
+    "labeler": "ROERIG",
+    "setId": "ce3ef5cf-3087-4d92-9d94-9eb8287228db",
+    "tools": [
+      "hepatic-label-dose"
+    ],
+    "splVersion": 58,
+    "publishedOn": "2026-03-02",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "aff9565ae516c805af1b6593268ae79907b60f1d37e6beb35fe7f84cff99dc82"
+    }
+  },
+  {
     "label": "Vimpat (lacosamide), UCB",
     "labeler": "UCB, INC.",
     "setId": "9e79b42c-38a3-4b2c-a196-a5a1948250e2",
     "tools": [
-      "cns-renal-dose-check"
+      "cns-renal-dose-check",
+      "hepatic-label-dose"
     ],
     "splVersion": 63,
     "publishedOn": "2026-05-13",

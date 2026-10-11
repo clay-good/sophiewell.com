@@ -2701,6 +2701,9 @@ const UTILITIES = [
   { id: 'gout-drug-renal-dose', name: 'Allopurinol and Colchicine by Renal Row (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'bisphosphonate-renal-check', name: 'Zoledronic Acid and Bisphosphonates by Renal Row (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tranexamic-acid-renal-dose', name: 'Tranexamic Acid by Serum Creatinine (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ketorolac-limit-check', name: 'Ketorolac Dose and 5-Day Limit (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gi-drug-dose-check', name: 'Famotidine and Metoclopramide Adjustments (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hepatic-label-dose', name: 'Hepatic Dose by Child-Pugh Class (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

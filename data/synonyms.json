@@ -12380,6 +12380,39 @@
       ],
       "tile": "tranexamic-acid-renal-dose",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ketorolac max dose",
+        "toradol max dose",
+        "ketorolac 5 day limit",
+        "toradol 5 day limit"
+      ],
+      "tile": "ketorolac-limit-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "famotidine renal dose",
+        "pepcid renal dose",
+        "metoclopramide renal dose",
+        "reglan renal dose",
+        "reglan max dose"
+      ],
+      "tile": "gi-drug-dose-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hepatic dose adjustment by child pugh from the label",
+        "voriconazole hepatic dose",
+        "caspofungin hepatic dose",
+        "tigecycline hepatic dose",
+        "mirabegron hepatic dose",
+        "atomoxetine hepatic dose"
+      ],
+      "tile": "hepatic-label-dose",
+      "audience": "clinicians"
     }
   ]
 }

@@ -9097,6 +9097,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/tranexamic-acid-renal-dose-v1632.js (spec-v1632: Tranexamic acid by serum creatinine (two label rows) — clinical disclaimer)
 - `tranexamic-acid-renal-dose`
 
+### lib/ketorolac-limit-check-v1632.js (spec-v1632: Ketorolac dose and duration limits (two label rows) — clinical disclaimer)
+- `ketorolac-limit-check`
+
+### lib/gi-drug-dose-check-v1632.js (spec-v1632: Famotidine and metoclopramide adjustments (two label rows) — clinical disclaimer)
+- `gi-drug-dose-check`
+
+### lib/hepatic-label-dose-v1632.js (spec-v1632: Hepatic row by Child-Pugh class (fourteen label rows) — clinical disclaimer)
+- `hepatic-label-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

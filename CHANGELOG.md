@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Ketorolac Dose and 5-Day Limit (FDA Label): the label dose for the patient group, what is left of
+  the daily ceiling, and what is left of the 5 days by any route.
+- Famotidine and Metoclopramide Adjustments (FDA Label): famotidine's maximum dosage by indication
+  and kidney function, and metoclopramide's dose and daily maximum for each group the label lowers
+  it for.
+- Hepatic Dose by Child-Pugh Class (FDA Label): what fourteen labels give for class A, B or C, and a
+  plain statement where a label has no sentence for a class.
 - Spironolactone and Eplerenone by Potassium (FDA Label): spironolactone's heart failure starting
   dose, eplerenone's step up or down from the current dose by potassium, and eplerenone's listed
   contraindications before starting.
