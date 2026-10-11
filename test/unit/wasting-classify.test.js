@@ -40,6 +40,9 @@ test('blank edema, no measure, and ages outside 6-59 months are refused', () => 
   assert.match(w({ ageMonths: '18', muac: '120' }).message, /edema of both feet/);
   assert.match(run({}).message, /Enter the MUAC or the weight-for-height z-score/);
   assert.match(w({ ageMonths: '5', edema: 'none', muac: '120' }).message, /Under 6 months/);
+  // The refusal asks for the value it needs (spec-v769 sweep, October 11, 2026).
+  assert.match(w({ ageMonths: '5' }).message, /^Enter an age from 6 to 59 months/);
+  assert.match(w({ ageMonths: '60', edema: 'none', muac: '120' }).message, /^Enter an age from 6 to 59 months/);
   assert.equal(w({ ageMonths: '60', edema: 'none', muac: '120' }).valid, false);
   assert.equal(w({ edema: 'none', muac: '120' }).valid, false, 'no age');
   assert.match(run({ muac: '130' }).notes.join(' '), /weight-for-height z-score was not measured; MUAC alone was used/);

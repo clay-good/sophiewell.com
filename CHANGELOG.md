@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Renal Limits for Eight CNS Drugs (FDA Label): the label's row for levetiracetam, lacosamide,
+  topiramate, memantine, tramadol, duloxetine, desvenlafaxine or varenicline at the kidney function
+  entered or on dialysis.
 - Tenofovir, Truvada, Entecavir, Lamivudine by Renal Table (FDA Label): the row each label gives
   for the creatinine clearance or for dialysis, with the weight the label says to calculate it on.
 - Gabapentin and Pregabalin by Renal Table (FDA Label): the daily dose range and regimen for the
@@ -222,6 +225,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Acute malnutrition by MUAC, WHZ and edema: an age outside 6 to 59 months now asks for an age in
+  that range. The earlier sentence only stated the range, which read like an answer while the
+  edema question was still open.
 - The weekly data refresh failed its own tests when the USPSTF list was read again and no
   recommendation had changed: a test expected a new changelog entry that is only written when a
   record moves.

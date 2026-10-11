@@ -594,3 +594,5 @@ experience**.
 > v1632, Tenofovir, Truvada, Entecavir, Lamivudine by Renal Table (FDA Label) — [spec-v1632](spec-v1632.md), which adds `nrti-renal-dose` — is 2122.)
 
 > v1632, Gabapentin and Pregabalin by Renal Table (FDA Label) — [spec-v1632](spec-v1632.md), which adds `gabapentinoid-renal-dose` — is 2123.)
+
+> v1632, Renal Limits for Eight CNS Drugs (FDA Label) — [spec-v1632](spec-v1632.md), which adds `cns-renal-dose-check` — is 2124.)

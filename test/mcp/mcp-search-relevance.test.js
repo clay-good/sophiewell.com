@@ -798,6 +798,7 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['levetiracetam renal dose limit from the label', ['cns-renal-dose-check']],
   ['tenofovir entecavir lamivudine label dose by creatinine clearance', ['nrti-renal-dose']],
   ['gabapentin pregabalin label dose by creatinine clearance', ['gabapentinoid-renal-dose']],
   ['valacyclovir oseltamivir ganciclovir label dose by creatinine clearance', ['antiviral-renal-dose']],

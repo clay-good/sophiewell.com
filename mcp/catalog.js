@@ -1040,6 +1040,7 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import cnsRenalDoseCheckV1632 from './adapters/cns-renal-dose-check-v1632.js';
 import nrtiRenalDoseV1632 from './adapters/nrti-renal-dose-v1632.js';
 import gabapentinoidRenalDoseV1632 from './adapters/gabapentinoid-renal-dose-v1632.js';
 import antiviralRenalDoseV1632 from './adapters/antiviral-renal-dose-v1632.js';
@@ -2194,6 +2195,7 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['cns-renal-dose-check-v1632', cnsRenalDoseCheckV1632],
   ['nrti-renal-dose-v1632', nrtiRenalDoseV1632],
   ['gabapentinoid-renal-dose-v1632', gabapentinoidRenalDoseV1632],
   ['antiviral-renal-dose-v1632', antiviralRenalDoseV1632],

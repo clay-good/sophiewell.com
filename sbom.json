@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:948dbad9-b435-54a9-8f94-3c6a731ecc3c",
+  "serialNumber": "urn:uuid:4ee347fb-4d8d-5c1c-8c48-05218679aa52",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T13:39:38.649Z",
+    "timestamp": "2026-10-11T14:20:16.956Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2123 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2124 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "49f694b2be8313e66c13e21721ff2bf2f97a091c92cb377883e8777516b6d0e1"
+          "content": "53058153e8d396f3bee616bc3332740cd3616c4b1562f1db2649cd5a5c5784a6"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "137114"
+          "value": "137174"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "52bdeb4710817623c53c6e4756afafcba77638228ec606d91af8a60fc2a8ff79"
+          "content": "a028f7ce20bf3213551112ed208415f0d3ef846c36db0bf7d0a8e2754c6cb608"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "601528"
+          "value": "601684"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "53b9b036b1eb6b6bb2fda7fd88164e8a7b8a07de8de5d87a0021183577313aed"
+          "content": "fcc792eb32752fa2b5d739ffb3cb975a674f86ad945d9dcf34878074222fc181"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "266095"
+          "value": "266226"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "886cff3cccb3aac6af2a52118ee88fab77516350788f772e6bb2317dad2d57dd"
+          "content": "667f6ef1f77f19d85f8a241ccef27b3127fbfeebc82b8242ed76bf12b6e3de58"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125387"
+          "value": "125457"
         }
       ]
     },
@@ -4924,6 +4924,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7692"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cns-renal-dose-check-v1632.js",
+      "type": "file",
+      "name": "lib/cns-renal-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ec3d76a5bdeed7d8310646140cb74769c485233fa356da5cd8eff6d62600b169"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8995"
         }
       ]
     },
@@ -12641,7 +12662,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1bcab1c1ece1df148821b8ad3d314f6c9ab6ece821a2239bbe2bcc84b55fdf40"
+          "content": "9724eb7b21acbcd72a791dc178efd21c21b93dfc24888dd2df9cdc9f47ca73aa"
         }
       ],
       "properties": [
@@ -12651,7 +12672,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "16116"
+          "value": "17866"
         }
       ]
     },
@@ -14867,7 +14888,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3477f6f67dc5ee23398c6b7675844ae04fe1c32fa9f44c7336921d7546a971e0"
+          "content": "df5848b3d0b52112ace72e80b42feebf230d78d62765ce9438a0191339bfdc02"
         }
       ],
       "properties": [
@@ -14877,7 +14898,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2822031"
+          "value": "2823803"
         }
       ]
     },
@@ -26774,7 +26795,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "529d085b42019640b28063d73756378f367bab76fe391114539455f9807e0d2b"
+          "content": "cb95d6427689239908ae3ea3cd27ebfeedb1200a7512307b5b768a4402c2b7c7"
         }
       ],
       "properties": [
@@ -26784,7 +26805,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5451"
+          "value": "5715"
         }
       ]
     },
@@ -32140,6 +32161,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2395"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cns-renal-dose-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/cns-renal-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "410badc0fed1c40b89fb2d1acd21383f9fa4dea1b3779aed84bba20b0ed574aa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1381"
         }
       ]
     },
@@ -52121,7 +52163,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "be02065e2c1882d521c314d64ea39a4875ad23175bd972860962eba61257c9ca"
+          "content": "4b209da36f124d603dda156d2030ba5491e502c7493e192d396d76e8265c81d4"
         }
       ],
       "properties": [
@@ -52131,7 +52173,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135966"
+          "value": "136103"
         }
       ]
     },
@@ -56678,7 +56720,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b371bb63206382f5c6221092b4f181e536a8fefe07d4586a3c8982d5d912a5a3"
+          "content": "f28c2b955baddea750ccfdb2617857e75021939f88cd3e585d56ae14f5c72ecc"
         }
       ],
       "properties": [
@@ -56688,7 +56730,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8495"
+          "value": "9472"
         }
       ]
     },
@@ -87682,6 +87724,7 @@
         "urn:sophiewell:file:source:lib/clinical.js",
         "urn:sophiewell:file:source:lib/clipboard.js",
         "urn:sophiewell:file:source:lib/cluster-headache-ichd3-v814.js",
+        "urn:sophiewell:file:source:lib/cns-renal-dose-check-v1632.js",
         "urn:sophiewell:file:source:lib/coagscore-v232.js",
         "urn:sophiewell:file:source:lib/cobb-angle-v694.js",
         "urn:sophiewell:file:source:lib/cobra-clock-v1507.js",
@@ -89920,6 +89963,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-v8.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clinical.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cluster-headache-ichd3-v814.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cns-renal-dose-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/coagscore-v232.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cobb-angle-v694.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cobra-clock-v1507.js",
@@ -90975,7 +91019,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "948dbad9b43584a9"
+      "value": "4ee347fb4d8dfc1c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -90987,7 +91031,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3401"
+      "value": "3403"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

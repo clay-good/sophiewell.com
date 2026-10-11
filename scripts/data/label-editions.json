@@ -247,6 +247,21 @@
     }
   },
   {
+    "label": "Chantix (varenicline), Pfizer",
+    "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
+    "setId": "f0ff4f27-5185-4881-a749-c6b7a0ca5696",
+    "tools": [
+      "cns-renal-dose-check"
+    ],
+    "splVersion": 49,
+    "publishedOn": "2026-01-23",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "aa8c473e5544eb2f9dfa52d94545784d068a01d2bc59bc3a7cb8dca475f44f70"
+    }
+  },
+  {
     "label": "Ciprofloxacin in Dextrose injection, Hospira",
     "labeler": "HOSPIRA, INC.",
     "setId": "cbbbf939-3219-4515-a48e-ca264daa4d07",
@@ -376,6 +391,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "d713b5aeadc67a1503e02c36445043298c7037398f2f11ea0207b1b2f005c179"
+    }
+  },
+  {
+    "label": "Duloxetine delayed-release capsules, Lupin",
+    "labeler": "LUPIN PHARMACEUTICALS, INC.",
+    "setId": "829a4f51-c882-4b64-81f3-abfb03a52ebe",
+    "tools": [
+      "cns-renal-dose-check"
+    ],
+    "splVersion": 26,
+    "publishedOn": "2026-06-08",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "20cd037d6962c56ea47716bf3a4869efda77b3e10574f5073523d1ba06c67e57"
     }
   },
   {
@@ -583,6 +613,21 @@
     }
   },
   {
+    "label": "Keppra (levetiracetam), UCB",
+    "labeler": "UCB, INC.",
+    "setId": "3ca9df05-a506-4ec8-a4fe-320f1219ab21",
+    "tools": [
+      "cns-renal-dose-check"
+    ],
+    "splVersion": 36,
+    "publishedOn": "2026-01-29",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "628bd744d00b886cb647e91d402b77618f83dc1a9304fbc8fd53f23a5e73b687"
+    }
+  },
+  {
     "label": "Lithium Carbonate tablets and capsules, Hikma",
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "b839ff4b-f62d-41ab-a823-550a756d58ec",
@@ -641,6 +686,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "3655fec0795d571d4e6a9debc6731490ee92d222b803231eff31a13e18c6d651"
+    }
+  },
+  {
+    "label": "Memantine extended-release capsules, Lupin",
+    "labeler": "LUPIN PHARMACEUTICALS, INC.",
+    "setId": "24290655-47f3-4042-a977-a832c5161d2c",
+    "tools": [
+      "cns-renal-dose-check"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2026-03-09",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "d8d3a2b602be6c3e741438bb1ac6916dda93c4d0a1dd3dda9a8cbab312ae7d40"
     }
   },
   {
@@ -802,6 +862,21 @@
     }
   },
   {
+    "label": "Pristiq (desvenlafaxine), Wyeth",
+    "labeler": "WYETH PHARMACEUTICALS LLC, A SUBSIDIARY OF PFIZER INC.",
+    "setId": "0f43610c-f290-46ea-d186-4f998ed99fce",
+    "tools": [
+      "cns-renal-dose-check"
+    ],
+    "splVersion": 67,
+    "publishedOn": "2026-04-27",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "f5bbf902b5b2fce395ee0f22cc48954ae657b2e38f91e0cd7c6b91be24ab85e6"
+    }
+  },
+  {
     "label": "Prosol 20%, Baxter",
     "labeler": "BAXTER HEALTHCARE CORPORATION",
     "setId": "cc2ace81-5881-43f1-ba94-41b674adc2fc",
@@ -949,6 +1024,21 @@
     }
   },
   {
+    "label": "Topamax (topiramate), Janssen",
+    "labeler": "JANSSEN PHARMACEUTICALS, INC.",
+    "setId": "21628112-0c47-11df-95b3-498d55d89593",
+    "tools": [
+      "cns-renal-dose-check"
+    ],
+    "splVersion": 31,
+    "publishedOn": "2026-10-06",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "bf378069f268e4ce368e41ed9542582d77e260d70a18e08228152065568703e9"
+    }
+  },
+  {
     "label": "Tralement (trace elements injection 4), American Regent",
     "labeler": "AMERICAN REGENT, INC.",
     "setId": "a49ffb90-f307-433e-a86e-aaea6d6a9982",
@@ -961,6 +1051,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "89548c68da6c11407fc31a6fcc832d1010c59238dd551a664735c4790b64cb1e"
+    }
+  },
+  {
+    "label": "Tramadol hydrochloride tablets, Amneal",
+    "labeler": "AMNEAL PHARMACEUTICALS NY LLC",
+    "setId": "67919c2c-2f8a-4bbb-bef5-0cd6c1e63a16",
+    "tools": [
+      "cns-renal-dose-check"
+    ],
+    "splVersion": 51,
+    "publishedOn": "2026-01-28",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "f0a5299f696ff98feb0f65f803fa8f11ba22103def610de644e6535dfa60c344"
     }
   },
   {
@@ -1084,6 +1189,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "a5a621b88811f5da92ddc576a050442610e0ae4821a8db88120550dddd913f5a"
+    }
+  },
+  {
+    "label": "Vimpat (lacosamide), UCB",
+    "labeler": "UCB, INC.",
+    "setId": "9e79b42c-38a3-4b2c-a196-a5a1948250e2",
+    "tools": [
+      "cns-renal-dose-check"
+    ],
+    "splVersion": 63,
+    "publishedOn": "2026-05-13",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "738715a53b0d2d964cf89480e8c375943720489d51a6937cf78f0cbc432b5333"
     }
   },
   {

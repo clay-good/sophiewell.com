@@ -9073,6 +9073,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/gabapentinoid-renal-dose-v1632.js (spec-v1632: Gabapentin and pregabalin by clearance (two label rows) — clinical disclaimer)
 - `gabapentinoid-renal-dose`
 
+### lib/cns-renal-dose-check-v1632.js (spec-v1632: Renal limits for eight CNS drugs (eight label rows) — clinical disclaimer)
+- `cns-renal-dose-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -572,7 +572,8 @@
         "morphine milligram equivalents",
         "convert opioids",
         "opioid equivalent",
-        "opioid dose conversion"
+        "opioid dose conversion",
+        "tramadol mme"
       ],
       "tile": "opioid-mme",
       "audience": "clinicians"
@@ -12275,6 +12276,25 @@
         "lyrica renal dose"
       ],
       "tile": "gabapentinoid-renal-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "levetiracetam renal dose",
+        "keppra renal dose",
+        "lacosamide renal dose",
+        "vimpat renal dose",
+        "topiramate renal dose",
+        "topamax renal dose",
+        "memantine renal dose",
+        "duloxetine renal dose",
+        "desvenlafaxine renal dose",
+        "pristiq renal dose",
+        "varenicline renal dose",
+        "chantix renal dose",
+        "tramadol renal dose"
+      ],
+      "tile": "cns-renal-dose-check",
       "audience": "clinicians"
     }
   ]

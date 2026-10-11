@@ -1,6 +1,6 @@
 # spec-v1632 — Dose checks read from the FDA label (renal, hepatic, weight, age, indication)
 
-**Status:** In progress, October 11, 2026: 6 of 18 tools built (see Build status). 18 new tools, none build-gated.
+**Status:** In progress, October 11, 2026: 7 of 18 tools built (see Build status). 18 new tools, none build-gated.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 An order-verification pharmacist asks the same question several hundred times a shift: is this
@@ -872,7 +872,7 @@ result string contains "give", "recommend" in the tool's voice, or a dose when t
 
 ## Build status
 
-Updated October 11, 2026. 6 of 18 tools built.
+Updated October 11, 2026. 7 of 18 tools built.
 
 | Tool | Status |
 |---|---|
@@ -883,4 +883,5 @@ Updated October 11, 2026. 6 of 18 tools built.
 | 4. `antiviral-renal-dose` | Built (group F) on eight label rows through the engine: acyclovir injection (Eugia, version 7), Valtrex (32), famciclovir (Teva, 19), ganciclovir injection (Fresenius Kabi, 8), Valcyte (24), Tamiflu (45), Paxlovid (12) and Veklury (24). Every table was re-read and matches the spec. **Decisions:** one "drug and indication" choice of 21 rows in place of two fields, so no pairing can be wrong; dialysis is always asked, since every one of the eight labels has a line for it, and a label with no peritoneal dialysis line says so; the acyclovir bands share their edges in the label, so 25 and 10 show two rows; the Tamiflu table is open below 10 mL/min without dialysis, where the tool reports the label's "not recommended" for end-stage disease not on dialysis; per-kilogram rows are reported as printed and not multiplied out. |
 | 5. `nrti-renal-dose` | Built (group F) on four label rows through the engine: Viread (version 31), Truvada (32), Baraclude (42) and Epivir (24), each re-read; every row matches the spec. The engine gained `bandToolAnswer`, the whole of a class tool whose labels are band tables (one drug-and-use choice, a dialysis question, one number), and `antiviral-renal-dose` now runs on it with the same answers. Tenofovir below 10 mL/min off dialysis reports the label's "no data are available"; Truvada for PrEP reports "not recommended" below 60; the ideal-body-weight instruction is printed for both tenofovir labels. |
 | 6. `gabapentinoid-renal-dose` | Built (group F) on two label rows: Neurontin (Viatris, version 48) and Lyrica (Pfizer, version 59), each re-read. Gabapentin below 15 mL/min shows the label's proportion worked out, with its own 7.5 mL/min example. **Found on re-read:** the Neurontin table prints ">30 to 59" and ">15 to 29", so a clearance of exactly 30 is in neither row (as is 59.5); the tool shows both neighbors and says so, and the engine was corrected to treat a band whose excluded edge is the value as the neighbor. Pregabalin's bands share their edges at 30 and 60 and show two rows there; exactly 15 is in the 15 to 30 row only, because the row below reads "less than 15". |
-| 7 to 18 | Not built. |
+| 7. `cns-renal-dose-check` | Built (group F) on eight label rows through the engine: Keppra (version 36), Vimpat (63), Topamax (31), memantine extended-release (Lupin, 17), tramadol tablets (Amneal, 51), duloxetine (Lupin, 26), Pristiq (67) and Chantix (49), each re-read. **Re-pinned:** the Namenda XR set id in Sources is a hospital repackager's copy from 2018 (Carilion Materials Management, now on the deny list) and the brand holder's label is not on DailyMed, so the tool reads Lupin's memantine extended-release label. Levetiracetam asks for the clearance and the body surface area and does the label's own adjustment first. Where a label states a limit only below a clearance, the row above says the label gives no renal limit there. **Not built from the spec:** the optional entered-dose comparison, and applying lacosamide's 25% to a maximum the reader enters; the tool reports the label's sentence. |
+| 8 to 18 | Not built. |
