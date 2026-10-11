@@ -5,9 +5,30 @@ import { pdcStar as p, adherenceOutreachList as a } from '../../lib/pdc-star-v15
 
 const ann = 'Ann, D10, 2026-01-05, 30, atorvastatin\nAnn, D10, 2026-02-10, 30, atorvastatin\nAnn, D10, 2026-03-20, 90, atorvastatin\nAnn, D10, 2026-06-25, 90, atorvastatin\nAnn, D10, 2026-09-20, 90, atorvastatin';
 
-test('same-ingredient overlaps shift; a stay leaves both sides and shifts the supply', () => {
-  const r = p({ fills: ann, year: '2026', stays: 'Ann, 2026-04-01, 2026-04-10' });
+// Measurement year 2025 is the last with the stay adjustment (2027 Technical Notes, Attachment L).
+const ann2025 = ann.replaceAll('2026-', '2025-');
+
+test('same-ingredient overlaps shift; through 2025 a stay leaves both sides and shifts the supply', () => {
+  const r = p({ fills: ann2025, year: '2025', stays: 'Ann, 2025-04-01, 2025-04-10' });
   assert.equal(r.rows[0].pdc, 94);
+  assert.equal(r.stayAdjusted, true);
+  assert.match(r.notes.join(' '), /stay days removed/);
+  assert.doesNotMatch(r.notes.join(' '), /risk-adjusted/);
+});
+
+// spec-v1641 row 21: from measurement year 2026 the Star measures are risk adjusted and carry no stay
+// adjustment (CMS Patient Safety memo, April 22, 2026), so the same stay changes nothing.
+test('from measurement year 2026 a stay is not removed, and the result says why', () => {
+  const withStay = p({ fills: ann, year: '2026', stays: 'Ann, 2026-04-01, 2026-04-10' });
+  const without = p({ fills: ann, year: '2026' });
+  assert.equal(withStay.rows[0].pdc, 91.4); // 330 of 361 days
+  assert.equal(withStay.rows[0].pdc, without.rows[0].pdc);
+  assert.equal(withStay.stayAdjusted, false);
+  assert.match(withStay.notes.join(' '), /not adjusted for inpatient or skilled nursing stays \(CMS Patient Safety memo, April 22, 2026\)/);
+  assert.doesNotMatch(withStay.notes.join(' '), /stay days removed/);
+  // A stay spanning the whole treatment period no longer excludes the patient.
+  assert.equal(p({ fills: ann, year: '2026', stays: 'Ann, 2026-01-01, 2026-12-31' }).rows[0].inDenominator, true);
+  assert.equal(p({ fills: ann2025, year: '2025', stays: 'Ann, 2025-01-01, 2025-12-31' }).rows[0].inDenominator, false);
 });
 
 test('different drugs in the class are not shifted', () => {
@@ -26,8 +47,12 @@ test('denominator rules: one fill, a 90-day period, insulin and sacubitril/valsa
 
 test('outreach: slack is the uncovered days still allowed; past it is listed apart', () => {
   const fills = `${ann}\nBo, D10, 2026-02-01, 30, rosuvastatin\nBo, D10, 2026-05-01, 30, rosuvastatin`;
-  const r = a({ fills, year: '2026', asOf: '2026-09-26', stays: 'Ann, 2026-04-01, 2026-04-10' });
+  const r = a({ fills: fills.replaceAll('2026-', '2025-'), year: '2025', asOf: '2025-09-26', stays: 'Ann, 2025-04-01, 2025-04-10' });
   assert.deepEqual(r.list.map((x) => [x.patient, x.slack]), [['Ann', 56]]);
+  // In 2026 the stay days stay in: 21 uncovered of the 72 allowed over 361 days.
+  const r26 = a({ fills, year: '2026', asOf: '2026-09-26', stays: 'Ann, 2026-04-01, 2026-04-10' });
+  assert.deepEqual(r26.list.map((x) => [x.patient, x.slack]), [['Ann', 51]]);
+  assert.match(r26.notes.join(' '), /risk-adjusted/);
   assert.deepEqual(r.rows.map((x) => [x.patient, x.canReach]), [['Ann', true], ['Bo', false]]);
   assert.match(r.band, /1 cannot reach 80%/);
 });

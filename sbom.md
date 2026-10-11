@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fddd928c70b24cde`
-Generated: 2026-10-11T00:00:29.049Z
+Build ID: `e63959ff4de42e7d`
+Generated: 2026-10-11T00:34:51.788Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -698,7 +698,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2761336 | `85f8ab2dd6058f0056bb074aaa93f6abc0abb8e2aa473572b39232aa19bb7051` |
+| `lib/meta.js` | 2761776 | `45a26800bd6c9e905f986b6f263421faf6a576f1737c43f82117cd61c68c13f7` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19716 | `70987b0743a01bf29b36267679574b76f3b69cb801e02bb2726da0b384de792c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -888,7 +888,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pc-ptsd5-v521.js` | 7334 | `0635ea214ac637ed9109351c0bed5c50bb81976857fb80fd59e71aa11a6495d4` |
 | `lib/pcdai-v522.js` | 13475 | `5f88c27307bacf490146e372bdbb5481715bca5b5d77f5cc7f305f871c9b03f2` |
 | `lib/pci-surgery-timing-v898.js` | 9376 | `6b4d99f342591c5f67a2f9219fd7f669e03ba310458dbecec3c8382ca29144cd` |
-| `lib/pdc-star-v1513.js` | 11239 | `c1e271f74331d09b3a96446717c6fbc416055e54916f3a5795edbc4a11965810` |
+| `lib/pdc-star-v1513.js` | 12562 | `cda8cf72ce442eae606cb186bcb7bab53d92d8abbd376008339cf5af817fa8d0` |
 | `lib/pederson-difficulty-v717.js` | 3469 | `5f7fb47b29141583014bbf6142329bfc1e95da75272b063d20479f5631849b8e` |
 | `lib/pediatric-acute-v262.js` | 8938 | `bdd2b5540c3050cde8707837021041e85d45b358ed7a9c6a6c15b25a0e0c19cf` |
 | `lib/pedis-v613.js` | 8884 | `f158474599314efcff28d525a5512b83d595a7fc21d75bb30dac2620d741b6b9` |
@@ -2042,7 +2042,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/pc-ptsd5-v521.js` | 3458 | `e3e7e67963b7e24b36f02f6e1102d373d8e1305a8949a62213e1231bd56e0ff6` |
 | `mcp/adapters/pcdai-v522.js` | 4564 | `11ad59da8168c043048dc4163a0f6420cba727b2b014a8fa43dae79a981d7590` |
 | `mcp/adapters/pci-surgery-timing-v898.js` | 1704 | `5a94457d89eb607b900d137e735027edf230f36ecfa34c27f1ce100471cee92e` |
-| `mcp/adapters/pdc-star-v1513.js` | 1430 | `addaf2938c57d0c4185bddf660e9bf1bbe8c09783736fceda1a015b28abafad6` |
+| `mcp/adapters/pdc-star-v1513.js` | 1678 | `9ebac88c05efee5816964958314ed9cabce73712fc5c99d7296b7316766f1b61` |
 | `mcp/adapters/pederson-difficulty-v717.js` | 1254 | `b951227a22acbec45fa9777dbd9e2b2d0223ae4e1d53aab8c272b3c55c22d733` |
 | `mcp/adapters/pediatric-acute-v262.js` | 4068 | `e4536977a73949c381fa922cbe535be9cce260951dc97ca3682634cb976df8f8` |
 | `mcp/adapters/pedis-v613.js` | 2682 | `e1a18f460facee88b68c3bca397bd2b85df0fde141c1b4a298921b7ba5b60d8b` |
@@ -2552,7 +2552,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1510.js` | 20988 | `3e8cdbf16a7567269112c7a50e7abd49351c2be159d66956a987d54616f2dfac` |
 | `views/group-v1511.js` | 13746 | `b8685b9fff256ed112f0a6ea4726d5bceca9067280797ad8d89d35f594bd019b` |
 | `views/group-v1512.js` | 13381 | `3c334743e9f5219297d28cf29b43c18187d2666cd40bf50f40034d87a7ee60ce` |
-| `views/group-v1513.js` | 8961 | `ebd3a2e3ba0b3ee52e0424375dfc40aab175e62d9122172717428e4761dc810d` |
+| `views/group-v1513.js` | 9059 | `9dccf60e95ef759fe132f3fd1c89105f718285ee2afc524555f25606d51e79e0` |
 | `views/group-v1514.js` | 15758 | `af3f2167ba8c2713407f9078fa1a6b65be37aba4b9bc0a0eced4a51dd88aba0d` |
 | `views/group-v1515.js` | 47370 | `e1f9e74be24dce77aaecfe9de6adaa03564cf1b0b1a96fb439fa861ee89f28de` |
 | `views/group-v1516.js` | 10809 | `a915113c204cf0c8e4c6a4f92819d8d636d0f9f8c31823a7f3a82aec18ca2535` |

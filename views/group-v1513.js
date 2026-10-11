@@ -118,7 +118,7 @@ export const renderers = {
     const pairs = [['ps-fills', 'fills'], ['ps-stays', 'stays'], ['ps-excl', 'exclusions'], ['ps-year', 'year']];
     note(root, 'Fills one per line: patient, measure (D08 diabetes, D09 RAS antagonists, D10 statins), fill date, days supply, ingredient. The measure for each fill is yours to assign.');
     textareaField(root, 'Fills', 'ps-fills', 'Ann, D10, 2026-01-05, 30, atorvastatin');
-    textareaField(root, 'Inpatient or skilled nursing stays (optional): patient, admit date, discharge date', 'ps-stays', 'Ann, 2026-04-01, 2026-04-10');
+    textareaField(root, 'Inpatient or skilled nursing stays (optional, removed for measurement years through 2025 only): patient, admit date, discharge date', 'ps-stays', 'Ann, 2025-04-01, 2025-04-10');
     textareaField(root, 'Exclusions (optional): patient, hospice or esrd or dialysis', 'ps-excl', 'Bo, hospice');
     numField(root, 'Measurement year', 'ps-year', 'e.g. 2026', '2100', '1');
     const ids = pairs.map(([d]) => d);
@@ -154,7 +154,7 @@ export const renderers = {
     const pairs = [['ao-fills', 'fills'], ['ao-stays', 'stays'], ['ao-excl', 'exclusions'], ['ao-year', 'year'], ['ao-asof', 'asOf']];
     note(root, 'Fills one per line: patient, measure (D08 diabetes, D09 RAS antagonists, D10 statins), fill date, days supply, ingredient. The measure for each fill is yours to assign.');
     textareaField(root, 'Fills', 'ao-fills', 'Ann, D10, 2026-01-05, 30, atorvastatin');
-    textareaField(root, 'Inpatient or skilled nursing stays (optional): patient, admit date, discharge date', 'ao-stays', 'Ann, 2026-04-01, 2026-04-10');
+    textareaField(root, 'Inpatient or skilled nursing stays (optional, removed for measurement years through 2025 only): patient, admit date, discharge date', 'ao-stays', 'Ann, 2025-04-01, 2025-04-10');
     textareaField(root, 'Exclusions (optional): patient, hospice or esrd or dialysis', 'ao-excl', 'Bo, hospice');
     numField(root, 'Measurement year', 'ao-year', 'e.g. 2026', '2100', '1');
     dateInput(root, 'As of (blank for today)', 'ao-asof', 'date');

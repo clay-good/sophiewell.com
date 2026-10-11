@@ -14,6 +14,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Part D adherence (PDC by the Star method) and the adherence outreach list removed inpatient and
+  skilled nursing stay days for every year. From measurement year 2026 (the 2028 Star Ratings) CMS
+  uses risk-adjusted adherence measures that are not adjusted for those stays (CMS Patient Safety
+  memo, April 22, 2026), so stays are now removed only through measurement year 2025, and a 2026
+  result says so and says the risk adjustment is not computed. Both tools now cite the 2027
+  Technical Notes (September 30, 2026). spec-v1641 row 21.
 - Cockcroft-Gault took one weight and used it as entered, though drug labels differ on which
   weight to use. With an optional height it now shows the clearance on actual, ideal (Devine) and
   adjusted (0.4) weight, with what Winter 2012 found for each, and says a low creatinine is not
