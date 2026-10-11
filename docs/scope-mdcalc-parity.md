@@ -530,3 +530,5 @@ experience**.
 > v1630, Temperature Log: Excursions and Time Out of Range — [spec-v1630](spec-v1630.md), which adds `storage-excursion-summary` — is 2090.)
 
 > v1630, Calcium and Phosphate Concentrations in a PN Bag — [spec-v1630](spec-v1630.md), which adds `pn-calcium-phosphate-check` — is 2091.)
+
+> v1630, Lipid Emulsion Dose and Rate Against the Label — [spec-v1630](spec-v1630.md), which adds `lipid-emulsion-dose-check` — is 2092.)

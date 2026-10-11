@@ -11929,6 +11929,17 @@
       ],
       "tile": "pn-calcium-phosphate-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lipid emulsion max dose",
+        "intralipid g per kg per day maximum",
+        "smoflipid dose pediatric",
+        "lipid infusion rate ml per kg per hour",
+        "omegaven dose"
+      ],
+      "tile": "lipid-emulsion-dose-check",
+      "audience": "clinicians"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:f483dd72-7916-5cf3-8deb-ec8fa0dbdd39",
+  "serialNumber": "urn:uuid:d342720b-099d-511e-8fa1-520ec4a38285",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T06:50:43.629Z",
+    "timestamp": "2026-10-11T07:05:32.761Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2091 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2092 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "efc93ee4169e6fe7aa356267bf5638f41147a3b9838709d815706e8e8dbdd592"
+          "content": "fc37025285e3f6bd72136740f9d4d4a468d3ac7dce9e31fd52ba929ca9d801f0"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135102"
+          "value": "135164"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f2362e5e5e5cea366ef42baf1a8ccdf826abb751bf9b045b35d6417bc6c5f009"
+          "content": "f2490097e644e135452a972c3354ed0eec799a3ba35f98d79e02bedb32e8af41"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "596409"
+          "value": "596559"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1b07d9d2282a7eba1d2420c5f6f2075d9fe611da158b84eef5c6d1173be9a13a"
+          "content": "ecbbdabc28666489c079406f7f1fcd1269f99049bc71c8571b1911b1051133a2"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "261911"
+          "value": "262047"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a866b8172fa28d03435993194c125ff6988edbcd720dddf7dd0a018ea98f67b"
+          "content": "36783c79532c0d155f36dd27f2bfbec07a78cd41a052b91ccf24c4ba9fdc5854"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "123063"
+          "value": "123140"
         }
       ]
     },
@@ -12284,7 +12284,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dbefd6fe23048ee3bcaf9e6bfceaf60231a00f68d8bd61b49b12d9089a4b0766"
+          "content": "15626d9f0e8a143a6d6f2cb87f239bf142f12aaa6e1038493d0a7539ce0f3fbf"
         }
       ],
       "properties": [
@@ -12925,6 +12925,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5091"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/lipid-emulsion-dose-check-v1630.js",
+      "type": "file",
+      "name": "lib/lipid-emulsion-dose-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "19da75460a84026e4be6c2c46aeb06951bb099ae9de29182346cc7cf8729f146"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12805"
         }
       ]
     },
@@ -14447,7 +14468,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f9accdcd82a1e48ad87ebd52d082fec46edf0e2f4c2a070466505bbca030405c"
+          "content": "f9cfa70836ff82b7bac46c16ee93d72eaa8b7e9597b85a8ef5d56b9d4e4e9e30"
         }
       ],
       "properties": [
@@ -14457,7 +14478,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2786449"
+          "value": "2788023"
         }
       ]
     },
@@ -38633,6 +38654,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lipid-emulsion-dose-check-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/lipid-emulsion-dose-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "abcecfccbed4626ec0cb1919e2f34ab594bd38f0394e3a5e334c21138c2a1d12"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2413"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lipids-v271.js",
       "type": "file",
       "name": "mcp/adapters/lipids-v271.js",
@@ -50756,7 +50798,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3eae09609051d544155bf0a046a3731731e256af255484fb1a195cfd90faf5d9"
+          "content": "9b71a50233dde73a8f04c39efc511caef6112b3a52068c6a48e3407d5066a0bc"
         }
       ],
       "properties": [
@@ -50766,7 +50808,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "131564"
+          "value": "131721"
         }
       ]
     },
@@ -55271,7 +55313,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ec402c47b5391677626dc80f69a326842e41e823cd13b945f5fd097b027b6494"
+          "content": "2a07f53a0ab9c8c3a419ec906060235fb90aa9840432c086883e29138b34b744"
         }
       ],
       "properties": [
@@ -55281,7 +55323,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11261"
+          "value": "12912"
         }
       ]
     },
@@ -86656,6 +86698,7 @@
         "urn:sophiewell:file:source:lib/li-rads-v327.js",
         "urn:sophiewell:file:source:lib/lichtiger-index-v663.js",
         "urn:sophiewell:file:source:lib/lichtman-kienbock-v345.js",
+        "urn:sophiewell:file:source:lib/lipid-emulsion-dose-check-v1630.js",
         "urn:sophiewell:file:source:lib/lipids-v271.js",
         "urn:sophiewell:file:source:lib/lisfranc-myerson-v412.js",
         "urn:sophiewell:file:source:lib/live.js",
@@ -88820,6 +88863,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/li-rads-v327.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lichtiger-index-v663.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lichtman-kienbock-v345.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lipid-emulsion-dose-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lipids-v271.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lisfranc-myerson-v412.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/liver-v196.js",
@@ -89501,7 +89545,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "f483dd7279161cf3"
+      "value": "d342720b099d611e"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -89513,7 +89557,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3334"
+      "value": "3336"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

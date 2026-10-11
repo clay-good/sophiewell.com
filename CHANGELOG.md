@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Lipid Emulsion Dose and Rate Against the Label: an order as g/kg/day and mL/kg/hour beside the
+  maximums on the product's own label (Intralipid 20% and 30%, SMOFlipid, Clinolipid, Omegaven),
+  which differ by product and age band, with the time allowed to complete the infusion and the
+  share of energy where the label states one. A figure is withheld if its label has changed.
 - Calcium and Phosphate Concentrations in a PN Bag: calcium in mEq/L, phosphate in mmol/L, their
   sum and the amino acid percent, set against a limit you enter from your own curve or software.
   No solubility curve is built in, and a result under the limit never says "compatible".

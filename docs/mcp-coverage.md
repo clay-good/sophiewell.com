@@ -8977,6 +8977,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pn-calcium-phosphate-check-v1630.js (spec-v1630: Calcium and phosphate concentrations in a PN bag (FDA label strengths; reader's limit) — clinical disclaimer)
 - `pn-calcium-phosphate-check`
 
+### lib/lipid-emulsion-dose-check-v1630.js (spec-v1630: Lipid emulsion dose and rate against the FDA label (five products; label rows) — clinical disclaimer)
+- `lipid-emulsion-dose-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

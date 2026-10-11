@@ -113,13 +113,15 @@
     "setId": "ae98eb03-c0e7-49d1-b024-77968e3d9d6e",
     "tools": [
       "tpn-macro",
-      "iv-osmolarity"
+      "iv-osmolarity",
+      "lipid-emulsion-dose-check"
     ],
     "splVersion": 24,
     "publishedOn": "2026-06-11",
-    "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
     "sections": {
+      "34068-7": "99612a27613b8cb930a5ea3a1a3e003e6a8d6f335a9fa553042711b807ccca63",
       "34089-3": "a612555511be33bb37761ca97eef13d6c16d84b3b19d9852abfb3784e50dd563"
     }
   },
@@ -175,7 +177,8 @@
     "setId": "61e025f1-a38e-4af2-9e18-13ea12977cf5",
     "tools": [
       "tpn-macro",
-      "iv-osmolarity"
+      "iv-osmolarity",
+      "lipid-emulsion-dose-check"
     ],
     "splVersion": 3,
     "publishedOn": "2025-11-27",
@@ -192,7 +195,8 @@
     "setId": "98460eae-5195-48d2-ab73-00d276879ef6",
     "tools": [
       "tpn-macro",
-      "iv-osmolarity"
+      "iv-osmolarity",
+      "lipid-emulsion-dose-check"
     ],
     "splVersion": 4,
     "publishedOn": "2025-11-19",
@@ -240,7 +244,8 @@
     "setId": "5d9d0b24-e139-48bf-ab2d-536fb59cf8e0",
     "tools": [
       "tpn-macro",
-      "iv-osmolarity"
+      "iv-osmolarity",
+      "lipid-emulsion-dose-check"
     ],
     "splVersion": 6,
     "publishedOn": "2025-09-29",
@@ -319,7 +324,8 @@
     "setId": "e0e9d917-ff6f-488e-a6a8-0ad59dd17d80",
     "tools": [
       "tpn-macro",
-      "iv-osmolarity"
+      "iv-osmolarity",
+      "lipid-emulsion-dose-check"
     ],
     "splVersion": 11,
     "publishedOn": "2025-09-17",

@@ -1,11 +1,13 @@
 // spec-v1630: sterile compounding, IV admixture and drug storage. Group Q.
-// reconstitution-concentration, admixture-concentration, pn-aluminum-load, pn-calcium-phosphate-check,
+// reconstitution-concentration, admixture-concentration, lipid-emulsion-dose-check, pn-aluminum-load,
+// pn-calcium-phosphate-check,
 // mean-kinetic-temperature,
 // storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
 import { el, clear } from '../lib/dom.js';
 import * as RC from '../lib/reconstitution-concentration-v1630.js';
 import * as AC from '../lib/admixture-concentration-v1630.js';
+import * as LE from '../lib/lipid-emulsion-dose-check-v1630.js';
 import * as PA from '../lib/pn-aluminum-load-v1630.js';
 import * as CP from '../lib/pn-calcium-phosphate-check-v1630.js';
 import * as MK from '../lib/mean-kinetic-temperature-v1630.js';
@@ -105,6 +107,30 @@ export const renderers = {
     numField(root, 'Strength already in the bag fluid (optional)', 'ac-base', '');
     numField(root, 'Target strength (optional)', 'ac-target', '');
     run(root, [['ac-unit', 'unit'], ['ac-per', 'per'], ['ac-nominal', 'nominalVolume'], ['ac-overfill', 'overfill'], ['ac-withdrawn', 'withdrawn'], ['ac-adds', 'additives'], ['ac-other', 'otherVolume'], ['ac-base', 'baseline'], ['ac-target', 'target']], AC.admixtureConcentration);
+  },
+
+  'lipid-emulsion-dose-check'(root) {
+    const pairs = [['le-product', 'product'], ['le-age', 'ageBand'], ['le-weight', 'weight'], ['le-wunit', 'weightUnit'], ['le-order', 'order'], ['le-ounit', 'orderUnit'], ['le-hours', 'hours'], ['le-route', 'route'], ['le-kcal', 'totalKcal'], ['le-own', 'ownMax']];
+    selectField(root, 'Product', 'le-product', LE.PRODUCT_OPTIONS);
+    selectField(root, 'Age band', 'le-age', LE.AGE_BANDS);
+    numField(root, 'Patient weight', 'le-weight', '');
+    selectField(root, 'Weight unit', 'le-wunit', LE.WEIGHT_UNITS);
+    numField(root, 'Ordered lipid', 'le-order', '');
+    selectField(root, 'Ordered as', 'le-ounit', LE.ORDER_UNITS);
+    numField(root, 'Infusion duration, hours', 'le-hours', '');
+    selectField(root, 'How it runs', 'le-route', LE.ROUTES);
+    numField(root, 'Total daily energy, kcal (optional)', 'le-kcal', '');
+    const own = numField(root, 'Maximum g/kg/day from the label in hand', 'le-own', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = LE.lipidEmulsionDoseCheck(args, new Date());
+      // The label's own figure is asked for only when the tool's copy is withheld.
+      own.hidden = !(r.withheld || val('le-own') !== '');
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
   },
 
   'pn-aluminum-load'(root) {
