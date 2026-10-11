@@ -9028,6 +9028,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/lithium-level-check-v1631.js (spec-v1631: Lithium level against the FDA label (label row) — clinical disclaimer)
 - `lithium-level-check`
 
+### lib/digoxin-label-dose-v1631.js (spec-v1631: Digoxin loading and maintenance by the label method (FDA label; label row) — clinical disclaimer)
+- `digoxin-label-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

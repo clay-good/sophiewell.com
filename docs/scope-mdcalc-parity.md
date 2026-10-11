@@ -535,7 +535,7 @@ experience**.
 
 > v1630, Opened Container: When to Discard — [spec-v1630](spec-v1630.md), which adds `in-use-discard-time` — is 2093.)
 
-> v1630, PN Order per Kilogram, GIR and Energy — [spec-v1630](spec-v1630.md), which adds `pn-order-summary` — is 2094.)
+> v1630, PN Order Summary per Kilogram — [spec-v1630](spec-v1630.md), which adds `pn-order-summary` — is 2094.)
 
 > v1630, PN Amino Acids: Dose, Nitrogen, Volume and Cysteine — [spec-v1630](spec-v1630.md), which adds `pn-amino-acid-order` — is 2095.)
 
@@ -564,3 +564,5 @@ experience**.
 > v1631, Caffeine Citrate for Apnea of Prematurity — [spec-v1631](spec-v1631.md), which adds `caffeine-citrate-dose` — is 2107.)
 
 > v1631, Lithium Level Against the Label — [spec-v1631](spec-v1631.md), which adds `lithium-level-check` — is 2108.)
+
+> v1631, Digoxin Loading and Maintenance (Label Method) — [spec-v1631](spec-v1631.md), which adds `digoxin-label-dose` — is 2109.)

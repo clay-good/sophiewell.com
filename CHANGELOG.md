@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Digoxin Loading and Maintenance (Label Method): the label's half-then-quarters loading schedule
+  for a mcg/kg you choose, and the maintenance dose by its formula and by its table, naming the
+  table cell it read and the days to steady state. It does not interpret levels.
 - Caffeine Citrate for Apnea of Prematurity: the label's loading and maintenance doses for a
   weight, in mg of caffeine citrate, mg of base and mL. No therapeutic range is shown, because the
   label gives none.
@@ -48,7 +51,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - PN Amino Acids: an amino acid order as g/kg/day beside the range on the product's own label
   (Travasol 10%, Prosol 20%, TrophAmine 10%), with the product volume, the grams of nitrogen at
   the label's own nitrogen content (not grams ÷ 6.25), and the Elcys amount when cysteine is added.
-- PN Order per Kilogram, GIR and Energy: a parenteral nutrition order restated per kilogram, with
+- PN Order Summary per Kilogram: a parenteral nutrition order restated per kilogram, with
   the glucose infusion rate, energy from dextrose, amino acids and lipid at the factors on their
   labels, and non-protein kcal per gram of nitrogen when you enter the nitrogen. No targets.
 - Opened Container: When to Discard: the discard date and time for an opened stock container, from
@@ -164,6 +167,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Typing one word on the home page ("vancomycin", "tpn", "gir", "crrt", "aminoglycoside") opened
+  one of the new pharmacy tools instead of the tool that had always answered it, because a search
+  phrase claims any word inside it. The new tools' phrases were reworded, PN Order Summary per
+  Kilogram was renamed, and a test now holds those words to their tools.
 - Typing "correct the sodium" on the home page offered the new isotonicity tool first and dropped
   the sodium-correction planner from the choices, because the tool's name carried the word
   "sodium". It is now named Isotonicity by E-Value (NaCl Equivalent), and Aluminum in a PN Order

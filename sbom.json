@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:629e3594-9c9e-5814-8d5f-1d6e72f9c5d6",
+  "serialNumber": "urn:uuid:1ab7a863-baf0-5339-8dcd-4e23e900a1c2",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T10:26:27.193Z",
+    "timestamp": "2026-10-11T11:14:04.338Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2108 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2109 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2aef33674f5b9a8908b7bf89edf457b59af7ee6f5bff2031b86b35304b6848b3"
+          "content": "3a720cb1d6ecbb592e50e4584782e623fca2f2fab6b07f012ad4da267e5c2fff"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "136105"
+          "value": "136159"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5afe1771f3ad92bbc0962bf8103f717f1896a9d4bc56dc2ec4168396348f8108"
+          "content": "8f4ce77378ec3d183b9f4f16f06e7035c1e66addbeced3f6dc11f8f041666226"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "599006"
+          "value": "599154"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "833ef0c1fd63114aad8c8910acb3e8129d4ea991ed9903ba957043e7d95d4c68"
+          "content": "1c215c67649c0f2c06cbc15935988e27f994ecfadd2cd064d0333cb740bf06a7"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "264130"
+          "value": "264259"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "322a7c1b155d5b3bb4f42e0bb68f924e31c8d54d11644c12abe8fbe8800094a6"
+          "content": "347eada56ae155d28cc3f40cb61505f0731948e7e162aecdc119431eb7c5531e"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "124228"
+          "value": "124290"
         }
       ]
     },
@@ -6184,6 +6184,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5179"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/digoxin-label-dose-v1631.js",
+      "type": "file",
+      "name": "lib/digoxin-label-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fd2851ce1a1608f7dd20d4bb69e3a5eca4359406e6b38509f1e795b5d3c628c3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7959"
         }
       ]
     },
@@ -14657,7 +14678,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c5510764f204acffd53040940e4041658dd2e915992f7014c606d0b7343b5621"
+          "content": "5792d0af98b3f863b247cb5f514b9dbf4b85d25fbcf2fd8de4c3ba8a5f0aa0dd"
         }
       ],
       "properties": [
@@ -14667,7 +14688,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2803484"
+          "value": "2804388"
         }
       ]
     },
@@ -32938,6 +32959,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1562"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/digoxin-label-dose-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/digoxin-label-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "89723f42847297a6d0f64f2fe83b3b4bd2a42ad9acf0ceb04a5f7a78d900c0c4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1574"
         }
       ]
     },
@@ -51470,7 +51512,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5fb629e7d28e9a5a6614f38ef45109e42f0d6984d9c6889ce63d52fd275e7ed8"
+          "content": "6a9e45531468a85c68a65bdb722a2c45af14a959b3b665a5fe0751f2be5bb782"
         }
       ],
       "properties": [
@@ -51480,7 +51522,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133885"
+          "value": "134016"
         }
       ]
     },
@@ -56006,7 +56048,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0a642ca47d64e57124a549c83bf3efa2930409fc0fe0c15f47a55dcbd41b9fe0"
+          "content": "1ab53dedd9fbc5b6dcb4fc357593801fb5c88c64619e03825a5915ec7527eb99"
         }
       ],
       "properties": [
@@ -56016,7 +56058,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12587"
+          "value": "13884"
         }
       ]
     },
@@ -87070,6 +87112,7 @@
         "urn:sophiewell:file:source:lib/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:source:lib/diastolic-function-ase-v664.js",
+        "urn:sophiewell:file:source:lib/digoxin-label-dose-v1631.js",
         "urn:sophiewell:file:source:lib/dilution-c1v1-v1629.js",
         "urn:sophiewell:file:source:lib/dimeglio-clubfoot-v387.js",
         "urn:sophiewell:file:source:lib/diphtheria-antitoxin-dose-v1560.js",
@@ -89285,6 +89328,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diastolic-function-ase-v664.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/digoxin-label-dose-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dilution-c1v1-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dimeglio-clubfoot-v387.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diphtheria-antitoxin-dose-v1560.js",
@@ -90271,7 +90315,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "629e35949c9e4814"
+      "value": "1ab7a863baf0f339"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -90283,7 +90327,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3369"
+      "value": "3371"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

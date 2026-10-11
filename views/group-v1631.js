@@ -1,6 +1,7 @@
 // spec-v1631: clinical pharmacokinetics and therapeutic drug monitoring. Group F.
 // pk-steady-state-predict, auc-trapezoid, tmic-beta-lactam, sawchuk-zaske-dosing, kinetic-egfr and
-// crrt-drug-clearance, fosphenytoin-load-rate, caffeine-citrate-dose and lithium-level-check.
+// crrt-drug-clearance, fosphenytoin-load-rate, caffeine-citrate-dose, lithium-level-check and
+// digoxin-label-dose.
 
 import { el, clear } from '../lib/dom.js';
 import * as PK from '../lib/pk-steady-state-predict-v1631.js';
@@ -12,6 +13,7 @@ import * as CR from '../lib/crrt-drug-clearance-v1631.js';
 import * as FL from '../lib/fosphenytoin-load-rate-v1631.js';
 import * as CC from '../lib/caffeine-citrate-dose-v1631.js';
 import * as LI from '../lib/lithium-level-check-v1631.js';
+import * as DG from '../lib/digoxin-label-dose-v1631.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -211,6 +213,27 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = LI.lithiumLevelCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+
+  'digoxin-label-dose'(root) {
+    const pairs = [['dg-age', 'ageGroup'], ['dg-weight', 'leanWeight'], ['dg-wunit', 'weightUnit'], ['dg-load', 'loadMcgPerKg'], ['dg-crcl', 'creatinineClearance']];
+    selectField(root, 'Age group', 'dg-age', DG.AGE_GROUPS);
+    numField(root, 'Lean body weight', 'dg-weight', '');
+    selectField(root, 'Weight unit', 'dg-wunit', DG.WEIGHT_UNITS);
+    numField(root, 'Loading dose chosen, mcg/kg', 'dg-load', '');
+    const crcl = numField(root, 'Creatinine clearance corrected to 70 kg or 1.73 m², mL/min (for maintenance)', 'dg-crcl', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const young = val('dg-age') === '5-10';
+      crcl.hidden = young;
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      // A hidden field's leftover value is not part of the question.
+      if (young) args.creatinineClearance = '';
+      const r = DG.digoxinLabelDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

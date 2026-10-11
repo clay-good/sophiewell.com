@@ -11636,10 +11636,10 @@
     {
       "phrases": [
         "specific gravity",
-        "density to volume",
         "weight to volume conversion",
         "pycnometer specific gravity",
-        "percent w/w to percent w/v"
+        "percent w/w to percent w/v",
+        "sp gr of a liquid"
       ],
       "tile": "specific-gravity",
       "audience": "clinicians"
@@ -11661,7 +11661,7 @@
         "tablet powder weight for a compound",
         "how many tablets to crush",
         "weight of crushed tablet powder",
-        "compounding from commercial tablets"
+        "tablets as a drug source"
       ],
       "tile": "tablet-powder-source",
       "audience": "clinicians"
@@ -11702,10 +11702,10 @@
     {
       "phrases": [
         "suppository displacement factor",
-        "density factor suppository base",
         "suppository base calculation",
         "how much base for suppositories",
-        "troche mold calibration"
+        "suppository calibration",
+        "troche calibration"
       ],
       "tile": "suppository-displacement",
       "audience": "clinicians"
@@ -11716,7 +11716,7 @@
         "capsule diluent calculation",
         "how much filler per capsule",
         "capsule packing method",
-        "lactose per capsule compounding"
+        "lactose per capsule"
       ],
       "tile": "capsule-fill",
       "audience": "clinicians"
@@ -11725,7 +11725,7 @@
       "phrases": [
         "scale a formula",
         "reduce or enlarge a formula",
-        "compounding formula factor",
+        "formula scaling factor",
         "scale a master formula to a batch size",
         "parts formula to grams"
       ],
@@ -11814,18 +11814,18 @@
         "hlb calculation",
         "required hlb emulsifier blend",
         "span and tween ratio for an hlb",
-        "griffin hlb",
-        "hlb of a surfactant mixture"
+        "hlb of a surfactant mixture",
+        "emulsifier hlb"
       ],
       "tile": "hlb-blend",
       "audience": "clinicians"
     },
     {
       "phrases": [
-        "essentially a copy compounding",
+        "essentially a copy check",
         "503a copy of a commercially available drug",
         "compounded strength within 10 percent",
-        "four prescriptions a month compounding",
+        "four prescriptions a month rule",
         "can i compound a commercially available drug"
       ],
       "tile": "compound-copy-check",
@@ -11833,11 +11833,11 @@
     },
     {
       "phrases": [
-        "anticipatory compounding limit",
-        "30 day supply compounding in advance",
+        "anticipatory limit 503a",
+        "30 day supply made in advance",
         "how much can i compound before a prescription",
         "503a limited quantities",
-        "compounding ahead of prescriptions"
+        "making ahead of prescriptions"
       ],
       "tile": "compound-anticipatory-limit",
       "audience": "clinicians"
@@ -11858,7 +11858,7 @@
         "iv bag overfill concentration",
         "actual concentration in the bag",
         "admixture final concentration",
-        "crrt bag potassium added",
+        "replacement fluid bag potassium added",
         "withdraw volume before adding to bag"
       ],
       "tile": "admixture-concentration",
@@ -11879,8 +11879,8 @@
       "phrases": [
         "air changes per hour calculator",
         "acph from cfm",
-        "room clearance time after aerosol",
-        "how long to clear a room 99 percent",
+        "minutes to remove airborne contaminant",
+        "airborne contaminant removal time",
         "airflow needed for air changes"
       ],
       "tile": "room-air-changes",
@@ -11888,11 +11888,11 @@
     },
     {
       "phrases": [
-        "aluminum in tpn",
+        "aluminum in parenteral nutrition",
         "parenteral nutrition aluminum load",
         "aluminum mcg per kg per day",
         "aluminum content calculator pn",
-        "neonatal pn aluminum exposure"
+        "pn aluminum exposure"
       ],
       "tile": "pn-aluminum-load",
       "audience": "clinicians"
@@ -11903,7 +11903,7 @@
         "mkt of a temperature log",
         "controlled room temperature excursion mkt",
         "haynes formula",
-        "mkt activation energy 83.144"
+        "mkt calculator"
       ],
       "tile": "mean-kinetic-temperature",
       "audience": "clinicians"
@@ -11921,11 +11921,11 @@
     },
     {
       "phrases": [
-        "calcium phosphate solubility tpn",
-        "calcium phosphate precipitation pn",
-        "meq per liter calcium in tpn",
-        "calcium plus phosphate limit",
-        "pn calcium phosphate concentration"
+        "calcium phosphorus solubility pn",
+        "calcium phosphorus precipitation pn",
+        "pn precipitation check",
+        "pn solubility limit",
+        "calcium phosphorus in a pn bag"
       ],
       "tile": "pn-calcium-phosphate-check",
       "audience": "clinicians"
@@ -11954,22 +11954,22 @@
     },
     {
       "phrases": [
-        "tpn order per kg",
-        "parenteral nutrition kcal per kg",
-        "non protein calories to nitrogen ratio",
-        "pn gir and calories",
-        "npc n ratio"
+        "pn order per kg",
+        "pn calories per kg",
+        "npc n ratio",
+        "npc to n ratio",
+        "pn order summary"
       ],
       "tile": "pn-order-summary",
       "audience": "clinicians"
     },
     {
       "phrases": [
-        "tpn amino acid dose g per kg",
-        "grams of nitrogen in travasol",
+        "pn amino acid dose g per kg",
+        "travasol dose",
         "trophamine dose",
-        "cysteine elcys dose per gram amino acids",
-        "prosol nitrogen content"
+        "elcys dose per gram amino acids",
+        "prosol dose"
       ],
       "tile": "pn-amino-acid-order",
       "audience": "clinicians"
@@ -11979,8 +11979,8 @@
         "clinimix max rate",
         "clinimix e infusion rate",
         "kabiven maximum infusion rate",
-        "premixed tpn ml per kg per hour",
-        "clinimix central or peripheral"
+        "premixed pn ml per kg per hour",
+        "clinimix peripheral line"
       ],
       "tile": "premixed-pn-rate-check",
       "audience": "clinicians"
@@ -11989,20 +11989,20 @@
       "phrases": [
         "tralement dose by weight",
         "multrys volume neonatal",
-        "trace elements in tpn pediatric",
+        "trace elements in pn pediatric",
         "infuvite pediatric dose",
-        "zinc copper selenium tpn shortfall"
+        "zinc copper selenium pn shortfall"
       ],
       "tile": "pn-micronutrient-volume",
       "audience": "clinicians"
     },
     {
       "phrases": [
-        "potassium phosphate infusion rate",
-        "k phos max concentration peripheral",
-        "sodium phosphate mmol to ml",
-        "iv phosphate potassium content",
-        "mmol phosphate how many meq potassium"
+        "potassium phosphates infusion rate",
+        "potassium phosphates max concentration",
+        "sodium phosphates mmol to ml",
+        "potassium phosphates potassium content",
+        "iv phosphates order"
       ],
       "tile": "iv-phosphate-order-check",
       "audience": "clinicians"
@@ -12010,7 +12010,7 @@
     {
       "phrases": [
         "phenytoin max infusion rate",
-        "vancomycin infusion time 10 mg per minute",
+        "vanc infusion time 10 mg per minute",
         "potassium chloride max rate meq per hour",
         "fosphenytoin pe per minute",
         "magnesium sulfate infusion rate limit"
@@ -12022,7 +12022,7 @@
       "phrases": [
         "predicted peak and trough",
         "accumulation factor",
-        "time to steady state half lives",
+        "time to steady state",
         "one compartment model level at time",
         "how long for a drug level to fall"
       ],
@@ -12031,11 +12031,11 @@
     },
     {
       "phrases": [
-        "trapezoidal rule auc",
+        "trapezoidal rule",
         "area under the curve from levels",
         "linear up log down",
-        "auc to infinity extrapolation",
-        "terminal half life from levels"
+        "extrapolate area to infinity",
+        "terminal slope from levels"
       ],
       "tile": "auc-trapezoid",
       "audience": "clinicians"
@@ -12055,9 +12055,9 @@
       "phrases": [
         "sawchuk zaske",
         "new dose from peak and trough",
-        "two level kinetics aminoglycoside",
+        "two level kinetics",
         "individualized dosing from two levels",
-        "calculate ke and vd from levels"
+        "ke and vd from two levels"
       ],
       "tile": "sawchuk-zaske-dosing",
       "audience": "clinicians"
@@ -12075,11 +12075,11 @@
     },
     {
       "phrases": [
-        "crrt drug clearance",
-        "sieving coefficient clearance cvvh",
-        "cvvhdf clearance of a drug",
-        "effluent rate drug clearance",
-        "pre dilution correction crrt"
+        "sieving coefficient",
+        "saturation coefficient",
+        "drug removal by hemofiltration",
+        "pre filter dilution correction",
+        "drug removal on continuous dialysis"
       ],
       "tile": "crrt-drug-clearance",
       "audience": "clinicians"
@@ -12099,7 +12099,7 @@
       "phrases": [
         "caffeine citrate dose",
         "apnea of prematurity caffeine",
-        "caffeine loading dose neonate",
+        "caffeine loading dose",
         "caffeine citrate ml per kg",
         "caffeine base vs citrate"
       ],
@@ -12115,6 +12115,17 @@
         "lithium therapeutic range maintenance"
       ],
       "tile": "lithium-level-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "digitalizing dose",
+        "percent daily loss",
+        "dig loading schedule",
+        "peak body stores",
+        "digitalization"
+      ],
+      "tile": "digoxin-label-dose",
       "audience": "clinicians"
     }
   ]

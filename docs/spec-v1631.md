@@ -1,6 +1,6 @@
 # spec-v1631 — Clinical pharmacokinetics and therapeutic drug monitoring
 
-**Status:** In progress, October 11, 2026: 9 of 20 tools built (see Build status). 20 new tools (1 build-gated), 10 backfills.
+**Status:** In progress, October 11, 2026: 10 of 20 tools built (see Build status). 20 new tools (1 build-gated), 10 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A hospital pharmacist's kinetics service does the same arithmetic all day: pick a first
@@ -900,7 +900,7 @@ Backfills 3, 5, 6 and 8 correct or re-source a number in a live tool and are ind
 
 ## Build status
 
-Updated October 11, 2026. 9 of 20 tools built; the backfills are open.
+Updated October 11, 2026. 10 of 20 tools built; the backfills are open.
 
 | Tool | Status |
 |---|---|
@@ -914,4 +914,5 @@ Updated October 11, 2026. 9 of 20 tools built; the backfills are open.
 | 9. `valproate-albumin-normalized` | Not built: held. The paper was re-read (J-STAGE PDF) and Table 1's 25 rows and the formula match the spec, but the paper is marked ©2005 The Japanese Pharmacological Society, free to read, and shipping its table falls under open owner question 11 in [scope-pharmacy-practice.md](scope-pharmacy-practice.md). |
 | 12. `caffeine-citrate-dose` | Built (group F) on a label row. The Sagent label (version 10) was re-read and added to the weekly watch; the dosing table, the base-is-half note, the 50 mg/L sentence and the 8 to 40 mg/L trial range are as the spec says. Weights above 20 kg are refused. No target range is shown. |
 | 14. `lithium-level-check` | Built (group F) on a label row. The Hikma label (version 3) was re-read and added to the weekly watch on its Dosage and Administration section; the 1.5 mEq/L sentence sits in section 5.1, outside the watched text. **Decisions:** a sample counts as a 12-hour one within an hour either side (the tool's own tolerance); the hours since the last dose are required; the proportional dose needs both a daily dose and a target, and a target above 1.5 mEq/L is refused. |
-| 1 to 3, 5 to 7, 10, 11, 13, 19 | Not built. |
+| 10. `digoxin-label-dose` | Built (group F) on the label row `digoxin` already used (Amneal, version 20). Sections 2.2 to 2.6 were re-read: Table 1, the formula, all 70 cells and 10 day counts of Table 3, the starred cell and Table 6 match the spec. The table is read at the row and column at or below the values entered and the result names the cell; above 100 mL/min or 100 kg it reads the last row or column; below 10 mL/min or 40 kg it reports no cell. **Not built:** the corrected clearance from a creatinine alone (the reader enters the clearance) and any IV conversion beyond quoting the label's four equivalent pairs. |
+| 1 to 3, 5 to 7, 11, 13, 19 | Not built. |

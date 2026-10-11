@@ -213,7 +213,8 @@
     "labeler": "AMNEAL PHARMACEUTICALS OF NEW YORK LLC",
     "setId": "dfac7f13-28be-423d-9389-9089da29da17",
     "tools": [
-      "digoxin"
+      "digoxin",
+      "digoxin-label-dose"
     ],
     "splVersion": 20,
     "publishedOn": "2026-08-17",

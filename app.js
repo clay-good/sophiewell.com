@@ -1209,7 +1209,7 @@ const UTILITIES = [
   { id: 'room-air-changes', name: 'Air Changes per Hour and Clearance Time', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'pn-aluminum-load', name: 'Aluminum in a PN Order', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'pn-calcium-phosphate-check', name: 'Calcium and Phosphate Concentrations in a PN Bag', group: 'Q', audiences: ['clinicians'], clinical: true },
-  { id: 'pn-order-summary', name: 'PN Order per Kilogram, GIR and Energy', group: 'Q', audiences: ['clinicians'], clinical: true },
+  { id: 'pn-order-summary', name: 'PN Order Summary per Kilogram', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'premixed-pn-rate-check', name: 'Premixed PN Bag Against Its Label Maximum', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'pn-micronutrient-volume', name: 'PN Trace Elements and Pediatric Multivitamin by Weight', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'mean-kinetic-temperature', name: 'Mean Kinetic Temperature of a Storage Log', group: 'Q', audiences: ['clinicians'], clinical: false },
@@ -2680,6 +2680,7 @@ const UTILITIES = [
   { id: 'fosphenytoin-load-rate', name: 'Fosphenytoin and Phenytoin Loading Against the Label', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'caffeine-citrate-dose', name: 'Caffeine Citrate for Apnea of Prematurity', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lithium-level-check', name: 'Lithium Level Against the Label', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'digoxin-label-dose', name: 'Digoxin Loading and Maintenance (Label Method)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

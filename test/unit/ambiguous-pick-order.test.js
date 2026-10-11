@@ -54,3 +54,26 @@ test('a regulation number in a tool name does not make an NDC look like that too
     assert.ok(!top.includes('pn-aluminum-load'), top.join(', '));
   }
 });
+
+// A search phrase captures any query that is a whole word inside it (lib/synonyms.js, rule 2), and
+// the shortest such phrase wins. So a new tool's phrase "aluminum in tpn" took the bare word "tpn"
+// from the TPN calculator, and "vancomycin infusion time" took "vancomycin" from the vancomycin AUC
+// tool. These are the words that were taken that way in October 2026 and given back.
+test('a bare drug or topic word still reaches the tool that owned it', () => {
+  const owners = { vancomycin: 'vanc-auc', tpn: 'tpn-macro', gir: 'gir', crrt: 'crrt-dose', aminoglycoside: 'aminoglycoside', clearance: 'egfr', energy: 'icu-nutrition-target' };
+  for (const withDetail of [false, true]) {
+    for (const [word, owner] of Object.entries(owners)) {
+      const top = resolvePromptRanked(word, tiles(withDetail), SYNONYMS, 'all', 3);
+      assert.equal(top[0].tileId, owner, `${word}: ${top.map((r) => r.tileId).join(', ')}`);
+    }
+  }
+});
+
+test('where a word fits several tools, the older ones are still offered', () => {
+  const offered = { digoxin: ['digoxin', 'digifab-dosing'], nitrogen: ['nitrogen-balance'], phosphate: ['calcium-phosphate-product'], compounding: ['compounding-bud'], auc: ['vanc-auc'] };
+  for (const [word, want] of Object.entries(offered)) {
+    const top = resolvePromptRanked(word, tiles(true), SYNONYMS, 'all', 3).map((r) => r.tileId);
+    for (const id of want) assert.ok(top.includes(id), `${word}: ${top.join(', ')}`);
+  }
+});
+
