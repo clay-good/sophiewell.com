@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d62a9291-6414-5d2b-85d5-c30cb80c7002",
+  "serialNumber": "urn:uuid:66660edd-8457-520c-888c-383e644f0b98",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T13:14:02.036Z",
+    "timestamp": "2026-10-11T13:26:26.546Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2120 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2121 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "248afc442c2a41bc13fd9baabe18ef0b737bbaa7857e1725bb8800d95e022ad3"
+          "content": "d4c6ee7f2c2bcd26f44b9512d0197b566be3a761c863b4fc57a04a2d5bcd6740"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "136905"
+          "value": "136962"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9c72eb287f4d2974ea7ef48b91aba6ca314136fe8c7ba5bbf239b669c7df4fc3"
+          "content": "aeb2daf6ab25eb7360afbbb02aa353e409e62477af82b7a343ce845505abaaff"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "601032"
+          "value": "601185"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e4f1d3956aafa1f023cb8b4f7427cf1e30626a70f0d55ba5a37146b42b483c60"
+          "content": "a40267cced1b3513fbc49187d565416fbf7ef153bd089254fe5171a63b1d7655"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "265703"
+          "value": "265834"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2e6b70fc6b5a1fcd6225602d5da79572ee7c31b7901443c088af9cfb12ae3c20"
+          "content": "a36b5851c11ec1669add8fb4804ea71783521cfa27737bcb7e3f7cf36538e51d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125149"
+          "value": "125216"
         }
       ]
     },
@@ -1312,6 +1312,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11722"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/antiviral-renal-dose-v1632.js",
+      "type": "file",
+      "name": "lib/antiviral-renal-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ccf01ee09d272547be6674051029b9d9b20bf443138062dc87aa52dcd1c394af"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "16281"
         }
       ]
     },
@@ -12572,13 +12593,13 @@
       ]
     },
     {
-      "bom-ref": "urn:sophiewell:file:source:lib/label-editions.js",
+      "bom-ref": "urn:sophiewell:file:source:lib/label-dose.js",
       "type": "file",
-      "name": "lib/label-editions.js",
+      "name": "lib/label-dose.js",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e398b327679035358d0f500e27f4a97f101822717bc8fe9ddd2553feb850babf"
+          "content": "34a5bba656c65dd069e7a944600f95701dd6262f528cf7dbe2cebbb68610c7b4"
         }
       ],
       "properties": [
@@ -12588,7 +12609,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "13025"
+          "value": "3642"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/label-editions.js",
+      "type": "file",
+      "name": "lib/label-editions.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7a8a757337ba2aab06baf60d082f4cb4bf73672e7bdb12beba85fa008ce3efb1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "14789"
         }
       ]
     },
@@ -14804,7 +14846,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0e9efdcff9428b2d5edc7065d4df30b5e591345b8277f32aa0ad17d52398f644"
+          "content": "adaef9a27b8bde6e248b48e09ed28c34e760dd721e29d47b402ce2b97ee0c900"
         }
       ],
       "properties": [
@@ -14814,7 +14856,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2818167"
+          "value": "2819975"
         }
       ]
     },
@@ -28696,6 +28738,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1876"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/antiviral-renal-dose-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/antiviral-renal-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4180732ad6365540284dee3f2bf55f5b1e18fcb3dd89eac2b2c52b3a2e21e076"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1317"
         }
       ]
     },
@@ -51974,7 +52037,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3bc43e366d0c5397de02802ba31ef0556874e3234200745d968505566e61579a"
+          "content": "ed27b2513b02152eb7ba1ba7373e2cb43dd019ceb08e466295989a3b726fe28a"
         }
       ],
       "properties": [
@@ -51984,7 +52047,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135553"
+          "value": "135692"
         }
       ]
     },
@@ -56531,7 +56594,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6de48f81a4f60a63d4f2287307272dfeb68df2eb2d34912ff53cdff57ec1e274"
+          "content": "9547eb12566ccae4b0a1c403260cc9a370086a91a1ace4aa7df30fb3d733806b"
         }
       ],
       "properties": [
@@ -56541,7 +56604,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5718"
+          "value": "6648"
         }
       ]
     },
@@ -87363,6 +87426,7 @@
         "urn:sophiewell:file:source:lib/anthro-v238.js",
         "urn:sophiewell:file:source:lib/anthro-v272.js",
         "urn:sophiewell:file:source:lib/antivenom-repeat-v1555.js",
+        "urn:sophiewell:file:source:lib/antiviral-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/ao-spine-neuro-v1241.js",
         "urn:sophiewell:file:source:lib/ao-spine-subaxial-v1241.js",
         "urn:sophiewell:file:source:lib/ao-spine-tl-v1241.js",
@@ -87899,6 +87963,7 @@
         "urn:sophiewell:file:source:lib/kyoto-gastritis-v1442.js",
         "urn:sophiewell:file:source:lib/la-esophagitis-v318.js",
         "urn:sophiewell:file:source:lib/lab-interpret.js",
+        "urn:sophiewell:file:source:lib/label-dose.js",
         "urn:sophiewell:file:source:lib/label-editions.js",
         "urn:sophiewell:file:source:lib/label-row.js",
         "urn:sophiewell:file:source:lib/labor-care-guide-alert-v1558.js",
@@ -89609,6 +89674,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v238.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v272.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/antivenom-repeat-v1555.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/antiviral-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ao-spine-subaxial-v1241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ao-spine-tl-v1241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aom-criteria-v857.js",
@@ -90821,7 +90887,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "d62a929164145d2b"
+      "value": "66660edd8457620c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -90833,7 +90899,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3394"
+      "value": "3397"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

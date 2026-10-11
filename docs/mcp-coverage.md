@@ -9064,6 +9064,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/iv-antithrombotic-renal-check-v1632.js (spec-v1632: Bivalirudin, eptifibatide, tirofiban and argatroban label rates (four label rows) — clinical disclaimer)
 - `iv-antithrombotic-renal-check`
 
+### lib/antiviral-renal-dose-v1632.js (spec-v1632: Antiviral dose by kidney function (eight label rows; lib/label-dose.js engine) — clinical disclaimer)
+- `antiviral-renal-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

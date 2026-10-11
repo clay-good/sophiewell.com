@@ -2690,6 +2690,7 @@ const UTILITIES = [
   { id: 'doac-dose-check', name: 'DOAC Dose Check by Indication (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lmwh-fondaparinux-dose-check', name: 'Dalteparin and Fondaparinux Dose by Weight (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'iv-antithrombotic-renal-check', name: 'Bivalirudin, Eptifibatide, Tirofiban, Argatroban Rate (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'antiviral-renal-dose', name: 'Antiviral Dose by Renal Table (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

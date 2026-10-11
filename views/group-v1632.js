@@ -1,10 +1,12 @@
 // spec-v1632: dose checks read from the FDA label. Group F.
-// doac-dose-check, lmwh-fondaparinux-dose-check, iv-antithrombotic-renal-check.
+// doac-dose-check, lmwh-fondaparinux-dose-check, iv-antithrombotic-renal-check,
+// antiviral-renal-dose.
 
 import { el, clear } from '../lib/dom.js';
 import * as DC from '../lib/doac-dose-check-v1632.js';
 import * as LF from '../lib/lmwh-fondaparinux-dose-check-v1632.js';
 import * as IA from '../lib/iv-antithrombotic-renal-check-v1632.js';
+import * as AV from '../lib/antiviral-renal-dose-v1632.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -96,6 +98,20 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = IA.ivAntithromboticRenalCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'antiviral-renal-dose'(root) {
+    const pairs = [['avr-regimen', 'regimen'], ['avr-dialysis', 'dialysis'], ['avr-kidney', 'kidney']];
+    selectField(root, 'Drug and indication', 'avr-regimen', AV.REGIMENS);
+    selectField(root, 'Dialysis', 'avr-dialysis', AV.DIALYSIS);
+    numField(root, 'Creatinine clearance, mL/min (eGFR for Paxlovid; mL/min/1.73 m² for acyclovir)', 'avr-kidney', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = AV.antiviralRenalDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

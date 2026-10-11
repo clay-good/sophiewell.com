@@ -12236,6 +12236,23 @@
       ],
       "tile": "iv-antithrombotic-renal-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "acyclovir renal dose",
+        "valacyclovir renal dose",
+        "valtrex renal dose",
+        "famciclovir renal dose",
+        "ganciclovir renal dose",
+        "valganciclovir renal dose",
+        "valcyte renal dose",
+        "oseltamivir renal dose",
+        "tamiflu renal dose",
+        "paxlovid renal dose",
+        "remdesivir renal dose"
+      ],
+      "tile": "antiviral-renal-dose",
+      "audience": "clinicians"
     }
   ]
 }

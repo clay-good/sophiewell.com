@@ -798,6 +798,7 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['valacyclovir oseltamivir ganciclovir label dose by creatinine clearance', ['antiviral-renal-dose']],
   ['dalteparin fondaparinux label dose by weight band', ['lmwh-fondaparinux-dose-check']],
   ['bivalirudin eptifibatide tirofiban argatroban label infusion rate renal', ['iv-antithrombotic-renal-check']],
   ['apixaban rivaroxaban dabigatran edoxaban label dose by indication and creatinine clearance', ['doac-dose-check']],

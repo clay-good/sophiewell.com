@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Antiviral Dose by Renal Table (FDA Label): the row each label gives for acyclovir, valacyclovir,
+  famciclovir, ganciclovir, valganciclovir, oseltamivir, Paxlovid or remdesivir at the kidney
+  function entered, or its line for dialysis. A value on a shared edge or between two printed
+  bands shows both rows.
 - Dalteparin and Fondaparinux Dose by Weight (FDA Label): the label's weight-band dose beside its
   per-kilogram figure, the platelet and kidney rules for dalteparin in cancer, and the two
   fondaparinux contraindications by weight and clearance.
