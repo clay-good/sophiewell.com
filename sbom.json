@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:55d7badb-fe21-54f9-856e-d64f407227c0",
+  "serialNumber": "urn:uuid:217d0e0e-830d-57df-8eb4-18789278f54e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T17:10:24.220Z",
+    "timestamp": "2026-10-11T17:27:25.327Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -4913,7 +4913,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d227095189d9528ae0b6d02711a39ad29fda7103d502bc0e03e52615526ec667"
+          "content": "2bc7e8c4cac93388aa4376222ab83c79a74803041d915cd062331b56bf22d8b1"
         }
       ],
       "properties": [
@@ -4923,7 +4923,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "21791"
+          "value": "24653"
         }
       ]
     },
@@ -5554,6 +5554,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3861"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/crcl-label-weight-v1632.js",
+      "type": "file",
+      "name": "lib/crcl-label-weight-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e8c4b2bfcf77d04ea9df63a07d4147b536b1e8f291fe69a1957e719cc04e620"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4641"
         }
       ]
     },
@@ -15098,7 +15119,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6843681da67f527574b08f1fe87e13d46c0f861fb495a2f4a16968d5760406ce"
+          "content": "d0ce699fbb0b7df2bef2195df74d37f054a75ce2e3658186c323454736035f05"
         }
       ],
       "properties": [
@@ -15108,7 +15129,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2841364"
+          "value": "2841348"
         }
       ]
     },
@@ -32402,7 +32423,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "48cb7074e7e7c5770c4a6cd8ec85a85b39b32de17b864ec44f657a80c69a0e5d"
+          "content": "3a42af244bcca8a63f84dbc1954b6abf4b087a53bd26a5b668470d754d3db004"
         }
       ],
       "properties": [
@@ -32412,7 +32433,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "16125"
+          "value": "16436"
         }
       ]
     },
@@ -32423,7 +32444,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ad624394e10626b0542052d537d0b964f6d6f0e2ffb929efc835835243c08f83"
+          "content": "e9e13b251f3bac749b7b633b62cd402c069793b91651b3e190e732f5f1624b88"
         }
       ],
       "properties": [
@@ -32433,7 +32454,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "28366"
+          "value": "29208"
         }
       ]
     },
@@ -53129,7 +53150,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1e33f2b04ff296589f84adaa859fe1481adc6d6b216246a8ea33450bec8eafbd"
+          "content": "dd369819a310b4c3cabc93d99e8113cb9813ba49b69c7a94954ee735512c613c"
         }
       ],
       "properties": [
@@ -53139,7 +53160,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "54383"
+          "value": "55309"
         }
       ]
     },
@@ -53150,7 +53171,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "43e3f6b485f12a06c316d77ad08aad6bd4ab838778f3a6e94ff545a697c50ef0"
+          "content": "fb77c7cbcf6bae4272ddbbf62ad939c6d53c6147ac306e6eaddf71b7f49c6152"
         }
       ],
       "properties": [
@@ -53160,7 +53181,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "54665"
+          "value": "55437"
         }
       ]
     },
@@ -88237,6 +88258,7 @@
         "urn:sophiewell:file:source:lib/crafft-v511.js",
         "urn:sophiewell:file:source:lib/crag-screen-fluconazole-v1554.js",
         "urn:sophiewell:file:source:lib/crawford-taaa-v464.js",
+        "urn:sophiewell:file:source:lib/crcl-label-weight-v1632.js",
         "urn:sophiewell:file:source:lib/critcare-severity-v200.js",
         "urn:sophiewell:file:source:lib/critcare-v112.js",
         "urn:sophiewell:file:source:lib/crowe-ddh-v353.js",
@@ -91525,7 +91547,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "55d7badbfe2114f9"
+      "value": "217d0e0e830d07df"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91537,7 +91559,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3426"
+      "value": "3427"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

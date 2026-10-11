@@ -65,6 +65,7 @@
     "labeler": "MEDICURE INTERNATIONAL INC",
     "setId": "fe0ced75-ccbf-4d2e-bd0d-b57e60ab913f",
     "tools": [
+      "cockcroft-gault",
       "iv-antithrombotic-renal-check"
     ],
     "splVersion": 18,
@@ -1029,7 +1030,8 @@
     "labeler": "UCB, INC.",
     "setId": "3ca9df05-a506-4ec8-a4fe-320f1219ab21",
     "tools": [
-      "cns-renal-dose-check"
+      "cns-renal-dose-check",
+      "cockcroft-gault"
     ],
     "splVersion": 36,
     "publishedOn": "2026-01-29",
@@ -1492,7 +1494,8 @@
     "labeler": "SANDOZ INC",
     "setId": "5a9b3737-9ce6-4a89-b76e-6aab79eba9cf",
     "tools": [
-      "bisphosphonate-renal-check"
+      "bisphosphonate-renal-check",
+      "cockcroft-gault"
     ],
     "splVersion": 3,
     "publishedOn": "2026-02-13",
@@ -1758,6 +1761,7 @@
     "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
     "setId": "02438044-d6a3-49e9-a1ac-3aad21ef2c8c",
     "tools": [
+      "cockcroft-gault",
       "dofetilide-dose-algorithm"
     ],
     "splVersion": 30,
@@ -1897,6 +1901,7 @@
     "labeler": "GILEAD SCIENCES, INC",
     "setId": "54e82b13-a037-49ed-b4b3-030b37c0ecdd",
     "tools": [
+      "cockcroft-gault",
       "nrti-renal-dose"
     ],
     "splVersion": 32,
@@ -2065,6 +2070,7 @@
     "labeler": "GILEAD SCIENCES, INC.",
     "setId": "33fd6418-fbdc-42ca-a50d-ce2a476a5418",
     "tools": [
+      "cockcroft-gault",
       "nrti-renal-dose"
     ],
     "splVersion": 31,
@@ -2095,6 +2101,7 @@
     "labeler": "JANSSEN PHARMACEUTICALS, INC.",
     "setId": "10db92f9-2300-4a80-836b-673e1ae91610",
     "tools": [
+      "cockcroft-gault",
       "doac-dose-check"
     ],
     "splVersion": 65,

@@ -9,6 +9,7 @@
 // (default) unit.
 
 import * as F from '../../lib/clinical.js';
+import { DRUGS as CG_LABEL_DRUGS, crclForLabel } from '../../lib/crcl-label-weight-v1632.js';
 import * as V4 from '../../lib/clinical-v4.js';
 import { boundsAdvisory } from '../../lib/bounds.js';
 
@@ -137,10 +138,17 @@ export default [
     summary: 'Cockcroft-Gault creatinine clearance from age, weight, creatinine, sex (mL/min), on the weight as entered. With a height it returns the clearance on actual, ideal (Devine) and adjusted (0.4) weight, because drug labels differ on which weight to use, with what Winter 2012 found for each. The creatinine is never rounded up.',
     compute: (a) => {
       const hasHeight = a.heightCm !== null && a.heightCm !== undefined && a.heightCm !== '' && Number(a.heightCm) > 0;
-      if (!hasHeight) return F.cockcroftGault(a);
+      const hasDrug = a.drug !== null && a.drug !== undefined && String(a.drug).trim() !== '';
+      if (!hasHeight && !hasDrug) return F.cockcroftGault(a);
+      // spec-v1632 backfill 5: the weight the chosen drug's label names.
+      if (!hasHeight) {
+        const crcl = F.cockcroftGault(a);
+        return { crcl, unit: 'mL/min', forLabel: crclForLabel({ drug: a.drug, byWeight: { actual: crcl }, weightKg: Number(a.weightKg) }) };
+      }
       const w = F.cockcroftGaultByWeight({ ...a, heightCm: Number(a.heightCm) });
       const out = { crcl: w.actual, unit: 'mL/min', byWeight: { actual: w.actual, ideal: w.ideal, adjusted: w.adjusted }, idealKg: w.idealKg, adjustedKg: w.adjustedKg, note: w.note };
       if (Number(a.scr) < 1) out.creatinineNote = F.CG_LOW_SCR_NOTE;
+      if (hasDrug) out.forLabel = crclForLabel({ drug: a.drug, byWeight: w, weightKg: Number(a.weightKg), heightCm: Number(a.heightCm) });
       return out;
     },
     fields: [
@@ -149,6 +157,7 @@ export default [
       { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
       { dom: 'sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
       { dom: 'cg-h', concept: 'body-height', arg: 'heightCm', kind: 'number', required: false, label: 'Height (optional; gives ideal- and adjusted-weight results)', unit: 'cm' },
+      { dom: 'cg-drug', arg: 'drug', kind: 'enum', values: CG_LABEL_DRUGS.map((d) => d.value), required: false, label: 'For which drug\'s label (optional): returns the clearance on the weight that label names' },
     ],
   },
   {

@@ -419,10 +419,14 @@ export const renderers = {
     root.appendChild(unitField('Weight', 'vte-w', WEIGHT_UNITS, { placeholder: '80' }));
     root.appendChild(field('Creatinine clearance (mL/min)', 'vte-crcl', { placeholder: '80' }));
     root.appendChild(selectField('Indication', 'vte-ind', [
-      { value: 'prophylaxis', text: 'Prophylaxis' },
-      { value: 'treatment', text: 'Treatment' },
+      { value: 'prophylaxis', text: 'Prophylaxis: abdominal surgery or acute medical illness' },
+      { value: 'hip-knee', text: 'Prophylaxis: hip or knee replacement' },
+      { value: 'treatment', text: 'Treatment of deep vein thrombosis' },
+      { value: 'ua-nstemi', text: 'Unstable angina or non-Q-wave MI' },
+      { value: 'stemi-under-75', text: 'STEMI, under 75 years' },
+      { value: 'stemi-75-plus', text: 'STEMI, 75 years or older' },
     ]));
-    root.appendChild(selectField('Treatment regimen', 'vte-reg', [
+    root.appendChild(selectField('Regimen (deep vein thrombosis treatment only)', 'vte-reg', [
       { value: 'q12', text: '1 mg/kg q12h' },
       { value: 'daily', text: '1.5 mg/kg q24h' },
     ]));
@@ -446,6 +450,9 @@ export const renderers = {
       if (!r) { clear(o); o.appendChild(el('p', { class: 'muted', text: 'Enter weight and CrCl.' })); return; }
       resultRow(o, [
         { label: 'Enoxaparin', value: fmt(r.doseMg), units: `mg ${r.interval}${r.mgPerKg ? ` (${r.mgPerKg} mg/kg)` : ''}` },
+        r.bolusMg ? { label: 'Intravenous bolus', value: fmt(r.bolusMg), units: 'mg once, with the first subcutaneous dose' } : null,
+        r.bolusMg === 0 ? { text: 'No initial intravenous bolus at this age.' } : null,
+        r.firstTwoDosesMaxMg ? { label: 'First two subcutaneous doses', value: fmt(r.firstTwoDosesMg), units: `mg each (label maximum ${r.firstTwoDosesMaxMg} mg)` } : null,
         r.renalAdjusted ? { text: 'CrCl <30 mL/min: renal reduction applied.', cls: 'flag' } : null,
       ]);
       // spec-v1641 row 20: the row's own source, and the label's sentence where it gives no dose.

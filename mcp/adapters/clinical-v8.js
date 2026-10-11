@@ -148,13 +148,13 @@ export default [
   },
   {
     id: 'vte-prophylaxis-dose',
-    summary: 'Enoxaparin dosing from the Lovenox label: prophylaxis or treatment (1 mg/kg q12h or 1.5 mg/kg q24h) with the CrCl <30 mL/min renal reduction of the label\'s Table 1. Each result names the label section its row comes from, and prophylaxis results quote the label on obesity.',
+    summary: 'Enoxaparin dose by indication, weight and kidney function, from the Lovenox label. It covers prophylaxis (abdominal surgery, medical illness, hip or knee replacement), deep vein thrombosis treatment (1 mg/kg q12h or 1.5 mg/kg q24h), unstable angina, and STEMI under or over 75 years with the bolus and the first-two-dose maximum, each with the CrCl <30 mL/min row of the label\'s Table 1. Each result names the label section its row comes from, and prophylaxis results quote the label on obesity.',
     compute: F.enoxaparinDose,
     fields: [
       { dom: 'vte-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
       { dom: 'vte-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
-      { dom: 'vte-ind', arg: 'indication', kind: 'enum', values: ['prophylaxis', 'treatment'], required: true, label: 'Indication' },
-      { dom: 'vte-reg', arg: 'regimen', kind: 'enum', values: ['q12', 'daily'], required: true, label: 'Treatment regimen' },
+      { dom: 'vte-ind', arg: 'indication', kind: 'enum', values: ['prophylaxis', 'hip-knee', 'treatment', 'ua-nstemi', 'stemi-under-75', 'stemi-75-plus'], required: true, label: 'Indication' },
+      { dom: 'vte-reg', arg: 'regimen', kind: 'enum', values: ['q12', 'daily'], required: true, label: 'Regimen (deep vein thrombosis treatment only)' },
     ],
   },
   {

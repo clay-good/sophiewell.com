@@ -15,6 +15,7 @@ import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '.
 import { inchesToCm, labConvert } from '../lib/unit-convert.js';
 import { resultRow } from '../lib/result-copy.js';
 import { obstetricShockBand } from '../lib/shock-index-obstetric-v1558.js';
+import { DRUGS as CG_LABEL_DRUGS, crclForLabel } from '../lib/crcl-label-weight-v1632.js';
 import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, HEIGHT_UNITS, GLUCOSE_UNITS, BUN_UNITS, CALCIUM_UNITS, ALBUMIN_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
@@ -369,6 +370,7 @@ export const renderers = {
     ]));
     root.appendChild(selectField('Sex', 'sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
     root.appendChild(unitField('Height (optional, for ideal and adjusted weight)', 'cg-h', HEIGHT_UNITS));
+    root.appendChild(selectField('For which drug\'s label? (optional)', 'cg-drug', [{ value: '', text: '— not chosen —' }, ...CG_LABEL_DRUGS]));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['cockcroft-gault']);
     if (deriv) root.appendChild(deriv);
@@ -387,6 +389,12 @@ export const renderers = {
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
       // spec-v1641 row 24: labels disagree on the weight, so with a height all three results are shown.
       const heightCm = unitNumOpt('cg-h');
+      // spec-v1632 backfill 5: the weight the chosen drug's label names, from its watched label row.
+      const forLabel = crclForLabel({ drug: document.getElementById('cg-drug').value, byWeight: heightCm > 0 ? C.cockcroftGaultByWeight({ ...inputs, heightCm }) : { actual: v }, weightKg, heightCm }, new Date());
+      if (forLabel) {
+        o.appendChild(el('p', { class: forLabel.valid ? null : 'muted', text: forLabel.valid ? forLabel.text : forLabel.message }));
+        if (forLabel.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: forLabel.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+      }
       if (heightCm > 0) {
         const w = C.cockcroftGaultByWeight({ ...inputs, heightCm });
         const rows = [{ label: 'Actual weight', value: `${w.actual} mL/min` }];
@@ -400,7 +408,7 @@ export const renderers = {
       if (scr < 1) o.appendChild(el('p', { class: 'muted', text: C.CG_LOW_SCR_NOTE }));
       if (deriv) updateDerivationSteps(deriv, META['cockcroft-gault'], inputs);
     }, deriv);
-    ['age', 'w', 'w-unit', 'scr', 'scr-unit', 'sex', 'cg-h', 'cg-h-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    ['age', 'w', 'w-unit', 'scr', 'scr-unit', 'sex', 'cg-h', 'cg-h-unit', 'cg-drug'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
   'pack-years'(root) {

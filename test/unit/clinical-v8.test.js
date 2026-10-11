@@ -248,3 +248,26 @@ test('enoxaparinDose: each row carries its own source', async () => {
   assert.doesNotMatch(META['vte-prophylaxis-dose'].citation, /CHEST|Gould/);
   assert.match(META['vte-prophylaxis-dose'].citationUrl, /dailymed.*5017a927/);
 });
+
+// spec-v1632 backfill 4: the rest of the Lovenox label's adult indications (version 33, re-read October 11, 2026).
+test('enoxaparinDose: hip or knee replacement, unstable angina, and STEMI by age group', async () => {
+  const { enoxaparinDose: e, ENOX_SOURCE } = await import('../../lib/clinical-v8.js');
+  const at = (indication, weightKg = 80, crcl = 80) => e({ weightKg, crcl, indication });
+  assert.deepEqual([at('hip-knee').doseMg, at('hip-knee').interval, at('hip-knee').source], [30, 'q12h', ENOX_SOURCE.hipKnee]);
+  assert.match(ENOX_SOURCE.hipKnee, /40 mg once a day may be considered/);
+  assert.deepEqual([at('hip-knee', 80, 29).doseMg, at('hip-knee', 80, 29).interval], [30, 'q24h']);
+  assert.deepEqual([at('ua-nstemi').doseMg, at('ua-nstemi').interval], [80, 'q12h']);
+  assert.deepEqual([at('ua-nstemi', 80, 20).doseMg, at('ua-nstemi', 80, 20).interval], [80, 'q24h']);
+  const s = at('stemi-under-75', 120);
+  assert.deepEqual([s.bolusMg, s.doseMg, s.interval, s.firstTwoDosesMg, s.firstTwoDosesMaxMg], [30, 120, 'q12h', 100, 100]);
+  assert.equal(at('stemi-under-75', 80).firstTwoDosesMg, 80);
+  const sr = at('stemi-under-75', 120, 29);
+  assert.deepEqual([sr.bolusMg, sr.doseMg, sr.interval, sr.firstTwoDosesMaxMg], [30, 120, 'q24h', undefined]);
+  const o = at('stemi-75-plus', 120);
+  assert.deepEqual([o.bolusMg, o.doseMg, o.mgPerKg, o.interval, o.firstTwoDosesMg, o.firstTwoDosesMaxMg], [0, 90, 0.75, 'q12h', 75, 75]);
+  assert.equal(at('stemi-75-plus', 80).firstTwoDosesMg, 60);
+  const or = at('stemi-75-plus', 80, 29.9);
+  assert.deepEqual([or.bolusMg, or.doseMg, or.mgPerKg, or.interval], [0, 80, 1, 'q24h']);
+  assert.equal(at('stemi-75-plus', 80, 30).mgPerKg, 0.75); // Table 1 is "<30"
+  for (const text of Object.values(ENOX_SOURCE)) assert.match(text, /label/);
+});

@@ -239,6 +239,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Enoxaparin Dose: hip or knee replacement, unstable angina, and STEMI under and over 75 years
+  (with the bolus and the cap on the first two doses), each with the label's row below a creatinine
+  clearance of 30 mL/min.
+- Cockcroft-Gault: an optional "for which drug's label?" choice gives the clearance on the weight
+  that label names (actual, ideal, or adjusted to 1.73 m²) for seven drugs.
 - Antibiotic Renal Dose Adjustment: 22 labels where it had 4 (meropenem, levofloxacin, oral
   ciprofloxacin, Bactrim, Macrobid, daptomycin, ertapenem, cefazolin, Unasyn, ceftazidime, imipenem,
   aztreonam, ceftaroline, amoxicillin, amoxicillin-clavulanate, cephalexin, colistimethate and

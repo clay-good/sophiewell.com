@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `55d7badbfe2114f9`
-Generated: 2026-10-11T17:10:24.220Z
+Build ID: `217d0e0e830d07df`
+Generated: 2026-10-11T17:27:25.327Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -266,7 +266,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v5.js` | 26940 | `9d75aa30b97b5dd05ebc62e30eff334027d441bc186ece1d826b3e9238eefa7d` |
 | `lib/clinical-v6.js` | 17029 | `546b3f749b758d099654b8ecdd89742e0a603583846708705e4871e3f6f47612` |
 | `lib/clinical-v7.js` | 26564 | `591ac16245c21640d93ab22245e39788874108c470ba5a7ed2ad6309ce47e2ed` |
-| `lib/clinical-v8.js` | 21791 | `d227095189d9528ae0b6d02711a39ad29fda7103d502bc0e03e52615526ec667` |
+| `lib/clinical-v8.js` | 24653 | `2bc7e8c4cac93388aa4376222ab83c79a74803041d915cd062331b56bf22d8b1` |
 | `lib/clinical.js` | 27749 | `1bceb6f592d3867b43265873c25cda7d5cd28b02fdc042b10a46555302f39295` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
@@ -297,6 +297,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
 | `lib/crag-screen-fluconazole-v1554.js` | 6088 | `d8972147cab54bdeb425a3af3c0b05a4e31e521b84288dc688cfdc60721f4168` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
+| `lib/crcl-label-weight-v1632.js` | 4641 | `4e8c4b2bfcf77d04ea9df63a07d4147b536b1e8f291fe69a1957e719cc04e620` |
 | `lib/critcare-severity-v200.js` | 18707 | `e72c4c4be9dc635ec7214460c3300e8b3dfab7141bd30394d61d8d3c0db9f123` |
 | `lib/critcare-v112.js` | 17900 | `497d3a644f77fe3a7a22424779612568c5fdafefa36b44ddb190745b142d2408` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
@@ -751,7 +752,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/meq-mmol-mg-v1629.js` | 6820 | `f1f90e79e605edf6d06efa2a5d08841897dd165e68287ef964271107c0ef6dbb` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2841364 | `6843681da67f527574b08f1fe87e13d46c0f861fb495a2f4a16968d5760406ce` |
+| `lib/meta.js` | 2841348 | `d0ce699fbb0b7df2bef2195df74d37f054a75ce2e3658186c323454736035f05` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19716 | `70987b0743a01bf29b36267679574b76f3b69cb801e02bb2726da0b384de792c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1575,8 +1576,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v5.js` | 12057 | `351d76ac0a7dfb00861f91dfa132bbb36e67d21aa3e72502459ab63774914856` |
 | `mcp/adapters/clinical-v6.js` | 9094 | `85dda711c1f5b628041a41ae5218c2ea8909bc51ff6bff06df2b9a81e1674096` |
 | `mcp/adapters/clinical-v7.js` | 9320 | `3e53f0e857f07cb6f80e5efb3ca7bd90d021ef538c4860730bc647ec113a53f4` |
-| `mcp/adapters/clinical-v8.js` | 16125 | `48cb7074e7e7c5770c4a6cd8ec85a85b39b32de17b864ec44f657a80c69a0e5d` |
-| `mcp/adapters/clinical.js` | 28366 | `ad624394e10626b0542052d537d0b964f6d6f0e2ffb929efc835835243c08f83` |
+| `mcp/adapters/clinical-v8.js` | 16436 | `3a42af244bcca8a63f84dbc1954b6abf4b087a53bd26a5b668470d754d3db004` |
+| `mcp/adapters/clinical.js` | 29208 | `e9e13b251f3bac749b7b633b62cd402c069793b91651b3e190e732f5f1624b88` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/cns-renal-dose-check-v1632.js` | 1381 | `410badc0fed1c40b89fb2d1acd21383f9fa4dea1b3779aed84bba20b0ed574aa` |
 | `mcp/adapters/coagscore-v232.js` | 2450 | `29d9720d14256b871c8c9752ecadd8f5df16342529bf67afacbc1028ed2c3d0c` |
@@ -2562,8 +2563,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
-| `views/group-e.js` | 54383 | `1e33f2b04ff296589f84adaa859fe1481adc6d6b216246a8ea33450bec8eafbd` |
-| `views/group-f.js` | 54665 | `43e3f6b485f12a06c316d77ad08aad6bd4ab838778f3a6e94ff545a697c50ef0` |
+| `views/group-e.js` | 55309 | `dd369819a310b4c3cabc93d99e8113cb9813ba49b69c7a94954ee735512c613c` |
+| `views/group-f.js` | 55437 | `fb77c7cbcf6bae4272ddbbf62ad939c6d53c6147ac306e6eaddf71b7f49c6152` |
 | `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 26811 | `eac52954ca2dd14577d8c8e31db3e9c143d589426f0602eccc70476da4303540` |
