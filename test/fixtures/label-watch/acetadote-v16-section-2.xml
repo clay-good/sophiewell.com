@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Acetadote label (set id 472f158a-5ab9-4308-8e49-1116e6ea3d39), version 16: the Dosage and Administration section only, as DailyMed served it. A federal work. -->
+<document><setId root="472f158a-5ab9-4308-8e49-1116e6ea3d39"/><versionNumber value="16"/><component><structuredBody><component><section ID="s3">
+               <id root="2941dc73-ee94-4042-9232-c4713180220e"/>
+               <code code="34068-7" codeSystem="2.16.840.1.113883.6.1" displayName="DOSAGE &amp; ADMINISTRATION SECTION"/>
+               <title>2 DOSAGE AND ADMINISTRATION
+</title>
+               <effectiveTime value="20250430"/>
+               <excerpt>
+                  <highlight>
+                     <text>
+                        <paragraph>
+                           <content styleCode="underline">Pre-Treatment Assessment Following Acute Ingestion (<linkHtml href="#s4">2.1</linkHtml>)</content>:
+</paragraph>
+                        <paragraph>Prior to initiating treatment with ACETADOTE, decide whether the three-bag or two-bag regimen will be used.
+</paragraph>
+                        <paragraph>Obtain a plasma or serum sample to assay for acetaminophen concentration at least 4 hours after ingestion.
+</paragraph>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>If the time of acetaminophen ingestion is unknown:<list listType="unordered" styleCode="Circle">
+                                 <item>Administer a loading dose of ACETADOTE immediately.
+</item>
+                                 <item>Obtain an acetaminophen concentration to determine need for continued treatment.
+</item>
+                              </list>
+                           </item>
+                           <item>If the acetaminophen concentration cannot be obtained (or is unavailable or uninterpretable) within the 8-hour time interval after acetaminophen ingestion or there is clinical evidence of acetaminophen toxicity:<list listType="unordered" styleCode="Circle">
+                                 <item>Administer a loading dose of ACETADOTE immediately and continue treatment for a total of two doses over 20 hours or three doses over 21 hours (<linkHtml href="#s11">2.5</linkHtml>).
+</item>
+                              </list>
+                           </item>
+                           <item>If the patient presents more than 8 hours after ingestion and the time of acute acetaminophen ingestion is known:<list listType="unordered" styleCode="Circle">
+                                 <item>Administer a loading dose of ACETADOTE immediately
+</item>
+                                 <item>Obtain acetaminophen concentration to determine need for continued treatment
+</item>
+                              </list>
+                           </item>
+                           <item>If the patient presents less than 8 hours after ingestion and the time of acute acetaminophen ingestion is known and the acetaminophen concentration is known:<list listType="unordered" styleCode="Circle">
+                                 <item>Use the revised Rumack-Matthew nomogram (<linkHtml href="#fig1">Figure 1</linkHtml>) to determine whether or not to initiate treatment with ACETADOTE (<linkHtml href="#s5">2.2</linkHtml>)
+</item>
+                              </list>
+                           </item>
+                        </list>
+                        <paragraph>
+                           <content styleCode="underline">Nomogram for Estimating Potential for Hepatotoxicity from Acute Acetaminophen Ingestion (<linkHtml href="#s5">2.2</linkHtml>):</content>
+                        </paragraph>
+                        <paragraph>See Full Prescribing Information for instructions on how to use the nomogram to determine the need for dosing.
+</paragraph>
+                        <paragraph>
+                           <content styleCode="underline">Preparation and Storage of Diluted Solution Prior to Administration (<linkHtml href="#s9">2.3</linkHtml>)</content>:
+</paragraph>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>Calculate the dose (mg) based on the patient's weight in kg; multiple vials of ACETADOTE may be required.<list listType="unordered" styleCode="Circle">
+                                 <item>ACETADOTE is hyperosmolar (2,600 mOsmol/L), therefore ACETADOTE must be diluted in the recommended volume of sterile water for injection, 0.45% sodium chloride injection, or 5% dextrose in water injection prior to intravenous administration. In general, 0.45% normal saline is the preferred diluent because it provides a more consistent osmolarity profile, reduces the amount of free water delivered to the patient, and better approximates physiologic fluids.
+</item>
+                              </list>
+                           </item>
+                        </list>
+                        <paragraph>See Full Prescribing Information for examples of osmolarity depending on the type of solution and ACETADOTE concentration.
+</paragraph>
+                        <paragraph>
+                           <content styleCode="underline">General Considerations for Selecting the Three-Bag or Two-Bag Regimen (<linkHtml href="#s10">2.4</linkHtml>):</content>
+                        </paragraph>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>It is not known whether the two-bag regimen is comparable to the three-bag regimen in preventing hepatotoxicity.
+</item>
+                           <item>Patients 40 kg or less should receive the three-bag regimen.
+</item>
+                           <item>For patients weighing 41 kg or greater, the three-bag regimen may be preferred for those with early signs of severe liver injury or a large acetaminophen ingestion.
+</item>
+                        </list>
+                        <paragraph>
+                           <content styleCode="underline">Recommended Dosage for Acute Acetaminophen Ingestion (<linkHtml href="#s11">2.5</linkHtml>):</content>
+                        </paragraph>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>ACETADOTE is for intravenous administration only
+</item>
+                           <item>Total dosage of ACETADOTE is 300 mg/kg given intravenously as either:<list listType="unordered" styleCode="Circle">
+                                 <item>3 separate doses infused over a total of 21 hours <br/>OR
+</item>
+                                 <item>2 separate doses infused over a total of 20 hours.
+</item>
+                              </list>
+                           </item>
+                           <item>See Full Prescribing Information for weight-based dosage and weight-based dilution (<linkHtml href="#s11">2.5</linkHtml>)
+</item>
+                        </list>
+                        <paragraph>See Full Prescribing Information for recommendations for continuing ACETADOTE treatment after 21 hours (<linkHtml href="#s5">2.2</linkHtml>).
+</paragraph>
+                        <paragraph>
+                           <content styleCode="underline">Repeated Supratherapeutic Acetaminophen Ingestion (<linkHtml href="#s15">2.6</linkHtml>):</content>
+                        </paragraph>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>Obtain acetaminophen concentration and other laboratory tests to guide treatment; revised Rumack-Matthew nomogram does not apply.
+</item>
+                        </list>
+                     </text>
+                  </highlight>
+               </excerpt>
+               <component>
+                  <section ID="s4">
+                     <id root="98dcfc7d-1b82-4b3b-815e-582f695bcc67"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>2.1 Pre-Treatment Assessment and Testing Following Acute Acetaminophen Ingestion
+</title>
+                     <text>
+                        <paragraph>
+                           <content styleCode="xmChange"/>Prior to initiating treatment with ACETADOTE, decide whether the three-bag or two-bag regimen will be used <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s10">2.4</linkHtml>)]</content>.
+</paragraph>
+                        <paragraph>The following recommendations are related to acute acetaminophen ingestion. For recommendations related to repeated supratherapeutic exposure <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s15">2.6</linkHtml>)]</content>.
+</paragraph>
+                        <list listType="ordered" styleCode="Arabic">
+                           <item>Assess the history and timing of acetaminophen ingestion as an overdose.<list listType="unordered" styleCode="Disc">
+                                 <item>The reported history of the quantity of acetaminophen ingested as an overdose is often inaccurate and is not a reliable guide to therapy.
+</item>
+                              </list>
+                           </item>
+                           <item>Obtain the following laboratory tests to monitor hepatic and renal function and electrolyte and fluid balance: aspartate aminotransferase (AST), alanine aminotransferase (ALT), bilirubin, international normalized ratio (INR), creatinine, blood urea nitrogen (BUN), blood glucose, and electrolytes.
+</item>
+                           <item>Obtain a plasma or serum sample to assay for acetaminophen concentration at least 4 hours after ingestion. Acetaminophen concentrations obtained earlier than 4 hours post-ingestion may be misleading as they may not represent maximum acetaminophen concentrations.
+</item>
+                           <item>If the time of acute acetaminophen ingestion is unknown:<list listType="unordered" styleCode="Disc">
+                                 <item>Administer a loading dose of ACETADOTE immediately <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>)].</content>
+                                 </item>
+                                 <item>Obtain an acetaminophen concentration to determine need for continued treatment <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s5">2.2</linkHtml>)].</content>
+                                 </item>
+                              </list>
+                           </item>
+                           <item>If the acetaminophen concentration cannot be obtained (or is unavailable or uninterpretable) within the 8-hour time interval after acetaminophen ingestion or there is clinical evidence of acetaminophen toxicity:<list listType="unordered" styleCode="Disc">
+                                 <item>Administer a loading dose of ACETADOTE immediately and continue treatment for a total of two doses over 20 hours or three doses over 21 hours <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>)].</content>
+                                 </item>
+                              </list>
+                           </item>
+                           <item>If the patient presents more than 8 hours after ingestion and the time of acute acetaminophen ingestion is known:<list listType="unordered" styleCode="Disc">
+                                 <item>Administer a loading dose of ACETADOTE immediately <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>)]</content>
+                                 </item>
+                                 <item>Obtain an acetaminophen concentration to determine need for continued treatment <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s5">2.2</linkHtml>)].</content>
+                                 </item>
+                              </list>
+                           </item>
+                           <item>If the patient presents less than 8 hours after ingestion and the time of acute acetaminophen ingestion is known and the acetaminophen concentration is known:<list listType="unordered" styleCode="Disc">
+                                 <item>Use the revised Rumack-Matthew nomogram (<linkHtml href="#fig1">Figure 1</linkHtml>) to determine whether or not to initiate treatment with ACETADOTE <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s5">2.2</linkHtml>)].</content>
+                                 </item>
+                              </list>
+                           </item>
+                        </list>
+                     </text>
+                     <effectiveTime value="20250430"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s5">
+                     <id root="4ec9c5a9-3896-4027-81cc-7438b6e94dae"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>2.2 Nomogram for Estimating Potential for Hepatoxicity from Acute Acetaminophen Ingestion and Need for ACETADOTE Treatment
+</title>
+                     <text>
+                        <paragraph>ACETADOTE is an antidote for acetaminophen overdose. The critical ingestion-treatment interval for maximal protection against severe hepatic injury is between 0 and 8 hours. Efficacy diminishes progressively after 8 hours and treatment initiation between 15 and 24 hours post-ingestion of acetaminophen yields limited efficacy. However, it does not appear to worsen the condition of patients and it should not be withheld, since the reported time of ingestion may not be correct.
+</paragraph>
+                        <paragraph>If the timing of the acute acetaminophen ingestion is known and the results of the acetaminophen assay are available within 8 hours:
+</paragraph>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>Refer to the revised Rumack-Matthew nomogram (see <linkHtml href="#fig1">Figure 1</linkHtml>) to determine whether or not to initiate treatment with ACETADOTE.
+</item>
+                           <item>Initiation of ACETADOTE depends on the plasma or serum acetaminophen concentration and also the clinical presentation of the patient.
+</item>
+                        </list>
+                        <paragraph>The nomogram may underestimate the hepatotoxicity risk in patients with chronic alcoholism, malnutrition, or CYP2E1 enzyme inducing drugs (e.g., isoniazid), and consideration should be given to treating these patients even if the acetaminophen concentrations are in the nontoxic range.
+</paragraph>
+                     </text>
+                     <effectiveTime value="20250430"/>
+                     <component>
+                        <section ID="s6">
+                           <id root="b6701fdc-4b82-434b-9bb6-bb4d8d6d5bba"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Loading dose</content>
+                              </paragraph>
+                              <paragraph>For patients whose acetaminophen concentrations are at or above the treatment line (see <linkHtml href="#fig1">Figure 1</linkHtml>):
+</paragraph>
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>Administer a loading dose of ACETADOTE <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>)]</content>.
+</item>
+                              </list>
+                              <paragraph>For patients with an acute overdose from an extended-release acetaminophen, if the acetaminophen concentration at 4 hours post ingestion is below the treatment line (see <linkHtml href="#fig1">Figure 1</linkHtml>) then obtain a second sample for acetaminophen concentration 8 to 10 hours after the acute ingestion. If the second value is at or above the treatment line:
+</paragraph>
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>Administer a loading dose of ACETADOTE <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>)]</content>.
+</item>
+                              </list>
+                              <paragraph>For patients whose values are below the treatment line (see <linkHtml href="#fig1">Figure 1</linkHtml>), but time of ingestion was unknown or sample was obtained less than 4 hours after ingestion:
+</paragraph>
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>Administer a loading dose of ACETADOTE <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>)]</content>.
+</item>
+                              </list>
+                              <paragraph>For patients whose values are below the treatment line (see <linkHtml href="#fig1">Figure 1</linkHtml>) and time of ingestion is known and the sample was obtained more than 4 hours after ingestion, do not administer ACETADOTE because there is minimal risk of hepatotoxicity.
+</paragraph>
+                              <paragraph ID="fig1">
+                                 <content styleCode="xmChange"/>
+                                 <content styleCode="bold">Figure 1. Revised Rumack-Matthew Nomogram for Estimating Risk of Hepatoxicity After Acute Ingestion of Acetaminophen</content>
+                              </paragraph>
+                              <paragraph>
+                                 <content styleCode="xmChange"/>
+                                 <renderMultiMedia ID="f01" referencedObject="mm01"/>
+                              </paragraph>
+                           </text>
+                           <effectiveTime value="20250430"/>
+                           <component>
+                              <observationMedia ID="mm01">
+                                 <text>Figure 1
+</text>
+                                 <value xsi:type="ED" mediaType="image/jpeg">
+                                    <reference value="ace16-0019-01.jpg"/>
+                                 </value>
+                              </observationMedia>
+                           </component>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s7">
+                           <id root="6bcd4b32-b635-49b4-ae52-89f1184d42ba"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="xmChange"/>
+                                 <content styleCode="underline">Maintenance Dose</content>
+                              </paragraph>
+                              <paragraph>
+                                 <content styleCode="xmChange"/>Determine the need for continued treatment with ACETADOTE after the loading dose. Choose ONE of the following based on the acetaminophen concentration:
+</paragraph>
+                              <paragraph>
+                                 <content styleCode="xmChange"/>The acetaminophen concentration is above the treatment line (see <linkHtml href="#fig1">Figure 1</linkHtml>) according to the nomogram:
+</paragraph>
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>
+                                    <content styleCode="xmChange"/>Continue ACETADOTE treatment with the maintenance dose for a total of either two or three separate doses over an infusion time of 20 or 21 hours, respectively <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>)].</content>
+                                 </item>
+                                 <item>
+                                    <content styleCode="xmChange"/>Monitor hepatic and renal function and electrolytes throughout treatment.
+</item>
+                              </list>
+                              <paragraph>The acetaminophen concentration could not be obtained:
+</paragraph>
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>Continue ACETADOTE treatment with the maintenance dose for a total of either two or three separate doses over an infusion time of 20 or 21 hours, respectively <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>)]</content>.
+</item>
+                                 <item>Monitor hepatic and renal function and electrolytes throughout treatment.
+</item>
+                              </list>
+                              <paragraph>For patients whose acetaminophen concentration is below the treatment line (see <linkHtml href="#fig1">Figure 1</linkHtml>) and time of ingestion is known and the sample was obtained more than 4 hours after ingestion:
+</paragraph>
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>Discontinue ACETADOTE.
+</item>
+                              </list>
+                              <paragraph>The acetaminophen concentration was in the non-toxic range, but time of ingestion was unknown or less than 4 hours:
+</paragraph>
+                              <list listType="unordered" styleCode="Disc">
+                                 <item>Obtain a second sample for acetaminophen concentration and consider the patient's clinical status to decide whether or not to continue ACETADOTE treatment.
+</item>
+                                 <item>If there is any uncertainty as to patient's risk of developing hepatotoxicity, it is recommended to administer a complete treatment course.
+</item>
+                              </list>
+                           </text>
+                           <effectiveTime value="20250430"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s8">
+                           <id root="47e0ac79-393f-4ac5-a26c-3c8b9e275976"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="xmChange"/>
+                                 <content styleCode="underline">Continued Therapy After Completion of Loading and Maintenance Doses</content>
+                              </paragraph>
+                              <paragraph>
+                                 <content styleCode="xmChange"/>In cases of suspected massive overdose, or with concomitant ingestion of other substances, or in patients with preexisting liver disease; the absorption and/or the half-life of acetaminophen may be prolonged. In such cases, consideration should be given to the need for continued treatment with ACETADOTE beyond the total 300 mg/kg dose.
+</paragraph>
+                              <paragraph>Acetaminophen levels and ALT/AST and INR should be checked after the last maintenance dose. If acetaminophen levels are still detectable, or if the ALT/AST are still increasing or the INR remains elevated; dosing should be continued and the treating physician should contact a US regional poison center at 1-800-222-1222, alternatively, a “special health professional assistance line for acetaminophen overdose” at 1-800-525-6115 for assistance with dosing recommendations, or 1-877-484-2700 for additional information.
+</paragraph>
+                           </text>
+                           <effectiveTime value="20250430"/>
+                        </section>
+                     </component>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s9">
+                     <id root="0d65f884-9e74-4b27-af8f-4f1571200e70"/>
+                     <code code="44425-7" codeSystem="2.16.840.1.113883.6.1" displayName="STORAGE AND HANDLING SECTION"/>
+                     <title>
+                        <content styleCode="xmChange"/>2.3 Preparation and Storage of ACETADOTE Diluted Solution Prior to Administration
+</title>
+                     <text>
+                        <paragraph>
+                           <content styleCode="xmChange"/>Refer to <linkHtml href="#t2">Table 2</linkHtml> and <linkHtml href="#t3">Table 3</linkHtml> to calculate the dose (mg) based on the patient's weight in kg; multiple vials of ACETADOTE may be required <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>)]</content>. Discard any unused portion left in the vial.
+</paragraph>
+                        <paragraph>
+                           <content styleCode="xmChange"/>Because ACETADOTE is hyperosmolar (2,600 mOsmol/L), ACETADOTE must be diluted in the recommended volume of sterile water for injection, 0.45% sodium chloride injection (1/2 normal saline), or 5% dextrose in water prior to intravenous administration. The total injection volume will vary based on the patient's weight and chosen dosage regimen (i.e., three-bag or two-bag) <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>), Warnings and Precautions (<linkHtml href="#s20">5.2</linkHtml>)]</content>.
+</paragraph>
+                        <paragraph>
+                           <content styleCode="xmChange"/>The choice of diluent should be based on the individual patient's clinical status, concurrent medical conditions, and institutional protocols. The treating clinician should assess each case individually and consult with their pharmacy if there are any concerns about the appropriate diluent choice. In general, 0.45% normal saline is the preferred diluent because it provides a more consistent osmolarity profile, reduces the amount of free water delivered to the patient, and better approximates physiologic fluids than 5% dextrose in water or sterile water for injection. However, consider 5% dextrose in water or sterile water for injection if sodium load is a concern for the patient.
+</paragraph>
+                        <paragraph>
+                           <content styleCode="xmChange"/>Dilution of ACETADOTE in each of these three solutions results in different osmolarity of the acetylcysteine solution for intravenous administration (see <linkHtml href="#t1">Table 1</linkHtml> for examples of different osmolarity of the solution depending on the type of solution and the ACETADOTE concentration).
+</paragraph>
+                        <table ID="t1" width="100%" styleCode="Noautorules">
+                           <caption>Table 1. Examples of Acetylcysteine Concentration and Osmolarity in Three Solutions
+</caption>
+                           <col width="33.258%" align="left"/>
+                           <col width="22.206%" align="left"/>
+                           <col width="21.205%" align="left"/>
+                           <col width="23.331%" align="left"/>
+                           <tfoot>
+                              <tr>
+                                 <td colspan="4" align="left" valign="top">
+                                    <paragraph styleCode="footnote">* Adjust osmolarity to a physiologically safe level (generally not less than 150 mOsmol/L in pediatric patients).
+</paragraph>
+                                 </td>
+                              </tr>
+                           </tfoot>
+                           <tbody>
+                              <tr>
+                                 <td rowspan="2" align="center" valign="middle" styleCode="Toprule Botrule Lrule Rrule">Acetylcysteine Concentration
+</td>
+                                 <td colspan="3" align="center" valign="middle" styleCode="Toprule Botrule Rrule">Osmolarity
+</td>
+                              </tr>
+                              <tr>
+                                 <td align="center" valign="middle" styleCode="Botrule Rrule">Sterile Water for Injection
+</td>
+                                 <td align="center" valign="middle" styleCode="Botrule Rrule">0.45% Sodium Chloride Injection
+</td>
+                                 <td align="center" valign="middle" styleCode="Botrule Rrule">5% Dextrose in<br/>Water (D5W)
+</td>
+                              </tr>
+                              <tr>
+                                 <td align="left" valign="middle" styleCode="Botrule Lrule Rrule">4 mg/mL (lowest concentration 3-bag protocol)
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">52 mOsmol/L*
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">194 mOsmol/L
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">311 mOsmol/L
+</td>
+                              </tr>
+                              <tr>
+                                 <td align="left" valign="middle" styleCode="Botrule Lrule Rrule">54.5 mg/mL (highest concentration 3-bag protocol)
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">744 mOsmol/L
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">855 mOsmol/L
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">957 mOsmol/L
+</td>
+                              </tr>
+                              <tr>
+                                 <td align="left" valign="middle" styleCode="Botrule Lrule Rrule">7.9 mg/mL (lowest concentration 2-bag protocol)
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">105 mOsmol/L
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">241 mOsmol/L
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">360 mOsmol/L
+</td>
+                              </tr>
+                              <tr>
+                                 <td align="left" valign="middle" styleCode="Botrule Lrule Rrule">18.2 mg/mL (highest concentration 2-bag protocol)
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">239 mOsmol/L
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">368 mOsmol/L
+</td>
+                                 <td align="left" valign="middle" styleCode="Botrule Rrule">487 mOsmol/L
+</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <paragraph>
+                           <content styleCode="xmChange"/>The choice of diluent should be based on the individual patient's clinical status, concurrent medical conditions, and institutional protocols. The treating clinician should assess each case individually and consult with their pharmacy if there are any concerns about the appropriate diluent choice. In general, 0.45% normal saline is the preferred diluent, as it provides a more consistent osmolarity profile, reduces the amount of free water delivered to the patient, and better approximates physiologic fluids than 5% dextrose in water or sterile water for injection.
+</paragraph>
+                        <paragraph>
+                           <content styleCode="xmChange"/>Visually inspect for particular matter and discoloration prior to administration.  The color of the diluted solution ranges from colorless to a slight pink or purple once the stopper is punctured (the color change does not affect the quality of the product). The diluted solution can be stored for 24 hours at room temperature. Discard the unused portion. If a vial was previously opened, do not use for intravenous administration.
+</paragraph>
+                     </text>
+                     <effectiveTime value="20250430"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s10">
+                     <id root="72871190-74ae-4e19-bf8f-68881d2ae4fb"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>
+                        <content styleCode="xmChange"/>2.4 General Considerations for Selecting the Three-Bag or Two-Bag Regimen
+</title>
+                     <text>
+                        <paragraph>
+                           <content styleCode="xmChange"/>The total recommended dosage of ACETADOTE is 300 mg/kg given intravenously as either a three-bag regimen or a two-bag regimen <content styleCode="italics">[see Dosage and Administration (<linkHtml href="#s11">2.5</linkHtml>)]</content>.
+</paragraph>
+                        <paragraph>
+                           <content styleCode="xmChange"/>It is not known whether the two-bag regimen is comparable to the three-bag regimen for efficacy in preventing hepatotoxicity.
+</paragraph>
+                        <paragraph>
+                           <content styleCode="xmChange"/>There are insufficient data to recommend use of the two-bag regimen in patients 40 kg or less; these patients should receive the three-bag regimen.
+</paragraph>
+                        <paragraph>
+                           <content styleCode="xmChange"/>For patients weighing 41 kg or greater, the clinician should consider the following factors when deciding whether to select the three-bag or two-bag regimen:
+</paragraph>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>
+                              <content styleCode="xmChange"/>The three-bag regimen administers more ACETADOTE in the first three hours and may be preferred for patients with early signs of severe liver injury or history of a large acetaminophen ingestion; however, there is the potential for a higher incidence of hypersensitivity reactions.
+</item>
+                           <item>
+                              <content styleCode="xmChange"/>The two-bag regimen delivers a lower amount of ACETADOTE over the first three hours and may be associated with fewer hypersensitivity reactions than the three-bag regimen <content styleCode="italics">[see Adverse Reactions (<linkHtml href="#s25">6.2</linkHtml>), Clinical Studies (<linkHtml href="#s56">14</linkHtml>)]</content>.
+</item>
+                        </list>
+                     </text>
+                     <effectiveTime value="20250430"/>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s11">
+                     <id root="23da350f-64a4-4686-a421-0275032b3d18"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>
+                        <content styleCode="xmChange"/>2.5 Recommended Dosage for Acute Acetaminophen Ingestion
+</title>
+                     <effectiveTime value="20250430"/>
+                     <component>
+                        <section ID="s12">
+                           <id root="13ff9796-2e63-4062-a3d4-bddeef522c88"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="xmChange"/>
+                                 <content styleCode="underline">ACETADOTE is for intravenous administration only.</content>
+                              </paragraph>
+                              <paragraph>
+                                 <content styleCode="xmChange"/>The total recommended dosage of ACETADOTE is 300 mg/kg given intravenously as either a three-bag regimen administered as a loading, second, and third dose infused over a total of 21 hours or a two-bag regimen administered as a loading and second dose infused over a total of 20 hours.
+</paragraph>
+                              <paragraph>For the recommended weight-based dosage and weight-based dilution in patients see <linkHtml href="#t2">Table 2</linkHtml> for the three-bag regimen (for patients 5 kg or greater) or <linkHtml href="#t3">Table 3</linkHtml> for the two-bag regimen (for patients 41 kg or greater).
+</paragraph>
+                           </text>
+                           <effectiveTime value="20250430"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s13">
+                           <id root="556d64e8-5960-4580-a37a-bf9a557c7338"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="underline">Three-Bag Regimen</content>
+                              </paragraph>
+                              <table ID="t2" width="100%" styleCode="Noautorules">
+                                 <caption>Table 2. Three-Bag Recommended ACETADOTE Dosage and Dilution for Patients 5 kg or greater
+</caption>
+                                 <col width="13.131%" align="left"/>
+                                 <col width="10.691%" align="left"/>
+                                 <col width="8.871%" align="left"/>
+                                 <col width="8.281%" align="left"/>
+                                 <col width="12.521%" align="left"/>
+                                 <col width="9.291%" align="left"/>
+                                 <col width="8.181%" align="left"/>
+                                 <col width="11.521%" align="left"/>
+                                 <col width="9.091%" align="left"/>
+                                 <col width="8.421%" align="left"/>
+                                 <tfoot>
+                                    <tr>
+                                       <td colspan="10" align="left" valign="top">
+                                          <paragraph styleCode="footnote">* Dilute ACETADOTE in one of the following three solutions: sterile water for injection, 0.45% sodium chloride injection, or 5% dextrose in water.
+</paragraph>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td colspan="10" align="left" valign="top">
+                                          <paragraph styleCode="footnote">**Recommended dosing for those less than 5 kg has not been studied.
+</paragraph>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td colspan="10" align="left" valign="top">
+                                          <paragraph styleCode="footnote">
+                                             <sup>***</sup>No specific studies have been conducted to evaluate the necessity of dose adjustments in patients weighing over 100 kg. Limited information is available regarding the dosing requirements of patients that weigh more than 100 kg.
+</paragraph>
+                                       </td>
+                                    </tr>
+                                 </tfoot>
+                                 <tbody>
+                                    <tr>
+                                       <td rowspan="2" align="left" valign="middle" styleCode="Toprule Botrule Lrule Rrule">Body<br/>Weight
+</td>
+                                       <td colspan="3" align="center" valign="middle" styleCode="Toprule Botrule Rrule">
+                                          <content styleCode="bold">Bag 1 (Loading Dose)</content>
+                                       </td>
+                                       <td colspan="3" align="center" valign="middle" styleCode="Toprule Botrule Rrule">
+                                          <content styleCode="bold">Bag 2 (Second Dose)</content>
+                                       </td>
+                                       <td colspan="3" align="center" valign="middle" styleCode="Toprule Botrule Rrule">
+                                          <content styleCode="bold">Bag 3 (Third Dose)</content>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">Loading Dose
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">Diluent<br/>Volume*
+</td>
+                                       <td align="center" valign="top" styleCode="Botrule Rrule">Infusion time
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">Second Dose
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">Diluent<br/>Volume*
+</td>
+                                       <td align="center" valign="top" styleCode="Botrule Rrule">Infusion time
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">Third Dose
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">Diluent<br/>Volume*
+</td>
+                                       <td align="center" valign="top" styleCode="Botrule Rrule">Infusion time
+</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle" styleCode="Botrule Lrule Rrule">5 kg** to 20 kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">150 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">3 mL/kg
+</td>
+                                       <td rowspan="4" align="center" valign="middle" styleCode="Botrule Rrule">
+                                          <br/>Infused over 1 hour
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">50 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">7 mL/kg
+</td>
+                                       <td rowspan="4" align="center" valign="middle" styleCode="Botrule Rrule">
+                                          <br/>Infused over 4 hours
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">100 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">14 mL/kg
+</td>
+                                       <td rowspan="4" align="center" valign="middle" styleCode="Botrule Rrule">Infused over 16 hours
+</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle" styleCode="Botrule Lrule Rrule">21 kg to 40 kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">150 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">100 mL
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">50 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">250 mL
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">100 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">500 mL
+</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle" styleCode="Botrule Lrule Rrule">41 kg to 99 kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">150 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">200 mL
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">50 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">500 mL
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">100 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">1,000 mL
+</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="middle" styleCode="Botrule Lrule Rrule">100 kg or greater***
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">15,000 mg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">200 mL
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">5,000 mg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">500 mL
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">10,000 mg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">1,000 mL
+</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </text>
+                           <effectiveTime value="20250430"/>
+                        </section>
+                     </component>
+                     <component>
+                        <section ID="s14">
+                           <id root="c460eb9e-51b9-47ea-b160-687bfe184eda"/>
+                           <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                           <text>
+                              <paragraph>
+                                 <content styleCode="xmChange"/>
+                                 <content styleCode="underline">Two-Bag Regimen</content>
+                              </paragraph>
+                              <table ID="t3" width="100%" styleCode="Noautorules">
+                                 <caption>Table 3. Alternative Regimen for Patients 41 kg or Greater: Two-Bag Recommended ACETADOTE Dosage and Dilution
+</caption>
+                                 <col width="18.414%" align="left"/>
+                                 <col width="16.671%" align="left"/>
+                                 <col width="12.286%" align="left"/>
+                                 <col width="10.529%" align="left"/>
+                                 <col width="11.986%" align="left"/>
+                                 <col width="16.957%" align="left"/>
+                                 <col width="13.157%" align="left"/>
+                                 <tfoot>
+                                    <tr>
+                                       <td colspan="7" align="left" valign="top">
+                                          <paragraph styleCode="footnote">
+                                             <content styleCode="xmChange"/>*Dilute ACETADOTE in one of the following three solutions: sterile water for injection, 0.45% sodium chloride injection, or 5% dextrose in water.
+</paragraph>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td colspan="7" align="left" valign="top">
+                                          <paragraph styleCode="footnote">
+                                             <content styleCode="xmChange"/>**No specific studies have been conducted to evaluate the necessity of dose adjustments in patients weighing over 100 kg. Limited information is available regarding the dosing requirements of patients that weigh more than 100 kg.
+</paragraph>
+                                       </td>
+                                    </tr>
+                                 </tfoot>
+                                 <tbody>
+                                    <tr>
+                                       <td rowspan="2" align="center" valign="middle" styleCode="Toprule Botrule Lrule Rrule">
+                                          <content styleCode="xmChange"/>Body<br/>Weight
+</td>
+                                       <td colspan="3" align="center" valign="middle" styleCode="Toprule Botrule Rrule">
+                                          <content styleCode="bold">Bag 1 (Loading Dose)</content>
+                                          <br/>
+                                       </td>
+                                       <td colspan="3" align="center" valign="middle" styleCode="Toprule Botrule Rrule">
+                                          <content styleCode="bold">Bag 2 (Second Dose)</content>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">
+                                          <content styleCode="xmChange"/>Loading Dose
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">Diluent Volume*
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">
+                                          <br/>Infusion time
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">Second Dose
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">Diluent Volume*
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">Infusion<br/>time
+</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="top" styleCode="Botrule Lrule Rrule">
+                                          <content styleCode="xmChange"/>41 kg to 99 kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">200 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">1,000 mL
+</td>
+                                       <td rowspan="2" align="center" valign="middle" styleCode="Botrule Rrule">Infused over 4 hours
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">100 mg/kg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">500 mL
+</td>
+                                       <td rowspan="2" align="center" valign="middle" styleCode="Botrule Rrule">Infused over 16 hours
+</td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" valign="top" styleCode="Botrule Lrule Rrule">
+                                          <content styleCode="xmChange"/>100 kg or greater**
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">20,000 mg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">1,000 mL
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">10,000 mg
+</td>
+                                       <td align="center" valign="middle" styleCode="Botrule Rrule">500 mL
+</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </text>
+                           <effectiveTime value="20250430"/>
+                        </section>
+                     </component>
+                  </section>
+               </component>
+               <component>
+                  <section ID="s15">
+                     <id root="69e937bc-da02-4c7a-be8e-c7eeeb30f4bf"/>
+                     <code code="42229-5" codeSystem="2.16.840.1.113883.6.1" displayName="SPL UNCLASSIFIED SECTION"/>
+                     <title>2.6 Recommendations for Repeated Supratherapeutic Acetaminophen Ingestion
+</title>
+                     <text>
+                        <paragraph>Repeated supratherapeutic acetaminophen ingestion (RSI) is an ingestion of acetaminophen at dosages higher than those recommended for extended periods of time. The risk of hepatotoxicity and the recommendations for treatment of acute acetaminophen ingestion (i.e., the revised Rumack-Matthew nomogram) do not apply to patients with RSI.  Therefore, obtain the following information to guide ACETADOTE treatment for RSI:
+</paragraph>
+                        <paragraph>Repeated supratherapeutic acetaminophen ingestion (RSI) is an ingestion of acetaminophen at dosages higher than those recommended for extended periods of time. The risk of hepatotoxicity and the recommendations for treatment of acute acetaminophen ingestion (i.e., the revised Rumack-Matthew nomogram) do not apply to patients with RSI.  Therefore, obtain the following information to guide ACETADOTE treatment for RSI:
+</paragraph>
+                        <list listType="unordered" styleCode="Disc">
+                           <item>Acetaminophen serum or plasma concentrations. A reported history of the quantity of acetaminophen ingested is often inaccurate and is not a reliable guide to therapy.
+</item>
+                           <item>Laboratory tests to monitor hepatic and renal function and electrolyte and fluid balance: AST, ALT, bilirubin, INR, creatinine, BUN, blood glucose, and electrolytes.
+</item>
+                        </list>
+                        <paragraph>For specific ACETADOTE dosage and administration information in patients with RSI, consider contacting your regional poison center at 1-800-222-1222, or alternatively, a special health professional assistance line for acetaminophen overdose at 1-800-525-6115.
+</paragraph>
+                     </text>
+                     <effectiveTime value="20250430"/>
+                  </section>
+               </component>
+            </section></component></structuredBody></component></document>

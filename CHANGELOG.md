@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- A weekly watch on the FDA labels the tools read. `scripts/data/watch-dailymed.mjs` checks 22
+  labels on DailyMed against the version and section text they were read at: a new version with the
+  same wording renews itself, and a changed section holds the data-refresh pull request until a
+  person re-reads it. A test fails when a tool links a DailyMed label that is not under the watch,
+  or when a watched label is a repackager's copy. spec-v1628 section 1.
 - NDC converter: the 12-digit (6-4-2) form of FDA's final rule (91 FR 10749), which takes effect
   March 7, 2033. Any 10-, 11- or 12-digit NDC converts to the other forms, and the result says
   whether the 12-digit format is in effect on today's date. Every tool that takes an NDC (NADAC
@@ -14,6 +19,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Antibiotic renal dosing cited a relabeler's copy of the ciprofloxacin label. It now cites the
+  Hospira label, whose dosing section is word-for-word the same. spec-v1628 section 1.
 - Electrolyte replacement gave the Brown 2006 phosphate dose alone. An IV phosphate result now
   prints the Potassium Phosphates label row for the level beside it (dose band, the 45 mmol
   single-dose maximum, the 6.8 and 15 mmol/hour rate maximums), says the Brown dose is above the

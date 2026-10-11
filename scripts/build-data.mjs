@@ -2103,7 +2103,7 @@ const v4Datasets = [
       { drug: 'vancomycin', label: 'Vancomycin Injection (Gland), label revised 2026-01-30', setId: '00946db3-d6c5-4534-a870-1ec6e63eda43', crClBands: [
         { crClFrom: 0, crClTo: null, dose: 'Usual adult dose with normal renal function: 2 g/day (500 mg q6h or 1 g q12h)', interval: 'must be adjusted in renal impairment', note: 'The label gives no creatinine-clearance table; it says to adjust the dose in impaired renal function and that serum concentrations can guide it. Loading doses and AUC targets come from your hospital protocol, not the label.' },
       ] },
-      { drug: 'ciprofloxacin', label: 'Ciprofloxacin Injection, label revised 2025-11-04, Table 4 (intravenous)', setId: '42c758be-4d44-018a-e063-6294a90ae041', crClBands: [
+      { drug: 'ciprofloxacin', label: 'Ciprofloxacin in Dextrose Injection (Hospira), label revised 2025-11-04, Table 4 (intravenous)', setId: 'cbbbf939-3219-4515-a48e-ca264daa4d07', crClBands: [
         { crClFrom: 30, crClTo: null, dose: 'Usual IV dose (200-400 mg)', interval: 'q8-12h', note: 'The label reads "above 30: see usual dosage". Oral dosing has its own label and differs.' },
         { crClFrom: 5, crClTo: 30, dose: '200-400 mg IV', interval: 'q18-24h', note: 'Label row for 5 to 29 mL/min. Oral dosing has its own label and differs.' },
       ] },

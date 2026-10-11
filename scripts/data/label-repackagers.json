@@ -1,0 +1,9 @@
+{
+  "note": "Labelers whose DailyMed copies are a repackager's, relabeler's or distributor's, not the application holder's or the manufacturer's. A watched label may not be one of theirs (spec-v1628 section 1). Kept from the labels that surfaced first in searches; add to it when another turns up.",
+  "labelers": [
+    "CARDINAL HEALTH 107, LLC",
+    "PHYSICIANS TOTAL CARE, INC.",
+    "PROPHARMA DISTRIBUTION",
+    "REMEDYREPACK INC."
+  ]
+}

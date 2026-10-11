@@ -71,6 +71,11 @@ jobs:
           node scripts/data/watch-pages.mjs >> data-refresh-summary.md || true
           echo >> data-refresh-summary.md
           node scripts/data/watch-upstream.mjs >> data-refresh-summary.md || true
+          # spec-v1628 section 1, route D: the FDA labels the tools read. A new version whose watched
+          # sections did not change is renewed in scripts/data/label-editions.json; a changed section
+          # marks the row superseded and is listed here for a person to re-read. It never fails.
+          echo >> data-refresh-summary.md
+          node scripts/data/watch-dailymed.mjs --write >> data-refresh-summary.md || true
 
       - name: Run full test suite on refreshed data
         run: |
@@ -89,8 +94,8 @@ jobs:
         # A new edition can add shard files; `git add -N` makes git diff show
         # them, since it lists only tracked paths.
         run: |
-          git add --intent-to-add -- data scripts/expected-hashes.json
-          git diff --binary -- data scripts/expected-hashes.json ':!data/search-corpus' > data-refresh.patch
+          git add --intent-to-add -- data scripts/expected-hashes.json scripts/data/label-editions.json
+          git diff --binary -- data scripts/expected-hashes.json scripts/data/label-editions.json ':!data/search-corpus' > data-refresh.patch
 
       - name: Upload reviewed changes
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
@@ -132,6 +137,7 @@ jobs:
             data/**
             :!data/search-corpus/**
             scripts/expected-hashes.json
+            scripts/data/label-editions.json
 
       # spec-v1621 §5: merge the pull request only when the run's own
       # decision says every dataset is unchanged or updated cleanly -- canaries
@@ -145,6 +151,9 @@ jobs:
           PR: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
           decision=$(node scripts/data/summarize.mjs .data-refresh/data-refresh-summary.json --decision)
+          # spec-v1628 section 1: a label section a tool reads changed, or its set id was retired.
+          # The row is marked superseded in this pull request; a person re-reads the label before it merges.
+          if grep -q -E '^- .*(Re-read these rows in|Re-read the label for)' .data-refresh/data-refresh-summary.md; then decision=review; fi
           if [ "$decision" = "merge" ]; then
             gh pr merge "$PR" --squash --delete-branch --repo "$GITHUB_REPOSITORY"
           else

@@ -25,6 +25,26 @@ changes (>5% delta), and OIG / Medicare opt-out adds and removes.
 Maintainer review: read the summary. If a number looks wrong (e.g.,
 ICD-10 dropped 1000 codes), inspect the diff. Otherwise merge.
 
+### FDA labels the tools read
+
+The same run checks every FDA label a tool reads
+(`scripts/data/watch-dailymed.mjs`, the list in
+`scripts/data/label-editions.json`). Each row holds the label's DailyMed
+set id, the version and published date it was read at, and a hash of the
+text of each section the tools use.
+
+| The summary says | What happened | What to do |
+|---|---|---|
+| "No label section a tool reads changed" | Nothing, or a new version with the same wording (the row moves to it by itself) | Nothing |
+| "*Section* changed in version N. Re-read these rows in `tool`" | The wording a tool reads changed. The row is marked superseded and the pull request waits with the `data-review` label | Open the label, re-read the rows in that tool, correct the tool if a number moved, then run `node scripts/data/watch-dailymed.mjs --record SETID` and commit |
+| "is no longer on DailyMed under this set id" | The label was withdrawn or replaced | Find the current label from the application holder or a manufacturer (never a repackager, see `scripts/data/label-repackagers.json`), re-read it, and replace the set id in the tool and in the list |
+| "Past their 12 months without a renewal" | The watch has not confirmed the label for a year | Find out why the watch stopped |
+
+A tool that links a DailyMed label must have that label in the list:
+`test/unit/watch-dailymed.test.js` fails otherwise. To add one, add a row
+with its set id, the tools, and the section codes as keys, then run
+`--record SETID` to fill in the version, date and hashes.
+
 ## Quarterly review
 
 Once a quarter the maintainer reviews:

@@ -132,12 +132,27 @@ ratio from user input.
 
 | Dataset | Drives | Source / status |
 |---|---|---|
-| `data/abx-renal/abx.json` | Antibiotic Renal Dose Adjustment | FDA labels (DailyMed) summarized into renal bands |
+| `data/abx-renal/abx.json` | Antibiotic Renal Dose Adjustment | FDA labels (DailyMed) summarized into renal bands; each row carries its label's set id, and the labels are under the weekly label watch |
 | `data/benzo-equiv/benzo.json` | Benzodiazepine Equivalence (Ashton) | Ashton manual; numeric facts with attribution |
 | `data/steroid-equiv/steroid.json` | Steroid Equivalence Converter | Standard pharmacology references (MIT-licensed original numeric tables) |
 | `data/mme-factors/mme.json` | Opioid MME (CDC 2022) | CDC public-domain conversion factors |
-| `data/tpn-rules/tpn.json` | TPN Macronutrient Calculator | Standard nutrition references; project-author original numeric tables |
+| `data/tpn-rules/tpn.json` | TPN Macronutrient Calculator | FDA labels (DailyMed): energy per gram from the Clinimix label, energy and fat per mL from each lipid emulsion's label; each row carries its set id and version, under the weekly label watch |
 | `data/vasopressor-doses/vasopressors.json` | Vasopressor Dose-to-Rate + VIS | Standard ICU references; numeric facts with attribution |
+
+### FDA labels a tool reads (the label watch)
+
+A number read from one section of one FDA label is watched, not fetched.
+`scripts/data/label-editions.json` lists every such label: its DailyMed set
+id, the version and published date it was read at, the tools that read it,
+and a SHA-256 of the normalized text of each section they use.
+`scripts/data/watch-dailymed.mjs` runs in the weekly data refresh. A new
+version whose watched sections read the same moves the row forward without a
+person; a changed section, or a set id that left DailyMed, marks the row
+superseded and holds the refresh pull request for a re-read. A label is the
+application holder's or a manufacturer's, never a repackager's
+(`scripts/data/label-repackagers.json`). The rules are
+[spec-v1628](spec-v1628.md) section 1; the maintainer steps are in
+[operations.md](operations.md).
 
 ## Workflow templates
 

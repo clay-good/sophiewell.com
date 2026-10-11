@@ -1,6 +1,6 @@
 # spec-v1628 — Pharmacy practice: shared machinery
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. No new tools.
+**Status:** Section 1 partly built, October 10, 2026 (see Build status at the end); sections 2 to 7 are rules the waves follow and have no code of their own yet. No new tools.
 **Charter:** [spec-v1627](spec-v1627.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 **Builds on:** [spec-v1501](spec-v1501.md) (group Q, the data contract, the upload workbench, the clock engine).
 
@@ -173,3 +173,18 @@ For a tool whose catalog entry lists `patients` in `audiences`:
 ## Build status
 
 Not started. Specified October 10, 2026.
+
+## Build status
+
+Updated October 10, 2026.
+
+| Part | Status |
+|---|---|
+| §1 weekly watch | Built: `scripts/data/watch-dailymed.mjs`, run by the `data-refresh` workflow, over the 22 labels live tools read today (`scripts/data/label-editions.json`). A changed section holds the refresh pull request for a person. |
+| §1 "Verify at build" | Done: the hash-unchanged path was run across three real versions each of five labels (digoxin, Lovenox, Acetadote, SMOFlipid, Clinolipid). Unchanged sections hashed the same across versions and changed ones did not; three Acetadote versions are kept as test fixtures. A set id that is not on DailyMed answers 200 with an empty history, which the watch reads as retired. |
+| §1 deny list | Built as `scripts/data/label-repackagers.json` (the dataset folder `data/label-dose/` does not exist yet). The test caught one live row on a relabeler's copy: `abx-renal` ciprofloxacin, now pinned to the Hospira label, whose Dosage and Administration text is identical. |
+| §1 found at build | An old-format label can carry the same section twice (oral acetylcysteine has two Dosage and Administration sections), so a section's hash covers every section with that code. Rows are renewed in the file about monthly, not weekly, so a quiet week opens no pull request. |
+| §1 stored fields | Per label, not yet per dose row: `drug` and `brand` are one `label` string, and the LOINC code is the key of each hash. |
+| §1 fail closed | Not built. No live tool yet reads its dose rows through `datedValue()` and withholds them when the label is superseded or past `validThrough`; today a superseded label is a held pull request, not a withheld dose. This comes with `data/label-dose/` in the first label wave. |
+| §3 datasets | None built. |
+

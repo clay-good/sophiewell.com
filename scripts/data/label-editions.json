@@ -1,0 +1,346 @@
+[
+  {
+    "label": "Acetadote (acetylcysteine) injection, Cumberland",
+    "labeler": "CUMBERLAND PHARMACEUTICALS INC.",
+    "setId": "472f158a-5ab9-4308-8e49-1116e6ea3d39",
+    "tools": [
+      "nac-dosing",
+      "acetaminophen-nomogram"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2025-07-30",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "1279a0fb4181aba3c5be41c71c0b1e34d7db764978ff2a13c02646b2f00f33b8"
+    }
+  },
+  {
+    "label": "Acetylcysteine solution (oral), Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "5558a5f5-e821-473b-7d8a-5d33d09f0586",
+    "tools": [
+      "acetaminophen-nomogram"
+    ],
+    "splVersion": 22,
+    "publishedOn": "2026-05-25",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "553afacae77223ea1d966b97a7bb261ad419563355efe16e98788d6bd8f179c3"
+    }
+  },
+  {
+    "label": "Calcium Chloride injection, Eskayef",
+    "labeler": "ESKAYEF PHARMACEUTICALS LIMITED",
+    "setId": "5b0bd762-4c87-597e-e063-6394a90a8303",
+    "tools": [
+      "calcium-replacement"
+    ],
+    "splVersion": 2,
+    "publishedOn": "2026-09-10",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "dc598dd2e68686b9c117a7bf1d921a1d291af03ad8a3b518e7e0968084979ff6"
+    }
+  },
+  {
+    "label": "Calcium Gluconate injection, WG Critical Care",
+    "labeler": "WG CRITICAL CARE, LLC",
+    "setId": "16307c00-d0d5-4e05-821f-17b0c1a29fc9",
+    "tools": [
+      "calcium-replacement"
+    ],
+    "splVersion": 5,
+    "publishedOn": "2026-09-18",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "23ace05216ff63948d84a99143d7751e777dba0a2bcc45cf2d94a276dc9d8817"
+    }
+  },
+  {
+    "label": "Cefepime for injection, Apotex",
+    "labeler": "APOTEX CORP.",
+    "setId": "02aa374f-37b4-456a-b5de-cfd3bbb6ce6e",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 2,
+    "publishedOn": "2023-05-12",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "2f5ae39ce8edfaf265b3bb2138682f4cbcf5a6771f7d7a3a554cfa40991bc1f3"
+    }
+  },
+  {
+    "label": "Ciprofloxacin in Dextrose injection, Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "cbbbf939-3219-4515-a48e-ca264daa4d07",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2025-12-02",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "49d652e2483199489bd88b6d3cec705d17669252a8c517776f5bd1ff67e4cb26"
+    }
+  },
+  {
+    "label": "Clinimix, Baxter",
+    "labeler": "BAXTER HEALTHCARE CORPORATION",
+    "setId": "dccff103-8695-400c-a15d-cc2fd078760a",
+    "tools": [
+      "tpn-macro"
+    ],
+    "splVersion": 14,
+    "publishedOn": "2026-06-05",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34089-3": "880740b109348bcbbfc8de007fd1ea27d50ea20883fef129b502c651bcc83ea9",
+      "43678-2": "d6ace40bf7f4a57c6f1f8e4adf7d6e180cd05641a03ee003e3ce335385bb59c6"
+    }
+  },
+  {
+    "label": "Clinolipid, Baxter",
+    "labeler": "BAXTER HEALTHCARE CORPORATION",
+    "setId": "ae98eb03-c0e7-49d1-b024-77968e3d9d6e",
+    "tools": [
+      "tpn-macro",
+      "iv-osmolarity"
+    ],
+    "splVersion": 24,
+    "publishedOn": "2026-06-11",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34089-3": "a612555511be33bb37761ca97eef13d6c16d84b3b19d9852abfb3784e50dd563"
+    }
+  },
+  {
+    "label": "Cyanokit (hydroxocobalamin)",
+    "labeler": "BTG INTERNATIONAL INC.",
+    "setId": "d56fcc8d-bd64-46ab-b0c0-2124bd745a6b",
+    "tools": [
+      "co-cn-antidote"
+    ],
+    "splVersion": 2,
+    "publishedOn": "2023-05-04",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "297e3c0c6181468c8c988e4a3bc99083b033feaabbcf04955d913b767afc1403",
+      "43684-0": "fba92894cb4738b850df54b462d130258f9a45a99f9540b1b0ecd1fb8fd38556"
+    }
+  },
+  {
+    "label": "Digoxin tablets, Amneal",
+    "labeler": "AMNEAL PHARMACEUTICALS OF NEW YORK LLC",
+    "setId": "dfac7f13-28be-423d-9389-9089da29da17",
+    "tools": [
+      "digoxin"
+    ],
+    "splVersion": 20,
+    "publishedOn": "2026-08-17",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "ec6be07a4dcc79197b777121cf095b060db40c69dacbea3eeab2aaf979c69255"
+    }
+  },
+  {
+    "label": "Fentanyl transdermal system",
+    "labeler": "ALVOGEN",
+    "setId": "242759ef-cb6d-4e3e-9f8d-5e31efa1f289",
+    "tools": [
+      "opioid-conversion"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2026-03-04",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "5c6ee95eec415c52ed78b658c64248193715e047a7cc8693a3e3e094665361f8"
+    }
+  },
+  {
+    "label": "Intralipid 20%, Fresenius Kabi",
+    "labeler": "FRESENIUS KABI USA, LLC",
+    "setId": "61e025f1-a38e-4af2-9e18-13ea12977cf5",
+    "tools": [
+      "tpn-macro",
+      "iv-osmolarity"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2025-11-27",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "367f763eaf37c508900ee1686be01adf7f59681d4d65a936610cd721d63bf36b",
+      "34089-3": "a80537da73b94ee8ef8a86e342e3362ac1cbe8c70a8a7bfb16be40a230ad5cf2"
+    }
+  },
+  {
+    "label": "Intralipid 30%, Fresenius Kabi",
+    "labeler": "FRESENIUS KABI USA, LLC",
+    "setId": "98460eae-5195-48d2-ab73-00d276879ef6",
+    "tools": [
+      "tpn-macro",
+      "iv-osmolarity"
+    ],
+    "splVersion": 4,
+    "publishedOn": "2025-11-19",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "d92c2532bb80becdadf2c76419a26153b2fe3331fe888efe2896a2a9cff9e918",
+      "34089-3": "ea0f090033818d9906651dda877c6b172eceda1022df112a9a3116611a5eb376"
+    }
+  },
+  {
+    "label": "Lovenox (enoxaparin sodium) injection, Sanofi-Aventis",
+    "labeler": "SANOFI-AVENTIS U.S. LLC",
+    "setId": "5017a927-2a24-4f27-89f9-27c805bf7d59",
+    "tools": [
+      "vte-prophylaxis-dose"
+    ],
+    "splVersion": 33,
+    "publishedOn": "2026-05-29",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "43333c3f2b6dace072ecbd23957d05bc75467373257f9d2e31912dc9667bea69",
+      "43684-0": "a217465b286040ea5cc610554ba6511acf88c97fe9debf350a603523f6677e6a"
+    }
+  },
+  {
+    "label": "Nithiodote (sodium nitrite and sodium thiosulfate)",
+    "labeler": "HOPE PHARMACEUTICALS",
+    "setId": "ff4941b3-9901-4aab-adcf-c5327bede34e",
+    "tools": [
+      "co-cn-antidote"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "dce45a91d6a58ffa64ad6d1f3e9d16834d54f81514909f274b7321a741ee770e"
+    }
+  },
+  {
+    "label": "Omegaven, Fresenius Kabi",
+    "labeler": "FRESENIUS KABI USA, LLC",
+    "setId": "5d9d0b24-e139-48bf-ab2d-536fb59cf8e0",
+    "tools": [
+      "tpn-macro",
+      "iv-osmolarity"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2025-09-29",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "729b00585fdc56ecc2bbc40efa366fe6a81ab56121717dd8de80c8db26afdfc5",
+      "34089-3": "96d06429fdd2e4cd63ca6daad4a757a730e3295f437e79eff29412de50a36b83"
+    }
+  },
+  {
+    "label": "Piperacillin and Tazobactam for injection, Civica",
+    "labeler": "CIVICA, INC.",
+    "setId": "19e89f8b-316b-4dd2-9724-bfe0faeba408",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2025-12-19",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "80d60492f2cb80f363f87e465e83e2620f83aae653882295acdfa0ecd0a7bfca"
+    }
+  },
+  {
+    "label": "Potassium Phosphates injection, Civica",
+    "labeler": "CIVICA, INC.",
+    "setId": "f7702b2f-d0d1-4696-896d-571607fc0dc8",
+    "tools": [
+      "electrolyte-replacement"
+    ],
+    "splVersion": 2,
+    "publishedOn": "2026-07-15",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "22c3bb9b770fcb67040fc00757e7c0ea86b2aa3ebbd7d3b8e6bb22f6c14d2339",
+      "34070-3": "282e952725682e83a2d55f6c4d3a6271ee49e5b20d5dec6b899ba7e20f64c34d"
+    }
+  },
+  {
+    "label": "Remicade (infliximab), Janssen",
+    "labeler": "JANSSEN BIOTECH, INC.",
+    "setId": "a0a046c1-056d-45a9-bfd9-13b47c24f257",
+    "tools": [
+      "dose-calendar"
+    ],
+    "splVersion": 37,
+    "publishedOn": "2025-06-05",
+    "verifiedOn": "2026-09-26",
+    "validThrough": "2027-09-26",
+    "sections": {
+      "34068-7": "feb166db6ae6a8b279fd0af4fb977ab0aa9e842fd6ca0ea0a7b8e04040d3974e"
+    }
+  },
+  {
+    "label": "Rituxan (rituximab), Genentech",
+    "labeler": "GENENTECH, INC.",
+    "setId": "b172773b-3905-4a1c-ad95-bab4b6126563",
+    "tools": [
+      "rate-escalation-schedule"
+    ],
+    "splVersion": 36,
+    "publishedOn": "2025-01-08",
+    "verifiedOn": "2026-09-26",
+    "validThrough": "2027-09-26",
+    "sections": {
+      "34068-7": "fe373d68f7c316265d28382e13b3981644329b969dd64afe2801521e9528e3b1"
+    }
+  },
+  {
+    "label": "SMOFlipid, Fresenius Kabi",
+    "labeler": "FRESENIUS KABI USA, LLC",
+    "setId": "e0e9d917-ff6f-488e-a6a8-0ad59dd17d80",
+    "tools": [
+      "tpn-macro",
+      "iv-osmolarity"
+    ],
+    "splVersion": 11,
+    "publishedOn": "2025-09-17",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "ee04a8e1b0018fdcf99b2d8178bba51279fcd9fae3d5b70a3c862078b40d0282",
+      "34089-3": "d8714dd09a0b0b6730196adabab6293fe49ff3659eb54c5efa9f5c70d6ddf03f"
+    }
+  },
+  {
+    "label": "Vancomycin injection, Gland",
+    "labeler": "GLAND PHARMA LIMITED",
+    "setId": "00946db3-d6c5-4534-a870-1ec6e63eda43",
+    "tools": [
+      "abx-renal"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-02-02",
+    "verifiedOn": "2026-10-10",
+    "validThrough": "2027-10-10",
+    "sections": {
+      "34068-7": "8e068f11e8adafbe53d19ad8cb93f3cf4b7d6765a3af668fe4dda7a9909a98a2"
+    }
+  }
+]
