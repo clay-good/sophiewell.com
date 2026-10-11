@@ -1206,6 +1206,7 @@ const UTILITIES = [
   { id: 'pn-aluminum-load', name: 'Aluminum in a PN Order (21 CFR 201.323)', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'pn-calcium-phosphate-check', name: 'Calcium and Phosphate Concentrations in a PN Bag', group: 'Q', audiences: ['clinicians'], clinical: true },
   { id: 'mean-kinetic-temperature', name: 'Mean Kinetic Temperature of a Storage Log', group: 'Q', audiences: ['clinicians'], clinical: false },
+  { id: 'in-use-discard-time', name: 'Opened Container: When to Discard', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'storage-excursion-summary', name: 'Temperature Log: Excursions and Time Out of Range', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'refill-eligible-date', name: 'Earliest Refill Date', group: 'Q', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
   { id: 'overpayment-60day', name: '60-Day Overpayment Report-and-Return Clock', group: 'C', audiences: ['billers'], clinical: false },

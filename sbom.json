@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d342720b-099d-511e-8fa1-520ec4a38285",
+  "serialNumber": "urn:uuid:b56f0e0d-4645-5615-8edc-83288ac8f90b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T07:05:32.761Z",
+    "timestamp": "2026-10-11T07:21:41.173Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2092 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2093 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fc37025285e3f6bd72136740f9d4d4a468d3ac7dce9e31fd52ba929ca9d801f0"
+          "content": "34e131a5e44cae1f2d6c025ec4dfaf9b02a375d78b12dfc0053542867ae700e4"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135164"
+          "value": "135213"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f2490097e644e135452a972c3354ed0eec799a3ba35f98d79e02bedb32e8af41"
+          "content": "c0a72c5480077c10eb2672f81ea44a699c6d52b955154c58ad41140b5879dd39"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "596559"
+          "value": "596691"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ecbbdabc28666489c079406f7f1fcd1269f99049bc71c8571b1911b1051133a2"
+          "content": "90824b821f996116f78eb1b4998aef1efc68a0fc1849565ca8d0ea85804668e1"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "262047"
+          "value": "262177"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "36783c79532c0d155f36dd27f2bfbec07a78cd41a052b91ccf24c4ba9fdc5854"
+          "content": "17e73dc10c1924a9cbdbda7c15874ce88b3490e13b0cb69d6e9a14c1faa2c8b9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "123140"
+          "value": "123198"
         }
       ]
     },
@@ -10976,6 +10976,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/in-use-discard-time-v1630.js",
+      "type": "file",
+      "name": "lib/in-use-discard-time-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d896938010ac807c6163d69c029c3e39ab127eefa43d17859280307f1c5e5f1f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7309"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/income-screens-v1506.js",
       "type": "file",
       "name": "lib/income-screens-v1506.js",
@@ -14468,7 +14489,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f9cfa70836ff82b7bac46c16ee93d72eaa8b7e9597b85a8ef5d56b9d4e4e9e30"
+          "content": "76cd30333c4b7cec9f6cb14687670a8e204af14f3bed691c6611b8de7e84988c"
         }
       ],
       "properties": [
@@ -14478,7 +14499,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2788023"
+          "value": "2788867"
         }
       ]
     },
@@ -36953,6 +36974,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/in-use-discard-time-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/in-use-discard-time-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ade60ae171e18a5e4bb1fe8bef96a61847ca9072f763a8c6ec97ec9d83ea4ed3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1706"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/income-screens-v1506.js",
       "type": "file",
       "name": "mcp/adapters/income-screens-v1506.js",
@@ -50798,7 +50840,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9b71a50233dde73a8f04c39efc511caef6112b3a52068c6a48e3407d5066a0bc"
+          "content": "44c2ca1ebd21ccd9eab69dedc7d54ab9a98eecf6e6d4bbc2647df86e3051166d"
         }
       ],
       "properties": [
@@ -50808,7 +50850,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "131721"
+          "value": "131854"
         }
       ]
     },
@@ -55313,7 +55355,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2a07f53a0ab9c8c3a419ec906060235fb90aa9840432c086883e29138b34b744"
+          "content": "58b7385e0778918c902b3254676ea2fb89af60672c94d4a83384b7096600a9d6"
         }
       ],
       "properties": [
@@ -55323,7 +55365,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12912"
+          "value": "14224"
         }
       ]
     },
@@ -86605,6 +86647,7 @@
         "urn:sophiewell:file:source:lib/imci-ors-plan-v1546.js",
         "urn:sophiewell:file:source:lib/imci-prereferral-injectables-v1546.js",
         "urn:sophiewell:file:source:lib/imid-rems-v1511.js",
+        "urn:sophiewell:file:source:lib/in-use-discard-time-v1630.js",
         "urn:sophiewell:file:source:lib/income-screens-v1506.js",
         "urn:sophiewell:file:source:lib/indomethacin-headache-ichd3-v819.js",
         "urn:sophiewell:file:source:lib/infant-arv-prophylaxis-v1554.js",
@@ -88782,6 +88825,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/imci-ors-plan-v1546.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/imci-prereferral-injectables-v1546.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/imid-rems-v1511.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/in-use-discard-time-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/income-screens-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/indomethacin-headache-ichd3-v819.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/infant-arv-prophylaxis-v1554.js",
@@ -89545,7 +89589,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "d342720b099d611e"
+      "value": "b56f0e0d4645f615"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -89557,7 +89601,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3336"
+      "value": "3338"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

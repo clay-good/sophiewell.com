@@ -8980,6 +8980,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/lipid-emulsion-dose-check-v1630.js (spec-v1630: Lipid emulsion dose and rate against the FDA label (five products; label rows) — clinical disclaimer)
 - `lipid-emulsion-dose-check`
 
+### lib/in-use-discard-time-v1630.js (spec-v1630: Opened container discard time (CDC, reporting USP <797>; label limit as reader input) — administrative disclaimer)
+- `in-use-discard-time`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -11940,6 +11940,17 @@
       ],
       "tile": "lipid-emulsion-dose-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "multi dose vial 28 days",
+        "when to discard an opened vial",
+        "beyond use date opened vial",
+        "insulin vial days after opening",
+        "pharmacy bulk package hours after puncture"
+      ],
+      "tile": "in-use-discard-time",
+      "audience": "clinicians"
     }
   ]
 }

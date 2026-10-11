@@ -532,3 +532,5 @@ experience**.
 > v1630, Calcium and Phosphate Concentrations in a PN Bag — [spec-v1630](spec-v1630.md), which adds `pn-calcium-phosphate-check` — is 2091.)
 
 > v1630, Lipid Emulsion Dose and Rate Against the Label — [spec-v1630](spec-v1630.md), which adds `lipid-emulsion-dose-check` — is 2092.)
+
+> v1630, Opened Container: When to Discard — [spec-v1630](spec-v1630.md), which adds `in-use-discard-time` — is 2093.)

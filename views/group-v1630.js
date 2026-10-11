@@ -2,7 +2,7 @@
 // reconstitution-concentration, admixture-concentration, lipid-emulsion-dose-check, pn-aluminum-load,
 // pn-calcium-phosphate-check,
 // mean-kinetic-temperature,
-// storage-excursion-summary, cleanroom-class-check and room-air-changes.
+// in-use-discard-time, storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
 import { el, clear } from '../lib/dom.js';
 import * as RC from '../lib/reconstitution-concentration-v1630.js';
@@ -10,6 +10,7 @@ import * as AC from '../lib/admixture-concentration-v1630.js';
 import * as LE from '../lib/lipid-emulsion-dose-check-v1630.js';
 import * as PA from '../lib/pn-aluminum-load-v1630.js';
 import * as CP from '../lib/pn-calcium-phosphate-check-v1630.js';
+import * as IU from '../lib/in-use-discard-time-v1630.js';
 import * as MK from '../lib/mean-kinetic-temperature-v1630.js';
 import * as SE from '../lib/storage-excursion-summary-v1630.js';
 import * as CR from '../lib/cleanroom-class-check-v1630.js';
@@ -41,6 +42,14 @@ function signedField(root, label, id) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type: 'number', step: 'any', inputmode: 'text' }));
+  root.appendChild(wrap);
+  return wrap;
+}
+function plainField(root, label, id, type, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type, autocomplete: 'off', placeholder: placeholder || '' }));
   root.appendChild(wrap);
   return wrap;
 }
@@ -163,6 +172,21 @@ export const renderers = {
       pOwn.hidden = !(r.withheld === 'phosphate' || val('cp-pown') !== '');
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+
+  'in-use-discard-time'(root) {
+    selectField(root, 'Container', 'iu-kind', IU.CONTAINERS);
+    const timed = [
+      plainField(root, 'Opened or first punctured, date and time', 'iu-opened', 'datetime-local'),
+      plainField(root, 'Manufacturer\'s expiration date (YYYY-MM-DD, or YYYY-MM for a month and year)', 'iu-exp', 'text'),
+      numField(root, 'In-use limit from the label (blank uses 28 days for a multi-dose vial)', 'iu-limit', ''),
+      selectField(root, 'The limit is in', 'iu-unit', IU.LIMIT_UNITS),
+    ];
+    const o = out(); root.appendChild(o);
+    wire(['iu-kind', 'iu-opened', 'iu-exp', 'iu-limit', 'iu-unit'], () => safe(o, () => {
+      for (const w of timed) w.hidden = val('iu-kind') === 'single-dose';
+      show(IU.inUseDiscardTime({ container: val('iu-kind'), opened: val('iu-opened'), expiration: val('iu-exp'), limit: val('iu-limit'), limitUnit: val('iu-unit') }), o);
     }));
   },
 

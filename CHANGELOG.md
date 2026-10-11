@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Opened Container: When to Discard: the discard date and time for an opened stock container, from
+  the time it was opened and its in-use limit, never past the expiration date. It supplies only the
+  28 days for a multi-dose vial whose label gives no other date; any other limit is the label's.
 - Lipid Emulsion Dose and Rate Against the Label: an order as g/kg/day and mL/kg/hour beside the
   maximums on the product's own label (Intralipid 20% and 30%, SMOFlipid, Clinolipid, Omegaven),
   which differ by product and age band, with the time allowed to complete the infusion and the

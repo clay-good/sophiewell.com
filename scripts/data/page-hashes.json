@@ -11,6 +11,10 @@
     "sha256": "141208fca5444d6f7eb20acb938a0d6b01b489df7fe2f8354b95078e2154d08a",
     "recorded": "2026-10-11"
   },
+  "https://www.cdc.gov/injection-safety/hcp/clinical-safety/index.html": {
+    "sha256": "c558c06f52ddfe07453f451fe66318bba8a78af01334d5c51f0956eefb4d2b51",
+    "recorded": "2026-10-11"
+  },
   "https://www.cdc.gov/vaccines/hcp/downloads/storage-handling-toolkit.pdf": {
     "sha256": "f540ead5f32c8711a1a8b4b0c7dfca4273fc3b869b3dd6045d613b668c899c9c",
     "recorded": "2026-10-11"

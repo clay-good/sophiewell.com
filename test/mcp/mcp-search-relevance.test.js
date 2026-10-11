@@ -798,6 +798,7 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['opened multi-dose vial discard date 28 days', ['in-use-discard-time']],
   ['lipid emulsion dose rate label maximum intralipid smoflipid', ['lipid-emulsion-dose-check']],
   ['parenteral nutrition calcium phosphate concentration limit', ['pn-calcium-phosphate-check']],
   ['parenteral nutrition aluminum load mcg/kg/day', ['pn-aluminum-load']],
