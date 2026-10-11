@@ -1040,6 +1040,8 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import arcRiskScoresV1631 from './adapters/arc-risk-scores-v1631.js';
+import phenytoinMmDoseV1631 from './adapters/phenytoin-mm-dose-v1631.js';
 import digoxinLabelDoseV1631 from './adapters/digoxin-label-dose-v1631.js';
 import caffeineCitrateDoseV1631 from './adapters/caffeine-citrate-dose-v1631.js';
 import lithiumLevelCheckV1631 from './adapters/lithium-level-check-v1631.js';
@@ -2180,6 +2182,8 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['arc-risk-scores-v1631', arcRiskScoresV1631],
+  ['phenytoin-mm-dose-v1631', phenytoinMmDoseV1631],
   ['digoxin-label-dose-v1631', digoxinLabelDoseV1631],
   ['caffeine-citrate-dose-v1631', caffeineCitrateDoseV1631],
   ['lithium-level-check-v1631', lithiumLevelCheckV1631],

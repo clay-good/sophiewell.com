@@ -2681,6 +2681,8 @@ const UTILITIES = [
   { id: 'caffeine-citrate-dose', name: 'Caffeine Citrate for Apnea of Prematurity', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lithium-level-check', name: 'Lithium Level Against the Label', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'digoxin-label-dose', name: 'Digoxin Loading and Maintenance (Label Method)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'arc-risk-scores', name: 'Augmented Renal Clearance Risk (ARC and ARCTIC Scores)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'phenytoin-mm-dose', name: 'Phenytoin Dose From Two Steady-State Levels (Michaelis-Menten)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

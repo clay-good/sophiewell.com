@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1ab7a863-baf0-5339-8dcd-4e23e900a1c2",
+  "serialNumber": "urn:uuid:2996db8b-0535-56b4-8022-b2128c391017",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T11:14:04.338Z",
+    "timestamp": "2026-10-11T11:34:15.925Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2109 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2111 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3a720cb1d6ecbb592e50e4584782e623fca2f2fab6b07f012ad4da267e5c2fff"
+          "content": "bec6228eb553084e4c5ea37f83e374ebfa3fa297c36978b1e7612762dfcd8ebb"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "136159"
+          "value": "136307"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8f4ce77378ec3d183b9f4f16f06e7035c1e66addbeced3f6dc11f8f041666226"
+          "content": "102be991f33839d75211078c344acb4434e85089bb18a4ebbb9a69a28def10dc"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "599154"
+          "value": "599486"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1c215c67649c0f2c06cbc15935988e27f994ecfadd2cd064d0333cb740bf06a7"
+          "content": "ebc17b7a22b2d1dfcf8d6eab93a10e1ea75c8d4492fa3680e57b061c8344a320"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "264259"
+          "value": "264513"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "347eada56ae155d28cc3f40cb61505f0731948e7e162aecdc119431eb7c5531e"
+          "content": "1da96246e703c995720b51c438de75cee01130636abdd7f7c4b92c12dc94e2ef"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "124290"
+          "value": "124450"
         }
       ]
     },
@@ -1564,6 +1564,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "17455"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/arc-risk-scores-v1631.js",
+      "type": "file",
+      "name": "lib/arc-risk-scores-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f9233922b9a27099714637c1ddfbc3819d694ddc49ede7aa81d787d2369a3e05"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5090"
         }
       ]
     },
@@ -12473,7 +12494,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dc7b4ece64d8807e4182ac2d9cae44d669f01e8ba0549086a4ee83d9a4782586"
+          "content": "0bc60643eb5cb7756ef72a00eb5e71cbab7fe34366ce98a4383088329cea387d"
         }
       ],
       "properties": [
@@ -12483,7 +12504,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9261"
+          "value": "9500"
         }
       ]
     },
@@ -14678,7 +14699,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5792d0af98b3f863b247cb5f514b9dbf4b85d25fbcf2fd8de4c3ba8a5f0aa0dd"
+          "content": "94c623342966701501c3274d41972dbccac86b1e5fedcd16cf275bee83683fbd"
         }
       ],
       "properties": [
@@ -14688,7 +14709,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2804388"
+          "value": "2806314"
         }
       ]
     },
@@ -19246,6 +19267,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9390"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/phenytoin-mm-dose-v1631.js",
+      "type": "file",
+      "name": "lib/phenytoin-mm-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ed4650defcbba931001c61256b1f3cea9e8857edde4ee8af9ed404dff0b516f9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8572"
         }
       ]
     },
@@ -28696,6 +28738,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7308"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/arc-risk-scores-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/arc-risk-scores-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "262fb3efbb9988caa1528ea6594e0a21f7faf1021a261450606d41f748c20ac5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1432"
         }
       ]
     },
@@ -44534,6 +44597,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/phenytoin-mm-dose-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/phenytoin-mm-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d1f5b8b36fe15c13c3c3c9dbabbf540b498741558f6418b1a16311b509579246"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2076"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/phq15-v734.js",
       "type": "file",
       "name": "mcp/adapters/phq15-v734.js",
@@ -51512,7 +51596,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6a9e45531468a85c68a65bdb722a2c45af14a959b3b665a5fe0751f2be5bb782"
+          "content": "b475fce88f71510c696c359c1dbc7ef17aaf2496d823dd14320fab05055c8f95"
         }
       ],
       "properties": [
@@ -51522,7 +51606,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "134016"
+          "value": "134262"
         }
       ]
     },
@@ -56048,7 +56132,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1ab53dedd9fbc5b6dcb4fc357593801fb5c88c64619e03825a5915ec7527eb99"
+          "content": "7f22f42df74b70882a2ca1f41e6fc1141063bfb923dd21462bd221f4831c654d"
         }
       ],
       "properties": [
@@ -56058,7 +56142,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "13884"
+          "value": "15890"
         }
       ]
     },
@@ -86892,6 +86976,7 @@
         "urn:sophiewell:file:source:lib/aqi-pm25-v1398.js",
         "urn:sophiewell:file:source:lib/arbovirus-admission-check-v1563.js",
         "urn:sophiewell:file:source:lib/arc-hbr-v594.js",
+        "urn:sophiewell:file:source:lib/arc-risk-scores-v1631.js",
         "urn:sophiewell:file:source:lib/areds-v615.js",
         "urn:sophiewell:file:source:lib/arpraziquantel-dose-v1562.js",
         "urn:sophiewell:file:source:lib/arvc-tfc-v786.js",
@@ -87734,6 +87819,7 @@
         "urn:sophiewell:file:source:lib/pfirrmann-disc-v434.js",
         "urn:sophiewell:file:source:lib/ph-hemodynamics-2022-v826.js",
         "urn:sophiewell:file:source:lib/pharmacy-spread-check.js",
+        "urn:sophiewell:file:source:lib/phenytoin-mm-dose-v1631.js",
         "urn:sophiewell:file:source:lib/phq15-v734.js",
         "urn:sophiewell:file:source:lib/pi-ll-mismatch-v705.js",
         "urn:sophiewell:file:source:lib/pipkin-femoral-head-v375.js",
@@ -89125,6 +89211,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/aqi-pm25-v1398.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arbovirus-admission-check-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arc-hbr-v594.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/arc-risk-scores-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/areds-v615.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arpraziquantel-dose-v1562.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arvc-tfc-v786.js",
@@ -89879,6 +89966,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfirrmann-disc-v434.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ph-hemodynamics-2022-v826.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pharmacy-spread-check.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/phenytoin-mm-dose-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/phq15-v734.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pi-ll-mismatch-v705.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pipkin-femoral-head-v375.js",
@@ -90315,7 +90403,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1ab7a863baf0f339"
+      "value": "2996db8b053546b4"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -90327,7 +90415,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3371"
+      "value": "3375"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

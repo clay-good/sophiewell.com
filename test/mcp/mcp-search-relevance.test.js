@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['augmented renal clearance arc arctic score trauma', ['arc-risk-scores']],
+  ['michaelis menten km vmax two steady-state levels dose', ['phenytoin-mm-dose']],
   ['digoxin loading maintenance lean body weight creatinine clearance', ['digoxin-label-dose']],
   ['caffeine citrate apnea of prematurity loading maintenance', ['caffeine-citrate-dose']],
   ['lithium level range toxic 12 hours after dose', ['lithium-level-check']],

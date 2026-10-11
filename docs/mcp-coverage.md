@@ -9031,6 +9031,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/digoxin-label-dose-v1631.js (spec-v1631: Digoxin loading and maintenance by the label method (FDA label; label row) — clinical disclaimer)
 - `digoxin-label-dose`
 
+### lib/arc-risk-scores-v1631.js (spec-v1631: Augmented renal clearance risk scores (Udy 2013; Barletta 2017) — clinical disclaimer)
+- `arc-risk-scores`
+
+### lib/phenytoin-mm-dose-v1631.js (spec-v1631: Phenytoin dose from two steady-state levels (Ludden 1977; Dilantin label row) — clinical disclaimer)
+- `phenytoin-mm-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

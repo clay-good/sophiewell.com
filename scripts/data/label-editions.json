@@ -225,6 +225,21 @@
     }
   },
   {
+    "label": "Dilantin (extended phenytoin sodium capsules), Viatris",
+    "labeler": "VIATRIS SPECIALTY LLC",
+    "setId": "86dd27d1-9cee-48ae-b55d-e2d2f7dbc593",
+    "tools": [
+      "phenytoin-mm-dose"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2025-04-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "d713b5aeadc67a1503e02c36445043298c7037398f2f11ea0207b1b2f005c179"
+    }
+  },
+  {
     "label": "Elcys (cysteine hydrochloride), Exela",
     "labeler": "EXELA PHARMA SCIENCES, LLC",
     "setId": "52317b38-b2e6-4a1c-b5b0-43cada0d205e",

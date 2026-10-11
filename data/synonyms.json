@@ -12127,6 +12127,26 @@
       ],
       "tile": "digoxin-label-dose",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "augmented renal clearance",
+        "arc score",
+        "arctic score",
+        "hyperfiltration in the icu"
+      ],
+      "tile": "arc-risk-scores",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "michaelis menten dosing",
+        "km and vmax from two levels",
+        "ludden method",
+        "saturable kinetics dose"
+      ],
+      "tile": "phenytoin-mm-dose",
+      "audience": "clinicians"
     }
   ]
 }

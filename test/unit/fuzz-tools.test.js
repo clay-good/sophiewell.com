@@ -770,6 +770,8 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as arcRiskScoresV1631 from '../../lib/arc-risk-scores-v1631.js';
+import * as phenytoinMmDoseV1631 from '../../lib/phenytoin-mm-dose-v1631.js';
 import * as digoxinLabelDoseV1631 from '../../lib/digoxin-label-dose-v1631.js';
 import * as caffeineCitrateDoseV1631 from '../../lib/caffeine-citrate-dose-v1631.js';
 import * as lithiumLevelCheckV1631 from '../../lib/lithium-level-check-v1631.js';
@@ -1694,6 +1696,8 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'arc-risk-scores-v1631.js': arcRiskScoresV1631,
+  'phenytoin-mm-dose-v1631.js': phenytoinMmDoseV1631,
   'digoxin-label-dose-v1631.js': digoxinLabelDoseV1631,
   'caffeine-citrate-dose-v1631.js': caffeineCitrateDoseV1631,
   'lithium-level-check-v1631.js': lithiumLevelCheckV1631,

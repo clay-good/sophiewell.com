@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Augmented Renal Clearance Risk (ARC and ARCTIC Scores): the two published screening scores,
+  each worked out only for the patients it was derived in. Neither is a clearance, and the page
+  says so.
+- Phenytoin Dose From Two Steady-State Levels (Michaelis-Menten): Km and Vmax from two doses and
+  their levels, the daily dose for a target, and the predicted level at common doses, with the
+  sodium salt and free acid put on one basis.
 - Digoxin Loading and Maintenance (Label Method): the label's half-then-quarters loading schedule
   for a mcg/kg you choose, and the maintenance dose by its formula and by its table, naming the
   table cell it read and the days to steady state. It does not interpret levels.

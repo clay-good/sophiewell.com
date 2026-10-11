@@ -1,7 +1,7 @@
 // spec-v1631: clinical pharmacokinetics and therapeutic drug monitoring. Group F.
 // pk-steady-state-predict, auc-trapezoid, tmic-beta-lactam, sawchuk-zaske-dosing, kinetic-egfr and
 // crrt-drug-clearance, fosphenytoin-load-rate, caffeine-citrate-dose, lithium-level-check and
-// digoxin-label-dose.
+// digoxin-label-dose, arc-risk-scores, phenytoin-mm-dose.
 
 import { el, clear } from '../lib/dom.js';
 import * as PK from '../lib/pk-steady-state-predict-v1631.js';
@@ -14,6 +14,8 @@ import * as FL from '../lib/fosphenytoin-load-rate-v1631.js';
 import * as CC from '../lib/caffeine-citrate-dose-v1631.js';
 import * as LI from '../lib/lithium-level-check-v1631.js';
 import * as DG from '../lib/digoxin-label-dose-v1631.js';
+import * as AR from '../lib/arc-risk-scores-v1631.js';
+import * as PM from '../lib/phenytoin-mm-dose-v1631.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -234,6 +236,36 @@ export const renderers = {
       // A hidden field's leftover value is not part of the question.
       if (young) args.creatinineClearance = '';
       const r = DG.digoxinLabelDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+
+  'arc-risk-scores'(root) {
+    numField(root, 'Age, years', 'ar-age', '');
+    selectField(root, 'Sex', 'ar-sex', AR.SEXES);
+    numField(root, 'Serum creatinine, mg/dL', 'ar-scr', '');
+    selectField(root, 'Admission after trauma?', 'ar-trauma', AR.YES_NO);
+    numField(root, 'Modified SOFA score (SOFA without the neurological part)', 'ar-sofa', '');
+    run(root, [['ar-age', 'age'], ['ar-sex', 'sex'], ['ar-scr', 'creatinine'], ['ar-trauma', 'trauma'], ['ar-sofa', 'modifiedSofa']], AR.arcRiskScores);
+  },
+
+  'phenytoin-mm-dose'(root) {
+    const pairs = [['pm-dose1', 'dose1'], ['pm-form1', 'form1'], ['pm-level1', 'level1'], ['pm-dose2', 'dose2'], ['pm-form2', 'form2'], ['pm-level2', 'level2'], ['pm-target', 'target'], ['pm-test', 'testDose'], ['pm-testform', 'testForm']];
+    numField(root, 'First daily dose, mg/day', 'pm-dose1', '');
+    selectField(root, 'First dose is', 'pm-form1', PM.FORMS);
+    numField(root, 'Steady-state level on the first dose, mcg/mL', 'pm-level1', '');
+    numField(root, 'Second daily dose, mg/day', 'pm-dose2', '');
+    selectField(root, 'Second dose is', 'pm-form2', PM.FORMS);
+    numField(root, 'Steady-state level on the second dose, mcg/mL', 'pm-level2', '');
+    numField(root, 'Target level, mcg/mL', 'pm-target', '');
+    numField(root, 'A dose to test, mg/day (optional)', 'pm-test', '');
+    selectField(root, 'Dose to test is', 'pm-testform', PM.FORMS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PM.phenytoinMmDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
