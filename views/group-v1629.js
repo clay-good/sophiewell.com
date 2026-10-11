@@ -2,7 +2,7 @@
 // serial-dilution, min-weighable-quantity, aliquot-method, specific-gravity, api-potency-adjust,
 // tablet-powder-source, buffer-ph, percent-ionized, dropper-calibration, suppository-displacement,
 // capsule-fill, formula-scale, molecular-weight, salt-base-factor, meq-mmol-mg, ethanol-proof,
-// apothecary-household-measures, isotonicity-e-value and isotonicity-freezing-point.
+// apothecary-household-measures, isotonicity-e-value, isotonicity-freezing-point and hlb-blend.
 
 import { el, clear } from '../lib/dom.js';
 import * as AL from '../lib/alligation-v1629.js';
@@ -26,6 +26,7 @@ import * as EP from '../lib/ethanol-proof-v1629.js';
 import * as AH from '../lib/apothecary-household-measures-v1629.js';
 import * as IE from '../lib/isotonicity-e-value-v1629.js';
 import * as FP from '../lib/isotonicity-freezing-point-v1629.js';
+import * as HB from '../lib/hlb-blend-v1629.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -478,6 +479,30 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(FP.isotonicityFreezingPoint(args), o);
+    }));
+  },
+
+  'hlb-blend'(root) {
+    const pairs = [['hb-mode', 'mode'], ['hb-req', 'required'], ['hb-a', 'hlbA'], ['hb-b', 'hlbB'], ['hb-total', 'totalWeight'], ['hb-emuls', 'emulsifiers'], ['hb-oils', 'oils'], ['hb-sap', 'sapNumber'], ['hb-acid', 'acidNumber'], ['hb-eo', 'oxyethylenePercent'], ['hb-polyol', 'polyolPercent']];
+    selectField(root, 'What to work out', 'hb-mode', HB.MODES);
+    const blend = [
+      numField(root, 'Required HLB', 'hb-req', ''),
+      numField(root, 'HLB of emulsifier A, from its data sheet', 'hb-a', ''),
+      numField(root, 'HLB of emulsifier B, from its data sheet', 'hb-b', ''),
+      numField(root, 'Total emulsifier weight, g (optional)', 'hb-total', ''),
+    ];
+    const mixture = [textareaField(root, 'Emulsifiers, one per line: weight, then its HLB', 'hb-emuls', '')];
+    const oil = [textareaField(root, 'Oils, one per line: weight, then its required HLB', 'hb-oils', '')];
+    const sap = [numField(root, 'Saponification number of the ester', 'hb-sap', ''), numField(root, 'Acid number of the fatty acid', 'hb-acid', '')];
+    const eo = [numField(root, 'Weight percent of oxyethylene', 'hb-eo', ''), numField(root, 'Weight percent of polyhydric alcohol (optional)', 'hb-polyol', '')];
+    const groups = { blend, mixture, oil, sap, eo };
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const mode = val('hb-mode');
+      for (const [name, wraps] of Object.entries(groups)) for (const w of wraps) w.hidden = name !== mode;
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(HB.hlbBlend(args), o);
     }));
   },
 };

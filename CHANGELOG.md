@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Emulsifier Blend for a Required HLB (Griffin): the proportions of two emulsifiers for a required
+  HLB, the HLB of a mixture, the required HLB of an oil phase, and Griffin's 1954 estimates from
+  composition, with his stated limits. HLB values are yours to enter from the supplier's sheet.
+  See docs/spec-v1629.md.
 - Isotonicity by Sodium Chloride Equivalent: the tonicity agent to add for a final volume, or the
   isotonic volume by the White-Vincent method, from E-values you enter. A preparation already past
   0.9% is reported as hypertonic, not as "add 0 g".

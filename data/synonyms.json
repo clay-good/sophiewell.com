@@ -11808,6 +11808,17 @@
       ],
       "tile": "isotonicity-freezing-point",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hlb calculation",
+        "required hlb emulsifier blend",
+        "span and tween ratio for an hlb",
+        "griffin hlb",
+        "hlb of a surfactant mixture"
+      ],
+      "tile": "hlb-blend",
+      "audience": "clinicians"
     }
   ]
 }

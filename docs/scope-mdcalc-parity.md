@@ -508,3 +508,5 @@ experience**.
 > v1629, Isotonicity by Sodium Chloride Equivalent — [spec-v1629](spec-v1629.md), which adds `isotonicity-e-value` — is 2079.)
 
 > v1629, Isotonicity by Freezing-Point Depression — [spec-v1629](spec-v1629.md), which adds `isotonicity-freezing-point` — is 2080.)
+
+> v1629, Emulsifier Blend for a Required HLB (Griffin) — [spec-v1629](spec-v1629.md), which adds `hlb-blend` — is 2081.)

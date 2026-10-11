@@ -8944,6 +8944,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/isotonicity-freezing-point-v1629.js (spec-v1629: Isotonicity by freezing-point depression — administrative disclaimer)
 - `isotonicity-freezing-point`
 
+### lib/hlb-blend-v1629.js (spec-v1629: Emulsifier blend for a required HLB (Griffin 1949, 1954) — administrative disclaimer)
+- `hlb-blend`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

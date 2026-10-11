@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d142ddc2-56af-5d05-8c56-13609c6a7257",
+  "serialNumber": "urn:uuid:3bd256ca-44c3-504c-8bb3-0cf19b0a13b6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T05:29:55.437Z",
+    "timestamp": "2026-10-11T05:41:35.863Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2080 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2081 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b4baeaa7731e6f37bea1dfde562569bee465732916628826bf71dcfc78c9cf9b"
+          "content": "a9a5a49c176d6fadbfb361d54cd9df11faaf61c8de102d0611b0e66962d85209"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "134424"
+          "value": "134485"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "826f5d3815651fe7c80121a418606fe625c5ab17986ad0bedfc18bac2889d0e2"
+          "content": "bf1a31307bc93ba5a76913ae8fe8dd63e59867b9cf02266d63f0123a72131490"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "594709"
+          "value": "594856"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "56ce24556a81df081358990a2b5514c5b3710362bcf887767bdc29ade9884e8a"
+          "content": "a1d6fa1a6aa19264b6026d0a5e793e85c68713372a0bc386d4cb9a2edac68ce2"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "260456"
+          "value": "260576"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ece9f48cf75db77213e1650564e58e7e765a2f174df8626475db4e40b0fc344b"
+          "content": "cfd7301db28bc3984ba95b67134841a128183c349bf4ad7ae7f64f26f873f0cc"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "122261"
+          "value": "122321"
         }
       ]
     },
@@ -10136,6 +10136,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hlb-blend-v1629.js",
+      "type": "file",
+      "name": "lib/hlb-blend-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c87e7b919eec242e4d8dcadc2c1a4788f166389378048e3411f30efe4a721490"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9246"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hlh-2004-v582.js",
       "type": "file",
       "name": "lib/hlh-2004-v582.js",
@@ -14279,7 +14300,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "76cded1fc45e1344651f261bace020ac34ea7a9b215e1f7b8e4a6ba12427e548"
+          "content": "d1a71ce2792232ed127abe43822b466ab3339d974cd95bf3bcf74fa4508eb5cd"
         }
       ],
       "properties": [
@@ -14289,7 +14310,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2776711"
+          "value": "2777583"
         }
       ]
     },
@@ -36008,6 +36029,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hlb-blend-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/hlb-blend-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ba9e6f882adb7e275972a894b9ef8e8af032e268c248195a6b22d0693e54d414"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2327"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hlh-2004-v582.js",
       "type": "file",
       "name": "mcp/adapters/hlh-2004-v582.js",
@@ -50252,7 +50294,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "796e02170e7aca4ab6d68f85adf50fa9fabb260b2d34d873d69d27219e0774f6"
+          "content": "04ecd11d9d57a5136c1d1b8f736f7e806694bae5662710f449a9c7b4b2684e8c"
         }
       ],
       "properties": [
@@ -50262,7 +50304,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "129975"
+          "value": "130072"
         }
       ]
     },
@@ -54725,7 +54767,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ea69b4f3576ff3b6b0bf85dd18e89d83f803e00eff30207d88e1ceeee4e585dd"
+          "content": "c1d834d594151a54f431839d4c7a99ba2ec7e5925935afd72d27ca02a8ef5ccf"
         }
       ],
       "properties": [
@@ -54735,7 +54777,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "27068"
+          "value": "28778"
         }
       ]
     },
@@ -85998,6 +86040,7 @@
         "urn:sophiewell:file:source:lib/hill-grade-v1243.js",
         "urn:sophiewell:file:source:lib/hinchey-v321.js",
         "urn:sophiewell:file:source:lib/hiv-pep-occupational-v887.js",
+        "urn:sophiewell:file:source:lib/hlb-blend-v1629.js",
         "urn:sophiewell:file:source:lib/hlh-2004-v582.js",
         "urn:sophiewell:file:source:lib/home-oxygen-v889.js",
         "urn:sophiewell:file:source:lib/hospice-cap-v1514.js",
@@ -88169,6 +88212,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hill-grade-v1243.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hinchey-v321.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hiv-pep-occupational-v887.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hlb-blend-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hlh-2004-v582.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/home-oxygen-v889.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hospice-cap-v1514.js",
@@ -88951,7 +88995,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "d142ddc256af2d05"
+      "value": "3bd256ca44c3f04c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -88963,7 +89007,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3309"
+      "value": "3311"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
