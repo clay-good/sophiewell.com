@@ -12120,8 +12120,6 @@
     {
       "phrases": [
         "digitalizing dose",
-        "percent daily loss",
-        "dig loading schedule",
         "peak body stores",
         "digitalization"
       ],
@@ -12156,6 +12154,23 @@
         "busulfan micromolar minutes"
       ],
       "tile": "busulfan-auc-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "gent tobra amik"
+      ],
+      "tile": "aminoglycoside-label-renal",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "theophylline infusion rate",
+        "aminophylline loading dose",
+        "theophylline level adjustment",
+        "aminophylline drip rate"
+      ],
+      "tile": "theophylline-label-dose",
       "audience": "clinicians"
     }
   ]

@@ -31,6 +31,37 @@
     }
   },
   {
+    "label": "Amikacin sulfate injection, Sagent",
+    "labeler": "SAGENT PHARMACEUTICALS",
+    "setId": "f260ff2a-76a0-4672-9516-91c344b67890",
+    "tools": [
+      "aminoglycoside-label-renal"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-08-03",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "0a0e0428337129ce1e7fe33e3383e3dfeeede1382f2588daa8013f3f3d3263df"
+    }
+  },
+  {
+    "label": "Aminophylline injection, Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "9a663ef3-881f-48bd-2689-3713b24545c2",
+    "tools": [
+      "theophylline-label-dose"
+    ],
+    "splVersion": 29,
+    "publishedOn": "2026-05-25",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "8ad06a314e421dcc4ac2eabbb83683b996549eb20ef2011f54c1920c9a82cc6b",
+      "34089-3": "01da29a43eb9ac0795c08b90dbeed73e2719e011e48d12031a28ec6a4fcf6146"
+    }
+  },
+  {
     "label": "Busulfan injection, Sagent",
     "labeler": "SAGENT PHARMACEUTICALS",
     "setId": "086a715e-4958-4bb5-9ebd-86171e6b6203",
@@ -283,6 +314,21 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "5c6ee95eec415c52ed78b658c64248193715e047a7cc8693a3e3e094665361f8"
+    }
+  },
+  {
+    "label": "Gentamicin in sodium chloride injection, Baxter",
+    "labeler": "BAXTER HEALTHCARE CORPORATION",
+    "setId": "449c9a41-d61e-49fd-b5e3-d76f74b92acf",
+    "tools": [
+      "aminoglycoside-label-renal"
+    ],
+    "splVersion": 21,
+    "publishedOn": "2026-10-09",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "1d63290ca9fdd05f02c9a8f88c063ff0163af2ea2bf903673d45262eab0184e9"
     }
   },
   {
@@ -591,6 +637,37 @@
     "sections": {
       "34068-7": "b1a82d18c41c93f9cc6be3f162b9cdf40e4770efe21de6c497b7c27917181004",
       "34089-3": "60036e085d717f984c2b74eb2f04d847eebc1a726ae8f35ec94116a4be28af78"
+    }
+  },
+  {
+    "label": "Theophylline extended-release tablets, Teva",
+    "labeler": "TEVA PHARMACEUTICALS, INC.",
+    "setId": "25eabefa-518b-4030-9b72-01ac8b3deba9",
+    "tools": [
+      "theophylline-label-dose"
+    ],
+    "splVersion": 4,
+    "publishedOn": "2026-07-15",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "e7689bfc59ab9563107d1d3590da7d009797f53299dbe4d8d7b18e0930fe6d73"
+    }
+  },
+  {
+    "label": "Tobramycin injection, Mylan",
+    "labeler": "MYLAN INSTITUTIONAL LLC",
+    "setId": "ac8134d9-a726-4508-b8b9-a536ef17243d",
+    "tools": [
+      "aminoglycoside-label-renal"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2026-08-27",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "2ee0c00a42951709975199f12097c4c1003db4824a23b422aff231af0f0f5401",
+      "34066-1": "ac17be963febdb10ce87da9bb537bddf7ba1ee2d6fa94274da94ac67c77bc14d"
     }
   },
   {

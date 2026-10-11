@@ -2684,6 +2684,8 @@ const UTILITIES = [
   { id: 'arc-risk-scores', name: 'Augmented Renal Clearance Risk (ARC and ARCTIC Scores)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'phenytoin-mm-dose', name: 'Phenytoin Dose From Two Steady-State Levels (Michaelis-Menten)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'busulfan-auc-dose', name: 'IV Busulfan AUC and Dose Adjustment (Label Method)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'aminoglycoside-label-renal', name: 'Gentamicin, Tobramycin, Amikacin: Label Dosing by Creatinine', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'theophylline-label-dose', name: 'Theophylline and Aminophylline: IV Start and Level Adjustment', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

@@ -39,6 +39,7 @@ export const SECTIONS = {
   '43684-0': 'Use in Specific Populations',
   '34089-3': 'Description',
   '43678-2': 'Dosage Forms and Strengths',
+  '34066-1': 'Boxed Warning',
 };
 
 const MONTHS = { jan: '01', feb: '02', mar: '03', apr: '04', may: '05', jun: '06', jul: '07', aug: '08', sep: '09', oct: '10', nov: '11', dec: '12' };

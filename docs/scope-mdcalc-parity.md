@@ -572,3 +572,7 @@ experience**.
 > v1631, Phenytoin Dose From Two Steady-State Levels (Michaelis-Menten) — [spec-v1631](spec-v1631.md), which adds `phenytoin-mm-dose` — is 2111.)
 
 > v1631, IV Busulfan AUC and Dose Adjustment (Label Method) — [spec-v1631](spec-v1631.md), which adds `busulfan-auc-dose` — is 2112.)
+
+> v1631, Gentamicin, Tobramycin, Amikacin: Label Dosing by Creatinine — [spec-v1631](spec-v1631.md), which adds `aminoglycoside-label-renal` — is 2113.)
+
+> v1631, Theophylline and Aminophylline: IV Start and Level Adjustment — [spec-v1631](spec-v1631.md), which adds `theophylline-label-dose` — is 2114.)

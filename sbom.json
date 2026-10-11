@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:9601d4c0-9cd1-570f-8a26-afcb14449db4",
+  "serialNumber": "urn:uuid:eff79ddd-bb41-591b-8928-c209649718f2",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T11:49:21.932Z",
+    "timestamp": "2026-10-11T12:04:15.308Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2112 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2114 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "40ed979eb17a8e1682c9d82dc4c13d34fd8fbc90196c0f07e41947d7adf12318"
+          "content": "257233c018aca08e241a1d5a4878eec80600bfc5ecdc8b5079d3844143f171ed"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "136373"
+          "value": "136526"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f113627bc176515e92ee9327e7e99f022ab8641d8b73df682ea7334314314318"
+          "content": "c7023efceaf15e6983cbac6f399bc029e1ced3b91cf3b914d85ed36aa4283839"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "599645"
+          "value": "599999"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9d243c3a1d404a0288d16b3be556798a78a18984936b5bf0edd2da5f49b19f0f"
+          "content": "fc3f8847ffad944ac169708c3074077ea4838f72ac9904ddbac546ea105c07ea"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "264641"
+          "value": "264912"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "19ca56f4fbf36bd2c89f5e83ed3edaa2477f1e8908199d05c3e719eefa8e921e"
+          "content": "f863afc9c3f88a348a0d76a9f5e0bafd04300bf44ac7218abb579be7601671b0"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "124523"
+          "value": "124705"
         }
       ]
     },
@@ -1039,6 +1039,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "12461"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/aminoglycoside-label-renal-v1631.js",
+      "type": "file",
+      "name": "lib/aminoglycoside-label-renal-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1c267026ee710177cf7b992ca7a699841683f7aa7aa89406e4a2f8d75053be96"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "13194"
         }
       ]
     },
@@ -12515,7 +12536,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5e6537083431dab21786d62c8ee71221afb7dfe7feef553426fc2b0927fb9851"
+          "content": "adcf83ba194040313e82e5958cd14524b058aa4db4cf77e55136ce7090fca835"
         }
       ],
       "properties": [
@@ -12525,7 +12546,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9711"
+          "value": "10822"
         }
       ]
     },
@@ -14720,7 +14741,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4d97e50f12f8fe1556885dd94ff33e0e82aea8cf408a3de021a2c4cc0568d4df"
+          "content": "43d6756c0b14846126059095fdda88586db0575da274d14c04f12408e4715bd3"
         }
       ],
       "properties": [
@@ -14730,7 +14751,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2807159"
+          "value": "2809607"
         }
       ]
     },
@@ -24626,6 +24647,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/theophylline-label-dose-v1631.js",
+      "type": "file",
+      "name": "lib/theophylline-label-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8f3a5ff740ac2412a14d4b677527389e9362e20c496d3945354485d2655be4de"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "16927"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/therapy-cost-v1510.js",
       "type": "file",
       "name": "lib/therapy-cost-v1510.js",
@@ -28255,6 +28297,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4937"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aminoglycoside-label-renal-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/aminoglycoside-label-renal-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "88d548a3eaa5e8b89901dab1ec8d86f5af12f5bf54a5086a332f7dfcacd408e1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1723"
         }
       ]
     },
@@ -49280,6 +49343,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/theophylline-label-dose-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/theophylline-label-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cf7990e65b3303511d08b3b3c5d80e7979665980bd955d2eaecd37a19b2a06c2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2178"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/therapy-cost-v1510.js",
       "type": "file",
       "name": "mcp/adapters/therapy-cost-v1510.js",
@@ -51638,7 +51722,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d8d6bd24613627f1d45828fae8df3ae2721824fdab2518c637bc3afa941d1abb"
+          "content": "47ab846bbf10af6d2d16fc3654cfd7b6aa0d5f0aec18222cb71ba5c03fdbf8ce"
         }
       ],
       "properties": [
@@ -51648,7 +51732,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "134389"
+          "value": "134703"
         }
       ]
     },
@@ -56174,7 +56258,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "63c68ae1f69126229e8e8086ce818e45847395a4b3a3e743fd752159a26293b2"
+          "content": "8b0144620b5193a3f7853b89de14a88c2787fd38dcd5706b7fea7b91d44a8ea0"
         }
       ],
       "properties": [
@@ -56184,7 +56268,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "17098"
+          "value": "19978"
         }
       ]
     },
@@ -86993,6 +87077,7 @@
         "urn:sophiewell:file:source:lib/allen-ferguson-v1419.js",
         "urn:sophiewell:file:source:lib/alligation-v1629.js",
         "urn:sophiewell:file:source:lib/alsfrs-r-v537.js",
+        "urn:sophiewell:file:source:lib/aminoglycoside-label-renal-v1631.js",
         "urn:sophiewell:file:source:lib/amsler-krumeich-v707.js",
         "urn:sophiewell:file:source:lib/amsterdam-ii-v592.js",
         "urn:sophiewell:file:source:lib/amts-v805.js",
@@ -88116,6 +88201,7 @@
         "urn:sophiewell:file:source:lib/tegner-activity-v500.js",
         "urn:sophiewell:file:source:lib/tension-headache-ichd3-v818.js",
         "urn:sophiewell:file:source:lib/thakar-aki-v568.js",
+        "urn:sophiewell:file:source:lib/theophylline-label-dose-v1631.js",
         "urn:sophiewell:file:source:lib/therapy-cost-v1510.js",
         "urn:sophiewell:file:source:lib/thi-v555.js",
         "urn:sophiewell:file:source:lib/thomazeau-occupation-v1572.js",
@@ -89230,6 +89316,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/allen-ferguson-v1419.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/alligation-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/alsfrs-r-v537.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/aminoglycoside-label-renal-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/amsler-krumeich-v707.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/amsterdam-ii-v592.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/amts-v805.js",
@@ -90231,6 +90318,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tegner-activity-v500.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tension-headache-ichd3-v818.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thakar-aki-v568.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/theophylline-label-dose-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/therapy-cost-v1510.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thi-v555.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thomazeau-occupation-v1572.js",
@@ -90447,7 +90535,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "9601d4c09cd1a70f"
+      "value": "eff79dddbb41d91b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -90459,7 +90547,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3377"
+      "value": "3381"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

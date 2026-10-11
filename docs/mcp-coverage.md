@@ -9040,6 +9040,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/busulfan-auc-dose-v1631.js (spec-v1631: IV busulfan AUC and dose adjustment (FDA label; label row) — clinical disclaimer)
 - `busulfan-auc-dose`
 
+### lib/aminoglycoside-label-renal-v1631.js (spec-v1631: Conventional aminoglycoside dosing by the label (three label rows) — clinical disclaimer)
+- `aminoglycoside-label-renal`
+
+### lib/theophylline-label-dose-v1631.js (spec-v1631: Theophylline and aminophylline IV start and level-guided adjustment (two label rows) — clinical disclaimer)
+- `theophylline-label-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

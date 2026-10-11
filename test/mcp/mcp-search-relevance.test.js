@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['gentamicin tobramycin amikacin label dose by serum creatinine', ['aminoglycoside-label-renal']],
+  ['theophylline aminophylline loading dose infusion rate level adjustment', ['theophylline-label-dose']],
   ['busulfan auc dose adjustment therapeutic drug monitoring', ['busulfan-auc-dose']],
   ['augmented renal clearance arc arctic score trauma', ['arc-risk-scores']],
   ['michaelis menten km vmax two steady-state levels dose', ['phenytoin-mm-dose']],

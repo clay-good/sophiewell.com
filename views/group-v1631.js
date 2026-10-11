@@ -1,7 +1,8 @@
 // spec-v1631: clinical pharmacokinetics and therapeutic drug monitoring. Group F.
 // pk-steady-state-predict, auc-trapezoid, tmic-beta-lactam, sawchuk-zaske-dosing, kinetic-egfr and
 // crrt-drug-clearance, fosphenytoin-load-rate, caffeine-citrate-dose, lithium-level-check and
-// digoxin-label-dose, arc-risk-scores, phenytoin-mm-dose, busulfan-auc-dose.
+// digoxin-label-dose, arc-risk-scores, phenytoin-mm-dose, busulfan-auc-dose,
+// aminoglycoside-label-renal, theophylline-label-dose.
 
 import { el, clear } from '../lib/dom.js';
 import * as PK from '../lib/pk-steady-state-predict-v1631.js';
@@ -17,6 +18,8 @@ import * as DG from '../lib/digoxin-label-dose-v1631.js';
 import * as AR from '../lib/arc-risk-scores-v1631.js';
 import * as PM from '../lib/phenytoin-mm-dose-v1631.js';
 import * as BU from '../lib/busulfan-auc-dose-v1631.js';
+import * as AG from '../lib/aminoglycoside-label-renal-v1631.js';
+import * as TH from '../lib/theophylline-label-dose-v1631.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -285,6 +288,44 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = BU.busulfanAucDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'aminoglycoside-label-renal'(root) {
+    const pairs = [['agl-drug', 'drug'], ['agl-severity', 'severity'], ['agl-weight', 'weight'], ['agl-basis', 'basis'], ['agl-lean', 'leanWeight'], ['agl-creatinine', 'creatinine']];
+    selectField(root, 'Drug', 'agl-drug', AG.DRUGS);
+    selectField(root, 'Severity (gentamicin and tobramycin)', 'agl-severity', AG.SEVERITIES);
+    numField(root, 'Actual body weight, kg', 'agl-weight', '');
+    selectField(root, 'Dose on', 'agl-basis', AG.BASES);
+    numField(root, 'Your lean weight estimate, kg (only when dosing on it)', 'agl-lean', '');
+    numField(root, 'Serum creatinine, mg/dL', 'agl-creatinine', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = AG.aminoglycosideLabelRenal(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'theophylline-label-dose'(root) {
+    const pairs = [['thl-mode', 'mode'], ['thl-product', 'product'], ['thl-weight', 'weight'], ['thl-group', 'group'], ['thl-weeks', 'ageWeeks'], ['thl-prior', 'prior'], ['thl-target', 'target'], ['thl-level', 'level'], ['thl-route', 'route'], ['thl-current', 'current']];
+    selectField(root, 'Mode', 'thl-mode', TH.MODES);
+    selectField(root, 'IV start: product', 'thl-product', TH.PRODUCTS);
+    numField(root, 'IV start: ideal body weight, kg', 'thl-weight', '');
+    selectField(root, 'IV start: patient group', 'thl-group', TH.GROUPS);
+    numField(root, 'IV start, infant group: age in weeks', 'thl-weeks', '');
+    selectField(root, 'IV start: theophylline in the past 24 hours', 'thl-prior', TH.PRIOR);
+    numField(root, 'IV start with a level: desired level, mcg/mL', 'thl-target', '');
+    numField(root, 'Measured level, mcg/mL (for an adjustment, the peak at steady state)', 'thl-level', '');
+    selectField(root, 'Adjustment: the patient is on', 'thl-route', TH.ROUTES);
+    numField(root, 'Adjustment: current rate, mg/h (IV), or daily dose, mg/day (oral)', 'thl-current', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = TH.theophyllineLabelDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

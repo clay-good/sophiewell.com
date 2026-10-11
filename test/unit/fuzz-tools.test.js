@@ -770,6 +770,8 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as aminoglycosideLabelRenalV1631 from '../../lib/aminoglycoside-label-renal-v1631.js';
+import * as theophyllineLabelDoseV1631 from '../../lib/theophylline-label-dose-v1631.js';
 import * as busulfanAucDoseV1631 from '../../lib/busulfan-auc-dose-v1631.js';
 import * as arcRiskScoresV1631 from '../../lib/arc-risk-scores-v1631.js';
 import * as phenytoinMmDoseV1631 from '../../lib/phenytoin-mm-dose-v1631.js';
@@ -1697,6 +1699,8 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'aminoglycoside-label-renal-v1631.js': aminoglycosideLabelRenalV1631,
+  'theophylline-label-dose-v1631.js': theophyllineLabelDoseV1631,
   'busulfan-auc-dose-v1631.js': busulfanAucDoseV1631,
   'arc-risk-scores-v1631.js': arcRiskScoresV1631,
   'phenytoin-mm-dose-v1631.js': phenytoinMmDoseV1631,

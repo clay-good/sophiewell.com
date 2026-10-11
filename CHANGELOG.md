@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Gentamicin, Tobramycin, Amikacin: Label Dosing by Creatinine: each label's usual adult dose and
+  its two guides for impaired kidneys side by side, the usual dose at a longer interval and a
+  smaller dose at the usual interval, with the gentamicin table of percentages.
+- Theophylline and Aminophylline: IV Start and Level Adjustment: the label's loading dose and
+  starting infusion rate for each patient group with its daily ceiling, and the label's action for
+  a peak level on an infusion or an oral dose.
 - IV Busulfan AUC and Dose Adjustment (Label Method): the area under timed busulfan levels and the
   adjusted dose, worked the way the label's pediatric section sets out, with its 900 to 1350
   µM·min range beside the result.
