@@ -1,6 +1,6 @@
 # spec-v1629 — Pharmaceutical calculations and nonsterile compounding bench math
 
-**Status:** In progress, October 10, 2026: 14 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
+**Status:** In progress, October 10, 2026: 17 of 25 tools built (see Build status). 1 tool is build-gated (`compound-interstate-share`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A pharmacist or technician at the compounding bench does the same arithmetic every day: mix two
@@ -742,7 +742,7 @@ over the past year that the compounder selected"; the guidance's example is 500 
 
 ## Build status
 
-Updated October 10, 2026. 14 of 25 tools built.
+Updated October 10, 2026. 17 of 25 tools built.
 
 | Tool | Status |
 |---|---|
@@ -760,4 +760,7 @@ Updated October 10, 2026. 14 of 25 tools built.
 | 16. `suppository-displacement` | Built (group Q). The definition of the factor is a required choice; no factor table ships, and the page example uses calibration mode, which needs none. The two papers the spec cites for "both are in use" were not re-read; the tool cites only the identity. |
 | 17. `capsule-fill` | Built (group Q). No capsule-size table ships. The result says mixed powders may not pack as each does alone. |
 | 18. `formula-scale` | Built (group Q). Weights convert among mcg, mg, g and kg, and volumes between mL and L, for the footing; a weight and a volume are never added. A master formula whose lines do not add to its stated yield is reported. |
-| 4 to 6, 12, 13, 19, 20, 22 to 25 | Not built. These need a dataset or a source re-read: atomic weights (4 to 6), the isotonicity paper (12, 13), 27 CFR (19), NIST (20), Griffin (22), section 503A (23 to 25). |
+| 4. `molecular-weight` | Built (group Q), on `lib/atomic-weights-2024.js`: the CIAAW 2024 table re-read from the page (118 rows, 84 with a value) and kept as printed. **Deviations:** the table is a library constant under the weekly page watch, not a `data/atomic-weights/` folder. A charge is read only after a caret (`SO4^2-`): a bare trailing sign is refused, because "Fe3+" and "NH4+" cannot be told apart. A decimal atom count is refused; a decimal hydrate multiplier is read. The result prints how the formula was read. `KCl` is given as 74.55 (chlorine is printed to two decimals) with the unrounded sum 74.548 beside it; the spec's test value was the unrounded sum. |
+| 5. `meq-mmol-mg` | Partly built (group Q): the arithmetic, per-liter values and normality. The eight label figures the spec lists come out as computed (the test pins them). **Not built:** the label lines themselves and the lithium oral-solution volume. All four labels were re-read on October 10, 2026 and say what the spec says, but a label line must be withheld when its label changes, and that needs the label rows of [spec-v1628](spec-v1628.md) section 1 that are not built. The sodium bicarbonate tablet label the spec names is a unit-dose packager's; use the injection label for that salt when the lines are added. |
+| 6. `salt-base-factor` | Built (group Q). A blank moiety count is taken as 1 and the result says so. The label's own two numbers as an alternative input are not built. The FDA naming guidance the spec cites for context was not re-read and is not cited. |
+| 12, 13, 19, 20, 22 to 25 | Not built. Each needs a source re-read: the isotonicity paper (12, 13), 27 CFR (19), NIST (20), Griffin (22), section 503A (23 to 25). |

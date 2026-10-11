@@ -3,6 +3,10 @@
     "sha256": "f318db5fd3ca108cc4843969bb500a3bb10992b9c38d18d5638de4cf6092a54f",
     "recorded": "2026-10-03"
   },
+  "https://ciaaw.org/abridged-atomic-weights.htm": {
+    "sha256": "b78f5f019d9690dd467c9107f1e854ab9f6991f443d7e537a86f97706824a4f4",
+    "recorded": "2026-10-11"
+  },
   "https://www.cms.gov/data-research/monitoring-programs/medicare-fee-service-compliance-programs/prior-authorization-and-pre-claim-review-initiatives": {
     "sha256": "cbe3888093282af30e01117c061af768d5973529e16da8afd4a094889b4aa56e",
     "recorded": "2026-10-03"

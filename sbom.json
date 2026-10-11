@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ccc68926-1e0b-5d0e-8516-107e7ff40327",
+  "serialNumber": "urn:uuid:138372c2-2e4b-5032-8f2f-7986fe354b86",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T04:07:53.667Z",
+    "timestamp": "2026-10-11T04:54:20.865Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2073 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2076 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cdba25f92ff0c0377276d6b5280965d894e3cbbbf08daa8320b9bbac8b2965ad"
+          "content": "90899c646342e90c7762300eb6b61d71a684c2c8f8949c6730df6e4ee43e5db8"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "134016"
+          "value": "134192"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "029faca75e2e665121947effa5ef55304f4e0b2dc064eae381b5e18014967efd"
+          "content": "ed10cd58a6b62eec48d72fd729af577eb743e123fed9dbc8aea15a5f15a29ce0"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "593620"
+          "value": "594070"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "59e1014f6436bb1ad6970da4be49809944e7cae3db66a0dea0d2806e213c78c4"
+          "content": "0eada015a74e242ab27e6c4bc4239e606ec8b1639ec269d933ad3d6877652cbf"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "259549"
+          "value": "259925"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "947f7be0d9366babca95ea12953c13a4baeab2616a52683c5b068976a4f9dd72"
+          "content": "77dcc6226167f9928944207caae609b6d93536e184a797411c100a3fe190e4f9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "121793"
+          "value": "121982"
         }
       ]
     },
@@ -1732,6 +1732,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3620"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/atomic-weights-2024.js",
+      "type": "file",
+      "name": "lib/atomic-weights-2024.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3583284c02d79af6557d796e257e6bf5feef49b9e1c00659add899f61208be87"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9902"
         }
       ]
     },
@@ -14126,6 +14147,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/meq-mmol-mg-v1629.js",
+      "type": "file",
+      "name": "lib/meq-mmol-mg-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f1f90e79e605edf6d06efa2a5d08841897dd165e68287ef964271107c0ef6dbb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6820"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/mest-c-v528.js",
       "type": "file",
       "name": "lib/mest-c-v528.js",
@@ -14153,7 +14195,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c7f9f26d3518552a8e6c9832505f527ab9e7a21d416e463def38cce66f687a11"
+          "content": "e5251bf31a386e35aa617a4ae5ef53c968c76458e764ba121c34155c1d14c1c1"
         }
       ],
       "properties": [
@@ -14163,7 +14205,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2771639"
+          "value": "2773694"
         }
       ]
     },
@@ -14731,6 +14773,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8896"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/molecular-weight-v1629.js",
+      "type": "file",
+      "name": "lib/molecular-weight-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6ebcd1a518ff1289986338654cf309a5a8979c2b4fd3c74b2fcad682309ed400"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10336"
         }
       ]
     },
@@ -21493,6 +21556,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8539"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/salt-base-factor-v1629.js",
+      "type": "file",
+      "name": "lib/salt-base-factor-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7afcba1e4eab24847339b1b5e511dbdff39d05095a1fc86e98e9f030218267c1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5310"
         }
       ]
     },
@@ -39368,6 +39452,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/meq-mmol-mg-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/meq-mmol-mg-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0709ee57cc09841f92ec34f06556cb22c14f0c76ee7961d59d716046d35404f8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1566"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mest-c-v528.js",
       "type": "file",
       "name": "mcp/adapters/mest-c-v528.js",
@@ -39931,6 +40036,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2118"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/molecular-weight-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/molecular-weight-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a4d9f40b3eede2079567c54fda207a84bece7bbadea48d821b3a0aa7b86b89cc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "887"
         }
       ]
     },
@@ -45542,6 +45668,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/salt-base-factor-v1629.js",
+      "type": "file",
+      "name": "mcp/adapters/salt-base-factor-v1629.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "33408b7c47898385e0093e681ea442e4408b760be9ff1559ae9f8d5893073dfa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1690"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/sam-emergency-fluids-v1549.js",
       "type": "file",
       "name": "mcp/adapters/sam-emergency-fluids-v1549.js",
@@ -49937,7 +50084,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "92f6a545971cea2e61a02c6845bb2d317f369f5e6775e73bdf520e7b878c48a6"
+          "content": "d916994f9a7bc9917c98da0412c00f759d3cab99221d727989e619dc9d38dea0"
         }
       ],
       "properties": [
@@ -49947,7 +50094,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "129038"
+          "value": "129389"
         }
       ]
     },
@@ -54410,7 +54557,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ae1cc52cee8d633cedac196ca33b5d707128ad20ebea469601d0d4c87251592f"
+          "content": "92ca4229d83e945dd654f58a50ce63f42ad1fa9b1890de21d22e8c3f8bcc49d0"
         }
       ],
       "properties": [
@@ -54420,7 +54567,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "19558"
+          "value": "22884"
         }
       ]
     },
@@ -85283,6 +85430,7 @@
         "urn:sophiewell:file:source:lib/asrs-v513.js",
         "urn:sophiewell:file:source:lib/asthma-control-test-v516.js",
         "urn:sophiewell:file:source:lib/atlanta-pancreatitis-v445.js",
+        "urn:sophiewell:file:source:lib/atomic-weights-2024.js",
         "urn:sophiewell:file:source:lib/atrial-enlargement-v787.js",
         "urn:sophiewell:file:source:lib/ausdrisk-v711.js",
         "urn:sophiewell:file:source:lib/auth-runout-v1502.js",
@@ -85873,6 +86021,7 @@
         "urn:sophiewell:file:source:lib/membranous-risk-v878.js",
         "urn:sophiewell:file:source:lib/meniere-aao-hns-v708.js",
         "urn:sophiewell:file:source:lib/meningitis-who-2025-v1560.js",
+        "urn:sophiewell:file:source:lib/meq-mmol-mg-v1629.js",
         "urn:sophiewell:file:source:lib/mest-c-v528.js",
         "urn:sophiewell:file:source:lib/meta.js",
         "urn:sophiewell:file:source:lib/metabolic-hepatic-v219.js",
@@ -85902,6 +86051,7 @@
         "urn:sophiewell:file:source:lib/mna-sf-v712.js",
         "urn:sophiewell:file:source:lib/modic-changes-v433.js",
         "urn:sophiewell:file:source:lib/moh-ichd3-v816.js",
+        "urn:sophiewell:file:source:lib/molecular-weight-v1629.js",
         "urn:sophiewell:file:source:lib/montreal-ibd-v328.js",
         "urn:sophiewell:file:source:lib/mpa-v640.js",
         "urn:sophiewell:file:source:lib/mpfs-load.js",
@@ -86224,6 +86374,7 @@
         "urn:sophiewell:file:source:lib/sad-persons-v701.js",
         "urn:sophiewell:file:source:lib/sade-retraction-v451.js",
         "urn:sophiewell:file:source:lib/safe-haven-infant-check-v1394.js",
+        "urn:sophiewell:file:source:lib/salt-base-factor-v1629.js",
         "urn:sophiewell:file:source:lib/sam-emergency-fluids-v1549.js",
         "urn:sophiewell:file:source:lib/sam-weight-gain-v1549.js",
         "urn:sophiewell:file:source:lib/samilson-prieto-v486.js",
@@ -88014,6 +88165,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/membranous-risk-v878.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meniere-aao-hns-v708.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meningitis-who-2025-v1560.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/meq-mmol-mg-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mest-c-v528.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/metabolic-hepatic-v219.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/metabolic-onc-v88.js",
@@ -88041,6 +88193,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mna-sf-v712.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/modic-changes-v433.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/moh-ichd3-v816.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/molecular-weight-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/montreal-ibd-v328.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mpa-v640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mrc-power-v428.js",
@@ -88308,6 +88461,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/sad-persons-v701.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sade-retraction-v451.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/safe-haven-infant-check-v1394.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/salt-base-factor-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sam-emergency-fluids-v1549.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sam-weight-gain-v1549.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/samilson-prieto-v486.js",
@@ -88621,7 +88775,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ccc689261e0b5d0e"
+      "value": "138372c22e4b8032"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -88633,7 +88787,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3294"
+      "value": "3301"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

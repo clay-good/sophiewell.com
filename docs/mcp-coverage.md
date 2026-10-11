@@ -8923,6 +8923,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/formula-scale-v1629.js (spec-v1629: Reduce or enlarge a master formula — administrative disclaimer)
 - `formula-scale`
 
+### lib/molecular-weight-v1629.js (spec-v1629: Molecular weight from a formula, IUPAC CIAAW 2024 atomic weights — administrative disclaimer)
+- `molecular-weight`
+
+### lib/salt-base-factor-v1629.js (spec-v1629: Salt, base and hydrate conversion factor — administrative disclaimer)
+- `salt-base-factor`
+
+### lib/meq-mmol-mg-v1629.js (spec-v1629: Milligrams, millimoles, milliequivalents and ideal milliosmoles — administrative disclaimer)
+- `meq-mmol-mg`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

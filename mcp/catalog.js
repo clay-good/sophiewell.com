@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import molecularWeightV1629 from './adapters/molecular-weight-v1629.js';
+import saltBaseFactorV1629 from './adapters/salt-base-factor-v1629.js';
+import meqMmolMgV1629 from './adapters/meq-mmol-mg-v1629.js';
 import suppositoryDisplacementV1629 from './adapters/suppository-displacement-v1629.js';
 import capsuleFillV1629 from './adapters/capsule-fill-v1629.js';
 import formulaScaleV1629 from './adapters/formula-scale-v1629.js';
@@ -2144,6 +2147,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['molecular-weight-v1629', molecularWeightV1629],
+  ['salt-base-factor-v1629', saltBaseFactorV1629],
+  ['meq-mmol-mg-v1629', meqMmolMgV1629],
   ['suppository-displacement-v1629', suppositoryDisplacementV1629],
   ['capsule-fill-v1629', capsuleFillV1629],
   ['formula-scale-v1629', formulaScaleV1629],

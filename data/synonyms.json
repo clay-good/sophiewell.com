@@ -11731,6 +11731,39 @@
       ],
       "tile": "formula-scale",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "molecular weight calculator",
+        "molecular weight from formula",
+        "molar mass of a salt",
+        "formula weight of a hydrate",
+        "percent water of hydration"
+      ],
+      "tile": "molecular-weight",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "salt factor",
+        "salt to base conversion",
+        "base equivalent of a salt",
+        "hydrate to anhydrous conversion factor",
+        "how much salt equals the base"
+      ],
+      "tile": "salt-base-factor",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mg to meq",
+        "meq to mg",
+        "milliequivalents of potassium chloride",
+        "mmol to meq conversion",
+        "milliosmoles from milligrams"
+      ],
+      "tile": "meq-mmol-mg",
+      "audience": "clinicians"
     }
   ]
 }

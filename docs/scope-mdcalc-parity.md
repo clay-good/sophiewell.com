@@ -494,3 +494,9 @@ experience**.
 > v1629, Capsule Fill Weight and Diluent — [spec-v1629](spec-v1629.md), which adds `capsule-fill` — is 2072.)
 
 > v1629, Reduce or Enlarge a Master Formula — [spec-v1629](spec-v1629.md), which adds `formula-scale` — is 2073.)
+
+> v1629, Molecular Weight From a Formula — [spec-v1629](spec-v1629.md), which adds `molecular-weight` — is 2074.)
+
+> v1629, Salt, Base and Hydrate Conversion Factor — [spec-v1629](spec-v1629.md), which adds `salt-base-factor` — is 2075.)
+
+> v1629, Milligrams, Millimoles, Milliequivalents and Milliosmoles — [spec-v1629](spec-v1629.md), which adds `meq-mmol-mg` — is 2076.)

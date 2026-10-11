@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Molecular Weight From a Formula: type the formula from the container, the certificate of analysis
+  or the label (brackets and hydrates included) and get the molecular weight, each element's share
+  and the water of hydration, from the IUPAC 2024 abridged atomic weights. An unknown symbol is
+  refused, never skipped, and no drug is looked up by name.
+- Salt, Base and Hydrate Conversion Factor: the factor between two forms of one drug, both ways,
+  from their formulas or molecular weights.
+- Milligrams, Millimoles, Milliequivalents and Milliosmoles: convert a salt quantity among the
+  four. The valence is entered, never assumed; a blank valence gives millimoles only. All three:
+  see docs/spec-v1629.md.
 - Suppository and Molded-Form Displacement: the base and drug for a batch from your mold's blank
   weight and the drug's factor. The factor is published two opposite ways, so you choose which
   yours is; a calibration mode finds it from three weighings.

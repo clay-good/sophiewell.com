@@ -1,7 +1,7 @@
 // spec-v1629: renderers for the pharmacy bench-math tools (Group Q): alligation, dilution-c1v1,
 // serial-dilution, min-weighable-quantity, aliquot-method, specific-gravity, api-potency-adjust,
 // tablet-powder-source, buffer-ph, percent-ionized, dropper-calibration, suppository-displacement,
-// capsule-fill and formula-scale.
+// capsule-fill, formula-scale, molecular-weight, salt-base-factor and meq-mmol-mg.
 
 import { el, clear } from '../lib/dom.js';
 import * as AL from '../lib/alligation-v1629.js';
@@ -18,6 +18,9 @@ import * as DC from '../lib/dropper-calibration-v1629.js';
 import * as SP from '../lib/suppository-displacement-v1629.js';
 import * as CF from '../lib/capsule-fill-v1629.js';
 import * as FS from '../lib/formula-scale-v1629.js';
+import * as MWT from '../lib/molecular-weight-v1629.js';
+import * as SB from '../lib/salt-base-factor-v1629.js';
+import * as MQ from '../lib/meq-mmol-mg-v1629.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -52,6 +55,14 @@ function list(root, items) {
   const ul = el('ul');
   for (const t of items) ul.appendChild(el('li', { text: t }));
   root.appendChild(ul);
+}
+function textField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type: 'text', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', placeholder }));
+  root.appendChild(wrap);
+  return wrap;
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
@@ -351,6 +362,49 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(FS.formulaScale(args), o);
+    }));
+  },
+
+  'molecular-weight'(root) {
+    textField(root, 'Chemical formula, as printed on the container, the certificate of analysis or the label', 'mwt-formula', 'e.g. CaCl2.2H2O');
+    note(root, 'Type each symbol as written (Ca, not CA). Put a hydrate after a dot (CaCl2.2H2O) and a charge after a caret (SO4^2-).');
+    const o = out(); root.appendChild(o);
+    wire(['mwt-formula'], () => safe(o, () => show(MWT.molecularWeight({ formula: val('mwt-formula') }), o)));
+  },
+
+  'salt-base-factor'(root) {
+    const pairs = [['sb-af', 'aFormula'], ['sb-amw', 'aMw'], ['sb-an', 'aMoieties'], ['sb-bf', 'bFormula'], ['sb-bmw', 'bMw'], ['sb-bn', 'bMoieties'], ['sb-qty', 'quantity'], ['sb-of', 'quantityOf']];
+    note(root, 'Form A and form B are two chemical forms of one drug: a salt and its base, or a hydrate and the anhydrous form. Give each a formula or a molecular weight.');
+    textField(root, 'Form A: formula', 'sb-af', 'e.g. C11H17N2NaO3');
+    numField(root, 'Form A: or its molecular weight (g/mol)', 'sb-amw', '');
+    numField(root, 'Form A: active moieties per formula unit (blank is 1)', 'sb-an', '');
+    textField(root, 'Form B: formula', 'sb-bf', 'e.g. C11H18N2O3');
+    numField(root, 'Form B: or its molecular weight (g/mol)', 'sb-bmw', '');
+    numField(root, 'Form B: active moieties per formula unit (blank is 1)', 'sb-bn', '');
+    numField(root, 'Quantity to convert (optional)', 'sb-qty', '');
+    selectField(root, 'The quantity is a weight of', 'sb-of', SB.QUANTITY_OF);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SB.saltBaseFactor(args), o);
+    }));
+  },
+
+  'meq-mmol-mg'(root) {
+    const pairs = [['mq-qty', 'quantity'], ['mq-unit', 'unit'], ['mq-formula', 'formula'], ['mq-mw', 'molecularWeight'], ['mq-val', 'valence'], ['mq-part', 'particles'], ['mq-vol', 'volumeMl']];
+    numField(root, 'Quantity', 'mq-qty', '');
+    selectField(root, 'Unit of the quantity', 'mq-unit', MQ.UNITS);
+    textField(root, 'Formula of the form weighed (a hydrate\'s formula for a hydrate)', 'mq-formula', 'e.g. KCl');
+    numField(root, 'Or: its molecular weight (g/mol)', 'mq-mw', '');
+    numField(root, 'Valence: total positive charge per formula unit (blank gives millimoles only)', 'mq-val', '');
+    numField(root, 'Particles on complete dissociation (blank gives no milliosmoles)', 'mq-part', '');
+    numField(root, 'Volume, mL (optional, for per-liter values)', 'mq-vol', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(MQ.meqMmolMg(args), o);
     }));
   },
 };
