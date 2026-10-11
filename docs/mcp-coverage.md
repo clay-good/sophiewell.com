@@ -9079,6 +9079,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/diabetes-drug-egfr-check-v1632.js (spec-v1632: Metformin, SGLT2 and DPP-4 rules by eGFR (seven label rows) — clinical disclaimer)
 - `diabetes-drug-egfr-check`
 
+### lib/dofetilide-dose-algorithm-v1632.js (spec-v1632: Dofetilide initiation algorithm (Tikosyn label row) — clinical disclaimer)
+- `dofetilide-dose-algorithm`
+
+### lib/cardiac-renal-dose-check-v1632.js (spec-v1632: Sotalol, atenolol, lisinopril, sacubitril-valsartan and rosuvastatin renal rows (five label rows) — clinical disclaimer)
+- `cardiac-renal-dose-check`
+
+### lib/mra-potassium-dose-check-v1632.js (spec-v1632: Spironolactone and eplerenone by potassium and kidney function (two label rows) — clinical disclaimer)
+- `mra-potassium-dose-check`
+
+### lib/gout-drug-renal-dose-v1632.js (spec-v1632: Allopurinol and colchicine by kidney function (two label rows) — clinical disclaimer)
+- `gout-drug-renal-dose`
+
+### lib/bisphosphonate-renal-check-v1632.js (spec-v1632: Zoledronic acid dose and bisphosphonate clearance cutoffs (four label rows) — clinical disclaimer)
+- `bisphosphonate-renal-check`
+
+### lib/tranexamic-acid-renal-dose-v1632.js (spec-v1632: Tranexamic acid by serum creatinine (two label rows) — clinical disclaimer)
+- `tranexamic-acid-renal-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

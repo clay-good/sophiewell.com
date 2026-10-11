@@ -12314,6 +12314,72 @@
       ],
       "tile": "diabetes-drug-egfr-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dofetilide dose",
+        "tikosyn dose"
+      ],
+      "tile": "dofetilide-dose-algorithm",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sotalol renal dose",
+        "betapace renal dose",
+        "atenolol renal dose",
+        "tenormin renal dose",
+        "lisinopril renal dose",
+        "zestril renal dose",
+        "entresto renal dose",
+        "sacubitril valsartan renal dose",
+        "rosuvastatin renal dose",
+        "crestor renal dose"
+      ],
+      "tile": "cardiac-renal-dose-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "eplerenone dose by potassium",
+        "inspra dose by potassium",
+        "spironolactone heart failure starting dose",
+        "aldactone heart failure starting dose"
+      ],
+      "tile": "mra-potassium-dose-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "allopurinol renal dose",
+        "zyloprim renal dose",
+        "colchicine renal dose",
+        "colcrys renal dose"
+      ],
+      "tile": "gout-drug-renal-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "zoledronic acid renal dose",
+        "zometa renal dose",
+        "reclast renal cutoff",
+        "alendronate renal cutoff",
+        "fosamax renal cutoff",
+        "risedronate renal cutoff",
+        "actonel renal cutoff"
+      ],
+      "tile": "bisphosphonate-renal-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tranexamic acid renal dose",
+        "cyklokapron renal dose",
+        "lysteda renal dose"
+      ],
+      "tile": "tranexamic-acid-renal-dose",
+      "audience": "clinicians"
     }
   ]
 }

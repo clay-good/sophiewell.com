@@ -598,3 +598,15 @@ experience**.
 > v1632, Renal Limits for Eight CNS Drugs (FDA Label) — [spec-v1632](spec-v1632.md), which adds `cns-renal-dose-check` — is 2124.)
 
 > v1632, Metformin, SGLT2 and DPP-4 Rules by eGFR (FDA Label) — [spec-v1632](spec-v1632.md), which adds `diabetes-drug-egfr-check` — is 2125.)
+
+> v1632, Dofetilide Starting Dose and QT Steps (Tikosyn Label) — [spec-v1632](spec-v1632.md), which adds `dofetilide-dose-algorithm` — is 2126.)
+
+> v1632, Sotalol, Atenolol, Lisinopril, Entresto, Rosuvastatin by Renal Row (FDA Label) — [spec-v1632](spec-v1632.md), which adds `cardiac-renal-dose-check` — is 2127.)
+
+> v1632, Spironolactone and Eplerenone by Potassium (FDA Label) — [spec-v1632](spec-v1632.md), which adds `mra-potassium-dose-check` — is 2128.)
+
+> v1632, Allopurinol and Colchicine by Renal Row (FDA Label) — [spec-v1632](spec-v1632.md), which adds `gout-drug-renal-dose` — is 2129.)
+
+> v1632, Zoledronic Acid and Bisphosphonates by Renal Row (FDA Label) — [spec-v1632](spec-v1632.md), which adds `bisphosphonate-renal-check` — is 2130.)
+
+> v1632, Tranexamic Acid by Serum Creatinine (FDA Label) — [spec-v1632](spec-v1632.md), which adds `tranexamic-acid-renal-dose` — is 2131.)

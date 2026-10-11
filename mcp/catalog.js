@@ -1040,6 +1040,12 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import mraPotassiumDoseCheckV1632 from './adapters/mra-potassium-dose-check-v1632.js';
+import goutDrugRenalDoseV1632 from './adapters/gout-drug-renal-dose-v1632.js';
+import bisphosphonateRenalCheckV1632 from './adapters/bisphosphonate-renal-check-v1632.js';
+import tranexamicAcidRenalDoseV1632 from './adapters/tranexamic-acid-renal-dose-v1632.js';
+import dofetilideDoseAlgorithmV1632 from './adapters/dofetilide-dose-algorithm-v1632.js';
+import cardiacRenalDoseCheckV1632 from './adapters/cardiac-renal-dose-check-v1632.js';
 import diabetesDrugEgfrCheckV1632 from './adapters/diabetes-drug-egfr-check-v1632.js';
 import cnsRenalDoseCheckV1632 from './adapters/cns-renal-dose-check-v1632.js';
 import nrtiRenalDoseV1632 from './adapters/nrti-renal-dose-v1632.js';
@@ -2196,6 +2202,12 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['mra-potassium-dose-check-v1632', mraPotassiumDoseCheckV1632],
+  ['gout-drug-renal-dose-v1632', goutDrugRenalDoseV1632],
+  ['bisphosphonate-renal-check-v1632', bisphosphonateRenalCheckV1632],
+  ['tranexamic-acid-renal-dose-v1632', tranexamicAcidRenalDoseV1632],
+  ['dofetilide-dose-algorithm-v1632', dofetilideDoseAlgorithmV1632],
+  ['cardiac-renal-dose-check-v1632', cardiacRenalDoseCheckV1632],
   ['diabetes-drug-egfr-check-v1632', diabetesDrugEgfrCheckV1632],
   ['cns-renal-dose-check-v1632', cnsRenalDoseCheckV1632],
   ['nrti-renal-dose-v1632', nrtiRenalDoseV1632],

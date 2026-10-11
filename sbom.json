@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:edb458c1-8716-56b4-8406-720347e8bc42",
+  "serialNumber": "urn:uuid:ae55cd7f-0d0c-5a5b-88a2-383d84544c26",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T14:53:31.291Z",
+    "timestamp": "2026-10-11T15:47:20.597Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2125 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2131 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "04847e1352daccbb555774813b4d33f44ccbb812290e64b71991de517e19d0d8"
+          "content": "f04165351b14429a730f29e9f4afff63e884fffb16b94e844a101496baec4937"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "137242"
+          "value": "137681"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "572192bf65bfc12ec17ebea10f169ae7c8609e56eb995f43cc67081f53bd6ec1"
+          "content": "941370331922e8bf9945784a6723bb08c1c6ec5bc954ecd94a72b3f90aa14a5a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "601852"
+          "value": "602892"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ce5b3d19c419136751b9aa87eee0d163e63a6807b6f65ed726c6333b8ea9449c"
+          "content": "5abcf98ec60885624a161073096768d7a440f20e69bce22b4157ccfccfb98c96"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "266361"
+          "value": "267172"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "61feaa893ccdffb4852e7742a2baa39d65f0d07b67fde2200473d5d22e323bf9"
+          "content": "5eca7672c3a2a56bc07801db13c9c44ad3e3b4c6de1ad9fbc0b609538fcc441f"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125539"
+          "value": "126063"
         }
       ]
     },
@@ -2660,6 +2660,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/bisphosphonate-renal-check-v1632.js",
+      "type": "file",
+      "name": "lib/bisphosphonate-renal-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fb71f20d9ea06c4cb85c094033b388018440e64ebe6913cf0873cd85fb3c87e3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5051"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/blackburne-peel-v1469.js",
       "type": "file",
       "name": "lib/blackburne-peel-v1469.js",
@@ -3853,6 +3874,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9909"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cardiac-renal-dose-check-v1632.js",
+      "type": "file",
+      "name": "lib/cardiac-renal-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "605f5b3d8593fa8b352e68e140b1f321f7d90b52386cf99cf23c5606efaadbce"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6576"
         }
       ]
     },
@@ -6520,6 +6562,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "16978"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/dofetilide-dose-algorithm-v1632.js",
+      "type": "file",
+      "name": "lib/dofetilide-dose-algorithm-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1e3ba6963d4855c2209814a81b68521db673fc72e6b0a5e28dbac33b4c9f7e5c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7584"
         }
       ]
     },
@@ -9271,6 +9334,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4200"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/gout-drug-renal-dose-v1632.js",
+      "type": "file",
+      "name": "lib/gout-drug-renal-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b27279b76149293b2eeaf7664174007f2253d663535a43270a5ba4f7aa1f864e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5837"
         }
       ]
     },
@@ -12683,7 +12767,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "646999e55bb4feb40d7147e3ae07f8ce99e5289f924f9a19978e088db85dbba5"
+          "content": "aabdb6d578b82ceac2693e2c5b0801ffc175161dfc7d6fa02c6727c681751e27"
         }
       ],
       "properties": [
@@ -12693,7 +12777,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "19402"
+          "value": "22906"
         }
       ]
     },
@@ -14909,7 +14993,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2fcb0a556b8406c072fb187b1dc5ac71eac56c70657fdf62f403ad14bcceddb7"
+          "content": "6ec282c64d475ec5d4bf9c6fc201d35738affd0afd0ce34c7656e0d0053cfa6f"
         }
       ],
       "properties": [
@@ -14919,7 +15003,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2825434"
+          "value": "2831953"
         }
       ]
     },
@@ -15571,6 +15655,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1820"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/mra-potassium-dose-check-v1632.js",
+      "type": "file",
+      "name": "lib/mra-potassium-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1f71ffef9a8c8355078c174e5a26dd47cdb4f8c5c183b389b01ff4f85938591f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10674"
         }
       ]
     },
@@ -25277,6 +25382,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/tranexamic-acid-renal-dose-v1632.js",
+      "type": "file",
+      "name": "lib/tranexamic-acid-renal-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5ca46382fb970acc823246ce5b905af882de42d50bf8f8d66e17d9ffd4c5bb3f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5253"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/transfusion-v292.js",
       "type": "file",
       "name": "lib/transfusion-v292.js",
@@ -30065,6 +30191,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/bisphosphonate-renal-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/bisphosphonate-renal-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "db01c6042ac78ecdc73fed1d14186936b6f967384908f9eab8143c03c3a64e10"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1282"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/blackburne-peel-v1469.js",
       "type": "file",
       "name": "mcp/adapters/blackburne-peel-v1469.js",
@@ -31195,6 +31342,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2921"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cardiac-renal-dose-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/cardiac-renal-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "35738076d83fb930b7d0eb1a33e5b8f549a50646e5614e0d35dd054b8ba719c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1253"
         }
       ]
     },
@@ -33652,6 +33820,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1733"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dofetilide-dose-algorithm-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/dofetilide-dose-algorithm-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5ebb1e88b7d1fd77d22fcac7eeb9e7f1b3ac4882b67b16faac54215488791ffe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1557"
         }
       ]
     },
@@ -36214,6 +36403,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1495"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gout-drug-renal-dose-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/gout-drug-renal-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "256930457887dd111cce814dff98fd694cadd5f60f4b3898f74c953ecc798ac4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1240"
         }
       ]
     },
@@ -41842,6 +42052,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1781"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mra-potassium-dose-check-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/mra-potassium-dose-check-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "46a5cc21281012ce1075f719c6c3cbb38d44e3f79d13ed849df59605fbe04733"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2206"
         }
       ]
     },
@@ -50057,6 +50288,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tranexamic-acid-renal-dose-v1632.js",
+      "type": "file",
+      "name": "mcp/adapters/tranexamic-acid-renal-dose-v1632.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bf07173d3fa3be242438ce44d6e9ed72133518be57a742300307fb63c4e210ae"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1206"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/transfusion-v292.js",
       "type": "file",
       "name": "mcp/adapters/transfusion-v292.js",
@@ -52205,7 +52457,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d7bc1484573d90a1f3cf7ff2bb53a9b88736e2690a5c080f22e58f9b8cc52079"
+          "content": "b1dca7b9908ea736dd35f51359f0b01616a27cf9d45157414c7a9204f5df6730"
         }
       ],
       "properties": [
@@ -52215,7 +52467,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "136256"
+          "value": "137182"
         }
       ]
     },
@@ -56762,7 +57014,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "405836b601bf44f8cd90ccdf3c52fb918c9c6aca32ae879d48bc1713dc5dcc78"
+          "content": "838380e002c9a320c1fe1f9f5f54c7d91d73263273556de7982a578dedf64ebf"
         }
       ],
       "properties": [
@@ -56772,7 +57024,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10400"
+          "value": "16996"
         }
       ]
     },
@@ -87658,6 +87910,7 @@
         "urn:sophiewell:file:source:lib/bilsky-escc-v604.js",
         "urn:sophiewell:file:source:lib/biological-variation-goals-v923.js",
         "urn:sophiewell:file:source:lib/bismuth-corlette-v399.js",
+        "urn:sophiewell:file:source:lib/bisphosphonate-renal-check-v1632.js",
         "urn:sophiewell:file:source:lib/blackburne-peel-v1469.js",
         "urn:sophiewell:file:source:lib/bland-altman-v924.js",
         "urn:sophiewell:file:source:lib/blood-4h-window-v1414.js",
@@ -87715,6 +87968,7 @@
         "urn:sophiewell:file:source:lib/capsule-fill-v1629.js",
         "urn:sophiewell:file:source:lib/capthus-v535.js",
         "urn:sophiewell:file:source:lib/carboxyhemoglobin-v865.js",
+        "urn:sophiewell:file:source:lib/cardiac-renal-dose-check-v1632.js",
         "urn:sophiewell:file:source:lib/cardiac-sarcoidosis-v791.js",
         "urn:sophiewell:file:source:lib/cardio-v101.js",
         "urn:sophiewell:file:source:lib/cardio-v102.js",
@@ -87842,6 +88096,7 @@
         "urn:sophiewell:file:source:lib/dme-v307.js",
         "urn:sophiewell:file:source:lib/dmft-caries-v716.js",
         "urn:sophiewell:file:source:lib/doac-dose-check-v1632.js",
+        "urn:sophiewell:file:source:lib/dofetilide-dose-algorithm-v1632.js",
         "urn:sophiewell:file:source:lib/dom-fields.js",
         "urn:sophiewell:file:source:lib/dom.js",
         "urn:sophiewell:file:source:lib/dorr-femur-v499.js",
@@ -87973,6 +88228,7 @@
         "urn:sophiewell:file:source:lib/gold-abe-v316.js",
         "urn:sophiewell:file:source:lib/gold-coast-als-v811.js",
         "urn:sophiewell:file:source:lib/goligher-hemorrhoids-v351.js",
+        "urn:sophiewell:file:source:lib/gout-drug-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/goutallier-v437.js",
         "urn:sophiewell:file:source:lib/gpa-v639.js",
         "urn:sophiewell:file:source:lib/gray-weale-v524.js",
@@ -88273,6 +88529,7 @@
         "urn:sophiewell:file:source:lib/montreal-ibd-v328.js",
         "urn:sophiewell:file:source:lib/mpa-v640.js",
         "urn:sophiewell:file:source:lib/mpfs-load.js",
+        "urn:sophiewell:file:source:lib/mra-potassium-dose-check-v1632.js",
         "urn:sophiewell:file:source:lib/mrc-power-v428.js",
         "urn:sophiewell:file:source:lib/mrecist-v1475.js",
         "urn:sophiewell:file:source:lib/msp-lis-v1507.js",
@@ -88735,6 +88992,7 @@
         "urn:sophiewell:file:source:lib/tox-v110.js",
         "urn:sophiewell:file:source:lib/tox-v86.js",
         "urn:sophiewell:file:source:lib/trachoma-grade-v1561.js",
+        "urn:sophiewell:file:source:lib/tranexamic-acid-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/transfusion-v292.js",
         "urn:sophiewell:file:source:lib/trauma-v108.js",
         "urn:sophiewell:file:source:lib/traumaclass-v109.js",
@@ -89905,6 +90163,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/bilsky-escc-v604.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/biological-variation-goals-v923.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bismuth-corlette-v399.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/bisphosphonate-renal-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/blackburne-peel-v1469.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bland-altman-v924.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/blood-4h-window-v1414.js",
@@ -89959,6 +90218,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/capsule-fill-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/capthus-v535.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/carboxyhemoglobin-v865.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cardiac-renal-dose-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cardiac-sarcoidosis-v791.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cardio-v101.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cardio-v102.js",
@@ -90076,6 +90336,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dme-v307.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dmft-caries-v716.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/doac-dose-check-v1632.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/dofetilide-dose-algorithm-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dorr-femur-v499.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dose-calendar-v1512.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dose-schedule.js",
@@ -90198,6 +90459,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/gold-abe-v316.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gold-coast-als-v811.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/goligher-hemorrhoids-v351.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/gout-drug-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/goutallier-v437.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gpa-v639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gray-weale-v524.js",
@@ -90466,6 +90728,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/molecular-weight-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/montreal-ibd-v328.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mpa-v640.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mra-potassium-dose-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mrc-power-v428.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mrecist-v1475.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/msp-lis-v1507.js",
@@ -90857,6 +91120,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tox-v110.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tox-v86.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/trachoma-grade-v1561.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tranexamic-acid-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/transfusion-v292.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/trauma-v108.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/traumaclass-v109.js",
@@ -91063,7 +91327,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "edb458c1871666b4"
+      "value": "ae55cd7f0d0c3a5b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91075,7 +91339,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3405"
+      "value": "3417"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

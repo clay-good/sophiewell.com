@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Spironolactone and Eplerenone by Potassium (FDA Label): spironolactone's heart failure starting
+  dose, eplerenone's step up or down from the current dose by potassium, and eplerenone's listed
+  contraindications before starting.
+- Allopurinol and Colchicine by Renal Row (FDA Label): allopurinol by eGFR for gout and for cancer
+  therapy, and colchicine for prophylaxis, a flare or familial Mediterranean fever, with the dialysis
+  doses.
+- Zoledronic Acid and Bisphosphonates by Renal Row (FDA Label): the reduced zoledronic acid dose by
+  creatinine clearance, and the cutoffs for Reclast, alendronate and risedronate.
+- Tranexamic Acid by Serum Creatinine (FDA Label): the IV and tablet rows, which key on serum
+  creatinine and not on a clearance.
+- Dofetilide Starting Dose and QT Steps (Tikosyn Label): the label's initiation algorithm, step by
+  step, from the baseline interval and the creatinine clearance to the step-down and stop rules.
+- Sotalol, Atenolol, Lisinopril, Entresto, Rosuvastatin by Renal Row (FDA Label): the interval,
+  maximum or starting dose each label gives for the kidney function entered.
 - Metformin, SGLT2 and DPP-4 Rules by eGFR (FDA Label): the label's kidney rule for metformin,
   empagliflozin, dapagliflozin, canagliflozin, sitagliptin, saxagliptin or alogliptin, with starting
   and continuing kept apart where the label separates them.

@@ -2695,6 +2695,12 @@ const UTILITIES = [
   { id: 'gabapentinoid-renal-dose', name: 'Gabapentin and Pregabalin by Renal Table (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cns-renal-dose-check', name: 'Renal Limits for Eight CNS Drugs (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'diabetes-drug-egfr-check', name: 'Metformin, SGLT2 and DPP-4 Rules by eGFR (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'dofetilide-dose-algorithm', name: 'Dofetilide Starting Dose and QT Steps (Tikosyn Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cardiac-renal-dose-check', name: 'Sotalol, Atenolol, Lisinopril, Entresto, Rosuvastatin by Renal Row (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mra-potassium-dose-check', name: 'Spironolactone and Eplerenone by Potassium (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gout-drug-renal-dose', name: 'Allopurinol and Colchicine by Renal Row (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bisphosphonate-renal-check', name: 'Zoledronic Acid and Bisphosphonates by Renal Row (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tranexamic-acid-renal-dose', name: 'Tranexamic Acid by Serum Creatinine (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

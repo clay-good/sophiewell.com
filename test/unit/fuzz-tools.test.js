@@ -770,6 +770,12 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as mraPotassiumDoseCheckV1632 from '../../lib/mra-potassium-dose-check-v1632.js';
+import * as goutDrugRenalDoseV1632 from '../../lib/gout-drug-renal-dose-v1632.js';
+import * as bisphosphonateRenalCheckV1632 from '../../lib/bisphosphonate-renal-check-v1632.js';
+import * as tranexamicAcidRenalDoseV1632 from '../../lib/tranexamic-acid-renal-dose-v1632.js';
+import * as dofetilideDoseAlgorithmV1632 from '../../lib/dofetilide-dose-algorithm-v1632.js';
+import * as cardiacRenalDoseCheckV1632 from '../../lib/cardiac-renal-dose-check-v1632.js';
 import * as diabetesDrugEgfrCheckV1632 from '../../lib/diabetes-drug-egfr-check-v1632.js';
 import * as cnsRenalDoseCheckV1632 from '../../lib/cns-renal-dose-check-v1632.js';
 import * as nrtiRenalDoseV1632 from '../../lib/nrti-renal-dose-v1632.js';
@@ -1710,6 +1716,12 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'mra-potassium-dose-check-v1632.js': mraPotassiumDoseCheckV1632,
+  'gout-drug-renal-dose-v1632.js': goutDrugRenalDoseV1632,
+  'bisphosphonate-renal-check-v1632.js': bisphosphonateRenalCheckV1632,
+  'tranexamic-acid-renal-dose-v1632.js': tranexamicAcidRenalDoseV1632,
+  'dofetilide-dose-algorithm-v1632.js': dofetilideDoseAlgorithmV1632,
+  'cardiac-renal-dose-check-v1632.js': cardiacRenalDoseCheckV1632,
   'diabetes-drug-egfr-check-v1632.js': diabetesDrugEgfrCheckV1632,
   'cns-renal-dose-check-v1632.js': cnsRenalDoseCheckV1632,
   'nrti-renal-dose-v1632.js': nrtiRenalDoseV1632,

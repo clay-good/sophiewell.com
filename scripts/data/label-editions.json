@@ -31,6 +31,21 @@
     }
   },
   {
+    "label": "Actonel (risedronate), Allergan",
+    "labeler": "ALLERGAN, INC.",
+    "setId": "24ed00e0-25e2-49a8-97fc-66c1b417dc0b",
+    "tools": [
+      "bisphosphonate-renal-check"
+    ],
+    "splVersion": 31,
+    "publishedOn": "2026-05-11",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "43684-0": "6f47edcd86ef6e483042c165dec7a9eeac6e13c4ee224220709a5e74db4f306a"
+    }
+  },
+  {
     "label": "Acyclovir sodium injection, Eugia",
     "labeler": "EUGIA US LLC",
     "setId": "ae921e4e-b8ae-4a45-acc1-32e5e719812b",
@@ -58,6 +73,36 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "9046f254d62c81167fb3582e26d64b09355429f0b2ae19032ca86fcb8ec87e81"
+    }
+  },
+  {
+    "label": "Aldactone (spironolactone), Pfizer",
+    "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
+    "setId": "0fed2822-3a03-4b64-9857-c682fcd462bc",
+    "tools": [
+      "mra-potassium-dose-check"
+    ],
+    "splVersion": 25,
+    "publishedOn": "2025-12-01",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "a3607c6dff190a00342731b9cf30f3c888be5aed35574da9e1d6c32c824dd833"
+    }
+  },
+  {
+    "label": "Allopurinol tablets, Dr. Reddy's",
+    "labeler": "DR. REDDY'S LABORATORIES LIMITED",
+    "setId": "19a138b8-d225-03e6-f762-abe71560204b",
+    "tools": [
+      "gout-drug-renal-dose"
+    ],
+    "splVersion": 15,
+    "publishedOn": "2026-09-07",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "34f3a89fa98ca0606cf603effe7045d4ca0a3697a5f05f6aa8acdc6f28415442"
     }
   },
   {
@@ -135,6 +180,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "2e57a5d042ce86a6d838345fa9cdd75c53c7f11f23cd5e61cb05f3969327c2d4"
+    }
+  },
+  {
+    "label": "Betapace (sotalol), Covis",
+    "labeler": "COVIS PHARMA US, INC",
+    "setId": "afce2787-8899-4098-87c8-f1e8dd19e6dd",
+    "tools": [
+      "cardiac-renal-dose-check"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2023-06-29",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "97fb7926b0c225bcf741c42346e3df9284f00880eb7271a06f899dc83e3244b4"
     }
   },
   {
@@ -330,6 +390,37 @@
     }
   },
   {
+    "label": "Colchicine tablets, Amneal",
+    "labeler": "AMNEAL PHARMACEUTICALS LLC",
+    "setId": "7daef7e2-888d-4116-81a9-2c02b9ef97ef",
+    "tools": [
+      "gout-drug-renal-dose"
+    ],
+    "splVersion": 18,
+    "publishedOn": "2025-03-28",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "5167f224173e3c67c02d53b47fcc7b7d173b99b952e7319a5dd923131400dd20",
+      "34070-3": "0df866ffa8b6dd3a083420b38d550e0662cc251844f13c251505aad8558602e0"
+    }
+  },
+  {
+    "label": "Crestor (rosuvastatin), AstraZeneca",
+    "labeler": "ASTRAZENECA PHARMACEUTICALS LP",
+    "setId": "325a5d0e-9a72-4015-9fcd-1655fb504cee",
+    "tools": [
+      "cardiac-renal-dose-check"
+    ],
+    "splVersion": 19,
+    "publishedOn": "2026-09-30",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "ab11d3a6c92578a8c3c0b645354e39c7a3293ee51b0a3f508f34a1479c3c21cd"
+    }
+  },
+  {
     "label": "Cyanokit (hydroxocobalamin)",
     "labeler": "BTG INTERNATIONAL INC.",
     "setId": "d56fcc8d-bd64-46ab-b0c0-2124bd745a6b",
@@ -343,6 +434,21 @@
     "sections": {
       "34068-7": "297e3c0c6181468c8c988e4a3bc99083b033feaabbcf04955d913b767afc1403",
       "43684-0": "fba92894cb4738b850df54b462d130258f9a45a99f9540b1b0ecd1fb8fd38556"
+    }
+  },
+  {
+    "label": "Cyklokapron (tranexamic acid injection), Pfizer",
+    "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
+    "setId": "6e89a7d9-4da4-42aa-b7f8-c602c24eefe5",
+    "tools": [
+      "tranexamic-acid-renal-dose"
+    ],
+    "splVersion": 34,
+    "publishedOn": "2025-09-08",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "b876b939098bbbe0f97d33506c4a27bbf72ca71073a934af4e321a9d488a3c1d"
     }
   },
   {
@@ -439,6 +545,22 @@
     }
   },
   {
+    "label": "Entresto (sacubitril and valsartan), Novartis",
+    "labeler": "NOVARTIS PHARMACEUTICALS CORPORATION",
+    "setId": "000dc81d-ab91-450c-8eae-8eb74e72296f",
+    "tools": [
+      "cardiac-renal-dose-check"
+    ],
+    "splVersion": 25,
+    "publishedOn": "2026-07-07",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "fa8924c127588623fbbcbc24ad8f9912e19f78632cfb131a759bed1caaa6f8dc",
+      "43684-0": "547dc73f83147f71928d30d66f6caa5090da633d908e3b946023849a38eaea3f"
+    }
+  },
+  {
     "label": "Epivir (lamivudine), ViiV",
     "labeler": "VIIV HEALTHCARE COMPANY",
     "setId": "89226149-47fa-4f7d-bb1f-1aa7034486b8",
@@ -515,6 +637,21 @@
     }
   },
   {
+    "label": "Fosamax (alendronate), Organon",
+    "labeler": "ORGANON LLC",
+    "setId": "14e931fd-2c5f-4d90-b7db-5980706f4a56",
+    "tools": [
+      "bisphosphonate-renal-check"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-03-16",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "43684-0": "88ad4b15e08a7b8b70838890e60d907ab61fada46ffba07ea9ffeb87690b6ea4"
+    }
+  },
+  {
     "label": "Fragmin (dalteparin), Pfizer",
     "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
     "setId": "23527b8b-9b28-4e6d-9751-33b143975ac7",
@@ -572,6 +709,22 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "8d3df54e3aec2036834ea6d199eb35f0dd2fb7eae7f0f64244a56b2d617a3a17"
+    }
+  },
+  {
+    "label": "Inspra (eplerenone), Viatris",
+    "labeler": "VIATRIS SPECIALTY LLC",
+    "setId": "1a52bedc-8e2c-4116-a296-a87770676b4a",
+    "tools": [
+      "mra-potassium-dose-check"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2026-02-06",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "2d17fc5704bdf56ef0f4d20abeba0358494698588c04f5aec7f06cc02310a3b9",
+      "34070-3": "a2c90b6926dd828a0c35373b577247ef2c572cda527aba936b987688c0152653"
     }
   },
   {
@@ -983,6 +1136,22 @@
     }
   },
   {
+    "label": "Reclast (zoledronic acid 5 mg), Sandoz",
+    "labeler": "SANDOZ INC",
+    "setId": "5a9b3737-9ce6-4a89-b76e-6aab79eba9cf",
+    "tools": [
+      "bisphosphonate-renal-check"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2026-02-13",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "48154152204c8d7ab45d1d9e6446f42bfd19046ddd1e27514c237806d3800a11",
+      "34070-3": "f1a7112f433b642c434fabda4f3d3d929e1eb86cd7504793123f951aa1ee8227"
+    }
+  },
+  {
     "label": "Remicade (infliximab), Janssen",
     "labeler": "JANSSEN BIOTECH, INC.",
     "setId": "a0a046c1-056d-45a9-bfd9-13b47c24f257",
@@ -1097,6 +1266,21 @@
     }
   },
   {
+    "label": "Tenormin (atenolol), Upsher-Smith",
+    "labeler": "UPSHER-SMITH LABORATORIES, LLC",
+    "setId": "6e850b1e-28a4-4ff8-8ed7-bb0b29faa28a",
+    "tools": [
+      "cardiac-renal-dose-check"
+    ],
+    "splVersion": 2,
+    "publishedOn": "2026-05-01",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "dd3cc04ced90c496b15a8146905e5f91a953a48233627aa63a0c7ce13b3cf929"
+    }
+  },
+  {
     "label": "Theophylline extended-release tablets, Teva",
     "labeler": "TEVA PHARMACEUTICALS, INC.",
     "setId": "25eabefa-518b-4030-9b72-01ac8b3deba9",
@@ -1109,6 +1293,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "e7689bfc59ab9563107d1d3590da7d009797f53299dbe4d8d7b18e0930fe6d73"
+    }
+  },
+  {
+    "label": "Tikosyn (dofetilide), Pfizer",
+    "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
+    "setId": "02438044-d6a3-49e9-a1ac-3aad21ef2c8c",
+    "tools": [
+      "dofetilide-dose-algorithm"
+    ],
+    "splVersion": 30,
+    "publishedOn": "2026-04-22",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "6cadb9472c50aa5e946c2c78223d69cc02f22fe211efd0a43acaea62578267e2"
     }
   },
   {
@@ -1172,6 +1371,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "f0a5299f696ff98feb0f65f803fa8f11ba22103def610de644e6535dfa60c344"
+    }
+  },
+  {
+    "label": "Tranexamic acid tablets, ANI",
+    "labeler": "ANI PHARMACEUTICALS, INC.",
+    "setId": "82bc4879-bcf5-47c4-8636-a73c4e7d0de9",
+    "tools": [
+      "tranexamic-acid-renal-dose"
+    ],
+    "splVersion": 4,
+    "publishedOn": "2025-09-22",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "132cd1deeb2d638923c114c957a9eca78bda367a311be7595842b53b2d9bfdc9"
     }
   },
   {
@@ -1340,6 +1554,36 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "13698281595712c0fba642e5ce074a149bfe814601b1b5037d2d568688a518e3"
+    }
+  },
+  {
+    "label": "Zestril (lisinopril), Upsher-Smith",
+    "labeler": "UPSHER-SMITH LABORATORIES, LLC",
+    "setId": "838c2d78-d2d8-4981-9ec9-e50ef9e1a5d8",
+    "tools": [
+      "cardiac-renal-dose-check"
+    ],
+    "splVersion": 2,
+    "publishedOn": "2025-05-05",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "d6f11efe733578a03d341cc963c5965ef7f5db2c360f18e2f55d4aa42a0b09be"
+    }
+  },
+  {
+    "label": "Zoledronic acid injection 4 mg, Heritage",
+    "labeler": "HERITAGE PHARMACEUTICALS INC. D/B/A AVET PHARMACEUTICALS INC.",
+    "setId": "00a5bd5a-e5ee-4bad-b510-a4d4485485c8",
+    "tools": [
+      "bisphosphonate-renal-check"
+    ],
+    "splVersion": 22,
+    "publishedOn": "2023-09-22",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "e8996571fc37917268e48a9ee811e13666955523aa28e3c304cccbc92b1448d3"
     }
   }
 ]
