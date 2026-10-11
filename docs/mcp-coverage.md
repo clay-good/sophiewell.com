@@ -9022,6 +9022,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/fosphenytoin-load-rate-v1631.js (spec-v1631: Fosphenytoin and IV phenytoin loading (two FDA labels; label rows) — clinical disclaimer)
 - `fosphenytoin-load-rate`
 
+### lib/caffeine-citrate-dose-v1631.js (spec-v1631: Caffeine citrate dosing (FDA label; label row) — clinical disclaimer)
+- `caffeine-citrate-dose`
+
+### lib/lithium-level-check-v1631.js (spec-v1631: Lithium level against the FDA label (label row) — clinical disclaimer)
+- `lithium-level-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

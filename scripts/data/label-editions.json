@@ -31,6 +31,21 @@
     }
   },
   {
+    "label": "Caffeine Citrate injection and oral solution, Sagent",
+    "labeler": "SAGENT PHARMACEUTICALS",
+    "setId": "5f38c395-0093-4afd-89ec-f96e5dc0934a",
+    "tools": [
+      "caffeine-citrate-dose"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-08-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "0d3f2a517c24c551290707cebadb87f5bb76620490437916ef1accb3b75bfbb5"
+    }
+  },
+  {
     "label": "Calcium Chloride injection, Eskayef",
     "labeler": "ESKAYEF PHARMACEUTICALS LIMITED",
     "setId": "5b0bd762-4c87-597e-e063-6394a90a8303",
@@ -304,6 +319,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "8565869530d9741b33e172972ec119e8248cb72636bce74df819a7d0ad9671b4"
+    }
+  },
+  {
+    "label": "Lithium Carbonate tablets and capsules, Hikma",
+    "labeler": "HIKMA PHARMACEUTICALS USA INC.",
+    "setId": "b839ff4b-f62d-41ab-a823-550a756d58ec",
+    "tools": [
+      "lithium-level-check"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2026-09-10",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "bf9012cb88c63d7eb9cb1e13a8cf05f2995a1e26f33a64193577e01624bffd85"
     }
   },
   {

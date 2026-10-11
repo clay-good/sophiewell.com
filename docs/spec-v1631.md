@@ -1,6 +1,6 @@
 # spec-v1631 — Clinical pharmacokinetics and therapeutic drug monitoring
 
-**Status:** In progress, October 11, 2026: 7 of 20 tools built (see Build status). 20 new tools (1 build-gated), 10 backfills.
+**Status:** In progress, October 11, 2026: 9 of 20 tools built (see Build status). 20 new tools (1 build-gated), 10 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A hospital pharmacist's kinetics service does the same arithmetic all day: pick a first
@@ -900,7 +900,7 @@ Backfills 3, 5, 6 and 8 correct or re-source a number in a live tool and are ind
 
 ## Build status
 
-Updated October 11, 2026. 7 of 20 tools built; the backfills are open.
+Updated October 11, 2026. 9 of 20 tools built; the backfills are open.
 
 | Tool | Status |
 |---|---|
@@ -912,4 +912,6 @@ Updated October 11, 2026. 7 of 20 tools built; the backfills are open.
 | 20. `crrt-drug-clearance` | Built (group F). Li 2020 (PMC7273837) and Corona 2022 (PMC9774802), both CC BY 4.0, were re-read; the two relations and the pre-filter form are as the spec says. The pre-filter correction is applied to the convective part only, because the form read is for hemofiltration; it is refused in hemodialysis mode. The sieving and saturation coefficients are separate fields and no table ships. |
 | 8. `fosphenytoin-load-rate` | Built (group F) on label rows. Cerebyx (version 38) was re-read: Tables 1 to 3, the 50 mg PE/mL strength, the 1.5 to 25 mg PE/mL dilution, the 2-hour and 4-hour level timing and the IM sentence are as the spec says. The phenytoin sentences were read on Hikma's injection label (035a8d4e-2063-4240-83cb-d7eebcabe301, version 27), not the Henry Schein copy the spec names, and its 70 kg worked check (1,050 mg, 21 minutes) is the page example. **Not built:** oral phenytoin loading (the Dilantin capsules label was not re-read). The pediatric ceilings applied are 2 mg PE/kg/minute and 3 mg/kg/minute, capped as the labels cap them. |
 | 9. `valproate-albumin-normalized` | Not built: held. The paper was re-read (J-STAGE PDF) and Table 1's 25 rows and the formula match the spec, but the paper is marked ©2005 The Japanese Pharmacological Society, free to read, and shipping its table falls under open owner question 11 in [scope-pharmacy-practice.md](scope-pharmacy-practice.md). |
-| 1 to 3, 5 to 7, 10 to 14, 19 | Not built. |
+| 12. `caffeine-citrate-dose` | Built (group F) on a label row. The Sagent label (version 10) was re-read and added to the weekly watch; the dosing table, the base-is-half note, the 50 mg/L sentence and the 8 to 40 mg/L trial range are as the spec says. Weights above 20 kg are refused. No target range is shown. |
+| 14. `lithium-level-check` | Built (group F) on a label row. The Hikma label (version 3) was re-read and added to the weekly watch on its Dosage and Administration section; the 1.5 mEq/L sentence sits in section 5.1, outside the watched text. **Decisions:** a sample counts as a 12-hour one within an hour either side (the tool's own tolerance); the hours since the last dose are required; the proportional dose needs both a daily dose and a target, and a target above 1.5 mEq/L is refused. |
+| 1 to 3, 5 to 7, 10, 11, 13, 19 | Not built. |

@@ -1040,6 +1040,8 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import caffeineCitrateDoseV1631 from './adapters/caffeine-citrate-dose-v1631.js';
+import lithiumLevelCheckV1631 from './adapters/lithium-level-check-v1631.js';
 import fosphenytoinLoadRateV1631 from './adapters/fosphenytoin-load-rate-v1631.js';
 import sawchukZaskeDosingV1631 from './adapters/sawchuk-zaske-dosing-v1631.js';
 import kineticEgfrV1631 from './adapters/kinetic-egfr-v1631.js';
@@ -2177,6 +2179,8 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['caffeine-citrate-dose-v1631', caffeineCitrateDoseV1631],
+  ['lithium-level-check-v1631', lithiumLevelCheckV1631],
   ['fosphenytoin-load-rate-v1631', fosphenytoinLoadRateV1631],
   ['sawchuk-zaske-dosing-v1631', sawchukZaskeDosingV1631],
   ['kinetic-egfr-v1631', kineticEgfrV1631],

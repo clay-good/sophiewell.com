@@ -2678,6 +2678,8 @@ const UTILITIES = [
   { id: 'kinetic-egfr', name: 'Kinetic eGFR When Creatinine Is Changing (Chen)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'crrt-drug-clearance', name: 'Drug Clearance by CRRT (Flow and Sieving Coefficient)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'fosphenytoin-load-rate', name: 'Fosphenytoin and Phenytoin Loading Against the Label', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'caffeine-citrate-dose', name: 'Caffeine Citrate for Apnea of Prematurity', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lithium-level-check', name: 'Lithium Level Against the Label', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

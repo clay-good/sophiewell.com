@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c56f3401-6d1b-5aaa-863f-0648ac895300",
+  "serialNumber": "urn:uuid:629e3594-9c9e-5814-8d5f-1d6e72f9c5d6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T10:07:14.978Z",
+    "timestamp": "2026-10-11T10:26:27.193Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2106 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2108 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d68555782bd4cd0bb0780b28774293f2f5fbb14e7b5d679caa03f51323a93f36"
+          "content": "2aef33674f5b9a8908b7bf89edf457b59af7ee6f5bff2031b86b35304b6848b3"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "136001"
+          "value": "136105"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "935e21d2c55b9d9835b09e62f56a873a5110e67bdf03a79e51bd583828f3fc31"
+          "content": "5afe1771f3ad92bbc0962bf8103f717f1896a9d4bc56dc2ec4168396348f8108"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "598710"
+          "value": "599006"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9eb1f2f5a2aedda6b022af511150e289facc1b8ae566f81ef9f1397a2651ba97"
+          "content": "833ef0c1fd63114aad8c8910acb3e8129d4ea991ed9903ba957043e7d95d4c68"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "263868"
+          "value": "264130"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "76fe987c69adb2931a3a7fada00a6a5cf06a3b4dc6e1d02dcf7353fd212712c0"
+          "content": "322a7c1b155d5b3bb4f42e0bb68f924e31c8d54d11644c12abe8fbe8800094a6"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "124104"
+          "value": "124228"
         }
       ]
     },
@@ -3517,6 +3517,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3973"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/caffeine-citrate-dose-v1631.js",
+      "type": "file",
+      "name": "lib/caffeine-citrate-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "922d5e4a4c91ef81af1637df7ff2a73601b1a685e2a5cff106af44fb5831cff0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5147"
         }
       ]
     },
@@ -12431,7 +12452,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0567a450b70e7aa7e09a08af930f01893d4b3a4839219f42284d3b37414a9555"
+          "content": "dc7b4ece64d8807e4182ac2d9cae44d669f01e8ba0549086a4ee83d9a4782586"
         }
       ],
       "properties": [
@@ -12441,7 +12462,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8793"
+          "value": "9261"
         }
       ]
     },
@@ -13135,6 +13156,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4405"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/lithium-level-check-v1631.js",
+      "type": "file",
+      "name": "lib/lithium-level-check-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dd69e0c40f6c7462c51274c617465ee113ffdcd7b801542f993a4938238f6246"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6461"
         }
       ]
     },
@@ -14615,7 +14657,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b1336c9ff856cbf22ba35d8f1fb4b43f93eef9d28284c04f2693285d2bedb472"
+          "content": "c5510764f204acffd53040940e4041658dd2e915992f7014c606d0b7343b5621"
         }
       ],
       "properties": [
@@ -14625,7 +14667,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2801961"
+          "value": "2803484"
         }
       ]
     },
@@ -30443,6 +30485,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/caffeine-citrate-dose-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/caffeine-citrate-dose-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e4eeeb3f376783734ee008c58d9a6783545315bc5e03c03bd7595d01c1f830d8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1176"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cage-aid-v738.js",
       "type": "file",
       "name": "mcp/adapters/cage-aid-v738.js",
@@ -39154,6 +39217,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1467"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lithium-level-check-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/lithium-level-check-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "74870d7b446c79b44dc5fd2f39da80d21ab1b2dfc0ec3ab40bbc5c42bd6a097e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1651"
         }
       ]
     },
@@ -51386,7 +51470,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cd8bdac2f75f74142d04dcd395dfcb177d93cb7a0801e77076dd4d6c76742c5a"
+          "content": "5fb629e7d28e9a5a6614f38ef45109e42f0d6984d9c6889ce63d52fd275e7ed8"
         }
       ],
       "properties": [
@@ -51396,7 +51480,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133607"
+          "value": "133885"
         }
       ]
     },
@@ -55922,7 +56006,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7b79bc110d0c4f19d976a4275a3013a69e815b08507d79a6eff25ce6e9aa9ec1"
+          "content": "0a642ca47d64e57124a549c83bf3efa2930409fc0fe0c15f47a55dcbd41b9fe0"
         }
       ],
       "properties": [
@@ -55932,7 +56016,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10545"
+          "value": "12587"
         }
       ]
     },
@@ -86859,6 +86943,7 @@
         "urn:sophiewell:file:source:lib/ca-wpv-report-clock-v1396.js",
         "urn:sophiewell:file:source:lib/cac-agatston-v668.js",
         "urn:sophiewell:file:source:lib/cad-rads-v372.js",
+        "urn:sophiewell:file:source:lib/caffeine-citrate-dose-v1631.js",
         "urn:sophiewell:file:source:lib/cage-aid-v738.js",
         "urn:sophiewell:file:source:lib/caine-wernicke-v799.js",
         "urn:sophiewell:file:source:lib/cairo-recession-v1482.js",
@@ -87317,6 +87402,7 @@
         "urn:sophiewell:file:source:lib/lipid-emulsion-dose-check-v1630.js",
         "urn:sophiewell:file:source:lib/lipids-v271.js",
         "urn:sophiewell:file:source:lib/lisfranc-myerson-v412.js",
+        "urn:sophiewell:file:source:lib/lithium-level-check-v1631.js",
         "urn:sophiewell:file:source:lib/live.js",
         "urn:sophiewell:file:source:lib/liver-v196.js",
         "urn:sophiewell:file:source:lib/lodwick-grade-v496.js",
@@ -89082,6 +89168,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-wpv-report-clock-v1396.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cac-agatston-v668.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cad-rads-v372.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/caffeine-citrate-dose-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cage-aid-v738.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/caine-wernicke-v799.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cairo-recession-v1482.js",
@@ -89497,6 +89584,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/lipid-emulsion-dose-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lipids-v271.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lisfranc-myerson-v412.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lithium-level-check-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/liver-v196.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lodwick-grade-v496.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/loe-silness-gingival-index-v722.js",
@@ -90183,7 +90271,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c56f34016d1bfaaa"
+      "value": "629e35949c9e4814"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -90195,7 +90283,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3365"
+      "value": "3369"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

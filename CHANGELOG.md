@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Caffeine Citrate for Apnea of Prematurity: the label's loading and maintenance doses for a
+  weight, in mg of caffeine citrate, mg of base and mL. No therapeutic range is shown, because the
+  label gives none.
+- Lithium Level Against the Label: a level beside the label's range for acute or maintenance
+  treatment and its toxic level, whether the sample was a 12-hour one, the label's renal
+  statements, and a proportional dose with its assumptions stated.
 - Fosphenytoin and Phenytoin Loading Against the Label: the loading dose for a mg/kg you choose,
   beside the label's range, with the volume of product, the maximum rate and shortest infusion
   time, the dilution check, and when a level is meaningful after fosphenytoin.

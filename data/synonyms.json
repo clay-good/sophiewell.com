@@ -12094,6 +12094,28 @@
       ],
       "tile": "fosphenytoin-load-rate",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "caffeine citrate dose",
+        "apnea of prematurity caffeine",
+        "caffeine loading dose neonate",
+        "caffeine citrate ml per kg",
+        "caffeine base vs citrate"
+      ],
+      "tile": "caffeine-citrate-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lithium level range",
+        "lithium toxicity level",
+        "lithium level 12 hours after dose",
+        "lithium dose adjustment from level",
+        "lithium therapeutic range maintenance"
+      ],
+      "tile": "lithium-level-check",
+      "audience": "clinicians"
     }
   ]
 }

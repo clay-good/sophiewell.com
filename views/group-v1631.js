@@ -1,6 +1,6 @@
 // spec-v1631: clinical pharmacokinetics and therapeutic drug monitoring. Group F.
 // pk-steady-state-predict, auc-trapezoid, tmic-beta-lactam, sawchuk-zaske-dosing, kinetic-egfr and
-// crrt-drug-clearance, fosphenytoin-load-rate.
+// crrt-drug-clearance, fosphenytoin-load-rate, caffeine-citrate-dose and lithium-level-check.
 
 import { el, clear } from '../lib/dom.js';
 import * as PK from '../lib/pk-steady-state-predict-v1631.js';
@@ -10,6 +10,8 @@ import * as SZ from '../lib/sawchuk-zaske-dosing-v1631.js';
 import * as KE from '../lib/kinetic-egfr-v1631.js';
 import * as CR from '../lib/crrt-drug-clearance-v1631.js';
 import * as FL from '../lib/fosphenytoin-load-rate-v1631.js';
+import * as CC from '../lib/caffeine-citrate-dose-v1631.js';
+import * as LI from '../lib/lithium-level-check-v1631.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -178,6 +180,37 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = FL.fosphenytoinLoadRate(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+
+  // Both read a label row, so both take the clock and link the label when its figures are withheld.
+  'caffeine-citrate-dose'(root) {
+    numField(root, 'Infant weight', 'cf-weight', '');
+    selectField(root, 'Weight unit', 'cf-wunit', CC.WEIGHT_UNITS);
+    numField(root, 'Serum caffeine level, mg/L (optional)', 'cf-level', '');
+    const o = out(); root.appendChild(o);
+    wire(['cf-weight', 'cf-wunit', 'cf-level'], () => safe(o, () => {
+      const r = CC.caffeineCitrateDose({ weight: val('cf-weight'), weightUnit: val('cf-wunit'), level: val('cf-level') }, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+
+  'lithium-level-check'(root) {
+    const pairs = [['li-phase', 'phase'], ['li-level', 'level'], ['li-hours', 'hoursSinceDose'], ['li-crcl', 'creatinineClearance'], ['li-dose', 'dailyDose'], ['li-target', 'target']];
+    selectField(root, 'Treatment', 'li-phase', LI.PHASES);
+    numField(root, 'Serum lithium level, mEq/L', 'li-level', '');
+    numField(root, 'Hours since the last dose', 'li-hours', '');
+    numField(root, 'Creatinine clearance, mL/min (optional)', 'li-crcl', '');
+    numField(root, 'Current daily dose, mg/day (optional)', 'li-dose', '');
+    numField(root, 'Target level, mEq/L (optional)', 'li-target', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = LI.lithiumLevelCheck(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
