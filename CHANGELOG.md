@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Calcium and Phosphate Concentrations in a PN Bag: calcium in mEq/L, phosphate in mmol/L, their
+  sum and the amino acid percent, set against a limit you enter from your own curve or software.
+  No solubility curve is built in, and a result under the limit never says "compatible".
+- A figure read from an FDA label can now stop answering when its label changes. The weekly label
+  watch ships its state to the browser; a tool built on it withholds a superseded or lapsed figure
+  and asks for the one on the container in hand. The calcium and phosphate tool is the first.
 - Aluminum in a PN Order: the most aluminum a daily parenteral nutrition bag can hold, from each
   component's volume and the figure on its container label, per day and per kilogram, set beside
   the 4 to 5 mcg/kg/day in the 21 CFR 201.323 labeling warning. No label figure is assumed.

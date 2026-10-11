@@ -40,6 +40,16 @@ text of each section the tools use.
 | "is no longer on DailyMed under this set id" | The label was withdrawn or replaced | Find the current label from the application holder or a manufacturer (never a repackager, see `scripts/data/label-repackagers.json`), re-read it, and replace the set id in the tool and in the list |
 | "Past their 12 months without a renewal" | The watch has not confirmed the label for a year | Find out why the watch stopped |
 
+The browser reads the same state from `lib/label-editions.js`, which
+`node scripts/build-label-editions.mjs` writes from the list (the weekly run
+does this, and rebuilds the SBOM with it; run both by hand after editing the
+list, or `test/unit/label-row.test.js` fails). A tool that reads a figure
+through `labelRow()` in `lib/label-row.js` stops showing it once the row is
+superseded or 12 months past its last renewal, and asks for the figure on the
+container in hand instead. `pn-calcium-phosphate-check` is the first tool
+built this way; the older label tools still show their figures while a
+superseded label waits in the pull request.
+
 A tool that links a DailyMed label must have that label in the list:
 `test/unit/watch-dailymed.test.js` fails otherwise. To add one, add a row
 with its set id, the tools, and the section codes as keys, then run

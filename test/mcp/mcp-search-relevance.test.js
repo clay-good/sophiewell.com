@@ -798,6 +798,7 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['parenteral nutrition calcium phosphate concentration limit', ['pn-calcium-phosphate-check']],
   ['parenteral nutrition aluminum load mcg/kg/day', ['pn-aluminum-load']],
   ['mean kinetic temperature storage log', ['mean-kinetic-temperature']],
   ['temperature log excursion time out of range refrigerator', ['storage-excursion-summary']],

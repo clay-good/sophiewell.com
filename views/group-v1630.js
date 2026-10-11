@@ -1,11 +1,13 @@
 // spec-v1630: sterile compounding, IV admixture and drug storage. Group Q.
-// reconstitution-concentration, admixture-concentration, pn-aluminum-load, mean-kinetic-temperature,
+// reconstitution-concentration, admixture-concentration, pn-aluminum-load, pn-calcium-phosphate-check,
+// mean-kinetic-temperature,
 // storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
 import { el, clear } from '../lib/dom.js';
 import * as RC from '../lib/reconstitution-concentration-v1630.js';
 import * as AC from '../lib/admixture-concentration-v1630.js';
 import * as PA from '../lib/pn-aluminum-load-v1630.js';
+import * as CP from '../lib/pn-calcium-phosphate-check-v1630.js';
 import * as MK from '../lib/mean-kinetic-temperature-v1630.js';
 import * as SE from '../lib/storage-excursion-summary-v1630.js';
 import * as CR from '../lib/cleanroom-class-check-v1630.js';
@@ -110,6 +112,32 @@ export const renderers = {
     selectField(root, 'Weight unit', 'pal-wunit', PA.WEIGHT_UNITS);
     textareaField(root, 'Components of the daily bag, one per line: name, volume in mL, and the aluminum figure on its container label in mcg/L', 'pal-parts', '');
     run(root, [['pal-weight', 'weight'], ['pal-wunit', 'weightUnit'], ['pal-parts', 'components']], PA.pnAluminumLoad);
+  },
+
+  'pn-calcium-phosphate-check'(root) {
+    const pairs = [['cp-vol', 'finalVolume'], ['cp-caunit', 'calciumUnit'], ['cp-ca', 'calcium'], ['cp-punit', 'phosphateUnit'], ['cp-p', 'phosphate'], ['cp-aa', 'aminoAcidGrams'], ['cp-low', 'lowestVolume'], ['cp-kind', 'limitKind'], ['cp-limit', 'limit'], ['cp-caown', 'calciumPerMl'], ['cp-pown', 'phosphatePerMl']];
+    numField(root, 'Final volume, mL', 'cp-vol', '');
+    selectField(root, 'Calcium entered as', 'cp-caunit', CP.CALCIUM_UNITS);
+    numField(root, 'Calcium amount', 'cp-ca', '');
+    const caOwn = numField(root, 'Calcium, mEq per mL, from the vial in hand', 'cp-caown', '');
+    selectField(root, 'Phosphate entered as', 'cp-punit', CP.PHOSPHATE_UNITS);
+    numField(root, 'Phosphate amount', 'cp-p', '');
+    const pOwn = numField(root, 'Phosphate, mmol per mL, from the vial in hand', 'cp-pown', '');
+    numField(root, 'Amino acids, g (optional)', 'cp-aa', '');
+    numField(root, 'Volume at the point of lowest dilution, mL (optional)', 'cp-low', '');
+    selectField(root, 'Your limit is (optional)', 'cp-kind', CP.LIMIT_KINDS);
+    numField(root, 'Your limit, from your own curve or compounder software', 'cp-limit', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = CP.pnCalciumPhosphateCheck(args, new Date());
+      // The vial's own figure is asked for only when the label figure is withheld.
+      caOwn.hidden = !(r.withheld === 'calcium' || val('cp-caown') !== '');
+      pOwn.hidden = !(r.withheld === 'phosphate' || val('cp-pown') !== '');
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
   },
 
   'mean-kinetic-temperature'(root) {

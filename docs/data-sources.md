@@ -150,7 +150,10 @@ version whose watched sections read the same moves the row forward without a
 person; a changed section, or a set id that left DailyMed, marks the row
 superseded and holds the refresh pull request for a re-read. A label is the
 application holder's or a manufacturer's, never a repackager's
-(`scripts/data/label-repackagers.json`). The rules are
+(`scripts/data/label-repackagers.json`). The same state ships to the browser
+as `lib/label-editions.js`, and a tool that reads a label figure through
+`lib/label-row.js` withholds it once the row is superseded or has gone 12
+months without a renewal. The rules are
 [spec-v1628](spec-v1628.md) section 1; the maintainer steps are in
 [operations.md](operations.md).
 

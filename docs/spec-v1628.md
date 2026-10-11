@@ -176,7 +176,7 @@ Not started. Specified October 10, 2026.
 
 ## Build status
 
-Updated October 10, 2026.
+Updated October 11, 2026.
 
 | Part | Status |
 |---|---|
@@ -185,6 +185,6 @@ Updated October 10, 2026.
 | §1 deny list | Built as `scripts/data/label-repackagers.json` (the dataset folder `data/label-dose/` does not exist yet). The test caught one live row on a relabeler's copy: `abx-renal` ciprofloxacin, now pinned to the Hospira label, whose Dosage and Administration text is identical. |
 | §1 found at build | An old-format label can carry the same section twice (oral acetylcysteine has two Dosage and Administration sections), so a section's hash covers every section with that code. Rows are renewed in the file about monthly, not weekly, so a quiet week opens no pull request. |
 | §1 stored fields | Per label, not yet per dose row: `drug` and `brand` are one `label` string, and the LOINC code is the key of each hash. |
-| §1 fail closed | Not built. No live tool yet reads its dose rows through `datedValue()` and withholds them when the label is superseded or past `validThrough`; today a superseded label is a held pull request, not a withheld dose. This comes with `data/label-dose/` in the first label wave. |
+| §1 fail closed | Built as machinery, October 11, 2026, and used by one tool. `scripts/build-label-editions.mjs` writes the watch state to `lib/label-editions.js` (the weekly run regenerates it and the SBOM); `labelRow(setId, now)` in `lib/label-row.js` answers only while the row is not superseded and today is on or before `validThrough`, and otherwise returns the version the figure was read from, why it is withheld and the DailyMed link. It is a sibling of `datedValue()`, not a call to it, because the row is keyed by set id and has no value of its own. `pn-calcium-phosphate-check` reads its three product strengths this way; its tests set the clock past `validThrough` and set `supersededOn`, and each shows no label figure. **Not built:** the 22 older label rows in live tools still show their figures when a label is superseded (a held pull request, not a withheld dose), and the dataset folder `data/label-dose/` does not exist; figures sit beside the set id in each tool's library. |
 | §3 datasets | None built. |
 

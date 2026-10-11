@@ -76,6 +76,11 @@ jobs:
           # marks the row superseded and is listed here for a person to re-read. It never fails.
           echo >> data-refresh-summary.md
           node scripts/data/watch-dailymed.mjs --write >> data-refresh-summary.md || true
+          # Fail closed: the tools read that state from lib/label-editions.js, so a superseded label
+          # stops answering in the browser with this pull request. The SBOM hashes lib/, so it is
+          # rebuilt with it. Both are no-ops in a week when no label row changed.
+          node scripts/build-label-editions.mjs
+          node scripts/build-sbom.mjs
 
       - name: Run full test suite on refreshed data
         run: |
@@ -95,7 +100,7 @@ jobs:
         # them, since it lists only tracked paths.
         run: |
           git add --intent-to-add -- data scripts/expected-hashes.json scripts/data/label-editions.json
-          git diff --binary -- data scripts/expected-hashes.json scripts/data/label-editions.json ':!data/search-corpus' > data-refresh.patch
+          git diff --binary -- data scripts/expected-hashes.json scripts/data/label-editions.json lib/label-editions.js sbom.json sbom.md ':!data/search-corpus' > data-refresh.patch
 
       - name: Upload reviewed changes
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
@@ -138,6 +143,9 @@ jobs:
             :!data/search-corpus/**
             scripts/expected-hashes.json
             scripts/data/label-editions.json
+            lib/label-editions.js
+            sbom.json
+            sbom.md
 
       # spec-v1621 §5: merge the pull request only when the run's own
       # decision says every dataset is unchanged or updated cleanly -- canaries

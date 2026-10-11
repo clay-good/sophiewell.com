@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:4eb864db-52c5-5761-802d-0fe83c01693a",
+  "serialNumber": "urn:uuid:f483dd72-7916-5cf3-8deb-ec8fa0dbdd39",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T06:15:37.373Z",
+    "timestamp": "2026-10-11T06:50:43.629Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2090 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2091 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "743c1b70d474dd723c343b0cc91262c8378407a3dd7ed01f2bc5d6b001c9ba13"
+          "content": "efc93ee4169e6fe7aa356267bf5638f41147a3b9838709d815706e8e8dbdd592"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135038"
+          "value": "135102"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6d48f00a57415bda61ca8be44daa2456eb2bb797ffe7cef706cdb837c27e44ec"
+          "content": "f2362e5e5e5cea366ef42baf1a8ccdf826abb751bf9b045b35d6417bc6c5f009"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "596256"
+          "value": "596409"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0116b247d80f43126ed385669c7e1bb18d61fb5b3801f8a36aaaec2e7fc65f49"
+          "content": "1b07d9d2282a7eba1d2420c5f6f2075d9fe611da158b84eef5c6d1173be9a13a"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "261774"
+          "value": "261911"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "96a3cad06f2ac7865a71157178d77f95495fe42cabca65e4145f22ae8579cab2"
+          "content": "8a866b8172fa28d03435993194c125ff6988edbcd720dddf7dd0a018ea98f67b"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "122983"
+          "value": "123063"
         }
       ]
     },
@@ -12278,6 +12278,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/label-editions.js",
+      "type": "file",
+      "name": "lib/label-editions.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dbefd6fe23048ee3bcaf9e6bfceaf60231a00f68d8bd61b49b12d9089a4b0766"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5506"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/label-row.js",
+      "type": "file",
+      "name": "lib/label-row.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2619"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/labor-care-guide-alert-v1558.js",
       "type": "file",
       "name": "lib/labor-care-guide-alert-v1558.js",
@@ -14405,7 +14447,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "46f9ae8f6d9c5d7075a8cf22386ec7e044e9447a5fe3cc7f6b048caf60e5c6bd"
+          "content": "f9accdcd82a1e48ad87ebd52d082fec46edf0e2f4c2a070466505bbca030405c"
         }
       ],
       "properties": [
@@ -14415,7 +14457,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2785205"
+          "value": "2786449"
         }
       ]
     },
@@ -19183,6 +19225,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5432"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pn-calcium-phosphate-check-v1630.js",
+      "type": "file",
+      "name": "lib/pn-calcium-phosphate-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d968431164371db4264d0af1729b5ceabb8bace5f1f1ebaf6c09a5c0360f6965"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8634"
         }
       ]
     },
@@ -44072,6 +44135,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pn-calcium-phosphate-check-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/pn-calcium-phosphate-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "969af9fb4c2a7c730cb2fa045b51f8118351d5393081be678bfeb6379fa3f9be"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2586"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pneumonia-risk-v260.js",
       "type": "file",
       "name": "mcp/adapters/pneumonia-risk-v260.js",
@@ -50672,7 +50756,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e31fa8e7f747c4cb5e23bf2027298af5e2bb9dcc9a8e4c0b2fe1d663b1b968ef"
+          "content": "3eae09609051d544155bf0a046a3731731e256af255484fb1a195cfd90faf5d9"
         }
       ],
       "properties": [
@@ -50682,7 +50766,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "131403"
+          "value": "131564"
         }
       ]
     },
@@ -55187,7 +55271,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "21e106c5800e30c0364fa5476cab6487a9cb7d760d5477233e9396a2c6a32bfd"
+          "content": "ec402c47b5391677626dc80f69a326842e41e823cd13b945f5fd097b027b6494"
         }
       ],
       "properties": [
@@ -55197,7 +55281,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9284"
+          "value": "11261"
         }
       ]
     },
@@ -86541,6 +86625,8 @@
         "urn:sophiewell:file:source:lib/kyoto-gastritis-v1442.js",
         "urn:sophiewell:file:source:lib/la-esophagitis-v318.js",
         "urn:sophiewell:file:source:lib/lab-interpret.js",
+        "urn:sophiewell:file:source:lib/label-editions.js",
+        "urn:sophiewell:file:source:lib/label-row.js",
         "urn:sophiewell:file:source:lib/labor-care-guide-alert-v1558.js",
         "urn:sophiewell:file:source:lib/lachman-acl-v355.js",
         "urn:sophiewell:file:source:lib/lake-louise-cmr-v790.js",
@@ -86870,6 +86956,7 @@
         "urn:sophiewell:file:source:lib/plaque-control-record-v721.js",
         "urn:sophiewell:file:source:lib/pmp-check-required-v1393.js",
         "urn:sophiewell:file:source:lib/pn-aluminum-load-v1630.js",
+        "urn:sophiewell:file:source:lib/pn-calcium-phosphate-check-v1630.js",
         "urn:sophiewell:file:source:lib/pneumonia-risk-v260.js",
         "urn:sophiewell:file:source:lib/podoconiosis-stage-v1564.js",
         "urn:sophiewell:file:source:lib/poi-diagnosis-v834.js",
@@ -88995,6 +89082,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/plaque-control-record-v721.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pmp-check-required-v1393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pn-aluminum-load-v1630.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pn-calcium-phosphate-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pneumonia-risk-v260.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/podoconiosis-stage-v1564.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/poi-diagnosis-v834.js",
@@ -89413,7 +89501,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "4eb864db52c54761"
+      "value": "f483dd7279161cf3"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -89425,7 +89513,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3330"
+      "value": "3334"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

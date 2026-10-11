@@ -528,3 +528,5 @@ experience**.
 > v1630, Mean Kinetic Temperature of a Storage Log — [spec-v1630](spec-v1630.md), which adds `mean-kinetic-temperature` — is 2089.)
 
 > v1630, Temperature Log: Excursions and Time Out of Range — [spec-v1630](spec-v1630.md), which adds `storage-excursion-summary` — is 2090.)
+
+> v1630, Calcium and Phosphate Concentrations in a PN Bag — [spec-v1630](spec-v1630.md), which adds `pn-calcium-phosphate-check` — is 2091.)

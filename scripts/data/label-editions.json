@@ -50,7 +50,8 @@
     "labeler": "WG CRITICAL CARE, LLC",
     "setId": "16307c00-d0d5-4e05-821f-17b0c1a29fc9",
     "tools": [
-      "calcium-replacement"
+      "calcium-replacement",
+      "pn-calcium-phosphate-check"
     ],
     "splVersion": 5,
     "publishedOn": "2026-09-18",
@@ -270,7 +271,8 @@
     "labeler": "CIVICA, INC.",
     "setId": "f7702b2f-d0d1-4696-896d-571607fc0dc8",
     "tools": [
-      "electrolyte-replacement"
+      "electrolyte-replacement",
+      "pn-calcium-phosphate-check"
     ],
     "splVersion": 2,
     "publishedOn": "2026-07-15",
@@ -326,6 +328,21 @@
     "sections": {
       "34068-7": "ee04a8e1b0018fdcf99b2d8178bba51279fcd9fae3d5b70a3c862078b40d0282",
       "34089-3": "d8714dd09a0b0b6730196adabab6293fe49ff3659eb54c5efa9f5c70d6ddf03f"
+    }
+  },
+  {
+    "label": "Sodium Phosphates injection, Civica",
+    "labeler": "CIVICA, INC.",
+    "setId": "8fd901e6-30cb-411a-b820-b9e79625ec7c",
+    "tools": [
+      "pn-calcium-phosphate-check"
+    ],
+    "splVersion": 1,
+    "publishedOn": "2025-08-14",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34089-3": "60036e085d717f984c2b74eb2f04d847eebc1a726ae8f35ec94116a4be28af78"
     }
   },
   {

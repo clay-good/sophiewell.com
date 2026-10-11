@@ -1040,6 +1040,7 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import pnCalciumPhosphateCheckV1630 from './adapters/pn-calcium-phosphate-check-v1630.js';
 import pnAluminumLoadV1630 from './adapters/pn-aluminum-load-v1630.js';
 import meanKineticTemperatureV1630 from './adapters/mean-kinetic-temperature-v1630.js';
 import storageExcursionSummaryV1630 from './adapters/storage-excursion-summary-v1630.js';
@@ -2161,6 +2162,7 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['pn-calcium-phosphate-check-v1630', pnCalciumPhosphateCheckV1630],
   ['pn-aluminum-load-v1630', pnAluminumLoadV1630],
   ['mean-kinetic-temperature-v1630', meanKineticTemperatureV1630],
   ['storage-excursion-summary-v1630', storageExcursionSummaryV1630],

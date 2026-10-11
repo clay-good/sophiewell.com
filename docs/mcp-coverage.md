@@ -8974,6 +8974,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/storage-excursion-summary-v1630.js (spec-v1630: Temperature log excursions (CDC Vaccine Storage and Handling Toolkit, July 2026) — administrative disclaimer)
 - `storage-excursion-summary`
 
+### lib/pn-calcium-phosphate-check-v1630.js (spec-v1630: Calcium and phosphate concentrations in a PN bag (FDA label strengths; reader's limit) — clinical disclaimer)
+- `pn-calcium-phosphate-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -11918,6 +11918,17 @@
       ],
       "tile": "storage-excursion-summary",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "calcium phosphate solubility tpn",
+        "calcium phosphate precipitation pn",
+        "meq per liter calcium in tpn",
+        "calcium plus phosphate limit",
+        "pn calcium phosphate concentration"
+      ],
+      "tile": "pn-calcium-phosphate-check",
+      "audience": "clinicians"
     }
   ]
 }
