@@ -375,7 +375,8 @@
     "setId": "f7702b2f-d0d1-4696-896d-571607fc0dc8",
     "tools": [
       "electrolyte-replacement",
-      "pn-calcium-phosphate-check"
+      "pn-calcium-phosphate-check",
+      "iv-phosphate-order-check"
     ],
     "splVersion": 2,
     "publishedOn": "2026-07-15",
@@ -455,13 +456,15 @@
     "labeler": "CIVICA, INC.",
     "setId": "8fd901e6-30cb-411a-b820-b9e79625ec7c",
     "tools": [
-      "pn-calcium-phosphate-check"
+      "pn-calcium-phosphate-check",
+      "iv-phosphate-order-check"
     ],
     "splVersion": 1,
     "publishedOn": "2025-08-14",
     "verifiedOn": "2026-10-11",
     "validThrough": "2027-10-11",
     "sections": {
+      "34068-7": "b1a82d18c41c93f9cc6be3f162b9cdf40e4770efe21de6c497b7c27917181004",
       "34089-3": "60036e085d717f984c2b74eb2f04d847eebc1a726ae8f35ec94116a4be28af78"
     }
   },

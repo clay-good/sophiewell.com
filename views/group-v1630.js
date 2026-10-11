@@ -1,13 +1,14 @@
 // spec-v1630: sterile compounding, IV admixture and drug storage. Group Q.
 // reconstitution-concentration, admixture-concentration, lipid-emulsion-dose-check, pn-aluminum-load,
 // pn-calcium-phosphate-check, pn-order-summary, pn-amino-acid-order, premixed-pn-rate-check,
-// pn-micronutrient-volume,
+// pn-micronutrient-volume, iv-phosphate-order-check,
 // mean-kinetic-temperature,
 // in-use-discard-time, storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
 import { el, clear } from '../lib/dom.js';
 import * as RC from '../lib/reconstitution-concentration-v1630.js';
 import * as AC from '../lib/admixture-concentration-v1630.js';
+import * as IP from '../lib/iv-phosphate-order-check-v1630.js';
 import * as LE from '../lib/lipid-emulsion-dose-check-v1630.js';
 import * as PA from '../lib/pn-aluminum-load-v1630.js';
 import * as CP from '../lib/pn-calcium-phosphate-check-v1630.js';
@@ -121,6 +122,29 @@ export const renderers = {
     numField(root, 'Strength already in the bag fluid (optional)', 'ac-base', '');
     numField(root, 'Target strength (optional)', 'ac-target', '');
     run(root, [['ac-unit', 'unit'], ['ac-per', 'per'], ['ac-nominal', 'nominalVolume'], ['ac-overfill', 'overfill'], ['ac-withdrawn', 'withdrawn'], ['ac-adds', 'additives'], ['ac-other', 'otherVolume'], ['ac-base', 'baseline'], ['ac-target', 'target']], AC.admixtureConcentration);
+  },
+
+  'iv-phosphate-order-check'(root) {
+    const pairs = [['ip-salt', 'salt'], ['ip-age', 'ageBand'], ['ip-weight', 'weight'], ['ip-wunit', 'weightUnit'], ['ip-dose', 'dose'], ['ip-dunit', 'doseUnit'], ['ip-vol', 'finalVolume'], ['ip-hours', 'hours'], ['ip-line', 'line'], ['ip-phos', 'serumPhosphorus'], ['ip-k', 'serumPotassium']];
+    selectField(root, 'Salt', 'ip-salt', IP.SALT_OPTIONS);
+    selectField(root, 'Age band', 'ip-age', IP.AGE_BANDS);
+    numField(root, 'Actual body weight', 'ip-weight', '');
+    selectField(root, 'Weight unit', 'ip-wunit', IP.WEIGHT_UNITS);
+    numField(root, 'Phosphorus ordered', 'ip-dose', '');
+    selectField(root, 'Ordered as', 'ip-dunit', IP.DOSE_UNITS);
+    numField(root, 'Final volume, mL', 'ip-vol', '');
+    numField(root, 'Infusion time, hours', 'ip-hours', '');
+    selectField(root, 'Line', 'ip-line', IP.LINES);
+    numField(root, 'Serum phosphorus, mg/dL (optional)', 'ip-phos', '');
+    numField(root, 'Serum potassium, mEq/L (optional)', 'ip-k', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = IP.ivPhosphateOrderCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
   },
 
   'lipid-emulsion-dose-check'(root) {

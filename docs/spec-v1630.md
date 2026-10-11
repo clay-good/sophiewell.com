@@ -1,6 +1,6 @@
 # spec-v1630 — Sterile compounding, IV admixture, parenteral nutrition, hazardous drugs and drug storage
 
-**Status:** In progress, October 11, 2026: 14 of 17 tools built (see Build status). 17 new tools; none is gated as a whole (tool 3 has two drugs and tool 12 two rows behind a build gate).
+**Status:** In progress, October 11, 2026: 15 of 17 tools built (see Build status). 17 new tools; none is gated as a whole (tool 3 has two drugs and tool 12 two rows behind a build gate).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 The IV-room pharmacist and technician check the same things all shift: what a vial becomes once
@@ -711,7 +711,7 @@ one figure to the CDC page and ships no part of the table.
 
 ## Build status
 
-Updated October 11, 2026. 14 of 17 tools built; the backfills are open.
+Updated October 11, 2026. 15 of 17 tools built; the backfills are open.
 
 | Tool | Status |
 |---|---|
@@ -729,4 +729,5 @@ Updated October 11, 2026. 14 of 17 tools built; the backfills are open.
 | 6. `pn-amino-acid-order` | Built (group Q) on label rows. Travasol (version 16), Prosol (16), TrophAmine (10) and Elcys (3) were re-read on October 11, 2026 and added to the weekly watch; every figure matches the spec. **Found at build:** the Prosol label has its own pediatric table with the same g/kg/day ranges as Travasol's (its last row reads "11 to 17 years"), so the ranges apply to both; TrophAmine is dosed by weight, not age (2 to 2.5 g/kg/day to 10 kg, then 20 to 25 g/day plus 1 to 1.25 g/day per kg over 10), and has no adult figure. **Deviations:** the Elcys age cut (12 years) does not line up with the amino acid tables' (10 or 11 years), so cysteine is its own three-way choice; a dose below the range is reported and not marked; "other product" entry is not built (`pn-order-summary` takes any product's nitrogen); the renal figures are left to the label. |
 | 11. `premixed-pn-rate-check` | Built (group Q) on label rows, named "Premixed PN Bag Against Its Label Maximum" (the word "rate" is kept out of the name so it does not tie the drip-rate tools on the home page). Clinimix E (version 17), Clinimix (14) and Kabiven (9) were re-read on October 11, 2026; every Table 2 maximum, the central-vein lists and the Kabiven sentences match. Clinimix E and Kabiven joined the weekly watch, and Clinimix's Dosage and Administration section was added to its row. Clinimix nutrient rates come from the formulation's two percents, which reproduce the label's printed figures; Kabiven's are by proportion from its figures at the maximum rate. Weights under 20 kg are refused. Kabiven's 40 mL/kg/day is checked only when a day's volume is entered. |
 | 10. `pn-micronutrient-volume` | Built (group Q) on label rows. Tralement (version 10), Multrys (4) and Infuvite Pediatric (7) were re-read on October 11, 2026 and added to the weekly watch on their Dosage and Administration sections; every band, content and daily amount matches, including the Multrys table-against-sentence difference at 2.7 kg and 3 kg. **Decisions:** the tables print bands in whole steps (10 to 19 kg, then 20 to 29 kg), so a weight between two bands is placed in the lower one and the result says so; at exactly 5 kg the Multrys zinc rows overlap and the 3 to 5 kg row is used, with a note; the every-other-day dose is averaged per day for the shortfall; Tralement under 10 kg and Multrys at 10 kg or more are refused with the label's reason. The Tralement under-10-kg sentence and Infuvite's age statement sit outside the watched section. |
-| 3, 4, 13 | Not built. Each needs its labels or documents re-read and its figures placed on label rows as tools 5 and 9 do. |
+| 4. `iv-phosphate-order-check` | Built (group Q) on label rows. The Potassium Phosphates label (Civica, version 2) and the Sodium Phosphates label (Civica, version 1) were re-read on October 11, 2026; Tables 1 to 3, the single-dose maximum, the ECG sentence, the "4 mEq/dL" wording and the two sodium sentences match the spec. The sodium label's Dosage and Administration section joined its watch row. Weight is always required (the label doses by actual body weight, and the ECG threshold depends on it). A serum phosphorus above the reference range's lower end gets "the table gives no dose". **Not built:** the parenteral nutrition daily amounts (Table 4), which belong to a PN order and not to a correction dose; the renal and adjusted-weight footnotes are left to the label. When the label is withheld the 3 mmol/mL arithmetic still shows, with a note to check the vial. |
+| 3, 13 | Not built. Each needs its labels or documents re-read and its figures placed on label rows as tools 5 and 9 do. |

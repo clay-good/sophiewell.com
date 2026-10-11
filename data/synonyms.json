@@ -11995,6 +11995,17 @@
       ],
       "tile": "pn-micronutrient-volume",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "potassium phosphate infusion rate",
+        "k phos max concentration peripheral",
+        "sodium phosphate mmol to ml",
+        "iv phosphate potassium content",
+        "mmol phosphate how many meq potassium"
+      ],
+      "tile": "iv-phosphate-order-check",
+      "audience": "clinicians"
     }
   ]
 }

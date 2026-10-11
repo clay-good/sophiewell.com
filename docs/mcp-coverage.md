@@ -8995,6 +8995,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pn-micronutrient-volume-v1630.js (spec-v1630: Trace element and pediatric multivitamin volume by weight (three FDA labels; label rows) — clinical disclaimer)
 - `pn-micronutrient-volume`
 
+### lib/iv-phosphate-order-check-v1630.js (spec-v1630: IV phosphate order against the FDA label (potassium and sodium phosphates; label rows) — clinical disclaimer)
+- `iv-phosphate-order-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

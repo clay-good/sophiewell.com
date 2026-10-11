@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- IV Phosphate Order Against the Label: the concentrate volume at 3 mmol/mL, the potassium or
+  sodium it carries, and the concentration and hourly rate; for potassium phosphates, each beside
+  the label's dose range, 45 mmol single-dose maximum, and concentration and rate maximums by age
+  and line. The sodium phosphates label prints no limits, and the page says so.
 - PN Trace Elements and Pediatric Multivitamin by Weight: the daily volume of Tralement, Multrys
   or Infuvite Pediatric for a weight as the label gives it, the zinc, copper, selenium and
   manganese it provides, and the shortfall against the label's daily amounts. Where the Multrys

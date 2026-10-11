@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d0dcee04-a735-50df-813b-bb257aa2880f",
+  "serialNumber": "urn:uuid:33559b3e-bf8f-5c42-8eab-c6a80d0c490d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T08:35:31.566Z",
+    "timestamp": "2026-10-11T08:49:07.064Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2097 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2098 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2a813f1586e5d963cb208121cc23483bc2233c1d96aa52cc93bf0eef3a974b16"
+          "content": "ece30cfcf69317b7f824c84f001355097568beed5687b7869536f24a81b48cf7"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "135442"
+          "value": "135494"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3b49c6210e2621c08bb063bf5d478263f975aed675e83a9caf0c4fcb02771dda"
+          "content": "929f41131162f10b21999226380318dd7d8925434d61ba0dc2c33df6913bde03"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "597252"
+          "value": "597391"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eec4c22f37705fb4d0752060987ce7fbd8f65d41cad596128fcd54c6a4a4dd92"
+          "content": "6d7130c18e279ef1b5cbee3edfa9ab05d919bf6eb49193819110a8c2a85182fc"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "262701"
+          "value": "262836"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0e1b9609bed3ff5ebef4229c97aeac1ea2da50f8e4d197051897f6fcd6a759d4"
+          "content": "c5576adffe09683d30fa9989ffc0c9a3cf2f12441e67977dc0feb5b3fa4e8283"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "123467"
+          "value": "123533"
         }
       ]
     },
@@ -11711,6 +11711,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/iv-phosphate-order-check-v1630.js",
+      "type": "file",
+      "name": "lib/iv-phosphate-order-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e3e7012557ec81236b86a63825d89706afc1860a7a28aa5a684ee0e7a293abd0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12463"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/jemt-papilla-v1487.js",
       "type": "file",
       "name": "lib/jemt-papilla-v1487.js",
@@ -14489,7 +14510,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "84aca03ae3f6e351b304e252d59c472ca5df2d99c9ea83f15703a2a2af88ef6c"
+          "content": "6845c48268d9a7cedf33115ca750e5674fc5468b0cdd59ad02928213e4be7df3"
         }
       ],
       "properties": [
@@ -14499,7 +14520,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2793625"
+          "value": "2794888"
         }
       ]
     },
@@ -37688,6 +37709,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/iv-phosphate-order-check-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/iv-phosphate-order-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0fca59a973b654cef098004fcab847df9bc1cc472d4698e9e9883751a86bb150"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2372"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/jemt-papilla-v1487.js",
       "type": "file",
       "name": "mcp/adapters/jemt-papilla-v1487.js",
@@ -51008,7 +51050,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d6e037f2f5cada8de1c113de140370397f81ae7b6749d92d99ab25507fa69475"
+          "content": "de2b365b81b303cc5ca6f231d1f231fe8bbd17a9e50a5651cf09c1e80e471aa2"
         }
       ],
       "properties": [
@@ -51018,7 +51060,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132406"
+          "value": "132559"
         }
       ]
     },
@@ -55523,7 +55565,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "466cc0db43f5844c66a1fadbf69681e8cda259d4e50bd9798d173a8da9a271ce"
+          "content": "60375951be23d05e28eaa36a0e03f38631ce88bbed69c0009d08bc8b2854778e"
         }
       ],
       "properties": [
@@ -55533,7 +55575,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "18782"
+          "value": "20330"
         }
       ]
     },
@@ -86850,6 +86892,7 @@
         "urn:sophiewell:file:source:lib/isotonicity-freezing-point-v1629.js",
         "urn:sophiewell:file:source:lib/itemized-bill-check.js",
         "urn:sophiewell:file:source:lib/itemized-bill-worker.js",
+        "urn:sophiewell:file:source:lib/iv-phosphate-order-check-v1630.js",
         "urn:sophiewell:file:source:lib/jemt-papilla-v1487.js",
         "urn:sophiewell:file:source:lib/jerger-tympanogram-v506.js",
         "urn:sophiewell:file:source:lib/jnet-v336.js",
@@ -89027,6 +89070,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/isl-lymphedema-v539.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-e-value-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-freezing-point-v1629.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/iv-phosphate-order-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/jemt-papilla-v1487.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/jerger-tympanogram-v506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/jnet-v336.js",
@@ -89765,7 +89809,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "d0dcee04a73580df"
+      "value": "33559b3ebf8fac42"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -89777,7 +89821,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3346"
+      "value": "3348"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
