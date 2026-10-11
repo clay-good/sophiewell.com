@@ -9115,6 +9115,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/doac-periprocedural-timing-v1633.js (spec-v1633: DOAC interruption around a procedure (four label rows and PAUSE) — clinical disclaimer)
 - `doac-periprocedural-timing`
 
+### lib/fentanyl-patch-initial-dose-v1633.js (spec-v1633: Fentanyl patch starting dose (one label row, one way) — clinical disclaimer)
+- `fentanyl-patch-initial-dose`
+
+### lib/methadone-label-conversion-v1633.js (spec-v1633: Methadone starting dose range (one label row, one way) — clinical disclaimer)
+- `methadone-label-conversion`
+
+### lib/er-opioid-label-start-v1633.js (spec-v1633: Hysingla ER, Butrans and Belbuca starting dose (three label rows, one way) — clinical disclaimer)
+- `er-opioid-label-start`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

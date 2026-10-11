@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Fentanyl Patch Starting Dose From a Prior Opioid (FDA Label): the patch strength the label's
+  one-way tables give, or a plain statement that the label gives none for the dose entered.
+- Methadone Starting Dose From Another Opioid (FDA Label): the label's percentage range for the
+  morphine equivalent entered, each dose rounded down to whole tablets, never a single figure.
+- Hysingla ER, Butrans and Belbuca Starting Dose (FDA Labels): each product's own procedure, with
+  the taper it requires first and the dose above which the label says to consider another analgesic.
 - Anticoagulant Switch: When to Start the Next Drug (FDA Labels): the INR threshold, overlap plan or
   timing rule the Eliquis, Xarelto, Pradaxa and Savaysa labels give for a switch, as a date and time
   when a dose time is entered.

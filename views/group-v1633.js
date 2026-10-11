@@ -1,9 +1,13 @@
 // spec-v1633: conversions, switches, titrations and tapers, each as its label or paper states it.
-// anticoag-switch-clock, doac-periprocedural-timing.
+// anticoag-switch-clock, doac-periprocedural-timing, fentanyl-patch-initial-dose,
+// methadone-label-conversion, er-opioid-label-start.
 
 import { el, clear } from '../lib/dom.js';
 import * as AS from '../lib/anticoag-switch-clock-v1633.js';
 import * as DP from '../lib/doac-periprocedural-timing-v1633.js';
+import * as FP from '../lib/fentanyl-patch-initial-dose-v1633.js';
+import * as ML from '../lib/methadone-label-conversion-v1633.js';
+import * as EO from '../lib/er-opioid-label-start-v1633.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -88,6 +92,51 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = DP.doacPeriproceduralTiming(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'fentanyl-patch-initial-dose'(root) {
+    const pairs = [['fpd-drug', 'drug'], ['fpd-mg', 'dailyMg'], ['fpd-tolerant', 'tolerant']];
+    selectField(root, 'Current opioid and route', 'fpd-drug', FP.DRUGS);
+    numField(root, 'Total dose over 24 hours, mg', 'fpd-mg', '');
+    selectField(root, 'Opioid tolerant by the label\'s definition', 'fpd-tolerant', FP.TOLERANT);
+    note(root, FP.TOLERANCE_DEFINITION);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = FP.fentanylPatchInitialDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'methadone-label-conversion'(root) {
+    const pairs = [['mlc-mode', 'mode'], ['mlc-med', 'morphineEquivalentMg'], ['mlc-n', 'dosesPerDay'], ['mlc-tab', 'tabletMg'], ['mlc-iv', 'parenteralMg']];
+    selectField(root, 'Coming from', 'mlc-mode', ML.MODES);
+    numField(root, 'Total daily oral morphine-equivalent dose, mg (from another oral opioid)', 'mlc-med', '');
+    numField(root, 'Methadone doses a day (2 for every 12 hours, 3 for every 8 hours)', 'mlc-n', '');
+    selectField(root, 'Tablet strength', 'mlc-tab', ML.TABLETS);
+    numField(root, 'Parenteral methadone over 24 hours, mg (from parenteral methadone)', 'mlc-iv', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = ML.methadoneLabelConversion(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'er-opioid-label-start'(root) {
+    const pairs = [['eos-product', 'product'], ['eos-med', 'morphineEquivalentMg'], ...EO.HYSINGLA_FACTORS.map((f) => [`eos-${f.name}`, f.arg])];
+    selectField(root, 'Product', 'eos-product', EO.PRODUCTS);
+    numField(root, 'Butrans or Belbuca: prior total daily dose, mg of oral morphine equivalents', 'eos-med', '');
+    for (const f of EO.HYSINGLA_FACTORS) numField(root, `Hysingla ER: prior daily oral ${f.name}, mg`, `eos-${f.name}`, '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = EO.erOpioidLabelStart(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

@@ -2708,6 +2708,9 @@ const UTILITIES = [
   { id: 'glp1-titration-check', name: 'GLP-1 Dose Escalation Check (FDA Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'anticoag-switch-clock', name: 'Anticoagulant Switch: When to Start the Next Drug (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'doac-periprocedural-timing', name: 'DOAC Hold Before a Procedure (Labels and PAUSE)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fentanyl-patch-initial-dose', name: 'Fentanyl Patch Starting Dose From a Prior Opioid (FDA Label)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'methadone-label-conversion', name: 'Methadone Starting Dose From Another Opioid (FDA Label)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'er-opioid-label-start', name: 'Hysingla ER, Butrans and Belbuca Starting Dose (FDA Labels)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

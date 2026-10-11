@@ -246,6 +246,21 @@
     }
   },
   {
+    "label": "Belbuca (buprenorphine buccal film)",
+    "labeler": "BIODELIVERY SCIENCES INTERNATIONAL INC",
+    "setId": "bc2b7a3d-72cf-497c-95b0-ba2b71f63c64",
+    "tools": [
+      "er-opioid-label-start"
+    ],
+    "splVersion": 18,
+    "publishedOn": "2026-01-06",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "a04b1687bba8c2347596e0608ae0563cb03a61caced7c0be24a2ea8f76adbb36"
+    }
+  },
+  {
     "label": "Betapace (sotalol), Covis",
     "labeler": "COVIS PHARMA US, INC",
     "setId": "afce2787-8899-4098-87c8-f1e8dd19e6dd",
@@ -289,6 +304,21 @@
     "sections": {
       "43684-0": "e18019856ceb3959fc211d365120a485d742316eb33a8d532221de4f585baed5",
       "34089-3": "d908b82d92cc8037df013d9bab9fe8bbe7c8fd7b4a9258862eb184f2054541e9"
+    }
+  },
+  {
+    "label": "Butrans (buprenorphine transdermal system)",
+    "labeler": "KNOA PHARMA LLC",
+    "setId": "794aa355-66de-41b8-aedf-f2c40f6bc664",
+    "tools": [
+      "er-opioid-label-start"
+    ],
+    "splVersion": 32,
+    "publishedOn": "2026-05-13",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "2ddfe533cbca06980b93f0378eb325bf094baa55a1e6e435acf9310cb42d2d92"
     }
   },
   {
@@ -823,6 +853,22 @@
     }
   },
   {
+    "label": "Fentanyl transdermal system, SpecGx",
+    "labeler": "SPECGX LLC",
+    "setId": "e15a7e9b-8025-49dd-9a6d-bafcccf1959f",
+    "tools": [
+      "fentanyl-patch-initial-dose"
+    ],
+    "splVersion": 58,
+    "publishedOn": "2026-05-06",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "264618768374ceb06eee69b0754be3f277303639da6b97f64f9330ac73e61450",
+      "34067-9": "c0f26eb6534f8d5ba50a7aadf82b226e7c5819bb5beee70eda27fbd57c54ddb8"
+    }
+  },
+  {
     "label": "Fosamax (alendronate), Organon",
     "labeler": "ORGANON LLC",
     "setId": "14e931fd-2c5f-4d90-b7db-5980706f4a56",
@@ -880,6 +926,22 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "1d63290ca9fdd05f02c9a8f88c063ff0163af2ea2bf903673d45262eab0184e9"
+    }
+  },
+  {
+    "label": "Hysingla ER (hydrocodone bitartrate)",
+    "labeler": "KNOA PHARMA LLC",
+    "setId": "b7d23ac2-e776-9f62-3290-c64c2d6eb353",
+    "tools": [
+      "er-opioid-label-start"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2026-06-18",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "dc15312871fbc7d10517a55c0e1183164a0a5217e0217828db1d157833dd0320",
+      "43678-2": "ad23a6837968fb1539217c7ce352373e7a17fdd36f2b622273b09bd5e5c1aed6"
     }
   },
   {
@@ -1209,6 +1271,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "3175b05297772be7a464b3ab98f95c5c908d61ff414e5d13b00fcaa3e63b93cc"
+    }
+  },
+  {
+    "label": "Methadone hydrochloride tablets, Hikma",
+    "labeler": "HIKMA PHARMACEUTICALS USA INC.",
+    "setId": "50f14803-78c0-4d19-8b5d-9a9c17582ac1",
+    "tools": [
+      "methadone-label-conversion"
+    ],
+    "splVersion": 9,
+    "publishedOn": "2026-01-30",
+    "verifiedOn": "2026-10-11",
+    "validThrough": "2027-10-11",
+    "sections": {
+      "34068-7": "4f56573027fb674d01c00d2bc30c764bcbad9b02f5714bf69b6773848d8805c5"
     }
   },
   {

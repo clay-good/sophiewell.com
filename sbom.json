@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:afa51c2f-5a7f-5bea-8e1f-0e0dddcc6720",
+  "serialNumber": "urn:uuid:2e1f4576-6371-57b8-82d5-3b96b981985a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T17:38:30.893Z",
+    "timestamp": "2026-10-11T17:51:10.864Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2137 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2140 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7f781f9a3fd4d4361c59415a7b8fd6fe3e4cebf5aa2b7508793086fd176b880f"
+          "content": "e57af8b80c6a2d5a05d13b6e9574049a5805b37146ced0d9c8bac6ec0d4243ca"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "138064"
+          "value": "138286"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "863503323a15e6785234350752a7c5d1163bb03fdb9f6f3704533e88fef1d955"
+          "content": "9007f35966af5687d4f48383b725a36f8fdc64e1456345ebfb03c2392cdfb31f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "603922"
+          "value": "604446"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6f2b49e42e96c5e6a0bacd22c7f3d78ef941544185131c9a38221edc3fac5471"
+          "content": "e93a8b1e7ba33d1a9f9cc3aa3fe0af61e8d2ca2a9d21e6203d95ac0e1fe31e6d"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "267962"
+          "value": "268369"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7a8301a98b208fe6a1c0d5e234732d75e682eb89e85b656b99dec2b0d8f54595"
+          "content": "9220c44d38902fdb17daa5c51ca472df7ff0c5103d74aacee73d18d18b2e5044"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126510"
+          "value": "126776"
         }
       ]
     },
@@ -7700,6 +7700,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/er-opioid-label-start-v1633.js",
+      "type": "file",
+      "name": "lib/er-opioid-label-start-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "93dcbcb843328f44454465ec8216fe381186f67213a700c326a829b7e3010c43"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10678"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/erefs-v618.js",
       "type": "file",
       "name": "lib/erefs-v618.js",
@@ -8032,6 +8053,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9106"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/fentanyl-patch-initial-dose-v1633.js",
+      "type": "file",
+      "name": "lib/fentanyl-patch-initial-dose-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "beb232383a373677e2d183a0816f640725824717193f57712a46318a1c6b7061"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9066"
         }
       ]
     },
@@ -12935,7 +12977,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d384d447d777bc0f534ca730f68c8064c4ed944b21ee72cf70612044c516de59"
+          "content": "85e3aac264ce02d3ddd41d253ce83f99600d96d5e7ec78cff95df1dfdbf66fd0"
         }
       ],
       "properties": [
@@ -12945,7 +12987,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "31053"
+          "value": "32168"
         }
       ]
     },
@@ -15161,7 +15203,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "683afc60e5b7fa9d2f2568805530614ecc132803129c0a9795c92e6aedda68bc"
+          "content": "ae2dbae95fff672854fa0a966a3f729ea1e75d3b49e9382855c326bdafe1ff90"
         }
       ],
       "properties": [
@@ -15171,7 +15213,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2844163"
+          "value": "2847096"
         }
       ]
     },
@@ -15319,6 +15361,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8610"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/methadone-label-conversion-v1633.js",
+      "type": "file",
+      "name": "lib/methadone-label-conversion-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b4babd4f64bf792a3b117024eacd8d5db21b0d1a1cd59c65f1447453c12161fc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8256"
         }
       ]
     },
@@ -35042,6 +35105,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/er-opioid-label-start-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/er-opioid-label-start-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "13aaec42f7ec60a99e358c5cebf90ec7f30a23fb2114f5be0d1d16229d882c13"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1372"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/erefs-v618.js",
       "type": "file",
       "name": "mcp/adapters/erefs-v618.js",
@@ -35353,6 +35437,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2139"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/fentanyl-patch-initial-dose-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/fentanyl-patch-initial-dose-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df9a6e9e1a5a3a19b81a5f8e842e5f8bf8a30702c131111d60dd8ab647e67322"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1390"
         }
       ]
     },
@@ -41884,6 +41989,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1735"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/methadone-label-conversion-v1633.js",
+      "type": "file",
+      "name": "mcp/adapters/methadone-label-conversion-v1633.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "37ae54020e574368f0ee53665801bc5e4c06ce6cd3524181f4687fe2745dc56d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1710"
         }
       ]
     },
@@ -52751,7 +52877,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f67824794c195c3a82fe78c4d3eec9e848b1e57ac08040d970866ff6cbd43766"
+          "content": "9893964f7026e5a40654844cff7e9187fb62fe741a2a94172dbbd5952325c2b7"
         }
       ],
       "properties": [
@@ -52761,7 +52887,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "138030"
+          "value": "138499"
         }
       ]
     },
@@ -57329,7 +57455,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "04dbbe9a7c34c366d41060c2001b6b06ee5c07d72e885b85efe37bade33f784e"
+          "content": "1f04fb7650be0678df8cc1352c92a2b3eb5013070b7c1add5669b96fe800b2f2"
         }
       ],
       "properties": [
@@ -57339,7 +57465,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5129"
+          "value": "8298"
         }
       ]
     },
@@ -88465,6 +88591,7 @@
         "urn:sophiewell:file:source:lib/environ-v242.js",
         "urn:sophiewell:file:source:lib/eortc-msg-ifd-v869.js",
         "urn:sophiewell:file:source:lib/eoss-v713.js",
+        "urn:sophiewell:file:source:lib/er-opioid-label-start-v1633.js",
         "urn:sophiewell:file:source:lib/erefs-v618.js",
         "urn:sophiewell:file:source:lib/erez-dic-v559.js",
         "urn:sophiewell:file:source:lib/erisa-claim-clock-v1503.js",
@@ -88481,6 +88608,7 @@
         "urn:sophiewell:file:source:lib/fazekas-v349.js",
         "urn:sophiewell:file:source:lib/fda-books-load.js",
         "urn:sophiewell:file:source:lib/feno-v888.js",
+        "urn:sophiewell:file:source:lib/fentanyl-patch-initial-dose-v1633.js",
         "urn:sophiewell:file:source:lib/fernandez-radius-v489.js",
         "urn:sophiewell:file:source:lib/ffs-1996-v590.js",
         "urn:sophiewell:file:source:lib/fgsi-v667.js",
@@ -88828,6 +88956,7 @@
         "urn:sophiewell:file:source:lib/metavir-activity-v505.js",
         "urn:sophiewell:file:source:lib/metavir-fibrosis-v504.js",
         "urn:sophiewell:file:source:lib/methacholine-v890.js",
+        "urn:sophiewell:file:source:lib/methadone-label-conversion-v1633.js",
         "urn:sophiewell:file:source:lib/methemoglobin-v864.js",
         "urn:sophiewell:file:source:lib/meyers-mckeever-v408.js",
         "urn:sophiewell:file:source:lib/mfp-prices-v1506.js",
@@ -90710,6 +90839,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/environ-v242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eortc-msg-ifd-v869.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eoss-v713.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/er-opioid-label-start-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erefs-v618.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erez-dic-v559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erisa-claim-clock-v1503.js",
@@ -90725,6 +90855,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/fast-dementia-v294.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fazekas-v349.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/feno-v888.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/fentanyl-patch-initial-dose-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fernandez-radius-v489.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ffs-1996-v590.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fgsi-v667.js",
@@ -91036,6 +91167,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/metavir-activity-v505.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/metavir-fibrosis-v504.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/methacholine-v890.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/methadone-label-conversion-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/methemoglobin-v864.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meyers-mckeever-v408.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mfp-prices-v1506.js",
@@ -91657,7 +91789,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "afa51c2f5a7f9bea"
+      "value": "2e1f4576637177b8"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -91669,7 +91801,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3432"
+      "value": "3438"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

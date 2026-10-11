@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import fentanylPatchInitialDoseV1633 from './adapters/fentanyl-patch-initial-dose-v1633.js';
+import methadoneLabelConversionV1633 from './adapters/methadone-label-conversion-v1633.js';
+import erOpioidLabelStartV1633 from './adapters/er-opioid-label-start-v1633.js';
 import anticoagSwitchClockV1633 from './adapters/anticoag-switch-clock-v1633.js';
 import doacPeriproceduralTimingV1633 from './adapters/doac-periprocedural-timing-v1633.js';
 import glp1TitrationCheckV1632 from './adapters/glp1-titration-check-v1632.js';
@@ -2208,6 +2211,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['fentanyl-patch-initial-dose-v1633', fentanylPatchInitialDoseV1633],
+  ['methadone-label-conversion-v1633', methadoneLabelConversionV1633],
+  ['er-opioid-label-start-v1633', erOpioidLabelStartV1633],
   ['anticoag-switch-clock-v1633', anticoagSwitchClockV1633],
   ['doac-periprocedural-timing-v1633', doacPeriproceduralTimingV1633],
   ['glp1-titration-check-v1632', glp1TitrationCheckV1632],

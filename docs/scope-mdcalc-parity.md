@@ -622,3 +622,9 @@ experience**.
 > v1633, Anticoagulant Switch: When to Start the Next Drug (FDA Labels) — [spec-v1633](spec-v1633.md), which adds `anticoag-switch-clock` — is 2136.)
 
 > v1633, DOAC Hold Before a Procedure (Labels and PAUSE) — [spec-v1633](spec-v1633.md), which adds `doac-periprocedural-timing` — is 2137.)
+
+> v1633, Fentanyl Patch Starting Dose From a Prior Opioid (FDA Label) — [spec-v1633](spec-v1633.md), which adds `fentanyl-patch-initial-dose` — is 2138.)
+
+> v1633, Methadone Starting Dose From Another Opioid (FDA Label) — [spec-v1633](spec-v1633.md), which adds `methadone-label-conversion` — is 2139.)
+
+> v1633, Hysingla ER, Butrans and Belbuca Starting Dose (FDA Labels) — [spec-v1633](spec-v1633.md), which adds `er-opioid-label-start` — is 2140.)

@@ -573,7 +573,9 @@
         "convert opioids",
         "opioid equivalent",
         "opioid dose conversion",
-        "tramadol mme"
+        "tramadol mme",
+        "fentanyl mme",
+        "methadone mme"
       ],
       "tile": "opioid-mme",
       "audience": "clinicians"
@@ -12485,6 +12487,39 @@
         "when to stop eliquis before surgery"
       ],
       "tile": "doac-periprocedural-timing",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "duragesic",
+        "fentanyl patch initial dose",
+        "morphine to fentanyl patch",
+        "convert to fentanyl patch",
+        "fentanyl patch conversion from morphine"
+      ],
+      "tile": "fentanyl-patch-initial-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "morphine to methadone conversion",
+        "convert to methadone from morphine",
+        "methadone conversion from morphine",
+        "rotate to methadone from morphine"
+      ],
+      "tile": "methadone-label-conversion",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hysingla",
+        "butrans",
+        "belbuca",
+        "hysingla conversion",
+        "butrans initial dose",
+        "belbuca initial dose"
+      ],
+      "tile": "er-opioid-label-start",
       "audience": "clinicians"
     }
   ]

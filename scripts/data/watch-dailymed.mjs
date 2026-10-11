@@ -42,6 +42,7 @@ export const SECTIONS = {
   '34066-1': 'Boxed Warning',
   '34073-7': 'Drug Interactions',
   '34092-7': 'Clinical Studies',
+  '34067-9': 'Indications and Usage',
 };
 
 const MONTHS = { jan: '01', feb: '02', mar: '03', apr: '04', may: '05', jun: '06', jul: '07', aug: '08', sep: '09', oct: '10', nov: '11', dec: '12' };
