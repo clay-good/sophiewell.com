@@ -528,14 +528,18 @@
     "setId": "ee95aa18-9f2f-40eb-9b4c-583bea6f36bf",
     "tools": [
       "radioactive-decay",
-      "radiopharm-dispense-volume"
+      "radiopharm-dispense-volume",
+      "generator-breakthrough-check",
+      "radiation-distance-shielding"
     ],
     "splVersion": 21,
     "publishedOn": "2026-06-18",
     "verifiedOn": "2026-10-12",
     "validThrough": "2027-10-12",
     "sections": {
-      "34089-3": "3fd6f17688fb1ca371a8ec77d3eeda523f57e5aa3eeeda2dbda9f6b2dadc2efe"
+      "34089-3": "3fd6f17688fb1ca371a8ec77d3eeda523f57e5aa3eeeda2dbda9f6b2dadc2efe",
+      "34068-7": "990df50161ea0ed4e6752ab2e1e464ffc187b3a163d2143495c939f9c3ae471f",
+      "34066-1": "f82d3106b4c7e3e560565b621f223e3a5ea6188b99b65e6184dde6a9fca4b022"
     }
   },
   {
@@ -2424,7 +2428,9 @@
     "setId": "3ae14c6b-3daf-4dd1-bbdb-e990fe8100e4",
     "tools": [
       "radioactive-decay",
-      "radiopharm-dispense-volume"
+      "radiopharm-dispense-volume",
+      "generator-breakthrough-check",
+      "radiation-distance-shielding"
     ],
     "splVersion": 17,
     "publishedOn": "2024-11-06",

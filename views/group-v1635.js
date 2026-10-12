@@ -3,7 +3,7 @@
 // occupational-dose-limit-check, sealed-source-leak-test, nrc-medical-event-screen,
 // rad-package-label-category, rad-package-receipt-check, ids-accountability-reconcile,
 // radioactive-decay, radiopharm-dispense-volume, patient-release-rg839,
-// nuc-med-breastfeeding-interruption.
+// nuc-med-breastfeeding-interruption, generator-breakthrough-check, radiation-distance-shielding.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -20,6 +20,8 @@ import * as RK from '../lib/radioactive-decay-v1635.js';
 import * as DV from '../lib/radiopharm-dispense-volume-v1635.js';
 import * as PR from '../lib/patient-release-rg839-v1635.js';
 import * as BF from '../lib/nuc-med-breastfeeding-interruption-v1635.js';
+import * as GB from '../lib/generator-breakthrough-check-v1635.js';
+import * as RS from '../lib/radiation-distance-shielding-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -304,6 +306,44 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(BF.nucMedBreastfeedingInterruption(args), o);
+    }));
+  },
+  'generator-breakthrough-check'(root) {
+    const pairs = [['gbc-generator', 'generator'], ['gbc-mo99', 'mo99MicroCi'], ['gbc-tc99m', 'tc99mMilliCi'], ['gbc-hours', 'hoursToAdministration'], ['gbc-aluminum', 'aluminumMcgPerMl'], ['gbc-sr82', 'sr82'], ['gbc-sr85', 'sr85'], ['gbc-volume', 'cumulativeVolumeL'], ['gbc-days', 'daysSinceCalibration']];
+    selectField(root, 'Generator', 'gbc-generator', GB.GENERATORS);
+    numField(root, 'Technetium generator: Mo-99 at elution, µCi', 'gbc-mo99', '');
+    numField(root, 'Technetium generator: Tc-99m at elution, mCi', 'gbc-tc99m', '');
+    numField(root, 'Technetium generator: hours from elution to administration (optional)', 'gbc-hours', '');
+    numField(root, 'Technetium generator: aluminum in the eluate, µg/mL (optional)', 'gbc-aluminum', '');
+    numField(root, 'Rubidium generator: Sr-82, µCi per mCi Rb-82', 'gbc-sr82', '');
+    numField(root, 'Rubidium generator: Sr-85, µCi per mCi Rb-82', 'gbc-sr85', '');
+    numField(root, 'Rubidium generator: cumulative eluate volume, L (optional)', 'gbc-volume', '');
+    numField(root, 'Rubidium generator: days since calibration (optional)', 'gbc-days', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = GB.generatorBreakthroughCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'radiation-distance-shielding'(root) {
+    const pairs = [['rds-rate', 'rate'], ['rds-distance', 'distance'], ['rds-new-distance', 'newDistance'], ['rds-shield', 'shield'], ['rds-thickness', 'thicknessCm'], ['rds-hvl', 'halfValueLayerCm'], ['rds-limit', 'doseLimit']];
+    numField(root, 'Measured dose rate, per hour (any unit; the answer is in the same unit)', 'rds-rate', '');
+    numField(root, 'Distance of the measurement', 'rds-distance', '');
+    numField(root, 'New distance (same unit)', 'rds-new-distance', '');
+    selectField(root, 'Lead shield: source (optional)', 'rds-shield', RS.SHIELDS);
+    numField(root, 'Lead thickness, cm', 'rds-thickness', '');
+    numField(root, 'Half-value layer in lead, cm (for another source)', 'rds-hvl', '');
+    numField(root, 'Dose to stay under, in the same dose unit (optional)', 'rds-limit', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = RS.radiationDistanceShielding(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
   },
 };

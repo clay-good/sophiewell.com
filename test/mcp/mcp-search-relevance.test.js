@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['molybdenum breakthrough limit technetium generator', ['generator-breakthrough-check']],
+  ['inverse square law dose rate at a new distance', ['radiation-distance-shielding']],
   ['can a patient be released after i-131 therapy', ['patient-release-rg839']],
   ['how long to stop breastfeeding after a nuclear medicine scan', ['nuc-med-breastfeeding-interruption']],
   ['radioactive decay technetium activity at a later time', ['radioactive-decay']],

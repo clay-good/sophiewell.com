@@ -12899,6 +12899,13 @@
       ],
       "tile": "patient-release-rg839",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "moly breakthrough"
+      ],
+      "tile": "generator-breakthrough-check",
+      "audience": "clinicians"
     }
   ]
 }

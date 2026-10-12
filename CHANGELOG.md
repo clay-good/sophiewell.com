@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Generator Breakthrough Check: Mo-99, Sr-82 and Sr-85 (10 CFR 35.204): the rule's limits beside
+  the generator label's, with the latest administration time for a technetium eluate.
+- Dose Rate at a Distance and Behind Lead: inverse square and the label attenuation tables for
+  Tc-99m and Rb-82, with a stay time. A planning estimate, not a shielding design.
 - Patient Release After a Radiopharmaceutical (10 CFR 35.75, NRC Regulatory Guide 8.39): the
   guide's release and instruction tables, its equation for an unlisted radionuclide, and the I-131
   patient-specific equation with the reader's occupancy factors.

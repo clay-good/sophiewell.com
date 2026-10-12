@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b0fb0ffe-d1e9-5bc1-8b72-6014467f68f3",
+  "serialNumber": "urn:uuid:55068311-cd9c-5425-8461-bec0fa98b356",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T01:47:29.885Z",
+    "timestamp": "2026-10-12T02:01:53.084Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2188 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2190 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "484ee1fb6cadef71a3f7285c560b53f60b478ebcec2fb5b39da544d6bddfa379"
+          "content": "c2bfbabe91cc2a460325dcdcdcfdbba076e0aa6803dcc9a23bfacfc1e6d45431"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141936"
+          "value": "142118"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c12ba6c793d21f5c474924bc77786f3cfd68c4e1d770e2e6bbd63a5f160f6458"
+          "content": "10e2ffb11cb31c4ddbd3c621ffdfb3e4a243e00f5194df726f5ef1d39739f716"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "612957"
+          "value": "613349"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "16c8587fb142c19227e241ba4a89ed922e9b509cd48c984df6f2654dfb4d1f9f"
+          "content": "e9890d2b44f51aeb0ef3fd25cebcbd0ba02fa174ce73fceef4854a957c2a3ef0"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "274748"
+          "value": "275026"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c8c778256ab1b34b059090f01f0b03c7b4c147eff3d218854833a0b56cb4922b"
+          "content": "1d51873badb1c4fbf9953208fdd0421fcd10208203d97c74cba91bee8546dbf3"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "130997"
+          "value": "131215"
         }
       ]
     },
@@ -9359,6 +9359,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/generator-breakthrough-check-v1635.js",
+      "type": "file",
+      "name": "lib/generator-breakthrough-check-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6fca38a9b2a727578ba7208c62b1a07898eb7c5aa9ba65e786b9104de4751409"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10996"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/gerdq-v679.js",
       "type": "file",
       "name": "lib/gerdq-v679.js",
@@ -15728,7 +15749,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2dd547a6edc606405846d74c5677d281f205d517fb4bdaba0d5ed264cf7a25a0"
+          "content": "69f167cc45fa9e3a8956fcddfa7b3f5683f687238911b0b66d74ff69e87f7e44"
         }
       ],
       "properties": [
@@ -15738,7 +15759,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2896389"
+          "value": "2898729"
         }
       ]
     },
@@ -21997,6 +22018,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10827"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/radiation-distance-shielding-v1635.js",
+      "type": "file",
+      "name": "lib/radiation-distance-shielding-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "775d2193e2ccf2f70e76ad6aa0a85f2af613be1015a52957244767ec779f254d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6381"
         }
       ]
     },
@@ -37646,6 +37688,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/generator-breakthrough-check-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/generator-breakthrough-check-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1cb849d2b5d8c98ae74ffd382b8c50f3196256eda111a9f482eac6d9fc77e5c5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2175"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gerdq-v679.js",
       "type": "file",
       "name": "mcp/adapters/gerdq-v679.js",
@@ -48797,6 +48860,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/radiation-distance-shielding-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/radiation-distance-shielding-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3d20f5fe992dc910524b4a39e60a20c61302cab32765f2ea1bb0422c6069715e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1718"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/radioactive-decay-v1635.js",
       "type": "file",
       "name": "mcp/adapters/radioactive-decay-v1635.js",
@@ -54893,7 +54977,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bde5dff3ce8ecdd56d3ff8864508b8f32600abceb419ad406ff448bf9f6d1ea5"
+          "content": "0fb562ebc13cba225d8a77104b8d20d25f279ddec4a3d61c62ff4a4c6bf629f7"
         }
       ],
       "properties": [
@@ -54903,7 +54987,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "145523"
+          "value": "145865"
         }
       ]
     },
@@ -59513,7 +59597,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fba36fafb03801698718de40a7fa1131c5e1c4d852258834744bbc681f6dd51c"
+          "content": "5347227e8b083dae2d3f7df54fb94e975e99469829912458b70d3c1f0fcf5fa9"
         }
       ],
       "properties": [
@@ -59523,7 +59607,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "20219"
+          "value": "23348"
         }
       ]
     },
@@ -90728,6 +90812,7 @@
         "urn:sophiewell:file:source:lib/gds-v295.js",
         "urn:sophiewell:file:source:lib/geissler-carpal-v415.js",
         "urn:sophiewell:file:source:lib/gell-coombs-v426.js",
+        "urn:sophiewell:file:source:lib/generator-breakthrough-check-v1635.js",
         "urn:sophiewell:file:source:lib/gerdq-v679.js",
         "urn:sophiewell:file:source:lib/geri-v241.js",
         "urn:sophiewell:file:source:lib/ghent-marfan-v821.js",
@@ -91330,6 +91415,7 @@
         "urn:sophiewell:file:source:lib/rachs1-v541.js",
         "urn:sophiewell:file:source:lib/rad-package-label-category-v1635.js",
         "urn:sophiewell:file:source:lib/rad-package-receipt-check-v1635.js",
+        "urn:sophiewell:file:source:lib/radiation-distance-shielding-v1635.js",
         "urn:sophiewell:file:source:lib/radioactive-decay-v1635.js",
         "urn:sophiewell:file:source:lib/radiology-v165.js",
         "urn:sophiewell:file:source:lib/radiopharm-dispense-volume-v1635.js",
@@ -93020,6 +93106,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/gds-v295.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/geissler-carpal-v415.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gell-coombs-v426.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/generator-breakthrough-check-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gerdq-v679.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/geri-v241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ghent-marfan-v821.js",
@@ -93551,6 +93638,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/rachs1-v541.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rad-package-label-category-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rad-package-receipt-check-v1635.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/radiation-distance-shielding-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/radioactive-decay-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/radiology-v165.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/radiopharm-dispense-volume-v1635.js",
@@ -93945,7 +94033,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "b0fb0ffed1e92bc1"
+      "value": "55068311cd9c3425"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -93957,7 +94045,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3536"
+      "value": "3540"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

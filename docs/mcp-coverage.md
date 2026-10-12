@@ -9268,6 +9268,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nuc-med-breastfeeding-interruption-v1635.js (spec-v1635: Breastfeeding interruption (RG 8.39 Rev. 1 Table 3) — clinical disclaimer)
 - `nuc-med-breastfeeding-interruption`
 
+### lib/generator-breakthrough-check-v1635.js (spec-v1635: Generator breakthrough (10 CFR 35.204; Technelite, Cardiogen-82) — administrative disclaimer)
+- `generator-breakthrough-check`
+
+### lib/radiation-distance-shielding-v1635.js (spec-v1635: Inverse square and lead shielding (label attenuation tables) — administrative disclaimer)
+- `radiation-distance-shielding`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

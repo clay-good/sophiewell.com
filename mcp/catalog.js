@@ -1040,6 +1040,8 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import generatorBreakthroughCheckV1635 from './adapters/generator-breakthrough-check-v1635.js';
+import radiationDistanceShieldingV1635 from './adapters/radiation-distance-shielding-v1635.js';
 import patientReleaseRg839V1635 from './adapters/patient-release-rg839-v1635.js';
 import nucMedBreastfeedingInterruptionV1635 from './adapters/nuc-med-breastfeeding-interruption-v1635.js';
 import radioactiveDecayV1635 from './adapters/radioactive-decay-v1635.js';
@@ -2259,6 +2261,8 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['generator-breakthrough-check-v1635', generatorBreakthroughCheckV1635],
+  ['radiation-distance-shielding-v1635', radiationDistanceShieldingV1635],
   ['patient-release-rg839-v1635', patientReleaseRg839V1635],
   ['nuc-med-breastfeeding-interruption-v1635', nucMedBreastfeedingInterruptionV1635],
   ['radioactive-decay-v1635', radioactiveDecayV1635],

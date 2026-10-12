@@ -724,3 +724,7 @@ experience**.
 > v1635, Patient Release After a Radiopharmaceutical (10 CFR 35.75, NRC Regulatory Guide 8.39) — [spec-v1635](spec-v1635.md), which adds `patient-release-rg839` — is 2187.)
 
 > v1635, Breastfeeding Interruption After a Radiopharmaceutical (NRC Regulatory Guide 8.39) — [spec-v1635](spec-v1635.md), which adds `nuc-med-breastfeeding-interruption` — is 2188.)
+
+> v1635, Generator Breakthrough Check: Mo-99, Sr-82 and Sr-85 (10 CFR 35.204) — [spec-v1635](spec-v1635.md), which adds `generator-breakthrough-check` — is 2189.)
+
+> v1635, Dose Rate at a Distance and Behind Lead (Inverse Square, Label Attenuation Tables) — [spec-v1635](spec-v1635.md), which adds `radiation-distance-shielding` — is 2190.)

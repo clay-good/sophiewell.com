@@ -770,6 +770,8 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as generatorBreakthroughCheckV1635 from '../../lib/generator-breakthrough-check-v1635.js';
+import * as radiationDistanceShieldingV1635 from '../../lib/radiation-distance-shielding-v1635.js';
 import * as patientReleaseRg839V1635 from '../../lib/patient-release-rg839-v1635.js';
 import * as nucMedBreastfeedingInterruptionV1635 from '../../lib/nuc-med-breastfeeding-interruption-v1635.js';
 import * as radioactiveDecayV1635 from '../../lib/radioactive-decay-v1635.js';
@@ -1773,6 +1775,8 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'generator-breakthrough-check-v1635.js': generatorBreakthroughCheckV1635,
+  'radiation-distance-shielding-v1635.js': radiationDistanceShieldingV1635,
   'patient-release-rg839-v1635.js': patientReleaseRg839V1635,
   'nuc-med-breastfeeding-interruption-v1635.js': nucMedBreastfeedingInterruptionV1635,
   'radioactive-decay-v1635.js': radioactiveDecayV1635,

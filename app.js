@@ -2761,6 +2761,8 @@ const UTILITIES = [
   { id: 'radiopharm-dispense-volume', name: 'Radiopharmaceutical Volume to Draw for a Prescribed Activity (10 CFR 35.63)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'patient-release-rg839', name: 'Patient Release After a Radiopharmaceutical (10 CFR 35.75, NRC Regulatory Guide 8.39)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'nuc-med-breastfeeding-interruption', name: 'Breastfeeding Interruption After a Radiopharmaceutical (NRC Regulatory Guide 8.39)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'generator-breakthrough-check', name: 'Generator Breakthrough Check: Mo-99, Sr-82 and Sr-85 (10 CFR 35.204)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'radiation-distance-shielding', name: 'Dose Rate at a Distance and Behind Lead (Inverse Square, Label Attenuation Tables)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-
