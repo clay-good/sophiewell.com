@@ -59,16 +59,24 @@
 // spec-v1635: `ind-safety-report-clock` and `fda-adverse-event-report-clock` are filing clocks, like
 // `appeal-deadline`: the due date comes from the dates entered and does not move, and the sentence beside
 // it ("That is 43 days from today", later "That was 322 days ago") is the countdown the tool is for.
+// spec-v1637: the DEA date tools are filing clocks: the dates come from the dates entered and do not move, and
+// the line beside them ("That is 19 days from today") is the countdown.
 export const CLOCK_DEPENDENT = new Set([
   'appeal-deadline',
   'claims-pct-medicare',
   'code-blue-clock',
+  'cs-biennial-inventory',
+  'cs-disposal-clock',
+  'cs-theft-loss-clock',
+  'dea-222-validity',
+  'dea-registration-renewal',
   'device-day-counter',
   'lcd-diagnosis-check',
   'due-date',
   'fda-adverse-event-report-clock',
   'ind-annual-report-due',
   'ind-safety-report-clock',
+  'mat-injection-admin-deadline',
   'overpayment-60day',
   'pa-turnaround',
   'pharmacy-spread-check',

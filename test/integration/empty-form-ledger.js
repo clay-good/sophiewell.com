@@ -113,6 +113,17 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // and three required selects. The only number fields are the optional rate panel (events and
   // patient days); with them blank the result gives the category and no rate.
   "cdi-labid-category",
+  // spec-v1637: the due date comes from the required date of the last inventory. The number fields are
+  // an optional shorter state interval and an optional container size; with them blank the federal
+  // two-year date is given and the result says no state interval was entered.
+  "cs-biennial-inventory",
+  // spec-v1637: the last valid shipment date comes from the execution date and two required selects.
+  // The only text field is the optional list of shipment dates to check against it.
+  "dea-222-validity",
+  // spec-v1637: the ceiling comes from a required medication select and the admission and dispensing
+  // dates. The number fields are the treatment day (an alternative to the dates), a proposed supply, a
+  // state ceiling and a first-day dose, all optional; the result says when none was checked.
+  "otp-take-home-limit",
   "gcsf-timing-check",
   "labor-care-guide-alert",
   // spec-v1633: the calendar comes from a required schedule select and a required start date. The number

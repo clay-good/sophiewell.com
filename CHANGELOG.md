@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Ten federal controlled-substance tools, each from the regulation's own text: DEA Registration
+  Expiration and Renewal Window; Controlled-Substance Inventory Due Date and Count Method; DEA Form
+  222 and CSOS Order Validity; Controlled-Substance Theft or Loss Report Clock; the Five Percent
+  Rule; Nonprescription Controlled-Substance Sale Limit; Pseudoephedrine and Ephedrine Sales Limit;
+  Methadone Take-Home Supply Limit; Pharmacy-Delivered Injectable Buprenorphine Administer-By Date;
+  and Controlled-Substance Disposal Deadlines.
 - Count Antimicrobial Days and Days Present From Rows (NHSN): monthly counts by agent, route and
   location from pasted administration and stay rows, with the rows it could not place.
 - Cumulative Antibiogram From an Isolate List (AHRQ Specification): percent susceptible by

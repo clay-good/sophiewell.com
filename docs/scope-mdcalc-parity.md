@@ -796,3 +796,23 @@ experience**.
 > v1636, Count Antimicrobial Days and Days Present From Rows (NHSN) — [spec-v1636](spec-v1636.md), which adds `antimicrobial-day-counter` — is 2223.)
 
 > v1636, Cumulative Antibiogram From an Isolate List (AHRQ Specification) — [spec-v1636](spec-v1636.md), which adds `antibiogram-builder` — is 2224.)
+
+> v1637, DEA Registration Expiration and Renewal Window — [spec-v1637](spec-v1637.md), which adds `dea-registration-renewal` — is 2225.)
+
+> v1637, Controlled-Substance Inventory Due Date and Count Method — [spec-v1637](spec-v1637.md), which adds `cs-biennial-inventory` — is 2226.)
+
+> v1637, DEA Form 222 and CSOS Order Validity (60 Days) — [spec-v1637](spec-v1637.md), which adds `dea-222-validity` — is 2227.)
+
+> v1637, Controlled-Substance Theft or Loss Report Clock (DEA Form 106) — [spec-v1637](spec-v1637.md), which adds `cs-theft-loss-clock` — is 2228.)
+
+> v1637, Five Percent Rule: Controlled-Substance Distribution by a Dispenser — [spec-v1637](spec-v1637.md), which adds `cs-five-percent-rule` — is 2229.)
+
+> v1637, Nonprescription Controlled-Substance Sale Limit (48 Hours) — [spec-v1637](spec-v1637.md), which adds `c5-otc-sale-limit` — is 2230.)
+
+> v1637, Methadone Take-Home Supply Limit (Opioid Treatment Program) — [spec-v1637](spec-v1637.md), which adds `otp-take-home-limit` — is 2231.)
+
+> v1637, Pharmacy-Delivered Injectable Buprenorphine: Administer-By Date — [spec-v1637](spec-v1637.md), which adds `mat-injection-admin-deadline` — is 2232.)
+
+> v1637, Controlled-Substance Disposal Deadlines (Reverse Distributor, Long-Term Care) — [spec-v1637](spec-v1637.md), which adds `cs-disposal-clock` — is 2233.)
+
+> v1637, Pseudoephedrine and Ephedrine Sales Limit (Base Grams) — [spec-v1637](spec-v1637.md), which adds `cmea-sales-limit` — is 2234.)

@@ -13146,8 +13146,32 @@
       "audience": "clinicians"
     },
     {
-      "phrases": ["antibiogram"],
+      "phrases": [
+        "antibiogram"
+      ],
       "tile": "antibiogram-builder",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "biennial"
+      ],
+      "tile": "cs-biennial-inventory",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "csos"
+      ],
+      "tile": "dea-222-validity",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pseudoephedrine",
+        "sudafed"
+      ],
+      "tile": "cmea-sales-limit",
       "audience": "clinicians"
     }
   ]

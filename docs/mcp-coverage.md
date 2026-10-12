@@ -9376,6 +9376,36 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/antibiogram-builder-v1636.js (spec-v1636: Cumulative antibiogram from an isolate list (AHRQ specification) — administrative disclaimer)
 - `antibiogram-builder`
 
+### lib/dea-registration-renewal-v1637.js (spec-v1637: DEA registration expiration and renewal window — administrative disclaimer)
+- `dea-registration-renewal`
+
+### lib/cs-biennial-inventory-v1637.js (spec-v1637: Controlled-substance inventory due date and count method — administrative disclaimer)
+- `cs-biennial-inventory`
+
+### lib/dea-222-validity-v1637.js (spec-v1637: DEA Form 222 and CSOS order validity (60 days) — administrative disclaimer)
+- `dea-222-validity`
+
+### lib/cs-theft-loss-clock-v1637.js (spec-v1637: Controlled-substance theft or loss report clock (DEA Form 106) — administrative disclaimer)
+- `cs-theft-loss-clock`
+
+### lib/cs-five-percent-rule-v1637.js (spec-v1637: Five percent rule: controlled-substance distribution by a dispenser — administrative disclaimer)
+- `cs-five-percent-rule`
+
+### lib/c5-otc-sale-limit-v1637.js (spec-v1637: Nonprescription controlled-substance sale limit (48 hours) — administrative disclaimer)
+- `c5-otc-sale-limit`
+
+### lib/otp-take-home-limit-v1637.js (spec-v1637: Methadone take-home supply limit (opioid treatment program) — administrative disclaimer)
+- `otp-take-home-limit`
+
+### lib/mat-injection-admin-deadline-v1637.js (spec-v1637: Pharmacy-delivered injectable buprenorphine: administer-by date — administrative disclaimer)
+- `mat-injection-admin-deadline`
+
+### lib/cs-disposal-clock-v1637.js (spec-v1637: Controlled-substance disposal deadlines (reverse distributor, long-term care) — administrative disclaimer)
+- `cs-disposal-clock`
+
+### lib/cmea-sales-limit-v1637.js (spec-v1637: Pseudoephedrine and ephedrine sales limit (base grams) — administrative disclaimer)
+- `cmea-sales-limit`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

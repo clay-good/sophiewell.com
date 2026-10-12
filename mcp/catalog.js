@@ -1040,6 +1040,16 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import deaRegistrationRenewalV1637 from './adapters/dea-registration-renewal-v1637.js';
+import csBiennialInventoryV1637 from './adapters/cs-biennial-inventory-v1637.js';
+import dea222ValidityV1637 from './adapters/dea-222-validity-v1637.js';
+import csTheftLossClockV1637 from './adapters/cs-theft-loss-clock-v1637.js';
+import csFivePercentRuleV1637 from './adapters/cs-five-percent-rule-v1637.js';
+import c5OtcSaleLimitV1637 from './adapters/c5-otc-sale-limit-v1637.js';
+import otpTakeHomeLimitV1637 from './adapters/otp-take-home-limit-v1637.js';
+import matInjectionAdminDeadlineV1637 from './adapters/mat-injection-admin-deadline-v1637.js';
+import csDisposalClockV1637 from './adapters/cs-disposal-clock-v1637.js';
+import cmeaSalesLimitV1637 from './adapters/cmea-sales-limit-v1637.js';
 import antimicrobialDayCounterV1636 from './adapters/antimicrobial-day-counter-v1636.js';
 import antibiogramBuilderV1636 from './adapters/antibiogram-builder-v1636.js';
 import chelationDoseV1636 from './adapters/chelation-dose-v1636.js';
@@ -2295,6 +2305,16 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['dea-registration-renewal-v1637', deaRegistrationRenewalV1637],
+  ['cs-biennial-inventory-v1637', csBiennialInventoryV1637],
+  ['dea-222-validity-v1637', dea222ValidityV1637],
+  ['cs-theft-loss-clock-v1637', csTheftLossClockV1637],
+  ['cs-five-percent-rule-v1637', csFivePercentRuleV1637],
+  ['c5-otc-sale-limit-v1637', c5OtcSaleLimitV1637],
+  ['otp-take-home-limit-v1637', otpTakeHomeLimitV1637],
+  ['mat-injection-admin-deadline-v1637', matInjectionAdminDeadlineV1637],
+  ['cs-disposal-clock-v1637', csDisposalClockV1637],
+  ['cmea-sales-limit-v1637', cmeaSalesLimitV1637],
   ['antimicrobial-day-counter-v1636', antimicrobialDayCounterV1636],
   ['antibiogram-builder-v1636', antibiogramBuilderV1636],
   ['chelation-dose-v1636', chelationDoseV1636],

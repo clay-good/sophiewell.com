@@ -770,6 +770,16 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as deaRegistrationRenewalV1637 from '../../lib/dea-registration-renewal-v1637.js';
+import * as csBiennialInventoryV1637 from '../../lib/cs-biennial-inventory-v1637.js';
+import * as dea222ValidityV1637 from '../../lib/dea-222-validity-v1637.js';
+import * as csTheftLossClockV1637 from '../../lib/cs-theft-loss-clock-v1637.js';
+import * as csFivePercentRuleV1637 from '../../lib/cs-five-percent-rule-v1637.js';
+import * as c5OtcSaleLimitV1637 from '../../lib/c5-otc-sale-limit-v1637.js';
+import * as otpTakeHomeLimitV1637 from '../../lib/otp-take-home-limit-v1637.js';
+import * as matInjectionAdminDeadlineV1637 from '../../lib/mat-injection-admin-deadline-v1637.js';
+import * as csDisposalClockV1637 from '../../lib/cs-disposal-clock-v1637.js';
+import * as cmeaSalesLimitV1637 from '../../lib/cmea-sales-limit-v1637.js';
 import * as antimicrobialDayCounterV1636 from '../../lib/antimicrobial-day-counter-v1636.js';
 import * as antibiogramBuilderV1636 from '../../lib/antibiogram-builder-v1636.js';
 import * as chelationDoseV1636 from '../../lib/chelation-dose-v1636.js';
@@ -1809,6 +1819,16 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'dea-registration-renewal-v1637.js': deaRegistrationRenewalV1637,
+  'cs-biennial-inventory-v1637.js': csBiennialInventoryV1637,
+  'dea-222-validity-v1637.js': dea222ValidityV1637,
+  'cs-theft-loss-clock-v1637.js': csTheftLossClockV1637,
+  'cs-five-percent-rule-v1637.js': csFivePercentRuleV1637,
+  'c5-otc-sale-limit-v1637.js': c5OtcSaleLimitV1637,
+  'otp-take-home-limit-v1637.js': otpTakeHomeLimitV1637,
+  'mat-injection-admin-deadline-v1637.js': matInjectionAdminDeadlineV1637,
+  'cs-disposal-clock-v1637.js': csDisposalClockV1637,
+  'cmea-sales-limit-v1637.js': cmeaSalesLimitV1637,
   'antimicrobial-day-counter-v1636.js': antimicrobialDayCounterV1636,
   'antibiogram-builder-v1636.js': antibiogramBuilderV1636,
   'chelation-dose-v1636.js': chelationDoseV1636,

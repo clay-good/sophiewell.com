@@ -1,6 +1,6 @@
 # spec-v1637 — Federal pharmacy law as arithmetic: controlled substances, supply chain, product identifiers and packaging limits
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 24 new tools, 1 of them build-gated (`dea-number-check`).
+**Status:** In progress, October 12, 2026: 10 of 24 tools built (see Build status). 24 new tools, 1 of them build-gated (`dea-number-check`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 The pharmacist-in-charge, the compliance officer and the receiving technician spend their day
@@ -892,4 +892,20 @@ changed.
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+Each built tool was re-read in the eCFR as current October 8, 2026, on October 12, 2026. All are group Q
+in `views/group-v1637.js`.
+
+| Tool | State |
+|---|---|
+| 2. `dea-registration-renewal` | Built. 21 CFR 1301.13(b), (d) and 1301.36(i) match the spec; DEA's registration page was re-read for the one-calendar-month reinstatement. The reader chooses the kind of registrant (60 or 120 days). A submitted application inside the last 45 days shows the rule's sentence and DEA's page sentence side by side. The first-period check (28 to 39 months) runs only when a first registration date is entered. **Not built:** the registration period for the 1301.13(c) group, and the 2025 conference slide's "30 days" (not re-read). |
+| 3. `cs-biennial-inventory` | Built. The second anniversary is given as the last date, with a sentence that the rule does not say whether the anniversary itself is "within two years". A sealed container gets the paragraph that applies to it instead of a count method. |
+| 5. `dea-222-validity` | Built. Day 60 is treated as valid, as specified. The purchaser (ordinary or Defense Supply Center) is a required choice. |
+| 6. `cs-theft-loss-clock` | Built. One business day skips Saturdays, Sundays, federal holidays and the closed days entered; when any day is skipped, the day after discovery is shown as the strictest reading. |
+| 7. `cs-five-percent-rule` | Built. The comparison is exact, so 5,001 of 100,001 units reads "just over 5%". **Added at build:** 1307.11(c) takes long-term care automated dispensing system units out of the count toward the limit and does not say whether they stay in the total, so the share is shown both ways and the headroom uses the smaller figure. |
+| 10. `c5-otc-sale-limit` | Built. The time of the sale and each earlier sale are entered, so the tool reads no clock. A sale exactly 48 hours earlier is counted as inside the period. Each of the four limits is its own class; earlier sales of another class are not counted, and the result says so. |
+| 11. `cmea-sales-limit` | Built. Every tablet and liquid cell of DEA's 3.6 g and 7.5 g charts, and the 9 g tablet column, is a unit test against the unrounded weight ratios. 21 U.S.C. 844(a) and 830 were not re-read at build; the eCFR sections were. The logbook exception is stated only when the labeled amount is 60 mg or less. |
+| 12. `otp-take-home-limit` | Built. The admission date is counted as day 1, with a sentence that the rule does not say; the reader may enter the treatment day instead. It reads no clock. |
+| 15. `mat-injection-admin-deadline` | Built on 21 CFR 1306.07(f)(5): 45 days. |
+| 16. `cs-disposal-clock` | Built. For the two three-business-day rules the third calendar day is shown beside the business-day date when they differ. |
+
+Left: 1 (build-gated), 4, 8, 9, 13, 14, 17 to 24, and the backfills.
