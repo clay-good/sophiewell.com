@@ -9256,6 +9256,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ids-accountability-reconcile-v1635.js (spec-v1635: Study drug accountability (21 CFR 312.62(a)) — administrative disclaimer)
 - `ids-accountability-reconcile`
 
+### lib/radioactive-decay-v1635.js (spec-v1635: Radioactive decay with label half-lives (11 label rows; 10 CFR 35.92) — administrative disclaimer)
+- `radioactive-decay`
+
+### lib/radiopharm-dispense-volume-v1635.js (spec-v1635: Radiopharmaceutical dispense volume (10 CFR 35.63) — administrative disclaimer)
+- `radiopharm-dispense-volume`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

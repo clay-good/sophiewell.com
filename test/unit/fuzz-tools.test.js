@@ -770,6 +770,8 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as radioactiveDecayV1635 from '../../lib/radioactive-decay-v1635.js';
+import * as radiopharmDispenseVolumeV1635 from '../../lib/radiopharm-dispense-volume-v1635.js';
 import * as radPackageReceiptCheckV1635 from '../../lib/rad-package-receipt-check-v1635.js';
 import * as idsAccountabilityReconcileV1635 from '../../lib/ids-accountability-reconcile-v1635.js';
 import * as nrcMedicalEventScreenV1635 from '../../lib/nrc-medical-event-screen-v1635.js';
@@ -1769,6 +1771,8 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'radioactive-decay-v1635.js': radioactiveDecayV1635,
+  'radiopharm-dispense-volume-v1635.js': radiopharmDispenseVolumeV1635,
   'rad-package-receipt-check-v1635.js': radPackageReceiptCheckV1635,
   'ids-accountability-reconcile-v1635.js': idsAccountabilityReconcileV1635,
   'nrc-medical-event-screen-v1635.js': nrcMedicalEventScreenV1635,

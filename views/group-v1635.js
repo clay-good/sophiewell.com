@@ -1,7 +1,8 @@
 // spec-v1635: oncology pharmacy, investigational drug service and nuclear pharmacy.
 // ind-safety-report-clock, emergency-ind-clock, ind-annual-report-due, trial-record-retention,
 // occupational-dose-limit-check, sealed-source-leak-test, nrc-medical-event-screen,
-// rad-package-label-category, rad-package-receipt-check, ids-accountability-reconcile.
+// rad-package-label-category, rad-package-receipt-check, ids-accountability-reconcile,
+// radioactive-decay, radiopharm-dispense-volume.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -14,6 +15,8 @@ import * as ME from '../lib/nrc-medical-event-screen-v1635.js';
 import * as RP from '../lib/rad-package-label-category-v1635.js';
 import * as RR from '../lib/rad-package-receipt-check-v1635.js';
 import * as IR from '../lib/ids-accountability-reconcile-v1635.js';
+import * as RK from '../lib/radioactive-decay-v1635.js';
+import * as DV from '../lib/radiopharm-dispense-volume-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -225,6 +228,49 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(IR.idsAccountabilityReconcile(args), o);
+    }));
+  },
+  'radioactive-decay'(root) {
+    const pairs = [['rdk-nuclide', 'nuclide'], ['rdk-half-life', 'halfLife'], ['rdk-half-life-unit', 'halfLifeUnit'], ['rdk-activity', 'activity'], ['rdk-unit', 'unit'], ['rdk-calibration', 'calibration'], ['rdk-target', 'target'], ['rdk-target-activity', 'targetActivity']];
+    selectField(root, 'Radionuclide (half-life from its FDA label)', 'rdk-nuclide', RK.NUCLIDES);
+    numField(root, 'Half-life, for another radionuclide', 'rdk-half-life', '');
+    selectField(root, 'Half-life unit', 'rdk-half-life-unit', RK.HALF_LIFE_UNITS);
+    numField(root, 'Activity at calibration', 'rdk-activity', '');
+    selectField(root, 'Activity unit', 'rdk-unit', RK.ACTIVITY_UNITS);
+    dateField(root, 'Calibration date and time', 'rdk-calibration', 'datetime-local');
+    dateField(root, 'Target date and time (earlier than calibration works too)', 'rdk-target', 'datetime-local');
+    numField(root, 'Or a target activity, to get the time it is reached', 'rdk-target-activity', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = RK.radioactiveDecay(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'radiopharm-dispense-volume'(root) {
+    const pairs = [['rdv-nuclide', 'nuclide'], ['rdv-half-life', 'halfLife'], ['rdv-half-life-unit', 'halfLifeUnit'], ['rdv-unit', 'unit'], ['rdv-vial-activity', 'vialActivity'], ['rdv-vial-volume', 'vialVolume'], ['rdv-calibration', 'calibration'], ['rdv-prescribed', 'prescribed'], ['rdv-draw', 'draw'], ['rdv-administration', 'administration'], ['rdv-measured', 'measured'], ['rdv-range-low', 'rangeLow'], ['rdv-range-high', 'rangeHigh']];
+    selectField(root, 'Radionuclide (half-life from its FDA label)', 'rdv-nuclide', RK.NUCLIDES);
+    numField(root, 'Half-life, for another radionuclide', 'rdv-half-life', '');
+    selectField(root, 'Half-life unit', 'rdv-half-life-unit', RK.HALF_LIFE_UNITS);
+    selectField(root, 'Activity unit (vial and prescription)', 'rdv-unit', RK.ACTIVITY_UNITS);
+    numField(root, 'Vial activity at calibration', 'rdv-vial-activity', '');
+    numField(root, 'Vial volume, mL', 'rdv-vial-volume', '');
+    dateField(root, 'Vial calibration date and time', 'rdv-calibration', 'datetime-local');
+    numField(root, 'Prescribed activity at administration', 'rdv-prescribed', '');
+    dateField(root, 'Draw date and time', 'rdv-draw', 'datetime-local');
+    dateField(root, 'Administration date and time (blank if given when drawn)', 'rdv-administration', 'datetime-local');
+    numField(root, 'Measured activity at draw time (optional)', 'rdv-measured', '');
+    numField(root, 'Prescribed range, lower end (optional)', 'rdv-range-low', '');
+    numField(root, 'Prescribed range, upper end (optional)', 'rdv-range-high', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = DV.radiopharmDispenseVolume(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
   },
 };

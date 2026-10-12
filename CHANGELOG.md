@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Radioactive Decay, Precalibration and Activity Units (Label Half-Lives): activity at another
+  time or the time to a target, in curie and becquerel units, with each half-life tied to its FDA
+  label.
+- Radiopharmaceutical Volume to Draw for a Prescribed Activity (10 CFR 35.63): the volume, the
+  syringe reading at draw time, and the range and 20% check for a measured dosage.
 - Receiving a Radioactive Package (10 CFR 20.1906): the 3-hour monitoring deadline, which
   monitoring applies, a wipe in dpm/cm² against the limit, and the dose-rate limits.
 - Study Drug Accountability and Pill-Count Compliance (21 CFR 312.62): compliance per visit and

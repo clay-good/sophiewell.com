@@ -12884,6 +12884,14 @@
       ],
       "tile": "nrc-medical-event-screen",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "becquerel",
+        "precalibration"
+      ],
+      "tile": "radioactive-decay",
+      "audience": "clinicians"
     }
   ]
 }

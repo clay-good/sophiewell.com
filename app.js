@@ -2757,6 +2757,8 @@ const UTILITIES = [
   { id: 'rad-package-label-category', name: 'Radioactive Package Label Category and Transport Index (49 CFR 172.403)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'rad-package-receipt-check', name: 'Receiving a Radioactive Package (10 CFR 20.1906)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'ids-accountability-reconcile', name: 'Study Drug Accountability and Pill-Count Compliance (21 CFR 312.62)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'radioactive-decay', name: 'Radioactive Decay, Precalibration and Activity Units (Label Half-Lives)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'radiopharm-dispense-volume', name: 'Radiopharmaceutical Volume to Draw for a Prescribed Activity (10 CFR 35.63)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

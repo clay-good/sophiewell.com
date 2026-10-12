@@ -76,6 +76,22 @@
     }
   },
   {
+    "label": "AdreView (iobenguane I 123)",
+    "labeler": "MEDI-PHYSICS INC.",
+    "setId": "c89d3ecc-4f4c-4566-8808-79152344194d",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 9,
+    "publishedOn": "2024-01-12",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34089-3": "adbd07ceaf8e2a4ff14f0fc24a4037deae8c2ce9c1512763622825d37ff6938a"
+    }
+  },
+  {
     "label": "Aggrastat (tirofiban), Medicure",
     "labeler": "MEDICURE INTERNATIONAL INC",
     "setId": "fe0ced75-ccbf-4d2e-bd0d-b57e60ab913f",
@@ -150,6 +166,22 @@
     "sections": {
       "34068-7": "8ad06a314e421dcc4ac2eabbb83683b996549eb20ef2011f54c1920c9a82cc6b",
       "34089-3": "01da29a43eb9ac0795c08b90dbeed73e2719e011e48d12031a28ec6a4fcf6146"
+    }
+  },
+  {
+    "label": "Ammonia N 13 injection, Ionetix",
+    "labeler": "IONETIX CORPORATION",
+    "setId": "61e196ba-3812-4ffd-8032-12b215378fef",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2026-03-30",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34089-3": "38bf98a2b10b6bcd38e820005187a18a69d24ee33baeb97421a5ac991c8b9e4b"
     }
   },
   {
@@ -488,6 +520,22 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "4edb8721cceb197f5adbdc0197f2b91d42642b91e0862ef4c96989033df7d5e4"
+    }
+  },
+  {
+    "label": "Cardiogen-82 (rubidium Rb 82 generator)",
+    "labeler": "BRACCO DIAGNOSTICS INC",
+    "setId": "ee95aa18-9f2f-40eb-9b4c-583bea6f36bf",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 21,
+    "publishedOn": "2026-06-18",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34089-3": "3fd6f17688fb1ca371a8ec77d3eeda523f57e5aa3eeeda2dbda9f6b2dadc2efe"
     }
   },
   {
@@ -1088,6 +1136,22 @@
     }
   },
   {
+    "label": "Fludeoxyglucose F 18 injection, Biomedical Research Foundation",
+    "labeler": "BIOMEDICAL RESEARCH FOUNDATION OF NORTHWEST LOUISIANA",
+    "setId": "1deaaa92-1c98-4295-8aa6-7a70bc29f55d",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 13,
+    "publishedOn": "2026-06-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34089-3": "e35b933c471602f154a54fb68bec26d586603d49de98239f3486ff93f3f10db9"
+    }
+  },
+  {
     "label": "Fosamax (alendronate), Organon",
     "labeler": "ORGANON LLC",
     "setId": "14e931fd-2c5f-4d90-b7db-5980706f4a56",
@@ -1145,6 +1209,22 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "1d63290ca9fdd05f02c9a8f88c063ff0163af2ea2bf903673d45262eab0184e9"
+    }
+  },
+  {
+    "label": "Hicon (sodium iodide I 131)",
+    "labeler": "JUBILANT DRAXIMAGE INC., DBA JUBILANT RADIOPHARMA",
+    "setId": "524a0dac-6e2b-2c0c-04b4-76d85dba63c5",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2025-01-31",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34089-3": "bfc560381fe67bb9d4f966b2a54451032fe9e2241522434a6bfda97d11416f27"
     }
   },
   {
@@ -1539,6 +1619,22 @@
     }
   },
   {
+    "label": "Lutathera (lutetium Lu 177 dotatate)",
+    "labeler": "ADVANCED ACCELERATOR APPLICATIONS USA, INC",
+    "setId": "72d1a024-00b7-418a-b36e-b2cb48f2ab55",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 12,
+    "publishedOn": "2026-01-16",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34089-3": "2d708db88868417a51e1ecbcdeea390b483e3ffd5eb457cc63cd0101791c5946"
+    }
+  },
+  {
     "label": "Lyrica (pregabalin), Pfizer",
     "labeler": "PARKE-DAVIS DIV OF PFIZER INC",
     "setId": "60185c88-ecfd-46f9-adb9-b97c6b00a553",
@@ -1783,6 +1879,23 @@
     }
   },
   {
+    "label": "Netspot (gallium Ga 68 dotatate kit)",
+    "labeler": "ADVANCED ACCELERATOR APPLICATIONS USA, INC",
+    "setId": "b2b3be70-17d8-4093-896c-f1c54a2cf242",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 23,
+    "publishedOn": "2026-07-07",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "004abf04be1e27fc601267a21287b6291aa8f6fdb1e4a11b4423d86d154458ba",
+      "34089-3": "51b98aaaa904f1482002fbc5b93c55eca304067ed480cda226775677cd736316"
+    }
+  },
+  {
     "label": "Neurontin (gabapentin), Viatris",
     "labeler": "VIATRIS SPECIALTY LLC",
     "setId": "97935fd9-1d4a-43b6-a5d9-de994591187b",
@@ -1810,6 +1923,22 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "dce45a91d6a58ffa64ad6d1f3e9d16834d54f81514909f274b7321a741ee770e"
+    }
+  },
+  {
+    "label": "Octreoscan (indium In 111 pentetreotide)",
+    "labeler": "CURIUM US LLC",
+    "setId": "93d8f3b2-1216-41dc-a63d-0e812b33891d",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2022-02-22",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34089-3": "e88314be13feef74838ee56ff941bac108b66a633ad272a6152d93fe974f8169"
     }
   },
   {
@@ -2290,6 +2419,22 @@
     }
   },
   {
+    "label": "Technelite (technetium Tc 99m generator)",
+    "labeler": "LANTHEUS MEDICAL IMAGING, INC.",
+    "setId": "3ae14c6b-3daf-4dd1-bbdb-e990fe8100e4",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2024-11-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34089-3": "2572316c7177e3c2d41f8f40bfb472022c683676beb3843b26ba6afb7d00b57b"
+    }
+  },
+  {
     "label": "Teflaro (ceftaroline fosamil)",
     "labeler": "ALLERGAN, INC.",
     "setId": "3ecde48b-75a2-4beb-9999-369f3f61bb8a",
@@ -2332,6 +2477,22 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "dd3cc04ced90c496b15a8146905e5f91a953a48233627aa63a0c7ce13b3cf929"
+    }
+  },
+  {
+    "label": "Thallous chloride Tl 201 injection, Curium",
+    "labeler": "CURIUM US LLC",
+    "setId": "0da81fc0-a137-46d3-9378-d8053a82e61a",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2025-12-23",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34089-3": "5d600a1425b2d70d68f153bfd9b73c295cae7267c2bdca1b53bd1a9223b09fae"
     }
   },
   {
@@ -2766,6 +2927,22 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "13698281595712c0fba642e5ce074a149bfe814601b1b5037d2d568688a518e3"
+    }
+  },
+  {
+    "label": "Xofigo (radium Ra 223 dichloride)",
+    "labeler": "BAYER HEALTHCARE PHARMACEUTICALS INC.",
+    "setId": "a398400e-bd31-41a9-9696-4f7c06569ede",
+    "tools": [
+      "radioactive-decay",
+      "radiopharm-dispense-volume"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2026-03-04",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34089-3": "ddcedaaa4df7cf882bc74b097b66c6a31be3bbc4dec5ad3c48f7fd61da89b18b"
     }
   },
   {
