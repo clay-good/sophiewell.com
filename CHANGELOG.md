@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medicare Glucose Test Strip and Lancet Quantity Check (LCD L33822) and Statin Use in Persons
+  with Diabetes (SUPD, Star Method), which lists who is in the denominator and the gap list from
+  pasted members and fills.
 - Long-Acting Injectable Antipsychotic: Missed-Dose Rule (FDA Labels), for Aristada, Abilify
   Maintena, Abilify Asimtufii, Uzedy, Perseris, Risperdal Consta and Rykindo. The paliperidone
   palmitate injections are not covered yet, and the tool says so.

@@ -2861,6 +2861,8 @@ const UTILITIES = [
   { id: 'otc-daily-max-check', name: 'OTC 24-Hour Total Against the Label Maximum', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
   { id: 'missed-dose-label-rule', name: 'Missed Dose: What the Label Says', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
   { id: 'lai-antipsychotic-missed-dose', name: 'Long-Acting Injectable Antipsychotic: Missed-Dose Rule (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'glucose-supply-quantity-check', name: 'Medicare Glucose Test Strip and Lancet Quantity Check (LCD L33822)', group: 'Q', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
+  { id: 'supd-measure', name: 'Statin Use in Persons with Diabetes (SUPD, Star Method)', group: 'Q', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

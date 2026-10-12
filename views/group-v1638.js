@@ -4,7 +4,7 @@
 // partd-prompt-pay-clock, partd-insulin-cost-cap, cost-of-dispensing, medicaid-ful-check,
 // medicaid-drug-payment-check, partd-transition-fill, pharmacy-effective-rate, mtm-eligibility-check,
 // ccm-time-units, vaccine-interval-validity, partd-dmp-criteria-check, partd-opioid-safety-edit,
-// partd-dmp-notice-clock, ltc-mrr-tracker.
+// partd-dmp-notice-clock, ltc-mrr-tracker, glucose-supply-quantity-check, supd-measure.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -31,6 +31,8 @@ import * as DM from '../lib/partd-dmp-criteria-check-v1638.js';
 import * as OE from '../lib/partd-opioid-safety-edit-v1638.js';
 import * as NC from '../lib/partd-dmp-notice-clock-v1638.js';
 import * as MR from '../lib/ltc-mrr-tracker-v1638.js';
+import * as GS from '../lib/glucose-supply-quantity-check-v1638.js';
+import * as SU from '../lib/supd-measure-v1638.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -450,6 +452,42 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(MR.ltcMrrTracker(args), o);
+    }));
+  },
+  'glucose-supply-quantity-check'(root) {
+    const pairs = [['gsq-cgm', 'cgm'], ['gsq-insulin', 'insulin'], ['gsq-basic', 'basicCriteria'], ['gsq-strips', 'strips'], ['gsq-lancets', 'lancets'], ['gsq-tests', 'testsPerDay'], ['gsq-order', 'orderDate'], ['gsq-visit', 'visitDate'], ['gsq-adherence', 'adherenceVerified'], ['gsq-dispense', 'dispenseDate'], ['gsq-devices', 'lancingDevices'], ['gsq-dstrips', 'dispenseStrips'], ['gsq-dlancets', 'dispenseLancets']];
+    selectField(root, 'Does the beneficiary have a non-adjunctive continuous glucose monitor?', 'gsq-cgm', GS.CGM);
+    selectField(root, 'Insulin treatment', 'gsq-insulin', GS.INSULIN);
+    selectField(root, 'The two basic coverage criteria (diabetes; trained on the device)', 'gsq-basic', GS.BASIC);
+    numField(root, 'Test strips ordered for 3 months', 'gsq-strips', 'e.g. 450');
+    numField(root, 'Lancets ordered for 3 months', 'gsq-lancets', 'e.g. 450');
+    numField(root, 'Or tests per day (used when the two quantities are blank)', 'gsq-tests', 'e.g. 5');
+    dateField(root, 'Date of the order for the higher quantity', 'gsq-order');
+    dateField(root, 'Date of the treating practitioner\'s visit that evaluated the need', 'gsq-visit');
+    dateField(root, 'Date adherence to the high-use regimen was last verified', 'gsq-adherence');
+    dateField(root, 'Dispensing date', 'gsq-dispense');
+    numField(root, 'Spring-powered lancing devices in the last 6 months (optional)', 'gsq-devices', 'e.g. 1');
+    numField(root, 'Strips to dispense now (optional)', 'gsq-dstrips', '');
+    numField(root, 'Lancets to dispense now (optional)', 'gsq-dlancets', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(GS.glucoseSupplyQuantityCheck(args), o);
+    }));
+  },
+  'supd-measure'(root) {
+    const pairs = [['supd-year', 'measurementYear'], ['supd-members', 'members'], ['supd-fills', 'fills']];
+    numField(root, 'Measurement year', 'supd-year', 'e.g. 2025');
+    // Rows carry member references: kept out of the shareable link.
+    areaField(root, 'Members, one per line: member, age, continuously enrolled (yes or no), exclusion (optional)', 'supd-members', 'A, 60, yes').querySelector('textarea').setAttribute('data-private', '');
+    note(root, `Exclusions: ${SU.EXCLUSIONS.join(', ')}.`);
+    areaField(root, 'Fills, one per line: member, fill date (YYYY-MM-DD), class (diabetes or statin)', 'supd-fills', 'A, 2025-01-10, diabetes').querySelector('textarea').setAttribute('data-private', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SU.supdMeasure(args), o);
     }));
   },
 };

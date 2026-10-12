@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['how many test strips does medicare cover every 3 months', ['glucose-supply-quantity-check']],
+  ['statin use in persons with diabetes star measure denominator', ['supd-measure']],
   ['missed aristada or abilify maintena injection what does the label say', ['lai-antipsychotic-missed-dose']],
   ['missed a dose of trulicity or ozempic what does the label say', ['missed-dose-label-rule']],
   ['discard date for a pen out of the refrigerator', ['out-of-fridge-discard-date']],

@@ -9556,6 +9556,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/lai-antipsychotic-missed-dose-v1639.js (spec-v1639: Long-acting injectable antipsychotic: missed-dose rule (FDA labels) — clinical disclaimer)
 - `lai-antipsychotic-missed-dose`
 
+### lib/glucose-supply-quantity-check-v1638.js (spec-v1638: Medicare glucose test strip and lancet quantity check (LCD L33822) — administrative disclaimer)
+- `glucose-supply-quantity-check`
+
+### lib/supd-measure-v1638.js (spec-v1638: Statin Use in Persons with Diabetes (SUPD, Star method) — administrative disclaimer)
+- `supd-measure`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

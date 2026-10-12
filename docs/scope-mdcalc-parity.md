@@ -916,3 +916,7 @@ experience**.
 > v1639, Missed Dose: What the Label Says — [spec-v1639](spec-v1639.md), which adds `missed-dose-label-rule` — is 2283.)
 
 > v1639, Long-Acting Injectable Antipsychotic: Missed-Dose Rule (FDA Labels) — [spec-v1639](spec-v1639.md), which adds `lai-antipsychotic-missed-dose` — is 2284.)
+
+> v1638, Medicare Glucose Test Strip and Lancet Quantity Check (LCD L33822) — [spec-v1638](spec-v1638.md), which adds `glucose-supply-quantity-check` — is 2285.)
+
+> v1638, Statin Use in Persons with Diabetes (SUPD, Star Method) — [spec-v1638](spec-v1638.md), which adds `supd-measure` — is 2286.)

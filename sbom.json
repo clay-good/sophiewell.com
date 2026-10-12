@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:64e690e7-cf5d-520d-8e0e-8e516d821f3f",
+  "serialNumber": "urn:uuid:26bd6872-bce9-5a04-8fb4-1f1a9f3343a4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T12:28:39.106Z",
+    "timestamp": "2026-10-12T12:40:27.604Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2284 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2286 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6c09c72236b542c3234f167fa878c6672ed4b9239f06e3112bf84694c34bad7a"
+          "content": "edcb052023f73a3dab64f67756f7ac0889f53649ce590a02f6fbb428f0d11d33"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "148966"
+          "value": "149119"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8d941e80933f504a5358fe47df4f7d4318d8a8308eb87eef890acdef0f21ef6f"
+          "content": "55bc38ebb392284bc11148625f2d7569d88b40de255f9688b69b90495f4a7075"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "629958"
+          "value": "630328"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9c6a04bf89153084e4847971f50b0dac84e549b5062ec50a908a5b48fffc72e2"
+          "content": "4f8d07553050c00aeb2cd37777a8947cff24b2b9264e7ac86e4b41a6edad1af9"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "287400"
+          "value": "287663"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b3b84327298588d4ca8d2ddcee61028fe373bfc1716b687227c0267c64920566"
+          "content": "46ed6788d23fc1c89d70275e8964d4c5ff4290248563634e2eb54e5c7dd754f6"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "139063"
+          "value": "139237"
         }
       ]
     },
@@ -10640,6 +10640,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/glucose-supply-quantity-check-v1638.js",
+      "type": "file",
+      "name": "lib/glucose-supply-quantity-check-v1638.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "84f7b1ab011e6ed147acb9d4fd48471c27b08746808efd77520eb06de2d3a894"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12298"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/glycemia-risk-index-v1473.js",
       "type": "file",
       "name": "lib/glycemia-risk-index-v1473.js",
@@ -17030,7 +17051,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f66928819ebc656c5eb38ae94281dd6846843750aba29e969437274de771eb0b"
+          "content": "b36cec23ca94926512c04820cb28d7724fb233c066e964a980dee85558aceb20"
         }
       ],
       "properties": [
@@ -17040,7 +17061,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2995625"
+          "value": "2997766"
         }
       ]
     },
@@ -27730,6 +27751,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6479"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/supd-measure-v1638.js",
+      "type": "file",
+      "name": "lib/supd-measure-v1638.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d7f862e8114f4074ee55b08c21a94ce71dfcd9fca5fd6f5cfa77b90595cfdbcd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7950"
         }
       ]
     },
@@ -40981,6 +41023,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1598"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/glucose-supply-quantity-check-v1638.js",
+      "type": "file",
+      "name": "mcp/adapters/glucose-supply-quantity-check-v1638.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3edab6d0d05c049bde15dbf711161bc3aca9ba09f4e0a99daa3361b9824647bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2568"
         }
       ]
     },
@@ -56042,6 +56105,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/supd-measure-v1638.js",
+      "type": "file",
+      "name": "mcp/adapters/supd-measure-v1638.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bf93cff84c00095719ae6fa28ff35d3045a3ebe9fad9225ed01753d780f74808"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1233"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/suppository-displacement-v1629.js",
       "type": "file",
       "name": "mcp/adapters/suppository-displacement-v1629.js",
@@ -59030,7 +59114,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3147bb18e3d7e7b1e862a7822aeb9e0803c793ac46086cc299ca84379d9be6bd"
+          "content": "a08d171ce98616612727dc9aafafa09a54d5ba653589d88daab2943f7b003171"
         }
       ],
       "properties": [
@@ -59040,7 +59124,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "159127"
+          "value": "159409"
         }
       ]
     },
@@ -63713,7 +63797,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fb1954bc38a818ccd8d5bf6b67fa34b10008818301281eb95e2a405f73791d98"
+          "content": "154c22c447c44b93906dd586eb03b0927bde7d431d7bb09a505ba722da22bab9"
         }
       ],
       "properties": [
@@ -63723,7 +63807,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "29568"
+          "value": "32578"
         }
       ]
     },
@@ -95010,6 +95094,7 @@
         "urn:sophiewell:file:source:lib/glogau-photoaging-v475.js",
         "urn:sophiewell:file:source:lib/glp1-titration-check-v1632.js",
         "urn:sophiewell:file:source:lib/glucarpidase-dose-v1635.js",
+        "urn:sophiewell:file:source:lib/glucose-supply-quantity-check-v1638.js",
         "urn:sophiewell:file:source:lib/glycemia-risk-index-v1473.js",
         "urn:sophiewell:file:source:lib/gmfcs-v462.js",
         "urn:sophiewell:file:source:lib/gmi-v1471.js",
@@ -95824,6 +95909,7 @@
         "urn:sophiewell:file:source:lib/sun-ac-flare-v422.js",
         "urn:sophiewell:file:source:lib/sunct-suna-ichd3-v820.js",
         "urn:sophiewell:file:source:lib/sunnybrook-facial-v509.js",
+        "urn:sophiewell:file:source:lib/supd-measure-v1638.js",
         "urn:sophiewell:file:source:lib/suppository-displacement-v1629.js",
         "urn:sophiewell:file:source:lib/surg-v142.js",
         "urn:sophiewell:file:source:lib/synonyms.js",
@@ -97404,6 +97490,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/glogau-photoaging-v475.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glp1-titration-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glucarpidase-dose-v1635.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/glucose-supply-quantity-check-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glycemia-risk-index-v1473.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gmfcs-v462.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gmi-v1471.js",
@@ -98121,6 +98208,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/sun-ac-flare-v422.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sunct-suna-ichd3-v820.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sunnybrook-facial-v509.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/supd-measure-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/suppository-displacement-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/surg-v142.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/syphilis-serology-sequence-v1400.js",
@@ -98367,7 +98455,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "64e690e7cf5d420d"
+      "value": "26bd6872bce9ca04"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98379,7 +98467,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3737"
+      "value": "3741"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
