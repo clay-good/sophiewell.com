@@ -2790,6 +2790,11 @@ const UTILITIES = [
   { id: 'rsi-dose-sheet', name: 'Intubation Drug Doses From the Labels', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'botulism-antitoxin-dose', name: 'Botulism Antitoxin (BAT) and BabyBIG Dose and Rate (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'passive-immunization-dose', name: 'Hepatitis B, Varicella and Tetanus Immune Globulin Doses (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'au-rate-saar', name: 'Antimicrobial Days per 1,000 Days Present, per 100 Admissions, and SAAR (NHSN)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'cdi-labid-category', name: 'C. difficile LabID Event: Onset Category, Incident or Recurrent, and Rate (NHSN)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'ddd-rate', name: 'Defined Daily Doses per 100 Bed-Days and per 1,000 Patient-Days', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'med-admin-window', name: 'Was This Dose Given Inside the CMS Administration Window?', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'adjusted-patient-days', name: 'Adjusted Patient Days and Pharmacy Cost or Hours per Adjusted Day', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

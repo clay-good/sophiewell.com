@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Was This Dose Given Inside the CMS Administration Window?: the earliest and latest acceptable
+  time for a scheduled dose and the minutes early or late.
+- Adjusted Patient Days and Pharmacy Cost or Hours per Adjusted Day: the federal worksheet's
+  arithmetic, with drug expense and worked hours per adjusted day.
+- Antimicrobial Days per 1,000 Days Present, per 100 Admissions, and SAAR (NHSN): the protocol's
+  rates and the observed-over-predicted ratio from the facility's own predicted days.
+- C. difficile LabID Event: Onset Category, Incident or Recurrent, and Rate (NHSN): the category
+  and the day counts behind it, with the earlier specimen as day 1.
+- Defined Daily Doses per 100 Bed-Days and per 1,000 Patient-Days: from grams used and the DDD the
+  reader enters from the WHO index.
 - Botulism Antitoxin (BAT) and BabyBIG Dose and Rate (Labels): the percent of a vial by the label
   table, the starting and maximum infusion rates, and BabyBIG at 1.0 mL/kg.
 - Hepatitis B, Varicella and Tetanus Immune Globulin Doses (Labels): mL or units and vials for

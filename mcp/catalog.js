@@ -1040,6 +1040,11 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import medAdminWindowV1636 from './adapters/med-admin-window-v1636.js';
+import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
+import auRateSaarV1636 from './adapters/au-rate-saar-v1636.js';
+import cdiLabidCategoryV1636 from './adapters/cdi-labid-category-v1636.js';
+import dddRateV1636 from './adapters/ddd-rate-v1636.js';
 import botulismAntitoxinDoseV1636 from './adapters/botulism-antitoxin-dose-v1636.js';
 import passiveImmunizationDoseV1636 from './adapters/passive-immunization-dose-v1636.js';
 import pralidoximeDoseV1636 from './adapters/pralidoxime-dose-v1636.js';
@@ -2287,6 +2292,11 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['med-admin-window-v1636', medAdminWindowV1636],
+  ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],
+  ['au-rate-saar-v1636', auRateSaarV1636],
+  ['cdi-labid-category-v1636', cdiLabidCategoryV1636],
+  ['ddd-rate-v1636', dddRateV1636],
   ['botulism-antitoxin-dose-v1636', botulismAntitoxinDoseV1636],
   ['passive-immunization-dose-v1636', passiveImmunizationDoseV1636],
   ['pralidoxime-dose-v1636', pralidoximeDoseV1636],

@@ -9352,6 +9352,21 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/passive-immunization-dose-v1636.js (spec-v1636: Hepatitis B, varicella and tetanus immune globulin doses (labels) — clinical disclaimer)
 - `passive-immunization-dose`
 
+### lib/au-rate-saar-v1636.js (spec-v1636: Antimicrobial use rates and SAAR (NHSN) — administrative disclaimer)
+- `au-rate-saar`
+
+### lib/cdi-labid-category-v1636.js (spec-v1636: C. difficile LabID event category and rate (NHSN) — administrative disclaimer)
+- `cdi-labid-category`
+
+### lib/ddd-rate-v1636.js (spec-v1636: Defined daily dose rates — administrative disclaimer)
+- `ddd-rate`
+
+### lib/med-admin-window-v1636.js (spec-v1636: CMS medication administration window (A-0405) — administrative disclaimer)
+- `med-admin-window`
+
+### lib/adjusted-patient-days-v1636.js (spec-v1636: Adjusted patient days and pharmacy ratios — administrative disclaimer)
+- `adjusted-patient-days`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

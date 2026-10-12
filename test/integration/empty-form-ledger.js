@@ -43,6 +43,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // congestive heart failure and diabetes scores 8 whether or not the contrast
   // volume has been decided yet. The two measurements it does need are guarded
   // in the library (spec-v1007).
+  // spec-v1636: the verdict comes from the scheduled and actual times and two required selects. The
+  // only number field is an optional tighter hospital window; with it blank the CMS outer limit is used
+  // and the result says which window that is.
+  "med-admin-window",
   "mehran-cin",
   // spec-v1603: the answer is the process rule for the benefit, reason and criteria chosen in the
   // pickers; the only number field (days since joining the plan) is optional and asked for when needed.
@@ -105,6 +109,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // spec-v1635: the verdict comes from the required product select and the chemotherapy and
   // growth-factor times. The only number field is the weight, read for a pediatric pegfilgrastim
   // patient and refused there when blank; for filgrastim or an adult it does not apply.
+  // spec-v1636: the category comes from the specimen, admission, discharge and previous-positive dates
+  // and three required selects. The only number fields are the optional rate panel (events and
+  // patient days); with them blank the result gives the category and no rate.
+  "cdi-labid-category",
   "gcsf-timing-check",
   "labor-care-guide-alert",
   // spec-v1633: the calendar comes from a required schedule select and a required start date. The number

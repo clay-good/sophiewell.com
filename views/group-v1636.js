@@ -3,7 +3,8 @@
 // nac-oral-regimen, fomepizole-schedule, dantrolene-mh-vials,
 // flumazenil-ladder, neostigmine-reversal-dose, deferoxamine-acute-iron,
 // us-antivenom-dose, thrombolytic-dose, pralidoxime-dose, rsi-dose-sheet,
-// botulism-antitoxin-dose, passive-immunization-dose.
+// botulism-antitoxin-dose, passive-immunization-dose,
+// au-rate-saar, cdi-labid-category, ddd-rate, med-admin-window, adjusted-patient-days.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -19,6 +20,11 @@ import * as PX from '../lib/pralidoxime-dose-v1636.js';
 import * as RS from '../lib/rsi-dose-sheet-v1636.js';
 import * as BA from '../lib/botulism-antitoxin-dose-v1636.js';
 import * as PI from '../lib/passive-immunization-dose-v1636.js';
+import * as AU from '../lib/au-rate-saar-v1636.js';
+import * as CL from '../lib/cdi-labid-category-v1636.js';
+import * as DD from '../lib/ddd-rate-v1636.js';
+import * as MW from '../lib/med-admin-window-v1636.js';
+import * as AP from '../lib/adjusted-patient-days-v1636.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -254,6 +260,79 @@ export const renderers = {
       const r = PI.passiveImmunizationDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'au-rate-saar'(root) {
+    const pairs = [['aur-scope', 'scope'], ['aur-days', 'antimicrobialDays'], ['aur-present', 'daysPresent'], ['aur-admissions', 'admissions'], ['aur-predicted', 'predictedDays']];
+    selectField(root, 'Scope', 'aur-scope', AU.SCOPES);
+    numField(root, 'Antimicrobial days', 'aur-days', '');
+    numField(root, 'Days present', 'aur-present', '');
+    numField(root, 'Admissions (facility-wide inpatient only; optional)', 'aur-admissions', '');
+    numField(root, 'Predicted antimicrobial days from the NHSN report (optional, for the SAAR)', 'aur-predicted', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(AU.auRateSaar(args), o);
+    }));
+  },
+  'cdi-labid-category'(root) {
+    const pairs = [['clc-specimen', 'specimenDate'], ['clc-location', 'location'], ['clc-admission', 'admissionDate'], ['clc-discharge-had', 'priorDischarge'], ['clc-discharge', 'dischargeDate'], ['clc-prior-had', 'priorPositive'], ['clc-prior', 'priorPositiveDate'], ['clc-events', 'events'], ['clc-days', 'patientDays']];
+    dateField(root, 'Specimen collection date', 'clc-specimen');
+    selectField(root, 'Where the specimen was collected', 'clc-location', CL.LOCATIONS);
+    dateField(root, 'Admission date (inpatient specimens)', 'clc-admission');
+    selectField(root, 'Earlier inpatient discharge from this facility', 'clc-discharge-had', CL.DISCHARGES);
+    dateField(root, 'Date of that discharge', 'clc-discharge');
+    selectField(root, 'Previous C. difficile positive', 'clc-prior-had', CL.PRIORS);
+    dateField(root, 'Collection date of the most recent previous positive', 'clc-prior');
+    numField(root, 'Rate panel: number of events (optional)', 'clc-events', '');
+    numField(root, 'Rate panel: patient days (optional)', 'clc-days', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(CL.cdiLabidCategory(args), o);
+    }));
+  },
+  'ddd-rate'(root) {
+    const pairs = [['ddr-grams', 'gramsUsed'], ['ddr-ddd', 'ddd'], ['ddr-bed-days', 'bedDays'], ['ddr-year', 'indexYear']];
+    numField(root, 'Grams used in the period', 'ddr-grams', '');
+    numField(root, 'DDD of the agent in grams, from the WHO index', 'ddr-ddd', '');
+    numField(root, 'Bed-days (or patient-days) in the period', 'ddr-bed-days', '');
+    numField(root, 'Year of the index the DDD came from (optional)', 'ddr-year', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(DD.dddRate(args), o);
+    }));
+  },
+  'med-admin-window'(root) {
+    const pairs = [['maw-scheduled', 'scheduled'], ['maw-actual', 'actual'], ['maw-frequency', 'frequency'], ['maw-class', 'policyClass'], ['maw-policy', 'policyMinutes']];
+    dateField(root, 'Scheduled time', 'maw-scheduled', 'datetime-local');
+    dateField(root, 'Time the dose was given', 'maw-actual', 'datetime-local');
+    selectField(root, 'Frequency of the order', 'maw-frequency', MW.FREQUENCIES);
+    selectField(root, 'Class under the hospital\'s policy', 'maw-class', MW.CLASSES);
+    numField(root, 'A tighter hospital window, minutes each side (optional)', 'maw-policy', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(MW.medAdminWindow(args), o);
+    }));
+  },
+  'adjusted-patient-days'(root) {
+    const pairs = [['apd-days', 'inpatientDays'], ['apd-inpatient', 'inpatientRevenue'], ['apd-outpatient', 'outpatientRevenue'], ['apd-hours', 'workedHours'], ['apd-drugs', 'drugExpense']];
+    numField(root, 'Inpatient days', 'apd-days', '');
+    numField(root, 'Gross inpatient revenue, dollars', 'apd-inpatient', '');
+    numField(root, 'Gross outpatient revenue, dollars', 'apd-outpatient', '');
+    numField(root, 'Pharmacy worked hours (optional)', 'apd-hours', '');
+    numField(root, 'Drug expense, dollars (optional)', 'apd-drugs', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(AP.adjustedPatientDays(args), o);
     }));
   },
 };

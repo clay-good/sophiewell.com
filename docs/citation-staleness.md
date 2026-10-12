@@ -887,6 +887,9 @@ carries the specific date that could change it.
 | room-air-changes | CDC Guidelines for Environmental Infection Control in Health-Care Facilities (2003), Appendix B, Table B.1 | US | 2026-10-11 | page dated 2024-01-11; under the weekly page watch | 2027-10-11 |
 | storage-excursion-summary | CDC Vaccine Storage and Handling Toolkit: storage ranges and excursion steps | US | 2026-10-11 | July 2026 edition; under the weekly page watch | 2027-07-31 |
 | in-use-discard-time | CDC Preventing Unsafe Injection Practices: the 28-day sentence for an opened multi-dose vial | US | 2026-10-11 | page dated 2024-03-26; under the weekly page watch | 2027-10-11 |
+| au-rate-saar | CDC NHSN Antimicrobial Use and Resistance (AUR) Module protocol: Table 4 rates and the SAAR | US | 2026-10-12 | July 2026 edition; CDC reissues the protocol each January and July | 2027-02-01 |
+| cdi-labid-category | CDC NHSN MDRO and CDI Module protocol: duplicate, onset, incident and recurrent definitions | US | 2026-10-12 | January 2026 edition; CDC reissues the protocol each January | 2027-02-01 |
+| ddd-rate | WHO Collaborating Centre for Drug Statistics Methodology, Use of ATC/DDD: DDDs per 100 bed days | International | 2026-10-12 | undated web page; no DDD values are reproduced | 2027-10-12 |
 | nurse-staffing-ratio-check | 22 CCR 70217(a); 22 CCR 71215.1 (emergency); 10 NYCRR 405.22(5) | CA, NY | 2026-09-19 | 71215.1 emergency rule effective 2026-06-01, lasts 180 days unless readopted | 2026-11-28 |
 | ca-wpv-report-clock | 8 CCR 3342(b), (g) | CA | 2026-09-18 | read on dir.ca.gov | 2027-01-02 |
 | mandatory-overtime-check | NY Labor Law 167; N.J.S.A. 34:11-56a33, N.J.A.C. 8:43E-8; TX HSC 258.002-258.005 | NY, NJ, TX | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |

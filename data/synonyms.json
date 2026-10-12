@@ -13113,6 +13113,27 @@
       ],
       "tile": "passive-immunization-dose",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "saar"
+      ],
+      "tile": "au-rate-saar",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "labid"
+      ],
+      "tile": "cdi-labid-category",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ddd"
+      ],
+      "tile": "ddd-rate",
+      "audience": "clinicians"
     }
   ]
 }

@@ -1,0 +1,1 @@
+{"ddd-rate":[{"d":"ddr-grams","k":"number","l":"Grams used in the period","u":"g","r":1},{"d":"ddr-ddd","k":"number","l":"DDD of the agent, from the WHO index","u":"g","r":1},{"d":"ddr-bed-days","k":"number","l":"Bed-days (or patient-days) in the period","r":1},{"d":"ddr-year","k":"number","l":"Year of the index the DDD came from (optional)"}]}

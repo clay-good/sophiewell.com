@@ -780,3 +780,13 @@ experience**.
 > v1636, Botulism Antitoxin (BAT) and BabyBIG Dose and Rate (Labels) — [spec-v1636](spec-v1636.md), which adds `botulism-antitoxin-dose` — is 2215.)
 
 > v1636, Hepatitis B, Varicella and Tetanus Immune Globulin Doses (Labels) — [spec-v1636](spec-v1636.md), which adds `passive-immunization-dose` — is 2216.)
+
+> v1636, Antimicrobial Days per 1,000 Days Present, per 100 Admissions, and SAAR (NHSN) — [spec-v1636](spec-v1636.md), which adds `au-rate-saar` — is 2217.)
+
+> v1636, C. difficile LabID Event: Onset Category, Incident or Recurrent, and Rate (NHSN) — [spec-v1636](spec-v1636.md), which adds `cdi-labid-category` — is 2218.)
+
+> v1636, Defined Daily Doses per 100 Bed-Days and per 1,000 Patient-Days — [spec-v1636](spec-v1636.md), which adds `ddd-rate` — is 2219.)
+
+> v1636, Was This Dose Given Inside the CMS Administration Window? — [spec-v1636](spec-v1636.md), which adds `med-admin-window` — is 2220.)
+
+> v1636, Adjusted Patient Days and Pharmacy Cost or Hours per Adjusted Day — [spec-v1636](spec-v1636.md), which adds `adjusted-patient-days` — is 2221.)
