@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:20a666c8-b8f9-5f77-8dc7-6bca9c8eabf4",
+  "serialNumber": "urn:uuid:03e182f8-2be5-5b7a-8801-8bd2ddac78ea",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T04:29:04.273Z",
+    "timestamp": "2026-10-12T04:45:54.903Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2204 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2207 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3847a8824acf6d0c56c9a916b217f6029bb439a38de2328000975a6821bb15e3"
+          "content": "9abfb66dc55bb0d52b28ee055ce7d4a8cfa134da0badcb2eed0f7c85beb1b566"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "143132"
+          "value": "143346"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "df18c5d8db1f0d67ae5b58451871a588464465c348cbfdc7af08f182a4a04b85"
+          "content": "477e6ffc7a99eddbba1f320ba05310cec0291e83505491b0da7fa8234cc64ccc"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "615719"
+          "value": "616288"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5ffd0a828386f2f904f87f12ca8d541bf318b750787d7c142449443221503fd1"
+          "content": "e570b8dd52408c5df649373bba81c2e73123ba72076667b1708d5ca18d6a58c9"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "276872"
+          "value": "277259"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e40d3b3eeba1807b06a96606f987acdc5284f78bc5765964a32e6e29b3c00cd4"
+          "content": "5863086b5b276289f4e85c4d8fc1696cac8846bcd2fe2f0ce7ed77cbc0d395c5"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132381"
+          "value": "132619"
         }
       ]
     },
@@ -6167,6 +6167,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/dantrolene-mh-vials-v1636.js",
+      "type": "file",
+      "name": "lib/dantrolene-mh-vials-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ccc5732222e7fc7014bb8c71ee4443c5ac2afab77eee02176b6c656a622c7d6d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8136"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/data.js",
       "type": "file",
       "name": "lib/data.js",
@@ -8914,6 +8935,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3321"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/fomepizole-schedule-v1636.js",
+      "type": "file",
+      "name": "lib/fomepizole-schedule-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fa2bcbfde9af78710d2eee93bd57a07df17e8fd282c3532cb33e12ed16db458a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9547"
         }
       ]
     },
@@ -13628,7 +13670,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ab77324b6ff53a69b8af928d0ec2accf71edf620c925155d5e98e10bcdbe2eed"
+          "content": "7adcebd488b68e92925da97fb01b3bf417a3a11660c51030b06f85df8cc6053d"
         }
       ],
       "properties": [
@@ -13638,7 +13680,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "47684"
+          "value": "48533"
         }
       ]
     },
@@ -16022,7 +16064,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2b16df296b98cc255c64e27afff8e78b911ca85e316fc50c8f3511b0df32da6b"
+          "content": "aae03532dfa0d5b9f2771fa06ea8ea3d3d7de74a13dfc75f6ee3ba9ec97ec9e9"
         }
       ],
       "properties": [
@@ -16032,7 +16074,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2913774"
+          "value": "2916716"
         }
       ]
     },
@@ -16936,6 +16978,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "12479"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nac-oral-regimen-v1636.js",
+      "type": "file",
+      "name": "lib/nac-oral-regimen-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c1facb526f54e1ba57241e911a8ffbf24b545e3af7eb754aa996daae8647eb7f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8855"
         }
       ]
     },
@@ -35063,6 +35126,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dantrolene-mh-vials-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/dantrolene-mh-vials-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c5d5a0070dae814557e6916c82244c6bc49aa9e1125fbb13b4ad8452c5479383"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1402"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/days-supply-v1511.js",
       "type": "file",
       "name": "mcp/adapters/days-supply-v1511.js",
@@ -37537,6 +37621,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "963"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/fomepizole-schedule-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/fomepizole-schedule-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6139657bd354d3deb0326314861c429700d42096ab78d0833cbd25bd0e18688a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1429"
         }
       ]
     },
@@ -44824,6 +44929,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6145"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nac-oral-regimen-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/nac-oral-regimen-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "695ab05c1837884b479d0d2152e0e5fef2bdd975d00f55ed6778e0fc89fb7b7f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1148"
         }
       ]
     },
@@ -55565,7 +55691,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7e7f0d6727c067afae6a457e6fc42ffef99d34768ad84dece99e70b706d84893"
+          "content": "c890b15652f41ae3a8c38a0e1f745b403814810a60bd6b8f7ea9a8a4eea8673e"
         }
       ],
       "properties": [
@@ -55575,7 +55701,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "147859"
+          "value": "148254"
         }
       ]
     },
@@ -60196,6 +60322,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "40637"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1636.js",
+      "type": "file",
+      "name": "views/group-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5ac58044b65a52abb08f5a1b940071322c49c1ff9c136726c33da04559dc7046"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5590"
         }
       ]
     },
@@ -91248,6 +91395,7 @@
         "urn:sophiewell:file:source:lib/cvrisk-engines-v202.js",
         "urn:sophiewell:file:source:lib/cvrisk-v103.js",
         "urn:sophiewell:file:source:lib/cystic-echinococcosis-stage-v1562.js",
+        "urn:sophiewell:file:source:lib/dantrolene-mh-vials-v1636.js",
         "urn:sophiewell:file:source:lib/data.js",
         "urn:sophiewell:file:source:lib/dated-data.js",
         "urn:sophiewell:file:source:lib/days-supply-v1511.js",
@@ -91379,6 +91527,7 @@
         "urn:sophiewell:file:source:lib/fmea-rpn-v918.js",
         "urn:sophiewell:file:source:lib/fnclcc-grade-v651.js",
         "urn:sophiewell:file:source:lib/fois-v727.js",
+        "urn:sophiewell:file:source:lib/fomepizole-schedule-v1636.js",
         "urn:sophiewell:file:source:lib/foodborne-trematode-treatment-v1564.js",
         "urn:sophiewell:file:source:lib/formula-scale-v1629.js",
         "urn:sophiewell:file:source:lib/forrest-classification-v809.js",
@@ -91761,6 +91910,7 @@
         "urn:sophiewell:file:source:lib/myeloid-prognosis-v199.js",
         "urn:sophiewell:file:source:lib/myxedema-coma-v599.js",
         "urn:sophiewell:file:source:lib/nac-attr-stage-v583.js",
+        "urn:sophiewell:file:source:lib/nac-oral-regimen-v1636.js",
         "urn:sophiewell:file:source:lib/nadac-load.js",
         "urn:sophiewell:file:source:lib/nadac-margin.js",
         "urn:sophiewell:file:source:lib/nadac-reference.js",
@@ -92584,6 +92734,7 @@
         "urn:sophiewell:file:source:views/group-v1633.js",
         "urn:sophiewell:file:source:views/group-v1634.js",
         "urn:sophiewell:file:source:views/group-v1635.js",
+        "urn:sophiewell:file:source:views/group-v1636.js",
         "urn:sophiewell:file:source:views/group-v164.js",
         "urn:sophiewell:file:source:views/group-v165.js",
         "urn:sophiewell:file:source:views/group-v166.js",
@@ -93569,6 +93720,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-engines-v202.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-v103.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cystic-echinococcosis-stage-v1562.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/dantrolene-mh-vials-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/days-supply-v1511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/de-winter-pattern-v1443.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dean-fluorosis-cfi-v1484.js",
@@ -93687,6 +93839,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/fmea-rpn-v918.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fnclcc-grade-v651.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fois-v727.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/fomepizole-schedule-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/foodborne-trematode-treatment-v1564.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/formula-scale-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/forrest-classification-v809.js",
@@ -94034,6 +94187,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/myeloid-prognosis-v199.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/myxedema-coma-v599.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nac-attr-stage-v583.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nac-oral-regimen-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nadac-margin.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nancy-index-v578.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/narakas-obpp-v498.js",
@@ -94649,7 +94803,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "20a666c8b8f98f77"
+      "value": "03e182f82be5db7a"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -94661,7 +94815,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3568"
+      "value": "3575"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -13017,6 +13017,23 @@
       ],
       "tile": "calvert-carboplatin",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "fomepizole",
+        "antizol"
+      ],
+      "tile": "fomepizole-schedule",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dantrolene",
+        "ryanodex",
+        "revonto"
+      ],
+      "tile": "dantrolene-mh-vials",
+      "audience": "clinicians"
     }
   ]
 }

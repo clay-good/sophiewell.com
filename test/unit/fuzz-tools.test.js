@@ -770,6 +770,9 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as nacOralRegimenV1636 from '../../lib/nac-oral-regimen-v1636.js';
+import * as fomepizoleScheduleV1636 from '../../lib/fomepizole-schedule-v1636.js';
+import * as dantroleneMhVialsV1636 from '../../lib/dantrolene-mh-vials-v1636.js';
 import * as chemoDoseVerifyV1635 from '../../lib/chemo-dose-verify-v1635.js';
 import * as chemoOrganLabelDoseV1635 from '../../lib/chemo-organ-label-dose-v1635.js';
 import * as chatelutCarboplatinV1635 from '../../lib/chatelut-carboplatin-v1635.js';
@@ -1789,6 +1792,9 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'nac-oral-regimen-v1636.js': nacOralRegimenV1636,
+  'fomepizole-schedule-v1636.js': fomepizoleScheduleV1636,
+  'dantrolene-mh-vials-v1636.js': dantroleneMhVialsV1636,
   'chemo-dose-verify-v1635.js': chemoDoseVerifyV1635,
   'chemo-organ-label-dose-v1635.js': chemoOrganLabelDoseV1635,
   'chatelut-carboplatin-v1635.js': chatelutCarboplatinV1635,

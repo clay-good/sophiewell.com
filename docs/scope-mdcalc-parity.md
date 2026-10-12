@@ -756,3 +756,9 @@ experience**.
 > v1635, Chemotherapy Dose Modification for Hepatic or Renal Impairment (FDA Labels) — [spec-v1635](spec-v1635.md), which adds `chemo-organ-label-dose` — is 2203.)
 
 > v1635, Chemotherapy Dose Re-Derivation and Variance — [spec-v1635](spec-v1635.md), which adds `chemo-dose-verify` — is 2204.)
+
+> v1636, Oral Acetylcysteine 72-Hour Regimen (Label Table) — [spec-v1636](spec-v1636.md), which adds `nac-oral-regimen` — is 2205.)
+
+> v1636, Fomepizole Doses, With and Without Hemodialysis (Label) — [spec-v1636](spec-v1636.md), which adds `fomepizole-schedule` — is 2206.)
+
+> v1636, Dantrolene for Malignant Hyperthermia: Dose and Vials (Labels) — [spec-v1636](spec-v1636.md), which adds `dantrolene-mh-vials` — is 2207.)

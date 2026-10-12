@@ -1,6 +1,6 @@
 # spec-v1636 — Hospital pharmacy operations: label antidote and emergency dosing, stewardship metrics, department measurement
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 21 new tools (none build-gated), 7 backfills.
+**Status:** In progress, October 11, 2026: 3 of 21 tools built (see Build status). 21 new tools (none build-gated), 7 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 The emergency-department and critical-care pharmacist works from FDA labels at the bedside: how
@@ -824,4 +824,8 @@ Other sources:
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+| Tool | State |
+|---|---|
+| 1. `nac-oral-regimen` | Built (group F, `views/group-v1636.js`) on Acetylcysteine Solution (Hospira, version 22), re-read October 11, 2026; every table row matches the spec. A weight between two whole-kilogram rows, or above 109 kg, returns no chosen dose. Calculated doses under 20 kg are shown to two decimals (1.05 g, 5.25 mL). The loading-dose time is optional; without it the schedule is given in hours. |
+| 2. `fomepizole-schedule` | Built (group F) on Fomepizole Injection (Zydus, version 8), re-read October 11, 2026. The reader enters the doses given so far and the hemodialysis state (off, begins, during, ends); the tool returns the next dose, its time and the rule that fired. Edges as the label prints them: 6 hours or more at the start gives a dose; 1 to 3 hours at the end, inclusive, gives half. The label does not say whether the half dose counts toward the four 10 mg/kg doses, and the result says so. |
+| 6. `dantrolene-mh-vials` | Built (group F) on RYANODEX (version 10), Dantrium Intravenous (15) and Revonto (2), re-read October 11, 2026. **Corrected:** the Revonto set id named above (3edcfad5) is a distributor's copy (ProPharma Distribution); the row is pinned to the manufacturer's label instead (USWM, set f1650487-32bd-4017-b9c2-b38829a531af, version 2), which carries the same sentences. The treatment dose per kg is a required entry with no default; under 1 mg/kg is flagged. Without the amount already given, the bolus is reported as not tested against 10 mg/kg. Prevention uses the labels' 2.5 mg/kg and each label's own timing. |

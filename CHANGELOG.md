@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Oral Acetylcysteine 72-Hour Regimen (Label Table): the label row for the weight, the volumes to
+  mix, and the 18-dose clock.
+- Fomepizole Doses, With and Without Hemodialysis (Label): the next dose and its time, including the
+  label's rules at the start and end of dialysis.
+- Dantrolene for Malignant Hyperthermia: Dose and Vials (Labels): mg, vials, sterile water and
+  volume for Ryanodex, Dantrium Intravenous or Revonto, and the vials to reach 10 mg/kg.
 - Loading and Maintenance Dose Calendar: a cycle calendar (for example days 1, 8 and 15 of 28) that
   says which cycle and day a date is and moves later cycles after a delayed start.
 - Unit Converter: radioactivity (Bq to Ci), dose equivalent (Sv, rem) and absorbed dose (Gy, rad).

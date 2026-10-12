@@ -9316,6 +9316,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/chemo-dose-verify-v1635.js (spec-v1635: Chemotherapy dose re-derivation and variance — clinical disclaimer)
 - `chemo-dose-verify`
 
+### lib/nac-oral-regimen-v1636.js (spec-v1636: Oral acetylcysteine 72-hour regimen (label table) — clinical disclaimer)
+- `nac-oral-regimen`
+
+### lib/fomepizole-schedule-v1636.js (spec-v1636: Fomepizole doses, with and without hemodialysis (label) — clinical disclaimer)
+- `fomepizole-schedule`
+
+### lib/dantrolene-mh-vials-v1636.js (spec-v1636: Dantrolene for malignant hyperthermia: dose and vials (labels) — clinical disclaimer)
+- `dantrolene-mh-vials`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

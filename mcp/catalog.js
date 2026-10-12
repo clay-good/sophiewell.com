@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import nacOralRegimenV1636 from './adapters/nac-oral-regimen-v1636.js';
+import fomepizoleScheduleV1636 from './adapters/fomepizole-schedule-v1636.js';
+import dantroleneMhVialsV1636 from './adapters/dantrolene-mh-vials-v1636.js';
 import chemoDoseVerifyV1635 from './adapters/chemo-dose-verify-v1635.js';
 import chemoOrganLabelDoseV1635 from './adapters/chemo-organ-label-dose-v1635.js';
 import chatelutCarboplatinV1635 from './adapters/chatelut-carboplatin-v1635.js';
@@ -2275,6 +2278,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['nac-oral-regimen-v1636', nacOralRegimenV1636],
+  ['fomepizole-schedule-v1636', fomepizoleScheduleV1636],
+  ['dantrolene-mh-vials-v1636', dantroleneMhVialsV1636],
   ['chemo-dose-verify-v1635', chemoDoseVerifyV1635],
   ['chemo-organ-label-dose-v1635', chemoOrganLabelDoseV1635],
   ['chatelut-carboplatin-v1635', chatelutCarboplatinV1635],

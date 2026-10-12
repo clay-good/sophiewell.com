@@ -35,12 +35,13 @@
     "labeler": "HOSPIRA, INC.",
     "setId": "5558a5f5-e821-473b-7d8a-5d33d09f0586",
     "tools": [
-      "acetaminophen-nomogram"
+      "acetaminophen-nomogram",
+      "nac-oral-regimen"
     ],
     "splVersion": 22,
     "publishedOn": "2026-05-25",
-    "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "553afacae77223ea1d966b97a7bb261ad419563355efe16e98788d6bd8f179c3"
     }
@@ -907,6 +908,22 @@
     }
   },
   {
+    "label": "Dantrium Intravenous (dantrolene)",
+    "labeler": "PAR HEALTH USA, LLC",
+    "setId": "4df35098-8702-46be-ac67-30cfdf1aa570",
+    "tools": [
+      "dantrolene-mh-vials"
+    ],
+    "splVersion": 15,
+    "publishedOn": "2026-04-28",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e5956c2d6a9351e50373cee6c7e4f4e7322671ba34108d4ce203958b6ad8b701",
+      "34089-3": "ab085eb287bd2319ee78e5b38f2c84f8d37409af950de1c943a526ad264a489a"
+    }
+  },
+  {
     "label": "Daunorubicin Hydrochloride, Hikma",
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "227784a8-ce68-4dd4-8ac5-a65265969677",
@@ -1337,6 +1354,21 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34089-3": "e35b933c471602f154a54fb68bec26d586603d49de98239f3486ff93f3f10db9"
+    }
+  },
+  {
+    "label": "Fomepizole Injection, Zydus",
+    "labeler": "ZYDUS PHARMACEUTICALS USA INC.",
+    "setId": "256910fe-91f2-48f6-b0b4-55edc52dacd4",
+    "tools": [
+      "fomepizole-schedule"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2025-11-21",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "925b1f0f27adc74409ccd9fad48906768ec8475645a034c70fb8080886781f54"
     }
   },
   {
@@ -2527,6 +2559,22 @@
     }
   },
   {
+    "label": "Revonto (dantrolene), USWM",
+    "labeler": "USWM, LLC",
+    "setId": "f1650487-32bd-4017-b9c2-b38829a531af",
+    "tools": [
+      "dantrolene-mh-vials"
+    ],
+    "splVersion": 2,
+    "publishedOn": "2024-05-27",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "7619a1d130bccdbf47d2d4efbb31cb61b641a23cda5d5462bf0fbed3e331d644",
+      "34089-3": "3b2c9a78fba179eeb96bc391ea5cd283a98b8d260b3d094691134f1c9fc18161"
+    }
+  },
+  {
     "label": "Rituxan (rituximab), Genentech",
     "labeler": "GENENTECH, INC.",
     "setId": "b172773b-3905-4a1c-ad95-bab4b6126563",
@@ -2539,6 +2587,22 @@
     "validThrough": "2027-09-26",
     "sections": {
       "34068-7": "fe373d68f7c316265d28382e13b3981644329b969dd64afe2801521e9528e3b1"
+    }
+  },
+  {
+    "label": "RYANODEX (dantrolene)",
+    "labeler": "EAGLE PHARMACEUTICALS, INC.",
+    "setId": "8f7b3ac0-604d-4c78-b545-5e0f8ea3d698",
+    "tools": [
+      "dantrolene-mh-vials"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2024-11-01",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "943692ef0adedc5593e33c148b0cbcf7104d2a032dfc83de28ce826a7a5c3d0b",
+      "34089-3": "6468ef6828e6519dfd94a7ddf0fbad7b7a73b7d86e9006ede851c1b83896e95a"
     }
   },
   {
