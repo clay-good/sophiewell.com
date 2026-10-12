@@ -400,6 +400,22 @@
     }
   },
   {
+    "label": "BabyBIG (botulism immune globulin)",
+    "labeler": "CALIFORNIA DEPARTMENT OF PUBLIC HEALTH",
+    "setId": "9ec59262-35c1-4d8e-8451-a7cfbacb0675",
+    "tools": [
+      "botulism-antitoxin-dose"
+    ],
+    "splVersion": 14,
+    "publishedOn": "2025-12-10",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "296aabb35a68f5f168dcbc5b91941ac29785bc98c2531f9c4b96ab8f9365f0f0",
+      "34067-9": "da6ac702961f332985f3ffaf9a4e2b930ee01268b9de3d6bbb798b8b7e54a064"
+    }
+  },
+  {
     "label": "Bactrim (sulfamethoxazole and trimethoprim)",
     "labeler": "SUN PHARMACEUTICAL INDUSTRIES, INC",
     "setId": "f59d0c04-9c66-4d53-a0e1-cb55570deb62",
@@ -459,6 +475,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "eea0870ccde56c7c6a862a7a8ab0cfe6c64c65af049b3f04a0a14615d0578bb0"
+    }
+  },
+  {
+    "label": "BAT (botulism antitoxin heptavalent, equine)",
+    "labeler": "EMERGENT BIOSOLUTIONS CANADA INC",
+    "setId": "9f3c4292-8773-4781-8264-d71c80d3eabd",
+    "tools": [
+      "botulism-antitoxin-dose"
+    ],
+    "splVersion": 11,
+    "publishedOn": "2026-07-07",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "17cf8d9e55a074a4355e30547973ffb931c2b18eda09cfd775120bf91ea3cff4"
     }
   },
   {
@@ -1616,6 +1647,36 @@
     }
   },
   {
+    "label": "HyperHEP B (hepatitis B immune globulin)",
+    "labeler": "GRIFOLS USA, LLC",
+    "setId": "cda35690-672f-46cd-8520-e37f4d66a8d7",
+    "tools": [
+      "passive-immunization-dose"
+    ],
+    "splVersion": 26,
+    "publishedOn": "2024-10-04",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "13071d3be7d7346c850b1933da5b724cb9b4c786d820daa583cb4e5a6bb83d69"
+    }
+  },
+  {
+    "label": "HyperTET (tetanus immune globulin)",
+    "labeler": "GRIFOLS USA, LLC",
+    "setId": "393fa198-7e07-4162-bd0a-9d873f1544a9",
+    "tools": [
+      "passive-immunization-dose"
+    ],
+    "splVersion": 20,
+    "publishedOn": "2024-10-07",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "66c9507e5641bc9353207b75711063506295148329522e065aab49731267a231"
+    }
+  },
+  {
     "label": "Hysingla ER (hydrocodone bitartrate)",
     "labeler": "KNOA PHARMA LLC",
     "setId": "b7d23ac2-e776-9f62-3290-c64c2d6eb353",
@@ -2332,6 +2393,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "02941fc27a66ce62769922bfe80e9f1dc48a59b393eee397ca41eddc125927e1"
+    }
+  },
+  {
+    "label": "Nabi-HB (hepatitis B immune globulin)",
+    "labeler": "ADMA BIOLOGICS, INC.",
+    "setId": "47fe1a99-5078-4b89-84fa-9e8387baec5c",
+    "tools": [
+      "passive-immunization-dose"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2025-04-16",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e7cde8653164459dbf9e8382c7621925e1d11eb912d31dbb593cb2046478054c"
     }
   },
   {
@@ -3414,6 +3490,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "b0c7155ad7bf9d7a4534aed21fd7bdd52570603e0565f4d648e8114697b96961"
+    }
+  },
+  {
+    "label": "VARIZIG (varicella zoster immune globulin)",
+    "labeler": "KAMADA LTD.",
+    "setId": "f367f996-aafa-4b8b-8cb4-63a009cd2015",
+    "tools": [
+      "passive-immunization-dose"
+    ],
+    "splVersion": 5,
+    "publishedOn": "2026-03-20",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "dfe844caae062d390b93a477901d97b10c77da912326d5d7f49aacb184c2aca8"
     }
   },
   {

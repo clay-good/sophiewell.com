@@ -770,6 +770,8 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as botulismAntitoxinDoseV1636 from '../../lib/botulism-antitoxin-dose-v1636.js';
+import * as passiveImmunizationDoseV1636 from '../../lib/passive-immunization-dose-v1636.js';
 import * as pralidoximeDoseV1636 from '../../lib/pralidoxime-dose-v1636.js';
 import * as rsiDoseSheetV1636 from '../../lib/rsi-dose-sheet-v1636.js';
 import * as usAntivenomDoseV1636 from '../../lib/us-antivenom-dose-v1636.js';
@@ -1799,6 +1801,8 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'botulism-antitoxin-dose-v1636.js': botulismAntitoxinDoseV1636,
+  'passive-immunization-dose-v1636.js': passiveImmunizationDoseV1636,
   'pralidoxime-dose-v1636.js': pralidoximeDoseV1636,
   'rsi-dose-sheet-v1636.js': rsiDoseSheetV1636,
   'us-antivenom-dose-v1636.js': usAntivenomDoseV1636,

@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Botulism Antitoxin (BAT) and BabyBIG Dose and Rate (Labels): the percent of a vial by the label
+  table, the starting and maximum infusion rates, and BabyBIG at 1.0 mL/kg.
+- Hepatitis B, Varicella and Tetanus Immune Globulin Doses (Labels): mL or units and vials for
+  each, with VARIZIG by the label's weight table.
 - Pralidoxime and DuoDote by Weight (Labels): the intravenous ranges, the intramuscular series by
   severity, and the autoinjector count.
 - Intubation Drug Doses From the Labels: etomidate, ketamine, succinylcholine and rocuronium at one

@@ -9346,6 +9346,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rsi-dose-sheet-v1636.js (spec-v1636: Intubation drug doses from the labels — clinical disclaimer)
 - `rsi-dose-sheet`
 
+### lib/botulism-antitoxin-dose-v1636.js (spec-v1636: Botulism antitoxin (BAT) and BabyBIG dose and rate (labels) — clinical disclaimer)
+- `botulism-antitoxin-dose`
+
+### lib/passive-immunization-dose-v1636.js (spec-v1636: Hepatitis B, varicella and tetanus immune globulin doses (labels) — clinical disclaimer)
+- `passive-immunization-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

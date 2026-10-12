@@ -1040,6 +1040,8 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import botulismAntitoxinDoseV1636 from './adapters/botulism-antitoxin-dose-v1636.js';
+import passiveImmunizationDoseV1636 from './adapters/passive-immunization-dose-v1636.js';
 import pralidoximeDoseV1636 from './adapters/pralidoxime-dose-v1636.js';
 import rsiDoseSheetV1636 from './adapters/rsi-dose-sheet-v1636.js';
 import usAntivenomDoseV1636 from './adapters/us-antivenom-dose-v1636.js';
@@ -2285,6 +2287,8 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['botulism-antitoxin-dose-v1636', botulismAntitoxinDoseV1636],
+  ['passive-immunization-dose-v1636', passiveImmunizationDoseV1636],
   ['pralidoxime-dose-v1636', pralidoximeDoseV1636],
   ['rsi-dose-sheet-v1636', rsiDoseSheetV1636],
   ['us-antivenom-dose-v1636', usAntivenomDoseV1636],

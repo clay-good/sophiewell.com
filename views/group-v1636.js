@@ -2,7 +2,8 @@
 // department measurement.
 // nac-oral-regimen, fomepizole-schedule, dantrolene-mh-vials,
 // flumazenil-ladder, neostigmine-reversal-dose, deferoxamine-acute-iron,
-// us-antivenom-dose, thrombolytic-dose, pralidoxime-dose, rsi-dose-sheet.
+// us-antivenom-dose, thrombolytic-dose, pralidoxime-dose, rsi-dose-sheet,
+// botulism-antitoxin-dose, passive-immunization-dose.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -16,6 +17,8 @@ import * as AV from '../lib/us-antivenom-dose-v1636.js';
 import * as TD from '../lib/thrombolytic-dose-v1636.js';
 import * as PX from '../lib/pralidoxime-dose-v1636.js';
 import * as RS from '../lib/rsi-dose-sheet-v1636.js';
+import * as BA from '../lib/botulism-antitoxin-dose-v1636.js';
+import * as PI from '../lib/passive-immunization-dose-v1636.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -221,6 +224,34 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = RS.rsiDoseSheet(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'botulism-antitoxin-dose'(root) {
+    const pairs = [['bad-product', 'product'], ['bad-age', 'age'], ['bad-weight', 'weight']];
+    selectField(root, 'Product', 'bad-product', BA.PRODUCTS);
+    numField(root, 'Age, years (a fraction for an infant: 6 months is 0.5)', 'bad-age', '');
+    numField(root, 'Weight, kg (needed under 17 years, and for BabyBIG)', 'bad-weight', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = BA.botulismAntitoxinDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'passive-immunization-dose'(root) {
+    const pairs = [['pid-product', 'product'], ['pid-weight', 'weight'], ['pid-age', 'age']];
+    selectField(root, 'Product and situation', 'pid-product', PI.PRODUCTS);
+    numField(root, 'Weight, kg (hepatitis B after exposure, VARIZIG, and tetanus under 7 years)', 'pid-weight', '');
+    numField(root, 'Age, years (tetanus immune globulin)', 'pid-age', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PI.passiveImmunizationDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

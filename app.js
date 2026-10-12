@@ -2788,6 +2788,8 @@ const UTILITIES = [
   { id: 'thrombolytic-dose', name: 'Alteplase and Tenecteplase Dose by Weight and Indication (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pralidoxime-dose', name: 'Pralidoxime and DuoDote by Weight (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'rsi-dose-sheet', name: 'Intubation Drug Doses From the Labels', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'botulism-antitoxin-dose', name: 'Botulism Antitoxin (BAT) and BabyBIG Dose and Rate (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'passive-immunization-dose', name: 'Hepatitis B, Varicella and Tetanus Immune Globulin Doses (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

@@ -776,3 +776,7 @@ experience**.
 > v1636, Pralidoxime and DuoDote by Weight (Labels) — [spec-v1636](spec-v1636.md), which adds `pralidoxime-dose` — is 2213.)
 
 > v1636, Intubation Drug Doses From the Labels — [spec-v1636](spec-v1636.md), which adds `rsi-dose-sheet` — is 2214.)
+
+> v1636, Botulism Antitoxin (BAT) and BabyBIG Dose and Rate (Labels) — [spec-v1636](spec-v1636.md), which adds `botulism-antitoxin-dose` — is 2215.)
+
+> v1636, Hepatitis B, Varicella and Tetanus Immune Globulin Doses (Labels) — [spec-v1636](spec-v1636.md), which adds `passive-immunization-dose` — is 2216.)

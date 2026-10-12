@@ -13095,6 +13095,24 @@
       ],
       "tile": "rsi-dose-sheet",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "botulism",
+        "babybig"
+      ],
+      "tile": "botulism-antitoxin-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "varizig",
+        "hbig",
+        "hyperhep",
+        "hypertet"
+      ],
+      "tile": "passive-immunization-dose",
+      "audience": "clinicians"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c2a89dbe-556a-5aeb-8846-606ef3f448f6",
+  "serialNumber": "urn:uuid:39c219fd-106c-5f1f-8b75-a4619284198d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T06:17:23.441Z",
+    "timestamp": "2026-10-12T06:34:58.423Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2214 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2216 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a3abb225777fda8de403dc22c41ae331f4d2bc8a11f2b771e26c8c26d7e42732"
+          "content": "1ea7c2f079ab8526883ee92cfd5de0f5aaa92c354634bbadfaee9927ec32207f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "143833"
+          "value": "143989"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "496d6daa8cf5db6d0f7da20d20859e1e95749521e99bd8501b7afd525752c21a"
+          "content": "6087314b4acd3ead709691f04383b61d0b661ef4fafb7d327b3df4cbd8e91566"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "617436"
+          "value": "617792"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e51075da13a79a6c734a03acbccc4f849d8e2fd2523bb78613abee550826e285"
+          "content": "d17b43e931afc489c131231f0028821bbd2284c3f126d484b9bd91177940f26d"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "278165"
+          "value": "278435"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eb43c4e7649e240de0d2e6878bbdb33edc819f06c92d5a56bf10ba22e2770a05"
+          "content": "8680f68fc2ba76d66be15af77c927c34d0a4f735b2eaa1154867b65433a67492"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133165"
+          "value": "133349"
         }
       ]
     },
@@ -3013,6 +3013,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3865"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/botulism-antitoxin-dose-v1636.js",
+      "type": "file",
+      "name": "lib/botulism-antitoxin-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "059a120105337ffa818b03f6721da3133049c3a01a9c36e28505e0aaac1ceff6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8255"
         }
       ]
     },
@@ -13712,7 +13733,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "702080ed3e92a3be397800ab5b04a16506e835d6e5cc21818fbb5021f45dff18"
+          "content": "23e92e0f074e33c13b50dac68e98442741161cd2b69020a1cc19f659fcbe5221"
         }
       ],
       "properties": [
@@ -13722,7 +13743,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "51774"
+          "value": "53119"
         }
       ]
     },
@@ -16106,7 +16127,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "21d47bd43bd3421a78fd3edad7e15a9403f2ee24774298a30fdc820cd4bd98af"
+          "content": "f5304477be0e93ec8493234d82d736069d031a800cadc2149923a77bdcbeb76f"
         }
       ],
       "properties": [
@@ -16116,7 +16137,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2924379"
+          "value": "2926843"
         }
       ]
     },
@@ -20191,6 +20212,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4376"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/passive-immunization-dose-v1636.js",
+      "type": "file",
+      "name": "lib/passive-immunization-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "258cf9d31cfbc67aa61de78b8b171d24bd4e8aa1d5801b99b322139d2586ccda"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8890"
         }
       ]
     },
@@ -32308,6 +32350,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1523"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/botulism-antitoxin-dose-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/botulism-antitoxin-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "41dad53b155c3ba8caf6ed90f1b5bb88bb96c76f45d5afa4b85f92edf724444f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1213"
         }
       ]
     },
@@ -47684,6 +47747,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/passive-immunization-dose-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/passive-immunization-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fc749e6dd64f59f764dbfa65a9b681f6c8daf77e17c1f46f9daef451149f495a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1244"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/patient-release-rg839-v1635.js",
       "type": "file",
       "name": "mcp/adapters/patient-release-rg839-v1635.js",
@@ -55985,7 +56069,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "13858065d11d3495ab882900f4dc1f6f4dec7b4c6230aee51bc3c5c0afde7c91"
+          "content": "d05a1a9013b0b160eec8f3942eedf3dec7c79ae29877d772553ef060838dbcc6"
         }
       ],
       "properties": [
@@ -55995,7 +56079,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "149189"
+          "value": "149499"
         }
       ]
     },
@@ -60626,7 +60710,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e188879892ec92b0476fc355cc4580923646d29fadea44289f9fd6cdb55d69a4"
+          "content": "9fc77df4b792af329708a1587d64a56958e06d9d9175f0076065549d5433244d"
         }
       ],
       "properties": [
@@ -60636,7 +60720,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12576"
+          "value": "14443"
         }
       ]
     },
@@ -91539,6 +91623,7 @@
         "urn:sophiewell:file:source:lib/bolton-ratio-v1492.js",
         "urn:sophiewell:file:source:lib/borden-davf-v441.js",
         "urn:sophiewell:file:source:lib/borrmann-gastric-v394.js",
+        "urn:sophiewell:file:source:lib/botulism-antitoxin-dose-v1636.js",
         "urn:sophiewell:file:source:lib/bounds.js",
         "urn:sophiewell:file:source:lib/boyd-griffin-v458.js",
         "urn:sophiewell:file:source:lib/bp-categories-v843.js",
@@ -92357,6 +92442,7 @@
         "urn:sophiewell:file:source:lib/pas-profiles-load.js",
         "urn:sophiewell:file:source:lib/pas-swallow-v367.js",
         "urn:sophiewell:file:source:lib/pass-pheo-v660.js",
+        "urn:sophiewell:file:source:lib/passive-immunization-dose-v1636.js",
         "urn:sophiewell:file:source:lib/patient-release-rg839-v1635.js",
         "urn:sophiewell:file:source:lib/pauwels-femoral-neck-v374.js",
         "urn:sophiewell:file:source:lib/payer-policy-diff.js",
@@ -93880,6 +93966,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/bolton-ratio-v1492.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/borden-davf-v441.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/borrmann-gastric-v394.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/botulism-antitoxin-dose-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/boyd-griffin-v458.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bp-categories-v843.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bpe-periodontal-v1481.js",
@@ -94612,6 +94699,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-costs-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pas-swallow-v367.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pass-pheo-v660.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/passive-immunization-dose-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/patient-release-rg839-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pauwels-femoral-neck-v374.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/payer-policy-diff.js",
@@ -95111,7 +95199,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c2a89dbe556aaaeb"
+      "value": "39c219fd106c0f1f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -95123,7 +95211,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3589"
+      "value": "3593"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
