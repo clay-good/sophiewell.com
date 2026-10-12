@@ -513,7 +513,7 @@ export const renderers = {
     numField(root, 'On therapy: weeks on the ESA', 'eca-weeks', '');
     numField(root, 'On therapy: hemoglobin 2 weeks ago, g/dL (optional)', 'eca-hgb-2wk', '');
     numField(root, 'On therapy: hemoglobin when the ESA was started, g/dL (optional)', 'eca-hgb-start', '');
-    selectField(root, 'On therapy: hemoglobin against the level needed to avoid transfusion', 'eca-level', EA.TRANSFUSION_LEVELS);
+    selectField(root, 'On therapy: transfusion-avoiding level, where the hemoglobin stands', 'eca-level', EA.TRANSFUSION_LEVELS);
     selectField(root, 'On therapy: red cell transfusions still required', 'eca-still', EA.YES_NO);
     selectField(root, 'On therapy: chemotherapy course completed', 'eca-complete', EA.YES_NO);
     const o = out(); root.appendChild(o);

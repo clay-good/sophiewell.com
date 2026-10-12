@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5c26715e24d71070`
-Generated: 2026-10-12T02:50:56.096Z
+Build ID: `566b89f291b027dd`
+Generated: 2026-10-12T02:53:17.242Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1781,7 +1781,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/erefs-v618.js` | 2861 | `4fb7b838337edde7fb72ef98c97bf85ee1d6210ebf41965dfc126cc1dad45c5a` |
 | `mcp/adapters/erez-dic-v559.js` | 5955 | `de79f9d508eba77ed842238ba0c4ff026e221185e4d791b39fe7d0ad7708c2b3` |
 | `mcp/adapters/erisa-claim-clock-v1503.js` | 1475 | `4ce6ae90a58bc5b5191fa42f852c3aab97f4bf8bfde0baf5d55486bb12768670` |
-| `mcp/adapters/esa-chemo-dose-adjust-v1635.js` | 2631 | `d0d457ab7284f3a0c10b06600e5a56865e9bf87da028bed3ee6879931b5057af` |
+| `mcp/adapters/esa-chemo-dose-adjust-v1635.js` | 2630 | `e9c611c4377ba9a2dcce7601ce616208566e59db150971da403788529ed61bdd` |
 | `mcp/adapters/esa-conversion-v1633.js` | 1806 | `64ae651f561eb36ba845742a3ed2ecd15ca5e39aa0c920dbb18acedc05706e37` |
 | `mcp/adapters/essex-lopresti-calcaneal-v1498.js` | 725 | `9a3ece39d18373aba3516a9fd58eb3f3c63ebd796c83fb8a42aad6a422e218f5` |
 | `mcp/adapters/estimators-v233.js` | 2667 | `5aecdac30b89cf48cef057c0dc58ec9d4ca8c0a2e186a9229430407829cd5bd4` |
@@ -2890,7 +2890,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1632.js` | 22238 | `c3bfa88797e5bef2edd97efade44b441a2834a146d1388ec383e8ef815853dfb` |
 | `views/group-v1633.js` | 29480 | `6028e2b92c997dbc173f03b9afb4dd52e0e085984a4df67c0548a215d25be157` |
 | `views/group-v1634.js` | 14483 | `a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d` |
-| `views/group-v1635.js` | 35593 | `89e18eec0dcc637f42342ac9d1ea49d09a481f85faf5cc5251dbe7489d0a2285` |
+| `views/group-v1635.js` | 35592 | `cf2b7eb3804209350fdcb419ad9f7bf581c36e87a8d8d17802700f23bd9f6745` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v165.js` | 10575 | `bc3f3b3fe1cddf43d5b5ab8e99063a80d75ecaf527ed9fe608bbed3c8c59b1a9` |
 | `views/group-v166.js` | 6698 | `15f2b9e088bbfd84cc2c31c8014f6d84ecd313459cf16ebe7f401b08871ce8d5` |

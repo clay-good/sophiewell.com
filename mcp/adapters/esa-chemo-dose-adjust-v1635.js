@@ -19,7 +19,7 @@ export default [
       { dom: 'eca-weeks', arg: 'weeksOnTherapy', kind: 'number', label: 'On therapy: weeks on the ESA', unit: 'weeks' },
       { dom: 'eca-hgb-2wk', arg: 'hemoglobinTwoWeeksAgo', kind: 'number', label: 'On therapy: hemoglobin 2 weeks ago (optional)', unit: 'g/dL' },
       { dom: 'eca-hgb-start', arg: 'hemoglobinAtStart', kind: 'number', label: 'On therapy: hemoglobin when the ESA was started (optional)', unit: 'g/dL' },
-      { dom: 'eca-level', arg: 'transfusionLevel', kind: 'enum', values: EA.TRANSFUSION_LEVELS.map((x) => x.value), label: 'On therapy: hemoglobin against the level needed to avoid transfusion' },
+      { dom: 'eca-level', arg: 'transfusionLevel', kind: 'enum', values: EA.TRANSFUSION_LEVELS.map((x) => x.value), label: 'On therapy: transfusion-avoiding level, where the hemoglobin stands' },
       { dom: 'eca-still', arg: 'transfusionsStillRequired', kind: 'enum', values: EA.YES_NO.map((x) => x.value), label: 'On therapy: red cell transfusions still required' },
       { dom: 'eca-complete', arg: 'chemoCompleted', kind: 'enum', values: EA.YES_NO.map((x) => x.value), label: 'On therapy: chemotherapy course completed' },
     ],
