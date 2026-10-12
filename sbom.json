@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:5f3796c3-6684-576e-8acc-9b475c16fd73",
+  "serialNumber": "urn:uuid:f1257235-af3d-57b7-8bf7-168c9902b675",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T11:05:57.015Z",
+    "timestamp": "2026-10-12T11:18:25.707Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2275 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2279 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ba3fefaa23c8be71d259891267f35885d93fee9cf08e88bb745a537fc00b32f8"
+          "content": "21fd7726e1e6915e15b486627e502e2b132d3188f01cc655e67817f09093bb3b"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "148374"
+          "value": "148652"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4096d53e515340e490d02be538127904391a1b9159d7a24a4a1d1a17e4eaa554"
+          "content": "4aaa9e4c89d5b127205fafb629d5321b6888442859d24b76d8f462de86e24d7b"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "628369"
+          "value": "629098"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4cb32ad5bf783ff4df7fa6380fee8f1b3391a33a2a4082b7954b22e1fc8d7197"
+          "content": "23adeedeab5d98d6a843d0a315fb3ea1ef0b0710757e9ef6fe7474da8879751c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "286186"
+          "value": "286729"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6ecbca2779b97dc5769ad1d7f027285d2972c72a4d0a615c190c912ea685c7db"
+          "content": "22b8a45440cea8792820ef02fe29b5707d8f5819627074b4a86a57f0b7163595"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "138346"
+          "value": "138683"
         }
       ]
     },
@@ -7049,6 +7049,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/depot-injection-window-v1639.js",
+      "type": "file",
+      "name": "lib/depot-injection-window-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "191c137319587def1b539f2b8f8d2580c1c166d911292f94ce2966a2a87681eb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "14484"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/derivation.js",
       "type": "file",
       "name": "lib/derivation.js",
@@ -8393,6 +8414,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/emergency-contraception-window-v1639.js",
+      "type": "file",
+      "name": "lib/emergency-contraception-window-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df3f81cfff8be6efc1d028b3eb1e387d244230913094a65abcc3de8fa4375fc2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7509"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/emergency-ind-clock-v1635.js",
       "type": "file",
       "name": "lib/emergency-ind-clock-v1635.js",
@@ -8704,6 +8746,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3955"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/epinephrine-device-weight-band-v1639.js",
+      "type": "file",
+      "name": "lib/epinephrine-device-weight-band-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0b7ba91072fcd2cfbe091c7a9b4ce7e139b9723c3b8efacf1719bc23af083248"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6935"
         }
       ]
     },
@@ -14405,7 +14468,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5caed6b1bdd479b08c8339e05a0333adec1178ec2bc9096e103cf8380426eec2"
+          "content": "6ead07c6059e1b61ff067c481e1144ac5f5674db474bf01e69fa128552258afc"
         }
       ],
       "properties": [
@@ -14415,7 +14478,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "54633"
+          "value": "57463"
         }
       ]
     },
@@ -16946,7 +17009,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fdffe60af89413d69da880e2464e2b97f45b477f2401acaefb7695d813ea5dbb"
+          "content": "d4f08186a7e3e3f49874ab43fa0956a612e3e140e2844f8179cb58ab50f40a49"
         }
       ],
       "properties": [
@@ -16956,7 +17019,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2981838"
+          "value": "2986978"
         }
       ]
     },
@@ -19225,6 +19288,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11622"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nrt-step-schedule-v1639.js",
+      "type": "file",
+      "name": "lib/nrt-step-schedule-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ed7b8f3a529b0a37e31bd9deb84c81eb130e841800b0f745e886105c6f2ae6c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8309"
         }
       ]
     },
@@ -23561,7 +23645,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4bf4b7d5a842d408cede83a4d369ffc162ab96ba587630f571bc12c54669edaa"
+          "content": "5c2db989ddf90d2f33e2713e2cd798f849883fb82a9fc41e0011cfc4ddfadea9"
         }
       ],
       "properties": [
@@ -23571,7 +23655,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11183"
+          "value": "11207"
         }
       ]
     },
@@ -37436,6 +37520,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/depot-injection-window-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/depot-injection-window-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "319fcaa6a575d35e2093977b472ec3fb693429fc318e21bd32c68ff6318cdc4a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1366"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/derm-v151.js",
       "type": "file",
       "name": "mcp/adapters/derm-v151.js",
@@ -38696,6 +38801,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/emergency-contraception-window-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/emergency-contraception-window-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d9eb48b434a4a24bc3e0ba3c57366163f07bb6f97bacdf840e04612bf096cb80"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1040"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/emergency-ind-clock-v1635.js",
       "type": "file",
       "name": "mcp/adapters/emergency-ind-clock-v1635.js",
@@ -39007,6 +39133,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1273"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/epinephrine-device-weight-band-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/epinephrine-device-weight-band-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b462ffb956c9a87e4528ce6c77b9beb147b426b33ac89129e9b78e24e1627715"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1058"
         }
       ]
     },
@@ -48499,6 +48646,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2644"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nrt-step-schedule-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/nrt-step-schedule-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "75838cf2c385a1256644bb66e2dba3bcfb0d351548d0b393125547c7cb39566f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1393"
         }
       ]
     },
@@ -58652,7 +58820,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ebdc96c42f9ac8251cd9d7c64daff7db882313a82eb25e1f137fdf7274e659d1"
+          "content": "3907df3876e734fe049273f9e3606d87fff293a105ea977d261bff942166a189"
         }
       ],
       "properties": [
@@ -58662,7 +58830,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "157750"
+          "value": "158380"
         }
       ]
     },
@@ -63356,7 +63524,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fbb4d548c6b62ae93d4fb6b5dc57856ce8731e8de42d3f46d97627e36121d3e1"
+          "content": "0538cffcddd82faa82b3753dc79a37920a1864aa2aa452bd68ab1726640c2953"
         }
       ],
       "properties": [
@@ -63366,7 +63534,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9697"
+          "value": "13280"
         }
       ]
     },
@@ -94461,6 +94629,7 @@
         "urn:sophiewell:file:source:lib/dengue-fluid-plan-v1563.js",
         "urn:sophiewell:file:source:lib/denial-next-step-v1516.js",
         "urn:sophiewell:file:source:lib/denis-sacral-v376.js",
+        "urn:sophiewell:file:source:lib/depot-injection-window-v1639.js",
         "urn:sophiewell:file:source:lib/derivation.js",
         "urn:sophiewell:file:source:lib/derm-v151.js",
         "urn:sophiewell:file:source:lib/dermatology-v223.js",
@@ -94525,6 +94694,7 @@
         "urn:sophiewell:file:source:lib/elemental-iron-ingested-v687.js",
         "urn:sophiewell:file:source:lib/ellis-tooth-fracture-v718.js",
         "urn:sophiewell:file:source:lib/ellman-partial-rc-v1425.js",
+        "urn:sophiewell:file:source:lib/emergency-contraception-window-v1639.js",
         "urn:sophiewell:file:source:lib/emergency-ind-clock-v1635.js",
         "urn:sophiewell:file:source:lib/ems-v149.js",
         "urn:sophiewell:file:source:lib/endo-metab-v161.js",
@@ -94540,6 +94710,7 @@
         "urn:sophiewell:file:source:lib/environ-v242.js",
         "urn:sophiewell:file:source:lib/eortc-msg-ifd-v869.js",
         "urn:sophiewell:file:source:lib/eoss-v713.js",
+        "urn:sophiewell:file:source:lib/epinephrine-device-weight-band-v1639.js",
         "urn:sophiewell:file:source:lib/er-opioid-label-start-v1633.js",
         "urn:sophiewell:file:source:lib/erefs-v618.js",
         "urn:sophiewell:file:source:lib/erez-dic-v559.js",
@@ -95041,6 +95212,7 @@
         "urn:sophiewell:file:source:lib/nottingham-npi-v330.js",
         "urn:sophiewell:file:source:lib/npep-2025-v1401.js",
         "urn:sophiewell:file:source:lib/nrc-medical-event-screen-v1635.js",
+        "urn:sophiewell:file:source:lib/nrt-step-schedule-v1639.js",
         "urn:sophiewell:file:source:lib/nrti-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/nsofa-v526.js",
         "urn:sophiewell:file:source:lib/ntm-pulmonary-v827.js",
@@ -96857,6 +97029,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dengue-fluid-plan-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/denial-next-step-v1516.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/denis-sacral-v376.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/depot-injection-window-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/derm-v151.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermatology-v223.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermscore-v234.js",
@@ -96917,6 +97090,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/elemental-iron-ingested-v687.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ellis-tooth-fracture-v718.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ellman-partial-rc-v1425.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/emergency-contraception-window-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/emergency-ind-clock-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ems-v149.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/endo-metab-v161.js",
@@ -96932,6 +97106,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/environ-v242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eortc-msg-ifd-v869.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eoss-v713.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/epinephrine-device-weight-band-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/er-opioid-label-start-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erefs-v618.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erez-dic-v559.js",
@@ -97384,6 +97559,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nottingham-npi-v330.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/npep-2025-v1401.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nrc-medical-event-screen-v1635.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nrt-step-schedule-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nrti-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nsofa-v526.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ntm-pulmonary-v827.js",
@@ -97971,7 +98147,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "5f3796c36684576e"
+      "value": "f1257235af3d17b7"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -97983,7 +98159,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3719"
+      "value": "3727"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

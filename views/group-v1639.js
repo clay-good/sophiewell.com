@@ -1,6 +1,7 @@
 // spec-v1639: counter practice. Quantities, missed doses and the questions patients ask at the counter.
 // quantity-to-dispense, topical-quantity-ftu, oral-suspension-course, contraceptive-missed-pill,
-// contraception-start-backup.
+// contraception-start-backup, depot-injection-window, emergency-contraception-window,
+// epinephrine-device-weight-band, nrt-step-schedule.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -9,6 +10,10 @@ import * as FT from '../lib/topical-quantity-ftu-v1639.js';
 import * as OS from '../lib/oral-suspension-course-v1639.js';
 import * as MP from '../lib/contraceptive-missed-pill-v1639.js';
 import * as SB from '../lib/contraception-start-backup-v1639.js';
+import * as DW from '../lib/depot-injection-window-v1639.js';
+import * as EC from '../lib/emergency-contraception-window-v1639.js';
+import * as EP from '../lib/epinephrine-device-weight-band-v1639.js';
+import * as NR from '../lib/nrt-step-schedule-v1639.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -64,6 +69,12 @@ function show(r, o) {
   resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Result', value: r.bandLabel }]);
   list(o, r.notes);
   note(o, r.note);
+}
+
+// A label tool's result names the labels it read; each gets its own link.
+function labelLinks(r, o) {
+  const links = r.labelLinks || (r.labelUrl ? [{ text: 'Current label on DailyMed', url: r.labelUrl }] : []);
+  for (const l of links) { const p = el('p'); p.appendChild(el('a', { href: l.url, target: '_blank', rel: 'noreferrer', text: l.text })); o.appendChild(p); }
 }
 
 export const renderers = {
@@ -157,6 +168,63 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(SB.contraceptionStartBackup(args), o);
+    }));
+  },
+  'depot-injection-window'(root) {
+    const pairs = [['diw-product', 'product'], ['diw-last', 'lastInjection'], ['diw-planned', 'plannedDate'], ['diw-sublocade', 'sublocadeNext']];
+    selectField(root, 'Product', 'diw-product', DW.PRODUCTS);
+    dateField(root, 'Date of the last injection', 'diw-last');
+    dateField(root, 'Today\'s or the planned date (optional)', 'diw-planned');
+    selectField(root, 'Sublocade: which injection is next', 'diw-sublocade', DW.SUBLOCADE_NEXT);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = DW.depotInjectionWindow(args, new Date());
+      show(r, o);
+      if (r.valid) labelLinks(r, o);
+    }));
+  },
+  'emergency-contraception-window'(root) {
+    const pairs = [['ecw-sex', 'intercourseAt'], ['ecw-now', 'nowAt']];
+    dateField(root, 'Date and time of unprotected intercourse', 'ecw-sex', 'datetime-local').querySelector('input').setAttribute('data-private', '');
+    dateField(root, 'Date and time now', 'ecw-now', 'datetime-local');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = EC.emergencyContraceptionWindow(args, new Date());
+      show(r, o);
+      if (r.valid) labelLinks(r, o);
+    }));
+  },
+  'epinephrine-device-weight-band'(root) {
+    const pairs = [['edw-weight', 'weight'], ['edw-unit', 'weightUnit']];
+    numField(root, 'Weight', 'edw-weight', 'e.g. 44');
+    selectField(root, 'Weight is in', 'edw-unit', EP.UNITS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = EP.epinephrineDeviceWeightBand(args, new Date());
+      show(r, o);
+      if (r.valid) labelLinks(r, o);
+    }));
+  },
+  'nrt-step-schedule'(root) {
+    const pairs = [['nrt-product', 'product'], ['nrt-age', 'age'], ['nrt-cigs', 'cigarettesPerDay'], ['nrt-minutes', 'minutesToFirst'], ['nrt-quit', 'quitDate']];
+    selectField(root, 'Product', 'nrt-product', NR.PRODUCTS);
+    selectField(root, 'Age of the user', 'nrt-age', NR.AGES);
+    numField(root, 'Patch: cigarettes smoked per day', 'nrt-cigs', 'e.g. 20');
+    numField(root, 'Gum or lozenge: minutes from waking to the first cigarette', 'nrt-minutes', 'e.g. 20');
+    dateField(root, 'Quit date', 'nrt-quit');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = NR.nrtStepSchedule(args, new Date());
+      show(r, o);
+      if (r.valid) labelLinks(r, o);
     }));
   },
 };

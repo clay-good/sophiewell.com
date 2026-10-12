@@ -2852,6 +2852,10 @@ const UTILITIES = [
   { id: 'oral-suspension-course', name: 'Oral Suspension: Bottles for a Course and Discard Date', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: false },
   { id: 'contraceptive-missed-pill', name: 'Late or Missed Birth Control Pill (CDC 2024)', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
   { id: 'contraception-start-backup', name: 'Starting a Contraceptive: Days of Back-Up (CDC 2024)', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'depot-injection-window', name: 'Depot Injection: Next Due Date and Window', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'emergency-contraception-window', name: 'Emergency Contraception: Hours Left on the Label', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'epinephrine-device-weight-band', name: 'Epinephrine Auto-Injector or Nasal Spray: Label Strength by Weight', group: 'I', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'nrt-step-schedule', name: 'Nicotine Replacement: Label Strength and Step-Down Calendar', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

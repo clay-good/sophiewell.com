@@ -34,10 +34,10 @@ test('inhaler, drops, patches and supplies', () => {
   const e = q({ form: 'drops', days: 30, dropsPerEye: 1, eyes: 2, dosesPerDay: 2, dropsPerMl: 20, packageSize: 5 });
   assert.deepEqual([e.quantity, e.packages, e.daysCovered], [6, 2, 50]);
   assert.match(q({ form: 'drops', days: 30, dropsPerEye: 1, eyes: 2, dosesPerDay: 2 }).message, /drops per mL/);
-  const p = q({ form: 'patch', days: 30, changeInterval: 72, changeUnit: 'hr-interval', patchesWorn: 1, packageSize: 5 });
+  const p = q({ form: 'transdermal', days: 30, changeInterval: 72, changeUnit: 'hr-interval', patchesWorn: 1, packageSize: 5 });
   assert.deepEqual([p.quantity, p.packages, p.daysCovered], [10, 2, 30]);
-  assert.equal(q({ form: 'patch', days: 28, changeInterval: 7, changeUnit: 'day-interval', patchesWorn: 1 }).quantity, 4);
-  assert.match(q({ form: 'patch', days: 28, changeInterval: 7, patchesWorn: 1 }).message, /hours or days/);
+  assert.equal(q({ form: 'transdermal', days: 28, changeInterval: 7, changeUnit: 'day-interval', patchesWorn: 1 }).quantity, 4);
+  assert.match(q({ form: 'transdermal', days: 28, changeInterval: 7, patchesWorn: 1 }).message, /hours or days/);
   const t = q({ form: 'countable-item', days: 90, usesPerDay: 3, packageSize: 50 });
   assert.deepEqual([t.quantity, t.packages, t.leftover], [270, 6, 30]);
 });

@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Four tools that read FDA labels: Depot Injection: Next Due Date and Window; Emergency
+  Contraception: Hours Left on the Label; Epinephrine Auto-Injector or Nasal Spray: Label Strength
+  by Weight; and Nicotine Replacement: Label Strength and Step-Down Calendar. Twelve labels joined
+  the weekly DailyMed watch, so a figure is withheld if its label's text changes.
 - Five counter tools: Quantity to Dispense for a Days Supply; Topical Quantity by Fingertip Units
   (Adults); Oral Suspension: Bottles for a Course and Discard Date; Late or Missed Birth Control
   Pill (CDC 2024); and Starting a Contraceptive: Days of Back-Up (CDC 2024). The two contraception

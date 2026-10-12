@@ -9529,6 +9529,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/contraception-start-backup-v1639.js (spec-v1639: Starting a contraceptive: days of back-up (CDC 2024) — clinical disclaimer)
 - `contraception-start-backup`
 
+### lib/depot-injection-window-v1639.js (spec-v1639: Depot injection: next due date and window — clinical disclaimer)
+- `depot-injection-window`
+
+### lib/emergency-contraception-window-v1639.js (spec-v1639: Emergency contraception: hours left on the label — clinical disclaimer)
+- `emergency-contraception-window`
+
+### lib/epinephrine-device-weight-band-v1639.js (spec-v1639: Epinephrine auto-injector or nasal spray: label strength by weight — clinical disclaimer)
+- `epinephrine-device-weight-band`
+
+### lib/nrt-step-schedule-v1639.js (spec-v1639: Nicotine replacement: label strength and step-down calendar — clinical disclaimer)
+- `nrt-step-schedule`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

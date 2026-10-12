@@ -1,6 +1,6 @@
 # spec-v1639 — The community pharmacy counter: quantities, label schedules, OTC label doses and patient-facing clocks
 
-**Status:** In progress. 5 of 15 tools built (October 12, 2026); see Build status. 15 new tools (1 build-gated), 7 backfills.
+**Status:** In progress. 9 of 15 tools built (October 12, 2026); see Build status. 15 new tools (1 build-gated), 7 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A community pharmacist, the technician at the fill station, and the patient or caregiver on the
@@ -960,8 +960,12 @@ Built tools are in `views/group-v1639.js`. Sources were re-read on October 12, 2
 | 1. `quantity-to-dispense` | Built. Eight forms; the tool supplies no figure. One package size is taken, not a list of sizes. Priming puffs for an inhaler are counted per canister. |
 | 2. `topical-quantity-ftu` | Built on the abstract of Long and Finlay 1991 (area counts and standard deviations) and the gram weights as restated in Paterson et al., *Pharmaceutics* 2018;10(1):9. Adults only. The 1991 full text and the 1998 children's table were not read. |
 | 3. `oral-suspension-course` | Built. One bottle size; the course's day 1 is the day the bottle is mixed. |
+| 4. `depot-injection-window` | Built on section 2 of the five labels and CDC's "Timing of Repeat Injections". The label line and CDC's line are printed apart. Sublocade asks whether the next injection is the second or a maintenance dose, since the 26-day line is for maintenance doses. A planned date is optional. |
 | 7. `contraceptive-missed-pill` | Built on CDC's text and on Figures 1 and 5, read on the figure images. The branch follows the hours since the pill was due, as the figures do; a pill count that disagrees with the hours is said in the result and not used. Owner decision 1 stands as written: the combined-pill branch is kept and every result says the label may differ. |
+| 8. `emergency-contraception-window` | Built on the Plan B One-Step Directions, ella section 2 and CDC's "Emergency Contraception". The follow-on dates are counted from the time entered as now, as if the pill were taken then. Owner decision 3 stands as written: the label's 72 hours and CDC's 5 days are both shown. |
 | 9. `contraception-start-backup` | Built on the six "Need for Back-Up Contraception" passages and Box 3. The day bleeding starts is day 1, which is the reading CDC's drospirenone line fixes. |
+| 12. `nrt-step-schedule` | Built on the four Drug Facts labels. For gum and lozenge the label gives a daily minimum only for weeks 1 to 6, so later steps carry a maximum and no minimum. |
+| 13. `epinephrine-device-weight-band` | Built (group I). A weight in pounds is converted for the Auvi-Q and neffy tables, which are in kg only, and placed on the EpiPen label's own pound figures (33 and 66). Exactly 30 kg or 66 lb shows both EpiPen bands. |
 
-Not built yet: tools 4 to 6, 8 and 10 to 14 (each rests on label rows that are re-read and
+Not built yet: tools 5, 6, 10, 11 and 14 (each rests on label rows that are re-read and
 registered first), tool 15 (owner-gated), and the backfills.

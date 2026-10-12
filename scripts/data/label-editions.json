@@ -592,12 +592,13 @@
     "labeler": "BRAEBURN INC.",
     "setId": "5d8a8fd0-8619-422a-a664-d1d2e8970f48",
     "tools": [
-      "buprenorphine-oud-product-switch"
+      "buprenorphine-oud-product-switch",
+      "depot-injection-window"
     ],
     "splVersion": 6,
     "publishedOn": "2026-01-06",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "d421b0a7cf91df7285df2d1a45f2ec18ccb98091e92f151bdac290fae5600009"
     }
@@ -1302,7 +1303,7 @@
   },
   {
     "label": "DuoDote (atropine and pralidoxime)",
-    "labeler": "MERIDIAN MEDICAL TECHNOLOGIES® LLC",
+    "labeler": "MERIDIAN MEDICAL TECHNOLOGIES\u00ae LLC",
     "setId": "241f42a0-1a33-40e8-8221-201767d999e5",
     "tools": [
       "pralidoxime-dose"
@@ -3142,12 +3143,13 @@
     "labeler": "INDIVIOR INC.",
     "setId": "6189fb21-9432-45f8-8481-0bfaf3ccde95",
     "tools": [
-      "buprenorphine-oud-product-switch"
+      "buprenorphine-oud-product-switch",
+      "depot-injection-window"
     ],
     "splVersion": 43,
     "publishedOn": "2026-07-28",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "01ff0be85d4ad70bcd1a9eb78f58b0a077e974bdd62d321fa0fd84dc73bd74cc"
     }
@@ -3864,6 +3866,186 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "1468aca291c22c8259b41e2257d5808b0e7b417486848422fa0149e265e76fbf"
+    }
+  },
+  {
+    "label": "Depo-Provera CI (medroxyprogesterone acetate 150 mg/mL)",
+    "labeler": "PHARMACIA & UPJOHN COMPANY LLC",
+    "setId": "199cf13e-0859-4a73-9b45-e700d0cd1049",
+    "tools": [
+      "depot-injection-window"
+    ],
+    "splVersion": 29,
+    "publishedOn": "2026-08-28",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "9bcfee2c1818c6b0eea1522d37d7029b633240bebd1681c05c8d95f07294e909"
+    }
+  },
+  {
+    "label": "depo-subQ provera 104 (medroxyprogesterone acetate)",
+    "labeler": "PHARMACIA & UPJOHN COMPANY LLC",
+    "setId": "390087a6-f3c3-4f0b-a930-79acf412f153",
+    "tools": [
+      "depot-injection-window"
+    ],
+    "splVersion": 21,
+    "publishedOn": "2025-12-19",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "3d39d1892dc7da7d004743cc3313b2ac14cb9e7c043de0f935b9dd8cab5dec84"
+    }
+  },
+  {
+    "label": "Vivitrol (naltrexone extended-release injectable suspension)",
+    "labeler": "ALKERMES, INC.",
+    "setId": "cd11c435-b0f0-4bb9-ae78-60f101f3703f",
+    "tools": [
+      "depot-injection-window"
+    ],
+    "splVersion": 39,
+    "publishedOn": "2026-07-24",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "2f8ee3b4e5a0b9e1037b21034e9d0eb7766286588cde7cbbc29fe6bae13ed9f5"
+    }
+  },
+  {
+    "label": "Plan B One-Step (levonorgestrel 1.5 mg), Foundation Consumer Healthcare",
+    "labeler": "FOUNDATION CONSUMER HEALTHCARE LLC",
+    "setId": "6ce6b40e-14ac-47bd-a648-ddf9e452e559",
+    "tools": [
+      "emergency-contraception-window"
+    ],
+    "splVersion": 5,
+    "publishedOn": "2023-02-02",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "7d148a7bb3dee4b762734538e837506ae48b8698e142ba62001da25ad45e3358"
+    }
+  },
+  {
+    "label": "ella (ulipristal acetate), PMI Branded Pharmaceuticals",
+    "labeler": "PMI BRANDED PHARMACEUTICALS, INC.",
+    "setId": "2bf93d23-cddd-4613-9066-5b5fa090404b",
+    "tools": [
+      "emergency-contraception-window"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2026-07-24",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "d33161f12356b1004ae29d818b2bd08cb040bb61b0d65fe329d7bd893cc7c1b9"
+    }
+  },
+  {
+    "label": "EpiPen and EpiPen Jr (epinephrine injection), Viatris",
+    "labeler": "VIATRIS SPECIALTY LLC",
+    "setId": "7560c201-9246-487c-a13b-6295db04274a",
+    "tools": [
+      "epinephrine-device-weight-band"
+    ],
+    "splVersion": 37,
+    "publishedOn": "2025-02-12",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "b6cc7065f5ffa0ec10e3b3c440e1ba18ada4a3c831700413625e9acc6ee75b6c"
+    }
+  },
+  {
+    "label": "Auvi-Q (epinephrine injection), Kaleo",
+    "labeler": "KALEO, INC",
+    "setId": "6180fb40-7fca-4602-b3da-ce62b8cd2470",
+    "tools": [
+      "epinephrine-device-weight-band"
+    ],
+    "splVersion": 21,
+    "publishedOn": "2025-10-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "9871645252db98776c58d5125c7e543b773a64274b2dca809789c96bc0def187"
+    }
+  },
+  {
+    "label": "neffy (epinephrine nasal spray), ARS",
+    "labeler": "ARS PHARMACEUTICALS OPERATIONS, INC.",
+    "setId": "a1758142-a905-401d-8961-05829f51023a",
+    "tools": [
+      "epinephrine-device-weight-band"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2026-04-14",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e382b490c625a8f523a70a629c6e4abd3a5c319e94e34b1b3bb2cdcb747275f9"
+    }
+  },
+  {
+    "label": "NicoDerm CQ (nicotine transdermal system), Haleon",
+    "labeler": "HALEON US HOLDINGS LLC",
+    "setId": "93b2d1b9-83c1-40b5-b6af-90c38c8d6cef",
+    "tools": [
+      "nrt-step-schedule"
+    ],
+    "splVersion": 14,
+    "publishedOn": "2025-07-16",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "b028acb374bf39fb8411dc85e4120f79e267d211c5a1865c38463391a02b2059"
+    }
+  },
+  {
+    "label": "Nicorette gum (nicotine polacrilex), Haleon",
+    "labeler": "HALEON US HOLDINGS LLC",
+    "setId": "673fd19f-69b3-4f73-b9b4-18b5f4cbf69c",
+    "tools": [
+      "nrt-step-schedule"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2024-08-15",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "51ee575077afaf5e26573c3a83a21a1db6c948a167a82bf3ab198142bbecf416"
+    }
+  },
+  {
+    "label": "Nicorette lozenge (nicotine polacrilex), Haleon",
+    "labeler": "HALEON US HOLDINGS LLC",
+    "setId": "f350e050-2173-43e0-8738-848382ce0700",
+    "tools": [
+      "nrt-step-schedule"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2025-06-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "f6721bb9038d0bde37c37809d9233cdfb8afee8240eaa95c7a21db24b6360e7d"
+    }
+  },
+  {
+    "label": "Habitrol gum (nicotine polacrilex), Dr. Reddy's",
+    "labeler": "DR. REDDY'S LABORATORIES INC.",
+    "setId": "5c394758-1179-455a-a562-c8e954fb2258",
+    "tools": [
+      "nrt-step-schedule"
+    ],
+    "splVersion": 4,
+    "publishedOn": "2025-12-24",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "69e528e30c202556d04bedabf3d0514a5db4c422809cd06816f7f3d9b2c8ab50"
     }
   }
 ]

@@ -898,3 +898,11 @@ experience**.
 > v1639, Late or Missed Birth Control Pill (CDC 2024) — [spec-v1639](spec-v1639.md), which adds `contraceptive-missed-pill` — is 2274.)
 
 > v1639, Starting a Contraceptive: Days of Back-Up (CDC 2024) — [spec-v1639](spec-v1639.md), which adds `contraception-start-backup` — is 2275.)
+
+> v1639, Depot Injection: Next Due Date and Window — [spec-v1639](spec-v1639.md), which adds `depot-injection-window` — is 2276.)
+
+> v1639, Emergency Contraception: Hours Left on the Label — [spec-v1639](spec-v1639.md), which adds `emergency-contraception-window` — is 2277.)
+
+> v1639, Epinephrine Auto-Injector or Nasal Spray: Label Strength by Weight — [spec-v1639](spec-v1639.md), which adds `epinephrine-device-weight-band` — is 2278.)
+
+> v1639, Nicotine Replacement: Label Strength and Step-Down Calendar — [spec-v1639](spec-v1639.md), which adds `nrt-step-schedule` — is 2279.)
