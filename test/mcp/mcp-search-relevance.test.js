@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['occupational radiation dose percent of annual limit', ['occupational-dose-limit-check']],
+  ['sealed source leak test wipe result microcuries', ['sealed-source-leak-test']],
   ['ind safety report 7 day and 15 day deadline', ['ind-safety-report-clock']],
   ['emergency ind expanded access submission deadline', ['emergency-ind-clock']],
   ['ind annual report due date', ['ind-annual-report-due']],

@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Occupational Radiation Dose Against the Annual Limits (10 CFR 20.1201): each year-to-date dose
+  as a percent of its NRC limit, with a year-end projection.
+- Sealed Source Leak Test Result and Next Due Date (10 CFR 35.67): wipe counts to microcuries,
+  the 0.005 µCi level, and the next test or report date.
 - IND Safety Report Deadlines (21 CFR 312.32): the 15-day and 7-day dates for a sponsor; for an
   investigator, the rule's "immediately".
 - Emergency Expanded Access Follow-Up Deadlines: 15 working days to FDA and 5 to the IRB.

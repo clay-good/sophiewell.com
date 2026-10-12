@@ -1,6 +1,6 @@
 # spec-v1635 — Oncology pharmacy, investigational drug service, and nuclear pharmacy
 
-**Status:** In progress, October 11, 2026: 4 of 35 tools built (see Build status). 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
+**Status:** In progress, October 11, 2026: 6 of 35 tools built (see Build status). 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 Three pharmacists do work the catalog barely touches. The chemotherapy-verification pharmacist
@@ -945,5 +945,7 @@ build stores the version and published date instead.
 | 20. `emergency-ind-clock` | Built (group Q) on 21 CFR 312.310 and 56.104. Neither rule defines "working days"; the tool counts Monday to Friday, skips federal holidays through the shared deadline engine, and says so. The written summary at the conclusion of treatment is printed with no day count, as the rule gives none. |
 | 21. `ind-annual-report-due` | Built (group Q) on 21 CFR 312.40, 312.33 and 312.30. It lists the next three anniversaries whose 60-day date has not passed. A clinical hold is not modeled, and the result says the 30-day date assumes none. An "earlier notification" date later than 30 days after receipt is refused. |
 | 22. `trial-record-retention` | Built (group Q) on 21 CFR 312.62(c) and 312.57(c). The reader's longer requirement governs when it is later; with none entered the result says to check the protocol, contract, policy and state law. |
+| 32. `sealed-source-leak-test` | Built (group Q) on 10 CFR 35.67 and 35.3067 as current on eCFR October 8, 2026. The exemption is a required choice; an exempt source with no count entered gets the exemption's own sentence. Exactly 0.005 µCi is leaking ("or more"). The next-test date is 6 calendar months after the test date, with the registry's other intervals named in the note. |
+| 35. `occupational-dose-limit-check` | Built (group Q) on 10 CFR 20.1201(a) and 20.1208(a). Doses are entered in rem, mrem or mSv (a required choice). The projection is plain proportion and is not applied to the pregnancy limit, which is not annual. License ALARA levels are not included. |
 
-Not built: the other 31 tools.
+Not built: the other 29 tools.

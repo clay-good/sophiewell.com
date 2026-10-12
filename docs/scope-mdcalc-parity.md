@@ -704,3 +704,7 @@ experience**.
 > v1635, IND Effective Date, Annual Report and New-Investigator Notice (21 CFR 312) — [spec-v1635](spec-v1635.md), which adds `ind-annual-report-due` — is 2177.)
 
 > v1635, Investigational Drug Record Retention Date (21 CFR 312.57, 312.62) — [spec-v1635](spec-v1635.md), which adds `trial-record-retention` — is 2178.)
+
+> v1635, Occupational Radiation Dose Against the Annual Limits (10 CFR 20.1201) — [spec-v1635](spec-v1635.md), which adds `occupational-dose-limit-check` — is 2179.)
+
+> v1635, Sealed Source Leak Test Result and Next Due Date (10 CFR 35.67) — [spec-v1635](spec-v1635.md), which adds `sealed-source-leak-test` — is 2180.)

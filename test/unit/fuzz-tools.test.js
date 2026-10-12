@@ -770,6 +770,8 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as occupationalDoseLimitCheckV1635 from '../../lib/occupational-dose-limit-check-v1635.js';
+import * as sealedSourceLeakTestV1635 from '../../lib/sealed-source-leak-test-v1635.js';
 import * as indSafetyReportClockV1635 from '../../lib/ind-safety-report-clock-v1635.js';
 import * as emergencyIndClockV1635 from '../../lib/emergency-ind-clock-v1635.js';
 import * as indAnnualReportDueV1635 from '../../lib/ind-annual-report-due-v1635.js';
@@ -1763,6 +1765,8 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'occupational-dose-limit-check-v1635.js': occupationalDoseLimitCheckV1635,
+  'sealed-source-leak-test-v1635.js': sealedSourceLeakTestV1635,
   'ind-safety-report-clock-v1635.js': indSafetyReportClockV1635,
   'emergency-ind-clock-v1635.js': emergencyIndClockV1635,
   'ind-annual-report-due-v1635.js': indAnnualReportDueV1635,

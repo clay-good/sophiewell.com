@@ -1,11 +1,14 @@
 // spec-v1635: oncology pharmacy, investigational drug service and nuclear pharmacy.
-// ind-safety-report-clock, emergency-ind-clock, ind-annual-report-due, trial-record-retention.
+// ind-safety-report-clock, emergency-ind-clock, ind-annual-report-due, trial-record-retention,
+// occupational-dose-limit-check, sealed-source-leak-test.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
 import * as EI from '../lib/emergency-ind-clock-v1635.js';
 import * as IA from '../lib/ind-annual-report-due-v1635.js';
 import * as TR from '../lib/trial-record-retention-v1635.js';
+import * as OD from '../lib/occupational-dose-limit-check-v1635.js';
+import * as SL from '../lib/sealed-source-leak-test-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -16,6 +19,14 @@ function selectField(root, label, id, options) {
   const s = el('select', { id });
   for (const opt of [NA, ...options]) s.appendChild(el('option', { value: opt.value, text: opt.text }));
   wrap.appendChild(s);
+  root.appendChild(wrap);
+  return wrap;
+}
+function numField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type: 'number', min: '0', step: 'any', inputmode: 'decimal', placeholder }));
   root.appendChild(wrap);
   return wrap;
 }
@@ -97,6 +108,32 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(TR.trialRecordRetention(args), o);
+    }));
+  },
+  'occupational-dose-limit-check'(root) {
+    const pairs = [['odl-unit', 'unit'], ...OD.LIMITS.map((l) => [`odl-${l.dom}`, l.arg]), ['odl-months', 'monthsElapsed']];
+    selectField(root, 'Unit of the doses', 'odl-unit', OD.UNITS);
+    root.appendChild(el('p', { text: 'Enter the year-to-date dose for each quantity monitored; leave the rest blank.' }));
+    for (const l of OD.LIMITS) numField(root, l.text, `odl-${l.dom}`, '');
+    numField(root, 'Months of the monitoring year elapsed (optional, for the projection)', 'odl-months', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(OD.occupationalDoseLimitCheck(args), o);
+    }));
+  },
+  'sealed-source-leak-test'(root) {
+    const pairs = [['slt-exemption', 'exemption'], ['slt-cpm', 'netCpm'], ['slt-eff', 'efficiencyPercent'], ['slt-date', 'testDate']];
+    selectField(root, 'Does an exemption in 10 CFR 35.67(f) apply to the source?', 'slt-exemption', SL.EXEMPTIONS);
+    numField(root, 'Net counts per minute on the wipe', 'slt-cpm', '');
+    numField(root, 'Counter efficiency, %', 'slt-eff', '');
+    dateField(root, 'Date of the leak test (optional)', 'slt-date');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SL.sealedSourceLeakTest(args), o);
     }));
   },
 };

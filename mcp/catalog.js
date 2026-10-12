@@ -1040,6 +1040,8 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import occupationalDoseLimitCheckV1635 from './adapters/occupational-dose-limit-check-v1635.js';
+import sealedSourceLeakTestV1635 from './adapters/sealed-source-leak-test-v1635.js';
 import indSafetyReportClockV1635 from './adapters/ind-safety-report-clock-v1635.js';
 import emergencyIndClockV1635 from './adapters/emergency-ind-clock-v1635.js';
 import indAnnualReportDueV1635 from './adapters/ind-annual-report-due-v1635.js';
@@ -2249,6 +2251,8 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['occupational-dose-limit-check-v1635', occupationalDoseLimitCheckV1635],
+  ['sealed-source-leak-test-v1635', sealedSourceLeakTestV1635],
   ['ind-safety-report-clock-v1635', indSafetyReportClockV1635],
   ['emergency-ind-clock-v1635', emergencyIndClockV1635],
   ['ind-annual-report-due-v1635', indAnnualReportDueV1635],

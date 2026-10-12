@@ -2751,6 +2751,8 @@ const UTILITIES = [
   { id: 'emergency-ind-clock', name: 'Emergency Expanded Access Follow-Up Deadlines (21 CFR 312.310, 56.104)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'ind-annual-report-due', name: 'IND Effective Date, Annual Report and New-Investigator Notice (21 CFR 312)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'trial-record-retention', name: 'Investigational Drug Record Retention Date (21 CFR 312.57, 312.62)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'occupational-dose-limit-check', name: 'Occupational Radiation Dose Against the Annual Limits (10 CFR 20.1201)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'sealed-source-leak-test', name: 'Sealed Source Leak Test Result and Next Due Date (10 CFR 35.67)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

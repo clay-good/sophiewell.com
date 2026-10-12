@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:f777b2bc-57af-509f-84a4-716d8476405f",
+  "serialNumber": "urn:uuid:adf8eec5-2b9e-5b74-8280-396852c580fe",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T23:59:46.315Z",
+    "timestamp": "2026-10-12T00:38:23.970Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2178 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2180 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "90ae844b906819e135b3149c0a93737c79a3a7504206077554860501eb04e38b"
+          "content": "bec2b3a8a666cb2568ea12e33e7bebc1a674a201898bad6838b4c02197f16d54"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141096"
+          "value": "141261"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d8e72bf4755bcd7c9d1fe3c06f01ba023145fd833ba7049b7b4a09c69a2bf4e8"
+          "content": "bb89ae2ae33cf6f7e40a86f91ad20586d3e62733043a437225f3117076034fab"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "611096"
+          "value": "611467"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "47e967dc8d064d5163ac692c5b08c592bafce141bda59260f9b26ed6adc4330e"
+          "content": "b42ae50fed1983e7931ba1b6c361a854b7ab022b4c7cb66cfdd107b533961345"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "273385"
+          "value": "273659"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d89e69febcb3863198f116ace7093c6f9cfc48c6d8cbf1b7a4e3d058a19ae4e3"
+          "content": "5d9452be8a30c911b058d65ae1d61be683d0174b99572208387fbd047ad29aa9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "130004"
+          "value": "130201"
         }
       ]
     },
@@ -15707,7 +15707,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e2a8d95709611e18da164481faec8505941ca5614687202243ed665cec967341"
+          "content": "7c6014056aa37ba06d464171fb1987cbce27a9f59eea0bf55646dcbac2193d42"
         }
       ],
       "properties": [
@@ -15717,7 +15717,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2885263"
+          "value": "2887117"
         }
       ]
     },
@@ -18364,6 +18364,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7713"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/occupational-dose-limit-check-v1635.js",
+      "type": "file",
+      "name": "lib/occupational-dose-limit-check-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "958719b939daafc0cae5877e0b8afe6f0fd31e9d72bb7f6bbb200a962a7c332c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5931"
         }
       ]
     },
@@ -24139,6 +24160,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8377"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/sealed-source-leak-test-v1635.js",
+      "type": "file",
+      "name": "lib/sealed-source-leak-test-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "58d780e5a191a35f7f8fb64e94a7bcb6913d28b177654112ba8871a96c13f129"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5870"
         }
       ]
     },
@@ -45563,6 +45605,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/occupational-dose-limit-check-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/occupational-dose-limit-check-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5dcd1de8b3a4385827703b087d42ad5c1201aee52cab6ccd3c0be9f0fc45fe3d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1269"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ocular-trauma-score-v614.js",
       "type": "file",
       "name": "mcp/adapters/ocular-trauma-score-v614.js",
@@ -50351,6 +50414,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/sealed-source-leak-test-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/sealed-source-leak-test-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3fd7166c1f4df7543721ccfee53021e1a49c31d8847b9b759825c8c0e204a30a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1259"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/secondary-mitral-regurgitation-stage-v849.js",
       "type": "file",
       "name": "mcp/adapters/secondary-mitral-regurgitation-stage-v849.js",
@@ -54473,7 +54557,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0b66692984f0e37fa763e21399bcf41d1155d8c8ca93792bec29e9687719aaa1"
+          "content": "48ab296ea3248a31a1826eddd0f3af7a325b11a76e4af893c56cde9f303da0ef"
         }
       ],
       "properties": [
@@ -54483,7 +54567,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "143931"
+          "value": "144253"
         }
       ]
     },
@@ -59093,7 +59177,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9d049581380aa53e4143aa8bc7dc95c18ab60023859d85be3b9d47d472a7d981"
+          "content": "f003966efb5e4c316503aa37130d92800b8452b1570ee4cccbcf36bfa4e64e27"
         }
       ],
       "properties": [
@@ -59103,7 +59187,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5069"
+          "value": "7094"
         }
       ]
     },
@@ -90737,6 +90821,7 @@
         "urn:sophiewell:file:source:lib/ob-v138.js",
         "urn:sophiewell:file:source:lib/obgyn-v225.js",
         "urn:sophiewell:file:source:lib/obgyn-v250.js",
+        "urn:sophiewell:file:source:lib/occupational-dose-limit-check-v1635.js",
         "urn:sophiewell:file:source:lib/ocular-trauma-score-v614.js",
         "urn:sophiewell:file:source:lib/offline-status.js",
         "urn:sophiewell:file:source:lib/ohat-oral-health-v1495.js",
@@ -91012,6 +91097,7 @@
         "urn:sophiewell:file:source:lib/sds-dependence-v730.js",
         "urn:sophiewell:file:source:lib/sdsg-spondylolisthesis-v1430.js",
         "urn:sophiewell:file:source:lib/sea-guideline-v861.js",
+        "urn:sophiewell:file:source:lib/sealed-source-leak-test-v1635.js",
         "urn:sophiewell:file:source:lib/search-corpus.js",
         "urn:sophiewell:file:source:lib/search.js",
         "urn:sophiewell:file:source:lib/secondary-mitral-regurgitation-stage-v849.js",
@@ -92977,6 +93063,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ob-v138.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/obgyn-v225.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/obgyn-v250.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/occupational-dose-limit-check-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ocular-trauma-score-v614.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ohat-oral-health-v1495.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ohi-s-v1483.js",
@@ -93205,6 +93292,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/sds-dependence-v730.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sdsg-spondylolisthesis-v1430.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sea-guideline-v861.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/sealed-source-leak-test-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/secondary-mitral-regurgitation-stage-v849.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/seinsheimer-subtroch-v413.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/serial-dilution-v1629.js",
@@ -93505,7 +93593,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "f777b2bc57afb09f"
+      "value": "adf8eec52b9e8b74"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -93517,7 +93605,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3516"
+      "value": "3520"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

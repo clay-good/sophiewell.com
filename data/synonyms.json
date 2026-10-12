@@ -12870,6 +12870,13 @@
       ],
       "tile": "ind-safety-report-clock",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dosimetry"
+      ],
+      "tile": "occupational-dose-limit-check",
+      "audience": "clinicians"
     }
   ]
 }

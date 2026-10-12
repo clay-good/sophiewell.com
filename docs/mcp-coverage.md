@@ -9238,6 +9238,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/trial-record-retention-v1635.js (spec-v1635: Investigational drug record retention (21 CFR 312.57, 312.62) — administrative disclaimer)
 - `trial-record-retention`
 
+### lib/occupational-dose-limit-check-v1635.js (spec-v1635: Occupational dose limits (10 CFR 20.1201, 20.1208) — administrative disclaimer)
+- `occupational-dose-limit-check`
+
+### lib/sealed-source-leak-test-v1635.js (spec-v1635: Sealed source leak test (10 CFR 35.67, 35.3067) — administrative disclaimer)
+- `sealed-source-leak-test`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 
