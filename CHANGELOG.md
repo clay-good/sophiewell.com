@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- IND Safety Report Deadlines (21 CFR 312.32): the 15-day and 7-day dates for a sponsor; for an
+  investigator, the rule's "immediately".
+- Emergency Expanded Access Follow-Up Deadlines: 15 working days to FDA and 5 to the IRB.
+- IND Effective Date, Annual Report and New-Investigator Notice: the 30-day effective date, the
+  next three annual report windows, and the 30-day notice.
+- Investigational Drug Record Retention Date: the 2-year federal minimum for investigators and
+  sponsors, or the reader's longer requirement.
 - AT-HARM10: Was This Admission Medication-Related? (Kempen 2019): ten questions in order; the
   first yes decides, and an all-no assessment is reported the way the form and the text each put it.
 - Drug-List Anticholinergic Score (German and CRIDECO Lists): looks each drug up on an open list

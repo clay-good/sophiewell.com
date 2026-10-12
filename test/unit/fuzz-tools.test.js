@@ -770,6 +770,10 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as indSafetyReportClockV1635 from '../../lib/ind-safety-report-clock-v1635.js';
+import * as emergencyIndClockV1635 from '../../lib/emergency-ind-clock-v1635.js';
+import * as indAnnualReportDueV1635 from '../../lib/ind-annual-report-due-v1635.js';
+import * as trialRecordRetentionV1635 from '../../lib/trial-record-retention-v1635.js';
 import * as atHarm10V1634 from '../../lib/at-harm10-v1634.js';
 import * as adeCostAvoidanceV1634 from '../../lib/ade-cost-avoidance-v1634.js';
 import * as anticholinergicListScoreV1634 from '../../lib/anticholinergic-list-score-v1634.js';
@@ -1759,6 +1763,10 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'ind-safety-report-clock-v1635.js': indSafetyReportClockV1635,
+  'emergency-ind-clock-v1635.js': emergencyIndClockV1635,
+  'ind-annual-report-due-v1635.js': indAnnualReportDueV1635,
+  'trial-record-retention-v1635.js': trialRecordRetentionV1635,
   'at-harm10-v1634.js': atHarm10V1634,
   'ade-cost-avoidance-v1634.js': adeCostAvoidanceV1634,
   'anticholinergic-list-score-v1634.js': anticholinergicListScoreV1634,

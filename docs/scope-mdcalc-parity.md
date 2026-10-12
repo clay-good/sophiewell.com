@@ -696,3 +696,11 @@ experience**.
 > v1634, Pharmacist Intervention Cost Avoidance (Nesbit Method) — [spec-v1634](spec-v1634.md), which adds `ade-cost-avoidance` — is 2173.)
 
 > v1634, Drug-List Anticholinergic Score (German and CRIDECO Lists) — [spec-v1634](spec-v1634.md), which adds `anticholinergic-list-score` — is 2174.)
+
+> v1635, IND Safety Report Deadlines (21 CFR 312.32) — [spec-v1635](spec-v1635.md), which adds `ind-safety-report-clock` — is 2175.)
+
+> v1635, Emergency Expanded Access Follow-Up Deadlines (21 CFR 312.310, 56.104) — [spec-v1635](spec-v1635.md), which adds `emergency-ind-clock` — is 2176.)
+
+> v1635, IND Effective Date, Annual Report and New-Investigator Notice (21 CFR 312) — [spec-v1635](spec-v1635.md), which adds `ind-annual-report-due` — is 2177.)
+
+> v1635, Investigational Drug Record Retention Date (21 CFR 312.57, 312.62) — [spec-v1635](spec-v1635.md), which adds `trial-record-retention` — is 2178.)

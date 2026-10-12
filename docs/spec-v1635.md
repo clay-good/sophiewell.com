@@ -1,6 +1,6 @@
 # spec-v1635 — Oncology pharmacy, investigational drug service, and nuclear pharmacy
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
+**Status:** In progress, October 11, 2026: 4 of 35 tools built (see Build status). 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 Three pharmacists do work the catalog barely touches. The chemotherapy-verification pharmacist
@@ -939,4 +939,11 @@ build stores the version and published date instead.
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+| Tool | State |
+|---|---|
+| 19. `ind-safety-report-clock` | Built (group Q) on 21 CFR 312.32 and 312.64 as current on eCFR October 8, 2026, re-read October 11, 2026. The 15-day count runs from the sponsor's determination and the 7-day count from first receipt; a receipt date after the determination is refused. For an investigator the result is the word "immediately" and no date. The amendment eCFR links (published September 22, 2026) was not read; the tool follows the text in force. |
+| 20. `emergency-ind-clock` | Built (group Q) on 21 CFR 312.310 and 56.104. Neither rule defines "working days"; the tool counts Monday to Friday, skips federal holidays through the shared deadline engine, and says so. The written summary at the conclusion of treatment is printed with no day count, as the rule gives none. |
+| 21. `ind-annual-report-due` | Built (group Q) on 21 CFR 312.40, 312.33 and 312.30. It lists the next three anniversaries whose 60-day date has not passed. A clinical hold is not modeled, and the result says the 30-day date assumes none. An "earlier notification" date later than 30 days after receipt is refused. |
+| 22. `trial-record-retention` | Built (group Q) on 21 CFR 312.62(c) and 312.57(c). The reader's longer requirement governs when it is later; with none entered the result says to check the protocol, contract, policy and state law. |
+
+Not built: the other 31 tools.

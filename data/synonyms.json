@@ -12863,6 +12863,13 @@
       ],
       "tile": "anticholinergic-list-score",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "susar"
+      ],
+      "tile": "ind-safety-report-clock",
+      "audience": "clinicians"
     }
   ]
 }

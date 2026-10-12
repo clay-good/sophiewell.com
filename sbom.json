@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:dd9dc43a-0a5a-5abf-8626-2151dffc9ea0",
+  "serialNumber": "urn:uuid:f777b2bc-57af-509f-84a4-716d8476405f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-11T23:26:20.892Z",
+    "timestamp": "2026-10-11T23:59:46.315Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2174 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2178 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8fd2f484b1c32150af6d7b6fd8ffc16ff9af0f74232e0f84e3ef0f870f63eae2"
+          "content": "90ae844b906819e135b3149c0a93737c79a3a7504206077554860501eb04e38b"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140779"
+          "value": "141096"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a7a8cfa7619c586e428b6f52b98a46b871c85127896de0bded63ad10e7880e1"
+          "content": "d8e72bf4755bcd7c9d1fe3c06f01ba023145fd833ba7049b7b4a09c69a2bf4e8"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "610313"
+          "value": "611096"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "025579d067608c41185fdd1fee8bce451686e6eec7953d33b72decdf8c00ed6a"
+          "content": "47e967dc8d064d5163ac692c5b08c592bafce141bda59260f9b26ed6adc4330e"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "272856"
+          "value": "273385"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5cdf1f44a575e9d980ac0aecb391788027aa4af77a7ab6faa250f632f9595bd2"
+          "content": "d89e69febcb3863198f116ace7093c6f9cfc48c6d8cbf1b7a4e3d058a19ae4e3"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "129642"
+          "value": "130004"
         }
       ]
     },
@@ -7595,6 +7595,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/emergency-ind-clock-v1635.js",
+      "type": "file",
+      "name": "lib/emergency-ind-clock-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5fa09de7e7d0c57780876d393a110fbe488466d70250b1c2f6c7eb11b0fdb35d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3178"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ems-v149.js",
       "type": "file",
       "name": "lib/ems-v149.js",
@@ -11837,6 +11858,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ind-annual-report-due-v1635.js",
+      "type": "file",
+      "name": "lib/ind-annual-report-due-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "01c7afd7309babc60e7d328a9996dc4a74cd4cbbbc0a4ff0ba94d4fba267de10"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5289"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ind-safety-report-clock-v1635.js",
+      "type": "file",
+      "name": "lib/ind-safety-report-clock-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "839fef5cab9aa5139dca3365de1b0e91fd3904d7ac4d50991a638121885de892"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7760"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/indomethacin-headache-ichd3-v819.js",
       "type": "file",
       "name": "lib/indomethacin-headache-ichd3-v819.js",
@@ -15644,7 +15707,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a0dd2aed1a35bc9d0d96e8b7aaeecf21b12a392c180c5a996e270c4bec64fe09"
+          "content": "e2a8d95709611e18da164481faec8505941ca5614687202243ed665cec967341"
         }
       ],
       "properties": [
@@ -15654,7 +15717,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2881508"
+          "value": "2885263"
         }
       ]
     },
@@ -26432,6 +26495,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/trial-record-retention-v1635.js",
+      "type": "file",
+      "name": "lib/trial-record-retention-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7e7b041a407e5553a4b856d5b1f06dda71cc39a35d16cc6c1f3c65ad294baa53"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4609"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/tricuspid-regurgitation-stage-v848.js",
       "type": "file",
       "name": "lib/tricuspid-regurgitation-stage-v848.js",
@@ -35714,6 +35798,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/emergency-ind-clock-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/emergency-ind-clock-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b0597ecdaa598a1fc69a59937379e486721d4867e0a58f0aba01b05fc4b832ad"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1040"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ems-v149.js",
       "type": "file",
       "name": "mcp/adapters/ems-v149.js",
@@ -39553,6 +39658,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "1974"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ind-annual-report-due-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/ind-annual-report-due-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b901446f2a9b637400a8be72d924ec2e686ebf2bff8c8ca12e4a1593541360e4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1214"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ind-safety-report-clock-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/ind-safety-report-clock-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "474df45f9dec254ee6005ca5bca539f43b993ac9bddbe7d90ffb498c27ec6616"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1579"
         }
       ]
     },
@@ -52199,6 +52346,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/trial-record-retention-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/trial-record-retention-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "308fb10064e84f2967bd83084f398d0d896cbf7b39dbc910cf8ff18f54204cc1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1303"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tricuspid-regurgitation-stage-v848.js",
       "type": "file",
       "name": "mcp/adapters/tricuspid-regurgitation-stage-v848.js",
@@ -54305,7 +54473,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cf3a2e1f1b02adf177aef7fa72a52a9271db303c730b57a57d899ba6cd8fef2d"
+          "content": "0b66692984f0e37fa763e21399bcf41d1155d8c8ca93792bec29e9687719aaa1"
         }
       ],
       "properties": [
@@ -54315,7 +54483,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "143359"
+          "value": "143931"
         }
       ]
     },
@@ -58915,6 +59083,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "14483"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1635.js",
+      "type": "file",
+      "name": "views/group-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9d049581380aa53e4143aa8bc7dc95c18ab60023859d85be3b9d47d472a7d981"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5069"
         }
       ]
     },
@@ -90035,6 +90224,7 @@
         "urn:sophiewell:file:source:lib/elemental-iron-ingested-v687.js",
         "urn:sophiewell:file:source:lib/ellis-tooth-fracture-v718.js",
         "urn:sophiewell:file:source:lib/ellman-partial-rc-v1425.js",
+        "urn:sophiewell:file:source:lib/emergency-ind-clock-v1635.js",
         "urn:sophiewell:file:source:lib/ems-v149.js",
         "urn:sophiewell:file:source:lib/endo-metab-v161.js",
         "urn:sophiewell:file:source:lib/endo-quant-v197.js",
@@ -90237,6 +90427,8 @@
         "urn:sophiewell:file:source:lib/imid-rems-v1511.js",
         "urn:sophiewell:file:source:lib/in-use-discard-time-v1630.js",
         "urn:sophiewell:file:source:lib/income-screens-v1506.js",
+        "urn:sophiewell:file:source:lib/ind-annual-report-due-v1635.js",
+        "urn:sophiewell:file:source:lib/ind-safety-report-clock-v1635.js",
         "urn:sophiewell:file:source:lib/indomethacin-headache-ichd3-v819.js",
         "urn:sophiewell:file:source:lib/infant-arv-prophylaxis-v1554.js",
         "urn:sophiewell:file:source:lib/infant-hiv-test-schedule-v1554.js",
@@ -90932,6 +91124,7 @@
         "urn:sophiewell:file:source:lib/traynelis-v448.js",
         "urn:sophiewell:file:source:lib/tree.js",
         "urn:sophiewell:file:source:lib/trend.js",
+        "urn:sophiewell:file:source:lib/trial-record-retention-v1635.js",
         "urn:sophiewell:file:source:lib/tricuspid-regurgitation-stage-v848.js",
         "urn:sophiewell:file:source:lib/trigeminal-neuralgia-ichd3-v817.js",
         "urn:sophiewell:file:source:lib/triple-i-v832.js",
@@ -91272,6 +91465,7 @@
         "urn:sophiewell:file:source:views/group-v1632.js",
         "urn:sophiewell:file:source:views/group-v1633.js",
         "urn:sophiewell:file:source:views/group-v1634.js",
+        "urn:sophiewell:file:source:views/group-v1635.js",
         "urn:sophiewell:file:source:views/group-v164.js",
         "urn:sophiewell:file:source:views/group-v165.js",
         "urn:sophiewell:file:source:views/group-v166.js",
@@ -92318,6 +92512,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/elemental-iron-ingested-v687.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ellis-tooth-fracture-v718.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ellman-partial-rc-v1425.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/emergency-ind-clock-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ems-v149.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/endo-metab-v161.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/endo-quant-v197.js",
@@ -92501,6 +92696,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/imid-rems-v1511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/in-use-discard-time-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/income-screens-v1506.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ind-annual-report-due-v1635.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ind-safety-report-clock-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/indomethacin-headache-ichd3-v819.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/infant-arv-prophylaxis-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/infant-hiv-test-schedule-v1554.js",
@@ -93103,6 +93300,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/trauma-v108.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/traumaclass-v109.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/traynelis-v448.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/trial-record-retention-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tricuspid-regurgitation-stage-v848.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/trigeminal-neuralgia-ichd3-v817.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/triple-i-v832.js",
@@ -93307,7 +93505,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "dd9dc43a0a5acabf"
+      "value": "f777b2bc57afb09f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -93319,7 +93517,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3507"
+      "value": "3516"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

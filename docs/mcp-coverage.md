@@ -9226,6 +9226,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/anticholinergic-list-score-v1634.js (spec-v1634: Anticholinergic burden from open lists (Kiesel 2018; Ramos 2022) — clinical disclaimer)
 - `anticholinergic-list-score`
 
+### lib/ind-safety-report-clock-v1635.js (spec-v1635: IND safety report deadlines (21 CFR 312.32, 312.64) — administrative disclaimer)
+- `ind-safety-report-clock`
+
+### lib/emergency-ind-clock-v1635.js (spec-v1635: Emergency expanded access follow-up (21 CFR 312.310, 56.104) — administrative disclaimer)
+- `emergency-ind-clock`
+
+### lib/ind-annual-report-due-v1635.js (spec-v1635: IND effective date, annual report, new-investigator notice (21 CFR 312.30, 312.33, 312.40) — administrative disclaimer)
+- `ind-annual-report-due`
+
+### lib/trial-record-retention-v1635.js (spec-v1635: Investigational drug record retention (21 CFR 312.57, 312.62) — administrative disclaimer)
+- `trial-record-retention`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

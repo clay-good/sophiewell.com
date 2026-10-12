@@ -1040,6 +1040,10 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import indSafetyReportClockV1635 from './adapters/ind-safety-report-clock-v1635.js';
+import emergencyIndClockV1635 from './adapters/emergency-ind-clock-v1635.js';
+import indAnnualReportDueV1635 from './adapters/ind-annual-report-due-v1635.js';
+import trialRecordRetentionV1635 from './adapters/trial-record-retention-v1635.js';
 import atHarm10V1634 from './adapters/at-harm10-v1634.js';
 import adeCostAvoidanceV1634 from './adapters/ade-cost-avoidance-v1634.js';
 import anticholinergicListScoreV1634 from './adapters/anticholinergic-list-score-v1634.js';
@@ -2245,6 +2249,10 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['ind-safety-report-clock-v1635', indSafetyReportClockV1635],
+  ['emergency-ind-clock-v1635', emergencyIndClockV1635],
+  ['ind-annual-report-due-v1635', indAnnualReportDueV1635],
+  ['trial-record-retention-v1635', trialRecordRetentionV1635],
   ['at-harm10-v1634', atHarm10V1634],
   ['ade-cost-avoidance-v1634', adeCostAvoidanceV1634],
   ['anticholinergic-list-score-v1634', anticholinergicListScoreV1634],
