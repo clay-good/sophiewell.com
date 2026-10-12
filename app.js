@@ -2759,6 +2759,8 @@ const UTILITIES = [
   { id: 'ids-accountability-reconcile', name: 'Study Drug Accountability and Pill-Count Compliance (21 CFR 312.62)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'radioactive-decay', name: 'Radioactive Decay, Precalibration and Activity Units (Label Half-Lives)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'radiopharm-dispense-volume', name: 'Radiopharmaceutical Volume to Draw for a Prescribed Activity (10 CFR 35.63)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'patient-release-rg839', name: 'Patient Release After a Radiopharmaceutical (10 CFR 35.75, NRC Regulatory Guide 8.39)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nuc-med-breastfeeding-interruption', name: 'Breastfeeding Interruption After a Radiopharmaceutical (NRC Regulatory Guide 8.39)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

@@ -2,7 +2,8 @@
 // ind-safety-report-clock, emergency-ind-clock, ind-annual-report-due, trial-record-retention,
 // occupational-dose-limit-check, sealed-source-leak-test, nrc-medical-event-screen,
 // rad-package-label-category, rad-package-receipt-check, ids-accountability-reconcile,
-// radioactive-decay, radiopharm-dispense-volume.
+// radioactive-decay, radiopharm-dispense-volume, patient-release-rg839,
+// nuc-med-breastfeeding-interruption.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -17,6 +18,8 @@ import * as RR from '../lib/rad-package-receipt-check-v1635.js';
 import * as IR from '../lib/ids-accountability-reconcile-v1635.js';
 import * as RK from '../lib/radioactive-decay-v1635.js';
 import * as DV from '../lib/radiopharm-dispense-volume-v1635.js';
+import * as PR from '../lib/patient-release-rg839-v1635.js';
+import * as BF from '../lib/nuc-med-breastfeeding-interruption-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -271,6 +274,36 @@ export const renderers = {
       const r = DV.radiopharmDispenseVolume(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'patient-release-rg839'(root) {
+    const pairs = [['prg-nuclide', 'nuclide'], ['prg-activity', 'activity'], ['prg-unit', 'unit'], ['prg-rate', 'doseRateMremH'], ['prg-gamma', 'gamma'], ['prg-half-life', 'halfLifeDays'], ['prg-condition', 'condition'], ['prg-e1', 'occupancyFirst8h'], ['prg-e2', 'occupancyAfter']];
+    selectField(root, 'Radionuclide', 'prg-nuclide', PR.NUCLIDES);
+    numField(root, 'Administered activity', 'prg-activity', '');
+    selectField(root, 'Activity unit', 'prg-unit', PR.UNITS);
+    numField(root, 'Measured dose rate at 1 meter, mrem/h (optional)', 'prg-rate', '');
+    numField(root, 'Another radionuclide: exposure rate constant, R·cm²/(mCi·h)', 'prg-gamma', '');
+    numField(root, 'Another radionuclide: physical half-life, days', 'prg-half-life', '');
+    selectField(root, 'I-131 patient-specific calculation: condition treated (optional)', 'prg-condition', PR.CONDITIONS);
+    numField(root, 'I-131: occupancy factor for the first 8 hours (the guide\'s examples use 0.75)', 'prg-e1', '');
+    numField(root, 'I-131: occupancy factor after 8 hours (the guide\'s examples use 0.25)', 'prg-e2', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PR.patientReleaseRg839(args), o);
+    }));
+  },
+  'nuc-med-breastfeeding-interruption'(root) {
+    const pairs = [['nbi-agent', 'agent'], ['nbi-activity', 'activity'], ['nbi-unit', 'unit']];
+    selectField(root, 'Radiopharmaceutical', 'nbi-agent', BF.AGENTS);
+    numField(root, 'Administered activity (not needed for the rows with a duration only)', 'nbi-activity', '');
+    selectField(root, 'Activity unit', 'nbi-unit', BF.UNITS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(BF.nucMedBreastfeedingInterruption(args), o);
     }));
   },
 };

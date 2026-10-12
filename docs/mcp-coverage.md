@@ -9262,6 +9262,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/radiopharm-dispense-volume-v1635.js (spec-v1635: Radiopharmaceutical dispense volume (10 CFR 35.63) — administrative disclaimer)
 - `radiopharm-dispense-volume`
 
+### lib/patient-release-rg839-v1635.js (spec-v1635: Patient release (10 CFR 35.75; RG 8.39 Rev. 1) — clinical disclaimer)
+- `patient-release-rg839`
+
+### lib/nuc-med-breastfeeding-interruption-v1635.js (spec-v1635: Breastfeeding interruption (RG 8.39 Rev. 1 Table 3) — clinical disclaimer)
+- `nuc-med-breastfeeding-interruption`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

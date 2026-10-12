@@ -720,3 +720,7 @@ experience**.
 > v1635, Radioactive Decay, Precalibration and Activity Units (Label Half-Lives) — [spec-v1635](spec-v1635.md), which adds `radioactive-decay` — is 2185.)
 
 > v1635, Radiopharmaceutical Volume to Draw for a Prescribed Activity (10 CFR 35.63) — [spec-v1635](spec-v1635.md), which adds `radiopharm-dispense-volume` — is 2186.)
+
+> v1635, Patient Release After a Radiopharmaceutical (10 CFR 35.75, NRC Regulatory Guide 8.39) — [spec-v1635](spec-v1635.md), which adds `patient-release-rg839` — is 2187.)
+
+> v1635, Breastfeeding Interruption After a Radiopharmaceutical (NRC Regulatory Guide 8.39) — [spec-v1635](spec-v1635.md), which adds `nuc-med-breastfeeding-interruption` — is 2188.)

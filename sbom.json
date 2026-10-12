@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2682f65e-6693-5992-8ebb-931670b680ef",
+  "serialNumber": "urn:uuid:b0fb0ffe-d1e9-5bc1-8b72-6014467f68f3",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T01:33:05.521Z",
+    "timestamp": "2026-10-12T01:47:29.885Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2186 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2188 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d7d98de3ea60180a0857cb4068ec4241d4bbf958aefc02891747206878a16234"
+          "content": "484ee1fb6cadef71a3f7285c560b53f60b478ebcec2fb5b39da544d6bddfa379"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141737"
+          "value": "141936"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cf5710df6913a1ad6c71786f8b10324a3a6dd42b9c13852caa624217a1363ee5"
+          "content": "c12ba6c793d21f5c474924bc77786f3cfd68c4e1d770e2e6bbd63a5f160f6458"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "612551"
+          "value": "612957"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6b33b463548f773aa69224d8714506398a15c9f7713e7d89cc5130037852ad1f"
+          "content": "16c8587fb142c19227e241ba4a89ed922e9b509cd48c984df6f2654dfb4d1f9f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "274471"
+          "value": "274748"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4da6474f4a550ecef807e624f960920db8e9cd03c84e45d8b6c3e1c7c1099cb6"
+          "content": "c8c778256ab1b34b059090f01f0b03c7b4c147eff3d218854833a0b56cb4922b"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "130763"
+          "value": "130997"
         }
       ]
     },
@@ -15728,7 +15728,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c082c243bfe2d20a9dee4a484cd730a547cd259055406cb7b3e0b04a0f59e616"
+          "content": "2dd547a6edc606405846d74c5677d281f205d517fb4bdaba0d5ed264cf7a25a0"
         }
       ],
       "properties": [
@@ -15738,7 +15738,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2894390"
+          "value": "2896389"
         }
       ]
     },
@@ -17948,6 +17948,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/nuc-med-breastfeeding-interruption-v1635.js",
+      "type": "file",
+      "name": "lib/nuc-med-breastfeeding-interruption-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7bed890c2ebf1edb3e129993c1d879af43e364a115d08b3969d45a8d7ddbc792"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8015"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/num.js",
       "type": "file",
       "name": "lib/num.js",
@@ -19750,6 +19771,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4376"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/patient-release-rg839-v1635.js",
+      "type": "file",
+      "name": "lib/patient-release-rg839-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4bf38ddcd0aaf581ac500cca0ed1779de74f57325d148c176f47833cadd86046"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11691"
         }
       ]
     },
@@ -45332,6 +45374,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nuc-med-breastfeeding-interruption-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/nuc-med-breastfeeding-interruption-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1466404b39af46abab64bcd9be2c8900551a74ded9fe81579e64a4d111f34c60"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1208"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nunley-vertullo-v455.js",
       "type": "file",
       "name": "mcp/adapters/nunley-vertullo-v455.js",
@@ -46651,6 +46714,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1382"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/patient-release-rg839-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/patient-release-rg839-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "79f1a81f8469f5eaa95667ba91659af6c1e6107ba837420e43e5b61ce56ca5ce"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1963"
         }
       ]
     },
@@ -54809,7 +54893,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "69779b9eb7cf616e36fb3ff3cf51efeea87070109c40fa1476d24c7bcee07891"
+          "content": "bde5dff3ce8ecdd56d3ff8864508b8f32600abceb419ad406ff448bf9f6d1ea5"
         }
       ],
       "properties": [
@@ -54819,7 +54903,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "145187"
+          "value": "145523"
         }
       ]
     },
@@ -59429,7 +59513,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9d411906632ca8ce110176ed5aa7206d32096c02a6ce5bddec767ebc24d2a5a4"
+          "content": "fba36fafb03801698718de40a7fa1131c5e1c4d852258834744bbc681f6dd51c"
         }
       ],
       "properties": [
@@ -59439,7 +59523,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "18006"
+          "value": "20219"
         }
       ]
     },
@@ -91053,6 +91137,7 @@
         "urn:sophiewell:file:source:lib/nrti-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/nsofa-v526.js",
         "urn:sophiewell:file:source:lib/ntm-pulmonary-v827.js",
+        "urn:sophiewell:file:source:lib/nuc-med-breastfeeding-interruption-v1635.js",
         "urn:sophiewell:file:source:lib/num.js",
         "urn:sophiewell:file:source:lib/nunley-vertullo-v455.js",
         "urn:sophiewell:file:source:lib/nurse-license-training-requirements-v1397.js",
@@ -91139,6 +91224,7 @@
         "urn:sophiewell:file:source:lib/pas-profiles-load.js",
         "urn:sophiewell:file:source:lib/pas-swallow-v367.js",
         "urn:sophiewell:file:source:lib/pass-pheo-v660.js",
+        "urn:sophiewell:file:source:lib/patient-release-rg839-v1635.js",
         "urn:sophiewell:file:source:lib/pauwels-femoral-neck-v374.js",
         "urn:sophiewell:file:source:lib/payer-policy-diff.js",
         "urn:sophiewell:file:source:lib/pbm-reimbursement-v1510.js",
@@ -93302,6 +93388,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nrti-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nsofa-v526.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ntm-pulmonary-v827.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nuc-med-breastfeeding-interruption-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nunley-vertullo-v455.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nurse-license-training-requirements-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nurse-staffing-ratio-check-v1396.js",
@@ -93365,6 +93452,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-costs-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pas-swallow-v367.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pass-pheo-v660.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/patient-release-rg839-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pauwels-femoral-neck-v374.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/payer-policy-diff.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pbm-reimbursement-v1510.js",
@@ -93857,7 +93945,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "2682f65e6693d992"
+      "value": "b0fb0ffed1e92bc1"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -93869,7 +93957,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3532"
+      "value": "3536"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

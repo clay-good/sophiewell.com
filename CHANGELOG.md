@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Patient Release After a Radiopharmaceutical (10 CFR 35.75, NRC Regulatory Guide 8.39): the
+  guide's release and instruction tables, its equation for an unlisted radionuclide, and the I-131
+  patient-specific equation with the reader's occupancy factors.
+- Breastfeeding Interruption After a Radiopharmaceutical (NRC Regulatory Guide 8.39): whether
+  instructions and a record are required, and the guide's recommended interruption.
 - Radioactive Decay, Precalibration and Activity Units (Label Half-Lives): activity at another
   time or the time to a target, in curie and becquerel units, with each half-life tied to its FDA
   label.

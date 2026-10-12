@@ -12892,6 +12892,13 @@
       ],
       "tile": "radioactive-decay",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "radioiodine"
+      ],
+      "tile": "patient-release-rg839",
+      "audience": "clinicians"
     }
   ]
 }
