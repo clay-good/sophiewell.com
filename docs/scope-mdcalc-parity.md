@@ -762,3 +762,9 @@ experience**.
 > v1636, Fomepizole Doses, With and Without Hemodialysis (Label) — [spec-v1636](spec-v1636.md), which adds `fomepizole-schedule` — is 2206.)
 
 > v1636, Dantrolene for Malignant Hyperthermia: Dose and Vials (Labels) — [spec-v1636](spec-v1636.md), which adds `dantrolene-mh-vials` — is 2207.)
+
+> v1636, Flumazenil Dose Series and Cumulative Caps (Label) — [spec-v1636](spec-v1636.md), which adds `flumazenil-ladder` — is 2208.)
+
+> v1636, Neostigmine Reversal Dose (Bloxiverz Label) — [spec-v1636](spec-v1636.md), which adds `neostigmine-reversal-dose` — is 2209.)
+
+> v1636, Deferoxamine for Acute Iron Poisoning: Rate and 24-Hour Total (Label) — [spec-v1636](spec-v1636.md), which adds `deferoxamine-acute-iron` — is 2210.)

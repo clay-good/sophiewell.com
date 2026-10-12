@@ -13034,6 +13034,29 @@
       ],
       "tile": "dantrolene-mh-vials",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "flumazenil",
+        "romazicon"
+      ],
+      "tile": "flumazenil-ladder",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "bloxiverz"
+      ],
+      "tile": "neostigmine-reversal-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "deferoxamine",
+        "desferal"
+      ],
+      "tile": "deferoxamine-acute-iron",
+      "audience": "clinicians"
     }
   ]
 }

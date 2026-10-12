@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:03e182f8-2be5-5b7a-8801-8bd2ddac78ea",
+  "serialNumber": "urn:uuid:1682fd5a-3f30-539c-88db-731713718cdf",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T04:45:54.903Z",
+    "timestamp": "2026-10-12T05:03:31.589Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2207 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2210 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9abfb66dc55bb0d52b28ee055ce7d4a8cfa134da0badcb2eed0f7c85beb1b566"
+          "content": "63f3bd712e9b45a2cc69ec5bf4b5ad96e88294cd59b869d3d647d044732dc00c"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "143346"
+          "value": "143556"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "477e6ffc7a99eddbba1f320ba05310cec0291e83505491b0da7fa8234cc64ccc"
+          "content": "9a8c7c763b320a1aa3e307c0b59b068b3a8004eda74a94dbfa2b6f625412df2d"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "616288"
+          "value": "616791"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e570b8dd52408c5df649373bba81c2e73123ba72076667b1708d5ca18d6a58c9"
+          "content": "45d2a0a753cdf286faecfdbf023ec1864a39c5727fe5c1e41283fb89d96f7b3b"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "277259"
+          "value": "277657"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5863086b5b276289f4e85c4d8fc1696cac8846bcd2fe2f0ce7ed77cbc0d395c5"
+          "content": "333feb09ac207fd6f9182b22d72136a9a34e5ceb6414067a1e3e56230afadfe2"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132619"
+          "value": "132864"
         }
       ]
     },
@@ -6398,6 +6398,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/deferoxamine-acute-iron-v1636.js",
+      "type": "file",
+      "name": "lib/deferoxamine-acute-iron-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d4bb646189bf1a713ee8700b7cabbc5ebf6426113750693e574c08340b420caa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5769"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/dejour-trochlea-v485.js",
       "type": "file",
       "name": "lib/dejour-trochlea-v485.js",
@@ -8872,6 +8893,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8862"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/flumazenil-ladder-v1636.js",
+      "type": "file",
+      "name": "lib/flumazenil-ladder-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b2b402577066ea118d07bd621c1b21f620d0411ae530f755c5f2cc8017f37a84"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9182"
         }
       ]
     },
@@ -13670,7 +13712,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7adcebd488b68e92925da97fb01b3bf417a3a11660c51030b06f85df8cc6053d"
+          "content": "461ae2ab9cf015d586313047e83f056aadf15190b7af288af4d1bff908412825"
         }
       ],
       "properties": [
@@ -13680,7 +13722,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "48533"
+          "value": "49199"
         }
       ]
     },
@@ -16064,7 +16106,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "aae03532dfa0d5b9f2771fa06ea8ea3d3d7de74a13dfc75f6ee3ba9ec97ec9e9"
+          "content": "725c5472996f4ed38866bfa38a12b76b9abf3dbf7b8e2d7da1c4f05e42d04ac5"
         }
       ],
       "properties": [
@@ -16074,7 +16116,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2916716"
+          "value": "2919317"
         }
       ]
     },
@@ -17398,6 +17440,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9054"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/neostigmine-reversal-dose-v1636.js",
+      "type": "file",
+      "name": "lib/neostigmine-reversal-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "52b24ac4aded815131d3a208502eca2485f3fd2c775b38da277a6257cce8ec10"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7508"
         }
       ]
     },
@@ -35273,6 +35336,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/deferoxamine-acute-iron-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/deferoxamine-acute-iron-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "79faf55708591db7832a0c8e27b771b0d0483337c5b684296e1a13bfeece28f8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1173"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dejour-trochlea-v485.js",
       "type": "file",
       "name": "mcp/adapters/dejour-trochlea-v485.js",
@@ -37558,6 +37642,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2256"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/flumazenil-ladder-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/flumazenil-ladder-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1fddb3e9da2e730f33eae602284946e7b5a2c23e55395079c19c26723a071936"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1308"
         }
       ]
     },
@@ -45223,6 +45328,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4395"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/neostigmine-reversal-dose-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/neostigmine-reversal-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "95c0d27d19dad1b865a96de19b3d6898af0020132fec6a01478ab7fccebe897a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1492"
         }
       ]
     },
@@ -55691,7 +55817,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c890b15652f41ae3a8c38a0e1f745b403814810a60bd6b8f7ea9a8a4eea8673e"
+          "content": "17aaf2a2bd50a36038f4a2f04dda7dd22bbf855a5b772b1e85777cf687589f64"
         }
       ],
       "properties": [
@@ -55701,7 +55827,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "148254"
+          "value": "148693"
         }
       ]
     },
@@ -60332,7 +60458,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5ac58044b65a52abb08f5a1b940071322c49c1ff9c136726c33da04559dc7046"
+          "content": "afe10bce540c82170321e090d181fb6169b40cf82c619e53591c17f458fb074e"
         }
       ],
       "properties": [
@@ -60342,7 +60468,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5590"
+          "value": "8589"
         }
       ]
     },
@@ -91406,6 +91532,7 @@
         "urn:sophiewell:file:source:lib/debakey-v461.js",
         "urn:sophiewell:file:source:lib/decimal-comma.js",
         "urn:sophiewell:file:source:lib/decision-rules-v258.js",
+        "urn:sophiewell:file:source:lib/deferoxamine-acute-iron-v1636.js",
         "urn:sophiewell:file:source:lib/dejour-trochlea-v485.js",
         "urn:sophiewell:file:source:lib/delbet-femoral-neck-v378.js",
         "urn:sophiewell:file:source:lib/delta-check-v925.js",
@@ -91524,6 +91651,7 @@
         "urn:sophiewell:file:source:lib/fisher-grade-v600.js",
         "urn:sophiewell:file:source:lib/fitzpatrick-v331.js",
         "urn:sophiewell:file:source:lib/fluidresp-v113.js",
+        "urn:sophiewell:file:source:lib/flumazenil-ladder-v1636.js",
         "urn:sophiewell:file:source:lib/fmea-rpn-v918.js",
         "urn:sophiewell:file:source:lib/fnclcc-grade-v651.js",
         "urn:sophiewell:file:source:lib/fois-v727.js",
@@ -91930,6 +92058,7 @@
         "urn:sophiewell:file:source:lib/nems-v544.js",
         "urn:sophiewell:file:source:lib/nen-who-grade-v797.js",
         "urn:sophiewell:file:source:lib/neos-v538.js",
+        "urn:sophiewell:file:source:lib/neostigmine-reversal-dose-v1636.js",
         "urn:sophiewell:file:source:lib/nephro-fluids-v204.js",
         "urn:sophiewell:file:source:lib/nephro-v127.js",
         "urn:sophiewell:file:source:lib/nephro-v92.js",
@@ -93727,6 +93856,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/deauville-v314.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/debakey-v461.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/decision-rules-v258.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/deferoxamine-acute-iron-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dejour-trochlea-v485.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/delbet-femoral-neck-v378.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/delta-check-v925.js",
@@ -93836,6 +93966,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/fisher-grade-v600.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fitzpatrick-v331.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fluidresp-v113.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/flumazenil-ladder-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fmea-rpn-v918.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fnclcc-grade-v651.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fois-v727.js",
@@ -94201,6 +94332,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nems-v544.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nen-who-grade-v797.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/neos-v538.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/neostigmine-reversal-dose-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nephro-fluids-v204.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nephro-v127.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nephro-v92.js",
@@ -94803,7 +94935,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "03e182f82be5db7a"
+      "value": "1682fd5a3f30739c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -94815,7 +94947,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3575"
+      "value": "3581"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

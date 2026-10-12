@@ -9325,6 +9325,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/dantrolene-mh-vials-v1636.js (spec-v1636: Dantrolene for malignant hyperthermia: dose and vials (labels) — clinical disclaimer)
 - `dantrolene-mh-vials`
 
+### lib/flumazenil-ladder-v1636.js (spec-v1636: Flumazenil dose series and cumulative caps (label) — clinical disclaimer)
+- `flumazenil-ladder`
+
+### lib/neostigmine-reversal-dose-v1636.js (spec-v1636: Neostigmine reversal dose (Bloxiverz label) — clinical disclaimer)
+- `neostigmine-reversal-dose`
+
+### lib/deferoxamine-acute-iron-v1636.js (spec-v1636: Deferoxamine for acute iron poisoning (label) — clinical disclaimer)
+- `deferoxamine-acute-iron`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

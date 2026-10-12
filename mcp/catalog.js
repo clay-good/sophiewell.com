@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import flumazenilLadderV1636 from './adapters/flumazenil-ladder-v1636.js';
+import neostigmineReversalDoseV1636 from './adapters/neostigmine-reversal-dose-v1636.js';
+import deferoxamineAcuteIronV1636 from './adapters/deferoxamine-acute-iron-v1636.js';
 import nacOralRegimenV1636 from './adapters/nac-oral-regimen-v1636.js';
 import fomepizoleScheduleV1636 from './adapters/fomepizole-schedule-v1636.js';
 import dantroleneMhVialsV1636 from './adapters/dantrolene-mh-vials-v1636.js';
@@ -2278,6 +2281,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['flumazenil-ladder-v1636', flumazenilLadderV1636],
+  ['neostigmine-reversal-dose-v1636', neostigmineReversalDoseV1636],
+  ['deferoxamine-acute-iron-v1636', deferoxamineAcuteIronV1636],
   ['nac-oral-regimen-v1636', nacOralRegimenV1636],
   ['fomepizole-schedule-v1636', fomepizoleScheduleV1636],
   ['dantrolene-mh-vials-v1636', dantroleneMhVialsV1636],

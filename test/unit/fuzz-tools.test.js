@@ -770,6 +770,9 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as flumazenilLadderV1636 from '../../lib/flumazenil-ladder-v1636.js';
+import * as neostigmineReversalDoseV1636 from '../../lib/neostigmine-reversal-dose-v1636.js';
+import * as deferoxamineAcuteIronV1636 from '../../lib/deferoxamine-acute-iron-v1636.js';
 import * as nacOralRegimenV1636 from '../../lib/nac-oral-regimen-v1636.js';
 import * as fomepizoleScheduleV1636 from '../../lib/fomepizole-schedule-v1636.js';
 import * as dantroleneMhVialsV1636 from '../../lib/dantrolene-mh-vials-v1636.js';
@@ -1792,6 +1795,9 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'flumazenil-ladder-v1636.js': flumazenilLadderV1636,
+  'neostigmine-reversal-dose-v1636.js': neostigmineReversalDoseV1636,
+  'deferoxamine-acute-iron-v1636.js': deferoxamineAcuteIronV1636,
   'nac-oral-regimen-v1636.js': nacOralRegimenV1636,
   'fomepizole-schedule-v1636.js': fomepizoleScheduleV1636,
   'dantrolene-mh-vials-v1636.js': dantroleneMhVialsV1636,

@@ -1,12 +1,16 @@
 // spec-v1636: hospital pharmacy operations: label antidote and emergency dosing, stewardship metrics,
 // department measurement.
-// nac-oral-regimen, fomepizole-schedule, dantrolene-mh-vials.
+// nac-oral-regimen, fomepizole-schedule, dantrolene-mh-vials,
+// flumazenil-ladder, neostigmine-reversal-dose, deferoxamine-acute-iron.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
 import * as NR from '../lib/nac-oral-regimen-v1636.js';
 import * as FO from '../lib/fomepizole-schedule-v1636.js';
 import * as DM from '../lib/dantrolene-mh-vials-v1636.js';
+import * as FL from '../lib/flumazenil-ladder-v1636.js';
+import * as NS from '../lib/neostigmine-reversal-dose-v1636.js';
+import * as DF from '../lib/deferoxamine-acute-iron-v1636.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -107,6 +111,51 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = DM.dantroleneMhVials(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'flumazenil-ladder'(root) {
+    const pairs = [['fzl-indication', 'indication'], ['fzl-patient', 'patient'], ['fzl-given', 'dosesGiven'], ['fzl-weight', 'weight']];
+    selectField(root, 'Indication', 'fzl-indication', FL.INDICATIONS);
+    selectField(root, 'Patient', 'fzl-patient', FL.PATIENTS);
+    numField(root, 'Doses given so far in this series (0 before the first)', 'fzl-given', '');
+    numField(root, 'Weight, kg (needed for a pediatric patient)', 'fzl-weight', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = FL.flumazenilLadder(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'neostigmine-reversal-dose'(root) {
+    const pairs = [['nrd-weight', 'weight'], ['nrd-twitch', 'twitch'], ['nrd-half-life', 'halfLife'], ['nrd-conc', 'concentration'], ['nrd-prior', 'priorDose']];
+    numField(root, 'Weight, kg', 'nrd-weight', '');
+    selectField(root, 'Train-of-four response', 'nrd-twitch', NS.TWITCH);
+    selectField(root, 'Half-life class of the blocker', 'nrd-half-life', NS.HALF_LIFE);
+    selectField(root, 'Concentration', 'nrd-conc', NS.CONCENTRATIONS);
+    numField(root, 'Neostigmine already given, mg (optional)', 'nrd-prior', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = NS.neostigmineReversalDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'deferoxamine-acute-iron'(root) {
+    const pairs = [['dai-weight', 'weight'], ['dai-route', 'route'], ['dai-given', 'givenLast24h']];
+    numField(root, 'Weight, kg', 'dai-weight', '');
+    selectField(root, 'Route', 'dai-route', DF.ROUTES);
+    numField(root, 'Deferoxamine given in the last 24 hours, mg (0 if none)', 'dai-given', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = DF.deferoxamineAcuteIron(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

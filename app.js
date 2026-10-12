@@ -2781,6 +2781,9 @@ const UTILITIES = [
   { id: 'nac-oral-regimen', name: 'Oral Acetylcysteine 72-Hour Regimen (Label Table)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'fomepizole-schedule', name: 'Fomepizole Doses, With and Without Hemodialysis (Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'dantrolene-mh-vials', name: 'Dantrolene for Malignant Hyperthermia: Dose and Vials (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'flumazenil-ladder', name: 'Flumazenil Dose Series and Cumulative Caps (Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'neostigmine-reversal-dose', name: 'Neostigmine Reversal Dose (Bloxiverz Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'deferoxamine-acute-iron', name: 'Deferoxamine for Acute Iron Poisoning: Rate and 24-Hour Total (Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

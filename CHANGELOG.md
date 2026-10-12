@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Flumazenil Dose Series and Cumulative Caps (Label): the next step in the label's series, its
+  volume, and what remains under the 1 mg, 3 mg and 5 mg figures.
+- Neostigmine Reversal Dose (Bloxiverz Label): 0.03 or 0.07 mg/kg by train-of-four response and
+  half-life, with the label maximum.
+- Deferoxamine for Acute Iron Poisoning: Rate and 24-Hour Total (Label): the dose, the intravenous
+  rate limit and shortest infusion time, and the total against 6,000 mg.
 - Oral Acetylcysteine 72-Hour Regimen (Label Table): the label row for the weight, the volumes to
   mix, and the 18-dose clock.
 - Fomepizole Doses, With and Without Hemodialysis (Label): the next dose and its time, including the
