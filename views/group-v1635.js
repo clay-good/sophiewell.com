@@ -7,7 +7,7 @@
 // rasburicase-dose, dexrazoxane-ratio-dose, capecitabine-tablet-dose,
 // mesna-ifosfamide-schedule, glucarpidase-dose, it-methotrexate-age-dose, hdmtx-leucovorin-rescue,
 // gcsf-timing-check, cumulative-dose-limit, esa-chemo-dose-adjust,
-// chatelut-carboplatin, desensitization-12-step.
+// chatelut-carboplatin, desensitization-12-step, chemo-organ-label-dose.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -38,6 +38,7 @@ import * as CD from '../lib/cumulative-dose-limit-v1635.js';
 import * as EA from '../lib/esa-chemo-dose-adjust-v1635.js';
 import * as CH from '../lib/chatelut-carboplatin-v1635.js';
 import * as DS from '../lib/desensitization-12-step-v1635.js';
+import * as CO from '../lib/chemo-organ-label-dose-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -554,6 +555,27 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(DS.desensitization12Step(args), o);
+    }));
+  },
+  'chemo-organ-label-dose'(root) {
+    const pairs = [['col-drug', 'drug'], ['col-bili', 'bilirubin'], ['col-dbili', 'directBilirubin'], ['col-bili-uln', 'bilirubinXuln'], ['col-ast-uln', 'transaminaseXuln'], ['col-alp-uln', 'alkPhosXuln'], ['col-crcl', 'crcl'], ['col-cr', 'creatinine'], ['col-plt', 'platelets'], ['col-anc', 'neutrophils']];
+    selectField(root, 'Drug (the values its label reads are named beside it)', 'col-drug', CO.DRUGS);
+    numField(root, 'Total bilirubin, mg/dL', 'col-bili', '');
+    numField(root, 'Direct bilirubin, mg/dL (vincristine)', 'col-dbili', '');
+    numField(root, 'Bilirubin as a multiple of the upper limit of normal (3-hour paclitaxel, docetaxel)', 'col-bili-uln', '');
+    numField(root, 'AST or ALT as a multiple of the upper limit of normal', 'col-ast-uln', '');
+    numField(root, 'Alkaline phosphatase as a multiple of the upper limit of normal (docetaxel)', 'col-alp-uln', '');
+    numField(root, 'Creatinine clearance, mL/min', 'col-crcl', '');
+    numField(root, 'Serum creatinine, mg/dL (epirubicin, daunorubicin)', 'col-cr', '');
+    numField(root, 'Lowest platelet count after the prior course, per mm³ (carboplatin)', 'col-plt', '');
+    numField(root, 'Lowest neutrophil count after the prior course, per mm³ (carboplatin)', 'col-anc', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = CO.chemoOrganLabelDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
   },
 };

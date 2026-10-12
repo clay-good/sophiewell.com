@@ -9310,6 +9310,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/desensitization-12-step-v1635.js (spec-v1635: Three-bag, 12-step desensitization arithmetic — clinical disclaimer)
 - `desensitization-12-step`
 
+### lib/chemo-organ-label-dose-v1635.js (spec-v1635: Chemotherapy label dose modification for liver and kidney function — clinical disclaimer)
+- `chemo-organ-label-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -798,6 +798,7 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['doxorubicin dose reduction for bilirubin', ['chemo-organ-label-dose']],
   ['chatelut carboplatin clearance', ['chatelut-carboplatin']],
   ['12 step desensitization protocol bags', ['desensitization-12-step']],
   ['cumulative doxorubicin dose lifetime limit', ['cumulative-dose-limit']],

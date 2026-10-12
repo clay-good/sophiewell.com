@@ -12998,6 +12998,17 @@
       ],
       "tile": "desensitization-12-step",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "paclitaxel",
+        "docetaxel",
+        "vincristine",
+        "pemetrexed",
+        "alimta"
+      ],
+      "tile": "chemo-organ-label-dose",
+      "audience": "clinicians"
     }
   ]
 }

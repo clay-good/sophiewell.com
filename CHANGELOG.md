@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Chemotherapy Dose Modification for Hepatic or Renal Impairment (FDA Labels): the label's own row for
+  bilirubin, transaminases, creatinine clearance or nadir counts, for 12 drugs; a value the label
+  leaves between two rows returns both.
 - Carboplatin Clearance and Dose (Chatelut Formula): clearance from weight, age, sex and
   creatinine, the dose for a target AUC, and the Calvert dose beside it when a GFR is entered.
 - Three-Bag, 12-Step Desensitization Arithmetic: the three bag concentrations and the 12-row step

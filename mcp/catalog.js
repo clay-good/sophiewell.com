@@ -1040,6 +1040,7 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import chemoOrganLabelDoseV1635 from './adapters/chemo-organ-label-dose-v1635.js';
 import chatelutCarboplatinV1635 from './adapters/chatelut-carboplatin-v1635.js';
 import desensitization12StepV1635 from './adapters/desensitization-12-step-v1635.js';
 import cumulativeDoseLimitV1635 from './adapters/cumulative-dose-limit-v1635.js';
@@ -2273,6 +2274,7 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['chemo-organ-label-dose-v1635', chemoOrganLabelDoseV1635],
   ['chatelut-carboplatin-v1635', chatelutCarboplatinV1635],
   ['desensitization-12-step-v1635', desensitization12StepV1635],
   ['cumulative-dose-limit-v1635', cumulativeDoseLimitV1635],

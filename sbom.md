@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `8084002b84366ce3`
-Generated: 2026-10-12T03:09:51.354Z
+Build ID: `146df47a8edefbbc`
+Generated: 2026-10-12T03:31:33.909Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 142981 | `02b3d05df25f1349a16c475cebd0b546f78ce821848987caef7f321cd1fd3503` |
+| `index.html` | 143072 | `f6bf8b4b0299b26d7e8f366208463a3fabc45e78bb42edf3c8fbe1f5bc61c0d4` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 615377 | `b61a56d7b512872a7a3315058d594c2081800d9d79e119e587e5401610f82cc4` |
+| `app.js` | 615566 | `9a7be37f87a46cadc17f13a04a85df39f6aa6101f91a893c951fadc2be3a55c9` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 6994 | `215b6fa7b871cac7b775393d28a00c11ff3ccd1ce1b3230b378bcb8d8f881b40` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 276611 | `4b5091ccd4ab5ade63de4758d108fc6b6b181e8f59cd0ad41e9a297a88f71a91` |
+| `sitemap.xml` | 276744 | `6083b740e46b515fe39c0e964c8efe5d1118b9a123229bf0e9feeeb9e6906e04` |
 | `_headers` | 2063 | `1a500c03dd4add8641287d189c20f15afa3657931417b11ea2a51f39b501773f` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 132211 | `de6535884df05cef9f2877f7f45dd0dc4dfad5d116aa49e58d4f0a8d231f4598` |
+| `report-catalog.js` | 132314 | `ecffea62d11f76f929a857d34dec6117ac19e43a2ebb61dfa1adf34d82700316` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -257,6 +257,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/chair-day-planner.js` | 7632 | `898f5ddc730de517d7ccf5d56497704ec5f2aa5c6b60812dcd12400cb67fbc40` |
 | `lib/chalder-fatigue-v733.js` | 2855 | `53b98fdcf781ce148e2818c35f5c0f193509de9c34b3ff1b69e69913cd500eb1` |
 | `lib/chatelut-carboplatin-v1635.js` | 5610 | `72445dac9c7ad76ad515893e9b106fbce8e8a0d80dfda44ea47a384973aa792b` |
+| `lib/chemo-organ-label-dose-v1635.js` | 26209 | `1d13b3da9f2a82228b6686d94b38fde6999b113b401485bdf379418f56f1649d` |
 | `lib/cheops-v645.js` | 4245 | `3089c79629ad74cc9784257cc07ca41dc8b6c1b6595279bade935fd4d9b2e89c` |
 | `lib/chicago-achalasia-v807.js` | 5132 | `99382f3f3b153291f8ce878e35c62cf16d5e4d01895188360390e2ba9b62d9cb` |
 | `lib/chikungunya-case-def-v1563.js` | 4403 | `e8b6ebcc74fbc6ce018cfd7ac159c9092c45dd0f1352785b76468f02b048ffb8` |
@@ -679,7 +680,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/la-esophagitis-v318.js` | 3488 | `8f5b8dcdbec453858656244d1a722bb6a8afbaee9a60aa081ff9e167d6145930` |
 | `lib/lab-interpret.js` | 29621 | `be761b932dc862967f40f148b094209b01ef6594ecc5c06c603db46feaa30514` |
 | `lib/label-dose.js` | 8030 | `32955c2d3c6dab36d25f512f012a722c3d6955f7c3ac719e75c3c7f4d44cd99f` |
-| `lib/label-editions.js` | 46399 | `70d1db824a2aa1ed6863bf3bdaca7dd109b7caf878ecd5acd5a80eac4e6abeed` |
+| `lib/label-editions.js` | 47684 | `ab77324b6ff53a69b8af928d0ec2accf71edf620c925155d5e98e10bcdbe2eed` |
 | `lib/label-formulation-switch-v1633.js` | 9255 | `c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8` |
 | `lib/label-row.js` | 2619 | `1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1` |
 | `lib/label-titration-calendar-v1633.js` | 13059 | `b76605438b5e3f053ab16ab45353089e0fd5af8247e31c1430480da52e920679` |
@@ -793,7 +794,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 6820 | `f1f90e79e605edf6d06efa2a5d08841897dd165e68287ef964271107c0ef6dbb` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2910126 | `9dc9d9a2ebdbcc06570a284ca5fbe0a9a5088279f09265b1f8223dc22b190f4c` |
+| `lib/meta.js` | 2912620 | `71388bd40e7f9631a7a696bebffe1806a67f508297b57d568ce173d86a62b4a8` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19716 | `70987b0743a01bf29b36267679574b76f3b69cb801e02bb2726da0b384de792c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1634,6 +1635,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/chair-day-planner.js` | 980 | `81c8342fc1580dd12db5e13e28031d007a6227b88db8a1816510726b883ae88f` |
 | `mcp/adapters/chalder-fatigue-v733.js` | 2158 | `5a12a583d995f2ac15f218fa419ba9ca8577c11b013e5c2948613e9c2c45bf5d` |
 | `mcp/adapters/chatelut-carboplatin-v1635.js` | 1593 | `716940959e8e3942486800a83d201bd5fae6e0b7d633bc72fcb640799f9d1b07` |
+| `mcp/adapters/chemo-organ-label-dose-v1635.js` | 2202 | `3911140c934c9f8e5f9e3c2418ab37cd43a3738fbb89fef9d4762c0452b86771` |
 | `mcp/adapters/cheops-v645.js` | 2177 | `bfbdb6762127c40b462612d5b9b0fbecd3f54a38d89b5e3e58ee5f59ea2eafe8` |
 | `mcp/adapters/chicago-achalasia-v807.js` | 1374 | `a5df8d850a0f84cb51170df9670b997a91b3def6434388277acfe6d925ace510` |
 | `mcp/adapters/chikungunya-case-def-v1563.js` | 1638 | `e6ff54c7b08cf6d6d3723a33a54da68c56b3d9c0a00fa0a2d85e989ab5b8edb2` |
@@ -2674,7 +2676,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zika-case-def-v1563.js` | 1545 | `09efb04a1b9bceec1819cf865b27f0dfde4579b3c440771247ec65f03b2ba077` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 147587 | `3f42c102582baa5e3bb0395da747b9a1e49957bbb629156801969e76b2430a27` |
+| `mcp/catalog.js` | 147732 | `fff146e1b049f27cff8c261a036360556db0b593727f207785993cf2eda52264` |
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10616 | `7a2aa853195af4f25f5eae871bb586bb460aec75c9e0c3cb2aa5a510fd481219` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
@@ -2894,7 +2896,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1632.js` | 22238 | `c3bfa88797e5bef2edd97efade44b441a2834a146d1388ec383e8ef815853dfb` |
 | `views/group-v1633.js` | 29480 | `6028e2b92c997dbc173f03b9afb4dd52e0e085984a4df67c0548a215d25be157` |
 | `views/group-v1634.js` | 14483 | `a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d` |
-| `views/group-v1635.js` | 37303 | `31fddf877fcd2256396e882f0f0376b3ce9c4eff2fba64216daffd12b764d36b` |
+| `views/group-v1635.js` | 39138 | `4aaaaea579a72566085fb84a45e66e927e1dd50e7b6267b8c519d8aac9629c30` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v165.js` | 10575 | `bc3f3b3fe1cddf43d5b5ab8e99063a80d75ecaf527ed9fe608bbed3c8c59b1a9` |
 | `views/group-v166.js` | 6698 | `15f2b9e088bbfd84cc2c31c8014f6d84ecd313459cf16ebe7f401b08871ce8d5` |

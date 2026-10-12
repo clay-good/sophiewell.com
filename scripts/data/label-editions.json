@@ -92,6 +92,21 @@
     }
   },
   {
+    "label": "ADRIAMYCIN (doxorubicin), Hikma",
+    "labeler": "HIKMA PHARMACEUTICALS USA INC.",
+    "setId": "0f153c1e-efce-4276-8273-d9e4c8455d16",
+    "tools": [
+      "chemo-organ-label-dose"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2024-04-15",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "0d99fc0c30efefd85f52e011f9e5f4e9bc82b326db1c0c2bff282e616298150a"
+    }
+  },
+  {
     "label": "Aggrastat (tirofiban), Medicure",
     "labeler": "MEDICURE INTERNATIONAL INC",
     "setId": "fe0ced75-ccbf-4d2e-bd0d-b57e60ab913f",
@@ -120,6 +135,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "a3607c6dff190a00342731b9cf30f3c888be5aed35574da9e1d6c32c824dd833"
+    }
+  },
+  {
+    "label": "ALIMTA (pemetrexed)",
+    "labeler": "ELI LILLY AND COMPANY",
+    "setId": "f5a860f3-37ec-429c-ae04-9c88d7c55c08",
+    "tools": [
+      "chemo-organ-label-dose"
+    ],
+    "splVersion": 59,
+    "publishedOn": "2023-06-28",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e58669bb3ebabb46fbbda88d917a6afca060ee4b2138eaa3b48b8c25466ebe70"
     }
   },
   {
@@ -404,7 +434,8 @@
     "labeler": "MEITHEAL PHARMACEUTICALS INC.",
     "setId": "640602f9-a7df-46f0-a9b1-19c471008bee",
     "tools": [
-      "cumulative-dose-limit"
+      "cumulative-dose-limit",
+      "chemo-organ-label-dose"
     ],
     "splVersion": 3,
     "publishedOn": "2026-04-22",
@@ -538,6 +569,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "4edb8721cceb197f5adbdc0197f2b91d42642b91e0862ef4c96989033df7d5e4"
+    }
+  },
+  {
+    "label": "Carboplatin Injection, Natco",
+    "labeler": "NATCO PHARMA USA LLC",
+    "setId": "4c89cedc-e48b-445c-ad05-54dbe60e4fb0",
+    "tools": [
+      "chemo-organ-label-dose"
+    ],
+    "splVersion": 1,
+    "publishedOn": "2026-08-04",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "91a1c8a10f4615a7637b8067245d6f26faa3eace5b4e003ffccdbe57cc2fdef0"
     }
   },
   {
@@ -865,7 +911,8 @@
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "227784a8-ce68-4dd4-8ac5-a65265969677",
     "tools": [
-      "cumulative-dose-limit"
+      "cumulative-dose-limit",
+      "chemo-organ-label-dose"
     ],
     "splVersion": 6,
     "publishedOn": "2024-02-16",
@@ -873,7 +920,8 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34066-1": "1483a80a7034704c4b438682bfd381495aa78f38685030443d61de3fd9afa2d7",
-      "34071-1": "5f6b86908244256b3a3cdc61f2dd572f3a7e64647035022bf92a025a46971bb7"
+      "34071-1": "5f6b86908244256b3a3cdc61f2dd572f3a7e64647035022bf92a025a46971bb7",
+      "34068-7": "bfc4367c08ad8705078105c1e7a9449e05cbf8a0a85667a007bb3ee79f277e01"
     }
   },
   {
@@ -896,7 +944,8 @@
     "labeler": "EUGIA US LLC",
     "setId": "cb72203a-0b09-42d5-bf51-7f479feb3adb",
     "tools": [
-      "dexrazoxane-ratio-dose"
+      "dexrazoxane-ratio-dose",
+      "chemo-organ-label-dose"
     ],
     "splVersion": 2,
     "publishedOn": "2026-08-17",
@@ -987,11 +1036,29 @@
     }
   },
   {
+    "label": "Docetaxel Injection, Mylan",
+    "labeler": "MYLAN INSTITUTIONAL LLC",
+    "setId": "2fb017fd-e55e-43ef-9024-07f2d412b37b",
+    "tools": [
+      "chemo-organ-label-dose"
+    ],
+    "splVersion": 9,
+    "publishedOn": "2026-10-05",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34066-1": "a8d921dd9b6db92082f2d55165c63d998e61ead8ff2fef9d3e679efde56e4f3e",
+      "43685-7": "3e3fab7dc2268d6a290acb6d8c206676064589ffbcba282d982103f2ad2aed60",
+      "43684-0": "8d67f8159aceca9048592dfe63a44d873b8dd09b43d0cad72c2f00a244332aef"
+    }
+  },
+  {
     "label": "Doxorubicin Hydrochloride Injection, Pfizer",
     "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
     "setId": "1fd148fb-0fbc-4b6f-b790-23546fb46a71",
     "tools": [
-      "cumulative-dose-limit"
+      "cumulative-dose-limit",
+      "chemo-organ-label-dose"
     ],
     "splVersion": 28,
     "publishedOn": "2026-05-07",
@@ -1071,7 +1138,8 @@
     "labeler": "PHARMACIA & UPJOHN COMPANY LLC",
     "setId": "0a03c798-a652-4895-b29c-3b521a89ba42",
     "tools": [
-      "cumulative-dose-limit"
+      "cumulative-dose-limit",
+      "chemo-organ-label-dose"
     ],
     "splVersion": 26,
     "publishedOn": "2026-07-30",
@@ -1079,7 +1147,9 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34066-1": "bec2509582e2e78eee3d15744587699402be6b41453da51a904f6a2cb3f89e57",
-      "43685-7": "39280ec919080d6ee542caf79c64296e41967df161fca23936cc4c8972dcfc9e"
+      "43685-7": "39280ec919080d6ee542caf79c64296e41967df161fca23936cc4c8972dcfc9e",
+      "34068-7": "e2330563679ce88123d910c369499340540593f6d2c2434fc76c6e30399dce96",
+      "34070-3": "753acaee44f8baec28767045a2e2cb31c598ec3e6adc550e64014c50b1ff0903"
     }
   },
   {
@@ -1366,14 +1436,16 @@
     "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
     "setId": "0a5a6d93-cc1e-4d7f-8da1-446c134503b3",
     "tools": [
-      "cumulative-dose-limit"
+      "cumulative-dose-limit",
+      "chemo-organ-label-dose"
     ],
     "splVersion": 27,
     "publishedOn": "2026-04-17",
     "verifiedOn": "2026-10-12",
     "validThrough": "2027-10-12",
     "sections": {
-      "43685-7": "fef583f766afe7e75b3ee7c3a5652c242a1b54577fb2b898e178823608f40f3a"
+      "43685-7": "fef583f766afe7e75b3ee7c3a5652c242a1b54577fb2b898e178823608f40f3a",
+      "34068-7": "9670bad9aafdb4a5461bba3ca18d06cfe8485e30494dd578f0e78a93e8d3ca70"
     }
   },
   {
@@ -2231,6 +2303,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "aa8e1c1330f7ba227f8071bd5ed6bbe5c0fb5463bdf1aa1f3b6073fba38f956f"
+    }
+  },
+  {
+    "label": "Paclitaxel Injection, Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "ea28753a-8631-460a-bfdc-b101eb8ac84a",
+    "tools": [
+      "chemo-organ-label-dose"
+    ],
+    "splVersion": 33,
+    "publishedOn": "2026-07-03",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "f34b3f56ab8abc517d5dfb4b46dd2a746884817ab729a2c6764a94c57a0c1285"
     }
   },
   {
@@ -3111,6 +3198,21 @@
     }
   },
   {
+    "label": "Vincristine Sulfate Injection, Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "b22e4c8e-dbe1-4d4b-a026-e1812974071c",
+    "tools": [
+      "chemo-organ-label-dose"
+    ],
+    "splVersion": 16,
+    "publishedOn": "2026-02-19",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "81376ee466e76ab0ca42cda1cfc85e0599d5d6dad750405fee01aa064a0b11cd"
+    }
+  },
+  {
     "label": "Viread (tenofovir disoproxil fumarate), Gilead",
     "labeler": "GILEAD SCIENCES, INC.",
     "setId": "33fd6418-fbdc-42ca-a50d-ce2a476a5418",
@@ -3182,7 +3284,8 @@
     "labeler": "H2-PHARMA, LLC",
     "setId": "e702d84d-7162-4751-bf37-d724cc7e45a5",
     "tools": [
-      "capecitabine-tablet-dose"
+      "capecitabine-tablet-dose",
+      "chemo-organ-label-dose"
     ],
     "splVersion": 32,
     "publishedOn": "2026-02-06",
