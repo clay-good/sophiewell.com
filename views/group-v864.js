@@ -7,6 +7,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/methemoglobin-v864.js';
 import { resultRow } from '../lib/result-copy.js';
+import { methyleneBlueDose, KIDNEY } from '../lib/methylene-blue-dose-v1636.js';
 
 function numField(root, label, id, attrs) {
   const wrap = el('p');
@@ -19,6 +20,15 @@ function checkField(root, label, id) {
   const wrap = el('p');
   wrap.appendChild(el('input', { id, type: 'checkbox' }));
   wrap.appendChild(el('label', { for: id, text: ' ' + label }));
+  root.appendChild(wrap);
+}
+function selectField(root, label, id, options) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  const sel = el('select', { id });
+  for (const o of options) sel.appendChild(el('option', { value: o.value, text: o.text }));
+  wrap.appendChild(sel);
   root.appendChild(wrap);
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
@@ -47,7 +57,12 @@ export const renderers = {
     numField(root, 'Pulse oximeter reading (percent)', 'mh-spo2', { min: '0', max: '100', step: '1' });
     numField(root, 'Arterial oxygen tension (mmHg)', 'mh-pao2', { min: '0', max: '700', step: '1' });
 
-    const ids = ['mh-level', 'mh-symptoms', 'mh-g6pd', 'mh-serotonergic', 'mh-spo2', 'mh-pao2'];
+    // spec-v1636 backfill 3: the PROVAYBLUE label dose, shown only when a weight is entered.
+    root.appendChild(el('h2', { text: 'Methylene blue dose from the label (optional)' }));
+    numField(root, 'Weight (kg)', 'mh-weight', { min: '0.4', max: '300', step: '0.1' });
+    selectField(root, 'Kidney function', 'mh-kidney', KIDNEY);
+
+    const ids = ['mh-level', 'mh-symptoms', 'mh-g6pd', 'mh-serotonergic', 'mh-spo2', 'mh-pao2', 'mh-weight', 'mh-kidney'];
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {
       const r = M.methemoglobin({
@@ -60,6 +75,10 @@ export const renderers = {
       note(o, r.treatmentNote);
       if (r.g6pdNote) note(o, r.g6pdNote);
       if (r.serotonergicNote) note(o, r.serotonergicNote);
+      if (val('mh-weight').trim() !== '') {
+        const d = methyleneBlueDose({ weight: val('mh-weight'), kidney: val('mh-kidney'), g6pd: r.g6pd }, new Date());
+        note(o, d.valid ? d.doseNote : d.message);
+      }
       if (r.gapNote) note(o, r.gapNote);
       note(o, r.oximeterNote);
       note(o, r.gasNote);

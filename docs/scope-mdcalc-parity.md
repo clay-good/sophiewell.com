@@ -790,3 +790,9 @@ experience**.
 > v1636, Was This Dose Given Inside the CMS Administration Window? — [spec-v1636](spec-v1636.md), which adds `med-admin-window` — is 2220.)
 
 > v1636, Adjusted Patient Days and Pharmacy Cost or Hours per Adjusted Day — [spec-v1636](spec-v1636.md), which adds `adjusted-patient-days` — is 2221.)
+
+> v1636, Succimer, Edetate Calcium Disodium and Dimercaprol Doses (Labels) — [spec-v1636](spec-v1636.md), which adds `chelation-dose` — is 2222.)
+
+> v1636, Count Antimicrobial Days and Days Present From Rows (NHSN) — [spec-v1636](spec-v1636.md), which adds `antimicrobial-day-counter` — is 2223.)
+
+> v1636, Cumulative Antibiogram From an Isolate List (AHRQ Specification) — [spec-v1636](spec-v1636.md), which adds `antibiogram-builder` — is 2224.)

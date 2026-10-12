@@ -2795,6 +2795,9 @@ const UTILITIES = [
   { id: 'ddd-rate', name: 'Defined Daily Doses per 100 Bed-Days and per 1,000 Patient-Days', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'med-admin-window', name: 'Was This Dose Given Inside the CMS Administration Window?', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'adjusted-patient-days', name: 'Adjusted Patient Days and Pharmacy Cost or Hours per Adjusted Day', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'chelation-dose', name: 'Succimer, Edetate Calcium Disodium and Dimercaprol Doses (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'antimicrobial-day-counter', name: 'Count Antimicrobial Days and Days Present From Rows (NHSN)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'antibiogram-builder', name: 'Cumulative Antibiogram From an Isolate List (AHRQ Specification)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

@@ -9367,6 +9367,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/adjusted-patient-days-v1636.js (spec-v1636: Adjusted patient days and pharmacy ratios — administrative disclaimer)
 - `adjusted-patient-days`
 
+### lib/chelation-dose-v1636.js (spec-v1636: Succimer, edetate calcium disodium and dimercaprol doses (labels) — clinical disclaimer)
+- `chelation-dose`
+
+### lib/antimicrobial-day-counter-v1636.js (spec-v1636: Count antimicrobial days and days present from rows (NHSN) — administrative disclaimer)
+- `antimicrobial-day-counter`
+
+### lib/antibiogram-builder-v1636.js (spec-v1636: Cumulative antibiogram from an isolate list (AHRQ specification) — administrative disclaimer)
+- `antibiogram-builder`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -11,6 +11,16 @@
 
 import * as F from '../../lib/field.js';
 
+import { naloxoneInfusion } from '../../lib/naloxone-infusion-v1636.js';
+// spec-v1636 backfill 4: with the reversing bolus, the infusion rate is added to the dose reference.
+function naloxoneWithInfusion(args) {
+  const r = F.naloxoneDose(args);
+  const a = args && typeof args === 'object' ? args : {};
+  if (a.bolusMg === undefined || a.bolusMg === null || String(a.bolusMg).trim() === '') return r;
+  const inf = naloxoneInfusion({ bolusMg: a.bolusMg, concentration: a.concentration }, new Date());
+  return { ...r, infusion: inf.valid ? `${inf.band} ${inf.note}` : inf.message, infusionMgPerHour: inf.mgPerHour };
+}
+
 export default [
   {
     id: 'fast',
@@ -75,12 +85,14 @@ export default [
   },
   {
     id: 'naloxone',
-    summary: 'Naloxone dosing reference for opioid overdose (FDA labeling / CDC guidance): the initial dose, re-dose interval, and escalation ceiling by population (adult / pediatric) and route (IV / IM / intranasal / SC); pediatric doses use the entered weight.',
-    compute: F.naloxoneDose,
+    summary: 'Naloxone dosing reference for opioid overdose (FDA labeling / CDC guidance): the initial dose, re-dose interval, and escalation ceiling by population (adult / pediatric) and route (IV / IM / intranasal / SC); pediatric doses use the entered weight. With the bolus that produced reversal it adds an infusion rate, two-thirds of that bolus per hour (Goldfrank 1986), in mL/hour at the label dilution of 0.004 mg/mL.',
+    compute: naloxoneWithInfusion,
     fields: [
       { dom: 'nx-pop', arg: 'population', kind: 'enum', values: ['adult', 'pediatric'], required: true, label: 'Population' },
       { dom: 'nx-route', arg: 'route', kind: 'enum', values: ['iv', 'im', 'in', 'sc'], required: true, label: 'Route (IV / IM / intranasal / SC)' },
       { dom: 'nx-w', arg: 'weightKg', kind: 'number', label: 'Pediatric weight (if pediatric)', unit: 'kg' },
+      { dom: 'nx-bolus', arg: 'bolusMg', kind: 'number', label: 'Bolus that produced reversal, for an infusion rate', unit: 'mg' },
+      { dom: 'nx-conc', arg: 'concentration', kind: 'number', label: 'Infusion bag concentration', unit: 'mg/mL' },
     ],
   },
   {

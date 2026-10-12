@@ -1040,6 +1040,9 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import antimicrobialDayCounterV1636 from './adapters/antimicrobial-day-counter-v1636.js';
+import antibiogramBuilderV1636 from './adapters/antibiogram-builder-v1636.js';
+import chelationDoseV1636 from './adapters/chelation-dose-v1636.js';
 import medAdminWindowV1636 from './adapters/med-admin-window-v1636.js';
 import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
 import auRateSaarV1636 from './adapters/au-rate-saar-v1636.js';
@@ -2292,6 +2295,9 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['antimicrobial-day-counter-v1636', antimicrobialDayCounterV1636],
+  ['antibiogram-builder-v1636', antibiogramBuilderV1636],
+  ['chelation-dose-v1636', chelationDoseV1636],
   ['med-admin-window-v1636', medAdminWindowV1636],
   ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],
   ['au-rate-saar-v1636', auRateSaarV1636],

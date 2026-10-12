@@ -770,6 +770,9 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as antimicrobialDayCounterV1636 from '../../lib/antimicrobial-day-counter-v1636.js';
+import * as antibiogramBuilderV1636 from '../../lib/antibiogram-builder-v1636.js';
+import * as chelationDoseV1636 from '../../lib/chelation-dose-v1636.js';
 import * as medAdminWindowV1636 from '../../lib/med-admin-window-v1636.js';
 import * as adjustedPatientDaysV1636 from '../../lib/adjusted-patient-days-v1636.js';
 import * as auRateSaarV1636 from '../../lib/au-rate-saar-v1636.js';
@@ -1806,6 +1809,9 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'antimicrobial-day-counter-v1636.js': antimicrobialDayCounterV1636,
+  'antibiogram-builder-v1636.js': antibiogramBuilderV1636,
+  'chelation-dose-v1636.js': chelationDoseV1636,
   'med-admin-window-v1636.js': medAdminWindowV1636,
   'adjusted-patient-days-v1636.js': adjustedPatientDaysV1636,
   'au-rate-saar-v1636.js': auRateSaarV1636,

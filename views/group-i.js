@@ -8,6 +8,8 @@ import { loadFile } from '../lib/data.js';
 import { pedsDose, cincinnatiStroke, fast, fieldTriage, startTriage, jumpStartTriage, ruleOfNines, lundBrowder, burnFluid, pediatricEtt, naloxoneDose, selectEmsChecklist, nexusCspine, RULE_OF_NINES_ADULT, PEDS_DOSE_RECIPES } from '../lib/field.js';
 import { fetchJson } from '../lib/data.js';
 import { hypothermiaRewarm, heatstrokeDecision } from '../lib/scoring-v4.js';
+import { naloxoneInfusion } from '../lib/naloxone-infusion-v1636.js';
+import { cyanideAntidoteDose, WHO as CN_WHO } from '../lib/cyanide-antidote-dose-v1636.js';
 import { resultRow } from '../lib/result-copy.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '../lib/derivation.js';
@@ -310,6 +312,9 @@ export const renderers = {
       { value: 'sc', text: 'Subcutaneous (less reliable)' },
     ]));
     root.appendChild(field('Pediatric weight (kg)', 'nx-w', { placeholder: '20' }));
+    // spec-v1636 backfill 4: an infusion rate, shown only when the reversing bolus is entered.
+    root.appendChild(field('Bolus that produced reversal, in mg (optional, for an infusion rate)', 'nx-bolus', { min: 0.02, max: 20 }));
+    root.appendChild(field('Infusion bag concentration, in mg/mL (optional)', 'nx-conc', { min: 0.001, max: 1 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const pop = document.getElementById('nx-pop').value;
@@ -319,9 +324,13 @@ export const renderers = {
         { label: 'Re-dose', value: r.redose },
         { label: 'Max / escalation', value: r.max },
       ]);
+      if (document.getElementById('nx-bolus').value.trim() !== '') {
+        const inf = naloxoneInfusion({ bolusMg: document.getElementById('nx-bolus').value, concentration: document.getElementById('nx-conc').value }, new Date());
+        o.appendChild(el('p', { text: inf.valid ? `${inf.band} ${inf.note}` : inf.message }));
+      }
       o.appendChild(el('p', { class: 'muted', text: 'Sources: FDA labeling and CDC opioid overdose guidance. Reference only.' }));
     });
-    ['nx-pop', 'nx-route', 'nx-w'].forEach((id) => {
+    ['nx-pop', 'nx-route', 'nx-w', 'nx-bolus', 'nx-conc'].forEach((id) => {
       document.getElementById(id).addEventListener('input', run);
       document.getElementById(id).addEventListener('change', run);
     });
@@ -411,7 +420,25 @@ export const renderers = {
   // reference cards.
 
   'co-cn-antidote'(root) {
-    const o = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
+    // spec-v1636 backfill 2: the cyanide antidote doses by weight, above the reference card.
+    root.appendChild(el('h2', { text: 'Cyanide antidote doses from the labels' }));
+    root.appendChild(selectField('Adult or child', 'cn-who', CN_WHO));
+    root.appendChild(field('Weight in kg (child)', 'cn-weight', { min: 0.5, max: 150 }));
+    const live = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    const dose = el('p', { id: 'cn-dose' });
+    live.appendChild(dose);
+    root.appendChild(live);
+    const showDose = () => {
+      const r = cyanideAntidoteDose({ who: document.getElementById('cn-who').value, weight: document.getElementById('cn-weight').value }, new Date());
+      dose.textContent = r.valid ? `${r.band} ${r.note}` : r.message;
+    };
+    ['cn-who', 'cn-weight'].forEach((id) => {
+      document.getElementById(id).addEventListener('input', showDose);
+      document.getElementById(id).addEventListener('change', showDose);
+    });
+    showDose();
+    // The reference card below is static text, so it sits outside the live result region.
+    const o = el('div', { role: 'region', 'aria-label': 'Antidote reference card' });
     root.appendChild(o);
     o.appendChild(el('h2', { text: 'CO / Cyanide / Smoke-Inhalation Antidote Reference' }));
     o.appendChild(el('h3', { text: 'Cyanide - hydroxocobalamin' }));

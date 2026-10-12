@@ -431,6 +431,22 @@
     }
   },
   {
+    "label": "BAL in Oil (dimercaprol)",
+    "labeler": "AKORN",
+    "setId": "bee9a137-160f-47e8-a551-ca461ae4f51e",
+    "tools": [
+      "chelation-dose"
+    ],
+    "splVersion": 5,
+    "publishedOn": "2022-07-04",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "d77f5bff48faa96080765c4b645f262ec0d09d781b97ed08e778825d850c3565",
+      "34069-5": "628f806566f7274e677c50559a2d7d8da1afca7099718311d5e7e30a008d22d4"
+    }
+  },
+  {
     "label": "Balfaxar (prothrombin complex concentrate, human-lans)",
     "labeler": "OCTAPHARMA USA INC",
     "setId": "68fa4f90-8b01-6498-4140-e0be5247c3fe",
@@ -836,6 +852,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "aa8c473e5544eb2f9dfa52d94545784d068a01d2bc59bc3a7cb8dca475f44f70"
+    }
+  },
+  {
+    "label": "CHEMET (succimer)",
+    "labeler": "RECORDATI RARE DISEASES, INC.",
+    "setId": "62035612-9505-3a3f-1ac8-e2dbd711d24e",
+    "tools": [
+      "chelation-dose"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2025-07-14",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e2366a7a8d19e2b6fc8d9e0e4f0976b911cf0d6bbc4bec6097d104f02007c3ed"
     }
   },
   {
@@ -1286,6 +1317,21 @@
     }
   },
   {
+    "label": "Edetate Calcium Disodium Injection, Rising",
+    "labeler": "RISING PHARMA HOLDINGS, INC.",
+    "setId": "710a2c8c-3620-4f6f-b8fc-fb19ab9e9f22",
+    "tools": [
+      "chelation-dose"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2025-03-03",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e787a977370599d0816aee4da40f382559078627a98f2be0144c55396cb367cf"
+    }
+  },
+  {
     "label": "Elcys (cysteine hydrochloride), Exela",
     "labeler": "EXELA PHARMA SCIENCES, LLC",
     "setId": "52317b38-b2e6-4a1c-b5b0-43cada0d205e",
@@ -1662,6 +1708,22 @@
     }
   },
   {
+    "label": "HYPERRAB (rabies immune globulin)",
+    "labeler": "GRIFOLS USA, LLC",
+    "setId": "f82880b8-998c-4659-8f20-6dcc81f258e9",
+    "tools": [
+      "rabies-pep"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2024-10-07",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "bd013700168eaa2c4b7e5cd2f750eebae1f1dae80d5b0de0c9c2055d55a75156",
+      "43678-2": "e4388173ecce624de115a9486bcbc4e6db8d64b391b1bd6d998b667db7379cf4"
+    }
+  },
+  {
     "label": "HyperTET (tetanus immune globulin)",
     "labeler": "GRIFOLS USA, LLC",
     "setId": "393fa198-7e07-4162-bd0a-9d873f1544a9",
@@ -1928,6 +1990,22 @@
     "sections": {
       "34068-7": "8ff199027b6b2fe18642f80dd90bccea6f73e68e955d605bbdbe44bafb7369ee",
       "34067-9": "4413435c98df1495f485414392f0d78418c0962595908c9726db3e145336c558"
+    }
+  },
+  {
+    "label": "KEDRAB (rabies immune globulin)",
+    "labeler": "KEDRION BIOPHARMA INC.",
+    "setId": "53f2a23b-c479-4c24-8cab-ee7a33a2633e",
+    "tools": [
+      "rabies-pep"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2024-02-23",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "4b5c193fafbb89fd378f369cdf27b15bb736e7b4dc213a4421ad718315296bba",
+      "43678-2": "1f2373e590a563cdf2815851113f2bc440e80f965804979f924e9e46f00d8f59"
     }
   },
   {
@@ -2411,6 +2489,21 @@
     }
   },
   {
+    "label": "Naloxone Hydrochloride Injection, Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "8535cc84-ad4a-4d67-8480-fb5a2e3406f8",
+    "tools": [
+      "naloxone"
+    ],
+    "splVersion": 35,
+    "publishedOn": "2026-05-28",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "3e6ee7a74bf8dec4e49b657b8f319d86060600b0ff3191d1ee8cc641620aba92"
+    }
+  },
+  {
     "label": "Neoral (cyclosporine, modified)",
     "labeler": "NOVARTIS PHARMACEUTICALS CORPORATION",
     "setId": "94461af3-11f1-4670-95d4-2965b9538ae3",
@@ -2784,6 +2877,22 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "3cfd593cacba80c74dd9a52cbf0100320f62ae0753911e9387c81ebdf9ca945e"
+    }
+  },
+  {
+    "label": "PROVAYBLUE (methylene blue)",
+    "labeler": "AMERICAN REGENT, INC.",
+    "setId": "4f6848e5-35ed-4046-b13c-3032b5ba3232",
+    "tools": [
+      "methemoglobin"
+    ],
+    "splVersion": 28,
+    "publishedOn": "2025-06-12",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "5f07dba380a63c44d23ec8f54e18ed828ea93c95c7b0869349176f4f0c40730f",
+      "34070-3": "90e9f18e5b32b75211d4f3f215cecc2bbe7ac6971be10d2b1888d82f4e8bafc4"
     }
   },
   {

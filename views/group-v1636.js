@@ -4,7 +4,8 @@
 // flumazenil-ladder, neostigmine-reversal-dose, deferoxamine-acute-iron,
 // us-antivenom-dose, thrombolytic-dose, pralidoxime-dose, rsi-dose-sheet,
 // botulism-antitoxin-dose, passive-immunization-dose,
-// au-rate-saar, cdi-labid-category, ddd-rate, med-admin-window, adjusted-patient-days.
+// au-rate-saar, cdi-labid-category, ddd-rate, med-admin-window, adjusted-patient-days,
+// chelation-dose, antimicrobial-day-counter, antibiogram-builder.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -25,6 +26,9 @@ import * as CL from '../lib/cdi-labid-category-v1636.js';
 import * as DD from '../lib/ddd-rate-v1636.js';
 import * as MW from '../lib/med-admin-window-v1636.js';
 import * as AP from '../lib/adjusted-patient-days-v1636.js';
+import * as CH from '../lib/chelation-dose-v1636.js';
+import * as DC from '../lib/antimicrobial-day-counter-v1636.js';
+import * as AB from '../lib/antibiogram-builder-v1636.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -333,6 +337,58 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(AP.adjustedPatientDays(args), o);
+    }));
+  },
+  'chelation-dose'(root) {
+    const pairs = [['chd-regimen', 'regimen'], ['chd-weight', 'weight'], ['chd-bsa', 'bsa'], ['chd-cr', 'creatinine']];
+    selectField(root, 'Agent and poisoning', 'chd-regimen', CH.REGIMENS);
+    numField(root, 'Weight, kg (succimer and dimercaprol)', 'chd-weight', '');
+    numField(root, 'Body surface area, m² (edetate calcium disodium)', 'chd-bsa', '');
+    numField(root, 'Serum creatinine, mg/dL (edetate, lead nephropathy)', 'chd-cr', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = CH.chelationDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'antimicrobial-day-counter'(root) {
+    const pairs = [['adc-admins', 'administrations'], ['adc-stays', 'stays'], ['adc-out', 'outpatientLocations']];
+    // Rows carry patient references: kept out of the shareable link.
+    areaField(root, 'Administrations, one per line: patient, agent, route, date (YYYY-MM-DD, a time may follow), location', 'adc-admins', 'A, Vancomycin, IV, 2025-12-01 07:00, MICU').querySelector('textarea').setAttribute('data-private', '');
+    // Rows carry patient references: kept out of the shareable link.
+    areaField(root, 'Stays, one per line: patient, location, date in, date out', 'adc-stays', 'A, MICU, 2025-11-30, 2025-12-01').querySelector('textarea').setAttribute('data-private', '');
+    areaField(root, 'Locations to leave out of the facility-wide counts (emergency department, 24-hour observation), separated by commas', 'adc-out', 'ED');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(DC.antimicrobialDayCounter(args), o);
+    }));
+  },
+  'antibiogram-builder'(root) {
+    const pairs = [['abg-isolates', 'isolates'], ['abg-from', 'from'], ['abg-to', 'to']];
+    // Rows carry patient references: kept out of the shareable link.
+    areaField(root, 'Isolates, with a header row: patient, organism, date, then one column per agent holding S, I or R. A status column (final) and a purpose column (surveillance) are read if present.', 'abg-isolates', 'patient,organism,date,status,purpose,Ceftriaxone\nA,Escherichia coli,2026-03-10,final,diagnostic,S').querySelector('textarea').setAttribute('data-private', '');
+    dateField(root, 'First day of the period (optional)', 'abg-from');
+    dateField(root, 'Last day of the period (optional)', 'abg-to');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = AB.antibiogramBuilder(args);
+      show(r, o);
+      if (r.valid) {
+        const wrap = el('p');
+        wrap.appendChild(el('label', { for: 'abg-csv', text: 'The table as CSV' }));
+        wrap.appendChild(el('br'));
+        const box = el('textarea', { id: 'abg-csv', rows: '6', readonly: 'readonly' });
+        box.value = r.csv;
+        wrap.appendChild(box);
+        o.appendChild(wrap);
+      }
     }));
   },
 };

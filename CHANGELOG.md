@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Count Antimicrobial Days and Days Present From Rows (NHSN): monthly counts by agent, route and
+  location from pasted administration and stay rows, with the rows it could not place.
+- Cumulative Antibiogram From an Isolate List (AHRQ Specification): percent susceptible by
+  organism and agent with the number tested, a 95% interval, and the table as CSV.
+- Succimer, Edetate Calcium Disodium and Dimercaprol Doses (Labels): the labeled chelation dose
+  and schedule by weight, surface area or creatinine, with both rows where a label's table leaves a gap.
 - Was This Dose Given Inside the CMS Administration Window?: the earliest and latest acceptable
   time for a scheduled dose and the minutes early or late.
 - Adjusted Patient Days and Pharmacy Cost or Hours per Adjusted Day: the federal worksheet's
@@ -424,6 +430,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Methemoglobin Level: with a weight, it now shows the methylene blue dose from the PROVAYBLUE
+  label, including the single dose in kidney impairment and no dose in G6PD deficiency.
+- Naloxone Dosing Calculator: an infusion rate from the bolus that produced reversal, in mg/hour
+  and mL/hour.
+- Rabies post-exposure prophylaxis: the immune globulin volume for HYPERRAB and KEDRAB by weight.
+- CO / Cyanide antidote reference: sodium nitrite, sodium thiosulfate and hydroxocobalamin doses
+  by weight for adults and children, from the labels.
 - Anticoagulation reversal: the warfarin result names both 4F-PCC labels (Kcentra and Balfaxar)
   and how their indications differ; the heparin result prints the protamine label's own sentences
   and, with a time since the last dose, the CHEST 2012 pediatric row, labeled as pediatric.

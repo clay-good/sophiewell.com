@@ -13134,6 +13134,21 @@
       ],
       "tile": "ddd-rate",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "succimer",
+        "chemet",
+        "dimercaprol",
+        "edetate"
+      ],
+      "tile": "chelation-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": ["antibiogram"],
+      "tile": "antibiogram-builder",
+      "audience": "clinicians"
     }
   ]
 }

@@ -11,6 +11,7 @@ import { renderTable } from '../lib/table.js';
 import { renderDecisionTree } from '../lib/tree.js';
 import { tbTstInterpret } from '../lib/tb-testing.js';
 import { RABIES_STATES, rabiesStateLine } from '../lib/rabies-state-lines-v1401.js';
+import { rabiesIgVolume } from '../lib/rabies-ig-volume-v1636.js';
 
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function num(id) { return Number(document.getElementById(id).value); }
@@ -69,6 +70,22 @@ export const renderers = {
     const stNote = el('p', { class: 'muted', 'aria-live': 'polite' });
     root.appendChild(stNote);
     stSel.addEventListener('change', () => { stNote.textContent = rabiesStateLine(stSel.value) || ''; });
+    // spec-v1636 backfill 5: the immune globulin volume by product, from the HYPERRAB and KEDRAB labels.
+    const wWrap = el('p');
+    wWrap.appendChild(el('label', { for: 'rab-weight', text: 'Weight in kg (optional, for the immune globulin volume)' }));
+    wWrap.appendChild(el('br'));
+    const wIn = el('input', { id: 'rab-weight', type: 'number', inputmode: 'decimal', min: '0.5', max: '300', step: '0.1' });
+    wWrap.appendChild(wIn);
+    root.appendChild(wWrap);
+    const wNote = el('p', { class: 'muted', 'aria-live': 'polite' });
+    root.appendChild(wNote);
+    const showVolume = () => {
+      if (wIn.value.trim() === '') { wNote.textContent = ''; return; }
+      const r = rabiesIgVolume({ weight: wIn.value }, new Date());
+      wNote.textContent = r.valid ? `${r.band} ${r.note}` : r.message;
+    };
+    wIn.addEventListener('input', showVolume);
+    wIn.addEventListener('change', showVolume);
     const region = el('div', { id: 'q-results', role: 'region' });
     root.appendChild(region);
     loadFile('rabies-pep', 'rabies.json').then((d) => {
