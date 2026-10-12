@@ -2771,6 +2771,8 @@ const UTILITIES = [
   { id: 'it-methotrexate-age-dose', name: 'Intrathecal Methotrexate Dose by Age (Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hdmtx-leucovorin-rescue', name: 'Leucovorin Rescue After High-Dose Methotrexate (Label Table)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gcsf-timing-check', name: 'Filgrastim and Pegfilgrastim Timing Against Chemotherapy (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cumulative-dose-limit', name: 'Lifetime Cumulative Dose Against the Label (Anthracyclines, Mitoxantrone, Bleomycin)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'esa-chemo-dose-adjust', name: 'Epoetin and Darbepoetin in Chemotherapy Anemia (Label Rules)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

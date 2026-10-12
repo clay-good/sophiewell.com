@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['cumulative doxorubicin dose lifetime limit', ['cumulative-dose-limit']],
+  ['epoetin dose adjustment chemotherapy anemia', ['esa-chemo-dose-adjust']],
   ['mesna dose for ifosfamide', ['mesna-ifosfamide-schedule']],
   ['glucarpidase dose for delayed methotrexate clearance', ['glucarpidase-dose']],
   ['intrathecal methotrexate dose by age', ['it-methotrexate-age-dose']],

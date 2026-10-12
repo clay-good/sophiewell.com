@@ -6,7 +6,7 @@
 // nuc-med-breastfeeding-interruption, generator-breakthrough-check, radiation-distance-shielding,
 // rasburicase-dose, dexrazoxane-ratio-dose, capecitabine-tablet-dose,
 // mesna-ifosfamide-schedule, glucarpidase-dose, it-methotrexate-age-dose, hdmtx-leucovorin-rescue,
-// gcsf-timing-check.
+// gcsf-timing-check, cumulative-dose-limit, esa-chemo-dose-adjust.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -33,6 +33,8 @@ import * as GD from '../lib/glucarpidase-dose-v1635.js';
 import * as IT from '../lib/it-methotrexate-age-dose-v1635.js';
 import * as HL from '../lib/hdmtx-leucovorin-rescue-v1635.js';
 import * as GT from '../lib/gcsf-timing-check-v1635.js';
+import * as CD from '../lib/cumulative-dose-limit-v1635.js';
+import * as EA from '../lib/esa-chemo-dose-adjust-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -479,6 +481,46 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = GT.gcsfTimingCheck(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'cumulative-dose-limit'(root) {
+    const pairs = [['cdl-agent', 'agent'], ['cdl-doses', 'doses'], ['cdl-dauno-group', 'daunorubicinGroup'], ['cdl-radiation', 'heartRadiation'], ['cdl-mito-use', 'mitoxantroneUse'], ['cdl-other', 'otherEquivalent']];
+    selectField(root, 'Agent', 'cdl-agent', CD.AGENTS);
+    areaField(root, 'Prior doses, one per line: mg/m² (bleomycin: units; daunorubicin under 2 years: mg/kg). Or the dose in mg, a comma, and the body surface area (or weight) at that dose.', 'cdl-doses', '60');
+    selectField(root, 'Daunorubicin: age group', 'cdl-dauno-group', CD.DAUNORUBICIN_GROUPS);
+    selectField(root, 'Daunorubicin, adult: radiation therapy that encompassed the heart', 'cdl-radiation', CD.HEART_RADIATION);
+    selectField(root, 'Mitoxantrone: used for', 'cdl-mito-use', CD.MITOXANTRONE_USES);
+    numField(root, 'Prior other anthracyclines or anthracenediones, already converted by you to this agent (optional)', 'cdl-other', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = CD.cumulativeDoseLimit(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'esa-chemo-dose-adjust'(root) {
+    const pairs = [['eca-schedule', 'schedule'], ['eca-stage', 'stage'], ['eca-hgb', 'hemoglobin'], ['eca-weight', 'weight'], ['eca-months', 'monthsPlanned'], ['eca-dose', 'currentDose'], ['eca-weeks', 'weeksOnTherapy'], ['eca-hgb-2wk', 'hemoglobinTwoWeeksAgo'], ['eca-hgb-start', 'hemoglobinAtStart'], ['eca-level', 'transfusionLevel'], ['eca-still', 'transfusionsStillRequired'], ['eca-complete', 'chemoCompleted']];
+    selectField(root, 'Agent and schedule', 'eca-schedule', EA.SCHEDULES);
+    selectField(root, 'Stage', 'eca-stage', EA.STAGES);
+    numField(root, 'Hemoglobin now, g/dL', 'eca-hgb', '');
+    numField(root, 'Weight, kg (needed for a schedule dosed per kg)', 'eca-weight', '');
+    numField(root, 'Not started: months of chemotherapy still planned', 'eca-months', '');
+    numField(root, 'On therapy: current dose per administration (Units for epoetin, mcg for darbepoetin)', 'eca-dose', '');
+    numField(root, 'On therapy: weeks on the ESA', 'eca-weeks', '');
+    numField(root, 'On therapy: hemoglobin 2 weeks ago, g/dL (optional)', 'eca-hgb-2wk', '');
+    numField(root, 'On therapy: hemoglobin when the ESA was started, g/dL (optional)', 'eca-hgb-start', '');
+    selectField(root, 'On therapy: hemoglobin against the level needed to avoid transfusion', 'eca-level', EA.TRANSFUSION_LEVELS);
+    selectField(root, 'On therapy: red cell transfusions still required', 'eca-still', EA.YES_NO);
+    selectField(root, 'On therapy: chemotherapy course completed', 'eca-complete', EA.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = EA.esaChemoDoseAdjust(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

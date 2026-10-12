@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Lifetime Cumulative Dose Against the Label (Anthracyclines, Mitoxantrone, Bleomycin): the running
+  total beside the figure each label states, with the label sentence and what remains below it.
+- Epoetin and Darbepoetin in Chemotherapy Anemia (Label Rules): the starting test and dose, and the
+  reduce, withhold, increase and discontinue rules with the new dose.
 - Mesna Doses and Times From the Ifosfamide Dose (MESNEX Label): 20% at 0, 4 and 8 hours, or 20%
   then 40% by mouth at 2 and 6 hours, with clock times and the label's 2 g/m² sentence.
 - Leucovorin Rescue After High-Dose Methotrexate (Label Table): a level at 24, 48, 72 or 96 hours

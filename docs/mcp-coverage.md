@@ -9298,6 +9298,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/gcsf-timing-check-v1635.js (spec-v1635: Filgrastim and pegfilgrastim timing against chemotherapy (labels) — clinical disclaimer)
 - `gcsf-timing-check`
 
+### lib/cumulative-dose-limit-v1635.js (spec-v1635: Lifetime cumulative dose against the label — clinical disclaimer)
+- `cumulative-dose-limit`
+
+### lib/esa-chemo-dose-adjust-v1635.js (spec-v1635: Epoetin and darbepoetin in chemotherapy anemia (label rules) — clinical disclaimer)
+- `esa-chemo-dose-adjust`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -219,12 +219,13 @@
     "labeler": "AMGEN, INC",
     "setId": "0fd36cb9-c4f6-4167-93c9-8530865db3f9",
     "tools": [
-      "esa-conversion"
+      "esa-conversion",
+      "esa-chemo-dose-adjust"
     ],
     "splVersion": 161,
     "publishedOn": "2026-07-21",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "9fbe93abd2ab6f5df44aeb617d838237f5fbabf6ba7262a9adbafd7ad910e38e"
     }
@@ -396,6 +397,23 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "67e94681912fc92dba0e0a8419ae5bec58ce9db41fe965515691ad724e73aa6f"
+    }
+  },
+  {
+    "label": "Bleomycin for Injection, Meitheal",
+    "labeler": "MEITHEAL PHARMACEUTICALS INC.",
+    "setId": "640602f9-a7df-46f0-a9b1-19c471008bee",
+    "tools": [
+      "cumulative-dose-limit"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2026-04-22",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34066-1": "c38d7fdff428a4063bd103d8c85c590a5382b18a4b4940c96790e5fb60e851f0",
+      "34068-7": "baeb95691f0a85a7a1da92e0449666e0616c842f67e3fba1775ce9bb9e73373d",
+      "34071-1": "05cbe77c69ea9c768631fc4c2ef5d13b4f12cb729fe3e55ae91a4ed2da8b83ab"
     }
   },
   {
@@ -843,6 +861,22 @@
     }
   },
   {
+    "label": "Daunorubicin Hydrochloride, Hikma",
+    "labeler": "HIKMA PHARMACEUTICALS USA INC.",
+    "setId": "227784a8-ce68-4dd4-8ac5-a65265969677",
+    "tools": [
+      "cumulative-dose-limit"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2024-02-16",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34066-1": "1483a80a7034704c4b438682bfd381495aa78f38685030443d61de3fd9afa2d7",
+      "34071-1": "5f6b86908244256b3a3cdc61f2dd572f3a7e64647035022bf92a025a46971bb7"
+    }
+  },
+  {
     "label": "Depakote ER (divalproex sodium)",
     "labeler": "ABBVIE INC.",
     "setId": "0dc024ce-efc8-4690-7cb5-639c728fccac",
@@ -953,6 +987,22 @@
     }
   },
   {
+    "label": "Doxorubicin Hydrochloride Injection, Pfizer",
+    "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
+    "setId": "1fd148fb-0fbc-4b6f-b790-23546fb46a71",
+    "tools": [
+      "cumulative-dose-limit"
+    ],
+    "splVersion": 28,
+    "publishedOn": "2026-05-07",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "428e6e4546d46804094a37344581bc2cab658036c93ac95b5ca3067abd176f0d",
+      "43685-7": "a1aaae86d73e6d6202ededa350ab8da1adfd9cf848f8abad56ccebe4caba6099"
+    }
+  },
+  {
     "label": "Duloxetine delayed-release capsules, Lupin",
     "labeler": "LUPIN PHARMACEUTICALS, INC.",
     "setId": "829a4f51-c882-4b64-81f3-abfb03a52ebe",
@@ -1017,6 +1067,22 @@
     }
   },
   {
+    "label": "ELLENCE (epirubicin)",
+    "labeler": "PHARMACIA & UPJOHN COMPANY LLC",
+    "setId": "0a03c798-a652-4895-b29c-3b521a89ba42",
+    "tools": [
+      "cumulative-dose-limit"
+    ],
+    "splVersion": 26,
+    "publishedOn": "2026-07-30",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34066-1": "bec2509582e2e78eee3d15744587699402be6b41453da51a904f6a2cb3f89e57",
+      "43685-7": "39280ec919080d6ee542caf79c64296e41967df161fca23936cc4c8972dcfc9e"
+    }
+  },
+  {
     "label": "Entresto (sacubitril and valsartan), Novartis",
     "labeler": "NOVARTIS PHARMACEUTICALS CORPORATION",
     "setId": "000dc81d-ab91-450c-8eae-8eb74e72296f",
@@ -1063,6 +1129,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "a994ff38292ed8c4cdcadc922d5587598da5b504c16f3195de9d149979b8403f"
+    }
+  },
+  {
+    "label": "Epogen (epoetin alfa)",
+    "labeler": "AMGEN, INC",
+    "setId": "1f2d0b28-9cc5-4523-80b8-637fdaf3f7a5",
+    "tools": [
+      "esa-chemo-dose-adjust"
+    ],
+    "splVersion": 137,
+    "publishedOn": "2026-07-01",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "a8cdf7abf155160083edbdff61524e668f587b49159a6d5f18585a402160a143"
     }
   },
   {
@@ -1278,6 +1359,21 @@
     "sections": {
       "34068-7": "dc15312871fbc7d10517a55c0e1183164a0a5217e0217828db1d157833dd0320",
       "43678-2": "ad23a6837968fb1539217c7ce352373e7a17fdd36f2b622273b09bd5e5c1aed6"
+    }
+  },
+  {
+    "label": "IDAMYCIN PFS (idarubicin)",
+    "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
+    "setId": "0a5a6d93-cc1e-4d7f-8da1-446c134503b3",
+    "tools": [
+      "cumulative-dose-limit"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2026-04-17",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "43685-7": "fef583f766afe7e75b3ee7c3a5652c242a1b54577fb2b898e178823608f40f3a"
     }
   },
   {
@@ -1854,6 +1950,23 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "5ea555ccf011ee0fb42f91604221cec64df452b294cb9f710784bd024351ca2c"
+    }
+  },
+  {
+    "label": "Mitoxantrone, Hospira",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "accf9569-4b57-4e83-a7db-4e890a75d1ba",
+    "tools": [
+      "cumulative-dose-limit"
+    ],
+    "splVersion": 25,
+    "publishedOn": "2025-07-17",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34066-1": "4a517dbbdde6ce0fa1abb37ecdf152437289d3201579b161de00165ace807850",
+      "34068-7": "aae9fc32ed2f14df4a75086bd1a02ba62be65ca5f0e1c22bed44bcaaffbfbad6",
+      "34071-1": "9725d8057bca2bae30d968a2bd361959c6661da10420015449958bb5cf72bccb"
     }
   },
   {

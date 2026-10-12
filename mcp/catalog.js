@@ -1040,6 +1040,8 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import cumulativeDoseLimitV1635 from './adapters/cumulative-dose-limit-v1635.js';
+import esaChemoDoseAdjustV1635 from './adapters/esa-chemo-dose-adjust-v1635.js';
 import mesnaIfosfamideScheduleV1635 from './adapters/mesna-ifosfamide-schedule-v1635.js';
 import glucarpidaseDoseV1635 from './adapters/glucarpidase-dose-v1635.js';
 import itMethotrexateAgeDoseV1635 from './adapters/it-methotrexate-age-dose-v1635.js';
@@ -2269,6 +2271,8 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['cumulative-dose-limit-v1635', cumulativeDoseLimitV1635],
+  ['esa-chemo-dose-adjust-v1635', esaChemoDoseAdjustV1635],
   ['mesna-ifosfamide-schedule-v1635', mesnaIfosfamideScheduleV1635],
   ['glucarpidase-dose-v1635', glucarpidaseDoseV1635],
   ['it-methotrexate-age-dose-v1635', itMethotrexateAgeDoseV1635],

@@ -12970,6 +12970,20 @@
       ],
       "tile": "gcsf-timing-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "doxorubicin",
+        "adriamycin",
+        "epirubicin",
+        "daunorubicin",
+        "idarubicin",
+        "mitoxantrone",
+        "bleomycin",
+        "anthracycline"
+      ],
+      "tile": "cumulative-dose-limit",
+      "audience": "clinicians"
     }
   ]
 }

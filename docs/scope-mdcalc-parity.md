@@ -744,3 +744,7 @@ experience**.
 > v1635, Leucovorin Rescue After High-Dose Methotrexate (Label Table) — [spec-v1635](spec-v1635.md), which adds `hdmtx-leucovorin-rescue` — is 2197.)
 
 > v1635, Filgrastim and Pegfilgrastim Timing Against Chemotherapy (Labels) — [spec-v1635](spec-v1635.md), which adds `gcsf-timing-check` — is 2198.)
+
+> v1635, Lifetime Cumulative Dose Against the Label (Anthracyclines, Mitoxantrone, Bleomycin) — [spec-v1635](spec-v1635.md), which adds `cumulative-dose-limit` — is 2199.)
+
+> v1635, Epoetin and Darbepoetin in Chemotherapy Anemia (Label Rules) — [spec-v1635](spec-v1635.md), which adds `esa-chemo-dose-adjust` — is 2200.)

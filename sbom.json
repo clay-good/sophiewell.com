@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:791713a4-41d3-5e15-87b2-c8c8e5cc42b5",
+  "serialNumber": "urn:uuid:5c26715e-24d7-5070-8ca4-8a5304e9f9d6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T02:33:34.897Z",
+    "timestamp": "2026-10-12T02:50:56.096Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2198 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2200 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "64574cabe898df573908e03464165107d2b78a85204f935f65373d5a4e0f0384"
+          "content": "8c6336bdcb4cc4a5cbd3cea940ff3068c623360a1f88a580be88ae03b0b9ebb0"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "142679"
+          "value": "142855"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e9c759f9dadba5037fecb01095ff65dcd28d0afc3ebf98c737abdec4a88b1d20"
+          "content": "ad97293097a4ddca6e2f8e05f4b62639e786dd5df8669fbf471bc5bc9fba04bc"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "614686"
+          "value": "615056"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "04ac6a1303e1372d8c38f393c94cbfea76dcb5df085b86bf847570248656e544"
+          "content": "031a88fc411aec07bd3e34404281de38510185e3cd29d630be5655d38e1ba243"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "276082"
+          "value": "276346"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7a4daf1212292aa80b1435950db1527d1d8474b1d62e410a932864b92411f8b4"
+          "content": "bad19ae25b67ebf6da79430c349aadff0b262c9ffbb061220b32849f8814fb7d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "131864"
+          "value": "132062"
         }
       ]
     },
@@ -5999,6 +5999,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/cumulative-dose-limit-v1635.js",
+      "type": "file",
+      "name": "lib/cumulative-dose-limit-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f60bced996b20746a6452ec7413b10c03603db980c66e50e1ea93ba18a3db456"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "15934"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/cutaneous-leishmaniasis-americas-v1563.js",
       "type": "file",
       "name": "lib/cutaneous-leishmaniasis-americas-v1563.js",
@@ -8032,6 +8053,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8331"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/esa-chemo-dose-adjust-v1635.js",
+      "type": "file",
+      "name": "lib/esa-chemo-dose-adjust-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aea4568c4df42c0295426d8a49c1c4ac8ecfb0da72886edf494930183a8b796d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "14338"
         }
       ]
     },
@@ -13502,7 +13544,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "81c2b76047ef56daf330228ab2e072ee9aede482eea9e632e7f76cc57096ab60"
+          "content": "70d1db824a2aa1ed6863bf3bdaca7dd109b7caf878ecd5acd5a80eac4e6abeed"
         }
       ],
       "properties": [
@@ -13512,7 +13554,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "44902"
+          "value": "46399"
         }
       ]
     },
@@ -15896,7 +15938,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c24a0f5d1a50ad13f96f7265dd295a769d90bd07e35ca228175b5924db1a8208"
+          "content": "8161e6d48fc090f739b95f21013b11072aa3b4f659c6ac4336204d5fd1d341f6"
         }
       ],
       "properties": [
@@ -15906,7 +15948,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2905557"
+          "value": "2908313"
         }
       ]
     },
@@ -34769,6 +34811,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cumulative-dose-limit-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/cumulative-dose-limit-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0715db8913d12226f0cc197e45f857a3abd3378f08e10860ef787c5d9b9de982"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1934"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cutaneous-leishmaniasis-americas-v1563.js",
       "type": "file",
       "name": "mcp/adapters/cutaneous-leishmaniasis-americas-v1563.js",
@@ -36655,6 +36718,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1475"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/esa-chemo-dose-adjust-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/esa-chemo-dose-adjust-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d0d457ab7284f3a0c10b06600e5a56865e9bf87da028bed3ee6879931b5057af"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2631"
         }
       ]
     },
@@ -55313,7 +55397,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fd6977045fff51656c51399d6e58321edf8f42d422b3b72b2403c31cf2364c75"
+          "content": "ffbce2cf4f9153a3e82ca8e6eec347950fea72e856a0f661460376958134addf"
         }
       ],
       "properties": [
@@ -55323,7 +55407,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "147011"
+          "value": "147295"
         }
       ]
     },
@@ -59933,7 +60017,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7daf3c08696adf1ded8c20cfd38e2d042dfd1a198292ea029074cf3dd085998f"
+          "content": "89e18eec0dcc637f42342ac9d1ea49d09a481f85faf5cc5251dbe7489d0a2285"
         }
       ],
       "properties": [
@@ -59943,7 +60027,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "32015"
+          "value": "35593"
         }
       ]
     },
@@ -90988,6 +91072,7 @@
         "urn:sophiewell:file:source:lib/csv-rows.js",
         "urn:sophiewell:file:source:lib/cts6-v773.js",
         "urn:sophiewell:file:source:lib/cuff-leak-v903.js",
+        "urn:sophiewell:file:source:lib/cumulative-dose-limit-v1635.js",
         "urn:sophiewell:file:source:lib/cutaneous-leishmaniasis-americas-v1563.js",
         "urn:sophiewell:file:source:lib/cvrisk-engines-v202.js",
         "urn:sophiewell:file:source:lib/cvrisk-v103.js",
@@ -91085,6 +91170,7 @@
         "urn:sophiewell:file:source:lib/erefs-v618.js",
         "urn:sophiewell:file:source:lib/erez-dic-v559.js",
         "urn:sophiewell:file:source:lib/erisa-claim-clock-v1503.js",
+        "urn:sophiewell:file:source:lib/esa-chemo-dose-adjust-v1635.js",
         "urn:sophiewell:file:source:lib/esa-conversion-v1633.js",
         "urn:sophiewell:file:source:lib/essex-lopresti-calcaneal-v1498.js",
         "urn:sophiewell:file:source:lib/estimators-v233.js",
@@ -93303,6 +93389,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/csendes-mirizzi-v1240.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cts6-v773.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cuff-leak-v903.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cumulative-dose-limit-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cutaneous-leishmaniasis-americas-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-engines-v202.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-v103.js",
@@ -93393,6 +93480,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/erefs-v618.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erez-dic-v559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erisa-claim-clock-v1503.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/esa-chemo-dose-adjust-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/esa-conversion-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/essex-lopresti-calcaneal-v1498.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/estimators-v233.js",
@@ -94385,7 +94473,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "791713a441d34e15"
+      "value": "5c26715e24d71070"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -94397,7 +94485,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3556"
+      "value": "3560"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
