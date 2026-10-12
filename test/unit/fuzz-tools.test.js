@@ -770,6 +770,11 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as quantityToDispenseV1639 from '../../lib/quantity-to-dispense-v1639.js';
+import * as topicalQuantityFtuV1639 from '../../lib/topical-quantity-ftu-v1639.js';
+import * as oralSuspensionCourseV1639 from '../../lib/oral-suspension-course-v1639.js';
+import * as contraceptiveMissedPillV1639 from '../../lib/contraceptive-missed-pill-v1639.js';
+import * as contraceptionStartBackupV1639 from '../../lib/contraception-start-backup-v1639.js';
 import * as pharmacyEffectiveRateV1638 from '../../lib/pharmacy-effective-rate-v1638.js';
 import * as mtmEligibilityCheckV1638 from '../../lib/mtm-eligibility-check-v1638.js';
 import * as ccmTimeUnitsV1638 from '../../lib/ccm-time-units-v1638.js';
@@ -1855,6 +1860,11 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'quantity-to-dispense-v1639.js': quantityToDispenseV1639,
+  'topical-quantity-ftu-v1639.js': topicalQuantityFtuV1639,
+  'oral-suspension-course-v1639.js': oralSuspensionCourseV1639,
+  'contraceptive-missed-pill-v1639.js': contraceptiveMissedPillV1639,
+  'contraception-start-backup-v1639.js': contraceptionStartBackupV1639,
   'pharmacy-effective-rate-v1638.js': pharmacyEffectiveRateV1638,
   'mtm-eligibility-check-v1638.js': mtmEligibilityCheckV1638,
   'ccm-time-units-v1638.js': ccmTimeUnitsV1638,

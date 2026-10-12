@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ecae4ddb-538d-59f7-8c86-988e93216c7a",
+  "serialNumber": "urn:uuid:5f3796c3-6684-576e-8acc-9b475c16fd73",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T10:18:53.341Z",
+    "timestamp": "2026-10-12T11:05:57.015Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2270 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2275 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fbb101a1c5a3456b1e3a5e1694bf18834ef56d36d5ece18792ecdb8b90ef0f52"
+          "content": "ba3fefaa23c8be71d259891267f35885d93fee9cf08e88bb745a537fc00b32f8"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "148062"
+          "value": "148374"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "133b12700c8da805c0045737d6ad9120c080f788bd4537cbb70d813b93128ac2"
+          "content": "4096d53e515340e490d02be538127904391a1b9159d7a24a4a1d1a17e4eaa554"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "627429"
+          "value": "628369"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c388d7704d0d9141cb45c3213785f02a093537a9d9b68d0b2c766a74cbb52f1d"
+          "content": "4cb32ad5bf783ff4df7fa6380fee8f1b3391a33a2a4082b7954b22e1fc8d7197"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "285518"
+          "value": "286186"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "123f03db0c431781ae82e292a14a816760ce18c5b6ae5064b7fc9c5f92db6565"
+          "content": "6ecbca2779b97dc5769ad1d7f027285d2972c72a4d0a615c190c912ea685c7db"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "137971"
+          "value": "138346"
         }
       ]
     },
@@ -5890,6 +5890,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "9928"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/contraception-start-backup-v1639.js",
+      "type": "file",
+      "name": "lib/contraception-start-backup-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e61c82c5757fa0e35c2e4636117d04f9ce37986106a31135e2a37aedb5944426"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5705"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/contraceptive-missed-pill-v1639.js",
+      "type": "file",
+      "name": "lib/contraceptive-missed-pill-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8e37eeaf8fb557bce6cc29513f6489ab6643a797b23604e4067f1232e37c2a41"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10517"
         }
       ]
     },
@@ -16904,7 +16946,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "baa0c5594ce3dd34b532af7b3d08dad07d77e06aa098453064d96a466a7142f0"
+          "content": "fdffe60af89413d69da880e2464e2b97f45b477f2401acaefb7695d813ea5dbb"
         }
       ],
       "properties": [
@@ -16914,7 +16956,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2977936"
+          "value": "2981838"
         }
       ]
     },
@@ -20086,6 +20128,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6829"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/oral-suspension-course-v1639.js",
+      "type": "file",
+      "name": "lib/oral-suspension-course-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "641c127dc75cce80f3cd78dedc00022b1ff3af92a6551ac1b74e370b3b0ea744"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5253"
         }
       ]
     },
@@ -23488,6 +23551,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3425"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/quantity-to-dispense-v1639.js",
+      "type": "file",
+      "name": "lib/quantity-to-dispense-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4bf4b7d5a842d408cede83a4d369ffc162ab96ba587630f571bc12c54669edaa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11183"
         }
       ]
     },
@@ -28234,6 +28318,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3924"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/topical-quantity-ftu-v1639.js",
+      "type": "file",
+      "name": "lib/topical-quantity-ftu-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4d2eeaca5eadd228dfd888f0951c9a798b1489c07b3be5167f5f0a5e6265ee34"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5042"
         }
       ]
     },
@@ -36319,6 +36424,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "2610"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/contraception-start-backup-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/contraception-start-backup-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5a27efb6c65e903114b24688e6da5a70937ede0a57ddf6d1bb0a05d45798d16c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1170"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/contraceptive-missed-pill-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/contraceptive-missed-pill-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c51c835c49f9c40f16ccefa927025522b804c4f82b63d9a2b3178e838552c310"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1725"
         }
       ]
     },
@@ -49196,6 +49343,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/oral-suspension-course-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/oral-suspension-course-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d88b55e26e1036c19d4204030257950c70908dceabfef5e71d6058470b50ba02"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1565"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ortho-v144.js",
       "type": "file",
       "name": "mcp/adapters/ortho-v144.js",
@@ -52090,6 +52258,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1100"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/quantity-to-dispense-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/quantity-to-dispense-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a02e9e29ae2c5a782167298503efa5c0aab1943d480debd01f69f205ef9ed6a9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3335"
         }
       ]
     },
@@ -56063,6 +56252,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/topical-quantity-ftu-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/topical-quantity-ftu-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bf435134db06ec1ad248c79a3b56384e4e07b4a4e5e1a4d0e7cc2646fc55bd17"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1343"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tox-v110.js",
       "type": "file",
       "name": "mcp/adapters/tox-v110.js",
@@ -58442,7 +58652,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2c4a31aeb3d3087d7477af949d291e5212bdd59d5bfba01a082d19ba8cd3469f"
+          "content": "ebdc96c42f9ac8251cd9d7c64daff7db882313a82eb25e1f137fdf7274e659d1"
         }
       ],
       "properties": [
@@ -58452,7 +58662,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "157003"
+          "value": "157750"
         }
       ]
     },
@@ -63136,6 +63346,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "29568"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1639.js",
+      "type": "file",
+      "name": "views/group-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fbb4d548c6b62ae93d4fb6b5dc57856ce8731e8de42d3f46d97627e36121d3e1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9697"
         }
       ]
     },
@@ -94175,6 +94406,8 @@
         "urn:sophiewell:file:source:lib/congenital-syphilis-scenario-v1400.js",
         "urn:sophiewell:file:source:lib/conley-fall-risk-v692.js",
         "urn:sophiewell:file:source:lib/constrictive-pericarditis-echo-v853.js",
+        "urn:sophiewell:file:source:lib/contraception-start-backup-v1639.js",
+        "urn:sophiewell:file:source:lib/contraceptive-missed-pill-v1639.js",
         "urn:sophiewell:file:source:lib/copay-card-v1506.js",
         "urn:sophiewell:file:source:lib/cormack-lehane-v339.js",
         "urn:sophiewell:file:source:lib/cost-of-dispensing-v1638.js",
@@ -94851,6 +95084,7 @@
         "urn:sophiewell:file:source:lib/opps-addendum-b.js",
         "urn:sophiewell:file:source:lib/ops-v63.js",
         "urn:sophiewell:file:source:lib/or-rr-to-nnt-v1634.js",
+        "urn:sophiewell:file:source:lib/oral-suspension-course-v1639.js",
         "urn:sophiewell:file:source:lib/ortho-v144.js",
         "urn:sophiewell:file:source:lib/ortho-v145.js",
         "urn:sophiewell:file:source:lib/orthospine-v252.js",
@@ -95013,6 +95247,7 @@
         "urn:sophiewell:file:source:lib/qio-discharge-appeal-v1503.js",
         "urn:sophiewell:file:source:lib/qpitt-v587.js",
         "urn:sophiewell:file:source:lib/quantity-limit-check-v1502.js",
+        "urn:sophiewell:file:source:lib/quantity-to-dispense-v1639.js",
         "urn:sophiewell:file:source:lib/query-compute.js",
         "urn:sophiewell:file:source:lib/query-fill.js",
         "urn:sophiewell:file:source:lib/quintero-ttts-v831.js",
@@ -95239,6 +95474,7 @@
         "urn:sophiewell:file:source:lib/tmic-beta-lactam-v1631.js",
         "urn:sophiewell:file:source:lib/todani-choledochal-v473.js",
         "urn:sophiewell:file:source:lib/tonnis-hip-oa-v354.js",
+        "urn:sophiewell:file:source:lib/topical-quantity-ftu-v1639.js",
         "urn:sophiewell:file:source:lib/tox-v110.js",
         "urn:sophiewell:file:source:lib/tox-v86.js",
         "urn:sophiewell:file:source:lib/trachoma-grade-v1561.js",
@@ -95598,6 +95834,7 @@
         "urn:sophiewell:file:source:views/group-v1636.js",
         "urn:sophiewell:file:source:views/group-v1637.js",
         "urn:sophiewell:file:source:views/group-v1638.js",
+        "urn:sophiewell:file:source:views/group-v1639.js",
         "urn:sophiewell:file:source:views/group-v164.js",
         "urn:sophiewell:file:source:views/group-v165.js",
         "urn:sophiewell:file:source:views/group-v166.js",
@@ -96572,6 +96809,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/congenital-syphilis-scenario-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/conley-fall-risk-v692.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/constrictive-pericarditis-echo-v853.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/contraception-start-backup-v1639.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/contraceptive-missed-pill-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/copay-card-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cormack-lehane-v339.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cost-of-dispensing-v1638.js",
@@ -97185,6 +97424,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/opioid-risk-tool-v709.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ops-v63.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/or-rr-to-nnt-v1634.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/oral-suspension-course-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ortho-v144.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ortho-v145.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/orthospine-v252.js",
@@ -97323,6 +97563,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/qio-discharge-appeal-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/qpitt-v587.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/quantity-limit-check-v1502.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/quantity-to-dispense-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/quintero-ttts-v831.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rachs1-v541.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rad-package-label-category-v1635.js",
@@ -97512,6 +97753,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tmic-beta-lactam-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/todani-choledochal-v473.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tonnis-hip-oa-v354.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/topical-quantity-ftu-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tox-v110.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tox-v86.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/trachoma-grade-v1561.js",
@@ -97729,7 +97971,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ecae4ddb538d09f7"
+      "value": "5f3796c36684576e"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -97741,7 +97983,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3708"
+      "value": "3719"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -888,3 +888,13 @@ experience**.
 > v1638, Part D Drug Management Program Notice and Limitation Dates — [spec-v1638](spec-v1638.md), which adds `partd-dmp-notice-clock` — is 2269.)
 
 > v1638, Monthly Medication Regimen Review Tracker (Nursing Facility) — [spec-v1638](spec-v1638.md), which adds `ltc-mrr-tracker` — is 2270.)
+
+> v1639, Quantity to Dispense for a Days Supply — [spec-v1639](spec-v1639.md), which adds `quantity-to-dispense` — is 2271.)
+
+> v1639, Topical Quantity by Fingertip Units (Adults) — [spec-v1639](spec-v1639.md), which adds `topical-quantity-ftu` — is 2272.)
+
+> v1639, Oral Suspension: Bottles for a Course and Discard Date — [spec-v1639](spec-v1639.md), which adds `oral-suspension-course` — is 2273.)
+
+> v1639, Late or Missed Birth Control Pill (CDC 2024) — [spec-v1639](spec-v1639.md), which adds `contraceptive-missed-pill` — is 2274.)
+
+> v1639, Starting a Contraceptive: Days of Back-Up (CDC 2024) — [spec-v1639](spec-v1639.md), which adds `contraception-start-backup` — is 2275.)

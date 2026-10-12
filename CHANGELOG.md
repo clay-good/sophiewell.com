@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Five counter tools: Quantity to Dispense for a Days Supply; Topical Quantity by Fingertip Units
+  (Adults); Oral Suspension: Bottles for a Course and Discard Date; Late or Missed Birth Control
+  Pill (CDC 2024); and Starting a Contraceptive: Days of Back-Up (CDC 2024). The two contraception
+  tools report CDC's 2024 recommendations and say that the product's label may differ.
 - Eight more Medicare and long-term care tools: Part D MTM Targeting Criteria Check; Part D Opioid
   Safety Edits: Which One Fires?; Part D Drug Management Program Criteria Check, and its Notice and
   Limitation Dates; Chronic Care Management Codes from Minutes; Monthly Medication Regimen Review

@@ -1,6 +1,6 @@
 # spec-v1639 — The community pharmacy counter: quantities, label schedules, OTC label doses and patient-facing clocks
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 15 new tools (1 build-gated), 7 backfills.
+**Status:** In progress. 5 of 15 tools built (October 12, 2026); see Build status. 15 new tools (1 build-gated), 7 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A community pharmacist, the technician at the fill station, and the patient or caregiver on the
@@ -953,4 +953,15 @@ row rests on.
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+Built tools are in `views/group-v1639.js`. Sources were re-read on October 12, 2026.
+
+| Tool | State |
+|---|---|
+| 1. `quantity-to-dispense` | Built. Eight forms; the tool supplies no figure. One package size is taken, not a list of sizes. Priming puffs for an inhaler are counted per canister. |
+| 2. `topical-quantity-ftu` | Built on the abstract of Long and Finlay 1991 (area counts and standard deviations) and the gram weights as restated in Paterson et al., *Pharmaceutics* 2018;10(1):9. Adults only. The 1991 full text and the 1998 children's table were not read. |
+| 3. `oral-suspension-course` | Built. One bottle size; the course's day 1 is the day the bottle is mixed. |
+| 7. `contraceptive-missed-pill` | Built on CDC's text and on Figures 1 and 5, read on the figure images. The branch follows the hours since the pill was due, as the figures do; a pill count that disagrees with the hours is said in the result and not used. Owner decision 1 stands as written: the combined-pill branch is kept and every result says the label may differ. |
+| 9. `contraception-start-backup` | Built on the six "Need for Back-Up Contraception" passages and Box 3. The day bleeding starts is day 1, which is the reading CDC's drospirenone line fixes. |
+
+Not built yet: tools 4 to 6, 8 and 10 to 14 (each rests on label rows that are re-read and
+registered first), tool 15 (owner-gated), and the backfills.

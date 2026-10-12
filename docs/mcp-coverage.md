@@ -9514,6 +9514,21 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ltc-mrr-tracker-v1638.js (spec-v1638: Monthly medication regimen review tracker (nursing facility) — administrative disclaimer)
 - `ltc-mrr-tracker`
 
+### lib/quantity-to-dispense-v1639.js (spec-v1639: Quantity to dispense for a days supply — administrative disclaimer)
+- `quantity-to-dispense`
+
+### lib/topical-quantity-ftu-v1639.js (spec-v1639: Topical quantity by fingertip units (adults) — clinical disclaimer)
+- `topical-quantity-ftu`
+
+### lib/oral-suspension-course-v1639.js (spec-v1639: Oral suspension: bottles for a course and discard date — administrative disclaimer)
+- `oral-suspension-course`
+
+### lib/contraceptive-missed-pill-v1639.js (spec-v1639: Late or missed birth control pill (CDC 2024) — clinical disclaimer)
+- `contraceptive-missed-pill`
+
+### lib/contraception-start-backup-v1639.js (spec-v1639: Starting a contraceptive: days of back-up (CDC 2024) — clinical disclaimer)
+- `contraception-start-backup`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

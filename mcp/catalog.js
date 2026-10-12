@@ -1040,6 +1040,11 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import quantityToDispenseV1639 from './adapters/quantity-to-dispense-v1639.js';
+import topicalQuantityFtuV1639 from './adapters/topical-quantity-ftu-v1639.js';
+import oralSuspensionCourseV1639 from './adapters/oral-suspension-course-v1639.js';
+import contraceptiveMissedPillV1639 from './adapters/contraceptive-missed-pill-v1639.js';
+import contraceptionStartBackupV1639 from './adapters/contraception-start-backup-v1639.js';
 import pharmacyEffectiveRateV1638 from './adapters/pharmacy-effective-rate-v1638.js';
 import mtmEligibilityCheckV1638 from './adapters/mtm-eligibility-check-v1638.js';
 import ccmTimeUnitsV1638 from './adapters/ccm-time-units-v1638.js';
@@ -2341,6 +2346,11 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['quantity-to-dispense-v1639', quantityToDispenseV1639],
+  ['topical-quantity-ftu-v1639', topicalQuantityFtuV1639],
+  ['oral-suspension-course-v1639', oralSuspensionCourseV1639],
+  ['contraceptive-missed-pill-v1639', contraceptiveMissedPillV1639],
+  ['contraception-start-backup-v1639', contraceptionStartBackupV1639],
   ['pharmacy-effective-rate-v1638', pharmacyEffectiveRateV1638],
   ['mtm-eligibility-check-v1638', mtmEligibilityCheckV1638],
   ['ccm-time-units-v1638', ccmTimeUnitsV1638],

@@ -132,6 +132,12 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // spec-v1638: the notice window comes from the required initial notice date and the optional
   // determination date. The only text field is the optional list of prescriber outreach dates.
   "partd-dmp-notice-clock",
+  // spec-v1639: CDC's branch comes from the kind of pill and two required date-times. The only number
+  // field is an optional pill count used as a cross-check.
+  "contraceptive-missed-pill",
+  // spec-v1639: the answer comes from a required method and two required dates; the tool has no
+  // number or text field.
+  "contraception-start-backup",
   // spec-v1637: the last valid shipment date comes from the execution date and two required selects.
   // The only text field is the optional list of shipment dates to check against it.
   "dea-222-validity",
