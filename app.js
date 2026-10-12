@@ -2784,6 +2784,8 @@ const UTILITIES = [
   { id: 'flumazenil-ladder', name: 'Flumazenil Dose Series and Cumulative Caps (Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'neostigmine-reversal-dose', name: 'Neostigmine Reversal Dose (Bloxiverz Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'deferoxamine-acute-iron', name: 'Deferoxamine for Acute Iron Poisoning: Rate and 24-Hour Total (Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'us-antivenom-dose', name: 'CroFab, Anavip and Anascorp: Vials, Volumes and the Maintenance Clock', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'thrombolytic-dose', name: 'Alteplase and Tenecteplase Dose by Weight and Indication (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

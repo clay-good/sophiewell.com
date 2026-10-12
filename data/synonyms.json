@@ -13057,6 +13057,26 @@
       ],
       "tile": "deferoxamine-acute-iron",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "crofab",
+        "anavip",
+        "anascorp"
+      ],
+      "tile": "us-antivenom-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "alteplase",
+        "tenecteplase",
+        "tnkase",
+        "activase",
+        "cathflo"
+      ],
+      "tile": "thrombolytic-dose",
+      "audience": "clinicians"
     }
   ]
 }

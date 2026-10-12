@@ -768,3 +768,7 @@ experience**.
 > v1636, Neostigmine Reversal Dose (Bloxiverz Label) — [spec-v1636](spec-v1636.md), which adds `neostigmine-reversal-dose` — is 2209.)
 
 > v1636, Deferoxamine for Acute Iron Poisoning: Rate and 24-Hour Total (Label) — [spec-v1636](spec-v1636.md), which adds `deferoxamine-acute-iron` — is 2210.)
+
+> v1636, CroFab, Anavip and Anascorp: Vials, Volumes and the Maintenance Clock — [spec-v1636](spec-v1636.md), which adds `us-antivenom-dose` — is 2211.)
+
+> v1636, Alteplase and Tenecteplase Dose by Weight and Indication (Labels) — [spec-v1636](spec-v1636.md), which adds `thrombolytic-dose` — is 2212.)

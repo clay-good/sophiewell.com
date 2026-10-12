@@ -9334,6 +9334,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/deferoxamine-acute-iron-v1636.js (spec-v1636: Deferoxamine for acute iron poisoning (label) — clinical disclaimer)
 - `deferoxamine-acute-iron`
 
+### lib/us-antivenom-dose-v1636.js (spec-v1636: CroFab, Anavip and Anascorp vials, volumes and clocks (labels) — clinical disclaimer)
+- `us-antivenom-dose`
+
+### lib/thrombolytic-dose-v1636.js (spec-v1636: Alteplase and tenecteplase dose by weight and indication (labels) — clinical disclaimer)
+- `thrombolytic-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

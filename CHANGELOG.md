@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- CroFab, Anavip and Anascorp: Vials, Volumes and the Maintenance Clock: the saline to
+  reconstitute a dose, the running vial count, and the times that follow initial control.
+- Alteplase and Tenecteplase Dose by Weight and Indication (Labels): bolus and infusion in mg and
+  mL for stroke, myocardial infarction, pulmonary embolism and catheter clearance.
 - Flumazenil Dose Series and Cumulative Caps (Label): the next step in the label's series, its
   volume, and what remains under the 1 mg, 3 mg and 5 mg figures.
 - Neostigmine Reversal Dose (Bloxiverz Label): 0.03 or 0.07 mg/kg by train-of-four response and

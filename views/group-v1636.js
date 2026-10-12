@@ -1,7 +1,8 @@
 // spec-v1636: hospital pharmacy operations: label antidote and emergency dosing, stewardship metrics,
 // department measurement.
 // nac-oral-regimen, fomepizole-schedule, dantrolene-mh-vials,
-// flumazenil-ladder, neostigmine-reversal-dose, deferoxamine-acute-iron.
+// flumazenil-ladder, neostigmine-reversal-dose, deferoxamine-acute-iron,
+// us-antivenom-dose, thrombolytic-dose.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -11,6 +12,8 @@ import * as DM from '../lib/dantrolene-mh-vials-v1636.js';
 import * as FL from '../lib/flumazenil-ladder-v1636.js';
 import * as NS from '../lib/neostigmine-reversal-dose-v1636.js';
 import * as DF from '../lib/deferoxamine-acute-iron-v1636.js';
+import * as AV from '../lib/us-antivenom-dose-v1636.js';
+import * as TD from '../lib/thrombolytic-dose-v1636.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -156,6 +159,36 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = DF.deferoxamineAcuteIron(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'us-antivenom-dose'(root) {
+    const pairs = [['uad-product', 'product'], ['uad-dose', 'dose'], ['uad-vials', 'vials'], ['uad-before', 'vialsBefore'], ['uad-control', 'controlTime']];
+    selectField(root, 'Product', 'uad-product', AV.PRODUCTS);
+    selectField(root, 'Which dose this is', 'uad-dose', AV.DOSES);
+    numField(root, 'Vials in this dose (CroFab initial or further dose, where the label gives a range)', 'uad-vials', '');
+    numField(root, 'Vials given before this dose (optional)', 'uad-before', '');
+    dateField(root, 'Time initial control was achieved (optional)', 'uad-control', 'datetime-local');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = AV.usAntivenomDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'thrombolytic-dose'(root) {
+    const pairs = [['thd-regimen', 'regimen'], ['thd-weight', 'weight'], ['thd-lumen', 'lumenVolume']];
+    selectField(root, 'Drug and indication', 'thd-regimen', TD.REGIMENS);
+    numField(root, 'Weight, kg (not needed for pulmonary embolism)', 'thd-weight', '');
+    numField(root, 'Cathflo under 30 kg: internal lumen volume of the catheter, mL', 'thd-lumen', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = TD.thrombolyticDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

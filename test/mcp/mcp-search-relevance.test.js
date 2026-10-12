@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['crofab vials and maintenance doses', ['us-antivenom-dose']],
+  ['alteplase dose for stroke by weight', ['thrombolytic-dose']],
   ['flumazenil dose for benzodiazepine reversal', ['flumazenil-ladder']],
   ['neostigmine reversal dose train of four', ['neostigmine-reversal-dose']],
   ['deferoxamine dose for acute iron poisoning', ['deferoxamine-acute-iron']],

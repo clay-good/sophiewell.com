@@ -47,6 +47,21 @@
     }
   },
   {
+    "label": "Activase (alteplase)",
+    "labeler": "GENENTECH, INC.",
+    "setId": "c669f77c-fa48-478b-a14b-80b20a0139c2",
+    "tools": [
+      "thrombolytic-dose"
+    ],
+    "splVersion": 15,
+    "publishedOn": "2026-01-26",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "1b0af64b615191b0874b242ded998707f4221e6964fdbf986c9ef3e57468a44d"
+    }
+  },
+  {
     "label": "Actonel (risedronate), Allergan",
     "labeler": "ALLERGAN, INC.",
     "setId": "24ed00e0-25e2-49a8-97fc-66c1b417dc0b",
@@ -243,6 +258,36 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "0e00ad90dbfd82b15f38edeaf3bb81b4a887c3b547173409f651a6dadb1956be"
+    }
+  },
+  {
+    "label": "ANASCORP (centruroides immune F(ab')2)",
+    "labeler": "RARE DISEASE THERAPEUTICS, INC",
+    "setId": "5cb65048-a30c-48e5-8bc8-897983d08068",
+    "tools": [
+      "us-antivenom-dose"
+    ],
+    "splVersion": 20,
+    "publishedOn": "2025-07-18",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "bfcc116f51ace958815f100ca40db7e9f879d5b367676d910a76aa46d5e7de55"
+    }
+  },
+  {
+    "label": "ANAVIP (crotalidae immune F(ab')2)",
+    "labeler": "RARE DISEASE THERAPEUTICS, INC",
+    "setId": "a16596a5-e87e-40c2-8e34-cea5839849c3",
+    "tools": [
+      "us-antivenom-dose"
+    ],
+    "splVersion": 24,
+    "publishedOn": "2026-01-26",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "0ddbae65243e2d6facad5bb971d99ca70b868fac089a4c6b71146586b5507a94"
     }
   },
   {
@@ -624,6 +669,21 @@
     }
   },
   {
+    "label": "Cathflo Activase (alteplase)",
+    "labeler": "GENENTECH, INC.",
+    "setId": "91ecdef2-95ff-42dd-a31c-c8a09cab3ad9",
+    "tools": [
+      "thrombolytic-dose"
+    ],
+    "splVersion": 18,
+    "publishedOn": "2026-01-23",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "163acf67919c7820b1521f653d79845164589b525cc82d2b4097da0dffb9d06f"
+    }
+  },
+  {
     "label": "Cefazolin for injection, WG Critical Care",
     "labeler": "WG CRITICAL CARE, LLC",
     "setId": "f17160d4-fc42-4f9c-abb8-d04f01ae6dd1",
@@ -875,6 +935,21 @@
     "sections": {
       "34068-7": "ab11d3a6c92578a8c3c0b645354e39c7a3293ee51b0a3f508f34a1479c3c21cd",
       "34092-7": "ca95b18601f60651f47624793294e26e1e967f34f2e5bb7a5bd4aaa2c5545265"
+    }
+  },
+  {
+    "label": "CROFAB (crotalidae polyvalent immune fab)",
+    "labeler": "BTG INTERNATIONAL INC.",
+    "setId": "77abd784-3387-420d-abdc-4fe97215d233",
+    "tools": [
+      "us-antivenom-dose"
+    ],
+    "splVersion": 21,
+    "publishedOn": "2026-06-01",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "45c111b7ae0fc745e44ece310f624e5a41a2d5b4e94c5269fcb1b8cca49556fc"
     }
   },
   {
@@ -2951,6 +3026,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "6cadb9472c50aa5e946c2c78223d69cc02f22fe211efd0a43acaea62578267e2"
+    }
+  },
+  {
+    "label": "TNKase (tenecteplase)",
+    "labeler": "GENENTECH, INC.",
+    "setId": "e647640d-c395-4b4b-a0be-1162f9c21d84",
+    "tools": [
+      "thrombolytic-dose"
+    ],
+    "splVersion": 4,
+    "publishedOn": "2025-12-23",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "4b467719dd830426b292437814e2f98e6aa5ac3d8df8f8b196b3d7ce859e4114"
     }
   },
   {

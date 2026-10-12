@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1682fd5a-3f30-539c-88db-731713718cdf",
+  "serialNumber": "urn:uuid:07b96820-cd2a-5329-8de2-1e38be9b6c1d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T05:03:31.589Z",
+    "timestamp": "2026-10-12T05:38:02.304Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2210 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2212 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "63f3bd712e9b45a2cc69ec5bf4b5ad96e88294cd59b869d3d647d044732dc00c"
+          "content": "998fe474194f3a00112d72a7931154dfd3a5e8934f0c92538728456ad7cd725f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "143556"
+          "value": "143722"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9a8c7c763b320a1aa3e307c0b59b068b3a8004eda74a94dbfa2b6f625412df2d"
+          "content": "bea275e7a75e03ce5e591be193efc0bdc803bdc658e83187ae3058a74068a7d6"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "616791"
+          "value": "617143"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "45d2a0a753cdf286faecfdbf023ec1864a39c5727fe5c1e41283fb89d96f7b3b"
+          "content": "9a78c33f0c878fd0ed42772997f52887da2e91348d1ebbab52033b44375d5212"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "277657"
+          "value": "277913"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "333feb09ac207fd6f9182b22d72136a9a34e5ceb6414067a1e3e56230afadfe2"
+          "content": "cffdb1c87db6e05a6d08a91da167080f95b03c0a7d78c231141fe4fd3e4abafe"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132864"
+          "value": "133044"
         }
       ]
     },
@@ -13712,7 +13712,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "461ae2ab9cf015d586313047e83f056aadf15190b7af288af4d1bff908412825"
+          "content": "8a7054ecd09042b027f30415025f55393f58a89d59abd814c10aec4498a2a603"
         }
       ],
       "properties": [
@@ -13722,7 +13722,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "49199"
+          "value": "50496"
         }
       ]
     },
@@ -16106,7 +16106,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "725c5472996f4ed38866bfa38a12b76b9abf3dbf7b8e2d7da1c4f05e42d04ac5"
+          "content": "b88d25b2e3e498d783ce6049493b9b26be527a387d8fac220a76c9bd4abbd187"
         }
       ],
       "properties": [
@@ -16116,7 +16116,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2919317"
+          "value": "2921682"
         }
       ]
     },
@@ -26663,6 +26663,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/thrombolytic-dose-v1636.js",
+      "type": "file",
+      "name": "lib/thrombolytic-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "672f69de1ca2f1ccadcabe60d0489d644dfe611df9a0ba639927735d6784107c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10886"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/thwaites-v529.js",
       "type": "file",
       "name": "lib/thwaites-v529.js",
@@ -27877,6 +27898,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9694"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/us-antivenom-dose-v1636.js",
+      "type": "file",
+      "name": "lib/us-antivenom-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d07e71232fb8e4860492f4c43eb062c12022ce20f3c55ae69786d6a9b48632e0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9336"
         }
       ]
     },
@@ -53375,6 +53417,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/thrombolytic-dose-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/thrombolytic-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "96a3cd80c9ace9235f4818874439a7ae4572ad84cd468052b1e64d95ae68360e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1219"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/thwaites-v529.js",
       "type": "file",
       "name": "mcp/adapters/thwaites-v529.js",
@@ -54337,6 +54400,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3517"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/us-antivenom-dose-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/us-antivenom-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4abacf68000b8976c81c848b7c07f92c2aa5419d588d778336970d56aaa1b85b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1428"
         }
       ]
     },
@@ -55817,7 +55901,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "17aaf2a2bd50a36038f4a2f04dda7dd22bbf855a5b772b1e85777cf687589f64"
+          "content": "f13043c3070808766c418f163daf2698c7a30ca6fe5d730739ed253a8b331749"
         }
       ],
       "properties": [
@@ -55827,7 +55911,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "148693"
+          "value": "148949"
         }
       ]
     },
@@ -60458,7 +60542,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "afe10bce540c82170321e090d181fb6169b40cf82c619e53591c17f458fb074e"
+          "content": "b1c9213fff1d98be48f4d6993930bf72cf9e1d70ad02e4c93751d15725c97c6a"
         }
       ],
       "properties": [
@@ -60468,7 +60552,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8589"
+          "value": "10658"
         }
       ]
     },
@@ -92497,6 +92581,7 @@
         "urn:sophiewell:file:source:lib/thi-v555.js",
         "urn:sophiewell:file:source:lib/thomazeau-occupation-v1572.js",
         "urn:sophiewell:file:source:lib/thompson-epstein-v459.js",
+        "urn:sophiewell:file:source:lib/thrombolytic-dose-v1636.js",
         "urn:sophiewell:file:source:lib/thwaites-v529.js",
         "urn:sophiewell:file:source:lib/tic-file-check.js",
         "urn:sophiewell:file:source:lib/tic-rate-lookup.js",
@@ -92555,6 +92640,7 @@
         "urn:sophiewell:file:source:lib/uro-v130.js",
         "urn:sophiewell:file:source:lib/uro-v131.js",
         "urn:sophiewell:file:source:lib/urology-v153.js",
+        "urn:sophiewell:file:source:lib/us-antivenom-dose-v1636.js",
         "urn:sophiewell:file:source:lib/uspstf-load.js",
         "urn:sophiewell:file:source:lib/ut-diabetic-foot-v612.js",
         "urn:sophiewell:file:source:lib/uterine-activity-v1439.js",
@@ -94715,6 +94801,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/thi-v555.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thomazeau-occupation-v1572.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thompson-epstein-v459.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/thrombolytic-dose-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thwaites-v529.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tici-v960.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tile-pelvic-v379.js",
@@ -94761,6 +94848,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/uro-v130.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/uro-v131.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/urology-v153.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/us-antivenom-dose-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ut-diabetic-foot-v612.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/uterine-activity-v1439.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vaizey-v512.js",
@@ -94935,7 +95023,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1682fd5a3f30739c"
+      "value": "07b96820cd2a3329"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -94947,7 +95035,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3581"
+      "value": "3585"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
