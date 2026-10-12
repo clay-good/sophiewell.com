@@ -4,7 +4,8 @@
 // cs-five-percent-rule, c5-otc-sale-limit, otp-take-home-limit, mat-injection-admin-deadline,
 // cs-disposal-clock, cmea-sales-limit, cs-record-retention, cs-rx-transfer-check, c2-rx-form-check,
 // otp-admission-clock, oud-telemedicine-rx-window, dscsa-dispenser-clocks, dscsa-suspect-sample-size,
-// dscsa-small-dispenser-check, unit-dose-repack-expiry, hw-generator-category.
+// dscsa-small-dispenser-check, unit-dose-repack-expiry, hw-generator-category, ndc-gtin-convert,
+// gs1-drug-barcode-parser, pppa-special-packaging-check.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -28,6 +29,9 @@ import * as SS from '../lib/dscsa-suspect-sample-size-v1637.js';
 import * as SD from '../lib/dscsa-small-dispenser-check-v1637.js';
 import * as UD from '../lib/unit-dose-repack-expiry-v1637.js';
 import * as HW from '../lib/hw-generator-category-v1637.js';
+import * as NG from '../lib/ndc-gtin-convert-v1637.js';
+import * as GB from '../lib/gs1-drug-barcode-parser-v1637.js';
+import * as PP from '../lib/pppa-special-packaging-check-v1637.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -53,6 +57,14 @@ function areaField(root, label, id, placeholder) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('textarea', { id, rows: '3', placeholder }));
+  root.appendChild(wrap);
+  return wrap;
+}
+function textField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type: 'text', autocomplete: 'off', placeholder }));
   root.appendChild(wrap);
   return wrap;
 }
@@ -354,6 +366,38 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(HW.hwGeneratorCategory(args), o);
+    }));
+  },
+  'ndc-gtin-convert'(root) {
+    const pairs = [['ngc-value', 'value'], ['ngc-indicator', 'indicator']];
+    textField(root, 'A 10-digit NDC as printed on the label, or a GTIN of 12, 13 or 14 digits', 'ngc-value', '12345-678-90');
+    selectField(root, 'From an NDC: also build a grouping (optional)', 'ngc-indicator', NG.INDICATORS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(NG.ndcGtinConvert(args, new Date()), o);
+    }));
+  },
+  'gs1-drug-barcode-parser'(root) {
+    areaField(root, 'The scanned string, raw or in the human-readable form with parentheses', 'gbp-scan', '(01)00312345678906(17)271130(10)A1B2(21)12345');
+    const o = out(); root.appendChild(o);
+    wire(['gbp-scan'], () => safe(o, () => show(GB.gs1DrugBarcodeParser({ scan: val('gbp-scan') }, new Date()), o)));
+  },
+  'pppa-special-packaging-check'(root) {
+    const pairs = [['psp-substance', 'substance'], ['psp-amount', 'amount'], ['psp-percent', 'percent'], ['psp-form', 'form'], ['psp-other', 'noOtherSubstance'], ['psp-before', 'approvedBefore2002'], ['psp-request', 'request']];
+    selectField(root, 'Substance or kind of product', 'psp-substance', PP.SUBSTANCES);
+    numField(root, 'Total amount in the package, in the unit the row names (strength times count, or concentration times volume)', 'psp-amount', '');
+    numField(root, 'Iron or fluoride: concentration of the element, percent', 'psp-percent', '');
+    selectField(root, 'Iron: form of the product', 'psp-form', PP.FORMS);
+    selectField(root, 'Where the exemption requires it: the package contains no other substance subject to the section', 'psp-other', PP.YES_NO);
+    selectField(root, 'Over-the-counter switch: every active ingredient was approved over the counter on an application before January 29, 2002', 'psp-before', PP.YES_NO);
+    selectField(root, 'Prescription: a request for a non-child-resistant package (optional)', 'psp-request', PP.REQUESTS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PP.pppaSpecialPackagingCheck(args), o);
     }));
   },
 };

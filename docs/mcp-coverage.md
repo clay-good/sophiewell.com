@@ -9436,6 +9436,30 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hw-generator-category-v1637.js (spec-v1637: Hazardous waste generator category for a pharmacy (40 CFR 262.13) — administrative disclaimer)
 - `hw-generator-category`
 
+### lib/ndc-gtin-convert-v1637.js (spec-v1637: NDC to GTIN and GTIN check digit — administrative disclaimer)
+- `ndc-gtin-convert`
+
+### lib/gs1-drug-barcode-parser-v1637.js (spec-v1637: Drug package barcode reader (GS1 DataMatrix) — administrative disclaimer)
+- `gs1-drug-barcode-parser`
+
+### lib/pppa-special-packaging-check-v1637.js (spec-v1637: Does this package need child-resistant packaging? (16 CFR 1700.14) — administrative disclaimer)
+- `pppa-special-packaging-check`
+
+### lib/rx-pricing-math-v1638.js (spec-v1638: Markup, margin and cash price (pharmacy pricing math) — administrative disclaimer)
+- `rx-pricing-math`
+
+### lib/inventory-turns-v1638.js (spec-v1638: Inventory turnover, days on hand and reorder point — administrative disclaimer)
+- `inventory-turns`
+
+### lib/med-pass-error-rate-v1638.js (spec-v1638: Medication administration error rate (nursing facility, 5% line) — administrative disclaimer)
+- `med-pass-error-rate`
+
+### lib/psychotropic-prn-clock-v1638.js (spec-v1638: PRN psychotropic order 14-day limit (nursing facility) — administrative disclaimer)
+- `psychotropic-prn-clock`
+
+### lib/gdr-attempt-check-v1638.js (spec-v1638: Gradual dose reduction attempts in the first year (nursing facility) — administrative disclaimer)
+- `gdr-attempt-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

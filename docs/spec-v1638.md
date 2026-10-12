@@ -1,6 +1,6 @@
 # spec-v1638 — The pharmacy as a business and as a regulated Medicare/Medicaid provider
 
-**Status:** Proposed, October 10, 2026. Specs only; nothing here is built. 28 new tools, none build-gated.
+**Status:** In progress, October 12, 2026: 5 of 28 tools built (see Build status). 28 new tools, none build-gated.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 An independent pharmacy owner, a long-term-care consultant pharmacist, a managed-care pharmacist
@@ -1048,4 +1048,12 @@ vaccinator's decision; the tool reports validity under the CDC rule.
 
 ## Build status
 
-Not started. Specified October 10, 2026.
+Built tools are in `views/group-v1638.js`. Sources were re-read on October 12, 2026.
+
+| Tool | State |
+|---|---|
+| 21. `psychotropic-prn-clock` | Built (group H) on 42 CFR 483.45(e)(3) to (5) (eCFR as current October 8, 2026) and Appendix PP's "PRN Medication Use" table. **Edition:** CMS's linked copy of Appendix PP is the Rev. 225 edition (August 2024), not the Rev. 232 edition the spec read; the passages used match the spec's quotations. The start date is day 1. An antipsychotic is never extended, whatever is entered. |
+| 22. `gdr-attempt-check` | Built (group H), named "GDR Attempts in the First Year on a Psychotropic" so that it does not outrank the chemotherapy dose-modification tool on "dose reduction". Quarters are three calendar months from the start date. It reads no clock, so "still reachable" gives the window and leaves today's date to the reader. |
+| 23. `med-pass-error-rate` | Built (group H) on 483.45(f) and Appendix PP F759 and F760. The comparison with 5% is exact; the printed rate is truncated to one decimal. |
+| 26. `rx-pricing-math` | Built (group Q). Exactly two of the four figures are taken; three or four are refused, because one could disagree. |
+| 27. `inventory-turns` | Built (group Q). The period figures and the item figures are each all-or-nothing; safety stock must be entered (0 if none). |

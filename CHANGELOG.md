@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Drug Package Barcode Reader (GS1 DataMatrix); NDC to GTIN and GTIN Check Digit; and Does This
+  Package Need Child-Resistant Packaging? (16 CFR 1700.14).
+- Long-term care: Medication Administration Error Rate (the 5% line); PRN Psychotropic Order
+  14-Day Limit; and GDR Attempts in the First Year on a Psychotropic.
+- Pharmacy business math: Markup, Margin and Cash Price; Inventory Turnover, Days on Hand and
+  Reorder Point.
 - Ten more federal pharmacy-law tools: Federal Pharmacy Record Retention Date; May This
   Controlled-Substance Prescription Be Transferred?; Schedule II Prescription: Paper, Electronic,
   Fax or Oral?; Opioid Treatment Program Admission and Interim Treatment Clocks; Telemedicine
@@ -442,6 +448,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- NDC converter: reads the 11-digit label forms with a six-digit labeler code (6-4-1, 6-3-2).
+- Controlled-substance refill check: a line that a transfer adds no refills or time. Days supply:
+  the federal three-day limit on narcotics dispensed to start treatment, as a note.
 - Methemoglobin Level: with a weight, it now shows the methylene blue dose from the PROVAYBLUE
   label, including the single dose in kidney impairment and no dose in G6PD deficiency.
 - Naloxone Dosing Calculator: an infusion rate from the bolus that produced reversal, in mg/hour

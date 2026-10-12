@@ -1,6 +1,6 @@
 # spec-v1637 — Federal pharmacy law as arithmetic: controlled substances, supply chain, product identifiers and packaging limits
 
-**Status:** In progress, October 12, 2026: 20 of 24 tools built (see Build status). 24 new tools, 1 of them build-gated (`dea-number-check`).
+**Status:** Built except the one gated tool, October 12, 2026: 23 of 24 tools and the backfills (see Build status). 24 new tools, 1 of them build-gated (`dea-number-check`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 The pharmacist-in-charge, the compliance officer and the receiving technician spend their day
@@ -917,5 +917,18 @@ in `views/group-v1637.js`.
 | 21. `dscsa-small-dispenser-check` | Built on FDA's letter of August 6, 2026, re-read October 12, 2026. After November 27, 2027 it stops calling a dispenser exempt and asks for FDA's current notice. **Not built:** the ledger row and page watch on FDA's exemptions page. |
 | 22. `unit-dose-repack-expiry` | Built on FDA's July 2020 guidance, re-read October 12, 2026. Each of the five circumstances is a required yes or no. A missing one returns "the policy does not apply" and names it. Twenty-five percent of the days is rounded down. The scope (commercial repackagers, solid oral forms, not pharmacies) is the first line of every result. |
 | 24. `hw-generator-category` | Built on Table 1 to 40 CFR 262.13, with each boundary a unit test. The three quantities are required (0 if none). The subpart P choice changes what the result says about the all-in count under 266.501(a). |
+| 17. `gs1-drug-barcode-parser` | Built on GS1 General Specifications release 26.0 and GS1's machine-readable identifier list, re-read October 12, 2026. It reads the human-readable form with parentheses and the raw form with the separator (ASCII 29, or `<GS>` typed out), with or without a symbology prefix. A variable-length element that is not last and has no separator is reported as a problem, not guessed. Day 00 is read as the last day of the month and flagged. The clock is used only to place a two-digit year in its century. 21 U.S.C. 360eee(14) was not re-read. |
+| 18. `ndc-gtin-convert` | Built. GS1 Tables 7-9 and 2-17 and FDA's 2003 example (NDC 1234567890, UPC 312345678906) are unit tests. An 11-digit billing NDC is refused. From March 7, 2033 the digits are labeled "the 10-digit form". A GTIN-13 is read as well as 12 and 14. |
+| 23. `pppa-special-packaging-check` | Built on 16 CFR 1700.14(a) and 15 U.S.C. 1473(b), re-read October 12, 2026. One row is tested at a time, each at its own operator; every "more than" and "or more" row has a unit test at the exact figure. Each (a)(10) exemption is its own row, and those that require "no other substance" ask. The aspirin, acetaminophen and mouthwash exemptions turn on properties the tool cannot compute and are listed. |
 
-Left: 1 (build-gated), 17 and 18 (GS1 barcode and NDC to GTIN), 23 (child-resistant packaging), and the backfills.
+Left: tool 1, `dea-number-check`, which waits on the owner decision in its Build gate.
+
+### Backfills
+
+| Backfill | State |
+|---|---|
+| `ndc-convert`: the 12-digit NDC; one shared normalizer | Built under [spec-v1641](spec-v1641.md) row 22 (`lib/ndc.js`). |
+| `ndc-convert`: six-digit labeler codes | Built October 12, 2026. 6-4-1 and 6-3-2 are read as native 11-digit forms (21 CFR 207.33(b)(2), re-read). The result says no such NDC has been issued and that, without hyphens, one could not be told from a 5-4-2 billing NDC. |
+| `c2-fill-deadlines` | Linked to `c2-rx-form-check`. |
+| `cs-refill-validity` | A line under the result that a transfer adds no refills or time (21 CFR 1306.25), and a link to `cs-rx-transfer-check`. |
+| `days-supply` | The three-day rule of 21 CFR 1306.07(b) as a line of copy above the result, re-read October 12, 2026. |

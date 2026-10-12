@@ -770,6 +770,14 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as rxPricingMathV1638 from '../../lib/rx-pricing-math-v1638.js';
+import * as inventoryTurnsV1638 from '../../lib/inventory-turns-v1638.js';
+import * as medPassErrorRateV1638 from '../../lib/med-pass-error-rate-v1638.js';
+import * as psychotropicPrnClockV1638 from '../../lib/psychotropic-prn-clock-v1638.js';
+import * as gdrAttemptCheckV1638 from '../../lib/gdr-attempt-check-v1638.js';
+import * as ndcGtinConvertV1637 from '../../lib/ndc-gtin-convert-v1637.js';
+import * as gs1DrugBarcodeParserV1637 from '../../lib/gs1-drug-barcode-parser-v1637.js';
+import * as pppaSpecialPackagingCheckV1637 from '../../lib/pppa-special-packaging-check-v1637.js';
 import * as dscsaDispenserClocksV1637 from '../../lib/dscsa-dispenser-clocks-v1637.js';
 import * as dscsaSuspectSampleSizeV1637 from '../../lib/dscsa-suspect-sample-size-v1637.js';
 import * as dscsaSmallDispenserCheckV1637 from '../../lib/dscsa-small-dispenser-check-v1637.js';
@@ -1829,6 +1837,14 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'rx-pricing-math-v1638.js': rxPricingMathV1638,
+  'inventory-turns-v1638.js': inventoryTurnsV1638,
+  'med-pass-error-rate-v1638.js': medPassErrorRateV1638,
+  'psychotropic-prn-clock-v1638.js': psychotropicPrnClockV1638,
+  'gdr-attempt-check-v1638.js': gdrAttemptCheckV1638,
+  'ndc-gtin-convert-v1637.js': ndcGtinConvertV1637,
+  'gs1-drug-barcode-parser-v1637.js': gs1DrugBarcodeParserV1637,
+  'pppa-special-packaging-check-v1637.js': pppaSpecialPackagingCheckV1637,
   'dscsa-dispenser-clocks-v1637.js': dscsaDispenserClocksV1637,
   'dscsa-suspect-sample-size-v1637.js': dscsaSuspectSampleSizeV1637,
   'dscsa-small-dispenser-check-v1637.js': dscsaSmallDispenserCheckV1637,

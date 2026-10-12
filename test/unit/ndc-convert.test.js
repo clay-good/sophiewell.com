@@ -113,6 +113,15 @@ test('a six-digit labeler code has no 10- or 11-digit form', () => {
   assert.match(r.note, /six-digit labeler code/);
 });
 
+test('6-4-1 and 6-3-2 are read as native 11-digit forms with a six-digit labeler', () => {
+  const a = ndcConvert('123456-7890-1', ON);
+  assert.deepEqual([a.source, a.ndc12, a.billing11], ['6-4-1', '123456-7890-01', null]);
+  assert.match(a.note, /207\.33\(b\)\(2\) allows \(6-4-1\)/);
+  const b = ndcConvert('123456-789-12', ON);
+  assert.deepEqual([b.source, b.ndc12], ['6-3-2', '123456-0789-12']);
+  assert.match(b.note, /no such NDC has been issued/);
+});
+
 test('the 12-digit form is labeled by the date on each side of March 7, 2033', () => {
   const before = ndcConvert('0002-1234-01', BEFORE);
   assert.equal(before.ndc12InEffect, false);

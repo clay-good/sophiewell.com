@@ -5,7 +5,7 @@
 sophiewell.com is an offline-first single-page application. Calculation remains
 entirely client-side. The browser receives `index.html`, `styles.css`, and
 `app.js` from the same origin, boots a vanilla JavaScript application, and renders the home view: one
-combobox over all 2,244 utilities, and nothing else. Each utility runs entirely
+combobox over all 2,252 utilities, and nothing else. Each utility runs entirely
 client side and operates either on user-supplied input or on bundled reference
 data served from the same origin.
 
@@ -190,7 +190,7 @@ retired while they were live.
 | E | Clinical Math & Conversions | 195 |
 | F | Medication & Infusion | 154 |
 | G | Clinical Scoring & Risk | 1454 |
-| H | Workflow & Documentation | 38 |
+| H | Workflow & Documentation | 41 |
 | I | EMS & Field Medicine | 27 |
 | J | Immunization & Infectious Disease | 53 |
 | K | Reference Ranges | 0 |
@@ -199,7 +199,7 @@ retired while they were live.
 | N | Pediatrics & Neonatal | 31 |
 | O | High-Alert & Safety | 0 |
 | P | Revenue Cycle & Utilization | 17 |
-| Q | Medication Access & Pharmacy | 145 |
+| Q | Medication Access & Pharmacy | 150 |
 
 Four labels survive with no tiles behind them. K, L and O were emptied by the
 spec-v29 wave 29-2 nurse-first prune — the static reference-range, code-locator

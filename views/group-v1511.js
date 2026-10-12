@@ -128,6 +128,8 @@ export const renderers = {
     numField(root, 'Drops: eyes treated', 'ds-eyes', 'e.g. 2', '2', '1');
     numField(root, 'Doses per day (all forms but insulin)', 'ds-dpd', 'e.g. 2', '48', 'any');
     numField(root, 'In-use discard limit in days, if the label gives one', 'ds-discard', 'e.g. 28', '3650', '1');
+    // spec-v1637 backfill: a federal supply limit this arithmetic does not apply (21 CFR 1306.07(b), re-read October 12, 2026).
+    note(root, 'A separate federal limit, not computed here: a practitioner who is not registered as a narcotic treatment program may dispense not more than a three-day supply of a narcotic at one time to start maintenance or detoxification treatment while referral is arranged, and that supply may not be renewed or extended (21 CFR 1306.07(b)).');
     const ids = pairs.map(([d]) => d);
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {

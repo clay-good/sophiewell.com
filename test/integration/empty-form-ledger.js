@@ -121,6 +121,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // field is an optional longer period (state law, contract); with it blank the federal minimum is
   // given and the result says no longer period was entered.
   "cs-record-retention",
+  // spec-v1638: the reading comes from the required start date and the required contraindication
+  // select. The only text field is the optional list of attempt dates; with it blank the result says
+  // no attempt is recorded in the first year, which is the finding.
+  "gdr-attempt-check",
   // spec-v1637: the last valid shipment date comes from the execution date and two required selects.
   // The only text field is the optional list of shipment dates to check against it.
   "dea-222-validity",

@@ -80,6 +80,8 @@ export const CLOCK_DEPENDENT = new Set([
   'overpayment-60day',
   'pa-turnaround',
   'pharmacy-spread-check',
+  // spec-v1638: a 14-day order clock; the last day comes from the start date and the line beside it counts down.
+  'psychotropic-prn-clock',
   'preg-dating',
   'preventive-owed',
   'substitution-check',

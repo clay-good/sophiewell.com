@@ -836,3 +836,19 @@ experience**.
 > v1637, Unit-Dose Repackaging Expiration Date (FDA Policy, Commercial Repackagers) — [spec-v1637](spec-v1637.md), which adds `unit-dose-repack-expiry` — is 2243.)
 
 > v1637, Hazardous Waste Generator Category for a Pharmacy (40 CFR 262.13) — [spec-v1637](spec-v1637.md), which adds `hw-generator-category` — is 2244.)
+
+> v1637, NDC to GTIN and GTIN Check Digit — [spec-v1637](spec-v1637.md), which adds `ndc-gtin-convert` — is 2245.)
+
+> v1637, Drug Package Barcode Reader (GS1 DataMatrix) — [spec-v1637](spec-v1637.md), which adds `gs1-drug-barcode-parser` — is 2246.)
+
+> v1637, Does This Package Need Child-Resistant Packaging? (16 CFR 1700.14) — [spec-v1637](spec-v1637.md), which adds `pppa-special-packaging-check` — is 2247.)
+
+> v1638, Markup, Margin and Cash Price (Pharmacy Pricing Math) — [spec-v1638](spec-v1638.md), which adds `rx-pricing-math` — is 2248.)
+
+> v1638, Inventory Turnover, Days on Hand and Reorder Point — [spec-v1638](spec-v1638.md), which adds `inventory-turns` — is 2249.)
+
+> v1638, Medication Administration Error Rate (Nursing Facility, 5% Line) — [spec-v1638](spec-v1638.md), which adds `med-pass-error-rate` — is 2250.)
+
+> v1638, PRN Psychotropic Order 14-Day Limit (Nursing Facility) — [spec-v1638](spec-v1638.md), which adds `psychotropic-prn-clock` — is 2251.)
+
+> v1638, GDR Attempts in the First Year on a Psychotropic (Nursing Facility) — [spec-v1638](spec-v1638.md), which adds `gdr-attempt-check` — is 2252.)

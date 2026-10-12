@@ -1040,6 +1040,14 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import rxPricingMathV1638 from './adapters/rx-pricing-math-v1638.js';
+import inventoryTurnsV1638 from './adapters/inventory-turns-v1638.js';
+import medPassErrorRateV1638 from './adapters/med-pass-error-rate-v1638.js';
+import psychotropicPrnClockV1638 from './adapters/psychotropic-prn-clock-v1638.js';
+import gdrAttemptCheckV1638 from './adapters/gdr-attempt-check-v1638.js';
+import ndcGtinConvertV1637 from './adapters/ndc-gtin-convert-v1637.js';
+import gs1DrugBarcodeParserV1637 from './adapters/gs1-drug-barcode-parser-v1637.js';
+import pppaSpecialPackagingCheckV1637 from './adapters/pppa-special-packaging-check-v1637.js';
 import dscsaDispenserClocksV1637 from './adapters/dscsa-dispenser-clocks-v1637.js';
 import dscsaSuspectSampleSizeV1637 from './adapters/dscsa-suspect-sample-size-v1637.js';
 import dscsaSmallDispenserCheckV1637 from './adapters/dscsa-small-dispenser-check-v1637.js';
@@ -2315,6 +2323,14 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['rx-pricing-math-v1638', rxPricingMathV1638],
+  ['inventory-turns-v1638', inventoryTurnsV1638],
+  ['med-pass-error-rate-v1638', medPassErrorRateV1638],
+  ['psychotropic-prn-clock-v1638', psychotropicPrnClockV1638],
+  ['gdr-attempt-check-v1638', gdrAttemptCheckV1638],
+  ['ndc-gtin-convert-v1637', ndcGtinConvertV1637],
+  ['gs1-drug-barcode-parser-v1637', gs1DrugBarcodeParserV1637],
+  ['pppa-special-packaging-check-v1637', pppaSpecialPackagingCheckV1637],
   ['dscsa-dispenser-clocks-v1637', dscsaDispenserClocksV1637],
   ['dscsa-suspect-sample-size-v1637', dscsaSuspectSampleSizeV1637],
   ['dscsa-small-dispenser-check-v1637', dscsaSmallDispenserCheckV1637],

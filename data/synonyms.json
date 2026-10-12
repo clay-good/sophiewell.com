@@ -13173,6 +13173,27 @@
       ],
       "tile": "cmea-sales-limit",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "gtin"
+      ],
+      "tile": "ndc-gtin-convert",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "datamatrix"
+      ],
+      "tile": "gs1-drug-barcode-parser",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "child-resistant"
+      ],
+      "tile": "pppa-special-packaging-check",
+      "audience": "clinicians"
     }
   ]
 }
