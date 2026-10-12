@@ -770,6 +770,24 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as pharmacyEffectiveRateV1638 from '../../lib/pharmacy-effective-rate-v1638.js';
+import * as mtmEligibilityCheckV1638 from '../../lib/mtm-eligibility-check-v1638.js';
+import * as ccmTimeUnitsV1638 from '../../lib/ccm-time-units-v1638.js';
+import * as vaccineIntervalValidityV1638 from '../../lib/vaccine-interval-validity-v1638.js';
+import * as partdDmpCriteriaCheckV1638 from '../../lib/partd-dmp-criteria-check-v1638.js';
+import * as partdOpioidSafetyEditV1638 from '../../lib/partd-opioid-safety-edit-v1638.js';
+import * as partdDmpNoticeClockV1638 from '../../lib/partd-dmp-notice-clock-v1638.js';
+import * as ltcMrrTrackerV1638 from '../../lib/ltc-mrr-tracker-v1638.js';
+import * as partdDailyCostShareV1638 from '../../lib/partd-daily-cost-share-v1638.js';
+import * as partbSupplyDispensingFeeV1638 from '../../lib/partb-supply-dispensing-fee-v1638.js';
+import * as dmeposRefillWindowV1638 from '../../lib/dmepos-refill-window-v1638.js';
+import * as ltcShortCycleCheckV1638 from '../../lib/ltc-short-cycle-check-v1638.js';
+import * as partdPromptPayClockV1638 from '../../lib/partd-prompt-pay-clock-v1638.js';
+import * as partdInsulinCostCapV1638 from '../../lib/partd-insulin-cost-cap-v1638.js';
+import * as costOfDispensingV1638 from '../../lib/cost-of-dispensing-v1638.js';
+import * as medicaidFulCheckV1638 from '../../lib/medicaid-ful-check-v1638.js';
+import * as medicaidDrugPaymentCheckV1638 from '../../lib/medicaid-drug-payment-check-v1638.js';
+import * as partdTransitionFillV1638 from '../../lib/partd-transition-fill-v1638.js';
 import * as rxPricingMathV1638 from '../../lib/rx-pricing-math-v1638.js';
 import * as inventoryTurnsV1638 from '../../lib/inventory-turns-v1638.js';
 import * as medPassErrorRateV1638 from '../../lib/med-pass-error-rate-v1638.js';
@@ -1837,6 +1855,24 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'pharmacy-effective-rate-v1638.js': pharmacyEffectiveRateV1638,
+  'mtm-eligibility-check-v1638.js': mtmEligibilityCheckV1638,
+  'ccm-time-units-v1638.js': ccmTimeUnitsV1638,
+  'vaccine-interval-validity-v1638.js': vaccineIntervalValidityV1638,
+  'partd-dmp-criteria-check-v1638.js': partdDmpCriteriaCheckV1638,
+  'partd-opioid-safety-edit-v1638.js': partdOpioidSafetyEditV1638,
+  'partd-dmp-notice-clock-v1638.js': partdDmpNoticeClockV1638,
+  'ltc-mrr-tracker-v1638.js': ltcMrrTrackerV1638,
+  'partd-daily-cost-share-v1638.js': partdDailyCostShareV1638,
+  'partb-supply-dispensing-fee-v1638.js': partbSupplyDispensingFeeV1638,
+  'dmepos-refill-window-v1638.js': dmeposRefillWindowV1638,
+  'ltc-short-cycle-check-v1638.js': ltcShortCycleCheckV1638,
+  'partd-prompt-pay-clock-v1638.js': partdPromptPayClockV1638,
+  'partd-insulin-cost-cap-v1638.js': partdInsulinCostCapV1638,
+  'cost-of-dispensing-v1638.js': costOfDispensingV1638,
+  'medicaid-ful-check-v1638.js': medicaidFulCheckV1638,
+  'medicaid-drug-payment-check-v1638.js': medicaidDrugPaymentCheckV1638,
+  'partd-transition-fill-v1638.js': partdTransitionFillV1638,
   'rx-pricing-math-v1638.js': rxPricingMathV1638,
   'inventory-turns-v1638.js': inventoryTurnsV1638,
   'med-pass-error-rate-v1638.js': medPassErrorRateV1638,

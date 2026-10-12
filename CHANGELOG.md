@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Eight more Medicare and long-term care tools: Part D MTM Targeting Criteria Check; Part D Opioid
+  Safety Edits: Which One Fires?; Part D Drug Management Program Criteria Check, and its Notice and
+  Limitation Dates; Chronic Care Management Codes from Minutes; Monthly Medication Regimen Review
+  Tracker; Effective Rate and Net Margin Reconciliation; and Is This Vaccine Dose Valid?
+- Ten Medicare and Medicaid pharmacy tools: Part D Transition Supply; Long-Term Care 14-Day
+  Dispensing Check; Part D Cost Sharing for a Short Fill; Part D Insulin Cost-Sharing Cap; Part D
+  Prompt Payment Due Date and Interest; Medicare Part B Supplying and Dispensing Fees; DMEPOS Refill
+  Contact and Delivery Window; Medicaid Federal Upper Limit by Hand; Medicaid Fee-for-Service Drug
+  Payment (Lowest-Of); and Cost of Dispensing per Prescription and Break-Even Volume.
 - Drug Package Barcode Reader (GS1 DataMatrix); NDC to GTIN and GTIN Check Digit; and Does This
   Package Need Child-Resistant Packaging? (16 CFR 1700.14).
 - Long-term care: Medication Administration Error Rate (the 5% line); PRN Psychotropic Order

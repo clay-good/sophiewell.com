@@ -852,3 +852,39 @@ experience**.
 > v1638, PRN Psychotropic Order 14-Day Limit (Nursing Facility) — [spec-v1638](spec-v1638.md), which adds `psychotropic-prn-clock` — is 2251.)
 
 > v1638, GDR Attempts in the First Year on a Psychotropic (Nursing Facility) — [spec-v1638](spec-v1638.md), which adds `gdr-attempt-check` — is 2252.)
+
+> v1638, Part D Cost Sharing for a Short Fill (Daily Cost-Sharing Rate) — [spec-v1638](spec-v1638.md), which adds `partd-daily-cost-share` — is 2253.)
+
+> v1638, Medicare Part B Supplying and Dispensing Fees (42 CFR 414.1001) — [spec-v1638](spec-v1638.md), which adds `partb-supply-dispensing-fee` — is 2254.)
+
+> v1638, DMEPOS Refill Contact and Delivery Window (Medicare) — [spec-v1638](spec-v1638.md), which adds `dmepos-refill-window` — is 2255.)
+
+> v1638, Long-Term Care 14-Day Dispensing Check (Part D Short Cycle) — [spec-v1638](spec-v1638.md), which adds `ltc-short-cycle-check` — is 2256.)
+
+> v1638, Part D Prompt Payment Due Date and Interest (Pharmacy Claims) — [spec-v1638](spec-v1638.md), which adds `partd-prompt-pay-clock` — is 2257.)
+
+> v1638, Part D Insulin Cost-Sharing Cap (Lesser of $35 or 25%) — [spec-v1638](spec-v1638.md), which adds `partd-insulin-cost-cap` — is 2258.)
+
+> v1638, Cost of Dispensing per Prescription and Break-Even Volume — [spec-v1638](spec-v1638.md), which adds `cost-of-dispensing` — is 2259.)
+
+> v1638, Medicaid Federal Upper Limit by Hand (175% of Weighted AMP) — [spec-v1638](spec-v1638.md), which adds `medicaid-ful-check` — is 2260.)
+
+> v1638, Medicaid Fee-for-Service Drug Payment (Lowest-Of) — [spec-v1638](spec-v1638.md), which adds `medicaid-drug-payment-check` — is 2261.)
+
+> v1638, Part D Transition Supply: Is One Owed, and How Much? — [spec-v1638](spec-v1638.md), which adds `partd-transition-fill` — is 2262.)
+
+> v1638, Effective Rate and Net Margin Reconciliation (AWP Discount Guarantee) — [spec-v1638](spec-v1638.md), which adds `pharmacy-effective-rate` — is 2263.)
+
+> v1638, Part D MTM Targeting Criteria Check (Diseases, Drugs and Cost Threshold) — [spec-v1638](spec-v1638.md), which adds `mtm-eligibility-check` — is 2264.)
+
+> v1638, Chronic Care Management Codes from Minutes (99490, 99491, 99487) — [spec-v1638](spec-v1638.md), which adds `ccm-time-units` — is 2265.)
+
+> v1638, Is This Vaccine Dose Valid? Minimum Interval and Grace Period (CDC) — [spec-v1638](spec-v1638.md), which adds `vaccine-interval-validity` — is 2266.)
+
+> v1638, Part D Drug Management Program Criteria Check (OMS) — [spec-v1638](spec-v1638.md), which adds `partd-dmp-criteria-check` — is 2267.)
+
+> v1638, Part D Opioid Safety Edits: Which One Fires? (90 MME, 7-Day, 200 MME) — [spec-v1638](spec-v1638.md), which adds `partd-opioid-safety-edit` — is 2268.)
+
+> v1638, Part D Drug Management Program Notice and Limitation Dates — [spec-v1638](spec-v1638.md), which adds `partd-dmp-notice-clock` — is 2269.)
+
+> v1638, Monthly Medication Regimen Review Tracker (Nursing Facility) — [spec-v1638](spec-v1638.md), which adds `ltc-mrr-tracker` — is 2270.)

@@ -1,6 +1,6 @@
 # spec-v1638 — The pharmacy as a business and as a regulated Medicare/Medicaid provider
 
-**Status:** In progress, October 12, 2026: 5 of 28 tools built (see Build status). 28 new tools, none build-gated.
+**Status:** In progress, October 12, 2026: 23 of 28 tools built (see Build status). 28 new tools, none build-gated.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 An independent pharmacy owner, a long-term-care consultant pharmacist, a managed-care pharmacist
@@ -1052,8 +1052,37 @@ Built tools are in `views/group-v1638.js`. Sources were re-read on October 12, 2
 
 | Tool | State |
 |---|---|
+| 1. `mtm-eligibility-check` | Built (group Q) on 42 CFR 423.153(d)(2) and CMS's contract year 2025, 2026 and 2027 MTM memos, each re-read for its threshold ($1,623, $1,276, $1,340). A year with no published figure asks the reader for it and borrows no other year's. **Not built:** a page watch on the CMS MTM page. |
+| 3. `partd-transition-fill` | Built (group Q) on 42 CFR 423.120(b)(3). The effective date is day 1 of the 90. **Not built:** the manual's long-term care emergency supply and its January 1 count for a continuing member; chapter 6 of the manual (2016) predates the current text and was not re-read, and the result says so. |
+| 4. `ltc-short-cycle-check` | Built (group Q) on 423.154(a) to (c). |
+| 5. `partd-daily-cost-share` | Built (group Q) on 423.153(b)(4) and 423.100. The rate is rounded to the cent before multiplying; the result shows what prorating without that rounding would give when the two differ. |
+| 6. `partd-insulin-cost-cap` | Built (group Q) on 423.120(h) and 423.100. The prices entered are the price of a one-month supply, which is how the rule states the amounts. A plan year before 2026 is refused. |
+| 7. `partd-opioid-safety-edit` | Built (group Q) on CMS's contract year 2027 memo (July 2, 2026) and the July 5, 2024 FAQ. The care coordination edit is read as firing at 90 MME or more; the pharmacist sheet the spec quoted for "reaches or exceeds" was not re-read. The plan's lookback and counts are reader input. |
+| 8. `partd-dmp-criteria-check` | Built (group Q) on CMS's Rev. 7 guidance (December 16, 2025), sections 4.1 and 4.2, and the exempted beneficiary definition in 423.100. Criterion 1 is "> 90": exactly 90 does not meet it. |
+| 9. `partd-dmp-notice-clock` | Built (group Q) on 423.153(f)(4), (5), (8), (14), (15). A non-exempt determination before day 27 returns "no date meets both limits" and prints none. Rev. 7 section 8.2.1 (the day-59 and day-60 examples) was not re-read; the arithmetic gives the same dates. |
+| 10. `partd-prompt-pay-clock` | Built (group Q) on 423.520(a) to (e). The date entered for a paper claim is taken as the postmark. After a timely deficiency notice the tool counts no lateness from the original due date, because the rule does not say when such a claim must be paid. 423.505(b)(20) was not re-read. |
+| 14. `partb-supply-dispensing-fee` | Built (group Q) on 414.1001. |
+| 15. `dmepos-refill-window` | Built (group Q) on 410.38(d)(4). A part day of supply is dropped. |
+| 17. `ccm-time-units` | Built (group B) on CMS MLN909188 (June 2025), Table 2 and the time rules beside it. CMS's booklet states no cap on add-on units, and the result says the CPT code set or a payer may. 42 CFR 410.26(b)(5) was not re-read. |
+| 18. `medicaid-ful-check` | Built (group Q) **by hand only**, on 447.514: 175% of the weighted average AMP, raised to the survey cost when it falls below it. **Not built:** the mode that reads CMS's published limits file (a route A dataset builder). |
+| 19. `medicaid-drug-payment-check` | Built (group Q) on 447.512(b) and 447.514(b). The amount paid is compared and never judged: the state plan governs. |
+| 20. `ltc-mrr-tracker` | Built (group H) on 483.45(c). Rows are pasted (resident, admitted, last review, report sent, physician response) with a required as-of date; it reads no clock. Only the last review date is taken, so a month missed before it is not seen, and the result says so. The physician-response time frame is the facility's, as entered. Appendix PP F756 was not re-read. |
 | 21. `psychotropic-prn-clock` | Built (group H) on 42 CFR 483.45(e)(3) to (5) (eCFR as current October 8, 2026) and Appendix PP's "PRN Medication Use" table. **Edition:** CMS's linked copy of Appendix PP is the Rev. 225 edition (August 2024), not the Rev. 232 edition the spec read; the passages used match the spec's quotations. The start date is day 1. An antipsychotic is never extended, whatever is entered. |
 | 22. `gdr-attempt-check` | Built (group H), named "GDR Attempts in the First Year on a Psychotropic" so that it does not outrank the chemotherapy dose-modification tool on "dose reduction". Quarters are three calendar months from the start date. It reads no clock, so "still reachable" gives the window and leaves today's date to the reader. |
 | 23. `med-pass-error-rate` | Built (group H) on 483.45(f) and Appendix PP F759 and F760. The comparison with 5% is exact; the printed rate is truncated to one decimal. |
+| 24. `pharmacy-effective-rate` | Built (group Q). Brand and generic are run separately. **Not built:** the claims CSV mode and the per-row check of patient pay against the amount allowed. |
+| 25. `cost-of-dispensing` | Built (group Q). The categories follow 42 CFR 447.502. A category left blank is listed as not in the figure. The break-even figures are all-or-nothing. **Not built:** a fee gap per payer; one average fee is taken. |
 | 26. `rx-pricing-math` | Built (group Q). Exactly two of the four figures are taken; three or four are refused, because one could disagree. |
 | 27. `inventory-turns` | Built (group Q). The period figures and the item figures are each all-or-nothing; safety stock must be entered (0 if none). |
+| 28. `vaccine-interval-validity` | Built (group J). **Source access:** CDC's web page for "Timing and Spacing of Immunobiologics" (dated July 24, 2024) refused the request at build, so the rules were re-read in CDC's PDF edition of the same guideline; the two could differ, and the result names the PDF. No schedule ships: the minimum age and interval are reader input. **Not built:** the page watch and the fail-closed date check, which need the page. |
+
+Left: 2 (`mtm-service-clock`), 11 to 13 (the three claims-based measure tools), 16 (`glucose-supply-quantity-check`).
+
+### Backfills
+
+| Backfill | State |
+|---|---|
+| `med-sync-plan` | Linked to `partd-daily-cost-share`, and the result's sentence names it. |
+| `partd-year-cost` | The insulin sentence was corrected under [spec-v1641](spec-v1641.md) row 17; now linked to `partd-insulin-cost-cap`. |
+| `pdc-star` | Built under spec-v1641 row 21. The links to the two measure tools wait on tools 11 and 12. |
+

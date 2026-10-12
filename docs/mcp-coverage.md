@@ -9460,6 +9460,60 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/gdr-attempt-check-v1638.js (spec-v1638: Gradual dose reduction attempts in the first year (nursing facility) — administrative disclaimer)
 - `gdr-attempt-check`
 
+### lib/partd-daily-cost-share-v1638.js (spec-v1638: Part D cost sharing for a short fill (daily cost-sharing rate) — administrative disclaimer)
+- `partd-daily-cost-share`
+
+### lib/partb-supply-dispensing-fee-v1638.js (spec-v1638: Medicare Part B supplying and dispensing fees (42 CFR 414.1001) — administrative disclaimer)
+- `partb-supply-dispensing-fee`
+
+### lib/dmepos-refill-window-v1638.js (spec-v1638: DMEPOS refill contact and delivery window (Medicare) — administrative disclaimer)
+- `dmepos-refill-window`
+
+### lib/ltc-short-cycle-check-v1638.js (spec-v1638: Long-term care 14-day dispensing check (Part D short cycle) — administrative disclaimer)
+- `ltc-short-cycle-check`
+
+### lib/partd-prompt-pay-clock-v1638.js (spec-v1638: Part D prompt payment due date and interest (pharmacy claims) — administrative disclaimer)
+- `partd-prompt-pay-clock`
+
+### lib/partd-insulin-cost-cap-v1638.js (spec-v1638: Part D insulin cost-sharing cap (lesser of $35 or 25%) — administrative disclaimer)
+- `partd-insulin-cost-cap`
+
+### lib/cost-of-dispensing-v1638.js (spec-v1638: Cost of dispensing per prescription and break-even volume — administrative disclaimer)
+- `cost-of-dispensing`
+
+### lib/medicaid-ful-check-v1638.js (spec-v1638: Medicaid federal upper limit by hand (175% of weighted AMP) — administrative disclaimer)
+- `medicaid-ful-check`
+
+### lib/medicaid-drug-payment-check-v1638.js (spec-v1638: Medicaid fee-for-service drug payment (lowest-of) — administrative disclaimer)
+- `medicaid-drug-payment-check`
+
+### lib/partd-transition-fill-v1638.js (spec-v1638: Part D transition supply: is one owed, and how much? — administrative disclaimer)
+- `partd-transition-fill`
+
+### lib/pharmacy-effective-rate-v1638.js (spec-v1638: Effective rate and net margin reconciliation (AWP discount guarantee) — administrative disclaimer)
+- `pharmacy-effective-rate`
+
+### lib/mtm-eligibility-check-v1638.js (spec-v1638: Part D MTM targeting criteria check (diseases, drugs and cost threshold) — administrative disclaimer)
+- `mtm-eligibility-check`
+
+### lib/ccm-time-units-v1638.js (spec-v1638: Chronic care management codes from minutes (99490, 99491, 99487) — administrative disclaimer)
+- `ccm-time-units`
+
+### lib/vaccine-interval-validity-v1638.js (spec-v1638: Is this vaccine dose valid? Minimum interval and grace period (CDC) — clinical disclaimer)
+- `vaccine-interval-validity`
+
+### lib/partd-dmp-criteria-check-v1638.js (spec-v1638: Part D drug management program criteria check (OMS) — administrative disclaimer)
+- `partd-dmp-criteria-check`
+
+### lib/partd-opioid-safety-edit-v1638.js (spec-v1638: Part D opioid safety edits: which one fires? (90 MME, 7-day, 200 MME) — administrative disclaimer)
+- `partd-opioid-safety-edit`
+
+### lib/partd-dmp-notice-clock-v1638.js (spec-v1638: Part D drug management program notice and limitation dates — administrative disclaimer)
+- `partd-dmp-notice-clock`
+
+### lib/ltc-mrr-tracker-v1638.js (spec-v1638: Monthly medication regimen review tracker (nursing facility) — administrative disclaimer)
+- `ltc-mrr-tracker`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

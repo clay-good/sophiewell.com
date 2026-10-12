@@ -1321,6 +1321,24 @@
   <url><loc>https://sophiewell.com/tools/med-pass-error-rate/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/psychotropic-prn-clock/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/gdr-attempt-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/partd-daily-cost-share/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/partb-supply-dispensing-fee/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/dmepos-refill-window/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/ltc-short-cycle-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/partd-prompt-pay-clock/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/partd-insulin-cost-cap/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/cost-of-dispensing/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/medicaid-ful-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/medicaid-drug-payment-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/partd-transition-fill/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/pharmacy-effective-rate/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/mtm-eligibility-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/ccm-time-units/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/vaccine-interval-validity/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/partd-dmp-criteria-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/partd-opioid-safety-edit/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/partd-dmp-notice-clock/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/ltc-mrr-tracker/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/chlorpromazine-equivalents/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/mean-airway-pressure/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/cerebroplacental-ratio/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>

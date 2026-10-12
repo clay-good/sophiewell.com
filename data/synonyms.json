@@ -13194,6 +13194,13 @@
       ],
       "tile": "pppa-special-packaging-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mtm"
+      ],
+      "tile": "mtm-eligibility-check",
+      "audience": "clinicians"
     }
   ]
 }

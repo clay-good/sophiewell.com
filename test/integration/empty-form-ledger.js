@@ -125,6 +125,13 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // select. The only text field is the optional list of attempt dates; with it blank the result says
   // no attempt is recorded in the first year, which is the finding.
   "gdr-attempt-check",
+  // spec-v1638: whether the drug is in the 14-day rule comes from five required selects. The number
+  // fields are an optional days supply and total days to check against it; with them blank the
+  // result says no dispensing was checked.
+  "ltc-short-cycle-check",
+  // spec-v1638: the notice window comes from the required initial notice date and the optional
+  // determination date. The only text field is the optional list of prescriber outreach dates.
+  "partd-dmp-notice-clock",
   // spec-v1637: the last valid shipment date comes from the execution date and two required selects.
   // The only text field is the optional list of shipment dates to check against it.
   "dea-222-validity",
