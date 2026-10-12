@@ -13077,6 +13077,24 @@
       ],
       "tile": "thrombolytic-dose",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pralidoxime",
+        "protopam",
+        "duodote"
+      ],
+      "tile": "pralidoxime-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "etomidate",
+        "succinylcholine",
+        "rocuronium"
+      ],
+      "tile": "rsi-dose-sheet",
+      "audience": "clinicians"
     }
   ]
 }

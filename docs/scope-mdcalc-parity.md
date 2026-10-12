@@ -772,3 +772,7 @@ experience**.
 > v1636, CroFab, Anavip and Anascorp: Vials, Volumes and the Maintenance Clock — [spec-v1636](spec-v1636.md), which adds `us-antivenom-dose` — is 2211.)
 
 > v1636, Alteplase and Tenecteplase Dose by Weight and Indication (Labels) — [spec-v1636](spec-v1636.md), which adds `thrombolytic-dose` — is 2212.)
+
+> v1636, Pralidoxime and DuoDote by Weight (Labels) — [spec-v1636](spec-v1636.md), which adds `pralidoxime-dose` — is 2213.)
+
+> v1636, Intubation Drug Doses From the Labels — [spec-v1636](spec-v1636.md), which adds `rsi-dose-sheet` — is 2214.)

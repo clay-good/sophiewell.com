@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['pralidoxime dose organophosphate poisoning', ['pralidoxime-dose']],
+  ['intubation drug doses etomidate rocuronium by weight', ['rsi-dose-sheet']],
   ['crofab vials and maintenance doses', ['us-antivenom-dose']],
   ['alteplase dose for stroke by weight', ['thrombolytic-dose']],
   ['flumazenil dose for benzodiazepine reversal', ['flumazenil-ladder']],

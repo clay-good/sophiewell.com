@@ -9340,6 +9340,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/thrombolytic-dose-v1636.js (spec-v1636: Alteplase and tenecteplase dose by weight and indication (labels) — clinical disclaimer)
 - `thrombolytic-dose`
 
+### lib/pralidoxime-dose-v1636.js (spec-v1636: Pralidoxime and DuoDote by weight (labels) — clinical disclaimer)
+- `pralidoxime-dose`
+
+### lib/rsi-dose-sheet-v1636.js (spec-v1636: Intubation drug doses from the labels — clinical disclaimer)
+- `rsi-dose-sheet`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

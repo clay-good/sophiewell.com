@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Pralidoxime and DuoDote by Weight (Labels): the intravenous ranges, the intramuscular series by
+  severity, and the autoinjector count.
+- Intubation Drug Doses From the Labels: etomidate, ketamine, succinylcholine and rocuronium at one
+  weight, in mg and mL, saying where a label gives no dose for the age.
 - CroFab, Anavip and Anascorp: Vials, Volumes and the Maintenance Clock: the saline to
   reconstitute a dose, the running vial count, and the times that follow initial control.
 - Alteplase and Tenecteplase Dose by Weight and Indication (Labels): bolus and infusion in mg and

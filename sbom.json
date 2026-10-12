@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:07b96820-cd2a-5329-8de2-1e38be9b6c1d",
+  "serialNumber": "urn:uuid:c2a89dbe-556a-5aeb-8846-606ef3f448f6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T05:38:02.304Z",
+    "timestamp": "2026-10-12T06:17:23.441Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2212 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2214 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "998fe474194f3a00112d72a7931154dfd3a5e8934f0c92538728456ad7cd725f"
+          "content": "a3abb225777fda8de403dc22c41ae331f4d2bc8a11f2b771e26c8c26d7e42732"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "143722"
+          "value": "143833"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bea275e7a75e03ce5e591be193efc0bdc803bdc658e83187ae3058a74068a7d6"
+          "content": "496d6daa8cf5db6d0f7da20d20859e1e95749521e99bd8501b7afd525752c21a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "617143"
+          "value": "617436"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9a78c33f0c878fd0ed42772997f52887da2e91348d1ebbab52033b44375d5212"
+          "content": "e51075da13a79a6c734a03acbccc4f849d8e2fd2523bb78613abee550826e285"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "277913"
+          "value": "278165"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cffdb1c87db6e05a6d08a91da167080f95b03c0a7d78c231141fe4fd3e4abafe"
+          "content": "eb43c4e7649e240de0d2e6878bbdb33edc819f06c92d5a56bf10ba22e2770a05"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "133044"
+          "value": "133165"
         }
       ]
     },
@@ -13712,7 +13712,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a7054ecd09042b027f30415025f55393f58a89d59abd814c10aec4498a2a603"
+          "content": "702080ed3e92a3be397800ab5b04a16506e835d6e5cc21818fbb5021f45dff18"
         }
       ],
       "properties": [
@@ -13722,7 +13722,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "50496"
+          "value": "51774"
         }
       ]
     },
@@ -16106,7 +16106,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b88d25b2e3e498d783ce6049493b9b26be527a387d8fac220a76c9bd4abbd187"
+          "content": "21d47bd43bd3421a78fd3edad7e15a9403f2ee24774298a30fdc820cd4bd98af"
         }
       ],
       "properties": [
@@ -16116,7 +16116,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2921682"
+          "value": "2924379"
         }
       ]
     },
@@ -21602,6 +21602,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/pralidoxime-dose-v1636.js",
+      "type": "file",
+      "name": "lib/pralidoxime-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7ec7bd70f8f9be1489852c01a5212bd2f297c6844ba966578a85e6e4e0e48268"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8814"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/preg-dating.js",
       "type": "file",
       "name": "lib/preg-dating.js",
@@ -23887,6 +23908,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3656"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/rsi-dose-sheet-v1636.js",
+      "type": "file",
+      "name": "lib/rsi-dose-sheet-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "863999daf6da060298ab2428cd2ecb79bd3fd55139438ff2d5b3f44440854c9a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9489"
         }
       ]
     },
@@ -49049,6 +49091,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pralidoxime-dose-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/pralidoxime-dose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d17ac13b45fbeb541dc28299210d4cfef9b2977bb09d7e0603e6ced45e8ad3d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1330"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/preg-dating.js",
       "type": "file",
       "name": "mcp/adapters/preg-dating.js",
@@ -50893,6 +50956,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1429"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rsi-dose-sheet-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/rsi-dose-sheet-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "63b199747cc4a8437bad67874e2bdaad2388c81cf4a2b606a09f172fd49ee12b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1267"
         }
       ]
     },
@@ -55901,7 +55985,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f13043c3070808766c418f163daf2698c7a30ca6fe5d730739ed253a8b331749"
+          "content": "13858065d11d3495ab882900f4dc1f6f4dec7b4c6230aee51bc3c5c0afde7c91"
         }
       ],
       "properties": [
@@ -55911,7 +55995,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "148949"
+          "value": "149189"
         }
       ]
     },
@@ -60542,7 +60626,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b1c9213fff1d98be48f4d6993930bf72cf9e1d70ad02e4c93751d15725c97c6a"
+          "content": "e188879892ec92b0476fc355cc4580923646d29fadea44289f9fd6cdb55d69a4"
         }
       ],
       "properties": [
@@ -60552,7 +60636,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10658"
+          "value": "12576"
         }
       ]
     },
@@ -92340,6 +92424,7 @@
         "urn:sophiewell:file:source:lib/ppi-omeprazole-equivalent-v1633.js",
         "urn:sophiewell:file:source:lib/ppm-eoai-v548.js",
         "urn:sophiewell:file:source:lib/prague-barrett-v365.js",
+        "urn:sophiewell:file:source:lib/pralidoxime-dose-v1636.js",
         "urn:sophiewell:file:source:lib/preg-dating.js",
         "urn:sophiewell:file:source:lib/premixed-pn-rate-check-v1630.js",
         "urn:sophiewell:file:source:lib/prenatal-infection-screening-schedule-v1394.js",
@@ -92449,6 +92534,7 @@
         "urn:sophiewell:file:source:lib/rop-stage-v446.js",
         "urn:sophiewell:file:source:lib/rope-score-v850.js",
         "urn:sophiewell:file:source:lib/ross-hf-peds-v368.js",
+        "urn:sophiewell:file:source:lib/rsi-dose-sheet-v1636.js",
         "urn:sophiewell:file:source:lib/rta-type-v798.js",
         "urn:sophiewell:file:source:lib/rucam-v585.js",
         "urn:sophiewell:file:source:lib/rudas-v792.js",
@@ -94593,6 +94679,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ppi-omeprazole-equivalent-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ppm-eoai-v548.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prague-barrett-v365.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pralidoxime-dose-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/preg-dating.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/premixed-pn-rate-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prenatal-infection-screening-schedule-v1394.js",
@@ -94681,6 +94768,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/rop-stage-v446.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rope-score-v850.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ross-hf-peds-v368.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/rsi-dose-sheet-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rta-type-v798.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rucam-v585.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rudas-v792.js",
@@ -95023,7 +95111,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "07b96820cd2a3329"
+      "value": "c2a89dbe556aaaeb"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -95035,7 +95123,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3585"
+      "value": "3589"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

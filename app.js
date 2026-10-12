@@ -2786,6 +2786,8 @@ const UTILITIES = [
   { id: 'deferoxamine-acute-iron', name: 'Deferoxamine for Acute Iron Poisoning: Rate and 24-Hour Total (Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'us-antivenom-dose', name: 'CroFab, Anavip and Anascorp: Vials, Volumes and the Maintenance Clock', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'thrombolytic-dose', name: 'Alteplase and Tenecteplase Dose by Weight and Indication (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pralidoxime-dose', name: 'Pralidoxime and DuoDote by Weight (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rsi-dose-sheet', name: 'Intubation Drug Doses From the Labels', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

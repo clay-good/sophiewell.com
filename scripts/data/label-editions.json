@@ -184,6 +184,21 @@
     }
   },
   {
+    "label": "AMIDATE (etomidate)",
+    "labeler": "HOSPIRA, INC.",
+    "setId": "b7ed5bf8-ba75-44dc-8f81-96b4ad5766be",
+    "tools": [
+      "rsi-dose-sheet"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2026-05-25",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "d4ce1027cb866f63c95a8c68b1c9ddd3dabc7c86bc5e7de61d131d8b50fbaca0"
+    }
+  },
+  {
     "label": "Amikacin sulfate injection, Sagent",
     "labeler": "SAGENT PHARMACEUTICALS",
     "setId": "f260ff2a-76a0-4672-9516-91c344b67890",
@@ -288,6 +303,22 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "0ddbae65243e2d6facad5bb971d99ca70b868fac089a4c6b71146586b5507a94"
+    }
+  },
+  {
+    "label": "ANECTINE (succinylcholine)",
+    "labeler": "SANDOZ INC",
+    "setId": "04a4e6f5-6fa1-42e1-a3f9-21fca7786b15",
+    "tools": [
+      "rsi-dose-sheet"
+    ],
+    "splVersion": 9,
+    "publishedOn": "2026-08-03",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "a99a04b7a95d27a6fd43657a453b44770f7f58102f63c331831fdf79948b16c7",
+      "43678-2": "d18dc0a8d0e2bf421e697b59b64f228f5e9a0fa306d0526d4b45454619c7aa53"
     }
   },
   {
@@ -1208,6 +1239,22 @@
     }
   },
   {
+    "label": "DuoDote (atropine and pralidoxime)",
+    "labeler": "MERIDIAN MEDICAL TECHNOLOGIES® LLC",
+    "setId": "241f42a0-1a33-40e8-8221-201767d999e5",
+    "tools": [
+      "pralidoxime-dose"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2022-06-30",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "c99b9a0c2d6d8b9eb5fa3136962026ba7010e0eb9d25025af390956ee3c96711",
+      "43678-2": "7842aa2ebb192b949d077af3ef02d91e5bc61f6cdf2b30ca3c74aa6ab3c98ce9"
+    }
+  },
+  {
     "label": "Elcys (cysteine hydrochloride), Exela",
     "labeler": "EXELA PHARMA SCIENCES, LLC",
     "setId": "52317b38-b2e6-4a1c-b5b0-43cada0d205e",
@@ -1851,6 +1898,23 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "2db67b35f188b72e9ebb976cdee81f76f0502d85cc42c7bfd45e9c7c9c95400c"
+    }
+  },
+  {
+    "label": "KETALAR (ketamine)",
+    "labeler": "PAR HEALTH USA, LLC",
+    "setId": "14e8f864-8b8a-4e7e-8439-e510d3107063",
+    "tools": [
+      "rsi-dose-sheet"
+    ],
+    "splVersion": 33,
+    "publishedOn": "2026-03-26",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "3c5ad2a52f6dcdc2c8ee86d259a2c8d8bc07818aafd592d7db5c8996332e9c5a",
+      "43678-2": "fd33238841afd0d76ff354377d40e6bfae5461a3ba9409c9959c0bc78263549b",
+      "43684-0": "db9bc875fd3c9d93d764461e6fd246783d5a4275781b390468cc8284ff4653b9"
     }
   },
   {
@@ -2632,6 +2696,21 @@
     }
   },
   {
+    "label": "PROTOPAM Chloride (pralidoxime)",
+    "labeler": "BAXTER HEALTHCARE CORPORATION",
+    "setId": "2741d8fd-51c2-46be-880b-99f2b20a6137",
+    "tools": [
+      "pralidoxime-dose"
+    ],
+    "splVersion": 15,
+    "publishedOn": "2026-03-30",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "3cfd593cacba80c74dd9a52cbf0100320f62ae0753911e9387c81ebdf9ca945e"
+    }
+  },
+  {
     "label": "Reclast (zoledronic acid 5 mg), Sandoz",
     "labeler": "SANDOZ INC",
     "setId": "5a9b3737-9ce6-4a89-b76e-6aab79eba9cf",
@@ -2708,6 +2787,22 @@
     "validThrough": "2027-09-26",
     "sections": {
       "34068-7": "fe373d68f7c316265d28382e13b3981644329b969dd64afe2801521e9528e3b1"
+    }
+  },
+  {
+    "label": "Rocuronium Bromide Injection, Baxter",
+    "labeler": "BAXTER HEALTHCARE CORPORATION",
+    "setId": "a18fce42-0f3d-4354-845e-57c37ac3a147",
+    "tools": [
+      "rsi-dose-sheet"
+    ],
+    "splVersion": 1,
+    "publishedOn": "2026-10-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "9da85cd56ddefa9cc5ecd0b56385c0c05f722f29f20cde7d43771b18d13fc496",
+      "43678-2": "00d0f39780362370bb28ddb893e58320b9ff7f95923fede5366a66f71dd3959e"
     }
   },
   {

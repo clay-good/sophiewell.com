@@ -2,7 +2,7 @@
 // department measurement.
 // nac-oral-regimen, fomepizole-schedule, dantrolene-mh-vials,
 // flumazenil-ladder, neostigmine-reversal-dose, deferoxamine-acute-iron,
-// us-antivenom-dose, thrombolytic-dose.
+// us-antivenom-dose, thrombolytic-dose, pralidoxime-dose, rsi-dose-sheet.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -14,6 +14,8 @@ import * as NS from '../lib/neostigmine-reversal-dose-v1636.js';
 import * as DF from '../lib/deferoxamine-acute-iron-v1636.js';
 import * as AV from '../lib/us-antivenom-dose-v1636.js';
 import * as TD from '../lib/thrombolytic-dose-v1636.js';
+import * as PX from '../lib/pralidoxime-dose-v1636.js';
+import * as RS from '../lib/rsi-dose-sheet-v1636.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -189,6 +191,36 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = TD.thrombolyticDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'pralidoxime-dose'(root) {
+    const pairs = [['pxd-patient', 'patient'], ['pxd-route', 'route'], ['pxd-severity', 'severity'], ['pxd-weight', 'weight']];
+    selectField(root, 'Patient', 'pxd-patient', PX.PATIENTS);
+    selectField(root, 'Route or product', 'pxd-route', PX.ROUTES);
+    selectField(root, 'Severity (intramuscular and DuoDote)', 'pxd-severity', PX.SEVERITIES);
+    numField(root, 'Weight, kg (pediatric patients, and DuoDote)', 'pxd-weight', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PX.pralidoximeDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'rsi-dose-sheet'(root) {
+    const pairs = [['rds-weight', 'weight'], ['rds-age', 'age'], ['rds-patient', 'patient'], ['rds-ketamine', 'ketamineConcentration']];
+    numField(root, 'Weight, kg', 'rds-weight', '');
+    numField(root, 'Age, years', 'rds-age', '');
+    selectField(root, 'Patient group', 'rds-patient', RS.PATIENTS);
+    selectField(root, 'Ketamine concentration in hand', 'rds-ketamine', RS.KETAMINE);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = RS.rsiDoseSheet(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));
