@@ -113,7 +113,7 @@ export const renderers = {
     }));
   },
   'dose-calendar'(root) {
-    const pairs = [['dc-start', 'startDate'], ['dc-w2', 'loadWeek2'], ['dc-w3', 'loadWeek3'], ['dc-every', 'everyWeeks'], ['dc-count', 'maintenanceDoses'], ['dc-win', 'windowDays'], ['dc-actual', 'actualDate'], ['dc-actual-n', 'actualDose']];
+    const pairs = [['dc-start', 'startDate'], ['dc-w2', 'loadWeek2'], ['dc-w3', 'loadWeek3'], ['dc-every', 'everyWeeks'], ['dc-count', 'maintenanceDoses'], ['dc-win', 'windowDays'], ['dc-actual', 'actualDate'], ['dc-actual-n', 'actualDose'], ['dc-cycle-len', 'cycleLength'], ['dc-cycle-days', 'treatmentDays'], ['dc-cycles', 'cycles'], ['dc-check', 'checkDate'], ['dc-delayed', 'delayedCycle']];
     dateInput(root, 'Date of the first dose (week 0)', 'dc-start', 'date');
     numField(root, 'Loading dose 2 at week (optional)', 'dc-w2', 'e.g. 2', '52', '1');
     numField(root, 'Loading dose 3 at week (optional)', 'dc-w3', 'e.g. 6', '52', '1');
@@ -122,6 +122,12 @@ export const renderers = {
     numField(root, 'Allowed window, plus or minus days (optional)', 'dc-win', 'e.g. 3', '14', '1');
     dateInput(root, 'A dose actually given on (optional)', 'dc-actual', 'date');
     numField(root, 'Which dose number that was (optional)', 'dc-actual-n', 'e.g. 3', '30', '1');
+    // spec-v1635 backfill: the cycle calendar. A cycle length switches the tool to it.
+    numField(root, 'Cycle calendar: cycle length in days (entering it selects the cycle calendar)', 'dc-cycle-len', 'e.g. 28', '365', '1');
+    textField(root, 'Cycle calendar: treatment days within a cycle', 'dc-cycle-days', 'e.g. 1, 8, 15');
+    numField(root, 'Cycle calendar: number of cycles', 'dc-cycles', 'e.g. 6', '60', '1');
+    dateInput(root, 'Cycle calendar: a date to look up (optional)', 'dc-check', 'date');
+    numField(root, 'Cycle calendar: the cycle that started on the actual date above (optional)', 'dc-delayed', 'e.g. 3', '60', '1');
     const ids = pairs.map(([d]) => d);
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {

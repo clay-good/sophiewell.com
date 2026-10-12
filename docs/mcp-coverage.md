@@ -9313,6 +9313,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/chemo-organ-label-dose-v1635.js (spec-v1635: Chemotherapy label dose modification for liver and kidney function — clinical disclaimer)
 - `chemo-organ-label-dose`
 
+### lib/chemo-dose-verify-v1635.js (spec-v1635: Chemotherapy dose re-derivation and variance — clinical disclaimer)
+- `chemo-dose-verify`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -113,6 +113,9 @@ export const renderers = {
       { value: 'weight', text: 'Weight (kg, g, mg, lb, oz)' },
       { value: 'volume', text: 'Volume (mL, L, fl_oz, cup)' },
       { value: 'temperature', text: 'Temperature (C, F, K)' },
+      { value: 'activity', text: 'Radioactivity (Bq, kBq, MBq, GBq, Ci, mCi, uCi)' },
+      { value: 'dose-equivalent', text: 'Dose equivalent (Sv, mSv, rem, mrem)' },
+      { value: 'absorbed-dose', text: 'Absorbed dose (Gy, cGy, mGy, rad)' },
     ]));
     root.appendChild(field('Value', 'val'));
     root.appendChild(field('From unit', 'from', { type: 'text', placeholder: 'kg' }));

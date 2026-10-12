@@ -302,7 +302,9 @@ export const renderers = {
     selectField(root, 'Schedule', 'lcal-preset', LC.PRESETS);
     dateField(root, 'Start date', 'lcal-date');
     numField(root, 'Memantine: weeks at each step (the label\'s minimum is 1)', 'lcal-weeks', '');
-    numField(root, 'Sacubitril/valsartan: weeks before the dose is doubled (2 to 4)', 'lcal-double', '');
+    // The label names the range in its text, so the control enforces it (min and max), like every other.
+    const dbl = numField(root, 'Sacubitril/valsartan: weeks before the dose is doubled (2 to 4)', 'lcal-double', '').querySelector('input');
+    dbl.min = '2'; dbl.max = '4'; dbl.step = '1';
     dateField(root, 'Sacubitril/valsartan: last ACE-inhibitor dose (optional)', 'lcal-ace', 'datetime-local');
     areaField(root, 'My own steps, one per line: dose in mg, times a day, days', 'lcal-steps', '');
     const o = out(); root.appendChild(o);

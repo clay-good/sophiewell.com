@@ -53,6 +53,12 @@
 // about ten weeks after its edition; past that the search says the lists have passed their review date.
 // spec-v1601: `preventive-owed` reads the fetched USPSTF list, which expires 60 days after it is read; past that
 // the page says the list has passed its review date.
+// spec-v1635: `ind-annual-report-due` answers "which annual report is next": the anniversary of the date the
+// IND went into effect that follows today, and the 60 days after it. A year on, the next anniversary is a year
+// later. The clock is what it measures; the result names the day it is counted from.
+// spec-v1635: `ind-safety-report-clock` and `fda-adverse-event-report-clock` are filing clocks, like
+// `appeal-deadline`: the due date comes from the dates entered and does not move, and the sentence beside
+// it ("That is 43 days from today", later "That was 322 days ago") is the countdown the tool is for.
 export const CLOCK_DEPENDENT = new Set([
   'appeal-deadline',
   'claims-pct-medicare',
@@ -60,6 +66,9 @@ export const CLOCK_DEPENDENT = new Set([
   'device-day-counter',
   'lcd-diagnosis-check',
   'due-date',
+  'fda-adverse-event-report-clock',
+  'ind-annual-report-due',
+  'ind-safety-report-clock',
   'overpayment-60day',
   'pa-turnaround',
   'pharmacy-spread-check',

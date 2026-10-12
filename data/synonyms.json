@@ -13009,6 +13009,14 @@
       ],
       "tile": "chemo-organ-label-dose",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "carboplatin",
+        "calvert"
+      ],
+      "tile": "calvert-carboplatin",
+      "audience": "clinicians"
     }
   ]
 }

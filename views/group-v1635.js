@@ -7,7 +7,8 @@
 // rasburicase-dose, dexrazoxane-ratio-dose, capecitabine-tablet-dose,
 // mesna-ifosfamide-schedule, glucarpidase-dose, it-methotrexate-age-dose, hdmtx-leucovorin-rescue,
 // gcsf-timing-check, cumulative-dose-limit, esa-chemo-dose-adjust,
-// chatelut-carboplatin, desensitization-12-step, chemo-organ-label-dose.
+// chatelut-carboplatin, desensitization-12-step, chemo-organ-label-dose,
+// chemo-dose-verify.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -39,6 +40,7 @@ import * as EA from '../lib/esa-chemo-dose-adjust-v1635.js';
 import * as CH from '../lib/chatelut-carboplatin-v1635.js';
 import * as DS from '../lib/desensitization-12-step-v1635.js';
 import * as CO from '../lib/chemo-organ-label-dose-v1635.js';
+import * as CV from '../lib/chemo-dose-verify-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -576,6 +578,25 @@ export const renderers = {
       const r = CO.chemoOrganLabelDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'chemo-dose-verify'(root) {
+    const pairs = [['cdv-basis', 'basis'], ['cdv-per', 'perUnitDose'], ['cdv-height', 'height'], ['cdv-weight', 'weight'], ['cdv-formula', 'bsaFormula'], ['cdv-ordered', 'orderedDose'], ['cdv-dosing-weight', 'dosingWeight'], ['cdv-reduction', 'reduction'], ['cdv-cap', 'bsaCap'], ['cdv-tolerance', 'tolerance']];
+    selectField(root, 'Dose basis of the regimen', 'cdv-basis', CV.BASES);
+    numField(root, 'Regimen dose per m² or per kg', 'cdv-per', '');
+    numField(root, 'Height, cm (needed for a dose per m²)', 'cdv-height', '');
+    numField(root, 'Actual weight, kg', 'cdv-weight', '');
+    selectField(root, 'Body surface area formula the order used', 'cdv-formula', CV.BSA_FORMULAS);
+    numField(root, 'Ordered dose (mg, or units)', 'cdv-ordered', '');
+    numField(root, 'Dosing weight in kg, if policy uses one other than actual (optional)', 'cdv-dosing-weight', '');
+    numField(root, 'Percent reduction for this cycle (optional)', 'cdv-reduction', '');
+    numField(root, 'Institutional body surface area cap, m² (optional)', 'cdv-cap', '');
+    numField(root, 'Tolerance in percent, for a pass or fail (optional)', 'cdv-tolerance', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(CV.chemoDoseVerify(args), o);
     }));
   },
 };

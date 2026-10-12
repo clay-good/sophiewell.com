@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:146df47a-8ede-5bbc-8ee1-c309481d0936",
+  "serialNumber": "urn:uuid:20a666c8-b8f9-5f77-8dc7-6bca9c8eabf4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T03:31:33.909Z",
+    "timestamp": "2026-10-12T04:29:04.273Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2203 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2204 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f6bf8b4b0299b26d7e8f366208463a3fabc45e78bb42edf3c8fbe1f5bc61c0d4"
+          "content": "3847a8824acf6d0c56c9a916b217f6029bb439a38de2328000975a6821bb15e3"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "143072"
+          "value": "143132"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9a7be37f87a46cadc17f13a04a85df39f6aa6101f91a893c951fadc2be3a55c9"
+          "content": "df18c5d8db1f0d67ae5b58451871a588464465c348cbfdc7af08f182a4a04b85"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "615566"
+          "value": "615719"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6083b740e46b515fe39c0e964c8efe5d1118b9a123229bf0e9feeeb9e6906e04"
+          "content": "5ffd0a828386f2f904f87f12ca8d541bf318b750787d7c142449443221503fd1"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "276744"
+          "value": "276872"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ecffea62d11f76f929a857d34dec6117ac19e43a2ebb61dfa1adf34d82700316"
+          "content": "e40d3b3eeba1807b06a96606f987acdc5284f78bc5765964a32e6e29b3c00cd4"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132314"
+          "value": "132381"
         }
       ]
     },
@@ -4718,6 +4718,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/chemo-dose-verify-v1635.js",
+      "type": "file",
+      "name": "lib/chemo-dose-verify-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "376cb567d815681593ab280f6974e63c44d9e1f7f8063df682ac61d9a52c7bdd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7487"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/chemo-organ-label-dose-v1635.js",
       "type": "file",
       "name": "lib/chemo-organ-label-dose-v1635.js",
@@ -5186,7 +5207,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1bceb6f592d3867b43265873c25cda7d5cd28b02fdc042b10a46555302f39295"
+          "content": "580bdb6ef561e8a53ef7d5e9d7ad2b2b8b6bc30fd7339ac03a696803ac04b759"
         }
       ],
       "properties": [
@@ -5196,7 +5217,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "27749"
+          "value": "28507"
         }
       ]
     },
@@ -7055,7 +7076,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4c613ade7371f63172050a0a8b75d76353ced1d2ab5e9ed426bb042f98714686"
+          "content": "843683e115efa727926c5ab1769fa368723ec0776ff66b951d194645d4476867"
         }
       ],
       "properties": [
@@ -7065,7 +7086,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "6678"
+          "value": "13777"
         }
       ]
     },
@@ -16001,7 +16022,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "71388bd40e7f9631a7a696bebffe1806a67f508297b57d568ce173d86a62b4a8"
+          "content": "2b16df296b98cc255c64e27afff8e78b911ca85e316fc50c8f3511b0df32da6b"
         }
       ],
       "properties": [
@@ -16011,7 +16032,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2912620"
+          "value": "2913774"
         }
       ]
     },
@@ -16043,7 +16064,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "70987b0743a01bf29b36267679574b76f3b69cb801e02bb2726da0b384de792c"
+          "content": "4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c"
         }
       ],
       "properties": [
@@ -16053,7 +16074,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "19716"
+          "value": "20000"
         }
       ]
     },
@@ -33656,6 +33677,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/chemo-dose-verify-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/chemo-dose-verify-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f6dc478c0208641fc94ee226d232eb8a5489dc86033a223eb24bfc22c4f6633c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2127"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/chemo-organ-label-dose-v1635.js",
       "type": "file",
       "name": "mcp/adapters/chemo-organ-label-dose-v1635.js",
@@ -34124,7 +34166,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e9e13b251f3bac749b7b633b62cd402c069793b91651b3e190e732f5f1624b88"
+          "content": "df78180fcb80b3e04653bb809071e4d0af7accd8ed293d43b868a15432dc9615"
         }
       ],
       "properties": [
@@ -34134,7 +34176,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "29208"
+          "value": "29389"
         }
       ]
     },
@@ -35783,7 +35825,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "99ded7846c8ae2dc9e2e77beea73b8cdc3e2fd1ebac97741bd82454be4f5b014"
+          "content": "cd864f6e5a946666a445b7e6908ae1bfe1343693df1cca18095e0222f68f650a"
         }
       ],
       "properties": [
@@ -35793,7 +35835,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "1356"
+          "value": "2353"
         }
       ]
     },
@@ -55523,7 +55565,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fff146e1b049f27cff8c261a036360556db0b593727f207785993cf2eda52264"
+          "content": "7e7f0d6727c067afae6a457e6fc42ffef99d34768ad84dece99e70b706d84893"
         }
       ],
       "properties": [
@@ -55533,7 +55575,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "147732"
+          "value": "147859"
         }
       ]
     },
@@ -56006,7 +56048,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dd369819a310b4c3cabc93d99e8113cb9813ba49b69c7a94954ee735512c613c"
+          "content": "4b6e310a50b319987ffc2d990f45c0626af69b6ec7bb58cec46976d0b96ed9e2"
         }
       ],
       "properties": [
@@ -56016,7 +56058,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "55309"
+          "value": "55554"
         }
       ]
     },
@@ -59072,7 +59114,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3c334743e9f5219297d28cf29b43c18187d2666cd40bf50f40034d87a7ee60ce"
+          "content": "9f17c19a926b82cb8e91210a744a724ac10bf5406b28902e78a464cfc99f5700"
         }
       ],
       "properties": [
@@ -59082,7 +59124,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "13381"
+          "value": "14178"
         }
       ]
     },
@@ -60101,7 +60143,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6028e2b92c997dbc173f03b9afb4dd52e0e085984a4df67c0548a215d25be157"
+          "content": "4e0c93aabd98861f794103eb371c31305c6d008a0d3b376fbb47e1bcd0bc550b"
         }
       ],
       "properties": [
@@ -60111,7 +60153,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "29480"
+          "value": "29671"
         }
       ]
     },
@@ -60143,7 +60185,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4aaaaea579a72566085fb84a45e66e927e1dd50e7b6267b8c519d8aac9629c30"
+          "content": "5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a"
         }
       ],
       "properties": [
@@ -60153,7 +60195,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "39138"
+          "value": "40637"
         }
       ]
     },
@@ -91137,6 +91179,7 @@
         "urn:sophiewell:file:source:lib/chair-day-planner.js",
         "urn:sophiewell:file:source:lib/chalder-fatigue-v733.js",
         "urn:sophiewell:file:source:lib/chatelut-carboplatin-v1635.js",
+        "urn:sophiewell:file:source:lib/chemo-dose-verify-v1635.js",
         "urn:sophiewell:file:source:lib/chemo-organ-label-dose-v1635.js",
         "urn:sophiewell:file:source:lib/cheops-v645.js",
         "urn:sophiewell:file:source:lib/chicago-achalasia-v807.js",
@@ -93460,6 +93503,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/chair-day-planner.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chalder-fatigue-v733.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chatelut-carboplatin-v1635.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/chemo-dose-verify-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chemo-organ-label-dose-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cheops-v645.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chicago-achalasia-v807.js",
@@ -94605,7 +94649,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "146df47a8edefbbc"
+      "value": "20a666c8b8f98f77"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -94617,7 +94661,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3566"
+      "value": "3568"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

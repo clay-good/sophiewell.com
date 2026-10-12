@@ -1,6 +1,6 @@
 # spec-v1635 — Oncology pharmacy, investigational drug service, and nuclear pharmacy
 
-**Status:** In progress, October 11, 2026: 29 of 35 tools built (see Build status). 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
+**Status:** In progress, October 11, 2026: 30 of 35 tools built (see Build status). 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 Three pharmacists do work the catalog barely touches. The chemotherapy-verification pharmacist
@@ -690,6 +690,14 @@ levels are license-specific and are reader input.
 | `unit-converter` | Activity (Ci, mCi, µCi ↔ Bq, MBq, GBq) and dose (rem ↔ Sv, rad ↔ Gy) pairs. | 10 CFR 35.67 (0.005 µCi = 185 Bq); 35.75 (0.5 rem = 5 mSv) |
 | `tls-cairo-bishop` | Link to `rasburicase-dose`. | |
 
+**Backfill status (October 11, 2026).** `anc` and the `calvert-carboplatin` FDA link were done under
+[spec-v1641](spec-v1641.md). Done here: `calvert-carboplatin` links to `chatelut-carboplatin` and
+prints the label's Calvert wording; `tls-cairo-bishop` links to `rasburicase-dose`;
+`unit-converter` has radioactivity, dose-equivalent and absorbed-dose pairs (10 CFR 20.1004 and
+20.1005 re-read; an absorbed dose is not converted to a dose equivalent, which needs a quality
+factor); `dose-calendar` has a cycle calendar, selected by entering a cycle length, that reuses the
+"actually given on" date for a delayed cycle.
+
 ## Rejected
 
 | Idea | Why not |
@@ -941,6 +949,7 @@ build stores the version and published date instead.
 
 | Tool | State |
 |---|---|
+| 1. `chemo-dose-verify` | Built (group F). The ASCO 2021 abstract (PMID 33939491) was re-read October 11, 2026 and is the only part quoted; the full text was not read, so the open item on fixed dosing stays open and nothing about it is said. Both body surface area formulas are shown and the reader chooses the one the order used (no default). Actual weight is used unless a dosing weight is typed, and the result says which. A cap is a body surface area in m², applied only when typed and labeled institutional. A target AUC returns a pointer to the Calvert tool and computes nothing. |
 | 2. `chatelut-carboplatin` | Built (group F). The coefficients were re-read in the PubMed abstract (PMID 7752255) and the division by creatinine in Kinoshita 2006 (PMC2361403) on October 11, 2026; a unit test reproduces Kinoshita's printed form, whose constants are the mg/dL conversion (1/88.4) and their enzymatic-to-Jaffé conversion. **Still open:** the full text of the 1995 paper was not read, so the assay it used is not confirmed; the page says so and describes what the later study did. A GFR is optional and adds the uncapped Calvert dose beside it. Ages outside 23 to 84 are flagged; under 18 is refused. |
 | 4. `cumulative-dose-limit` | Built (group F) on six labels re-read October 11, 2026: doxorubicin (Pfizer, version 28), ELLENCE (26), daunorubicin (Hikma, 6), IDAMYCIN PFS (27), mitoxantrone (Hospira, 25), bleomycin (Meitheal, 3). One agent per run. "Above" and "exceeding" figures are passed only by a larger total; epirubicin's 900 and the multiple sclerosis 140 are passed at the figure itself, because the label words them that way (the mitoxantrone label says "greater than 140" in the boxed warning and "≥140" in the dosage section; both are shown). Other agents enter only as one number the reader has already converted, labeled as the reader's; no ratio ships. For mitoxantrone in cancer the label states an estimate at 140 mg/m², not a limit, and the result says so. Warnings and Precautions (LOINC 43685-7) joined the watched section names. |
 | 5. `dexrazoxane-ratio-dose` | Built (group F) on the Dexrazoxane for Injection label (Eugia, version 2), sections 1, 2.1 and 2.2 re-read October 11, 2026; one manufacturer's label was read at build, not two. The creatinine clearance is required, since it decides the ratio. A cumulative doxorubicin dose under 300 mg/m² is flagged, and a missing one is said to be missing. |

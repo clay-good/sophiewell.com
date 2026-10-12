@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Loading and Maintenance Dose Calendar: a cycle calendar (for example days 1, 8 and 15 of 28) that
+  says which cycle and day a date is and moves later cycles after a delayed start.
+- Unit Converter: radioactivity (Bq to Ci), dose equivalent (Sv, rem) and absorbed dose (Gy, rad).
+- Chemotherapy Dose Re-Derivation and Variance: the dose recalculated from the regimen and the
+  patient's size, beside the order, with the signed percent variance.
 - Chemotherapy Dose Modification for Hepatic or Renal Impairment (FDA Labels): the label's own row for
   bilirubin, transaminases, creatinine clearance or nadir counts, for 12 drugs; a value the label
   leaves between two rows returns both.

@@ -102,7 +102,20 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "mgso4-im-regimen",
   // spec-v1558: every row is optional and a blank one is listed as not assessed; clearing the number rows
   // leaves the select rows (companion, posture, amniotic fluid...) that were observed, so it reports on those.
+  // spec-v1635: the verdict comes from the required product select and the chemotherapy and
+  // growth-factor times. The only number field is the weight, read for a pediatric pegfilgrastim
+  // patient and refused there when blank; for filgrastim or an adult it does not apply.
+  "gcsf-timing-check",
   "labor-care-guide-alert",
+  // spec-v1633: the calendar comes from a required schedule select and a required start date. The number
+  // fields belong to other schedules (memantine's weeks per step, sacubitril/valsartan's weeks to
+  // doubling) and the textarea to "My own steps"; each is refused when its own schedule is chosen
+  // without it. With the varenicline schedule chosen, a blank one is a field that does not apply.
+  "label-titration-calendar",
+  // spec-v1633: the calendar comes from the required regimen, co-medication and first-dose date. The
+  // only number field is the weight, read for ages 2 to 12 and refused there when blank; for an
+  // adult regimen it does not apply.
+  "lamotrigine-titration-calendar",
   "masld-criteria",
   "mchat-rf",
   "membranous-risk",

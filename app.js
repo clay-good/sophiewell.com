@@ -2776,6 +2776,7 @@ const UTILITIES = [
   { id: 'chatelut-carboplatin', name: 'Carboplatin Clearance and Dose (Chatelut Formula)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'desensitization-12-step', name: 'Three-Bag, 12-Step Desensitization Arithmetic', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chemo-organ-label-dose', name: 'Chemotherapy Dose Modification for Hepatic or Renal Impairment (FDA Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'chemo-dose-verify', name: 'Chemotherapy Dose Re-Derivation and Variance', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

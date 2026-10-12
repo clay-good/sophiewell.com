@@ -16,7 +16,7 @@ import { boundsAdvisory } from '../../lib/bounds.js';
 export default [
   {
     id: 'unit-converter',
-    summary: 'General healthcare unit converter: weight (kg/g/mg/lb/oz), volume (mL/L/fl_oz/cup), temperature (C/F/K). The result echoes the inputs so the JSON is self-describing.',
+    summary: 'General healthcare unit converter: weight (kg/g/mg/lb/oz), volume (mL/L/fl_oz/cup), temperature (C/F/K), radioactivity (Bq/kBq/MBq/GBq/Ci/mCi/uCi), dose equivalent (Sv/mSv/rem/mrem) and absorbed dose (Gy/cGy/mGy/rad). The result echoes the inputs so the JSON is self-describing.',
     // The lib call is positional (convert(value, from, to, kind)), not a
     // named-object call; the wrapper maps the flat args onto that order.
     compute: (a) => {
@@ -24,10 +24,10 @@ export default [
       return converted == null ? null : { value: a.value, from: a.from, to: a.to, converted };
     },
     fields: [
-      { dom: 'kind', arg: 'kind', kind: 'enum', values: ['weight', 'volume', 'temperature'], required: true, label: 'Quantity kind' },
+      { dom: 'kind', arg: 'kind', kind: 'enum', values: ['weight', 'volume', 'temperature', 'activity', 'dose-equivalent', 'absorbed-dose'], required: true, label: 'Quantity kind' },
       { dom: 'val', arg: 'value', kind: 'number', required: true, label: 'Value to convert' },
-      { dom: 'from', arg: 'from', kind: 'string', required: true, label: 'From unit (e.g. kg, mL, C)' },
-      { dom: 'to', arg: 'to', kind: 'string', required: true, label: 'To unit (e.g. lb, L, F)' },
+      { dom: 'from', arg: 'from', kind: 'string', required: true, label: 'From unit (e.g. kg, mL, C, mCi, rem)' },
+      { dom: 'to', arg: 'to', kind: 'string', required: true, label: 'To unit (e.g. lb, L, F, MBq, mSv)' },
     ],
   },
   {
