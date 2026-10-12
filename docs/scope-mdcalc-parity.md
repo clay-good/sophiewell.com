@@ -914,3 +914,5 @@ experience**.
 > v1639, OTC 24-Hour Total Against the Label Maximum — [spec-v1639](spec-v1639.md), which adds `otc-daily-max-check` — is 2282.)
 
 > v1639, Missed Dose: What the Label Says — [spec-v1639](spec-v1639.md), which adds `missed-dose-label-rule` — is 2283.)
+
+> v1639, Long-Acting Injectable Antipsychotic: Missed-Dose Rule (FDA Labels) — [spec-v1639](spec-v1639.md), which adds `lai-antipsychotic-missed-dose` — is 2284.)

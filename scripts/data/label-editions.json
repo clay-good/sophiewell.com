@@ -4,12 +4,13 @@
     "labeler": "OTSUKA AMERICA PHARMACEUTICAL, INC.",
     "setId": "ee49f3b1-1650-47ff-9fb1-ea53fe0b92b6",
     "tools": [
-      "lai-antipsychotic-start"
+      "lai-antipsychotic-start",
+      "lai-antipsychotic-missed-dose"
     ],
     "splVersion": 27,
     "publishedOn": "2026-03-30",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "d7562901732bc4776960dbdc31db3ad7b6f733e0cd24901088dca3d51e138a5f"
     }
@@ -360,12 +361,13 @@
     "labeler": "ALKERMES, INC.",
     "setId": "17a8d11b-73b0-4833-a0b4-cf1ef85edefb",
     "tools": [
-      "lai-antipsychotic-start"
+      "lai-antipsychotic-start",
+      "lai-antipsychotic-missed-dose"
     ],
     "splVersion": 32,
     "publishedOn": "2025-02-10",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "eb16e6d5a3cb0d73c7aa1942b94dbc66481e86966d11002792847c36008d63d4"
     }
@@ -4448,6 +4450,81 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "5bc797fd0e7ee7dbcee2a62bc45fcbfef0a749099eca3da9233567ef92712f9b"
+    }
+  },
+  {
+    "label": "Abilify Asimtufii (aripiprazole)",
+    "labeler": "OTSUKA AMERICA PHARMACEUTICAL, INC",
+    "setId": "da4c07fd-1130-4341-bb44-63acfa4162be",
+    "tools": [
+      "lai-antipsychotic-missed-dose"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2025-04-10",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "53fe4c9d601a66fcaae0a42325278a2cb5e090bb8cc9c3e1b93b75b9c0757bee"
+    }
+  },
+  {
+    "label": "Uzedy (risperidone extended-release injectable suspension), Teva",
+    "labeler": "TEVA PHARMACEUTICALS USA, INC.",
+    "setId": "734eb776-4be0-4808-834b-0d8b0f9e021e",
+    "tools": [
+      "lai-antipsychotic-missed-dose"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2026-09-14",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "c1b8187a1a24917fd5ddad9883fbc0cc4bb2e5b5b469422e5ee7313a329c2521"
+    }
+  },
+  {
+    "label": "Perseris (risperidone extended-release injectable suspension), Indivior",
+    "labeler": "INDIVIOR INC.",
+    "setId": "a4f21b1a-5691-4b14-a56d-651962d06f39",
+    "tools": [
+      "lai-antipsychotic-missed-dose"
+    ],
+    "splVersion": 18,
+    "publishedOn": "2025-02-21",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "d0a64510a23f31ffeef511cf813c3c8278da6ec0beb0ef6db34de55ba782da57"
+    }
+  },
+  {
+    "label": "Risperdal Consta (risperidone long-acting injection), Janssen",
+    "labeler": "JANSSEN PHARMACEUTICALS, INC.",
+    "setId": "bb34ee82-d2c2-43b8-ba21-2825c0954691",
+    "tools": [
+      "lai-antipsychotic-missed-dose"
+    ],
+    "splVersion": 38,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "230b2fda9014b5bf71c264b07e2454b7f3cc728703bc4b6297cbd03a1143165b"
+    }
+  },
+  {
+    "label": "Rykindo (risperidone extended-release microspheres), Luye",
+    "labeler": "SHANDONG LUYE PHARMACEUTICAL CO., LTD.",
+    "setId": "58534c96-96f5-4c2e-a061-92d4506aee91",
+    "tools": [
+      "lai-antipsychotic-missed-dose"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-05-28",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "844d138c01d72d8061a9d2710899771ee55435ccf7c19b38e62792f3aadafbd1"
     }
   }
 ]

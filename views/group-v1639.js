@@ -2,7 +2,7 @@
 // quantity-to-dispense, topical-quantity-ftu, oral-suspension-course, contraceptive-missed-pill,
 // contraception-start-backup, depot-injection-window, emergency-contraception-window,
 // epinephrine-device-weight-band, nrt-step-schedule, out-of-fridge-discard-date, otc-child-label-dose,
-// otc-daily-max-check, missed-dose-label-rule.
+// otc-daily-max-check, missed-dose-label-rule, lai-antipsychotic-missed-dose.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -19,6 +19,7 @@ import * as FD from '../lib/out-of-fridge-discard-date-v1639.js';
 import * as CD from '../lib/otc-child-label-dose-v1639.js';
 import * as DM from '../lib/otc-daily-max-check-v1639.js';
 import * as MD from '../lib/missed-dose-label-rule-v1639.js';
+import * as LM from '../lib/lai-antipsychotic-missed-dose-v1639.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -299,6 +300,20 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = MD.missedDoseLabelRule(args, new Date());
+      show(r, o);
+      if (r.valid) labelLinks(r, o);
+    }));
+  },
+  'lai-antipsychotic-missed-dose'(root) {
+    const pairs = [['lmd-product', 'product'], ['lmd-last', 'lastInjection'], ['lmd-today', 'today']];
+    selectField(root, 'Product', 'lmd-product', LM.PRODUCTS);
+    dateField(root, 'Date of the last injection', 'lmd-last');
+    dateField(root, 'Today\'s date', 'lmd-today');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = LM.laiAntipsychoticMissedDose(args, new Date());
       show(r, o);
       if (r.valid) labelLinks(r, o);
     }));

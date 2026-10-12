@@ -108,7 +108,7 @@ export const renderers = {
     }));
   },
   'days-supply'(root) {
-    const pairs = [['ds-form', 'form'], ['ds-qty', 'quantity'], ['ds-perdose', 'perDose'], ['ds-vol', 'volume'], ['ds-doseml', 'doseMl'], ['ds-upml', 'unitsPerMl'], ['ds-mlpen', 'mlPerPen'], ['ds-pens', 'pens'], ['ds-uday', 'unitsPerDay'], ['ds-inj', 'injectionsPerDay'], ['ds-prime', 'primingUnits'], ['ds-act', 'actuations'], ['ds-can', 'canisters'], ['ds-puffs', 'puffsPerDose'], ['ds-dpm', 'dropsPerMl'], ['ds-dpe', 'dropsPerEye'], ['ds-eyes', 'eyes'], ['ds-dpd', 'dosesPerDay'], ['ds-discard', 'discardDays']];
+    const pairs = [['ds-form', 'form'], ['ds-qty', 'quantity'], ['ds-perdose', 'perDose'], ['ds-vol', 'volume'], ['ds-doseml', 'doseMl'], ['ds-upml', 'unitsPerMl'], ['ds-mlpen', 'mlPerPen'], ['ds-pens', 'pens'], ['ds-uday', 'unitsPerDay'], ['ds-inj', 'injectionsPerDay'], ['ds-prime', 'primingUnits'], ['ds-act', 'actuations'], ['ds-can', 'canisters'], ['ds-puffs', 'puffsPerDose'], ['ds-dpm', 'dropsPerMl'], ['ds-dpe', 'dropsPerEye'], ['ds-eyes', 'eyes'], ['ds-dpd', 'dosesPerDay'], ['ds-discard', 'discardDays'], ['ds-primepuffs', 'primingPuffs'], ['ds-prn', 'maxPerDay'], ['ds-start', 'startDate'], ['ds-depart', 'departDate'], ['ds-return', 'returnDate']];
     selectField(root, 'Dosage form', 'ds-form', DS.FORMS);
     numField(root, 'Tablets or capsules: quantity dispensed', 'ds-qty', 'e.g. 60', '100000', 'any');
     numField(root, 'Tablets or capsules: units per dose', 'ds-perdose', 'e.g. 1', '1000', 'any');
@@ -128,6 +128,12 @@ export const renderers = {
     numField(root, 'Drops: eyes treated', 'ds-eyes', 'e.g. 2', '2', '1');
     numField(root, 'Doses per day (all forms but insulin)', 'ds-dpd', 'e.g. 2', '48', 'any');
     numField(root, 'In-use discard limit in days, if the label gives one', 'ds-discard', 'e.g. 28', '3650', '1');
+    // spec-v1639 backfills 1 and 2.
+    numField(root, 'Inhaler: priming puffs per canister (optional)', 'ds-primepuffs', 'e.g. 4', '100', '1');
+    selectField(root, 'As-needed sig: is the daily use entered the maximum allowed?', 'ds-prn', DS.YES_NO);
+    dateInput(root, 'Start date of the supply (optional, for a run-out date)', 'ds-start', 'date');
+    dateInput(root, 'Trip: departure date (optional)', 'ds-depart', 'date');
+    dateInput(root, 'Trip: return date (optional)', 'ds-return', 'date');
     // spec-v1637 backfill: a federal supply limit this arithmetic does not apply (21 CFR 1306.07(b), re-read October 12, 2026).
     note(root, 'A separate federal limit, not computed here: a practitioner who is not registered as a narcotic treatment program may dispense not more than a three-day supply of a narcotic at one time to start maintenance or detoxification treatment while referral is arranged, and that supply may not be renewed or extended (21 CFR 1306.07(b)).');
     const ids = pairs.map(([d]) => d);

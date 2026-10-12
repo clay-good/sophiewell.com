@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Long-Acting Injectable Antipsychotic: Missed-Dose Rule (FDA Labels), for Aristada, Abilify
+  Maintena, Abilify Asimtufii, Uzedy, Perseris, Risperdal Consta and Rykindo. The paliperidone
+  palmitate injections are not covered yet, and the tool says so.
+- Days Supply Calculator: an optional start date gives the run-out date, trip dates give the days
+  short and the quantity that covers them, inhaler priming puffs can be counted, and an as-needed
+  sig entered at its maximum is labeled that way.
+- Drug Concentration to Volume: an optional smallest marking on the syringe or cup rounds the
+  volume and shows the dose actually delivered.
 - Missed Dose: What the Label Says. Twenty product rows on sixteen labels (anticoagulants, GLP-1
   products, weekly and monthly bisphosphonates), each evaluated on the times entered, with the
   deadline that decided it and the label's sentence.

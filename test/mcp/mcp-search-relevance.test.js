@@ -798,6 +798,7 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['missed aristada or abilify maintena injection what does the label say', ['lai-antipsychotic-missed-dose']],
   ['missed a dose of trulicity or ozempic what does the label say', ['missed-dose-label-rule']],
   ['discard date for a pen out of the refrigerator', ['out-of-fridge-discard-date']],
   ['how much childrens tylenol for a 40 pound child by the label chart', ['otc-child-label-dose']],

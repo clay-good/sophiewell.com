@@ -97,13 +97,15 @@ export const renderers = {
     root.appendChild(field('Stock concentration (mg/mL)', 'dv-conc', { step: '0.01', min: 0, placeholder: 'e.g. 50' }));
     root.appendChild(unitField('Weight -- optional, to derive the dose', 'dv-weight', WEIGHT_UNITS, { placeholder: 'e.g. 20' }));
     root.appendChild(field('Per-kg dose (mg/kg) -- optional', 'dv-perkg', { step: '0.01', min: 0, placeholder: 'e.g. 1' }));
+    root.appendChild(field('Smallest marking on the syringe or cup (mL) -- optional', 'dv-inc', { step: 'any', min: 0, placeholder: 'e.g. 0.1' }));
     const o = out(); root.appendChild(o);
-    wire(['dv-dose', 'dv-conc', 'dv-weight', 'dv-weight-unit', 'dv-perkg'], () => safe(o, () => {
+    wire(['dv-dose', 'dv-conc', 'dv-weight', 'dv-weight-unit', 'dv-perkg', 'dv-inc'], () => safe(o, () => {
       const r = M.doseVolume({
         doseMg: optNum('dv-dose'),
         concentration: optNum('dv-conc'),
         weightKg: unitNumOpt('dv-weight'),
         doseMgPerKg: optNum('dv-perkg'),
+        incrementMl: optNum('dv-inc'),
       });
       if (!r.valid) { note(o, r.band); note(o, r.note); return; }
       resultRow(o, [

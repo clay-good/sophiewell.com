@@ -1,6 +1,6 @@
 # spec-v1639 — The community pharmacy counter: quantities, label schedules, OTC label doses and patient-facing clocks
 
-**Status:** In progress. 13 of 15 tools built (October 12, 2026); see Build status. 15 new tools (1 build-gated), 7 backfills.
+**Status:** In progress. 14 of 15 tools built, one of them in part (tool 5); backfills 1 to 3 and 6 built (October 12, 2026); see Build status. 15 new tools (1 build-gated), 7 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A community pharmacist, the technician at the fill station, and the patient or caregiver on the
@@ -961,6 +961,7 @@ Built tools are in `views/group-v1639.js`. Sources were re-read on October 12, 2
 | 2. `topical-quantity-ftu` | Built on the abstract of Long and Finlay 1991 (area counts and standard deviations) and the gram weights as restated in Paterson et al., *Pharmaceutics* 2018;10(1):9. Adults only. The 1991 full text and the 1998 children's table were not read. |
 | 3. `oral-suspension-course` | Built. One bottle size; the course's day 1 is the day the bottle is mixed. |
 | 4. `depot-injection-window` | Built on section 2 of the five labels and CDC's "Timing of Repeat Injections". The label line and CDC's line are printed apart. Sublocade asks whether the next injection is the second or a maintenance dose, since the 26-day line is for maintenance doses. A planned date is optional. |
+| 5. `lai-antipsychotic-missed-dose` | **Built in part.** The products whose bands are in weeks, or that state one sentence or no rule: Aristada (Table 3, column order re-confirmed in the table markup, and the 14-day early-dosing line), Abilify Maintena, Abilify Asimtufii, Uzedy, Perseris, Risperdal Consta and Rykindo. An exact boundary the label leaves open (5, 6 or 14 weeks) shows both rows. **Not built:** Invega Sustenna, Erzofri, Invega Trinza and Invega Hafyera. Their bands are counted in months and "Verify at build" holds the calendar-month reading for the owner. The tool says so in every result and in its product list. |
 | 6. `missed-dose-label-rule` | Built on section 2 of sixteen labels: twenty product and regimen rows. Every time is entered; a date alone is read as midnight. The label for set id `27f15fac` names its products Rybelsus and Ozempic tablets; Wegovy tablets are in the Wegovy label with the same rule. Wegovy at exactly 2 days before the next dose shows both rows. **Not built:** the change-of-day rules, Xarelto's pediatric rules, Bydureon BCise (no label looked for again at build). |
 | 7. `contraceptive-missed-pill` | Built on CDC's text and on Figures 1 and 5, read on the figure images. The branch follows the hours since the pill was due, as the figures do; a pill count that disagrees with the hours is said in the result and not used. Owner decision 1 stands as written: the combined-pill branch is kept and every result says the label may differ. |
 | 8. `emergency-contraception-window` | Built on the Plan B One-Step Directions, ella section 2 and CDC's "Emergency Contraception". The follow-on dates are counted from the time entered as now, as if the pill were taken then. Owner decision 3 stands as written: the label's 72 hours and CDC's 5 days are both shown. |
@@ -971,5 +972,14 @@ Built tools are in `views/group-v1639.js`. Sources were re-read on October 12, 2
 | 13. `epinephrine-device-weight-band` | Built (group I). A weight in pounds is converted for the Auvi-Q and neffy tables, which are in kg only, and placed on the EpiPen label's own pound figures (33 and 66). Exactly 30 kg or 66 lb shows both EpiPen bands. |
 | 14. `out-of-fridge-discard-date` | Built on section 16 of nineteen labels. Dates only; no time of day. A required answer says whether the product stayed within the label's temperature range; above it, no date is shown. The Ozempic prefilled syringe, Wegovy FlexTouch and NovoLog pump figures are named in the result and not computed. Tirzepatide's "4 weekly doses" limit is stated and not counted. |
 
-Not built yet: tool 5 (long-acting injectable antipsychotic missed doses, eleven labels), tool 15
-(owner-gated), and the backfills.
+Not built yet: the four paliperidone palmitate rows of tool 5 (owner decision on month arithmetic)
+and tool 15 (owner-gated).
+
+| Backfill | State |
+|---|---|
+| 1. `days-supply`: run-out date and trip coverage | Built: an optional start date gives the last day covered; trip dates give the days short and the quantity that covers them. Inhaler priming puffs per canister are an optional field. **Not built:** the "doses left on the counter" mode; enter the counter reading as the actuations with no priming. |
+| 2. `days-supply`: PRN sigs | Built as a yes or no answer that labels the result "at the maximum the sig allows". |
+| 3. `dose-volume`: rounding to the measuring device | Built: an optional smallest marking rounds the volume and shows the dose delivered and the percent change. |
+| 4. `apap-24h-max` and 5. `peds-dose` | Not built here; both are corrections indexed in [spec-v1641](spec-v1641.md). |
+| 6. `refill-eligible-date`: link to the quantity tool | Built as related links both ways. It does not yet take the run-out date as an input. |
+| 7. `dose-calendar` presets | Not built: owner's choice. |

@@ -770,6 +770,7 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as laiAntipsychoticMissedDoseV1639 from '../../lib/lai-antipsychotic-missed-dose-v1639.js';
 import * as missedDoseLabelRuleV1639 from '../../lib/missed-dose-label-rule-v1639.js';
 import * as outOfFridgeDiscardDateV1639 from '../../lib/out-of-fridge-discard-date-v1639.js';
 import * as otcChildLabelDoseV1639 from '../../lib/otc-child-label-dose-v1639.js';
@@ -1868,6 +1869,7 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'lai-antipsychotic-missed-dose-v1639.js': laiAntipsychoticMissedDoseV1639,
   'missed-dose-label-rule-v1639.js': missedDoseLabelRuleV1639,
   'out-of-fridge-discard-date-v1639.js': outOfFridgeDiscardDateV1639,
   'otc-child-label-dose-v1639.js': otcChildLabelDoseV1639,

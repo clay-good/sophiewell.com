@@ -9553,6 +9553,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/missed-dose-label-rule-v1639.js (spec-v1639: Missed dose: what the label says — clinical disclaimer)
 - `missed-dose-label-rule`
 
+### lib/lai-antipsychotic-missed-dose-v1639.js (spec-v1639: Long-acting injectable antipsychotic: missed-dose rule (FDA labels) — clinical disclaimer)
+- `lai-antipsychotic-missed-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

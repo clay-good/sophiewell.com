@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:bb23b210-5e2d-5ce1-8774-fc1e5a06af44",
+  "serialNumber": "urn:uuid:64e690e7-cf5d-520d-8e0e-8e516d821f3f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T12:04:29.664Z",
+    "timestamp": "2026-10-12T12:28:39.106Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2283 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2284 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "67ec69400af3f7c99a27565727f4231967e0b95f3007507821ee98592de446a2"
+          "content": "6c09c72236b542c3234f167fa878c6672ed4b9239f06e3112bf84694c34bad7a"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "148883"
+          "value": "148966"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bdb57427c082e219c01c3c6533b02ceb59a120c23abec8b1be00475087bc18ee"
+          "content": "8d941e80933f504a5358fe47df4f7d4318d8a8308eb87eef890acdef0f21ef6f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "629770"
+          "value": "629958"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2b0e0108edda4680928e988e6beccdb5a96f74169e13d46ea64bf32918a709bd"
+          "content": "9c6a04bf89153084e4847971f50b0dac84e549b5062ec50a908a5b48fffc72e2"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "287260"
+          "value": "287400"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1073d2b0eabc21e7aa9eb144df2f0850588ba82e2199d62646256239ca6fec44"
+          "content": "b3b84327298588d4ca8d2ddcee61028fe373bfc1716b687227c0267c64920566"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "138961"
+          "value": "139063"
         }
       ]
     },
@@ -6677,7 +6677,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "481fa9bbd8d583d34619eb527c88c6715ba36e5df6125aa962f3ca8324cd984a"
+          "content": "a38ed81c13db169508aef30f3d4cb2c86dd1f94b9038179f373fa5f883d47c5f"
         }
       ],
       "properties": [
@@ -6687,7 +6687,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7344"
+          "value": "10639"
         }
       ]
     },
@@ -7055,7 +7055,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "191c137319587def1b539f2b8f8d2580c1c166d911292f94ce2966a2a87681eb"
+          "content": "556470798026f3522f2dd9b730df084060faee6ffe32cd6eab330db4854791d3"
         }
       ],
       "properties": [
@@ -7065,7 +7065,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "14484"
+          "value": "14573"
         }
       ]
     },
@@ -8462,7 +8462,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a5242adc4eb12063911f88a9afec77847abfca348fc79c58c8e3ac74e4483e55"
+          "content": "71c5558a1c12fad3c02440bd73673beeb3bcf02f8816579fce7e3406bb8c5c73"
         }
       ],
       "properties": [
@@ -8472,7 +8472,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8963"
+          "value": "10067"
         }
       ]
     },
@@ -14468,7 +14468,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1ba323583bfa4822d5462d6b4d598d5b785da74ffcc57a925dbd89ab1fcb140c"
+          "content": "a13614bee7814d9364ebaf34173e7629f9179ee3d9367bdef6f6300131d6fe98"
         }
       ],
       "properties": [
@@ -14478,7 +14478,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "63067"
+          "value": "64280"
         }
       ]
     },
@@ -14584,6 +14584,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3354"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/lai-antipsychotic-missed-dose-v1639.js",
+      "type": "file",
+      "name": "lib/lai-antipsychotic-missed-dose-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5c8fc814f76a3a16b83727a1916b786e61d84abb8e886329a90f5ab1353b665b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12262"
         }
       ]
     },
@@ -17009,7 +17030,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9eebff4dc31ef3ae572907c669ed85610de3d6666fdbfbedc0031c26793e2065"
+          "content": "f66928819ebc656c5eb38ae94281dd6846843750aba29e969437274de771eb0b"
         }
       ],
       "properties": [
@@ -17019,7 +17040,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2993834"
+          "value": "2995625"
         }
       ]
     },
@@ -37274,7 +37295,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "02d1f55cffe5cda9295e5a2ea1e0393e2ac0b0d2e807d9469aac58c45eddd0de"
+          "content": "898035f75ef3e5ce756e1edbf8fd8904625269a6b0b7ceaef799f061ec69ec3d"
         }
       ],
       "properties": [
@@ -37284,7 +37305,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3529"
+          "value": "4379"
         }
       ]
     },
@@ -38933,7 +38954,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "47355779e0eaa541dbe27e3a070e04347e7feb40f4b1bee0f704d5e4ace910a5"
+          "content": "1da6a1dfd6c39321f9248884093f593567e17004ecfad4c744026ddddd1783fc"
         }
       ],
       "properties": [
@@ -38943,7 +38964,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "1715"
+          "value": "1843"
         }
       ]
     },
@@ -44383,6 +44404,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1257"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lai-antipsychotic-missed-dose-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/lai-antipsychotic-missed-dose-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d52f408f23ed5f6a2d92522b327cfacae69276b531a21d8f3bd7de34a020ca0e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1340"
         }
       ]
     },
@@ -58988,7 +59030,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5a99bbc717a1820257d98b022fedeac0460c4ae768b5b150e7701cf91c58cdab"
+          "content": "3147bb18e3d7e7b1e862a7822aeb9e0803c793ac46086cc299ca84379d9be6bd"
         }
       ],
       "properties": [
@@ -58998,7 +59040,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "158954"
+          "value": "159127"
         }
       ]
     },
@@ -62054,7 +62096,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1777a5e89834da85c73e4642fce3f8efc75b026698664a983c4226352b679af3"
+          "content": "f045ba549ae92399f6586f4525a4ede6fc7f7c42098ded51fffe752eb5297c2b"
         }
       ],
       "properties": [
@@ -62064,7 +62106,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "6365"
+          "value": "6562"
         }
       ]
     },
@@ -62516,7 +62558,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "473428f33c076a2b3c850ce9c6f469dfd9f7e3c17122c16ff26ee0e36b9e8c13"
+          "content": "f762da589da63fd56603549143d702d9b8309ec231800a1e0fee1150a225fd14"
         }
       ],
       "properties": [
@@ -62526,7 +62568,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "14225"
+          "value": "14875"
         }
       ]
     },
@@ -63692,7 +63734,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "53ea17f8c84405309623e24e0775c4b5098e5c1689f9d2ffef1bcfd26d26c2e7"
+          "content": "360b6418f70e5f4f72ab87500083f8303ea962a3970406a2b2d56c8e8855343c"
         }
       ],
       "properties": [
@@ -63702,7 +63744,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "18112"
+          "value": "18846"
         }
       ]
     },
@@ -95156,6 +95198,7 @@
         "urn:sophiewell:file:source:lib/label-titration-calendar-v1633.js",
         "urn:sophiewell:file:source:lib/labor-care-guide-alert-v1558.js",
         "urn:sophiewell:file:source:lib/lachman-acl-v355.js",
+        "urn:sophiewell:file:source:lib/lai-antipsychotic-missed-dose-v1639.js",
         "urn:sophiewell:file:source:lib/lai-antipsychotic-start-v1633.js",
         "urn:sophiewell:file:source:lib/lake-louise-cmr-v790.js",
         "urn:sophiewell:file:source:lib/lamotrigine-titration-calendar-v1633.js",
@@ -97524,6 +97567,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/label-titration-calendar-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/labor-care-guide-alert-v1558.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lachman-acl-v355.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lai-antipsychotic-missed-dose-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lai-antipsychotic-start-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lake-louise-cmr-v790.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lamotrigine-titration-calendar-v1633.js",
@@ -98323,7 +98367,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "bb23b2105e2d5ce1"
+      "value": "64e690e7cf5d420d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98335,7 +98379,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3735"
+      "value": "3737"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

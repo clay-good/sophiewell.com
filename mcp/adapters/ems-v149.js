@@ -31,6 +31,7 @@ export default [
       { dom: 'dv-conc', arg: 'concentration', kind: 'number', label: 'Stock concentration (mg/mL)' },
       { dom: 'dv-weight', arg: 'weightKg', kind: 'number', label: 'Weight (kg) — optional' },
       { dom: 'dv-perkg', arg: 'doseMgPerKg', kind: 'number', label: 'Per-kg dose (mg/kg) — optional' },
+      { dom: 'dv-inc', arg: 'incrementMl', kind: 'number', label: 'Smallest marking on the syringe or cup (mL) — optional' },
     ],
   },
 ];

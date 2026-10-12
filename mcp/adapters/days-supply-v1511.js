@@ -7,7 +7,7 @@ const vals = (list) => list.map((x) => x.value);
 export default [
   {
     id: 'days-supply',
-    summary: 'Days supply for tablets, liquids, insulin pens, inhalers and eye drops. Counts pen priming and caps at any in-use discard limit.',
+    summary: 'Days supply for tablets, liquids, insulin pens, inhalers and eye drops. Counts pen and inhaler priming and caps at any in-use discard limit. With a start date, the run-out date; with trip dates, the days short and the quantity that covers them.',
     compute: DS.daysSupply,
     fields: [
       { dom: 'ds-form', arg: 'form', kind: 'enum', required: true, values: vals(DS.FORMS), label: 'Dosage form' },
@@ -29,6 +29,11 @@ export default [
       { dom: 'ds-eyes', arg: 'eyes', kind: 'number', required: false, label: 'Drops: eyes treated' },
       { dom: 'ds-dpd', arg: 'dosesPerDay', kind: 'number', required: false, label: 'Doses per day (all forms but insulin)' },
       { dom: 'ds-discard', arg: 'discardDays', kind: 'number', required: false, label: 'In-use discard limit in days, if the label gives one' },
+      { dom: 'ds-primepuffs', arg: 'primingPuffs', kind: 'number', required: false, label: 'Inhaler: priming puffs per canister (optional)' },
+      { dom: 'ds-prn', arg: 'maxPerDay', kind: 'enum', required: false, values: vals(DS.YES_NO), label: 'As-needed sig: is the daily use entered the maximum allowed?' },
+      { dom: 'ds-start', arg: 'startDate', kind: 'string', required: false, label: 'Start date of the supply (YYYY-MM-DD, optional, for a run-out date)' },
+      { dom: 'ds-depart', arg: 'departDate', kind: 'string', required: false, label: 'Trip: departure date (YYYY-MM-DD, optional)' },
+      { dom: 'ds-return', arg: 'returnDate', kind: 'string', required: false, label: 'Trip: return date (YYYY-MM-DD, optional)' },
     ],
   },
   {

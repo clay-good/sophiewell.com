@@ -1040,6 +1040,7 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import laiAntipsychoticMissedDoseV1639 from './adapters/lai-antipsychotic-missed-dose-v1639.js';
 import missedDoseLabelRuleV1639 from './adapters/missed-dose-label-rule-v1639.js';
 import outOfFridgeDiscardDateV1639 from './adapters/out-of-fridge-discard-date-v1639.js';
 import otcChildLabelDoseV1639 from './adapters/otc-child-label-dose-v1639.js';
@@ -2354,6 +2355,7 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['lai-antipsychotic-missed-dose-v1639', laiAntipsychoticMissedDoseV1639],
   ['missed-dose-label-rule-v1639', missedDoseLabelRuleV1639],
   ['out-of-fridge-discard-date-v1639', outOfFridgeDiscardDateV1639],
   ['otc-child-label-dose-v1639', otcChildLabelDoseV1639],
