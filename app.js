@@ -2856,6 +2856,10 @@ const UTILITIES = [
   { id: 'emergency-contraception-window', name: 'Emergency Contraception: Hours Left on the Label', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
   { id: 'epinephrine-device-weight-band', name: 'Epinephrine Auto-Injector or Nasal Spray: Label Strength by Weight', group: 'I', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
   { id: 'nrt-step-schedule', name: 'Nicotine Replacement: Label Strength and Step-Down Calendar', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'out-of-fridge-discard-date', name: 'Out of the Refrigerator or In Use: Discard Date', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: false },
+  { id: 'otc-child-label-dose', name: 'Children\'s OTC Dose From the Drug Facts Chart', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'otc-daily-max-check', name: 'OTC 24-Hour Total Against the Label Maximum', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+  { id: 'missed-dose-label-rule', name: 'Missed Dose: What the Label Says', group: 'Q', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

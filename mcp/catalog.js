@@ -1040,6 +1040,10 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import missedDoseLabelRuleV1639 from './adapters/missed-dose-label-rule-v1639.js';
+import outOfFridgeDiscardDateV1639 from './adapters/out-of-fridge-discard-date-v1639.js';
+import otcChildLabelDoseV1639 from './adapters/otc-child-label-dose-v1639.js';
+import otcDailyMaxCheckV1639 from './adapters/otc-daily-max-check-v1639.js';
 import depotInjectionWindowV1639 from './adapters/depot-injection-window-v1639.js';
 import emergencyContraceptionWindowV1639 from './adapters/emergency-contraception-window-v1639.js';
 import epinephrineDeviceWeightBandV1639 from './adapters/epinephrine-device-weight-band-v1639.js';
@@ -2350,6 +2354,10 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['missed-dose-label-rule-v1639', missedDoseLabelRuleV1639],
+  ['out-of-fridge-discard-date-v1639', outOfFridgeDiscardDateV1639],
+  ['otc-child-label-dose-v1639', otcChildLabelDoseV1639],
+  ['otc-daily-max-check-v1639', otcDailyMaxCheckV1639],
   ['depot-injection-window-v1639', depotInjectionWindowV1639],
   ['emergency-contraception-window-v1639', emergencyContraceptionWindowV1639],
   ['epinephrine-device-weight-band-v1639', epinephrineDeviceWeightBandV1639],

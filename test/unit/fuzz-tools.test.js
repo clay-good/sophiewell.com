@@ -770,6 +770,10 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as missedDoseLabelRuleV1639 from '../../lib/missed-dose-label-rule-v1639.js';
+import * as outOfFridgeDiscardDateV1639 from '../../lib/out-of-fridge-discard-date-v1639.js';
+import * as otcChildLabelDoseV1639 from '../../lib/otc-child-label-dose-v1639.js';
+import * as otcDailyMaxCheckV1639 from '../../lib/otc-daily-max-check-v1639.js';
 import * as depotInjectionWindowV1639 from '../../lib/depot-injection-window-v1639.js';
 import * as emergencyContraceptionWindowV1639 from '../../lib/emergency-contraception-window-v1639.js';
 import * as epinephrineDeviceWeightBandV1639 from '../../lib/epinephrine-device-weight-band-v1639.js';
@@ -1864,6 +1868,10 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'missed-dose-label-rule-v1639.js': missedDoseLabelRuleV1639,
+  'out-of-fridge-discard-date-v1639.js': outOfFridgeDiscardDateV1639,
+  'otc-child-label-dose-v1639.js': otcChildLabelDoseV1639,
+  'otc-daily-max-check-v1639.js': otcDailyMaxCheckV1639,
   'depot-injection-window-v1639.js': depotInjectionWindowV1639,
   'emergency-contraception-window-v1639.js': emergencyContraceptionWindowV1639,
   'epinephrine-device-weight-band-v1639.js': epinephrineDeviceWeightBandV1639,

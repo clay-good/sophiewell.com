@@ -906,3 +906,11 @@ experience**.
 > v1639, Epinephrine Auto-Injector or Nasal Spray: Label Strength by Weight — [spec-v1639](spec-v1639.md), which adds `epinephrine-device-weight-band` — is 2278.)
 
 > v1639, Nicotine Replacement: Label Strength and Step-Down Calendar — [spec-v1639](spec-v1639.md), which adds `nrt-step-schedule` — is 2279.)
+
+> v1639, Out of the Refrigerator or In Use: Discard Date — [spec-v1639](spec-v1639.md), which adds `out-of-fridge-discard-date` — is 2280.)
+
+> v1639, Children's OTC Dose From the Drug Facts Chart — [spec-v1639](spec-v1639.md), which adds `otc-child-label-dose` — is 2281.)
+
+> v1639, OTC 24-Hour Total Against the Label Maximum — [spec-v1639](spec-v1639.md), which adds `otc-daily-max-check` — is 2282.)
+
+> v1639, Missed Dose: What the Label Says — [spec-v1639](spec-v1639.md), which adds `missed-dose-label-rule` — is 2283.)

@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Missed Dose: What the Label Says. Twenty product rows on sixteen labels (anticoagulants, GLP-1
+  products, weekly and monthly bisphosphonates), each evaluated on the times entered, with the
+  deadline that decided it and the label's sentence.
+- Three more tools that read FDA labels: Out of the Refrigerator or In Use: Discard Date (nineteen
+  labels); Children's OTC Dose From the Drug Facts Chart (eleven charts; "ask a doctor" and "do not
+  use" rows are returned as the answer); and OTC 24-Hour Total Against the Label Maximum, which
+  states the limit and never calls a total safe.
 - Four tools that read FDA labels: Depot Injection: Next Due Date and Window; Emergency
   Contraception: Hours Left on the Label; Epinephrine Auto-Injector or Nasal Spray: Label Strength
   by Weight; and Nicotine Replacement: Label Strength and Step-Down Calendar. Twelve labels joined

@@ -1,7 +1,8 @@
 // spec-v1639: counter practice. Quantities, missed doses and the questions patients ask at the counter.
 // quantity-to-dispense, topical-quantity-ftu, oral-suspension-course, contraceptive-missed-pill,
 // contraception-start-backup, depot-injection-window, emergency-contraception-window,
-// epinephrine-device-weight-band, nrt-step-schedule.
+// epinephrine-device-weight-band, nrt-step-schedule, out-of-fridge-discard-date, otc-child-label-dose,
+// otc-daily-max-check, missed-dose-label-rule.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -14,6 +15,10 @@ import * as DW from '../lib/depot-injection-window-v1639.js';
 import * as EC from '../lib/emergency-contraception-window-v1639.js';
 import * as EP from '../lib/epinephrine-device-weight-band-v1639.js';
 import * as NR from '../lib/nrt-step-schedule-v1639.js';
+import * as FD from '../lib/out-of-fridge-discard-date-v1639.js';
+import * as CD from '../lib/otc-child-label-dose-v1639.js';
+import * as DM from '../lib/otc-daily-max-check-v1639.js';
+import * as MD from '../lib/missed-dose-label-rule-v1639.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -223,6 +228,77 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = NR.nrtStepSchedule(args, new Date());
+      show(r, o);
+      if (r.valid) labelLinks(r, o);
+    }));
+  },
+  'out-of-fridge-discard-date'(root) {
+    const pairs = [['ofd-product', 'product'], ['ofd-kept', 'kept'], ['ofd-out', 'outOfFridge'], ['ofd-first', 'firstUse'], ['ofd-exp', 'expirationDate'], ['ofd-asof', 'asOf'], ['ofd-own-room', 'ownRoomDays'], ['ofd-own-inuse', 'ownInUseDays']];
+    selectField(root, 'Product', 'ofd-product', FD.PRESETS);
+    selectField(root, 'Kept within the label\'s temperature range?', 'ofd-kept', FD.KEPT);
+    dateField(root, 'Date it left the refrigerator', 'ofd-out');
+    dateField(root, 'Date of first use', 'ofd-first');
+    dateField(root, 'Expiration date on the product (optional)', 'ofd-exp');
+    dateField(root, 'Today\'s date, to count the days left (optional)', 'ofd-asof');
+    numField(root, 'Another product: the label\'s days at room temperature', 'ofd-own-room', 'e.g. 14');
+    numField(root, 'Another product: the label\'s days after first use', 'ofd-own-inuse', 'e.g. 28');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = FD.outOfFridgeDiscardDate(args, new Date());
+      show(r, o);
+      if (r.valid) labelLinks(r, o);
+    }));
+  },
+  'otc-child-label-dose'(root) {
+    const pairs = [['ocd-product', 'product'], ['ocd-weight', 'weight'], ['ocd-unit', 'weightUnit'], ['ocd-years', 'ageYears'], ['ocd-months', 'ageMonths']];
+    note(root, 'This looks a child up in the chart printed on the carton. It covers only the products and strengths listed; another strength is not scaled.');
+    selectField(root, 'Product and strength on the label', 'ocd-product', CD.PRODUCTS);
+    numField(root, 'Child\'s weight', 'ocd-weight', 'e.g. 40');
+    selectField(root, 'Weight is in', 'ocd-unit', CD.UNITS);
+    numField(root, 'Age: whole years', 'ocd-years', 'e.g. 4');
+    numField(root, 'Age: extra months (0 to 11)', 'ocd-months', 'e.g. 6').querySelector('input').setAttribute('max', '11');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = CD.otcChildLabelDose(args, new Date());
+      show(r, o);
+      if (r.valid) labelLinks(r, o);
+    }));
+  },
+  'otc-daily-max-check'(root) {
+    const pairs = [['odm-ingredient', 'ingredient'], ['odm-age', 'ageYears'], ['odm-amount', 'amount24h'], ['odm-unitmg', 'unitMg'], ['odm-single', 'singleDose'], ['odm-interval', 'intervalHours'], ['odm-days', 'days']];
+    selectField(root, 'Active ingredient', 'odm-ingredient', DM.INGREDIENTS);
+    numField(root, 'Age in years', 'odm-age', 'e.g. 30');
+    numField(root, 'Units taken or planned in 24 hours (capsules, tablets, mL or doses)', 'odm-amount', 'e.g. 6');
+    numField(root, 'Monograph ingredients: milligrams in each unit', 'odm-unitmg', 'e.g. 25');
+    numField(root, 'Units in one dose (optional)', 'odm-single', 'e.g. 2');
+    numField(root, 'Hours between doses (optional)', 'odm-interval', 'e.g. 6');
+    numField(root, 'MiraLAX: days of use (optional)', 'odm-days', 'e.g. 3');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = DM.otcDailyMaxCheck(args, new Date());
+      show(r, o);
+      if (r.valid) labelLinks(r, o);
+    }));
+  },
+  'missed-dose-label-rule'(root) {
+    const pairs = [['mdl-product', 'product'], ['mdl-due', 'dueAt'], ['mdl-now', 'nowAt'], ['mdl-next', 'nextDoseAt'], ['mdl-last', 'lastDoseAt'], ['mdl-tablets', 'tabletsMissed']];
+    selectField(root, 'Product and regimen', 'mdl-product', MD.PRODUCTS);
+    dateField(root, 'When the missed dose was due', 'mdl-due', 'datetime-local');
+    dateField(root, 'Date and time now', 'mdl-now', 'datetime-local');
+    dateField(root, 'Next scheduled dose (dabigatran, Wegovy, Trulicity, monthly tablets)', 'mdl-next', 'datetime-local');
+    dateField(root, 'Liraglutide: when the last dose was taken', 'mdl-last', 'datetime-local');
+    selectField(root, 'Risedronate 75 mg: tablets missed', 'mdl-tablets', MD.TABLETS_MISSED);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MD.missedDoseLabelRule(args, new Date());
       show(r, o);
       if (r.valid) labelLinks(r, o);
     }));

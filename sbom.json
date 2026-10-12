@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:f1257235-af3d-57b7-8bf7-168c9902b675",
+  "serialNumber": "urn:uuid:bb23b210-5e2d-5ce1-8774-fc1e5a06af44",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T11:18:25.707Z",
+    "timestamp": "2026-10-12T12:04:29.664Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2279 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2283 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "21fd7726e1e6915e15b486627e502e2b132d3188f01cc655e67817f09093bb3b"
+          "content": "67ec69400af3f7c99a27565727f4231967e0b95f3007507821ee98592de446a2"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "148652"
+          "value": "148883"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4aaa9e4c89d5b127205fafb629d5321b6888442859d24b76d8f462de86e24d7b"
+          "content": "bdb57427c082e219c01c3c6533b02ceb59a120c23abec8b1be00475087bc18ee"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "629098"
+          "value": "629770"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "23adeedeab5d98d6a843d0a315fb3ea1ef0b0710757e9ef6fe7474da8879751c"
+          "content": "2b0e0108edda4680928e988e6beccdb5a96f74169e13d46ea64bf32918a709bd"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "286729"
+          "value": "287260"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "22b8a45440cea8792820ef02fe29b5707d8f5819627074b4a86a57f0b7163595"
+          "content": "1073d2b0eabc21e7aa9eb144df2f0850588ba82e2199d62646256239ca6fec44"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "138683"
+          "value": "138961"
         }
       ]
     },
@@ -14468,7 +14468,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6ead07c6059e1b61ff067c481e1144ac5f5674db474bf01e69fa128552258afc"
+          "content": "1ba323583bfa4822d5462d6b4d598d5b785da74ffcc57a925dbd89ab1fcb140c"
         }
       ],
       "properties": [
@@ -14478,7 +14478,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "57463"
+          "value": "63067"
         }
       ]
     },
@@ -17009,7 +17009,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d4f08186a7e3e3f49874ab43fa0956a612e3e140e2844f8179cb58ab50f40a49"
+          "content": "9eebff4dc31ef3ae572907c669ed85610de3d6666fdbfbedc0031c26793e2065"
         }
       ],
       "properties": [
@@ -17019,7 +17019,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2986978"
+          "value": "2993834"
         }
       ]
     },
@@ -17482,6 +17482,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5510"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/missed-dose-label-rule-v1639.js",
+      "type": "file",
+      "name": "lib/missed-dose-label-rule-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "162238bf46df66d22067ade0e944e86c1b85f81a179beb70a5d603ac68ff78df"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "20752"
         }
       ]
     },
@@ -20363,6 +20384,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/otc-child-label-dose-v1639.js",
+      "type": "file",
+      "name": "lib/otc-child-label-dose-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dffb7f67b1c7f67292bbf5ce56203622b0a4448aa0e063a7e13ae53c826473b6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "16856"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/otc-daily-max-check-v1639.js",
+      "type": "file",
+      "name": "lib/otc-daily-max-check-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9f3ecbb42a62adba00d770961a8060b14ffcb650c3508ce09fc47725d9f63563"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "16922"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/otp-admission-clock-v1637.js",
       "type": "file",
       "name": "lib/otp-admission-clock-v1637.js",
@@ -20443,6 +20506,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10239"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/out-of-fridge-discard-date-v1639.js",
+      "type": "file",
+      "name": "lib/out-of-fridge-discard-date-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dcabd31ed7c96e0d5d06d39a580d2bf0e2d4ad3c0152bf8e7d6a5ae8ca5347c4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "17912"
         }
       ]
     },
@@ -47054,6 +47138,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/missed-dose-label-rule-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/missed-dose-label-rule-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e90d2b9789f5b6730a6493be294245e67d18594dc9c62f5f54cf954abe11c36"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1656"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mitral-regurgitation-stage-v847.js",
       "type": "file",
       "name": "mcp/adapters/mitral-regurgitation-stage-v847.js",
@@ -49658,6 +49763,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/otc-child-label-dose-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/otc-child-label-dose-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bf67b3e5298a72d3db6203ca70f16fb42536e66886c9e0b13348900ff4f88d3b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1445"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/otc-daily-max-check-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/otc-daily-max-check-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9b66a18b53face5d2c2a573699ea4308e67266738ae772f68eb218e45698e3c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1821"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/otp-admission-clock-v1637.js",
       "type": "file",
       "name": "mcp/adapters/otp-admission-clock-v1637.js",
@@ -49738,6 +49885,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1806"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/out-of-fridge-discard-date-v1639.js",
+      "type": "file",
+      "name": "mcp/adapters/out-of-fridge-discard-date-v1639.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d7e3d1c92ce2488786f0ded6b845b80ebcef4b44e0f61bc62a56a17bdade2d12"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1933"
         }
       ]
     },
@@ -58820,7 +58988,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3907df3876e734fe049273f9e3606d87fff293a105ea977d261bff942166a189"
+          "content": "5a99bbc717a1820257d98b022fedeac0460c4ae768b5b150e7701cf91c58cdab"
         }
       ],
       "properties": [
@@ -58830,7 +58998,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "158380"
+          "value": "158954"
         }
       ]
     },
@@ -63524,7 +63692,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0538cffcddd82faa82b3753dc79a37920a1864aa2aa452bd68ab1726640c2953"
+          "content": "53ea17f8c84405309623e24e0775c4b5098e5c1689f9d2ffef1bcfd26d26c2e7"
         }
       ],
       "properties": [
@@ -63534,7 +63702,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "13280"
+          "value": "18112"
         }
       ]
     },
@@ -95126,6 +95294,7 @@
         "urn:sophiewell:file:source:lib/min-weighable-quantity-v1629.js",
         "urn:sophiewell:file:source:lib/minor-self-consent-v1395.js",
         "urn:sophiewell:file:source:lib/mis-c-v795.js",
+        "urn:sophiewell:file:source:lib/missed-dose-label-rule-v1639.js",
         "urn:sophiewell:file:source:lib/mitral-regurgitation-stage-v847.js",
         "urn:sophiewell:file:source:lib/mitral-stenosis-stage-v845.js",
         "urn:sophiewell:file:source:lib/mixed-v227.js",
@@ -95263,10 +95432,13 @@
         "urn:sophiewell:file:source:lib/osdi-v558.js",
         "urn:sophiewell:file:source:lib/osi-onychomycosis-v674.js",
         "urn:sophiewell:file:source:lib/oswestry-v643.js",
+        "urn:sophiewell:file:source:lib/otc-child-label-dose-v1639.js",
+        "urn:sophiewell:file:source:lib/otc-daily-max-check-v1639.js",
         "urn:sophiewell:file:source:lib/otp-admission-clock-v1637.js",
         "urn:sophiewell:file:source:lib/otp-take-home-limit-v1637.js",
         "urn:sophiewell:file:source:lib/ottawa-bowel-prep-v670.js",
         "urn:sophiewell:file:source:lib/oud-telemedicine-rx-window-v1637.js",
+        "urn:sophiewell:file:source:lib/out-of-fridge-discard-date-v1639.js",
         "urn:sophiewell:file:source:lib/outerbridge-v337.js",
         "urn:sophiewell:file:source:lib/output-guard.js",
         "urn:sophiewell:file:source:lib/own-notice.js",
@@ -97483,6 +97655,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/min-weighable-quantity-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/minor-self-consent-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mis-c-v795.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/missed-dose-label-rule-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mitral-regurgitation-stage-v847.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mitral-stenosis-stage-v845.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mixed-v227.js",
@@ -97607,10 +97780,13 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/osdi-v558.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/osi-onychomycosis-v674.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/oswestry-v643.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/otc-child-label-dose-v1639.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/otc-daily-max-check-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/otp-admission-clock-v1637.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/otp-take-home-limit-v1637.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ottawa-bowel-prep-v670.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/oud-telemedicine-rx-window-v1637.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/out-of-fridge-discard-date-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/outerbridge-v337.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pa-criteria-v1502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pa-metrics-compare.js",
@@ -98147,7 +98323,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "f1257235af3d17b7"
+      "value": "bb23b2105e2d5ce1"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98159,7 +98335,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3727"
+      "value": "3735"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

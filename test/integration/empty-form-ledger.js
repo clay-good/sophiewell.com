@@ -143,6 +143,12 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "depot-injection-window",
   // spec-v1639: the hours come from two required date-times; the tool has no number or text field.
   "emergency-contraception-window",
+  // spec-v1639: for a listed product the discard date comes from two required selects and a date. The
+  // only number fields are the limits a reader enters for a product that is not listed.
+  "out-of-fridge-discard-date",
+  // spec-v1639: the label's rule is evaluated on a required product and required date-times; the tool
+  // has no number or text field.
+  "missed-dose-label-rule",
   // spec-v1637: the last valid shipment date comes from the execution date and two required selects.
   // The only text field is the optional list of shipment dates to check against it.
   "dea-222-validity",

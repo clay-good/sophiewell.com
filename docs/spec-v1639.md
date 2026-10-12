@@ -1,6 +1,6 @@
 # spec-v1639 — The community pharmacy counter: quantities, label schedules, OTC label doses and patient-facing clocks
 
-**Status:** In progress. 9 of 15 tools built (October 12, 2026); see Build status. 15 new tools (1 build-gated), 7 backfills.
+**Status:** In progress. 13 of 15 tools built (October 12, 2026); see Build status. 15 new tools (1 build-gated), 7 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A community pharmacist, the technician at the fill station, and the patient or caregiver on the
@@ -961,11 +961,15 @@ Built tools are in `views/group-v1639.js`. Sources were re-read on October 12, 2
 | 2. `topical-quantity-ftu` | Built on the abstract of Long and Finlay 1991 (area counts and standard deviations) and the gram weights as restated in Paterson et al., *Pharmaceutics* 2018;10(1):9. Adults only. The 1991 full text and the 1998 children's table were not read. |
 | 3. `oral-suspension-course` | Built. One bottle size; the course's day 1 is the day the bottle is mixed. |
 | 4. `depot-injection-window` | Built on section 2 of the five labels and CDC's "Timing of Repeat Injections". The label line and CDC's line are printed apart. Sublocade asks whether the next injection is the second or a maintenance dose, since the 26-day line is for maintenance doses. A planned date is optional. |
+| 6. `missed-dose-label-rule` | Built on section 2 of sixteen labels: twenty product and regimen rows. Every time is entered; a date alone is read as midnight. The label for set id `27f15fac` names its products Rybelsus and Ozempic tablets; Wegovy tablets are in the Wegovy label with the same rule. Wegovy at exactly 2 days before the next dose shows both rows. **Not built:** the change-of-day rules, Xarelto's pediatric rules, Bydureon BCise (no label looked for again at build). |
 | 7. `contraceptive-missed-pill` | Built on CDC's text and on Figures 1 and 5, read on the figure images. The branch follows the hours since the pill was due, as the figures do; a pill count that disagrees with the hours is said in the result and not used. Owner decision 1 stands as written: the combined-pill branch is kept and every result says the label may differ. |
 | 8. `emergency-contraception-window` | Built on the Plan B One-Step Directions, ella section 2 and CDC's "Emergency Contraception". The follow-on dates are counted from the time entered as now, as if the pill were taken then. Owner decision 3 stands as written: the label's 72 hours and CDC's 5 days are both shown. |
 | 9. `contraception-start-backup` | Built on the six "Need for Back-Up Contraception" passages and Box 3. The day bleeding starts is day 1, which is the reading CDC's drospirenone line fixes. |
+| 10. `otc-child-label-dose` | Built on the eleven Drug Facts charts, OTC Monograph M013.50(d)(2) and 21 CFR 357.150(d)(1). A weight between two whole-pound rows (35.5 lb) shows both rows and picks neither. Where weight and age land on different rows both are shown with the label's sentence. The pyrantel tablet is 250 mg of base, read on the active-ingredient line. Store-brand strengths are refused, not mapped. |
+| 11. `otc-daily-max-check` | Built on six Drug Facts labels and on OTC Monographs M012 and M013 (both posted October 14, 2022, both opened; the doses match 21 CFR part 341 as the eCFR carried it on October 8, 2026). Age is entered in years. Under 12 the loperamide rows are left to tool 10. Not checked at build: whether proposed order OTC000035 is final. |
 | 12. `nrt-step-schedule` | Built on the four Drug Facts labels. For gum and lozenge the label gives a daily minimum only for weeks 1 to 6, so later steps carry a maximum and no minimum. |
 | 13. `epinephrine-device-weight-band` | Built (group I). A weight in pounds is converted for the Auvi-Q and neffy tables, which are in kg only, and placed on the EpiPen label's own pound figures (33 and 66). Exactly 30 kg or 66 lb shows both EpiPen bands. |
+| 14. `out-of-fridge-discard-date` | Built on section 16 of nineteen labels. Dates only; no time of day. A required answer says whether the product stayed within the label's temperature range; above it, no date is shown. The Ozempic prefilled syringe, Wegovy FlexTouch and NovoLog pump figures are named in the result and not computed. Tirzepatide's "4 weekly doses" limit is stated and not counted. |
 
-Not built yet: tools 5, 6, 10, 11 and 14 (each rests on label rows that are re-read and
-registered first), tool 15 (owner-gated), and the backfills.
+Not built yet: tool 5 (long-acting injectable antipsychotic missed doses, eleven labels), tool 15
+(owner-gated), and the backfills.

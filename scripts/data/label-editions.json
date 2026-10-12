@@ -66,14 +66,16 @@
     "labeler": "ALLERGAN, INC.",
     "setId": "24ed00e0-25e2-49a8-97fc-66c1b417dc0b",
     "tools": [
-      "bisphosphonate-renal-check"
+      "bisphosphonate-renal-check",
+      "missed-dose-label-rule"
     ],
     "splVersion": 31,
     "publishedOn": "2026-05-11",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "43684-0": "6f47edcd86ef6e483042c165dec7a9eeac6e13c4ee224220709a5e74db4f306a"
+      "43684-0": "6f47edcd86ef6e483042c165dec7a9eeac6e13c4ee224220709a5e74db4f306a",
+      "34068-7": "2fcf1b4a79a7e1d7cc9bc253ca908c06622e564a537a4500353b4a1e0d95b73d"
     }
   },
   {
@@ -483,14 +485,16 @@
     "labeler": "ELI LILLY AND COMPANY",
     "setId": "0ad21db3-2b1c-4ed9-a687-bdd6a74d0aae",
     "tools": [
-      "basal-insulin-switch"
+      "basal-insulin-switch",
+      "out-of-fridge-discard-date"
     ],
     "splVersion": 35,
     "publishedOn": "2026-08-10",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "eea0870ccde56c7c6a862a7a8ab0cfe6c64c65af049b3f04a0a14615d0578bb0"
+      "34068-7": "eea0870ccde56c7c6a862a7a8ab0cfe6c64c65af049b3f04a0a14615d0578bb0",
+      "34069-5": "784f6ae8edd7b5c129a54d8086b167df9b155c7be64adc9cfd4cecb5c2216ccb"
     }
   },
   {
@@ -1354,12 +1358,13 @@
     "tools": [
       "doac-dose-check",
       "anticoag-switch-clock",
-      "doac-periprocedural-timing"
+      "doac-periprocedural-timing",
+      "missed-dose-label-rule"
     ],
     "splVersion": 30,
     "publishedOn": "2025-05-05",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "736d4d82c00b0a32af8260afe954c418fc20303872927ed2451ffbe8317e0588"
     }
@@ -1622,14 +1627,16 @@
     "labeler": "ORGANON LLC",
     "setId": "14e931fd-2c5f-4d90-b7db-5980706f4a56",
     "tools": [
-      "bisphosphonate-renal-check"
+      "bisphosphonate-renal-check",
+      "missed-dose-label-rule"
     ],
     "splVersion": 10,
     "publishedOn": "2026-03-16",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "43684-0": "88ad4b15e08a7b8b70838890e60d907ab61fada46ffba07ea9ffeb87690b6ea4"
+      "43684-0": "88ad4b15e08a7b8b70838890e60d907ab61fada46ffba07ea9ffeb87690b6ea4",
+      "34068-7": "ce8ddc80c971d7365017202b1e415bc361cc3a1401051b1e0fb49751f16a445c"
     }
   },
   {
@@ -2124,14 +2131,16 @@
     "labeler": "SANOFI-AVENTIS U.S. LLC",
     "setId": "d5e07a0c-7e14-4756-9152-9fea485d654a",
     "tools": [
-      "basal-insulin-switch"
+      "basal-insulin-switch",
+      "out-of-fridge-discard-date"
     ],
     "splVersion": 35,
     "publishedOn": "2025-07-02",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "21ec73a5b8f78b0ac3658e35255586cb68cf08abd9317a2351fd74e50b1d525d"
+      "34068-7": "21ec73a5b8f78b0ac3658e35255586cb68cf08abd9317a2351fd74e50b1d525d",
+      "34069-5": "72fe13faba507d987b03df06dd5cb7afc742c52b3cb93a8bda5426c0b1be9a05"
     }
   },
   {
@@ -2418,14 +2427,17 @@
     "labeler": "ELI LILLY AND COMPANY",
     "setId": "d2d7da5d-ad07-4228-955f-cf7e355c8cc0",
     "tools": [
-      "glp1-titration-check"
+      "glp1-titration-check",
+      "out-of-fridge-discard-date",
+      "missed-dose-label-rule"
     ],
     "splVersion": 40,
     "publishedOn": "2026-09-02",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "8c9843965cf5e7ac10f02bcf8d15bc6fadab65127715f4bf1569bf4e78bddb34"
+      "34068-7": "8c9843965cf5e7ac10f02bcf8d15bc6fadab65127715f4bf1569bf4e78bddb34",
+      "34069-5": "e15417da363e5a80d542a3aa7c1a56b83c8ccc8af8b697085073b6e252b973b7"
     }
   },
   {
@@ -2682,14 +2694,17 @@
     "labeler": "NOVO NORDISK PHARMACEUTICAL INDUSTRIES, LP",
     "setId": "adec4fd2-6858-4c99-91d4-531f5f2a2d79",
     "tools": [
-      "glp1-titration-check"
+      "glp1-titration-check",
+      "out-of-fridge-discard-date",
+      "missed-dose-label-rule"
     ],
     "splVersion": 20,
     "publishedOn": "2026-06-10",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "aa8e1c1330f7ba227f8071bd5ed6bbe5c0fb5463bdf1aa1f3b6073fba38f956f"
+      "34068-7": "aa8e1c1330f7ba227f8071bd5ed6bbe5c0fb5463bdf1aa1f3b6073fba38f956f",
+      "34069-5": "4d64a6754e832327b73154b70dd3b763f523abd45ca47295533277495f61a124"
     }
   },
   {
@@ -2794,12 +2809,13 @@
     "tools": [
       "doac-dose-check",
       "anticoag-switch-clock",
-      "doac-periprocedural-timing"
+      "doac-periprocedural-timing",
+      "missed-dose-label-rule"
     ],
     "splVersion": 48,
     "publishedOn": "2025-06-30",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "5880785c3875a8939ae0bf104ca6fb1a5af1b4e2a5f6d20f1943c4244ce3cdc3"
     }
@@ -3012,12 +3028,13 @@
     "labeler": "NOVO NORDISK PHARMACEUTICAL INDUSTRIES, LP",
     "setId": "27f15fac-7d98-4114-a2ec-92494a91da98",
     "tools": [
-      "glp1-titration-check"
+      "glp1-titration-check",
+      "missed-dose-label-rule"
     ],
     "splVersion": 14,
     "publishedOn": "2026-08-19",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "83a131558305189869e08decd90b0e8af9a6706f0c3010c990c183d428a6674f"
     }
@@ -3029,12 +3046,13 @@
     "tools": [
       "doac-dose-check",
       "anticoag-switch-clock",
-      "doac-periprocedural-timing"
+      "doac-periprocedural-timing",
+      "missed-dose-label-rule"
     ],
     "splVersion": 28,
     "publishedOn": "2025-07-14",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "7a33cd844e37793d85468844110e0f40433b56ce62109eb0bd8446074b24acd2",
       "43684-0": "a85b2ebaa9771f9fe7743a7280a338a7dba95522a6b9fc1688a33eabd3d4c8e6",
@@ -3062,14 +3080,17 @@
     "labeler": "NOVO NORDISK PHARMACEUTICAL INDUSTRIES, LP",
     "setId": "3946d389-0926-4f77-a708-0acb8153b143",
     "tools": [
-      "glp1-titration-check"
+      "glp1-titration-check",
+      "out-of-fridge-discard-date",
+      "missed-dose-label-rule"
     ],
     "splVersion": 22,
     "publishedOn": "2026-06-15",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "53964965bb044977a7ad3609baf47ed3c3f53c8549ee4649f8469c8450f08d74"
+      "34068-7": "53964965bb044977a7ad3609baf47ed3c3f53c8549ee4649f8469c8450f08d74",
+      "34069-5": "f09baec0538e0bd1c80634d035ff35cbffe091b186b5c8d0ebb33c4df869d624"
     }
   },
   {
@@ -3144,14 +3165,16 @@
     "setId": "6189fb21-9432-45f8-8481-0bfaf3ccde95",
     "tools": [
       "buprenorphine-oud-product-switch",
-      "depot-injection-window"
+      "depot-injection-window",
+      "out-of-fridge-discard-date"
     ],
     "splVersion": 43,
     "publishedOn": "2026-07-28",
     "verifiedOn": "2026-10-12",
     "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "01ff0be85d4ad70bcd1a9eb78f58b0a077e974bdd62d321fa0fd84dc73bd74cc"
+      "34068-7": "01ff0be85d4ad70bcd1a9eb78f58b0a077e974bdd62d321fa0fd84dc73bd74cc",
+      "34069-5": "ce10aa86e3051ecefccbc3021bbbb0d1e773113d57e81bfb35b6726cd1d925b2"
     }
   },
   {
@@ -3364,14 +3387,16 @@
     "labeler": "SANOFI-AVENTIS U.S. LLC",
     "setId": "c9561d96-124d-48ca-982f-0aa1575bff36",
     "tools": [
-      "basal-insulin-switch"
+      "basal-insulin-switch",
+      "out-of-fridge-discard-date"
     ],
     "splVersion": 25,
     "publishedOn": "2025-06-12",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "5a846a394fab651d52503c95f77788974f0e0ec101e4205352b0a98dccb76c73"
+      "34068-7": "5a846a394fab651d52503c95f77788974f0e0ec101e4205352b0a98dccb76c73",
+      "34069-5": "88e577f4959231e453b07c9c03d54715ea0f115cfd8e44cb73491f11801e8ac1"
     }
   },
   {
@@ -3439,14 +3464,16 @@
     "labeler": "NOVO NORDISK",
     "setId": "456c5e87-3dfd-46fa-8ac0-c6128d4c97c6",
     "tools": [
-      "basal-insulin-switch"
+      "basal-insulin-switch",
+      "out-of-fridge-discard-date"
     ],
     "splVersion": 14,
     "publishedOn": "2022-07-20",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "c3d0498669328e6338951d9c26b1db817e54928afc96c68a8cd859485138aed7"
+      "34068-7": "c3d0498669328e6338951d9c26b1db817e54928afc96c68a8cd859485138aed7",
+      "34069-5": "6d87e32ef23dbb604547d75d8d09f8d96df158d181ed7b2c17ed9e2d36aafef2"
     }
   },
   {
@@ -3470,14 +3497,17 @@
     "labeler": "ELI LILLY AND COMPANY",
     "setId": "463050bd-2b1c-40f5-b3c3-0a04bb433309",
     "tools": [
-      "glp1-titration-check"
+      "glp1-titration-check",
+      "out-of-fridge-discard-date",
+      "missed-dose-label-rule"
     ],
     "splVersion": 62,
     "publishedOn": "2026-08-10",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "6536b544eeca0f54a71ec5a54b95624d213ecdc59f2cc7ac5a464e464091c474"
+      "34068-7": "6536b544eeca0f54a71ec5a54b95624d213ecdc59f2cc7ac5a464e464091c474",
+      "34069-5": "64bb533f707d27d2cb529d8dfab9a2c993696d9f9e109ae0f3f736010539e55e"
     }
   },
   {
@@ -3668,14 +3698,17 @@
     "labeler": "NOVO NORDISK",
     "setId": "5a9ef4ea-c76a-4d34-a604-27c5b505f5a4",
     "tools": [
-      "glp1-titration-check"
+      "glp1-titration-check",
+      "out-of-fridge-discard-date",
+      "missed-dose-label-rule"
     ],
     "splVersion": 31,
     "publishedOn": "2025-11-17",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "351a13d8a484f8960100ba26523518e3701691cb53e17670e7126b00062a26dd"
+      "34068-7": "351a13d8a484f8960100ba26523518e3701691cb53e17670e7126b00062a26dd",
+      "34069-5": "84f6eb0b38cc6c4ed6f9b99ed24daa4ef5dff7571c9480a73af9d0ea191c7c0d"
     }
   },
   {
@@ -3748,14 +3781,17 @@
     "labeler": "NOVO NORDISK PHARMACEUTICAL INDUSTRIES, LP",
     "setId": "ee06186f-2aa3-4990-a760-757579d8f77b",
     "tools": [
-      "glp1-titration-check"
+      "glp1-titration-check",
+      "out-of-fridge-discard-date",
+      "missed-dose-label-rule"
     ],
     "splVersion": 19,
     "publishedOn": "2026-06-30",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "c6c3fed138793feeced32d913a1fe6e3112126f85e851bd55b0f5f0fa11a66ff"
+      "34068-7": "c6c3fed138793feeced32d913a1fe6e3112126f85e851bd55b0f5f0fa11a66ff",
+      "34069-5": "f60678db2b82e73904527f0bb4d92c08c04b41e745a08a01f9ffc424ff0654b1"
     }
   },
   {
@@ -3766,12 +3802,13 @@
       "cockcroft-gault",
       "doac-dose-check",
       "anticoag-switch-clock",
-      "doac-periprocedural-timing"
+      "doac-periprocedural-timing",
+      "missed-dose-label-rule"
     ],
     "splVersion": 65,
     "publishedOn": "2026-09-11",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "13698281595712c0fba642e5ce074a149bfe814601b1b5037d2d568688a518e3"
     }
@@ -3813,14 +3850,17 @@
     "labeler": "ELI LILLY AND COMPANY",
     "setId": "487cd7e7-434c-4925-99fa-aa80b1cc776b",
     "tools": [
-      "glp1-titration-check"
+      "glp1-titration-check",
+      "out-of-fridge-discard-date",
+      "missed-dose-label-rule"
     ],
     "splVersion": 40,
     "publishedOn": "2026-09-02",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "0e884645accf9522ab84a501e3ff9a91f1736255b0d7e77fdffd3f216160cf52"
+      "34068-7": "0e884645accf9522ab84a501e3ff9a91f1736255b0d7e77fdffd3f216160cf52",
+      "34069-5": "20c888c854430edb97206046dc1717f12fb54f73bfc4a98de3415d178c75459a"
     }
   },
   {
@@ -4046,6 +4086,368 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "69e528e30c202556d04bedabf3d0514a5db4c422809cd06816f7f3d9b2c8ab50"
+    }
+  },
+  {
+    "label": "Humalog (insulin lispro), Lilly",
+    "labeler": "ELI LILLY AND COMPANY",
+    "setId": "c8ecbd7a-0e22-4fc7-a503-faa58c1b6f3f",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 87,
+    "publishedOn": "2026-08-10",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "0c0a4b86ab2702ed88960fe67c64135373f09429a991736eb7680260ad46b7f6"
+    }
+  },
+  {
+    "label": "NovoLog (insulin aspart), Novo Nordisk",
+    "labeler": "NOVO NORDISK",
+    "setId": "3a1e73a2-3009-40d0-876c-b4cb2be56fc5",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 34,
+    "publishedOn": "2025-01-22",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "2a682541a90f6aaef667ef6848fd7614e82b9fc74c97fa68a2392adff9951263"
+    }
+  },
+  {
+    "label": "Forteo (teriparatide), Lilly",
+    "labeler": "ELI LILLY AND COMPANY",
+    "setId": "aae667c5-381f-4f92-93df-2ed6158d07b0",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 44,
+    "publishedOn": "2026-08-19",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "619cfdfb3c53212138600e28de592e1475444f60f645ebfdbdaeafcd2a26becf"
+    }
+  },
+  {
+    "label": "Humira (adalimumab), AbbVie",
+    "labeler": "ABBVIE INC.",
+    "setId": "608d4f0d-b19f-46d3-749a-7159aa5f933d",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 2154,
+    "publishedOn": "2026-02-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "637f76701e3bd3cbca27873d168068e6ce0d89275ad726ac4a33194ab6f9db5e"
+    }
+  },
+  {
+    "label": "Enbrel (etanercept), Immunex",
+    "labeler": "IMMUNEX CORPORATION",
+    "setId": "a002b40c-097d-47a5-957f-7a7b1807af7f",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 216,
+    "publishedOn": "2026-03-09",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "f5cd9af4219823cdea69a9bc3194b2fa0c3a33883f2d5a345d39642b7a5117bc"
+    }
+  },
+  {
+    "label": "Dupixent (dupilumab), Sanofi",
+    "labeler": "SANOFI-AVENTIS U.S. LLC",
+    "setId": "595f437d-2729-40bb-9c62-c8ece1f82780",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 60,
+    "publishedOn": "2026-08-07",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "fdce1502a1653f2c35d64790715b8b87632fbd65d66f09956669b8f5269d7167"
+    }
+  },
+  {
+    "label": "Repatha (evolocumab), Amgen",
+    "labeler": "AMGEN USA INC.",
+    "setId": "cd61e902-166d-4aa6-9f3c-a18c1008d07e",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 32,
+    "publishedOn": "2026-08-21",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "ded242e4e1c6d53e955cd46bb020c6e1db0c4831104812d22d1e853ec3c265b6"
+    }
+  },
+  {
+    "label": "Children's Tylenol suspension (acetaminophen 160 mg per 5 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "3162733b-9382-39f1-e063-6294a90ac420",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2026-06-16",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "25d14d8ab08c12efdbdc9452bc231a80cacb564e3cac023eb86bfd3c263e1447"
+    }
+  },
+  {
+    "label": "Infants' Tylenol suspension (acetaminophen 160 mg per 5 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "997b9551-c222-4a9c-8ba1-09a5f97495fa",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 12,
+    "publishedOn": "2026-08-07",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "164e9b23602e471c12c5293b8490b5d0628dc71055582f4df65958423fd758db"
+    }
+  },
+  {
+    "label": "Children's Tylenol chewables (acetaminophen 160 mg), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "9782fe86-d72a-4231-b1ba-d3f3b4ee49e3",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 11,
+    "publishedOn": "2026-04-17",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "198eccc3bf9a7015b6733dd6920d004bb3632c40b1f9687d3683ae2d052d1061"
+    }
+  },
+  {
+    "label": "Children's Motrin suspension (ibuprofen 100 mg per 5 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "152189e5-391c-42d3-a03b-c8364e2de6bf",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 9,
+    "publishedOn": "2024-11-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "bc3edee2f0aba6c9796e75998b0f1ddae2a13a4b987077cd1d7ca45b31e63684"
+    }
+  },
+  {
+    "label": "Infants' Motrin drops (ibuprofen 50 mg per 1.25 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "c2302bfe-b367-4867-b803-29f066a42dc7",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-07-01",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e4171f864262f3d48ce5eb0c64e49d9e753291ca421b347ee32958d5b8cd657e"
+    }
+  },
+  {
+    "label": "Children's Motrin chewables (ibuprofen 100 mg), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "15b0b56d-6188-4937-b541-902022e35b24",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "502c7e969c79e0ab50c1eac5745da05fb2b545a2bd19fb03cedd3350f72bf77c"
+    }
+  },
+  {
+    "label": "Children's Benadryl Allergy liquid (diphenhydramine 12.5 mg per 5 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "fc9181b9-c92d-493e-8d7c-4a4239c6c092",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 15,
+    "publishedOn": "2026-10-09",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "386d9907d3112580b210161c1bbbad05c21642223958382a0f1b5c425acd9186"
+    }
+  },
+  {
+    "label": "Delsym (dextromethorphan polistirex extended-release suspension), Reckitt",
+    "labeler": "RECKITT BENCKISER LLC",
+    "setId": "e3e1d126-76c2-4776-8ce0-449625b7e6ba",
+    "tools": [
+      "otc-child-label-dose",
+      "otc-daily-max-check"
+    ],
+    "splVersion": 15,
+    "publishedOn": "2026-09-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "44718d8220df5c701ef9ea3eb4e2938edc84100f4d32ffa66c4e2eebc3593208"
+    }
+  },
+  {
+    "label": "Imodium A-D caplets (loperamide 2 mg), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "01da76d0-1979-4c45-9d39-c72ae4e4ffe2",
+    "tools": [
+      "otc-child-label-dose",
+      "otc-daily-max-check"
+    ],
+    "splVersion": 13,
+    "publishedOn": "2025-09-29",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "a2d9a040e1cc9f52da7e182fcae3412e06c63d1309c6641904937a83f921d499"
+    }
+  },
+  {
+    "label": "Imodium A-D liquid (loperamide 1 mg per 7.5 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "76a976d5-8bee-4158-a94d-7fbfc5544fd4",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2025-09-29",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "0575c75804be7cefe874d9a5a3aea0100389c8082ecc86bce6bba65b4c150057"
+    }
+  },
+  {
+    "label": "Pinworm Medicine (pyrantel pamoate chewable), Bionpharma",
+    "labeler": "BIONPHARMA INC.",
+    "setId": "5799a28e-4803-b192-e063-6294a90a53d7",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 1,
+    "publishedOn": "2026-09-30",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "c1a8c69d8c4a001cffc6085dbbbb8d0f6515e6900f2794a361ed1cf60bde193c"
+    }
+  },
+  {
+    "label": "Advil Liqui-Gels (ibuprofen 200 mg), Haleon",
+    "labeler": "HALEON US HOLDINGS LLC",
+    "setId": "1f01c10a-9434-91a4-2ee4-352315a6b610",
+    "tools": [
+      "otc-daily-max-check"
+    ],
+    "splVersion": 37,
+    "publishedOn": "2026-07-31",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e6e4c5f8f90d2dee598d15e65a988f77d6c3f454d0e466baec594ad82f34e2fd"
+    }
+  },
+  {
+    "label": "Aleve (naproxen sodium 220 mg), Bayer",
+    "labeler": "BAYER HEALTHCARE LLC.",
+    "setId": "3c0ddd25-5a9a-4628-a971-65fe2a9775b5",
+    "tools": [
+      "otc-daily-max-check"
+    ],
+    "splVersion": 12,
+    "publishedOn": "2025-12-08",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "14b939a7bc8ebe64984a65e08c57d9dab9d8e9d43438b68630de61945884e50b"
+    }
+  },
+  {
+    "label": "Bayer Genuine Aspirin (aspirin 325 mg), Bayer",
+    "labeler": "BAYER HEALTHCARE LLC.",
+    "setId": "44a08904-68b9-4d06-a28d-21aae3d6140c",
+    "tools": [
+      "otc-daily-max-check"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2025-12-05",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "8e64a1c5038aca386f31fe2aa2261cbb1aebb7dc9b06f300a361be0e57457039"
+    }
+  },
+  {
+    "label": "MiraLAX (polyethylene glycol 3350), Bayer",
+    "labeler": "BAYER HEALTHCARE LLC.",
+    "setId": "d69ce3d4-7ca4-4fe3-b49e-6655e48d6963",
+    "tools": [
+      "otc-daily-max-check"
+    ],
+    "splVersion": 24,
+    "publishedOn": "2026-05-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "dee2abafc2eb561f37e853793fa838772193f11d44a33748c932e599d6f44dc2"
+    }
+  },
+  {
+    "label": "Atelvia (risedronate delayed-release), Allergan",
+    "labeler": "ALLERGAN, INC.",
+    "setId": "c8b9ab88-1a26-46c3-80ec-4eaa45202021",
+    "tools": [
+      "missed-dose-label-rule"
+    ],
+    "splVersion": 28,
+    "publishedOn": "2026-04-22",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "873298a5d2de9da28623888b06c98d9405ed30d32014bc3b6d8788709551ff0a"
+    }
+  },
+  {
+    "label": "Ibandronate sodium tablets 150 mg, Bionpharma",
+    "labeler": "BIONPHARMA INC.",
+    "setId": "6ca94cce-a2bb-421f-bd8f-6b14bc2bd985",
+    "tools": [
+      "missed-dose-label-rule"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2026-08-27",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "5bc797fd0e7ee7dbcee2a62bc45fcbfef0a749099eca3da9233567ef92712f9b"
     }
   }
 ]

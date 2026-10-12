@@ -9541,6 +9541,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nrt-step-schedule-v1639.js (spec-v1639: Nicotine replacement: label strength and step-down calendar — clinical disclaimer)
 - `nrt-step-schedule`
 
+### lib/out-of-fridge-discard-date-v1639.js (spec-v1639: Out of the refrigerator or in use: discard date — administrative disclaimer)
+- `out-of-fridge-discard-date`
+
+### lib/otc-child-label-dose-v1639.js (spec-v1639: Children's OTC dose from the Drug Facts chart — clinical disclaimer)
+- `otc-child-label-dose`
+
+### lib/otc-daily-max-check-v1639.js (spec-v1639: OTC 24-hour total against the label maximum — clinical disclaimer)
+- `otc-daily-max-check`
+
+### lib/missed-dose-label-rule-v1639.js (spec-v1639: Missed dose: what the label says — clinical disclaimer)
+- `missed-dose-label-rule`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 
