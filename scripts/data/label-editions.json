@@ -858,6 +858,22 @@
     }
   },
   {
+    "label": "Dexrazoxane for injection, Eugia",
+    "labeler": "EUGIA US LLC",
+    "setId": "cb72203a-0b09-42d5-bf51-7f479feb3adb",
+    "tools": [
+      "dexrazoxane-ratio-dose"
+    ],
+    "splVersion": 2,
+    "publishedOn": "2026-08-17",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34067-9": "4e04a7d49471928680d8f916179cc6de514b31e654d36799007350c3c0145983",
+      "34068-7": "097b7c125188b7e837f537e4f5a993d5277c6c5bb190d87279fda4b658491d19"
+    }
+  },
+  {
     "label": "Dextrose 50% injection, Hospira",
     "labeler": "HOSPIRA, INC.",
     "setId": "4ed365da-4e62-4329-c1b9-c197ab4fb6e1",
@@ -981,6 +997,23 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "736d4d82c00b0a32af8260afe954c418fc20303872927ed2451ffbe8317e0588"
+    }
+  },
+  {
+    "label": "Elitek (rasburicase)",
+    "labeler": "SANOFI-AVENTIS U.S. LLC",
+    "setId": "0ae10bc4-6b65-402f-9db5-2d7753054922",
+    "tools": [
+      "rasburicase-dose"
+    ],
+    "splVersion": 25,
+    "publishedOn": "2026-08-04",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "a114d4351fbfdb18962a96a68b07c9ded0ae7b21aa0402b6603419f0dc4b46f9",
+      "34070-3": "5c910eb99c8d7b05c6da84b4020b35db830d2b17331c928d5189e24342c9391a",
+      "34066-1": "ea5ff044aaec7108b23e13ae948ad209ae4984884e1a4dec7368446243060405"
     }
   },
   {
@@ -2933,6 +2966,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "13698281595712c0fba642e5ce074a149bfe814601b1b5037d2d568688a518e3"
+    }
+  },
+  {
+    "label": "Xeloda (capecitabine)",
+    "labeler": "H2-PHARMA, LLC",
+    "setId": "e702d84d-7162-4751-bf37-d724cc7e45a5",
+    "tools": [
+      "capecitabine-tablet-dose"
+    ],
+    "splVersion": 32,
+    "publishedOn": "2026-02-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "f218b75949aef058da9292a2fd536eaab240fea3372776e7979037527bb2e209"
     }
   },
   {

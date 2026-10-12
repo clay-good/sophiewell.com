@@ -3,7 +3,8 @@
 // occupational-dose-limit-check, sealed-source-leak-test, nrc-medical-event-screen,
 // rad-package-label-category, rad-package-receipt-check, ids-accountability-reconcile,
 // radioactive-decay, radiopharm-dispense-volume, patient-release-rg839,
-// nuc-med-breastfeeding-interruption, generator-breakthrough-check, radiation-distance-shielding.
+// nuc-med-breastfeeding-interruption, generator-breakthrough-check, radiation-distance-shielding,
+// rasburicase-dose, dexrazoxane-ratio-dose, capecitabine-tablet-dose.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -22,6 +23,9 @@ import * as PR from '../lib/patient-release-rg839-v1635.js';
 import * as BF from '../lib/nuc-med-breastfeeding-interruption-v1635.js';
 import * as GB from '../lib/generator-breakthrough-check-v1635.js';
 import * as RS from '../lib/radiation-distance-shielding-v1635.js';
+import * as RB from '../lib/rasburicase-dose-v1635.js';
+import * as DX from '../lib/dexrazoxane-ratio-dose-v1635.js';
+import * as CP from '../lib/capecitabine-tablet-dose-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -342,6 +346,52 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = RS.radiationDistanceShielding(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'rasburicase-dose'(root) {
+    const pairs = [['rbd-weight', 'weight'], ['rbd-g6pd', 'g6pd'], ['rbd-day', 'day']];
+    numField(root, 'Weight, kg', 'rbd-weight', '');
+    selectField(root, 'G6PD status', 'rbd-g6pd', RB.G6PD);
+    numField(root, 'Day of the course (optional)', 'rbd-day', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = RB.rasburicaseDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'dexrazoxane-ratio-dose'(root) {
+    const pairs = [['dxr-dose', 'doxorubicinDose'], ['dxr-unit', 'unit'], ['dxr-crcl', 'crcl'], ['dxr-cumulative', 'cumulativeDoxorubicin']];
+    numField(root, 'Doxorubicin dose', 'dxr-dose', '');
+    selectField(root, 'Dose unit', 'dxr-unit', DX.UNITS);
+    numField(root, 'Creatinine clearance, mL/min', 'dxr-crcl', '');
+    numField(root, 'Cumulative doxorubicin to date, mg/m² (optional)', 'dxr-cumulative', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = DX.dexrazoxaneRatioDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'capecitabine-tablet-dose'(root) {
+    const pairs = [['cap-level', 'level'], ['cap-typed', 'typedLevel'], ['cap-bsa', 'bsa'], ['cap-crcl', 'crcl'], ['cap-percent', 'percent'], ['cap-days', 'daysOn']];
+    selectField(root, 'Dose level per dose', 'cap-level', CP.LEVELS);
+    numField(root, 'Another dose level, mg/m² per dose', 'cap-typed', '');
+    numField(root, 'Body surface area, m²', 'cap-bsa', '');
+    numField(root, 'Creatinine clearance by Cockcroft-Gault, mL/min', 'cap-crcl', '');
+    selectField(root, 'Percent of the dose for this cycle', 'cap-percent', CP.PERCENTS);
+    numField(root, 'Days of treatment in the cycle (optional, for example 14)', 'cap-days', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = CP.capecitabineTabletDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

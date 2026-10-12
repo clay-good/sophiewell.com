@@ -1,6 +1,6 @@
 # spec-v1635 — Oncology pharmacy, investigational drug service, and nuclear pharmacy
 
-**Status:** In progress, October 11, 2026: 16 of 35 tools built (see Build status). 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
+**Status:** In progress, October 11, 2026: 19 of 35 tools built (see Build status). 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 Three pharmacists do work the catalog barely touches. The chemotherapy-verification pharmacist
@@ -941,6 +941,9 @@ build stores the version and published date instead.
 
 | Tool | State |
 |---|---|
+| 5. `dexrazoxane-ratio-dose` | Built (group F) on the Dexrazoxane for Injection label (Eugia, version 2), sections 1, 2.1 and 2.2 re-read October 11, 2026; one manufacturer's label was read at build, not two. The creatinine clearance is required, since it decides the ratio. A cumulative doxorubicin dose under 300 mg/m² is flagged, and a missing one is said to be missing. |
+| 10. `rasburicase-dose` | Built (group F) on Elitek (version 25), re-read October 11, 2026. G6PD status is asked before any dose; deficiency and a day past 5 return no dose. Vials are the least-waste mix of 7.5 mg and 1.5 mg. |
+| 14. `capecitabine-tablet-dose` | Built (group F) on Xeloda (version 32), sections 2.1, 2.2, 2.7 and 2.8 re-read October 11, 2026. Body surface area is entered directly (no formula is chosen for the reader); height and weight are not taken. The days of treatment have no default. A multiple of 150 mg can include 500 mg tablets only in threes, which the result states; a dose exactly halfway is shown both ways. Below 30 mL/min no dose is given. |
 | 19. `ind-safety-report-clock` | Built (group Q) on 21 CFR 312.32 and 312.64 as current on eCFR October 8, 2026, re-read October 11, 2026. The 15-day count runs from the sponsor's determination and the 7-day count from first receipt; a receipt date after the determination is refused. For an investigator the result is the word "immediately" and no date. The amendment eCFR links (published September 22, 2026) was not read; the tool follows the text in force. |
 | 20. `emergency-ind-clock` | Built (group Q) on 21 CFR 312.310 and 56.104. Neither rule defines "working days"; the tool counts Monday to Friday, skips federal holidays through the shared deadline engine, and says so. The written summary at the conclusion of treatment is printed with no day count, as the rule gives none. |
 | 21. `ind-annual-report-due` | Built (group Q) on 21 CFR 312.40, 312.33 and 312.30. It lists the next three anniversaries whose 60-day date has not passed. A clinical hold is not modeled, and the result says the 30-day date assumes none. An "earlier notification" date later than 30 days after receipt is refused. |
@@ -958,4 +961,4 @@ build stores the version and published date instead.
 | 34. `radiation-distance-shielding` | Built (group Q). The two label attenuation tables were re-read October 11, 2026. A thickness between two rows takes the thinner row's factor and says the true factor lies between; the tool does not interpolate, and a shield thinner than the first row is credited nothing. The rate's unit is the reader's and is carried through. |
 | 35. `occupational-dose-limit-check` | Built (group Q) on 10 CFR 20.1201(a) and 20.1208(a). Doses are entered in rem, mrem or mSv (a required choice). The projection is plain proportion and is not applied to the pregnancy limit, which is not annual. License ALARA levels are not included. |
 
-Not built: the other 19 tools: the oncology tools 1 to 18 and tool 33 (gated).
+Not built: the other 16 tools: oncology tools 1 to 4, 6 to 9, 11 to 13 and 15 to 18, and tool 33 (gated).

@@ -728,3 +728,9 @@ experience**.
 > v1635, Generator Breakthrough Check: Mo-99, Sr-82 and Sr-85 (10 CFR 35.204) — [spec-v1635](spec-v1635.md), which adds `generator-breakthrough-check` — is 2189.)
 
 > v1635, Dose Rate at a Distance and Behind Lead (Inverse Square, Label Attenuation Tables) — [spec-v1635](spec-v1635.md), which adds `radiation-distance-shielding` — is 2190.)
+
+> v1635, Rasburicase Dose and Vials (Elitek Label) — [spec-v1635](spec-v1635.md), which adds `rasburicase-dose` — is 2191.)
+
+> v1635, Dexrazoxane Dose From the Doxorubicin Dose (Label Ratio) — [spec-v1635](spec-v1635.md), which adds `dexrazoxane-ratio-dose` — is 2192.)
+
+> v1635, Capecitabine Dose in Whole Tablets (Xeloda Label) — [spec-v1635](spec-v1635.md), which adds `capecitabine-tablet-dose` — is 2193.)

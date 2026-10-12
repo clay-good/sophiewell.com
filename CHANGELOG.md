@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Rasburicase Dose and Vials (Elitek Label): 0.2 mg/kg and the vials that cover it; no dose with
+  G6PD deficiency or past day 5.
+- Dexrazoxane Dose From the Doxorubicin Dose (Label Ratio): 10:1, or 5:1 below a creatinine
+  clearance of 40 mL/min, with the label's timing line.
+- Capecitabine Dose in Whole Tablets (Xeloda Label): the label's rounding to the nearest 150 mg,
+  the renal reduction, and tablets per dose and per cycle.
 - Generator Breakthrough Check: Mo-99, Sr-82 and Sr-85 (10 CFR 35.204): the rule's limits beside
   the generator label's, with the latest administration time for a technetium eluate.
 - Dose Rate at a Distance and Behind Lead: inverse square and the label attenuation tables for

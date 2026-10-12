@@ -9274,6 +9274,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/radiation-distance-shielding-v1635.js (spec-v1635: Inverse square and lead shielding (label attenuation tables) — administrative disclaimer)
 - `radiation-distance-shielding`
 
+### lib/rasburicase-dose-v1635.js (spec-v1635: Rasburicase dose and vials (Elitek label) — clinical disclaimer)
+- `rasburicase-dose`
+
+### lib/dexrazoxane-ratio-dose-v1635.js (spec-v1635: Dexrazoxane ratio dose (label) — clinical disclaimer)
+- `dexrazoxane-ratio-dose`
+
+### lib/capecitabine-tablet-dose-v1635.js (spec-v1635: Capecitabine tablet dose (Xeloda label) — clinical disclaimer)
+- `capecitabine-tablet-dose`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

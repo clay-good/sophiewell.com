@@ -12906,6 +12906,30 @@
       ],
       "tile": "generator-breakthrough-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "rasburicase",
+        "elitek"
+      ],
+      "tile": "rasburicase-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dexrazoxane",
+        "zinecard"
+      ],
+      "tile": "dexrazoxane-ratio-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "capecitabine",
+        "xeloda"
+      ],
+      "tile": "capecitabine-tablet-dose",
+      "audience": "clinicians"
     }
   ]
 }

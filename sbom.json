@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:55068311-cd9c-5425-8461-bec0fa98b356",
+  "serialNumber": "urn:uuid:e7e2189d-8a3b-5b2f-82e7-1b23a78814bc",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T02:01:53.084Z",
+    "timestamp": "2026-10-12T02:18:06.243Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2190 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2193 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c2bfbabe91cc2a460325dcdcdcfdbba076e0aa6803dcc9a23bfacfc1e6d45431"
+          "content": "5c6a5f2021af5bae48775b1b5338614702b3821645f76190f3a1c857d0bb3f1f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "142118"
+          "value": "142312"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "10e2ffb11cb31c4ddbd3c621ffdfb3e4a243e00f5194df726f5ef1d39739f716"
+          "content": "3670b82c25524610997bcb57402553544b0167314b1927b5b5f18e8d64425e7e"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "613349"
+          "value": "613833"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e9890d2b44f51aeb0ef3fd25cebcbd0ba02fa174ce73fceef4854a957c2a3ef0"
+          "content": "d42673480fd42da338fce774404d8f2763cfe0cb27eb0c68c6707a5e9d98fe31"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "275026"
+          "value": "275421"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1d51873badb1c4fbf9953208fdd0421fcd10208203d97c74cba91bee8546dbf3"
+          "content": "be480e8d0851152ce750e2617e62d9261789d5b6b25ab812ddcd48e6ed6fad13"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "131215"
+          "value": "131441"
         }
       ]
     },
@@ -4025,6 +4025,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/capecitabine-tablet-dose-v1635.js",
+      "type": "file",
+      "name": "lib/capecitabine-tablet-dose-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "81298dafd8b04918f64b16c18ced8ef3a7aa75e5d10ed121bd8ed183be05df9f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7255"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/capsule-fill-v1629.js",
       "type": "file",
       "name": "lib/capsule-fill-v1629.js",
@@ -6520,6 +6541,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5253"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/dexrazoxane-ratio-dose-v1635.js",
+      "type": "file",
+      "name": "lib/dexrazoxane-ratio-dose-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e3d182286840dedd8139b46894da57d9d61b064c18e22289e8d9536eabbe7140"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4575"
         }
       ]
     },
@@ -13376,7 +13418,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5b0903e291c2a544cb0af8434e9f6291436de2a05384a80e5016c6703f706e9b"
+          "content": "97e981d0411f4eac97ed7ece960dcc176cadbaae26b08fc3c54ef43966bda496"
         }
       ],
       "properties": [
@@ -13386,7 +13428,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "42981"
+          "value": "43611"
         }
       ]
     },
@@ -15749,7 +15791,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "69f167cc45fa9e3a8956fcddfa7b3f5683f687238911b0b66d74ff69e87f7e44"
+          "content": "adcc54e89d3a2aa0715c8e3d58e75b60415c31526f5999f043f81b182caf2afd"
         }
       ],
       "properties": [
@@ -15759,7 +15801,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2898729"
+          "value": "2900951"
         }
       ]
     },
@@ -22165,6 +22207,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2972"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/rasburicase-dose-v1635.js",
+      "type": "file",
+      "name": "lib/rasburicase-dose-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "624fb96a707c52ab3fb9bd4989e9c705f7ee679e2c94f61b475116666c3deed0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5158"
         }
       ]
     },
@@ -32753,6 +32816,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/capecitabine-tablet-dose-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/capecitabine-tablet-dose-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a82c42435e31025e08a6659d6c2d73bbef6f9d83f64ceff01d04ef7080216d29"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1650"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/capsule-fill-v1629.js",
       "type": "file",
       "name": "mcp/adapters/capsule-fill-v1629.js",
@@ -35017,6 +35101,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1337"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dexrazoxane-ratio-dose-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/dexrazoxane-ratio-dose-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e285efa163dce879aef1e0e73cbb86ee311f97d51d0ed94e82150f41da508129"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1321"
         }
       ]
     },
@@ -49007,6 +49112,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rasburicase-dose-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/rasburicase-dose-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2bf5e2940af8e49be15055c84d284b19e39d6db152983a9f48b84d7c788d3d21"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1064"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rasrm-stage-v546.js",
       "type": "file",
       "name": "mcp/adapters/rasrm-stage-v546.js",
@@ -54977,7 +55103,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0fb562ebc13cba225d8a77104b8d20d25f279ddec4a3d61c62ff4a4c6bf629f7"
+          "content": "afbb6ad05409ba687174d3cdcc0c400c30b6feafe27be5031905fb8b86cb549f"
         }
       ],
       "properties": [
@@ -54987,7 +55113,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "145865"
+          "value": "146292"
         }
       ]
     },
@@ -59597,7 +59723,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5347227e8b083dae2d3f7df54fb94e975e99469829912458b70d3c1f0fcf5fa9"
+          "content": "e9bd8b3f82e4e5a07cf05af759dc2554cf2fe8107a7ec46610f937b481efb61e"
         }
       ],
       "properties": [
@@ -59607,7 +59733,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "23348"
+          "value": "26384"
         }
       ]
     },
@@ -90558,6 +90684,7 @@
         "urn:sophiewell:file:source:lib/calosha-wildfire-smoke-v1398.js",
         "urn:sophiewell:file:source:lib/cancer-cachexia-v879.js",
         "urn:sophiewell:file:source:lib/capd-v525.js",
+        "urn:sophiewell:file:source:lib/capecitabine-tablet-dose-v1635.js",
         "urn:sophiewell:file:source:lib/capsule-fill-v1629.js",
         "urn:sophiewell:file:source:lib/capthus-v535.js",
         "urn:sophiewell:file:source:lib/carboxyhemoglobin-v865.js",
@@ -90677,6 +90804,7 @@
         "urn:sophiewell:file:source:lib/dermscore-v234.js",
         "urn:sophiewell:file:source:lib/dermuro-v191.js",
         "urn:sophiewell:file:source:lib/deworming-dose-who-v1550.js",
+        "urn:sophiewell:file:source:lib/dexrazoxane-ratio-dose-v1635.js",
         "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:source:lib/diabetes-drug-egfr-check-v1632.js",
         "urn:sophiewell:file:source:lib/diastolic-function-ase-v664.js",
@@ -91422,6 +91550,7 @@
         "urn:sophiewell:file:source:lib/radmeasure-v253.js",
         "urn:sophiewell:file:source:lib/ramsay-sedation-v358.js",
         "urn:sophiewell:file:source:lib/ranawat-myelopathy-v495.js",
+        "urn:sophiewell:file:source:lib/rasburicase-dose-v1635.js",
         "urn:sophiewell:file:source:lib/rasrm-stage-v546.js",
         "urn:sophiewell:file:source:lib/rassi-chagas-v851.js",
         "urn:sophiewell:file:source:lib/rastelli-avsd-v474.js",
@@ -92871,6 +93000,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-wildfire-smoke-v1398.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cancer-cachexia-v879.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/capd-v525.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/capecitabine-tablet-dose-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/capsule-fill-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/capthus-v535.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/carboxyhemoglobin-v865.js",
@@ -92979,6 +93109,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermscore-v234.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermuro-v191.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/deworming-dose-who-v1550.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/dexrazoxane-ratio-dose-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-drug-egfr-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diastolic-function-ase-v664.js",
@@ -93645,6 +93776,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/radmeasure-v253.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ramsay-sedation-v358.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ranawat-myelopathy-v495.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/rasburicase-dose-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rasrm-stage-v546.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rassi-chagas-v851.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rastelli-avsd-v474.js",
@@ -94033,7 +94165,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "55068311cd9c3425"
+      "value": "e7e2189d8a3b6b2f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -94045,7 +94177,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3540"
+      "value": "3546"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
