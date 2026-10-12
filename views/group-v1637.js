@@ -2,7 +2,9 @@
 // identifiers and packaging limits.
 // dea-registration-renewal, cs-biennial-inventory, dea-222-validity, cs-theft-loss-clock,
 // cs-five-percent-rule, c5-otc-sale-limit, otp-take-home-limit, mat-injection-admin-deadline,
-// cs-disposal-clock, cmea-sales-limit.
+// cs-disposal-clock, cmea-sales-limit, cs-record-retention, cs-rx-transfer-check, c2-rx-form-check,
+// otp-admission-clock, oud-telemedicine-rx-window, dscsa-dispenser-clocks, dscsa-suspect-sample-size,
+// dscsa-small-dispenser-check, unit-dose-repack-expiry, hw-generator-category.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -16,6 +18,16 @@ import * as TH from '../lib/otp-take-home-limit-v1637.js';
 import * as MI from '../lib/mat-injection-admin-deadline-v1637.js';
 import * as DS from '../lib/cs-disposal-clock-v1637.js';
 import * as CM from '../lib/cmea-sales-limit-v1637.js';
+import * as RR from '../lib/cs-record-retention-v1637.js';
+import * as TR from '../lib/cs-rx-transfer-check-v1637.js';
+import * as C2 from '../lib/c2-rx-form-check-v1637.js';
+import * as OA from '../lib/otp-admission-clock-v1637.js';
+import * as TW from '../lib/oud-telemedicine-rx-window-v1637.js';
+import * as DC from '../lib/dscsa-dispenser-clocks-v1637.js';
+import * as SS from '../lib/dscsa-suspect-sample-size-v1637.js';
+import * as SD from '../lib/dscsa-small-dispenser-check-v1637.js';
+import * as UD from '../lib/unit-dose-repack-expiry-v1637.js';
+import * as HW from '../lib/hw-generator-category-v1637.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -211,6 +223,137 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(CM.cmeaSalesLimit(args), o);
+    }));
+  },
+  'cs-record-retention'(root) {
+    const pairs = [['crr-record', 'record'], ['crr-from', 'countedFrom'], ['crr-longer', 'longerYears']];
+    selectField(root, 'Kind of record', 'crr-record', RR.RECORDS);
+    dateField(root, 'Date the period is counted from', 'crr-from');
+    numField(root, 'A longer period you must meet, in years (optional)', 'crr-longer', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(RR.csRecordRetention(args), o);
+    }));
+  },
+  'cs-rx-transfer-check'(root) {
+    const pairs = [['crt-schedule', 'schedule'], ['crt-filled', 'filled'], ['crt-form', 'form'], ['crt-before', 'transferredBefore'], ['crt-database', 'sharedDatabase'], ['crt-state', 'stateLaw']];
+    selectField(root, 'Schedule', 'crt-schedule', TR.SCHEDULES);
+    selectField(root, 'Has it been filled?', 'crt-filled', TR.FILLED);
+    selectField(root, 'Form of the prescription', 'crt-form', TR.FORMS);
+    selectField(root, 'Transferred before?', 'crt-before', TR.BEFORE);
+    selectField(root, 'For refills: do the two pharmacies share a real-time, online database?', 'crt-database', TR.DATABASE);
+    selectField(root, 'Does state law allow the transfer?', 'crt-state', TR.STATE);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(TR.csRxTransferCheck(args), o);
+    }));
+  },
+  'c2-rx-form-check'(root) {
+    const pairs = [['c2f-arrived', 'arrived'], ['c2f-fax', 'faxCase'], ['c2f-hospice', 'hospiceNoted'], ['c2f-emergency', 'emergency'], ['c2f-pharmacy', 'pharmacy'], ['c2f-date', 'authorizedOn']];
+    selectField(root, 'How the prescription arrived', 'c2f-arrived', C2.ARRIVED);
+    selectField(root, 'For a fax, does one of these apply?', 'c2f-fax', C2.FAX_CASES);
+    selectField(root, 'For a hospice patient, is the status noted on the prescription?', 'c2f-hospice', C2.HOSPICE_NOTED);
+    selectField(root, 'For an oral order, is this an emergency situation?', 'c2f-emergency', C2.EMERGENCY);
+    selectField(root, 'For an oral order, the kind of pharmacy', 'c2f-pharmacy', C2.PHARMACY);
+    dateField(root, 'For an oral order, the date of the authorization (optional)', 'c2f-date');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(C2.c2RxFormCheck(args), o);
+    }));
+  },
+  'otp-admission-clock'(root) {
+    const pairs = [['oac-admitted', 'admitted'], ['oac-screened', 'screened'], ['oac-by', 'screenedBy'], ['oac-labs', 'labsDrawn'], ['oac-exam', 'fullExam'], ['oac-assessment', 'assessment'], ['oac-interim', 'interimStart']];
+    dateField(root, 'Admission date', 'oac-admitted');
+    dateField(root, 'Date of the screening examination (optional)', 'oac-screened');
+    selectField(root, 'Who did the screening examination', 'oac-by', OA.SCREENERS);
+    dateField(root, 'Date the labs were drawn (optional)', 'oac-labs');
+    dateField(root, 'Date of the full in-person examination (optional)', 'oac-exam');
+    dateField(root, 'Date of the psychosocial assessment and care plan (optional)', 'oac-assessment');
+    dateField(root, 'Interim treatment start date (optional)', 'oac-interim');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(OA.otpAdmissionClock(args), o);
+    }));
+  },
+  'oud-telemedicine-rx-window'(root) {
+    const pairs = [['otw-date', 'prescribedOn'], ['otw-seen', 'inPerson'], ['otw-schedule', 'schedule'], ['otw-purpose', 'purpose'], ['otw-va', 'va'], ['otw-pdmp', 'pdmp'], ['otw-first', 'firstTelemedicineRx']];
+    dateField(root, 'Date of the prescription', 'otw-date');
+    selectField(root, 'In-person evaluation by the prescriber', 'otw-seen', TW.IN_PERSON);
+    selectField(root, 'Schedule', 'otw-schedule', TW.SCHEDULES);
+    selectField(root, 'Purpose', 'otw-purpose', TW.PURPOSES);
+    selectField(root, 'Department of Veterans Affairs', 'otw-va', TW.VA);
+    selectField(root, 'State drug-monitoring database', 'otw-pdmp', TW.PDMP);
+    dateField(root, 'Date of the first telemedicine prescription to this patient (optional)', 'otw-first');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(TW.oudTelemedicineRxWindow(args), o);
+    }));
+  },
+  'dscsa-dispenser-clocks'(root) {
+    const pairs = [['ddc-event', 'event'], ['ddc-when', 'when']];
+    selectField(root, 'What happened', 'ddc-event', DC.EVENTS);
+    dateField(root, 'Date and time it happened', 'ddc-when', 'datetime-local');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(DC.dscsaDispenserClocks(args), o);
+    }));
+  },
+  'dscsa-suspect-sample-size'(root) {
+    const pairs = [['dss-packages', 'packages'], ['dss-dispenser', 'dispenser']];
+    numField(root, 'Packages of the suspect product in your possession', 'dss-packages', '');
+    selectField(root, 'Small business dispenser?', 'dss-dispenser', SS.SMALL);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SS.dscsaSuspectSampleSize(args, new Date()), o);
+    }));
+  },
+  'dscsa-small-dispenser-check'(root) {
+    const pairs = [['dsd-staff', 'fullTimeStaff']];
+    numField(root, 'Full-time pharmacists and pharmacy technicians at the company that owns the dispenser, as of November 27, 2026', 'dsd-staff', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SD.dscsaSmallDispenserCheck(args, new Date()), o);
+    }));
+  },
+  'unit-dose-repack-expiry'(root) {
+    const pairs = [['udr-repackaged', 'repackaged'], ['udr-expiry', 'manufacturerExpiry'], ...UD.CONDITIONS.map((c) => [c.dom, c.arg])];
+    dateField(root, 'Date of repackaging', 'udr-repackaged');
+    dateField(root, 'Expiration date on the manufacturer\'s container (the last day of the month if only a month is printed)', 'udr-expiry');
+    for (const c of UD.CONDITIONS) selectField(root, c.ask, c.dom, UD.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(UD.unitDoseRepackExpiry(args), o);
+    }));
+  },
+  'hw-generator-category'(root) {
+    const pairs = [['hwg-acute', 'acuteKg'], ['hwg-nonacute', 'nonAcuteKg'], ['hwg-residue', 'residueKg'], ['hwg-subpart', 'subpartP']];
+    numField(root, 'Acute hazardous waste this calendar month, kg (0 if none)', 'hwg-acute', '');
+    numField(root, 'Non-acute hazardous waste this calendar month, kg (0 if none)', 'hwg-nonacute', '');
+    numField(root, 'Residues from a cleanup of acute hazardous waste, kg (0 if none)', 'hwg-residue', '');
+    selectField(root, 'Are hazardous waste pharmaceuticals managed under 40 CFR part 266 subpart P?', 'hwg-subpart', HW.SUBPART_P);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(HW.hwGeneratorCategory(args), o);
     }));
   },
 };

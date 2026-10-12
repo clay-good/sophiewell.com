@@ -117,6 +117,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // an optional shorter state interval and an optional container size; with them blank the federal
   // two-year date is given and the result says no state interval was entered.
   "cs-biennial-inventory",
+  // spec-v1637: the date comes from a required record-kind select and a required date. The only number
+  // field is an optional longer period (state law, contract); with it blank the federal minimum is
+  // given and the result says no longer period was entered.
+  "cs-record-retention",
   // spec-v1637: the last valid shipment date comes from the execution date and two required selects.
   // The only text field is the optional list of shipment dates to check against it.
   "dea-222-validity",

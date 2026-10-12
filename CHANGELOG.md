@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Ten more federal pharmacy-law tools: Federal Pharmacy Record Retention Date; May This
+  Controlled-Substance Prescription Be Transferred?; Schedule II Prescription: Paper, Electronic,
+  Fax or Oral?; Opioid Treatment Program Admission and Interim Treatment Clocks; Telemedicine
+  Prescribing Window for Controlled Substances; DSCSA Dispenser Deadlines; DSCSA Suspect Lot: How
+  Many Packages to Verify; DSCSA Small-Dispenser Exemption Check; Unit-Dose Repackaging Expiration
+  Date; and Hazardous Waste Generator Category for a Pharmacy.
 - Ten federal controlled-substance tools, each from the regulation's own text: DEA Registration
   Expiration and Renewal Window; Controlled-Substance Inventory Due Date and Count Method; DEA Form
   222 and CSOS Order Validity; Controlled-Substance Theft or Loss Report Clock; the Five Percent

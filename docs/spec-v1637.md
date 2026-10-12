@@ -1,6 +1,6 @@
 # spec-v1637 — Federal pharmacy law as arithmetic: controlled substances, supply chain, product identifiers and packaging limits
 
-**Status:** In progress, October 12, 2026: 10 of 24 tools built (see Build status). 24 new tools, 1 of them build-gated (`dea-number-check`).
+**Status:** In progress, October 12, 2026: 20 of 24 tools built (see Build status). 24 new tools, 1 of them build-gated (`dea-number-check`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 The pharmacist-in-charge, the compliance officer and the receiving technician spend their day
@@ -907,5 +907,15 @@ in `views/group-v1637.js`.
 | 12. `otp-take-home-limit` | Built. The admission date is counted as day 1, with a sentence that the rule does not say; the reader may enter the treatment day instead. It reads no clock. |
 | 15. `mat-injection-admin-deadline` | Built on 21 CFR 1306.07(f)(5): 45 days. |
 | 16. `cs-disposal-clock` | Built. For the two three-business-day rules the third calendar day is shown beside the business-day date when they differ. |
+| 4. `cs-record-retention` | Built. Nine record kinds. 21 U.S.C. 360eee-1 was re-read in the 2024 edition of the United States Code on govinfo.gov. 1305.17(c) and 1305.27 name no starting date, and the result says so. A longer period the reader enters governs when it is longer. It reads no clock. |
+| 8. `cs-rx-transfer-check` | Built. State law is a required choice (allows, does not allow, not checked); "not checked" returns "depends on state law". DEA's preamble at 88 FR 48365 was re-read and is quoted for the unfilled paper prescription; it says nothing there about an unfilled oral prescription, and neither does the tool. A partly filled Schedule II prescription (1306.13) is out of scope and the result says so. |
+| 9. `c2-rx-form-check` | Built. Paragraphs (e) and (g) keep "narcotic"; (f) keeps "any Schedule II substance". The hospice fax needs the hospice note on the prescription. With a date of the oral authorization the 7-day date is shown. |
+| 13. `otp-admission-clock` | Built. The first day of interim treatment is counted as day 1, with a sentence that the rule does not say. It reads no clock: lateness is judged against the dates entered. |
+| 14. `oud-telemedicine-rx-window` | Built. "Six calendar months beginning on" a date is read to end the day before the same date six months later, the stricter reading, and the result says so. For a prescription dated after December 31, 2026 the tool does not answer under 1307.41: it says the section as read had expired and to check the rule in force. **Not built:** the ledger row and page watch for the temporary rule; the weekly eCFR watch already lists 1307.41 when it is amended. |
+| 19. `dscsa-dispenser-clocks` | Built from 21 U.S.C. 360eee-1(d)(1)(D), (d)(4)(B)(ii) and (m). The 24 hours need a time as well as a date. Two business days show the second calendar day beside them when they differ. Form FDA 3911 was not re-read. |
+| 20. `dscsa-suspect-sample-size` | Built. Ten percent is rounded up. For a small business dispenser the result shows the number and FDA's exemption until November 27, 2027; after that date it says the letter has run out. |
+| 21. `dscsa-small-dispenser-check` | Built on FDA's letter of August 6, 2026, re-read October 12, 2026. After November 27, 2027 it stops calling a dispenser exempt and asks for FDA's current notice. **Not built:** the ledger row and page watch on FDA's exemptions page. |
+| 22. `unit-dose-repack-expiry` | Built on FDA's July 2020 guidance, re-read October 12, 2026. Each of the five circumstances is a required yes or no. A missing one returns "the policy does not apply" and names it. Twenty-five percent of the days is rounded down. The scope (commercial repackagers, solid oral forms, not pharmacies) is the first line of every result. |
+| 24. `hw-generator-category` | Built on Table 1 to 40 CFR 262.13, with each boundary a unit test. The three quantities are required (0 if none). The subpart P choice changes what the result says about the all-in count under 266.501(a). |
 
-Left: 1 (build-gated), 4, 8, 9, 13, 14, 17 to 24, and the backfills.
+Left: 1 (build-gated), 17 and 18 (GS1 barcode and NDC to GTIN), 23 (child-resistant packaging), and the backfills.

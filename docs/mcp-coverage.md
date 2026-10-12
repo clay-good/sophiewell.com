@@ -9406,6 +9406,36 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cmea-sales-limit-v1637.js (spec-v1637: Pseudoephedrine and ephedrine sales limit (base grams) — administrative disclaimer)
 - `cmea-sales-limit`
 
+### lib/cs-record-retention-v1637.js (spec-v1637: Federal pharmacy record retention date — administrative disclaimer)
+- `cs-record-retention`
+
+### lib/cs-rx-transfer-check-v1637.js (spec-v1637: May this controlled-substance prescription be transferred? — administrative disclaimer)
+- `cs-rx-transfer-check`
+
+### lib/c2-rx-form-check-v1637.js (spec-v1637: Schedule II prescription: paper, electronic, fax or oral? — administrative disclaimer)
+- `c2-rx-form-check`
+
+### lib/otp-admission-clock-v1637.js (spec-v1637: Opioid treatment program admission and interim treatment clocks — administrative disclaimer)
+- `otp-admission-clock`
+
+### lib/oud-telemedicine-rx-window-v1637.js (spec-v1637: Telemedicine prescribing window for controlled substances — administrative disclaimer)
+- `oud-telemedicine-rx-window`
+
+### lib/dscsa-dispenser-clocks-v1637.js (spec-v1637: DSCSA dispenser deadlines (24 hours, 2 business days, 6 years) — administrative disclaimer)
+- `dscsa-dispenser-clocks`
+
+### lib/dscsa-suspect-sample-size-v1637.js (spec-v1637: DSCSA suspect lot: how many packages to verify — administrative disclaimer)
+- `dscsa-suspect-sample-size`
+
+### lib/dscsa-small-dispenser-check-v1637.js (spec-v1637: DSCSA small-dispenser exemption check (until November 27, 2027) — administrative disclaimer)
+- `dscsa-small-dispenser-check`
+
+### lib/unit-dose-repack-expiry-v1637.js (spec-v1637: Unit-dose repackaging expiration date (FDA policy, commercial repackagers) — administrative disclaimer)
+- `unit-dose-repack-expiry`
+
+### lib/hw-generator-category-v1637.js (spec-v1637: Hazardous waste generator category for a pharmacy (40 CFR 262.13) — administrative disclaimer)
+- `hw-generator-category`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -1040,6 +1040,16 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import dscsaDispenserClocksV1637 from './adapters/dscsa-dispenser-clocks-v1637.js';
+import dscsaSuspectSampleSizeV1637 from './adapters/dscsa-suspect-sample-size-v1637.js';
+import dscsaSmallDispenserCheckV1637 from './adapters/dscsa-small-dispenser-check-v1637.js';
+import unitDoseRepackExpiryV1637 from './adapters/unit-dose-repack-expiry-v1637.js';
+import hwGeneratorCategoryV1637 from './adapters/hw-generator-category-v1637.js';
+import csRecordRetentionV1637 from './adapters/cs-record-retention-v1637.js';
+import csRxTransferCheckV1637 from './adapters/cs-rx-transfer-check-v1637.js';
+import c2RxFormCheckV1637 from './adapters/c2-rx-form-check-v1637.js';
+import otpAdmissionClockV1637 from './adapters/otp-admission-clock-v1637.js';
+import oudTelemedicineRxWindowV1637 from './adapters/oud-telemedicine-rx-window-v1637.js';
 import deaRegistrationRenewalV1637 from './adapters/dea-registration-renewal-v1637.js';
 import csBiennialInventoryV1637 from './adapters/cs-biennial-inventory-v1637.js';
 import dea222ValidityV1637 from './adapters/dea-222-validity-v1637.js';
@@ -2305,6 +2315,16 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['dscsa-dispenser-clocks-v1637', dscsaDispenserClocksV1637],
+  ['dscsa-suspect-sample-size-v1637', dscsaSuspectSampleSizeV1637],
+  ['dscsa-small-dispenser-check-v1637', dscsaSmallDispenserCheckV1637],
+  ['unit-dose-repack-expiry-v1637', unitDoseRepackExpiryV1637],
+  ['hw-generator-category-v1637', hwGeneratorCategoryV1637],
+  ['cs-record-retention-v1637', csRecordRetentionV1637],
+  ['cs-rx-transfer-check-v1637', csRxTransferCheckV1637],
+  ['c2-rx-form-check-v1637', c2RxFormCheckV1637],
+  ['otp-admission-clock-v1637', otpAdmissionClockV1637],
+  ['oud-telemedicine-rx-window-v1637', oudTelemedicineRxWindowV1637],
   ['dea-registration-renewal-v1637', deaRegistrationRenewalV1637],
   ['cs-biennial-inventory-v1637', csBiennialInventoryV1637],
   ['dea-222-validity-v1637', dea222ValidityV1637],

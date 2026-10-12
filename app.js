@@ -2809,6 +2809,16 @@ const UTILITIES = [
   { id: 'mat-injection-admin-deadline', name: 'Pharmacy-Delivered Injectable Buprenorphine: Administer-By Date', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'cs-disposal-clock', name: 'Controlled-Substance Disposal Deadlines (Reverse Distributor, Long-Term Care)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'cmea-sales-limit', name: 'Pseudoephedrine and Ephedrine Sales Limit (Base Grams)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'cs-record-retention', name: 'Federal Pharmacy Record Retention Date', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'cs-rx-transfer-check', name: 'May This Controlled-Substance Prescription Be Transferred?', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'c2-rx-form-check', name: 'Schedule II Prescription: Paper, Electronic, Fax or Oral?', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'otp-admission-clock', name: 'Opioid Treatment Program Admission and Interim Treatment Clocks', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'oud-telemedicine-rx-window', name: 'Telemedicine Prescribing Window for Controlled Substances', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'dscsa-dispenser-clocks', name: 'DSCSA Dispenser Deadlines (24 Hours, 2 Business Days, 6 Years)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'dscsa-suspect-sample-size', name: 'DSCSA Suspect Lot: How Many Packages to Verify', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'dscsa-small-dispenser-check', name: 'DSCSA Small-Dispenser Exemption Check (Until November 27, 2027)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'unit-dose-repack-expiry', name: 'Unit-Dose Repackaging Expiration Date (FDA Policy, Commercial Repackagers)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'hw-generator-category', name: 'Hazardous Waste Generator Category for a Pharmacy (40 CFR 262.13)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

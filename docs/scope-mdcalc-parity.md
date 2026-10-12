@@ -816,3 +816,23 @@ experience**.
 > v1637, Controlled-Substance Disposal Deadlines (Reverse Distributor, Long-Term Care) — [spec-v1637](spec-v1637.md), which adds `cs-disposal-clock` — is 2233.)
 
 > v1637, Pseudoephedrine and Ephedrine Sales Limit (Base Grams) — [spec-v1637](spec-v1637.md), which adds `cmea-sales-limit` — is 2234.)
+
+> v1637, Federal Pharmacy Record Retention Date — [spec-v1637](spec-v1637.md), which adds `cs-record-retention` — is 2235.)
+
+> v1637, May This Controlled-Substance Prescription Be Transferred? — [spec-v1637](spec-v1637.md), which adds `cs-rx-transfer-check` — is 2236.)
+
+> v1637, Schedule II Prescription: Paper, Electronic, Fax or Oral? — [spec-v1637](spec-v1637.md), which adds `c2-rx-form-check` — is 2237.)
+
+> v1637, Opioid Treatment Program Admission and Interim Treatment Clocks — [spec-v1637](spec-v1637.md), which adds `otp-admission-clock` — is 2238.)
+
+> v1637, Telemedicine Prescribing Window for Controlled Substances — [spec-v1637](spec-v1637.md), which adds `oud-telemedicine-rx-window` — is 2239.)
+
+> v1637, DSCSA Dispenser Deadlines (24 Hours, 2 Business Days, 6 Years) — [spec-v1637](spec-v1637.md), which adds `dscsa-dispenser-clocks` — is 2240.)
+
+> v1637, DSCSA Suspect Lot: How Many Packages to Verify — [spec-v1637](spec-v1637.md), which adds `dscsa-suspect-sample-size` — is 2241.)
+
+> v1637, DSCSA Small-Dispenser Exemption Check (Until November 27, 2027) — [spec-v1637](spec-v1637.md), which adds `dscsa-small-dispenser-check` — is 2242.)
+
+> v1637, Unit-Dose Repackaging Expiration Date (FDA Policy, Commercial Repackagers) — [spec-v1637](spec-v1637.md), which adds `unit-dose-repack-expiry` — is 2243.)
+
+> v1637, Hazardous Waste Generator Category for a Pharmacy (40 CFR 262.13) — [spec-v1637](spec-v1637.md), which adds `hw-generator-category` — is 2244.)

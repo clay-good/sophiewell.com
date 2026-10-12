@@ -770,6 +770,16 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as dscsaDispenserClocksV1637 from '../../lib/dscsa-dispenser-clocks-v1637.js';
+import * as dscsaSuspectSampleSizeV1637 from '../../lib/dscsa-suspect-sample-size-v1637.js';
+import * as dscsaSmallDispenserCheckV1637 from '../../lib/dscsa-small-dispenser-check-v1637.js';
+import * as unitDoseRepackExpiryV1637 from '../../lib/unit-dose-repack-expiry-v1637.js';
+import * as hwGeneratorCategoryV1637 from '../../lib/hw-generator-category-v1637.js';
+import * as csRecordRetentionV1637 from '../../lib/cs-record-retention-v1637.js';
+import * as csRxTransferCheckV1637 from '../../lib/cs-rx-transfer-check-v1637.js';
+import * as c2RxFormCheckV1637 from '../../lib/c2-rx-form-check-v1637.js';
+import * as otpAdmissionClockV1637 from '../../lib/otp-admission-clock-v1637.js';
+import * as oudTelemedicineRxWindowV1637 from '../../lib/oud-telemedicine-rx-window-v1637.js';
 import * as deaRegistrationRenewalV1637 from '../../lib/dea-registration-renewal-v1637.js';
 import * as csBiennialInventoryV1637 from '../../lib/cs-biennial-inventory-v1637.js';
 import * as dea222ValidityV1637 from '../../lib/dea-222-validity-v1637.js';
@@ -1819,6 +1829,16 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'dscsa-dispenser-clocks-v1637.js': dscsaDispenserClocksV1637,
+  'dscsa-suspect-sample-size-v1637.js': dscsaSuspectSampleSizeV1637,
+  'dscsa-small-dispenser-check-v1637.js': dscsaSmallDispenserCheckV1637,
+  'unit-dose-repack-expiry-v1637.js': unitDoseRepackExpiryV1637,
+  'hw-generator-category-v1637.js': hwGeneratorCategoryV1637,
+  'cs-record-retention-v1637.js': csRecordRetentionV1637,
+  'cs-rx-transfer-check-v1637.js': csRxTransferCheckV1637,
+  'c2-rx-form-check-v1637.js': c2RxFormCheckV1637,
+  'otp-admission-clock-v1637.js': otpAdmissionClockV1637,
+  'oud-telemedicine-rx-window-v1637.js': oudTelemedicineRxWindowV1637,
   'dea-registration-renewal-v1637.js': deaRegistrationRenewalV1637,
   'cs-biennial-inventory-v1637.js': csBiennialInventoryV1637,
   'dea-222-validity-v1637.js': dea222ValidityV1637,
