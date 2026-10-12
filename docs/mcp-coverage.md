@@ -9283,6 +9283,21 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/capecitabine-tablet-dose-v1635.js (spec-v1635: Capecitabine tablet dose (Xeloda label) — clinical disclaimer)
 - `capecitabine-tablet-dose`
 
+### lib/mesna-ifosfamide-schedule-v1635.js (spec-v1635: Mesna schedule from the ifosfamide dose (MESNEX label) — clinical disclaimer)
+- `mesna-ifosfamide-schedule`
+
+### lib/glucarpidase-dose-v1635.js (spec-v1635: Glucarpidase dose and leucovorin spacing (Voraxaze label) — clinical disclaimer)
+- `glucarpidase-dose`
+
+### lib/it-methotrexate-age-dose-v1635.js (spec-v1635: Intrathecal methotrexate dose by age (label) — clinical disclaimer)
+- `it-methotrexate-age-dose`
+
+### lib/hdmtx-leucovorin-rescue-v1635.js (spec-v1635: Leucovorin rescue after high-dose methotrexate (label table) — clinical disclaimer)
+- `hdmtx-leucovorin-rescue`
+
+### lib/gcsf-timing-check-v1635.js (spec-v1635: Filgrastim and pegfilgrastim timing against chemotherapy (labels) — clinical disclaimer)
+- `gcsf-timing-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

@@ -4,7 +4,9 @@
 // rad-package-label-category, rad-package-receipt-check, ids-accountability-reconcile,
 // radioactive-decay, radiopharm-dispense-volume, patient-release-rg839,
 // nuc-med-breastfeeding-interruption, generator-breakthrough-check, radiation-distance-shielding,
-// rasburicase-dose, dexrazoxane-ratio-dose, capecitabine-tablet-dose.
+// rasburicase-dose, dexrazoxane-ratio-dose, capecitabine-tablet-dose,
+// mesna-ifosfamide-schedule, glucarpidase-dose, it-methotrexate-age-dose, hdmtx-leucovorin-rescue,
+// gcsf-timing-check.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -26,6 +28,11 @@ import * as RS from '../lib/radiation-distance-shielding-v1635.js';
 import * as RB from '../lib/rasburicase-dose-v1635.js';
 import * as DX from '../lib/dexrazoxane-ratio-dose-v1635.js';
 import * as CP from '../lib/capecitabine-tablet-dose-v1635.js';
+import * as MS from '../lib/mesna-ifosfamide-schedule-v1635.js';
+import * as GD from '../lib/glucarpidase-dose-v1635.js';
+import * as IT from '../lib/it-methotrexate-age-dose-v1635.js';
+import * as HL from '../lib/hdmtx-leucovorin-rescue-v1635.js';
+import * as GT from '../lib/gcsf-timing-check-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -392,6 +399,86 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = CP.capecitabineTabletDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'mesna-ifosfamide-schedule'(root) {
+    const pairs = [['mis-dose', 'dose'], ['mis-unit', 'unit'], ['mis-bsa', 'bsa'], ['mis-plan', 'plan'], ['mis-start', 'start']];
+    numField(root, 'Ifosfamide dose', 'mis-dose', '');
+    selectField(root, 'Dose unit', 'mis-unit', MS.UNITS);
+    numField(root, 'Body surface area, m² (needed for a dose per m²)', 'mis-bsa', '');
+    selectField(root, 'Route plan', 'mis-plan', MS.PLANS);
+    dateField(root, 'Ifosfamide start (optional, for clock times)', 'mis-start', 'datetime-local');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MS.mesnaIfosfamideSchedule(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'glucarpidase-dose'(root) {
+    const pairs = [['gcd-weight', 'weight'], ['gcd-mtx', 'methotrexate'], ['gcd-delayed', 'delayed'], ['gcd-when', 'glucarpidaseTime'], ['gcd-last', 'lastLeucovorin'], ['gcd-next', 'nextLeucovorin']];
+    numField(root, 'Weight, kg', 'gcd-weight', '');
+    numField(root, 'Plasma methotrexate, µmol/L', 'gcd-mtx', '');
+    selectField(root, 'Delayed methotrexate clearance from impaired renal function', 'gcd-delayed', GD.DELAYED);
+    dateField(root, 'Planned glucarpidase time (optional)', 'gcd-when', 'datetime-local');
+    dateField(root, 'Last leucovorin dose (optional)', 'gcd-last', 'datetime-local');
+    dateField(root, 'Next leucovorin dose (optional)', 'gcd-next', 'datetime-local');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = GD.glucarpidaseDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'it-methotrexate-age-dose'(root) {
+    const pairs = [['itm-age', 'age'], ['itm-unit', 'ageUnit']];
+    numField(root, 'Age', 'itm-age', '');
+    selectField(root, 'Age unit', 'itm-unit', IT.AGE_UNITS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = IT.itMethotrexateAgeDose(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'hdmtx-leucovorin-rescue'(root) {
+    const pairs = [['hlr-hours', 'hours'], ['hlr-level', 'level'], ['hlr-unit', 'levelUnit'], ['hlr-base-cr', 'baselineCreatinine'], ['hlr-cur-cr', 'currentCreatinine'], ['hlr-level72', 'level72']];
+    numField(root, 'Hours since the methotrexate infusion started', 'hlr-hours', '');
+    numField(root, 'Serum methotrexate level', 'hlr-level', '');
+    selectField(root, 'Level unit', 'hlr-unit', HL.LEVEL_UNITS);
+    numField(root, 'Baseline serum creatinine (optional; same unit as the current value)', 'hlr-base-cr', '');
+    numField(root, 'Current serum creatinine (optional)', 'hlr-cur-cr', '');
+    numField(root, 'The 72-hour level in µmol/L, for a 96-hour level (optional)', 'hlr-level72', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = HL.hdmtxLeucovorinRescue(args, new Date());
+      show(r, o);
+      if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'gcsf-timing-check'(root) {
+    const pairs = [['gtc-product', 'product'], ['gtc-chemo', 'chemoEnd'], ['gtc-planned', 'planned'], ['gtc-next', 'nextChemo'], ['gtc-pop', 'population'], ['gtc-weight', 'weight']];
+    selectField(root, 'Product', 'gtc-product', GT.PRODUCTS);
+    dateField(root, 'This cycle: chemotherapy last given', 'gtc-chemo', 'datetime-local');
+    dateField(root, 'Planned growth-factor date and time', 'gtc-planned', 'datetime-local');
+    dateField(root, 'Next cycle: chemotherapy start (optional)', 'gtc-next', 'datetime-local');
+    selectField(root, 'Pegfilgrastim: adult or pediatric patient', 'gtc-pop', GT.POPULATIONS);
+    numField(root, 'Pegfilgrastim: weight, kg (needed for a pediatric patient)', 'gtc-weight', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = GT.gcsfTimingCheck(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
     }));

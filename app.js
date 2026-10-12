@@ -2766,6 +2766,11 @@ const UTILITIES = [
   { id: 'rasburicase-dose', name: 'Rasburicase Dose and Vials (Elitek Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'dexrazoxane-ratio-dose', name: 'Dexrazoxane Dose From the Doxorubicin Dose (Label Ratio)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'capecitabine-tablet-dose', name: 'Capecitabine Dose in Whole Tablets (Xeloda Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mesna-ifosfamide-schedule', name: 'Mesna Doses and Times From the Ifosfamide Dose (MESNEX Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'glucarpidase-dose', name: 'Glucarpidase Dose and Leucovorin Spacing (Voraxaze Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'it-methotrexate-age-dose', name: 'Intrathecal Methotrexate Dose by Age (Label)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hdmtx-leucovorin-rescue', name: 'Leucovorin Rescue After High-Dose Methotrexate (Label Table)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gcsf-timing-check', name: 'Filgrastim and Pegfilgrastim Timing Against Chemotherapy (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

@@ -1610,6 +1610,21 @@
     }
   },
   {
+    "label": "Leucovorin Calcium for Injection, Sagent",
+    "labeler": "SAGENT PHARMACEUTICALS",
+    "setId": "9d0e5356-ff39-4a8e-944c-e808a21ef4b2",
+    "tools": [
+      "hdmtx-leucovorin-rescue"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-07-23",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e9b5f4814ea9388e232ec1d1e2ec8015cf04bfc522be53e6b29410b6a2fda0ea"
+    }
+  },
+  {
     "label": "Levofloxacin tablets, Aurobindo",
     "labeler": "AUROBINDO PHARMA LIMITED",
     "setId": "529ac72c-c4a0-4001-8cf9-b94f5bf7265c",
@@ -1763,6 +1778,22 @@
     }
   },
   {
+    "label": "MESNEX (mesna) injection and tablets",
+    "labeler": "BAXTER HEALTHCARE COMPANY",
+    "setId": "2e8eebc3-ea75-4c57-bfe1-2c5dc2c37806",
+    "tools": [
+      "mesna-ifosfamide-schedule"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-05-28",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "5b0038614407a25a53894ae388747f78ee3ce3a5c6795e5ab11ba97578bc2463",
+      "43678-2": "310be99150813fd97ec03b0061404af41fd9eb95a561c60aaa968ad5f3b68975"
+    }
+  },
+  {
     "label": "Metformin hydrochloride tablets, Zydus",
     "labeler": "ZYDUS PHARMACEUTICALS USA INC.",
     "setId": "c82a10fa-1e8e-46b6-890a-737de3f34ee1",
@@ -1791,6 +1822,23 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "4f56573027fb674d01c00d2bc30c764bcbad9b02f5714bf69b6773848d8805c5"
+    }
+  },
+  {
+    "label": "Methotrexate Injection, Accord",
+    "labeler": "ACCORD HEALTHCARE, INC.",
+    "setId": "dd035a9f-cd40-4314-b9d8-2294b8a924e2",
+    "tools": [
+      "it-methotrexate-age-dose",
+      "hdmtx-leucovorin-rescue"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2026-09-07",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e4d3c32022ff32928ec3927f5fa2233b2971e929589cccfdbb627081ef3f6f9e",
+      "34089-3": "dd274f1fa58706e81526e81f96c11f8c00550e6bfd7f1d79424d37e2015dad63"
     }
   },
   {
@@ -1930,6 +1978,36 @@
     "sections": {
       "34068-7": "004abf04be1e27fc601267a21287b6291aa8f6fdb1e4a11b4423d86d154458ba",
       "34089-3": "51b98aaaa904f1482002fbc5b93c55eca304067ed480cda226775677cd736316"
+    }
+  },
+  {
+    "label": "Neulasta (pegfilgrastim)",
+    "labeler": "AMGEN, INC",
+    "setId": "fdfe5d72-6b80-435a-afa4-c5d74dd852ce",
+    "tools": [
+      "gcsf-timing-check"
+    ],
+    "splVersion": 160,
+    "publishedOn": "2026-08-17",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "357b9a4eb808f879a4d0c4fa4c7e79465a67bda01371dc24c23a4b3e7f5cb706"
+    }
+  },
+  {
+    "label": "NEUPOGEN (filgrastim)",
+    "labeler": "AMGEN, INC",
+    "setId": "97cc73cc-b5b7-458a-a933-77b00523e193",
+    "tools": [
+      "gcsf-timing-check"
+    ],
+    "splVersion": 166,
+    "publishedOn": "2026-07-29",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "df83c00c9fca887484ad4e440734a40cc6962247e21f902f766ac3b0b58ab815"
     }
   },
   {
@@ -2933,6 +3011,24 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "ddd826d98bbfea3491009ed4e838d670eaeeca60f13fcb8d95888e50d9f019e1"
+    }
+  },
+  {
+    "label": "VORAXAZE (glucarpidase)",
+    "labeler": "BTG INTERNATIONAL INC.",
+    "setId": "acaef5a6-b740-40e3-8ffe-74a75c74745c",
+    "tools": [
+      "glucarpidase-dose",
+      "hdmtx-leucovorin-rescue"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2024-12-02",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34067-9": "9fcf4d2fabe0babbe61d1f4dee445d1698d1ef91dff2d46d5d7768ea4acb69d7",
+      "34068-7": "561d616c9365006fff203a46e799990be42996be8fd420816f316488e786a68a",
+      "43678-2": "02acda4b6520ccadd3685abb3479043685cebafe9983c865359484560868c4a8"
     }
   },
   {

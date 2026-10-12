@@ -12930,6 +12930,46 @@
       ],
       "tile": "capecitabine-tablet-dose",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mesna",
+        "mesnex"
+      ],
+      "tile": "mesna-ifosfamide-schedule",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "glucarpidase",
+        "voraxaze"
+      ],
+      "tile": "glucarpidase-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "intrathecal"
+      ],
+      "tile": "it-methotrexate-age-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hdmtx"
+      ],
+      "tile": "hdmtx-leucovorin-rescue",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pegfilgrastim",
+        "filgrastim",
+        "neulasta",
+        "neupogen"
+      ],
+      "tile": "gcsf-timing-check",
+      "audience": "clinicians"
     }
   ]
 }

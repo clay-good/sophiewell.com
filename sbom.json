@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e7e2189d-8a3b-5b2f-82e7-1b23a78814bc",
+  "serialNumber": "urn:uuid:791713a4-41d3-5e15-87b2-c8c8e5cc42b5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T02:18:06.243Z",
+    "timestamp": "2026-10-12T02:33:34.897Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2193 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2198 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5c6a5f2021af5bae48775b1b5338614702b3821645f76190f3a1c857d0bb3f1f"
+          "content": "64574cabe898df573908e03464165107d2b78a85204f935f65373d5a4e0f0384"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "142312"
+          "value": "142679"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3670b82c25524610997bcb57402553544b0167314b1927b5b5f18e8d64425e7e"
+          "content": "e9c759f9dadba5037fecb01095ff65dcd28d0afc3ebf98c737abdec4a88b1d20"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "613833"
+          "value": "614686"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d42673480fd42da338fce774404d8f2763cfe0cb27eb0c68c6707a5e9d98fe31"
+          "content": "04ac6a1303e1372d8c38f393c94cbfea76dcb5df085b86bf847570248656e544"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "275421"
+          "value": "276082"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "be480e8d0851152ce750e2617e62d9261789d5b6b25ab812ddcd48e6ed6fad13"
+          "content": "7a4daf1212292aa80b1435950db1527d1d8474b1d62e410a932864b92411f8b4"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "131441"
+          "value": "131864"
         }
       ]
     },
@@ -9338,6 +9338,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/gcsf-timing-check-v1635.js",
+      "type": "file",
+      "name": "lib/gcsf-timing-check-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d496325de0155b6d790fe81c13c364f918a7e542697872a46e58eac40d499e15"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10156"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/gds-v295.js",
       "type": "file",
       "name": "lib/gds-v295.js",
@@ -9691,6 +9712,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "13141"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/glucarpidase-dose-v1635.js",
+      "type": "file",
+      "name": "lib/glucarpidase-dose-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b145445c9d044c14d5e88fd34018a6f2b1b2cfa1886e3089677bb863151b6f75"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9074"
         }
       ]
     },
@@ -10342,6 +10384,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6441"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hdmtx-leucovorin-rescue-v1635.js",
+      "type": "file",
+      "name": "lib/hdmtx-leucovorin-rescue-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e11ee674f2df0ec7812be5f15c3e8fbc02ad333af32f62464601d06f51ae04aa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "14383"
         }
       ]
     },
@@ -12635,6 +12698,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/it-methotrexate-age-dose-v1635.js",
+      "type": "file",
+      "name": "lib/it-methotrexate-age-dose-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "853a18ab6efd6f88a3ec151e0e0357ce5be364daeed6807f22cdad4f72917f73"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4442"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/itemized-bill-check.js",
       "type": "file",
       "name": "lib/itemized-bill-check.js",
@@ -13418,7 +13502,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "97e981d0411f4eac97ed7ece960dcc176cadbaae26b08fc3c54ef43966bda496"
+          "content": "81c2b76047ef56daf330228ab2e072ee9aede482eea9e632e7f76cc57096ab60"
         }
       ],
       "properties": [
@@ -13428,7 +13512,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "43611"
+          "value": "44902"
         }
       ]
     },
@@ -15764,6 +15848,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/mesna-ifosfamide-schedule-v1635.js",
+      "type": "file",
+      "name": "lib/mesna-ifosfamide-schedule-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7836"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/mest-c-v528.js",
       "type": "file",
       "name": "lib/mest-c-v528.js",
@@ -15791,7 +15896,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "adcc54e89d3a2aa0715c8e3d58e75b60415c31526f5999f043f81b182caf2afd"
+          "content": "c24a0f5d1a50ad13f96f7265dd295a769d90bd07e35ca228175b5924db1a8208"
         }
       ],
       "properties": [
@@ -15801,7 +15906,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2900951"
+          "value": "2905557"
         }
       ]
     },
@@ -37730,6 +37835,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gcsf-timing-check-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/gcsf-timing-check-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "938c804559a82fa0978a003dade1ebedadb6b1eff48d462535500f88e395708a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1657"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gds-v295.js",
       "type": "file",
       "name": "mcp/adapters/gds-v295.js",
@@ -38062,6 +38188,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1446"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/glucarpidase-dose-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/glucarpidase-dose-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1adb3722c0ef29348ccf3bf3e503947cce4ec5a762037196e0d3af372183a242"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1598"
         }
       ]
     },
@@ -38650,6 +38797,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1335"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hdmtx-leucovorin-rescue-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/hdmtx-leucovorin-rescue-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c43ca438fdbf35fa3e6019159acca49e6eea49c4d6400801527dd69a6f1b8dfb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1727"
         }
       ]
     },
@@ -40687,6 +40855,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1220"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/it-methotrexate-age-dose-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/it-methotrexate-age-dose-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "291ce012edcfd0b867d1468e7e7b639460b22c73e4363ddab8445e86f0195bb2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1044"
         }
       ]
     },
@@ -43522,6 +43711,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1566"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mesna-ifosfamide-schedule-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/mesna-ifosfamide-schedule-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1506156eb4403165fb5c99b16b82c7e8b068ef757df8788aa7578d4002e33a72"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1442"
         }
       ]
     },
@@ -55103,7 +55313,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "afbb6ad05409ba687174d3cdcc0c400c30b6feafe27be5031905fb8b86cb549f"
+          "content": "fd6977045fff51656c51399d6e58321edf8f42d422b3b72b2403c31cf2364c75"
         }
       ],
       "properties": [
@@ -55113,7 +55323,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "146292"
+          "value": "147011"
         }
       ]
     },
@@ -59723,7 +59933,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e9bd8b3f82e4e5a07cf05af759dc2554cf2fe8107a7ec46610f937b481efb61e"
+          "content": "7daf3c08696adf1ded8c20cfd38e2d042dfd1a198292ea029074cf3dd085998f"
         }
       ],
       "properties": [
@@ -59733,7 +59943,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "26384"
+          "value": "32015"
         }
       ]
     },
@@ -90937,6 +91147,7 @@
         "urn:sophiewell:file:source:lib/gartland-supracondylar-v377.js",
         "urn:sophiewell:file:source:lib/gass-macular-hole-v471.js",
         "urn:sophiewell:file:source:lib/gastric-emptying-scintigraphy-v854.js",
+        "urn:sophiewell:file:source:lib/gcsf-timing-check-v1635.js",
         "urn:sophiewell:file:source:lib/gds-v295.js",
         "urn:sophiewell:file:source:lib/geissler-carpal-v415.js",
         "urn:sophiewell:file:source:lib/gell-coombs-v426.js",
@@ -90954,6 +91165,7 @@
         "urn:sophiewell:file:source:lib/global-ards-v570.js",
         "urn:sophiewell:file:source:lib/glogau-photoaging-v475.js",
         "urn:sophiewell:file:source:lib/glp1-titration-check-v1632.js",
+        "urn:sophiewell:file:source:lib/glucarpidase-dose-v1635.js",
         "urn:sophiewell:file:source:lib/glycemia-risk-index-v1473.js",
         "urn:sophiewell:file:source:lib/gmfcs-v462.js",
         "urn:sophiewell:file:source:lib/gmi-v1471.js",
@@ -90985,6 +91197,7 @@
         "urn:sophiewell:file:source:lib/hbv-serology-v1400.js",
         "urn:sophiewell:file:source:lib/hcc-surveillance-v281.js",
         "urn:sophiewell:file:source:lib/hcv-test-sequence-v1400.js",
+        "urn:sophiewell:file:source:lib/hdmtx-leucovorin-rescue-v1635.js",
         "urn:sophiewell:file:source:lib/heaven-criteria-v572.js",
         "urn:sophiewell:file:source:lib/heckerling-pneumonia-v673.js",
         "urn:sophiewell:file:source:lib/heds-2017-v822.js",
@@ -91094,6 +91307,7 @@
         "urn:sophiewell:file:source:lib/isl-lymphedema-v539.js",
         "urn:sophiewell:file:source:lib/isotonicity-e-value-v1629.js",
         "urn:sophiewell:file:source:lib/isotonicity-freezing-point-v1629.js",
+        "urn:sophiewell:file:source:lib/it-methotrexate-age-dose-v1635.js",
         "urn:sophiewell:file:source:lib/itemized-bill-check.js",
         "urn:sophiewell:file:source:lib/itemized-bill-worker.js",
         "urn:sophiewell:file:source:lib/iv-antithrombotic-renal-check-v1632.js",
@@ -91243,6 +91457,7 @@
         "urn:sophiewell:file:source:lib/meniere-aao-hns-v708.js",
         "urn:sophiewell:file:source:lib/meningitis-who-2025-v1560.js",
         "urn:sophiewell:file:source:lib/meq-mmol-mg-v1629.js",
+        "urn:sophiewell:file:source:lib/mesna-ifosfamide-schedule-v1635.js",
         "urn:sophiewell:file:source:lib/mest-c-v528.js",
         "urn:sophiewell:file:source:lib/meta.js",
         "urn:sophiewell:file:source:lib/metabolic-hepatic-v219.js",
@@ -93234,6 +93449,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/gartland-supracondylar-v377.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gass-macular-hole-v471.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gastric-emptying-scintigraphy-v854.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/gcsf-timing-check-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gds-v295.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/geissler-carpal-v415.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gell-coombs-v426.js",
@@ -93250,6 +93466,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/global-ards-v570.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glogau-photoaging-v475.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glp1-titration-check-v1632.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/glucarpidase-dose-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glycemia-risk-index-v1473.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gmfcs-v462.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gmi-v1471.js",
@@ -93278,6 +93495,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hbv-serology-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hcc-surveillance-v281.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hcv-test-sequence-v1400.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hdmtx-leucovorin-rescue-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heaven-criteria-v572.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heckerling-pneumonia-v673.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heds-2017-v822.js",
@@ -93375,6 +93593,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/isl-lymphedema-v539.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-e-value-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isotonicity-freezing-point-v1629.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/it-methotrexate-age-dose-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iv-antithrombotic-renal-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iv-iron-course-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iv-label-rate-check-v1630.js",
@@ -93510,6 +93729,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/meniere-aao-hns-v708.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meningitis-who-2025-v1560.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meq-mmol-mg-v1629.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mesna-ifosfamide-schedule-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mest-c-v528.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/metabolic-hepatic-v219.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/metabolic-onc-v88.js",
@@ -94165,7 +94385,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e7e2189d8a3b6b2f"
+      "value": "791713a441d34e15"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -94177,7 +94397,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3546"
+      "value": "3556"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

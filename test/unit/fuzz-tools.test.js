@@ -770,6 +770,11 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as mesnaIfosfamideScheduleV1635 from '../../lib/mesna-ifosfamide-schedule-v1635.js';
+import * as glucarpidaseDoseV1635 from '../../lib/glucarpidase-dose-v1635.js';
+import * as itMethotrexateAgeDoseV1635 from '../../lib/it-methotrexate-age-dose-v1635.js';
+import * as hdmtxLeucovorinRescueV1635 from '../../lib/hdmtx-leucovorin-rescue-v1635.js';
+import * as gcsfTimingCheckV1635 from '../../lib/gcsf-timing-check-v1635.js';
 import * as rasburicaseDoseV1635 from '../../lib/rasburicase-dose-v1635.js';
 import * as dexrazoxaneRatioDoseV1635 from '../../lib/dexrazoxane-ratio-dose-v1635.js';
 import * as capecitabineTabletDoseV1635 from '../../lib/capecitabine-tablet-dose-v1635.js';
@@ -1778,6 +1783,11 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'mesna-ifosfamide-schedule-v1635.js': mesnaIfosfamideScheduleV1635,
+  'glucarpidase-dose-v1635.js': glucarpidaseDoseV1635,
+  'it-methotrexate-age-dose-v1635.js': itMethotrexateAgeDoseV1635,
+  'hdmtx-leucovorin-rescue-v1635.js': hdmtxLeucovorinRescueV1635,
+  'gcsf-timing-check-v1635.js': gcsfTimingCheckV1635,
   'rasburicase-dose-v1635.js': rasburicaseDoseV1635,
   'dexrazoxane-ratio-dose-v1635.js': dexrazoxaneRatioDoseV1635,
   'capecitabine-tablet-dose-v1635.js': capecitabineTabletDoseV1635,

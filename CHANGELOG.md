@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Mesna Doses and Times From the Ifosfamide Dose (MESNEX Label): 20% at 0, 4 and 8 hours, or 20%
+  then 40% by mouth at 2 and 6 hours, with clock times and the label's 2 g/m² sentence.
+- Leucovorin Rescue After High-Dose Methotrexate (Label Table): a level at 24, 48, 72 or 96 hours
+  matched to the label's row; a level in a gap or at another hour is not classified.
+- Glucarpidase Dose and Leucovorin Spacing (Voraxaze Label): 50 Units/kg in 1,000-Unit vials, the
+  indication test, and the 2-hour leucovorin window.
+- Intrathecal Methotrexate Dose by Age (Label): the label's five age bands, preservative-free at
+  1 mg/mL.
+- Filgrastim and Pegfilgrastim Timing Against Chemotherapy (Labels): the allowed window, cycles
+  that leave none, and the pegfilgrastim dose with the pediatric weight table.
 - Rasburicase Dose and Vials (Elitek Label): 0.2 mg/kg and the vials that cover it; no dose with
   G6PD deficiency or past day 5.
 - Dexrazoxane Dose From the Doxorubicin Dose (Label Ratio): 10:1, or 5:1 below a creatinine

@@ -1040,6 +1040,11 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import mesnaIfosfamideScheduleV1635 from './adapters/mesna-ifosfamide-schedule-v1635.js';
+import glucarpidaseDoseV1635 from './adapters/glucarpidase-dose-v1635.js';
+import itMethotrexateAgeDoseV1635 from './adapters/it-methotrexate-age-dose-v1635.js';
+import hdmtxLeucovorinRescueV1635 from './adapters/hdmtx-leucovorin-rescue-v1635.js';
+import gcsfTimingCheckV1635 from './adapters/gcsf-timing-check-v1635.js';
 import rasburicaseDoseV1635 from './adapters/rasburicase-dose-v1635.js';
 import dexrazoxaneRatioDoseV1635 from './adapters/dexrazoxane-ratio-dose-v1635.js';
 import capecitabineTabletDoseV1635 from './adapters/capecitabine-tablet-dose-v1635.js';
@@ -2264,6 +2269,11 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['mesna-ifosfamide-schedule-v1635', mesnaIfosfamideScheduleV1635],
+  ['glucarpidase-dose-v1635', glucarpidaseDoseV1635],
+  ['it-methotrexate-age-dose-v1635', itMethotrexateAgeDoseV1635],
+  ['hdmtx-leucovorin-rescue-v1635', hdmtxLeucovorinRescueV1635],
+  ['gcsf-timing-check-v1635', gcsfTimingCheckV1635],
   ['rasburicase-dose-v1635', rasburicaseDoseV1635],
   ['dexrazoxane-ratio-dose-v1635', dexrazoxaneRatioDoseV1635],
   ['capecitabine-tablet-dose-v1635', capecitabineTabletDoseV1635],
