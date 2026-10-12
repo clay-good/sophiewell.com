@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:adf8eec5-2b9e-5b74-8280-396852c580fe",
+  "serialNumber": "urn:uuid:60294194-7313-5e06-8ed0-35a11b3138c5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T00:38:23.970Z",
+    "timestamp": "2026-10-12T00:50:00.034Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2180 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2182 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bec2b3a8a666cb2568ea12e33e7bebc1a674a201898bad6838b4c02197f16d54"
+          "content": "3dedf7e60b2227332b71dedd104a2ba6e1e994753be0a6b5790a2afdd48489b0"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141261"
+          "value": "141412"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bb89ae2ae33cf6f7e40a86f91ad20586d3e62733043a437225f3117076034fab"
+          "content": "b0eccfd61446c6d857cd7d4cebc6d357d07858c0a78f16ab2a78dd76065bcbfe"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "611467"
+          "value": "611822"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b42ae50fed1983e7931ba1b6c361a854b7ab022b4c7cb66cfdd107b533961345"
+          "content": "3a1c5ec1637e3f8732158f0f4e674ca4db74ebfca95a14bb9b1794cba8ab1837"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "273659"
+          "value": "273931"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5d9452be8a30c911b058d65ae1d61be683d0174b99572208387fbd047ad29aa9"
+          "content": "19fe8c13f67a142122b692d2d74f2410be7bdcea635c505b0bed3facf8736d62"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "130201"
+          "value": "130382"
         }
       ]
     },
@@ -15707,7 +15707,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7c6014056aa37ba06d464171fb1987cbce27a9f59eea0bf55646dcbac2193d42"
+          "content": "20a6f79cbb490a4e129d8288e41fc15f769c4651c350cc02336f94f89efc5351"
         }
       ],
       "properties": [
@@ -15717,7 +15717,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2887117"
+          "value": "2889013"
         }
       ]
     },
@@ -17839,6 +17839,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8559"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nrc-medical-event-screen-v1635.js",
+      "type": "file",
+      "name": "lib/nrc-medical-event-screen-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bd003bfeeb11246ea0007523e5fcbce09ae4deb4d34191cbbd5faa61a8c7e885"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11622"
         }
       ]
     },
@@ -21871,6 +21892,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11732"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/rad-package-label-category-v1635.js",
+      "type": "file",
+      "name": "lib/rad-package-label-category-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bdd67bc92e5d9e5bde05b7810279983676b6f0f2ee9d475a00da07b6cb5c25c1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5613"
         }
       ]
     },
@@ -45101,6 +45143,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nrc-medical-event-screen-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/nrc-medical-event-screen-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8c5b98739b43771c40d31b63fdcb0321186603fe1544abe216f488a82d65663a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2644"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nrti-renal-dose-v1632.js",
       "type": "file",
       "name": "mcp/adapters/nrti-renal-dose-v1632.js",
@@ -48499,6 +48562,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5994"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rad-package-label-category-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/rad-package-label-category-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "044816c223342f9da5607a8dd8a88441baf8787161199e752c65658c692e4be3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1336"
         }
       ]
     },
@@ -54557,7 +54641,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "48ab296ea3248a31a1826eddd0f3af7a325b11a76e4af893c56cde9f303da0ef"
+          "content": "489e785128b66c42344d6cda4ddb1ea756ad778428c52ab988c69fe27c661bf8"
         }
       ],
       "properties": [
@@ -54567,7 +54651,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "144253"
+          "value": "144567"
         }
       ]
     },
@@ -59177,7 +59261,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f003966efb5e4c316503aa37130d92800b8452b1570ee4cccbcf36bfa4e64e27"
+          "content": "1a6830c2a617eb3030a45d5fbd2d7450d6da722b29392273506b715a9355182c"
         }
       ],
       "properties": [
@@ -59187,7 +59271,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7094"
+          "value": "10183"
         }
       ]
     },
@@ -90796,6 +90880,7 @@
         "urn:sophiewell:file:source:lib/nottingham-grade-v649.js",
         "urn:sophiewell:file:source:lib/nottingham-npi-v330.js",
         "urn:sophiewell:file:source:lib/npep-2025-v1401.js",
+        "urn:sophiewell:file:source:lib/nrc-medical-event-screen-v1635.js",
         "urn:sophiewell:file:source:lib/nrti-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/nsofa-v526.js",
         "urn:sophiewell:file:source:lib/ntm-pulmonary-v827.js",
@@ -90988,6 +91073,7 @@
         "urn:sophiewell:file:source:lib/quintero-ttts-v831.js",
         "urn:sophiewell:file:source:lib/rabies-state-lines-v1401.js",
         "urn:sophiewell:file:source:lib/rachs1-v541.js",
+        "urn:sophiewell:file:source:lib/rad-package-label-category-v1635.js",
         "urn:sophiewell:file:source:lib/radiology-v165.js",
         "urn:sophiewell:file:source:lib/radmeasure-v253.js",
         "urn:sophiewell:file:source:lib/ramsay-sedation-v358.js",
@@ -93039,6 +93125,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nottingham-grade-v649.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nottingham-npi-v330.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/npep-2025-v1401.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nrc-medical-event-screen-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nrti-renal-dose-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nsofa-v526.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ntm-pulmonary-v827.js",
@@ -93201,6 +93288,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/quantity-limit-check-v1502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/quintero-ttts-v831.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rachs1-v541.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/rad-package-label-category-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/radiology-v165.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/radmeasure-v253.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ramsay-sedation-v358.js",
@@ -93593,7 +93681,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "adf8eec52b9e8b74"
+      "value": "6029419473136e06"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -93605,7 +93693,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3520"
+      "value": "3524"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

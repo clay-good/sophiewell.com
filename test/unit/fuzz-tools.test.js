@@ -770,6 +770,8 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as nrcMedicalEventScreenV1635 from '../../lib/nrc-medical-event-screen-v1635.js';
+import * as radPackageLabelCategoryV1635 from '../../lib/rad-package-label-category-v1635.js';
 import * as occupationalDoseLimitCheckV1635 from '../../lib/occupational-dose-limit-check-v1635.js';
 import * as sealedSourceLeakTestV1635 from '../../lib/sealed-source-leak-test-v1635.js';
 import * as indSafetyReportClockV1635 from '../../lib/ind-safety-report-clock-v1635.js';
@@ -1765,6 +1767,8 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'nrc-medical-event-screen-v1635.js': nrcMedicalEventScreenV1635,
+  'rad-package-label-category-v1635.js': radPackageLabelCategoryV1635,
   'occupational-dose-limit-check-v1635.js': occupationalDoseLimitCheckV1635,
   'sealed-source-leak-test-v1635.js': sealedSourceLeakTestV1635,
   'ind-safety-report-clock-v1635.js': indSafetyReportClockV1635,

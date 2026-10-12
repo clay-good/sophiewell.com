@@ -708,3 +708,7 @@ experience**.
 > v1635, Occupational Radiation Dose Against the Annual Limits (10 CFR 20.1201) — [spec-v1635](spec-v1635.md), which adds `occupational-dose-limit-check` — is 2179.)
 
 > v1635, Sealed Source Leak Test Result and Next Due Date (10 CFR 35.67) — [spec-v1635](spec-v1635.md), which adds `sealed-source-leak-test` — is 2180.)
+
+> v1635, Reportable Medical Event Screen (10 CFR 35.3045) — [spec-v1635](spec-v1635.md), which adds `nrc-medical-event-screen` — is 2181.)
+
+> v1635, Radioactive Package Label Category and Transport Index (49 CFR 172.403) — [spec-v1635](spec-v1635.md), which adds `rad-package-label-category` — is 2182.)

@@ -1,6 +1,7 @@
 // spec-v1635: oncology pharmacy, investigational drug service and nuclear pharmacy.
 // ind-safety-report-clock, emergency-ind-clock, ind-annual-report-due, trial-record-retention,
-// occupational-dose-limit-check, sealed-source-leak-test.
+// occupational-dose-limit-check, sealed-source-leak-test, nrc-medical-event-screen,
+// rad-package-label-category.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -9,6 +10,8 @@ import * as IA from '../lib/ind-annual-report-due-v1635.js';
 import * as TR from '../lib/trial-record-retention-v1635.js';
 import * as OD from '../lib/occupational-dose-limit-check-v1635.js';
 import * as SL from '../lib/sealed-source-leak-test-v1635.js';
+import * as ME from '../lib/nrc-medical-event-screen-v1635.js';
+import * as RP from '../lib/rad-package-label-category-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -134,6 +137,41 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(SL.sealedSourceLeakTest(args), o);
+    }));
+  },
+  'nrc-medical-event-screen'(root) {
+    const pairs = [['mes-intervention', 'patientIntervention'], ['mes-damage', 'permanentDamage'], ['mes-wrong', 'wrongAdministration'], ['mes-kind', 'doseKind'], ['mes-dose', 'doseRem'], ['mes-prescribed', 'prescribed'], ['mes-delivered', 'delivered'], ['mes-range', 'outsideRange'], ['mes-fraction-prescribed', 'prescribedFraction'], ['mes-fraction-delivered', 'deliveredFraction'], ['mes-site-dose', 'otherSiteDoseRem'], ['mes-site-expected', 'otherSiteExpectedRem'], ['mes-discovered', 'discovered']];
+    selectField(root, 'Did the event result from intervention by the patient or research subject?', 'mes-intervention', ME.YES_NO);
+    selectField(root, 'With patient intervention: unintended permanent functional damage, as determined by a physician?', 'mes-damage', ME.YES_NO);
+    selectField(root, 'Wrong drug, route, individual or mode, or a leaking sealed source?', 'mes-wrong', ME.WRONG);
+    selectField(root, 'Kind of dose estimated', 'mes-kind', ME.DOSE_KINDS);
+    numField(root, 'Dose difference from prescribed, or the dose from a wrong administration, rem', 'mes-dose', '');
+    numField(root, 'Prescribed total dose or dosage (any unit)', 'mes-prescribed', '');
+    numField(root, 'Delivered total dose or dosage (same unit)', 'mes-delivered', '');
+    selectField(root, 'Dosage outside the prescribed range? (optional)', 'mes-range', ME.YES_NO);
+    numField(root, 'Prescribed dose for one fraction (optional)', 'mes-fraction-prescribed', '');
+    numField(root, 'Delivered dose for that fraction', 'mes-fraction-delivered', '');
+    numField(root, 'Dose to skin, organ or tissue other than the treatment site, rem (optional)', 'mes-site-dose', '');
+    numField(root, 'Dose expected at that site under the written directive, rem', 'mes-site-expected', '');
+    dateField(root, 'Date of discovery (optional)', 'mes-discovered');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(ME.nrcMedicalEventScreen(args), o);
+    }));
+  },
+  'rad-package-label-category'(root) {
+    const pairs = [['rpl-unit', 'unit'], ['rpl-surface', 'surface'], ['rpl-one-meter', 'oneMeter'], ['rpl-hrcq', 'highwayRouteControlled']];
+    selectField(root, 'Unit of the dose rates', 'rpl-unit', RP.UNITS);
+    numField(root, 'Maximum dose rate at the package surface', 'rpl-surface', '');
+    numField(root, 'Maximum dose rate at 1 meter from the surface', 'rpl-one-meter', '');
+    selectField(root, 'Does the package hold a highway route controlled quantity?', 'rpl-hrcq', RP.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(RP.radPackageLabelCategory(args), o);
     }));
   },
 };

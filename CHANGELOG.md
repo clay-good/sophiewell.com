@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Reportable Medical Event Screen (10 CFR 35.3045): each test of the rule as met, not met or not
+  assessed, with the telephone, written report and notification deadlines.
+- Radioactive Package Label Category and Transport Index (49 CFR 172.403): WHITE-I, YELLOW-II or
+  YELLOW-III from the surface and 1-meter dose rates.
 - Occupational Radiation Dose Against the Annual Limits (10 CFR 20.1201): each year-to-date dose
   as a percent of its NRC limit, with a year-end projection.
 - Sealed Source Leak Test Result and Next Due Date (10 CFR 35.67): wipe counts to microcuries,

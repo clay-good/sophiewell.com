@@ -12877,6 +12877,13 @@
       ],
       "tile": "occupational-dose-limit-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "misadministration"
+      ],
+      "tile": "nrc-medical-event-screen",
+      "audience": "clinicians"
     }
   ]
 }

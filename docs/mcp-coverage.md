@@ -9244,6 +9244,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/sealed-source-leak-test-v1635.js (spec-v1635: Sealed source leak test (10 CFR 35.67, 35.3067) — administrative disclaimer)
 - `sealed-source-leak-test`
 
+### lib/nrc-medical-event-screen-v1635.js (spec-v1635: NRC medical event screen (10 CFR 35.3045) — administrative disclaimer)
+- `nrc-medical-event-screen`
+
+### lib/rad-package-label-category-v1635.js (spec-v1635: Radioactive package label category (49 CFR 172.403) — administrative disclaimer)
+- `rad-package-label-category`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 
