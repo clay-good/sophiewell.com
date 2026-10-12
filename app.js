@@ -2773,6 +2773,8 @@ const UTILITIES = [
   { id: 'gcsf-timing-check', name: 'Filgrastim and Pegfilgrastim Timing Against Chemotherapy (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cumulative-dose-limit', name: 'Lifetime Cumulative Dose Against the Label (Anthracyclines, Mitoxantrone, Bleomycin)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'esa-chemo-dose-adjust', name: 'Epoetin and Darbepoetin in Chemotherapy Anemia (Label Rules)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'chatelut-carboplatin', name: 'Carboplatin Clearance and Dose (Chatelut Formula)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'desensitization-12-step', name: 'Three-Bag, 12-Step Desensitization Arithmetic', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

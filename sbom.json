@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:566b89f2-91b0-57dd-87b3-6b0fa9ddf9c3",
+  "serialNumber": "urn:uuid:8084002b-8436-5ce3-896c-64dd8b55691c",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T02:53:17.242Z",
+    "timestamp": "2026-10-12T03:09:51.354Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2200 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2202 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8c6336bdcb4cc4a5cbd3cea940ff3068c623360a1f88a580be88ae03b0b9ebb0"
+          "content": "02b3d05df25f1349a16c475cebd0b546f78ce821848987caef7f321cd1fd3503"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "142855"
+          "value": "142981"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ad97293097a4ddca6e2f8e05f4b62639e786dd5df8669fbf471bc5bc9fba04bc"
+          "content": "b61a56d7b512872a7a3315058d594c2081800d9d79e119e587e5401610f82cc4"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "615056"
+          "value": "615377"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "031a88fc411aec07bd3e34404281de38510185e3cd29d630be5655d38e1ba243"
+          "content": "4b5091ccd4ab5ade63de4758d108fc6b6b181e8f59cd0ad41e9a297a88f71a91"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "276346"
+          "value": "276611"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bad19ae25b67ebf6da79430c349aadff0b262c9ffbb061220b32849f8814fb7d"
+          "content": "de6535884df05cef9f2877f7f45dd0dc4dfad5d116aa49e58d4f0a8d231f4598"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132062"
+          "value": "132211"
         }
       ]
     },
@@ -4697,6 +4697,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/chatelut-carboplatin-v1635.js",
+      "type": "file",
+      "name": "lib/chatelut-carboplatin-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "72445dac9c7ad76ad515893e9b106fbce8e8a0d80dfda44ea47a384973aa792b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5610"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/cheops-v645.js",
       "type": "file",
       "name": "lib/cheops-v645.js",
@@ -6541,6 +6562,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "14756"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/desensitization-12-step-v1635.js",
+      "type": "file",
+      "name": "lib/desensitization-12-step-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "414958c6ebb98ed5d0ef758c08673c7ee58f8a90e52d2b1c97d7036e0539bb59"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5268"
         }
       ]
     },
@@ -15938,7 +15980,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8161e6d48fc090f739b95f21013b11072aa3b4f659c6ac4336204d5fd1d341f6"
+          "content": "9dc9d9a2ebdbcc06570a284ca5fbe0a9a5088279f09265b1f8223dc22b190f4c"
         }
       ],
       "properties": [
@@ -15948,7 +15990,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2908313"
+          "value": "2910126"
         }
       ]
     },
@@ -33572,6 +33614,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/chatelut-carboplatin-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/chatelut-carboplatin-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "716940959e8e3942486800a83d201bd5fae6e0b7d633bc72fcb640799f9d1b07"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1593"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cheops-v645.js",
       "type": "file",
       "name": "mcp/adapters/cheops-v645.js",
@@ -35248,6 +35311,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3268"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/desensitization-12-step-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/desensitization-12-step-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6fc3be3e318141e00c46066f68b60eb55352d50ab614c2ce129d9082d1cab8b3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1209"
         }
       ]
     },
@@ -55397,7 +55481,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ffbce2cf4f9153a3e82ca8e6eec347950fea72e856a0f661460376958134addf"
+          "content": "3f42c102582baa5e3bb0395da747b9a1e49957bbb629156801969e76b2430a27"
         }
       ],
       "properties": [
@@ -55407,7 +55491,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "147295"
+          "value": "147587"
         }
       ]
     },
@@ -60017,7 +60101,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cf2b7eb3804209350fdcb419ad9f7bf581c36e87a8d8d17802700f23bd9f6745"
+          "content": "31fddf877fcd2256396e882f0f0376b3ce9c4eff2fba64216daffd12b764d36b"
         }
       ],
       "properties": [
@@ -60027,7 +60111,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "35592"
+          "value": "37303"
         }
       ]
     },
@@ -91010,6 +91094,7 @@
         "urn:sophiewell:file:source:lib/chagas-stage-treatment-v1563.js",
         "urn:sophiewell:file:source:lib/chair-day-planner.js",
         "urn:sophiewell:file:source:lib/chalder-fatigue-v733.js",
+        "urn:sophiewell:file:source:lib/chatelut-carboplatin-v1635.js",
         "urn:sophiewell:file:source:lib/cheops-v645.js",
         "urn:sophiewell:file:source:lib/chicago-achalasia-v807.js",
         "urn:sophiewell:file:source:lib/chikungunya-case-def-v1563.js",
@@ -91098,6 +91183,7 @@
         "urn:sophiewell:file:source:lib/dermatology-v223.js",
         "urn:sophiewell:file:source:lib/dermscore-v234.js",
         "urn:sophiewell:file:source:lib/dermuro-v191.js",
+        "urn:sophiewell:file:source:lib/desensitization-12-step-v1635.js",
         "urn:sophiewell:file:source:lib/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:source:lib/dexrazoxane-ratio-dose-v1635.js",
         "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
@@ -93330,6 +93416,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/chagas-stage-treatment-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chair-day-planner.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chalder-fatigue-v733.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/chatelut-carboplatin-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cheops-v645.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chicago-achalasia-v807.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chikungunya-case-def-v1563.js",
@@ -93410,6 +93497,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermatology-v223.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermscore-v234.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermuro-v191.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/desensitization-12-step-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dexrazoxane-ratio-dose-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
@@ -94473,7 +94561,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "566b89f291b027dd"
+      "value": "8084002b84366ce3"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -94485,7 +94573,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3560"
+      "value": "3564"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -9304,6 +9304,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/esa-chemo-dose-adjust-v1635.js (spec-v1635: Epoetin and darbepoetin in chemotherapy anemia (label rules) — clinical disclaimer)
 - `esa-chemo-dose-adjust`
 
+### lib/chatelut-carboplatin-v1635.js (spec-v1635: Carboplatin clearance and dose (Chatelut formula) — clinical disclaimer)
+- `chatelut-carboplatin`
+
+### lib/desensitization-12-step-v1635.js (spec-v1635: Three-bag, 12-step desensitization arithmetic — clinical disclaimer)
+- `desensitization-12-step`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

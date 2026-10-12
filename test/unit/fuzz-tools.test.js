@@ -770,6 +770,8 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as chatelutCarboplatinV1635 from '../../lib/chatelut-carboplatin-v1635.js';
+import * as desensitization12StepV1635 from '../../lib/desensitization-12-step-v1635.js';
 import * as cumulativeDoseLimitV1635 from '../../lib/cumulative-dose-limit-v1635.js';
 import * as esaChemoDoseAdjustV1635 from '../../lib/esa-chemo-dose-adjust-v1635.js';
 import * as mesnaIfosfamideScheduleV1635 from '../../lib/mesna-ifosfamide-schedule-v1635.js';
@@ -1785,6 +1787,8 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'chatelut-carboplatin-v1635.js': chatelutCarboplatinV1635,
+  'desensitization-12-step-v1635.js': desensitization12StepV1635,
   'cumulative-dose-limit-v1635.js': cumulativeDoseLimitV1635,
   'esa-chemo-dose-adjust-v1635.js': esaChemoDoseAdjustV1635,
   'mesna-ifosfamide-schedule-v1635.js': mesnaIfosfamideScheduleV1635,

@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Carboplatin Clearance and Dose (Chatelut Formula): clearance from weight, age, sex and
+  creatinine, the dose for a target AUC, and the Calvert dose beside it when a GFR is entered.
+- Three-Bag, 12-Step Desensitization Arithmetic: the three bag concentrations and the 12-row step
+  table with total time, following the published protocol table.
 - Lifetime Cumulative Dose Against the Label (Anthracyclines, Mitoxantrone, Bleomycin): the running
   total beside the figure each label states, with the label sentence and what remains below it.
 - Epoetin and Darbepoetin in Chemotherapy Anemia (Label Rules): the starting test and dose, and the

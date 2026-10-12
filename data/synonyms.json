@@ -12984,6 +12984,20 @@
       ],
       "tile": "cumulative-dose-limit",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "chatelut"
+      ],
+      "tile": "chatelut-carboplatin",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "desensitization"
+      ],
+      "tile": "desensitization-12-step",
+      "audience": "clinicians"
     }
   ]
 }

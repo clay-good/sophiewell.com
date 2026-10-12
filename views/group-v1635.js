@@ -6,7 +6,8 @@
 // nuc-med-breastfeeding-interruption, generator-breakthrough-check, radiation-distance-shielding,
 // rasburicase-dose, dexrazoxane-ratio-dose, capecitabine-tablet-dose,
 // mesna-ifosfamide-schedule, glucarpidase-dose, it-methotrexate-age-dose, hdmtx-leucovorin-rescue,
-// gcsf-timing-check, cumulative-dose-limit, esa-chemo-dose-adjust.
+// gcsf-timing-check, cumulative-dose-limit, esa-chemo-dose-adjust,
+// chatelut-carboplatin, desensitization-12-step.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -35,6 +36,8 @@ import * as HL from '../lib/hdmtx-leucovorin-rescue-v1635.js';
 import * as GT from '../lib/gcsf-timing-check-v1635.js';
 import * as CD from '../lib/cumulative-dose-limit-v1635.js';
 import * as EA from '../lib/esa-chemo-dose-adjust-v1635.js';
+import * as CH from '../lib/chatelut-carboplatin-v1635.js';
+import * as DS from '../lib/desensitization-12-step-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -523,6 +526,34 @@ export const renderers = {
       const r = EA.esaChemoDoseAdjust(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }
+    }));
+  },
+  'chatelut-carboplatin'(root) {
+    const pairs = [['chc-weight', 'weight'], ['chc-age', 'age'], ['chc-sex', 'sex'], ['chc-cr', 'creatinine'], ['chc-cr-unit', 'creatinineUnit'], ['chc-auc', 'targetAuc'], ['chc-gfr', 'gfr']];
+    numField(root, 'Weight, kg', 'chc-weight', '');
+    numField(root, 'Age, years', 'chc-age', '');
+    selectField(root, 'Sex', 'chc-sex', CH.SEXES);
+    numField(root, 'Serum creatinine', 'chc-cr', '');
+    selectField(root, 'Creatinine unit', 'chc-cr-unit', CH.CREATININE_UNITS);
+    numField(root, 'Target AUC, mg/mL·min', 'chc-auc', '');
+    numField(root, 'GFR in mL/min, to show the Calvert dose beside it (optional)', 'chc-gfr', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(CH.chatelutCarboplatin(args), o);
+    }));
+  },
+  'desensitization-12-step'(root) {
+    const pairs = [['d12-dose', 'targetDose'], ['d12-volume', 'bagVolume'], ['d12-rate', 'finalRate']];
+    numField(root, 'Total target dose, mg', 'd12-dose', '');
+    numField(root, 'Volume of each bag, mL (250 in the published table)', 'd12-volume', '');
+    numField(root, 'Final rate for step 12, mL/h (80 in the published table)', 'd12-rate', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(DS.desensitization12Step(args), o);
     }));
   },
 };

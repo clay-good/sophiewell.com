@@ -748,3 +748,7 @@ experience**.
 > v1635, Lifetime Cumulative Dose Against the Label (Anthracyclines, Mitoxantrone, Bleomycin) — [spec-v1635](spec-v1635.md), which adds `cumulative-dose-limit` — is 2199.)
 
 > v1635, Epoetin and Darbepoetin in Chemotherapy Anemia (Label Rules) — [spec-v1635](spec-v1635.md), which adds `esa-chemo-dose-adjust` — is 2200.)
+
+> v1635, Carboplatin Clearance and Dose (Chatelut Formula) — [spec-v1635](spec-v1635.md), which adds `chatelut-carboplatin` — is 2201.)
+
+> v1635, Three-Bag, 12-Step Desensitization Arithmetic — [spec-v1635](spec-v1635.md), which adds `desensitization-12-step` — is 2202.)
