@@ -712,3 +712,7 @@ experience**.
 > v1635, Reportable Medical Event Screen (10 CFR 35.3045) — [spec-v1635](spec-v1635.md), which adds `nrc-medical-event-screen` — is 2181.)
 
 > v1635, Radioactive Package Label Category and Transport Index (49 CFR 172.403) — [spec-v1635](spec-v1635.md), which adds `rad-package-label-category` — is 2182.)
+
+> v1635, Receiving a Radioactive Package (10 CFR 20.1906) — [spec-v1635](spec-v1635.md), which adds `rad-package-receipt-check` — is 2183.)
+
+> v1635, Study Drug Accountability and Pill-Count Compliance (21 CFR 312.62) — [spec-v1635](spec-v1635.md), which adds `ids-accountability-reconcile` — is 2184.)

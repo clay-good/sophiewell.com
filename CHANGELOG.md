@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Receiving a Radioactive Package (10 CFR 20.1906): the 3-hour monitoring deadline, which
+  monitoring applies, a wipe in dpm/cm² against the limit, and the dose-rate limits.
+- Study Drug Accountability and Pill-Count Compliance (21 CFR 312.62): compliance per visit and
+  the site balance against the count on hand.
 - Reportable Medical Event Screen (10 CFR 35.3045): each test of the rule as met, not met or not
   assessed, with the telephone, written report and notification deadlines.
 - Radioactive Package Label Category and Transport Index (49 CFR 172.403): WHITE-I, YELLOW-II or

@@ -798,6 +798,8 @@ const PROBES = [
   ['scabies iacs criteria ivermectin dose', ['scabies-diagnosis-mda']],
   ['lymphatic filariasis lymphedema stage', ['filarial-lymphedema-stage']],
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
+  ['receiving a radioactive package wipe test limit', ['rad-package-receipt-check']],
+  ['study drug accountability pill count compliance', ['ids-accountability-reconcile']],
   ['nrc reportable medical event criteria radiopharmaceutical', ['nrc-medical-event-screen']],
   ['radioactive package transport index and label category', ['rad-package-label-category']],
   ['occupational radiation dose percent of annual limit', ['occupational-dose-limit-check']],

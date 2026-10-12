@@ -1040,6 +1040,8 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import radPackageReceiptCheckV1635 from './adapters/rad-package-receipt-check-v1635.js';
+import idsAccountabilityReconcileV1635 from './adapters/ids-accountability-reconcile-v1635.js';
 import nrcMedicalEventScreenV1635 from './adapters/nrc-medical-event-screen-v1635.js';
 import radPackageLabelCategoryV1635 from './adapters/rad-package-label-category-v1635.js';
 import occupationalDoseLimitCheckV1635 from './adapters/occupational-dose-limit-check-v1635.js';
@@ -2253,6 +2255,8 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['rad-package-receipt-check-v1635', radPackageReceiptCheckV1635],
+  ['ids-accountability-reconcile-v1635', idsAccountabilityReconcileV1635],
   ['nrc-medical-event-screen-v1635', nrcMedicalEventScreenV1635],
   ['rad-package-label-category-v1635', radPackageLabelCategoryV1635],
   ['occupational-dose-limit-check-v1635', occupationalDoseLimitCheckV1635],

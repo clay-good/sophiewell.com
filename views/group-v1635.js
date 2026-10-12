@@ -1,7 +1,7 @@
 // spec-v1635: oncology pharmacy, investigational drug service and nuclear pharmacy.
 // ind-safety-report-clock, emergency-ind-clock, ind-annual-report-due, trial-record-retention,
 // occupational-dose-limit-check, sealed-source-leak-test, nrc-medical-event-screen,
-// rad-package-label-category.
+// rad-package-label-category, rad-package-receipt-check, ids-accountability-reconcile.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -12,6 +12,8 @@ import * as OD from '../lib/occupational-dose-limit-check-v1635.js';
 import * as SL from '../lib/sealed-source-leak-test-v1635.js';
 import * as ME from '../lib/nrc-medical-event-screen-v1635.js';
 import * as RP from '../lib/rad-package-label-category-v1635.js';
+import * as RR from '../lib/rad-package-receipt-check-v1635.js';
+import * as IR from '../lib/ids-accountability-reconcile-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -30,6 +32,14 @@ function numField(root, label, id, placeholder) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type: 'number', min: '0', step: 'any', inputmode: 'decimal', placeholder }));
+  root.appendChild(wrap);
+  return wrap;
+}
+function areaField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('textarea', { id, rows: '3', placeholder }));
   root.appendChild(wrap);
   return wrap;
 }
@@ -172,6 +182,49 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(RP.radPackageLabelCategory(args), o);
+    }));
+  },
+  'rad-package-receipt-check'(root) {
+    const pairs = [['rpr-received', 'received'], ['rpr-working', 'duringWorkingHours'], ['rpr-next-day', 'nextWorkingDayStart'], ['rpr-labeled', 'labeled'], ['rpr-damaged', 'damaged'], ['rpr-gas', 'gasOrSpecialForm'], ['rpr-type-a', 'aboveTypeA'], ['rpr-emitter', 'emitter'], ['rpr-cpm', 'netCpm'], ['rpr-eff', 'efficiencyPercent'], ['rpr-area', 'areaCm2'], ['rpr-wipe-eff', 'wipeEfficiencyPercent'], ['rpr-surface', 'surfaceMremH'], ['rpr-one-meter', 'oneMeterMremH']];
+    root.appendChild(el('p', { text: 'Four parts, each optional and checked on its own: the monitoring deadline, which monitoring the rule requires, the wipe, and the dose rates.' }));
+    dateField(root, 'Date and time received', 'rpr-received', 'datetime-local');
+    selectField(root, 'Received during normal working hours?', 'rpr-working', RR.YES_NO);
+    dateField(root, 'If after hours: when the next working day begins', 'rpr-next-day', 'datetime-local');
+    selectField(root, 'Bears a Radioactive White I, Yellow II or Yellow III label?', 'rpr-labeled', RR.YES_NO);
+    selectField(root, 'Evidence of degradation (crushed, wet or damaged)?', 'rpr-damaged', RR.YES_NO);
+    selectField(root, 'Holds only a gas or special form material?', 'rpr-gas', RR.YES_NO);
+    selectField(root, 'Contents exceed a Type A quantity?', 'rpr-type-a', RR.YES_NO);
+    selectField(root, 'Wipe: emitter type', 'rpr-emitter', RR.EMITTERS);
+    numField(root, 'Wipe: net counts per minute', 'rpr-cpm', '');
+    numField(root, 'Wipe: counter efficiency, %', 'rpr-eff', '');
+    numField(root, 'Wipe: area wiped, cm² (the rule\'s method wipes 300)', 'rpr-area', '');
+    numField(root, 'Wipe efficiency, % (optional; 10% is assumed if blank, as the rule allows)', 'rpr-wipe-eff', '');
+    numField(root, 'Dose rate at the package surface, mrem/h', 'rpr-surface', '');
+    numField(root, 'Dose rate at 1 meter, mrem/h', 'rpr-one-meter', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(RR.radPackageReceiptCheck(args), o);
+    }));
+  },
+  'ids-accountability-reconcile'(root) {
+    const pairs = [['iac-visits', 'visits'], ['iac-low', 'rangeLow'], ['iac-high', 'rangeHigh'], ['iac-received', 'received'], ['iac-dispensed', 'dispensedTotal'], ['iac-restocked', 'returnedToStock'], ['iac-destroyed', 'destroyed'], ['iac-sponsor', 'returnedToSponsor'], ['iac-on-hand', 'onHand']];
+    areaField(root, 'Visits, one per line: subject and visit code, units dispensed, units returned, dispense date, return date, units per day, hold days (optional). Use study codes, not names.', 'iac-visits', 'S01-V2, 60, 6, 2026-09-01, 2026-09-29, 2');
+    numField(root, 'Protocol compliance range, lower end, % (optional)', 'iac-low', '');
+    numField(root, 'Protocol compliance range, upper end, % (optional)', 'iac-high', '');
+    root.appendChild(el('p', { text: 'Site balance (optional; enter all six, and zero is an answer):' }));
+    numField(root, 'Units received', 'iac-received', '');
+    numField(root, 'Units dispensed', 'iac-dispensed', '');
+    numField(root, 'Units returned to stock', 'iac-restocked', '');
+    numField(root, 'Units destroyed', 'iac-destroyed', '');
+    numField(root, 'Units returned to the sponsor', 'iac-sponsor', '');
+    numField(root, 'Count on hand', 'iac-on-hand', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(IR.idsAccountabilityReconcile(args), o);
     }));
   },
 };

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:60294194-7313-5e06-8ed0-35a11b3138c5",
+  "serialNumber": "urn:uuid:0be83aab-ae9a-5162-832c-4793dd949003",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T00:50:00.034Z",
+    "timestamp": "2026-10-12T01:05:05.732Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2182 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2184 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3dedf7e60b2227332b71dedd104a2ba6e1e994753be0a6b5790a2afdd48489b0"
+          "content": "ac319887b9da8ed6779554e2c866afae87df50065dad42b9e623eed89758c5ad"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141412"
+          "value": "141559"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b0eccfd61446c6d857cd7d4cebc6d357d07858c0a78f16ab2a78dd76065bcbfe"
+          "content": "b8b74b3638550a190727623fdfc6e8c85c7a0378697a228c0fea29b14496daf5"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "611822"
+          "value": "612176"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3a1c5ec1637e3f8732158f0f4e674ca4db74ebfca95a14bb9b1794cba8ab1837"
+          "content": "b989106ad4b21eb856a66ab4e6eb7f1522f5c089df2a2dd25a8309362875b1c0"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "273931"
+          "value": "274206"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "19fe8c13f67a142122b692d2d74f2410be7bdcea635c505b0bed3facf8736d62"
+          "content": "78fcb930f474694349f0f809e1078f75307081b5ab876765f304517b0f600c88"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "130382"
+          "value": "130562"
         }
       ]
     },
@@ -11690,6 +11690,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ids-accountability-reconcile-v1635.js",
+      "type": "file",
+      "name": "lib/ids-accountability-reconcile-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cd6ea57457c3ca9b8720b70ba0579631eb1607a51f470f20dfe6389d83293651"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7719"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/igcccg-v567.js",
       "type": "file",
       "name": "lib/igcccg-v567.js",
@@ -15707,7 +15728,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "20a6f79cbb490a4e129d8288e41fc15f769c4651c350cc02336f94f89efc5351"
+          "content": "7decb95e9055c3c3b62faf732144f5650e329cf6494f5d8cd2443f6a71f77dba"
         }
       ],
       "properties": [
@@ -15717,7 +15738,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2889013"
+          "value": "2891009"
         }
       ]
     },
@@ -21913,6 +21934,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5613"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/rad-package-receipt-check-v1635.js",
+      "type": "file",
+      "name": "lib/rad-package-receipt-check-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "30e6f60512152450cffd96e8f38d9fda8d924e6bcb3b8c70c0fe420f21f4f248"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10827"
         }
       ]
     },
@@ -39578,6 +39620,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ids-accountability-reconcile-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/ids-accountability-reconcile-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fcc3ebf101d8fcef5f950856a55851d8775cdbf72d6e2b09acba2d3ca4a0e10a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1963"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/igcccg-v567.js",
       "type": "file",
       "name": "mcp/adapters/igcccg-v567.js",
@@ -48587,6 +48650,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rad-package-receipt-check-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/rad-package-receipt-check-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e953d8e9eeed43d81d70bef97f0b68557b07c3b88239350f63076108dc3d2356"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2758"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/radiology-v165.js",
       "type": "file",
       "name": "mcp/adapters/radiology-v165.js",
@@ -54641,7 +54725,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "489e785128b66c42344d6cda4ddb1ea756ad778428c52ab988c69fe27c661bf8"
+          "content": "73be903705238879c18b58320959f85333fc3e7a515bb59617e195b219b5f355"
         }
       ],
       "properties": [
@@ -54651,7 +54735,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "144567"
+          "value": "144895"
         }
       ]
     },
@@ -59261,7 +59345,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1a6830c2a617eb3030a45d5fbd2d7450d6da722b29392273506b715a9355182c"
+          "content": "f18e48e50273ead0a4141b0fcff2ef392dfc16f1a2b1cf141eefa68db0427b49"
         }
       ],
       "properties": [
@@ -59271,7 +59355,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10183"
+          "value": "14325"
         }
       ]
     },
@@ -90587,6 +90671,7 @@
         "urn:sophiewell:file:source:lib/id-v137.js",
         "urn:sophiewell:file:source:lib/idcrit-v99.js",
         "urn:sophiewell:file:source:lib/ideberg-glenoid-v409.js",
+        "urn:sophiewell:file:source:lib/ids-accountability-reconcile-v1635.js",
         "urn:sophiewell:file:source:lib/igcccg-v567.js",
         "urn:sophiewell:file:source:lib/igg4-rd-2020-v825.js",
         "urn:sophiewell:file:source:lib/imci-oral-drug-bands-v1546.js",
@@ -91074,6 +91159,7 @@
         "urn:sophiewell:file:source:lib/rabies-state-lines-v1401.js",
         "urn:sophiewell:file:source:lib/rachs1-v541.js",
         "urn:sophiewell:file:source:lib/rad-package-label-category-v1635.js",
+        "urn:sophiewell:file:source:lib/rad-package-receipt-check-v1635.js",
         "urn:sophiewell:file:source:lib/radiology-v165.js",
         "urn:sophiewell:file:source:lib/radmeasure-v253.js",
         "urn:sophiewell:file:source:lib/ramsay-sedation-v358.js",
@@ -92860,6 +92946,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/id-v137.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/idcrit-v99.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ideberg-glenoid-v409.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ids-accountability-reconcile-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/igcccg-v567.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/igg4-rd-2020-v825.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/imci-oral-drug-bands-v1546.js",
@@ -93289,6 +93376,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/quintero-ttts-v831.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rachs1-v541.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rad-package-label-category-v1635.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/rad-package-receipt-check-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/radiology-v165.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/radmeasure-v253.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ramsay-sedation-v358.js",
@@ -93681,7 +93769,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "6029419473136e06"
+      "value": "0be83aabae9a3162"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -93693,7 +93781,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3524"
+      "value": "3528"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

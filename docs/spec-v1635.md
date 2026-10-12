@@ -1,6 +1,6 @@
 # spec-v1635 — Oncology pharmacy, investigational drug service, and nuclear pharmacy
 
-**Status:** In progress, October 11, 2026: 8 of 35 tools built (see Build status). 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
+**Status:** In progress, October 11, 2026: 10 of 35 tools built (see Build status). 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 Three pharmacists do work the catalog barely touches. The chemotherapy-verification pharmacist
@@ -945,9 +945,11 @@ build stores the version and published date instead.
 | 20. `emergency-ind-clock` | Built (group Q) on 21 CFR 312.310 and 56.104. Neither rule defines "working days"; the tool counts Monday to Friday, skips federal holidays through the shared deadline engine, and says so. The written summary at the conclusion of treatment is printed with no day count, as the rule gives none. |
 | 21. `ind-annual-report-due` | Built (group Q) on 21 CFR 312.40, 312.33 and 312.30. It lists the next three anniversaries whose 60-day date has not passed. A clinical hold is not modeled, and the result says the 30-day date assumes none. An "earlier notification" date later than 30 days after receipt is refused. |
 | 22. `trial-record-retention` | Built (group Q) on 21 CFR 312.62(c) and 312.57(c). The reader's longer requirement governs when it is later; with none entered the result says to check the protocol, contract, policy and state law. |
+| 23. `ids-accountability-reconcile` | Built (group Q). 21 CFR 312.62(a) and 312.57(a) re-read on eCFR. Visits are typed one per line (no file upload in this build); with no protocol range entered no visit is called in or out of range. The site balance needs all six figures. The page asks for study codes, not names, and the text area is not carried in the shareable link. |
 | 29. `nrc-medical-event-screen` | Built (group Q) on 10 CFR 35.3045 as current on eCFR October 8, 2026. Each test of paragraph (a)(1) is reported as met, not met or not assessed; a dose over the threshold with no percent limb entered is "incomplete", never a negative screen. "More than" and "exceeds" are strict, "or more" is inclusive, as the rule words them. The deadlines print only when a test is met. The 35.3047 second screen (embryo, fetus, nursing child) is not built; the note points to it. |
 | 30. `rad-package-label-category` | Built (group Q) on 49 CFR 172.403, 173.403 and 173.441. The regulation's own example (index 0.8, surface 60 mrem/h, YELLOW-III) is a test. A reading at 1 meter higher than at the surface is refused. Above 1,000 mrem/h at the surface the result says it is above the table. |
+| 31. `rad-package-receipt-check` | Built (group Q) on 10 CFR 20.1906, 71.47 and 71.87 and 49 CFR 173.443 with Table 9, as current on eCFR October 8, 2026. Four parts, each optional and checked alone: the 3-hour deadline, which monitoring the rule requires, the wipe, and the dose rates. The 0.10 wipe efficiency is used when none is entered, as the rule allows, and the result says so. "Within the limits" is said only when something was measured. The 10-fold exclusive-use allowance in 173.443(b) is not applied. |
 | 32. `sealed-source-leak-test` | Built (group Q) on 10 CFR 35.67 and 35.3067 as current on eCFR October 8, 2026. The exemption is a required choice; an exempt source with no count entered gets the exemption's own sentence. Exactly 0.005 µCi is leaking ("or more"). The next-test date is 6 calendar months after the test date, with the registry's other intervals named in the note. |
 | 35. `occupational-dose-limit-check` | Built (group Q) on 10 CFR 20.1201(a) and 20.1208(a). Doses are entered in rem, mrem or mSv (a required choice). The projection is plain proportion and is not applied to the pregnancy limit, which is not annual. License ALARA levels are not included. |
 
-Not built: the other 27 tools.
+Not built: the other 25 tools.

@@ -9250,6 +9250,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rad-package-label-category-v1635.js (spec-v1635: Radioactive package label category (49 CFR 172.403) — administrative disclaimer)
 - `rad-package-label-category`
 
+### lib/rad-package-receipt-check-v1635.js (spec-v1635: Radioactive package receipt (10 CFR 20.1906; 49 CFR 173.443) — administrative disclaimer)
+- `rad-package-receipt-check`
+
+### lib/ids-accountability-reconcile-v1635.js (spec-v1635: Study drug accountability (21 CFR 312.62(a)) — administrative disclaimer)
+- `ids-accountability-reconcile`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 
