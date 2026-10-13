@@ -38,8 +38,12 @@ export async function discover(http) {
   const y = new Date().getUTCFullYear();
   let latest = null;
   // The newest published year: next year's appears in January. An unpublished year echoes back as another.
+  // It can also refuse the request outright -- ASPE answered 403 for 2027 on October 4, 2026, which stopped
+  // the whole weekly run. The probe year's own HTTP failure is not this builder's failure; the current
+  // year's is, so that one is left to throw.
   for (const year of [y + 1, y]) {
-    const r = await http.get(urlOf(year, 'us', 1));
+    let r;
+    try { r = await http.get(urlOf(year, 'us', 1)); } catch (err) { if (year === y) throw err; continue; }
     try { answer(r.bytes, year, 'us', 1); latest = year; break; } catch { /* not published */ }
   }
   if (!latest) throw new Error(`poverty-guidelines: neither ${y + 1} nor ${y} is published`);

@@ -135,7 +135,10 @@ export function decide(row, newest, hashes, today) {
   if (changed.length) {
     return { status: 'superseded', changed, row: { ...row, supersededOn: today, supersededBy: `version ${newest.version}${newest.published ? ` (${newest.published})` : ''}` } };
   }
-  return { status: 'renewed', row: { ...row, splVersion: newest.version, publishedOn: newest.published || row.publishedOn, validThrough: addMonths(today, 12) } };
+  // The new version's watched sections were hashed above and match the reading, so the reading is
+  // confirmed today -- and verifiedOn has to move with publishedOn, which is the new version's date and
+  // can be later than the last reading (Macrobid version 27 was published after version 26 was read).
+  return { status: 'renewed', row: { ...row, splVersion: newest.version, publishedOn: newest.published || row.publishedOn, verifiedOn: today, validThrough: addMonths(today, 12) } };
 }
 
 // expired(rows, today) -> the rows whose 12 months ran out: the watch stopped renewing them.

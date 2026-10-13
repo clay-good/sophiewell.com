@@ -73,6 +73,11 @@ test('decide: same version renews; a new version with the same sections moves fo
   assert.deepEqual([renewed.row.splVersion, renewed.row.publishedOn, renewed.row.validThrough], [17, '2025-07-30', '2027-10-10']);
   assert.deepEqual(renewed.row.sections, row.sections);
   assert.equal(renewed.row.supersededOn, undefined);
+  // A version published after the last reading moves verifiedOn with it: the watcher compared the new
+  // version's sections today, and a row read before it was published is not a reading at all.
+  const later = decide(row, { version: 17, published: '2026-10-09' }, sectionHashes(acetadote(17), [D]), today);
+  assert.deepEqual([later.row.publishedOn, later.row.verifiedOn], ['2026-10-09', today]);
+  assert.ok(later.row.publishedOn <= later.row.verifiedOn);
 
   const old = { ...row, splVersion: 15, sections: { [D]: sectionHashes(acetadote(15), [D])[D] } };
   const superseded = decide(old, { version: 16, published: '2025-06-06' }, sectionHashes(acetadote(16), [D]), today);

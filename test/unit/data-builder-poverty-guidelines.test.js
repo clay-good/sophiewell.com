@@ -52,6 +52,23 @@ test('the newest year is the one the API echoes back, so an unpublished year is 
   assert.equal(found.edition, String(year), `${year + 1} echoes back as 2026, so it is not published`);
 });
 
+test('a probe year the API refuses does not stop the run, but a refusal for the current year does', async () => {
+  const year = new Date().getUTCFullYear();
+  if (!TABLE[year]) TABLE[year] = TABLE[2026];
+  const refuse = (prefix) => {
+    const http = fakeHttp([2025, 2026, year].filter((v, i, a) => a.indexOf(v) === i));
+    const real = http.get;
+    http.get = async (url) => {
+      if (url.startsWith(`${API}/${prefix}/`)) throw Object.assign(new Error(`http: ${url} returned 403`), { fatal: true });
+      return real(url);
+    };
+    return http;
+  };
+  const found = await builder.discover(refuse(year + 1));
+  assert.equal(found.edition, String(year), 'a 403 for next year reads as not published');
+  await assert.rejects(() => builder.discover(refuse(year)), /returned 403/);
+});
+
 test('a run yields the base and step per year and region, checked at sizes 8 and 9, and the module the calculators import', async () => {
   const { records, ancillary } = await build(fakeHttp());
   const r2026 = records.find((r) => r.key === '2026-ak');
