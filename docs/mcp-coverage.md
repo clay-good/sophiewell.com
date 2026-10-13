@@ -9562,6 +9562,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/supd-measure-v1638.js (spec-v1638: Statin Use in Persons with Diabetes (SUPD, Star method) — administrative disclaimer)
 - `supd-measure`
 
+### lib/partd-concurrent-use-measures-v1638.js (spec-v1638: Concurrent-use safety measures (COB, Poly-ACH, Poly-CNS) — administrative disclaimer)
+- `partd-concurrent-use-measures`
+
+### lib/partd-opioid-measures-v1638.js (spec-v1638: Opioid display measures (high dosage, multiple providers, initial long duration) — administrative disclaimer)
+- `partd-opioid-measures`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

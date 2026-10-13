@@ -4,7 +4,8 @@
 // partd-prompt-pay-clock, partd-insulin-cost-cap, cost-of-dispensing, medicaid-ful-check,
 // medicaid-drug-payment-check, partd-transition-fill, pharmacy-effective-rate, mtm-eligibility-check,
 // ccm-time-units, vaccine-interval-validity, partd-dmp-criteria-check, partd-opioid-safety-edit,
-// partd-dmp-notice-clock, ltc-mrr-tracker, glucose-supply-quantity-check, supd-measure.
+// partd-dmp-notice-clock, ltc-mrr-tracker, glucose-supply-quantity-check, supd-measure,
+// partd-concurrent-use-measures, partd-opioid-measures.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -33,6 +34,8 @@ import * as NC from '../lib/partd-dmp-notice-clock-v1638.js';
 import * as MR from '../lib/ltc-mrr-tracker-v1638.js';
 import * as GS from '../lib/glucose-supply-quantity-check-v1638.js';
 import * as SU from '../lib/supd-measure-v1638.js';
+import * as CU from '../lib/partd-concurrent-use-measures-v1638.js';
+import * as OM from '../lib/partd-opioid-measures-v1638.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -488,6 +491,34 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(SU.supdMeasure(args), o);
+    }));
+  },
+  'partd-concurrent-use-measures'(root) {
+    const pairs = [['cum-year', 'measurementYear'], ['cum-members', 'members'], ['cum-fills', 'fills']];
+    numField(root, 'Measurement year', 'cum-year', 'e.g. 2025');
+    // Rows carry member references: kept out of the shareable link.
+    areaField(root, 'Members, one per line: member, age, continuously enrolled (yes or no), exclusions separated by semicolons (optional)', 'cum-members', 'A, 70, yes').querySelector('textarea').setAttribute('data-private', '');
+    note(root, `Exclusions: ${CU.EXCLUSIONS.join(', ')}. Classes: ${CU.CLASSES.join(', ')}.`);
+    areaField(root, 'Fills, one per line: member, fill date (YYYY-MM-DD), days supply, medication, class', 'cum-fills', 'A, 2025-01-01, 30, oxycodone, opioid').querySelector('textarea').setAttribute('data-private', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(CU.partdConcurrentUseMeasures(args), o);
+    }));
+  },
+  'partd-opioid-measures'(root) {
+    const pairs = [['pom-year', 'measurementYear'], ['pom-members', 'members'], ['pom-fills', 'fills']];
+    numField(root, 'Measurement year', 'pom-year', 'e.g. 2024');
+    // Rows carry member references: kept out of the shareable link.
+    areaField(root, 'Members, one per line: member, age, months enrolled, enrolled through (YYYY-MM-DD), exclusion (optional)', 'pom-members', 'A, 50, 12, 2024-12-31').querySelector('textarea').setAttribute('data-private', '');
+    note(root, `Exclusions: ${OM.EXCLUSIONS.join(', ')}. Fills from the 90 days before the year may be listed; they are used only as the lookback.`);
+    areaField(root, 'Opioid fills, one per line: member, fill date (YYYY-MM-DD), days supply, MME per day, prescriber, pharmacy', 'pom-fills', 'A, 2024-01-01, 30, 120, p1, x1').querySelector('textarea').setAttribute('data-private', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(OM.partdOpioidMeasures(args), o);
     }));
   },
 };

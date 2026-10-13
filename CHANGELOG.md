@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Concurrent-Use Safety Measures (COB, Poly-ACH, Poly-CNS) and Opioid Display Measures (High
+  Dosage, Multiple Providers, Initial Long Duration): each member's denominator and numerator
+  status and the rates, by CMS's published technical notes, from pasted members and fills.
 - Medicare Glucose Test Strip and Lancet Quantity Check (LCD L33822) and Statin Use in Persons
   with Diabetes (SUPD, Star Method), which lists who is in the denominator and the gap list from
   pasted members and fills.

@@ -1,6 +1,6 @@
 # spec-v1638 — The pharmacy as a business and as a regulated Medicare/Medicaid provider
 
-**Status:** In progress, October 12, 2026: 25 of 28 tools built (see Build status). 28 new tools, none build-gated.
+**Status:** In progress, October 12, 2026: 27 of 28 tools built (see Build status). 28 new tools, none build-gated.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 An independent pharmacy owner, a long-term-care consultant pharmacist, a managed-care pharmacist
@@ -1075,7 +1075,9 @@ Built tools are in `views/group-v1638.js`. Sources were re-read on October 12, 2
 | 26. `rx-pricing-math` | Built (group Q). Exactly two of the four figures are taken; three or four are refused, because one could disagree. |
 | 27. `inventory-turns` | Built (group Q). The period figures and the item figures are each all-or-nothing; safety stock must be entered (0 if none). |
 | 28. `vaccine-interval-validity` | Built (group J). **Source access:** CDC's web page for "Timing and Spacing of Immunobiologics" (dated July 24, 2024) refused the request at build, so the rules were re-read in CDC's PDF edition of the same guideline; the two could differ, and the result names the PDF. No schedule ships: the minimum age and interval are reader input. **Not built:** the page watch and the fail-closed date check, which need the page. |
+| 11. `partd-concurrent-use-measures` | Built (group Q) on the 2027 Star Ratings Technical Notes (D12, D13) and the 2026 Display Measures Technical Notes (DMD14). Members and fills are pasted as lines. CMS's notes do not say how days' supply is laid on the calendar: each fill runs from its fill date, stops at December 31, and is not shifted past an earlier fill of the same medication, and the result says so. No PQA value set is shipped or was opened. **Not built:** upload-workbench intake and the CSV download. |
 | 12. `supd-measure` | Built (group Q) on the 2027 Star Ratings Technical Notes, measure D11. Members and fills are pasted as lines; continuous enrollment, the exclusion and each fill's class are the reader's entries, and no medication list is shipped. The notes do not say on which day age is counted, so the reader enters the age. **Not built:** the measurement-year 2026 exception for a PCSK9 inhibitor or bempedoic acid (the CY2026 Patient Safety memo was not re-read); upload-workbench intake and the CSV download. |
+| 13. `partd-opioid-measures` | Built (group Q) on the 2026 Display Measures Technical Notes (DMD11, DMD12, DMD15), which are written for measurement year 2024. Rates are weighted by member-years from the months entered. The notes do not define the divisor of "average daily MME": the tool shows it per episode day and per covered day, uses the higher for the numerator, and says when the two fall on different sides of 90. IOP-LD's lookback uses fills from the 90 days before the year if they are listed. |
 | 16. `glucose-supply-quantity-check` | Built (group Q) on LCD L33822 version 70 and Policy Article A52464 version 65, re-read in the Medicare Coverage Database export of October 5, 2026. Criterion (b) is checked against the order date and criterion (c) against the dispensing date; a criterion with no date entered is reported as not shown, not as met. |
 
 Left: 2 (`mtm-service-clock`), 11 to 13 (the three claims-based measure tools), 16 (`glucose-supply-quantity-check`).

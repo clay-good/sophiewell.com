@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `26bd6872bce9ca04`
-Generated: 2026-10-12T12:40:27.604Z
+Build ID: `85fbf2471f111414`
+Generated: 2026-10-12T13:04:09.126Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 149119 | `edcb052023f73a3dab64f67756f7ac0889f53649ce590a02f6fbb428f0d11d33` |
+| `index.html` | 149287 | `1f137a94d53f38c6ef2acad57aadc9370f8488d4ff37e7d6be13de6762e84144` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 630328 | `55bc38ebb392284bc11148625f2d7569d88b40de255f9688b69b90495f4a7075` |
+| `app.js` | 630722 | `3a9d9868942ff993836596b97f1e14fc3400dbbd7b240c0c119d76f32b47319c` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 6994 | `215b6fa7b871cac7b775393d28a00c11ff3ccd1ce1b3230b378bcb8d8f881b40` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 287663 | `4f8d07553050c00aeb2cd37777a8947cff24b2b9264e7ac86e4b41a6edad1af9` |
+| `sitemap.xml` | 287935 | `fc30477250d7294bc5958751fa3f02f8dfdf7b24caedf687cc425fa4161500ca` |
 | `_headers` | 2063 | `1a500c03dd4add8641287d189c20f15afa3657931417b11ea2a51f39b501773f` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 139237 | `46ed6788d23fc1c89d70275e8964d4c5ff4290248563634e2eb54e5c7dd754f6` |
+| `report-catalog.js` | 139435 | `3bfe5dda69b1f4ca16237805163e371a0bb818c675ca7243df1305e2e83b340c` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -844,7 +844,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 6820 | `f1f90e79e605edf6d06efa2a5d08841897dd165e68287ef964271107c0ef6dbb` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2997766 | `b36cec23ca94926512c04820cb28d7724fb233c066e964a980dee85558aceb20` |
+| `lib/meta.js` | 2999795 | `4ff40e3e183b20215f9a418ab778d87544f9c69c56970f790a26b66a1f9f3819` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1048,11 +1048,13 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/part-b-or-d.js` | 11017 | `20ae807ade60c91e9cfc71cf5d7370a9bad1c48cd220c94d1cead2239050b121` |
 | `lib/partb-supply-dispensing-fee-v1638.js` | 5914 | `1641aeceaaa7a8dd9334b713882fe1bd1bba6907610ec12cb55b0b58dbd51b93` |
 | `lib/partd-appeals-v1503.js` | 12294 | `1378bcf2b538a7b880a63044f8ce4b7f1c1fd517fabeafbb2c349cb8a9a57325` |
+| `lib/partd-concurrent-use-measures-v1638.js` | 12583 | `011c2fb2d61df91589de82eb1625b020bed20908b95873db32fc7e0ff43ba50d` |
 | `lib/partd-costs-v1506.js` | 8541 | `6d3b2ad77e78845caecb14691d0fa02cd21ee2a35339276193173019a7d0703e` |
 | `lib/partd-daily-cost-share-v1638.js` | 6110 | `f770cdd0c5d5dc8240ac0c5778d30b2aba7e01e465acf319172bfb55593223cc` |
 | `lib/partd-dmp-criteria-check-v1638.js` | 7255 | `a4d287c8e1d58fe94add08a8c20c88406b6c8ce26962be6746e9d5e80170f509` |
 | `lib/partd-dmp-notice-clock-v1638.js` | 9200 | `905852090424d85f73cb387c37e90cbd427835eb1474a0f621888ecd5c3620f5` |
 | `lib/partd-insulin-cost-cap-v1638.js` | 5424 | `1d8e607f3fb0fd48e376349a2ce1079a743061a9b81085a90848cfcfa4a0b50a` |
+| `lib/partd-opioid-measures-v1638.js` | 12824 | `b384e65e01aeafa0c3e28f60af97f37ab8f929c73becc2750a64dd4efc6bf177` |
 | `lib/partd-opioid-safety-edit-v1638.js` | 9088 | `1df1435fba42adb81b4b4f0779a21720b3f6385d007aaeb61b62a5861845a42a` |
 | `lib/partd-prompt-pay-clock-v1638.js` | 9088 | `a555c982fed826b007dae6ea20fdb43fa4093b55471a3989eced6f3c9683aef8` |
 | `lib/partd-transition-fill-v1638.js` | 8268 | `27f432c879357a1f3c8fcc00a0afa671eeb86ec3999acfa4df561d44e2dbd79b` |
@@ -2432,11 +2434,13 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/part-b-or-d.js` | 1607 | `4eee8367dd621cd5a15d0c5dd34a0b0638b3eb1a46be939a0f0d0e67228748b1` |
 | `mcp/adapters/partb-supply-dispensing-fee-v1638.js` | 1467 | `133fdde01c6cc6b024e1e14b7fb569251f8c2178dd04d8ef82dddfac5773ecc8` |
 | `mcp/adapters/partd-appeals-v1503.js` | 1752 | `dee2382e5ce8ded6a7f1f56bb827864bda6a64fd434d72a82535668743cac8f7` |
+| `mcp/adapters/partd-concurrent-use-measures-v1638.js` | 1405 | `01313def112fd0e3500f7a0c6775f353913b66e41d5bff581c262b6eb21b8846` |
 | `mcp/adapters/partd-costs-v1506.js` | 1852 | `bf92e3f1b29b8b24cd86868b5972a76e58479813260887f3bb8db9580cbf4194` |
 | `mcp/adapters/partd-daily-cost-share-v1638.js` | 1931 | `4d42d886d2a78be123255cf54c873e17fe6adff47c235bc3a32458e88745f2ea` |
 | `mcp/adapters/partd-dmp-criteria-check-v1638.js` | 1715 | `e541392bcffde6397302a93b1d30ac620a63c0f8db186ba10497d8f483082ca0` |
 | `mcp/adapters/partd-dmp-notice-clock-v1638.js` | 1717 | `12dfe10bca2295618cd949f89de0776b25d56e2c9de32318ecbd491670c86b15` |
 | `mcp/adapters/partd-insulin-cost-cap-v1638.js` | 1581 | `d06b8d56e01da3e420acc85ea09cf6d3706a136a7700ff7edd6deec075d9f929` |
+| `mcp/adapters/partd-opioid-measures-v1638.js` | 1339 | `48e5b8ac517767b96664d55e266f97e68a44340747a232c66aeaefd204c0c59a` |
 | `mcp/adapters/partd-opioid-safety-edit-v1638.js` | 2263 | `0d56bc89557fdeed3e9a72622babd326d260c71fff5b7f9ec0a8b4e6bbe4c76b` |
 | `mcp/adapters/partd-prompt-pay-clock-v1638.js` | 1674 | `1159b584cd9226ccc987fcaf3c615b3624ee4f9c673c5c3a716867685cb9f2be` |
 | `mcp/adapters/partd-transition-fill-v1638.js` | 1930 | `26cbd5434f9f82a5d129ae729e22fa71a824d139ccaaac45316eae440d7c1e55` |
@@ -2847,7 +2851,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zika-case-def-v1563.js` | 1545 | `09efb04a1b9bceec1819cf865b27f0dfde4579b3c440771247ec65f03b2ba077` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 159409 | `a08d171ce98616612727dc9aafafa09a54d5ba653589d88daab2943f7b003171` |
+| `mcp/catalog.js` | 159725 | `89c14e59425e116e7ebb8030682ec41cb76f181c0c69d04c6280ac0875e2479d` |
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10616 | `7a2aa853195af4f25f5eae871bb586bb460aec75c9e0c3cb2aa5a510fd481219` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
@@ -3070,7 +3074,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 22928 | `8c8f97b92ec621bc772a46e3a00ce5cc966f4ee425f31fdf0c940eea8cfe1d4e` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
-| `views/group-v1638.js` | 32578 | `154c22c447c44b93906dd586eb03b0927bde7d431d7bb09a505ba722da22bab9` |
+| `views/group-v1638.js` | 34961 | `dcc48634754db34b8eb54c053df393ed066362f43d954760b71226eb21d3d7bb` |
 | `views/group-v1639.js` | 18846 | `360b6418f70e5f4f72ab87500083f8303ea962a3970406a2b2d56c8e8855343c` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v165.js` | 10575 | `bc3f3b3fe1cddf43d5b5ab8e99063a80d75ecaf527ed9fe608bbed3c8c59b1a9` |

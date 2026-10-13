@@ -920,3 +920,7 @@ experience**.
 > v1638, Medicare Glucose Test Strip and Lancet Quantity Check (LCD L33822) — [spec-v1638](spec-v1638.md), which adds `glucose-supply-quantity-check` — is 2285.)
 
 > v1638, Statin Use in Persons with Diabetes (SUPD, Star Method) — [spec-v1638](spec-v1638.md), which adds `supd-measure` — is 2286.)
+
+> v1638, Concurrent-Use Safety Measures (COB, Poly-ACH, Poly-CNS) — [spec-v1638](spec-v1638.md), which adds `partd-concurrent-use-measures` — is 2287.)
+
+> v1638, Opioid Display Measures (High Dosage, Multiple Providers, Initial Long Duration) — [spec-v1638](spec-v1638.md), which adds `partd-opioid-measures` — is 2288.)

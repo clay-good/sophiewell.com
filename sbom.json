@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:26bd6872-bce9-5a04-8fb4-1f1a9f3343a4",
+  "serialNumber": "urn:uuid:85fbf247-1f11-5414-8329-e877fdfb262e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-12T12:40:27.604Z",
+    "timestamp": "2026-10-12T13:04:09.126Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2286 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2288 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "edcb052023f73a3dab64f67756f7ac0889f53649ce590a02f6fbb428f0d11d33"
+          "content": "1f137a94d53f38c6ef2acad57aadc9370f8488d4ff37e7d6be13de6762e84144"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "149119"
+          "value": "149287"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "55bc38ebb392284bc11148625f2d7569d88b40de255f9688b69b90495f4a7075"
+          "content": "3a9d9868942ff993836596b97f1e14fc3400dbbd7b240c0c119d76f32b47319c"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "630328"
+          "value": "630722"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4f8d07553050c00aeb2cd37777a8947cff24b2b9264e7ac86e4b41a6edad1af9"
+          "content": "fc30477250d7294bc5958751fa3f02f8dfdf7b24caedf687cc425fa4161500ca"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "287663"
+          "value": "287935"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "46ed6788d23fc1c89d70275e8964d4c5ff4290248563634e2eb54e5c7dd754f6"
+          "content": "3bfe5dda69b1f4ca16237805163e371a0bb818c675ca7243df1305e2e83b340c"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "139237"
+          "value": "139435"
         }
       ]
     },
@@ -17051,7 +17051,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b36cec23ca94926512c04820cb28d7724fb233c066e964a980dee85558aceb20"
+          "content": "4ff40e3e183b20215f9a418ab778d87544f9c69c56970f790a26b66a1f9f3819"
         }
       ],
       "properties": [
@@ -17061,7 +17061,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2997766"
+          "value": "2999795"
         }
       ]
     },
@@ -21329,6 +21329,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/partd-concurrent-use-measures-v1638.js",
+      "type": "file",
+      "name": "lib/partd-concurrent-use-measures-v1638.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "011c2fb2d61df91589de82eb1625b020bed20908b95873db32fc7e0ff43ba50d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12583"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/partd-costs-v1506.js",
       "type": "file",
       "name": "lib/partd-costs-v1506.js",
@@ -21430,6 +21451,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5424"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/partd-opioid-measures-v1638.js",
+      "type": "file",
+      "name": "lib/partd-opioid-measures-v1638.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b384e65e01aeafa0c3e28f60af97f37ab8f929c73becc2750a64dd4efc6bf177"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12824"
         }
       ]
     },
@@ -50393,6 +50435,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/partd-concurrent-use-measures-v1638.js",
+      "type": "file",
+      "name": "mcp/adapters/partd-concurrent-use-measures-v1638.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "01313def112fd0e3500f7a0c6775f353913b66e41d5bff581c262b6eb21b8846"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1405"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/partd-costs-v1506.js",
       "type": "file",
       "name": "mcp/adapters/partd-costs-v1506.js",
@@ -50494,6 +50557,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1581"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/partd-opioid-measures-v1638.js",
+      "type": "file",
+      "name": "mcp/adapters/partd-opioid-measures-v1638.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "48e5b8ac517767b96664d55e266f97e68a44340747a232c66aeaefd204c0c59a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1339"
         }
       ]
     },
@@ -59114,7 +59198,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a08d171ce98616612727dc9aafafa09a54d5ba653589d88daab2943f7b003171"
+          "content": "89c14e59425e116e7ebb8030682ec41cb76f181c0c69d04c6280ac0875e2479d"
         }
       ],
       "properties": [
@@ -59124,7 +59208,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "159409"
+          "value": "159725"
         }
       ]
     },
@@ -63797,7 +63881,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "154c22c447c44b93906dd586eb03b0927bde7d431d7bb09a505ba722da22bab9"
+          "content": "dcc48634754db34b8eb54c053df393ed066362f43d954760b71226eb21d3d7bb"
         }
       ],
       "properties": [
@@ -63807,7 +63891,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "32578"
+          "value": "34961"
         }
       ]
     },
@@ -95603,11 +95687,13 @@
         "urn:sophiewell:file:source:lib/part-b-or-d.js",
         "urn:sophiewell:file:source:lib/partb-supply-dispensing-fee-v1638.js",
         "urn:sophiewell:file:source:lib/partd-appeals-v1503.js",
+        "urn:sophiewell:file:source:lib/partd-concurrent-use-measures-v1638.js",
         "urn:sophiewell:file:source:lib/partd-costs-v1506.js",
         "urn:sophiewell:file:source:lib/partd-daily-cost-share-v1638.js",
         "urn:sophiewell:file:source:lib/partd-dmp-criteria-check-v1638.js",
         "urn:sophiewell:file:source:lib/partd-dmp-notice-clock-v1638.js",
         "urn:sophiewell:file:source:lib/partd-insulin-cost-cap-v1638.js",
+        "urn:sophiewell:file:source:lib/partd-opioid-measures-v1638.js",
         "urn:sophiewell:file:source:lib/partd-opioid-safety-edit-v1638.js",
         "urn:sophiewell:file:source:lib/partd-prompt-pay-clock-v1638.js",
         "urn:sophiewell:file:source:lib/partd-transition-fill-v1638.js",
@@ -97936,11 +98022,13 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/part-b-or-d.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/partb-supply-dispensing-fee-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-appeals-v1503.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/partd-concurrent-use-measures-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-costs-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-daily-cost-share-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-dmp-criteria-check-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-dmp-notice-clock-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-insulin-cost-cap-v1638.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/partd-opioid-measures-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-opioid-safety-edit-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-prompt-pay-clock-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/partd-transition-fill-v1638.js",
@@ -98455,7 +98543,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "26bd6872bce9ca04"
+      "value": "85fbf2471f111414"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98467,7 +98555,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3741"
+      "value": "3745"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
