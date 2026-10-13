@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7638df2b099638c1`
-Generated: 2026-10-13T12:57:57.328Z
+Build ID: `acbe546f0869f667`
+Generated: 2026-10-13T15:40:33.484Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -722,13 +722,13 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/la-esophagitis-v318.js` | 3488 | `8f5b8dcdbec453858656244d1a722bb6a8afbaee9a60aa081ff9e167d6145930` |
 | `lib/lab-interpret.js` | 29621 | `be761b932dc862967f40f148b094209b01ef6594ecc5c06c603db46feaa30514` |
 | `lib/label-dose.js` | 8030 | `32955c2d3c6dab36d25f512f012a722c3d6955f7c3ac719e75c3c7f4d44cd99f` |
-| `lib/label-editions.js` | 64280 | `924d00346060f04362880732361e5ec5dcb861092ce7cdb2c444a465d61a54f0` |
+| `lib/label-editions.js` | 64727 | `23ae2f6a4b56263b1ab4e4c23d9ea3d0d3fbe1f8e87ef219d3aa35cf741cfa30` |
 | `lib/label-formulation-switch-v1633.js` | 9255 | `c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8` |
 | `lib/label-row.js` | 2619 | `1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1` |
 | `lib/label-titration-calendar-v1633.js` | 13059 | `b76605438b5e3f053ab16ab45353089e0fd5af8247e31c1430480da52e920679` |
 | `lib/labor-care-guide-alert-v1558.js` | 10175 | `0921500d2999d667f21815fdcf12a8a8cad7c2e954c42d7e31242b2887ad1ff6` |
 | `lib/lachman-acl-v355.js` | 3354 | `8b2fd236d0e3f3aac1b7787adfa184f75158796f11a152535400bcaca5dc1773` |
-| `lib/lai-antipsychotic-missed-dose-v1639.js` | 12262 | `5c8fc814f76a3a16b83727a1916b786e61d84abb8e886329a90f5ab1353b665b` |
+| `lib/lai-antipsychotic-missed-dose-v1639.js` | 20473 | `aa975e537225e3e09e2928b68e38d36c5e8295ec9bd2cd539cc8807536d809ed` |
 | `lib/lai-antipsychotic-start-v1633.js` | 10049 | `5dad0768906a4f7dcf9e35bdebb3033560b70811ce3672a0196fb20e489cfdac` |
 | `lib/lake-louise-cmr-v790.js` | 4460 | `e189393140d6b862dcd0eb104d9e7772f87e7a52a84aed712af47ececfc71922` |
 | `lib/lamotrigine-titration-calendar-v1633.js` | 13680 | `72da2be49c7c7bbb9d90ffa9378ff99ac8b85dcd924130a9fe73c8b2f5cdab8e` |
@@ -844,7 +844,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 6820 | `f1f90e79e605edf6d06efa2a5d08841897dd165e68287ef964271107c0ef6dbb` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3000831 | `1ba73d95dbcbf0d6a527bb3a72b1261b7257c0580f50ed5b1c7c5333d6a869ef` |
+| `lib/meta.js` | 3001266 | `ae64e3a24f49d7fb783c8812988d0d4409c9cccda33ce02d79b1a07bb008a429` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -2153,7 +2153,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/label-titration-calendar-v1633.js` | 1753 | `ac612d94710ad1ae75c725428f383f747fc35bae95f546350b67d1f5915e4835` |
 | `mcp/adapters/labor-care-guide-alert-v1558.js` | 2499 | `feb413de5d68a0cf236d73a3aa9e694f29da10938251c1cab5ba9772cc3ddcbd` |
 | `mcp/adapters/lachman-acl-v355.js` | 1257 | `ebce5e50ff6ed44673ca0813f87b64942c7d3fb65672ebb49f9241be44ab4e54` |
-| `mcp/adapters/lai-antipsychotic-missed-dose-v1639.js` | 1340 | `d52f408f23ed5f6a2d92522b327cfacae69276b531a21d8f3bd7de34a020ca0e` |
+| `mcp/adapters/lai-antipsychotic-missed-dose-v1639.js` | 1234 | `f6c709bbad340ddba9992bca3d3958287ff3e5bf7538fea3384571b5653bd9b6` |
 | `mcp/adapters/lai-antipsychotic-start-v1633.js` | 1397 | `0e02a919edfa4018c29567114ed5e7be372b57717ff6f3766c359090f0ab1988` |
 | `mcp/adapters/lake-louise-cmr-v790.js` | 1789 | `810561cdf431351059da58cc3df4c67a26fa623885d81ce57922e4d1082b19ae` |
 | `mcp/adapters/lamotrigine-titration-calendar-v1633.js` | 1536 | `e11fbd51a8478e4489199fd5dfbc06f4e04b978cdc0384fad27dcff34de4a735` |
@@ -3077,7 +3077,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1636.js` | 22928 | `8c8f97b92ec621bc772a46e3a00ce5cc966f4ee425f31fdf0c940eea8cfe1d4e` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
 | `views/group-v1638.js` | 36112 | `64604d063cfc6dcbf3891e215522a712a1df347db61a61705ed605d0f7f11191` |
-| `views/group-v1639.js` | 18846 | `360b6418f70e5f4f72ab87500083f8303ea962a3970406a2b2d56c8e8855343c` |
+| `views/group-v1639.js` | 18893 | `2209e1dd51194684a4e840e20a066fb77c93ecad730d669cee5ee5cbaf687716` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v165.js` | 10575 | `bc3f3b3fe1cddf43d5b5ab8e99063a80d75ecaf527ed9fe608bbed3c8c59b1a9` |
 | `views/group-v166.js` | 6698 | `15f2b9e088bbfd84cc2c31c8014f6d84ecd313459cf16ebe7f401b08871ce8d5` |

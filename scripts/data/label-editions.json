@@ -1520,7 +1520,7 @@
   },
   {
     "label": "DuoDote (atropine and pralidoxime)",
-    "labeler": "MERIDIAN MEDICAL TECHNOLOGIES® LLC",
+    "labeler": "MERIDIAN MEDICAL TECHNOLOGIES\u00ae LLC",
     "setId": "241f42a0-1a33-40e8-8221-201767d999e5",
     "tools": [
       "pralidoxime-dose"
@@ -2307,12 +2307,13 @@
     "labeler": "JANSSEN PHARMACEUTICALS, INC.",
     "setId": "1af14e42-951d-414d-8564-5d5fce138554",
     "tools": [
-      "lai-antipsychotic-start"
+      "lai-antipsychotic-start",
+      "lai-antipsychotic-missed-dose"
     ],
     "splVersion": 41,
     "publishedOn": "2025-02-17",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "596968b1dc04ed50087c0b84ac66a6136f0e40c3a0ce50544549f1f54c948003"
     }
@@ -2322,12 +2323,13 @@
     "labeler": "JANSSEN PHARMACEUTICALS, INC",
     "setId": "c39e65d7-fa44-4e4c-8b12-a654d3ed0eae",
     "tools": [
-      "lai-antipsychotic-start"
+      "lai-antipsychotic-start",
+      "lai-antipsychotic-missed-dose"
     ],
     "splVersion": 25,
     "publishedOn": "2025-02-17",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "79f0694f55f5407c4c43f68cb735009f212d9ac318494ef3a802439e7b77b012"
     }
@@ -4525,6 +4527,38 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "1468aca291c22c8259b41e2257d5808b0e7b417486848422fa0149e265e76fbf"
+    }
+  },
+  {
+    "label": "Invega Hafyera (paliperidone palmitate)",
+    "labeler": "JANSSEN PHARMACEUTICALS, INC",
+    "setId": "6cd61892-d2cb-434d-83ed-5c1b2c4e7a0b",
+    "tools": [
+      "lai-antipsychotic-missed-dose",
+      "lai-antipsychotic-start"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2025-02-21",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "7b89f1f04cd535183f06f09ef5b8f789da91c81d5d141c19dba4494d1659f2b4"
+    }
+  },
+  {
+    "label": "Erzofri (paliperidone palmitate), Luye",
+    "labeler": "SHANDONG LUYE PHARMACEUTICAL CO., LTD.",
+    "setId": "492bf9dd-868e-421a-92db-8cca8973aac1",
+    "tools": [
+      "lai-antipsychotic-missed-dose",
+      "lai-antipsychotic-start"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2026-03-10",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "532aea775a7e9e15ffb8c7c8879bdbd2538ab0a8cf9ff8a7d2d193bf6856316e"
     }
   }
 ]

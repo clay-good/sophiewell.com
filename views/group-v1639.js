@@ -307,7 +307,7 @@ export const renderers = {
   'lai-antipsychotic-missed-dose'(root) {
     const pairs = [['lmd-product', 'product'], ['lmd-last', 'lastInjection'], ['lmd-today', 'today']];
     selectField(root, 'Product', 'lmd-product', LM.PRODUCTS);
-    dateField(root, 'Date of the last injection', 'lmd-last');
+    dateField(root, 'Date of the last injection (for a missed second Sustenna dose, the first)', 'lmd-last');
     dateField(root, 'Today\'s date', 'lmd-today');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {

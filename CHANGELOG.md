@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Long-Acting Injectable Antipsychotic: Missed-Dose Rule now covers the paliperidone palmitate
+  injections (Invega Sustenna, Erzofri, Invega Trinza, Invega Hafyera) with their re-initiation
+  tables. Bands the labels count in months use calendar months, and both rows are shown within 3
+  days of such a boundary.
 - MTM Review Due Dates and CMR Completion Rate: each enrollee's CMR offer due date, the quarters
   with no targeted medication review, and the completion rate by CMS's method.
 - Concurrent-Use Safety Measures (COB, Poly-ACH, Poly-CNS) and Opioid Display Measures (High
