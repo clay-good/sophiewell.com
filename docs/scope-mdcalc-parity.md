@@ -924,3 +924,5 @@ experience**.
 > v1638, Concurrent-Use Safety Measures (COB, Poly-ACH, Poly-CNS) — [spec-v1638](spec-v1638.md), which adds `partd-concurrent-use-measures` — is 2287.)
 
 > v1638, Opioid Display Measures (High Dosage, Multiple Providers, Initial Long Duration) — [spec-v1638](spec-v1638.md), which adds `partd-opioid-measures` — is 2288.)
+
+> v1638, MTM Review Due Dates and CMR Completion Rate — [spec-v1638](spec-v1638.md), which adds `mtm-service-clock` — is 2289.)

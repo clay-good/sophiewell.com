@@ -2865,6 +2865,7 @@ const UTILITIES = [
   { id: 'supd-measure', name: 'Statin Use in Persons with Diabetes (SUPD, Star Method)', group: 'Q', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
   { id: 'partd-concurrent-use-measures', name: 'Concurrent-Use Safety Measures (COB, Poly-ACH, Poly-CNS)', group: 'Q', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
   { id: 'partd-opioid-measures', name: 'Opioid Display Measures (High Dosage, Multiple Providers, Initial Long Duration)', group: 'Q', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
+  { id: 'mtm-service-clock', name: 'MTM Review Due Dates and CMR Completion Rate', group: 'Q', audiences: ['clinicians', 'billers', 'educators'], clinical: false },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

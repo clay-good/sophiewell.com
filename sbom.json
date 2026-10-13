@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ac3d9658-79a0-59af-841a-e37dd6ae6f70",
+  "serialNumber": "urn:uuid:40227d14-a85e-56ac-8b9b-6ab7ef246b2d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-13T12:12:14.276Z",
+    "timestamp": "2026-10-13T12:34:28.541Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2288 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2289 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1f137a94d53f38c6ef2acad57aadc9370f8488d4ff37e7d6be13de6762e84144"
+          "content": "da99895e43228f84b0cd91ee6354f25daed782e7ac65a7a952e987f6e14dce82"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "149287"
+          "value": "149347"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3a9d9868942ff993836596b97f1e14fc3400dbbd7b240c0c119d76f32b47319c"
+          "content": "728c8dcffb4409b13138186c5ddca8467ef55c457b26c11ee73ba59e4c344c33"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "630722"
+          "value": "630887"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fc30477250d7294bc5958751fa3f02f8dfdf7b24caedf687cc425fa4161500ca"
+          "content": "fcad31eb6584ef201dc6c375de3648bc2ced989f738c6a40a5d9e0fe342ecf83"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "287935"
+          "value": "288063"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3bfe5dda69b1f4ca16237805163e371a0bb818c675ca7243df1305e2e83b340c"
+          "content": "b4dcccc220bccd28c4ec3f035fb939a63fbd06078f1120a29111b179a278c9ad"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "139435"
+          "value": "139502"
         }
       ]
     },
@@ -17051,7 +17051,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4ff40e3e183b20215f9a418ab778d87544f9c69c56970f790a26b66a1f9f3819"
+          "content": "1ba73d95dbcbf0d6a527bb3a72b1261b7257c0580f50ed5b1c7c5333d6a869ef"
         }
       ],
       "properties": [
@@ -17061,7 +17061,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2999795"
+          "value": "3000831"
         }
       ]
     },
@@ -17923,6 +17923,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6640"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/mtm-service-clock-v1638.js",
+      "type": "file",
+      "name": "lib/mtm-service-clock-v1638.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "561e8c60fafe0497353e68ca097250941c69cbe5502e9c14b80ced915f0f13b6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10789"
         }
       ]
     },
@@ -47663,6 +47684,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mtm-service-clock-v1638.js",
+      "type": "file",
+      "name": "mcp/adapters/mtm-service-clock-v1638.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e99e41ebf5b7a76c74e7d02c20eeeb2f8b36d21997ce1e825f6af8d657e483f8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1243"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/myeloid-prognosis-v199.js",
       "type": "file",
       "name": "mcp/adapters/myeloid-prognosis-v199.js",
@@ -59198,7 +59240,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "89c14e59425e116e7ebb8030682ec41cb76f181c0c69d04c6280ac0875e2479d"
+          "content": "ae8ce4be5f92d5ad656f70e0c02ce2e4c7687e260dad6a446df66c3db4b1a5d2"
         }
       ],
       "properties": [
@@ -59208,7 +59250,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "159725"
+          "value": "159852"
         }
       ]
     },
@@ -63881,7 +63923,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dcc48634754db34b8eb54c053df393ed066362f43d954760b71226eb21d3d7bb"
+          "content": "64604d063cfc6dcbf3891e215522a712a1df347db61a61705ed605d0f7f11191"
         }
       ],
       "properties": [
@@ -63891,7 +63933,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "34961"
+          "value": "36112"
         }
       ]
     },
@@ -95525,6 +95567,7 @@
         "urn:sophiewell:file:source:lib/msu-disc-herniation-v1468.js",
         "urn:sophiewell:file:source:lib/mswat-v557.js",
         "urn:sophiewell:file:source:lib/mtm-eligibility-check-v1638.js",
+        "urn:sophiewell:file:source:lib/mtm-service-clock-v1638.js",
         "urn:sophiewell:file:source:lib/mue-load.js",
         "urn:sophiewell:file:source:lib/mue-reference.js",
         "urn:sophiewell:file:source:lib/myeloid-prognosis-v199.js",
@@ -97890,6 +97933,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/msu-disc-herniation-v1468.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mswat-v557.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mtm-eligibility-check-v1638.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mtm-service-clock-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/myeloid-prognosis-v199.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/myxedema-coma-v599.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nac-attr-stage-v583.js",
@@ -98543,7 +98587,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ac3d965879a0a9af"
+      "value": "40227d14a85ed6ac"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98555,7 +98599,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3745"
+      "value": "3747"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

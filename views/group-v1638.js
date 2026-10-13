@@ -5,7 +5,7 @@
 // medicaid-drug-payment-check, partd-transition-fill, pharmacy-effective-rate, mtm-eligibility-check,
 // ccm-time-units, vaccine-interval-validity, partd-dmp-criteria-check, partd-opioid-safety-edit,
 // partd-dmp-notice-clock, ltc-mrr-tracker, glucose-supply-quantity-check, supd-measure,
-// partd-concurrent-use-measures, partd-opioid-measures.
+// partd-concurrent-use-measures, partd-opioid-measures, mtm-service-clock.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -36,6 +36,7 @@ import * as GS from '../lib/glucose-supply-quantity-check-v1638.js';
 import * as SU from '../lib/supd-measure-v1638.js';
 import * as CU from '../lib/partd-concurrent-use-measures-v1638.js';
 import * as OM from '../lib/partd-opioid-measures-v1638.js';
+import * as MC from '../lib/mtm-service-clock-v1638.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -519,6 +520,20 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(OM.partdOpioidMeasures(args), o);
+    }));
+  },
+  'mtm-service-clock'(root) {
+    const pairs = [['msc-year', 'contractYear'], ['msc-asof', 'asOf'], ['msc-enrollees', 'enrollees']];
+    numField(root, 'Contract year', 'msc-year', 'e.g. 2026');
+    dateField(root, 'As-of date', 'msc-asof');
+    note(root, 'Each line: enrollee, MTM enrollment date, enrolled last year (yes or no), last CMR offer date, CMR dates, TMR dates, opt-out date, age at the start of the year, hospice (yes or no), met CMS criteria (yes or no). Dates are YYYY-MM-DD; several dates in one place are separated by semicolons; a date that does not apply is left blank.');
+    // Rows carry enrollee references: kept out of the shareable link.
+    areaField(root, 'Enrollees, one per line', 'msc-enrollees', 'A, 2026-03-01, no, , , 2026-03-10, , 70, no, yes').querySelector('textarea').setAttribute('data-private', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(MC.mtmServiceClock(args), o);
     }));
   },
 };

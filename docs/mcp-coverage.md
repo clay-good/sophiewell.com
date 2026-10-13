@@ -9568,6 +9568,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/partd-opioid-measures-v1638.js (spec-v1638: Opioid display measures (high dosage, multiple providers, initial long duration) — administrative disclaimer)
 - `partd-opioid-measures`
 
+### lib/mtm-service-clock-v1638.js (spec-v1638: MTM review due dates and CMR completion rate — administrative disclaimer)
+- `mtm-service-clock`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

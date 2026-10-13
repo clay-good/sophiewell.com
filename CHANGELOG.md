@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- MTM Review Due Dates and CMR Completion Rate: each enrollee's CMR offer due date, the quarters
+  with no targeted medication review, and the completion rate by CMS's method.
 - Concurrent-Use Safety Measures (COB, Poly-ACH, Poly-CNS) and Opioid Display Measures (High
   Dosage, Multiple Providers, Initial Long Duration): each member's denominator and numerator
   status and the rates, by CMS's published technical notes, from pasted members and fills.

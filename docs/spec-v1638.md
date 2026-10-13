@@ -1,6 +1,6 @@
 # spec-v1638 — The pharmacy as a business and as a regulated Medicare/Medicaid provider
 
-**Status:** In progress, October 12, 2026: 27 of 28 tools built (see Build status). 28 new tools, none build-gated.
+**Status:** Built, October 13, 2026: all 28 tools (see Build status). 28 new tools, none build-gated.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 An independent pharmacy owner, a long-term-care consultant pharmacist, a managed-care pharmacist
@@ -1053,6 +1053,7 @@ Built tools are in `views/group-v1638.js`. Sources were re-read on October 12, 2
 | Tool | State |
 |---|---|
 | 1. `mtm-eligibility-check` | Built (group Q) on 42 CFR 423.153(d)(2) and CMS's contract year 2025, 2026 and 2027 MTM memos, each re-read for its threshold ($1,623, $1,276, $1,340). A year with no published figure asks the reader for it and borrows no other year's. **Not built:** a page watch on the CMS MTM page. |
+| 2. `mtm-service-clock` | Built (group Q) on 42 CFR 423.153(d)(1)(vii), the CY 2025 MTM guidance memo and the 2026 Star Ratings Technical Notes, measure D11. Enrollees are pasted as lines. The age at the start of the year and whether the CMS criteria were met are entered directly, in place of a birth date and a criteria date. The 60-day and one-year offer dates are labeled as guidance. **Not built:** a minimum denominator for the rate (the scoring attachment was not read), upload-workbench intake and the CSV download. |
 | 3. `partd-transition-fill` | Built (group Q) on 42 CFR 423.120(b)(3). The effective date is day 1 of the 90. **Not built:** the manual's long-term care emergency supply and its January 1 count for a continuing member; chapter 6 of the manual (2016) predates the current text and was not re-read, and the result says so. |
 | 4. `ltc-short-cycle-check` | Built (group Q) on 423.154(a) to (c). |
 | 5. `partd-daily-cost-share` | Built (group Q) on 423.153(b)(4) and 423.100. The rate is rounded to the cent before multiplying; the result shows what prorating without that rounding would give when the two differ. |

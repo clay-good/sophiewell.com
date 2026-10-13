@@ -770,6 +770,7 @@ import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode-treatment-v1564.js';
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
+import * as mtmServiceClockV1638 from '../../lib/mtm-service-clock-v1638.js';
 import * as partdConcurrentUseMeasuresV1638 from '../../lib/partd-concurrent-use-measures-v1638.js';
 import * as partdOpioidMeasuresV1638 from '../../lib/partd-opioid-measures-v1638.js';
 import * as glucoseSupplyQuantityCheckV1638 from '../../lib/glucose-supply-quantity-check-v1638.js';
@@ -1873,6 +1874,7 @@ const MODULES = {
   'foodborne-trematode-treatment-v1564.js': foodborneTrematodeTreatmentV1564,
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
+  'mtm-service-clock-v1638.js': mtmServiceClockV1638,
   'partd-concurrent-use-measures-v1638.js': partdConcurrentUseMeasuresV1638,
   'partd-opioid-measures-v1638.js': partdOpioidMeasuresV1638,
   'glucose-supply-quantity-check-v1638.js': glucoseSupplyQuantityCheckV1638,

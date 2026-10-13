@@ -1040,6 +1040,7 @@ import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-treatment-v1564.js';
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
+import mtmServiceClockV1638 from './adapters/mtm-service-clock-v1638.js';
 import partdConcurrentUseMeasuresV1638 from './adapters/partd-concurrent-use-measures-v1638.js';
 import partdOpioidMeasuresV1638 from './adapters/partd-opioid-measures-v1638.js';
 import glucoseSupplyQuantityCheckV1638 from './adapters/glucose-supply-quantity-check-v1638.js';
@@ -2359,6 +2360,7 @@ const ADAPTER_MODULES = [
   ['foodborne-trematode-treatment-v1564', foodborneTrematodeTreatmentV1564],
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
+  ['mtm-service-clock-v1638', mtmServiceClockV1638],
   ['partd-concurrent-use-measures-v1638', partdConcurrentUseMeasuresV1638],
   ['partd-opioid-measures-v1638', partdOpioidMeasuresV1638],
   ['glucose-supply-quantity-check-v1638', glucoseSupplyQuantityCheckV1638],
