@@ -49,11 +49,11 @@
   },
   "mcd-articles": {
     "url": "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/current_article.zip",
-    "edition": "2026-09-28 weekly",
-    "sha256": "c4598b5875a0401975ab08072625ce548f4c4af439fb345ac0e0c6e58a3598bc",
-    "etag": "\"8843040ca66092472e97051b394d9727:1790820012.414743\"",
-    "lastModified": "Thu, 01 Oct 2026 02:00:12 GMT",
-    "fetchedAt": "2026-10-01"
+    "edition": "2026-10-05 weekly",
+    "sha256": "9552772982c86aba0570d7ce787d8b9839d900fc79f8fb14dae1407ce128cc1a",
+    "etag": "\"67f90591a28ac6dd590c8b399df50109:1791424811.103152\"",
+    "lastModified": "Thu, 08 Oct 2026 02:00:11 GMT",
+    "fetchedAt": "2026-10-13"
   },
   "purple-book": {
     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/PurpleBook/2026/purplebook-search-August-data-download.csv",

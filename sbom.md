@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `85fbf2471f111414`
-Generated: 2026-10-12T13:04:09.126Z
+Build ID: `ac3d965879a0a9af`
+Generated: 2026-10-13T12:12:14.276Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1005,7 +1005,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/osdi-v558.js` | 12462 | `ae89ceca530591ebd754e97f4bad4997fb99c1cc65d249713352ebb3ceba4db4` |
 | `lib/osi-onychomycosis-v674.js` | 3577 | `cdc4873826dd624fe21fbb25d9cbc2b446af8815030a15e176db5ee08160d8f9` |
 | `lib/oswestry-v643.js` | 4727 | `1dccac04347831c73b9f45bf744c6242bcb2f4cfb3e78d3f5685ef7afaade004` |
-| `lib/otc-child-label-dose-v1639.js` | 16856 | `dffb7f67b1c7f67292bbf5ce56203622b0a4448aa0e063a7e13ae53c826473b6` |
+| `lib/otc-child-label-dose-v1639.js` | 16987 | `9390079332b85aaa82c4b1ed264f14c5cb988ffcf9cadecb504a289d2bc0dd68` |
 | `lib/otc-daily-max-check-v1639.js` | 16922 | `9f3ecbb42a62adba00d770961a8060b14ffcb650c3508ce09fc47725d9f63563` |
 | `lib/otp-admission-clock-v1637.js` | 7975 | `66af295a1fcefecacef06920b1729d842a70a91359a1a95cac4d8c0f769057e7` |
 | `lib/otp-take-home-limit-v1637.js` | 7804 | `3bfd234009e4ffe37264855cb39b433ed0fa34c78a3be704b4088ffa5608be6f` |

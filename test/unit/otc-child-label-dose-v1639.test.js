@@ -70,6 +70,12 @@ test('Imodium, Delsym and pyrantel rows', () => {
   assert.match(run({ product: 'imodium-caplet', weight: 150, weightUnit: 'lb', ageYears: 15 }).note, /its last row, "adults and children 12 years and over", is by age/);
 });
 
+test('a blank weight or age is said, not passed over', () => {
+  assert.match(run({ product: 'kids-tylenol-160mg-in-5ml', ageYears: 4 }).note, /The weight was not entered, so only the age row is shown/);
+  assert.match(run({ product: 'kids-tylenol-160mg-in-5ml', weight: 40, weightUnit: 'lb' }).note, /The age was not entered, so only the weight row is shown/);
+  assert.doesNotMatch(run({ product: 'kids-tylenol-160mg-in-5ml', weight: 40, weightUnit: 'lb', ageYears: 4 }).note, /was not entered, so only/);
+});
+
 test('refusals and a withheld label', () => {
   assert.match(run({}).message, /^Choose the product/);
   assert.match(run({ product: 'kids-tylenol-160mg-in-5ml' }).message, /weight, age, or both/);
