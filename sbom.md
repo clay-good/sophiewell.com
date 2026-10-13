@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `40227d14a85ed6ac`
-Generated: 2026-10-13T12:34:28.541Z
+Build ID: `7638df2b099638c1`
+Generated: 2026-10-13T12:57:57.328Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -722,7 +722,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/la-esophagitis-v318.js` | 3488 | `8f5b8dcdbec453858656244d1a722bb6a8afbaee9a60aa081ff9e167d6145930` |
 | `lib/lab-interpret.js` | 29621 | `be761b932dc862967f40f148b094209b01ef6594ecc5c06c603db46feaa30514` |
 | `lib/label-dose.js` | 8030 | `32955c2d3c6dab36d25f512f012a722c3d6955f7c3ac719e75c3c7f4d44cd99f` |
-| `lib/label-editions.js` | 64280 | `a13614bee7814d9364ebaf34173e7629f9179ee3d9367bdef6f6300131d6fe98` |
+| `lib/label-editions.js` | 64280 | `924d00346060f04362880732361e5ec5dcb861092ce7cdb2c444a465d61a54f0` |
 | `lib/label-formulation-switch-v1633.js` | 9255 | `c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8` |
 | `lib/label-row.js` | 2619 | `1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1` |
 | `lib/label-titration-calendar-v1633.js` | 13059 | `b76605438b5e3f053ab16ab45353089e0fd5af8247e31c1430480da52e920679` |

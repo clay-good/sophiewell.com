@@ -6,26 +6,26 @@
   "agency": "FDA",
   "status": "public-domain",
   "cadence": "monthly",
-  "recordCount": 1737,
+  "recordCount": 1746,
   "shardLayout": "shards",
   "shards": [
     {
       "name": "all.json",
-      "sha256": "7df2cb5bb23dde86424104863f741261bb3f9a642229031c12fcf3f8487c6fc7",
-      "records": 1737,
-      "bytes": 483757
+      "sha256": "57ae92546157234bb7bd23cdc5f5941c5112c9a7158a10d536ccb2d4ae47487f",
+      "records": 1746,
+      "bytes": 486309
     }
   ],
   "notes": "One record per marketed licensed biological product from the full listing in the monthly data download: proprietary and proper names, license type, strength, dosage form, route, presentation, marketing status, and the reference product of a 351(k) biosimilar or interchangeable. Discontinued products are dropped.",
   "coverage": "full",
-  "sourceEdition": "2026-08",
-  "effectiveFrom": "2026-08-01",
-  "fetchedAt": "2026-10-03",
-  "contentChangedAt": "2026-10-03",
-  "expiresOn": "2026-12-01",
-  "nextExpected": "2026-10-01",
-  "sourceSha256": "53b21871b4cd439abd6bb2fafa4447df0dd44e2da3cfcf51550298aef9afe2b5",
-  "recordsSha256": "02bd77636d7d89044d6253f4ac7a31bc2e55901c6116d31f18c49094a3035f74",
+  "sourceEdition": "2026-09",
+  "effectiveFrom": "2026-09-01",
+  "fetchedAt": "2026-10-13",
+  "contentChangedAt": "2026-10-13",
+  "expiresOn": "2027-01-01",
+  "nextExpected": "2026-11-01",
+  "sourceSha256": "b9d04a8b1ea9c6605fdeff01127f0de32cb092534a40441b036e39c9665974e6",
+  "recordsSha256": "737e4e13c00c2908e0a0b087440271c8f8dcb513cb1240efec51e42d230a110d",
   "recordBounds": {
     "min": 1000,
     "max": 5000

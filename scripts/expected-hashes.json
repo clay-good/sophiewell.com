@@ -24,12 +24,12 @@
     "fetchedAt": "2026-09-29"
   },
   "nadac": {
-    "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=as_of_date&conditions[0][value]=2026-09-30&conditions[0][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
-    "edition": "2026-09-30 weekly",
-    "sha256": "9ead87fefcead37c123d317afef5101816b05ebe313b531f7f087f94b9132cd2",
-    "etag": "\"1790706975-gzip\"",
-    "lastModified": "Tue, 29 Sep 2026 18:36:15 GMT",
-    "fetchedAt": "2026-09-29"
+    "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=as_of_date&conditions[0][value]=2026-10-07&conditions[0][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
+    "edition": "2026-10-07 weekly",
+    "sha256": "0dd1eddbb35c0e390c23f822b93b57a98f10215032db11c2ee653dee6d26027d",
+    "etag": "\"1791720737-gzip\"",
+    "lastModified": "Sun, 11 Oct 2026 12:12:17 GMT",
+    "fetchedAt": "2026-10-13"
   },
   "asp": {
     "url": "https://www.cms.gov/files/zip/october-2026-medicare-part-b-payment-limit-files-final.zip",
@@ -56,12 +56,12 @@
     "fetchedAt": "2026-10-13"
   },
   "purple-book": {
-    "url": "https://www.accessdata.fda.gov/drugsatfda_docs/PurpleBook/2026/purplebook-search-August-data-download.csv",
-    "edition": "2026-08",
-    "sha256": "53b21871b4cd439abd6bb2fafa4447df0dd44e2da3cfcf51550298aef9afe2b5",
-    "etag": "\"80abca7c8334dd1:0\"",
-    "lastModified": "Tue, 25 Aug 2026 11:18:43 GMT",
-    "fetchedAt": "2026-10-03"
+    "url": "https://www.accessdata.fda.gov/drugsatfda_docs/PurpleBook/2026/purplebook-search-September-data-download.csv",
+    "edition": "2026-09",
+    "sha256": "b9d04a8b1ea9c6605fdeff01127f0de32cb092534a40441b036e39c9665974e6",
+    "etag": "\"06780b9151dd1:0\"",
+    "lastModified": "Wed, 30 Sep 2026 17:32:54 GMT",
+    "fetchedAt": "2026-10-13"
   },
   "orange-book": {
     "url": "https://www.fda.gov/media/76860/download?attachment",
@@ -81,11 +81,11 @@
   },
   "uspstf": {
     "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation-topics/uspstf-a-and-b-recommendations",
-    "edition": "A and B list read 2026-10-04 (latest release 2025-06)",
-    "sha256": "d40f6eee88dc44469be3da88847e7dfc247d68a42a357e276123317f9d40989f",
+    "edition": "A and B list read 2026-10-13 (latest release 2025-06)",
+    "sha256": "ea0395b9a15d60c029db2d5676f2710c01cd051c2e0ac46fb367a260463cf4d5",
     "etag": null,
     "lastModified": null,
-    "fetchedAt": "2026-10-04"
+    "fetchedAt": "2026-10-13"
   },
   "poverty-guidelines": {
     "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines/api/2025/us/1",

@@ -1,5 +1,20 @@
 [
   {
+    "label": "Abilify Asimtufii (aripiprazole)",
+    "labeler": "OTSUKA AMERICA PHARMACEUTICAL, INC",
+    "setId": "da4c07fd-1130-4341-bb44-63acfa4162be",
+    "tools": [
+      "lai-antipsychotic-missed-dose"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2025-04-10",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "53fe4c9d601a66fcaae0a42325278a2cb5e090bb8cc9c3e1b93b75b9c0757bee"
+    }
+  },
+  {
     "label": "Abilify Maintena (aripiprazole)",
     "labeler": "OTSUKA AMERICA PHARMACEUTICAL, INC.",
     "setId": "ee49f3b1-1650-47ff-9fb1-ea53fe0b92b6",
@@ -126,6 +141,21 @@
     }
   },
   {
+    "label": "Advil Liqui-Gels (ibuprofen 200 mg), Haleon",
+    "labeler": "HALEON US HOLDINGS LLC",
+    "setId": "1f01c10a-9434-91a4-2ee4-352315a6b610",
+    "tools": [
+      "otc-daily-max-check"
+    ],
+    "splVersion": 37,
+    "publishedOn": "2026-07-31",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e6e4c5f8f90d2dee598d15e65a988f77d6c3f454d0e466baec594ad82f34e2fd"
+    }
+  },
+  {
     "label": "Aggrastat (tirofiban), Medicure",
     "labeler": "MEDICURE INTERNATIONAL INC",
     "setId": "fe0ced75-ccbf-4d2e-bd0d-b57e60ab913f",
@@ -154,6 +184,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "a3607c6dff190a00342731b9cf30f3c888be5aed35574da9e1d6c32c824dd833"
+    }
+  },
+  {
+    "label": "Aleve (naproxen sodium 220 mg), Bayer",
+    "labeler": "BAYER HEALTHCARE LLC.",
+    "setId": "3c0ddd25-5a9a-4628-a971-65fe2a9775b5",
+    "tools": [
+      "otc-daily-max-check"
+    ],
+    "splVersion": 12,
+    "publishedOn": "2025-12-08",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "14b939a7bc8ebe64984a65e08c57d9dab9d8e9d43438b68630de61945884e50b"
     }
   },
   {
@@ -389,6 +434,36 @@
     }
   },
   {
+    "label": "Atelvia (risedronate delayed-release), Allergan",
+    "labeler": "ALLERGAN, INC.",
+    "setId": "c8b9ab88-1a26-46c3-80ec-4eaa45202021",
+    "tools": [
+      "missed-dose-label-rule"
+    ],
+    "splVersion": 28,
+    "publishedOn": "2026-04-22",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "873298a5d2de9da28623888b06c98d9405ed30d32014bc3b6d8788709551ff0a"
+    }
+  },
+  {
+    "label": "Auvi-Q (epinephrine injection), Kaleo",
+    "labeler": "KALEO, INC",
+    "setId": "6180fb40-7fca-4602-b3da-ce62b8cd2470",
+    "tools": [
+      "epinephrine-device-weight-band"
+    ],
+    "splVersion": 21,
+    "publishedOn": "2025-10-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "9871645252db98776c58d5125c7e543b773a64274b2dca809789c96bc0def187"
+    }
+  },
+  {
     "label": "Azactam (aztreonam)",
     "labeler": "E.R. SQUIBB & SONS, L.L.C.",
     "setId": "9a105eaf-ee77-4016-beeb-d425a5565db2",
@@ -512,6 +587,21 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "17cf8d9e55a074a4355e30547973ffb931c2b18eda09cfd775120bf91ea3cff4"
+    }
+  },
+  {
+    "label": "Bayer Genuine Aspirin (aspirin 325 mg), Bayer",
+    "labeler": "BAYER HEALTHCARE LLC.",
+    "setId": "44a08904-68b9-4d06-a28d-21aae3d6140c",
+    "tools": [
+      "otc-daily-max-check"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2025-12-05",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "8e64a1c5038aca386f31fe2aa2261cbb1aebb7dc9b06f300a361be0e57457039"
     }
   },
   {
@@ -877,6 +967,81 @@
     }
   },
   {
+    "label": "Children's Benadryl Allergy liquid (diphenhydramine 12.5 mg per 5 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "fc9181b9-c92d-493e-8d7c-4a4239c6c092",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 15,
+    "publishedOn": "2026-10-09",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "386d9907d3112580b210161c1bbbad05c21642223958382a0f1b5c425acd9186"
+    }
+  },
+  {
+    "label": "Children's Motrin chewables (ibuprofen 100 mg), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "15b0b56d-6188-4937-b541-902022e35b24",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "502c7e969c79e0ab50c1eac5745da05fb2b545a2bd19fb03cedd3350f72bf77c"
+    }
+  },
+  {
+    "label": "Children's Motrin suspension (ibuprofen 100 mg per 5 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "152189e5-391c-42d3-a03b-c8364e2de6bf",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 9,
+    "publishedOn": "2024-11-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "bc3edee2f0aba6c9796e75998b0f1ddae2a13a4b987077cd1d7ca45b31e63684"
+    }
+  },
+  {
+    "label": "Children's Tylenol chewables (acetaminophen 160 mg), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "9782fe86-d72a-4231-b1ba-d3f3b4ee49e3",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 11,
+    "publishedOn": "2026-04-17",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "198eccc3bf9a7015b6733dd6920d004bb3632c40b1f9687d3683ae2d052d1061"
+    }
+  },
+  {
+    "label": "Children's Tylenol suspension (acetaminophen 160 mg per 5 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "3162733b-9382-39f1-e063-6294a90ac420",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 3,
+    "publishedOn": "2026-06-16",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "25d14d8ab08c12efdbdc9452bc231a80cacb564e3cac023eb86bfd3c263e1447"
+    }
+  },
+  {
     "label": "Cipro (ciprofloxacin) tablets",
     "labeler": "BAYER HEALTHCARE PHARMACEUTICALS INC.",
     "setId": "888dc7f9-ad9c-4c00-8d50-8ddfd9bd27c0",
@@ -1148,6 +1313,22 @@
     }
   },
   {
+    "label": "Delsym (dextromethorphan polistirex extended-release suspension), Reckitt",
+    "labeler": "RECKITT BENCKISER LLC",
+    "setId": "e3e1d126-76c2-4776-8ce0-449625b7e6ba",
+    "tools": [
+      "otc-child-label-dose",
+      "otc-daily-max-check"
+    ],
+    "splVersion": 15,
+    "publishedOn": "2026-09-11",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "44718d8220df5c701ef9ea3eb4e2938edc84100f4d32ffa66c4e2eebc3593208"
+    }
+  },
+  {
     "label": "Depakote ER (divalproex sodium)",
     "labeler": "ABBVIE INC.",
     "setId": "0dc024ce-efc8-4690-7cb5-639c728fccac",
@@ -1160,6 +1341,36 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "9e3fd7099dfc743745faa08ccadaaaa16dabbfb651dfb6c8e4b1d5997965de9e"
+    }
+  },
+  {
+    "label": "Depo-Provera CI (medroxyprogesterone acetate 150 mg/mL)",
+    "labeler": "PHARMACIA & UPJOHN COMPANY LLC",
+    "setId": "199cf13e-0859-4a73-9b45-e700d0cd1049",
+    "tools": [
+      "depot-injection-window"
+    ],
+    "splVersion": 29,
+    "publishedOn": "2026-08-28",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "9bcfee2c1818c6b0eea1522d37d7029b633240bebd1681c05c8d95f07294e909"
+    }
+  },
+  {
+    "label": "depo-subQ provera 104 (medroxyprogesterone acetate)",
+    "labeler": "PHARMACIA & UPJOHN COMPANY LLC",
+    "setId": "390087a6-f3c3-4f0b-a930-79acf412f153",
+    "tools": [
+      "depot-injection-window"
+    ],
+    "splVersion": 21,
+    "publishedOn": "2025-12-19",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "3d39d1892dc7da7d004743cc3313b2ac14cb9e7c043de0f935b9dd8cab5dec84"
     }
   },
   {
@@ -1309,7 +1520,7 @@
   },
   {
     "label": "DuoDote (atropine and pralidoxime)",
-    "labeler": "MERIDIAN MEDICAL TECHNOLOGIES\u00ae LLC",
+    "labeler": "MERIDIAN MEDICAL TECHNOLOGIES® LLC",
     "setId": "241f42a0-1a33-40e8-8221-201767d999e5",
     "tools": [
       "pralidoxime-dose"
@@ -1321,6 +1532,21 @@
     "sections": {
       "34068-7": "c99b9a0c2d6d8b9eb5fa3136962026ba7010e0eb9d25025af390956ee3c96711",
       "43678-2": "7842aa2ebb192b949d077af3ef02d91e5bc61f6cdf2b30ca3c74aa6ab3c98ce9"
+    }
+  },
+  {
+    "label": "Dupixent (dupilumab), Sanofi",
+    "labeler": "SANOFI-AVENTIS U.S. LLC",
+    "setId": "595f437d-2729-40bb-9c62-c8ece1f82780",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 60,
+    "publishedOn": "2026-08-07",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "fdce1502a1653f2c35d64790715b8b87632fbd65d66f09956669b8f5269d7167"
     }
   },
   {
@@ -1389,6 +1615,21 @@
     }
   },
   {
+    "label": "ella (ulipristal acetate), PMI Branded Pharmaceuticals",
+    "labeler": "PMI BRANDED PHARMACEUTICALS, INC.",
+    "setId": "2bf93d23-cddd-4613-9066-5b5fa090404b",
+    "tools": [
+      "emergency-contraception-window"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2026-07-24",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "d33161f12356b1004ae29d818b2bd08cb040bb61b0d65fe329d7bd893cc7c1b9"
+    }
+  },
+  {
     "label": "ELLENCE (epirubicin)",
     "labeler": "PHARMACIA & UPJOHN COMPANY LLC",
     "setId": "0a03c798-a652-4895-b29c-3b521a89ba42",
@@ -1405,6 +1646,21 @@
       "43685-7": "39280ec919080d6ee542caf79c64296e41967df161fca23936cc4c8972dcfc9e",
       "34068-7": "e2330563679ce88123d910c369499340540593f6d2c2434fc76c6e30399dce96",
       "34070-3": "753acaee44f8baec28767045a2e2cb31c598ec3e6adc550e64014c50b1ff0903"
+    }
+  },
+  {
+    "label": "Enbrel (etanercept), Immunex",
+    "labeler": "IMMUNEX CORPORATION",
+    "setId": "a002b40c-097d-47a5-957f-7a7b1807af7f",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 216,
+    "publishedOn": "2026-03-09",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "f5cd9af4219823cdea69a9bc3194b2fa0c3a33883f2d5a345d39642b7a5117bc"
     }
   },
   {
@@ -1439,6 +1695,21 @@
     "sections": {
       "34068-7": "63edc1cfc99e51aa65f9b60d211be79f67b435c98727b2180e8d05ad3af445b2",
       "43678-2": "5b66bdb18ac0a4eacf561b824eb3dd8bbc5f6fba1f847ac1313e6d0b322533e5"
+    }
+  },
+  {
+    "label": "EpiPen and EpiPen Jr (epinephrine injection), Viatris",
+    "labeler": "VIATRIS SPECIALTY LLC",
+    "setId": "7560c201-9246-487c-a13b-6295db04274a",
+    "tools": [
+      "epinephrine-device-weight-band"
+    ],
+    "splVersion": 37,
+    "publishedOn": "2025-02-12",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "b6cc7065f5ffa0ec10e3b3c440e1ba18ada4a3c831700413625e9acc6ee75b6c"
     }
   },
   {
@@ -1625,6 +1896,21 @@
     }
   },
   {
+    "label": "Forteo (teriparatide), Lilly",
+    "labeler": "ELI LILLY AND COMPANY",
+    "setId": "aae667c5-381f-4f92-93df-2ed6158d07b0",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 44,
+    "publishedOn": "2026-08-19",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "619cfdfb3c53212138600e28de592e1475444f60f645ebfdbdaeafcd2a26becf"
+    }
+  },
+  {
     "label": "Fosamax (alendronate), Organon",
     "labeler": "ORGANON LLC",
     "setId": "14e931fd-2c5f-4d90-b7db-5980706f4a56",
@@ -1687,6 +1973,21 @@
     }
   },
   {
+    "label": "Habitrol gum (nicotine polacrilex), Dr. Reddy's",
+    "labeler": "DR. REDDY'S LABORATORIES INC.",
+    "setId": "5c394758-1179-455a-a562-c8e954fb2258",
+    "tools": [
+      "nrt-step-schedule"
+    ],
+    "splVersion": 4,
+    "publishedOn": "2025-12-24",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "69e528e30c202556d04bedabf3d0514a5db4c422809cd06816f7f3d9b2c8ab50"
+    }
+  },
+  {
     "label": "Hicon (sodium iodide I 131)",
     "labeler": "JUBILANT DRAXIMAGE INC., DBA JUBILANT RADIOPHARMA",
     "setId": "524a0dac-6e2b-2c0c-04b4-76d85dba63c5",
@@ -1700,6 +2001,36 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34089-3": "bfc560381fe67bb9d4f966b2a54451032fe9e2241522434a6bfda97d11416f27"
+    }
+  },
+  {
+    "label": "Humalog (insulin lispro), Lilly",
+    "labeler": "ELI LILLY AND COMPANY",
+    "setId": "c8ecbd7a-0e22-4fc7-a503-faa58c1b6f3f",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 87,
+    "publishedOn": "2026-08-10",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "0c0a4b86ab2702ed88960fe67c64135373f09429a991736eb7680260ad46b7f6"
+    }
+  },
+  {
+    "label": "Humira (adalimumab), AbbVie",
+    "labeler": "ABBVIE INC.",
+    "setId": "608d4f0d-b19f-46d3-749a-7159aa5f933d",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 2154,
+    "publishedOn": "2026-02-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "637f76701e3bd3cbca27873d168068e6ce0d89275ad726ac4a33194ab6f9db5e"
     }
   },
   {
@@ -1765,6 +2096,21 @@
     }
   },
   {
+    "label": "Ibandronate sodium tablets 150 mg, Bionpharma",
+    "labeler": "BIONPHARMA INC.",
+    "setId": "6ca94cce-a2bb-421f-bd8f-6b14bc2bd985",
+    "tools": [
+      "missed-dose-label-rule"
+    ],
+    "splVersion": 6,
+    "publishedOn": "2026-08-27",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "5bc797fd0e7ee7dbcee2a62bc45fcbfef0a749099eca3da9233567ef92712f9b"
+    }
+  },
+  {
     "label": "IDAMYCIN PFS (idarubicin)",
     "labeler": "PFIZER LABORATORIES DIV PFIZER INC",
     "setId": "0a5a6d93-cc1e-4d7f-8da1-446c134503b3",
@@ -1779,6 +2125,67 @@
     "sections": {
       "43685-7": "fef583f766afe7e75b3ee7c3a5652c242a1b54577fb2b898e178823608f40f3a",
       "34068-7": "9670bad9aafdb4a5461bba3ca18d06cfe8485e30494dd578f0e78a93e8d3ca70"
+    }
+  },
+  {
+    "label": "Imodium A-D caplets (loperamide 2 mg), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "01da76d0-1979-4c45-9d39-c72ae4e4ffe2",
+    "tools": [
+      "otc-child-label-dose",
+      "otc-daily-max-check"
+    ],
+    "splVersion": 13,
+    "publishedOn": "2025-09-29",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "a2d9a040e1cc9f52da7e182fcae3412e06c63d1309c6641904937a83f921d499"
+    }
+  },
+  {
+    "label": "Imodium A-D liquid (loperamide 1 mg per 7.5 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "76a976d5-8bee-4158-a94d-7fbfc5544fd4",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2025-09-29",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "0575c75804be7cefe874d9a5a3aea0100389c8082ecc86bce6bba65b4c150057"
+    }
+  },
+  {
+    "label": "Infants' Motrin drops (ibuprofen 50 mg per 1.25 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "c2302bfe-b367-4867-b803-29f066a42dc7",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-07-01",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e4171f864262f3d48ce5eb0c64e49d9e753291ca421b347ee32958d5b8cd657e"
+    }
+  },
+  {
+    "label": "Infants' Tylenol suspension (acetaminophen 160 mg per 5 mL), Kenvue",
+    "labeler": "KENVUE BRANDS LLC",
+    "setId": "997b9551-c222-4a9c-8ba1-09a5f97495fa",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 12,
+    "publishedOn": "2026-08-07",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "164e9b23602e471c12c5293b8490b5d0628dc71055582f4df65958423fd758db"
     }
   },
   {
@@ -2244,10 +2651,10 @@
     "tools": [
       "abx-renal"
     ],
-    "splVersion": 26,
-    "publishedOn": "2025-11-17",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "splVersion": 27,
+    "publishedOn": "2026-10-12",
+    "verifiedOn": "2026-10-13",
+    "validThrough": "2027-10-13",
     "sections": {
       "34068-7": "0dd65d14db707712739aadd0f041527e166f6414ae496ec7434e4281b1336eba",
       "34070-3": "9d8001df15bf37df532de165986b35d2c66f7ce15520a798e2e773cd8a3daf13"
@@ -2375,6 +2782,21 @@
     "sections": {
       "34068-7": "e4d3c32022ff32928ec3927f5fa2233b2971e929589cccfdbb627081ef3f6f9e",
       "34089-3": "dd274f1fa58706e81526e81f96c11f8c00550e6bfd7f1d79424d37e2015dad63"
+    }
+  },
+  {
+    "label": "MiraLAX (polyethylene glycol 3350), Bayer",
+    "labeler": "BAYER HEALTHCARE LLC.",
+    "setId": "d69ce3d4-7ca4-4fe3-b49e-6655e48d6963",
+    "tools": [
+      "otc-daily-max-check"
+    ],
+    "splVersion": 24,
+    "publishedOn": "2026-05-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "dee2abafc2eb561f37e853793fa838772193f11d44a33748c932e599d6f44dc2"
     }
   },
   {
@@ -2519,6 +2941,21 @@
     }
   },
   {
+    "label": "neffy (epinephrine nasal spray), ARS",
+    "labeler": "ARS PHARMACEUTICALS OPERATIONS, INC.",
+    "setId": "a1758142-a905-401d-8961-05829f51023a",
+    "tools": [
+      "epinephrine-device-weight-band"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2026-04-14",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "e382b490c625a8f523a70a629c6e4abd3a5c319e94e34b1b3bb2cdcb747275f9"
+    }
+  },
+  {
     "label": "Neoral (cyclosporine, modified)",
     "labeler": "NOVARTIS PHARMACEUTICALS CORPORATION",
     "setId": "94461af3-11f1-4670-95d4-2965b9538ae3",
@@ -2612,6 +3049,51 @@
     }
   },
   {
+    "label": "NicoDerm CQ (nicotine transdermal system), Haleon",
+    "labeler": "HALEON US HOLDINGS LLC",
+    "setId": "93b2d1b9-83c1-40b5-b6af-90c38c8d6cef",
+    "tools": [
+      "nrt-step-schedule"
+    ],
+    "splVersion": 14,
+    "publishedOn": "2025-07-16",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "b028acb374bf39fb8411dc85e4120f79e267d211c5a1865c38463391a02b2059"
+    }
+  },
+  {
+    "label": "Nicorette gum (nicotine polacrilex), Haleon",
+    "labeler": "HALEON US HOLDINGS LLC",
+    "setId": "673fd19f-69b3-4f73-b9b4-18b5f4cbf69c",
+    "tools": [
+      "nrt-step-schedule"
+    ],
+    "splVersion": 27,
+    "publishedOn": "2024-08-15",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "51ee575077afaf5e26573c3a83a21a1db6c948a167a82bf3ab198142bbecf416"
+    }
+  },
+  {
+    "label": "Nicorette lozenge (nicotine polacrilex), Haleon",
+    "labeler": "HALEON US HOLDINGS LLC",
+    "setId": "f350e050-2173-43e0-8738-848382ce0700",
+    "tools": [
+      "nrt-step-schedule"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2025-06-06",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "f6721bb9038d0bde37c37809d9233cdfb8afee8240eaa95c7a21db24b6360e7d"
+    }
+  },
+  {
     "label": "Nithiodote (sodium nitrite and sodium thiosulfate)",
     "labeler": "HOPE PHARMACEUTICALS",
     "setId": "ff4941b3-9901-4aab-adcf-c5327bede34e",
@@ -2624,6 +3106,21 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "dce45a91d6a58ffa64ad6d1f3e9d16834d54f81514909f274b7321a741ee770e"
+    }
+  },
+  {
+    "label": "NovoLog (insulin aspart), Novo Nordisk",
+    "labeler": "NOVO NORDISK",
+    "setId": "3a1e73a2-3009-40d0-876c-b4cb2be56fc5",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 34,
+    "publishedOn": "2025-01-22",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "2a682541a90f6aaef667ef6848fd7614e82b9fc74c97fa68a2392adff9951263"
     }
   },
   {
@@ -2741,6 +3238,21 @@
     }
   },
   {
+    "label": "Perseris (risperidone extended-release injectable suspension), Indivior",
+    "labeler": "INDIVIOR INC.",
+    "setId": "a4f21b1a-5691-4b14-a56d-651962d06f39",
+    "tools": [
+      "lai-antipsychotic-missed-dose"
+    ],
+    "splVersion": 18,
+    "publishedOn": "2025-02-21",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "d0a64510a23f31ffeef511cf813c3c8278da6ec0beb0ef6db34de55ba782da57"
+    }
+  },
+  {
     "label": "Phenytoin Sodium injection, Hikma",
     "labeler": "HIKMA PHARMACEUTICALS USA INC.",
     "setId": "035a8d4e-2063-4240-83cb-d7eebcabe301",
@@ -2757,6 +3269,21 @@
     }
   },
   {
+    "label": "Pinworm Medicine (pyrantel pamoate chewable), Bionpharma",
+    "labeler": "BIONPHARMA INC.",
+    "setId": "5799a28e-4803-b192-e063-6294a90a53d7",
+    "tools": [
+      "otc-child-label-dose"
+    ],
+    "splVersion": 1,
+    "publishedOn": "2026-09-30",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "c1a8c69d8c4a001cffc6085dbbbb8d0f6515e6900f2794a361ed1cf60bde193c"
+    }
+  },
+  {
     "label": "Piperacillin and Tazobactam for injection, Civica",
     "labeler": "CIVICA, INC.",
     "setId": "19e89f8b-316b-4dd2-9724-bfe0faeba408",
@@ -2769,6 +3296,21 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "80d60492f2cb80f363f87e465e83e2620f83aae653882295acdfa0ecd0a7bfca"
+    }
+  },
+  {
+    "label": "Plan B One-Step (levonorgestrel 1.5 mg), Foundation Consumer Healthcare",
+    "labeler": "FOUNDATION CONSUMER HEALTHCARE LLC",
+    "setId": "6ce6b40e-14ac-47bd-a648-ddf9e452e559",
+    "tools": [
+      "emergency-contraception-window"
+    ],
+    "splVersion": 5,
+    "publishedOn": "2023-02-02",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "7d148a7bb3dee4b762734538e837506ae48b8698e142ba62001da25ad45e3358"
     }
   },
   {
@@ -2963,6 +3505,21 @@
     }
   },
   {
+    "label": "Repatha (evolocumab), Amgen",
+    "labeler": "AMGEN USA INC.",
+    "setId": "cd61e902-166d-4aa6-9f3c-a18c1008d07e",
+    "tools": [
+      "out-of-fridge-discard-date"
+    ],
+    "splVersion": 32,
+    "publishedOn": "2026-08-21",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34069-5": "ded242e4e1c6d53e955cd46bb020c6e1db0c4831104812d22d1e853ec3c265b6"
+    }
+  },
+  {
     "label": "Revonto (dantrolene), USWM",
     "labeler": "USWM, LLC",
     "setId": "f1650487-32bd-4017-b9c2-b38829a531af",
@@ -2976,6 +3533,21 @@
     "sections": {
       "34068-7": "7619a1d130bccdbf47d2d4efbb31cb61b641a23cda5d5462bf0fbed3e331d644",
       "34089-3": "3b2c9a78fba179eeb96bc391ea5cd283a98b8d260b3d094691134f1c9fc18161"
+    }
+  },
+  {
+    "label": "Risperdal Consta (risperidone long-acting injection), Janssen",
+    "labeler": "JANSSEN PHARMACEUTICALS, INC.",
+    "setId": "bb34ee82-d2c2-43b8-ba21-2825c0954691",
+    "tools": [
+      "lai-antipsychotic-missed-dose"
+    ],
+    "splVersion": 38,
+    "publishedOn": "2025-11-17",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "230b2fda9014b5bf71c264b07e2454b7f3cc728703bc4b6297cbd03a1143165b"
     }
   },
   {
@@ -3039,6 +3611,21 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "83a131558305189869e08decd90b0e8af9a6706f0c3010c990c183d428a6674f"
+    }
+  },
+  {
+    "label": "Rykindo (risperidone extended-release microspheres), Luye",
+    "labeler": "SHANDONG LUYE PHARMACEUTICAL CO., LTD.",
+    "setId": "58534c96-96f5-4c2e-a061-92d4506aee91",
+    "tools": [
+      "lai-antipsychotic-missed-dose"
+    ],
+    "splVersion": 10,
+    "publishedOn": "2026-05-28",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "844d138c01d72d8061a9d2710899771ee55435ccf7c19b38e62792f3aadafbd1"
     }
   },
   {
@@ -3559,6 +4146,21 @@
     }
   },
   {
+    "label": "Uzedy (risperidone extended-release injectable suspension), Teva",
+    "labeler": "TEVA PHARMACEUTICALS USA, INC.",
+    "setId": "734eb776-4be0-4808-834b-0d8b0f9e021e",
+    "tools": [
+      "lai-antipsychotic-missed-dose"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2026-09-14",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "c1b8187a1a24917fd5ddad9883fbc0cc4bb2e5b5b469422e5ee7313a329c2521"
+    }
+  },
+  {
     "label": "Valcyte (valganciclovir), H2-Pharma",
     "labeler": "H2-PHARMA, LLC",
     "setId": "4c517a39-2ded-4c5a-8d56-276853414b31",
@@ -3761,6 +4363,21 @@
     }
   },
   {
+    "label": "Vivitrol (naltrexone extended-release injectable suspension)",
+    "labeler": "ALKERMES, INC.",
+    "setId": "cd11c435-b0f0-4bb9-ae78-60f101f3703f",
+    "tools": [
+      "depot-injection-window"
+    ],
+    "splVersion": 39,
+    "publishedOn": "2026-07-24",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "2f8ee3b4e5a0b9e1037b21034e9d0eb7766286588cde7cbbc29fe6bae13ed9f5"
+    }
+  },
+  {
     "label": "VORAXAZE (glucarpidase)",
     "labeler": "BTG INTERNATIONAL INC.",
     "setId": "acaef5a6-b740-40e3-8ffe-74a75c74745c",
@@ -3908,623 +4525,6 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "1468aca291c22c8259b41e2257d5808b0e7b417486848422fa0149e265e76fbf"
-    }
-  },
-  {
-    "label": "Depo-Provera CI (medroxyprogesterone acetate 150 mg/mL)",
-    "labeler": "PHARMACIA & UPJOHN COMPANY LLC",
-    "setId": "199cf13e-0859-4a73-9b45-e700d0cd1049",
-    "tools": [
-      "depot-injection-window"
-    ],
-    "splVersion": 29,
-    "publishedOn": "2026-08-28",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "9bcfee2c1818c6b0eea1522d37d7029b633240bebd1681c05c8d95f07294e909"
-    }
-  },
-  {
-    "label": "depo-subQ provera 104 (medroxyprogesterone acetate)",
-    "labeler": "PHARMACIA & UPJOHN COMPANY LLC",
-    "setId": "390087a6-f3c3-4f0b-a930-79acf412f153",
-    "tools": [
-      "depot-injection-window"
-    ],
-    "splVersion": 21,
-    "publishedOn": "2025-12-19",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "3d39d1892dc7da7d004743cc3313b2ac14cb9e7c043de0f935b9dd8cab5dec84"
-    }
-  },
-  {
-    "label": "Vivitrol (naltrexone extended-release injectable suspension)",
-    "labeler": "ALKERMES, INC.",
-    "setId": "cd11c435-b0f0-4bb9-ae78-60f101f3703f",
-    "tools": [
-      "depot-injection-window"
-    ],
-    "splVersion": 39,
-    "publishedOn": "2026-07-24",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "2f8ee3b4e5a0b9e1037b21034e9d0eb7766286588cde7cbbc29fe6bae13ed9f5"
-    }
-  },
-  {
-    "label": "Plan B One-Step (levonorgestrel 1.5 mg), Foundation Consumer Healthcare",
-    "labeler": "FOUNDATION CONSUMER HEALTHCARE LLC",
-    "setId": "6ce6b40e-14ac-47bd-a648-ddf9e452e559",
-    "tools": [
-      "emergency-contraception-window"
-    ],
-    "splVersion": 5,
-    "publishedOn": "2023-02-02",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "7d148a7bb3dee4b762734538e837506ae48b8698e142ba62001da25ad45e3358"
-    }
-  },
-  {
-    "label": "ella (ulipristal acetate), PMI Branded Pharmaceuticals",
-    "labeler": "PMI BRANDED PHARMACEUTICALS, INC.",
-    "setId": "2bf93d23-cddd-4613-9066-5b5fa090404b",
-    "tools": [
-      "emergency-contraception-window"
-    ],
-    "splVersion": 7,
-    "publishedOn": "2026-07-24",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "d33161f12356b1004ae29d818b2bd08cb040bb61b0d65fe329d7bd893cc7c1b9"
-    }
-  },
-  {
-    "label": "EpiPen and EpiPen Jr (epinephrine injection), Viatris",
-    "labeler": "VIATRIS SPECIALTY LLC",
-    "setId": "7560c201-9246-487c-a13b-6295db04274a",
-    "tools": [
-      "epinephrine-device-weight-band"
-    ],
-    "splVersion": 37,
-    "publishedOn": "2025-02-12",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "b6cc7065f5ffa0ec10e3b3c440e1ba18ada4a3c831700413625e9acc6ee75b6c"
-    }
-  },
-  {
-    "label": "Auvi-Q (epinephrine injection), Kaleo",
-    "labeler": "KALEO, INC",
-    "setId": "6180fb40-7fca-4602-b3da-ce62b8cd2470",
-    "tools": [
-      "epinephrine-device-weight-band"
-    ],
-    "splVersion": 21,
-    "publishedOn": "2025-10-06",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "9871645252db98776c58d5125c7e543b773a64274b2dca809789c96bc0def187"
-    }
-  },
-  {
-    "label": "neffy (epinephrine nasal spray), ARS",
-    "labeler": "ARS PHARMACEUTICALS OPERATIONS, INC.",
-    "setId": "a1758142-a905-401d-8961-05829f51023a",
-    "tools": [
-      "epinephrine-device-weight-band"
-    ],
-    "splVersion": 7,
-    "publishedOn": "2026-04-14",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "e382b490c625a8f523a70a629c6e4abd3a5c319e94e34b1b3bb2cdcb747275f9"
-    }
-  },
-  {
-    "label": "NicoDerm CQ (nicotine transdermal system), Haleon",
-    "labeler": "HALEON US HOLDINGS LLC",
-    "setId": "93b2d1b9-83c1-40b5-b6af-90c38c8d6cef",
-    "tools": [
-      "nrt-step-schedule"
-    ],
-    "splVersion": 14,
-    "publishedOn": "2025-07-16",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "b028acb374bf39fb8411dc85e4120f79e267d211c5a1865c38463391a02b2059"
-    }
-  },
-  {
-    "label": "Nicorette gum (nicotine polacrilex), Haleon",
-    "labeler": "HALEON US HOLDINGS LLC",
-    "setId": "673fd19f-69b3-4f73-b9b4-18b5f4cbf69c",
-    "tools": [
-      "nrt-step-schedule"
-    ],
-    "splVersion": 27,
-    "publishedOn": "2024-08-15",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "51ee575077afaf5e26573c3a83a21a1db6c948a167a82bf3ab198142bbecf416"
-    }
-  },
-  {
-    "label": "Nicorette lozenge (nicotine polacrilex), Haleon",
-    "labeler": "HALEON US HOLDINGS LLC",
-    "setId": "f350e050-2173-43e0-8738-848382ce0700",
-    "tools": [
-      "nrt-step-schedule"
-    ],
-    "splVersion": 8,
-    "publishedOn": "2025-06-06",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "f6721bb9038d0bde37c37809d9233cdfb8afee8240eaa95c7a21db24b6360e7d"
-    }
-  },
-  {
-    "label": "Habitrol gum (nicotine polacrilex), Dr. Reddy's",
-    "labeler": "DR. REDDY'S LABORATORIES INC.",
-    "setId": "5c394758-1179-455a-a562-c8e954fb2258",
-    "tools": [
-      "nrt-step-schedule"
-    ],
-    "splVersion": 4,
-    "publishedOn": "2025-12-24",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "69e528e30c202556d04bedabf3d0514a5db4c422809cd06816f7f3d9b2c8ab50"
-    }
-  },
-  {
-    "label": "Humalog (insulin lispro), Lilly",
-    "labeler": "ELI LILLY AND COMPANY",
-    "setId": "c8ecbd7a-0e22-4fc7-a503-faa58c1b6f3f",
-    "tools": [
-      "out-of-fridge-discard-date"
-    ],
-    "splVersion": 87,
-    "publishedOn": "2026-08-10",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34069-5": "0c0a4b86ab2702ed88960fe67c64135373f09429a991736eb7680260ad46b7f6"
-    }
-  },
-  {
-    "label": "NovoLog (insulin aspart), Novo Nordisk",
-    "labeler": "NOVO NORDISK",
-    "setId": "3a1e73a2-3009-40d0-876c-b4cb2be56fc5",
-    "tools": [
-      "out-of-fridge-discard-date"
-    ],
-    "splVersion": 34,
-    "publishedOn": "2025-01-22",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34069-5": "2a682541a90f6aaef667ef6848fd7614e82b9fc74c97fa68a2392adff9951263"
-    }
-  },
-  {
-    "label": "Forteo (teriparatide), Lilly",
-    "labeler": "ELI LILLY AND COMPANY",
-    "setId": "aae667c5-381f-4f92-93df-2ed6158d07b0",
-    "tools": [
-      "out-of-fridge-discard-date"
-    ],
-    "splVersion": 44,
-    "publishedOn": "2026-08-19",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34069-5": "619cfdfb3c53212138600e28de592e1475444f60f645ebfdbdaeafcd2a26becf"
-    }
-  },
-  {
-    "label": "Humira (adalimumab), AbbVie",
-    "labeler": "ABBVIE INC.",
-    "setId": "608d4f0d-b19f-46d3-749a-7159aa5f933d",
-    "tools": [
-      "out-of-fridge-discard-date"
-    ],
-    "splVersion": 2154,
-    "publishedOn": "2026-02-06",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34069-5": "637f76701e3bd3cbca27873d168068e6ce0d89275ad726ac4a33194ab6f9db5e"
-    }
-  },
-  {
-    "label": "Enbrel (etanercept), Immunex",
-    "labeler": "IMMUNEX CORPORATION",
-    "setId": "a002b40c-097d-47a5-957f-7a7b1807af7f",
-    "tools": [
-      "out-of-fridge-discard-date"
-    ],
-    "splVersion": 216,
-    "publishedOn": "2026-03-09",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34069-5": "f5cd9af4219823cdea69a9bc3194b2fa0c3a33883f2d5a345d39642b7a5117bc"
-    }
-  },
-  {
-    "label": "Dupixent (dupilumab), Sanofi",
-    "labeler": "SANOFI-AVENTIS U.S. LLC",
-    "setId": "595f437d-2729-40bb-9c62-c8ece1f82780",
-    "tools": [
-      "out-of-fridge-discard-date"
-    ],
-    "splVersion": 60,
-    "publishedOn": "2026-08-07",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34069-5": "fdce1502a1653f2c35d64790715b8b87632fbd65d66f09956669b8f5269d7167"
-    }
-  },
-  {
-    "label": "Repatha (evolocumab), Amgen",
-    "labeler": "AMGEN USA INC.",
-    "setId": "cd61e902-166d-4aa6-9f3c-a18c1008d07e",
-    "tools": [
-      "out-of-fridge-discard-date"
-    ],
-    "splVersion": 32,
-    "publishedOn": "2026-08-21",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34069-5": "ded242e4e1c6d53e955cd46bb020c6e1db0c4831104812d22d1e853ec3c265b6"
-    }
-  },
-  {
-    "label": "Children's Tylenol suspension (acetaminophen 160 mg per 5 mL), Kenvue",
-    "labeler": "KENVUE BRANDS LLC",
-    "setId": "3162733b-9382-39f1-e063-6294a90ac420",
-    "tools": [
-      "otc-child-label-dose"
-    ],
-    "splVersion": 3,
-    "publishedOn": "2026-06-16",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "25d14d8ab08c12efdbdc9452bc231a80cacb564e3cac023eb86bfd3c263e1447"
-    }
-  },
-  {
-    "label": "Infants' Tylenol suspension (acetaminophen 160 mg per 5 mL), Kenvue",
-    "labeler": "KENVUE BRANDS LLC",
-    "setId": "997b9551-c222-4a9c-8ba1-09a5f97495fa",
-    "tools": [
-      "otc-child-label-dose"
-    ],
-    "splVersion": 12,
-    "publishedOn": "2026-08-07",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "164e9b23602e471c12c5293b8490b5d0628dc71055582f4df65958423fd758db"
-    }
-  },
-  {
-    "label": "Children's Tylenol chewables (acetaminophen 160 mg), Kenvue",
-    "labeler": "KENVUE BRANDS LLC",
-    "setId": "9782fe86-d72a-4231-b1ba-d3f3b4ee49e3",
-    "tools": [
-      "otc-child-label-dose"
-    ],
-    "splVersion": 11,
-    "publishedOn": "2026-04-17",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "198eccc3bf9a7015b6733dd6920d004bb3632c40b1f9687d3683ae2d052d1061"
-    }
-  },
-  {
-    "label": "Children's Motrin suspension (ibuprofen 100 mg per 5 mL), Kenvue",
-    "labeler": "KENVUE BRANDS LLC",
-    "setId": "152189e5-391c-42d3-a03b-c8364e2de6bf",
-    "tools": [
-      "otc-child-label-dose"
-    ],
-    "splVersion": 9,
-    "publishedOn": "2024-11-11",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "bc3edee2f0aba6c9796e75998b0f1ddae2a13a4b987077cd1d7ca45b31e63684"
-    }
-  },
-  {
-    "label": "Infants' Motrin drops (ibuprofen 50 mg per 1.25 mL), Kenvue",
-    "labeler": "KENVUE BRANDS LLC",
-    "setId": "c2302bfe-b367-4867-b803-29f066a42dc7",
-    "tools": [
-      "otc-child-label-dose"
-    ],
-    "splVersion": 10,
-    "publishedOn": "2026-07-01",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "e4171f864262f3d48ce5eb0c64e49d9e753291ca421b347ee32958d5b8cd657e"
-    }
-  },
-  {
-    "label": "Children's Motrin chewables (ibuprofen 100 mg), Kenvue",
-    "labeler": "KENVUE BRANDS LLC",
-    "setId": "15b0b56d-6188-4937-b541-902022e35b24",
-    "tools": [
-      "otc-child-label-dose"
-    ],
-    "splVersion": 8,
-    "publishedOn": "2025-11-17",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "502c7e969c79e0ab50c1eac5745da05fb2b545a2bd19fb03cedd3350f72bf77c"
-    }
-  },
-  {
-    "label": "Children's Benadryl Allergy liquid (diphenhydramine 12.5 mg per 5 mL), Kenvue",
-    "labeler": "KENVUE BRANDS LLC",
-    "setId": "fc9181b9-c92d-493e-8d7c-4a4239c6c092",
-    "tools": [
-      "otc-child-label-dose"
-    ],
-    "splVersion": 15,
-    "publishedOn": "2026-10-09",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "386d9907d3112580b210161c1bbbad05c21642223958382a0f1b5c425acd9186"
-    }
-  },
-  {
-    "label": "Delsym (dextromethorphan polistirex extended-release suspension), Reckitt",
-    "labeler": "RECKITT BENCKISER LLC",
-    "setId": "e3e1d126-76c2-4776-8ce0-449625b7e6ba",
-    "tools": [
-      "otc-child-label-dose",
-      "otc-daily-max-check"
-    ],
-    "splVersion": 15,
-    "publishedOn": "2026-09-11",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "44718d8220df5c701ef9ea3eb4e2938edc84100f4d32ffa66c4e2eebc3593208"
-    }
-  },
-  {
-    "label": "Imodium A-D caplets (loperamide 2 mg), Kenvue",
-    "labeler": "KENVUE BRANDS LLC",
-    "setId": "01da76d0-1979-4c45-9d39-c72ae4e4ffe2",
-    "tools": [
-      "otc-child-label-dose",
-      "otc-daily-max-check"
-    ],
-    "splVersion": 13,
-    "publishedOn": "2025-09-29",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "a2d9a040e1cc9f52da7e182fcae3412e06c63d1309c6641904937a83f921d499"
-    }
-  },
-  {
-    "label": "Imodium A-D liquid (loperamide 1 mg per 7.5 mL), Kenvue",
-    "labeler": "KENVUE BRANDS LLC",
-    "setId": "76a976d5-8bee-4158-a94d-7fbfc5544fd4",
-    "tools": [
-      "otc-child-label-dose"
-    ],
-    "splVersion": 10,
-    "publishedOn": "2025-09-29",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "0575c75804be7cefe874d9a5a3aea0100389c8082ecc86bce6bba65b4c150057"
-    }
-  },
-  {
-    "label": "Pinworm Medicine (pyrantel pamoate chewable), Bionpharma",
-    "labeler": "BIONPHARMA INC.",
-    "setId": "5799a28e-4803-b192-e063-6294a90a53d7",
-    "tools": [
-      "otc-child-label-dose"
-    ],
-    "splVersion": 1,
-    "publishedOn": "2026-09-30",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "c1a8c69d8c4a001cffc6085dbbbb8d0f6515e6900f2794a361ed1cf60bde193c"
-    }
-  },
-  {
-    "label": "Advil Liqui-Gels (ibuprofen 200 mg), Haleon",
-    "labeler": "HALEON US HOLDINGS LLC",
-    "setId": "1f01c10a-9434-91a4-2ee4-352315a6b610",
-    "tools": [
-      "otc-daily-max-check"
-    ],
-    "splVersion": 37,
-    "publishedOn": "2026-07-31",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "e6e4c5f8f90d2dee598d15e65a988f77d6c3f454d0e466baec594ad82f34e2fd"
-    }
-  },
-  {
-    "label": "Aleve (naproxen sodium 220 mg), Bayer",
-    "labeler": "BAYER HEALTHCARE LLC.",
-    "setId": "3c0ddd25-5a9a-4628-a971-65fe2a9775b5",
-    "tools": [
-      "otc-daily-max-check"
-    ],
-    "splVersion": 12,
-    "publishedOn": "2025-12-08",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "14b939a7bc8ebe64984a65e08c57d9dab9d8e9d43438b68630de61945884e50b"
-    }
-  },
-  {
-    "label": "Bayer Genuine Aspirin (aspirin 325 mg), Bayer",
-    "labeler": "BAYER HEALTHCARE LLC.",
-    "setId": "44a08904-68b9-4d06-a28d-21aae3d6140c",
-    "tools": [
-      "otc-daily-max-check"
-    ],
-    "splVersion": 8,
-    "publishedOn": "2025-12-05",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "8e64a1c5038aca386f31fe2aa2261cbb1aebb7dc9b06f300a361be0e57457039"
-    }
-  },
-  {
-    "label": "MiraLAX (polyethylene glycol 3350), Bayer",
-    "labeler": "BAYER HEALTHCARE LLC.",
-    "setId": "d69ce3d4-7ca4-4fe3-b49e-6655e48d6963",
-    "tools": [
-      "otc-daily-max-check"
-    ],
-    "splVersion": 24,
-    "publishedOn": "2026-05-06",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "dee2abafc2eb561f37e853793fa838772193f11d44a33748c932e599d6f44dc2"
-    }
-  },
-  {
-    "label": "Atelvia (risedronate delayed-release), Allergan",
-    "labeler": "ALLERGAN, INC.",
-    "setId": "c8b9ab88-1a26-46c3-80ec-4eaa45202021",
-    "tools": [
-      "missed-dose-label-rule"
-    ],
-    "splVersion": 28,
-    "publishedOn": "2026-04-22",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "873298a5d2de9da28623888b06c98d9405ed30d32014bc3b6d8788709551ff0a"
-    }
-  },
-  {
-    "label": "Ibandronate sodium tablets 150 mg, Bionpharma",
-    "labeler": "BIONPHARMA INC.",
-    "setId": "6ca94cce-a2bb-421f-bd8f-6b14bc2bd985",
-    "tools": [
-      "missed-dose-label-rule"
-    ],
-    "splVersion": 6,
-    "publishedOn": "2026-08-27",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "5bc797fd0e7ee7dbcee2a62bc45fcbfef0a749099eca3da9233567ef92712f9b"
-    }
-  },
-  {
-    "label": "Abilify Asimtufii (aripiprazole)",
-    "labeler": "OTSUKA AMERICA PHARMACEUTICAL, INC",
-    "setId": "da4c07fd-1130-4341-bb44-63acfa4162be",
-    "tools": [
-      "lai-antipsychotic-missed-dose"
-    ],
-    "splVersion": 6,
-    "publishedOn": "2025-04-10",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "53fe4c9d601a66fcaae0a42325278a2cb5e090bb8cc9c3e1b93b75b9c0757bee"
-    }
-  },
-  {
-    "label": "Uzedy (risperidone extended-release injectable suspension), Teva",
-    "labeler": "TEVA PHARMACEUTICALS USA, INC.",
-    "setId": "734eb776-4be0-4808-834b-0d8b0f9e021e",
-    "tools": [
-      "lai-antipsychotic-missed-dose"
-    ],
-    "splVersion": 8,
-    "publishedOn": "2026-09-14",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "c1b8187a1a24917fd5ddad9883fbc0cc4bb2e5b5b469422e5ee7313a329c2521"
-    }
-  },
-  {
-    "label": "Perseris (risperidone extended-release injectable suspension), Indivior",
-    "labeler": "INDIVIOR INC.",
-    "setId": "a4f21b1a-5691-4b14-a56d-651962d06f39",
-    "tools": [
-      "lai-antipsychotic-missed-dose"
-    ],
-    "splVersion": 18,
-    "publishedOn": "2025-02-21",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "d0a64510a23f31ffeef511cf813c3c8278da6ec0beb0ef6db34de55ba782da57"
-    }
-  },
-  {
-    "label": "Risperdal Consta (risperidone long-acting injection), Janssen",
-    "labeler": "JANSSEN PHARMACEUTICALS, INC.",
-    "setId": "bb34ee82-d2c2-43b8-ba21-2825c0954691",
-    "tools": [
-      "lai-antipsychotic-missed-dose"
-    ],
-    "splVersion": 38,
-    "publishedOn": "2025-11-17",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "230b2fda9014b5bf71c264b07e2454b7f3cc728703bc4b6297cbd03a1143165b"
-    }
-  },
-  {
-    "label": "Rykindo (risperidone extended-release microspheres), Luye",
-    "labeler": "SHANDONG LUYE PHARMACEUTICAL CO., LTD.",
-    "setId": "58534c96-96f5-4c2e-a061-92d4506aee91",
-    "tools": [
-      "lai-antipsychotic-missed-dose"
-    ],
-    "splVersion": 10,
-    "publishedOn": "2026-05-28",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "844d138c01d72d8061a9d2710899771ee55435ccf7c19b38e62792f3aadafbd1"
     }
   }
 ]

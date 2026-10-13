@@ -6,7 +6,7 @@
   "agency": "CMS",
   "status": "public-domain",
   "cadence": "weekly",
-  "recordCount": 30079,
+  "recordCount": 30048,
   "shardLayout": "shards",
   "shards": [
     {
@@ -95,7 +95,7 @@
     },
     {
       "name": "00052.json",
-      "sha256": "9d217390b0bf34b46e1478b028e2891f63d8048780638144a5d839e672db9c7f",
+      "sha256": "e453cb913f090d091902549236e763cd4d5011e9c0e96d9d1f9900f9f5d733bb",
       "records": 2,
       "bytes": 509
     },
@@ -137,9 +137,9 @@
     },
     {
       "name": "00078.json",
-      "sha256": "765960b3ca4dfd7460f460013178c97b56b414a62eb2b1b686ad388c6c0c25b7",
-      "records": 71,
-      "bytes": 18555
+      "sha256": "8755229092a45de143a1a28d1df49b6044a24dbc5debc78109cd244475203f07",
+      "records": 69,
+      "bytes": 18031
     },
     {
       "name": "00088.json",
@@ -149,9 +149,9 @@
     },
     {
       "name": "00093.json",
-      "sha256": "df9856a696a063bffb27f14f83028c8193de86ec751ba3df82129e62feddac0b",
-      "records": 548,
-      "bytes": 139471
+      "sha256": "f21f28c123f3f85b66f861fc36fc7bace706e931f9360885e75acdcab60a6aed",
+      "records": 538,
+      "bytes": 136956
     },
     {
       "name": "00096.json",
@@ -197,9 +197,9 @@
     },
     {
       "name": "00143.json",
-      "sha256": "c73491b5f830cdc7f447e1a066e5535d11ec74a04ca2d972b063b8f9ba87ac6a",
-      "records": 124,
-      "bytes": 31723
+      "sha256": "6f31835b3a119067b43864b18b60ab4d7e91cedc140de1f5568a062fca9a7f25",
+      "records": 125,
+      "bytes": 31975
     },
     {
       "name": "00168.json",
@@ -299,9 +299,9 @@
     },
     {
       "name": "00378.json",
-      "sha256": "42841e55783545dd8fa99bb654cca2404d8013a891cde5c617a01553cfbcf625",
-      "records": 499,
-      "bytes": 127185
+      "sha256": "2100cddabd6545c328a53955fa8bb79fd966c64e8ce6a8b83a928b9c7fa8beb5",
+      "records": 495,
+      "bytes": 126175
     },
     {
       "name": "00406.json",
@@ -311,9 +311,9 @@
     },
     {
       "name": "00409.json",
-      "sha256": "4f34639758fd8539da2105b99be40bdc18ac0e3a26a40ac3e73e6cc183baeaf4",
-      "records": 73,
-      "bytes": 18710
+      "sha256": "c3730677c97e76fdb4387155a71efccfdd97d71d9af31e20c62a6c2a614262bf",
+      "records": 75,
+      "bytes": 19228
     },
     {
       "name": "00430.json",
@@ -341,9 +341,9 @@
     },
     {
       "name": "00480.json",
-      "sha256": "06e6283e778e868ec1c3a2ab57cf8a671f3b4a4e0620b92cd3856330bfc53c57",
-      "records": 150,
-      "bytes": 38244
+      "sha256": "021295f23ce1d4b754549ad0ee02eef21ca2441fe0c1052ce504fa8d9c2dd36b",
+      "records": 145,
+      "bytes": 36971
     },
     {
       "name": "00485.json",
@@ -371,15 +371,15 @@
     },
     {
       "name": "00527.json",
-      "sha256": "8bd3b97fae84eb52f188983318ea0e6424f59ea8224817b7b7d678cf4a7c5ca5",
-      "records": 159,
-      "bytes": 40682
+      "sha256": "ecb035eba1e8ac59a01b25d42119ebd0c33ea237c5ccce8ce4e9abd15958309a",
+      "records": 161,
+      "bytes": 41200
     },
     {
       "name": "00536.json",
-      "sha256": "a8c032b46532af02c560a424dd0c90ede377b4f4c1258f17e8e5dd743ebb0c16",
-      "records": 215,
-      "bytes": 54422
+      "sha256": "f0333dba97242e5c44cc13819f8bfa5926140caa3d130fcc70d93c140615113c",
+      "records": 214,
+      "bytes": 54166
     },
     {
       "name": "00548.json",
@@ -407,9 +407,9 @@
     },
     {
       "name": "00591.json",
-      "sha256": "4ae52ea51d2c582dcb2078bb7cae8e171a09ef0984cccd325f98326230f796f0",
-      "records": 239,
-      "bytes": 60863
+      "sha256": "61da5ae88542a31fad4827fe3c96425cc8fd82a82c17898286d0ec3f5a23efc8",
+      "records": 234,
+      "bytes": 59598
     },
     {
       "name": "00597.json",
@@ -419,9 +419,9 @@
     },
     {
       "name": "00603.json",
-      "sha256": "4d5cc1e9b57accc458d7cd19c5ed5a21ff29b07ae3779a8d5c4fbcd4dbc859d2",
-      "records": 70,
-      "bytes": 17737
+      "sha256": "c995afb3f067582f1b20af2cd1c46b973fe475e13f0b0f6c99a57d6d960547f0",
+      "records": 69,
+      "bytes": 17468
     },
     {
       "name": "00641.json",
@@ -455,21 +455,21 @@
     },
     {
       "name": "00781.json",
-      "sha256": "e24a3d33cc01437d73e03159a49f5d80e5d0d98bbe3641c7daff465a77311cab",
-      "records": 241,
-      "bytes": 62107
+      "sha256": "b332d03c9ee05fb8f8e67bb8988142c240257169d3ac007c9b0e47ee5029f84b",
+      "records": 240,
+      "bytes": 61846
     },
     {
       "name": "00832.json",
-      "sha256": "4f6a0a845bae74176c370145a7ff71de1baa42ea10c6df56252a1b2efdce32ce",
-      "records": 157,
-      "bytes": 39696
+      "sha256": "ba084d039462c3e0f61d6574d6d78a0949bb9bf31dc9d432da67c4d03a490392",
+      "records": 146,
+      "bytes": 36955
     },
     {
       "name": "00904.json",
-      "sha256": "782811b19112b74bd04ef614b5b5662ec0b035576995f7281bef16bebb81d340",
-      "records": 706,
-      "bytes": 178692
+      "sha256": "17c917ebf2804a36a4a31130a5a2f487a5c62d95fc4b361868cc805bbf696888",
+      "records": 704,
+      "bytes": 178194
     },
     {
       "name": "00955.json",
@@ -545,9 +545,9 @@
     },
     {
       "name": "11788.json",
-      "sha256": "e9fe83188c8ed7d7c0b0b82723e67516cf4dca052de457f70abaccaca81ceedd",
-      "records": 90,
-      "bytes": 22746
+      "sha256": "728ea30fabe4efe5a313613c728a928ff48c77c0a38063d8a157d50537d48189",
+      "records": 91,
+      "bytes": 22999
     },
     {
       "name": "11980.json",
@@ -617,9 +617,9 @@
     },
     {
       "name": "16714.json",
-      "sha256": "61892eef9943a328ba5d38a82bfcca9eb659da0cd131842d1aad45ca6e589282",
-      "records": 532,
-      "bytes": 135196
+      "sha256": "34c680d7f3014b1d0fc9bd1361375ad078db40c2321804a7b42f0ba40a2efa50",
+      "records": 528,
+      "bytes": 134181
     },
     {
       "name": "16729.json",
@@ -665,9 +665,9 @@
     },
     {
       "name": "23155.json",
-      "sha256": "8d24fac86923cbdf5bdffc135eb34e25be2ddfc5663d3988a088239eb3b377d0",
-      "records": 343,
-      "bytes": 86903
+      "sha256": "fbb6d5e2e775b94c1193f375786d04e7baadc2b7d63ec932c4b87ef191d12bcb",
+      "records": 351,
+      "bytes": 88922
     },
     {
       "name": "23359.json",
@@ -731,9 +731,9 @@
     },
     {
       "name": "24979.json",
-      "sha256": "1f63be8ff5f746b73d0747e95516390094b6e12fd104cf400af34f2760466f12",
-      "records": 74,
-      "bytes": 18820
+      "sha256": "acd0eaa69d3f9e999622153cc08d413ba43c605c8cb9bae3cfd7d083dbcf7db6",
+      "records": 72,
+      "bytes": 18306
     },
     {
       "name": "25021.json",
@@ -742,16 +742,10 @@
       "bytes": 15433
     },
     {
-      "name": "25208.json",
-      "sha256": "a37dd5dbc3effbbbff887641fc1e68be1c3fe6154323e9b26011889d42560ce8",
-      "records": 4,
-      "bytes": 991
-    },
-    {
       "name": "27241.json",
-      "sha256": "e6a06a00b1f9c0d155c2cb7f983e0a78ecc99e3879a4e7db5f6f35041ef92c2d",
-      "records": 178,
-      "bytes": 45068
+      "sha256": "dda2a09f9d0214a9675c07d67463cbe1c8f2b02a5ad3ad4a443e20ed33f24bd3",
+      "records": 176,
+      "bytes": 44560
     },
     {
       "name": "27437.json",
@@ -767,9 +761,9 @@
     },
     {
       "name": "27808.json",
-      "sha256": "9a6d5d57382f16be86cf61ab142e29734ef8a3e654169bd88499536948e43e3e",
-      "records": 67,
-      "bytes": 17290
+      "sha256": "2d12a82af1122c67eeadff8848ef73ec6d6bd3af98661b7103282eb69c434cf5",
+      "records": 68,
+      "bytes": 17546
     },
     {
       "name": "28595.json",
@@ -905,9 +899,9 @@
     },
     {
       "name": "42806.json",
-      "sha256": "23407ae8a43e6b93ae9a24f1aa37337e559d8a2688e6ea3dd80e7452cc736d08",
-      "records": 125,
-      "bytes": 31800
+      "sha256": "dee40f3a970e6271ecc5eb9c4365ee0174db53af5f1b1ab64b3e2ca1307812eb",
+      "records": 127,
+      "bytes": 32307
     },
     {
       "name": "42858.json",
@@ -959,9 +953,9 @@
     },
     {
       "name": "43598.json",
-      "sha256": "f12c2dd900bb1e3d414a15c182b50acfb2fcee0be373d112d61f91a24e3cc161",
-      "records": 294,
-      "bytes": 74831
+      "sha256": "c3c89178ce07a556645d08e875a5fec3ef2724508481576d4895b033a4767d56",
+      "records": 292,
+      "bytes": 74324
     },
     {
       "name": "43975.json",
@@ -989,9 +983,9 @@
     },
     {
       "name": "45802.json",
-      "sha256": "c9a86814cbe9b37cc571fbd24811804fa2e6068972c553360a0315e4004e64dd",
-      "records": 265,
-      "bytes": 67795
+      "sha256": "da95e103d15c5c64198250804af407c3f446b554ea6b33b03f085416cd23a0e3",
+      "records": 264,
+      "bytes": 67539
     },
     {
       "name": "45963.json",
@@ -1001,9 +995,9 @@
     },
     {
       "name": "46122.json",
-      "sha256": "0f387a3cbb3395280dc260a676b2061f6ce2e57abf7d8568609bbdc7869dff77",
-      "records": 305,
-      "bytes": 77652
+      "sha256": "43506695c0b9930fbb1f14d04b830c0797c9cf4d5cf3a95a4dbdbd41003d4aaa",
+      "records": 304,
+      "bytes": 77400
     },
     {
       "name": "46287.json",
@@ -1025,9 +1019,9 @@
     },
     {
       "name": "47781.json",
-      "sha256": "26b92150aa2cd6fab18faa9d9d84562ee4d67411fb0174153bc0ff63de1cf482",
-      "records": 89,
-      "bytes": 22944
+      "sha256": "4cb290d2bc420b2605eb24beea2cc6295ced94aa2fe51b0674de327772e39c80",
+      "records": 90,
+      "bytes": 23202
     },
     {
       "name": "47918.json",
@@ -1073,9 +1067,9 @@
     },
     {
       "name": "49884.json",
-      "sha256": "5adf6a2f360de3c141693ada4423f2dd2b8f3849cea00c9c70363482c9ba3d9b",
-      "records": 142,
-      "bytes": 36174
+      "sha256": "ed45d972fa6f6816091e2ade0daf02d08fef2f0111ce9df7020d1a502e0b30ad",
+      "records": 139,
+      "bytes": 35410
     },
     {
       "name": "50102.json",
@@ -1115,9 +1109,9 @@
     },
     {
       "name": "50268.json",
-      "sha256": "1aa8687b5d7cf528c88cd95d3d08a353004c92adb65226926c1a79453fcf4047",
-      "records": 604,
-      "bytes": 153213
+      "sha256": "d0544aca4b0150c9556024a7830165fa63cdac4bbc26a2a93839f10e6f62e364",
+      "records": 606,
+      "bytes": 153709
     },
     {
       "name": "50419.json",
@@ -1163,9 +1157,9 @@
     },
     {
       "name": "51079.json",
-      "sha256": "e4b1ea3be5022870e05d307c6ecf1c31fa6da0132226743e885b2f008c041671",
-      "records": 184,
-      "bytes": 46493
+      "sha256": "480d8c927fc4b8741775be511c51b255324714918dec5fb0a88cc0f386599b5b",
+      "records": 182,
+      "bytes": 45993
     },
     {
       "name": "51167.json",
@@ -1187,15 +1181,15 @@
     },
     {
       "name": "51660.json",
-      "sha256": "033e416505d4d73d98f963a49175da6ab1ee3ef620447b7c48e75e679b94a240",
-      "records": 36,
-      "bytes": 9128
+      "sha256": "ac557487df2a63143805c96d0876305ac8da8dbc1e67abaeb1d5153ef50ba2e8",
+      "records": 37,
+      "bytes": 9383
     },
     {
       "name": "51672.json",
-      "sha256": "2f493fa400f8ce0bad0a2502def8e1bc37673969fd9beaa8e4953fae42e183a2",
-      "records": 350,
-      "bytes": 89242
+      "sha256": "a64e6a58b15ccacfa8e1bc1b2518953bbb0a165c89533f011492045a7a5c4e90",
+      "records": 351,
+      "bytes": 89499
     },
     {
       "name": "51754.json",
@@ -1355,9 +1349,9 @@
     },
     {
       "name": "55111.json",
-      "sha256": "e2f562b919cdcf2b38c9fed4eb0c99a453012596afa18756d356af3d6e9a6d95",
-      "records": 241,
-      "bytes": 61113
+      "sha256": "6c49bbc11f2434566c031ad882394685a14b26b4c2c50ae6f854da6369386277",
+      "records": 240,
+      "bytes": 60862
     },
     {
       "name": "55150.json",
@@ -1553,15 +1547,15 @@
     },
     {
       "name": "59746.json",
-      "sha256": "0fe8d2bcb718608714bd7ee23829cdbe3a5498a62c67a38b18f8ceee28c28a2a",
-      "records": 72,
-      "bytes": 18288
+      "sha256": "3fa35c199f276ca236cd02748bb14559e00595f40f5ceff2a29943237a688ed7",
+      "records": 70,
+      "bytes": 17780
     },
     {
       "name": "59762.json",
-      "sha256": "29bb1ffc0cfae66e7af6aed9430fc059ec42d81238f23e6a8894abd490bdb369",
-      "records": 118,
-      "bytes": 30358
+      "sha256": "dddde226d16d47d177b0a429aebf36c7b2fcf517e88a9868d9a8d2dd251dce00",
+      "records": 116,
+      "bytes": 29850
     },
     {
       "name": "59767.json",
@@ -1583,15 +1577,15 @@
     },
     {
       "name": "60290.json",
-      "sha256": "5433fb17caaf01700c46b55d7288b7f52808262a0ae0f74d995bb3bf790418fb",
-      "records": 14,
-      "bytes": 3507
+      "sha256": "a75b00d58dec3d57bc16554386043ba772a2c2f53b7585bdf2c74328f8e3be37",
+      "records": 18,
+      "bytes": 4513
     },
     {
       "name": "60505.json",
-      "sha256": "4ea9200781ea131f8f342c59b87c8bc6f2adeb827c5275a8754ffdc7583705ad",
-      "records": 345,
-      "bytes": 87807
+      "sha256": "b2d6909c8ea52ff7f39961ca44ae84c4ce9f3893d0eebe5ab761fee740310e17",
+      "records": 344,
+      "bytes": 87548
     },
     {
       "name": "60631.json",
@@ -1637,9 +1631,9 @@
     },
     {
       "name": "61269.json",
-      "sha256": "fe13d8104e674bbacbd50067c9f6bc3b114d12712079fefb09905a023611687b",
-      "records": 26,
-      "bytes": 6712
+      "sha256": "5cf86507d930e32902a5a6c275e0d2566b07f254b6640dd243810e887aa2ec2f",
+      "records": 24,
+      "bytes": 6196
     },
     {
       "name": "61314.json",
@@ -1703,9 +1697,9 @@
     },
     {
       "name": "62135.json",
-      "sha256": "d902e128e2e6f024d75c0da86bb139f2ea344c6f3a02296d4801f2f7513c92b7",
+      "sha256": "9e584a73c938972e6e3effe5c7f586aafbc1976ad885c3e2a226e9dd8d266ec7",
       "records": 529,
-      "bytes": 134212
+      "bytes": 134215
     },
     {
       "name": "62175.json",
@@ -1811,9 +1805,9 @@
     },
     {
       "name": "63739.json",
-      "sha256": "d4ef7794cd63dd5031dcf5e567b8816dcbf29556f7002948a2c646578e5acedb",
-      "records": 11,
-      "bytes": 2788
+      "sha256": "fcdc537328b38a9e9d2419cff6254d0c4cc05016312772c7c9e77d9e4a258486",
+      "records": 8,
+      "bytes": 2018
     },
     {
       "name": "64380.json",
@@ -1841,9 +1835,9 @@
     },
     {
       "name": "64850.json",
-      "sha256": "88918a9dee6a82a78973c69368f811f8f48b544a26b4ce813773ea55478058bf",
-      "records": 55,
-      "bytes": 14100
+      "sha256": "15dd32b54bb3674d192d36f616ef5d90d11286f5702b6f2e2448cfbe8c435845",
+      "records": 56,
+      "bytes": 14355
     },
     {
       "name": "64896.json",
@@ -1871,9 +1865,9 @@
     },
     {
       "name": "65145.json",
-      "sha256": "47a5db4f970d5eeeeab09e570e43e15b81749a867a5a1b9446be211f3894aa81",
-      "records": 27,
-      "bytes": 6950
+      "sha256": "9f46f9458a7d4253d120ec398de68f16dbfe989a3f64bbdbbbd42e4f1a4a7cca",
+      "records": 28,
+      "bytes": 7210
     },
     {
       "name": "65162.json",
@@ -1973,9 +1967,9 @@
     },
     {
       "name": "67457.json",
-      "sha256": "145b1745eb4775a8309a772bd54d132ca2da94b58c3d7ceceb8efa18d215e198",
-      "records": 33,
-      "bytes": 8511
+      "sha256": "eb1671cfbb37646c0a432cf2abe07c824ba0202c7d493ea983ae435a5d9bc588",
+      "records": 32,
+      "bytes": 8255
     },
     {
       "name": "67618.json",
@@ -1997,9 +1991,9 @@
     },
     {
       "name": "68001.json",
-      "sha256": "18cda5a1a3d8e35c9218522becc9a51586c6a4e311b1a2ed8d57ffd8ce7173dc",
-      "records": 376,
-      "bytes": 95555
+      "sha256": "13fb3efeb077eae6979e29d73c5737d961dac6a463718e8fc280d0ae49f29567",
+      "records": 375,
+      "bytes": 95298
     },
     {
       "name": "68002.json",
@@ -2033,9 +2027,9 @@
     },
     {
       "name": "68180.json",
-      "sha256": "15696612aca4f06ed339ee2368100e25413f0904bee8a9717f4c97d6778dcc3e",
-      "records": 409,
-      "bytes": 104134
+      "sha256": "4f09bc95a25677c2066890585213ac845749af3d051ebfaa234e1d41331e9437",
+      "records": 410,
+      "bytes": 104390
     },
     {
       "name": "68220.json",
@@ -2051,9 +2045,9 @@
     },
     {
       "name": "68382.json",
-      "sha256": "093e48f349b4b22b71389279d6cff46a118214e4d3a010a2a84281e037dff321",
-      "records": 376,
-      "bytes": 95196
+      "sha256": "b19f2dc38193df8fa2fea7406bf6f2a43670fab6f7035223d56bae5616b9527a",
+      "records": 375,
+      "bytes": 94939
     },
     {
       "name": "68462.json",
@@ -2123,9 +2117,9 @@
     },
     {
       "name": "69238.json",
-      "sha256": "d6e66a2a84fbc98bd6d646b426791f75cc1a0a34c51673f8213c67424bb5f88d",
-      "records": 217,
-      "bytes": 55185
+      "sha256": "66066a6c87495bcc7859942140db3574e8a6a78927a041004b206a5f17f4e5f4",
+      "records": 216,
+      "bytes": 54935
     },
     {
       "name": "69292.json",
@@ -2147,9 +2141,9 @@
     },
     {
       "name": "69367.json",
-      "sha256": "de4e8dbe454a704d4d6776b6e841722adfc07206e2ad185614f6b3e51d9a399d",
-      "records": 284,
-      "bytes": 72076
+      "sha256": "2f65e731748fd4bf0ae68c41741a460c89627761a53c2818fb35fcad7cdb9f3a",
+      "records": 288,
+      "bytes": 73076
     },
     {
       "name": "69452.json",
@@ -2165,9 +2159,9 @@
     },
     {
       "name": "69543.json",
-      "sha256": "a52d1e363505a3aa43884f6bd60b5e7feeb692850ac0b5aed8344262d06e99fc",
-      "records": 2,
-      "bytes": 511
+      "sha256": "5508d18845b8ffd6a4d98898e73399e246106da06d709db762191778f829c2fc",
+      "records": 1,
+      "bytes": 256
     },
     {
       "name": "69547.json",
@@ -2225,9 +2219,9 @@
     },
     {
       "name": "70010.json",
-      "sha256": "f937cab1487491d3fe6d9f4c1d37d790c44045ea939f6f5d6e4f2450dce42eb6",
-      "records": 203,
-      "bytes": 51853
+      "sha256": "dd3b668fb749a03d06a71697011a8bca0db9a60471140412746fff0b2b647290",
+      "records": 206,
+      "bytes": 52602
     },
     {
       "name": "70069.json",
@@ -2333,9 +2327,9 @@
     },
     {
       "name": "70677.json",
-      "sha256": "3c5546d41871b2a0f96c22cd77034ee28941a3a5eded0fc4abb5009861995eef",
-      "records": 302,
-      "bytes": 76916
+      "sha256": "6177254d129ddc82e4adba58feca2c75d9fc42c84f9527338864b4fd4a013cf4",
+      "records": 301,
+      "bytes": 76656
     },
     {
       "name": "70700.json",
@@ -2345,9 +2339,9 @@
     },
     {
       "name": "70710.json",
-      "sha256": "c7b6ac6b19abb79308379032d66edb9e52eb31cbb9b3fdb1cf4580edc2a34d8e",
-      "records": 251,
-      "bytes": 63844
+      "sha256": "7ac4ebf03bbdfe348942b8e9ab600a70d204efda0d56378e014cd7898234f2ea",
+      "records": 248,
+      "bytes": 63056
     },
     {
       "name": "70727.json",
@@ -2501,15 +2495,15 @@
     },
     {
       "name": "72205.json",
-      "sha256": "b00b8bba8bb2f3c44daf09332fa832925b1297d4922ccab1d6a40293ee6a4d87",
-      "records": 219,
-      "bytes": 55604
+      "sha256": "8c9604308797f56e7378c41cdbf59d95d5c2fd1faaa2dcf87923393a40b73a64",
+      "records": 222,
+      "bytes": 56361
     },
     {
       "name": "72241.json",
-      "sha256": "196b8d7923464833360ed56ac51b73fdb885f6df352de3876cd340d96a82a6e8",
-      "records": 78,
-      "bytes": 19625
+      "sha256": "c26d7a0aaa9a16f0bb4aa096d8a09703ed43d7f917a10a2ec35819a5baeadbbe",
+      "records": 81,
+      "bytes": 20378
     },
     {
       "name": "72245.json",
@@ -2555,9 +2549,9 @@
     },
     {
       "name": "72485.json",
-      "sha256": "d49de51b0dfba6bab36aafc755a6dca68bbd4c85b792f96af87572219cbe42eb",
-      "records": 25,
-      "bytes": 6451
+      "sha256": "6677bae2521d3fe7b85ddb7e81a0926020da013147f35620b98e2cce376e2909",
+      "records": 26,
+      "bytes": 6712
     },
     {
       "name": "72495.json",
@@ -2591,9 +2585,9 @@
     },
     {
       "name": "72603.json",
-      "sha256": "2deb29dfd1f2b0f3f2e6841d5deb03bae3e11f9fc3926fea8c8f4ffbf6f4f498",
-      "records": 411,
-      "bytes": 104587
+      "sha256": "70689f132071e379040fead4ccfd1cd8ddf6f64d2dcd41fc63b266e8f9bd551c",
+      "records": 408,
+      "bytes": 103811
     },
     {
       "name": "72606.json",
@@ -2621,9 +2615,9 @@
     },
     {
       "name": "72888.json",
-      "sha256": "418c91d30eb173225c4a8befeded17221a287eb86f867f9138ef125c73476f17",
-      "records": 295,
-      "bytes": 75037
+      "sha256": "fb0e1a205337a57d4c3572b520b416ea166c566eb45434d01a28ea97965e1daf",
+      "records": 298,
+      "bytes": 75792
     },
     {
       "name": "72974.json",
@@ -2759,9 +2753,9 @@
     },
     {
       "name": "76282.json",
-      "sha256": "baf16e0866ee83c2e166dd7022ce0b5fa94c2e35295b60845486fb44234aba8d",
-      "records": 295,
-      "bytes": 74682
+      "sha256": "0f4af5f81a787aad4e9b9eaf20246d785c7e81b526d5fae2d6c38ce310157a4c",
+      "records": 299,
+      "bytes": 75689
     },
     {
       "name": "76329.json",
@@ -2873,9 +2867,9 @@
     },
     {
       "name": "82009.json",
-      "sha256": "e337fe7b7f92928c26253f102b15547044e4f847190d960e62c3bee3973878b2",
-      "records": 153,
-      "bytes": 38937
+      "sha256": "4778b0a6cbdb39c546a60562011ac8b05858a17879be7a39ec01d8a06e12dde2",
+      "records": 157,
+      "bytes": 39964
     },
     {
       "name": "82098.json",
@@ -2962,12 +2956,6 @@
       "bytes": 516
     },
     {
-      "name": "83035.json",
-      "sha256": "6e7427d0fbad19d94dea0479081e2f53cea3ef30b917eb5f50edde78d44918d5",
-      "records": 1,
-      "bytes": 258
-    },
-    {
       "name": "83107.json",
       "sha256": "4af5bace9b4764b0d574ef427ce9f52d39e0561bf909fb9c26a01c8cb9026660",
       "records": 2,
@@ -3017,9 +3005,9 @@
     },
     {
       "name": "83634.json",
-      "sha256": "c51a874864f61a6fc8dcfe5b62386c4aaf171dfb5c56cdcbc53b7b00777b9de7",
-      "records": 11,
-      "bytes": 2848
+      "sha256": "6a7cda1618337f637435cb3aeb4f2559823001a243ada011c32da696c23764a1",
+      "records": 13,
+      "bytes": 3366
     },
     {
       "name": "83720.json",
@@ -3105,14 +3093,14 @@
   ],
   "notes": "The latest NADAC week only. effectiveDate is when that NDC's rate took effect and is often earlier than the as-of date; a tool may use it for the rate on a fill date only within this week, and says so.",
   "coverage": "full",
-  "sourceEdition": "2026-09-30 weekly",
-  "effectiveFrom": "2026-09-30",
-  "fetchedAt": "2026-09-29",
-  "contentChangedAt": "2026-09-29",
-  "expiresOn": "2026-10-14",
-  "nextExpected": "2026-10-07",
-  "sourceSha256": "9ead87fefcead37c123d317afef5101816b05ebe313b531f7f087f94b9132cd2",
-  "recordsSha256": "32641abe62e23ed0dbf7e095d200df33e97d62f65878ecf110e8d56f74501534",
+  "sourceEdition": "2026-10-07 weekly",
+  "effectiveFrom": "2026-10-07",
+  "fetchedAt": "2026-10-13",
+  "contentChangedAt": "2026-10-13",
+  "expiresOn": "2026-10-21",
+  "nextExpected": "2026-10-14",
+  "sourceSha256": "0dd1eddbb35c0e390c23f822b93b57a98f10215032db11c2ee653dee6d26027d",
+  "recordsSha256": "f11210d727682c7eff91215d1923bfb042acc70589f792affff32765cc0d285c",
   "recordBounds": {
     "min": 25000,
     "max": 40000
