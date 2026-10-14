@@ -7,8 +7,8 @@ import * as MQ from '../../lib/meq-mmol-mg-v1629.js';
 export default [
   {
     id: 'meq-mmol-mg',
-    summary: 'Converts a salt quantity among mg, mmol, mEq and ideal mOsm, from its formula or molecular weight. The valence is entered, never assumed: a blank valence gives millimoles only.',
-    compute: MQ.meqMmolMg,
+    summary: 'Converts a salt quantity among mg, mmol, mEq and ideal mOsm, from its formula or molecular weight. The valence is entered, never assumed: a blank valence gives millimoles only. An optional label check shows the equivalence an FDA label prints for potassium chloride, potassium citrate, sodium bicarbonate or lithium carbonate, with the lithium oral-solution volume.',
+    compute: (args) => MQ.meqMmolMg(args, new Date()),
     fields: [
       { dom: 'mq-qty', arg: 'quantity', kind: 'number', required: true, label: 'Quantity' },
       { dom: 'mq-unit', arg: 'unit', kind: 'enum', required: true, values: MQ.UNITS.map((u) => u.value), label: 'Unit of the quantity' },
@@ -17,6 +17,7 @@ export default [
       { dom: 'mq-val', arg: 'valence', kind: 'number', required: false, label: 'Valence: total positive charge per formula unit (blank gives millimoles only)' },
       { dom: 'mq-part', arg: 'particles', kind: 'number', required: false, label: 'Particles on complete dissociation (blank gives no milliosmoles)' },
       { dom: 'mq-vol', arg: 'volumeMl', kind: 'number', required: false, label: 'Volume, for per-liter values (optional)', unit: 'mL' },
+      { dom: 'mq-label', arg: 'labelCheck', kind: 'enum', required: false, values: MQ.LABEL_CHECKS.map((c) => c.value), label: 'Label check (optional)' },
     ],
   },
 ];

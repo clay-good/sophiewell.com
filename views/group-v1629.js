@@ -401,7 +401,7 @@ export const renderers = {
   },
 
   'meq-mmol-mg'(root) {
-    const pairs = [['mq-qty', 'quantity'], ['mq-unit', 'unit'], ['mq-formula', 'formula'], ['mq-mw', 'molecularWeight'], ['mq-val', 'valence'], ['mq-part', 'particles'], ['mq-vol', 'volumeMl']];
+    const pairs = [['mq-qty', 'quantity'], ['mq-unit', 'unit'], ['mq-formula', 'formula'], ['mq-mw', 'molecularWeight'], ['mq-val', 'valence'], ['mq-part', 'particles'], ['mq-vol', 'volumeMl'], ['mq-label', 'labelCheck']];
     numField(root, 'Quantity', 'mq-qty', '');
     selectField(root, 'Unit of the quantity', 'mq-unit', MQ.UNITS);
     textField(root, 'Formula of the form weighed (a hydrate\'s formula for a hydrate)', 'mq-formula', 'e.g. KCl');
@@ -409,11 +409,14 @@ export const renderers = {
     numField(root, 'Valence: total positive charge per formula unit (blank gives millimoles only)', 'mq-val', '');
     numField(root, 'Particles on complete dissociation (blank gives no milliosmoles)', 'mq-part', '');
     numField(root, 'Volume, mL (optional, for per-liter values)', 'mq-vol', '');
+    selectField(root, 'Label check (optional): show the line an FDA label prints', 'mq-label', MQ.LABEL_CHECKS);
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      show(MQ.meqMmolMg(args), o);
+      const r = MQ.meqMmolMg(args, new Date());
+      show(r, o);
+      for (const l of (r.valid && r.labelLinks) || []) { const p = el('p'); p.appendChild(el('a', { href: l.url, target: '_blank', rel: 'noreferrer', text: l.text })); o.appendChild(p); }
     }));
   },
 

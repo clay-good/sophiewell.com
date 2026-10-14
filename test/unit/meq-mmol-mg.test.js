@@ -57,3 +57,34 @@ test('refusals', () => {
   assert.match(mq({ quantity: 5, unit: 'mg', formula: 'KCl', valence: 1.5 }).message, /valence is a whole number/);
   assert.match(mq({ quantity: 5, unit: 'mg', formula: 'KCl', valence: 0 }).message, /between 1 and 12/);
 });
+
+// spec-v1629 tool 5, label anchors: the label's own line beside the computed one.
+import { LABEL_CHECKS } from '../../lib/meq-mmol-mg-v1629.js';
+const lrow = (label, extra = {}) => ({ label, splVersion: 1, publishedOn: '2026-01-01', verifiedOn: '2026-10-13', validThrough: '2027-10-13', ...extra });
+const LT = Object.fromEntries(LABEL_CHECKS.map((c) => [c.setId, lrow(c.brand)]));
+const LNOW = new Date('2026-10-13T12:00:00Z');
+
+test('label check: the label line is added and the arithmetic is unchanged', () => {
+  const plain = mq({ quantity: 600, unit: 'mg', formula: 'KCl', valence: 1 });
+  const r = mq({ quantity: 600, unit: 'mg', formula: 'KCl', valence: 1, labelCheck: 'potassium-chloride' }, LNOW, LT);
+  assert.deepEqual([r.mEq, r.mmol, r.band], [plain.mEq, plain.mmol, plain.band]);
+  assert.match(r.notes.join(' '), /600 mg or 750 mg of potassium chloride equivalent to 8 mEq or 10 mEq/);
+  assert.equal(plain.labelLinks, undefined);
+  assert.equal(r.lithiumSolutionMl, undefined);
+  assert.equal(mq({ quantity: 600, unit: 'mg', formula: 'KCl', labelCheck: 'calcium' }, LNOW, LT).valid, false);
+});
+
+test('label check: lithium carbonate gives the oral-solution volume by the label\'s conversion', () => {
+  const li = (quantity) => mq({ quantity, unit: 'mg', formula: 'Li2CO3', valence: 2, labelCheck: 'lithium-carbonate' }, LNOW, LT);
+  assert.deepEqual([li(300).lithiumSolutionMl, li(150).lithiumSolutionMl, li(600).lithiumSolutionMl, li(450).lithiumSolutionMl], [5, 2.5, 10, 7.5]);
+  // 8.12 mEq computed; the volume is the label's 5 mL, not 5.08 mL.
+  assert.equal(Math.round(li(300).mEq * 100) / 100, 8.12);
+});
+
+test('label check: a superseded label withholds the line and the volume, not the arithmetic', () => {
+  const c = LABEL_CHECKS.find((x) => x.value === 'lithium-carbonate');
+  const r = mq({ quantity: 300, unit: 'mg', formula: 'Li2CO3', valence: 2, labelCheck: 'lithium-carbonate' }, LNOW, { ...LT, [c.setId]: lrow('lithium', { supersededOn: '2026-11-01' }) });
+  assert.deepEqual([r.valid, r.labelWithheld, r.lithiumSolutionMl], [true, true, undefined]);
+  assert.doesNotMatch(r.notes.join(' '), /Table 2/);
+  assert.ok(r.mEq > 8);
+});

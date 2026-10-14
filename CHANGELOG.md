@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Milligrams, millimoles, milliequivalents and milliosmoles: an optional label check shows the
+  equivalence an FDA label prints for potassium chloride, potassium citrate, sodium bicarbonate or
+  lithium carbonate, and the lithium oral-solution volume by the label's own conversion.
 - Time Above MIC for a Dosing Regimen: also shows the same amount as a continuous infusion, with
   its free steady-state concentration set against the MIC.
 - Concentration / percent / ratio converter: also takes mg/dL, mcg/mL, % w/w, % v/v, ppm and ppb.

@@ -2665,6 +2665,21 @@
     }
   },
   {
+    "label": "Klor-Con (potassium chloride) extended-release tablets, Upsher-Smith",
+    "labeler": "UPSHER-SMITH LABORATORIES, LLC",
+    "setId": "4340c3f2-ecf8-44cd-9b69-217f543e24e2",
+    "tools": [
+      "meq-mmol-mg"
+    ],
+    "splVersion": 2,
+    "publishedOn": "2026-10-09",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34089-3": "1e496d795fb9f0caad3b393a8805adbf7fa4dc9b9d29dfcebc4c912e6e3f82ca"
+    }
+  },
+  {
     "label": "Lamictal (lamotrigine)",
     "labeler": "GLAXOSMITHKLINE LLC",
     "setId": "d7e3572d-56fe-4727-2bb4-013ccca22678",
@@ -2740,6 +2755,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "6e2dd740edd6beba56934fb0cf7ec9849e1b437cf02d556d6a0b76f10814ece9"
+    }
+  },
+  {
+    "label": "Lithium carbonate and Lithium Oral Solution, Hikma",
+    "labeler": "HIKMA PHARMACEUTICALS USA INC.",
+    "setId": "7dc9c6d2-6d9a-49e4-a8ab-437b0ed5f84e",
+    "tools": [
+      "meq-mmol-mg"
+    ],
+    "splVersion": 28,
+    "publishedOn": "2023-11-29",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "54727b8ec95c898eddca9095d7daa1deb7da06cd8f3c181e3c97048e1f65e493"
     }
   },
   {
@@ -3909,6 +3939,21 @@
     }
   },
   {
+    "label": "Sodium Bicarbonate Injection, Exela",
+    "labeler": "EXELA PHARMA SCIENCES, LLC",
+    "setId": "f8806ec3-a1c0-47a9-9660-2628dca4623e",
+    "tools": [
+      "meq-mmol-mg"
+    ],
+    "splVersion": 1,
+    "publishedOn": "2026-08-26",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34089-3": "c5916734f07b8b9a1e52e521626ef7ace10ccfa305b9a45d90ac9bba73a290fe"
+    }
+  },
+  {
     "label": "Sodium Phosphates injection, Civica",
     "labeler": "CIVICA, INC.",
     "setId": "8fd901e6-30cb-411a-b820-b9e79625ec7c",
@@ -4368,6 +4413,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "a73c2175b8a281d3ce6990b5b084f403a67f6ff10fc9ad301eb74eabc063aa85"
+    }
+  },
+  {
+    "label": "Urocit-K (potassium citrate), Mission",
+    "labeler": "MISSION PHARMACAL COMPANY",
+    "setId": "72cdea1b-2240-41db-987d-86d5c6aaa978",
+    "tools": [
+      "meq-mmol-mg"
+    ],
+    "splVersion": 30,
+    "publishedOn": "2026-07-23",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34089-3": "11df89e40363e99306b9f15c1e3284f6988ea2a55ec4668cdf92bb1dfa551190"
     }
   },
   {
