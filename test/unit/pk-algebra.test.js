@@ -103,3 +103,14 @@ test('time above MIC: the unbound fraction is required and bounded', () => {
   assert.match(tmic({ ...base, unboundFraction: 1.2 }).message, /unbound fraction/);
   assert.match(tmic({ ...base, unboundFraction: 1, halfLife: '' }).message, /exactly one/);
 });
+
+test('time above MIC: the same amount as a continuous infusion is all or none', () => {
+  const base = { dose: 2000, infusionHours: 0.5, interval: 8, vd: 20, halfLife: 1, unboundFraction: 1 };
+  // 250 mg/h over a clearance of ln 2 x 20 L/h = 13.86 L/h: 18.03 mg/L.
+  const below = tmic({ ...base, mic: 32 });
+  assert.deepEqual([below.continuous.rateMgPerHour, below.continuous.freeCss, below.continuous.aboveMic], [250, 18.03, false]);
+  assert.match(below.notes.join(' '), /continuous infusion \(250 mg\/h\): a free steady-state concentration of 18\.03 mg\/L, below the MIC/);
+  assert.equal(tmic({ ...base, mic: 16 }).continuous.aboveMic, true);
+  // The unbound fraction scales it.
+  assert.equal(tmic({ ...base, unboundFraction: 0.5, mic: 16 }).continuous.aboveMic, false);
+});

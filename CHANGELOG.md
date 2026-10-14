@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Time Above MIC for a Dosing Regimen: also shows the same amount as a continuous infusion, with
+  its free steady-state concentration set against the MIC.
 - Concentration / percent / ratio converter: also takes mg/dL, mcg/mL, % w/w, % v/v, ppm and ppb.
   A mass or volume fraction is converted to weight in volume only with a specific gravity that is
   entered. The Unit Converter now says which fluid ounce it uses.

@@ -7,7 +7,7 @@ import * as TM from '../../lib/tmic-beta-lactam-v1631.js';
 export default [
   {
     id: 'tmic-beta-lactam',
-    summary: 'Percent of the dosing interval that free drug stays above the MIC at steady state, in a one-compartment model. Shows the free peak and trough and the same dose as a 3-hour and a 4-hour infusion for comparison. No target is applied: the target is the reader\'s. Vd, half-life and unbound fraction are entered from the product label.',
+    summary: 'Percent of the dosing interval that free drug stays above the MIC at steady state, in a one-compartment model. Shows the free peak and trough, the same dose as a 3-hour and a 4-hour infusion, and the same amount as a continuous infusion (free steady-state concentration against the MIC). No target is applied: the target is the reader\'s. Vd, half-life and unbound fraction are entered from the product label.',
     compute: TM.tmicBetaLactam,
     fields: [
       { dom: 'tm-dose', arg: 'dose', kind: 'number', required: true, label: 'Dose', unit: 'mg' },

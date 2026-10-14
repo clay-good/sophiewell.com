@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `320179c4158b14b0`
-Generated: 2026-10-14T00:52:42.065Z
+Build ID: `ec31236d58d8c010`
+Generated: 2026-10-14T01:07:48.067Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1396,7 +1396,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tic-worker.js` | 1228 | `8bc88cc6606d196854b66da8f504372c73c353263d70305452fa56b162c83c12` |
 | `lib/tici-v960.js` | 8555 | `825326307f507a36307ef0bf0ce2fc6484eb0a0121a0d8cb0310430542798fc7` |
 | `lib/tile-pelvic-v379.js` | 3632 | `9f8e39fbc8808b9a30860a6fbfee2c3c9170db94bb7db72a0ceb2b6ff4844d27` |
-| `lib/tmic-beta-lactam-v1631.js` | 5267 | `b1de91db9eab69aa1ab5bdfeddc0904ec665ef78e0a51ea3b068ec161bdc2108` |
+| `lib/tmic-beta-lactam-v1631.js` | 5867 | `9d239b5e7ecbb03a89a6b5e94c406de9812a6c11562956fc22959822e80606d6` |
 | `lib/todani-choledochal-v473.js` | 3608 | `e6e1d1726ce48bafecb6edbad0d7f61300adf435b2c1b1427aeeeb98c8fc21ab` |
 | `lib/tonnis-hip-oa-v354.js` | 3924 | `856bbea20809afb3acd30bbdc56331611ceba4deb17726ba2bcde7a36c87d957` |
 | `lib/topical-quantity-ftu-v1639.js` | 5042 | `4d2eeaca5eadd228dfd888f0951c9a798b1489c07b3be5167f5f0a5e6265ee34` |
@@ -2744,7 +2744,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/thwaites-v529.js` | 3977 | `e6782ac0df0cd16466d10b5ee8f8e31f9abf790c77b926e9c8b2cbd30bdab6b3` |
 | `mcp/adapters/tici-v960.js` | 1730 | `3c47925eeed9eae91f8313f8b128fa9d5cca87e2e1511607ce7d33ed47b1477d` |
 | `mcp/adapters/tile-pelvic-v379.js` | 1473 | `70f32c9d62a60bf38ffdd3d212d7f2b066fe15adaf61455a06de3791b9f74d7e` |
-| `mcp/adapters/tmic-beta-lactam-v1631.js` | 1671 | `7ef0999af235517754fee23e4c0d2e7a15d846fe036da3675d459145517e6c6f` |
+| `mcp/adapters/tmic-beta-lactam-v1631.js` | 1749 | `35ff3d227c82c25559d22e1cca90d33b23c1579c4da62bbfecfc5b46ac08d1c7` |
 | `mcp/adapters/todani-choledochal-v473.js` | 1244 | `06bc5be9d22287ffdc6a28d14186754083b16c9d8abfe51fad9c71aee5ac5c4d` |
 | `mcp/adapters/tonnis-hip-oa-v354.js` | 1427 | `bb8c618503d661a89c00fbfabae469647a8799821c7923a60f91b26aea3207ed` |
 | `mcp/adapters/topical-quantity-ftu-v1639.js` | 1343 | `bf435134db06ec1ad248c79a3b56384e4e07b4a4e5e1a4d0e7cc2646fc55bd17` |
