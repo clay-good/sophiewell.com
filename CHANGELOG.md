@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Concentration / percent / ratio converter: also takes mg/dL, mcg/mL, % w/w, % v/v, ppm and ppb.
+  A mass or volume fraction is converted to weight in volume only with a specific gravity that is
+  entered. The Unit Converter now says which fluid ounce it uses.
 - Codeine and Tramadol: Age, Procedure and CYP2D6 Status (FDA Labels): which of the labels' four
   statements apply (under 12, under 18 after tonsillectomy or adenoidectomy, ages 12 to 18 with other
   risk factors, ultra-rapid metabolizers).

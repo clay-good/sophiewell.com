@@ -431,17 +431,34 @@ export const renderers = {
       { value: 'ratio', text: 'Ratio 1:X' },
       { value: 'percent', text: 'Percent (% w/v)' },
       { value: 'mgml', text: 'mg/mL' },
+      { value: 'mgdl', text: 'mg/dL (mg%)' },
+      { value: 'mcgml', text: 'mcg/mL' },
+      { value: 'percentww', text: 'Percent (% w/w)' },
+      { value: 'percentvv', text: 'Percent (% v/v)' },
+      { value: 'ppm', text: 'ppm' },
+      { value: 'ppb', text: 'ppb' },
     ]));
     root.appendChild(field('Value', 'cp-val', { placeholder: 'e.g. 1000 for 1:1000' }));
+    root.appendChild(field('Specific gravity of the solution (optional; for % w/w, ppm, ppb)', 'cp-sg', { placeholder: 'e.g. 1.05' }));
+    root.appendChild(field('Specific gravity of the liquid ingredient (optional; for % v/v)', 'cp-liq', { placeholder: 'e.g. 0.789' }));
     const o = out(); root.appendChild(o);
-    wire(['cp-mode', 'cp-val'], () => safe(o, () => {
-      const r = M5.concPercent({ mode: str('cp-mode'), value: val('cp-val') });
-      o.appendChild(list([
-        li(`Concentration: ${fmt(r.mgPerMl, { fallback: '(enter value)' })} mg/mL`),
-        li(`Percent: ${fmt(r.percent, { fallback: '--' })}% w/v`),
-        li(`Ratio: 1:${fmt(r.ratio, { fallback: '--' })}`),
-      ]));
-      o.appendChild(el('p', { class: 'muted', text: '1% w/v = 10 mg/mL; 1:1000 = 1 mg/mL; 1:10,000 = 0.1 mg/mL.' }));
+    wire(['cp-mode', 'cp-val', 'cp-sg', 'cp-liq'], () => safe(o, () => {
+      const r = M5.concPercent({ mode: str('cp-mode'), value: val('cp-val'), solutionSg: str('cp-sg'), liquidSg: str('cp-liq') });
+      const rows = [];
+      if (r.percentVv != null) rows.push(li(`Percent: ${fmt(r.percentVv)}% v/v`));
+      if (r.mgPerMl != null) {
+        rows.push(li(`Concentration: ${fmt(r.mgPerMl, { fallback: '(enter value)' })} mg/mL`),
+          li(`Percent: ${fmt(r.percent, { fallback: '--' })}% w/v`),
+          li(`Ratio: 1:${fmt(r.ratio, { fallback: '--' })}`));
+        if (r.mgPerDl != null) rows.push(li(`Concentration: ${fmt(r.mgPerDl)} mg/dL`), li(`Concentration: ${fmt(r.mcgPerMl)} mcg/mL`));
+      }
+      if (r.percentWw != null) {
+        rows.push(li(`Percent: ${fmt(r.percentWw)}% w/w`), li(`Parts per million by mass: ${fmt(r.ppm)} ppm`));
+        if (r.ppb != null) rows.push(li(`Parts per billion by mass: ${fmt(r.ppb)} ppb`));
+      }
+      o.appendChild(list(rows));
+      if (r.note) o.appendChild(el('p', { class: 'muted', text: r.note }));
+      o.appendChild(el('p', { class: 'muted', text: '1% w/v = 10 mg/mL; 1:1000 = 1 mg/mL; 1:10,000 = 0.1 mg/mL. % w/v = % w/w × the specific gravity of the solution.' }));
     }));
     medNotice(root);
   },

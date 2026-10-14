@@ -174,11 +174,13 @@ export default [
   },
   {
     id: 'conc-percent',
-    summary: 'Concentration converter (arithmetic identities from the definitions of percent w/v and ratio strength): ratio 1:X, percent w/v, and mg/mL expressed in all three forms (1% = 10 mg/mL; 1:1000 = 1 mg/mL).',
+    summary: 'Concentration converter (arithmetic identities from the definitions of percent w/v and ratio strength): ratio 1:X, percent w/v, and mg/mL expressed in all three forms (1% = 10 mg/mL; 1:1000 = 1 mg/mL). Also mg/dL, mcg/mL, % w/w, % v/v, ppm and ppb; a mass or volume fraction crosses to weight in volume only through a specific gravity that is entered.',
     compute: F.concPercent,
     fields: [
-      { dom: 'cp-mode', arg: 'mode', kind: 'enum', values: ['ratio', 'percent', 'mgml'], required: true, label: 'Enter as' },
+      { dom: 'cp-mode', arg: 'mode', kind: 'enum', values: ['ratio', 'percent', 'mgml', 'mgdl', 'mcgml', 'percentww', 'percentvv', 'ppm', 'ppb'], required: true, label: 'Enter as' },
       { dom: 'cp-val', arg: 'value', kind: 'number', required: true, label: 'Value' },
+      { dom: 'cp-sg', arg: 'solutionSg', kind: 'number', label: 'Specific gravity of the solution (for % w/w, ppm, ppb)' },
+      { dom: 'cp-liq', arg: 'liquidSg', kind: 'number', label: 'Specific gravity of the liquid ingredient (for % v/v)' },
     ],
   },
 ];

@@ -120,6 +120,8 @@ export const renderers = {
     root.appendChild(field('Value', 'val'));
     root.appendChild(field('From unit', 'from', { type: 'text', placeholder: 'kg' }));
     root.appendChild(field('To unit', 'to', { type: 'text', placeholder: 'lb' }));
+    // spec-v1629 backfill: say which fluid ounce this is.
+    root.appendChild(el('p', { class: 'muted', text: 'fl_oz and cup are the U.S. customary measures: 1 fl oz = 29.5735 mL and 1 cup = 8 fl oz = 236.588 mL. Food and drug labels use 30 mL and 240 mL; Apothecary and Household Measures converts with either.' }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const kind = document.getElementById('kind').value;

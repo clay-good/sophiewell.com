@@ -1,6 +1,6 @@
 # spec-v1629 — Pharmaceutical calculations and nonsterile compounding bench math
 
-**Status:** October 11, 2026: 24 of 25 tools built (see Build status); the last, `compound-interstate-share`, is build-gated. The backfills are open.
+**Status:** October 11, 2026: 24 of 25 tools built (see Build status); the last, `compound-interstate-share`, is build-gated. The backfills were built October 13, 2026 (see the end of Build status).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A pharmacist or technician at the compounding bench does the same arithmetic every day: mix two
@@ -771,3 +771,11 @@ Updated October 11, 2026. 24 of 25 tools built; the 25th is build-gated.
 | 23. `compound-interstate-share` | Not built: build-gated. A test holds the id out of the catalog. FDA's page and the docket were not re-checked on October 11, 2026. |
 | 24. `compound-copy-check` | Built (group Q). The January 2018 guidance was re-read on October 11, 2026 and says what the spec quotes; FDA's page still lists it as final (content current as of May 6, 2020) and is under the weekly page watch. Every answer is required. "Easily substitutable" is flagged only when the compounded strength is a whole multiple of the commercial one (the guidance's own example runs that way); a fraction is reported as "the guidance gives no number." The shortage date checked is not an input: the result tells the reader to check the list on the day. 21 U.S.C. 353a was not re-read and is not cited; the tool cites the guidance only. |
 | 25. `compound-anticipatory-limit` | Built (group Q). The December 2016 guidance was re-read on October 11, 2026; FDA's page lists it as final (content current as of August 24, 2018) and is under the page watch. Input is the dated list only (date received, units); the per-period entry is not built, since the highest of a set of typed totals needs no tool. A window is 30 consecutive days starting on a prescription date. A prescription dated exactly one year before the as-of date is counted. Units on hand are optional. Batch upload is not built. |
+
+| Backfill | State |
+|---|---|
+| `conc-percent` | Built October 13, 2026: mg/dL, mcg/mL, % w/w, % v/v, ppm and ppb. % w/w, ppm and ppb cross to weight in volume through the specific gravity of the solution, and % v/v through that of the liquid ingredient; neither is assumed. ppm or ppb with no specific gravity is read as mg/L or mcg/L and the result says that holds for a dilute aqueous solution only. NIST SP 811 section 7.10.3 was re-read and is linked. The citation fix was already made under [spec-v1641](spec-v1641.md). |
+| `unit-converter` | Built: a line on the page says its fluid ounce is 29.5735 mL and its cup 236.588 mL, not the 30 mL and 240 mL of labels, and names `apothecary-household-measures`, which is also a related tool. |
+| `days-supply` | Built as related links both ways with `dropper-calibration`; the reader carries the drops-per-mL figure across. |
+| `elemental-iron-ingested` | Built earlier under [spec-v1641](spec-v1641.md) row 18: the result shows iron 55.845 over the formula mass and the hydrate assumed. |
+| `compounding-bud` | Built earlier: the bench-math tools are its related tools. |
