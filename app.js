@@ -2870,6 +2870,7 @@ const UTILITIES = [
   { id: 'siponimod-cyp2c9-dose', name: 'Siponimod (Mayzent) Maintenance Dose by CYP2C9 Genotype (FDA Label)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'eliglustat-cyp2d6-dose', name: 'Eliglustat (Cerdelga) Dose by CYP2D6 Status (FDA Label)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pgx-label-dose-limit', name: 'Poor-Metabolizer Dose Ceilings and Fractions in FDA Labels', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'opioid-cyp2d6-pediatric-check', name: 'Codeine and Tramadol: Age, Procedure and CYP2D6 Status (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

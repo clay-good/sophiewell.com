@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:8da97af7-8fb3-53bb-8287-605dfa6a457e",
+  "serialNumber": "urn:uuid:553448e3-e123-5a6c-8770-b4651a687013",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-14T00:27:57.840Z",
+    "timestamp": "2026-10-14T00:39:26.116Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2292 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2293 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9f6e2dfa561cdbc1d0ab5e7a91bc4c624b24bcce03a4255210f6fe4407c0fd82"
+          "content": "b9308f44084e03d7965a0f6c7ae6df3eb9ee22f71bc720f87240a7f34002c9b9"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "149575"
+          "value": "149658"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b783aab96121af9606d8081d197eebe6553e83dee25a3cc8d91a431f67ab7ee2"
+          "content": "517e61c93e0fec4cd8d198d985025a6892d3d05728402c3cd21e6341b82fa1fb"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "631479"
+          "value": "631667"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "22930b9b57d2bff16c46f23e53bbcad7e81aa6656d295097a957c72e157ebfaf"
+          "content": "5bf63d5db56768a7d69f643698626e89eaaf9b974f09cdfd1443ee28033b91fc"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "288459"
+          "value": "288599"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "564beccf475f4021660ab71f807c301a448416956502a68b6e88900f11774ee9"
+          "content": "3e63b2d49e75c78c6407cc50d18e07c70a2417c5cf3d18f227987f04bb7dbcf9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "139763"
+          "value": "139865"
         }
       ]
     },
@@ -14510,7 +14510,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8aaf6c3886c2a8fc20442c666154e14ccf506bb87f94212b07dce3fa49ddec36"
+          "content": "f94c6481e4676b91c4ecd736ed57470183d87ea4a1958f641e68a8001b6f8e54"
         }
       ],
       "properties": [
@@ -14520,7 +14520,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "67553"
+          "value": "67769"
         }
       ]
     },
@@ -17072,7 +17072,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e5d75b8cfb325b7bc5003b5b2757d50a62b1662947271359e14c09e3603413c7"
+          "content": "540263d6c228ef26a418a28354d351212b37333eccd5891114ed48ee764964e3"
         }
       ],
       "properties": [
@@ -17082,7 +17082,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3005052"
+          "value": "3006144"
         }
       ]
     },
@@ -20233,6 +20233,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8025"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/opioid-cyp2d6-pediatric-check-v1640.js",
+      "type": "file",
+      "name": "lib/opioid-cyp2d6-pediatric-check-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "699d2b2050c47676f0522e8946c9f781bac8ac6766b51605f6e987c99040fffb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8043"
         }
       ]
     },
@@ -49826,6 +49847,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/opioid-cyp2d6-pediatric-check-v1640.js",
+      "type": "file",
+      "name": "mcp/adapters/opioid-cyp2d6-pediatric-check-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "66b170f9efb42133e3ef703bcd3c397eccdd2bdcfb7de74a487e9be632215a07"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1338"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/opioid-risk-tool-v709.js",
       "type": "file",
       "name": "mcp/adapters/opioid-risk-tool-v709.js",
@@ -59366,7 +59408,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "536179f6b0ec558e72575bd8be57ee5855f99a4ae746eea65386bf6c77d2eaae"
+          "content": "d8e1994315b00766dfac4dcda82edf1b83ed4276d2eb8afedbb945fd0420ea3c"
         }
       ],
       "properties": [
@@ -59376,7 +59418,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "160279"
+          "value": "160452"
         }
       ]
     },
@@ -64112,7 +64154,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "badd5e029e778fd14f43af13abcd96f421abb57d87bb77148aaba43d99278344"
+          "content": "ca35d66a6cf6e4cba46c8d808a74318c266eea60d02f3a6cd116a63dd554588a"
         }
       ],
       "properties": [
@@ -64122,7 +64164,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4644"
+          "value": "5253"
         }
       ]
     },
@@ -95824,6 +95866,7 @@
         "urn:sophiewell:file:source:lib/op-atropine-titration-v1556.js",
         "urn:sophiewell:file:source:lib/ophtho-v164.js",
         "urn:sophiewell:file:source:lib/ophtho-v236.js",
+        "urn:sophiewell:file:source:lib/opioid-cyp2d6-pediatric-check-v1640.js",
         "urn:sophiewell:file:source:lib/opioid-risk-tool-v709.js",
         "urn:sophiewell:file:source:lib/opps-addendum-b.js",
         "urn:sophiewell:file:source:lib/ops-v63.js",
@@ -98183,6 +98226,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/op-atropine-titration-v1556.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ophtho-v164.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ophtho-v236.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/opioid-cyp2d6-pediatric-check-v1640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/opioid-risk-tool-v709.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ops-v63.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/or-rr-to-nnt-v1634.js",
@@ -98741,7 +98785,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "8da97af78fb3f3bb"
+      "value": "553448e3e1230a6c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98753,7 +98797,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3754"
+      "value": "3756"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

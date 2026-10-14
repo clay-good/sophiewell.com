@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Codeine and Tramadol: Age, Procedure and CYP2D6 Status (FDA Labels): which of the labels' four
+  statements apply (under 12, under 18 after tonsillectomy or adenoidectomy, ages 12 to 18 with other
+  risk factors, ultra-rapid metabolizers).
 - Siponimod (Mayzent) Maintenance Dose by CYP2C9 Genotype (FDA Label): the titration days and the
   1 mg or 2 mg maintenance dosage the label gives for each genotype, the *3/*3 contraindication, and
   "no label dosage" for any other allele.

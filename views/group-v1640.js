@@ -1,11 +1,12 @@
 // spec-v1640: pharmacogenomics. What an FDA label states for a genotype or metabolizer status.
-// siponimod-cyp2c9-dose, eliglustat-cyp2d6-dose, pgx-label-dose-limit.
+// siponimod-cyp2c9-dose, eliglustat-cyp2d6-dose, pgx-label-dose-limit, opioid-cyp2d6-pediatric-check.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
 import * as SP from '../lib/siponimod-cyp2c9-dose-v1640.js';
 import * as EG from '../lib/eliglustat-cyp2d6-dose-v1640.js';
 import * as PL from '../lib/pgx-label-dose-limit-v1640.js';
+import * as OC from '../lib/opioid-cyp2d6-pediatric-check-v1640.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -80,5 +81,12 @@ export const renderers = {
     selectField(root, 'CYP3A4 inhibitor (aripiprazole, brexpiprazole)', 'pld-3a4', PL.CYP3A4);
     numField(root, 'Days since the last dose increase (pimozide)', 'pld-days', 'days');
     tool(root, [['pld-drug', 'drug'], ['pld-status', 'status'], ['pld-daily', 'dailyDose'], ['pld-single', 'singleDose'], ['pld-usual', 'usualDose'], ['pld-population', 'population'], ['pld-weight', 'weight'], ['pld-indication', 'indication'], ['pld-3a4', 'cyp3a4Inhibitor'], ['pld-days', 'daysSinceIncrease']], PL.pgxLabelDoseLimit);
+  },
+  'opioid-cyp2d6-pediatric-check'(root) {
+    selectField(root, 'Drug', 'ocp-drug', OC.DRUGS);
+    numField(root, 'Age', 'ocp-age', 'years');
+    selectField(root, 'Pain after tonsillectomy or adenoidectomy (ages 12 to 17)', 'ocp-procedure', OC.PROCEDURES);
+    selectField(root, 'CYP2D6 metabolizer status (age 12 and over)', 'ocp-status', OC.STATUSES);
+    tool(root, [['ocp-drug', 'drug'], ['ocp-age', 'age'], ['ocp-procedure', 'procedure'], ['ocp-status', 'status']], OC.opioidCyp2d6PediatricCheck);
   },
 };

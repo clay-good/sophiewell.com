@@ -1,6 +1,6 @@
 # spec-v1640 — Pharmacogenomics: from a genotype report to what CPIC and the FDA say
 
-**Status:** In progress. Specified October 10, 2026; the three label tools (6, 7, 8) were built
+**Status:** In progress. Specified October 10, 2026; the label tools (6, 7, 8 and the label half of 9) were built
 October 13, 2026. See Build status. 9 new tools, none gated as a whole; row-level build gates are
 marked where a row was not read.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
@@ -866,6 +866,12 @@ Built tools are in `views/group-v1640.js`. The label tools' sources were re-read
 | 6. `eliglustat-cyp2d6-dose` | Built on the Cerdelga label (version 13), sections 1, 2.2, 2.3, 4, 7.1, 8.6 and 8.7. **The Table 5 gate is cleared:** the table was re-read cell by cell in the label's table markup, with its row and column spans, and its "Avoid coadministration" cells ship (a moderate CYP3A inhibitor in intermediate and poor metabolizers; a weak one in poor metabolizers). The spec's test "PM with a weak CYP3A inhibitor → see Table 5" is therefore "avoid". Table 5 pairs only a strong or moderate CYP2D6 inhibitor with a strong or moderate CYP3A inhibitor; any other pair of inhibitors gets each single row and no dosage. The strong CYP3A inducer row is stated in every result and is not an input. Every entry is required; a blank is not read as "none". |
 | 7. `siponimod-cyp2c9-dose` | Built on the Mayzent label (version 17), sections 2.1 to 2.3, 4 and 8.6. Six genotypes and "another genotype"; nothing routes through a phenotype. |
 | 8. `pgx-label-dose-limit` | Built on the eleven labels in the table above, each still at the version listed there. Par is still the pimozide label on DailyMed. Tetrabenazine and pimozide also answer for a status that is not known (the labels' genotyping sentences). Aripiprazole's poor-metabolizer row for a CYP3A4 inhibitor names a strong one only, so a moderate one gets the half-dose row and the result says so. Iloperidone takes the dose given twice daily and sets it against Table 2. Celecoxib halves the dose the reader enters as the lowest recommended dose; with JRA it gives the label's "alternative treatments" sentence and no number. |
-| 9. `opioid-cyp2d6-pediatric-check` | Not built. |
+| 9. `opioid-cyp2d6-pediatric-check` | Built for the label statements only (sections 4 and 5.6 of both labels, re-read October 13, 2026). **Codeine is pinned to Hikma's label** (set `010905f9-3bcb-4b50-9fe8-a3ad0010f14c`, version 25, NDA 022402), the application holder's; Lannett's, which the spec read, is an ANDA copy with the same sentences. The status is a phenotype choice, with "not known" as an answer. Age is read in completed years. **Not built:** the CPIC row for an activity score, held with tools 1 to 5. |
 
-Thirteen label rows were added to the weekly label watch (`scripts/data/label-editions.json`).
+Fourteen label rows were added to the weekly label watch (`scripts/data/label-editions.json`), and
+the tramadol row gained sections 4 and 5.
+
+**Held for the owner:** tools 1 to 5, the CPIC row of tool 9 and the three backfills all write
+"CPIC" as a source name. The license build gate above (owner decision 12 in
+[scope-pharmacy-practice.md](scope-pharmacy-practice.md)) asks for CPIC's confirmation first; the
+policy page read the same on October 13, 2026. None of them is built.

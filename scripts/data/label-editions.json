@@ -1205,6 +1205,22 @@
     }
   },
   {
+    "label": "Codeine sulfate tablets, Hikma",
+    "labeler": "HIKMA PHARMACEUTICALS USA INC.",
+    "setId": "010905f9-3bcb-4b50-9fe8-a3ad0010f14c",
+    "tools": [
+      "opioid-cyp2d6-pediatric-check"
+    ],
+    "splVersion": 25,
+    "publishedOn": "2025-12-31",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34070-3": "9ae11c4c3ef48f714f141bcc65abbf496fe6cb405d7c3b0d5beccfac69cb1ef9",
+      "43685-7": "0fbcf26ad6eb68fee65a4567f32568d6fede3e5fd1155c3bbc20240fc21c4cdb"
+    }
+  },
+  {
     "label": "Colchicine tablets, Amneal",
     "labeler": "AMNEAL PHARMACEUTICALS LLC",
     "setId": "7daef7e2-888d-4116-81a9-2c02b9ef97ef",
@@ -4199,14 +4215,17 @@
     "labeler": "AMNEAL PHARMACEUTICALS NY LLC",
     "setId": "67919c2c-2f8a-4bbb-bef5-0cd6c1e63a16",
     "tools": [
-      "cns-renal-dose-check"
+      "cns-renal-dose-check",
+      "opioid-cyp2d6-pediatric-check"
     ],
     "splVersion": 51,
     "publishedOn": "2026-01-28",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
     "sections": {
-      "34068-7": "f0a5299f696ff98feb0f65f803fa8f11ba22103def610de644e6535dfa60c344"
+      "34068-7": "f0a5299f696ff98feb0f65f803fa8f11ba22103def610de644e6535dfa60c344",
+      "34070-3": "a6e9bc2e564f2633ef77448e2b36ca3cb9a1e10661db10b888a38c5baa9fa609",
+      "43685-7": "a5be806f4797c46b925f7481ed829253b16a7b246e373ec7962228fc1e54a06b"
     }
   },
   {

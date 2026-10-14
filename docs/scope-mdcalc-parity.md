@@ -932,3 +932,5 @@ experience**.
 > v1640, Eliglustat (Cerdelga) Dose by CYP2D6 Status (FDA Label) — [spec-v1640](spec-v1640.md), which adds `eliglustat-cyp2d6-dose` — is 2291.)
 
 > v1640, Poor-Metabolizer Dose Ceilings and Fractions in FDA Labels — [spec-v1640](spec-v1640.md), which adds `pgx-label-dose-limit` — is 2292.)
+
+> v1640, Codeine and Tramadol: Age, Procedure and CYP2D6 Status (FDA Labels) — [spec-v1640](spec-v1640.md), which adds `opioid-cyp2d6-pediatric-check` — is 2293.)

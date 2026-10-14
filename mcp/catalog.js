@@ -1041,6 +1041,7 @@ import foodborneTrematodeTreatmentV1564 from './adapters/foodborne-trematode-tre
 import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
 import mtmServiceClockV1638 from './adapters/mtm-service-clock-v1638.js';
+import opioidCyp2d6PediatricCheckV1640 from './adapters/opioid-cyp2d6-pediatric-check-v1640.js';
 import siponimodCyp2c9DoseV1640 from './adapters/siponimod-cyp2c9-dose-v1640.js';
 import eliglustatCyp2d6DoseV1640 from './adapters/eliglustat-cyp2d6-dose-v1640.js';
 import pgxLabelDoseLimitV1640 from './adapters/pgx-label-dose-limit-v1640.js';
@@ -2364,6 +2365,7 @@ const ADAPTER_MODULES = [
   ['aware-child-oral-dose-v1564', awareChildOralDoseV1564],
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
   ['mtm-service-clock-v1638', mtmServiceClockV1638],
+  ['opioid-cyp2d6-pediatric-check-v1640', opioidCyp2d6PediatricCheckV1640],
   ['siponimod-cyp2c9-dose-v1640', siponimodCyp2c9DoseV1640],
   ['eliglustat-cyp2d6-dose-v1640', eliglustatCyp2d6DoseV1640],
   ['pgx-label-dose-limit-v1640', pgxLabelDoseLimitV1640],
