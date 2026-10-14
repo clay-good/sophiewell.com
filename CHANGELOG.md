@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Siponimod (Mayzent) Maintenance Dose by CYP2C9 Genotype (FDA Label): the titration days and the
+  1 mg or 2 mg maintenance dosage the label gives for each genotype, the *3/*3 contraindication, and
+  "no label dosage" for any other allele.
+- Eliglustat (Cerdelga) Dose by CYP2D6 Status (FDA Label): applies the label in order (limitations
+  of use, contraindications, the renal and interaction "avoid" rows, then 84 mg once or twice daily)
+  for the status, hepatic and renal function and inhibitor strengths entered.
+- Poor-Metabolizer Dose Ceilings and Fractions in FDA Labels: the label's ceiling or fraction for a
+  poor metabolizer set beside the dose entered, for tetrabenazine, deutetrabenazine, valbenazine,
+  pimozide, aripiprazole, brexpiprazole, vortioxetine, iloperidone, pitolisant, citalopram and
+  celecoxib.
 - Long-Acting Injectable Antipsychotic: Missed-Dose Rule now covers the paliperidone palmitate
   injections (Invega Sustenna, Erzofri, Invega Trinza, Invega Hafyera) with their re-initiation
   tables. Bands the labels count in months use calendar months, and both rows are shown within 3

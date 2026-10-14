@@ -926,3 +926,9 @@ experience**.
 > v1638, Opioid Display Measures (High Dosage, Multiple Providers, Initial Long Duration) — [spec-v1638](spec-v1638.md), which adds `partd-opioid-measures` — is 2288.)
 
 > v1638, MTM Review Due Dates and CMR Completion Rate — [spec-v1638](spec-v1638.md), which adds `mtm-service-clock` — is 2289.)
+
+> v1640, Siponimod (Mayzent) Maintenance Dose by CYP2C9 Genotype (FDA Label) — [spec-v1640](spec-v1640.md), which adds `siponimod-cyp2c9-dose` — is 2290.)
+
+> v1640, Eliglustat (Cerdelga) Dose by CYP2D6 Status (FDA Label) — [spec-v1640](spec-v1640.md), which adds `eliglustat-cyp2d6-dose` — is 2291.)
+
+> v1640, Poor-Metabolizer Dose Ceilings and Fractions in FDA Labels — [spec-v1640](spec-v1640.md), which adds `pgx-label-dose-limit` — is 2292.)

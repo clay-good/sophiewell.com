@@ -771,6 +771,9 @@ import * as foodborneTrematodeTreatmentV1564 from '../../lib/foodborne-trematode
 import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.js';
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
 import * as mtmServiceClockV1638 from '../../lib/mtm-service-clock-v1638.js';
+import * as siponimodCyp2c9DoseV1640 from '../../lib/siponimod-cyp2c9-dose-v1640.js';
+import * as eliglustatCyp2d6DoseV1640 from '../../lib/eliglustat-cyp2d6-dose-v1640.js';
+import * as pgxLabelDoseLimitV1640 from '../../lib/pgx-label-dose-limit-v1640.js';
 import * as partdConcurrentUseMeasuresV1638 from '../../lib/partd-concurrent-use-measures-v1638.js';
 import * as partdOpioidMeasuresV1638 from '../../lib/partd-opioid-measures-v1638.js';
 import * as glucoseSupplyQuantityCheckV1638 from '../../lib/glucose-supply-quantity-check-v1638.js';
@@ -1875,6 +1878,9 @@ const MODULES = {
   'aware-child-oral-dose-v1564.js': awareChildOralDoseV1564,
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
   'mtm-service-clock-v1638.js': mtmServiceClockV1638,
+  'siponimod-cyp2c9-dose-v1640.js': siponimodCyp2c9DoseV1640,
+  'eliglustat-cyp2d6-dose-v1640.js': eliglustatCyp2d6DoseV1640,
+  'pgx-label-dose-limit-v1640.js': pgxLabelDoseLimitV1640,
   'partd-concurrent-use-measures-v1638.js': partdConcurrentUseMeasuresV1638,
   'partd-opioid-measures-v1638.js': partdOpioidMeasuresV1638,
   'glucose-supply-quantity-check-v1638.js': glucoseSupplyQuantityCheckV1638,

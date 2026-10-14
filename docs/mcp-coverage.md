@@ -9571,6 +9571,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mtm-service-clock-v1638.js (spec-v1638: MTM review due dates and CMR completion rate — administrative disclaimer)
 - `mtm-service-clock`
 
+### lib/siponimod-cyp2c9-dose-v1640.js (spec-v1640: Siponimod (Mayzent) maintenance dose by CYP2C9 genotype (FDA label) — clinical disclaimer)
+- `siponimod-cyp2c9-dose`
+
+### lib/eliglustat-cyp2d6-dose-v1640.js (spec-v1640: Eliglustat (Cerdelga) dose by CYP2D6 status (FDA label) — clinical disclaimer)
+- `eliglustat-cyp2d6-dose`
+
+### lib/pgx-label-dose-limit-v1640.js (spec-v1640: Poor-metabolizer dose ceilings and fractions in FDA labels — clinical disclaimer)
+- `pgx-label-dose-limit`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

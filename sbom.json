@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:acbe546f-0869-5667-86a7-b74adc38c282",
+  "serialNumber": "urn:uuid:8da97af7-8fb3-53bb-8287-605dfa6a457e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-13T15:40:33.484Z",
+    "timestamp": "2026-10-14T00:27:57.840Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2289 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2292 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "da99895e43228f84b0cd91ee6354f25daed782e7ac65a7a952e987f6e14dce82"
+          "content": "9f6e2dfa561cdbc1d0ab5e7a91bc4c624b24bcce03a4255210f6fe4407c0fd82"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "149347"
+          "value": "149575"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "728c8dcffb4409b13138186c5ddca8467ef55c457b26c11ee73ba59e4c344c33"
+          "content": "b783aab96121af9606d8081d197eebe6553e83dee25a3cc8d91a431f67ab7ee2"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "630887"
+          "value": "631479"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fcad31eb6584ef201dc6c375de3648bc2ced989f738c6a40a5d9e0fe342ecf83"
+          "content": "22930b9b57d2bff16c46f23e53bbcad7e81aa6656d295097a957c72e157ebfaf"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "288063"
+          "value": "288459"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b4dcccc220bccd28c4ec3f035fb939a63fbd06078f1120a29111b179a278c9ad"
+          "content": "564beccf475f4021660ab71f807c301a448416956502a68b6e88900f11774ee9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "139502"
+          "value": "139763"
         }
       ]
     },
@@ -8372,6 +8372,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/eliglustat-cyp2d6-dose-v1640.js",
+      "type": "file",
+      "name": "lib/eliglustat-cyp2d6-dose-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9e8fc844a4e99faf3e027d44178aa26381ddffed48e26ad7db57755fb30e1854"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "13169"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ellis-tooth-fracture-v718.js",
       "type": "file",
       "name": "lib/ellis-tooth-fracture-v718.js",
@@ -14489,7 +14510,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "23ae2f6a4b56263b1ab4e4c23d9ea3d0d3fbe1f8e87ef219d3aa35cf741cfa30"
+          "content": "8aaf6c3886c2a8fc20442c666154e14ccf506bb87f94212b07dce3fa49ddec36"
         }
       ],
       "properties": [
@@ -14499,7 +14520,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "64727"
+          "value": "67553"
         }
       ]
     },
@@ -17051,7 +17072,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ae64e3a24f49d7fb783c8812988d0d4409c9cccda33ce02d79b1a07bb008a429"
+          "content": "e5d75b8cfb325b7bc5003b5b2757d50a62b1662947271359e14c09e3603413c7"
         }
       ],
       "properties": [
@@ -17061,7 +17082,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3001266"
+          "value": "3005052"
         }
       ]
     },
@@ -22379,6 +22400,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/pgx-label-dose-limit-v1640.js",
+      "type": "file",
+      "name": "lib/pgx-label-dose-limit-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c784b87bbfb4bd6fdc4659a31ada0fe6f07dc3101a9d43e362d3f07688b59f66"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "22976"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ph-hemodynamics-2022-v826.js",
       "type": "file",
       "name": "lib/ph-hemodynamics-2022-v826.js",
@@ -26848,6 +26890,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3590"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/siponimod-cyp2c9-dose-v1640.js",
+      "type": "file",
+      "name": "lib/siponimod-cyp2c9-dose-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1ad6b6d59d98fbfe33639944c24823932f49ccc8ce9a299c4443ac7495ab895f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5752"
         }
       ]
     },
@@ -38965,6 +39028,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1388"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/eliglustat-cyp2d6-dose-v1640.js",
+      "type": "file",
+      "name": "mcp/adapters/eliglustat-cyp2d6-dose-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c35b1acaa0b15866c1a3553473eb7d8c612aa304f51ff85cafbbc7b90b39978d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1441"
         }
       ]
     },
@@ -51464,6 +51548,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pgx-label-dose-limit-v1640.js",
+      "type": "file",
+      "name": "mcp/adapters/pgx-label-dose-limit-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a000a282d598febdc5725344037198d583e651a5230475f97baa0ba52fb39a3e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2180"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ph-hemodynamics-2022-v826.js",
       "type": "file",
       "name": "mcp/adapters/ph-hemodynamics-2022-v826.js",
@@ -55303,6 +55408,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1449"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/siponimod-cyp2c9-dose-v1640.js",
+      "type": "file",
+      "name": "mcp/adapters/siponimod-cyp2c9-dose-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9d779024da4b36922535a3d1ddfba969e06f809b62fa9e111548bef9abe3c51d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "891"
         }
       ]
     },
@@ -59240,7 +59366,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ae8ce4be5f92d5ad656f70e0c02ce2e4c7687e260dad6a446df66c3db4b1a5d2"
+          "content": "536179f6b0ec558e72575bd8be57ee5855f99a4ae746eea65386bf6c77d2eaae"
         }
       ],
       "properties": [
@@ -59250,7 +59376,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "159852"
+          "value": "160279"
         }
       ]
     },
@@ -63976,6 +64102,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6779"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1640.js",
+      "type": "file",
+      "name": "views/group-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "badd5e029e778fd14f43af13abcd96f421abb57d87bb77148aaba43d99278344"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4644"
         }
       ]
     },
@@ -95112,6 +95259,7 @@
         "urn:sophiewell:file:source:lib/el-khoury-ar-v397.js",
         "urn:sophiewell:file:source:lib/elderly-mobility-scale-v689.js",
         "urn:sophiewell:file:source:lib/elemental-iron-ingested-v687.js",
+        "urn:sophiewell:file:source:lib/eliglustat-cyp2d6-dose-v1640.js",
         "urn:sophiewell:file:source:lib/ellis-tooth-fracture-v718.js",
         "urn:sophiewell:file:source:lib/ellman-partial-rc-v1425.js",
         "urn:sophiewell:file:source:lib/emergency-contraception-window-v1639.js",
@@ -95779,6 +95927,7 @@
         "urn:sophiewell:file:source:lib/pfdi20-v775.js",
         "urn:sophiewell:file:source:lib/pfiq7-v776.js",
         "urn:sophiewell:file:source:lib/pfirrmann-disc-v434.js",
+        "urn:sophiewell:file:source:lib/pgx-label-dose-limit-v1640.js",
         "urn:sophiewell:file:source:lib/ph-hemodynamics-2022-v826.js",
         "urn:sophiewell:file:source:lib/pharmacy-effective-rate-v1638.js",
         "urn:sophiewell:file:source:lib/pharmacy-spread-check.js",
@@ -95992,6 +96141,7 @@
         "urn:sophiewell:file:source:lib/simple-shoulder-test-v793.js",
         "urn:sophiewell:file:source:lib/simpson-angus-v515.js",
         "urn:sophiewell:file:source:lib/simpson-meningioma-v503.js",
+        "urn:sophiewell:file:source:lib/siponimod-cyp2c9-dose-v1640.js",
         "urn:sophiewell:file:source:lib/sixcit-v778.js",
         "urn:sophiewell:file:source:lib/skin-tear-v900.js",
         "urn:sophiewell:file:source:lib/slums-v644.js",
@@ -96438,6 +96588,7 @@
         "urn:sophiewell:file:source:views/group-v1638.js",
         "urn:sophiewell:file:source:views/group-v1639.js",
         "urn:sophiewell:file:source:views/group-v164.js",
+        "urn:sophiewell:file:source:views/group-v1640.js",
         "urn:sophiewell:file:source:views/group-v165.js",
         "urn:sophiewell:file:source:views/group-v166.js",
         "urn:sophiewell:file:source:views/group-v167.js",
@@ -97518,6 +97669,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/el-khoury-ar-v397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/elderly-mobility-scale-v689.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/elemental-iron-ingested-v687.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/eliglustat-cyp2d6-dose-v1640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ellis-tooth-fracture-v718.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ellman-partial-rc-v1425.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/emergency-contraception-window-v1639.js",
@@ -98113,6 +98265,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfdi20-v775.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfiq7-v776.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfirrmann-disc-v434.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pgx-label-dose-limit-v1640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ph-hemodynamics-2022-v826.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pharmacy-effective-rate-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pharmacy-spread-check.js",
@@ -98296,6 +98449,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/simple-shoulder-test-v793.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/simpson-angus-v515.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/simpson-meningioma-v503.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/siponimod-cyp2c9-dose-v1640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sixcit-v778.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/skin-tear-v900.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/slums-v644.js",
@@ -98587,7 +98741,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "acbe546f0869f667"
+      "value": "8da97af78fb3f3bb"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98599,7 +98753,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3747"
+      "value": "3754"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

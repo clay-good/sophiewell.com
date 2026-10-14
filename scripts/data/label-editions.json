@@ -1,5 +1,20 @@
 [
   {
+    "label": "Abilify (aripiprazole) tablets, Otsuka",
+    "labeler": "OTSUKA AMERICA PHARMACEUTICAL, INC.",
+    "setId": "c040bd1d-45b7-49f2-93ea-aed7220b30ac",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 73,
+    "publishedOn": "2025-02-03",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "8772ba8bbbd682a1a965c88a9e8560c376710891b7b50740dfab38b9004864cc"
+    }
+  },
+  {
     "label": "Abilify Asimtufii (aripiprazole)",
     "labeler": "OTSUKA AMERICA PHARMACEUTICAL, INC",
     "setId": "da4c07fd-1130-4341-bb44-63acfa4162be",
@@ -449,6 +464,21 @@
     }
   },
   {
+    "label": "Austedo and Austedo XR (deutetrabenazine), Teva",
+    "labeler": "TEVA NEUROSCIENCE, INC.",
+    "setId": "7ea3c60a-45c7-44cc-afc2-d87fa53993c0",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 35,
+    "publishedOn": "2025-03-24",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "72afe60e10624610843b401f1ac70c4bf2c0e54aaa9c8babfe82233c1770ed83"
+    }
+  },
+  {
     "label": "Auvi-Q (epinephrine injection), Kaleo",
     "labeler": "KALEO, INC",
     "setId": "6180fb40-7fca-4602-b3da-ce62b8cd2470",
@@ -889,6 +919,37 @@
     }
   },
   {
+    "label": "Celebrex (celecoxib), Viatris",
+    "labeler": "VIATRIS SPECIALTY LLC",
+    "setId": "2d6675e4-5859-4be2-8037-a20ce9f707aa",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 13,
+    "publishedOn": "2025-12-18",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "780491d40e55dd6781737655ee74246d9d53f5aa8108b62b3ed2ec7641d146ff",
+      "43684-0": "08b4f97ee7a8e58d72e724d1d8517bad56c0f201a8cb94168e6f4deebf69917e"
+    }
+  },
+  {
+    "label": "Celexa (citalopram), Allergan",
+    "labeler": "ALLERGAN, INC.",
+    "setId": "4259d9b1-de34-43a4-85a8-41dd214e9177",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 40,
+    "publishedOn": "2026-08-20",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "ce2979f0ced6f5e4468fbe9111b3101fce154d6d3f8be48c1861c3354cefe1ea"
+    }
+  },
+  {
     "label": "CellCept (mycophenolate mofetil)",
     "labeler": "GENENTECH, INC.",
     "setId": "37241e87-4af4-4dc3-a1aa-ea6f20d8dc40",
@@ -916,6 +977,25 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "e36a4e540bbbfb3a1d9763027828888a6e7438446f4b52babb5a22b924320b30"
+    }
+  },
+  {
+    "label": "Cerdelga (eliglustat), Genzyme",
+    "labeler": "GENZYME CORPORATION",
+    "setId": "819f828a-b888-4e46-83fc-94d774a28a83",
+    "tools": [
+      "eliglustat-cyp2d6-dose"
+    ],
+    "splVersion": 13,
+    "publishedOn": "2024-03-11",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34067-9": "fb61567d8a3e7e9022c00d623f6bad804f60529e9dc2a2b196f780f5ff5e04f0",
+      "34068-7": "13b99b880d608fb3699b6176b640944a07d2919007704e41bcc4be0acdb8f56a",
+      "34070-3": "57802634955cc74f12adcb56f9de9e7d93909a313458e301fb0bd38f10fca51c",
+      "34073-7": "3c2dccedc1ce602851c8c19a77199ac68fd853660a64ff230bc7d5313fca104a",
+      "43684-0": "378c05ed633a9e439d3a7c5c6ea051d8a678d8b9e453d317d3fa92bdc6345cbb"
     }
   },
   {
@@ -1520,7 +1600,7 @@
   },
   {
     "label": "DuoDote (atropine and pralidoxime)",
-    "labeler": "MERIDIAN MEDICAL TECHNOLOGIES\u00ae LLC",
+    "labeler": "MERIDIAN MEDICAL TECHNOLOGIES® LLC",
     "setId": "241f42a0-1a33-40e8-8221-201767d999e5",
     "tools": [
       "pralidoxime-dose"
@@ -1759,6 +1839,22 @@
     }
   },
   {
+    "label": "Erzofri (paliperidone palmitate), Luye",
+    "labeler": "SHANDONG LUYE PHARMACEUTICAL CO., LTD.",
+    "setId": "492bf9dd-868e-421a-92db-8cca8973aac1",
+    "tools": [
+      "lai-antipsychotic-missed-dose",
+      "lai-antipsychotic-start"
+    ],
+    "splVersion": 7,
+    "publishedOn": "2026-03-10",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "532aea775a7e9e15ffb8c7c8879bdbd2538ab0a8cf9ff8a7d2d193bf6856316e"
+    }
+  },
+  {
     "label": "Famciclovir tablets, Teva",
     "labeler": "TEVA PHARMACEUTICALS USA, INC.",
     "setId": "3f02042f-8f51-4ccf-b608-5dcd75d100fb",
@@ -1786,6 +1882,21 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "71270de00e1316b0659d0d53154d87f81166a8b964a3da8074a1f6eab499b3d4"
+    }
+  },
+  {
+    "label": "Fanapt (iloperidone), Vanda",
+    "labeler": "VANDA PHARMACEUTICALS INC.",
+    "setId": "33f60b40-3fca-11de-8f56-0002a5d5c51b",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 35,
+    "publishedOn": "2026-05-13",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "83261ef3483b58cea535eecd127282695951e6063e5bc728c6e94c17b9b3d626"
     }
   },
   {
@@ -2219,6 +2330,21 @@
     }
   },
   {
+    "label": "Ingrezza (valbenazine), Neurocrine",
+    "labeler": "NEUROCRINE BIOSCIENCES, INC.",
+    "setId": "4c970164-cafb-421f-9eb5-c226ef0a3417",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 34,
+    "publishedOn": "2026-04-22",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "3dec8549c988d8c167d05c1a676f9c7c747f1a30ac887e3a290f6cea8e77ffa0"
+    }
+  },
+  {
     "label": "Injectafer (ferric carboxymaltose)",
     "labeler": "AMERICAN REGENT, INC.",
     "setId": "517b4a19-45b3-4286-9f6a-ced4e10447de",
@@ -2300,6 +2426,22 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "f41eddc6be4e465975b64a3a70fd6199e65b780df0cf17e9bb9fcd03881720a0"
+    }
+  },
+  {
+    "label": "Invega Hafyera (paliperidone palmitate)",
+    "labeler": "JANSSEN PHARMACEUTICALS, INC",
+    "setId": "6cd61892-d2cb-434d-83ed-5c1b2c4e7a0b",
+    "tools": [
+      "lai-antipsychotic-missed-dose",
+      "lai-antipsychotic-start"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2025-02-21",
+    "verifiedOn": "2026-10-12",
+    "validThrough": "2027-10-12",
+    "sections": {
+      "34068-7": "7b89f1f04cd535183f06f09ef5b8f789da91c81d5d141c19dba4494d1659f2b4"
     }
   },
   {
@@ -2675,6 +2817,23 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "3655fec0795d571d4e6a9debc6731490ee92d222b803231eff31a13e18c6d651"
+    }
+  },
+  {
+    "label": "Mayzent (siponimod), Novartis",
+    "labeler": "NOVARTIS PHARMACEUTICALS CORPORATION",
+    "setId": "44492772-5aed-4627-bd85-e8e89f308bb3",
+    "tools": [
+      "siponimod-cyp2c9-dose"
+    ],
+    "splVersion": 17,
+    "publishedOn": "2026-07-10",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "db258585e2934c94c84b162eb977b9a8ba38be8690043ea732413dea6fd4d3d9",
+      "34070-3": "3ef7e01894b0b4e2375dc59ee954a8f9d91765e19362008e97d5aaaa578c115c",
+      "43684-0": "e6f192d698670dae7899054cd0c63055c37e777e18befcffb434fe84fd734dbb"
     }
   },
   {
@@ -3271,6 +3430,21 @@
     }
   },
   {
+    "label": "Pimozide tablets, Par",
+    "labeler": "PAR HEALTH USA, LLC",
+    "setId": "70b079e2-a1f7-4a93-8685-d60a4d7c1280",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 5,
+    "publishedOn": "2026-09-07",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "b9a9fce7d26e116da84c488f47b42ba9688fa73103c6905719b3488532ea462b"
+    }
+  },
+  {
     "label": "Pinworm Medicine (pyrantel pamoate chewable), Bionpharma",
     "labeler": "BIONPHARMA INC.",
     "setId": "5799a28e-4803-b192-e063-6294a90a53d7",
@@ -3535,6 +3709,21 @@
     "sections": {
       "34068-7": "7619a1d130bccdbf47d2d4efbb31cb61b641a23cda5d5462bf0fbed3e331d644",
       "34089-3": "3b2c9a78fba179eeb96bc391ea5cd283a98b8d260b3d094691134f1c9fc18161"
+    }
+  },
+  {
+    "label": "Rexulti (brexpiprazole), Otsuka",
+    "labeler": "OTSUKA AMERICA PHARMACEUTICAL, INC.",
+    "setId": "2d301358-6291-4ec1-bd87-37b4ad9bd850",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 26,
+    "publishedOn": "2026-05-28",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "9bcad186e1ea9e74c1cfd1608d9b8ecdbf033d43b7e3ebf11dc04911d354d824"
     }
   },
   {
@@ -4068,6 +4257,21 @@
     }
   },
   {
+    "label": "Trintellix (vortioxetine), Takeda",
+    "labeler": "TAKEDA PHARMACEUTICALS AMERICA, INC.",
+    "setId": "1a5b68e2-14d0-419d-9ec6-1ca97145e838",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 18,
+    "publishedOn": "2025-03-11",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "2f12185d02321f11a6a93e42ef1b17ea4518158bb8d210a62f622d573ebe9c9d"
+    }
+  },
+  {
     "label": "TrophAmine 10%, B. Braun",
     "labeler": "B. BRAUN MEDICAL INC.",
     "setId": "cb6d23ff-3ec5-445a-acbe-f88fd57949bf",
@@ -4398,6 +4602,21 @@
     }
   },
   {
+    "label": "Wakix (pitolisant), Harmony",
+    "labeler": "HARMONY BIOSCIENCES, LLC",
+    "setId": "8daa5562-824e-476c-9652-26ceef3d4b0e",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 18,
+    "publishedOn": "2026-02-26",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "80af41ee061d68575cff8b86bd97380437c15eeef884aad2db24d9a5dd12ec14"
+    }
+  },
+  {
     "label": "Wegovy (semaglutide) injection and tablets, Novo Nordisk",
     "labeler": "NOVO NORDISK PHARMACEUTICAL INDUSTRIES, LP",
     "setId": "ee06186f-2aa3-4990-a760-757579d8f77b",
@@ -4448,6 +4667,21 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "f218b75949aef058da9292a2fd536eaab240fea3372776e7979037527bb2e209"
+    }
+  },
+  {
+    "label": "Xenazine (tetrabenazine), Lundbeck",
+    "labeler": "LUNDBECK PHARMACEUTICALS LLC",
+    "setId": "ac768bab-8afa-4446-bc7f-caeeffec0cda",
+    "tools": [
+      "pgx-label-dose-limit"
+    ],
+    "splVersion": 21,
+    "publishedOn": "2022-08-05",
+    "verifiedOn": "2026-10-14",
+    "validThrough": "2027-10-14",
+    "sections": {
+      "34068-7": "4ef8a9c23301c737c646b980da35218a342b602ae8fdaf17ea609b1138a98559"
     }
   },
   {
@@ -4527,38 +4761,6 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "1468aca291c22c8259b41e2257d5808b0e7b417486848422fa0149e265e76fbf"
-    }
-  },
-  {
-    "label": "Invega Hafyera (paliperidone palmitate)",
-    "labeler": "JANSSEN PHARMACEUTICALS, INC",
-    "setId": "6cd61892-d2cb-434d-83ed-5c1b2c4e7a0b",
-    "tools": [
-      "lai-antipsychotic-missed-dose",
-      "lai-antipsychotic-start"
-    ],
-    "splVersion": 8,
-    "publishedOn": "2025-02-21",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "7b89f1f04cd535183f06f09ef5b8f789da91c81d5d141c19dba4494d1659f2b4"
-    }
-  },
-  {
-    "label": "Erzofri (paliperidone palmitate), Luye",
-    "labeler": "SHANDONG LUYE PHARMACEUTICAL CO., LTD.",
-    "setId": "492bf9dd-868e-421a-92db-8cca8973aac1",
-    "tools": [
-      "lai-antipsychotic-missed-dose",
-      "lai-antipsychotic-start"
-    ],
-    "splVersion": 7,
-    "publishedOn": "2026-03-10",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
-    "sections": {
-      "34068-7": "532aea775a7e9e15ffb8c7c8879bdbd2538ab0a8cf9ff8a7d2d193bf6856316e"
     }
   }
 ]
