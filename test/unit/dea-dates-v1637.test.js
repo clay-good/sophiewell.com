@@ -121,3 +121,12 @@ test('an annual registrant: 60-day window, next expiration a year on, and a firs
   assert.match(dr({ kind: 'annual-registrant', expires: '2027-06-30', registered: '2026-02-10' }, new Date(2026, 9, 14)).notes.join(' '), /16 whole months.*outside it/);
   assert.equal(dr({ kind: 'bulk-manufacturer-or-importer', expires: '2027-03-31' }, new Date(2026, 9, 14)).nextExpiration, '2028-03-31');
 });
+
+// DEA 2025 Supply Chain Conference slides (read October 15, 2026): a number retired 30 days after expiration.
+test('renewal: the slides\' 30-day retirement date is shown beside the policy page\'s month', () => {
+  const r = deaRegistrationRenewal({ kind: 'pharmacy-hospital-practitioner', expires: '2027-03-31' }, now);
+  assert.deepEqual([r.numberRetiredAfterPerSlides, r.reinstatementEnds], ['2027-04-30', '2027-04-30']);
+  const f = deaRegistrationRenewal({ kind: 'pharmacy-hospital-practitioner', expires: '2027-02-28' }, now);
+  assert.deepEqual([f.numberRetiredAfterPerSlides, f.reinstatementEnds], ['2027-03-30', '2027-03-31']);
+  assert.match(f.notes.join(' '), /retired: here after March 30, 2027\. That is a presentation, not the policy page/);
+});
