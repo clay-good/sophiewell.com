@@ -1540,7 +1540,8 @@
     "setId": "86dd27d1-9cee-48ae-b55d-e2d2f7dbc593",
     "tools": [
       "corrected-phenytoin",
-      "phenytoin-mm-dose"
+      "phenytoin-mm-dose",
+      "fosphenytoin-load-rate"
     ],
     "splVersion": 3,
     "publishedOn": "2025-04-10",

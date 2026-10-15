@@ -178,7 +178,7 @@ export const renderers = {
   },
 
   'fosphenytoin-load-rate'(root) {
-    const pairs = [['fl-drug', 'drug'], ['fl-pop', 'population'], ['fl-ind', 'indication'], ['fl-route', 'route'], ['fl-weight', 'weight'], ['fl-wunit', 'weightUnit'], ['fl-mgkg', 'mgPerKg'], ['fl-bag', 'bagVolume']];
+    const pairs = [['fl-drug', 'drug'], ['fl-pop', 'population'], ['fl-ind', 'indication'], ['fl-route', 'route'], ['fl-weight', 'weight'], ['fl-wunit', 'weightUnit'], ['fl-mgkg', 'mgPerKg'], ['fl-bag', 'bagVolume'], ['fl-renal', 'renalLiver']];
     selectField(root, 'Drug', 'fl-drug', FL.DRUG_OPTIONS);
     selectField(root, 'Patient', 'fl-pop', FL.POPULATIONS);
     selectField(root, 'Loading for', 'fl-ind', FL.INDICATIONS);
@@ -187,6 +187,7 @@ export const renderers = {
     selectField(root, 'Weight unit', 'fl-wunit', FL.WEIGHT_UNITS);
     numField(root, 'Dose chosen, per kg (mg PE/kg for fosphenytoin, mg/kg for phenytoin)', 'fl-mgkg', '');
     numField(root, 'Bag volume for the infusion, mL (optional)', 'fl-bag', '');
+    selectField(root, 'Oral load: history of renal or liver disease?', 'fl-renal', FL.RENAL_LIVER);
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};

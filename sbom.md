@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6eb8a2ed947f4544`
-Generated: 2026-10-15T02:16:15.591Z
+Build ID: `23d91a16b8198ff0`
+Generated: 2026-10-15T02:25:28.421Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -500,7 +500,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/formula-scale-v1629.js` | 10537 | `42ba838cc8089b8b45cce9785929617afd5c7da29b59d1c2fb12e6d203a68d83` |
 | `lib/forrest-classification-v809.js` | 5613 | `fd3a47b799a5ccfea4848d3e133cbd18c22e90fcfe8091e992426ce43b8a4d93` |
 | `lib/forrester-hemodynamic-v362.js` | 4397 | `bf6305d1edd78604613331955b7bb42551ebe6d66163f3002418e27e299e95e7` |
-| `lib/fosphenytoin-load-rate-v1631.js` | 11237 | `6bf65aad5a5277e1b9c9230ea6185aba76359eb3552c9f34df9811d5b4e9d0a5` |
+| `lib/fosphenytoin-load-rate-v1631.js` | 14730 | `6caecf0129e5d526612ea2bb2a4def9545ad92bd5623dc5d43c1d5571e1712a6` |
 | `lib/four-ts-hit-v836.js` | 8557 | `d1957f127d10fec71c7defbd9828b3ddf34a6ba46a8654a5dee98074a35ae708` |
 | `lib/fractional-excretion-potassium-v684.js` | 5645 | `17c368a5a0e84a20d0f47e5dd8892de657cfe87409d7f315a02d8420c5eb0f04` |
 | `lib/frailty-v143.js` | 14838 | `b3f8d7ad71f2922b8e6219eb145ca9c6a7d4d3b8bae1934de43ecb2c0380fb11` |
@@ -1956,7 +1956,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/formula-scale-v1629.js` | 1577 | `6f43a12c3657c9b62c03c5f2285d488b62729ce4f4ae7a609b2120eedbddaf7a` |
 | `mcp/adapters/forrest-classification-v809.js` | 1121 | `5acda126dec37515fb37dd6f98fd0581f0c7c00f21513fde6ab71641e09888e2` |
 | `mcp/adapters/forrester-hemodynamic-v362.js` | 1544 | `6a9156b140fe32bcd2579ad8dba74d84f7b38c7208f61f962ff68f6868ab466d` |
-| `mcp/adapters/fosphenytoin-load-rate-v1631.js` | 2000 | `c469b3ab09bf9c3a50f888ba5d340c7f609765d284561f55b0a28bb5aeb1e38b` |
+| `mcp/adapters/fosphenytoin-load-rate-v1631.js` | 2298 | `5f109101aca1506587ef6a3c80f06f257c74d513383ec85015fdae7d86239214` |
 | `mcp/adapters/four-ts-hit-v836.js` | 1507 | `c685082aaa7914b164bbbe644f89fddf65f139ad5b5e341d060192e560de678e` |
 | `mcp/adapters/fractional-excretion-potassium-v684.js` | 1403 | `46f93eee502784f6149f0c3a3b73e2ff85020c887106869b39146b1a7e22d22b` |
 | `mcp/adapters/frailty-v143.js` | 6468 | `da43bf41f0881f1573caaf47e13c4e12a2d6a42a308f883f878e4c3a263e49b5` |
@@ -3080,7 +3080,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1629.js` | 31151 | `178cff13db077e46646ada6ca64d99215d4ce16c2307c1f4d824d01fcc41ef9e` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
 | `views/group-v1630.js` | 22124 | `a6e4fea0e95479908760b1370a9a1e499b3f5d448378470f93bdfc9cd0091d78` |
-| `views/group-v1631.js` | 23479 | `40a5ca5420b96dfc912cebce079b624390ab822f93973f48222002562c37e79d` |
+| `views/group-v1631.js` | 23607 | `832d06ecf8b48105ca886bb7e0941854606d5dc60711ca2eeb86cd5fe72c538a` |
 | `views/group-v1632.js` | 22238 | `c3bfa88797e5bef2edd97efade44b441a2834a146d1388ec383e8ef815853dfb` |
 | `views/group-v1633.js` | 29671 | `4e0c93aabd98861f794103eb371c31305c6d008a0d3b376fbb47e1bcd0bc550b` |
 | `views/group-v1634.js` | 14483 | `a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d` |

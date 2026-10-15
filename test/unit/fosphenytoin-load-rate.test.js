@@ -72,3 +72,16 @@ test('every choice is required', () => {
     assert.ok(r.message.length <= 280, k);
   }
 });
+
+// spec-v1631 tool 8: the Dilantin label's oral load (section 2.1, version 3, re-read October 14, 2026).
+test('oral phenytoin: 1,000 mg as 400, 300 and 300 mg two hours apart, adults only, not with renal or liver disease', () => {
+  const oral = { drug: 'oral-phenytoin', population: 'adult' };
+  const r = f(oral, now);
+  assert.deepEqual([r.dose, r.doses, r.intervalHours, r.maintenanceAfterHours, r.abnormal], [1000, [400, 300, 300], 2, 24, false]);
+  assert.match(r.notes.join(' '), /history of renal or liver disease was not entered/);
+  const ex = f({ ...oral, renalLiver: 'yes' }, now);
+  assert.deepEqual([ex.abnormal, ex.bandLabel], [true, 'Excluded by the label']);
+  assert.match(f({ ...oral, population: 'pediatric' }, now).message, /adults only/);
+  assert.match(f({ ...oral, weight: 70, mgPerKg: 15 }, now).notes.join(' '), /do not change it/);
+  assert.equal(labelRow(DRUGS['oral-phenytoin'].setId, now).answers, true);
+});
