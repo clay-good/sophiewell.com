@@ -41,3 +41,16 @@ test('no weight, no volume', () => {
   assert.equal(rabiesIgVolume({ weight: 0 }, now).valid, false);
   assert.equal(rabiesIgVolume(null, now).valid, false);
 });
+
+// spec-v1636 backfill 5: the fewest of each label's vial sizes that hold the volume, then the least left over.
+test('vial count: fewest vials, then least left over, then the larger vials', () => {
+  const rv = rabiesIgVolume;
+  // 82.5 kg: HYPERRAB 5.5 mL is 5 + 1; KEDRAB 11 mL is 10 + 2 (not 2 x 10).
+  const r = rv({ weight: 82.5 }, now);
+  assert.deepEqual([r.hyperrab.vials, r.hyperrab.vialSizes, r.kedrab.vials, r.kedrab.vialSizes], [2, [5, 1], 2, [10, 2]]);
+  assert.match(r.notes.join(' '), /Fewest vials: 2 vials \(5 \+ 1 mL\), 0\.5 mL left over/);
+  // 70 kg: HYPERRAB counts the larger volume, 4.67 mL, in one 5 mL vial.
+  assert.deepEqual(rv({ weight: 70 }, now).hyperrab.vialSizes, [5]);
+  // 300 kg: four of the largest size.
+  assert.equal(rv({ weight: 300 }, now).kedrab.vials, 4);
+});

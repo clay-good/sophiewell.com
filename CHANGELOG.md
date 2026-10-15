@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Rabies PEP: the fewest HYPERRAB or KEDRAB vials that hold the immune globulin volume, and what
+  is left over.
 - Statin Use in Persons with Diabetes: from measurement year 2026, a member with no statin fill and
   a PCSK9 inhibitor or bempedoic acid fill is excepted from the denominator, per CMS's April 2026
   Patient Safety memo. The Part D opioid measures name the memo's 2026 MME-per-day rule.

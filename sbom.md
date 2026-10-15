@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `377745d08b22e545`
-Generated: 2026-10-15T01:59:35.459Z
+Build ID: `e1db969fc6d9b086`
+Generated: 2026-10-15T02:07:58.288Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1176,7 +1176,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/query-compute.js` | 18609 | `ba68703b5e8cae2b887d6db070f1a7384f2b90bef9a8b6e50ea5a5e6aaafb086` |
 | `lib/query-fill.js` | 32636 | `abd66d6a846a1a9211623ec57e8103f6ee35db9078c98adc886600b4d68e592a` |
 | `lib/quintero-ttts-v831.js` | 7169 | `8bd66030eb9be4038678fa55fed7bd436ac4d270b80ee4a39a3985be26909a48` |
-| `lib/rabies-ig-volume-v1636.js` | 4041 | `9054267671ac5a1d1bf7037b47e24716928aa8f1d2c93b9b9d053df745c1c50a` |
+| `lib/rabies-ig-volume-v1636.js` | 5683 | `f9d2abd4ae9101477f4f328c482b15af8eb78cde365f605e2e89af3b10702378` |
 | `lib/rabies-state-lines-v1401.js` | 2168 | `0395cb44c93b8ab3cf5b96f9c075f2f8991f1cd0fcd896160187f4a844c23cf5` |
 | `lib/rachs1-v541.js` | 11732 | `944dd6c129fc7be3fa30d47d26323eb6e18f01615a5698fafc18e9ddc3ab328e` |
 | `lib/rad-package-label-category-v1635.js` | 5613 | `bdd67bc92e5d9e5bde05b7810279983676b6f0f2ee9d475a00da07b6cb5c25c1` |
