@@ -11,7 +11,7 @@ const doses = (r) => r.rows.map((x) => x.dose);
 test('the five labels answer, and there is no GLP-1 preset', () => {
   for (const l of Object.values(LABELS)) assert.equal(labelRow(l.setId, now).answers, true, l.brand);
   assert.equal(PRESETS.some((p) => /glp|semaglutide|tirzepatide|liraglutide|dulaglutide/.test(p.value)), false);
-  assert.equal(PRESETS.length, 7);
+  assert.equal(PRESETS.length, 9); // 7, then the Otezla and Entresto pediatric schedules (2026-10-15)
 });
 
 test('topiramate: the monotherapy and migraine tables, week by week', () => {
@@ -84,4 +84,20 @@ test('own steps with strengths: tablets a dose, units a step, and a dose no comb
   assert.deepEqual(r.dispenseByStrength, { '50 mg': 28, '25 mg': 35 });
   assert.match(r.notes.join(' '), /Step 3: no whole-tablet combination of 50, 25 mg makes 30 mg/);
   assert.match(run({ preset: 'custom', steps: '25, 1, 7', strengths: 'x' }).message, /tablet strength/);
+});
+
+// Otezla Table 2 and Entresto Table 1, the pediatric schedules (re-read October 15, 2026).
+test('pediatric presets: Otezla by weight band, Entresto by weight band every 2 weeks', () => {
+  const big = run({ preset: 'apremilast-pediatric', weightKg: 55 });
+  assert.deepEqual(doses(big).slice(-2), ['20 mg in the morning and 30 mg in the evening', '30 mg twice daily (or Otezla XR 75 mg once daily)']);
+  const mid = run({ preset: 'apremilast-pediatric', weightKg: 30 });
+  assert.deepEqual(doses(mid).slice(-2), ['20 mg in the morning and 20 mg in the evening', '20 mg twice daily']);
+  assert.match(run({ preset: 'apremilast-pediatric', weightKg: 18 }).message, /at least 20 kg/);
+  const e = run({ preset: 'sacubitril-valsartan-pediatric', weightKg: 45 });
+  assert.deepEqual(doses(e), ['24 mg/26 mg twice daily', '49 mg/51 mg twice daily', '72 mg/78 mg twice daily']);
+  assert.deepEqual(e.rows.map((r) => r.from), ['2026-10-12', '2026-10-26', '2026-11-09']);
+  const small = run({ preset: 'sacubitril-valsartan-pediatric', weightKg: 20 });
+  assert.match(doses(small)[0], /^1\.6 mg\/kg \(32 mg of sacubitril and valsartan combined at 20 kg\) twice daily$/);
+  assert.match(small.notes.join(' '), /oral suspension or oral pellets/);
+  assert.match(run({ preset: 'sacubitril-valsartan-pediatric' }).message, /weight/);
 });

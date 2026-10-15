@@ -307,7 +307,7 @@ export const renderers = {
     }));
   },
   'label-titration-calendar'(root) {
-    const pairs = [['lcal-preset', 'preset'], ['lcal-date', 'startDate'], ['lcal-weeks', 'weeksPerStep'], ['lcal-double', 'weeksToDouble'], ['lcal-ace', 'lastAceDose'], ['lcal-steps', 'steps'], ['lcal-strengths', 'strengths']];
+    const pairs = [['lcal-preset', 'preset'], ['lcal-date', 'startDate'], ['lcal-weeks', 'weeksPerStep'], ['lcal-double', 'weeksToDouble'], ['lcal-ace', 'lastAceDose'], ['lcal-steps', 'steps'], ['lcal-strengths', 'strengths'], ['lcal-weight', 'weightKg']];
     selectField(root, 'Schedule', 'lcal-preset', LC.PRESETS);
     dateField(root, 'Start date', 'lcal-date');
     numField(root, 'Memantine: weeks at each step (the label\'s minimum is 1)', 'lcal-weeks', '');
@@ -315,6 +315,7 @@ export const renderers = {
     const dbl = numField(root, 'Sacubitril/valsartan: weeks before the dose is doubled (2 to 4)', 'lcal-double', '').querySelector('input');
     dbl.min = '2'; dbl.max = '4'; dbl.step = '1';
     dateField(root, 'Sacubitril/valsartan: last ACE-inhibitor dose (optional)', 'lcal-ace', 'datetime-local');
+    numField(root, 'Pediatric schedules: weight, kg', 'lcal-weight', '');
     areaField(root, 'My own steps, one per line: dose in mg, times a day, days', 'lcal-steps', '');
     plainText(root, 'Own steps: tablet strengths stocked, mg (optional, for tablet counts)', 'lcal-strengths', 'e.g. 25, 50, 100');
     const o = out(); root.appendChild(o);

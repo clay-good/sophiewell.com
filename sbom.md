@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a85572d6c028169d`
-Generated: 2026-10-15T06:31:30.110Z
+Build ID: `f1488b9d26178e3f`
+Generated: 2026-10-15T06:43:57.237Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -730,7 +730,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/label-formulation-switch-v1633.js` | 9255 | `c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8` |
 | `lib/label-gate.js` | 3600 | `8868f80a34f8fbd02906f823435c2288be1e97825aa5de8eb76633c74c05c078` |
 | `lib/label-row.js` | 2619 | `1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1` |
-| `lib/label-titration-calendar-v1633.js` | 14479 | `de7df94205564dbf0d8b548a457943d41c8e2bfd8e7031ba6329d0696b97aa24` |
+| `lib/label-titration-calendar-v1633.js` | 17361 | `94885fff841fe04cb3756f5b52bfbb2f475dc50bd3f6e889703e352e1aa6f549` |
 | `lib/labor-care-guide-alert-v1558.js` | 10175 | `0921500d2999d667f21815fdcf12a8a8cad7c2e954c42d7e31242b2887ad1ff6` |
 | `lib/lachman-acl-v355.js` | 3354 | `8b2fd236d0e3f3aac1b7787adfa184f75158796f11a152535400bcaca5dc1773` |
 | `lib/lai-antipsychotic-missed-dose-v1639.js` | 20473 | `aa975e537225e3e09e2928b68e38d36c5e8295ec9bd2cd539cc8807536d809ed` |
@@ -2162,7 +2162,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/la-esophagitis-v318.js` | 1299 | `fa827be8d2a5358589197d211b74917ce60efc0b3a7539fb5b9a2ff8ff7b34ac` |
 | `mcp/adapters/lab-interpret.js` | 2094 | `76b44ab7626f314dfeb9eb25b93ca237a80b9d39bd9ff495a742d90f6a53b3b6` |
 | `mcp/adapters/label-formulation-switch-v1633.js` | 1206 | `205bd2786f92fdca03f59ec3afdb5102aa60e7b17e149bfdc567d88087c28d5c` |
-| `mcp/adapters/label-titration-calendar-v1633.js` | 1902 | `c3f9c225fc49dbc7ef4ff30820df33c302a2064bc63aa9a9d8ab352492a10902` |
+| `mcp/adapters/label-titration-calendar-v1633.js` | 2050 | `d1c5b4696043d4dd1a8f6d3ca45e95abf32020eceb06580a8f0ed8b0a65f71d4` |
 | `mcp/adapters/labor-care-guide-alert-v1558.js` | 2499 | `feb413de5d68a0cf236d73a3aa9e694f29da10938251c1cab5ba9772cc3ddcbd` |
 | `mcp/adapters/lachman-acl-v355.js` | 1257 | `ebce5e50ff6ed44673ca0813f87b64942c7d3fb65672ebb49f9241be44ab4e54` |
 | `mcp/adapters/lai-antipsychotic-missed-dose-v1639.js` | 1234 | `f6c709bbad340ddba9992bca3d3958287ff3e5bf7538fea3384571b5653bd9b6` |
@@ -3086,7 +3086,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1630.js` | 23495 | `c64bd4d306fd4c29c9a1222200f3486df5b24d049f12cb2af1d2725b0c6895eb` |
 | `views/group-v1631.js` | 24387 | `0b30dd5e5c970c02b1bfe4fc9213bb654d9605b399ccd6ea1a92db8ec4f4dfc8` |
 | `views/group-v1632.js` | 22558 | `62990e562310d3a75a44e49fdd2e2ae62c71f6dbb0f8d93b91b46ad9fcbcd62b` |
-| `views/group-v1633.js` | 30282 | `0d82e219bc70e7c38f66811de59bb4db794f90823930b71c61e87b564cd33df4` |
+| `views/group-v1633.js` | 30385 | `949eec5be8c45a986148888aef019d8f1e2bc0bd2976b63932a4ad93c7744480` |
 | `views/group-v1634.js` | 14483 | `a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d` |
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 24773 | `2e7abc7cf86fe4e88d696c0bff9abb47021289c37e63c21b8fed512b6052edd6` |

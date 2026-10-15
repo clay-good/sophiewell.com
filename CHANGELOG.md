@@ -6,6 +6,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Label titration calendar: the Otezla and Entresto pediatric schedules, by weight.
 - Taper and titration calendars: with the tablet strengths you stock, each step's tablets (fewest
   whole tablets) and the units to dispense for it.
 - Antiseizure and CNS renal dose check: an optional daily dose is checked against the label row's

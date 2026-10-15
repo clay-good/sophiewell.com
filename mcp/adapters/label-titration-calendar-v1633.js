@@ -16,6 +16,7 @@ export default [
       { dom: 'lcal-double', arg: 'weeksToDouble', kind: 'number', label: 'Sacubitril/valsartan: weeks before the dose is doubled (2 to 4)' },
       { dom: 'lcal-ace', arg: 'lastAceDose', kind: 'string', label: 'Sacubitril/valsartan: last ACE-inhibitor dose (YYYY-MM-DDTHH:MM, optional)' },
       { dom: 'lcal-strengths', arg: 'strengths', kind: 'string', label: 'Own steps: tablet strengths stocked in mg (optional, for tablet counts)' },
+      { dom: 'lcal-weight', arg: 'weightKg', kind: 'number', label: 'Pediatric schedules (apremilast, sacubitril/valsartan): weight', unit: 'kg' },
       { dom: 'lcal-steps', arg: 'steps', kind: 'string', label: 'Custom: one step per line as dose in mg, times a day, days' },
     ],
   },
