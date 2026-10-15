@@ -20,6 +20,7 @@ export default [
       { dom: 'tpc-date', arg: 'startDate', kind: 'string', required: true, label: 'Start date (YYYY-MM-DD)' },
       { dom: 'tpc-smallest', arg: 'smallestDose', kind: 'number', required: true, label: 'Smallest dose that can be dispensed (steps round down to multiples of it)' },
       { dom: 'tpc-stop', arg: 'stopTarget', kind: 'number', label: 'Stop target dose (optional)' },
+      { dom: 'tpc-strengths', arg: 'strengths', kind: 'string', label: 'Tablet strengths stocked in mg, separated by commas (optional, for tablet counts)' },
       { dom: 'tpc-pauses', arg: 'pauses', kind: 'string', label: 'Pauses (optional), one per line: date the pause begins, then its length in days' },
       { dom: 'tpc-mme', arg: 'mmeFactor', kind: 'number', label: 'Opioids: morphine-equivalent factor, to show each step in MME (optional)' },
     ],

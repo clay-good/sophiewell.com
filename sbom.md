@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `133028771b7d1db3`
-Generated: 2026-10-15T06:17:53.749Z
+Build ID: `a85572d6c028169d`
+Generated: 2026-10-15T06:31:30.110Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -730,7 +730,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/label-formulation-switch-v1633.js` | 9255 | `c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8` |
 | `lib/label-gate.js` | 3600 | `8868f80a34f8fbd02906f823435c2288be1e97825aa5de8eb76633c74c05c078` |
 | `lib/label-row.js` | 2619 | `1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1` |
-| `lib/label-titration-calendar-v1633.js` | 13059 | `b76605438b5e3f053ab16ab45353089e0fd5af8247e31c1430480da52e920679` |
+| `lib/label-titration-calendar-v1633.js` | 14479 | `de7df94205564dbf0d8b548a457943d41c8e2bfd8e7031ba6329d0696b97aa24` |
 | `lib/labor-care-guide-alert-v1558.js` | 10175 | `0921500d2999d667f21815fdcf12a8a8cad7c2e954c42d7e31242b2887ad1ff6` |
 | `lib/lachman-acl-v355.js` | 3354 | `8b2fd236d0e3f3aac1b7787adfa184f75158796f11a152535400bcaca5dc1773` |
 | `lib/lai-antipsychotic-missed-dose-v1639.js` | 20473 | `aa975e537225e3e09e2928b68e38d36c5e8295ec9bd2cd539cc8807536d809ed` |
@@ -1373,11 +1373,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/syphilis-serology-sequence-v1400.js` | 11846 | `3e3bd5de06f3ebe09c101de1bcd88d59154f8e2ad49ef2d0d9ac3674496ea302` |
 | `lib/systemic-mastocytosis-v813.js` | 6819 | `42d1022282199970a686cb8fce8fd320ca7e02f1245da18d01ee3b7df0c2d895` |
 | `lib/table.js` | 5710 | `d507e2efc19ad9715c782c18cc9c6e98ab6f64afc3b066b4659eae7de5e20ed2` |
+| `lib/tablet-combo.js` | 2176 | `7a44bc0f5b87c04faeb7660712fc52cdc14fb9c66b72f4fc8ea969fd47890ee2` |
 | `lib/tablet-powder-source-v1629.js` | 3616 | `fffdb5bc7ef97e6133caee0751b4f7beb8c071d3451f10713c702e1d264b8273` |
 | `lib/taco-trali-v906.js` | 8467 | `61d4684d02f080f6956e63ae326a8837d0dcba1e2b48ebb7a09e598ae587416d` |
 | `lib/takayasu-v638.js` | 4946 | `e6f6fd9a75612cbb13ba144972a674f3098d201c326e4c3125cf6a1f42f7b137` |
 | `lib/tanner-staging-v361.js` | 4925 | `e2484223339faaac7f4272ed90ce8834fc835f51b70498bb064bc25cf77c9ec5` |
-| `lib/taper-calendar-v1633.js` | 17037 | `7b7bc29c83557e728aa3dd6a9d70da04a9bb0b4ca0d64bd404ab9d5576d7a645` |
+| `lib/taper-calendar-v1633.js` | 18958 | `555d5d36c3c7a507a50edeaca6e3b60605512cdeabffc8078e1e78cf0a947211` |
 | `lib/tb-4-month-eligibility-v1553.js` | 8780 | `4a311c4e6756e06d5b3792bb5a45f5d041666f5934a2abb56d69c9e9831b8b1b` |
 | `lib/tb-testing.js` | 1648 | `cc73aea69ef4256ba44fab37bcff1dc497c553784de852a4f9cf12c7a9b1d7cb` |
 | `lib/tbi-stroke-v206.js` | 14126 | `d4d323dec158311d32c19d5aa0a0f365ff186e91c9d9ac8a7d8f9153324dbac5` |
@@ -2161,7 +2162,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/la-esophagitis-v318.js` | 1299 | `fa827be8d2a5358589197d211b74917ce60efc0b3a7539fb5b9a2ff8ff7b34ac` |
 | `mcp/adapters/lab-interpret.js` | 2094 | `76b44ab7626f314dfeb9eb25b93ca237a80b9d39bd9ff495a742d90f6a53b3b6` |
 | `mcp/adapters/label-formulation-switch-v1633.js` | 1206 | `205bd2786f92fdca03f59ec3afdb5102aa60e7b17e149bfdc567d88087c28d5c` |
-| `mcp/adapters/label-titration-calendar-v1633.js` | 1753 | `ac612d94710ad1ae75c725428f383f747fc35bae95f546350b67d1f5915e4835` |
+| `mcp/adapters/label-titration-calendar-v1633.js` | 1902 | `c3f9c225fc49dbc7ef4ff30820df33c302a2064bc63aa9a9d8ab352492a10902` |
 | `mcp/adapters/labor-care-guide-alert-v1558.js` | 2499 | `feb413de5d68a0cf236d73a3aa9e694f29da10938251c1cab5ba9772cc3ddcbd` |
 | `mcp/adapters/lachman-acl-v355.js` | 1257 | `ebce5e50ff6ed44673ca0813f87b64942c7d3fb65672ebb49f9241be44ab4e54` |
 | `mcp/adapters/lai-antipsychotic-missed-dose-v1639.js` | 1234 | `f6c709bbad340ddba9992bca3d3958287ff3e5bf7538fea3384571b5653bd9b6` |
@@ -2733,7 +2734,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/taco-trali-v906.js` | 3225 | `c43eb0309f98356d84da0a6fdffa74ed6d642ef7e3fd495f75e43285a728954c` |
 | `mcp/adapters/takayasu-v638.js` | 2480 | `954b12e94a767aaf190c65b848aa8e46396745679249a630189fc882bd0ac89d` |
 | `mcp/adapters/tanner-staging-v361.js` | 1491 | `9fce17f8aba34575dec7f14dc57ad1c4dc6c426e13a7cacb05c365bba6088f4f` |
-| `mcp/adapters/taper-calendar-v1633.js` | 2585 | `f7488cc9eb7942065a2af1a195951b09a8b777d36b04a700654bbfd0087c6151` |
+| `mcp/adapters/taper-calendar-v1633.js` | 2743 | `0d93a6497907d92b79ae1bcd78d40db5a69d8d604801889c2ca84c4f761817a3` |
 | `mcp/adapters/tb-4-month-eligibility-v1553.js` | 2449 | `61b9d5f291879d1012de7828769ef0fa6a027f0138fa210ce9421b5a6aa2cefa` |
 | `mcp/adapters/tb-testing.js` | 1256 | `01cc400284794652da66f0ac945e0d6f519de1637a9c628f0dbb217d2ca7c28a` |
 | `mcp/adapters/tbi-stroke-v206.js` | 4445 | `613b63854f7ababaa37691eafce9835fce79af1077981fd9dfc5e35f245c0600` |
@@ -3085,7 +3086,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1630.js` | 23495 | `c64bd4d306fd4c29c9a1222200f3486df5b24d049f12cb2af1d2725b0c6895eb` |
 | `views/group-v1631.js` | 24387 | `0b30dd5e5c970c02b1bfe4fc9213bb654d9605b399ccd6ea1a92db8ec4f4dfc8` |
 | `views/group-v1632.js` | 22558 | `62990e562310d3a75a44e49fdd2e2ae62c71f6dbb0f8d93b91b46ad9fcbcd62b` |
-| `views/group-v1633.js` | 29671 | `4e0c93aabd98861f794103eb371c31305c6d008a0d3b376fbb47e1bcd0bc550b` |
+| `views/group-v1633.js` | 30282 | `0d82e219bc70e7c38f66811de59bb4db794f90823930b71c61e87b564cd33df4` |
 | `views/group-v1634.js` | 14483 | `a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d` |
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 24773 | `2e7abc7cf86fe4e88d696c0bff9abb47021289c37e63c21b8fed512b6052edd6` |

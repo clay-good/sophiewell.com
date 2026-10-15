@@ -61,6 +61,14 @@ function dateField(root, label, id, type = 'date') {
   root.appendChild(wrap);
   return wrap;
 }
+function plainText(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type: 'text', autocomplete: 'off', placeholder }));
+  root.appendChild(wrap);
+  return wrap;
+}
 function areaField(root, label, id, placeholder) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -219,7 +227,7 @@ export const renderers = {
     }));
   },
   'taper-calendar'(root) {
-    const pairs = [['tpc-class', 'drugClass'], ['tpc-duration', 'duration'], ['tpc-start', 'startDose'], ['tpc-unit', 'unit'], ['tpc-mode', 'mode'], ['tpc-reduction', 'reduction'], ['tpc-interval', 'intervalDays'], ['tpc-date', 'startDate'], ['tpc-smallest', 'smallestDose'], ['tpc-stop', 'stopTarget'], ['tpc-pauses', 'pauses'], ['tpc-mme', 'mmeFactor']];
+    const pairs = [['tpc-class', 'drugClass'], ['tpc-duration', 'duration'], ['tpc-start', 'startDose'], ['tpc-unit', 'unit'], ['tpc-mode', 'mode'], ['tpc-reduction', 'reduction'], ['tpc-interval', 'intervalDays'], ['tpc-date', 'startDate'], ['tpc-smallest', 'smallestDose'], ['tpc-stop', 'stopTarget'], ['tpc-pauses', 'pauses'], ['tpc-mme', 'mmeFactor'], ['tpc-strengths', 'strengths']];
     selectField(root, 'Drug class', 'tpc-class', TC.CLASSES);
     selectField(root, 'Opioids: how long it has been taken', 'tpc-duration', TC.DURATIONS);
     numField(root, 'Starting daily dose', 'tpc-start', '');
@@ -231,6 +239,7 @@ export const renderers = {
     numField(root, 'Smallest dose that can be dispensed (steps round down to multiples of it)', 'tpc-smallest', '');
     numField(root, 'Stop target dose (optional)', 'tpc-stop', '');
     areaField(root, 'Pauses (optional), one per line: the date the pause begins, a comma, its length in days', 'tpc-pauses', '');
+    plainText(root, 'Tablet strengths stocked, mg (optional, for tablet counts)', 'tpc-strengths', 'e.g. 5, 10, 25');
     numField(root, 'Opioids: morphine-equivalent factor, to show each step in MME (optional)', 'tpc-mme', '');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
@@ -298,7 +307,7 @@ export const renderers = {
     }));
   },
   'label-titration-calendar'(root) {
-    const pairs = [['lcal-preset', 'preset'], ['lcal-date', 'startDate'], ['lcal-weeks', 'weeksPerStep'], ['lcal-double', 'weeksToDouble'], ['lcal-ace', 'lastAceDose'], ['lcal-steps', 'steps']];
+    const pairs = [['lcal-preset', 'preset'], ['lcal-date', 'startDate'], ['lcal-weeks', 'weeksPerStep'], ['lcal-double', 'weeksToDouble'], ['lcal-ace', 'lastAceDose'], ['lcal-steps', 'steps'], ['lcal-strengths', 'strengths']];
     selectField(root, 'Schedule', 'lcal-preset', LC.PRESETS);
     dateField(root, 'Start date', 'lcal-date');
     numField(root, 'Memantine: weeks at each step (the label\'s minimum is 1)', 'lcal-weeks', '');
@@ -307,6 +316,7 @@ export const renderers = {
     dbl.min = '2'; dbl.max = '4'; dbl.step = '1';
     dateField(root, 'Sacubitril/valsartan: last ACE-inhibitor dose (optional)', 'lcal-ace', 'datetime-local');
     areaField(root, 'My own steps, one per line: dose in mg, times a day, days', 'lcal-steps', '');
+    plainText(root, 'Own steps: tablet strengths stocked, mg (optional, for tablet counts)', 'lcal-strengths', 'e.g. 25, 50, 100');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};

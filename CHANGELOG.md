@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Taper and titration calendars: with the tablet strengths you stock, each step's tablets (fewest
+  whole tablets) and the units to dispense for it.
 - Antiseizure and CNS renal dose check: an optional daily dose is checked against the label row's
   maximum; lacosamide's and topiramate's relative rows use a reference dose you enter.
 - Phenytoin dose from levels: with one steady-state level, a Km you enter gives the maximum rate and

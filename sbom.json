@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:13302877-1b7d-5db3-854b-4a1ede468f9b",
+  "serialNumber": "urn:uuid:a85572d6-c028-569d-85da-2c6eb7a101a3",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-15T06:17:53.749Z",
+    "timestamp": "2026-10-15T06:31:30.110Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -14657,7 +14657,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b76605438b5e3f053ab16ab45353089e0fd5af8247e31c1430480da52e920679"
+          "content": "de7df94205564dbf0d8b548a457943d41c8e2bfd8e7031ba6329d0696b97aa24"
         }
       ],
       "properties": [
@@ -14667,7 +14667,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "13059"
+          "value": "14479"
         }
       ]
     },
@@ -28154,6 +28154,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/tablet-combo.js",
+      "type": "file",
+      "name": "lib/tablet-combo.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7a44bc0f5b87c04faeb7660712fc52cdc14fb9c66b72f4fc8ea969fd47890ee2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2176"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/tablet-powder-source-v1629.js",
       "type": "file",
       "name": "lib/tablet-powder-source-v1629.js",
@@ -28244,7 +28265,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7b7bc29c83557e728aa3dd6a9d70da04a9bb0b4ca0d64bd404ab9d5576d7a645"
+          "content": "555d5d36c3c7a507a50edeaca6e3b60605512cdeabffc8078e1e78cf0a947211"
         }
       ],
       "properties": [
@@ -28254,7 +28275,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "17037"
+          "value": "18958"
         }
       ]
     },
@@ -44708,7 +44729,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ac612d94710ad1ae75c725428f383f747fc35bae95f546350b67d1f5915e4835"
+          "content": "c3f9c225fc49dbc7ef4ff30820df33c302a2064bc63aa9a9d8ab352492a10902"
         }
       ],
       "properties": [
@@ -44718,7 +44739,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "1753"
+          "value": "1902"
         }
       ]
     },
@@ -56720,7 +56741,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f7488cc9eb7942065a2af1a195951b09a8b777d36b04a700654bbfd0087c6151"
+          "content": "0d93a6497907d92b79ae1bcd78d40db5a69d8d604801889c2ca84c4f761817a3"
         }
       ],
       "properties": [
@@ -56730,7 +56751,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2585"
+          "value": "2743"
         }
       ]
     },
@@ -64112,7 +64133,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4e0c93aabd98861f794103eb371c31305c6d008a0d3b376fbb47e1bcd0bc550b"
+          "content": "0d82e219bc70e7c38f66811de59bb4db794f90823930b71c61e87b564cd33df4"
         }
       ],
       "properties": [
@@ -64122,7 +64143,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "29671"
+          "value": "30282"
         }
       ]
     },
@@ -96369,6 +96390,7 @@
         "urn:sophiewell:file:source:lib/syphilis-serology-sequence-v1400.js",
         "urn:sophiewell:file:source:lib/systemic-mastocytosis-v813.js",
         "urn:sophiewell:file:source:lib/table.js",
+        "urn:sophiewell:file:source:lib/tablet-combo.js",
         "urn:sophiewell:file:source:lib/tablet-powder-source-v1629.js",
         "urn:sophiewell:file:source:lib/taco-trali-v906.js",
         "urn:sophiewell:file:source:lib/takayasu-v638.js",
@@ -98917,7 +98939,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "133028771b7d1db3"
+      "value": "a85572d6c028169d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98929,7 +98951,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3762"
+      "value": "3763"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

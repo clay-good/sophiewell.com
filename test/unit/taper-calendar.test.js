@@ -116,3 +116,13 @@ test('the label ranges stand only while the label edition does', () => {
   assert.match(all(o), /faster than the CDC range/); // CDC is not a label
   assert.doesNotMatch(all(o), /FDA labeling range/);
 });
+
+// spec-v1633 tool 7: whole tablets by the strengths stocked, and the units each step uses.
+test('strengths: tablets a day for each step and the units to the next step; mg only', () => {
+  const r = calc({ ...base, mode: 'fixed', reduction: 25, smallestDose: 25, strengths: '10, 25, 50' }, new Date('2026-10-12T12:00:00Z'));
+  assert.deepEqual(r.rows.map((x) => x.dose), [100, 75, 50, 25, 0]);
+  assert.deepEqual([r.rows[0].tabletsPerDay, r.rows[1].tabletsPerDay], ['2 × 50 mg', '1 × 50 mg + 1 × 25 mg']);
+  assert.deepEqual(r.rows[0].unitsForStep, [{ mg: 50, units: 56 }]);
+  assert.deepEqual(r.dispenseByStrength, { '50 mg': 112, '25 mg': 56 });
+  assert.match(calc({ ...base, unit: 'mcg', mode: 'fixed', reduction: 25, smallestDose: 25, strengths: '25' }, new Date('2026-10-12T12:00:00Z')).message, /counted in mg/);
+});

@@ -76,3 +76,12 @@ test('refusals and fail closed', () => {
   assert.equal(d({ preset: 'apremilast', startDate: '2026-10-12' }, now, T).rows.length, 6);
   assert.equal(d({ preset: 'custom', startDate: '2026-10-12', steps: '5, 1, 7' }, now, T).valid, true);
 });
+
+// spec-v1633 tool 12: whole tablets by the strengths stocked for your own steps.
+test('own steps with strengths: tablets a dose, units a step, and a dose no combination makes', () => {
+  const r = run({ preset: 'custom', steps: '25, 1, 7\n75, 2, 14\n30, 1, 7', strengths: '25, 50' });
+  assert.deepEqual([r.rows[0].tablets, r.rows[1].tablets, r.rows[2].tablets], ['1 × 25 mg', '1 × 50 mg + 1 × 25 mg', undefined]);
+  assert.deepEqual(r.dispenseByStrength, { '50 mg': 28, '25 mg': 35 });
+  assert.match(r.notes.join(' '), /Step 3: no whole-tablet combination of 50, 25 mg makes 30 mg/);
+  assert.match(run({ preset: 'custom', steps: '25, 1, 7', strengths: 'x' }).message, /tablet strength/);
+});
