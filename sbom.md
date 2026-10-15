@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fdd619bdb2f8ee17`
-Generated: 2026-10-15T04:12:26.376Z
+Build ID: `d7972b0e0da05f2b`
+Generated: 2026-10-15T04:24:17.839Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1105,7 +1105,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pfirrmann-disc-v434.js` | 3552 | `cd219b3462006d853f88f88cb4d271b49d4c254eec61a0af4a228f320351d2c9` |
 | `lib/pgx-label-dose-limit-v1640.js` | 22976 | `c784b87bbfb4bd6fdc4659a31ada0fe6f07dc3101a9d43e362d3f07688b59f66` |
 | `lib/ph-hemodynamics-2022-v826.js` | 7915 | `70cf4c387cf44e6b5fbab5408c18d2da54ee1684930c7ec611c09f1c984202d8` |
-| `lib/pharmacy-effective-rate-v1638.js` | 6155 | `b3257ab6303c72579c8230cea4cb8c9f975c25aa8ed8bbf9a6f3e622eb1f7400` |
+| `lib/pharmacy-effective-rate-v1638.js` | 12724 | `67e39e438633f001b2fbefe0d57d52301747966b66694cccb96e12e70d722ae3` |
 | `lib/pharmacy-spread-check.js` | 9390 | `98f806bc66ec51439e458acd9a070c3c29578f376c493fc8f4a73f3f60514add` |
 | `lib/phenytoin-mm-dose-v1631.js` | 8572 | `ed4650defcbba931001c61256b1f3cea9e8857edde4ee8af9ed404dff0b516f9` |
 | `lib/phq15-v734.js` | 2898 | `7b7affd6a2e2f0c972afe4414d12842b9bba4b1d5fba515e994b15a4a5357e1f` |
@@ -2495,7 +2495,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/pfirrmann-disc-v434.js` | 1193 | `6940c217f0ec4434facf390336ce2855cb8a48457285a0fd1b896a27bf11d66c` |
 | `mcp/adapters/pgx-label-dose-limit-v1640.js` | 2180 | `a000a282d598febdc5725344037198d583e651a5230475f97baa0ba52fb39a3e` |
 | `mcp/adapters/ph-hemodynamics-2022-v826.js` | 1335 | `15cdcd849f5e99e867d7321c7082c8b77ce3f83bca43e022ed083e5137cffea1` |
-| `mcp/adapters/pharmacy-effective-rate-v1638.js` | 1668 | `5323190beb5bf90ab6ed07d80ea03f838e5740251f75ee25b767ae57d5fbaab9` |
+| `mcp/adapters/pharmacy-effective-rate-v1638.js` | 2310 | `bfbc03e19ea6aee0f9f9dad0e0a1eeb7e0c03c4c159b660805e76cc71c8e5cbe` |
 | `mcp/adapters/pharmacy-spread-check.js` | 1709 | `e15459930f5d97e71769f78a0605a6cb679e6ed89ea9b05020132f69da034878` |
 | `mcp/adapters/phenytoin-mm-dose-v1631.js` | 2076 | `d1f5b8b36fe15c13c3c3c9dbabbf540b498741558f6418b1a16311b509579246` |
 | `mcp/adapters/phq15-v734.js` | 2564 | `ecb5c74fccb59bea34aa8d8f7ab51ed88c6997827fc14c4075be2fe2649e6d5a` |
@@ -3088,7 +3088,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 23968 | `5dca04a25a44a6549ba3d7282810e1bed648614a9d8b61006f0adecf6b323090` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
-| `views/group-v1638.js` | 38338 | `a34101d6d50c22606b76fb21feed0c9f65163bc648af26d67eeb59cb54c5973f` |
+| `views/group-v1638.js` | 39075 | `0175eb89ff578c2dc1980471b64da18ce2f1666bc7b6af0dfef02e9adb72e12d` |
 | `views/group-v1639.js` | 19294 | `b19f63e4ceca2422ee12d6e8ca56a5c0988ad95e3d75b3129671bc06def36627` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v1640.js` | 5253 | `ca35d66a6cf6e4cba46c8d808a74318c266eea60d02f3a6cd116a63dd554588a` |

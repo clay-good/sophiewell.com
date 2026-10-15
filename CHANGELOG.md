@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Effective rate reconciliation: a claims list gives brand and generic rates against each guarantee,
+  the generic dispensing rate, and the claims where the patient paid more than the pharmacy kept.
 - Cost of dispensing: fees by payer, each set against the cost per prescription, with the dollar
   gap where the payer's prescriptions are entered.
 - MTM review dates, Statin Use in Persons with Diabetes and the Part D concurrent-use measures give

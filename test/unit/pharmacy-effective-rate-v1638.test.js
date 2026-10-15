@@ -27,5 +27,23 @@ test('nothing is defaulted', () => {
   assert.match(pharmacyEffectiveRate({}).message, /^Enter the sum of AWP/);
   assert.match(pharmacyEffectiveRate({ awp: 100, ingredientPaid: 20, prescriptions: 5 }).message, /^Enter the dispensing fees paid/);
   assert.equal(pharmacyEffectiveRate({ awp: 0, ingredientPaid: 20 }).valid, false);
-  assert.match(pharmacyEffectiveRate({ awp: 100, ingredientPaid: 20 }).note, /No guaranteed rate was entered/);
+  assert.match(pharmacyEffectiveRate({ awp: 100, ingredientPaid: 20 }).notes.join(' '), /No guaranteed rate was entered/);
+});
+
+// spec-v1638 tool 24, claims mode: brand and generic summed separately, the generic dispensing rate, and
+// claims where the patient paid more than the pharmacy kept.
+test('claims list: each type against its guarantee, the generic dispensing rate, and patient pay above what was kept', () => {
+  const claims = ['Claim,Type,AWP,Ingredient cost paid,Dispensing fee,Concessions,Patient pay',
+    'C1,generic,100,10,1,0,5', 'C2,generic,100,20,1,0,40', 'C3,brand,1000,820,1,0,30', 'C4,other,50,5,0,0,0'].join('\n');
+  const r = pharmacyEffectiveRate({ claims, guaranteedGenericPercent: 88, guaranteedBrandPercent: 19 });
+  assert.deepEqual([r.generic.claims, r.generic.achievedDiscountPercent, r.generic.trueUpExposure], [2, 85, 6]);
+  assert.deepEqual([r.brand.achievedDiscountPercent, r.brand.trueUpExposure], [18, 10]);
+  assert.equal(r.genericDispensingRatePercent, 66.67);
+  assert.equal(r.patientPaidMoreThanKept, 1);
+  const t = r.notes.join(' ');
+  assert.match(t, /C2: patient paid \$40\.00, the pharmacy kept \$21\.00/);
+  assert.match(t, /1 row was left out/);
+  assert.equal(r.abnormal, true);
+  assert.match(pharmacyEffectiveRate({ claims: 'Type,AWP\ngeneric,10' }).message, /names the ingredient cost paid column/);
+  assert.match(pharmacyEffectiveRate({ claims: 'Type,AWP,Ingredient cost paid\ngeneric,10,2' }).notes.join(' '), /no patient pay column/);
 });

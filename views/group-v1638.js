@@ -356,7 +356,7 @@ export const renderers = {
     }));
   },
   'pharmacy-effective-rate'(root) {
-    const pairs = [['per-awp', 'awp'], ['per-paid', 'ingredientPaid'], ['per-guarantee', 'guaranteedDiscountPercent'], ['per-rx', 'prescriptions'], ['per-fees', 'dispensingFees'], ['per-conc', 'concessions'], ['per-acq', 'acquisitionCost']];
+    const pairs = [['per-awp', 'awp'], ['per-paid', 'ingredientPaid'], ['per-guarantee', 'guaranteedDiscountPercent'], ['per-rx', 'prescriptions'], ['per-fees', 'dispensingFees'], ['per-conc', 'concessions'], ['per-acq', 'acquisitionCost'], ['per-claims', 'claims'], ['per-gb', 'guaranteedBrandPercent'], ['per-gg', 'guaranteedGenericPercent']];
     note(root, 'Run brand and generic claims separately, with the sums for the claims your contract counts.');
     numField(root, 'Sum of AWP, dollars', 'per-awp', '');
     numField(root, 'Ingredient cost paid, dollars', 'per-paid', '');
@@ -365,6 +365,10 @@ export const renderers = {
     numField(root, 'Dispensing fees paid, dollars (0 if none)', 'per-fees', '');
     numField(root, 'Price concessions and later fees taken, dollars (0 if none)', 'per-conc', '');
     numField(root, 'Acquisition cost of the drugs dispensed, dollars', 'per-acq', '');
+    // spec-v1638 tool 24, claims mode: in place of the sums above, a claims list with a header row.
+    areaField(root, 'Or a claims list with a header row: type (brand or generic), AWP, ingredient cost paid, and optionally dispensing fee, concessions, acquisition cost, patient pay', 'per-claims', 'Type,AWP,Ingredient cost paid,Patient pay\ngeneric,100,12,5').querySelector('textarea').setAttribute('data-private', '');
+    numField(root, 'Claims list: guaranteed brand discount off AWP, percent (optional)', 'per-gb', '');
+    numField(root, 'Claims list: guaranteed generic discount off AWP, percent (optional)', 'per-gg', '');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
