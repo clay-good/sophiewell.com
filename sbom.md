@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7c12fe14a561d6d8`
-Generated: 2026-10-15T01:47:18.177Z
+Build ID: `377745d08b22e545`
+Generated: 2026-10-15T01:59:35.459Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -847,7 +847,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3006645 | `02299ef6b2e31155bae2368b4a988affa2c92b5d8b1361d3e8f8530608af1b8a` |
+| `lib/meta.js` | 3006844 | `1ded7a0ac8b165ed75e27eb55bbd1aefd66a3531de45b68a1c626afa06fd13b9` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1059,7 +1059,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/partd-dmp-criteria-check-v1638.js` | 7255 | `a4d287c8e1d58fe94add08a8c20c88406b6c8ce26962be6746e9d5e80170f509` |
 | `lib/partd-dmp-notice-clock-v1638.js` | 9200 | `905852090424d85f73cb387c37e90cbd427835eb1474a0f621888ecd5c3620f5` |
 | `lib/partd-insulin-cost-cap-v1638.js` | 5424 | `1d8e607f3fb0fd48e376349a2ce1079a743061a9b81085a90848cfcfa4a0b50a` |
-| `lib/partd-opioid-measures-v1638.js` | 12824 | `b384e65e01aeafa0c3e28f60af97f37ab8f929c73becc2750a64dd4efc6bf177` |
+| `lib/partd-opioid-measures-v1638.js` | 13649 | `7f6c3567cb90c9427063acaa060bd8e97bb923215ba594eff9417d7e4f641ef3` |
 | `lib/partd-opioid-safety-edit-v1638.js` | 9832 | `f4ae6acbc17d2f567f9577fbc93e821e77ec7e2ec162253dcd12844d411d0c37` |
 | `lib/partd-prompt-pay-clock-v1638.js` | 9088 | `a555c982fed826b007dae6ea20fdb43fa4093b55471a3989eced6f3c9683aef8` |
 | `lib/partd-transition-fill-v1638.js` | 13227 | `3f6448360d020b0b094a0f88f53e35a85963fb72444b70085cc83f4b9d06c403` |
@@ -1363,7 +1363,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/sun-ac-flare-v422.js` | 3437 | `c372e87d2726c6e87123b9971c50eed8b5d23a434bd99dc6dad494e10005b30c` |
 | `lib/sunct-suna-ichd3-v820.js` | 8213 | `69340f33957e7235f7ea341325e2391ae36fbce3d002791935ee46d669997f5c` |
 | `lib/sunnybrook-facial-v509.js` | 6479 | `44a4dccd9400ffcde761ed885ef5cc3588b42ed8e7a0822e8653a1261fd1b8b5` |
-| `lib/supd-measure-v1638.js` | 7950 | `d7f862e8114f4074ee55b08c21a94ce71dfcd9fca5fd6f5cfa77b90595cfdbcd` |
+| `lib/supd-measure-v1638.js` | 9073 | `5202f4188f7679b5c567c6e16815e807403a9c6417bb1fc894cc8ad655cc502d` |
 | `lib/suppository-displacement-v1629.js` | 6978 | `d6cbd66aa0e380027487b1922a8ce0eda5107638b940dc3bf1ac87779a93f1b4` |
 | `lib/surg-v142.js` | 16902 | `8bc28c3385b76d1fc0d11a3171f3459e09fd4c91e3b9548516cfd8c5692e39d2` |
 | `lib/synonyms.js` | 3813 | `95d65001246939cb582331c67925d1da1a0b312f40ac9a872eff3fb905e38e5a` |
@@ -2721,7 +2721,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/sun-ac-flare-v422.js` | 1272 | `859fd4fdbf25fd0694beaa37bbf85d059a125bfe4095d75b5b437b0de7a8de38` |
 | `mcp/adapters/sunct-suna-ichd3-v820.js` | 2758 | `9522d7fceb09e5990aead70f45959d27345b7cbd580417fba00fc093ee1e68a2` |
 | `mcp/adapters/sunnybrook-facial-v509.js` | 2393 | `112bc4ac019b8a64e825e87a94987f2adda4c1c519a588c4898ed8c363142a12` |
-| `mcp/adapters/supd-measure-v1638.js` | 1233 | `bf93cff84c00095719ae6fa28ff35d3045a3ebe9fad9225ed01753d780f74808` |
+| `mcp/adapters/supd-measure-v1638.js` | 1251 | `be84d2c4b14d32a29999346d057294b19a8f1fdf4f10e4b2dc6ed68494020edb` |
 | `mcp/adapters/suppository-displacement-v1629.js` | 2015 | `b7c25d3e481314bbd3dea24c56d656146d261acf2cbec52ce8759f6b9eed31bd` |
 | `mcp/adapters/surg-v142.js` | 5556 | `194f64948c4312cd72d60f56422a6a7038ffe9e207439f9ef7b786000dccfe27` |
 | `mcp/adapters/syphilis-serology-sequence-v1400.js` | 2131 | `9686a03a39dd248bd23166e3738f8a4282de3625fe9be440977f823f296dac09` |
@@ -3087,7 +3087,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 22928 | `8c8f97b92ec621bc772a46e3a00ce5cc966f4ee425f31fdf0c940eea8cfe1d4e` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
-| `views/group-v1638.js` | 37559 | `c71c068349ccce007265d4c8bf9a3ef30a6839a7d0bb7027919e38e4c9cc703a` |
+| `views/group-v1638.js` | 37577 | `ada2fb1d7e11c3596f9b8337f7b30a8a23155c4bec1b129187a2f4b7ff50bb5c` |
 | `views/group-v1639.js` | 18893 | `2209e1dd51194684a4e840e20a066fb77c93ecad730d669cee5ee5cbaf687716` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v1640.js` | 5253 | `ca35d66a6cf6e4cba46c8d808a74318c266eea60d02f3a6cd116a63dd554588a` |

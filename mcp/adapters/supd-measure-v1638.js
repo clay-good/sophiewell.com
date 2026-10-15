@@ -11,7 +11,7 @@ export default [
     fields: [
       { dom: 'supd-year', arg: 'measurementYear', kind: 'number', required: true, label: 'Measurement year', min: 2020, max: 2100 },
       { dom: 'supd-members', arg: 'members', kind: 'string', required: true, label: 'Members, one per line: member, age, continuously enrolled (yes or no), exclusion (optional)' },
-      { dom: 'supd-fills', arg: 'fills', kind: 'string', required: true, label: 'Fills, one per line: member, fill date (YYYY-MM-DD), class (diabetes or statin)' },
+      { dom: 'supd-fills', arg: 'fills', kind: 'string', required: true, label: 'Fills, one per line: member, fill date (YYYY-MM-DD), class (diabetes, statin, pcsk9 or bempedoic)' },
     ],
   },
 ];

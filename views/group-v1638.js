@@ -503,7 +503,7 @@ export const renderers = {
     // Rows carry member references: kept out of the shareable link.
     areaField(root, 'Members, one per line: member, age, continuously enrolled (yes or no), exclusion (optional)', 'supd-members', 'A, 60, yes').querySelector('textarea').setAttribute('data-private', '');
     note(root, `Exclusions: ${SU.EXCLUSIONS.join(', ')}.`);
-    areaField(root, 'Fills, one per line: member, fill date (YYYY-MM-DD), class (diabetes or statin)', 'supd-fills', 'A, 2025-01-10, diabetes').querySelector('textarea').setAttribute('data-private', '');
+    areaField(root, 'Fills, one per line: member, fill date (YYYY-MM-DD), class (diabetes, statin, pcsk9 or bempedoic)', 'supd-fills', 'A, 2025-01-10, diabetes').querySelector('textarea').setAttribute('data-private', '');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};

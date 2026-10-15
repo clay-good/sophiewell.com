@@ -58,3 +58,11 @@ test('nothing is dropped silently', () => {
   assert.match(run(M('A'), 'Z, 2024-01-01, 30, 50, p1, x1').message, /not listed/);
   assert.match(run(M('A'), 'A, 2024-01-01, 30, 50, p1, x1\nA, 2025-02-01, 30, 50, p1, x1').note, /1 fill dated after 2024/);
 });
+
+// CMS Patient Safety memo, April 22, 2026: the OHD MME-per-day rule for measurement year 2026.
+test('measurement year 2026 names the PQA MME rule and the one-patch-a-day count; 2024 does not', () => {
+  const m = 'A, 50, 12, 2026-12-31';
+  const f = 'A, 2026-01-01, 30, 120, p1, x1\nA, 2026-01-31, 30, 120, p1, x1';
+  assert.match(om({ measurementYear: 2026, members: m, fills: f }).notes.join(' '), /fentanyl patch as one unit a day/);
+  assert.doesNotMatch(run(M('A'), 'A, 2024-01-01, 30, 120, p1, x1').notes.join(' '), /fentanyl patch/);
+});

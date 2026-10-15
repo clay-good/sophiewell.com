@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Statin Use in Persons with Diabetes: from measurement year 2026, a member with no statin fill and
+  a PCSK9 inhibitor or bempedoic acid fill is excepted from the denominator, per CMS's April 2026
+  Patient Safety memo. The Part D opioid measures name the memo's 2026 MME-per-day rule.
 - Part D transition supply: past the 90 days, a long-term care resident's 31-day emergency supply
   (once per drug per stay), and a continuing member's window counted from January 1, both from
   CMS's manual and labeled as its guidance.
