@@ -468,6 +468,12 @@ cefotaxime 2 g in obese patients.
 **Source.** Bratzler DW, et al. Clinical practice guidelines for antimicrobial prophylaxis in
 surgery. Am J Health Syst Pharm 2013;70:195-283, Table 1, read cell by cell in the copy ASHP hosts.
 **Licensing.** Facts from a published table with attribution; no guideline prose is reproduced.
+**Build gate (added October 15, 2026).** Not built, and until now the spec did not say why: the
+October 12, 2026 pass simply did not reach it, which `docs/unbuilt-tools.md` surfaced. Table 1 above
+is the spec author's cell-by-cell read of ASHP's copy and was not re-read at build: on October 15,
+2026 both ASHP's hosted PDF and the publisher's page answered scripted requests with HTTP 403, so
+there was no way to confirm nineteen weight-based antibiotic doses before shipping them. Build it
+once the table can be read again, or from a copy a person opens by hand.
 
 ### 20. `med-admin-window` — Was This Dose Given Inside the CMS Window?
 **Input.** Scheduled time; actual time; the order's frequency; whether the hospital's policy

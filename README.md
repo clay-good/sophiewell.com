@@ -103,6 +103,7 @@ v3.0.0 CSV or JSON files and reports structural deficiencies by row or JSON path
 - [docs/architecture.md](docs/architecture.md): how it's built
 - [docs/product-decisions.md](docs/product-decisions.md): durable interface decisions
 - [docs/incomplete-input-program.md](docs/incomplete-input-program.md): what a tool does with a value it was not given
+- [docs/unbuilt-tools.md](docs/unbuilt-tools.md): what a spec asks for that is not built yet, and what would unblock it
 - [CONTRIBUTING.md](CONTRIBUTING.md): what changes are accepted, and how to add a calculator
 - [SECURITY.md](SECURITY.md): report a vulnerability privately, not as an issue
 
