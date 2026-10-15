@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `080b723ee4b06ec8`
-Generated: 2026-10-15T00:28:40.339Z
+Build ID: `643f415aeade1dcf`
+Generated: 2026-10-15T00:38:57.784Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 149658 | `b9308f44084e03d7965a0f6c7ae6df3eb9ee22f71bc720f87240a7f34002c9b9` |
+| `index.html` | 149639 | `c90ce0a82a57c07515e95d8140ab2a312c3cde7ddc5633f1702b31bd2d5aed96` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 631667 | `517e61c93e0fec4cd8d198d985025a6892d3d05728402c3cd21e6341b82fa1fb` |
+| `app.js` | 631648 | `179866bffe807ba187e0e69e3798bae282800db7e7fabb715dbde2259dbceb92` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 139865 | `3e63b2d49e75c78c6407cc50d18e07c70a2417c5cf3d18f227987f04bb7dbcf9` |
+| `report-catalog.js` | 139846 | `5c18543d71bd88b4b154558e77bae90ed0426437ff8609c7870ba9197d3e90bc` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -62,6 +62,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ablett-tetanus-v576.js` | 11571 | `55c0a29b6ed65dab28caa723322ce513f4017217113429dbfd926bd8fdc8f0af` |
 | `lib/abx-renal-v1632.js` | 20348 | `bfa4c834cb341579c09bc98da30f2642c301ad07bf9c3565a8b29b677d59712f` |
 | `lib/aca-external-review-v1503.js` | 4702 | `91a246b503d6b4515b68e1e81f0becb106add38df8471b20a31f51de4792c595` |
+| `lib/aca-ful-load.js` | 890 | `93737aabffb421fbf35a0c5e3458c6a23ad712526c62d7b6bb6fbaf9505db62f` |
+| `lib/aca-ful-lookup.js` | 1153 | `f61998718471c2b1e72ba3d6a7f3870784c19e282e5e2ed9b73c5ddbec9a5cfb` |
 | `lib/aca-sep-window-v1507.js` | 5301 | `20abd848c581d742987468d57a073c6a23c7cdc250a6db09d28c7541c71bc6b4` |
 | `lib/acef-v595.js` | 13039 | `b40a6db7e47270ffcae508771208e327e30dc21b9f79676b6649ef41337d94e8` |
 | `lib/acidbase-v129.js` | 25627 | `9874f82b6ae4a2f07fa907d27b7cac99307bfa293c63bb33439339c1dbfe2697` |
@@ -829,7 +831,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/med-pass-error-rate-v1638.js` | 5676 | `43ae1004bf311732a9296ff41338766449539c559f701d8be6d243f373884d4b` |
 | `lib/medicaid-appeal-clock-v1503.js` | 6345 | `c97995d3268fa9752d050c663c1add02ddff0532b7d8192d717de73f9b88a42c` |
 | `lib/medicaid-drug-payment-check-v1638.js` | 5224 | `989a5c48c1d2a5f8601194399e0f6fbc137299957046aa6719435006aec0e53a` |
-| `lib/medicaid-ful-check-v1638.js` | 4625 | `bac056513a6420c27a3665ff2c421c517600b4aec2bdaf05fa3275034db031f3` |
+| `lib/medicaid-ful-check-v1638.js` | 8624 | `b8dc4e248f4c81d616d3868f2ef09273891a33596ce032327f5f50909f35364d` |
 | `lib/medicaid-ura-v1510.js` | 3708 | `62d3f17aa5e10e9af55f427f16069d947d6db6ea8cc898eca37a2300b2d96200` |
 | `lib/medicaid-work-requirement-v1507.js` | 6985 | `3c3c75f54f11f5592bffa2ad574ee0c970999c57cd681fa66712fda28741f7f5` |
 | `lib/medicare-enrollment-window-v1507.js` | 7140 | `a8f803861ad2ed79384db7b6bdf81da301c543af15c5adef68998378c9272a97` |
@@ -2255,7 +2257,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/med-pass-error-rate-v1638.js` | 1309 | `90a158f902d64a63eb770c90541f390c7795b04b6ea7a24e6d9497e915a50ae6` |
 | `mcp/adapters/medicaid-appeal-clock-v1503.js` | 1570 | `99092c88e46211b260c961ff43295f17009ccad2ba0ca64ca29dc475a43baf45` |
 | `mcp/adapters/medicaid-drug-payment-check-v1638.js` | 1726 | `7e9947614d4dfa0f55835ec185df5d1a8607658bef35d63906a6c76d27312ece` |
-| `mcp/adapters/medicaid-ful-check-v1638.js` | 1248 | `e873ea4f478b7470bdfc0e82e780a504e50b34083145c7998a2e11de80a5b7dd` |
+| `mcp/adapters/medicaid-ful-check-v1638.js` | 2473 | `a26fca04cab2e39e3c78498eb2e32435e9548842ccf5e9da97e66dc5fad33b23` |
 | `mcp/adapters/medicaid-ura-v1510.js` | 1270 | `7fac13122fc1281547cf931a945dba7bb95bd92881c4026f1f24236b0b598cdb` |
 | `mcp/adapters/medicaid-work-requirement-v1507.js` | 1949 | `dec312d612604ef482ff176e3fde26d2af57dc9879f5eabd3d3fe9a157bc2bad` |
 | `mcp/adapters/medicare-enrollment-window-v1507.js` | 1007 | `3786ee42e578f18681ba86c898d79f2f35a6c4bed0e4daf3bcb431bffad9e9d0` |
@@ -3084,7 +3086,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 22928 | `8c8f97b92ec621bc772a46e3a00ce5cc966f4ee425f31fdf0c940eea8cfe1d4e` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
-| `views/group-v1638.js` | 36112 | `64604d063cfc6dcbf3891e215522a712a1df347db61a61705ed605d0f7f11191` |
+| `views/group-v1638.js` | 37082 | `aec86e9163b102aed6525aafaa9f889efbb176097003c96c47904235d32a40d3` |
 | `views/group-v1639.js` | 18893 | `2209e1dd51194684a4e840e20a066fb77c93ecad730d669cee5ee5cbaf687716` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v1640.js` | 5253 | `ca35d66a6cf6e4cba46c8d808a74318c266eea60d02f3a6cd116a63dd554588a` |

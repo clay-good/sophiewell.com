@@ -102,5 +102,13 @@
     "etag": null,
     "lastModified": "Mon, 21 Sep 2026 15:48:14 GMT",
     "fetchedAt": "2026-10-03"
+  },
+  "aca-ful": {
+    "url": "https://data.medicaid.gov/api/1/datastore/query/ce4cf49b-a21b-5a53-bbc3-509414940847/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=year&conditions[0][value]=2026&conditions[0][operator]=%3D&conditions[1][property]=month&conditions[1][value]=9&conditions[1][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
+    "edition": "2026-09 monthly",
+    "sha256": "755ec3786cf92d5001258c57facb319295f5cf3e3c2db3a481305d54d74d3b22",
+    "etag": "\"1792024570-gzip\"",
+    "lastModified": "Thu, 15 Oct 2026 00:36:10 GMT",
+    "fetchedAt": "2026-10-15"
   }
 }

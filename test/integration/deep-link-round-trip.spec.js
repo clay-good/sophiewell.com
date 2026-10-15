@@ -36,6 +36,8 @@ const ASYNC_TILES = [
   'substitution-check',
   // spec-v1601: the USPSTF list, through lib/uspstf-load.js.
   'preventive-owed',
+  // spec-v1638: an NDC reads CMS's federal upper limits file through lib/aca-ful-load.js.
+  'medicaid-ful-check',
 ];
 
 // Every `loadFile` call site in views/. If this moves, a tile has started (or

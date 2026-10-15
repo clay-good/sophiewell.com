@@ -9,7 +9,7 @@ test('the upper limit is 175% of the weighted average AMP, raised to the survey 
   assert.deepEqual([plain.fulPerUnit, plain.setBySurveyCost], [0.175, false]);
   const floored = medicaidFulCheck({ weightedAmp: 0.04, surveyCost: 0.12 });
   assert.deepEqual([floored.fulPerUnit, floored.setBySurveyCost, floored.flag], [0.12, true, 'set-by-survey-cost']);
-  assert.match(medicaidFulCheck({ weightedAmp: 0.1 }).note, /was not tested/);
+  assert.match(medicaidFulCheck({ weightedAmp: 0.1 }).notes.join(' '), /was not tested/);
   assert.equal(medicaidFulCheck({ weightedAmp: 0.1, surveyCost: 0.12, quantity: 90, dispensingFee: 10.5 }).limitForQuantity, 26.25);
   assert.match(medicaidFulCheck({}).message, /^Enter the weighted average/);
   assert.match(medicaidFulCheck({ weightedAmp: 0.1, quantity: 90 }).message, /professional dispensing fee/);

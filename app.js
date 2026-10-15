@@ -2837,7 +2837,7 @@ const UTILITIES = [
   { id: 'partd-prompt-pay-clock', name: 'Part D Prompt Payment Due Date and Interest (Pharmacy Claims)', group: 'Q', audiences: ['clinicians', 'educators', 'billers'], clinical: false },
   { id: 'partd-insulin-cost-cap', name: 'Part D Insulin Cost-Sharing Cap (Lesser of $35 or 25%)', group: 'Q', audiences: ['clinicians', 'educators', 'billers'], clinical: false },
   { id: 'cost-of-dispensing', name: 'Cost of Dispensing per Prescription and Break-Even Volume', group: 'Q', audiences: ['clinicians', 'educators', 'billers'], clinical: false },
-  { id: 'medicaid-ful-check', name: 'Medicaid Federal Upper Limit by Hand (175% of Weighted AMP)', group: 'Q', audiences: ['clinicians', 'educators', 'billers'], clinical: false },
+  { id: 'medicaid-ful-check', name: 'Medicaid Federal Upper Limit (FUL) Check', group: 'Q', audiences: ['clinicians', 'educators', 'billers'], clinical: false },
   { id: 'medicaid-drug-payment-check', name: 'Medicaid Fee-for-Service Drug Payment (Lowest-Of)', group: 'Q', audiences: ['clinicians', 'educators', 'billers'], clinical: false },
   { id: 'partd-transition-fill', name: 'Part D Transition Supply: Is One Owed, and How Much?', group: 'Q', audiences: ['clinicians', 'educators', 'billers'], clinical: false },
   { id: 'pharmacy-effective-rate', name: 'Effective Rate and Net Margin Reconciliation (AWP Discount Guarantee)', group: 'Q', audiences: ['clinicians', 'educators', 'billers'], clinical: false },

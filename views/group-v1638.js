@@ -22,6 +22,8 @@ import * as PP from '../lib/partd-prompt-pay-clock-v1638.js';
 import * as IC from '../lib/partd-insulin-cost-cap-v1638.js';
 import * as CD from '../lib/cost-of-dispensing-v1638.js';
 import * as MF from '../lib/medicaid-ful-check-v1638.js';
+import { loadFulLookup } from '../lib/aca-ful-load.js';
+import { normalizeNdc } from '../lib/nadac-margin.js';
 import * as MP from '../lib/medicaid-drug-payment-check-v1638.js';
 import * as TF from '../lib/partd-transition-fill-v1638.js';
 import * as ER from '../lib/pharmacy-effective-rate-v1638.js';
@@ -281,17 +283,28 @@ export const renderers = {
     }));
   },
   'medicaid-ful-check'(root) {
-    const pairs = [['mfc-amp', 'weightedAmp'], ['mfc-nadac', 'surveyCost'], ['mfc-qty', 'quantity'], ['mfc-fee', 'dispensingFee']];
-    numField(root, 'Weighted average of the monthly AMPs, dollars per unit', 'mfc-amp', '');
+    const pairs = [['mfc-ndc', 'ndc'], ['mfc-amp', 'weightedAmp'], ['mfc-nadac', 'surveyCost'], ['mfc-qty', 'quantity'], ['mfc-fee', 'dispensingFee']];
+    // spec-v1638 tool 18, file mode: an NDC reads CMS's federal upper limits file (data/aca-ful).
+    const ndcWrap = el('p');
+    ndcWrap.appendChild(el('label', { for: 'mfc-ndc', text: 'NDC, to read the limit from CMS\'s file (optional)' }));
+    ndcWrap.appendChild(el('br'));
+    ndcWrap.appendChild(el('input', { id: 'mfc-ndc', type: 'text', inputmode: 'numeric', autocomplete: 'off', placeholder: 'e.g. 00093-3542-56' }));
+    root.appendChild(ndcWrap);
+    numField(root, 'Weighted average of the monthly AMPs, dollars per unit (by hand)', 'mfc-amp', '');
     numField(root, 'National survey acquisition cost (NADAC), dollars per unit (optional)', 'mfc-nadac', '');
     numField(root, 'Quantity, units (optional)', 'mfc-qty', '');
     numField(root, 'State professional dispensing fee, dollars (with a quantity)', 'mfc-fee', '');
     const o = out(); root.appendChild(o);
-    wire(pairs.map(([d]) => d), () => safe(o, () => {
+    let seq = 0;
+    wire(pairs.map(([d]) => d), () => {
+      const mine = ++seq;
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      show(MF.medicaidFulCheck(args), o);
-    }));
+      const ndc = String(args.ndc).trim() ? normalizeNdc(args.ndc).ndc : null;
+      if (!ndc) { safe(o, () => show(MF.medicaidFulCheck(args), o)); return; }
+      safe(o, () => note(o, 'Looking up this NDC in CMS\'s federal upper limits file...'));
+      loadFulLookup(ndc).then((lookup) => { if (mine === seq) safe(o, () => show(MF.medicaidFulCheck({ ...args, lookup }), o)); });
+    });
   },
   'medicaid-drug-payment-check'(root) {
     const pairs = [['mdp-aac', 'aacPerUnit'], ['mdp-qty', 'quantity'], ['mdp-fee', 'dispensingFee'], ['mdp-uc', 'usualAndCustomary'], ['mdp-ful', 'fulPerUnit'], ['mdp-mac', 'stateMacPerUnit'], ['mdp-paid', 'amountPaid']];
