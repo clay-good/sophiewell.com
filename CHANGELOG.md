@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Antibiogram builder: Staphylococcus aureus is also reported as its MRSA subset, viridans
+  streptococci show percent intermediate to penicillin, and Streptococcus pneumoniae names the
+  breakpoint columns AHRQ's specification asks for.
 - Chelation dosing: an optional first dose lays out the course by date, with succimer's 43 dose
   times, edetate's days and dimercaprol's doses a day.
 - Fosphenytoin and phenytoin loading: the Dilantin label's adult oral load (1 g as 400, 300 and

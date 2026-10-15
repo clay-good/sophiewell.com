@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6637415f7d90452a`
-Generated: 2026-10-15T02:39:44.628Z
+Build ID: `924e3334906bac14`
+Generated: 2026-10-15T02:48:34.490Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -100,7 +100,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/angle-malocclusion-v720.js` | 3749 | `550bb570288e3b855208fcb6d653617ff5a407a361fd819c19a64567397420f2` |
 | `lib/anthro-v238.js` | 7926 | `4c5f0797d588d729e3730edcc931c50876ddee6370637bf44dfd5149e1fe9f9e` |
 | `lib/anthro-v272.js` | 3348 | `e3c7419342dd80c7034ae09801c66c05b3c5ce6e1aa2fdaf1d88e5f07b079485` |
-| `lib/antibiogram-builder-v1636.js` | 10369 | `25bc91290e7810c1cfd011b8a6f09987820ad0d90c324fd84ce6be76d2fd615d` |
+| `lib/antibiogram-builder-v1636.js` | 14128 | `8c4c558bb53cea154995509ed8196d0d858b9e99e990e87f2995dc0c5a936d58` |
 | `lib/anticholinergic-list-score-v1634.js` | 13014 | `09c48050ae3d14ac41fcb017b845e47518cf83d05640023d190ee091c08c6036` |
 | `lib/anticoag-switch-clock-v1633.js` | 20862 | `a9374ae1015ad54bf121111e0806849aeab10cdf49b1e6064afd366244bccd72` |
 | `lib/antidepressant-fluoxetine-equivalent-v1633.js` | 3961 | `59471d4605068c4921c11c8abe36e86f4e3e23d5ec65fe8f07f3d9fe5403479f` |

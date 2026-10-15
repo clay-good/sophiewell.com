@@ -29,28 +29,28 @@ test('rows that are not final, are surveillance, or fall outside the period are 
   const r = antibiogramBuilder({ isolates: rows.join('\n'), from: '2026-01-01', to: '2026-12-31' });
   assert.equal(r.isolates, 1);
   assert.deepEqual([r.dropped.notFinal, r.dropped.surveillance, r.dropped.outsidePeriod, r.dropped.undated], [1, 1, 1, 1]);
-  assert.match(r.note, /Rows left out: 1 outside the period, 1 not final, 1 surveillance, 1 without a date/);
+  assert.match(r.notes.join(' '), /Rows left out: 1 outside the period, 1 not final, 1 surveillance, 1 without a date/);
 });
 
 test('under 30 isolates is marked; under 10 says so', () => {
   const r29 = antibiogramBuilder({ isolates: [HEAD, ...ecoli(29)].join('\n') });
   assert.equal(r29.flag, 'small-samples');
-  assert.match(r29.note, /fewer than 30 isolates: results must be interpreted with caution/);
+  assert.match(r29.notes.join(' '), /fewer than 30 isolates: results must be interpreted with caution/);
   assert.equal(antibiogramBuilder({ isolates: [HEAD, ...ecoli(30)].join('\n') }).flag, 'built');
-  assert.match(antibiogramBuilder({ isolates: [HEAD, ...ecoli(9)].join('\n') }).note, /fewer than 10 isolates/);
+  assert.match(antibiogramBuilder({ isolates: [HEAD, ...ecoli(9)].join('\n') }).notes.join(' '), /fewer than 10 isolates/);
 });
 
 test('a list with no status or purpose column says what it could not check', () => {
   const r = antibiogramBuilder({ isolates: 'patient,organism,date,Ceftriaxone\nA,Escherichia coli,2026-03-10,S' });
-  assert.match(r.note, /no status column/);
-  assert.match(r.note, /no purpose column/);
-  assert.match(r.note, /No period was entered/);
+  assert.match(r.notes.join(' '), /no status column/);
+  assert.match(r.notes.join(' '), /no purpose column/);
+  assert.match(r.notes.join(' '), /No period was entered/);
 });
 
 test('a cell that is not S, I or R is not counted as tested', () => {
   const r = antibiogramBuilder({ isolates: 'patient,organism,date,Ceftriaxone\nA,Escherichia coli,2026-03-10,SDD\nB,Escherichia coli,2026-03-10,S\nC,Escherichia coli,2026-03-10,' });
   assert.equal(cellOf(r, 'Escherichia coli', 'Ceftriaxone').tested, 1);
-  assert.match(r.note, /1 result cell was not S, I or R/);
+  assert.match(r.notes.join(' '), /1 result cell was not S, I or R/);
 });
 
 test('the CSV carries one row per organism and agent', () => {
@@ -68,4 +68,32 @@ test('refusals', () => {
   assert.match(antibiogramBuilder({ isolates: `${HEAD}\nA,Escherichia coli,2026-03-10,final,diagnostic,S,S`, from: 'March' }).message, /^Enter the first day/);
   assert.match(antibiogramBuilder({ isolates: `${HEAD}\nA,Escherichia coli,nodate,final,diagnostic,S,S` }).message, /^Enter at least one isolate/);
   assert.equal(antibiogramBuilder(null).valid, false);
+});
+
+// The AHRQ document's organism rules, re-read October 14, 2026.
+test('S. aureus is reported for all isolates and again as the MRSA subset, by name or oxacillin result', () => {
+  const H = 'patient,organism,date,status,purpose,Oxacillin,Vancomycin';
+  const rows = [H,
+    'P1,Staphylococcus aureus,2026-01-02,final,diagnostic,R,S',
+    'P2,Staphylococcus aureus,2026-01-03,final,diagnostic,S,S',
+    'P3,MRSA,2026-01-04,final,diagnostic,,S',
+    'P3,Staphylococcus aureus,2026-02-04,final,diagnostic,R,S'];
+  const r = antibiogramBuilder({ isolates: rows.join('\n') });
+  // P3's later isolate is a duplicate of the same species, even though the first was written MRSA.
+  assert.equal(r.duplicatesRemoved, 1);
+  assert.equal(cellOf(r, 'Staphylococcus aureus', 'Vancomycin').tested, 3);
+  assert.equal(cellOf(r, 'Staphylococcus aureus, MRSA subset', 'Vancomycin').tested, 2);
+  assert.deepEqual(r.table.map((t) => t.organism).filter((x, i, a) => a.indexOf(x) === i), ['Staphylococcus aureus', 'Staphylococcus aureus, MRSA subset']);
+  assert.match(r.notes.join(' '), /MRSA subset is reported after all Staphylococcus aureus.*2 isolates written as MRSA or resistant to Oxacillin/);
+  const none = antibiogramBuilder({ isolates: ['patient,organism,date,Vancomycin', 'P1,Staphylococcus aureus,2026-01-02,S'].join('\n') });
+  assert.match(none.notes.join(' '), /could not be made/);
+});
+
+test('viridans streptococci and penicillin show percent intermediate; S. pneumoniae names the breakpoint columns', () => {
+  const H = 'patient,organism,date,Penicillin,Ceftriaxone';
+  const r = antibiogramBuilder({ isolates: [H, 'P1,Viridans group streptococci,2026-01-02,I,S', 'P2,Viridans group streptococci,2026-01-03,S,S', 'P3,Streptococcus pneumoniae,2026-01-03,S,S'].join('\n') });
+  assert.equal(cellOf(r, 'Viridans group streptococci', 'Penicillin').percentIntermediate, 50);
+  assert.equal(cellOf(r, 'Viridans group streptococci', 'Ceftriaxone').percentIntermediate, undefined);
+  assert.match(r.notes.join(' '), /meningitis and nonmeningitis breakpoints/);
+  assert.doesNotMatch(antibiogramBuilder({ isolates: [H, 'P1,Klebsiella pneumoniae,2026-01-02,S,S'].join('\n') }).notes.join(' '), /breakpoints/);
 });
