@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Opioid MME: at 90 MME/day or more, the result names Medicare Part D's three opioid thresholds and
+  links the safety-edit and drug management program checks.
 - NADAC margin: an NDC with a Medicaid federal upper limit shows that limit beside the cost.
 - Medicaid Federal Upper Limit Check: an NDC reads the limit from CMS's monthly federal upper
   limits file (a new dataset, refreshed with the others), with its product group and whether the

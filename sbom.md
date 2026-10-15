@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d4b5067c1ccad58e`
-Generated: 2026-10-15T01:09:50.598Z
+Build ID: `f61eeeb2b8cf7e49`
+Generated: 2026-10-15T01:37:35.748Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1060,7 +1060,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/partd-dmp-notice-clock-v1638.js` | 9200 | `905852090424d85f73cb387c37e90cbd427835eb1474a0f621888ecd5c3620f5` |
 | `lib/partd-insulin-cost-cap-v1638.js` | 5424 | `1d8e607f3fb0fd48e376349a2ce1079a743061a9b81085a90848cfcfa4a0b50a` |
 | `lib/partd-opioid-measures-v1638.js` | 12824 | `b384e65e01aeafa0c3e28f60af97f37ab8f929c73becc2750a64dd4efc6bf177` |
-| `lib/partd-opioid-safety-edit-v1638.js` | 9088 | `1df1435fba42adb81b4b4f0779a21720b3f6385d007aaeb61b62a5861845a42a` |
+| `lib/partd-opioid-safety-edit-v1638.js` | 9832 | `f4ae6acbc17d2f567f9577fbc93e821e77ec7e2ec162253dcd12844d411d0c37` |
 | `lib/partd-prompt-pay-clock-v1638.js` | 9088 | `a555c982fed826b007dae6ea20fdb43fa4093b55471a3989eced6f3c9683aef8` |
 | `lib/partd-transition-fill-v1638.js` | 8268 | `27f432c879357a1f3c8fcc00a0afa671eeb86ec3999acfa4df561d44e2dbd79b` |
 | `lib/pas-bundle-check.js` | 5368 | `2a876c49d1315cafa7879fc2b7f5c33f376dc2e3c54a29b346fa15fca04b2f64` |
@@ -2264,7 +2264,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/medicare-enrollment-window-v1507.js` | 1007 | `3786ee42e578f18681ba86c898d79f2f35a6c4bed0e4daf3bcb431bffad9e9d0` |
 | `mcp/adapters/medicare-ffs-pa-required.js` | 1018 | `eebf12722cfdb13ba2cb6688fc051983b0a304aa3191f706013d7e2c937bdcc1` |
 | `mcp/adapters/medicare-penalties-v1507.js` | 2712 | `d3732bee66bb93fc846a881c145bd6c4b89b264cf49d9c4421097d97e9ba3d4a` |
-| `mcp/adapters/medication-v4.js` | 10586 | `3955d99d90f94ecd9846f7b4fe5f821c83b04ca75c692f2e3eb643b1540ad18e` |
+| `mcp/adapters/medication-v4.js` | 10742 | `441b8f9ee515ea267c65bfe5beeeb431f69b361f93add0fe29d92de7858c9b41` |
 | `mcp/adapters/medication-v5.js` | 12355 | `17ebba58282c66a525fa737cfcb8b8c63459a606b6e4e06354c03b2029ddd632` |
 | `mcp/adapters/meld3-v678.js` | 1809 | `cdd0ac147f46bd4dc5a5ac9f71d3a8fb62e8f008a2609cc05c3369f18f682c33` |
 | `mcp/adapters/membranous-risk-v878.js` | 2992 | `7b6babfdf69026f8522a02f9539b48ebb04e105912e1f4542caacbc00b82d3c5` |
@@ -2888,7 +2888,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 55874 | `98830ddee7d633ea4c3a75bd7340d4af22f60c459a2777e33a9ba1388ba7cf55` |
-| `views/group-f.js` | 56422 | `9f289dfa9170a363365582e89448a5e2b45c4f8f6b332719a3c4c43c50cd1391` |
+| `views/group-f.js` | 56920 | `8661e5ccd01ef2912b4ee1b311024f5f8841c20e942671bd0dbbededf56c45cd` |
 | `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 28753 | `ad396a2d5090a7e40a0403505096e7734553ec173e804579a474aa105cd39235` |

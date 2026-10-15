@@ -1090,5 +1090,6 @@ Left: 2 (`mtm-service-clock`), 11 to 13 (the three claims-based measure tools), 
 | `med-sync-plan` | Linked to `partd-daily-cost-share`, and the result's sentence names it. |
 | `partd-year-cost` | The insulin sentence was corrected under [spec-v1641](spec-v1641.md) row 17; now linked to `partd-insulin-cost-cap`. |
 | `nadac-margin` | Built October 14, 2026: an NDC on CMS's federal upper limits file shows its limit per unit beside the cost, said to be an aggregate cap on a state's spending and not the claim's price, and links `medicaid-ful-check`. An NDC not on the file adds nothing. |
+| `opioid-mme` | Built October 14, 2026: at 90 MME/day or more the result names the three Part D thresholds (care coordination edit at 90 or more, optional hard edit at 200 or more, drug management program review above 90 on average over 6 months with the prescriber and pharmacy counts) and links `partd-opioid-safety-edit` and `partd-dmp-criteria-check`. The MCP result carries the same sentence as `partDThresholds`. |
 | `pdc-star` | Built under spec-v1641 row 21. The links to the two measure tools wait on tools 11 and 12. |
 

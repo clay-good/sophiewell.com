@@ -18,6 +18,7 @@ import { insulinDripRate } from '../lib/insulin-drip.js';
 import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, CALCIUM_MMOL_UNITS } from '../lib/field-units.js';
 import { resultRow } from '../lib/result-copy.js';
 import { META } from '../lib/meta.js';
+import { PARTD_MME_THRESHOLDS } from '../lib/partd-opioid-safety-edit-v1638.js';
 import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '../lib/derivation.js';
 
 function field(label, id, opts = {}) {
@@ -567,6 +568,12 @@ export const renderers = {
       if (r.totalMme >= 50) flags.push('At or above 50 MME/day. CDC 2022: add precautions, follow up more often, and offer naloxone and overdose prevention education to the patient and household members.');
       if (r.totalMme >= 90) flags.push('At or above 90 MME/day. That threshold is from the 2016 CDC guideline; the 2022 guideline sets no 90 MME line and says increases beyond 50 bring diminishing benefit and rising risk.');
       for (const f of flags) out.appendChild(el('p', { text: f }));
+      // spec-v1638 backfill: the Part D thresholds differ from each other and from CDC's.
+      if (r.totalMme >= 90) {
+        out.appendChild(el('p', {}, [`${PARTD_MME_THRESHOLDS} See `,
+          el('a', { href: '#partd-opioid-safety-edit', text: 'which Part D safety edit fires' }), ' and ',
+          el('a', { href: '#partd-dmp-criteria-check', text: 'the drug management program criteria' }), '.']));
+      }
       out.appendChild(el('h3', { text: 'Per-medication breakdown' }));
       out.appendChild(el('ul', {}, r.breakdown.map((b) =>
         el('li', { text: `${b.drug}: ${b.mgPerDose} mg x ${b.dosesPerDay}/day x factor ${b.factor || '?'} = ${b.mme == null ? '(unknown drug)' : b.mme.toFixed(1) + ' MME'}` }))));

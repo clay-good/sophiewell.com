@@ -10,6 +10,7 @@ import { dirname, join } from 'node:path';
 
 import * as F from '../../lib/medication-v4.js';
 import * as AB from '../../lib/abx-renal-v1632.js';
+import { PARTD_MME_THRESHOLDS } from '../../lib/partd-opioid-safety-edit-v1638.js';
 
 // The equivalence / renal-dosing tables are the exact data/ shards the website
 // ships (single source of truth, spec-v183 §1.2 - never re-typed here). Reading
@@ -105,7 +106,7 @@ export default [
     summary: 'CDC 2022 opioid morphine-milligram-equivalents (MME): daily MME = mg per dose x doses per day x the drug conversion factor. Reference only (not a prescription), with the CDC 2022 action at 50 MME/day or more (added precautions, more frequent follow-up, offer naloxone and overdose prevention education). The 90 MME/day line belonged to the 2016 guideline; 2022 sets none.',
     compute: (a) => {
       const r = F.mmeTotal({ rows: [{ drug: a.drug, mgPerDose: a.mgPerDose, dosesPerDay: a.dosesPerDay }], factors: MME });
-      return { ...r, cdcReassessThreshold: 50, cdcJustifyThreshold: 90 };
+      return { ...r, cdcReassessThreshold: 50, cdcJustifyThreshold: 90, ...(r.totalMme >= 90 ? { partDThresholds: PARTD_MME_THRESHOLDS } : {}) };
     },
     fields: [
       // The tile is a repeatable row builder; these are row one, which is the
