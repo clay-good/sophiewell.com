@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Label titration calendar: topiramate adjunctive schedules for adults and ages 2 to 16, from the
+  prescriber's choices checked against the label's ranges.
 - Lamotrigine titration calendar: the label's Table 4 conversion from valproate to lamotrigine
   alone, dated from the current valproate dose.
 - Label titration calendar: the Otezla and Entresto pediatric schedules, by weight.

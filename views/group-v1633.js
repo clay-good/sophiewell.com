@@ -308,15 +308,20 @@ export const renderers = {
     }));
   },
   'label-titration-calendar'(root) {
-    const pairs = [['lcal-preset', 'preset'], ['lcal-date', 'startDate'], ['lcal-weeks', 'weeksPerStep'], ['lcal-double', 'weeksToDouble'], ['lcal-ace', 'lastAceDose'], ['lcal-steps', 'steps'], ['lcal-strengths', 'strengths'], ['lcal-weight', 'weightKg']];
+    const pairs = [['lcal-preset', 'preset'], ['lcal-date', 'startDate'], ['lcal-weeks', 'weeksPerStep'], ['lcal-double', 'weeksToDouble'], ['lcal-ace', 'lastAceDose'], ['lcal-steps', 'steps'], ['lcal-strengths', 'strengths'], ['lcal-weight', 'weightKg'], ['lcal-start', 'startMg'], ['lcal-step', 'stepMg'], ['lcal-target', 'targetMg'], ['lcal-stepkg', 'stepMgKg'], ['lcal-targetkg', 'targetMgKg']];
     selectField(root, 'Schedule', 'lcal-preset', LC.PRESETS);
     dateField(root, 'Start date', 'lcal-date');
-    numField(root, 'Memantine: weeks at each step (the label\'s minimum is 1)', 'lcal-weeks', '');
+    numField(root, 'Weeks at each step (memantine: at least 1; topiramate, ages 2 to 16: 1 or 2)', 'lcal-weeks', '');
     // The label names the range in its text, so the control enforces it (min and max), like every other.
     const dbl = numField(root, 'Sacubitril/valsartan: weeks before the dose is doubled (2 to 4)', 'lcal-double', '').querySelector('input');
     dbl.min = '2'; dbl.max = '4'; dbl.step = '1';
     dateField(root, 'Sacubitril/valsartan: last ACE-inhibitor dose (optional)', 'lcal-ace', 'datetime-local');
     numField(root, 'Pediatric schedules: weight, kg', 'lcal-weight', '');
+    { const i = numField(root, 'Topiramate adjunctive, adults: starting dose, mg/day (25 to 50)', 'lcal-start', '').querySelector('input'); i.min = '25'; i.max = '50'; }
+    { const i = numField(root, 'Topiramate adjunctive, adults: weekly increment, mg/day (25 to 50)', 'lcal-step', '').querySelector('input'); i.min = '25'; i.max = '50'; }
+    numField(root, 'Topiramate adjunctive, adults: target dose, mg/day', 'lcal-target', '');
+    { const i = numField(root, 'Topiramate adjunctive, ages 2 to 16: increment, mg/kg/day (1 to 3)', 'lcal-stepkg', '').querySelector('input'); i.min = '1'; i.max = '3'; }
+    { const i = numField(root, 'Topiramate adjunctive, ages 2 to 16: target, mg/kg/day (5 to 9)', 'lcal-targetkg', '').querySelector('input'); i.min = '5'; i.max = '9'; }
     areaField(root, 'My own steps, one per line: dose in mg, times a day, days', 'lcal-steps', '');
     plainText(root, 'Own steps: tablet strengths stocked, mg (optional, for tablet counts)', 'lcal-strengths', 'e.g. 25, 50, 100');
     const o = out(); root.appendChild(o);

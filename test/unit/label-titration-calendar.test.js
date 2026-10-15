@@ -11,7 +11,7 @@ const doses = (r) => r.rows.map((x) => x.dose);
 test('the five labels answer, and there is no GLP-1 preset', () => {
   for (const l of Object.values(LABELS)) assert.equal(labelRow(l.setId, now).answers, true, l.brand);
   assert.equal(PRESETS.some((p) => /glp|semaglutide|tirzepatide|liraglutide|dulaglutide/.test(p.value)), false);
-  assert.equal(PRESETS.length, 9); // 7, then the Otezla and Entresto pediatric schedules (2026-10-15)
+  assert.equal(PRESETS.length, 11); // 7, then the Otezla and Entresto pediatric and the two topiramate adjunctive schedules (2026-10-15)
 });
 
 test('topiramate: the monotherapy and migraine tables, week by week', () => {
@@ -100,4 +100,18 @@ test('pediatric presets: Otezla by weight band, Entresto by weight band every 2 
   assert.match(doses(small)[0], /^1\.6 mg\/kg \(32 mg of sacubitril and valsartan combined at 20 kg\) twice daily$/);
   assert.match(small.notes.join(' '), /oral suspension or oral pellets/);
   assert.match(run({ preset: 'sacubitril-valsartan-pediatric' }).message, /weight/);
+});
+
+// Topamax section 2.2, adjunctive therapy (version 31, re-read October 15, 2026).
+test('topiramate adjunctive: the prescriber\'s choices within the label ranges, adults and children', () => {
+  const a = run({ preset: 'topiramate-adjunctive', startMg: 50, stepMg: 50, targetMg: 200 });
+  assert.deepEqual(doses(a), ['50 mg/day, in two divided doses', '100 mg/day, in two divided doses', '150 mg/day, in two divided doses', '200 mg/day, in two divided doses']);
+  assert.match(a.notes.join(' '), /within the label's 200 to 400 mg\/day/);
+  assert.match(run({ preset: 'topiramate-adjunctive', startMg: 75, stepMg: 50, targetMg: 200 }).message, /25 to 50 mg\/day/);
+  assert.match(run({ preset: 'topiramate-adjunctive', startMg: 25, stepMg: 25, targetMg: 500 }).notes.join(' '), /above 400 mg\/day/);
+  const c = run({ preset: 'topiramate-adjunctive-pediatric', weightKg: 20, stepMgKg: 2, weeksPerStep: 2, targetMgKg: 6 });
+  assert.deepEqual(doses(c), ['25 mg nightly', '65 mg/day, in two divided doses (3.3 mg/kg/day)', '105 mg/day, in two divided doses (5.3 mg/kg/day)', '120 mg/day, in two divided doses (6 mg/kg/day)']);
+  assert.deepEqual(c.rows.map((r) => r.from), ['2026-10-12', '2026-10-19', '2026-11-02', '2026-11-16']);
+  assert.match(doses(run({ preset: 'topiramate-adjunctive-pediatric', weightKg: 6, stepMgKg: 1, weeksPerStep: 1, targetMgKg: 5 }))[0], /^18 mg nightly \(3 mg\/kg\/day at 6 kg, below 25 mg\)$/);
+  assert.match(run({ preset: 'topiramate-adjunctive-pediatric', weightKg: 20, stepMgKg: 4, weeksPerStep: 1, targetMgKg: 6 }).message, /1 to 3 mg\/kg\/day/);
 });
