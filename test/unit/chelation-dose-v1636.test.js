@@ -59,3 +59,16 @@ test('nothing is defaulted', () => {
   assert.match(c({ regimen: 'edetate-lead-nephropathy', bsa: 1.8 }).message, /^Enter the serum creatinine/);
   assert.equal(chelationDose(null, now).valid, false);
 });
+
+// spec-v1636 tool 10: the dose calendar from an optional first dose.
+test('calendar: succimer by its 8- and 12-hour intervals, edetate by day, dimercaprol by doses a day', () => {
+  const t = new Date('2026-10-14T12:00:00Z');
+  const s = chelationDose({ regimen: 'succimer-lead', weight: 20, start: '2026-10-14T08:00' }, t);
+  assert.equal(s.calendar.length, 43);
+  assert.deepEqual([s.calendar[0], s.calendar[14], s.calendar[15], s.calendar[42]], ['2026-10-14T08:00', '2026-10-19T00:00', '2026-10-19T08:00', '2026-11-01T20:00']);
+  assert.match(chelationDose({ regimen: 'edetate-lead-nephropathy', bsa: 1.8, creatinine: 3.5, start: '2026-10-14' }, t).notes.join(' '), /Calendar: Wed Oct 14, 2026; Fri Oct 16, 2026; Sun Oct 18, 2026\./);
+  assert.match(chelationDose({ regimen: 'dimercaprol-arsenic-gold-mild', weight: 70, start: '2026-10-14' }, t).notes.join(' '), /4 doses a day; Fri Oct 16, 2026: 2 doses a day; Sat Oct 17, 2026 to Mon Oct 26, 2026: 1 dose a day/);
+  assert.match(chelationDose({ regimen: 'dimercaprol-mercury', weight: 70, start: '2026-10-14' }, t).notes.join(' '), /No calendar/);
+  assert.equal(chelationDose({ regimen: 'succimer-lead', weight: 20 }, t).calendar, undefined);
+  assert.match(chelationDose({ regimen: 'succimer-lead', weight: 20, start: '2026-02-30T08:00' }, t).message, /^Enter the first dose as a date and time/);
+});

@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Chelation dosing: an optional first dose lays out the course by date, with succimer's 43 dose
+  times, edetate's days and dimercaprol's doses a day.
 - Fosphenytoin and phenytoin loading: the Dilantin label's adult oral load (1 g as 400, 300 and
   300 mg two hours apart), flagged for a history of renal or liver disease.
 - The weekly page watch now covers FDA's DSCSA exemptions page and CMS's MTM page, so a new

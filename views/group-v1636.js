@@ -340,11 +340,12 @@ export const renderers = {
     }));
   },
   'chelation-dose'(root) {
-    const pairs = [['chd-regimen', 'regimen'], ['chd-weight', 'weight'], ['chd-bsa', 'bsa'], ['chd-cr', 'creatinine']];
+    const pairs = [['chd-regimen', 'regimen'], ['chd-weight', 'weight'], ['chd-bsa', 'bsa'], ['chd-cr', 'creatinine'], ['chd-start', 'start']];
     selectField(root, 'Agent and poisoning', 'chd-regimen', CH.REGIMENS);
     numField(root, 'Weight, kg (succimer and dimercaprol)', 'chd-weight', '');
     numField(root, 'Body surface area, m² (edetate calcium disodium)', 'chd-bsa', '');
     numField(root, 'Serum creatinine, mg/dL (edetate, lead nephropathy)', 'chd-cr', '');
+    dateField(root, 'First dose (optional, for the dose calendar)', 'chd-start', 'datetime-local');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};

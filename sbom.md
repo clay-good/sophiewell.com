@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `23d91a16b8198ff0`
-Generated: 2026-10-15T02:25:28.421Z
+Build ID: `6637415f7d90452a`
+Generated: 2026-10-15T02:39:44.628Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -268,7 +268,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/chair-day-planner.js` | 7632 | `898f5ddc730de517d7ccf5d56497704ec5f2aa5c6b60812dcd12400cb67fbc40` |
 | `lib/chalder-fatigue-v733.js` | 2855 | `53b98fdcf781ce148e2818c35f5c0f193509de9c34b3ff1b69e69913cd500eb1` |
 | `lib/chatelut-carboplatin-v1635.js` | 5610 | `72445dac9c7ad76ad515893e9b106fbce8e8a0d80dfda44ea47a384973aa792b` |
-| `lib/chelation-dose-v1636.js` | 11557 | `014ee1608340aaf1a737bd123e9fcac1bea8ecc5212d149716c7524fd23f4a51` |
+| `lib/chelation-dose-v1636.js` | 14745 | `790d514ab572714c6910afdf47f47a35958c94bb71f39d55b8d59c996bf4a838` |
 | `lib/chemo-dose-verify-v1635.js` | 7487 | `376cb567d815681593ab280f6974e63c44d9e1f7f8063df682ac61d9a52c7bdd` |
 | `lib/chemo-organ-label-dose-v1635.js` | 26209 | `1d13b3da9f2a82228b6686d94b38fde6999b113b401485bdf379418f56f1649d` |
 | `lib/cheops-v645.js` | 4245 | `3089c79629ad74cc9784257cc07ca41dc8b6c1b6595279bade935fd4d9b2e89c` |
@@ -1742,7 +1742,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/chair-day-planner.js` | 980 | `81c8342fc1580dd12db5e13e28031d007a6227b88db8a1816510726b883ae88f` |
 | `mcp/adapters/chalder-fatigue-v733.js` | 2158 | `5a12a583d995f2ac15f218fa419ba9ca8577c11b013e5c2948613e9c2c45bf5d` |
 | `mcp/adapters/chatelut-carboplatin-v1635.js` | 1593 | `716940959e8e3942486800a83d201bd5fae6e0b7d633bc72fcb640799f9d1b07` |
-| `mcp/adapters/chelation-dose-v1636.js` | 1287 | `58224639bd8d814121a6632c2ab9f983b806de26597f1bea1c8e2e044ceb8b69` |
+| `mcp/adapters/chelation-dose-v1636.js` | 1418 | `569fd629c198b80f0ed322f90b56d3657a592833d1b688b38fe8b06ace09fcd1` |
 | `mcp/adapters/chemo-dose-verify-v1635.js` | 2127 | `f6dc478c0208641fc94ee226d232eb8a5489dc86033a223eb24bfc22c4f6633c` |
 | `mcp/adapters/chemo-organ-label-dose-v1635.js` | 2202 | `3911140c934c9f8e5f9e3c2418ab37cd43a3738fbb89fef9d4762c0452b86771` |
 | `mcp/adapters/cheops-v645.js` | 2177 | `bfbdb6762127c40b462612d5b9b0fbecd3f54a38d89b5e3e58ee5f59ea2eafe8` |
@@ -3085,7 +3085,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1633.js` | 29671 | `4e0c93aabd98861f794103eb371c31305c6d008a0d3b376fbb47e1bcd0bc550b` |
 | `views/group-v1634.js` | 14483 | `a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d` |
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
-| `views/group-v1636.js` | 22928 | `8c8f97b92ec621bc772a46e3a00ce5cc966f4ee425f31fdf0c940eea8cfe1d4e` |
+| `views/group-v1636.js` | 23052 | `9d60762449deff2de0cbc47c0ef499a662ac8b5b0caa930350039110b02cf134` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
 | `views/group-v1638.js` | 37577 | `ada2fb1d7e11c3596f9b8337f7b30a8a23155c4bec1b129187a2f4b7ff50bb5c` |
 | `views/group-v1639.js` | 18893 | `2209e1dd51194684a4e840e20a066fb77c93ecad730d669cee5ee5cbaf687716` |
