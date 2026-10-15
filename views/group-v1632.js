@@ -173,11 +173,14 @@ export const renderers = {
     }));
   },
   'cns-renal-dose-check'(root) {
-    const pairs = [['cns-regimen', 'regimen'], ['cns-dialysis', 'dialysis'], ['cns-kidney', 'kidney'], ['cns-bsa', 'bsa']];
+    const pairs = [['cns-regimen', 'regimen'], ['cns-dialysis', 'dialysis'], ['cns-kidney', 'kidney'], ['cns-bsa', 'bsa'], ['cns-dose', 'enteredDose'], ['cns-ref', 'referenceDose']];
     selectField(root, 'Drug', 'cns-regimen', CN.REGIMENS);
     selectField(root, 'Dialysis', 'cns-dialysis', CN.DIALYSIS);
     numField(root, 'Creatinine clearance, mL/min (GFR for duloxetine)', 'cns-kidney', '');
     numField(root, 'Levetiracetam: body surface area, m²', 'cns-bsa', '');
+    // spec-v1632 tool 7: an optional daily dose against the row's maximum.
+    numField(root, 'Daily dose to check, mg/day (optional)', 'cns-dose', '');
+    numField(root, 'Lacosamide maximum or topiramate usual dose, mg/day (for those rows)', 'cns-ref', '');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};

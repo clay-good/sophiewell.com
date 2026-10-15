@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Antiseizure and CNS renal dose check: an optional daily dose is checked against the label row's
+  maximum; lacosamide's and topiramate's relative rows use a reference dose you enter.
+- Phenytoin dose from levels: with one steady-state level, a Km you enter gives the maximum rate and
+  the dose for a target (no Km is supplied).
 - Digoxin label dose: a tablet dose converts to intravenous at the ratio the label's four printed
   pairs share, saying when a dose is not one of those pairs.
 - The antibiogram builder, Statin Use in Persons with Diabetes, the Part D concurrent-use measures

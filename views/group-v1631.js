@@ -264,13 +264,14 @@ export const renderers = {
   },
 
   'phenytoin-mm-dose'(root) {
-    const pairs = [['pm-dose1', 'dose1'], ['pm-form1', 'form1'], ['pm-level1', 'level1'], ['pm-dose2', 'dose2'], ['pm-form2', 'form2'], ['pm-level2', 'level2'], ['pm-target', 'target'], ['pm-test', 'testDose'], ['pm-testform', 'testForm']];
+    const pairs = [['pm-dose1', 'dose1'], ['pm-form1', 'form1'], ['pm-level1', 'level1'], ['pm-dose2', 'dose2'], ['pm-form2', 'form2'], ['pm-level2', 'level2'], ['pm-target', 'target'], ['pm-test', 'testDose'], ['pm-testform', 'testForm'], ['pm-km', 'km']];
     numField(root, 'First daily dose, mg/day', 'pm-dose1', '');
     selectField(root, 'First dose is', 'pm-form1', PM.FORMS);
     numField(root, 'Steady-state level on the first dose, mcg/mL', 'pm-level1', '');
     numField(root, 'Second daily dose, mg/day', 'pm-dose2', '');
     selectField(root, 'Second dose is', 'pm-form2', PM.FORMS);
     numField(root, 'Steady-state level on the second dose, mcg/mL', 'pm-level2', '');
+    numField(root, 'Or, with one level only: your Km, mcg/mL (no default)', 'pm-km', '');
     numField(root, 'Target level, mcg/mL', 'pm-target', '');
     numField(root, 'A dose to test, mg/day (optional)', 'pm-test', '');
     selectField(root, 'Dose to test is', 'pm-testform', PM.FORMS);

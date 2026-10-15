@@ -980,4 +980,4 @@ build stores the version and published date instead.
 | 34. `radiation-distance-shielding` | Built (group Q). The two label attenuation tables were re-read October 11, 2026. A thickness between two rows takes the thinner row's factor and says the true factor lies between; the tool does not interpolate, and a shield thinner than the first row is credited nothing. The rate's unit is the reader's and is carried through. |
 | 35. `occupational-dose-limit-check` | Built (group Q) on 10 CFR 20.1201(a) and 20.1208(a). Doses are entered in rem, mrem or mSv (a required choice). The projection is plain proportion and is not applied to the pregnancy limit, which is not annual. License ALARA levels are not included. |
 
-Not built: the other 16 tools: oncology tools 1 to 4, 6 to 9, 11 to 13 and 15 to 18, and tool 33 (gated).
+Not built: tool 3 and tool 33 (gated), and tools 16 to 18, held with the CPIC tools of [spec-v1640](spec-v1640.md) on the owner's licensing question. Every other tool has a row in the table above (this line corrected October 15, 2026).

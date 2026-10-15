@@ -75,3 +75,22 @@ test('nothing is defaulted; a superseded label withholds that drug only', () => 
   assert.deepEqual([r.withheld, r.adjustedClearance], [true, undefined]);
   assert.equal(d({ regimen: 'varenicline', dialysis: 'none', kidney: 40 }, now, table).withheld, undefined);
 });
+
+// spec-v1632 tool 7: an entered daily dose against the row's maximum; lacosamide and topiramate need the
+// reader's reference dose.
+test('entered dose: the row maximum, a reference dose for relative rows, and avoid-use', async () => {
+  const { cnsRenalDoseCheck: c } = await import('../../lib/cns-renal-dose-check-v1632.js');
+  const at = new Date('2026-10-15T12:00:00Z');
+  const base = (regimen, kidney, extra = {}) => c({ regimen, dialysis: 'none', kidney, ...extra }, at);
+  const t = base('tramadol-ir', 20, { enteredDose: 300 });
+  assert.deepEqual([t.doseCheck, t.rowMaximumMgPerDay, t.abnormal], ['above-row-maximum', 200, true]);
+  assert.equal(base('memantine-er', 20, { enteredDose: 14 }).doseCheck, 'within-row-maximum');
+  assert.equal(base('levetiracetam', 60, { bsa: 1.73, enteredDose: 2500 }).rowMaximumMgPerDay, 2000);
+  assert.match(base('lacosamide', 20, { enteredDose: 300 }).notes.join(' '), /relative to the maximum dosage for the indication.*Enter that figure/);
+  const l = base('lacosamide', 20, { enteredDose: 350, referenceDose: 400 });
+  assert.deepEqual([l.doseCheck, l.rowMaximumMgPerDay], ['above-row-maximum', 300]);
+  assert.equal(base('topiramate', 50, { enteredDose: 200, referenceDose: 400 }).doseCheck, 'within-row-maximum');
+  assert.equal(base('duloxetine', 20, { enteredDose: 30 }).doseCheck, 'label-says-avoid');
+  assert.match(base('tramadol-ir', 60, { enteredDose: 300 }).notes.join(' '), /states no daily maximum/);
+  assert.equal(base('tramadol-ir', 20).doseCheck, undefined);
+});

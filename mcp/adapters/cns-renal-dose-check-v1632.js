@@ -14,6 +14,8 @@ export default [
       { dom: 'cns-dialysis', arg: 'dialysis', kind: 'enum', required: true, values: CN.DIALYSIS.map((d) => d.value), label: 'Dialysis: none, hd or pd' },
       { dom: 'cns-kidney', arg: 'kidney', kind: 'number', label: 'Creatinine clearance (GFR for duloxetine)', unit: 'mL/min' },
       { dom: 'cns-bsa', arg: 'bsa', kind: 'number', label: 'Levetiracetam: body surface area', unit: 'm²' },
+      { dom: 'cns-dose', arg: 'enteredDose', kind: 'number', label: 'Daily dose to check against the row maximum (optional)', unit: 'mg/day' },
+      { dom: 'cns-ref', arg: 'referenceDose', kind: 'number', label: 'Lacosamide maximum dosage, or topiramate usual adult dose (for those rows)', unit: 'mg/day' },
     ],
   },
 ];

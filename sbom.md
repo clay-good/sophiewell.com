@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `30d1b2c3874ee563`
-Generated: 2026-10-15T05:53:27.125Z
+Build ID: `133028771b7d1db3`
+Generated: 2026-10-15T06:17:53.749Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -296,7 +296,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
 | `lib/cmea-sales-limit-v1637.js` | 10263 | `0c4fe373f19ea64b85bcf0c23b628fd4fe86da3046edeec001fcb81a9a762249` |
-| `lib/cns-renal-dose-check-v1632.js` | 8995 | `ec3d76a5bdeed7d8310646140cb74769c485233fa356da5cd8eff6d62600b169` |
+| `lib/cns-renal-dose-check-v1632.js` | 12121 | `48e4747ba7c5a3f6f3794a2ee86081bf50e8b0ee50e64d725f601236bcdf6b5c` |
 | `lib/coagscore-v232.js` | 3053 | `aff9e82479da5b38deeaf70ade27caa7f5d1a0f21b01d74f764ca147e9846bd8` |
 | `lib/cobb-angle-v694.js` | 3885 | `c51f18d33e692edaf7490e8c3d849bc589a8e4daa5526c46535bf93c997333e3` |
 | `lib/cobra-clock-v1507.js` | 5963 | `b6ac3f4bbe1f7061adfc1e2d69c97a4baa582b9e2cf781b73f66a5a91cf3d326` |
@@ -1109,7 +1109,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ph-hemodynamics-2022-v826.js` | 7915 | `70cf4c387cf44e6b5fbab5408c18d2da54ee1684930c7ec611c09f1c984202d8` |
 | `lib/pharmacy-effective-rate-v1638.js` | 12724 | `67e39e438633f001b2fbefe0d57d52301747966b66694cccb96e12e70d722ae3` |
 | `lib/pharmacy-spread-check.js` | 9390 | `98f806bc66ec51439e458acd9a070c3c29578f376c493fc8f4a73f3f60514add` |
-| `lib/phenytoin-mm-dose-v1631.js` | 8572 | `ed4650defcbba931001c61256b1f3cea9e8857edde4ee8af9ed404dff0b516f9` |
+| `lib/phenytoin-mm-dose-v1631.js` | 10431 | `438ce80260b881f740cf3216aa1475a323e0ed453fa93b02dbbb679bb228f503` |
 | `lib/phq15-v734.js` | 2898 | `7b7affd6a2e2f0c972afe4414d12842b9bba4b1d5fba515e994b15a4a5357e1f` |
 | `lib/pi-ll-mismatch-v705.js` | 3418 | `5a03417d1e1b28570245a4bea9595c9bddbb3435a738185882cbeb8413fc9100` |
 | `lib/pipkin-femoral-head-v375.js` | 3888 | `98e119fb2b90e4b5b5a4ca6e221306793ee9a7bfae003b66b99bbdfb5ac3bb95` |
@@ -1772,7 +1772,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical.js` | 29389 | `df78180fcb80b3e04653bb809071e4d0af7accd8ed293d43b868a15432dc9615` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/cmea-sales-limit-v1637.js` | 2142 | `0bc92156b2b0001f7c6976c12585f83fbc1be5c2781d18d0934b0a1382d615eb` |
-| `mcp/adapters/cns-renal-dose-check-v1632.js` | 1381 | `410badc0fed1c40b89fb2d1acd21383f9fa4dea1b3779aed84bba20b0ed574aa` |
+| `mcp/adapters/cns-renal-dose-check-v1632.js` | 1690 | `caeec305d713a62fd217c13b25df096aaf521d81623b7ba6ff752566fd8c7552` |
 | `mcp/adapters/coagscore-v232.js` | 2450 | `29d9720d14256b871c8c9752ecadd8f5df16342529bf67afacbc1028ed2c3d0c` |
 | `mcp/adapters/cobb-angle-v694.js` | 955 | `efdf4e8553a15070d3c7c82e3feeb677fcc0ec9ad2df5dc35462dc7499f38f76` |
 | `mcp/adapters/cobra-clock-v1507.js` | 1363 | `02d860e27e2b6036014b84972eb88c7e29f88272b5976b02aab9fefddc9e0c89` |
@@ -2499,7 +2499,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ph-hemodynamics-2022-v826.js` | 1335 | `15cdcd849f5e99e867d7321c7082c8b77ce3f83bca43e022ed083e5137cffea1` |
 | `mcp/adapters/pharmacy-effective-rate-v1638.js` | 2310 | `bfbc03e19ea6aee0f9f9dad0e0a1eeb7e0c03c4c159b660805e76cc71c8e5cbe` |
 | `mcp/adapters/pharmacy-spread-check.js` | 1709 | `e15459930f5d97e71769f78a0605a6cb679e6ed89ea9b05020132f69da034878` |
-| `mcp/adapters/phenytoin-mm-dose-v1631.js` | 2076 | `d1f5b8b36fe15c13c3c3c9dbabbf540b498741558f6418b1a16311b509579246` |
+| `mcp/adapters/phenytoin-mm-dose-v1631.js` | 2221 | `1cae31aefc943f326d5eaaf7a9b6b088bebfa7f498c1a04793544a9f2e04945c` |
 | `mcp/adapters/phq15-v734.js` | 2564 | `ecb5c74fccb59bea34aa8d8f7ab51ed88c6997827fc14c4075be2fe2649e6d5a` |
 | `mcp/adapters/pi-ll-mismatch-v705.js` | 1055 | `132f98fb8028b87cef309a3f6e5de69804a015133c1368e7162c553b964befcb` |
 | `mcp/adapters/pipkin-femoral-head-v375.js` | 1448 | `e03c44c7fcfe3841614556b8cc558b1760853d8be38776c4b4fad2bf7d72ca81` |
@@ -3083,8 +3083,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1629.js` | 31151 | `178cff13db077e46646ada6ca64d99215d4ce16c2307c1f4d824d01fcc41ef9e` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
 | `views/group-v1630.js` | 23495 | `c64bd4d306fd4c29c9a1222200f3486df5b24d049f12cb2af1d2725b0c6895eb` |
-| `views/group-v1631.js` | 24280 | `1e7b27d56e393248395283948d9465dcd7c4e6a710a3d4d94c42556d06426f20` |
-| `views/group-v1632.js` | 22238 | `c3bfa88797e5bef2edd97efade44b441a2834a146d1388ec383e8ef815853dfb` |
+| `views/group-v1631.js` | 24387 | `0b30dd5e5c970c02b1bfe4fc9213bb654d9605b399ccd6ea1a92db8ec4f4dfc8` |
+| `views/group-v1632.js` | 22558 | `62990e562310d3a75a44e49fdd2e2ae62c71f6dbb0f8d93b91b46ad9fcbcd62b` |
 | `views/group-v1633.js` | 29671 | `4e0c93aabd98861f794103eb371c31305c6d008a0d3b376fbb47e1bcd0bc550b` |
 | `views/group-v1634.js` | 14483 | `a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d` |
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |

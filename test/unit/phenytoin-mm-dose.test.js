@@ -64,3 +64,15 @@ test('fail closed: with the label withheld, one form still works and mixed forms
     assert.ok(mixed.message.length <= 280, String(mixed.message.length));
   }
 });
+
+// spec-v1631 tool 7: one pair with the reader's Km.
+test('one pair with an entered Km: Vmax through the one point, then the dose for the target', async () => {
+  const { phenytoinMmDose: pm } = await import('../../lib/phenytoin-mm-dose-v1631.js');
+  const at = new Date('2026-10-15T12:00:00Z');
+  const r = pm({ form1: 'sodium', dose1: 300, level1: 10, km: 4, target: 15 }, at);
+  assert.deepEqual([r.kmEntered, r.km, r.vmax, r.doseForTarget, r.doseForTargetSodium], [true, 4, 386.4, 305.1, 331.6]);
+  assert.match(r.notes.join(' '), /One pair with the Km you entered, 4 mcg\/mL: Vmax = 276 × \(4 \+ 10\) ÷ 10 = 386\.4/);
+  assert.match(r.note, /Km you entered/);
+  assert.match(pm({ form1: 'sodium', dose1: 300, level1: 10, target: 15 }, at).message, /product form for each dose/);
+  assert.match(pm({ form1: 'sodium', dose1: 300, level1: 10, km: 0, target: 15 }, at).message, /Km/);
+});
