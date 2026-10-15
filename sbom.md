@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `643f415aeade1dcf`
-Generated: 2026-10-15T00:38:57.784Z
+Build ID: `d4b5067c1ccad58e`
+Generated: 2026-10-15T01:09:50.598Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -63,7 +63,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/abx-renal-v1632.js` | 20348 | `bfa4c834cb341579c09bc98da30f2642c301ad07bf9c3565a8b29b677d59712f` |
 | `lib/aca-external-review-v1503.js` | 4702 | `91a246b503d6b4515b68e1e81f0becb106add38df8471b20a31f51de4792c595` |
 | `lib/aca-ful-load.js` | 890 | `93737aabffb421fbf35a0c5e3458c6a23ad712526c62d7b6bb6fbaf9505db62f` |
-| `lib/aca-ful-lookup.js` | 1153 | `f61998718471c2b1e72ba3d6a7f3870784c19e282e5e2ed9b73c5ddbec9a5cfb` |
+| `lib/aca-ful-lookup.js` | 1702 | `600b4e0ec96d5244b433b231784e06ea7dd01158d7a736f05b832df0e817d31e` |
 | `lib/aca-sep-window-v1507.js` | 5301 | `20abd848c581d742987468d57a073c6a23c7cdc250a6db09d28c7541c71bc6b4` |
 | `lib/acef-v595.js` | 13039 | `b40a6db7e47270ffcae508771208e327e30dc21b9f79676b6649ef41337d94e8` |
 | `lib/acidbase-v129.js` | 25627 | `9874f82b6ae4a2f07fa907d27b7cac99307bfa293c63bb33439339c1dbfe2697` |
@@ -831,7 +831,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/med-pass-error-rate-v1638.js` | 5676 | `43ae1004bf311732a9296ff41338766449539c559f701d8be6d243f373884d4b` |
 | `lib/medicaid-appeal-clock-v1503.js` | 6345 | `c97995d3268fa9752d050c663c1add02ddff0532b7d8192d717de73f9b88a42c` |
 | `lib/medicaid-drug-payment-check-v1638.js` | 5224 | `989a5c48c1d2a5f8601194399e0f6fbc137299957046aa6719435006aec0e53a` |
-| `lib/medicaid-ful-check-v1638.js` | 8624 | `b8dc4e248f4c81d616d3868f2ef09273891a33596ce032327f5f50909f35364d` |
+| `lib/medicaid-ful-check-v1638.js` | 8312 | `33baa09338f17870eff720496cd1e3faf5f8f0bed2ea1961cb66128354ae1488` |
 | `lib/medicaid-ura-v1510.js` | 3708 | `62d3f17aa5e10e9af55f427f16069d947d6db6ea8cc898eca37a2300b2d96200` |
 | `lib/medicaid-work-requirement-v1507.js` | 6985 | `3c3c75f54f11f5592bffa2ad574ee0c970999c57cd681fa66712fda28741f7f5` |
 | `lib/medicare-enrollment-window-v1507.js` | 7140 | `a8f803861ad2ed79384db7b6bdf81da301c543af15c5adef68998378c9272a97` |
@@ -847,7 +847,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3006492 | `8d811690360a659b120565eb92fbd19b4b560199d2eb82aeac014a8a12b6ab1e` |
+| `lib/meta.js` | 3006554 | `242075e2ea5a02ac107cd905e34342013b09a1dd0273d51a6db7eecb249cf7eb` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -897,7 +897,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nac-attr-stage-v583.js` | 12479 | `3894987b3a1f91c1326058d110806a5357f3d646e4f411654984fef80332dd00` |
 | `lib/nac-oral-regimen-v1636.js` | 8855 | `c1facb526f54e1ba57241e911a8ffbf24b545e3af7eb754aa996daae8647eb7f` |
 | `lib/nadac-load.js` | 1118 | `c981f8f85621a5f824080c6d12f34d85ad84dcdf57690f889626ff66b96af23c` |
-| `lib/nadac-margin.js` | 14378 | `c53de2f48e9840497405e09141c0758edfcd7bd05638feef6e67d79bd6078201` |
+| `lib/nadac-margin.js` | 15055 | `970e7498f534723d4de8a18dbb15c8e56494ea64d652f5b0551e53a6a9d97714` |
 | `lib/nadac-reference.js` | 4279 | `0a41ccc56d1c75d8bdf4b0dc9cc168170a800603d0d2bc2c994f46c546d699ef` |
 | `lib/naloxone-infusion-v1636.js` | 3506 | `8c32d3c0ad4c1039216fabf5c27453f34e96a650cffee24ceef0fb322cdff81c` |
 | `lib/name-match.js` | 8308 | `514247a8980fec31da9fc07c88f45a7d05ac8b8e904cc709078276293578ce54` |
@@ -1542,6 +1542,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/zika-case-def-v1563.js` | 3197 | `91fe251ab2fba96bd4650f6a522b186261a069581ab0b8ad20c9876bce2bcb3f` |
 | `lib/zip-reader.js` | 4135 | `3f16236087dc9ebcad4a9886b46a1c0079ceaf6ea63e2ad999345df81e4133e7` |
 | `lib/zulewski-v608.js` | 9691 | `6e85b895fc47b3f4ca84c4d7264fd769d035dbdebe0cbb80583f8b22e3d98f16` |
+| `mcp/aca-ful-disk.js` | 1085 | `1e046fb00c01c0e313b3b4f0ac37bec8684926eca93f802c021b6464a0b6ad97` |
 | `mcp/adapters/aast-cholecystitis-v1240.js` | 1501 | `d440e2476799395ab1ff59f624a2d1b488bfb0c0e4f3bcf4b2f7958d6df2ed8b` |
 | `mcp/adapters/aat-deficiency-v830.js` | 1816 | `f84d0e955ae90be05a62e1dfaaf48f12d319a255ccd7d8b656dc3d7db243657f` |
 | `mcp/adapters/abc-psi-v1448.js` | 1095 | `5cfc311ccde551d3a5a72d48c872e48ed986e1d23e747c188e99c966e8feea69` |
@@ -2257,7 +2258,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/med-pass-error-rate-v1638.js` | 1309 | `90a158f902d64a63eb770c90541f390c7795b04b6ea7a24e6d9497e915a50ae6` |
 | `mcp/adapters/medicaid-appeal-clock-v1503.js` | 1570 | `99092c88e46211b260c961ff43295f17009ccad2ba0ca64ca29dc475a43baf45` |
 | `mcp/adapters/medicaid-drug-payment-check-v1638.js` | 1726 | `7e9947614d4dfa0f55835ec185df5d1a8607658bef35d63906a6c76d27312ece` |
-| `mcp/adapters/medicaid-ful-check-v1638.js` | 2473 | `a26fca04cab2e39e3c78498eb2e32435e9548842ccf5e9da97e66dc5fad33b23` |
+| `mcp/adapters/medicaid-ful-check-v1638.js` | 1658 | `b7a2b689119ef85b135cdae556406b18112bdf8245e10188a3d98d4a15e14b31` |
 | `mcp/adapters/medicaid-ura-v1510.js` | 1270 | `7fac13122fc1281547cf931a945dba7bb95bd92881c4026f1f24236b0b598cdb` |
 | `mcp/adapters/medicaid-work-requirement-v1507.js` | 1949 | `dec312d612604ef482ff176e3fde26d2af57dc9879f5eabd3d3fe9a157bc2bad` |
 | `mcp/adapters/medicare-enrollment-window-v1507.js` | 1007 | `3786ee42e578f18681ba86c898d79f2f35a6c4bed0e4daf3bcb431bffad9e9d0` |
@@ -2315,7 +2316,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/myxedema-coma-v599.js` | 6515 | `9b6f5bf49fe750d8d9a23d2c4b7d7bd378460a84ef6cf1b799eb1406b7dd10b4` |
 | `mcp/adapters/nac-attr-stage-v583.js` | 6145 | `349339750833a08efc950485c22f701e9a74ebf0af6048271a0f3ff7540c39ca` |
 | `mcp/adapters/nac-oral-regimen-v1636.js` | 1148 | `695ab05c1837884b479d0d2152e0e5fef2bdd975d00f55ed6778e0fc89fb7b7f` |
-| `mcp/adapters/nadac-margin.js` | 1937 | `9a74bfd3f42da1ffc4ffb9bd6d5fdfa3c499992b7f838675d876f704e0c7dc31` |
+| `mcp/adapters/nadac-margin.js` | 2024 | `a930ba507d958f23dcbe7430c29daa1b639b8994f960883c5d30c9e3fac2bf50` |
 | `mcp/adapters/nancy-index-v578.js` | 6149 | `af86d4cbe08e58351a375ba8248312ba4a33b4390eff49762ced7dc49ff8d7ac` |
 | `mcp/adapters/narakas-obpp-v498.js` | 1344 | `e57c48b27dee7ed551055a65e4008f30f18579fa412c397ac58f08882029a815` |
 | `mcp/adapters/narcolepsy-criteria-v855.js` | 2490 | `5d46cd7273f99e781f6f295211ba0b0fb5e13c754d2d81a73a044ef81adfcc31` |
@@ -3030,7 +3031,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1508.js` | 9990 | `2b401ca6d23d1fe10adbe4e81dba66e066f7a3e481c4947606f780b321fcbd52` |
 | `views/group-v1509.js` | 9355 | `c6052710ceac6ed488acfac42c0d347bc387f1dcfc5a3807399d03171ae4a31a` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
-| `views/group-v1510.js` | 20988 | `3e8cdbf16a7567269112c7a50e7abd49351c2be159d66956a987d54616f2dfac` |
+| `views/group-v1510.js` | 21331 | `48efca3ee15dcea215f24f7e292ebcc3cd2d4d498e953d17f6bba96708e12aa3` |
 | `views/group-v1511.js` | 15014 | `2224b06f0ad1266c83eb471c70a90912a24c458207b0193f24b43e64ddd80e37` |
 | `views/group-v1512.js` | 14178 | `9f17c19a926b82cb8e91210a744a724ac10bf5406b28902e78a464cfc99f5700` |
 | `views/group-v1513.js` | 9059 | `9dccf60e95ef759fe132f3fd1c89105f718285ee2afc524555f25606d51e79e0` |

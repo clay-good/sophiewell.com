@@ -1,6 +1,7 @@
 // spec-v1510: renderers for mfp-refund-check, pbm-reimbursement-check, medicaid-ura, nadac-margin, asp-payment.
 
 import { el, clear } from '../lib/dom.js';
+import { loadFulLookup } from '../lib/aca-ful-load.js';
 import * as MR from '../lib/mfp-refund-v1510.js';
 import * as PB from '../lib/pbm-reimbursement-v1510.js';
 import * as UR from '../lib/medicaid-ura-v1510.js';
@@ -186,16 +187,19 @@ export const renderers = {
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const ndc = NM.normalizeNdc(args.ndc).ndc;
       const mine = ++seq;
-      if (String(args.cost).trim() || !ndc || !parseDate(args.serviceDate)) { show(args); return; }
-      safe(o, () => note(o, 'Looking up NADAC for this NDC...'));
-      (async () => {
+      if (!ndc) { show(args); return; }
+      // spec-v1638 backfill: the NDC's Medicaid federal upper limit, if it has one, is shown beside the cost.
+      const needNadac = !String(args.cost).trim() && parseDate(args.serviceDate);
+      safe(o, () => note(o, needNadac ? 'Looking up NADAC for this NDC...' : 'Looking up this NDC...'));
+      const nadac = needNadac ? (async () => {
         try {
           const [manifest, week] = await Promise.all([loadManifest('nadac'), loadFile('nadac', 'week.json')]);
           const listed = (manifest.shards || []).some((s) => s.name === NM.shardName(ndc));
           const rows = listed ? await loadShard('nadac', NM.shardName(ndc)) : null;
           return NM.lookupFrom({ ndc, manifest, week, rows });
         } catch { return { status: 'unavailable' }; }
-      })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
+      })() : Promise.resolve(undefined);
+      Promise.all([nadac, loadFulLookup(ndc)]).then(([lookup, ful]) => { if (mine === seq) show({ ...args, lookup, ful }); });
     });
     // spec-v1510 batch: a claims CSV gives margin by drug, by payer and in total. The page loads NADAC
     // for the labelers the Worker names (the Worker has no network code), then runs it again.

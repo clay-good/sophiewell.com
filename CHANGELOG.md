@@ -6,6 +6,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- NADAC margin: an NDC with a Medicaid federal upper limit shows that limit beside the cost.
 - Medicaid Federal Upper Limit Check: an NDC reads the limit from CMS's monthly federal upper
   limits file (a new dataset, refreshed with the others), with its product group and whether the
   limit sits above 175% of the weighted average AMP. Limits round to six decimals, as CMS publishes them.

@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 import * as NM from '../../lib/nadac-margin.js';
+import { fulLookupFromDisk } from '../aca-ful-disk.js';
 
 const DATA = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'data', 'nadac');
 const readJson = (rel) => JSON.parse(readFileSync(join(DATA, rel), 'utf8'));
@@ -27,7 +28,7 @@ export default [
   {
     id: 'nadac-margin',
     summary: 'A pharmacy claim\'s margin against NADAC or the pharmacy\'s invoice cost. Reimbursement minus the national average acquisition cost per unit times quantity; flags a claim paid below cost.',
-    compute: (a) => NM.nadacMargin({ ...a, lookup: String(a.cost ?? '').trim() ? undefined : lookup(a.ndc) }),
+    compute: (a) => NM.nadacMargin({ ...a, lookup: String(a.cost ?? '').trim() ? undefined : lookup(a.ndc), ful: fulLookupFromDisk(a.ndc) }),
     fields: [
       { dom: 'nm-ndc', arg: 'ndc', kind: 'string', required: false, label: 'NDC (11 digits, or with its hyphens)' },
       { dom: 'nm-dos', arg: 'serviceDate', kind: 'string', required: false, label: 'Date of service (YYYY-MM-DD)' },

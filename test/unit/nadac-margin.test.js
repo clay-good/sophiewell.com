@@ -97,3 +97,17 @@ test('a loss too small to round to 0.1% says so rather than "0%"', () => {
   assert.match(r.band, /\(under 0\.1% of the reimbursement\)/);
   assert.match(m({ ...claim, reimbursed: '900' }).band, /\$75\.15 below NADAC \(8\.3% of the reimbursement\)/);
 });
+
+// spec-v1638 backfill: an NDC with a Medicaid federal upper limit shows it beside the cost.
+test('nadac-margin: a federal upper limit is shown beside the cost, and only when the file lists the NDC', () => {
+  const ful = { status: 'found', rec: { ndc: '00093354256', group: '3057' }, group: { ful: 0.32216, unit: 'CAP' }, unit: 'capsule', edition: '2026-09 monthly' };
+  const args = { ndc: '00093-3542-56', quantity: '30', reimbursed: '20', cost: '0.2' };
+  const r = m({ ...args, ful });
+  assert.equal(r.fulPerUnit, 0.32216);
+  assert.match(r.notes.join(' '), /NDC 00093-3542-56 has a Medicaid federal upper limit of \$0\.32216 a capsule on CMS's file for 2026-09 monthly/);
+  for (const other of [undefined, { status: 'not-listed' }, { status: 'expired' }, 'junk']) {
+    const s = m({ ...args, ful: other });
+    assert.equal(s.fulPerUnit, undefined);
+    assert.doesNotMatch(s.notes.join(' '), /federal upper limit/);
+  }
+});

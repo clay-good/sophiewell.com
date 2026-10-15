@@ -1,28 +1,9 @@
 // spec-v1638 MCP adapter: medicaid-ful-check in lib/medicaid-ful-check-v1638.js. The dom keys mirror
 // views/group-v1638.js and META['medicaid-ful-check'].example. Administrative domain. Given an NDC, the
-// limit comes from CMS's federal upper limits file: the data/aca-ful shards the website ships, read from
-// disk.
+// limit comes from CMS's federal upper limits file, read from disk by mcp/aca-ful-disk.js.
 
 import { medicaidFulCheck } from '../../lib/medicaid-ful-check-v1638.js';
-import { fulLookup, shardName } from '../../lib/aca-ful-lookup.js';
-import { normalizeNdc } from '../../lib/nadac-margin.js';
-import { readFileSync, existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
-
-const FUL_DATA = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'data', 'aca-ful');
-function fulLookupFromDisk(raw) {
-  const ndc = normalizeNdc(raw).ndc;
-  if (!ndc) return undefined;
-  try {
-    const file = join(FUL_DATA, 'shards', shardName(ndc));
-    const rows = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null;
-    const read = (name) => JSON.parse(readFileSync(join(FUL_DATA, name), 'utf8'));
-    return fulLookup({ ndc, manifest: read('manifest.json'), rows, groups: read('groups.json') });
-  } catch {
-    return { status: 'unavailable' };
-  }
-}
+import { fulLookupFromDisk } from '../aca-ful-disk.js';
 
 export default [
   {
