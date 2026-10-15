@@ -1,6 +1,6 @@
 # spec-v1505 — Benefits investigation: which benefit, which rules, which code, how many units
 
-**Status:** Proposed, September 25, 2026. 5 new tools and 1 backfill, group Q.
+**Status:** Built. Specified September 25, 2026; all 5 tools and the backfill are in the catalog (group Q). See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Data:** [spec-v1517](spec-v1517.md).
 
 Before a specialty drug is started, someone has to answer: which benefit pays for it,

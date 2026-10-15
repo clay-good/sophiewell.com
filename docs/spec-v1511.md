@@ -1,6 +1,6 @@
 # spec-v1511 — Dispensing: days supply, refills, controlled substances and REMS windows
 
-**Status:** Proposed, September 25, 2026. 8 new tools, group Q.
+**Status:** Built. Specified September 25, 2026; all 8 tools are in the catalog (group Q). The CSV batch mode is still held, for the reason in [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md).
 
 A pharmacy counts constantly: how many days a pen lasts, when a refill stops being "too

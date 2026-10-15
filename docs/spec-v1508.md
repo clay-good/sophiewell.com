@@ -1,6 +1,6 @@
 # spec-v1508 — Hospital financial assistance and self-pay estimates
 
-**Status:** Proposed, September 25, 2026. 5 new tools, group C.
+**Status:** Built. Specified September 25, 2026; all 5 tools are in the catalog (group C). See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md).
 
 Nonprofit hospitals must cap what they charge people who qualify for financial

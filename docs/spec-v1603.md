@@ -1,6 +1,6 @@
 # spec-v1603 — Coverage rules and the payer's own numbers
 
-**Status:** Proposed, September 29, 2026. In progress: `ma-criteria-check` and `payer-policy-diff` built ([build status](#build-status)).
+**Status:** Built. Specified September 29, 2026; all 3 tools are in the catalog. The coverage-database lookup and the pre-filled appeal path are not built; see [build status](#build-status).
 **Charter:** [spec-v1600](spec-v1600.md). **Group:** C, "Insurance & Patient Literacy",
 except `payer-policy-diff`, which joins group Q beside `pa-criteria-checklist`.
 

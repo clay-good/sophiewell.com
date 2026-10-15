@@ -1,6 +1,6 @@
 # spec-v1514 — Hospital, post-acute and DME notices and benefit clocks
 
-**Status:** Proposed, September 25, 2026. 10 new tools, group H.
+**Status:** Built. Specified September 25, 2026; all 10 tools are in the catalog (group H). See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md) §5 (hour and midnight counting).
 
 Case managers, utilization-review nurses, and home health, hospice and DME staff run

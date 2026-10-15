@@ -1,6 +1,6 @@
 # spec-v1515 — File workbenches: remittance, claim, eligibility, status and price files
 
-**Status:** Proposed, September 25, 2026. 7 new tools, group P.
+**Status:** Built. Specified September 25, 2026; all 7 tools are in the catalog (group P). See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md) §3 (upload workbench), §6 (licensing).
 
 A small practice or a rural hospital's billing office gets its remittances, claim

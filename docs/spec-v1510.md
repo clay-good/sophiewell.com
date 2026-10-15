@@ -1,6 +1,6 @@
 # spec-v1510 — Drug pricing and reimbursement
 
-**Status:** Proposed, September 25, 2026. 7 new tools, group Q (tools 2, 3, 5–7) and group B (tools 1 and 4).
+**Status:** Built. Specified September 25, 2026; all 7 tools are in the catalog, group Q (tools 2, 3, 5–7) and group B (tools 1 and 4). See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Data:** [spec-v1517](spec-v1517.md).
 
 Independent pharmacies and infusion practices lose money on drugs they can't see the

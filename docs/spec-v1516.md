@@ -1,6 +1,6 @@
 # spec-v1516 — Denial management
 
-**Status:** Proposed, September 25, 2026. 4 new tools, group P.
+**Status:** Built. Specified September 25, 2026; all 4 tools are in the catalog (group P). See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Depends on:** [spec-v1503](spec-v1503.md) (appeal clocks), [spec-v1515](spec-v1515.md) (835 reader).
 
 A denial is a code, a date and a dollar amount. What to do next depends on which of

@@ -1,6 +1,6 @@
 # spec-v1502 — Prior authorization and step therapy
 
-**Status:** Proposed, September 25, 2026. 6 new tools, group Q.
+**Status:** Built. Specified September 25, 2026; all 6 tools are in the catalog (group Q). See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md).
 
 The catalog can already lint a finished packet (`pa-lint`), list what a packet usually

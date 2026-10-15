@@ -1,6 +1,6 @@
 # spec-v1602 — Reading your own claims and bills
 
-**Status:** Proposed, September 29, 2026. `carin-eob-reader` and `itemized-bill-check` built; `patient-pa-record-reader` gated to 2027 ([build status](#build-status)).
+**Status:** Built. Specified September 29, 2026; `carin-eob-reader` and `itemized-bill-check` are in the catalog. `patient-pa-record-reader` is gated to 2027 ([build status](#build-status)).
 **Charter:** [spec-v1600](spec-v1600.md). **Group:** C, "Insurance & Patient Literacy".
 **Machinery:** the [spec-v1501](spec-v1501.md) §3 upload workbench (JSON and CSV, in a Web
 Worker, nothing kept) and the streaming price-file parser built for `hpt-file-check`

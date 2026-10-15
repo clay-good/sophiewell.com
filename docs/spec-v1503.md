@@ -1,6 +1,6 @@
 # spec-v1503 — Coverage decisions and appeal clocks beyond Original Medicare
 
-**Status:** Proposed, September 25, 2026. 8 new tools (group C) and 2 backfills.
+**Status:** Built. Specified September 25, 2026; all 8 tools (group C) and both backfills are in the catalog. See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md) §5 (clock engine).
 
 `appeal-deadline` covers Original Medicare's five levels (42 CFR 405 subpart I), and

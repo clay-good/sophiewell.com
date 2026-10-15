@@ -1,6 +1,6 @@
 # spec-v1601 — Preventive care owed at $0
 
-**Status:** Proposed, September 29, 2026. In progress: `preventive-cost-share-check` built ([build status](#build-status)).
+**Status:** Built. Specified September 29, 2026; all 3 tools are in the catalog. The letter builder and the pre-filled appeal clock are not built; [build status](#build-status) says what each result names instead.
 **Charter:** [spec-v1600](spec-v1600.md). **Group:** C, "Insurance & Patient Literacy".
 
 ## Why this wave comes first

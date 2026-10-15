@@ -1,6 +1,6 @@
 # spec-v1604 — Employer plans that pay their own claims
 
-**Status:** Proposed, September 29, 2026. All five tools built; `claims-pct-medicare` and `tic-rate-lookup` reprice professional lines from the bundle, and outpatient facility lines only from the reader's own Addendum B ([build status](#build-status)).
+**Status:** Built. Specified September 29, 2026; all 5 tools are in the catalog. `claims-pct-medicare` and `tic-rate-lookup` reprice professional lines from the bundle, and outpatient facility lines only from the reader's own Addendum B ([build status](#build-status)).
 **Charter:** [spec-v1600](spec-v1600.md). **Group:** P, except `dpc-hsa-check`, which joins
 group C.
 **Machinery:** the [spec-v1501](spec-v1501.md) §3 upload workbench and the streaming

@@ -1,6 +1,6 @@
 # spec-v1512 — Specialty and infusion operations
 
-**Status:** Proposed, September 25, 2026. 5 new tools, group Q; all five built ([build status](#build-status)).
+**Status:** Built. Specified September 25, 2026; all 5 tools are in the catalog (group Q). See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md).
 
 An infusion center's day is dose rounding, vial math, dose calendars and chair

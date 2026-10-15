@@ -1,6 +1,6 @@
 # spec-v1640 — Pharmacogenomics: from a genotype report to what CPIC and the FDA say
 
-**Status:** In progress. Specified October 10, 2026; the label tools (6, 7, 8 and the label half of 9) were built
+**Status:** Built. Specified October 10, 2026; all 9 tools are in the catalog — the label tools (6, 7, 8 and the label half of 9) on October 13, 2026, and the CPIC dataset, tools 1 to 5, tool 9's CPIC row and tool 4's dose side table on October 15, after owner decision 12. Only the warfarin backfill is left (see Backfills).
 October 13, 2026; the CPIC dataset and tools 1 to 5 on October 15, 2026, after owner decision 12. See Build status. 9 new tools, none gated as a whole; row-level build gates are
 marked where a row was not read.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).

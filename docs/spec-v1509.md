@@ -1,6 +1,6 @@
 # spec-v1509 — 340B
 
-**Status:** Proposed, September 25, 2026. 7 new tools, group Q.
+**Status:** Built. Specified September 25, 2026; 6 of the 7 tools are in the catalog (group Q). `340b-rebate-model-clock` waits for the rebate model to take effect on January 1, 2027.
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md) §3 (upload workbench).
 
 About 15,000 covered entities and 49,000 sites (HRSA, April 2026) run the 340B program,

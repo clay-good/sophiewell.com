@@ -1,6 +1,6 @@
 # spec-v1507 — Enrollment windows, penalties and eligibility
 
-**Status:** Proposed, September 25, 2026. 9 new tools, group C.
+**Status:** Built. Specified September 25, 2026; all 9 tools are in the catalog (group C). See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). The [spec-v29](spec-v29.md) §3 amendment in the
 charter readmits these as clocks and deciders, not infographics.
 

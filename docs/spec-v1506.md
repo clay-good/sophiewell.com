@@ -1,6 +1,6 @@
 # spec-v1506 — What the patient will pay
 
-**Status:** Proposed, September 25, 2026. 9 new tools, group Q (tools 1–4, 8, 9) and group C (tools 5–7).
+**Status:** Built. Specified September 25, 2026; all 9 tools are in the catalog, group Q (tools 1–4, 8, 9) and group C (tools 5–7). See [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md) §2 (data contract).
 
 The question a patient asks before starting an expensive drug is "what will this cost
