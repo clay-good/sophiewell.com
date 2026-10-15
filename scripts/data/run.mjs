@@ -161,7 +161,17 @@ export async function runBuilder(builder, ctx) {
     const sourceSha256 = parts.length
       ? sha256([res.bytes, ...parts.map((u) => found.partBytes[u])].map((b) => sha256(b)).join(''))
       : sha256(res.bytes);
-    if (prevHash && prevHash.sha256 === sourceSha256 && prevManifest && prevManifest.coverage === 'full') return row;
+    if (prevHash && prevHash.sha256 === sourceSha256 && prevManifest && prevManifest.coverage === 'full') {
+      // A source with no edition date of its own (the CPIC API) is dated from the fetch: an unchanged
+      // fetch still renews the check date, or a quiet month would lapse data that is current.
+      if (builder.renewOnUnchanged && found.expiresOn && found.expiresOn !== prevManifest.expiresOn) {
+        await writeIfChanged(join(dataDir, builder.id, 'manifest.json'), JSON.stringify({ ...prevManifest, fetchedAt: today, expiresOn: found.expiresOn, ...(found.nextExpected ? { nextExpected: found.nextExpected } : {}) }, null, 2) + '\n');
+        hashes[builder.id] = { ...prevHash, fetchedAt: today };
+        row.status = 'updated';
+        row.renewed = true;
+      }
+      return row;
+    }
     const { records, ancillary } = await builder.parse(res.bytes, found);
     // A builder may date the edition from the file itself (orange-book reads its products.txt date).
     row.edition = found.edition;

@@ -110,5 +110,13 @@
     "etag": "\"1792024570-gzip\"",
     "lastModified": "Thu, 15 Oct 2026 00:36:10 GMT",
     "fetchedAt": "2026-10-15"
+  },
+  "cpic": {
+    "url": "https://api.cpicpgx.org/v1/allele?select=genesymbol,name,clinicalfunctionalstatus,activityvalue&order=genesymbol,name",
+    "edition": "2026-08-03",
+    "sha256": "2366248136892413677cf02640e7e5c0ad451aea709c512fd52b581ca3bc9237",
+    "etag": null,
+    "lastModified": null,
+    "fetchedAt": "2026-10-15"
   }
 }

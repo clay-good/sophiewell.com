@@ -1,0 +1,5532 @@
+{
+"manifest": {
+"manifestVersion": 2,
+"dataset": "cpic",
+"coverage": "full",
+"sourceEdition": "2026-08-03",
+"fetchedAt": "2026-10-15",
+"expiresOn": "2026-10-29",
+"nextExpected": "2026-10-22"
+},
+"strings": [
+"An individual carrying two increased function alleles",
+"An individual carrying one normal function allele and one increased function allele",
+"An individual carrying two normal function alleles",
+"An individual carrying one normal function allele and one decreased function allele",
+"An individual carrying one increased function allele and one decreased function allele",
+"An individual carrying two decreased function alleles",
+"An individual carrying one normal function allele and one no function allele",
+"An individual carrying one increased function allele and one no function allele",
+"An individual carrying one decreased function allele and one no function allele",
+"An individual carrying two no function alleles",
+"An individual carrying two uncertain function alleles",
+"An individual carrying one increased function allele and one uncertain function allele",
+"An individual carrying one normal function allele and one uncertain function allele",
+"An individual carrying one decreased function allele and one uncertain function allele",
+"An individual carrying one no function allele and one uncertain function allele",
+"An individual carrying one normal function allele and one unknown function allele",
+"An individual carrying one decreased function allele and one unknown function allele",
+"An individual carrying one no function allele and one unknown function allele",
+"An individual carrying two unknown function alleles",
+"An individual carrying one uncertain function allele and one unknown function allele",
+"An individual carrying multiplications of normal function alleles",
+"An individual carrying one allele with multiplications of a normal function allele and one allele with three copies of a decreased function allele with an activity value of 0.25",
+"An individual carrying one allele with multiplications of a normal function allele and one normal function allele or a duplication of a decreased function allele with an activity value of 0.5",
+"An individual carrying one allele with multiplications of a normal function allele and one decreased function allele with an activity value of 0.5 or a duplication of a decreased function allele with an activity value of 0.25",
+"An individual carrying one allele with multiplications of a normal function allele and one decreased function allele with an activity value of 0.25",
+"An individual carrying one allele with multiplications of a normal function allele and one no function allele",
+"An individual carrying two duplicated normal function alleles",
+"An individual carrying one duplicated normal function allele and one allele with three copies of a decreased function allele with an activity value of 0.25",
+"An individual carrying one duplicated normal function allele and one normal function allele or a duplication of a decreased function allele with an activity value of 0.5",
+"An individual carrying one duplicated normal function allele and one decreased function allele with an activity value of 0.5 or a duplication of a decreased function allele with an activity value of 0.25",
+"An individual carrying one duplicated normal function allele and one decreased function allele with an activity value of 0.25",
+"An individual carrying one duplicated normal function allele and one no function allele",
+"An individual carrying two alleles with three copies of a decreased function allele with an activity value of 0.25",
+"An individual carrying one allele with three copies of a decreased function allele with an activity value of 0.25 and one normal function allele or a duplication of a decreased function allele with an activity value of 0.5",
+"An individual carrying one allele with three copies of a decreased function allele with an activity value of 0.25 and one decreased function allele with an activity value of 0.5 or a duplication of a decreased function allele with an activity value of 0.25",
+"An individual carrying one allele with three copies of a decreased function allele with an activity value of 0.25 and one decreased function allele with an activity value of 0.25",
+"An individual carrying one allele with three copies of a decreased function allele with an activity value of 0.25 and one no function allele",
+"An individual carrying two normal function alleles or one normal function allele and a duplication of a decreased function allele with an activity value of 0.5 or two alleles with a duplication of a decreased function allele with an activity value of 0.5",
+"An individual carrying one normal function allele or a duplication of a decreased function allele with an activity value of 0.5 and one decreased function allele with an activity value of 0.5 or a duplication of a decreased function allele with an activity value of 0.25",
+"An individual carrying one normal function allele or a duplication of a decreased function allele with an activity value of 0.5 and one decreased function allele with an activity value of 0.25",
+"An individual carrying one normal function allele or a duplication of a decreased function allele with an activity value of 0.5 and one no function allele",
+"An individual carrying two decreased function alleles with an activity value of 0.5 or one decreased function allele with an activity value of 0.5 and a duplication of a decreased function allele with an activity value of 0.25 or two alleles with a duplication of an decreased function allele with an activity value of 0.25",
+"An individual carrying one decreased function allele with an activity value of 0.5 or a duplication of a decreased function allele with an activity value of 0.25 and one decreased function allele with an activity value of 0.25",
+"An individual carrying one decreased function allele with an activity value of 0.5 or a duplication of a decreased function allele with an activity value of 0.25 and one no function allele",
+"An individual carrying two decreased function alleles with an activity value of 0.25",
+"An individual carrying one decreased function allele with an activity value of 0.25 and one no function allele",
+"An individual carrying one allele with multiplications of a normal function allele and one uncertain or unknown function allele",
+"An individual carrying one duplicated normal function allele and one uncertain or unknown function allele",
+"An individual carrying one allele with three copies of a decreased function allele with an activity value of 0.25 and one uncertain or unknown function allele",
+"An individual carrying one normal function allele or a duplication of a decreased function allele with an activity value of 0.5 and one uncertain or unknown function allele",
+"An individual carrying one decreased function allele with an activity value of 0.5 or a duplication of a decreased function allele with an activity value of 0.25 and one uncertain or unknown function allele",
+"An individual carrying one decreased function allele with an activity value of 0.25 and one uncertain or unknown function allele",
+"An individual carrying one no function allele and one uncertain function or unknown allele",
+"An individual carrying two uncertain function alleles or two unknown function alleles or one unknown and one uncertain function allele",
+"A person with one X chromosome carrying a non-deficient (class IV) allele",
+"A person with one X chromosome carrying a deficient (class III) allele",
+"A person with one X chromosome carrying a deficient (class II) allele",
+"A person with one X chromosome carrying a deficient (class I) allele",
+"A person carrying two non-deficient (class IV) alleles",
+"A person carrying one non-deficient (class IV) allele and one deficient (class III) allele",
+"A person carrying one non-deficient (class IV) allele and one deficient (class II) allele",
+"A person carrying one non-deficient (class IV) allele and one deficient (class I) allele",
+"A person carrying two deficient (class III) alleles",
+"A person carrying one deficient (class II) allele and one deficient (class III) allele",
+"A person carrying one deficient (class I) allele and one deficient (class III) allele",
+"A person carrying two deficient (class II) alleles",
+"A person carrying one deficient (class I) allele and one deficient (class II) allele",
+"A person carrying two deficient (class I) alleles",
+"A person with one X chromosome carrying an uncertain function allele",
+"A person carrying one non-deficient (class IV) allele and one uncertain function allele",
+"A person carrying one deficient (class II) allele and one uncertain function allele",
+"A person carrying one deficient (class III) allele and one uncertain function allele",
+"A person carrying one deficient (class I) allele and one uncertain function allele",
+"A person carrying two uncertain function alleles",
+"Individuals with a MT-RNR1 variant associated with an increased risk of aminoglycoside-induced hearing loss",
+"Individuals with no detectable MT-RNR1 variant or a variant associated with normal risk of aminoglycoside-induced hearing loss",
+"Individuals with a MT-RNR1 variant associated with an uncertain risk of aminoglycoside-induced hearing loss",
+"CYP2C9 diplotype to phenotype translation is not applicable to the warfarin guideline.",
+"Low or reduced risk of abacavir hypersensitivity",
+"Use abacavir per standard dosing guidelines",
+"n/a",
+"Significantly increased risk of abacavir hypersensitivity",
+"Abacavir is not recommended",
+"Greater risk of carbamazepine-induced SJS/TEN, DRESS, and MPE",
+"Normal risk of carbamazepine-induced SJS/TEN",
+"If patient is carbamazepine-naïve and alternative agents are available, do not use carbamazepine.",
+"Other aromatic anticonvulsants have very limited evidence, if any, linking SJS/TEN, DRESS, and/or MPE with the HLA-A*31:01 allele, and thus no recommendation can be made with respect to choosing another aromatic anticonvulsant as an alternative agent. Aromatic anticonvulsants include carbamazepine, oxcarbazepine, eslicarbazepine, lamotrigine, phenytoin, fosphenytoin, and phenobarbital. Previous tolerance of carbamazepine is not indicative of tolerance to other aromatic anticonvulsants.",
+"Use carbamazepine per standard dosing guidelines.",
+"HLA-B*15:02 has a 100% negative predictive value for carbamazepine-induced SJS/TEN, and its use is currently recommended to guide use of carbamazepine and oxcarbazepine only. Because there is a much weaker association and less than 100% negative predictive value of HLA-B*15:02 for SJS/TEN associated with other aromatic anticonvulsants, using these drugs instead of carbamazepine or oxcarbazepine in the setting of a negative HLA-B*15:02 test in Southeast Asians will not result in prevention of anticonvulsant-associated SJS/TEN (PMID 25355835).",
+"Normal risk of carbamazepine-induced SJS/TEN, DRESS, and MPE",
+"Greater risk of carbamazepine-induced SJS/TEN",
+"If patient is carbamazepine-naïve, do not use carbamazepine.",
+"Other aromatic anticonvulsants have weaker evidence linking SJS/TEN with the HLA-B*15:02 allele; however, caution should still be used in choosing an alternative agent. Previous tolerance of carbamazepine is not indicative of tolerance to other aromatic anticonvulsants. Aromatic anticonvulsants include carbamazepine, oxcarbazepine, eslicarbazepine, lamotrigine, phenytoin, fosphenytoin, and phenobarbital. In addition to HLA-B*15:02, risk for carbamazepine-induced SJS/TEN has been reported in association with the most common B75 serotype alleles in Southeast Asia, HLA-B*15:08, HLA-B*15:11, and HLA-B*15:21. Although not described, the possibility of carbamazepine-induced SJS/TEN in association with less frequently carried B75 serotype alleles, such as HLA-B*15:30 and HLA-B*15:31, should also be considered.",
+"If patient is carbamazepine-naïve and alternative agents are not available, consider the use of carbamazepine with increased frequency of clinical monitoring. Discontinue therapy at first evidence of a cutaneous adverse reaction.",
+"The latency period for cutaneous adverse drug reactions is variable depending on phenotype; however, all usually occur within three months of regular dosing. Therefore, if the patient has previously used carbamazepine consistently for longer than three months without incidence of cutaneous adverse reactions, cautiously consider use of carbamazepine.",
+"Previous tolerance of carbamazepine is not indicative of tolerance to other aromatic anticonvulsants. Aromatic anticonvulsants include carbamazepine, oxcarbazepine, eslicarbazepine, lamotrigine, phenytoin, fosphenytoin, and phenobarbital.",
+"The latency period for drug-induced SJS/TEN is short with continuous dosing and adherence to therapy (~4-28 days), and cases usually occur within three months of dosing; therefore, if the patient has previously used carbamazepine consistently for longer than three months without incidence of cutaneous adverse reactions, cautiously consider use of carbamazepine in the future.",
+"Previous tolerance of carbamazepine is not indicative of tolerance to other aromatic anticonvulsants. Aromatic anticonvulsants include carbamazepine, oxcarbazepine, eslicarbazepine, lamotrigine, phenytoin, fosphenytoin, and phenobarbital. In addition to HLA-B*15:02, risk for carbamazepine-induced SJS/TEN has been reported in association with the most common B75 serotype alleles in Southeast Asia, HLA-B*15:08, HLA-B*15:11, and HLA-B*15:21. Although not described, the possibility of carbamazepine-induced SJS/TEN in association with less frequently carried B75 serotype alleles, such as HLA-B*15:30 and HLA-B*15:31, should also be considered.",
+"Increased clopidogrel active metabolite formation; lower on-treatment platelet reactivity; no association with higher bleeding risk",
+"If considering clopidogrel, use at standard dose (75 mg/day)",
+"For cardiovascular indications of acute coronary syndrome (ACS) and/or percutaneous coronary intervention (PCI). ACS and/or PCI includes patients undergoing PCI for an ACS or non-ACS (elective) indication.",
+"Normal or increased clopidogrel active metabolite formation; normal or lower on-treatment platelet reactivity; no association with higher bleeding risk",
+"Normal clopidogrel active metabolite formation; normal on-treatment platelet reactivity",
+"Reduced clopidogrel active metabolite formation; increased on-treatment platelet reactivity; increased risk for adverse cardiac and cerebrovascular events",
+"Avoid standard dose clopidogrel (75 mg) if possible. Use prasugrel or ticagrelor at standard dose if no contraindication.",
+"For cardiovascular indications of acute coronary syndrome (ACS) and/or percutaneous coronary intervention (PCI). ACS and/or PCI includes patients undergoing PCI for an ACS or non-ACS (elective) indication. The strength of recommendation for \"likely\" phenotypes are the same as their respective confirmed phenotypes. \"Likely\" indicates the uncertainty in the phenotype assignment, but it is reasonable to apply the recommendation for the confirmed phenotype to the corresponding \"likely\" phenotype.",
+"Avoid standard dose (75 mg) clopidogrel if possible. Use prasugrel or ticagrelor at standard dose if no contraindication.",
+"Significantly reduced clopidogrel active metabolite formation; increased on-treatment platelet reactivity; increased risk for adverse cardiac and cerebrovascular events",
+"Avoid clopidogrel if possible. Use prasugrel or ticagrelor at standard dose if no contraindication.",
+"No recommendation",
+"For non-acute coronary syndrome (non-ACS) and non-percutaneous coronary intervention (non-PCI) cardiovascular indications. Non-ACS, non-PCI cardiovascular indications include peripheral arterial disease and stable coronary artery disease following a recent myocardial infarction outside the setting of PCI.",
+"For non-acute coronary syndrome (non-ACS) and non-percutaneous coronary intervention (non-PCI) cardiovascular indications. Non-ACS, non-PCI cardiovascular indications include peripheral arterial disease and stable coronary artery disease following a recent myocardial infarction outside the setting of PCI. The strength of recommendation for \"likely\" phenotypes are the same as their respective confirmed phenotypes. \"Likely\" indicates the uncertainty in the phenotype assignment, but it is reasonable to apply the recommendation for the confirmed phenotype to the corresponding \"likely\" phenotype.",
+"Increased clopidogrel active metabolite formation; lower on-treatment platelet reactivity",
+"For neurovascular indications. Neurovascular disease includes acute ischemic stroke or transient ischemic attack, secondary prevention of stroke, or prevention of thromboembolic events following neurointerventional procedures such as carotid artery stenting and stent-assisted coiling of intracranial aneurysms.",
+"Normal or increased clopidogrel active metabolite formation; normal or lower on-treatment platelet reactivity",
+"Consider an alternative P2Y12 inhibitor at standard dose if clinically indicated and no contraindication.",
+"For neurovascular indications. Neurovascular disease includes acute ischemic stroke or transient ischemic attack, secondary prevention of stroke, or prevention of thromboembolic events following neurointerventional procedures such as carotid artery stenting and stent-assisted coiling of intracranial aneurysms. Alternative P2Y12 inhibitors not impacted by CYP2C19 genetic variants include ticagrelor and ticlopidine. Prasugrel is contraindicated in patients with a history of stroke or TIA. Given limited outcomes data for genotype-guided anti-platelet therapy for neurovascular indications, selection of therapy should depend on individual patient treatment goals and risks for adverse events. The strength of recommendation for \"likely\" phenotypes are the same as their respective confirmed phenotypes. \"Likely\" indicates the uncertainty in the phenotype assignment, but it is reasonable to apply the recommendation for the confirmed phenotype to the corresponding \"likely\" phenotype.",
+"For neurovascular indications. Neurovascular disease includes acute ischemic stroke or transient ischemic attack, secondary prevention of stroke, or prevention of thromboembolic events following neurointerventional procedures such as carotid artery stenting and stent-assisted coiling of intracranial aneurysms. Alternative P2Y12 inhibitors not impacted by CYP2C19 genetic variants include ticagrelor and ticlopidine. Prasugrel is contraindicated in patients with a history of stroke or TIA. Given limited outcomes data for genotype-guided anti-platelet therapy for neurovascular indications, selection of therapy should depend on individual patient treatment goals and risks for adverse events.",
+"Avoid clopidogrel if possible. Consider an alternative P2Y12 inhibitor at standard dose if clinically indicated and no contraindication.",
+"Reduced morphine formation",
+"Use codeine label recommended age- or weight-specific dosing. If no response and opioid use is warranted, consider a non-tramadol opioid.",
+"Expected morphine formation",
+"Use codeine label recommended age- or weight-specific dosing.",
+"Greatly reduced morphine formation leading to diminished analgesia.",
+"Avoid codeine use because of possibility of diminished analgesia. If opioid use is warranted, consider a non-tramadol opioid.",
+"Increased formation of morphine leading to higher risk of toxicity",
+"Avoid codeine use because of potential for serious toxicity. If opioid use is warranted, consider a non-tramadol opioid.",
+"Normal risk of oxcarbazepine-induced SJS/TEN",
+"Use oxcarbazepine per standard dosing guidelines.",
+"Greater risk of oxcarbazepine-induced SJS/TEN",
+"If patient is oxcarbazepine-naïve, do not use oxcarbazepine.",
+"Other aromatic anticonvulsants have weaker evidence linking SJS/TEN with the HLA-B*15:02 allele; however, caution should still be used in choosing an alternative agent. Aromatic anticonvulsants include carbamazepine, oxcarbazepine, eslicarbazepine, lamotrigine, phenytoin, fosphenytoin, and phenobarbital.",
+"The latency period for drug-induced SJS/TEN is short with continuous dosing and adherence to therapy (~4-28 days), and cases usually occur within three months of dosing; therefore, if the patient has previously used oxcarbazepine consistently for longer than three months without incidence of cutaneous adverse reactions, cautiously consider use of oxcarbazepine in the future.",
+"Previous tolerance of oxcarbazepine is not indicative of tolerance to other aromatic anticonvulsants. Aromatic anticonvulsants include carbamazepine, oxcarbazepine, eslicarbazepine, lamotrigine, phenytoin, fosphenytoin, and phenobarbital.",
+"Normal phenytoin metabolism",
+"No adjustments needed from typical dosing strategies. Subsequent doses should be adjusted according to therapeutic drug monitoring, response, and side effects. An HLA-B*15:02 negative test does not eliminate the risk of phenytoin-induced SJS/TEN and patients should be carefully monitored according to a usual standard.",
+"Slightly reduced phenytoin metabolism; however, this does not appear to translate into increased side effects.",
+"No adjustments needed from typical dosing strategies. Subsequent doses should be adjusted according to therapeutic drug monitoring, response and side effects. An HLA-B*15:02 negative test does not eliminate the risk of phenytoin-induced SJS/TEN and patients should be carefully monitored according to a usual standard.",
+"Reduced phenytoin metabolism; Higher plasma concentrations will increase probability of toxicities.",
+"For first dose, use typical initial or loading dose. For subsequent doses, use approximately 25% less than typical maintenance dose. Subsequent doses should be adjusted according to therapeutic drug monitoring, response and side effects. An HLA-B*15:02 negative test does not eliminate the risk of phenytoin-induced SJS/TEN, and patients should be carefully monitored according to a usual standard.",
+"For first dose, use typical initial or loading dose. For subsequent doses use approximately 50% less than typical maintenance dose. Subsequent doses should be adjusted according to therapeutic drug monitoring, response, and side effects. An HLA-B*15:02 negative test does not eliminate the risk of phenytoin-induced SJS/TEN, and patients should be carefully monitored according to a usual standard.",
+"Increased risk of phenytoin-induced SJS/TEN",
+"If patient is phenytoin-naive, do not use phenytoin/fosphenytoin. Avoid carbamazepine and oxcarbazepine.",
+"Other aromatic anticonvulsants, including eslicarbazepine, lamotrigine, and phenobarbital, have weaker evidence linking SJS/TEN with the HLA-B*15:02 allele; however, caution should still be used in choosing an alternative agent.",
+"If the patient has previously used phenytoin continuously for longer than three months without incidence of cutaneous adverse reactions, cautiously consider use of phenytoin in the future. The latency period for drug-induced SJS/TEN is short with continuous dosing and adherence to therapy (4-28 days), and cases usually occur within three months of dosing.",
+"Previous tolerance of phenytoin is not indicative of tolerance to other aromatic anticonvulsants.",
+"Small increase in metabolism of sertraline to less active compounds when compared to CYP2C19 normal metabolizers.",
+"Initiate therapy with recommended starting dose.",
+"CYP2B6 metabolizer status, drug-drug interactions and other patient characteristics (e.g., age, renal function, liver function) should be also considered.",
+"Increase in metabolism of sertraline to less active compounds when compared to CYP2B6 normal metabolizers.",
+"Initiate therapy with recommended starting dose. If patient does not adequately respond to recommended maintenance dosing, consider titrating to a higher\nmaintenance dose or switching to a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19 or CYP2B6.",
+"Small increase in metabolism of sertraline to less active compounds when compared to CYP2B6 normal metabolizers.",
+"Normal metabolism of sertraline to less active compounds.",
+"Reduced metabolism of sertraline to less active compounds when compared to CYP2B6 normal metabolizers.",
+"Greatly reduced metabolism of sertraline to less active compounds when compared to CYP2B6 normal metabolizers. Higher plasma concentrations may increase the probability of side effects.",
+"Normal metabolism",
+"Initiate therapy with recommended starting dose",
+"Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose.",
+"Consider a lower starting dose, slower titration schedule and 25% reduction of standard maintenance dose as compared to CYP2B6 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2B6.",
+"Reduced metabolism of sertraline to less active compounds when compared to CYP2C19 normal metabolizers.",
+"Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose than normal metabolizers.",
+"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2B6 normal metabolizers",
+"Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose than CYP2C19 normal metabolizers.",
+"Greatly reduced metabolism of sertraline to less active compounds when compared to CYP2C19 normal metabolizers. Higher plasma concentrations may increase the probability of side effects.",
+"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19.",
+"Select an alternative antidepressant not primarily metabolized by CYP2C19 or CYP2B6.",
+"Consider a lower starting dose, slower titration schedule and 25% reduction of standard maintenance dose as CYP2B6 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2B6.",
+"CYPC19 metabolizer status, drug-drug interactions and other patient characteristics (e.g., age, renal function, liver function) should be also considered.",
+"Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose than CYP2B6 normal metabolizers.",
+"Lower dose-adjusted trough concentrations of tacrolimus and decreased chance of achieving target tacrolimus concentrations.",
+"Increase starting dose 1.5 to 2 times recommended starting dose. Total starting dose should not exceed 0.3 mg/kg/day. Use therapeutic drug monitoring to guide dose adjustments.",
+"This recommendation includes the use of tacrolimus in kidney, heart, lung and hematopoietic stem cell transplant patients, and liver transplant patients where the donor and recipient genotypes are identical. Further dose adjustments or selection of alternative therapy may be necessary due to other clinical factors (e.g., medication interactions, or hepatic function). Typically with other CYP enzymes, a normal metabolizer would be classified as having normal metabolism, and therefore, the drug dose would not change based on the patient's genotype. However, in the case of CYP3A5 and tacrolimus, a CYP3A5 expresser (i.e., CYP3A5 normal metabolizer or intermediate metabolizer) would require a higher recommended starting dose, and the CYP3A5 non-expresser (i.e., poor metabolizer) would require the standard recommended starting dose.",
+"This recommendation includes the use of tacrolimus in kidney, heart, lung and hematopoietic stem cell transplant patients, and liver transplant patients where the donor and recipient genotypes are identical. Further dose adjustments or selection of alternative therapy may be necessary due to other clinical factors (e.g., medication interactions, or hepatic function).Typically with other CYP enzymes, a normal metabolizer would be classified as having normal metabolism, and therefore, the drug dose would not change based on the patient's genotype. However, in the case of CYP3A5 and tacrolimus, a CYP3A5 expresser (i.e., CYP3A5 normal metabolizer or intermediate metabolizer) would require a higher recommended starting dose and the CYP3A5 non-expresser (i.e., poor metabolizer) would require the standard recommended starting dose.",
+"Higher (\"normal\") dose-adjusted trough concentrations of tacrolimus and increased chance of achieving target tacrolimus concentrations.",
+"Initiate therapy with standard recommended dose. Use therapeutic drug monitoring to guide dose adjustments.",
+"This recommendation includes the use of tacrolimus in kidney, heart, lung and hematopoietic stem cell transplant patients, and liver transplant patients where the donor and recipient genotypes are identical. Typically with other CYP enzymes, a normal metabolizer would be classified as having normal metabolism, and therefore, the drug dose would not change based on the patient's genotype. However, in the case of CYP3A5 and tacrolimus, a CYP3A5 expresser (i.e., CYP3A5 normal metabolizer or intermediate metabolizer) would require a higher recommended starting dose and the CYP3A5 non-expresser (i.e., poor metabolizer) would require the standard recommended starting dose.",
+"Warfarin recommendation does not follow simple diplotype to phenotype translation. Read the guideline text and follow the recommendation diagram found at http://files.cpicpgx.org/images/warfarin/warfarin_recommendation_diagram.png"
+],
+"allele": [
+{
+"t": "allele",
+"gene": "CYP2C19",
+"name": "*1",
+"fn": "Normal function",
+"value": null
+},
+{
+"t": "allele",
+"gene": "CYP2C19",
+"name": "*17",
+"fn": "Increased function",
+"value": null
+},
+{
+"t": "allele",
+"gene": "CYP2C19",
+"name": "*2",
+"fn": "No function",
+"value": null
+},
+{
+"t": "allele",
+"gene": "CYP2C19",
+"name": "*43",
+"fn": null,
+"value": null
+},
+{
+"t": "allele",
+"gene": "CYP2C9",
+"name": "*1",
+"fn": "Normal function",
+"value": "1.0"
+},
+{
+"t": "allele",
+"gene": "CYP2C9",
+"name": "*2",
+"fn": "Decreased function",
+"value": "0.5"
+},
+{
+"t": "allele",
+"gene": "CYP2C9",
+"name": "*3",
+"fn": "No function",
+"value": "0.0"
+},
+{
+"t": "allele",
+"gene": "CYP2D6",
+"name": "*1",
+"fn": "Normal function",
+"value": "1.0"
+},
+{
+"t": "allele",
+"gene": "CYP2D6",
+"name": "*10",
+"fn": "Decreased function",
+"value": "0.25"
+},
+{
+"t": "allele",
+"gene": "CYP2D6",
+"name": "*1x2",
+"fn": "Increased function",
+"value": "2.0"
+},
+{
+"t": "allele",
+"gene": "CYP2D6",
+"name": "*1x≥3",
+"fn": "Increased function",
+"value": "≥3.0"
+},
+{
+"t": "allele",
+"gene": "CYP2D6",
+"name": "*2x2",
+"fn": "Increased function",
+"value": "2.0"
+},
+{
+"t": "allele",
+"gene": "CYP2D6",
+"name": "*36+*10",
+"fn": "Decreased function",
+"value": "0.25"
+},
+{
+"t": "allele",
+"gene": "CYP2D6",
+"name": "*4",
+"fn": "No function",
+"value": "0.0"
+},
+{
+"t": "allele",
+"gene": "CYP2D6",
+"name": "*41",
+"fn": "Decreased function",
+"value": "0.25"
+},
+{
+"t": "allele",
+"gene": "CYP2D6",
+"name": "*4x2",
+"fn": "No function",
+"value": "0.0"
+},
+{
+"t": "allele",
+"gene": "G6PD",
+"name": "A",
+"fn": "IV/Normal",
+"value": null
+},
+{
+"t": "allele",
+"gene": "G6PD",
+"name": "A- 202A_376G",
+"fn": "III/Deficient",
+"value": null
+},
+{
+"t": "allele",
+"gene": "G6PD",
+"name": "B (reference)",
+"fn": "IV/Normal",
+"value": null
+},
+{
+"t": "allele",
+"gene": "MT-RNR1",
+"name": "m.1555A>G",
+"fn": "increased risk of aminoglycoside-induced hearing loss",
+"value": null
+},
+{
+"t": "allele",
+"gene": "MT-RNR1",
+"name": "m.827A>G",
+"fn": "normal risk of aminoglycoside-induced hearing loss",
+"value": null
+}
+],
+"rule": [
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Ultrarapid Metabolizer",
+"score": "n/a",
+"key": {
+"Increased function": 2
+},
+"total": "n/a",
+"desc": 0
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Rapid Metabolizer",
+"score": "n/a",
+"key": {
+"Normal function": 1,
+"Increased function": 1
+},
+"total": "n/a",
+"desc": 1
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Normal Metabolizer",
+"score": "n/a",
+"key": {
+"Normal function": 2
+},
+"total": "n/a",
+"desc": 2
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Likely Intermediate Metabolizer",
+"score": "n/a",
+"key": {
+"Normal function": 1,
+"Decreased function": 1
+},
+"total": "n/a",
+"desc": 3
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Likely Intermediate Metabolizer",
+"score": "n/a",
+"key": {
+"Decreased function": 1,
+"Increased function": 1
+},
+"total": "n/a",
+"desc": 4
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Likely Intermediate Metabolizer",
+"score": "n/a",
+"key": {
+"Decreased function": 2
+},
+"total": "n/a",
+"desc": 5
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Intermediate Metabolizer",
+"score": "n/a",
+"key": {
+"No function": 1,
+"Normal function": 1
+},
+"total": "n/a",
+"desc": 6
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Intermediate Metabolizer",
+"score": "n/a",
+"key": {
+"No function": 1,
+"Increased function": 1
+},
+"total": "n/a",
+"desc": 7
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Likely Poor Metabolizer",
+"score": "n/a",
+"key": {
+"No function": 1,
+"Decreased function": 1
+},
+"total": "n/a",
+"desc": 8
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Poor Metabolizer",
+"score": "n/a",
+"key": {
+"No function": 2
+},
+"total": "n/a",
+"desc": 9
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"Uncertain function": 2
+},
+"total": "n/a",
+"desc": 10
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"Increased function": 1,
+"Uncertain function": 1
+},
+"total": "n/a",
+"desc": 11
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"Normal function": 1,
+"Uncertain function": 1
+},
+"total": "n/a",
+"desc": 12
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"Decreased function": 1,
+"Uncertain function": 1
+},
+"total": "n/a",
+"desc": 13
+},
+{
+"t": "rule",
+"gene": "CYP2C19",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"No function": 1,
+"Uncertain function": 1
+},
+"total": "n/a",
+"desc": 14
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Normal Metabolizer",
+"score": "2.0",
+"key": {
+"1.0": 2
+},
+"total": "2.0",
+"desc": 2
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Intermediate Metabolizer",
+"score": "1.5",
+"key": {
+"0.5": 1,
+"1.0": 1
+},
+"total": "1.5",
+"desc": 3
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Intermediate Metabolizer",
+"score": "1.0",
+"key": {
+"0.0": 1,
+"1.0": 1
+},
+"total": "1.0",
+"desc": 6
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Intermediate Metabolizer",
+"score": "1.0",
+"key": {
+"0.5": 2
+},
+"total": "1.0",
+"desc": 5
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Poor Metabolizer",
+"score": "0.5",
+"key": {
+"0.0": 1,
+"0.5": 1
+},
+"total": "0.5",
+"desc": 8
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Poor Metabolizer",
+"score": "0.0",
+"key": {
+"0.0": 2
+},
+"total": "0.0",
+"desc": 9
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"1.0": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 12
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"0.5": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 13
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"0.0": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 14
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 2
+},
+"total": "n/a",
+"desc": 10
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"1.0": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 15
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"0.5": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 16
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"0.0": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 17
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 2
+},
+"total": "n/a",
+"desc": 18
+},
+{
+"t": "rule",
+"gene": "CYP2C9",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 2
+},
+"total": "n/a",
+"desc": 19
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "≥6.0",
+"key": {
+"≥3.0": 2
+},
+"total": "≥6.0",
+"desc": 20
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "≥5.0",
+"key": {
+"2.0": 1,
+"≥3.0": 1
+},
+"total": "≥5.0",
+"desc": 20
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "≥3.75",
+"key": {
+"0.75": 1,
+"≥3.0": 1
+},
+"total": "≥3.75",
+"desc": 21
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "≥4.0",
+"key": {
+"1.0": 1,
+"≥3.0": 1
+},
+"total": "≥4.0",
+"desc": 22
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "≥3.5",
+"key": {
+"0.5": 1,
+"≥3.0": 1
+},
+"total": "≥3.5",
+"desc": 23
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "≥3.25",
+"key": {
+"0.25": 1,
+"≥3.0": 1
+},
+"total": "≥3.25",
+"desc": 24
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "≥3.0",
+"key": {
+"0.0": 1,
+"≥3.0": 1
+},
+"total": "≥3.0",
+"desc": 25
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "4.0",
+"key": {
+"2.0": 2
+},
+"total": "4.0",
+"desc": 26
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "2.75",
+"key": {
+"2.0": 1,
+"0.75": 1
+},
+"total": "2.75",
+"desc": 27
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "3.0",
+"key": {
+"1.0": 1,
+"2.0": 1
+},
+"total": "3.0",
+"desc": 28
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Ultrarapid Metabolizer",
+"score": "2.5",
+"key": {
+"0.5": 1,
+"2.0": 1
+},
+"total": "2.5",
+"desc": 29
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Normal Metabolizer",
+"score": "2.25",
+"key": {
+"2.0": 1,
+"0.25": 1
+},
+"total": "2.25",
+"desc": 30
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Normal Metabolizer",
+"score": "2.0",
+"key": {
+"0.0": 1,
+"2.0": 1
+},
+"total": "2.0",
+"desc": 31
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Normal Metabolizer",
+"score": "1.5",
+"key": {
+"0.75": 2
+},
+"total": "1.5",
+"desc": 32
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Normal Metabolizer",
+"score": "1.75",
+"key": {
+"1.0": 1,
+"0.75": 1
+},
+"total": "1.75",
+"desc": 33
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Normal Metabolizer",
+"score": "1.25",
+"key": {
+"0.5": 1,
+"0.75": 1
+},
+"total": "1.25",
+"desc": 34
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Intermediate Metabolizer",
+"score": "1.0",
+"key": {
+"0.25": 1,
+"0.75": 1
+},
+"total": "1.0",
+"desc": 35
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Intermediate Metabolizer",
+"score": "0.75",
+"key": {
+"0.0": 1,
+"0.75": 1
+},
+"total": "0.75",
+"desc": 36
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Normal Metabolizer",
+"score": "2.0",
+"key": {
+"1.0": 2
+},
+"total": "2.0",
+"desc": 37
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Normal Metabolizer",
+"score": "1.5",
+"key": {
+"0.5": 1,
+"1.0": 1
+},
+"total": "1.5",
+"desc": 38
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Normal Metabolizer",
+"score": "1.25",
+"key": {
+"1.0": 1,
+"0.25": 1
+},
+"total": "1.25",
+"desc": 39
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Intermediate Metabolizer",
+"score": "1.0",
+"key": {
+"0.0": 1,
+"1.0": 1
+},
+"total": "1.0",
+"desc": 40
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Intermediate Metabolizer",
+"score": "1.0",
+"key": {
+"0.5": 2
+},
+"total": "1.0",
+"desc": 41
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Intermediate Metabolizer",
+"score": "0.75",
+"key": {
+"0.5": 1,
+"0.25": 1
+},
+"total": "0.75",
+"desc": 42
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Intermediate Metabolizer",
+"score": "0.5",
+"key": {
+"0.0": 1,
+"0.5": 1
+},
+"total": "0.5",
+"desc": 43
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Intermediate Metabolizer",
+"score": "0.5",
+"key": {
+"0.25": 2
+},
+"total": "0.5",
+"desc": 44
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Intermediate Metabolizer",
+"score": "0.25",
+"key": {
+"0.0": 1,
+"0.25": 1
+},
+"total": "0.25",
+"desc": 45
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Poor Metabolizer",
+"score": "0.0",
+"key": {
+"0.0": 2
+},
+"total": "0.0",
+"desc": 9
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 1,
+"≥3.0": 1
+},
+"total": "n/a",
+"desc": 46
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"2.0": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 47
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 1,
+"0.75": 1
+},
+"total": "n/a",
+"desc": 48
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"1.0": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 49
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"0.5": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 50
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 1,
+"0.25": 1
+},
+"total": "n/a",
+"desc": 51
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"0.0": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 52
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 2
+},
+"total": "n/a",
+"desc": 53
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 1,
+"≥3.0": 1
+},
+"total": "n/a",
+"desc": 46
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"2.0": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 47
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 1,
+"0.75": 1
+},
+"total": "n/a",
+"desc": 48
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"1.0": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 49
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"0.5": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 50
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 1,
+"0.25": 1
+},
+"total": "n/a",
+"desc": 51
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"0.0": 1,
+"n/a": 1
+},
+"total": "n/a",
+"desc": 52
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 2
+},
+"total": "n/a",
+"desc": 53
+},
+{
+"t": "rule",
+"gene": "CYP2D6",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"n/a": 2
+},
+"total": "n/a",
+"desc": 53
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Normal",
+"score": "n/a",
+"key": {
+"IV/Normal": 1
+},
+"total": "n/a",
+"desc": 54
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Deficient",
+"score": "n/a",
+"key": {
+"III/Deficient": 1
+},
+"total": "n/a",
+"desc": 55
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Deficient",
+"score": "n/a",
+"key": {
+"II/Deficient": 1
+},
+"total": "n/a",
+"desc": 56
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Deficient with CNSHA",
+"score": "n/a",
+"key": {
+"I/Deficient with CNSHA": 1
+},
+"total": "n/a",
+"desc": 57
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Normal",
+"score": "n/a",
+"key": {
+"IV/Normal": 2
+},
+"total": "n/a",
+"desc": 58
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Variable",
+"score": "n/a",
+"key": {
+"IV/Normal": 1,
+"III/Deficient": 1
+},
+"total": "n/a",
+"desc": 59
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Variable",
+"score": "n/a",
+"key": {
+"IV/Normal": 1,
+"II/Deficient": 1
+},
+"total": "n/a",
+"desc": 60
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Variable",
+"score": "n/a",
+"key": {
+"IV/Normal": 1,
+"I/Deficient with CNSHA": 1
+},
+"total": "n/a",
+"desc": 61
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Deficient",
+"score": "n/a",
+"key": {
+"III/Deficient": 2
+},
+"total": "n/a",
+"desc": 62
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Deficient",
+"score": "n/a",
+"key": {
+"II/Deficient": 1,
+"III/Deficient": 1
+},
+"total": "n/a",
+"desc": 63
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Deficient",
+"score": "n/a",
+"key": {
+"III/Deficient": 1,
+"I/Deficient with CNSHA": 1
+},
+"total": "n/a",
+"desc": 64
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Deficient",
+"score": "n/a",
+"key": {
+"II/Deficient": 2
+},
+"total": "n/a",
+"desc": 65
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Deficient",
+"score": "n/a",
+"key": {
+"II/Deficient": 1,
+"I/Deficient with CNSHA": 1
+},
+"total": "n/a",
+"desc": 66
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Deficient with CNSHA",
+"score": "n/a",
+"key": {
+"I/Deficient with CNSHA": 2
+},
+"total": "n/a",
+"desc": 67
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"Uncertain function": 1
+},
+"total": "n/a",
+"desc": 68
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"IV/Normal": 1,
+"Uncertain function": 1
+},
+"total": "n/a",
+"desc": 69
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"III/Deficient": 1,
+"Uncertain function": 1
+},
+"total": "n/a",
+"desc": 70
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"II/Deficient": 1,
+"Uncertain function": 1
+},
+"total": "n/a",
+"desc": 71
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"Uncertain function": 1,
+"I/Deficient with CNSHA": 1
+},
+"total": "n/a",
+"desc": 72
+},
+{
+"t": "rule",
+"gene": "G6PD",
+"result": "Indeterminate",
+"score": "n/a",
+"key": {
+"Uncertain function": 2
+},
+"total": "n/a",
+"desc": 73
+},
+{
+"t": "rule",
+"gene": "MT-RNR1",
+"result": "increased risk of aminoglycoside-induced hearing loss",
+"score": "n/a",
+"key": {
+"increased risk of aminoglycoside-induced hearing loss": 1
+},
+"total": "n/a",
+"desc": 74
+},
+{
+"t": "rule",
+"gene": "MT-RNR1",
+"result": "normal risk of aminoglycoside-induced hearing loss",
+"score": "n/a",
+"key": {
+"normal risk of aminoglycoside-induced hearing loss": 1
+},
+"total": "n/a",
+"desc": 75
+},
+{
+"t": "rule",
+"gene": "MT-RNR1",
+"result": "uncertain risk of aminoglycoside-induced hearing loss",
+"score": "n/a",
+"key": {
+"uncertain risk of aminoglycoside-induced hearing loss": 1
+},
+"total": "n/a",
+"desc": 76
+}
+],
+"gene": [
+{
+"t": "gene",
+"gene": "CYP2C19",
+"method": "PHENOTYPE",
+"notes": null
+},
+{
+"t": "gene",
+"gene": "CYP2C9",
+"method": "ACTIVITY_SCORE",
+"notes": 77
+},
+{
+"t": "gene",
+"gene": "CYP2D6",
+"method": "ACTIVITY_SCORE",
+"notes": null
+},
+{
+"t": "gene",
+"gene": "G6PD",
+"method": "PHENOTYPE",
+"notes": null
+},
+{
+"t": "gene",
+"gene": "MT-RNR1",
+"method": "PHENOTYPE",
+"notes": null
+}
+],
+"rec": [
+{
+"t": "rec",
+"guideline": 100421,
+"drug": "abacavir",
+"pop": "general",
+"key": {
+"HLA-B": "*57:01 negative"
+},
+"impl": {
+"HLA-B": 78
+},
+"rec": 79,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100421,
+"drug": "abacavir",
+"pop": "general",
+"key": {
+"HLA-B": "*57:01 positive"
+},
+"impl": {
+"HLA-B": 81
+},
+"rec": 82,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ naive",
+"key": {
+"HLA-A": "*31:01 positive",
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-A": 83,
+"HLA-B": 84
+},
+"rec": 85,
+"cls": "Strong",
+"comments": 86
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ naive",
+"key": {
+"HLA-A": "No Result",
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-A": 80,
+"HLA-B": 84
+},
+"rec": 87,
+"cls": "Strong",
+"comments": 88
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ naive",
+"key": {
+"HLA-A": "*31:01 negative",
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-A": 89,
+"HLA-B": 90
+},
+"rec": 91,
+"cls": "Strong",
+"comments": 92
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ naive",
+"key": {
+"HLA-A": "*31:01 positive",
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-A": 83,
+"HLA-B": 90
+},
+"rec": 91,
+"cls": "Strong",
+"comments": 92
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ naive",
+"key": {
+"HLA-A": "No Result",
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-A": 80,
+"HLA-B": 90
+},
+"rec": 91,
+"cls": "Strong",
+"comments": 92
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ naive",
+"key": {
+"HLA-A": "*31:01 negative",
+"HLA-B": "No Result"
+},
+"impl": {
+"HLA-A": 89,
+"HLA-B": 80
+},
+"rec": 87,
+"cls": "Strong",
+"comments": 88
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ naive",
+"key": {
+"HLA-A": "*31:01 positive",
+"HLA-B": "No Result"
+},
+"impl": {
+"HLA-A": 83,
+"HLA-B": 80
+},
+"rec": 85,
+"cls": "Strong",
+"comments": 86
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ naive",
+"key": {
+"HLA-A": "*31:01 negative",
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-A": 89,
+"HLA-B": 84
+},
+"rec": 87,
+"cls": "Strong",
+"comments": 88
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ-no alternatives",
+"key": {
+"HLA-A": "*31:01 negative",
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-A": 89,
+"HLA-B": 84
+},
+"rec": 87,
+"cls": "Strong",
+"comments": 88
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ-no alternatives",
+"key": {
+"HLA-A": "*31:01 positive",
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-A": 83,
+"HLA-B": 84
+},
+"rec": 93,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ-no alternatives",
+"key": {
+"HLA-A": "No Result",
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-A": 80,
+"HLA-B": 84
+},
+"rec": 87,
+"cls": "Strong",
+"comments": 88
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ-no alternatives",
+"key": {
+"HLA-A": "*31:01 negative",
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-A": 89,
+"HLA-B": 90
+},
+"rec": 91,
+"cls": "Strong",
+"comments": 92
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ-no alternatives",
+"key": {
+"HLA-A": "*31:01 positive",
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-A": 83,
+"HLA-B": 90
+},
+"rec": 91,
+"cls": "Strong",
+"comments": 92
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ-no alternatives",
+"key": {
+"HLA-A": "No Result",
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-A": 80,
+"HLA-B": 90
+},
+"rec": 91,
+"cls": "Strong",
+"comments": 92
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ-no alternatives",
+"key": {
+"HLA-A": "*31:01 negative",
+"HLA-B": "No Result"
+},
+"impl": {
+"HLA-A": 89,
+"HLA-B": 80
+},
+"rec": 87,
+"cls": "Strong",
+"comments": 88
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ-no alternatives",
+"key": {
+"HLA-A": "*31:01 positive",
+"HLA-B": "No Result"
+},
+"impl": {
+"HLA-A": 83,
+"HLA-B": 80
+},
+"rec": 93,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ use >3mos ",
+"key": {
+"HLA-A": "*31:01 negative",
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-A": 89,
+"HLA-B": 84
+},
+"rec": 87,
+"cls": "Strong",
+"comments": 88
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ use >3mos ",
+"key": {
+"HLA-A": "*31:01 positive",
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-A": 83,
+"HLA-B": 84
+},
+"rec": 94,
+"cls": "Optional",
+"comments": 95
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ use >3mos ",
+"key": {
+"HLA-A": "No Result",
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-A": 80,
+"HLA-B": 84
+},
+"rec": 87,
+"cls": "Strong",
+"comments": 88
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ use >3mos ",
+"key": {
+"HLA-A": "*31:01 negative",
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-A": 89,
+"HLA-B": 90
+},
+"rec": 96,
+"cls": "Optional",
+"comments": 97
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ use >3mos ",
+"key": {
+"HLA-A": "*31:01 positive",
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-A": 83,
+"HLA-B": 90
+},
+"rec": 96,
+"cls": "Optional",
+"comments": 97
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ use >3mos ",
+"key": {
+"HLA-A": "No Result",
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-A": 80,
+"HLA-B": 90
+},
+"rec": 96,
+"cls": "Optional",
+"comments": 97
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ use >3mos ",
+"key": {
+"HLA-A": "*31:01 negative",
+"HLA-B": "No Result"
+},
+"impl": {
+"HLA-A": 89,
+"HLA-B": 80
+},
+"rec": 87,
+"cls": "Strong",
+"comments": 88
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "carbamazepine",
+"pop": "CBZ use >3mos ",
+"key": {
+"HLA-A": "*31:01 positive",
+"HLA-B": "No Result"
+},
+"impl": {
+"HLA-A": 83,
+"HLA-B": 80
+},
+"rec": 94,
+"cls": "Optional",
+"comments": 95
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI ACS PCI ",
+"key": {
+"CYP2C19": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2C19": 98
+},
+"rec": 99,
+"cls": "Strong",
+"comments": 100
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI ACS PCI ",
+"key": {
+"CYP2C19": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2C19": 101
+},
+"rec": 99,
+"cls": "Strong",
+"comments": 100
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI ACS PCI ",
+"key": {
+"CYP2C19": "Normal Metabolizer"
+},
+"impl": {
+"CYP2C19": 102
+},
+"rec": 99,
+"cls": "Strong",
+"comments": 100
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI ACS PCI ",
+"key": {
+"CYP2C19": "Likely Intermediate Metabolizer"
+},
+"impl": {
+"CYP2C19": 103
+},
+"rec": 104,
+"cls": "Strong",
+"comments": 105
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI ACS PCI ",
+"key": {
+"CYP2C19": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2C19": 103
+},
+"rec": 106,
+"cls": "Strong",
+"comments": 100
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI ACS PCI ",
+"key": {
+"CYP2C19": "Likely Poor Metabolizer"
+},
+"impl": {
+"CYP2C19": 107
+},
+"rec": 108,
+"cls": "Strong",
+"comments": 105
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI ACS PCI ",
+"key": {
+"CYP2C19": "Poor Metabolizer"
+},
+"impl": {
+"CYP2C19": 107
+},
+"rec": 108,
+"cls": "Strong",
+"comments": 100
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI ACS PCI ",
+"key": {
+"CYP2C19": "Indeterminate"
+},
+"impl": {
+"CYP2C19": 80
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI non-ACS non-PCI",
+"key": {
+"CYP2C19": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2C19": 98
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 110
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI non-ACS non-PCI",
+"key": {
+"CYP2C19": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2C19": 101
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 110
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI non-ACS non-PCI",
+"key": {
+"CYP2C19": "Normal Metabolizer"
+},
+"impl": {
+"CYP2C19": 102
+},
+"rec": 99,
+"cls": "Strong",
+"comments": 110
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI non-ACS non-PCI",
+"key": {
+"CYP2C19": "Likely Intermediate Metabolizer"
+},
+"impl": {
+"CYP2C19": 103
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 111
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI non-ACS non-PCI",
+"key": {
+"CYP2C19": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2C19": 103
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 110
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI non-ACS non-PCI",
+"key": {
+"CYP2C19": "Likely Poor Metabolizer"
+},
+"impl": {
+"CYP2C19": 107
+},
+"rec": 108,
+"cls": "Moderate",
+"comments": 111
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI non-ACS non-PCI",
+"key": {
+"CYP2C19": "Poor Metabolizer"
+},
+"impl": {
+"CYP2C19": 107
+},
+"rec": 108,
+"cls": "Moderate",
+"comments": 110
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "CVI non-ACS non-PCI",
+"key": {
+"CYP2C19": "Indeterminate"
+},
+"impl": {
+"CYP2C19": 80
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "NVI",
+"key": {
+"CYP2C19": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2C19": 112
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 113
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "NVI",
+"key": {
+"CYP2C19": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2C19": 114
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 113
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "NVI",
+"key": {
+"CYP2C19": "Normal Metabolizer"
+},
+"impl": {
+"CYP2C19": 102
+},
+"rec": 99,
+"cls": "Strong",
+"comments": 113
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "NVI",
+"key": {
+"CYP2C19": "Likely Intermediate Metabolizer"
+},
+"impl": {
+"CYP2C19": 103
+},
+"rec": 115,
+"cls": "Moderate",
+"comments": 116
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "NVI",
+"key": {
+"CYP2C19": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2C19": 103
+},
+"rec": 115,
+"cls": "Moderate",
+"comments": 117
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "NVI",
+"key": {
+"CYP2C19": "Likely Poor Metabolizer"
+},
+"impl": {
+"CYP2C19": 107
+},
+"rec": 118,
+"cls": "Moderate",
+"comments": 116
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "NVI",
+"key": {
+"CYP2C19": "Poor Metabolizer"
+},
+"impl": {
+"CYP2C19": 107
+},
+"rec": 118,
+"cls": "Moderate",
+"comments": 117
+},
+{
+"t": "rec",
+"guideline": 100411,
+"drug": "clopidogrel",
+"pop": "NVI",
+"key": {
+"CYP2C19": "Indeterminate"
+},
+"impl": {
+"CYP2C19": 80
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "n/a"
+},
+"impl": {
+"CYP2D6": 80
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "0.25"
+},
+"impl": {
+"CYP2D6": 119
+},
+"rec": 120,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "0.5"
+},
+"impl": {
+"CYP2D6": 119
+},
+"rec": 120,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "0.75"
+},
+"impl": {
+"CYP2D6": 119
+},
+"rec": 120,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "1.0"
+},
+"impl": {
+"CYP2D6": 119
+},
+"rec": 120,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "1.25"
+},
+"impl": {
+"CYP2D6": 121
+},
+"rec": 122,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "1.5"
+},
+"impl": {
+"CYP2D6": 121
+},
+"rec": 122,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "1.75"
+},
+"impl": {
+"CYP2D6": 121
+},
+"rec": 122,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "2.0"
+},
+"impl": {
+"CYP2D6": 121
+},
+"rec": 122,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "2.25"
+},
+"impl": {
+"CYP2D6": 121
+},
+"rec": 122,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "0.0"
+},
+"impl": {
+"CYP2D6": 123
+},
+"rec": 124,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "2.5"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "3.0"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "2.75"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "4.0"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "≥3.0"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "≥3.25"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "≥3.5"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "≥4.0"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "≥3.75"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "≥5.0"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "codeine",
+"pop": "general",
+"key": {
+"CYP2D6": "≥6.0"
+},
+"impl": {
+"CYP2D6": 125
+},
+"rec": 126,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "oxcarbazepine",
+"pop": "OXC naive",
+"key": {
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-B": 127
+},
+"rec": 128,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "oxcarbazepine",
+"pop": "OXC naive",
+"key": {
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-B": 129
+},
+"rec": 130,
+"cls": "Strong",
+"comments": 131
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "oxcarbazepine",
+"pop": "OXC use >3 mos",
+"key": {
+"HLA-B": "*15:02 negative"
+},
+"impl": {
+"HLA-B": 127
+},
+"rec": 128,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100423,
+"drug": "oxcarbazepine",
+"pop": "OXC use >3 mos",
+"key": {
+"HLA-B": "*15:02 positive"
+},
+"impl": {
+"HLA-B": 129
+},
+"rec": 132,
+"cls": "Optional",
+"comments": 133
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 134
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 136
+},
+"rec": 137,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 139,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 109,
+"cls": "n/a",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 134
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 136
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 80
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 134
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 136
+},
+"rec": 137,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 139,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 109,
+"cls": "n/a",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "No Result"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "No Result"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 80
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 134
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 136
+},
+"rec": 137,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 139,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 109,
+"cls": "n/a",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 134
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 136
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 80
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 134
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 136
+},
+"rec": 137,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 139,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 109,
+"cls": "n/a",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "No Result"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "phenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "No Result"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 80
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 134
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 136
+},
+"rec": 137,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 139,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 109,
+"cls": "n/a",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 134
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 136
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 80
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 134
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 136
+},
+"rec": 137,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 139,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 109,
+"cls": "n/a",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "No Result"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT naive",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "No Result"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 80
+},
+"rec": 142,
+"cls": "Strong",
+"comments": 143
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 134
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 136
+},
+"rec": 137,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 139,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 109,
+"cls": "n/a",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 134
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 136
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 138
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 80
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "2.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 134
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "1.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 136
+},
+"rec": 137,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "1.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 139,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "0.5"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "0.0"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 138
+},
+"rec": 140,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "No Result",
+"CYP2C9": "n/a"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 109,
+"cls": "n/a",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 negative",
+"CYP2C9": "No Result"
+},
+"impl": {
+"HLA-B": 80,
+"CYP2C9": 80
+},
+"rec": 135,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100412,
+"drug": "fosphenytoin",
+"pop": "PHT use >3mos",
+"key": {
+"HLA-B": "*15:02 positive",
+"CYP2C9": "No Result"
+},
+"impl": {
+"HLA-B": 141,
+"CYP2C9": 80
+},
+"rec": 144,
+"cls": "Optional",
+"comments": 145
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "No Result",
+"CYP2C19": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 146
+},
+"rec": 147,
+"cls": "Strong",
+"comments": 148
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Ultrarapid Metabolizer",
+"CYP2C19": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 149,
+"CYP2C19": 146
+},
+"rec": 150,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Rapid Metabolizer",
+"CYP2C19": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 151,
+"CYP2C19": 146
+},
+"rec": 150,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Normal Metabolizer",
+"CYP2C19": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 152,
+"CYP2C19": 146
+},
+"rec": 147,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Intermediate Metabolizer",
+"CYP2C19": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 153,
+"CYP2C19": 146
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Poor Metabolizer",
+"CYP2C19": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 154,
+"CYP2C19": 146
+},
+"rec": 147,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Indeterminate",
+"CYP2C19": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 146
+},
+"rec": 147,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "No Result",
+"CYP2C19": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 146
+},
+"rec": 147,
+"cls": "Strong",
+"comments": 148
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Ultrarapid Metabolizer",
+"CYP2C19": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 149,
+"CYP2C19": 146
+},
+"rec": 150,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Rapid Metabolizer",
+"CYP2C19": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 151,
+"CYP2C19": 146
+},
+"rec": 150,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Normal Metabolizer",
+"CYP2C19": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 152,
+"CYP2C19": 146
+},
+"rec": 147,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Intermediate Metabolizer",
+"CYP2C19": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 153,
+"CYP2C19": 146
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Poor Metabolizer",
+"CYP2C19": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 154,
+"CYP2C19": 146
+},
+"rec": 147,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Indeterminate",
+"CYP2C19": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 146
+},
+"rec": 147,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "No Result",
+"CYP2C19": "Normal Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 155
+},
+"rec": 156,
+"cls": "Strong",
+"comments": 148
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Ultrarapid Metabolizer",
+"CYP2C19": "Normal Metabolizer"
+},
+"impl": {
+"CYP2B6": 149,
+"CYP2C19": 155
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Rapid Metabolizer",
+"CYP2C19": "Normal Metabolizer"
+},
+"impl": {
+"CYP2B6": 151,
+"CYP2C19": 155
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Normal Metabolizer",
+"CYP2C19": "Normal Metabolizer"
+},
+"impl": {
+"CYP2B6": 152,
+"CYP2C19": 155
+},
+"rec": 147,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Intermediate Metabolizer",
+"CYP2C19": "Normal Metabolizer"
+},
+"impl": {
+"CYP2B6": 153,
+"CYP2C19": 155
+},
+"rec": 157,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Poor Metabolizer",
+"CYP2C19": "Normal Metabolizer"
+},
+"impl": {
+"CYP2B6": 154,
+"CYP2C19": 155
+},
+"rec": 158,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Indeterminate",
+"CYP2C19": "Normal Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 155
+},
+"rec": 147,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "No Result",
+"CYP2C19": "Likely Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 159
+},
+"rec": 160,
+"cls": "Moderate",
+"comments": 148
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Ultrarapid Metabolizer",
+"CYP2C19": "Likely Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 149,
+"CYP2C19": 159
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Rapid Metabolizer",
+"CYP2C19": "Likely Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 151,
+"CYP2C19": 159
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Normal Metabolizer",
+"CYP2C19": "Likely Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 152,
+"CYP2C19": 159
+},
+"rec": 157,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Intermediate Metabolizer",
+"CYP2C19": "Likely Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 153,
+"CYP2C19": 159
+},
+"rec": 160,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Poor Metabolizer",
+"CYP2C19": "Likely Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 154,
+"CYP2C19": 159
+},
+"rec": 161,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Indeterminate",
+"CYP2C19": "Likely Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 159
+},
+"rec": 157,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "No Result",
+"CYP2C19": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 159
+},
+"rec": 162,
+"cls": "Moderate",
+"comments": 148
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Ultrarapid Metabolizer",
+"CYP2C19": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 149,
+"CYP2C19": 159
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Rapid Metabolizer",
+"CYP2C19": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 151,
+"CYP2C19": 159
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Normal Metabolizer",
+"CYP2C19": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 152,
+"CYP2C19": 159
+},
+"rec": 157,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Intermediate Metabolizer",
+"CYP2C19": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 153,
+"CYP2C19": 159
+},
+"rec": 160,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Poor Metabolizer",
+"CYP2C19": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 154,
+"CYP2C19": 159
+},
+"rec": 161,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Indeterminate",
+"CYP2C19": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 159
+},
+"rec": 157,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "No Result",
+"CYP2C19": "Likely Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Moderate",
+"comments": 148
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Ultrarapid Metabolizer",
+"CYP2C19": "Likely Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 149,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Rapid Metabolizer",
+"CYP2C19": "Likely Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 151,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Normal Metabolizer",
+"CYP2C19": "Likely Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 152,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Intermediate Metabolizer",
+"CYP2C19": "Likely Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 153,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Poor Metabolizer",
+"CYP2C19": "Likely Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 154,
+"CYP2C19": 163
+},
+"rec": 165,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Indeterminate",
+"CYP2C19": "Likely Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "No Result",
+"CYP2C19": "Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Moderate",
+"comments": 148
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Ultrarapid Metabolizer",
+"CYP2C19": "Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 149,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Rapid Metabolizer",
+"CYP2C19": "Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 151,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Normal Metabolizer",
+"CYP2C19": "Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 152,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Intermediate Metabolizer",
+"CYP2C19": "Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 153,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Poor Metabolizer",
+"CYP2C19": "Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 154,
+"CYP2C19": 163
+},
+"rec": 165,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Indeterminate",
+"CYP2C19": "Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 163
+},
+"rec": 164,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "No Result",
+"CYP2C19": "Indeterminate"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 80
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 148
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Ultrarapid Metabolizer",
+"CYP2C19": "Indeterminate"
+},
+"impl": {
+"CYP2B6": 149,
+"CYP2C19": 80
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Rapid Metabolizer",
+"CYP2C19": "Indeterminate"
+},
+"impl": {
+"CYP2B6": 151,
+"CYP2C19": 80
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Normal Metabolizer",
+"CYP2C19": "Indeterminate"
+},
+"impl": {
+"CYP2B6": 152,
+"CYP2C19": 80
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Intermediate Metabolizer",
+"CYP2C19": "Indeterminate"
+},
+"impl": {
+"CYP2B6": 153,
+"CYP2C19": 80
+},
+"rec": 157,
+"cls": "Moderate",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Poor Metabolizer",
+"CYP2C19": "Indeterminate"
+},
+"impl": {
+"CYP2B6": 154,
+"CYP2C19": 80
+},
+"rec": 166,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Indeterminate",
+"CYP2C19": "Indeterminate"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 80
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Ultrarapid Metabolizer",
+"CYP2C19": "No Result"
+},
+"impl": {
+"CYP2B6": 149,
+"CYP2C19": 80
+},
+"rec": 147,
+"cls": "Moderate",
+"comments": 167
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Rapid Metabolizer",
+"CYP2C19": "No Result"
+},
+"impl": {
+"CYP2B6": 151,
+"CYP2C19": 80
+},
+"rec": 147,
+"cls": "Strong",
+"comments": 167
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Normal Metabolizer",
+"CYP2C19": "No Result"
+},
+"impl": {
+"CYP2B6": 152,
+"CYP2C19": 80
+},
+"rec": 147,
+"cls": "Strong",
+"comments": 167
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Intermediate Metabolizer",
+"CYP2C19": "No Result"
+},
+"impl": {
+"CYP2B6": 153,
+"CYP2C19": 80
+},
+"rec": 168,
+"cls": "Optional",
+"comments": 167
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Poor Metabolizer",
+"CYP2C19": "No Result"
+},
+"impl": {
+"CYP2B6": 154,
+"CYP2C19": 80
+},
+"rec": 158,
+"cls": "Optional",
+"comments": 167
+},
+{
+"t": "rec",
+"guideline": 100413,
+"drug": "sertraline",
+"pop": "general",
+"key": {
+"CYP2B6": "Indeterminate",
+"CYP2C19": "No Result"
+},
+"impl": {
+"CYP2B6": 80,
+"CYP2C19": 80
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100418,
+"drug": "tacrolimus",
+"pop": "general",
+"key": {
+"CYP3A5": "Normal Metabolizer"
+},
+"impl": {
+"CYP3A5": 169
+},
+"rec": 170,
+"cls": "Strong",
+"comments": 171
+},
+{
+"t": "rec",
+"guideline": 100418,
+"drug": "tacrolimus",
+"pop": "general",
+"key": {
+"CYP3A5": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"CYP3A5": 169
+},
+"rec": 170,
+"cls": "Strong",
+"comments": 172
+},
+{
+"t": "rec",
+"guideline": 100418,
+"drug": "tacrolimus",
+"pop": "general",
+"key": {
+"CYP3A5": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP3A5": 169
+},
+"rec": 170,
+"cls": "Strong",
+"comments": 172
+},
+{
+"t": "rec",
+"guideline": 100418,
+"drug": "tacrolimus",
+"pop": "general",
+"key": {
+"CYP3A5": "Poor Metabolizer"
+},
+"impl": {
+"CYP3A5": 173
+},
+"rec": 174,
+"cls": "Strong",
+"comments": 175
+},
+{
+"t": "rec",
+"guideline": 100418,
+"drug": "tacrolimus",
+"pop": "general",
+"key": {
+"CYP3A5": "Indeterminate"
+},
+"impl": {
+"CYP3A5": 80
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 80
+}
+],
+"pair": [
+{
+"t": "pair",
+"drug": "abacavir",
+"gene": "HLA-B",
+"guideline": "HLA-B and Abacavir",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "carbamazepine",
+"gene": "HLA-A",
+"guideline": "HLA-A, HLA-B and Carbamazepine and Oxcarbazepine",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "carbamazepine",
+"gene": "HLA-B",
+"guideline": "HLA-A, HLA-B and Carbamazepine and Oxcarbazepine",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "clopidogrel",
+"gene": "CYP2C19",
+"guideline": "CYP2C19 and Clopidogrel",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "codeine",
+"gene": "CYP2D6",
+"guideline": "CYP2D6, OPRM1, COMT, and Opioids",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "fosphenytoin",
+"gene": "CYP2C9",
+"guideline": "CYP2C9, HLA-B and Phenytoin",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "fosphenytoin",
+"gene": "HLA-B",
+"guideline": "CYP2C9, HLA-B and Phenytoin",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "ondansetron",
+"gene": "CYP2D6",
+"guideline": "CYP2D6 and Ondansetron and Tropisetron",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "oxcarbazepine",
+"gene": "HLA-B",
+"guideline": "HLA-A, HLA-B and Carbamazepine and Oxcarbazepine",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "phenytoin",
+"gene": "CYP2C9",
+"guideline": "CYP2C9, HLA-B and Phenytoin",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "phenytoin",
+"gene": "HLA-B",
+"guideline": "CYP2C9, HLA-B and Phenytoin",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "tacrolimus",
+"gene": "CYP3A5",
+"guideline": "CYP3A5 and Tacrolimus",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "warfarin",
+"gene": "CYP2C9",
+"guideline": "CYP2C9, VKORC1, CYP4F2 and Warfarin",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "warfarin",
+"gene": "CYP4F2",
+"guideline": "CYP2C9, VKORC1, CYP4F2 and Warfarin",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "warfarin",
+"gene": "VKORC1",
+"guideline": "CYP2C9, VKORC1, CYP4F2 and Warfarin",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "sertraline",
+"gene": "CYP2C19",
+"guideline": "CYP2D6, CYP2C19, CYP2B6, SLC6A4, HTR2A and Serotonin Reuptake Inhibitor Antidepressants",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "oxcarbazepine",
+"gene": "HLA-A",
+"guideline": "HLA-A, HLA-B and Carbamazepine and Oxcarbazepine",
+"level": "C",
+"used": false,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "sertraline",
+"gene": "CYP2D6",
+"guideline": "CYP2D6, CYP2C19, CYP2B6, SLC6A4, HTR2A and Serotonin Reuptake Inhibitor Antidepressants",
+"level": "C",
+"used": false,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "codeine",
+"gene": "COMT",
+"guideline": "CYP2D6, OPRM1, COMT, and Opioids",
+"level": "C",
+"used": false,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "codeine",
+"gene": "OPRM1",
+"guideline": "CYP2D6, OPRM1, COMT, and Opioids",
+"level": "C",
+"used": false,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "sertraline",
+"gene": "CYP2B6",
+"guideline": "CYP2D6, CYP2C19, CYP2B6, SLC6A4, HTR2A and Serotonin Reuptake Inhibitor Antidepressants",
+"level": "B",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "sertraline",
+"gene": "HTR2A",
+"guideline": "CYP2D6, CYP2C19, CYP2B6, SLC6A4, HTR2A and Serotonin Reuptake Inhibitor Antidepressants",
+"level": "C",
+"used": false,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "sertraline",
+"gene": "SLC6A4",
+"guideline": "CYP2D6, CYP2C19, CYP2B6, SLC6A4, HTR2A and Serotonin Reuptake Inhibitor Antidepressants",
+"level": "C",
+"used": false,
+"provisional": false
+}
+],
+"guideline": [
+{
+"t": "guideline",
+"id": 100411,
+"name": "CYP2C19 and Clopidogrel",
+"url": "https://www.clinpgx.org/guideline/PA166251443",
+"genes": [
+"CYP2C19"
+],
+"notes": null,
+"first": 2011,
+"latest": 2022,
+"pmid": "35034351"
+},
+{
+"t": "guideline",
+"id": 100412,
+"name": "CYP2C9, HLA-B and Phenytoin",
+"url": "https://www.clinpgx.org/guideline/PA166251461",
+"genes": [
+"CYP2C9",
+"HLA-B"
+],
+"notes": null,
+"first": 2014,
+"latest": 2020,
+"pmid": "32779747"
+},
+{
+"t": "guideline",
+"id": 100413,
+"name": "CYP2D6, CYP2C19, CYP2B6, SLC6A4, HTR2A and Serotonin Reuptake Inhibitor Antidepressants",
+"url": "https://www.clinpgx.org/guideline/PA166251452",
+"genes": [
+"CYP2D6",
+"CYP2C19",
+"CYP2B6",
+"SLC6A4",
+"HTR2A"
+],
+"notes": null,
+"first": 2015,
+"latest": 2023,
+"pmid": "37032427"
+},
+{
+"t": "guideline",
+"id": 100416,
+"name": "CYP2D6, OPRM1, COMT, and Opioids",
+"url": "https://www.clinpgx.org/guideline/PA166251454",
+"genes": [
+"CYP2D6",
+"COMT",
+"OPRM1"
+],
+"notes": null,
+"first": 2011,
+"latest": 2021,
+"pmid": "33387367"
+},
+{
+"t": "guideline",
+"id": 100417,
+"name": "CYP2D6 and Ondansetron and Tropisetron",
+"url": "https://www.clinpgx.org/guideline/PA166251457",
+"genes": [
+"CYP2D6"
+],
+"notes": null,
+"first": 2016,
+"latest": 2026,
+"pmid": "41979467"
+},
+{
+"t": "guideline",
+"id": 100418,
+"name": "CYP3A5 and Tacrolimus",
+"url": "https://www.clinpgx.org/guideline/PA166251451",
+"genes": [
+"CYP3A5"
+],
+"notes": null,
+"first": 2015,
+"latest": 2015,
+"pmid": "25801146"
+},
+{
+"t": "guideline",
+"id": 100421,
+"name": "HLA-B and Abacavir",
+"url": "https://www.clinpgx.org/guideline/PA166251444",
+"genes": [
+"HLA-B"
+],
+"notes": null,
+"first": 2012,
+"latest": 2014,
+"pmid": "24561393"
+},
+{
+"t": "guideline",
+"id": 100423,
+"name": "HLA-A, HLA-B and Carbamazepine and Oxcarbazepine",
+"url": "https://www.clinpgx.org/guideline/PA166251448",
+"genes": [
+"HLA-A",
+"HLA-B"
+],
+"notes": null,
+"first": 2013,
+"latest": 2018,
+"pmid": "29392710"
+},
+{
+"t": "guideline",
+"id": 100425,
+"name": "CYP2C9, VKORC1, CYP4F2 and Warfarin",
+"url": "https://www.clinpgx.org/guideline/PA166251465",
+"genes": [
+"CYP2C9",
+"CYP4F2",
+"VKORC1"
+],
+"notes": 176,
+"first": 2011,
+"latest": 2017,
+"pmid": "28198005"
+}
+]
+}

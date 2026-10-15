@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Pharmacogenomics from CPIC's tables: Diplotype to Phenotype for sixteen genes, the CYP2D6
+  Activity Score with copy numbers and tandems, the CYP2D6 score adjusted for an inhibitor by the CPIC
+  opioid guideline's rule, CPIC's recommendation beside the FDA table's row for a drug and a result, and
+  a panel review listing every recommendation a report changes. The CPIC database is fetched weekly and
+  every result names its version.
 - NIOSH Hazardous Drug List Lookup: whether a drug, or each name on a pasted formulary list, is on
   the NIOSH 2024 list and in which table, with a CSV of the list. A miss says "not on this edition of
   this list," never that a drug is safe to handle.

@@ -269,3 +269,19 @@ test('summaryMarkdown: the decision and its reasons lead the pull request body',
   assert.match(summaryMarkdown({ decision: { action: 'merge', reasons: [] }, datasets: [] }), /merges itself/);
   assert.match(summaryMarkdown({ datasets: [] }), /No live dataset changed/);
 });
+
+test('runBuilder: renewOnUnchanged moves the check date of an unchanged source and nothing else', async () => {
+  const dataDir = await mkdtemp(join(tmpdir(), 'sw-data-'));
+  const hashes = {};
+  const http = { get: async () => ({ notModified: false, bytes: Buffer.from('99213\n') }) };
+  const dated = (today) => ({ url: 'https://example.test/api', edition: '2026-08-03', nextExpected: today });
+  const b = (today) => fakeBuilder({ renewOnUnchanged: true, canaries: null, discover: async () => ({ ...dated(today), expiresOn: today === '2026-10-02' ? '2026-10-16' : '2026-10-23' }) });
+  assert.equal((await runBuilder(b('2026-10-02'), { dataDir, hashes, today: '2026-10-02', http })).status, 'updated');
+  const first = JSON.parse(await readFile(join(dataDir, 'demo', 'manifest.json'), 'utf8'));
+  const row = await runBuilder(b('2026-10-09'), { dataDir, hashes, today: '2026-10-09', http });
+  assert.deepEqual([row.status, row.renewed], ['updated', true]);
+  const m = JSON.parse(await readFile(join(dataDir, 'demo', 'manifest.json'), 'utf8'));
+  assert.deepEqual([m.fetchedAt, m.expiresOn, m.nextExpected, m.contentChangedAt, m.recordsSha256], ['2026-10-09', '2026-10-23', '2026-10-09', first.contentChangedAt, first.recordsSha256]);
+  assert.equal(decidePublish({ datasets: [row] }).action, 'merge');
+  assert.equal((await runBuilder(fakeBuilder(), { dataDir, hashes, today: '2026-10-10', http })).status, 'unchanged', 'without the flag nothing is renewed');
+});

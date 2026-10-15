@@ -9583,6 +9583,21 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/opioid-cyp2d6-pediatric-check-v1640.js (spec-v1640: Codeine and tramadol: age, procedure and CYP2D6 status (FDA labels) — clinical disclaimer)
 - `opioid-cyp2d6-pediatric-check`
 
+### lib/pgx-diplotype-phenotype-v1640.js (spec-v1640: CPIC diplotype to phenotype for a pharmacogene — clinical disclaimer)
+- `pgx-diplotype-phenotype`
+
+### lib/cyp2d6-activity-score-v1640.js (spec-v1640: CYP2D6 activity score with copy numbers and tandems — clinical disclaimer)
+- `cyp2d6-activity-score`
+
+### lib/cyp2d6-phenoconversion-v1640.js (spec-v1640: CYP2D6 activity score adjusted for an inhibitor, CPIC opioid guideline — clinical disclaimer)
+- `cyp2d6-phenoconversion`
+
+### lib/cpic-gene-drug-v1640.js (spec-v1640: CPIC recommendation and FDA table row for a drug and a genotype result — clinical disclaimer)
+- `cpic-gene-drug`
+
+### lib/pgx-panel-review-v1640.js (spec-v1640: every CPIC recommendation a genotype report changes, and the FDA rows for each gene — clinical disclaimer)
+- `pgx-panel-review`
+
 ### lib/hazardous-drug-list-check-v1630.js (spec-v1630: drug or formulary list against the NIOSH 2024 hazardous drug list — administrative disclaimer)
 - `hazardous-drug-list-check`
 

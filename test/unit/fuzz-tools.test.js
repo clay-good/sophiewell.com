@@ -772,6 +772,11 @@ import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
 import * as mtmServiceClockV1638 from '../../lib/mtm-service-clock-v1638.js';
 import * as opioidCyp2d6PediatricCheckV1640 from '../../lib/opioid-cyp2d6-pediatric-check-v1640.js';
+import * as pgxDiplotypePhenotypeV1640 from '../../lib/pgx-diplotype-phenotype-v1640.js';
+import * as cyp2d6ActivityScoreV1640 from '../../lib/cyp2d6-activity-score-v1640.js';
+import * as cyp2d6PhenoconversionV1640 from '../../lib/cyp2d6-phenoconversion-v1640.js';
+import * as cpicGeneDrugV1640 from '../../lib/cpic-gene-drug-v1640.js';
+import * as pgxPanelReviewV1640 from '../../lib/pgx-panel-review-v1640.js';
 import * as hazardousDrugListCheckV1630 from '../../lib/hazardous-drug-list-check-v1630.js';
 import * as deaNumberCheckV1637 from '../../lib/dea-number-check-v1637.js';
 import * as siponimodCyp2c9DoseV1640 from '../../lib/siponimod-cyp2c9-dose-v1640.js';
@@ -1882,6 +1887,11 @@ const MODULES = {
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
   'mtm-service-clock-v1638.js': mtmServiceClockV1638,
   'opioid-cyp2d6-pediatric-check-v1640.js': opioidCyp2d6PediatricCheckV1640,
+  'pgx-diplotype-phenotype-v1640.js': pgxDiplotypePhenotypeV1640,
+  'cyp2d6-activity-score-v1640.js': cyp2d6ActivityScoreV1640,
+  'cyp2d6-phenoconversion-v1640.js': cyp2d6PhenoconversionV1640,
+  'cpic-gene-drug-v1640.js': cpicGeneDrugV1640,
+  'pgx-panel-review-v1640.js': pgxPanelReviewV1640,
   'hazardous-drug-list-check-v1630.js': hazardousDrugListCheckV1630,
   'dea-number-check-v1637.js': deaNumberCheckV1637,
   'siponimod-cyp2c9-dose-v1640.js': siponimodCyp2c9DoseV1640,

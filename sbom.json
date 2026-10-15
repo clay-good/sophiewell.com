@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:08528798-ee17-5b75-8107-2c770daa926d",
+  "serialNumber": "urn:uuid:d0cf3661-8148-5e58-850f-2ca4a94b48c5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-15T11:51:46.497Z",
+    "timestamp": "2026-10-15T13:29:04.123Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2295 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2300 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7c0ed1757e53766a206e1df326cc6f477add30e002e514d7ffa591f2c16407dd"
+          "content": "2d70246daf4593c1d6d2aa0de65eaf71194e643e6b6ebc7258200f7edf7e9cbc"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "149736"
+          "value": "150057"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fae16ebf12248cdeff4b213ac7ceb18c3eabee679c033cc5e08d411a696edf42"
+          "content": "58868359d449e43efa72ea8e0fdebacb09eb572b1154ced55ffaff5210e2921f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "632676"
+          "value": "633473"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6d09c67bc36de63c7dfc44428a08cd904fe883857f34b047713c7b04948bd543"
+          "content": "bf100d654b1c899fc9ded1070a87ffdc99040c8045a790cbc18008a603dd37f2"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "288862"
+          "value": "289513"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "368b40337cd2e42036aaf2af58c1414455683944fe0e4dc5d0dd18ebb497072b"
+          "content": "a3af0a5b7a76ea3ac30dfa26eac9bb06a8b68d43bf73c35576b7ef6cc5c4a716"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "139964"
+          "value": "140331"
         }
       ]
     },
@@ -6104,6 +6104,69 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/cpic-gene-drug-v1640.js",
+      "type": "file",
+      "name": "lib/cpic-gene-drug-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "30fbf4f4feb3dfa7ca476b2273e805646805c15960df5e730fadb40956a6a266"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10221"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cpic-load.js",
+      "type": "file",
+      "name": "lib/cpic-load.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d402d7007201d549632a9099b9491876cda4d0c7dc5edf1bc86835c3e0de9c4c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "993"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cpic-tables.js",
+      "type": "file",
+      "name": "lib/cpic-tables.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "752ac4c7cf6c5c1917cd3108a7afb7e291a5ce71f7c47ad927c643737f787dcb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3984"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/crafft-v511.js",
       "type": "file",
       "name": "lib/crafft-v511.js",
@@ -6646,6 +6709,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "5358"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cyp2d6-activity-score-v1640.js",
+      "type": "file",
+      "name": "lib/cyp2d6-activity-score-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "13a087c2f7e7bc89e7119d6fb8f8489cb668f00569eea1733d019e45f2d8e5e0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5737"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cyp2d6-phenoconversion-v1640.js",
+      "type": "file",
+      "name": "lib/cyp2d6-phenoconversion-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bd3e5f122dd117c31ff0585644a52a83e7df9343338d0e48c367c3ae327054f6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5914"
         }
       ]
     },
@@ -9271,6 +9376,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2335"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/fda-pgx-associations-2026.js",
+      "type": "file",
+      "name": "lib/fda-pgx-associations-2026.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "09fa93225b0cefc61ad4c937cc9ac54c6b990b1ca713af0bac28d7dc14d3a04f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "33300"
         }
       ]
     },
@@ -17219,7 +17345,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0eb64ef658790301289c981cf804a713108371727028c27982773185193ae4e8"
+          "content": "464f3975d5ff899519735d9e7870d4e5524525ab84cf305066fc024d9ea54389"
         }
       ],
       "properties": [
@@ -17229,7 +17355,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3008463"
+          "value": "3012443"
         }
       ]
     },
@@ -22589,6 +22715,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/pgx-diplotype-phenotype-v1640.js",
+      "type": "file",
+      "name": "lib/pgx-diplotype-phenotype-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cd2035bb3fda238dbd7d8355d47994b3e311a335b71dbb3a740c700b321e3fc5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5696"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/pgx-label-dose-limit-v1640.js",
       "type": "file",
       "name": "lib/pgx-label-dose-limit-v1640.js",
@@ -22606,6 +22753,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "22976"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pgx-panel-review-v1640.js",
+      "type": "file",
+      "name": "lib/pgx-panel-review-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d2548a68ef9e01356bf7bc2957245333dad7c91cfb54dbf7c2cf96ddce91cd1d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6480"
         }
       ]
     },
@@ -37184,6 +37352,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cpic-gene-drug-v1640.js",
+      "type": "file",
+      "name": "mcp/adapters/cpic-gene-drug-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aa6339d491f9c0bc8be6828b4ef5c7d00679e62ebb37bb12e2cfb21c4cc71c91"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1212"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/crafft-v511.js",
       "type": "file",
       "name": "mcp/adapters/crafft-v511.js",
@@ -37642,6 +37831,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "7303"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cyp2d6-activity-score-v1640.js",
+      "type": "file",
+      "name": "mcp/adapters/cyp2d6-activity-score-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d2a23bd67457aa7f98b18092f35d6d6eab45ae8172f9990cb67e2754aa1b978b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1212"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cyp2d6-phenoconversion-v1640.js",
+      "type": "file",
+      "name": "mcp/adapters/cyp2d6-phenoconversion-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "37dd5630abd59ac69ae9ff8993e2bb0567ef89d0c7d52f0d5ff70987c7640318"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "964"
         }
       ]
     },
@@ -51842,6 +52073,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pgx-diplotype-phenotype-v1640.js",
+      "type": "file",
+      "name": "mcp/adapters/pgx-diplotype-phenotype-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7126f82b192b9aa9f974da8d2e54af9557fcd5341bbab29b8ba2b76e65f514dc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1280"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pgx-label-dose-limit-v1640.js",
       "type": "file",
       "name": "mcp/adapters/pgx-label-dose-limit-v1640.js",
@@ -51859,6 +52111,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2180"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pgx-panel-review-v1640.js",
+      "type": "file",
+      "name": "mcp/adapters/pgx-panel-review-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "03a46cb2058b2e1db32fa1ba46267dba07ece327762f8f8f899bb8ee3e31f2db"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "877"
         }
       ]
     },
@@ -59660,7 +59933,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4facb4644b83e84dd9fe23cd5873d560ad1487fb50a894beed32f6e7eeea1c90"
+          "content": "044e6f592115d70808d0f338ca96437a3adce0eb35333e51cfc9d555e1fcfdc0"
         }
       ],
       "properties": [
@@ -59670,7 +59943,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "160732"
+          "value": "161413"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/cpic-disk.js",
+      "type": "file",
+      "name": "mcp/cpic-disk.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0330f6f5bef6e8755d0763ae8643c64ab674351720e50fc647619bad2730af4c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "835"
         }
       ]
     },
@@ -64406,7 +64700,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ca35d66a6cf6e4cba46c8d808a74318c266eea60d02f3a6cd116a63dd554588a"
+          "content": "1490880ddd98664cc2fa9596781ff56724f496404b69a06327978ce0769a4ef8"
         }
       ],
       "properties": [
@@ -64416,7 +64710,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5253"
+          "value": "10069"
         }
       ]
     },
@@ -95445,6 +95739,9 @@
         "urn:sophiewell:file:source:lib/cosyntropin-v299.js",
         "urn:sophiewell:file:source:lib/cotton-myer-v419.js",
         "urn:sophiewell:file:source:lib/cpak-v1447.js",
+        "urn:sophiewell:file:source:lib/cpic-gene-drug-v1640.js",
+        "urn:sophiewell:file:source:lib/cpic-load.js",
+        "urn:sophiewell:file:source:lib/cpic-tables.js",
         "urn:sophiewell:file:source:lib/crafft-v511.js",
         "urn:sophiewell:file:source:lib/crag-screen-fluconazole-v1554.js",
         "urn:sophiewell:file:source:lib/crawford-taaa-v464.js",
@@ -95471,6 +95768,8 @@
         "urn:sophiewell:file:source:lib/cvrisk-engines-v202.js",
         "urn:sophiewell:file:source:lib/cvrisk-v103.js",
         "urn:sophiewell:file:source:lib/cyanide-antidote-dose-v1636.js",
+        "urn:sophiewell:file:source:lib/cyp2d6-activity-score-v1640.js",
+        "urn:sophiewell:file:source:lib/cyp2d6-phenoconversion-v1640.js",
         "urn:sophiewell:file:source:lib/cystic-echinococcosis-stage-v1562.js",
         "urn:sophiewell:file:source:lib/dantrolene-mh-vials-v1636.js",
         "urn:sophiewell:file:source:lib/data.js",
@@ -95596,6 +95895,7 @@
         "urn:sophiewell:file:source:lib/fazekas-v349.js",
         "urn:sophiewell:file:source:lib/fda-adverse-event-report-clock-v1634.js",
         "urn:sophiewell:file:source:lib/fda-books-load.js",
+        "urn:sophiewell:file:source:lib/fda-pgx-associations-2026.js",
         "urn:sophiewell:file:source:lib/feno-v888.js",
         "urn:sophiewell:file:source:lib/fentanyl-patch-initial-dose-v1633.js",
         "urn:sophiewell:file:source:lib/fernandez-radius-v489.js",
@@ -96230,7 +96530,9 @@
         "urn:sophiewell:file:source:lib/pfdi20-v775.js",
         "urn:sophiewell:file:source:lib/pfiq7-v776.js",
         "urn:sophiewell:file:source:lib/pfirrmann-disc-v434.js",
+        "urn:sophiewell:file:source:lib/pgx-diplotype-phenotype-v1640.js",
         "urn:sophiewell:file:source:lib/pgx-label-dose-limit-v1640.js",
+        "urn:sophiewell:file:source:lib/pgx-panel-review-v1640.js",
         "urn:sophiewell:file:source:lib/ph-hemodynamics-2022-v826.js",
         "urn:sophiewell:file:source:lib/pharmacy-effective-rate-v1638.js",
         "urn:sophiewell:file:source:lib/pharmacy-spread-check.js",
@@ -97875,6 +98177,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cosyntropin-v299.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cotton-myer-v419.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cpak-v1447.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cpic-gene-drug-v1640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/crafft-v511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/crag-screen-fluconazole-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/crawford-taaa-v464.js",
@@ -97897,6 +98200,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cutaneous-leishmaniasis-americas-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-engines-v202.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-v103.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cyp2d6-activity-score-v1640.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cyp2d6-phenoconversion-v1640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cystic-echinococcosis-stage-v1562.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dantrolene-mh-vials-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/days-supply-v1511.js",
@@ -98573,7 +98878,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfdi20-v775.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfiq7-v776.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfirrmann-disc-v434.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pgx-diplotype-phenotype-v1640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pgx-label-dose-limit-v1640.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pgx-panel-review-v1640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ph-hemodynamics-2022-v826.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pharmacy-effective-rate-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pharmacy-spread-check.js",
@@ -98946,6 +99253,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/zika-case-def-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/zulewski-v608.js",
         "urn:sophiewell:file:mcp-source:mcp/catalog.js",
+        "urn:sophiewell:file:mcp-source:mcp/cpic-disk.js",
         "urn:sophiewell:file:mcp-source:mcp/fields.js",
         "urn:sophiewell:file:mcp-source:mcp/file-tools.js",
         "urn:sophiewell:file:mcp-source:mcp/server.js",
@@ -99049,7 +99357,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "08528798ee174b75"
+      "value": "d0cf366181486e58"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99061,7 +99369,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3768"
+      "value": "3782"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

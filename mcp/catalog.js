@@ -1042,6 +1042,11 @@ import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
 import mtmServiceClockV1638 from './adapters/mtm-service-clock-v1638.js';
 import opioidCyp2d6PediatricCheckV1640 from './adapters/opioid-cyp2d6-pediatric-check-v1640.js';
+import pgxDiplotypePhenotypeV1640 from './adapters/pgx-diplotype-phenotype-v1640.js';
+import cyp2d6ActivityScoreV1640 from './adapters/cyp2d6-activity-score-v1640.js';
+import cyp2d6PhenoconversionV1640 from './adapters/cyp2d6-phenoconversion-v1640.js';
+import cpicGeneDrugV1640 from './adapters/cpic-gene-drug-v1640.js';
+import pgxPanelReviewV1640 from './adapters/pgx-panel-review-v1640.js';
 import hazardousDrugListCheckV1630 from './adapters/hazardous-drug-list-check-v1630.js';
 import deaNumberCheckV1637 from './adapters/dea-number-check-v1637.js';
 import siponimodCyp2c9DoseV1640 from './adapters/siponimod-cyp2c9-dose-v1640.js';
@@ -2368,6 +2373,11 @@ const ADAPTER_MODULES = [
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
   ['mtm-service-clock-v1638', mtmServiceClockV1638],
   ['opioid-cyp2d6-pediatric-check-v1640', opioidCyp2d6PediatricCheckV1640],
+  ['pgx-diplotype-phenotype-v1640', pgxDiplotypePhenotypeV1640],
+  ['cyp2d6-activity-score-v1640', cyp2d6ActivityScoreV1640],
+  ['cyp2d6-phenoconversion-v1640', cyp2d6PhenoconversionV1640],
+  ['cpic-gene-drug-v1640', cpicGeneDrugV1640],
+  ['pgx-panel-review-v1640', pgxPanelReviewV1640],
   ['hazardous-drug-list-check-v1630', hazardousDrugListCheckV1630],
   ['dea-number-check-v1637', deaNumberCheckV1637],
   ['siponimod-cyp2c9-dose-v1640', siponimodCyp2c9DoseV1640],

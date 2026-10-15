@@ -938,3 +938,13 @@ experience**.
 > v1637, DEA Number Format and Check Digit — [spec-v1637](spec-v1637.md), which adds `dea-number-check` — is 2294.)
 
 > v1630, NIOSH Hazardous Drug List Lookup — [spec-v1630](spec-v1630.md), which adds `hazardous-drug-list-check` — is 2295.)
+
+> v1640, Diplotype to Phenotype (CPIC) — [spec-v1640](spec-v1640.md), which adds `pgx-diplotype-phenotype` — is 2296.)
+
+> v1640, CYP2D6 Activity Score with Duplications (CPIC) — [spec-v1640](spec-v1640.md), which adds `cyp2d6-activity-score` — is 2297.)
+
+> v1640, CYP2D6 Score Adjusted for an Inhibitor (CPIC Opioid Guideline) — [spec-v1640](spec-v1640.md), which adds `cyp2d6-phenoconversion` — is 2298.)
+
+> v1640, CPIC Recommendation and FDA Statement for a Drug and Genotype — [spec-v1640](spec-v1640.md), which adds `cpic-gene-drug` — is 2299.)
+
+> v1640, Pharmacogenomic Panel Review (CPIC and FDA) — [spec-v1640](spec-v1640.md), which adds `pgx-panel-review` — is 2300.)

@@ -13201,6 +13201,40 @@
       ],
       "tile": "mtm-eligibility-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hla-b 15:02 positive genotype",
+        "pharmacogenomic panel review of a report",
+        "genotype report which drugs are affected",
+        "which drugs does this genotype change"
+      ],
+      "tile": "pgx-panel-review",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cpic recommendation for a drug and genotype",
+        "what does cpic say about this drug"
+      ],
+      "tile": "cpic-gene-drug",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cyp2d6 activity score with duplication",
+        "cyp2d6 copy number activity score"
+      ],
+      "tile": "cyp2d6-activity-score",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "diplotype to phenotype",
+        "star allele to metabolizer status"
+      ],
+      "tile": "pgx-diplotype-phenotype",
+      "audience": "clinicians"
     }
   ]
 }

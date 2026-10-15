@@ -1,0 +1,65 @@
+{
+  "manifestVersion": 2,
+  "dataset": "cpic",
+  "label": "CPIC database (Clinical Pharmacogenetics Implementation Consortium)",
+  "sourceUrl": "https://cpicpgx.org/",
+  "agency": "CPIC",
+  "status": "cc0",
+  "cadence": "weekly",
+  "recordCount": 4323,
+  "shardLayout": "shards",
+  "shards": [
+    {
+      "name": "allele.json",
+      "sha256": "489aa1a603c59cca6d0098e36de31167d3bf50765d47db621ce4e19c56a4cd42",
+      "records": 1378,
+      "bytes": 117489
+    },
+    {
+      "name": "gene.json",
+      "sha256": "75c0484d4160672e8555e107e11dee027f5d6abb621f663cbe7d43bdd119fd9a",
+      "records": 19,
+      "bytes": 1208
+    },
+    {
+      "name": "guideline.json",
+      "sha256": "aaf9c28d3a20374eeac89dadd166b22e0552590119b4c0077276889dde747330",
+      "records": 29,
+      "bytes": 6023
+    },
+    {
+      "name": "pair.json",
+      "sha256": "d6403d8aa6678f46e8dd84e1a4c6e8127e0d810c6f554cc6ac762eb28cd0534d",
+      "records": 574,
+      "bytes": 76595
+    },
+    {
+      "name": "rec.json",
+      "sha256": "8a2ea464c19264be93a4c40d6b5f8d4f0f96a21b4068bde55251f854d3fabfa7",
+      "records": 2115,
+      "bytes": 402819
+    },
+    {
+      "name": "rule.json",
+      "sha256": "a0cc2ef6c1a2da76883ec6cf47fd41d7bd47d6980060ee719441e63da538570f",
+      "records": 208,
+      "bytes": 27552
+    }
+  ],
+  "ancillary": [
+    "strings.json"
+  ],
+  "notes": "Allele function, diplotype-to-phenotype rules, recommendations, guidelines and gene-drug pairs read from the CPIC API (CC0). The PharmGKB columns of pair_view are not kept. The edition is the newest CPIC change-log date; the check date is the fetch plus 14 days.",
+  "coverage": "full",
+  "sourceEdition": "2026-08-03",
+  "fetchedAt": "2026-10-15",
+  "contentChangedAt": "2026-10-15",
+  "expiresOn": "2026-10-29",
+  "nextExpected": "2026-10-22",
+  "sourceSha256": "2366248136892413677cf02640e7e5c0ad451aea709c512fd52b581ca3bc9237",
+  "recordsSha256": "b176e1cbdc8daa40ae1f0e2089080c41f4b9a39c633cbb9479c0eebbe9d9e67f",
+  "recordBounds": {
+    "min": 3000,
+    "max": 9000
+  }
+}

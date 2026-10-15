@@ -2874,6 +2874,11 @@ const UTILITIES = [
   { id: 'eliglustat-cyp2d6-dose', name: 'Eliglustat (Cerdelga) Dose by CYP2D6 Status (FDA Label)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pgx-label-dose-limit', name: 'Poor-Metabolizer Dose Ceilings and Fractions in FDA Labels', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'opioid-cyp2d6-pediatric-check', name: 'Codeine and Tramadol: Age, Procedure and CYP2D6 Status (FDA Labels)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pgx-panel-review', name: 'Pharmacogenomic Panel Review (CPIC and FDA)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cpic-gene-drug', name: 'CPIC Recommendation and FDA Statement for a Drug and Genotype', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cyp2d6-phenoconversion', name: 'CYP2D6 Score Adjusted for an Inhibitor (CPIC Opioid Guideline)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cyp2d6-activity-score', name: 'CYP2D6 Activity Score with Duplications (CPIC)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pgx-diplotype-phenotype', name: 'Diplotype to Phenotype (CPIC)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chlorpromazine-equivalents', name: 'Antipsychotic Chlorpromazine Equivalents',   group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v167 (closing feature spec of the spec-v162 program): six single-

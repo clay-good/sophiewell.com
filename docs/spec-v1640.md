@@ -1,7 +1,7 @@
 # spec-v1640 — Pharmacogenomics: from a genotype report to what CPIC and the FDA say
 
 **Status:** In progress. Specified October 10, 2026; the label tools (6, 7, 8 and the label half of 9) were built
-October 13, 2026. See Build status. 9 new tools, none gated as a whole; row-level build gates are
+October 13, 2026; the CPIC dataset and tools 1 to 5 on October 15, 2026, after owner decision 12. See Build status. 9 new tools, none gated as a whole; row-level build gates are
 marked where a row was not read.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
@@ -858,11 +858,11 @@ Built tools are in `views/group-v1640.js`. The label tools' sources were re-read
 
 | Tool | State |
 |---|---|
-| 1. `pgx-diplotype-phenotype` | Not built. |
-| 2. `cyp2d6-activity-score` | Not built. |
-| 3. `cyp2d6-phenoconversion` | Not built. |
-| 4. `cpic-gene-drug` | Not built. |
-| 5. `pgx-panel-review` | Not built. |
+| 1. `pgx-diplotype-phenotype` | Built October 15, 2026 on the CPIC tables (`data/cpic`, change log of 2026-08-03). Sixteen genes in the picker (CPIC's rule genes less CYP2D6 and HLA); the tables decide every answer. A blank second allele is refused except where CPIC's rules take one allele (G6PD, read as one copy, and MT-RNR1). An allele CPIC lists with no function gives no phenotype. Allele names match without case or spaces, and a missing leading `*` is supplied for a star-allele gene. Not built: the search-prefill template per gene (`cyp2c19 *2/*17` routes by search only). |
+| 2. `cyp2d6-activity-score` | Built October 15, 2026. Copy numbers and tandems are CPIC allele rows (`>=` is read as `≥`); the pair's score and phenotype come from CPIC's rules. A duplication on an unnamed allele gives both readings and says when they agree. |
+| 3. `cyp2d6-phenoconversion` | Built October 15, 2026. The opioid guideline's sentences and the SSRI guideline's sentence were re-read in PMC on October 15, 2026; the rule is a route-B dated value with a page watch on the guideline. The strong and moderate examples are FDA's (page current as of May 29, 2026, re-read the same day). A score must step by 0.25. |
+| 4. `cpic-gene-drug` | Built October 15, 2026, without the dose side table. The drug is typed (a list fills from the tables) and the results are lines of "gene: result"; PM, IM, NM, RM and UM, scores without their trailing zero and "positive" or "negative" are read as CPIC keys them. A gene not entered is "No Result" only where CPIC has that row. The FDA column is `lib/fda-pgx-associations-2026.js`, the September 10, 2026 table read October 15 (82, 25 and 40 rows), route B with a page watch and a 12-month check date. Warfarin and ondansetron answer with the guideline and CPIC's own note. **Not built:** the dose arithmetic side table (factors keyed by the SHA-256 of each CPIC sentence). |
+| 5. `pgx-panel-review` | Built October 15, 2026. The normal result a row is compared with is Normal Metabolizer, Normal Function, Normal, an activity score of 2.0, CPIC's normal-risk MT-RNR1 result, Uncertain Susceptibility for RYR1 and CACNA1S, Rapid Metabolizer for NAT2, and the same HLA allele negative; CFTR has none, so every CFTR row is listed. The FDA rows for each gene are listed by drug and subgroup, not matched to the result. The results field is kept out of the share link. |
 | 6. `eliglustat-cyp2d6-dose` | Built on the Cerdelga label (version 13), sections 1, 2.2, 2.3, 4, 7.1, 8.6 and 8.7. **The Table 5 gate is cleared:** the table was re-read cell by cell in the label's table markup, with its row and column spans, and its "Avoid coadministration" cells ship (a moderate CYP3A inhibitor in intermediate and poor metabolizers; a weak one in poor metabolizers). The spec's test "PM with a weak CYP3A inhibitor → see Table 5" is therefore "avoid". Table 5 pairs only a strong or moderate CYP2D6 inhibitor with a strong or moderate CYP3A inhibitor; any other pair of inhibitors gets each single row and no dosage. The strong CYP3A inducer row is stated in every result and is not an input. Every entry is required; a blank is not read as "none". |
 | 7. `siponimod-cyp2c9-dose` | Built on the Mayzent label (version 17), sections 2.1 to 2.3, 4 and 8.6. Six genotypes and "another genotype"; nothing routes through a phenotype. |
 | 8. `pgx-label-dose-limit` | Built on the eleven labels in the table above, each still at the version listed there. Par is still the pimozide label on DailyMed. Tetrabenazine and pimozide also answer for a status that is not known (the labels' genotyping sentences). Aripiprazole's poor-metabolizer row for a CYP3A4 inhibitor names a strong one only, so a moderate one gets the half-dose row and the result says so. Iloperidone takes the dose given twice daily and sets it against Table 2. Celecoxib halves the dose the reader enters as the lowest recommended dose; with JRA it gives the label's "alternative treatments" sentence and no number. |
@@ -871,7 +871,9 @@ Built tools are in `views/group-v1640.js`. The label tools' sources were re-read
 Fourteen label rows were added to the weekly label watch (`scripts/data/label-editions.json`), and
 the tramadol row gained sections 4 and 5.
 
-**Held for the owner:** tools 1 to 5, the CPIC row of tool 9 and the three backfills all write
-"CPIC" as a source name. The license build gate above (owner decision 12 in
-[scope-pharmacy-practice.md](scope-pharmacy-practice.md)) asks for CPIC's confirmation first; the
-policy page read the same on October 13, 2026. None of them is built.
+**Owner decision 12 (October 15, 2026):** build, and cite CPIC as the source by name in text (never the
+logo). The CPIC dataset is `data/cpic`, fetched by `scripts/data/builders/cpic.mjs` with the other live
+datasets; its check date is the fetch plus 14 days, renewed by every successful weekly fetch even when
+nothing changed. Pins kept: the per-table source hash and the change-log date. Not kept: the
+`file_artifact` report date and the cpic-data release tag. Still to build: tool 4's dose side table, the CPIC
+row of tool 9, and the three backfills.
