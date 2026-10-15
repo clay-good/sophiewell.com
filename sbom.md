@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7bbee45076848625`
-Generated: 2026-10-15T14:49:45.646Z
+Build ID: `14cad4a97a0e9f75`
+Generated: 2026-10-15T16:07:59.098Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -324,9 +324,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cotton-myer-v419.js` | 2898 | `1ee091c8f1a08282081b62560a0625e612bf73b654c3953f872dcf7c1dc633e9` |
 | `lib/cpak-v1447.js` | 3596 | `818a053d9d74c05980b10f077c93825f412f56979aac3821aa5d7182356f3ac6` |
 | `lib/cpic-dose-factors-v1640.js` | 21944 | `c7a5efdb0bc16e8375b69360577ef4e7a33321e10a4060a378234ac84545010a` |
-| `lib/cpic-gene-drug-v1640.js` | 10998 | `45654e273d61dae468df528e8755765bb9b302b2c3bbe332cf8eaf168df51253` |
+| `lib/cpic-gene-drug-v1640.js` | 11265 | `48de62a31a4ba83415d84cffe1622794f2f0395bbd104d135778756e63ad4185` |
 | `lib/cpic-load.js` | 993 | `d402d7007201d549632a9099b9491876cda4d0c7dc5edf1bc86835c3e0de9c4c` |
-| `lib/cpic-tables.js` | 3984 | `752ac4c7cf6c5c1917cd3108a7afb7e291a5ce71f7c47ad927c643737f787dcb` |
+| `lib/cpic-tables.js` | 4383 | `7effa8aab3742cf958291113fef63c395e14beda29712599077c6d687a202270` |
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
 | `lib/crag-screen-fluconazole-v1554.js` | 6088 | `d8972147cab54bdeb425a3af3c0b05a4e31e521b84288dc688cfdc60721f4168` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
@@ -412,7 +412,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/downton-fall-risk-v688.js` | 4381 | `11559782d78d3385853abf389b9d20689202b28f6c8d40b24cfdb39e4bb2575b` |
 | `lib/doxy-pep-v1401.js` | 3874 | `515506365a3d6ffcee56d78878cafbbc64ffc6e99e276bb02be639cf4a55609b` |
 | `lib/dpc-hsa-check.js` | 8850 | `06070b82ddb71108995f6d19700b8780921d181d0b7bd40535ff86fcd57adf59` |
-| `lib/dpyd-fluoropyrimidine-dose-v1635.js` | 5393 | `cd60e50428185da3e235e803dbb4dd05f013c337ee972852e7f1033d88ff42a9` |
+| `lib/dpyd-fluoropyrimidine-dose-v1635.js` | 5506 | `27b2d2260e02cb2b9d61b87edd2b392174bc22025a0c2471c3acbb087f4a05f8` |
 | `lib/dr-severity-v301.js` | 3779 | `760d88af2b8a3b94b23d19729b2879910b20c2372f1c45031029fde68bbf814e` |
 | `lib/dropper-calibration-v1629.js` | 4345 | `92fb014e81295c42415eb0c6d8d51b3e104bc5870305830de4a02dda588828f9` |
 | `lib/dscsa-dispenser-clocks-v1637.js` | 6821 | `8df621b949e6052e3b5019e13caa2004a0eb0c76dcf94f662e261c40859f7f7c` |
@@ -1118,7 +1118,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pfirrmann-disc-v434.js` | 3552 | `cd219b3462006d853f88f88cb4d271b49d4c254eec61a0af4a228f320351d2c9` |
 | `lib/pgx-diplotype-phenotype-v1640.js` | 5696 | `cd2035bb3fda238dbd7d8355d47994b3e311a335b71dbb3a740c700b321e3fc5` |
 | `lib/pgx-label-dose-limit-v1640.js` | 22976 | `c784b87bbfb4bd6fdc4659a31ada0fe6f07dc3101a9d43e362d3f07688b59f66` |
-| `lib/pgx-panel-review-v1640.js` | 6480 | `d2548a68ef9e01356bf7bc2957245333dad7c91cfb54dbf7c2cf96ddce91cd1d` |
+| `lib/pgx-panel-review-v1640.js` | 6832 | `6a5cea7b7cb358d668183972b4b43f05c7d5533eb63595727368fe6295e4b04d` |
 | `lib/ph-hemodynamics-2022-v826.js` | 7915 | `70cf4c387cf44e6b5fbab5408c18d2da54ee1684930c7ec611c09f1c984202d8` |
 | `lib/pharmacy-effective-rate-v1638.js` | 12724 | `67e39e438633f001b2fbefe0d57d52301747966b66694cccb96e12e70d722ae3` |
 | `lib/pharmacy-spread-check.js` | 9390 | `98f806bc66ec51439e458acd9a070c3c29578f376c493fc8f4a73f3f60514add` |

@@ -779,6 +779,8 @@ import * as pgxDiplotypePhenotypeV1640 from '../../lib/pgx-diplotype-phenotype-v
 import * as cyp2d6ActivityScoreV1640 from '../../lib/cyp2d6-activity-score-v1640.js';
 import * as cyp2d6PhenoconversionV1640 from '../../lib/cyp2d6-phenoconversion-v1640.js';
 import * as cpicGeneDrugV1640 from '../../lib/cpic-gene-drug-v1640.js';
+import * as cpicDoseFactorsV1640 from '../../lib/cpic-dose-factors-v1640.js';
+import * as cpicTables from '../../lib/cpic-tables.js';
 import * as pgxPanelReviewV1640 from '../../lib/pgx-panel-review-v1640.js';
 import * as hazardousDrugListCheckV1630 from '../../lib/hazardous-drug-list-check-v1630.js';
 import * as deaNumberCheckV1637 from '../../lib/dea-number-check-v1637.js';
@@ -1897,6 +1899,8 @@ const MODULES = {
   'cyp2d6-activity-score-v1640.js': cyp2d6ActivityScoreV1640,
   'cyp2d6-phenoconversion-v1640.js': cyp2d6PhenoconversionV1640,
   'cpic-gene-drug-v1640.js': cpicGeneDrugV1640,
+  'cpic-dose-factors-v1640.js': cpicDoseFactorsV1640,
+  'cpic-tables.js': cpicTables,
   'pgx-panel-review-v1640.js': pgxPanelReviewV1640,
   'hazardous-drug-list-check-v1630.js': hazardousDrugListCheckV1630,
   'dea-number-check-v1637.js': deaNumberCheckV1637,

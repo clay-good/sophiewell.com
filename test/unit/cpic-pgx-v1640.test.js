@@ -237,3 +237,28 @@ test('every side-table hash is a recommendation the shipped CPIC tables still ca
     assert.deepEqual(f.drugs.filter((d) => !drugs.has(d)), [], `${f.id}: names a drug the sentence does not belong to`);
   }
 });
+
+import { footer } from '../../lib/cpic-tables.js';
+
+test('the attribution footer says what it knows and never prints "undefined"', () => {
+  assert.match(footer({ edition: '2026-08-03', fetchedAt: '2026-10-15' }), /Data version: change log of 2026-08-03; read 2026-10-15\./);
+  assert.match(footer({ edition: '2026-08-03' }), /Data version: change log of 2026-08-03\./);
+  for (const ix of [{}, null, undefined, 0, 'x']) {
+    const t = footer(ix);
+    assert.match(t, /Data version: not recorded in the tables shipped\./);
+    assert.doesNotMatch(t, /undefined|NaN/);
+  }
+});
+
+test('one gene given twice with two results is refused, not answered from the last line', () => {
+  assert.match(gd({ drug: 'codeine', results: 'CYP2D6: 0\nCYP2D6: 2.0' }, DB, NOW).message, /CYP2D6 is given twice, as "0\.0" and "2\.0"/);
+  assert.equal(gd({ drug: 'codeine', results: 'CYP2D6: 0\nCYP2D6: 0.0' }, DB, NOW).matched, true, 'the same result twice is not a contradiction');
+  assert.match(pr({ results: 'CYP2C19: PM\nCYP2C19: NM' }, DB, NOW).message, /CYP2C19 is given twice/);
+  // Several HLA alleles in one report are normal and still read.
+  assert.ok(pr({ results: 'HLA-B*15:02 positive\nHLA-B*57:01 positive' }, DB, NOW).found.length > 0);
+});
+
+test('DPYD takes a report\'s variants, not an unbounded list', () => {
+  assert.match(dp({ drug: 'fluorouracil', variants: Array(51).fill('Reference').join('\n') }, DB, NOW).message, /at most 50/);
+  assert.equal(dp({ drug: 'fluorouracil', variants: Array(50).fill('Reference').join('\n') }, DB, NOW).activityScore, 2);
+});
