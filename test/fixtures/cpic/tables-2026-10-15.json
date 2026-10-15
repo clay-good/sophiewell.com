@@ -185,7 +185,56 @@
 "Higher (\"normal\") dose-adjusted trough concentrations of tacrolimus and increased chance of achieving target tacrolimus concentrations.",
 "Initiate therapy with standard recommended dose. Use therapeutic drug monitoring to guide dose adjustments.",
 "This recommendation includes the use of tacrolimus in kidney, heart, lung and hematopoietic stem cell transplant patients, and liver transplant patients where the donor and recipient genotypes are identical. Typically with other CYP enzymes, a normal metabolizer would be classified as having normal metabolism, and therefore, the drug dose would not change based on the patient's genotype. However, in the case of CYP3A5 and tacrolimus, a CYP3A5 expresser (i.e., CYP3A5 normal metabolizer or intermediate metabolizer) would require a higher recommended starting dose and the CYP3A5 non-expresser (i.e., poor metabolizer) would require the standard recommended starting dose.",
-"Warfarin recommendation does not follow simple diplotype to phenotype translation. Read the guideline text and follow the recommendation diagram found at http://files.cpicpgx.org/images/warfarin/warfarin_recommendation_diagram.png"
+"Warfarin recommendation does not follow simple diplotype to phenotype translation. Read the guideline text and follow the recommendation diagram found at http://files.cpicpgx.org/images/warfarin/warfarin_recommendation_diagram.png",
+"The DPYD phenotype is assigned using a gene activity score (DPYD-AS; based on the DPYD Allele Functionality Table), calculated as the sum of the two DPYD variants with the lowest variant activity value. Briefly, carriers of two no function variants (DPYD-AS: 0) OR one decreased function variant (DPD-AS: 0.5) are classified as DPYD poor metabolizers; carriers of two decreased function variants OR carriers of only one no function variant (DPYD-AS: 1) OR carriers of only one decreased function variant (DPYD-AS: 1.5) are considered DPYD intermediate metabolizers , and those with only normal function variants are classified as DPYD normal metabolizers (DPYD-AS: 2). If two decreased/no function variants are present, each decreased/no function variant is considered to be on a different gene copy. Irrespective of the presence of decreased/no function variants, patients may carry multiple normal function variants. As an individual only carries a maximum of two fully functional DPYD copies, common normal function variants may be located on the same gene copy as other normal function variants or decreased/no function variants.",
+"TPMT NMs have lower erythrocyte concentrations of TGN metabolites and higher concentrations of MeMPNs compared to TPMT IMs and TPMT PMs. This is the 'normal' pattern.",
+"Normal risk of thiopurine-related leukopenia, neutropenia and myelosuppression.",
+"Initiate therapy with standard starting dose (e.g., 2 mg/kg/day for autoimmune diseases). During therapy, adjust doses of azathioprine based on disease-specific guidelines. It usually takes at least 2 weeks to reach steady state after each dose adjustment.",
+"Standard starting doses may vary by patient characteristics and/or treatment regimens and according to local clinical practice.",
+"TPMT NMs have lower erythrocyte concentrations of TGN metabolites and higher concentrations of MeMPNs compared to TPMT IMs and TPMT PMs. This is the 'normal' pattern. TPMT IMs have moderate to high erythrocyte concentrations of TGN metabolites and low concentrations of MeMPNs compared to TPMT NMs.",
+"Increased risk of thiopurine-related leukopenia, neutropenia and myelosuppression.",
+"Initiate therapy with reduced starting doses (30-80% of standard starting dose) if standard starting dose is ≥2 mg/kg/day. If starting dose is already below standard starting dose, dose reduction might not be necessary. During therapy, adjust the doses of azathioprine based on the degree of myelosuppression and disease-specific guidelines. It usually takes at least 2-4 weeks of stable dosing to reach steady state after each dose adjustment.",
+"TPMT IMs have moderate to high erythrocyte concentrations of TGN metabolites and low concentrations of MeMPNs compared to TPMT NMs.",
+"Greatly increased risk of thiopurine-related leukopenia, neutropenia and myelosuppression. Fatal toxicity possible without dose decrease.",
+"Consider alternative nonthiopurine immunosuppressant therapy.",
+"TPMT PMs have extremely high erythrocyte concentrations of TGN metabolites and no MeMPN compared to TPMT NMs.",
+"Increased risk of thiopurine-related leukopenia, neutropenia and myelosuppression. Higher risk of toxicity compared to single IM.",
+"Initiate therapy with reduced starting doses (20%-50% of standard starting dose) if standard starting dose is ≥ 2 mg/kg/day. If starting dose is already below standard starting dose, dose reduction might not be necessary. During therapy, adjust the doses of azathioprine based on the degree of myelosuppression and disease-specific guidelines. It usually takes at least 2-4 weeks of stable dosing to reach steady state after each dose adjustment.",
+"Based on TPMT, initiate therapy with standard starting dose (e.g., 2 mg/kg/day for autoimmune diseases). During therapy, adjust doses of azathioprine based on disease-specific guidelines. It usually takes at least 2 weeks to reach steady state after each dose adjustment.",
+"Based on TPMT, initiate therapy with reduced starting doses (30-80% of standard starting dose) if standard starting dose is ≥2 mg/kg/day. If starting dose is already below standard starting dose, dose reduction might not be necessary. During therapy, adjust the doses of azathioprine based on the degree of myelosuppression and disease-specific guidelines. It usually takes at least 2-4 weeks of stable dosing to reach steady state after each dose adjustment.",
+"Based on NUDT15, initiate therapy with standard starting dose (e.g., 2 mg/kg/day for autoimmune diseases). During therapy, adjust doses of azathioprine based on disease-specific guidelines. It usually takes at least 2 weeks to reach steady state after each dose adjustment.",
+"Based on NUDT15, initiate therapy with reduced starting doses (30-80% of standard starting dose) if standard starting dose is ≥2 mg/kg/day. If starting dose is already below standard starting dose, dose reduction might not be necessary. During therapy, adjust the doses of azathioprine based on the degree of myelosuppression and disease-specific guidelines. It usually takes at least 2-4 weeks of stable dosing to reach steady state after each dose adjustment.",
+"Neither TPMT or NUDT15 phenotype could be assigned based on genotyping performed. Consider evaluating TPMT erythrocyte activity to assess TPMT phenotype. If thiopurines are required and either TPMT or NUDT15 status is unknown, monitor closely for toxicity.",
+"",
+"Normal DPD activity and \"normal\" risk for fluoropyrimidine toxicity",
+"Based on genotype, there is no indication to change dose or therapy. Use label-recommended dosage and administration.",
+"Decreased DPD activity (leukocyte DPD activity at 30% to 70% that of the normal population) and increased risk for severe or even fatal drug toxicity when treated with fluoropyrimidine drugs",
+"Reduce starting dose by 50% followed by titration of dose based on toxicity or therapeutic drug monitoring (if available).",
+"Increase the dose in patients experiencing no or clinically tolerable toxicity in the first two cycles to maintain efficacy; decrease the dose in patients who do not tolerate the starting dose to minimize toxicities.",
+"Reduce starting dose by 50% followed by titration of dose based on toxicity or therapeutic drug monitoring (if available). Patients with the c.2846A>T/c.2846A>T genotype may require >50% reduction in starting dose.",
+"Complete DPD deficiency and increased risk for severe or even fatal drug toxicity when treated with fluoropyrimidine drugs.",
+"Avoid use of 5-fluorouracil or 5-fluorouracil prodrug-based regimens. In the event, based on clinical advice, alternative agents are not considered a suitable therapeutic option, 5-fluorouracil should be administered at a strongly reduced dose with early therapeutic drug monitoring.",
+"If available, a phenotyping test (see main text for further details) should be considered to estimate the starting dose. In absence of phenotyping data, a dose of <25% of the normal starting dose is estimated assuming additive effects of alleles on 5-FU clearance. Therapeutic drug monitoring should be done at the earliest time point possible (e.g., minimum time point in steady state) in order to immediately discontinue therapy if the drug level is too high.",
+"Avoid use of 5-fluorouracil or 5-fluorouracil prodrug-based regimens.",
+"Initiate therapy with standard starting dose of mecaptopurine (e.g., 75 mg/m2/day for malignancy or 1.5 mg/kg/day for nonmalignancy). During therapy, adjust the doses of myelosuppressive agents, as per standard clinical practice. It usually takes at least 2 weeks of stable dosing to reach steady state after each dose adjustment.",
+"TPMT IMs have moderate to high erythrocyte concentrations of TGN metabolites and low concentrations of MeMPNs compared to TPMT NMs when receiving standard dose. TPMT IMs have moderate to high erythrocyte concentrations of TGN metabolites and low concentrations of MeMPNs compared to TPMT NMs when receiving standard dose.",
+"Initiate therapy with decreased starting doses (30-80% of standard starting dose) if starting dose is ≥75 mg/m2/day (for malignancy) or ≥1.5 mg/kg/day (for nonmalignancy). If starting dose is already below standard starting dose, dose reduction might not be necessary. During therapy, adjust mercaptopurine doses based on the degree of myelosuppression and disease-specific guidelines. It usually takes at least 2-4 weeks of stable dosing to reach steady state after each dose adjustment. If myelosuppression occurs, and the patient is on combination therapy, emphasis should be on reducing mercaptopurine over other agents.",
+"TPMT IMs have moderate to high erythrocyte concentrations of TGN metabolites and low concentrations of MeMPNs compared to TPMT NMs when receiving standard dose.",
+"For malignancy: initiate therapy with drastically reduced starting doses. Reduce starting dose by 10-fold and reduce frequency to thrice weekly instead of daily (e.g. 10 mg/m2/day given 3 days/week). During therapy, adjust mercaptopurine doses based on the degree of myelosuppression and disease-specific guidelines. It usually takes at least 4-6 weeks of stable dosing to reach steady state after each dose adjustment. If myelosuppression occurs, emphasis should be on reducing mercaptopurine over other agents. For nonmalignancy: consider alternative nonthiopurine immunosuppressant therapy.",
+"TPMT PMs have extremelly high erythrocyte concentrations of TGN metabolites and no MeMPN compared to TPMT NMs.",
+"Initiate therapy with decreased starting doses (20-50% of standard starting dose) if starting dose is ≥75 mg/m2/day (for malignancy) or ≥1.5 mg/kg/day (for nonmalignancy). If starting dose is already below standard starting dose, dose reduction might not be necessary. During therapy, adjust mercaptopurine doses based on the degree of myelosuppression and disease-specific guidelines. It usually takes at least 2-4 weeks of stable dosing to reach steady state after each dose adjustment. If myelosuppression occurs, and the patient is on combination therapy, emphasis should be on reducing mercaptopurine over other agents.",
+"Based on TPMT, initiate therapy with standard starting dose of mecaptopurine (e.g., 75 mg/m2/day for malignancy or 1.5 mg/kg/day for nonmalignancy). During therapy, adjust the doses of myelosuppressive agents, as per standard clinical practice. It usually takes at least 2 weeks of stable dosing to reach steady state after each dose adjustment.",
+"Based on TPMT, initiate therapy with decreased starting doses (30-80% of standard starting dose) if starting dose is ≥75 mg/m2/day (for malignancy) or ≥1.5 mg/kg/day (for nonmalignancy). If starting dose is already below standard starting dose, dose reduction might not be necessary. During therapy, adjust mercaptopurine doses based on the degree of myelosuppression and disease-specific guidelines. It usually takes at least 2-4 weeks of stable dosing to reach steady state after each dose adjustment. If myelosuppression occurs, and the patient is on combination therapy, emphasis should be on reducing mercaptopurine over other agents.",
+"Based on NUDT15, initiate therapy with standard starting dose of mecaptopurine (e.g., 75 mg/m2/day for malignancy or 1.5 mg/kg/day for nonmalignancy). During therapy, adjust the doses of myelosuppressive agents, as per standard clinical practice. It usually takes at least 2 weeks of stable dosing to reach steady state after each dose adjustment.",
+"Based on NUDT15, initiate therapy with decreased starting doses (30-80% of standard starting dose) if starting dose is ≥75 mg/m2/day (for malignancy) or ≥1.5 mg/kg/day (for nonmalignancy). If starting dose is already below standard starting dose, dose reduction might not be necessary. During therapy, adjust mercaptopurine doses based on the degree of myelosuppression and disease-specific guidelines. It usually takes at least 2-4 weeks of stable dosing to reach steady state after each dose adjustment. If myelosuppression occurs, and the patient is on combination therapy, emphasis should be on reducing mercaptopurine over other agents.",
+"Reduced O-desmethyltramadol (active metabolite) formation",
+"Use tramadol label recommended age- or weight-specific dosing. If no response and opioid use is warranted, consider non-codeine opioid.",
+"Expected O-desmethyltramadol (active metabolite) formation",
+"Use tramadol label recommended age- or weight-specific dosing.",
+"Greatly reduced O-desmethyltramadol (active metabolite) formation leading to diminished analgesia.",
+"Avoid tramadol use because of possibility of diminished analgesia. If opioid use is warranted, consider a non-codeine opioid.",
+"Increased formation of O-desmethyltramadol (active metabolite) leading to higher risk of toxicity",
+"Avoid tramadol use because of potential for toxicity. If opioid use is warranted, consider a non-codeine opioid."
 ],
 "allele": [
 {
@@ -334,6 +383,41 @@
 "name": "m.827A>G",
 "fn": "normal risk of aminoglycoside-induced hearing loss",
 "value": null
+},
+{
+"t": "allele",
+"gene": "DPYD",
+"name": "c.1129-5923C>G, c.1236G>A (HapB3)",
+"fn": "Decreased function",
+"value": "0.5"
+},
+{
+"t": "allele",
+"gene": "DPYD",
+"name": "c.1679T>G (*13)",
+"fn": "No function",
+"value": "0.0"
+},
+{
+"t": "allele",
+"gene": "DPYD",
+"name": "c.1905+1G>A (*2A)",
+"fn": "No function",
+"value": "0.0"
+},
+{
+"t": "allele",
+"gene": "DPYD",
+"name": "c.2846A>T",
+"fn": "Decreased function",
+"value": "0.5"
+},
+{
+"t": "allele",
+"gene": "DPYD",
+"name": "Reference",
+"fn": "Normal function",
+"value": "1.0"
 }
 ],
 "rule": [
@@ -1478,6 +1562,75 @@
 },
 "total": "n/a",
 "desc": 76
+},
+{
+"t": "rule",
+"gene": "DPYD",
+"result": "Normal Metabolizer",
+"score": "2.0",
+"key": {
+"1.0": 2
+},
+"total": "2.0",
+"desc": 2
+},
+{
+"t": "rule",
+"gene": "DPYD",
+"result": "Intermediate Metabolizer",
+"score": "1.5",
+"key": {
+"0.5": 1,
+"1.0": 1
+},
+"total": "1.5",
+"desc": 3
+},
+{
+"t": "rule",
+"gene": "DPYD",
+"result": "Intermediate Metabolizer",
+"score": "1.0",
+"key": {
+"0.0": 1,
+"1.0": 1
+},
+"total": "1.0",
+"desc": 6
+},
+{
+"t": "rule",
+"gene": "DPYD",
+"result": "Intermediate Metabolizer",
+"score": "1.0",
+"key": {
+"0.5": 2
+},
+"total": "1.0",
+"desc": 5
+},
+{
+"t": "rule",
+"gene": "DPYD",
+"result": "Poor Metabolizer",
+"score": "0.5",
+"key": {
+"0.0": 1,
+"0.5": 1
+},
+"total": "0.5",
+"desc": 8
+},
+{
+"t": "rule",
+"gene": "DPYD",
+"result": "Poor Metabolizer",
+"score": "0.0",
+"key": {
+"0.0": 2
+},
+"total": "0.0",
+"desc": 9
 }
 ],
 "gene": [
@@ -1510,6 +1663,12 @@
 "gene": "MT-RNR1",
 "method": "PHENOTYPE",
 "notes": null
+},
+{
+"t": "gene",
+"gene": "DPYD",
+"method": "ACTIVITY_SCORE",
+"notes": 177
 }
 ],
 "rec": [
@@ -5189,6 +5348,1676 @@
 "rec": 109,
 "cls": "No Recommendation",
 "comments": 80
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 178,
+"NUDT15": 179
+},
+"rec": 180,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 182,
+"NUDT15": 183
+},
+"rec": 184,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 182,
+"NUDT15": 183
+},
+"rec": 184,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 183
+},
+"rec": 184,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 183
+},
+"rec": 184,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 188,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 188,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 188,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 188,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 188,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 189
+},
+"rec": 190,
+"cls": "Moderate",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 189
+},
+"rec": 190,
+"cls": "Moderate",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 189
+},
+"rec": 190,
+"cls": "Moderate",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 189
+},
+"rec": 190,
+"cls": "Moderate",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 178,
+"NUDT15": 179
+},
+"rec": 191,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 183
+},
+"rec": 192,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 183
+},
+"rec": 192,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 179
+},
+"rec": 193,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 183
+},
+"rec": 194,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 183
+},
+"rec": 194,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 80
+},
+"rec": 195,
+"cls": "Strong",
+"comments": 196
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "No Result",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 179
+},
+"rec": 193,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "No Result",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 183
+},
+"rec": 194,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "No Result",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 183
+},
+"rec": 194,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "No Result",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 196
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "No Result",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 80
+},
+"rec": 195,
+"cls": "Strong",
+"comments": 196
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "No Result"
+},
+"impl": {
+"TPMT": 178,
+"NUDT15": 179
+},
+"rec": 191,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "No Result"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 183
+},
+"rec": 192,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "No Result"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 183
+},
+"rec": 192,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "No Result"
+},
+"impl": {
+"TPMT": 188,
+"NUDT15": 186
+},
+"rec": 187,
+"cls": "Strong",
+"comments": 196
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "azathioprine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "No Result"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 80
+},
+"rec": 195,
+"cls": "Strong",
+"comments": 196
+},
+{
+"t": "rec",
+"guideline": 100419,
+"drug": "fluorouracil",
+"pop": "general",
+"key": {
+"DPYD": "2.0"
+},
+"impl": {
+"DPYD": 197
+},
+"rec": 198,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100419,
+"drug": "fluorouracil",
+"pop": "general",
+"key": {
+"DPYD": "1.5"
+},
+"impl": {
+"DPYD": 199
+},
+"rec": 200,
+"cls": "Moderate",
+"comments": 201
+},
+{
+"t": "rec",
+"guideline": 100419,
+"drug": "fluorouracil",
+"pop": "general",
+"key": {
+"DPYD": "1.0"
+},
+"impl": {
+"DPYD": 199
+},
+"rec": 202,
+"cls": "Strong",
+"comments": 201
+},
+{
+"t": "rec",
+"guideline": 100419,
+"drug": "fluorouracil",
+"pop": "general",
+"key": {
+"DPYD": "0.5"
+},
+"impl": {
+"DPYD": 203
+},
+"rec": 204,
+"cls": "Strong",
+"comments": 205
+},
+{
+"t": "rec",
+"guideline": 100419,
+"drug": "fluorouracil",
+"pop": "general",
+"key": {
+"DPYD": "0.0"
+},
+"impl": {
+"DPYD": 203
+},
+"rec": 206,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100419,
+"drug": "capecitabine",
+"pop": "general",
+"key": {
+"DPYD": "2.0"
+},
+"impl": {
+"DPYD": 197
+},
+"rec": 198,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100419,
+"drug": "capecitabine",
+"pop": "general",
+"key": {
+"DPYD": "1.5"
+},
+"impl": {
+"DPYD": 199
+},
+"rec": 200,
+"cls": "Moderate",
+"comments": 201
+},
+{
+"t": "rec",
+"guideline": 100419,
+"drug": "capecitabine",
+"pop": "general",
+"key": {
+"DPYD": "1.0"
+},
+"impl": {
+"DPYD": 199
+},
+"rec": 202,
+"cls": "Strong",
+"comments": 201
+},
+{
+"t": "rec",
+"guideline": 100419,
+"drug": "capecitabine",
+"pop": "general",
+"key": {
+"DPYD": "0.5"
+},
+"impl": {
+"DPYD": 203
+},
+"rec": 204,
+"cls": "Strong",
+"comments": 205
+},
+{
+"t": "rec",
+"guideline": 100419,
+"drug": "capecitabine",
+"pop": "general",
+"key": {
+"DPYD": "0.0"
+},
+"impl": {
+"DPYD": 203
+},
+"rec": 206,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 178,
+"NUDT15": 179
+},
+"rec": 207,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 208,
+"NUDT15": 183
+},
+"rec": 209,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 208,
+"NUDT15": 183
+},
+"rec": 209,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 210,
+"NUDT15": 183
+},
+"rec": 209,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 210,
+"NUDT15": 183
+},
+"rec": 209,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 212,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 212,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 212,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 212,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 212,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 189
+},
+"rec": 213,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 189
+},
+"rec": 213,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 189
+},
+"rec": 213,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 185,
+"NUDT15": 189
+},
+"rec": 213,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 178,
+"NUDT15": 179
+},
+"rec": 214,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 210,
+"NUDT15": 183
+},
+"rec": 215,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 210,
+"NUDT15": 183
+},
+"rec": 215,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 179
+},
+"rec": 216,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 183
+},
+"rec": 217,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 183
+},
+"rec": 217,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 80
+},
+"rec": 195,
+"cls": "Strong",
+"comments": 196
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "No Result",
+"NUDT15": "Normal Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 179
+},
+"rec": 216,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "No Result",
+"NUDT15": "Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 183
+},
+"rec": 217,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "No Result",
+"NUDT15": "Possible Intermediate Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 183
+},
+"rec": 217,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "No Result",
+"NUDT15": "Poor Metabolizer"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "No Result",
+"NUDT15": "Indeterminate"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 80
+},
+"rec": 195,
+"cls": "Strong",
+"comments": 196
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Normal Metabolizer",
+"NUDT15": "No Result"
+},
+"impl": {
+"TPMT": 178,
+"NUDT15": 179
+},
+"rec": 214,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Intermediate Metabolizer",
+"NUDT15": "No Result"
+},
+"impl": {
+"TPMT": 210,
+"NUDT15": 183
+},
+"rec": 215,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Possible Intermediate Metabolizer",
+"NUDT15": "No Result"
+},
+"impl": {
+"TPMT": 210,
+"NUDT15": 183
+},
+"rec": 215,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Poor Metabolizer",
+"NUDT15": "No Result"
+},
+"impl": {
+"TPMT": 212,
+"NUDT15": 186
+},
+"rec": 211,
+"cls": "Strong",
+"comments": 181
+},
+{
+"t": "rec",
+"guideline": 100428,
+"drug": "mercaptopurine",
+"pop": "general",
+"key": {
+"TPMT": "Indeterminate",
+"NUDT15": "No Result"
+},
+"impl": {
+"TPMT": 80,
+"NUDT15": 80
+},
+"rec": 195,
+"cls": "Strong",
+"comments": 196
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "n/a"
+},
+"impl": {
+"CYP2D6": 80
+},
+"rec": 109,
+"cls": "No Recommendation",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "0.25"
+},
+"impl": {
+"CYP2D6": 218
+},
+"rec": 219,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "0.5"
+},
+"impl": {
+"CYP2D6": 218
+},
+"rec": 219,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "0.75"
+},
+"impl": {
+"CYP2D6": 218
+},
+"rec": 219,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "1.0"
+},
+"impl": {
+"CYP2D6": 218
+},
+"rec": 219,
+"cls": "Optional",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "1.25"
+},
+"impl": {
+"CYP2D6": 220
+},
+"rec": 221,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "1.5"
+},
+"impl": {
+"CYP2D6": 220
+},
+"rec": 221,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "1.75"
+},
+"impl": {
+"CYP2D6": 220
+},
+"rec": 221,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "2.0"
+},
+"impl": {
+"CYP2D6": 220
+},
+"rec": 221,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "2.25"
+},
+"impl": {
+"CYP2D6": 220
+},
+"rec": 221,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "0.0"
+},
+"impl": {
+"CYP2D6": 222
+},
+"rec": 223,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "2.5"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "3.0"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "2.75"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "4.0"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "≥3.0"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "≥3.25"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "≥3.5"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "≥4.0"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "≥3.75"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "≥5.0"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100416,
+"drug": "tramadol",
+"pop": "general",
+"key": {
+"CYP2D6": "≥6.0"
+},
+"impl": {
+"CYP2D6": 224
+},
+"rec": 225,
+"cls": "Strong",
+"comments": 80
 }
 ],
 "pair": [
@@ -5398,6 +7227,87 @@
 "level": "C",
 "used": false,
 "provisional": false
+},
+{
+"t": "pair",
+"drug": "azathioprine",
+"gene": "NUDT15",
+"guideline": "TPMT, NUDT15 and Thiopurines",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "azathioprine",
+"gene": "TPMT",
+"guideline": "TPMT, NUDT15 and Thiopurines",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "capecitabine",
+"gene": "DPYD",
+"guideline": "DPYD and Fluoropyrimidines",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "fluorouracil",
+"gene": "DPYD",
+"guideline": "DPYD and Fluoropyrimidines",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "mercaptopurine",
+"gene": "NUDT15",
+"guideline": "TPMT, NUDT15 and Thiopurines",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "mercaptopurine",
+"gene": "TPMT",
+"guideline": "TPMT, NUDT15 and Thiopurines",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "tramadol",
+"gene": "CYP2D6",
+"guideline": "CYP2D6, OPRM1, COMT, and Opioids",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "tramadol",
+"gene": "OPRM1",
+"guideline": "CYP2D6, OPRM1, COMT, and Opioids",
+"level": "C",
+"used": false,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "tramadol",
+"gene": "COMT",
+"guideline": "CYP2D6, OPRM1, COMT, and Opioids",
+"level": "C",
+"used": false,
+"provisional": false
 }
 ],
 "guideline": [
@@ -5527,6 +7437,33 @@
 "first": 2011,
 "latest": 2017,
 "pmid": "28198005"
+},
+{
+"t": "guideline",
+"id": 100419,
+"name": "DPYD and Fluoropyrimidines",
+"url": "https://www.clinpgx.org/guideline/PA166251462",
+"genes": [
+"DPYD"
+],
+"notes": null,
+"first": 2013,
+"latest": 2017,
+"pmid": "29152729"
+},
+{
+"t": "guideline",
+"id": 100428,
+"name": "TPMT, NUDT15 and Thiopurines",
+"url": "https://www.clinpgx.org/guideline/PA166251442",
+"genes": [
+"NUDT15",
+"TPMT"
+],
+"notes": null,
+"first": 2011,
+"latest": 2026,
+"pmid": "41618934"
 }
 ]
 }

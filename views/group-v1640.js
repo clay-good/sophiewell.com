@@ -1,7 +1,8 @@
 // spec-v1640: pharmacogenomics. What an FDA label states for a genotype or metabolizer status.
 // siponimod-cyp2c9-dose, eliglustat-cyp2d6-dose, pgx-label-dose-limit, opioid-cyp2d6-pediatric-check;
 // and from CPIC's tables (owner decision 12): pgx-diplotype-phenotype, cyp2d6-activity-score and
-// cyp2d6-phenoconversion, cpic-gene-drug and pgx-panel-review.
+// cyp2d6-phenoconversion, cpic-gene-drug and pgx-panel-review; spec-v1635's dpyd-fluoropyrimidine-dose,
+// tpmt-nudt15-thiopurine-dose and ugt1a1-irinotecan-label.
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -14,6 +15,9 @@ import * as CA from '../lib/cyp2d6-activity-score-v1640.js';
 import * as PC from '../lib/cyp2d6-phenoconversion-v1640.js';
 import * as GD from '../lib/cpic-gene-drug-v1640.js';
 import * as PR from '../lib/pgx-panel-review-v1640.js';
+import * as DF from '../lib/dpyd-fluoropyrimidine-dose-v1635.js';
+import * as TN from '../lib/tpmt-nudt15-thiopurine-dose-v1635.js';
+import * as UI from '../lib/ugt1a1-irinotecan-label-v1635.js';
 import { loadCpic } from '../lib/cpic-load.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -167,11 +171,30 @@ export const renderers = {
     numField(root, 'Days since the last dose increase (pimozide)', 'pld-days', 'days');
     tool(root, [['pld-drug', 'drug'], ['pld-status', 'status'], ['pld-daily', 'dailyDose'], ['pld-single', 'singleDose'], ['pld-usual', 'usualDose'], ['pld-population', 'population'], ['pld-weight', 'weight'], ['pld-indication', 'indication'], ['pld-3a4', 'cyp3a4Inhibitor'], ['pld-days', 'daysSinceIncrease']], PL.pgxLabelDoseLimit);
   },
+  // spec-v1635 tools 16 to 18, on the same CPIC tables and label rows.
+  'dpyd-fluoropyrimidine-dose'(root) {
+    selectField(root, 'Drug', 'dfd-drug', DF.DRUGS);
+    textareaField(root, 'DPYD variants as the report lists them, one per line ("Reference" for a copy with none found)', 'dfd-variants', 'e.g. c.1905+1G>A (*2A)');
+    const sc = numField(root, 'Or the DPYD activity score the report prints (0 to 2)', 'dfd-score', '').querySelector('input');
+    sc.setAttribute('step', '0.5'); sc.setAttribute('max', '2');
+    cpicTool(root, [['dfd-drug', 'drug'], ['dfd-variants', 'variants'], ['dfd-score', 'activityScore']], ['allele', 'rule', 'gene', 'rec', 'pair', 'guideline'], DF.dpydFluoropyrimidineDose);
+  },
+  'tpmt-nudt15-thiopurine-dose'(root) {
+    selectField(root, 'Drug', 'ttd-drug', TN.DRUGS);
+    selectField(root, 'TPMT phenotype on the report', 'ttd-tpmt', TN.PHENOTYPES);
+    selectField(root, 'NUDT15 phenotype on the report', 'ttd-nudt15', TN.PHENOTYPES);
+    cpicTool(root, [['ttd-drug', 'drug'], ['ttd-tpmt', 'tpmt'], ['ttd-nudt15', 'nudt15']], ['rec', 'pair', 'guideline'], TN.tpmtNudt15ThiopurineDose);
+  },
+  'ugt1a1-irinotecan-label'(root) {
+    selectField(root, 'UGT1A1 genotype on the report', 'uil-genotype', UI.GENOTYPES);
+    tool(root, [['uil-genotype', 'genotype']], UI.ugt1a1IrinotecanLabel);
+  },
   'opioid-cyp2d6-pediatric-check'(root) {
     selectField(root, 'Drug', 'ocp-drug', OC.DRUGS);
     numField(root, 'Age', 'ocp-age', 'years');
     selectField(root, 'Pain after tonsillectomy or adenoidectomy (ages 12 to 17)', 'ocp-procedure', OC.PROCEDURES);
     selectField(root, 'CYP2D6 metabolizer status (age 12 and over)', 'ocp-status', OC.STATUSES);
-    tool(root, [['ocp-drug', 'drug'], ['ocp-age', 'age'], ['ocp-procedure', 'procedure'], ['ocp-status', 'status']], OC.opioidCyp2d6PediatricCheck);
+    numField(root, 'CYP2D6 activity score, if the report gives one (adds the CPIC row)', 'ocp-score', 'e.g. 1.0').querySelector('input').setAttribute('step', '0.25');
+    cpicTool(root, [['ocp-drug', 'drug'], ['ocp-age', 'age'], ['ocp-procedure', 'procedure'], ['ocp-status', 'status'], ['ocp-score', 'activityScore']], ['rec', 'pair', 'guideline'], OC.opioidCyp2d6WithCpic);
   },
 };

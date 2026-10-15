@@ -119,6 +119,8 @@ export const renderers = {
     selectField(root, 'Breastfeeding an infant under 1 month', 'vx-bf', M3.YES_NO, false);
     selectField(root, 'G6PD test', 'vx-test', M3.TEST_OPTIONS, true);
     selectField(root, 'G6PD result', 'vx-result', M3.RESULT_OPTIONS, false);
+    // spec-v1640 backfill: a genotype is not an activity result.
+    note(root, 'The G6PD result here is an enzyme activity result. A G6PD genotype that CPIC reads as "Variable" or "Indeterminate" cannot stand in for it; CPIC: "To ascertain G6PD status, enzyme activity must be measured."');
     selectField(root, 'Blood-stage treatment', 'vx-blood', M3.BLOOD_OPTIONS, true);
     selectField(root, 'In South America', 'vx-sa', M3.YES_NO, true);
     const o = el('div', { id: 'q-results', 'aria-live': 'polite' });

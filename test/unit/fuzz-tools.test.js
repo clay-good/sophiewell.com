@@ -772,6 +772,9 @@ import * as awareChildOralDoseV1564 from '../../lib/aware-child-oral-dose-v1564.
 import * as podoconiosisStageV1564 from '../../lib/podoconiosis-stage-v1564.js';
 import * as mtmServiceClockV1638 from '../../lib/mtm-service-clock-v1638.js';
 import * as opioidCyp2d6PediatricCheckV1640 from '../../lib/opioid-cyp2d6-pediatric-check-v1640.js';
+import * as dpydFluoropyrimidineDoseV1635 from '../../lib/dpyd-fluoropyrimidine-dose-v1635.js';
+import * as tpmtNudt15ThiopurineDoseV1635 from '../../lib/tpmt-nudt15-thiopurine-dose-v1635.js';
+import * as ugt1a1IrinotecanLabelV1635 from '../../lib/ugt1a1-irinotecan-label-v1635.js';
 import * as pgxDiplotypePhenotypeV1640 from '../../lib/pgx-diplotype-phenotype-v1640.js';
 import * as cyp2d6ActivityScoreV1640 from '../../lib/cyp2d6-activity-score-v1640.js';
 import * as cyp2d6PhenoconversionV1640 from '../../lib/cyp2d6-phenoconversion-v1640.js';
@@ -1887,6 +1890,9 @@ const MODULES = {
   'podoconiosis-stage-v1564.js': podoconiosisStageV1564,
   'mtm-service-clock-v1638.js': mtmServiceClockV1638,
   'opioid-cyp2d6-pediatric-check-v1640.js': opioidCyp2d6PediatricCheckV1640,
+  'dpyd-fluoropyrimidine-dose-v1635.js': dpydFluoropyrimidineDoseV1635,
+  'tpmt-nudt15-thiopurine-dose-v1635.js': tpmtNudt15ThiopurineDoseV1635,
+  'ugt1a1-irinotecan-label-v1635.js': ugt1a1IrinotecanLabelV1635,
   'pgx-diplotype-phenotype-v1640.js': pgxDiplotypePhenotypeV1640,
   'cyp2d6-activity-score-v1640.js': cyp2d6ActivityScoreV1640,
   'cyp2d6-phenoconversion-v1640.js': cyp2d6PhenoconversionV1640,

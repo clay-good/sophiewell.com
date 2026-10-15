@@ -1,6 +1,6 @@
 # spec-v1635 — Oncology pharmacy, investigational drug service, and nuclear pharmacy
 
-**Status:** In progress, October 11, 2026: 30 of 35 tools built (see Build status). 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
+**Status:** In progress, October 15, 2026: 33 of 35 tools built (see Build status); tools 16 to 18 were built that day, after owner decision 12 on CPIC. 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 Three pharmacists do work the catalog barely touches. The chemotherapy-verification pharmacist
@@ -980,4 +980,10 @@ build stores the version and published date instead.
 | 34. `radiation-distance-shielding` | Built (group Q). The two label attenuation tables were re-read October 11, 2026. A thickness between two rows takes the thinner row's factor and says the true factor lies between; the tool does not interpolate, and a shield thinner than the first row is credited nothing. The rate's unit is the reader's and is carried through. |
 | 35. `occupational-dose-limit-check` | Built (group Q) on 10 CFR 20.1201(a) and 20.1208(a). Doses are entered in rem, mrem or mSv (a required choice). The projection is plain proportion and is not applied to the pregnancy limit, which is not annual. License ALARA levels are not included. |
 
-Not built: tool 3 and tool 33 (gated), and tools 16 to 18, held with the CPIC tools of [spec-v1640](spec-v1640.md) on the owner's licensing question. Every other tool has a row in the table above (this line corrected October 15, 2026).
+Not built: tool 3 and tool 33 (gated). Every other tool has a row in the table above.
+
+| Tool | State |
+|---|---|
+| 16. `dpyd-fluoropyrimidine-dose` | Built October 15, 2026 after owner decision 12, on the CPIC tables (`data/cpic`). Variants are entered as the report lists them, with "Reference" for a copy where none was found, and a variant answers to its HGVS name or its bracketed alias alone (`c.1905+1G>A` or `*2A`); or the reader enters the score. The score is CPIC's own rule, the sum of the two lowest variant values. Capecitabine adds the XELODA label's section 2.1 sentences (version 32, re-read October 15, 2026); fluorouracil has no label line. |
+| 17. `tpmt-nudt15-thiopurine-dose` | Built October 15, 2026. CPIC's combined row for the two phenotypes, quoted whole with its classification. The indication is not an input, because CPIC's own text carries both the malignancy and the nonmalignancy wording. "No result" is a choice, never a blank. |
+| 18. `ugt1a1-irinotecan-label` | Built October 15, 2026 on the irinotecan label (Bluepoint, set b66dbd6d, version 8, effective August 26, 2026, re-read October 15) section 2.3, as a label row. The three genotypes the label names get its sentence; for the others the result says the label states nothing. CPIC has no guideline for the pair, so no CPIC row is shown. |

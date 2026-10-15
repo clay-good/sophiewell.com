@@ -2509,6 +2509,21 @@
     }
   },
   {
+    "label": "Irinotecan Hydrochloride Injection, Bluepoint",
+    "labeler": "BLUEPOINT LABORATORIES",
+    "setId": "b66dbd6d-6ccb-ce9d-e053-2995a90a4c3c",
+    "tools": [
+      "ugt1a1-irinotecan-label"
+    ],
+    "splVersion": 8,
+    "publishedOn": "2026-08-24",
+    "verifiedOn": "2026-10-15",
+    "validThrough": "2027-10-15",
+    "sections": {
+      "34068-7": "eac9246b5dafdb5b949ce90c23a7d67678c7523a5b652e1dfb113902ab60c23d"
+    }
+  },
+  {
     "label": "Januvia (sitagliptin), Merck",
     "labeler": "MERCK SHARP & DOHME LLC",
     "setId": "f85a48d0-0407-4c50-b0fa-7673a160bf01",
@@ -4739,7 +4754,8 @@
     "setId": "e702d84d-7162-4751-bf37-d724cc7e45a5",
     "tools": [
       "capecitabine-tablet-dose",
-      "chemo-organ-label-dose"
+      "chemo-organ-label-dose",
+      "dpyd-fluoropyrimidine-dose"
     ],
     "splVersion": 32,
     "publishedOn": "2026-02-06",

@@ -9583,6 +9583,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/opioid-cyp2d6-pediatric-check-v1640.js (spec-v1640: Codeine and tramadol: age, procedure and CYP2D6 status (FDA labels) — clinical disclaimer)
 - `opioid-cyp2d6-pediatric-check`
 
+### lib/dpyd-fluoropyrimidine-dose-v1635.js (spec-v1635: DPYD activity score to CPIC fluorouracil or capecitabine recommendation — clinical disclaimer)
+- `dpyd-fluoropyrimidine-dose`
+
+### lib/tpmt-nudt15-thiopurine-dose-v1635.js (spec-v1635: TPMT and NUDT15 phenotypes to CPIC thiopurine starting dose — clinical disclaimer)
+- `tpmt-nudt15-thiopurine-dose`
+
+### lib/ugt1a1-irinotecan-label-v1635.js (spec-v1635: what the irinotecan label states for a UGT1A1 genotype — clinical disclaimer)
+- `ugt1a1-irinotecan-label`
+
 ### lib/pgx-diplotype-phenotype-v1640.js (spec-v1640: CPIC diplotype to phenotype for a pharmacogene — clinical disclaimer)
 - `pgx-diplotype-phenotype`
 

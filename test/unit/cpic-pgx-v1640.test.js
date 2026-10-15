@@ -18,7 +18,7 @@ test('diplotype to phenotype: function pairs and activity scores from the tables
   assert.deepEqual([c.phenotype, c.activityScore], ['Intermediate Metabolizer', '1.0']);
   assert.match(c.notes.join(' '), /not applicable to the warfarin guideline/);
   assert.match(c.notes.at(-1), /CC0\. Data version: change log of 2026-08-03; read 2026-10-15\..*confirm the current content at ClinPGx/);
-  assert.deepEqual(genes(DB, NOW), ['CYP2C19', 'CYP2C9', 'G6PD', 'MT-RNR1']);
+  assert.deepEqual(genes(DB, NOW), ['CYP2C19', 'CYP2C9', 'DPYD', 'G6PD', 'MT-RNR1']);
 });
 
 test('one allele only where CPIC\'s rules take one; no "*1 by default"', () => {
@@ -128,4 +128,51 @@ test('panel review: HLA-B*15:02 positive touches the four antiseizure drugs; a n
   assert.ok(pr({ results: 'CYP2C19: PM' }, DB, NOW).found.some((f) => f.drug === 'clopidogrel'));
   assert.match(pr({ results: 'XYZ1: PM' }, DB, NOW).message, /no CPIC recommendation is keyed by that gene/);
   assert.match(pr({ results: '' }, DB, NOW).message, /one per line/);
+});
+
+import { dpydFluoropyrimidineDose as dp } from '../../lib/dpyd-fluoropyrimidine-dose-v1635.js';
+import { tpmtNudt15ThiopurineDose as tn } from '../../lib/tpmt-nudt15-thiopurine-dose-v1635.js';
+import { ugt1a1IrinotecanLabel as ui } from '../../lib/ugt1a1-irinotecan-label-v1635.js';
+import { opioidCyp2d6WithCpic as oc } from '../../lib/opioid-cyp2d6-pediatric-check-v1640.js';
+
+test('DPYD: the two lowest values, CPIC\'s row whole, and a variant by its HGVS name or alias', () => {
+  const r = dp({ drug: 'fluorouracil', variants: 'c.1905+1G>A (*2A)\nReference' }, DB, NOW);
+  assert.deepEqual([r.activityScore, r.phenotype, r.classification], [1, 'Intermediate Metabolizer', 'Strong']);
+  assert.match(r.recommendation, /^Reduce starting dose by 50%/);
+  assert.equal(dp({ drug: 'fluorouracil', variants: '*2A\nReference' }, DB, NOW).activityScore, 1);
+  assert.equal(dp({ drug: 'fluorouracil', variants: 'HapB3\nReference' }, DB, NOW).classification, 'Moderate');
+  assert.equal(dp({ drug: 'fluorouracil', variants: 'c.1905+1G>A; c.2846A>T; Reference' }, DB, NOW).activityScore, 0.5, 'three variants: the two lowest');
+  assert.match(dp({ drug: 'fluorouracil', variants: 'Reference' }, DB, NOW).message, /at least two DPYD variants/);
+  assert.match(dp({ drug: 'fluorouracil', variants: 'Reference\nReference', activityScore: '2' }, DB, NOW).message, /not both/);
+  assert.equal(dp({ drug: 'fluorouracil', activityScore: '0' }, DB, NOW).phenotype, 'Poor Metabolizer');
+  const c = dp({ drug: 'capecitabine', activityScore: '2' }, DB, NOW);
+  assert.match(c.notes.join(' '), /XELODA label, section 2\.1 .*test patients for genetic variants of the DPYD gene/);
+  assert.doesNotMatch(dp({ drug: 'fluorouracil', activityScore: '2' }, DB, NOW).notes.join(' '), /XELODA/);
+});
+
+test('thiopurines: the combined TPMT and NUDT15 row; "No result" is a choice', () => {
+  const r = tn({ drug: 'mercaptopurine', tpmt: 'Intermediate Metabolizer', nudt15: 'Normal Metabolizer' }, DB, NOW);
+  assert.match(r.recommendation, /30-80% of standard starting dose/);
+  assert.equal(tn({ drug: 'azathioprine', tpmt: 'Poor Metabolizer', nudt15: 'No Result' }, DB, NOW).recommendation, 'Consider alternative nonthiopurine immunosuppressant therapy.');
+  assert.match(tn({ drug: 'mercaptopurine', tpmt: 'Normal Metabolizer', nudt15: '' }, DB, NOW).message, /NUDT15 phenotype/);
+});
+
+test('irinotecan: the label names three genotypes; the others get no statement', () => {
+  const r = ui({ genotype: '*28/*28' }, NOW);
+  assert.deepEqual([r.labelNamed, r.flag], [true, 'label-reduction']);
+  assert.match(r.notes[0], /by at least one level/);
+  assert.equal(ui({ genotype: '*6/*28' }, NOW).labelNamed, true);
+  assert.equal(ui({ genotype: '*1/*28' }, NOW).flag, 'no-label-statement');
+  assert.match(ui({ genotype: '' }, NOW).message, /Choose the UGT1A1 genotype/);
+});
+
+test('codeine and tramadol: the CPIC row for a score follows the label statements', () => {
+  const base = { drug: 'codeine', age: '30', procedure: 'another-use', status: 'poor' };
+  const r = oc({ ...base, activityScore: '0' }, DB, NOW);
+  assert.equal(r.cpicClassification, 'Strong');
+  assert.match(r.notes.join(' '), /CPIC recommendation: "Avoid codeine use because of possibility of diminished analgesia/);
+  assert.equal(oc(base, DB, NOW).cpicClassification, undefined, 'no score, the label rules alone');
+  assert.match(oc({ ...base, status: 'normal', activityScore: '3' }, DB, NOW).notes.join(' '), /is an ultrarapid metabolizer by CPIC's bands, but the status chosen is normal/);
+  assert.match(oc({ ...base, activityScore: '1.1' }, DB, NOW).message, /step by 0\.25/);
+  assert.match(oc({ ...base, activityScore: '1' }, { manifest: null }, NOW).notes.join(' '), /CPIC row not shown: .*did not load/);
 });

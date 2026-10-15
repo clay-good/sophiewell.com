@@ -1042,6 +1042,9 @@ import awareChildOralDoseV1564 from './adapters/aware-child-oral-dose-v1564.js';
 import podoconiosisStageV1564 from './adapters/podoconiosis-stage-v1564.js';
 import mtmServiceClockV1638 from './adapters/mtm-service-clock-v1638.js';
 import opioidCyp2d6PediatricCheckV1640 from './adapters/opioid-cyp2d6-pediatric-check-v1640.js';
+import dpydFluoropyrimidineDoseV1635 from './adapters/dpyd-fluoropyrimidine-dose-v1635.js';
+import tpmtNudt15ThiopurineDoseV1635 from './adapters/tpmt-nudt15-thiopurine-dose-v1635.js';
+import ugt1a1IrinotecanLabelV1635 from './adapters/ugt1a1-irinotecan-label-v1635.js';
 import pgxDiplotypePhenotypeV1640 from './adapters/pgx-diplotype-phenotype-v1640.js';
 import cyp2d6ActivityScoreV1640 from './adapters/cyp2d6-activity-score-v1640.js';
 import cyp2d6PhenoconversionV1640 from './adapters/cyp2d6-phenoconversion-v1640.js';
@@ -2373,6 +2376,9 @@ const ADAPTER_MODULES = [
   ['podoconiosis-stage-v1564', podoconiosisStageV1564],
   ['mtm-service-clock-v1638', mtmServiceClockV1638],
   ['opioid-cyp2d6-pediatric-check-v1640', opioidCyp2d6PediatricCheckV1640],
+  ['dpyd-fluoropyrimidine-dose-v1635', dpydFluoropyrimidineDoseV1635],
+  ['tpmt-nudt15-thiopurine-dose-v1635', tpmtNudt15ThiopurineDoseV1635],
+  ['ugt1a1-irinotecan-label-v1635', ugt1a1IrinotecanLabelV1635],
   ['pgx-diplotype-phenotype-v1640', pgxDiplotypePhenotypeV1640],
   ['cyp2d6-activity-score-v1640', cyp2d6ActivityScoreV1640],
   ['cyp2d6-phenoconversion-v1640', cyp2d6PhenoconversionV1640],
