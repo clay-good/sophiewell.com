@@ -126,8 +126,13 @@ export const renderers = {
     const dl = el('datalist', { id: 'cgd-drugs' }); drug.setAttribute('list', 'cgd-drugs'); root.appendChild(dl);
     textField(root, 'Population, where CPIC splits the drug (the result names the choices)', 'cgd-pop', '');
     textareaField(root, 'Results, one per line: gene, then the phenotype, activity score or HLA status as the report prints it', 'cgd-results', 'e.g. CYP2C19: Poor Metabolizer');
+    // spec-v1640 tool 4's dose side table: the dose is always the reader's own, and the result names which
+    // dose CPIC's sentence is about.
+    numField(root, 'Your own dose, in mg, if you want CPIC\'s arithmetic applied to it (optional)', 'cgd-dose', '');
+    numField(root, 'The maximum recommended dose, in mg, where CPIC names one too (optional)', 'cgd-max', '');
+    numField(root, 'Weight in kg, for the one CPIC cap that is per kg (optional)', 'cgd-weight', '').querySelector('input').setAttribute('max', '500');
     let filled = false;
-    cpicTool(root, [['cgd-drug', 'drug'], ['cgd-pop', 'population'], ['cgd-results', 'results']], ['rec', 'pair', 'guideline'], GD.cpicGeneDrug, (r, o, db) => {
+    cpicTool(root, [['cgd-drug', 'drug'], ['cgd-pop', 'population'], ['cgd-results', 'results'], ['cgd-dose', 'dose'], ['cgd-max', 'maxDose'], ['cgd-weight', 'weight']], ['rec', 'pair', 'guideline'], GD.cpicGeneDrug, (r, o, db) => {
       if (filled || !db.rec) return;
       filled = true;
       for (const d of GD.drugList(db)) dl.appendChild(el('option', { value: d }));

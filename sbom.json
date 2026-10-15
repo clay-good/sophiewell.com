@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1b2a7fe0-db94-59cc-8918-d1367abd8b10",
+  "serialNumber": "urn:uuid:7bbee450-7684-5625-8b45-9ea3e5e4f449",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-15T14:03:50.858Z",
+    "timestamp": "2026-10-15T14:49:45.646Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -6104,13 +6104,13 @@
       ]
     },
     {
-      "bom-ref": "urn:sophiewell:file:source:lib/cpic-gene-drug-v1640.js",
+      "bom-ref": "urn:sophiewell:file:source:lib/cpic-dose-factors-v1640.js",
       "type": "file",
-      "name": "lib/cpic-gene-drug-v1640.js",
+      "name": "lib/cpic-dose-factors-v1640.js",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "30fbf4f4feb3dfa7ca476b2273e805646805c15960df5e730fadb40956a6a266"
+          "content": "c7a5efdb0bc16e8375b69360577ef4e7a33321e10a4060a378234ac84545010a"
         }
       ],
       "properties": [
@@ -6120,7 +6120,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10221"
+          "value": "21944"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cpic-gene-drug-v1640.js",
+      "type": "file",
+      "name": "lib/cpic-gene-drug-v1640.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "45654e273d61dae468df528e8755765bb9b302b2c3bbe332cf8eaf168df51253"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10998"
         }
       ]
     },
@@ -37421,7 +37442,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "aa6339d491f9c0bc8be6828b4ef5c7d00679e62ebb37bb12e2cfb21c4cc71c91"
+          "content": "03c7f1131d97e77be862d45a465d9aa56de3c806eec38124e1978a617f428bfb"
         }
       ],
       "properties": [
@@ -37431,7 +37452,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "1212"
+          "value": "1755"
         }
       ]
     },
@@ -64826,7 +64847,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a02877dc77d96725bd82c0b41f0cd8da023a97f6ae58b777fd1fdaee83687490"
+          "content": "f6fc19f50fdaca8f8b95f75a20f80a203a6cde1f9d049e097d54073017025316"
         }
       ],
       "properties": [
@@ -64836,7 +64857,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11928"
+          "value": "12526"
         }
       ]
     },
@@ -95865,6 +95886,7 @@
         "urn:sophiewell:file:source:lib/cosyntropin-v299.js",
         "urn:sophiewell:file:source:lib/cotton-myer-v419.js",
         "urn:sophiewell:file:source:lib/cpak-v1447.js",
+        "urn:sophiewell:file:source:lib/cpic-dose-factors-v1640.js",
         "urn:sophiewell:file:source:lib/cpic-gene-drug-v1640.js",
         "urn:sophiewell:file:source:lib/cpic-load.js",
         "urn:sophiewell:file:source:lib/cpic-tables.js",
@@ -99489,7 +99511,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1b2a7fe0db94e9cc"
+      "value": "7bbee45076848625"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99501,7 +99523,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3788"
+      "value": "3789"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

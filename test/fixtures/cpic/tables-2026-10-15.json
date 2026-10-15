@@ -234,7 +234,32 @@
 "Greatly reduced O-desmethyltramadol (active metabolite) formation leading to diminished analgesia.",
 "Avoid tramadol use because of possibility of diminished analgesia. If opioid use is warranted, consider a non-codeine opioid.",
 "Increased formation of O-desmethyltramadol (active metabolite) leading to higher risk of toxicity",
-"Avoid tramadol use because of potential for toxicity. If opioid use is warranted, consider a non-codeine opioid."
+"Avoid tramadol use because of potential for toxicity. If opioid use is warranted, consider a non-codeine opioid.",
+"Initiate therapy with recommended starting dose. In accordance with the prescribing information, use the lowest effective dosage for shortest duration consistent with individual patient treatment goals.",
+"Mildly reduced metabolism",
+"IMs might have a higher than normal risk of adverse events especially in individuals with other factors affecting clearance of these drugs such as hepatic impairment or advanced age. Further caution should be taken with ibuprofen use in individuals carrying the CYP2C9*2 allele as it is in linkage disequilibrium with CYP2C8*3 and ibuprofen is also metabolized by CYP2C8.",
+"Moderately reduced metabolism; higher plasma concentrations may increase probability of toxicities",
+"Initiate therapy with lowest recommended starting dose. Titrate dose upward to clinical effect or maximum recommended dose with caution. In accordance with the prescribing information, use the lowest effective dosage for shortest duration consistent with individual patient treatment goals. Carefully monitor adverse events such as blood pressure and kidney function during course of therapy.",
+"Significantly reduced metabolism and prolonged half-life; higher plasma concentrations may increase probability and/or severity of toxicities",
+"Initiate therapy with 25-50% of the lowest recommended starting dose. Titrate dose upward to clinical effect or 25-50% of the maximum recommended dose with caution. In accordance with the prescribing information, use the lowest effective dosage for shortest duration consistent with individual patient treatment goals. Upward dose titration should not occur until after steady state is reached (at least 8 days for celecoxib after first dose in PMs). Carefully monitor adverse events such as blood pressure and kidney function during course of therapy. Alternatively, consider an alternate therapy not metabolized by CYP2C9 or not significantly impacted by CYP2C9 genetic variants in vivo.",
+"Alternative therapies not primarily metabolized by CYP2C9 include aspirin, ketorolac, naproxen and sulindac. Selection of therapy will depend on individual patient treatment goals and risks for toxicity.",
+"Slightly lower dose-adjusted trough concentrations of efavirenz compared with normal metabolizers",
+"Initiate efavirenz with standard dosing (600 mg/day)",
+"Normal efavirenz metabolism",
+"The ENCORE study showed that in treatment-naïve patients randomized to initiate efavirenz-based regimens (combined with tenofovir and emtricitabine), 400 mg/day was non-inferior to 600 mg/day regardless of CYP2B6 genotype (PMID 24522178).",
+"Higher dose-adjusted trough concentrations of efavirenz compared with normal metabolizers; increased risk of CNS adverse events",
+"Consider initiating efavirenz with decreased dose of 400 mg/day",
+"If therapeutic drug monitoring is available and a decreased efavirenz dose is prescribed, consider obtaining steady-state plasma efavirenz concentrations to ensure concentrations are in the suggested therapeutic range (~1 to 4 μg/mL). To prescribe efavirenz at a decreased dose of 400 mg/day or 200 mg/day in a multidrug regimen may require prescribing more than one pill once daily. If so, the provider should weigh the potential benefit of reduced dose against the potential detrimental impact of increased pill number.",
+"Higher dose-adjusted trough concentrations of efavirenz compared with normal metabolizers; significantly increased risk of CNS adverse events and treatment discontinuation",
+"Consider initiating efavirenz with decreased dose of 400 or 200 mg/day",
+"Typical myopathy risk and statin exposure",
+"Prescribe desired starting dose and adjust doses based on disease-specific guidelines.",
+"The potential for drug-drug interactions and dose limits based on renal and hepatic function and ancestry should be evaluated prior to initiating a statin.",
+"Increased simvastatin acid exposure as compared to normal function; increased risk of myopathy",
+"Prescribe an alternative statin depending on the desired potency (see Figure 1 of PMID: 35152405 for recommendations for alternative statins). If simvastatin therapy is warranted, limit dose to <20mg/day.",
+"The potential for drug-drug interactions and dose limits based on renal and hepatic function should be evaluated prior to initiating a statin. The effects of drug-drug interactions may be more pronounced resulting in a higher risk of myopathy.",
+"Increased simvastatin acid exposure compared to normal and decreased function; highly increased myopathy risk",
+"Prescribe an alternative statin depending on the desired potency (see Figure 1 of PMID: 35152405 for recommendations for alternative statins)."
 ],
 "allele": [
 {
@@ -1685,7 +1710,8 @@
 },
 "rec": 79,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "f9f4bcb6c4d339ec7a0ead4096b234220c1d8f51d60b2bd83c70b6373c7ff757"
 },
 {
 "t": "rec",
@@ -1700,7 +1726,8 @@
 },
 "rec": 82,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "ce3efdc2c1be7bff5dde1994bafff32019e916ecd720cc523269cf9aa542859d"
 },
 {
 "t": "rec",
@@ -1717,7 +1744,8 @@
 },
 "rec": 85,
 "cls": "Strong",
-"comments": 86
+"comments": 86,
+"sha": "46d7ac903055e977727c30f2cb00aec41220e600a58b1954235fa9fceaf88091"
 },
 {
 "t": "rec",
@@ -1734,7 +1762,8 @@
 },
 "rec": 87,
 "cls": "Strong",
-"comments": 88
+"comments": 88,
+"sha": "7f17c3b5f42143dbeafea5121a76d8ba1df1465dbae6c7ebe242378c66da181e"
 },
 {
 "t": "rec",
@@ -1751,7 +1780,8 @@
 },
 "rec": 91,
 "cls": "Strong",
-"comments": 92
+"comments": 92,
+"sha": "1ce0b1cfcf37628c7adc967c5d70202b5f57dceddf563d8344e4993c2341492b"
 },
 {
 "t": "rec",
@@ -1768,7 +1798,8 @@
 },
 "rec": 91,
 "cls": "Strong",
-"comments": 92
+"comments": 92,
+"sha": "1ce0b1cfcf37628c7adc967c5d70202b5f57dceddf563d8344e4993c2341492b"
 },
 {
 "t": "rec",
@@ -1785,7 +1816,8 @@
 },
 "rec": 91,
 "cls": "Strong",
-"comments": 92
+"comments": 92,
+"sha": "1ce0b1cfcf37628c7adc967c5d70202b5f57dceddf563d8344e4993c2341492b"
 },
 {
 "t": "rec",
@@ -1802,7 +1834,8 @@
 },
 "rec": 87,
 "cls": "Strong",
-"comments": 88
+"comments": 88,
+"sha": "7f17c3b5f42143dbeafea5121a76d8ba1df1465dbae6c7ebe242378c66da181e"
 },
 {
 "t": "rec",
@@ -1819,7 +1852,8 @@
 },
 "rec": 85,
 "cls": "Strong",
-"comments": 86
+"comments": 86,
+"sha": "46d7ac903055e977727c30f2cb00aec41220e600a58b1954235fa9fceaf88091"
 },
 {
 "t": "rec",
@@ -1836,7 +1870,8 @@
 },
 "rec": 87,
 "cls": "Strong",
-"comments": 88
+"comments": 88,
+"sha": "7f17c3b5f42143dbeafea5121a76d8ba1df1465dbae6c7ebe242378c66da181e"
 },
 {
 "t": "rec",
@@ -1853,7 +1888,8 @@
 },
 "rec": 87,
 "cls": "Strong",
-"comments": 88
+"comments": 88,
+"sha": "7f17c3b5f42143dbeafea5121a76d8ba1df1465dbae6c7ebe242378c66da181e"
 },
 {
 "t": "rec",
@@ -1870,7 +1906,8 @@
 },
 "rec": 93,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "6bd72506cf4a3cf65faa6484e9496e01e05fa4e4f53d0c1090a9177bed180d15"
 },
 {
 "t": "rec",
@@ -1887,7 +1924,8 @@
 },
 "rec": 87,
 "cls": "Strong",
-"comments": 88
+"comments": 88,
+"sha": "7f17c3b5f42143dbeafea5121a76d8ba1df1465dbae6c7ebe242378c66da181e"
 },
 {
 "t": "rec",
@@ -1904,7 +1942,8 @@
 },
 "rec": 91,
 "cls": "Strong",
-"comments": 92
+"comments": 92,
+"sha": "1ce0b1cfcf37628c7adc967c5d70202b5f57dceddf563d8344e4993c2341492b"
 },
 {
 "t": "rec",
@@ -1921,7 +1960,8 @@
 },
 "rec": 91,
 "cls": "Strong",
-"comments": 92
+"comments": 92,
+"sha": "1ce0b1cfcf37628c7adc967c5d70202b5f57dceddf563d8344e4993c2341492b"
 },
 {
 "t": "rec",
@@ -1938,7 +1978,8 @@
 },
 "rec": 91,
 "cls": "Strong",
-"comments": 92
+"comments": 92,
+"sha": "1ce0b1cfcf37628c7adc967c5d70202b5f57dceddf563d8344e4993c2341492b"
 },
 {
 "t": "rec",
@@ -1955,7 +1996,8 @@
 },
 "rec": 87,
 "cls": "Strong",
-"comments": 88
+"comments": 88,
+"sha": "7f17c3b5f42143dbeafea5121a76d8ba1df1465dbae6c7ebe242378c66da181e"
 },
 {
 "t": "rec",
@@ -1972,7 +2014,8 @@
 },
 "rec": 93,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "6bd72506cf4a3cf65faa6484e9496e01e05fa4e4f53d0c1090a9177bed180d15"
 },
 {
 "t": "rec",
@@ -1989,7 +2032,8 @@
 },
 "rec": 87,
 "cls": "Strong",
-"comments": 88
+"comments": 88,
+"sha": "7f17c3b5f42143dbeafea5121a76d8ba1df1465dbae6c7ebe242378c66da181e"
 },
 {
 "t": "rec",
@@ -2006,7 +2050,8 @@
 },
 "rec": 94,
 "cls": "Optional",
-"comments": 95
+"comments": 95,
+"sha": "e6d22d85c822c2953d09e05c9857ec58ac6f279e2bc553478f85976e5fca6036"
 },
 {
 "t": "rec",
@@ -2023,7 +2068,8 @@
 },
 "rec": 87,
 "cls": "Strong",
-"comments": 88
+"comments": 88,
+"sha": "7f17c3b5f42143dbeafea5121a76d8ba1df1465dbae6c7ebe242378c66da181e"
 },
 {
 "t": "rec",
@@ -2040,7 +2086,8 @@
 },
 "rec": 96,
 "cls": "Optional",
-"comments": 97
+"comments": 97,
+"sha": "385b8074ed438a053eaea6b8162c9407b17b87d5e418c52a4a59b255a8e47994"
 },
 {
 "t": "rec",
@@ -2057,7 +2104,8 @@
 },
 "rec": 96,
 "cls": "Optional",
-"comments": 97
+"comments": 97,
+"sha": "385b8074ed438a053eaea6b8162c9407b17b87d5e418c52a4a59b255a8e47994"
 },
 {
 "t": "rec",
@@ -2074,7 +2122,8 @@
 },
 "rec": 96,
 "cls": "Optional",
-"comments": 97
+"comments": 97,
+"sha": "385b8074ed438a053eaea6b8162c9407b17b87d5e418c52a4a59b255a8e47994"
 },
 {
 "t": "rec",
@@ -2091,7 +2140,8 @@
 },
 "rec": 87,
 "cls": "Strong",
-"comments": 88
+"comments": 88,
+"sha": "7f17c3b5f42143dbeafea5121a76d8ba1df1465dbae6c7ebe242378c66da181e"
 },
 {
 "t": "rec",
@@ -2108,7 +2158,8 @@
 },
 "rec": 94,
 "cls": "Optional",
-"comments": 95
+"comments": 95,
+"sha": "e6d22d85c822c2953d09e05c9857ec58ac6f279e2bc553478f85976e5fca6036"
 },
 {
 "t": "rec",
@@ -2123,7 +2174,8 @@
 },
 "rec": 99,
 "cls": "Strong",
-"comments": 100
+"comments": 100,
+"sha": "27d4a11a82a7789d42ba9885038bf069d3941ea33df2470475bc13a3b2728a74"
 },
 {
 "t": "rec",
@@ -2138,7 +2190,8 @@
 },
 "rec": 99,
 "cls": "Strong",
-"comments": 100
+"comments": 100,
+"sha": "27d4a11a82a7789d42ba9885038bf069d3941ea33df2470475bc13a3b2728a74"
 },
 {
 "t": "rec",
@@ -2153,7 +2206,8 @@
 },
 "rec": 99,
 "cls": "Strong",
-"comments": 100
+"comments": 100,
+"sha": "27d4a11a82a7789d42ba9885038bf069d3941ea33df2470475bc13a3b2728a74"
 },
 {
 "t": "rec",
@@ -2168,7 +2222,8 @@
 },
 "rec": 104,
 "cls": "Strong",
-"comments": 105
+"comments": 105,
+"sha": "658ac870138a3567e8432775b78ecb101ea2fce8e41ee2893785b8509b9283ae"
 },
 {
 "t": "rec",
@@ -2183,7 +2238,8 @@
 },
 "rec": 106,
 "cls": "Strong",
-"comments": 100
+"comments": 100,
+"sha": "65ca96915b7000d010755ffbbdbf7a7f8034b2a38578298e132be6ab90a2bb8f"
 },
 {
 "t": "rec",
@@ -2198,7 +2254,8 @@
 },
 "rec": 108,
 "cls": "Strong",
-"comments": 105
+"comments": 105,
+"sha": "d5b76689ec30a9692a91a88934d7b3f1989a8c1d5ba1781d9fa3277a831ef982"
 },
 {
 "t": "rec",
@@ -2213,7 +2270,8 @@
 },
 "rec": 108,
 "cls": "Strong",
-"comments": 100
+"comments": 100,
+"sha": "d5b76689ec30a9692a91a88934d7b3f1989a8c1d5ba1781d9fa3277a831ef982"
 },
 {
 "t": "rec",
@@ -2228,7 +2286,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2243,7 +2302,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 110
+"comments": 110,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2258,7 +2318,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 110
+"comments": 110,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2273,7 +2334,8 @@
 },
 "rec": 99,
 "cls": "Strong",
-"comments": 110
+"comments": 110,
+"sha": "27d4a11a82a7789d42ba9885038bf069d3941ea33df2470475bc13a3b2728a74"
 },
 {
 "t": "rec",
@@ -2288,7 +2350,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 111
+"comments": 111,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2303,7 +2366,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 110
+"comments": 110,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2318,7 +2382,8 @@
 },
 "rec": 108,
 "cls": "Moderate",
-"comments": 111
+"comments": 111,
+"sha": "d5b76689ec30a9692a91a88934d7b3f1989a8c1d5ba1781d9fa3277a831ef982"
 },
 {
 "t": "rec",
@@ -2333,7 +2398,8 @@
 },
 "rec": 108,
 "cls": "Moderate",
-"comments": 110
+"comments": 110,
+"sha": "d5b76689ec30a9692a91a88934d7b3f1989a8c1d5ba1781d9fa3277a831ef982"
 },
 {
 "t": "rec",
@@ -2348,7 +2414,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2363,7 +2430,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 113
+"comments": 113,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2378,7 +2446,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 113
+"comments": 113,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2393,7 +2462,8 @@
 },
 "rec": 99,
 "cls": "Strong",
-"comments": 113
+"comments": 113,
+"sha": "27d4a11a82a7789d42ba9885038bf069d3941ea33df2470475bc13a3b2728a74"
 },
 {
 "t": "rec",
@@ -2408,7 +2478,8 @@
 },
 "rec": 115,
 "cls": "Moderate",
-"comments": 116
+"comments": 116,
+"sha": "844a2026bdb92d2c3411ca2ba0eef9df60550c46cbed8cf57794a08dabcb1aeb"
 },
 {
 "t": "rec",
@@ -2423,7 +2494,8 @@
 },
 "rec": 115,
 "cls": "Moderate",
-"comments": 117
+"comments": 117,
+"sha": "844a2026bdb92d2c3411ca2ba0eef9df60550c46cbed8cf57794a08dabcb1aeb"
 },
 {
 "t": "rec",
@@ -2438,7 +2510,8 @@
 },
 "rec": 118,
 "cls": "Moderate",
-"comments": 116
+"comments": 116,
+"sha": "35157381ee0ba72f309a58373d108b1cc8e5e44b49f71017654448e21ca01666"
 },
 {
 "t": "rec",
@@ -2453,7 +2526,8 @@
 },
 "rec": 118,
 "cls": "Moderate",
-"comments": 117
+"comments": 117,
+"sha": "35157381ee0ba72f309a58373d108b1cc8e5e44b49f71017654448e21ca01666"
 },
 {
 "t": "rec",
@@ -2468,7 +2542,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2483,7 +2558,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2498,7 +2574,8 @@
 },
 "rec": 120,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "719d78e3383295c22b38ae2f97c7f665c59f1653b17330baaa3797763714b3e9"
 },
 {
 "t": "rec",
@@ -2513,7 +2590,8 @@
 },
 "rec": 120,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "719d78e3383295c22b38ae2f97c7f665c59f1653b17330baaa3797763714b3e9"
 },
 {
 "t": "rec",
@@ -2528,7 +2606,8 @@
 },
 "rec": 120,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "719d78e3383295c22b38ae2f97c7f665c59f1653b17330baaa3797763714b3e9"
 },
 {
 "t": "rec",
@@ -2543,7 +2622,8 @@
 },
 "rec": 120,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "719d78e3383295c22b38ae2f97c7f665c59f1653b17330baaa3797763714b3e9"
 },
 {
 "t": "rec",
@@ -2558,7 +2638,8 @@
 },
 "rec": 122,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d58512215b42a3a4c94b208c36ecb472f588636c663f95a75b19a466aa597b09"
 },
 {
 "t": "rec",
@@ -2573,7 +2654,8 @@
 },
 "rec": 122,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d58512215b42a3a4c94b208c36ecb472f588636c663f95a75b19a466aa597b09"
 },
 {
 "t": "rec",
@@ -2588,7 +2670,8 @@
 },
 "rec": 122,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d58512215b42a3a4c94b208c36ecb472f588636c663f95a75b19a466aa597b09"
 },
 {
 "t": "rec",
@@ -2603,7 +2686,8 @@
 },
 "rec": 122,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d58512215b42a3a4c94b208c36ecb472f588636c663f95a75b19a466aa597b09"
 },
 {
 "t": "rec",
@@ -2618,7 +2702,8 @@
 },
 "rec": 122,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d58512215b42a3a4c94b208c36ecb472f588636c663f95a75b19a466aa597b09"
 },
 {
 "t": "rec",
@@ -2633,7 +2718,8 @@
 },
 "rec": 124,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "60ef18cdbc95f6e95008655e0d150c78e5245123fbc1be966ebd4977b9033aa7"
 },
 {
 "t": "rec",
@@ -2648,7 +2734,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2663,7 +2750,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2678,7 +2766,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2693,7 +2782,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2708,7 +2798,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2723,7 +2814,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2738,7 +2830,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2753,7 +2846,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2768,7 +2862,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2783,7 +2878,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2798,7 +2894,8 @@
 },
 "rec": 126,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "695d32816911e20c59d8724c6c968929216ae838518bde51fbbbe7fd6205bd62"
 },
 {
 "t": "rec",
@@ -2813,7 +2910,8 @@
 },
 "rec": 128,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "5f53365673660469ccd954aa92cd2a65b9f034f321f33841da24c278d961dd29"
 },
 {
 "t": "rec",
@@ -2828,7 +2926,8 @@
 },
 "rec": 130,
 "cls": "Strong",
-"comments": 131
+"comments": 131,
+"sha": "0917b8f0c19ce8361d0e1853a351fc2fa35c3c93980e12577423b531b978d8be"
 },
 {
 "t": "rec",
@@ -2843,7 +2942,8 @@
 },
 "rec": 128,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "5f53365673660469ccd954aa92cd2a65b9f034f321f33841da24c278d961dd29"
 },
 {
 "t": "rec",
@@ -2858,7 +2958,8 @@
 },
 "rec": 132,
 "cls": "Optional",
-"comments": 133
+"comments": 133,
+"sha": "847c18a5052d266f96768ee7ce56d6d152cd1c1ffa291cf7a11b0881e71704d9"
 },
 {
 "t": "rec",
@@ -2875,7 +2976,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -2892,7 +2994,8 @@
 },
 "rec": 137,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "9178bded925c1cc8565eeffc0ead0eebcd4344157a3097be080c89700a26ff7c"
 },
 {
 "t": "rec",
@@ -2909,7 +3012,8 @@
 },
 "rec": 139,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "421106a837b474a84c9db1de80e137051325ccefa83623af715dd92f8cd268a8"
 },
 {
 "t": "rec",
@@ -2926,7 +3030,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -2943,7 +3048,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -2960,7 +3066,8 @@
 },
 "rec": 109,
 "cls": "n/a",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -2977,7 +3084,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -2994,7 +3102,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3011,7 +3120,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3028,7 +3138,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3045,7 +3156,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3062,7 +3174,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3079,7 +3192,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -3096,7 +3210,8 @@
 },
 "rec": 137,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "9178bded925c1cc8565eeffc0ead0eebcd4344157a3097be080c89700a26ff7c"
 },
 {
 "t": "rec",
@@ -3113,7 +3228,8 @@
 },
 "rec": 139,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "421106a837b474a84c9db1de80e137051325ccefa83623af715dd92f8cd268a8"
 },
 {
 "t": "rec",
@@ -3130,7 +3246,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3147,7 +3264,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3164,7 +3282,8 @@
 },
 "rec": 109,
 "cls": "n/a",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -3181,7 +3300,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -3198,7 +3318,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3215,7 +3336,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -3232,7 +3354,8 @@
 },
 "rec": 137,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "9178bded925c1cc8565eeffc0ead0eebcd4344157a3097be080c89700a26ff7c"
 },
 {
 "t": "rec",
@@ -3249,7 +3372,8 @@
 },
 "rec": 139,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "421106a837b474a84c9db1de80e137051325ccefa83623af715dd92f8cd268a8"
 },
 {
 "t": "rec",
@@ -3266,7 +3390,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3283,7 +3408,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3300,7 +3426,8 @@
 },
 "rec": 109,
 "cls": "n/a",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -3317,7 +3444,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -3334,7 +3462,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -3351,7 +3480,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -3368,7 +3498,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -3385,7 +3516,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -3402,7 +3534,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -3419,7 +3552,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -3436,7 +3570,8 @@
 },
 "rec": 137,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "9178bded925c1cc8565eeffc0ead0eebcd4344157a3097be080c89700a26ff7c"
 },
 {
 "t": "rec",
@@ -3453,7 +3588,8 @@
 },
 "rec": 139,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "421106a837b474a84c9db1de80e137051325ccefa83623af715dd92f8cd268a8"
 },
 {
 "t": "rec",
@@ -3470,7 +3606,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3487,7 +3624,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3504,7 +3642,8 @@
 },
 "rec": 109,
 "cls": "n/a",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -3521,7 +3660,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -3538,7 +3678,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -3555,7 +3696,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -3572,7 +3714,8 @@
 },
 "rec": 137,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "9178bded925c1cc8565eeffc0ead0eebcd4344157a3097be080c89700a26ff7c"
 },
 {
 "t": "rec",
@@ -3589,7 +3732,8 @@
 },
 "rec": 139,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "421106a837b474a84c9db1de80e137051325ccefa83623af715dd92f8cd268a8"
 },
 {
 "t": "rec",
@@ -3606,7 +3750,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3623,7 +3768,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3640,7 +3786,8 @@
 },
 "rec": 109,
 "cls": "n/a",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -3657,7 +3804,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3674,7 +3822,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3691,7 +3840,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3708,7 +3858,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3725,7 +3876,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3742,7 +3894,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3759,7 +3912,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -3776,7 +3930,8 @@
 },
 "rec": 137,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "9178bded925c1cc8565eeffc0ead0eebcd4344157a3097be080c89700a26ff7c"
 },
 {
 "t": "rec",
@@ -3793,7 +3948,8 @@
 },
 "rec": 139,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "421106a837b474a84c9db1de80e137051325ccefa83623af715dd92f8cd268a8"
 },
 {
 "t": "rec",
@@ -3810,7 +3966,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3827,7 +3984,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3844,7 +4002,8 @@
 },
 "rec": 109,
 "cls": "n/a",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -3861,7 +4020,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -3878,7 +4038,8 @@
 },
 "rec": 142,
 "cls": "Strong",
-"comments": 143
+"comments": 143,
+"sha": "2331f2494793982f269586dc91d75c1f00d35055ef0cc9d2bb6e6f17fc7be06f"
 },
 {
 "t": "rec",
@@ -3895,7 +4056,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -3912,7 +4074,8 @@
 },
 "rec": 137,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "9178bded925c1cc8565eeffc0ead0eebcd4344157a3097be080c89700a26ff7c"
 },
 {
 "t": "rec",
@@ -3929,7 +4092,8 @@
 },
 "rec": 139,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "421106a837b474a84c9db1de80e137051325ccefa83623af715dd92f8cd268a8"
 },
 {
 "t": "rec",
@@ -3946,7 +4110,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3963,7 +4128,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -3980,7 +4146,8 @@
 },
 "rec": 109,
 "cls": "n/a",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -3997,7 +4164,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -4014,7 +4182,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -4031,7 +4200,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -4048,7 +4218,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -4065,7 +4236,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -4082,7 +4254,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -4099,7 +4272,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -4116,7 +4290,8 @@
 },
 "rec": 137,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "9178bded925c1cc8565eeffc0ead0eebcd4344157a3097be080c89700a26ff7c"
 },
 {
 "t": "rec",
@@ -4133,7 +4308,8 @@
 },
 "rec": 139,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "421106a837b474a84c9db1de80e137051325ccefa83623af715dd92f8cd268a8"
 },
 {
 "t": "rec",
@@ -4150,7 +4326,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -4167,7 +4344,8 @@
 },
 "rec": 140,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "d2a806ab369a613ace428e756c55756601e4cc5a55c72881768d71e240b56dd9"
 },
 {
 "t": "rec",
@@ -4184,7 +4362,8 @@
 },
 "rec": 109,
 "cls": "n/a",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -4201,7 +4380,8 @@
 },
 "rec": 135,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "797b57d1ca65a5607aa259e834c0ede5e4d9a86e5b8a6fcf71d871c9c7d18d56"
 },
 {
 "t": "rec",
@@ -4218,7 +4398,8 @@
 },
 "rec": 144,
 "cls": "Optional",
-"comments": 145
+"comments": 145,
+"sha": "e3ff653763826fc33dbfce3def2a931c3bd121f7a96131928b56c295470f2177"
 },
 {
 "t": "rec",
@@ -4235,7 +4416,8 @@
 },
 "rec": 147,
 "cls": "Strong",
-"comments": 148
+"comments": 148,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4252,7 +4434,8 @@
 },
 "rec": 150,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "87850f64542cd2c44bc05f552ebfddcac7c0c8c7e58b7e56300f2ee8c5e7bcfa"
 },
 {
 "t": "rec",
@@ -4269,7 +4452,8 @@
 },
 "rec": 150,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "87850f64542cd2c44bc05f552ebfddcac7c0c8c7e58b7e56300f2ee8c5e7bcfa"
 },
 {
 "t": "rec",
@@ -4286,7 +4470,8 @@
 },
 "rec": 147,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4303,7 +4488,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4320,7 +4506,8 @@
 },
 "rec": 147,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4337,7 +4524,8 @@
 },
 "rec": 147,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4354,7 +4542,8 @@
 },
 "rec": 147,
 "cls": "Strong",
-"comments": 148
+"comments": 148,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4371,7 +4560,8 @@
 },
 "rec": 150,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "87850f64542cd2c44bc05f552ebfddcac7c0c8c7e58b7e56300f2ee8c5e7bcfa"
 },
 {
 "t": "rec",
@@ -4388,7 +4578,8 @@
 },
 "rec": 150,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "87850f64542cd2c44bc05f552ebfddcac7c0c8c7e58b7e56300f2ee8c5e7bcfa"
 },
 {
 "t": "rec",
@@ -4405,7 +4596,8 @@
 },
 "rec": 147,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4422,7 +4614,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4439,7 +4632,8 @@
 },
 "rec": 147,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4456,7 +4650,8 @@
 },
 "rec": 147,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4473,7 +4668,8 @@
 },
 "rec": 156,
 "cls": "Strong",
-"comments": 148
+"comments": 148,
+"sha": "9a361f3015af86ada199e663a3408ea4114833dd1e0057d721f00de3dd05e2be"
 },
 {
 "t": "rec",
@@ -4490,7 +4686,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4507,7 +4704,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4524,7 +4722,8 @@
 },
 "rec": 147,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4541,7 +4740,8 @@
 },
 "rec": 157,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "df32a94af2fc2067b6279ce7eb73550cafa07a2c1e6ea9bf0abf645936ec2435"
 },
 {
 "t": "rec",
@@ -4558,7 +4758,8 @@
 },
 "rec": 158,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "9d8ae581548eae2a7c4b95131358a0cc153e3d0bcda18ad869ef61f2d51791df"
 },
 {
 "t": "rec",
@@ -4575,7 +4776,8 @@
 },
 "rec": 147,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4592,7 +4794,8 @@
 },
 "rec": 160,
 "cls": "Moderate",
-"comments": 148
+"comments": 148,
+"sha": "4c9a12309cd11465c0217e44f5c81c51c49f8e9e8e7006605cb9425f3413e0c4"
 },
 {
 "t": "rec",
@@ -4609,7 +4812,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4626,7 +4830,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4643,7 +4848,8 @@
 },
 "rec": 157,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "df32a94af2fc2067b6279ce7eb73550cafa07a2c1e6ea9bf0abf645936ec2435"
 },
 {
 "t": "rec",
@@ -4660,7 +4866,8 @@
 },
 "rec": 160,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "4c9a12309cd11465c0217e44f5c81c51c49f8e9e8e7006605cb9425f3413e0c4"
 },
 {
 "t": "rec",
@@ -4677,7 +4884,8 @@
 },
 "rec": 161,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "49dfb1d385da53019dce55608208591993a3911f7bbe97c749efab7c52d93d85"
 },
 {
 "t": "rec",
@@ -4694,7 +4902,8 @@
 },
 "rec": 157,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "df32a94af2fc2067b6279ce7eb73550cafa07a2c1e6ea9bf0abf645936ec2435"
 },
 {
 "t": "rec",
@@ -4711,7 +4920,8 @@
 },
 "rec": 162,
 "cls": "Moderate",
-"comments": 148
+"comments": 148,
+"sha": "9df87f707a4634a834370e306c8c159463843c218c1e6ad6a047a7e0ec5d3c3f"
 },
 {
 "t": "rec",
@@ -4728,7 +4938,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4745,7 +4956,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -4762,7 +4974,8 @@
 },
 "rec": 157,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "df32a94af2fc2067b6279ce7eb73550cafa07a2c1e6ea9bf0abf645936ec2435"
 },
 {
 "t": "rec",
@@ -4779,7 +4992,8 @@
 },
 "rec": 160,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "4c9a12309cd11465c0217e44f5c81c51c49f8e9e8e7006605cb9425f3413e0c4"
 },
 {
 "t": "rec",
@@ -4796,7 +5010,8 @@
 },
 "rec": 161,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "49dfb1d385da53019dce55608208591993a3911f7bbe97c749efab7c52d93d85"
 },
 {
 "t": "rec",
@@ -4813,7 +5028,8 @@
 },
 "rec": 157,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "df32a94af2fc2067b6279ce7eb73550cafa07a2c1e6ea9bf0abf645936ec2435"
 },
 {
 "t": "rec",
@@ -4830,7 +5046,8 @@
 },
 "rec": 164,
 "cls": "Moderate",
-"comments": 148
+"comments": 148,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -4847,7 +5064,8 @@
 },
 "rec": 164,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -4864,7 +5082,8 @@
 },
 "rec": 164,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -4881,7 +5100,8 @@
 },
 "rec": 164,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -4898,7 +5118,8 @@
 },
 "rec": 164,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -4915,7 +5136,8 @@
 },
 "rec": 165,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "526ddb48604ab9e8c816be3bf4d592b0b31110af42df785faba93165dfeb324d"
 },
 {
 "t": "rec",
@@ -4932,7 +5154,8 @@
 },
 "rec": 164,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -4949,7 +5172,8 @@
 },
 "rec": 164,
 "cls": "Moderate",
-"comments": 148
+"comments": 148,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -4966,7 +5190,8 @@
 },
 "rec": 164,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -4983,7 +5208,8 @@
 },
 "rec": 164,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -5000,7 +5226,8 @@
 },
 "rec": 164,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -5017,7 +5244,8 @@
 },
 "rec": 164,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -5034,7 +5262,8 @@
 },
 "rec": 165,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "526ddb48604ab9e8c816be3bf4d592b0b31110af42df785faba93165dfeb324d"
 },
 {
 "t": "rec",
@@ -5051,7 +5280,8 @@
 },
 "rec": 164,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "79aafd1b99e9726b94b736966d1e227a523be7a5ee858af597dabe765e5ea0c7"
 },
 {
 "t": "rec",
@@ -5068,7 +5298,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 148
+"comments": 148,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -5085,7 +5316,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -5102,7 +5334,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -5119,7 +5352,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -5136,7 +5370,8 @@
 },
 "rec": 157,
 "cls": "Moderate",
-"comments": 80
+"comments": 80,
+"sha": "df32a94af2fc2067b6279ce7eb73550cafa07a2c1e6ea9bf0abf645936ec2435"
 },
 {
 "t": "rec",
@@ -5153,7 +5388,8 @@
 },
 "rec": 166,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "469fc6baec60784b082a7f0f3558048213ce28fb162d1ff2d35c092d03782959"
 },
 {
 "t": "rec",
@@ -5170,7 +5406,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -5187,7 +5424,8 @@
 },
 "rec": 147,
 "cls": "Moderate",
-"comments": 167
+"comments": 167,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -5204,7 +5442,8 @@
 },
 "rec": 147,
 "cls": "Strong",
-"comments": 167
+"comments": 167,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -5221,7 +5460,8 @@
 },
 "rec": 147,
 "cls": "Strong",
-"comments": 167
+"comments": 167,
+"sha": "b5b79955d1b7d2568063bfaacf485267598dc0be96bfa104451b3c8ed23104ad"
 },
 {
 "t": "rec",
@@ -5238,7 +5478,8 @@
 },
 "rec": 168,
 "cls": "Optional",
-"comments": 167
+"comments": 167,
+"sha": "de30d568082a3337c2904c06189754eb4a7ebffdd739f5f90f03d9f4f34b336a"
 },
 {
 "t": "rec",
@@ -5255,7 +5496,8 @@
 },
 "rec": 158,
 "cls": "Optional",
-"comments": 167
+"comments": 167,
+"sha": "9d8ae581548eae2a7c4b95131358a0cc153e3d0bcda18ad869ef61f2d51791df"
 },
 {
 "t": "rec",
@@ -5272,7 +5514,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -5287,7 +5530,8 @@
 },
 "rec": 170,
 "cls": "Strong",
-"comments": 171
+"comments": 171,
+"sha": "414f1ef55d8bc67d1b3802449216b6d8245a5e71412a05c699c795d8ebd593ce"
 },
 {
 "t": "rec",
@@ -5302,7 +5546,8 @@
 },
 "rec": 170,
 "cls": "Strong",
-"comments": 172
+"comments": 172,
+"sha": "414f1ef55d8bc67d1b3802449216b6d8245a5e71412a05c699c795d8ebd593ce"
 },
 {
 "t": "rec",
@@ -5317,7 +5562,8 @@
 },
 "rec": 170,
 "cls": "Strong",
-"comments": 172
+"comments": 172,
+"sha": "414f1ef55d8bc67d1b3802449216b6d8245a5e71412a05c699c795d8ebd593ce"
 },
 {
 "t": "rec",
@@ -5332,7 +5578,8 @@
 },
 "rec": 174,
 "cls": "Strong",
-"comments": 175
+"comments": 175,
+"sha": "c02dabdb2b89123efdb96211c058b4d26c76471c3cb1e7a476a64bed679c6998"
 },
 {
 "t": "rec",
@@ -5347,7 +5594,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -5364,7 +5612,8 @@
 },
 "rec": 180,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "1937fb7501425dcfa9a5d48a928b859b993ea50886c5a0eff31b1fb256ce0198"
 },
 {
 "t": "rec",
@@ -5381,7 +5630,8 @@
 },
 "rec": 184,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "21285db32d58b2d36eccaceed21964206fb8e4f23aa63bd84d22dbebede80225"
 },
 {
 "t": "rec",
@@ -5398,7 +5648,8 @@
 },
 "rec": 184,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "21285db32d58b2d36eccaceed21964206fb8e4f23aa63bd84d22dbebede80225"
 },
 {
 "t": "rec",
@@ -5415,7 +5666,8 @@
 },
 "rec": 184,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "21285db32d58b2d36eccaceed21964206fb8e4f23aa63bd84d22dbebede80225"
 },
 {
 "t": "rec",
@@ -5432,7 +5684,8 @@
 },
 "rec": 184,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "21285db32d58b2d36eccaceed21964206fb8e4f23aa63bd84d22dbebede80225"
 },
 {
 "t": "rec",
@@ -5449,7 +5702,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5466,7 +5720,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5483,7 +5738,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5500,7 +5756,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5517,7 +5774,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5534,7 +5792,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5551,7 +5810,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5568,7 +5828,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5585,7 +5846,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5602,7 +5864,8 @@
 },
 "rec": 190,
 "cls": "Moderate",
-"comments": 181
+"comments": 181,
+"sha": "e6573b9b3a3dd7eca1d28bf7114977398fafc1cfc32117c9e28c49c92caee973"
 },
 {
 "t": "rec",
@@ -5619,7 +5882,8 @@
 },
 "rec": 190,
 "cls": "Moderate",
-"comments": 181
+"comments": 181,
+"sha": "e6573b9b3a3dd7eca1d28bf7114977398fafc1cfc32117c9e28c49c92caee973"
 },
 {
 "t": "rec",
@@ -5636,7 +5900,8 @@
 },
 "rec": 190,
 "cls": "Moderate",
-"comments": 181
+"comments": 181,
+"sha": "e6573b9b3a3dd7eca1d28bf7114977398fafc1cfc32117c9e28c49c92caee973"
 },
 {
 "t": "rec",
@@ -5653,7 +5918,8 @@
 },
 "rec": 190,
 "cls": "Moderate",
-"comments": 181
+"comments": 181,
+"sha": "e6573b9b3a3dd7eca1d28bf7114977398fafc1cfc32117c9e28c49c92caee973"
 },
 {
 "t": "rec",
@@ -5670,7 +5936,8 @@
 },
 "rec": 191,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "d6f70e232ea761fd9909d875b03add036e6d36cf5a2c4abb81c34975a2703a2e"
 },
 {
 "t": "rec",
@@ -5687,7 +5954,8 @@
 },
 "rec": 192,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "5acdd663f0a26ca7dd3296a68b6448f7236f43ff4a76fbc835149da3ee23c8c2"
 },
 {
 "t": "rec",
@@ -5704,7 +5972,8 @@
 },
 "rec": 192,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "5acdd663f0a26ca7dd3296a68b6448f7236f43ff4a76fbc835149da3ee23c8c2"
 },
 {
 "t": "rec",
@@ -5721,7 +5990,8 @@
 },
 "rec": 193,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "1fd3488d68dced2d902b83ccd0329218f8e99f763cc4533482d6acf8bd9fc8c9"
 },
 {
 "t": "rec",
@@ -5738,7 +6008,8 @@
 },
 "rec": 194,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "ffaf9b24ea72b9c893cfb5d9d39cd0979711fd5f32b25a66dde9930a89bc9eac"
 },
 {
 "t": "rec",
@@ -5755,7 +6026,8 @@
 },
 "rec": 194,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "ffaf9b24ea72b9c893cfb5d9d39cd0979711fd5f32b25a66dde9930a89bc9eac"
 },
 {
 "t": "rec",
@@ -5772,7 +6044,8 @@
 },
 "rec": 195,
 "cls": "Strong",
-"comments": 196
+"comments": 196,
+"sha": "442dc425adeaddce960970fe3ff96ec1496b262b3afc3b0f0cd7e5db4bb426f3"
 },
 {
 "t": "rec",
@@ -5789,7 +6062,8 @@
 },
 "rec": 193,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "1fd3488d68dced2d902b83ccd0329218f8e99f763cc4533482d6acf8bd9fc8c9"
 },
 {
 "t": "rec",
@@ -5806,7 +6080,8 @@
 },
 "rec": 194,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "ffaf9b24ea72b9c893cfb5d9d39cd0979711fd5f32b25a66dde9930a89bc9eac"
 },
 {
 "t": "rec",
@@ -5823,7 +6098,8 @@
 },
 "rec": 194,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "ffaf9b24ea72b9c893cfb5d9d39cd0979711fd5f32b25a66dde9930a89bc9eac"
 },
 {
 "t": "rec",
@@ -5840,7 +6116,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 196
+"comments": 196,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5857,7 +6134,8 @@
 },
 "rec": 195,
 "cls": "Strong",
-"comments": 196
+"comments": 196,
+"sha": "442dc425adeaddce960970fe3ff96ec1496b262b3afc3b0f0cd7e5db4bb426f3"
 },
 {
 "t": "rec",
@@ -5874,7 +6152,8 @@
 },
 "rec": 191,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "d6f70e232ea761fd9909d875b03add036e6d36cf5a2c4abb81c34975a2703a2e"
 },
 {
 "t": "rec",
@@ -5891,7 +6170,8 @@
 },
 "rec": 192,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "5acdd663f0a26ca7dd3296a68b6448f7236f43ff4a76fbc835149da3ee23c8c2"
 },
 {
 "t": "rec",
@@ -5908,7 +6188,8 @@
 },
 "rec": 192,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "5acdd663f0a26ca7dd3296a68b6448f7236f43ff4a76fbc835149da3ee23c8c2"
 },
 {
 "t": "rec",
@@ -5925,7 +6206,8 @@
 },
 "rec": 187,
 "cls": "Strong",
-"comments": 196
+"comments": 196,
+"sha": "08a346569376b4208da9a21c6af6dbc94e18792d460f4a914c998a0743c281dc"
 },
 {
 "t": "rec",
@@ -5942,7 +6224,8 @@
 },
 "rec": 195,
 "cls": "Strong",
-"comments": 196
+"comments": 196,
+"sha": "442dc425adeaddce960970fe3ff96ec1496b262b3afc3b0f0cd7e5db4bb426f3"
 },
 {
 "t": "rec",
@@ -5957,7 +6240,8 @@
 },
 "rec": 198,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "c83845ed1d41f16821dbfbb793027aee405d509b97a99b2067af63249c6b39b1"
 },
 {
 "t": "rec",
@@ -5972,7 +6256,8 @@
 },
 "rec": 200,
 "cls": "Moderate",
-"comments": 201
+"comments": 201,
+"sha": "e71f7d341cf7307dc0a6d59865fc898496c4bea18279ca65fd6dda4771665213"
 },
 {
 "t": "rec",
@@ -5987,7 +6272,8 @@
 },
 "rec": 202,
 "cls": "Strong",
-"comments": 201
+"comments": 201,
+"sha": "ebe73dd40b093ac711530ae5b8900d42b20fae6305b60f6d879039a4f06762d6"
 },
 {
 "t": "rec",
@@ -6002,7 +6288,8 @@
 },
 "rec": 204,
 "cls": "Strong",
-"comments": 205
+"comments": 205,
+"sha": "b39ed7162202819b872a69b9fd1f1152ee2bc90f5f2987f2da4ea5ef25e14873"
 },
 {
 "t": "rec",
@@ -6017,7 +6304,8 @@
 },
 "rec": 206,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "f47358c0d3882e9b9b2bf7e5bf70170968fe563aa50835e9c7f95bb613ac0e66"
 },
 {
 "t": "rec",
@@ -6032,7 +6320,8 @@
 },
 "rec": 198,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "c83845ed1d41f16821dbfbb793027aee405d509b97a99b2067af63249c6b39b1"
 },
 {
 "t": "rec",
@@ -6047,7 +6336,8 @@
 },
 "rec": 200,
 "cls": "Moderate",
-"comments": 201
+"comments": 201,
+"sha": "e71f7d341cf7307dc0a6d59865fc898496c4bea18279ca65fd6dda4771665213"
 },
 {
 "t": "rec",
@@ -6062,7 +6352,8 @@
 },
 "rec": 202,
 "cls": "Strong",
-"comments": 201
+"comments": 201,
+"sha": "ebe73dd40b093ac711530ae5b8900d42b20fae6305b60f6d879039a4f06762d6"
 },
 {
 "t": "rec",
@@ -6077,7 +6368,8 @@
 },
 "rec": 204,
 "cls": "Strong",
-"comments": 205
+"comments": 205,
+"sha": "b39ed7162202819b872a69b9fd1f1152ee2bc90f5f2987f2da4ea5ef25e14873"
 },
 {
 "t": "rec",
@@ -6092,7 +6384,8 @@
 },
 "rec": 206,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "f47358c0d3882e9b9b2bf7e5bf70170968fe563aa50835e9c7f95bb613ac0e66"
 },
 {
 "t": "rec",
@@ -6109,7 +6402,8 @@
 },
 "rec": 207,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "14c58c45013b3822e4ab16c455f39fd152df35de20945f0127c342689f660a57"
 },
 {
 "t": "rec",
@@ -6126,7 +6420,8 @@
 },
 "rec": 209,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "0713def0d76dffd5d0c11c84b59a05848d9f151285a2d9667d8897be1c05a199"
 },
 {
 "t": "rec",
@@ -6143,7 +6438,8 @@
 },
 "rec": 209,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "0713def0d76dffd5d0c11c84b59a05848d9f151285a2d9667d8897be1c05a199"
 },
 {
 "t": "rec",
@@ -6160,7 +6456,8 @@
 },
 "rec": 209,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "0713def0d76dffd5d0c11c84b59a05848d9f151285a2d9667d8897be1c05a199"
 },
 {
 "t": "rec",
@@ -6177,7 +6474,8 @@
 },
 "rec": 209,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "0713def0d76dffd5d0c11c84b59a05848d9f151285a2d9667d8897be1c05a199"
 },
 {
 "t": "rec",
@@ -6194,7 +6492,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6211,7 +6510,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6228,7 +6528,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6245,7 +6546,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6262,7 +6564,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6279,7 +6582,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6296,7 +6600,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6313,7 +6618,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6330,7 +6636,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6347,7 +6654,8 @@
 },
 "rec": 213,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "41b0d7d014f5f646f30de769a1f6eed60ee5162e12a41029f7a065f5aed1e064"
 },
 {
 "t": "rec",
@@ -6364,7 +6672,8 @@
 },
 "rec": 213,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "41b0d7d014f5f646f30de769a1f6eed60ee5162e12a41029f7a065f5aed1e064"
 },
 {
 "t": "rec",
@@ -6381,7 +6690,8 @@
 },
 "rec": 213,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "41b0d7d014f5f646f30de769a1f6eed60ee5162e12a41029f7a065f5aed1e064"
 },
 {
 "t": "rec",
@@ -6398,7 +6708,8 @@
 },
 "rec": 213,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "41b0d7d014f5f646f30de769a1f6eed60ee5162e12a41029f7a065f5aed1e064"
 },
 {
 "t": "rec",
@@ -6415,7 +6726,8 @@
 },
 "rec": 214,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "18993825f92816a519fe93dfca0aa10df2c3da4424e89647e1274e8972d8ec87"
 },
 {
 "t": "rec",
@@ -6432,7 +6744,8 @@
 },
 "rec": 215,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "7833e6e07bcfebd17acefe85806d3257596b0fe27845c5dccb14b562c413aa17"
 },
 {
 "t": "rec",
@@ -6449,7 +6762,8 @@
 },
 "rec": 215,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "7833e6e07bcfebd17acefe85806d3257596b0fe27845c5dccb14b562c413aa17"
 },
 {
 "t": "rec",
@@ -6466,7 +6780,8 @@
 },
 "rec": 216,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "8dab53de7cab798c73d806918946df91175b72dce87340bda5ea9af995972633"
 },
 {
 "t": "rec",
@@ -6483,7 +6798,8 @@
 },
 "rec": 217,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "ca76806db8ffd00fca5b46a98a0b41ef1b6aca7725a7940fbbe7d585f2b721f4"
 },
 {
 "t": "rec",
@@ -6500,7 +6816,8 @@
 },
 "rec": 217,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "ca76806db8ffd00fca5b46a98a0b41ef1b6aca7725a7940fbbe7d585f2b721f4"
 },
 {
 "t": "rec",
@@ -6517,7 +6834,8 @@
 },
 "rec": 195,
 "cls": "Strong",
-"comments": 196
+"comments": 196,
+"sha": "442dc425adeaddce960970fe3ff96ec1496b262b3afc3b0f0cd7e5db4bb426f3"
 },
 {
 "t": "rec",
@@ -6534,7 +6852,8 @@
 },
 "rec": 216,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "8dab53de7cab798c73d806918946df91175b72dce87340bda5ea9af995972633"
 },
 {
 "t": "rec",
@@ -6551,7 +6870,8 @@
 },
 "rec": 217,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "ca76806db8ffd00fca5b46a98a0b41ef1b6aca7725a7940fbbe7d585f2b721f4"
 },
 {
 "t": "rec",
@@ -6568,7 +6888,8 @@
 },
 "rec": 217,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "ca76806db8ffd00fca5b46a98a0b41ef1b6aca7725a7940fbbe7d585f2b721f4"
 },
 {
 "t": "rec",
@@ -6585,7 +6906,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6602,7 +6924,8 @@
 },
 "rec": 195,
 "cls": "Strong",
-"comments": 196
+"comments": 196,
+"sha": "442dc425adeaddce960970fe3ff96ec1496b262b3afc3b0f0cd7e5db4bb426f3"
 },
 {
 "t": "rec",
@@ -6619,7 +6942,8 @@
 },
 "rec": 214,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "18993825f92816a519fe93dfca0aa10df2c3da4424e89647e1274e8972d8ec87"
 },
 {
 "t": "rec",
@@ -6636,7 +6960,8 @@
 },
 "rec": 215,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "7833e6e07bcfebd17acefe85806d3257596b0fe27845c5dccb14b562c413aa17"
 },
 {
 "t": "rec",
@@ -6653,7 +6978,8 @@
 },
 "rec": 215,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "7833e6e07bcfebd17acefe85806d3257596b0fe27845c5dccb14b562c413aa17"
 },
 {
 "t": "rec",
@@ -6670,7 +6996,8 @@
 },
 "rec": 211,
 "cls": "Strong",
-"comments": 181
+"comments": 181,
+"sha": "71876f2f12cb96ab0e07c4b175529c568edcd0416a1892b23cb28937e07f6d12"
 },
 {
 "t": "rec",
@@ -6687,7 +7014,8 @@
 },
 "rec": 195,
 "cls": "Strong",
-"comments": 196
+"comments": 196,
+"sha": "442dc425adeaddce960970fe3ff96ec1496b262b3afc3b0f0cd7e5db4bb426f3"
 },
 {
 "t": "rec",
@@ -6702,7 +7030,8 @@
 },
 "rec": 109,
 "cls": "No Recommendation",
-"comments": 80
+"comments": 80,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac"
 },
 {
 "t": "rec",
@@ -6717,7 +7046,8 @@
 },
 "rec": 219,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "eb0e2ef83954b799c9b29f4757e22a215091b2cf02c2dee00f7de83b48746e2b"
 },
 {
 "t": "rec",
@@ -6732,7 +7062,8 @@
 },
 "rec": 219,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "eb0e2ef83954b799c9b29f4757e22a215091b2cf02c2dee00f7de83b48746e2b"
 },
 {
 "t": "rec",
@@ -6747,7 +7078,8 @@
 },
 "rec": 219,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "eb0e2ef83954b799c9b29f4757e22a215091b2cf02c2dee00f7de83b48746e2b"
 },
 {
 "t": "rec",
@@ -6762,7 +7094,8 @@
 },
 "rec": 219,
 "cls": "Optional",
-"comments": 80
+"comments": 80,
+"sha": "eb0e2ef83954b799c9b29f4757e22a215091b2cf02c2dee00f7de83b48746e2b"
 },
 {
 "t": "rec",
@@ -6777,7 +7110,8 @@
 },
 "rec": 221,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "721d3c8397a21292cb51c6a0240e5a611bbbd858c134add6d73f954db0a89e49"
 },
 {
 "t": "rec",
@@ -6792,7 +7126,8 @@
 },
 "rec": 221,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "721d3c8397a21292cb51c6a0240e5a611bbbd858c134add6d73f954db0a89e49"
 },
 {
 "t": "rec",
@@ -6807,7 +7142,8 @@
 },
 "rec": 221,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "721d3c8397a21292cb51c6a0240e5a611bbbd858c134add6d73f954db0a89e49"
 },
 {
 "t": "rec",
@@ -6822,7 +7158,8 @@
 },
 "rec": 221,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "721d3c8397a21292cb51c6a0240e5a611bbbd858c134add6d73f954db0a89e49"
 },
 {
 "t": "rec",
@@ -6837,7 +7174,8 @@
 },
 "rec": 221,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "721d3c8397a21292cb51c6a0240e5a611bbbd858c134add6d73f954db0a89e49"
 },
 {
 "t": "rec",
@@ -6852,7 +7190,8 @@
 },
 "rec": 223,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "e1c8dbdd2803ab3c7497d78496c8ef6951d25846cbaa245330d7b8ea3ca2d029"
 },
 {
 "t": "rec",
@@ -6867,7 +7206,8 @@
 },
 "rec": 225,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
 },
 {
 "t": "rec",
@@ -6882,7 +7222,8 @@
 },
 "rec": 225,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
 },
 {
 "t": "rec",
@@ -6897,7 +7238,8 @@
 },
 "rec": 225,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
 },
 {
 "t": "rec",
@@ -6912,7 +7254,8 @@
 },
 "rec": 225,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
 },
 {
 "t": "rec",
@@ -6927,7 +7270,8 @@
 },
 "rec": 225,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
 },
 {
 "t": "rec",
@@ -6942,7 +7286,8 @@
 },
 "rec": 225,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
 },
 {
 "t": "rec",
@@ -6957,7 +7302,8 @@
 },
 "rec": 225,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
 },
 {
 "t": "rec",
@@ -6972,7 +7318,8 @@
 },
 "rec": 225,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
 },
 {
 "t": "rec",
@@ -6987,7 +7334,8 @@
 },
 "rec": 225,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
 },
 {
 "t": "rec",
@@ -7002,7 +7350,8 @@
 },
 "rec": 225,
 "cls": "Strong",
-"comments": 80
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
 },
 {
 "t": "rec",
@@ -7017,6 +7366,295 @@
 },
 "rec": 225,
 "cls": "Strong",
+"comments": 80,
+"sha": "6647c7f7b8666dd34573ba0b1f5ed3631ddad2706ce003d27221623756c9ccfa"
+},
+{
+"t": "rec",
+"guideline": 110058,
+"drug": "celecoxib",
+"pop": "general",
+"key": {
+"CYP2C9": "2.0"
+},
+"impl": {
+"CYP2C9": 155
+},
+"rec": 226,
+"sha": "8cb99bb458a814dbeb92a2150d99c3738ed5ed4c2c3df4702349f31d7b319568",
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 110058,
+"drug": "celecoxib",
+"pop": "general",
+"key": {
+"CYP2C9": "1.5"
+},
+"impl": {
+"CYP2C9": 227
+},
+"rec": 226,
+"sha": "8cb99bb458a814dbeb92a2150d99c3738ed5ed4c2c3df4702349f31d7b319568",
+"cls": "Moderate",
+"comments": 228
+},
+{
+"t": "rec",
+"guideline": 110058,
+"drug": "celecoxib",
+"pop": "general",
+"key": {
+"CYP2C9": "1.0"
+},
+"impl": {
+"CYP2C9": 229
+},
+"rec": 230,
+"sha": "cfcb8e0852b79485dfcd47e6dc1007db71910695d28a921cde5841945148c007",
+"cls": "Moderate",
+"comments": 228
+},
+{
+"t": "rec",
+"guideline": 110058,
+"drug": "celecoxib",
+"pop": "general",
+"key": {
+"CYP2C9": "0.5"
+},
+"impl": {
+"CYP2C9": 231
+},
+"rec": 232,
+"sha": "929f57cce9276a42610891ca0c310eaf9da34133cb48352dab5842294583e3a3",
+"cls": "Moderate",
+"comments": 233
+},
+{
+"t": "rec",
+"guideline": 110058,
+"drug": "celecoxib",
+"pop": "general",
+"key": {
+"CYP2C9": "0.0"
+},
+"impl": {
+"CYP2C9": 231
+},
+"rec": 232,
+"sha": "929f57cce9276a42610891ca0c310eaf9da34133cb48352dab5842294583e3a3",
+"cls": "Moderate",
+"comments": 233
+},
+{
+"t": "rec",
+"guideline": 110058,
+"drug": "celecoxib",
+"pop": "general",
+"key": {
+"CYP2C9": "n/a"
+},
+"impl": {
+"CYP2C9": 80
+},
+"rec": 109,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac",
+"cls": "No Recommendation",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 104245,
+"drug": "efavirenz",
+"pop": "child >40kg_adult",
+"key": {
+"CYP2B6": "Ultrarapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 234
+},
+"rec": 235,
+"sha": "820065b5791e58811ee06cc45531b2ccdeb4986d324160829d1c354b05edfea5",
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 104245,
+"drug": "efavirenz",
+"pop": "child >40kg_adult",
+"key": {
+"CYP2B6": "Rapid Metabolizer"
+},
+"impl": {
+"CYP2B6": 234
+},
+"rec": 235,
+"sha": "820065b5791e58811ee06cc45531b2ccdeb4986d324160829d1c354b05edfea5",
+"cls": "Strong",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 104245,
+"drug": "efavirenz",
+"pop": "child >40kg_adult",
+"key": {
+"CYP2B6": "Normal Metabolizer"
+},
+"impl": {
+"CYP2B6": 236
+},
+"rec": 235,
+"sha": "820065b5791e58811ee06cc45531b2ccdeb4986d324160829d1c354b05edfea5",
+"cls": "Strong",
+"comments": 237
+},
+{
+"t": "rec",
+"guideline": 104245,
+"drug": "efavirenz",
+"pop": "child >40kg_adult",
+"key": {
+"CYP2B6": "Intermediate Metabolizer"
+},
+"impl": {
+"CYP2B6": 238
+},
+"rec": 239,
+"sha": "099fd0a06771c1c94d0a3eefcc4ce475dce2fe4c8d7ab4dae3f21d24045d884f",
+"cls": "Moderate",
+"comments": 240
+},
+{
+"t": "rec",
+"guideline": 104245,
+"drug": "efavirenz",
+"pop": "child >40kg_adult",
+"key": {
+"CYP2B6": "Poor Metabolizer"
+},
+"impl": {
+"CYP2B6": 241
+},
+"rec": 242,
+"sha": "a405825b93c0e44a01b9404cdf9b12ba6f771438a08e650cb439d2f372c719ef",
+"cls": "Moderate",
+"comments": 240
+},
+{
+"t": "rec",
+"guideline": 104245,
+"drug": "efavirenz",
+"pop": "child >40kg_adult",
+"key": {
+"CYP2B6": "Indeterminate"
+},
+"impl": {
+"CYP2B6": 80
+},
+"rec": 109,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac",
+"cls": "No Recommendation",
+"comments": 80
+},
+{
+"t": "rec",
+"guideline": 100426,
+"drug": "simvastatin",
+"pop": "general",
+"key": {
+"SLCO1B1": "Increased Function"
+},
+"impl": {
+"SLCO1B1": 243
+},
+"rec": 244,
+"sha": "d74382157b7c51250084abdf86f45c55f15d65de43c524dfad7a951af7fc7d84",
+"cls": "Strong",
+"comments": 245
+},
+{
+"t": "rec",
+"guideline": 100426,
+"drug": "simvastatin",
+"pop": "general",
+"key": {
+"SLCO1B1": "Normal Function"
+},
+"impl": {
+"SLCO1B1": 243
+},
+"rec": 244,
+"sha": "d74382157b7c51250084abdf86f45c55f15d65de43c524dfad7a951af7fc7d84",
+"cls": "Strong",
+"comments": 245
+},
+{
+"t": "rec",
+"guideline": 100426,
+"drug": "simvastatin",
+"pop": "general",
+"key": {
+"SLCO1B1": "Possible Decreased Function"
+},
+"impl": {
+"SLCO1B1": 246
+},
+"rec": 247,
+"sha": "30bb9d64e032d9022865450fa31ce37bac5924b04d2fb7795b6ab8831bf88a4c",
+"cls": "Strong",
+"comments": 248
+},
+{
+"t": "rec",
+"guideline": 100426,
+"drug": "simvastatin",
+"pop": "general",
+"key": {
+"SLCO1B1": "Decreased Function"
+},
+"impl": {
+"SLCO1B1": 246
+},
+"rec": 247,
+"sha": "30bb9d64e032d9022865450fa31ce37bac5924b04d2fb7795b6ab8831bf88a4c",
+"cls": "Strong",
+"comments": 248
+},
+{
+"t": "rec",
+"guideline": 100426,
+"drug": "simvastatin",
+"pop": "general",
+"key": {
+"SLCO1B1": "Poor Function"
+},
+"impl": {
+"SLCO1B1": 249
+},
+"rec": 250,
+"sha": "b288f8cf44721ab6b4c38206a34505f7d2e16468bdcbd2a470e5abca6de62080",
+"cls": "Strong",
+"comments": 248
+},
+{
+"t": "rec",
+"guideline": 100426,
+"drug": "simvastatin",
+"pop": "general",
+"key": {
+"SLCO1B1": "Indeterminate"
+},
+"impl": {
+"SLCO1B1": 80
+},
+"rec": 109,
+"sha": "1687fa99d44a04df3e28401b2226b6beab4505d32e004b09d9dead36fa5af2ac",
+"cls": "No Recommendation",
 "comments": 80
 }
 ],
@@ -7308,6 +7946,51 @@
 "level": "C",
 "used": false,
 "provisional": false
+},
+{
+"t": "pair",
+"drug": "celecoxib",
+"gene": "CYP2C9",
+"guideline": "CYP2C9 and NSAIDs",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "efavirenz",
+"gene": "CYP2B6",
+"guideline": "CYP2B6 and efavirenz",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "simvastatin",
+"gene": "SLCO1B1",
+"guideline": "SLCO1B1, ABCG2, CYP2C9, and Statins",
+"level": "A",
+"used": true,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "simvastatin",
+"gene": "CYP3A4",
+"guideline": "SLCO1B1, ABCG2, CYP2C9, and Statins",
+"level": "C",
+"used": false,
+"provisional": false
+},
+{
+"t": "pair",
+"drug": "simvastatin",
+"gene": "CYP3A5",
+"guideline": "SLCO1B1, ABCG2, CYP2C9, and Statins",
+"level": "C",
+"used": false,
+"provisional": false
 }
 ],
 "guideline": [
@@ -7464,6 +8147,47 @@
 "first": 2011,
 "latest": 2026,
 "pmid": "41618934"
+},
+{
+"t": "guideline",
+"id": 110058,
+"name": "CYP2C9 and NSAIDs",
+"url": "https://www.clinpgx.org/guideline/PA166251464",
+"genes": [
+"CYP2C9"
+],
+"notes": null,
+"first": 2020,
+"latest": 2020,
+"pmid": "32189324"
+},
+{
+"t": "guideline",
+"id": 104245,
+"name": "CYP2B6 and efavirenz",
+"url": "https://www.clinpgx.org/guideline/PA166251463",
+"genes": [
+"CYP2B6"
+],
+"notes": null,
+"first": 2019,
+"latest": 2019,
+"pmid": "31006110"
+},
+{
+"t": "guideline",
+"id": 100426,
+"name": "SLCO1B1, ABCG2, CYP2C9, and Statins",
+"url": "https://www.clinpgx.org/guideline/PA166264281",
+"genes": [
+"SLCO1B1",
+"ABCG2",
+"CYP2C9"
+],
+"notes": null,
+"first": 2012,
+"latest": 2022,
+"pmid": "35152405"
 }
 ]
 }

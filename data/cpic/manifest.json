@@ -35,9 +35,9 @@
     },
     {
       "name": "rec.json",
-      "sha256": "8a2ea464c19264be93a4c40d6b5f8d4f0f96a21b4068bde55251f854d3fabfa7",
+      "sha256": "2bb7ee44a567ec1b5fb130efb7f4af781eeea57fefa3ad1d5febcf0afa902ee6",
       "records": 2115,
-      "bytes": 402819
+      "bytes": 557214
     },
     {
       "name": "rule.json",
@@ -57,7 +57,7 @@
   "expiresOn": "2026-10-29",
   "nextExpected": "2026-10-22",
   "sourceSha256": "2366248136892413677cf02640e7e5c0ad451aea709c512fd52b581ca3bc9237",
-  "recordsSha256": "b176e1cbdc8daa40ae1f0e2089080c41f4b9a39c633cbb9479c0eebbe9d9e67f",
+  "recordsSha256": "93b2235826db9aee443638c40ba06c0b7b9ba1dd4594a683c3eb8dd3121a26e4",
   "recordBounds": {
     "min": 3000,
     "max": 9000

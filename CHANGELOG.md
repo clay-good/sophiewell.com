@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- CPIC recommendation and FDA statement: when CPIC's own sentence states a dose change, it is applied
+  to a dose you enter. Each factor is tied to the SHA-256 of the sentence it was read from, so a
+  reworded recommendation drops the arithmetic rather than changing it.
 - Pharmacogenomics from CPIC's tables: Diplotype to Phenotype for sixteen genes, the CYP2D6
   Activity Score with copy numbers and tandems, the CYP2D6 score adjusted for an inhibitor by the CPIC
   opioid guideline's rule, CPIC's recommendation beside the FDA table's row for a drug and a result, and

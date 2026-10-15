@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1b2a7fe0db94e9cc`
-Generated: 2026-10-15T14:03:50.858Z
+Build ID: `7bbee45076848625`
+Generated: 2026-10-15T14:49:45.646Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -323,7 +323,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cosyntropin-v299.js` | 3759 | `5969bbb878a6c6087a4309355bd1639a026838ad1d24e3a04ee3e14eeda92119` |
 | `lib/cotton-myer-v419.js` | 2898 | `1ee091c8f1a08282081b62560a0625e612bf73b654c3953f872dcf7c1dc633e9` |
 | `lib/cpak-v1447.js` | 3596 | `818a053d9d74c05980b10f077c93825f412f56979aac3821aa5d7182356f3ac6` |
-| `lib/cpic-gene-drug-v1640.js` | 10221 | `30fbf4f4feb3dfa7ca476b2273e805646805c15960df5e730fadb40956a6a266` |
+| `lib/cpic-dose-factors-v1640.js` | 21944 | `c7a5efdb0bc16e8375b69360577ef4e7a33321e10a4060a378234ac84545010a` |
+| `lib/cpic-gene-drug-v1640.js` | 10998 | `45654e273d61dae468df528e8755765bb9b302b2c3bbe332cf8eaf168df51253` |
 | `lib/cpic-load.js` | 993 | `d402d7007201d549632a9099b9491876cda4d0c7dc5edf1bc86835c3e0de9c4c` |
 | `lib/cpic-tables.js` | 3984 | `752ac4c7cf6c5c1917cd3108a7afb7e291a5ce71f7c47ad927c643737f787dcb` |
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
@@ -1814,7 +1815,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/cosyntropin-v299.js` | 1404 | `ba98ee11f3150d8289e120fe3f293c43732bd98ee5a0d462d88f2f3cfa0f7074` |
 | `mcp/adapters/cotton-myer-v419.js` | 1111 | `6210599d4befbf5a058161d043c72b885858888c4711cd4ca0caffc0dcf358f4` |
 | `mcp/adapters/cpak-v1447.js` | 737 | `7df5e9d4075aaf5c24a37d07f6fd5b85568a6f9d09bd05ff42f6f6ce69e05cd0` |
-| `mcp/adapters/cpic-gene-drug-v1640.js` | 1212 | `aa6339d491f9c0bc8be6828b4ef5c7d00679e62ebb37bb12e2cfb21c4cc71c91` |
+| `mcp/adapters/cpic-gene-drug-v1640.js` | 1755 | `03c7f1131d97e77be862d45a465d9aa56de3c806eec38124e1978a617f428bfb` |
 | `mcp/adapters/crafft-v511.js` | 1574 | `1e3b0378c66ae995133b996ca56107f9b4d472ccfa77919f9a9b3dab1f624344` |
 | `mcp/adapters/crag-screen-fluconazole-v1554.js` | 1238 | `f99d22e90a42da331e0fb5e66aa31117deef8f7647a3a8540314dc2a5b8daadc` |
 | `mcp/adapters/crawford-taaa-v464.js` | 1199 | `705f0e1c4a3e24bc689b7d4ca65085620e9f8289bd37a5540d0faf941aa7e73a` |
@@ -3119,7 +3120,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1638.js` | 41607 | `0bc2bfbfa39a5fd81daf4ab1d3ecf100b13337a90d9288f5945fd13730984469` |
 | `views/group-v1639.js` | 19294 | `b19f63e4ceca2422ee12d6e8ca56a5c0988ad95e3d75b3129671bc06def36627` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
-| `views/group-v1640.js` | 11928 | `a02877dc77d96725bd82c0b41f0cd8da023a97f6ae58b777fd1fdaee83687490` |
+| `views/group-v1640.js` | 12526 | `f6fc19f50fdaca8f8b95f75a20f80a203a6cde1f9d049e097d54073017025316` |
 | `views/group-v165.js` | 10575 | `bc3f3b3fe1cddf43d5b5ab8e99063a80d75ecaf527ed9fe608bbed3c8c59b1a9` |
 | `views/group-v166.js` | 6698 | `15f2b9e088bbfd84cc2c31c8014f6d84ecd313459cf16ebe7f401b08871ce8d5` |
 | `views/group-v167.js` | 9221 | `f870afd2bd5e663d5db673719555779f32ced63d1fc71bdb3827e65ad7b97e12` |

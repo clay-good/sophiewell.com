@@ -7,11 +7,15 @@
 // joined to gene_result), each gene's lookup method, the recommendations (drug named from pair_view),
 // the guidelines with their publication years, and the gene-drug pairs without the two PharmGKB columns
 // (clinpgxlevel, pgxtesting), which are CC BY-SA and do not ship. Recommendation texts repeat across
-// rows, so they are stored once in strings.json and referenced by index.
+// rows, so they are stored once in strings.json and referenced by index. Each recommendation also carries
+// the SHA-256 of its own text, so the dose side table of spec-v1640 can tell, with no hashing in the page,
+// whether CPIC has reworded the sentence a factor was read from.
 //
 // The API has no version or ETag. The edition is the newest date in CPIC's change log; the check date
 // is the fetch plus 14 days (spec-v1517's rule for a weekly fetched file), renewed by every successful
 // fetch even when nothing moved (`renewOnUnchanged`), so a quiet month does not silence the tools.
+
+import { createHash } from 'node:crypto';
 
 export const API = 'https://api.cpicpgx.org/v1';
 const iso = (d) => d.toISOString().slice(0, 10);
@@ -63,7 +67,8 @@ export async function parse(bytes, found = {}, { bounds = true } = {}) {
     for (const g of Object.keys(c.lookupkey || {})) used.add(g);
     records.push({
       t: 'rec', guideline: c.guidelineid, drug: drugNames.get(c.drugid) || c.drugid, pop: c.population, key: c.lookupkey,
-      impl: Object.fromEntries(Object.entries(c.implications || {}).map(([g, v]) => [g, s(v)])), rec: s(c.drugrecommendation), cls: c.classification, comments: s(c.comments),
+      impl: Object.fromEntries(Object.entries(c.implications || {}).map(([g, v]) => [g, s(v)])), rec: s(c.drugrecommendation),
+      sha: createHash('sha256').update(text(c.drugrecommendation)).digest('hex'), cls: c.classification, comments: s(c.comments),
     });
   }
   for (const g of t.gene) if (used.has(g.symbol)) records.push({ t: 'gene', gene: g.symbol, method: g.lookupmethod, notes: g.notesondiplotype ? s(g.notesondiplotype) : null });

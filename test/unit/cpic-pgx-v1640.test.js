@@ -176,3 +176,64 @@ test('codeine and tramadol: the CPIC row for a score follows the label statement
   assert.match(oc({ ...base, activityScore: '1.1' }, DB, NOW).message, /step by 0\.25/);
   assert.match(oc({ ...base, activityScore: '1' }, { manifest: null }, NOW).notes.join(' '), /CPIC row not shown: .*did not load/);
 });
+
+import { FACTORS, BY_HASH, doseArithmetic } from '../../lib/cpic-dose-factors-v1640.js';
+
+test('the dose side table: every row names a hash, drugs and an arithmetic kind, each hash once', () => {
+  assert.equal(FACTORS.length, 44);
+  assert.equal(BY_HASH.size, FACTORS.length, 'one row per CPIC sentence');
+  for (const f of FACTORS) {
+    assert.match(f.sha256, /^[0-9a-f]{64}$/, f.id);
+    assert.ok(f.drugs.length >= 1, f.id);
+    assert.ok(['multiply', 'ceiling', 'fixed', 'range'].includes(f.kind), f.id);
+    if (f.kind === 'multiply') assert.ok(f.lo > 0 && f.hi >= f.lo && f.dose, f.id);
+    if (f.kind === 'ceiling') assert.ok(f.max > 0, f.id);
+  }
+  assert.equal(new Set(FACTORS.map((f) => f.id)).size, FACTORS.length, 'ids are unique');
+});
+
+test('the side table applies the factors CPIC states, to the dose entered', () => {
+  const t = gd({ drug: 'tacrolimus', results: 'CYP3A5: NM', dose: '5', weight: '70' }, DB, NOW);
+  assert.deepEqual([t.arithmetic.low, t.arithmetic.high, t.arithmetic.cap, t.arithmetic.capped], [7.5, 10, 21, false]);
+  assert.match(t.notes.join(' '), /× 1\.5 to × 2 applied to the recommended starting dose you entered \(5 mg\): 7\.5 to 10 mg/);
+  assert.match(t.notes.join(' '), /cap at 0\.3 mg\/kg\/day is 21 mg a day at 70 kg; the figures above are within it/);
+  const c = gd({ drug: 'celecoxib', results: 'CYP2C9: 0.5', dose: '100', maxDose: '400' }, DB, NOW);
+  assert.deepEqual([c.arithmetic.low, c.arithmetic.high, c.arithmetic.maxLow, c.arithmetic.maxHigh], [25, 50, 100, 200]);
+  const s = gd({ drug: 'simvastatin', results: 'SLCO1B1: Decreased Function', dose: '20' }, DB, NOW);
+  assert.deepEqual([s.arithmetic.ceiling, s.arithmetic.overCeiling], [20, true], 'the simvastatin sentence says under 20, so 20 is above it');
+  assert.equal(gd({ drug: 'simvastatin', results: 'SLCO1B1: Decreased Function', dose: '15' }, DB, NOW).arithmetic.overCeiling, false);
+  const e = gd({ drug: 'efavirenz', results: 'CYP2B6: PM' }, DB, NOW);
+  assert.deepEqual(e.arithmetic.fixedDoses, [400, 200]);
+  assert.match(e.notes.join(' '), /names the dose itself: 400 or 200 mg\/day\. Nothing is multiplied/);
+});
+
+test('the side table asks for a dose rather than supplying one, and never invents a figure', () => {
+  const t = gd({ drug: 'tacrolimus', results: 'CYP3A5: NM' }, DB, NOW);
+  assert.equal(t.arithmetic, null);
+  assert.match(t.notes.join(' '), /Enter the recommended starting dose to apply CPIC's arithmetic to it/);
+  assert.match(gd({ drug: 'tacrolimus', results: 'CYP3A5: NM', dose: '-5' }, DB, NOW).message, /dose/);
+  // A recommendation whose text states no factor gets none, and the result is otherwise unchanged.
+  const a = gd({ drug: 'abacavir', results: 'HLA-B*57:01 positive', dose: '600' }, DB, NOW);
+  assert.equal(a.arithmetic, null);
+  assert.doesNotMatch(a.notes.join(' '), /applied to|ceiling/);
+});
+
+test('a reworded CPIC sentence drops the arithmetic instead of changing it', () => {
+  const row = FACTORS.find((f) => f.id === 'tacrolimus-increase');
+  assert.deepEqual(doseArithmetic({ hash: row.sha256, drug: 'tacrolimus', dose: 10 }).values.high, 20);
+  assert.deepEqual(doseArithmetic({ hash: `${row.sha256.slice(0, 63)}0`, drug: 'tacrolimus', dose: 10 }), { none: 'none-recorded' });
+  assert.deepEqual(doseArithmetic({ hash: row.sha256, drug: 'celecoxib', dose: 10 }), { none: 'drug-mismatch' });
+  assert.deepEqual(doseArithmetic({}), { none: 'none-recorded' });
+});
+
+test('every side-table hash is a recommendation the shipped CPIC tables still carry', async () => {
+  const { readFileSync } = await import('node:fs');
+  const rec = JSON.parse(readFileSync(new URL('../../data/cpic/shards/rec.json', import.meta.url), 'utf8'));
+  const live = new Set(rec.map((r) => r.sha));
+  const stale = FACTORS.filter((f) => !live.has(f.sha256)).map((f) => f.id);
+  assert.deepEqual(stale, [], 'a factor whose sentence has left the tables should be re-read and removed');
+  for (const f of FACTORS) {
+    const drugs = new Set(rec.filter((r) => r.sha === f.sha256).map((r) => r.drug));
+    assert.deepEqual(f.drugs.filter((d) => !drugs.has(d)), [], `${f.id}: names a drug the sentence does not belong to`);
+  }
+});
