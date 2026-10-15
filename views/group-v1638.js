@@ -424,7 +424,7 @@ export const renderers = {
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      show(VI.vaccineIntervalValidity(args), o);
+      show(VI.vaccineIntervalValidity(args, new Date()), o);
     }));
   },
   'partd-dmp-criteria-check'(root) {

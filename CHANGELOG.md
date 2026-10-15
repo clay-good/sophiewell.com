@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Vaccine dose validity: CDC's Timing and Spacing page is under the weekly page watch, and the
+  rule stops answering after its review date until the page is read again.
 - Digoxin label dose: for an adult with only a serum creatinine, the label's own corrected
   clearance estimate, (140 − age) / Scr, times 0.85 for women.
 - Storage excursion summary: load a data logger's export as it comes (header row, separate date and

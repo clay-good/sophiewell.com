@@ -68,3 +68,12 @@ test('refusals: no minimum is supplied by the tool', () => {
   assert.match(v({ ...base, doseDate: '2026-01-29', previousDose: '2026-01-01', minInterval: 4 }).message, /^Choose the unit of the minimum interval/);
   assert.match(v({ doseDate: '2026-01-29', graceRule: 'four-day-grace-applies' }).message, /^Choose whether this is a live/);
 });
+
+// Route B: the rule answers through its review date and then fails closed.
+test('the CDC rule fails closed after its review date', async () => {
+  const { vaccineIntervalValidity: vi, DATED_VACCINE_RULE } = await import('../../lib/vaccine-interval-validity-v1638.js');
+  assert.deepEqual(DATED_VACCINE_RULE['cdc-timing-spacing'].values, { graceDays: 4, liveSpacingDays: 28 });
+  const args = { doseDate: '2026-10-01', previousDose: '2026-09-01', minInterval: 28, minIntervalUnit: 'days-unit', live: 'not-live-or-live-oral', graceRule: 'four-day-grace-applies' };
+  assert.equal(vi(args, new Date('2027-10-15T12:00:00Z')).valid, true);
+  assert.match(vi(args, new Date('2027-10-16T12:00:00Z')).message, /passed its review date/);
+});

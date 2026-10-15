@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `dccd9b2f59809204`
-Generated: 2026-10-15T04:55:06.475Z
+Build ID: `f8e075261442ba56`
+Generated: 2026-10-15T05:08:50.665Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1453,7 +1453,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/uspstf-load.js` | 791 | `1570781394919e87f6a67c11a8d218089cd8d4c82a09895fd85dc76b1acbfcef` |
 | `lib/ut-diabetic-foot-v612.js` | 7765 | `b0fd3c983103e81d440686b0a25375741d612dc364f7f90dec0f3843a3c5b284` |
 | `lib/uterine-activity-v1439.js` | 5139 | `3fc0ee96b3bea00b9dbff0685034ad4423b368075a5204b7dcbe1868dee84f9f` |
-| `lib/vaccine-interval-validity-v1638.js` | 12596 | `dd04eb8ca5d6711efec6faa3f520bbd3a16a9ea327ad2154850bc4eb62c3a7ce` |
+| `lib/vaccine-interval-validity-v1638.js` | 13621 | `9f9bae223cef5388ea100de580a078a105f4659b5ff0283a9cc33869b6e7af0d` |
 | `lib/vaizey-v512.js` | 5057 | `8614f31c97bbfc26832a0604f34b3481d3d8991f6c25f2b4c558139f59b7a34c` |
 | `lib/van-herick-v435.js` | 3423 | `1df5f89865068a14369482f3bd141c7ef8999a49e9e3b6ada87ebcffb36cdd15` |
 | `lib/van-nuys-vnpi-v652.js` | 5583 | `59049426b6b97b137e2c28ae2072640f2310ed548c27027eac6e069e334ddcaf` |
@@ -3088,7 +3088,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 23968 | `5dca04a25a44a6549ba3d7282810e1bed648614a9d8b61006f0adecf6b323090` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
-| `views/group-v1638.js` | 39075 | `0175eb89ff578c2dc1980471b64da18ce2f1666bc7b6af0dfef02e9adb72e12d` |
+| `views/group-v1638.js` | 39087 | `b1684e8c5f874caf09880ada7a3c9b67e5773a7d060391d4876edd1ab7afbfc8` |
 | `views/group-v1639.js` | 19294 | `b19f63e4ceca2422ee12d6e8ca56a5c0988ad95e3d75b3129671bc06def36627` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v1640.js` | 5253 | `ca35d66a6cf6e4cba46c8d808a74318c266eea60d02f3a6cd116a63dd554588a` |
