@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e1db969fc6d9b086`
-Generated: 2026-10-15T02:07:58.288Z
+Build ID: `6eb8a2ed947f4544`
+Generated: 2026-10-15T02:16:15.591Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -407,7 +407,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dr-severity-v301.js` | 3779 | `760d88af2b8a3b94b23d19729b2879910b20c2372f1c45031029fde68bbf814e` |
 | `lib/dropper-calibration-v1629.js` | 4345 | `92fb014e81295c42415eb0c6d8d51b3e104bc5870305830de4a02dda588828f9` |
 | `lib/dscsa-dispenser-clocks-v1637.js` | 6821 | `8df621b949e6052e3b5019e13caa2004a0eb0c76dcf94f662e261c40859f7f7c` |
-| `lib/dscsa-exemption-v1637.js` | 1321 | `61859d0e6b2bf347fa3c7c7f6d6064572da7aa2858c12fa801fb6c7f346d25d0` |
+| `lib/dscsa-exemption-v1637.js` | 1922 | `4a1d7d522fbf5694c818c8ade470fa963f7e8329c76638a2df302e6996660d20` |
 | `lib/dscsa-small-dispenser-check-v1637.js` | 5560 | `076e6e023713332da6cd0d93f1e8c55d3015e161e76462081cd4daae324b6047` |
 | `lib/dscsa-suspect-sample-size-v1637.js` | 3528 | `bdf7e19bf7b59d23467c3ab5ebab2c3922a5178b4866cb2acd3dea9c0fc5c950` |
 | `lib/dst-v304.js` | 3761 | `1020a889910971989f6789c8c56dcd0c19e29ea191ef50aaba85f6c7960d7331` |
@@ -888,7 +888,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/msp-lis-v1507.js` | 7898 | `1befd77f1fd23ae1fe6707e7f8fe7e042ddf1b9e7ad8ce771436008585e9422e` |
 | `lib/msu-disc-herniation-v1468.js` | 5974 | `906036d1d64a50fc4829686cc511bc06e14357834de7f64113a8ff860c42f4a2` |
 | `lib/mswat-v557.js` | 12726 | `42864d2132d5a9190cb5e39258683442aa5f4f0bf48f1436a0e2e84ebab34b42` |
-| `lib/mtm-eligibility-check-v1638.js` | 6640 | `0f81b8befe4218965cc162e73160534514647216814e5562d525488af36ad56d` |
+| `lib/mtm-eligibility-check-v1638.js` | 7133 | `acbacd19205b803bc9b5614416f5570efbb78f2180e15a6ac8feb68d1247983d` |
 | `lib/mtm-service-clock-v1638.js` | 10789 | `561e8c60fafe0497353e68ca097250941c69cbe5502e9c14b80ced915f0f13b6` |
 | `lib/mue-load.js` | 1396 | `b041386112a0e4aeaff46956efb6985c62d0ca6596340e27a9b5dbad2c22249f` |
 | `lib/mue-reference.js` | 3119 | `cff86c9778d0ac2ea5ee79b76ec89067a55d7554fd81a2312f4adf02c37a6880` |

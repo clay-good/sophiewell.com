@@ -27,6 +27,10 @@
     "sha256": "d0e19604575af33f82f52fa010e2c265eaa6e5011c5e60015015ec7b2bdc0996",
     "recorded": "2026-10-03"
   },
+  "https://www.cms.gov/medicare/coverage/prescription-drug-coverage-contracting/medication-therapy-management": {
+    "sha256": "74d6c81ecaadd4b649c73d958430ea9177f561f2b1d157c799d54abf4ff0c64b",
+    "recorded": "2026-10-15"
+  },
   "https://www.cms.gov/medicare/prevention/prevntiongeninfo/medicare-preventive-services/mps-quickreferencechart-1.html": {
     "sha256": "4b4836b6b2a4d1946ed739bcfd640bda0d941ccd754a3b358ed1dbd0c5a2e5c6",
     "recorded": "2026-10-07"
@@ -50,6 +54,10 @@
   "https://www.cms.gov/priorities/innovation/innovation-models/wiser": {
     "sha256": "d283724ea08f40f47c397b4104218191c510b6ae4ccea635ffe77a1f0644f218",
     "recorded": "2026-10-03"
+  },
+  "https://www.fda.gov/drugs/drug-supply-chain-security-act-dscsa/exemptions-under-drug-supply-chain-security-act": {
+    "sha256": "03dc1153787ace403f5d5381bd3a9269109ff58c0cfe6c8df9f9b573162e5552",
+    "recorded": "2026-10-15"
   },
   "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/compounded-drug-products-are-essentially-copies-commercially-available-drug-product-under-section": {
     "sha256": "4d8020aa1745f4f1ce7943432cef08dd13d4ae328d64dfc5eff5f35663d79da8",

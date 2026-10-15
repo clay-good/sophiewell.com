@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The weekly page watch now covers FDA's DSCSA exemptions page and CMS's MTM page, so a new
+  exemption letter or a new year's MTM threshold memo is flagged for review.
 - Rabies PEP: the fewest HYPERRAB or KEDRAB vials that hold the immune globulin volume, and what
   is left over.
 - Statin Use in Persons with Diabetes: from measurement year 2026, a member with no statin fill and
