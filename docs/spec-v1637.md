@@ -1,6 +1,6 @@
 # spec-v1637 — Federal pharmacy law as arithmetic: controlled substances, supply chain, product identifiers and packaging limits
 
-**Status:** Built except the one gated tool, October 12, 2026: 23 of 24 tools and the backfills (see Build status). 24 new tools, 1 of them build-gated (`dea-number-check`).
+**Status:** Built, October 15, 2026: all 24 tools and the backfills (see Build status); tool 1 on the owner's decision 2. 24 new tools, 1 of them build-gated (`dea-number-check`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 The pharmacist-in-charge, the compliance officer and the receiving technician spend their day
@@ -921,7 +921,7 @@ in `views/group-v1637.js`.
 | 18. `ndc-gtin-convert` | Built. GS1 Tables 7-9 and 2-17 and FDA's 2003 example (NDC 1234567890, UPC 312345678906) are unit tests. An 11-digit billing NDC is refused. From March 7, 2033 the digits are labeled "the 10-digit form". A GTIN-13 is read as well as 12 and 14. |
 | 23. `pppa-special-packaging-check` | Built on 16 CFR 1700.14(a) and 15 U.S.C. 1473(b), re-read October 12, 2026. One row is tested at a time, each at its own operator; every "more than" and "or more" row has a unit test at the exact figure. Each (a)(10) exemption is its own row, and those that require "no other substance" ask. The aspirin, acetaminophen and mouthwash exemptions turn on properties the tool cannot compute and are listed. |
 
-Left: tool 1, `dea-number-check`, which waits on the owner decision in its Build gate.
+Tool 1, `dea-number-check`, is built (October 15, 2026) on the owner's decision 2, option (a): the formula as stated in Gabay 2013 (re-read on PubMed Central), which DEA's example MJ3614511 satisfies, with the source line that DEA does not publish it; the DEA manual's letters were re-read (A, B, F, M; the second letter "almost always" the last-name initial). A name mismatch and a first letter outside those four are notes, not failures; a pass never says the registration is real. The number and name stay out of share links. All 24 tools are built.
 
 ### Backfills
 

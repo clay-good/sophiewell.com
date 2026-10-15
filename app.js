@@ -2804,6 +2804,7 @@ const UTILITIES = [
   { id: 'antimicrobial-day-counter', name: 'Count Antimicrobial Days and Days Present From Rows (NHSN)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'antibiogram-builder', name: 'Cumulative Antibiogram From an Isolate List (AHRQ Specification)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'dea-registration-renewal', name: 'DEA Registration Expiration and Renewal Window', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'dea-number-check', name: 'DEA Number Format and Check Digit', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'cs-biennial-inventory', name: 'Controlled-Substance Inventory Due Date and Count Method', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'dea-222-validity', name: 'DEA Form 222 and CSOS Order Validity (60 Days)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'cs-theft-loss-clock', name: 'Controlled-Substance Theft or Loss Report Clock (DEA Form 106)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },

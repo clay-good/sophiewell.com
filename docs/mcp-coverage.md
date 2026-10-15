@@ -9583,6 +9583,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/opioid-cyp2d6-pediatric-check-v1640.js (spec-v1640: Codeine and tramadol: age, procedure and CYP2D6 status (FDA labels) — clinical disclaimer)
 - `opioid-cyp2d6-pediatric-check`
 
+### lib/dea-number-check-v1637.js (spec-v1637: DEA number format and check digit — administrative disclaimer)
+- `dea-number-check`
+
 ### lib/podoconiosis-stage-v1564.js (spec-v1564: Tekola 5-stage podoconiosis staging — clinical disclaimer)
 - `podoconiosis-stage`
 

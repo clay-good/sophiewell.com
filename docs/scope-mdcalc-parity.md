@@ -934,3 +934,5 @@ experience**.
 > v1640, Poor-Metabolizer Dose Ceilings and Fractions in FDA Labels — [spec-v1640](spec-v1640.md), which adds `pgx-label-dose-limit` — is 2292.)
 
 > v1640, Codeine and Tramadol: Age, Procedure and CYP2D6 Status (FDA Labels) — [spec-v1640](spec-v1640.md), which adds `opioid-cyp2d6-pediatric-check` — is 2293.)
+
+> v1637, DEA Number Format and Check Digit — [spec-v1637](spec-v1637.md), which adds `dea-number-check` — is 2294.)

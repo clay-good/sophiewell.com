@@ -800,6 +800,7 @@ const PROBES = [
   ['podoconiosis leg swelling stage red clay soil', ['podoconiosis-stage']],
   ['mtm comprehensive medication review completion rate and offer due date', ['mtm-service-clock']],
   ['is codeine contraindicated in a child after tonsillectomy ultra-rapid metabolizer', ['opioid-cyp2d6-pediatric-check']],
+  ['is this dea number valid check digit', ['dea-number-check']],
   ['mayzent dose for a cyp2c9 *1/*3 genotype', ['siponimod-cyp2c9-dose']],
   ['cerdelga dose for a cyp2d6 poor metabolizer on a cyp3a inhibitor', ['eliglustat-cyp2d6-dose']],
   ['tetrabenazine maximum dose for a cyp2d6 poor metabolizer', ['pgx-label-dose-limit']],

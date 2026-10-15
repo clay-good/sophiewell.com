@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `386424e9d992e94d`
-Generated: 2026-10-15T07:08:08.482Z
+Build ID: `1c5f58bce4d0305c`
+Generated: 2026-10-15T11:34:41.173Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 149639 | `c90ce0a82a57c07515e95d8140ab2a312c3cde7ddc5633f1702b31bd2d5aed96` |
+| `index.html` | 149688 | `1e5c86f6c2c8fc067e6087225fcfeddb162aa817c4133efedac8252ba37e6277` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 632384 | `bc06673bf7dd49a30219dd44e7e04f572fe4f4527f187d053e5dbecc1d8b2661` |
+| `app.js` | 632526 | `5d858ec56c79e3b2e57aa991c1dec63ff4379c110b3cc60a14e4e56893dd3a0f` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 6994 | `215b6fa7b871cac7b775393d28a00c11ff3ccd1ce1b3230b378bcb8d8f881b40` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 288599 | `5bf63d5db56768a7d69f643698626e89eaaf9b974f09cdfd1443ee28033b91fc` |
+| `sitemap.xml` | 288726 | `db941c54eae68b7ec4180ef3d6d6cc3536616c6d4632695cfabdc7f1dc409e81` |
 | `_headers` | 2063 | `1a500c03dd4add8641287d189c20f15afa3657931417b11ea2a51f39b501773f` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 139846 | `5c18543d71bd88b4b154558e77bae90ed0426437ff8609c7870ba9197d3e90bc` |
+| `report-catalog.js` | 139901 | `c56e965dbe670438350375de19ff76048839b3e966b240a539364c4246e0379a` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -357,6 +357,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ddd-rate-v1636.js` | 3460 | `edfad6f5764536fe0ece8195d575672aa3f493892fbec88f0e64416149b83610` |
 | `lib/de-winter-pattern-v1443.js` | 3588 | `55058d3040772d5dbe9cd92f4f1485cc502781c96c1bf756c27eb4f4e78a11b1` |
 | `lib/dea-222-validity-v1637.js` | 6414 | `214814d39c0301ba6139d6f7e9ab7155c2240d1287f151cd335e12eda268be1b` |
+| `lib/dea-number-check-v1637.js` | 3997 | `bacf7d99faff4c508d7fcad73df2ed33d34ba27ff3d96156a2ce981b099e2b99` |
 | `lib/dea-registration-renewal-v1637.js` | 11784 | `ba2b4b70a04f3b89211afdf25d13ed899ff2d033b19d25915dd9ff3d137354b3` |
 | `lib/deadline.js` | 9429 | `beb8669b48940e72cbe75e8210b82fc3acce0bd8c2c74906bcc1f7796d07a63b` |
 | `lib/dean-fluorosis-cfi-v1484.js` | 3363 | `4945d9b514bd4ab5dd97d6fda65b6e2eaa9058ab968cbdec3a228679cc4d3c97` |
@@ -850,7 +851,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3006844 | `1ded7a0ac8b165ed75e27eb55bbd1aefd66a3531de45b68a1c626afa06fd13b9` |
+| `lib/meta.js` | 3007768 | `cf3d375a9614d97e327a69061d2742b738bf8e0997986699ec12665f8215c572` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1153,7 +1154,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/priapism-gas-v859.js` | 10757 | `64a551a208b4f1430a62b0d16669339f61c853a2af7db33e5612ce32a559d6cf` |
 | `lib/primaquine-single-low-dose-v1552.js` | 3459 | `0b55deef84f6413e2e078375bcabb903146b729d9d2003d1cd5753157ccb7d90` |
 | `lib/print.js` | 4948 | `b94c3f3322dbee349c43f11ee513bf80e2b7d63ee8508423bfc64ca8111e3df4` |
-| `lib/private-fields.js` | 1163 | `305f86bce586741c4a388ffa2d7f8f1208859ba149d8c96f42d10541a6f9c5ca` |
+| `lib/private-fields.js` | 1173 | `36470d2558faf3d9493c0f110536c9b14928725e0e755aa90495a433b92493f0` |
 | `lib/prognostic-v231.js` | 7745 | `656bc7330019dc7bcc842abdf695a2479b2720bc1ccff858e7fd38357173fbf5` |
 | `lib/prompt.js` | 27570 | `14035e7e8d1537ae3975760cecf4d920e6df8830191cca1d4ce6855544ae0f6b` |
 | `lib/propkd-v564.js` | 12565 | `a92acd4c8f065df50dcfffd0ad8dde4a6d1a6a9dddf8118bc4351307633d5c25` |
@@ -1828,6 +1829,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ddd-rate-v1636.js` | 1169 | `9b6b47c6483a3909a64793837b3c97c2cb289239a8fab090eea4f142d0f4859b` |
 | `mcp/adapters/de-winter-pattern-v1443.js` | 1098 | `52c6fa2d855e5425d676f759111a2429e003de829584ecc4c5f5e2858960cf34` |
 | `mcp/adapters/dea-222-validity-v1637.js` | 1318 | `6ef3942896995f470b3dc5284980ac3b113006feeec9bc6eae2ed2ec5719f42c` |
+| `mcp/adapters/dea-number-check-v1637.js` | 865 | `40673477cb3e2773235bce3bc27a217bb087eeb53cce77f381dcc57e40de0026` |
 | `mcp/adapters/dea-registration-renewal-v1637.js` | 1361 | `4b44c35ef0c9f199ad62ce7b276be491baa4abefe72d39cbaa7840add9fbc090` |
 | `mcp/adapters/dean-fluorosis-cfi-v1484.js` | 579 | `6eb4af7a901432c7b357591ed6bbf249ff5fa0a3c80e2d30fe266d8f5b7267f2` |
 | `mcp/adapters/deauville-v314.js` | 1342 | `3bbc32204d220d40c8831a007934fa516e7ebb63b297226f1da5e508432e75a3` |
@@ -2868,7 +2870,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zika-case-def-v1563.js` | 1545 | `09efb04a1b9bceec1819cf865b27f0dfde4579b3c440771247ec65f03b2ba077` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 160452 | `d8e1994315b00766dfac4dcda82edf1b83ed4276d2eb8afedbb945fd0420ea3c` |
+| `mcp/catalog.js` | 160575 | `e29776f9566a38109e3ce86002a4ad5cacd4c2166601bb2b0b619b6217ca1bf7` |
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10616 | `7a2aa853195af4f25f5eae871bb586bb460aec75c9e0c3cb2aa5a510fd481219` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
@@ -3090,7 +3092,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1634.js` | 14483 | `a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d` |
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 24773 | `2e7abc7cf86fe4e88d696c0bff9abb47021289c37e63c21b8fed512b6052edd6` |
-| `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
+| `views/group-v1637.js` | 24258 | `e0986663c23768ee2ecae26a098cb5d5ae827270b532fa087f875efc2e26b566` |
 | `views/group-v1638.js` | 41607 | `0bc2bfbfa39a5fd81daf4ab1d3ecf100b13337a90d9288f5945fd13730984469` |
 | `views/group-v1639.js` | 19294 | `b19f63e4ceca2422ee12d6e8ca56a5c0988ad95e3d75b3129671bc06def36627` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |

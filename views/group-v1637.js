@@ -10,6 +10,7 @@
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
 import * as DR from '../lib/dea-registration-renewal-v1637.js';
+import * as DN from '../lib/dea-number-check-v1637.js';
 import * as BI from '../lib/cs-biennial-inventory-v1637.js';
 import * as F2 from '../lib/dea-222-validity-v1637.js';
 import * as TL from '../lib/cs-theft-loss-clock-v1637.js';
@@ -98,6 +99,18 @@ function show(r, o) {
 }
 
 export const renderers = {
+  // spec-v1637 tool 1 (owner decision 2, October 15, 2026). A prescriber's number and name stay out of the share link.
+  'dea-number-check'(root) {
+    const pairs = [['dnc-number', 'deaNumber'], ['dnc-name', 'lastName']];
+    textField(root, 'DEA number', 'dnc-number', 'e.g. MJ3614511').querySelector('input').setAttribute('data-private', '');
+    textField(root, 'Registrant last name (optional, for the second letter)', 'dnc-name', '').querySelector('input').setAttribute('data-private', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(DN.deaNumberCheck(args), o);
+    }));
+  },
   'dea-registration-renewal'(root) {
     const pairs = [['drr-kind', 'kind'], ['drr-expires', 'expires'], ['drr-submitted', 'submitted'], ['drr-registered', 'registered']];
     selectField(root, 'Kind of registrant', 'drr-kind', DR.KINDS);

@@ -108,7 +108,7 @@ Each is recorded in full in its spec. A decision gates only the entry named. The
 | # | Decision | Spec | Status (October 15, 2026) |
 |---|---|---|---|
 | 1 | When no NDA or BLA holder's label is on DailyMed, is one manufacturer's generic label an acceptable pin? Dozens of drugs across the program depend on it. The machinery spec says yes, named on the page | [v1628](spec-v1628.md) §1 | Built with the default: generic labels pinned and named on the page |
-| 2 | `dea-number-check`: ship on a formula that DEA's own example obeys and a journal states, or hold until DEA prints it | [v1637](spec-v1637.md) | Holds `dea-number-check` |
+| 2 | `dea-number-check`: ship on a formula that DEA's own example obeys and a journal states, or hold until DEA prints it | [v1637](spec-v1637.md) | Decided October 15, 2026: ship on the journal formula, labeled; built |
 | 3 | `contraceptive-missed-pill`: keep the combined-pill branch (CDC against labels) or only the progestin-only branches | [v1639](spec-v1639.md) | Built with the default: combined-pill branch kept, each result says the label may differ |
 | 4 | `fluoride-supplement-schedule`: drop it, or build it with FDA's sentence in every result | [v1639](spec-v1639.md) | Holds `fluoride-supplement-schedule` |
 | 5 | `hazardous-drug-list-check` and the gene-drug lookups are deciders over a list. Do they pass admission rule 1 on the `substitution-check` precedent? | [v1630](spec-v1630.md), [v1640](spec-v1640.md) | Holds `hazardous-drug-list-check` (the gene-drug lookups wait on 12) |

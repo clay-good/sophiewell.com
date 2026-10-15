@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- DEA Number Format and Check Digit: the form and check digit of a DEA registration number, on the
+  formula a pharmacy-law article states (DEA does not publish it); a pass never says the number is real.
 - Label titration calendar: topiramate adjunctive schedules for adults and ages 2 to 16, from the
   prescriber's choices checked against the label's ranges.
 - Lamotrigine titration calendar: the label's Table 4 conversion from valproate to lamotrigine
