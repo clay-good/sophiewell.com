@@ -108,7 +108,7 @@ export const renderers = {
     }));
   },
   'days-supply'(root) {
-    const pairs = [['ds-form', 'form'], ['ds-qty', 'quantity'], ['ds-perdose', 'perDose'], ['ds-vol', 'volume'], ['ds-doseml', 'doseMl'], ['ds-upml', 'unitsPerMl'], ['ds-mlpen', 'mlPerPen'], ['ds-pens', 'pens'], ['ds-uday', 'unitsPerDay'], ['ds-inj', 'injectionsPerDay'], ['ds-prime', 'primingUnits'], ['ds-act', 'actuations'], ['ds-can', 'canisters'], ['ds-puffs', 'puffsPerDose'], ['ds-dpm', 'dropsPerMl'], ['ds-dpe', 'dropsPerEye'], ['ds-eyes', 'eyes'], ['ds-dpd', 'dosesPerDay'], ['ds-discard', 'discardDays'], ['ds-primepuffs', 'primingPuffs'], ['ds-prn', 'maxPerDay'], ['ds-start', 'startDate'], ['ds-depart', 'departDate'], ['ds-return', 'returnDate']];
+    const pairs = [['ds-form', 'form'], ['ds-qty', 'quantity'], ['ds-perdose', 'perDose'], ['ds-vol', 'volume'], ['ds-doseml', 'doseMl'], ['ds-upml', 'unitsPerMl'], ['ds-mlpen', 'mlPerPen'], ['ds-pens', 'pens'], ['ds-uday', 'unitsPerDay'], ['ds-inj', 'injectionsPerDay'], ['ds-prime', 'primingUnits'], ['ds-act', 'actuations'], ['ds-can', 'canisters'], ['ds-puffs', 'puffsPerDose'], ['ds-dpm', 'dropsPerMl'], ['ds-dpe', 'dropsPerEye'], ['ds-eyes', 'eyes'], ['ds-dpd', 'dosesPerDay'], ['ds-discard', 'discardDays'], ['ds-primepuffs', 'primingPuffs'], ['ds-counter', 'counterLeft'], ['ds-prn', 'maxPerDay'], ['ds-start', 'startDate'], ['ds-depart', 'departDate'], ['ds-return', 'returnDate']];
     selectField(root, 'Dosage form', 'ds-form', DS.FORMS);
     numField(root, 'Tablets or capsules: quantity dispensed', 'ds-qty', 'e.g. 60', '100000', 'any');
     numField(root, 'Tablets or capsules: units per dose', 'ds-perdose', 'e.g. 1', '1000', 'any');
@@ -130,6 +130,7 @@ export const renderers = {
     numField(root, 'In-use discard limit in days, if the label gives one', 'ds-discard', 'e.g. 28', '3650', '1');
     // spec-v1639 backfills 1 and 2.
     numField(root, 'Inhaler: priming puffs per canister (optional)', 'ds-primepuffs', 'e.g. 4', '100', '1');
+    numField(root, 'Inhaler: doses left on the counter (optional)', 'ds-counter', 'e.g. 60', '10000', '1');
     selectField(root, 'As-needed sig: is the daily use entered the maximum allowed?', 'ds-prn', DS.YES_NO);
     dateInput(root, 'Start date of the supply (optional, for a run-out date)', 'ds-start', 'date');
     dateInput(root, 'Trip: departure date (optional)', 'ds-depart', 'date');

@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Days supply: an inhaler's dose counter reading can replace the canister count, for the days left
+  on a canister already in use.
 - Milligrams, millimoles, milliequivalents and milliosmoles: an optional label check shows the
   equivalence an FDA label prints for potassium chloride, potassium citrate, sodium bicarbonate or
   lithium carbonate, and the lithium oral-solution volume by the label's own conversion.

@@ -30,6 +30,7 @@ export default [
       { dom: 'ds-dpd', arg: 'dosesPerDay', kind: 'number', required: false, label: 'Doses per day (all forms but insulin)' },
       { dom: 'ds-discard', arg: 'discardDays', kind: 'number', required: false, label: 'In-use discard limit in days, if the label gives one' },
       { dom: 'ds-primepuffs', arg: 'primingPuffs', kind: 'number', required: false, label: 'Inhaler: priming puffs per canister (optional)' },
+      { dom: 'ds-counter', arg: 'counterLeft', kind: 'number', required: false, label: 'Inhaler: doses left on the counter (optional)' },
       { dom: 'ds-prn', arg: 'maxPerDay', kind: 'enum', required: false, values: vals(DS.YES_NO), label: 'As-needed sig: is the daily use entered the maximum allowed?' },
       { dom: 'ds-start', arg: 'startDate', kind: 'string', required: false, label: 'Start date of the supply (YYYY-MM-DD, optional, for a run-out date)' },
       { dom: 'ds-depart', arg: 'departDate', kind: 'string', required: false, label: 'Trip: departure date (YYYY-MM-DD, optional)' },

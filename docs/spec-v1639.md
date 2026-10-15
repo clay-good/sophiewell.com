@@ -976,7 +976,7 @@ Not built: tool 15 (owner-gated).
 
 | Backfill | State |
 |---|---|
-| 1. `days-supply`: run-out date and trip coverage | Built: an optional start date gives the last day covered; trip dates give the days short and the quantity that covers them. Inhaler priming puffs per canister are an optional field. **Not built:** the "doses left on the counter" mode; enter the counter reading as the actuations with no priming. |
+| 1. `days-supply`: run-out date and trip coverage | Built: an optional start date gives the last day covered; trip dates give the days short and the quantity that covers them. Inhaler priming puffs per canister are an optional field. The "doses left on the counter" mode is built (October 14, 2026): the reading replaces the actuations and canisters, no priming is subtracted, and a discard limit is not applied because the counter does not show the day the canister was opened. |
 | 2. `days-supply`: PRN sigs | Built as a yes or no answer that labels the result "at the maximum the sig allows". |
 | 3. `dose-volume`: rounding to the measuring device | Built: an optional smallest marking rounds the volume and shows the dose delivered and the percent change. |
 | 4. `apap-24h-max` and 5. `peds-dose` | Not built here; both are corrections indexed in [spec-v1641](spec-v1641.md). |

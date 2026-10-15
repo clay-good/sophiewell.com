@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `de2eb27b8b9cb73c`
-Generated: 2026-10-14T01:36:46.860Z
+Build ID: `080b723ee4b06ec8`
+Generated: 2026-10-15T00:28:40.339Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -350,7 +350,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dantrolene-mh-vials-v1636.js` | 8136 | `ccc5732222e7fc7014bb8c71ee4443c5ac2afab77eee02176b6c656a622c7d6d` |
 | `lib/data.js` | 6633 | `fb653a6867be3ecf87afa96bf79e2bf404f8cfb6f1f715ec3faca8b3829f472a` |
 | `lib/dated-data.js` | 2051 | `453ea6398e1ada17f48a48a58f8f94b3cc0123262a6ce19022e012714102f6ef` |
-| `lib/days-supply-v1511.js` | 10639 | `a38ed81c13db169508aef30f3d4cb2c86dd1f94b9038179f373fa5f883d47c5f` |
+| `lib/days-supply-v1511.js` | 11724 | `dc35fe8b023724bebabda88412ee2fd6b4c950cdeff141b84f9f86ae1f53244a` |
 | `lib/ddd-rate-v1636.js` | 3460 | `edfad6f5764536fe0ece8195d575672aa3f493892fbec88f0e64416149b83610` |
 | `lib/de-winter-pattern-v1443.js` | 3588 | `55058d3040772d5dbe9cd92f4f1485cc502781c96c1bf756c27eb4f4e78a11b1` |
 | `lib/dea-222-validity-v1637.js` | 6414 | `214814d39c0301ba6139d6f7e9ab7155c2240d1287f151cd335e12eda268be1b` |
@@ -1817,7 +1817,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/cvrisk-v103.js` | 7303 | `afeb9d879ab379f7fc2db16b643abd46e30a5f424105fd1df0f9e13f6fa3d31e` |
 | `mcp/adapters/cystic-echinococcosis-stage-v1562.js` | 1712 | `0f7d33aec42055b748a78d4221b055af6db9414ff547193f1e3636de8ccd5cda` |
 | `mcp/adapters/dantrolene-mh-vials-v1636.js` | 1402 | `c5d5a0070dae814557e6916c82244c6bc49aa9e1125fbb13b4ad8452c5479383` |
-| `mcp/adapters/days-supply-v1511.js` | 4379 | `898035f75ef3e5ce756e1edbf8fd8904625269a6b0b7ceaef799f061ec69ec3d` |
+| `mcp/adapters/days-supply-v1511.js` | 4517 | `0437ed24ab8b88b631ba5080b3fcb3ceb19aa93ecb899c0c61b00f8332384981` |
 | `mcp/adapters/ddd-rate-v1636.js` | 1169 | `9b6b47c6483a3909a64793837b3c97c2cb289239a8fab090eea4f142d0f4859b` |
 | `mcp/adapters/de-winter-pattern-v1443.js` | 1098 | `52c6fa2d855e5425d676f759111a2429e003de829584ecc4c5f5e2858960cf34` |
 | `mcp/adapters/dea-222-validity-v1637.js` | 1318 | `6ef3942896995f470b3dc5284980ac3b113006feeec9bc6eae2ed2ec5719f42c` |
@@ -3029,7 +3029,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1509.js` | 9355 | `c6052710ceac6ed488acfac42c0d347bc387f1dcfc5a3807399d03171ae4a31a` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v1510.js` | 20988 | `3e8cdbf16a7567269112c7a50e7abd49351c2be159d66956a987d54616f2dfac` |
-| `views/group-v1511.js` | 14875 | `f762da589da63fd56603549143d702d9b8309ec231800a1e0fee1150a225fd14` |
+| `views/group-v1511.js` | 15014 | `2224b06f0ad1266c83eb471c70a90912a24c458207b0193f24b43e64ddd80e37` |
 | `views/group-v1512.js` | 14178 | `9f17c19a926b82cb8e91210a744a724ac10bf5406b28902e78a464cfc99f5700` |
 | `views/group-v1513.js` | 9059 | `9dccf60e95ef759fe132f3fd1c89105f718285ee2afc524555f25606d51e79e0` |
 | `views/group-v1514.js` | 15758 | `af3f2167ba8c2713407f9078fa1a6b65be37aba4b9bc0a0eced4a51dd88aba0d` |

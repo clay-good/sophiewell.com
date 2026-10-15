@@ -34,6 +34,24 @@ test('days supply: inhaler priming puffs come off each canister', () => {
   assert.match(ds({ ...base, actuations: '60', primingPuffs: '60' }).message, /fewer than the actuations/);
 });
 
+test('days supply: the doses left on an inhaler counter replace the canister count', () => {
+  const r = ds({ form: 'inhaler', counterLeft: '60', puffsPerDose: '2', dosesPerDay: '2' });
+  assert.equal(r.daysSupply, 15);
+  assert.match(r.band, /60 doses left on the counter/);
+  assert.match(r.notes.join(' '), /none is subtracted/);
+  // The canister fields are not asked for, and priming entered is not subtracted again.
+  assert.equal(ds({ form: 'inhaler', counterLeft: '60', puffsPerDose: '2', dosesPerDay: '2', actuations: '200', canisters: '3', primingPuffs: '4' }).daysSupply, 15);
+  assert.equal(ds({ form: 'inhaler', counterLeft: '0', puffsPerDose: '2', dosesPerDay: '2' }).daysSupply, 0);
+  assert.match(ds({ form: 'inhaler', counterLeft: '-1', puffsPerDose: '2', dosesPerDay: '2' }).message, /doses left on the counter must be between 0 and 10000/);
+  assert.match(ds({ form: 'inhaler', counterLeft: '60', dosesPerDay: '2' }).message, /Enter the puffs per dose/);
+  // The discard limit counts from opening, which the counter does not show.
+  const d = ds({ form: 'inhaler', counterLeft: '120', puffsPerDose: '1', dosesPerDay: '2', discardDays: '30' });
+  assert.equal(d.daysSupply, 60);
+  assert.match(d.notes.join(' '), /not applied here/);
+  // Another form ignores the field.
+  assert.equal(ds({ ...tabs, counterLeft: '5' }).daysSupply, 30);
+});
+
 test('days supply: an as-needed sig at its maximum is labeled as such', () => {
   const r = ds({ ...tabs, quantity: '30', perDose: '1', dosesPerDay: '6', maxPerDay: 'yes' });
   assert.deepEqual([r.daysSupply, r.bandLabel], [5, '5 days at the maximum']);
