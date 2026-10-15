@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Lamotrigine titration calendar: the label's Table 4 conversion from valproate to lamotrigine
+  alone, dated from the current valproate dose.
 - Label titration calendar: the Otezla and Entresto pediatric schedules, by weight.
 - Taper and titration calendars: with the tablet strengths you stock, each step's tablets (fewest
   whole tablets) and the units to dispense for it.

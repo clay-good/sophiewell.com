@@ -291,11 +291,12 @@ export const renderers = {
     }));
   },
   'lamotrigine-titration-calendar'(root) {
-    const pairs = [['ltc-regimen', 'regimen'], ['ltc-comed', 'comed'], ['ltc-date', 'startDate'], ['ltc-weight', 'weightKg']];
+    const pairs = [['ltc-regimen', 'regimen'], ['ltc-comed', 'comed'], ['ltc-date', 'startDate'], ['ltc-weight', 'weightKg'], ['ltc-vpa', 'valproateDose']];
     selectField(root, 'Formulation and indication', 'ltc-regimen', LT.REGIMENS);
     selectField(root, 'Co-medication', 'ltc-comed', LT.COMEDS);
     dateField(root, 'Date of the first dose', 'ltc-date');
     numField(root, 'Weight, kg (ages 2 to 12)', 'ltc-weight', '');
+    numField(root, 'Converting from valproate: current valproate dose, mg/day (Table 4)', 'ltc-vpa', '');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f1488b9d26178e3f`
-Generated: 2026-10-15T06:43:57.237Z
+Build ID: `f21b8c5f11436b2c`
+Generated: 2026-10-15T06:56:40.326Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -736,7 +736,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/lai-antipsychotic-missed-dose-v1639.js` | 20473 | `aa975e537225e3e09e2928b68e38d36c5e8295ec9bd2cd539cc8807536d809ed` |
 | `lib/lai-antipsychotic-start-v1633.js` | 10049 | `5dad0768906a4f7dcf9e35bdebb3033560b70811ce3672a0196fb20e489cfdac` |
 | `lib/lake-louise-cmr-v790.js` | 4460 | `e189393140d6b862dcd0eb104d9e7772f87e7a52a84aed712af47ececfc71922` |
-| `lib/lamotrigine-titration-calendar-v1633.js` | 13680 | `72da2be49c7c7bbb9d90ffa9378ff99ac8b85dcd924130a9fe73c8b2f5cdab8e` |
+| `lib/lamotrigine-titration-calendar-v1633.js` | 16568 | `6b1d021ea666e26db39c40936136088a63630f4c8fd275e240bd9d1ea5960c2e` |
 | `lib/lansky-v352.js` | 4422 | `de19995ccf6c4b2bd438b04974623c854bcdb0f04cc1cc09f5eb6743f5fc4025` |
 | `lib/larsen-ra-v470.js` | 3711 | `04f693a6f330fba5409f9b89e56545259c0c6c42068a7cfba2d8479815014541` |
 | `lib/last-lipid-v896.js` | 6947 | `3efdcef698dc1b12616d417816bd5470cb2a52f673ff3159512d13cb709bc1cb` |
@@ -2168,7 +2168,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/lai-antipsychotic-missed-dose-v1639.js` | 1234 | `f6c709bbad340ddba9992bca3d3958287ff3e5bf7538fea3384571b5653bd9b6` |
 | `mcp/adapters/lai-antipsychotic-start-v1633.js` | 1397 | `0e02a919edfa4018c29567114ed5e7be372b57717ff6f3766c359090f0ab1988` |
 | `mcp/adapters/lake-louise-cmr-v790.js` | 1789 | `810561cdf431351059da58cc3df4c67a26fa623885d81ce57922e4d1082b19ae` |
-| `mcp/adapters/lamotrigine-titration-calendar-v1633.js` | 1536 | `e11fbd51a8478e4489199fd5dfbc06f4e04b978cdc0384fad27dcff34de4a735` |
+| `mcp/adapters/lamotrigine-titration-calendar-v1633.js` | 1686 | `b5633d4e3559a811c4b08f4ef6eb7ee5e94a294bc335ecfba27555e01cd4a5e4` |
 | `mcp/adapters/lansky-v352.js` | 1466 | `99a04b186276856b4b84f032a49218e4256d56074b3e58012cca00c3ca07b093` |
 | `mcp/adapters/larsen-ra-v470.js` | 1210 | `eeeb4b58a93de5ca545ab93a6886546a9185fa1c2376e64cd7b9428b71b60799` |
 | `mcp/adapters/last-lipid-v896.js` | 1465 | `fb3704e4bc11b086354d8f7f01bd8aeccce3f94f94aba15f0d56d4621cd75a53` |
@@ -3086,7 +3086,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1630.js` | 23495 | `c64bd4d306fd4c29c9a1222200f3486df5b24d049f12cb2af1d2725b0c6895eb` |
 | `views/group-v1631.js` | 24387 | `0b30dd5e5c970c02b1bfe4fc9213bb654d9605b399ccd6ea1a92db8ec4f4dfc8` |
 | `views/group-v1632.js` | 22558 | `62990e562310d3a75a44e49fdd2e2ae62c71f6dbb0f8d93b91b46ad9fcbcd62b` |
-| `views/group-v1633.js` | 30385 | `949eec5be8c45a986148888aef019d8f1e2bc0bd2976b63932a4ad93c7744480` |
+| `views/group-v1633.js` | 30521 | `958c844c615185d98a0090a7a4d748630f742d9167c951155d3ba37f10ab6b27` |
 | `views/group-v1634.js` | 14483 | `a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d` |
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 24773 | `2e7abc7cf86fe4e88d696c0bff9abb47021289c37e63c21b8fed512b6052edd6` |

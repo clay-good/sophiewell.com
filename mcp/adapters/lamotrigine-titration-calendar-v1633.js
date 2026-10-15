@@ -15,6 +15,7 @@ export default [
       { dom: 'ltc-comed', arg: 'comed', kind: 'enum', required: true, values: LT.COMEDS.map((d) => d.value), label: 'Co-medication: valproate, neither, or inducer' },
       { dom: 'ltc-date', arg: 'startDate', kind: 'string', required: true, label: 'Date of the first dose (YYYY-MM-DD)' },
       { dom: 'ltc-weight', arg: 'weightKg', kind: 'number', label: 'Weight (ages 2 to 12)', unit: 'kg' },
+      { dom: 'ltc-vpa', arg: 'valproateDose', kind: 'number', label: 'Converting from valproate (Table 4): current valproate dose', unit: 'mg/day' },
     ],
   },
 ];

@@ -87,3 +87,15 @@ test('nothing is defaulted, and a superseded label withholds its calendar', () =
   assert.deepEqual([w.withheld, w.rows], [true, undefined]);
   assert.equal(d({ regimen: 'ir-bipolar', comed: 'neither', startDate: '2026-10-12' }, now, T).rows.length, 5);
 });
+
+// Lamictal Table 4 (version 45, re-read October 15, 2026): converting from valproate to monotherapy.
+test('Table 4: valproate down 500 a week to 500, held a week, then 300/250, then lamotrigine to 500', async () => {
+  const { lamotrigineTitrationCalendar: l } = await import('../../lib/lamotrigine-titration-calendar-v1633.js');
+  const at = new Date('2026-10-15T12:00:00Z');
+  const r = l({ regimen: 'ir-valproate-conversion', comed: 'valproate', startDate: '2026-11-02', valproateDose: 1500 }, at);
+  assert.deepEqual(r.rows.map((x) => x.dose), ['Lamotrigine 200 mg/day; valproate 1,000 mg/day', 'Lamotrigine 200 mg/day; valproate 500 mg/day', 'Lamotrigine 200 mg/day; valproate 500 mg/day', 'Lamotrigine 300 mg/day; valproate 250 mg/day', 'Lamotrigine 400 mg/day; valproate discontinued', 'Lamotrigine 500 mg/day; valproate discontinued']);
+  assert.equal(r.rows[5].from, '2026-12-07');
+  assert.equal(l({ regimen: 'ir-valproate-conversion', comed: 'valproate', startDate: '2026-11-02', valproateDose: 500 }, at).rows.length, 4);
+  assert.match(l({ regimen: 'ir-valproate-conversion', comed: 'neither', startDate: '2026-11-02', valproateDose: 1500 }, at).message, /converts from valproate/);
+  assert.match(l({ regimen: 'ir-valproate-conversion', comed: 'valproate', startDate: '2026-11-02', valproateDose: 250 }, at).message, /current valproate dose/);
+});
