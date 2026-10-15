@@ -53,6 +53,12 @@ export const FILE_INPUTS = {
   'aw-835-files': 'appeal-worklist',
   'pa-file-picker': 'pa-lint',
   'se-file': 'storage-excursion-summary',
+  'abg-file': 'antibiogram-builder',
+  'supd-members-file': 'supd-measure',
+  'supd-fills-file': 'supd-measure',
+  'cum-members-file': 'partd-concurrent-use-measures',
+  'cum-fills-file': 'partd-concurrent-use-measures',
+  'msc-enrollees-file': 'mtm-service-clock',
   'rxm-${config.name}-file': '340b-rx-match',
   '${id}-file': 'upload-workbench',
   // The inventory at #/intake takes any file; it is the recognizer's own page.

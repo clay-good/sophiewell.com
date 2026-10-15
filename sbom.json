@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:7d785e60-0711-5dde-8b57-9e55f6a4feb2",
+  "serialNumber": "urn:uuid:33b59d67-f6e3-5c59-821c-06c55a1f3a05",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-15T05:19:49.606Z",
+    "timestamp": "2026-10-15T05:30:09.305Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4c62de62354afd593fbaac4ccd3ea0e57bf390258386d0f19d5fec5a657d4215"
+          "content": "1289ffb99abeb3f080677a48d9c3e4778adba3a6fe1c037478024ab6e12b69d3"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "631716"
+          "value": "631750"
         }
       ]
     },
@@ -9575,7 +9575,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fcaf335fd26bfcf7eab1a121eb716fbf6873211991a4eab4f696546822b69656"
+          "content": "77f37d7e42a782cae417946c287fb625a0c2bf34ff937728a61622d3998a9378"
         }
       ],
       "properties": [
@@ -9585,7 +9585,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "29872"
+          "value": "31695"
         }
       ]
     },
@@ -15424,6 +15424,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4405"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/list-intake.js",
+      "type": "file",
+      "name": "lib/list-intake.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4531e051d486d270e886d79bff145ec97dac372dadec385249ac127ccaf42cd0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3447"
         }
       ]
     },
@@ -64133,7 +64154,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5dca04a25a44a6549ba3d7282810e1bed648614a9d8b61006f0adecf6b323090"
+          "content": "2e7abc7cf86fe4e88d696c0bff9abb47021289c37e63c21b8fed512b6052edd6"
         }
       ],
       "properties": [
@@ -64143,7 +64164,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "23968"
+          "value": "24773"
         }
       ]
     },
@@ -64175,7 +64196,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b1684e8c5f874caf09880ada7a3c9b67e5773a7d060391d4876edd1ab7afbfc8"
+          "content": "0bc2bfbfa39a5fd81daf4ab1d3ecf100b13337a90d9288f5945fd13730984469"
         }
       ],
       "properties": [
@@ -64185,7 +64206,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "39087"
+          "value": "41607"
         }
       ]
     },
@@ -95721,6 +95742,7 @@
         "urn:sophiewell:file:source:lib/lipid-emulsion-dose-check-v1630.js",
         "urn:sophiewell:file:source:lib/lipids-v271.js",
         "urn:sophiewell:file:source:lib/lisfranc-myerson-v412.js",
+        "urn:sophiewell:file:source:lib/list-intake.js",
         "urn:sophiewell:file:source:lib/lithium-level-check-v1631.js",
         "urn:sophiewell:file:source:lib/live.js",
         "urn:sophiewell:file:source:lib/liver-v196.js",
@@ -98873,7 +98895,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "7d785e6007110dde"
+      "value": "33b59d67f6e30c59"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98885,7 +98907,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3760"
+      "value": "3761"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

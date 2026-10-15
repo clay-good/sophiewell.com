@@ -8,6 +8,8 @@
 // partd-concurrent-use-measures, partd-opioid-measures, mtm-service-clock.
 
 import { el, clear } from '../lib/dom.js';
+import { listFromFile } from '../lib/list-intake.js';
+import { handOff } from '../lib/hand-off.js';
 import { resultRow } from '../lib/result-copy.js';
 import * as PM from '../lib/rx-pricing-math-v1638.js';
 import * as IT from '../lib/inventory-turns-v1638.js';
@@ -88,6 +90,30 @@ function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted',
 function wire(ids, run) {
   for (const id of ids) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
   run();
+}
+// A file picker under a pasted list: the file's rows go into the box in the order the list reads,
+// reordered by column name when the file has a header row (lib/list-intake.js).
+const LIST_FILES = '.csv,.tsv,.txt,text/csv,text/plain';
+function fileIntake(root, input, areaId, key, label) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: input.id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(input);
+  const said = el('span', { class: 'muted', 'aria-live': 'polite' });
+  wrap.appendChild(el('br'));
+  wrap.appendChild(said);
+  root.appendChild(wrap);
+  input.addEventListener('change', async () => {
+    const f = input.files && input.files[0];
+    if (!f) return;
+    if (f.size > 5000000) { said.textContent = `${f.name} is over the 5 MB this list reads.`; return; }
+    const r = listFromFile(await f.text(), key);
+    if (r.message) { said.textContent = r.message; return; }
+    said.textContent = `${f.name}: ${r.note}`;
+    const box = document.getElementById(areaId);
+    box.value = r.text;
+    box.dispatchEvent(new Event('input', { bubbles: true }));
+  });
 }
 // The per-row result as CSV, in a box the reader copies into a spreadsheet.
 function csvBox(o, id, text) {
@@ -518,8 +544,10 @@ export const renderers = {
     numField(root, 'Measurement year', 'supd-year', 'e.g. 2025');
     // Rows carry member references: kept out of the shareable link.
     areaField(root, 'Members, one per line: member, age, continuously enrolled (yes or no), exclusion (optional)', 'supd-members', 'A, 60, yes').querySelector('textarea').setAttribute('data-private', '');
+    fileIntake(root, el('input', { id: 'supd-members-file', type: 'file', accept: LIST_FILES }), 'supd-members', 'supd-members', 'Or load the members from a file (CSV)');
     note(root, `Exclusions: ${SU.EXCLUSIONS.join(', ')}.`);
     areaField(root, 'Fills, one per line: member, fill date (YYYY-MM-DD), class (diabetes, statin, pcsk9 or bempedoic)', 'supd-fills', 'A, 2025-01-10, diabetes').querySelector('textarea').setAttribute('data-private', '');
+    fileIntake(root, el('input', { id: 'supd-fills-file', type: 'file', accept: LIST_FILES }), 'supd-fills', 'supd-fills', 'Or load the fills from a file (CSV)');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
@@ -534,8 +562,10 @@ export const renderers = {
     numField(root, 'Measurement year', 'cum-year', 'e.g. 2025');
     // Rows carry member references: kept out of the shareable link.
     areaField(root, 'Members, one per line: member, age, continuously enrolled (yes or no), exclusions separated by semicolons (optional)', 'cum-members', 'A, 70, yes').querySelector('textarea').setAttribute('data-private', '');
+    fileIntake(root, el('input', { id: 'cum-members-file', type: 'file', accept: LIST_FILES }), 'cum-members', 'cum-members', 'Or load the members from a file (CSV)');
     note(root, `Exclusions: ${CU.EXCLUSIONS.join(', ')}. Classes: ${CU.CLASSES.join(', ')}.`);
     areaField(root, 'Fills, one per line: member, fill date (YYYY-MM-DD), days supply, medication, class', 'cum-fills', 'A, 2025-01-01, 30, oxycodone, opioid').querySelector('textarea').setAttribute('data-private', '');
+    fileIntake(root, el('input', { id: 'cum-fills-file', type: 'file', accept: LIST_FILES }), 'cum-fills', 'cum-fills', 'Or load the fills from a file (CSV)');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
@@ -566,6 +596,7 @@ export const renderers = {
     note(root, 'Each line: enrollee, MTM enrollment date, enrolled last year (yes or no), last CMR offer date, CMR dates, TMR dates, opt-out date, age at the start of the year, hospice (yes or no), met CMS criteria (yes or no). Dates are YYYY-MM-DD; several dates in one place are separated by semicolons; a date that does not apply is left blank.');
     // Rows carry enrollee references: kept out of the shareable link.
     areaField(root, 'Enrollees, one per line', 'msc-enrollees', 'A, 2026-03-01, no, , , 2026-03-10, , 70, no, yes').querySelector('textarea').setAttribute('data-private', '');
+    fileIntake(root, el('input', { id: 'msc-enrollees-file', type: 'file', accept: LIST_FILES }), 'msc-enrollees', 'msc-enrollees', 'Or load the enrollees from a file (CSV)');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
@@ -575,4 +606,12 @@ export const renderers = {
       if (r.valid) csvBox(o, 'mtm-csv', r.csv);
     }));
   },
+};
+
+// Member, enrollee and fill lists dropped on the home page go to the box their kind names.
+const viaKind = (members, fills) => (root, files, meta = {}) => handOff(root, meta.kind === 'fill-list' && fills ? fills : members, files);
+export const acceptFiles = {
+  'supd-measure': viaKind('supd-members-file', 'supd-fills-file'),
+  'partd-concurrent-use-measures': viaKind('cum-members-file', 'cum-fills-file'),
+  'mtm-service-clock': viaKind('msc-enrollees-file', null),
 };

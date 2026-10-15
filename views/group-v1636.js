@@ -383,6 +383,20 @@ export const renderers = {
     const pairs = [['abg-isolates', 'isolates'], ['abg-from', 'from'], ['abg-to', 'to']];
     // Rows carry patient references: kept out of the shareable link.
     areaField(root, 'Isolates, with a header row: patient, organism, date, then one column per agent holding S, I or R. A status column (final) and a purpose column (surveillance) are read if present.', 'abg-isolates', 'patient,organism,date,status,purpose,Ceftriaxone\nA,Escherichia coli,2026-03-10,final,diagnostic,S').querySelector('textarea').setAttribute('data-private', '');
+    // spec-v1636 tool 18: the isolate list from a file, header row and all (the builder reads it by name).
+    const pick = el('p');
+    pick.appendChild(el('label', { for: 'abg-file', text: 'Or load the isolate list from a file (CSV)' }));
+    pick.appendChild(el('br'));
+    const abgFile = el('input', { id: 'abg-file', type: 'file', accept: '.csv,.tsv,.txt,text/csv,text/plain' });
+    pick.appendChild(abgFile);
+    root.appendChild(pick);
+    abgFile.addEventListener('change', async () => {
+      const f = abgFile.files && abgFile.files[0];
+      if (!f || f.size > 5000000) return;
+      const box = document.getElementById('abg-isolates');
+      box.value = await f.text();
+      box.dispatchEvent(new Event('input', { bubbles: true }));
+    });
     dateField(root, 'First day of the period (optional)', 'abg-from');
     dateField(root, 'Last day of the period (optional)', 'abg-to');
     const o = out(); root.appendChild(o);
@@ -407,4 +421,5 @@ export const renderers = {
 // spec-v1636 tool 20: a doses file with scheduled and given times goes to the administration-window batch.
 export const acceptFiles = {
   'med-admin-window': acceptVia('maw-upload-file'),
+  'antibiogram-builder': acceptVia('abg-file'),
 };

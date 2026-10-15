@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The antibiogram builder, Statin Use in Persons with Diabetes, the Part D concurrent-use measures
+  and the MTM review dates load their lists from a file, reordered by column name, and recognize
+  such a file dropped on the home page.
 - DEA registration renewal: the date DEA's 2025 conference slides give for retiring an expired
   number (30 days after expiration), shown beside the policy page's reinstatement month.
 - Vaccine dose validity: CDC's Timing and Spacing page is under the weekly page watch, and the
