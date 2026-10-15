@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medication administration window: a doses file gives each dose's answer and the on-time rate
+  for time-critical and other medications.
 - Antibiogram builder: Staphylococcus aureus is also reported as its MRSA subset, viridans
   streptococci show percent intermediate to penicillin, and Streptococcus pneumoniae names the
   breakpoint columns AHRQ's specification asks for.

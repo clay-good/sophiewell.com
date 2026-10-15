@@ -405,3 +405,20 @@ test('medicaid-appeal-clock runs over an appeals list: a filed appeal leads with
   assert.equal(r.band, '3 appeals of 4 computed. 1 row needs corrected inputs.');
   assert.deepEqual(r.rows.map((x) => x.label), ['Appeal by 2026-10-31', 'Resolve by October 20, 2026', 'Resolve by Wednesday, October 7, 2026, 10:00 am', 'Needs corrected inputs']);
 });
+
+// spec-v1636 tool 20, file mode: doses from a medication administration export, then the on-time rate by class.
+test('med-admin-window runs over a dose list: spreadsheet times, the class from the form when blank, the on-time rate by class', () => {
+  const rows = [
+    { reference: 'A', scheduled: '10/14/2026 08:00', actual: '10/14/2026 08:20', frequency: 'several-doses-a-day', policyClass: 'time critical' },
+    { reference: 'B', scheduled: '2026-10-14 08:00', actual: '2026-10-14 08:45', frequency: 'several-doses-a-day', policyClass: 'policy-critical' },
+    { reference: 'C', scheduled: '2026-10-14 09:00', actual: '2026-10-14 10:30', frequency: 'daily-weekly-or-monthly', policyClass: '' },
+    { reference: 'D', scheduled: '2026-10-14 09:00', actual: '2026-10-14 09:10', frequency: 'more-often-than-q4h', policyClass: 'policy-not-critical' },
+    { reference: 'E', scheduled: 'tomorrow', actual: '2026-10-14 09:10', frequency: 'daily-weekly-or-monthly', policyClass: 'policy-not-critical' },
+  ];
+  const r = runBatch('med-admin-window', rows, { policyClass: 'policy-not-critical' });
+  assert.deepEqual(r.rows.map((x) => x.ok), [true, true, true, true, false]);
+  assert.match(r.rows[4].detail, /Scheduled time: "tomorrow" is not a date and time/);
+  const text = r.notes.join(' ');
+  assert.match(text, /Time-critical under the hospital's policy: 1 of 2 doses inside the window \(50%\)/);
+  assert.match(text, /Not time-critical under the hospital's policy: 1 of 1 doses inside the window \(100%\); 1 with no CMS window/);
+});

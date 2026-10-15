@@ -8,6 +8,9 @@
 // chelation-dose, antimicrobial-day-counter, antibiogram-builder.
 
 import { el, clear } from '../lib/dom.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { acceptVia } from '../lib/hand-off.js';
+import { BATCH_TOOLS } from '../lib/batch-tools.js';
 import { resultRow } from '../lib/result-copy.js';
 import * as NR from '../lib/nac-oral-regimen-v1636.js';
 import * as FO from '../lib/fomepizole-schedule-v1636.js';
@@ -318,12 +321,19 @@ export const renderers = {
     selectField(root, 'Frequency of the order', 'maw-frequency', MW.FREQUENCIES);
     selectField(root, 'Class under the hospital\'s policy', 'maw-class', MW.CLASSES);
     numField(root, 'A tighter hospital window, minutes each side (optional)', 'maw-policy', '');
-    const o = out(); root.appendChild(o);
-    wire(pairs.map(([d]) => d), () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      show(MW.medAdminWindow(args), o);
-    }));
+    const o = out();
+    const formArgs = () => { const args = {}; for (const [dom, arg] of pairs) args[arg] = val(dom); return args; };
+    // spec-v1636 tool 20, file mode: a medication administration export, each dose through medAdminWindow,
+    // then the on-time rate by class. A blank frequency or class cell takes the form's answer.
+    const upload = uploadWorkbench(root, {
+      id: 'maw-upload', fields: BATCH_TOOLS['med-admin-window'].fields, label: 'Check doses from a file',
+      compute: 'med-admin-window', getInput: formArgs, onResult: (r) => safe(o, () => show(r, o)),
+    });
+    root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => {
+      if (upload.isActive()) upload.compute(formArgs());
+      else safe(o, () => show(MW.medAdminWindow(formArgs()), o));
+    });
   },
   'adjusted-patient-days'(root) {
     const pairs = [['apd-days', 'inpatientDays'], ['apd-inpatient', 'inpatientRevenue'], ['apd-outpatient', 'outpatientRevenue'], ['apd-hours', 'workedHours'], ['apd-drugs', 'drugExpense']];
@@ -392,4 +402,9 @@ export const renderers = {
       }
     }));
   },
+};
+
+// spec-v1636 tool 20: a doses file with scheduled and given times goes to the administration-window batch.
+export const acceptFiles = {
+  'med-admin-window': acceptVia('maw-upload-file'),
 };
