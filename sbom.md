@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ddeed8230468ef13`
-Generated: 2026-10-15T03:36:07.610Z
+Build ID: `83f7bed0b1ca6d5f`
+Generated: 2026-10-15T03:45:22.028Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -889,7 +889,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/msu-disc-herniation-v1468.js` | 5974 | `906036d1d64a50fc4829686cc511bc06e14357834de7f64113a8ff860c42f4a2` |
 | `lib/mswat-v557.js` | 12726 | `42864d2132d5a9190cb5e39258683442aa5f4f0bf48f1436a0e2e84ebab34b42` |
 | `lib/mtm-eligibility-check-v1638.js` | 7133 | `acbacd19205b803bc9b5614416f5570efbb78f2180e15a6ac8feb68d1247983d` |
-| `lib/mtm-service-clock-v1638.js` | 10789 | `561e8c60fafe0497353e68ca097250941c69cbe5502e9c14b80ced915f0f13b6` |
+| `lib/mtm-service-clock-v1638.js` | 11389 | `1670b22302d3d7a026dfe3d1fca86b46abac849ba70a5b1b2068e514cec133e8` |
 | `lib/mue-load.js` | 1396 | `b041386112a0e4aeaff46956efb6985c62d0ca6596340e27a9b5dbad2c22249f` |
 | `lib/mue-reference.js` | 3119 | `cff86c9778d0ac2ea5ee79b76ec89067a55d7554fd81a2312f4adf02c37a6880` |
 | `lib/myeloid-prognosis-v199.js` | 12222 | `041504929805fb1abd2c6098c5cf666dae34858d87d6cd4d6bd552fd86b03bab` |
