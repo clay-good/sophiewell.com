@@ -21,3 +21,11 @@ test('SUPD, the MTM clock and the concurrent-use measures each return their rows
   assert.match(c.csv, /^member,COB in denominator/);
   assert.equal(c.csv.split('\n').length, 2);
 });
+
+test('the antibiogram and the payer policy diff guard formula-like text the same way', async () => {
+  const { antibiogramBuilder } = await import('../../lib/antibiogram-builder-v1636.js');
+  const r = antibiogramBuilder({ isolates: 'patient,organism,date,=cmd\nP1,@evil,2026-01-02,S' });
+  assert.match(r.csv, /\n'@evil,1,'=cmd,1,1,/);
+  const { diffCsv } = await import('../../lib/payer-policy-diff.js');
+  assert.equal(diffCsv({ rows: [{ label: 'added', path: '=x', before: '', after: 'a, b', detail: 'say "hi"' }] }), 'change,item,before,after,detail\n"added","\'=x","","a, b","say ""hi"""\n');
+});

@@ -595,6 +595,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The antibiogram builder's CSV and the payer policy change list now neutralize cells that look
+  like spreadsheet formulas, the same way the upload workbench download already did.
+
 - Antibiotic Renal Dose Adjustment: vancomycin no longer says the label has no clearance table (it
   has one), and IV ciprofloxacin at exactly 30 mL/min shows both label rows, since the label prints
   "above 30" and "5 to 29".

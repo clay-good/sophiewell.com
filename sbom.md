@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `95af728ef7e5396d`
-Generated: 2026-10-15T03:53:24.230Z
+Build ID: `9197971a954fbe39`
+Generated: 2026-10-15T04:04:36.671Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -100,7 +100,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/angle-malocclusion-v720.js` | 3749 | `550bb570288e3b855208fcb6d653617ff5a407a361fd819c19a64567397420f2` |
 | `lib/anthro-v238.js` | 7926 | `4c5f0797d588d729e3730edcc931c50876ddee6370637bf44dfd5149e1fe9f9e` |
 | `lib/anthro-v272.js` | 3348 | `e3c7419342dd80c7034ae09801c66c05b3c5ce6e1aa2fdaf1d88e5f07b079485` |
-| `lib/antibiogram-builder-v1636.js` | 14128 | `8c4c558bb53cea154995509ed8196d0d858b9e99e990e87f2995dc0c5a936d58` |
+| `lib/antibiogram-builder-v1636.js` | 14088 | `43c8b89f20c5e867d03860eb57409c763ea1bb74ade15ce0b3eb145dfe1cb201` |
 | `lib/anticholinergic-list-score-v1634.js` | 13014 | `09c48050ae3d14ac41fcb017b845e47518cf83d05640023d190ee091c08c6036` |
 | `lib/anticoag-switch-clock-v1633.js` | 20862 | `a9374ae1015ad54bf121111e0806849aeab10cdf49b1e6064afd366244bccd72` |
 | `lib/antidepressant-fluoxetine-equivalent-v1633.js` | 3961 | `59471d4605068c4921c11c8abe36e86f4e3e23d5ec65fe8f07f3d9fe5403479f` |
@@ -340,7 +340,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cs-rx-transfer-check-v1637.js` | 10296 | `ade915b6fa1c689b63b4859f40af3cd6cefe7136f5df29f432662416bc392742` |
 | `lib/cs-theft-loss-clock-v1637.js` | 6395 | `f31874be56b42ecdf037322cab51d7d9705051c20567488bfeb2522ad9e58298` |
 | `lib/csendes-mirizzi-v1240.js` | 6926 | `a1725f3613e479c96d32f940cc281b60fb120d1e9b5ab4c8d435e7bd2c2ad9ac` |
-| `lib/csv-out.js` | 897 | `05a8c31f0eb688a8a5bec9ba8b6595cdd6985df3539283e62b3a887b9b8b54a3` |
+| `lib/csv-out.js` | 795 | `8c00c2b11b5db58bae5ec38ff065c67cb73920bc3668aef01bb04322dd5d6447` |
 | `lib/csv-rows.js` | 861 | `b699e28b0fc719d09535666919b22d778d6e820b2af7a439794e6ab25cb06d49` |
 | `lib/cts6-v773.js` | 3589 | `50ab3a3aa777a4ed12077b73c3a3a3dc707df6ff98e36a7c579aec5451333c8e` |
 | `lib/cuff-leak-v903.js` | 7823 | `0cf0d0afa2741c0d26f357fe35a05cfd0092146f4282d32e3d331b3adad04faa` |
@@ -1071,7 +1071,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/passive-immunization-dose-v1636.js` | 8890 | `258cf9d31cfbc67aa61de78b8b171d24bd4e8aa1d5801b99b322139d2586ccda` |
 | `lib/patient-release-rg839-v1635.js` | 11691 | `4bf38ddcd0aaf581ac500cca0ed1779de74f57325d148c176f47833cadd86046` |
 | `lib/pauwels-femoral-neck-v374.js` | 3633 | `c77c87f752c89f275d48e3b3d9ef907d095bfe67bfe162e9daa25a54dfe1c70d` |
-| `lib/payer-policy-diff.js` | 9586 | `05d116895870218064a6ba1c070ac8d8675a7819ffe32029ebf5feba4b9822ad` |
+| `lib/payer-policy-diff.js` | 9759 | `941a8fd584cbaf41c2bfdd0d22146bbfb254273d4dfd25421950a90cb599232e` |
 | `lib/pbm-reimbursement-v1510.js` | 3537 | `2be852f82e185628829a5c7cae6e4993f42e08fa81701e9169331761714fd8a7` |
 | `lib/pc-aspects-v1452.js` | 5414 | `51ad6d11a9b2fd21ddfb1d880b8fa29cde8b64e75f901044628c5051f54b7207` |
 | `lib/pc-dose-pole-v1562.js` | 6047 | `f8997e5534d62ea83079e1dbccbbd77173174d086665be42fb51c6d2565cfab2` |
@@ -1444,7 +1444,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/unit-dose-repack-expiry-v1637.js` | 7260 | `cbacfa509cb6f3107e2cc797214e8ccfafc905d51f8c3b67ea8f81db36d00d50` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
 | `lib/upload-fields.js` | 16735 | `450765fe03dd9aa79fb797c817ee224dad8d2f2a38d9aa3215175df41df2f16a` |
-| `lib/upload-intake.js` | 9419 | `bb6f9ead318186954c9329d0e7bd66d099c7d943714bc538200492c360528ea2` |
+| `lib/upload-intake.js` | 9426 | `2151d340626a6efddea86a9d2204d0373831e6463185a92d61cc95d99d52cd71` |
 | `lib/upload-worker.js` | 13567 | `e529634905347376cb020a321aeeffc34ee8cf4a1929ad6011eae668abf979ac` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
 | `lib/uro-v131.js` | 16748 | `68ef5eb787708cadacbd1bd66dc39f0777f3f20456298cd7a883204797fe5440` |
