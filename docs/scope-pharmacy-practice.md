@@ -103,28 +103,28 @@ that a builder would otherwise get wrong.
 
 ## Owner decisions
 
-Each is recorded in full in its spec. A decision gates only the entry named.
+Each is recorded in full in its spec. A decision gates only the entry named. The status column says what each one holds today, or the default the build used, which a decision can still overturn.
 
-| # | Decision | Spec |
-|---|---|---|
-| 1 | When no NDA or BLA holder's label is on DailyMed, is one manufacturer's generic label an acceptable pin? Dozens of drugs across the program depend on it. The machinery spec says yes, named on the page | [v1628](spec-v1628.md) §1 |
-| 2 | `dea-number-check`: ship on a formula that DEA's own example obeys and a journal states, or hold until DEA prints it | [v1637](spec-v1637.md) |
-| 3 | `contraceptive-missed-pill`: keep the combined-pill branch (CDC against labels) or only the progestin-only branches | [v1639](spec-v1639.md) |
-| 4 | `fluoride-supplement-schedule`: drop it, or build it with FDA's sentence in every result | [v1639](spec-v1639.md) |
-| 5 | `hazardous-drug-list-check` and the gene-drug lookups are deciders over a list. Do they pass admission rule 1 on the `substitution-check` precedent? | [v1630](spec-v1630.md), [v1640](spec-v1640.md) |
-| 6 | `anticoag-reversal`: how to word andexanet while a label is still listed and the license withdrawal is unconfirmed | [v1634](spec-v1634.md) |
-| 7 | `nac-dosing`: drop the 110 kg cap for the U.S. label or keep it behind a jurisdiction switch with a source | [v1636](spec-v1636.md) |
-| 8 | `corrected-phenytoin`: annotate the end-stage renal branch or withdraw it | [v1631](spec-v1631.md) |
-| 9 | `chlorpromazine-equivalents`: show four published methods that disagree, or leave it. Merge the two benzodiazepine equivalence entries? | [v1633](spec-v1633.md) |
-| 10 | Instruments read only in open reprints (DIPS, Hartwig): ship with a confirm-against-original gate, or wait | [v1634](spec-v1634.md) |
-| 11 | Facts from a CC BY-NC-ND paper or a free-to-read society guideline (levodopa equivalents; heart-failure target doses): confirm the facts-with-attribution posture | [v1633](spec-v1633.md) |
-| 12 | CPIC dataset expiry: 14 days by the house rule for weekly files (two missed fetches silence eight entries) or longer. Ask CPIC whether naming "CPIC" in text needs permission | [v1640](spec-v1640.md) |
-| 13 | Where a label's table and its own stated rule disagree (botulism antitoxin 55 to 69 kg; Multrys at two weights), the spec follows the table and shows both. Confirm | [v1636](spec-v1636.md), [v1630](spec-v1630.md) |
-| 14 | `adjusted-patient-days` rests on a HUD worksheet and two state laws; no general federal definition was found. Keep or reject | [v1636](spec-v1636.md) |
-| 15 | Two figures in [v1630](spec-v1630.md) come from a table CDC reprints with permission. Keep as single cited figures or drop | [v1630](spec-v1630.md) |
-| 16 | Closed specialty vocabulary: add `nuclear-pharmacy` and `compounding`, or tag with `pharmacy` alone | [v1628](spec-v1628.md) §4 |
-| 17 | `compound-copy-check` counts exactly 10% as "within 10%"; FDA's guidance is silent on the boundary | [v1629](spec-v1629.md) |
-| 18 | The 8-step and 16-step desensitization tables reproduce from the same paper; adding them makes the id `desensitization-12-step` a misnomer | [v1635](spec-v1635.md) |
+| # | Decision | Spec | Status (October 15, 2026) |
+|---|---|---|---|
+| 1 | When no NDA or BLA holder's label is on DailyMed, is one manufacturer's generic label an acceptable pin? Dozens of drugs across the program depend on it. The machinery spec says yes, named on the page | [v1628](spec-v1628.md) §1 | Built with the default: generic labels pinned and named on the page |
+| 2 | `dea-number-check`: ship on a formula that DEA's own example obeys and a journal states, or hold until DEA prints it | [v1637](spec-v1637.md) | Holds `dea-number-check` |
+| 3 | `contraceptive-missed-pill`: keep the combined-pill branch (CDC against labels) or only the progestin-only branches | [v1639](spec-v1639.md) | Built with the default: combined-pill branch kept, each result says the label may differ |
+| 4 | `fluoride-supplement-schedule`: drop it, or build it with FDA's sentence in every result | [v1639](spec-v1639.md) | Holds `fluoride-supplement-schedule` |
+| 5 | `hazardous-drug-list-check` and the gene-drug lookups are deciders over a list. Do they pass admission rule 1 on the `substitution-check` precedent? | [v1630](spec-v1630.md), [v1640](spec-v1640.md) | Holds `hazardous-drug-list-check` (the gene-drug lookups wait on 12) |
+| 6 | `anticoag-reversal`: how to word andexanet while a label is still listed and the license withdrawal is unconfirmed | [v1634](spec-v1634.md) | Built with the default: andexanet marked no longer sold in the U.S., no dose |
+| 7 | `nac-dosing`: drop the 110 kg cap for the U.S. label or keep it behind a jurisdiction switch with a source | [v1636](spec-v1636.md) | Built with the default: the U.S. label's 100 kg cap; no jurisdiction switch (its source was not read) |
+| 8 | `corrected-phenytoin`: annotate the end-stage renal branch or withdraw it | [v1631](spec-v1631.md) | Built with the default: annotated, not withdrawn |
+| 9 | `chlorpromazine-equivalents`: show four published methods that disagree, or leave it. Merge the two benzodiazepine equivalence entries? | [v1633](spec-v1633.md) | Holds the four-method view; the two benzodiazepine entries stay separate |
+| 10 | Instruments read only in open reprints (DIPS, Hartwig): ship with a confirm-against-original gate, or wait | [v1634](spec-v1634.md) | Holds `dips-interaction` and `hartwig-adr-severity` |
+| 11 | Facts from a CC BY-NC-ND paper or a free-to-read society guideline (levodopa equivalents; heart-failure target doses): confirm the facts-with-attribution posture | [v1633](spec-v1633.md) | Holds `valproate-albumin-normalized`; the levodopa and heart-failure entries are built pending confirmation |
+| 12 | CPIC dataset expiry: 14 days by the house rule for weekly files (two missed fetches silence eight entries) or longer. Ask CPIC whether naming "CPIC" in text needs permission | [v1640](spec-v1640.md) | Holds spec-v1640 tools 1 to 5, tool 9's CPIC column, its backfills and spec-v1635 tools 16 to 18 |
+| 13 | Where a label's table and its own stated rule disagree (botulism antitoxin 55 to 69 kg; Multrys at two weights), the spec follows the table and shows both. Confirm | [v1636](spec-v1636.md), [v1630](spec-v1630.md) | Built with the default: the table, with the rule's figure beside it |
+| 14 | `adjusted-patient-days` rests on a HUD worksheet and two state laws; no general federal definition was found. Keep or reject | [v1636](spec-v1636.md) | Built with the default: kept, on the HUD worksheet |
+| 15 | Two figures in [v1630](spec-v1630.md) come from a table CDC reprints with permission. Keep as single cited figures or drop | [v1630](spec-v1630.md) | Holds the isolation-room figure and the pressure backfill |
+| 16 | Closed specialty vocabulary: add `nuclear-pharmacy` and `compounding`, or tag with `pharmacy` alone | [v1628](spec-v1628.md) §4 | Built with the default: tagged `pharmacy` only |
+| 17 | `compound-copy-check` counts exactly 10% as "within 10%"; FDA's guidance is silent on the boundary | [v1629](spec-v1629.md) | Built with the default: exactly 10% counts as within, and the result says so |
+| 18 | The 8-step and 16-step desensitization tables reproduce from the same paper; adding them makes the id `desensitization-12-step` a misnomer | [v1635](spec-v1635.md) | Holds only the 8-step and 16-step options; the 12-step tool is built |
 
 ## Verify at build
 
