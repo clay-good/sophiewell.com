@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Digoxin label dose: a tablet dose converts to intravenous at the ratio the label's four printed
+  pairs share, saying when a dose is not one of those pairs.
 - The antibiogram builder, Statin Use in Persons with Diabetes, the Part D concurrent-use measures
   and the MTM review dates load their lists from a file, reordered by column name, and recognize
   such a file dropped on the home page.

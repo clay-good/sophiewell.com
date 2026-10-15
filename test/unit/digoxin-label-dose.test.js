@@ -95,3 +95,14 @@ test('a serum creatinine gives the label\'s corrected clearance estimate; women 
   assert.match(dg({ ...adult, serumCreatinine: 1.6, patientAge: 60, sex: 'male' }, now).notes.join(' '), /serum creatinine was not used/);
   assert.match(dg({ ...scr, ageGroup: '5-10', sex: 'male' }, now).message, /loading range only/);
 });
+
+// Table 6: tablet to intravenous by the ratio the four printed pairs share.
+test('a tablet dose converts to IV at 0.8, naming a printed pair and saying when it is not one', () => {
+  const p = dg({ ...adult, tabletDose: 250 }, now);
+  assert.equal(p.ivEquivalentMcg, 200);
+  assert.match(p.notes.join(' '), /a pair printed in the label's Table 6/);
+  const q = dg({ ...adult, tabletDose: 187.5 }, now);
+  assert.equal(q.ivEquivalentMcg, 150);
+  assert.match(q.notes.join(' '), /not one of the printed pairs/);
+  assert.match(dg({ ...adult, tabletDose: -1 }, now).message, /tablet dose to convert/);
+});

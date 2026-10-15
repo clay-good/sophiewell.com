@@ -18,6 +18,7 @@ export default [
       { dom: 'dg-scr', arg: 'serumCreatinine', kind: 'number', required: false, label: 'Or, for an adult: serum creatinine (the label estimates the clearance)', unit: 'mg/dL' },
       { dom: 'dg-years', arg: 'patientAge', kind: 'number', required: false, label: 'Age, with a serum creatinine', unit: 'years' },
       { dom: 'dg-sex', arg: 'sex', kind: 'enum', required: false, values: DG.SEXES.map((x) => x.value), label: 'Sex, with a serum creatinine' },
+      { dom: 'dg-tab', arg: 'tabletDose', kind: 'number', required: false, label: 'Tablet dose to convert to intravenous', unit: 'mcg' },
     ],
   },
 ];

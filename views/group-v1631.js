@@ -230,7 +230,7 @@ export const renderers = {
   },
 
   'digoxin-label-dose'(root) {
-    const pairs = [['dg-age', 'ageGroup'], ['dg-weight', 'leanWeight'], ['dg-wunit', 'weightUnit'], ['dg-load', 'loadMcgPerKg'], ['dg-crcl', 'creatinineClearance'], ['dg-scr', 'serumCreatinine'], ['dg-years', 'patientAge'], ['dg-sex', 'sex']];
+    const pairs = [['dg-age', 'ageGroup'], ['dg-weight', 'leanWeight'], ['dg-wunit', 'weightUnit'], ['dg-load', 'loadMcgPerKg'], ['dg-crcl', 'creatinineClearance'], ['dg-scr', 'serumCreatinine'], ['dg-years', 'patientAge'], ['dg-sex', 'sex'], ['dg-tab', 'tabletDose']];
     selectField(root, 'Age group', 'dg-age', DG.AGE_GROUPS);
     numField(root, 'Lean body weight', 'dg-weight', '');
     selectField(root, 'Weight unit', 'dg-wunit', DG.WEIGHT_UNITS);
@@ -238,6 +238,7 @@ export const renderers = {
     const crcl = numField(root, 'Creatinine clearance corrected to 70 kg or 1.73 m², mL/min (for maintenance)', 'dg-crcl', '');
     // spec-v1631 tool 10: the label's adult estimate from a serum creatinine, when no clearance is entered.
     const adultOnly = [numField(root, 'Or, for an adult: serum creatinine, mg/dL', 'dg-scr', ''), numField(root, 'Age, years (with a serum creatinine)', 'dg-years', ''), selectField(root, 'Sex (with a serum creatinine)', 'dg-sex', DG.SEXES)];
+    numField(root, 'Tablet dose to convert to intravenous, mcg (optional)', 'dg-tab', '');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const young = val('dg-age') === '5-10';
