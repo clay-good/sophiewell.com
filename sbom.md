@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `bffc15839adeda63`
-Generated: 2026-10-15T03:11:20.809Z
+Build ID: `55f35e734289b98e`
+Generated: 2026-10-15T03:25:08.834Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -870,7 +870,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/min-weighable-quantity-v1629.js` | 4834 | `0969b7a3d4d8eba7923381a538d42f38e3693a82e060298f4ad1a58874ddbbba` |
 | `lib/minor-self-consent-v1395.js` | 19836 | `8f17e8680232ca267880db83c5544bb9ae0d9ce3f2d13a9fbb3bf7b3c4206f34` |
 | `lib/mis-c-v795.js` | 5510 | `aebe68b4bd5f98d48ddb51cf2a35e0a15ebb97f435a18010a2005382dbebfdbe` |
-| `lib/missed-dose-label-rule-v1639.js` | 24996 | `d2b64ac141086aa200e734c7e672291c36d4da66abbeb05011d7b8b66ad1b4e1` |
+| `lib/missed-dose-label-rule-v1639.js` | 28058 | `bfe949ae172bc4c0793e9606c2fa5afefb590bb75a1be57bf3d33a0bc81d233e` |
 | `lib/mitral-regurgitation-stage-v847.js` | 11352 | `ba47ad4c74266e61fca7cba3ebf57759abc04349542c5e225caa206e81633e3c` |
 | `lib/mitral-stenosis-stage-v845.js` | 10237 | `c7e9a9b1f16a458f0ca2448a2ccab7dc283556c39e1887de682c0119bacc4213` |
 | `lib/mixed-v227.js` | 14143 | `cf5a71f391188406117f4d1772ab278737b69b6e6415ebfdf01f2a2f4ae36971` |
@@ -2293,7 +2293,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/min-weighable-quantity-v1629.js` | 1837 | `67d656dcb7828c747eaf93b5720a7314fbb29799cb045a075718b4791a5eb926` |
 | `mcp/adapters/minor-self-consent-v1395.js` | 1927 | `0b2384374d670d38c31d9c9de41a3b35135ae9ea81f9ffda731d92903d415f50` |
 | `mcp/adapters/mis-c-v795.js` | 2172 | `3edd692acbbf3edf463fa268a0d4ffc1c74c9e0479452e96709ee215a06ce3c3` |
-| `mcp/adapters/missed-dose-label-rule-v1639.js` | 1948 | `4438e4b8bb8e950bca6845f4ade527c4af5f97ba8b3ee36660adbd3fe3c86af4` |
+| `mcp/adapters/missed-dose-label-rule-v1639.js` | 2126 | `12dd7eff4cf57fe54dd0c68fc69f296dd1ffd48d3e1827512c26f474d0d8f8c8` |
 | `mcp/adapters/mitral-regurgitation-stage-v847.js` | 2366 | `bbd37b521b2f6b0f5028135ca29b84f06345157d5d03a793541a42ef9daa8724` |
 | `mcp/adapters/mitral-stenosis-stage-v845.js` | 1938 | `f93b986a2062c388e4cd0b1afd78ea13a5981375cb0a91b8f08a4a6a3741fa9f` |
 | `mcp/adapters/mixed-v227.js` | 7053 | `ea8ef049fe265bd1aff3fb56f60014300005f8cb9884928bdd477fdf4bfe528f` |
@@ -3088,7 +3088,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1636.js` | 23968 | `5dca04a25a44a6549ba3d7282810e1bed648614a9d8b61006f0adecf6b323090` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
 | `views/group-v1638.js` | 37577 | `ada2fb1d7e11c3596f9b8337f7b30a8a23155c4bec1b129187a2f4b7ff50bb5c` |
-| `views/group-v1639.js` | 19157 | `a8037a3cfbf75c384a321604e2bd614b522bb3bb8dfb483769c6e042bf8c3902` |
+| `views/group-v1639.js` | 19294 | `b19f63e4ceca2422ee12d6e8ca56a5c0988ad95e3d75b3129671bc06def36627` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v1640.js` | 5253 | `ca35d66a6cf6e4cba46c8d808a74318c266eea60d02f3a6cd116a63dd554588a` |
 | `views/group-v165.js` | 10575 | `bc3f3b3fe1cddf43d5b5ab8e99063a80d75ecaf527ed9fe608bbed3c8c59b1a9` |

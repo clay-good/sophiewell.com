@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Missed-dose label rule: rivaroxaban's three pediatric rules (once, twice and three times a day)
+  from the Xarelto label.
 - Missed-dose label rule: whether the weekly day of Ozempic, Mounjaro, Zepbound or Trulicity can be
   moved, by the gap from the last dose that each label's section 2 requires.
 - Medication administration window: a doses file gives each dose's answer and the on-time rate

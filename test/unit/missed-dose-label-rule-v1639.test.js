@@ -9,8 +9,8 @@ const NOW = new Date('2026-10-12T12:00:00Z');
 const run = (o, t = T) => md(o, NOW, t);
 const v = (o) => run(o).verdict;
 
-test('twenty rows on sixteen labels', () => {
-  assert.equal(PRODUCTS.length, 20);
+test('twenty-three rows on sixteen labels', () => {
+  assert.equal(PRODUCTS.length, 23); // 20, then the three pediatric Xarelto rows (2026-10-14)
   assert.equal(new Set(PRODUCTS.map((p) => p.setId)).size, 16);
 });
 
@@ -87,4 +87,17 @@ test('change of day: at least 3 days for tirzepatide and dulaglutide; Ozempic le
   assert.match(c('semaglutide-weekly-ozempic', '2026-10-12T08:00', '2026-10-14T08:01').notes.join(' '), /section 2\.1: "The day of weekly administration can be changed/);
   assert.match(c('semaglutide-weekly-weight-management', '2026-10-12', '2026-10-16').message, /^The Wegovy label's section 2 states no rule for changing the dosing day/);
   assert.match(md({ product: 'tirzepatide-mounjaro', changeTo: '2026-10-16' }, now).message, /^Enter when the last dose was taken/);
+});
+
+// Xarelto section 2.5, pediatric patients (version 65, re-read October 14, 2026).
+test('rivaroxaban, pediatric: once a day same day or skip; twice a day by morning or evening; three times a day skip', () => {
+  const now = new Date('2026-10-14T12:00:00Z');
+  const r = (product, extra) => md({ product, dueAt: '2026-10-14T08:00', nowAt: '2026-10-14T20:00', ...extra }, now);
+  assert.equal(r('rivaroxaban-peds-qd').verdict, 'take');
+  assert.equal(r('rivaroxaban-peds-qd', { nowAt: '2026-10-15T07:00' }).verdict, 'skip');
+  assert.match(r('rivaroxaban-peds-bid').message, /^Choose whether the morning or the evening dose was missed/);
+  assert.match(r('rivaroxaban-peds-bid', { doseSlot: 'morning' }).band, /may be taken together with the evening dose/);
+  assert.equal(r('rivaroxaban-peds-bid', { doseSlot: 'evening', dueAt: '2026-10-14T19:00', nowAt: '2026-10-14T22:00' }).verdict, 'take');
+  assert.equal(r('rivaroxaban-peds-bid', { doseSlot: 'evening', dueAt: '2026-10-14T19:00', nowAt: '2026-10-15T06:00' }).verdict, 'skip');
+  assert.equal(r('rivaroxaban-peds-tid').verdict, 'skip');
 });

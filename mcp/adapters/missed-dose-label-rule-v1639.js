@@ -16,6 +16,7 @@ export default [
       { dom: 'mdl-next', arg: 'nextDoseAt', kind: 'string', label: 'Next scheduled dose (dabigatran, Wegovy, Trulicity, monthly tablets)' },
       { dom: 'mdl-last', arg: 'lastDoseAt', kind: 'string', label: 'When the last dose was taken (liraglutide, or a change of day)' },
       { dom: 'mdl-tablets', arg: 'tabletsMissed', kind: 'enum', values: MD.TABLETS_MISSED.map((t) => t.value), label: 'Risedronate 75 mg: one or both tablets missed' },
+      { dom: 'mdl-slot', arg: 'doseSlot', kind: 'enum', values: MD.DOSE_SLOTS.map((t) => t.value), label: 'Rivaroxaban twice a day, pediatric: morning or evening dose missed' },
       { dom: 'mdl-change', arg: 'changeTo', kind: 'string', label: 'Changing the weekly day: planned new dose time (Ozempic, Mounjaro, Zepbound, Trulicity)' },
     ],
   },
