@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- DEA registration renewal: manufacturers, distributors, researchers, importers, exporters and
+  narcotic treatment programs, with their 1-year period and first-period check.
 - Missed-dose label rule: rivaroxaban's three pediatric rules (once, twice and three times a day)
   from the Xarelto label.
 - Missed-dose label rule: whether the weekly day of Ozempic, Mounjaro, Zepbound or Trulicity can be

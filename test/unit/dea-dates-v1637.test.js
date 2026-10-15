@@ -20,7 +20,7 @@ test('renewal: 60 days, the 45-day mark, the reinstatement month and the next 36
 test('renewal: 120 days for a bulk manufacturer or importer of Schedule I or II', () => {
   const r = deaRegistrationRenewal({ kind: 'bulk-manufacturer-or-importer', expires: '2027-03-31' }, now);
   assert.equal(r.earliestApplication, '2026-12-01');
-  assert.equal(r.nextExpiration, undefined);
+  assert.equal(r.nextExpiration, '2028-03-31'); // 1 year, the 1301.13(e) table
 });
 
 test('renewal: where a submitted application falls', () => {
@@ -110,4 +110,14 @@ test('five percent rule: headroom, a planned transfer, and the long-term care ex
   assert.match(csFivePercentRule({ dispensed: 100, distributed: 10, ltcAds: 11 }).message, /no more than the total distributed/);
   assert.match(csFivePercentRule({}).message, /^Enter the dosage units dispensed/);
   assert.match(csFivePercentRule({ dispensed: 0, distributed: 0 }).message, /^Enter the dosage units/);
+});
+
+// 21 CFR 1301.13(c) and the 1-year period in the 1301.13(e) table (re-read October 14, 2026).
+test('an annual registrant: 60-day window, next expiration a year on, and a first period of 3 to under 15 months', async () => {
+  const { deaRegistrationRenewal: dr } = await import('../../lib/dea-registration-renewal-v1637.js');
+  const r = dr({ kind: 'annual-registrant', expires: '2027-03-31', registered: '2026-02-10' }, new Date(2026, 9, 14));
+  assert.deepEqual([r.earliestApplication, r.nextExpiration, r.firstPeriodMonths], ['2027-01-30', '2028-03-31', 13]);
+  assert.doesNotMatch(r.notes.join(' '), /outside it/);
+  assert.match(dr({ kind: 'annual-registrant', expires: '2027-06-30', registered: '2026-02-10' }, new Date(2026, 9, 14)).notes.join(' '), /16 whole months.*outside it/);
+  assert.equal(dr({ kind: 'bulk-manufacturer-or-importer', expires: '2027-03-31' }, new Date(2026, 9, 14)).nextExpiration, '2028-03-31');
 });

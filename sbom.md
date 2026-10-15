@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `55f35e734289b98e`
-Generated: 2026-10-15T03:25:08.834Z
+Build ID: `ddeed8230468ef13`
+Generated: 2026-10-15T03:36:07.610Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -356,7 +356,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ddd-rate-v1636.js` | 3460 | `edfad6f5764536fe0ece8195d575672aa3f493892fbec88f0e64416149b83610` |
 | `lib/de-winter-pattern-v1443.js` | 3588 | `55058d3040772d5dbe9cd92f4f1485cc502781c96c1bf756c27eb4f4e78a11b1` |
 | `lib/dea-222-validity-v1637.js` | 6414 | `214814d39c0301ba6139d6f7e9ab7155c2240d1287f151cd335e12eda268be1b` |
-| `lib/dea-registration-renewal-v1637.js` | 9157 | `91c48dd1c7c32e1b3792f84bac03e8b9b7b4c2101607de0435a5049b999f120d` |
+| `lib/dea-registration-renewal-v1637.js` | 11024 | `822c6caf2592d853dd75f466d35874b7db90317a930e069c5c02215442befc10` |
 | `lib/deadline.js` | 9429 | `beb8669b48940e72cbe75e8210b82fc3acce0bd8c2c74906bcc1f7796d07a63b` |
 | `lib/dean-fluorosis-cfi-v1484.js` | 3363 | `4945d9b514bd4ab5dd97d6fda65b6e2eaa9058ab968cbdec3a228679cc4d3c97` |
 | `lib/deauville-v314.js` | 3653 | `06e9bfdbf337b56c341a3ac22ee5452152e62e19faca722bd33f7ae609c78119` |
