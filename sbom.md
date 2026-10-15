@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `83f7bed0b1ca6d5f`
-Generated: 2026-10-15T03:45:22.028Z
+Build ID: `95af728ef7e5396d`
+Generated: 2026-10-15T03:53:24.230Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -340,6 +340,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cs-rx-transfer-check-v1637.js` | 10296 | `ade915b6fa1c689b63b4859f40af3cd6cefe7136f5df29f432662416bc392742` |
 | `lib/cs-theft-loss-clock-v1637.js` | 6395 | `f31874be56b42ecdf037322cab51d7d9705051c20567488bfeb2522ad9e58298` |
 | `lib/csendes-mirizzi-v1240.js` | 6926 | `a1725f3613e479c96d32f940cc281b60fb120d1e9b5ab4c8d435e7bd2c2ad9ac` |
+| `lib/csv-out.js` | 897 | `05a8c31f0eb688a8a5bec9ba8b6595cdd6985df3539283e62b3a887b9b8b54a3` |
 | `lib/csv-rows.js` | 861 | `b699e28b0fc719d09535666919b22d778d6e820b2af7a439794e6ab25cb06d49` |
 | `lib/cts6-v773.js` | 3589 | `50ab3a3aa777a4ed12077b73c3a3a3dc707df6ff98e36a7c579aec5451333c8e` |
 | `lib/cuff-leak-v903.js` | 7823 | `0cf0d0afa2741c0d26f357fe35a05cfd0092146f4282d32e3d331b3adad04faa` |
@@ -889,7 +890,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/msu-disc-herniation-v1468.js` | 5974 | `906036d1d64a50fc4829686cc511bc06e14357834de7f64113a8ff860c42f4a2` |
 | `lib/mswat-v557.js` | 12726 | `42864d2132d5a9190cb5e39258683442aa5f4f0bf48f1436a0e2e84ebab34b42` |
 | `lib/mtm-eligibility-check-v1638.js` | 7133 | `acbacd19205b803bc9b5614416f5570efbb78f2180e15a6ac8feb68d1247983d` |
-| `lib/mtm-service-clock-v1638.js` | 11389 | `1670b22302d3d7a026dfe3d1fca86b46abac849ba70a5b1b2068e514cec133e8` |
+| `lib/mtm-service-clock-v1638.js` | 11787 | `500653901a3caa4692987ab274bbbaf4e7ad358adeb0e00230ab96e6e997f4c2` |
 | `lib/mue-load.js` | 1396 | `b041386112a0e4aeaff46956efb6985c62d0ca6596340e27a9b5dbad2c22249f` |
 | `lib/mue-reference.js` | 3119 | `cff86c9778d0ac2ea5ee79b76ec89067a55d7554fd81a2312f4adf02c37a6880` |
 | `lib/myeloid-prognosis-v199.js` | 12222 | `041504929805fb1abd2c6098c5cf666dae34858d87d6cd4d6bd552fd86b03bab` |
@@ -1053,7 +1054,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/part-b-or-d.js` | 11017 | `20ae807ade60c91e9cfc71cf5d7370a9bad1c48cd220c94d1cead2239050b121` |
 | `lib/partb-supply-dispensing-fee-v1638.js` | 5914 | `1641aeceaaa7a8dd9334b713882fe1bd1bba6907610ec12cb55b0b58dbd51b93` |
 | `lib/partd-appeals-v1503.js` | 12294 | `1378bcf2b538a7b880a63044f8ce4b7f1c1fd517fabeafbb2c349cb8a9a57325` |
-| `lib/partd-concurrent-use-measures-v1638.js` | 12583 | `011c2fb2d61df91589de82eb1625b020bed20908b95873db32fc7e0ff43ba50d` |
+| `lib/partd-concurrent-use-measures-v1638.js` | 13051 | `c20ca0e7fab25d85859a111f5b4ebadd2d7fdd8a06c31c5668d42f383872ec0a` |
 | `lib/partd-costs-v1506.js` | 8541 | `6d3b2ad77e78845caecb14691d0fa02cd21ee2a35339276193173019a7d0703e` |
 | `lib/partd-daily-cost-share-v1638.js` | 6110 | `f770cdd0c5d5dc8240ac0c5778d30b2aba7e01e465acf319172bfb55593223cc` |
 | `lib/partd-dmp-criteria-check-v1638.js` | 7255 | `a4d287c8e1d58fe94add08a8c20c88406b6c8ce26962be6746e9d5e80170f509` |
@@ -1363,7 +1364,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/sun-ac-flare-v422.js` | 3437 | `c372e87d2726c6e87123b9971c50eed8b5d23a434bd99dc6dad494e10005b30c` |
 | `lib/sunct-suna-ichd3-v820.js` | 8213 | `69340f33957e7235f7ea341325e2391ae36fbce3d002791935ee46d669997f5c` |
 | `lib/sunnybrook-facial-v509.js` | 6479 | `44a4dccd9400ffcde761ed885ef5cc3588b42ed8e7a0822e8653a1261fd1b8b5` |
-| `lib/supd-measure-v1638.js` | 9073 | `5202f4188f7679b5c567c6e16815e807403a9c6417bb1fc894cc8ad655cc502d` |
+| `lib/supd-measure-v1638.js` | 9330 | `62447151efaa0eff95a5ef876669c02dff383bdba0a00cec03f9651279e966ce` |
 | `lib/suppository-displacement-v1629.js` | 6978 | `d6cbd66aa0e380027487b1922a8ce0eda5107638b940dc3bf1ac87779a93f1b4` |
 | `lib/surg-v142.js` | 16902 | `8bc28c3385b76d1fc0d11a3171f3459e09fd4c91e3b9548516cfd8c5692e39d2` |
 | `lib/synonyms.js` | 3813 | `95d65001246939cb582331c67925d1da1a0b312f40ac9a872eff3fb905e38e5a` |
@@ -3087,7 +3088,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 23968 | `5dca04a25a44a6549ba3d7282810e1bed648614a9d8b61006f0adecf6b323090` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
-| `views/group-v1638.js` | 37577 | `ada2fb1d7e11c3596f9b8337f7b30a8a23155c4bec1b129187a2f4b7ff50bb5c` |
+| `views/group-v1638.js` | 38174 | `f48f3e50712f793fbcf0def0965193c9e54f291241b02efae3987cc1e3111e41` |
 | `views/group-v1639.js` | 19294 | `b19f63e4ceca2422ee12d6e8ca56a5c0988ad95e3d75b3129671bc06def36627` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v1640.js` | 5253 | `ca35d66a6cf6e4cba46c8d808a74318c266eea60d02f3a6cd116a63dd554588a` |

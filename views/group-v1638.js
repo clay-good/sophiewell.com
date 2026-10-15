@@ -89,6 +89,17 @@ function wire(ids, run) {
   for (const id of ids) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
   run();
 }
+// The per-row result as CSV, in a box the reader copies into a spreadsheet.
+function csvBox(o, id, text) {
+  if (!text) return;
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: 'Each row as CSV' }));
+  wrap.appendChild(el('br'));
+  const box = el('textarea', { id, rows: '6', readonly: 'readonly' });
+  box.value = text;
+  wrap.appendChild(box);
+  o.appendChild(wrap);
+}
 function show(r, o) {
   if (!r.valid) { note(o, r.message); return; }
   resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Result', value: r.bandLabel }]);
@@ -508,7 +519,9 @@ export const renderers = {
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      show(SU.supdMeasure(args), o);
+      const r = SU.supdMeasure(args);
+      show(r, o);
+      if (r.valid) csvBox(o, 'supd-csv', r.csv);
     }));
   },
   'partd-concurrent-use-measures'(root) {
@@ -522,7 +535,9 @@ export const renderers = {
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      show(CU.partdConcurrentUseMeasures(args), o);
+      const r = CU.partdConcurrentUseMeasures(args);
+      show(r, o);
+      if (r.valid) csvBox(o, 'cum-csv', r.csv);
     }));
   },
   'partd-opioid-measures'(root) {
@@ -550,7 +565,9 @@ export const renderers = {
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      show(MC.mtmServiceClock(args), o);
+      const r = MC.mtmServiceClock(args);
+      show(r, o);
+      if (r.valid) csvBox(o, 'mtm-csv', r.csv);
     }));
   },
 };

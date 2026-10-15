@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:83f7bed0-b1ca-5d5f-81e7-677e71129c6f",
+  "serialNumber": "urn:uuid:95af728e-f7e5-596d-85f4-2a5961426471",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-15T03:45:22.028Z",
+    "timestamp": "2026-10-15T03:53:24.230Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -6457,6 +6457,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6926"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/csv-out.js",
+      "type": "file",
+      "name": "lib/csv-out.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "05a8c31f0eb688a8a5bec9ba8b6595cdd6985df3539283e62b3a887b9b8b54a3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "897"
         }
       ]
     },
@@ -17996,7 +18017,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1670b22302d3d7a026dfe3d1fca86b46abac849ba70a5b1b2068e514cec133e8"
+          "content": "500653901a3caa4692987ab274bbbaf4e7ad358adeb0e00230ab96e6e997f4c2"
         }
       ],
       "properties": [
@@ -18006,7 +18027,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11389"
+          "value": "11787"
         }
       ]
     },
@@ -21440,7 +21461,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "011c2fb2d61df91589de82eb1625b020bed20908b95873db32fc7e0ff43ba50d"
+          "content": "c20ca0e7fab25d85859a111f5b4ebadd2d7fdd8a06c31c5668d42f383872ec0a"
         }
       ],
       "properties": [
@@ -21450,7 +21471,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12583"
+          "value": "13051"
         }
       ]
     },
@@ -27950,7 +27971,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5202f4188f7679b5c567c6e16815e807403a9c6417bb1fc894cc8ad655cc502d"
+          "content": "62447151efaa0eff95a5ef876669c02dff383bdba0a00cec03f9651279e966ce"
         }
       ],
       "properties": [
@@ -27960,7 +27981,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9073"
+          "value": "9330"
         }
       ]
     },
@@ -64154,7 +64175,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ada2fb1d7e11c3596f9b8337f7b30a8a23155c4bec1b129187a2f4b7ff50bb5c"
+          "content": "f48f3e50712f793fbcf0def0965193c9e54f291241b02efae3987cc1e3111e41"
         }
       ],
       "properties": [
@@ -64164,7 +64185,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "37577"
+          "value": "38174"
         }
       ]
     },
@@ -95273,6 +95294,7 @@
         "urn:sophiewell:file:source:lib/cs-rx-transfer-check-v1637.js",
         "urn:sophiewell:file:source:lib/cs-theft-loss-clock-v1637.js",
         "urn:sophiewell:file:source:lib/csendes-mirizzi-v1240.js",
+        "urn:sophiewell:file:source:lib/csv-out.js",
         "urn:sophiewell:file:source:lib/csv-rows.js",
         "urn:sophiewell:file:source:lib/cts6-v773.js",
         "urn:sophiewell:file:source:lib/cuff-leak-v903.js",
@@ -98851,7 +98873,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "83f7bed0b1ca6d5f"
+      "value": "95af728ef7e5396d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98863,7 +98885,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3759"
+      "value": "3760"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
