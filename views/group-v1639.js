@@ -288,13 +288,15 @@ export const renderers = {
     }));
   },
   'missed-dose-label-rule'(root) {
-    const pairs = [['mdl-product', 'product'], ['mdl-due', 'dueAt'], ['mdl-now', 'nowAt'], ['mdl-next', 'nextDoseAt'], ['mdl-last', 'lastDoseAt'], ['mdl-tablets', 'tabletsMissed']];
+    const pairs = [['mdl-product', 'product'], ['mdl-due', 'dueAt'], ['mdl-now', 'nowAt'], ['mdl-next', 'nextDoseAt'], ['mdl-last', 'lastDoseAt'], ['mdl-tablets', 'tabletsMissed'], ['mdl-change', 'changeTo']];
     selectField(root, 'Product and regimen', 'mdl-product', MD.PRODUCTS);
     dateField(root, 'When the missed dose was due', 'mdl-due', 'datetime-local');
     dateField(root, 'Date and time now', 'mdl-now', 'datetime-local');
     dateField(root, 'Next scheduled dose (dabigatran, Wegovy, Trulicity, monthly tablets)', 'mdl-next', 'datetime-local');
-    dateField(root, 'Liraglutide: when the last dose was taken', 'mdl-last', 'datetime-local');
+    dateField(root, 'When the last dose was taken (liraglutide, or a change of day)', 'mdl-last', 'datetime-local');
     selectField(root, 'Risedronate 75 mg: tablets missed', 'mdl-tablets', MD.TABLETS_MISSED);
+    // spec-v1639 tool 6: moving the weekly day of Ozempic, Mounjaro, Zepbound or Trulicity.
+    dateField(root, 'Changing the weekly day instead: planned new dose time (optional)', 'mdl-change', 'datetime-local');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};

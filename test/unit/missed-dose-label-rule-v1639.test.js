@@ -74,3 +74,17 @@ test('refusals and a withheld label', () => {
   const w = run({ product: 'apixaban-bid', dueAt: '2026-10-12T08:00', nowAt: '2026-10-12T15:00' }, { ...T, [p.setId]: row('Eliquis', { supersededOn: '2026-11-01' }) });
   assert.deepEqual([w.withheld, w.verdict], [true, undefined]);
 });
+
+// spec-v1639 tool 6: changing the weekly day, from section 2 of four labels (re-read October 14, 2026).
+test('change of day: at least 3 days for tirzepatide and dulaglutide; Ozempic leaves exactly 48 hours open', () => {
+  const now = new Date('2026-10-14T12:00:00Z');
+  const c = (product, lastDoseAt, changeTo) => md({ product, lastDoseAt, changeTo }, now);
+  assert.equal(c('tirzepatide-mounjaro', '2026-10-12T08:00', '2026-10-15T08:00').verdict, 'change-allowed');
+  assert.equal(c('tirzepatide-zepbound', '2026-10-12T08:00', '2026-10-15T07:59').verdict, 'too-soon');
+  assert.equal(c('dulaglutide-weekly', '2026-10-12', '2026-10-15').verdict, 'change-allowed');
+  assert.equal(c('semaglutide-weekly-ozempic', '2026-10-12T08:00', '2026-10-14T08:00').verdict, 'label-leaves-this-open');
+  assert.equal(c('semaglutide-weekly-ozempic', '2026-10-12T08:00', '2026-10-14T08:01').verdict, 'change-allowed');
+  assert.match(c('semaglutide-weekly-ozempic', '2026-10-12T08:00', '2026-10-14T08:01').notes.join(' '), /section 2\.1: "The day of weekly administration can be changed/);
+  assert.match(c('semaglutide-weekly-weight-management', '2026-10-12', '2026-10-16').message, /^The Wegovy label's section 2 states no rule for changing the dosing day/);
+  assert.match(md({ product: 'tirzepatide-mounjaro', changeTo: '2026-10-16' }, now).message, /^Enter when the last dose was taken/);
+});
