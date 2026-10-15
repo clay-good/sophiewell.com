@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `14cad4a97a0e9f75`
-Generated: 2026-10-15T16:07:59.098Z
+Build ID: `0d3b84156edc85c6`
+Generated: 2026-10-15T17:07:56.366Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -324,7 +324,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cotton-myer-v419.js` | 2898 | `1ee091c8f1a08282081b62560a0625e612bf73b654c3953f872dcf7c1dc633e9` |
 | `lib/cpak-v1447.js` | 3596 | `818a053d9d74c05980b10f077c93825f412f56979aac3821aa5d7182356f3ac6` |
 | `lib/cpic-dose-factors-v1640.js` | 21944 | `c7a5efdb0bc16e8375b69360577ef4e7a33321e10a4060a378234ac84545010a` |
-| `lib/cpic-gene-drug-v1640.js` | 11265 | `48de62a31a4ba83415d84cffe1622794f2f0395bbd104d135778756e63ad4185` |
+| `lib/cpic-gene-drug-v1640.js` | 11468 | `0bac5ab9fc50fa23c9932e38d37fd1f855babf06343d2a6211bb6d25f3e0f970` |
 | `lib/cpic-load.js` | 993 | `d402d7007201d549632a9099b9491876cda4d0c7dc5edf1bc86835c3e0de9c4c` |
 | `lib/cpic-tables.js` | 4383 | `7effa8aab3742cf958291113fef63c395e14beda29712599077c6d687a202270` |
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |

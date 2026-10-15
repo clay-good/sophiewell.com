@@ -65,12 +65,20 @@ export const CLOCK_DEPENDENT = new Set([
   'appeal-deadline',
   'claims-pct-medicare',
   'code-blue-clock',
+  // spec-v1640: these read the CPIC tables, which carry a check date (the fetch plus 14 days). Past it
+  // they stop computing and say so, which is the fail-closed rule of spec-v1628, so the same inputs do
+  // read differently a year later -- on purpose. The reading they change TO is the refusal, never a
+  // different number, and never a blank: a long refusal used to be lifted out of the live region by the
+  // intro-note hoist, which is why `cpic-gene-drug` keeps its refusal to one sentence.
+  'cpic-gene-drug',
   'cs-biennial-inventory',
   'cs-disposal-clock',
   'cs-theft-loss-clock',
+  'cyp2d6-activity-score',
   'dea-222-validity',
   'dea-registration-renewal',
   'device-day-counter',
+  'dpyd-fluoropyrimidine-dose',
   'lcd-diagnosis-check',
   'due-date',
   'fda-adverse-event-report-clock',
@@ -79,6 +87,8 @@ export const CLOCK_DEPENDENT = new Set([
   'mat-injection-admin-deadline',
   'overpayment-60day',
   'pa-turnaround',
+  'pgx-diplotype-phenotype',
+  'pgx-panel-review',
   'pharmacy-spread-check',
   // spec-v1638: a 14-day order clock; the last day comes from the start date and the line beside it counts down.
   'psychotropic-prn-clock',
@@ -86,4 +96,5 @@ export const CLOCK_DEPENDENT = new Set([
   'preventive-owed',
   'substitution-check',
   'timely-filing',
+  'tpmt-nudt15-thiopurine-dose',
 ]);

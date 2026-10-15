@@ -116,7 +116,11 @@ test('gene-drug: populations, drugs with a guideline but no rows, and unknown dr
   assert.match(gd({ drug: 'warfarin' }, DB, NOW).notes.join(' '), /does not follow simple diplotype to phenotype translation/);
   assert.match(gd({ drug: 'ondansetron' }, DB, NOW).notes.join(' '), /CYP2D6 and Ondansetron and Tropisetron, 2026/);
   assert.match(gd({ drug: 'aspirin' }, DB, NOW).message, /Neither CPIC's database nor the FDA table/);
-  assert.match(gd({ drug: 'codeine', results: 'CYP2D6: 0' }, DB, new Date('2026-10-30T12:00:00Z')).message, /past their check date.*No CPIC recommendation is shown.*FDA, section/);
+  // The refusal is one sentence: as the only child of the live region, a long one is lifted out by the
+  // intro-note hoist in app.js and the reader sees an empty result.
+  const expired = gd({ drug: 'codeine', results: 'CYP2D6: 0' }, DB, new Date('2026-10-30T12:00:00Z'));
+  assert.match(expired.message, /past their check date \(2026-10-29\)\. No CPIC recommendation is shown\.$/);
+  assert.ok(expired.message.length < 200, `a refusal stays short; this one ran ${expired.message.length}`);
 });
 
 test('panel review: HLA-B*15:02 positive touches the four antiseizure drugs; a normal result changes nothing', () => {
