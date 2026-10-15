@@ -2298,6 +2298,17 @@ const MODULES = {
   'tb-testing.js': tbTesting,
 };
 
+// Why MODULES is not simply every file in lib/ (checked October 15, 2026, after a leak was found in a
+// helper library nobody had listed). Of the 1,491 libraries, 1,118 are listed here. The 306 that export a
+// function and are not listed were swept with these same invariants: the findings were browser-only
+// libraries that cannot run here at all (`hand-off.js` reaches for `CSS`, `hash.js` `patchHash` for
+// `window`), file readers whose declared error for a file that is not what it claims to be is a
+// SyntaxError rather than the TypeError or RangeError a compute function throws (`carin-eob-reader.js`),
+// and small internal formatters handed NaN directly (`usd`, `money`, `fmtTime`), which is the case the
+// scoping note above deliberately leaves out: the invariant is about what reaches the DOM on the
+// REACHABLE matrix, not blanket finiteness of an internal field. None was reachable from a tile. So the
+// map is maintained per compute library rather than generated, and a new one has to be added by hand --
+// which is how `lib/cpic-tables.js` went unfuzzed until its footer printed "undefined" to a reader.
 const MATRIX = [0, -1, 1e9, NaN, Infinity, -Infinity, '', undefined, null];
 const BANNED = ['NaN', 'Infinity', 'undefined'];
 
