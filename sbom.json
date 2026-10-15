@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1c5f58bc-e4d0-505c-803c-66e97a40f893",
+  "serialNumber": "urn:uuid:08528798-ee17-5b75-8107-2c770daa926d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-15T11:34:41.173Z",
+    "timestamp": "2026-10-15T11:51:46.497Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2294 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2295 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1e5c86f6c2c8fc067e6087225fcfeddb162aa817c4133efedac8252ba37e6277"
+          "content": "7c0ed1757e53766a206e1df326cc6f477add30e002e514d7ffa591f2c16407dd"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "149688"
+          "value": "149736"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5d858ec56c79e3b2e57aa991c1dec63ff4379c110b3cc60a14e4e56893dd3a0f"
+          "content": "fae16ebf12248cdeff4b213ac7ceb18c3eabee679c033cc5e08d411a696edf42"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "632526"
+          "value": "632676"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "db941c54eae68b7ec4180ef3d6d6cc3536616c6d4632695cfabdc7f1dc409e81"
+          "content": "6d09c67bc36de63c7dfc44428a08cd904fe883857f34b047713c7b04948bd543"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "288726"
+          "value": "288862"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c56e965dbe670438350375de19ff76048839b3e966b240a539364c4246e0379a"
+          "content": "368b40337cd2e42036aaf2af58c1414455683944fe0e4dc5d0dd18ebb497072b"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "139901"
+          "value": "139964"
         }
       ]
     },
@@ -11375,6 +11375,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hazardous-drug-list-check-v1630.js",
+      "type": "file",
+      "name": "lib/hazardous-drug-list-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fd5b6f4288a5ec170d4ebf6471b0781299250b93340805cc09e1b69bbecb796b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7644"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hbv-serology-v1400.js",
       "type": "file",
       "name": "lib/hbv-serology-v1400.js",
@@ -17198,7 +17219,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cf3d375a9614d97e327a69061d2742b738bf8e0997986699ec12665f8215c572"
+          "content": "0eb64ef658790301289c981cf804a713108371727028c27982773185193ae4e8"
         }
       ],
       "properties": [
@@ -17208,7 +17229,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3007768"
+          "value": "3008463"
         }
       ]
     },
@@ -19204,6 +19225,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2985"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/niosh-hazardous-drugs-2024.js",
+      "type": "file",
+      "name": "lib/niosh-hazardous-drugs-2024.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "40ac366550f2b0be1477acdfec4c2660d88a81ec33fd9c88be8f3eef66fc27a9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "14360"
         }
       ]
     },
@@ -41951,6 +41993,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hazardous-drug-list-check-v1630.js",
+      "type": "file",
+      "name": "mcp/adapters/hazardous-drug-list-check-v1630.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4fbbeb5284103c67b7487e930b4e12e9b9f06ec8f82ef98ab88c42493ce1c665"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1021"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hbv-serology-v1400.js",
       "type": "file",
       "name": "mcp/adapters/hbv-serology-v1400.js",
@@ -59597,7 +59660,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e29776f9566a38109e3ce86002a4ad5cacd4c2166601bb2b0b619b6217ca1bf7"
+          "content": "4facb4644b83e84dd9fe23cd5873d560ad1487fb50a894beed32f6e7eeea1c90"
         }
       ],
       "properties": [
@@ -59607,7 +59670,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "160575"
+          "value": "160732"
         }
       ]
     },
@@ -64112,7 +64175,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c64bd4d306fd4c29c9a1222200f3486df5b24d049f12cb2af1d2725b0c6895eb"
+          "content": "10eb09cefcbe82860b8fd87d2dec411ab0e81534c09f894ae8d9fb786405847b"
         }
       ],
       "properties": [
@@ -64122,7 +64185,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "23495"
+          "value": "24554"
         }
       ]
     },
@@ -95633,6 +95696,7 @@
         "urn:sophiewell:file:source:lib/hatch-af-v1435.js",
         "urn:sophiewell:file:source:lib/hattrup-johnson-v492.js",
         "urn:sophiewell:file:source:lib/hawkins-talar-v342.js",
+        "urn:sophiewell:file:source:lib/hazardous-drug-list-check-v1630.js",
         "urn:sophiewell:file:source:lib/hbv-serology-v1400.js",
         "urn:sophiewell:file:source:lib/hcc-surveillance-v281.js",
         "urn:sophiewell:file:source:lib/hcv-test-sequence-v1400.js",
@@ -96006,6 +96070,7 @@
         "urn:sophiewell:file:source:lib/nichd-fhr-v912.js",
         "urn:sophiewell:file:source:lib/nih-cpsi-v566.js",
         "urn:sophiewell:file:source:lib/ninja-nephrotoxin-exposure-v1634.js",
+        "urn:sophiewell:file:source:lib/niosh-hazardous-drugs-2024.js",
         "urn:sophiewell:file:source:lib/niosh-lifting-v885.js",
         "urn:sophiewell:file:source:lib/nj-civil-commitment-clock-v1389.js",
         "urn:sophiewell:file:source:lib/nj-death-religious-exemption-v1392.js",
@@ -98039,6 +98104,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hatch-af-v1435.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hattrup-johnson-v492.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hawkins-talar-v342.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hazardous-drug-list-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hbv-serology-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hcc-surveillance-v281.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hcv-test-sequence-v1400.js",
@@ -98983,7 +99049,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1c5f58bce4d0305c"
+      "value": "08528798ee174b75"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98995,7 +99061,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3765"
+      "value": "3768"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

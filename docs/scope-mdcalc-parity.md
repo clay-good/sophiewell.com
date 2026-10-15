@@ -936,3 +936,5 @@ experience**.
 > v1640, Codeine and Tramadol: Age, Procedure and CYP2D6 Status (FDA Labels) — [spec-v1640](spec-v1640.md), which adds `opioid-cyp2d6-pediatric-check` — is 2293.)
 
 > v1637, DEA Number Format and Check Digit — [spec-v1637](spec-v1637.md), which adds `dea-number-check` — is 2294.)
+
+> v1630, NIOSH Hazardous Drug List Lookup — [spec-v1630](spec-v1630.md), which adds `hazardous-drug-list-check` — is 2295.)

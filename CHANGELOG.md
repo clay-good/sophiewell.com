@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- NIOSH Hazardous Drug List Lookup: whether a drug, or each name on a pasted formulary list, is on
+  the NIOSH 2024 list and in which table, with a CSV of the list. A miss says "not on this edition of
+  this list," never that a drug is safe to handle.
 - DEA Number Format and Check Digit: the form and check digit of a DEA registration number, on the
   formula a pharmacy-law article states (DEA does not publish it); a pass never says the number is real.
 - Label titration calendar: topiramate adjunctive schedules for adults and ages 2 to 16, from the

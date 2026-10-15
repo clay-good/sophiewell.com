@@ -137,6 +137,7 @@ ratio from user input.
 | `data/mme-factors/mme.json` | Opioid MME (CDC 2022) | CDC public-domain conversion factors |
 | `data/tpn-rules/tpn.json` | TPN Macronutrient Calculator | FDA labels (DailyMed): energy per gram from the Clinimix label, energy and fat per mL from each lipid emulsion's label; each row carries its set id and version, under the weekly label watch |
 | `data/vasopressor-doses/vasopressors.json` | Vasopressor Dose-to-Rate + VIS | Standard ICU references; numeric facts with attribution |
+| `lib/niosh-hazardous-drugs-2024.js` | NIOSH Hazardous Drug List Lookup | NIOSH List of Hazardous Drugs in Healthcare Settings, 2024 (Publication 2025-103), public domain; Tables 1 and 2 and the removed drugs, without the AHFS column; the publication page is under the weekly page watch |
 
 ### FDA labels a tool reads (the label watch)
 

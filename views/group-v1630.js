@@ -3,7 +3,8 @@
 // pn-calcium-phosphate-check, pn-order-summary, pn-amino-acid-order, premixed-pn-rate-check,
 // pn-micronutrient-volume, iv-phosphate-order-check, iv-label-rate-check,
 // mean-kinetic-temperature,
-// in-use-discard-time, storage-excursion-summary, cleanroom-class-check and room-air-changes.
+// in-use-discard-time, storage-excursion-summary, cleanroom-class-check, room-air-changes and
+// hazardous-drug-list-check.
 
 import { el, clear } from '../lib/dom.js';
 import { acceptVia } from '../lib/hand-off.js';
@@ -23,6 +24,7 @@ import * as MK from '../lib/mean-kinetic-temperature-v1630.js';
 import * as SE from '../lib/storage-excursion-summary-v1630.js';
 import * as CR from '../lib/cleanroom-class-check-v1630.js';
 import * as RA from '../lib/room-air-changes-v1630.js';
+import * as HD from '../lib/hazardous-drug-list-check-v1630.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -358,6 +360,26 @@ export const renderers = {
         wrap.appendChild(el('label', { for: 'se-csv', text: 'The excursions as CSV' }));
         wrap.appendChild(el('br'));
         const box = el('textarea', { id: 'se-csv', rows: '4', readonly: 'readonly' });
+        box.value = r.csv;
+        wrap.appendChild(box);
+        o.appendChild(wrap);
+      }
+    }));
+  },
+
+  // spec-v1630 tool 13 (owner decision 5, October 15, 2026): one name, or a formulary list one name per line.
+  'hazardous-drug-list-check'(root) {
+    plainField(root, 'Generic drug name', 'hdl-drug', 'text', 'e.g. methotrexate');
+    textareaField(root, 'Or a list of generic names, one per line (a CSV row is read up to its first comma)', 'hdl-list', '');
+    const o = out(); root.appendChild(o);
+    wire(['hdl-drug', 'hdl-list'], () => safe(o, () => {
+      const r = HD.hazardousDrugListCheck({ drug: val('hdl-drug'), list: val('hdl-list') });
+      show(r, o);
+      if (r.valid && r.csv) {
+        const wrap = el('p');
+        wrap.appendChild(el('label', { for: 'hdl-csv', text: 'Each name and its status as CSV' }));
+        wrap.appendChild(el('br'));
+        const box = el('textarea', { id: 'hdl-csv', rows: '4', readonly: 'readonly' });
         box.value = r.csv;
         wrap.appendChild(box);
         o.appendChild(wrap);

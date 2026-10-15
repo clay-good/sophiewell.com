@@ -1,6 +1,6 @@
 # spec-v1639 — The community pharmacy counter: quantities, label schedules, OTC label doses and patient-facing clocks
 
-**Status:** Built except the one gated tool: 14 of 15 tools, with backfills 1 to 3 and 6 (October 13, 2026); see Build status. 15 new tools (1 build-gated), 7 backfills.
+**Status:** Complete: 14 tools built, with backfills 1 to 3 and 6 (October 13, 2026); tool 15 dropped by the owner on October 15, 2026 (see Build status). 15 new tools specified, 7 backfills.
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 A community pharmacist, the technician at the fill station, and the patient or caregiver on the
@@ -56,7 +56,7 @@ below is live, and none is specified in another spec of this program.
 | `nrt-step-schedule` | `fagerstrom-ftnd` | The Drug Facts starting strength and a dated step-down calendar, not a dependence score |
 | `epinephrine-device-weight-band` | `peds-weight-dose` (0.01 mg/kg IM) | Which labeled device strength covers a weight, per product label |
 | `out-of-fridge-discard-date` | `days-supply` (reader-entered discard cap), `compounding-bud` | A dated clock from the label's room-temperature and in-use limits |
-| `fluoride-supplement-schedule` | none | New (build-gated) |
+| `fluoride-supplement-schedule` | none | Dropped (owner decision 4) |
 
 ## Tools
 
@@ -571,7 +571,12 @@ in [spec-v1630](spec-v1630.md). Temperature excursions outside the label's range
 (`storage-excursion-summary` in [spec-v1630](spec-v1630.md)) are refused here: the tool says the
 label's limit assumes the stated ceiling and that the label gives no figure above it.
 
-### 15. `fluoride-supplement-schedule` — Fluoride Supplement by Age and Water Fluoride (build-gated)
+### 15. `fluoride-supplement-schedule` — Fluoride Supplement by Age and Water Fluoride (dropped)
+
+**Dropped October 15, 2026 (owner decision 4).** FDA's October 31, 2025 enforcement notices against
+unapproved ingestible fluoride products labeled for children under 3, or for older children at low or
+moderate caries risk, conflict with the schedule below. The section is kept as the record of what was
+specified.
 
 **Input.** Child's age; fluoride concentration of the main drinking water in ppm (reader input
 from the water utility report or a well test).
@@ -972,7 +977,7 @@ Built tools are in `views/group-v1639.js`. Sources were re-read on October 12, 2
 | 13. `epinephrine-device-weight-band` | Built (group I). A weight in pounds is converted for the Auvi-Q and neffy tables, which are in kg only, and placed on the EpiPen label's own pound figures (33 and 66). Exactly 30 kg or 66 lb shows both EpiPen bands. |
 | 14. `out-of-fridge-discard-date` | Built on section 16 of nineteen labels. Dates only; no time of day. A required answer says whether the product stayed within the label's temperature range; above it, no date is shown. The Ozempic prefilled syringe, Wegovy FlexTouch and NovoLog pump figures are named in the result and not computed. Tirzepatide's "4 weekly doses" limit is stated and not counted. |
 
-Not built: tool 15 (owner-gated).
+Not built: tool 15, dropped on October 15, 2026 (owner decision 4): FDA's October 31, 2025 enforcement against ingestible fluoride labeled for children under 3 conflicts with the AAPD schedule it would print.
 
 | Backfill | State |
 |---|---|

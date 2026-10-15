@@ -1225,6 +1225,7 @@ const UTILITIES = [
   { id: 'mean-kinetic-temperature', name: 'Mean Kinetic Temperature of a Storage Log', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'in-use-discard-time', name: 'Opened Container: When to Discard', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'storage-excursion-summary', name: 'Temperature Log: Excursions and Time Out of Range', group: 'Q', audiences: ['clinicians'], clinical: false },
+  { id: 'hazardous-drug-list-check', name: 'NIOSH Hazardous Drug List Lookup', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'refill-eligible-date', name: 'Earliest Refill Date', group: 'Q', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
   { id: 'overpayment-60day', name: '60-Day Overpayment Report-and-Return Clock', group: 'C', audiences: ['billers'], clinical: false },
   // spec-v82: patient responsibility & coordination of benefits. v78 computes
