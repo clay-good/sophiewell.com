@@ -15,6 +15,7 @@ export default [
       { dom: 'cod-shared', arg: 'sharedCost', kind: 'number', label: 'Shared rent, utilities, equipment and systems', unit: 'dollars' },
       { dom: 'cod-alloc', arg: 'allocationPercent', kind: 'number', label: 'Percent of the shared cost allocated to the prescription department', unit: 'percent' },
       { dom: 'cod-fee', arg: 'dispensingFee', kind: 'number', label: 'Average dispensing fee received', unit: 'dollars' },
+      { dom: 'cod-payers', arg: 'payerFees', kind: 'string', label: 'Fees by payer, one per line: payer, fee, prescriptions (optional)' },
       { dom: 'cod-fixed', arg: 'fixedCosts', kind: 'number', label: 'Break-even, fixed costs for the period', unit: 'dollars' },
       { dom: 'cod-reimb', arg: 'averageReimbursement', kind: 'number', label: 'Break-even, average reimbursement per prescription', unit: 'dollars' },
       { dom: 'cod-ingredient', arg: 'averageIngredientCost', kind: 'number', label: 'Break-even, average ingredient cost per prescription', unit: 'dollars' },

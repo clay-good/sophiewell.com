@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9197971a954fbe39`
-Generated: 2026-10-15T04:04:36.671Z
+Build ID: `fdd619bdb2f8ee17`
+Generated: 2026-10-15T04:12:26.376Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -319,7 +319,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/contraceptive-missed-pill-v1639.js` | 10517 | `8e37eeaf8fb557bce6cc29513f6489ab6643a797b23604e4067f1232e37c2a41` |
 | `lib/copay-card-v1506.js` | 5535 | `6249321f4efc46da120b625dd08e6c78ea87f039afe025f711b3275f3bf6d5b6` |
 | `lib/cormack-lehane-v339.js` | 4150 | `9d2d41efc97fee93f2818f12447fa347fc98a3be836a2df5b4bb632d318f917e` |
-| `lib/cost-of-dispensing-v1638.js` | 7046 | `7f3d4ccb0ceb27b413577a8b11379f9927071e14cc30eb5089dcae2a0d17193e` |
+| `lib/cost-of-dispensing-v1638.js` | 9461 | `f2c76721d59d25c67ff51ac0d9b70a514e78a1d0bc5a08580cdbb604dafbd601` |
 | `lib/cosyntropin-v299.js` | 3759 | `5969bbb878a6c6087a4309355bd1639a026838ad1d24e3a04ee3e14eeda92119` |
 | `lib/cotton-myer-v419.js` | 2898 | `1ee091c8f1a08282081b62560a0625e612bf73b654c3953f872dcf7c1dc633e9` |
 | `lib/cpak-v1447.js` | 3596 | `818a053d9d74c05980b10f077c93825f412f56979aac3821aa5d7182356f3ac6` |
@@ -1793,7 +1793,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/contraceptive-missed-pill-v1639.js` | 1725 | `c51c835c49f9c40f16ccefa927025522b804c4f82b63d9a2b3178e838552c310` |
 | `mcp/adapters/copay-card-v1506.js` | 1621 | `d65730c5989410a5087a460d9d287ac8ceb572d775b1948eb38798fe26c9a2fc` |
 | `mcp/adapters/cormack-lehane-v339.js` | 1458 | `abbad0d27c76e56cc70c7544a726a925bd60032d180364a247b499810ee3481c` |
-| `mcp/adapters/cost-of-dispensing-v1638.js` | 2001 | `e071248c488bed33de407b19bed4276a216fd6f13a34d10da018190e5d6fba0c` |
+| `mcp/adapters/cost-of-dispensing-v1638.js` | 2140 | `ef9ee6680a670c0b5340fdec69055d47b969ca61016a79f0c1d7aaf63a8606aa` |
 | `mcp/adapters/cosyntropin-v299.js` | 1404 | `ba98ee11f3150d8289e120fe3f293c43732bd98ee5a0d462d88f2f3cfa0f7074` |
 | `mcp/adapters/cotton-myer-v419.js` | 1111 | `6210599d4befbf5a058161d043c72b885858888c4711cd4ca0caffc0dcf358f4` |
 | `mcp/adapters/cpak-v1447.js` | 737 | `7df5e9d4075aaf5c24a37d07f6fd5b85568a6f9d09bd05ff42f6f6ce69e05cd0` |
@@ -3088,7 +3088,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 23968 | `5dca04a25a44a6549ba3d7282810e1bed648614a9d8b61006f0adecf6b323090` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
-| `views/group-v1638.js` | 38174 | `f48f3e50712f793fbcf0def0965193c9e54f291241b02efae3987cc1e3111e41` |
+| `views/group-v1638.js` | 38338 | `a34101d6d50c22606b76fb21feed0c9f65163bc648af26d67eeb59cb54c5973f` |
 | `views/group-v1639.js` | 19294 | `b19f63e4ceca2422ee12d6e8ca56a5c0988ad95e3d75b3129671bc06def36627` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v1640.js` | 5253 | `ca35d66a6cf6e4cba46c8d808a74318c266eea60d02f3a6cd116a63dd554588a` |

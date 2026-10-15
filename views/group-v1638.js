@@ -276,12 +276,13 @@ export const renderers = {
     }));
   },
   'cost-of-dispensing'(root) {
-    const pairs = [['cod-rx', 'prescriptions'], ...CD.CATEGORIES.map((c) => [c.dom, c.arg]), ['cod-shared', 'sharedCost'], ['cod-alloc', 'allocationPercent'], ['cod-fee', 'dispensingFee'], ['cod-fixed', 'fixedCosts'], ['cod-reimb', 'averageReimbursement'], ['cod-ingredient', 'averageIngredientCost'], ['cod-variable', 'variableCostPerRx']];
+    const pairs = [['cod-rx', 'prescriptions'], ...CD.CATEGORIES.map((c) => [c.dom, c.arg]), ['cod-shared', 'sharedCost'], ['cod-alloc', 'allocationPercent'], ['cod-fee', 'dispensingFee'], ['cod-payers', 'payerFees'], ['cod-fixed', 'fixedCosts'], ['cod-reimb', 'averageReimbursement'], ['cod-ingredient', 'averageIngredientCost'], ['cod-variable', 'variableCostPerRx']];
     numField(root, 'Prescriptions dispensed in the period', 'cod-rx', '');
     for (const c of CD.CATEGORIES) numField(root, `${c.label}, dollars`, c.dom, '');
     numField(root, 'Shared rent, utilities, equipment and systems, dollars', 'cod-shared', '');
     numField(root, 'Percent of that shared cost allocated to the prescription department', 'cod-alloc', '');
     numField(root, 'Average dispensing fee received, dollars (optional)', 'cod-fee', '');
+    areaField(root, 'Fees by payer, one per line: payer, fee, prescriptions (optional)', 'cod-payers', 'State Medicaid, 10.64, 1200');
     numField(root, 'Break-even: fixed costs for the period, dollars (optional)', 'cod-fixed', '');
     numField(root, 'Break-even: average reimbursement per prescription, dollars', 'cod-reimb', '');
     numField(root, 'Break-even: average ingredient cost per prescription, dollars', 'cod-ingredient', '');

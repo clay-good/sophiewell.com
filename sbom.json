@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:9197971a-954f-5e39-8c31-6b72e1f1f350",
+  "serialNumber": "urn:uuid:fdd619bd-b2f8-5e17-81cc-9e82abfa6c95",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-15T04:04:36.671Z",
+    "timestamp": "2026-10-15T04:12:26.376Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -6026,7 +6026,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7f3d4ccb0ceb27b413577a8b11379f9927071e14cc30eb5089dcae2a0d17193e"
+          "content": "f2c76721d59d25c67ff51ac0d9b70a514e78a1d0bc5a08580cdbb604dafbd601"
         }
       ],
       "properties": [
@@ -6036,7 +6036,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7046"
+          "value": "9461"
         }
       ]
     },
@@ -36980,7 +36980,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e071248c488bed33de407b19bed4276a216fd6f13a34d10da018190e5d6fba0c"
+          "content": "ef9ee6680a670c0b5340fdec69055d47b969ca61016a79f0c1d7aaf63a8606aa"
         }
       ],
       "properties": [
@@ -36990,7 +36990,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2001"
+          "value": "2140"
         }
       ]
     },
@@ -64175,7 +64175,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f48f3e50712f793fbcf0def0965193c9e54f291241b02efae3987cc1e3111e41"
+          "content": "a34101d6d50c22606b76fb21feed0c9f65163bc648af26d67eeb59cb54c5973f"
         }
       ],
       "properties": [
@@ -64185,7 +64185,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "38174"
+          "value": "38338"
         }
       ]
     },
@@ -98873,7 +98873,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "9197971a954fbe39"
+      "value": "fdd619bdb2f8ee17"
     },
     {
       "name": "sophiewell:runtimeAssetCount",

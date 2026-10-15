@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Cost of dispensing: fees by payer, each set against the cost per prescription, with the dollar
+  gap where the payer's prescriptions are entered.
 - MTM review dates, Statin Use in Persons with Diabetes and the Part D concurrent-use measures give
   each member's row as CSV to copy into a spreadsheet; cells that look like formulas are neutralized.
 - MTM review dates: a CMR completion rate with fewer than 31 enrollees in the denominator is flagged,
