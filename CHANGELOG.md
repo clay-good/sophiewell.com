@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Part D transition supply: past the 90 days, a long-term care resident's 31-day emergency supply
+  (once per drug per stay), and a continuing member's window counted from January 1, both from
+  CMS's manual and labeled as its guidance.
 - Opioid MME: at 90 MME/day or more, the result names Medicare Part D's three opioid thresholds and
   links the safety-edit and drug management program checks.
 - NADAC margin: an NDC with a Medicaid federal upper limit shows that limit beside the cost.

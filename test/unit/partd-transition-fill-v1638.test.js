@@ -17,7 +17,7 @@ test('days already supplied reduce what is owed; a short prescription takes mult
   assert.equal(t({ alreadySupplied: 30 }).flag, 'already-supplied');
   const s = t({ daysWritten: 14 });
   assert.deepEqual([s.daysThisFill, s.daysOwed], [14, 30]);
-  assert.match(s.note, /multiple fills up to a total of 30 days/);
+  assert.match(s.notes.join(' '), /multiple fills up to a total of 30 days/);
 });
 
 test('prior authorization or step therapy counts; an unrestricted formulary drug and an immediate change do not', () => {
@@ -37,4 +37,29 @@ test('refusals', () => {
   assert.match(t({ requested: '2025-12-31' }).message, /not before coverage took effect/);
   assert.match(t({ alreadySupplied: '' }).message, /already supplied/);
   assert.match(t({ immediateChange: '' }).message, /^Choose whether this is an immediate formulary change/);
+});
+
+// CMS manual chapter 6 (Rev. 18), re-read October 14, 2026: 30.4.6 and 30.4.5.
+test('outside the 90 days a long-term care resident gets a 31-day emergency supply, once per drug per stay', () => {
+  const late = { requested: '2026-04-01' };
+  const r = t({ ...late, ltcResident: 'yes', priorEmergency: 'no' });
+  assert.deepEqual([r.flag, r.emergencyDays, r.daysOwed], ['ltc-emergency-supply', 31, 0]);
+  assert.match(r.band, /emergency supply of 31 days \(CMS manual\)/);
+  assert.match(r.notes.join(' '), /CMS manual guidance, not the regulation/);
+  assert.equal(t({ ...late, ltcResident: 'yes', priorEmergency: 'no', daysWritten: 14 }).emergencyDays, 14);
+  assert.equal(t({ ...late, ltcResident: 'yes', priorEmergency: 'yes' }).flag, 'ltc-emergency-already-given');
+  assert.match(t({ ...late, ltcResident: 'yes' }).message, /^Choose whether an emergency supply of this drug was already given/);
+  assert.equal(t({ ...late, ltcResident: 'no' }).flag, 'not-owed');
+  assert.match(t(late).notes.join(' '), /long-term care facility was not entered/);
+  // Inside the window, an unrestricted drug, or an immediate change: no emergency supply arises.
+  assert.equal(t({ ltcResident: 'yes', priorEmergency: 'no' }).flag, 'transition-supply-owed');
+  assert.equal(t({ ...late, drugStatus: 'formulary-no-restriction', ltcResident: 'yes', priorEmergency: 'no' }).flag, 'not-owed');
+  assert.equal(t({ ...late, immediateChange: 'formulary-change-under-e2', ltcResident: 'yes', priorEmergency: 'no' }).flag, 'not-owed');
+});
+
+test('a continuing member whose drug changed for the new year counts 90 days from January 1', () => {
+  const r = t({ memberType: 'continuing-new-year', coverageEffective: '2027-01-01', requested: '2027-02-01' });
+  assert.deepEqual([r.flag, r.windowEnds], ['transition-supply-owed', '2027-03-31']);
+  assert.match(r.notes.join(' '), /beginning January 1.*manual's guidance, not the rule's text/);
+  assert.match(t({ memberType: 'continuing-new-year', coverageEffective: '2027-02-01', requested: '2027-02-10' }).message, /enter January 1 of that year/);
 });

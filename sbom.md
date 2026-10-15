@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f61eeeb2b8cf7e49`
-Generated: 2026-10-15T01:37:35.748Z
+Build ID: `7c12fe14a561d6d8`
+Generated: 2026-10-15T01:47:18.177Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -847,7 +847,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3006554 | `242075e2ea5a02ac107cd905e34342013b09a1dd0273d51a6db7eecb249cf7eb` |
+| `lib/meta.js` | 3006645 | `02299ef6b2e31155bae2368b4a988affa2c92b5d8b1361d3e8f8530608af1b8a` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1062,7 +1062,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/partd-opioid-measures-v1638.js` | 12824 | `b384e65e01aeafa0c3e28f60af97f37ab8f929c73becc2750a64dd4efc6bf177` |
 | `lib/partd-opioid-safety-edit-v1638.js` | 9832 | `f4ae6acbc17d2f567f9577fbc93e821e77ec7e2ec162253dcd12844d411d0c37` |
 | `lib/partd-prompt-pay-clock-v1638.js` | 9088 | `a555c982fed826b007dae6ea20fdb43fa4093b55471a3989eced6f3c9683aef8` |
-| `lib/partd-transition-fill-v1638.js` | 8268 | `27f432c879357a1f3c8fcc00a0afa671eeb86ec3999acfa4df561d44e2dbd79b` |
+| `lib/partd-transition-fill-v1638.js` | 13227 | `3f6448360d020b0b094a0f88f53e35a85963fb72444b70085cc83f4b9d06c403` |
 | `lib/pas-bundle-check.js` | 5368 | `2a876c49d1315cafa7879fc2b7f5c33f376dc2e3c54a29b346fa15fca04b2f64` |
 | `lib/pas-profiles-load.js` | 955 | `e0396d1b24ed9a7e154c920dce55f7925cd1f2342c2d480c7ab6579f38c95b08` |
 | `lib/pas-swallow-v367.js` | 4492 | `eea0e378665274c79d8ed02f136729764350a00aeb04116f8a7ec0cf20baa49b` |
@@ -2454,7 +2454,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/partd-opioid-measures-v1638.js` | 1339 | `48e5b8ac517767b96664d55e266f97e68a44340747a232c66aeaefd204c0c59a` |
 | `mcp/adapters/partd-opioid-safety-edit-v1638.js` | 2263 | `0d56bc89557fdeed3e9a72622babd326d260c71fff5b7f9ec0a8b4e6bbe4c76b` |
 | `mcp/adapters/partd-prompt-pay-clock-v1638.js` | 1674 | `1159b584cd9226ccc987fcaf3c615b3624ee4f9c673c5c3a716867685cb9f2be` |
-| `mcp/adapters/partd-transition-fill-v1638.js` | 1930 | `26cbd5434f9f82a5d129ae729e22fa71a824d139ccaaac45316eae440d7c1e55` |
+| `mcp/adapters/partd-transition-fill-v1638.js` | 2520 | `b0ae0f3c85405471daea45d2409f99d5ed1385651244ef6e4c4596147add6330` |
 | `mcp/adapters/pas-swallow-v367.js` | 1286 | `4c30409543f3c9295d3741a935e95b7291167e4940bf59b0086f21ffd17b46a2` |
 | `mcp/adapters/pass-pheo-v660.js` | 1382 | `bcc49f1c772f086703d0147efc0a31818e61bfa0b7b7fff472e1629029c75501` |
 | `mcp/adapters/passive-immunization-dose-v1636.js` | 1244 | `fc749e6dd64f59f764dbfa65a9b681f6c8daf77e17c1f46f9daef451149f495a` |
@@ -3087,7 +3087,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1635.js` | 40637 | `5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a` |
 | `views/group-v1636.js` | 22928 | `8c8f97b92ec621bc772a46e3a00ce5cc966f4ee425f31fdf0c940eea8cfe1d4e` |
 | `views/group-v1637.js` | 23471 | `3bbb1ed68f794f86a4676c91efbfce4fa29bf473732779d7d969f64027b12d14` |
-| `views/group-v1638.js` | 37082 | `aec86e9163b102aed6525aafaa9f889efbb176097003c96c47904235d32a40d3` |
+| `views/group-v1638.js` | 37559 | `c71c068349ccce007265d4c8bf9a3ef30a6839a7d0bb7027919e38e4c9cc703a` |
 | `views/group-v1639.js` | 18893 | `2209e1dd51194684a4e840e20a066fb77c93ecad730d669cee5ee5cbaf687716` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v1640.js` | 5253 | `ca35d66a6cf6e4cba46c8d808a74318c266eea60d02f3a6cd116a63dd554588a` |

@@ -7,7 +7,7 @@ import * as TF from '../../lib/partd-transition-fill-v1638.js';
 export default [
   {
     id: 'partd-transition-fill',
-    summary: 'Whether a Part D plan owes a temporary transition supply, and how many days. In the first 90 days of coverage a non-formulary drug, or one with prior authorization or step therapy, gets at least a month of medication, once (42 CFR 423.120(b)(3)). Gives the last day of the window and the 3-business-day notice date.',
+    summary: 'Whether a Part D plan owes a temporary transition supply, and how many days. In the first 90 days of coverage a non-formulary drug, or one with prior authorization or step therapy, gets at least a month of medication, once (42 CFR 423.120(b)(3)). Gives the last day of the window and the 3-business-day notice date. Past the window, a long-term care resident\'s 31-day emergency supply under CMS\'s manual.',
     compute: TF.partdTransitionFill,
     fields: [
       { dom: 'ptf-status', arg: 'drugStatus', kind: 'enum', required: true, values: TF.STATUS.map((k) => k.value), label: 'Status of the drug on the plan' },
@@ -18,6 +18,9 @@ export default [
       { dom: 'ptf-change', arg: 'immediateChange', kind: 'enum', required: true, values: TF.CHANGE.map((k) => k.value), label: 'An immediate formulary change' },
       { dom: 'ptf-written', arg: 'daysWritten', kind: 'number', label: 'Days written on the prescription', unit: 'days' },
       { dom: 'ptf-adjudicated', arg: 'adjudicated', kind: 'string', label: 'Date the temporary fill adjudicated (YYYY-MM-DD)' },
+      { dom: 'ptf-member', arg: 'memberType', kind: 'enum', values: TF.MEMBER.map((k) => k.value), label: 'New to the plan, or a continuing member whose drug changed for the new year' },
+      { dom: 'ptf-ltc', arg: 'ltcResident', kind: 'enum', values: TF.YES_NO.map((k) => k.value), label: 'Lives in a long-term care facility' },
+      { dom: 'ptf-prior', arg: 'priorEmergency', kind: 'enum', values: TF.YES_NO.map((k) => k.value), label: 'Emergency supply of this drug already given this stay' },
     ],
   },
 ];

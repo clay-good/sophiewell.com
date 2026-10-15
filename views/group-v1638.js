@@ -323,7 +323,7 @@ export const renderers = {
     }));
   },
   'partd-transition-fill'(root) {
-    const pairs = [['ptf-status', 'drugStatus'], ['ptf-effective', 'coverageEffective'], ['ptf-requested', 'requested'], ['ptf-month', 'monthDays'], ['ptf-already', 'alreadySupplied'], ['ptf-change', 'immediateChange'], ['ptf-written', 'daysWritten'], ['ptf-adjudicated', 'adjudicated']];
+    const pairs = [['ptf-status', 'drugStatus'], ['ptf-effective', 'coverageEffective'], ['ptf-requested', 'requested'], ['ptf-month', 'monthDays'], ['ptf-already', 'alreadySupplied'], ['ptf-change', 'immediateChange'], ['ptf-written', 'daysWritten'], ['ptf-adjudicated', 'adjudicated'], ['ptf-member', 'memberType'], ['ptf-ltc', 'ltcResident'], ['ptf-prior', 'priorEmergency']];
     selectField(root, 'Status of the drug on the plan', 'ptf-status', TF.STATUS);
     dateField(root, 'Date coverage under the plan took effect', 'ptf-effective');
     dateField(root, 'Date of the fill request', 'ptf-requested');
@@ -332,6 +332,10 @@ export const renderers = {
     selectField(root, 'Is this an immediate formulary change?', 'ptf-change', TF.CHANGE);
     numField(root, 'Days written on the prescription (optional)', 'ptf-written', '');
     dateField(root, 'Date the temporary fill adjudicated (optional)', 'ptf-adjudicated');
+    // spec-v1638 tool 3: CMS manual chapter 6, 30.4.5 and 30.4.6.
+    selectField(root, 'New to the plan, or a continuing member? (optional)', 'ptf-member', TF.MEMBER);
+    selectField(root, 'Lives in a long-term care facility? (optional)', 'ptf-ltc', TF.YES_NO);
+    selectField(root, 'Emergency supply of this drug already given this stay? (if a resident)', 'ptf-prior', TF.YES_NO);
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
