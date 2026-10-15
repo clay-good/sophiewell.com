@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ff597567e5b467e8`
-Generated: 2026-10-15T04:41:55.530Z
+Build ID: `dccd9b2f59809204`
+Generated: 2026-10-15T04:55:06.475Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -383,7 +383,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/diabetes-diagnosis-v841.js` | 11248 | `5bedda9c86a0efdfbb47edae22db24127b296f84e5ca741db1738b774596b142` |
 | `lib/diabetes-drug-egfr-check-v1632.js` | 9326 | `0343f7bcf708f9a6494d0baf8f8c12b8bb4bb211a26107cf5d3e4aa4cd3625d6` |
 | `lib/diastolic-function-ase-v664.js` | 5179 | `d1c0e03acdda55f16e805b7ebecf3a08d325f41b5ef8be6da27ac60e00f68d0d` |
-| `lib/digoxin-label-dose-v1631.js` | 7959 | `fd2851ce1a1608f7dd20d4bb69e3a5eca4359406e6b38509f1e795b5d3c628c3` |
+| `lib/digoxin-label-dose-v1631.js` | 10071 | `ddb7bfa76e69bd4b8e8f69f6fc4029a5d593225973ef1b611f9d8eecd2df6e4d` |
 | `lib/dilution-c1v1-v1629.js` | 7676 | `03fae4dd8d057e51645a225560d7abd0891365a5c5dc60a883618e126916bb4d` |
 | `lib/dimeglio-clubfoot-v387.js` | 4101 | `8351af759d2ea16e3c0fa77d3bf9ff1b21aa38e5ce0af9fddf8f8d70c978ac98` |
 | `lib/diphtheria-antitoxin-dose-v1560.js` | 5102 | `0b5a0a3da6c709492873780c18614ec3a312010c21d9a718d84c8ff819cddd66` |
@@ -1848,7 +1848,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/diabetes-diagnosis-v841.js` | 2014 | `b562e8568d78ae64564518d574d0b8e7557003e690907b5acecdf19166e651c2` |
 | `mcp/adapters/diabetes-drug-egfr-check-v1632.js` | 1275 | `b9aa17371e294e11bd1dd4419812127b7096605000bdf6e665af43daab90db36` |
 | `mcp/adapters/diastolic-function-ase-v664.js` | 1562 | `95c178a27ed662f2929c57b83fad29910f8a6162041f4c6102fe936542f96156` |
-| `mcp/adapters/digoxin-label-dose-v1631.js` | 1574 | `89723f42847297a6d0f64f2fe83b3b4bd2a42ad9acf0ceb04a5f7a78d900c0c4` |
+| `mcp/adapters/digoxin-label-dose-v1631.js` | 2030 | `f6ee373e7b1c0e6365f662d23937c68d947396264ad302a44ec86363f673a7c3` |
 | `mcp/adapters/dilution-c1v1-v1629.js` | 1631 | `1b15c5a071586b6840549d756c31bfd86893ff529ae3f665d164a423f54f51ac` |
 | `mcp/adapters/dimeglio-clubfoot-v387.js` | 2330 | `8718a631e4d3f3f473b9419ff199c6ba0ee6f94133307ce3431561fe4e771201` |
 | `mcp/adapters/diphtheria-antitoxin-dose-v1560.js` | 1340 | `c54639ac770b588509d167312069ff6d21f94d5faf4079b3be11d69a5ee848bf` |
@@ -3081,7 +3081,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1629.js` | 31151 | `178cff13db077e46646ada6ca64d99215d4ce16c2307c1f4d824d01fcc41ef9e` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
 | `views/group-v1630.js` | 23495 | `c64bd4d306fd4c29c9a1222200f3486df5b24d049f12cb2af1d2725b0c6895eb` |
-| `views/group-v1631.js` | 23607 | `832d06ecf8b48105ca886bb7e0941854606d5dc60711ca2eeb86cd5fe72c538a` |
+| `views/group-v1631.js` | 24163 | `d6434b2085e9d6855bc968b0c6cf10208228ec208a7713067e24c48477e31610` |
 | `views/group-v1632.js` | 22238 | `c3bfa88797e5bef2edd97efade44b441a2834a146d1388ec383e8ef815853dfb` |
 | `views/group-v1633.js` | 29671 | `4e0c93aabd98861f794103eb371c31305c6d008a0d3b376fbb47e1bcd0bc550b` |
 | `views/group-v1634.js` | 14483 | `a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d` |

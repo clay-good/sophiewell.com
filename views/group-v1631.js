@@ -230,20 +230,23 @@ export const renderers = {
   },
 
   'digoxin-label-dose'(root) {
-    const pairs = [['dg-age', 'ageGroup'], ['dg-weight', 'leanWeight'], ['dg-wunit', 'weightUnit'], ['dg-load', 'loadMcgPerKg'], ['dg-crcl', 'creatinineClearance']];
+    const pairs = [['dg-age', 'ageGroup'], ['dg-weight', 'leanWeight'], ['dg-wunit', 'weightUnit'], ['dg-load', 'loadMcgPerKg'], ['dg-crcl', 'creatinineClearance'], ['dg-scr', 'serumCreatinine'], ['dg-years', 'patientAge'], ['dg-sex', 'sex']];
     selectField(root, 'Age group', 'dg-age', DG.AGE_GROUPS);
     numField(root, 'Lean body weight', 'dg-weight', '');
     selectField(root, 'Weight unit', 'dg-wunit', DG.WEIGHT_UNITS);
     numField(root, 'Loading dose chosen, mcg/kg', 'dg-load', '');
     const crcl = numField(root, 'Creatinine clearance corrected to 70 kg or 1.73 m², mL/min (for maintenance)', 'dg-crcl', '');
+    // spec-v1631 tool 10: the label's adult estimate from a serum creatinine, when no clearance is entered.
+    const adultOnly = [numField(root, 'Or, for an adult: serum creatinine, mg/dL', 'dg-scr', ''), numField(root, 'Age, years (with a serum creatinine)', 'dg-years', ''), selectField(root, 'Sex (with a serum creatinine)', 'dg-sex', DG.SEXES)];
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const young = val('dg-age') === '5-10';
       crcl.hidden = young;
+      for (const w of adultOnly) if (w) w.hidden = young;
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       // A hidden field's leftover value is not part of the question.
-      if (young) args.creatinineClearance = '';
+      if (young) { args.creatinineClearance = ''; args.serumCreatinine = ''; args.patientAge = ''; args.sex = ''; }
       const r = DG.digoxinLabelDose(args, new Date());
       show(r, o);
       if (r.labelUrl) { const p = el('p'); p.appendChild(el('a', { href: r.labelUrl, target: '_blank', rel: 'noreferrer', text: 'Current label on DailyMed' })); o.appendChild(p); }

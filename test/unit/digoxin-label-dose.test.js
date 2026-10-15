@@ -82,3 +82,16 @@ test('required choices', () => {
     assert.ok(r.message.length <= 280, k);
   }
 });
+
+// Table 3, footnote b (version 20, re-read October 14, 2026): the adult estimate from a serum creatinine.
+test('a serum creatinine gives the label\'s corrected clearance estimate; women times 0.85; adults only', () => {
+  const scr = { ageGroup: 'over-10', leanWeight: 70, weightUnit: 'kg', loadMcgPerKg: 10, serumCreatinine: 1.6, patientAge: 60 };
+  const m = dg({ ...scr, sex: 'male' }, now);
+  assert.equal(m.estimatedClearance, 50);
+  assert.match(m.notes.join(' '), /\(140 - 60\) \/ 1\.6 = 50 mL\/min/);
+  assert.equal(dg({ ...scr, sex: 'female' }, now).estimatedClearance, 42.5);
+  assert.match(dg({ ...scr }, now).message, /^Choose male or female/);
+  assert.match(dg({ ...scr, sex: 'male', patientAge: 15 }, now).message, /modified Schwartz/);
+  assert.match(dg({ ...adult, serumCreatinine: 1.6, patientAge: 60, sex: 'male' }, now).notes.join(' '), /serum creatinine was not used/);
+  assert.match(dg({ ...scr, ageGroup: '5-10', sex: 'male' }, now).message, /loading range only/);
+});

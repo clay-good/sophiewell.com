@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Digoxin label dose: for an adult with only a serum creatinine, the label's own corrected
+  clearance estimate, (140 − age) / Scr, times 0.85 for women.
 - Storage excursion summary: load a data logger's export as it comes (header row, separate date and
   time columns, US dates, semicolons), and copy the excursions as CSV. A logger export dropped on
   the home page is recognized and handed to it.
