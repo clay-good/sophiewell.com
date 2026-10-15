@@ -41,6 +41,7 @@ const CASES = {
   'gfe-deadline': ['group-v1508', 'gfe-schedule.csv', 'gfe-upload-file', 'csv-mapped'],
   'moon-deadline': ['group-v1514', 'observation-list.csv', 'moon-upload-file', 'csv-mapped'],
   'med-admin-window': ['group-v1636', 'med-admin-doses.csv', 'maw-upload-file', 'csv-mapped'],
+  'storage-excursion-summary': ['group-v1630', 'temperature-log.csv', 'se-file', 'temperature-log'],
   'hospice-period-clock': ['group-v1514', 'hospice-census.csv', 'hosp-upload-file', 'csv-mapped'],
   'erisa-claim-clock': ['group-v1503', 'erisa-claims.csv', 'er-upload-file', 'csv-mapped'],
   'dme-rental-clock': ['group-v1514', 'dme-rentals.csv', 'dme-upload-file', 'csv-mapped'],

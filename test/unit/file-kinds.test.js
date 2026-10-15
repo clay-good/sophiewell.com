@@ -65,6 +65,7 @@ const EXPECT = {
   'dme-rentals.csv': ['csv-mapped', 'likely', 'DME Capped Rental and Oxygen Clock (rentals file)'],
   'erisa-claims.csv': ['csv-mapped', 'likely', 'Employer Plan Claim and Appeal Clock (ERISA) (claims file)'],
   'med-admin-doses.csv': ['csv-mapped', 'likely', 'Medication Administration Window (doses file)'],
+  'temperature-log.csv': ['temperature-log', 'likely', 'a data logger export'],
   'nomnc-census.csv': ['csv-mapped', 'likely', 'NOMNC Delivery Deadline (patients file)'],
   'cobra-events.csv': ['csv-mapped', 'likely', 'COBRA Deadlines and End Date (events file)'],
   'partb-late.csv': ['csv-mapped', 'likely', 'Part B Late Enrollment Penalty (people file)'],

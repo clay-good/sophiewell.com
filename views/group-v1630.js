@@ -6,6 +6,7 @@
 // in-use-discard-time, storage-excursion-summary, cleanroom-class-check and room-air-changes.
 
 import { el, clear } from '../lib/dom.js';
+import { acceptVia } from '../lib/hand-off.js';
 import * as RC from '../lib/reconstitution-concentration-v1630.js';
 import * as AC from '../lib/admixture-concentration-v1630.js';
 import * as RC3 from '../lib/iv-label-rate-check-v1630.js';
@@ -331,12 +332,36 @@ export const renderers = {
     selectField(root, 'Storage range', 'se-range', SE.RANGE_OPTIONS);
     const custom = [signedField(root, 'Lowest temperature of the range, from the package insert', 'se-low'), signedField(root, 'Highest temperature of the range, from the package insert', 'se-high')];
     textareaField(root, 'Readings, one per line: date and time (YYYY-MM-DD HH:MM), then the temperature', 'se-readings', '');
+    // spec-v1630 tool 15: a data logger's export file fills the readings box; the reader reads it as it comes.
+    const pick = el('p');
+    pick.appendChild(el('label', { for: 'se-file', text: 'Or load a data logger export (CSV or text)' }));
+    pick.appendChild(el('br'));
+    const fileIn = el('input', { id: 'se-file', type: 'file', accept: '.csv,.txt,.tsv,text/csv,text/plain' });
+    pick.appendChild(fileIn);
+    root.appendChild(pick);
+    fileIn.addEventListener('change', async () => {
+      const f = fileIn.files && fileIn.files[0];
+      if (!f) return;
+      const box = document.getElementById('se-readings');
+      box.value = f.size > 5000000 ? '' : await f.text();
+      box.dispatchEvent(new Event('input', { bubbles: true }));
+    });
     const o = out(); root.appendChild(o);
     wire(['se-unit', 'se-range', 'se-low', 'se-high', 'se-readings'], () => safe(o, () => {
       const own = val('se-range') === 'custom';
       for (const w of custom) w.hidden = !own;
       // A hidden field's leftover value is not part of the question.
-      show(SE.storageExcursionSummary({ unit: val('se-unit'), range: val('se-range'), low: own ? val('se-low') : '', high: own ? val('se-high') : '', readings: val('se-readings') }), o);
+      const r = SE.storageExcursionSummary({ unit: val('se-unit'), range: val('se-range'), low: own ? val('se-low') : '', high: own ? val('se-high') : '', readings: val('se-readings') });
+      show(r, o);
+      if (r.valid && r.excursions) {
+        const wrap = el('p');
+        wrap.appendChild(el('label', { for: 'se-csv', text: 'The excursions as CSV' }));
+        wrap.appendChild(el('br'));
+        const box = el('textarea', { id: 'se-csv', rows: '4', readonly: 'readonly' });
+        box.value = r.csv;
+        wrap.appendChild(box);
+        o.appendChild(wrap);
+      }
     }));
   },
 
@@ -360,4 +385,9 @@ export const renderers = {
     numField(root, 'Required air changes per hour, from your own standard (optional)', 'ra-req', '');
     run(root, [['ra-aunit', 'airflowUnit'], ['ra-air', 'airflow'], ['ra-runit', 'roomUnit'], ['ra-vol', 'volume'], ['ra-len', 'length'], ['ra-wid', 'width'], ['ra-hgt', 'height'], ['ra-req', 'requiredAch']], RA.roomAirChanges);
   },
+};
+
+// spec-v1630 tool 15: a temperature data logger export goes to the excursion summary.
+export const acceptFiles = {
+  'storage-excursion-summary': acceptVia('se-file'),
 };

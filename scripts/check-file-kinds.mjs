@@ -52,6 +52,7 @@ export const FILE_INPUTS = {
   'pas-file': 'pas-bundle-check',
   'aw-835-files': 'appeal-worklist',
   'pa-file-picker': 'pa-lint',
+  'se-file': 'storage-excursion-summary',
   'rxm-${config.name}-file': '340b-rx-match',
   '${id}-file': 'upload-workbench',
   // The inventory at #/intake takes any file; it is the recognizer's own page.

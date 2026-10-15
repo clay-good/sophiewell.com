@@ -60,3 +60,16 @@ test('units and range are required; lines must parse and be in time order', () =
   assert.match(s({ unit: 'C', range: 'refrigerator', readings: '2026-02-30 08:00, 5\n2026-10-01 07:30, 5' }).message, /Line 1/);
   assert.match(s({ unit: 'C', range: 'refrigerator', readings: '2026-10-01 08:00, 5\n2026-10-01 08:30, cold' }).message, /line 2/);
 });
+
+// spec-v1630 tool 15: a data logger's export, read as it comes, and the excursions as CSV.
+test('logger exports: a header row, separate date and time columns, US dates with AM/PM, semicolons and decimal commas', () => {
+  const run = (readings) => s({ unit: 'C', range: 'refrigerator', readings });
+  const a = run(['No.,Date,Time,Temperature (°C)', '1,10/14/2026,8:00:00 AM,4.5', '2,10/14/2026,9:00:00 AM,9.1', '3,10/14/2026,10:00:00 AM,5.0'].join('\n'));
+  assert.deepEqual([a.readings, a.excursions, a.minutesAbove], [3, 1, 60]);
+  assert.match(a.csv, /^excursion,side,start,end,minutes,highest or lowest reading \(°C\),back in range\n1,above,2026-10-14 09:00,2026-10-14 10:00,60,9\.1,yes$/);
+  const b = run(['Timestamp;Temp C', '2026-10-14 08:00;4,5', '2026-10-14 09:00;3,9'].join('\n'));
+  assert.deepEqual([b.readings, b.excursions, b.csv.split('\n').length], [2, 0, 1]);
+  assert.match(run('Date,Humidity\n2026-10-14,40\n2026-10-15,41').message, /names a temperature column/);
+  assert.match(run('Temp,Note\n4,a\n5,b').message, /names a date and time column/);
+  assert.equal(run('2026-10-14 08:00, 4\n2026-10-14 09:00, 5').readings, 2);
+});

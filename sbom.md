@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d7972b0e0da05f2b`
-Generated: 2026-10-15T04:24:17.839Z
+Build ID: `ff597567e5b467e8`
+Generated: 2026-10-15T04:41:55.530Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -27,7 +27,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 |---|---:|---|
 | `index.html` | 149639 | `c90ce0a82a57c07515e95d8140ab2a312c3cde7ddc5633f1702b31bd2d5aed96` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 631682 | `fdc93309c3718907b3bc9dcb0a93995f3168695571961ed5081a137b391409b6` |
+| `app.js` | 631716 | `4c62de62354afd593fbaac4ccd3ea0e57bf390258386d0f19d5fec5a657d4215` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -488,7 +488,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/figo-pas-v833.js` | 7409 | `2680f161b34ab92db39cf745ff07fd99d1e160fb926b8f118a98a1f0bb0a6059` |
 | `lib/filarial-lymphedema-stage-v1561.js` | 4499 | `26b789405e1541e0b498e99f8a9665ff2fe6c661068c9c9c8af5c579e2ff115e` |
 | `lib/file-head.js` | 388 | `e46fe9833ecc5f46c47141750e041f5e98a0342faaadda5f3bdee52fe3224bea` |
-| `lib/file-kinds.js` | 29190 | `fc0c796785b12c99e811aa962e077ce23a6f98f9f6c854ac37d7e359f801060e` |
+| `lib/file-kinds.js` | 29872 | `fcaf335fd26bfcf7eab1a121eb716fbf6873211991a4eab4f696546822b69656` |
 | `lib/fisher-grade-v600.js` | 10299 | `e9155f9fdefe95d66f6fa2ec622a908cb15ddc858a3dd1d3275d4384cff93a44` |
 | `lib/fitzpatrick-v331.js` | 3746 | `aa2e8153f5e4f4821db4aeffe966810bc8068f00d0bd77789b723f8c613691b1` |
 | `lib/fluidresp-v113.js` | 8862 | `b6a605fd55a8d672d87aeb73818cd415ccd9530f683a28b93cb899bdfc21e4cd` |
@@ -1350,7 +1350,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/step-therapy-v1502.js` | 7907 | `40287cfc7922d98f235d50fce150a3c873edf69844d4cbab4b80f30f71201ac8` |
 | `lib/sternbach-v589.js` | 13053 | `720e9250cdc1ad1f9e75485c0a41919c2321c18836f991bcec0ebc3c6cad5e3e` |
 | `lib/stoppfall-check-v1634.js` | 3615 | `16754b78dbbc1e64a6189e6d523b261fe4234529582e5785c732a6e48b8f1a17` |
-| `lib/storage-excursion-summary-v1630.js` | 9440 | `25b3744bf9e5105248d36bef71a7a00cf24d79bbd85058f5ff7c75c2501166dd` |
+| `lib/storage-excursion-summary-v1630.js` | 12614 | `6e35fe27603afce158ff3502785be083502ef749169eb2cd270525abb69840fe` |
 | `lib/strasberg-bdi-v348.js` | 4354 | `832252b56530217e303fa2a2dab25cba0b5090e7ecfa32fed5484a53b3a7781e` |
 | `lib/stroke-prognosis-v210.js` | 3687 | `c1af165d9be0c55ecd2ab027a67e1a528f2bf0d143cb61b3ab6c4808ea5108c5` |
 | `lib/stroke-risk-v217.js` | 16389 | `f3c99878caf9cfd9a2f1e860fbccfd7be0cc9c9c7e6e7ac9d1e9da39f6be9759` |
@@ -3080,7 +3080,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v1629.js` | 31151 | `178cff13db077e46646ada6ca64d99215d4ce16c2307c1f4d824d01fcc41ef9e` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
-| `views/group-v1630.js` | 22124 | `a6e4fea0e95479908760b1370a9a1e499b3f5d448378470f93bdfc9cd0091d78` |
+| `views/group-v1630.js` | 23495 | `c64bd4d306fd4c29c9a1222200f3486df5b24d049f12cb2af1d2725b0c6895eb` |
 | `views/group-v1631.js` | 23607 | `832d06ecf8b48105ca886bb7e0941854606d5dc60711ca2eeb86cd5fe72c538a` |
 | `views/group-v1632.js` | 22238 | `c3bfa88797e5bef2edd97efade44b441a2834a146d1388ec383e8ef815853dfb` |
 | `views/group-v1633.js` | 29671 | `4e0c93aabd98861f794103eb371c31305c6d008a0d3b376fbb47e1bcd0bc550b` |

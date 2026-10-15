@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Storage excursion summary: load a data logger's export as it comes (header row, separate date and
+  time columns, US dates, semicolons), and copy the excursions as CSV. A logger export dropped on
+  the home page is recognized and handed to it.
 - Effective rate reconciliation: a claims list gives brand and generic rates against each guarantee,
   the generic dispensing rate, and the claims where the patient paid more than the pharmacy kept.
 - Cost of dispensing: fees by payer, each set against the cost per prescription, with the dollar
