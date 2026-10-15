@@ -613,6 +613,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Fourteen older tools that read figures from an FDA label now give no answer when that label is
+  superseded or past its review date, on the page and through the MCP server (`LABEL_WITHHELD`),
+  as the newer tools already did.
 - The antibiogram builder's CSV and the payer policy change list now neutralize cells that look
   like spreadsheet formulas, the same way the upload workbench download already did.
 

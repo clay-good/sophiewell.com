@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:5c1ebdc6-1f47-5f61-8608-cca56d4312a6",
+  "serialNumber": "urn:uuid:30d1b2c3-874e-5563-8612-8cee895f526f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-15T05:43:00.029Z",
+    "timestamp": "2026-10-15T05:53:27.125Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1289ffb99abeb3f080677a48d9c3e4778adba3a6fe1c037478024ab6e12b69d3"
+          "content": "bc06673bf7dd49a30219dd44e7e04f572fe4f4527f187d053e5dbecc1d8b2661"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "631750"
+          "value": "632384"
         }
       ]
     },
@@ -14605,6 +14605,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9255"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/label-gate.js",
+      "type": "file",
+      "name": "lib/label-gate.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8868f80a34f8fbd02906f823435c2288be1e97825aa5de8eb76633c74c05c078"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3600"
         }
       ]
     },
@@ -59597,7 +59618,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "674d9a22593f0f48e9b0190c5f902d541a67518d86ae4b770cc50d037813ea23"
+          "content": "c01b6326ee8753e4338c9422025b5aa46baaea482690421a2144217fae1fb058"
         }
       ],
       "properties": [
@@ -59607,7 +59628,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "56954"
+          "value": "57295"
         }
       ]
     },
@@ -95703,6 +95724,7 @@
         "urn:sophiewell:file:source:lib/label-dose.js",
         "urn:sophiewell:file:source:lib/label-editions.js",
         "urn:sophiewell:file:source:lib/label-formulation-switch-v1633.js",
+        "urn:sophiewell:file:source:lib/label-gate.js",
         "urn:sophiewell:file:source:lib/label-row.js",
         "urn:sophiewell:file:source:lib/label-titration-calendar-v1633.js",
         "urn:sophiewell:file:source:lib/labor-care-guide-alert-v1558.js",
@@ -98895,7 +98917,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "5c1ebdc61f47ff61"
+      "value": "30d1b2c3874ee563"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -98907,7 +98929,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3761"
+      "value": "3762"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

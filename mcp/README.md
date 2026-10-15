@@ -134,7 +134,8 @@ candidates or `NO_MATCH`. An id that is not a tile at all is still `UNKNOWN_ID`.
 English `message`, so you can branch without parsing prose: `UNKNOWN_TOOL`,
 `UNKNOWN_ID`, `BAD_ARGS`, `UNKNOWN_INPUT`, `MISSING_INPUT`, `INVALID_TYPE`,
 `INCOMPLETE`, `COMPUTE_ERROR`, `NO_MATCH`, `NO_VALUES`, `MISSING_INPUTS`,
-`AMBIGUOUS`, `NOT_EXPOSED`, and from the file tools `NO_ROOTS`, `OUTSIDE_ROOTS`,
+`AMBIGUOUS`, `NOT_EXPOSED`, `LABEL_WITHHELD` (an older tool whose drug label changed or passed review;
+`labelLinks` gives the current labels), and from the file tools `NO_ROOTS`, `OUTSIDE_ROOTS`,
 `NOT_A_FILE`, `NO_TOOL`, `NOT_AVAILABLE`, `TOO_LARGE`, `UNREADABLE`.
 
 **`catalogVersion`** (`{ contentHash, tileCount, exposedCount, deterministic,

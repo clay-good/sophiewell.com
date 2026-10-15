@@ -1,6 +1,7 @@
 // sophiewell.com - vanilla ES module application.
 // All DOM updates use textContent or createElement. Raw HTML insertion is forbidden.
 
+import { labelGate } from './lib/label-gate.js';
 import { renderers as RA } from './views/group-a.js';
 import { installDecimalComma } from './lib/decimal-comma.js';
 import { installOfflineStatus } from './lib/offline-status.js';
@@ -5979,7 +5980,14 @@ function renderToolView(util) {
   // works once `body` is part of the document.
   main.appendChild(content);
 
-  const renderer = RENDERERS[util.id];
+  // spec-v1628 section 1: an older tool whose FDA label is superseded or past review shows no answer.
+  const gate = labelGate(util.id, new Date());
+  const renderer = gate
+    ? (root) => root.appendChild(el('div', { id: 'q-results', 'aria-live': 'polite' }, [
+      el('p', { class: 'warn', text: gate.message }),
+      ...gate.withheld.map((w) => el('p', {}, [el('a', { href: w.url, target: '_blank', rel: 'noreferrer', text: `Current label on DailyMed (${w.edition.replace(/^version \d+ of the /, '').replace(/ label \(.*$/, '')})` })])),
+    ]))
+    : RENDERERS[util.id];
   if (renderer) {
     try {
       renderer(body);
@@ -6251,6 +6259,7 @@ function computeWithTile(id, values) {
 }
 
 async function computeOneTile(id, values) {
+  if (labelGate(id, new Date())) return null;
   const renderer = RENDERERS[id];
   if (!renderer) return null;
   const host = el('div', { class: 'record-offscreen', 'aria-hidden': 'true' });

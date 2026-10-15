@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5c1ebdc61f47ff61`
-Generated: 2026-10-15T05:43:00.029Z
+Build ID: `30d1b2c3874ee563`
+Generated: 2026-10-15T05:53:27.125Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -27,7 +27,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 |---|---:|---|
 | `index.html` | 149639 | `c90ce0a82a57c07515e95d8140ab2a312c3cde7ddc5633f1702b31bd2d5aed96` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 631750 | `1289ffb99abeb3f080677a48d9c3e4778adba3a6fe1c037478024ab6e12b69d3` |
+| `app.js` | 632384 | `bc06673bf7dd49a30219dd44e7e04f572fe4f4527f187d053e5dbecc1d8b2661` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -728,6 +728,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/label-dose.js` | 8030 | `32955c2d3c6dab36d25f512f012a722c3d6955f7c3ac719e75c3c7f4d44cd99f` |
 | `lib/label-editions.js` | 68701 | `a165b9d1dced1d6d4117316f4337e5218f8bad2fc2ec840a13e98915258e707b` |
 | `lib/label-formulation-switch-v1633.js` | 9255 | `c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8` |
+| `lib/label-gate.js` | 3600 | `8868f80a34f8fbd02906f823435c2288be1e97825aa5de8eb76633c74c05c078` |
 | `lib/label-row.js` | 2619 | `1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1` |
 | `lib/label-titration-calendar-v1633.js` | 13059 | `b76605438b5e3f053ab16ab45353089e0fd5af8247e31c1430480da52e920679` |
 | `lib/labor-care-guide-alert-v1558.js` | 10175 | `0921500d2999d667f21815fdcf12a8a8cad7c2e954c42d7e31242b2887ad1ff6` |
@@ -2870,7 +2871,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10616 | `7a2aa853195af4f25f5eae871bb586bb460aec75c9e0c3cb2aa5a510fd481219` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
-| `mcp/tools.js` | 56954 | `674d9a22593f0f48e9b0190c5f902d541a67518d86ae4b770cc50d037813ea23` |
+| `mcp/tools.js` | 57295 | `c01b6326ee8753e4338c9422025b5aa46baaea482690421a2144217fae1fb058` |
 | `vendored/README.md` | 1874 | `308637ae66d2bf5f78f147a342362718809a7bdde38463b1ec2a5e72ef49fe79` |
 | `vendored/mammoth/LICENSE` | 1307 | `6663bbd049205d38a496ccacb412a151980b444627d38de218b3b809aef330f1` |
 | `vendored/mammoth/_vendored.md` | 3146 | `c61c3ab5cee45c4e3218cc7f7bc2a8509b0f99973942ec9ec1877a5543c921f7` |

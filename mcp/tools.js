@@ -5,6 +5,7 @@
 // with the MCP subtree removed.
 
 import { readFileSync } from 'node:fs';
+import { labelGate } from '../lib/label-gate.js';
 import { fileURLToPath } from 'node:url';
 import {
   REGISTRY, TOTAL_TILES, UNEXPOSED, getCalculator, allCalculators, coverageCount, DISCLAIMER, ADMIN_DISCLAIMER,
@@ -386,6 +387,10 @@ export function computeCalculator(args = {}) {
   // spec-v637 §1: pass the validator's stable code/field through unchanged.
   const v = e.validate(inputs || {});
   if (!v.valid) return { id: e.id, valid: false, code: v.code, ...(v.field ? { field: v.field } : {}), ...(dep || {}), message: v.message };
+
+  // spec-v1628 section 1: an older tool whose FDA label is superseded or past review gives no answer.
+  const gate = labelGate(e.id);
+  if (gate) return { id: e.id, valid: false, code: 'LABEL_WITHHELD', ...(dep || {}), message: gate.message, labelLinks: gate.withheld.map((w) => w.url) };
 
   let raw;
   try {
