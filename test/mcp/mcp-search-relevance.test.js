@@ -1006,6 +1006,8 @@ const PROBES = [
   ['iv infusion maximum rate label phenytoin vancomycin potassium chloride', ['iv-label-rate-check']],
   ['iv potassium phosphates order concentration rate label maximum', ['iv-phosphate-order-check']],
   ['trace elements parenteral nutrition tralement multrys infuvite pediatric', ['pn-micronutrient-volume']],
+  // A phrase holding two words of a short query takes it: "infuvite pediatric dose" sent "pediatric dose" to PN.
+  ['pediatric dose', ['peds-dose', 'peds-weight-dose']],
   ['premixed parenteral nutrition clinimix kabiven maximum infusion', ['premixed-pn-rate-check']],
   ['parenteral nutrition amino acids nitrogen travasol trophamine cysteine', ['pn-amino-acid-order']],
   ['parenteral nutrition order per kilogram kcal nitrogen ratio', ['pn-order-summary']],
