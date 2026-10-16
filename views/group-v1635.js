@@ -8,7 +8,7 @@
 // mesna-ifosfamide-schedule, glucarpidase-dose, it-methotrexate-age-dose, hdmtx-leucovorin-rescue,
 // gcsf-timing-check, cumulative-dose-limit, esa-chemo-dose-adjust,
 // chatelut-carboplatin, desensitization-12-step, chemo-organ-label-dose,
-// chemo-dose-verify.
+// chemo-dose-verify, pediatric-administered-activity.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -25,6 +25,7 @@ import * as RK from '../lib/radioactive-decay-v1635.js';
 import * as DV from '../lib/radiopharm-dispense-volume-v1635.js';
 import * as PR from '../lib/patient-release-rg839-v1635.js';
 import * as BF from '../lib/nuc-med-breastfeeding-interruption-v1635.js';
+import * as PA from '../lib/pediatric-administered-activity-v1635.js';
 import * as GB from '../lib/generator-breakthrough-check-v1635.js';
 import * as RS from '../lib/radiation-distance-shielding-v1635.js';
 import * as RB from '../lib/rasburicase-dose-v1635.js';
@@ -325,6 +326,17 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(BF.nucMedBreastfeedingInterruption(args), o);
+    }));
+  },
+  'pediatric-administered-activity'(root) {
+    const pairs = [['paa-protocol', 'protocol'], ['paa-weight', 'weightKg']];
+    selectField(root, 'Radiopharmaceutical and protocol', 'paa-protocol', PA.PROTOCOLS);
+    numField(root, 'Weight, kg (not needed for the fixed-range rows)', 'paa-weight', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PA.pediatricAdministeredActivity(args), o);
     }));
   },
   'generator-breakthrough-check'(root) {

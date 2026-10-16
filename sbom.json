@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:0d3b8415-6edc-55c6-8b90-9e14379b8923",
+  "serialNumber": "urn:uuid:69df159b-eb40-5f9e-8c20-069a2ddc22f7",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-15T17:07:56.366Z",
+    "timestamp": "2026-10-16T22:36:03.902Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2303 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2304 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c216b0074ae9d6b7cd7d06e84a8f3bc8f072cec750155e882041922503a30bb6"
+          "content": "fe15b9f9d38f176cce87066795097e09d7899db0690f4e58ac87f4795b1bb8ad"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150256"
+          "value": "150356"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e685ee605a4344318bb761db301dd50a8e9783812978caa4c9a0174574d3355b"
+          "content": "2ac6ab54650a33f72d6a33d2c18895bd7e12c8045a78d97d1badc5f17b482bc5"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "633976"
+          "value": "634183"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bf9411316addede808ba25fd4967cc1b013d1fccef651098bdd7e7402c912c11"
+          "content": "4ded773b404f19f68f74d02f416233635dfe577982dbebe24799a80ee9f09add"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "289922"
+          "value": "290064"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "649a4560937a056e45aedb09c5645aad14a31526f0011c3f74f17dbcdfb6dbd3"
+          "content": "60dd062808b855a953e037edab3cc19857bc870a579806e9016bb333faf3ecb8"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140576"
+          "value": "140697"
         }
       ]
     },
@@ -17387,7 +17387,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "72788f1a142a3f109a6a61574cd91ce836ae015ac6b6c80b1f708e0bd1d65fe0"
+          "content": "8b3d66b3bd01e3deff1253a139cfef666f2a71707e6c9c1f39bea0eb284e9054"
         }
       ],
       "properties": [
@@ -17397,7 +17397,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3015040"
+          "value": "3015823"
         }
       ]
     },
@@ -22291,6 +22291,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8938"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pediatric-administered-activity-v1635.js",
+      "type": "file",
+      "name": "lib/pediatric-administered-activity-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0e5a900c19dac8fa5fcef855cfd95c3dbffd3396b7cfc3b95d8f27dec52b3314"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10290"
         }
       ]
     },
@@ -51716,6 +51737,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pediatric-administered-activity-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/pediatric-administered-activity-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0d46c634b5ac0e86f556dd617a10ae9de9ce84cf73d8972ef5e5d44857930ff5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1007"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pedis-v613.js",
       "type": "file",
       "name": "mcp/adapters/pedis-v613.js",
@@ -60080,7 +60122,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3ced35f787bddd6f34b485a66229b5437e7e10b3b4308613275cefae1431f207"
+          "content": "388315c68fb01b63d4dcd5dc15cdba8a890389c122b751816c464c0b55aaad2a"
         }
       ],
       "properties": [
@@ -60090,7 +60132,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "161892"
+          "value": "162075"
         }
       ]
     },
@@ -64721,7 +64763,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5202a78b4b44f8fb2efa2d12cba1c49cd6103e1c10a836e33ecf04154937776a"
+          "content": "1b7c77fb66a2aef0b4b97d831f7dacd468d71261fdf8af9e9865b3b2c6f42415"
         }
       ],
       "properties": [
@@ -64731,7 +64773,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "40637"
+          "value": "41290"
         }
       ]
     },
@@ -96657,6 +96699,7 @@
         "urn:sophiewell:file:source:lib/pdc-star-v1513.js",
         "urn:sophiewell:file:source:lib/pederson-difficulty-v717.js",
         "urn:sophiewell:file:source:lib/pediatric-acute-v262.js",
+        "urn:sophiewell:file:source:lib/pediatric-administered-activity-v1635.js",
         "urn:sophiewell:file:source:lib/pedis-v613.js",
         "urn:sophiewell:file:source:lib/peds-growth-v141.js",
         "urn:sophiewell:file:source:lib/peds-heparin-nomogram-v1634.js",
@@ -99008,6 +99051,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pdc-star-v1513.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pederson-difficulty-v717.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pediatric-acute-v262.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pediatric-administered-activity-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pedis-v613.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-growth-v141.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-heparin-nomogram-v1634.js",
@@ -99511,7 +99555,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "0d3b84156edc85c6"
+      "value": "69df159beb405f9e"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99523,7 +99567,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3789"
+      "value": "3791"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

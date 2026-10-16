@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Pediatric radiopharmaceutical administered activity: the 2024 North American guidelines' weight-based
+  activity for 28 protocols, with the table's minimum and maximum applied and named. The article's
+  misprinted MAG3 figure is replaced by the authors' poster value, and the page says so.
 - CPIC recommendation and FDA statement: when CPIC's own sentence states a dose change, it is applied
   to a dose you enter. Each factor is tied to the SHA-256 of the sentence it was read from, so a
   reworded recommendation drops the arithmetic rather than changing it.

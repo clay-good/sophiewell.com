@@ -954,3 +954,5 @@ experience**.
 > v1635, TPMT and NUDT15 to Thiopurine Starting Dose (CPIC) — [spec-v1635](spec-v1635.md), which adds `tpmt-nudt15-thiopurine-dose` — is 2302.)
 
 > v1635, UGT1A1 Genotype and the Irinotecan Label — [spec-v1635](spec-v1635.md), which adds `ugt1a1-irinotecan-label` — is 2303.)
+
+> v1635, Pediatric Radiopharmaceutical Administered Activity — [spec-v1635](spec-v1635.md), which adds `pediatric-administered-activity` — is 2304.)

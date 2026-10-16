@@ -1,6 +1,6 @@
 # spec-v1635 — Oncology pharmacy, investigational drug service, and nuclear pharmacy
 
-**Status:** In progress, October 15, 2026: 33 of 35 tools built (see Build status); tools 16 to 18 were built that day, after owner decision 12 on CPIC. 35 new tools (2 build-gated: `relative-dose-intensity`, `pediatric-administered-activity`).
+**Status:** In progress, October 16, 2026: 34 of 35 tools built (see Build status); tools 16 to 18 were built October 15, after owner decision 12 on CPIC, and tool 33 on October 16, once its table was read. 35 new tools (1 build-gated: `relative-dose-intensity`).
 **Charter:** [spec-v1627](spec-v1627.md). **Machinery:** [spec-v1628](spec-v1628.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 Three pharmacists do work the catalog barely touches. The chemotherapy-verification pharmacist
@@ -651,8 +651,9 @@ the guideline maximum.
 **Output.** MBq and mCi, and whether a minimum or maximum was applied. Group G.
 **Source.** Treves et al., "2024 Update of the North American Consensus Guidelines for Pediatric
 Administered Radiopharmaceutical Activities," J Nucl Med Technol 2025;53:193-197.
-**Build gate.** The 2024 table (29 protocols) was not opened; only the abstract was read. The
-2016 values are superseded and must not ship. See Verify at build, including licensing.
+**Build gate (cleared October 16, 2026).** The 2024 table was opened in the journal's PDF and in
+the authors' poster (Supplemental Figure 1), and SNMMI's JNMT permissions page was read; see Build
+status. The 2016 values are superseded and must not ship.
 
 ### 34. `radiation-distance-shielding` — Dose Rate at a Distance and Behind Lead
 
@@ -793,6 +794,8 @@ build stores the version and published date instead.
   dose intensity (mg/m² per week) and of the reference regimen before building; if the paper
   defines RDI only against a named standard regimen, the tool must say the reader's planned
   regimen stands in for it.
+  Re-checked October 16, 2026: ascopubs.org answers the DOI page and PDF with a Cloudflare challenge
+  (HTTP 403), which is not worked around, and PubMed carries no abstract. Still gated.
 - **`chatelut-carboplatin`:** the division by creatinine was read in a later paper, not in
   Chatelut 1995. Confirm it in the original, and confirm the creatinine assay the original used
   (Kinoshita et al. treat it as Jaffé).
@@ -828,8 +831,7 @@ build stores the version and published date instead.
   tables.
 - **`nrc-medical-event-screen`:** paragraph (a)(2) (permanent implants) is out of scope; confirm
   that stays true for the nuclear pharmacy reader.
-- **`pediatric-administered-activity`:** read the 2024 table; confirm SNMMI's terms for
-  reproducing the per-kg values (facts, but the table is © SNMMI).
+- **`pediatric-administered-activity`:** done October 16, 2026 (see Build status).
 - **`radiation-distance-shielding`:** attenuation tables were read for Tc-99m only.
 - **Totect and NHS dose banding:** not readable on October 10, 2026; both sit under Rejected.
 
@@ -852,7 +854,7 @@ build stores the version and published date instead.
   applied.
 - Tsao, Young, Otani, Castells. Clin Rev Allergy Immunol 2022;62:432-448 (PMC9156473), giving
   the protocol of Castells MC, et al. J Allergy Clin Immunol 2008;122:574-580.
-- Treves ST, et al. J Nucl Med Technol 2025;53:193-197 (abstract).
+- Treves ST, et al. J Nucl Med Technol 2025;53:193-197, Table 2 and Supplemental Figure 1 (read October 16, 2026).
 - Hryniuk W, Bush H. J Clin Oncol 1984;2:1281-1288 (not read).
 
 ## Tests
@@ -977,6 +979,7 @@ build stores the version and published date instead.
 | 30. `rad-package-label-category` | Built (group Q) on 49 CFR 172.403, 173.403 and 173.441. The regulation's own example (index 0.8, surface 60 mrem/h, YELLOW-III) is a test. A reading at 1 meter higher than at the surface is refused. Above 1,000 mrem/h at the surface the result says it is above the table. |
 | 31. `rad-package-receipt-check` | Built (group Q) on 10 CFR 20.1906, 71.47 and 71.87 and 49 CFR 173.443 with Table 9, as current on eCFR October 8, 2026. Four parts, each optional and checked alone: the 3-hour deadline, which monitoring the rule requires, the wipe, and the dose rates. The 0.10 wipe efficiency is used when none is entered, as the rule allows, and the result says so. "Within the limits" is said only when something was measured. The 10-fold exclusive-use allowance in 173.443(b) is not applied. |
 | 32. `sealed-source-leak-test` | Built (group Q) on 10 CFR 35.67 and 35.3067 as current on eCFR October 8, 2026. The exemption is a required choice; an exempt source with no count entered gets the exemption's own sentence. Exactly 0.005 µCi is leaking ("or more"). The next-test date is 6 calendar months after the test date, with the registry's other intervals named in the note. |
+| 33. `pediatric-administered-activity` | Built (group G) October 16, 2026 from Table 2 of the 2024 update, read in the journal's PDF (doi 10.2967/jnmt.125.270161), and checked row by row against the authors' poster of the same table (Supplemental Figure 1). 28 rows: the 29 protocols with the two sestamibi/tetrofosmin scans and HMPAO/ECD as printed, FDG body and brain and MAG3 with and without flow as separate rows. **One misprint found:** the article's table prints MAG3 without a flow study as "7 MBq/kg (0.10 mCi/kg)"; 0.10 mCi/kg is 3.7 MBq/kg and the poster prints 3.7, so 3.7 ships and the result says so. A unit test checks every other MBq figure against its mCi figure. MAA's 14.8 MBq minimum is printed on the row without a Tc-99m ventilation study only, and is applied there only. The over-70 kg note is stated, not applied; where no maximum is printed, the note's 70-times figure is shown and not applied. Licensing: the JNMT permissions page allows non-commercial reuse of tables with credit and a link; the tool also follows spec-v1628 section 6 (a number with attribution, one protocol at a time; the table is not displayed). |
 | 34. `radiation-distance-shielding` | Built (group Q). The two label attenuation tables were re-read October 11, 2026. A thickness between two rows takes the thinner row's factor and says the true factor lies between; the tool does not interpolate, and a shield thinner than the first row is credited nothing. The rate's unit is the reader's and is carried through. |
 | 35. `occupational-dose-limit-check` | Built (group Q) on 10 CFR 20.1201(a) and 20.1208(a). Doses are entered in rem, mrem or mSv (a required choice). The projection is plain proportion and is not applied to the pregnancy limit, which is not annual. License ALARA levels are not included. |
 

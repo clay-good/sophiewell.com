@@ -13235,6 +13235,13 @@
       ],
       "tile": "pgx-diplotype-phenotype",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pediatric radiopharmaceutical dose"
+      ],
+      "tile": "pediatric-administered-activity",
+      "audience": "clinicians"
     }
   ]
 }

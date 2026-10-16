@@ -889,6 +889,7 @@ import * as generatorBreakthroughCheckV1635 from '../../lib/generator-breakthrou
 import * as radiationDistanceShieldingV1635 from '../../lib/radiation-distance-shielding-v1635.js';
 import * as patientReleaseRg839V1635 from '../../lib/patient-release-rg839-v1635.js';
 import * as nucMedBreastfeedingInterruptionV1635 from '../../lib/nuc-med-breastfeeding-interruption-v1635.js';
+import * as pediatricAdministeredActivityV1635 from '../../lib/pediatric-administered-activity-v1635.js';
 import * as radioactiveDecayV1635 from '../../lib/radioactive-decay-v1635.js';
 import * as radiopharmDispenseVolumeV1635 from '../../lib/radiopharm-dispense-volume-v1635.js';
 import * as radPackageReceiptCheckV1635 from '../../lib/rad-package-receipt-check-v1635.js';
@@ -2009,6 +2010,7 @@ const MODULES = {
   'radiation-distance-shielding-v1635.js': radiationDistanceShieldingV1635,
   'patient-release-rg839-v1635.js': patientReleaseRg839V1635,
   'nuc-med-breastfeeding-interruption-v1635.js': nucMedBreastfeedingInterruptionV1635,
+  'pediatric-administered-activity-v1635.js': pediatricAdministeredActivityV1635,
   'radioactive-decay-v1635.js': radioactiveDecayV1635,
   'radiopharm-dispense-volume-v1635.js': radiopharmDispenseVolumeV1635,
   'rad-package-receipt-check-v1635.js': radPackageReceiptCheckV1635,

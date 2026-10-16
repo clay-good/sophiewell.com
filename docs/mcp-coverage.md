@@ -9268,6 +9268,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nuc-med-breastfeeding-interruption-v1635.js (spec-v1635: Breastfeeding interruption (RG 8.39 Rev. 1 Table 3) — clinical disclaimer)
 - `nuc-med-breastfeeding-interruption`
 
+### lib/pediatric-administered-activity-v1635.js (spec-v1635: Pediatric administered activity (NAGL 2024 Table 2) — clinical disclaimer)
+- `pediatric-administered-activity`
+
 ### lib/generator-breakthrough-check-v1635.js (spec-v1635: Generator breakthrough (10 CFR 35.204; Technelite, Cardiogen-82) — administrative disclaimer)
 - `generator-breakthrough-check`
 

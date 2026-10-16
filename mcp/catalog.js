@@ -1157,6 +1157,7 @@ import generatorBreakthroughCheckV1635 from './adapters/generator-breakthrough-c
 import radiationDistanceShieldingV1635 from './adapters/radiation-distance-shielding-v1635.js';
 import patientReleaseRg839V1635 from './adapters/patient-release-rg839-v1635.js';
 import nucMedBreastfeedingInterruptionV1635 from './adapters/nuc-med-breastfeeding-interruption-v1635.js';
+import pediatricAdministeredActivityV1635 from './adapters/pediatric-administered-activity-v1635.js';
 import radioactiveDecayV1635 from './adapters/radioactive-decay-v1635.js';
 import radiopharmDispenseVolumeV1635 from './adapters/radiopharm-dispense-volume-v1635.js';
 import radPackageReceiptCheckV1635 from './adapters/rad-package-receipt-check-v1635.js';
@@ -2491,6 +2492,7 @@ const ADAPTER_MODULES = [
   ['radiation-distance-shielding-v1635', radiationDistanceShieldingV1635],
   ['patient-release-rg839-v1635', patientReleaseRg839V1635],
   ['nuc-med-breastfeeding-interruption-v1635', nucMedBreastfeedingInterruptionV1635],
+  ['pediatric-administered-activity-v1635', pediatricAdministeredActivityV1635],
   ['radioactive-decay-v1635', radioactiveDecayV1635],
   ['radiopharm-dispense-volume-v1635', radiopharmDispenseVolumeV1635],
   ['rad-package-receipt-check-v1635', radPackageReceiptCheckV1635],
