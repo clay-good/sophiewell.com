@@ -70,3 +70,9 @@ test('med-sync-plan accepts mapped rows and preserves commas in medication names
   assert.match(result.notes.join(' '), /lisinopril, 10 mg/);
   assert.match(s({ medicationRows: [{ ...medicationRows[0], units_per_day: '' }] }).message, /units taken a day/);
 });
+
+test('MPR/PDC: a fill line repeated exactly is named, not silently counted', () => {
+  const r = m({ fills: '2026-01-05, 30\n2026-02-01, 30\n2026-02-01, 30', periodEnd: '2026-06-30' });
+  assert.match(r.notes.join(' '), /1 fill line repeats an earlier line exactly \(first: 2026-02-01, 30 days\)/);
+  assert.doesNotMatch(m({ fills: '2026-01-05, 30\n2026-02-01, 30', periodEnd: '2026-06-30' }).notes.join(' '), /repeat/);
+});

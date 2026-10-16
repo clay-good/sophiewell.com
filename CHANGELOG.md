@@ -640,6 +640,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- DPYD to fluoropyrimidine: a variant listed twice beside "Reference" is refused instead of being read
+  as homozygous, which had turned a 50% dose reduction into "avoid use". PDC, Star PDC and the
+  adherence outreach list now name a fill line that repeats an earlier one exactly (a rebilled claim
+  inflates days covered). "pediatric dose" no longer opens the PN trace-element tool first.
 - Fourteen older tools that read figures from an FDA label now give no answer when that label is
   superseded or past its review date, on the page and through the MCP server (`LABEL_WITHHELD`),
   as the newer tools already did.

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0f5160e2d85e48a8`
-Generated: 2026-10-16T23:26:17.932Z
+Build ID: `8f469ebdcb750121`
+Generated: 2026-10-16T23:41:49.601Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -75,7 +75,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/acute-injury-v213.js` | 12314 | `2588fb8b7fa34af0ea7c43311a624e67a163840886140397854ba67994ce7a21` |
 | `lib/acute-opioid-rx-limit-v1393.js` | 8742 | `a6f06ba9dedaa72a2a02e9e752846eb4dd8fcd66cf65f6258b109d23abb1e75a` |
 | `lib/ade-cost-avoidance-v1634.js` | 4962 | `ed215ca619c98169e5ff5dd78a63a92196bf5e63aecd5dc2ea45605421d4ae16` |
-| `lib/adherence-v1513.js` | 10934 | `ac03db12a6bc94c8eafb856c81696eb80e7f4d3a38509d3f8be80c0f5c3d3a0e` |
+| `lib/adherence-v1513.js` | 11402 | `6f77aa1ab3345578f4677a2a3038cb240cd1106ae3b0085158181ece9051bcbc` |
 | `lib/adiposity-v270.js` | 3592 | `a4bb606611ce1ece313a7bc6b5aedecc4d58d86b9df71a5bafd803142c05c1c6` |
 | `lib/adjusted-patient-days-v1636.js` | 5005 | `89e24d76d22230f3ec9438910959ea6cb30c430bf559dee16478a479b1a925aa` |
 | `lib/admixture-concentration-v1630.js` | 8315 | `768b49a4e60c7830c7aec7e68158c23aeed8dbfeaa6379cb3284ea1b6cc94e2e` |
@@ -412,7 +412,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/downton-fall-risk-v688.js` | 4381 | `11559782d78d3385853abf389b9d20689202b28f6c8d40b24cfdb39e4bb2575b` |
 | `lib/doxy-pep-v1401.js` | 3874 | `515506365a3d6ffcee56d78878cafbbc64ffc6e99e276bb02be639cf4a55609b` |
 | `lib/dpc-hsa-check.js` | 8850 | `06070b82ddb71108995f6d19700b8780921d181d0b7bd40535ff86fcd57adf59` |
-| `lib/dpyd-fluoropyrimidine-dose-v1635.js` | 5506 | `27b2d2260e02cb2b9d61b87edd2b392174bc22025a0c2471c3acbb087f4a05f8` |
+| `lib/dpyd-fluoropyrimidine-dose-v1635.js` | 6567 | `f630f6b9ae7e0433d974bd37b73fcee731d61e12f40f5304a4f4579a23e2c390` |
 | `lib/dr-severity-v301.js` | 3779 | `760d88af2b8a3b94b23d19729b2879910b20c2372f1c45031029fde68bbf814e` |
 | `lib/dropper-calibration-v1629.js` | 4345 | `92fb014e81295c42415eb0c6d8d51b3e104bc5870305830de4a02dda588828f9` |
 | `lib/dscsa-dispenser-clocks-v1637.js` | 6821 | `8df621b949e6052e3b5019e13caa2004a0eb0c76dcf94f662e261c40859f7f7c` |
@@ -1091,7 +1091,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pc-ptsd5-v521.js` | 7334 | `0635ea214ac637ed9109351c0bed5c50bb81976857fb80fd59e71aa11a6495d4` |
 | `lib/pcdai-v522.js` | 13475 | `5f88c27307bacf490146e372bdbb5481715bca5b5d77f5cc7f305f871c9b03f2` |
 | `lib/pci-surgery-timing-v898.js` | 9376 | `6b4d99f342591c5f67a2f9219fd7f669e03ba310458dbecec3c8382ca29144cd` |
-| `lib/pdc-star-v1513.js` | 12562 | `cda8cf72ce442eae606cb186bcb7bab53d92d8abbd376008339cf5af817fa8d0` |
+| `lib/pdc-star-v1513.js` | 13661 | `391da9d577d4cf409a0acaa0a09f94fba617e70ec150bbabec3331d96b02cec4` |
 | `lib/pederson-difficulty-v717.js` | 3469 | `5f7fb47b29141583014bbf6142329bfc1e95da75272b063d20479f5631849b8e` |
 | `lib/pediatric-acute-v262.js` | 8938 | `bdd2b5540c3050cde8707837021041e85d45b358ed7a9c6a6c15b25a0e0c19cf` |
 | `lib/pediatric-administered-activity-v1635.js` | 10360 | `7b9761b8763e42af2941149f2866a8751c9d3d7be248a8efe2456debb16361c9` |

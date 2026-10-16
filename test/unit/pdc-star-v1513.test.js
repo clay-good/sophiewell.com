@@ -74,3 +74,12 @@ test('mapped file rows use the same PDC calculation and preserve commas in value
   assert.equal(fromRows.rows[0].patient, 'Smith, Ann');
   assert.match(p({ fillRows: [{ ...fillRows[0], ingredient: '' }], year: '2026' }).message, /ingredient/);
 });
+
+test('a fill line repeated exactly is counted, and named so a rebilled claim can be removed', () => {
+  // Found October 16, 2026: a doubled claims export raised a patient's slack from 51 to 72 days with no word.
+  const fills = 'Ann, D10, 2026-01-05, 30, atorvastatin\nAnn, D10, 2026-02-10, 30, atorvastatin\nAnn, D10, 2026-02-10, 30, atorvastatin';
+  const r = p({ fills, year: '2026' });
+  assert.match(r.notes.join(' '), /1 fill line repeats an earlier line exactly \(first: Ann, D10, 2026-02-10\)\..*reversed and rebilled claim/);
+  assert.match(a({ fills, year: '2026', asOf: '2026-03-01' }).notes.join(' '), /repeats an earlier line exactly/);
+  assert.doesNotMatch(p({ fills: fills.split('\n').slice(0, 2).join('\n'), year: '2026' }).notes.join(' '), /repeat/);
+});

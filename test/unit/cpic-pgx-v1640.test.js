@@ -266,3 +266,17 @@ test('DPYD takes a report\'s variants, not an unbounded list', () => {
   assert.match(dp({ drug: 'fluorouracil', variants: Array(51).fill('Reference').join('\n') }, DB, NOW).message, /at most 50/);
   assert.equal(dp({ drug: 'fluorouracil', variants: Array(50).fill('Reference').join('\n') }, DB, NOW).activityScore, 2);
 });
+
+test('DPYD: a variant on two lines beside "Reference" is refused, not read as homozygous', () => {
+  // Found October 16, 2026 by doubling every line of the page example: "*2A, *2A, Reference, Reference"
+  // answered Poor Metabolizer ("avoid use") for a report that said Intermediate Metabolizer.
+  for (const v of ['*2A\n*2A\nReference', 'c.1905+1G>A (*2A)\n*2A\nReference\nReference']) {
+    const r = dp({ drug: 'fluorouracil', variants: v }, DB, NOW);
+    assert.equal(r.valid, false, v);
+    assert.match(r.message, /listed twice beside "Reference".*leave "Reference" out\.$/);
+  }
+  assert.match(dp({ drug: 'fluorouracil', variants: '*2A\n*2A\n*2A' }, DB, NOW).message, /listed 3 times, but DPYD has two copies/);
+  const homo = dp({ drug: 'fluorouracil', variants: '*2A\n*2A' }, DB, NOW);
+  assert.deepEqual([homo.activityScore, homo.phenotype], [0, 'Poor Metabolizer'], 'homozygous, entered as the convention asks');
+  assert.equal(dp({ drug: 'fluorouracil', variants: '*2A\nc.2846A>T\nReference' }, DB, NOW).activityScore, 0.5, 'two different variants and Reference: CPIC takes the two lowest');
+});
