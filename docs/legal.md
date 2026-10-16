@@ -204,6 +204,16 @@ and are not subject to copyright. The site bundles the underlying
 stage criteria with original brief notes by the project author and
 attribution to the WMS guidelines.
 
+### Pediatric administered activities (SNMMI, spec-v1635)
+
+`pediatric-administered-activity` uses Table 2 of the 2024 North American consensus guidelines
+(Treves et al., J Nucl Med Technol 2025;53:193-197, © SNMMI). The journal's permissions page allows
+reuse of tables only for non-commercial purposes, a term this MIT project cannot pass on (the same
+reason as the WHO material above), so that permission is not what the tool relies on. It uses the
+activities, minimums and maximums as numeric facts with attribution, one protocol at a time, in the
+posture spec-v1628 section 6 sets for society guidelines: the table is never displayed, the notes are
+restated in the project's own words, and the result cites the article and links to it.
+
 ## License of This Project
 
 The project source and the project's original written content are licensed

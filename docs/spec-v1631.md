@@ -750,6 +750,8 @@ Backfills 3, 5, 6 and 8 correct or re-source a number in a live tool and are ind
   the SPL (reduction "in proportion to" creatinine clearance); read the image. The tobramycin
   reduced-dose nomogram is also an image.
 - **`aminoglycoside-initial-dose`:** everything; see the build gate.
+  Re-checked October 16, 2026: neither paper has a PubMed Central copy, and acpjournals.org answers
+  the 1976 paper's DOI (10.7326/0003-4819-85-2-183) with HTTP 403. Still gated.
 - **`aminoglycoside` backfill:** the Hartford nomogram's boundary lines must be read from the
   figure in Nicolau 1995 (the PMC PDF sat behind a browser check). Whether amikacin levels are
   halved before plotting is unread.

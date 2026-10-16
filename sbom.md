@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `69df159beb405f9e`
-Generated: 2026-10-16T22:36:03.902Z
+Build ID: `0f5160e2d85e48a8`
+Generated: 2026-10-16T23:26:17.932Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1094,7 +1094,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pdc-star-v1513.js` | 12562 | `cda8cf72ce442eae606cb186bcb7bab53d92d8abbd376008339cf5af817fa8d0` |
 | `lib/pederson-difficulty-v717.js` | 3469 | `5f7fb47b29141583014bbf6142329bfc1e95da75272b063d20479f5631849b8e` |
 | `lib/pediatric-acute-v262.js` | 8938 | `bdd2b5540c3050cde8707837021041e85d45b358ed7a9c6a6c15b25a0e0c19cf` |
-| `lib/pediatric-administered-activity-v1635.js` | 10290 | `0e5a900c19dac8fa5fcef855cfd95c3dbffd3396b7cfc3b95d8f27dec52b3314` |
+| `lib/pediatric-administered-activity-v1635.js` | 10360 | `7b9761b8763e42af2941149f2866a8751c9d3d7be248a8efe2456debb16361c9` |
 | `lib/pedis-v613.js` | 8884 | `f158474599314efcff28d525a5512b83d595a7fc21d75bb30dac2620d741b6b9` |
 | `lib/peds-growth-v141.js` | 18695 | `2d15c7f15cf26e13f3de140369244b3eb80ee7760d4987713a5d9dabc982fb2e` |
 | `lib/peds-heparin-nomogram-v1634.js` | 6197 | `5c088e3ee002c58bc092222e00ebe8ea2c1ee7cc77adda69f4d7aa88c9d64a84` |
