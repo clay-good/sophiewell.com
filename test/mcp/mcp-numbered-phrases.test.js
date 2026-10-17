@@ -65,3 +65,14 @@ test('answer_query: the calculator named first wins over a template or a label t
   assert.equal(answerQuery({ query: 'wells score for PE, heart rate 110, previous DVT' }).tile, 'wells-pe');
   assert.equal(answerQuery({ query: 'Waist-to-Height Ratio (WHtR) Waist circumference 90 cm, Height 170 cm' }).tile, 'whtr', '"ratio" alone does not name P/F Ratio');
 });
+
+test('answer_query: a curated phrase the question opens with outranks a calculator a value label names', () => {
+  // Found October 17, 2026 by sending each curated phrase plus its tool's example values: 27 went elsewhere.
+  for (const [q, tile] of [
+    ['liver disease severity, Total bilirubin 2 mg/dL, INR 1.5, Creatinine 1.5 mg/dL, Sodium 130 mmol/L', 'meld-na'],
+    ['pediatric gfr, Height 100 cm, Serum creatinine 0.5 mg/dL', 'schwartz-egfr'],
+    ['corrected phenytoin, Measured total phenytoin 8 ug/mL, Serum albumin 2.0 g/dL', 'corrected-phenytoin'],
+  ]) assert.equal(answerQuery({ query: q }).tile, tile, q);
+  // A phrase inside a named calculator's own name is that name, not a route elsewhere.
+  assert.equal(answerQuery({ query: 'Shock Index, Pediatric Age-Adjusted (SIPA) Age 5 years, Heart rate 140 bpm, Systolic BP 100 mmHg' }).tile, 'sipa');
+});

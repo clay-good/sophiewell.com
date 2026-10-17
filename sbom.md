@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7343a70687ebe652`
-Generated: 2026-10-17T06:49:31.619Z
+Build ID: `80cffdcea3195787`
+Generated: 2026-10-17T07:21:44.575Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -2904,7 +2904,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10616 | `7a2aa853195af4f25f5eae871bb586bb460aec75c9e0c3cb2aa5a510fd481219` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
-| `mcp/tools.js` | 61522 | `50089c19872196604789cd6607e33bcf95d878e3185b07f94cdf4fa5f11c5a54` |
+| `mcp/tools.js` | 63013 | `67412e05e4556e436442d4620af88af35c7ca9ea41a716aa7b61bb123151df42` |
 | `vendored/README.md` | 1874 | `308637ae66d2bf5f78f147a342362718809a7bdde38463b1ec2a5e72ef49fe79` |
 | `vendored/mammoth/LICENSE` | 1307 | `6663bbd049205d38a496ccacb412a151980b444627d38de218b3b809aef330f1` |
 | `vendored/mammoth/_vendored.md` | 3146 | `c61c3ab5cee45c4e3218cc7f7bc2a8509b0f99973942ec9ec1877a5543c921f7` |

@@ -17,6 +17,7 @@ import {
 function disclaimerFor(e) { return e.clinical ? DISCLAIMER : ADMIN_DISCLAIMER; }
 function domainOf(e) { return e.clinical ? 'clinical' : 'administrative'; }
 import { resolvePromptRanked, rankingQuery } from '../lib/prompt.js';
+import { matchSynonym } from '../lib/synonyms.js';
 import { buildNameCounts, nameMatch, namesInFull } from '../lib/name-match.js';
 import { corpusDesc } from '../lib/search-corpus.js';
 import { buildRelatedIndex, pickRelated } from '../lib/related.js';
@@ -571,7 +572,8 @@ export function answerQuery(args = {}) {
   // for anything else gives way to them.
   const named = namedInFull(q);
   const hit = queryCompute(q);
-  if (!hit || (named.length && !named.some((n) => n.id === hit.tile))) return answerQueryGeneric(q, named);
+  const first = named.length ? named.reduce((a, b) => (b.pos < a.pos ? b : a)) : null;
+  if (!hit || (first && first.id !== hit.tile)) return answerQueryGeneric(q, named);
   const out = {
     query: q, matched: true, valid: true, tile: hit.tile, label: hit.label, value: hit.value, unit: hit.unit, text: hit.text, inputs: hit.inputs,
   };
@@ -631,9 +633,9 @@ function queryNamesTile(query, entry) {
 // Where in the query a calculator's name is complete: the latest first appearance of its words of three
 // letters or more. "Wells Score for PE, ..., previous DVT" completes Wells PE at "for" and Wells DVT only at
 // "DVT", so the one written as a name comes first.
-function firstMention(q, name) {
+function firstMention(q, name, minLength = 3) {
   const lq = q.toLowerCase();
-  const at = [...nameWords(name)].filter((w) => w.length >= 3).map((w) => lq.search(new RegExp(`\\b${w}\\b`))).filter((i) => i >= 0);
+  const at = [...nameWords(name)].filter((w) => w.length >= minLength).map((w) => lq.search(new RegExp(`\\b${w}\\b`))).filter((i) => i >= 0);
   return at.length ? Math.max(...at) : Infinity;
 }
 const nameWords = (name) => new Set(String(name).toLowerCase().match(/[a-z0-9]+/g) || []);
@@ -648,7 +650,23 @@ function namesStrictly(q, name) {
 function namedInFull(q) {
   const hits = allCalculators().filter((e) => namesStrictly(q, e.name)).map((e) => ({ id: e.id, name: e.name, words: nameWords(e.name) }));
   const inside = (a, b) => a !== b && a.words.size < b.words.size && [...a.words].every((w) => b.words.has(w));
-  return hits.filter((a) => !hits.some((b) => inside(a, b))).map(({ id, name }) => ({ id, name }));
+  const out = hits.filter((a) => !hits.some((b) => inside(a, b))).map(({ id, name }) => ({ id, name, pos: firstMention(q, name) }));
+  // A curated phrase the query carries in full names its calculator too, at the point the phrase is
+  // complete. Without it, "liver disease severity, total bilirubin 2, ... creatinine 1.5" went to a tool
+  // whose name is "... serum creatinine ..." instead of the MELD-Na the phrase routes to.
+  // Asked of the synonym table directly: find_calculator's own name promotion can already have moved a
+  // calculator a value's label names ("mean arterial pressure") above the curated route. Only the table's
+  // best phrase: taking every phrase present let one-word phrases inside value labels ("egfr") route too.
+  const syn = matchSynonym(q, loadSynonymEntries(), 'all');
+  const routed = syn && getCalculator(syn.tile);
+  // A phrase that is part of a named calculator's own name is that name being read ("shock index" inside
+  // "Shock Index, Pediatric Age-Adjusted"), not a second calculator being asked for.
+  const phraseWords = nameWords(syn ? syn.phrase : '');
+  const withinName = hits.some((h) => [...phraseWords].every((w) => h.words.has(w)));
+  if (routed && !withinName && namesStrictly(q, syn.phrase) && !out.some((n) => n.id === routed.id)) {
+    out.push({ id: routed.id, name: routed.name, pos: firstMention(q, syn.phrase, 1) });
+  }
+  return out;
 }
 
 function answerQueryGeneric(q, named = namedInFull(q)) {
@@ -676,7 +694,10 @@ function answerQueryGeneric(q, named = namedInFull(q)) {
   // its distinctive words, settled there, and then reported no match because RUCAM was not named.
   const scored = candidates
     // `full`: named in full and not contained in another named name (see namedInFull).
-    .map((c) => ({ c, full: named.some((n) => n.id === c.id) ? 1 : 0, pos: firstMention(q, c.name), ...nameMatchFor(q, getCalculator(c.id)) }))
+    .map((c) => {
+      const n = named.find((x) => x.id === c.id);
+      return { c, full: n ? 1 : 0, pos: n ? n.pos : firstMention(q, c.name), ...nameMatchFor(q, getCalculator(c.id)) };
+    })
     .filter((x) => x.strong || x.full)
     // Of two names both carried in full, the one written first is the subject: a value's label can be
     // another calculator's name ("Cardiac Power Output (CPO) Mean arterial pressure 80 ...").
