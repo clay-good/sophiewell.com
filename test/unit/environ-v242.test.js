@@ -36,6 +36,14 @@ test('wbgt: outdoor weighted average', () => {
   const r = wbgt({ setting: 'outdoor', naturalWetBulb: 25, globe: 35, dryBulb: 30 });
   assert.equal(r.score, 27.5);
 });
+test('wbgt: the result names its unit, and an out-of-range temperature is not asked for again', () => {
+  const r = wbgt({ setting: 'outdoor', naturalWetBulb: 25, globe: 35, dryBulb: 30 });
+  assert.equal(r.band, 'Wet-bulb globe temperature 27.5 °C (81.5 °F; outdoor/sun). Map it to work-rest activity flags.');
+  // A Fahrenheit reading typed as Celsius: the old message was "Enter ..." for a value already entered.
+  assert.match(wbgt({ setting: 'outdoor', naturalWetBulb: 25, globe: 35, dryBulb: 95 }).message, /dry-bulb temperature must be between -20 and 70 °C/);
+  assert.match(wbgt({ setting: 'outdoor', naturalWetBulb: 25, dryBulb: 30 }).message, /^Enter the globe temperature/);
+  assert.equal(wbgt({ setting: 'indoor', naturalWetBulb: 25, dryBulb: 30 }).valid, true, 'indoor needs no globe temperature');
+});
 test('wbgt: indoor drops globe term', () => {
   const r = wbgt({ setting: 'indoor', naturalWetBulb: 25, dryBulb: 30 });
   assert.equal(r.score, 26.5); // 0.7*25 + 0.3*30

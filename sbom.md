@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6219f7ec840c5bb0`
-Generated: 2026-10-17T01:08:48.843Z
+Build ID: `455eeedfe9d9f54f`
+Generated: 2026-10-17T01:46:23.567Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -458,7 +458,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/entsleep-v243.js` | 8054 | `f7881519e82f969f795b0f8f6b3b1163cacd036e4cf63af6446ec56a49d5ffce` |
 | `lib/enturopsych-v254.js` | 8040 | `fda74506629d3035d3c24c18a3cf6faf49a5fa79e3807f01d188c73d6720bd83` |
 | `lib/enviro-v111.js` | 18385 | `a94186fe62f2496908c50141286183ff903e9b6c926a182fd9e997651fa903ef` |
-| `lib/environ-v242.js` | 7645 | `7fc43e83281b5d7ea301bc962322b3c149ff800873d8494971902291de51cd89` |
+| `lib/environ-v242.js` | 8333 | `2691ca3bf9c257778dc8bda494b938596bc41a514e65892092da7669a7f48cc7` |
 | `lib/eortc-msg-ifd-v869.js` | 9785 | `846502bc39581253f8ffe1cf38dcd5e926144f344ae528fcfab13c02cc24ba01` |
 | `lib/eoss-v713.js` | 3955 | `150229c936465a637e488f83903837324b8752c7051b42903c784ffbae404441` |
 | `lib/epinephrine-device-weight-band-v1639.js` | 6935 | `0b7ba91072fcd2cfbe091c7a9b4ce7e139b9723c3b8efacf1719bc23af083248` |
@@ -860,7 +860,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3017736 | `6ac261b71a74931d8df2e7df385d65a3d18367ee06eca1e9a52be8edbf6dc4b8` |
+| `lib/meta.js` | 3017750 | `b1523c7ccdf309b9fab051da70ec86d765a2f2866074c47c78857951181d400e` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1938,7 +1938,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/entsleep-v243.js` | 3535 | `b9bbc9f2e5cac0d4ce038c7c5b74f5aed0333b9bde846eb392662217dfdb1b0e` |
 | `mcp/adapters/enturopsych-v254.js` | 5374 | `1b54f1d13d6a62e9d51426d6f22d9f7190cbf9fe478afab42be22adaa32cd5da` |
 | `mcp/adapters/enviro-v111.js` | 4093 | `cc7b0261b4a24402c4fd68b7fdcd409107024191b7c9197618b35b951f396cd6` |
-| `mcp/adapters/environ-v242.js` | 2332 | `416ac6d1531eb719111cadbe83e23466fe3931aa18242a6d832238349dc5f354` |
+| `mcp/adapters/environ-v242.js` | 2371 | `12d28f131f00307a5fcb52d56646750f7389bd009303e3b5dea78877d0aefb08` |
 | `mcp/adapters/eortc-msg-ifd-v869.js` | 5250 | `8962a4bc9eb938168b687250b478125bfc5108325dba7c64ca450505c671b8b8` |
 | `mcp/adapters/eoss-v713.js` | 1273 | `fcfce1a420c2b7cbf40863b179dcea93a0c8f07511498d7d7ca8bd4c4c42bfd0` |
 | `mcp/adapters/epinephrine-device-weight-band-v1639.js` | 1058 | `b462ffb956c9a87e4528ce6c77b9beb147b426b33ac89129e9b78e24e1627715` |
@@ -3206,7 +3206,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v24.js` | 10778 | `bfdbcc6c8ec537892a7ae7e2b0719bbd225f073dbde3792832a60b47818dd040` |
 | `views/group-v240.js` | 7020 | `38a9e429f237f882b96e53239d51f1c40b2713d0a42a98a313e77364ca9e8d80` |
 | `views/group-v241.js` | 5043 | `862ba5f946fd338b473abe0e0e5d896a4363b6cd54d0f406728f7d6c644d36fa` |
-| `views/group-v242.js` | 4839 | `031b8da030ee6152931f4b111a45350ad74bc063c95fa986fb6aa24b9cf62bff` |
+| `views/group-v242.js` | 5081 | `905ff65eabadfe0585cec3395c7694861b1b60bb6220b9077b30e7eb89fc3fa0` |
 | `views/group-v243.js` | 6076 | `ead486a88673c88a5eef778583eca1ab0c1ca3768311be9073305df652852668` |
 | `views/group-v244.js` | 8126 | `6eb8089ec7b93e70afac06dcb2dc5d769eafb4ec1a8633b0f0f9ea40b7dd8c65` |
 | `views/group-v245.js` | 5669 | `0b355e718d0841b4708b3d867f92d6b6dbe107a846d90cbd5b613d9917c30116` |

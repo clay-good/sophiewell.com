@@ -10,6 +10,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/environ-v242.js';
 import { resultRow } from '../lib/result-copy.js';
+import { unitField, unitNumOpt, TEMP_UNITS } from '../lib/field-units.js';
 
 function numInput(label, id, attrs = {}) {
   const wrap = el('p');
@@ -78,12 +79,13 @@ export const renderers = {
   'wbgt'(root) {
     note(root, 'Wet-bulb globe temperature (ISO 7243): outdoor = 0.7·NWB + 0.2·globe + 0.1·dry; indoor = 0.7·NWB + 0.3·dry. Maps to work-rest flags.');
     root.appendChild(select('Setting', 'wbgt-setting', [['outdoor', 'Outdoor (in sun)'], ['indoor', 'Indoor / shade']]));
-    root.appendChild(numInput('Natural wet-bulb temperature', 'wbgt-nwb'));
-    root.appendChild(numInput('Globe temperature (outdoor only)', 'wbgt-globe'));
-    root.appendChild(numInput('Dry-bulb (air) temperature', 'wbgt-dry'));
+    root.appendChild(unitField('Natural wet-bulb temperature', 'wbgt-nwb', TEMP_UNITS));
+    root.appendChild(unitField('Globe temperature (outdoor only)', 'wbgt-globe', TEMP_UNITS));
+    root.appendChild(unitField('Dry-bulb (air) temperature', 'wbgt-dry', TEMP_UNITS));
     const o = out(); root.appendChild(o);
-    wire(['wbgt-setting', 'wbgt-nwb', 'wbgt-globe', 'wbgt-dry'], () => safe(o, () => {
-      render(o, M.wbgt({ setting: val('wbgt-setting'), naturalWetBulb: val('wbgt-nwb'), globe: val('wbgt-globe'), dryBulb: val('wbgt-dry') }), 'WBGT');
+    const c = (id) => { const v = unitNumOpt(id); return v === null ? '' : v; };
+    wire(['wbgt-setting', 'wbgt-nwb', 'wbgt-nwb-unit', 'wbgt-globe', 'wbgt-globe-unit', 'wbgt-dry', 'wbgt-dry-unit'], () => safe(o, () => {
+      render(o, M.wbgt({ setting: val('wbgt-setting'), naturalWetBulb: c('wbgt-nwb'), globe: c('wbgt-globe'), dryBulb: c('wbgt-dry') }), 'WBGT');
     }));
     postureNote(root);
   },

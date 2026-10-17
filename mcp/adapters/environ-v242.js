@@ -39,9 +39,9 @@ export default [
     compute: F.wbgt,
     fields: [
       { dom: 'wbgt-setting', arg: 'setting', kind: 'enum', required: true, label: 'Setting', values: ['outdoor', 'indoor'] },
-      { dom: 'wbgt-nwb', arg: 'naturalWetBulb', kind: 'number', required: true, label: 'Natural wet-bulb temperature' },
-      { dom: 'wbgt-globe', arg: 'globe', kind: 'number', required: true, label: 'Globe temperature (outdoor only)' },
-      { dom: 'wbgt-dry', arg: 'dryBulb', kind: 'number', required: true, label: 'Dry-bulb (air) temperature' },
+      { dom: 'wbgt-nwb', arg: 'naturalWetBulb', kind: 'number', required: true, label: 'Natural wet-bulb temperature', unit: '°C' },
+      { dom: 'wbgt-globe', arg: 'globe', kind: 'number', required: true, label: 'Globe temperature (outdoor only)', unit: '°C' },
+      { dom: 'wbgt-dry', arg: 'dryBulb', kind: 'number', required: true, label: 'Dry-bulb (air) temperature', unit: '°C' },
     ],
   },
 ];

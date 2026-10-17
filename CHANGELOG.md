@@ -645,6 +645,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Wet-bulb globe temperature: the three temperatures take °F or °C (°F by default, like every other
+  temperature input) and the result names its unit. A Fahrenheit reading had been refused with "Enter ..."
+  although it was entered.
 - DPYD to fluoropyrimidine: a variant listed twice beside "Reference" is refused instead of being read
   as homozygous, which had turned a 50% dose reduction into "avoid use". PDC, Star PDC and the
   adherence outreach list now name a fill line that repeats an earlier one exactly (a rebilled claim
