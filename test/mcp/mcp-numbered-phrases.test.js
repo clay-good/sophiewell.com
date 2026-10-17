@@ -5,7 +5,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { findCalculator } from '../../mcp/tools.js';
+import { findCalculator, answerQuery } from '../../mcp/tools.js';
 import { REGISTRY } from '../../mcp/catalog.js';
 
 const entries = JSON.parse(readFileSync(new URL('../../data/synonyms.json', import.meta.url), 'utf8')).entries;
@@ -29,4 +29,13 @@ test('every curated phrase with a number in it reaches its own tool', () => {
 test('a value in an ordinary question is still stripped', () => {
   const r = findCalculator({ query: 'crcl for a 72 year old woman 68 kg creatinine 1.4', limit: 3 });
   assert.ok(r.candidates.some((c) => /cockcroft|crcl|creatinine/i.test(c.id + c.name)), JSON.stringify(r.candidates.map((c) => c.id)));
+});
+
+test('answer_query: a curated phrase with no values points to its tool; a weak guess is still a miss', () => {
+  for (const [q, tile] of [['usp 797 bud', 'compounding-bud'], ['kidney function', 'egfr']]) {
+    const r = answerQuery({ query: q });
+    assert.deepEqual([r.code, r.tile], ['NO_VALUES', tile], q);
+  }
+  assert.equal(answerQuery({ query: 'what is the meaning of life' }).code, 'NO_MATCH');
+  assert.equal(answerQuery({ query: 'index' }).code, 'NO_MATCH', 'one word of the phrase "lee index" is not the phrase');
 });

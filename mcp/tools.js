@@ -677,7 +677,15 @@ function answerQueryGeneric(q) {
     // crop-index. Only name a calculator here when the query actually names it;
     // otherwise this is a miss, and saying so is more useful than a confident
     // pointer at a tile the caller never asked about.
-    if (!queryNamesTile(q, entry)) {
+    // A curated synonym is a deliberate route, not the ranker's weak best guess: "kidney function" and
+    // "usp 797 bud" reached their tools through find_calculator but came back NO_MATCH here.
+    // Only a phrase the query carries in full: a phrase also claims its single words ("index" reaches
+    // "lee index"), and one shared word is not naming anything (spec-v806).
+    const words = new Set(q.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean));
+    const phrase = candidates[0].matchedPhrase || '';
+    const curated = top.id === candidates[0].id && candidates[0].why === 'synonym'
+      && phrase.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).every((w) => words.has(w));
+    if (!queryNamesTile(q, entry) && !curated) {
       return { query: q, matched: false, code: 'NO_MATCH', hint: 'No calculator matches this query. Try find_calculator with different words.' };
     }
     return {
