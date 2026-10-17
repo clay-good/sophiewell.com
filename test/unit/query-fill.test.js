@@ -330,3 +330,9 @@ test('a label typed back with its own comma fills; a label\'s leading item numbe
   const nihss = [{ d: '5', k: 'number', l: '5 Motor arm, sum of left + right (0-8)', r: 1 }];
   assert.notEqual(queryFill('5 Motor arm, sum of left + right 2', nihss).filled['5'], 5);
 });
+
+test('numbered sibling items fill: the value is not taken for a sibling\'s distinguishing word', () => {
+  const items = Array.from({ length: 10 }, (_, i) => ({ d: `i${i + 1}`, k: 'number', l: `Item ${i + 1} (0-10)`, r: 1 }));
+  assert.deepEqual(queryFill('Item 1 2, Item 2 3, Item 3 4, Item 10 5', items).filled, { i1: 2, i2: 3, i3: 4, i10: 5 });
+  assert.deepEqual(queryFill('Item 1 1, Item 2 2', items).filled, { i1: 1, i2: 2 });
+});
