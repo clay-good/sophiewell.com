@@ -37,6 +37,11 @@ Report launch and D1 maintenance are in
   prefill data -- with a content hash per file, and stamps the pack version
   into `dist/sw.js` as `PACK`. The version hashes what the app runs, not the
   commit, so a docs-only deploy changes nothing on a phone.
+- Writes `dist/_redirects` ([scripts/build-redirects.mjs](../scripts/build-redirects.mjs)): a 301 from each
+  retired tool page, `/tools/<old-id>/`, to the tool that replaced it, read from `data/id-aliases.json`.
+  Without it the single-page fallback answers a retired page with the home page. Check after a deploy that
+  retires a tool: `curl -sI https://sophiewell.com/tools/<old-id>/` should answer with a permanent
+  redirect whose location is the new page.
 
 ## Header verification
 

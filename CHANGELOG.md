@@ -652,6 +652,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- A retired tool's own page (`/tools/<old-id>/`, the address a search result or bookmark holds) now
+  redirects to the tool that replaced it; it had shown the home page. Covers all 14 retired tools.
 - HATCH (AF progression) was two tiles that scored a 75-year-old differently: one asked "age over 75", the
   other "75 or older". The paper's own rule and points table say over 75, so that tile stays and now shows
   the paper's figures (6% progressed within a year at 0, nearly 50% above 5). The Hill flap-valve grade
