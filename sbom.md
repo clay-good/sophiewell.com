@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `455eeedfe9d9f54f`
-Generated: 2026-10-17T01:46:23.567Z
+Build ID: `1af0657ade2bd4e6`
+Generated: 2026-10-17T02:03:39.180Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -738,7 +738,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/label-dose.js` | 8030 | `32955c2d3c6dab36d25f512f012a722c3d6955f7c3ac719e75c3c7f4d44cd99f` |
 | `lib/label-editions.js` | 68931 | `8f9092c93829c19fe1024ceb3dc885c59e7c231ae407766a827d748ff6147dbd` |
 | `lib/label-formulation-switch-v1633.js` | 9255 | `c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8` |
-| `lib/label-gate.js` | 3600 | `8868f80a34f8fbd02906f823435c2288be1e97825aa5de8eb76633c74c05c078` |
+| `lib/label-gate.js` | 4286 | `293986f3333354cf135608119f5a818655952c9b10dca854b3e98fcf8a516228` |
 | `lib/label-row.js` | 2619 | `1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1` |
 | `lib/label-titration-calendar-v1633.js` | 22374 | `8c6a1d9c197a93e8380242597abb998337589c26e35ef5849197684b49872c48` |
 | `lib/labor-care-guide-alert-v1558.js` | 10175 | `0921500d2999d667f21815fdcf12a8a8cad7c2e954c42d7e31242b2887ad1ff6` |

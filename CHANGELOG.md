@@ -600,6 +600,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- When several FDA labels behind a tool are withheld for the same reason, the notice says the reason once
+  and lists the labels, instead of repeating the whole clause for each.
+
 - NDC converter: reads the 11-digit label forms with a six-digit labeler code (6-4-1, 6-3-2).
 - Controlled-substance refill check: a line that a transfer adds no refills or time. Days supply:
   the federal three-day limit on narcotics dispensed to start treatment, as a note.

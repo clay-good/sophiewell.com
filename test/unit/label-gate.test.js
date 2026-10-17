@@ -42,3 +42,15 @@ test('a current label lets the tool answer; a superseded or lapsed one withholds
   assert.equal(g.withheld[0].url, `https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=${id}`);
   assert.match(labelGate('anticoag-reversal', new Date('2031-01-01T12:00:00Z')).message, /more than 12 months ago.*Read the current labels on DailyMed/);
 });
+
+test('several labels withheld for one reason share one clause, and every label is still named', () => {
+  const later = new Date('2031-01-01T12:00:00Z');
+  const g = labelGate('tpn-macro', later);
+  assert.equal((g.message.match(/more than 12 months ago/g) || []).length, 1);
+  assert.match(g.message, /and 6 labels were last confirmed more than 12 months ago \(version \d+ of the /);
+  for (const w of g.withheld) assert.ok(g.message.includes(w.edition), w.edition);
+  // A superseded label beside lapsed ones keeps its own clause.
+  const id = LEGACY_LABEL_TOOLS['tpn-macro'][0];
+  const mixed = labelGate('tpn-macro', later, { ...LABEL_EDITIONS, [id]: { ...LABEL_EDITIONS[id], supersededOn: '2026-10-14' } });
+  assert.match(mixed.message, /the label's text has changed since version \d+ .*; 5 labels were last confirmed/);
+});
