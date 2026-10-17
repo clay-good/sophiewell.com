@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `dbb1f226f6ef172a`
-Generated: 2026-10-17T20:11:22.863Z
+Build ID: `40dc2a13305fd916`
+Generated: 2026-10-17T20:48:24.074Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -290,8 +290,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v4.js` | 22407 | `da5ed7cad07ad8fed0e32570fd5608ce304aee412796a1b33a1bbed57ab4ed4c` |
 | `lib/clinical-v5.js` | 26940 | `9d75aa30b97b5dd05ebc62e30eff334027d441bc186ece1d826b3e9238eefa7d` |
 | `lib/clinical-v6.js` | 17029 | `546b3f749b758d099654b8ecdd89742e0a603583846708705e4871e3f6f47612` |
-| `lib/clinical-v7.js` | 26564 | `591ac16245c21640d93ab22245e39788874108c470ba5a7ed2ad6309ce47e2ed` |
-| `lib/clinical-v8.js` | 27626 | `eff90812fff5365a48c96eb5ca186db537d5fbe0432ba24e1f0ef8c5a07fd044` |
+| `lib/clinical-v7.js` | 27341 | `cbbfa7a9633f7636e96bbdb9ce582648f562e49c0a98df05fa153b413a40e959` |
+| `lib/clinical-v8.js` | 28200 | `3d63d553285920856a96febaede4ac2bd9ecf44fa3ae221218cfe6e1e51efe6c` |
 | `lib/clinical.js` | 28507 | `580bdb6ef561e8a53ef7d5e9d7ad2b2b8b6bc30fd7339ac03a696803ac04b759` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
@@ -736,7 +736,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/label-dose.js` | 8030 | `32955c2d3c6dab36d25f512f012a722c3d6955f7c3ac719e75c3c7f4d44cd99f` |
 | `lib/label-editions.js` | 68931 | `8f9092c93829c19fe1024ceb3dc885c59e7c231ae407766a827d748ff6147dbd` |
 | `lib/label-formulation-switch-v1633.js` | 9255 | `c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8` |
-| `lib/label-gate.js` | 4286 | `293986f3333354cf135608119f5a818655952c9b10dca854b3e98fcf8a516228` |
+| `lib/label-gate.js` | 4326 | `fd5031c8a1f22c1150e7cb6fa3c5f8bcee966f1a81dedee3a554498529fc4111` |
 | `lib/label-row.js` | 2619 | `1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1` |
 | `lib/label-titration-calendar-v1633.js` | 22374 | `8c6a1d9c197a93e8380242597abb998337589c26e35ef5849197684b49872c48` |
 | `lib/labor-care-guide-alert-v1558.js` | 10175 | `0921500d2999d667f21815fdcf12a8a8cad7c2e954c42d7e31242b2887ad1ff6` |
@@ -858,7 +858,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3017426 | `73efd2570ffc62631d206082d60fe3d57dd393cc2fd9362bf3012f22f413ced7` |
+| `lib/meta.js` | 3017659 | `642b232b7ee1dc9399b49553368897fe6f968b9ec3518d73ddc848f99ec86293` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1787,7 +1787,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v5.js` | 12057 | `351d76ac0a7dfb00861f91dfa132bbb36e67d21aa3e72502459ab63774914856` |
 | `mcp/adapters/clinical-v6.js` | 9094 | `85dda711c1f5b628041a41ae5218c2ea8909bc51ff6bff06df2b9a81e1674096` |
 | `mcp/adapters/clinical-v7.js` | 9320 | `3e53f0e857f07cb6f80e5efb3ca7bd90d021ef538c4860730bc647ec113a53f4` |
-| `mcp/adapters/clinical-v8.js` | 16662 | `8717ddc861c30ec1dcd6cd3562edfd00ee933b013e42a5f87061b6504166524c` |
+| `mcp/adapters/clinical-v8.js` | 17059 | `39b1c8e36f2071a55cbbbe47b4a5aa70fa9523d8700d3be150c5651b26db7277` |
 | `mcp/adapters/clinical.js` | 29389 | `df78180fcb80b3e04653bb809071e4d0af7accd8ed293d43b868a15432dc9615` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/cmea-sales-limit-v1637.js` | 2142 | `0bc92156b2b0001f7c6976c12585f83fbc1be5c2781d18d0934b0a1382d615eb` |
@@ -2924,7 +2924,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 55874 | `98830ddee7d633ea4c3a75bd7340d4af22f60c459a2777e33a9ba1388ba7cf55` |
-| `views/group-f.js` | 56920 | `8661e5ccd01ef2912b4ee1b311024f5f8841c20e942671bd0dbbededf56c45cd` |
+| `views/group-f.js` | 57749 | `0a39866dc77d102ea2e6670e32dd47295bfd32a1005892b8b1d95ac9688d29fc` |
 | `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 28753 | `ad396a2d5090a7e40a0403505096e7734553ec173e804579a474aa105cd39235` |
@@ -2933,7 +2933,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v10.js` | 39171 | `84da9bdd8a68f73321b851da3c1dfa1ef5206989d44d06e6b1541cfa98545692` |
 | `views/group-v1061.js` | 2720 | `89e9eb196bceb0f67c97c0f9b9aefd0c0820f913ffc6b556d7a5aa809c7b9d25` |
 | `views/group-v1062.js` | 2586 | `ffbf32df0ae17e753e06b756f32e36e7c1f7dcbeb98c6bdefd26e1e342950eca` |
-| `views/group-v11.js` | 26907 | `c188d9bec5415a050121e21e39a44a6f614fe24effe65a02be3c0e04e6c80a21` |
+| `views/group-v11.js` | 27047 | `a78220de8512604e20faa3286325f250356a6e6854833d2cf1dbf0050c634dbc` |
 | `views/group-v117.js` | 12166 | `bd791807741fd3275c6f46da19f26f8b39e7b1644759811bfdec6b0cc3557839` |
 | `views/group-v118.js` | 14192 | `37e85f6066e94aa943ab96daf44a6954a8fd58e8d31e7ec894ff7c885d87d27c` |
 | `views/group-v119.js` | 9513 | `1f10862d9aab600674449534502faf78e810ea756704d37066ac0ca7347bf580` |

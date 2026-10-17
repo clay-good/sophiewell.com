@@ -652,6 +652,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- IV osmolarity: between 718 and 900 mOsm/L the result adds TrophAmine's label limit for a child's
+  peripheral solution (twice normal serum osmolarity, 718 mOsm/L), which the 900 line alone did not show.
+- Acetaminophen 24-hour total has a child setting: for ages 2 to under 12 it counts the doses against the
+  federal monograph's 5 in 24 hours, since a child's limit is a dose count, not a milligram figure.
 - Medicare Part A premium has a box for the premium itself. For a year with no published figure on file
   (2027 from January 1) it asked for the amount and had nowhere to type it.
 - Pediatric BMI percentile takes weight and height from an agent, as the page already did; an agent was

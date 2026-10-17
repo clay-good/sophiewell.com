@@ -298,3 +298,13 @@ test('enoxaparinDose: hip or knee replacement, unstable angina, and STEMI by age
   assert.equal(at('stemi-75-plus', 80, 30).mgPerKg, 0.75); // Table 1 is "<30"
   for (const text of Object.values(ENOX_SOURCE)) assert.match(text, /label/);
 });
+
+// spec-v1639 backfill 4 / spec-v1641 row 9: a child's acetaminophen limit is a dose count (OTC Monograph
+// M013.50(d)(2): not to exceed 5 doses in 24 hours), not a milligram ceiling.
+test('apap child mode counts doses against 5 in 24 hours', async () => {
+  const { apapChildDoseCheck, APAP_CHILD_MAX_DOSES } = await import('../../lib/clinical-v8.js');
+  assert.equal(APAP_CHILD_MAX_DOSES, 5);
+  assert.deepEqual(apapChildDoseCheck({ doses: 5 }), { over: false, maxDoses: 5, remainingDoses: 0 });
+  assert.equal(apapChildDoseCheck({ doses: 6 }).over, true);
+  assert.equal(apapChildDoseCheck({ doses: 6 }).remainingDoses, -1);
+});

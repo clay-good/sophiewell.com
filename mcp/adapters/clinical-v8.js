@@ -103,17 +103,20 @@ export default [
   },
   {
     id: 'apap-24h-max',
-    summary: 'Acetaminophen 24-hour ceiling check: sums up to three source products (dose x doses/day each) and compares the total against the selected daily ceiling (4000 / 3000 / 2000 mg).',
+    summary: 'Acetaminophen 24-hour ceiling check: sums up to three source products (dose x doses/day each) and compares the total against the selected daily ceiling (4000 / 3000 / 2000 mg), or for a child 2 to under 12 counts the doses against the monograph limit of 5 in 24 hours.',
     // Sum the per-source totals (only counting rows where both dose and
     // frequency are positive), then run the ceiling check.
     compute: (a) => {
       let totalMg = 0;
+      let doses = 0;
       for (const [dose, freq] of [[a.doseMg1, a.dosesPerDay1], [a.doseMg2, a.dosesPerDay2], [a.doseMg3, a.dosesPerDay3]]) {
         if (dose > 0 && freq > 0) {
           const t = F.apapSourceTotal({ doseMg: dose, dosesPerDay: freq });
-          if (t && t.totalMg > 0) totalMg += t.totalMg;
+          if (t && t.totalMg > 0) { totalMg += t.totalMg; doses += freq; }
         }
       }
+      // The child ceiling is the monograph's 5 doses in 24 hours, not a milligram figure.
+      if (a.ceilingMg === 'child') return { totalMg, doses, windowHours: 24, ...F.apapChildDoseCheck({ doses }) };
       const check = F.apapCeilingCheck({ totalMg, ceilingMg: a.ceilingMg });
       return check == null ? null : { totalMg, ceilingMg: a.ceilingMg, windowHours: 24, ...check };
     },
@@ -124,7 +127,7 @@ export default [
       { dom: 'apap-n2', arg: 'dosesPerDay2', kind: 'number', required: true, label: 'Source 2 doses/day' },
       { dom: 'apap-d3', arg: 'doseMg3', kind: 'number', required: true, label: 'Source 3 dose', unit: 'mg' },
       { dom: 'apap-n3', arg: 'dosesPerDay3', kind: 'number', required: true, label: 'Source 3 doses/day' },
-      { dom: 'apap-ceiling', arg: 'ceilingMg', kind: 'enum', values: ['4000', '3000', '2000'], required: true, label: 'Daily ceiling', unit: 'mg', to: Number },
+      { dom: 'apap-ceiling', arg: 'ceilingMg', kind: 'enum', values: ['4000', '3000', '2000', 'child'], required: true, label: 'Daily ceiling (mg, or child: 5 doses)', to: (v) => (v === 'child' ? 'child' : Number(v)) },
     ],
   },
   {

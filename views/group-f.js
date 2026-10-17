@@ -365,20 +365,31 @@ export const renderers = {
       { value: '4000', text: '4000 mg (the amount in the label liver warning)' },
       { value: '3000', text: '3000 mg (Extra Strength Tylenol directions: 6 tablets in 24 hours)' },
       { value: '2000', text: '2000 mg (a lower limit set by you or the prescriber; not a label figure)' },
+      { value: 'child', text: 'Child 2 to under 12: not more than 5 doses in 24 hours (federal monograph)' },
     ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       let total = 0;
       let sources = 0;
+      let doses = 0;
       for (const [d, n] of [['apap-d1', 'apap-n1'], ['apap-d2', 'apap-n2'], ['apap-d3', 'apap-n3']]) {
         const dose = nvOrNull(d);
         const freq = nvOrNull(n);
-        if (dose > 0 && freq > 0) { sources += 1; total += C8.apapSourceTotal({ doseMg: dose, dosesPerDay: freq }).totalMg; }
+        if (dose > 0 && freq > 0) { sources += 1; doses += freq; total += C8.apapSourceTotal({ doseMg: dose, dosesPerDay: freq }).totalMg; }
       }
       // "Remaining to ceiling: 4000 mg" from an empty form reads as headroom
       // somebody has checked for. Nobody has.
       if (!sources) {
         o.appendChild(el('p', { class: 'muted', text: 'Add at least one source: its milligrams per dose and how many doses in the last 24 hours.' }));
+        return;
+      }
+      if (document.getElementById('apap-ceiling').value === 'child') {
+        const c = C8.apapChildDoseCheck({ doses });
+        resultRow(o, [
+          { label: '24-hour acetaminophen total', value: fmt(total), units: 'mg' },
+          { label: c.over ? 'OVER the 5-dose limit by' : 'Doses left in 24 hours', value: fmt(Math.abs(c.remainingDoses)), units: `(${fmt(doses)} of ${c.maxDoses} doses)`, cls: c.over ? 'flag' : null },
+        ]);
+        o.appendChild(el('p', { class: 'muted', text: 'For a child the label limit is a dose count. The milligrams per dose come from the age or weight chart (Children\'s OTC Dose From the Drug Facts Chart).' }));
         return;
       }
       const ceiling = Number(document.getElementById('apap-ceiling').value);

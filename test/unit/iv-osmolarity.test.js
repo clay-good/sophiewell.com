@@ -48,3 +48,16 @@ test('by component: volume-weighted osmolarity from each label figure', async ()
   assert.match(byC({ components: '998, 500\nabc, 2' }).message, /Component line 2/);
   assert.match(byC({ components: '998, 0' }).message, /above 0/);
 });
+
+// spec-v1641 row 15 / spec-v1630: TrophAmine's pediatric peripheral limit (label v10, Dosage and Administration).
+test('between 718 and 900 mOsm/L the result names the pediatric peripheral limit from the TrophAmine label', async () => {
+  const { ivOsmolarityByComponents, OSM_PEDS_PERIPHERAL } = await import('../../lib/clinical-v7.js');
+  assert.equal(OSM_PEDS_PERIPHERAL, 718);
+  const mid = ivOsmolarity({ dextrosePct: 10, aminoAcidPct: 2, naMeqL: 40, kMeqL: 20 });
+  assert.equal(mid.osmolarity, 820);
+  assert.equal(mid.central, false);
+  assert.match(mid.pediatricPeripheral, /718 mOsm\/L/);
+  assert.equal(ivOsmolarity({ dextrosePct: 5, aminoAcidPct: 2.5, naMeqL: 30, kMeqL: 20 }).pediatricPeripheral, null, '600 is under it');
+  assert.equal(ivOsmolarity({ dextrosePct: 20, aminoAcidPct: 5, naMeqL: 40, kMeqL: 20 }).pediatricPeripheral, null, 'central already');
+  assert.match(ivOsmolarityByComponents({ components: '866, 500\n700, 300' }).pediatricPeripheral, /TrophAmine/);
+});

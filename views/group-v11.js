@@ -367,7 +367,7 @@ export const renderers = {
       if (compText.trim()) {
         const c = C.ivOsmolarityByComponents({ components: compText });
         if (!c.valid) { note(o, c.message); return; }
-        o.appendChild(list([li(`By component: ${c.band}`, c.central ? 'warn' : null)]));
+        o.appendChild(list([li(`By component: ${c.band}`, c.central ? 'warn' : null), c.pediatricPeripheral ? li(c.pediatricPeripheral, 'warn') : null]));
         note(o, c.note);
         if (dextrosePct == null && aminoAcidPct == null && naMeqL == null && kMeqL == null) return;
       }
@@ -403,6 +403,7 @@ export const renderers = {
       o.appendChild(list([
         li(`Estimated osmolarity: ${fmt(r.osmolarity, { unit: 'mOsm/L' })}${omitted.length ? ' (at least)' : ''}`, r.central ? 'warn' : null),
         li(r.band, r.central ? 'warn' : null),
+        r.pediatricPeripheral ? li(r.pediatricPeripheral, 'warn') : null,
         li(`Counted: ${counted.join(', ')}.`),
         omitted.length
           ? li(`Not entered: ${omitted.join(', ')} -- each would only raise the estimate, so a `

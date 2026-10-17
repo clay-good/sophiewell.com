@@ -800,3 +800,9 @@ test('parta-premium accepts the premium for a year with no published figure', as
   const done = JSON.stringify(await dispatch('compute_calculator', { id: 'parta-premium', inputs: { 'pap-quarters': '34', 'pap-year': '2027', 'pap-premium': '320' } }));
   assert.ok(done.includes('"premium":320'), done.slice(0, 200));
 });
+
+test('apap-24h-max child ceiling counts doses across every source', async () => {
+  const inputs = { 'apap-d1': '160', 'apap-n1': '4', 'apap-d2': '160', 'apap-n2': '2', 'apap-d3': '0', 'apap-n3': '0', 'apap-ceiling': 'child' };
+  const text = JSON.stringify(await dispatch('compute_calculator', { id: 'apap-24h-max', inputs }));
+  assert.ok(text.includes('"doses":6') && text.includes('"over":true'), text.slice(0, 300));
+});
