@@ -18,7 +18,7 @@ function disclaimerFor(e) { return e.clinical ? DISCLAIMER : ADMIN_DISCLAIMER; }
 function domainOf(e) { return e.clinical ? 'clinical' : 'administrative'; }
 import { resolvePromptRanked, rankingQuery } from '../lib/prompt.js';
 import { matchSynonym } from '../lib/synonyms.js';
-import { buildNameCounts, nameMatch, namesInFull } from '../lib/name-match.js';
+import { buildNameCounts, nameMatch, namesInFull, namesEveryWord, mostSpecificNamed } from '../lib/name-match.js';
 import { corpusDesc } from '../lib/search-corpus.js';
 import { buildRelatedIndex, pickRelated } from '../lib/related.js';
 import { queryCompute } from '../lib/query-compute.js';
@@ -642,15 +642,11 @@ const nameWords = (name) => new Set(String(name).toLowerCase().match(/[a-z0-9]+/
 // Stricter than namesInFull for this one decision: every word of the name, however short, so "wells
 // score for DVT" does not also name "Wells Score for PE", "Subaxial ... (SLIC)" does not name the "AO
 // Spine" classification, and any query with "ratio" in it does not name "P/F Ratio".
-function namesStrictly(q, name) {
-  const words = new Set(q.toLowerCase().match(/[a-z0-9]+/g) || []);
-  const need = [...nameWords(name)];
-  return need.length > 0 && need.every((w) => words.has(w));
-}
+// (lib/name-match.js namesEveryWord / mostSpecificNamed: the same rule the website's home box uses.)
+const namesStrictly = namesEveryWord;
 function namedInFull(q) {
   const hits = allCalculators().filter((e) => namesStrictly(q, e.name)).map((e) => ({ id: e.id, name: e.name, words: nameWords(e.name) }));
-  const inside = (a, b) => a !== b && a.words.size < b.words.size && [...a.words].every((w) => b.words.has(w));
-  const out = hits.filter((a) => !hits.some((b) => inside(a, b))).map(({ id, name }) => ({ id, name, pos: firstMention(q, name) }));
+  const out = mostSpecificNamed(q, allCalculators()).map(({ id, name }) => ({ id, name, pos: firstMention(q, name) }));
   // A curated phrase the query carries in full names its calculator too, at the point the phrase is
   // complete. Without it, "liver disease severity, total bilirubin 2, ... creatinine 1.5" went to a tool
   // whose name is "... serum creatinine ..." instead of the MELD-Na the phrase routes to.

@@ -80,3 +80,15 @@ test('Medicare part letters separate otherwise identical names', () => {
     assert.equal(findCalculator({ query: q, limit: 1 }).candidates[0].id, id, q);
   }
 });
+
+test('namesEveryWord counts short words; mostSpecificNamed drops a name another named name contains', async () => {
+  const { namesEveryWord, mostSpecificNamed } = await import('../../lib/name-match.js');
+  assert.equal(namesEveryWord('wells score for DVT, previous DVT', 'Wells Score for PE'), false);
+  assert.equal(namesEveryWord('wells score for PE', 'Wells Score for PE'), true);
+  assert.equal(namesEveryWord('waist to height ratio', 'P/F Ratio'), false);
+  assert.equal(namesEveryWord(42, 'x'), false);
+  const items = [{ id: 'anion-gap', name: 'Anion Gap' }, { id: 'anion-gap-dd', name: 'Anion Gap & Delta-Delta' }, { id: 'bmi', name: 'BMI Calculator' }];
+  assert.deepEqual(mostSpecificNamed('anion gap delta delta sodium 140', items).map((t) => t.id), ['anion-gap-dd']);
+  assert.deepEqual(mostSpecificNamed('anion gap sodium 140', items).map((t) => t.id), ['anion-gap']);
+  assert.deepEqual(mostSpecificNamed(null, items), []);
+});

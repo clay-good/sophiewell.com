@@ -941,7 +941,7 @@ import { loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt, resolvePromptRanked, rankingQuery } from './lib/prompt.js';
 // spec-v766: how strongly a query names a tile. Shared with mcp/tools.js so the
 // two surfaces resolve a name the same way.
-import { buildNameCounts, buildNameIndex, findNamed, nameMatch, namesInFull } from './lib/name-match.js';
+import { buildNameCounts, buildNameIndex, findNamed, nameMatch, namesInFull, mostSpecificNamed } from './lib/name-match.js';
 // spec-v939/v940: the same "Related tools" picker the tool pages and the MCP
 // server use, so all three surfaces name the same siblings.
 import { buildRelatedIndex, pickRelated } from './lib/related.js';
@@ -6610,6 +6610,13 @@ function bindHeroSearch() {
     // to the front so its answer leads. Ambiguous/partial parses return null and
     // routing is unchanged.
     inlineCompute = q ? queryCompute(q) : null;
+    // A built-in template answers whatever it parses. When the query names a different calculator more
+    // specifically -- "anion gap delta delta sodium 140 ..." names Anion Gap & Delta-Delta -- the template
+    // yields (lib/name-match.js mostSpecificNamed, the rule answer_query uses).
+    if (inlineCompute) {
+      const named = mostSpecificNamed(q, UTILITIES);
+      if (named.length && !named.some((t) => t.id === inlineCompute.tile)) inlineCompute = null;
+    }
     if (!q) return ALL;
     // spec-v765: rank on the words, not the values. The reader's numbers are
     // inputs, never name tokens, and they outrank the name they sit beside --
@@ -6670,6 +6677,12 @@ function bindHeroSearch() {
         if (sc > topScore) { topScore = sc; top = u; }
       }
       if (top && list[0] !== top) list = [top, ...list.filter((x) => x.id !== top.id)].slice(0, 12);
+      // A tile named in every word, and not inside a longer named name, leads even when the ranker never
+      // returned it: "anion gap delta delta sodium 140 ..." listed only the plain Anion Gap. Only when one
+      // tile qualifies; two is a question for the reader.
+      const specific = mostSpecificNamed(rq, UTILITIES);
+      const lead = specific.length === 1 && UTIL_BY_ID ? UTIL_BY_ID.get(specific[0].id) : null;
+      if (lead && list[0] !== lead) list = [lead, ...list.filter((x) => x.id !== lead.id)].slice(0, 12);
     }
 
     // The inline-compute tile leads (injected if the ranker did not surface it).
