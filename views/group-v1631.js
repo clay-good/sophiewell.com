@@ -3,7 +3,7 @@
 // crrt-drug-clearance, fosphenytoin-load-rate, caffeine-citrate-dose, lithium-level-check and
 // digoxin-label-dose, arc-risk-scores, phenytoin-mm-dose, busulfan-auc-dose,
 // aminoglycoside-label-renal, theophylline-label-dose, vanc-initial-dose, vanc-hd-dose,
-// vanc-continuous-infusion.
+// vanc-continuous-infusion, valproate-albumin-normalized.
 
 import { el, clear } from '../lib/dom.js';
 import * as PK from '../lib/pk-steady-state-predict-v1631.js';
@@ -24,6 +24,7 @@ import * as TH from '../lib/theophylline-label-dose-v1631.js';
 import * as VI from '../lib/vanc-initial-dose-v1631.js';
 import * as VH from '../lib/vanc-hd-dose-v1631.js';
 import * as VC from '../lib/vanc-continuous-infusion-v1631.js';
+import * as VA from '../lib/valproate-albumin-normalized-v1631.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -84,6 +85,19 @@ function run(root, pairs, compute) {
 }
 
 export const renderers = {
+  // spec-v1631 tool 9 (owner decision, October 17, 2026).
+  'valproate-albumin-normalized'(root) {
+    const pairs = [['vpa-total', 'totalLevel'], ['vpa-alb', 'albumin'], ['vpa-alb-unit', 'albuminUnit']];
+    numField(root, 'Total valproic acid level, mg/L', 'vpa-total', '');
+    numField(root, 'Serum albumin', 'vpa-alb', '');
+    selectField(root, 'Albumin unit', 'vpa-alb-unit', VA.ALBUMIN_UNITS);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(VA.valproateAlbuminNormalized(args), o);
+    }));
+  },
   'pk-steady-state-predict'(root) {
     numField(root, 'Dose, mg', 'pk-dose', '');
     numField(root, 'Infusion time, hours (0 for a bolus)', 'pk-tinf', '');

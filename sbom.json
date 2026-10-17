@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2f19c8bf-c1cd-5059-8327-0864f1b26556",
+  "serialNumber": "urn:uuid:a9bdfb1b-7ee8-5cd6-884d-f99a5f807930",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-17T09:29:57.338Z",
+    "timestamp": "2026-10-17T10:21:53.249Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2306 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2308 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ac977c4cb54f986e24fca97c74762c42c0eb064d231fa88c7e8f9e300a24d668"
+          "content": "33af95dff19d18da76c35d0e168b054c5cce207e55df32da7c63f4da9e86d57e"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150473"
+          "value": "150589"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d4b760edc3135a73eaf36cf6724bcd67a7aac18ff3080fe6fab44e6be4d213c1"
+          "content": "384f2502f23e2ac1ee3b0b2af50f41add608a077ba2d6941d4a48242f586cec6"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "635556"
+          "value": "635869"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "144b904fe228a566e44b9af160b32ba17ecbbc614efcb2c1f0fcd9fccac8f08f"
+          "content": "30d93283bb4f4154c8476084a8a485e2af288264705b016a2136051ebc8dc419"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "290317"
+          "value": "290584"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "767a3e242ce30a3f52331353bca21b64cafa5ad74d237be2d15553cf9b075f65"
+          "content": "659738f406aa8b7497cb05d154237255cece0733522aceae9d81b11b8595f33a"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140825"
+          "value": "140966"
         }
       ]
     },
@@ -17387,7 +17387,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b1523c7ccdf309b9fab051da70ec86d765a2f2866074c47c78857951181d400e"
+          "content": "e87657ff6b41931c651f9185007c4eb1302ee1b67aae92f02c56a41fb522e0a2"
         }
       ],
       "properties": [
@@ -17397,7 +17397,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3017750"
+          "value": "3019376"
         }
       ]
     },
@@ -30317,6 +30317,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/valproate-albumin-normalized-v1631.js",
+      "type": "file",
+      "name": "lib/valproate-albumin-normalized-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e54203f74a83b553bbbe71cf2a1bdaf289b33fcebaa9b24c1475e439d73c2a63"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4214"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/van-herick-v435.js",
       "type": "file",
       "name": "lib/van-herick-v435.js",
@@ -31447,6 +31468,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10110"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-umc-causality-v1634.js",
+      "type": "file",
+      "name": "lib/who-umc-causality-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5e06ff06b76875bcb20926caab9d8ecef0c88a0633203e62dd3d0998b12ba19b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7069"
         }
       ]
     },
@@ -58793,6 +58835,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/valproate-albumin-normalized-v1631.js",
+      "type": "file",
+      "name": "mcp/adapters/valproate-albumin-normalized-v1631.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "33fb4bf02ef7f9c0ead487ca5b4d69f547f40a63a846a42f95f0976e53d3bbd9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1026"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/van-herick-v435.js",
       "type": "file",
       "name": "mcp/adapters/van-herick-v435.js",
@@ -59927,6 +59990,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-umc-causality-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/who-umc-causality-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c1fbe26413f014a848932f8f101b213bd1aabbc2669369d5232d0077714e6d69"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1694"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/wiltse-spondylolisthesis-v481.js",
       "type": "file",
       "name": "mcp/adapters/wiltse-spondylolisthesis-v481.js",
@@ -60206,7 +60290,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "223ecdcb035685c05601cac69eb3773609919960b05922dbe6bdb5754a3efea0"
+          "content": "7211c1b1adab632711f48c9914f62e96d40ac6fbe5c7277b2699039c8fa72d7d"
         }
       ],
       "properties": [
@@ -60216,7 +60300,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "162315"
+          "value": "162613"
         }
       ]
     },
@@ -64763,7 +64847,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0b30dd5e5c970c02b1bfe4fc9213bb654d9605b399ccd6ea1a92db8ec4f4dfc8"
+          "content": "631267171752d0f5edbb4fd63b488aa421539f45e216632854efe4cf7f2eb0cd"
         }
       ],
       "properties": [
@@ -64773,7 +64857,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "24387"
+          "value": "25133"
         }
       ]
     },
@@ -64826,7 +64910,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "82d9dbe53e77e46195c18183cce645128228779df0f42e8fada2145269d0c196"
+          "content": "8b41ebd3e206951af08e13fa91ee77c9662c32eb74bf661cb0e5f9e26bdaff41"
         }
       ],
       "properties": [
@@ -64836,7 +64920,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "17457"
+          "value": "18688"
         }
       ]
     },
@@ -97165,6 +97249,7 @@
         "urn:sophiewell:file:source:lib/uterine-activity-v1439.js",
         "urn:sophiewell:file:source:lib/vaccine-interval-validity-v1638.js",
         "urn:sophiewell:file:source:lib/vaizey-v512.js",
+        "urn:sophiewell:file:source:lib/valproate-albumin-normalized-v1631.js",
         "urn:sophiewell:file:source:lib/van-herick-v435.js",
         "urn:sophiewell:file:source:lib/van-nuys-vnpi-v652.js",
         "urn:sophiewell:file:source:lib/vanc-continuous-infusion-v1631.js",
@@ -97219,6 +97304,7 @@
         "urn:sophiewell:file:source:lib/who-surgical-checklist-v917.js",
         "urn:sophiewell:file:source:lib/who-tb-fdc-dose-v1553.js",
         "urn:sophiewell:file:source:lib/who-tpt-dose-v1553.js",
+        "urn:sophiewell:file:source:lib/who-umc-causality-v1634.js",
         "urn:sophiewell:file:source:lib/wiltse-spondylolisthesis-v481.js",
         "urn:sophiewell:file:source:lib/winquist-hansen-v381.js",
         "urn:sophiewell:file:source:lib/workflow-v4.js",
@@ -99471,6 +99557,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/uterine-activity-v1439.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vaccine-interval-validity-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vaizey-v512.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/valproate-albumin-normalized-v1631.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/van-herick-v435.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/van-nuys-vnpi-v652.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vanc-continuous-infusion-v1631.js",
@@ -99525,6 +99612,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-surgical-checklist-v917.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-tb-fdc-dose-v1553.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-tpt-dose-v1553.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-umc-causality-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wiltse-spondylolisthesis-v481.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/winquist-hansen-v381.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/woundid-v248.js",
@@ -99643,7 +99731,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "2f19c8bfc1cdb059"
+      "value": "a9bdfb1b7ee8fcd6"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99655,7 +99743,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3795"
+      "value": "3799"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

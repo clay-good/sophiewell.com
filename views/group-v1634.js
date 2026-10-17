@@ -2,7 +2,7 @@
 // or-rr-to-nnt, disproportionality-2x2, icer-dominance, liverpool-adr-causality, ncc-merp-index,
 // fda-adverse-event-report-clock, riosord, relative-infant-dose, badri-adr-risk, stoppfall-check,
 // peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
-// ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect.
+// ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect, who-umc-causality.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -23,6 +23,7 @@ import * as CA from '../lib/ade-cost-avoidance-v1634.js';
 import * as AL from '../lib/anticholinergic-list-score-v1634.js';
 import * as SS from '../lib/stopp-start-v3-v1634.js';
 import * as TT from '../lib/two-by-two-effect-v1634.js';
+import * as WU from '../lib/who-umc-causality-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -121,6 +122,23 @@ export const renderers = {
       }
       list(o, r.notes);
       note(o, r.note);
+    }));
+  },
+  // spec-v1634 tool 2 (owner decision, October 17, 2026): criteria in the project's own words.
+  'who-umc-causality'(root) {
+    const pairs = [['wu-time', 'time'], ['wu-alt', 'alternative'], ['wu-wd', 'withdrawal'], ['wu-def', 'definitive'], ['wu-rc', 'rechallenge'], ['wu-more', 'moreData'], ['wu-insuff', 'insufficient']];
+    selectField(root, 'Time relationship to drug intake', 'wu-time', WU.TIME);
+    selectField(root, 'Other causes (disease or other drugs)', 'wu-alt', WU.ALTERNATIVE);
+    selectField(root, 'Response to withdrawal', 'wu-wd', WU.WITHDRAWAL);
+    selectField(root, 'Event definitive pharmacologically or phenomenologically', 'wu-def', WU.YES_NO);
+    selectField(root, 'Rechallenge', 'wu-rc', WU.RECHALLENGE);
+    selectField(root, 'More data needed or under examination', 'wu-more', WU.YES_NO);
+    selectField(root, 'Information insufficient, cannot be supplemented', 'wu-insuff', WU.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(WU.whoUmcCausality(args), o);
     }));
   },
   // spec-v1634 tool 19 (sources re-read October 16, 2026).

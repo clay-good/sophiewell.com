@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Valproate level normalized for low albumin (Hermida-Tutor free-fraction table), with the estimated free level
+  and the paper's 75 mg/L limit.
+- WHO-UMC causality category for a suspected adverse drug reaction, from the six categories' points, in this
+  site's own wording with the table cited.
 - Risk ratio, odds ratio and risk difference with 95% intervals from two groups' counts, and the number
   needed to treat with its interval, which passes through infinity when the difference may be zero.
 - STOPP/START version 3 screen: from ticked drug classes and conditions for a person 65 or older, the

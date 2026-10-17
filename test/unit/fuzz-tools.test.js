@@ -915,6 +915,7 @@ import * as riosordV1634 from '../../lib/riosord-v1634.js';
 import * as relativeInfantDoseV1634 from '../../lib/relative-infant-dose-v1634.js';
 import * as badriAdrRiskV1634 from '../../lib/badri-adr-risk-v1634.js';
 import * as liverpoolAdrCausalityV1634 from '../../lib/liverpool-adr-causality-v1634.js';
+import * as whoUmcCausalityV1634 from '../../lib/who-umc-causality-v1634.js';
 import * as nccMerpIndexV1634 from '../../lib/ncc-merp-index-v1634.js';
 import * as fdaAdverseEventReportClockV1634 from '../../lib/fda-adverse-event-report-clock-v1634.js';
 import * as orRrToNntV1634 from '../../lib/or-rr-to-nnt-v1634.js';
@@ -964,6 +965,7 @@ import * as doacDoseCheckV1632 from '../../lib/doac-dose-check-v1632.js';
 import * as vancInitialDoseV1631 from '../../lib/vanc-initial-dose-v1631.js';
 import * as vancHdDoseV1631 from '../../lib/vanc-hd-dose-v1631.js';
 import * as vancContinuousInfusionV1631 from '../../lib/vanc-continuous-infusion-v1631.js';
+import * as valproateAlbuminNormalizedV1631 from '../../lib/valproate-albumin-normalized-v1631.js';
 import * as aminoglycosideLabelRenalV1631 from '../../lib/aminoglycoside-label-renal-v1631.js';
 import * as theophyllineLabelDoseV1631 from '../../lib/theophylline-label-dose-v1631.js';
 import * as busulfanAucDoseV1631 from '../../lib/busulfan-auc-dose-v1631.js';
@@ -2038,6 +2040,7 @@ const MODULES = {
   'relative-infant-dose-v1634.js': relativeInfantDoseV1634,
   'badri-adr-risk-v1634.js': badriAdrRiskV1634,
   'liverpool-adr-causality-v1634.js': liverpoolAdrCausalityV1634,
+  'who-umc-causality-v1634.js': whoUmcCausalityV1634,
   'ncc-merp-index-v1634.js': nccMerpIndexV1634,
   'fda-adverse-event-report-clock-v1634.js': fdaAdverseEventReportClockV1634,
   'or-rr-to-nnt-v1634.js': orRrToNntV1634,
@@ -2087,6 +2090,7 @@ const MODULES = {
   'vanc-initial-dose-v1631.js': vancInitialDoseV1631,
   'vanc-hd-dose-v1631.js': vancHdDoseV1631,
   'vanc-continuous-infusion-v1631.js': vancContinuousInfusionV1631,
+  'valproate-albumin-normalized-v1631.js': valproateAlbuminNormalizedV1631,
   'aminoglycoside-label-renal-v1631.js': aminoglycosideLabelRenalV1631,
   'theophylline-label-dose-v1631.js': theophyllineLabelDoseV1631,
   'busulfan-auc-dose-v1631.js': busulfanAucDoseV1631,

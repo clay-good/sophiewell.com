@@ -9223,6 +9223,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ade-cost-avoidance-v1634.js (spec-v1634: Cost avoidance by the Nesbit method (Abushanab 2023) — administrative disclaimer)
 - `ade-cost-avoidance`
 
+### lib/who-umc-causality-v1634.js (spec-v1634: WHO-UMC causality categories (UMC Table 2, own wording) — clinical disclaimer)
+- `who-umc-causality`
+
+### lib/valproate-albumin-normalized-v1631.js (spec-v1631: Valproate normalized for albumin (Hermida-Tutor 2005) — clinical disclaimer)
+- `valproate-albumin-normalized`
+
 ### lib/two-by-two-effect-v1634.js (spec-v1634: RR, OR and risk difference with intervals (Deeks and Higgins 2022; Bland and Altman 2000; Altman 1998) — clinical disclaimer)
 - `two-by-two-effect`
 
