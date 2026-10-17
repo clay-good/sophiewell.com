@@ -2,7 +2,7 @@
 // or-rr-to-nnt, disproportionality-2x2, icer-dominance, liverpool-adr-causality, ncc-merp-index,
 // fda-adverse-event-report-clock, riosord, relative-infant-dose, badri-adr-risk, stoppfall-check,
 // peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
-// ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3.
+// ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -22,6 +22,7 @@ import * as AH from '../lib/at-harm10-v1634.js';
 import * as CA from '../lib/ade-cost-avoidance-v1634.js';
 import * as AL from '../lib/anticholinergic-list-score-v1634.js';
 import * as SS from '../lib/stopp-start-v3-v1634.js';
+import * as TT from '../lib/two-by-two-effect-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -120,6 +121,20 @@ export const renderers = {
       }
       list(o, r.notes);
       note(o, r.note);
+    }));
+  },
+  // spec-v1634 tool 19 (sources re-read October 16, 2026).
+  'two-by-two-effect'(root) {
+    const pairs = [['tte-a', 'events1'], ['tte-n1', 'total1'], ['tte-c', 'events2'], ['tte-n2', 'total2']];
+    numField(root, 'Group 1 (treated or exposed): events', 'tte-a', '');
+    numField(root, 'Group 1: total', 'tte-n1', '');
+    numField(root, 'Group 2 (comparison): events', 'tte-c', '');
+    numField(root, 'Group 2: total', 'tte-n2', '');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(TT.twoByTwoEffect(args), o);
     }));
   },
   'or-rr-to-nnt'(root) {

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:be9c2415-7d1c-5f59-84d1-5e2b3bdee70e",
+  "serialNumber": "urn:uuid:2f2412c9-c38f-50e9-8b10-687638347d5b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-16T23:55:55.001Z",
+    "timestamp": "2026-10-17T00:37:15.044Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2305 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2306 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "88f0436d8e5c4b71a8689cd10d563a707d2304bbdc9438d6cef9a66eb12f111c"
+          "content": "ac977c4cb54f986e24fca97c74762c42c0eb064d231fa88c7e8f9e300a24d668"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150400"
+          "value": "150473"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9d6e47192bb571c209f842b9fc37e25a4ec6bf357b80b2dd96e92593902aea9f"
+          "content": "63fa727548c04d157fc704e582416e328bc362662266e7438524b471fd0bffc1"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "634317"
+          "value": "634483"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "23d5b039534a84cf217600ff3b690612efe05c6889e60fc43b7a541f61e28145"
+          "content": "144b904fe228a566e44b9af160b32ba17ecbbc614efcb2c1f0fcd9fccac8f08f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "290189"
+          "value": "290317"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8782b1e85f1965a515cc8a6cc321c678fb9b264c02bd924496b1c70f754674e3"
+          "content": "767a3e242ce30a3f52331353bca21b64cafa5ad74d237be2d15553cf9b075f65"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140745"
+          "value": "140825"
         }
       ]
     },
@@ -17387,7 +17387,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e2c750da5f9adfd2fa7c27565c4a94afc76c3cf2d654a464bedb23dbec3a2a69"
+          "content": "6ac261b71a74931d8df2e7df385d65a3d18367ee06eca1e9a52be8edbf6dc4b8"
         }
       ],
       "properties": [
@@ -17397,7 +17397,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3016569"
+          "value": "3017736"
         }
       ]
     },
@@ -29557,6 +29557,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2708"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/two-by-two-effect-v1634.js",
+      "type": "file",
+      "name": "lib/two-by-two-effect-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "62098549c187ba3e5b1315e0e0e99046867164a1e5cab8d3a0a8bda7428a6e8d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6615"
         }
       ]
     },
@@ -58100,6 +58121,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/two-by-two-effect-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/two-by-two-effect-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b33ab17766554e6160ee029cedd23e83583b5b5b03689684ef4dbea3337bb319"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1063"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/twstrs-severity-v542.js",
       "type": "file",
       "name": "mcp/adapters/twstrs-severity-v542.js",
@@ -60164,7 +60206,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4d91baf465a3be46cc7485dbe52bddf4b331c25e8443c0d8dcc128b81853dc97"
+          "content": "223ecdcb035685c05601cac69eb3773609919960b05922dbe6bdb5754a3efea0"
         }
       ],
       "properties": [
@@ -60174,7 +60216,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "162190"
+          "value": "162315"
         }
       ]
     },
@@ -64784,7 +64826,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e40baf8786b0740c52b9f59b17e60b292073d219dc46e9500cc75913f684cb04"
+          "content": "82d9dbe53e77e46195c18183cce645128228779df0f42e8fada2145269d0c196"
         }
       ],
       "properties": [
@@ -64794,7 +64836,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "16708"
+          "value": "17457"
         }
       ]
     },
@@ -97087,6 +97129,7 @@
         "urn:sophiewell:file:source:lib/tryptase-v894.js",
         "urn:sophiewell:file:source:lib/tscherne-closed-v350.js",
         "urn:sophiewell:file:source:lib/turesky-plaque-v1496.js",
+        "urn:sophiewell:file:source:lib/two-by-two-effect-v1634.js",
         "urn:sophiewell:file:source:lib/twstrs-severity-v542.js",
         "urn:sophiewell:file:source:lib/tx-aprn-pa-controlled-delegation-v1393.js",
         "urn:sophiewell:file:source:lib/tx-death-cert-deadline-v1392.js",
@@ -99396,6 +99439,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tryptase-v894.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tscherne-closed-v350.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/turesky-plaque-v1496.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/two-by-two-effect-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/twstrs-severity-v542.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-aprn-pa-controlled-delegation-v1393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-death-cert-deadline-v1392.js",
@@ -99599,7 +99643,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "be9c24157d1c0f59"
+      "value": "2f2412c9c38f50e9"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99611,7 +99655,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3793"
+      "value": "3795"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

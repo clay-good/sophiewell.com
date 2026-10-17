@@ -932,6 +932,7 @@ const PROBES = [
   ['pharmacist intervention cost avoidance nesbit', ['ade-cost-avoidance']],
   ['anticholinergic burden score from a drug list', ['anticholinergic-list-score']],
   ['stopp start criteria screen', ['stopp-start-v3']],
+  ['relative risk and odds ratio with confidence interval from a two by two table', ['two-by-two-effect']],
   ['polypharmacy review for an older patient', ['stopp-start-v3', 'beers-check']],
   ['potentially inappropriate medications elderly', ['beers-check', 'stopp-start-v3']],
   ['stoppfall fall risk increasing drugs', ['stoppfall-check']],

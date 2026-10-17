@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Risk ratio, odds ratio and risk difference with 95% intervals from two groups' counts, and the number
+  needed to treat with its interval, which passes through infinity when the difference may be zero.
 - STOPP/START version 3 screen: from ticked drug classes and conditions for a person 65 or older, the
   STOPP and START criteria that match, each quoted whole from the 2023 appendix (CC BY), with the kidney
   criteria tested against an entered eGFR.

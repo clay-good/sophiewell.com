@@ -958,3 +958,5 @@ experience**.
 > v1635, Pediatric Radiopharmaceutical Administered Activity — [spec-v1635](spec-v1635.md), which adds `pediatric-administered-activity` — is 2304.)
 
 > v1634, STOPP/START Version 3 Screen — [spec-v1634](spec-v1634.md), which adds `stopp-start-v3` — is 2305.)
+
+> v1634, Risk Ratio, Odds Ratio and Risk Difference With Intervals — [spec-v1634](spec-v1634.md), which adds `two-by-two-effect` — is 2306.)

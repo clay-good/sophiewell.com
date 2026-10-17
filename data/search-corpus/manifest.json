@@ -16,16 +16,16 @@
     "bands",
     "answers"
   ],
-  "count": 2305,
-  "withSummary": 2263,
+  "count": 2306,
+  "withSummary": 2264,
   "budgetGzip": 231424,
-  "gzipBytes": 82304,
-  "hash": "437f336e3bbeb52d",
+  "gzipBytes": 82358,
+  "hash": "688af51b999b7654",
   "detail": {
     "file": "corpus-detail.json",
-    "count": 2305,
+    "count": 2306,
     "budgetGzip": 327680,
-    "gzipBytes": 275722,
-    "hash": "e1cf3d4fbd44e113"
+    "gzipBytes": 275825,
+    "hash": "e9ebfa1d12c9ec13"
   }
 }

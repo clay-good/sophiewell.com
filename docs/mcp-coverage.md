@@ -9223,6 +9223,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ade-cost-avoidance-v1634.js (spec-v1634: Cost avoidance by the Nesbit method (Abushanab 2023) — administrative disclaimer)
 - `ade-cost-avoidance`
 
+### lib/two-by-two-effect-v1634.js (spec-v1634: RR, OR and risk difference with intervals (Deeks and Higgins 2022; Bland and Altman 2000; Altman 1998) — clinical disclaimer)
+- `two-by-two-effect`
+
 ### lib/stopp-start-v3-v1634.js (spec-v1634: STOPP/START version 3 (O'Mahony 2023, CC BY) — clinical disclaimer)
 - `stopp-start-v3`
 

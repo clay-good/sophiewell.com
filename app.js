@@ -2740,6 +2740,7 @@ const UTILITIES = [
   { id: 'levodopa-equivalent-dose', name: 'Levodopa Equivalent Daily Dose (Jost 2023)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hf-gdmt-target-percent', name: 'Percent of Guideline Target Dose in Heart Failure (2022 AHA/ACC/HFSA)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'or-rr-to-nnt', name: 'NNT From an Odds Ratio or Relative Risk and a Baseline Risk', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'two-by-two-effect', name: 'Risk Ratio, Odds Ratio and Risk Difference With Intervals', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'disproportionality-2x2', name: 'Disproportionality From a 2×2 of Report Counts (ROR, PRR, IC)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'icer-dominance', name: 'Incremental Cost-Effectiveness Ratio and Dominance', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'liverpool-adr-causality', name: 'Liverpool ADR Causality Assessment (Gallagher 2011)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
