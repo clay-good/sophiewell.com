@@ -652,6 +652,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- IV acetylcysteine has a UK choice: the MHRA's authorised three-bag regimen with its 110 kg ceiling weight,
+  named and linked. The US Acetadote label's fixed dose at 100 kg stays the default.
+- eGFR suite: with a height entered, its Cockcroft-Gault row also gives the clearance on ideal and adjusted
+  weight, with the Winter 2012 note on which weight fits which patient, as the standalone Cockcroft-Gault
+  tool does.
 - IV osmolarity: between 718 and 900 mOsm/L the result adds TrophAmine's label limit for a child's
   peripheral solution (twice normal serum osmolarity, 718 mOsm/L), which the 900 line alone did not show.
 - Acetaminophen 24-hour total has a child setting: for ages 2 to under 12 it counts the doses against the

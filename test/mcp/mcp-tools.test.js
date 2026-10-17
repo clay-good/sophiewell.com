@@ -806,3 +806,15 @@ test('apap-24h-max child ceiling counts doses across every source', async () => 
   const text = JSON.stringify(await dispatch('compute_calculator', { id: 'apap-24h-max', inputs }));
   assert.ok(text.includes('"doses":6') && text.includes('"over":true'), text.slice(0, 300));
 });
+
+// spec-v1641 row 24: egfr-suite's Cockcroft-Gault row, like the standalone tile, gives the result on ideal
+// (Devine) and adjusted (0.4) weight when a height is entered.
+test('egfr-suite adds Cockcroft-Gault on ideal and adjusted weight with a height', async () => {
+  const out = await dispatch('compute_calculator', { id: 'egfr-suite', inputs: { 'es-scr': '0.8', 'es-age': '60', 'es-w': '110', 'es-h': '175', 'es-sex': 'M' } });
+  const r = JSON.parse(JSON.stringify(out)).result;
+  assert.equal(r.idealWeightKg, 70.5);
+  assert.equal(r.cockcroftGaultIdeal, 97.87);
+  assert.equal(r.adjustedWeightKg, 86.3);
+  const none = JSON.parse(JSON.stringify(await dispatch('compute_calculator', { id: 'egfr-suite', inputs: { 'es-scr': '1.2', 'es-age': '60', 'es-w': '70', 'es-sex': 'F' } }))).result;
+  assert.equal(none.cockcroftGaultIdeal, undefined, 'no height, no weight variants');
+});

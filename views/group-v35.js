@@ -109,11 +109,12 @@ export const renderers = {
 
   // ----- 2.2 nac-dosing -------------------------------------------------
   'nac-dosing'(root) {
-    note(root, 'Weight-based IV N-acetylcysteine regimen for acetaminophen poisoning. Doses and diluent volumes follow the Acetadote label; the dose is fixed at 100 kg and above.');
+    note(root, 'Weight-based IV N-acetylcysteine regimen for acetaminophen poisoning. Doses and diluent volumes follow the Acetadote label; the dose is fixed at 100 kg and above. The UK choice follows the MHRA posology and its 110 kg ceiling.');
     root.appendChild(field('Body weight (kg)', 'nc-weight', { step: '0.1', min: 0, placeholder: '70' }));
     root.appendChild(selectField('Regimen', 'nc-reg', [
       { value: 'three-bag', text: 'Three-bag (21-hour) -- 150, 50, 100 mg/kg' },
       { value: 'two-bag', text: 'Two-bag (label alternative, 41 kg and over) -- 200, 100 mg/kg' },
+      { value: 'uk-three-bag', text: 'Three-bag, UK authorised (MHRA) -- 110 kg ceiling weight' },
     ]));
     const o = out(); root.appendChild(o);
     wire(['nc-weight', 'nc-reg'], () => safe(o, () => {
@@ -122,7 +123,7 @@ export const renderers = {
       resultRow(o, [
         { text: r.band, cls: r.capped ? 'warn' : null },
         { label: 'Total NAC', value: `${r.totalMg} mg` },
-        { label: 'Fixed dose at 100 kg and above', value: r.capped ? 'applied' : 'not applied' },
+        { label: r.ceilingKg === 110 ? 'Ceiling weight of 110 kg (UK)' : 'Fixed dose at 100 kg and above', value: r.capped ? 'applied' : 'not applied' },
       ]);
       secondCheck(o);
       note(o, r.note);

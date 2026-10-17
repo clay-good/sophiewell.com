@@ -117,7 +117,9 @@ for (const rel of files) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     if (isComment(line) || isAllowlisted(line)) continue;
-    const m = BANNED.exec(line);
+    // A URL is an address, not prose: a UK source's slug ("...-for-paracetamol-overdose-...") is the
+    // page's name and cannot be respelled. Its link label stays checked.
+    const m = BANNED.exec(line.replace(/https?:\/\/[^\s'"`)]+/g, ''));
     if (m) violations.push(`${relative(ROOT, join(ROOT, rel)) || rel}:${i + 1}: "${m[1]}" -> use the US spelling/term (spec-v184 §4.2)`);
   }
 }

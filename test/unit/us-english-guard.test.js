@@ -22,7 +22,7 @@ const JOURNAL_TOKEN = /\b(Br J|Paediatr|Acta|Eur Urol|J Urol|J Clin Oncol|Lancet
 const OFFICIAL_NAME = /Paediatric Index of Mortality|Advanced Paediatric Life Support|Adult and Paediatric Respiratory Failure|Orthopaedic Association/;
 const isComment = (l) => { const t = l.trim(); return t.startsWith('//') || t.startsWith('*') || t.startsWith('/*'); };
 const allow = (l) => CITATION_FIELD.test(l) || JOURNAL_TOKEN.test(l) || OFFICIAL_NAME.test(l);
-const flags = (l) => !isComment(l) && !allow(l) && BANNED.test(l);
+const flags = (l) => !isComment(l) && !allow(l) && BANNED.test(l.replace(/https?:\/\/[^\s'"`)]+/g, ''));
 
 test('flags a user-facing British spelling in a rendered label', () => {
   assert.equal(flags(`    note(root, 'peripheral oedema, warfarin');`), true);
@@ -49,4 +49,10 @@ test('does NOT flag a comment line', () => {
 test('US spellings pass cleanly', () => {
   assert.equal(flags(`note(root, 'peripheral edema, hemoglobin low for sex, tumor size');`), false);
   assert.equal(flags(`'norepinephrine 16 mg / 250 mL = 64 mcg/mL'`), false);
+});
+
+// A URL is an address: a UK source's slug cannot be respelled. The link's visible label is still checked.
+test('ignores a British spelling inside a URL but not in the link label beside it', () => {
+  assert.equal(flags(`      { label: 'MHRA 2017', url: 'https://www.gov.uk/drug-safety-update/nac-for-paracetamol-overdose' },`), false);
+  assert.equal(flags(`      { label: 'Paracetamol guidance', url: 'https://www.gov.uk/x' },`), true);
 });

@@ -51,3 +51,17 @@ test('guards zero / blank / negative weight', () => {
   assert.equal(nacDosing({}).valid, false);
   assert.equal(nacDosing({ weight: -5 }).valid, false);
 });
+
+// spec-v1636 backfill 1 / spec-v1641 row 2: the 110 kg ceiling only behind its own choice, citing MHRA 2017.
+test('UK choice: 150/50/100 mg/kg with a 110 kg ceiling weight and no diluent volumes', () => {
+  const at105 = nacDosing({ weight: 105, regimen: 'uk-three-bag' });
+  assert.equal(at105.capped, false);
+  assert.deepEqual(at105.bags.map((b) => b.mg), [15750, 5250, 10500]);
+  const at120 = nacDosing({ weight: 120, regimen: 'uk-three-bag' });
+  assert.equal(at120.capped, true);
+  assert.equal(at120.dosingWt, 110);
+  assert.equal(at120.totalMg, 33000);
+  assert.ok(at120.bags.every((b) => b.diluentMl === null));
+  assert.match(at120.note, /MHRA/);
+  assert.equal(nacDosing({ weight: 105, regimen: 'three-bag' }).totalMg, 30000, 'the US label still fixes the dose at 100 kg');
+});

@@ -247,7 +247,7 @@ export default [
   },
   {
     id: 'egfr-suite',
-    summary: 'Renal-function panel: CKD-EPI 2021 eGFR, MDRD eGFR, and Cockcroft-Gault creatinine clearance side by side. With height and weight it adds CKD-EPI in mL/min (x BSA / 1.73), the form FDA guidance (March 2024) says to use for drug dosing.',
+    summary: 'Renal-function panel: CKD-EPI 2021 eGFR, MDRD eGFR, and Cockcroft-Gault creatinine clearance side by side. With height and weight it adds CKD-EPI in mL/min (x BSA / 1.73), the form FDA guidance (March 2024) says to use for drug dosing, and Cockcroft-Gault on ideal and adjusted weight.',
     compute: (a) => {
       // spec-v1045: Cockcroft-Gault is the only one of the three that needs a
       // weight, and it was holding the other two hostage.
@@ -261,6 +261,12 @@ export default [
       // spec-v1641 row 23: CKD-EPI in mL/min when height and weight are both given.
       if (ckdEpi2021 != null && have(a.weightKg, a.heightCm) && Number(a.weightKg) > 0 && Number(a.heightCm) > 0) {
         out.ckdEpi2021MlMin = F.deIndexEgfr({ egfr: ckdEpi2021, heightCm: Number(a.heightCm), weightKg: Number(a.weightKg) }).egfrMlMin;
+      }
+      // spec-v1641 row 24: with a height, Cockcroft-Gault on ideal and adjusted weight too, as the
+      // standalone cockcroft-gault tile gives it, since drug labels differ on the weight.
+      if (cockcroftGault != null && have(a.heightCm) && Number(a.heightCm) > 0) {
+        const w = F.cockcroftGaultByWeight({ age: a.age, weightKg: a.weightKg, heightCm: Number(a.heightCm), scr: a.scr, sex: a.sex });
+        Object.assign(out, { cockcroftGaultIdeal: w.ideal, idealWeightKg: w.idealKg, cockcroftGaultAdjusted: w.adjusted, adjustedWeightKg: w.adjustedKg, weightNote: w.note });
       }
       return out;
     },

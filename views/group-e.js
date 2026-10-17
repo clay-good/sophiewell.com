@@ -716,7 +716,16 @@ export const renderers = {
       if (w !== null && esH > 0) {
         const d = C.deIndexEgfr({ egfr: ckdEpi, heightCm: esH, weightKg: w });
         o.appendChild(el('p', { text: `CKD-EPI 2021 for drug dosing: ${d.egfrMlMin} mL/min (not indexed; BSA ${d.bsa} m^2), per FDA's 2024 guidance.` }));
+        // spec-v1631 backfill 5 / spec-v1641 row 24: the Cockcroft-Gault row gets what the standalone
+        // cockcroft-gault tile already shows -- the result on ideal and adjusted weight, and Winter 2012.
+        const cg = C.cockcroftGaultByWeight({ age, weightKg: w, heightCm: esH, scr, sex });
+        const rows = [];
+        if (cg.ideal !== null) rows.push({ label: `Cockcroft-Gault on ideal weight (${cg.idealKg} kg)`, value: `${cg.ideal} mL/min` });
+        if (cg.adjusted !== null) rows.push({ label: `Cockcroft-Gault on adjusted weight (${cg.adjustedKg} kg)`, value: `${cg.adjusted} mL/min` });
+        if (rows.length) resultRow(o, rows);
+        o.appendChild(el('p', { class: 'muted', text: cg.note }));
       }
+      if (w !== null && scr < 1) o.appendChild(el('p', { class: 'muted', text: C.CG_LOW_SCR_NOTE }));
       const adv = boundsAdvisory('scr', scr);
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
       o.appendChild(el('p', { class: 'muted', text: '2021 race-free shift: NIH/NKF removed the race coefficient from CKD-EPI in 2021. Many labs use CKD-EPI; nephrology references increasingly use MDRD race-free for legacy comparison.' }));

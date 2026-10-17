@@ -23,11 +23,11 @@ export default [
   },
   {
     id: 'nac-dosing',
-    summary: 'N-acetylcysteine dosing for acetaminophen poisoning: computes the per-bag milligrams for the three-bag (21 h) or two-bag (label alternative, 20 h, 41 kg and over) IV regimen of the Acetadote label, with the diluent volume for each bag; the dose is fixed at 100 kg and above and no dose is given under 5 kg.',
+    summary: 'N-acetylcysteine dosing for acetaminophen poisoning: computes the per-bag milligrams for the three-bag (21 h) or two-bag (label alternative, 20 h, 41 kg and over) IV regimen of the Acetadote label, with the diluent volume for each bag; the dose is fixed at 100 kg and above and no dose is given under 5 kg. A UK choice applies the MHRA 2017 posology and its 110 kg ceiling weight.',
     compute: F.nacDosing,
     fields: [
       { dom: 'nc-weight', arg: 'weight', kind: 'number', required: true, label: 'Body weight (kg)' },
-      { dom: 'nc-reg', arg: 'regimen', kind: 'enum', values: ['three-bag', 'two-bag'], required: true, label: 'IV NAC regimen' },
+      { dom: 'nc-reg', arg: 'regimen', kind: 'enum', values: ['three-bag', 'two-bag', 'uk-three-bag'], required: true, label: 'IV NAC regimen' },
     ],
   },
   {

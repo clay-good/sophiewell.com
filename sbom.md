@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `40dc2a13305fd916`
-Generated: 2026-10-17T20:48:24.074Z
+Build ID: `c2030a4569a697c1`
+Generated: 2026-10-17T22:49:33.301Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -858,7 +858,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3017659 | `642b232b7ee1dc9399b49553368897fe6f968b9ec3518d73ddc848f99ec86293` |
+| `lib/meta.js` | 3017890 | `93ea1d2212c0a5435cf1a50ff88944392dd2e58afc54de704cc9df6f7a298248` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1419,7 +1419,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/todani-choledochal-v473.js` | 3608 | `e6e1d1726ce48bafecb6edbad0d7f61300adf435b2c1b1427aeeeb98c8fc21ab` |
 | `lib/tonnis-hip-oa-v354.js` | 3924 | `856bbea20809afb3acd30bbdc56331611ceba4deb17726ba2bcde7a36c87d957` |
 | `lib/topical-quantity-ftu-v1639.js` | 5042 | `4d2eeaca5eadd228dfd888f0951c9a798b1489c07b3be5167f5f0a5e6265ee34` |
-| `lib/tox-v110.js` | 16610 | `d60b512dd8a8860d81ac19fb13c6bf9cdf6744739f27b8abc7547fd701e2cc2d` |
+| `lib/tox-v110.js` | 18343 | `0b5bb59066b4777d856c6dda989f60e643840c29152ecd22e661f10a9df8f88b` |
 | `lib/tox-v86.js` | 14404 | `f1166aafbe0807d67a7009faa117eff29cbc9d54d9af29e1a63eab1fe2ee9dad` |
 | `lib/tpmt-nudt15-thiopurine-dose-v1635.js` | 2138 | `470f9d9fa0ee1ea10180275c2c3f7aa9ebd65cac81e218423ba7e424a1f90623` |
 | `lib/trachoma-grade-v1561.js` | 4055 | `899fd785c08aa0075f51fb10ef1593b9b48d4a8da2ab53fb38fdd032bbeea666` |
@@ -1788,7 +1788,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v6.js` | 9094 | `85dda711c1f5b628041a41ae5218c2ea8909bc51ff6bff06df2b9a81e1674096` |
 | `mcp/adapters/clinical-v7.js` | 9320 | `3e53f0e857f07cb6f80e5efb3ca7bd90d021ef538c4860730bc647ec113a53f4` |
 | `mcp/adapters/clinical-v8.js` | 17059 | `39b1c8e36f2071a55cbbbe47b4a5aa70fa9523d8700d3be150c5651b26db7277` |
-| `mcp/adapters/clinical.js` | 29389 | `df78180fcb80b3e04653bb809071e4d0af7accd8ed293d43b868a15432dc9615` |
+| `mcp/adapters/clinical.js` | 30032 | `6c01e1e8bbfeaf56cdb791f7873638f73cd3f5e7399802d162176d208ff2dd5a` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/cmea-sales-limit-v1637.js` | 2142 | `0bc92156b2b0001f7c6976c12585f83fbc1be5c2781d18d0934b0a1382d615eb` |
 | `mcp/adapters/cns-renal-dose-check-v1632.js` | 1690 | `caeec305d713a62fd217c13b25df096aaf521d81623b7ba6ff752566fd8c7552` |
@@ -2781,7 +2781,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/todani-choledochal-v473.js` | 1244 | `06bc5be9d22287ffdc6a28d14186754083b16c9d8abfe51fad9c71aee5ac5c4d` |
 | `mcp/adapters/tonnis-hip-oa-v354.js` | 1427 | `bb8c618503d661a89c00fbfabae469647a8799821c7923a60f91b26aea3207ed` |
 | `mcp/adapters/topical-quantity-ftu-v1639.js` | 1343 | `bf435134db06ec1ad248c79a3b56384e4e07b4a4e5e1a4d0e7cc2646fc55bd17` |
-| `mcp/adapters/tox-v110.js` | 4036 | `f663afcba268cfe5b3082416437bc32514814a6de45ed57e832da3a228c9519b` |
+| `mcp/adapters/tox-v110.js` | 4126 | `e2d69e1fbabbfac7e2536fbf6390ffb0f3c0fc776eaa24ac2f8a839f85d7c99d` |
 | `mcp/adapters/tox-v86.js` | 4261 | `be57be9bae32c5dfe02490a653072b862a131b6fa8573b5a2cbb9591e03bad5b` |
 | `mcp/adapters/tpmt-nudt15-thiopurine-dose-v1635.js` | 1153 | `1c872f672add40e7cf7879b8337f10570cd89b1fa3c97bd14593eeec19de4b1f` |
 | `mcp/adapters/trachoma-grade-v1561.js` | 1344 | `0bdfa4067d943aad49d90970a9157f1a6b6f93e5aa842d5f1634608eb0bd99ff` |
@@ -2923,7 +2923,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
-| `views/group-e.js` | 55874 | `98830ddee7d633ea4c3a75bd7340d4af22f60c459a2777e33a9ba1388ba7cf55` |
+| `views/group-e.js` | 56699 | `fe30c59b2c19d315603b40c13c378209e903912f2a455c0f630d5d640822120c` |
 | `views/group-f.js` | 57749 | `0a39866dc77d102ea2e6670e32dd47295bfd32a1005892b8b1d95ac9688d29fc` |
 | `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
@@ -3310,7 +3310,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v347.js` | 3082 | `a24ac219078dce90e2bce3cb2d86d117608516abecec03ee9039be7f1348af80` |
 | `views/group-v348.js` | 3109 | `959faaedc7197d6becfcba045ae72912a64ae6c18d30e528e34a04c3730fbc58` |
 | `views/group-v349.js` | 3414 | `60145646cd4082df87262bef903f19d6344aa5dbcf2e0a268f1020f8dc384d45` |
-| `views/group-v35.js` | 10487 | `111113b3bdbab751351a919ad2714fdd74ddeb24b5d02d82447e733e7b08f8c0` |
+| `views/group-v35.js` | 10706 | `2570eaa215a4e233010631e660659bd38642efad956174b0220afe420362c292` |
 | `views/group-v350.js` | 3161 | `1db2f3d7ae4deb153dd80c6a2d60dc04cf2e6fa7fa8c634a5a84510d20f79488` |
 | `views/group-v351.js` | 2867 | `b50b76371b7e28151b00c8d9437a92a80e4419c2f1a2270ac29e6d06ca540fbd` |
 | `views/group-v352.js` | 3364 | `7ec8f3de4e74cb61cc5109e208e9679fd4e3ea0b05658edc13f1e34a75db4560` |

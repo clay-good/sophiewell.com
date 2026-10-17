@@ -1,6 +1,6 @@
 # spec-v1641 — Corrections to live tools found by the pharmacy research
 
-**Status:** Every row is built, re-checked against the code on October 17, 2026. What stays open is named in its row: the `nac-dosing` 110 kg jurisdiction switch (its source was not read) and the Cockcroft-Gault row of `egfr-suite`. No new tools.
+**Status:** Every row is built, re-checked against the code on October 17, 2026. Nothing in it is open. No new tools.
 **Charter:** [spec-v1627](spec-v1627.md). **Ledger:** [scope-pharmacy-practice.md](scope-pharmacy-practice.md).
 
 Researching the pharmacy gaps meant reading the labels and rules that live tools already cite.
@@ -22,7 +22,7 @@ changed. Rows not listed are not built.
 | Row | Tool | Status |
 |---|---|---|
 | 1 | `co-cn-antidote` | Built: text corrected to both labels; sodium nitrite added. The weight input and mL outputs of [v1636](spec-v1636.md) backfill 2 were built later (`lib/cyanide-antidote-dose-v1636.js`, above the reference card). |
-| 2 | `nac-dosing` | Built: fixed dose at 100 kg, two-bag from 41 kg only, diluent volumes, no dose under 5 kg. The 110 kg jurisdiction switch is not built. |
+| 2 | `nac-dosing` | Built: fixed dose at 100 kg, two-bag from 41 kg only, diluent volumes, no dose under 5 kg. The 110 kg jurisdiction switch was added on October 17, 2026 as a third choice, "Three-bag, UK authorised (MHRA)", citing MHRA's Drug Safety Update of January 2017 ("A ceiling weight of 110 kg should be used when calculating the dose for obese patients"); it prints no diluent volumes, which that page does not give. |
 | 3, 4 | `anticoag-reversal` | Built: andexanet marked as no longer sold in the U.S. with the FDA sentence and date; no dose returned for apixaban or rivaroxaban; the 4F-PCC 50 units/kg figure removed (its guideline could not be opened to re-read). |
 | 5 | `anc` | Built: both the CTCAE v6.0 and v5.0 grades are printed. |
 | 6 | `opioid-conversion` | Built: the patch is refused as a source with the label warning; a patch target is read from the label's Table 2 from 60 mg/day oral morphine. `fentanyl-patch-initial-dose` was built later in [v1633](spec-v1633.md). |
@@ -42,7 +42,7 @@ changed. Rows not listed are not built.
 | 21 | `pdc-star`, `adherence-outreach-list` | Built: both cite the 2027 Technical Notes; stay days are removed through measurement year 2025 and not from 2026, with the memo's sentence in the result (both documents re-read at build; the test runs each side of the year). The risk adjustment itself is not computed, and the result says so. `mpr-gap-days` still cites the 2026 notes. |
 | 22 | `ndc-convert`, and every tool that takes an NDC | Built: `lib/ndc.js` is the one parser; it reads 6-4-2 and 12 bare digits, and `ndc-convert` prints the 12-digit form with a status line dated on each side of March 7, 2033 (rule text re-read in the Federal Register). The six-digit-labeler 6-4-1 and 6-3-2 formats of [v1637](spec-v1637.md) were added to `lib/ndc.js` later. |
 | 23 | `egfr`, `egfr-suite`, `ckd-epi-cystatin` | Built: each shows the de-indexed mL/min value when height and weight are entered (BSA by Mosteller). |
-| 24 | `cockcroft-gault` | Built: with a height the tool prints the actual, ideal and adjusted (0.4) weight results beside Winter 2012's finding (abstract re-read), and the no-rounding sentence when the creatinine is below 1.0. The "for which drug's label?" choice is built (spec-v1632 backfill 5, seven labels); the Cockcroft-Gault row of `egfr-suite` is unchanged. |
+| 24 | `cockcroft-gault` | Built: with a height the tool prints the actual, ideal and adjusted (0.4) weight results beside Winter 2012's finding (abstract re-read), and the no-rounding sentence when the creatinine is below 1.0. The "for which drug's label?" choice is built (spec-v1632 backfill 5, seven labels). Since October 17, 2026 the Cockcroft-Gault row of `egfr-suite` also gives the ideal- and adjusted-weight results and the Winter 2012 note when a height is entered, on the page and for agents. |
 | 25 | `opioid-mme` | Built: the 50 MME/day flag carries the guideline's sentence. Also corrected at build: the 90 MME flag was the 2016 guideline's, which the 2022 guideline dropped. |
 | 19 | `abx-renal` | Built: rows rewritten from the labels with each label's set id and revision date. The weekly label watch was built later: its 22 labels are in `scripts/data/label-editions.json`. |
 
