@@ -653,6 +653,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   recognizes a unit no longer takes a number another field read by name. "abg" and "arterial blood gas"
   now find the ABG walkthrough.
 - A value may follow one filler word after its label ("calcium score 250", "creatinine level 1.4").
+- A label typed back with its own comma ("Shoulder abduction, left 4") fills, and a label's leading item
+  number is never read as its value (NIHSS "5 Motor arm ..." had been filled with 5).
 - Agent answer_query: a calculator named in full is the one answered. Four were not (Hy's Law went to RUCAM;
   two names with a hyphen at a word's edge could not be matched; DIPSS-Plus tied with DIPSS).
 - Agent answer_query: when a question names a calculator and gives its values, that calculator answers, not a

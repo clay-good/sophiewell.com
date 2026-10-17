@@ -319,3 +319,14 @@ test('one filler word the label dropped may sit between name and value, from a c
   assert.deepEqual(queryFill('creatinine level 1.4', cr).filled, { cr: 1.4 });
   assert.deepEqual(queryFill('creatinine was checked twice 1.4', cr).filled, {}, 'not an open gap');
 });
+
+test('a label typed back with its own comma fills; a label\'s leading item number is never its value', () => {
+  const mrc = [
+    { d: 'shl', k: 'number', l: 'Shoulder abduction, left (0-5)', r: 1 },
+    { d: 'shr', k: 'number', l: 'Shoulder abduction, right (0-5)', r: 1 },
+  ];
+  assert.deepEqual(queryFill('Shoulder abduction, left 4, Shoulder abduction, right 3', mrc).filled, { shl: 4, shr: 3 });
+  // NIHSS item 5 read "5 Motor arm, sum of left + right 2" as 5: the number before the name was the label's.
+  const nihss = [{ d: '5', k: 'number', l: '5 Motor arm, sum of left + right (0-8)', r: 1 }];
+  assert.notEqual(queryFill('5 Motor arm, sum of left + right 2', nihss).filled['5'], 5);
+});
