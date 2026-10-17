@@ -648,6 +648,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Values typed beside their label now fill fields whose names carry digits ("paco2 30", "hco3 14", SpO2,
+  FiO2) and "ph 7.3"; a blood gas written the usual way had filled almost nothing. A field that only
+  recognizes a unit no longer takes a number another field read by name. "abg" and "arterial blood gas"
+  now find the ABG walkthrough.
 - Agent answer_query: a calculator named in full is the one answered. Four were not (Hy's Law went to RUCAM;
   two names with a hyphen at a word's edge could not be matched; DIPSS-Plus tied with DIPSS).
 - Agent answer_query: when a question names a calculator and gives its values, that calculator answers, not a

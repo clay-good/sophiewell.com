@@ -13258,6 +13258,14 @@
       ],
       "tile": "stopp-start-v3",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "abg",
+        "arterial blood gas"
+      ],
+      "tile": "abg",
+      "audience": "clinicians"
     }
   ]
 }

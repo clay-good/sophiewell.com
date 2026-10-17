@@ -294,3 +294,20 @@ test('every phrasing in test/fixtures/queries.txt resolves as written', () => {
   }
   assert.ok(checked >= 20, `expected a real corpus, ran ${checked} lines`);
 });
+
+// Found October 17, 2026: a blood gas written the usual way filled almost nothing.
+test('digits inside a label word are part of its name; "pH" is a term; a unit guess does not take a named number', () => {
+  const rows = [
+    { d: 'pH', k: 'number', l: 'Arterial pH', r: 1 },
+    { d: 'paco2', k: 'number', l: 'PaCO2', u: 'mmHg', r: 1 },
+    { d: 'hco3', k: 'number', l: 'HCO3', u: 'mEq/L', r: 1 },
+    { d: 'pao2', k: 'number', l: 'PaO2 (optional, enables oxygenation indices)', u: 'mmHg' },
+  ];
+  assert.deepEqual(queryFill('ph 7.3 paco2 30 hco3 14', rows).filled, { pH: 7.3, paco2: 30, hco3: 14 });
+  // PaCO2 read "30 mmHg" by name; PaO2's unit fallback must not read it too.
+  assert.deepEqual(queryFill('pH 7.30, PaCO2 30 mmHg, HCO3 14 mEq/L', rows).filled, { pH: 7.3, paco2: 30, hco3: 14 });
+  assert.deepEqual(queryFill('paco2 30 mmhg, pao2 85 mmhg', rows).filled, { paco2: 30, pao2: 85 });
+  // A standalone number in a label is still the source's threshold, not a word.
+  assert.deepEqual(fieldTerms({ d: 'x', k: 'number', l: 'Creatinine above 2 adds 1 point' }).includes('2'), false);
+  assert.ok(fieldTerms({ d: 'x', k: 'number', l: 'SpO2' }).includes('spo2'));
+});
