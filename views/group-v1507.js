@@ -149,10 +149,12 @@ export const renderers = {
     });
   },
   'parta-premium'(root) {
-    const pairs = [['pap-quarters', 'quarters'], ['pap-late', 'monthsLate'], ['pap-year', 'year']];
+    const pairs = [['pap-quarters', 'quarters'], ['pap-late', 'monthsLate'], ['pap-year', 'year'], ['pap-premium', 'premium']];
     numField(root, 'Quarters of Medicare-covered work (yours or a spouse\'s)', 'pap-quarters', 'e.g. 34', '400', '1');
     numField(root, 'Months late for premium Part A (optional)', 'pap-late', 'e.g. 30', '1200', '1');
     numField(root, 'Premium year (blank for this year)', 'pap-year', 'e.g. 2026', '2100', '1');
+    // For a year with no published figure on file, the library asks for the premium; this is where it goes.
+    numField(root, 'Part A premium, if not the published figure', 'pap-premium', 'e.g. 311', '10000', '0.01');
     const ids = pairs.map(([d]) => d);
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {

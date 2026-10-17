@@ -782,3 +782,21 @@ test('spec-v1642: hatch-af and hill-flap-valve resolve to the tile that survived
     assert.ok(text.includes(`"canonicalId":"${canonical}"`), `${oldId} did not answer as ${canonical}`);
   }
 });
+
+// scripts/probe-unsupplied-input.mjs: the library computes BMI from weight and height and its refusal asks
+// for them, but the adapter offered neither field.
+test('peds-bmi-percentile takes weight and height from an agent when BMI is not given', async () => {
+  const out = await dispatch('compute_calculator', { id: 'peds-bmi-percentile', inputs: { 'bm-sex': 'male', 'bm-age': '10', 'bm-wt': '40', 'bm-ht': '140' } });
+  const text = JSON.stringify(out);
+  assert.ok(text.includes('"derived":true'), text.slice(0, 300));
+  assert.ok(text.includes('90th'), text.slice(0, 300));
+});
+
+// scripts/probe-unsupplied-input.mjs: for a year with no published figure, partaPremium asks for the premium,
+// and neither the page nor the adapter had a field for it (Part B's tile did).
+test('parta-premium accepts the premium for a year with no published figure', async () => {
+  const ask = JSON.stringify(await dispatch('compute_calculator', { id: 'parta-premium', inputs: { 'pap-quarters': '34', 'pap-year': '2027' } }));
+  assert.ok(/Enter the 2027 reduced Part A premium/.test(ask), ask.slice(0, 200));
+  const done = JSON.stringify(await dispatch('compute_calculator', { id: 'parta-premium', inputs: { 'pap-quarters': '34', 'pap-year': '2027', 'pap-premium': '320' } }));
+  assert.ok(done.includes('"premium":320'), done.slice(0, 200));
+});

@@ -64,3 +64,14 @@ test('spec-v1474: stroke work indices in both reported units, only when their in
   assert.equal(noWedge.rvswi, 8.7);
   assert.equal(hemodynamicSuite({ cardiacOutput: 5, bsa: 1.9, map: 85, pcwp: 12 }).lvswi, null, 'no heart rate, no SVI');
 });
+
+// Found October 17, 2026 by scripts/probe-impossible-reads-as-absent.mjs: an entered BSA of -999999 dropped
+// the indexed rows exactly as leaving BSA blank does, and nothing said the value was refused.
+test('an entered BSA or heart rate that is not above zero is refused, not read as blank', () => {
+  const bsa = hemodynamicSuite({ cardiacOutput: 5, heartRate: 70, bsa: -999999 });
+  assert.equal(bsa.valid, false);
+  assert.match(bsa.band, /^Enter a body surface area/);
+  assert.equal(hemodynamicSuite({ cardiacOutput: 5, heartRate: 0, bsa: 1.9 }).valid, false);
+  assert.equal(hemodynamicSuite({ cardiacOutput: 5, heartRate: 70 }).valid, true, 'blank BSA still answers');
+  assert.equal(hemodynamicSuite({ cardiacOutput: 5, heartRate: 70 }).ci, null);
+});

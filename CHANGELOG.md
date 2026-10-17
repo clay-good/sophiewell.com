@@ -652,6 +652,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Medicare Part A premium has a box for the premium itself. For a year with no published figure on file
+  (2027 from January 1) it asked for the amount and had nowhere to type it.
+- Pediatric BMI percentile takes weight and height from an agent, as the page already did; an agent was
+  asked for both and could send neither.
+- Hemodynamic suite: a body surface area or heart rate entered as zero or negative is refused. It had been
+  treated as left blank, dropping the indexed values with no word why.
 - A retired tool's own page (`/tools/<old-id>/`, the address a search result or bookmark holds) now
   redirects to the tool that replaced it; it had shown the home page. Covers all 14 retired tools.
 - HATCH (AF progression) was two tiles that scored a 75-year-old differently: one asked "age over 75", the

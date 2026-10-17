@@ -17,6 +17,10 @@ export default [
       { dom: 'bm-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Sex' },
       { dom: 'bm-age', arg: 'ageYears', kind: 'number', label: 'Age (years, 2–20)' },
       { dom: 'bm-bmi', arg: 'bmi', kind: 'number', label: 'BMI (kg/m²)' },
+      // The page computes BMI from weight and height when BMI is blank, and the library's refusal asks for
+      // exactly that; without these two fields an agent was told to supply inputs it had no way to send.
+      { dom: 'bm-wt', arg: 'weightKg', kind: 'number', label: 'Weight, if BMI is not given', unit: 'kg' },
+      { dom: 'bm-ht', arg: 'heightCm', kind: 'number', label: 'Height, if BMI is not given', unit: 'cm' },
     ],
   },
   {

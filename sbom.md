@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b123f82f66259396`
-Generated: 2026-10-17T19:24:24.930Z
+Build ID: `dbb1f226f6ef172a`
+Generated: 2026-10-17T20:11:22.863Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -599,7 +599,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heme-v132.js` | 16879 | `b8efc09695da0d762446d04a61a8269f62ec63f2c8d35fe8547375b1e603b333` |
 | `lib/hemederm-v245.js` | 8476 | `39480a087ffb9f9d29c73c0ef8a7b82e0f7fd4dec2db77da38d199295ee21777` |
 | `lib/hemo-v194.js` | 12317 | `930f9c5936ec705bdaf94bca7e9a2bac78ccf4a6227e9093de0bbaccd33da718` |
-| `lib/hemodynamics-v87.js` | 10803 | `5ecd9301d133020ff6d17feb0da8d4c5893e53d0208d703bc10206978e996cd6` |
+| `lib/hemodynamics-v87.js` | 11286 | `cd886d31932230a557fcc1012e24af5a2e1cd720cf98a768d1b7cc57355237ba` |
 | `lib/hemonc-v94.js` | 23706 | `66b93dcc9007e17f6d4e62ba597c83258baf6148241769bdd3b94869d9d2c0bf` |
 | `lib/hep-fibrosis-portal-v212.js` | 7921 | `93f3523d0b77872b3a351fc28a630c781e1f5469bffc631f70ad84ccffaed494` |
 | `lib/hep-v124.js` | 17434 | `b1eda3d72892fd30fed5a8424d38a4010f24360b826e9334a35fa231311f8413` |
@@ -2289,7 +2289,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/medicaid-work-requirement-v1507.js` | 1949 | `dec312d612604ef482ff176e3fde26d2af57dc9879f5eabd3d3fe9a157bc2bad` |
 | `mcp/adapters/medicare-enrollment-window-v1507.js` | 1007 | `3786ee42e578f18681ba86c898d79f2f35a6c4bed0e4daf3bcb431bffad9e9d0` |
 | `mcp/adapters/medicare-ffs-pa-required.js` | 1018 | `eebf12722cfdb13ba2cb6688fc051983b0a304aa3191f706013d7e2c937bdcc1` |
-| `mcp/adapters/medicare-penalties-v1507.js` | 2712 | `d3732bee66bb93fc846a881c145bd6c4b89b264cf49d9c4421097d97e9ba3d4a` |
+| `mcp/adapters/medicare-penalties-v1507.js` | 2858 | `5f916f89ab1c6940f5ffcc88af4ea089353aff9bea54f23f6c37518ab1f08546` |
 | `mcp/adapters/medication-v4.js` | 10742 | `441b8f9ee515ea267c65bfe5beeeb431f69b361f93add0fe29d92de7858c9b41` |
 | `mcp/adapters/medication-v5.js` | 12355 | `17ebba58282c66a525fa737cfcb8b8c63459a606b6e4e06354c03b2029ddd632` |
 | `mcp/adapters/meld3-v678.js` | 1809 | `cdd0ac147f46bd4dc5a5ac9f71d3a8fb62e8f008a2609cc05c3369f18f682c33` |
@@ -2498,7 +2498,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/pediatric-acute-v262.js` | 4068 | `e4536977a73949c381fa922cbe535be9cce260951dc97ca3682634cb976df8f8` |
 | `mcp/adapters/pediatric-administered-activity-v1635.js` | 1007 | `0d46c634b5ac0e86f556dd617a10ae9de9ce84cf73d8972ef5e5d44857930ff5` |
 | `mcp/adapters/pedis-v613.js` | 2682 | `e1a18f460facee88b68c3bca397bd2b85df0fde141c1b4a298921b7ba5b60d8b` |
-| `mcp/adapters/peds-growth-v141.js` | 3294 | `69c9b27122a0e7f2798eeaa1ea54de015b23d5a3594ec078465d32442d978466` |
+| `mcp/adapters/peds-growth-v141.js` | 3722 | `70a5b92258e751bea44049f606d5d840ecc3ca19be394b80f4cc469b47a28c78` |
 | `mcp/adapters/peds-heparin-nomogram-v1634.js` | 1392 | `fd55818cee3153ce48aa5bffa6607e69af0702a02b9f58a9448efcb513a11ada` |
 | `mcp/adapters/peds-percentile-v169.js` | 1356 | `73f096adbea1eb31289ed36120f11224546c4fe2cb93f4b2684bcd5f9232d745` |
 | `mcp/adapters/peds-sepsis-v278.js` | 2370 | `864a1525763c479f4eb2678ec86e4e87eafdda3f270d57981440ec8aad0fd61b` |
@@ -3062,7 +3062,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1504.js` | 13270 | `edbaddf554e1bfec261228e037167a43bb9df845715b6575b2b7eed3cc4b27cf` |
 | `views/group-v1505.js` | 11430 | `0bf2e09c59f3a9dc6092a4a371f1c2b7fc7f43e92833ebe78dfc7902fa651a38` |
 | `views/group-v1506.js` | 16512 | `a757b515a069811cfead65b6e1ce26972122e7cb4836b3e6c95822ccfe856d93` |
-| `views/group-v1507.js` | 17360 | `ffec37371d5c34d73a79305a36936b74d877acfa8201819d4fb09eed6a716f63` |
+| `views/group-v1507.js` | 17608 | `f9f477bc308e8cc1500b3023d283e157474994ca1d86c4cb9210ad214f5618bc` |
 | `views/group-v1508.js` | 9990 | `2b401ca6d23d1fe10adbe4e81dba66e066f7a3e481c4947606f780b321fcbd52` |
 | `views/group-v1509.js` | 9355 | `c6052710ceac6ed488acfac42c0d347bc387f1dcfc5a3807399d03171ae4a31a` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
