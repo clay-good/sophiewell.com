@@ -656,6 +656,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - A label typed back with its own comma ("Shoulder abduction, left 4") fills, and a label's leading item
   number is never read as its value (NIHSS "5 Motor arm ..." had been filled with 5).
 - Numbered items typed as "Item 1 2, Item 2 3" fill; every BASFI item had been dropped as ambiguous.
+- Labels with a spaced dash or colon (an em dash, as in "Forehead [dash] Area 4") and subscript digits ("SaO₂") fill; a value read
+  inside one field's labeled match no longer also fills a sibling.
 - Agent answer_query: a calculator named in full is the one answered. Four were not (Hy's Law went to RUCAM;
   two names with a hyphen at a word's edge could not be matched; DIPSS-Plus tied with DIPSS).
 - Agent answer_query: when a question names a calculator and gives its values, that calculator answers, not a

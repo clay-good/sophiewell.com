@@ -336,3 +336,20 @@ test('numbered sibling items fill: the value is not taken for a sibling\'s disti
   assert.deepEqual(queryFill('Item 1 2, Item 2 3, Item 3 4, Item 10 5', items).filled, { i1: 2, i2: 3, i3: 4, i10: 5 });
   assert.deepEqual(queryFill('Item 1 1, Item 2 2', items).filled, { i1: 1, i2: 2 });
 });
+
+test('spaced dashes and colons separate a label; subscript digits are digits; a reading inside another field\'s match yields', () => {
+  const masi = [
+    { d: 'fA', k: 'number', l: 'Forehead \u2014 Area', r: 1 },
+    { d: 'fD', k: 'number', l: 'Forehead \u2014 Darkness', r: 1 },
+  ];
+  assert.deepEqual(queryFill('Forehead \u2014 Area 4, Forehead \u2014 Darkness 2', masi).filled, { fA: 4, fD: 2 });
+  const qp = [{ d: 'sao2', k: 'number', l: 'Systemic-arterial SaO₂', u: '%', r: 1 }];
+  assert.deepEqual(queryFill('sao2 95', qp).filled, { sao2: 95 });
+  const groups = [
+    { d: 'a', k: 'number', l: 'Group 1 (treated or exposed): events', r: 1 },
+    { d: 'c', k: 'number', l: 'Group 2 (comparison): events', r: 1 },
+  ];
+  // Group 2's bare "events 141" lies inside Group 1's match and must not fill Group 2 with 141.
+  assert.deepEqual(queryFill('Group 1 : events 141', groups).filled, { a: 141 });
+  assert.deepEqual(queryFill('Group 1 : events 141, Group 2 : events 928', groups).filled, { a: 141, c: 928 });
+});
