@@ -49,3 +49,19 @@ test('answer_query: a calculator named in full is the one answered, never a neig
     ['DIPSS-Plus (myelofibrosis survival score)', 'dipss-plus-mf'],
   ]) assert.equal(answerQuery({ query: q }).tile, tile, q);
 });
+
+test('answer_query: the calculator named first wins over a template or a label that names another', () => {
+  // Found October 16, 2026 by writing every all-numeric page example as "name, label value, ...": nine went
+  // to another calculator (a template for BMI or the anion gap answered first, or a value's label was
+  // another calculator's name, or the named one fell outside the ranker's top five).
+  for (const [q, tile] of [
+    ['Fatty Liver Index (steatosis probability) Triglycerides 150 mg/dL, BMI 30 kg/m^2, GGT 60 U/L, Waist circumference 100 cm', 'fatty-liver-index'],
+    ['Anion Gap & Delta-Delta Sodium 140 mEq/L, Chloride 100 mEq/L, HCO3 14 mEq/L, Albumin 4 g/dL', 'anion-gap-dd'],
+    ['Cardiac Power Output (CPO) Mean arterial pressure 80 mmHg, Cardiac output 5 L/min', 'cardiac-power-output'],
+    ['Subaxial Cervical Spine Injury Classification (SLIC)', 'slic-score'],
+  ]) assert.equal(answerQuery({ query: q }).tile, tile, q);
+  assert.equal(answerQuery({ query: 'bmi 80 kg 180 cm' }).tile, 'bmi', 'a template still answers when nothing else is named');
+  assert.equal(answerQuery({ query: 'wells score for DVT, previous DVT' }).tile, 'wells-dvt', 'PE is a word of the PE name');
+  assert.equal(answerQuery({ query: 'wells score for PE, heart rate 110, previous DVT' }).tile, 'wells-pe');
+  assert.equal(answerQuery({ query: 'Waist-to-Height Ratio (WHtR) Waist circumference 90 cm, Height 170 cm' }).tile, 'whtr', '"ratio" alone does not name P/F Ratio');
+});

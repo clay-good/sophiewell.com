@@ -565,8 +565,13 @@ export function answerQuery(args = {}) {
       hint: `"${elsewhere.name}" is a Sophie Well tool at ${SITE_TOOL_BASE}${elsewhere.id}/, but it is not a callable calculator here -- it generates a document, reads a reference table, or depends on the current time.`,
     };
   }
+  // A hand-written template answers whatever it parses, so "Fatty Liver Index ... BMI 30" computed BMI and
+  // "Anion Gap & Delta-Delta ..." computed the plain anion gap. When the query names calculators in full,
+  // the most specific of them (a name no other named name contains) are the ones asked about; a template
+  // for anything else gives way to them.
+  const named = namedInFull(q);
   const hit = queryCompute(q);
-  if (!hit) return answerQueryGeneric(q);
+  if (!hit || (named.length && !named.some((n) => n.id === hit.tile))) return answerQueryGeneric(q, named);
   const out = {
     query: q, matched: true, valid: true, tile: hit.tile, label: hit.label, value: hit.value, unit: hit.unit, text: hit.text, inputs: hit.inputs,
   };
@@ -620,9 +625,38 @@ function queryNamesTile(query, entry) {
 // returns what it DID work out -- the calculator, the inputs it recovered, and
 // the ones it still needs -- which is strictly more useful than NO_MATCH and
 // saves the agent the discovery round trip either way.
-function answerQueryGeneric(q) {
+// The calculators the query names in full, less any whose name another named name contains ("Anion
+// Gap" inside "Anion Gap & Delta-Delta", "DIPSS" inside "DIPSS-Plus"): { id, name }. Unrelated names that
+// are both present (a field label can be another calculator's name) all stay, and the ranker orders them.
+// Where in the query a calculator's name is complete: the latest first appearance of its words of three
+// letters or more. "Wells Score for PE, ..., previous DVT" completes Wells PE at "for" and Wells DVT only at
+// "DVT", so the one written as a name comes first.
+function firstMention(q, name) {
+  const lq = q.toLowerCase();
+  const at = [...nameWords(name)].filter((w) => w.length >= 3).map((w) => lq.search(new RegExp(`\\b${w}\\b`))).filter((i) => i >= 0);
+  return at.length ? Math.max(...at) : Infinity;
+}
+const nameWords = (name) => new Set(String(name).toLowerCase().match(/[a-z0-9]+/g) || []);
+// Stricter than namesInFull for this one decision: every word of the name, however short, so "wells
+// score for DVT" does not also name "Wells Score for PE", "Subaxial ... (SLIC)" does not name the "AO
+// Spine" classification, and any query with "ratio" in it does not name "P/F Ratio".
+function namesStrictly(q, name) {
+  const words = new Set(q.toLowerCase().match(/[a-z0-9]+/g) || []);
+  const need = [...nameWords(name)];
+  return need.length > 0 && need.every((w) => words.has(w));
+}
+function namedInFull(q) {
+  const hits = allCalculators().filter((e) => namesStrictly(q, e.name)).map((e) => ({ id: e.id, name: e.name, words: nameWords(e.name) }));
+  const inside = (a, b) => a !== b && a.words.size < b.words.size && [...a.words].every((w) => b.words.has(w));
+  return hits.filter((a) => !hits.some((b) => inside(a, b))).map(({ id, name }) => ({ id, name }));
+}
+
+function answerQueryGeneric(q, named = namedInFull(q)) {
   const found = findCalculator({ query: q, limit: 5 });
-  const candidates = (found && Array.isArray(found.candidates)) ? found.candidates : [];
+  const ranked = (found && Array.isArray(found.candidates)) ? found.candidates : [];
+  // The calculators the query names in full are always in the running: a query carrying many values
+  // ("MADRS item 1 2, item 2 2, ...") can push the named one out of the ranker's top five.
+  const candidates = [...named.filter((n) => !ranked.some((c) => c.id === n.id)).map((n) => ({ id: n.id, name: n.name })), ...ranked];
   if (!candidates.length) {
     return { query: q, matched: false, code: 'NO_MATCH', hint: 'No calculator matches this query. Try find_calculator with different words.' };
   }
@@ -641,11 +675,12 @@ function answerQueryGeneric(q) {
   // find_calculator already promotes by: "Hy's Law (drug-induced liver injury)" scored RUCAM higher on
   // its distinctive words, settled there, and then reported no match because RUCAM was not named.
   const scored = candidates
-    // `full` is the number of name words a full naming covers, so the longer of two names the query
-    // carries in full wins ("DIPSS-Plus (...)" also names "DIPSS (...)" in full).
-    .map((c) => ({ c, full: namesInFull(q, c.name) ? (String(c.name).toLowerCase().match(/[a-z0-9]+/g) || []).length : 0, ...nameMatchFor(q, getCalculator(c.id)) }))
-    .filter((x) => x.strong)
-    .sort((a, b) => (b.full - a.full) || (b.score - a.score));
+    // `full`: named in full and not contained in another named name (see namedInFull).
+    .map((c) => ({ c, full: named.some((n) => n.id === c.id) ? 1 : 0, pos: firstMention(q, c.name), ...nameMatchFor(q, getCalculator(c.id)) }))
+    .filter((x) => x.strong || x.full)
+    // Of two names both carried in full, the one written first is the subject: a value's label can be
+    // another calculator's name ("Cardiac Power Output (CPO) Mean arterial pressure 80 ...").
+    .sort((a, b) => (b.full - a.full) || (b.full && a.full ? a.pos - b.pos : 0) || (b.score - a.score));
   const bestScore = scored.length ? scored[0].score : 0;
 
   // Two calculators the query names equally well is not a tie to break, it is a
@@ -655,7 +690,7 @@ function answerQueryGeneric(q) {
   // question the caller did not ask. The website refuses the same way
   // (spec-v756); so should this.
   if (bestScore > 0) {
-    const tied = scored.filter((x) => x.full === scored[0].full && x.score >= bestScore * 0.999);
+    const tied = scored.filter((x) => x.full === scored[0].full && (!x.full || x.pos === scored[0].pos) && x.score >= bestScore * 0.999);
     if (tied.length > 1) {
       return {
         query: q,
