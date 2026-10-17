@@ -652,6 +652,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- A yes/no criterion the question says no to anywhere stays blank: "vte prophylaxis risk ..., no prior VTE"
+  had ticked Prior VTE from the "vte" in the search words. A "no" before one item no longer blanks a
+  neighbor that only shares a word with it, and items sharing a first word ("Change in size", "Change in
+  color") no longer cancel each other. The start of a range ("power grade 0 to 5") is not read as a value.
+- answer_query: when two calculators' names fit a question equally, the one that reads at least two of its
+  values answers ("nottingham grade tubule formation 1, pleomorphism 2, mitotic count score 3"); a calculator
+  chosen on a word from a value's label that reads none of them gives way to one that does ("npi tumor size
+  2.5 cm, histologic grade 2" had come back with no match).
 - Values typed beside their label now fill fields whose names carry digits ("paco2 30", "hco3 14", SpO2,
   FiO2) and "ph 7.3"; a blood gas written the usual way had filled almost nothing. A field that only
   recognizes a unit no longer takes a number another field read by name. "abg" and "arterial blood gas"

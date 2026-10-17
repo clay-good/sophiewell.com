@@ -672,6 +672,12 @@ function maskName(q, name) {
   return q.replace(re, (m) => ' '.repeat(m.length));
 }
 
+// How many of the query's values a calculator's own fields read, with its name masked as below.
+function readsOf(q, id) {
+  const e = getCalculator(id);
+  return e ? Object.keys(queryFill(maskName(q, e.name), toIndexRows(e.fields)).filled).length : 0;
+}
+
 function answerQueryGeneric(q, named = namedInFull(q)) {
   const found = findCalculator({ query: q, limit: 5 });
   const ranked = (found && Array.isArray(found.candidates)) ? found.candidates : [];
@@ -714,7 +720,21 @@ function answerQueryGeneric(q, named = namedInFull(q)) {
   // question the caller did not ask. The website refuses the same way
   // (spec-v756); so should this.
   if (bestScore > 0) {
-    const tied = scored.filter((x) => x.full === scored[0].full && (!x.full || x.pos === scored[0].pos) && x.score >= bestScore * 0.999);
+    let tied = scored.filter((x) => x.full === scored[0].full && (!x.full || x.pos === scored[0].pos) && x.score >= bestScore * 0.999);
+    // The values can settle what the name cannot. "nottingham grade tubules 1 pleomorphism 2 mitotic count
+    // score 3" names the histologic grade and the Nottingham Prognostic Index equally, but only the grade
+    // has those three inputs. A calculator that reads at least two of the query's values, more than any
+    // other tied one reads, is the one being asked about; anything less stays a question.
+    if (tied.length > 1) {
+      const reads = tied.map((x) => readsOf(q, x.c.id));
+      const most = Math.max(...reads);
+      if (most >= 2 && reads.filter((n) => n === most).length === 1) {
+        const pick = tied[reads.indexOf(most)];
+        scored.splice(scored.indexOf(pick), 1);
+        scored.unshift(pick);
+        tied = [pick];
+      }
+    }
     if (tied.length > 1) {
       return {
         query: q,
@@ -726,7 +746,16 @@ function answerQueryGeneric(q, named = namedInFull(q)) {
       };
     }
   }
-  const top = scored.length ? scored[0].c : candidates[0];
+  let top = scored.length ? scored[0].c : candidates[0];
+  // A calculator picked on a shared word, not named in full, that reads none of the values is a guess the
+  // values contradict: in "npi tumor size 2.5 cm, histologic grade 2" the label word "histologic" made the
+  // histologic grade the strongest name, it read nothing, and the query came back NO_MATCH while the
+  // ranker's first pick, the prognostic index, reads both values. The first candidate that reads at least
+  // two of them answers instead. A calculator the query names in full is never second-guessed.
+  if (!(scored.length && scored[0].full) && !readsOf(q, top.id)) {
+    const alt = candidates.find((c) => c.id !== top.id && readsOf(q, c.id) >= 2);
+    if (alt) top = alt;
+  }
 
   const entry = getCalculator(top.id);
   const rows = toIndexRows(entry && entry.fields);

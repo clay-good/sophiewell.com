@@ -384,3 +384,17 @@ test('choices and yes/no: longest value, trailing and in-name negation, terms do
   const surfaces = Array.from({ length: 4 }, (_, i) => ({ d: `s${i + 1}`, k: 'enum', l: `Surface ${i + 1} ICDAS code`, v: ['0', '1', '2', '3', '4', '5', '6'] }));
   assert.deepEqual(queryFill('surface 1 icdas code 0, surface 2 icdas code 2, surface 3 icdas code 3, surface 4 icdas code 1', surfaces).filled, { s1: '0', s2: '2', s3: '3', s4: '1' });
 });
+
+// Found October 17, 2026 by writing every page example after each curated search phrase.
+test('a criterion negated anywhere stays unfilled, and the start of a range is not a reading', () => {
+  const vte = [{ d: 'vte', k: 'bool', l: 'Prior VTE (3)' }];
+  assert.deepEqual(queryFill('vte prophylaxis risk, active cancer, no prior VTE', vte).filled, {}, 'the phrase\'s "vte" does not outvote "no prior VTE"');
+  assert.deepEqual(queryFill('vte prophylaxis risk, prior VTE', vte).filled, { vte: true });
+  const sizes = [{ d: 'size', k: 'bool', l: 'Change in size' }, { d: 'shape', k: 'bool', l: 'Change in shape' }, { d: 'color', k: 'bool', l: 'Change in color' }];
+  assert.deepEqual(queryFill('change in size, no change in shape, change in color', sizes).filled, { size: true, color: true },
+    'a negated item that only shares a word does not veto its neighbors');
+  const grade = [{ d: 'g', k: 'enum', l: 'MRC muscle-power grade', v: ['0', '1', '2', '3', '4', '5'] }];
+  assert.deepEqual(queryFill('power grade 0 to 5, grade 3', grade).filled, { g: '3' });
+  assert.deepEqual(queryFill('grade 2-4', grade).filled, {}, 'a hyphenated range is not a value');
+  assert.deepEqual(queryFill('grade 4', grade).filled, { g: '4' });
+});
