@@ -353,3 +353,19 @@ test('spaced dashes and colons separate a label; subscript digits are digits; a 
   assert.deepEqual(queryFill('Group 1 : events 141', groups).filled, { a: 141 });
   assert.deepEqual(queryFill('Group 1 : events 141, Group 2 : events 928', groups).filled, { a: 141, c: 928 });
 });
+
+// Found October 17, 2026 once the example sweep compared recovered inputs by dom key (it had compared by
+// argument name, which skipped most tools): a number inside a word and a label's own number were read.
+test('a number inside a word, or a word-and-number pair the label prints, is never the value', () => {
+  const cd4 = [{ d: 'cd4', k: 'number', l: 'CD4 count, cells/mm³', r: 1 }];
+  assert.deepEqual(queryFill('CD4 count, cells/mm³ 150', cd4).filled, {}, 'not 4');
+  assert.deepEqual(queryFill('cd4 count 150', cd4).filled, { cd4: 150 });
+  const il6 = [{ d: 'il6', k: 'number', l: 'IL-6, pg/mL' }, { d: 'sofa', k: 'number', l: 'SOFA score', r: 1 }];
+  assert.deepEqual(queryFill('SOFA score 6, IL-6 0', il6).filled.il6, undefined, 'not 6');
+  const step = [{ d: 'fr', k: 'number', l: 'Final rate, step 12', u: 'mL/h', r: 1 }];
+  assert.deepEqual(queryFill('final rate, step 12 80', step).filled, {}, 'not 12');
+  const scale = [{ d: 's', k: 'number', l: 'Severity (0-10)', r: 1 }];
+  assert.deepEqual(queryFill('severity 10', scale).filled, { s: 10 }, 'a value equal to a range end still fills');
+  const pop = [{ d: 'c', k: 'number', l: 'Point C', u: 'cm', r: 1 }];
+  assert.deepEqual(queryFill('point c -2 cm', pop).filled, { c: -2 }, 'a minus sign after a space still reads');
+});
