@@ -13242,6 +13242,22 @@
       ],
       "tile": "pediatric-administered-activity",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "potentially inappropriate"
+      ],
+      "tile": "beers-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "inappropriate prescribing",
+        "prescribing omissions",
+        "polypharmacy"
+      ],
+      "tile": "stopp-start-v3",
+      "audience": "clinicians"
     }
   ]
 }

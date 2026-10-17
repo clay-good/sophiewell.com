@@ -905,6 +905,7 @@ import * as trialRecordRetentionV1635 from '../../lib/trial-record-retention-v16
 import * as atHarm10V1634 from '../../lib/at-harm10-v1634.js';
 import * as adeCostAvoidanceV1634 from '../../lib/ade-cost-avoidance-v1634.js';
 import * as anticholinergicListScoreV1634 from '../../lib/anticholinergic-list-score-v1634.js';
+import * as stoppStartV3V1634 from '../../lib/stopp-start-v3-v1634.js';
 import * as stoppfallCheckV1634 from '../../lib/stoppfall-check-v1634.js';
 import * as pedsHeparinNomogramV1634 from '../../lib/peds-heparin-nomogram-v1634.js';
 import * as warfarinInrOutOfRangeV1634 from '../../lib/warfarin-inr-out-of-range-v1634.js';
@@ -2026,6 +2027,7 @@ const MODULES = {
   'at-harm10-v1634.js': atHarm10V1634,
   'ade-cost-avoidance-v1634.js': adeCostAvoidanceV1634,
   'anticholinergic-list-score-v1634.js': anticholinergicListScoreV1634,
+  'stopp-start-v3-v1634.js': stoppStartV3V1634,
   'stoppfall-check-v1634.js': stoppfallCheckV1634,
   'peds-heparin-nomogram-v1634.js': pedsHeparinNomogramV1634,
   'warfarin-inr-out-of-range-v1634.js': warfarinInrOutOfRangeV1634,

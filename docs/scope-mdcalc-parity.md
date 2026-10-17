@@ -956,3 +956,5 @@ experience**.
 > v1635, UGT1A1 Genotype and the Irinotecan Label — [spec-v1635](spec-v1635.md), which adds `ugt1a1-irinotecan-label` — is 2303.)
 
 > v1635, Pediatric Radiopharmaceutical Administered Activity — [spec-v1635](spec-v1635.md), which adds `pediatric-administered-activity` — is 2304.)
+
+> v1634, STOPP/START Version 3 Screen — [spec-v1634](spec-v1634.md), which adds `stopp-start-v3` — is 2305.)

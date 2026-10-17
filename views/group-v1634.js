@@ -2,7 +2,7 @@
 // or-rr-to-nnt, disproportionality-2x2, icer-dominance, liverpool-adr-causality, ncc-merp-index,
 // fda-adverse-event-report-clock, riosord, relative-infant-dose, badri-adr-risk, stoppfall-check,
 // peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
-// ade-cost-avoidance, anticholinergic-list-score.
+// ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -21,6 +21,7 @@ import * as NJ from '../lib/ninja-nephrotoxin-exposure-v1634.js';
 import * as AH from '../lib/at-harm10-v1634.js';
 import * as CA from '../lib/ade-cost-avoidance-v1634.js';
 import * as AL from '../lib/anticholinergic-list-score-v1634.js';
+import * as SS from '../lib/stopp-start-v3-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -79,7 +80,48 @@ function show(r, o) {
   note(o, r.note);
 }
 
+// STOPP/START: one fieldset of tick boxes per body system, drugs first, then conditions.
+function tickGroups(root, kind, items, prefix) {
+  const ids = [];
+  const systems = [...new Set(items.map((t) => t.system))];
+  for (const sys of systems) {
+    const fs = el('fieldset', {}, [el('legend', { text: `${kind}: ${sys}` })]);
+    for (const t of items.filter((x) => x.system === sys)) {
+      const id = `${prefix}${t.value}`;
+      const wrap = el('p');
+      wrap.appendChild(el('input', { id, type: 'checkbox' }));
+      wrap.appendChild(document.createTextNode(' '));
+      wrap.appendChild(el('label', { for: id, text: t.text }));
+      fs.appendChild(wrap);
+      ids.push(id);
+    }
+    root.appendChild(fs);
+  }
+  return ids;
+}
+
 export const renderers = {
+  // spec-v1634 tool 12: STOPP/START version 3. Matches are quoted whole; nothing in their wording is tested.
+  'stopp-start-v3'(root) {
+    numField(root, 'Age, years (65 or older)', 'ss3-age', '');
+    numField(root, 'eGFR, mL/min/1.73 m² (optional, for the kidney criteria)', 'ss3-egfr', '');
+    const dIds = tickGroups(root, 'Drugs', SS.DRUGS, 'ss3-d-');
+    const cIds = tickGroups(root, 'Conditions', SS.CONDITIONS, 'ss3-c-');
+    const o = out(); root.appendChild(o);
+    const ticked = (items, prefix) => items.filter((t) => { const n = document.getElementById(`${prefix}${t.value}`); return Boolean(n && n.checked); }).map((t) => t.value);
+    wire(['ss3-age', 'ss3-egfr', ...dIds, ...cIds], () => safe(o, () => {
+      const r = SS.stoppStartV3({ ageYears: val('ss3-age'), egfr: val('ss3-egfr'), drugs: ticked(SS.DRUGS, 'ss3-d-'), conditions: ticked(SS.CONDITIONS, 'ss3-c-') });
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Result', value: r.bandLabel }]);
+      for (const [title, rows] of [['Potentially inappropriate (STOPP)', r.stopp], ['Potential omissions (START)', r.start]]) {
+        if (!rows.length) continue;
+        o.appendChild(el('h2', { text: title }));
+        list(o, rows.map((x) => `${x.id} (${x.sectionTitle}): ${x.text}`));
+      }
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
   'or-rr-to-nnt'(root) {
     const pairs = [['orn-measure', 'measure'], ['orn-ratio', 'ratio'], ['orn-risk', 'baselineRisk'], ['orn-lower', 'lower'], ['orn-upper', 'upper']];
     selectField(root, 'Effect measure', 'orn-measure', ON.MEASURES);

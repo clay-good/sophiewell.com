@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:8f469ebd-cb75-5121-8f22-93dcbe59b29e",
+  "serialNumber": "urn:uuid:be9c2415-7d1c-5f59-84d1-5e2b3bdee70e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-16T23:41:49.601Z",
+    "timestamp": "2026-10-16T23:55:55.001Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2304 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2305 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fe15b9f9d38f176cce87066795097e09d7899db0690f4e58ac87f4795b1bb8ad"
+          "content": "88f0436d8e5c4b71a8689cd10d563a707d2304bbdc9438d6cef9a66eb12f111c"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150356"
+          "value": "150400"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2ac6ab54650a33f72d6a33d2c18895bd7e12c8045a78d97d1badc5f17b482bc5"
+          "content": "9d6e47192bb571c209f842b9fc37e25a4ec6bf357b80b2dd96e92593902aea9f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "634183"
+          "value": "634317"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4ded773b404f19f68f74d02f416233635dfe577982dbebe24799a80ee9f09add"
+          "content": "23d5b039534a84cf217600ff3b690612efe05c6889e60fc43b7a541f61e28145"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "290064"
+          "value": "290189"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "60dd062808b855a953e037edab3cc19857bc870a579806e9016bb333faf3ecb8"
+          "content": "8782b1e85f1965a515cc8a6cc321c678fb9b264c02bd924496b1c70f754674e3"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140697"
+          "value": "140745"
         }
       ]
     },
@@ -17387,7 +17387,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8b3d66b3bd01e3deff1253a139cfef666f2a71707e6c9c1f39bea0eb284e9054"
+          "content": "e2c750da5f9adfd2fa7c27565c4a94afc76c3cf2d654a464bedb23dbec3a2a69"
         }
       ],
       "properties": [
@@ -17397,7 +17397,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3015823"
+          "value": "3016569"
         }
       ]
     },
@@ -27982,6 +27982,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "13053"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/stopp-start-v3-v1634.js",
+      "type": "file",
+      "name": "lib/stopp-start-v3-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f98faf907aa6e44586a11bd938ca7f389b2703e532a5a58dc64bde8c42d0ada6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "75226"
         }
       ]
     },
@@ -56777,6 +56798,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/stopp-start-v3-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/stopp-start-v3-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dfd220821c6967525c752726c7e5d6c9e2c5d3c27eb0e3c37f8c6edee1492ecd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1512"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/stoppfall-check-v1634.js",
       "type": "file",
       "name": "mcp/adapters/stoppfall-check-v1634.js",
@@ -60122,7 +60164,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "388315c68fb01b63d4dcd5dc15cdba8a890389c122b751816c464c0b55aaad2a"
+          "content": "4d91baf465a3be46cc7485dbe52bddf4b331c25e8443c0d8dcc128b81853dc97"
         }
       ],
       "properties": [
@@ -60132,7 +60174,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "162075"
+          "value": "162190"
         }
       ]
     },
@@ -64742,7 +64784,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a24a784f3e92d2fd32eb35c6fb948b5c47620a53f3eaf5a67368951247bb790d"
+          "content": "e40baf8786b0740c52b9f59b17e60b292073d219dc46e9500cc75913f684cb04"
         }
       ],
       "properties": [
@@ -64752,7 +64794,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "14483"
+          "value": "16708"
         }
       ]
     },
@@ -96970,6 +97012,7 @@
         "urn:sophiewell:file:source:lib/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:source:lib/step-therapy-v1502.js",
         "urn:sophiewell:file:source:lib/sternbach-v589.js",
+        "urn:sophiewell:file:source:lib/stopp-start-v3-v1634.js",
         "urn:sophiewell:file:source:lib/stoppfall-check-v1634.js",
         "urn:sophiewell:file:source:lib/storage-excursion-summary-v1630.js",
         "urn:sophiewell:file:source:lib/strasberg-bdi-v348.js",
@@ -99291,6 +99334,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/step-therapy-v1502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sternbach-v589.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/stopp-start-v3-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stoppfall-check-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/storage-excursion-summary-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/strasberg-bdi-v348.js",
@@ -99555,7 +99599,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "8f469ebdcb750121"
+      "value": "be9c24157d1c0f59"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99567,7 +99611,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3791"
+      "value": "3793"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

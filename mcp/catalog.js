@@ -1173,6 +1173,7 @@ import trialRecordRetentionV1635 from './adapters/trial-record-retention-v1635.j
 import atHarm10V1634 from './adapters/at-harm10-v1634.js';
 import adeCostAvoidanceV1634 from './adapters/ade-cost-avoidance-v1634.js';
 import anticholinergicListScoreV1634 from './adapters/anticholinergic-list-score-v1634.js';
+import stoppStartV3V1634 from './adapters/stopp-start-v3-v1634.js';
 import stoppfallCheckV1634 from './adapters/stoppfall-check-v1634.js';
 import pedsHeparinNomogramV1634 from './adapters/peds-heparin-nomogram-v1634.js';
 import warfarinInrOutOfRangeV1634 from './adapters/warfarin-inr-out-of-range-v1634.js';
@@ -2508,6 +2509,7 @@ const ADAPTER_MODULES = [
   ['at-harm10-v1634', atHarm10V1634],
   ['ade-cost-avoidance-v1634', adeCostAvoidanceV1634],
   ['anticholinergic-list-score-v1634', anticholinergicListScoreV1634],
+  ['stopp-start-v3-v1634', stoppStartV3V1634],
   ['stoppfall-check-v1634', stoppfallCheckV1634],
   ['peds-heparin-nomogram-v1634', pedsHeparinNomogramV1634],
   ['warfarin-inr-out-of-range-v1634', warfarinInrOutOfRangeV1634],
