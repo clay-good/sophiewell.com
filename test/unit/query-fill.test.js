@@ -311,3 +311,11 @@ test('digits inside a label word are part of its name; "pH" is a term; a unit gu
   assert.deepEqual(fieldTerms({ d: 'x', k: 'number', l: 'Creatinine above 2 adds 1 point' }).includes('2'), false);
   assert.ok(fieldTerms({ d: 'x', k: 'number', l: 'SpO2' }).includes('spo2'));
 });
+
+test('one filler word the label dropped may sit between name and value, from a closed list only', () => {
+  const rows = [{ d: 'score', k: 'number', l: 'Total coronary artery calcium  score', r: 1 }];
+  assert.deepEqual(queryFill('total coronary artery calcium score 250', rows).filled, { score: 250 });
+  const cr = [{ d: 'cr', k: 'number', l: 'Serum creatinine', u: 'mg/dL', r: 1 }];
+  assert.deepEqual(queryFill('creatinine level 1.4', cr).filled, { cr: 1.4 });
+  assert.deepEqual(queryFill('creatinine was checked twice 1.4', cr).filled, {}, 'not an open gap');
+});
