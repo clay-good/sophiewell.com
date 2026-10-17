@@ -660,6 +660,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   inside one field's labeled match no longer also fills a sibling.
 - A number inside a word ("CD4", "IL-6", "CC-0") or a number the label itself prints ("Final rate, step 12") is
   no longer read as the value typed after it; those fields stay blank rather than wrong.
+- Choices and yes/no answers read from a question: "very high" is no longer read as "high" (or "mg m2" as
+  "mg"); "history of PONV: no" and "no clinical and EEG improvement" are no longer read as yes; a
+  calculator's own name is not read as one of its criteria; and a label never spans two list items.
 - Agent answer_query: a calculator named in full is the one answered. Four were not (Hy's Law went to RUCAM;
   two names with a hyphen at a word's edge could not be matched; DIPSS-Plus tied with DIPSS).
 - Agent answer_query: when a question names a calculator and gives its values, that calculator answers, not a

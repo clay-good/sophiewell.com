@@ -665,6 +665,13 @@ function namedInFull(q) {
   return out;
 }
 
+function maskName(q, name) {
+  const words = String(name || '').toLowerCase().match(/[a-z0-9]+/g) || [];
+  if (words.length < 2) return q;
+  const re = new RegExp(words.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('[^a-z0-9]+'), 'i');
+  return q.replace(re, (m) => ' '.repeat(m.length));
+}
+
 function answerQueryGeneric(q, named = namedInFull(q)) {
   const found = findCalculator({ query: q, limit: 5 });
   const ranked = (found && Array.isArray(found.candidates)) ? found.candidates : [];
@@ -727,7 +734,10 @@ function answerQueryGeneric(q, named = namedInFull(q)) {
     return { query: q, matched: false, code: 'NO_MATCH', tile: top.id, hint: `Closest match is "${top.id}". Call describe_calculator for its inputs, then compute_calculator.` };
   }
 
-  const { filled, missing } = queryFill(q, rows);
+  // The calculator's own name is not a statement about the patient: "Apfel Simplified PONV Score ... no
+  // History of PONV" read the PONV in the name as the criterion, un-negated. Mask the name where the
+  // query writes it out (its words in order) before reading values.
+  const { filled, missing } = queryFill(maskName(q, entry && entry.name), rows);
   if (!Object.keys(filled).length) {
     // No values means no corroboration, and the ranker always returns its best
     // guess however weak -- "what is the meaning of life" comes back as

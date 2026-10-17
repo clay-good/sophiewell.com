@@ -369,3 +369,18 @@ test('a number inside a word, or a word-and-number pair the label prints, is nev
   const pop = [{ d: 'c', k: 'number', l: 'Point C', u: 'cm', r: 1 }];
   assert.deepEqual(queryFill('point c -2 cm', pop).filled, { c: -2 }, 'a minus sign after a space still reads');
 });
+
+// Found October 17, 2026 by writing every mixed page example (numbers, choices, yes/no) as a question.
+test('choices and yes/no: longest value, trailing and in-name negation, terms do not cross list items', () => {
+  const region = [{ d: 'r', k: 'enum', l: 'Risk region', v: ['low', 'moderate', 'high', 'very-high'] }];
+  assert.deepEqual(queryFill('risk region very high', region).filled, { r: 'very-high' });
+  assert.deepEqual(queryFill('risk region high', region).filled, { r: 'high' });
+  const unit = [{ d: 'u', k: 'enum', l: 'Dose unit', v: ['mg-m2', 'mg'] }];
+  assert.deepEqual(queryFill('dose unit mg m2', unit).filled, { u: 'mg-m2' });
+  const hx = [{ d: 'hx', k: 'bool', l: 'History of PONV or motion sickness' }];
+  assert.deepEqual(queryFill('history of ponv: no', hx).filled, {}, 'a trailing no is a no');
+  const both = [{ d: 'b', k: 'bool', l: 'Clinical and EEG improvement after IV antiseizure medication' }];
+  assert.deepEqual(queryFill('no clinical and EEG improvement after IV antiseizure medication', both).filled, {});
+  const surfaces = Array.from({ length: 4 }, (_, i) => ({ d: `s${i + 1}`, k: 'enum', l: `Surface ${i + 1} ICDAS code`, v: ['0', '1', '2', '3', '4', '5', '6'] }));
+  assert.deepEqual(queryFill('surface 1 icdas code 0, surface 2 icdas code 2, surface 3 icdas code 3, surface 4 icdas code 1', surfaces).filled, { s1: '0', s2: '2', s3: '3', s4: '1' });
+});

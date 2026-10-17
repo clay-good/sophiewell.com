@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c2ea962c8f1414da`
-Generated: 2026-10-17T08:17:15.936Z
+Build ID: `2f19c8bfc1cdb059`
+Generated: 2026-10-17T09:29:57.338Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1191,7 +1191,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/quantity-limit-check-v1502.js` | 3425 | `3d701792aaeb48680c638ab0d4bb96337f6e45b936f221c88ed8a6ad50a283aa` |
 | `lib/quantity-to-dispense-v1639.js` | 11207 | `5c2db989ddf90d2f33e2713e2cd798f849883fb82a9fc41e0011cfc4ddfadea9` |
 | `lib/query-compute.js` | 18609 | `ba68703b5e8cae2b887d6db070f1a7384f2b90bef9a8b6e50ea5a5e6aaafb086` |
-| `lib/query-fill.js` | 37050 | `20bca7ce734e4bf2d8b6d10058f35fc2aaba27e00c54bfce48f51f29d82d76ca` |
+| `lib/query-fill.js` | 39063 | `d14fcce800f05c6c687b5ebf2ca671f49a98c32d581475e8d9b28e5ebd229e12` |
 | `lib/quintero-ttts-v831.js` | 7169 | `8bd66030eb9be4038678fa55fed7bd436ac4d270b80ee4a39a3985be26909a48` |
 | `lib/rabies-ig-volume-v1636.js` | 5683 | `f9d2abd4ae9101477f4f328c482b15af8eb78cde365f605e2e89af3b10702378` |
 | `lib/rabies-state-lines-v1401.js` | 2168 | `0395cb44c93b8ab3cf5b96f9c075f2f8991f1cd0fcd896160187f4a844c23cf5` |
@@ -2904,7 +2904,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10616 | `7a2aa853195af4f25f5eae871bb586bb460aec75c9e0c3cb2aa5a510fd481219` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
-| `mcp/tools.js` | 62861 | `e1af8fcbdb27f3fcddf37788079f79a43d6f1e3795828afe5e4cb32a58201597` |
+| `mcp/tools.js` | 63472 | `87f14de6354dc39ec21ba60e7d045c736b0d1a4a07d7c009c02462523f80940f` |
 | `vendored/README.md` | 1874 | `308637ae66d2bf5f78f147a342362718809a7bdde38463b1ec2a5e72ef49fe79` |
 | `vendored/mammoth/LICENSE` | 1307 | `6663bbd049205d38a496ccacb412a151980b444627d38de218b3b809aef330f1` |
 | `vendored/mammoth/_vendored.md` | 3146 | `c61c3ab5cee45c4e3218cc7f7bc2a8509b0f99973942ec9ec1877a5543c921f7` |
