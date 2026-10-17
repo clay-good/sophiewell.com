@@ -656,6 +656,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   had ticked Prior VTE from the "vte" in the search words. A "no" before one item no longer blanks a
   neighbor that only shares a word with it, and items sharing a first word ("Change in size", "Change in
   color") no longer cancel each other. The start of a range ("power grade 0 to 5") is not read as a value.
+- A question that opens with a curated search phrase goes to that phrase's calculator even when a value's
+  label is another calculator's name ("zosyn, eGFR 40" had gone to the eGFR calculator, "panc 3 ... bmi 32" to
+  BMI, "anion gap closed dka ..." to the anion gap); 138 of 140 such phrase-and-values questions now land.
+- Two fields that read the same value give it to the one whose own words are in that clause: "carvedilol 25"
+  fills Carvedilol, not Carvedilol CR as well (both had been refused), and a label's head before its comma
+  names its field ("carvedilol cr 25").
 - answer_query: when two calculators' names fit a question equally, the one that reads at least two of its
   values answers ("nottingham grade tubule formation 1, pleomorphism 2, mitotic count score 3"); a calculator
   chosen on a word from a value's label that reads none of them gives way to one that does ("npi tumor size

@@ -398,3 +398,15 @@ test('a criterion negated anywhere stays unfilled, and the start of a range is n
   assert.deepEqual(queryFill('grade 2-4', grade).filled, {}, 'a hyphenated range is not a value');
   assert.deepEqual(queryFill('grade 4', grade).filled, { g: '4' });
 });
+
+test('a sibling whose own word is missing gives way, and a label\'s head before its comma names it', () => {
+  const f = [{ d: 'c', k: 'number', l: 'Carvedilol, total a day' }, { d: 'cr', k: 'number', l: 'Carvedilol CR, total a day' }];
+  assert.deepEqual(queryFill('carvedilol 25', f).filled, { c: 25 });
+  assert.deepEqual(queryFill('carvedilol cr 25', f).filled, { cr: 25 });
+  assert.deepEqual(queryFill('carvedilol 25, carvedilol cr 20', f).filled, { c: 25, cr: 20 });
+  const k = [{ d: 'a', k: 'number', l: 'Current creatinine' }, { d: 'b', k: 'number', l: 'Baseline creatinine' }];
+  assert.deepEqual(queryFill('creatinine 1.4', k).filled, {}, 'neither qualifier typed: still both refused');
+  const ldh = [{ d: 'pf', k: 'number', l: 'Pleural fluid LDH.' }, { d: 'uln', k: 'number', l: 'Upper limit of normal for serum LDH' }];
+  assert.equal(queryFill('pleural fluid protein 3.5, upper limit for serum LDH 250', ldh).filled.pf, undefined,
+    'words elsewhere in the question do not make a clause about serum LDH the pleural one');
+});

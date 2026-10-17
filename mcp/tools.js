@@ -662,7 +662,37 @@ function namedInFull(q) {
   if (routed && !withinName && namesStrictly(q, syn.phrase) && !out.some((n) => n.id === routed.id)) {
     out.push({ id: routed.id, name: routed.name, pos: firstMention(q, syn.phrase, 1) });
   }
+  // The curated phrase a question OPENS with names its calculator as well, even when it is not the table's
+  // best phrase: "zosyn, eGFR 40, ..." lost to the eGFR calculator, whose name a value's label carries and
+  // whose own phrase scored higher. A phrase at the very start cannot be a value's label, which is what the
+  // best-phrase-only rule above guards against.
+  const opening = openingPhrase(q);
+  const opened = opening && getCalculator(opening.tile);
+  // It counts as named at the very start: a calculator's name inside the phrase ("anion gap" in "anion gap
+  // closed dka") is the phrase being read, and completes before the phrase does.
+  if (opened && !hits.some((h) => [...nameWords(opening.phrase)].every((w) => h.words.has(w)))) {
+    const listed = out.find((n) => n.id === opened.id);
+    if (listed) listed.pos = -1;
+    else out.push({ id: opened.id, name: opened.name, pos: -1 });
+  }
   return out;
+}
+
+// The longest curated phrase the query begins with, word for word: { phrase, tile } or null.
+let openingIndex = null;
+function openingPhrase(q) {
+  if (!openingIndex) {
+    openingIndex = loadSynonymEntries().flatMap((e) => (e.phrases || []).map((p) => ({
+      phrase: p, tile: e.tile, words: String(p).toLowerCase().match(/[a-z0-9]+/g) || [],
+    }))).filter((x) => x.words.length && getCalculator(x.tile));
+  }
+  const words = String(q).toLowerCase().match(/[a-z0-9]+/g) || [];
+  let best = null;
+  for (const x of openingIndex) {
+    if (x.words.length > words.length || (best && x.words.length <= best.words.length)) continue;
+    if (x.words.every((w, i) => words[i] === w)) best = x;
+  }
+  return best && { phrase: best.phrase, tile: best.tile };
 }
 
 function maskName(q, name) {
@@ -779,8 +809,10 @@ function answerQueryGeneric(q, named = namedInFull(q)) {
     // "lee index"), and one shared word is not naming anything (spec-v806).
     const words = new Set(q.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean));
     const phrase = candidates[0].matchedPhrase || '';
-    const curated = top.id === candidates[0].id && candidates[0].why === 'synonym'
-      && phrase.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).every((w) => words.has(w));
+    const opening = openingPhrase(q);
+    const curated = (top.id === candidates[0].id && candidates[0].why === 'synonym'
+      && phrase.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).every((w) => words.has(w)))
+      || (opening && opening.tile === top.id);
     if (!queryNamesTile(q, entry) && !curated) {
       return { query: q, matched: false, code: 'NO_MATCH', hint: 'No calculator matches this query. Try find_calculator with different words.' };
     }
