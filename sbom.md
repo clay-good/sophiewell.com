@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c2030a4569a697c1`
-Generated: 2026-10-17T22:49:33.301Z
+Build ID: `d12193708cc4125a`
+Generated: 2026-10-17T23:13:36.984Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -550,7 +550,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/glickman-furcation-v725.js` | 3403 | `6dc7bff3e752fedfbef13df4e3cd885ecf4985ff739464355012b66f04471cad` |
 | `lib/global-ards-v570.js` | 16652 | `93ad467c00b2babdc58a0b3224591e338045491ebfc3c05413b9055f19aa4c03` |
 | `lib/glogau-photoaging-v475.js` | 3592 | `957bb3cfaf0c9727fa64db9b8ef00cfdc2c981eb8691eb31a1c93582c1247333` |
-| `lib/glp1-titration-check-v1632.js` | 13141 | `d1313dbc96ed88d1c29c96eea9d117cac78718a5ab47fbe7416f88d67d2290fa` |
+| `lib/glp1-titration-check-v1632.js` | 13174 | `305ed9ade4b15f5bb8aa055e56be36eab7b29dcf57b6ed60d9c911435159ba73` |
 | `lib/glucarpidase-dose-v1635.js` | 9074 | `b145445c9d044c14d5e88fd34018a6f2b1b2cfa1886e3089677bb863151b6f75` |
 | `lib/glucose-supply-quantity-check-v1638.js` | 12298 | `84f7b1ab011e6ed147acb9d4fd48471c27b08746808efd77520eb06de2d3a894` |
 | `lib/glycemia-risk-index-v1473.js` | 4592 | `a71f058c97e34499c7eed0374ac2b10b65a83d8ebc686b8e7aa0c447865ce9d5` |
@@ -858,7 +858,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3017890 | `93ea1d2212c0a5435cf1a50ff88944392dd2e58afc54de704cc9df6f7a298248` |
+| `lib/meta.js` | 3017953 | `fc8e78addf6b5dcee59dd751b416cb50a0a7661ea97f9e6b2bc75afa1497d474` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1280,7 +1280,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/sad-persons-v701.js` | 3994 | `b504e0fef9dbf7fea46baabcd029a0691726700319a7d08b9233dd0b175db6f1` |
 | `lib/sade-retraction-v451.js` | 3151 | `d77221ce115d599b6c79b5d9936ecd360673ca2c7c2d16a252fd86142dceb481` |
 | `lib/safe-haven-infant-check-v1394.js` | 8539 | `a7edaf8f350410e9889cc9aa69051e52c1457e0fd38defac912e7011030284bc` |
-| `lib/salt-base-factor-v1629.js` | 5310 | `7afcba1e4eab24847339b1b5e511dbdff39d05095a1fc86e98e9f030218267c1` |
+| `lib/salt-base-factor-v1629.js` | 7528 | `dd69eac500dade6e7ab7adf7926bc5173265bcab07a94b10b717f6feed4b85c3` |
 | `lib/sam-emergency-fluids-v1549.js` | 7089 | `1fa2a8278f928da97c16f043fbc7d37b49e4e260200906b2f6820d5ee533633c` |
 | `lib/sam-weight-gain-v1549.js` | 2723 | `2a004ede88abeb8c29098f263c1298800f2d609ffb29051139405d8081b2690c` |
 | `lib/samilson-prieto-v486.js` | 3057 | `1d1e462060923c8d7fcb673a597207b9cf52cccb96ea6f5f4e25549322e2098f` |
@@ -2660,7 +2660,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/sad-persons-v701.js` | 2104 | `f992b19f9e744df1abcecd4a37ebef807f095cf931d793fdfe02ef14023d363e` |
 | `mcp/adapters/sade-retraction-v451.js` | 1180 | `796a01bb7bb316e4a60a70657ceac37ca05f68c743bc4e17ed566b43d283ba07` |
 | `mcp/adapters/safe-haven-infant-check-v1394.js` | 1485 | `9ea1263f009668eb24b9f3b83cffcbe64ba53edb23c5a331e07bbcf495665a39` |
-| `mcp/adapters/salt-base-factor-v1629.js` | 1690 | `33408b7c47898385e0093e681ea442e4408b760be9ff1559ae9f8d5893073dfa` |
+| `mcp/adapters/salt-base-factor-v1629.js` | 1985 | `6835c56d61728494b64148fa652f44071553134e4e6e88e32ab08284bfcda7f1` |
 | `mcp/adapters/sam-emergency-fluids-v1549.js` | 1183 | `fd01736ee3c31e651969a2586d514c9215b251f1c0860312ca6b4f921e896b9e` |
 | `mcp/adapters/sam-weight-gain-v1549.js` | 1036 | `e7fdc1d15876955d974bb424f75192449b4ffea48f31ef7632596bd2f5c454ca` |
 | `mcp/adapters/samilson-prieto-v486.js` | 1204 | `e532a7970fa6eba0e589f739d4e8076906d845553e201be3a02a4b5ba11018e5` |
@@ -3112,7 +3112,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1603.js` | 7098 | `f74b3fd9569ae95a0df44972a0a68738c120179b054d9a76016c4881011d2cd9` |
 | `views/group-v1604.js` | 29568 | `94dc26948d365146362dd13c52a893b4e9f754b1b8c37b93727c696efae5bc7e` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
-| `views/group-v1629.js` | 31151 | `178cff13db077e46646ada6ca64d99215d4ce16c2307c1f4d824d01fcc41ef9e` |
+| `views/group-v1629.js` | 31522 | `8b64c52451264c9cf2fe016d94a3f3fd9d00b38a1722de5ac23c81af2f67dbb6` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
 | `views/group-v1630.js` | 24554 | `10eb09cefcbe82860b8fd87d2dec411ab0e81534c09f894ae8d9fb786405847b` |
 | `views/group-v1631.js` | 25133 | `631267171752d0f5edbb4fd63b488aa421539f45e216632854efe4cf7f2eb0cd` |

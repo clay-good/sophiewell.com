@@ -382,14 +382,17 @@ export const renderers = {
   },
 
   'salt-base-factor'(root) {
-    const pairs = [['sb-af', 'aFormula'], ['sb-amw', 'aMw'], ['sb-an', 'aMoieties'], ['sb-bf', 'bFormula'], ['sb-bmw', 'bMw'], ['sb-bn', 'bMoieties'], ['sb-qty', 'quantity'], ['sb-of', 'quantityOf']];
-    note(root, 'Form A and form B are two chemical forms of one drug: a salt and its base, or a hydrate and the anhydrous form. Give each a formula or a molecular weight.');
+    const pairs = [['sb-af', 'aFormula'], ['sb-amw', 'aMw'], ['sb-an', 'aMoieties'], ['sb-bf', 'bFormula'], ['sb-bmw', 'bMw'], ['sb-bn', 'bMoieties'], ['sb-la', 'labelA'], ['sb-lb', 'labelB'], ['sb-qty', 'quantity'], ['sb-of', 'quantityOf']];
+    note(root, 'Form A and form B are two chemical forms of one drug: a salt and its base, or a hydrate and the anhydrous form. Give each a formula or a molecular weight, or the label\'s equivalency statement.');
     textField(root, 'Form A: formula', 'sb-af', 'e.g. C11H17N2NaO3');
     numField(root, 'Form A: or its molecular weight (g/mol)', 'sb-amw', '');
     numField(root, 'Form A: active moieties per formula unit (blank is 1)', 'sb-an', '');
     textField(root, 'Form B: formula', 'sb-bf', 'e.g. C11H18N2O3');
     numField(root, 'Form B: or its molecular weight (g/mol)', 'sb-bmw', '');
     numField(root, 'Form B: active moieties per formula unit (blank is 1)', 'sb-bn', '');
+    // The label's "X mg of salt equivalent to Y mg of base" outranks a computed factor (spec-v1629 tool 6).
+    numField(root, 'Label equivalency: amount of form A (optional)', 'sb-la', 'e.g. 50');
+    numField(root, 'Label equivalency: amount of form B it equals', 'sb-lb', 'e.g. 40.1');
     numField(root, 'Quantity to convert (optional)', 'sb-qty', '');
     selectField(root, 'The quantity is a weight of', 'sb-of', SB.QUANTITY_OF);
     const o = out(); root.appendChild(o);

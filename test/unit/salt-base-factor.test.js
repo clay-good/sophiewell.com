@@ -42,3 +42,17 @@ test('the moiety count taken as 1 is stated; refusals', () => {
   assert.match(sb({ aMw: 500, bMw: 200, quantity: 5 }).message, /Choose which form the quantity is a weight of/);
   assert.match(sb({ aMw: 500, bMw: 200 }).note, /label prints its own equivalency statement/);
 });
+
+// spec-v1629 tool 6 note: the label's equivalency statement outranks a computed factor and is its own input.
+test('the label equivalency statement is the factor used, with the computed one shown beside it', async () => {
+  const { saltBaseFactor } = await import('../../lib/salt-base-factor-v1629.js');
+  const onlyLabel = saltBaseFactor({ labelA: '50', labelB: '40.1', quantity: '100', quantityOf: 'b' });
+  assert.equal(onlyLabel.basis, 'label');
+  assert.equal(onlyLabel.factorAoverB, 1.24688);
+  assert.equal(onlyLabel.quantityA, 124.688);
+  const both = saltBaseFactor({ labelA: '50', labelB: '40.1', aMw: '467.6', bMw: '375.3' });
+  assert.equal(both.factorAoverB, 1.24688, 'the label wins');
+  assert.equal(both.factorFromFormulas, 1.24594);
+  assert.equal(saltBaseFactor({ labelA: '50' }).valid, false, 'one label number alone is refused');
+  assert.equal(saltBaseFactor({ aMw: '467.6', bMw: '375.3' }).basis, 'formulas');
+});

@@ -652,6 +652,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- GLP-1 titration check points a missed dose to the Missed Dose tool instead of saying it is not covered.
+  Alligation links the ethanol proof tool and the buffer pH tool links molecular weight.
+- Salt and base conversion factor takes the label's own equivalency statement (its two amounts) and uses
+  it in place of the computed factor, showing the computed one beside it.
 - IV acetylcysteine has a UK choice: the MHRA's authorised three-bag regimen with its 110 kg ceiling weight,
   named and linked. The US Acetadote label's fixed dose at 100 kg stays the default.
 - eGFR suite: with a height entered, its Cockcroft-Gault row also gives the clearance on ideal and adjusted

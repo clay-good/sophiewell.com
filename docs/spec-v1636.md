@@ -856,7 +856,7 @@ Other sources:
 
 | Backfill | State |
 |---|---|
-| 1. `nac-dosing` | Built under [spec-v1641](spec-v1641.md) row 2. The 110 kg jurisdiction switch is not built. |
+| 1. `nac-dosing` | Built under [spec-v1641](spec-v1641.md) row 2. The 110 kg jurisdiction switch was added on October 17, 2026 as a UK choice citing MHRA's January 2017 Drug Safety Update. |
 | 2. `co-cn-antidote` | Text corrected under spec-v1641 row 1. Built October 12, 2026: an adult or child choice and a child's weight give the NITHIODOTE volumes (0.2 mL/kg and 1 mL/kg with the 10 mL and 50 mL ceilings), the half-dose repeat, and the CYANOKIT adult dose; for a child the label's 70 mg/kg statement is shown uncapped and marked as not a labeled dose. Both labels re-read. The page has no agent-facing adapter yet. |
 | 3. `methemoglobin` | Built October 12, 2026 on PROVAYBLUE (American Regent, version 28): with a weight, 1 mg/kg in mg and mL at 5 mg/mL; a single dose at an eGFR of 15 to 59; no dose under 15 (the label states none) or in G6PD deficiency (contraindicated). With kidney function not entered, both statements are shown. |
 | 4. `naloxone` | Built October 12, 2026: two-thirds of the reversing bolus per hour (Goldfrank 1986, abstract re-read; a computer simulation from ten volunteers) and mL/hour at the Hospira label's 0.004 mg/mL (version 35) and at the reader's own concentration. |
