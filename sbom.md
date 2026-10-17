@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1af0657ade2bd4e6`
-Generated: 2026-10-17T02:03:39.180Z
+Build ID: `6874bbbfe1649f14`
+Generated: 2026-10-17T03:55:05.069Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -27,7 +27,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 |---|---:|---|
 | `index.html` | 150473 | `ac977c4cb54f986e24fca97c74762c42c0eb064d231fa88c7e8f9e300a24d668` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 634483 | `63fa727548c04d157fc704e582416e328bc362662266e7438524b471fd0bffc1` |
+| `app.js` | 634532 | `5d36d2f0a21ab00b166b386180f566dd815aef8de0a27e403e320ac59ac2a33b` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -1169,7 +1169,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/print.js` | 4948 | `b94c3f3322dbee349c43f11ee513bf80e2b7d63ee8508423bfc64ca8111e3df4` |
 | `lib/private-fields.js` | 1173 | `36470d2558faf3d9493c0f110536c9b14928725e0e755aa90495a433b92493f0` |
 | `lib/prognostic-v231.js` | 7745 | `656bc7330019dc7bcc842abdf695a2479b2720bc1ccff858e7fd38357173fbf5` |
-| `lib/prompt.js` | 27570 | `14035e7e8d1537ae3975760cecf4d920e6df8830191cca1d4ce6855544ae0f6b` |
+| `lib/prompt.js` | 28339 | `875f9fe2b8283aaf38a5d3f7c2c732be2764a634dc284f439ca59f5daca2173e` |
 | `lib/propkd-v564.js` | 12565 | `a92acd4c8f065df50dcfffd0ad8dde4a6d1a6a9dddf8118bc4351307633d5c25` |
 | `lib/prostate-health-index-v714.js` | 3788 | `c73d17188461e047dbf1658447de06c9474dda8ff88e9b92b13845d53d2561a1` |
 | `lib/proteins-v274.js` | 4191 | `239832f2b739a3113615a0fc42554d2c89acbe52cfb6eba913c5992113d483f7` |
@@ -2904,7 +2904,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10616 | `7a2aa853195af4f25f5eae871bb586bb460aec75c9e0c3cb2aa5a510fd481219` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
-| `mcp/tools.js` | 57295 | `c01b6326ee8753e4338c9422025b5aa46baaea482690421a2144217fae1fb058` |
+| `mcp/tools.js` | 57407 | `f0da291c56f76ffceacff0e60a44534d423fc6e9f68e0e322794cd6f3733d7bd` |
 | `vendored/README.md` | 1874 | `308637ae66d2bf5f78f147a342362718809a7bdde38463b1ec2a5e72ef49fe79` |
 | `vendored/mammoth/LICENSE` | 1307 | `6663bbd049205d38a496ccacb412a151980b444627d38de218b3b809aef330f1` |
 | `vendored/mammoth/_vendored.md` | 3146 | `c61c3ab5cee45c4e3218cc7f7bc2a8509b0f99973942ec9ec1877a5543c921f7` |

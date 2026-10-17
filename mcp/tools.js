@@ -16,7 +16,7 @@ import {
 // agent tell decision-support from administrative math.
 function disclaimerFor(e) { return e.clinical ? DISCLAIMER : ADMIN_DISCLAIMER; }
 function domainOf(e) { return e.clinical ? 'clinical' : 'administrative'; }
-import { resolvePromptRanked, rankableWords } from '../lib/prompt.js';
+import { resolvePromptRanked, rankingQuery } from '../lib/prompt.js';
 import { buildNameCounts, nameMatch, namesInFull } from '../lib/name-match.js';
 import { corpusDesc } from '../lib/search-corpus.js';
 import { buildRelatedIndex, pickRelated } from '../lib/related.js';
@@ -462,7 +462,8 @@ export function findCalculator(args = {}) {
   // competing with the name for the match.
   // Rank a few beyond the caller's limit so the name pass below can promote a
   // tile the token ranker put just out of reach, then trim back to `limit`.
-  const ranked = resolvePromptRanked(rankableWords(q) || q, tiles, loadSynonymEntries(), 'all', Math.min(FIND_LIMIT_MAX, limit + PROMOTE_LOOKAHEAD));
+  // lib/prompt.js rankingQuery keeps a number that is part of a curated phrase ("usp 797 bud").
+  const ranked = resolvePromptRanked(rankingQuery(q, loadSynonymEntries()), tiles, loadSynonymEntries(), 'all', Math.min(FIND_LIMIT_MAX, limit + PROMOTE_LOOKAHEAD));
   const candidates = ranked.map((r) => {
     const e = getCalculator(r.tileId);
     return {

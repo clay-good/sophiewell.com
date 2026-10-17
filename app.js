@@ -938,7 +938,7 @@ import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
 import { tileStatesItsOwnNotice } from './lib/own-notice.js';
 import { loadSynonyms } from './lib/synonyms.js';
-import { resolvePrompt, resolvePromptRanked, rankableWords } from './lib/prompt.js';
+import { resolvePrompt, resolvePromptRanked, rankingQuery } from './lib/prompt.js';
 // spec-v766: how strongly a query names a tile. Shared with mcp/tools.js so the
 // two surfaces resolve a name the same way.
 import { buildNameCounts, buildNameIndex, findNamed, nameMatch, namesInFull } from './lib/name-match.js';
@@ -6482,7 +6482,7 @@ function bindHeroSearch() {
     // An inline-compute hit parsed real values out of the query; there is
     // nothing ambiguous about it.
     if (inlineCompute) return null;
-    const ranked = resolvePromptRanked(rankableWords(query) || query, tileCorpus(), SYNONYM_ENTRIES, audienceHint(), 4);
+    const ranked = resolvePromptRanked(rankingQuery(query, SYNONYM_ENTRIES, audienceHint()), tileCorpus(), SYNONYM_ENTRIES, audienceHint(), 4);
     if (ranked.length < 2) return null;
     // A curated synonym is a deliberate routing decision, not a coincidence of
     // token scores. Trust it.
@@ -6615,7 +6615,7 @@ function bindHeroSearch() {
     // inputs, never name tokens, and they outrank the name they sit beside --
     // "creatinine 2.4 ... 0.9" reached COMPERA 2.0. Extraction still sees the
     // whole query; only the ranking ignores the digits.
-    const rq = rankableWords(q) || q;
+    const rq = rankingQuery(q, SYNONYM_ENTRIES, audienceHint());
     const ranked = searchUtilities(rq, 12);
     // spec-v7 §3.2: searchUtilities ranks on name/id only and is blind to the
     // curated synonym table and patient phrasing, so a query like "they denied

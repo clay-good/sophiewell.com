@@ -75,3 +75,15 @@ is not a string.
   safe.
 - `test/unit/fuzz-tools.test.js` — 1623 fuzz assertions, including the leak above.
 - 11470 unit, 399 mcp, lint, a11y, 41 e2e: green.
+
+## Later correction (October 16, 2026)
+
+Stripping standalone numbers also stripped numbers that are part of a curated phrase's identity:
+"usp 797 bud", "sb 1164", "ab 890", "texas 10 day rule", "multi dose vial 28 days". A sweep of every
+phrase in `data/synonyms.json` found 28 that could not put their own tool in `find_calculator`'s top 3,
+and the home box missed the same ones. `rankingQuery()` in `lib/prompt.js` now decides the query to rank
+for both: when the whole query matches a curated phrase that itself contains a digit, it ranks on the
+query as typed; otherwise on `rankableWords()`, so values in an ordinary question still do not compete
+with names.
+`test/mcp/mcp-numbered-phrases.test.js` holds all 381 numbered phrases to their tools, and
+`test/unit/ranking-query.test.js` pins the rule.

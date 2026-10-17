@@ -648,6 +648,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Search (home box and agents): a curated phrase with a number in it ("usp 797 bud", "sb 1164", "texas 10 day rule") now
+  finds its tool; the number was being stripped as a value, so 28 phrases reached nothing or the wrong tool.
 - Wet-bulb globe temperature: the three temperatures take °F or °C (°F by default, like every other
   temperature input) and the result names its unit. A Fahrenheit reading had been refused with "Enter ..."
   although it was entered.
