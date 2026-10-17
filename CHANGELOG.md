@@ -652,6 +652,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- HATCH (AF progression) was two tiles that scored a 75-year-old differently: one asked "age over 75", the
+  other "75 or older". The paper's own rule and points table say over 75, so that tile stays and now shows
+  the paper's figures (6% progressed within a year at 0, nearly 50% above 5). The Hill flap-valve grade
+  was also two tiles. Old links to the retired tiles open the survivors.
+- Every pair the duplicate-tile check reports now needs a written ruling before it ships; 122 pairs that
+  had gone unread since September were ruled distinct.
 - A yes/no criterion the question says no to anywhere stays blank: "vte prophylaxis risk ..., no prior VTE"
   had ticked Prior VTE from the "vte" in the search words. A "no" before one item no longer blanks a
   neighbor that only shares a word with it, and items sharing a first word ("Change in size", "Change in

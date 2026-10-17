@@ -962,3 +962,5 @@ experience**.
 > v1634, Risk Ratio, Odds Ratio and Risk Difference With Intervals — [spec-v1634](spec-v1634.md), which adds `two-by-two-effect` — is 2306.)
 
 > v1631 and v1634, Valproate Level Normalized for Low Albumin and WHO-UMC Causality Category — [spec-v1631](spec-v1631.md), [spec-v1634](spec-v1634.md), which add `valproate-albumin-normalized` and `who-umc-causality` — is 2308.)
+
+> v1642, two duplicates retired — [spec-v1642](spec-v1642.md), which retires `hatch-af` into `hatch-score` and `hill-flap-valve` into `hill-grade` — is 2306.)

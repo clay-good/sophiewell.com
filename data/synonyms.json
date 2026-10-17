@@ -2202,20 +2202,6 @@
     },
     {
       "phrases": [
-        "hill grade",
-        "hill classification",
-        "gastroesophageal flap valve",
-        "ge flap valve grade",
-        "flap valve classification",
-        "hill flap valve",
-        "gastroesophageal junction endoscopy grade",
-        "gerd flap valve"
-      ],
-      "tile": "hill-flap-valve",
-      "audience": "clinicians"
-    },
-    {
-      "phrases": [
         "lauren",
         "lauren classification",
         "gastric cancer histology type",
@@ -8806,7 +8792,15 @@
       "phrases": [
         "flap valve grade",
         "gastroesophageal valve retroflexion",
-        "hill classification endoscopy"
+        "hill classification endoscopy",
+        "hill grade",
+        "hill classification",
+        "gastroesophageal flap valve",
+        "ge flap valve grade",
+        "flap valve classification",
+        "hill flap valve",
+        "gastroesophageal junction endoscopy grade",
+        "gerd flap valve"
       ],
       "tile": "hill-grade",
       "audience": "clinicians"
@@ -9773,7 +9767,7 @@
         "persistent af risk",
         "hatch atrial fibrillation"
       ],
-      "tile": "hatch-af",
+      "tile": "hatch-score",
       "audience": "clinicians"
     },
     {

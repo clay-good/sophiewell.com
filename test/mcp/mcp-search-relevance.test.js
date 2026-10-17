@@ -367,7 +367,7 @@ const PROBES = [
   // spec-v391 tile, exposed to MCP in wave 216: Hardy classification (pituitary adenoma).
   ['pituitary adenoma sellar grade', ['hardy-adenoma']],
   // spec-v392 tile, exposed to MCP in wave 217: Hill classification (GE flap valve).
-  ['gastroesophageal flap valve', ['hill-flap-valve']],
+  ['gastroesophageal flap valve', ['hill-grade']],
   // spec-v393 tile, exposed to MCP in wave 218: Lauren classification (gastric cancer).
   ['gastric cancer histology type', ['lauren-gastric']],
   // spec-v394 tile, exposed to MCP in wave 219: Borrmann classification (gastric cancer).

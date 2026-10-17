@@ -771,3 +771,14 @@ test('spec-v915: a retired id still computes, and says which id answered', async
   assert.ok(text.includes('"canonicalId":"glasgow-blatchford"'), 'the surviving id is not named in the result');
   assert.equal(out.result ? out.result.score : (JSON.parse(text).result || {}).score, 0);
 });
+
+test('spec-v1642: hatch-af and hill-flap-valve resolve to the tile that survived', async () => {
+  for (const [oldId, canonical, inputs] of [
+    ['hatch-af', 'hatch-score', { 'htc-htn': '1', 'htc-age': '0', 'htc-stroke': '1', 'htc-copd': '0', 'htc-hf': '0' }],
+    ['hill-flap-valve', 'hill-grade', { 'hill-grade': 'III' }],
+  ]) {
+    const text = JSON.stringify(await dispatch('compute_calculator', { id: oldId, inputs }));
+    assert.ok(text.includes(`"deprecatedId":"${oldId}"`), `${oldId} is not named as retired`);
+    assert.ok(text.includes(`"canonicalId":"${canonical}"`), `${oldId} did not answer as ${canonical}`);
+  }
+});

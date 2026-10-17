@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:419d0e1e-b2f6-5c7f-800c-bfa2682a9df6",
+  "serialNumber": "urn:uuid:b123f82f-6625-5396-86c2-9968ac75a0a8",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-17T19:08:08.024Z",
+    "timestamp": "2026-10-17T19:24:24.930Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2308 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2306 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "33af95dff19d18da76c35d0e168b054c5cce207e55df32da7c63f4da9e86d57e"
+          "content": "6e5903b5d621ba1f76190468153118e4393f881b2b1b769b55376fd5e63769ba"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150589"
+          "value": "150477"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "384f2502f23e2ac1ee3b0b2af50f41add608a077ba2d6941d4a48242f586cec6"
+          "content": "b42b9ccc4396ce45976fc8b8d98d98cf409e5b90a67aa2207de2d56fbaf7d417"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "635869"
+          "value": "635573"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "30d93283bb4f4154c8476084a8a485e2af288264705b016a2136051ebc8dc419"
+          "content": "0470dfec65e14ef57b24463b73f7bac9fd9a4bd6549c4312ec37d618f04e9c09"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "290584"
+          "value": "290339"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "659738f406aa8b7497cb05d154237255cece0733522aceae9d81b11b8595f33a"
+          "content": "5e65cf0fc6ebe292e4d694339cb20fc5fd8f1f24ba4379e5689184a450a11691"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140966"
+          "value": "140851"
         }
       ]
     },
@@ -11480,27 +11480,6 @@
       ]
     },
     {
-      "bom-ref": "urn:sophiewell:file:source:lib/hatch-af-v1435.js",
-      "type": "file",
-      "name": "lib/hatch-af-v1435.js",
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "2d78a603f3612272c27d411ff50c50919cb8b765a79ce2d1f07337548e03b5e2"
-        }
-      ],
-      "properties": [
-        {
-          "name": "sophiewell:scope",
-          "value": "source"
-        },
-        {
-          "name": "sophiewell:bytes",
-          "value": "2773"
-        }
-      ]
-    },
-    {
       "bom-ref": "urn:sophiewell:file:source:lib/hattrup-johnson-v492.js",
       "type": "file",
       "name": "lib/hattrup-johnson-v492.js",
@@ -12316,27 +12295,6 @@
         {
           "name": "sophiewell:bytes",
           "value": "10151"
-        }
-      ]
-    },
-    {
-      "bom-ref": "urn:sophiewell:file:source:lib/hill-flap-valve-v392.js",
-      "type": "file",
-      "name": "lib/hill-flap-valve-v392.js",
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "f62683b688751dbb5ab4c5fc490b92341c747ee2066e4f8b1f7ed0caed9ea6ff"
-        }
-      ],
-      "properties": [
-        {
-          "name": "sophiewell:scope",
-          "value": "source"
-        },
-        {
-          "name": "sophiewell:bytes",
-          "value": "3958"
         }
       ]
     },
@@ -17387,7 +17345,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e87657ff6b41931c651f9185007c4eb1302ee1b67aae92f02c56a41fb522e0a2"
+          "content": "73efd2570ffc62631d206082d60fe3d57dd393cc2fd9362bf3012f22f413ced7"
         }
       ],
       "properties": [
@@ -17397,7 +17355,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3019376"
+          "value": "3017426"
         }
       ]
     },
@@ -42371,27 +42329,6 @@
       ]
     },
     {
-      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hatch-af-v1435.js",
-      "type": "file",
-      "name": "mcp/adapters/hatch-af-v1435.js",
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "71f40ae64362e7bab0d101218d7190c7ec17168b5d17597a60138c637e4fa1ec"
-        }
-      ],
-      "properties": [
-        {
-          "name": "sophiewell:scope",
-          "value": "mcp-source"
-        },
-        {
-          "name": "sophiewell:bytes",
-          "value": "1046"
-        }
-      ]
-    },
-    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hattrup-johnson-v492.js",
       "type": "file",
       "name": "mcp/adapters/hattrup-johnson-v492.js",
@@ -43207,27 +43144,6 @@
         {
           "name": "sophiewell:bytes",
           "value": "4809"
-        }
-      ]
-    },
-    {
-      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hill-flap-valve-v392.js",
-      "type": "file",
-      "name": "mcp/adapters/hill-flap-valve-v392.js",
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "b2fe7b191d90dd639b90e1d25e551c343cb3f3e3e86fe65421510d7a83c99813"
-        }
-      ],
-      "properties": [
-        {
-          "name": "sophiewell:scope",
-          "value": "mcp-source"
-        },
-        {
-          "name": "sophiewell:bytes",
-          "value": "1616"
         }
       ]
     },
@@ -60290,7 +60206,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7211c1b1adab632711f48c9914f62e96d40ac6fbe5c7277b2699039c8fa72d7d"
+          "content": "965eeb93d24adba1ca642f5e92b3c32136db4830fd3e5d0367b0bb70a2ab3215"
         }
       ],
       "properties": [
@@ -60300,7 +60216,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "162613"
+          "value": "162405"
         }
       ]
     },
@@ -62443,27 +62359,6 @@
         {
           "name": "sophiewell:bytes",
           "value": "2901"
-        }
-      ]
-    },
-    {
-      "bom-ref": "urn:sophiewell:file:source:views/group-v1435.js",
-      "type": "file",
-      "name": "views/group-v1435.js",
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "eb07de18b58142b659eca1424dec49e2fb406765817632d92f9ef4ab1060f79c"
-        }
-      ],
-      "properties": [
-        {
-          "name": "sophiewell:scope",
-          "value": "source"
-        },
-        {
-          "name": "sophiewell:bytes",
-          "value": "2629"
         }
       ]
     },
@@ -69919,27 +69814,6 @@
         {
           "name": "sophiewell:bytes",
           "value": "3470"
-        }
-      ]
-    },
-    {
-      "bom-ref": "urn:sophiewell:file:source:views/group-v392.js",
-      "type": "file",
-      "name": "views/group-v392.js",
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "6d7c38466f544b48a64e4c9f9537f4dfa26f69e7efea99f35b433efb1d021044"
-        }
-      ],
-      "properties": [
-        {
-          "name": "sophiewell:scope",
-          "value": "source"
-        },
-        {
-          "name": "sophiewell:bytes",
-          "value": "2946"
         }
       ]
     },
@@ -96352,7 +96226,6 @@
         "urn:sophiewell:file:source:lib/hartofilakidis-ddh-v370.js",
         "urn:sophiewell:file:source:lib/hash.js",
         "urn:sophiewell:file:source:lib/hat-treatment-v1563.js",
-        "urn:sophiewell:file:source:lib/hatch-af-v1435.js",
         "urn:sophiewell:file:source:lib/hattrup-johnson-v492.js",
         "urn:sophiewell:file:source:lib/hawkins-talar-v342.js",
         "urn:sophiewell:file:source:lib/hazardous-drug-list-check-v1630.js",
@@ -96392,7 +96265,6 @@
         "urn:sophiewell:file:source:lib/hf-stages-abcd-v842.js",
         "urn:sophiewell:file:source:lib/hhie-s-v728.js",
         "urn:sophiewell:file:source:lib/hijdra-v609.js",
-        "urn:sophiewell:file:source:lib/hill-flap-valve-v392.js",
         "urn:sophiewell:file:source:lib/hill-grade-v1243.js",
         "urn:sophiewell:file:source:lib/hinchey-v321.js",
         "urn:sophiewell:file:source:lib/hiv-pep-occupational-v887.js",
@@ -97436,7 +97308,6 @@
         "urn:sophiewell:file:source:views/group-v1431.js",
         "urn:sophiewell:file:source:views/group-v1433.js",
         "urn:sophiewell:file:source:views/group-v1434.js",
-        "urn:sophiewell:file:source:views/group-v1435.js",
         "urn:sophiewell:file:source:views/group-v1436.js",
         "urn:sophiewell:file:source:views/group-v1438.js",
         "urn:sophiewell:file:source:views/group-v1439.js",
@@ -97792,7 +97663,6 @@
         "urn:sophiewell:file:source:views/group-v39.js",
         "urn:sophiewell:file:source:views/group-v390.js",
         "urn:sophiewell:file:source:views/group-v391.js",
-        "urn:sophiewell:file:source:views/group-v392.js",
         "urn:sophiewell:file:source:views/group-v393.js",
         "urn:sophiewell:file:source:views/group-v394.js",
         "urn:sophiewell:file:source:views/group-v395.js",
@@ -98773,7 +98643,6 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/harrington-acetabular-v605.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hartofilakidis-ddh-v370.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hat-treatment-v1563.js",
-        "urn:sophiewell:file:mcp-source:mcp/adapters/hatch-af-v1435.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hattrup-johnson-v492.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hawkins-talar-v342.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hazardous-drug-list-check-v1630.js",
@@ -98813,7 +98682,6 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hf-stages-abcd-v842.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hhie-s-v728.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hijdra-v609.js",
-        "urn:sophiewell:file:mcp-source:mcp/adapters/hill-flap-valve-v392.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hill-grade-v1243.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hinchey-v321.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hiv-pep-occupational-v887.js",
@@ -99731,7 +99599,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "419d0e1eb2f62c7f"
+      "value": "b123f82f66259396"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99743,7 +99611,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3799"
+      "value": "3793"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -8383,9 +8383,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/c2hest-v1434.js (spec-v1434: C2HEST incident atrial fibrillation score — clinical disclaimer)
 - `c2hest`
 
-### lib/hatch-af-v1435.js (spec-v1435: HATCH atrial fibrillation progression score — clinical disclaimer)
-- `hatch-af`
-
 ### lib/rcvs2-v1436.js (spec-v1436: RCVS2 reversible cerebral vasoconstriction score — clinical disclaimer)
 - `rcvs2`
 
@@ -11657,9 +11654,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/hardy-adenoma-v391.js
 - `hardy-adenoma`
-
-### lib/hill-flap-valve-v392.js
-- `hill-flap-valve`
 
 ### lib/lauren-gastric-v393.js
 - `lauren-gastric`

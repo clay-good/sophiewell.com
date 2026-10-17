@@ -368,7 +368,6 @@ import * as brodskyTonsilV388 from '../../lib/brodsky-tonsil-v388.js';
 import * as koosSchwannomaV389 from '../../lib/koos-schwannoma-v389.js';
 import * as knospAdenomaV390 from '../../lib/knosp-adenoma-v390.js';
 import * as hardyAdenomaV391 from '../../lib/hardy-adenoma-v391.js';
-import * as hillFlapValveV392 from '../../lib/hill-flap-valve-v392.js';
 import * as laurenGastricV393 from '../../lib/lauren-gastric-v393.js';
 import * as borrmannGastricV394 from '../../lib/borrmann-gastric-v394.js';
 import * as parksFistulaV395 from '../../lib/parks-fistula-v395.js';
@@ -1493,7 +1492,6 @@ const MODULES = {
   'koos-schwannoma-v389.js': koosSchwannomaV389,
   'knosp-adenoma-v390.js': knospAdenomaV390,
   'hardy-adenoma-v391.js': hardyAdenomaV391,
-  'hill-flap-valve-v392.js': hillFlapValveV392,
   'lauren-gastric-v393.js': laurenGastricV393,
   'borrmann-gastric-v394.js': borrmannGastricV394,
   'parks-fistula-v395.js': parksFistulaV395,

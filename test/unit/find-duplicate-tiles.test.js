@@ -172,3 +172,16 @@ test('the four duplicates the citation found are ruled on and name a survivor', 
   // number, so it is ruled blocked rather than given a survivor.
   assert.match(RULED.get('ebv-mabl|max-allowable-blood-loss'), /^DUPLICATE, BLOCKED --/);
 });
+
+// spec-v1642: the finder ran only by hand, so for six weeks every new tile that resembled an old one was
+// reported and nobody read the report -- 124 pairs, two of them the same tile twice (hatch-af, hill-flap-valve),
+// one scoring a 75-year-old differently from its twin. A candidate pair now needs a ruling in RULED before it
+// ships: open both adapters, then write DISTINCT -- <why>, or retire the thinner one.
+test('every candidate pair the finder reports has a ruling', async () => {
+  const { readFileSync } = await import('node:fs');
+  const corpus = JSON.parse(readFileSync(new URL('../../data/search-corpus/corpus.json', import.meta.url), 'utf8'));
+  const unruled = candidatePairs(corpus)
+    .filter(({ a, b }) => !RULED.has(`${a.id}|${b.id}`) && !RULED.has(`${b.id}|${a.id}`))
+    .map(({ a, b }) => `${a.id}|${b.id}`);
+  assert.deepEqual(unruled, [], `rule on these in scripts/find-duplicate-tiles.mjs RULED (run the script to see both names): ${unruled.join(', ')}`);
+});

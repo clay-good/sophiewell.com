@@ -304,7 +304,6 @@ import brodskyTonsilV388 from './adapters/brodsky-tonsil-v388.js';
 import koosSchwannomaV389 from './adapters/koos-schwannoma-v389.js';
 import knospAdenomaV390 from './adapters/knosp-adenoma-v390.js';
 import hardyAdenomaV391 from './adapters/hardy-adenoma-v391.js';
-import hillFlapValveV392 from './adapters/hill-flap-valve-v392.js';
 import laurenGastricV393 from './adapters/lauren-gastric-v393.js';
 import borrmannGastricV394 from './adapters/borrmann-gastric-v394.js';
 import parksFistulaV395 from './adapters/parks-fistula-v395.js';
@@ -857,7 +856,6 @@ import sdsgSpondylolisthesisV1430 from './adapters/sdsg-spondylolisthesis-v1430.
 import watsonSlacV1431 from './adapters/watson-slac-v1431.js';
 import disabilityRatingScaleV1433 from './adapters/disability-rating-scale-v1433.js';
 import c2hestV1434 from './adapters/c2hest-v1434.js';
-import hatchAfV1435 from './adapters/hatch-af-v1435.js';
 import rcvs2V1436 from './adapters/rcvs2-v1436.js';
 import ukeldV1438 from './adapters/ukeld-v1438.js';
 import uterineActivityV1439 from './adapters/uterine-activity-v1439.js';
@@ -1642,7 +1640,6 @@ const ADAPTER_MODULES = [
   ['koos-schwannoma-v389', koosSchwannomaV389],
   ['knosp-adenoma-v390', knospAdenomaV390],
   ['hardy-adenoma-v391', hardyAdenomaV391],
-  ['hill-flap-valve-v392', hillFlapValveV392],
   ['lauren-gastric-v393', laurenGastricV393],
   ['borrmann-gastric-v394', borrmannGastricV394],
   ['parks-fistula-v395', parksFistulaV395],
@@ -2196,7 +2193,6 @@ const ADAPTER_MODULES = [
   ['watson-slac-v1431', watsonSlacV1431],
   ['disability-rating-scale-v1433', disabilityRatingScaleV1433],
   ['c2hest-v1434', c2hestV1434],
-  ['hatch-af-v1435', hatchAfV1435],
   ['rcvs2-v1436', rcvs2V1436],
   ['ukeld-v1438', ukeldV1438],
   ['uterine-activity-v1439', uterineActivityV1439],
