@@ -50,6 +50,10 @@ test('exceptions a tick can express, and the anticholinergic count', () => {
   assert.ok(!s(['beta-blocker', 'thiazide'], ['hypertension']).includes('STOPP B5'), 'not monotherapy');
   assert.ok(s(['aspirin']).includes('STOPP C16'));
   assert.ok(!s(['aspirin'], ['cad']).includes('STOPP C16'), 'secondary, not primary, prevention');
+  assert.ok(s(['corticosteroid'], ['pud-gi-bleed']).includes('STOPP F5'));
+  assert.ok(!s(['corticosteroid', 'ppi'], ['pud-gi-bleed']).includes('STOPP F5'), 'unless a PPI is co-prescribed');
+  assert.ok(!s(['nsaid', 'ppi'], ['pud-gi-bleed']).includes('STOPP H1'), 'unless with a concurrent PPI');
+  assert.ok(!s(['corticosteroid', 'ics'], ['copd']).includes('STOPP G2'), 'not instead of an inhaled corticosteroid');
   assert.ok(s(['opioid']).includes('STOPP L2'));
   assert.ok(!s(['opioid', 'laxative']).includes('STOPP L2'));
   assert.ok(s(['tca', 'bladder-antimuscarinic']).includes('STOPP M1'), 'two anticholinergic classes');

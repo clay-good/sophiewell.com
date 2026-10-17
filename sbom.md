@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2f2412c9c38f50e9`
-Generated: 2026-10-17T00:37:15.044Z
+Build ID: `6219f7ec840c5bb0`
+Generated: 2026-10-17T01:08:48.843Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1365,7 +1365,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/steinbrocker-ra-v469.js` | 3579 | `a2fc9925c8ec0461e7b245f71e15664a453dca69636a548f6cf0f012a185c14f` |
 | `lib/step-therapy-v1502.js` | 7907 | `40287cfc7922d98f235d50fce150a3c873edf69844d4cbab4b80f30f71201ac8` |
 | `lib/sternbach-v589.js` | 13053 | `720e9250cdc1ad1f9e75485c0a41919c2321c18836f991bcec0ebc3c6cad5e3e` |
-| `lib/stopp-start-v3-v1634.js` | 75226 | `f98faf907aa6e44586a11bd938ca7f389b2703e532a5a58dc64bde8c42d0ada6` |
+| `lib/stopp-start-v3-v1634.js` | 75262 | `92170da7bf2447fb3bb6940ef9dd53ff532df3070fa7fa97e8a37df98f8924c1` |
 | `lib/stoppfall-check-v1634.js` | 3615 | `16754b78dbbc1e64a6189e6d523b261fe4234529582e5785c732a6e48b8f1a17` |
 | `lib/storage-excursion-summary-v1630.js` | 12614 | `6e35fe27603afce158ff3502785be083502ef749169eb2cd270525abb69840fe` |
 | `lib/strasberg-bdi-v348.js` | 4354 | `832252b56530217e303fa2a2dab25cba0b5090e7ecfa32fed5484a53b3a7781e` |
