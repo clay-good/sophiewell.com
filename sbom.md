@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `99e2a971834ac884`
-Generated: 2026-10-17T04:20:59.408Z
+Build ID: `70fe1c3e84888421`
+Generated: 2026-10-17T04:49:07.226Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -913,7 +913,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nadac-margin.js` | 15055 | `970e7498f534723d4de8a18dbb15c8e56494ea64d652f5b0551e53a6a9d97714` |
 | `lib/nadac-reference.js` | 4279 | `0a41ccc56d1c75d8bdf4b0dc9cc168170a800603d0d2bc2c994f46c546d699ef` |
 | `lib/naloxone-infusion-v1636.js` | 3506 | `8c32d3c0ad4c1039216fabf5c27453f34e96a650cffee24ceef0fb322cdff81c` |
-| `lib/name-match.js` | 8308 | `514247a8980fec31da9fc07c88f45a7d05ac8b8e904cc709078276293578ce54` |
+| `lib/name-match.js` | 8549 | `12db44497263c66a65a95dc442ed079ebd203bf415cb7f46ca4e5cafc626342f` |
 | `lib/nancy-index-v578.js` | 13756 | `9ad406fe2f9ab2f84d2d321db7de21bfa2f53ce5e00ee92b4f700952ab243c24` |
 | `lib/narakas-obpp-v498.js` | 3267 | `255a2ed868495c515b280b54793fe7787a70d2134c1abe289f32245209584b6b` |
 | `lib/narcolepsy-criteria-v855.js` | 12626 | `ab7efe42e6574e5d060509b9bbc9d5397d0d53112a24b616ac9d8c29c0b12cbc` |
@@ -2904,7 +2904,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10616 | `7a2aa853195af4f25f5eae871bb586bb460aec75c9e0c3cb2aa5a510fd481219` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
-| `mcp/tools.js` | 58108 | `6e8c2054b0d1bcf8b263e46c217371e9c9e47acfb02f7062e7461f8b57ee1f7b` |
+| `mcp/tools.js` | 58748 | `c2cee863bc3b8fcfe4f6b5d32e8d7afa24e20171be460fe48d9fdd8816c0f247` |
 | `vendored/README.md` | 1874 | `308637ae66d2bf5f78f147a342362718809a7bdde38463b1ec2a5e72ef49fe79` |
 | `vendored/mammoth/LICENSE` | 1307 | `6663bbd049205d38a496ccacb412a151980b444627d38de218b3b809aef330f1` |
 | `vendored/mammoth/_vendored.md` | 3146 | `c61c3ab5cee45c4e3218cc7f7bc2a8509b0f99973942ec9ec1877a5543c921f7` |

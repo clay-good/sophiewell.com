@@ -39,3 +39,13 @@ test('answer_query: a curated phrase with no values points to its tool; a weak g
   assert.equal(answerQuery({ query: 'what is the meaning of life' }).code, 'NO_MATCH');
   assert.equal(answerQuery({ query: 'index' }).code, 'NO_MATCH', 'one word of the phrase "lee index" is not the phrase');
 });
+
+test('answer_query: a calculator named in full is the one answered, never a neighbour', () => {
+  // Found October 16, 2026 by asking answer_query for every calculator's own name: four did not come back.
+  for (const [q, tile] of [
+    ["Hy's Law (drug-induced liver injury)", 'hys-law'],
+    ['HOMA-B (Steady-State β-Cell Function)', 'homa-beta'],
+    ['Assistant / Co- / Team-Surgeon Payment', 'multi-surgeon-pay'],
+    ['DIPSS-Plus (myelofibrosis survival score)', 'dipss-plus-mf'],
+  ]) assert.equal(answerQuery({ query: q }).tile, tile, q);
+});

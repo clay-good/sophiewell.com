@@ -637,10 +637,15 @@ function answerQueryGeneric(q) {
   // "Glasgow" and "Imrie". Ties keep the ranker's order.
   // Only a STRONG name match may override the ranker; see nameMatch. A weak one
   // leaves the ranker's own ordering alone, which is what it is for.
+  // A calculator the query names IN FULL ranks above one it only shares strong words with, the rule
+  // find_calculator already promotes by: "Hy's Law (drug-induced liver injury)" scored RUCAM higher on
+  // its distinctive words, settled there, and then reported no match because RUCAM was not named.
   const scored = candidates
-    .map((c) => ({ c, ...nameMatchFor(q, getCalculator(c.id)) }))
+    // `full` is the number of name words a full naming covers, so the longer of two names the query
+    // carries in full wins ("DIPSS-Plus (...)" also names "DIPSS (...)" in full).
+    .map((c) => ({ c, full: namesInFull(q, c.name) ? (String(c.name).toLowerCase().match(/[a-z0-9]+/g) || []).length : 0, ...nameMatchFor(q, getCalculator(c.id)) }))
     .filter((x) => x.strong)
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => (b.full - a.full) || (b.score - a.score));
   const bestScore = scored.length ? scored[0].score : 0;
 
   // Two calculators the query names equally well is not a tie to break, it is a
@@ -650,7 +655,7 @@ function answerQueryGeneric(q) {
   // question the caller did not ask. The website refuses the same way
   // (spec-v756); so should this.
   if (bestScore > 0) {
-    const tied = scored.filter((x) => x.score >= bestScore * 0.999);
+    const tied = scored.filter((x) => x.full === scored[0].full && x.score >= bestScore * 0.999);
     if (tied.length > 1) {
       return {
         query: q,

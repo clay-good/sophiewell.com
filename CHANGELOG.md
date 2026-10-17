@@ -648,6 +648,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Agent answer_query: a calculator named in full is the one answered. Four were not (Hy's Law went to RUCAM;
+  two names with a hyphen at a word's edge could not be matched; DIPSS-Plus tied with DIPSS).
 - Agent answer_query: a curated phrase with no values ("kidney function") now names its calculator and
   asks for the inputs, instead of reporting no match.
 - Search (home box and agents): a curated phrase with a number in it ("usp 797 bud", "sb 1164", "texas 10 day rule") now
