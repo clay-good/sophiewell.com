@@ -106,7 +106,8 @@ RDI = delivered ÷ planned × 100, per drug and averaged across drugs.
 **Source.** Hryniuk and Bush, J Clin Oncol 1984;2:1281-1288.
 **Build gate.** The paper was not opened (PubMed carries no abstract for it). See Verify at
 build. No interpretation band ships: the 85% line comes from later observational work and is not
-Hryniuk's.
+Hryniuk's. Re-checked October 17, 2026: ascopubs.org now serves the landing page, but the full
+text and PDF are a $45 purchase, so the paper stays unread.
 
 ### 4. `cumulative-dose-limit` — Lifetime Cumulative Dose Against the Label
 
