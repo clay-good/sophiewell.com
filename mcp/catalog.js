@@ -1121,6 +1121,7 @@ import antimicrobialDayCounterV1636 from './adapters/antimicrobial-day-counter-v
 import antibiogramBuilderV1636 from './adapters/antibiogram-builder-v1636.js';
 import chelationDoseV1636 from './adapters/chelation-dose-v1636.js';
 import medAdminWindowV1636 from './adapters/med-admin-window-v1636.js';
+import surgicalProphylaxisRedoseV1636 from './adapters/surgical-prophylaxis-redose-v1636.js';
 import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
 import auRateSaarV1636 from './adapters/au-rate-saar-v1636.js';
 import cdiLabidCategoryV1636 from './adapters/cdi-labid-category-v1636.js';
@@ -2469,6 +2470,7 @@ const ADAPTER_MODULES = [
   ['antibiogram-builder-v1636', antibiogramBuilderV1636],
   ['chelation-dose-v1636', chelationDoseV1636],
   ['med-admin-window-v1636', medAdminWindowV1636],
+  ['surgical-prophylaxis-redose-v1636', surgicalProphylaxisRedoseV1636],
   ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],
   ['au-rate-saar-v1636', auRateSaarV1636],
   ['cdi-labid-category-v1636', cdiLabidCategoryV1636],

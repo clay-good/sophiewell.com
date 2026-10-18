@@ -5,7 +5,7 @@
 // us-antivenom-dose, thrombolytic-dose, pralidoxime-dose, rsi-dose-sheet,
 // botulism-antitoxin-dose, passive-immunization-dose,
 // au-rate-saar, cdi-labid-category, ddd-rate, med-admin-window, adjusted-patient-days,
-// chelation-dose, antimicrobial-day-counter, antibiogram-builder.
+// chelation-dose, antimicrobial-day-counter, antibiogram-builder, surgical-prophylaxis-redose.
 
 import { el, clear } from '../lib/dom.js';
 import { uploadWorkbench } from './upload-workbench.js';
@@ -31,6 +31,7 @@ import * as MW from '../lib/med-admin-window-v1636.js';
 import * as AP from '../lib/adjusted-patient-days-v1636.js';
 import * as CH from '../lib/chelation-dose-v1636.js';
 import * as DC from '../lib/antimicrobial-day-counter-v1636.js';
+import * as SPR from '../lib/surgical-prophylaxis-redose-v1636.js';
 import * as AB from '../lib/antibiogram-builder-v1636.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -377,6 +378,22 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(DC.antimicrobialDayCounter(args), o);
+    }));
+  },
+  'surgical-prophylaxis-redose'(root) {
+    const pairs = [['spr-agent', 'agent'], ['spr-patient', 'patient'], ['spr-weight', 'weightKg'], ['spr-ibw', 'ibwKg'], ['spr-pip-age', 'pipAge'], ['spr-start', 'startTime'], ['spr-incision', 'incisionTime']];
+    selectField(root, 'Antimicrobial', 'spr-agent', SPR.AGENTS);
+    selectField(root, 'Adult or child', 'spr-patient', SPR.PATIENTS);
+    numField(root, 'Actual weight, kg', 'spr-weight', 'e.g. 85');
+    numField(root, 'Ideal body weight, kg (gentamicin only)', 'spr-ibw', '');
+    selectField(root, 'Age band (piperacillin-tazobactam in a child only)', 'spr-pip-age', SPR.PIP_AGES);
+    dateField(root, 'Preoperative dose started (for the redose clock)', 'spr-start', 'datetime-local');
+    dateField(root, 'Incision time (for the timing check)', 'spr-incision', 'datetime-local');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(SPR.surgicalProphylaxisRedose(args), o);
     }));
   },
   'antibiogram-builder'(root) {

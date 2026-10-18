@@ -881,6 +881,7 @@ const PROBES = [
   ['build a cumulative antibiogram from an isolate list', ['antibiogram-builder']],
   ['succimer dose for lead poisoning by weight', ['chelation-dose']],
   ['medication administration time window cms', ['med-admin-window']],
+  ['surgical antibiotic prophylaxis redose', ['surgical-prophylaxis-redose']],
   ['adjusted patient days calculation', ['adjusted-patient-days']],
   ['antimicrobial days per 1000 days present', ['au-rate-saar']],
   ['c difficile labid hospital onset or community onset', ['cdi-labid-category']],

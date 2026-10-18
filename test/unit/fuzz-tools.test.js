@@ -854,6 +854,7 @@ import * as antimicrobialDayCounterV1636 from '../../lib/antimicrobial-day-count
 import * as antibiogramBuilderV1636 from '../../lib/antibiogram-builder-v1636.js';
 import * as chelationDoseV1636 from '../../lib/chelation-dose-v1636.js';
 import * as medAdminWindowV1636 from '../../lib/med-admin-window-v1636.js';
+import * as surgicalProphylaxisRedoseV1636 from '../../lib/surgical-prophylaxis-redose-v1636.js';
 import * as adjustedPatientDaysV1636 from '../../lib/adjusted-patient-days-v1636.js';
 import * as auRateSaarV1636 from '../../lib/au-rate-saar-v1636.js';
 import * as cdiLabidCategoryV1636 from '../../lib/cdi-labid-category-v1636.js';
@@ -1989,6 +1990,7 @@ const MODULES = {
   'antibiogram-builder-v1636.js': antibiogramBuilderV1636,
   'chelation-dose-v1636.js': chelationDoseV1636,
   'med-admin-window-v1636.js': medAdminWindowV1636,
+  'surgical-prophylaxis-redose-v1636.js': surgicalProphylaxisRedoseV1636,
   'adjusted-patient-days-v1636.js': adjustedPatientDaysV1636,
   'au-rate-saar-v1636.js': auRateSaarV1636,
   'cdi-labid-category-v1636.js': cdiLabidCategoryV1636,

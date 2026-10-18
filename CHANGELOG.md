@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Surgical Antibiotic Prophylaxis Dose and Redose Clock: Table 1 of the 2013 ASHP/IDSA/SIS/SHEA guideline, read
+  cell by cell, with the pediatric cap, the gentamicin dosing weight, and the 60- or 120-minute start window.
 - Relative Dose Intensity (Chemotherapy): delivered over planned dose intensity for one drug, shown over the cycles
   given and over the planned course (the two ways open papers time it), with the loss split into reductions and delays.
 - INR Variability (Fihn Variance Growth Rate): method A, from the formula a Free Access 2013 paper prints in its

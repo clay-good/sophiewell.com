@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:a0054efb-0bda-5f97-8a53-1d1c8561de7a",
+  "serialNumber": "urn:uuid:33524018-cf5a-5195-8ead-1f9f7c272e7a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-18T11:22:00.685Z",
+    "timestamp": "2026-10-18T12:00:46.302Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2317 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2318 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "293c9f2e1f9db7fe92b5c6e581e3d027c47ce54a4a260acf716d567f6d260008"
+          "content": "c6c95034f6794df05bd879af7dc7ae20340c36d1694ddca8510f80e93120264c"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "151092"
+          "value": "151161"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "35f837bc169c1ced4bbc679d1945cfda5fd6b1d57de73ce28a3c848d63ad2419"
+          "content": "dbbd23ef0292b9ccf1a48fb3eba0e06a4d4d609def0851c54bd59bd1439e17a6"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "637234"
+          "value": "637406"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "75f5768c0aa603f776ea75bcfd8cedf2b5cfa0d9173b1275fc7e5c6f99cdd4a8"
+          "content": "2bd1b388d643db39930a3ee33e85ecaffd54ffa1e1020012c8d45958579b8cca"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "291770"
+          "value": "291908"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0ff59468b39d2752862f0a258030d47d3af32ac0fd27feb0bf1794b2191ebbe1"
+          "content": "e3ca05705455fe22631af5d9f02eec0a22d82e8bcdbaf2b93c931338c188832f"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141566"
+          "value": "141652"
         }
       ]
     },
@@ -17492,7 +17492,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0abf42fa49aa533984998429bcc6547e336add731631862d87ae00a47fbccd65"
+          "content": "cc36603413e8dc962986ea649818960bd7db4c1974ac6ba6f067bd0dde527e56"
         }
       ],
       "properties": [
@@ -17502,7 +17502,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3027606"
+          "value": "3028328"
         }
       ]
     },
@@ -28570,6 +28570,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "16902"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/surgical-prophylaxis-redose-v1636.js",
+      "type": "file",
+      "name": "lib/surgical-prophylaxis-redose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3d4baefb31947298dc7b18f3fdf3fed012d77de4966331d56506dd9d2a9fd02f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9363"
         }
       ]
     },
@@ -57617,6 +57638,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/surgical-prophylaxis-redose-v1636.js",
+      "type": "file",
+      "name": "mcp/adapters/surgical-prophylaxis-redose-v1636.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "962f1739a4d2ff885cc2487ba8911f8e8074abfa6042932fdb4a15957d372c07"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1580"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/syphilis-serology-sequence-v1400.js",
       "type": "file",
       "name": "mcp/adapters/syphilis-serology-sequence-v1400.js",
@@ -60668,7 +60710,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e16945d2503b9cd6f67565cbfe7d6418ee9f750d9fd3e63984f1d5b4b3136bec"
+          "content": "1712e142ddc567389f6793a844e8f09d85e1d6ebc248de9fbb4f175ddeec0510"
         }
       ],
       "properties": [
@@ -60678,7 +60720,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "163902"
+          "value": "164069"
         }
       ]
     },
@@ -65309,7 +65351,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2e7abc7cf86fe4e88d696c0bff9abb47021289c37e63c21b8fed512b6052edd6"
+          "content": "2fc46440ab00d2d4edd0fc430e781569070b3ab3caf37265a9f076c1f820b995"
         }
       ],
       "properties": [
@@ -65319,7 +65361,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "24773"
+          "value": "25950"
         }
       ]
     },
@@ -97502,6 +97544,7 @@
         "urn:sophiewell:file:source:lib/supd-measure-v1638.js",
         "urn:sophiewell:file:source:lib/suppository-displacement-v1629.js",
         "urn:sophiewell:file:source:lib/surg-v142.js",
+        "urn:sophiewell:file:source:lib/surgical-prophylaxis-redose-v1636.js",
         "urn:sophiewell:file:source:lib/synonyms.js",
         "urn:sophiewell:file:source:lib/syphilis-serology-sequence-v1400.js",
         "urn:sophiewell:file:source:lib/systemic-mastocytosis-v813.js",
@@ -99833,6 +99876,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/supd-measure-v1638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/suppository-displacement-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/surg-v142.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/surgical-prophylaxis-redose-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/syphilis-serology-sequence-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/systemic-mastocytosis-v813.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tablet-powder-source-v1629.js",
@@ -100083,7 +100127,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "a0054efb0bdacf97"
+      "value": "33524018cf5a5195"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -100095,7 +100139,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3815"
+      "value": "3817"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

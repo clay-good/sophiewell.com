@@ -9409,6 +9409,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/med-admin-window-v1636.js (spec-v1636: CMS medication administration window (A-0405) — administrative disclaimer)
 - `med-admin-window`
 
+### lib/surgical-prophylaxis-redose-v1636.js (spec-v1636: surgical prophylaxis dose and redose clock — clinical disclaimer)
+- `surgical-prophylaxis-redose`
+
 ### lib/adjusted-patient-days-v1636.js (spec-v1636: Adjusted patient days and pharmacy ratios — administrative disclaimer)
 - `adjusted-patient-days`
 

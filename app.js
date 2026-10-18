@@ -2814,6 +2814,7 @@ const UTILITIES = [
   { id: 'au-rate-saar', name: 'Antimicrobial Days per 1,000 Days Present, per 100 Admissions, and SAAR (NHSN)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'cdi-labid-category', name: 'C. difficile LabID Event: Onset Category, Incident or Recurrent, and Rate (NHSN)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'ddd-rate', name: 'Defined Daily Doses per 100 Bed-Days and per 1,000 Patient-Days', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'surgical-prophylaxis-redose', name: 'Surgical Antibiotic Prophylaxis Dose and Redose Clock', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'med-admin-window', name: 'Was This Dose Given Inside the CMS Administration Window?', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'adjusted-patient-days', name: 'Adjusted Patient Days and Pharmacy Cost or Hours per Adjusted Day', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'chelation-dose', name: 'Succimer, Edetate Calcium Disodium and Dimercaprol Doses (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },

@@ -980,3 +980,5 @@ experience**.
 > v1634, INR Variability (Fihn Variance Growth Rate) — [spec-v1634](spec-v1634.md), which adds `inr-variability` from the formula printed in a Free Access 2013 paper — is 2316.)
 
 > v1635, Relative Dose Intensity — [spec-v1635](spec-v1635.md), which adds `relative-dose-intensity` with both published time bases, on the owner's decision of October 18, 2026 — is 2317.)
+
+> v1636, Surgical Antibiotic Prophylaxis Dose and Redose Clock — [spec-v1636](spec-v1636.md), which adds `surgical-prophylaxis-redose` from Table 1 read in a copy the owner saved — is 2318.)
