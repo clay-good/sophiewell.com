@@ -242,7 +242,9 @@ figures in circulation (k = 0.00293 × CrCl + 0.014 per hour) were seen only in 
 one calculator page prints a second version (0.0024 × CrCl + 0.01). Two versions and no primary
 reading: do not build until the 1976 paper is read. The 1976 abstract does confirm that Vd was
 calculated on lean, not total, body weight. Re-checked October 17, 2026 under the owner's reprint rule: open papers on
-Europe PMC cite Hull and Sarubbi without printing the coefficients, so the tool stays gated.
+Europe PMC cite Hull and Sarubbi without printing the coefficients, so the tool stays gated. On October 18, 2026 the 1976 paper's
+publisher page (acpjournals.org) answered with a bot-verification page that did not clear on its own; it was not
+bypassed, and the paper is still unread.
 
 ### 7. `phenytoin-mm-dose` — Phenytoin Dose From Two Steady-State Levels (Michaelis-Menten)
 
