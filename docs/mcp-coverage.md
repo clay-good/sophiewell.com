@@ -9250,6 +9250,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/medrec-discrepancy-rate-v1634.js (spec-v1634: medication reconciliation discrepancy rate — administrative disclaimer)
 - `medrec-discrepancy-rate`
 
+### lib/inr-variability-v1634.js (spec-v1634: INR variability, Fihn variance growth rate — clinical disclaimer)
+- `inr-variability`
+
 ### lib/valproate-albumin-normalized-v1631.js (spec-v1631: Valproate normalized for albumin (Hermida-Tutor 2005) — clinical disclaimer)
 - `valproate-albumin-normalized`
 

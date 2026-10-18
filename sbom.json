@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:45723537-ec97-56d4-8465-45817a407b09",
+  "serialNumber": "urn:uuid:8cb51d3e-b173-599e-89e6-deb4f57f91f5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-18T03:24:32.970Z",
+    "timestamp": "2026-10-18T08:19:05.163Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2315 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2316 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6fd43a88cfb8c8195215114f0d06114155a75f6e21050fb2d6708c8895f661cd"
+          "content": "40848de4f86b2ec2978e1b746d831b344fcd853b35503bb06a83bfaa8f695fac"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150979"
+          "value": "151038"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ba8af8e33be493384a20ee6f0a48867290705d3353b7efa51c071a90b63276d1"
+          "content": "afcd02bc7685bdbe2616adb043ea410529c356a83620763dd8b1bbf39ca81f55"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "636931"
+          "value": "637081"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eb172757de50077136621a67ad2eddca1c3ac59154cafc4e9f62ec673d01d350"
+          "content": "782696a01140c6c8e765b8338afaf6a09b1bb043ca1b5e980b8800498667e681"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "291510"
+          "value": "291636"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "927ded4a0320e620260188d46fcf46a1fd49af150e3e0adb6ddfeb7ffe0245cf"
+          "content": "9edbf5f0bcac09ea92b7c418e2723145d8dce1d7ab3a2252c0417b3576e180e9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141435"
+          "value": "141499"
         }
       ]
     },
@@ -13475,6 +13475,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/inr-variability-v1634.js",
+      "type": "file",
+      "name": "lib/inr-variability-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "242caef185a7d1842ce8d095ff459501c01e3023077799b49585a0b16deb856b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3172"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/insulin-drip.js",
       "type": "file",
       "name": "lib/insulin-drip.js",
@@ -17471,7 +17492,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "764e1f1e114ce11ce746c366ee6136674946d336b69d9284bcde5bfff61819d1"
+          "content": "3ba3eb5b66e0862ed5f6f097f001db9864adc4807985a5762e935c79eabd2ff7"
         }
       ],
       "properties": [
@@ -17481,7 +17502,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3025898"
+          "value": "3026676"
         }
       ]
     },
@@ -44324,6 +44345,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/inr-variability-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/inr-variability-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f1c2f42f4871ed1b1e47cb65c18733f58f491d4f48270e7171e30171c1c8931a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "790"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/insulin-drip.js",
       "type": "file",
       "name": "mcp/adapters/insulin-drip.js",
@@ -60584,7 +60626,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3858f09979ed07a51889f7546b36e4528bc295c6e483ff41f36a175937f72225"
+          "content": "a0b54d5a46023cce98c1ad56004585e9fd28b8ab466627849fff5de4a38f16ea"
         }
       ],
       "properties": [
@@ -60594,7 +60636,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "163630"
+          "value": "163751"
         }
       ]
     },
@@ -65183,7 +65225,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1b5da663ad049ae0834ee3e13f16090bdec81d844c40257ab27c070106969f83"
+          "content": "e92192e9ca012fedcaa1e18125d209fe72ff6ac1b2aa46c541622ffad8b0ca72"
         }
       ],
       "properties": [
@@ -65193,7 +65235,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "26496"
+          "value": "27147"
         }
       ]
     },
@@ -96699,6 +96741,7 @@
         "urn:sophiewell:file:source:lib/inflam-v230.js",
         "urn:sophiewell:file:source:lib/inflam-v267.js",
         "urn:sophiewell:file:source:lib/inflam-v268.js",
+        "urn:sophiewell:file:source:lib/inr-variability-v1634.js",
         "urn:sophiewell:file:source:lib/insulin-drip.js",
         "urn:sophiewell:file:source:lib/intake-worker.js",
         "urn:sophiewell:file:source:lib/intake.js",
@@ -99116,6 +99159,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v230.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v267.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v268.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/inr-variability-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/insulin-drip.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/interchest-v693.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/intermacs-profile-v494.js",
@@ -99995,7 +100039,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "45723537ec9766d4"
+      "value": "8cb51d3eb173a99e"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -100007,7 +100051,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3811"
+      "value": "3813"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

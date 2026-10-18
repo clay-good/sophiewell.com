@@ -4,7 +4,7 @@
 // peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
 // ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect, who-umc-causality,
 // gerontonet-adr-risk, hartwig-adr-severity, schumock-thornton-preventability, dips-interaction, mai-score,
-// sedative-load, peds-warfarin-nomogram, budget-impact-pmpm, medrec-discrepancy-rate.
+// sedative-load, peds-warfarin-nomogram, budget-impact-pmpm, medrec-discrepancy-rate, inr-variability.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -35,6 +35,7 @@ import * as SL from '../lib/sedative-load-v1634.js';
 import * as PW from '../lib/peds-warfarin-nomogram-v1634.js';
 import * as BIP from '../lib/budget-impact-pmpm-v1634.js';
 import * as MRD from '../lib/medrec-discrepancy-rate-v1634.js';
+import * as IV from '../lib/inr-variability-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -258,6 +259,18 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['mrd-disc', 'mrd-gold', 'mrd-extra', 'mrd-patients'], () => safe(o, () => {
       show(MRD.medrecDiscrepancyRate({ discrepancies: val('mrd-disc'), goldMeds: val('mrd-gold'), extraMeds: val('mrd-extra'), patients: val('mrd-patients') }), o);
+    }));
+  },
+  'inr-variability'(root) {
+    const w = el('p');
+    w.appendChild(el('label', { for: 'iv-series', text: 'INRs, one per line: the INR, then the weeks since the previous INR (e.g. 2.0 2)' }));
+    w.appendChild(el('br'));
+    w.appendChild(el('textarea', { id: 'iv-series', rows: '5' }));
+    root.appendChild(w);
+    numField(root, 'Target INR', 'iv-target', 'e.g. 2.5');
+    const o = out(); root.appendChild(o);
+    wire(['iv-series', 'iv-target'], () => safe(o, () => {
+      show(IV.inrVariability({ series: val('iv-series'), target: val('iv-target') }), o);
     }));
   },
   // spec-v1634 tool 19 (sources re-read October 16, 2026).

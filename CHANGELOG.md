@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- INR Variability (Fihn Variance Growth Rate): method A, from the formula a Free Access 2013 paper prints in its
+  Figure 1; each INR is entered with its weeks since the previous one, and no cutoff is claimed.
 - Medication Reconciliation Discrepancy Rate (CBE 2456): unintentional discrepancies in admission and discharge
   orders per medication, from the open measure page, checked against its worked example (75 / 150 = 0.5).
 - Budget Impact Per Member Per Month: a budget impact over a period divided by members and months, the form

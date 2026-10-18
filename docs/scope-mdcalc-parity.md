@@ -976,3 +976,5 @@ experience**.
 > v1634, Budget Impact Per Member Per Month — [spec-v1634](spec-v1634.md), which adds `budget-impact-pmpm` once two published analyses proved the formula — is 2314.)
 
 > v1634, Medication Reconciliation Discrepancy Rate — [spec-v1634](spec-v1634.md), which adds `medrec-discrepancy-rate` from the open CBE 2456 measure page — is 2315.)
+
+> v1634, INR Variability (Fihn Variance Growth Rate) — [spec-v1634](spec-v1634.md), which adds `inr-variability` from the formula printed in a Free Access 2013 paper — is 2316.)

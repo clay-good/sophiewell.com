@@ -1191,6 +1191,7 @@ import sedativeLoadV1634 from './adapters/sedative-load-v1634.js';
 import pedsWarfarinNomogramV1634 from './adapters/peds-warfarin-nomogram-v1634.js';
 import budgetImpactPmpmV1634 from './adapters/budget-impact-pmpm-v1634.js';
 import medrecDiscrepancyRateV1634 from './adapters/medrec-discrepancy-rate-v1634.js';
+import inrVariabilityV1634 from './adapters/inr-variability-v1634.js';
 import nccMerpIndexV1634 from './adapters/ncc-merp-index-v1634.js';
 import fdaAdverseEventReportClockV1634 from './adapters/fda-adverse-event-report-clock-v1634.js';
 import orRrToNntV1634 from './adapters/or-rr-to-nnt-v1634.js';
@@ -2537,6 +2538,7 @@ const ADAPTER_MODULES = [
   ['peds-warfarin-nomogram-v1634', pedsWarfarinNomogramV1634],
   ['budget-impact-pmpm-v1634', budgetImpactPmpmV1634],
   ['medrec-discrepancy-rate-v1634', medrecDiscrepancyRateV1634],
+  ['inr-variability-v1634', inrVariabilityV1634],
   ['ncc-merp-index-v1634', nccMerpIndexV1634],
   ['fda-adverse-event-report-clock-v1634', fdaAdverseEventReportClockV1634],
   ['or-rr-to-nnt-v1634', orRrToNntV1634],

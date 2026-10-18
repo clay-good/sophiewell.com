@@ -607,6 +607,12 @@ preventable. PMC12633994 (2025) moves one item and lists three in B against its 
 **Input.** Dated INRs and the target. **Compute.** The variance growth rate.
 **Build gate.** Fihn SD et al. *Ann Intern Med* 1993 (PMID 8280198) was not opened. Several open
 papers use the method; none read prints the formula.
+**Built October 18, 2026** on the owner's reprint rule. Ibrahim S, Jespersen J, Poller L, J Thromb Haemost
+2013;11:1540, Figure 1 (Free Access; its 2014 corrigendum changes results sentences, not the figure), prints
+"Variance growth rate Fihn (method A)": sigma^2 = (1/n) sum (INR_i - target_i)^2 / tau_i, n the number of INRs and
+tau the weeks since the previous INR, citing Fihn 1993. Limdi 2008 (PMC2757655) prints the same terms in a form it
+calls modified (n - 1). The reader enters each INR with its own interval, so none is assumed for the first; no band
+ships. Fihn 1993 itself is still unread.
 
 ### 28. `warfarin-maintenance-adjust` — Warfarin Maintenance Dose Adjustment (RE-LY Algorithm)
 

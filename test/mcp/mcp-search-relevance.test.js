@@ -942,6 +942,7 @@ const PROBES = [
   ['pediatric warfarin protocol', ['peds-warfarin-nomogram']],
   ['budget impact per member per month', ['budget-impact-pmpm']],
   ['medication reconciliation discrepancy rate', ['medrec-discrepancy-rate']],
+  ['inr variance growth rate', ['inr-variability']],
   ['valproic acid level low albumin', ['valproate-albumin-normalized']],
   ['relative risk and odds ratio with confidence interval from a two by two table', ['two-by-two-effect']],
   ['polypharmacy review for an older patient', ['stopp-start-v3', 'beers-check']],
