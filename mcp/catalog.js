@@ -1182,6 +1182,7 @@ import relativeInfantDoseV1634 from './adapters/relative-infant-dose-v1634.js';
 import badriAdrRiskV1634 from './adapters/badri-adr-risk-v1634.js';
 import liverpoolAdrCausalityV1634 from './adapters/liverpool-adr-causality-v1634.js';
 import whoUmcCausalityV1634 from './adapters/who-umc-causality-v1634.js';
+import gerontonetAdrRiskV1634 from './adapters/gerontonet-adr-risk-v1634.js';
 import nccMerpIndexV1634 from './adapters/ncc-merp-index-v1634.js';
 import fdaAdverseEventReportClockV1634 from './adapters/fda-adverse-event-report-clock-v1634.js';
 import orRrToNntV1634 from './adapters/or-rr-to-nnt-v1634.js';
@@ -2519,6 +2520,7 @@ const ADAPTER_MODULES = [
   ['badri-adr-risk-v1634', badriAdrRiskV1634],
   ['liverpool-adr-causality-v1634', liverpoolAdrCausalityV1634],
   ['who-umc-causality-v1634', whoUmcCausalityV1634],
+  ['gerontonet-adr-risk-v1634', gerontonetAdrRiskV1634],
   ['ncc-merp-index-v1634', nccMerpIndexV1634],
   ['fda-adverse-event-report-clock-v1634', fdaAdverseEventReportClockV1634],
   ['or-rr-to-nnt-v1634', orRrToNntV1634],

@@ -915,6 +915,7 @@ import * as relativeInfantDoseV1634 from '../../lib/relative-infant-dose-v1634.j
 import * as badriAdrRiskV1634 from '../../lib/badri-adr-risk-v1634.js';
 import * as liverpoolAdrCausalityV1634 from '../../lib/liverpool-adr-causality-v1634.js';
 import * as whoUmcCausalityV1634 from '../../lib/who-umc-causality-v1634.js';
+import * as gerontonetAdrRiskV1634 from '../../lib/gerontonet-adr-risk-v1634.js';
 import * as nccMerpIndexV1634 from '../../lib/ncc-merp-index-v1634.js';
 import * as fdaAdverseEventReportClockV1634 from '../../lib/fda-adverse-event-report-clock-v1634.js';
 import * as orRrToNntV1634 from '../../lib/or-rr-to-nnt-v1634.js';
@@ -2039,6 +2040,7 @@ const MODULES = {
   'badri-adr-risk-v1634.js': badriAdrRiskV1634,
   'liverpool-adr-causality-v1634.js': liverpoolAdrCausalityV1634,
   'who-umc-causality-v1634.js': whoUmcCausalityV1634,
+  'gerontonet-adr-risk-v1634.js': gerontonetAdrRiskV1634,
   'ncc-merp-index-v1634.js': nccMerpIndexV1634,
   'fda-adverse-event-report-clock-v1634.js': fdaAdverseEventReportClockV1634,
   'or-rr-to-nnt-v1634.js': orRrToNntV1634,

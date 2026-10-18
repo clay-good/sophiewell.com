@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- GerontoNet ADR Risk Score (Onder 2010): points for the number of drugs, a previous ADR, heart failure,
+  liver disease, 4 or more conditions and renal failure, with the cohort's ADR rate at that score. Exactly 5
+  drugs is shown both ways, because the paper's tables and text disagree on that band.
 - Basal insulin switch gives the insulin-naive start from each label's section 2.3 (Lantus, Basaglar,
   Toujeo, Tresiba) by diabetes type, weight or total daily insulin, with the label's ranges kept as ranges.
 - NIOSH Hazardous Drug List Lookup reads a list file: a formulary or stock export (CSV or text) fills the

@@ -9223,6 +9223,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/who-umc-causality-v1634.js (spec-v1634: WHO-UMC causality categories (UMC Table 2, own wording) — clinical disclaimer)
 - `who-umc-causality`
 
+### lib/gerontonet-adr-risk-v1634.js (spec-v1634: GerontoNet ADR risk score (Onder 2010, Table 2) — clinical disclaimer)
+- `gerontonet-adr-risk`
+
 ### lib/valproate-albumin-normalized-v1631.js (spec-v1631: Valproate normalized for albumin (Hermida-Tutor 2005) — clinical disclaimer)
 - `valproate-albumin-normalized`
 

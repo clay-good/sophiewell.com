@@ -2,7 +2,8 @@
 // or-rr-to-nnt, disproportionality-2x2, icer-dominance, liverpool-adr-causality, ncc-merp-index,
 // fda-adverse-event-report-clock, riosord, relative-infant-dose, badri-adr-risk, stoppfall-check,
 // peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
-// ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect, who-umc-causality.
+// ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect, who-umc-causality,
+// gerontonet-adr-risk.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -24,6 +25,7 @@ import * as AL from '../lib/anticholinergic-list-score-v1634.js';
 import * as SS from '../lib/stopp-start-v3-v1634.js';
 import * as TT from '../lib/two-by-two-effect-v1634.js';
 import * as WU from '../lib/who-umc-causality-v1634.js';
+import * as GN from '../lib/gerontonet-adr-risk-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -139,6 +141,21 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(WU.whoUmcCausality(args), o);
+    }));
+  },
+  'gerontonet-adr-risk'(root) {
+    const pairs = [['gn-drugs', 'drugs'], ['gn-adr', 'previousAdr'], ['gn-com', 'comorbidities'], ['gn-hf', 'heartFailure'], ['gn-liver', 'liverDisease'], ['gn-renal', 'renalFailure']];
+    numField(root, 'Number of drugs', 'gn-drugs', 'e.g. 9');
+    selectField(root, 'Previous adverse drug reaction', 'gn-adr', GN.YES_NO);
+    selectField(root, '4 or more comorbid conditions', 'gn-com', GN.YES_NO);
+    selectField(root, 'Heart failure', 'gn-hf', GN.YES_NO);
+    selectField(root, 'Liver disease', 'gn-liver', GN.YES_NO);
+    selectField(root, 'Renal failure (GFR under 60 mL/min)', 'gn-renal', GN.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(GN.gerontonetAdrRisk(args), o);
     }));
   },
   // spec-v1634 tool 19 (sources re-read October 16, 2026).

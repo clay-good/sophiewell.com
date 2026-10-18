@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:539c8715-1fe0-50ec-8fe1-18eec17aa0cc",
+  "serialNumber": "urn:uuid:910bb360-110a-5960-84cd-0fc48530408b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-18T00:19:35.744Z",
+    "timestamp": "2026-10-18T00:53:47.995Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2306 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2307 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6e5903b5d621ba1f76190468153118e4393f881b2b1b769b55376fd5e63769ba"
+          "content": "36b4b0937c049bab0dc1d06737a5519ebd25d4307e7b05c367ddcee7c087bad4"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150477"
+          "value": "150518"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b42b9ccc4396ce45976fc8b8d98d98cf409e5b90a67aa2207de2d56fbaf7d417"
+          "content": "47946215acefbdeecf41f0ed1e86ae326d463272866d7778242fd8d8ed73d54f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "635573"
+          "value": "635709"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0470dfec65e14ef57b24463b73f7bac9fd9a4bd6549c4312ec37d618f04e9c09"
+          "content": "cc3d078c04eaff50d8b3ab1c8f43b754d2dd4b0b10f57c9e4f955df398b935b6"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "290339"
+          "value": "290469"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5e65cf0fc6ebe292e4d694339cb20fc5fd8f1f24ba4379e5689184a450a11691"
+          "content": "7a602bcfe4be3fb67e77ef2adcf116be75b2928b0fbd69ff388337008aac7cd7"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140851"
+          "value": "140901"
         }
       ]
     },
@@ -10661,6 +10661,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/gerontonet-adr-risk-v1634.js",
+      "type": "file",
+      "name": "lib/gerontonet-adr-risk-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "da5d6ec237ae27b45b5a748a2940e701dcbf770173857ce73644d4b8c8ca1e55"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4639"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ghent-marfan-v821.js",
       "type": "file",
       "name": "lib/ghent-marfan-v821.js",
@@ -17345,7 +17366,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fc8e78addf6b5dcee59dd751b416cb50a0a7661ea97f9e6b2bc75afa1497d474"
+          "content": "cd7b5ca523cb93f7d050078bfc07996b616f0b785c8e315768fcb41412d18668"
         }
       ],
       "properties": [
@@ -17355,7 +17376,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3017953"
+          "value": "3018907"
         }
       ]
     },
@@ -41594,6 +41615,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gerontonet-adr-risk-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/gerontonet-adr-risk-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1ae3fecd5f6f543ecc2351aa382ba94fd2b3f92323d7b36de0c6f956cd2c8f79"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1376"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ghent-marfan-v821.js",
       "type": "file",
       "name": "mcp/adapters/ghent-marfan-v821.js",
@@ -60206,7 +60248,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "965eeb93d24adba1ca642f5e92b3c32136db4830fd3e5d0367b0bb70a2ab3215"
+          "content": "41aac8a087fe208844033f1df4ef32cbd174a73dcbf55f87b066223242de5ade"
         }
       ],
       "properties": [
@@ -60216,7 +60258,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "162405"
+          "value": "162540"
         }
       ]
     },
@@ -64805,7 +64847,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8b41ebd3e206951af08e13fa91ee77c9662c32eb74bf661cb0e5f9e26bdaff41"
+          "content": "19e5befe03c7423842eb2284d824d5ccb8f81f9f66a4ac816c615cea45eb4dd4"
         }
       ],
       "properties": [
@@ -64815,7 +64857,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "18688"
+          "value": "19649"
         }
       ]
     },
@@ -96187,6 +96229,7 @@
         "urn:sophiewell:file:source:lib/generator-breakthrough-check-v1635.js",
         "urn:sophiewell:file:source:lib/gerdq-v679.js",
         "urn:sophiewell:file:source:lib/geri-v241.js",
+        "urn:sophiewell:file:source:lib/gerontonet-adr-risk-v1634.js",
         "urn:sophiewell:file:source:lib/ghent-marfan-v821.js",
         "urn:sophiewell:file:source:lib/gi-drug-dose-check-v1632.js",
         "urn:sophiewell:file:source:lib/gi-v126.js",
@@ -98608,6 +98651,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/generator-breakthrough-check-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gerdq-v679.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/geri-v241.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/gerontonet-adr-risk-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ghent-marfan-v821.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gi-drug-dose-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gi-v126.js",
@@ -99599,7 +99643,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "539c87151fe0c0ec"
+      "value": "910bb360110ab960"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99611,7 +99655,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3793"
+      "value": "3795"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

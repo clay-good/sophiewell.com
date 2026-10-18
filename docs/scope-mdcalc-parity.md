@@ -964,3 +964,5 @@ experience**.
 > v1631 and v1634, Valproate Level Normalized for Low Albumin and WHO-UMC Causality Category — [spec-v1631](spec-v1631.md), [spec-v1634](spec-v1634.md), which add `valproate-albumin-normalized` and `who-umc-causality` — is 2308.)
 
 > v1642, two duplicates retired — [spec-v1642](spec-v1642.md), which retires `hatch-af` into `hatch-score` and `hill-flap-valve` into `hill-grade` — is 2306.)
+
+> v1634, GerontoNet ADR Risk Score — [spec-v1634](spec-v1634.md), which adds `gerontonet-adr-risk` (its source opened on October 17, 2026) — is 2307.)
