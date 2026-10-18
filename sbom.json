@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e87da4cd-6fc6-5b82-8ceb-a05f7426edeb",
+  "serialNumber": "urn:uuid:1372afd5-6736-5233-8bbb-d5cbf31fe52f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-18T01:30:44.071Z",
+    "timestamp": "2026-10-18T02:04:04.537Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2309 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2312 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3062460c27db914fb3f70da074031531dab6bda6ca61a235e2f9f39c65b1efab"
+          "content": "254b4f5ac8530040737b4a3398b8d80d064f40f03b5fa82dca7ecb8bd6c97f18"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150640"
+          "value": "150804"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5b4bfdc972920c013c94efea9e7f82f7b3a3f929e360f2e36318c25b66abc958"
+          "content": "376563714dadfdb90cb85cac952e31ece4f29397c4f90d573a0765c8a6dbd202"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "636035"
+          "value": "636465"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c6f260cc39f2403176349c6fba5a1ac486e28e41a66e4213618b2ce8ccd0c78f"
+          "content": "d69c89bdb432637851663ca2239bbe22c31bff3b591b89fff4046a8e93ca958c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "290743"
+          "value": "291114"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f64ab04f5f30a4d1bf8a1e0ba81aab47dfab9855c844b62428390154b49e195b"
+          "content": "36b5d9394c718c857b64cd647c4412b77a87329bd3fc53f6ed4b59d90874e48c"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141055"
+          "value": "141227"
         }
       ]
     },
@@ -7591,6 +7591,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5102"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/dips-interaction-v1634.js",
+      "type": "file",
+      "name": "lib/dips-interaction-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bc56a98a1cd52b322364f0c529ee10b0f26ead3f69ea2fd220d6c62bad838c04"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3963"
         }
       ]
     },
@@ -16373,6 +16394,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/mai-score-v1634.js",
+      "type": "file",
+      "name": "lib/mai-score-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "98690e593d3b3de3df6ae7d31e2093f60dd9dc13e3da52eb2e9e397fc30f751a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4150"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/malaria-pregnancy-treatment-v1551.js",
       "type": "file",
       "name": "lib/malaria-pregnancy-treatment-v1551.js",
@@ -17387,7 +17429,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f148d1223e66765e3509110bfb6181b7c7441b044d8f0c1b51881783cdb25e82"
+          "content": "14aa5d1e273f51f076614be24cb42dc43da100b28f6e5c7f185fd0283c6f79f7"
         }
       ],
       "properties": [
@@ -17397,7 +17439,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3020896"
+          "value": "3023555"
         }
       ]
     },
@@ -26995,6 +27037,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10937"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/sedative-load-v1634.js",
+      "type": "file",
+      "name": "lib/sedative-load-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e84067bd900385e801896780149870623a40b4ca8b92ff4e7a305b845ab2f07c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2287"
         }
       ]
     },
@@ -38801,6 +38864,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dips-interaction-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/dips-interaction-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e3be884db6365f0d33ee3812bee821ed0772bd18e7e06468a2ed211a617b5da9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "934"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/disability-rating-scale-v1433.js",
       "type": "file",
       "name": "mcp/adapters/disability-rating-scale-v1433.js",
@@ -46735,6 +46819,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6388"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mai-score-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/mai-score-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c4ea28c61279cc4403519f88b1f1a3b2e30882e7a9d2673fd1f81116f24e5e7e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1116"
         }
       ]
     },
@@ -55958,6 +56063,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/sedative-load-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/sedative-load-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ced40ea7cca87143cca29f2d371529736e893d1e4eba9c1c46699e3b813ea5a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "760"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/seinsheimer-subtroch-v413.js",
       "type": "file",
       "name": "mcp/adapters/seinsheimer-subtroch-v413.js",
@@ -60332,7 +60458,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "63e83535877b44fff6c03da31cb337de346ddf05dce8fba48ba78be86c2d05b6"
+          "content": "17f90292956eb88a0ec837011f6303bd6faed75856cbd78c4a0e87ce8c8db459"
         }
       ],
       "properties": [
@@ -60342,7 +60468,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "162866"
+          "value": "163201"
         }
       ]
     },
@@ -64931,7 +65057,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "918f9ee212a4e94ff0f015673ed33168dc91b93a4be04fd8e28394ccd9159e23"
+          "content": "2d75af870e290a0556618a1490b5642d7756893e4711bd92395192d1896912da"
         }
       ],
       "properties": [
@@ -64941,7 +65067,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "21966"
+          "value": "24207"
         }
       ]
     },
@@ -96167,6 +96293,7 @@
         "urn:sophiewell:file:source:lib/dilution-c1v1-v1629.js",
         "urn:sophiewell:file:source:lib/dimeglio-clubfoot-v387.js",
         "urn:sophiewell:file:source:lib/diphtheria-antitoxin-dose-v1560.js",
+        "urn:sophiewell:file:source:lib/dips-interaction-v1634.js",
         "urn:sophiewell:file:source:lib/disability-rating-scale-v1433.js",
         "urn:sophiewell:file:source:lib/disproportionality-2x2-v1634.js",
         "urn:sophiewell:file:source:lib/dive-v257.js",
@@ -96585,6 +96712,7 @@
         "urn:sophiewell:file:source:lib/ma-criteria-check.js",
         "urn:sophiewell:file:source:lib/magi-household-v1507.js",
         "urn:sophiewell:file:source:lib/magic-gvhd-v577.js",
+        "urn:sophiewell:file:source:lib/mai-score-v1634.js",
         "urn:sophiewell:file:source:lib/malaria-pregnancy-treatment-v1551.js",
         "urn:sophiewell:file:source:lib/mallampati-v810.js",
         "urn:sophiewell:file:source:lib/malt-ipi-v700.js",
@@ -97091,6 +97219,7 @@
         "urn:sophiewell:file:source:lib/search-corpus.js",
         "urn:sophiewell:file:source:lib/search.js",
         "urn:sophiewell:file:source:lib/secondary-mitral-regurgitation-stage-v849.js",
+        "urn:sophiewell:file:source:lib/sedative-load-v1634.js",
         "urn:sophiewell:file:source:lib/seinsheimer-subtroch-v413.js",
         "urn:sophiewell:file:source:lib/serial-dilution-v1629.js",
         "urn:sophiewell:file:source:lib/severe-malaria-injectable-v1551.js",
@@ -98601,6 +98730,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dilution-c1v1-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dimeglio-clubfoot-v387.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diphtheria-antitoxin-dose-v1560.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/dips-interaction-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/disability-rating-scale-v1433.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/disproportionality-2x2-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dive-v257.js",
@@ -98979,6 +99109,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ma-criteria-check.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/magi-household-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/magic-gvhd-v577.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mai-score-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/malaria-pregnancy-treatment-v1551.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mallampati-v810.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/malt-ipi-v700.js",
@@ -99418,6 +99549,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/sea-guideline-v861.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sealed-source-leak-test-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/secondary-mitral-regurgitation-stage-v849.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/sedative-load-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/seinsheimer-subtroch-v413.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/serial-dilution-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/severe-malaria-injectable-v1551.js",
@@ -99731,7 +99863,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e87da4cd6fc6bb82"
+      "value": "1372afd56736c233"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99743,7 +99875,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3799"
+      "value": "3805"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

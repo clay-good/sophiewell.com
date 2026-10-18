@@ -107,7 +107,11 @@ RDI = delivered ÷ planned × 100, per drug and averaged across drugs.
 **Build gate.** The paper was not opened (PubMed carries no abstract for it). See Verify at
 build. No interpretation band ships: the 85% line comes from later observational work and is not
 Hryniuk's. Re-checked October 17, 2026: ascopubs.org now serves the landing page, but the full
-text and PDF are a $45 purchase, so the paper stays unread.
+text and PDF are a $45 purchase, so the paper stays unread. Under the owner's reprint rule (October 17, 2026) open papers were
+read: they agree that RDI is delivered over planned dose intensity (PMC12905096, PMC10994250), but not on the time
+in the delivered intensity. PMC10994250's worked example gives 75% for a patient who stopped after 3 of 4 full,
+on-time cycles (the planned duration kept as the denominator), where this spec's "first dose to the planned end of
+the last delivered cycle" gives 100%. Two definitions that answer the same patient differently: still not built.
 
 ### 4. `cumulative-dose-limit` — Lifetime Cumulative Dose Against the Label
 

@@ -3,7 +3,8 @@
 // fda-adverse-event-report-clock, riosord, relative-infant-dose, badri-adr-risk, stoppfall-check,
 // peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
 // ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect, who-umc-causality,
-// gerontonet-adr-risk, hartwig-adr-severity, schumock-thornton-preventability.
+// gerontonet-adr-risk, hartwig-adr-severity, schumock-thornton-preventability, dips-interaction, mai-score,
+// sedative-load.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -28,6 +29,9 @@ import * as WU from '../lib/who-umc-causality-v1634.js';
 import * as GN from '../lib/gerontonet-adr-risk-v1634.js';
 import * as HW from '../lib/hartwig-adr-severity-v1634.js';
 import * as ST from '../lib/schumock-thornton-preventability-v1634.js';
+import * as DI from '../lib/dips-interaction-v1634.js';
+import * as MA from '../lib/mai-score-v1634.js';
+import * as SL from '../lib/sedative-load-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -184,6 +188,40 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of q) args[arg] = val(dom);
       show(ST.schumockThorntonPreventability(args), o);
+    }));
+  },
+  'dips-interaction'(root) {
+    const DOM = { reports: 'dip-1', precipitant: 'dip-2', object: 'dip-3', timeCourse: 'dip-4', dechallenge: 'dip-5', rechallenge: 'dip-6', alternatives: 'dip-7', levels: 'dip-8', objective: 'dip-9', doseResponse: 'dip-10' };
+    for (const [arg, label] of DI.QUESTIONS) selectField(root, arg === 'rechallenge' ? `${label} (skip if not stopped)` : label, DOM[arg], DI.ANSWERS);
+    const o = out(); root.appendChild(o);
+    wire(DI.QUESTIONS.map(([arg]) => DOM[arg]), () => safe(o, () => {
+      const args = {};
+      for (const [arg] of DI.QUESTIONS) args[arg] = val(DOM[arg]);
+      show(DI.dipsInteraction(args), o);
+    }));
+  },
+  'mai-score'(root) {
+    const DOM = { indication: 'mai-ind', effectiveness: 'mai-eff', dosage: 'mai-dose', directionsCorrect: 'mai-dirc', interactionsDrug: 'mai-ddi', interactionsDisease: 'mai-ddx', directionsPractical: 'mai-dirp', duplication: 'mai-dup', duration: 'mai-dur', expense: 'mai-exp' };
+    for (const [arg, label] of MA.CRITERIA) selectField(root, label, DOM[arg], MA.RATINGS);
+    const w = el('p');
+    w.appendChild(el('label', { for: 'mai-others', text: 'Other drugs\' MAI scores for a regimen total (optional, one per line)' }));
+    w.appendChild(el('br'));
+    w.appendChild(el('textarea', { id: 'mai-others', rows: '3' }));
+    root.appendChild(w);
+    const o = out(); root.appendChild(o);
+    const ids = [...MA.CRITERIA.map(([arg]) => DOM[arg]), 'mai-others'];
+    wire(ids, () => safe(o, () => {
+      const args = { otherScores: val('mai-others') };
+      for (const [arg] of MA.CRITERIA) args[arg] = val(DOM[arg]);
+      show(MA.maiScore(args), o);
+    }));
+  },
+  'sedative-load'(root) {
+    numField(root, 'Group 1 drugs (primary sedatives)', 'sl-g1', 'e.g. 1');
+    numField(root, 'Group 2 drugs (sedation a prominent side effect)', 'sl-g2', 'e.g. 2');
+    const o = out(); root.appendChild(o);
+    wire(['sl-g1', 'sl-g2'], () => safe(o, () => {
+      show(SL.sedativeLoad({ group1: val('sl-g1'), group2: val('sl-g2') }), o);
     }));
   },
   // spec-v1634 tool 19 (sources re-read October 16, 2026).

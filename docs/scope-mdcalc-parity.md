@@ -968,3 +968,5 @@ experience**.
 > v1634, GerontoNet ADR Risk Score — [spec-v1634](spec-v1634.md), which adds `gerontonet-adr-risk` (its source opened on October 17, 2026) — is 2307.)
 
 > v1634, ADR Severity Level (Hartwig and Siegel) and ADR Preventability (Modified Schumock and Thornton) — [spec-v1634](spec-v1634.md), which add `hartwig-adr-severity` and `schumock-thornton-preventability` from verified reprints — is 2309.)
+
+> v1634, Drug Interaction Probability Scale, Medication Appropriateness Index (Summated) and Sedative Load — [spec-v1634](spec-v1634.md), which add `dips-interaction`, `mai-score` and `sedative-load` from verified reprints — is 2312.)

@@ -1185,6 +1185,9 @@ import whoUmcCausalityV1634 from './adapters/who-umc-causality-v1634.js';
 import gerontonetAdrRiskV1634 from './adapters/gerontonet-adr-risk-v1634.js';
 import hartwigAdrSeverityV1634 from './adapters/hartwig-adr-severity-v1634.js';
 import schumockThorntonPreventabilityV1634 from './adapters/schumock-thornton-preventability-v1634.js';
+import dipsInteractionV1634 from './adapters/dips-interaction-v1634.js';
+import maiScoreV1634 from './adapters/mai-score-v1634.js';
+import sedativeLoadV1634 from './adapters/sedative-load-v1634.js';
 import nccMerpIndexV1634 from './adapters/ncc-merp-index-v1634.js';
 import fdaAdverseEventReportClockV1634 from './adapters/fda-adverse-event-report-clock-v1634.js';
 import orRrToNntV1634 from './adapters/or-rr-to-nnt-v1634.js';
@@ -2525,6 +2528,9 @@ const ADAPTER_MODULES = [
   ['gerontonet-adr-risk-v1634', gerontonetAdrRiskV1634],
   ['hartwig-adr-severity-v1634', hartwigAdrSeverityV1634],
   ['schumock-thornton-preventability-v1634', schumockThorntonPreventabilityV1634],
+  ['dips-interaction-v1634', dipsInteractionV1634],
+  ['mai-score-v1634', maiScoreV1634],
+  ['sedative-load-v1634', sedativeLoadV1634],
   ['ncc-merp-index-v1634', nccMerpIndexV1634],
   ['fda-adverse-event-report-clock-v1634', fdaAdverseEventReportClockV1634],
   ['or-rr-to-nnt-v1634', orRrToNntV1634],

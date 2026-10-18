@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Drug Interaction Probability Scale (DIPS), Medication Appropriateness Index (summated, 0 to 18 per drug)
+  and Sedative Load (Linjakumpu model), each read from open reprints that agree and cited beside the
+  original paper.
 - ADR Severity Level (Hartwig and Siegel), levels 1 to 7 with mild, moderate and severe bands, and ADR
   Preventability (Modified Schumock and Thornton): both read from open reprints that agree, cited beside
   the original papers.

@@ -9232,6 +9232,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/schumock-thornton-preventability-v1634.js (spec-v1634: modified Schumock and Thornton preventability, from reprints — clinical disclaimer)
 - `schumock-thornton-preventability`
 
+### lib/dips-interaction-v1634.js (spec-v1634: Drug Interaction Probability Scale, from reprints — clinical disclaimer)
+- `dips-interaction`
+
+### lib/mai-score-v1634.js (spec-v1634: Medication Appropriateness Index summated, from reprints — clinical disclaimer)
+- `mai-score`
+
+### lib/sedative-load-v1634.js (spec-v1634: Linjakumpu sedative load, from reprints — clinical disclaimer)
+- `sedative-load`
+
 ### lib/valproate-albumin-normalized-v1631.js (spec-v1631: Valproate normalized for albumin (Hermida-Tutor 2005) — clinical disclaimer)
 - `valproate-albumin-normalized`
 
