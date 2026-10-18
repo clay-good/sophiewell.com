@@ -65,3 +65,21 @@ test('a superseded label withholds its figure', () => {
   const r = d({ to: 'lantus', from: 'nph', frequency: 'twice', totalUnits: 50 }, now, T);
   assert.deepEqual([r.withheld, r.startUnits], [true, undefined]);
 });
+
+// spec-v1633 tool 8, second mode: the insulin-naive start, section 2.3 of each label (re-read October 17, 2026).
+test('insulin-naive start reads section 2.3 of the target label', async () => {
+  const { basalInsulinSwitch: bis } = await import('../../lib/basal-insulin-switch-v1633.js');
+  const now = new Date('2026-10-17T12:00:00Z');
+  const n = (o) => bis({ from: 'naive', ...o }, now);
+  assert.equal(n({ to: 'lantus', diabetesType: '2', weightKg: '80' }).startUnits, 16);
+  assert.match(n({ to: 'lantus', diabetesType: '2', weightKg: '80' }).band, /or up to 10 units/);
+  assert.equal(n({ to: 'basaglar', diabetesType: '1', totalDailyInsulin: '40' }).startUnits, 13);
+  const tj = n({ to: 'toujeo', diabetesType: '1', totalDailyInsulin: '40' });
+  assert.deepEqual([tj.startUnitsLow, tj.startUnitsHigh], [13, 20]);
+  const est = n({ to: 'tresiba', diabetesType: '1', weightKg: '70' });
+  assert.deepEqual([est.totalLow, est.totalHigh, est.startUnitsLow, est.startUnitsHigh], [14, 28, 4, 14]);
+  assert.equal(n({ to: 'tresiba', diabetesType: '2' }).startUnits, 10);
+  assert.equal(n({ to: 'toujeo', diabetesType: '2', weightKg: '90' }).startUnits, 18);
+  assert.equal(n({ to: 'lantus', diabetesType: '1', weightKg: '70' }).valid, false, 'glargine 100 labels give no weight rule for type 1');
+  assert.equal(n({ to: 'lantus' }).valid, false);
+});

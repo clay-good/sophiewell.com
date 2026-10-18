@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a16425273cb73080`
-Generated: 2026-10-17T23:54:41.397Z
+Build ID: `539c87151fe0c0ec`
+Generated: 2026-10-18T00:19:35.744Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -151,7 +151,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/banff-tcmr-v510.js` | 6562 | `3170dc54a5927851067ea0c5c3006865eb39e33267c2379e2e99b2cb1c39ef33` |
 | `lib/barrack-cement-v484.js` | 3367 | `9bdaeb3a9f9da107261f541591c89e08662ae49770e90a32a9e41fe7a6ba97be` |
 | `lib/barrow-ccf-v440.js` | 3198 | `f52772137a4282c641f7235b698a95e4949eed029e6f522be7151d8e236f7f29` |
-| `lib/basal-insulin-switch-v1633.js` | 9186 | `a1eac46f84cf90f80d656e489afa5ae0ca91a7b919b0095ceab1b48fe2f29745` |
+| `lib/basal-insulin-switch-v1633.js` | 16666 | `fbb0a0c2d6f091f05a3553eaa52993f88d2323feda6e46ee46348bd9b48e0ced` |
 | `lib/batch-tools.js` | 64488 | `09fff764b6c15ea63468a0a666b6e0e6920ee6a1dfb9ab6ac9eac80def78ef66` |
 | `lib/bauer-score-v603.js` | 12642 | `6873a9af09ffadc793d0697ccff74aab1b75bca7c58face73f2453e564d40ea6` |
 | `lib/bctq-v774.js` | 3483 | `6d1cab9250cf31f91e435c3af2833721a7c424eb755d8edf1a1e5287d2f2ec9f` |
@@ -1654,7 +1654,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/banff-tcmr-v510.js` | 1874 | `cf04cf83f3b65aa2a919bf6eca486a2bd07942c771c42cc1e3a1ac4830eba349` |
 | `mcp/adapters/barrack-cement-v484.js` | 1198 | `4e08817dee62d8d1d3631495041c069de3b9eb9371779b8528daa63ff932cd45` |
 | `mcp/adapters/barrow-ccf-v440.js` | 1154 | `fb9e6a15d509b10cced4184a03f87cf9e7098c83d52fc6dced1eff8089a41c5b` |
-| `mcp/adapters/basal-insulin-switch-v1633.js` | 1637 | `9a1773a333787ef429889b2d859613f71cd32f4cbf07459b0e520c6e6072a551` |
+| `mcp/adapters/basal-insulin-switch-v1633.js` | 2196 | `17104ec2af816a7bb69b63b5efa0f661f9a96da729ac7917d25b5be6929a0893` |
 | `mcp/adapters/bauer-score-v603.js` | 4999 | `443c81d6fe500ddc059e280ff3d3c5c8d8f70664cfd1ba6ef8b8412cbbbd3b77` |
 | `mcp/adapters/bctq-v774.js` | 2204 | `1659d3b1f1dfec74fc9ad801b096da744cb79f7c72a76465fbed3a374945186b` |
 | `mcp/adapters/bell-nec-v431.js` | 1258 | `e77329fafe326bcf385f097ca4733d52e5d08cd91b57e15daa33db5a80486530` |
@@ -3117,7 +3117,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1630.js` | 25780 | `4f04669fefb6c6f994a42295de5376d0ad08b830aec1237c485a1f51450de3c6` |
 | `views/group-v1631.js` | 25133 | `631267171752d0f5edbb4fd63b488aa421539f45e216632854efe4cf7f2eb0cd` |
 | `views/group-v1632.js` | 22558 | `62990e562310d3a75a44e49fdd2e2ae62c71f6dbb0f8d93b91b46ad9fcbcd62b` |
-| `views/group-v1633.js` | 31461 | `cffd3177d578e4b1587f7f6fc7b5828d4a164ba47f4c9aa15d11678d952f5803` |
+| `views/group-v1633.js` | 31917 | `3a9e5ea96b6953d825885f8b9273086c2f509dd71f8e5f301ded66a4b1d19429` |
 | `views/group-v1634.js` | 18688 | `8b41ebd3e206951af08e13fa91ee77c9662c32eb74bf661cb0e5f9e26bdaff41` |
 | `views/group-v1635.js` | 41290 | `1b7c77fb66a2aef0b4b97d831f7dacd468d71261fdf8af9e9865b3b2c6f42415` |
 | `views/group-v1636.js` | 24773 | `2e7abc7cf86fe4e88d696c0bff9abb47021289c37e63c21b8fed512b6052edd6` |

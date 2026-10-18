@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Basal insulin switch gives the insulin-naive start from each label's section 2.3 (Lantus, Basaglar,
+  Toujeo, Tresiba) by diabetes type, weight or total daily insulin, with the label's ranges kept as ranges.
 - NIOSH Hazardous Drug List Lookup reads a list file: a formulary or stock export (CSV or text) fills the
   list, using its generic-name column, and a drug list dropped on the home page is offered to this tool.
 - Valproate level normalized for low albumin (Hermida-Tutor free-fraction table), with the estimated free level

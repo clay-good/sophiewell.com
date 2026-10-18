@@ -211,12 +211,16 @@ export const renderers = {
     }));
   },
   'basal-insulin-switch'(root) {
-    const pairs = [['bis-to', 'to'], ['bis-from', 'from'], ['bis-freq', 'frequency'], ['bis-units', 'totalUnits'], ['bis-pop', 'population']];
+    const pairs = [['bis-to', 'to'], ['bis-from', 'from'], ['bis-freq', 'frequency'], ['bis-units', 'totalUnits'], ['bis-pop', 'population'], ['bis-type', 'diabetesType'], ['bis-wt', 'weightKg'], ['bis-tdi', 'totalDailyInsulin']];
     selectField(root, 'Basal insulin being started', 'bis-to', BI.TARGETS);
-    selectField(root, 'Basal insulin being stopped', 'bis-from', BI.SOURCES);
+    selectField(root, 'Basal insulin being stopped (or not on insulin)', 'bis-from', BI.SOURCES);
     selectField(root, 'Current basal insulin is taken', 'bis-freq', BI.FREQUENCIES);
     numField(root, 'Current total daily basal dose, units', 'bis-units', '');
     selectField(root, 'Patient (asked for Tresiba)', 'bis-pop', BI.POPULATIONS);
+    // spec-v1633 tool 8, second mode: the insulin-naive start from section 2.3 of the same labels.
+    selectField(root, 'Insulin-naive start: diabetes type', 'bis-type', BI.DIABETES_TYPES);
+    numField(root, 'Insulin-naive start: weight, kg', 'bis-wt', '');
+    numField(root, 'Insulin-naive type 1: total daily insulin, units', 'bis-tdi', '');
     const o = out(); root.appendChild(o);
     wire(pairs.map(([d]) => d), () => safe(o, () => {
       const args = {};
