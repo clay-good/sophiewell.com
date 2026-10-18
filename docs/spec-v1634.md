@@ -614,6 +614,11 @@ papers use the method; none read prints the formula.
 band. **Build gate.** Van Spall HGC et al. *Circulation* 2012;126:2309 was not opened (the
 publisher returned 403); the abstract-level summary says "10% to 15% weekly dose changes" only.
 The INR bands and percent changes are needed.
+Re-checked October 17, 2026 under the owner's reprint rule. The article page in a browser shows the abstract only
+(paywalled). One open paper (Petch 2024, PMC10894214) prints six INR bands as its "benchmark algorithm" and cites Van
+Spall. It does not say the bands are RE-LY's, and its 2.0-3.0 and 3.0-4.0 bands overlap at 3.0. Nieuwlaat 2012
+(Thromb Haemost, PMID 23015161) is not open. One unattributed reprint with an ambiguous edge does not prove the
+algorithm, so the tool stays gated.
 
 ### 29. `medrec-discrepancy-rate` — Medication Reconciliation Discrepancy Rate
 
