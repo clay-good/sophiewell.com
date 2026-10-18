@@ -2743,6 +2743,8 @@ const UTILITIES = [
   { id: 'liverpool-adr-causality', name: 'Liverpool ADR Causality Assessment (Gallagher 2011)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'who-umc-causality', name: 'WHO-UMC Causality Category', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gerontonet-adr-risk', name: 'GerontoNet ADR Risk Score', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hartwig-adr-severity', name: 'ADR Severity Level (Hartwig and Siegel)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'schumock-thornton-preventability', name: 'ADR Preventability (Modified Schumock and Thornton)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ncc-merp-index', name: 'Medication Error Category A to I (NCC MERP Index)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'fda-adverse-event-report-clock', name: 'FDA Postmarketing Adverse Event Report Deadlines (21 CFR 314.80, 600.80, 310.305)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'riosord', name: 'RIOSORD Opioid Overdose Risk Index (Veterans and Commercial Versions)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

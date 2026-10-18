@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:910bb360-110a-5960-84cd-0fc48530408b",
+  "serialNumber": "urn:uuid:e87da4cd-6fc6-5b82-8ceb-a05f7426edeb",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-18T00:53:47.995Z",
+    "timestamp": "2026-10-18T01:30:44.071Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2307 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2309 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "36b4b0937c049bab0dc1d06737a5519ebd25d4307e7b05c367ddcee7c087bad4"
+          "content": "3062460c27db914fb3f70da074031531dab6bda6ca61a235e2f9f39c65b1efab"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150518"
+          "value": "150640"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "47946215acefbdeecf41f0ed1e86ae326d463272866d7778242fd8d8ed73d54f"
+          "content": "5b4bfdc972920c013c94efea9e7f82f7b3a3f929e360f2e36318c25b66abc958"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "635709"
+          "value": "636035"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cc3d078c04eaff50d8b3ab1c8f43b754d2dd4b0b10f57c9e4f955df398b935b6"
+          "content": "c6f260cc39f2403176349c6fba5a1ac486e28e41a66e4213618b2ce8ccd0c78f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "290469"
+          "value": "290743"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7a602bcfe4be3fb67e77ef2adcf116be75b2928b0fbd69ff388337008aac7cd7"
+          "content": "f64ab04f5f30a4d1bf8a1e0ba81aab47dfab9855c844b62428390154b49e195b"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "140901"
+          "value": "141055"
         }
       ]
     },
@@ -11459,6 +11459,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hartwig-adr-severity-v1634.js",
+      "type": "file",
+      "name": "lib/hartwig-adr-severity-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c78ad23c44ab5a0be8e2adcc2264b23f16fbdce4519e9a91948dddab39f98196"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4505"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hash.js",
       "type": "file",
       "name": "lib/hash.js",
@@ -17366,7 +17387,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cd7b5ca523cb93f7d050078bfc07996b616f0b785c8e315768fcb41412d18668"
+          "content": "f148d1223e66765e3509110bfb6181b7c7441b044d8f0c1b51881783cdb25e82"
         }
       ],
       "properties": [
@@ -17376,7 +17397,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3018907"
+          "value": "3020896"
         }
       ]
     },
@@ -26638,6 +26659,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4955"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/schumock-thornton-preventability-v1634.js",
+      "type": "file",
+      "name": "lib/schumock-thornton-preventability-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4099"
         }
       ]
     },
@@ -42350,6 +42392,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hartwig-adr-severity-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/hartwig-adr-severity-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c95fd3dd1cba2ec38d72f9cb08577d819556d643a73a36de0258c6bf0dd51ccb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1573"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hat-treatment-v1563.js",
       "type": "file",
       "name": "mcp/adapters/hat-treatment-v1563.js",
@@ -55622,6 +55685,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/schumock-thornton-preventability-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/schumock-thornton-preventability-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1076046b53bf7fa9c95d1907670da32babe615ba9b0870eb6b66061537b01122"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1699"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/schwab-england-v385.js",
       "type": "file",
       "name": "mcp/adapters/schwab-england-v385.js",
@@ -60248,7 +60332,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "41aac8a087fe208844033f1df4ef32cbd174a73dcbf55f87b066223242de5ade"
+          "content": "63e83535877b44fff6c03da31cb337de346ddf05dce8fba48ba78be86c2d05b6"
         }
       ],
       "properties": [
@@ -60258,7 +60342,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "162540"
+          "value": "162866"
         }
       ]
     },
@@ -64847,7 +64931,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "19e5befe03c7423842eb2284d824d5ccb8f81f9f66a4ac816c615cea45eb4dd4"
+          "content": "918f9ee212a4e94ff0f015673ed33168dc91b93a4be04fd8e28394ccd9159e23"
         }
       ],
       "properties": [
@@ -64857,7 +64941,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "19649"
+          "value": "21966"
         }
       ]
     },
@@ -96267,6 +96351,7 @@
         "urn:sophiewell:file:source:lib/hardy-adenoma-v391.js",
         "urn:sophiewell:file:source:lib/harrington-acetabular-v605.js",
         "urn:sophiewell:file:source:lib/hartofilakidis-ddh-v370.js",
+        "urn:sophiewell:file:source:lib/hartwig-adr-severity-v1634.js",
         "urn:sophiewell:file:source:lib/hash.js",
         "urn:sophiewell:file:source:lib/hat-treatment-v1563.js",
         "urn:sophiewell:file:source:lib/hattrup-johnson-v492.js",
@@ -96990,6 +97075,7 @@
         "urn:sophiewell:file:source:lib/schisto-community-treatment-v1562.js",
         "urn:sophiewell:file:source:lib/schobinger-avm-v497.js",
         "urn:sophiewell:file:source:lib/schofield-v779.js",
+        "urn:sophiewell:file:source:lib/schumock-thornton-preventability-v1634.js",
         "urn:sophiewell:file:source:lib/schwab-england-v385.js",
         "urn:sophiewell:file:source:lib/scoring-v4.js",
         "urn:sophiewell:file:source:lib/scoring-v5.js",
@@ -98686,6 +98772,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hardy-adenoma-v391.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/harrington-acetabular-v605.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hartofilakidis-ddh-v370.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hartwig-adr-severity-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hat-treatment-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hattrup-johnson-v492.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hawkins-talar-v342.js",
@@ -99318,6 +99405,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/schisto-community-treatment-v1562.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/schobinger-avm-v497.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/schofield-v779.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/schumock-thornton-preventability-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/schwab-england-v385.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/scoring-v4.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/scoring-v5.js",
@@ -99643,7 +99731,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "910bb360110ab960"
+      "value": "e87da4cd6fc6bb82"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99655,7 +99743,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3795"
+      "value": "3799"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

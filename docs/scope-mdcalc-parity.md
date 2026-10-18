@@ -966,3 +966,5 @@ experience**.
 > v1642, two duplicates retired — [spec-v1642](spec-v1642.md), which retires `hatch-af` into `hatch-score` and `hill-flap-valve` into `hill-grade` — is 2306.)
 
 > v1634, GerontoNet ADR Risk Score — [spec-v1634](spec-v1634.md), which adds `gerontonet-adr-risk` (its source opened on October 17, 2026) — is 2307.)
+
+> v1634, ADR Severity Level (Hartwig and Siegel) and ADR Preventability (Modified Schumock and Thornton) — [spec-v1634](spec-v1634.md), which add `hartwig-adr-severity` and `schumock-thornton-preventability` from verified reprints — is 2309.)

@@ -9226,6 +9226,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/gerontonet-adr-risk-v1634.js (spec-v1634: GerontoNet ADR risk score (Onder 2010, Table 2) — clinical disclaimer)
 - `gerontonet-adr-risk`
 
+### lib/hartwig-adr-severity-v1634.js (spec-v1634: Hartwig and Siegel ADR severity level, from reprints — clinical disclaimer)
+- `hartwig-adr-severity`
+
+### lib/schumock-thornton-preventability-v1634.js (spec-v1634: modified Schumock and Thornton preventability, from reprints — clinical disclaimer)
+- `schumock-thornton-preventability`
+
 ### lib/valproate-albumin-normalized-v1631.js (spec-v1631: Valproate normalized for albumin (Hermida-Tutor 2005) — clinical disclaimer)
 - `valproate-albumin-normalized`
 

@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- ADR Severity Level (Hartwig and Siegel), levels 1 to 7 with mild, moderate and severe bands, and ADR
+  Preventability (Modified Schumock and Thornton): both read from open reprints that agree, cited beside
+  the original papers.
 - GerontoNet ADR Risk Score (Onder 2010): points for the number of drugs, a previous ADR, heart failure,
   liver disease, 4 or more conditions and renal failure, with the cohort's ADR rate at that score. Exactly 5
   drugs is shown both ways, because the paper's tables and text disagree on that band.

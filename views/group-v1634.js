@@ -3,7 +3,7 @@
 // fda-adverse-event-report-clock, riosord, relative-infant-dose, badri-adr-risk, stoppfall-check,
 // peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
 // ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect, who-umc-causality,
-// gerontonet-adr-risk.
+// gerontonet-adr-risk, hartwig-adr-severity, schumock-thornton-preventability.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -26,6 +26,8 @@ import * as SS from '../lib/stopp-start-v3-v1634.js';
 import * as TT from '../lib/two-by-two-effect-v1634.js';
 import * as WU from '../lib/who-umc-causality-v1634.js';
 import * as GN from '../lib/gerontonet-adr-risk-v1634.js';
+import * as HW from '../lib/hartwig-adr-severity-v1634.js';
+import * as ST from '../lib/schumock-thornton-preventability-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -156,6 +158,32 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(GN.gerontonetAdrRisk(args), o);
+    }));
+  },
+  'hartwig-adr-severity'(root) {
+    const pairs = [['hw-death', 'death'], ['hw-harm', 'permanentHarm'], ['hw-icu', 'intensiveCare'], ['hw-stay', 'longerStay'], ['hw-adm', 'admission'], ['hw-chg', 'drugChanged'], ['hw-tx', 'treatment']];
+    selectField(root, 'Led directly or indirectly to death', 'hw-death', HW.YES_NO);
+    selectField(root, 'Caused permanent harm', 'hw-harm', HW.YES_NO);
+    selectField(root, 'Needed intensive medical care', 'hw-icu', HW.YES_NO);
+    selectField(root, 'Added at least 1 day to the stay', 'hw-stay', HW.YES_NO);
+    selectField(root, 'Was the reason for admission', 'hw-adm', HW.YES_NO);
+    selectField(root, 'Suspected drug held, stopped or changed', 'hw-chg', HW.YES_NO);
+    selectField(root, 'Antidote or other treatment needed', 'hw-tx', HW.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(HW.hartwigAdrSeverity(args), o);
+    }));
+  },
+  'schumock-thornton-preventability'(root) {
+    const q = [['st-allergy', 'allergyHistory', 'A: history of allergy or previous reaction to the drug'], ['st-drug', 'inappropriateDrug', 'A: drug inappropriate for the clinical condition'], ['st-dose', 'inappropriateDose', 'A: dose, route or frequency inappropriate'], ['st-toxic', 'toxicLevel', 'A: toxic level or lab monitoring result documented'], ['st-known', 'knownTreatment', 'A: a known treatment for the reaction'], ['st-monitor', 'monitoringNotDone', 'B: required monitoring or lab test not done'], ['st-inter', 'interaction', 'B: a drug interaction was involved'], ['st-adhere', 'poorAdherence', 'B: poor adherence was involved'], ['st-prevent', 'preventionNotGiven', 'B: preventive measures not prescribed or given']];
+    for (const [dom, , label] of q) selectField(root, label, dom, ST.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(q.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of q) args[arg] = val(dom);
+      show(ST.schumockThorntonPreventability(args), o);
     }));
   },
   // spec-v1634 tool 19 (sources re-read October 16, 2026).

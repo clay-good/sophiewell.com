@@ -934,6 +934,8 @@ const PROBES = [
   ['stopp start criteria screen', ['stopp-start-v3']],
   ['who umc causality assessment adverse drug reaction', ['who-umc-causality']],
   ['gerontonet adr risk score', ['gerontonet-adr-risk']],
+  ['hartwig siegel adr severity level', ['hartwig-adr-severity']],
+  ['schumock thornton preventability', ['schumock-thornton-preventability']],
   ['valproic acid level low albumin', ['valproate-albumin-normalized']],
   ['relative risk and odds ratio with confidence interval from a two by two table', ['two-by-two-effect']],
   ['polypharmacy review for an older patient', ['stopp-start-v3', 'beers-check']],
