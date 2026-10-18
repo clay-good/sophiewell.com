@@ -244,7 +244,8 @@ reading: do not build until the 1976 paper is read. The 1976 abstract does confi
 calculated on lean, not total, body weight. Re-checked October 17, 2026 under the owner's reprint rule: open papers on
 Europe PMC cite Hull and Sarubbi without printing the coefficients, so the tool stays gated. On October 18, 2026 the 1976 paper's
 publisher page (acpjournals.org) answered with a bot-verification page that did not clear on its own; it was not
-bypassed, and the paper is still unread.
+bypassed, and the paper is still unread. The owner then chose to leave the tool gated for now (October 18,
+2026); a copy saved by hand would unblock it.
 
 ### 7. `phenytoin-mm-dose` — Phenytoin Dose From Two Steady-State Levels (Michaelis-Menten)
 
