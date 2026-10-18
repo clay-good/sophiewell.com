@@ -234,6 +234,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // only number field is the optional weight, used only for the RIG ceiling, and with it blank the
   // answer says "No weight was entered" and gives the ceiling per kg.
   "who-rabies-pep",
+  // spec-v1634: the ten ratings are required selects the reader answers (appropriate, marginal or
+  // inappropriate); the only text field is the optional list of other drugs' scores for a regimen total,
+  // and with it blank the score is for this one drug. A criterion answered, not a measurement missing.
+  "mai-score",
   "who-severe-malaria",
   "years-pe"
 ]);
