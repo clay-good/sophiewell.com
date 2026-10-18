@@ -898,6 +898,7 @@ const PROBES = [
   ['fomepizole dose during hemodialysis', ['fomepizole-schedule']],
   ['dantrolene vials for malignant hyperthermia', ['dantrolene-mh-vials']],
   ['chemotherapy dose double check variance', ['chemo-dose-verify']],
+  ['relative dose intensity chemotherapy', ['relative-dose-intensity']],
   ['doxorubicin dose reduction for bilirubin', ['chemo-organ-label-dose']],
   ['chatelut carboplatin clearance', ['chatelut-carboplatin']],
   ['12 step desensitization protocol bags', ['desensitization-12-step']],

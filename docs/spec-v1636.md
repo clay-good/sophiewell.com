@@ -473,6 +473,9 @@ PDF and the publisher's page both answered with HTTP 403 on October 15, 2026, so
 weight-based antibiotic doses could not be confirmed. (The October 12, 2026 pass did not reach the
 tool, and the spec gave no reason until `docs/unbuilt-tools.md` surfaced it.) Build it
 once the table can be read again, or from a copy a person opens by hand.
+Retried once on October 18, 2026, with the owner's leave: Europe PMC carries neither the AJHP nor the
+Surgical Infections copy, and ASHP's PDF answered 403 to a script and a file download in the browser,
+which was not saved without the owner's permission. Still gated; a copy the owner saves would unblock it.
 
 ### 20. `med-admin-window` — Was This Dose Given Inside the CMS Window?
 **Input.** Scheduled time; actual time; the order's frequency; whether the hospital's policy

@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Relative Dose Intensity (Chemotherapy): delivered over planned dose intensity for one drug, shown over the cycles
+  given and over the planned course (the two ways open papers time it), with the loss split into reductions and delays.
 - INR Variability (Fihn Variance Growth Rate): method A, from the formula a Free Access 2013 paper prints in its
   Figure 1; each INR is entered with its weeks since the previous one, and no cutoff is claimed.
 - Medication Reconciliation Discrepancy Rate (CBE 2456): unintentional discrepancies in admission and discharge

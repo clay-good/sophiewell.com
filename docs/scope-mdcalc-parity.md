@@ -978,3 +978,5 @@ experience**.
 > v1634, Medication Reconciliation Discrepancy Rate — [spec-v1634](spec-v1634.md), which adds `medrec-discrepancy-rate` from the open CBE 2456 measure page — is 2315.)
 
 > v1634, INR Variability (Fihn Variance Growth Rate) — [spec-v1634](spec-v1634.md), which adds `inr-variability` from the formula printed in a Free Access 2013 paper — is 2316.)
+
+> v1635, Relative Dose Intensity — [spec-v1635](spec-v1635.md), which adds `relative-dose-intensity` with both published time bases, on the owner's decision of October 18, 2026 — is 2317.)

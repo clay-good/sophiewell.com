@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:8cb51d3e-b173-599e-89e6-deb4f57f91f5",
+  "serialNumber": "urn:uuid:a0054efb-0bda-5f97-8a53-1d1c8561de7a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-18T08:19:05.163Z",
+    "timestamp": "2026-10-18T11:22:00.685Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2316 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2317 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "40848de4f86b2ec2978e1b746d831b344fcd853b35503bb06a83bfaa8f695fac"
+          "content": "293c9f2e1f9db7fe92b5c6e581e3d027c47ce54a4a260acf716d567f6d260008"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "151038"
+          "value": "151092"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "afcd02bc7685bdbe2616adb043ea410529c356a83620763dd8b1bbf39ca81f55"
+          "content": "35f837bc169c1ced4bbc679d1945cfda5fd6b1d57de73ce28a3c848d63ad2419"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "637081"
+          "value": "637234"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "782696a01140c6c8e765b8338afaf6a09b1bb043ca1b5e980b8800498667e681"
+          "content": "75f5768c0aa603f776ea75bcfd8cedf2b5cfa0d9173b1275fc7e5c6f99cdd4a8"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "291636"
+          "value": "291770"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9edbf5f0bcac09ea92b7c418e2723145d8dce1d7ab3a2252c0417b3576e180e9"
+          "content": "0ff59468b39d2752862f0a258030d47d3af32ac0fd27feb0bf1794b2191ebbe1"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141499"
+          "value": "141566"
         }
       ]
     },
@@ -17492,7 +17492,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3ba3eb5b66e0862ed5f6f097f001db9864adc4807985a5762e935c79eabd2ff7"
+          "content": "0abf42fa49aa533984998429bcc6547e336add731631862d87ae00a47fbccd65"
         }
       ],
       "properties": [
@@ -17502,7 +17502,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3026676"
+          "value": "3027606"
         }
       ]
     },
@@ -25336,6 +25336,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4698"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/relative-dose-intensity-v1635.js",
+      "type": "file",
+      "name": "lib/relative-dose-intensity-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3b3fe15db81a538cc485f67f00e1fab01d5d3599a4a41776697079f85d535827"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5281"
         }
       ]
     },
@@ -54635,6 +54656,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/relative-dose-intensity-v1635.js",
+      "type": "file",
+      "name": "mcp/adapters/relative-dose-intensity-v1635.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0051f6d9f4881239f22b9acf681928e0d7e62d796322d7951d321cda2c977cd3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1124"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/relative-infant-dose-v1634.js",
       "type": "file",
       "name": "mcp/adapters/relative-infant-dose-v1634.js",
@@ -60626,7 +60668,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a0b54d5a46023cce98c1ad56004585e9fd28b8ab466627849fff5de4a38f16ea"
+          "content": "e16945d2503b9cd6f67565cbfe7d6418ee9f750d9fd3e63984f1d5b4b3136bec"
         }
       ],
       "properties": [
@@ -60636,7 +60678,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "163751"
+          "value": "163902"
         }
       ]
     },
@@ -65246,7 +65288,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1b7c77fb66a2aef0b4b97d831f7dacd468d71261fdf8af9e9865b3b2c6f42415"
+          "content": "28cd4db517fd53785a3004e8b8f0cb53468530198e1b235f2b840e53b6c65b14"
         }
       ],
       "properties": [
@@ -65256,7 +65298,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "41290"
+          "value": "42082"
         }
       ]
     },
@@ -97306,6 +97348,7 @@
         "urn:sophiewell:file:source:lib/reid-bronchiectasis-v450.js",
         "urn:sophiewell:file:source:lib/reimers-migration-percentage-v703.js",
         "urn:sophiewell:file:source:lib/related.js",
+        "urn:sophiewell:file:source:lib/relative-dose-intensity-v1635.js",
         "urn:sophiewell:file:source:lib/relative-infant-dose-v1634.js",
         "urn:sophiewell:file:source:lib/remittance-analysis-v1516.js",
         "urn:sophiewell:file:source:lib/remittance-analysis-worker.js",
@@ -99649,6 +99692,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/rehab-v240.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/reid-bronchiectasis-v450.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/reimers-migration-percentage-v703.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/relative-dose-intensity-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/relative-infant-dose-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/renal-angina-v533.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/renal-v128.js",
@@ -100039,7 +100083,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "8cb51d3eb173a99e"
+      "value": "a0054efb0bdacf97"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -100051,7 +100095,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3813"
+      "value": "3815"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

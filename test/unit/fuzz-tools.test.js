@@ -871,6 +871,7 @@ import * as nacOralRegimenV1636 from '../../lib/nac-oral-regimen-v1636.js';
 import * as fomepizoleScheduleV1636 from '../../lib/fomepizole-schedule-v1636.js';
 import * as dantroleneMhVialsV1636 from '../../lib/dantrolene-mh-vials-v1636.js';
 import * as chemoDoseVerifyV1635 from '../../lib/chemo-dose-verify-v1635.js';
+import * as relativeDoseIntensityV1635 from '../../lib/relative-dose-intensity-v1635.js';
 import * as chemoOrganLabelDoseV1635 from '../../lib/chemo-organ-label-dose-v1635.js';
 import * as chatelutCarboplatinV1635 from '../../lib/chatelut-carboplatin-v1635.js';
 import * as desensitization12StepV1635 from '../../lib/desensitization-12-step-v1635.js';
@@ -2005,6 +2006,7 @@ const MODULES = {
   'fomepizole-schedule-v1636.js': fomepizoleScheduleV1636,
   'dantrolene-mh-vials-v1636.js': dantroleneMhVialsV1636,
   'chemo-dose-verify-v1635.js': chemoDoseVerifyV1635,
+  'relative-dose-intensity-v1635.js': relativeDoseIntensityV1635,
   'chemo-organ-label-dose-v1635.js': chemoOrganLabelDoseV1635,
   'chatelut-carboplatin-v1635.js': chatelutCarboplatinV1635,
   'desensitization-12-step-v1635.js': desensitization12StepV1635,

@@ -9358,6 +9358,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/chemo-dose-verify-v1635.js (spec-v1635: Chemotherapy dose re-derivation and variance — clinical disclaimer)
 - `chemo-dose-verify`
 
+### lib/relative-dose-intensity-v1635.js (spec-v1635: Relative dose intensity — clinical disclaimer)
+- `relative-dose-intensity`
+
 ### lib/nac-oral-regimen-v1636.js (spec-v1636: Oral acetylcysteine 72-hour regimen (label table) — clinical disclaimer)
 - `nac-oral-regimen`
 

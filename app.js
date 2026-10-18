@@ -2794,6 +2794,7 @@ const UTILITIES = [
   { id: 'chatelut-carboplatin', name: 'Carboplatin Clearance and Dose (Chatelut Formula)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'desensitization-12-step', name: 'Three-Bag, 12-Step Desensitization Arithmetic', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chemo-organ-label-dose', name: 'Chemotherapy Dose Modification for Hepatic or Renal Impairment (FDA Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'relative-dose-intensity', name: 'Relative Dose Intensity (Chemotherapy)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chemo-dose-verify', name: 'Chemotherapy Dose Re-Derivation and Variance', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ugt1a1-irinotecan-label', name: 'UGT1A1 Genotype and the Irinotecan Label', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tpmt-nudt15-thiopurine-dose', name: 'TPMT and NUDT15 to Thiopurine Starting Dose (CPIC)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
