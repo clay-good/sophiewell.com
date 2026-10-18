@@ -9244,6 +9244,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/peds-warfarin-nomogram-v1634.js (spec-v1634: pediatric warfarin protocol, CHEST 2012 with ASH/ISTH 2024 — clinical disclaimer)
 - `peds-warfarin-nomogram`
 
+### lib/budget-impact-pmpm-v1634.js (spec-v1634: budget impact per member per month — administrative disclaimer)
+- `budget-impact-pmpm`
+
 ### lib/valproate-albumin-normalized-v1631.js (spec-v1631: Valproate normalized for albumin (Hermida-Tutor 2005) — clinical disclaimer)
 - `valproate-albumin-normalized`
 

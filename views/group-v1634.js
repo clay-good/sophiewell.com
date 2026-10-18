@@ -4,7 +4,7 @@
 // peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
 // ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect, who-umc-causality,
 // gerontonet-adr-risk, hartwig-adr-severity, schumock-thornton-preventability, dips-interaction, mai-score,
-// sedative-load, peds-warfarin-nomogram.
+// sedative-load, peds-warfarin-nomogram, budget-impact-pmpm.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -33,6 +33,7 @@ import * as DI from '../lib/dips-interaction-v1634.js';
 import * as MA from '../lib/mai-score-v1634.js';
 import * as SL from '../lib/sedative-load-v1634.js';
 import * as PW from '../lib/peds-warfarin-nomogram-v1634.js';
+import * as BIP from '../lib/budget-impact-pmpm-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -237,6 +238,15 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(PW.pedsWarfarinNomogram(args), o);
+    }));
+  },
+  'budget-impact-pmpm'(root) {
+    numField(root, 'Budget impact over the period, dollars (negative for a saving)', 'bip-impact', 'e.g. 476390');
+    numField(root, 'Members covered', 'bip-members', 'e.g. 1000000');
+    numField(root, 'Months in the period', 'bip-months', 'e.g. 12');
+    const o = out(); root.appendChild(o);
+    wire(['bip-impact', 'bip-members', 'bip-months'], () => safe(o, () => {
+      show(BIP.budgetImpactPmpm({ budgetImpact: val('bip-impact'), members: val('bip-members'), months: val('bip-months') }), o);
     }));
   },
   // spec-v1634 tool 19 (sources re-read October 16, 2026).

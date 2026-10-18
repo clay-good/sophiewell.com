@@ -626,6 +626,10 @@ denominator and sampling rule are needed, and so is the measure's license.
 **Group Q. Input.** A budget impact, a member count and a period. **Compute.** The per-member
 per-month figure. **Build gate.** ISPOR Budget Impact Analysis Good Practice II, *Value Health*
 2014 (PMID 24438712) was not opened; the formula is not stated here.
+**Built October 17, 2026** on the owner's rule (anything that can be proved): PMPM = budget impact / (members x
+months), stated as an equation in Rojas-Roque 2024 (PMC11252110) and reproduced from both its tables and Proudman
+2020's (PMC7672518): 476,390 / 1,000,000 / 12 = 0.0397, printed $0.0397; 115,604 / 1,000,000 / 12 = 0.0096,
+printed 0.010. ISPOR 2014 itself is still unread.
 
 ## Backfills (live tools that should do more)
 
@@ -907,7 +911,7 @@ verification pass the same day.
 
 Backfills, October 11, 2026: 1, 2, 4 and 7 were already applied under [spec-v1641](spec-v1641.md). Applied now: 3 (the warfarin result names Kcentra and Balfaxar, says how their indications differ, and carries both labels' sentence on repeat dosing; both labels re-read on DailyMed and put on the weekly watch), 5 (the protamine label's sentences print for every patient, and a time since the last heparin dose adds the CHEST 2012 row, labeled pediatric; exactly 60 minutes sits in two printed rows and both are given), 6 (the count of INR tests in range beside the interpolated figure), 8 as a link from `nnt-arr` to `or-rr-to-nnt` (counts and an interval wait for tool 19), and 9's links (`naranjo` to the other causality tools; both anticholinergic count tools to the drug-list tool; `rosendaal-ttr` to the out-of-range INR tool). Not done from 9: the sentence on what the Drug Burden Index paper used for the minimum dose, because the paper is still unread.
 
-Not built: the other 5 tools (tools 22, 23 and 24 were built from verified reprints on October 17, 2026; tools 3 and 26 were built from verified reprints on October 17, 2026, after the owner's
+Not built: the other 4 tools (tool 30 was built on October 17, 2026 once two published analyses proved its formula; tools 22, 23 and 24 were built from verified reprints on October 17, 2026; tools 3 and 26 were built from verified reprints on October 17, 2026, after the owner's
 rule; tool 25, `gerontonet-adr-risk`, the same day, once JAMA Network served the paper). Re-checked October 17, 2026: Fihn 1993 (tool 27) at acpjournals.org stayed
 behind a Cloudflare check and PubMed served a reCAPTCHA, neither bypassed; Europe PMC lists no open copy of Van
 Spall 2012 (tool 28), Linjakumpu 2003 (tool 23), Samsa 1994 (tool 24), the ISPOR budget-impact paper (tool 30)

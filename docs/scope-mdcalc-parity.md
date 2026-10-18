@@ -972,3 +972,5 @@ experience**.
 > v1634, Drug Interaction Probability Scale, Medication Appropriateness Index (Summated) and Sedative Load — [spec-v1634](spec-v1634.md), which add `dips-interaction`, `mai-score` and `sedative-load` from verified reprints — is 2312.)
 
 > v1634, Pediatric Warfarin Protocol (CHEST 2012) — [spec-v1634](spec-v1634.md), which adds `peds-warfarin-nomogram` once the 2024 ASH/ISTH guideline proved its misprinted band — is 2313.)
+
+> v1634, Budget Impact Per Member Per Month — [spec-v1634](spec-v1634.md), which adds `budget-impact-pmpm` once two published analyses proved the formula — is 2314.)

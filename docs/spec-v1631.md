@@ -241,7 +241,8 @@ equations as `sawchuk-zaske-dosing`.
 figures in circulation (k = 0.00293 × CrCl + 0.014 per hour) were seen only in lecture notes, and
 one calculator page prints a second version (0.0024 × CrCl + 0.01). Two versions and no primary
 reading: do not build until the 1976 paper is read. The 1976 abstract does confirm that Vd was
-calculated on lean, not total, body weight.
+calculated on lean, not total, body weight. Re-checked October 17, 2026 under the owner's reprint rule: open papers on
+Europe PMC cite Hull and Sarubbi without printing the coefficients, so the tool stays gated.
 
 ### 7. `phenytoin-mm-dose` — Phenytoin Dose From Two Steady-State Levels (Michaelis-Menten)
 
