@@ -6,7 +6,7 @@
   "agency": "CMS",
   "status": "public-domain",
   "cadence": "weekly",
-  "recordCount": 30048,
+  "recordCount": 30031,
   "shardLayout": "shards",
   "shards": [
     {
@@ -611,9 +611,9 @@
     },
     {
       "name": "16571.json",
-      "sha256": "51ca9096f3d3d613c989751483918eb35c1549465d4f854c493e71330ddc748a",
-      "records": 307,
-      "bytes": 77959
+      "sha256": "a6eb05c1382c585c6add1b963c8d9fff19f8d59449537f3b32926f15ad909468",
+      "records": 299,
+      "bytes": 75955
     },
     {
       "name": "16714.json",
@@ -833,9 +833,9 @@
     },
     {
       "name": "42192.json",
-      "sha256": "b2610acd78528fc02a99acc307739c5b41e27bae540739e05eb65769c1be00dd",
-      "records": 48,
-      "bytes": 12241
+      "sha256": "4fc97a0f2111ff3f9997a8744dfc00e2520eaee4dc7047ae4a8d8dd833ffffbb",
+      "records": 47,
+      "bytes": 11984
     },
     {
       "name": "42292.json",
@@ -863,9 +863,9 @@
     },
     {
       "name": "42571.json",
-      "sha256": "4622fde8b9c01f892aa32670ff7ec0d98ccbbe6b9cf93bc89f16e290ac485f91",
-      "records": 119,
-      "bytes": 30354
+      "sha256": "fe784151c1d3af75b58734d8b6fce1fa3b565ae27c5fb1f40d8784e0ecbbee33",
+      "records": 110,
+      "bytes": 28041
     },
     {
       "name": "42658.json",
@@ -995,7 +995,7 @@
     },
     {
       "name": "46122.json",
-      "sha256": "43506695c0b9930fbb1f14d04b830c0797c9cf4d5cf3a95a4dbdbd41003d4aaa",
+      "sha256": "098d821093b373b9a19efdddc0f32cc2585d870b45a7598f7fd8e3627a124cdd",
       "records": 304,
       "bytes": 77400
     },
@@ -1181,15 +1181,15 @@
     },
     {
       "name": "51660.json",
-      "sha256": "ac557487df2a63143805c96d0876305ac8da8dbc1e67abaeb1d5153ef50ba2e8",
-      "records": 37,
-      "bytes": 9383
+      "sha256": "dc47cd834051ffabf92cd492890aef2b0b7c67b4171b8eab2869b7ead4ec3ebd",
+      "records": 39,
+      "bytes": 9895
     },
     {
       "name": "51672.json",
-      "sha256": "a64e6a58b15ccacfa8e1bc1b2518953bbb0a165c89533f011492045a7a5c4e90",
+      "sha256": "ed91d6272f85c20936617f08b4084c2992b74f7835ab03168f2c31802e90f706",
       "records": 351,
-      "bytes": 89499
+      "bytes": 89519
     },
     {
       "name": "51754.json",
@@ -1451,9 +1451,9 @@
     },
     {
       "name": "58809.json",
-      "sha256": "67d08db9eee3d8b2c2c7ea511773650f5803d0b8186422e5a06c11ad5254110c",
-      "records": 4,
-      "bytes": 1017
+      "sha256": "c31c8a9da5581caae78f39823cb35da3f6bf96caaf638c4371dcce0584c3220c",
+      "records": 3,
+      "bytes": 771
     },
     {
       "name": "58914.json",
@@ -1991,9 +1991,9 @@
     },
     {
       "name": "68001.json",
-      "sha256": "13fb3efeb077eae6979e29d73c5737d961dac6a463718e8fc280d0ae49f29567",
-      "records": 375,
-      "bytes": 95298
+      "sha256": "553f9010e54cd6ea2224b815545268ea7430265d4c892cc3a5d8b97af36af414",
+      "records": 374,
+      "bytes": 95048
     },
     {
       "name": "68002.json",
@@ -2141,9 +2141,9 @@
     },
     {
       "name": "69367.json",
-      "sha256": "2f65e731748fd4bf0ae68c41741a460c89627761a53c2818fb35fcad7cdb9f3a",
-      "records": 288,
-      "bytes": 73076
+      "sha256": "e3f6ea72e57be2a8618f5c51d4e13ebe7f7b096ad6512c11c0e41c32d94e11df",
+      "records": 290,
+      "bytes": 73574
     },
     {
       "name": "69452.json",
@@ -2213,9 +2213,9 @@
     },
     {
       "name": "70000.json",
-      "sha256": "f021989759656a117b72dc8fffd7d250887a5588d623f9449cdf63a5308c10a0",
-      "records": 384,
-      "bytes": 97252
+      "sha256": "142df42a062a922664e83e7b22fa7fa139b2838f0b0404e8763333c2bf9de951",
+      "records": 383,
+      "bytes": 96997
     },
     {
       "name": "70010.json",
@@ -3093,14 +3093,14 @@
   ],
   "notes": "The latest NADAC week only. effectiveDate is when that NDC's rate took effect and is often earlier than the as-of date; a tool may use it for the rate on a fill date only within this week, and says so.",
   "coverage": "full",
-  "sourceEdition": "2026-10-07 weekly",
-  "effectiveFrom": "2026-10-07",
-  "fetchedAt": "2026-10-13",
-  "contentChangedAt": "2026-10-13",
-  "expiresOn": "2026-10-21",
-  "nextExpected": "2026-10-14",
-  "sourceSha256": "0dd1eddbb35c0e390c23f822b93b57a98f10215032db11c2ee653dee6d26027d",
-  "recordsSha256": "f11210d727682c7eff91215d1923bfb042acc70589f792affff32765cc0d285c",
+  "sourceEdition": "2026-10-14 weekly",
+  "effectiveFrom": "2026-10-14",
+  "fetchedAt": "2026-10-18",
+  "contentChangedAt": "2026-10-18",
+  "expiresOn": "2026-10-28",
+  "nextExpected": "2026-10-21",
+  "sourceSha256": "d129f273d36305f20f6c4281fc12fbd0cc23fd74ac512a9afacb90841cccfaed",
+  "recordsSha256": "53baf722e5c235c6d73d66174e5133fff87dce70a74a6a3247da149dcd06ad6a",
   "recordBounds": {
     "min": 25000,
     "max": 40000
