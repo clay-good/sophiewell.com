@@ -974,3 +974,5 @@ experience**.
 > v1634, Pediatric Warfarin Protocol (CHEST 2012) — [spec-v1634](spec-v1634.md), which adds `peds-warfarin-nomogram` once the 2024 ASH/ISTH guideline proved its misprinted band — is 2313.)
 
 > v1634, Budget Impact Per Member Per Month — [spec-v1634](spec-v1634.md), which adds `budget-impact-pmpm` once two published analyses proved the formula — is 2314.)
+
+> v1634, Medication Reconciliation Discrepancy Rate — [spec-v1634](spec-v1634.md), which adds `medrec-discrepancy-rate` from the open CBE 2456 measure page — is 2315.)

@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medication Reconciliation Discrepancy Rate (CBE 2456): unintentional discrepancies in admission and discharge
+  orders per medication, from the open measure page, checked against its worked example (75 / 150 = 0.5).
 - Budget Impact Per Member Per Month: a budget impact over a period divided by members and months, the form
   published budget impact analyses use (checked against two papers' own tables).
 - Pediatric Warfarin Protocol (CHEST 2012): day 1 dose by weight (0.2 mg/kg, or 0.1 mg/kg after a Fontan

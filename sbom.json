@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:9a7e2f0d-7603-50e9-86f5-a33f5d400a2e",
+  "serialNumber": "urn:uuid:45723537-ec97-56d4-8465-45817a407b09",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-18T03:09:33.003Z",
+    "timestamp": "2026-10-18T03:24:32.970Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2314 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2315 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e9330dc4ae9bfce84c9492f4b83498c4d72ac226a416a851bbd597aea4abd22c"
+          "content": "6fd43a88cfb8c8195215114f0d06114155a75f6e21050fb2d6708c8895f661cd"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150910"
+          "value": "150979"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f4bd6b521fdf5b5a191baa937898e97f064c94f7fcf47e9a76e1af49158439a0"
+          "content": "ba8af8e33be493384a20ee6f0a48867290705d3353b7efa51c071a90b63276d1"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "636762"
+          "value": "636931"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "050f333daedc86e85f471299062fbe2fd0cb656388b3eaf75308006a9f96e85b"
+          "content": "eb172757de50077136621a67ad2eddca1c3ac59154cafc4e9f62ec673d01d350"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "291376"
+          "value": "291510"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ea173dbe958e8b8d14b7f721e6958916660a76dd4bb29b2737c4b0de9aa399dd"
+          "content": "927ded4a0320e620260188d46fcf46a1fd49af150e3e0adb6ddfeb7ffe0245cf"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141353"
+          "value": "141435"
         }
       ]
     },
@@ -17297,6 +17297,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/medrec-discrepancy-rate-v1634.js",
+      "type": "file",
+      "name": "lib/medrec-discrepancy-rate-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aed85b3054f4e3f2ee1b1b5c94d2a1c4421091c4bc317397ea0073e73c1e1395"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3553"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/meld3-v678.js",
       "type": "file",
       "name": "lib/meld3-v678.js",
@@ -17450,7 +17471,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cfc70cc153479a8647fba98557eec2ce637332780481fd8e2b0237b3aeb54a64"
+          "content": "764e1f1e114ce11ce746c366ee6136674946d336b69d9284bcde5bfff61819d1"
         }
       ],
       "properties": [
@@ -17460,7 +17481,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3025230"
+          "value": "3025898"
         }
       ]
     },
@@ -47726,6 +47747,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/medrec-discrepancy-rate-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/medrec-discrepancy-rate-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "72e01270204e4fc2a4047d93d8a9914c30b75a387d3feba393b6b941d7cef776"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1127"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/meld3-v678.js",
       "type": "file",
       "name": "mcp/adapters/meld3-v678.js",
@@ -60542,7 +60584,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eaf662d7038dddc142b40f618eb9b5d1831c44acb14d17e3cb1b17c2ff034cc0"
+          "content": "3858f09979ed07a51889f7546b36e4528bc295c6e483ff41f36a175937f72225"
         }
       ],
       "properties": [
@@ -60552,7 +60594,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "163479"
+          "value": "163630"
         }
       ]
     },
@@ -65141,7 +65183,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c0eff01d59cfc1a8df175344ef2d84f712bcc5f0c6bfc02668e054fa3c25b5f9"
+          "content": "1b5da663ad049ae0834ee3e13f16090bdec81d844c40257ab27c070106969f83"
         }
       ],
       "properties": [
@@ -65151,7 +65193,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "25699"
+          "value": "26496"
         }
       ]
     },
@@ -96839,6 +96881,7 @@
         "urn:sophiewell:file:source:lib/medicare-reprice.js",
         "urn:sophiewell:file:source:lib/medication-v4.js",
         "urn:sophiewell:file:source:lib/medication-v5.js",
+        "urn:sophiewell:file:source:lib/medrec-discrepancy-rate-v1634.js",
         "urn:sophiewell:file:source:lib/meld3-v678.js",
         "urn:sophiewell:file:source:lib/membranous-risk-v878.js",
         "urn:sophiewell:file:source:lib/meniere-aao-hns-v708.js",
@@ -99236,6 +99279,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicare-penalties-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v4.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v5.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/medrec-discrepancy-rate-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meld3-v678.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/membranous-risk-v878.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meniere-aao-hns-v708.js",
@@ -99951,7 +99995,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "9a7e2f0d760330e9"
+      "value": "45723537ec9766d4"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99963,7 +100007,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3809"
+      "value": "3811"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -4,7 +4,7 @@
 // peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
 // ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect, who-umc-causality,
 // gerontonet-adr-risk, hartwig-adr-severity, schumock-thornton-preventability, dips-interaction, mai-score,
-// sedative-load, peds-warfarin-nomogram, budget-impact-pmpm.
+// sedative-load, peds-warfarin-nomogram, budget-impact-pmpm, medrec-discrepancy-rate.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -34,6 +34,7 @@ import * as MA from '../lib/mai-score-v1634.js';
 import * as SL from '../lib/sedative-load-v1634.js';
 import * as PW from '../lib/peds-warfarin-nomogram-v1634.js';
 import * as BIP from '../lib/budget-impact-pmpm-v1634.js';
+import * as MRD from '../lib/medrec-discrepancy-rate-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -247,6 +248,16 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['bip-impact', 'bip-members', 'bip-months'], () => safe(o, () => {
       show(BIP.budgetImpactPmpm({ budgetImpact: val('bip-impact'), members: val('bip-members'), months: val('bip-months') }), o);
+    }));
+  },
+  'medrec-discrepancy-rate'(root) {
+    numField(root, 'Unintentional discrepancies, admission plus discharge orders', 'mrd-disc', 'e.g. 75');
+    numField(root, 'Medications on the gold standard lists', 'mrd-gold', 'e.g. 110');
+    numField(root, 'Unintentionally ordered additional medications', 'mrd-extra', 'e.g. 40');
+    numField(root, 'Patients sampled (optional)', 'mrd-patients', 'e.g. 25');
+    const o = out(); root.appendChild(o);
+    wire(['mrd-disc', 'mrd-gold', 'mrd-extra', 'mrd-patients'], () => safe(o, () => {
+      show(MRD.medrecDiscrepancyRate({ discrepancies: val('mrd-disc'), goldMeds: val('mrd-gold'), extraMeds: val('mrd-extra'), patients: val('mrd-patients') }), o);
     }));
   },
   // spec-v1634 tool 19 (sources re-read October 16, 2026).

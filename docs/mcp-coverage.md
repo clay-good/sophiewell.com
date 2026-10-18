@@ -9247,6 +9247,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/budget-impact-pmpm-v1634.js (spec-v1634: budget impact per member per month — administrative disclaimer)
 - `budget-impact-pmpm`
 
+### lib/medrec-discrepancy-rate-v1634.js (spec-v1634: medication reconciliation discrepancy rate — administrative disclaimer)
+- `medrec-discrepancy-rate`
+
 ### lib/valproate-albumin-normalized-v1631.js (spec-v1631: Valproate normalized for albumin (Hermida-Tutor 2005) — clinical disclaimer)
 - `valproate-albumin-normalized`
 

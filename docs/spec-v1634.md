@@ -620,6 +620,10 @@ The INR bands and percent changes are needed.
 **Group Q. Input.** Counts from a reconciliation audit. **Compute.** The measure's rate.
 **Build gate.** The NQF 2456 measure specification was not searched for or opened. The numerator,
 denominator and sampling rule are needed, and so is the measure's license.
+**Built October 17, 2026** from the measure page on the Partnership for Quality Measurement (p4qm.org/measures/2456,
+CBE 2456, endorsed, Fall 2019 cycle, steward Brigham and Women's Hospital): numerator, denominator, the 25-a-month
+sampling advice and the exclusion are as printed there, and the page's worked example (75 / 150 = 0.5) is the
+tool's example. The page states no license terms; the tool reproduces the definitions, not the submission form.
 
 ### 30. `budget-impact-pmpm` — Budget Impact Per Member Per Month
 

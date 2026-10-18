@@ -1164,6 +1164,7 @@ const UTILITIES = [
   { id: 'underpayment-check', name: 'Paid Below Contract Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'therapy-cost-compare', name: 'Annual Therapy Cost Comparison', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'budget-impact-pmpm', name: 'Budget Impact Per Member Per Month', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'medrec-discrepancy-rate', name: 'Medication Reconciliation Discrepancy Rate (CBE 2456)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'partd-redetermination-request', name: 'Part D Redetermination Request Letter', group: 'C', audiences: ['patients', 'billers', 'clinicians'], clinical: false },
   { id: 'erisa-appeal-letter', name: 'ERISA Appeal Letter (Employer Coverage)', group: 'C', audiences: ['patients', 'billers', 'clinicians'], clinical: false },
   { id: 'ma-reconsideration-request', name: 'Medicare Advantage Reconsideration Request Letter', group: 'C', audiences: ['patients', 'billers', 'clinicians'], clinical: false },
