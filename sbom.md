@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d12193708cc4125a`
-Generated: 2026-10-17T23:13:36.984Z
+Build ID: `a16425273cb73080`
+Generated: 2026-10-17T23:54:41.397Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -497,7 +497,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/figo-pas-v833.js` | 7409 | `2680f161b34ab92db39cf745ff07fd99d1e160fb926b8f118a98a1f0bb0a6059` |
 | `lib/filarial-lymphedema-stage-v1561.js` | 4499 | `26b789405e1541e0b498e99f8a9665ff2fe6c661068c9c9c8af5c579e2ff115e` |
 | `lib/file-head.js` | 388 | `e46fe9833ecc5f46c47141750e041f5e98a0342faaadda5f3bdee52fe3224bea` |
-| `lib/file-kinds.js` | 31695 | `77f37d7e42a782cae417946c287fb625a0c2bf34ff937728a61622d3998a9378` |
+| `lib/file-kinds.js` | 32527 | `3ca2ddbb2d37e3bdeb281bfd105cc6b1ee7dc88b57996dc026df02405c28541a` |
 | `lib/fisher-grade-v600.js` | 10299 | `e9155f9fdefe95d66f6fa2ec622a908cb15ddc858a3dd1d3275d4384cff93a44` |
 | `lib/fitzpatrick-v331.js` | 3746 | `aa2e8153f5e4f4821db4aeffe966810bc8068f00d0bd77789b723f8c613691b1` |
 | `lib/fluidresp-v113.js` | 8862 | `b6a605fd55a8d672d87aeb73818cd415ccd9530f683a28b93cb899bdfc21e4cd` |
@@ -776,7 +776,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/lipid-emulsion-dose-check-v1630.js` | 12805 | `19da75460a84026e4be6c2c46aeb06951bb099ae9de29182346cc7cf8729f146` |
 | `lib/lipids-v271.js` | 2958 | `f3052a70f199dead38c22be643a1b0ef539b9b9240710cecbb7f357c99e6d6d3` |
 | `lib/lisfranc-myerson-v412.js` | 4405 | `b97371b1c2c34c01fe8af5d64cdbcee0e2fda3426bb5f1f25c9a2f6127e58bab` |
-| `lib/list-intake.js` | 3447 | `4531e051d486d270e886d79bff145ec97dac372dadec385249ac127ccaf42cd0` |
+| `lib/list-intake.js` | 3719 | `a407ff03fbef5ddcd9a47c93c509c141b3fe2bdb9ff2e05ee5e9e7c8b717a1c2` |
 | `lib/lithium-level-check-v1631.js` | 6461 | `dd69e0c40f6c7462c51274c617465ee113ffdcd7b801542f993a4938238f6246` |
 | `lib/live.js` | 1139 | `dfb5bf4712e2ee411d60da2a2b79329c8b9016caedc53224f4bba27f3f9785fe` |
 | `lib/liver-v196.js` | 14094 | `3aa26e14ddd367e65cc1e12c72d0403a7deb90e6e8bf7e793e99f26588829e38` |
@@ -3114,7 +3114,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v1629.js` | 31522 | `8b64c52451264c9cf2fe016d94a3f3fd9d00b38a1722de5ac23c81af2f67dbb6` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
-| `views/group-v1630.js` | 24554 | `10eb09cefcbe82860b8fd87d2dec411ab0e81534c09f894ae8d9fb786405847b` |
+| `views/group-v1630.js` | 25780 | `4f04669fefb6c6f994a42295de5376d0ad08b830aec1237c485a1f51450de3c6` |
 | `views/group-v1631.js` | 25133 | `631267171752d0f5edbb4fd63b488aa421539f45e216632854efe4cf7f2eb0cd` |
 | `views/group-v1632.js` | 22558 | `62990e562310d3a75a44e49fdd2e2ae62c71f6dbb0f8d93b91b46ad9fcbcd62b` |
 | `views/group-v1633.js` | 31461 | `cffd3177d578e4b1587f7f6fc7b5828d4a164ba47f4c9aa15d11678d952f5803` |

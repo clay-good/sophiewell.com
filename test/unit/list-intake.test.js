@@ -17,6 +17,15 @@ test('no header passes as is; a missing required column is named; a comma inside
   assert.match(listFromFile('Member,Age\nA,60', 'supd-members').message, /no column for continuously enrolled/);
   const m = listFromFile('Enrollee,Enrolled,Prior year,CMR dates,Age,Hospice,Met\nA,2026-03-01,no,"2026-04-01,2026-09-01",70,no,yes', 'msc-enrollees');
   assert.equal(m.text, 'A, 2026-03-01, no, , 2026-04-01;2026-09-01, , , 70, no, yes');
-  assert.equal(Object.keys(LIST_COLUMNS).length, 5);
+  assert.equal(Object.keys(LIST_COLUMNS).length, 6);
   assert.match(listFromFile('', 'supd-members').message, /no rows/);
+});
+
+// spec-v1630 tool 13: a formulary or stock list for the NIOSH lookup; only the generic-name column is read.
+test('a drug list file is read by its generic-name column', () => {
+  const r = listFromFile('Brand name,Generic name,Strength\nTrexall,methotrexate,2.5 mg\nTylenol,acetaminophen,325 mg\n', 'hdl-drugs');
+  assert.equal(r.text, 'methotrexate\nacetaminophen');
+  const bare = listFromFile('methotrexate,2.5 mg\nacetaminophen,325 mg\n', 'hdl-drugs');
+  assert.match(bare.note, /no header row/);
+  assert.match(listFromFile('Brand name,Strength\nTrexall,2.5 mg\n', 'hdl-drugs').note, /no header row/, 'no drug column: read as rows');
 });

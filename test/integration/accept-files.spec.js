@@ -42,6 +42,7 @@ const CASES = {
   'moon-deadline': ['group-v1514', 'observation-list.csv', 'moon-upload-file', 'csv-mapped'],
   'med-admin-window': ['group-v1636', 'med-admin-doses.csv', 'maw-upload-file', 'csv-mapped'],
   'storage-excursion-summary': ['group-v1630', 'temperature-log.csv', 'se-file', 'temperature-log'],
+  'hazardous-drug-list-check': ['group-v1630', 'drug-list.csv', 'hdl-file', 'drug-list'],
   'antibiogram-builder': ['group-v1636', 'isolate-list.csv', 'abg-file', 'isolate-list'],
   'supd-measure': ['group-v1638', 'member-list.csv', 'supd-members-file', 'member-list'],
   'partd-concurrent-use-measures': ['group-v1638', 'member-list.csv', 'cum-members-file', 'member-list'],

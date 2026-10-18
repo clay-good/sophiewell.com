@@ -8,6 +8,7 @@
 
 import { el, clear } from '../lib/dom.js';
 import { acceptVia } from '../lib/hand-off.js';
+import { listFromFile } from '../lib/list-intake.js';
 import * as RC from '../lib/reconstitution-concentration-v1630.js';
 import * as AC from '../lib/admixture-concentration-v1630.js';
 import * as RC3 from '../lib/iv-label-rate-check-v1630.js';
@@ -371,6 +372,27 @@ export const renderers = {
   'hazardous-drug-list-check'(root) {
     plainField(root, 'Generic drug name', 'hdl-drug', 'text', 'e.g. methotrexate');
     textareaField(root, 'Or a list of generic names, one per line (a CSV row is read up to its first comma)', 'hdl-list', '');
+    // A formulary or stock export fills the list box: with a header row its generic-name column is read.
+    const pick = el('p');
+    pick.appendChild(el('label', { for: 'hdl-file', text: 'Or load a list file (CSV or text)' }));
+    pick.appendChild(el('br'));
+    const fileIn = el('input', { id: 'hdl-file', type: 'file', accept: '.csv,.txt,.tsv,text/csv,text/plain' });
+    pick.appendChild(fileIn);
+    const said = el('span', { class: 'muted', 'aria-live': 'polite' });
+    pick.appendChild(el('br'));
+    pick.appendChild(said);
+    root.appendChild(pick);
+    fileIn.addEventListener('change', async () => {
+      const f = fileIn.files && fileIn.files[0];
+      if (!f) return;
+      if (f.size > 5000000) { said.textContent = `${f.name} is over the 5 MB this list reads.`; return; }
+      const r = listFromFile(await f.text(), 'hdl-drugs');
+      if (r.message) { said.textContent = r.message; return; }
+      said.textContent = `${f.name}: ${r.note}`;
+      const box = document.getElementById('hdl-list');
+      box.value = r.text;
+      box.dispatchEvent(new Event('input', { bubbles: true }));
+    });
     const o = out(); root.appendChild(o);
     wire(['hdl-drug', 'hdl-list'], () => safe(o, () => {
       const r = HD.hazardousDrugListCheck({ drug: val('hdl-drug'), list: val('hdl-list') });
@@ -412,4 +434,5 @@ export const renderers = {
 // spec-v1630 tool 15: a temperature data logger export goes to the excursion summary.
 export const acceptFiles = {
   'storage-excursion-summary': acceptVia('se-file'),
+  'hazardous-drug-list-check': acceptVia('hdl-file'),
 };

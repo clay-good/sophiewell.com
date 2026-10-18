@@ -68,6 +68,7 @@ const EXPECT = {
   'temperature-log.csv': ['temperature-log', 'likely', 'a data logger export'],
   'isolate-list.csv': ['isolate-list', 'likely', 'an isolate list for an antibiogram'],
   'member-list.csv': ['member-list', 'likely', 'a Part D measure member list'],
+  'drug-list.csv': ['drug-list', 'likely', 'a formulary or stock list'],
   'fill-list.csv': ['fill-list', 'likely', 'a Part D measure fill list'],
   'nomnc-census.csv': ['csv-mapped', 'likely', 'NOMNC Delivery Deadline (patients file)'],
   'cobra-events.csv': ['csv-mapped', 'likely', 'COBRA Deadlines and End Date (events file)'],

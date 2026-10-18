@@ -53,6 +53,7 @@ export const FILE_INPUTS = {
   'aw-835-files': 'appeal-worklist',
   'pa-file-picker': 'pa-lint',
   'se-file': 'storage-excursion-summary',
+  'hdl-file': 'hazardous-drug-list-check',
   'abg-file': 'antibiogram-builder',
   'supd-members-file': 'supd-measure',
   'supd-fills-file': 'supd-measure',

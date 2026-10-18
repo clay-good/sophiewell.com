@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- NIOSH Hazardous Drug List Lookup reads a list file: a formulary or stock export (CSV or text) fills the
+  list, using its generic-name column, and a drug list dropped on the home page is offered to this tool.
 - Valproate level normalized for low albumin (Hermida-Tutor free-fraction table), with the estimated free level
   and the paper's 75 mg/L limit.
 - WHO-UMC causality category for a suspected adverse drug reaction, from the six categories' points, in this
