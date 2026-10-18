@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1372afd5-6736-5233-8bbb-d5cbf31fe52f",
+  "serialNumber": "urn:uuid:8da07d16-b37e-586c-8f19-a029ae991fdf",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-18T02:04:04.537Z",
+    "timestamp": "2026-10-18T02:36:04.786Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2312 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2313 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "254b4f5ac8530040737b4a3398b8d80d064f40f03b5fa82dca7ecb8bd6c97f18"
+          "content": "d8b99260295f66713637a0d2a193e54a85861ce08f93c03772208ff844618afb"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "150804"
+          "value": "150860"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "376563714dadfdb90cb85cac952e31ece4f29397c4f90d573a0765c8a6dbd202"
+          "content": "d2bbc1e48d973174b96fcb31ab1e7f906d5b710f06d395b4362b743a35f06cbe"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "636465"
+          "value": "636619"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d69c89bdb432637851663ca2239bbe22c31bff3b591b89fff4046a8e93ca958c"
+          "content": "6db69f847cd41e2c8f16dd361464e2463416797bd12c40b097cb81d545efb2b4"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "291114"
+          "value": "291247"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "36b5d9394c718c857b64cd647c4412b77a87329bd3fc53f6ed4b59d90874e48c"
+          "content": "a69ac7eb831125893f8f9177844effb46c1218d6d9b89c9ed4329e99078d250f"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141227"
+          "value": "141295"
         }
       ]
     },
@@ -17429,7 +17429,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "14aa5d1e273f51f076614be24cb42dc43da100b28f6e5c7f185fd0283c6f79f7"
+          "content": "40844bee8f318588f8febb5b63c61006ad6d2e3b09b0187a88bb1c4b70f093e5"
         }
       ],
       "properties": [
@@ -17439,7 +17439,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3023555"
+          "value": "3024393"
         }
       ]
     },
@@ -22505,6 +22505,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/peds-warfarin-nomogram-v1634.js",
+      "type": "file",
+      "name": "lib/peds-warfarin-nomogram-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9c3a2fd3a323b88d61f6c92bf01cd8661ea7b3f61dd66558d857348639c78338"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6812"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/pedstox-v247.js",
       "type": "file",
       "name": "lib/pedstox-v247.js",
@@ -25913,7 +25934,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "def74a1ff71935a6da4d8cc3f93d10efeaf0eb6df9ed8e7ad4d8843e476fb39b"
+          "content": "f70a0cd29e3e361db0a1d00af05fd1e4acd127dff0897a8d6f113687173f757c"
         }
       ],
       "properties": [
@@ -25923,7 +25944,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7279"
+          "value": "7951"
         }
       ]
     },
@@ -52115,6 +52136,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/peds-warfarin-nomogram-v1634.js",
+      "type": "file",
+      "name": "mcp/adapters/peds-warfarin-nomogram-v1634.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "50029844e1d9626761d6b369c4aa01a697f86d9a496a61fff9ad2f73f156a97e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1146"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pedstox-v247.js",
       "type": "file",
       "name": "mcp/adapters/pedstox-v247.js",
@@ -60458,7 +60500,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "17f90292956eb88a0ec837011f6303bd6faed75856cbd78c4a0e87ce8c8db459"
+          "content": "bc20c610d5a1c207e3f9411402c1a46e53e448c5234942de472f1fa4fd66a0a3"
         }
       ],
       "properties": [
@@ -60468,7 +60510,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "163201"
+          "value": "163348"
         }
       ]
     },
@@ -65057,7 +65099,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2d75af870e290a0556618a1490b5642d7756893e4711bd92395192d1896912da"
+          "content": "ce09dc9e8af77083aa3550d0e1e9267faca90956c2381ca41bf908e67c43d5c4"
         }
       ],
       "properties": [
@@ -65067,7 +65109,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "24207"
+          "value": "25073"
         }
       ]
     },
@@ -97003,6 +97045,7 @@
         "urn:sophiewell:file:source:lib/peds-sepsis-v278.js",
         "urn:sophiewell:file:source:lib/peds-v140.js",
         "urn:sophiewell:file:source:lib/peds-v98.js",
+        "urn:sophiewell:file:source:lib/peds-warfarin-nomogram-v1634.js",
         "urn:sophiewell:file:source:lib/pedstox-v247.js",
         "urn:sophiewell:file:source:lib/pef-zones-v891.js",
         "urn:sophiewell:file:source:lib/peradeniya-op-v575.js",
@@ -99361,6 +99404,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-sepsis-v278.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-v140.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-v98.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/peds-warfarin-nomogram-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pedstox-v247.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pef-zones-v891.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peradeniya-op-v575.js",
@@ -99863,7 +99907,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1372afd56736c233"
+      "value": "8da07d16b37eb86c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -99875,7 +99919,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3805"
+      "value": "3807"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

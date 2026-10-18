@@ -70,8 +70,10 @@ test('air changes: units are required, and the room is a volume or three dimensi
   assert.match(ra({ airflowUnit: 'cfm', roomUnit: 'ft', airflow: 240, length: 12, width: 10 }).message, /room height/);
   const plain = ra({ airflowUnit: 'cfm', roomUnit: 'ft', airflow: 240, volume: 1200 });
   assert.match(plain.note, /empty room with no aerosol-generating source and assume perfect mixing/);
-  // CDC's room-by-room ventilation table is a reprint under permission: none of its figures ship.
-  assert.doesNotMatch(plain.notes.join(' '), /isolation/);
+  // CDC's room-by-room table is a reprint under permission. Since the owner's rule of October 17, 2026 (reprints
+  // count), its isolation-room figures are shown as a cited reference point, never applied as a requirement.
+  assert.match(plain.notes.join(' '), /Table B\.2.*isolation room.*12 total air changes per hour.*0\.01 in\. water gauge \(2\.5 Pa\)/);
+  assert.match(plain.notes.join(' '), /not applied here/);
 });
 
 test('both source pages are under the page watch', () => {

@@ -970,3 +970,5 @@ experience**.
 > v1634, ADR Severity Level (Hartwig and Siegel) and ADR Preventability (Modified Schumock and Thornton) — [spec-v1634](spec-v1634.md), which add `hartwig-adr-severity` and `schumock-thornton-preventability` from verified reprints — is 2309.)
 
 > v1634, Drug Interaction Probability Scale, Medication Appropriateness Index (Summated) and Sedative Load — [spec-v1634](spec-v1634.md), which add `dips-interaction`, `mai-score` and `sedative-load` from verified reprints — is 2312.)
+
+> v1634, Pediatric Warfarin Protocol (CHEST 2012) — [spec-v1634](spec-v1634.md), which adds `peds-warfarin-nomogram` once the 2024 ASH/ISTH guideline proved its misprinted band — is 2313.)

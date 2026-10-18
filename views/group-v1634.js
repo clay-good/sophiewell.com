@@ -4,7 +4,7 @@
 // peds-heparin-nomogram, warfarin-inr-out-of-range, ninja-nephrotoxin-exposure, at-harm10,
 // ade-cost-avoidance, anticholinergic-list-score, stopp-start-v3, two-by-two-effect, who-umc-causality,
 // gerontonet-adr-risk, hartwig-adr-severity, schumock-thornton-preventability, dips-interaction, mai-score,
-// sedative-load.
+// sedative-load, peds-warfarin-nomogram.
 
 import { el, clear } from '../lib/dom.js';
 import * as ON from '../lib/or-rr-to-nnt-v1634.js';
@@ -32,6 +32,7 @@ import * as ST from '../lib/schumock-thornton-preventability-v1634.js';
 import * as DI from '../lib/dips-interaction-v1634.js';
 import * as MA from '../lib/mai-score-v1634.js';
 import * as SL from '../lib/sedative-load-v1634.js';
+import * as PW from '../lib/peds-warfarin-nomogram-v1634.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -222,6 +223,20 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['sl-g1', 'sl-g2'], () => safe(o, () => {
       show(SL.sedativeLoad({ group1: val('sl-g1'), group2: val('sl-g2') }), o);
+    }));
+  },
+  'peds-warfarin-nomogram'(root) {
+    const pairs = [['pwn-phase', 'phase'], ['pwn-inr', 'inr'], ['pwn-start', 'start'], ['pwn-wt', 'weightKg'], ['pwn-dose', 'doseMg']];
+    selectField(root, 'Phase', 'pwn-phase', PW.PHASES);
+    numField(root, 'INR (the baseline INR on day 1)', 'pwn-inr', 'e.g. 1.7');
+    selectField(root, 'Day 1: start', 'pwn-start', PW.STARTS);
+    numField(root, 'Day 1: weight, kg', 'pwn-wt', 'e.g. 20');
+    numField(root, 'Loading days: initial loading dose; maintenance: current dose, mg', 'pwn-dose', 'e.g. 5');
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      show(PW.pedsWarfarinNomogram(args), o);
     }));
   },
   // spec-v1634 tool 19 (sources re-read October 16, 2026).

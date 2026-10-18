@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Pediatric Warfarin Protocol (CHEST 2012): day 1 dose by weight (0.2 mg/kg, or 0.1 mg/kg after a Fontan
+  or with liver dysfunction, at most 10 mg), then loading-day and maintenance doses by INR. The CHEST table's
+  misprinted "1.15-1.9" band is read as 1.5-1.9 because the 2024 ASH/ISTH guideline prints it so.
+- Air changes per hour shows CDC Table B.2's isolation-room figures (12 total air changes, 0.01 in. water
+  gauge) as a cited reference point beside FDA's.
 - Drug Interaction Probability Scale (DIPS), Medication Appropriateness Index (summated, 0 to 18 per drug)
   and Sedative Load (Linjakumpu model), each read from open reprints that agree and cited beside the
   original paper.

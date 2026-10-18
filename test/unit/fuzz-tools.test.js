@@ -921,6 +921,7 @@ import * as schumockThorntonPreventabilityV1634 from '../../lib/schumock-thornto
 import * as dipsInteractionV1634 from '../../lib/dips-interaction-v1634.js';
 import * as maiScoreV1634 from '../../lib/mai-score-v1634.js';
 import * as sedativeLoadV1634 from '../../lib/sedative-load-v1634.js';
+import * as pedsWarfarinNomogramV1634 from '../../lib/peds-warfarin-nomogram-v1634.js';
 import * as nccMerpIndexV1634 from '../../lib/ncc-merp-index-v1634.js';
 import * as fdaAdverseEventReportClockV1634 from '../../lib/fda-adverse-event-report-clock-v1634.js';
 import * as orRrToNntV1634 from '../../lib/or-rr-to-nnt-v1634.js';
@@ -2051,6 +2052,7 @@ const MODULES = {
   'dips-interaction-v1634.js': dipsInteractionV1634,
   'mai-score-v1634.js': maiScoreV1634,
   'sedative-load-v1634.js': sedativeLoadV1634,
+  'peds-warfarin-nomogram-v1634.js': pedsWarfarinNomogramV1634,
   'ncc-merp-index-v1634.js': nccMerpIndexV1634,
   'fda-adverse-event-report-clock-v1634.js': fdaAdverseEventReportClockV1634,
   'or-rr-to-nnt-v1634.js': orRrToNntV1634,

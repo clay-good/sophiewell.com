@@ -2755,6 +2755,7 @@ const UTILITIES = [
   { id: 'badri-adr-risk', name: 'BADRI Adverse Drug Reaction Risk in Hospitalized Older Adults', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'stoppfall-check', name: 'STOPPFall Fall-Risk-Increasing Drug Classes (Seppala 2021)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'peds-heparin-nomogram', name: 'Pediatric Heparin Protocol (CHEST 2012)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'peds-warfarin-nomogram', name: 'Pediatric Warfarin Protocol (CHEST 2012)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'warfarin-inr-out-of-range', name: 'Out-of-Range INR on Warfarin (CHEST 2012 Recommendations)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ninja-nephrotoxin-exposure', name: 'Nephrotoxic Medication Exposure in Hospitalized Children (NINJA)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'at-harm10', name: 'AT-HARM10: Was This Admission Medication-Related? (Kempen 2019)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },

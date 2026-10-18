@@ -939,6 +939,7 @@ const PROBES = [
   ['drug interaction probability scale', ['dips-interaction']],
   ['medication appropriateness index', ['mai-score']],
   ['sedative load', ['sedative-load']],
+  ['pediatric warfarin protocol', ['peds-warfarin-nomogram']],
   ['valproic acid level low albumin', ['valproate-albumin-normalized']],
   ['relative risk and odds ratio with confidence interval from a two by two table', ['two-by-two-effect']],
   ['polypharmacy review for an older patient', ['stopp-start-v3', 'beers-check']],

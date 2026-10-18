@@ -279,6 +279,7 @@ export const RULED = new Map(Object.entries({
   'cam|cam-icu': 'DISTINCT -- Inouye 1990 for a patient who can be interviewed, Ely 2001 for a ventilated one who cannot. Different papers, different validation populations, different fields.',
   'tyg-bmi|tyg-index': 'DISTINCT -- Simental-Mendia 2008 takes two inputs and returns ~8.9; Er 2016 multiplies by BMI, takes three, and returns ~223. One is the other times a third variable, which makes it a different instrument on a different scale.',
   'hatch-af|hatch-score': 'RETIRED in spec-v1642 -- one de Vos 2010 score; the survivor follows the paper\'s derived rule and points table (age over 75), the retired tile its methods text (75 and older).',
+  'peds-heparin-nomogram|peds-warfarin-nomogram': 'DISTINCT -- two drugs from one CHEST 2012 chapter: the heparin anti-Xa/aPTT protocol against the warfarin INR protocol.',
   'hill-flap-valve|hill-grade': 'RETIRED in spec-v1642 -- one Hill 1996 grade, same four classes from one input.',
   // spec-v1642: the 122 pairs the finder had reported since spec-v972 without a ruling, read on October 17,
   // 2026. Two more were the same tile twice and are retired, not listed: hatch-af into hatch-score and
