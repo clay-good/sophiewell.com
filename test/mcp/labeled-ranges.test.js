@@ -10,7 +10,8 @@ import assert from 'node:assert/strict';
 import { allCalculators } from '../../mcp/catalog.js';
 import { computeCalculator } from '../../mcp/tools.js';
 
-const RANGE = /\((-?\d+(?:\.\d+)?)\s*(?:-|\u2013|\u2014|to|or)\s*(-?\d+(?:\.\d+)?)\)/;
+// spec-v1650: "(1-5, age-adjusted)" states a range too; the range may be followed by a comma or semicolon.
+const RANGE = /\((-?\d+(?:\.\d+)?)\s*(?:-|\u2013|\u2014|to|or)\s*(-?\d+(?:\.\d+)?)\s*[),;]/;
 
 // Fields whose stated range the lib checks itself, with a message of its own.
 const LIB_CHECKED = new Map([
@@ -51,6 +52,8 @@ test('spec-v1646: a value past a declared range is refused with OUT_OF_RANGE', (
     // En-dash labels ("(0\u2013100)" as typed) were outside the first pattern.
     ['pasi', 'pasi-head-area', '101'],
     ['batt', 'batt-gcs', '2'],
+    // A range followed by a comma: "(1-5, age-adjusted)".
+    ['peds-gcs', 'pg-verb', '6'],
   ];
   const byId = new Map(allCalculators().map((c) => [c.id, c]));
   for (const [id, dom, v] of cases) {

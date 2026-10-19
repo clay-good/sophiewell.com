@@ -21,3 +21,13 @@ now asserts 18.
 example's `expected` text appears in the result computed from that example's fields. It flagged exactly
 these four before the fix. Later numbers are not held, because they are often band edges quoted in prose
 ("moderate (6-10)").
+
+## Also: ranges followed by a comma
+
+Comparing each tile's "show your work" total with its result over random inputs found Pediatric GCS
+accepting a verbal response of 6.1 from an agent and clamping it to 5. Its label is "(1-5, age-adjusted)",
+and the spec-v1646 pattern required a closing parenthesis right after the range. The pattern now also
+reads a range followed by a comma or semicolon, and nine more fields declare theirs: Pediatric GCS verbal,
+NISS second and third AIS, PUSH size, both FiO2 fields of ABG and Berlin ARDS, Fagan pre-test probability,
+and both POSAS overall opinions. The same comparison raised LIPS and nine questionnaires, but there the
+panel is fed the form's own inputs (LIPS passes the lib's `counted` object), so the browser totals agree.

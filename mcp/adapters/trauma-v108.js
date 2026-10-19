@@ -31,8 +31,8 @@ export default [
       // the total" -- and an AIS 6 forces the maximal 75 on its own. Declaring
       // these required refused agent calls the browser answers honestly, including
       // the ones already at the ceiling.
-      { dom: 'ni-a2', arg: 'ais2', kind: 'number', label: 'Second-highest AIS (1-6; a partial total is reported as a floor)' },
-      { dom: 'ni-a3', arg: 'ais3', kind: 'number', label: 'Third-highest AIS (1-6; a partial total is reported as a floor)' },
+      { dom: 'ni-a2', arg: 'ais2', kind: 'number', min: 1, max: 6, label: 'Second-highest AIS (1-6; a partial total is reported as a floor)' },
+      { dom: 'ni-a3', arg: 'ais3', kind: 'number', min: 1, max: 6, label: 'Third-highest AIS (1-6; a partial total is reported as a floor)' },
     ],
   },
   {

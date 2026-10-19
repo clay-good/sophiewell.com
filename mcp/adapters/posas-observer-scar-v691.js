@@ -17,7 +17,7 @@ export default [
       { dom: 'posas-relief', arg: 'relief', kind: 'number', min: 1, max: 10, required: true, label: 'Relief / surface roughness (1-10)' },
       { dom: 'posas-pliab', arg: 'pliability', kind: 'number', min: 1, max: 10, required: true, label: 'Pliability (1-10)' },
       { dom: 'posas-area', arg: 'surfaceArea', kind: 'number', min: 1, max: 10, required: true, label: 'Surface area (1-10)' },
-      { dom: 'posas-overall', arg: 'overallOpinion', kind: 'number', required: false, label: 'Overall opinion (1-10, optional; not in total)' },
+      { dom: 'posas-overall', arg: 'overallOpinion', kind: 'number', min: 1, max: 10, required: false, label: 'Overall opinion (1-10, optional; not in total)' },
     ],
   },
 ];

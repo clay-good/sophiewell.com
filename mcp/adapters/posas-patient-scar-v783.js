@@ -17,7 +17,7 @@ export default [
       { dom: 'posasp-pliab', arg: 'pliability', kind: 'number', min: 1, max: 10, required: true, label: 'Pliability or stiffness (1-10)' },
       { dom: 'posasp-thick', arg: 'thickness', kind: 'number', min: 1, max: 10, required: true, label: 'Thickness difference (1-10)' },
       { dom: 'posasp-relief', arg: 'relief', kind: 'number', min: 1, max: 10, required: true, label: 'Relief or irregularity (1-10)' },
-      { dom: 'posasp-overall', arg: 'overallOpinion', kind: 'number', required: false, label: 'Overall opinion (1-10, not in total)' },
+      { dom: 'posasp-overall', arg: 'overallOpinion', kind: 'number', min: 1, max: 10, required: false, label: 'Overall opinion (1-10, not in total)' },
     ],
   },
 ];

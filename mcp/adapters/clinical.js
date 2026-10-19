@@ -357,7 +357,7 @@ export default [
       { dom: 'paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
       { dom: 'hco3', arg: 'hco3', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L' },
       { dom: 'pao2', arg: 'pao2', kind: 'number', label: 'PaO2 (optional, enables oxygenation indices)', unit: 'mmHg' },
-      { dom: 'fio2', arg: 'fio2', kind: 'number', label: 'FiO2 (0-1, optional, enables oxygenation indices)' },
+      { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, label: 'FiO2 (0-1, optional, enables oxygenation indices)' },
     ],
   },
   {

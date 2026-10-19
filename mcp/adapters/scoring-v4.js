@@ -1285,7 +1285,7 @@ export default [
     compute: F.pedsGcs,
     fields: [
       { dom: 'pg-eye', arg: 'eye', kind: 'number', min: 1, max: 4, required: true, label: 'Eye opening (1-4)' },
-      { dom: 'pg-verb', arg: 'verbal', kind: 'number', required: true, label: 'Best verbal response (1-5, age-adjusted)' },
+      { dom: 'pg-verb', arg: 'verbal', kind: 'number', min: 1, max: 5, required: true, label: 'Best verbal response (1-5, age-adjusted)' },
       { dom: 'pg-mot', arg: 'motor', kind: 'number', min: 1, max: 6, required: true, label: 'Best motor response (1-6)' },
       { dom: 'pg-age', arg: 'ageBand', kind: 'enum', values: ['under-2', '2-5', 'older'], required: true, label: 'Age band for the verbal scale' },
     ],
@@ -1696,7 +1696,7 @@ export default [
       { dom: 'ba-not', arg: 'notExplainedByCardiacOrOverload', kind: 'bool', label: 'Not fully explained by cardiac failure or fluid overload' },
       { dom: 'ba-peep', arg: 'peepGe5cmH2O', kind: 'bool', label: 'PEEP / CPAP >= 5 cmH2O' },
       { dom: 'ba-pao2', arg: 'pao2', kind: 'number', label: 'PaO2 (mmHg, for the P/F grade)' },
-      { dom: 'ba-fio2', arg: 'fio2', kind: 'number', label: 'FiO2 (0-1, for the P/F grade)' },
+      { dom: 'ba-fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, label: 'FiO2 (0-1, for the P/F grade)' },
     ],
   },
   {
@@ -1862,7 +1862,7 @@ export default [
       { dom: 'nr-act', arg: 'activity', kind: 'number', min: 1, max: 4, required: true, label: 'Norton: activity (1-4)' },
       { dom: 'nr-mob', arg: 'mobility', kind: 'number', min: 1, max: 4, required: true, label: 'Norton: mobility (1-4)' },
       { dom: 'nr-inc', arg: 'incontinence', kind: 'number', min: 1, max: 4, required: true, label: 'Norton: incontinence (1-4)' },
-      { dom: 'pu-lw', arg: 'lengthWidthBand', kind: 'number', required: true, label: 'PUSH: length x width size score (0-10; see the table in the summary)' },
+      { dom: 'pu-lw', arg: 'lengthWidthBand', kind: 'number', min: 0, max: 10, required: true, label: 'PUSH: length x width size score (0-10; see the table in the summary)' },
       { dom: 'pu-ex', arg: 'exudate', kind: 'number', required: true, label: 'PUSH: exudate amount (0 none, 1 light, 2 moderate, 3 heavy)' },
       { dom: 'pu-tt', arg: 'tissueType', kind: 'number', required: true, label: 'PUSH: tissue type (0 closed, 1 epithelial, 2 granulation, 3 slough, 4 necrotic)' },
       { dom: 'pu-len', arg: 'lengthCm', kind: 'number', label: 'PUSH: greatest wound length (optional; with the width it sets the size score)', unit: 'cm' },

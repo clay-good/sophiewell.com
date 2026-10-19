@@ -13,7 +13,7 @@ export default [
     compute: F.faganPostTest,
     fields: [
       { dom: 'fagan-mode', arg: 'mode', kind: 'enum', values: ['lr', 'sensspec'], required: true, label: 'Input mode' },
-      { dom: 'fagan-pretest', arg: 'pretest', kind: 'number', required: true, label: 'Pre-test probability (0-100, exclusive)', unit: '%' },
+      { dom: 'fagan-pretest', arg: 'pretest', kind: 'number', min: 0, max: 100, required: true, label: 'Pre-test probability (0-100, exclusive)', unit: '%' },
       { dom: 'fagan-lr', arg: 'lr', kind: 'number', required: false, label: 'Likelihood ratio (likelihood-ratio mode)' },
       { dom: 'fagan-sens', arg: 'sens', kind: 'number', required: false, label: 'Sensitivity (sens/spec mode)', unit: '%' },
       { dom: 'fagan-spec', arg: 'spec', kind: 'number', required: false, label: 'Specificity (sens/spec mode)', unit: '%' },
