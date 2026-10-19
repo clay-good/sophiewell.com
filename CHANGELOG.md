@@ -699,6 +699,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   "Moderate stroke".
 - PHQ-9, GAD-7, EPDS, AUDIT-C and CAGE refuse an agent's answer that is not one of the item's options
   (PHQ-9 item 1 = 9 used to score "Mild depression"; CAGE returned 9 of 4).
+- The Epworth agent summary states the bands the tool prints (11-12 mild, 13-15 moderate, 16-24 severe).
 - NIHSS credits its severity bands to the open cohorts that state them, not to an unread NIH/NINDS guide.
 - ICH Score cites "Hemphill 2001" without the table number it named, which could not be checked.
 - ICH Score no longer prints "30-day mortality 100% per Hemphill 2001 Table 4" for a score of 6. The paper

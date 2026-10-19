@@ -664,7 +664,7 @@ export default [
   },
   {
     id: 'epworth',
-    summary: 'Epworth Sleepiness Scale (Johns 1991): eight dozing scenarios each 0-3; total 0-24 (0-10 normal, 11-14 mild, 15-17 moderate, 18-24 severe daytime sleepiness).',
+    summary: 'Epworth Sleepiness Scale (Johns 1991): eight dozing scenarios each 0-3; total 0-24 (0-10 normal, 11-12 mild, 13-15 moderate, 16-24 severe excessive daytime sleepiness; the bands are the published interpretation, not stated in Johns 1991).',
     compute: F.epworth,
     fields: [
       { dom: 'ep-read', arg: 'reading', kind: 'number', min: 0, max: 3, required: true, label: 'Sitting and reading (0-3)' },
