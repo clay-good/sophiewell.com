@@ -19,6 +19,6 @@ The band numbers are unchanged for scores 0 to 5 and for every mNIHSS total.
 
 ## Not done here
 
-- The full `nihss` tile prints four bands (5-20 is "moderate") while `mnihss` prints five (16-20 is
-  "moderate-severe"). Which set the site uses for both needs a readable source for the five-band convention.
+- The full `nihss` result printed four bands against its own five-band table; [spec-v1645](spec-v1645.md)
+  fixed that. A readable primary source for the five-band convention itself is still unread.
 - "Table 4" for the ICH rates is still unread; only the rates themselves were confirmed.
