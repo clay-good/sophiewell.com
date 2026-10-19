@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `662d9a6aa3d09072`
-Generated: 2026-10-19T16:22:44.735Z
+Build ID: `272cdf5e455a676b`
+Generated: 2026-10-19T16:53:32.810Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -865,7 +865,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3028604 | `092ef48ad100a71919f901b6803140fed5f112bc1d38ac8253e4054bb6aec11f` |
+| `lib/meta.js` | 3028807 | `1b1f802ee598d315df183ba2c3d4697e454b5780e83d1947942cf4f44db9be24` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1311,9 +1311,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schumock-thornton-preventability-v1634.js` | 4099 | `89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 329246 | `c5c8d85eb1291b12eed103913dc2db87a49c6a3e2f583e773ebdb98a63b16070` |
+| `lib/scoring-v4.js` | 329665 | `42753f1f0849912ab7a2b3c04d1e000cd497acf15669f795b3f571d0b148c051` |
 | `lib/scoring-v5.js` | 13946 | `ffc233026d33c94caca162c6312ad19be48f9fffa690597cad8656236402d0c7` |
-| `lib/scoring-v6.js` | 28955 | `68cad9165e0175516e4c885e960cefb4fc316e4251e0f1b43ceba39613795fa1` |
+| `lib/scoring-v6.js` | 29313 | `6f5537b8c28edd8acd8a360a531748ff121193f0a39465befbc1353ebc499be8` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
 | `lib/screener.js` | 6613 | `e017903130ae2d23cb1560f6ad55990ef3dda443a5ac1e9c289b283e3dcd930b` |

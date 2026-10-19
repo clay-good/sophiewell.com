@@ -680,6 +680,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- APACHE II prints the eight bands of the Knaus table (a total of 23 is about 40%, not ~25%). TIMI prints
+  each score's own 14-day figure (8.3% at 2, not ~5%). MELD's working shows its table's figures, and the
+  Alvarado table starts at 0.
 - Agent calls: a number field whose label states its range ("(0-2)") now refuses a value past it with
   `OUT_OF_RANGE`, and the input schema carries the bounds. Before, 22 tools clamped, summed or dropped it
   (Roland-Morris 25 scored 0; PASI area 101%). The E/M MDM level labels now say 2 to 5, matching their options.

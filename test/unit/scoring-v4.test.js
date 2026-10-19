@@ -16,6 +16,23 @@ test('timi: 0 -> low band', () => {
 test('timi: 2 -> low band', () => {
   const r = timi({ age65: true, severeAngina: true }); assert.equal(r.score, 2); assert.match(r.band, /Low/);
 });
+// spec-v1647: the low group said "~5%" while the tile's table gives 8.3% at 2.
+test('timi: each score prints the figure its own interpretation table gives', async () => {
+  const { META } = await import('../../lib/meta.js');
+  const keys = ['age65', 'threeRiskFactors', 'knownCad50pct', 'asaPast7Days', 'severeAngina', 'stDeviation', 'elevatedMarkers'];
+  for (let s = 0; s <= 7; s += 1) {
+    const r = timi(Object.fromEntries(keys.map((k, i) => [k, i < s])));
+    assert.equal(r.score, s);
+    const row = META.timi.interpretation.bands.find((b) => {
+      const [lo, hi = lo] = b.range.split('-').map(Number);
+      return s >= lo && s <= hi;
+    });
+    const pct = /(\d+\.\d)%/.exec(row.text)[1];
+    assert.equal(r.risk14d, `${pct}%`, `score ${s}`);
+    assert.match(r.band, new RegExp(`${pct.replace('.', '\\.')}% 14-day`));
+  }
+  assert.doesNotMatch(timi({ age65: true, severeAngina: true }).band, /~5%/);
+});
 test('timi: 3 -> intermediate', () => {
   const r = timi({ age65: true, severeAngina: true, stDeviation: true }); assert.match(r.band, /Intermediate/);
 });
