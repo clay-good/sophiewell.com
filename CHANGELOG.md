@@ -680,6 +680,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Renal failure index, Shine & Lal and Green & King call a value exactly on the cutoff indeterminate, as
+  their sibling indices do (exactly 1 used to read "< 1"). Seven index tables gain a row for the cutoff, and
+  the AEC, simplified AIH and Cornell tables no longer give one score two rows.
 - APACHE II prints the eight bands of the Knaus table (a total of 23 is about 40%, not ~25%). TIMI prints
   each score's own 14-day figure (8.3% at 2, not ~5%). MELD's working shows its table's figures, and the
   Alvarado table starts at 0.

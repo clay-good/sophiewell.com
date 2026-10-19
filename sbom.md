@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `272cdf5e455a676b`
-Generated: 2026-10-19T16:53:32.810Z
+Build ID: `b0f65dd1a2168e0a`
+Generated: 2026-10-19T17:12:20.808Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -601,7 +601,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heme-risk-v189.js` | 13799 | `d94b111f4a8a7efc34646567508d2eaa16eee64ebbe5284faf6935d578d9c2a0` |
 | `lib/heme-staging-v188.js` | 14818 | `780860ca16797b8cfad923f347e86700c04bc36c9b857312d9197858ae7b4243` |
 | `lib/heme-v132.js` | 16879 | `b8efc09695da0d762446d04a61a8269f62ec63f2c8d35fe8547375b1e603b333` |
-| `lib/hemederm-v245.js` | 8476 | `39480a087ffb9f9d29c73c0ef8a7b82e0f7fd4dec2db77da38d199295ee21777` |
+| `lib/hemederm-v245.js` | 8777 | `5a88d0385d540dce813fc3cefbfab4470c6ab9063e7da0acecd628d633deba76` |
 | `lib/hemo-v194.js` | 12317 | `930f9c5936ec705bdaf94bca7e9a2bac78ccf4a6227e9093de0bbaccd33da718` |
 | `lib/hemodynamics-v87.js` | 11286 | `cd886d31932230a557fcc1012e24af5a2e1cd720cf98a768d1b7cc57355237ba` |
 | `lib/hemonc-v94.js` | 23706 | `66b93dcc9007e17f6d4e62ba597c83258baf6148241769bdd3b94869d9d2c0bf` |
@@ -865,7 +865,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3028807 | `1b1f802ee598d315df183ba2c3d4697e454b5780e83d1947942cf4f44db9be24` |
+| `lib/meta.js` | 3029254 | `eac72debd3a31acef8b5bde77426cf30ac1d1fb636de3d61d3fdfa8520458033` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1246,7 +1246,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/renal-angina-v533.js` | 9915 | `387bc572f58bc85213d4849d784e4e7e490064b06bb49f3db06a04cdab19a3f6` |
 | `lib/renal-v128.js` | 12212 | `9fb2f86a36d2266098b7d2a872b0c0ac2a06323de0092bf7adc5cb5218831390` |
 | `lib/renal-v277.js` | 4231 | `e5af36e47fee1532e024bebb6f8ace4995fb6c64fac2b39bdee9e628e1c5c33e` |
-| `lib/renalpulm-v249.js` | 9039 | `6236d8d65355b5bce8181d353337c5fba755f4a9b310a3898e31d695117d31ee` |
+| `lib/renalpulm-v249.js` | 9184 | `349e98bc70dfb36948c09fbcd20d59cc17913b0f0bbc21c369374e16a649c41b` |
 | `lib/reportable-condition-urgency-v1395.js` | 44030 | `62124527a79bb7301eda7db4422159ccba57f8046b61c45177b5f067725c7aae` |
 | `lib/request-letters-v1504.js` | 31817 | `176ccd93fac35ecd45fc13699325d4ebcab86d017f5332aea759bc0d1493bbb4` |
 | `lib/respiratory-maternal-v263.js` | 11737 | `3bdaec61254f30a6dd896797a997700e082d92ddd86672d5de184c5c8eeff0ee` |

@@ -41,3 +41,15 @@ test('ihs4: mild band', () => {
   assert.equal(r.score, 2);
   assert.equal(r.abnormal, false);
 });
+
+// spec-v1648: a value on the cutoff is neither side; both printed "(> cutoff)".
+test('shineLal and greenKing: a value on the cutoff reads indeterminate', () => {
+  const s = shineLal({ mcv: 75, mch: 27.2 }); // 5625*27.2/100 = 1530
+  assert.equal(s.score, 1530);
+  assert.match(s.band, /at the cutoff \(indeterminate\)/);
+  assert.doesNotMatch(s.band, /> 1530/);
+  const g = greenKing({ mcv: 65, rdw: 10, hb: 6.5 }); // 4225*10/650 = 65
+  assert.equal(g.score, 65);
+  assert.match(g.band, /at the cutoff \(indeterminate\)/);
+  assert.doesNotMatch(g.band, /> 65/);
+});
