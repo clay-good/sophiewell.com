@@ -682,7 +682,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Agent calls: a number field whose label states its range ("(0-2)") now refuses a value past it with
   `OUT_OF_RANGE`, and the input schema carries the bounds. Before, 22 tools clamped, summed or dropped it
-  (Roland-Morris 25 scored 0). The E/M MDM level labels now say 2 to 5, matching their options.
+  (Roland-Morris 25 scored 0; PASI area 101%). The E/M MDM level labels now say 2 to 5, matching their options.
 - NIHSS names the 16-20 band "Moderate-to-severe stroke", as its own interpretation table does; it said
   "Moderate stroke".
 - PHQ-9, GAD-7, EPDS, AUDIT-C and CAGE refuse an agent's answer that is not one of the item's options

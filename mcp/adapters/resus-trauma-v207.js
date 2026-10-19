@@ -31,7 +31,7 @@ export default [
       { dom: 'rems-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
       { dom: 'rems-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
       { dom: 'rems-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO₂', unit: '%' },
-      { dom: 'rems-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3–15)' },
+      { dom: 'rems-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3–15)' },
     ],
   },
   {

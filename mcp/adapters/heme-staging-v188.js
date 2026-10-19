@@ -12,7 +12,7 @@ export default [
     summary: 'Binet stage (A/B/C) for chronic lymphocytic leukemia from the number of involved lymphoid areas plus anemia and thrombocytopenia thresholds.',
     compute: F.binetCll,
     fields: [
-      { dom: 'binet-areas', arg: 'areas', kind: 'number', required: true, label: 'Involved lymphoid areas (0–5)' },
+      { dom: 'binet-areas', arg: 'areas', kind: 'number', min: 0, max: 5, required: true, label: 'Involved lymphoid areas (0–5)' },
       { dom: 'binet-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
       { dom: 'binet-platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],

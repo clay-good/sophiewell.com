@@ -36,8 +36,8 @@ export default [
     summary: 'Tinetti POMA (Tinetti 1986): balance (0–16) + gait (0–12) sub-scores to a 0–28 total; lower totals indicate higher fall risk.',
     compute: F.tinettiPoma,
     fields: [
-      { dom: 'poma-balance', arg: 'balance', kind: 'number', label: 'Balance sub-score (0–16)' },
-      { dom: 'poma-gait', arg: 'gait', kind: 'number', label: 'Gait sub-score (0–12)' },
+      { dom: 'poma-balance', arg: 'balance', kind: 'number', min: 0, max: 16, label: 'Balance sub-score (0–16)' },
+      { dom: 'poma-gait', arg: 'gait', kind: 'number', min: 0, max: 12, label: 'Gait sub-score (0–12)' },
     ],
   },
   {

@@ -24,7 +24,7 @@ const PASI_FIELDS = DERM_REGIONS.flatMap((r) => [
   { dom: `pasi-${r.key}-e`, arg: `${r.key}E`, kind: 'enum', values: SEV5, label: `${r.label}: erythema (0–4)` },
   { dom: `pasi-${r.key}-i`, arg: `${r.key}I`, kind: 'enum', values: SEV5, label: `${r.label}: induration (0–4)` },
   { dom: `pasi-${r.key}-d`, arg: `${r.key}D`, kind: 'enum', values: SEV5, label: `${r.label}: desquamation (0–4)` },
-  { dom: `pasi-${r.key}-area`, arg: `${r.key}Area`, kind: 'number', label: `${r.label}: % area involved (0–100)` },
+  { dom: `pasi-${r.key}-area`, arg: `${r.key}Area`, kind: 'number', min: 0, max: 100, label: `${r.label}: % area involved (0–100)` },
 ]);
 // EASI: erythema/edema/excoriation/lichenification 0–3 + % area, per region, plus the age-weighting axis.
 const EASI_FIELDS = [
@@ -34,7 +34,7 @@ const EASI_FIELDS = [
     { dom: `easi-${r.key}-ed`, arg: `${r.key}Ed`, kind: 'enum', values: SEV4, label: `${r.label}: edema / papulation (0–3)` },
     { dom: `easi-${r.key}-ex`, arg: `${r.key}Ex`, kind: 'enum', values: SEV4, label: `${r.label}: excoriation (0–3)` },
     { dom: `easi-${r.key}-l`, arg: `${r.key}L`, kind: 'enum', values: SEV4, label: `${r.label}: lichenification (0–3)` },
-    { dom: `easi-${r.key}-area`, arg: `${r.key}Area`, kind: 'number', label: `${r.label}: % area involved (0–100)` },
+    { dom: `easi-${r.key}-area`, arg: `${r.key}Area`, kind: 'number', min: 0, max: 100, label: `${r.label}: % area involved (0–100)` },
   ]),
 ];
 // DLQI: ten questions, each 0–3.
@@ -73,8 +73,8 @@ export default [
       { dom: 'scorad-excoriation', arg: 'excoriation', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Excoriation (0–3)' },
       { dom: 'scorad-lichenification', arg: 'lichenification', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Lichenification (0–3)' },
       { dom: 'scorad-dryness', arg: 'dryness', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Dryness of uninvolved skin (0–3)' },
-      { dom: 'scorad-pruritus', arg: 'pruritus', kind: 'number', label: 'Pruritus VAS (0–10)' },
-      { dom: 'scorad-sleeplessness', arg: 'sleeplessness', kind: 'number', label: 'Sleeplessness VAS (0–10)' },
+      { dom: 'scorad-pruritus', arg: 'pruritus', kind: 'number', min: 0, max: 10, label: 'Pruritus VAS (0–10)' },
+      { dom: 'scorad-sleeplessness', arg: 'sleeplessness', kind: 'number', min: 0, max: 10, label: 'Sleeplessness VAS (0–10)' },
     ],
   },
 ];

@@ -11,7 +11,7 @@ export default [
     compute: F.spanScore,
     fields: [
       { dom: 'span-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'span-nihss', arg: 'nihss', kind: 'number', required: true, label: 'NIHSS (0–42)' },
+      { dom: 'span-nihss', arg: 'nihss', kind: 'number', min: 0, max: 42, required: true, label: 'NIHSS (0–42)' },
     ],
   },
 ];

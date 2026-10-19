@@ -54,7 +54,7 @@ export default [
       { dom: 'func-vol', arg: 'ichVolume', kind: 'number', required: true, label: 'ICH volume', unit: 'cc' },
       { dom: 'func-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'func-loc', arg: 'location', kind: 'enum', values: ['lobar', 'deep', 'infratentorial'], required: true, label: 'ICH location' },
-      { dom: 'func-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3–15)' },
+      { dom: 'func-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3–15)' },
       { dom: 'func-cog', arg: 'cognitiveImpairment', kind: 'bool', required: false, label: 'Pre-ICH cognitive impairment (present scores 0; absent scores +1)' },
     ],
   },

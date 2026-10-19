@@ -36,3 +36,15 @@ fields, each refused by the lib in the label's own words).
 - every number field whose label states a range declares exactly that range, or has options inside it;
 - five of the original offenders now return `OUT_OF_RANGE` naming the field, and their examples still compute;
 - the range reaches the input schema (`ciwa` nausea: minimum 0, maximum 7).
+
+## Follow-up the same day: en-dash labels
+
+The first pattern read "(0-2)" and "(0 to 2)" but not "(0–100)" with an en dash, so 79 fields were outside
+it. Seven of them took a value past the label: PASI and EASI area 101%, DAS28 patient global 101, SCORAD
+pruritus 11, Tinetti balance 17, the infant weight estimate at 13 months, and BATT with a GCS of 2. The
+pattern now reads en and em dashes, and the catalog declares 551 ranges across 182 tools.
+
+The browser was checked too: 88 of these fields are typed number boxes whose lib accepts the value, and 87
+already carry the same `min`/`max` attributes. A value past them already raises the page's range warning
+("Check the highlighted value ... outside the 0 to 100 this field accepts", spec-v1009), which keeps the
+answer on screen by design; that decision is left as it is.

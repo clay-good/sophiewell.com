@@ -16,7 +16,7 @@ export default [
     fields: [
       { dom: 'oasis-preicu', arg: 'preIcuHours', kind: 'number', required: true, label: 'Pre-ICU length of stay', unit: 'hours' },
       { dom: 'oasis-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'oasis-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3–15)' },
+      { dom: 'oasis-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3–15)' },
       { dom: 'oasis-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
       { dom: 'oasis-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg' },
       { dom: 'oasis-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
@@ -31,7 +31,7 @@ export default [
     summary: 'LODS Logistic Organ Dysfunction System (Le Gall 1996): the worst first-24-hour value across six organ systems (neuro, cardiovascular, renal, hematologic, hepatic, pulmonary) maps to 0/1/3/5 points driving predicted hospital mortality.',
     compute: F.lods,
     fields: [
-      { dom: 'lods-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3–15)' },
+      { dom: 'lods-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3–15)' },
       { dom: 'lods-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
       { dom: 'lods-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
       { dom: 'lods-bun', arg: 'bun', kind: 'number', required: true, label: 'BUN', unit: 'mg/dL' },

@@ -10,8 +10,8 @@ export default [
     summary: 'Pediatric weight estimate (APLS): a resuscitation-planning weight from age when no scale is available. Months (0–12) takes precedence over years (1–14).',
     compute: F.pedsWeightEst,
     fields: [
-      { dom: 'pw-months', arg: 'months', kind: 'number', label: 'Age in months (0–12)' },
-      { dom: 'pw-years', arg: 'years', kind: 'number', label: 'Age in years (1–14)' },
+      { dom: 'pw-months', arg: 'months', kind: 'number', min: 0, max: 12, label: 'Age in months (0–12)' },
+      { dom: 'pw-years', arg: 'years', kind: 'number', min: 1, max: 14, label: 'Age in years (1–14)' },
     ],
   },
   {
@@ -19,7 +19,7 @@ export default [
     summary: 'Pediatric vital-sign reference (AHA PALS 2020): age-band normal heart rate, respiratory rate, and systolic-BP ranges plus the PALS hypotension threshold.',
     compute: F.pedsVitals,
     fields: [
-      { dom: 'pv-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age in years (0–18)' },
+      { dom: 'pv-age', arg: 'ageYears', kind: 'number', min: 0, max: 18, required: true, label: 'Age in years (0–18)' },
     ],
   },
   {
