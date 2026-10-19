@@ -680,6 +680,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The worked examples for eGFR (64.5, not ~60), the eGFR suite (CKD-EPI 2021 ~86, not ~89), body weight
+  and BSA (IBW 70.7, Mosteller 2.03) and MELD / Child-Pugh (18 and 8, not 17 and 7) now state the answers
+  their tiles give; each was checked by hand.
 - DAS28 reads its EULAR band on the score it prints (a shown 5.1 could say "high (> 5.1)"). Humidex labels
   its band "30 to under 40". Kobayashi, Sano, Downton and Conley no longer print the high-risk condition
   after a low result ("low risk (>= 4)" now reads "below the >= 4 cutoff").

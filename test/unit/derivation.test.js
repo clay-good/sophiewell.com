@@ -1126,8 +1126,10 @@ test('meld30() worked example produces a finite score consistent with the formul
   // Sanity check that the formula text matches the implementation:
   // worked example fields: bili 2.0, INR 1.5, cr 1.3, Na 135, alb 3.0, sex M
   const r = meld30({ bilirubin: 2.0, inr: 1.5, creatinine: 1.3, sodium: 135, albumin: 3.0, sex: 'M', hadDialysisTwiceLastWeek: false });
-  // 17 ± 1 per META example
-  assert.ok(Math.abs(r.score - 17) <= 1, `MELD-3.0 score = ${r.score}`);
+  // spec-v1650: worked by hand -- 4.56 ln2 + 0.82(2) - 0.24(2) ln2 + 9.09 ln1.5 + 11.14 ln1.3
+  // + 1.85(0.5) - 1.83(0.5) ln1.3 + 6 = 17.76, which rounds to 18. The example said "~17"
+  // and a +/-1 tolerance here let it stand.
+  assert.equal(r.score, 18, `MELD-3.0 score = ${r.score}`);
 });
 
 // --- Wave 48-2a: CURB-65, Centor, McIsaac, CIWA-Ar, FOUR Score ---------
