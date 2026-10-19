@@ -113,6 +113,10 @@ symbolic link cannot lead out) or `NO_ROOTS`.
 `inputs` are keyed exactly as `describe_calculator` reports them (and exactly as
 each calculator's documented example). Numbers may be sent as numbers or numeric
 strings; booleans as `true`/`false`; enums by their listed string values.
+A number field whose label states a range ("Activity (0-2)") carries it as
+`minimum`/`maximum` in the schema, and a value past it is refused with
+`OUT_OF_RANGE` rather than clamped or summed. A scored item with a fixed set of
+answers lists them as `enum` and refuses any other number.
 
 **Nothing hides the tiles this server does not carry.** Wherever the answer
 would otherwise be an empty list or a bare "no", the reply names them and links
