@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b0f65dd1a2168e0a`
-Generated: 2026-10-19T17:12:20.808Z
+Build ID: `079c728e2a53ff1d`
+Generated: 2026-10-19T17:24:28.026Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -314,7 +314,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/concussion-rtl-v308.js` | 4088 | `a887bb2fc16a0c07f1f0e195bd44f35e212bd32fe123a681f82cdb6c81828e05` |
 | `lib/concussion-rts-v298.js` | 5692 | `e612a32f94bc0424564ea138fe3e50fa81ce7397c37ccf0a603b4763085f2e4c` |
 | `lib/congenital-syphilis-scenario-v1400.js` | 12855 | `cf54b41c5bb8b575f5a545451a10b8bed2ef1f707660581752f6af01d2c3abbd` |
-| `lib/conley-fall-risk-v692.js` | 3190 | `517be82ed5bf88f4548714d35064f94515440d3e2b9b787eb740cdf83d4e7c57` |
+| `lib/conley-fall-risk-v692.js` | 3214 | `195234a2173734bafad54146bacf9e3a2bb7f0e55ee9e503d2bc6bbe0b694e90` |
 | `lib/constrictive-pericarditis-echo-v853.js` | 9928 | `37f3c0cd7e498e7a9a336d2ce9d2f6e4d2fe739acde289323598d40edcbdcc85` |
 | `lib/contraception-start-backup-v1639.js` | 5705 | `e61c82c5757fa0e35c2e4636117d04f9ce37986106a31135e2a37aedb5944426` |
 | `lib/contraceptive-missed-pill-v1639.js` | 10517 | `8e37eeaf8fb557bce6cc29513f6489ab6643a797b23604e4067f1232e37c2a41` |
@@ -411,7 +411,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dorr-femur-v499.js` | 3385 | `b2b7a006e152b4301decb8c63f6f5367332bd6366e4606ec410ab3689be5e991` |
 | `lib/dose-calendar-v1512.js` | 13777 | `843683e115efa727926c5ab1769fa368723ec0776ff66b951d194645d4476867` |
 | `lib/dose-schedule.js` | 1291 | `6bd747010b2e79ea5b45cbe11ebb8eb4d97f9524c2e0e2a9adcc91c1a96f7147` |
-| `lib/downton-fall-risk-v688.js` | 4381 | `11559782d78d3385853abf389b9d20689202b28f6c8d40b24cfdb39e4bb2575b` |
+| `lib/downton-fall-risk-v688.js` | 4415 | `f85971f29ae4e1e476e9104ce0ab63e43b6308bc9c9f042afb58c937a6ee530d` |
 | `lib/doxy-pep-v1401.js` | 3874 | `515506365a3d6ffcee56d78878cafbbc64ffc6e99e276bb02be639cf4a55609b` |
 | `lib/dpc-hsa-check.js` | 8850 | `06070b82ddb71108995f6d19700b8780921d181d0b7bd40535ff86fcd57adf59` |
 | `lib/dpyd-fluoropyrimidine-dose-v1635.js` | 6567 | `f630f6b9ae7e0433d974bd37b73fcee731d61e12f40f5304a4f4579a23e2c390` |
@@ -460,7 +460,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/entsleep-v243.js` | 8054 | `f7881519e82f969f795b0f8f6b3b1163cacd036e4cf63af6446ec56a49d5ffce` |
 | `lib/enturopsych-v254.js` | 8040 | `fda74506629d3035d3c24c18a3cf6faf49a5fa79e3807f01d188c73d6720bd83` |
 | `lib/enviro-v111.js` | 18385 | `a94186fe62f2496908c50141286183ff903e9b6c926a182fd9e997651fa903ef` |
-| `lib/environ-v242.js` | 8333 | `2691ca3bf9c257778dc8bda494b938596bc41a514e65892092da7669a7f48cc7` |
+| `lib/environ-v242.js` | 8342 | `0ee94c20331ce2267db719d39b34f95d6004b740f731e6409de9412da10641e9` |
 | `lib/eortc-msg-ifd-v869.js` | 9785 | `846502bc39581253f8ffe1cf38dcd5e926144f344ae528fcfab13c02cc24ba01` |
 | `lib/eoss-v713.js` | 3955 | `150229c936465a637e488f83903837324b8752c7051b42903c784ffbae404441` |
 | `lib/epinephrine-device-weight-band-v1639.js` | 6935 | `0b7ba91072fcd2cfbe091c7a9b4ce7e139b9723c3b8efacf1719bc23af083248` |
@@ -730,7 +730,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/kings-college-nonapap-v910.js` | 9902 | `f0d91d0e6dd84705b7048acd18c9cb009b8807cc886edbadb828a84e80ca7a74` |
 | `lib/kings-score-v697.js` | 3857 | `3bf0ec8be51374e0ab8b152e018159b69ec68de7fb2757b47d6dbf7478350eeb` |
 | `lib/knosp-adenoma-v390.js` | 4212 | `9f64fa144eeffdd48112251eeb84c7514e44b4df370ae0c646e8289c5da13cce` |
-| `lib/kobayashi-kawasaki-v680.js` | 6369 | `c5f9a1c3c519359ee4c368dde0e1473b39b40ca230fff164828c1bfc27f9175e` |
+| `lib/kobayashi-kawasaki-v680.js` | 6417 | `27982bcc39415117121393ced872f17cabf5fb9e33028f31ec9f26fab94edbfa` |
 | `lib/koos-schwannoma-v389.js` | 3960 | `2dec8ea618ff4ac6c2ed6b3f3dbd093e9d6b8f05c9780e1d927037e4046e8dcd` |
 | `lib/kotlow-ankyloglossia-v1494.js` | 2713 | `f6493ff860b8b6c5cffd6fb836293f289abc707f8924f7fdfeffb69f2841d1fe` |
 | `lib/kudo-v334.js` | 4981 | `d190b27f8f711349c0f3b17fad878c7a994ffd841fe770cdffbcdb0f909a60b0` |
@@ -865,7 +865,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3029254 | `eac72debd3a31acef8b5bde77426cf30ac1d1fb636de3d61d3fdfa8520458033` |
+| `lib/meta.js` | 3029263 | `7926c57eb3ba57d8947fc68ac7ed6b9bb1e4cba11fca7ea5cdcced1187b89819` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1255,7 +1255,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheum-classification-v222.js` | 13915 | `95c66ddc0349e0fd38cde0662c0862de9c06e7e0534e4a21bab1108257f5a09b` |
 | `lib/rheum-fn-v280.js` | 8137 | `27469e9bd77ea9899b3446127f132ca1661759f0e860ecd88bc7c2c5a6349534` |
 | `lib/rheum-ob-v156.js` | 17427 | `00478a61066705ade80bb2d28b90acd3368634aa6bd4ef041210c4beb4b63e1a` |
-| `lib/rheum-periop-v89.js` | 18677 | `2cfec8417e5d8fc9ac26b04e4bec4e31b73ba0fb4af2e8105eb6e9ec86e6bc68` |
+| `lib/rheum-periop-v89.js` | 18883 | `db96fa07585f1bce6db296db55925da00efd669244c27dd56d7878d4ebcdd05a` |
 | `lib/rheum-v147.js` | 28396 | `2684e744e39599fe5bdd32b8447a8078db34ffd2c4fdcba14f7b24c240101040` |
 | `lib/rheum-v148.js` | 32277 | `cd3f2f4cd892eed2e173c7e78db1fc9907c405d89d307b15385ecd2358825305` |
 | `lib/rheum-v160.js` | 13178 | `6f9c9caad669edb9cdb844015cbb354104dbbf6be91576aa1107e512efee360c` |
@@ -1294,7 +1294,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/sam-weight-gain-v1549.js` | 2723 | `2a004ede88abeb8c29098f263c1298800f2d609ffb29051139405d8081b2690c` |
 | `lib/samilson-prieto-v486.js` | 3057 | `1d1e462060923c8d7fcb673a597207b9cf52cccb96ea6f5f4e25549322e2098f` |
 | `lib/sanders-calcaneal-v343.js` | 4431 | `97e1e00751f5e640f19b31adb748bd838d4538265e521f5f9b798b0f09a7c340` |
-| `lib/sano-kawasaki-v681.js` | 4707 | `b77c7d127323e0c9111aa9c93c1b47d4ded6e627dfa6a840a505ed603a5463b4` |
+| `lib/sano-kawasaki-v681.js` | 4755 | `c36c28d5bbce9b50831892dd57abb17222351c61d9853b0ca00bd692cc82fcd3` |
 | `lib/sarin-gastric-varices-v1243.js` | 6144 | `125394c4e454354387f8aa54b8b0a6d87d7393661e8aa9d4985cdd26117506c0` |
 | `lib/sarnat-hie-v429.js` | 3448 | `d937b361ddf87357471d77034d89c0778faf26885e337a95fe775e1f8bdce4c6` |
 | `lib/sartorius-hs-v607.js` | 12343 | `251c88802542b7d186bd13c6506e7043feafad8f162c225983af355b9e625eb4` |

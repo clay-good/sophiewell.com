@@ -680,6 +680,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- DAS28 reads its EULAR band on the score it prints (a shown 5.1 could say "high (> 5.1)"). Humidex labels
+  its band "30 to under 40". Kobayashi, Sano, Downton and Conley no longer print the high-risk condition
+  after a low result ("low risk (>= 4)" now reads "below the >= 4 cutoff").
 - Renal failure index, Shine & Lal and Green & King call a value exactly on the cutoff indeterminate, as
   their sibling indices do (exactly 1 used to read "< 1"). Seven index tables gain a row for the cutoff, and
   the AEC, simplified AIH and Cornell tables no longer give one score two rows.
