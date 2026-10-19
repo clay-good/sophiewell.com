@@ -87,3 +87,15 @@ test('mnihss rejects out-of-range item', () => {
   assert.throws(() => mnihss({ sensory: 2 }));
   assert.throws(() => mnihss({ motorArmL: 5 }));
 });
+
+// Meyer 2002 validated the mNIHSS by correlation with the NIHSS (abstract,
+// PMID 11988601); the severity words are the full NIHSS's bands, and the band
+// text used to stamp them "per Meyer 2002".
+test('mnihss bands are named as the full NIHSS bands, not Meyer 2002', () => {
+  const r = mnihss({ locQuestions: 1, locCommands: 0, gaze: 1, visualFields: 2, motorArmL: 0,
+    motorArmR: 3, motorLegL: 0, motorLegR: 2, sensory: 1, language: 1, extinction: 1 });
+  assert.equal(r.total, 12);
+  assert.doesNotMatch(r.band, /per Meyer 2002/);
+  assert.match(r.band, /^mNIHSS 12 of 31: moderate stroke on the bands used with the full NIHSS\./);
+  assert.match(r.band, /can only understate/);
+});

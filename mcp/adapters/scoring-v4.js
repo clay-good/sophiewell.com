@@ -1350,7 +1350,7 @@ export default [
   },
   {
     id: 'ich-score',
-    summary: 'ICH Score for intracerebral hemorrhage (Hemphill 2001): GCS band (3-4 = 2, 5-12 = 1), age >= 80 (1), ICH volume >= 30 mL (1), infratentorial origin (1), intraventricular hemorrhage (1); total 0-6 with the 30-day mortality (0% / 13% / 26% / 72% / 97% / 100%).',
+    summary: 'ICH Score for intracerebral hemorrhage (Hemphill 2001): GCS band (3-4 = 2, 5-12 = 1), age >= 80 (1), ICH volume >= 30 mL (1), infratentorial origin (1), intraventricular hemorrhage (1); total 0-6 with the 30-day mortality (0% / 13% / 26% / 72% / 97% / 100% for 0-5; the paper reports none for 6).',
     compute: F.ichScore,
     fields: [
       { dom: 'ich-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3-15)' },
@@ -1372,7 +1372,7 @@ export default [
   },
   {
     id: 'mnihss',
-    summary: 'Modified NIH Stroke Scale (Meyer 2002): the eleven retained items (LOC questions/commands, gaze, visual fields, motor arm L/R, motor leg L/R, sensory as 0/1, language, extinction) each 0 to its item max; total 0-31 with the stroke-severity band. Every item is required: an unscored exam is not a normal exam.',
+    summary: 'Modified NIH Stroke Scale (Meyer 2002): the eleven retained items (LOC questions/commands, gaze, visual fields, motor arm L/R, motor leg L/R, sensory as 0/1, language, extinction) each 0 to its item max; total 0-31 with the severity band borrowed from the full NIHSS. Every item is required: an unscored exam is not a normal exam.',
     compute: F.mnihss,
     fields: [
       { dom: 'mn-loc-q', arg: 'locQuestions', kind: 'number', required: true, label: 'LOC questions (0-2)' },

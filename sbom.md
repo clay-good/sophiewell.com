@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `33524018cf5a5195`
-Generated: 2026-10-18T12:00:46.302Z
+Build ID: `71482347ca5b05d0`
+Generated: 2026-10-19T15:28:38.686Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -865,7 +865,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3028328 | `cc36603413e8dc962986ea649818960bd7db4c1974ac6ba6f067bd0dde527e56` |
+| `lib/meta.js` | 3028604 | `092ef48ad100a71919f901b6803140fed5f112bc1d38ac8253e4054bb6aec11f` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1311,7 +1311,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schumock-thornton-preventability-v1634.js` | 4099 | `89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 328387 | `ad9ce458069bc2a472e48b974dc608701adca132f8ff23360264943a54d6ce91` |
+| `lib/scoring-v4.js` | 329246 | `c5c8d85eb1291b12eed103913dc2db87a49c6a3e2f583e773ebdb98a63b16070` |
 | `lib/scoring-v5.js` | 13946 | `ffc233026d33c94caca162c6312ad19be48f9fffa690597cad8656236402d0c7` |
 | `lib/scoring-v6.js` | 28955 | `68cad9165e0175516e4c885e960cefb4fc316e4251e0f1b43ceba39613795fa1` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
@@ -2702,7 +2702,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schofield-v779.js` | 1203 | `877117e8b9a4659faa3164c628509cfa5855c8a9acdebe84b8e4cf9af11a560a` |
 | `mcp/adapters/schumock-thornton-preventability-v1634.js` | 1699 | `1076046b53bf7fa9c95d1907670da32babe615ba9b0870eb6b66061537b01122` |
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
-| `mcp/adapters/scoring-v4.js` | 163823 | `468c5a9d2beb8242b3be28ff94d7c6d16a34240ea5a9e8827abf246e1da6a106` |
+| `mcp/adapters/scoring-v4.js` | 163883 | `8ab92b40b22ade2ad98425998edc493e0e5504df04d216bbe0ecefdb48e5a263` |
 | `mcp/adapters/scoring-v5.js` | 12684 | `12ac7aa1a19030cdc27d76fc6fbac1edd0c024171f8a22365bd22da65a0b74f3` |
 | `mcp/adapters/scoring-v6.js` | 20286 | `ccd686c6f287625d2a83b5142cfcbef5f1c43940e2a67a74088962c9651e15f0` |
 | `mcp/adapters/scorpion-grade-india-v1556.js` | 1284 | `3cd3d399c2af7f57769e85a6ad4edeb3e77354249b3a6db361b0981e71233aed` |

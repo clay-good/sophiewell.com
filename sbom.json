@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:33524018-cf5a-5195-8ead-1f9f7c272e7a",
+  "serialNumber": "urn:uuid:71482347-ca5b-55d0-824b-80bba3f73be4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-18T12:00:46.302Z",
+    "timestamp": "2026-10-19T15:28:38.686Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -17492,7 +17492,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cc36603413e8dc962986ea649818960bd7db4c1974ac6ba6f067bd0dde527e56"
+          "content": "092ef48ad100a71919f901b6803140fed5f112bc1d38ac8253e4054bb6aec11f"
         }
       ],
       "properties": [
@@ -17502,7 +17502,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3028328"
+          "value": "3028604"
         }
       ]
     },
@@ -26858,7 +26858,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ad9ce458069bc2a472e48b974dc608701adca132f8ff23360264943a54d6ce91"
+          "content": "c5c8d85eb1291b12eed103913dc2db87a49c6a3e2f583e773ebdb98a63b16070"
         }
       ],
       "properties": [
@@ -26868,7 +26868,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "328387"
+          "value": "329246"
         }
       ]
     },
@@ -56069,7 +56069,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "468c5a9d2beb8242b3be28ff94d7c6d16a34240ea5a9e8827abf246e1da6a106"
+          "content": "8ab92b40b22ade2ad98425998edc493e0e5504df04d216bbe0ecefdb48e5a263"
         }
       ],
       "properties": [
@@ -56079,7 +56079,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "163823"
+          "value": "163883"
         }
       ]
     },
@@ -100127,7 +100127,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "33524018cf5a5195"
+      "value": "71482347ca5b05d0"
     },
     {
       "name": "sophiewell:runtimeAssetCount",

@@ -680,6 +680,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- ICH Score no longer prints "30-day mortality 100% per Hemphill 2001 Table 4" for a score of 6. The paper
+  reports rates for 0 to 5 (all 6 patients at 5 died) and none for 6, so a 6 now says that.
+- Modified NIHSS names its severity words as the bands used with the full 0-42 NIHSS instead of "per Meyer
+  2002", whose validation was by correlation, and says a band read from the shorter scale can only understate.
 - GLP-1 titration check points a missed dose to the Missed Dose tool instead of saying it is not covered.
   Alligation links the ethanol proof tool and the buffer pH tool links molecular weight.
 - Salt and base conversion factor takes the label's own equivalency statement (its two amounts) and uses
