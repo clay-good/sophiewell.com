@@ -10,9 +10,9 @@ export default [
     summary: 'DMFT index of dental caries experience (Klein 1938; WHO severity levels): DMFT = D (decayed) + M (missing due to caries) + F (filled) permanent teeth, range 0-32. Population caries-severity levels by mean DMFT: 0-1.1 very low, 1.2-2.6 low, 2.7-4.4 moderate, 4.5-6.5 high, >=6.6 very high. A descriptive caries-experience count.',
     compute: dmftCaries,
     fields: [
-      { dom: 'dmft-d', arg: 'decayed', kind: 'number', required: true, label: 'D - decayed permanent teeth (0-32)' },
-      { dom: 'dmft-m', arg: 'missing', kind: 'number', required: true, label: 'M - permanent teeth missing due to caries (0-32)' },
-      { dom: 'dmft-f', arg: 'filled', kind: 'number', required: true, label: 'F - filled permanent teeth (0-32)' },
+      { dom: 'dmft-d', arg: 'decayed', kind: 'number', min: 0, max: 32, required: true, label: 'D - decayed permanent teeth (0-32)' },
+      { dom: 'dmft-m', arg: 'missing', kind: 'number', min: 0, max: 32, required: true, label: 'M - permanent teeth missing due to caries (0-32)' },
+      { dom: 'dmft-f', arg: 'filled', kind: 'number', min: 0, max: 32, required: true, label: 'F - filled permanent teeth (0-32)' },
     ],
   },
 ];

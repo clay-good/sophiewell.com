@@ -93,6 +93,8 @@ export function fieldSchema(fields) {
       // lesion type" typed only as `number` told an agent nothing about which
       // numbers mean anything, and 0 / 2 / -3 is not guessable.
       if (Array.isArray(f.values)) p.enum = f.values.map(Number);
+      if (Number.isFinite(f.min)) p.minimum = f.min;
+      if (Number.isFinite(f.max)) p.maximum = f.max;
     }
     else if (f.kind === 'bool') p.type = 'boolean';
     else if (f.kind === 'enum') { p.type = 'string'; p.enum = f.values.slice(); }
@@ -148,6 +150,12 @@ export function validateInputs(inputs, fields) {
       // hand the lib a string.
       if (Array.isArray(f.values) && !f.values.includes(String(n))) {
         return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be one of: ${f.values.join(', ')}.` };
+      }
+      // spec-v1646: a field whose label states its range declares it, and a value
+      // past it is refused. Libs met it three wrong ways: clamped (Aldrete 3 -> 2),
+      // summed (CIWA nausea 8), or dropped (Roland-Morris 25 scored 0).
+      if ((Number.isFinite(f.min) && n < f.min) || (Number.isFinite(f.max) && n > f.max)) {
+        return { valid: false, code: 'OUT_OF_RANGE', field: f.dom, message: `"${f.dom}" must be from ${f.min} to ${f.max}; got ${n}.` };
       }
     } else if (f.kind === 'bool') {
       if (!isBoolLike(v)) return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be a boolean.` };

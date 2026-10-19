@@ -52,7 +52,7 @@ export default [
     compute: F.damicoProstateRisk,
     fields: [
       { dom: 'dam-psa', arg: 'psa', kind: 'number', required: true, label: 'Serum PSA', unit: 'ng/mL' },
-      { dom: 'dam-gl', arg: 'gleason', kind: 'number', required: true, label: 'Gleason score (2-10)' },
+      { dom: 'dam-gl', arg: 'gleason', kind: 'number', min: 2, max: 10, required: true, label: 'Gleason score (2-10)' },
       { dom: 'dam-stage', arg: 'stage', kind: 'enum', values: ['T1c', 'T2a', 'T2b', 'T2c', 'T3'], required: true, label: 'Clinical T stage' },
     ],
   },

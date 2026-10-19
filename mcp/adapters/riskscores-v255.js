@@ -38,10 +38,10 @@ export default [
     summary: 'Harris Hip Score (Harris 1969): pain (0-44) + function (0-47) + absence of deformity (0/4) + range of motion (0-5); total 0-100, higher = better hip function.',
     compute: F.harrisHipScore,
     fields: [
-      { dom: 'hh-pain', arg: 'pain', kind: 'number', required: true, label: 'Pain (0-44)' },
-      { dom: 'hh-func', arg: 'function', kind: 'number', required: true, label: 'Function / gait + activities (0-47)' },
-      { dom: 'hh-def', arg: 'deformity', kind: 'number', required: true, label: 'Absence of deformity (0 or 4)' },
-      { dom: 'hh-rom', arg: 'rom', kind: 'number', required: true, label: 'Range of motion (0-5)' },
+      { dom: 'hh-pain', arg: 'pain', kind: 'number', min: 0, max: 44, required: true, label: 'Pain (0-44)' },
+      { dom: 'hh-func', arg: 'function', kind: 'number', min: 0, max: 47, required: true, label: 'Function / gait + activities (0-47)' },
+      { dom: 'hh-def', arg: 'deformity', kind: 'number', min: 0, max: 4, required: true, label: 'Absence of deformity (0 or 4)' },
+      { dom: 'hh-rom', arg: 'rom', kind: 'number', min: 0, max: 5, required: true, label: 'Range of motion (0-5)' },
     ],
   },
   {

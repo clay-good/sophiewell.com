@@ -20,9 +20,9 @@ export default [
     summary: 'E&M level by medical decision making: the level from the two-of-three highest of problems, data, and risk, with the new/established codes.',
     compute: O.emMdm,
     fields: [
-      { dom: 'mdm-prob', arg: 'problems', kind: 'number', required: true, label: 'Problems level (1 to 4)', values: ['2', '3', '4', '5'] },
-      { dom: 'mdm-data', arg: 'data', kind: 'number', required: true, label: 'Data level (1 to 4)', values: ['2', '3', '4', '5'] },
-      { dom: 'mdm-risk', arg: 'risk', kind: 'number', required: true, label: 'Risk level (1 to 4)', values: ['2', '3', '4', '5'] },
+      { dom: 'mdm-prob', arg: 'problems', kind: 'number', required: true, label: 'Problems level (2 to 5: straightforward, low, moderate, high)', values: ['2', '3', '4', '5'] },
+      { dom: 'mdm-data', arg: 'data', kind: 'number', required: true, label: 'Data level (2 to 5: straightforward, low, moderate, high)', values: ['2', '3', '4', '5'] },
+      { dom: 'mdm-risk', arg: 'risk', kind: 'number', required: true, label: 'Risk level (2 to 5: straightforward, low, moderate, high)', values: ['2', '3', '4', '5'] },
     ],
   },
   {

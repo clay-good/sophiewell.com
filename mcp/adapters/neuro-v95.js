@@ -64,7 +64,7 @@ export default [
       { dom: 'mi-q4', arg: 'q4', kind: 'number', required: true, label: 'Q4 reduced-productivity household days' },
       { dom: 'mi-q5', arg: 'q5', kind: 'number', required: true, label: 'Q5 missed family/social/leisure days' },
       { dom: 'mi-freq', arg: 'freq', kind: 'number', label: 'Ancillary A: headache days' },
-      { dom: 'mi-int', arg: 'intensity', kind: 'number', label: 'Ancillary B: average pain intensity (0-10)' },
+      { dom: 'mi-int', arg: 'intensity', kind: 'number', min: 0, max: 10, label: 'Ancillary B: average pain intensity (0-10)' },
     ],
   },
 ];

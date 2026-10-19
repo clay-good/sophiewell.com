@@ -13,7 +13,7 @@ export default [
     compute: P.goldSpirometry,
     fields: [
       { dom: 'gs-pct', arg: 'fev1Pct', kind: 'number', label: 'FEV1', unit: '% predicted' },
-      { dom: 'gs-ratio', arg: 'ratio', kind: 'number', label: 'FEV1/FVC ratio (0-1) — leave blank to compute from volumes' },
+      { dom: 'gs-ratio', arg: 'ratio', kind: 'number', min: 0, max: 1, label: 'FEV1/FVC ratio (0-1) — leave blank to compute from volumes' },
       { dom: 'gs-fev1', arg: 'fev1L', kind: 'number', label: 'FEV1 (optional, to compute the ratio)', unit: 'L' },
       { dom: 'gs-fvc', arg: 'fvcL', kind: 'number', label: 'FVC (optional, to compute the ratio)', unit: 'L' },
     ],
@@ -46,7 +46,7 @@ export default [
     summary: 'GLI-2012 predicted FEV1, FVC, and FEV1/FVC with lower limit of normal; optional measured volumes return the % predicted.',
     compute: P.predictedSpirometry,
     fields: [
-      { dom: 'ps-age', arg: 'age', kind: 'number', required: true, label: 'Age (3-95)', unit: 'years' },
+      { dom: 'ps-age', arg: 'age', kind: 'number', min: 3, max: 95, required: true, label: 'Age (3-95)', unit: 'years' },
       { dom: 'ps-height', arg: 'heightCm', kind: 'number', required: true, label: 'Height', unit: 'cm' },
       { dom: 'ps-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Sex' },
       { dom: 'ps-eth', arg: 'ethnicity', kind: 'enum', values: ['caucasian', 'african-american', 'ne-asian', 'se-asian', 'other'], label: 'Ethnicity group (GLI-2012)' },

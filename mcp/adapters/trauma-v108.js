@@ -25,7 +25,7 @@ export default [
     summary: 'New Injury Severity Score (Osler 1997): the sum of squares of the three most severe AIS injuries regardless of body region (0-75).',
     compute: F.niss,
     fields: [
-      { dom: 'ni-a1', arg: 'ais1', kind: 'number', required: true, label: 'Highest AIS (1-6)' },
+      { dom: 'ni-a1', arg: 'ais1', kind: 'number', min: 1, max: 6, required: true, label: 'Highest AIS (1-6)' },
       // spec-v1151: the library gives a disclosed FLOOR from a subset -- "NISS is
       // at least 13 from 2 of the three AIS severities ... each can only add to
       // the total" -- and an AIS 6 forces the maximal 75 on its own. Declaring
@@ -67,7 +67,7 @@ export default [
     summary: 'GCS-Pupils score (Brennan 2018): the Glasgow Coma Scale minus a pupil-reactivity penalty (0-2), extending the prognostic range at the low end.',
     compute: F.gcsPupils,
     fields: [
-      { dom: 'gp-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale total (3-15)' },
+      { dom: 'gp-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale total (3-15)' },
       { dom: 'gp-pupils', arg: 'pupils', kind: 'number', required: true, label: 'Unreactive pupils (0 / 1 / 2)', values: ['0', '1', '2'] },
     ],
   },

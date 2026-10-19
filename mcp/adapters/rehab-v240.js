@@ -12,15 +12,15 @@ export default [
     summary: 'Edmonton Symptom Assessment System (Bruera E, et al. J Palliat Care 1991): nine symptoms each 0-10 summed to a total symptom-distress score of 0-90, where higher = greater symptom burden.',
     compute: F.esas,
     fields: [
-      { dom: 'esas-pain', arg: 'pain', kind: 'number', required: true, label: 'Pain (0-10)' },
-      { dom: 'esas-tired', arg: 'tiredness', kind: 'number', required: true, label: 'Tiredness (0-10)' },
-      { dom: 'esas-drowsy', arg: 'drowsiness', kind: 'number', required: true, label: 'Drowsiness (0-10)' },
-      { dom: 'esas-nausea', arg: 'nausea', kind: 'number', required: true, label: 'Nausea (0-10)' },
-      { dom: 'esas-appetite', arg: 'appetite', kind: 'number', required: true, label: 'Lack of appetite (0-10)' },
-      { dom: 'esas-dyspnea', arg: 'dyspnea', kind: 'number', required: true, label: 'Shortness of breath (0-10)' },
-      { dom: 'esas-depression', arg: 'depression', kind: 'number', required: true, label: 'Depression (0-10)' },
-      { dom: 'esas-anxiety', arg: 'anxiety', kind: 'number', required: true, label: 'Anxiety (0-10)' },
-      { dom: 'esas-wellbeing', arg: 'wellbeing', kind: 'number', required: true, label: 'Wellbeing (0-10)' },
+      { dom: 'esas-pain', arg: 'pain', kind: 'number', min: 0, max: 10, required: true, label: 'Pain (0-10)' },
+      { dom: 'esas-tired', arg: 'tiredness', kind: 'number', min: 0, max: 10, required: true, label: 'Tiredness (0-10)' },
+      { dom: 'esas-drowsy', arg: 'drowsiness', kind: 'number', min: 0, max: 10, required: true, label: 'Drowsiness (0-10)' },
+      { dom: 'esas-nausea', arg: 'nausea', kind: 'number', min: 0, max: 10, required: true, label: 'Nausea (0-10)' },
+      { dom: 'esas-appetite', arg: 'appetite', kind: 'number', min: 0, max: 10, required: true, label: 'Lack of appetite (0-10)' },
+      { dom: 'esas-dyspnea', arg: 'dyspnea', kind: 'number', min: 0, max: 10, required: true, label: 'Shortness of breath (0-10)' },
+      { dom: 'esas-depression', arg: 'depression', kind: 'number', min: 0, max: 10, required: true, label: 'Depression (0-10)' },
+      { dom: 'esas-anxiety', arg: 'anxiety', kind: 'number', min: 0, max: 10, required: true, label: 'Anxiety (0-10)' },
+      { dom: 'esas-wellbeing', arg: 'wellbeing', kind: 'number', min: 0, max: 10, required: true, label: 'Wellbeing (0-10)' },
     ],
   },
   {
@@ -28,7 +28,7 @@ export default [
     summary: 'Rivermead Mobility Index (Collen FM, et al. Int Disabil Stud 1991): a count of the achieved mobility items (each yes = 1) for a total of 0-15, where higher = more independent mobility.',
     compute: F.rivermead,
     fields: [
-      { dom: 'rmi-count', arg: 'count', kind: 'number', required: true, label: 'Number of items achieved (0-15)' },
+      { dom: 'rmi-count', arg: 'count', kind: 'number', min: 0, max: 15, required: true, label: 'Number of items achieved (0-15)' },
     ],
   },
   {

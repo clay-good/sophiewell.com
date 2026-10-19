@@ -165,7 +165,7 @@ export default [
       { dom: 'ir-ais1', arg: 'ais1', kind: 'number', required: true, label: 'Highest AIS region (0-6)', values: ['0', '1', '2', '3', '4', '5', '6'] },
       { dom: 'ir-ais2', arg: 'ais2', kind: 'number', required: true, label: '2nd highest AIS region (0-6)', values: ['0', '1', '2', '3', '4', '5', '6'] },
       { dom: 'ir-ais3', arg: 'ais3', kind: 'number', required: true, label: '3rd highest AIS region (0-6)', values: ['0', '1', '2', '3', '4', '5', '6'] },
-      { dom: 'ir-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3-15)' },
+      { dom: 'ir-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3-15)' },
       { dom: 'ir-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
       { dom: 'ir-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: '/min' },
     ],

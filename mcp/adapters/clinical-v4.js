@@ -177,7 +177,7 @@ export default [
     compute: F.rox,
     fields: [
       { dom: 'rx-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO2', unit: '%' },
-      { dom: 'rx-fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO2 (0-1)' },
+      { dom: 'rx-fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, required: true, label: 'FiO2 (0-1)' },
       { dom: 'rx-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
       // spec-v1154: spec-v1131 taught this to ask for the timepoint only in the
       // range where the timepoint decides -- the success cutoff is >= 4.88 at every

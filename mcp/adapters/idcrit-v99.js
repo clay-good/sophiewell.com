@@ -67,7 +67,7 @@ export default [
       { dom: 'saps-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L' },
       { dom: 'saps-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Bilirubin', unit: 'mg/dL' },
       { dom: 'saps-wbc', arg: 'wbc', kind: 'number', required: true, label: 'WBC', unit: 'x10^3/mm^3' },
-      { dom: 'saps-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3-15)' },
+      { dom: 'saps-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3-15)' },
       { dom: 'saps-chronic', arg: 'chronicDisease', kind: 'enum', values: ['none', 'metastatic', 'hematologic', 'aids'], required: true, label: 'Chronic disease (none / metastatic / hematologic / AIDS)' },
       { dom: 'saps-admit', arg: 'admissionType', kind: 'enum', values: ['scheduled-surgical', 'medical', 'unscheduled-surgical'], required: true, label: 'Type of admission' },
     ],
@@ -102,7 +102,7 @@ export default [
     },
     fields: [
       { dom: 'lb-age', arg: 'ageBand', kind: 'enum', values: LB_AGE_KEYS, required: true, label: 'Age band (infant / 1 / 5 / 10 / 15 / adult)' },
-      ...LB_REGION_KEYS.map((k) => ({ dom: `lb-${k}`, arg: `lb-${k}`, kind: 'number', label: `${k} burn fraction (0-1)` })),
+      ...LB_REGION_KEYS.map((k) => ({ dom: `lb-${k}`, arg: `lb-${k}`, kind: 'number', min: 0, max: 1, label: `${k} burn fraction (0-1)` })),
     ],
   },
 ];

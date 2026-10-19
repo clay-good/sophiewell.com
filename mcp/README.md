@@ -133,7 +133,8 @@ candidates or `NO_MATCH`. An id that is not a tile at all is still `UNKNOWN_ID`.
 **Errors carry a stable `code`** (and `field` where input-specific) alongside the
 English `message`, so you can branch without parsing prose: `UNKNOWN_TOOL`,
 `UNKNOWN_ID`, `BAD_ARGS`, `UNKNOWN_INPUT`, `MISSING_INPUT`, `INVALID_TYPE`,
-`INCOMPLETE`, `COMPUTE_ERROR`, `NO_MATCH`, `NO_VALUES`, `MISSING_INPUTS`,
+`OUT_OF_RANGE` (a number past the range its label states; the schema carries it as
+`minimum`/`maximum`), `INCOMPLETE`, `COMPUTE_ERROR`, `NO_MATCH`, `NO_VALUES`, `MISSING_INPUTS`,
 `AMBIGUOUS`, `NOT_EXPOSED`, `LABEL_WITHHELD` (an older tool whose drug label changed or passed review;
 `labelLinks` gives the current labels), and from the file tools `NO_ROOTS`, `OUTSIDE_ROOTS`,
 `NOT_A_FILE`, `NO_TOOL`, `NOT_AVAILABLE`, `TOO_LARGE`, `UNREADABLE`.
