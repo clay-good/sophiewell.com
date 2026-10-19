@@ -21,4 +21,5 @@ The band numbers are unchanged for scores 0 to 5 and for every mNIHSS total.
 
 - The full `nihss` result printed four bands against its own five-band table; [spec-v1645](spec-v1645.md)
   fixed that. A readable primary source for the five-band convention itself is still unread.
-- "Table 4" for the ICH rates is still unread; only the rates themselves were confirmed.
+- "Table 4" for the ICH rates could not be read, so the tile now cites "Hemphill 2001" without a table
+  number (spec-v1651, same day); the rates themselves are confirmed by the abstract and PMC12875701.

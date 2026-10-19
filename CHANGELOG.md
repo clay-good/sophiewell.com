@@ -699,6 +699,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   "Moderate stroke".
 - PHQ-9, GAD-7, EPDS, AUDIT-C and CAGE refuse an agent's answer that is not one of the item's options
   (PHQ-9 item 1 = 9 used to score "Mild depression"; CAGE returned 9 of 4).
+- ICH Score cites "Hemphill 2001" without the table number it named, which could not be checked.
 - ICH Score no longer prints "30-day mortality 100% per Hemphill 2001 Table 4" for a score of 6. The paper
   reports rates for 0 to 5 (all 6 patients at 5 died) and none for 6, so a 6 now says that.
 - Modified NIHSS names its severity words as the bands used with the full 0-42 NIHSS instead of "per Meyer
