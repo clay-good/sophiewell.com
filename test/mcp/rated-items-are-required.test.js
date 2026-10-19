@@ -169,6 +169,23 @@ test('spec-v1073: the screener computes refuse an absent item on their own', () 
   }
 });
 
+// spec-v1645: an answer outside the item's own options is refused, not summed.
+// PHQ-9 item 1 = 9 scored "Mild depression"; CAGE returned 9 of a maximum 4.
+test('spec-v1645: the screener computes refuse an answer that is not one of the options', () => {
+  const byId = new Map(allCalculators().map((t) => [t.id, t]));
+  for (const [id, n, over] of [['phq9', 9, 4], ['gad7', 7, 4], ['epds', 10, 4], ['auditc', 3, 5], ['cage', 4, 2]]) {
+    const tool = byId.get(id);
+    for (const bad of [over, -1, 0.5]) {
+      const a = {};
+      for (let i = 0; i < n; i += 1) a[`i${i}`] = 0;
+      a.i0 = bad;
+      const r = tool.compute(a);
+      assert.equal(r.valid, false, `${id} scored item 1 = ${bad}`);
+      assert.match(r.message, /must be one of/, `${id} refusal does not name the options`);
+    }
+  }
+});
+
 // spec-v1074: the same question, asked of a picklist rather than a whole tile.
 //
 // The sweep above only catches an instrument built ENTIRELY of rated items, and

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `71482347ca5b05d0`
-Generated: 2026-10-19T15:28:38.686Z
+Build ID: `321175ac6e8fb9e3`
+Generated: 2026-10-19T15:47:38.694Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -293,7 +293,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v6.js` | 17029 | `546b3f749b758d099654b8ecdd89742e0a603583846708705e4871e3f6f47612` |
 | `lib/clinical-v7.js` | 27341 | `cbbfa7a9633f7636e96bbdb9ce582648f562e49c0a98df05fa153b413a40e959` |
 | `lib/clinical-v8.js` | 28200 | `3d63d553285920856a96febaede4ac2bd9ecf44fa3ae221218cfe6e1e51efe6c` |
-| `lib/clinical.js` | 28507 | `580bdb6ef561e8a53ef7d5e9d7ad2b2b8b6bc30fd7339ac03a696803ac04b759` |
+| `lib/clinical.js` | 28766 | `916cc6257578f6a69d014b2b639e5d433d54951ba7eb6dd749819d1decb2d724` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
 | `lib/cmea-sales-limit-v1637.js` | 10263 | `0c4fe373f19ea64b85bcf0c23b628fd4fe86da3046edeec001fcb81a9a762249` |
@@ -2702,7 +2702,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schofield-v779.js` | 1203 | `877117e8b9a4659faa3164c628509cfa5855c8a9acdebe84b8e4cf9af11a560a` |
 | `mcp/adapters/schumock-thornton-preventability-v1634.js` | 1699 | `1076046b53bf7fa9c95d1907670da32babe615ba9b0870eb6b66061537b01122` |
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
-| `mcp/adapters/scoring-v4.js` | 163883 | `8ab92b40b22ade2ad98425998edc493e0e5504df04d216bbe0ecefdb48e5a263` |
+| `mcp/adapters/scoring-v4.js` | 164459 | `8e07de5bf55ee719cdad28996df50d65aafc352cd0c2e59e9084c124f918280f` |
 | `mcp/adapters/scoring-v5.js` | 12684 | `12ac7aa1a19030cdc27d76fc6fbac1edd0c024171f8a22365bd22da65a0b74f3` |
 | `mcp/adapters/scoring-v6.js` | 20286 | `ccd686c6f287625d2a83b5142cfcbef5f1c43940e2a67a74088962c9651e15f0` |
 | `mcp/adapters/scorpion-grade-india-v1556.js` | 1284 | `3cd3d399c2af7f57769e85a6ad4edeb3e77354249b3a6db361b0981e71233aed` |

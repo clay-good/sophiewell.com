@@ -24,14 +24,22 @@ import { scoreScreener, bandFor } from '../../lib/screener.js';
 // before compute runs. This guard is the second half: adapters are also called
 // directly (test/mcp/blank-is-absent.test.js does), and a NaN would otherwise
 // still fall through `|| 0`.
-function screenerAnswers(a, count) {
+// spec-v1645: an answer must be one of the item's own option values. Any finite
+// number used to be summed, so a PHQ-9 item 1 of 9 scored "Mild depression" and
+// CAGE returned 9 of 4. The browser offers only the options; agents had no fence.
+function screenerAnswers(a, items) {
+  const count = items.length;
   const answers = [];
   const missing = [];
   for (let i = 0; i < count; i += 1) {
     const v = a[`i${i}`];
     const n = v === '' || v == null ? NaN : Number(v);
-    if (!Number.isFinite(n)) missing.push(i + 1);
-    else answers.push(n);
+    if (!Number.isFinite(n)) { missing.push(i + 1); continue; }
+    const allowed = items[i].options.map((o) => o.value);
+    if (!allowed.includes(n)) {
+      return { valid: false, message: `Item ${i + 1} must be one of ${allowed.join(', ')}; got ${v}.` };
+    }
+    answers.push(n);
   }
   if (missing.length) {
     return { valid: false, message: `Not scored: ${missing.length} of ${count} items unanswered (item${missing.length > 1 ? 's' : ''} ${missing.join(', ')}). An unanswered item is not a zero -- answer every item to read the total.` };
@@ -2078,7 +2086,7 @@ export default [
     // is in the JSON and the numeric round-trip does not depend on the "PHQ-9" 9.
     summary: 'PHQ-9 depression screen (Kroenke 2001): nine items each 0-3 over the last two weeks; total 0-27 with severity bands (0-4 minimal, 5-9 mild, 10-14 moderate, 15-19 moderately severe, 20-27 severe). Item 9 asks about thoughts of self-harm. A validated screening tool, not a diagnosis.',
     compute: (a) => {
-      const answers = screenerAnswers(a, 9);
+      const answers = screenerAnswers(a, F.PHQ9_CONFIG.items);
       if (!Array.isArray(answers)) return answers;
       const score = scoreScreener(F.PHQ9_CONFIG.items, answers);
       const band = bandFor(F.PHQ9_CONFIG.severityBands, score);
@@ -2091,7 +2099,7 @@ export default [
     // Same generic-screener pattern as phq9, over the exported GAD7_CONFIG.
     summary: 'GAD-7 generalized-anxiety screen (Spitzer 2006): seven items each 0-3 over the last two weeks; total 0-21 with severity bands (0-4 minimal, 5-9 mild, 10-14 moderate, 15-21 severe). A validated screening tool, not a diagnosis.',
     compute: (a) => {
-      const answers = screenerAnswers(a, 7);
+      const answers = screenerAnswers(a, F.GAD7_CONFIG.items);
       if (!Array.isArray(answers)) return answers;
       const score = scoreScreener(F.GAD7_CONFIG.items, answers);
       const band = bandFor(F.GAD7_CONFIG.severityBands, score);
@@ -2104,7 +2112,7 @@ export default [
     // Same generic-screener pattern, over the exported EPDS_CONFIG (perinatal).
     summary: 'Edinburgh Postnatal Depression Scale (EPDS, Cox 1987): ten items each 0-3 for perinatal depression; total 0-30 (0-9 low likelihood, 10-12 possible depression, 13+ likely depression - clinical evaluation indicated). Item 10 asks about self-harm. A validated screening tool, not a diagnosis.',
     compute: (a) => {
-      const answers = screenerAnswers(a, 10);
+      const answers = screenerAnswers(a, F.EPDS_CONFIG.items);
       if (!Array.isArray(answers)) return answers;
       const score = scoreScreener(F.EPDS_CONFIG.items, answers);
       const band = bandFor(F.EPDS_CONFIG.severityBands, score);
@@ -2116,7 +2124,7 @@ export default [
     id: 'auditc',
     summary: 'AUDIT-C brief alcohol-use screen (Bush 1998): three items each 0-4 (frequency, typical quantity, binge frequency); total 0-12. A total >= 4 (men) / >= 3 (women) indicates risky drinking; >= 8 is high risk for an alcohol use disorder. A validated screening tool, not a diagnosis.',
     compute: (a) => {
-      const answers = screenerAnswers(a, 3);
+      const answers = screenerAnswers(a, F.AUDITC_CONFIG.items);
       if (!Array.isArray(answers)) return answers;
       const score = scoreScreener(F.AUDITC_CONFIG.items, answers);
       const band = bandFor(F.AUDITC_CONFIG.severityBands, score);
@@ -2128,7 +2136,7 @@ export default [
     id: 'cage',
     summary: 'CAGE alcohol-use screen (Ewing 1984): four yes/no items (Cut down, Annoyed, Guilty, Eye-opener), each 0 or 1; total 0-4. A total >= 2 raises clinically significant suspicion of an alcohol use disorder. A validated screening tool, not a diagnosis.',
     compute: (a) => {
-      const answers = screenerAnswers(a, 4);
+      const answers = screenerAnswers(a, F.CAGE_CONFIG.items);
       if (!Array.isArray(answers)) return answers;
       const score = scoreScreener(F.CAGE_CONFIG.items, answers);
       const band = bandFor(F.CAGE_CONFIG.severityBands, score);
