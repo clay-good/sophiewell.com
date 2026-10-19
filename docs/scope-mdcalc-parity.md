@@ -982,3 +982,5 @@ experience**.
 > v1635, Relative Dose Intensity — [spec-v1635](spec-v1635.md), which adds `relative-dose-intensity` with both published time bases, on the owner's decision of October 18, 2026 — is 2317.)
 
 > v1636, Surgical Antibiotic Prophylaxis Dose and Redose Clock — [spec-v1636](spec-v1636.md), which adds `surgical-prophylaxis-redose` from Table 1 read in a copy the owner saved — is 2318.)
+
+> v1655, Infection Prevention Arithmetic and Healthcare Worker Exclusion Clocks — [spec-v1655](spec-v1655.md), which adds `nhsn-sir`, `device-utilization-ratio`, `device-infection-rate`, `outbreak-attack-rates`, `hcp-exposure-clock` and `hcp-illness-return-date` from NHSN and CDC pages read October 19, 2026 — is 2324.)

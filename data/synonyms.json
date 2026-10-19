@@ -13260,6 +13260,67 @@
       ],
       "tile": "abg",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "standardized infection ratio",
+        "nhsn sir",
+        "infection ratio observed over predicted"
+      ],
+      "tile": "nhsn-sir",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "device utilization ratio",
+        "central line utilization ratio",
+        "catheter utilization ratio",
+        "ventilator utilization ratio"
+      ],
+      "tile": "device-utilization-ratio",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "clabsi rate",
+        "cauti rate",
+        "vae rate",
+        "infections per 1000 device days",
+        "central line infection rate"
+      ],
+      "tile": "device-infection-rate",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "attack rate",
+        "secondary attack rate",
+        "food specific attack rate",
+        "outbreak attack rate"
+      ],
+      "tile": "outbreak-attack-rates",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "healthcare worker exposed to measles",
+        "nurse exposed to chickenpox",
+        "employee health exposure work exclusion",
+        "staff exposed to pertussis",
+        "hcp work restriction after exposure"
+      ],
+      "tile": "hcp-exposure-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "healthcare worker return to work after infection",
+        "nurse with pertussis return to work",
+        "employee with measles when can they work",
+        "hcp work exclusion after illness"
+      ],
+      "tile": "hcp-illness-return-date",
+      "audience": "clinicians"
     }
   ]
 }

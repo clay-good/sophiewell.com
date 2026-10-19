@@ -855,6 +855,12 @@ import * as antibiogramBuilderV1636 from '../../lib/antibiogram-builder-v1636.js
 import * as chelationDoseV1636 from '../../lib/chelation-dose-v1636.js';
 import * as medAdminWindowV1636 from '../../lib/med-admin-window-v1636.js';
 import * as surgicalProphylaxisRedoseV1636 from '../../lib/surgical-prophylaxis-redose-v1636.js';
+import * as nhsnSirV1655 from '../../lib/nhsn-sir-v1655.js';
+import * as deviceUtilizationRatioV1655 from '../../lib/device-utilization-ratio-v1655.js';
+import * as deviceInfectionRateV1655 from '../../lib/device-infection-rate-v1655.js';
+import * as outbreakAttackRatesV1655 from '../../lib/outbreak-attack-rates-v1655.js';
+import * as hcpExposureClockV1655 from '../../lib/hcp-exposure-clock-v1655.js';
+import * as hcpIllnessReturnDateV1655 from '../../lib/hcp-illness-return-date-v1655.js';
 import * as adjustedPatientDaysV1636 from '../../lib/adjusted-patient-days-v1636.js';
 import * as auRateSaarV1636 from '../../lib/au-rate-saar-v1636.js';
 import * as cdiLabidCategoryV1636 from '../../lib/cdi-labid-category-v1636.js';
@@ -1991,6 +1997,12 @@ const MODULES = {
   'chelation-dose-v1636.js': chelationDoseV1636,
   'med-admin-window-v1636.js': medAdminWindowV1636,
   'surgical-prophylaxis-redose-v1636.js': surgicalProphylaxisRedoseV1636,
+  'nhsn-sir-v1655.js': nhsnSirV1655,
+  'device-utilization-ratio-v1655.js': deviceUtilizationRatioV1655,
+  'device-infection-rate-v1655.js': deviceInfectionRateV1655,
+  'outbreak-attack-rates-v1655.js': outbreakAttackRatesV1655,
+  'hcp-exposure-clock-v1655.js': hcpExposureClockV1655,
+  'hcp-illness-return-date-v1655.js': hcpIllnessReturnDateV1655,
   'adjusted-patient-days-v1636.js': adjustedPatientDaysV1636,
   'au-rate-saar-v1636.js': auRateSaarV1636,
   'cdi-labid-category-v1636.js': cdiLabidCategoryV1636,

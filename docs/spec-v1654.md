@@ -1,6 +1,9 @@
 # spec-v1654 — Seven expansion programs, proposed as OpenSpec changes
 
 > Status: **PROPOSED (2026-10-19).** Specs only. Nothing here is built, and no catalog count moves.
+>
+> Correction, the same day: infection-prevention-metrics tool 4 duplicated the live `au-rate-saar`, which a
+> name search for "days of therapy" missed. It was dropped at build; [spec-v1655](spec-v1655.md) records the build.
 
 ## What this is
 

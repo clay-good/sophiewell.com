@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e3a768ea-dbe3-5358-87a9-3c891eb8b2bc",
+  "serialNumber": "urn:uuid:e14df974-e61e-52f4-803c-4818bf0b9223",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-19T18:25:26.631Z",
+    "timestamp": "2026-10-19T22:20:19.684Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2318 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2324 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c6c95034f6794df05bd879af7dc7ae20340c36d1694ddca8510f80e93120264c"
+          "content": "809e1631d83fe023a01f4686d2eabca6bcc13f2114916ffafd17268cfbf1f68e"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "151161"
+          "value": "151656"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dbbd23ef0292b9ccf1a48fb3eba0e06a4d4d609def0851c54bd59bd1439e17a6"
+          "content": "b7bf7b62d11eb233a2102cba2f9c3256c1547bb90c01fd2dac92fc31f9d1774a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "637406"
+          "value": "638549"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2bd1b388d643db39930a3ee33e85ecaffd54ffa1e1020012c8d45958579b8cca"
+          "content": "74d450e621d09307fee7453291b8ff511f67f5024c12645f135ad71a5d7ddde4"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "291908"
+          "value": "292689"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e3ca05705455fe22631af5d9f02eec0a22d82e8bcdbaf2b93c931338c188832f"
+          "content": "cec2eb9607d0e7b8a76cb85ca12960b177706d42dd3a8b54b4c536c57c63d668"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "141652"
+          "value": "142202"
         }
       ]
     },
@@ -7427,6 +7427,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/device-infection-rate-v1655.js",
+      "type": "file",
+      "name": "lib/device-infection-rate-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3fe81bcd581eab45572a0fc8d325075bcfe3dffb5a3fb1c2e74e99866013f791"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3311"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/device-utilization-ratio-v1655.js",
+      "type": "file",
+      "name": "lib/device-utilization-ratio-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4b1e22b907c404849da4ec4d4e84aac9736d700abb8169aa709c572fbed751c8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2790"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/deworming-dose-who-v1550.js",
       "type": "file",
       "name": "lib/deworming-dose-who-v1550.js",
@@ -11665,6 +11707,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "8850"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hcp-exposure-clock-v1655.js",
+      "type": "file",
+      "name": "lib/hcp-exposure-clock-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "712735878a5b74e56093386909200388685645ded5f5f8d3a4094f490e008d4b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9844"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hcp-illness-return-date-v1655.js",
+      "type": "file",
+      "name": "lib/hcp-illness-return-date-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3f92c252a496fea0630d74c97bcffea9a8edaf5b8160948eff0da84208f53fd2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9169"
         }
       ]
     },
@@ -17492,7 +17576,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "654f044b04f739d2c1e408cd3aeed7768e6176f9fb9079db7ee9c57480a4a2ff"
+          "content": "c0048648cd377be89dddbad2ed02ad54e3bd055357795416f548944605e87810"
         }
       ],
       "properties": [
@@ -17502,7 +17586,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3029162"
+          "value": "3034419"
         }
       ]
     },
@@ -19376,6 +19460,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/nhsn-sir-v1655.js",
+      "type": "file",
+      "name": "lib/nhsn-sir-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "004fbb524565df38f74344f86b06d96374f62da47703202ad60720315c9532ff"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3048"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/nhsn-vae-v876.js",
       "type": "file",
       "name": "lib/nhsn-vae-v876.js",
@@ -21073,6 +21178,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "17912"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/outbreak-attack-rates-v1655.js",
+      "type": "file",
+      "name": "lib/outbreak-attack-rates-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a717d78e520b45dada064ba0b62721c9c12f10e6fb66c091bbccbc1ef2781f7a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6738"
         }
       ]
     },
@@ -38822,6 +38948,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/device-infection-rate-v1655.js",
+      "type": "file",
+      "name": "mcp/adapters/device-infection-rate-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "68fe644025ab03a28bfe15ae72c5dcb6bcfdac69234fc7cef0229026d21e01cf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1048"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/device-utilization-ratio-v1655.js",
+      "type": "file",
+      "name": "mcp/adapters/device-utilization-ratio-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7c5db5478a905001be199e42c4ac6ccd8fc1be85a409597c80d31c4528daff74"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "912"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/deworming-dose-who-v1550.js",
       "type": "file",
       "name": "mcp/adapters/deworming-dose-who-v1550.js",
@@ -42766,6 +42934,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "2717"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hcp-exposure-clock-v1655.js",
+      "type": "file",
+      "name": "mcp/adapters/hcp-exposure-clock-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8e1515ef98073d545ed0277ff41ce0b1c0cbba2ee1cb0f4734eb390e10d44cb5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2062"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hcp-illness-return-date-v1655.js",
+      "type": "file",
+      "name": "mcp/adapters/hcp-illness-return-date-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a07de198e7e77eea597e4c7abcb073dbf85f0fb0638f95f8243b032e35950888"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1258"
         }
       ]
     },
@@ -49616,6 +49826,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nhsn-sir-v1655.js",
+      "type": "file",
+      "name": "mcp/adapters/nhsn-sir-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "efe84ee011616f4c4351681dc8cf8e411829a7db95506eec32f169fa063c5040"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "782"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nhsn-vae-v876.js",
       "type": "file",
       "name": "mcp/adapters/nhsn-vae-v876.js",
@@ -51229,6 +51460,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1933"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/outbreak-attack-rates-v1655.js",
+      "type": "file",
+      "name": "mcp/adapters/outbreak-attack-rates-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "28923127aa5b868930cf5344f4ab9910dbb46769b5677f6663b8d418d3530019"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1412"
         }
       ]
     },
@@ -60710,7 +60962,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1712e142ddc567389f6793a844e8f09d85e1d6ebc248de9fbb4f175ddeec0510"
+          "content": "fb2fa8ed08c82847c71cc276d8d7da74ac37ce06366542a0376bb1a57e64e6c6"
         }
       ],
       "properties": [
@@ -60720,7 +60972,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "164069"
+          "value": "164883"
         }
       ]
     },
@@ -65488,6 +65740,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10575"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1655.js",
+      "type": "file",
+      "name": "views/group-v1655.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "04965e7e4a1bca5a0e0e188df83cd64d2b2fcbafd242707dda188228e9280cd7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7339"
         }
       ]
     },
@@ -96537,6 +96810,8 @@
         "urn:sophiewell:file:source:lib/dermscore-v234.js",
         "urn:sophiewell:file:source:lib/dermuro-v191.js",
         "urn:sophiewell:file:source:lib/desensitization-12-step-v1635.js",
+        "urn:sophiewell:file:source:lib/device-infection-rate-v1655.js",
+        "urn:sophiewell:file:source:lib/device-utilization-ratio-v1655.js",
         "urn:sophiewell:file:source:lib/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:source:lib/dexrazoxane-ratio-dose-v1635.js",
         "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
@@ -96739,6 +97014,8 @@
         "urn:sophiewell:file:source:lib/hazardous-drug-list-check-v1630.js",
         "urn:sophiewell:file:source:lib/hbv-serology-v1400.js",
         "urn:sophiewell:file:source:lib/hcc-surveillance-v281.js",
+        "urn:sophiewell:file:source:lib/hcp-exposure-clock-v1655.js",
+        "urn:sophiewell:file:source:lib/hcp-illness-return-date-v1655.js",
         "urn:sophiewell:file:source:lib/hcv-test-sequence-v1400.js",
         "urn:sophiewell:file:source:lib/hdmtx-leucovorin-rescue-v1635.js",
         "urn:sophiewell:file:source:lib/heaven-criteria-v572.js",
@@ -97106,6 +97383,7 @@
         "urn:sophiewell:file:source:lib/newborn-size-category-v1559.js",
         "urn:sophiewell:file:source:lib/newborn-temperature-who-v1559.js",
         "urn:sophiewell:file:source:lib/ng-tube-length-v1445.js",
+        "urn:sophiewell:file:source:lib/nhsn-sir-v1655.js",
         "urn:sophiewell:file:source:lib/nhsn-vae-v876.js",
         "urn:sophiewell:file:source:lib/ni-rads-v373.js",
         "urn:sophiewell:file:source:lib/nice-v335.js",
@@ -97187,6 +97465,7 @@
         "urn:sophiewell:file:source:lib/ottawa-bowel-prep-v670.js",
         "urn:sophiewell:file:source:lib/oud-telemedicine-rx-window-v1637.js",
         "urn:sophiewell:file:source:lib/out-of-fridge-discard-date-v1639.js",
+        "urn:sophiewell:file:source:lib/outbreak-attack-rates-v1655.js",
         "urn:sophiewell:file:source:lib/outerbridge-v337.js",
         "urn:sophiewell:file:source:lib/output-guard.js",
         "urn:sophiewell:file:source:lib/own-notice.js",
@@ -97949,6 +98228,7 @@
         "urn:sophiewell:file:source:views/group-v164.js",
         "urn:sophiewell:file:source:views/group-v1640.js",
         "urn:sophiewell:file:source:views/group-v165.js",
+        "urn:sophiewell:file:source:views/group-v1655.js",
         "urn:sophiewell:file:source:views/group-v166.js",
         "urn:sophiewell:file:source:views/group-v167.js",
         "urn:sophiewell:file:source:views/group-v169.js",
@@ -98980,6 +99260,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermscore-v234.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermuro-v191.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/desensitization-12-step-v1635.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/device-infection-rate-v1655.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/device-utilization-ratio-v1655.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dexrazoxane-ratio-dose-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
@@ -99168,6 +99450,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hazardous-drug-list-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hbv-serology-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hcc-surveillance-v281.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hcp-exposure-clock-v1655.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hcp-illness-return-date-v1655.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hcv-test-sequence-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hdmtx-leucovorin-rescue-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heaven-criteria-v572.js",
@@ -99494,6 +99778,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/newborn-size-category-v1559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/newborn-temperature-who-v1559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ng-tube-length-v1445.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nhsn-sir-v1655.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nhsn-vae-v876.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ni-rads-v373.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nice-v335.js",
@@ -99571,6 +99856,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ottawa-bowel-prep-v670.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/oud-telemedicine-rx-window-v1637.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/out-of-fridge-discard-date-v1639.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/outbreak-attack-rates-v1655.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/outerbridge-v337.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pa-criteria-v1502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pa-metrics-compare.js",
@@ -100127,7 +100413,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e3a768eadbe3e358"
+      "value": "e14df974e61e42f4"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -100139,7 +100425,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3817"
+      "value": "3830"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

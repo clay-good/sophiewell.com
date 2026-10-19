@@ -1122,6 +1122,12 @@ import antibiogramBuilderV1636 from './adapters/antibiogram-builder-v1636.js';
 import chelationDoseV1636 from './adapters/chelation-dose-v1636.js';
 import medAdminWindowV1636 from './adapters/med-admin-window-v1636.js';
 import surgicalProphylaxisRedoseV1636 from './adapters/surgical-prophylaxis-redose-v1636.js';
+import nhsnSirV1655 from './adapters/nhsn-sir-v1655.js';
+import deviceUtilizationRatioV1655 from './adapters/device-utilization-ratio-v1655.js';
+import deviceInfectionRateV1655 from './adapters/device-infection-rate-v1655.js';
+import outbreakAttackRatesV1655 from './adapters/outbreak-attack-rates-v1655.js';
+import hcpExposureClockV1655 from './adapters/hcp-exposure-clock-v1655.js';
+import hcpIllnessReturnDateV1655 from './adapters/hcp-illness-return-date-v1655.js';
 import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
 import auRateSaarV1636 from './adapters/au-rate-saar-v1636.js';
 import cdiLabidCategoryV1636 from './adapters/cdi-labid-category-v1636.js';
@@ -2471,6 +2477,12 @@ const ADAPTER_MODULES = [
   ['chelation-dose-v1636', chelationDoseV1636],
   ['med-admin-window-v1636', medAdminWindowV1636],
   ['surgical-prophylaxis-redose-v1636', surgicalProphylaxisRedoseV1636],
+  ['nhsn-sir-v1655', nhsnSirV1655],
+  ['device-utilization-ratio-v1655', deviceUtilizationRatioV1655],
+  ['device-infection-rate-v1655', deviceInfectionRateV1655],
+  ['outbreak-attack-rates-v1655', outbreakAttackRatesV1655],
+  ['hcp-exposure-clock-v1655', hcpExposureClockV1655],
+  ['hcp-illness-return-date-v1655', hcpIllnessReturnDateV1655],
   ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],
   ['au-rate-saar-v1636', auRateSaarV1636],
   ['cdi-labid-category-v1636', cdiLabidCategoryV1636],

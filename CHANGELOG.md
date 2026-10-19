@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Infection prevention arithmetic from NHSN: the standardized infection ratio (observed over the predicted count on
+  the NHSN report, with no ratio below 1.0 predicted), the device utilization ratio, and CLABSI, CAUTI and VAE rates
+  per 1,000 device days, the guide's own facility as the worked example.
+- Outbreak attack rates by exposure, overall and among household contacts, as CDC's Principles of Epidemiology
+  defines them, with each exposure's risk ratio and its 95% interval.
+- Healthcare worker exposed to measles, mumps, rubella, varicella or pertussis: the dates of work exclusion or
+  daily monitoring from CDC's 2024 to 2026 section pages, by immunity, immune globulin and prophylaxis; and, for a
+  worker with one of seven infections, when CDC's exclusion ends.
 - Surgical Antibiotic Prophylaxis Dose and Redose Clock: Table 1 of the 2013 ASHP/IDSA/SIS/SHEA guideline, read
   cell by cell, with the pediatric cap, the gentamicin dosing weight, and the 60- or 120-minute start window.
 - Relative Dose Intensity (Chemotherapy): delivered over planned dose intensity for one drug, shown over the cycles

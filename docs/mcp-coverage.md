@@ -9418,6 +9418,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/chelation-dose-v1636.js (spec-v1636: Succimer, edetate calcium disodium and dimercaprol doses (labels) — clinical disclaimer)
 - `chelation-dose`
 
+### lib/nhsn-sir-v1655.js (spec-v1655: NHSN standardized infection ratio — administrative disclaimer)
+- `nhsn-sir`
+
+### lib/device-utilization-ratio-v1655.js (spec-v1655: NHSN device utilization ratio — administrative disclaimer)
+- `device-utilization-ratio`
+
+### lib/device-infection-rate-v1655.js (spec-v1655: CLABSI, CAUTI and VAE rates per 1,000 device days — administrative disclaimer)
+- `device-infection-rate`
+
+### lib/outbreak-attack-rates-v1655.js (spec-v1655: outbreak attack rates — administrative disclaimer)
+- `outbreak-attack-rates`
+
+### lib/hcp-exposure-clock-v1655.js (spec-v1655: healthcare worker exposure dates (CDC) — clinical disclaimer)
+- `hcp-exposure-clock`
+
+### lib/hcp-illness-return-date-v1655.js (spec-v1655: healthcare worker infection, end of work exclusion (CDC) — clinical disclaimer)
+- `hcp-illness-return-date`
+
 ### lib/antimicrobial-day-counter-v1636.js (spec-v1636: Count antimicrobial days and days present from rows (NHSN) — administrative disclaimer)
 - `antimicrobial-day-counter`
 

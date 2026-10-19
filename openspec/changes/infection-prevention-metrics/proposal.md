@@ -1,14 +1,16 @@
 # Change: Infection prevention and healthcare epidemiology arithmetic
 
-**Status:** Proposed, October 19, 2026. Specs only; nothing here is built.
+**Status:** Built October 19, 2026: six tools shipped, recorded in [docs/spec-v1655.md](../../../docs/spec-v1655.md),
+which lists every change from this proposal. Tool 4 was dropped as a duplicate of the live `au-rate-saar`;
+tool 5 stays gated on the WHO manual; tool 6 shipped as `outbreak-attack-rates`.
 **Audience:** the infection preventionist, the hospital epidemiologist, the employee-health
 nurse, and the antimicrobial stewardship pharmacist.
 **Program index:** [docs/spec-v1654.md](../../../docs/spec-v1654.md).
 
 ## Why
 
-The catalog carries the NHSN *definitions* (`nhsn-clabsi`, `nhsn-cauti`, the VAE tile, the
-C. difficile LabID tile), a device-day counter, defined daily doses per 1,000 patient-days, and a
+The catalog carries the NHSN *definitions* (`clabsi-lcbi`, `cauti-nhsn`, `nhsn-vae`, the
+C. difficile LabID tile), a per-patient device dwell timer, defined daily doses per 1,000 patient-days, and a
 cumulative antibiogram builder. It carries none of the arithmetic an infection preventionist
 does every month once the cases are counted: the standardized infection ratio with its
 minimum-precision rule, the device utilization ratio, the infection rate per 1,000 device days,
@@ -66,5 +68,5 @@ drug, or a staffing decision; each reports what the cited rule says for the inpu
 - New capability `infection-prevention-metrics` (this change's `specs/` folder).
 - At build: eight lib modules, eight renderers, eight META entries with worked examples, eight
   MCP adapters, synonym rows, and the count surfaces (`node scripts/check-catalog-truth.mjs`).
-- No existing tile changes. `device-day-counter` (the CDC device-day counter already live) is
-  the natural neighbor of tools 2 and 3; the integrator should cross-link them in `META.related`.
+- No existing tile changes. `device-day-counter` (a per-patient dwell timer, not a population count) is
+  linked from tool 2.

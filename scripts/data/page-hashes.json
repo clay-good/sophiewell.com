@@ -15,6 +15,34 @@
     "sha256": "141208fca5444d6f7eb20acb938a0d6b01b489df7fe2f8354b95078e2154d08a",
     "recorded": "2026-10-11"
   },
+  "https://www.cdc.gov/infection-control/hcp/healthcare-personnel-epidemiology-control/group-a-streptococcus.html": {
+    "sha256": "7dfc6b7099511f2fa177b095e6de00729db8398ad4a06ba1e1711a16404822ae",
+    "recorded": "2026-10-19"
+  },
+  "https://www.cdc.gov/infection-control/hcp/healthcare-personnel-epidemiology-control/measles.html": {
+    "sha256": "0e45a0fbd2fbcd4f19595359a2df4297df80db5fbea3d187e6f9cae251a57839",
+    "recorded": "2026-10-19"
+  },
+  "https://www.cdc.gov/infection-control/hcp/healthcare-personnel-epidemiology-control/meningococcal-disease.html": {
+    "sha256": "3ae689b1e259c6c18805b05637f75f0af45f595ffb5030ca677701b06f6d6075",
+    "recorded": "2026-10-19"
+  },
+  "https://www.cdc.gov/infection-control/hcp/healthcare-personnel-epidemiology-control/mumps.html": {
+    "sha256": "b9417e40534956bb003652ad97f803b40f09eba4a4aeb1812832401870fbd3c7",
+    "recorded": "2026-10-19"
+  },
+  "https://www.cdc.gov/infection-control/hcp/healthcare-personnel-epidemiology-control/pertussis.html": {
+    "sha256": "ad85a1a1a478e04956529b2294f4a7dc69ae70b16fbd2eed1fb7425aa244f360",
+    "recorded": "2026-10-19"
+  },
+  "https://www.cdc.gov/infection-control/hcp/healthcare-personnel-epidemiology-control/rubella.html": {
+    "sha256": "6098cf989cc40d434e36713f907c446d4bf089da04ec814f3753a1d157b6ad83",
+    "recorded": "2026-10-19"
+  },
+  "https://www.cdc.gov/infection-control/hcp/healthcare-personnel-epidemiology-control/varicella.html": {
+    "sha256": "ffb9b812e913c7a390bbdef947cc163b62a4ada2c3acc9dff1f6d3cafbaa482e",
+    "recorded": "2026-10-19"
+  },
   "https://www.cdc.gov/injection-safety/hcp/clinical-safety/index.html": {
     "sha256": "c558c06f52ddfe07453f451fe66318bba8a78af01334d5c51f0956eefb4d2b51",
     "recorded": "2026-10-11"
