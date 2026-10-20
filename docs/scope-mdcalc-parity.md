@@ -992,3 +992,5 @@ experience**.
 > v1658, Laboratory Quality Control and Proficiency Testing — [spec-v1658](spec-v1658.md), which adds `levey-jennings-limits`, `clia-pt-acceptance`, `pt-event-score`, `calibration-verification` and `turnaround-time-percentile` from 42 CFR 493.931, 493.941, 493.841, 493.851 and 493.1255 read on the eCFR October 19, 2026 — is 2346.)
 
 > v1659, Public Health Epidemiology Measures — [spec-v1659](spec-v1659.md), which adds `incidence-prevalence`, `mortality-measures`, `ypll`, `attributable-proportion`, `vaccine-effectiveness`, `smr` and `direct-age-standardization` from CDC's *Principles of Epidemiology*, Lesson 3, and the SEER 2000 U.S. standard population, read October 19, 2026 — is 2353.)
+
+> v1660, Genetic Counseling Risk Arithmetic — [spec-v1660](spec-v1660.md), which adds `hardy-weinberg-carrier`, `residual-carrier-risk`, `recessive-couple-risk`, `x-linked-bayes-risk`, `coefficient-of-relationship` and `bayes-risk-table` from Hardy 1908 and Wright 1922, read in open copies October 19, 2026, and Bayes' theorem — is 2359.)

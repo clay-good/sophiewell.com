@@ -890,6 +890,12 @@ import * as attributableProportionV1659 from '../../lib/attributable-proportion-
 import * as vaccineEffectivenessV1659 from '../../lib/vaccine-effectiveness-v1659.js';
 import * as smrV1659 from '../../lib/smr-v1659.js';
 import * as directAgeStandardizationV1659 from '../../lib/direct-age-standardization-v1659.js';
+import * as hardyWeinbergCarrierV1660 from '../../lib/hardy-weinberg-carrier-v1660.js';
+import * as residualCarrierRiskV1660 from '../../lib/residual-carrier-risk-v1660.js';
+import * as recessiveCoupleRiskV1660 from '../../lib/recessive-couple-risk-v1660.js';
+import * as xLinkedBayesRiskV1660 from '../../lib/x-linked-bayes-risk-v1660.js';
+import * as coefficientOfRelationshipV1660 from '../../lib/coefficient-of-relationship-v1660.js';
+import * as bayesRiskTableV1660 from '../../lib/bayes-risk-table-v1660.js';
 import * as adjustedPatientDaysV1636 from '../../lib/adjusted-patient-days-v1636.js';
 import * as auRateSaarV1636 from '../../lib/au-rate-saar-v1636.js';
 import * as cdiLabidCategoryV1636 from '../../lib/cdi-labid-category-v1636.js';
@@ -2061,6 +2067,12 @@ const MODULES = {
   'vaccine-effectiveness-v1659.js': vaccineEffectivenessV1659,
   'smr-v1659.js': smrV1659,
   'direct-age-standardization-v1659.js': directAgeStandardizationV1659,
+  'hardy-weinberg-carrier-v1660.js': hardyWeinbergCarrierV1660,
+  'residual-carrier-risk-v1660.js': residualCarrierRiskV1660,
+  'recessive-couple-risk-v1660.js': recessiveCoupleRiskV1660,
+  'x-linked-bayes-risk-v1660.js': xLinkedBayesRiskV1660,
+  'coefficient-of-relationship-v1660.js': coefficientOfRelationshipV1660,
+  'bayes-risk-table-v1660.js': bayesRiskTableV1660,
   'adjusted-patient-days-v1636.js': adjustedPatientDaysV1636,
   'au-rate-saar-v1636.js': auRateSaarV1636,
   'cdi-labid-category-v1636.js': cdiLabidCategoryV1636,

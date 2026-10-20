@@ -1157,6 +1157,12 @@ import attributableProportionV1659 from './adapters/attributable-proportion-v165
 import vaccineEffectivenessV1659 from './adapters/vaccine-effectiveness-v1659.js';
 import smrV1659 from './adapters/smr-v1659.js';
 import directAgeStandardizationV1659 from './adapters/direct-age-standardization-v1659.js';
+import hardyWeinbergCarrierV1660 from './adapters/hardy-weinberg-carrier-v1660.js';
+import residualCarrierRiskV1660 from './adapters/residual-carrier-risk-v1660.js';
+import recessiveCoupleRiskV1660 from './adapters/recessive-couple-risk-v1660.js';
+import xLinkedBayesRiskV1660 from './adapters/x-linked-bayes-risk-v1660.js';
+import coefficientOfRelationshipV1660 from './adapters/coefficient-of-relationship-v1660.js';
+import bayesRiskTableV1660 from './adapters/bayes-risk-table-v1660.js';
 import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
 import auRateSaarV1636 from './adapters/au-rate-saar-v1636.js';
 import cdiLabidCategoryV1636 from './adapters/cdi-labid-category-v1636.js';
@@ -2541,6 +2547,12 @@ const ADAPTER_MODULES = [
   ['vaccine-effectiveness-v1659', vaccineEffectivenessV1659],
   ['smr-v1659', smrV1659],
   ['direct-age-standardization-v1659', directAgeStandardizationV1659],
+  ['hardy-weinberg-carrier-v1660', hardyWeinbergCarrierV1660],
+  ['residual-carrier-risk-v1660', residualCarrierRiskV1660],
+  ['recessive-couple-risk-v1660', recessiveCoupleRiskV1660],
+  ['x-linked-bayes-risk-v1660', xLinkedBayesRiskV1660],
+  ['coefficient-of-relationship-v1660', coefficientOfRelationshipV1660],
+  ['bayes-risk-table-v1660', bayesRiskTableV1660],
   ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],
   ['au-rate-saar-v1636', auRateSaarV1636],
   ['cdi-labid-category-v1636', cdiLabidCategoryV1636],

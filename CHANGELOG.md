@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Genetic counseling arithmetic, each printing its Bayes table: carrier frequency from incidence (Hardy 1908, read),
+  residual carrier risk after a negative screen, the recessive risk to a pregnancy from both partners' risks, an
+  X-linked carrier risk revised by unaffected sons, and a general prior-to-posterior table.
+- Consanguinity: the inbreeding and relationship coefficients from Wright's 1922 path rule, for listed relationships
+  or the reader's own paths, with the recessive risk to a child.
 - Public health measures from CDC's Principles of Epidemiology, each tested on the lesson's own examples: incidence and
   prevalence, the mortality measures (crude through death-to-case), years of potential life lost, the attributable
   proportion among the exposed, and vaccine effectiveness from attack rates with its interval.

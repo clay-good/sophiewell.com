@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:4a4796cc-514b-555d-8631-7eeb964b59dc",
+  "serialNumber": "urn:uuid:f2c8c433-546f-5bea-8b1d-2c5fa5b7408a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-20T04:07:38.786Z",
+    "timestamp": "2026-10-20T04:49:31.741Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2353 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2359 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "391bc25bee2d3c5411ea9ada3051fcb8e3a5fa7b88bb1786a7bf33f138ee5470"
+          "content": "eae659ce21e552ef1336739a1de93d1301e02e387678aa7df60d1d70fe8c45f9"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "153967"
+          "value": "154419"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "69ba9de2614dfc82f334e4280b871cad833249423041f761c057be350fd2047c"
+          "content": "d08d2f8fb04c4bb73fecbb0dddd058686f436bc952b005a187a4a75f546341c9"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "643948"
+          "value": "645055"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fc2ce338c4ac7057540d54ab06602e13f1e6f8ecc877e6a5d3a2da3b2606c8f8"
+          "content": "6c8c012dedae758f2ed6b66025cb283eb9d328e5340ffac61643652bc2d3df4b"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "296477"
+          "value": "297269"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6980832490671adf0313a30557bf3a9863408c286a7b6985b7b37bfefc67c270"
+          "content": "f3453244d9bfe2fa56594c53fb7982d1b071d81cba67f1ccc8ddeffbb43b867c"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "144792"
+          "value": "145310"
         }
       ]
     },
@@ -2572,6 +2572,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "12642"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/bayes-risk-table-v1660.js",
+      "type": "file",
+      "name": "lib/bayes-risk-table-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3b7974df9d856bfe5ffa84b875939a0ddb0a647816c947d8098c65e241230675"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3076"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/bayes-table.js",
+      "type": "file",
+      "name": "lib/bayes-table.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e7068cb92a141db23f3cbc1624e3ef243554eeaea447165db4c09287d161e133"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2683"
         }
       ]
     },
@@ -5764,6 +5806,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "12877"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/coefficient-of-relationship-v1660.js",
+      "type": "file",
+      "name": "lib/coefficient-of-relationship-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4d1bdb4b93bc42188ecffff2463ecee06e8e2db06625fe32088a9a9f2ad42002"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4766"
         }
       ]
     },
@@ -11686,6 +11749,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4656"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hardy-weinberg-carrier-v1660.js",
+      "type": "file",
+      "name": "lib/hardy-weinberg-carrier-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "88a894c67765a78d551f3de749122e783d7279c829c66b15e06abf2627930ad2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2532"
         }
       ]
     },
@@ -17828,7 +17912,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4632658db675f1326c1dd58ac604ed0c8f4994ae5106a76974db5ac6fa9425d0"
+          "content": "542f4401fa4ba5504ed70a1ec8e57b39a9f905373d82e7adfc3d2c57b04f15b9"
         }
       ],
       "properties": [
@@ -17838,7 +17922,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3055829"
+          "value": "3059449"
         }
       ]
     },
@@ -25592,6 +25676,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/recessive-couple-risk-v1660.js",
+      "type": "file",
+      "name": "lib/recessive-couple-risk-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d0a079e90576026229e8859a9ef79a2a4851139740a5adb0745ee352463795ae"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1637"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/reconstitution-concentration-v1630.js",
       "type": "file",
       "name": "lib/reconstitution-concentration-v1630.js",
@@ -26155,6 +26260,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "31817"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/residual-carrier-risk-v1660.js",
+      "type": "file",
+      "name": "lib/residual-carrier-risk-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "103700756363446c185b3b9d7a40f69c8729f535a13767c1e958c8d182ae73ae"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1911"
         }
       ]
     },
@@ -32522,6 +32648,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/x-linked-bayes-risk-v1660.js",
+      "type": "file",
+      "name": "lib/x-linked-bayes-risk-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6dc3bc7d95d828c2c2981361002f9a31ac0b2a49cd65ffae8c32226ee4f6178c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2492"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/x12-271-run.js",
       "type": "file",
       "name": "lib/x12-271-run.js",
@@ -35122,6 +35269,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4999"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/bayes-risk-table-v1660.js",
+      "type": "file",
+      "name": "mcp/adapters/bayes-risk-table-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "94cafff8bac0c66cfad7b84a0358db71094103b5d095de85810fd1d5f9aaae40"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "820"
         }
       ]
     },
@@ -38167,6 +38335,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2180"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/coefficient-of-relationship-v1660.js",
+      "type": "file",
+      "name": "mcp/adapters/coefficient-of-relationship-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cc982579be7a9cd28c652b8cb2c238eecd4c458be4f84db4054cb203b312cdcc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1050"
         }
       ]
     },
@@ -43564,6 +43753,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1722"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hardy-weinberg-carrier-v1660.js",
+      "type": "file",
+      "name": "mcp/adapters/hardy-weinberg-carrier-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fc52ca85837772e6bada5f46860a8b9413c248269df42dc6d61313e9a0c72c2c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "938"
         }
       ]
     },
@@ -55853,6 +56063,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/recessive-couple-risk-v1660.js",
+      "type": "file",
+      "name": "mcp/adapters/recessive-couple-risk-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3db302f051344a380c070307d178164f22120541410620e7a4e6627aba144b60"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "752"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/reconstitution-concentration-v1630.js",
       "type": "file",
       "name": "mcp/adapters/reconstitution-concentration-v1630.js",
@@ -56185,6 +56416,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8648"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/residual-carrier-risk-v1660.js",
+      "type": "file",
+      "name": "mcp/adapters/residual-carrier-risk-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "571189fd438e25462a4d90072881aced0e8c44d9d32ba4c9e55c6ad221f09f10"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "803"
         }
       ]
     },
@@ -61964,6 +62216,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/x-linked-bayes-risk-v1660.js",
+      "type": "file",
+      "name": "mcp/adapters/x-linked-bayes-risk-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b85b44e75b9631fcb7bba53339f2ba01a6f09f1e3486eb729e32861d2a0b1e12"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "873"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/yamaguchi-v642.js",
       "type": "file",
       "name": "mcp/adapters/yamaguchi-v642.js",
@@ -62201,7 +62474,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "35f89e06568118d033f48ab7e72d4143b8266bd76615f11f837e68a4615c7b19"
+          "content": "7eaddce6000c1cc81965b0bd741bdb259a526e36c80e65a553998faf05dee80c"
         }
       ],
       "properties": [
@@ -62211,7 +62484,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "168874"
+          "value": "169730"
         }
       ]
     },
@@ -67105,6 +67378,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6698"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1660.js",
+      "type": "file",
+      "name": "views/group-v1660.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "977d3bd1ae7e34a0d03546269f0175683bd8e967b2778d860955763ffdbbfd7b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5470"
         }
       ]
     },
@@ -97902,6 +98196,8 @@
         "urn:sophiewell:file:source:lib/basal-insulin-switch-v1633.js",
         "urn:sophiewell:file:source:lib/batch-tools.js",
         "urn:sophiewell:file:source:lib/bauer-score-v603.js",
+        "urn:sophiewell:file:source:lib/bayes-risk-table-v1660.js",
+        "urn:sophiewell:file:source:lib/bayes-table.js",
         "urn:sophiewell:file:source:lib/bctq-v774.js",
         "urn:sophiewell:file:source:lib/bed-occupancy-alos-v1657.js",
         "urn:sophiewell:file:source:lib/bell-nec-v431.js",
@@ -98054,6 +98350,7 @@
         "urn:sophiewell:file:source:lib/cobb-angle-v694.js",
         "urn:sophiewell:file:source:lib/cobra-clock-v1507.js",
         "urn:sophiewell:file:source:lib/coding-v5.js",
+        "urn:sophiewell:file:source:lib/coefficient-of-relationship-v1660.js",
         "urn:sophiewell:file:source:lib/cognard-davf-v1450.js",
         "urn:sophiewell:file:source:lib/cohens-kappa-v922.js",
         "urn:sophiewell:file:source:lib/collin-rc-v1449.js",
@@ -98336,6 +98633,7 @@
         "urn:sophiewell:file:source:lib/hand-off.js",
         "urn:sophiewell:file:source:lib/hardman-v536.js",
         "urn:sophiewell:file:source:lib/hardy-adenoma-v391.js",
+        "urn:sophiewell:file:source:lib/hardy-weinberg-carrier-v1660.js",
         "urn:sophiewell:file:source:lib/harrington-acetabular-v605.js",
         "urn:sophiewell:file:source:lib/hartofilakidis-ddh-v370.js",
         "urn:sophiewell:file:source:lib/hartwig-adr-severity-v1634.js",
@@ -98998,6 +99296,7 @@
         "urn:sophiewell:file:source:lib/rcvs2-v1436.js",
         "urn:sophiewell:file:source:lib/receipt-worker.js",
         "urn:sophiewell:file:source:lib/receipt.js",
+        "urn:sophiewell:file:source:lib/recessive-couple-risk-v1660.js",
         "urn:sophiewell:file:source:lib/reconstitution-concentration-v1630.js",
         "urn:sophiewell:file:source:lib/record-apple.js",
         "urn:sophiewell:file:source:lib/record-ccda.js",
@@ -99025,6 +99324,7 @@
         "urn:sophiewell:file:source:lib/renalpulm-v249.js",
         "urn:sophiewell:file:source:lib/reportable-condition-urgency-v1395.js",
         "urn:sophiewell:file:source:lib/request-letters-v1504.js",
+        "urn:sophiewell:file:source:lib/residual-carrier-risk-v1660.js",
         "urn:sophiewell:file:source:lib/respiratory-maternal-v263.js",
         "urn:sophiewell:file:source:lib/result-copy.js",
         "urn:sophiewell:file:source:lib/resus-trauma-v207.js",
@@ -99328,6 +99628,7 @@
         "urn:sophiewell:file:source:lib/winquist-hansen-v381.js",
         "urn:sophiewell:file:source:lib/workflow-v4.js",
         "urn:sophiewell:file:source:lib/woundid-v248.js",
+        "urn:sophiewell:file:source:lib/x-linked-bayes-risk-v1660.js",
         "urn:sophiewell:file:source:lib/x12-271-run.js",
         "urn:sophiewell:file:source:lib/x12-271-v1515.js",
         "urn:sophiewell:file:source:lib/x12-271-worker.js",
@@ -99587,6 +99888,7 @@
         "urn:sophiewell:file:source:views/group-v1658.js",
         "urn:sophiewell:file:source:views/group-v1659.js",
         "urn:sophiewell:file:source:views/group-v166.js",
+        "urn:sophiewell:file:source:views/group-v1660.js",
         "urn:sophiewell:file:source:views/group-v167.js",
         "urn:sophiewell:file:source:views/group-v169.js",
         "urn:sophiewell:file:source:views/group-v17.js",
@@ -100405,6 +100707,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/barrow-ccf-v440.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/basal-insulin-switch-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bauer-score-v603.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/bayes-risk-table-v1660.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bctq-v774.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bed-occupancy-alos-v1657.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bell-nec-v431.js",
@@ -100550,6 +100853,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cobb-angle-v694.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cobra-clock-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/coding-v5.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/coefficient-of-relationship-v1660.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cognard-davf-v1450.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cohens-kappa-v922.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/collin-rc-v1449.js",
@@ -100807,6 +101111,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hamp-furcation-v1490.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hardman-v536.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hardy-adenoma-v391.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hardy-weinberg-carrier-v1660.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/harrington-acetabular-v605.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hartofilakidis-ddh-v370.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hartwig-adr-severity-v1634.js",
@@ -101392,6 +101697,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v266.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v279.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcvs2-v1436.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/recessive-couple-risk-v1660.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/reconstitution-concentration-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rectal-artesunate-prereferral-v1551.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/reference-change-value-v920.js",
@@ -101408,6 +101714,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/renalpulm-v249.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/reportable-condition-urgency-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/request-letters-v1504.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/residual-carrier-risk-v1660.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/respiratory-maternal-v263.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/resus-trauma-v207.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rheum-classification-v222.js",
@@ -101683,6 +101990,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/wiltse-spondylolisthesis-v481.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/winquist-hansen-v381.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/woundid-v248.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/x-linked-bayes-risk-v1660.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/yamaguchi-v642.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/yaws-test-and-treat-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/yellow-fever-case-def-v1563.js",
@@ -101799,7 +102107,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "4a4796cc514be55d"
+      "value": "f2c8c433546ffbea"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -101811,7 +102119,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3893"
+      "value": "3907"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

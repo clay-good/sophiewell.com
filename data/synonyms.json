@@ -13556,6 +13556,53 @@
       ],
       "tile": "direct-age-standardization",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hardy weinberg carrier frequency",
+        "carrier frequency from disease incidence"
+      ],
+      "tile": "hardy-weinberg-carrier",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "residual carrier risk after negative screen",
+        "carrier screening negative residual risk"
+      ],
+      "tile": "residual-carrier-risk",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "recessive recurrence risk for a couple"
+      ],
+      "tile": "recessive-couple-risk",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "x linked carrier risk with unaffected sons",
+        "x-linked carrier bayesian calculation"
+      ],
+      "tile": "x-linked-bayes-risk",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "first cousins risk to baby",
+        "consanguinity coefficient of inbreeding"
+      ],
+      "tile": "coefficient-of-relationship",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "bayesian risk table for counseling",
+        "bayes theorem prior posterior table"
+      ],
+      "tile": "bayes-risk-table",
+      "audience": "clinicians"
     }
   ]
 }

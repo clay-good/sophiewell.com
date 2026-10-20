@@ -925,6 +925,12 @@ carries the specific date that could change it.
 | vaccine-effectiveness | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 6 and Table 3.13 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
 | smr | Stated arithmetic: observed over expected | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
 | direct-age-standardization | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 3; NCI SEER 2000 U.S. standard population (19 age groups) | US | 2026-10-19 | the 2000 standard is fixed; SEER page hash recorded in spec-v1659 | 2027-10-19 |
+| hardy-weinberg-carrier | Hardy GH, Science 1908;28:49-50 (the equilibrium p : 2q : r) | International | 2026-10-19 | a 1908 letter; stable | 2027-10-19 |
+| residual-carrier-risk | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity; inputs from the laboratory report | 2027-10-19 |
+| recessive-couple-risk | Stated arithmetic: Mendelian segregation | International | 2026-10-19 | an identity | 2027-10-19 |
+| x-linked-bayes-risk | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity; no prior is built in | 2027-10-19 |
+| coefficient-of-relationship | Wright S, Am Nat 1922;56:330-338 (the path rule) | International | 2026-10-19 | a 1922 paper; stable | 2027-10-19 |
+| bayes-risk-table | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity | 2027-10-19 |
 | ddd-rate | WHO Collaborating Centre for Drug Statistics Methodology, Use of ATC/DDD: DDDs per 100 bed days | International | 2026-10-12 | undated web page; no DDD values are reproduced | 2027-10-12 |
 | antimicrobial-day-counter | CDC NHSN Antimicrobial Use and Resistance (AUR) Module protocol: antimicrobial days and days present | US | 2026-10-12 | July 2026 edition; CDC reissues the protocol each January and July | 2027-02-01 |
 | vaccine-interval-validity | CDC ACIP General Best Practice Guidelines for Immunization: timing and spacing (4-day grace period, 28 days between live vaccines) | US | 2026-10-12 | read in CDC's PDF edition; the web page (July 24, 2024) refused the request at build | 2027-04-12 |

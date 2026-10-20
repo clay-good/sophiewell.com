@@ -9523,6 +9523,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/direct-age-standardization-v1659.js (spec-v1659: directly age-standardized rate — administrative disclaimer)
 - `direct-age-standardization`
 
+### lib/hardy-weinberg-carrier-v1660.js (spec-v1660: carrier frequency from incidence (Hardy-Weinberg) — clinical disclaimer)
+- `hardy-weinberg-carrier`
+
+### lib/residual-carrier-risk-v1660.js (spec-v1660: residual carrier risk after a negative screen — clinical disclaimer)
+- `residual-carrier-risk`
+
+### lib/recessive-couple-risk-v1660.js (spec-v1660: autosomal recessive risk to a pregnancy — clinical disclaimer)
+- `recessive-couple-risk`
+
+### lib/x-linked-bayes-risk-v1660.js (spec-v1660: X-linked carrier risk with unaffected sons — clinical disclaimer)
+- `x-linked-bayes-risk`
+
+### lib/coefficient-of-relationship-v1660.js (spec-v1660: coefficients of inbreeding and relationship — clinical disclaimer)
+- `coefficient-of-relationship`
+
+### lib/bayes-risk-table-v1660.js (spec-v1660: Bayesian risk table — clinical disclaimer)
+- `bayes-risk-table`
+
 ### lib/antimicrobial-day-counter-v1636.js (spec-v1636: Count antimicrobial days and days present from rows (NHSN) — administrative disclaimer)
 - `antimicrobial-day-counter`
 

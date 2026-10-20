@@ -1,6 +1,7 @@
 # Change: Genetic counseling risk arithmetic
 
-**Status:** Proposed, October 19, 2026. Specs only; nothing here is built.
+**Status:** Built October 19, 2026: six tools shipped, recorded in [docs/spec-v1660.md](../../../docs/spec-v1660.md).
+The X-linked prior presets stay off (no source for the 2/3 sister prior was read).
 **Audience:** the genetic counselor, the obstetric and pediatric clinician who orders carrier
 or prenatal screening, and the patient reading a report that says "residual risk 1 in 630".
 **Program index:** [docs/spec-v1654.md](../../../docs/spec-v1654.md).
