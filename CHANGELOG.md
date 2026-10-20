@@ -4,6 +4,14 @@ All notable changes to sophiewell.com are documented here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the
 project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### Fixed
+
+- Eleven defects an independent review found in the tools added on October 19 and 20, 2026. A printed number no longer
+  contradicts the category beside it at a cut-off (T-MACS at 2%, the noise action level, the 10-hour lead limit,
+  the threshold shift and the 40 dB hearing average now decide on the unrounded value). Impossible inputs are refused
+  instead of answered: more events than population, more filled positions than budgeted, an inverted reportable range,
+  and a line of two numbers where one was expected, whose first number used to be dropped.
+
 ### Added
 
 - T-MACS, the troponin-only Manchester ACS decision aid: the probability of ACS from six clinical items and the arrival
