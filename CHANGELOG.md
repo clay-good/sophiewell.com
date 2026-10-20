@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Nursing home staffing by the CMS Five-Star method (September 2026 guide): hours per resident day from PBJ hours
+  and the MDS census with the six exclusions, the case-mix adjustment, and the staffing star from Table A2's cut
+  points, rescaled when a turnover measure is missing.
+- Unit operations arithmetic: nursing hours per patient day and skill mix, a shift staffing grid by census,
+  turnover and vacancy, FTEs (including the cost report's sample-week method), occupancy and length of stay as
+  the cost report counts beds, overtime and agency share, flexible budget variance, and case mix index.
 - Occupational health rules from the eCFR: OSHA noise dose and 8-hour TWA from a day of exposures; the standard
   threshold shift with Appendix F's age correction, its own 32-year-old as the example; and the lead standard's blood
   lead testing schedule, medical removal and return, and its airborne limit for a day over 8 hours.

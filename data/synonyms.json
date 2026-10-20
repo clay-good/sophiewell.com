@@ -13382,6 +13382,84 @@
       ],
       "tile": "osha-lead-airborne-pel-shift",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nursing hours per patient day",
+        "hppd calculation",
+        "skill mix as a percentage of nursing hours"
+      ],
+      "tile": "nursing-hppd",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pbj hours per resident day",
+        "payroll based journal staffing hours"
+      ],
+      "tile": "pbj-hours-per-resident-day",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "case mix adjusted nursing home staffing hours"
+      ],
+      "tile": "pbj-case-mix-adjusted-hours",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "five star staffing rating",
+        "nursing home staffing star rating"
+      ],
+      "tile": "nursing-home-staffing-star",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nurse vacancy rate"
+      ],
+      "tile": "staff-turnover-rate",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "full time equivalent calculation",
+        "fte from hours on the cost report"
+      ],
+      "tile": "fte-from-hours",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "average length of stay calculation",
+        "alos calculation",
+        "hospital occupancy rate"
+      ],
+      "tile": "bed-occupancy-alos",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "agency hours percentage",
+        "overtime percentage of hours"
+      ],
+      "tile": "overtime-agency-share",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "case mix index calculation for a hospital"
+      ],
+      "tile": "case-mix-index",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "staffing grid from hppd"
+      ],
+      "tile": "staffing-grid",
+      "audience": "clinicians"
     }
   ]
 }

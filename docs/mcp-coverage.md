@@ -9454,6 +9454,39 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/osha-lead-airborne-pel-shift-v1656.js (spec-v1656: OSHA airborne lead limit for a day over 8 hours — clinical disclaimer)
 - `osha-lead-airborne-pel-shift`
 
+### lib/nursing-hppd-v1657.js (spec-v1657: nursing hours per patient day and skill mix — administrative disclaimer)
+- `nursing-hppd`
+
+### lib/pbj-hours-per-resident-day-v1657.js (spec-v1657: nursing home PBJ hours per resident day and exclusions — administrative disclaimer)
+- `pbj-hours-per-resident-day`
+
+### lib/pbj-case-mix-adjusted-hours-v1657.js (spec-v1657: CMS case-mix adjusted staffing hours — administrative disclaimer)
+- `pbj-case-mix-adjusted-hours`
+
+### lib/nursing-home-staffing-star-v1657.js (spec-v1657: CMS Five-Star staffing points and star — administrative disclaimer)
+- `nursing-home-staffing-star`
+
+### lib/staff-turnover-rate-v1657.js (spec-v1657: staff turnover and vacancy rate — administrative disclaimer)
+- `staff-turnover-rate`
+
+### lib/fte-from-hours-v1657.js (spec-v1657: FTEs from hours — administrative disclaimer)
+- `fte-from-hours`
+
+### lib/bed-occupancy-alos-v1657.js (spec-v1657: occupancy, average daily census and length of stay — administrative disclaimer)
+- `bed-occupancy-alos`
+
+### lib/overtime-agency-share-v1657.js (spec-v1657: overtime and agency share of hours — administrative disclaimer)
+- `overtime-agency-share`
+
+### lib/unit-budget-variance-v1657.js (spec-v1657: flexible budget variance — administrative disclaimer)
+- `unit-budget-variance`
+
+### lib/case-mix-index-v1657.js (spec-v1657: case mix index from DRG weights — administrative disclaimer)
+- `case-mix-index`
+
+### lib/staffing-grid-v1657.js (spec-v1657: shift staffing grid — administrative disclaimer)
+- `staffing-grid`
+
 ### lib/antimicrobial-day-counter-v1636.js (spec-v1636: Count antimicrobial days and days present from rows (NHSN) — administrative disclaimer)
 - `antimicrobial-day-counter`
 

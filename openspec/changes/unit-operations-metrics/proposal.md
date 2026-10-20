@@ -1,6 +1,7 @@
 # Change: Unit and facility operations arithmetic for the nurse manager
 
-**Status:** Proposed, October 19, 2026. Specs only; nothing here is built.
+**Status:** Built October 19, 2026: eleven tools shipped, recorded in [docs/spec-v1657.md](../../../docs/spec-v1657.md),
+which lists every change from this proposal. Tool 11 (`ed-throughput-measures`) stays gated on the OQR manual.
 **Audience:** the charge nurse and nurse manager, the nursing home director of nursing and
 administrator, the house supervisor, and the quality analyst who turns a month's census and
 payroll into the numbers a budget meeting asks for.

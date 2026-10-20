@@ -1134,6 +1134,17 @@ import oshaLeadMedicalRemovalV1656 from './adapters/osha-lead-medical-removal-v1
 import fmcsaBpCertificationV1656 from './adapters/fmcsa-bp-certification-v1656.js';
 import fmcsaHearingStandardV1656 from './adapters/fmcsa-hearing-standard-v1656.js';
 import oshaLeadAirbornePelShiftV1656 from './adapters/osha-lead-airborne-pel-shift-v1656.js';
+import nursingHppdV1657 from './adapters/nursing-hppd-v1657.js';
+import pbjHoursPerResidentDayV1657 from './adapters/pbj-hours-per-resident-day-v1657.js';
+import pbjCaseMixAdjustedHoursV1657 from './adapters/pbj-case-mix-adjusted-hours-v1657.js';
+import nursingHomeStaffingStarV1657 from './adapters/nursing-home-staffing-star-v1657.js';
+import staffTurnoverRateV1657 from './adapters/staff-turnover-rate-v1657.js';
+import fteFromHoursV1657 from './adapters/fte-from-hours-v1657.js';
+import bedOccupancyAlosV1657 from './adapters/bed-occupancy-alos-v1657.js';
+import overtimeAgencyShareV1657 from './adapters/overtime-agency-share-v1657.js';
+import unitBudgetVarianceV1657 from './adapters/unit-budget-variance-v1657.js';
+import caseMixIndexV1657 from './adapters/case-mix-index-v1657.js';
+import staffingGridV1657 from './adapters/staffing-grid-v1657.js';
 import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
 import auRateSaarV1636 from './adapters/au-rate-saar-v1636.js';
 import cdiLabidCategoryV1636 from './adapters/cdi-labid-category-v1636.js';
@@ -2495,6 +2506,17 @@ const ADAPTER_MODULES = [
   ['fmcsa-bp-certification-v1656', fmcsaBpCertificationV1656],
   ['fmcsa-hearing-standard-v1656', fmcsaHearingStandardV1656],
   ['osha-lead-airborne-pel-shift-v1656', oshaLeadAirbornePelShiftV1656],
+  ['nursing-hppd-v1657', nursingHppdV1657],
+  ['pbj-hours-per-resident-day-v1657', pbjHoursPerResidentDayV1657],
+  ['pbj-case-mix-adjusted-hours-v1657', pbjCaseMixAdjustedHoursV1657],
+  ['nursing-home-staffing-star-v1657', nursingHomeStaffingStarV1657],
+  ['staff-turnover-rate-v1657', staffTurnoverRateV1657],
+  ['fte-from-hours-v1657', fteFromHoursV1657],
+  ['bed-occupancy-alos-v1657', bedOccupancyAlosV1657],
+  ['overtime-agency-share-v1657', overtimeAgencyShareV1657],
+  ['unit-budget-variance-v1657', unitBudgetVarianceV1657],
+  ['case-mix-index-v1657', caseMixIndexV1657],
+  ['staffing-grid-v1657', staffingGridV1657],
   ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],
   ['au-rate-saar-v1636', auRateSaarV1636],
   ['cdi-labid-category-v1636', cdiLabidCategoryV1636],

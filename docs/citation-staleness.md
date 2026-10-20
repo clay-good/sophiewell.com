@@ -902,6 +902,17 @@ carries the specific date that could change it.
 | fmcsa-bp-certification | FMCSA 49 CFR Part 391 Appendix A section E and 49 CFR 391.45(b) | US | 2026-10-19 | eCFR current to 2026-10-16; 391.45 under the weekly eCFR watch, the appendix (no section number) is not | 2027-04-19 |
 | fmcsa-hearing-standard | FMCSA 49 CFR 391.41(b)(11) and Part 391 Appendix A section I | US | 2026-10-19 | eCFR current to 2026-10-16; 391.41 under the weekly eCFR watch | 2027-10-19 |
 | osha-lead-airborne-pel-shift | OSHA 29 CFR 1910.1025 (b), (c)(1) and (c)(2) | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| nursing-hppd | Stated arithmetic: hours over patient days, skill mix | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| pbj-hours-per-resident-day | CMS Five-Star Technical Users' Guide, September 2026: Staffing Domain, the six exclusion criteria, Scoring Exceptions | US | 2026-10-19 | CMS revises the guide most quarters; re-read with each edition | 2027-01-19 |
+| pbj-case-mix-adjusted-hours | CMS Five-Star Technical Users' Guide, September 2026: Case-Mix Adjustment formula | US | 2026-10-19 | CMS revises the guide most quarters; re-read with each edition | 2027-01-19 |
+| nursing-home-staffing-star | CMS Five-Star Technical Users' Guide, September 2026: scoring rules, rescaling, Table 3 and Appendix Table A2 (cut points of July 2024) | US | 2026-10-19 | CMS revises the guide most quarters and the cut points by edition; re-read with each edition | 2027-01-19 |
+| staff-turnover-rate | CMS Five-Star Technical Users' Guide, September 2026: Specifications for Staff Turnover Measures; general rates are identities | US | 2026-10-19 | CMS revises the guide most quarters; re-read with each edition | 2027-01-19 |
+| fte-from-hours | CMS Hospital Provider Cost Report Data Dictionary (March 2024): FTE - Employees on Payroll | US | 2026-10-19 | dictionary updated March 2024 | 2027-10-19 |
+| bed-occupancy-alos | CMS Hospital Provider Cost Report Data Dictionary (March 2024): Number of Beds, Total Bed Days Available, Total Discharges | US | 2026-10-19 | dictionary updated March 2024 | 2027-10-19 |
+| overtime-agency-share | Stated arithmetic: shares of worked hours and the premium | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| unit-budget-variance | Stated arithmetic: the flexible-budget decomposition | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| case-mix-index | Stated arithmetic: sum of MS-DRG weights over discharges; weights entered by the reader | US | 2026-10-19 | an identity; no weight file bundled | 2027-10-19 |
+| staffing-grid | Stated arithmetic: HPPD × census ÷ 24, rounded up | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
 | ddd-rate | WHO Collaborating Centre for Drug Statistics Methodology, Use of ATC/DDD: DDDs per 100 bed days | International | 2026-10-12 | undated web page; no DDD values are reproduced | 2027-10-12 |
 | antimicrobial-day-counter | CDC NHSN Antimicrobial Use and Resistance (AUR) Module protocol: antimicrobial days and days present | US | 2026-10-12 | July 2026 edition; CDC reissues the protocol each January and July | 2027-02-01 |
 | vaccine-interval-validity | CDC ACIP General Best Practice Guidelines for Immunization: timing and spacing (4-day grace period, 28 days between live vaccines) | US | 2026-10-12 | read in CDC's PDF edition; the web page (July 24, 2024) refused the request at build | 2027-04-12 |

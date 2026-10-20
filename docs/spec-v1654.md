@@ -7,6 +7,8 @@
 >
 > occupational-employee-health was built the same day, all six tools; [spec-v1656](spec-v1656.md) records it.
 >
+> unit-operations-metrics was built the same day, eleven of twelve tools; [spec-v1657](spec-v1657.md) records it.
+>
 > Second correction, the same day: every proposed tool in the other six changes was re-checked against live
 > names, agent summaries and citations, and each near neighbor was run. Two more were dropped:
 > genetic-counseling-risk's `screen-ppv-from-prior` duplicates `fagan-post-test`, and
