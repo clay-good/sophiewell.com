@@ -1,0 +1,1 @@
+{"pt-event-score":[{"d":"pte-analytes","k":"string","l":"One analyte per line: name, acceptable responses, challenges","r":1},{"d":"pte-prev","k":"enum","l":"Previous event, overall","v":["satisfactory","unsatisfactory"]},{"d":"pte-prev2","k":"enum","l":"The event before that, overall","v":["satisfactory","unsatisfactory"]}]}

@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Laboratory quality tools from the CLIA regulations: whether a proficiency-testing result is within the 42 CFR
+  493.931 or 493.941 limit (with the limit as a percent at a decision level for the sigma metric), the analyte and
+  event scores against the 80% line and the two-of-three rule, and calibration verification at three or more levels.
+- Levey-Jennings mean, SD, CV and control limits from a series of control results, and laboratory turnaround time
+  as a median and a nearest-rank percentile.
 - Nursing home staffing by the CMS Five-Star method (September 2026 guide): hours per resident day from PBJ hours
   and the MDS census with the six exclusions, the case-mix adjustment, and the staffing star from Table A2's cut
   points, rescaled when a turnover measure is missing.

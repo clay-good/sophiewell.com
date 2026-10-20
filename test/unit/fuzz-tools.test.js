@@ -878,6 +878,11 @@ import * as overtimeAgencyShareV1657 from '../../lib/overtime-agency-share-v1657
 import * as unitBudgetVarianceV1657 from '../../lib/unit-budget-variance-v1657.js';
 import * as caseMixIndexV1657 from '../../lib/case-mix-index-v1657.js';
 import * as staffingGridV1657 from '../../lib/staffing-grid-v1657.js';
+import * as leveyJenningsLimitsV1658 from '../../lib/levey-jennings-limits-v1658.js';
+import * as cliaPtAcceptanceV1658 from '../../lib/clia-pt-acceptance-v1658.js';
+import * as ptEventScoreV1658 from '../../lib/pt-event-score-v1658.js';
+import * as calibrationVerificationV1658 from '../../lib/calibration-verification-v1658.js';
+import * as turnaroundTimePercentileV1658 from '../../lib/turnaround-time-percentile-v1658.js';
 import * as adjustedPatientDaysV1636 from '../../lib/adjusted-patient-days-v1636.js';
 import * as auRateSaarV1636 from '../../lib/au-rate-saar-v1636.js';
 import * as cdiLabidCategoryV1636 from '../../lib/cdi-labid-category-v1636.js';
@@ -2037,6 +2042,11 @@ const MODULES = {
   'unit-budget-variance-v1657.js': unitBudgetVarianceV1657,
   'case-mix-index-v1657.js': caseMixIndexV1657,
   'staffing-grid-v1657.js': staffingGridV1657,
+  'levey-jennings-limits-v1658.js': leveyJenningsLimitsV1658,
+  'clia-pt-acceptance-v1658.js': cliaPtAcceptanceV1658,
+  'pt-event-score-v1658.js': ptEventScoreV1658,
+  'calibration-verification-v1658.js': calibrationVerificationV1658,
+  'turnaround-time-percentile-v1658.js': turnaroundTimePercentileV1658,
   'adjusted-patient-days-v1636.js': adjustedPatientDaysV1636,
   'au-rate-saar-v1636.js': auRateSaarV1636,
   'cdi-labid-category-v1636.js': cdiLabidCategoryV1636,

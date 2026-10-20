@@ -913,6 +913,11 @@ carries the specific date that could change it.
 | unit-budget-variance | Stated arithmetic: the flexible-budget decomposition | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
 | case-mix-index | Stated arithmetic: sum of MS-DRG weights over discharges; weights entered by the reader | US | 2026-10-19 | an identity; no weight file bundled | 2027-10-19 |
 | staffing-grid | Stated arithmetic: HPPD × census ÷ 24, rounded up | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| levey-jennings-limits | Stated arithmetic: mean, sample SD, CV and limits | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| clia-pt-acceptance | 42 CFR 493.931 and 493.941, Table 2 to paragraph (c)(2), as amended July 11, 2022 | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| pt-event-score | 42 CFR 493.931(c)(4)-(5), 493.941(c)(4)-(5), 493.841, 493.851 and 493.2 | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| calibration-verification | 42 CFR 493.1255(b) | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| turnaround-time-percentile | Stated arithmetic: median and nearest-rank percentile | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
 | ddd-rate | WHO Collaborating Centre for Drug Statistics Methodology, Use of ATC/DDD: DDDs per 100 bed days | International | 2026-10-12 | undated web page; no DDD values are reproduced | 2027-10-12 |
 | antimicrobial-day-counter | CDC NHSN Antimicrobial Use and Resistance (AUR) Module protocol: antimicrobial days and days present | US | 2026-10-12 | July 2026 edition; CDC reissues the protocol each January and July | 2027-02-01 |
 | vaccine-interval-validity | CDC ACIP General Best Practice Guidelines for Immunization: timing and spacing (4-day grace period, 28 days between live vaccines) | US | 2026-10-12 | read in CDC's PDF edition; the web page (July 24, 2024) refused the request at build | 2027-04-12 |

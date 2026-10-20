@@ -13460,6 +13460,45 @@
       ],
       "tile": "staffing-grid",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "levey jennings control limits",
+        "qc control limits from a mean and standard deviation"
+      ],
+      "tile": "levey-jennings-limits",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "clia proficiency testing limits",
+        "clia allowable error for proficiency testing"
+      ],
+      "tile": "clia-pt-acceptance",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "proficiency testing event score",
+        "proficiency testing 80 percent rule"
+      ],
+      "tile": "pt-event-score",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "calibration verification recovery check"
+      ],
+      "tile": "calibration-verification",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lab turnaround time percentile",
+        "lab tat 90th percentile"
+      ],
+      "tile": "turnaround-time-percentile",
+      "audience": "clinicians"
     }
   ]
 }

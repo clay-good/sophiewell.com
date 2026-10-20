@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:f9139528-1b56-57b9-80c4-ccec0fb18ad4",
+  "serialNumber": "urn:uuid:22f20c7b-b274-5298-878e-632f48683e45",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-20T02:11:00.927Z",
+    "timestamp": "2026-10-20T03:08:49.916Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2341 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2346 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "423f5f9cb2d8b51ce94df66e35ead9498cdff5ad983f5c5bf0be3e2a9ec58397"
+          "content": "011637082df5a34ddf854f4865db8cf5e8236092fa5d8bfb854c92c891400572"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "153066"
+          "value": "153439"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d8fe050cd2e9dcac3347b347a0420ef3b435a84071e67120b46771b690895c14"
+          "content": "0f79130485437d3870bede4bc07dc1b3dd8b9a2aee8d5a6048d1c5382eb81a70"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "641759"
+          "value": "642693"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a585b6cf2e5b5fcae725d690fa46df884b57c480efa17772a4eaac2736d2b244"
+          "content": "8c640cce8f7660f868a2303999fe72d9d15ab5e8d8c40059531ff6ed6cfa9d13"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "294927"
+          "value": "295585"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8d85547818267d95468508389ce5b27bc0022aa2d8374d101b85288f83441e8b"
+          "content": "aaa30887ad71d5e3588d2f7d9648556bf46c8c9f42c7a2647e80203b0bd1ceb8"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "143793"
+          "value": "144219"
         }
       ]
     },
@@ -4151,6 +4151,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/calibration-verification-v1658.js",
+      "type": "file",
+      "name": "lib/calibration-verification-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f87e3a470a90f2326d66eea6028eaf00301d2dd95c17a568a9fa3ff00f28a975"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4134"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/calosha-indoor-heat-v1398.js",
       "type": "file",
       "name": "lib/calosha-indoor-heat-v1398.js",
@@ -5386,6 +5407,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4841"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/clia-pt-acceptance-v1658.js",
+      "type": "file",
+      "name": "lib/clia-pt-acceptance-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e60d2ad1be904573d1dd6e6dd9a9670e75274088cbc53886e68a95859d8c0b9d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6962"
         }
       ]
     },
@@ -15008,6 +15050,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/lab-stats.js",
+      "type": "file",
+      "name": "lib/lab-stats.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "191c6115a8978e31cf3896d59d289444a83aae73f1a022d03a3fd74f6f425651"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2387"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/label-dose.js",
       "type": "file",
       "name": "lib/label-dose.js",
@@ -15697,6 +15760,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5574"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/levey-jennings-limits-v1658.js",
+      "type": "file",
+      "name": "lib/levey-jennings-limits-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0757a7e5d42239d8d9407155152b040da1bc3dbc10be5f4354953699534572b1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2697"
         }
       ]
     },
@@ -17681,7 +17765,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "df5853f38c50763e6c72c01ecff9c8d036f41a62237ec6306cdbbf4a9bcccbe9"
+          "content": "39d33e5b1e4e08071a4d4c0778ff41ee0d8f69f1e6f57e7ddd8c51e6c3821e99"
         }
       ],
       "properties": [
@@ -17691,7 +17775,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3047587"
+          "value": "3050974"
         }
       ]
     },
@@ -24584,6 +24668,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/pt-event-score-v1658.js",
+      "type": "file",
+      "name": "lib/pt-event-score-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eca364249425fcd18e8975580cd8908690dfb2441afa527647cb093d914ddde1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4730"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/pufa-index-v1491.js",
       "type": "file",
       "name": "lib/pufa-index-v1491.js",
@@ -30229,6 +30334,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2708"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/turnaround-time-percentile-v1658.js",
+      "type": "file",
+      "name": "lib/turnaround-time-percentile-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c0dafce60b6408000b0e26928bac9f704f49bb296588b03572ff6e55461b0def"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2455"
         }
       ]
     },
@@ -36365,6 +36491,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/calibration-verification-v1658.js",
+      "type": "file",
+      "name": "mcp/adapters/calibration-verification-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "330adbd6d0a0261cc9cd43912cd35f093bdb58e5938f23ad8ea39a320d0a57d3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1104"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-indoor-heat-v1398.js",
       "type": "file",
       "name": "mcp/adapters/calosha-indoor-heat-v1398.js",
@@ -37537,6 +37684,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2348"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/clia-pt-acceptance-v1658.js",
+      "type": "file",
+      "name": "mcp/adapters/clia-pt-acceptance-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f56b46b6fd56070dd378b211802bc3dcbe73fb5a69b33fa1dc31b1e920a6793b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1200"
         }
       ]
     },
@@ -46802,6 +46970,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/levey-jennings-limits-v1658.js",
+      "type": "file",
+      "name": "mcp/adapters/levey-jennings-limits-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "57ca846e7429ff615ab19538bba7ea0b61db0bc9e3aaa56f2622806d0a437eb3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "824"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/levine-edwards-v411.js",
       "type": "file",
       "name": "mcp/adapters/levine-edwards-v411.js",
@@ -54719,6 +54908,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pt-event-score-v1658.js",
+      "type": "file",
+      "name": "mcp/adapters/pt-event-score-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8faf6a60ce393e1b4a6f492067fb334e5d17ab486a1f4d87ec0bb01e279a4799"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "992"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pufa-index-v1491.js",
       "type": "file",
       "name": "mcp/adapters/pufa-index-v1491.js",
@@ -59528,6 +59738,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/turnaround-time-percentile-v1658.js",
+      "type": "file",
+      "name": "mcp/adapters/turnaround-time-percentile-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "702a6c99f1cfd25fdabba1f2eb22977572ca4938b8f71ef446de9b10a15bf13c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "909"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/two-by-two-effect-v1634.js",
       "type": "file",
       "name": "mcp/adapters/two-by-two-effect-v1634.js",
@@ -61676,7 +61907,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d97705930965ec7f366da87be2a79f6530a079c53cc655f72822896943cdc711"
+          "content": "a90bf70c6c62e313683e1de2746cbd24b2f1d73603bc975daef19f6382083763"
         }
       ],
       "properties": [
@@ -61686,7 +61917,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "167276"
+          "value": "167985"
         }
       ]
     },
@@ -66517,6 +66748,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11652"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1658.js",
+      "type": "file",
+      "name": "views/group-v1658.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "894894f6f96eec4e76ef607713f9d8ee199969798fa338c4d76332e0986be27f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5244"
         }
       ]
     },
@@ -97410,6 +97662,7 @@
         "urn:sophiewell:file:source:lib/cage-aid-v738.js",
         "urn:sophiewell:file:source:lib/caine-wernicke-v799.js",
         "urn:sophiewell:file:source:lib/cairo-recession-v1482.js",
+        "urn:sophiewell:file:source:lib/calibration-verification-v1658.js",
         "urn:sophiewell:file:source:lib/calosha-indoor-heat-v1398.js",
         "urn:sophiewell:file:source:lib/calosha-outdoor-heat-v1398.js",
         "urn:sophiewell:file:source:lib/calosha-wildfire-smoke-v1398.js",
@@ -97469,6 +97722,7 @@
         "urn:sophiewell:file:source:lib/clavien-dindo-v320.js",
         "urn:sophiewell:file:source:lib/cleanroom-class-check-v1630.js",
         "urn:sophiewell:file:source:lib/cleveland-constipation-v665.js",
+        "urn:sophiewell:file:source:lib/clia-pt-acceptance-v1658.js",
         "urn:sophiewell:file:source:lib/clinical-obesity-v838.js",
         "urn:sophiewell:file:source:lib/clinical-v4.js",
         "urn:sophiewell:file:source:lib/clinical-v5.js",
@@ -97927,6 +98181,7 @@
         "urn:sophiewell:file:source:lib/kyoto-gastritis-v1442.js",
         "urn:sophiewell:file:source:lib/la-esophagitis-v318.js",
         "urn:sophiewell:file:source:lib/lab-interpret.js",
+        "urn:sophiewell:file:source:lib/lab-stats.js",
         "urn:sophiewell:file:source:lib/label-dose.js",
         "urn:sophiewell:file:source:lib/label-editions.js",
         "urn:sophiewell:file:source:lib/label-formulation-switch-v1633.js",
@@ -97960,6 +98215,7 @@
         "urn:sophiewell:file:source:lib/leprosy-pep-rifampicin-v1561.js",
         "urn:sophiewell:file:source:lib/leprosy-reaction-prednisolone-v1561.js",
         "urn:sophiewell:file:source:lib/letournel-acetabulum-v466.js",
+        "urn:sophiewell:file:source:lib/levey-jennings-limits-v1658.js",
         "urn:sophiewell:file:source:lib/levine-edwards-v411.js",
         "urn:sophiewell:file:source:lib/levodopa-equivalent-dose-v1633.js",
         "urn:sophiewell:file:source:lib/levothyroxine-start-dose-v1633.js",
@@ -98383,6 +98639,7 @@
         "urn:sophiewell:file:source:lib/psych-v123.js",
         "urn:sophiewell:file:source:lib/psych-v96.js",
         "urn:sophiewell:file:source:lib/psychotropic-prn-clock-v1638.js",
+        "urn:sophiewell:file:source:lib/pt-event-score-v1658.js",
         "urn:sophiewell:file:source:lib/pufa-index-v1491.js",
         "urn:sophiewell:file:source:lib/pulm-copd-v205.js",
         "urn:sophiewell:file:source:lib/pulm-v114.js",
@@ -98652,6 +98909,7 @@
         "urn:sophiewell:file:source:lib/tryptase-v894.js",
         "urn:sophiewell:file:source:lib/tscherne-closed-v350.js",
         "urn:sophiewell:file:source:lib/turesky-plaque-v1496.js",
+        "urn:sophiewell:file:source:lib/turnaround-time-percentile-v1658.js",
         "urn:sophiewell:file:source:lib/two-by-two-effect-v1634.js",
         "urn:sophiewell:file:source:lib/twstrs-severity-v542.js",
         "urn:sophiewell:file:source:lib/tx-aprn-pa-controlled-delegation-v1393.js",
@@ -99004,6 +99262,7 @@
         "urn:sophiewell:file:source:views/group-v1655.js",
         "urn:sophiewell:file:source:views/group-v1656.js",
         "urn:sophiewell:file:source:views/group-v1657.js",
+        "urn:sophiewell:file:source:views/group-v1658.js",
         "urn:sophiewell:file:source:views/group-v166.js",
         "urn:sophiewell:file:source:views/group-v167.js",
         "urn:sophiewell:file:source:views/group-v169.js",
@@ -99895,6 +100154,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cage-aid-v738.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/caine-wernicke-v799.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cairo-recession-v1482.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/calibration-verification-v1658.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-indoor-heat-v1398.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-outdoor-heat-v1398.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-wildfire-smoke-v1398.js",
@@ -99951,6 +100211,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/clavien-dindo-v320.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cleanroom-class-check-v1630.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cleveland-constipation-v665.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/clia-pt-acceptance-v1658.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-obesity-v838.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-v4.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-v5.js",
@@ -100392,6 +100653,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-pep-rifampicin-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-reaction-prednisolone-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/letournel-acetabulum-v466.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/levey-jennings-limits-v1658.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/levine-edwards-v411.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/levodopa-equivalent-dose-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/levothyroxine-start-dose-v1633.js",
@@ -100769,6 +101031,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/psych-v123.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/psych-v96.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/psychotropic-prn-clock-v1638.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pt-event-score-v1658.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pufa-index-v1491.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pulm-copd-v205.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pulm-v114.js",
@@ -100998,6 +101261,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tryptase-v894.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tscherne-closed-v350.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/turesky-plaque-v1496.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/turnaround-time-percentile-v1658.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/two-by-two-effect-v1634.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/twstrs-severity-v542.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-aprn-pa-controlled-delegation-v1393.js",
@@ -101205,7 +101469,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "f91395281b5647b9"
+      "value": "22f20c7bb2741298"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -101217,7 +101481,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3866"
+      "value": "3878"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

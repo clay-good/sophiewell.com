@@ -1145,6 +1145,11 @@ import overtimeAgencyShareV1657 from './adapters/overtime-agency-share-v1657.js'
 import unitBudgetVarianceV1657 from './adapters/unit-budget-variance-v1657.js';
 import caseMixIndexV1657 from './adapters/case-mix-index-v1657.js';
 import staffingGridV1657 from './adapters/staffing-grid-v1657.js';
+import leveyJenningsLimitsV1658 from './adapters/levey-jennings-limits-v1658.js';
+import cliaPtAcceptanceV1658 from './adapters/clia-pt-acceptance-v1658.js';
+import ptEventScoreV1658 from './adapters/pt-event-score-v1658.js';
+import calibrationVerificationV1658 from './adapters/calibration-verification-v1658.js';
+import turnaroundTimePercentileV1658 from './adapters/turnaround-time-percentile-v1658.js';
 import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
 import auRateSaarV1636 from './adapters/au-rate-saar-v1636.js';
 import cdiLabidCategoryV1636 from './adapters/cdi-labid-category-v1636.js';
@@ -2517,6 +2522,11 @@ const ADAPTER_MODULES = [
   ['unit-budget-variance-v1657', unitBudgetVarianceV1657],
   ['case-mix-index-v1657', caseMixIndexV1657],
   ['staffing-grid-v1657', staffingGridV1657],
+  ['levey-jennings-limits-v1658', leveyJenningsLimitsV1658],
+  ['clia-pt-acceptance-v1658', cliaPtAcceptanceV1658],
+  ['pt-event-score-v1658', ptEventScoreV1658],
+  ['calibration-verification-v1658', calibrationVerificationV1658],
+  ['turnaround-time-percentile-v1658', turnaroundTimePercentileV1658],
   ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],
   ['au-rate-saar-v1636', auRateSaarV1636],
   ['cdi-labid-category-v1636', cdiLabidCategoryV1636],

@@ -9487,6 +9487,21 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/staffing-grid-v1657.js (spec-v1657: shift staffing grid — administrative disclaimer)
 - `staffing-grid`
 
+### lib/levey-jennings-limits-v1658.js (spec-v1658: Levey-Jennings mean, SD and control limits — administrative disclaimer)
+- `levey-jennings-limits`
+
+### lib/clia-pt-acceptance-v1658.js (spec-v1658: CLIA proficiency testing acceptance limit — administrative disclaimer)
+- `clia-pt-acceptance`
+
+### lib/pt-event-score-v1658.js (spec-v1658: CLIA proficiency testing event score — administrative disclaimer)
+- `pt-event-score`
+
+### lib/calibration-verification-v1658.js (spec-v1658: calibration verification recovery and range — administrative disclaimer)
+- `calibration-verification`
+
+### lib/turnaround-time-percentile-v1658.js (spec-v1658: lab turnaround median and percentile — administrative disclaimer)
+- `turnaround-time-percentile`
+
 ### lib/antimicrobial-day-counter-v1636.js (spec-v1636: Count antimicrobial days and days present from rows (NHSN) — administrative disclaimer)
 - `antimicrobial-day-counter`
 

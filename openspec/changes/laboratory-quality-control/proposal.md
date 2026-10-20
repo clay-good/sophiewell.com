@@ -1,6 +1,7 @@
 # Change: Laboratory quality control and proficiency-testing arithmetic
 
-**Status:** Proposed, October 19, 2026. Specs only; nothing here is built.
+**Status:** Built October 19, 2026: five tools shipped, recorded in [docs/spec-v1658.md](../../../docs/spec-v1658.md).
+Tool 1 (`westgard-multirule`) stays gated on the 1981 paper; tool 4 was dropped earlier as an overlap.
 **Audience:** the bench technologist, the laboratory quality manager, the point-of-care
 coordinator on a nursing unit, and the CLIA laboratory director.
 **Program index:** [docs/spec-v1654.md](../../../docs/spec-v1654.md).
