@@ -16,6 +16,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Seventeen defects an independent review found in the dosing and radiation tools. A printed number no longer contradicts
+  the verdict beside it at a cut-off (methotrexate levels, cumulative anthracycline totals, NRC medical events, chemo
+  variance, radiopharmaceutical dosage, Mo-99 breakthrough, leak tests, package surveys, ESA hemoglobin rise, study-drug
+  compliance, dantrolene maximum, SAAR). The occupational dose check no longer calls 99.996% of the limit "at the limit".
+  A child's ampicillin-sulbactam or piperacillin-tazobactam dose is capped at the component's adult amount; a prior
+  neostigmine dose is checked when the label's rows differ; lithium refuses a toxic target; fomepizole gives no dialysis
+  dose time before dialysis began; the naloxone infusion rate in mL/hour comes from the unrounded dose.
 - Home search: a query typed before the synonym table or the search corpus finished loading kept its names-only
   ranking until the next keystroke, so "they denied it" could show a Texas tool instead of the appeal letter on a
   slow connection. The open results now re-rank when either file arrives, unless the reader has already picked a row.

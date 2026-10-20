@@ -11,7 +11,8 @@ const n = (i, t) => naloxoneInfusion(i, now, t);
 test('the label row answers', () => assert.equal(labelRow(LABEL.setId, now).answers, true));
 
 test('two-thirds of the bolus per hour, and mL/hour at the label\'s 0.004 mg/mL', () => {
-  for (const [bolus, mgh, mlh] of [[0.4, 0.27, 68], [2, 1.33, 333], [3, 2, 500], [0.04, 0.03, 8]]) {
+  // mL/hour from the unrounded two-thirds: 0.4 mg gives 0.2667 mg/hour, 66.7 mL/hour (not 0.27 / 0.004 = 68).
+  for (const [bolus, mgh, mlh] of [[0.4, 0.267, 67], [2, 1.33, 333], [3, 2, 500], [0.04, 0.0267, 7]]) {
     const r = n({ bolusMg: bolus });
     assert.deepEqual([r.mgPerHour, r.labelMlPerHour, r.mlPerHour], [mgh, mlh, undefined], `${bolus} mg`);
   }
