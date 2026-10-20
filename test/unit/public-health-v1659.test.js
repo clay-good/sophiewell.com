@@ -50,6 +50,21 @@ test('attributable proportion: 87.7%; a lower exposed risk gives the preventive 
   assert.equal(ap({ exposed: '0', unexposed: '0.1' }).valid, false);
 });
 
+test('attributable proportion: Levin population fraction only when the exposed share is entered', () => {
+  // RR = 0.57 / 0.07 = 8.142857; 30% exposed: 0.3 × 7.142857 = 2.142857; ÷ 3.142857 = 68.2%.
+  const r = ap({ exposed: '0.57', unexposed: '0.07', prevalence: '30' });
+  assert.equal(r.populationFraction, 68.2);
+  assert.match(r.band, /Population attributable fraction 68\.2%/);
+  assert.ok(r.notes.some((n) => /Miettinen/.test(n)));
+  // 100% exposed: the population fraction equals the exposed-group proportion; 0% exposed gives 0.
+  assert.equal(ap({ exposed: '0.57', unexposed: '0.07', prevalence: '100' }).populationFraction, 87.7);
+  assert.equal(ap({ exposed: '0.57', unexposed: '0.07', prevalence: '0' }).populationFraction, 0);
+  assert.equal(ap({ exposed: '0.57', unexposed: '0.07' }).populationFraction, null);
+  assert.equal(ap({ exposed: '0.57', unexposed: '0.07', prevalence: '120' }).valid, false);
+  assert.equal(ap({ exposed: '0.57', unexposed: '0', prevalence: '30' }).populationFraction, null);
+  assert.equal(ap({ exposed: '0.2', unexposed: '0.4', prevalence: '30' }).populationFraction, undefined);
+});
+
 test('vaccine effectiveness: the varicella example, 72%; undefined with no unvaccinated cases', () => {
   const r = ve({ casesVaccinated: '18', vaccinated: '152', casesUnvaccinated: '3', unvaccinated: '7', term: 'effectiveness' });
   assert.equal(r.riskRatio, 0.28);

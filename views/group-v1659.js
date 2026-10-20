@@ -91,7 +91,8 @@ export const renderers = {
   'attributable-proportion'(root) {
     numField(root, 'Risk or rate among the exposed', 'apr-exposed', 'e.g. 0.57');
     numField(root, 'Risk or rate among the unexposed', 'apr-unexposed', 'e.g. 0.07');
-    tool(root, [['apr-exposed', 'exposed'], ['apr-unexposed', 'unexposed']], AP.attributableProportion);
+    numField(root, 'Share of the population exposed, % (optional, for the population fraction)', 'apr-prevalence', 'e.g. 30');
+    tool(root, [['apr-exposed', 'exposed'], ['apr-unexposed', 'unexposed'], ['apr-prevalence', 'prevalence']], AP.attributableProportion);
   },
   'vaccine-effectiveness'(root) {
     selectField(root, 'Efficacy (trial) or effectiveness (field)', 'vef-term', VE.TERMS);

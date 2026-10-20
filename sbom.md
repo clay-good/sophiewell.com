@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `06a1a943d484ff0d`
-Generated: 2026-10-20T22:10:59.079Z
+Build ID: `90d0127efaafebff`
+Generated: 2026-10-20T22:29:07.744Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -134,7 +134,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/atlanta-pancreatitis-v445.js` | 3620 | `1eb1382cc11cc7b3a42e54ab14143721e30ac6b41de03bec5362d29e17d85bf3` |
 | `lib/atomic-weights-2024.js` | 9902 | `3583284c02d79af6557d796e257e6bf5feef49b9e1c00659add899f61208be87` |
 | `lib/atrial-enlargement-v787.js` | 7825 | `d0d57f443b54d1bff3c79313fe5319c1b9f6d3e7b36070e034275458fb7b4dfa` |
-| `lib/attributable-proportion-v1659.js` | 2509 | `aaf1b14dafb84efbcbd5de00bf08bfbb7bcc3eeff957dc8e8ef6709faa5b3dd6` |
+| `lib/attributable-proportion-v1659.js` | 4223 | `440b12b7a6d3b35895223cd5fc8a17d16376bf8a84393b15bec388d90b9a87e2` |
 | `lib/au-rate-saar-v1636.js` | 5716 | `a54e19a87c0d513faeca0f67283afabd974dbffd528e6c2872d9532ba46a5a09` |
 | `lib/auc-trapezoid-v1631.js` | 6760 | `a21c6b67c02373bc3eaedd12632f92e40bf7897bf37b261b7c03b47f193b31af` |
 | `lib/ausdrisk-v711.js` | 5293 | `6c2cfc5bf32ec40fe19a06b5c46b007313db94bc43afc2d67da5e0ebf024be66` |
@@ -888,7 +888,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3061606 | `603313652ac1ea65ebd39e442d3a3d78a1ea45e3c44d5edf02fb5f523627c0b5` |
+| `lib/meta.js` | 3061835 | `5645249631d984049c250fc87c1f24ada8557b1543354a46ee8c833adad96cb8` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1697,7 +1697,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/at-harm10-v1634.js` | 954 | `7d86eab11c6ba41af6aa4a91b6bfeb34d29239ce2b20406bc262c20da311ad01` |
 | `mcp/adapters/atlanta-pancreatitis-v445.js` | 1305 | `462b01327afcc8ff33324431badbdeb22966bf302f7443dc2b542f7976105ea7` |
 | `mcp/adapters/atrial-enlargement-v787.js` | 1755 | `7ca75e7d4e39f831d1e3483a29ea2213892730a5e04ae2565a5e59181c24fc07` |
-| `mcp/adapters/attributable-proportion-v1659.js` | 812 | `cc4b073997648e4c34b73153ebd2d6bed7ec45e8a1e8a041c0e04804a0310f66` |
+| `mcp/adapters/attributable-proportion-v1659.js` | 1093 | `afc6ddd4b69f28189f812e216d979230129612b57f15f77b5461a9eacf5e62c0` |
 | `mcp/adapters/au-rate-saar-v1636.js` | 1379 | `5c4cf27f4c69d069b29f76f200efec942cbf09500961292fe1ab7b97bfb2c514` |
 | `mcp/adapters/auc-trapezoid-v1631.js` | 1443 | `567d7499d183e25b3aa460711cdc1b50092610a7c11707cea678facf09503325` |
 | `mcp/adapters/ausdrisk-v711.js` | 2523 | `95afdfbb1ab041cb43151844b4956f9b572d53fffa78e6ad0230eb0eb068c709` |
@@ -3246,7 +3246,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1656.js` | 7076 | `d9b5d68dbff957bf5986da152494b496a6eab07fb87d07c25f243b362d2c5b0b` |
 | `views/group-v1657.js` | 11652 | `dfb72adff5acc04742116ddf9c91f3004723777912ee2bd5e7ad59851b62d66f` |
 | `views/group-v1658.js` | 5244 | `894894f6f96eec4e76ef607713f9d8ee199969798fa338c4d76332e0986be27f` |
-| `views/group-v1659.js` | 7169 | `17484970affe5b9c69313f724bbd329330afa6e743d176e5897f1ad823ac644b` |
+| `views/group-v1659.js` | 7330 | `26bc2fc2b748bb2148d55a0bdbb66deeff0e6da79a6dec282506e307d03809a0` |
 | `views/group-v166.js` | 6698 | `15f2b9e088bbfd84cc2c31c8014f6d84ecd313459cf16ebe7f401b08871ce8d5` |
 | `views/group-v1660.js` | 5470 | `977d3bd1ae7e34a0d03546269f0175683bd8e967b2778d860955763ffdbbfd7b` |
 | `views/group-v1661.js` | 3553 | `d0841f3a6c3caff9a32eca8fd65477c06dded46c4f22c6b3ed0802b04061cb3f` |

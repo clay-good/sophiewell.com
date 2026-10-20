@@ -1,7 +1,7 @@
-# spec-v1663 — Exact limits on the SMR and on the information component at zero
+# spec-v1663 — Exact limits on the SMR and the information component; Levin's population fraction
 
 > Status: **SHIPPED (2026-10-20)**: hardening, no new tool (catalog stays 2,362). Closes
-> [public-health-epidemiology](../openspec/changes/public-health-epidemiology/tasks.md) task 1.4.
+> [public-health-epidemiology](../openspec/changes/public-health-epidemiology/tasks.md) tasks 1.2 and 1.4.
 
 `smr` (spec-v1659 tool 7) printed observed ÷ expected and said its interval "is not computed here", because no source
 for the exact Poisson limits had been read. One has now been read:
@@ -26,6 +26,16 @@ parameters O + α₁ and E + α₂, and the limits are its percentiles. With α�
 log2 of the 2.5th and 97.5th percentiles of Gamma(½, E + ½). Counts above 0 keep the paper's approximations. Both tools now
 share `lib/gamma-quantile.js`.
 
+## Levin's population attributable fraction
+
+`attributable-proportion` (spec-v1659 tool 4) gave the proportion among the exposed only, because no source stating
+Levin's formula had been read (task 1.2). Two open papers read October 20, 2026 state it identically,
+PAF = Pe (RR − 1) ÷ [Pe (RR − 1) + 1]: Khosravi et al., *Glob Epidemiol* 2021 (PMC10445975), Eq. 3, and Ferguson et
+al., *Eur J Epidemiol* 2024 (PMC10904572), Eq. 2. Both say it holds only without confounding. A new optional field, the
+share of the population exposed, adds the population fraction; blank leaves the result as before. The tool takes crude
+risks, which is the no-confounding case; the note names Miettinen's case-based formula for an adjusted risk ratio,
+which is not computed.
+
 ## Proof
 
 - `test/unit/public-health-v1659.test.js`: the limits for counts 0, 1, 5 and 30 match the standard exact Poisson table
@@ -33,3 +43,6 @@ share `lib/gamma-quantile.js`.
   includes 1; 5 ÷ 20 lies below 1; an expected count of 1e-308 is refused rather than printing infinite limits.
 - `test/unit/disproportionality-2x2.test.js`: a = 0, b = 10, c = 5, d = 1,000 gives IC −0.14 with limits −10.13 to 2.19,
   checked against half the chi-square (1 df) percentiles 0.000982 and 5.0239.
+- `test/unit/public-health-v1659.test.js`: 0.57 and 0.07 with 30% exposed gives 68.2%; 100% exposed equals the
+  exposed-group 87.7% and 0% gives 0 (the formula's two identities); 120% is refused; a 0 unexposed risk or a lower exposed
+  risk gives no population fraction.

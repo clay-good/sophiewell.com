@@ -9,7 +9,8 @@
 ## 1. Read the gated sources (each a checkbox; no lib for a gated tool until it is ticked)
 - [x] 1.1 (§4 is natality; age adjustment is in §3, described as a weighted average, with Table 3.6) CDC *Principles of Epidemiology* Lesson 3 §4: direct standardization procedure and
       example (tool 8).
-- [ ] 1.2 (not read; tool 4 ships the exposed-group proportion only) Levin 1953 or an open secondary source stating Levin's formula (tool 4, population
+- [x] 1.2 (read October 20, 2026 in two open restatements, PMC10445975 Eq. 3 and PMC10904572 Eq. 2; shipped in spec-v1663 as an
+      optional field) Levin 1953 or an open secondary source stating Levin's formula (tool 4, population
       fraction).
 - [ ] 1.3 (not read; tool 6 stays gated) Fine 1993 or Fine, Eames and Heymann 2011: threshold and imperfect-vaccine coverage
       (tool 6).

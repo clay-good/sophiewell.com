@@ -11,6 +11,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   SIR tool keeps pointing to the NHSN report, whose interval uses NHSN's own mid-P method.
 - Disproportionality from a 2x2 table: the information component now has its limits when no reports pair the drug
   with the event, using the exact gamma percentiles Norén et al. 2013 call for at a count of 0.
+- Attributable proportion: an optional share of the population exposed adds the population attributable fraction
+  (Levin's formula), with a note that it assumes no confounding.
 
 ### Fixed
 
