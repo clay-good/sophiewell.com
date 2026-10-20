@@ -62,7 +62,7 @@ test('attributable proportion: Levin population fraction only when the exposed s
   assert.equal(ap({ exposed: '0.57', unexposed: '0.07' }).populationFraction, null);
   assert.equal(ap({ exposed: '0.57', unexposed: '0.07', prevalence: '120' }).valid, false);
   assert.equal(ap({ exposed: '0.57', unexposed: '0', prevalence: '30' }).populationFraction, null);
-  assert.equal(ap({ exposed: '0.2', unexposed: '0.4', prevalence: '30' }).populationFraction, undefined);
+  assert.equal(ap({ exposed: '0.2', unexposed: '0.4', prevalence: '30' }).populationFraction, null);
 });
 
 test('vaccine effectiveness: the varicella example, 72%; undefined with no unvaccinated cases', () => {
@@ -95,6 +95,12 @@ test('SMR: exact Poisson 95% limits match published tables (SEER*Stat, Sahai and
   assert.ok(smr({ observed: '25', expected: '20' }).notes.some((n) => /includes 1/.test(n)));
   assert.ok(smr({ observed: '5', expected: '20' }).notes.some((n) => /lies below 1/.test(n)));
   assert.equal(smr({ observed: '1000000000', expected: '1e-308' }).valid, false);
+  // A limit just above 1 is shown with enough decimals to read as above 1, not "1 ... lies above 1".
+  const edge = smr({ observed: '10', expected: '4.7952' });
+  assert.ok(edge.lower > 1);
+  assert.ok(edge.notes.some((n) => /lies above 1/.test(n)));
+  // An infinite expected count from the strata is refused, not read as "fewer events beyond chance".
+  assert.equal(smr({ observed: '4', strata: '1e200, 1e200' }).valid, false);
 });
 
 test('direct standardization: the 2000 standard sums to 274,633,642; CDC Table 3.6 Florida and Alaska', () => {

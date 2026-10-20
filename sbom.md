@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `90d0127efaafebff`
-Generated: 2026-10-20T22:29:07.744Z
+Build ID: `048750ff7c7d45da`
+Generated: 2026-10-20T22:52:02.866Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -134,7 +134,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/atlanta-pancreatitis-v445.js` | 3620 | `1eb1382cc11cc7b3a42e54ab14143721e30ac6b41de03bec5362d29e17d85bf3` |
 | `lib/atomic-weights-2024.js` | 9902 | `3583284c02d79af6557d796e257e6bf5feef49b9e1c00659add899f61208be87` |
 | `lib/atrial-enlargement-v787.js` | 7825 | `d0d57f443b54d1bff3c79313fe5319c1b9f6d3e7b36070e034275458fb7b4dfa` |
-| `lib/attributable-proportion-v1659.js` | 4223 | `440b12b7a6d3b35895223cd5fc8a17d16376bf8a84393b15bec388d90b9a87e2` |
+| `lib/attributable-proportion-v1659.js` | 4249 | `06ad7c73dc33f312c062f2296e4058db71018c14a59b773599f012e1e51fe085` |
 | `lib/au-rate-saar-v1636.js` | 5716 | `a54e19a87c0d513faeca0f67283afabd974dbffd528e6c2872d9532ba46a5a09` |
 | `lib/auc-trapezoid-v1631.js` | 6760 | `a21c6b67c02373bc3eaedd12632f92e40bf7897bf37b261b7c03b47f193b31af` |
 | `lib/ausdrisk-v711.js` | 5293 | `6c2cfc5bf32ec40fe19a06b5c46b007313db94bc43afc2d67da5e0ebf024be66` |
@@ -1386,7 +1386,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/slums-v644.js` | 6237 | `9b2459d9cc261ef5599b8b8092d2a31fbd66511d666a9f2811f366fbd8c49f51` |
 | `lib/smast-v737.js` | 3334 | `15043daafddc1d9e3c9ee3119ccb3f66038d78b1e0289987e77b3aaad262834a` |
 | `lib/smc-spaq-dose-v1552.js` | 4997 | `b87ef71175576ccb8d29e4d24f754ebba33133721b0a4bb92a1fdb535343d896` |
-| `lib/smr-v1659.js` | 4415 | `be6ffac1fdbd714a0cfdbb73ad5f4b3929cf157ef18719c32221ffd99d5f82a8` |
+| `lib/smr-v1659.js` | 5056 | `ee5a013d0a3d40d40511db871d592e0e0615db877d51a4c33d3b8c872d949574` |
 | `lib/snake-antivenom-indication-v1555.js` | 9879 | `cf703b04e04c89b3ae85ce5f4c5417a84f34c42b5b036109efb46559196da1ec` |
 | `lib/snake-neostigmine-trial-v1555.js` | 8080 | `566c31df9485516854444a5cb74c0bf7f46d9418b2d6dbe2507efa0a0d31ad05` |
 | `lib/snakebite-syndrome-v1555.js` | 9857 | `bdd87951860434166df9f9de44f023531c7206be7b324f5960541deacba01966` |

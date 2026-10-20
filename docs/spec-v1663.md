@@ -41,6 +41,10 @@ which is not computed.
 - `test/unit/public-health-v1659.test.js`: the limits for counts 0, 1, 5 and 30 match the standard exact Poisson table
   (0 to 3.689; 0.0253 to 5.572; 1.623 to 11.668; 20.24 to 42.83); 30 ÷ 20 gives 1.012 to 2.141 ("lies above 1"); 25 ÷ 20
   includes 1; 5 ÷ 20 lies below 1; an expected count of 1e-308 is refused rather than printing infinite limits.
+- An independent review found two SMR edge cases, both fixed and tested: a lower limit of 1.00004 printed as "1" beside
+  "lies above 1" (each limit now takes the fewest decimals, three or more, that agree with the sentence), and strata
+  summing to an infinite expected count read as "fewer events beyond chance" (an expected count over 1,000,000,000 is
+  now refused, as on direct entry).
 - `test/unit/disproportionality-2x2.test.js`: a = 0, b = 10, c = 5, d = 1,000 gives IC −0.14 with limits −10.13 to 2.19,
   checked against half the chi-square (1 df) percentiles 0.000982 and 5.0239.
 - `test/unit/public-health-v1659.test.js`: 0.57 and 0.07 with 30% exposed gives 68.2%; 100% exposed equals the
