@@ -13,7 +13,8 @@ A name search of the live catalog on October 19, 2026 for "carrier", "Bayes", "H
 classification and a cystic fibrosis diagnostic criteria set). Yet the arithmetic genetic
 counselors do by hand is small, closed, and over a century old: Hardy-Weinberg proportions
 (Hardy 1908, Weinberg 1908), Bayes' theorem (Bayes 1763), Wright's coefficient of relationship
-(Wright 1922), and the positive predictive value of a screen at a given prior.
+(Wright 1922). The positive predictive value of a screen at a given prior is already live in
+`fagan-post-test`.
 
 These are exactly the arithmetic identities the catalog's admission rule accepts when the source
 is named and the constants are reader input. The constants here (a disease incidence, a
@@ -22,7 +23,7 @@ echoed in the result.
 
 ## What changes
 
-Seven new tools, group E (Clinical Math & Conversions):
+Six new tools, group E (Clinical Math & Conversions). Tool 6 was dropped as a duplicate (see below):
 
 | # | id | Name | Source |
 |---|---|---|---|
@@ -31,7 +32,7 @@ Seven new tools, group E (Clinical Math & Conversions):
 | 3 | `recessive-couple-risk` | Autosomal Recessive Risk to a Pregnancy From Two Carrier Risks | arithmetic identity (Mendelian 1/4) |
 | 4 | `x-linked-bayes-risk` | X-Linked Carrier Risk With Unaffected Sons (Bayes) | Bayes 1763; worked-method text (build gate) |
 | 5 | `coefficient-of-relationship` | Coefficient of Relationship and Inbreeding for a Consanguineous Couple | Wright 1922, *Am Nat* 56:330 (build gate: not opened) |
-| 6 | `screen-ppv-from-prior` | Positive Predictive Value of a Screen From Its Sensitivity, Specificity and the Prior | arithmetic identity (Bayes); reuses `diagnostic-2x2` |
+| 6 | ~~`screen-ppv-from-prior`~~ | dropped: duplicates `fagan-post-test` | |
 | 7 | `bayes-risk-table` | Bayesian Risk Table (Prior, Conditional, Joint, Posterior) | Bayes 1763 |
 
 ## Why this passes the admission rule
@@ -53,4 +54,5 @@ from the laboratory's report or a cited population study.
 ## Impact
 
 - New capability `genetic-counseling-risk`.
-- `diagnostic-2x2` supplies the predictive-value arithmetic reused by tool 6.
+- Dropped on October 19, 2026: the live `fagan-post-test` already returns this in its sensitivity and specificity mode (pre-test 0.1%, sensitivity 99%, specificity 99.9% gives 49.8%), and `diagnostic-2x2` recomputes predictive values at a target prevalence.
+- `fagan-post-test` is the two-hypothesis case of `bayes-risk-table`; link them.

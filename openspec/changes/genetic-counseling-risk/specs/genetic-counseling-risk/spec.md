@@ -41,17 +41,18 @@ value is typed by the reader.
 - **WHEN** the reader's relationship is not listed
 - **THEN** the tool asks for path counts and computes nothing until they are given
 
-### Requirement: Screen predictive value from the prior and a general Bayes table
+### Requirement: A general Bayes table
 
-The catalog SHALL provide `screen-ppv-from-prior`, reusing the `diagnostic-2x2` predictive-value
-function with a reader-entered prior and printing a per-10,000 table and the
-screening-is-not-diagnosis sentence, and `bayes-risk-table` as the general tool, refusing
-priors that do not sum to 1 unless normalization is requested.
+The catalog SHALL provide `bayes-risk-table` as the general tool for two or more hypotheses and one
+or more pieces of evidence, printing every prior, conditional, joint and posterior, refusing priors
+that do not sum to 1 unless normalization is requested, and linking `fagan-post-test` for the
+single-test case. A separate screen predictive-value tool SHALL NOT be added: `fagan-post-test`
+already computes it.
 
-#### Scenario: High specificity, low prior
-- **WHEN** sensitivity 99%, specificity 99.9% and prior 1 in 1,000 are entered
-- **THEN** PPV prints about 49.8% and the table shows about 10 true and 10 false positives
-  per 10,000
+#### Scenario: Two pieces of evidence
+- **WHEN** priors 1/2 and 1/2 are entered with conditionals 1/2 and 1 for one unaffected son, and
+  the same again for a second son
+- **THEN** the posteriors print 1/5 and 4/5 with each joint row shown
 
 #### Scenario: Priors do not sum to one
 - **WHEN** two hypotheses have priors 0.5 and 0.6 and normalization is not ticked

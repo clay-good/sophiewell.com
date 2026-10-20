@@ -117,7 +117,9 @@ response; the target value; for the differential, the SD of the peer group.
 or the greater of the two where the rule says "(greater)"; acceptable when |response − target|
 ≤ allowable. For CK-MB the qualitative "MB elevated" branch is a reader-ticked alternative.
 **Output.** Acceptable or not, the allowable range around the target in the analyte's unit, the
-deviation in units and percent, and the CFR row quoted.
+deviation in units and percent, and the CFR row quoted. With a decision level entered, the limit
+at that level as a percent (the greater of the percent and the unit where the rule says so), with
+a link that opens `sigma-metric` with it as the allowable error.
 **Source, read.** The two tables above. The page cites "42 CFR 493.931, Table 2 to paragraph
 (c)(2)" or "493.941", with the Federal Register amendment and the eCFR point-in-time date.
 **Watch.** eCFR point-in-time comparison in the weekly refresh (the same mechanism as the
@@ -125,20 +127,13 @@ pharmacy-law tools); a changed table stops the tool until re-read.
 **Rule.** Analytes in the CFR but not read here (the endocrinology, toxicology, immunology and
 other sections) are not in the picker; the page lists the sections not yet read.
 
-### 4. `total-error-vs-clia` — Total Error Against the CLIA Allowable Limit
+### 4. Total error against the CLIA limit (dropped)
 
-**Input.** Analyte (same picker); the method's bias (%, or in units with the decision level);
-the method's CV (%); the decision level concentration; the multiplier for imprecision (the
-control offers 1.65 and lets the reader change it).
-**Compute.** Allowable total error TEa = the CLIA criterion at the decision level (the greater of
-the percent and the unit, expressed as a percent of the level). Total error TE = |bias| +
-multiplier × CV. Pass when TE ≤ TEa; margin = TEa − TE.
-**Output.** TE, TEa, pass or fail, and the hand-off to `sigma-metric` (sigma = (TEa − |bias|) ÷
-CV) with the same inputs prefilled.
-**Build gate.** The TE = |bias| + 1.65 CV model is Westgard's; read it in a Westgard paper
-(Westgard JO, Carey RN, Wold S. *Clin Chem* 1974;20:825, or the author's later statements) before
-building, and name the one read.
-**Rule.** CV of 0 is refused; a bias entered in units requires the decision level.
+Dropped on October 19, 2026: the live `sigma-metric` takes the same three inputs (allowable error,
+bias, imprecision) and judges the method against the goal, and the live `biological-variation-goals`
+already computes total error as 1.65 times imprecision plus bias. What this tool added was the CLIA
+limit as the goal; `clia-pt-acceptance` now prints that limit as a percent at a decision level and
+hands it to `sigma-metric`.
 
 ### 5. `pt-event-score` — Proficiency-Testing Event Score and Passing
 

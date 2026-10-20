@@ -7,12 +7,12 @@ coordinator on a nursing unit, and the CLIA laboratory director.
 
 ## Why
 
-The catalog already has the three tools a laboratorian reaches for after the result is out:
-`reference-change-value`, `delta-check` and `sigma-metric`, plus `bland-altman` for method
-agreement. It has nothing for the work before the result is released: deciding whether a
+The catalog already has the tools a laboratorian reaches for after the result is out:
+`reference-change-value`, `delta-check`, `sigma-metric` and `biological-variation-goals`, plus
+`bland-altman` for method agreement. It has nothing for the work before the result is released: deciding whether a
 quality-control run is in control (the Westgard multirule), setting control limits from a run
-series (Levey-Jennings statistics), checking a method's total error against the CLIA
-proficiency-testing acceptance limit, scoring a proficiency-testing event, verifying a
+series (Levey-Jennings statistics), checking a result against the CLIA proficiency-testing
+acceptance limit, scoring a proficiency-testing event, verifying a
 calibration, or reporting turnaround time as the percentile a laboratory reports it.
 
 A name search of the live catalog on October 19, 2026 for "Westgard", "Levey", "CLIA",
@@ -27,14 +27,15 @@ teaching page.
 
 ## What changes
 
-Seven new tools, group E (Clinical Math & Conversions), beside the live laboratory tools:
+Six new tools, group E (Clinical Math & Conversions), beside the live laboratory tools. Tool 4
+was dropped as an overlap (see below):
 
 | # | id | Name | Source |
 |---|---|---|---|
 | 1 | `westgard-multirule` | Westgard Multirule QC Evaluation (Two Levels, Across Runs) | Westgard et al. 1981 (abstract not opened; rules read on the author's page; build gate on the paper) |
 | 2 | `levey-jennings-limits` | Levey-Jennings Mean, SD, CV and Control Limits From a Run Series | arithmetic identity (Levey and Jennings 1950 cited, not opened) |
 | 3 | `clia-pt-acceptance` | CLIA Proficiency-Testing Acceptance Check (42 CFR 493.931 and 493.941) | eCFR, read |
-| 4 | `total-error-vs-clia` | Total Error Against the CLIA Allowable Limit | eCFR (read) for the limit; the Westgard total-error model (build gate) |
+| 4 | ~~`total-error-vs-clia`~~ | dropped: overlaps `sigma-metric` and `biological-variation-goals` | |
 | 5 | `pt-event-score` | Proficiency-Testing Event Score and Passing | 42 CFR 493.931(c)(4)-(5) structure read; §493.803 passing rule (build gate) |
 | 6 | `calibration-verification` | Calibration Verification: Recovery and Reportable Range Check | arithmetic identity; 42 CFR 493.1255 (build gate on its wording) |
 | 7 | `turnaround-time-percentile` | Turnaround Time: Median and 90th Percentile From a List | arithmetic identity |
@@ -59,6 +60,7 @@ reader's data or entered.
 ## Impact
 
 - New capability `laboratory-quality-control`.
+- Dropped on October 19, 2026: the live `sigma-metric` takes the same three inputs (allowable error, bias, imprecision) and judges the method against the goal, and the live `biological-variation-goals` already computes total error as 1.65 times imprecision plus bias. What this tool added was the CLIA limit as the goal; `clia-pt-acceptance` now prints that limit as a percent at a decision level and hands it to `sigma-metric`.
 - `sigma-metric` gains a backfill: its allowable total error field can be filled from
   `clia-pt-acceptance` for a read analyte (a `META.related` link and a prefill, not a new
   compute).

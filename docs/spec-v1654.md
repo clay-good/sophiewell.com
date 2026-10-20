@@ -4,6 +4,13 @@
 >
 > Correction, the same day: infection-prevention-metrics tool 4 duplicated the live `au-rate-saar`, which a
 > name search for "days of therapy" missed. It was dropped at build; [spec-v1655](spec-v1655.md) records the build.
+>
+> Second correction, the same day: every proposed tool in the other six changes was re-checked against live
+> names, agent summaries and citations, and each near neighbor was run. Two more were dropped:
+> genetic-counseling-risk's `screen-ppv-from-prior` duplicates `fagan-post-test`, and
+> laboratory-quality-control's `total-error-vs-clia` overlaps `sigma-metric` and `biological-variation-goals`.
+> unit-operations-metrics now names `nursing-home-staffing-check` as the neighbor of its PBJ tool. The table
+> below carries the corrected counts.
 
 ## What this is
 
@@ -23,16 +30,17 @@ feed, a licensed table, or a tool whose correctness decays within a year (spec-v
 
 | Change | Audience | New tools | Of which build-gated | The source read |
 |---|---|---|---|---|
-| [infection-prevention-metrics](../openspec/changes/infection-prevention-metrics/proposal.md) | infection preventionist, employee health, stewardship | 8 | 2 | NHSN SIR Guide (March 2024); NHSN PSC Manual ch. 4 and 16 (January 2026); CDC *Infection Control in Healthcare Personnel* summary (updated August 31, 2026); CDC *Principles of Epidemiology* Lesson 3 |
+| [infection-prevention-metrics](../openspec/changes/infection-prevention-metrics/proposal.md) | infection preventionist, employee health, stewardship | 7 (6 built) | 1 | NHSN SIR Guide (March 2024); NHSN PSC Manual ch. 4 and 16 (January 2026); CDC *Infection Control in Healthcare Personnel* summary (updated August 31, 2026); CDC *Principles of Epidemiology* Lesson 3 |
 | [public-health-epidemiology](../openspec/changes/public-health-epidemiology/proposal.md) | health department, public health nurse, quality analyst | 11 | 6 | CDC *Principles of Epidemiology*, 3rd ed., Lesson 3 §2, §3, §5, §6 |
 | [unit-operations-metrics](../openspec/changes/unit-operations-metrics/proposal.md) | nurse manager, nursing home DON and administrator | 12 | 3 | CMS Nursing Home Five-Star Technical Users' Guide (September 2026), including the staffing cut points; CMS Hospital Cost Report Data Dictionary |
-| [laboratory-quality-control](../openspec/changes/laboratory-quality-control/proposal.md) | bench technologist, laboratory quality manager, point-of-care coordinator | 7 | 4 | 42 CFR 493.931 and 493.941 (eCFR, as amended 2022), read in full; Westgard's rule set as restated by its author |
-| [genetic-counseling-risk](../openspec/changes/genetic-counseling-risk/proposal.md) | genetic counselor, prenatal and pediatric clinicians, patients | 7 | 4 presets | Hardy 1908, Bayes 1763, Wright 1922 (cited; to be read at build) |
+| [laboratory-quality-control](../openspec/changes/laboratory-quality-control/proposal.md) | bench technologist, laboratory quality manager, point-of-care coordinator | 6 | 3 | 42 CFR 493.931 and 493.941 (eCFR, as amended 2022), read in full; Westgard's rule set as restated by its author |
+| [genetic-counseling-risk](../openspec/changes/genetic-counseling-risk/proposal.md) | genetic counselor, prenatal and pediatric clinicians, patients | 6 | 4 presets | Hardy 1908, Bayes 1763, Wright 1922 (cited; to be read at build) |
 | [transplant-allocation-scores](../openspec/changes/transplant-allocation-scores/proposal.md) | transplant coordinator, OPO, nephrology | 4 | 2 | The OPTN KDPI and EPTS guides returned 403 to every fetch; no coefficient is stated |
 | [occupational-employee-health](../openspec/changes/occupational-employee-health/proposal.md) | occupational health nurse, certified medical examiner, audiometric technician | 6 | 2 partial | 29 CFR 1910.95 with Appendices A and F (age-correction tables in full); 29 CFR 1910.1025; 49 CFR Part 391 Appendix A (as amended January 19, 2024) |
 
-Fifty-five tools in all. Every id was checked against the live catalog, `app.js` and the
-agent registry on October 19, 2026; none collides.
+Fifty-two tools after the corrections above (fifty-five as first proposed). Every id was checked against
+the live catalog, `app.js` and the agent registry on October 19, 2026, and none collides; the subjects were
+re-checked the same day, which found the three duplicates.
 
 ## How the gaps were found
 

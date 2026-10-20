@@ -60,18 +60,22 @@ changes.
 - **WHEN** the weekly eCFR comparison finds §493.931 changed
 - **THEN** the tool stops answering for chemistry analytes and says so
 
-### Requirement: Total error, event score and calibration verification ship after their sources are read
+### Requirement: The CLIA limit as a goal for the live sigma metric
 
-The catalog SHALL provide `total-error-vs-clia`, `pt-event-score` and
-`calibration-verification` with their arithmetic as designed, the CLIA limit from
-`clia-pt-acceptance`, the pass/fail verdicts only after 42 CFR 493.803 and 493.1255 and the
-Westgard total-error paper have been read, and the laboratory's own acceptance criterion as
-reader input.
+`clia-pt-acceptance` SHALL print the limit at a reader-entered decision level as a percent and link
+`sigma-metric` with it as the allowable error. A separate total-error tool SHALL NOT be added:
+`sigma-metric` and `biological-variation-goals` already cover it.
 
-#### Scenario: Total error
-- **WHEN** glucose at a 100 mg/dL level has bias 2% and CV 2.5%
-- **THEN** TE prints 6.1%, TEa 8% (the greater of 8% and 6 mg/dL at 100), and the method passes
-  with a 1.9% margin
+#### Scenario: Glucose at 100 mg/dL
+- **WHEN** glucose is chosen with a decision level of 100 mg/dL
+- **THEN** the limit prints 8% (the greater of 8% and 6 mg/dL at that level) and the link opens
+  `sigma-metric` with 8 as the allowable error
+
+### Requirement: Event score and calibration verification ship after their sources are read
+
+The catalog SHALL provide `pt-event-score` and `calibration-verification` with their arithmetic as
+designed, the pass/fail verdicts only after 42 CFR 493.803 and 493.1255 have been read, and the
+laboratory's own acceptance criterion as reader input.
 
 #### Scenario: Event score without a verdict
 - **WHEN** 23 of 25 responses are acceptable and §493.803 has not been read

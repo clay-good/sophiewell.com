@@ -1,6 +1,6 @@
 # Tasks — Genetic counseling risk arithmetic
 
-> Docs-only proposal. Confirm the seven ids absent (they were on October 19, 2026).
+> Docs-only proposal. Confirm the six remaining ids absent (they were on October 19, 2026).
 
 ## 1. Read the gated sources
 - [ ] 1.1 Hardy 1908 (the letter) for the p² : 2pq : q² statement (tool 1).
@@ -12,11 +12,10 @@
 
 ## 2. Lib
 - [ ] 2.1 `lib/genetic-risk-vNNNN.js`: `hardyWeinberg`, `residualRisk`, `coupleRisk`,
-      `xLinkedBayes`, `relationshipCoefficient`, `screenPpv` (calling `diagnostic-2x2`'s
-      function), `bayesTable` (the general function the others call).
+      `xLinkedBayes`, `relationshipCoefficient`, `bayesTable` (the general function the others call).
 - [ ] 2.2 Unit tests: 1 in 2,500 → 2pq = 0.0392; CF 1/58 and DR 0.91 → 1 in 634; two residual
       risks × 1/4; n = 3 unaffected sons from a 1/2 prior → 1/9; first cousins F = 1/16 once
-      read; PPV with sens 0.99, spec 0.999, prior 1/1,000 → 49.8%; refusals on priors not
+      read; refusals on priors not
       summing to 1 and on a risk above 1.
 
 ## 3. Views, META, agents
@@ -25,7 +24,8 @@
       examples labeled as illustrations.
 - [ ] 3.3 MCP adapters; synonyms: "carrier frequency", "Hardy-Weinberg", "residual risk",
       "carrier screening negative", "recurrence risk", "X-linked carrier", "consanguinity",
-      "first cousins risk", "NIPT positive predictive value", "Bayes".
+      "first cousins risk", "Bayes". (Screen predictive value is `fagan-post-test`'s; add
+      "NIPT positive predictive value" to its synonyms instead.)
 
 ## 4. Ship
 - [ ] 4.1 Count surfaces; `node scripts/build-search-corpus.mjs`; `npm run release:check`;

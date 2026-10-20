@@ -86,16 +86,11 @@ values (first cousins F = 1/16, second cousins 1/64, uncle-niece 1/8) before the
 them.
 **Rule.** A relationship not in the picker needs the path counts typed; the tool never guesses.
 
-### 6. `screen-ppv-from-prior` — Positive Predictive Value of a Screen From Its Sensitivity, Specificity and the Prior
+### 6. Screen predictive value from a prior (dropped)
 
-**Input.** Sensitivity, specificity (from the laboratory's validation), the prior probability
-(for example an age-specific aneuploidy prior from the reader's reference, as 1 in N).
-**Compute.** PPV = sens × prior ÷ (sens × prior + (1 − spec)(1 − prior)); NPV likewise; the
-expected counts per 10,000 screened. Reuses the `diagnostic-2x2` predictive-value function.
-**Output.** PPV and NPV as percentages and "1 in N", the per-10,000 table, and the sentence that
-a screening result is not diagnostic.
-**Source.** Arithmetic identity (Bayes). No prior table ships; the page says where priors come
-from (the laboratory's report; published age-specific tables the reader cites).
+Dropped on October 19, 2026: the live `fagan-post-test` already returns this in its sensitivity and
+specificity mode (pre-test 0.1%, sensitivity 99%, specificity 99.9% gives 49.8%), and `diagnostic-2x2`
+recomputes predictive values at a target prevalence.
 
 ### 7. `bayes-risk-table` — Bayesian Risk Table (Prior, Conditional, Joint, Posterior)
 
@@ -105,6 +100,8 @@ conditional probability under each hypothesis.
 **Output.** The table with every cell and the posteriors; the priors must sum to 1 (the tool
 normalizes only when told to, and says so).
 **Source.** Bayes 1763.
+**Neighbor.** `fagan-post-test` handles one test and two hypotheses; this tool adds more
+hypotheses and several pieces of evidence, and prints every row of the table.
 **Rule.** A conditional outside [0, 1] or priors not summing to 1 (without normalization) is
 refused by name. This is the general tool the others are instances of; each specific tool links
 it with its table prefilled.

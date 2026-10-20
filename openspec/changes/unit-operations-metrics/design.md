@@ -34,6 +34,13 @@ state-law tiles for the legal minimum.
 
 ### 2. `pbj-hours-per-resident-day` — Nursing Home Hours per Resident Day (CMS PBJ Method)
 
+**Neighbor, checked October 19, 2026.** The live `nursing-home-staffing-check` already divides one
+day's direct-care hours by the census and compares the result with the New York and California
+minimums. This tool is the federal quarterly method instead: hours summed over a quarter by PBJ
+job code, divided by the summed MDS census on days with residents, with CMS's exclusion thresholds.
+The two answer different questions and must link each other; the page says which one the reader
+wants for a state inspection and which for Care Compare.
+
 **Input.** For the quarter: reported hours by PBJ job code group (RN: codes 5, 6, 7; LPN: 8, 9;
 nurse aide: 10, 11, 12), full quarter and weekends separately; the aggregate MDS resident
 census over the same days (sum of daily census, counting only days with at least one resident).
