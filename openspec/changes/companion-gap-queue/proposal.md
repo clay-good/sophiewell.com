@@ -53,7 +53,7 @@ PMC8200974 (*Int J Environ Res Public Health* 2021) and PMC8414712 (*BMC Pediatr
 zone covers (head and neck; upper trunk above the umbilicus; lower trunk and thighs; arms and lower legs; palms and
 soles) but not on bilirubin equivalents: the first states only that a score of 2 meant below 12 mg/dL and 3 below
 15 mg/dL in Kramer's data, the second reports its own cohort's medians. Sources that disagree are a reason to skip,
-so the tile stays blocked. T-MACS was rechecked the same day and built ([spec-v1662](../../../docs/spec-v1662.md)): two independent open papers print the same coefficients, and the authors' PRESTO protocol states the risk groups. GARFIELD-AF, PRISM III and CRIB-II were not rechecked.
+so the tile stays blocked. T-MACS was rechecked the same day and built ([spec-v1662](../../../docs/spec-v1662.md)): two independent open papers print the same coefficients, and the authors' PRESTO protocol states the risk groups. CRIB-II was rechecked the same day in three open validation papers (PMC13103286, PMC11103118, PMC12731721): each names the five inputs, but none reprints the birthweight-by-gestation point grid or the temperature and base excess points, so it stays blocked. GARFIELD-AF stays blocked for the reason above (its own paper does not print the coefficients); PRISM III was not rechecked.
 
 ## What "unblocked" looks like
 
