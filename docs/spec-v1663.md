@@ -36,6 +36,14 @@ share of the population exposed, adds the population fraction; blank leaves the 
 risks, which is the no-confounding case; the note names Miettinen's case-based formula for an adjusted risk ratio,
 which is not computed.
 
+## The Five-Star guide is a watched source
+
+`nursing-home-staffing-star` and `pbj-hours-per-resident-day` transcribe cut points and thresholds from the CMS
+Five-Star Technical Users' Guide. Both now export the guide as a route-B source, so `scripts/data/watch-pages.mjs`
+fetches it weekly and lists a change on the data-refresh pull request. Its hash was recorded on October 20, 2026 and
+matches the PDF read on October 19 (sha256 5b071101...a41239c). Closes
+[unit-operations-metrics](../openspec/changes/unit-operations-metrics/tasks.md) task 3.3.
+
 ## Checked and not done: statin intensity
 
 `statin-ldl-reduction` still gives no intensity category. Table 3 of the 2018 cholesterol guideline (PMC7403606) was

@@ -79,6 +79,10 @@
     "sha256": "21c9172715adad0937b92963dd1142569c959943d441f9b425f3d05e4602336f",
     "recorded": "2026-10-07"
   },
+  "https://www.cms.gov/medicare/provider-enrollment-and-certification/certificationandcomplianc/downloads/usersguide.pdf": {
+    "sha256": "5b071101f281a986bf10d289cdac88e704c557ff6e586a375111dfbeca41239c",
+    "recorded": "2026-10-20"
+  },
   "https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles": {
     "sha256": "131b46c79f5b59294ac3d1a7c19353c572e40e21adde0b0c6c4bb503120a265a",
     "recorded": "2026-10-13"

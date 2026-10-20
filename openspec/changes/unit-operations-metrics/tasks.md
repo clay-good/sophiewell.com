@@ -30,7 +30,8 @@
       tool 12 prints a grid.
 - [x] 3.2 META: worked examples built from the guide's own cut points (a facility just over a
       boundary); citations name the guide edition and the data dictionary.
-- [ ] 3.3 (not done: the edition is printed on every result; a stop-on-change watch is a separate change, as in spec-v1655) The Five-Star guide URL as a watched source: content hash in the refresh manifest;
+- [x] 3.3 (October 20, 2026: the guide PDF is under the weekly page watch, recorded at the hash of the edition read; as in
+      spec-v1655 the watch reports a change on the data-refresh pull request and does not stop the tool) The Five-Star guide URL as a watched source: content hash in the refresh manifest;
       tool 4 fails closed on change.
 - [x] 3.4 (phrases held off older tools' words; the budget tool has none) MCP adapters; synonyms: "HPPD", "hours per patient day", "nursing hours", "hours per
       resident day", "PBJ", "staffing star", "five star staffing", "turnover rate", "vacancy
