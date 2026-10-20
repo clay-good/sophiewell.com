@@ -36,6 +36,16 @@ share of the population exposed, adds the population fraction; blank leaves the 
 risks, which is the no-confounding case; the note names Miettinen's case-based formula for an adjusted risk ratio,
 which is not computed.
 
+## Checked and not done: statin intensity
+
+`statin-ldl-reduction` still gives no intensity category. Table 3 of the 2018 cholesterol guideline (PMC7403606) was
+read, but the 2026 ACC/AHA/Multisociety dyslipidemia guideline (*J Am Coll Cardiol*, doi:10.1016/j.jacc.2025.11.016;
+*Circulation*, doi:10.1161/CIR.0000000000001423) replaced it in March 2026, and both publishers returned a Cloudflare
+check on October 20, 2026. A superseded classification is not shipped as the current one.
+
+Also checked: the Crass 2018 vancomycin obesity model (`vanc-initial-dose`). Its coefficients appear in one open
+reprint only (a scoping review, PMC11928783), and no second source agreed, so a dosing model is not built on it.
+
 ## Proof
 
 - `test/unit/public-health-v1659.test.js`: the limits for counts 0, 1, 5 and 30 match the standard exact Poisson table
