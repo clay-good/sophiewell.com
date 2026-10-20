@@ -9547,6 +9547,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/donor-recipient-size-match-v1661.js (spec-v1661: donor-to-recipient size ratios — clinical disclaimer)
 - `donor-recipient-size-match`
 
+### lib/t-macs-v1662.js (spec-v1662: T-MACS probability of ACS — clinical disclaimer)
+- `t-macs`
+
 ### lib/antimicrobial-day-counter-v1636.js (spec-v1636: Count antimicrobial days and days present from rows (NHSN) — administrative disclaimer)
 - `antimicrobial-day-counter`
 

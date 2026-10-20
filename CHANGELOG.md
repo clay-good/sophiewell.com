@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- T-MACS, the troponin-only Manchester ACS decision aid: the probability of ACS from six clinical items and the arrival
+  hs-troponin T, and its very low, low, moderate or high group, from the equation as two open papers print it.
 - Transplant: donor-to-recipient weight, height and BSA ratios, and the intervals between an organ's recorded recovery and
   implant events with an hour limit from the first. KDPI and EPTS wait for the OPTN guides.
 - Genetic counseling arithmetic, each printing its Bayes table: carrier frequency from incidence (Hardy 1908, read),

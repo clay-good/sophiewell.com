@@ -898,6 +898,7 @@ import * as coefficientOfRelationshipV1660 from '../../lib/coefficient-of-relati
 import * as bayesRiskTableV1660 from '../../lib/bayes-risk-table-v1660.js';
 import * as ischemiaTimeClockV1661 from '../../lib/ischemia-time-clock-v1661.js';
 import * as donorRecipientSizeMatchV1661 from '../../lib/donor-recipient-size-match-v1661.js';
+import * as tMacsV1662 from '../../lib/t-macs-v1662.js';
 import * as adjustedPatientDaysV1636 from '../../lib/adjusted-patient-days-v1636.js';
 import * as auRateSaarV1636 from '../../lib/au-rate-saar-v1636.js';
 import * as cdiLabidCategoryV1636 from '../../lib/cdi-labid-category-v1636.js';
@@ -2077,6 +2078,7 @@ const MODULES = {
   'bayes-risk-table-v1660.js': bayesRiskTableV1660,
   'ischemia-time-clock-v1661.js': ischemiaTimeClockV1661,
   'donor-recipient-size-match-v1661.js': donorRecipientSizeMatchV1661,
+  't-macs-v1662.js': tMacsV1662,
   'adjusted-patient-days-v1636.js': adjustedPatientDaysV1636,
   'au-rate-saar-v1636.js': auRateSaarV1636,
   'cdi-labid-category-v1636.js': cdiLabidCategoryV1636,

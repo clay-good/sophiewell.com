@@ -13618,6 +13618,15 @@
       ],
       "tile": "donor-recipient-size-match",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "t-macs",
+        "tmacs",
+        "manchester acs decision aid"
+      ],
+      "tile": "t-macs",
+      "audience": "clinicians"
     }
   ]
 }

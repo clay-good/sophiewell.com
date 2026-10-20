@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:0c30d09c-9719-58dd-889b-945736bfe872",
+  "serialNumber": "urn:uuid:824fcd3a-0038-5e20-8b26-de547f680e8e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-20T05:06:05.175Z",
+    "timestamp": "2026-10-20T05:39:49.560Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2361 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2362 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ccea3ddfaa38097b9568d07f4a9c5d539ead151f91022562176b6ebf3bcd486d"
+          "content": "ba16d9efcfd5e9956a856b21f115296a7d69a2c3162f5472075318aa68ac1b73"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "154570"
+          "value": "154636"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0426b0cdcf8c4013fe7a84457913a4df498da82856e5fabc14dcfd07b6ca9b3c"
+          "content": "e60b78feee6c6709dcd3efbdc9d291dc1951b93b446bfbcf52de7957c5ef2790"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "645476"
+          "value": "645697"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "00d994b52e6baa7e53ee41fddd3a5a61a8d2064150416eca4cac6a16c64d9b1e"
+          "content": "d2c06213d6b55ebb64d2855d3d93f077da662d78ceab00af9cd3753b7de53f78"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "297536"
+          "value": "297653"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9ef52fe9618e7795b82afd9e294c7422cb692fa671289adfc08a5b730dc642d7"
+          "content": "7f111d3413f4815e3ded9a1cde73a6a321b72627ba292a7dc9250e2e9f99ab66"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "145486"
+          "value": "145548"
         }
       ]
     },
@@ -17954,7 +17954,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cdbe8f7d8d7f795726a3bd057e336e63dec8843447f408cbaf365622fdb37ae9"
+          "content": "63c495c7f2ea99e37e900f26be971684f9129c67c78c7ac0ac684eead288eb7b"
         }
       ],
       "properties": [
@@ -17964,7 +17964,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3060713"
+          "value": "3061439"
         }
       ]
     },
@@ -29494,6 +29494,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6819"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/t-macs-v1662.js",
+      "type": "file",
+      "name": "lib/t-macs-v1662.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "afbce135876a6c6fe5a4b0b01ea6e5b002840bc9ff9907ad9c4fc759a1201314"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3592"
         }
       ]
     },
@@ -59444,6 +59465,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/t-macs-v1662.js",
+      "type": "file",
+      "name": "mcp/adapters/t-macs-v1662.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "42924e3e3ede28d52e2f1e42ce05c47773efcd6c144ac66e436ac1b908bf3ff9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1401"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tablet-powder-source-v1629.js",
       "type": "file",
       "name": "mcp/adapters/tablet-powder-source-v1629.js",
@@ -62558,7 +62600,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "29c7958b9482efa27fbf4ed07c47c1c258c130d95718d22e4973d8fc8b5bd7e5"
+          "content": "7d8fdc99d748bb3bd8e99ec9000bdb6fd9c9235b42117a8f7ce37126ea749fab"
         }
       ],
       "properties": [
@@ -62568,7 +62610,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "170026"
+          "value": "170111"
         }
       ]
     },
@@ -67504,6 +67546,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3553"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1662.js",
+      "type": "file",
+      "name": "views/group-v1662.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c460f35dd523655f74e3402813f97787fc80158e280a039270c21ad9d3dd5273"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3223"
         }
       ]
     },
@@ -99583,6 +99646,7 @@
         "urn:sophiewell:file:source:lib/synonyms.js",
         "urn:sophiewell:file:source:lib/syphilis-serology-sequence-v1400.js",
         "urn:sophiewell:file:source:lib/systemic-mastocytosis-v813.js",
+        "urn:sophiewell:file:source:lib/t-macs-v1662.js",
         "urn:sophiewell:file:source:lib/table.js",
         "urn:sophiewell:file:source:lib/tablet-combo.js",
         "urn:sophiewell:file:source:lib/tablet-powder-source-v1629.js",
@@ -99997,6 +100061,7 @@
         "urn:sophiewell:file:source:views/group-v166.js",
         "urn:sophiewell:file:source:views/group-v1660.js",
         "urn:sophiewell:file:source:views/group-v1661.js",
+        "urn:sophiewell:file:source:views/group-v1662.js",
         "urn:sophiewell:file:source:views/group-v167.js",
         "urn:sophiewell:file:source:views/group-v169.js",
         "urn:sophiewell:file:source:views/group-v17.js",
@@ -101964,6 +102029,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/surgical-prophylaxis-redose-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/syphilis-serology-sequence-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/systemic-mastocytosis-v813.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/t-macs-v1662.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tablet-powder-source-v1629.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/taco-trali-v906.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/takayasu-v638.js",
@@ -102217,7 +102283,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "0c30d09c971998dd"
+      "value": "824fcd3a00382e20"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -102229,7 +102295,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3912"
+      "value": "3915"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

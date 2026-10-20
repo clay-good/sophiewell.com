@@ -925,6 +925,7 @@ const PROBES = [
   ['bayesian risk table', ['bayes-risk-table']],
   ['clamp to reperfusion time', ['ischemia-time-clock']],
   ['donor recipient weight ratio', ['donor-recipient-size-match']],
+  ['t-macs chest pain troponin', ['t-macs']],
   ['adjusted patient days calculation', ['adjusted-patient-days']],
   ['antimicrobial days per 1000 days present', ['au-rate-saar']],
   ['c difficile labid hospital onset or community onset', ['cdi-labid-category']],

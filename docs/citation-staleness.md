@@ -933,6 +933,7 @@ carries the specific date that could change it.
 | bayes-risk-table | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity | 2027-10-19 |
 | ischemia-time-clock | Stated arithmetic: elapsed time between recorded events | US | 2026-10-19 | an identity; no OPTN definition stated | 2027-10-19 |
 | donor-recipient-size-match | Stated arithmetic: ratios, with the Mosteller BSA | US | 2026-10-19 | an identity; no range is given | 2027-10-19 |
+| t-macs | Body R et al., Emerg Med J 2017, read in open reprints (PMC8499458, PMC6731951, PMC6830682) | UK | 2026-10-20 | a published model; the authors' updating study may revise it | 2027-10-20 |
 | ddd-rate | WHO Collaborating Centre for Drug Statistics Methodology, Use of ATC/DDD: DDDs per 100 bed days | International | 2026-10-12 | undated web page; no DDD values are reproduced | 2027-10-12 |
 | antimicrobial-day-counter | CDC NHSN Antimicrobial Use and Resistance (AUR) Module protocol: antimicrobial days and days present | US | 2026-10-12 | July 2026 edition; CDC reissues the protocol each January and July | 2027-02-01 |
 | vaccine-interval-validity | CDC ACIP General Best Practice Guidelines for Immunization: timing and spacing (4-day grace period, 28 days between live vaccines) | US | 2026-10-12 | read in CDC's PDF edition; the web page (July 24, 2024) refused the request at build | 2027-04-12 |

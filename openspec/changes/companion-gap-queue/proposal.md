@@ -26,11 +26,11 @@ genuinely absent while their siblings are built.
 | Absent | Its sibling, already built | Primary source |
 | --- | --- | --- |
 | ~~**VExUS** grading~~ — **BUILT, spec-v958** | `ivc-fluid-responsiveness` — the same vein, the opposite question | Beaubien-Souligny W, et al. *Ultrasound J.* 2020;12:16 (PMID 32270297, **PMC7142196, open access**) |
-| **T-MACS** (troponin-only Manchester ACS) | `heart`, `edacs`, `timi`, `grace` | Body R, et al. *Emerg Med J.* 2017;34:517-523 (PMID 28363994); external validation *Emerg Med J.* 2020;37:223-228 (PMID 32047076) |
+| ~~**T-MACS** (troponin-only Manchester ACS)~~ — **BUILT, spec-v1662** (from open reprints) | `heart`, `edacs`, `timi`, `grace` | Body R, et al. *Emerg Med J.* 2017;34:517-523 (PMID 28363994); external validation *Emerg Med J.* 2020;37:223-228 (PMID 32047076) |
 | **GARFIELD-AF** bleeding/stroke risk | `cha2ds2-vasc`, `has-bled`, `orbit-bleeding`, `atria-bleeding` | *Eur Heart J Qual Care Clin Outcomes.* 2022;8:214-227 (PMID 33892489) |
 | **CRIB-II** (neonatal mortality) | `snappe-ii`, `pim3` | derivation not yet located; validations are plentiful (e.g. PMID 41543649) |
 | **PRISM III** (paediatric ICU mortality) | `pim3`, `pelod2`, `psofa`, `phoenix-sepsis` | derivation not yet located; compared against PIM/PELOD in PMID 41918661 |
-| **SOWS** (subjective opiate withdrawal, Handelsman 1987 — **still absent**; see the correction below) | `cows` — the clinician-rated half of the same pair | Handelsman L, et al. 1987; Dutch validation *Eur Addict Res.* 2007;13:81-88 (PMID 17356279) |
+| ~~**SOWS** (subjective opiate withdrawal, Handelsman 1987)~~ — **BUILT** as `sows-subjective` (checked October 20, 2026) | `cows` — the clinician-rated half of the same pair | Handelsman L, et al. 1987; Dutch validation *Eur Addict Res.* 2007;13:81-88 (PMID 17356279) |
 | **Kramer** dermal icterus zones | `bhutani-bilirubin`, `neo-phototherapy` | derivation not yet located |
 
 ## What each of the remaining six is blocked on, after checking PMC
@@ -45,6 +45,15 @@ genuinely absent while their siblings are built.
 | **CRIB-II** | derivation not located in PubMed at all | the 5-variable point table |
 
 Open access is necessary and not sufficient: GARFIELD-AF is the case that proves it.
+
+## Rechecked October 20, 2026, under the reprint rule
+
+The owner allowed verified reprints on October 17, 2026. Kramer's zones were checked against two open reprints:
+PMC8200974 (*Int J Environ Res Public Health* 2021) and PMC8414712 (*BMC Pediatr* 2021). They agree on what each
+zone covers (head and neck; upper trunk above the umbilicus; lower trunk and thighs; arms and lower legs; palms and
+soles) but not on bilirubin equivalents: the first states only that a score of 2 meant below 12 mg/dL and 3 below
+15 mg/dL in Kramer's data, the second reports its own cohort's medians. Sources that disagree are a reason to skip,
+so the tile stays blocked. T-MACS was rechecked the same day and built ([spec-v1662](../../../docs/spec-v1662.md)): two independent open papers print the same coefficients, and the authors' PRESTO protocol states the risk groups. GARFIELD-AF, PRISM III and CRIB-II were not rechecked.
 
 ## What "unblocked" looks like
 
