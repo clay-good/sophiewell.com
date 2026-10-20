@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:f2c8c433-546f-5bea-8b1d-2c5fa5b7408a",
+  "serialNumber": "urn:uuid:0c30d09c-9719-58dd-889b-945736bfe872",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-20T04:49:31.741Z",
+    "timestamp": "2026-10-20T05:06:05.175Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2359 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2361 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eae659ce21e552ef1336739a1de93d1301e02e387678aa7df60d1d70fe8c45f9"
+          "content": "ccea3ddfaa38097b9568d07f4a9c5d539ead151f91022562176b6ebf3bcd486d"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "154419"
+          "value": "154570"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d08d2f8fb04c4bb73fecbb0dddd058686f436bc952b005a187a4a75f546341c9"
+          "content": "0426b0cdcf8c4013fe7a84457913a4df498da82856e5fabc14dcfd07b6ca9b3c"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "645055"
+          "value": "645476"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6c8c012dedae758f2ed6b66025cb283eb9d328e5340ffac61643652bc2d3df4b"
+          "content": "00d994b52e6baa7e53ee41fddd3a5a61a8d2064150416eca4cac6a16c64d9b1e"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "297269"
+          "value": "297536"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f3453244d9bfe2fa56594c53fb7982d1b071d81cba67f1ccc8ddeffbb43b867c"
+          "content": "9ef52fe9618e7795b82afd9e294c7422cb692fa671289adfc08a5b730dc642d7"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "145310"
+          "value": "145486"
         }
       ]
     },
@@ -8120,6 +8120,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/donor-recipient-size-match-v1661.js",
+      "type": "file",
+      "name": "lib/donor-recipient-size-match-v1661.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e02071de9b9ae11b1afe9065777a69dee101c8d229686234a9fb0c02e1b0e1bd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2989"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/dorr-femur-v499.js",
       "type": "file",
       "name": "lib/dorr-femur-v499.js",
@@ -14189,6 +14210,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ischemia-time-clock-v1661.js",
+      "type": "file",
+      "name": "lib/ischemia-time-clock-v1661.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e0c7001ccdafeaf2cd6b80ee0530cb0ac57ac420cfdb448e08dea4a4b5f07872"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3779"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/isgls-bile-leak-v658.js",
       "type": "file",
       "name": "lib/isgls-bile-leak-v658.js",
@@ -17912,7 +17954,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "542f4401fa4ba5504ed70a1ec8e57b39a9f905373d82e7adfc3d2c57b04f15b9"
+          "content": "cdbe8f7d8d7f795726a3bd057e336e63dec8843447f408cbaf365622fdb37ae9"
         }
       ],
       "properties": [
@@ -17922,7 +17964,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3059449"
+          "value": "3060713"
         }
       ]
     },
@@ -40355,6 +40397,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/donor-recipient-size-match-v1661.js",
+      "type": "file",
+      "name": "mcp/adapters/donor-recipient-size-match-v1661.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eb2bd38bb2312662d4407043b9e073a11a562802720e32627fe4a93abecc9b05"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1221"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dorr-femur-v499.js",
       "type": "file",
       "name": "mcp/adapters/dorr-femur-v499.js",
@@ -45916,6 +45979,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1629"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ischemia-time-clock-v1661.js",
+      "type": "file",
+      "name": "mcp/adapters/ischemia-time-clock-v1661.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c808c4c3b41dd8d3e6d3dc2b0f663ce2256ec573dad259e6f16cca04c8860c4a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "837"
         }
       ]
     },
@@ -62474,7 +62558,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7eaddce6000c1cc81965b0bd741bdb259a526e36c80e65a553998faf05dee80c"
+          "content": "29c7958b9482efa27fbf4ed07c47c1c258c130d95718d22e4973d8fc8b5bd7e5"
         }
       ],
       "properties": [
@@ -62484,7 +62568,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "169730"
+          "value": "170026"
         }
       ]
     },
@@ -67399,6 +67483,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5470"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1661.js",
+      "type": "file",
+      "name": "views/group-v1661.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d0841f3a6c3caff9a32eca8fd65477c06dded46c4f22c6b3ed0802b04061cb3f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3553"
         }
       ]
     },
@@ -98460,6 +98565,7 @@
         "urn:sophiewell:file:source:lib/dofetilide-dose-algorithm-v1632.js",
         "urn:sophiewell:file:source:lib/dom-fields.js",
         "urn:sophiewell:file:source:lib/dom.js",
+        "urn:sophiewell:file:source:lib/donor-recipient-size-match-v1661.js",
         "urn:sophiewell:file:source:lib/dorr-femur-v499.js",
         "urn:sophiewell:file:source:lib/dose-calendar-v1512.js",
         "urn:sophiewell:file:source:lib/dose-schedule.js",
@@ -98749,6 +98855,7 @@
         "urn:sophiewell:file:source:lib/irecist-v551.js",
         "urn:sophiewell:file:source:lib/iron-supplement-who-v1550.js",
         "urn:sophiewell:file:source:lib/isakos-meniscal-v1426.js",
+        "urn:sophiewell:file:source:lib/ischemia-time-clock-v1661.js",
         "urn:sophiewell:file:source:lib/isgls-bile-leak-v658.js",
         "urn:sophiewell:file:source:lib/isgls-phlf-v657.js",
         "urn:sophiewell:file:source:lib/isgps-dge-v659.js",
@@ -99889,6 +99996,7 @@
         "urn:sophiewell:file:source:views/group-v1659.js",
         "urn:sophiewell:file:source:views/group-v166.js",
         "urn:sophiewell:file:source:views/group-v1660.js",
+        "urn:sophiewell:file:source:views/group-v1661.js",
         "urn:sophiewell:file:source:views/group-v167.js",
         "urn:sophiewell:file:source:views/group-v169.js",
         "urn:sophiewell:file:source:views/group-v17.js",
@@ -100949,6 +101057,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/doac-dose-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/doac-periprocedural-timing-v1633.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dofetilide-dose-algorithm-v1632.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/donor-recipient-size-match-v1661.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dorr-femur-v499.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dose-calendar-v1512.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dose-schedule.js",
@@ -101214,6 +101323,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/irecist-v551.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iron-supplement-who-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isakos-meniscal-v1426.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ischemia-time-clock-v1661.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isgls-bile-leak-v658.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isgls-phlf-v657.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isgps-dge-v659.js",
@@ -102107,7 +102217,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "f2c8c433546ffbea"
+      "value": "0c30d09c971998dd"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -102119,7 +102229,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3907"
+      "value": "3912"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

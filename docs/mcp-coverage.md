@@ -9541,6 +9541,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/bayes-risk-table-v1660.js (spec-v1660: Bayesian risk table — clinical disclaimer)
 - `bayes-risk-table`
 
+### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
+- `ischemia-time-clock`
+
+### lib/donor-recipient-size-match-v1661.js (spec-v1661: donor-to-recipient size ratios — clinical disclaimer)
+- `donor-recipient-size-match`
+
 ### lib/antimicrobial-day-counter-v1636.js (spec-v1636: Count antimicrobial days and days present from rows (NHSN) — administrative disclaimer)
 - `antimicrobial-day-counter`
 

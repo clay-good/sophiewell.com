@@ -15,6 +15,8 @@
 >
 > genetic-counseling-risk was built the same day, six tools; [spec-v1660](spec-v1660.md) records it.
 >
+> transplant-allocation-scores was partly built the same day, tools 3 and 4; [spec-v1661](spec-v1661.md) records it.
+>
 > Second correction, the same day: every proposed tool in the other six changes was re-checked against live
 > names, agent summaries and citations, and each near neighbor was run. Two more were dropped:
 > genetic-counseling-risk's `screen-ppv-from-prior` duplicates `fagan-post-test`, and

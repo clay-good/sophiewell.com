@@ -13603,6 +13603,21 @@
       ],
       "tile": "bayes-risk-table",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cold ischemia time calculation",
+        "clamp to reperfusion time"
+      ],
+      "tile": "ischemia-time-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "organ size match weight ratio"
+      ],
+      "tile": "donor-recipient-size-match",
+      "audience": "clinicians"
     }
   ]
 }

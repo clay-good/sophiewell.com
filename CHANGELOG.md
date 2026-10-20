@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Transplant: donor-to-recipient weight, height and BSA ratios, and the intervals between an organ's recorded recovery and
+  implant events with an hour limit from the first. KDPI and EPTS wait for the OPTN guides.
 - Genetic counseling arithmetic, each printing its Bayes table: carrier frequency from incidence (Hardy 1908, read),
   residual carrier risk after a negative screen, the recessive risk to a pregnancy from both partners' risks, an
   X-linked carrier risk revised by unaffected sons, and a general prior-to-posterior table.

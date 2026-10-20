@@ -1163,6 +1163,8 @@ import recessiveCoupleRiskV1660 from './adapters/recessive-couple-risk-v1660.js'
 import xLinkedBayesRiskV1660 from './adapters/x-linked-bayes-risk-v1660.js';
 import coefficientOfRelationshipV1660 from './adapters/coefficient-of-relationship-v1660.js';
 import bayesRiskTableV1660 from './adapters/bayes-risk-table-v1660.js';
+import ischemiaTimeClockV1661 from './adapters/ischemia-time-clock-v1661.js';
+import donorRecipientSizeMatchV1661 from './adapters/donor-recipient-size-match-v1661.js';
 import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
 import auRateSaarV1636 from './adapters/au-rate-saar-v1636.js';
 import cdiLabidCategoryV1636 from './adapters/cdi-labid-category-v1636.js';
@@ -2553,6 +2555,8 @@ const ADAPTER_MODULES = [
   ['x-linked-bayes-risk-v1660', xLinkedBayesRiskV1660],
   ['coefficient-of-relationship-v1660', coefficientOfRelationshipV1660],
   ['bayes-risk-table-v1660', bayesRiskTableV1660],
+  ['ischemia-time-clock-v1661', ischemiaTimeClockV1661],
+  ['donor-recipient-size-match-v1661', donorRecipientSizeMatchV1661],
   ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],
   ['au-rate-saar-v1636', auRateSaarV1636],
   ['cdi-labid-category-v1636', cdiLabidCategoryV1636],

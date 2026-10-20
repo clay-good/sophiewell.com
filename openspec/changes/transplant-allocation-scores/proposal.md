@@ -1,6 +1,7 @@
 # Change: Transplant allocation scores and ischemia clocks
 
-**Status:** Proposed, October 19, 2026. Specs only; nothing here is built. **The two allocation
+**Status:** Partly built October 19, 2026: tools 3 and 4 shipped ([docs/spec-v1661.md](../../../docs/spec-v1661.md)).
+KDPI and EPTS (tools 1 and 2) wait for a human download of the OPTN guides.
 scores are build-gated**: the OPTN guides that print their formulas returned HTTP 403 to every
 fetch attempted for this spec, so no coefficient is stated here.
 **Audience:** the transplant coordinator, the organ procurement organization staff, the

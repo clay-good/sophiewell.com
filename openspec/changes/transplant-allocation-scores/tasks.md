@@ -1,6 +1,9 @@
 # Tasks — Transplant allocation scores and ischemia clocks
 
-> Docs-only proposal. Tools 1 and 2 are build-gated on reading the OPTN guides; nothing in
+> **Partly built October 19, 2026** ([docs/spec-v1661.md](../../../docs/spec-v1661.md)): tools 3 and 4. Unticked items
+> were not done; the build record says why.
+>
+> Originally a docs-only proposal. Tools 1 and 2 are build-gated on reading the OPTN guides; nothing in
 > `design.md` states a coefficient. Confirm the four ids absent (they were on October 19, 2026).
 
 ## 1. Obtain and read the sources
@@ -9,7 +12,7 @@
       into a data file with its SHA-256.
 - [ ] 1.2 The same for the EPTS guide (April 2025 or newer).
 - [ ] 1.3 OPTN policy 8: the KDPI and EPTS bands used in allocation.
-- [ ] 1.4 OPTN data definitions for cold and warm ischemia time.
+- [ ] 1.4 (not read: optn.transplant.hrsa.gov refused the request; tool 3 names intervals by the reader's events) OPTN data definitions for cold and warm ischemia time.
 
 ## 2. Lib
 - [ ] 2.1 `lib/transplant-allocation-vNNNN.js`: `kdriKdpi`, `epts`, `ischemiaIntervals`,

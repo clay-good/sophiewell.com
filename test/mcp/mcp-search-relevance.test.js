@@ -923,6 +923,8 @@ const PROBES = [
   ['x linked carrier unaffected sons', ['x-linked-bayes-risk']],
   ['first cousins inbreeding coefficient', ['coefficient-of-relationship']],
   ['bayesian risk table', ['bayes-risk-table']],
+  ['clamp to reperfusion time', ['ischemia-time-clock']],
+  ['donor recipient weight ratio', ['donor-recipient-size-match']],
   ['adjusted patient days calculation', ['adjusted-patient-days']],
   ['antimicrobial days per 1000 days present', ['au-rate-saar']],
   ['c difficile labid hospital onset or community onset', ['cdi-labid-category']],
