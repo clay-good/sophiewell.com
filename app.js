@@ -6487,6 +6487,11 @@ function tileNameIndex() {
 }
 
 let heroSearchDocClickBound = false;
+// Re-ranks the open hero-search results after the synonym table or the search corpus arrives. Both load in the
+// background at boot, and a query typed before they land was ranked on names alone and stayed that way until the
+// next keystroke ("they denied it" showed a Texas tool instead of the appeal letter on a slow load). Each
+// bindHeroSearch() replaces this with one bound to the live input; it leaves a row the reader picked alone.
+let refreshHeroResults = () => {};
 function bindHeroSearch() {
   const input = document.getElementById('hero-search');
   const list = document.getElementById('hero-search-results');
@@ -6818,6 +6823,9 @@ function bindHeroSearch() {
     });
   });
   input.addEventListener('input', () => { userPicked = false; clearPickCard(); render(input.value); });
+  refreshHeroResults = () => {
+    if (!userPicked && input.isConnected && input.value.trim() && !list.hidden) render(input.value);
+  };
 
 
   input.addEventListener('keydown', (e) => {
@@ -6913,7 +6921,7 @@ function boot() {
   // spec-v7 §3.2: load the synonym table once at boot. Hero search degrades
   // to fuzzy-only if the fetch fails (e.g., file:// load); synonyms are an
   // optional accelerator, not a hard dependency.
-  loadSynonyms().then((entries) => { SYNONYM_ENTRIES = entries; }).catch(() => {});
+  loadSynonyms().then((entries) => { SYNONYM_ENTRIES = entries; refreshHeroResults(); }).catch(() => {});
   // plain-language-search: load the search corpus once at boot, then rebuild the
   // tile corpus so desc-channel (summary/band) terms become matchable. spec-v736
   // tiered the corpus into corpus.json (Tier 1: name/group/audiences/specialties)
@@ -6932,6 +6940,7 @@ function boot() {
       for (const id of Object.keys(index)) merged[id] = { ...index[id], ...(d[id] || {}) };
       SEARCH_CORPUS = merged;
       TILE_CORPUS_CACHE = null;
+      refreshHeroResults();
     })
     .catch(() => {});
   window.addEventListener('hashchange', route);

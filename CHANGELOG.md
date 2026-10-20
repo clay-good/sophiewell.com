@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Home search: a query typed before the synonym table or the search corpus finished loading kept its names-only
+  ranking until the next keystroke, so "they denied it" could show a Texas tool instead of the appeal letter on a
+  slow connection. The open results now re-rank when either file arrives, unless the reader has already picked a row.
 - Eleven defects an independent review found in the tools added on October 19 and 20, 2026. A printed number no longer
   contradicts the category beside it at a cut-off (T-MACS at 2%, the noise action level, the 10-hour lead limit,
   the threshold shift and the 40 dB hearing average now decide on the unrounded value). Impossible inputs are refused
