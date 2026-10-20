@@ -22,9 +22,14 @@ test('the information component and its approximate limits', () => {
   assert.ok(Math.abs(r.ic - ic) < 1e-3);
   assert.ok(Math.abs(r.ic025 - (ic - 3.3 / Math.sqrt(15.5) - 2 * 15.5 ** -1.5)) < 1e-3);
   assert.ok(Math.abs(r.ic975 - (ic + 2.4 / Math.sqrt(15.5) - 0.5 * 15.5 ** -1.5)) < 1e-3);
+  // a = 0: Norén's exact limits, log2 of the Gamma(0.5, E + 0.5) percentiles. Gamma(0.5, 1) percentiles are half
+  // the chi-square(1) percentiles 0.000982 and 5.0239 (the standard table).
   const z = d({ a: 0, b: 10, c: 5, d: 1000 });
-  assert.equal(z.ic025, undefined);
-  assert.match(z.notes.join(' '), /exact limits should be used/);
+  const Ez = (10 * 5) / 1015;
+  assert.ok(Math.abs(z.ic025 - Math.log2(0.000982069 / 2 / (Ez + 0.5))) < 1e-3);
+  assert.ok(Math.abs(z.ic975 - Math.log2(5.023886 / 2 / (Ez + 0.5))) < 1e-3);
+  assert.ok(z.ic025 < z.ic && z.ic < z.ic975);
+  assert.match(z.notes.join(' '), /exact limits should be used: the 2\.5th and 97\.5th percentiles/);
 });
 
 test('each EudraVigilance criterion is stated separately', () => {

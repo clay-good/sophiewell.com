@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `61b603f4f7cb497b`
-Generated: 2026-10-20T20:58:40.847Z
+Build ID: `06a1a943d484ff0d`
+Generated: 2026-10-20T22:10:59.079Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -408,7 +408,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dips-interaction-v1634.js` | 3963 | `bc56a98a1cd52b322364f0c529ee10b0f26ead3f69ea2fd220d6c62bad838c04` |
 | `lib/direct-age-standardization-v1659.js` | 5605 | `e2306f77740df408a1c53b0e6ff0d2532ee857b74fd9449edf6f74ed8d840495` |
 | `lib/disability-rating-scale-v1433.js` | 5639 | `28ea1f4f22462fdc886205a3f09e88020ae541b73f2d1a5f9d067a97c88eefdb` |
-| `lib/disproportionality-2x2-v1634.js` | 8773 | `df5fc43a92d20671db29357475a6fdf477c2ef3d3d11af4cfa41524b96bd5086` |
+| `lib/disproportionality-2x2-v1634.js` | 9420 | `2cda0124fb73bb33e49fc90624a7207c3f66a0b7e4932adc6e25ceee50364747` |
 | `lib/dive-v257.js` | 5167 | `1f1ec4b232161e3caac863dafa8c2cca034e4d3831a1dbbd74b4eb1e80df5014` |
 | `lib/dka-resolution-v905.js` | 8123 | `2327d8fa0988f7e7988c150c6c831d22e3d918128f710ea7bfcc982595892b4f` |
 | `lib/dme-v307.js` | 4101 | `0fa5891d588c79a927bcd10662181d79cf571f68e8138f58d0ec5c4c92873568` |
@@ -543,6 +543,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gabapentinoid-renal-dose-v1632.js` | 7868 | `500ec9d5cf21471c1978e952b1b354eca1dc484f7be424cbf3e940c38841f5fd` |
 | `lib/gadolinium-nsf-v895.js` | 9843 | `1b238cda2427d15feed05c36c97b49cf9e5c8e9458caf6e699c983b9a3d15558` |
 | `lib/gags-v554.js` | 9715 | `198a4b0db19b6ca1368c20697ea8b3c0a2545de5dfa02a1a90aceff7440b3219` |
+| `lib/gamma-quantile.js` | 1967 | `83cd62e9b6aceb3df2e16bfe1065107ad5c4dc224bc6c95be32741a65cb2c3a5` |
 | `lib/gapp-v569.js` | 13660 | `2befeec64a61fb7f8d8a38ae8bb35fea7080b9878991477eef4bab5bfe755e64` |
 | `lib/gaps-v185.js` | 27480 | `b4f1efb0b7164b4995fa12e7bdbeace1d5de4e0fcb21bedc391b569498ca3283` |
 | `lib/gardner-robertson-v802.js` | 6240 | `fa6f4e0ed73582fe0d82724cee56f2950c107e72e92b13e396f99f03e713e1f6` |
@@ -1385,7 +1386,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/slums-v644.js` | 6237 | `9b2459d9cc261ef5599b8b8092d2a31fbd66511d666a9f2811f366fbd8c49f51` |
 | `lib/smast-v737.js` | 3334 | `15043daafddc1d9e3c9ee3119ccb3f66038d78b1e0289987e77b3aaad262834a` |
 | `lib/smc-spaq-dose-v1552.js` | 4997 | `b87ef71175576ccb8d29e4d24f754ebba33133721b0a4bb92a1fdb535343d896` |
-| `lib/smr-v1659.js` | 5918 | `0902e628a9b1d0c1f8c013bd51212267c4d4bafedc4089c40e87e20e71e57329` |
+| `lib/smr-v1659.js` | 4415 | `be6ffac1fdbd714a0cfdbb73ad5f4b3929cf157ef18719c32221ffd99d5f82a8` |
 | `lib/snake-antivenom-indication-v1555.js` | 9879 | `cf703b04e04c89b3ae85ce5f4c5417a84f34c42b5b036109efb46559196da1ec` |
 | `lib/snake-neostigmine-trial-v1555.js` | 8080 | `566c31df9485516854444a5cb74c0bf7f46d9418b2d6dbe2507efa0a0d31ad05` |
 | `lib/snakebite-syndrome-v1555.js` | 9857 | `bdd87951860434166df9f9de44f023531c7206be7b324f5960541deacba01966` |

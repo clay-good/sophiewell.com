@@ -9,6 +9,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Standardized mortality ratio: an exact 95% confidence interval (Poisson limits on the observed count, as NCI's
   SEER*Stat documents them) and a plain statement of whether it lies above 1, below 1, or includes it. The NHSN
   SIR tool keeps pointing to the NHSN report, whose interval uses NHSN's own mid-P method.
+- Disproportionality from a 2x2 table: the information component now has its limits when no reports pair the drug
+  with the event, using the exact gamma percentiles Norén et al. 2013 call for at a count of 0.
 
 ### Fixed
 

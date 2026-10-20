@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:61b603f4-f7cb-597b-811b-d9ba6626d7bd",
+  "serialNumber": "urn:uuid:06a1a943-d484-5f0d-83e9-69834a8d7fda",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-20T20:58:40.847Z",
+    "timestamp": "2026-10-20T22:10:59.079Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -7895,7 +7895,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "df5fc43a92d20671db29357475a6fdf477c2ef3d3d11af4cfa41524b96bd5086"
+          "content": "2cda0124fb73bb33e49fc90624a7207c3f66a0b7e4932adc6e25ceee50364747"
         }
       ],
       "properties": [
@@ -7905,7 +7905,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8773"
+          "value": "9420"
         }
       ]
     },
@@ -10720,6 +10720,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9715"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/gamma-quantile.js",
+      "type": "file",
+      "name": "lib/gamma-quantile.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "83cd62e9b6aceb3df2e16bfe1065107ad5c4dc224bc6c95be32741a65cb2c3a5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1967"
         }
       ]
     },
@@ -28412,7 +28433,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0902e628a9b1d0c1f8c013bd51212267c4d4bafedc4089c40e87e20e71e57329"
+          "content": "be6ffac1fdbd714a0cfdbb73ad5f4b3929cf157ef18719c32221ffd99d5f82a8"
         }
       ],
       "properties": [
@@ -28422,7 +28443,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5918"
+          "value": "4415"
         }
       ]
     },
@@ -98752,6 +98773,7 @@
         "urn:sophiewell:file:source:lib/gabapentinoid-renal-dose-v1632.js",
         "urn:sophiewell:file:source:lib/gadolinium-nsf-v895.js",
         "urn:sophiewell:file:source:lib/gags-v554.js",
+        "urn:sophiewell:file:source:lib/gamma-quantile.js",
         "urn:sophiewell:file:source:lib/gapp-v569.js",
         "urn:sophiewell:file:source:lib/gaps-v185.js",
         "urn:sophiewell:file:source:lib/gardner-robertson-v802.js",
@@ -102283,7 +102305,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "61b603f4f7cb497b"
+      "value": "06a1a943d484ff0d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -102295,7 +102317,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3915"
+      "value": "3916"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
