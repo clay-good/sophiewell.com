@@ -1,6 +1,7 @@
 # Change: Occupational and employee health rules as arithmetic
 
-**Status:** Proposed, October 19, 2026. Specs only; nothing here is built.
+**Status:** Built October 19, 2026: all six tools shipped, recorded in [docs/spec-v1656.md](../../../docs/spec-v1656.md),
+which lists every change from this proposal (Stage 3 is written "and" in the appendix).
 **Audience:** the occupational health nurse, the employee health clinic, the certified
 medical examiner for commercial drivers, the audiometric technician, and the worker reading
 a hearing test or a blood lead result.

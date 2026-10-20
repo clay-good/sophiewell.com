@@ -984,3 +984,5 @@ experience**.
 > v1636, Surgical Antibiotic Prophylaxis Dose and Redose Clock — [spec-v1636](spec-v1636.md), which adds `surgical-prophylaxis-redose` from Table 1 read in a copy the owner saved — is 2318.)
 
 > v1655, Infection Prevention Arithmetic and Healthcare Worker Exclusion Clocks — [spec-v1655](spec-v1655.md), which adds `nhsn-sir`, `device-utilization-ratio`, `device-infection-rate`, `outbreak-attack-rates`, `hcp-exposure-clock` and `hcp-illness-return-date` from NHSN and CDC pages read October 19, 2026 — is 2324.)
+
+> v1656, Occupational and Employee Health Rules — [spec-v1656](spec-v1656.md), which adds `osha-noise-dose`, `osha-standard-threshold-shift`, `osha-lead-medical-removal`, `fmcsa-bp-certification`, `fmcsa-hearing-standard` and `osha-lead-airborne-pel-shift` from 29 CFR 1910.95, 29 CFR 1910.1025 and 49 CFR Part 391 read on the eCFR October 19, 2026 — is 2330.)

@@ -5,6 +5,8 @@
 > Correction, the same day: infection-prevention-metrics tool 4 duplicated the live `au-rate-saar`, which a
 > name search for "days of therapy" missed. It was dropped at build; [spec-v1655](spec-v1655.md) records the build.
 >
+> occupational-employee-health was built the same day, all six tools; [spec-v1656](spec-v1656.md) records it.
+>
 > Second correction, the same day: every proposed tool in the other six changes was re-checked against live
 > names, agent summaries and citations, and each near neighbor was run. Two more were dropped:
 > genetic-counseling-risk's `screen-ppv-from-prior` duplicates `fagan-post-test`, and

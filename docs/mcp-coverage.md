@@ -9436,6 +9436,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hcp-illness-return-date-v1655.js (spec-v1655: healthcare worker infection, end of work exclusion (CDC) — clinical disclaimer)
 - `hcp-illness-return-date`
 
+### lib/osha-noise-dose-v1656.js (spec-v1656: OSHA noise dose and 8-hour TWA — clinical disclaimer)
+- `osha-noise-dose`
+
+### lib/osha-standard-threshold-shift-v1656.js (spec-v1656: OSHA standard threshold shift with age correction — clinical disclaimer)
+- `osha-standard-threshold-shift`
+
+### lib/osha-lead-medical-removal-v1656.js (spec-v1656: OSHA blood lead monitoring, medical removal and return — clinical disclaimer)
+- `osha-lead-medical-removal`
+
+### lib/fmcsa-bp-certification-v1656.js (spec-v1656: commercial driver blood pressure certification interval (FMCSA) — clinical disclaimer)
+- `fmcsa-bp-certification`
+
+### lib/fmcsa-hearing-standard-v1656.js (spec-v1656: commercial driver hearing standard (FMCSA) — clinical disclaimer)
+- `fmcsa-hearing-standard`
+
+### lib/osha-lead-airborne-pel-shift-v1656.js (spec-v1656: OSHA airborne lead limit for a day over 8 hours — clinical disclaimer)
+- `osha-lead-airborne-pel-shift`
+
 ### lib/antimicrobial-day-counter-v1636.js (spec-v1636: Count antimicrobial days and days present from rows (NHSN) — administrative disclaimer)
 - `antimicrobial-day-counter`
 

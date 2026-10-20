@@ -861,6 +861,12 @@ import * as deviceInfectionRateV1655 from '../../lib/device-infection-rate-v1655
 import * as outbreakAttackRatesV1655 from '../../lib/outbreak-attack-rates-v1655.js';
 import * as hcpExposureClockV1655 from '../../lib/hcp-exposure-clock-v1655.js';
 import * as hcpIllnessReturnDateV1655 from '../../lib/hcp-illness-return-date-v1655.js';
+import * as oshaNoiseDoseV1656 from '../../lib/osha-noise-dose-v1656.js';
+import * as oshaStandardThresholdShiftV1656 from '../../lib/osha-standard-threshold-shift-v1656.js';
+import * as oshaLeadMedicalRemovalV1656 from '../../lib/osha-lead-medical-removal-v1656.js';
+import * as fmcsaBpCertificationV1656 from '../../lib/fmcsa-bp-certification-v1656.js';
+import * as fmcsaHearingStandardV1656 from '../../lib/fmcsa-hearing-standard-v1656.js';
+import * as oshaLeadAirbornePelShiftV1656 from '../../lib/osha-lead-airborne-pel-shift-v1656.js';
 import * as adjustedPatientDaysV1636 from '../../lib/adjusted-patient-days-v1636.js';
 import * as auRateSaarV1636 from '../../lib/au-rate-saar-v1636.js';
 import * as cdiLabidCategoryV1636 from '../../lib/cdi-labid-category-v1636.js';
@@ -2003,6 +2009,12 @@ const MODULES = {
   'outbreak-attack-rates-v1655.js': outbreakAttackRatesV1655,
   'hcp-exposure-clock-v1655.js': hcpExposureClockV1655,
   'hcp-illness-return-date-v1655.js': hcpIllnessReturnDateV1655,
+  'osha-noise-dose-v1656.js': oshaNoiseDoseV1656,
+  'osha-standard-threshold-shift-v1656.js': oshaStandardThresholdShiftV1656,
+  'osha-lead-medical-removal-v1656.js': oshaLeadMedicalRemovalV1656,
+  'fmcsa-bp-certification-v1656.js': fmcsaBpCertificationV1656,
+  'fmcsa-hearing-standard-v1656.js': fmcsaHearingStandardV1656,
+  'osha-lead-airborne-pel-shift-v1656.js': oshaLeadAirbornePelShiftV1656,
   'adjusted-patient-days-v1636.js': adjustedPatientDaysV1636,
   'au-rate-saar-v1636.js': auRateSaarV1636,
   'cdi-labid-category-v1636.js': cdiLabidCategoryV1636,

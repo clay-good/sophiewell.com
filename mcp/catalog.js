@@ -1128,6 +1128,12 @@ import deviceInfectionRateV1655 from './adapters/device-infection-rate-v1655.js'
 import outbreakAttackRatesV1655 from './adapters/outbreak-attack-rates-v1655.js';
 import hcpExposureClockV1655 from './adapters/hcp-exposure-clock-v1655.js';
 import hcpIllnessReturnDateV1655 from './adapters/hcp-illness-return-date-v1655.js';
+import oshaNoiseDoseV1656 from './adapters/osha-noise-dose-v1656.js';
+import oshaStandardThresholdShiftV1656 from './adapters/osha-standard-threshold-shift-v1656.js';
+import oshaLeadMedicalRemovalV1656 from './adapters/osha-lead-medical-removal-v1656.js';
+import fmcsaBpCertificationV1656 from './adapters/fmcsa-bp-certification-v1656.js';
+import fmcsaHearingStandardV1656 from './adapters/fmcsa-hearing-standard-v1656.js';
+import oshaLeadAirbornePelShiftV1656 from './adapters/osha-lead-airborne-pel-shift-v1656.js';
 import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
 import auRateSaarV1636 from './adapters/au-rate-saar-v1636.js';
 import cdiLabidCategoryV1636 from './adapters/cdi-labid-category-v1636.js';
@@ -2483,6 +2489,12 @@ const ADAPTER_MODULES = [
   ['outbreak-attack-rates-v1655', outbreakAttackRatesV1655],
   ['hcp-exposure-clock-v1655', hcpExposureClockV1655],
   ['hcp-illness-return-date-v1655', hcpIllnessReturnDateV1655],
+  ['osha-noise-dose-v1656', oshaNoiseDoseV1656],
+  ['osha-standard-threshold-shift-v1656', oshaStandardThresholdShiftV1656],
+  ['osha-lead-medical-removal-v1656', oshaLeadMedicalRemovalV1656],
+  ['fmcsa-bp-certification-v1656', fmcsaBpCertificationV1656],
+  ['fmcsa-hearing-standard-v1656', fmcsaHearingStandardV1656],
+  ['osha-lead-airborne-pel-shift-v1656', oshaLeadAirbornePelShiftV1656],
   ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],
   ['au-rate-saar-v1636', auRateSaarV1636],
   ['cdi-labid-category-v1636', cdiLabidCategoryV1636],

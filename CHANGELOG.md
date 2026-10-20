@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Occupational health rules from the eCFR: OSHA noise dose and 8-hour TWA from a day of exposures; the standard
+  threshold shift with Appendix F's age correction, its own 32-year-old as the example; and the lead standard's blood
+  lead testing schedule, medical removal and return, and its airborne limit for a day over 8 hours.
+- Commercial driver (DOT) examination: the blood pressure stage and certificate length in FMCSA's advisory criteria,
+  and the hearing standard by forced whisper or a 40 dB better-ear average, with ISO results converted to ANSI.
 - Infection prevention arithmetic from NHSN: the standardized infection ratio (observed over the predicted count on
   the NHSN report, with no ratio below 1.0 predicted), the device utilization ratio, and CLABSI, CAUTI and VAE rates
   per 1,000 device days, the guide's own facility as the worked example.

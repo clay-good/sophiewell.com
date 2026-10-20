@@ -13321,6 +13321,67 @@
       ],
       "tile": "hcp-illness-return-date",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "osha noise dose and twa calculation",
+        "noise dosimeter dose to twa",
+        "eight hour twa noise exposure",
+        "mixed noise exposure dose",
+        "hearing conservation program trigger"
+      ],
+      "tile": "osha-noise-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "osha standard threshold shift",
+        "osha sts audiograms",
+        "presbycusis age correction for audiograms"
+      ],
+      "tile": "osha-standard-threshold-shift",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "blood lead medical removal criteria",
+        "osha medical removal protection benefits",
+        "osha lead mrp benefits",
+        "osha blood lead monitoring frequency schedule"
+      ],
+      "tile": "osha-lead-medical-removal",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dot exam blood pressure",
+        "cdl blood pressure",
+        "dot medical card blood pressure",
+        "fmcsa hypertension stage",
+        "truck driver blood pressure certification"
+      ],
+      "tile": "fmcsa-bp-certification",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dot hearing test",
+        "cdl hearing standard requirement",
+        "fmcsa hearing standard for drivers",
+        "forced whispered voice test",
+        "dot whisper test"
+      ],
+      "tile": "fmcsa-hearing-standard",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lead pel for a 10 hour shift",
+        "lead pel for an extended work shift",
+        "airborne lead limit for a long work shift"
+      ],
+      "tile": "osha-lead-airborne-pel-shift",
+      "audience": "clinicians"
     }
   ]
 }

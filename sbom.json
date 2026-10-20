@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e14df974-e61e-52f4-803c-4818bf0b9223",
+  "serialNumber": "urn:uuid:ad7e59f1-66fe-5873-86f5-24d88baf803c",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-19T22:20:19.684Z",
+    "timestamp": "2026-10-20T01:22:20.319Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2324 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2330 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "809e1631d83fe023a01f4686d2eabca6bcc13f2114916ffafd17268cfbf1f68e"
+          "content": "9612951fb8660c59ab873f8a0964ff6dd7f758da6f355c60dc6d7ec83231ec5a"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "151656"
+          "value": "152233"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b7bf7b62d11eb233a2102cba2f9c3256c1547bb90c01fd2dac92fc31f9d1774a"
+          "content": "ae7e5609db7c7f73f3a4b49d5b396e814412519bcef52252b47367accd2fb8d6"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "638549"
+          "value": "639796"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "74d450e621d09307fee7453291b8ff511f67f5024c12645f135ad71a5d7ddde4"
+          "content": "bfe984f7d97b9c53d0d9cb6c1affe01339d9980b5d1f97faecdc15bcabc0ad57"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "292689"
+          "value": "293496"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cec2eb9607d0e7b8a76cb85ca12960b177706d42dd3a8b54b4c536c57c63d668"
+          "content": "d202b4060bfc0686a2d86c31ae6587729bc59bbaa47ef8a06b989e9a4dcbab9d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "142202"
+          "value": "142860"
         }
       ]
     },
@@ -9947,6 +9947,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/fmcsa-bp-certification-v1656.js",
+      "type": "file",
+      "name": "lib/fmcsa-bp-certification-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "737b78691ea6709ffffbe797f24f4b7fc5c6178e759d040e41835242a5dce93d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6512"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/fmcsa-hearing-standard-v1656.js",
+      "type": "file",
+      "name": "lib/fmcsa-hearing-standard-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e19d18f1db25f51d3420c257ea4ff3b7ca0629769264b2af8525abd4e8fb75c4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3964"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/fmea-rpn-v918.js",
       "type": "file",
       "name": "lib/fmea-rpn-v918.js",
@@ -17576,7 +17618,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c0048648cd377be89dddbad2ed02ad54e3bd055357795416f548944605e87810"
+          "content": "e121818c698fd044c21d44ab76ea6b87e6b41b9d33c5a95f8b4d7ed298256d90"
         }
       ],
       "properties": [
@@ -17586,7 +17628,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3034419"
+          "value": "3039233"
         }
       ]
     },
@@ -20989,6 +21031,90 @@
         {
           "name": "sophiewell:bytes",
           "value": "12462"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/osha-lead-airborne-pel-shift-v1656.js",
+      "type": "file",
+      "name": "lib/osha-lead-airborne-pel-shift-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cf1e949808bae026f548ba8ba537f42c5df30057b7f1ef907ff6bf421f83aa8b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2781"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/osha-lead-medical-removal-v1656.js",
+      "type": "file",
+      "name": "lib/osha-lead-medical-removal-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "58459dd330dcaa5bc4887b4176df7b2653c6b5466c7d73f282d6fdd4752450c5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7648"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/osha-noise-dose-v1656.js",
+      "type": "file",
+      "name": "lib/osha-noise-dose-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bb9e6e7551e0ad0ac0ddffd2e71efbed8ed1c7c89d942b2b3444e23a53093fc9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6667"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/osha-standard-threshold-shift-v1656.js",
+      "type": "file",
+      "name": "lib/osha-standard-threshold-shift-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fd999e1fd9b4ab5cf8835408d6f75282149542154691ce8c87f7e405229cf38e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8383"
         }
       ]
     },
@@ -41258,6 +41384,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/fmcsa-bp-certification-v1656.js",
+      "type": "file",
+      "name": "mcp/adapters/fmcsa-bp-certification-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "74691497d27a33d5321b4b2099e33dc7c114af55055cbe41e2f2a0e68d35317c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1114"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/fmcsa-hearing-standard-v1656.js",
+      "type": "file",
+      "name": "mcp/adapters/fmcsa-hearing-standard-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b33ca718f30354ac25f27bbeaead7152e8e6ee2c4c3743f3885d48a6233b35e8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1235"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/fmea-rpn-v918.js",
       "type": "file",
       "name": "mcp/adapters/fmea-rpn-v918.js",
@@ -51275,6 +51443,90 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/osha-lead-airborne-pel-shift-v1656.js",
+      "type": "file",
+      "name": "mcp/adapters/osha-lead-airborne-pel-shift-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a783300e81877268419f647e4e28326c14d319cf1bbfbc150227cb720ea830d4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "864"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/osha-lead-medical-removal-v1656.js",
+      "type": "file",
+      "name": "mcp/adapters/osha-lead-medical-removal-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "99749af748d59ff065f1c89335dd3cba5e2ca527ad5f0d90ea3d20bf8b8bfeff"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1092"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/osha-noise-dose-v1656.js",
+      "type": "file",
+      "name": "mcp/adapters/osha-noise-dose-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ca26b85a312622f801e7f605a7ae38e576f39d2e76d84c23159919df2cee107f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "969"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/osha-standard-threshold-shift-v1656.js",
+      "type": "file",
+      "name": "mcp/adapters/osha-standard-threshold-shift-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6132448c8954d885eae3f508d8d1001d121a9fb9fbaf4ef06ae659b2f1f072ac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1579"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/osi-onychomycosis-v674.js",
       "type": "file",
       "name": "mcp/adapters/osi-onychomycosis-v674.js",
@@ -60962,7 +61214,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fb2fa8ed08c82847c71cc276d8d7da74ac37ce06366542a0376bb1a57e64e6c6"
+          "content": "337af098b64a1985e1f3b0e07a3196edcb0c321d11005fa7bfaf5de0f7c3f352"
         }
       ],
       "properties": [
@@ -60972,7 +61224,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "164883"
+          "value": "165793"
         }
       ]
     },
@@ -65761,6 +66013,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7339"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1656.js",
+      "type": "file",
+      "name": "views/group-v1656.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d9b5d68dbff957bf5986da152494b496a6eab07fb87d07c25f243b362d2c5b0b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7076"
         }
       ]
     },
@@ -96930,6 +97203,8 @@
         "urn:sophiewell:file:source:lib/fitzpatrick-v331.js",
         "urn:sophiewell:file:source:lib/fluidresp-v113.js",
         "urn:sophiewell:file:source:lib/flumazenil-ladder-v1636.js",
+        "urn:sophiewell:file:source:lib/fmcsa-bp-certification-v1656.js",
+        "urn:sophiewell:file:source:lib/fmcsa-hearing-standard-v1656.js",
         "urn:sophiewell:file:source:lib/fmea-rpn-v918.js",
         "urn:sophiewell:file:source:lib/fnclcc-grade-v651.js",
         "urn:sophiewell:file:source:lib/fois-v727.js",
@@ -97456,6 +97731,10 @@
         "urn:sophiewell:file:source:lib/ortho-v145.js",
         "urn:sophiewell:file:source:lib/orthospine-v252.js",
         "urn:sophiewell:file:source:lib/osdi-v558.js",
+        "urn:sophiewell:file:source:lib/osha-lead-airborne-pel-shift-v1656.js",
+        "urn:sophiewell:file:source:lib/osha-lead-medical-removal-v1656.js",
+        "urn:sophiewell:file:source:lib/osha-noise-dose-v1656.js",
+        "urn:sophiewell:file:source:lib/osha-standard-threshold-shift-v1656.js",
         "urn:sophiewell:file:source:lib/osi-onychomycosis-v674.js",
         "urn:sophiewell:file:source:lib/oswestry-v643.js",
         "urn:sophiewell:file:source:lib/otc-child-label-dose-v1639.js",
@@ -98229,6 +98508,7 @@
         "urn:sophiewell:file:source:views/group-v1640.js",
         "urn:sophiewell:file:source:views/group-v165.js",
         "urn:sophiewell:file:source:views/group-v1655.js",
+        "urn:sophiewell:file:source:views/group-v1656.js",
         "urn:sophiewell:file:source:views/group-v166.js",
         "urn:sophiewell:file:source:views/group-v167.js",
         "urn:sophiewell:file:source:views/group-v169.js",
@@ -99370,6 +99650,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/fitzpatrick-v331.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fluidresp-v113.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/flumazenil-ladder-v1636.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/fmcsa-bp-certification-v1656.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/fmcsa-hearing-standard-v1656.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fmea-rpn-v918.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fnclcc-grade-v651.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fois-v727.js",
@@ -99847,6 +100129,10 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ortho-v145.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/orthospine-v252.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/osdi-v558.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/osha-lead-airborne-pel-shift-v1656.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/osha-lead-medical-removal-v1656.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/osha-noise-dose-v1656.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/osha-standard-threshold-shift-v1656.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/osi-onychomycosis-v674.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/oswestry-v643.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/otc-child-label-dose-v1639.js",
@@ -100413,7 +100699,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e14df974e61e42f4"
+      "value": "ad7e59f166fea873"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -100425,7 +100711,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3830"
+      "value": "3843"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
