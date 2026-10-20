@@ -4,6 +4,12 @@ All notable changes to sophiewell.com are documented here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the
 project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### Added
+
+- Standardized mortality ratio: an exact 95% confidence interval (Poisson limits on the observed count, as NCI's
+  SEER*Stat documents them) and a plain statement of whether it lies above 1, below 1, or includes it. The NHSN
+  SIR tool keeps pointing to the NHSN report, whose interval uses NHSN's own mid-P method.
+
 ### Fixed
 
 - Home search: a query typed before the synonym table or the search corpus finished loading kept its names-only

@@ -6,7 +6,7 @@ import * as SMR from '../../lib/smr-v1659.js';
 export default [
   {
     id: 'smr',
-    summary: 'Standardized mortality or incidence ratio: observed events over the expected count. The expected count can be entered or summed from strata of person-time and reference rates.',
+    summary: 'Standardized mortality or incidence ratio: observed events over the expected count, with an exact 95% interval. The expected count can be entered or summed from strata of person-time and reference rates.',
     compute: SMR.smr,
     fields: [
       { dom: 'smr-observed', arg: 'observed', kind: 'number', required: true, label: 'Observed events' },

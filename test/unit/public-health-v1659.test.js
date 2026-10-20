@@ -7,7 +7,7 @@ import { mortalityMeasures as mm } from '../../lib/mortality-measures-v1659.js';
 import { ypll } from '../../lib/ypll-v1659.js';
 import { attributableProportion as ap } from '../../lib/attributable-proportion-v1659.js';
 import { vaccineEffectiveness as ve } from '../../lib/vaccine-effectiveness-v1659.js';
-import { smr } from '../../lib/smr-v1659.js';
+import { smr, exactPoissonLimits } from '../../lib/smr-v1659.js';
 import { directAgeStandardization as das, US2000 } from '../../lib/direct-age-standardization-v1659.js';
 
 test('incidence and prevalence: the Lesson 3 §2 examples', () => {
@@ -64,6 +64,22 @@ test('SMR: observed over expected, entered or summed from strata', () => {
   assert.equal(smr({ observed: '30', strata: '10000, 0.001\n5000, 0.002' }).expected, 20);
   assert.equal(smr({ observed: '1.5', expected: '2' }).valid, false);
   assert.match(smr({ observed: '3' }).message, /Or enter the strata/);
+});
+
+test('SMR: exact Poisson 95% limits match published tables (SEER*Stat, Sahai and Khurshid)', () => {
+  // Exact limits for a Poisson count: 0 -> 0 to 3.689, 1 -> 0.0253 to 5.572, 5 -> 1.623 to 11.668, 30 -> 20.24 to 42.83.
+  const near = (a, b, d) => assert.ok(Math.abs(a - b) < d, `${a} vs ${b}`);
+  for (const [d, lo, hi] of [[0, 0, 3.689], [1, 0.0253, 5.572], [5, 1.623, 11.668], [30, 20.24, 42.83]]) {
+    const l = exactPoissonLimits(d);
+    near(l.lower, lo, 0.005); near(l.upper, hi, 0.005);
+  }
+  const r = smr({ observed: '30', expected: '20' });
+  assert.equal(r.lower, 1.012);
+  assert.equal(r.upper, 2.141);
+  assert.ok(r.notes.some((n) => /lies above 1/.test(n)));
+  assert.ok(smr({ observed: '25', expected: '20' }).notes.some((n) => /includes 1/.test(n)));
+  assert.ok(smr({ observed: '5', expected: '20' }).notes.some((n) => /lies below 1/.test(n)));
+  assert.equal(smr({ observed: '1000000000', expected: '1e-308' }).valid, false);
 });
 
 test('direct standardization: the 2000 standard sums to 274,633,642; CDC Table 3.6 Florida and Alaska', () => {

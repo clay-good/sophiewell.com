@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `95928279f2c304bb`
-Generated: 2026-10-20T12:34:32.905Z
+Build ID: `61b603f4f7cb497b`
+Generated: 2026-10-20T20:58:40.847Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -887,7 +887,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3061439 | `63c495c7f2ea99e37e900f26be971684f9129c67c78c7ac0ac684eead288eb7b` |
+| `lib/meta.js` | 3061606 | `603313652ac1ea65ebd39e442d3a3d78a1ea45e3c44d5edf02fb5f523627c0b5` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1385,7 +1385,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/slums-v644.js` | 6237 | `9b2459d9cc261ef5599b8b8092d2a31fbd66511d666a9f2811f366fbd8c49f51` |
 | `lib/smast-v737.js` | 3334 | `15043daafddc1d9e3c9ee3119ccb3f66038d78b1e0289987e77b3aaad262834a` |
 | `lib/smc-spaq-dose-v1552.js` | 4997 | `b87ef71175576ccb8d29e4d24f754ebba33133721b0a4bb92a1fdb535343d896` |
-| `lib/smr-v1659.js` | 3044 | `2ec8b60fb67d14c77be115b44eca307a8e8f83b03873894d6cc2c7b6a723f468` |
+| `lib/smr-v1659.js` | 5918 | `0902e628a9b1d0c1f8c013bd51212267c4d4bafedc4089c40e87e20e71e57329` |
 | `lib/snake-antivenom-indication-v1555.js` | 9879 | `cf703b04e04c89b3ae85ce5f4c5417a84f34c42b5b036109efb46559196da1ec` |
 | `lib/snake-neostigmine-trial-v1555.js` | 8080 | `566c31df9485516854444a5cb74c0bf7f46d9418b2d6dbe2507efa0a0d31ad05` |
 | `lib/snakebite-syndrome-v1555.js` | 9857 | `bdd87951860434166df9f9de44f023531c7206be7b324f5960541deacba01966` |
@@ -2815,7 +2815,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/slums-v644.js` | 1558 | `e574fe2c465adfd368ab926bd4c0d986fd70489191a5a97b244ad0cc362c4b14` |
 | `mcp/adapters/smast-v737.js` | 2632 | `b29c69175bd548e88a28cb1db7c0d24f22045acbfa9aeaf14acf85fd925e8d4c` |
 | `mcp/adapters/smc-spaq-dose-v1552.js` | 905 | `39e5cab64406826efcead01ef7cd49a23f00c691eb86e775376c3193667c6301` |
-| `mcp/adapters/smr-v1659.js` | 822 | `65db50dc67f04b1bed40a28545163acd7a2ed4135c890c6f8ef9dd4798ea3f7c` |
+| `mcp/adapters/smr-v1659.js` | 850 | `14b7a96bd54f59fb4890743154f2950587d7948441afabda0bc91dca9c7314f3` |
 | `mcp/adapters/snake-antivenom-indication-v1555.js` | 2777 | `a14c18244147c926140151c2bcd0c2ed062ffec44aaa28e523b6a0de85725db6` |
 | `mcp/adapters/snake-neostigmine-trial-v1555.js` | 1583 | `8fbb5635d1ac8784966f0c3b33d7b1aa0329f5a575c581386258408dbdfb29cb` |
 | `mcp/adapters/snakebite-syndrome-v1555.js` | 1615 | `4883b369d562cbd221f09b87e5a8b0a44f5543235b57d5fed5109ffe922fa5c6` |
