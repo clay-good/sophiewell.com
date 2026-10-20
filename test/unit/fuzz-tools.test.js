@@ -883,6 +883,13 @@ import * as cliaPtAcceptanceV1658 from '../../lib/clia-pt-acceptance-v1658.js';
 import * as ptEventScoreV1658 from '../../lib/pt-event-score-v1658.js';
 import * as calibrationVerificationV1658 from '../../lib/calibration-verification-v1658.js';
 import * as turnaroundTimePercentileV1658 from '../../lib/turnaround-time-percentile-v1658.js';
+import * as incidencePrevalenceV1659 from '../../lib/incidence-prevalence-v1659.js';
+import * as mortalityMeasuresV1659 from '../../lib/mortality-measures-v1659.js';
+import * as ypllV1659 from '../../lib/ypll-v1659.js';
+import * as attributableProportionV1659 from '../../lib/attributable-proportion-v1659.js';
+import * as vaccineEffectivenessV1659 from '../../lib/vaccine-effectiveness-v1659.js';
+import * as smrV1659 from '../../lib/smr-v1659.js';
+import * as directAgeStandardizationV1659 from '../../lib/direct-age-standardization-v1659.js';
 import * as adjustedPatientDaysV1636 from '../../lib/adjusted-patient-days-v1636.js';
 import * as auRateSaarV1636 from '../../lib/au-rate-saar-v1636.js';
 import * as cdiLabidCategoryV1636 from '../../lib/cdi-labid-category-v1636.js';
@@ -2047,6 +2054,13 @@ const MODULES = {
   'pt-event-score-v1658.js': ptEventScoreV1658,
   'calibration-verification-v1658.js': calibrationVerificationV1658,
   'turnaround-time-percentile-v1658.js': turnaroundTimePercentileV1658,
+  'incidence-prevalence-v1659.js': incidencePrevalenceV1659,
+  'mortality-measures-v1659.js': mortalityMeasuresV1659,
+  'ypll-v1659.js': ypllV1659,
+  'attributable-proportion-v1659.js': attributableProportionV1659,
+  'vaccine-effectiveness-v1659.js': vaccineEffectivenessV1659,
+  'smr-v1659.js': smrV1659,
+  'direct-age-standardization-v1659.js': directAgeStandardizationV1659,
   'adjusted-patient-days-v1636.js': adjustedPatientDaysV1636,
   'au-rate-saar-v1636.js': auRateSaarV1636,
   'cdi-labid-category-v1636.js': cdiLabidCategoryV1636,

@@ -918,6 +918,13 @@ carries the specific date that could change it.
 | pt-event-score | 42 CFR 493.931(c)(4)-(5), 493.941(c)(4)-(5), 493.841, 493.851 and 493.2 | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
 | calibration-verification | 42 CFR 493.1255(b) | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
 | turnaround-time-percentile | Stated arithmetic: median and nearest-rank percentile | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| incidence-prevalence | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 2 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| mortality-measures | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 3, Table 3.4 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| ypll | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 3, Tables 3.9 and 3.10 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| attributable-proportion | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 6 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| vaccine-effectiveness | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 6 and Table 3.13 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| smr | Stated arithmetic: observed over expected | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| direct-age-standardization | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 3; NCI SEER 2000 U.S. standard population (19 age groups) | US | 2026-10-19 | the 2000 standard is fixed; SEER page hash recorded in spec-v1659 | 2027-10-19 |
 | ddd-rate | WHO Collaborating Centre for Drug Statistics Methodology, Use of ATC/DDD: DDDs per 100 bed days | International | 2026-10-12 | undated web page; no DDD values are reproduced | 2027-10-12 |
 | antimicrobial-day-counter | CDC NHSN Antimicrobial Use and Resistance (AUR) Module protocol: antimicrobial days and days present | US | 2026-10-12 | July 2026 edition; CDC reissues the protocol each January and July | 2027-02-01 |
 | vaccine-interval-validity | CDC ACIP General Best Practice Guidelines for Immunization: timing and spacing (4-day grace period, 28 days between live vaccines) | US | 2026-10-12 | read in CDC's PDF edition; the web page (July 24, 2024) refused the request at build | 2027-04-12 |

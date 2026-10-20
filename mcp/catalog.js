@@ -1150,6 +1150,13 @@ import cliaPtAcceptanceV1658 from './adapters/clia-pt-acceptance-v1658.js';
 import ptEventScoreV1658 from './adapters/pt-event-score-v1658.js';
 import calibrationVerificationV1658 from './adapters/calibration-verification-v1658.js';
 import turnaroundTimePercentileV1658 from './adapters/turnaround-time-percentile-v1658.js';
+import incidencePrevalenceV1659 from './adapters/incidence-prevalence-v1659.js';
+import mortalityMeasuresV1659 from './adapters/mortality-measures-v1659.js';
+import ypllV1659 from './adapters/ypll-v1659.js';
+import attributableProportionV1659 from './adapters/attributable-proportion-v1659.js';
+import vaccineEffectivenessV1659 from './adapters/vaccine-effectiveness-v1659.js';
+import smrV1659 from './adapters/smr-v1659.js';
+import directAgeStandardizationV1659 from './adapters/direct-age-standardization-v1659.js';
 import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
 import auRateSaarV1636 from './adapters/au-rate-saar-v1636.js';
 import cdiLabidCategoryV1636 from './adapters/cdi-labid-category-v1636.js';
@@ -2527,6 +2534,13 @@ const ADAPTER_MODULES = [
   ['pt-event-score-v1658', ptEventScoreV1658],
   ['calibration-verification-v1658', calibrationVerificationV1658],
   ['turnaround-time-percentile-v1658', turnaroundTimePercentileV1658],
+  ['incidence-prevalence-v1659', incidencePrevalenceV1659],
+  ['mortality-measures-v1659', mortalityMeasuresV1659],
+  ['ypll-v1659', ypllV1659],
+  ['attributable-proportion-v1659', attributableProportionV1659],
+  ['vaccine-effectiveness-v1659', vaccineEffectivenessV1659],
+  ['smr-v1659', smrV1659],
+  ['direct-age-standardization-v1659', directAgeStandardizationV1659],
   ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],
   ['au-rate-saar-v1636', auRateSaarV1636],
   ['cdi-labid-category-v1636', cdiLabidCategoryV1636],

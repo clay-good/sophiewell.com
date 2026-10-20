@@ -9502,6 +9502,27 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/turnaround-time-percentile-v1658.js (spec-v1658: lab turnaround median and percentile — administrative disclaimer)
 - `turnaround-time-percentile`
 
+### lib/incidence-prevalence-v1659.js (spec-v1659: incidence and prevalence — administrative disclaimer)
+- `incidence-prevalence`
+
+### lib/mortality-measures-v1659.js (spec-v1659: mortality measures — administrative disclaimer)
+- `mortality-measures`
+
+### lib/ypll-v1659.js (spec-v1659: years of potential life lost — administrative disclaimer)
+- `ypll`
+
+### lib/attributable-proportion-v1659.js (spec-v1659: attributable proportion among the exposed — administrative disclaimer)
+- `attributable-proportion`
+
+### lib/vaccine-effectiveness-v1659.js (spec-v1659: vaccine effectiveness from attack rates — administrative disclaimer)
+- `vaccine-effectiveness`
+
+### lib/smr-v1659.js (spec-v1659: standardized mortality ratio — administrative disclaimer)
+- `smr`
+
+### lib/direct-age-standardization-v1659.js (spec-v1659: directly age-standardized rate — administrative disclaimer)
+- `direct-age-standardization`
+
 ### lib/antimicrobial-day-counter-v1636.js (spec-v1636: Count antimicrobial days and days present from rows (NHSN) — administrative disclaimer)
 - `antimicrobial-day-counter`
 

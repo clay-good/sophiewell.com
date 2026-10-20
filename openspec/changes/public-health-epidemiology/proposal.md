@@ -1,6 +1,7 @@
 # Change: Public health epidemiology and biostatistics measures
 
-**Status:** Proposed, October 19, 2026. Specs only; nothing here is built.
+**Status:** Built October 19, 2026: seven tools shipped, recorded in [docs/spec-v1659.md](../../../docs/spec-v1659.md).
+The herd immunity threshold, DALYs and both sample-size tools stay gated, as do the PAF and the SMR interval.
 **Audience:** the health department epidemiologist, the public health nurse, the MPH student,
 the quality analyst who has to turn counts into rates, and the clinician reading a paper.
 **Program index:** [docs/spec-v1654.md](../../../docs/spec-v1654.md).

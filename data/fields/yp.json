@@ -1,0 +1,1 @@
+{"ypll":[{"d":"ypll-end","k":"number","l":"End point age (years)","r":1},{"d":"ypll-deaths","k":"string","l":"Age groups (youngest, oldest, deaths) or one age at death per line","r":1},{"d":"ypll-pop","k":"number","l":"Population under the end point (for the rate)"},{"d":"ypll-multiplier","k":"enum","l":"Rate multiplier (default per 1,000)","v":["100","1000","10000","100000"]}]}

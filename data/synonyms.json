@@ -13499,6 +13499,63 @@
       ],
       "tile": "turnaround-time-percentile",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "incidence rate and prevalence calculation",
+        "point and period prevalence calculation"
+      ],
+      "tile": "incidence-prevalence",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "infant mortality rate calculation",
+        "case fatality rate calculation",
+        "maternal mortality ratio calculation"
+      ],
+      "tile": "mortality-measures",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ypll rate",
+        "potential life lost calculation"
+      ],
+      "tile": "ypll",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "attributable risk percent",
+        "attributable proportion calculation"
+      ],
+      "tile": "attributable-proportion",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "vaccine effectiveness from attack rates",
+        "vaccine efficacy calculation"
+      ],
+      "tile": "vaccine-effectiveness",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "standardized mortality ratio",
+        "standardized incidence ratio observed over expected"
+      ],
+      "tile": "smr",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "age adjusted rate by direct standardization",
+        "direct age standardization of rates"
+      ],
+      "tile": "direct-age-standardization",
+      "audience": "clinicians"
     }
   ]
 }

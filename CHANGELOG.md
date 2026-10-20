@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Public health measures from CDC's Principles of Epidemiology, each tested on the lesson's own examples: incidence and
+  prevalence, the mortality measures (crude through death-to-case), years of potential life lost, the attributable
+  proportion among the exposed, and vaccine effectiveness from attack rates with its interval.
+- The standardized mortality ratio, and age-adjusted rates by direct standardization to the 2000 U.S. standard
+  population (taken from SEER's table) or a standard of your own.
 - Laboratory quality tools from the CLIA regulations: whether a proficiency-testing result is within the 42 CFR
   493.931 or 493.941 limit (with the limit as a percent at a decision level for the sigma metric), the analyte and
   event scores against the 80% line and the two-of-three rule, and calibration verification at three or more levels.

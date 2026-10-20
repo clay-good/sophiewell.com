@@ -11,6 +11,8 @@
 >
 > laboratory-quality-control was built the same day, five tools; [spec-v1658](spec-v1658.md) records it.
 >
+> public-health-epidemiology was built the same day, seven tools; [spec-v1659](spec-v1659.md) records it.
+>
 > Second correction, the same day: every proposed tool in the other six changes was re-checked against live
 > names, agent summaries and citations, and each near neighbor was run. Two more were dropped:
 > genetic-counseling-risk's `screen-ppv-from-prior` duplicates `fagan-post-test`, and
