@@ -16,6 +16,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Eleven defects in the v703 to v794 tools. A Fürst ratio of 1.0003 is above 1 (it was rounded to 1.000 and given
+  a 500 mL restriction); a blank AWOL illness rating is named instead of read as "not ill"; PHI says its bands assume a
+  total PSA of 2 to 10; Walch refuses impossible angles. Seven orthopedic and dental indices print their value on the
+  side of the cut they were judged.
 - Nine more defects from the same review. AUSDRISK uses the form's own tiers (12 or more is high risk, not 15). A
   bilirubin of exactly 300 micromol/L is not above 300; a PMN count of 249.999, a peak flow of 79.96% and a vitamin D of
   19.98 ng/mL are judged on the side of the line they fall, not rounded across it. A blank VExUS waveform makes the
