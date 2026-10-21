@@ -16,6 +16,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The Lansky, Schwab and England and Montreal forms no longer open on a full-function or mildest answer. Lachman grade I is
+  3-5 mm (it read 0-5) and grade III more than 10 mm; the McCormack apposition 2 description no longer describes grade 3.
 - Defects an independent review found in the core libs. The lab interpreter told an A1C of 5.7% it was in the diabetes
   range; it now follows the ADA and ATP III bands (prediabetes 5.7-6.4, LDL near-optimal 100-129 and very high from
   190, triglycerides very high from 500). BMI 24.96 is no longer printed as "25 (Normal)"; a P/F ratio of exactly 100

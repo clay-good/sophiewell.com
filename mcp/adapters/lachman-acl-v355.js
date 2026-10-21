@@ -9,7 +9,7 @@ import * as C from '../../lib/lachman-acl-v355.js';
 export default [
   {
     id: 'lachman-acl',
-    summary: 'Lachman test grade of anterior cruciate ligament (ACL) laxity (grades I-III), from the anterior tibial translation (vs the uninjured knee) and the endpoint quality — the standard bedside ACL-laxity maneuver. I: 0-5 mm translation, firm endpoint (mild). II: 6-10 mm, soft endpoint (moderate); 5 mm or more is highly suggestive of a complete ACL tear. III: 11-15 mm, no discernible endpoint (severe). Reports the grade, not a diagnosis, an imaging substitute, or a treatment decision.',
+    summary: 'Lachman test grade of anterior cruciate ligament (ACL) laxity (grades I-III), from the anterior tibial translation (vs the uninjured knee) and the endpoint quality — the standard bedside ACL-laxity maneuver. I: 3-5 mm translation, firm endpoint (mild). II: 6-10 mm, soft endpoint (moderate). III: more than 10 mm, no discernible endpoint (severe). Reports the grade, not a diagnosis, an imaging substitute, or a treatment decision.',
     compute: C.lachmanAcl,
     fields: [
       { dom: 'lachman-grade', arg: 'grade', kind: 'enum', values: ['I', 'II', 'III'], label: 'Lachman grade' },

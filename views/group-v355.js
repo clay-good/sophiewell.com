@@ -34,11 +34,11 @@ function wire(ids, run) {
 
 export const renderers = {
   'lachman-acl'(root) {
-    note(root, 'Lachman test grade of ACL laxity. Pick the grade from the anterior tibial translation (vs the uninjured knee) and endpoint. I: 0-5 mm, firm endpoint; II: 6-10 mm, soft endpoint; III: 11-15 mm, no endpoint. Five mm or more suggests a complete ACL tear.');
+    note(root, 'Lachman test grade of ACL laxity. Pick the grade from the anterior tibial translation (vs the uninjured knee) and endpoint. I: 3-5 mm, firm endpoint; II: 6-10 mm, soft endpoint; III: more than 10 mm, no endpoint. Five mm or more suggests a complete ACL tear.');
     root.appendChild(select('Lachman grade', 'lachman-grade', [
-      ['I', 'Grade I - 0-5 mm, firm endpoint (mild)'],
+      ['I', 'Grade I - 3-5 mm, firm endpoint (mild)'],
       ['II', 'Grade II - 6-10 mm, soft endpoint (moderate)'],
-      ['III', 'Grade III - 11-15 mm, no endpoint (severe)'],
+      ['III', 'Grade III - more than 10 mm, no endpoint (severe)'],
     ]));
 
     const o = out(); root.appendChild(o);

@@ -51,17 +51,20 @@ export const renderers = {
 
     note(root, 'For Crohn’s disease:');
     root.appendChild(select('Age at diagnosis (A)', 'mibd-age', [
+      ['', 'Not selected'],
       ['A1', 'A1 — ≤ 16 years'],
       ['A2', 'A2 — 17–40 years'],
       ['A3', 'A3 — > 40 years'],
     ]));
     root.appendChild(select('Location (L)', 'mibd-loc', [
+      ['', 'Not selected'],
       ['L1', 'L1 — ileal'],
       ['L2', 'L2 — colonic'],
       ['L3', 'L3 — ileocolonic'],
     ]));
     root.appendChild(check('Isolated upper-GI disease (+L4 modifier)', 'mibd-l4'));
     root.appendChild(select('Behavior (B)', 'mibd-beh', [
+      ['', 'Not selected'],
       ['B1', 'B1 — non-stricturing, non-penetrating'],
       ['B2', 'B2 — stricturing'],
       ['B3', 'B3 — penetrating'],
@@ -70,11 +73,13 @@ export const renderers = {
 
     note(root, 'For ulcerative colitis:');
     root.appendChild(select('Extent (E)', 'mibd-ext', [
+      ['', 'Not selected'],
       ['E1', 'E1 — ulcerative proctitis'],
       ['E2', 'E2 — left-sided (distal)'],
       ['E3', 'E3 — extensive (pancolitis)'],
     ]));
     root.appendChild(select('Severity (S)', 'mibd-sev', [
+      ['', 'Not selected'],
       ['S0', 'S0 — clinical remission'],
       ['S1', 'S1 — mild'],
       ['S2', 'S2 — moderate'],

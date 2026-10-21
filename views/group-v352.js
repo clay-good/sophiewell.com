@@ -36,6 +36,7 @@ export const renderers = {
   'lansky'(root) {
     note(root, 'Lansky Play-Performance Scale (Lansky 1987) — pediatric functional status, the counterpart to the adult Karnofsky score. Pick the score describing the child\'s usual play and activity. 80-100: able to carry on normal activity; 50-70: reduced but up and about; 0-40: mostly bedbound / disabled.');
     root.appendChild(select('Lansky score', 'lansky-score', [
+      ['', 'Not selected'],
       ['100', '100 - fully active, normal'],
       ['90', '90 - minor restrictions in strenuous activity'],
       ['80', '80 - active, but tires more quickly'],
@@ -52,6 +53,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['lansky-score'], () => safe(o, () => {
       const r = M.lansky({ score: val('lansky-score') });
+      if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'Functional band', value: r.functionalBand },
