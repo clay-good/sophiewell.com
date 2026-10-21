@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Defects an independent review found in the oldest calculators. A heparin aPTT of exactly 35 got the "<35 s" rebolus;
+  a CPIS temperature of 38.45 scored as fever enough to read VAP; POSPOM and SIPA lost points or their cutoff for a
+  fractional age; RIFLE read a missing current creatinine as "no criteria met"; an RWT of 0.423 was rounded into the
+  eccentric pattern. Twelve tools print values on the side of the cut they were judged ("Hgb 6.995 is below 7"), and
+  swapped minimum and maximum, PA pressures and vancomycin draw times are refused.
 - Defects an independent review found in the spec-v300 to v499 tools. Jones criteria: Sydenham chorea no longer loses
   the diagnosis when another finding is ticked, and a joint manifestation counts once. Acute GVHD follows Przepiorka
   1995: gut stage 4 is grade III, not IV. ICANS with no ICE score is "not excluded", not "No ICANS"; an NPI of 2.404 is
