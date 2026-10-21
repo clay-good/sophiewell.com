@@ -9,8 +9,8 @@ export default [
     compute: TXWV.txWorkplaceViolencePlanAudit,
     fields: [
       { dom: 'txwv-rn', arg: 'rn', kind: 'enum', label: '331.002(b)(1) a direct-care registered nurse on the committee', values: TXWV.STATUS.map((s) => s.value) },
-      { dom: 'txwv-physician', arg: 'physician', kind: 'enum', label: '331.002(b)(2) a direct-care physician on the committee', values: TXWV.STATUS.map((s) => s.value) },
-      { dom: 'txwv-security', arg: 'security', kind: 'enum', label: '331.002(b)(3) a security employee on the committee', values: TXWV.STATUS.map((s) => s.value) },
+      { dom: 'txwv-physician', arg: 'physician', kind: 'enum', label: '331.002(b)(2) a direct-care physician on the committee', values: TXWV.STATUS_CONDITIONAL.map((s) => s.value) },
+      { dom: 'txwv-security', arg: 'security', kind: 'enum', label: '331.002(b)(3) a security employee on the committee', values: TXWV.STATUS_CONDITIONAL.map((s) => s.value) },
       { dom: 'txwv-setting', arg: 'setting', kind: 'enum', label: '331.004(b)(1) the plan is based on the practice setting', values: TXWV.STATUS.map((s) => s.value) },
       { dom: 'txwv-definition', arg: 'definition', kind: 'enum', label: '331.004(b)(2) a definition covering threats and acts of physical', values: TXWV.STATUS.map((s) => s.value) },
       { dom: 'txwv-training', arg: 'training', kind: 'enum', label: '331.004(b)(3) at least annual prevention training for direct-care', values: TXWV.STATUS.map((s) => s.value) },

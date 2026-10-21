@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `11845861c95e4eb0`
-Generated: 2026-10-21T02:43:57.672Z
+Build ID: `5a0a19bd25c669f9`
+Generated: 2026-10-21T03:01:42.847Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -216,13 +216,13 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ca-5585-minor-hold-v1389.js` | 4036 | `491cd8623f89449bbc4b9e332881af6245f8c3a8a8866a60ae604ac6f5c2ee56` |
 | `lib/ca-adult-tb-risk-v1400.js` | 6009 | `44279cca87ad9c01209120a40c31d1c1717557bbdae42706c358d7dc7b9891e0` |
 | `lib/ca-adverse-event-1279-v1395.js` | 7539 | `6ed32a0bd3b693ff0b3626c5bc617d45835e235aa6cba73fa5eb2327de82a65f` |
-| `lib/ca-apot-calculator-v1399.js` | 4438 | `57309be6fde791f011cae886a4cdeaed5000f9a856c141acaa1bf880315a5648` |
+| `lib/ca-apot-calculator-v1399.js` | 4606 | `60f20245c08f2b47c137265c3f86a20ee7b8edd51374fc76d6c8d7e3df14aa51` |
 | `lib/ca-care-court-eligibility-v1390.js` | 5877 | `cca587ec4b23d9bbc614e532719b328b8745a5ec906de22fe2916af1cba0d7b7` |
 | `lib/ca-ed-psych-detention-1799-v1389.js` | 6049 | `6127b9b08acc98fecbfed813c21f589c96c238ef05fdfda88a1edf115b0400ff` |
-| `lib/ca-eoloa-timeline-v1392.js` | 7010 | `990781ce022f2931b6a30c39f5d973a5a5f5658e33b6b6613895aa349767c165` |
+| `lib/ca-eoloa-timeline-v1392.js` | 7134 | `96dbec76b817a907c6765c519847674f8fcf256d6a1aeddc310f17c1ae97d1e4` |
 | `lib/ca-grave-disability-sb43-v1390.js` | 6506 | `f6a08cd4b24a578d50a28631781d50e23186427dc33016d9b43f326ac6e8df89` |
 | `lib/ca-homeless-discharge-1262-5-v1399.js` | 4563 | `c48069bec6280f37d49d6e78b57b24aef154c7c4612e9634d08de574cf8ccc56` |
-| `lib/ca-np-103-104-tracker-v1397.js` | 8289 | `f0a22dc2dab8e1d4d15e231ee175f42be5aef8b3bca7511573e55e80a9571092` |
+| `lib/ca-np-103-104-tracker-v1397.js` | 8676 | `6723d503337efefb7bd1038cc7c965ae6e55c103f9e27434edd2f6f0d197c193` |
 | `lib/ca-safe-surrender-v1394.js` | 5026 | `6ef4dcb902a0dfc72c1b64b6074f9fa7057fae639e129a60ab146d083ee33fb9` |
 | `lib/ca-surrogate-decisionmaker-v1391.js` | 5747 | `af50c690f83e0fcb892b2fcbe8daca5bca140787c98c196743f13eb8aceaa899` |
 | `lib/ca-valley-fever-test-prompt-v1398.js` | 4154 | `f77d0cd44994464e6e814a3e3b2cc61a9b589356391a0d8711d79c24a3594031` |
@@ -235,8 +235,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cairo-recession-v1482.js` | 2530 | `85ddedea8152671ceed4747f69d4da88112521fde429f85d292f0439a941c24e` |
 | `lib/calibration-verification-v1658.js` | 4350 | `da740cba09437e4b304261382777bb6d82e4a020adfdeaf65217490aa616237b` |
 | `lib/calosha-indoor-heat-v1398.js` | 4463 | `23b44a73f3cd4db7e433e297ad309929995cf23827dc23ee81ff9bc595ce80e4` |
-| `lib/calosha-outdoor-heat-v1398.js` | 5012 | `25e09d6462fb3f769babaddfba1b809caf7baeea5a7806dddf2f6e835d7c6543` |
-| `lib/calosha-wildfire-smoke-v1398.js` | 3759 | `4a96e235eba7562b5c4d26ed237b60f8edd907f418ff66ca5374623240a9d161` |
+| `lib/calosha-outdoor-heat-v1398.js` | 5187 | `9d48a2cdfd1eba8079f45d4ce841932e2652d918dc047cd6d079808719a919cb` |
+| `lib/calosha-wildfire-smoke-v1398.js` | 5151 | `82f88afb9044b8300c1a1f9731a14cae0ce7d3234d17692afe0da888570dacdc` |
 | `lib/cancer-cachexia-v879.js` | 8801 | `7844661013d718840fe61f7919d3b4036f3ac33951f4158746e44fb8e195980d` |
 | `lib/capd-v525.js` | 6081 | `37e130b00c53fc10abbadadeeb72ce004090d339d4e79c13c0ce091b2537d70e` |
 | `lib/capecitabine-tablet-dose-v1635.js` | 7255 | `81298dafd8b04918f64b16c18ced8ef3a7aa75e5d10ed121bd8ed183be05df9f` |
@@ -910,7 +910,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/milch-condyle-v418.js` | 3230 | `bd203011afad9a6b64e11d891667f379ff974ef02b8f2f01f97d0223bc1a754c` |
 | `lib/miller-gingival-recession-v724.js` | 4057 | `b1d11e492848c3dd47c988a4e603929084939dac5cad8042402014dba90366f3` |
 | `lib/min-weighable-quantity-v1629.js` | 4834 | `0969b7a3d4d8eba7923381a538d42f38e3693a82e060298f4ad1a58874ddbbba` |
-| `lib/minor-self-consent-v1395.js` | 19836 | `8f17e8680232ca267880db83c5544bb9ae0d9ce3f2d13a9fbb3bf7b3c4206f34` |
+| `lib/minor-self-consent-v1395.js` | 20928 | `95900c78c994ee8fbf2710a890d26d0f457ece3ad89abc2dbd21a395161cee86` |
 | `lib/mis-c-v795.js` | 5510 | `aebe68b4bd5f98d48ddb51cf2a35e0a15ebb97f435a18010a2005382dbebfdbe` |
 | `lib/missed-dose-label-rule-v1639.js` | 28298 | `f890b4df051a1172cbb18216ed8fe1fdfc9a883df872ccb9cb66066ed40d0413` |
 | `lib/mitral-regurgitation-stage-v847.js` | 11352 | `ba47ad4c74266e61fca7cba3ebf57759abc04349542c5e225caa206e81633e3c` |
@@ -989,7 +989,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ninja-nephrotoxin-exposure-v1634.js` | 2985 | `25eb03d4de450322c47cf257fcec45ec4c02ca8704280182efbd7157828fc6d1` |
 | `lib/niosh-hazardous-drugs-2024.js` | 14360 | `40ac366550f2b0be1477acdfec4c2660d88a81ec33fd9c88be8f3eef66fc27a9` |
 | `lib/niosh-lifting-v885.js` | 13876 | `3f949de9a04bc52d28bff292d6a8e60ef122570688d76923d783bf81fa14d506` |
-| `lib/nj-civil-commitment-clock-v1389.js` | 8361 | `f8c6a705ac561f40a746b3009feb9a997c8b53c1cea2aca9af799904208bddc3` |
+| `lib/nj-civil-commitment-clock-v1389.js` | 8535 | `48792238c2dceef3e6e610bf3d4830d23111ea44cf68a5e9159223f9ed16438e` |
 | `lib/nj-death-religious-exemption-v1392.js` | 2704 | `2ae2c32b17619f6de03ffc44faa2d079ab16626f7ee8348c431a9fb2344abb9f` |
 | `lib/nj-maid-timeline-v1392.js` | 5094 | `e20a3d632ec035e0d034c080e6e9e23c485a7f00c47facc1f8a751370d23eedd` |
 | `lib/nmosd-2015-v823.js` | 9091 | `1a3ac685cc57b8cc6a9db1415144bbc18aea289b5c634bb72500c90e349acca0` |
@@ -1010,9 +1010,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nuc-med-breastfeeding-interruption-v1635.js` | 8015 | `7bed890c2ebf1edb3e129993c1d879af43e364a115d08b3969d45a8d7ddbc792` |
 | `lib/num.js` | 18542 | `fe61bd28a6cd2414d6a5779220766bbf416b6729728f6b025a35e53d404d65c9` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
-| `lib/nurse-license-training-requirements-v1397.js` | 12250 | `e0263e527856ad453d395667e1b5a4e64ce07e185ff1d69d0d50ea8c34fe8a82` |
+| `lib/nurse-license-training-requirements-v1397.js` | 12402 | `f0ac90b1f1246bc302bed06086bbdb2b70d2e2862ef9bcabc932fccb56cfc68f` |
 | `lib/nurse-staffing-ratio-check-v1396.js` | 9223 | `f4fc16e9f231cc085c5009e6a6638637836c3c1883d24fcf4e17f2a2b1dadca1` |
-| `lib/nursing-home-staffing-check-v1396.js` | 7012 | `67719344be3ceb150d15072fa7c9090cd559a52f53370236db44769614fa023e` |
+| `lib/nursing-home-staffing-check-v1396.js` | 7698 | `4c8cd87f24ddd72825957f214e47c90ea7bd78baeb190829104e7b175e8ae820` |
 | `lib/nursing-home-staffing-star-v1657.js` | 7505 | `785e53a7bca158f932932eacbb85fbf9a16831f7fea0104c625b2bad13883ffa` |
 | `lib/nursing-hppd-v1657.js` | 3304 | `7ce54fbcab066242ec8b68b81ac0953fa9c94f5131647420e54a73c56ccb2ebb` |
 | `lib/nutrition-energy-v152.js` | 16448 | `7ceb75574ad3d2e014ed1e2c8b00081746c6b013676e51b3aaacafe7308e4911` |
@@ -1022,7 +1022,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ny-fhcda-surrogate-v1391.js` | 4867 | `6ed2396629e2ff05f2edf944627e52960f0db7c67e54ee6bdb744f8a6bf15216` |
 | `lib/ny-health-care-proxy-check-v1391.js` | 6687 | `42b5c29173e9e95bf784fb2f222946fad1bf59dbb0d17102c476f474d68c7f96` |
 | `lib/ny-hiv-hcv-test-offer-v1395.js` | 5165 | `70a3147c2784a94c904edfe137db2840dbce9e841276e682170c65ed27269548` |
-| `lib/ny-maid-timeline-v1392.js` | 6269 | `a500cc4a0303ea97f769e367cb828ee25d7ecb3895b4f4d8fdf089202f561e1f` |
+| `lib/ny-maid-timeline-v1392.js` | 6942 | `c6e145b641f6ddab317265d834fbe7322386bfa1f9962e67bd503a48647dff23` |
 | `lib/ny-mhl-hold-clock-v1389.js` | 10182 | `fc5ade7eb542b2e496c8e5904a2317e16d8692fba7ebc12256cfd96763c1765c` |
 | `lib/ny-molst-checklist-router-v1391.js` | 5835 | `fffd6a43c70fd0fd63667b3091b902544b71aee1a41d68c755d7bc52c2ffb105` |
 | `lib/nyha-class-v357.js` | 3947 | `9188475fe8f8841468efbc8dac1433f17a421391156cdcfd2f1357d922e9cceb` |
@@ -1285,7 +1285,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/renal-v128.js` | 12212 | `9fb2f86a36d2266098b7d2a872b0c0ac2a06323de0092bf7adc5cb5218831390` |
 | `lib/renal-v277.js` | 4231 | `e5af36e47fee1532e024bebb6f8ace4995fb6c64fac2b39bdee9e628e1c5c33e` |
 | `lib/renalpulm-v249.js` | 9184 | `349e98bc70dfb36948c09fbcd20d59cc17913b0f0bbc21c369374e16a649c41b` |
-| `lib/reportable-condition-urgency-v1395.js` | 44030 | `62124527a79bb7301eda7db4422159ccba57f8046b61c45177b5f067725c7aae` |
+| `lib/reportable-condition-urgency-v1395.js` | 44131 | `306a47ba3be13084611ee8a2ce348c27343bb828f359c20b0ae2f7515ca26b36` |
 | `lib/request-letters-v1504.js` | 32800 | `98be5e56c2b0837ccec83ff6a8fa07139e6416086dfa4b667e1411696efef6d6` |
 | `lib/residual-carrier-risk-v1660.js` | 1911 | `103700756363446c185b3b9d7a40f69c8729f535a13767c1e958c8d182ae73ae` |
 | `lib/respiratory-maternal-v263.js` | 11737 | `3bdaec61254f30a6dd896797a997700e082d92ddd86672d5de184c5c8eeff0ee` |
@@ -1410,7 +1410,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/stamey-incontinence-v465.js` | 2929 | `e2cded2c8e4b0734d0581d0d1715dad18f8b119eb45175ab59d842b11702f112` |
 | `lib/stanford-dissection-v1242.js` | 7111 | `9a3a6f1ccb9877f506ae47b245b08483eaf6afdc649cdba1f920504ffbed1e84` |
 | `lib/startback-v781.js` | 5927 | `da2d968b8a6a00b328e2f3a3f1f1ccb05bd0fa3a6bea26b5ab033857b4c1cfac` |
-| `lib/state-calendar.js` | 20940 | `9cfbeeeb1d3625dbf712a348574e15accfbadbb67b94f64336927b6e9bf5d389` |
+| `lib/state-calendar.js` | 21108 | `ddb031d80d0978dc33b3305ea97abe8480c0ecce4a36e9b9f7380ec24b46eeae` |
 | `lib/statin-ldl-reduction-v1633.js` | 5409 | `91b0c5c34a4e1567cc19f9110fd6548a45bae056beaa2a7e5458cebb35b2dc4a` |
 | `lib/steinberg-avn-v407.js` | 4524 | `ccb1b143de3be3104e76ed0e4250a99d285f9a59a9428fded38d4a5adc07e93f` |
 | `lib/steinbrocker-ra-v469.js` | 3579 | `a2fc9925c8ec0461e7b245f71e15664a453dca69636a548f6cf0f012a185c14f` |
@@ -1507,10 +1507,10 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tx-ooh-dnr-validity-v1391.js` | 8020 | `b5d8eb1b224dfa05e9ab1d782a2534df821bf8fb20831a04ea59675629216af7` |
 | `lib/tx-prescriptive-authority-agreement-v1397.js` | 5802 | `4928006b716b8dd67f6e7c74c737d64dcdcc71ee6d88ba5486ef2ac21832d0bf` |
 | `lib/tx-protective-custody-hearing-clock-v1389.js` | 6267 | `72473c16120e700ece8f6a47a12c1793386eef2f78becc1d8be5b34ceb1ab17d` |
-| `lib/tx-sa-forensic-exam-window-v1395.js` | 5610 | `5b43e7521dd308d9e3b592d78272c1ceaef99fe4312942dd86dc9dc33dad5a8d` |
+| `lib/tx-sa-forensic-exam-window-v1395.js` | 5697 | `4b7fcc3bcd22372fcccfcac2805a0538ad1448e8a0a070454e1f82d4e38a06ea` |
 | `lib/tx-safe-harbor-decision-aid-v1396.js` | 7671 | `94e76b8e37c24c3d8437f00d5c5cddcd976bd463a0bed13cc2548ab9431fe674` |
 | `lib/tx-surrogate-consent-hierarchy-v1391.js` | 6620 | `f8931821cdaf85ee6178400ea59d100d517823109f8a4d4b6a00d1647b74a82d` |
-| `lib/tx-workplace-violence-plan-audit-v1396.js` | 4167 | `80a58bfe78ef75de20b0dd9f84bd68ea8b1ff556c44477ac9bd540e219990cdb` |
+| `lib/tx-workplace-violence-plan-audit-v1396.js` | 4702 | `98143f1fef41f4d3d9d87069359da0074e507b501bdf5adabc8f73217a2d236d` |
 | `lib/typed-money.js` | 906 | `eff3c84f8ab93075a963758022a88754aa85cf95b8358595fb0361cbbad2b95c` |
 | `lib/ucsf-hcc-v686.js` | 4651 | `e3ab017b2a8c51ff6885b2fbc5cc002d26cd8372d3ca08ce0cc5929453283d70` |
 | `lib/udca-response-v909.js` | 12481 | `ca310c03d0c8e5b4434bfb8a3a8817742c449b80ac5724c747f43d15fa271e76` |
@@ -2927,7 +2927,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/tx-sa-forensic-exam-window-v1395.js` | 1380 | `3e9b5549aa066f85832395e855604376e0b7f56a5dd7db0dc18165958baef622` |
 | `mcp/adapters/tx-safe-harbor-decision-aid-v1396.js` | 1304 | `dd65dfda464be4b3c209c773515425fa106ad88cb989a46f6ffff88d157466bd` |
 | `mcp/adapters/tx-surrogate-consent-hierarchy-v1391.js` | 1852 | `58d4845c6858169b72cb4916231cbb085f22233640bef8e6f4a78285665fa80f` |
-| `mcp/adapters/tx-workplace-violence-plan-audit-v1396.js` | 2860 | `ac8b533ed9509d746742709222824d3d69cc282e02301c91f0d74661f30d56bf` |
+| `mcp/adapters/tx-workplace-violence-plan-audit-v1396.js` | 2884 | `0c851a0165fdc11868d29bc6bf16f179bf9d672ebac4ef90e16d0d0429a5f5fa` |
 | `mcp/adapters/ucsf-hcc-v686.js` | 1505 | `4096fd6e59644ec20492460a57b2ad6e656be11dcceefabdc132d21cd01a3c34` |
 | `mcp/adapters/udca-response-v909.js` | 2550 | `381e2669dfec2ec8695dc7d93598f10982da481712ae7b031b8e7bdacb47bec9` |
 | `mcp/adapters/ugt1a1-irinotecan-label-v1635.js` | 766 | `96ad5afa06869ab20d3a7831f739ffa452adc9dfb1a58d37434e50b3a0c79e5c` |
@@ -3087,7 +3087,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1393.js` | 7907 | `8857c26b34755a4d018e58d965df708a386700e222facb4dcc2b5a6584440933` |
 | `views/group-v1394.js` | 9371 | `236976b89802865fa44b696de00ba74f4ce55e2d790d4c5866788c35bb417387` |
 | `views/group-v1395.js` | 10370 | `cc1928f0aec6de1711b580be7f6941508869b1917b1714cf080d1e42f37356aa` |
-| `views/group-v1396.js` | 13015 | `0f6e9f902b07c66f2c0db1ebaa9adc73b546c2a8aa454049211dc52030578362` |
+| `views/group-v1396.js` | 13039 | `616d6058ee47b616fdecd72b93a18b8d3ab1cdff2f73f3abf75afb5a8cb74cbf` |
 | `views/group-v1397.js` | 10420 | `e17332f0f5a97b7dc6639b06b3c71095a7b5d877cede3ea426239ca17245ba73` |
 | `views/group-v1398.js` | 7537 | `ccd13516de696cd04a6610b11bf446ea3482f77b5ba1c4dc5437054793e8452a` |
 | `views/group-v1399.js` | 5351 | `0b6553fe3afc48a3d4b6636eff175cab434acf5a8cbd198cdbddd3dfde2b7961` |

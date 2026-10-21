@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Fourteen defects an independent review found in the state-practice tools. A New Jersey voluntary discharge requested
+  on a Saturday is due at the end of Monday, not 1:00 am Monday. Cal/OSHA wildfire smoke converts concentrations with
+  the rule's own Appendix A table (400 ug/m3 is AQI 420, voluntary N95s, not "required"). A minor's unassessed consent
+  grounds are named rather than read as "no"; two-digit years are refused in every state tool; impossible hours and step
+  orders are refused; 24-hour reports count real hours across a clock change.
 - Sixteen defects an independent review found in the spec-v1400 to v1499 tools. A nontreponemal test marked "not done"
   is asked for instead of read as reactive. A Powers ratio of 0.997 is below 1 (it was rounded to 1.00 and called
   atlanto-occipital dissociation); HVPG, mRECIST, CGM targets, GRI, the fluorosis index, CPAK, Montevideo units and the
