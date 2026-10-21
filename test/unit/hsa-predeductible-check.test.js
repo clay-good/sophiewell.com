@@ -58,7 +58,11 @@ test('telehealth follows the windows in force, permanent from 2025', () => {
   assert.equal(h({ item: 'telehealth', planYear: '2024' }).verdict, 'applies');
   assert.equal(h({ item: 'telehealth', planYear: '2022' }).verdict, 'depends');
   assert.equal(h({ item: 'telehealth', planYear: '2021' }).verdict, 'applies');
-  assert.equal(h({ item: 'telehealth', planYear: '2019' }).verdict, 'not');
+  // CARES Act relief covered plan years beginning on or before 2021 from March 27, 2020, so a 2019 or 2020 plan
+  // year depends on the month (spec-v1670).
+  assert.equal(h({ item: 'telehealth', planYear: '2019' }).verdict, 'depends');
+  assert.equal(h({ item: 'telehealth', planYear: '2020' }).verdict, 'depends');
+  assert.equal(h({ item: 'telehealth', planYear: '2018' }).verdict, 'not');
 });
 
 test('preventive care and the ACA list pass; blanks and bad years are asked for', () => {

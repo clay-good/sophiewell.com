@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Fifteen defects an independent review found in the record, file-intake and coverage tools. A record's calcium in
+  mEq/L is no longer read as mmol/L (which doubled it). A typed "$1,250.00" is one amount, not $1 and 250 units. Blank
+  price and MUE cells and a value-less lab result are no longer read as 0; a future-dated lab is not "most recent".
+  Medicare fee-for-service prior authorization checks each program's dates with no state entered; Medicare and Medicaid
+  expansion preventive lists are shown for reference, not as owed; truncated price-file checks say so.
 - Twenty defects an independent review found in the WHO field-health tools. MUAC entered in centimeters was rounded
   before the 115 mm line, so 11.499 cm read as moderate rather than severe acute malnutrition. Child azithromycin and
   ceftriaxone for enteric fever now stop at the AWaRe book's 500 mg and 3,000 mg; doses that pass the adult dose where no
