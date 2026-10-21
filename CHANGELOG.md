@@ -16,6 +16,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Twenty-two defects an independent review found in the medication-access tools. Income at 138.03% of poverty is above
+  a 138% limit, and 400.003% gets no premium tax credit: percents, dollars and units are decided unrounded. Letters and
+  appeal clocks refuse dates in an impossible order instead of moving a window. Medicare timely filing is one calendar
+  year, not 365 days; IRF-PAI discharge dates follow 42 CFR 412.610 and 412.614 (each was a day late); an infusion
+  schedule that would need more than 500 steps is refused rather than cut short; patients who can never enter a Star
+  adherence measure are left off the outreach list.
 - Fifteen defects an independent review found in the record, file-intake and coverage tools. A record's calcium in
   mEq/L is no longer read as mmol/L (which doubled it). A typed "$1,250.00" is one amount, not $1 and 250 units. Blank
   price and MUE cells and a value-less lab result are no longer read as 0; a future-dated lab is not "most recent".
