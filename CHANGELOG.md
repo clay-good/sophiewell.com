@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Eight defects an independent review found in the spec-v800 to v907 tools. The 4Ts score no longer reads an empty
+  form as "low probability, do not test": every domain is asked for. An unsuppressed OGTT nadir is discordance, not an
+  exclusion of acromegaly; a set-aside A1C is never "below the thresholds"; a wedge pressure above the mean PA pressure
+  is refused. LVEF 40.5%, 14.5 headache days a month and an EBMT late-onset VOD with a raised bilirubin now have their
+  category.
 - Fourteen defects an independent review found in the state-practice tools. A New Jersey voluntary discharge requested
   on a Saturday is due at the end of Monday, not 1:00 am Monday. Cal/OSHA wildfire smoke converts concentrations with
   the rule's own Appendix A table (400 ug/m3 is AQI 420, voluntary N95s, not "required"). A minor's unassessed consent

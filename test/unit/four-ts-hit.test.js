@@ -15,8 +15,8 @@ test('4Ts: the three probability bands', () => {
   assert.equal(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 1, otherCauses: 0 }).probability, 'intermediate');
   assert.equal(fts({ thrombocytopenia: 2, timing: 1, thrombosis: 0, otherCauses: 0 }).probability, 'low');
   // The boundaries themselves.
-  assert.equal(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 2 }).score, 6);
-  assert.equal(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 2 }).probability, 'high');
+  assert.equal(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 2, otherCauses: 0 }).score, 6);
+  assert.equal(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 2, otherCauses: 0 }).probability, 'high');
   // 2 + 1 + 0 + 0 = 3, the top of the low band.
   assert.equal(fts({ thrombocytopenia: 2, timing: 1, thrombosis: 0, otherCauses: 0 }).probability, 'low');
   // ...and one more point tips it into intermediate.
@@ -47,21 +47,22 @@ test('4Ts: a low score WITH missing data is the documented exception to not test
   assert.equal(r.probability, 'low');
   assert.ok(r.lowWithMissing.includes('may still be appropriate'));
   // Not raised at intermediate or high, where testing is recommended anyway.
-  assert.equal(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 2, keyInformationMissing: true }).lowWithMissing, null);
+  assert.equal(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 2, keyInformationMissing: true, otherCauses: 0 }).lowWithMissing, null);
 });
 
 test('4Ts: the timing wording is days 5 to 14, not 5 to 10', () => {
-  const r = fts({ timing: 2 });
+  const r = fts({ timing: 2, thrombocytopenia: 0, thrombosis: 0, otherCauses: 0 });
   assert.ok(r.contributions.some((c) => c.includes('days 5 and 14')));
   assert.ok(r.detail.includes('not the narrower 5 to 10'));
 });
 
-test('4Ts: absent domains default to zero, and out-of-range values are refused', () => {
-  assert.equal(fts({}).score, 0);
-  assert.equal(fts({}).probability, 'low');
-  assert.equal(fts({ thrombocytopenia: 3 }).valid, false);
-  assert.equal(fts({ timing: -1 }).valid, false);
-  assert.equal(fts({ thrombosis: 1e308 }).valid, false);
-  assert.equal(fts().valid, true);
+test('4Ts: a blank domain is asked for, not scored 0, and out-of-range values are refused (spec-v1674)', () => {
+  // The Society says missing information should push the score up; a blank form must not read "do not test".
+  assert.equal(fts({}).valid, false);
+  assert.match(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 2 }).message, /otherCauses is blank/);
+  assert.equal(fts({ thrombocytopenia: 3, timing: 0, thrombosis: 0, otherCauses: 0 }).valid, false);
+  assert.equal(fts({ timing: -1, thrombocytopenia: 0, thrombosis: 0, otherCauses: 0 }).valid, false);
+  assert.equal(fts({ thrombosis: 1e308, thrombocytopenia: 0, timing: 0, otherCauses: 0 }).valid, false);
+  assert.equal(fts().valid, false);
   assert.doesNotMatch(JSON.stringify(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 2, otherCauses: 2 })), /NaN|Infinity/);
 });

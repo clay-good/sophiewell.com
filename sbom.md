@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5a0a19bd25c669f9`
-Generated: 2026-10-21T03:01:42.847Z
+Build ID: `3ebbac675d78b3ea`
+Generated: 2026-10-21T03:16:48.941Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -68,7 +68,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/acef-v595.js` | 13039 | `b40a6db7e47270ffcae508771208e327e30dc21b9f79676b6649ef41337d94e8` |
 | `lib/acidbase-v129.js` | 25627 | `9874f82b6ae4a2f07fa907d27b7cac99307bfa293c63bb33439339c1dbfe2697` |
 | `lib/acr-eular-boolean-v671.js` | 4453 | `79e79312ee4df6fc97bcb44e121482e68c9d62323446f27087d26beac5478fba` |
-| `lib/acromegaly-biochem-v835.js` | 10899 | `bae2a57348442e139ad017004e0f51df52198e794942fbb59aac99499bbdadf1` |
+| `lib/acromegaly-biochem-v835.js` | 10976 | `d5fa8c2648b6ede227d183b1100449bc9be17f1187669c4a7dc586ddb1ee1f52` |
 | `lib/acs-v193.js` | 17117 | `c68191b4b0ee4b9da60fbad8549c688ddafe119ff9b256f0a4a52bda799dd43a` |
 | `lib/act-weight-band-dose-v1551.js` | 8891 | `c88fbd3d0309f7a196d537e7b0d64abcbd8e2b26ff038c38ba9e13e98e1ea055` |
 | `lib/acute-abdomen-v261.js` | 13592 | `b747bdf468169fbd5687b6a2004510e0ac77af8037eda77514096972f9d154b4` |
@@ -399,7 +399,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/device-utilization-ratio-v1655.js` | 2790 | `4b1e22b907c404849da4ec4d4e84aac9736d700abb8169aa709c572fbed751c8` |
 | `lib/deworming-dose-who-v1550.js` | 5253 | `34b808b71f4b220a1067ae73ab8ad8b346c37007a9cab80996c0b79d42717ef0` |
 | `lib/dexrazoxane-ratio-dose-v1635.js` | 4575 | `e3d182286840dedd8139b46894da57d9d61b064c18e22289e8d9536eabbe7140` |
-| `lib/diabetes-diagnosis-v841.js` | 11248 | `5bedda9c86a0efdfbb47edae22db24127b296f84e5ca741db1738b774596b142` |
+| `lib/diabetes-diagnosis-v841.js` | 12118 | `0e5332bcefca745f96e2aa54aabbdb2fcfcadd6fdccc33cd7e5fa3021e3e4c3c` |
 | `lib/diabetes-drug-egfr-check-v1632.js` | 9326 | `0343f7bcf708f9a6494d0baf8f8c12b8bb4bb211a26107cf5d3e4aa4cd3625d6` |
 | `lib/diastolic-function-ase-v664.js` | 5179 | `d1c0e03acdda55f16e805b7ebecf3a08d325f41b5ef8be6da27ac60e00f68d0d` |
 | `lib/digoxin-label-dose-v1631.js` | 10872 | `c60d895e2177548e98496ed4cd95568492f815bad113982bc87546aae2998948` |
@@ -528,7 +528,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/forrest-classification-v809.js` | 5613 | `fd3a47b799a5ccfea4848d3e133cbd18c22e90fcfe8091e992426ce43b8a4d93` |
 | `lib/forrester-hemodynamic-v362.js` | 4397 | `bf6305d1edd78604613331955b7bb42551ebe6d66163f3002418e27e299e95e7` |
 | `lib/fosphenytoin-load-rate-v1631.js` | 14730 | `6caecf0129e5d526612ea2bb2a4def9545ad92bd5623dc5d43c1d5571e1712a6` |
-| `lib/four-ts-hit-v836.js` | 8557 | `d1957f127d10fec71c7defbd9828b3ddf34a6ba46a8654a5dee98074a35ae708` |
+| `lib/four-ts-hit-v836.js` | 8908 | `ee6114b4defb84909c999125c1aba2f6520084592bc0617d90ef3f8bd817ebd5` |
 | `lib/fractional-excretion-potassium-v684.js` | 5645 | `17c368a5a0e84a20d0f47e5dd8892de657cfe87409d7f315a02d8420c5eb0f04` |
 | `lib/frailty-v143.js` | 14838 | `b3f8d7ad71f2922b8e6219eb145ca9c6a7d4d3b8bae1934de43ecb2c0380fb11` |
 | `lib/framingham-hf-criteria-v696.js` | 3460 | `9cf5ed21279852b01d23af1b708415f9864f9c55849838494def664ddef364c7` |
@@ -560,7 +560,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gerdq-v679.js` | 4410 | `1b59ff708ec0a30c39ae0bc7ed356bf1704dac46be643eb922ec1376759df951` |
 | `lib/geri-v241.js` | 7111 | `94bbf51f0204a92effa2a538d2264496500f0d10fb76f3b145689b19a23069af` |
 | `lib/gerontonet-adr-risk-v1634.js` | 4639 | `da5d6ec237ae27b45b5a748a2940e701dcbf770173857ce73644d4b8c8ca1e55` |
-| `lib/ghent-marfan-v821.js` | 12318 | `855285066a558cf50ad9e937c7717195d86bc71bbe51e47913f4dfa811f8ce39` |
+| `lib/ghent-marfan-v821.js` | 12808 | `b490f1cb70ceacd3e3bc184c4e6dc9c664d861d75e49a6e04a6e89ffa851ab5e` |
 | `lib/gi-drug-dose-check-v1632.js` | 8937 | `d7e3bcaff8dd40a24868fddf430f04fe1932693d20efdabbe211a30e9362507b` |
 | `lib/gi-v126.js` | 23596 | `2bb1ecdffdccf1cf3384335b1b6b7ea606ae2f110878ab75cf5da67e34401520` |
 | `lib/gisurg-v239.js` | 9243 | `952c45af610bdbb555a3d66e3e447aa102ea0079253afad4e158cb8edd94297b` |
@@ -637,7 +637,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hepgi-v93.js` | 22366 | `fb2d4fca8c372c068bb1b27cd4e0929b46f8fac5aaf1e866ce1aada55caecc44` |
 | `lib/herbert-scaphoid-v1241.js` | 6072 | `56b3a6e0c50dbaef9aba6b750bee9ffe6e7507963780b04e9bdfc6b956bb8fe1` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
-| `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |
+| `lib/hf-ef-classification-v840.js` | 8457 | `0bad4e5a061adb07e622c7dd555bd141cd22660ce2e567eb25f3c6699eaed995` |
 | `lib/hf-gdmt-target-percent-v1633.js` | 8060 | `eedb0118fa63e8d367158290b39bd508294854d39d6710282cf7cc9297b15267` |
 | `lib/hf-stages-abcd-v842.js` | 7839 | `93bde8395e5ff6baf50da213ef74c1358b09d224c3fdcc6fae245eb1dc8024c2` |
 | `lib/hhie-s-v728.js` | 3138 | `8fb3d7ef12c6fa87552661922e77886a64e03def7f92dbd5fd4f74895bb275d5` |
@@ -1162,7 +1162,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pgx-diplotype-phenotype-v1640.js` | 5696 | `cd2035bb3fda238dbd7d8355d47994b3e311a335b71dbb3a740c700b321e3fc5` |
 | `lib/pgx-label-dose-limit-v1640.js` | 23597 | `3d50df3342870eb40adda8d2924b28861876a9d701d48afdd180c9d5cc006760` |
 | `lib/pgx-panel-review-v1640.js` | 6832 | `6a5cea7b7cb358d668183972b4b43f05c7d5533eb63595727368fe6295e4b04d` |
-| `lib/ph-hemodynamics-2022-v826.js` | 7915 | `70cf4c387cf44e6b5fbab5408c18d2da54ee1684930c7ec611c09f1c984202d8` |
+| `lib/ph-hemodynamics-2022-v826.js` | 8398 | `afadd40e4072a1eb5d09d88ba9d6cb9cd91d1d9dfefec86f2542f0a82146e00f` |
 | `lib/pharmacy-effective-rate-v1638.js` | 12885 | `fc90ab20282657b2b7374c00d6cdafde49283bbb68d02c37aeac28beb2ea08e3` |
 | `lib/pharmacy-spread-check.js` | 9449 | `319cb17086ec0eeecadcd2494d69dbb8039242ee7cddaaad434f493a9525e3eb` |
 | `lib/phenytoin-mm-dose-v1631.js` | 10431 | `438ce80260b881f740cf3216aa1475a323e0ed453fa93b02dbbb679bb228f503` |
@@ -1452,7 +1452,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tbi-stroke-v206.js` | 14126 | `d4d323dec158311d32c19d5aa0a0f365ff186e91c9d9ac8a7d8f9153324dbac5` |
 | `lib/td-pregnancy-schedule-v1559.js` | 5158 | `24843d7c79e9109be56ee23f108064dded94f8ee0241f330d623dfc499e95f8b` |
 | `lib/tegner-activity-v500.js` | 4131 | `db8258facb99a0cde768edff7c6b13fa9a513d97da08812e804f5a7398e6e8d3` |
-| `lib/tension-headache-ichd3-v818.js` | 10525 | `24a2cc515228b1e59476ff0a38c783e0f9d2ac5b71e961b201813fd2206a3ee6` |
+| `lib/tension-headache-ichd3-v818.js` | 10604 | `13263ddc177195e2f75a8536d08bcfd7eff0dbe5e85f853a9dbb4605071d448d` |
 | `lib/thakar-aki-v568.js` | 12602 | `62fcf74616b811d48115fa3c9122bc5e364d275b402935a37fdad39af6256e07` |
 | `lib/theophylline-label-dose-v1631.js` | 16927 | `8f3a5ff740ac2412a14d4b677527389e9362e20c496d3945354485d2655be4de` |
 | `lib/therapy-cost-v1510.js` | 2937 | `3601e93feb9be868f638b861f39c323ed71929a3be6b0f6ea30c378a76ef9f46` |
@@ -1555,7 +1555,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/vitamin-d-level-v881.js` | 7879 | `d28a76c402f67174161d539f209b6211a24773dd13eb7f4780f07042e4544a4a` |
 | `lib/vitamin-iu-converter-v1633.js` | 7396 | `b38a493217a9af2e964bd5c12a89bb83d278151140ceee76ec354a7ffe2c3af2` |
 | `lib/vivax-radical-cure-v1552.js` | 9673 | `61dc46fd1217c76f4515260b33e263de8745b411122275c793e10f1c881b0aa7` |
-| `lib/vod-sos-v907.js` | 14383 | `0e6e6e56ad62c2574f7d2b47b0779bb5d30eb7c0c51166f156b05ae1f8f0f3ba` |
+| `lib/vod-sos-v907.js` | 14733 | `7070cdad0d262e1a0ae857fbf5c3f138b64e6b5a67d7e45ca7cf1315238337a7` |
 | `lib/vras-v602.js` | 11407 | `788dc1747f4d5b22b34b75ccd5d75f0e4bf2d3eca57156b6d360f28183f29098` |
 | `lib/vte-v106.js` | 17761 | `334370670e2febd1886ab58c9d1f1cf46386d843959c1ca2f4f1c3b016cf638e` |
 | `lib/vur-grade-v425.js` | 3871 | `c913640f0b99a847e24489017c9694b2e1a3e4483824ba5fcc13dec377b77352` |
