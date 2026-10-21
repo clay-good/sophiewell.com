@@ -4,7 +4,7 @@
   "serialNumber": "urn:uuid:81006d5f-e695-5188-8e4b-10a04ea68221",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-21T13:16:43.640Z",
+    "timestamp": "2026-10-21T17:17:32.209Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -90236,9 +90236,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/hono",
       "type": "library",
       "name": "hono",
-      "version": "4.13.7",
+      "version": "4.13.13",
       "scope": "optional",
-      "purl": "pkg:npm/hono@4.13.7",
+      "purl": "pkg:npm/hono@4.13.13",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -90248,7 +90248,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "73cfe017d69cf18efcfda804c55a1cc8b7af811f89969341e38e0fcb41525fca49a0f75851f53345c5ed604606c2dea5d7da8895564f37931fb30f6315286641"
+          "content": "090e3a53466400699b4ffe14c5dcf3189a5a70fd8878a818e1ae7fb4e23d00005ba4e31f2bbdfdc1f0d79afd6eb0293edd190a8f5850cb8fdf8e18b06b6c65ac"
         }
       ],
       "licenses": [
@@ -96884,9 +96884,9 @@
       "bom-ref": "urn:sophiewell:npm:mcp/package-lock.json:node_modules/hono",
       "type": "library",
       "name": "hono",
-      "version": "4.13.7",
+      "version": "4.13.13",
       "scope": "required",
-      "purl": "pkg:npm/hono@4.13.7",
+      "purl": "pkg:npm/hono@4.13.13",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -96896,7 +96896,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "73cfe017d69cf18efcfda804c55a1cc8b7af811f89969341e38e0fcb41525fca49a0f75851f53345c5ed604606c2dea5d7da8895564f37931fb30f6315286641"
+          "content": "090e3a53466400699b4ffe14c5dcf3189a5a70fd8878a818e1ae7fb4e23d00005ba4e31f2bbdfdc1f0d79afd6eb0293edd190a8f5850cb8fdf8e18b06b6c65ac"
         }
       ],
       "licenses": [
