@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Eleven defects an independent review found in the spec-v500 to v599 tools. HLH-2004 no longer reads a blank "infant
+  under 4 weeks" as no when the hemoglobin threshold depends on it; the Bologna override is no longer blocked by a risk
+  factor the consensus does not name; Mayo ADPKD, PPM, RUCAM and ARC-HBR are graded on unrounded values; a percent typed
+  as nSOFA's FiO2, a creatinine that contradicts the FFS renal answer, and concordance without two positive scans are
+  refused; an empty VASI form asks for a region.
 - Defects an independent review found in the spec-v600 to v699 tools. APACHE II and FGSI scored 0 points for a value
   between two printed bands (a temperature of 40.95 scored as normal); each band now runs up to the next one. Blood in
   the ventricles beside a thick clot is Fisher grade 3, the highest vasospasm risk, not 4. qCSI no longer scores flows

@@ -52,21 +52,25 @@ test('the shared name and range are flagged as not meaning the same thing', () =
 // THE crossover window.
 test('the ten micromol window where the two scores disagree is detected', () => {
   assert.equal(REVISION_CREATININE_UMOL - CREATININE_THRESHOLD_UMOL, 10);
-  const inside = at({ creatinineUmol: '145' });
+  // spec-v1677: an entered creatinine must agree with the renal answer, so the renal factor is yes above 140.
+  const inside = at({ creatinineUmol: '145', renalInsufficiency: 'yes' });
   assert.equal(inside.renalThresholdCrossover, true);
   assert.match(inside.bandText, /does NOT score on the revision/);
 });
 
 test('the window is exclusive at both ends', () => {
   assert.equal(at({ creatinineUmol: String(CREATININE_THRESHOLD_UMOL) }).renalThresholdCrossover, false);
-  assert.equal(at({ creatinineUmol: String(CREATININE_THRESHOLD_UMOL + 1) }).renalThresholdCrossover, true);
-  assert.equal(at({ creatinineUmol: String(REVISION_CREATININE_UMOL) }).renalThresholdCrossover, false);
+  assert.equal(at({ creatinineUmol: String(CREATININE_THRESHOLD_UMOL + 1), renalInsufficiency: 'yes' }).renalThresholdCrossover, true);
+  assert.equal(at({ creatinineUmol: String(REVISION_CREATININE_UMOL), renalInsufficiency: 'yes' }).renalThresholdCrossover, false);
 });
 
-test('the creatinine is optional and does not itself score', () => {
-  const r = at({ creatinineUmol: '400' });
+// spec-v1677: it was scored 0 with a creatinine of 400 beside a renal "no"; an entered creatinine now has to agree.
+test('the creatinine is optional, and when entered it must agree with the renal answer', () => {
+  assert.equal(at({ creatinineUmol: '400' }).valid, false);
+  const r = at({ creatinineUmol: '400', renalInsufficiency: 'yes' });
   assert.equal(r.valid, true);
-  assert.equal(r.total, 0, 'the renal factor is answered separately');
+  assert.equal(r.total, 1);
+  assert.equal(at({}).valid, true);
 });
 
 test('the millimolar and mass-unit thresholds are the published pair', () => {
