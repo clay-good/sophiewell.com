@@ -36,7 +36,8 @@ test('the state decides which articles apply; none means not addressed, never no
 test('codes are normalized; bad input is asked for', () => {
   assert.equal(normalizeIcd('e119'), 'E11.9');
   assert.equal(normalizeIcd('C18.9'), 'C18.9');
-  assert.equal(normalizeIcd('U07'), null, 'U codes are not ICD-10-CM diagnoses in these articles');
+  // spec-v1682: U07.1 and U09.9 are ICD-10-CM codes and appear in the shipped articles (they were refused).
+  assert.equal(normalizeIcd('U07.1'), 'U07.1');
   assert.deepEqual(parseDiagnoses('E11.9, e119; I10'), { ok: ['E11.9', 'I10'], bad: [] });
   assert.match(c({}).message, /^Enter the HCPCS or CPT code/);
   assert.match(c({ code: 'J9035', diagnoses: 'zzz', state: 'TX', articles: [] }).message, /zzz is not an ICD-10-CM code/);

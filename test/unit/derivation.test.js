@@ -927,14 +927,17 @@ test('chads components sum equals chadsVasc() (worked example 3)', () => {
   assert.equal(chadsVasc(inputs).total, 3);
 });
 
+// spec-v1682: the two age items are bands of one variable, so the maximum ticks 75 or older only (9 points);
+// with both ticked the 65-74 point is not added on top of the 75-or-older two.
 test('chads components sum equals chadsVasc() (max with both 2-point items)', () => {
   const inputs = {
     chf: true, hypertension: true, ageGte75: true, diabetes: true,
-    strokeOrTia: true, vascularDisease: true, ageGte65: true, female: true,
+    strokeOrTia: true, vascularDisease: true, ageGte65: false, female: true,
   };
-  // 1 + 1 + 2 + 1 + 2 + 1 + 1 + 1 = 10
+  // 1 + 1 + 2 + 1 + 2 + 1 + 1 = 9
   assert.equal(sumComponents(META.chads, inputs), chadsVasc(inputs).total);
-  assert.equal(chadsVasc(inputs).total, 10);
+  assert.equal(chadsVasc(inputs).total, 9);
+  assert.equal(chadsVasc({ ...inputs, ageGte65: true }).total, 9);
 });
 
 test('hasbled components sum equals hasBled() (worked example 2)', () => {

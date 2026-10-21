@@ -16,6 +16,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Defects an independent review found in the core libs. The lab interpreter told an A1C of 5.7% it was in the diabetes
+  range; it now follows the ADA and ATP III bands (prediabetes 5.7-6.4, LDL near-optimal 100-129 and very high from
+  190, triglycerides very high from 500). BMI 24.96 is no longer printed as "25 (Normal)"; a P/F ratio of exactly 100
+  is severe; CHA2DS2-VASc no longer scores both age bands; ICD-10-CM U codes are accepted in the LCD check.
 - Defects an independent review found in the oldest calculators. A heparin aPTT of exactly 35 got the "<35 s" rebolus;
   a CPIS temperature of 38.45 scored as fever enough to read VAP; POSPOM and SIPA lost points or their cutoff for a
   fractional age; RIFLE read a missing current creatinine as "no criteria met"; an RWT of 0.423 was rounded into the
