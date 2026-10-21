@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Sixteen defects an independent review found in the spec-v1400 to v1499 tools. A nontreponemal test marked "not done"
+  is asked for instead of read as reactive. A Powers ratio of 0.997 is below 1 (it was rounded to 1.00 and called
+  atlanto-occipital dissociation); HVPG, mRECIST, CGM targets, GRI, the fluorosis index, CPAK, Montevideo units and the
+  hypoglycemia level are decided unrounded and printed on the side they were judged. Contradictory HBV markers are
+  refused; the end of the 4-hour blood window is said plainly.
 - Twenty-two defects an independent review found in the medication-access tools. Income at 138.03% of poverty is above
   a 138% limit, and 400.003% gets no premium tax credit: percents, dollars and units are decided unrounded. Letters and
   appeal clocks refuse dates in an impossible order instead of moving a window. Medicare timely filing is one calendar
