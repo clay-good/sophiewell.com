@@ -44,7 +44,8 @@ test('waist bands (female, standard): <88=0, 88-100=4, >100=7', () => {
   assert.equal(ausdrisk({ ...base, waist: '101' }).waistPoints, 7);
 });
 
-test('risk tiers: <=5 low, 6-14 intermediate, >=15 high', () => {
+// spec-v1675: the tiers are the form's own, 6-11 intermediate and 12 or more high (they were 6-14 and 15).
+test('risk tiers: <=5 low, 6-11 intermediate, >=12 high', () => {
   assert.equal(ausdrisk({ agePoints: '4', sex: 'female', waist: '70' }).tier, 'low');            // 4
   assert.equal(ausdrisk({ agePoints: '6', sex: 'female', waist: '70' }).tier, 'intermediate');   // 6
   assert.equal(ausdrisk({ agePoints: '8', sex: 'male', everHighGlucose: true, waist: '70' }).tier, 'high'); // 8+3+6=17

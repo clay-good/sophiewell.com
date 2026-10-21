@@ -29,7 +29,8 @@ test('the paper\'s own Patient #2 is Grade 3', () => {
 
 test('one severe territory with a dilated IVC is Grade 2', () => {
   for (const key of ['hepaticVein', 'portalVein', 'intrarenalVein']) {
-    assert.equal(g({ ivcDiameterCm: 2.4, [key]: 'severe' }), 2, key);
+    // spec-v1675: the other two are entered as normal; a blank one makes the grade a floor.
+    assert.equal(g({ ivcDiameterCm: 2.4, hepaticVein: 'normal', portalVein: 'normal', intrarenalVein: 'normal', [key]: 'severe' }), 2, key);
   }
 });
 
@@ -42,7 +43,7 @@ test('a normal IVC is Grade 0 whatever the waveforms show', () => {
 });
 
 test('2.0 cm is dilated: the derivation says "at or above 2 cm"', () => {
-  assert.equal(g({ ivcDiameterCm: 2, hepaticVein: 'severe' }), 2);
+  assert.equal(g({ ivcDiameterCm: 2, hepaticVein: 'severe', portalVein: 'normal', intrarenalVein: 'normal' }), 2);
   assert.equal(g({ ivcDiameterCm: 1.99, hepaticVein: 'severe' }), 0);
 });
 
@@ -59,8 +60,14 @@ test('MILD findings never raise the grade, and the result says why', () => {
   assert.equal(g({ ivcDiameterCm: 2.4, hepaticVein: 'severe', portalVein: 'mild', intrarenalVein: 'mild' }), 2);
 });
 
-test('an unrecognised waveform value is read as normal, never as severe', () => {
-  assert.equal(g({ ivcDiameterCm: 2.4, hepaticVein: 'catastrophic', portalVein: '', intrarenalVein: null }), 1);
+// spec-v1675: an unrecognised or blank waveform is never severe, and no longer silently normal: it is named as not
+// assessed and the grade becomes a floor.
+test('an unrecognised or blank waveform is never read as severe, and the grade is stated as a floor', () => {
+  const r = vexusGrade({ ivcDiameterCm: 2.4, hepaticVein: 'catastrophic', portalVein: '', intrarenalVein: null });
+  assert.equal(r.grade, 1);
+  assert.equal(r.bandLabel, 'VExUS Grade 1 or higher');
+  assert.deepEqual(r.notAssessed, ['Hepatic vein', 'Portal vein', 'Intrarenal vein']);
+  assert.equal(vexusGrade({ ivcDiameterCm: 2.4, hepaticVein: 'severe', portalVein: 'severe' }).bandLabel, 'VExUS Grade 3');
 });
 
 test('a missing or non-positive IVC asks for it instead of guessing', () => {
@@ -87,11 +94,13 @@ test('the option list is the three the source defines', () => {
   assert.deepEqual(DOPPLER_OPTIONS.map((o) => o.value), ['normal', 'mild', 'severe']);
 });
 
+const allNormal = { hepaticVein: 'normal', portalVein: 'normal', intrarenalVein: 'normal' };
+
 test('every grade returns a band that names it', () => {
   const cases = [
-    [{ ivcDiameterCm: 1.5 }, 0], [{ ivcDiameterCm: 2.4 }, 1],
-    [{ ivcDiameterCm: 2.4, hepaticVein: 'severe' }, 2],
-    [{ ivcDiameterCm: 2.4, hepaticVein: 'severe', portalVein: 'severe' }, 3],
+    [{ ivcDiameterCm: 1.5 }, 0], [{ ivcDiameterCm: 2.4, ...allNormal }, 1],
+    [{ ivcDiameterCm: 2.4, ...allNormal, hepaticVein: 'severe' }, 2],
+    [{ ivcDiameterCm: 2.4, ...allNormal, hepaticVein: 'severe', portalVein: 'severe' }, 3],
   ];
   for (const [input, grade] of cases) {
     const r = vexusGrade(input);
