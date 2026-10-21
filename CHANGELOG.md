@@ -16,6 +16,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Thirteen defects an independent review found in the renal dose checks and drug switches. The levetiracetam check
+  banded a body-surface-adjusted clearance after rounding it, so 29.996 mL/min read the 30-50 row and passed a dose over
+  the under-30 maximum. Dalteparin at 49.5 kg was offered the 50-59 kg dose beside the "<50 kg" one. Clearances and
+  percents printed at an edge now agree with the rule beside them; gabapentin refuses a clearance of 0; dabigatran to
+  warfarin shows both rows at 50 mL/min; the taper calendar keeps step 0 at the dose taken now, checks the pace on
+  coarsely rounded steps, and refuses a pause before the start date.
 - Seventeen defects an independent review found in the dosing and radiation tools. A printed number no longer contradicts
   the verdict beside it at a cut-off (methotrexate levels, cumulative anthracycline totals, NRC medical events, chemo
   variance, radiopharmaceutical dosage, Mo-99 breakthrough, leak tests, package surveys, ESA hemoglobin rise, study-drug

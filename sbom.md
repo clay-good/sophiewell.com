@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `39f6c84a15a931c0`
-Generated: 2026-10-20T23:37:36.255Z
+Build ID: `3af9e3d43f0a8223`
+Generated: 2026-10-21T00:06:43.565Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -102,7 +102,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/anthro-v272.js` | 3348 | `e3c7419342dd80c7034ae09801c66c05b3c5ce6e1aa2fdaf1d88e5f07b079485` |
 | `lib/antibiogram-builder-v1636.js` | 14088 | `43c8b89f20c5e867d03860eb57409c763ea1bb74ade15ce0b3eb145dfe1cb201` |
 | `lib/anticholinergic-list-score-v1634.js` | 13014 | `09c48050ae3d14ac41fcb017b845e47518cf83d05640023d190ee091c08c6036` |
-| `lib/anticoag-switch-clock-v1633.js` | 20862 | `a9374ae1015ad54bf121111e0806849aeab10cdf49b1e6064afd366244bccd72` |
+| `lib/anticoag-switch-clock-v1633.js` | 21087 | `a7b732c06ff7c464287df30ad0cd05eea175d6bb8217bf2eabd048dcb0e1ad17` |
 | `lib/antidepressant-fluoxetine-equivalent-v1633.js` | 3961 | `59471d4605068c4921c11c8abe36e86f4e3e23d5ec65fe8f07f3d9fe5403479f` |
 | `lib/antimicrobial-day-counter-v1636.js` | 11634 | `7a26020efc602fc181d4f9eb4b6a01392364b684c245af26bb519ea91e31969b` |
 | `lib/antivenom-repeat-v1555.js` | 11722 | `921e1cdc5a0cbf66adc41a370236b1b44a26def6fd17896e7b37a9b582b7c490` |
@@ -304,7 +304,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
 | `lib/cmea-sales-limit-v1637.js` | 10263 | `0c4fe373f19ea64b85bcf0c23b628fd4fe86da3046edeec001fcb81a9a762249` |
-| `lib/cns-renal-dose-check-v1632.js` | 12121 | `48e4747ba7c5a3f6f3794a2ee86081bf50e8b0ee50e64d725f601236bcdf6b5c` |
+| `lib/cns-renal-dose-check-v1632.js` | 12331 | `c7a9bbccc91bc0ba9b2e4c12a55d1afafb817a4825b082b8a5e045efa8d99cc1` |
 | `lib/coagscore-v232.js` | 3053 | `aff9e82479da5b38deeaf70ade27caa7f5d1a0f21b01d74f764ca147e9846bd8` |
 | `lib/cobb-angle-v694.js` | 3885 | `c51f18d33e692edaf7490e8c3d849bc589a8e4daa5526c46535bf93c997333e3` |
 | `lib/cobra-clock-v1507.js` | 5963 | `b6ac3f4bbe1f7061adfc1e2d69c97a4baa582b9e2cf781b73f66a5a91cf3d326` |
@@ -339,7 +339,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
 | `lib/crag-screen-fluconazole-v1554.js` | 6088 | `d8972147cab54bdeb425a3af3c0b05a4e31e521b84288dc688cfdc60721f4168` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
-| `lib/crcl-label-weight-v1632.js` | 4641 | `4e8c4b2bfcf77d04ea9df63a07d4147b536b1e8f291fe69a1957e719cc04e620` |
+| `lib/crcl-label-weight-v1632.js` | 4836 | `d2f6f83bfcd0df851db123bcbe459c165d3b5c9b1a6579a4d1cce30e5b065f50` |
 | `lib/critcare-severity-v200.js` | 18707 | `e72c4c4be9dc635ec7214460c3300e8b3dfab7141bd30394d61d8d3c0db9f123` |
 | `lib/critcare-v112.js` | 17900 | `497d3a644f77fe3a7a22424779612568c5fdafefa36b44ddb190745b142d2408` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
@@ -415,9 +415,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dme-v307.js` | 4101 | `0fa5891d588c79a927bcd10662181d79cf571f68e8138f58d0ec5c4c92873568` |
 | `lib/dmepos-refill-window-v1638.js` | 5493 | `ef1ff7f9ae543c194f5096bc40cf960aceb5c8c8f1a5d022430c373ccb7172b2` |
 | `lib/dmft-caries-v716.js` | 3722 | `e535a145b103c28a450bc854df168c2eb29c23ea0c1dec766ec8fbf2f38d1022` |
-| `lib/doac-dose-check-v1632.js` | 16978 | `0c42414b7cce0d7743453fb8e2543e93c85d6196038784da239b72d0c31e37a5` |
+| `lib/doac-dose-check-v1632.js` | 17236 | `f80c3567f2b45ca022a5901e046a2c3b76f685108f77036ae210fda5c4c44180` |
 | `lib/doac-periprocedural-timing-v1633.js` | 12763 | `12f6b953167c8e14de58d32c4f93f59c6e987cd06ad56f9c7c6198413db2e45e` |
-| `lib/dofetilide-dose-algorithm-v1632.js` | 7584 | `1e3ba6963d4855c2209814a81b68521db673fc72e6b0a5e28dbac33b4c9f7e5c` |
+| `lib/dofetilide-dose-algorithm-v1632.js` | 7727 | `19b7b24707726362b82b5f6654089ec5c5de03921bfed98672aa46a6dda45362` |
 | `lib/dom-fields.js` | 3941 | `7815860d170b0780dfaecb8567a3bb80cc6f7bc42d3eea123329c29f31c5a683` |
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/donor-recipient-size-match-v1661.js` | 2989 | `e02071de9b9ae11b1afe9065777a69dee101c8d229686234a9fb0c02e1b0e1bd` |
@@ -477,7 +477,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/eortc-msg-ifd-v869.js` | 9785 | `846502bc39581253f8ffe1cf38dcd5e926144f344ae528fcfab13c02cc24ba01` |
 | `lib/eoss-v713.js` | 3955 | `150229c936465a637e488f83903837324b8752c7051b42903c784ffbae404441` |
 | `lib/epinephrine-device-weight-band-v1639.js` | 6935 | `0b7ba91072fcd2cfbe091c7a9b4ce7e139b9723c3b8efacf1719bc23af083248` |
-| `lib/er-opioid-label-start-v1633.js` | 10678 | `93dcbcb843328f44454465ec8216fe381186f67213a700c326a829b7e3010c43` |
+| `lib/er-opioid-label-start-v1633.js` | 10968 | `099f61a5bbd81f56d318f8e82715bd116ec80247ecc78459caa29dc9667acedd` |
 | `lib/erefs-v618.js` | 11260 | `1150b196683116439fd890c8db58d5a091ca149b10d74ab0df6cc1efb717bd70` |
 | `lib/erez-dic-v559.js` | 12795 | `e29e69649b85654d9ef1b52e5eac56c390734f9b85da044ddc54e1190314270f` |
 | `lib/erisa-claim-clock-v1503.js` | 8331 | `693e568d82c0f744ef309e5a50d1f94e7d28497fb91f17a5e9517e15a4371452` |
@@ -541,7 +541,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/function-v154.js` | 15012 | `ce6634d2acc5d69d16bf00e0c4d0fb85294e49102bfce1883190ff7526458870` |
 | `lib/furst-ratio-v794.js` | 4470 | `f52e9d55d1c894e6fc0bc015073e6dbc0a10ea702de9b65c0f4294d908764118` |
 | `lib/g8-geriatric-v710.js` | 4205 | `600b9a252fbfaf82138bf6d9513ac68c9648f002f098ea623a309e6628e4d4d8` |
-| `lib/gabapentinoid-renal-dose-v1632.js` | 7868 | `500ec9d5cf21471c1978e952b1b354eca1dc484f7be424cbf3e940c38841f5fd` |
+| `lib/gabapentinoid-renal-dose-v1632.js` | 8453 | `1c323a1cbe558430509c8226c40ad0c8a23cd0c5c6dbc9553a5a5128b48375f6` |
 | `lib/gadolinium-nsf-v895.js` | 9843 | `1b238cda2427d15feed05c36c97b49cf9e5c8e9458caf6e699c983b9a3d15558` |
 | `lib/gags-v554.js` | 9715 | `198a4b0db19b6ca1368c20697ea8b3c0a2545de5dfa02a1a90aceff7440b3219` |
 | `lib/gamma-quantile.js` | 1967 | `83cd62e9b6aceb3df2e16bfe1065107ad5c4dc224bc6c95be32741a65cb2c3a5` |
@@ -638,7 +638,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/herbert-scaphoid-v1241.js` | 6072 | `56b3a6e0c50dbaef9aba6b750bee9ffe6e7507963780b04e9bdfc6b956bb8fe1` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
 | `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |
-| `lib/hf-gdmt-target-percent-v1633.js` | 7927 | `e6267f2c8939ea96787f4b2b396717deae9458bc399c1ac89a83b6a090f3fa4d` |
+| `lib/hf-gdmt-target-percent-v1633.js` | 8060 | `eedb0118fa63e8d367158290b39bd508294854d39d6710282cf7cc9297b15267` |
 | `lib/hf-stages-abcd-v842.js` | 7839 | `93bde8395e5ff6baf50da213ef74c1358b09d224c3fdcc6fae245eb1dc8024c2` |
 | `lib/hhie-s-v728.js` | 3138 | `8fb3d7ef12c6fa87552661922e77886a64e03def7f92dbd5fd4f74895bb275d5` |
 | `lib/hijdra-v609.js` | 10151 | `c1ab35e0a425645ccad04f5c61dbf4f59370122a8ff92cf26e2511efb822e998` |
@@ -726,7 +726,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/it-methotrexate-age-dose-v1635.js` | 4442 | `853a18ab6efd6f88a3ec151e0e0357ce5be364daeed6807f22cdad4f72917f73` |
 | `lib/itemized-bill-check.js` | 14804 | `5ec49bd04d6c7081719ae83f13d1a8a271223caf0b07f8671c1a8b4b40b97814` |
 | `lib/itemized-bill-worker.js` | 2862 | `83f3f27fbedfeb66380732de78dd066259e8c1aeda2dc912e38f3faf9b0d3dfb` |
-| `lib/iv-antithrombotic-renal-check-v1632.js` | 11126 | `bb9c408475cfa5663eaf55dd9ca4afa95e56724862945805a8f8351631dd36d0` |
+| `lib/iv-antithrombotic-renal-check-v1632.js` | 11380 | `d3c04ee9d306528f5a8a70b170df5271730783e9bb3f42d44e77bcf83da3d2ff` |
 | `lib/iv-iron-course-v1633.js` | 16736 | `e617078185e34f5a749fb7af23ba975076876c60610381ac69ead52bd7870047` |
 | `lib/iv-label-rate-check-v1630.js` | 14402 | `c416366bc81892fe0d65d788d4f7fab1b6f39beea7723af6bccd2df9df4fc3d0` |
 | `lib/iv-phosphate-order-check-v1630.js` | 12463 | `e3e7012557ec81236b86a63825d89706afc1860a7a28aa5a684ee0e7a293abd0` |
@@ -772,7 +772,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/lai-antipsychotic-missed-dose-v1639.js` | 20473 | `aa975e537225e3e09e2928b68e38d36c5e8295ec9bd2cd539cc8807536d809ed` |
 | `lib/lai-antipsychotic-start-v1633.js` | 10049 | `5dad0768906a4f7dcf9e35bdebb3033560b70811ce3672a0196fb20e489cfdac` |
 | `lib/lake-louise-cmr-v790.js` | 4460 | `e189393140d6b862dcd0eb104d9e7772f87e7a52a84aed712af47ececfc71922` |
-| `lib/lamotrigine-titration-calendar-v1633.js` | 16568 | `6b1d021ea666e26db39c40936136088a63630f4c8fd275e240bd9d1ea5960c2e` |
+| `lib/lamotrigine-titration-calendar-v1633.js` | 16761 | `6cb5b70d12d7b97fef2349a5cad6506fec1d9db82e91b49e7199d571ccc85e06` |
 | `lib/lansky-v352.js` | 4422 | `de19995ccf6c4b2bd438b04974623c854bcdb0f04cc1cc09f5eb6743f5fc4025` |
 | `lib/larsen-ra-v470.js` | 3711 | `04f693a6f330fba5409f9b89e56545259c0c6c42068a7cfba2d8479815014541` |
 | `lib/last-lipid-v896.js` | 6947 | `3efdcef698dc1b12616d417816bd5470cb2a52f673ff3159512d13cb709bc1cb` |
@@ -797,7 +797,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/levey-jennings-limits-v1658.js` | 2697 | `0757a7e5d42239d8d9407155152b040da1bc3dbc10be5f4354953699534572b1` |
 | `lib/levine-edwards-v411.js` | 4146 | `5b8fad3241eb0819b4f66f2a3229cf0a7b2ae1452ca8ed9a928ae81e7f8514e8` |
 | `lib/levodopa-equivalent-dose-v1633.js` | 10098 | `df5a07fcf9f1ff50af8d6e27c494f804790194757af106e260a8534b9fb65160` |
-| `lib/levothyroxine-start-dose-v1633.js` | 8758 | `b4d57bf8555bdb39d655e2c0b7ec07d485ddc1db5a2cfaa2a53da2f6b6d673fe` |
+| `lib/levothyroxine-start-dose-v1633.js` | 9025 | `f61c9cbcb335ab9c1027bb1305d4daa034b73feee6e984b85d0bcb6a60a4a8cf` |
 | `lib/lf-mda-regimen-v1562.js` | 6942 | `ad9f9c6e24fccf39b78fd83e45f498a67265aea09afe782284496d01c8ea220a` |
 | `lib/li-rads-v327.js` | 4931 | `fa89bbfeffee9ee672f964665b42bfe958158a0210f07848595585bbca9ba94c` |
 | `lib/lichtiger-index-v663.js` | 4881 | `24d3ca6685de0d141e38794783ce652154ec1242c8f33b0ec882423589af6ed4` |
@@ -810,7 +810,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/live.js` | 1139 | `dfb5bf4712e2ee411d60da2a2b79329c8b9016caedc53224f4bba27f3f9785fe` |
 | `lib/liver-v196.js` | 14094 | `3aa26e14ddd367e65cc1e12c72d0403a7deb90e6e8bf7e793e99f26588829e38` |
 | `lib/liverpool-adr-causality-v1634.js` | 5692 | `36aaff1e332ac6bc05ef1c5aef7496fcb59bb52358f92e300382b637941551c4` |
-| `lib/lmwh-fondaparinux-dose-check-v1632.js` | 15415 | `21236ac4370de2df3434274798cf260d2f6eb62de41feb28bd1caeeecfeb2b60` |
+| `lib/lmwh-fondaparinux-dose-check-v1632.js` | 15883 | `1f247e9e9782f49ce29816dbce0bc91cd724131208363e7ea0d8f09685edb41d` |
 | `lib/lodwick-grade-v496.js` | 3715 | `8c5aee72ee779640837fa2cba4ae459aff9e50b9c76c6da64751c2077ae3f283` |
 | `lib/loe-silness-gingival-index-v722.js` | 3556 | `256b3056d2f235eaf93f210bb3453cd9078261ae090cbd71afc05696d71661d4` |
 | `lib/long-note.js` | 29057 | `f6189019c3f7fdde44de7e009a2d827301c732c65fa483207aceec27dda692d7` |
@@ -1446,7 +1446,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/taco-trali-v906.js` | 8467 | `61d4684d02f080f6956e63ae326a8837d0dcba1e2b48ebb7a09e598ae587416d` |
 | `lib/takayasu-v638.js` | 4946 | `e6f6fd9a75612cbb13ba144972a674f3098d201c326e4c3125cf6a1f42f7b137` |
 | `lib/tanner-staging-v361.js` | 4925 | `e2484223339faaac7f4272ed90ce8834fc835f51b70498bb064bc25cf77c9ec5` |
-| `lib/taper-calendar-v1633.js` | 18958 | `555d5d36c3c7a507a50edeaca6e3b60605512cdeabffc8078e1e78cf0a947211` |
+| `lib/taper-calendar-v1633.js` | 21009 | `2fc4348bba78d53945db69b548a272645d01a5b1655206a7e0f7b202f3791599` |
 | `lib/tb-4-month-eligibility-v1553.js` | 8780 | `4a311c4e6756e06d5b3792bb5a45f5d041666f5934a2abb56d69c9e9831b8b1b` |
 | `lib/tb-testing.js` | 1648 | `cc73aea69ef4256ba44fab37bcff1dc497c553784de852a4f9cf12c7a9b1d7cb` |
 | `lib/tbi-stroke-v206.js` | 14126 | `d4d323dec158311d32c19d5aa0a0f365ff186e91c9d9ac8a7d8f9153324dbac5` |
