@@ -233,12 +233,6 @@
   "ACLIDINIUM BROMIDE": [
     "A"
   ],
-  "DUAKLIR PRESSAIR": [
-    "A"
-  ],
-  "ACLIDINIUM BROMIDE; FORMOTEROL FUMARATE": [
-    "A"
-  ],
   "TRYPTYR": [
     "A"
   ],
@@ -1173,9 +1167,6 @@
   "MOVIPREP": [
     "A"
   ],
-  "PLENVU": [
-    "A"
-  ],
   "SECUADO": [
     "A"
   ],
@@ -1407,10 +1398,10 @@
   "AVUTOMETINIB POTASSIUM; DEFACTINIB HYDROCHLORIDE": [
     "A"
   ],
-  "INLYTA": [
+  "AXITINIB": [
     "A"
   ],
-  "AXITINIB": [
+  "INLYTA": [
     "A"
   ],
   "AZACITIDINE": [
@@ -1620,12 +1611,6 @@
   "QVAR REDIHALER": [
     "B"
   ],
-  "TRIMBOW": [
-    "B"
-  ],
-  "BECLOMETHASONE DIPROPIONATE; FORMOTEROL FUMARATE; GLYCOPYRROLATE": [
-    "B"
-  ],
   "SIRTURO": [
     "B"
   ],
@@ -1690,6 +1675,9 @@
     "B"
   ],
   "VIVIMUSTA": [
+    "B"
+  ],
+  "GOBARDEN": [
     "B"
   ],
   "ALTAFLUOR BENOX": [
@@ -2322,6 +2310,12 @@
   "CABOTEGRAVIR; RILPIVIRINE": [
     "C"
   ],
+  "OMCAZIO": [
+    "C"
+  ],
+  "CABOZANTINIB LAURYLSULFATE": [
+    "C"
+  ],
   "CABOZANTINIB S-MALATE": [
     "C"
   ],
@@ -2587,6 +2581,12 @@
     "C"
   ],
   "CALCIUM OXYBATE; MAGNESIUM OXYBATE; POTASSIUM OXYBATE; SODIUM OXYBATE": [
+    "C"
+  ],
+  "ETCAMAH": [
+    "C"
+  ],
+  "CAMIZESTRANT": [
     "C"
   ],
   "CANAGLIFLOZIN": [
@@ -2875,6 +2875,12 @@
     "C"
   ],
   "CEFIXIME": [
+    "C"
+  ],
+  "CLAFORAN": [
+    "C"
+  ],
+  "CEFOTAXIME SODIUM": [
     "C"
   ],
   "CEFOTETAN": [
@@ -3253,12 +3259,6 @@
     "C"
   ],
   "PRIMAXIN": [
-    "C"
-  ],
-  "RECARBRIO": [
-    "C"
-  ],
-  "CILASTATIN SODIUM; IMIPENEM; RELEBACTAM": [
     "C"
   ],
   "CILOSTAZOL": [
@@ -3720,10 +3720,10 @@
   "CRINECERFONT": [
     "C"
   ],
-  "EUCRISA": [
+  "CRISABOROLE": [
     "C"
   ],
-  "CRISABOROLE": [
+  "EUCRISA": [
     "C"
   ],
   "XALKORI": [
@@ -3849,6 +3849,9 @@
   "CYPROHEPTADINE HYDROCHLORIDE": [
     "C"
   ],
+  "CYPROLARA": [
+    "C"
+  ],
   "CYSTAGON": [
     "C"
   ],
@@ -3871,6 +3874,9 @@
     "C"
   ],
   "CYSTEINE HYDROCHLORIDE": [
+    "C"
+  ],
+  "NOURESS": [
     "C"
   ],
   "CYTARABINE": [
@@ -4095,10 +4101,10 @@
   "KYBELLA": [
     "D"
   ],
-  "SUPRANE": [
+  "DESFLURANE": [
     "D"
   ],
-  "DESFLURANE": [
+  "SUPRANE": [
     "D"
   ],
   "DESIPRAMINE HYDROCHLORIDE": [
@@ -4878,6 +4884,9 @@
   "VOLTAREN ARTHRITIS PAIN": [
     "D"
   ],
+  "ZUEINO": [
+    "D"
+  ],
   "DICLOFENAC SODIUM AND MISOPROSTOL": [
     "D"
   ],
@@ -5047,9 +5056,6 @@
     "D"
   ],
   "NORPACE": [
-    "D"
-  ],
-  "NORPACE CR": [
     "D"
   ],
   "DISULFIRAM": [
@@ -5529,10 +5535,10 @@
   "ELUXADOLINE": [
     "E"
   ],
-  "JARDIANCE": [
+  "EMPAGLIFLOZIN": [
     "E"
   ],
-  "EMPAGLIFLOZIN": [
+  "JARDIANCE": [
     "E"
   ],
   "GLYXAMBI": [
@@ -6579,9 +6585,6 @@
   "AROMASIN": [
     "E"
   ],
-  "EXENATIDE SYNTHETIC": [
-    "E"
-  ],
   "EZETIMIBE": [
     "E"
   ],
@@ -6879,6 +6882,12 @@
   "FLORBETAPIR F-18": [
     "F"
   ],
+  "PIXCLARA": [
+    "F"
+  ],
+  "FLORETYROSINE F-18": [
+    "F"
+  ],
   "TAUKLARIFY": [
     "F"
   ],
@@ -6958,9 +6967,6 @@
     "F"
   ],
   "ILUVIEN": [
-    "F"
-  ],
-  "YUTIQ": [
     "F"
   ],
   "TRI-LUMA": [
@@ -7642,9 +7648,6 @@
   "GRANISETRON": [
     "G"
   ],
-  "SUSTOL": [
-    "G"
-  ],
   "GRANISETRON HYDROCHLORIDE": [
     "G"
   ],
@@ -7945,9 +7948,6 @@
   "HYDROCODONE BITARTRATE; IBUPROFEN": [
     "H"
   ],
-  "REPREXAIN": [
-    "H"
-  ],
   "HYDROCORTISONE": [
     "H"
   ],
@@ -8212,10 +8212,10 @@
   "IDAMYCIN PFS": [
     "I"
   ],
-  "IDELALISIB": [
+  "ZYDELIG": [
     "I"
   ],
-  "ZYDELIG": [
+  "IDELALISIB": [
     "I"
   ],
   "IFOSFAMIDE": [
@@ -8422,13 +8422,10 @@
   "ULTRAVIST (PHARMACY BULK)": [
     "I"
   ],
-  "CONRAY": [
+  "CYSTO-CONRAY II": [
     "I"
   ],
   "IOTHALAMATE MEGLUMINE": [
-    "I"
-  ],
-  "CYSTO-CONRAY II": [
     "I"
   ],
   "GLOFIL-125": [
@@ -8743,6 +8740,12 @@
   "SUBVENITE": [
     "L"
   ],
+  "LAMLIQUE": [
+    "L"
+  ],
+  "LAMOTRIGINE HEMIFUMARATE": [
+    "L"
+  ],
   "RAPIBLYK": [
     "L"
   ],
@@ -8903,9 +8906,6 @@
     "L"
   ],
   "FENSOLVI KIT": [
-    "L"
-  ],
-  "VOBRIG": [
     "L"
   ],
   "CAMCEVI KIT": [
@@ -9145,10 +9145,10 @@
   "LIFITEGRAST": [
     "L"
   ],
-  "LINZESS": [
+  "LINACLOTIDE": [
     "L"
   ],
-  "LINACLOTIDE": [
+  "LINZESS": [
     "L"
   ],
   "LINAGLIPTIN": [
@@ -9194,6 +9194,12 @@
     "L"
   ],
   "CYTOMEL": [
+    "L"
+  ],
+  "LYRFIGTU": [
+    "L"
+  ],
+  "LIRAFUGRATINIB HYDROCHLORIDE": [
     "L"
   ],
   "LIRAGLUTIDE": [
@@ -9430,10 +9436,16 @@
   "LUSUTROMBOPAG": [
     "L"
   ],
+  "BRAVNETSA": [
+    "L"
+  ],
+  "LUTETIUM LU-177 DOTATATE": [
+    "L"
+  ],
   "LUTATHERA": [
     "L"
   ],
-  "LUTETIUM LU 177 DOTATATE": [
+  "BEXLUTRY": [
     "L"
   ],
   "PLUVICTO": [
@@ -9686,9 +9698,6 @@
     "M"
   ],
   "QAMZOVA": [
-    "M"
-  ],
-  "XIFYRM": [
     "M"
   ],
   "SYMBRAVO": [
@@ -12559,6 +12568,9 @@
   "MAXALT-MLT": [
     "R"
   ],
+  "RIZAFILM": [
+    "R"
+  ],
   "ROCURONIUM BROMIDE": [
     "R"
   ],
@@ -12727,9 +12739,6 @@
   "SELEGILINE HYDROCHLORIDE": [
     "S"
   ],
-  "ZELAPAR": [
-    "S"
-  ],
   "SELENIOUS ACID": [
     "S"
   ],
@@ -12896,12 +12905,6 @@
     "S"
   ],
   "SITAGLIPTIN": [
-    "S"
-  ],
-  "BRYNOVIN": [
-    "S"
-  ],
-  "SITAGLIPTIN HYDROCHLORIDE": [
     "S"
   ],
   "SITAGLIPTIN PHOSPHATE": [
@@ -13312,13 +13315,10 @@
   "SUMATRIPTAN SUCCINATE (AUTOINJECTOR)": [
     "S"
   ],
-  "IMITREX STATDOSE": [
+  "IMITREX STATDOSE (AUTOINJECTOR)": [
     "S"
   ],
-  "ONZETRA XSAIL": [
-    "S"
-  ],
-  "ZEMBRACE SYMTOUCH": [
+  "ZEMBRACE SYMTOUCH (AUTOINJECTOR)": [
     "S"
   ],
   "SUNITINIB MALATE": [
@@ -13451,6 +13451,15 @@
     "T"
   ],
   "TAVABOROLE": [
+    "T"
+  ],
+  "JUVMO (COPACKAGED)": [
+    "T"
+  ],
+  "TAVAPADON": [
+    "T"
+  ],
+  "JUVMO": [
     "T"
   ],
   "TAZAROTENE": [
@@ -13750,9 +13759,6 @@
   "DEPO-TESTOSTERONE": [
     "T"
   ],
-  "AZMIRO": [
-    "T"
-  ],
   "TESTOSTERONE ENANTHATE": [
     "T"
   ],
@@ -13832,9 +13838,6 @@
     "T"
   ],
   "TEPADINA AND SODIUM CHLORIDE": [
-    "T"
-  ],
-  "TEPYLUTE": [
     "T"
   ],
   "THIOTHIXENE": [
@@ -13928,6 +13931,12 @@
     "T"
   ],
   "TIPRANAVIR": [
+    "T"
+  ],
+  "EMCITATE": [
+    "T"
+  ],
+  "TIRATRICOL": [
     "T"
   ],
   "KLISYRI": [
@@ -14737,10 +14746,22 @@
   "ZILEUTON": [
     "Z"
   ],
+  "ZANVASTRO": [
+    "Z"
+  ],
+  "ZILGANERSEN SODIUM": [
+    "Z"
+  ],
   "ZILBRYSQ": [
     "Z"
   ],
   "ZILUCOPLAN SODIUM": [
+    "Z"
+  ],
+  "ATEBRIOZ": [
+    "Z"
+  ],
+  "ZILURGISERTIB FUMARATE": [
     "Z"
   ],
   "GALZIN": [

@@ -300,10 +300,10 @@
       "radioactive-decay",
       "radiopharm-dispense-volume"
     ],
-    "splVersion": 17,
-    "publishedOn": "2026-03-30",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "splVersion": 18,
+    "publishedOn": "2026-10-14",
+    "verifiedOn": "2026-10-18",
+    "validThrough": "2027-10-18",
     "sections": {
       "34089-3": "38bf98a2b10b6bcd38e820005187a18a69d24ee33baeb97421a5ac991c8b9e4b"
     }
@@ -470,10 +470,10 @@
     "tools": [
       "pgx-label-dose-limit"
     ],
-    "splVersion": 35,
-    "publishedOn": "2025-03-24",
-    "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "splVersion": 36,
+    "publishedOn": "2026-10-16",
+    "verifiedOn": "2026-10-18",
+    "validThrough": "2027-10-18",
     "sections": {
       "34068-7": "72afe60e10624610843b401f1ac70c4bf2c0e54aaa9c8babfe82233c1770ed83"
     }
@@ -830,10 +830,10 @@
     "tools": [
       "hepatic-label-dose"
     ],
-    "splVersion": 41,
-    "publishedOn": "2025-11-17",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "splVersion": 42,
+    "publishedOn": "2026-10-14",
+    "verifiedOn": "2026-10-18",
+    "validThrough": "2027-10-18",
     "sections": {
       "34068-7": "4edb8721cceb197f5adbdc0197f2b91d42642b91e0862ef4c96989033df7d5e4"
     }
@@ -4546,10 +4546,10 @@
     "tools": [
       "passive-immunization-dose"
     ],
-    "splVersion": 5,
-    "publishedOn": "2026-03-20",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "splVersion": 7,
+    "publishedOn": "2026-10-15",
+    "verifiedOn": "2026-10-18",
+    "validThrough": "2027-10-18",
     "sections": {
       "34068-7": "dfe844caae062d390b93a477901d97b10c77da912326d5d7f49aacb184c2aca8"
     }
