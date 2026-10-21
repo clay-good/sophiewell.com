@@ -2280,9 +2280,10 @@ test('lib/gvhd-v309.js worked calls', () => {
   assert.equal(g3.gradeRoman, 'III');
   assert.equal(g3.severe, true);
   assert.match(g3.band, /Acute GVHD grade III/);
-  // Any organ stage 4 -> grade IV, overriding a lesser skin stage.
-  const g4 = ok('gvhd-grade', { 'gvhd-skin': '3', 'gvhd-gi': '4' });
+  // spec-v1680: skin or liver stage 4 is grade IV (Przepiorka 1995); gut stage 4 is grade III.
+  const g4 = ok('gvhd-grade', { 'gvhd-skin': '4', 'gvhd-gi': '1' });
   assert.equal(g4.gradeRoman, 'IV');
+  assert.equal(ok('gvhd-grade', { 'gvhd-skin': '3', 'gvhd-gi': '4' }).gradeRoman, 'III');
   // No organ involvement -> no GVHD.
   assert.equal(ok('gvhd-grade', { 'gvhd-skin': '0' }).grade, 0);
 });

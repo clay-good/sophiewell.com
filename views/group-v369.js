@@ -49,6 +49,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['ns-congestion', 'ns-perfusion'], () => safe(o, () => {
       const r = M.nohriaStevenson({ congestion: val('ns-congestion'), perfusion: val('ns-perfusion') });
+      if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'Profile', value: r.bandLabel },
