@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Thirteen defects an independent review found in the compounding and counter tools. Hours printed beside a CDC or label
+  line (missed pills, emergency contraception, missed doses) and weights beside the epinephrine bands now sit on the
+  side the rule was decided. An oral suspension dose on the discard date needs a second bottle. A compounded strength
+  that may be a fraction of the commercial one is left open rather than called "not a copy". Proof gallons use the
+  proof to the nearest tenth degree; incomplete or impossible compounding inputs are asked for or refused.
 - Ten defects an independent review found in the parenteral nutrition, IV admixture and pharmacogenomic tools. Codeine
   with the CYP2D6 status not known and an ultrarapid activity score now meets the label's "should not use" statement
   instead of "no statement applies". IV phosphate reads 0.96 mg/dL as "less than 1" rather than rounding it into the next

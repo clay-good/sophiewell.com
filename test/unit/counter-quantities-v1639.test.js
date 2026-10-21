@@ -32,7 +32,8 @@ test('suspension: volume, bottles of one size, leftover', () => {
 
 test('suspension: a course that outlasts the discard date needs a second bottle', () => {
   const r = oralSuspensionCourse({ doseMl: 5, dosesPerDay: 2, days: 14, bottleMl: 150, mixedOn: '2026-10-01', discardAfterDays: 10 });
-  assert.deepEqual([r.discardDate, r.lastDoseDate, r.daysAfterDiscard, r.flag], ['2026-10-11', '2026-10-14', 3, 'course-outlasts-the-bottle']);
+  // Doses on October 11 to 14 fall on or after the October 11 discard date: 4 days (spec-v1667).
+  assert.deepEqual([r.discardDate, r.lastDoseDate, r.daysAfterDiscard, r.flag], ['2026-10-11', '2026-10-14', 4, 'course-outlasts-the-bottle']);
   assert.equal(oralSuspensionCourse({ doseMl: 5, dosesPerDay: 2, days: 10, mixedOn: '2026-10-01', discardAfterDays: 14 }).flag, 'course');
 });
 

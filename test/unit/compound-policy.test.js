@@ -12,7 +12,10 @@ test('copy check: the 10% is taken on the commercial strength, and exactly 10% c
   assert.deepEqual([r.essentiallyACopy, r.strength, r.percentDifference], [true, 'similar', 10]);
   assert.match(r.notes.join(' '), /does not say whether exactly 10% is "within 10%"; counting it as within is this tool's reading/);
   const off = cc({ ...base, compoundedStrength: 44.95 });
-  assert.deepEqual([off.essentiallyACopy, off.strength, off.percentDifference], [false, 'different', 10.1]);
+  // Not the same, within 10% or a whole multiple: the guidance gives no number for fractional doses, so the verdict is
+  // open rather than "not a copy" (spec-v1667).
+  assert.deepEqual([off.essentiallyACopy, off.strength, off.percentDifference], [null, 'different', 10.1]);
+  assert.match(off.band, /^Not settled by the guidance's numbers/);
   assert.match(off.notes.join(' '), /the guidance gives no number/);
   // 55 against a commercial 50 is 10%, not 5 / 55 = 9.1%.
   assert.equal(cc({ ...base, compoundedStrength: 55 }).percentDifference, 10);
