@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Thirteen defects an independent review found in the medication-safety, controlled-substance and Part D tools. START
+  J1 (an ACE inhibitor or ARB in diabetic kidney disease) is no longer dropped at exactly eGFR 30. The pediatric heparin
+  nomogram reads 49.5 and 120.5 seconds in its "<50" and ">120" rows. The ROR lower bound prints on the side of 1 it was
+  judged; equal cost with more effect is dominance. Impossible date orders, future dates, a thousands separator read as
+  a count, and a treatment day that contradicts its dates are refused; a GS1 day-00 expiry is flagged as a problem.
 - Thirteen defects an independent review found in the compounding and counter tools. Hours printed beside a CDC or label
   line (missed pills, emergency contraception, missed doses) and weights beside the epinephrine bands now sit on the
   side the rule was decided. An oral suspension dose on the discard date needs a second bottle. A compounded strength
