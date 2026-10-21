@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Ten defects an independent review found in the parenteral nutrition, IV admixture and pharmacogenomic tools. Codeine
+  with the CYP2D6 status not known and an ultrarapid activity score now meets the label's "should not use" statement
+  instead of "no statement applies". IV phosphate reads 0.96 mg/dL as "less than 1" rather than rounding it into the next
+  row. Printed doses, temperatures and limits agree with the verdict beside them; a year typo and an impossible amino
+  acid concentration are refused; pediatric potassium and magnesium orders say the labels give no pediatric limits.
 - Thirteen defects an independent review found in the renal dose checks and drug switches. The levetiracetam check
   banded a body-surface-adjusted clearance after rounding it, so 29.996 mL/min read the 30-50 row and passed a dose over
   the under-30 maximum. Dalteparin at 49.5 kg was offered the 50-59 kg dose beside the "<50 kg" one. Clearances and
