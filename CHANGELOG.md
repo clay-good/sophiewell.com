@@ -16,6 +16,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Twenty defects an independent review found in the WHO field-health tools. MUAC entered in centimeters was rounded
+  before the 115 mm line, so 11.499 cm read as moderate rather than severe acute malnutrition. Child azithromycin and
+  ceftriaxone for enteric fever now stop at the AWaRe book's 500 mg and 3,000 mg; doses that pass the adult dose where no
+  child maximum is published say so; a 1 kg child's rectal artesunate and an infant-sized artemether-lumefantrine dose are
+  flagged. The IMCI injectables chart refuses a young infant; tafenoquine states "not in lactation"; a blank clotting
+  test, digestive form or smear no longer reads as normal; values printed at a WHO line agree with the verdict.
 - Thirteen defects an independent review found in the medication-safety, controlled-substance and Part D tools. START
   J1 (an ACE inhibitor or ARB in diabetic kidney disease) is no longer dropped at exactly eGFR 30. The pediatric heparin
   nomogram reads 49.5 and 120.5 seconds in its "<50" and ">120" rows. The ROR lower bound prints on the side of 1 it was
