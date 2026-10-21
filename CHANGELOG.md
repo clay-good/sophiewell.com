@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The generic-substitution check's worked example opened on a "choose one" list instead of its answer: this week's
+  Orange Book added a second Aurobindo nifedipine ER product (AB2), so the example's name found two products. The
+  example is now the 90 mg Osmotica (AB2) and Valeant (AB1) pair, each found by name alone.
+- The Bauer score's explanation said the original and modified versions disagree at exactly one total; they disagree
+  in exactly two situations, as the rest of the page already says.
 - The Lansky, Schwab and England and Montreal forms no longer open on a full-function or mildest answer. Lachman grade I is
   3-5 mm (it read 0-5) and grade III more than 10 mm; the McCormack apposition 2 description no longer describes grade 3.
 - Defects an independent review found in the core libs. The lab interpreter told an A1C of 5.7% it was in the diabetes

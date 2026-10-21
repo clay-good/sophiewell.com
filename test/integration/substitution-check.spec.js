@@ -2,11 +2,12 @@
 import { test, expect } from '@playwright/test';
 import { expectNoHScroll } from '../lib/no-hscroll.js';
 
-test('the preface\'s own example: Procardia XL (AB2) and an AB1 nifedipine are not substitutable', async ({ page }) => {
+test('the preface\'s own example: an AB2 and an AB1 nifedipine are not substitutable', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
   await page.goto('/#substitution-check');
-  await page.fill('#sub-rx-name', 'Procardia XL 30MG');
-  await page.fill('#sub-shelf-name', 'nifedipine Aurobindo 30MG');
+  // 90 mg: at 30 and 60 mg every AB1 maker's name also finds one of its AB2 products, so the tool waits for a pick.
+  await page.fill('#sub-rx-name', 'nifedipine Osmotica 90MG');
+  await page.fill('#sub-shelf-name', 'nifedipine Valeant 90MG');
   const out = page.locator('#q-results');
   await expect(out).toContainText('Not substitutable: the ratings differ (AB2 prescribed, AB1 on the shelf).');
   await expect(out).toContainText('FDA Orange Book, 20');

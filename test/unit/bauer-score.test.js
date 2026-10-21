@@ -1,7 +1,7 @@
 // spec-v603: the Bauer and modified Bauer scores.
 //
 // The load-bearing tests are that a higher score means a BETTER prognosis, and that the two versions
-// disagree at exactly one total and nowhere else.
+// disagree in exactly two situations and nowhere else.
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
