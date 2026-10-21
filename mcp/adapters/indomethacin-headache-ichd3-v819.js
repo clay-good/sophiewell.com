@@ -12,6 +12,7 @@ export default [
     fields: [
       { dom: 'ind-response', arg: 'indomethacinResponse', kind: 'boolean', required: false, label: 'Absolute response to indomethacin' },
       { dom: 'ind-attacks', arg: 'attackCount', kind: 'number', required: false, label: 'Number of attacks' },
+      { dom: 'ind-pain', arg: 'severeUnilateralPain', kind: 'boolean', required: false, label: 'Severe one-sided orbital, supraorbital and/or temporal pain (3.2 criterion B)' },
       { dom: 'ind-minutes', arg: 'attackMinutes', kind: 'number', required: false, label: 'Attack duration, minutes' },
       { dom: 'ind-perday', arg: 'attacksPerDay', kind: 'number', required: false, label: 'Attacks per day' },
       { dom: 'ind-continuous', arg: 'unilateralContinuous', kind: 'boolean', required: false, label: 'Continuous one-sided headache' },

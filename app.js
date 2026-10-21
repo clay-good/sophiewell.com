@@ -889,6 +889,14 @@ import { renderers as RV1640 } from './views/group-v1640.js';
 import { renderers as RV1638, acceptFiles as AF1638 } from './views/group-v1638.js';
 import { renderers as RV1637 } from './views/group-v1637.js';
 import { renderers as RV1636, acceptFiles as AF1636 } from './views/group-v1636.js';
+import { renderers as RV1655 } from './views/group-v1655.js';
+import { renderers as RV1656 } from './views/group-v1656.js';
+import { renderers as RV1657 } from './views/group-v1657.js';
+import { renderers as RV1658 } from './views/group-v1658.js';
+import { renderers as RV1659 } from './views/group-v1659.js';
+import { renderers as RV1660 } from './views/group-v1660.js';
+import { renderers as RV1661 } from './views/group-v1661.js';
+import { renderers as RV1662 } from './views/group-v1662.js';
 import { renderers as RV1635 } from './views/group-v1635.js';
 import { renderers as RV1634 } from './views/group-v1634.js';
 import { renderers as RV1633 } from './views/group-v1633.js';
@@ -997,7 +1005,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1515, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV1601, ...RV1550, ...RV1548, ...RV1551, ...RV1546, ...RV1560, ...RV1555, ...RV1557, ...RV1558, ...RV1553, ...RV1562, ...RV1563, ...RV1552, ...RV1549, ...RV1559, ...RV1554, ...RV1560b, ...RV1561, ...RV1555b, ...RV1556, ...RV1550b, ...RV1564, ...RV1546b, ...RV1602, ...RV1603, ...RV1604, ...RV1629, ...RV1630, ...RV1631, ...RV1632, ...RV1633, ...RV1634, ...RV1635, ...RV1636, ...RV1637, ...RV1638, ...RV1639, ...RV1640, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1515, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV1601, ...RV1550, ...RV1548, ...RV1551, ...RV1546, ...RV1560, ...RV1555, ...RV1557, ...RV1558, ...RV1553, ...RV1562, ...RV1563, ...RV1552, ...RV1549, ...RV1559, ...RV1554, ...RV1560b, ...RV1561, ...RV1555b, ...RV1556, ...RV1550b, ...RV1564, ...RV1546b, ...RV1602, ...RV1603, ...RV1604, ...RV1629, ...RV1630, ...RV1631, ...RV1632, ...RV1633, ...RV1634, ...RV1635, ...RV1636, ...RV1637, ...RV1638, ...RV1639, ...RV1640, ...RV1655, ...RV1656, ...RV1657, ...RV1658, ...RV1659, ...RV1660, ...RV1661, ...RV1662, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1479,6 +1487,17 @@ const UTILITIES = [
   { id: 'tx-workplace-violence-plan-audit', name: 'Texas Workplace Violence Prevention Plan Audit (HSC 331.002-331.004)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tx-safe-harbor-decision-aid', name: 'Texas Nurse Safe Harbor: How to Invoke It (Occ. Code 303.005)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'nursing-home-staffing-check', name: 'Nursing Home Minimum Staffing Check (NY, NJ, CA)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nursing-hppd', name: 'Nursing Hours per Patient Day (HPPD) and Skill Mix', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'pbj-hours-per-resident-day', name: 'Nursing Home Hours per Resident Day (CMS PBJ Method and Exclusions)', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'pbj-case-mix-adjusted-hours', name: 'Nursing Home Case-Mix Adjusted Staffing Hours (CMS Formula)', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'nursing-home-staffing-star', name: 'Nursing Home Staffing Star Rating Points (CMS Five-Star Cut Points)', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'staff-turnover-rate', name: 'Staff Turnover and Vacancy Rate (and the CMS PBJ Turnover Measure)', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'fte-from-hours', name: 'FTEs From Hours (Period Hours or the CMS Cost Report Method)', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'bed-occupancy-alos', name: 'Bed Occupancy, Average Daily Census and Average Length of Stay', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'overtime-agency-share', name: 'Overtime and Agency Share of Worked Hours and the Premium Paid', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'unit-budget-variance', name: 'Unit Budget Variance: Flexible Budget, Spending and Volume Variances', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'case-mix-index', name: 'Case Mix Index (CMI) From MS-DRG Relative Weights', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'staffing-grid', name: 'Shift Staffing Grid From Census and Target HPPD', group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'reportable-condition-urgency', name: 'Reportable Disease: Report Now or Later? (NY, NJ, CA, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'safe-haven-infant-check', name: 'Safe Haven Infant Check (NY, NJ, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
@@ -2794,6 +2813,7 @@ const UTILITIES = [
   { id: 'chatelut-carboplatin', name: 'Carboplatin Clearance and Dose (Chatelut Formula)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'desensitization-12-step', name: 'Three-Bag, 12-Step Desensitization Arithmetic', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chemo-organ-label-dose', name: 'Chemotherapy Dose Modification for Hepatic or Renal Impairment (FDA Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'relative-dose-intensity', name: 'Relative Dose Intensity (Chemotherapy)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'chemo-dose-verify', name: 'Chemotherapy Dose Re-Derivation and Variance', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ugt1a1-irinotecan-label', name: 'UGT1A1 Genotype and the Irinotecan Label', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tpmt-nudt15-thiopurine-dose', name: 'TPMT and NUDT15 to Thiopurine Starting Dose (CPIC)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
@@ -2812,7 +2832,21 @@ const UTILITIES = [
   { id: 'passive-immunization-dose', name: 'Hepatitis B, Varicella and Tetanus Immune Globulin Doses (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'au-rate-saar', name: 'Antimicrobial Days per 1,000 Days Present, per 100 Admissions, and SAAR (NHSN)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'cdi-labid-category', name: 'C. difficile LabID Event: Onset Category, Incident or Recurrent, and Rate (NHSN)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'nhsn-sir', name: 'Standardized Infection Ratio (NHSN, Observed Over Predicted)', group: 'J', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'device-utilization-ratio', name: 'Device Utilization Ratio (NHSN, Device Days Over Patient Days)', group: 'J', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'device-infection-rate', name: 'CLABSI, CAUTI or VAE Rate per 1,000 Device Days (NHSN)', group: 'J', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'outbreak-attack-rates', name: 'Outbreak Attack Rates: By Exposure, Overall and Secondary', group: 'J', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'incidence-prevalence', name: 'Incidence Rate, Incidence Proportion and Prevalence', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'mortality-measures', name: 'Mortality Rates: Crude, Cause-Specific, Infant, Maternal and Case Fatality', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'ypll', name: 'Years of Potential Life Lost (YPLL) and YPLL Rate', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'attributable-proportion', name: 'Attributable Proportion Among the Exposed (Attributable Risk Percent)', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'vaccine-effectiveness', name: 'Vaccine Effectiveness or Efficacy From Attack Rates', group: 'J', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'smr', name: 'Standardized Mortality Ratio (SMR): Observed Over Expected', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'direct-age-standardization', name: 'Age-Adjusted Rate by Direct Standardization (2000 U.S. Standard)', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'hcp-exposure-clock', name: 'Healthcare Worker Exposed to Measles, Mumps, Rubella, Varicella or Pertussis: Exclusion Dates (CDC)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hcp-illness-return-date', name: 'Healthcare Worker With an Infection: When Work Exclusion Ends (CDC)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ddd-rate', name: 'Defined Daily Doses per 100 Bed-Days and per 1,000 Patient-Days', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'surgical-prophylaxis-redose', name: 'Surgical Antibiotic Prophylaxis Dose and Redose Clock', group: 'Q', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'med-admin-window', name: 'Was This Dose Given Inside the CMS Administration Window?', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'adjusted-patient-days', name: 'Adjusted Patient Days and Pharmacy Cost or Hours per Adjusted Day', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'chelation-dose', name: 'Succimer, Edetate Calcium Disodium and Dimercaprol Doses (Labels)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
@@ -3320,6 +3354,12 @@ const UTILITIES = [
   { id: 'eat-sleep-console', name: 'Eat, Sleep, Console (neonatal opioid withdrawal)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'niosh-lifting', name: 'NIOSH Lifting Equation', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'noise-exposure', name: 'Occupational Noise Exposure Limits', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'osha-noise-dose', name: 'OSHA Noise Dose and 8-Hour TWA From a Day of Exposures (29 CFR 1910.95 App. A)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'osha-standard-threshold-shift', name: 'OSHA Standard Threshold Shift With Age Correction (29 CFR 1910.95(g), App. F)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'osha-lead-medical-removal', name: 'OSHA Lead Standard: Blood Lead Testing, Medical Removal and Return (29 CFR 1910.1025)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fmcsa-bp-certification', name: 'Commercial Driver (DOT) Blood Pressure Stage and Certification Interval (FMCSA)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'fmcsa-hearing-standard', name: 'Commercial Driver (DOT) Hearing Standard: Whisper Test or Audiometric Average (FMCSA)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'osha-lead-airborne-pel-shift', name: 'OSHA Airborne Lead Limit for a Work Day Over 8 Hours (29 CFR 1910.1025(c)(2))', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hiv-pep-occupational', name: 'Occupational HIV Exposure (PEP decision)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'feno', name: 'FeNO Interpretation (ATS 2011)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'home-oxygen', name: 'Home Oxygen Qualifying Criteria', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -3380,6 +3420,19 @@ const UTILITIES = [
   // answer belongs to. views/group-v921.js, lib/sigma-metric-v921.js,
   // mcp/adapters/sigma-metric-v921.js.
   { id: 'sigma-metric', name: 'Sigma metric (laboratory method performance)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'levey-jennings-limits', name: 'Levey-Jennings Control Limits: Mean, SD and CV From a QC Series', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'clia-pt-acceptance', name: 'CLIA Proficiency Testing Acceptance Limit (Chemistry and Hematology)', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'pt-event-score', name: 'CLIA Proficiency Testing Event Score and the 80% Rule', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'calibration-verification', name: 'Calibration Verification: Recovery and Reportable Range (CLIA)', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'turnaround-time-percentile', name: 'Lab Turnaround Time: Median and 90th Percentile', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'hardy-weinberg-carrier', name: 'Carrier Frequency From Disease Incidence (Hardy-Weinberg)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'residual-carrier-risk', name: 'Residual Carrier Risk After a Negative Carrier Screen', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'recessive-couple-risk', name: 'Autosomal Recessive Risk to a Pregnancy From Both Carrier Risks', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'x-linked-bayes-risk', name: 'X-Linked Carrier Risk Revised by Unaffected Sons (Bayes)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'coefficient-of-relationship', name: 'Consanguinity: Coefficients of Inbreeding and Relationship (Wright)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bayes-risk-table', name: 'Bayesian Risk Table: Prior, Conditional, Joint and Posterior', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ischemia-time-clock', name: 'Organ Recovery and Implant Time Intervals (Ischemia Clock)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'donor-recipient-size-match', name: 'Donor-to-Recipient Weight, Height and BSA Ratios (Size Match)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v922: Cohen's kappa, with the prevalence and bias indices that explain a low kappa
   // beside high agreement. views/group-v922.js, lib/cohens-kappa-v922.js,
@@ -4015,6 +4068,7 @@ const UTILITIES = [
   { id: 'nexus-chest',          name: 'NEXUS Chest (blunt chest-trauma imaging)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'canadian-syncope',     name: 'Canadian Syncope Risk Score',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'edacs',                name: 'EDACS chest-pain score (+ EDACS-ADP)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 't-macs', name: 'T-MACS (Troponin-only Manchester ACS Decision Aid)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'years-pe',             name: 'YEARS algorithm for pulmonary embolism',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'feverpain',            name: 'FeverPAIN score (strep pharyngitis)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'stone-score',          name: 'STONE score (ureteral stone)',                     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -6433,6 +6487,11 @@ function tileNameIndex() {
 }
 
 let heroSearchDocClickBound = false;
+// Re-ranks the open hero-search results after the synonym table or the search corpus arrives. Both load in the
+// background at boot, and a query typed before they land was ranked on names alone and stayed that way until the
+// next keystroke ("they denied it" showed a Texas tool instead of the appeal letter on a slow load). Each
+// bindHeroSearch() replaces this with one bound to the live input; it leaves a row the reader picked alone.
+let refreshHeroResults = () => {};
 function bindHeroSearch() {
   const input = document.getElementById('hero-search');
   const list = document.getElementById('hero-search-results');
@@ -6764,6 +6823,9 @@ function bindHeroSearch() {
     });
   });
   input.addEventListener('input', () => { userPicked = false; clearPickCard(); render(input.value); });
+  refreshHeroResults = () => {
+    if (!userPicked && input.isConnected && input.value.trim() && !list.hidden) render(input.value);
+  };
 
 
   input.addEventListener('keydown', (e) => {
@@ -6859,7 +6921,7 @@ function boot() {
   // spec-v7 §3.2: load the synonym table once at boot. Hero search degrades
   // to fuzzy-only if the fetch fails (e.g., file:// load); synonyms are an
   // optional accelerator, not a hard dependency.
-  loadSynonyms().then((entries) => { SYNONYM_ENTRIES = entries; }).catch(() => {});
+  loadSynonyms().then((entries) => { SYNONYM_ENTRIES = entries; refreshHeroResults(); }).catch(() => {});
   // plain-language-search: load the search corpus once at boot, then rebuild the
   // tile corpus so desc-channel (summary/band) terms become matchable. spec-v736
   // tiered the corpus into corpus.json (Tier 1: name/group/audiences/specialties)
@@ -6878,6 +6940,7 @@ function boot() {
       for (const id of Object.keys(index)) merged[id] = { ...index[id], ...(d[id] || {}) };
       SEARCH_CORPUS = merged;
       TILE_CORPUS_CACHE = null;
+      refreshHeroResults();
     })
     .catch(() => {});
   window.addEventListener('hashchange', route);

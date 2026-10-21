@@ -39,10 +39,12 @@ test('liver or GI stage 2-3 is grade III (severe)', () => {
   assert.equal(gvhdGrade({ giStage: 3 }).gradeRoman, 'III');
 });
 
-test('any organ at stage 4 is grade IV (severe)', () => {
+// spec-v1680: Przepiorka 1995 gives grade IV for skin or liver stage 4 only; gut stage 4 is grade III (gut 2-4),
+// as the table reproduced in PMC5797560 prints it. Gut stage 4 as grade IV is the MAGIC rule.
+test('skin or liver at stage 4 is grade IV; gut stage 4 is grade III', () => {
   assert.equal(gvhdGrade({ skinStage: 4 }).gradeRoman, 'IV');
   assert.equal(gvhdGrade({ liverStage: 4 }).gradeRoman, 'IV');
-  assert.equal(gvhdGrade({ giStage: 4 }).gradeRoman, 'IV');
+  assert.equal(gvhdGrade({ skinStage: 0, liverStage: 0, giStage: 4 }).gradeRoman, 'III');
 });
 
 test('the highest-severity organ drives the overall grade', () => {

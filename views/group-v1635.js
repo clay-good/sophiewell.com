@@ -8,7 +8,7 @@
 // mesna-ifosfamide-schedule, glucarpidase-dose, it-methotrexate-age-dose, hdmtx-leucovorin-rescue,
 // gcsf-timing-check, cumulative-dose-limit, esa-chemo-dose-adjust,
 // chatelut-carboplatin, desensitization-12-step, chemo-organ-label-dose,
-// chemo-dose-verify, pediatric-administered-activity.
+// chemo-dose-verify, pediatric-administered-activity, relative-dose-intensity.
 
 import { el, clear } from '../lib/dom.js';
 import * as IS from '../lib/ind-safety-report-clock-v1635.js';
@@ -42,6 +42,7 @@ import * as CH from '../lib/chatelut-carboplatin-v1635.js';
 import * as DS from '../lib/desensitization-12-step-v1635.js';
 import * as CO from '../lib/chemo-organ-label-dose-v1635.js';
 import * as CV from '../lib/chemo-dose-verify-v1635.js';
+import * as RDI from '../lib/relative-dose-intensity-v1635.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -609,6 +610,16 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       show(CV.chemoDoseVerify(args), o);
+    }));
+  },
+  'relative-dose-intensity'(root) {
+    numField(root, 'Planned dose per cycle (mg, mg/m2 or units; the same unit below)', 'rdi-dose', 'e.g. 75');
+    numField(root, 'Cycle length, days', 'rdi-cycle', 'e.g. 21');
+    numField(root, 'Planned cycles', 'rdi-cycles', 'e.g. 4');
+    areaField(root, 'Cycles given, one per line: the date (YYYY-MM-DD), then the dose', 'rdi-given', '2026-01-05 75');
+    const o = out(); root.appendChild(o);
+    wire(['rdi-dose', 'rdi-cycle', 'rdi-cycles', 'rdi-given'], () => safe(o, () => {
+      show(RDI.relativeDoseIntensity({ plannedDose: val('rdi-dose'), cycleDays: val('rdi-cycle'), plannedCycles: val('rdi-cycles'), delivered: val('rdi-given') }), o);
     }));
   },
 };

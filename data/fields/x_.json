@@ -1,0 +1,1 @@
+{"x-linked-bayes-risk":[{"d":"xl-prior","k":"string","l":"Prior carrier probability","r":1},{"d":"xl-sons","k":"number","l":"Unaffected sons","r":1},{"d":"xl-dr","k":"string","l":"A negative carrier test's detection rate (optional)"}]}

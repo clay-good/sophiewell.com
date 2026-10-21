@@ -927,14 +927,17 @@ test('chads components sum equals chadsVasc() (worked example 3)', () => {
   assert.equal(chadsVasc(inputs).total, 3);
 });
 
+// spec-v1682: the two age items are bands of one variable, so the maximum ticks 75 or older only (9 points);
+// with both ticked the 65-74 point is not added on top of the 75-or-older two.
 test('chads components sum equals chadsVasc() (max with both 2-point items)', () => {
   const inputs = {
     chf: true, hypertension: true, ageGte75: true, diabetes: true,
-    strokeOrTia: true, vascularDisease: true, ageGte65: true, female: true,
+    strokeOrTia: true, vascularDisease: true, ageGte65: false, female: true,
   };
-  // 1 + 1 + 2 + 1 + 2 + 1 + 1 + 1 = 10
+  // 1 + 1 + 2 + 1 + 2 + 1 + 1 = 9
   assert.equal(sumComponents(META.chads, inputs), chadsVasc(inputs).total);
-  assert.equal(chadsVasc(inputs).total, 10);
+  assert.equal(chadsVasc(inputs).total, 9);
+  assert.equal(chadsVasc({ ...inputs, ageGte65: true }).total, 9);
 });
 
 test('hasbled components sum equals hasBled() (worked example 2)', () => {
@@ -1126,8 +1129,10 @@ test('meld30() worked example produces a finite score consistent with the formul
   // Sanity check that the formula text matches the implementation:
   // worked example fields: bili 2.0, INR 1.5, cr 1.3, Na 135, alb 3.0, sex M
   const r = meld30({ bilirubin: 2.0, inr: 1.5, creatinine: 1.3, sodium: 135, albumin: 3.0, sex: 'M', hadDialysisTwiceLastWeek: false });
-  // 17 ± 1 per META example
-  assert.ok(Math.abs(r.score - 17) <= 1, `MELD-3.0 score = ${r.score}`);
+  // spec-v1650: worked by hand -- 4.56 ln2 + 0.82(2) - 0.24(2) ln2 + 9.09 ln1.5 + 11.14 ln1.3
+  // + 1.85(0.5) - 1.83(0.5) ln1.3 + 6 = 17.76, which rounds to 18. The example said "~17"
+  // and a +/-1 tolerance here let it stand.
+  assert.equal(r.score, 18, `MELD-3.0 score = ${r.score}`);
 });
 
 // --- Wave 48-2a: CURB-65, Centor, McIsaac, CIWA-Ar, FOUR Score ---------

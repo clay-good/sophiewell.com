@@ -13,7 +13,7 @@ export default [
     compute: mccormackLsc,
     fields: [
       { dom: 'mcc-comm', arg: 'comminution', kind: 'enum', values: ['1', '2', '3'], required: true, label: 'Comminution of the body: 1 = ≤ 30%, 2 = 30-60%, 3 = > 60%' },
-      { dom: 'mcc-app', arg: 'apposition', kind: 'enum', values: ['1', '2', '3'], required: true, label: 'Fragment apposition/spread: 1 = minimal (< 2 mm), 2 = ≥ 2 mm over ≥ half the surface, 3 = wide spread' },
+      { dom: 'mcc-app', arg: 'apposition', kind: 'enum', values: ['1', '2', '3'], required: true, label: 'Fragment apposition/spread: 1 = minimal, 2 = ≥ 2 mm displacement of < 50% of the cross-section, 3 = of > 50%' },
       { dom: 'mcc-kyph', arg: 'kyphosis', kind: 'enum', values: ['1', '2', '3'], required: true, label: 'Kyphosis to correct: 1 = ≤ 3°, 2 = 4-9°, 3 = ≥ 10°' },
     ],
   },

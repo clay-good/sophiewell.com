@@ -98,9 +98,9 @@ export default [
     summary: 'ESSPRI (Seror 2011): the mean of three 0–10 patient-reported scales — dryness, fatigue, and pain; ≥ 5 is above the patient-acceptable symptom state.',
     compute: F.esspri,
     fields: [
-      { dom: 'esp-dry', arg: 'dryness', kind: 'number', required: true, label: 'Dryness (0–10)' },
-      { dom: 'esp-fat', arg: 'fatigue', kind: 'number', required: true, label: 'Fatigue (0–10)' },
-      { dom: 'esp-pain', arg: 'pain', kind: 'number', required: true, label: 'Pain (limb / articular / muscular) (0–10)' },
+      { dom: 'esp-dry', arg: 'dryness', kind: 'number', min: 0, max: 10, required: true, label: 'Dryness (0–10)' },
+      { dom: 'esp-fat', arg: 'fatigue', kind: 'number', min: 0, max: 10, required: true, label: 'Fatigue (0–10)' },
+      { dom: 'esp-pain', arg: 'pain', kind: 'number', min: 0, max: 10, required: true, label: 'Pain (limb / articular / muscular) (0–10)' },
     ],
   },
 ];

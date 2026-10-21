@@ -2,20 +2,20 @@
 
 ## 1. Answer card
 
-- [ ] 1.1 Add the confidence gate (threshold + margin over runner-up, Design D1) reading the
+- [~] 1.1 (superseded by the spec-v754/v756 ambiguity gate, AMBIGUITY_MARGIN in app.js; audited 2026-10-20) Add the confidence gate (threshold + margin over runner-up, Design D1) reading the
       ranked resolver API from `plain-language-search`; constants exported via `_testing`.
 - [x] 1.2 The top hit's option becomes an answer card: name (already shown), a plain-language
       one-liner (`corpusOneLiner`: corpus `what` -> first sentence of adapter summary -> none,
       Design D2), and a "matched: ..." breadcrumb -- scoped to synonym-routed hits where the
       query->tile link is non-obvious. Kept as an augmented listbox option (not a distinct
       option 0) so the combobox a11y contract is untouched. e2e: "kidney function" -> egfr card.
-- [ ] 1.3 Style the card in `styles.css`; two-line cap with ellipsis; 320px no-overflow.
+- [x] 1.3 (one-line ellipsis rows in styles.css; 320px in mobile-no-hscroll.spec.js) Style the card in `styles.css`; two-line cap with ellipsis; 320px no-overflow.
 
 ## 2. Related-tools chips
 
-- [ ] 2.1 Render up to 3 chips from `META.related` (authored order) inside the card row;
+- [~] 2.1 (superseded: related tools show on the tool page, lib/related.js, spec-v940) Render up to 3 chips from `META.related` (authored order) inside the card row;
       pointer routing per chip (Design D3).
-- [ ] 2.2 Expose chips to AT as in-option links; confirm the card remains a single listbox
+- [~] 2.2 (superseded with 2.1) Expose chips to AT as in-option links; confirm the card remains a single listbox
       option for keyboard flow.
 
 ## 3. Inline compute
@@ -38,25 +38,25 @@
 
 ## 4. Zero-result recovery
 
-- [ ] 4.1 On empty results: one-edit "Did you mean" option when the rewrite changes the query;
+- [~] 4.1 (dropped in spec-v282; typo repair covers it, spec-v287) On empty results: one-edit "Did you mean" option when the rewrite changes the query;
       browse-group links; "No tools match." only as the final line (Design D7).
 
 ## 5. Tests & guards
 
-- [ ] 5.1 Unit (`lib/query-compute.js`): each template — happy parse computes the documented
+- [x] 5.1 (test/unit/query-compute.test.js) Unit (`lib/query-compute.js`): each template — happy parse computes the documented
       value; missing unit → null; unit variants (lb/kg, °F/°C, cm/in, feet-inches) convert
       correctly; trigger tokens without numbers → null.
-- [ ] 5.2 Unit: gate behavior — high-margin top hit renders card; near-tie renders plain list.
-- [ ] 5.3 e2e: "bmi 180 lb 5'10" shows an inline BMI row; Enter opens the BMI tile with the
+- [x] 5.2 (in its superseded form: ambiguous-pick-order.test.js and the spec-v756 smoke test) Unit: gate behavior — high-margin top hit renders card; near-tie renders plain list.
+- [x] 5.3 (smoke.spec.js, the bmi 180 lb 5'10 inline compute) e2e: "bmi 180 lb 5'10" shows an inline BMI row; Enter opens the BMI tile with the
       same inputs and the same value rendered by the tile itself (prefill round-trip).
-- [ ] 5.4 e2e: answer card shows breadcrumb for a synonym query ("kidney function"); related
+- [x] 5.4 (breadcrumb tested in smoke.spec.js; chips and zero-result recovery superseded) e2e: answer card shows breadcrumb for a synonym query ("kidney function"); related
       chips route; zero-result query shows recovery options.
-- [ ] 5.5 e2e: combobox a11y sweep — roles, `aria-activedescendant`, keyboard wrap, Escape —
+- [x] 5.5 (test/integration/hero-search-keyboard.spec.js, added 2026-10-20; 320px in mobile-no-hscroll.spec.js) e2e: combobox a11y sweep — roles, `aria-activedescendant`, keyboard wrap, Escape —
       unchanged with card/inline rows present; mobile 320px no-overflow sweep passes.
 
 ## 6. Ship
 
-- [ ] 6.1 `npm run lint`, `npm test`, `npm run build` green (em-dash guard applies to app.js /
+- [x] 6.1 `npm run lint`, `npm test`, `npm run build` green (em-dash guard applies to app.js /
       styles.css strings).
 - [x] 6.2 `docs/spec-v282.md` records the answer card + inline compute; CHANGELOG entry added.
-- [ ] 6.3 Catalog count unchanged; no new routes; no MCP/dist-data impact beyond app shell.
+- [x] 6.3 Catalog count unchanged; no new routes; no MCP/dist-data impact beyond app shell.

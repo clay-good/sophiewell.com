@@ -3,6 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import * as C from '../../lib/clinical.js';
+import { META } from '../../lib/meta.js';
 
 const close = (a, b, eps = 0.05) => Math.abs(a - b) <= eps;
 
@@ -229,6 +230,24 @@ test('nihss: all thirteen items scored 0 = 0, no symptoms', () => {
   const r = C.nihss(Object.fromEntries(C.NIHSS_ITEMS.map((i) => [i.id, 0])));
   assert.equal(r.total, 0);
   assert.equal(r.severity, 'No stroke symptoms');
+});
+// spec-v1645: the result names the same band the tile's own table does.
+test('nihss: severity agrees with META bands at every edge', () => {
+  const zero = Object.fromEntries(C.NIHSS_ITEMS.map((i) => [i.id, 0]));
+  const at = (t) => {
+    const a = { ...zero };
+    let left = t;
+    for (const i of C.NIHSS_ITEMS) { const v = Math.min(i.max, left); a[i.id] = v; left -= v; }
+    return C.nihss(a);
+  };
+  for (const [t, s] of [[4, 'Minor stroke'], [5, 'Moderate stroke'], [15, 'Moderate stroke'],
+    [16, 'Moderate-to-severe stroke'], [20, 'Moderate-to-severe stroke'], [21, 'Severe stroke']]) {
+    const r = at(t);
+    assert.equal(r.total, t);
+    assert.equal(r.severity, s, `total ${t}`);
+    const band = META.nihss.derivation.bands.find((b) => t >= b.range[0] && t <= b.range[1]);
+    assert.equal(band.label, s.toLowerCase(), `total ${t} vs META`);
+  }
 });
 test('nihss: rejects out-of-range item', () => {
   assert.throws(() => C.nihss({ '5': 99 }));

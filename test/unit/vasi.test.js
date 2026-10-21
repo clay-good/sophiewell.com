@@ -63,8 +63,10 @@ test('full-body full depigmentation is the maximum', () => {
   assert.equal(r.total, VASI_MAX);
 });
 
+// spec-v1677: an empty form is no examination and is refused; regions entered as 0 hand units score 0.
 test('no involvement scores zero', () => {
-  const r = vasi({});
+  assert.equal(vasi({}).valid, false);
+  const r = vasi(Object.fromEntries(VASI_REGIONS.map((g) => [`${g.key}Area`, '0'])));
   assert.equal(r.valid, true);
   assert.equal(r.total, 0);
   assert.equal(r.totalHandUnits, 0);
@@ -77,7 +79,7 @@ test('a region with area but no depigmentation grade is refused', () => {
 });
 
 test('a region with a grade but no area contributes nothing', () => {
-  const r = vasi({ trunkDepigmentation: '100' });
+  const r = vasi({ trunkDepigmentation: '100', handsArea: '0' });
   assert.equal(r.valid, true);
   assert.equal(r.total, 0);
 });

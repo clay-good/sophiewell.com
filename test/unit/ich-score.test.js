@@ -32,10 +32,18 @@ test('ich-score 4 (GCS 3-4 + vol>=30 + IVH) -> 97%', () => {
   assert.equal(r.mortality30d, '97%');
 });
 
-test('ich-score 6 (all 5 maxima) -> 100%', () => {
+test('ich-score 5 -> 100% (all 6 cohort patients at 5 died)', () => {
+  const r = ichScore({ gcs: 3, age: 90, ichVolumeMl: 60, ivh: true });
+  assert.equal(r.score, 5);
+  assert.equal(r.mortality30d, '100%');
+});
+
+test('ich-score 6 (all 5 maxima) -> no rate; the paper reports none for 6', () => {
   const r = ichScore({ gcs: 3, age: 90, ichVolumeMl: 60, infratentorial: true, ivh: true });
   assert.equal(r.score, 6);
-  assert.equal(r.mortality30d, '100%');
+  assert.equal(r.mortality30d, 'not reported');
+  assert.doesNotMatch(r.band, /6: 30-day mortality 100%/);
+  assert.match(r.band, /no 30-day mortality for a score of 6/);
 });
 
 test('ich-score rejects bad inputs', () => {

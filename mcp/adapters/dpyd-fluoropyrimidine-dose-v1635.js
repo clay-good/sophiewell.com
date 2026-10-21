@@ -13,7 +13,7 @@ export default [
     fields: [
       { dom: 'dfd-drug', arg: 'drug', kind: 'enum', required: true, values: DF.DRUGS.map((d) => d.value), label: 'Drug' },
       { dom: 'dfd-variants', arg: 'variants', kind: 'string', required: false, label: 'DPYD variants as the report lists them, one per line ("Reference" for a copy with none found)' },
-      { dom: 'dfd-score', arg: 'activityScore', kind: 'number', required: false, label: 'Or the DPYD activity score the report prints (0 to 2)' },
+      { dom: 'dfd-score', arg: 'activityScore', kind: 'number', min: 0, max: 2, required: false, label: 'Or the DPYD activity score the report prints (0 to 2)' },
     ],
   },
 ];

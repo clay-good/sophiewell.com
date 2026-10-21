@@ -978,3 +978,23 @@ experience**.
 > v1634, Medication Reconciliation Discrepancy Rate — [spec-v1634](spec-v1634.md), which adds `medrec-discrepancy-rate` from the open CBE 2456 measure page — is 2315.)
 
 > v1634, INR Variability (Fihn Variance Growth Rate) — [spec-v1634](spec-v1634.md), which adds `inr-variability` from the formula printed in a Free Access 2013 paper — is 2316.)
+
+> v1635, Relative Dose Intensity — [spec-v1635](spec-v1635.md), which adds `relative-dose-intensity` with both published time bases, on the owner's decision of October 18, 2026 — is 2317.)
+
+> v1636, Surgical Antibiotic Prophylaxis Dose and Redose Clock — [spec-v1636](spec-v1636.md), which adds `surgical-prophylaxis-redose` from Table 1 read in a copy the owner saved — is 2318.)
+
+> v1655, Infection Prevention Arithmetic and Healthcare Worker Exclusion Clocks — [spec-v1655](spec-v1655.md), which adds `nhsn-sir`, `device-utilization-ratio`, `device-infection-rate`, `outbreak-attack-rates`, `hcp-exposure-clock` and `hcp-illness-return-date` from NHSN and CDC pages read October 19, 2026 — is 2324.)
+
+> v1656, Occupational and Employee Health Rules — [spec-v1656](spec-v1656.md), which adds `osha-noise-dose`, `osha-standard-threshold-shift`, `osha-lead-medical-removal`, `fmcsa-bp-certification`, `fmcsa-hearing-standard` and `osha-lead-airborne-pel-shift` from 29 CFR 1910.95, 29 CFR 1910.1025 and 49 CFR Part 391 read on the eCFR October 19, 2026 — is 2330.)
+
+> v1657, Unit and Facility Operations Arithmetic — [spec-v1657](spec-v1657.md), which adds `nursing-hppd`, `pbj-hours-per-resident-day`, `pbj-case-mix-adjusted-hours`, `nursing-home-staffing-star`, `staff-turnover-rate`, `fte-from-hours`, `bed-occupancy-alos`, `overtime-agency-share`, `unit-budget-variance`, `case-mix-index` and `staffing-grid` from the CMS Five-Star Technical Users' Guide (September 2026) and the CMS hospital cost report data dictionary, read October 19, 2026 — is 2341.)
+
+> v1658, Laboratory Quality Control and Proficiency Testing — [spec-v1658](spec-v1658.md), which adds `levey-jennings-limits`, `clia-pt-acceptance`, `pt-event-score`, `calibration-verification` and `turnaround-time-percentile` from 42 CFR 493.931, 493.941, 493.841, 493.851 and 493.1255 read on the eCFR October 19, 2026 — is 2346.)
+
+> v1659, Public Health Epidemiology Measures — [spec-v1659](spec-v1659.md), which adds `incidence-prevalence`, `mortality-measures`, `ypll`, `attributable-proportion`, `vaccine-effectiveness`, `smr` and `direct-age-standardization` from CDC's *Principles of Epidemiology*, Lesson 3, and the SEER 2000 U.S. standard population, read October 19, 2026 — is 2353.)
+
+> v1660, Genetic Counseling Risk Arithmetic — [spec-v1660](spec-v1660.md), which adds `hardy-weinberg-carrier`, `residual-carrier-risk`, `recessive-couple-risk`, `x-linked-bayes-risk`, `coefficient-of-relationship` and `bayes-risk-table` from Hardy 1908 and Wright 1922, read in open copies October 19, 2026, and Bayes' theorem — is 2359.)
+
+> v1661, Transplant Size Match and Event Intervals — [spec-v1661](spec-v1661.md), which adds `ischemia-time-clock` and `donor-recipient-size-match`, the two transplant tools that need no OPTN coefficient — is 2361.)
+
+> v1662, T-MACS — [spec-v1662](spec-v1662.md), which adds `t-macs` from two open reprints of the equation and the authors' protocol for the risk groups, read October 20, 2026 — is 2362.)

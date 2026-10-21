@@ -31,7 +31,7 @@ export default [
       { dom: 'cd-stools', arg: 'stools', kind: 'number', label: 'Liquid/soft stools (sum over 7 days)' },
       { dom: 'cd-pain', arg: 'pain', kind: 'number', label: 'Abdominal pain (sum of daily 0-3 over 7 days)' },
       { dom: 'cd-well', arg: 'wellbeing', kind: 'number', label: 'General well-being (sum of daily 0-4 over 7 days)' },
-      { dom: 'cd-comp', arg: 'complications', kind: 'number', label: 'Number of complications (0-6)' },
+      { dom: 'cd-comp', arg: 'complications', kind: 'number', min: 0, max: 6, label: 'Number of complications (0-6)' },
       { dom: 'cd-anti', arg: 'antidiarrheal', kind: 'bool', label: 'Antidiarrheal use' },
       { dom: 'cd-mass', arg: 'abdMass', kind: 'number', required: true, label: 'Abdominal mass (0 none, 2 questionable, 5 definite)', values: ['0', '2', '5'] },
       { dom: 'cd-female', arg: 'female', kind: 'bool', label: 'Female (sets the hematocrit reference to 42)' },

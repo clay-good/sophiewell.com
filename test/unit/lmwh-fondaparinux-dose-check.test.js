@@ -22,7 +22,8 @@ test('a weight inside a row reads that row; one between two whole-kilogram rows 
   assert.deepEqual(bandRows(UA_TABLE, 50).map((r) => r[2]), [6500]);
   assert.deepEqual(bandRows(UA_TABLE, 59).map((r) => r[2]), [6500]);
   assert.deepEqual(bandRows(UA_TABLE, 59.5).map((r) => r[2]), [6500, 7500]);
-  assert.deepEqual(bandRows(UA_TABLE, 49.5).map((r) => r[2]), [5500, 6500]);
+  // Table 1 prints the first row as "<50 kg", so 49.5 kg is in it alone (spec-v1665).
+  assert.deepEqual(bandRows(UA_TABLE, 49.5).map((r) => r[2]), [5500]);
   assert.deepEqual(bandRows(UA_TABLE, 120).map((r) => r[2]), [10000]);
   const r = run({ drug: 'dalteparin', indication: 'ua-nqmi', weight: 59.5 });
   assert.deepEqual(r.doses, [6500, 7500]);

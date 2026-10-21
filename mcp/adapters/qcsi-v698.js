@@ -8,7 +8,7 @@ import { qcsi } from '../../lib/qcsi-v698.js';
 export default [
   {
     id: 'qcsi',
-    summary: 'Quick COVID-19 Severity Index (Haimovich 2020): 24-hour risk of respiratory decompensation in admitted COVID-19. Respiratory rate (<=22=0, 23-28=1, >28=2), SpO2 (>92=0, 89-92=2, <=88=5), O2 flow L/min (<=2=0, 3-4=4, >=5=5). Total 0-12; approx 24h risk 0-3 ~4%, 4-6 ~30%, 7-9 ~44%, 10-12 ~57%; >3 commonly elevated.',
+    summary: 'Quick COVID-19 Severity Index (Haimovich 2020): 24-hour risk of respiratory decompensation in admitted COVID-19. Respiratory rate (<=22=0, 23-28=1, >28=2), SpO2 (>92=0, 89-92=2, <=88=5), O2 flow L/min (<=2=0, 3-4=4, 5-6=5; not applicable above 6). Total 0-12; approx 24h risk 0-3 ~4%, 4-6 ~30%, 7-9 ~44%, 10-12 ~57%; >3 commonly elevated.',
     compute: qcsi,
     fields: [
       { dom: 'qcsi-rr', arg: 'respiratoryRate', kind: 'number', unit: 'breaths/min', required: true, label: 'Respiratory rate (breaths/min)' },

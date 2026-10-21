@@ -8,7 +8,7 @@ import { ausdrisk } from '../../lib/ausdrisk-v711.js';
 export default [
   {
     id: 'ausdrisk',
-    summary: 'AUSDRISK (Chen 2010): Australian 5-year type-2 diabetes risk, total 0-35. Age (0/2/4/6/8), male +3, indigenous/Pacific +2, high-risk birthplace +2, family history +3, ever high glucose +6, antihypertensive +2, smoker +2, low veg/fruit +1, low activity +2, and waist (0/4/7, ethnicity- and sex-specific bands). Tiers: <=5 low, 6-14 intermediate, >=15 high (a fasting glucose test is advised).',
+    summary: 'AUSDRISK (Chen 2010): Australian 5-year type-2 diabetes risk, total 0-35. Age (0/2/4/6/8), male +3, indigenous/Pacific +2, high-risk birthplace +2, family history +3, ever high glucose +6, antihypertensive +2, smoker +2, low veg/fruit +1, low activity +2, and waist (0/4/7, ethnicity- and sex-specific bands). Tiers: <=5 low, 6-11 intermediate, >=12 high (a fasting glucose test is advised).',
     compute: ausdrisk,
     fields: [
       { dom: 'aus-age', arg: 'agePoints', kind: 'enum', values: ['0', '2', '4', '6', '8'], required: true, label: 'Age band (points)' },

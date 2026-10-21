@@ -106,7 +106,7 @@ export default [
     summary: 'Alveolar-arterial oxygen gradient: PAO2 = FiO2*(760-47) - PaCO2/0.8, A-a = PAO2 - PaO2.',
     compute: F.aaGradient,
     fields: [
-      { dom: 'fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO2 (0-1)' },
+      { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, required: true, label: 'FiO2 (0-1)' },
       { dom: 'paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
       { dom: 'pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
     ],
@@ -184,7 +184,7 @@ export default [
     compute: F.pfRatio,
     fields: [
       { dom: 'pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
-      { dom: 'fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO2 (0-1)' },
+      { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, required: true, label: 'FiO2 (0-1)' },
     ],
   },
   {
@@ -239,7 +239,7 @@ export default [
     // is only in the A-a gradient and the age only in the age-expected value, so
     // an agent with a blood gas and no age still gets a P/F ratio.
     fields: [
-      { dom: 'sf-fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO2 (0-1)' },
+      { dom: 'sf-fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, required: true, label: 'FiO2 (0-1)' },
       { dom: 'sf-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
       { dom: 'sf-paco2', arg: 'paco2', kind: 'number', label: 'PaCO2', unit: 'mmHg' },
       { dom: 'sf-age', arg: 'age', kind: 'number', label: 'Age', unit: 'years' },
@@ -331,9 +331,9 @@ export default [
     summary: 'Glasgow Coma Scale: eye opening (1-4) + best verbal (1-5) + best motor (1-6); total 3-15 with severity band (>=13 mild, 9-12 moderate, <=8 severe).',
     compute: F.gcs,
     fields: [
-      { dom: 'eye', arg: 'eye', kind: 'number', required: true, label: 'Eye opening (1-4)' },
-      { dom: 'verbal', arg: 'verbal', kind: 'number', required: true, label: 'Best verbal response (1-5)' },
-      { dom: 'motor', arg: 'motor', kind: 'number', required: true, label: 'Best motor response (1-6)' },
+      { dom: 'eye', arg: 'eye', kind: 'number', min: 1, max: 4, required: true, label: 'Eye opening (1-4)' },
+      { dom: 'verbal', arg: 'verbal', kind: 'number', min: 1, max: 5, required: true, label: 'Best verbal response (1-5)' },
+      { dom: 'motor', arg: 'motor', kind: 'number', min: 1, max: 6, required: true, label: 'Best motor response (1-6)' },
     ],
   },
   {
@@ -341,11 +341,11 @@ export default [
     summary: 'APGAR newborn assessment: appearance, pulse, grimace, activity, respiration each scored 0-2; total 0-10 (<4 severely depressed, 4-6 moderately depressed, >=7 normal).',
     compute: F.apgar,
     fields: [
-      { dom: 'appearance', arg: 'appearance', kind: 'number', required: true, label: 'Appearance / color (0-2)' },
-      { dom: 'pulse', arg: 'pulse', kind: 'number', required: true, label: 'Pulse (0-2)' },
-      { dom: 'grimace', arg: 'grimace', kind: 'number', required: true, label: 'Grimace / reflex irritability (0-2)' },
-      { dom: 'activity', arg: 'activity', kind: 'number', required: true, label: 'Activity / muscle tone (0-2)' },
-      { dom: 'respiration', arg: 'respiration', kind: 'number', required: true, label: 'Respiration (0-2)' },
+      { dom: 'appearance', arg: 'appearance', kind: 'number', min: 0, max: 2, required: true, label: 'Appearance / color (0-2)' },
+      { dom: 'pulse', arg: 'pulse', kind: 'number', min: 0, max: 2, required: true, label: 'Pulse (0-2)' },
+      { dom: 'grimace', arg: 'grimace', kind: 'number', min: 0, max: 2, required: true, label: 'Grimace / reflex irritability (0-2)' },
+      { dom: 'activity', arg: 'activity', kind: 'number', min: 0, max: 2, required: true, label: 'Activity / muscle tone (0-2)' },
+      { dom: 'respiration', arg: 'respiration', kind: 'number', min: 0, max: 2, required: true, label: 'Respiration (0-2)' },
     ],
   },
   {
@@ -357,7 +357,7 @@ export default [
       { dom: 'paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
       { dom: 'hco3', arg: 'hco3', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L' },
       { dom: 'pao2', arg: 'pao2', kind: 'number', label: 'PaO2 (optional, enables oxygenation indices)', unit: 'mmHg' },
-      { dom: 'fio2', arg: 'fio2', kind: 'number', label: 'FiO2 (0-1, optional, enables oxygenation indices)' },
+      { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, label: 'FiO2 (0-1, optional, enables oxygenation indices)' },
     ],
   },
   {
@@ -432,19 +432,19 @@ export default [
     summary: 'NIH Stroke Scale: the 11 public-instrument items (LOC x3, gaze, visual fields, facial palsy, motor arm/leg as L+R sums, ataxia, sensory, language, dysarthria, extinction), each 0 to its item max; total 0-42 with severity band (0 none, 1-4 minor, 5-20 moderate, >=21 severe). Unscored items are treated as 0, matching the tile.',
     compute: F.nihss,
     fields: [
-      { dom: '1a', arg: '1a', kind: 'number', label: '1a Level of consciousness (0-3)' },
-      { dom: '1b', arg: '1b', kind: 'number', label: '1b LOC questions (0-2)' },
-      { dom: '1c', arg: '1c', kind: 'number', label: '1c LOC commands (0-2)' },
-      { dom: '2', arg: '2', kind: 'number', label: '2 Best gaze (0-2)' },
-      { dom: '3', arg: '3', kind: 'number', label: '3 Visual fields (0-3)' },
-      { dom: '4', arg: '4', kind: 'number', label: '4 Facial palsy (0-3)' },
-      { dom: '5', arg: '5', kind: 'number', label: '5 Motor arm, sum of left + right (0-8)' },
-      { dom: '6', arg: '6', kind: 'number', label: '6 Motor leg, sum of left + right (0-8)' },
-      { dom: '7', arg: '7', kind: 'number', label: '7 Limb ataxia (0-2)' },
-      { dom: '8', arg: '8', kind: 'number', label: '8 Sensory (0-2)' },
-      { dom: '9', arg: '9', kind: 'number', label: '9 Best language (0-3)' },
-      { dom: '10', arg: '10', kind: 'number', label: '10 Dysarthria (0-2)' },
-      { dom: '11', arg: '11', kind: 'number', label: '11 Extinction and inattention (0-2)' },
+      { dom: '1a', arg: '1a', kind: 'number', min: 0, max: 3, label: '1a Level of consciousness (0-3)' },
+      { dom: '1b', arg: '1b', kind: 'number', min: 0, max: 2, label: '1b LOC questions (0-2)' },
+      { dom: '1c', arg: '1c', kind: 'number', min: 0, max: 2, label: '1c LOC commands (0-2)' },
+      { dom: '2', arg: '2', kind: 'number', min: 0, max: 2, label: '2 Best gaze (0-2)' },
+      { dom: '3', arg: '3', kind: 'number', min: 0, max: 3, label: '3 Visual fields (0-3)' },
+      { dom: '4', arg: '4', kind: 'number', min: 0, max: 3, label: '4 Facial palsy (0-3)' },
+      { dom: '5', arg: '5', kind: 'number', min: 0, max: 8, label: '5 Motor arm, sum of left + right (0-8)' },
+      { dom: '6', arg: '6', kind: 'number', min: 0, max: 8, label: '6 Motor leg, sum of left + right (0-8)' },
+      { dom: '7', arg: '7', kind: 'number', min: 0, max: 2, label: '7 Limb ataxia (0-2)' },
+      { dom: '8', arg: '8', kind: 'number', min: 0, max: 2, label: '8 Sensory (0-2)' },
+      { dom: '9', arg: '9', kind: 'number', min: 0, max: 3, label: '9 Best language (0-3)' },
+      { dom: '10', arg: '10', kind: 'number', min: 0, max: 2, label: '10 Dysarthria (0-2)' },
+      { dom: '11', arg: '11', kind: 'number', min: 0, max: 2, label: '11 Extinction and inattention (0-2)' },
     ],
   },
 

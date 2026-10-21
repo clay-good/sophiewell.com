@@ -41,6 +41,7 @@ export const renderers = {
 
     root.appendChild(el('h2', { text: 'Attacks, for paroxysmal hemicrania' }));
     numField(root, 'Number of attacks so far', 'ind-attacks', { min: '0', step: '1' });
+    root.appendChild(checkField('Severe one-sided orbital, supraorbital and/or temporal pain', 'ind-pain'));
     numField(root, 'Attack duration, minutes', 'ind-minutes', { min: '0', step: '1' });
     numField(root, 'Attacks per day', 'ind-perday', { min: '0', step: '1' });
 
@@ -61,7 +62,7 @@ export const renderers = {
     root.appendChild(el('h2', { text: 'Exclusion' }));
     root.appendChild(checkField('Not better accounted for by another ICHD-3 diagnosis', 'ind-noother'));
 
-    const ids = ['ind-response', 'ind-attacks', 'ind-minutes', 'ind-perday', 'ind-continuous',
+    const ids = ['ind-response', 'ind-attacks', 'ind-pain', 'ind-minutes', 'ind-perday', 'ind-continuous',
       'ind-months', 'ind-exacerbations', 'ind-conjunctival', 'ind-nasal', 'ind-eyelid',
       'ind-sweating', 'ind-miosis', 'ind-restless', 'ind-movement', 'ind-noother'];
     const o = out(); root.appendChild(o);
@@ -69,6 +70,7 @@ export const renderers = {
       const r = M.indomethacinHeadacheIchd3({
         indomethacinResponse: checked('ind-response'),
         attackCount: val('ind-attacks'),
+        severeUnilateralPain: checked('ind-pain'),
         attackMinutes: val('ind-minutes'),
         attacksPerDay: val('ind-perday'),
         unilateralContinuous: checked('ind-continuous'),

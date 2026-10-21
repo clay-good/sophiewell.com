@@ -12,7 +12,7 @@ export default [
     summary: 'Groningen Frailty Indicator (Steverink N, Slaets JP, et al. 2001): a count of positive items across physical, cognitive, social, and psychological domains for a 0-15 total, where >= 4 indicates frailty.',
     compute: F.groningen,
     fields: [
-      { dom: 'gfi-count', arg: 'count', kind: 'number', required: true, label: 'Total items positive (0-15)' },
+      { dom: 'gfi-count', arg: 'count', kind: 'number', min: 0, max: 15, required: true, label: 'Total items positive (0-15)' },
     ],
   },
   {

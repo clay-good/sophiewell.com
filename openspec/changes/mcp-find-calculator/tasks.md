@@ -2,7 +2,7 @@
 
 ## 1. Shared corpus assembler
 
-- [ ] 1.1 Extract the pure per-tile ranking-row builder (`lib/search-doc.js`, Design D1) and
+- [~] 1.1 (deferred, audited 2026-10-20: spec-v282 defers it to the full IDF ranker, which was never built; only spec-v288's IDF bonus shipped) Extract the pure per-tile ranking-row builder (`lib/search-doc.js`, Design D1) and
       switch the browser corpus enrichment to it (coordinated with `plain-language-search`).
       DEFERRED with the IDF/corpus-consuming ranker (plain-language-search tasks 2, 3.1-3.4):
       the current `resolvePromptRanked` builds its own search doc from name/specialties, so no
@@ -42,6 +42,6 @@
 
 ## 5. Ship
 
-- [ ] 5.1 `npm run lint`, `npm test`, `npm run build` green; dist byte-identical (MCP-only
+- [x] 5.1 (audited 2026-10-20: shipped; test/mcp/mcp-tools.test.js, mcp-search-relevance.test.js) `npm run lint`, `npm test`, `npm run build` green; dist byte-identical (MCP-only
       change; e2e/mobile sweeps unaffected).
-- [ ] 5.2 CHANGELOG entry; catalog count and coverage count unchanged (no new adapters).
+- [x] 5.2 (CHANGELOG "mcp-discovery" entry) CHANGELOG entry; catalog count and coverage count unchanged (no new adapters).

@@ -22,9 +22,9 @@ export default [
     compute: C.emMdm2023,
     fields: [
       { dom: 'emm-setting', arg: 'setting', kind: 'enum', values: ['office', 'inpatient-initial', 'inpatient-subsequent', 'ed', 'snf-initial', 'snf-subsequent', 'home-new', 'home-established'], required: true, label: 'Setting of the encounter' },
-      { dom: 'emm-prob', arg: 'problems', kind: 'number', required: true, label: 'Problems level (1 minimal to 4 high)', values: ['2', '3', '4', '5'] },
-      { dom: 'emm-data', arg: 'data', kind: 'number', required: true, label: 'Data level (1 to 4)', values: ['2', '3', '4', '5'] },
-      { dom: 'emm-risk', arg: 'risk', kind: 'number', required: true, label: 'Risk level (1 to 4)', values: ['2', '3', '4', '5'] },
+      { dom: 'emm-prob', arg: 'problems', kind: 'number', required: true, label: 'Problems level (2 to 5: straightforward, low, moderate, high)', values: ['2', '3', '4', '5'] },
+      { dom: 'emm-data', arg: 'data', kind: 'number', required: true, label: 'Data level (2 to 5: straightforward, low, moderate, high)', values: ['2', '3', '4', '5'] },
+      { dom: 'emm-risk', arg: 'risk', kind: 'number', required: true, label: 'Risk level (2 to 5: straightforward, low, moderate, high)', values: ['2', '3', '4', '5'] },
     ],
   },
   {

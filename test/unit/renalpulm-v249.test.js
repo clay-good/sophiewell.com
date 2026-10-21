@@ -42,3 +42,11 @@ test('integrative-weaning-index: < 25 below threshold', () => {
   assert.ok(r.score < 25);
   assert.equal(r.abnormal, true);
 });
+
+// spec-v1648: exactly 1 printed "favors prerenal azotemia (< 1)".
+test('renalFailureIndex: exactly 1 reads indeterminate, not "< 1"', () => {
+  const r = renalFailureIndex({ urineNa: 10, plasmaCr: 6, urineCr: 60 });
+  assert.equal(r.score, 1);
+  assert.match(r.band, /at the cutoff \(indeterminate\)/);
+  assert.doesNotMatch(r.band, /< 1\)/);
+});

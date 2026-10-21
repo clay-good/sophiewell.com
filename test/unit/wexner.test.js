@@ -16,8 +16,9 @@ test('the five items sum to the total (the META example: 0+2+3+1+1 = 7)', () => 
   assert.match(r.band, /score 7 of 20/);
 });
 
-test('all-zero (or no input) is 0 of 20, perfect continence', () => {
-  assert.equal(wexner({}).total, 0);
+// spec-v1680: an empty form is no longer "perfect continence"; every item is asked for.
+test('all-zero is 0 of 20, perfect continence; no input is refused', () => {
+  assert.equal(wexner({}).valid, false);
   const r = wexner({ solid: '0', liquid: '0', gas: '0', pad: '0', lifestyle: '0' });
   assert.equal(r.total, 0);
   assert.equal(r.abnormal, false);
@@ -40,10 +41,11 @@ test('a total of 9 crosses the commonly-cited clinically-significant threshold',
   assert.equal(below.significant, false);
 });
 
-test('missing items default to 0 (never)', () => {
+// spec-v1680: a missing item was read as "never"; it is now named and asked for.
+test('missing items are asked for, not read as never', () => {
   const r = wexner({ liquid: '3' });
-  assert.equal(r.total, 3);
-  assert.equal(r.items.solid, 0);
+  assert.equal(r.valid, false);
+  assert.match(r.message, /solid, gas, pad, lifestyle are not answered/);
 });
 
 test('out-of-range or non-integer items are invalid', () => {

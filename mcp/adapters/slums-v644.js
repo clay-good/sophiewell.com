@@ -20,7 +20,7 @@ export default [
     fields: [
       { dom: 'slums-edu', arg: 'education', kind: 'enum', values: ['hs', 'less-hs'], required: true, label: 'Education: hs = high-school or above, less-hs = less than high-school (sets the cut points)' },
       ...SLUMS_ITEMS.map((it) => ({
-        dom: DOM[it.key], arg: it.key, kind: 'number', required: false,
+        dom: DOM[it.key], arg: it.key, kind: 'number', min: 0, max: it.max, required: false,
         label: `Points earned — ${it.label} (0-${it.max})`,
       })),
     ],

@@ -11,7 +11,7 @@ export default [
     summary: "Plaque Control Record (O'Leary 1972): percent of tooth surfaces with plaque at the gingival margin = (plaque-positive surfaces / total surfaces) x 100, where total = 4 surfaces x teeth present. A record <= 10% is good plaque control; higher indicates a need to improve oral hygiene (some references use a 20% target). Tracks oral-hygiene performance.",
     compute: plaqueControlRecord,
     fields: [
-      { dom: 'pcr-teeth', arg: 'teethPresent', kind: 'number', required: true, label: 'Number of teeth present (1-32)' },
+      { dom: 'pcr-teeth', arg: 'teethPresent', kind: 'number', min: 1, max: 32, required: true, label: 'Number of teeth present (1-32)' },
       { dom: 'pcr-surfaces', arg: 'plaqueSurfaces', kind: 'number', required: true, label: 'Plaque-positive surfaces (4 checked per tooth)' },
     ],
   },

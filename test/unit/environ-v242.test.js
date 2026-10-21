@@ -48,3 +48,15 @@ test('wbgt: indoor drops globe term', () => {
   const r = wbgt({ setting: 'indoor', naturalWetBulb: 25, dryBulb: 30 });
   assert.equal(r.score, 26.5); // 0.7*25 + 0.3*30
 });
+
+// spec-v1649: the band named an integer range ("30-39") its comparison does not use.
+test('humidex: a value between 39 and 40 is labelled with the interval it falls in', () => {
+  let seen = false;
+  for (let t = 30; t <= 36; t += 0.1) for (let d = 15; d <= 26; d += 0.1) {
+    const r = humidex({ tempC: +t.toFixed(1), dewpointC: +d.toFixed(1) });
+    if (!r.valid || !(r.score > 39 && r.score < 40)) continue;
+    seen = true;
+    assert.match(r.band, /some discomfort \(30 to under 40\)/);
+  }
+  assert.ok(seen, 'the sweep reached a humidex between 39 and 40');
+});

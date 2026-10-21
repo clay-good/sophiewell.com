@@ -9,9 +9,12 @@ import {
   sartoriusRegion, DISTANCE_BANDS, REGION_POINTS, NODULE_POINTS, FISTULA_POINTS, SEPARATION_POINTS,
 } from '../../lib/sartorius-hs-v607.js';
 
-const at = (over = {}) => sartoriusRegion({
-  nodules: '0', fistulas: '0', distance: 'none', separatedByNormalSkin: 'yes', ...over,
-});
+// spec-v1677: the distance must agree with the lesions ("No active lesions" only when there are none), so the helper
+// defaults to a short distance whenever lesions are entered.
+const at = (over = {}) => {
+  const lesions = Number(over.nodules || 0) + Number(over.fistulas || 0) > 0;
+  return sartoriusRegion({ nodules: '0', fistulas: '0', distance: lesions ? 'under-5' : 'none', separatedByNormalSkin: 'yes', ...over });
+};
 
 test('the published weights are carried', () => {
   assert.equal(REGION_POINTS, 3);
@@ -46,9 +49,10 @@ test('the distance term triples at each step', () => {
 
 test('a span over 10 cm is worth nine nodules', () => {
   const span = at({ nodules: '1', distance: 'over-10' });
-  const nodules = at({ nodules: '10', distance: 'none' });
+  const nodules = at({ nodules: '9', distance: 'under-5' });
   assert.equal(span.distancePoints, 9);
-  assert.equal(span.regionalScore, nodules.regionalScore, '1 nodule + 9 distance == 10 nodules');
+  // 1 nodule + 9 distance == 9 nodules + 1 distance (spec-v1677: no longer 10 nodules with "No active lesions").
+  assert.equal(span.regionalScore, nodules.regionalScore);
   assert.match(span.bandText, /as much as 9 nodules/);
 });
 
@@ -110,4 +114,10 @@ test('the scope note separates extent from symptom burden', () => {
   assert.match(r.note, /does not diagnose hidradenitis suppurativa/);
   assert.match(r.note, /pain, drainage, odor or quality of life/);
   assert.match(r.note, /does not by itself mean the patient feels better/);
+});
+
+test('spec-v1677: a region with no lesions scores 0, and the distance must agree with the lesions', () => {
+  assert.equal(at({ distance: 'over-10' }).valid, false);
+  assert.equal(at({ nodules: '2', distance: 'none' }).valid, false);
+  assert.equal(at({ separatedByNormalSkin: 'no' }).regionalScore, 0);
 });

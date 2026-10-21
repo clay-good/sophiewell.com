@@ -68,7 +68,7 @@ export default [
     compute: F.correctedPotassiumPh,
     fields: [
       { dom: 'kc-k', arg: 'potassium', kind: 'number', required: true, label: 'Measured serum potassium', unit: 'mEq/L' },
-      { dom: 'kc-ph', arg: 'ph', kind: 'number', required: true, label: 'Arterial pH (6.5–8.0)' },
+      { dom: 'kc-ph', arg: 'ph', kind: 'number', min: 6.5, max: 8, required: true, label: 'Arterial pH (6.5–8.0)' },
     ],
   },
 ];

@@ -13,8 +13,8 @@ export default [
     summary: 'Clinical Disease Activity Index for RA: the lab-free sum of SJC28, TJC28, and the patient and physician global VAS (0-76) (Aletaha 2005).',
     compute: F.cdaiRa,
     fields: [
-      { dom: 'cdai-sjc', arg: 'sjc', kind: 'number', required: true, label: 'Swollen-joint count (0-28)' },
-      { dom: 'cdai-tjc', arg: 'tjc', kind: 'number', required: true, label: 'Tender-joint count (0-28)' },
+      { dom: 'cdai-sjc', arg: 'sjc', kind: 'number', min: 0, max: 28, required: true, label: 'Swollen-joint count (0-28)' },
+      { dom: 'cdai-tjc', arg: 'tjc', kind: 'number', min: 0, max: 28, required: true, label: 'Tender-joint count (0-28)' },
       { dom: 'cdai-pga', arg: 'pga', kind: 'number', required: true, label: 'Patient global assessment (0-10 cm VAS)' },
       { dom: 'cdai-ega', arg: 'ega', kind: 'number', required: true, label: 'Physician global assessment (0-10 cm VAS)' },
     ],
@@ -24,8 +24,8 @@ export default [
     summary: 'Simplified Disease Activity Index for RA: CDAI plus CRP in mg/dL (0-86) (Smolen 2003).',
     compute: F.sdaiRa,
     fields: [
-      { dom: 'sdai-sjc', arg: 'sjc', kind: 'number', required: true, label: 'Swollen-joint count (0-28)' },
-      { dom: 'sdai-tjc', arg: 'tjc', kind: 'number', required: true, label: 'Tender-joint count (0-28)' },
+      { dom: 'sdai-sjc', arg: 'sjc', kind: 'number', min: 0, max: 28, required: true, label: 'Swollen-joint count (0-28)' },
+      { dom: 'sdai-tjc', arg: 'tjc', kind: 'number', min: 0, max: 28, required: true, label: 'Tender-joint count (0-28)' },
       { dom: 'sdai-pga', arg: 'pga', kind: 'number', required: true, label: 'Patient global assessment (0-10 cm VAS)' },
       { dom: 'sdai-ega', arg: 'ega', kind: 'number', required: true, label: 'Physician global assessment (0-10 cm VAS)' },
       { dom: 'sdai-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/dL' },
@@ -109,7 +109,7 @@ export default [
     summary: 'The 2016 revised ACR fibromyalgia criteria: the Widespread Pain Index, the Symptom Severity Scale, generalized pain, and chronicity (Wolfe 2016).',
     compute: F.fibromyalgiaAcr2016,
     fields: [
-      { dom: 'fib-wpi', arg: 'wpi', kind: 'number', required: true, label: 'Widespread Pain Index: painful regions (0-19)' },
+      { dom: 'fib-wpi', arg: 'wpi', kind: 'number', min: 0, max: 19, required: true, label: 'Widespread Pain Index: painful regions (0-19)' },
       { dom: 'fib-fatigue', arg: 'fatigue', kind: 'enum', values: ['s0', 's1', 's2', 's3'], required: true, label: 'Fatigue severity' },
       { dom: 'fib-waking', arg: 'waking', kind: 'enum', values: ['s0', 's1', 's2', 's3'], required: true, label: 'Waking unrefreshed' },
       { dom: 'fib-cognitive', arg: 'cognitive', kind: 'enum', values: ['s0', 's1', 's2', 's3'], required: true, label: 'Cognitive symptoms' },

@@ -78,7 +78,9 @@ test('fomepizole: every 4 hours during hemodialysis', () => {
 
 test('fomepizole: at the start of dialysis, 6 hours since the last dose is the line', () => {
   const start = (dialysisTime) => (({ flag, doseMg, at }) => [flag, doseMg, at])(fom({ dosesGiven: 2, dialysis: 'dialysis-begins', lastDoseTime: '2026-10-11T08:00', dialysisTime }));
-  assert.deepEqual(start('2026-10-11T13:59'), ['no-dose-at-start', 0, '2026-10-11 12:00']);
+  // 4 hours from the last dose (12:00) is before dialysis began at 13:59, so no time is given (spec-v1664).
+  assert.deepEqual(start('2026-10-11T13:59'), ['no-dose-at-start', 0, null]);
+  assert.deepEqual(start('2026-10-11T11:00'), ['no-dose-at-start', 0, '2026-10-11 12:00']);
   assert.deepEqual(start('2026-10-11T14:00'), ['dose-at-start', 700, '2026-10-11 14:00']);
 });
 

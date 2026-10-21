@@ -14,8 +14,8 @@ export default [
     summary: 'UAS7 (Urticaria Activity Score over 7 days): the summed daily wheal and itch scores (0–42) grade chronic spontaneous urticaria activity.',
     compute: F.uas7,
     fields: [
-      { dom: 'uas-wheal', arg: 'whealSum', kind: 'number', required: true, label: '7-day wheal score sum (0–21)' },
-      { dom: 'uas-itch', arg: 'itchSum', kind: 'number', required: true, label: '7-day itch score sum (0–21)' },
+      { dom: 'uas-wheal', arg: 'whealSum', kind: 'number', min: 0, max: 21, required: true, label: '7-day wheal score sum (0–21)' },
+      { dom: 'uas-itch', arg: 'itchSum', kind: 'number', min: 0, max: 21, required: true, label: '7-day itch score sum (0–21)' },
     ],
   },
   {

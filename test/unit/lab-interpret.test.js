@@ -66,12 +66,13 @@ test('pregnancy variant: hemoglobin 11.5 is within range for pregnant patient', 
   assert.equal(r.refHigh, 14.0);
 });
 
+// spec-v1682: the 5% buffer put 6.0 (and 5.7) in the diabetes narrative; ADA's prediabetes band is 5.7-6.4.
 test('A1C 6.0 is borderline (prediabetes territory above range)', () => {
   const r = interpretLab('a1c', 6.0);
-  // refRange is 4.0-5.6; span 1.6; buffer 5% = 0.08; 6.0 > 5.68 -> mild
-  assert.equal(r.flag, 'flagged-mild');
+  assert.equal(r.flag, 'borderline');
   assert.equal(r.direction, 'high');
-  assert.match(r.narrative, /diabetes range/);
+  assert.match(r.narrative, /prediabetes range/);
+  assert.match(interpretLab('a1c', 6.5).narrative, /diabetes range \(6\.5% or higher\)/);
 });
 
 test('LDL 200 is flagged-mild high; renderer provides narrative + ask', () => {
@@ -121,8 +122,9 @@ test('flag taxonomy: every result uses one of the four bands from spec-v6 §3.3'
   for (const id of Object.keys(LAB_ANALYTES)) {
     const a = LAB_ANALYTES[id];
     seen.add(interpretLab(id, a.refLow + (a.refHigh - a.refLow) / 2).flag);
-    seen.add(interpretLab(id, a.refLow - (a.refHigh - a.refLow) * 0.02).flag);
-    seen.add(interpretLab(id, a.refLow - (a.refHigh - a.refLow) * 0.5).flag);
+    // spec-v1682: a negative concentration is refused, so the low probes stop at 0 for the one-sided lipids.
+    seen.add(interpretLab(id, Math.max(0, a.refLow - (a.refHigh - a.refLow) * 0.02)).flag);
+    seen.add(interpretLab(id, Math.max(0, a.refLow - (a.refHigh - a.refLow) * 0.5)).flag);
   }
   for (const f of seen) {
     assert.ok(

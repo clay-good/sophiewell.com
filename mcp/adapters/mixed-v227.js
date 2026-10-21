@@ -41,7 +41,7 @@ export default [
     fields: [
       { dom: 'batt-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'batt-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
-      { dom: 'batt-gcs', arg: 'gcs', kind: 'number', required: true, label: 'GCS (3–15)' },
+      { dom: 'batt-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'GCS (3–15)' },
       { dom: 'batt-rr', arg: 'rrAbnormal', kind: 'bool', required: false, label: 'Abnormal respiratory rate or SpO₂' },
       { dom: 'batt-hr', arg: 'hrHigh', kind: 'bool', required: false, label: 'Heart rate high' },
       { dom: 'batt-pen', arg: 'penetrating', kind: 'bool', required: false, label: 'Penetrating injury' },

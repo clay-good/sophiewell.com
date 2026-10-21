@@ -10,9 +10,9 @@ export default [
     summary: 'Routine Assessment of Patient Index Data 3 (RAPID3, 0–30): the MDHAQ function sum (÷3) plus pain and patient-global VAS, banded near-remission / low / moderate / high.',
     compute: F.rapid3,
     fields: [
-      { dom: 'rapid3-fn', arg: 'fnRaw', kind: 'number', required: true, label: 'MDHAQ function sum (0–30)' },
-      { dom: 'rapid3-pain', arg: 'pain', kind: 'number', required: true, label: 'Pain VAS (0–10)' },
-      { dom: 'rapid3-global', arg: 'global', kind: 'number', required: true, label: 'Patient-global VAS (0–10)' },
+      { dom: 'rapid3-fn', arg: 'fnRaw', kind: 'number', min: 0, max: 30, required: true, label: 'MDHAQ function sum (0–30)' },
+      { dom: 'rapid3-pain', arg: 'pain', kind: 'number', min: 0, max: 10, required: true, label: 'Pain VAS (0–10)' },
+      { dom: 'rapid3-global', arg: 'global', kind: 'number', min: 0, max: 10, required: true, label: 'Patient-global VAS (0–10)' },
     ],
   },
   {
@@ -22,8 +22,8 @@ export default [
     fields: [
       { dom: 'dapsa-tjc', arg: 'tjc68', kind: 'number', required: true, label: '68-joint tender count' },
       { dom: 'dapsa-sjc', arg: 'sjc66', kind: 'number', required: true, label: '66-joint swollen count' },
-      { dom: 'dapsa-global', arg: 'global', kind: 'number', required: true, label: 'Patient-global VAS (0–10)' },
-      { dom: 'dapsa-pain', arg: 'pain', kind: 'number', required: true, label: 'Pain VAS (0–10)' },
+      { dom: 'dapsa-global', arg: 'global', kind: 'number', min: 0, max: 10, required: true, label: 'Patient-global VAS (0–10)' },
+      { dom: 'dapsa-pain', arg: 'pain', kind: 'number', min: 0, max: 10, required: true, label: 'Pain VAS (0–10)' },
       { dom: 'dapsa-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/dL' },
     ],
   },

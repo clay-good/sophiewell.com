@@ -36,7 +36,7 @@ const CHOICE = (pairs) => [{ value: '', text: '— choose —' }, ...pairs.map((
 
 const FIELDS = [
   { key: 'comminution', dom: 'mcc-comm', label: 'Comminution of the vertebral body (CT)', opts: [['1', '1 — ≤ 30% comminuted'], ['2', '2 — 30-60% comminuted'], ['3', '3 — > 60% comminuted']] },
-  { key: 'apposition', dom: 'mcc-app', label: 'Apposition / spread of the fragments (axial CT)', opts: [['1', '1 — minimal displacement (< 2 mm)'], ['2', '2 — ≥ 2 mm over ≥ half the fracture surface'], ['3', '3 — wide spread of fragments']] },
+  { key: 'apposition', dom: 'mcc-app', label: 'Apposition / spread of the fragments (axial CT)', opts: [['1', '1 — minimal displacement'], ['2', '2 — spread: ≥ 2 mm displacement of < 50% of the cross-section'], ['3', '3 — wide: ≥ 2 mm displacement of > 50%']] },
   { key: 'kyphosis', dom: 'mcc-kyph', label: 'Kyphosis to be corrected (sagittal)', opts: [['1', '1 — ≤ 3°'], ['2', '2 — 4-9°'], ['3', '3 — ≥ 10°']] },
 ];
 

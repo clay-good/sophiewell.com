@@ -42,6 +42,7 @@ export const renderers = {
       ['C3', 'C3 - edema'],
       ['C4a', 'C4a - pigmentation / eczema'],
       ['C4b', 'C4b - lipodermatosclerosis / atrophie blanche'],
+      ['C4c', 'C4c - corona phlebectatica'],
       ['C5', 'C5 - healed venous ulcer'],
       ['C6', 'C6 - active venous ulcer'],
     ]));

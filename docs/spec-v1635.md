@@ -112,6 +112,11 @@ read: they agree that RDI is delivered over planned dose intensity (PMC12905096,
 in the delivered intensity. PMC10994250's worked example gives 75% for a patient who stopped after 3 of 4 full,
 on-time cycles (the planned duration kept as the denominator), where this spec's "first dose to the planned end of
 the last delivered cycle" gives 100%. Two definitions that answer the same patient differently: still not built.
+**Built October 18, 2026, showing both**, on the owner's decision of that day: RDI over the cycles given
+(Pietroluongo 2026, PMC12905096, "time to complete chemotherapy", timed as this spec says) and over the planned
+course (Pak 2024, PMC10994250, a cycle length added for each missed cycle), each labeled. Pak's worked example (75%
+against 100%) is the tool's example and a unit test. One drug per use; the cycles-given figure is split exactly into
+a dose ratio and a time ratio. No band ships. Hryniuk 1984 is still unread.
 
 ### 4. `cumulative-dose-limit` — Lifetime Cumulative Dose Against the Label
 

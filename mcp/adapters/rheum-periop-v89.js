@@ -16,7 +16,7 @@ export default [
       { dom: 'da-form', arg: 'form', kind: 'enum', values: ['esr', 'crp'], required: false, label: 'Inflammatory-marker form' },
       { dom: 'da-esr', arg: 'esr', kind: 'number', required: false, label: 'ESR (if form = esr)', unit: 'mm/hr' },
       { dom: 'da-crp', arg: 'crp', kind: 'number', required: false, label: 'CRP (if form = crp)', unit: 'mg/L' },
-      { dom: 'da-gh', arg: 'globalHealth', kind: 'number', required: true, label: 'Patient global health VAS (0–100)' },
+      { dom: 'da-gh', arg: 'globalHealth', kind: 'number', min: 0, max: 100, required: true, label: 'Patient global health VAS (0–100)' },
     ],
   },
   {

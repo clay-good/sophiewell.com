@@ -66,3 +66,11 @@ test('inputs are validated', () => {
   assert.equal(kobayashiKawasaki({ ...LOW, platelets: '' }).field, 'platelets');
   assert.equal(kobayashiKawasaki({ ...LOW, neutrophil: '120' }).field, 'neutrophil');
 });
+
+// spec-v1649: "low risk of IVIG resistance (>= 4)" read as if 4 or more were low.
+test('kobayashi: the low side names the cutoff it is below', () => {
+  const r = kobayashiKawasaki(LOW);
+  assert.equal(r.valid, true);
+  assert.ok(r.score < 4);
+  assert.match(r.band, /low risk of IVIG resistance \(below the >= 4 cutoff\)/);
+});

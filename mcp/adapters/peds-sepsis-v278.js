@@ -23,7 +23,7 @@ export default [
       { dom: 'phx-inr', arg: 'inr', kind: 'number', label: 'INR' },
       { dom: 'phx-ddimer', arg: 'ddimer', kind: 'number', label: 'D-dimer', unit: 'mg/L FEU' },
       { dom: 'phx-fib', arg: 'fibrinogen', kind: 'number', label: 'Fibrinogen', unit: 'mg/dL' },
-      { dom: 'phx-gcs', arg: 'gcs', kind: 'number', label: 'Glasgow Coma Scale (3-15)' },
+      { dom: 'phx-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, label: 'Glasgow Coma Scale (3-15)' },
       { dom: 'phx-pupils', arg: 'pupilsFixed', kind: 'bool', label: 'Bilaterally fixed pupils' },
     ],
   },

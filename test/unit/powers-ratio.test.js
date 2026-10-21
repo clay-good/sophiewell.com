@@ -64,8 +64,12 @@ test('blank, zero, negative, impossible or unchosen inputs refuse', () => {
   assert.equal(pw(null).valid, false);
 });
 
-test('the threshold is read at the two decimals printed', () => {
-  const r = pw({ bc: 8.1, oa: 9, modality: 'ct' }); // 0.8999... prints as 0.90
+test('the measured ratio is compared with the limit (float noise removed), and printed on its side', () => {
+  const r = pw({ bc: 8.1, oa: 9, modality: 'ct' }); // exactly 0.9: at the CT limit
   assert.equal(r.ratio, 0.9);
   assert.equal(r.abnormal, true);
+  // 0.997 is below 1 (spec-v1672): it is no longer rounded to 1.00 and called dissociation.
+  const near = pw({ bc: 9.97, oa: 10, modality: 'radiograph' });
+  assert.equal(near.abnormal, false);
+  assert.match(near.band, /^Powers ratio 0\.997: below/);
 });

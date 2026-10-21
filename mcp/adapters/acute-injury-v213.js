@@ -15,7 +15,7 @@ export default [
     summary: 'HEART Pathway (Mahler 2015): the HEART score plus 0- and 3-hour troponins; a HEART ≤ 3 with both troponins non-elevated identifies an early-discharge candidate (~0.9–2% 30-day MACE).',
     compute: F.heartPathway,
     fields: [
-      { dom: 'hp-heart', arg: 'heartScore', kind: 'number', required: true, label: 'HEART score (0–10)' },
+      { dom: 'hp-heart', arg: 'heartScore', kind: 'number', min: 0, max: 10, required: true, label: 'HEART score (0–10)' },
       { dom: 'hp-trop0', arg: 'trop0', kind: 'bool', required: false, label: '0-hour troponin elevated' },
       { dom: 'hp-trop3', arg: 'trop3', kind: 'bool', required: false, label: '3-hour troponin elevated' },
     ],

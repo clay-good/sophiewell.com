@@ -35,7 +35,8 @@ test('to warfarin: the plan of the drug being stopped', () => {
   assert.match(ped.band, /at least 2 days after the first dose of warfarin/);
   assert.match(all(ped), /24 hours after the last dose/);
   const days = (crcl, population = 'adult') => run({ from: 'dabigatran', to: 'warfarin', crcl, population }).daysBefore;
-  assert.deepEqual([days(50), days(49), days(31), days(30), days(29), days(15)], [[3], [2], [2], [2, 1], [1], [1]]);
+  // The label prints 50 in two rows (50 or above, 30-50) as it does 30 (spec-v1665).
+  assert.deepEqual([days(51), days(50), days(49), days(31), days(30), days(29), days(15)], [[3], [3, 2], [2], [2], [2, 1], [1], [1]]);
   assert.equal(run({ from: 'dabigatran', to: 'warfarin', crcl: 14 }).flag, 'no-recommendation-given');
   assert.deepEqual(days(50, 'pediatric'), [3]);
   assert.equal(run({ from: 'dabigatran', to: 'warfarin', crcl: 49, population: 'pediatric' }).flag, 'no-recommendation-given');

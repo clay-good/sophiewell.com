@@ -11,7 +11,7 @@ export default [
     summary: 'Grades a COPD exacerbation at the point of care (Rome proposal, Celli 2021). Five variables have cutoffs - dyspnea VAS 5, respiratory rate 24, heart rate 95, oxygen saturation under 92% or a fall over 3%, CRP 10 mg/L - and at least THREE must be above cutoff for moderate; fewer is mild. Severe is a SEPARATE gate on the arterial blood gas needing BOTH hypercapnia over 45 mmHg AND pH under 7.35; hypercapnia alone is not severe.',
     compute: romeEcopd,
     fields: [
-      { dom: 'rome-vas', arg: 'dyspneaVas', kind: 'number', required: false, label: 'Dyspnea VAS (0-10)' },
+      { dom: 'rome-vas', arg: 'dyspneaVas', kind: 'number', min: 0, max: 10, required: false, label: 'Dyspnea VAS (0-10)' },
       { dom: 'rome-rr', arg: 'respiratoryRate', kind: 'number', required: false, label: 'Respiratory rate', unit: '/min' },
       { dom: 'rome-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: '/min' },
       { dom: 'rome-spo2', arg: 'spo2', kind: 'number', required: false, label: 'Oxygen saturation', unit: '%' },

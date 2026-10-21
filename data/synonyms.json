@@ -13260,6 +13260,373 @@
       ],
       "tile": "abg",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "standardized infection ratio",
+        "nhsn sir",
+        "infection ratio observed over predicted"
+      ],
+      "tile": "nhsn-sir",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "device utilization ratio",
+        "central line utilization ratio",
+        "catheter utilization ratio",
+        "ventilator utilization ratio"
+      ],
+      "tile": "device-utilization-ratio",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "clabsi rate",
+        "cauti rate",
+        "vae rate",
+        "infections per 1000 device days",
+        "central line infection rate"
+      ],
+      "tile": "device-infection-rate",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "attack rate",
+        "secondary attack rate",
+        "food specific attack rate",
+        "outbreak attack rate"
+      ],
+      "tile": "outbreak-attack-rates",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "healthcare worker exposed to measles",
+        "nurse exposed to chickenpox",
+        "employee health exposure work exclusion",
+        "staff exposed to pertussis",
+        "hcp work restriction after exposure"
+      ],
+      "tile": "hcp-exposure-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "healthcare worker return to work after infection",
+        "nurse with pertussis return to work",
+        "employee with measles when can they work",
+        "hcp work exclusion after illness"
+      ],
+      "tile": "hcp-illness-return-date",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "osha noise dose and twa calculation",
+        "noise dosimeter dose to twa",
+        "eight hour twa noise exposure",
+        "mixed noise exposure dose",
+        "hearing conservation program trigger"
+      ],
+      "tile": "osha-noise-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "osha standard threshold shift",
+        "osha sts audiograms",
+        "presbycusis age correction for audiograms"
+      ],
+      "tile": "osha-standard-threshold-shift",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "blood lead medical removal criteria",
+        "osha medical removal protection benefits",
+        "osha lead mrp benefits",
+        "osha blood lead monitoring frequency schedule"
+      ],
+      "tile": "osha-lead-medical-removal",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dot exam blood pressure",
+        "cdl blood pressure",
+        "dot medical card blood pressure",
+        "fmcsa hypertension stage",
+        "truck driver blood pressure certification"
+      ],
+      "tile": "fmcsa-bp-certification",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dot hearing test",
+        "cdl hearing standard requirement",
+        "fmcsa hearing standard for drivers",
+        "forced whispered voice test",
+        "dot whisper test"
+      ],
+      "tile": "fmcsa-hearing-standard",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lead pel for a 10 hour shift",
+        "lead pel for an extended work shift",
+        "airborne lead limit for a long work shift"
+      ],
+      "tile": "osha-lead-airborne-pel-shift",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nursing hours per patient day",
+        "hppd calculation",
+        "skill mix as a percentage of nursing hours"
+      ],
+      "tile": "nursing-hppd",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pbj hours per resident day",
+        "payroll based journal staffing hours"
+      ],
+      "tile": "pbj-hours-per-resident-day",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "case mix adjusted nursing home staffing hours"
+      ],
+      "tile": "pbj-case-mix-adjusted-hours",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "five star staffing rating",
+        "nursing home staffing star rating"
+      ],
+      "tile": "nursing-home-staffing-star",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nurse vacancy rate"
+      ],
+      "tile": "staff-turnover-rate",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "full time equivalent calculation",
+        "fte from hours on the cost report"
+      ],
+      "tile": "fte-from-hours",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "average length of stay calculation",
+        "alos calculation",
+        "hospital occupancy rate"
+      ],
+      "tile": "bed-occupancy-alos",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "agency hours percentage",
+        "overtime percentage of hours"
+      ],
+      "tile": "overtime-agency-share",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "case mix index calculation for a hospital"
+      ],
+      "tile": "case-mix-index",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "staffing grid from hppd"
+      ],
+      "tile": "staffing-grid",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "levey jennings control limits",
+        "qc control limits from a mean and standard deviation"
+      ],
+      "tile": "levey-jennings-limits",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "clia proficiency testing limits",
+        "clia allowable error for proficiency testing"
+      ],
+      "tile": "clia-pt-acceptance",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "proficiency testing event score",
+        "proficiency testing 80 percent rule"
+      ],
+      "tile": "pt-event-score",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "calibration verification recovery check"
+      ],
+      "tile": "calibration-verification",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lab turnaround time percentile",
+        "lab tat 90th percentile"
+      ],
+      "tile": "turnaround-time-percentile",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "incidence rate and prevalence calculation",
+        "point and period prevalence calculation"
+      ],
+      "tile": "incidence-prevalence",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "infant mortality rate calculation",
+        "case fatality rate calculation",
+        "maternal mortality ratio calculation"
+      ],
+      "tile": "mortality-measures",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ypll rate",
+        "potential life lost calculation"
+      ],
+      "tile": "ypll",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "attributable risk percent",
+        "attributable proportion calculation"
+      ],
+      "tile": "attributable-proportion",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "vaccine effectiveness from attack rates",
+        "vaccine efficacy calculation"
+      ],
+      "tile": "vaccine-effectiveness",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "standardized mortality ratio",
+        "standardized incidence ratio observed over expected"
+      ],
+      "tile": "smr",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "age adjusted rate by direct standardization",
+        "direct age standardization of rates"
+      ],
+      "tile": "direct-age-standardization",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hardy weinberg carrier frequency",
+        "carrier frequency from disease incidence"
+      ],
+      "tile": "hardy-weinberg-carrier",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "residual carrier risk after negative screen",
+        "carrier screening negative residual risk"
+      ],
+      "tile": "residual-carrier-risk",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "recessive recurrence risk for a couple"
+      ],
+      "tile": "recessive-couple-risk",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "x linked carrier risk with unaffected sons",
+        "x-linked carrier bayesian calculation"
+      ],
+      "tile": "x-linked-bayes-risk",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "first cousins risk to baby",
+        "consanguinity coefficient of inbreeding"
+      ],
+      "tile": "coefficient-of-relationship",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "bayesian risk table for counseling",
+        "bayes theorem prior posterior table"
+      ],
+      "tile": "bayes-risk-table",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cold ischemia time calculation",
+        "clamp to reperfusion time"
+      ],
+      "tile": "ischemia-time-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "organ size match weight ratio"
+      ],
+      "tile": "donor-recipient-size-match",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "t-macs",
+        "tmacs",
+        "manchester acs decision aid"
+      ],
+      "tile": "t-macs",
+      "audience": "clinicians"
     }
   ]
 }

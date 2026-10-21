@@ -890,6 +890,50 @@ carries the specific date that could change it.
 | in-use-discard-time | CDC Preventing Unsafe Injection Practices: the 28-day sentence for an opened multi-dose vial | US | 2026-10-11 | page dated 2024-03-26; under the weekly page watch | 2027-10-11 |
 | au-rate-saar | CDC NHSN Antimicrobial Use and Resistance (AUR) Module protocol: Table 4 rates and the SAAR | US | 2026-10-12 | July 2026 edition; CDC reissues the protocol each January and July | 2027-02-01 |
 | cdi-labid-category | CDC NHSN MDRO and CDI Module protocol: duplicate, onset, incident and recurrent definitions | US | 2026-10-12 | January 2026 edition; CDC reissues the protocol each January | 2027-02-01 |
+| nhsn-sir | CDC NHSN SIR Guide: the SIR and the 1.0-predicted minimum | US | 2026-10-19 | updated March 2024; CDC revises the guide with each re-baseline | 2027-04-19 |
+| device-utilization-ratio | CDC NHSN Patient Safety Component Manual chapters 4, 7 and 10: device utilization ratio | US | 2026-10-19 | January 2026 edition; CDC reissues the manual each January | 2027-02-01 |
+| device-infection-rate | CDC NHSN Patient Safety Component Manual chapters 4, 7 and 10: CLABSI, CAUTI and VAE rates | US | 2026-10-19 | January 2026 edition; CDC reissues the manual each January | 2027-02-01 |
+| outbreak-attack-rates | CDC Principles of Epidemiology in Public Health Practice, 3rd ed., Lesson 3 sections 2 and 5 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| hcp-exposure-clock | CDC Infection Control in Healthcare Personnel: measles, mumps, rubella, varicella and pertussis sections | US | 2026-10-19 | sections updated January 2024 to March 2026; under the weekly page watch | 2027-04-19 |
+| hcp-illness-return-date | CDC Infection Control in Healthcare Personnel: seven section pages | US | 2026-10-19 | sections updated January 2024 to March 2026; under the weekly page watch | 2027-04-19 |
+| osha-noise-dose | OSHA 29 CFR 1910.95 (c), (d)(2)(i), Table G-16 and Appendix A: noise dose, Table G-16a and the TWA formula | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| osha-standard-threshold-shift | OSHA 29 CFR 1910.95 (g)(7)-(g)(10) and Appendix F, Tables F-1 and F-2 | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| osha-lead-medical-removal | OSHA 29 CFR 1910.1025 (j)(2) and (k)(1): blood lead monitoring, removal and return | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| fmcsa-bp-certification | FMCSA 49 CFR Part 391 Appendix A section E and 49 CFR 391.45(b) | US | 2026-10-19 | eCFR current to 2026-10-16; 391.45 under the weekly eCFR watch, the appendix (no section number) is not | 2027-04-19 |
+| fmcsa-hearing-standard | FMCSA 49 CFR 391.41(b)(11) and Part 391 Appendix A section I | US | 2026-10-19 | eCFR current to 2026-10-16; 391.41 under the weekly eCFR watch | 2027-10-19 |
+| osha-lead-airborne-pel-shift | OSHA 29 CFR 1910.1025 (b), (c)(1) and (c)(2) | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| nursing-hppd | Stated arithmetic: hours over patient days, skill mix | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| pbj-hours-per-resident-day | CMS Five-Star Technical Users' Guide, September 2026: Staffing Domain, the six exclusion criteria, Scoring Exceptions | US | 2026-10-19 | CMS revises the guide most quarters; re-read with each edition | 2027-01-19 |
+| pbj-case-mix-adjusted-hours | CMS Five-Star Technical Users' Guide, September 2026: Case-Mix Adjustment formula | US | 2026-10-19 | CMS revises the guide most quarters; re-read with each edition | 2027-01-19 |
+| nursing-home-staffing-star | CMS Five-Star Technical Users' Guide, September 2026: scoring rules, rescaling, Table 3 and Appendix Table A2 (cut points of July 2024) | US | 2026-10-19 | CMS revises the guide most quarters and the cut points by edition; re-read with each edition | 2027-01-19 |
+| staff-turnover-rate | CMS Five-Star Technical Users' Guide, September 2026: Specifications for Staff Turnover Measures; general rates are identities | US | 2026-10-19 | CMS revises the guide most quarters; re-read with each edition | 2027-01-19 |
+| fte-from-hours | CMS Hospital Provider Cost Report Data Dictionary (March 2024): FTE - Employees on Payroll | US | 2026-10-19 | dictionary updated March 2024 | 2027-10-19 |
+| bed-occupancy-alos | CMS Hospital Provider Cost Report Data Dictionary (March 2024): Number of Beds, Total Bed Days Available, Total Discharges | US | 2026-10-19 | dictionary updated March 2024 | 2027-10-19 |
+| overtime-agency-share | Stated arithmetic: shares of worked hours and the premium | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| unit-budget-variance | Stated arithmetic: the flexible-budget decomposition | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| case-mix-index | Stated arithmetic: sum of MS-DRG weights over discharges; weights entered by the reader | US | 2026-10-19 | an identity; no weight file bundled | 2027-10-19 |
+| staffing-grid | Stated arithmetic: HPPD × census ÷ 24, rounded up | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| levey-jennings-limits | Stated arithmetic: mean, sample SD, CV and limits | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| clia-pt-acceptance | 42 CFR 493.931 and 493.941, Table 2 to paragraph (c)(2), as amended July 11, 2022 | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| pt-event-score | 42 CFR 493.931(c)(4)-(5), 493.941(c)(4)-(5), 493.841, 493.851 and 493.2 | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| calibration-verification | 42 CFR 493.1255(b) | US | 2026-10-19 | eCFR current to 2026-10-16; under the weekly eCFR watch | 2027-10-19 |
+| turnaround-time-percentile | Stated arithmetic: median and nearest-rank percentile | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| incidence-prevalence | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 2 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| mortality-measures | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 3, Table 3.4 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| ypll | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 3, Tables 3.9 and 3.10 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| attributable-proportion | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 6 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| vaccine-effectiveness | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 6 and Table 3.13 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |
+| smr | Stated arithmetic: observed over expected | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
+| direct-age-standardization | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 3; NCI SEER 2000 U.S. standard population (19 age groups) | US | 2026-10-19 | the 2000 standard is fixed; SEER page hash recorded in spec-v1659 | 2027-10-19 |
+| hardy-weinberg-carrier | Hardy GH, Science 1908;28:49-50 (the equilibrium p : 2q : r) | International | 2026-10-19 | a 1908 letter; stable | 2027-10-19 |
+| residual-carrier-risk | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity; inputs from the laboratory report | 2027-10-19 |
+| recessive-couple-risk | Stated arithmetic: Mendelian segregation | International | 2026-10-19 | an identity | 2027-10-19 |
+| x-linked-bayes-risk | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity; no prior is built in | 2027-10-19 |
+| coefficient-of-relationship | Wright S, Am Nat 1922;56:330-338 (the path rule) | International | 2026-10-19 | a 1922 paper; stable | 2027-10-19 |
+| bayes-risk-table | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity | 2027-10-19 |
+| ischemia-time-clock | Stated arithmetic: elapsed time between recorded events | US | 2026-10-19 | an identity; no OPTN definition stated | 2027-10-19 |
+| donor-recipient-size-match | Stated arithmetic: ratios, with the Mosteller BSA | US | 2026-10-19 | an identity; no range is given | 2027-10-19 |
+| t-macs | Body R et al., Emerg Med J 2017, read in open reprints (PMC8499458, PMC6731951, PMC6830682) | UK | 2026-10-20 | a published model; the authors' updating study may revise it | 2027-10-20 |
 | ddd-rate | WHO Collaborating Centre for Drug Statistics Methodology, Use of ATC/DDD: DDDs per 100 bed days | International | 2026-10-12 | undated web page; no DDD values are reproduced | 2027-10-12 |
 | antimicrobial-day-counter | CDC NHSN Antimicrobial Use and Resistance (AUR) Module protocol: antimicrobial days and days present | US | 2026-10-12 | July 2026 edition; CDC reissues the protocol each January and July | 2027-02-01 |
 | vaccine-interval-validity | CDC ACIP General Best Practice Guidelines for Immunization: timing and spacing (4-day grace period, 28 days between live vaccines) | US | 2026-10-12 | read in CDC's PDF edition; the web page (July 24, 2024) refused the request at build | 2027-04-12 |

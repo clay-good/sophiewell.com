@@ -36,13 +36,15 @@ export const renderers = {
   'gvhd-grade'(root) {
     note(root, 'Acute GVHD grade (modified Glucksberg) after allogeneic transplant. Pick the skin, liver, and gastrointestinal organ stages (0–4 each); this tool reports the overall grade (0–IV). Grades III–IV are severe. Staging thresholds are in the note.');
     root.appendChild(select('Skin stage (by BSA rash)', 'gvhd-skin', [
+      ['', 'Not staged'],
       ['0', '0 — no rash'],
       ['1', '1 — rash <25% BSA'],
       ['2', '2 — rash 25-50% BSA'],
-      ['3', '3 — generalized erythroderma'],
-      ['4', '4 — erythroderma with bullae / desquamation'],
+      ['3', '3 — rash >50% BSA'],
+      ['4', '4 — generalized erythroderma with bullae'],
     ]));
     root.appendChild(select('Liver stage (by bilirubin)', 'gvhd-liver', [
+      ['', 'Not staged'],
       ['0', '0 — bilirubin <2 mg/dL'],
       ['1', '1 — bilirubin 2-3 mg/dL'],
       ['2', '2 — bilirubin 3-6 mg/dL'],
@@ -50,11 +52,12 @@ export const renderers = {
       ['4', '4 — bilirubin >15 mg/dL'],
     ]));
     root.appendChild(select('Lower GI stage (by diarrhea volume)', 'gvhd-gi', [
+      ['', 'Not staged'],
       ['0', '0 — <500 mL/day'],
       ['1', '1 — >500 mL/day'],
       ['2', '2 — >1000 mL/day'],
       ['3', '3 — >1500 mL/day'],
-      ['4', '4 — >2000 mL/day or severe pain / ileus'],
+      ['4', '4 — severe abdominal pain, with or without ileus'],
     ]));
 
     const o = out(); root.appendChild(o);

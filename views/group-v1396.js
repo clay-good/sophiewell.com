@@ -146,8 +146,8 @@ export const renderers = {
   'tx-workplace-violence-plan-audit'(root) {
     note(root, 'Texas. Mark each committee and plan requirement; a blank one is not checked, never present.');
     selectField(root, '331.002(b)(1) A direct-care registered nurse on the committee', 'txwv-rn', TXWV.STATUS, NA);
-    selectField(root, '331.002(b)(2) A direct-care physician on the committee (unless the facility has none on staff)', 'txwv-physician', TXWV.STATUS, NA);
-    selectField(root, '331.002(b)(3) A security employee on the committee, if any and if practicable', 'txwv-security', TXWV.STATUS, NA);
+    selectField(root, '331.002(b)(2) A direct-care physician on the committee (unless the facility has none on staff)', 'txwv-physician', TXWV.STATUS_CONDITIONAL, NA);
+    selectField(root, '331.002(b)(3) A security employee on the committee, if any and if practicable', 'txwv-security', TXWV.STATUS_CONDITIONAL, NA);
     selectField(root, '331.004(b)(1) The plan is based on the practice setting', 'txwv-setting', TXWV.STATUS, NA);
     selectField(root, '331.004(b)(2) A definition covering threats and acts of physical force and any firearm or dangerous weapon', 'txwv-definition', TXWV.STATUS, NA);
     selectField(root, '331.004(b)(3) At least annual prevention training for direct-care staff', 'txwv-training', TXWV.STATUS, NA);

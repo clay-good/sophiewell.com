@@ -19,7 +19,8 @@ test('grade II: 6-10 mm soft endpoint, flagged (the META example)', () => {
 test('grade I is mild (firm endpoint) and not flagged', () => {
   const r = lachmanAcl({ grade: 'I' });
   assert.equal(r.severe, false);
-  assert.match(r.band, /0 to 5 mm/);
+  // spec-v1683: grade I is 3 to 5 mm (under 3 is normal), as the published scale prints it.
+  assert.match(r.band, /3 to 5 mm/);
   assert.match(r.band, /firm endpoint/);
 });
 

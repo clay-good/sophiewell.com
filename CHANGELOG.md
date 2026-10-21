@@ -6,6 +6,164 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Standardized mortality ratio: an exact 95% confidence interval (Poisson limits on the observed count, as NCI's
+  SEER*Stat documents them) and a plain statement of whether it lies above 1, below 1, or includes it. The NHSN
+  SIR tool keeps pointing to the NHSN report, whose interval uses NHSN's own mid-P method.
+- Disproportionality from a 2x2 table: the information component now has its limits when no reports pair the drug
+  with the event, using the exact gamma percentiles Norén et al. 2013 call for at a count of 0.
+- Attributable proportion: an optional share of the population exposed adds the population attributable fraction
+  (Levin's formula), with a note that it assumes no confounding.
+
+### Fixed
+
+- The Lansky, Schwab and England and Montreal forms no longer open on a full-function or mildest answer. Lachman grade I is
+  3-5 mm (it read 0-5) and grade III more than 10 mm; the McCormack apposition 2 description no longer describes grade 3.
+- Defects an independent review found in the core libs. The lab interpreter told an A1C of 5.7% it was in the diabetes
+  range; it now follows the ADA and ATP III bands (prediabetes 5.7-6.4, LDL near-optimal 100-129 and very high from
+  190, triglycerides very high from 500). BMI 24.96 is no longer printed as "25 (Normal)"; a P/F ratio of exactly 100
+  is severe; CHA2DS2-VASc no longer scores both age bands; ICD-10-CM U codes are accepted in the LCD check.
+- Defects an independent review found in the oldest calculators. A heparin aPTT of exactly 35 got the "<35 s" rebolus;
+  a CPIS temperature of 38.45 scored as fever enough to read VAP; POSPOM and SIPA lost points or their cutoff for a
+  fractional age; RIFLE read a missing current creatinine as "no criteria met"; an RWT of 0.423 was rounded into the
+  eccentric pattern. Twelve tools print values on the side of the cut they were judged ("Hgb 6.995 is below 7"), and
+  swapped minimum and maximum, PA pressures and vancomycin draw times are refused.
+- Defects an independent review found in the spec-v300 to v499 tools. Jones criteria: Sydenham chorea no longer loses
+  the diagnosis when another finding is ticked, and a joint manifestation counts once. Acute GVHD follows Przepiorka
+  1995: gut stage 4 is grade III, not IV. ICANS with no ICE score is "not excluded", not "No ICANS"; an NPI of 2.404 is
+  "good". Jones, GVHD, Nottingham, Wexner, Fazekas and Nohria-Stevenson forms no longer open on a reassuring answer.
+- Laboratory and ventilator tools (v908 to v932) print sigma, the hepatic iron index, auto-PEEP, the reference change
+  value and Hy's law ratios on the side of the line they were judged; impossible pressures and negative CVs are refused.
+- Eleven defects an independent review found in the spec-v500 to v599 tools. HLH-2004 no longer reads a blank "infant
+  under 4 weeks" as no when the hemoglobin threshold depends on it; the Bologna override is no longer blocked by a risk
+  factor the consensus does not name; Mayo ADPKD, PPM, RUCAM and ARC-HBR are graded on unrounded values; a percent typed
+  as nSOFA's FiO2, a creatinine that contradicts the FFS renal answer, and concordance without two positive scans are
+  refused; an empty VASI form asks for a region.
+- Defects an independent review found in the spec-v600 to v699 tools. APACHE II and FGSI scored 0 points for a value
+  between two printed bands (a temperature of 40.95 scored as normal); each band now runs up to the next one. Blood in
+  the ventricles beside a thick clot is Fisher grade 3, the highest vasospasm risk, not 4. qCSI no longer scores flows
+  above the 6 L/min its item covers; a one-section Oswestry is labeled partial; impossible combinations in Bauer, PEDIS,
+  UCSF and Sartorius are refused. Paroxysmal hemicrania now asks for the pain of criterion B.
+- Eleven defects in the v703 to v794 tools. A Fürst ratio of 1.0003 is above 1 (it was rounded to 1.000 and given
+  a 500 mL restriction); a blank AWOL illness rating is named instead of read as "not ill"; PHI says its bands assume a
+  total PSA of 2 to 10; Walch refuses impossible angles. Seven orthopedic and dental indices print their value on the
+  side of the cut they were judged.
+- Nine more defects from the same review. AUSDRISK uses the form's own tiers (12 or more is high risk, not 15). A
+  bilirubin of exactly 300 micromol/L is not above 300; a PMN count of 249.999, a peak flow of 79.96% and a vitamin D of
+  19.98 ng/mL are judged on the side of the line they fall, not rounded across it. A blank VExUS waveform makes the
+  grade a floor instead of reading as normal; a space in a DKA or cuff-leak field is blank, not 0.
+- Eight defects an independent review found in the spec-v800 to v907 tools. The 4Ts score no longer reads an empty
+  form as "low probability, do not test": every domain is asked for. An unsuppressed OGTT nadir is discordance, not an
+  exclusion of acromegaly; a set-aside A1C is never "below the thresholds"; a wedge pressure above the mean PA pressure
+  is refused. LVEF 40.5%, 14.5 headache days a month and an EBMT late-onset VOD with a raised bilirubin now have their
+  category.
+- Fourteen defects an independent review found in the state-practice tools. A New Jersey voluntary discharge requested
+  on a Saturday is due at the end of Monday, not 1:00 am Monday. Cal/OSHA wildfire smoke converts concentrations with
+  the rule's own Appendix A table (400 ug/m3 is AQI 420, voluntary N95s, not "required"). A minor's unassessed consent
+  grounds are named rather than read as "no"; two-digit years are refused in every state tool; impossible hours and step
+  orders are refused; 24-hour reports count real hours across a clock change.
+- Sixteen defects an independent review found in the spec-v1400 to v1499 tools. A nontreponemal test marked "not done"
+  is asked for instead of read as reactive. A Powers ratio of 0.997 is below 1 (it was rounded to 1.00 and called
+  atlanto-occipital dissociation); HVPG, mRECIST, CGM targets, GRI, the fluorosis index, CPAK, Montevideo units and the
+  hypoglycemia level are decided unrounded and printed on the side they were judged. Contradictory HBV markers are
+  refused; the end of the 4-hour blood window is said plainly.
+- Twenty-two defects an independent review found in the medication-access tools. Income at 138.03% of poverty is above
+  a 138% limit, and 400.003% gets no premium tax credit: percents, dollars and units are decided unrounded. Letters and
+  appeal clocks refuse dates in an impossible order instead of moving a window. Medicare timely filing is one calendar
+  year, not 365 days; IRF-PAI discharge dates follow 42 CFR 412.610 and 412.614 (each was a day late); an infusion
+  schedule that would need more than 500 steps is refused rather than cut short; patients who can never enter a Star
+  adherence measure are left off the outreach list.
+- Fifteen defects an independent review found in the record, file-intake and coverage tools. A record's calcium in
+  mEq/L is no longer read as mmol/L (which doubled it). A typed "$1,250.00" is one amount, not $1 and 250 units. Blank
+  price and MUE cells and a value-less lab result are no longer read as 0; a future-dated lab is not "most recent".
+  Medicare fee-for-service prior authorization checks each program's dates with no state entered; Medicare and Medicaid
+  expansion preventive lists are shown for reference, not as owed; truncated price-file checks say so.
+- Twenty defects an independent review found in the WHO field-health tools. MUAC entered in centimeters was rounded
+  before the 115 mm line, so 11.499 cm read as moderate rather than severe acute malnutrition. Child azithromycin and
+  ceftriaxone for enteric fever now stop at the AWaRe book's 500 mg and 3,000 mg; doses that pass the adult dose where no
+  child maximum is published say so; a 1 kg child's rectal artesunate and an infant-sized artemether-lumefantrine dose are
+  flagged. The IMCI injectables chart refuses a young infant; tafenoquine states "not in lactation"; a blank clotting
+  test, digestive form or smear no longer reads as normal; values printed at a WHO line agree with the verdict.
+- Thirteen defects an independent review found in the medication-safety, controlled-substance and Part D tools. START
+  J1 (an ACE inhibitor or ARB in diabetic kidney disease) is no longer dropped at exactly eGFR 30. The pediatric heparin
+  nomogram reads 49.5 and 120.5 seconds in its "<50" and ">120" rows. The ROR lower bound prints on the side of 1 it was
+  judged; equal cost with more effect is dominance. Impossible date orders, future dates, a thousands separator read as
+  a count, and a treatment day that contradicts its dates are refused; a GS1 day-00 expiry is flagged as a problem.
+- Thirteen defects an independent review found in the compounding and counter tools. Hours printed beside a CDC or label
+  line (missed pills, emergency contraception, missed doses) and weights beside the epinephrine bands now sit on the
+  side the rule was decided. An oral suspension dose on the discard date needs a second bottle. A compounded strength
+  that may be a fraction of the commercial one is left open rather than called "not a copy". Proof gallons use the
+  proof to the nearest tenth degree; incomplete or impossible compounding inputs are asked for or refused.
+- Ten defects an independent review found in the parenteral nutrition, IV admixture and pharmacogenomic tools. Codeine
+  with the CYP2D6 status not known and an ultrarapid activity score now meets the label's "should not use" statement
+  instead of "no statement applies". IV phosphate reads 0.96 mg/dL as "less than 1" rather than rounding it into the next
+  row. Printed doses, temperatures and limits agree with the verdict beside them; a year typo and an impossible amino
+  acid concentration are refused; pediatric potassium and magnesium orders say the labels give no pediatric limits.
+- Thirteen defects an independent review found in the renal dose checks and drug switches. The levetiracetam check
+  banded a body-surface-adjusted clearance after rounding it, so 29.996 mL/min read the 30-50 row and passed a dose over
+  the under-30 maximum. Dalteparin at 49.5 kg was offered the 50-59 kg dose beside the "<50 kg" one. Clearances and
+  percents printed at an edge now agree with the rule beside them; gabapentin refuses a clearance of 0; dabigatran to
+  warfarin shows both rows at 50 mL/min; the taper calendar keeps step 0 at the dose taken now, checks the pace on
+  coarsely rounded steps, and refuses a pause before the start date.
+- Seventeen defects an independent review found in the dosing and radiation tools. A printed number no longer contradicts
+  the verdict beside it at a cut-off (methotrexate levels, cumulative anthracycline totals, NRC medical events, chemo
+  variance, radiopharmaceutical dosage, Mo-99 breakthrough, leak tests, package surveys, ESA hemoglobin rise, study-drug
+  compliance, dantrolene maximum, SAAR). The occupational dose check no longer calls 99.996% of the limit "at the limit".
+  A child's ampicillin-sulbactam or piperacillin-tazobactam dose is capped at the component's adult amount; a prior
+  neostigmine dose is checked when the label's rows differ; lithium refuses a toxic target; fomepizole gives no dialysis
+  dose time before dialysis began; the naloxone infusion rate in mL/hour comes from the unrounded dose.
+- Home search: a query typed before the synonym table or the search corpus finished loading kept its names-only
+  ranking until the next keystroke, so "they denied it" could show a Texas tool instead of the appeal letter on a
+  slow connection. The open results now re-rank when either file arrives, unless the reader has already picked a row.
+- Eleven defects an independent review found in the tools added on October 19 and 20, 2026. A printed number no longer
+  contradicts the category beside it at a cut-off (T-MACS at 2%, the noise action level, the 10-hour lead limit,
+  the threshold shift and the 40 dB hearing average now decide on the unrounded value). Impossible inputs are refused
+  instead of answered: more events than population, more filled positions than budgeted, an inverted reportable range,
+  and a line of two numbers where one was expected, whose first number used to be dropped.
+
+### Added
+
+- T-MACS, the troponin-only Manchester ACS decision aid: the probability of ACS from six clinical items and the arrival
+  hs-troponin T, and its very low, low, moderate or high group, from the equation as two open papers print it.
+- Transplant: donor-to-recipient weight, height and BSA ratios, and the intervals between an organ's recorded recovery and
+  implant events with an hour limit from the first. KDPI and EPTS wait for the OPTN guides.
+- Genetic counseling arithmetic, each printing its Bayes table: carrier frequency from incidence (Hardy 1908, read),
+  residual carrier risk after a negative screen, the recessive risk to a pregnancy from both partners' risks, an
+  X-linked carrier risk revised by unaffected sons, and a general prior-to-posterior table.
+- Consanguinity: the inbreeding and relationship coefficients from Wright's 1922 path rule, for listed relationships
+  or the reader's own paths, with the recessive risk to a child.
+- Public health measures from CDC's Principles of Epidemiology, each tested on the lesson's own examples: incidence and
+  prevalence, the mortality measures (crude through death-to-case), years of potential life lost, the attributable
+  proportion among the exposed, and vaccine effectiveness from attack rates with its interval.
+- The standardized mortality ratio, and age-adjusted rates by direct standardization to the 2000 U.S. standard
+  population (taken from SEER's table) or a standard of your own.
+- Laboratory quality tools from the CLIA regulations: whether a proficiency-testing result is within the 42 CFR
+  493.931 or 493.941 limit (with the limit as a percent at a decision level for the sigma metric), the analyte and
+  event scores against the 80% line and the two-of-three rule, and calibration verification at three or more levels.
+- Levey-Jennings mean, SD, CV and control limits from a series of control results, and laboratory turnaround time
+  as a median and a nearest-rank percentile.
+- Nursing home staffing by the CMS Five-Star method (September 2026 guide): hours per resident day from PBJ hours
+  and the MDS census with the six exclusions, the case-mix adjustment, and the staffing star from Table A2's cut
+  points, rescaled when a turnover measure is missing.
+- Unit operations arithmetic: nursing hours per patient day and skill mix, a shift staffing grid by census,
+  turnover and vacancy, FTEs (including the cost report's sample-week method), occupancy and length of stay as
+  the cost report counts beds, overtime and agency share, flexible budget variance, and case mix index.
+- Occupational health rules from the eCFR: OSHA noise dose and 8-hour TWA from a day of exposures; the standard
+  threshold shift with Appendix F's age correction, its own 32-year-old as the example; and the lead standard's blood
+  lead testing schedule, medical removal and return, and its airborne limit for a day over 8 hours.
+- Commercial driver (DOT) examination: the blood pressure stage and certificate length in FMCSA's advisory criteria,
+  and the hearing standard by forced whisper or a 40 dB better-ear average, with ISO results converted to ANSI.
+- Infection prevention arithmetic from NHSN: the standardized infection ratio (observed over the predicted count on
+  the NHSN report, with no ratio below 1.0 predicted), the device utilization ratio, and CLABSI, CAUTI and VAE rates
+  per 1,000 device days, the guide's own facility as the worked example.
+- Outbreak attack rates by exposure, overall and among household contacts, as CDC's Principles of Epidemiology
+  defines them, with each exposure's risk ratio and its 95% interval.
+- Healthcare worker exposed to measles, mumps, rubella, varicella or pertussis: the dates of work exclusion or
+  daily monitoring from CDC's 2024 to 2026 section pages, by immunity, immune globulin and prophylaxis; and, for a
+  worker with one of seven infections, when CDC's exclusion ends.
+- Surgical Antibiotic Prophylaxis Dose and Redose Clock: Table 1 of the 2013 ASHP/IDSA/SIS/SHEA guideline, read
+  cell by cell, with the pediatric cap, the gentamicin dosing weight, and the 60- or 120-minute start window.
+- Relative Dose Intensity (Chemotherapy): delivered over planned dose intensity for one drug, shown over the cycles
+  given and over the planned course (the two ways open papers time it), with the loss split into reductions and delays.
 - INR Variability (Fihn Variance Growth Rate): method A, from the formula a Free Access 2013 paper prints in its
   Figure 1; each INR is entered with its weeks since the previous one, and no cutoff is claimed.
 - Medication Reconciliation Discrepancy Rate (CBE 2456): unintentional discrepancies in admission and discharge
@@ -676,6 +834,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The worked examples for eGFR (64.5, not ~60), the eGFR suite (CKD-EPI 2021 ~86, not ~89), body weight
+  and BSA (IBW 70.7, Mosteller 2.03) and MELD / Child-Pugh (18 and 8, not 17 and 7) now state the answers
+  their tiles give; each was checked by hand.
+- DAS28 reads its EULAR band on the score it prints (a shown 5.1 could say "high (> 5.1)"). Humidex labels
+  its band "30 to under 40". Kobayashi, Sano, Downton and Conley no longer print the high-risk condition
+  after a low result ("low risk (>= 4)" now reads "below the >= 4 cutoff").
+- Renal failure index, Shine & Lal and Green & King call a value exactly on the cutoff indeterminate, as
+  their sibling indices do (exactly 1 used to read "< 1"). Seven index tables gain a row for the cutoff, and
+  the AEC, simplified AIH and Cornell tables no longer give one score two rows.
+- APACHE II prints the eight bands of the Knaus table (a total of 23 is about 40%, not ~25%). TIMI prints
+  each score's own 14-day figure (8.3% at 2, not ~5%). MELD's working shows its table's figures, and the
+  Alvarado table starts at 0.
+- Agent calls: a number field whose label states its range ("(0-2)") now refuses a value past it with
+  `OUT_OF_RANGE`, and the input schema carries the bounds. Before, 22 tools clamped, summed or dropped it
+  (Roland-Morris 25 scored 0; PASI area 101%). The E/M MDM level labels now say 2 to 5, matching their options.
+- NIHSS names the 16-20 band "Moderate-to-severe stroke", as its own interpretation table does; it said
+  "Moderate stroke".
+- PHQ-9, GAD-7, EPDS, AUDIT-C and CAGE refuse an agent's answer that is not one of the item's options
+  (PHQ-9 item 1 = 9 used to score "Mild depression"; CAGE returned 9 of 4).
+- The Epworth agent summary states the bands the tool prints (11-12 mild, 13-15 moderate, 16-24 severe).
+- NIHSS credits its severity bands to the open cohorts that state them, not to an unread NIH/NINDS guide.
+- ICH Score cites "Hemphill 2001" without the table number it named, which could not be checked.
+- ICH Score no longer prints "30-day mortality 100% per Hemphill 2001 Table 4" for a score of 6. The paper
+  reports rates for 0 to 5 (all 6 patients at 5 died) and none for 6, so a 6 now says that.
+- Modified NIHSS names its severity words as the bands used with the full 0-42 NIHSS instead of "per Meyer
+  2002", whose validation was by correlation, and says a band read from the shorter scale can only understate.
 - GLP-1 titration check points a missed dose to the Missed Dose tool instead of saying it is not covered.
   Alligation links the ethanol proof tool and the buffer pH tool links molecular weight.
 - Salt and base conversion factor takes the label's own equivalency statement (its two amounts) and uses

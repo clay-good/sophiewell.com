@@ -65,9 +65,11 @@ test('isolated Sydenham chorea is sufficient on its own, without strep evidence'
   const r = jonesCriteria({ chorea: true });
   assert.equal(r.met, true);
   assert.match(r.band, /isolated Sydenham chorea/);
-  // But chorea plus other manifestations falls back to the normal count + gate.
+  // spec-v1680: chorea plus another finding used to fall back to the count and fail (1 major + 1 minor, no strep).
+  // Chorea is sufficient whatever else is present (2015 statement: "evidence of GAS infection or other criteria is
+  // not required"), and adding a finding never takes a diagnosis away.
   const withOthers = jonesCriteria({ chorea: true, fever: true });
-  assert.equal(withOthers.met, false); // 1 major + 1 minor, no strep evidence
+  assert.equal(withOthers.met, true);
 });
 
 test('non-true values do not fire a manifestation', () => {
@@ -97,4 +99,10 @@ test('a blank tier and episode that change nothing are disclosed, not asked for'
   assert.match(r.band, /No episode was entered/);
   const stated = jonesCriteria({ riskPopulation: 'low', episode: 'initial', gasEvidence: true, carditis: true, polyarthritis: true });
   assert.doesNotMatch(stated.band, /was entered/);
+});
+
+test('spec-v1680: only one joint manifestation counts, as major or minor, not both', () => {
+  assert.equal(jonesCriteria({ riskPopulation: 'low', episode: 'initial', polyarthritis: true, polyarthralgia: true, fever: true, gasEvidence: true }).met, false);
+  assert.equal(jonesCriteria({ riskPopulation: 'modhigh', episode: 'initial', polyarthritis: true, monoarthritis: true, gasEvidence: true }).met, false);
+  assert.equal(jonesCriteria({ riskPopulation: 'low', episode: 'initial', polyarthritis: true, carditis: true, gasEvidence: true }).met, true);
 });

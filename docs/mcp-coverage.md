@@ -9358,6 +9358,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/chemo-dose-verify-v1635.js (spec-v1635: Chemotherapy dose re-derivation and variance — clinical disclaimer)
 - `chemo-dose-verify`
 
+### lib/relative-dose-intensity-v1635.js (spec-v1635: Relative dose intensity — clinical disclaimer)
+- `relative-dose-intensity`
+
 ### lib/nac-oral-regimen-v1636.js (spec-v1636: Oral acetylcysteine 72-hour regimen (label table) — clinical disclaimer)
 - `nac-oral-regimen`
 
@@ -9406,11 +9409,146 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/med-admin-window-v1636.js (spec-v1636: CMS medication administration window (A-0405) — administrative disclaimer)
 - `med-admin-window`
 
+### lib/surgical-prophylaxis-redose-v1636.js (spec-v1636: surgical prophylaxis dose and redose clock — clinical disclaimer)
+- `surgical-prophylaxis-redose`
+
 ### lib/adjusted-patient-days-v1636.js (spec-v1636: Adjusted patient days and pharmacy ratios — administrative disclaimer)
 - `adjusted-patient-days`
 
 ### lib/chelation-dose-v1636.js (spec-v1636: Succimer, edetate calcium disodium and dimercaprol doses (labels) — clinical disclaimer)
 - `chelation-dose`
+
+### lib/nhsn-sir-v1655.js (spec-v1655: NHSN standardized infection ratio — administrative disclaimer)
+- `nhsn-sir`
+
+### lib/device-utilization-ratio-v1655.js (spec-v1655: NHSN device utilization ratio — administrative disclaimer)
+- `device-utilization-ratio`
+
+### lib/device-infection-rate-v1655.js (spec-v1655: CLABSI, CAUTI and VAE rates per 1,000 device days — administrative disclaimer)
+- `device-infection-rate`
+
+### lib/outbreak-attack-rates-v1655.js (spec-v1655: outbreak attack rates — administrative disclaimer)
+- `outbreak-attack-rates`
+
+### lib/hcp-exposure-clock-v1655.js (spec-v1655: healthcare worker exposure dates (CDC) — clinical disclaimer)
+- `hcp-exposure-clock`
+
+### lib/hcp-illness-return-date-v1655.js (spec-v1655: healthcare worker infection, end of work exclusion (CDC) — clinical disclaimer)
+- `hcp-illness-return-date`
+
+### lib/osha-noise-dose-v1656.js (spec-v1656: OSHA noise dose and 8-hour TWA — clinical disclaimer)
+- `osha-noise-dose`
+
+### lib/osha-standard-threshold-shift-v1656.js (spec-v1656: OSHA standard threshold shift with age correction — clinical disclaimer)
+- `osha-standard-threshold-shift`
+
+### lib/osha-lead-medical-removal-v1656.js (spec-v1656: OSHA blood lead monitoring, medical removal and return — clinical disclaimer)
+- `osha-lead-medical-removal`
+
+### lib/fmcsa-bp-certification-v1656.js (spec-v1656: commercial driver blood pressure certification interval (FMCSA) — clinical disclaimer)
+- `fmcsa-bp-certification`
+
+### lib/fmcsa-hearing-standard-v1656.js (spec-v1656: commercial driver hearing standard (FMCSA) — clinical disclaimer)
+- `fmcsa-hearing-standard`
+
+### lib/osha-lead-airborne-pel-shift-v1656.js (spec-v1656: OSHA airborne lead limit for a day over 8 hours — clinical disclaimer)
+- `osha-lead-airborne-pel-shift`
+
+### lib/nursing-hppd-v1657.js (spec-v1657: nursing hours per patient day and skill mix — administrative disclaimer)
+- `nursing-hppd`
+
+### lib/pbj-hours-per-resident-day-v1657.js (spec-v1657: nursing home PBJ hours per resident day and exclusions — administrative disclaimer)
+- `pbj-hours-per-resident-day`
+
+### lib/pbj-case-mix-adjusted-hours-v1657.js (spec-v1657: CMS case-mix adjusted staffing hours — administrative disclaimer)
+- `pbj-case-mix-adjusted-hours`
+
+### lib/nursing-home-staffing-star-v1657.js (spec-v1657: CMS Five-Star staffing points and star — administrative disclaimer)
+- `nursing-home-staffing-star`
+
+### lib/staff-turnover-rate-v1657.js (spec-v1657: staff turnover and vacancy rate — administrative disclaimer)
+- `staff-turnover-rate`
+
+### lib/fte-from-hours-v1657.js (spec-v1657: FTEs from hours — administrative disclaimer)
+- `fte-from-hours`
+
+### lib/bed-occupancy-alos-v1657.js (spec-v1657: occupancy, average daily census and length of stay — administrative disclaimer)
+- `bed-occupancy-alos`
+
+### lib/overtime-agency-share-v1657.js (spec-v1657: overtime and agency share of hours — administrative disclaimer)
+- `overtime-agency-share`
+
+### lib/unit-budget-variance-v1657.js (spec-v1657: flexible budget variance — administrative disclaimer)
+- `unit-budget-variance`
+
+### lib/case-mix-index-v1657.js (spec-v1657: case mix index from DRG weights — administrative disclaimer)
+- `case-mix-index`
+
+### lib/staffing-grid-v1657.js (spec-v1657: shift staffing grid — administrative disclaimer)
+- `staffing-grid`
+
+### lib/levey-jennings-limits-v1658.js (spec-v1658: Levey-Jennings mean, SD and control limits — administrative disclaimer)
+- `levey-jennings-limits`
+
+### lib/clia-pt-acceptance-v1658.js (spec-v1658: CLIA proficiency testing acceptance limit — administrative disclaimer)
+- `clia-pt-acceptance`
+
+### lib/pt-event-score-v1658.js (spec-v1658: CLIA proficiency testing event score — administrative disclaimer)
+- `pt-event-score`
+
+### lib/calibration-verification-v1658.js (spec-v1658: calibration verification recovery and range — administrative disclaimer)
+- `calibration-verification`
+
+### lib/turnaround-time-percentile-v1658.js (spec-v1658: lab turnaround median and percentile — administrative disclaimer)
+- `turnaround-time-percentile`
+
+### lib/incidence-prevalence-v1659.js (spec-v1659: incidence and prevalence — administrative disclaimer)
+- `incidence-prevalence`
+
+### lib/mortality-measures-v1659.js (spec-v1659: mortality measures — administrative disclaimer)
+- `mortality-measures`
+
+### lib/ypll-v1659.js (spec-v1659: years of potential life lost — administrative disclaimer)
+- `ypll`
+
+### lib/attributable-proportion-v1659.js (spec-v1659: attributable proportion among the exposed — administrative disclaimer)
+- `attributable-proportion`
+
+### lib/vaccine-effectiveness-v1659.js (spec-v1659: vaccine effectiveness from attack rates — administrative disclaimer)
+- `vaccine-effectiveness`
+
+### lib/smr-v1659.js (spec-v1659: standardized mortality ratio — administrative disclaimer)
+- `smr`
+
+### lib/direct-age-standardization-v1659.js (spec-v1659: directly age-standardized rate — administrative disclaimer)
+- `direct-age-standardization`
+
+### lib/hardy-weinberg-carrier-v1660.js (spec-v1660: carrier frequency from incidence (Hardy-Weinberg) — clinical disclaimer)
+- `hardy-weinberg-carrier`
+
+### lib/residual-carrier-risk-v1660.js (spec-v1660: residual carrier risk after a negative screen — clinical disclaimer)
+- `residual-carrier-risk`
+
+### lib/recessive-couple-risk-v1660.js (spec-v1660: autosomal recessive risk to a pregnancy — clinical disclaimer)
+- `recessive-couple-risk`
+
+### lib/x-linked-bayes-risk-v1660.js (spec-v1660: X-linked carrier risk with unaffected sons — clinical disclaimer)
+- `x-linked-bayes-risk`
+
+### lib/coefficient-of-relationship-v1660.js (spec-v1660: coefficients of inbreeding and relationship — clinical disclaimer)
+- `coefficient-of-relationship`
+
+### lib/bayes-risk-table-v1660.js (spec-v1660: Bayesian risk table — clinical disclaimer)
+- `bayes-risk-table`
+
+### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
+- `ischemia-time-clock`
+
+### lib/donor-recipient-size-match-v1661.js (spec-v1661: donor-to-recipient size ratios — clinical disclaimer)
+- `donor-recipient-size-match`
+
+### lib/t-macs-v1662.js (spec-v1662: T-MACS probability of ACS — clinical disclaimer)
+- `t-macs`
 
 ### lib/antimicrobial-day-counter-v1636.js (spec-v1636: Count antimicrobial days and days present from rows (NHSN) — administrative disclaimer)
 - `antimicrobial-day-counter`

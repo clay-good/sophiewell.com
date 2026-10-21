@@ -115,7 +115,10 @@ test('irf-compliance-clock: a screening older than 48 hours passes only with an 
 test('irf-compliance-clock: IRF-PAI admission and discharge dates', () => {
   const n = irf({ admission: '2026-10-05T15:00', discharge: '2026-10-20' }).notes.join(' ');
   assert.match(n, /completed October 8, 2026, encoded by October 14, 2026/);
-  assert.match(n, /transmitted together by November 6, 2026/);
+  // Discharge October 20: completed on the 5th day counting the discharge date as day 1 (October 24), encoded by
+  // October 30, transmitted by November 5 (412.610(c)(2), (d); 412.614(c)) (spec-v1671).
+  assert.match(n, /discharge assessment: completed October 24, 2026, encoded by October 30, 2026/);
+  assert.match(n, /transmitted together by November 5, 2026/);
 });
 
 test('irf-compliance-clock: a blank admission asks', () => {

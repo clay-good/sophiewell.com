@@ -43,7 +43,7 @@ export default [
     summary: 'Roland-Morris Disability Questionnaire (Roland & Morris 1983): count of applicable low-back disability statements (0-24); higher = more disability.',
     compute: F.rolandMorris,
     fields: [
-      { dom: 'rmdq-count', arg: 'count', kind: 'number', required: true, label: 'Number of applicable statements (0-24)' },
+      { dom: 'rmdq-count', arg: 'count', kind: 'number', min: 0, max: 24, required: true, label: 'Number of applicable statements (0-24)' },
     ],
   },
   {

@@ -76,8 +76,8 @@ export default [
     summary: 'Dizziness Handicap Inventory (Jacobson & Newman 1990): 25 items scored No 0 / Sometimes 2 / Yes 4 give a 0–100 total (mild 0–30, moderate 31–60, severe 61–100).',
     compute: F.dhi,
     fields: [
-      { dom: 'dhi-yes', arg: 'numberYes', kind: 'number', required: true, label: 'Number of "Yes" answers (0–25)' },
-      { dom: 'dhi-some', arg: 'numberSometimes', kind: 'number', required: true, label: 'Number of "Sometimes" answers (0–25)' },
+      { dom: 'dhi-yes', arg: 'numberYes', kind: 'number', min: 0, max: 25, required: true, label: 'Number of "Yes" answers (0–25)' },
+      { dom: 'dhi-some', arg: 'numberSometimes', kind: 'number', min: 0, max: 25, required: true, label: 'Number of "Sometimes" answers (0–25)' },
     ],
   },
 ];

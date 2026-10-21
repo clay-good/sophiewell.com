@@ -854,6 +854,51 @@ import * as antimicrobialDayCounterV1636 from '../../lib/antimicrobial-day-count
 import * as antibiogramBuilderV1636 from '../../lib/antibiogram-builder-v1636.js';
 import * as chelationDoseV1636 from '../../lib/chelation-dose-v1636.js';
 import * as medAdminWindowV1636 from '../../lib/med-admin-window-v1636.js';
+import * as surgicalProphylaxisRedoseV1636 from '../../lib/surgical-prophylaxis-redose-v1636.js';
+import * as nhsnSirV1655 from '../../lib/nhsn-sir-v1655.js';
+import * as deviceUtilizationRatioV1655 from '../../lib/device-utilization-ratio-v1655.js';
+import * as deviceInfectionRateV1655 from '../../lib/device-infection-rate-v1655.js';
+import * as outbreakAttackRatesV1655 from '../../lib/outbreak-attack-rates-v1655.js';
+import * as hcpExposureClockV1655 from '../../lib/hcp-exposure-clock-v1655.js';
+import * as hcpIllnessReturnDateV1655 from '../../lib/hcp-illness-return-date-v1655.js';
+import * as oshaNoiseDoseV1656 from '../../lib/osha-noise-dose-v1656.js';
+import * as oshaStandardThresholdShiftV1656 from '../../lib/osha-standard-threshold-shift-v1656.js';
+import * as oshaLeadMedicalRemovalV1656 from '../../lib/osha-lead-medical-removal-v1656.js';
+import * as fmcsaBpCertificationV1656 from '../../lib/fmcsa-bp-certification-v1656.js';
+import * as fmcsaHearingStandardV1656 from '../../lib/fmcsa-hearing-standard-v1656.js';
+import * as oshaLeadAirbornePelShiftV1656 from '../../lib/osha-lead-airborne-pel-shift-v1656.js';
+import * as nursingHppdV1657 from '../../lib/nursing-hppd-v1657.js';
+import * as pbjHoursPerResidentDayV1657 from '../../lib/pbj-hours-per-resident-day-v1657.js';
+import * as pbjCaseMixAdjustedHoursV1657 from '../../lib/pbj-case-mix-adjusted-hours-v1657.js';
+import * as nursingHomeStaffingStarV1657 from '../../lib/nursing-home-staffing-star-v1657.js';
+import * as staffTurnoverRateV1657 from '../../lib/staff-turnover-rate-v1657.js';
+import * as fteFromHoursV1657 from '../../lib/fte-from-hours-v1657.js';
+import * as bedOccupancyAlosV1657 from '../../lib/bed-occupancy-alos-v1657.js';
+import * as overtimeAgencyShareV1657 from '../../lib/overtime-agency-share-v1657.js';
+import * as unitBudgetVarianceV1657 from '../../lib/unit-budget-variance-v1657.js';
+import * as caseMixIndexV1657 from '../../lib/case-mix-index-v1657.js';
+import * as staffingGridV1657 from '../../lib/staffing-grid-v1657.js';
+import * as leveyJenningsLimitsV1658 from '../../lib/levey-jennings-limits-v1658.js';
+import * as cliaPtAcceptanceV1658 from '../../lib/clia-pt-acceptance-v1658.js';
+import * as ptEventScoreV1658 from '../../lib/pt-event-score-v1658.js';
+import * as calibrationVerificationV1658 from '../../lib/calibration-verification-v1658.js';
+import * as turnaroundTimePercentileV1658 from '../../lib/turnaround-time-percentile-v1658.js';
+import * as incidencePrevalenceV1659 from '../../lib/incidence-prevalence-v1659.js';
+import * as mortalityMeasuresV1659 from '../../lib/mortality-measures-v1659.js';
+import * as ypllV1659 from '../../lib/ypll-v1659.js';
+import * as attributableProportionV1659 from '../../lib/attributable-proportion-v1659.js';
+import * as vaccineEffectivenessV1659 from '../../lib/vaccine-effectiveness-v1659.js';
+import * as smrV1659 from '../../lib/smr-v1659.js';
+import * as directAgeStandardizationV1659 from '../../lib/direct-age-standardization-v1659.js';
+import * as hardyWeinbergCarrierV1660 from '../../lib/hardy-weinberg-carrier-v1660.js';
+import * as residualCarrierRiskV1660 from '../../lib/residual-carrier-risk-v1660.js';
+import * as recessiveCoupleRiskV1660 from '../../lib/recessive-couple-risk-v1660.js';
+import * as xLinkedBayesRiskV1660 from '../../lib/x-linked-bayes-risk-v1660.js';
+import * as coefficientOfRelationshipV1660 from '../../lib/coefficient-of-relationship-v1660.js';
+import * as bayesRiskTableV1660 from '../../lib/bayes-risk-table-v1660.js';
+import * as ischemiaTimeClockV1661 from '../../lib/ischemia-time-clock-v1661.js';
+import * as donorRecipientSizeMatchV1661 from '../../lib/donor-recipient-size-match-v1661.js';
+import * as tMacsV1662 from '../../lib/t-macs-v1662.js';
 import * as adjustedPatientDaysV1636 from '../../lib/adjusted-patient-days-v1636.js';
 import * as auRateSaarV1636 from '../../lib/au-rate-saar-v1636.js';
 import * as cdiLabidCategoryV1636 from '../../lib/cdi-labid-category-v1636.js';
@@ -871,6 +916,7 @@ import * as nacOralRegimenV1636 from '../../lib/nac-oral-regimen-v1636.js';
 import * as fomepizoleScheduleV1636 from '../../lib/fomepizole-schedule-v1636.js';
 import * as dantroleneMhVialsV1636 from '../../lib/dantrolene-mh-vials-v1636.js';
 import * as chemoDoseVerifyV1635 from '../../lib/chemo-dose-verify-v1635.js';
+import * as relativeDoseIntensityV1635 from '../../lib/relative-dose-intensity-v1635.js';
 import * as chemoOrganLabelDoseV1635 from '../../lib/chemo-organ-label-dose-v1635.js';
 import * as chatelutCarboplatinV1635 from '../../lib/chatelut-carboplatin-v1635.js';
 import * as desensitization12StepV1635 from '../../lib/desensitization-12-step-v1635.js';
@@ -1988,6 +2034,51 @@ const MODULES = {
   'antibiogram-builder-v1636.js': antibiogramBuilderV1636,
   'chelation-dose-v1636.js': chelationDoseV1636,
   'med-admin-window-v1636.js': medAdminWindowV1636,
+  'surgical-prophylaxis-redose-v1636.js': surgicalProphylaxisRedoseV1636,
+  'nhsn-sir-v1655.js': nhsnSirV1655,
+  'device-utilization-ratio-v1655.js': deviceUtilizationRatioV1655,
+  'device-infection-rate-v1655.js': deviceInfectionRateV1655,
+  'outbreak-attack-rates-v1655.js': outbreakAttackRatesV1655,
+  'hcp-exposure-clock-v1655.js': hcpExposureClockV1655,
+  'hcp-illness-return-date-v1655.js': hcpIllnessReturnDateV1655,
+  'osha-noise-dose-v1656.js': oshaNoiseDoseV1656,
+  'osha-standard-threshold-shift-v1656.js': oshaStandardThresholdShiftV1656,
+  'osha-lead-medical-removal-v1656.js': oshaLeadMedicalRemovalV1656,
+  'fmcsa-bp-certification-v1656.js': fmcsaBpCertificationV1656,
+  'fmcsa-hearing-standard-v1656.js': fmcsaHearingStandardV1656,
+  'osha-lead-airborne-pel-shift-v1656.js': oshaLeadAirbornePelShiftV1656,
+  'nursing-hppd-v1657.js': nursingHppdV1657,
+  'pbj-hours-per-resident-day-v1657.js': pbjHoursPerResidentDayV1657,
+  'pbj-case-mix-adjusted-hours-v1657.js': pbjCaseMixAdjustedHoursV1657,
+  'nursing-home-staffing-star-v1657.js': nursingHomeStaffingStarV1657,
+  'staff-turnover-rate-v1657.js': staffTurnoverRateV1657,
+  'fte-from-hours-v1657.js': fteFromHoursV1657,
+  'bed-occupancy-alos-v1657.js': bedOccupancyAlosV1657,
+  'overtime-agency-share-v1657.js': overtimeAgencyShareV1657,
+  'unit-budget-variance-v1657.js': unitBudgetVarianceV1657,
+  'case-mix-index-v1657.js': caseMixIndexV1657,
+  'staffing-grid-v1657.js': staffingGridV1657,
+  'levey-jennings-limits-v1658.js': leveyJenningsLimitsV1658,
+  'clia-pt-acceptance-v1658.js': cliaPtAcceptanceV1658,
+  'pt-event-score-v1658.js': ptEventScoreV1658,
+  'calibration-verification-v1658.js': calibrationVerificationV1658,
+  'turnaround-time-percentile-v1658.js': turnaroundTimePercentileV1658,
+  'incidence-prevalence-v1659.js': incidencePrevalenceV1659,
+  'mortality-measures-v1659.js': mortalityMeasuresV1659,
+  'ypll-v1659.js': ypllV1659,
+  'attributable-proportion-v1659.js': attributableProportionV1659,
+  'vaccine-effectiveness-v1659.js': vaccineEffectivenessV1659,
+  'smr-v1659.js': smrV1659,
+  'direct-age-standardization-v1659.js': directAgeStandardizationV1659,
+  'hardy-weinberg-carrier-v1660.js': hardyWeinbergCarrierV1660,
+  'residual-carrier-risk-v1660.js': residualCarrierRiskV1660,
+  'recessive-couple-risk-v1660.js': recessiveCoupleRiskV1660,
+  'x-linked-bayes-risk-v1660.js': xLinkedBayesRiskV1660,
+  'coefficient-of-relationship-v1660.js': coefficientOfRelationshipV1660,
+  'bayes-risk-table-v1660.js': bayesRiskTableV1660,
+  'ischemia-time-clock-v1661.js': ischemiaTimeClockV1661,
+  'donor-recipient-size-match-v1661.js': donorRecipientSizeMatchV1661,
+  't-macs-v1662.js': tMacsV1662,
   'adjusted-patient-days-v1636.js': adjustedPatientDaysV1636,
   'au-rate-saar-v1636.js': auRateSaarV1636,
   'cdi-labid-category-v1636.js': cdiLabidCategoryV1636,
@@ -2005,6 +2096,7 @@ const MODULES = {
   'fomepizole-schedule-v1636.js': fomepizoleScheduleV1636,
   'dantrolene-mh-vials-v1636.js': dantroleneMhVialsV1636,
   'chemo-dose-verify-v1635.js': chemoDoseVerifyV1635,
+  'relative-dose-intensity-v1635.js': relativeDoseIntensityV1635,
   'chemo-organ-label-dose-v1635.js': chemoOrganLabelDoseV1635,
   'chatelut-carboplatin-v1635.js': chatelutCarboplatinV1635,
   'desensitization-12-step-v1635.js': desensitization12StepV1635,

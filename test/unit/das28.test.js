@@ -66,3 +66,17 @@ test('the two forms are not interchangeable (CRP runs lower)', () => {
   assert.equal(esr.formLabel, 'DAS28-ESR');
   assert.equal(crp.formLabel, 'DAS28-CRP');
 });
+
+// spec-v1649: the band is read on the score as shown. A raw 5.1004 printed
+// "DAS28-ESR 5.1: high disease activity (> 5.1)".
+test('das28: the band agrees with the score it prints, at every EULAR edge', () => {
+  let edges = 0;
+  for (let tjc = 0; tjc <= 28; tjc += 1) for (let sjc = 0; sjc <= 28; sjc += 2) for (const esr of [5, 12, 20, 30, 45, 60, 90]) for (let gh = 0; gh <= 100; gh += 5) {
+    const r = das28({ tjc28: tjc, sjc28: sjc, form: 'esr', esr, globalHealth: gh });
+    const s = r.score;
+    const want = s < 2.6 ? 'remission' : s <= 3.2 ? 'low' : s <= 5.1 ? 'moderate' : 'high';
+    assert.equal(r.activity, want, `tjc ${tjc} sjc ${sjc} esr ${esr} gh ${gh} -> ${s}`);
+    if (s === 5.1 || s === 3.2) edges += 1;
+  }
+  assert.ok(edges > 0, 'the sweep reached an edge value');
+});

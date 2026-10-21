@@ -25,7 +25,7 @@
       `lib/search-corpus.js` `corpusDesc`) and invalidate the tile-corpus cache; on failure,
       desc stays '' (Design D7). e2e: a band-text query ("antithrombotic therapy not
       recommended") routes to `chads` in-browser; synonym + BMI smokes unregressed.
-- [ ] 2.2 Build the token→postings index once per session, deferred off first paint (idle
+- [~] 2.2 (deferred with the IDF ranker, spec-v282; audited 2026-10-20) Build the token→postings index once per session, deferred off first paint (idle
       callback). DEFERRED with the IDF ranker (tasks 3.1-3.4): the flat ranker re-tokenizes per
       keystroke over ~1,140 short docs (sub-frame today); the postings index lands when the
       IDF/BM25-lite scoring does, which is what makes it worthwhile.
@@ -82,25 +82,25 @@
 
 ## 5. Tests & guards
 
-- [ ] 5.1 Unit: the misroute table from the proposal becomes fixtures — "stroke risk in afib"
+- [x] 5.1 (test/unit/synonyms-catalog.test.js routes "stroke risk in afib" and the other misroutes) Unit: the misroute table from the proposal becomes fixtures — "stroke risk in afib"
       → `chads` first; "sodium is low how fast can i correct it" → `sodium-correction` first;
       existing routes ("burn fluid", "alcohol withdrawal severity", "kidney function") do not
       regress.
-- [ ] 5.2 Unit: scaffold stripping ("what is the X" ranks same top tile as "X"), stemming
+- [x] 5.2 (test/unit/prompt.test.js: scaffold strip, plural fold, IDF tie-break, typo repair; -ion stemming was rejected for a pair table) Unit: scaffold stripping ("what is the X" ranks same top tile as "X"), stemming
       (correct/correction), IDF (a name-only "score"/"risk" tile does not beat a
       summary-matched canonical tile), typo pass ("cockroft gault" resolves).
-- [ ] 5.3 Unit: corpus-absent degradation — with unenriched rows, ranking equals today's
+- [x] 5.3 (test/unit/corpus-absent-ranking.test.js, added 2026-10-20) Unit: corpus-absent degradation — with unenriched rows, ranking equals today's
       behavior on the existing fixture set.
-- [ ] 5.4 Guard: corpus builder determinism (build twice, compare bytes) and size budget.
-- [ ] 5.5 e2e: hero-search flow — type a question, correct tile is the top option, Enter
+- [x] 5.4 (test/unit/search-corpus.test.js: byte-identical rebuild and both gzip budgets) Guard: corpus builder determinism (build twice, compare bytes) and size budget.
+- [x] 5.5 (smoke.spec.js and query-routing.spec.js; offline search in works-offline.spec.js) e2e: hero-search flow — type a question, correct tile is the top option, Enter
       routes; offline (SW) still serves the cached corpus.
 
 ## 6. Ship
 
-- [ ] 6.1 `npm run lint`, `npm test`, `npm run build` green; `git checkout -- data/` rules do
+- [x] 6.1 (the corpus is committed: data/search-corpus/) `npm run lint`, `npm test`, `npm run build` green; `git checkout -- data/` rules do
       not apply to `data/search-corpus/` (it is a committed build output — decide and document
       whether it is committed or dist-only at build time; default: dist-only, like the SEO
       pages).
 - [x] 6.2 `docs/spec-v282.md` records the routing upgrade (successor to spec-v8), folding the
       corpus + ranked-API + synonym + enrichment deltas in.
-- [ ] 6.3 Catalog count unchanged; CHANGELOG entry.
+- [x] 6.3 Catalog count unchanged; CHANGELOG entry.

@@ -14,7 +14,8 @@ test('serious and unexpected: 15 calendar days from first receipt, in every sett
   // Calendar days: no weekend extension (October 17, 2026 is a Saturday).
   assert.equal(run({ setting: 'nda', outcome: 'death', unexpected: 'yes', received: '2026-10-02' }).due, '2026-10-17');
   // Across a month end and a leap day.
-  assert.equal(run({ setting: 'nda', outcome: 'death', unexpected: 'yes', received: '2028-02-20' }).due, '2028-03-06');
+  // (A receipt date after today is refused, so the leap-year case is run on a 2028 today.)
+  assert.equal(d({ setting: 'nda', outcome: 'death', unexpected: 'yes', received: '2028-02-20' }, new Date(2028, 1, 21, 12)).due, '2028-03-06');
   assert.match(run({ setting: 'nda', outcome: 'death', unexpected: 'yes', received: '2026-10-01' }).band, /5 days from today/);
   assert.equal(run({ setting: 'nda', outcome: 'death', unexpected: 'yes', received: '2026-09-01' }).abnormal, true);
 });
