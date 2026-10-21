@@ -17,6 +17,7 @@ function select(label, id) {
   wrap.appendChild(el('br'));
   const s = el('select', { id });
   const opts = [
+    ['', 'Not answered'],
     ['0', 'Never'],
     ['1', 'Rarely (less than once a month)'],
     ['2', 'Sometimes (monthly, less than weekly)'],

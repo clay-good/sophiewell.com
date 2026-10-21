@@ -74,7 +74,7 @@ export const renderers = {
       const r = M.icansGrade({ ice: val('icans-ice'), loc: val('icans-loc'), seizure: val('icans-seizure'), icp: val('icans-icp'), motor: chk('icans-motor') });
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'ASTCT ICANS grade', value: r.meetsCriteria ? `${r.grade} of 4` : 'no ICANS' },
+        { label: 'ASTCT ICANS grade', value: r.meetsCriteria ? `${r.grade} of 4` : r.incomplete ? 'not excluded (ICE score not entered)' : 'no ICANS' },
       ]);
       note(o, r.note);
     }));

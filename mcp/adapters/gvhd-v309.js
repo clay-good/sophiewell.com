@@ -11,7 +11,7 @@ import * as G from '../../lib/gvhd-v309.js';
 export default [
   {
     id: 'gvhd-grade',
-    summary: 'Acute graft-versus-host disease (GVHD) overall grade, modified Glucksberg (Przepiorka 1995): given the skin, liver, and gastrointestinal organ stages (0-4 each), reports the overall grade (0-IV) - IV if any organ is stage 4; III if liver or gut is stage 2-3; II if skin is stage 3 or liver/gut is stage 1; I if skin is stage 1-2. Grades III-IV are severe. Reports the classification grade, not a treatment order.',
+    summary: 'Acute graft-versus-host disease (GVHD) overall grade, modified Glucksberg (Przepiorka 1995): given the skin, liver, and gastrointestinal organ stages (0-4 each), reports the overall grade (0-IV) - IV if skin or liver is stage 4; III if liver is stage 2-3 or gut stage 2-4; II if skin is stage 3 or liver/gut is stage 1; I if skin is stage 1-2. Grades III-IV are severe. Reports the classification grade, not a treatment order.',
     compute: G.gvhdGrade,
     fields: [
       { dom: 'gvhd-skin', arg: 'skinStage', kind: 'enum', required: false, values: ['0', '1', '2', '3', '4'], label: 'Skin stage (by BSA rash)' },

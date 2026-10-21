@@ -16,6 +16,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Defects an independent review found in the spec-v300 to v499 tools. Jones criteria: Sydenham chorea no longer loses
+  the diagnosis when another finding is ticked, and a joint manifestation counts once. Acute GVHD follows Przepiorka
+  1995: gut stage 4 is grade III, not IV. ICANS with no ICE score is "not excluded", not "No ICANS"; an NPI of 2.404 is
+  "good". Jones, GVHD, Nottingham, Wexner, Fazekas and Nohria-Stevenson forms no longer open on a reassuring answer.
+- Laboratory and ventilator tools (v908 to v932) print sigma, the hepatic iron index, auto-PEEP, the reference change
+  value and Hy's law ratios on the side of the line they were judged; impossible pressures and negative CVs are refused.
 - Eleven defects an independent review found in the spec-v500 to v599 tools. HLH-2004 no longer reads a blank "infant
   under 4 weeks" as no when the hemoglobin threshold depends on it; the Bologna override is no longer blocked by a risk
   factor the consensus does not name; Mayo ADPKD, PPM, RUCAM and ARC-HBR are graded on unrounded values; a percent typed

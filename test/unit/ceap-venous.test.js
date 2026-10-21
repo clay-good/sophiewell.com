@@ -35,12 +35,14 @@ test('C4a-C6 are the advanced (skin-change / ulcer) classes and flagged', () => 
 test('numeric, bare-C4, and case-insensitive input map to the classes', () => {
   assert.equal(ceapVenous({ cls: 3 }).ceapClass, 'C3');
   assert.equal(ceapVenous({ cls: '6' }).ceapClass, 'C6');
-  assert.equal(ceapVenous({ cls: 'c4' }).ceapClass, 'C4a');
+  // spec-v1680: a bare C4 is asked about (it was read as C4a, one of three subclasses since 2020).
+  assert.equal(ceapVenous({ cls: 'c4' }).valid, false);
   assert.equal(ceapVenous({ cls: 'c4b' }).ceapClass, 'C4b');
 });
 
 test('a missing or out-of-range class is invalid', () => {
   assert.equal(ceapVenous({}).valid, false);
   assert.equal(ceapVenous({ cls: 'C7' }).valid, false);
-  assert.equal(ceapVenous({ cls: 'C4c' }).valid, false);
+  // spec-v1680: C4c (corona phlebectatica) is the 2020 revision's addition, no longer refused.
+  assert.equal(ceapVenous({ cls: 'C4c' }).ceapClass, 'C4c');
 });

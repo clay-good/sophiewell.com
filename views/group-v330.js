@@ -51,11 +51,13 @@ export const renderers = {
     note(root, 'Nottingham Prognostic Index (NPI) for early invasive breast cancer (Haybittle 1982 / Galea 1992). NPI = (0.2 × size in cm) + node stage + grade. Groups: excellent ≤ 2.4, good ≤ 3.4, moderate ≤ 5.4, poor > 5.4.');
     root.appendChild(field('Tumor size (cm)', 'npi-size', { step: '0.1', min: 0, placeholder: 'e.g. 2.5' }));
     root.appendChild(select('Lymph-node stage', 'npi-node', [
+      ['', 'Not selected'],
       ['1', '1 — no positive nodes'],
       ['2', '2 — 1 to 3 positive nodes'],
       ['3', '3 — 4 or more positive nodes'],
     ]));
     root.appendChild(select('Histologic grade', 'npi-grade', [
+      ['', 'Not selected'],
       ['1', '1 — grade I'],
       ['2', '2 — grade II'],
       ['3', '3 — grade III'],
