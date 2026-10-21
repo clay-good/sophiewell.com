@@ -94,7 +94,8 @@ test('the overlap at exactly 2.00 is flagged and resolved upward', () => {
   const r = at(12, 40, 'frontal');   // 1.2 + 0.8 = 2.0
   assert.equal(r.modified, 2);
   assert.equal(r.atOverlapBoundary, true);
-  assert.equal(r.modifiedBand, '1.51 to 2.00');
+  // spec-v1677: upward, as the title and OVERLAP_NOTE say (it had landed in the lower row).
+  assert.equal(r.modifiedBand, '2.00 or more');
   assert.match(r.bandText, /OVERLAP at exactly 2\.00/);
 });
 

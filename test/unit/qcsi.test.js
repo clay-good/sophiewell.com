@@ -28,13 +28,15 @@ test('SpO2 bands: >92=0, 89-92=2, <=88=5', () => {
   assert.equal(qcsi({ ...base, spo2: '88' }).score, 5);
 });
 
-test('O2 flow bands: <=2=0, 3-4=4, >=5=5', () => {
+test('O2 flow bands: <=2=0, 3-4=4, 5-6=5', () => {
   const base = { respiratoryRate: '18', spo2: '98' };
   assert.equal(qcsi({ ...base, o2Flow: '2' }).score, 0);
   assert.equal(qcsi({ ...base, o2Flow: '3' }).score, 4);
   assert.equal(qcsi({ ...base, o2Flow: '4' }).score, 4);
   assert.equal(qcsi({ ...base, o2Flow: '5' }).score, 5);
-  assert.equal(qcsi({ ...base, o2Flow: '8' }).score, 5);
+  // spec-v1677: the published item stops at 5 to 6 L/min (Haimovich 2020 Table 2); above 6 the score does not apply.
+  assert.equal(qcsi({ ...base, o2Flow: '6' }).score, 5);
+  assert.equal(qcsi({ ...base, o2Flow: '8' }).valid, false);
 });
 
 test('worked example: RR 26 (1) + SpO2 90 (2) + O2 3 (4) -> 7 (high, ~44%)', () => {

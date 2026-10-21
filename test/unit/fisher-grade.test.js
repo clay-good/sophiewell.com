@@ -24,8 +24,11 @@ test('the subarachnoid ladder grades 1 to 3', () => {
 });
 
 // THE compartment rule.
-test('grade 4 is assigned by compartment regardless of the subarachnoid description', () => {
-  for (const sah of ['none', 'thin', 'thick-or-localized-clot']) {
+// spec-v1677: grade 4 is that compartment WITH DIFFUSE OR NO subarachnoid blood, as its definition reads; with a thick
+// or localized clot it is grade 3 (it had been graded 4, out of the highest vasospasm risk).
+test('grade 4 is assigned by compartment when the subarachnoid blood is diffuse or absent', () => {
+  assert.equal(at('yes', 'thick-or-localized-clot').grade, 3);
+  for (const sah of ['none', 'thin']) {
     const r = at('yes', sah);
     assert.equal(r.grade, 4, `intraventricular blood with sah=${sah}`);
     assert.equal(r.gradedByCompartment, true);

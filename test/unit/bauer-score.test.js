@@ -87,7 +87,10 @@ test('exhaustively, there are exactly two disagreement shapes and neither versio
 test('dropping the fracture item never lowers the modified score below the original', () => {
   const keys = ITEMS.map((i) => i.key);
   for (let mask = 0; mask < (1 << keys.length); mask += 1) {
-    const r = withFavorable(keys.filter((_, idx) => mask & (1 << idx)));
+    const fav = keys.filter((_, idx) => mask & (1 << idx));
+    // spec-v1677: a lung primary that is also breast, kidney, lymphoma or myeloma is refused; skip that combination.
+    if (fav.includes('favorablePrimary') && !fav.includes('notLungCancer')) continue;
+    const r = withFavorable(fav);
     assert.ok(r.modified <= r.original, 'the modified score drops at most the fracture point');
     assert.ok(r.original - r.modified <= 1);
   }
@@ -130,4 +133,8 @@ test('the scope note refuses the operative decision and dates the derivation', (
   assert.match(r.note, /what was done in the derivation cohorts rather than what should be done/);
   assert.match(r.note, /does not account for modern systemic therapy/);
   assert.match(r.note, /not a reason to withhold an operation/);
+});
+
+test('spec-v1677: a lung primary cannot also be a favorable primary', () => {
+  assert.equal(withFavorable(['favorablePrimary']).valid, false);
 });

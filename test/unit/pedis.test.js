@@ -28,9 +28,13 @@ test('the classification is five categories spelling PEDIS', () => {
 test('the score contribution is the grade minus one', () => {
   for (const c of CATEGORIES) {
     for (const g of c.grades) {
-      const r = atGrades((cat) => (cat.key === c.key ? g.grade : 1));
+      // spec-v1677: extent and depth must agree on intact skin, so the partner of either is a wound grade (2) when
+      // the one under test is not 1.
+      const partner = { extent: 'depth', depth: 'extent' }[c.key];
+      const r = atGrades((cat) => (cat.key === c.key ? g.grade : cat.key === partner && g.grade > 1 ? 2 : 1));
       const row = r.perCategory.find((x) => x.key === c.key);
       assert.equal(row.score, g.grade - 1, `${c.name} grade ${g.grade}`);
+      assert.equal(r.valid, true);
     }
   }
 });
@@ -127,4 +131,8 @@ test('the scope note keeps PEDIS off diagnosis, off treatment and off clinical p
   assert.match(r.note, /does not diagnose infection or peripheral arterial disease/);
   assert.match(r.note, /does not decide antibiotics, revascularization or amputation/);
   assert.match(r.note, /prognostic value in ordinary clinical practice is not established/);
+});
+
+test('spec-v1677: intact skin with a bone-deep ulcer is refused', () => {
+  assert.equal(atGrades((cat) => (cat.key === 'depth' ? 4 : 1)).valid, false);
 });

@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Defects an independent review found in the spec-v600 to v699 tools. APACHE II and FGSI scored 0 points for a value
+  between two printed bands (a temperature of 40.95 scored as normal); each band now runs up to the next one. Blood in
+  the ventricles beside a thick clot is Fisher grade 3, the highest vasospasm risk, not 4. qCSI no longer scores flows
+  above the 6 L/min its item covers; a one-section Oswestry is labeled partial; impossible combinations in Bauer, PEDIS,
+  UCSF and Sartorius are refused. Paroxysmal hemicrania now asks for the pain of criterion B.
 - Eleven defects in the v703 to v794 tools. A Fürst ratio of 1.0003 is above 1 (it was rounded to 1.000 and given
   a 500 mL restriction); a blank AWOL illness rating is named instead of read as "not ill"; PHI says its bands assume a
   total PSA of 2 to 10; Walch refuses impossible angles. Seven orthopedic and dental indices print their value on the

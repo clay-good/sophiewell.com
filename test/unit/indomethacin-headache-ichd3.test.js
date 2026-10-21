@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { ASKING } from '../lib/asking-language.js';
 import { indomethacinHeadacheIchd3 as ind } from '../../lib/indomethacin-headache-ichd3-v819.js';
 
-const ph = { attackCount: 30, attackMinutes: 15, attacksPerDay: 8, miosisPtosis: true, indomethacinResponse: true, noBetterExplanation: true };
+// spec-v1677: criterion B includes the pain itself (severe, one-sided, orbital, supraorbital and/or temporal).
+const ph = { attackCount: 30, severeUnilateralPain: true, attackMinutes: 15, attacksPerDay: 8, miosisPtosis: true, indomethacinResponse: true, noBetterExplanation: true };
 const hc = { unilateralContinuous: true, monthsContinuous: 6, moderateExacerbations: true, miosisPtosis: true, indomethacinResponse: true, noBetterExplanation: true };
 
 test('indomethacin TACs: each criteria set is met on its own terms', () => {
