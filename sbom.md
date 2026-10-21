@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `81006d5fe6955188`
-Generated: 2026-10-21T13:16:43.640Z
+Build ID: `cf18d0053b4cb28a`
+Generated: 2026-10-21T18:57:46.537Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -154,7 +154,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/barrow-ccf-v440.js` | 3198 | `f52772137a4282c641f7235b698a95e4949eed029e6f522be7151d8e236f7f29` |
 | `lib/basal-insulin-switch-v1633.js` | 16666 | `fbb0a0c2d6f091f05a3553eaa52993f88d2323feda6e46ee46348bd9b48e0ced` |
 | `lib/batch-tools.js` | 64488 | `09fff764b6c15ea63468a0a666b6e0e6920ee6a1dfb9ab6ac9eac80def78ef66` |
-| `lib/bauer-score-v603.js` | 13049 | `80bf6345d9cbe364d986e87f15e573918873ccd525f9919cdda09da80ffaccbd` |
+| `lib/bauer-score-v603.js` | 13054 | `ff025feed4e3effdf046a2547d55929751005dc04287af28ab40fe9d920f1867` |
 | `lib/bayes-risk-table-v1660.js` | 3076 | `3b7974df9d856bfe5ffa84b875939a0ddb0a647816c947d8098c65e241230675` |
 | `lib/bayes-table.js` | 2683 | `e7068cb92a141db23f3cbc1624e3ef243554eeaea447165db4c09287d161e133` |
 | `lib/bctq-v774.js` | 3483 | `6d1cab9250cf31f91e435c3af2833721a7c424eb755d8edf1a1e5287d2f2ec9f` |

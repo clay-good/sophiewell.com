@@ -16,6 +16,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The Bauer score's explanation said the original and modified versions disagree at exactly one total; they disagree
+  in exactly two situations, as the rest of the page already says.
 - The Lansky, Schwab and England and Montreal forms no longer open on a full-function or mildest answer. Lachman grade I is
   3-5 mm (it read 0-5) and grade III more than 10 mm; the McCormack apposition 2 description no longer describes grade 3.
 - Defects an independent review found in the core libs. The lab interpreter told an A1C of 5.7% it was in the diabetes
