@@ -39,11 +39,15 @@ export async function discover(http) {
   let latest = null;
   // The newest published year: next year's appears in January. An unpublished year echoes back as another.
   // It can also refuse the request outright -- ASPE answered 403 for 2027 on October 4, 2026, which stopped
-  // the whole weekly run. The probe year's own HTTP failure is not this builder's failure; the current
-  // year's is, so that one is left to throw.
+  // the whole weekly run. The probe year's own HTTP failure is not this builder's failure, and because it is
+  // expected to be refused it opts out of the refusal retry (retryRefusals: false) so it fails fast instead
+  // of waiting out the backoff; the current year is retried through a momentary 403/404 and, if it is still
+  // refused after that, is left to throw.
   for (const year of [y + 1, y]) {
+    const current = year === y;
     let r;
-    try { r = await http.get(urlOf(year, 'us', 1)); } catch (err) { if (year === y) throw err; continue; }
+    try { r = await http.get(urlOf(year, 'us', 1), current ? {} : { retryRefusals: false }); }
+    catch (err) { if (current) throw err; continue; }
     try { answer(r.bytes, year, 'us', 1); latest = year; break; } catch { /* not published */ }
   }
   if (!latest) throw new Error(`poverty-guidelines: neither ${y + 1} nor ${y} is published`);
