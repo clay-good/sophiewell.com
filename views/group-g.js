@@ -336,7 +336,9 @@ export const renderers = {
     const run = () => safe(o, () => {
       const ans = {}; for (const [id] of items) ans[id] = checked(id);
       const r = C.hasBled(ans);
-      o.appendChild(el('p', { text: `HAS-BLED total: ${r.total} (${r.risk} risk)` }));
+      const line = el('p', { text: `HAS-BLED total: ${r.total} (${r.risk} risk)` });
+      line.appendChild(statusChip(r.risk.toLowerCase(), r.risk));
+      o.appendChild(line);
       if (deriv) updateDerivationSteps(deriv, META.hasbled, ans);
     });
     items.forEach(([id]) => document.getElementById(id).addEventListener('change', run));
@@ -491,7 +493,9 @@ export const renderers = {
       };
       const r = S4.perc(inputs);
       o.appendChild(el('h2', { text: r.score === 0 ? 'PERC negative (0 features)' : `PERC ${r.score} positive features` }));
-      o.appendChild(el('p', { text: r.band }));
+      const bandLine = el('p', { text: r.band });
+      bandLine.appendChild(r.score === 0 ? statusChip('low', 'Negative') : statusChip('moderate', 'Positive'));
+      o.appendChild(bandLine);
       if (deriv) updateDerivationSteps(deriv, META.perc, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));

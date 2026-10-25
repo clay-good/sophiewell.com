@@ -13,6 +13,17 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/cardio-v101.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Authored stroke-risk severity for the CHADS2 / CHA2DS2-VA band chip: 0 low,
+// 1 moderate (anticoagulation a consideration), >=2 high (anticoagulation
+// recommended per guideline). Reflects the score's own risk tier -- no
+// threshold or value is changed, and the anticoagulation decision stays with
+// the clinician (spec-v11 §5.3).
+function afStrokeSeverity(total) {
+  if (total <= 0) return { severity: 'low', severityLabel: 'Low' };
+  if (total === 1) return { severity: 'moderate', severityLabel: 'Moderate' };
+  return { severity: 'high', severityLabel: 'High' };
+}
+
 function field(label, id, opts = {}) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -90,7 +101,7 @@ export const renderers = {
         diabetes: chk('chads2-dm'), stroke: chk('chads2-stroke'),
       });
       resultRow(o, [
-        { text: r.band, cls: r.total >= 2 ? 'warn' : null },
+        { text: r.band, cls: r.total >= 2 ? 'warn' : null, ...afStrokeSeverity(r.total) },
         { label: 'CHADS2 total (0-6)', value: String(r.total) },
         { label: 'Adjusted annual stroke rate', value: `${r.rate}%/yr` },
       ]);
@@ -116,7 +127,7 @@ export const renderers = {
       });
       if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       resultRow(o, [
-        { text: r.band, cls: r.favorsOac ? 'warn' : null },
+        { text: r.band, cls: r.favorsOac ? 'warn' : null, ...afStrokeSeverity(r.total) },
         { label: 'CHA2DS2-VA total (0-8)', value: String(r.total) },
       ]);
       derivation(o, 'Points by component (age scored by band; no sex point):', r.items);
