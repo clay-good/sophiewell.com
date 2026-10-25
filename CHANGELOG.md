@@ -16,6 +16,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The hypermobile Ehlers-Danlos (2017 criteria) tool no longer defaults a blank age group. The Beighton cutoff is
+  age-adjusted (6, 5, 4), and a missing group had silently used the pubertal-to-50 cutoff of 5, so an over-50 patient
+  with a Beighton of 4 was wrongly told the criteria were not met. The group is now asked for, as the sibling tools do.
 - The generic-substitution check's worked example opened on a "choose one" list instead of its answer: this week's
   Orange Book added a second Aurobindo nifedipine ER product (AB2), so the example's name found two products. The
   example is now the 90 mg Osmotica (AB2) and Valeant (AB1) pair, each found by name alone.

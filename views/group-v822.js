@@ -52,6 +52,7 @@ export const renderers = {
     root.appendChild(el('h2', { text: 'Criterion 1: generalized joint hypermobility' }));
     numField(root, 'Beighton score out of 9', 'heds-beighton', { min: '0', max: '9', step: '1' });
     selField(root, 'Which cutoff applies', 'heds-group', [
+      ['', 'Choose the age group'],
       ['prepubertal-or-adolescent', 'Pre-pubertal child or adolescent (cutoff 6)'],
       ['pubertal-to-50', 'Pubertal, up to age 50 (cutoff 5)'],
       ['over-50', 'Over the age of 50 (cutoff 4)'],

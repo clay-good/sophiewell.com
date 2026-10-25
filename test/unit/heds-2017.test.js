@@ -4,7 +4,8 @@ import { heds2017 as h } from '../../lib/heds-2017-v822.js';
 
 const fiveA = { a1: true, a2: true, a3: true, a4: true, a5: true };
 const cleared = { noSkinFragility: true, otherCtdExcluded: true, alternativesExcluded: true };
-const met = { ...fiveA, familyHistory: true, ...cleared, beightonScore: 6 };
+// The age group is required (the Beighton cutoff is age-adjusted), so every built input carries one.
+const met = { ...fiveA, familyHistory: true, ...cleared, beightonScore: 6, ageGroup: 'pubertal-to-50' };
 
 test('heds: all three criteria together', () => {
   const r = h(met);
@@ -44,26 +45,30 @@ test('heds: feature A needs five of the twelve', () => {
   assert.equal(h(met).featureACount, 5);
 });
 
+// A valid-form base for the criterion-2 combination tests: cleared exclusions, a meeting Beighton
+// score, and a chosen age group (required). Each test spreads this and adds only the features it varies.
+const c2base = { ...cleared, beightonScore: 6, ageGroup: 'pubertal-to-50' };
+
 test('heds: criterion 2 is any two of A, B and C in the ordinary case', () => {
-  assert.equal(h({ ...cleared, beightonScore: 6, ...fiveA, familyHistory: true }).criterion2, true);
-  assert.equal(h({ ...cleared, beightonScore: 6, ...fiveA, c1: true }).criterion2, true);
-  assert.equal(h({ ...cleared, beightonScore: 6, familyHistory: true, c1: true }).criterion2, true);
+  assert.equal(h({ ...c2base, ...fiveA, familyHistory: true }).criterion2, true);
+  assert.equal(h({ ...c2base, ...fiveA, c1: true }).criterion2, true);
+  assert.equal(h({ ...c2base, familyHistory: true, c1: true }).criterion2, true);
   // One feature alone is not enough.
-  assert.equal(h({ ...cleared, beightonScore: 6, familyHistory: true }).criterion2, false);
+  assert.equal(h({ ...c2base, familyHistory: true }).criterion2, false);
 });
 
 test('heds: with an ACQUIRED connective-tissue disorder, A and B are required and C counts for nothing', () => {
   // The rule that catches people, and it bites in exactly the group most often assessed.
-  const bPlusC = { ...cleared, beightonScore: 6, familyHistory: true, c1: true, acquiredCtd: true };
+  const bPlusC = { ...c2base, familyHistory: true, c1: true, acquiredCtd: true };
   assert.equal(h(bPlusC).criterion2, false);
   assert.equal(h(bPlusC).criteriaMet, false);
   assert.ok(h(bPlusC).acquiredNote.includes('cannot be counted'));
 
-  const aPlusC = { ...cleared, beightonScore: 6, ...fiveA, c1: true, acquiredCtd: true };
+  const aPlusC = { ...c2base, ...fiveA, c1: true, acquiredCtd: true };
   assert.equal(h(aPlusC).criterion2, false);
 
   // A and B together does meet it.
-  const aPlusB = { ...cleared, beightonScore: 6, ...fiveA, familyHistory: true, acquiredCtd: true };
+  const aPlusB = { ...c2base, ...fiveA, familyHistory: true, acquiredCtd: true };
   assert.equal(h(aPlusB).criterion2, true);
   assert.equal(h(aPlusB).criteriaMet, true);
 
@@ -79,15 +84,29 @@ test('heds: criterion 3 needs all three prerequisites, not two', () => {
   assert.equal(h({ ...met, alternativesExcluded: false }).criterion3, false);
 });
 
-test('heds: empty, invalid and out-of-range input', () => {
-  const empty = h({});
-  assert.equal(empty.valid, true);
-  assert.equal(empty.criteriaMet, false);
-  assert.equal(empty.rescueNote, null);
-  assert.equal(empty.acquiredNote, null);
+test('heds: a blank age group is refused, not defaulted to one cutoff', () => {
+  // Regression: a missing age group used to default to the pubertal-to-50 cutoff (5), silently
+  // deciding criterion 1 against the wrong cutoff for everyone else. It must be asked for.
+  assert.equal(h({}).valid, false);
+  assert.equal(h().valid, false);
+  assert.match(h({}).message, /age group/i);
+  // The exact clinical false-negative: an over-50 patient at Beighton 4 meets criterion 1 (cutoff 4),
+  // but with a blank group the old default (cutoff 5) would have called the criteria not met.
+  const over50 = { ...fiveA, familyHistory: true, ...cleared, beightonScore: 4 };
+  assert.equal(h({ ...over50, ageGroup: 'over-50' }).criteriaMet, true);
+  assert.equal(h(over50).valid, false); // blank group: refused, not silently cutoff-5
+
+  // A chosen group with an otherwise-empty form is valid and simply does not meet the criteria.
+  const emptyForm = h({ ageGroup: 'pubertal-to-50' });
+  assert.equal(emptyForm.valid, true);
+  assert.equal(emptyForm.criteriaMet, false);
+  assert.equal(emptyForm.rescueNote, null);
+  assert.equal(emptyForm.acquiredNote, null);
+});
+
+test('heds: invalid and out-of-range input', () => {
   assert.equal(h({ beightonScore: 10 }).valid, false);
   assert.equal(h({ beightonScore: 1e308 }).valid, false);
   assert.equal(h({ ageGroup: 'middle-aged' }).valid, false);
-  assert.equal(h().valid, true);
   assert.doesNotMatch(JSON.stringify(h(met)), /NaN|Infinity/);
 });

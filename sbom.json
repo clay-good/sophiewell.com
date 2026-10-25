@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:5ea92ae3-5e0a-52e8-89f0-737278bef88c",
+  "serialNumber": "urn:uuid:6fde5b32-2c94-5c4a-8195-ba11b9c296ef",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-21T22:38:43.043Z",
+    "timestamp": "2026-10-25T00:09:19.000Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -12179,7 +12179,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b98e067cdccce9652f8c915b085d5aaf3b1f11e0904e42d14b90f8c99edd5fe7"
+          "content": "ca3033547504d75e396274504118c1239e12ded68099c19b97078d321b5bb080"
         }
       ],
       "properties": [
@@ -12189,7 +12189,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9879"
+          "value": "10513"
         }
       ]
     },
@@ -17996,7 +17996,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a9106ca08f9262a689482f54e46ad8c0776ae4775969180c7cbb5e8c19ba5cbb"
+          "content": "2593c921ce4818dc7d66d2553dd4aae19edab9d40904e127efe96a0cc2a8d1a6"
         }
       ],
       "properties": [
@@ -18006,7 +18006,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3062436"
+          "value": "3062468"
         }
       ]
     },
@@ -80429,7 +80429,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4f15b049c90cfef22f1bec032cbda5348b3f33723393abeeff3b222599b1031b"
+          "content": "15e7d4432e7b84fe0eb81c7138471f1daf6e574e3ffbd18f5fdfcaa965f3b247"
         }
       ],
       "properties": [
@@ -80439,7 +80439,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7991"
+          "value": "8027"
         }
       ]
     },
@@ -102214,7 +102214,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "5ea92ae35e0a52e8"
+      "value": "6fde5b322c94ac4a"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
