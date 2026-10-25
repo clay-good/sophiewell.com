@@ -105,8 +105,22 @@ test('masld: the BMI cut is ancestry-specific', () => {
   assert.equal(BMI_ASIAN, 23);
   // A BMI of 24 meets it under the Asian cut and not the general one.
   assert.equal(masld({ sex: 'female', hepaticSteatosis: true, bmi: 24, ancestry: 'south-asian-chinese' }).category, 'MASLD');
-  assert.equal(masld({ sex: 'female', ...ASSESSED_NORMAL, hepaticSteatosis: true, bmi: 24 }).category, 'Cryptogenic SLD');
+  assert.equal(masld({ sex: 'female', ...ASSESSED_NORMAL, hepaticSteatosis: true, bmi: 24, ancestry: 'european' }).category, 'Cryptogenic SLD');
   assert.ok(masld({ sex: 'female', hepaticSteatosis: true, bmi: 24, ancestry: 'japanese' }).thresholdNote.includes('ancestry-specific'));
+});
+
+test('spec-v837: a blank ancestry is asked for only where it flips the adiposity criterion', () => {
+  // Regression: a blank ancestry used to default to the European cuts, so a BMI of 24 (which meets
+  // the Asian cut of 23) was read as not meeting the criterion -- a silent under-call.
+  const near = { sex: 'female', hepaticSteatosis: true, bmi: 24 };
+  assert.equal(masld(near).valid, false);
+  assert.match(masld(near).message, /ancestry/i);
+  // A waist between the lowest and highest cut for the sex also depends on it (male: 85 to 94).
+  assert.equal(masld({ sex: 'male', hepaticSteatosis: true, waistCm: 88 }).valid, false);
+  // Outside the ancestry-sensitive zone the choice changes nothing, so it is not asked: a BMI of 31
+  // meets every cut, and a BMI of 20 meets none.
+  assert.equal(masld({ sex: 'female', hepaticSteatosis: true, bmi: 31 }).category, 'MASLD');
+  assert.equal(masld({ sex: 'female', ...ASSESSED_NORMAL, hepaticSteatosis: true, bmi: 20 }).category, 'Cryptogenic SLD');
 });
 
 test('masld: the HDL cut is sex-specific', () => {

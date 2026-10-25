@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6fde5b322c94ac4a`
-Generated: 2026-10-25T00:09:19.000Z
+Build ID: `125ffa83ec316a68`
+Generated: 2026-10-25T00:34:35.958Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -851,7 +851,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/marsh-oberhuber-v423.js` | 3970 | `283c02c5cf571e22696a6ca0e315a9e4c10b66dd0fd264c08c58fe2ba1589c27` |
 | `lib/marsi-v902.js` | 7682 | `5ca5a0d700bf67bf310126e4db018e74b5b64344ed778d9b70abba140a3b81f2` |
 | `lib/masaoka-v650.js` | 4093 | `33d7955dadbd3ab884dcab9a05d1b88f1fd748d97a16bd3ac31ca97eba9d8cb6` |
-| `lib/masld-criteria-v837.js` | 14257 | `5a10fb4c7f5155e89e54c8c8ee083808f4c6305180036d1214506b3bead63977` |
+| `lib/masld-criteria-v837.js` | 15684 | `d469fd2a688e1c027542d76a65efe5b3b035675878a7a25afa7cab10ce7cbf83` |
 | `lib/mason-radial-head-v341.js` | 4841 | `5f3e5f6a2c2324d646a167f847a587dc1068e54cfb876bc4723212ea057cd4e2` |
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/mat-injection-admin-deadline-v1637.js` | 3750 | `5e4cadf31c6da537b7b271d5a3ae75ed677a852db8fe61fda0b22264c29ffd60` |
@@ -889,7 +889,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3062468 | `2593c921ce4818dc7d66d2553dd4aae19edab9d40904e127efe96a0cc2a8d1a6` |
+| `lib/meta.js` | 3062498 | `4fcd3ab5d06983ac31f1b4485dacbc50bebdf826acfed82126975971af6a57ca` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -3877,7 +3877,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v834.js` | 4491 | `2e297a41e6304ae7482d6fb52e092fc2b8902e07a76b2882bba835d6a53ccb47` |
 | `views/group-v835.js` | 4866 | `66ebae894ae88fb0845a846e4f6fab4c3dda808fbf1e5333a07b395051ab8dcc` |
 | `views/group-v836.js` | 4911 | `beda39e4301f62aa5e1b68bd046ab154eb284bfe8c439b1d81c50b1bdaaef970` |
-| `views/group-v837.js` | 6261 | `6854e74d6b6ab5a4f284e4fec97df8d5e48fa51a75a2d097b2da00117dbe8f49` |
+| `views/group-v837.js` | 6296 | `65ae299d3c7a224f1d197f1f2114e3b62d6aab600fa3f33408f3e5960c5d0f07` |
 | `views/group-v838.js` | 4300 | `4dd62631bf1977b59265d65fc6c2bc7f5b29ac371b28c39529b62489ea38a682` |
 | `views/group-v839.js` | 4305 | `c3ac2a9b49109775966e8a74e0406749a0da782cbe1f64fc33bd892be04220f6` |
 | `views/group-v840.js` | 3419 | `fc4fcf7bc5ee24029d2deed90f8b5ae9c07e95f10a80d0373fad5224c65ac6b8` |

@@ -55,6 +55,7 @@ export const renderers = {
     root.appendChild(el('h2', { text: 'Thresholds that depend on the person' }));
     selField(root, 'Sex', 'masld-sex', [['female', 'Female (HDL cut 50)'], ['male', 'Male (HDL cut 40)']]);
     selField(root, 'Ancestry, for the BMI and waist cuts', 'masld-ancestry', [
+      ['', 'Choose the ancestry'],
       ['european', 'European or general (BMI cut 25)'],
       ['south-asian-chinese', 'South Asian or Chinese (BMI cut 23)'],
       ['japanese', 'Japanese (BMI cut 23)'],
