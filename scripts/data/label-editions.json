@@ -3233,10 +3233,10 @@
     "tools": [
       "gcsf-timing-check"
     ],
-    "splVersion": 160,
-    "publishedOn": "2026-08-17",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "splVersion": 161,
+    "publishedOn": "2026-10-19",
+    "verifiedOn": "2026-10-25",
+    "validThrough": "2027-10-25",
     "sections": {
       "34068-7": "357b9a4eb808f879a4d0c4fa4c7e79465a67bda01371dc24c23a4b3e7f5cb706"
     }
@@ -3609,10 +3609,10 @@
     "tools": [
       "abx-renal"
     ],
-    "splVersion": 34,
-    "publishedOn": "2025-11-17",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "splVersion": 35,
+    "publishedOn": "2026-10-23",
+    "verifiedOn": "2026-10-25",
+    "validThrough": "2027-10-25",
     "sections": {
       "34068-7": "cde044893086b1e53b8d587f8b6000eb8568d84c11ab3d329eba48fabc4dbb7a"
     }
@@ -3749,10 +3749,10 @@
     "tools": [
       "out-of-fridge-discard-date"
     ],
-    "splVersion": 32,
-    "publishedOn": "2026-08-21",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "splVersion": 33,
+    "publishedOn": "2026-10-23",
+    "verifiedOn": "2026-10-25",
+    "validThrough": "2027-10-25",
     "sections": {
       "34069-5": "ded242e4e1c6d53e955cd46bb020c6e1db0c4831104812d22d1e853ec3c265b6"
     }
