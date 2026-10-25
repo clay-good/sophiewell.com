@@ -54,6 +54,26 @@
   --accent-pop-strong: #14b8a6;
   --accent-pop-tint: rgba(45, 212, 191, 0.14);
   --accent-pop-glow: rgba(45, 212, 191, 0.28);
+
+  /* design-system wave 1 (docs/design.md §5): severity tokens for the status
+     chip and any band surface. Text color is AA on the dark surfaces; the tint
+     is the chip background, the border a translucent rule. The band word is
+     always in the text, so these colors are reinforcement, never the only
+     signal. Low reuses the calm teal; moderate/high/critical climb amber ->
+     orange -> red. The light theme redefines the same names darker for AA on
+     near-white. */
+  --sev-low-text: #2dd4bf;
+  --sev-low-bg: rgba(45, 212, 191, 0.14);
+  --sev-low-border: rgba(45, 212, 191, 0.40);
+  --sev-moderate-text: #e3b341;
+  --sev-moderate-bg: rgba(227, 179, 65, 0.14);
+  --sev-moderate-border: rgba(227, 179, 65, 0.40);
+  --sev-high-text: #fb923c;
+  --sev-high-bg: rgba(251, 146, 60, 0.14);
+  --sev-high-border: rgba(251, 146, 60, 0.40);
+  --sev-critical-text: #f87171;
+  --sev-critical-bg: rgba(248, 113, 113, 0.16);
+  --sev-critical-border: rgba(248, 113, 113, 0.45);
 }
 
 [data-theme="light"] {
@@ -84,6 +104,20 @@
   --accent-pop-strong: #0f766e;
   --accent-pop-tint: rgba(13, 148, 136, 0.10);
   --accent-pop-glow: rgba(13, 148, 136, 0.22);
+
+  /* Severity tokens, darker so chip text keeps AA on the near-white surfaces. */
+  --sev-low-text: #0f766e;
+  --sev-low-bg: rgba(13, 148, 136, 0.10);
+  --sev-low-border: rgba(13, 148, 136, 0.35);
+  --sev-moderate-text: #92650a;
+  --sev-moderate-bg: rgba(146, 101, 10, 0.10);
+  --sev-moderate-border: rgba(146, 101, 10, 0.30);
+  --sev-high-text: #c2410c;
+  --sev-high-bg: rgba(194, 65, 12, 0.10);
+  --sev-high-border: rgba(194, 65, 12, 0.30);
+  --sev-critical-text: #b91c1c;
+  --sev-critical-bg: rgba(185, 28, 28, 0.10);
+  --sev-critical-border: rgba(185, 28, 28, 0.30);
 }
 
 *,
@@ -2477,4 +2511,230 @@ button:active { transform: translateY(1px) scale(0.985); }
      back its normal top-aligned flow. */
   .container:has(#home-view.active) { min-height: 0; justify-content: flex-start; }
 }
+}
+
+/* ==========================================================
+   DESIGN SYSTEM  -  shared components (docs/design.md §5)
+   Wave 1 of openspec/changes/design-system-cleanup. Token-only component
+   classes the archetypes will adopt wave by wave. No view consumes these
+   yet, so adding them is visually inert: nothing on the site changes until
+   a later wave renders one of these classes. Build order: foundation first
+   (here), then views migrate onto it. Every value is a token; interactive
+   controls clear the 44px tap target; colored state always carries a word.
+   ========================================================== */
+
+/* --- Chips ------------------------------------------------ */
+/* Base chip: a compact pill. Non-interactive by default (a status/label);
+   the interactive modifiers below opt into the 44px tap target so a
+   decorative status chip does not inflate to button height. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 6px var(--space-3);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  overflow-wrap: anywhere;
+}
+button.chip,
+a.chip,
+.chip--filter,
+.chip--input {
+  min-height: 44px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+}
+.chip:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+/* Filter chip: a toggle. State lives in aria-pressed so it is announced, not
+   inferred from color. */
+.chip--filter[aria-pressed="true"] {
+  color: var(--accent-pop-strong);
+  background: var(--accent-pop-tint);
+  border-color: var(--accent-pop);
+}
+.chip--filter:hover { border-color: var(--border-light); }
+
+/* Status / severity chip: names a result band at a glance. The band word is
+   always the text; the dot is decorative (mark it aria-hidden). Never rely on
+   color alone. */
+.chip--status { font-weight: 700; }
+.chip--status .chip-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+  flex: 0 0 auto;
+}
+.chip--status[data-severity="low"] {
+  color: var(--sev-low-text); background: var(--sev-low-bg); border-color: var(--sev-low-border);
+}
+.chip--status[data-severity="moderate"] {
+  color: var(--sev-moderate-text); background: var(--sev-moderate-bg); border-color: var(--sev-moderate-border);
+}
+.chip--status[data-severity="high"] {
+  color: var(--sev-high-text); background: var(--sev-high-bg); border-color: var(--sev-high-border);
+}
+.chip--status[data-severity="critical"] {
+  color: var(--sev-critical-text); background: var(--sev-critical-bg); border-color: var(--sev-critical-border);
+}
+
+/* Input chip: one dropped file or token, with a remove control. */
+.chip--input { background: var(--bg-tertiary); color: var(--text-primary); }
+.chip--input .chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin: -6px calc(-1 * var(--space-2)) -6px 0;
+  padding: 0 var(--space-2);
+  color: var(--text-muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.chip--input .chip-remove:hover { color: var(--sev-critical-text); }
+
+/* Assist chip: a suggested next action. Curated only, used sparingly. */
+.chip--assist { color: var(--accent-pop-strong); border-color: var(--accent-pop); background: transparent; }
+.chip--assist:hover { background: var(--accent-pop-tint); }
+
+/* --- Segmented control ------------------------------------ */
+/* 2-4 mutually exclusive options; a radiogroup so the choice is announced.
+   For longer or open lists, keep a <select>. */
+.segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.segmented > * {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  font: inherit;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-tertiary);
+  border: 0;
+  border-right: 1px solid var(--border);
+  cursor: pointer;
+}
+.segmented > *:last-child { border-right: 0; }
+.segmented > *:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
+.segmented [aria-checked="true"],
+.segmented [aria-pressed="true"] {
+  color: var(--accent-pop-strong);
+  background: var(--accent-pop-tint);
+}
+
+/* --- Stat grid -------------------------------------------- */
+/* Multi-output tiles: several labeled numbers instead of stacked paragraphs.
+   The primary answer still leads (largest) above the grid. */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-3) 0;
+}
+.stat {
+  padding: var(--space-3);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-width: 0;
+}
+.stat-value { font-size: 1.5rem; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
+.stat-label { margin-top: 2px; color: var(--text-muted); font-size: 0.85rem; overflow-wrap: anywhere; }
+
+/* --- Dropzone card ---------------------------------------- */
+/* The file-reader surface that replaces the raw native <input type="file">.
+   The native input stays the accessible control (wrapped by views in wave 2);
+   this card is the visible target and drag state. */
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-4);
+  text-align: center;
+  background: var(--tint-faint);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-card);
+}
+.dropzone.drop-active { border-color: var(--accent-pop-strong); background: var(--accent-pop-tint); }
+.dropzone-icon { color: var(--text-muted); }
+.dropzone-hint { color: var(--text-muted); font-size: 0.95rem; }
+.dropzone input[type="file"] { max-width: 100%; }
+.dropzone-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* --- States: skeleton / progress / empty / field error --- */
+/* Only the async file parse earns a loading state; synchronous calculators
+   render instantly and must not fake one. */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  min-height: 1rem;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius);
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, var(--tint-soft), transparent);
+  animation: skeleton-shimmer 1.2s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer { to { transform: translateX(100%); } }
+.progress {
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.progress > .progress-value {
+  height: 100%;
+  background: var(--accent-pop);
+  border-radius: inherit;
+  transition: width 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after { animation: none; }
+  .progress > .progress-value { transition: none; }
+}
+.empty-state {
+  padding: var(--space-5) var(--space-4);
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--tint-faint);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+}
+.empty-state p { margin: 0 0 var(--space-2); }
+.empty-state p:last-child { margin-bottom: 0; }
+/* A field validation line: paired with aria-invalid on the input, it names the
+   problem in words (color is reinforcement, not the only signal). */
+.field-error {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--sev-critical-text);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
 }
