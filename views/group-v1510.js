@@ -1,6 +1,7 @@
 // spec-v1510: renderers for mfp-refund-check, pbm-reimbursement-check, medicaid-ura, nadac-margin, asp-payment.
 
 import { el, clear } from '../lib/dom.js';
+import { dropzone } from '../lib/components.js';
 import { loadFulLookup } from '../lib/aca-ful-load.js';
 import * as MR from '../lib/mfp-refund-v1510.js';
 import * as PB from '../lib/pbm-reimbursement-v1510.js';
@@ -287,7 +288,7 @@ export const renderers = {
     dateInput(root, 'As of (leave blank for the latest 835 payment date)', 'mrr-asof', 'date');
     const files = el('input', { id: 'mrr-835', type: 'file', multiple: true, accept: '.835,.edi,.txt,.x12' });
     const status = el('p', { id: 'mrr-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
-    root.appendChild(el('label', { for: 'mrr-835', text: 'Choose the 835 remittance files from the Medicare Transaction Facilitator' })); root.appendChild(files); root.appendChild(status);
+    root.appendChild(el('label', { for: 'mrr-835', text: 'Choose the 835 remittance files from the Medicare Transaction Facilitator' })); root.appendChild(dropzone(files)); root.appendChild(status);
     const o = out();
     let remits = []; let remitFiles = [];
     const input = () => ({ claims: val('mrr-claims'), asOf: val('mrr-asof'), remits, remitFiles });

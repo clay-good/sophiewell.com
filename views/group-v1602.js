@@ -1,6 +1,7 @@
 // spec-v1602: renderers for carin-eob-reader and itemized-bill-check (reading your own claims and bills).
 
 import { el, clear } from '../lib/dom.js';
+import { dropzone } from '../lib/components.js';
 import { resultRow } from '../lib/result-copy.js';
 import { renderReceipt } from './receipt.js';
 import { acceptVia } from '../lib/hand-off.js';
@@ -46,7 +47,7 @@ function carinEobReader(root) {
   const input = el('input', { id: 'cer-files', type: 'file', multiple: true, accept: '.json,.ndjson,application/json,application/fhir+json' });
   const status = el('p', { id: 'cer-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'cer-files', text: 'Choose your claims file' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'cer-files', text: 'Choose your claims file' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   let worker = null;
   const run = async () => {
     if (worker) worker.terminate(); clear(results);
@@ -110,7 +111,7 @@ function itemizedBillCheck(root) {
   billWrap.appendChild(el('textarea', { id: 'ibc-bill', rows: '6', autocomplete: 'off', placeholder: '2026-03-02, 99284, 1, 2400, Emergency visit' }));
   root.appendChild(billWrap);
   const billFile = el('input', { id: 'ibc-bill-file', type: 'file', accept: '.csv,.tsv,.txt,text/csv' });
-  root.appendChild(el('label', { for: 'ibc-bill-file', text: 'Or choose the itemized bill as a CSV file' })); root.appendChild(billFile);
+  root.appendChild(el('label', { for: 'ibc-bill-file', text: 'Or choose the itemized bill as a CSV file' })); root.appendChild(dropzone(billFile));
   const setting = select(root, 'Was the care inpatient or outpatient?', 'ibc-setting', IBC.SETTINGS);
   const payment = select(root, 'How is the bill being paid?', 'ibc-payment', IBC.PAYMENT);
   const planWrap = el('p');
@@ -121,13 +122,13 @@ function itemizedBillCheck(root) {
   const priceFile = el('input', { id: 'ibc-price-file', type: 'file', accept: '.csv,.json,text/csv,application/json' });
   const status = el('p', { id: 'ibc-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'ibc-price-file', text: 'Choose the hospital\'s price file' })); root.appendChild(priceFile);
+  root.appendChild(el('label', { for: 'ibc-price-file', text: 'Choose the hospital\'s price file' })); root.appendChild(dropzone(priceFile));
   // spec-v1614 §6: the reader's own NCCI PTP edits (the text files or the zips CMS posts), to check code pairs.
   const ptpFiles = el('input', { id: 'ibc-ptp-files', type: 'file', multiple: true, accept: '.txt,.zip,text/plain,application/zip' });
   root.appendChild(el('label', { for: 'ibc-ptp-files', text: 'Optional: your copy of the CMS NCCI procedure-to-procedure edits (hospital outpatient), to check code pairs' })); root.appendChild(ptpFiles);
   // spec-v1614 §6: the reader's own MUE table, used for this run instead of the bundled one.
   const mueFile = el('input', { id: 'ibc-mue-file', type: 'file', accept: '.csv,.zip,text/csv,application/zip' });
-  root.appendChild(el('label', { for: 'ibc-mue-file', text: 'Optional: your copy of the CMS outpatient hospital MUE table, to use instead of the bundled one' })); root.appendChild(mueFile);
+  root.appendChild(el('label', { for: 'ibc-mue-file', text: 'Optional: your copy of the CMS outpatient hospital MUE table, to use instead of the bundled one' })); root.appendChild(dropzone(mueFile));
   root.appendChild(status); root.appendChild(results);
 
   // The request to the billing office, drafted from the last check once it flags a line (spec-v1501 §4).

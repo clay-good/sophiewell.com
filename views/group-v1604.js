@@ -1,6 +1,7 @@
 // spec-v1604: renderers for dpc-hsa-check, pharmacy-spread-check, claims-pct-medicare, tic-file-check and tic-rate-lookup.
 
 import { el, clear } from '../lib/dom.js';
+import { dropzone } from '../lib/components.js';
 import * as DP from '../lib/dpc-hsa-check.js';
 import * as SP from '../lib/pharmacy-spread-check.js';
 import * as CPM from '../lib/claims-pct-medicare.js';
@@ -78,7 +79,7 @@ function ticFileCheck(root) {
   const input = el('input', { id: 'tic-files', type: 'file', multiple: true, accept: '.json,.gz,application/json,application/gzip' });
   const status = el('p', { id: 'tic-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = out();
-  root.appendChild(el('label', { for: 'tic-files', text: 'Choose one or more insurer price files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'tic-files', text: 'Choose one or more insurer price files' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   let worker = null;
   input.addEventListener('change', () => {
     if (worker) worker.terminate(); clear(results);
@@ -139,7 +140,7 @@ function ticRateLookup(root) {
   const input = el('input', { id: 'trl-files', type: 'file', multiple: true, accept: '.json,.gz,application/json,application/gzip' });
   const status = el('p', { id: 'trl-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = out();
-  root.appendChild(el('label', { for: 'trl-files', text: 'Choose one or more in-network rates files' })); root.appendChild(input);
+  root.appendChild(el('label', { for: 'trl-files', text: 'Choose one or more in-network rates files' })); root.appendChild(dropzone(input));
   // spec-v1614 §6: the reader's own Addendum B prices outpatient facility rates.
   const addbNote = el('span', { id: 'trl-ref-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   let opps = null;

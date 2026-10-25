@@ -7,6 +7,7 @@
 // hazardous-drug-list-check.
 
 import { el, clear } from '../lib/dom.js';
+import { dropzone } from '../lib/components.js';
 import { acceptVia } from '../lib/hand-off.js';
 import { listFromFile } from '../lib/list-intake.js';
 import * as RC from '../lib/reconstitution-concentration-v1630.js';
@@ -340,7 +341,7 @@ export const renderers = {
     pick.appendChild(el('label', { for: 'se-file', text: 'Or load a data logger export (CSV or text)' }));
     pick.appendChild(el('br'));
     const fileIn = el('input', { id: 'se-file', type: 'file', accept: '.csv,.txt,.tsv,text/csv,text/plain' });
-    pick.appendChild(fileIn);
+    pick.appendChild(dropzone(fileIn));
     root.appendChild(pick);
     fileIn.addEventListener('change', async () => {
       const f = fileIn.files && fileIn.files[0];
@@ -377,7 +378,7 @@ export const renderers = {
     pick.appendChild(el('label', { for: 'hdl-file', text: 'Or load a list file (CSV or text)' }));
     pick.appendChild(el('br'));
     const fileIn = el('input', { id: 'hdl-file', type: 'file', accept: '.csv,.txt,.tsv,text/csv,text/plain' });
-    pick.appendChild(fileIn);
+    pick.appendChild(dropzone(fileIn));
     const said = el('span', { class: 'muted', 'aria-live': 'polite' });
     pick.appendChild(el('br'));
     pick.appendChild(said);

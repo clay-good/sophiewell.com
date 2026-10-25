@@ -8,6 +8,7 @@
 // chelation-dose, antimicrobial-day-counter, antibiogram-builder, surgical-prophylaxis-redose.
 
 import { el, clear } from '../lib/dom.js';
+import { dropzone } from '../lib/components.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { acceptVia } from '../lib/hand-off.js';
 import { BATCH_TOOLS } from '../lib/batch-tools.js';
@@ -405,7 +406,7 @@ export const renderers = {
     pick.appendChild(el('label', { for: 'abg-file', text: 'Or load the isolate list from a file (CSV)' }));
     pick.appendChild(el('br'));
     const abgFile = el('input', { id: 'abg-file', type: 'file', accept: '.csv,.tsv,.txt,text/csv,text/plain' });
-    pick.appendChild(abgFile);
+    pick.appendChild(dropzone(abgFile));
     root.appendChild(pick);
     abgFile.addEventListener('change', async () => {
       const f = abgFile.files && abgFile.files[0];

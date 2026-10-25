@@ -1,5 +1,6 @@
 // spec-v1515: local X12 file workbenches.
 import { el, clear } from '../lib/dom.js';
+import { dropzone } from '../lib/components.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import { resultRow } from '../lib/result-copy.js';
 import { renderReceipt } from './receipt.js';
@@ -51,7 +52,7 @@ function reader835(root) {
   const input = el('input', { id: 'x835-files', type: 'file', multiple: true, accept: '.835,.txt,text/plain,application/octet-stream' });
   const status = el('p', { id: 'x835-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'x835-files', text: 'Choose remittance files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'x835-files', text: 'Choose remittance files' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   let worker = null;
   const stop = () => { if (worker) worker.terminate(); worker = null; };
 
@@ -125,7 +126,7 @@ function denialPattern(root) {
   const input = el('input', { id: 'dpr-files', type: 'file', multiple: true, accept: '.835,.txt,text/plain,application/octet-stream' });
   const status = el('p', { id: 'dpr-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'dpr-files', text: 'Choose monthly or quarterly 835 files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'dpr-files', text: 'Choose monthly or quarterly 835 files' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   let worker = null;
   input.addEventListener('change', async () => {
     if (worker) worker.terminate(); clear(results);
@@ -162,9 +163,9 @@ function underpayment(root) {
   const fees = el('input', { id: 'upc-fees', type: 'file', accept: '.csv,.tsv,text/csv,text/tab-separated-values' });
   const status = el('p', { id: 'upc-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const mapping = el('div', { hidden: true }); const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'upc-remittances', text: 'Choose 835 remittance files' })); root.appendChild(remit);
+  root.appendChild(el('label', { for: 'upc-remittances', text: 'Choose 835 remittance files' })); root.appendChild(dropzone(remit));
   root.appendChild(el('p', { class: 'muted', text: 'Then choose a fee schedule with billing code, optional modifier, and either contracted amount or reference amount plus contract percent.' }));
-  root.appendChild(el('label', { for: 'upc-fees', text: 'Choose fee schedule CSV or TSV' })); root.appendChild(fees); root.appendChild(status); root.appendChild(mapping); root.appendChild(results);
+  root.appendChild(el('label', { for: 'upc-fees', text: 'Choose fee schedule CSV or TSV' })); root.appendChild(dropzone(fees)); root.appendChild(status); root.appendChild(mapping); root.appendChild(results);
   let worker = null; let remittancesReady = false;
   function listen() {
     worker.addEventListener('error', () => { status.textContent = 'The files could not be analyzed.'; });
@@ -216,7 +217,7 @@ function check837(root) {
   const input = el('input', { id: 'x837-files', type: 'file', multiple: true, accept: '.837,.txt,text/plain,application/octet-stream' });
   const status = el('p', { id: 'x837-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'x837-files', text: 'Choose claim files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'x837-files', text: 'Choose claim files' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   let worker = null;
   input.addEventListener('change', async () => {
     if (worker) worker.terminate(); clear(results);
@@ -249,7 +250,7 @@ function reader271(root) {
   const readPaste = el('button', { type: 'button', text: 'Read pasted response' });
   const status = el('p', { id: 'x271-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'x271-file', text: 'Choose eligibility response' })); root.appendChild(input);
+  root.appendChild(el('label', { for: 'x271-file', text: 'Choose eligibility response' })); root.appendChild(dropzone(input));
   root.appendChild(el('label', { for: 'x271-paste', text: 'Or paste an eligibility response' })); root.appendChild(paste); root.appendChild(readPaste); root.appendChild(status); root.appendChild(results);
   let worker = null;
   const run = (payload) => {
@@ -293,7 +294,7 @@ function reader277(root) {
   const input = el('input', { id: 'x277-files', type: 'file', multiple: true, accept: '.277,.txt,text/plain,application/octet-stream' });
   const status = el('p', { id: 'x277-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'x277-files', text: 'Choose claim-status files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'x277-files', text: 'Choose claim-status files' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   let worker = null;
   input.addEventListener('change', async () => {
     if (worker) worker.terminate(); clear(results);
@@ -324,7 +325,7 @@ function reader999(root) {
   const input = el('input', { id: 'x999-files', type: 'file', multiple: true, accept: '.999,.txt,text/plain,application/octet-stream' });
   const status = el('p', { id: 'x999-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'x999-files', text: 'Choose acknowledgment files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'x999-files', text: 'Choose acknowledgment files' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   let worker = null;
   input.addEventListener('change', async () => {
     if (worker) worker.terminate(); clear(results);
@@ -362,7 +363,7 @@ function reader278(root) {
   const input = el('input', { id: 'x278-files', type: 'file', multiple: true, accept: '.278,.txt,text/plain,application/octet-stream' });
   const status = el('p', { id: 'x278-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'x278-files', text: 'Choose prior authorization response files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'x278-files', text: 'Choose prior authorization response files' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   let worker = null;
   input.addEventListener('change', async () => {
     if (worker) worker.terminate(); clear(results);
@@ -394,7 +395,7 @@ function hptFileCheck(root) {
   const input = el('input', { id: 'hpt-file', type: 'file', accept: '.csv,.json,text/csv,application/json' });
   const status = el('p', { id: 'hpt-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'hpt-file', text: 'Choose a hospital price file' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'hpt-file', text: 'Choose a hospital price file' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   let worker = null;
   input.addEventListener('change', () => {
     if (worker) worker.terminate(); clear(results);
@@ -437,7 +438,7 @@ function hptPriceCompare(root) {
   const input = el('input', { id: 'hptc-files', type: 'file', multiple: true, accept: '.csv,.json,text/csv,application/json' });
   const status = el('p', { id: 'hptc-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'hptc-files', text: 'Choose two or more hospital price files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'hptc-files', text: 'Choose two or more hospital price files' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   let worker = null;
   const run = () => {
     if (worker) worker.terminate(); clear(results);
@@ -482,7 +483,7 @@ function pasBundleCheck(root) {
   const input = el('input', { id: 'pas-file', type: 'file', accept: '.json,application/json,application/fhir+json' });
   const status = el('p', { id: 'pas-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'pas-file', text: 'Choose a prior authorization bundle (JSON)' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  root.appendChild(el('label', { for: 'pas-file', text: 'Choose a prior authorization bundle (JSON)' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(results);
   input.addEventListener('change', async () => {
     clear(results);
     const file = input.files && input.files[0]; if (!file) { status.textContent = ''; return; }

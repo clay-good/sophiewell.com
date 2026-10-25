@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f988a53ff1a49a87`
-Generated: 2026-10-25T20:26:17.409Z
+Build ID: `c3b6e8cc5580993d`
+Generated: 2026-10-25T20:50:21.953Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -316,6 +316,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/columbia-fsgs-v532.js` | 11989 | `28d8b6d7b02e2a089ce151e7aab0a269efe8181262a34f4884f5df7102140e41` |
 | `lib/compera-2-v574.js` | 13638 | `af39867be80911c28ccb674bdc4cf61360c3aa8a890b0d2cc3d8acf43e1ea4ad` |
 | `lib/completeness-cytoreduction-v655.js` | 3731 | `af132705e335c78d95b7767dbce546d37d3a8737d9945bea15cf25537d3a80a1` |
+| `lib/components.js` | 3070 | `1295f53d56a9b3f7adc2959ce18bfda9b958286121e2c6f045c82ace540d754e` |
 | `lib/compound-anticipatory-limit-v1629.js` | 7091 | `c6c5bfdfaf1e3c794ca9fd172f940d6fb822b8563c5280d547194c7fe8a11d21` |
 | `lib/compound-copy-check-v1629.js` | 10327 | `f01f17b9706eda6e9414137d81360996ab311403af522729af0fd2e1ec778811` |
 | `lib/compounding-bud-v1511.js` | 8145 | `640baaeaddb8a48286db3255caceaff4a8a8cad52cacf6814a1837e5fae63828` |
@@ -3183,13 +3184,13 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1508.js` | 9990 | `2b401ca6d23d1fe10adbe4e81dba66e066f7a3e481c4947606f780b321fcbd52` |
 | `views/group-v1509.js` | 9355 | `c6052710ceac6ed488acfac42c0d347bc387f1dcfc5a3807399d03171ae4a31a` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
-| `views/group-v1510.js` | 21331 | `48efca3ee15dcea215f24f7e292ebcc3cd2d4d498e953d17f6bba96708e12aa3` |
+| `views/group-v1510.js` | 21390 | `76db21ff25b0b43c331506f242528fbdeb18204fe200b79ae6839abdbc3bb496` |
 | `views/group-v1511.js` | 15014 | `2224b06f0ad1266c83eb471c70a90912a24c458207b0193f24b43e64ddd80e37` |
 | `views/group-v1512.js` | 14178 | `9f17c19a926b82cb8e91210a744a724ac10bf5406b28902e78a464cfc99f5700` |
 | `views/group-v1513.js` | 9059 | `9dccf60e95ef759fe132f3fd1c89105f718285ee2afc524555f25606d51e79e0` |
 | `views/group-v1514.js` | 15758 | `af3f2167ba8c2713407f9078fa1a6b65be37aba4b9bc0a0eced4a51dd88aba0d` |
-| `views/group-v1515.js` | 47370 | `e1f9e74be24dce77aaecfe9de6adaa03564cf1b0b1a96fb439fa861ee89f28de` |
-| `views/group-v1516.js` | 10809 | `a915113c204cf0c8e4c6a4f92819d8d636d0f9f8c31823a7f3a82aec18ca2535` |
+| `views/group-v1515.js` | 47539 | `1876237f062601c786e370e0d498d94e711fa748cee057164adae66c3bb6ff9d` |
+| `views/group-v1516.js` | 10868 | `8a29412059e4bf4530ec0014f56a4dc92339fd63196575214806766225996f71` |
 | `views/group-v152.js` | 12369 | `dc29da131fcaf14f2a95a9e658fa3df1cc7b1d768b7b12b308267c97de3ede1e` |
 | `views/group-v153.js` | 11280 | `ffceef435372350d3a3f391724e3232537e6919c980ba7c4b8e8b7bab2186ee9` |
 | `views/group-v154.js` | 11434 | `4bb47056aa326ce6597e15e6dacfa281adf4230d42df78761125cafac4e8b073` |
@@ -3225,21 +3226,21 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v16.js` | 13376 | `3503141aaa8247033b2d1bbb218694ba7aed7f257e62f0c8b66d7fb5044e9671` |
 | `views/group-v160.js` | 11685 | `14ef775c5b8ffbe178e1263f27c806d4c99c02fc86dd79d907213aefd3b7b77f` |
 | `views/group-v1601.js` | 9488 | `b5fc09413d7a4658a477d2ed5d8a5dd88f332597d9198f4a1622f4d32047b439` |
-| `views/group-v1602.js` | 17481 | `b65ebf07cf6882e90939ef374d2fef7e2e68328ffd14e0c2e3c9bf85a90fc44a` |
+| `views/group-v1602.js` | 17570 | `10c544c4a0792efd791d3b74f6c38487ab977e68091404072154293ea554d8c0` |
 | `views/group-v1603.js` | 7098 | `f74b3fd9569ae95a0df44972a0a68738c120179b054d9a76016c4881011d2cd9` |
-| `views/group-v1604.js` | 29568 | `94dc26948d365146362dd13c52a893b4e9f754b1b8c37b93727c696efae5bc7e` |
+| `views/group-v1604.js` | 29637 | `fcb190794c43257d403597cc799ff63e9f5c081aec642d8f2c5c7021db3c3ffa` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v1629.js` | 31522 | `8b64c52451264c9cf2fe016d94a3f3fd9d00b38a1722de5ac23c81af2f67dbb6` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
-| `views/group-v1630.js` | 25780 | `4f04669fefb6c6f994a42295de5376d0ad08b830aec1237c485a1f51450de3c6` |
+| `views/group-v1630.js` | 25849 | `f8388bf8485c90ea83cbc55369e546d34501fa369fbbe9eabd6bb7716126e4bc` |
 | `views/group-v1631.js` | 25133 | `631267171752d0f5edbb4fd63b488aa421539f45e216632854efe4cf7f2eb0cd` |
 | `views/group-v1632.js` | 22558 | `62990e562310d3a75a44e49fdd2e2ae62c71f6dbb0f8d93b91b46ad9fcbcd62b` |
 | `views/group-v1633.js` | 31917 | `3a9e5ea96b6953d825885f8b9273086c2f509dd71f8e5f301ded66a4b1d19429` |
 | `views/group-v1634.js` | 27147 | `e92192e9ca012fedcaa1e18125d209fe72ff6ac1b2aa46c541622ffad8b0ca72` |
 | `views/group-v1635.js` | 42082 | `28cd4db517fd53785a3004e8b8f0cb53468530198e1b235f2b840e53b6c65b14` |
-| `views/group-v1636.js` | 25950 | `2fc46440ab00d2d4edd0fc430e781569070b3ab3caf37265a9f076c1f820b995` |
+| `views/group-v1636.js` | 26009 | `a997e2027ff389545a1e8cd251154071e6b9e5bf5116871ee3b0794953125b27` |
 | `views/group-v1637.js` | 24258 | `e0986663c23768ee2ecae26a098cb5d5ae827270b532fa087f875efc2e26b566` |
-| `views/group-v1638.js` | 41607 | `0bc2bfbfa39a5fd81daf4ab1d3ecf100b13337a90d9288f5945fd13730984469` |
+| `views/group-v1638.js` | 41666 | `a185e374dbc2bf055f5a79f88e589b4c962e3593df6617bc3084aee5622afa1c` |
 | `views/group-v1639.js` | 19294 | `b19f63e4ceca2422ee12d6e8ca56a5c0988ad95e3d75b3129671bc06def36627` |
 | `views/group-v164.js` | 6779 | `5265ce78b34b8f86e34edf9d27cdeeecdb5c8be85b11979752338c62bfb6c2fc` |
 | `views/group-v1640.js` | 12526 | `f6fc19f50fdaca8f8b95f75a20f80a203a6cde1f9d049e097d54073017025316` |
@@ -3971,8 +3972,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/pa-lint.js` | 28880 | `8ff8fdf455c39e88ab5a859e98a7a19903f4dfc17b232738d2495e9c739c390b` |
 | `views/receipt.js` | 2588 | `d6720c0745b06259c7cbf82b0e602d3c7dd7de6962e32f9e671be3158ee49d47` |
 | `views/record-panel.js` | 4950 | `eb826237e65f3fdc8b189b3698174dfe87e9940e6c5cdd3a321d9d9659539c18` |
-| `views/rx-match-workbench.js` | 9324 | `c663ee4af7544888cd5c3a6ceeda46978f2fcad04fe242971db7b5204dd334fb` |
-| `views/upload-workbench.js` | 8442 | `cdc12be67ef3f8a73be7f5e9ef79e6e9f9db181c808a61a693fc245976ec408c` |
+| `views/rx-match-workbench.js` | 9383 | `1c84a52a65efadf3ba3b208ee28c818e7114baabd7f8f0702ca4f1486a072f22` |
+| `views/upload-workbench.js` | 8570 | `428752bc0d9b26cd90b5b943a2858a21fc6666c2313db702a85ba8add45a020f` |
 
 ## Verifying this SBOM
 

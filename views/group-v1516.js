@@ -1,6 +1,7 @@
 // spec-v1516: renderers for denial-next-step.
 
 import { el, clear } from '../lib/dom.js';
+import { dropzone } from '../lib/components.js';
 import * as DN from '../lib/denial-next-step-v1516.js';
 import { resultRow } from '../lib/result-copy.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
@@ -72,7 +73,7 @@ function appeal835(root, show) {
   const input = el('input', { id: 'aw-835-files', type: 'file', multiple: true, accept: '.835,.txt,text/plain,application/octet-stream' });
   const status = el('p', { id: 'aw-835-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const mapping = el('div', { id: 'aw-835-mapping', hidden: true }); const results = el('div', { id: 'aw-835-results', 'aria-live': 'polite' });
-  root.appendChild(el('label', { for: 'aw-835-files', text: 'Choose 835 remittance files' })); root.appendChild(input); root.appendChild(status); root.appendChild(mapping); root.appendChild(results);
+  root.appendChild(el('label', { for: 'aw-835-files', text: 'Choose 835 remittance files' })); root.appendChild(dropzone(input)); root.appendChild(status); root.appendChild(mapping); root.appendChild(results);
   let worker = null;
   const download = (message) => { const url = window.URL.createObjectURL(message.blob); const anchor = el('a', { href: url, download: message.filename }); anchor.click(); window.setTimeout(() => window.URL.revokeObjectURL(url), 0); };
   input.addEventListener('change', async () => {

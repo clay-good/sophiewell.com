@@ -1,5 +1,6 @@
 // spec-v1501 §3: reusable local-file intake and explicit column confirmation.
 import { el, clear } from '../lib/dom.js';
+import { dropzone } from '../lib/components.js';
 import { MAX_FILE_BYTES, MAX_DATA_ROWS } from '../lib/upload-intake.js';
 import { renderReceipt } from './receipt.js';
 
@@ -20,7 +21,7 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
   const mappingRoot = el('div', { class: 'upload-mapping', hidden: true });
   const resultsRoot = el('div', { class: 'upload-file-results', hidden: true });
   section.appendChild(inputLabel);
-  section.appendChild(input);
+  section.appendChild(dropzone(input, { hint: 'Drag a CSV, TSV or JSON file here, or choose one below.' }));
   section.appendChild(status);
   section.appendChild(mappingRoot);
   section.appendChild(resultsRoot);

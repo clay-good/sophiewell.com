@@ -1,4 +1,5 @@
 import { el, clear } from '../lib/dom.js';
+import { dropzone } from '../lib/components.js';
 import { MAX_FILE_BYTES, MAX_DATA_ROWS } from '../lib/upload-intake.js';
 import { resultRow } from '../lib/result-copy.js';
 import { RX_MATCH_FILES as FILES } from '../lib/upload-fields.js';
@@ -58,7 +59,7 @@ export function rxMatchWorkbench(root, { entityTypes }) {
     const mappingRoot = el('div', { hidden: true });
     const fileStatus = el('p', { id: `rxm-${config.name}-status`, class: 'muted' });
     section.appendChild(el('label', { for: `rxm-${config.name}-file`, text: `Choose ${config.label.toLowerCase()} file` }));
-    section.appendChild(input); section.appendChild(fileStatus); section.appendChild(mappingRoot); root.appendChild(section);
+    section.appendChild(dropzone(input)); section.appendChild(fileStatus); section.appendChild(mappingRoot); root.appendChild(section);
     fileUi.set(config.name, { config, input, mappingRoot, fileStatus });
     input.addEventListener('change', async () => {
       mapped.delete(config.name); clear(results); status.textContent = '';

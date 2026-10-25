@@ -8,6 +8,7 @@
 // partd-concurrent-use-measures, partd-opioid-measures, mtm-service-clock.
 
 import { el, clear } from '../lib/dom.js';
+import { dropzone } from '../lib/components.js';
 import { listFromFile } from '../lib/list-intake.js';
 import { handOff } from '../lib/hand-off.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -98,7 +99,7 @@ function fileIntake(root, input, areaId, key, label) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: input.id, text: label }));
   wrap.appendChild(el('br'));
-  wrap.appendChild(input);
+  wrap.appendChild(dropzone(input));
   const said = el('span', { class: 'muted', 'aria-live': 'polite' });
   wrap.appendChild(el('br'));
   wrap.appendChild(said);
