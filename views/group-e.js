@@ -4,6 +4,7 @@
 // rendered by the router for any utility flagged clinical.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import { fmt, usDate } from '../lib/num.js';
 import { boundsAdvisory } from '../lib/bounds.js';
 import * as C from '../lib/clinical.js';
@@ -46,6 +47,15 @@ function selectField(label, id, options) {
   const sel = el('select', { id });
   for (const o of options) sel.appendChild(el('option', { value: o.value, text: o.text }));
   wrap.appendChild(sel);
+  return wrap;
+}
+
+// A male/female choice rendered as a segmented control. The hidden <select>
+// stays the source of truth (same id and M/F values), so the compute, the
+// worked example, deep links and the MCP adapter are all unchanged.
+function sexField(label, id) {
+  const wrap = selectField(label, id, [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]);
+  segmentedFromSelect(wrap.querySelector('select'), { ariaLabel: label });
   return wrap;
 }
 
@@ -334,7 +344,7 @@ export const renderers = {
   egfr(root) {
     root.appendChild(field('Serum creatinine (mg/dL)', 'scr'));
     root.appendChild(field('Age (years)', 'age'));
-    root.appendChild(selectField('Sex', 'sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
+    root.appendChild(sexField('Sex', 'sex'));
     root.appendChild(unitField('Height (optional, for eGFR in mL/min)', 'egfr-h', HEIGHT_UNITS));
     root.appendChild(unitField('Weight (optional, for eGFR in mL/min)', 'egfr-w', WEIGHT_UNITS));
     const o = out(); root.appendChild(o);
@@ -373,7 +383,7 @@ export const renderers = {
       { unit: 'mg/dL', toCanonical: (v) => v },
       { unit: 'µmol/L', toCanonical: (v) => labConvert('creatinine', v, 'fromSi') },
     ]));
-    root.appendChild(selectField('Sex', 'sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
+    root.appendChild(sexField('Sex', 'sex'));
     root.appendChild(unitField('Height (optional, for ideal and adjusted weight)', 'cg-h', HEIGHT_UNITS));
     root.appendChild(selectField('For which drug\'s label? (optional)', 'cg-drug', [{ value: '', text: '— not chosen —' }, ...CG_LABEL_DRUGS]));
     const o = out(); root.appendChild(o);
@@ -654,7 +664,7 @@ export const renderers = {
   'bw-bsa-suite'(root) {
     root.appendChild(field('Height (inches)', 'bw-hin'));
     root.appendChild(unitField('Weight', 'bw-kg', WEIGHT_UNITS));
-    root.appendChild(selectField('Sex', 'bw-sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
+    root.appendChild(sexField('Sex', 'bw-sex'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const sex = document.getElementById('bw-sex').value;
@@ -691,7 +701,7 @@ export const renderers = {
     root.appendChild(field('Age (years)', 'es-age'));
     root.appendChild(unitField('Weight (for Cockcroft-Gault)', 'es-w', WEIGHT_UNITS));
     root.appendChild(unitField('Height (optional; with weight gives CKD-EPI in mL/min)', 'es-h', HEIGHT_UNITS));
-    root.appendChild(selectField('Sex', 'es-sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
+    root.appendChild(sexField('Sex', 'es-sex'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       // spec-v1162: three equations on one page, and the weight belongs only to

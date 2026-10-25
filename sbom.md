@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c3b6e8cc5580993d`
-Generated: 2026-10-25T20:50:21.953Z
+Build ID: `507cdd240ac30aaa`
+Generated: 2026-10-25T21:07:45.420Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -316,7 +316,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/columbia-fsgs-v532.js` | 11989 | `28d8b6d7b02e2a089ce151e7aab0a269efe8181262a34f4884f5df7102140e41` |
 | `lib/compera-2-v574.js` | 13638 | `af39867be80911c28ccb674bdc4cf61360c3aa8a890b0d2cc3d8acf43e1ea4ad` |
 | `lib/completeness-cytoreduction-v655.js` | 3731 | `af132705e335c78d95b7767dbce546d37d3a8737d9945bea15cf25537d3a80a1` |
-| `lib/components.js` | 3070 | `1295f53d56a9b3f7adc2959ce18bfda9b958286121e2c6f045c82ace540d754e` |
+| `lib/components.js` | 5792 | `4eee83fedfb6bde3fb259ad6a35ab0f0b06fadbd6bb599f09a8fad1862cc5247` |
 | `lib/compound-anticipatory-limit-v1629.js` | 7091 | `c6c5bfdfaf1e3c794ca9fd172f940d6fb822b8563c5280d547194c7fe8a11d21` |
 | `lib/compound-copy-check-v1629.js` | 10327 | `f01f17b9706eda6e9414137d81360996ab311403af522729af0fd2e1ec778811` |
 | `lib/compounding-bud-v1511.js` | 8145 | `640baaeaddb8a48286db3255caceaff4a8a8cad52cacf6814a1837e5fae63828` |
@@ -3041,7 +3041,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
-| `views/group-e.js` | 56699 | `fe30c59b2c19d315603b40c13c378209e903912f2a455c0f630d5d640822120c` |
+| `views/group-e.js` | 56939 | `740111487220af0a65225b9342fa5de9a2a18c8216e6615d594d43e3320390c9` |
 | `views/group-f.js` | 57749 | `0a39866dc77d102ea2e6670e32dd47295bfd32a1005892b8b1d95ac9688d29fc` |
 | `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
