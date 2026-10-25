@@ -13,6 +13,7 @@
 // complete-the-fields fallback rather than a number from a bad input.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import { unitField, unitNumOpt, WEIGHT_UNITS } from '../lib/field-units.js';
 import * as M from '../lib/peds-percentile-v169.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -63,6 +64,7 @@ export const renderers = {
   'cdc-stature-for-age'(root) {
     note(root, 'CDC 2000 stature-for-age (Kuczmarski 2002), ages 2–20 y. Enter the child’s sex, age, and standing height; the CDC LMS transform returns the percentile and z-score with the 5th/95th reference flags.');
     root.appendChild(selectField('Sex', 'cs-sex', SEX));
+    segmentedFromSelect(root.querySelector('#cs-sex'));
     root.appendChild(field('Age (years)', 'cs-age', { step: '0.1', min: 2, max: 20, placeholder: 'e.g. 10' }));
     root.appendChild(field('Standing height (cm)', 'cs-ht', { step: '0.1', min: 0, placeholder: 'e.g. 138' }));
     const o = out(); root.appendChild(o);
@@ -83,6 +85,7 @@ export const renderers = {
   'cdc-weight-for-age'(root) {
     note(root, 'CDC 2000 weight-for-age (Kuczmarski 2002), ages 2–20 y. Enter the child’s sex, age, and weight; the CDC LMS transform returns the percentile and z-score with the 5th/95th reference flags. Beyond about 10 y the CDC pairs weight with BMI-for-age.');
     root.appendChild(selectField('Sex', 'cw-sex', SEX));
+    segmentedFromSelect(root.querySelector('#cw-sex'));
     root.appendChild(field('Age (years)', 'cw-age', { step: '0.1', min: 2, max: 20, placeholder: 'e.g. 8' }));
     root.appendChild(unitField('Weight', 'cw-wt', WEIGHT_UNITS, { placeholder: 'e.g. 25' }));
     const o = out(); root.appendChild(o);

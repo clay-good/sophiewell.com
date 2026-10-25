@@ -3,6 +3,7 @@
 // fmcsa-hearing-standard, osha-lead-airborne-pel-shift.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import { resultRow } from '../lib/result-copy.js';
 import * as OND from '../lib/osha-noise-dose-v1656.js';
 import * as STS from '../lib/osha-standard-threshold-shift-v1656.js';
@@ -87,6 +88,7 @@ export const renderers = {
     for (const [dom, , label] of STS_PAIRS) numField(root, label, dom, '');
     selectField(root, 'Apply the Appendix F age correction', 'sts-correct', YES_NO);
     selectField(root, 'Sex (selects Table F-1 or F-2)', 'sts-sex', [{ value: 'male', text: 'Male' }, { value: 'female', text: 'Female' }]);
+    segmentedFromSelect(root.querySelector('#sts-sex'));
     numField(root, 'Age at the baseline audiogram (years)', 'sts-baseline-age', 'e.g. 27', { min: '0' });
     numField(root, 'Age at the recent audiogram (years)', 'sts-recent-age', 'e.g. 32', { min: '0' });
     tool(root, [

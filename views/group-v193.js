@@ -10,6 +10,7 @@
 // (spec-v11 §5.3) — these stratify risk, they do not order.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/acs-v193.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -67,6 +68,7 @@ export const renderers = {
     root.appendChild(num('Creatinine clearance (mL/min)', 'crusade-crcl'));
     root.appendChild(num('Heart rate (bpm)', 'crusade-hr'));
     root.appendChild(pickField('Sex', 'crusade-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#crusade-sex'));
     root.appendChild(num('Systolic blood pressure (mmHg)', 'crusade-sbp'));
     root.appendChild(checkField('Signs of heart failure at presentation', 'crusade-chf'));
     root.appendChild(checkField('Prior vascular disease (PAD or stroke)', 'crusade-vasc'));

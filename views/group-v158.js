@@ -14,6 +14,7 @@
 // the clinician (spec-v11 §5.3).
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/echo-v158.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -76,6 +77,7 @@ export const renderers = {
     root.appendChild(num('Septal-wall thickness, diastole IVSd (cm)', 'lvmi-ivsd'));
     root.appendChild(num('Body surface area BSA (m²)', 'lvmi-bsa'));
     root.appendChild(pickField('Sex', 'lvmi-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#lvmi-sex'));
     const o = out(); root.appendChild(o);
     wire(['lvmi-lvidd', 'lvmi-pwtd', 'lvmi-ivsd', 'lvmi-bsa', 'lvmi-sex'], () => safe(o, () => {
       const r = M.lvMassIndex({ lvidd: val('lvmi-lvidd'), pwtd: val('lvmi-pwtd'), ivsd: val('lvmi-ivsd'), bsa: val('lvmi-bsa'), sex: val('lvmi-sex') });
@@ -119,6 +121,7 @@ export const renderers = {
     root.appendChild(num('LV internal diameter, end-diastole LVIDd (cm)', 'teich-lvidd'));
     root.appendChild(num('LV internal diameter, end-systole LVIDs (cm)', 'teich-lvids'));
     root.appendChild(pickField('Sex', 'teich-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#teich-sex'));
     const o = out(); root.appendChild(o);
     wire(['teich-lvidd', 'teich-lvids', 'teich-sex'], () => safe(o, () => {
       const r = M.teichholzLvef({ lvidd: val('teich-lvidd'), lvids: val('teich-lvids'), sex: val('teich-sex') });

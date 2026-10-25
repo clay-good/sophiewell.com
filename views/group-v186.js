@@ -12,6 +12,7 @@
 // exercise prescription in Sophie's voice.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/specialtymath-v186.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -133,6 +134,7 @@ export const renderers = {
     root.appendChild(num('Hemoglobin (g/dL)', 'dlco-hb'));
     root.appendChild(num('Alveolar volume VA (L)', 'dlco-va'));
     root.appendChild(pickField('Sex', 'dlco-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#dlco-sex'));
     const o = out(); root.appendChild(o);
     wire(['dlco-dlco', 'dlco-hb', 'dlco-va', 'dlco-sex'], () => safe(o, () => {
       const r = M.dlcoCorrection({ dlco: val('dlco-dlco'), hb: val('dlco-hb'), va: val('dlco-va'), sex: val('dlco-sex') });
@@ -153,6 +155,7 @@ export const renderers = {
     root.appendChild(selectField('Method', 'vo2-method', VO2_METHOD_OPTS));
     root.appendChild(num('Treadmill time to exhaustion (min) — Bruce', 'vo2-time'));
     root.appendChild(pickField('Sex — Bruce', 'vo2-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#vo2-sex'));
     root.appendChild(num('12-minute distance (m) — Cooper', 'vo2-distance'));
     const o = out(); root.appendChild(o);
     wire(['vo2-method', 'vo2-time', 'vo2-sex', 'vo2-distance'], () => safe(o, () => {

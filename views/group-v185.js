@@ -14,6 +14,7 @@
 // weigh-against-recurrence framing as first-class output.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/gaps-v185.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -89,6 +90,7 @@ export const renderers = {
     root.appendChild(num('Measured VO₂ (mL/min) — for the measured method', 'fick-vo2'));
     root.appendChild(field('Age (years) — for the estimate', 'fick-age', { type: 'number', min: '0', step: 'any', inputmode: 'decimal' }));
     root.appendChild(pickField('Sex — for the estimate', 'fick-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#fick-sex'));
     root.appendChild(num('Heart rate (bpm) — for the estimate', 'fick-hr'));
     root.appendChild(num('Hemoglobin (g/dL)', 'fick-hb'));
     root.appendChild(num('Arterial O₂ saturation SaO₂ (%)', 'fick-sao2'));
@@ -241,6 +243,7 @@ export const renderers = {
   'lean-body-weight'(root) {
     note(root, 'Lean body weight (Janmahasatian 2005): LBW = 9270·TBW/(6680 + 216·BMI) for men, 9270·TBW/(8780 + 244·BMI) for women; BMI = weight/height². Many anesthetic induction agents dose to LBW.');
     root.appendChild(pickField('Sex', 'lbw-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#lbw-sex'));
     root.appendChild(num('Total body weight (kg)', 'lbw-weight'));
     root.appendChild(num('Height (cm)', 'lbw-height'));
     const o = out(); root.appendChild(o);

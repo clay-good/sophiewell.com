@@ -10,6 +10,7 @@
 // mortality - none authors a management order in Sophie's voice (spec-v11 §5.3).
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import { fmt } from '../lib/num.js';
 import * as M from '../lib/pulm-v91.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -163,6 +164,7 @@ export const renderers = {
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },
     ]));
+    segmentedFromSelect(root.querySelector('#ps-sex'));
     // spec-v1160: the library already handles an unchosen group correctly -- it
     // falls back to GLI-2012's own other/mixed coefficient set and SAYS so, in a
     // note the renderer prints. That path was unreachable from the browser,

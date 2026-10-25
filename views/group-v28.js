@@ -10,6 +10,7 @@
 // ascvd / prevent / ldl-calc tiles so the clinician picks the right engine.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/cvrisk-v103.js';
 import { resultRow } from '../lib/result-copy.js';
 import { BOUNDS } from '../lib/bounds.js';
@@ -90,6 +91,7 @@ export const renderers = {
   score2(root) {
     root.appendChild(field(`Age (years, ${M.SCORE2_AGES.min}-${M.SCORE2_AGES.max})`, 's2-age', { min: M.SCORE2_AGES.min, max: M.SCORE2_AGES.max, placeholder: '50' }));
     root.appendChild(selectField('Sex', 's2-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#s2-sex'));
     root.appendChild(checkField('Current smoker', 's2-smoke'));
     root.appendChild(field('Systolic BP (mmHg)', 's2-sbp', { ...SBP_FIELD, placeholder: '140' }));
     root.appendChild(field('Total cholesterol (mmol/L)', 's2-tc', { min: 1, max: 20, step: '0.1', placeholder: '5.5' }));
@@ -117,6 +119,7 @@ export const renderers = {
   'score2-op'(root) {
     root.appendChild(field(`Age (years, ${M.SCORE2OP_AGES.min} and over)`, 'op-age', { min: BOUNDS.ageYears.min, max: BOUNDS.ageYears.max, placeholder: '75' }));
     root.appendChild(selectField('Sex', 'op-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#op-sex'));
     root.appendChild(checkField('Current smoker', 'op-smoke'));
     root.appendChild(checkField('Diabetes', 'op-dm'));
     root.appendChild(field('Systolic BP (mmHg)', 'op-sbp', { ...SBP_FIELD, placeholder: '150' }));
@@ -145,6 +148,7 @@ export const renderers = {
   'mesa-chd'(root) {
     root.appendChild(field(`Age (years, ${M.MESA_AGES.min}-${M.MESA_AGES.max})`, 'mesa-age', { min: M.MESA_AGES.min, max: M.MESA_AGES.max, placeholder: '60' }));
     root.appendChild(selectField('Sex', 'mesa-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#mesa-sex'));
     root.appendChild(selectField('Race / ethnicity', 'mesa-race', [
       { value: 'white', text: 'White (reference)' },
       { value: 'chinese', text: 'Chinese-American' },
@@ -184,6 +188,7 @@ export const renderers = {
   'framingham-cvd'(root) {
     root.appendChild(field(`Age (years, ${M.FRAMINGHAM_AGES.min}-${M.FRAMINGHAM_AGES.max})`, 'fr-age', { min: M.FRAMINGHAM_AGES.min, max: M.FRAMINGHAM_AGES.max, placeholder: '55' }));
     root.appendChild(selectField('Sex', 'fr-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#fr-sex'));
     root.appendChild(field('Total cholesterol (mg/dL)', 'fr-tc', { min: 50, max: 600, placeholder: '213' }));
     root.appendChild(field('HDL cholesterol (mg/dL)', 'fr-hdl', { min: 5, max: 200, placeholder: '50' }));
     root.appendChild(field('Systolic BP (mmHg)', 'fr-sbp', { ...SBP_FIELD, placeholder: '120' }));

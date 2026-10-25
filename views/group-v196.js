@@ -10,6 +10,7 @@
 // prognosticate, they do not order.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/liver-v196.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -115,6 +116,7 @@ export const renderers = {
     note(root, 'PAGE-B score for HCC risk in treated chronic hepatitis B (Papatheodoridis 2016): age, sex, and platelets → ≤ 9 low, 10–17 intermediate, ≥ 18 high (5-year HCC risk).');
     root.appendChild(num('Age (years)', 'pageb-age'));
     root.appendChild(pickField('Sex', 'pageb-sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#pageb-sex'));
     root.appendChild(num('Platelet count (× 10⁹/L)', 'pageb-plt'));
     const o = out(); root.appendChild(o);
     wire(['pageb-age', 'pageb-sex', 'pageb-plt'], () => safe(o, () => {

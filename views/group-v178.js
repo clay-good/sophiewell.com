@@ -12,6 +12,7 @@
 // feeding, or treatment order.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/ltcga-v178.js';
 import { resultRow } from '../lib/result-copy.js';
 import { unitField, unitNumOpt, HEIGHT_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
@@ -118,6 +119,7 @@ export const renderers = {
     root.appendChild(unitField('Body weight', 'gnri-weight', WEIGHT_UNITS, { placeholder: 'e.g. 60' }));
     root.appendChild(unitField('Height', 'gnri-height', HEIGHT_UNITS, { placeholder: 'e.g. 165' }));
     root.appendChild(pickField('Sex', 'gnri-sex', SEX));
+    segmentedFromSelect(root.querySelector('#gnri-sex'));
     const o = out(); root.appendChild(o);
     wire(['gnri-albumin', 'gnri-weight', 'gnri-weight-unit', 'gnri-height', 'gnri-height-unit', 'gnri-sex'], () => safe(o, () => {
       const r = M.gnri({ albuminGL: optNum('gnri-albumin'), weightKg: unitNumOpt('gnri-weight'), heightCm: unitNumOpt('gnri-height'), sex: selVal('gnri-sex') });

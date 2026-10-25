@@ -10,6 +10,7 @@
 // not order.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/vent-v195.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -71,6 +72,7 @@ export const renderers = {
     root.appendChild(num('Measured PaCO₂ (mmHg)', 'vr-paco2'));
     root.appendChild(num('Height (cm)', 'vr-height'));
     root.appendChild(pickField('Sex (for predicted body weight)', 'vr-sex', [{ value: 'female', text: 'Female' }, { value: 'male', text: 'Male' }]));
+    segmentedFromSelect(root.querySelector('#vr-sex'));
     const o = out(); root.appendChild(o);
     wire(['vr-ve', 'vr-paco2', 'vr-height', 'vr-sex'], () => safe(o, () => {
       const r = M.ventilatoryRatio({ ve: val('vr-ve'), paco2: val('vr-paco2'), height: val('vr-height'), sex: val('vr-sex') });

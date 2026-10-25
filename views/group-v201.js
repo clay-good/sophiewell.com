@@ -11,6 +11,7 @@
 // triage and stratify, they do not order.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/hepatology-gibleed-v201.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -66,6 +67,7 @@ export const renderers = {
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },
     ]));
+    segmentedFromSelect(root.querySelector('#gbs-sex'));
     root.appendChild(num('Hemoglobin (g/dL)', 'gbs-hb', { min: '1', max: '25' }));
     root.appendChild(num('Systolic BP (mmHg)', 'gbs-sbp', { max: 300, min: '20' }));
     root.appendChild(checkField('Pulse ≥ 100 /min (+1)', 'gbs-pulse'));
@@ -114,6 +116,7 @@ export const renderers = {
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },
     ]));
+    segmentedFromSelect(root.querySelector('#hep-sex'));
     root.appendChild(num('AST (IU/L)', 'hep-ast', { min: '0' }));
     root.appendChild(num('Albumin (g/dL)', 'hep-alb', { min: '0' }));
     root.appendChild(num('Platelets (×10⁹/L)', 'hep-plt', { min: '0' }));
@@ -168,6 +171,7 @@ export const renderers = {
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },
     ]));
+    segmentedFromSelect(root.querySelector('#agile-sex'));
     root.appendChild(checkField('Diabetes mellitus', 'agile-dm'));
     const o = out(); root.appendChild(o);
     const ids = ['agile-lsm', 'agile-ast', 'agile-alt', 'agile-plt', 'agile-age', 'agile-sex', 'agile-dm'];

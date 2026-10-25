@@ -13,6 +13,7 @@
 // the energy prescription stays with the clinician (spec-v11 §5.3).
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/nutrition-energy-v152.js';
 import { resultRow } from '../lib/result-copy.js';
 import { unitField, unitNumOpt, WEIGHT_UNITS, HEIGHT_UNITS, TEMP_UNITS } from '../lib/field-units.js';
@@ -86,6 +87,7 @@ function anthroFields(root, prefix) {
   root.appendChild(unitField('Height', `${prefix}-ht`, HEIGHT_UNITS, { placeholder: 'e.g. 175' }));
   root.appendChild(numField('Age (years)', `${prefix}-age`, { min: 0, max: 130, placeholder: 'e.g. 40' }));
   root.appendChild(selectField('Sex', `${prefix}-sex`, SEX));
+  segmentedFromSelect(root.querySelector(`#${prefix}-sex`));
 }
 
 export const renderers = {
@@ -174,6 +176,7 @@ export const renderers = {
     root.appendChild(unitField('Weight', 'ij-wt', WEIGHT_UNITS, { placeholder: 'e.g. 80' }));
     root.appendChild(unitField('Height — for the BMI > 27 obesity flag (spontaneous form)', 'ij-ht', HEIGHT_UNITS, { placeholder: 'e.g. 175' }));
     root.appendChild(selectField('Sex (male indicator, ventilated form)', 'ij-sex', SEX));
+    segmentedFromSelect(root.querySelector('#ij-sex'));
     root.appendChild(checkboxField('Trauma (ventilated form)', 'ij-trauma'));
     root.appendChild(checkboxField('Burn (ventilated form)', 'ij-burn'));
     const o = out(); root.appendChild(o);

@@ -12,6 +12,7 @@
 // care-plan order.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/ltcga-v177.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -110,6 +111,7 @@ export const renderers = {
     addSarcf(root);
     root.appendChild(numField('Calf circumference (cm)', 'calf-cm', { step: '0.1', min: 0, placeholder: 'e.g. 32' }));
     root.appendChild(pickField('Sex', 'calf-sex', SEX));
+    segmentedFromSelect(root.querySelector('#calf-sex'));
     const o = out(); root.appendChild(o);
     wire([...sarcfIds(), 'calf-cm', 'calf-sex'], () => safe(o, () => {
       const r = M.sarcCalf({ ...sarcfPayload(), calfCm: optNum('calf-cm'), sex: selVal('calf-sex') });

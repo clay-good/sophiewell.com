@@ -12,6 +12,7 @@
 // (lib/endo-v136.js).
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import { BOUNDS } from '../lib/bounds.js';
 import { unitField, unitNumOpt, WEIGHT_UNITS } from '../lib/field-units.js';
 import * as M from '../lib/endo-v136.js';
@@ -113,6 +114,7 @@ export const renderers = {
     note(root, 'Metabolic syndrome (Harmonized 2009 / IDF 2006): five criteria — elevated waist (sex/population cut-point), triglycerides ≥150 mg/dL (or treated), HDL <40 (men) / <50 (women) mg/dL (or treated), BP ≥130/85 (or treated), fasting glucose ≥100 mg/dL (or treated). Harmonized = any 3 of 5; IDF = central obesity required + any 2 others. Cross-links HOMA-IR. Treatment toggles default to “No.”');
     root.appendChild(selectField('Definition', 'ms-def', [BLANK, { value: 'harmonized', text: 'Harmonized (any 3 of 5)' }, { value: 'idf', text: 'IDF (central obesity + 2)' }]));
     root.appendChild(selectField('Sex', 'ms-sex', [BLANK, { value: 'male', text: 'Male' }, { value: 'female', text: 'Female' }]));
+    segmentedFromSelect(root.querySelector('#ms-sex'));
     root.appendChild(selectField('Waist cut-point standard', 'ms-wstd', [BLANK, { value: 'us', text: 'US / ATP III (M ≥102, F ≥88 cm)' }, { value: 'europid', text: 'IDF Europid (M ≥94, F ≥80 cm)' }, { value: 'asian', text: 'Asian (M ≥90, F ≥80 cm)' }]));
     root.appendChild(field('Waist circumference (cm)', 'ms-waist', { step: '0.1', min: 0, placeholder: 'e.g. 104' }));
     root.appendChild(field('Triglycerides (mg/dL)', 'ms-tg', { step: '1', min: 0, placeholder: 'e.g. 160' }));

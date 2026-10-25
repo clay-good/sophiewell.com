@@ -9,6 +9,7 @@
 // estimate - none authors a management order in Sophie's voice (spec-v11 §5.3).
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/nephro-v92.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -187,6 +188,7 @@ export const renderers = {
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },
     ]));
+    segmentedFromSelect(root.querySelector('#cc-sex'));
     root.appendChild(field('Height (cm) — optional, with weight gives eGFR in mL/min for drug dosing', 'cc-h', { min: 0, placeholder: 'e.g. 170', inputmode: 'decimal' }));
     root.appendChild(field('Weight (kg) — optional', 'cc-w', { min: 0, placeholder: 'e.g. 80', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);

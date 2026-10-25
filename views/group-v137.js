@@ -11,6 +11,7 @@
 // (lib/id-v137.js).
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/id-v137.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -63,6 +64,7 @@ export const renderers = {
     note(root, 'ISARIC 4C Mortality Score (Knight 2020): additive 0–21 for adults admitted with COVID-19 — age, male sex, comorbidity count, respiratory rate, SpO₂ on room air, GCS, urea, CRP. Risk groups: low 0–3 (1.2%), intermediate 4–8 (9.9%), high 9–14 (31.4%), very high ≥15 (61.5%) in-hospital mortality (derivation cohort). Cross-links CURB-65.');
     root.appendChild(field('Age (years)', 'is4c-age', { min: 0, max: 130, placeholder: 'e.g. 62' }));
     root.appendChild(selectField('Sex at birth', 'is4c-sex', [BLANK, { value: 'female', text: 'Female' }, { value: 'male', text: 'Male' }]));
+    segmentedFromSelect(root.querySelector('#is4c-sex'));
     root.appendChild(field('Number of comorbidities', 'is4c-com', { min: 0, max: 20, placeholder: 'e.g. 2' }));
     root.appendChild(field('Respiratory rate (breaths/min)', 'is4c-rr', { min: 0, max: 80, placeholder: 'e.g. 22' }));
     root.appendChild(field('SpO₂ on room air (%)', 'is4c-spo2', { min: 0, max: 100, placeholder: 'e.g. 95' }));

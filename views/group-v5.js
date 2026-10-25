@@ -4,6 +4,7 @@
 // v5 surface easy to audit.
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import { fmt } from '../lib/num.js';
 import * as V5 from '../lib/clinical-v5.js';
 import * as Code from '../lib/coding-v5.js';
@@ -97,6 +98,7 @@ export const renderers = {
   'sodium-correction'(root) {
     root.appendChild(unitField('Weight', 'w', WEIGHT_UNITS));
     root.appendChild(selectField('Sex', 'sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#sex'));
     root.appendChild(field('Age (years, optional)', 'age'));
     root.appendChild(field('Current serum Na (mEq/L)', 'na'));
     root.appendChild(selectField('Infusate', 'infusate', [
@@ -158,6 +160,7 @@ export const renderers = {
   'free-water-deficit'(root) {
     root.appendChild(unitField('Weight', 'w', WEIGHT_UNITS));
     root.appendChild(selectField('Sex', 'sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#sex'));
     root.appendChild(field('Age (years, optional)', 'age'));
     root.appendChild(field('Current serum Na (mEq/L)', 'na'));
     root.appendChild(field('Target Na (mEq/L)', 'tgt', { value: 145 }));
@@ -209,6 +212,7 @@ export const renderers = {
   'pbw-ardsnet'(root) {
     root.appendChild(unitField('Height', 'h', HEIGHT_UNITS));
     root.appendChild(selectField('Sex', 'sex', SEX_OPTS));
+    segmentedFromSelect(root.querySelector('#sex'));
     root.appendChild(field('Target Vt (mL/kg PBW)', 'mlkg', { value: 6 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {

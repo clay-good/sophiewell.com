@@ -14,6 +14,7 @@
 // input (lib/peds-growth-v141.js).
 
 import { el, clear } from '../lib/dom.js';
+import { segmentedFromSelect } from '../lib/components.js';
 import * as M from '../lib/peds-growth-v141.js';
 import { resultRow } from '../lib/result-copy.js';
 import { unitField, unitNumOpt, HEIGHT_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
@@ -64,6 +65,7 @@ export const renderers = {
   'peds-bmi-percentile'(root) {
     note(root, 'CDC 2000 BMI-for-age (Kuczmarski 2002), ages 2–20 y. Enter BMI directly, or enter weight and height to compute it. The percentile and z-score come from the CDC LMS transform; the band is the CDC weight-status cutoff.');
     root.appendChild(selectField('Sex', 'bm-sex', SEX));
+    segmentedFromSelect(root.querySelector('#bm-sex'));
     root.appendChild(field('Age (years)', 'bm-age', { step: '0.1', min: 2, max: 20, placeholder: 'e.g. 16' }));
     root.appendChild(field('BMI (kg/m²) — optional if weight + height given', 'bm-bmi', { step: '0.1', min: 0, placeholder: 'e.g. 30' }));
     root.appendChild(unitField('Weight', 'bm-wt', WEIGHT_UNITS, { placeholder: 'e.g. 85' }));
@@ -88,6 +90,7 @@ export const renderers = {
   'who-growth-zscore'(root) {
     note(root, 'WHO 2006 growth standards (WHO MGRS 2006): weight-for-age, length-for-age and head circumference-for-age from 0 to 24 months, and weight-for-length or weight-for-height to 5 years. Choose the measurement, enter the values, and the WHO LMS transform returns the z-score and percentile with the WHO low/severe bands.');
     root.appendChild(selectField('Sex', 'wz-sex', SEX));
+    segmentedFromSelect(root.querySelector('#wz-sex'));
     root.appendChild(selectField('Measurement', 'wz-measure', [
       { value: '', text: '— measurement —' },
       { value: 'weight', text: 'Weight-for-age (kg)' },
@@ -126,6 +129,7 @@ export const renderers = {
   'mid-parental-height'(root) {
     note(root, 'Mid-parental target height (Tanner 1970): the predicted adult height from the parents’ heights with a 13 cm sex adjustment, plus the ± 8.5 cm target range. A genetic-potential estimate, not a guarantee.');
     root.appendChild(selectField('Child’s sex', 'mp-sex', SEX));
+    segmentedFromSelect(root.querySelector('#mp-sex'));
     root.appendChild(field('Mother’s height (cm)', 'mp-mom', { step: '0.1', min: 100, max: 230, placeholder: 'e.g. 165' }));
     root.appendChild(field('Father’s height (cm)', 'mp-dad', { step: '0.1', min: 100, max: 230, placeholder: 'e.g. 180' }));
     const o = out(); root.appendChild(o);
