@@ -16,6 +16,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The Kyoto gastritis score no longer tells a reader with a below-threshold score that it is the cancer-risk level.
+  A score under 4 now reads "below the level rated as a risk for gastric cancer"; the computed risk flag was already
+  correct, only the sentence was wrong.
 - The MASLD criteria tool no longer assumes European ancestry when the field is left blank. The BMI cut (25, or 23
   in Asian ancestry) and the waist cut are ancestry-specific, and a blank had silently used the European cut, so a
   BMI of 24 under-called the adiposity criterion for an Asian patient. The ancestry is now asked for wherever it

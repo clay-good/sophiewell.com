@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `125ffa83ec316a68`
-Generated: 2026-10-25T00:34:35.958Z
+Build ID: `cc77826ad4524881`
+Generated: 2026-10-25T00:46:18.211Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -757,7 +757,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/kotlow-ankyloglossia-v1494.js` | 2713 | `f6493ff860b8b6c5cffd6fb836293f289abc707f8924f7fdfeffb69f2841d1fe` |
 | `lib/kudo-v334.js` | 4981 | `d190b27f8f711349c0f3b17fad878c7a994ffd841fe770cdffbcdb0f909a60b0` |
 | `lib/kwb-retinopathy-v360.js` | 3646 | `427da1e3c6dc054a69fcd8942bf916bb3c80da56447049d746948618025cfae3` |
-| `lib/kyoto-gastritis-v1442.js` | 3346 | `d60e5dd2349ca332c0eb60901a4e3764f78fe9e1ba5ae5b9763f634b634a49eb` |
+| `lib/kyoto-gastritis-v1442.js` | 3352 | `81394b3695126e2d779662cc562fd8a0950986da4cbf8a6a256fdb6bd40c2430` |
 | `lib/la-esophagitis-v318.js` | 3488 | `8f5b8dcdbec453858656244d1a722bb6a8afbaee9a60aa081ff9e167d6145930` |
 | `lib/lab-interpret.js` | 30577 | `c3e4c2152edc8cdf36b3f2885b4e9de6a6867d5a69e10eafa91e4c675efb04e7` |
 | `lib/lab-stats.js` | 2566 | `0ba85e42d062c175fa5505be5c86e339b2f4c0e9f6b51d6b954f6617eb2c570b` |

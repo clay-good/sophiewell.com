@@ -14,6 +14,10 @@ test('4 or more is the risk level; 3 is not', () => {
   assert.equal(k({ ...ZERO, atrophy: '2', im: '1' }).abnormal, false); // 3
   assert.equal(k({ ...ZERO, atrophy: '2', im: '1', redness: '1' }).abnormal, true); // 4
   assert.match(k({ ...ZERO, atrophy: '2', im: '2' }).band, /at or above 4/);
+  // spec-v1442 fix: a below-4 (reassuring) band must not read as being AT the risk level.
+  const low = k({ ...ZERO, atrophy: '2', im: '1' }).band; // score 3
+  assert.match(low, /below the level rated as a risk for gastric cancer/);
+  assert.doesNotMatch(low, /below 4, the level rated as a risk/);
 });
 
 test('the post-eradication caveat is always shown', () => {
