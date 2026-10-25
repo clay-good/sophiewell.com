@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3f77a7e4901621cd`
-Generated: 2026-10-25T21:25:51.788Z
+Build ID: `061c4f11cb1b314f`
+Generated: 2026-10-25T21:46:25.257Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -26,7 +26,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 154636 | `ba16d9efcfd5e9956a856b21f115296a7d69a2c3162f5472075318aa68ac1b73` |
-| `styles.css` | 84908 | `8ea2feae8fb451e39d7a08449ee519a63d664f34226267e4884e76ceefec5714` |
+| `styles.css` | 84969 | `16dce7a8ab0e396b17f8b7c0198e6a7717e7ca72a0f923c63d26e27b332e6b2a` |
 | `app.js` | 646361 | `7a71edaa10dcb77e2faff1c595dc49c9836e67de3c7d0653379012ef8d8f3954` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
@@ -316,7 +316,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/columbia-fsgs-v532.js` | 11989 | `28d8b6d7b02e2a089ce151e7aab0a269efe8181262a34f4884f5df7102140e41` |
 | `lib/compera-2-v574.js` | 13638 | `af39867be80911c28ccb674bdc4cf61360c3aa8a890b0d2cc3d8acf43e1ea4ad` |
 | `lib/completeness-cytoreduction-v655.js` | 3731 | `af132705e335c78d95b7767dbce546d37d3a8737d9945bea15cf25537d3a80a1` |
-| `lib/components.js` | 6411 | `df999ba6e829a5e796970fb31a606d70543b7815d4fa7e172f8f233316b26701` |
+| `lib/components.js` | 7073 | `106da6ed7cb3b2da1dd299b77bb92eb08ca85a99d1aa4fb3dfa5227133a147f4` |
 | `lib/compound-anticipatory-limit-v1629.js` | 7091 | `c6c5bfdfaf1e3c794ca9fd172f940d6fb822b8563c5280d547194c7fe8a11d21` |
 | `lib/compound-copy-check-v1629.js` | 10327 | `f01f17b9706eda6e9414137d81360996ab311403af522729af0fd2e1ec778811` |
 | `lib/compounding-bud-v1511.js` | 8145 | `640baaeaddb8a48286db3255caceaff4a8a8cad52cacf6814a1837e5fae63828` |
@@ -890,7 +890,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3062498 | `4fcd3ab5d06983ac31f1b4485dacbc50bebdf826acfed82126975971af6a57ca` |
+| `lib/meta.js` | 3062612 | `b4af516a012c65fe21a51672174ca9557fbfbf4f59750e22ba8ec04dc737d206` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -3043,7 +3043,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 56939 | `740111487220af0a65225b9342fa5de9a2a18c8216e6615d594d43e3320390c9` |
 | `views/group-f.js` | 57749 | `0a39866dc77d102ea2e6670e32dd47295bfd32a1005892b8b1d95ac9688d29fc` |
-| `views/group-g.js` | 252580 | `5d6f5792d18bcb020f10f7c5c2f8af8410dfdf6ca822518b228452fb3022d3ad` |
+| `views/group-g.js` | 253804 | `8dd6bf1db4f0a374bc100b29c67dee68cf6936d19e2c3be5e0ae192736d8c383` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 28753 | `ad396a2d5090a7e40a0403505096e7734553ec173e804579a474aa105cd39235` |
 | `views/group-j.js` | 11210 | `08f23a251b1bb0cc5b6f33176a06c66c494a80492b0e9668f85c6a7195355279` |

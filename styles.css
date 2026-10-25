@@ -2564,7 +2564,7 @@ a.chip,
 /* Status / severity chip: names a result band at a glance. The band word is
    always the text; the dot is decorative (mark it aria-hidden). Never rely on
    color alone. */
-.chip--status { font-weight: 700; }
+.chip--status { font-weight: 700; margin-inline-start: var(--space-2); vertical-align: middle; }
 .chip--status .chip-dot {
   width: 0.5rem;
   height: 0.5rem;

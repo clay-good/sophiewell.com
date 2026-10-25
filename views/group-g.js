@@ -1,8 +1,21 @@
 // Group G: Clinical Scoring and Reference (48-60).
 
 import { el, clear } from '../lib/dom.js';
+import { statusChip } from '../lib/components.js';
 import * as C from '../lib/clinical.js';
 import * as S4 from '../lib/scoring-v4.js';
+
+// Authored result-band severity for the chip on the answer card. These reflect
+// each tile's own cited interpretation bands -- they add no threshold and change
+// no computed value, they only color the band the compute already chose.
+// Wells PE/DVT pretest-probability tiers (Wells 2000/2003).
+const WELLS_SEVERITY = { 'Low probability': 'low', 'Moderate probability': 'moderate', 'High probability': 'high' };
+// CURB-65 severity bands (Lim 2003): 0-1 low, 2 intermediate, 3-5 severe.
+function curbSeverity(score) {
+  if (score <= 1) return { severity: 'low', label: 'Low severity' };
+  if (score === 2) return { severity: 'moderate', label: 'Intermediate' };
+  return { severity: 'high', label: 'Severe' };
+}
 import { renderScreener } from '../lib/screener.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '../lib/derivation.js';
@@ -243,7 +256,10 @@ export const renderers = {
     const run = () => safe(o, () => {
       const ans = {}; for (const [id] of items) ans[id] = checked(id);
       const r = C.wellsPe(ans);
-      o.appendChild(el('p', { text: `Wells PE total: ${r.total} (${r.category})` }));
+      const line = el('p', { text: `Wells PE total: ${r.total} (${r.category})` });
+      const sev = WELLS_SEVERITY[r.category];
+      if (sev) line.appendChild(statusChip(sev, r.category.replace(' probability', '')));
+      o.appendChild(line);
       if (deriv) updateDerivationSteps(deriv, META['wells-pe'], ans);
     });
     items.forEach(([id]) => document.getElementById(id).addEventListener('change', run));
@@ -269,7 +285,10 @@ export const renderers = {
     const run = () => safe(o, () => {
       const ans = {}; for (const [id] of items) ans[id] = checked(id);
       const r = C.wellsDvt(ans);
-      o.appendChild(el('p', { text: `Wells DVT total: ${r.total} (${r.category})` }));
+      const line = el('p', { text: `Wells DVT total: ${r.total} (${r.category})` });
+      const sev = WELLS_SEVERITY[r.category];
+      if (sev) line.appendChild(statusChip(sev, r.category.replace(' probability', '')));
+      o.appendChild(line);
       if (deriv) updateDerivationSteps(deriv, META['wells-dvt'], ans);
     });
     items.forEach(([id]) => document.getElementById(id).addEventListener('change', run));
@@ -540,7 +559,10 @@ export const renderers = {
       };
       const r = S4.curb65(inputs);
       o.appendChild(el('h2', { text: `CURB-65: ${r.score}` }));
-      o.appendChild(el('p', { text: r.band }));
+      const bandLine = el('p', { text: r.band });
+      const cs = curbSeverity(r.score);
+      bandLine.appendChild(statusChip(cs.severity, cs.label));
+      o.appendChild(bandLine);
       if (deriv) updateDerivationSteps(deriv, META['curb-65'], inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
