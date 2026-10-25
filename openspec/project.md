@@ -15,6 +15,9 @@ runtime and no AI is in the compute path.
   code change), then a later session builds it. This change follows that pattern.
 - **Catalog-truth gate:** the live catalog count comes from `UTILITIES.length`; no doc hardcodes
   it on an exact-count surface.
+- **Design system:** `docs/design.md` is the authoritative visual/interaction contract — tokens,
+  the tool-view structure, the shared component vocabulary, and the accessibility gates. Every
+  view conforms to it; add a new pattern there before building it.
 
 ## Key modules
 

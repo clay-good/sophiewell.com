@@ -326,6 +326,15 @@ CI-only, with a reason.
 For the e2e half, the section below is the cheap substitute for the failure mode
 that has actually broken this project's CI.
 
+### If you touched presentation, follow `docs/design.md`
+
+[docs/design.md](docs/design.md) is the single source of truth for tokens, the
+tool-view structure, the component vocabulary (chips, cards, dropzone, segmented
+control, stat grid, status chip), and the interaction and accessibility rules. Reuse
+a shared component and a token before adding anything; never write per-tile CSS or an
+inline style. The `design-system-cleanup` change under `openspec/changes/` tracks
+bringing the catalog up to it.
+
 ### If you touched tile text, a label, or CSS, run `npm run test:mobile`
 
 `release:check` does not lay a page out, so it cannot see a line that is
