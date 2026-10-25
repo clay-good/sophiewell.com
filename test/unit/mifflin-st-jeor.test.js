@@ -34,3 +34,10 @@ test('blank weight/height/age -> valid:false complete-the-fields', () => {
   assert.equal(mifflinStJeor({ weight: 70, age: 40 }).valid, false);
   assert.equal(mifflinStJeor({}).valid, false);
 });
+
+test('sex is asked, not assumed male (spec fix)', () => {
+  // A blank sex had silently used the male constant (+5 vs -161), biasing an omitted-sex call.
+  const r = mifflinStJeor({ weight: 70, height: 175, age: 40 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /sex/i);
+});

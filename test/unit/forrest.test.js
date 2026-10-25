@@ -42,3 +42,8 @@ test('every defined class resolves to one cell; an unknown finding is valid:fals
   assert.equal(forrest({}).valid, false);
   assert.match(forrest({}).message, /Forrest/);
 });
+
+test('Ib rebleed figure matches the note (Ia/Ib ~55%), not a lower number (spec fix)', () => {
+  assert.match(forrest({ klass: 'Ib' }).detail, /~55%/);
+  assert.match(forrest({ klass: 'Ia' }).detail, /~55%/);
+});

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `cc77826ad4524881`
-Generated: 2026-10-25T00:46:18.211Z
+Build ID: `98c3dc00c8e022fa`
+Generated: 2026-10-25T01:36:56.538Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1015,7 +1015,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nursing-home-staffing-check-v1396.js` | 7698 | `4c8cd87f24ddd72825957f214e47c90ea7bd78baeb190829104e7b175e8ae820` |
 | `lib/nursing-home-staffing-star-v1657.js` | 7505 | `785e53a7bca158f932932eacbb85fbf9a16831f7fea0104c625b2bad13883ffa` |
 | `lib/nursing-hppd-v1657.js` | 3304 | `7ce54fbcab066242ec8b68b81ac0953fa9c94f5131647420e54a73c56ccb2ebb` |
-| `lib/nutrition-energy-v152.js` | 16448 | `7ceb75574ad3d2e014ed1e2c8b00081746c6b013676e51b3aaacafe7308e4911` |
+| `lib/nutrition-energy-v152.js` | 17358 | `6f8b7bee38420b0f889c6a517763c5203b4e52a092e480efed0cf74e6dcbc43b` |
 | `lib/nutrition-maternal-v208.js` | 13391 | `3f68589603d6c5be3866aa0200955bbff10fe8873d47a3a9a1068a0c5b5c4c87` |
 | `lib/nutrition-v276.js` | 3685 | `5e511e6c115a25c49b47227f60072cf08bc5bbfc5d6e778913d234be07a61553` |
 | `lib/ny-aot-kendras-law-v1390.js` | 11236 | `27b52c5cce49d6c3a4b49fec215ca45d72633c1d11396d0329c932caa6df168d` |
@@ -1427,7 +1427,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/stulberg-v457.js` | 3492 | `72b91cf6d020a3d4e58cdedd907a7f84fb1e3736cfcd19ae3ed300f9a7b9793f` |
 | `lib/subspecialty-v198.js` | 15911 | `3b2d09fa66c89500f0d4b15abe213d9b4f691da3beb6ff004f6166a37269be5f` |
 | `lib/substitution-check.js` | 7506 | `662610da34380dcde9ee114b436dd649556958727f4c759dffcbb70f2da19f09` |
-| `lib/suites-v155.js` | 13422 | `8dcd9ee6cb60524bed730715b875ace734c5c8f4b9d3ec5eb1ad19370eae577e` |
+| `lib/suites-v155.js` | 13422 | `70c3630c733bed7d5cf614c853187a1a09d17a56edc1189ad162c69090ef2002` |
 | `lib/sun-ac-cell-v421.js` | 3663 | `2e98fadd5a5b0b497a827fe2fc7cd3c2dbe6b1c00cc2f6e465f50cc2e389fb55` |
 | `lib/sun-ac-flare-v422.js` | 3437 | `c372e87d2726c6e87123b9971c50eed8b5d23a434bd99dc6dad494e10005b30c` |
 | `lib/sunct-suna-ichd3-v820.js` | 8213 | `69340f33957e7235f7ea341325e2391ae36fbce3d002791935ee46d669997f5c` |
@@ -1479,7 +1479,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tpmt-nudt15-thiopurine-dose-v1635.js` | 2138 | `470f9d9fa0ee1ea10180275c2c3f7aa9ebd65cac81e218423ba7e424a1f90623` |
 | `lib/trachoma-grade-v1561.js` | 4055 | `899fd785c08aa0075f51fb10ef1593b9b48d4a8da2ab53fb38fdd032bbeea666` |
 | `lib/tranexamic-acid-renal-dose-v1632.js` | 5253 | `5ca46382fb970acc823246ce5b905af882de42d50bf8f8d66e17d9ffd4c5bb3f` |
-| `lib/transfusion-v292.js` | 6092 | `fad982f1d900d63ff9d127af09061f1a498c292fd03acbc4f9dfac081be61b53` |
+| `lib/transfusion-v292.js` | 6590 | `895fbd0c4ef9636fe84d9ad207b94319070361b76ddbfdfcb6faa65ca0d1c1a5` |
 | `lib/transplant-formulation-switch-v1633.js` | 7426 | `0e9ef9c63a49bb29fcf09a467a035861ed391f1e718eca09443be26e29a928a2` |
 | `lib/trauma-v108.js` | 19820 | `bc65f263ab6552bfa42379d0dedd4f2b5829f3ccc15dfa3e6e0a424d64735f43` |
 | `lib/traumaclass-v109.js` | 20421 | `cd7f9e9c7dbc3447a2e3e4e8507161b9af59fac28aa8a7b55414abd160e4e60f` |
@@ -3373,7 +3373,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v280.js` | 5453 | `8187fce4417de2fceb193fb7d10d0ecddce7673c514024d74b2b1f92e05702ed` |
 | `views/group-v281.js` | 4621 | `53ac41641cf5ed15a17020f50911c158f2c465614ff4d2147fcf3fef8a45b93f` |
 | `views/group-v29.js` | 10737 | `ed226c85b1a2f5e4b58f2f430c3e6ed095a617e10e9947f7b3664999d87d5aac` |
-| `views/group-v292.js` | 4227 | `9f514992b8de0cc613317935dc7dfb5835aef13d483e999bfafe35dc0bcdc665` |
+| `views/group-v292.js` | 4272 | `7f0eaebfde5dd5001e0d4eb14fe9c6482deaa982df194b6d94169ebd3d8a3a45` |
 | `views/group-v294.js` | 3944 | `1c97abfaae36c0ddbb94cfbb6eaf6a8b1533e2dd3171fa95c2d7cd693656d607` |
 | `views/group-v295.js` | 3409 | `3069a5b6304eb5f85879c84684b55e597d7f7b86a6dd9d37046dd108972b9033` |
 | `views/group-v296.js` | 4116 | `fbcd2285bf51e899c27a78119d2f2875abafe9457f4efff393efd416a05d3291` |

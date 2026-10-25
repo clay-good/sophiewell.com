@@ -28,6 +28,12 @@ test('obese but young (BMI>=30, age<60) still uses standard form', () => {
 });
 
 test('blank input -> valid:false complete-the-fields', () => {
-  assert.equal(pennStateRee({ weight: 70, height: 175, age: 40 }).valid, false);
+  assert.equal(pennStateRee({ weight: 70, height: 175, age: 40, sex: 'male' }).valid, false); // missing tmax/ve
   assert.equal(pennStateRee({}).valid, false);
+});
+
+test('sex is asked, not assumed male (spec fix)', () => {
+  const r = pennStateRee({ weight: 70, height: 175, age: 40, tmax: 38.5, ve: 9 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /sex/i);
 });

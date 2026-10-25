@@ -46,6 +46,17 @@ test('cardiac surgery uses the 7.5 g/dL threshold (spec-v97 correction from the 
   assert.match(r.band, /below the 7.5 g\/dL AABB restrictive threshold for cardiac surgery/);
 });
 
+test('the population is asked, not defaulted to stable-adult (spec fix)', () => {
+  // A blank population had silently used stable-adult (7 g/dL, the lowest cut), so a cardiac or
+  // orthopedic patient was read "at or above the threshold" when they were below their own cut.
+  const blank = transfusionThreshold({ hemoglobin: 7.2 });
+  assert.equal(blank.valid, false);
+  assert.match(blank.message, /population/i);
+  // With the population named, 7.2 is below the cardiac-surgery cut of 7.5 (transfusion reasonable).
+  const cardiac = transfusionThreshold({ hemoglobin: 7.2, population: 'cardiac-surgery' });
+  assert.equal(cardiac.belowThreshold, true);
+});
+
 test('acute coronary syndrome: no numeric threshold, never a fabricated number (Design D2)', () => {
   const r = transfusionThreshold({ hemoglobin: 6.5, population: 'acute-coronary-syndrome' });
   assert.equal(r.valid, true);
@@ -78,7 +89,10 @@ test('impossible hemoglobin throws RangeError', () => {
   assert.throws(() => transfusionThreshold({ hemoglobin: 31, population: 'stable-adult' }), RangeError);
 });
 
-test('unknown population defaults to the stable-adult 7 g/dL threshold', () => {
+test('an unknown population is refused, not defaulted to stable-adult (spec fix)', () => {
+  // This used to assert the default-to-7 behavior; that default was the defect (it read a cardiac
+  // or orthopedic patient against the wrong, lowest threshold), so the tool now asks for a valid one.
   const r = transfusionThreshold({ hemoglobin: 6, population: 'nonsense' });
-  assert.equal(r.threshold, 7);
+  assert.equal(r.valid, false);
+  assert.match(r.message, /population/i);
 });

@@ -48,6 +48,7 @@ export const renderers = {
     note(root, 'AABB 2023 restrictive transfusion thresholds. Enter the hemoglobin and pick the population to see whether the value is below the threshold at which transfusion is reasonable, or within the restrictive range where you should not transfuse on the number alone. Acute coronary syndrome has no AABB numeric recommendation — this tool says so.');
     root.appendChild(unitField('Hemoglobin', 'tt-hb', HEMOGLOBIN_UNITS, { placeholder: 'e.g. 6.8' }));
     root.appendChild(select('Patient population', 'tt-pop', [
+      ['', 'Choose the patient population'],
       ['stable-adult', 'Stable hospitalized adult (incl. critically ill)'],
       ['cardiac-surgery', 'Cardiac surgery'],
       ['orthopedic-surgery', 'Orthopedic surgery'],

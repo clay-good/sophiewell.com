@@ -28,3 +28,9 @@ test('blank input -> valid:false', () => {
   assert.equal(harrisBenedict({ weight: 70, height: 175 }).valid, false);
   assert.equal(harrisBenedict({}).valid, false);
 });
+
+test('sex is asked, not assumed male (spec fix)', () => {
+  const r = harrisBenedict({ weight: 70, height: 175, age: 40 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /sex/i);
+});

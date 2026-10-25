@@ -16,6 +16,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Three resting-energy equations (Mifflin-St Jeor, Harris-Benedict, Penn State) no longer assume a male patient when
+  the sex is left blank; they ask for it, as the Ireton-Jones equation in the same module already did. A blank sex had
+  biased the estimate upward (Mifflin by 166 kcal/day).
+- The transfusion-threshold tool no longer defaults a blank patient population to the stable-adult 7 g/dL cut. The
+  population sets the threshold (7.5 after cardiac surgery, 8 for orthopedic surgery or cardiovascular disease), so a
+  blank is now asked for rather than reading a cardiac or orthopedic patient against the lowest threshold.
+- The Forrest classification's class Ib rebleeding figure now reads ~55%, matching the tool's own cited note (it had
+  shown ~50%); the risk tier was already correct.
 - The Kyoto gastritis score no longer tells a reader with a below-threshold score that it is the cancer-risk level.
   A score under 4 now reads "below the level rated as a risk for gastric cancer"; the computed risk flag was already
   correct, only the sentence was wrong.
