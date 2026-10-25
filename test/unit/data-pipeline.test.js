@@ -102,7 +102,7 @@ test('discover: single and double quotes, entities, absolute links, newest, lice
   assert.equal(unwrapLicenseLink('/files/zip/a.zip'), '/files/zip/a.zip');
 });
 
-test('http: user agent, conditional 304, retry on 500, no retry on 404', async () => {
+test('http: user agent, conditional 304, retry on 500/403/404, refusal opt-out', async () => {
   let hits = 0;
   const server = createServer((req, res) => {
     hits += 1;
@@ -111,6 +111,7 @@ test('http: user agent, conditional 304, retry on 500, no retry on 404', async (
       res.writeHead(200, { etag: '"v1"' }); res.end(req.headers['user-agent']); return;
     }
     if (req.url === '/flaky') { if (hits % 2) { res.writeHead(500); res.end(); } else { res.writeHead(200); res.end('ok'); } return; }
+    if (req.url === '/forbidden') { res.writeHead(403); res.end(); return; }
     res.writeHead(404); res.end();
   });
   await new Promise((r) => server.listen(0, r));
@@ -124,9 +125,17 @@ test('http: user agent, conditional 304, retry on 500, no retry on 404', async (
     assert.equal(again.bytes, null);
     hits = 0;
     assert.equal((await get(`${base}/flaky`, { backoffMs: 1 })).bytes.toString(), 'ok');
+    // A federal edge's momentary 403/404 refusal is retried like a 429.
     hits = 0;
-    await assert.rejects(get(`${base}/gone`, { backoffMs: 1 }), /returned 404/);
-    assert.equal(hits, 1, 'a 404 is not retried');
+    await assert.rejects(get(`${base}/forbidden`, { backoffMs: 1, retries: 1 }), /returned 403/);
+    assert.equal(hits, 2, 'a 403 is retried by default');
+    hits = 0;
+    await assert.rejects(get(`${base}/gone`, { backoffMs: 1, retries: 2 }), /returned 404/);
+    assert.equal(hits, 3, 'a 404 is retried by default');
+    // A caller that expects to be refused opts out and fails fast.
+    hits = 0;
+    await assert.rejects(get(`${base}/gone`, { backoffMs: 1, retries: 2, retryRefusals: false }), /returned 404/);
+    assert.equal(hits, 1, 'retryRefusals:false does not retry a 404');
   } finally {
     server.close();
   }
