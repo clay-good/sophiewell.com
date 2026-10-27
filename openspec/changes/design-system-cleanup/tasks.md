@@ -10,9 +10,12 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       `<input type="file">` not inside a `.dropzone`, every interpretation band rendered as
       color-only, every inline `style=` attribute in a view, and every spacing/radius value in
       `styles.css` that is not a token. This sizes the later waves.
-- [ ] 0.2 Add `no-inline-style.spec.js` / eslint rule: views emit no inline `style=` and no
-      per-tile `<style>`; all presentation is shared classes + tokens. (Assert off until wave 5.)
-- [ ] 0.3 Add `status-chip-has-text.spec.js`: any `.chip--status` carries a non-empty text label.
+- [x] 0.2 `scripts/check-design-system.mjs` (in `npm run lint`, asserting): views emit no
+      inline `style=` and no per-tile `<style>`, no file input sits off the dropzone card, and
+      no view hand-builds a status chip. All three were clean when it landed.
+- [x] 0.3 `test/unit/design-components.test.js`: `statusChip()` carries the band word, and a
+      band authoring a severity with no label renders no chip rather than a wordless one.
+      The gate above keeps `.chip--status` reachable only through that builder.
 
 ## 1. Shared component classes in `styles.css` (tokens only, no view touched)
 
