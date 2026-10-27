@@ -262,7 +262,7 @@ export const renderers = {
         { label: 'First 8h', value: r.brooke.first8h, units: 'mL' },
         { label: 'Subsequent 16h', value: r.brooke.remaining16h, units: 'mL' },
         r.brooke.remainingInFirst8h != null ? { label: 'Remaining for first 8h window', value: `${r.brooke.remainingInFirst8h} mL (${r.brooke.ratePerHourRemainingFirst8h} mL/hr)` } : null,
-      ]);
+      ], { stats: true });
       if (deriv) updateDerivationSteps(deriv, META['burn-fluid'], inputs);
     }, deriv);
     ['bf-w', 'bf-bsa', 'bf-h'].forEach((id) => document.getElementById(id).addEventListener('input', run));

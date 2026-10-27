@@ -131,7 +131,7 @@ export const renderers = {
     wire(fieldIds(CNPI_FIELDS), () => safe(o, () => {
       const r = M.cnpi(payload(CNPI_FIELDS));
       if (!r.valid) { showInvalid(o, r); return; }
-      resultRow(o, [{ text: r.band }, { label: 'Rest', value: `${r.restScore}/6` }, { label: 'Movement', value: `${r.moveScore}/6` }, { label: 'Combined', value: `${r.total}/12` }]);
+      resultRow(o, [{ text: r.band }, { label: 'Rest', value: `${r.restScore}/6` }, { label: 'Movement', value: `${r.moveScore}/6` }, { label: 'Combined', value: `${r.total}/12` }], { stats: true });
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

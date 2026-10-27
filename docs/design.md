@@ -116,9 +116,9 @@ allowed. Build these as shared classes in `styles.css`, tokens only.
 |---|---|---|---|
 | **Suggestion chip** | prefill an example | home box, "try:" rows | shipped (`.hero-chip`) — make the base class reusable |
 | **Filter chip** (toggle) | filter a catalog/list by one facet; multi-select | `/tools` specialty filter, long result lists | **new** `.chip--filter`, `aria-pressed` |
-| **Segmented control** | pick one of 2–4 mutually exclusive options | binary/short enums (sex M/F, formula variant) in place of a `<select>` | **new** `.segmented`, radiogroup semantics |
-| **Status / severity chip** | name a result band at a glance (low / moderate / high / critical) | beside the answer value when a tile outputs a band | **new** `.chip--status`, color by severity token, text label never color-only |
-| **Input chip** (removable) | one dropped/added file or token, with a remove ✕ | file reader after drop; multi-file lists | **new** `.chip--input` |
+| **Segmented control** | pick one of 2–4 mutually exclusive options | binary/short enums (sex M/F, formula variant) in place of a `<select>` | shipped `.segmented` + `segmentedFromSelect()`; the `<select>` stays as the value model |
+| **Status / severity chip** | name a result band at a glance (low / moderate / high / critical) | beside the answer value when a tile outputs a band | shipped `.chip--status` + `statusChip()`; severity authored from the compute's own band, never inferred |
+| **Input chip** (removable) | one dropped/added file or token, with a remove ✕ | file reader after drop; multi-file lists | shipped `.chip--input`, rendered by `dropzone()` |
 | **Assist chip** | a suggested next action (e.g. "open related calculator") | under the answer card | **new**, sparingly; curated only |
 
 Rules: chips are pills (`--radius-pill`), ≥44px tap height, teal on hover/active,
@@ -130,8 +130,8 @@ announced.
 | Card | Purpose | Notes |
 |---|---|---|
 | **Answer card** | the computed result | shipped; standardize the big-value + optional status-chip header |
-| **Metric/stat tile** | a single labeled number in a small grid | **new** `.stat`, for multi-output tiles; big value, caption, optional delta |
-| **Dropzone card** | drag/drop target for the file reader | **new** `.dropzone`: dashed border, icon, hint, `drop-active` teal state, input-chip file list — replaces the raw `<input type=file>` |
+| **Metric/stat tile** | a single labeled number in a small grid | shipped `.stat` + `statGrid()`; a multi-output tile opts in with `resultRow(o, items, { stats: true })` and its labeled numbers become cells (big value, caption), the first one primary |
+| **Dropzone card** | drag/drop target for the file reader | shipped `.dropzone` + `dropzone()`: dashed border, icon, hint, `drop-active` teal state, input-chip file list, wrapping the native `<input type=file>` |
 | **Choice / pick card** | disambiguation | shipped (`.pick-card`) |
 | **Disclosure card** | collapsed proof (citations, derivation, receipt) | shipped; keep `<details>` open-on-print |
 

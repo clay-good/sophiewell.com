@@ -59,7 +59,7 @@ export const renderers = {
     wire(['sf-spo2', 'sf-fio2'], () => safe(o, () => {
       const r = M.sfRatio({ spo2: val('sf-spo2'), fio2: val('sf-fio2') });
       if (!r.valid) { showInvalid(o, r); return; }
-      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'S/F', value: `${r.sf}` }, { label: 'est P/F', value: `${r.pf}` }]);
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'S/F', value: `${r.sf}` }, { label: 'est P/F', value: `${r.pf}` }], { stats: true });
       note(o, r.detail); note(o, r.caveat); note(o, r.note);
     }));
     postureNote(root);
@@ -77,7 +77,7 @@ export const renderers = {
     wire(['vr-ve', 'vr-paco2', 'vr-height', 'vr-sex'], () => safe(o, () => {
       const r = M.ventilatoryRatio({ ve: val('vr-ve'), paco2: val('vr-paco2'), height: val('vr-height'), sex: val('vr-sex') });
       if (!r.valid) { showInvalid(o, r); return; }
-      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'VR', value: `${r.vr}` }, { label: 'PBW', value: `${r.pbw} kg` }]);
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'VR', value: `${r.vr}` }, { label: 'PBW', value: `${r.pbw} kg` }], { stats: true });
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

@@ -2655,8 +2655,16 @@ a.chip,
   border-radius: var(--radius);
   min-width: 0;
 }
-.stat-value { font-size: 1.5rem; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
+.stat-value { font-size: 1.5rem; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.stat-units { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
 .stat-label { margin-top: 2px; color: var(--text-muted); font-size: 0.85rem; overflow-wrap: anywhere; }
+/* The answer the reader came for leads the grid: same cell, larger value and an
+   accent edge, so the panel still has one obvious first number. */
+.stat--primary { border-color: var(--accent-pop); background: var(--accent-pop-tint); }
+.stat--primary .stat-value { font-size: 2rem; }
+@media (max-width: 600px) {
+  .stat--primary .stat-value { font-size: 1.7rem; }
+}
 
 /* --- Dropzone card ---------------------------------------- */
 /* The file-reader surface that replaces the raw native <input type="file">.

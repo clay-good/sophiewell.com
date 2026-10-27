@@ -780,7 +780,7 @@ export const renderers = {
         { label: 'ISF', value: `${r.isf}${r.isfDerivedFromTdd ? ' (derived from TDD)' : ''}` },
         { label: 'Correction', value: r.correctionUnits, units: 'U' },
         { label: 'Meal coverage', value: r.mealUnits, units: 'U' },
-      ]);
+      ], { stats: true });
       if (r.mealNote) o.appendChild(el('p', { class: 'muted', text: r.mealNote }));
       if (r.isfDerivedFromTdd) o.appendChild(el('p', { class: 'muted', text: 'The 1800 and 1500 rules are bedside rules of thumb, not part of the ADA Standards. Use the ISF on the order when there is one.' }));
       o.appendChild(el('p', { class: 'clinical-notice', text: 'ADA 2024 hospital glycemic goals: 100-180 mg/dL outside the ICU; 140-180 mg/dL for most ICU patients (110-140 mg/dL for selected patients if reached without significant hypoglycemia).' }));

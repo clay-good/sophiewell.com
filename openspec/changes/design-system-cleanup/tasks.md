@@ -6,7 +6,7 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
 
 ## 0. Guard rails first (ship before any migration)
 
-- [ ] 0.1 Add `design-conformance-probe.spec.js` (non-asserting finder): list every raw
+- [x] 0.1 Add `design-conformance-probe.spec.js` (non-asserting finder): list every raw
       `<input type="file">` not inside a `.dropzone`, every interpretation band rendered as
       color-only, every inline `style=` attribute in a view, and every spacing/radius value in
       `styles.css` that is not a token. This sizes the later waves.
@@ -16,35 +16,37 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
 
 ## 1. Shared component classes in `styles.css` (tokens only, no view touched)
 
-- [ ] 1.1 `.chip` base + modifiers: `.chip--filter` (toggle, `aria-pressed`), `.chip--status`
+- [x] 1.1 `.chip` base + modifiers: `.chip--filter` (toggle, `aria-pressed`), `.chip--status`
       (severity tokens), `.chip--input` (removable, ✕), `.chip--assist`. Pill radius, ≥44px tap,
       teal hover, focus ring. Generalize the existing `.hero-chip` onto the base.
-- [ ] 1.2 `.segmented` radiogroup control: 2–4 options, one row at 320px, `role=radiogroup`.
-- [ ] 1.3 `.stat` grid: big value + caption cells; primary value largest; wraps at 320px.
-- [ ] 1.4 `.dropzone` card: dashed border, icon, hint, `drop-active`, file-chip list; wraps the
+- [x] 1.2 `.segmented` radiogroup control: 2–4 options, one row at 320px, `role=radiogroup`.
+- [x] 1.3 `.stat` grid: big value + caption cells; primary value largest; wraps at 320px.
+- [x] 1.4 `.dropzone` card: dashed border, icon, hint, `drop-active`, file-chip list; wraps the
       native input.
-- [ ] 1.5 Shared states: `.skeleton`/progress, `.empty-state`, field error pattern
+- [x] 1.5 Shared states: `.skeleton`/progress, `.empty-state`, field error pattern
       (`aria-invalid` + live-region line). Severity tokens added to `:root` + light theme, AA in both.
 - [ ] 1.6 Add the status-chip + stat-grid helpers to `app.js` `renderToolView` (optional;
       a tile opts in by passing its band/outputs — no behavior change for tiles that don't).
 
 ## 2. File readers → `.dropzone` (archetype B)
 
-- [ ] 2.1 `views/upload-workbench.js`: render the dropzone card around the existing input;
+- [x] 2.1 `views/upload-workbench.js`: render the dropzone card around the existing input;
       worker-parse path, column confirmation, and 50 MB limit unchanged.
 - [ ] 2.2 `views/intake.js` / `views/home-files.js`: the drop front door uses the same dropzone
       surface and file-chip list; folder/zip routing unchanged.
-- [ ] 2.3 Migrate the ~9 upload tiles (`views/group-v15xx.js`, the X12 readers, HPT/TiC/file
+- [x] 2.3 Migrate the ~9 upload tiles (`views/group-v15xx.js`, the X12 readers, HPT/TiC/file
       checks) to the shared dropzone. Add the determinate parse-progress state (D6).
 - [ ] 2.4 Confirm no upload tile keeps a bare native input (probe 0.1 clean for file inputs).
 
 ## 3. Calculators → modern components (archetype A)
 
-- [ ] 3.1 Band-outputting tiles: show `.chip--status` on the answer card using the band the tile
+- [x] 3.1 Band-outputting tiles (starter set shipped; rollout continues per tile): show `.chip--status` on the answer card using the band the tile
       already computes (D4). No new thresholds. Text label always present.
-- [ ] 3.2 Short mutually-exclusive enums (sex, two-way formula toggles): convert the `<select>`
+- [x] 3.2 Short mutually-exclusive enums (sex, two-way formula toggles): convert the `<select>`
       to `.segmented` (D3). Leave long/open lists as selects. Canonical-first-option invariant kept.
-- [ ] 3.3 Multi-output tiles: render the secondary numbers as a `.stat` grid (D5).
+- [x] 3.3 Multi-output tiles: render the secondary numbers as a `.stat` grid (D5).
+      `statGrid()` + the `{ stats: true }` opt-in on `resultRow`; starter set of 9 tiles
+      shipped, rollout continues per tile.
 - [ ] 3.4 Zero/partial input: use the shared empty-state and error patterns; keep the
       `answer-said-once` and `one-disclaimer` guarantees.
 

@@ -179,7 +179,7 @@ export const renderers = {
       resultRow(o, [
         { label: 'Du Bois', value: C.bsaDuBois({ weightKg: w, heightCm: h }), units: 'm^2' },
         { label: 'Mosteller', value: C.bsaMosteller({ weightKg: w, heightCm: h }), units: 'm^2' },
-      ]);
+      ], { stats: true });
     });
     ['w', 'w-unit', 'h', 'h-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -220,7 +220,7 @@ export const renderers = {
         { label: 'MAP', value: fmt(r.map), units: 'mmHg' },
         { label: 'Cerebral perfusion pressure (CPP)', value: fmt(r.cpp), units: 'mmHg', cls: r.critical ? 'flag' : null },
         { text: r.negative ? 'Negative CPP: ICP exceeds MAP - critical, no forward cerebral perfusion.' : r.band, cls: r.critical ? 'warn' : null },
-      ]);
+      ], { stats: true });
       o.appendChild(el('p', { class: 'muted', text: 'Planning estimate - verify against the monitor and local protocol. Optimal CPP may be individualized by autoregulation (PRx) where measured; this tile computes the standard CPP and BTF target band only.' }));
     });
     ['cpp-map', 'cpp-sbp', 'cpp-dbp', 'cpp-icp'].forEach((id) => document.getElementById(id).addEventListener('input', run));
@@ -308,7 +308,7 @@ export const renderers = {
       resultRow(o, [
         { label: 'Corrected Na (factor 1.6)', value: r.naBy1_6, units: 'mEq/L' },
         { label: 'Corrected Na (factor 2.4)', value: r.naBy2_4, units: 'mEq/L' },
-      ]);
+      ], { stats: true });
       adviseAll(o, [['sodium', measuredNa], ['glucose', glucose]]);
       o.appendChild(el('p', { class: 'muted', text: 'Both correction factors are reported per the literature (Katz 1973; Hillier 1999).' }));
       if (deriv) updateDerivationSteps(deriv, META['corrected-sodium'], inputs);
@@ -334,7 +334,7 @@ export const renderers = {
       resultRow(o, [
         { label: 'PAO2', value: r.PAO2, units: 'mmHg' },
         { label: 'A-a gradient', value: r.aaGradient, units: 'mmHg' },
-      ]);
+      ], { stats: true });
       adviseAll(o, [['fio2', fio2], ['paCO2', paco2], ['paO2', pao2]]);
       if (deriv) updateDerivationSteps(deriv, META['aa-gradient'], inputs);
     }, deriv);
