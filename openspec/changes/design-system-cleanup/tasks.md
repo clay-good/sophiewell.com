@@ -32,11 +32,12 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
 
 - [x] 2.1 `views/upload-workbench.js`: render the dropzone card around the existing input;
       worker-parse path, column confirmation, and 50 MB limit unchanged.
-- [ ] 2.2 `views/intake.js` / `views/home-files.js`: the drop front door uses the same dropzone
+- [x] 2.2 `views/intake.js` / `views/home-files.js`: the drop front door uses the same dropzone
       surface and file-chip list; folder/zip routing unchanged.
 - [x] 2.3 Migrate the ~9 upload tiles (`views/group-v15xx.js`, the X12 readers, HPT/TiC/file
       checks) to the shared dropzone. Add the determinate parse-progress state (D6).
-- [ ] 2.4 Confirm no upload tile keeps a bare native input (probe 0.1 clean for file inputs).
+- [x] 2.4 Confirm no upload tile keeps a bare native input (probe 0.1 clean for file inputs).
+      Clean as of wave 2b: the probe reports 0 raw file inputs and 0 inline styles in views.
 
 ## 3. Calculators → modern components (archetype A)
 

@@ -131,7 +131,7 @@ announced.
 |---|---|---|
 | **Answer card** | the computed result | shipped; standardize the big-value + optional status-chip header |
 | **Metric/stat tile** | a single labeled number in a small grid | shipped `.stat` + `statGrid()`; a multi-output tile opts in with `resultRow(o, items, { stats: true })` and its labeled numbers become cells (big value, caption), the first one primary |
-| **Dropzone card** | drag/drop target for the file reader | shipped `.dropzone` + `dropzone()`: dashed border, icon, hint, `drop-active` teal state, input-chip file list, wrapping the native `<input type=file>` |
+| **Dropzone card** | drag/drop target for the file reader | shipped `.dropzone` + `dropzone()`: dashed border, icon, hint, `drop-active` teal state, input-chip file list, wrapping the native `<input type=file>` — every file reader uses it, `intake` keeping its own folder/zip drop handling inside the same card |
 | **Choice / pick card** | disambiguation | shipped (`.pick-card`) |
 | **Disclosure card** | collapsed proof (citations, derivation, receipt) | shipped; keep `<details>` open-on-print |
 

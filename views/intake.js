@@ -72,7 +72,14 @@ export function renderIntake(main, { toolName = (id) => id, onOpen = () => {}, o
   content.appendChild(el('p', { class: 'muted', text: 'Read in this tab. Not uploaded, not kept.' }));
   content.appendChild(el('p', { class: 'muted', text: `Up to ${LIMITS.maxFiles.toLocaleString('en-US')} files at a time and ${LIMITS.maxDepth} folders deep. A zip may expand to 4 GB; a member that expands more than ${LIMITS.maxZipRatio} times is refused.` }));
 
-  const drop = el('div', { class: 'intake-drop', id: 'intake-drop' });
+  // design-system wave 2b: the shared `.dropzone` card (docs/design.md 5), not
+  // the bespoke `.intake-drop` border. The drop HANDLING stays this view's own:
+  // the shared `dropzone()` helper assigns dropped files to one input, and this
+  // front door accepts a folder or a zip, which needs the DataTransfer items
+  // and `entriesFromDrop`'s directory walk.
+  const drop = el('div', { class: 'dropzone intake-drop', id: 'intake-drop' });
+  drop.appendChild(el('span', { class: 'dropzone-icon', 'aria-hidden': 'true', text: '⬆' }));
+  drop.appendChild(el('p', { class: 'dropzone-hint', text: 'Drop files or a folder here, or choose below.' }));
   const files = el('input', { id: 'intake-files', type: 'file', multiple: true });
   drop.appendChild(el('label', { for: 'intake-files', text: 'Choose files' }));
   drop.appendChild(files);
@@ -82,7 +89,6 @@ export function renderIntake(main, { toolName = (id) => id, onOpen = () => {}, o
     drop.appendChild(el('label', { for: 'intake-folder', text: 'Choose a folder' }));
     drop.appendChild(folder);
   }
-  drop.appendChild(el('p', { class: 'muted', text: 'Or drop files or a folder here.' }));
   content.appendChild(drop);
   const status = el('p', { id: 'intake-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
   const results = el('div', { id: 'q-results' });

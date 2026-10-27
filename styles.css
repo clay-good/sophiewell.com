@@ -691,33 +691,9 @@ body {
 .pa-trust-strip li {
   margin: 4px 0;
 }
-.pa-dropzone {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  align-items: center;
-  justify-content: center;
-  padding: 28px 18px;
-  background: var(--bg-secondary);
-  border: 2px dashed var(--border);
-  border-radius: var(--radius-card);
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: background 120ms ease, border-color 120ms ease;
-}
-.pa-dropzone:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
-}
-.pa-dropzone-hot {
-  background: var(--bg-tertiary);
-  border-color: var(--focus-ring);
-}
-.pa-dropzone-headline {
-  margin: 0;
-  font-weight: 600;
-}
+/* The linter's own card, its hot state and its headline retired with wave 2b:
+   the packet drop target is the shared `.dropzone` now. The ceiling line below
+   is the one piece of that card's copy it still carries. */
 .pa-dropzone-sub {
   margin: 0;
   font-size: 0.95rem;
@@ -1252,8 +1228,9 @@ main h1 {
 .receipt-hash { overflow-wrap: anywhere; font-family: var(--font-mono); font-size: 0.9rem; }
 .intake-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .intake-actions button { min-height: 44px; }
-.intake-drop { border: 2px dashed var(--border); border-radius: var(--radius, 6px); padding: var(--space-3); margin: var(--space-3) 0; }
-.intake-drop.drop-active { border-color: var(--accent-pop-strong); }
+/* The card itself is the shared `.dropzone`; what is left here is the spacing
+   and the two choose-a-file labels this front door stacks inside it. */
+.intake-drop { margin: var(--space-3) 0; }
 .intake-drop label { display: block; font-weight: 700; margin-top: var(--space-2); }
 .intake-path { overflow-wrap: anywhere; }
 .upload-workbench h2 { margin: 0 0 var(--space-1); font-size: 1rem; }

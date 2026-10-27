@@ -31,6 +31,7 @@ import { disabledSourceMap } from '../lib/pa/staleness.js';
 import { PA_STALENESS_LEDGER } from '../lib/pa/staleness-ledger.js';
 import { isImageFile, isOcrCandidate, ocrDocument, createOcrRunner } from '../lib/pa/ocr.js';
 import { acceptVia } from '../lib/hand-off.js';
+import { dropzone } from '../lib/components.js';
 
 const MAX_FILE_BYTES = 50 * 1024 * 1024; // 50 MB per file, per spec-v52 §4.3
 const MAX_TOTAL_BYTES = 200 * 1024 * 1024; // 200 MB packet ceiling
@@ -561,17 +562,12 @@ export const renderers = {
     ]) trust.appendChild(el('li', { text: line }));
     root.appendChild(trust);
 
-    const dropzone = el('div', {
-      class: 'pa-dropzone',
-      tabindex: '0',
-      role: 'button',
-      'aria-label': 'Drop PA packet files here, or activate to choose files',
-    });
-    dropzone.appendChild(el('p', { class: 'pa-dropzone-headline',
-      text: 'Drop PDF / DOCX / TXT — or a scanned PDF / image — here, or click to select.' }));
-    dropzone.appendChild(el('p', { class: 'pa-dropzone-sub',
-      text: 'Per-file ceiling 50 MB; per-packet ceiling 200 MB. Scans and images offer on-device OCR.' }));
-
+    // design-system wave 2b: the bespoke card here was a role=button div with
+    // the real file input parked off-screen, so the control a keyboard or
+    // screen reader reached was a div pretending to be a button. The shared
+    // dropzone (docs/design.md 5) keeps the native input as the control and
+    // puts the card around it; drag-and-drop assigns the dropped files to that
+    // input and dispatches `change`, which is the same path the picker takes.
     const picker = el('input', {
       type: 'file',
       id: 'pa-file-picker',
@@ -579,11 +575,13 @@ export const renderers = {
       accept: '.pdf,.docx,.txt,.jpg,.jpeg,.png',
       'aria-label': 'Upload prior-authorization files (PDF, DOCX, TXT, or image)',
     });
-    picker.style.position = 'absolute';
-    picker.style.left = '-9999px';
-    dropzone.appendChild(picker);
+    const zone = dropzone(picker, {
+      hint: 'Drop PDF / DOCX / TXT — or a scanned PDF / image — here, or choose below.',
+    });
+    zone.insertBefore(el('p', { class: 'pa-dropzone-sub',
+      text: 'Per-file ceiling 50 MB; per-packet ceiling 200 MB. Scans and images offer on-device OCR.' }), picker);
 
-    root.appendChild(dropzone);
+    root.appendChild(zone);
 
     const status = el('p', { class: 'pa-status', role: 'status', 'aria-live': 'polite' });
     root.appendChild(status);
@@ -597,29 +595,6 @@ export const renderers = {
       'aria-label': 'Rule findings' });
     root.appendChild(findingsPanel);
 
-    function openPicker() { picker.click(); }
-    dropzone.addEventListener('click', (ev) => {
-      if (ev.target !== picker) openPicker();
-    });
-    dropzone.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Enter' || ev.key === ' ') {
-        ev.preventDefault();
-        openPicker();
-      }
-    });
-    dropzone.addEventListener('dragover', (ev) => {
-      ev.preventDefault();
-      dropzone.classList.add('pa-dropzone-hot');
-    });
-    dropzone.addEventListener('dragleave', () => {
-      dropzone.classList.remove('pa-dropzone-hot');
-    });
-    dropzone.addEventListener('drop', (ev) => {
-      ev.preventDefault();
-      dropzone.classList.remove('pa-dropzone-hot');
-      const files = ev.dataTransfer && ev.dataTransfer.files;
-      if (files && files.length) processFiles(files, results, status, findingsPanel);
-    });
     picker.addEventListener('change', () => {
       if (picker.files && picker.files.length) processFiles(picker.files, results, status, findingsPanel);
     });
