@@ -71,8 +71,8 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       components joined the mobile sample shapes: stat grid, segmented control and status chip
       in `mobile-no-hscroll`, and segmented options plus the dropzone's remove chip in
       `mobile-touch-targets` (both verified to fail when the component shrinks).
-- [ ] 5.3 Add `design-system-cleanup` to `release:check`; fold the shipped requirements back into
-      a `docs/spec-v*.md` per the living-spec convention.
+- [x] 5.3 `check-design-system.mjs` runs in `npm run lint`, which `release:check` runs. The shipped
+      requirements are folded into [docs/spec-v1688.md](../../../docs/spec-v1688.md).
 
 ## Verification checklist (every wave)
 
