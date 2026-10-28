@@ -49,8 +49,10 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
 - [x] 3.2 Short mutually-exclusive enums (sex, two-way formula toggles): convert the `<select>`
       to `.segmented` (D3). Leave long/open lists as selects. Canonical-first-option invariant kept.
 - [x] 3.3 Multi-output tiles: render the secondary numbers as a `.stat` grid (D5).
-      `statGrid()` + the `{ stats: true }` opt-in on `resultRow`; starter set of 9 tiles
-      shipped, rollout continues per tile.
+      `statGrid()` + the `{ stats: true }` opt-in on `resultRow`; 19 tiles shipped over two
+      batches, rollout continues per tile. The probe counts what is left; a candidate qualifies
+      only when EVERY labeled row is a number (a criteria checklist or a yes/no flag is not a
+      stat cell).
 - [ ] 3.4 Zero/partial input: use the shared empty-state and error patterns; keep the
       `answer-said-once` and `one-disclaimer` guarantees.
 

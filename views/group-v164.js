@@ -92,7 +92,7 @@ export const renderers = {
         { label: 'Snellen (6/x)', value: `6/${r.snellen6}` },
         { label: 'Decimal', value: `${r.decimal}` },
         { label: 'logMAR', value: `${r.logmar}` },
-      ]);
+      ], { stats: true });
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);
@@ -114,7 +114,7 @@ export const renderers = {
         { label: 'Systolic OPP', value: `${r.systolicOpp} mmHg` },
         { label: 'Diastolic OPP', value: `${r.diastolicOpp} mmHg` },
         { label: 'MAP', value: `${r.map} mmHg` },
-      ]);
+      ], { stats: true });
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

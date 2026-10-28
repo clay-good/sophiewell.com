@@ -181,7 +181,7 @@ export const renderers = {
         r.cappedReplacementRateMlPerHour != null ? { label: 'Max safe rate (≤ 10 mEq/L/24h ceiling)', value: r.cappedReplacementRateMlPerHour, units: 'mL/h', cls: 'warn' } : null,
         { label: 'Implied Na drop', value: r.impliedNaDropPer24h, units: 'mEq/L/24h' },
         { text: r.safetyNote },
-      ]);
+      ], { stats: true });
     });
     ['w', 'w-unit', 'sex', 'age', 'na', 'tgt', 'hrs'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
