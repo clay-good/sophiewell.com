@@ -67,8 +67,10 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
 
 - [ ] 5.1 `views/pa-lint.js`, `views/rx-match-workbench.js`, `views/record-panel.js`: compose the
       shared chips/cards/dropzone; retire any bespoke chrome.
-- [ ] 5.2 Flip `no-inline-style.spec.js` (0.2) to asserting; add the new components to
-      `mobile-no-hscroll` / `mobile-touch-targets` sample shapes.
+- [x] 5.2 Inline presentation is asserted by `check-design-system.mjs` (0.2). The new
+      components joined the mobile sample shapes: stat grid, segmented control and status chip
+      in `mobile-no-hscroll`, and segmented options plus the dropzone's remove chip in
+      `mobile-touch-targets` (both verified to fail when the component shrinks).
 - [ ] 5.3 Add `design-system-cleanup` to `release:check`; fold the shipped requirements back into
       a `docs/spec-v*.md` per the living-spec convention.
 
