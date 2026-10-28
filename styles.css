@@ -52,6 +52,9 @@
      calm-and-clinical at rest and pops a clean medical teal on touch. */
   --accent-pop: #2dd4bf;
   --accent-pop-strong: #14b8a6;
+  /* Accent text ON the accent tint. Dark mode can use the brand teal itself
+     (5.3:1 on the tint); light mode needs a darker step -- see below. */
+  --accent-pop-text: #14b8a6;
   --accent-pop-tint: rgba(45, 212, 191, 0.14);
   --accent-pop-glow: rgba(45, 212, 191, 0.28);
 
@@ -102,17 +105,27 @@
      AA contrast on the near-white background. */
   --accent-pop: #0d9488;
   --accent-pop-strong: #0f766e;
+  /* #0f766e on the accent tint measures 4.45:1 -- just under the 4.5 AA floor
+     -- so accent text on a tinted surface (the chosen segmented option) takes
+     this darker step instead, at 6.2:1. The brand token itself is unchanged;
+     the same pairing in older hover and assist styles is untouched. */
+  --accent-pop-text: #115e59;
   --accent-pop-tint: rgba(13, 148, 136, 0.10);
   --accent-pop-glow: rgba(13, 148, 136, 0.22);
 
-  /* Severity tokens, darker so chip text keeps AA on the near-white surfaces. */
-  --sev-low-text: #0f766e;
+  /* Severity tokens, darker so chip text keeps AA on the near-white surfaces.
+     Measured on the chip as it actually renders -- its own translucent tint
+     composited over the tinted answer card, not the token colour alone. Read
+     that way the first three were 4.45, 4.12 and 4.10 against the 4.5 AA floor
+     for normal text; these are 6.17, 5.27 and 5.78. Critical was already over
+     (4.99) and is unchanged. */
+  --sev-low-text: #115e59;
   --sev-low-bg: rgba(13, 148, 136, 0.10);
   --sev-low-border: rgba(13, 148, 136, 0.35);
-  --sev-moderate-text: #92650a;
+  --sev-moderate-text: #7c560a;
   --sev-moderate-bg: rgba(146, 101, 10, 0.10);
   --sev-moderate-border: rgba(146, 101, 10, 0.30);
-  --sev-high-text: #c2410c;
+  --sev-high-text: #9a3412;
   --sev-high-bg: rgba(194, 65, 12, 0.10);
   --sev-high-border: rgba(194, 65, 12, 0.30);
   --sev-critical-text: #b91c1c;
@@ -2612,7 +2625,7 @@ a.chip,
 .segmented > *:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
 .segmented [aria-checked="true"],
 .segmented [aria-pressed="true"] {
-  color: var(--accent-pop-strong);
+  color: var(--accent-pop-text);
   background: var(--accent-pop-tint);
 }
 
@@ -2639,6 +2652,13 @@ a.chip,
    accent edge, so the panel still has one obvious first number. */
 .stat--primary { border-color: var(--accent-pop); background: var(--accent-pop-tint); }
 .stat--primary .stat-value { font-size: 2rem; }
+/* The tint lifts this cell's background, and `--text-muted` on it measured
+   3.5:1 in dark mode -- under AA for the caption and the unit, which are both
+   normal-size text. They step up to `--text-secondary` here (5.9:1 dark,
+   10.5:1 light); the plain cells keep the muted caption on their flat
+   background, where it measures 5.1:1. */
+.stat--primary .stat-label,
+.stat--primary .stat-units { color: var(--text-secondary); }
 @media (max-width: 600px) {
   .stat--primary .stat-value { font-size: 1.7rem; }
 }

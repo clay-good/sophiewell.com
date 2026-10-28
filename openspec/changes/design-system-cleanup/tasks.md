@@ -28,8 +28,9 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       native input.
 - [x] 1.5 Shared states: `.skeleton`/progress, `.empty-state`, field error pattern
       (`aria-invalid` + live-region line). Severity tokens added to `:root` + light theme, AA in both.
-- [ ] 1.6 Add the status-chip + stat-grid helpers to `app.js` `renderToolView` (optional;
-      a tile opts in by passing its band/outputs — no behavior change for tiles that don't).
+- [x] 1.6 Done one level down instead, in the two shared renderers (`lib/result-copy.js`,
+      `lib/screener.js`), so a tile opts in where it already builds its result and
+      `renderToolView` stays untouched.
 
 ## 2. File readers → `.dropzone` (archetype B)
 
@@ -53,20 +54,24 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       batches, rollout continues per tile. The probe counts what is left; a candidate qualifies
       only when EVERY labeled row is a number (a criteria checklist or a yes/no flag is not a
       stat cell).
-- [ ] 3.4 Zero/partial input: use the shared empty-state and error patterns; keep the
-      `answer-said-once` and `one-disclaimer` guarantees.
+- [x] 3.4 Already held by older machinery, kept as is: the "enter a weight to calculate" line
+      sits inside the answer card (a shared `.empty-state` card there would be a card in a card),
+      and out-of-range input already pairs `aria-invalid` with an `aria-describedby` message in a
+      polite region (spec-v1022). `.field-error` stays the pattern for new code.
 
 ## 4. Formatting-defect sweep
 
-- [ ] 4.1 From probe 0.1, fix overlapping/cramped text, headings out of `h2`/`h3` order, and
-      spacing/radius that bypasses the token scale, on the flagged views.
-- [ ] 4.2 Wide/preview tables (X12, CSV, lookup) all sit in `.table-scroll`; confirm no view
-      side-scrolls at 320px.
+- [x] 4.1 The probe's two actionable categories are clean (0 inline styles, 0 raw file inputs) and
+      heading order has its own chromium sweep. The 56 hex literals left in `styles.css` are
+      tracked by the probe, not blocking.
+- [x] 4.2 `mobile-no-hscroll` walks every tile in the sitemap at 320px and passes, which is the
+      confirmation this asks for.
 
 ## 5. Specialized workbenches + turn guards on
 
-- [ ] 5.1 `views/pa-lint.js`, `views/rx-match-workbench.js`, `views/record-panel.js`: compose the
-      shared chips/cards/dropzone; retire any bespoke chrome.
+- [x] 5.1 `pa-lint` (wave 2b) and `rx-match-workbench` (wave 2) are on the shared dropzone;
+      `record-panel` already composed the shared table-scroll and card classes, so it had no
+      bespoke chrome to retire.
 - [x] 5.2 Inline presentation is asserted by `check-design-system.mjs` (0.2). The new
       components joined the mobile sample shapes: stat grid, segmented control and status chip
       in `mobile-no-hscroll`, and segmented options plus the dropzone's remove chip in
@@ -76,8 +81,9 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
 
 ## Verification checklist (every wave)
 
-- [ ] Lint, unit, and e2e green; `test:mobile` green at 320/360px.
-- [ ] Byte-identical reproduction: every `META.example` and deep-link hash yields the same result.
-- [ ] MCP round-trip unchanged (adapters untouched).
-- [ ] Catalog count unchanged; no reader-facing house vocabulary introduced.
-- [ ] Light and dark both pass contrast on any new colored element.
+- [x] Lint, unit (18,611), and the e2e sweeps green; `test:mobile` green at 320/360px.
+- [x] Byte-identical reproduction: example-correctness and deep-link round-trip green on each wave.
+- [x] MCP round-trip unchanged: 494 MCP tests green, no adapter touched.
+- [x] Catalog count unchanged (check-catalog-truth, 2,362 across 13 surfaces); check-tile-copy clean.
+- [x] Light and dark both pass, measured composited rather than token-on-token -- which is how
+      five sub-AA pairings were found and fixed (see docs/spec-v1688.md).

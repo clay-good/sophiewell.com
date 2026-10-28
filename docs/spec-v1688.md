@@ -40,6 +40,7 @@ example sweep reads.
 - `scripts/check-design-system.mjs` (in `npm run lint`) — no view styles itself inline, no file input sits off the dropzone card, and `.chip--status` is reachable only through the builder. Checked against a deliberately dirtied view.
 - `mobile-no-hscroll` samples the three new shapes at 320 and 360px; `mobile-touch-targets` holds the segmented options and the remove chip to 44px. Both were checked to fail when the component shrinks.
 - The catalog-wide sweeps — worked-example correctness, `answer-said-once`, and the 320px pass over every tile — were green on each wave.
+- Contrast was measured on the components **as they render**: each one's own translucent tint composited over the tinted answer card, in both themes. Read that way three severity chips and the chosen segmented option were just under the 4.5:1 AA floor for normal text (4.45, 4.12, 4.10, 4.45) although the raw token pairs passed, and the primary stat cell's caption fell to 3.5:1 in dark mode. All five are fixed and now measure 4.95:1 to 11.5:1.
 
 ## What is left
 
