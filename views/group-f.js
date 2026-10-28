@@ -347,7 +347,7 @@ export const renderers = {
         { label: 'Free water in formula', value: fmt(r.freeWaterFromFormulaMl), units: 'mL/day' },
         { label: 'Additional flush needed', value: fmt(r.additionalFlushMl), units: 'mL/day' },
         { label: 'Flush per shift', value: fmt(r.flushPerShiftMlQ6h), units: 'mL q6h' },
-      ]);
+      ], { stats: true });
     });
     ['efw-vol', 'efw-fw', 'efw-goal'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },

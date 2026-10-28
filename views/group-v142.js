@@ -108,7 +108,7 @@ export const renderers = {
         { label: 'Operative score', value: r.opScore },
         { label: 'Predicted 30-day morbidity', value: `${r.morbidity}%` },
         { label: 'Predicted 30-day mortality', value: `${r.mortality}%` },
-      ]);
+      ], { stats: true });
       note(o, r.note);
     }));
     postureNote(root);
@@ -128,7 +128,7 @@ export const renderers = {
         { label: 'Operative score', value: r.opScore },
         { label: 'P-POSSUM predicted mortality', value: `${r.mortality}%` },
         { label: 'Original POSSUM mortality', value: `${r.possumMortality}%` },
-      ]);
+      ], { stats: true });
       note(o, r.note);
     }));
     postureNote(root);

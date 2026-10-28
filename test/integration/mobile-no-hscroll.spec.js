@@ -50,6 +50,13 @@ const STATIC_VIEWS = [
   { hash: '/#peds-dose', label: 'peds-dose (wide reference table)' },
   { hash: '/#anticoag-reversal', label: 'anticoag-reversal (wide reference table)' },
   { hash: '/#sbar-template', label: 'sbar-template (pre-formatted output)' },
+  // The design-system shapes (docs/design.md 5), each on a view that renders
+  // it on load: a stat grid of several numbers, a segmented control in place of
+  // a select, and an answer card carrying a status chip. Each is a new box with
+  // its own minimum width, so each needs a sample of its own here.
+  { hash: '/#burn-fluid', label: 'burn-fluid (stat grid)' },
+  { hash: '/#cockcroft-gault', label: 'cockcroft-gault (segmented control)' },
+  { hash: '/#curb-65', label: 'curb-65 (status chip on the answer)' },
 ];
 
 // 320px is the narrowest mainstream phone (older/smaller Android, iPhone SE

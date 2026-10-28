@@ -92,3 +92,46 @@ test('mobile 360px: a checkbox is at least as large as the text beside it', asyn
   }
   expect(offenders, `checkbox sizing regressions:\n${offenders.join('\n')}`).toEqual([]);
 });
+
+// The design-system components are tapped the same way, so they answer to the
+// same floor (docs/design.md 5 and 7: a chip is a pill of at least 44px).
+// Both met it when they shipped -- a segmented option is 44px tall by its own
+// rule, and the dropzone's remove button is a 44px square -- and both are one
+// padding tweak away from not. The segmented control is the sharper case: it
+// replaced a `<select>`, whose UA target was comfortable for free, with
+// buttons whose target is ours to keep.
+test('mobile 360px: segmented options meet the 44px touch target', async ({ page, browserName }) => {
+  test.skip(browserName !== 'chromium', 'touch-target size is engine-agnostic layout; one engine is a sufficient guard');
+  await page.setViewportSize(PHONE);
+  await page.goto('/#cockcroft-gault', { waitUntil: 'load' });
+
+  const options = page.locator('.segmented [role="radio"]');
+  await expect(options.first()).toBeVisible();
+  const count = await options.count();
+  expect(count, 'cockcroft-gault renders its sex field as a segmented control').toBeGreaterThan(1);
+
+  const offenders = [];
+  for (let i = 0; i < count; i++) {
+    const box = await options.nth(i).boundingBox();
+    if (!box) { offenders.push(`segmented option #${i} has no box`); continue; }
+    if (box.height < MIN - TOL) offenders.push(`segmented option #${i}: height ${box.height.toFixed(1)} < ${MIN}`);
+  }
+  expect(offenders, `segmented options below the ${MIN}px touch target:\n${offenders.join('\n')}`).toEqual([]);
+});
+
+test('mobile 360px: a dropzone file chip can be removed with a thumb', async ({ page, browserName }) => {
+  test.skip(browserName !== 'chromium', 'touch-target size is engine-agnostic layout; one engine is a sufficient guard');
+  await page.setViewportSize(PHONE);
+  await page.goto('/#pa-lint', { waitUntil: 'load' });
+
+  await page.setInputFiles('#pa-file-picker', {
+    name: 'packet.txt', mimeType: 'text/plain', buffer: Buffer.from('Prior authorization request.'),
+  });
+  const remove = page.locator('.dropzone .chip-remove').first();
+  await expect(remove).toBeVisible();
+
+  const box = await remove.boundingBox();
+  expect(box, 'the chosen file renders a removable chip').not.toBeNull();
+  expect(box.height, `chip remove: height ${box.height.toFixed(1)} < ${MIN}`).toBeGreaterThanOrEqual(MIN - TOL);
+  expect(box.width, `chip remove: width ${box.width.toFixed(1)} < ${MIN}`).toBeGreaterThanOrEqual(MIN - TOL);
+});

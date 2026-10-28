@@ -107,6 +107,9 @@ These exist today and are the canonical building blocks. Reuse before you add.
 
 ## 5. Modern card/chip set we are adopting
 
+What of this set is built, and the two rules that decide where each piece is allowed, is recorded in
+[spec-v1688](spec-v1688.md).
+
 A restrained, Material-3-aligned chip/card taxonomy — enough to feel current, not so
 much that the instrument turns decorative. Each entry says what it is and where it is
 allowed. Build these as shared classes in `styles.css`, tokens only.

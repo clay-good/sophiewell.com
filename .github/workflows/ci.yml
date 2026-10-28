@@ -99,14 +99,15 @@ jobs:
       - name: MCP tool tests
         run: npm run test:mcp
 
+  # Pinned, not `ubuntu-latest`: on 2026-10-27 the hosted image rolled to Ubuntu
+  # 26.04 and `playwright install` refused it outright ("Playwright does not
+  # support chromium on ubuntu26.04-x64"), failing every push on an image change
+  # rather than on a code change. The browsers are the one thing in this workflow
+  # that cares which distro it is, so this job names the image it was tested on;
+  # bumping @playwright/test to a release that supports 26.04 is what lets it go
+  # back to `ubuntu-latest`. The comment sits above the job key on purpose: the
+  # release:check coverage test finds a job's end by `  <name>:` + `runs-on`.
   e2e:
-    # Pinned, not `ubuntu-latest`: on 2026-10-27 the hosted image rolled to
-    # Ubuntu 26.04 and `playwright install` refused it outright ("Playwright
-    # does not support chromium on ubuntu26.04-x64"), failing every push on an
-    # image change rather than on a code change. The browsers are the one thing
-    # in this workflow that cares which distro it is, so this job names the
-    # image it was tested on; bumping @playwright/test to a release that
-    # supports 26.04 is what lets this go back to `ubuntu-latest`.
     runs-on: ubuntu-24.04
     needs: unit
     steps:

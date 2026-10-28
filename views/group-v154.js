@@ -182,7 +182,7 @@ export const renderers = {
         { label: 'POMA', value: `${r.score}/28` },
         { label: 'Balance', value: `${r.balance}/16` },
         { label: 'Gait', value: `${r.gait}/12` },
-      ]);
+      ], { stats: true });
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

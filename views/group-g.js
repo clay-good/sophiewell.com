@@ -10,6 +10,22 @@ import * as S4 from '../lib/scoring-v4.js';
 // no computed value, they only color the band the compute already chose.
 // Wells PE/DVT pretest-probability tiers (Wells 2000/2003).
 const WELLS_SEVERITY = { 'Low probability': 'low', 'Moderate probability': 'moderate', 'High probability': 'high' };
+// HEART tiers (Six 2008 / Backus 2013): 0-3 low, 4-6 moderate, 7-10 high.
+function heartSeverity(score) {
+  if (score <= 3) return { severity: 'low', label: 'Low' };
+  if (score <= 6) return { severity: 'moderate', label: 'Moderate' };
+  return { severity: 'high', label: 'High' };
+}
+// TIMI UA/NSTEMI tiers (Antman 2000): 0-2 low, 3-4 intermediate, 5-7 high.
+function timiSeverity(score) {
+  if (score <= 2) return { severity: 'low', label: 'Low' };
+  if (score <= 4) return { severity: 'moderate', label: 'Intermediate' };
+  return { severity: 'high', label: 'High' };
+}
+// BISAP (Wu 2008): the published cut is 3 -- below it low, at or above it high.
+function bisapSeverity(score) {
+  return score >= 3 ? { severity: 'high', label: 'High' } : { severity: 'low', label: 'Low' };
+}
 // CURB-65 severity bands (Lim 2003): 0-1 low, 2 intermediate, 3-5 severe.
 function curbSeverity(score) {
   if (score <= 1) return { severity: 'low', label: 'Low severity' };
@@ -397,7 +413,10 @@ export const renderers = {
       };
       const r = S4.timi(inputs);
       o.appendChild(el('h2', { text: `TIMI ${r.score}` }));
-      o.appendChild(el('p', { text: r.band }));
+      const timiLine = el('p', { text: r.band });
+      const ts = timiSeverity(r.score);
+      timiLine.appendChild(statusChip(ts.severity, ts.label));
+      o.appendChild(timiLine);
       if (deriv) updateDerivationSteps(deriv, META.timi, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
@@ -466,7 +485,11 @@ export const renderers = {
         riskFactors: nv('h-rf'), troponin: nv('h-trop'),
       };
       const r = S4.heart(inputs);
-      o.appendChild(el('h2', { text: `HEART ${r.score}` })); o.appendChild(el('p', { text: r.band }));
+      o.appendChild(el('h2', { text: `HEART ${r.score}` }));
+      const heartLine = el('p', { text: r.band });
+      const hs = heartSeverity(r.score);
+      heartLine.appendChild(statusChip(hs.severity, hs.label));
+      o.appendChild(heartLine);
       if (deriv) updateDerivationSteps(deriv, META.heart, inputs);
     });
     components.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
@@ -792,7 +815,10 @@ export const renderers = {
       };
       const bs = S4.bisap(bisapInputs);
       o.appendChild(el('h2', { text: `Ranson ${r.score} - ${r.band}` }));
-      o.appendChild(el('p', { text: `BISAP ${bs.score} - ${bs.band}` }));
+      const bisapLine = el('p', { text: `BISAP ${bs.score} - ${bs.band}` });
+      const bsv = bisapSeverity(bs.score);
+      bisapLine.appendChild(statusChip(bsv.severity, bsv.label));
+      o.appendChild(bisapLine);
       if (deriv) updateDerivationSteps(deriv, META['ranson-bisap'], bisapInputs);
     });
     [...ad, ...fh, ...b].forEach(([, id]) => document.getElementById(id).addEventListener('change', run));

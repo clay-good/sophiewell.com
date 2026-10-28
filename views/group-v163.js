@@ -72,13 +72,13 @@ export const renderers = {
           { label: 'Post-test (negative)', value: `${r.postNeg} %` },
           { label: 'LR+', value: `${r.lrPos}` },
           { label: 'LR−', value: `${r.lrNeg}` },
-        ]);
+        ], { stats: true });
       } else {
         resultRow(o, [
           { text: r.band },
           { label: 'Post-test probability', value: `${r.posttest} %` },
           { label: 'LR', value: `${r.lr}` },
-        ]);
+        ], { stats: true });
       }
       note(o, r.detail); note(o, r.note);
     }));

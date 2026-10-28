@@ -84,7 +84,7 @@ export const renderers = {
         { label: 'Respiratory rate (normal)', value: `${r.rr} /min` },
         { label: 'Systolic BP (normal)', value: `${r.sbp} mmHg` },
         { label: 'PALS hypotension', value: `SBP < ${r.hypotensionSbp} mmHg` },
-      ]);
+      ], { stats: true });
       note(o, r.note);
     }));
     postureNote(root);

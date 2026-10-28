@@ -10,9 +10,12 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       `<input type="file">` not inside a `.dropzone`, every interpretation band rendered as
       color-only, every inline `style=` attribute in a view, and every spacing/radius value in
       `styles.css` that is not a token. This sizes the later waves.
-- [ ] 0.2 Add `no-inline-style.spec.js` / eslint rule: views emit no inline `style=` and no
-      per-tile `<style>`; all presentation is shared classes + tokens. (Assert off until wave 5.)
-- [ ] 0.3 Add `status-chip-has-text.spec.js`: any `.chip--status` carries a non-empty text label.
+- [x] 0.2 `scripts/check-design-system.mjs` (in `npm run lint`, asserting): views emit no
+      inline `style=` and no per-tile `<style>`, no file input sits off the dropzone card, and
+      no view hand-builds a status chip. All three were clean when it landed.
+- [x] 0.3 `test/unit/design-components.test.js`: `statusChip()` carries the band word, and a
+      band authoring a severity with no label renders no chip rather than a wordless one.
+      The gate above keeps `.chip--status` reachable only through that builder.
 
 ## 1. Shared component classes in `styles.css` (tokens only, no view touched)
 
@@ -46,8 +49,10 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
 - [x] 3.2 Short mutually-exclusive enums (sex, two-way formula toggles): convert the `<select>`
       to `.segmented` (D3). Leave long/open lists as selects. Canonical-first-option invariant kept.
 - [x] 3.3 Multi-output tiles: render the secondary numbers as a `.stat` grid (D5).
-      `statGrid()` + the `{ stats: true }` opt-in on `resultRow`; starter set of 9 tiles
-      shipped, rollout continues per tile.
+      `statGrid()` + the `{ stats: true }` opt-in on `resultRow`; 19 tiles shipped over two
+      batches, rollout continues per tile. The probe counts what is left; a candidate qualifies
+      only when EVERY labeled row is a number (a criteria checklist or a yes/no flag is not a
+      stat cell).
 - [ ] 3.4 Zero/partial input: use the shared empty-state and error patterns; keep the
       `answer-said-once` and `one-disclaimer` guarantees.
 
@@ -62,10 +67,12 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
 
 - [ ] 5.1 `views/pa-lint.js`, `views/rx-match-workbench.js`, `views/record-panel.js`: compose the
       shared chips/cards/dropzone; retire any bespoke chrome.
-- [ ] 5.2 Flip `no-inline-style.spec.js` (0.2) to asserting; add the new components to
-      `mobile-no-hscroll` / `mobile-touch-targets` sample shapes.
-- [ ] 5.3 Add `design-system-cleanup` to `release:check`; fold the shipped requirements back into
-      a `docs/spec-v*.md` per the living-spec convention.
+- [x] 5.2 Inline presentation is asserted by `check-design-system.mjs` (0.2). The new
+      components joined the mobile sample shapes: stat grid, segmented control and status chip
+      in `mobile-no-hscroll`, and segmented options plus the dropzone's remove chip in
+      `mobile-touch-targets` (both verified to fail when the component shrinks).
+- [x] 5.3 `check-design-system.mjs` runs in `npm run lint`, which `release:check` runs. The shipped
+      requirements are folded into [docs/spec-v1688.md](../../../docs/spec-v1688.md).
 
 ## Verification checklist (every wave)
 
