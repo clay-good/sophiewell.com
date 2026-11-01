@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
 Build ID: `70b13828bb3d192b`
-Generated: 2026-11-02T04:51:22.231Z
+Generated: 2026-11-02T07:36:00.474Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -19,7 +19,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `@playwright/test` | `1.59.1` | dev |
 | `eslint` | `9.39.4` | dev |
 | `openlore` | `2.1.3` | dev |
-| `wrangler` | `4.149.0` | dev |
+| `wrangler` | `4.156.0` | dev |
 
 ## Runtime asset hashes (SHA-256)
 
