@@ -18,6 +18,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { classify, looksNotFound, sameAddress } from '../../scripts/check-pa-source-urls.mjs';
 import { secondLook } from '../../scripts/lib/second-look.mjs';
+import { isBotWall404 } from '../../scripts/lib/bot-wall.mjs';
 
 const at = (url) => ({ finalUrl: url, declaredUrl: url });
 
@@ -98,4 +99,26 @@ test('secondLook re-fetches only the dead rows and keeps the later answer', asyn
   // Nothing dead, nothing re-fetched.
   const clean = [{ url: 'a', verdict: 'OK' }];
   assert.equal(await secondLook(clean, (r) => r.verdict === 'DEAD', () => { throw new Error('fetched'); }), clean);
+});
+
+// issue #39: fda.gov answers the runner with a 404 it does not give a reader, on
+// every one of the three URLs either check fetches, on three runs in a row. That
+// is the 403 bot wall with the wrong status code, so it is read the same way.
+test('a 404 from a host that bot-walls with one is BLOCKED, not DEAD', () => {
+  const fda = 'https://www.fda.gov/drugs/national-drug-code-format';
+  assert.equal(classify({ status: 404, finalUrl: fda, declaredUrl: fda }), 'BLOCKED');
+  // Only that host. Every other 404 is still the server's answer about the page.
+  assert.equal(classify({ status: 404, ...at('https://www.cms.gov/a') }), 'DEAD');
+  // And only the status. A live fda.gov page is still judged on where it went.
+  assert.equal(classify({ status: 200, finalUrl: fda, declaredUrl: fda }), 'OK');
+  // A request that never landed is unresolved, not a bot wall.
+  assert.equal(classify({ status: 0, error: 'fetch failed', finalUrl: null, declaredUrl: fda }), 'DEAD');
+});
+
+test('isBotWall404 matches the host and its subdomains, and nothing that merely ends in the name', () => {
+  assert.equal(isBotWall404('https://www.fda.gov/drugs/x'), true);
+  assert.equal(isBotWall404('https://fda.gov/x'), true);
+  assert.equal(isBotWall404('https://notfda.gov/x'), false);
+  assert.equal(isBotWall404('https://fda.gov.example.com/x'), false);
+  assert.equal(isBotWall404('not a url'), false);
 });
