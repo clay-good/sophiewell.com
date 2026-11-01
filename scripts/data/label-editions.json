@@ -3737,7 +3737,7 @@
     "splVersion": 37,
     "publishedOn": "2025-06-05",
     "verifiedOn": "2026-09-26",
-    "validThrough": "2027-09-26",
+    "validThrough": "2027-11-01",
     "sections": {
       "34068-7": "feb166db6ae6a8b279fd0af4fb977ab0aa9e842fd6ca0ea0a7b8e04040d3974e"
     }
@@ -3813,7 +3813,7 @@
     "splVersion": 36,
     "publishedOn": "2025-01-08",
     "verifiedOn": "2026-09-26",
-    "validThrough": "2027-09-26",
+    "validThrough": "2027-11-01",
     "sections": {
       "34068-7": "fe373d68f7c316265d28382e13b3981644329b969dd64afe2801521e9528e3b1"
     }
