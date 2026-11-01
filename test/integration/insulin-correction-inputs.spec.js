@@ -16,7 +16,10 @@ test('insulin correction distinguishes blank, invalid, and tiny meal coverage', 
   await icr.fill('999999');
   await expect(result).toContainText('entered carbohydrate coverage is greater than 0 U but below the 0.1 U display precision');
 
+  // The stat grid prints the value above its label, so read the cell, not an
+  // inline "label: value" string.
+  const mealCoverage = result.locator('.stat').filter({ hasText: 'Meal coverage' }).locator('.stat-value');
   await carbs.fill('');
-  await expect(result).toContainText('Meal coverage: 0 U');
+  await expect(mealCoverage).toHaveText('0 U');
   await expect(result).not.toContainText('provide a positive insulin-to-carb ratio');
 });
