@@ -24,12 +24,12 @@
     "fetchedAt": "2026-09-29"
   },
   "nadac": {
-    "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=as_of_date&conditions[0][value]=2026-10-21&conditions[0][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
-    "edition": "2026-10-21 weekly",
-    "sha256": "fc409ac41f52bcba487319ef665c0556644e2d3746815bf15e25f1b994fdb7b5",
-    "etag": "\"1792925337-gzip\"",
-    "lastModified": "Sun, 25 Oct 2026 10:48:57 GMT",
-    "fetchedAt": "2026-10-25"
+    "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=as_of_date&conditions[0][value]=2026-10-28&conditions[0][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
+    "edition": "2026-10-28 weekly",
+    "sha256": "1c7fa1677c9cdcb985f15012849e2aa8d61edcd95993e3398916b32e25248e14",
+    "etag": "\"1793537073-gzip\"",
+    "lastModified": "Sun, 01 Nov 2026 12:44:33 GMT",
+    "fetchedAt": "2026-11-01"
   },
   "asp": {
     "url": "https://www.cms.gov/files/zip/october-2026-medicare-part-b-payment-limit-files-final.zip",
@@ -49,11 +49,11 @@
   },
   "mcd-articles": {
     "url": "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/current_article.zip",
-    "edition": "2026-10-19 weekly",
-    "sha256": "0817cfacd1988ee2f896f8c6a55278c79a01e4f136e78dd7a8725c2c82c3bfed",
-    "etag": "\"f684c3a273ebd7226d6000e93054a46e:1792634411.669175\"",
-    "lastModified": "Thu, 22 Oct 2026 02:00:12 GMT",
-    "fetchedAt": "2026-10-25"
+    "edition": "2026-10-26 weekly",
+    "sha256": "49bd1336d2486bf997e38d1111a90decdc65c330806499e737a9129e9eae25aa",
+    "etag": "\"5fc9455fd4032b821f6279690a3a80b7:1793239211.693541\"",
+    "lastModified": "Thu, 29 Oct 2026 02:00:12 GMT",
+    "fetchedAt": "2026-11-01"
   },
   "purple-book": {
     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/PurpleBook/2026/purplebook-search-September-data-download.csv",
@@ -81,11 +81,11 @@
   },
   "uspstf": {
     "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation-topics/uspstf-a-and-b-recommendations",
-    "edition": "A and B list read 2026-10-25 (latest release 2025-06)",
-    "sha256": "46d266b8b35811894f128cf5cd0f7e77ac4a9fe640d4e09b68c1437f8841f641",
+    "edition": "A and B list read 2026-11-01 (latest release 2025-06)",
+    "sha256": "3f2a6909dc06d6fb9382132931676bd56cc1d2d85b2602dad389434c8e903214",
     "etag": null,
     "lastModified": null,
-    "fetchedAt": "2026-10-25"
+    "fetchedAt": "2026-11-01"
   },
   "poverty-guidelines": {
     "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines/api/2025/us/1",
@@ -104,19 +104,19 @@
     "fetchedAt": "2026-10-03"
   },
   "aca-ful": {
-    "url": "https://data.medicaid.gov/api/1/datastore/query/ce4cf49b-a21b-5a53-bbc3-509414940847/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=year&conditions[0][value]=2026&conditions[0][operator]=%3D&conditions[1][property]=month&conditions[1][value]=9&conditions[1][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
-    "edition": "2026-09 monthly",
-    "sha256": "755ec3786cf92d5001258c57facb319295f5cf3e3c2db3a481305d54d74d3b22",
-    "etag": "\"1792024570-gzip\"",
-    "lastModified": "Thu, 15 Oct 2026 00:36:10 GMT",
-    "fetchedAt": "2026-10-15"
+    "url": "https://data.medicaid.gov/api/1/datastore/query/ce4cf49b-a21b-5a53-bbc3-509414940847/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=year&conditions[0][value]=2026&conditions[0][operator]=%3D&conditions[1][property]=month&conditions[1][value]=10&conditions[1][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
+    "edition": "2026-10 monthly",
+    "sha256": "96486336f66edb050bd96ab9ee8b439095eb40ca8d60e9e38640f3c91fd5faaf",
+    "etag": "\"1793537147-gzip\"",
+    "lastModified": "Sun, 01 Nov 2026 12:45:47 GMT",
+    "fetchedAt": "2026-11-01"
   },
   "cpic": {
     "url": "https://api.cpicpgx.org/v1/allele?select=genesymbol,name,clinicalfunctionalstatus,activityvalue&order=genesymbol,name",
     "edition": "2026-08-03",
-    "sha256": "2366248136892413677cf02640e7e5c0ad451aea709c512fd52b581ca3bc9237",
+    "sha256": "cf05986205e39c3f64806a7a291ca4144639cdd7b0deaed6ec60b1662688c41a",
     "etag": null,
     "lastModified": null,
-    "fetchedAt": "2026-10-25"
+    "fetchedAt": "2026-11-01"
   }
 }

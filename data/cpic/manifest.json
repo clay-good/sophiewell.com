@@ -6,24 +6,24 @@
   "agency": "CPIC",
   "status": "cc0",
   "cadence": "weekly",
-  "recordCount": 4323,
+  "recordCount": 4367,
   "shardLayout": "shards",
   "shards": [
     {
       "name": "allele.json",
-      "sha256": "489aa1a603c59cca6d0098e36de31167d3bf50765d47db621ce4e19c56a4cd42",
+      "sha256": "6c2d269f946faf8b6b32c80922a20babbabcac87271a9ee2b19cf2d162107c96",
       "records": 1378,
       "bytes": 117489
     },
     {
       "name": "gene.json",
-      "sha256": "75c0484d4160672e8555e107e11dee027f5d6abb621f663cbe7d43bdd119fd9a",
+      "sha256": "469aeca935d8232f00677012a607c1ff3a675de2d8d7738fdb585617bbe8aa9b",
       "records": 19,
       "bytes": 1208
     },
     {
       "name": "guideline.json",
-      "sha256": "aaf9c28d3a20374eeac89dadd166b22e0552590119b4c0077276889dde747330",
+      "sha256": "93cdd4b947e24b5f88cec5ab8e2494cac04e55cc5c497e9e1e775f1e79b06e05",
       "records": 29,
       "bytes": 6023
     },
@@ -35,9 +35,9 @@
     },
     {
       "name": "rec.json",
-      "sha256": "2bb7ee44a567ec1b5fb130efb7f4af781eeea57fefa3ad1d5febcf0afa902ee6",
-      "records": 2115,
-      "bytes": 557214
+      "sha256": "d47bda94b30e90d68595639a427391d1f18a0daf69313f64b77551a34f2a6205",
+      "records": 2159,
+      "bytes": 567388
     },
     {
       "name": "rule.json",
@@ -52,12 +52,12 @@
   "notes": "Allele function, diplotype-to-phenotype rules, recommendations, guidelines and gene-drug pairs read from the CPIC API (CC0). The PharmGKB columns of pair_view are not kept. The edition is the newest CPIC change-log date; the check date is the fetch plus 14 days.",
   "coverage": "full",
   "sourceEdition": "2026-08-03",
-  "fetchedAt": "2026-10-25",
-  "contentChangedAt": "2026-10-15",
-  "expiresOn": "2026-11-08",
-  "nextExpected": "2026-11-01",
-  "sourceSha256": "2366248136892413677cf02640e7e5c0ad451aea709c512fd52b581ca3bc9237",
-  "recordsSha256": "93b2235826db9aee443638c40ba06c0b7b9ba1dd4594a683c3eb8dd3121a26e4",
+  "fetchedAt": "2026-11-01",
+  "contentChangedAt": "2026-11-01",
+  "expiresOn": "2026-11-15",
+  "nextExpected": "2026-11-08",
+  "sourceSha256": "cf05986205e39c3f64806a7a291ca4144639cdd7b0deaed6ec60b1662688c41a",
+  "recordsSha256": "d5d55fbc00fd01b10a049ef1306c098503ac13a9c64e1ce9c6c429fc6e1c935a",
   "recordBounds": {
     "min": 3000,
     "max": 9000
