@@ -91,7 +91,11 @@ On the cadence in spec-v52 §1.3 (monthly payer-policy pulls):
    `sources[].url` and sorts them into OK, MOVED (a redirect, so the ledger
    should carry the destination), BLOCKED (403/429 — a bot wall, fine in a
    browser) and DEAD (404/410, a failed request, or a redirect that lands on a
-   sign-in page). A row is called DEAD only if it is still dead on a second
+   sign-in page). A 404 from a host in `scripts/lib/bot-wall.mjs` is read as
+   BLOCKED too: fda.gov refuses the CI runner with a 404 rather than a 403, and
+   reported three live pages dead on three runs running before it was listed
+   there. Add a host to that list only with the same evidence behind it — the
+   URL verified live from outside CI, more than once, while CI calls it dead. A row is called DEAD only if it is still dead on a second
    look at the end of the run, because one fetch can fail when the page is
    fine. It runs monthly, warn-only,
    in `.github/workflows/citation-cadence.yml`, and never in `npm run lint`:

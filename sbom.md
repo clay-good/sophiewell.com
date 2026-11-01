@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `14c809f0bb117262`
-Generated: 2026-11-01T12:48:56.339Z
+Build ID: `70b13828bb3d192b`
+Generated: 2026-11-02T04:51:22.231Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1089,7 +1089,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/report.js` | 9691 | `d19c531e5ee3d480c96dd548c348b314ebcb37beaa3d5e8f87f70680e783e08d` |
 | `lib/pa/rule-sources.js` | 9357 | `6096fc0fc01b68c012dc97cd18de3e82257cb601cdac1a74ee9421d8e5f2add4` |
 | `lib/pa/rules.js` | 1568416 | `250288eadd4ceaf4a29f4e37aa21358697f34dda3f05fc4acab2923a19b9052b` |
-| `lib/pa/staleness-ledger.js` | 75770 | `ac3f75c20f217b02d23e888742a1f074d75302518245286e83869621271645cf` |
+| `lib/pa/staleness-ledger.js` | 75760 | `2d35f06ef7156659d43031144c115c44c6cde4a7ba2eb435e7f536efd1fef9fa` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/paed-delirium-v1499.js` | 3969 | `c8836be1003c2235bb05d8ce78a07baf922b3039ac798b4bf4a3ae8bb20aca20` |
 | `lib/page-title.js` | 1458 | `575f7d045fda35d9bc5c6a04f70fd76dbf3364a987983ccde90d84fa54b12925` |

@@ -25,6 +25,7 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { secondLook } from './lib/second-look.mjs';
+import { isBotWall404 } from './lib/bot-wall.mjs';
 
 const ROOT = process.cwd();
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36';
@@ -82,6 +83,10 @@ export function sameDestination(a, b) {
 // classify(url, status, finalUrl) -> 'OK' | 'MOVED' | 'BLOCKED' | 'DEAD'. Pure.
 export function classify(url, status, finalUrl) {
   if (status === 403 || status === 429) return 'BLOCKED';
+  // fda.gov refuses the runner with a 404 rather than a 403; a 404 from it says
+  // nothing about whether the page is there (scripts/lib/bot-wall.mjs). A
+  // request that never landed (0) or a 5xx is still unresolved, not a bot wall.
+  if ((status === 404 || status === 410) && isBotWall404(url)) return 'BLOCKED';
   if (status === 0 || status === 404 || status === 410 || status >= 500) return 'DEAD';
   if (status >= 200 && status < 400) return sameDestination(url, finalUrl) ? 'OK' : 'MOVED';
   return 'OK';
