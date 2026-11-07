@@ -14,7 +14,7 @@
       optional field) Levin 1953 or an open secondary source stating Levin's formula (tool 4, population
       fraction).
 - [ ] 1.3 (not read; tool 6 stays gated) Fine 1993 or Fine, Eames and Heymann 2011: threshold and imperfect-vaccine coverage
-      (tool 6).
+      (tool 6). Both re-checked November 7, 2026: neither has a PMC copy; OUP shows a bot challenge to a browser.
 - [x] 1.4 (read October 20, 2026 in NCI SEER*Stat help, after Sahai and Khurshid; shipped in spec-v1663. `nhsn-sir` keeps
       NHSN's own mid-P interval on its report) Exact Poisson limits for observed ÷ expected (Breslow and Day 1987 or Ulm 1990)
       (tool 7 interval; shared with `nhsn-sir`).
