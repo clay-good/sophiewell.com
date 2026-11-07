@@ -56,9 +56,9 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       holds every map to its compute's tier set: a missed tier renders NO chip for exactly the
       patients in it and nothing else fails, so it needs a gate rather than a reading.
       `check-design-system.mjs` now also counts the chips authored on a band item, which it had
-      been reporting as absent (9 direct; 18 in total).
+      been reporting as absent (9 direct; 17 in total).
       Chip batch 5 took the same shape to 14 more (K6, PHQ-15, SAD PERSONS, McMahon, BEWE, OSI,
-      Cobb angle, HHIE-S, SMAST, MELD 3.0, qCSI, elemental iron, phi, Forrest), 32 chips in all.
+      Cobb angle, HHIE-S, SMAST, MELD 3.0, qCSI, elemental iron, phi, Forrest), 31 chips in all.
       The token comes from the tier's RANK inside its own instrument, not from matching the
       tier's word to a token of the same name: a four-tier instrument uses all four tokens so
       its own levels stay distinguishable, and the chip's label always states the authored word
@@ -73,7 +73,7 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       Chip batch 6 worked the probe's new chip list (37 calls over 21 files) and took the 7 that
       are ordinal severities: the Penetration-Aspiration Scale, revised Atlanta, the Agatston
       calcium burden, the Elderly Mobility Scale, Reimers migration, MNA-SF and the Silness-Loe
-      plaque index. 39 chips in all. The rest of the list is a CATEGORY, not a severity, and a
+      plaque index. 38 chips in all. The rest of the list is a CATEGORY, not a severity, and a
       severity chip would invent a claim: a hazardous-waste generator class (by volume), Boston
       criteria for CAA (diagnostic certainty), Spaulding device classes (reprocessing level),
       Bethesda cytology I-VI (six tiers), the HINTS pattern, ARC-HBR's per-criterion major/minor
@@ -88,6 +88,12 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       severity can be "none assigned", SNOT-22 has no named band below 8, GAGS leaves 39
       unassigned) -- a chip there must be absent for exactly those answers, which needs a per-tile
       reading rather than a sweep.
+      Every total above is one lower than first recorded: `check-design-system.mjs` was counting
+      `severityLabel:` TOKENS, and a view may author the pair in a helper with one return per tier
+      (group-v26's `afStrokeSeverity` has three) and spread it into two band items, so the tokens
+      outnumbered the chips. It counts the band ITEM now, which matches the 33 tiles each verified
+      to render exactly one chip: **42 chips, 9 direct and 33 authored on a band.**
+
       **Where the rollout stops, and why it is an owner call.** The mechanical shapes are spent:
       every compute that hands the view an ordinal tier, and the four whose band helper assigns an
       ordered severity word with no unassigned state, now carry a chip. What is left needs a

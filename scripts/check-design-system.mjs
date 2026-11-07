@@ -72,7 +72,15 @@ for (const name of files) {
   // renderer (`resultRow`), which calls statusChip() for it. Those chips are
   // just as real on screen, so the count says so rather than reporting only
   // the direct calls -- a number that reads as the rollout's reach.
-  optInChips += (src.match(/\bseverityLabel:/g) || []).length;
+  //
+  // Counted at the band ITEM, not by counting `severityLabel:` tokens: a view
+  // may author the pair in a helper with one return per tier (group-v26's
+  // afStrokeSeverity has three) and spread it into two band items, so the
+  // tokens outnumber the chips. One item carrying a severity is one chip.
+  for (const item of src.split(/\{\s*(?=text:)/).slice(1)) {
+    const body = item.slice(0, item.search(/\}\s*,|\}\s*\]/) + 1);
+    if (/\bseverity:/.test(body) || /\.\.\.\w*[Ss]everity\s*\(/.test(body)) optInChips += 1;
+  }
 }
 
 if (failures.length) {

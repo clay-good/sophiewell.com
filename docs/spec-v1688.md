@@ -57,6 +57,12 @@ The rollout, not the system: more banded tiles can author a severity, and the re
 results can opt into the grid. `test/integration/design-conformance-probe.spec.js` (`RUN_PROBES=1`)
 counts both, and `openspec/changes/design-system-cleanup/tasks.md` tracks the waves.
 
+Chips on screen: **42, nine built by a direct `statusChip()` call and 33 authored on a band item**
+(one chip per item, confirmed by walking all 33 tiles and asserting exactly one chip with a real
+token and a word). The gate reported one more than that until it stopped counting `severityLabel:`
+tokens and started counting band items: a view may author the pair in a helper with one return per
+tier and spread it into two items, so the tokens outnumbered the chips.
+
 The chip rollout's mechanical shapes are spent as of batch 7: every compute that hands its view an
 ordinal tier carries a chip, as do the four whose band helper assigns an ordered severity word with
 no unassigned state. What is left turns on the instrument rather than the code. Two tiles (SNOT-22,
