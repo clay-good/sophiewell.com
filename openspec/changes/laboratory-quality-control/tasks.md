@@ -1,6 +1,7 @@
 # Tasks — Laboratory quality control and proficiency-testing arithmetic
 
-> **Built October 19, 2026** ([docs/spec-v1658.md](../../../docs/spec-v1658.md)). Unticked items were not done;
+> **Built October 19, 2026** ([docs/spec-v1658.md](../../../docs/spec-v1658.md)); tool 1 followed on
+> November 7, 2026 ([docs/spec-v1691.md](../../../docs/spec-v1691.md)). Unticked items were not done;
 > the build record says why.
 >
 > Originally a docs-only proposal. Confirm the six remaining ids absent (they were on October 19, 2026); re-read

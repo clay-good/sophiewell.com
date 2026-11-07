@@ -7,7 +7,14 @@
 
 ## 1. Read the gated sources
 - [x] 1.1 (read at esp.org; Hardy writes p : 2q : r with q squared = pr) Hardy 1908 (the letter) for the p² : 2pq : q² statement (tool 1).
-- [ ] 1.2 (not read: not open access; tool 2 cites Bayes' theorem as stated arithmetic) The ACMG carrier-screening position statement (2013) and the 2021 ACMG practice
+- [x] 1.2 (the 2021 practice resource IS open access -- PMC8488021, "Screening for autosomal recessive and
+      X-linked conditions during pregnancy and preconception", Genet Med 2021;23:1793 -- read November 7, 2026
+      and applied in spec-v1692. It states the calculation as carrier frequency times one minus the detection
+      rate, which is the NUMERATOR of the posterior this tool computes, so both figures are now printed when
+      they differ materially; and its three cautions -- never zero, impractical after a multiplex panel, and
+      dependent on self-identified ethnicity -- are carried on every result. The 2013 position statement was
+      not separately opened; the 2021 resource is the current one and supersedes it for this arithmetic)
+      The ACMG carrier-screening position statement (2013) and the 2021 ACMG practice
       resource's caution on residual risk (tool 2).
 - [ ] 1.3 (not read; the prior stays reader-typed, no preset) A text stating the 2/3 prior for the sister of an isolated X-linked case and its
       assumptions (tool 4 preset).

@@ -928,7 +928,7 @@ carries the specific date that could change it.
 | smr | Stated arithmetic: observed over expected | US | 2026-10-19 | an identity; no source number | 2027-10-19 |
 | direct-age-standardization | CDC Principles of Epidemiology, 3rd ed., Lesson 3 section 3; NCI SEER 2000 U.S. standard population (19 age groups) | US | 2026-10-19 | the 2000 standard is fixed; SEER page hash recorded in spec-v1659 | 2027-10-19 |
 | hardy-weinberg-carrier | Hardy GH, Science 1908;28:49-50 (the equilibrium p : 2q : r) | International | 2026-10-19 | a 1908 letter; stable | 2027-10-19 |
-| residual-carrier-risk | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity; inputs from the laboratory report | 2027-10-19 |
+| residual-carrier-risk | ACMG practice resource on carrier screening (Genet Med 2021;23:1793) over Bayes' theorem | International | 2026-11-07 | the arithmetic is an identity and the inputs come from the laboratory report, but the tile now also states ACMG's own printed product and its three cautions, so a revision of the practice resource could move the wording it quotes. ACMG is not in ISSUER_PATTERN and this is the only tile citing it | 2027-11-07 |
 | recessive-couple-risk | Stated arithmetic: Mendelian segregation | International | 2026-10-19 | an identity | 2027-10-19 |
 | x-linked-bayes-risk | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity; no prior is built in | 2027-10-19 |
 | coefficient-of-relationship | Wright S, Am Nat 1922;56:330-338 (the path rule) | International | 2026-10-19 | a 1922 paper; stable | 2027-10-19 |

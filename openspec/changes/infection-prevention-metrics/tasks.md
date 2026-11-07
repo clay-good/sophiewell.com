@@ -1,6 +1,7 @@
 # Tasks — Infection prevention and healthcare epidemiology arithmetic
 
-> **Built October 19, 2026** ([docs/spec-v1655.md](../../../docs/spec-v1655.md)). Unticked items were not done;
+> **Built October 19, 2026** ([docs/spec-v1655.md](../../../docs/spec-v1655.md)); tool 5 followed on
+> November 7, 2026 ([docs/spec-v1689.md](../../../docs/spec-v1689.md)). Unticked items were not done;
 > the build record says why.
 >
 > Originally a docs-only proposal. Before building, re-read every window and formula in `design.md` on its
@@ -11,7 +12,11 @@
 ## 1. Read the gated sources
 - [x] 1.1 (read: the live `au-rate-saar` already holds this metric, so tool 4 was dropped) NHSN PSC Manual chapter 11 (AU Option): "antimicrobial day" and "days present"
       definitions and the validity rule; cite chapter and date in tool 4.
-- [ ] 1.2 (not read: bot-check page; tool 5 stays gated) WHO Hand Hygiene Technical Reference Manual (2009): opportunity, action, compliance
+- [x] 1.2 (read November 7, 2026 from WHO IRIS and tool 5 SHIPPED in spec-v1689; the October 19 bot-check was
+      a property of one fetcher, not of the document -- `WebFetch` answers 403 on the IRIS bitstream and curl
+      with a browser user-agent answers 200 with the 34-page PDF. Section III.7 for the formula and the five
+      reporting rules, the definition of terms for opportunity and indication, Figure 8 for the worked
+      example) WHO Hand Hygiene Technical Reference Manual (2009): opportunity, action, compliance
       formula; cite the section in tool 5.
 - [x] 1.3 NHSN PSC Manual chapters 6 and 10: confirm the DUR and rate formulas for urinary
       catheter and ventilator days (tools 2 and 3).

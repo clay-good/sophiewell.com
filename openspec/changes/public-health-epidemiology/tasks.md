@@ -1,6 +1,7 @@
 # Tasks — Public health epidemiology and biostatistics measures
 
-> **Built October 19, 2026** ([docs/spec-v1659.md](../../../docs/spec-v1659.md)). Unticked items were not done;
+> **Built October 19, 2026** ([docs/spec-v1659.md](../../../docs/spec-v1659.md)); tool 9 followed on
+> November 7, 2026 ([docs/spec-v1690.md](../../../docs/spec-v1690.md)). Unticked items were not done;
 > the build record says why.
 >
 > Originally a docs-only proposal. Confirm id absence for all eleven ids before building (all absent on
@@ -17,7 +18,11 @@
 - [x] 1.4 (read October 20, 2026 in NCI SEER*Stat help, after Sahai and Khurshid; shipped in spec-v1663. `nhsn-sir` keeps
       NHSN's own mid-P interval on its report) Exact Poisson limits for observed ÷ expected (Breslow and Day 1987 or Ulm 1990)
       (tool 7 interval; shared with `nhsn-sir`).
-- [ ] 1.5 (not read; tool 9 stays gated) WHO GHE methods paper, current edition: YLL, YLD, no age weighting or discounting
+- [x] 1.5 (read November 7, 2026 and tool 9 SHIPPED in spec-v1690: the current edition is the Global Health
+      Estimates Technical Paper GHE/2026.3, September 2026, freely downloadable from cdn.who.int. Section 2 for
+      DALY = YLL + YLD and both formulas, section 2.1 for the simplified prevalence-based YLD and "No
+      discounting for time or unequal age weights", section 2.2 and Table 2.1 for the standard loss function.
+      Table 2.1's 75-79 cell is mistyped "17,19" in the source and is recorded as 17.19) WHO GHE methods paper, current edition: YLL, YLD, no age weighting or discounting
       (tool 9).
 - [ ] 1.6 (not read; tools 10 and 11 stay gated) Lwanga and Lemeshow 1991: the formulas and one worked example each (tools 10, 11).
 - [x] 1.7 (the 2000 standard read from SEER's table, script-transcribed, page hash recorded; NCHS returned 403) NCHS 2000 US standard population: fetch to disk, hash, manifest row (tool 8).

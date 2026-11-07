@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3a88fdbb21d95f6d`
-Generated: 2026-11-07T10:38:01.617Z
+Build ID: `79c02dabb36746de`
+Generated: 2026-11-07T11:06:35.669Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -892,7 +892,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3064980 | `0c620e5375c538bbd4747b34b296bccfecc51858cd2ecd4a9abfad3f9349c009` |
+| `lib/meta.js` | 3065113 | `db5252d25cd0ffa9e6653423a3e54160081a4bb6f61c6824adbefaf898ef7c36` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1290,7 +1290,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/renalpulm-v249.js` | 9184 | `349e98bc70dfb36948c09fbcd20d59cc17913b0f0bbc21c369374e16a649c41b` |
 | `lib/reportable-condition-urgency-v1395.js` | 44131 | `306a47ba3be13084611ee8a2ce348c27343bb828f359c20b0ae2f7515ca26b36` |
 | `lib/request-letters-v1504.js` | 32800 | `98be5e56c2b0837ccec83ff6a8fa07139e6416086dfa4b667e1411696efef6d6` |
-| `lib/residual-carrier-risk-v1660.js` | 1911 | `103700756363446c185b3b9d7a40f69c8729f535a13767c1e958c8d182ae73ae` |
+| `lib/residual-carrier-risk-v1660.js` | 5711 | `49ecc13b1c299b0fbbfcd92d2dc4c877ac209b91021935ec41e6424a7e1f272b` |
 | `lib/respiratory-maternal-v263.js` | 11737 | `3bdaec61254f30a6dd896797a997700e082d92ddd86672d5de184c5c8eeff0ee` |
 | `lib/result-copy.js` | 4997 | `c53291c0bf8124b247e72c4a641531325fa8c4fa73ca552883b78e87d1259896` |
 | `lib/resus-trauma-v207.js` | 10955 | `52c81c14325f0c9f414760e14953b30ea8758a747e5fcf811d543341de3d6408` |
