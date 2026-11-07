@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/forrest-classification-v809.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Forrest rebleeding-risk tiers (Forrest 1974), as the compute names them.
+const FORREST_SEVERITY = { low: ['low', 'Low'], intermediate: ['moderate', 'Intermediate'], high: ['high', 'High'] };
+
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
@@ -41,7 +44,8 @@ export const renderers = {
       const r = M.forrestClassification({ stigma: val('forrest-stigma') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (FORREST_SEVERITY[r.tier] || [])[0], severityLabel: (FORREST_SEVERITY[r.tier] || [])[1] },
         { label: 'Endoscopic therapy', value: r.endoscopicTherapy },
       ]);
       note(o, r.detail);

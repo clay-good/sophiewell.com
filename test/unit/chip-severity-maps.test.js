@@ -20,6 +20,20 @@ const PAIRS = [
   ['lib/pederson-difficulty-v717.js', 'views/group-v717.js', 'PEDERSON_SEVERITY'],
   ['lib/loe-silness-gingival-index-v722.js', 'views/group-v722.js', 'GI_SEVERITY'],
   ['lib/isi-v726.js', 'views/group-v726.js', 'ISI_SEVERITY'],
+  ['lib/k6-v735.js', 'views/group-v735.js', 'K6_SEVERITY'],
+  ['lib/phq15-v734.js', 'views/group-v734.js', 'PHQ15_SEVERITY'],
+  ['lib/sad-persons-v701.js', 'views/group-v701.js', 'SAD_PERSONS_SEVERITY'],
+  ['lib/mcmahon-rhabdo-v677.js', 'views/group-v677.js', 'MCMAHON_SEVERITY'],
+  ['lib/bewe-v715.js', 'views/group-v715.js', 'BEWE_SEVERITY'],
+  ['lib/osi-onychomycosis-v674.js', 'views/group-v674.js', 'OSI_SEVERITY'],
+  ['lib/cobb-angle-v694.js', 'views/group-v694.js', 'COBB_SEVERITY'],
+  ['lib/hhie-s-v728.js', 'views/group-v728.js', 'HHIE_SEVERITY'],
+  ['lib/smast-v737.js', 'views/group-v737.js', 'SMAST_SEVERITY'],
+  ['lib/meld3-v678.js', 'views/group-v678.js', 'MELD3_SEVERITY'],
+  ['lib/qcsi-v698.js', 'views/group-v698.js', 'QCSI_SEVERITY'],
+  ['lib/elemental-iron-ingested-v687.js', 'views/group-v687.js', 'IRON_SEVERITY'],
+  ['lib/prostate-health-index-v714.js', 'views/group-v714.js', 'PHI_SEVERITY'],
+  ['lib/forrest-classification-v809.js', 'views/group-v809.js', 'FORREST_SEVERITY'],
 ];
 
 const TOKENS = new Set(['low', 'moderate', 'high', 'critical']);
@@ -27,6 +41,16 @@ const read = (p) => readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8')
 
 // The tier literals a compute assigns: `tier: 'x'`, wherever it bands.
 const tiersIn = (src) => new Set([...src.matchAll(/\btier:\s*'([^']+)'/g)].map((m) => m[1]));
+
+// A view reads the tier off whichever field its compute exposes -- `r.tier`
+// for most, `r.category` for the two that name it that way. The lookup field
+// has to be the one the compute actually fills: reading an absent field yields
+// undefined, which renders no chip on every band at once.
+function lookupFieldIn(src, name) {
+  const m = new RegExp(`${name}\\[r\\.([A-Za-z][A-Za-z0-9]*)\\]`).exec(src);
+  assert.ok(m, `${name} is never used to look up a tier`);
+  return m[1];
+}
 
 // The map the view declares, as `{ key: ['token', 'Label'], ... }`.
 function mapIn(src, name) {
@@ -47,6 +71,15 @@ for (const [libPath, viewPath, mapName] of PAIRS) {
 
     const stale = [...map.keys()].filter((k) => !tiers.has(k));
     assert.deepEqual(stale, [], `${mapName} maps ${stale.join(', ')}, which the compute never returns`);
+  });
+
+  test(`${mapName} is looked up on a field ${libPath.split('/').pop()} fills`, () => {
+    const viewSrc = read(viewPath);
+    const field = lookupFieldIn(viewSrc, mapName);
+    const libSrc = read(libPath);
+    // The compute must return that field, assigned from a banding result.
+    const assigns = new RegExp(`^\\s+${field}: `, 'm').test(libSrc);
+    assert.ok(assigns, `${libPath} never returns \`${field}\`, so ${mapName}[r.${field}] is always undefined`);
   });
 
   test(`${mapName} uses only real severity tokens, and every chip carries a word`, () => {

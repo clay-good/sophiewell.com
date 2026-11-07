@@ -10,6 +10,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/cobb-angle-v694.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Cobb-angle curve tiers, as the compute names them (on `category`).
+const COBB_SEVERITY = { none: ['low', 'None'], mild: ['moderate', 'Mild'], moderate: ['high', 'Moderate'], severe: ['critical', 'Severe'] };
+
 function numberField(label, id) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -39,8 +42,8 @@ export const renderers = {
       const r = M.cobbAngle({ angle: val('cobb-angle') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'Category', value: r.category },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (COBB_SEVERITY[r.category] || [])[0], severityLabel: (COBB_SEVERITY[r.category] || [])[1] },
         { label: 'Scoliosis', value: r.isScoliosis ? 'yes (≥ 10°)' : 'no (< 10°)' },
       ]);
       note(o, r.detail);

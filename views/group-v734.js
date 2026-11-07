@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/phq15-v734.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// PHQ-15 somatic-symptom tiers (Kroenke 2002), as the compute names them.
+const PHQ15_SEVERITY = { minimal: ['low', 'Minimal'], low: ['moderate', 'Low'], medium: ['high', 'Medium'], high: ['critical', 'High'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -60,9 +63,9 @@ export const renderers = {
       const r = M.phq15({ q1: val('phq15-q1'), q2: val('phq15-q2'), q3: val('phq15-q3'), q4: val('phq15-q4'), q5: val('phq15-q5'), q6: val('phq15-q6'), q7: val('phq15-q7'), q8: val('phq15-q8'), q9: val('phq15-q9'), q10: val('phq15-q10'), q11: val('phq15-q11'), q12: val('phq15-q12'), q13: val('phq15-q13'), q14: val('phq15-q14'), q15: val('phq15-q15') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (PHQ15_SEVERITY[r.tier] || [])[0], severityLabel: (PHQ15_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/30` },
-        { label: 'Severity', value: r.tier },
       ]);
       note(o, r.detail);
       note(o, r.note);

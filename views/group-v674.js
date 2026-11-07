@@ -11,6 +11,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/osi-onychomycosis-v674.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// OSI severity tiers (Carney 2011), as the compute names them (on `category`).
+const OSI_SEVERITY = { none: ['low', 'None'], mild: ['moderate', 'Mild'], moderate: ['high', 'Moderate'], severe: ['critical', 'Severe'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -57,9 +60,9 @@ export const renderers = {
       const r = M.osiOnychomycosis({ area: val('osi-area'), proximity: val('osi-prox'), bonus: checked('osi-bonus') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (OSI_SEVERITY[r.category] || [])[0], severityLabel: (OSI_SEVERITY[r.category] || [])[1] },
         { label: 'Total', value: `${r.total}/35` },
-        { label: 'Category', value: r.category },
       ]);
       note(o, r.detail);
       note(o, r.note);

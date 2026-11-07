@@ -17,6 +17,14 @@ built against it, and what now holds it in place.
 | Stat grid | `statGrid(cells)`, reached by `resultRow(o, items, { stats: true })` | a tile that answers with several numbers at once |
 | Input chip | `.chip--input` with a remove button | the files chosen or dropped on a dropzone |
 
+Where a compute already returns an ordinal tier at its published cut, the chip is a mapping and
+nothing is authored twice: the view maps that tier to a severity token by its **rank inside its own
+instrument**, and the chip's label states the authored word verbatim. Rank, not name-matching -- a
+four-tier instrument spends all four tokens so its own levels stay distinguishable, which is why the
+ISI's `moderate` tier wears the `high` token while its `severe` tier wears `critical`. A tier whose
+word is not a severity at all is the limit of this: the ABC scale's `high` means high physical
+functioning, so it gets no chip rather than a red one on a reassuring answer.
+
 Two rules decide where a component is allowed. A **status chip's severity is authored at the
 compute's own band or score, never inferred** from a value against a printed range: the band ranges
 are free text and a tile's compute tiers can differ from the tiers its interpretation table prints,

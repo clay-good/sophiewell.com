@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/k6-v735.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// K6 distress tiers (Kessler 2002, 2003), as the compute names them.
+const K6_SEVERITY = { low: ['low', 'Low'], 'mild-moderate': ['moderate', 'Mild to moderate'], serious: ['high', 'Serious'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -51,9 +54,9 @@ export const renderers = {
       const r = M.k6({ q1: val('k6-q1'), q2: val('k6-q2'), q3: val('k6-q3'), q4: val('k6-q4'), q5: val('k6-q5'), q6: val('k6-q6') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (K6_SEVERITY[r.tier] || [])[0], severityLabel: (K6_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/24` },
-        { label: 'Distress', value: r.tier.replace('-', ' ') },
       ]);
       note(o, r.detail);
       note(o, r.note);

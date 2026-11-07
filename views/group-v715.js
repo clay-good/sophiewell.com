@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/bewe-v715.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// BEWE erosive-wear risk tiers (Bartlett 2008), as the compute names them.
+const BEWE_SEVERITY = { none: ['low', 'None'], low: ['moderate', 'Low'], medium: ['high', 'Medium'], high: ['critical', 'High'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -54,9 +57,9 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (BEWE_SEVERITY[r.tier] || [])[0], severityLabel: (BEWE_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/18` },
-        { label: 'Risk', value: r.tier },
       ]);
       note(o, r.detail);
       note(o, r.note);

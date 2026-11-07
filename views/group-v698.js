@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/qcsi-v698.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// qCSI risk tiers (Haimovich 2020), as the compute names them.
+const QCSI_SEVERITY = { low: ['low', 'Low'], intermediate: ['moderate', 'Intermediate'], high: ['high', 'High'], 'very-high': ['critical', 'Very high'] };
+
 function numberField(label, id, step) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -40,7 +43,8 @@ export const renderers = {
       const r = M.qcsi({ respiratoryRate: val('qcsi-rr'), spo2: val('qcsi-spo2'), o2Flow: val('qcsi-o2') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (QCSI_SEVERITY[r.tier] || [])[0], severityLabel: (QCSI_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/12` },
         { label: '24h risk', value: r.risk },
       ]);

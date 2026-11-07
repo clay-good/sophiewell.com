@@ -10,6 +10,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/hhie-s-v728.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// HHIE-S handicap tiers (Ventry and Weinstein 1983), as the compute names them.
+const HHIE_SEVERITY = { none: ['low', 'None'], 'mild-moderate': ['moderate', 'Mild to moderate'], significant: ['high', 'Significant'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -61,9 +64,9 @@ export const renderers = {
       const r = M.hhieS(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (HHIE_SEVERITY[r.tier] || [])[0], severityLabel: (HHIE_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/40` },
-        { label: 'Handicap', value: r.tier.replace('-', ' ') },
       ]);
       note(o, r.detail);
       note(o, r.note);

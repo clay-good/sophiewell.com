@@ -10,6 +10,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/elemental-iron-ingested-v687.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Elemental-iron ingestion tiers, as the compute names them.
+const IRON_SEVERITY = { minimal: ['low', 'Minimal'], 'mild-moderate': ['moderate', 'Mild to moderate'], severe: ['high', 'Severe'], lethal: ['critical', 'Lethal'] };
+
 function numberField(label, id, step) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -54,7 +57,8 @@ export const renderers = {
       const r = M.elementalIronIngested({ tablets: val('iron-tabs'), mgPerTablet: val('iron-mg'), saltType: val('iron-salt'), weightKg: val('iron-wt') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (IRON_SEVERITY[r.tier] || [])[0], severityLabel: (IRON_SEVERITY[r.tier] || [])[1] },
         { label: 'Elemental', value: `${r.elementalMg} mg` },
         { label: 'Dose', value: `${r.dosePerKg} mg/kg` },
       ]);

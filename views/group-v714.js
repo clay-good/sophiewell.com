@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/prostate-health-index-v714.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// phi probability tiers (Catalona 2011), as the compute names them.
+const PHI_SEVERITY = { low: ['low', 'Low'], 'moderate-low': ['moderate', 'Moderate-low'], 'moderate-high': ['high', 'Moderate-high'], high: ['critical', 'High'] };
+
 function numberField(label, id, step) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -40,7 +43,8 @@ export const renderers = {
       const r = M.prostateHealthIndex({ totalPsa: val('phi-total'), freePsa: val('phi-free'), p2psa: val('phi-p2') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (PHI_SEVERITY[r.tier] || [])[0], severityLabel: (PHI_SEVERITY[r.tier] || [])[1] },
         { label: 'phi', value: `${r.phi}` },
         { label: 'Cancer prob.', value: r.probability },
       ]);

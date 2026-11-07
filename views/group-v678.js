@@ -10,6 +10,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/meld3-v678.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// MELD 3.0 waitlist-mortality tiers (Kim 2021), as the compute names them.
+const MELD3_SEVERITY = { lower: ['low', 'Lower'], high: ['moderate', 'High'], 'very-high': ['high', 'Very high'] };
+
 function numberField(label, id, step) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -68,9 +71,9 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (MELD3_SEVERITY[r.tier] || [])[0], severityLabel: (MELD3_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/40` },
-        { label: 'Priority', value: r.tier === 'lower' ? 'lower' : (r.tier === 'high' ? 'higher' : 'very high') },
       ]);
       note(o, r.detail);
       note(o, r.note);

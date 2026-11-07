@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/smast-v737.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// SMAST screen tiers (Selzer 1975), as the compute names them.
+const SMAST_SEVERITY = { none: ['low', 'None'], borderline: ['moderate', 'Borderline'], positive: ['high', 'Positive'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -64,9 +67,9 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (SMAST_SEVERITY[r.tier] || [])[0], severityLabel: (SMAST_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/13` },
-        { label: 'Screen', value: r.tier },
       ]);
       note(o, r.detail);
       note(o, r.note);

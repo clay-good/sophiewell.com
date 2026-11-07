@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/sad-persons-v701.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// SAD PERSONS risk tiers (Patterson 1983), as the compute names them.
+const SAD_PERSONS_SEVERITY = { lower: ['low', 'Lower'], moderate: ['moderate', 'Moderate'], high: ['high', 'High'] };
+
 function checkField(label, id) {
   const wrap = el('p');
   const cb = el('input', { id, type: 'checkbox' });
@@ -51,9 +54,9 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (SAD_PERSONS_SEVERITY[r.tier] || [])[0], severityLabel: (SAD_PERSONS_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/10` },
-        { label: 'Risk', value: r.tier },
       ]);
       note(o, r.factors.length ? `Factors: ${r.factors.join(', ')}.` : 'No factors (score 0).');
       note(o, r.detail);

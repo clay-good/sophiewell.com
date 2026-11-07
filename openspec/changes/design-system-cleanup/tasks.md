@@ -57,6 +57,19 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       patients in it and nothing else fails, so it needs a gate rather than a reading.
       `check-design-system.mjs` now also counts the chips authored on a band item, which it had
       been reporting as absent (9 direct; 18 in total).
+      Chip batch 5 took the same shape to 14 more (K6, PHQ-15, SAD PERSONS, McMahon, BEWE, OSI,
+      Cobb angle, HHIE-S, SMAST, MELD 3.0, qCSI, elemental iron, phi, Forrest), 32 chips in all.
+      The token comes from the tier's RANK inside its own instrument, not from matching the
+      tier's word to a token of the same name: a four-tier instrument uses all four tokens so
+      its own levels stay distinguishable, and the chip's label always states the authored word
+      verbatim, so nothing is restated or reinterpreted. Two of the fourteen read the tier off
+      `category` rather than `tier`, which the guard now checks against the compute: a lookup on
+      a field the compute never fills renders no chip on every band at once.
+      Not taken: ABC scale (its `high` tier is GOOD -- high physical functioning -- so a rank
+      token would color a reassuring answer as severe), effective osmolality (abnormal in both
+      directions, which four ordered tokens cannot say), the Edmonton Frail Scale (five tiers,
+      so a collapse is a judgment call) and MIPI (the `tier` in its shared lib belongs to a
+      different function in the same module).
 - [x] 3.2 Short mutually-exclusive enums (sex, two-way formula toggles): convert the `<select>`
       to `.segmented` (D3). Leave long/open lists as selects. Canonical-first-option invariant kept.
 - [x] 3.3 Multi-output tiles: render the secondary numbers as a `.stat` grid (D5).

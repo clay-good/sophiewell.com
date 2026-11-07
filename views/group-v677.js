@@ -10,6 +10,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/mcmahon-rhabdo-v677.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// McMahon risk tiers (McMahon 2013), as the compute names them.
+const MCMAHON_SEVERITY = { low: ['low', 'Low'], high: ['moderate', 'High'], 'very-high': ['high', 'Very high'] };
+
 function numberField(label, id, step) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -62,9 +65,9 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (MCMAHON_SEVERITY[r.tier] || [])[0], severityLabel: (MCMAHON_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/19` },
-        { label: 'Risk', value: r.tier === 'low' ? 'low' : (r.tier === 'high' ? 'high' : 'very high') },
       ]);
       note(o, r.factors.length ? `Points: ${r.factors.join(', ')}.` : 'No risk points (score 0).');
       note(o, r.detail);
