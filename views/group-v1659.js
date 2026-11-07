@@ -23,11 +23,15 @@ function selectField(root, label, id, options) {
   wrap.appendChild(s);
   root.appendChild(wrap);
 }
-function numField(root, label, id, placeholder) {
+// `extra` carries any further input attribute. A label that names a range has to be
+// enforced by the input itself (test/integration/label-states-a-range.spec.js): the
+// disability weight's "(0-1)" was declared on the MCP field and nowhere in the DOM,
+// which the agent surface accepted and the browser did not.
+function numField(root, label, id, placeholder, extra = {}) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
-  wrap.appendChild(el('input', { id, type: 'number', min: '0', step: 'any', inputmode: 'decimal', placeholder }));
+  wrap.appendChild(el('input', { id, type: 'number', min: '0', step: 'any', inputmode: 'decimal', placeholder, ...extra }));
   root.appendChild(wrap);
 }
 function areaField(root, label, id, placeholder) {
@@ -73,7 +77,7 @@ export const renderers = {
     numField(root, 'Deaths from this cause', 'daly-deaths', 'e.g. 100');
     selectField(root, 'Age range the deaths fall in', 'daly-age', DALY.AGE_RANGES);
     numField(root, 'People living with this cause (prevalent cases)', 'daly-cases', 'e.g. 2000');
-    numField(root, 'Disability weight for the condition (0-1)', 'daly-weight', 'e.g. 0.133');
+    numField(root, 'Disability weight for the condition (0-1)', 'daly-weight', 'e.g. 0.133', { max: '1' });
     tool(root, [['daly-deaths', 'deaths'], ['daly-age', 'ageRange'], ['daly-cases', 'prevalentCases'], ['daly-weight', 'disabilityWeight']], DALY.daly);
   },
   'incidence-prevalence'(root) {
