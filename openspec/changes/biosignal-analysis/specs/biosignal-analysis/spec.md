@@ -2,55 +2,75 @@
 
 ## ADDED Requirements
 
-### Requirement: QRS detection ships only after its paper is read
+### Requirement: Pan-Tompkins QRS detection with the corrected high-pass filter
 
-The catalog SHALL provide `qrs-detect-trace` implementing Pan and Tompkins' detector with every constant
-taken from the 1985 paper, reporting R-peak times, RR intervals and mean heart rate with no rhythm label,
-publishing its sensitivity and positive predictivity on an open annotated database, and SHALL NOT ship
-before the paper has been read.
+The catalog SHALL provide `qrs-detect-trace` running the 1985 detector at 200 samples/s with every published
+constant, building the high-pass filter from the paper's described construction rather than its misprinted
+equation, resampling other rates to 200 samples/s, and reporting R-peak times, RR intervals and mean heart rate with
+no rhythm label.
 
-#### Scenario: Impulse train
-- **WHEN** a synthetic trace sampled at 360 Hz carries a QRS-shaped complex every 1.000 s for 10 s
-- **THEN** 10 R-peaks are reported, 9 RR intervals of 1,000 ms, and a mean heart rate of 60 per minute
+#### Scenario: The high-pass filter is a high-pass
+- **WHEN** the high-pass filter's impulse and frequency response are computed
+- **THEN** the impulse response is zero after sample 32, the gain is 32 in the passband, and the −3 dB point is
+  4.72 Hz
 
-#### Scenario: Gate unmet
-- **WHEN** the paper has not been read
-- **THEN** the tool is listed as specified and not built, with that reason
+#### Scenario: Synthetic trace
+- **WHEN** a trace sampled at 360 Hz carries a QRS-shaped complex every 1.000 s for 10 s
+- **THEN** 10 R-peaks, 9 RR intervals of 1,000 ms and a heart rate of 60 per minute are reported
 
-### Requirement: HRV time domain after the Task Force is read
+### Requirement: QRS detection ships only after validation
 
-The catalog SHALL provide `hrv-time-domain` computing mean NN, SDNN, RMSSD, NN50, pNN50 and the triangular
-index with definitions taken from the 1996 Task Force document, reporting suspect intervals rather than
-removing them silently, and SHALL NOT ship before that document has been read.
+`qrs-detect-trace` SHALL ship only if its aggregate sensitivity and positive predictivity on the non-paced MIT-BIH
+Arrhythmia records, at a 150 ms match tolerance, are both at least 99%, with per-record figures in the build record
+and the aggregate on the page.
 
-#### Scenario: Five intervals
+#### Scenario: Below the line
+- **WHEN** the aggregate sensitivity is 98.5%
+- **THEN** the tool does not ship and the build record says why
+
+### Requirement: HRV time domain by the Task Force definitions
+
+The catalog SHALL provide `hrv-time-domain` computing mean NN, SDNN (sample standard deviation, stated), RMSSD, NN50,
+pNN50 over the total number of NN intervals (the alternative denominator shown), and the triangular index with
+1/128 s bins starting at 0 ms, printing the Task Force's warning against comparing recordings of different length and
+listing, not removing, suspect intervals.
+
+#### Scenario: Five steady intervals
 - **WHEN** the RR intervals are 800, 810, 790, 820 and 800 ms
-- **THEN** RMSSD prints 21.21 ms, NN50 prints 0 and pNN50 prints 0%
+- **THEN** RMSSD prints 21.21 ms, NN50 0 and pNN50 0%
 
-### Requirement: HRV frequency domain after the Task Force is read
+#### Scenario: The pNN50 denominator
+- **WHEN** the RR intervals are 800, 860, 800, 860 and 800 ms
+- **THEN** RMSSD prints 60.00 ms, SDNN 32.86 ms, NN50 4, pNN50 80% by the Task Force denominator with 100% shown as
+  the per-difference alternative, and the triangular index 1.667
 
-The catalog SHALL provide `hrv-frequency-domain` computing VLF, LF, HF, total power, normalized units and
-LF/HF with band edges and method from the Task Force document, stating the resampling rate and window, and
-SHALL NOT ship before that document has been read.
+### Requirement: HRV frequency domain with stated method
 
-#### Scenario: Respiratory modulation
-- **WHEN** an RR series is modulated by a pure 0.25 Hz sinusoid
-- **THEN** the spectral peak falls in the HF band and HF holds most of the modulated power
+The catalog SHALL provide `hrv-frequency-domain` resampling the RR series by natural cubic spline at 4 Hz, detrending,
+estimating power with a 64-second Hann Welch periodogram at 50% overlap, and reporting the Task Force bands, normalized
+units over total power minus VLF, and LF/HF, withholding bands the recording is too short for.
+
+#### Scenario: Known modulation
+- **WHEN** a 5-minute series at mean RR 1,000 ms carries 30 ms of 0.1 Hz and 50 ms of 0.25 Hz modulation
+- **THEN** LF is within 5% of 450 ms², HF within 5% of 1,250 ms², and LF/HF within 5% of 0.36
+
+#### Scenario: Short recording
+- **WHEN** the series is 90 seconds long
+- **THEN** LF and HF print and VLF is withheld with the reason
 
 ### Requirement: EEG band power on the glossary's bands
 
-The catalog SHALL provide `eeg-band-power` computing absolute and relative band power from a Hann-windowed,
-segment-averaged periodogram on the bands of Kane 2017 with the 2019 corrigendum's beta band (delta 0.5 to
-<4 Hz, theta 4 to <8, alpha 8 to 13 inclusive, beta >13 to 30 inclusive, gamma >30 to 80), reporting a band
-above the Nyquist frequency as not measurable.
+The catalog SHALL provide `eeg-band-power` computing absolute and relative power on Kane's bands with the corrected
+beta edge (a 13 Hz bin is alpha, a 30 Hz bin beta), stating the window and resolution, and reporting a band above the
+Nyquist frequency as not measurable.
 
 #### Scenario: Pure alpha
-- **WHEN** a 10 Hz sine is sampled at 256 Hz for 4 seconds
-- **THEN** the peak frequency prints 10 Hz and alpha holds more than 95% of relative power
+- **WHEN** a 10 Hz sine is sampled at 256 Hz for 4 seconds with 2-second segments
+- **THEN** the peak prints 10 Hz and alpha holds 100% of relative power
 
-#### Scenario: The corrected beta edge
-- **WHEN** a 13.5 Hz sine is analyzed
-- **THEN** its power falls in beta, and the page notes that the 2017 text had left 13 to 14 Hz unassigned
+#### Scenario: Leakage across the corrected edge
+- **WHEN** a 13.5 Hz sine is analyzed the same way
+- **THEN** beta prints 83.33% and alpha 16.67%, and the page explains the window's leakage into the 13 Hz bin
 
 #### Scenario: Low sampling rate
 - **WHEN** the sampling rate is 100 Hz
@@ -58,35 +78,50 @@ above the Nyquist frequency as not measurable.
 
 ### Requirement: Ectopy and arrhythmia burden
 
-The catalog SHALL provide `ectopy-burden` computing beat burden as ectopic ÷ total beats × 100, time burden
-as time in arrhythmia ÷ monitored time × 100, and beats per hour, shipping no risk threshold that has not
-been read.
+The catalog SHALL provide `ectopy-burden` computing beat burden, time burden and beats per hour, shipping no risk
+threshold that has not been read.
 
 #### Scenario: PVC burden
 - **WHEN** a 24-hour monitor reports 100,000 beats and 12,000 ventricular ectopic beats
 - **THEN** the burden prints 12.0% and 500 per hour, with no threshold claimed
 
-### Requirement: Pulse oximeter accuracy against the FDA guidance
+### Requirement: Pulse oximeter accuracy under the guidance in force
 
-The catalog SHALL provide `spo2-arms-accuracy` computing Arms = √(Σ(SpO2 − SaO2)² ÷ n) and mean bias from
-paired readings, comparing Arms with the 2013 guidance's typical value for the sensor type, and checking 10
-or more subjects, 200 or more points and at least 2 darkly pigmented subjects or 15% of the pool (whichever
-is larger, rounded up), adding variance components only after Bland and Altman 2007 is read, and failing
-closed when the watched guidance changes.
+The catalog SHALL provide `spo2-arms-accuracy` computing Arms over all pairs, mean bias, Bland and Altman 2007
+within- and between-subject variance and 95% limits, and the 2013 guidance's study-size and pigmentation checks,
+failing closed when a watched guidance page changes.
 
-#### Scenario: Within the typical value
-- **WHEN** four paired differences are +2, −2, +2 and −2 percentage points for a transmittance sensor
-- **THEN** Arms prints 2.00%, bias 0.00, and Arms is within the guidance's typical ≤ 3.0%
+#### Scenario: Small study
+- **WHEN** three subjects have differences (1, 3), (2, 4) and (0, 2)
+- **THEN** Arms prints 2.380, bias 2.000, within-subject variance 2.000, between-subject variance 0, and limits
+  −0.772 to 4.772
+
+#### Scenario: The published worked example
+- **WHEN** the Bland and Altman 2007 example's mean squares and counts are entered
+- **THEN** the limits print −1.33946 to 2.54379
 
 #### Scenario: Pigmentation minimum
 - **WHEN** a study has 20 subjects, 2 of them darkly pigmented
-- **THEN** the minimum prints 3 (15% of 20) and the study is reported as short by one
+- **THEN** the minimum prints 3 and the study is reported as short by one
 
-### Requirement: Carotid-femoral PWV after the consensus is read
+### Requirement: The 2025 draft is shown as a draft
 
-The catalog SHALL provide `pwv-carotid-femoral` computing PWV from path length and transit time with the
-path-length rule from Van Bortel 2012, and SHALL NOT ship before that document has been read.
+`spo2-arms-accuracy` SHALL show the January 2025 draft's countable criteria labeled "draft, not in force", SHALL
+NOT compute its confidence-interval or hypothesis-test criteria, and SHALL NOT print a draft pass.
 
-#### Scenario: Direct distance
-- **WHEN** the direct distance is 600 mm, the transit time 60 ms, and the consensus confirms the 0.8 factor
-- **THEN** PWV prints 8.0 m/s with the path method named
+#### Scenario: Draft panel
+- **WHEN** a study of 150 participants is checked against the draft
+- **THEN** each Monk group's minimum prints 38, point Arms is compared with 3%, and no overall draft verdict prints
+
+### Requirement: Carotid-femoral PWV by method
+
+The catalog SHALL provide `pwv-carotid-femoral` computing PWV from path length and transit time by the 80% or
+subtraction method, showing the 10 m/s reference value only beside an 80%-method result.
+
+#### Scenario: 80% method
+- **WHEN** the direct distance is 600 mm and the transit time 60 ms
+- **THEN** PWV prints 8.0 m/s with the 10 m/s reference value quoted
+
+#### Scenario: Subtraction method
+- **WHEN** the distances are 700 mm and 150 mm and the transit time 60 ms
+- **THEN** PWV prints 9.17 m/s and no reference value is shown

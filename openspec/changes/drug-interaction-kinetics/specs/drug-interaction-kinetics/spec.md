@@ -22,6 +22,10 @@ with 0.01.
 - **WHEN** kinact is 0.05/min, KI,u 1 µM, Cmax,u 0.1 µM and the enzyme is hepatic CYP3A4
 - **THEN** kdeg prefills 0.00032/min, kobs prints 0.01667/min and the ratio 53.08, not excluded
 
+#### Scenario: Exactly at a cutoff
+- **WHEN** Cmax,u ÷ Ki,u is exactly 0.02
+- **THEN** the risk is reported as not excluded, because M12's condition is strictly below 0.02
+
 #### Scenario: Protein binding floor
 - **WHEN** fu,p 0.002 is entered and the validation box is not ticked
 - **THEN** 0.01 is used and the page says so
@@ -37,11 +41,18 @@ entered, printing inhibition-only, induction-only and combined results.
 - **WHEN** fm is 0.9, Fg is 1, [I]h is 1 µM and Ki is 0.5 µM, with no other mechanism
 - **THEN** Ah is 0.3333 and AUCR prints 2.5, above 1.25
 
+#### Scenario: Time-dependent inhibition in the liver
+- **WHEN** fm is 0.9, [I]h 1 µM, kinact 0.05/min, KI 1 µM and kdeg 0.00032/min
+- **THEN** Bh prints 0.01264 and AUCR 8.979
+
+#### Scenario: Concentrations estimated with M12's defaults
+- **WHEN** fu,p is 0.1, Cmax 2 µM, the dose 100 mg with molecular weight 500, and M12's defaults are used
+- **THEN** [I]h prints 1.437 µM and [I]g 66.67 µM, with each default labeled
+
 #### Scenario: Masking
-- **WHEN** inhibition and induction are both entered and the combined AUCR falls between 0.80 and 1.25
-  while inhibition alone does not
-- **THEN** all three runs print and the page shows M12's warning that a combined prediction can mask
-  either effect
+- **WHEN** liver Ki is 0.5 µM at 1 µM with induction Emax 4 and EC50 1 µM, fm 0.9
+- **THEN** inhibition alone prints 2.500, induction alone 0.3571, combined 1.000, and the page shows M12's
+  warning that a combined prediction can mask either effect
 
 ### Requirement: Strength class from an observed AUC ratio
 
@@ -77,24 +88,54 @@ result, never stating that a pair is safe or giving an action, and stopping when
 - **WHEN** a drug on the list is not in Table 1
 - **THEN** it reads "not on this edition of FDA's examples", not "no interaction"
 
+#### Scenario: Salt, strength and combination rows
+- **WHEN** the list holds "Clarithromycin 500 mg tablet" and "lopinavir"
+- **THEN** the first matches clarithromycin and the second matches FDA's "lopinavir and ritonavir" row, which
+  is quoted as FDA wrote it
+
+#### Scenario: Builder refuses a broken parse
+- **WHEN** the weekly fetch parses more than 10% fewer Table 1 rows than the last edition, or cannot find
+  the table whose first header is "Drug or Other Substance"
+- **THEN** the builder fails, keeps the last good edition with its expiry unchanged, and the weekly summary
+  says why
+
 #### Scenario: Stale data
 - **WHEN** the last successful fetch is more than 14 days old
 - **THEN** the tool stops answering from the table and says when it was last fetched
 
-### Requirement: CR-IR prediction ships only after its paper is read
+### Requirement: CR-IR prediction from reader values
 
-The catalog SHALL provide `ddi-cr-ir-predict` only after Ohno 2007 has been read for its equations and
-validity range.
+The catalog SHALL provide `ddi-cr-ir-predict` computing AUCR = 1 ÷ (1 − CR × IR) for CYP3A4 inhibition and
+1 ÷ (1 + CR × IC) for induction from reader-entered values, back-calculating CR or IR from an observed ratio,
+printing the authors' validation spread, asking for the inhibitor dose an IR belongs to, and refusing CR × IR
+of 1 or more and any CR outside 0 to 1.
 
-#### Scenario: Gate unmet
-- **WHEN** the paper has not been read
-- **THEN** the tool is listed as specified and not built, with that reason
+#### Scenario: Inhibition
+- **WHEN** CR is 0.92 and IR 0.92
+- **THEN** AUCR prints 6.510 with the sentence that 83% of the authors' predictions fell within 67-150% of
+  the observed increase
+
+#### Scenario: Induction
+- **WHEN** CR is 0.9 and IC 7.7
+- **THEN** AUCR prints 0.1261
+
+#### Scenario: Back-calculated contribution ratio
+- **WHEN** a substrate's AUC rose 10-fold with an inhibitor whose IR is 0.92
+- **THEN** CR prints 0.9783
+
+#### Scenario: Method limit
+- **WHEN** CR and IR are both 1
+- **THEN** the tool refuses and names the limit of the equation
 
 ### Requirement: Enzyme recovery by first-order turnover
 
 The catalog SHALL provide `enzyme-recovery-time` computing E(t) = 1 + (E0 − 1) × e^(−kdeg × t) with M12
 Table 6 prefills, the time to 50% and 90% recovery, and a note that the precipitant's own washout comes
 first.
+
+#### Scenario: After induction
+- **WHEN** hepatic CYP3A4 starts at three times baseline and 72 hours have passed
+- **THEN** the level prints 150.2% of baseline
 
 #### Scenario: CYP3A4 after full inactivation
 - **WHEN** the enzyme is hepatic CYP3A4 and the starting level is 0
@@ -110,6 +151,10 @@ printing the on-time regimen beside it.
 - **WHEN** 1,000 mg IV bolus doses are given at 0 and 15 hours (the second due at 12), Vd is 50 L and the
   half-life 12 hours
 - **THEN** the level at 24 hours prints 16.89 mg/L, beside 15.00 mg/L had the second dose been on time
+
+#### Scenario: Oral absorption equal to elimination
+- **WHEN** a 500 mg oral dose has F 1, Vd 40 L, half-life 6 hours and ka equal to the elimination constant
+- **THEN** the level at 3 hours prints 3.063 mg/L from the limit form, with no division by zero
 
 ### Requirement: Two-compartment parameters
 

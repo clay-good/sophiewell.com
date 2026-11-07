@@ -1,37 +1,45 @@
 # Tasks — Variant interpretation arithmetic and private VCF reading
 
-> Before building, confirm the four ids are absent from the catalog (they were on November 7, 2026) and
-> read the two gated items: Richards 2015 on changing a criterion's strength, and Whiffin 2017's full and
-> recessive equations.
->
-> Ids: `id: 'acmg-variant-classify'`, `id: 'max-credible-allele-frequency'`, `id: 'vcf-variant-lookup'`,
-> `id: 'vcf-qc-summary'`.
+> Docs-only proposal, hardened November 7, 2026. No tool is build-gated. Confirm the four ids are still absent
+> (`acmg-variant-classify`, `max-credible-allele-frequency`, `vcf-variant-lookup`, `vcf-qc-summary`; they were on
+> November 7, 2026), then re-read the sources in `design.md` and diff.
 
-## 1. Read the gated sources
-- [ ] 1.1 Richards 2015, full text: the sentence on adjusting a criterion's strength by professional
-      judgment (tool 1 strength picker). Without it, codes stay at default strength.
-- [ ] 1.2 Whiffin 2017: transcribe the dominant equation with the maximum genetic contribution term and the
-      recessive equation from the published article or the authors' online calculator, and re-derive the
-      HCM example (4.0 × 10⁻⁵; ceiling 9 at AN 121,412) and the PCD example (ceiling 322) (tool 2).
+## 1. Re-read at build
+- [ ] 1.1 Richards Table 5 and the strength-change sentence; ClinGen SVI pages for any newer default-strength change.
+- [ ] 1.2 Whiffin equation images 1-4 and the authors' calculator source (compare with commit 3ef11c37).
+- [ ] 1.3 SAMv1 §4.1 (BGZF) and VCFv4.5 §1.
 
-## 2. Lib
-- [ ] 2.1 `lib/acmg-vNNNN.js`: the 2015 rule engine naming the rule that fired, the 2020 points and bands,
-      the 2018 posterior.
-- [ ] 2.2 `lib/variant-freq-vNNNN.js`: maxAF and the Poisson quantile.
-- [ ] 2.3 `lib/vcf-read-vNNNN.js`: streaming line reader with gzip, header checks, FORMAT-keyed sample
-      parsing, zygosity, allele balance, Ti/Tv.
-- [ ] 2.4 Unit tests: every scenario in the spec delta; every Table 5 rule fires on a minimal code set;
-      point bands at −7, −6, −1, 0, 5, 6, 9, 10; the VCFv4.5 §1.1 example as a fixture; a multi-member
-      BGZF fixture; an unsorted fixture.
+## 2. Shared reading code (lands first; it fixes a live defect)
+- [ ] 2.1 `lib/bgzf.js`: split at the `BC` subfield, decode each block with `DecompressionStream`, report a missing
+      EOF marker, refuse unsplittable multi-member gzip. Pure; runs in the worker and in Node.
+- [ ] 2.2 `lib/intake.js` uses it in place of `gunzipBlob` for `.gz` members; `gunzipBlob` stays for single-member
+      callers or is retired if none remain.
+- [ ] 2.3 `lib/file-kinds.js`: a `vcf` kind on a first line `##fileformat=VCFv`, routed to tools 3 and 4.
+- [ ] 2.4 Tests: multi-block BGZF with and without the EOF marker, single-member gzip, a two-member gzip without
+      `BC`, and a regression test that the intake inventory now recognizes a `.vcf.gz`; run the same tests under
+      Node and in the Playwright browser suite.
 
-## 3. Views, META, agents
-- [ ] 3.1 Group E renderers beside the genetic counseling tools; tools 3 and 4 use the file-intake drop
-      target.
-- [ ] 3.2 META: citations with PMC ids; examples reproduce the spec scenarios.
-- [ ] 3.3 MCP adapters; synonyms: "ACMG", "AMP", "variant classification", "pathogenic", "likely
-      pathogenic", "VUS", "benign", "Bayesian points", "allele frequency", "too common", "gnomAD filter",
-      "VCF", "genotype", "zygosity", "allele balance", "Ti/Tv".
+## 3. Lib
+- [ ] 3.1 `lib/acmg-vNNNN.js`: the 2015 rule engine at applied strengths naming the rule that fired, points and
+      bands, posterior, the SVI notation.
+- [ ] 3.2 `lib/variant-freq-vNNNN.js`: both maxAF forms and the Poisson quantile (sum terms until the CDF reaches
+      0.95; λ up to the largest realistic AN × AF without overflow, tested at λ 300).
+- [ ] 3.3 `lib/vcf-read-vNNNN.js`: streaming line reader, header checks, FORMAT-keyed sample parsing, zygosity,
+      allele balance, Ti/Tv, sorted-file early stop, progress and cancel.
+- [ ] 3.4 Unit tests: every vector in `design.md` **Tests**; every Table 5 rule on a minimal code set; point bands
+      at −7, −6, −1, 0, 5, 6, 9, 10; the VCFv4.5 §1.1 example as a fixture.
 
-## 4. Ship
-- [ ] 4.1 Count surfaces; `node scripts/build-search-corpus.mjs`; `node scripts/build-unbuilt-index.mjs`;
+## 4. Views, META, agents
+- [ ] 4.1 Group E renderers beside the genetic counseling tools; tools 3 and 4 use the file-reader archetype
+      (`docs/design.md` §3 B) with a progress line and a cancel button.
+- [ ] 4.2 META: citations with PMC ids and the two GitHub sources with their commits; examples reproduce the spec
+      scenarios.
+- [ ] 4.3 MCP: adapters for tools 1 and 2; tools 3 and 4 added to `ANALYZABLE` in `mcp/file-tools.js`. Synonyms:
+      "ACMG", "AMP", "variant classification", "pathogenic", "likely pathogenic", "VUS", "benign", "Bayesian
+      points", "allele frequency", "too common", "gnomAD filter", "FAF", "VCF", "genotype", "zygosity", "allele
+      balance", "Ti/Tv".
+- [ ] 4.4 Measure tools 3 and 4 on a real public whole-genome VCF; record throughput in the build record.
+
+## 5. Ship
+- [ ] 5.1 Count surfaces; `node scripts/build-search-corpus.mjs`; `node scripts/build-unbuilt-index.mjs`;
       `npm run release:check`; CHANGELOG; `docs/spec-vNNNN.md` build record.

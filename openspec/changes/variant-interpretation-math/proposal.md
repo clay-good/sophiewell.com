@@ -1,7 +1,8 @@
 # Change: Variant interpretation arithmetic and private VCF reading
 
-**Status:** Proposed November 7, 2026. Docs-only: no catalog-count or code change. Four tools; parts of two
-are build-gated.
+**Status:** Proposed November 7, 2026; hardened the same day (both partial gates resolved from read sources,
+compressed-file reading tested in Chrome and Node, every test vector recomputed). Docs-only: no catalog-count or
+code change. Four tools; none is build-gated.
 **Audience:** the genetic counselor, the clinical laboratory geneticist and variant scientist, the trainee
 learning ACMG/AMP classification, and a person holding their own VCF who will not upload it anywhere.
 
@@ -33,8 +34,8 @@ Sources read on November 7, 2026:
 
 | # | id | Name | Source |
 |---|---|---|---|
-| 1 | `acmg-variant-classify` | ACMG/AMP Variant Class From Evidence Codes: 2015 Rules, Points and Posterior | Richards 2015 Table 5; Tavtigian 2018 and 2020 (read) |
-| 2 | `max-credible-allele-frequency` | Maximum Credible Allele Frequency and Allele-Count Ceiling (Whiffin) | Whiffin 2017 (read; dominant form; recessive form and one term build-gated) |
+| 1 | `acmg-variant-classify` | ACMG/AMP Variant Class From Evidence Codes: 2015 Rules, Points and Posterior | Richards 2015 Table 5 and strength-change text; Tavtigian 2018 and 2020; ClinGen SVI notation and PM2 note (read) |
+| 2 | `max-credible-allele-frequency` | Maximum Credible Allele Frequency and Allele-Count Ceiling (Whiffin) | Whiffin 2017 equation images and examples, cross-checked against the authors' manuscript source and calculator (read) |
 | 3 | `vcf-variant-lookup` | Genotype, Zygosity and Allele Balance at a Position in My VCF | VCFv4.5 (read) |
 | 4 | `vcf-qc-summary` | VCF Summary: Variant Counts, Ti/Tv, Heterozygous to Homozygous-Alternate Ratio | VCFv4.5 (read); arithmetic identity |
 
@@ -54,11 +55,20 @@ the reader brings the gnomAD frequency, the evidence and the file.
   result.
 - It does not decide which evidence codes apply. That is the curator's judgment; the tool combines what the
   curator selected.
-- Nothing is uploaded. Files are read with the browser's own file and decompression APIs, line by line.
+- Nothing is uploaded. Files are streamed with the browser's own file and decompression APIs.
+
+## A defect this surfaced
+
+`.vcf.gz` files are BGZF (many gzip members). The browser's and Node's `DecompressionStream` decode only one
+member and throw on the rest (tested November 7, 2026), so the catalog's shared `gunzipBlob` cannot read any
+multi-member gzip today. This change specifies one shared block-by-block reader that fixes it for the intake
+inventory as well as the new tools; see `design.md`, **Compressed files**.
 
 ## Impact
 
 - New capability `variant-interpretation-math`.
 - Backfills (links only): `bayes-risk-table` links tool 1's posterior; `hardy-weinberg-carrier` links tool 2.
-- MCP: one adapter per tool. Tools 3 and 4 follow the existing file-tool rule in `mcp/README.md`: read a
-  file only inside a directory the client shares, return results and a hash, never the file.
+- Shared code: a BGZF block reader used by `lib/intake.js`, tools 3 and 4 and `mcp/file-tools.js`; a new `vcf`
+  kind in `lib/file-kinds.js`.
+- MCP: adapters for tools 1 and 2; tools 3 and 4 join `analyze_file`, which reads a file only inside a directory
+  the client shares and returns results and a hash, never the file.
