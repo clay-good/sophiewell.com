@@ -11,6 +11,10 @@ export default [
       // and noisy (e.g. pdf.js uses constructor-style Function references
       // that eslint forbids in first-party code).
       "vendored/**",
+      // An agent worktree under .claude/ carries its own copy of `vendored/`
+      // and `dist/`, and the anchored globs above only cover the repo root --
+      // so the whole scratch tree is excluded. Nothing tracked lives here.
+      ".claude/**",
       "README.md",
       "CHANGELOG.md",
       "sbom.json",
