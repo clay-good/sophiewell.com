@@ -11,6 +11,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/atlanta-pancreatitis-v445.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Revised Atlanta severity (Banks 2013), as the compute names it.
+const ATLANTA_SEVERITY = { mild: ['low', 'Mild'], 'moderately severe': ['moderate', 'Moderately severe'], severe: ['high', 'Severe'] };
+
 function select(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -45,8 +48,8 @@ export const renderers = {
     wire(['atlanta-sev'], () => safe(o, () => {
       const r = M.atlantaPancreatitis({ severity: val('atlanta-sev') });
       resultRow(o, [
-        { text: r.band },
-        { label: 'Severity', value: r.bandLabel },
+        { text: r.band,
+          severity: (ATLANTA_SEVERITY[r.category] || [])[0], severityLabel: (ATLANTA_SEVERITY[r.category] || [])[1] },
       ]);
       note(o, r.note);
     }));

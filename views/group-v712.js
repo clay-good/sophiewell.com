@@ -10,6 +10,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/mna-sf-v712.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// MNA-SF nutrition tiers (Rubenstein 2001), as the compute names them.
+const MNA_SEVERITY = { normal: ['low', 'Normal'], 'at-risk': ['moderate', 'At risk'], malnourished: ['high', 'Malnourished'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -57,9 +60,9 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (MNA_SEVERITY[r.tier] || [])[0], severityLabel: (MNA_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/14` },
-        { label: 'Status', value: r.tier.replace('-', ' ') },
       ]);
       note(o, r.detail);
       note(o, r.note);

@@ -10,6 +10,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/elderly-mobility-scale-v689.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Elderly Mobility Scale tiers (Smith 1994), as the compute names them.
+const EMS_SEVERITY = { independent: ['low', 'Independent'], borderline: ['moderate', 'Borderline'], dependent: ['high', 'Dependent'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -58,9 +61,9 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (EMS_SEVERITY[r.tier] || [])[0], severityLabel: (EMS_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/20` },
-        { label: 'Mobility', value: r.tier },
       ]);
       note(o, r.detail);
       note(o, r.note);

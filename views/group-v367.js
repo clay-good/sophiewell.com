@@ -11,6 +11,10 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/pas-swallow-v367.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Penetration-Aspiration Scale levels (Rosenbek 1996), as the compute names them:
+// no invasion, penetration, aspiration, then aspiration with no cough response.
+const PAS_SEVERITY = { 'no airway invasion': ['low', 'No invasion'], penetration: ['moderate', 'Penetration'], aspiration: ['high', 'Aspiration'], 'silent aspiration': ['critical', 'Silent aspiration'] };
+
 function select(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -50,7 +54,8 @@ export const renderers = {
     wire(['pas-score'], () => safe(o, () => {
       const r = M.pasSwallow({ score: val('pas-score') });
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (PAS_SEVERITY[r.category] || [])[0], severityLabel: (PAS_SEVERITY[r.category] || [])[1] },
         { label: 'Score', value: r.bandLabel },
       ]);
       note(o, r.note);

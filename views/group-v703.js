@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/reimers-migration-percentage-v703.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Reimers migration tiers (Reimers 1980), as the compute names them.
+const REIMERS_SEVERITY = { normal: ['low', 'Normal'], subluxated: ['moderate', 'Subluxated'], dislocated: ['high', 'Dislocated'] };
+
 function numberField(label, id, step) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -39,7 +42,8 @@ export const renderers = {
       const r = M.reimersMigrationPercentage({ lateralWidth: val('reimers-a'), totalWidth: val('reimers-b') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (REIMERS_SEVERITY[r.tier] || [])[0], severityLabel: (REIMERS_SEVERITY[r.tier] || [])[1] },
         { label: 'Migration', value: `${r.migrationPercentage}%` },
       ]);
       note(o, r.detail);

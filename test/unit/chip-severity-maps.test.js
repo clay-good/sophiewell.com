@@ -34,13 +34,24 @@ const PAIRS = [
   ['lib/elemental-iron-ingested-v687.js', 'views/group-v687.js', 'IRON_SEVERITY'],
   ['lib/prostate-health-index-v714.js', 'views/group-v714.js', 'PHI_SEVERITY'],
   ['lib/forrest-classification-v809.js', 'views/group-v809.js', 'FORREST_SEVERITY'],
+  ['lib/pas-swallow-v367.js', 'views/group-v367.js', 'PAS_SEVERITY'],
+  ['lib/atlanta-pancreatitis-v445.js', 'views/group-v445.js', 'ATLANTA_SEVERITY'],
+  ['lib/cac-agatston-v668.js', 'views/group-v668.js', 'CAC_SEVERITY'],
+  ['lib/elderly-mobility-scale-v689.js', 'views/group-v689.js', 'EMS_SEVERITY'],
+  ['lib/reimers-migration-percentage-v703.js', 'views/group-v703.js', 'REIMERS_SEVERITY'],
+  ['lib/mna-sf-v712.js', 'views/group-v712.js', 'MNA_SEVERITY'],
+  ['lib/silness-loe-plaque-index-v723.js', 'views/group-v723.js', 'PLI_SEVERITY'],
 ];
 
 const TOKENS = new Set(['low', 'moderate', 'high', 'critical']);
 const read = (p) => readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8');
 
-// The tier literals a compute assigns: `tier: 'x'`, wherever it bands.
-const tiersIn = (src) => new Set([...src.matchAll(/\btier:\s*'([^']+)'/g)].map((m) => m[1]));
+// The tier literals a compute assigns, wherever it bands. The name varies -- a
+// band helper assigns `tier: 'x'` and the result may expose it as `category`,
+// so the literals and the field the view reads are not always the same word.
+// Whether that read field exists at all is the next test's job.
+const TIER_FIELDS = /\b(?:tier|category|stratum):\s*'([^']+)'/g;
+const tiersIn = (src) => new Set([...src.matchAll(TIER_FIELDS)].map((m) => m[1]));
 
 // A view reads the tier off whichever field its compute exposes -- `r.tier`
 // for most, `r.category` for the two that name it that way. The lookup field
@@ -56,14 +67,15 @@ function lookupFieldIn(src, name) {
 function mapIn(src, name) {
   const m = new RegExp(`const ${name} = \\{([^;]*)\\};`).exec(src);
   assert.ok(m, `${name} is not declared as a single-statement object literal`);
-  const entries = [...m[1].matchAll(/'?([A-Za-z][A-Za-z0-9-]*)'?:\s*\['([^']+)',\s*'([^']+)'\]/g)];
+  const entries = [...m[1].matchAll(/'?([A-Za-z][A-Za-z0-9 -]*?)'?:\s*\['([^']+)',\s*'([^']+)'\]/g)];
   return new Map(entries.map((e) => [e[1], { token: e[2], label: e[3] }]));
 }
 
 for (const [libPath, viewPath, mapName] of PAIRS) {
   test(`${mapName} covers every tier ${libPath.split('/').pop()} can return`, () => {
+    const viewSrc = read(viewPath);
     const tiers = tiersIn(read(libPath));
-    const map = mapIn(read(viewPath), mapName);
+    const map = mapIn(viewSrc, mapName);
     assert.ok(tiers.size >= 2, `${libPath}: expected a banded compute, found tiers ${[...tiers]}`);
 
     const missing = [...tiers].filter((t) => !map.has(t));

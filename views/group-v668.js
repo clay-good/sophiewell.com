@@ -10,6 +10,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/cac-agatston-v668.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Agatston calcium-burden categories (Rumberger 1999), as the compute names them.
+const CAC_SEVERITY = { none: ['low', 'None'], mild: ['moderate', 'Mild'], moderate: ['high', 'Moderate'], severe: ['critical', 'Severe'] };
+
 function numberField(label, id) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -39,7 +42,8 @@ export const renderers = {
       const r = M.cacAgatston({ score: val('cac-score') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.bandLabel, cls: r.abnormal ? 'warn' : null },
+        { text: r.bandLabel, cls: r.abnormal ? 'warn' : null,
+          severity: (CAC_SEVERITY[r.category] || [])[0], severityLabel: (CAC_SEVERITY[r.category] || [])[1] },
         { label: 'Category', value: r.range },
       ]);
       note(o, r.detail);

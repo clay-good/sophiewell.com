@@ -70,6 +70,15 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       directions, which four ordered tokens cannot say), the Edmonton Frail Scale (five tiers,
       so a collapse is a judgment call) and MIPI (the `tier` in its shared lib belongs to a
       different function in the same module).
+      Chip batch 6 worked the probe's new chip list (37 calls over 21 files) and took the 7 that
+      are ordinal severities: the Penetration-Aspiration Scale, revised Atlanta, the Agatston
+      calcium burden, the Elderly Mobility Scale, Reimers migration, MNA-SF and the Silness-Loe
+      plaque index. 39 chips in all. The rest of the list is a CATEGORY, not a severity, and a
+      severity chip would invent a claim: a hazardous-waste generator class (by volume), Boston
+      criteria for CAA (diagnostic certainty), Spaulding device classes (reprocessing level),
+      Bethesda cytology I-VI (six tiers), the HINTS pattern, ARC-HBR's per-criterion major/minor
+      weights, and Caton-Deschamps (alta/normal/baja -- abnormal in both directions). PECARN is
+      ordinal but already states its tier as the answer heading, so a chip would only repeat it.
 - [x] 3.2 Short mutually-exclusive enums (sex, two-way formula toggles): convert the `<select>`
       to `.segmented` (D3). Leave long/open lists as selects. Canonical-first-option invariant kept.
 - [x] 3.3 Multi-output tiles: render the secondary numbers as a `.stat` grid (D5).

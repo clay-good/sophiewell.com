@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/silness-loe-plaque-index-v723.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Silness-Loe plaque tiers (Silness and Loe 1964), as the compute names them.
+const PLI_SEVERITY = { excellent: ['low', 'Excellent'], good: ['moderate', 'Good'], fair: ['high', 'Fair'], poor: ['critical', 'Poor'] };
+
 function numberField(label, id) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -41,7 +44,8 @@ export const renderers = {
       const r = M.silnessLoePlaqueIndex({ score0: val('pli-0'), score1: val('pli-1'), score2: val('pli-2'), score3: val('pli-3') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (PLI_SEVERITY[r.tier] || [])[0], severityLabel: (PLI_SEVERITY[r.tier] || [])[1] },
         { label: 'PlI', value: `${r.index}` },
         { label: 'Surfaces', value: `${r.surfaces}` },
       ]);
