@@ -42,6 +42,25 @@ platelets below 100,000/mm³, INR above 1.7, aPTT above 40 s or PT above 15 s (w
 treatment may start before results and stops if they come back abnormal); known or suspected aortic arch dissection;
 amyloid-related imaging abnormalities or amyloid immunotherapy.
 
+## The FDA labels, as read (DailyMed, November 7, 2026)
+
+TNKase (tenecteplase), SPL set e647640d-c395-4b4b-a0be-1162f9c21d84, version 4, effective December 15, 2025; Activase
+(alteplase), SPL set c669f77c-fa48-478b-a14b-80b20a0139c2, version 15, effective January 20, 2026.
+
+| | Labels | 2026 guideline |
+|---|---|---|
+| Time limit for AIS | both: "within 3 hours" of symptom onset | 4.5 h from last known well, plus three imaging-based extended windows |
+| Dose | TNKase Table 1 weight bands 15 / 17.5 / 20 / 22.5 / 25 mg; Activase 0.9 mg/kg, not over 90 mg, 10% bolus over 1 min, rest over 60 min | the same (Table 7) |
+| Intracranial neoplasm, AVM, aneurysm | contraindicated as "intracranial conditions that may increase the risk of bleeding" (both) | unruptured aneurysm and extra-axial neoplasm: benefit generally greater than risk; unruptured malformation: relative; intra-axial neoplasm: absolute |
+| Intracranial or intraspinal surgery or trauma | contraindicated within 2 months (TNKase) or 3 months, "serious head trauma" (Activase) | absolute within 14 days; relative from 14 days to 3 months |
+| Also contraindicated in the labels | active internal bleeding; bleeding diathesis; current severe uncontrolled hypertension; active (TNKase) or current (Activase) intracranial hemorrhage; subarachnoid hemorrhage (Activase) | not separate Table 8 rows (BP is §4.3; coagulopathy is the absolute coagulopathy row) |
+| Before coagulation results | either may start before results in patients without recent oral anticoagulant or heparin use | the same (Table 8, coagulopathy row) |
+
+**D5 — Label and guideline side by side.** Where a checked condition or the timing is outside a label, the result says
+so beside the guideline's tier ("outside the TNKase and Activase labels, which say within 3 hours"; "a labeled
+contraindication for both agents"). The guideline recommends beyond the labels in places; the tool states both and
+reconciles neither.
+
 ## Compute contract
 
 `tpaEligibility({ timing, disabling, imaging[], sbp, dbp, glucose, platelets, inr, aptt, pt, recentWarfarinOrHeparin,

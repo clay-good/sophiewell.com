@@ -1,12 +1,10 @@
 # Tasks — IV alteplase eligibility tile
 
-> **Re-verified November 7, 2026:** `design.md` now holds the criteria as read in the AHA/ASA 2026 guideline (Stroke 2026,
-> doi:10.1161/STR.0000000000000513, Free Access; recommendation tables and Table 8 read from their published images) and
-> its July 27, 2026 correction; the 2019 sketch was withdrawn. Before building, read the tenecteplase (TNKase) and
-> alteplase (Activase) package inserts on DailyMed for their stroke indication, contraindications and dosing, and
-> confirm they agree with Table 7 (spec-v97 discipline). Grep-verify id absence (`grep -c "id: 'tpa-eligibility'"
-> app.js` == 0); confirmed 0 on November 7, 2026. This is a HIGH-STAKES tile: do not ship with any criterion that is
-> not in `design.md`.
+> **Re-verified November 7, 2026:** `design.md` holds the criteria as read in the AHA/ASA 2026 guideline (Stroke 2026,
+> doi:10.1161/STR.0000000000000513, Free Access; recommendation tables and Table 8 read from their published images),
+> its July 27, 2026 correction, and the TNKase and Activase labels on DailyMed (which disagree with the guideline on
+> the time limit and several contraindications; decision D5). The 2019 sketch was withdrawn. Ready to build from
+> `design.md`. This is a HIGH-STAKES tile: do not ship with any criterion that is not in `design.md`.
 
 ## 1. Lib compute
 - [ ] 1.1 `M.tpaEligibility({ window, exclusions, relativeExclusions })` in a new `lib/*-vNNN.js`
