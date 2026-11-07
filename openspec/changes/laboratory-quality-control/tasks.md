@@ -7,7 +7,10 @@
 > 42 CFR 493.931 and 493.941 on the eCFR at build and diff against the tables in `design.md`.
 
 ## 1. Read the gated sources
-- [ ] 1.1 (not read: the publisher returned a bot check; tool 1 stays gated) Westgard et al. 1981, *Clin Chem* 27:493: the rule statements (tool 1).
+- [x] 1.1 (the paper is still behind the publisher -- Oxford returned 403 again on November 7, 2026 -- so the
+      rule statements were read in the first author's own published account, westgard.com "Westgard Rules and
+      Multirules", and both are cited; the three-level alternatives stay unevaluated because the design gated
+      those on the paper specifically. Shipped in spec-v1691) Westgard et al. 1981, *Clin Chem* 27:493: the rule statements (tool 1).
 - ~~1.2 A Westgard paper stating TE = |bias| + 1.65 CV (tool 4).~~ Tool 4 dropped as an overlap.
 - [x] 1.3 (read, with 493.841 and 493.851, where the 80% and two-of-three rules sit) 42 CFR 493.803 and 493.2: successful and unsuccessful participation (tool 5).
 - [x] 1.4 42 CFR 493.1255: calibration verification rules (tool 6).

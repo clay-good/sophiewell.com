@@ -3423,6 +3423,7 @@ const UTILITIES = [
   // mcp/adapters/sigma-metric-v921.js.
   { id: 'sigma-metric', name: 'Sigma metric (laboratory method performance)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'levey-jennings-limits', name: 'Levey-Jennings Control Limits: Mean, SD and CV From a QC Series', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'westgard-multirule', name: 'Westgard Multirule QC Evaluation (Two Levels, Across Runs)', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'clia-pt-acceptance', name: 'CLIA Proficiency Testing Acceptance Limit (Chemistry and Hematology)', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'pt-event-score', name: 'CLIA Proficiency Testing Event Score and the 80% Rule', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'calibration-verification', name: 'Calibration Verification: Recovery and Reportable Range (CLIA)', group: 'E', audiences: ['clinicians', 'educators'], clinical: false },

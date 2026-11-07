@@ -12,7 +12,11 @@
       into a data file with its SHA-256.
 - [ ] 1.2 The same for the EPTS guide (April 2025 or newer).
 - [ ] 1.3 OPTN policy 8: the KDPI and EPTS bands used in allocation.
-- [ ] 1.4 (not read: optn.transplant.hrsa.gov refused the request; tool 3 names intervals by the reader's events) OPTN data definitions for cold and warm ischemia time.
+- [ ] 1.4 (not read; tool 3 names intervals by the reader's events) OPTN data definitions for cold and warm ischemia time.
+      Re-tested November 7, 2026: `optn.transplant.hrsa.gov` no longer serves the site, answering 301 to
+      `https://www.hrsa.gov/optn`, and that host returns HTTP 403 to an automated client (both a browser
+      user-agent over curl and the build's own fetcher, for the root as well as any document). The block is
+      on scripted access, which is why 1.1 and 1.2 ask for a download by hand in the first place.
 
 ## 2. Lib
 - [ ] 2.1 `lib/transplant-allocation-vNNNN.js`: `kdriKdpi`, `epts`, `ischemiaIntervals`,

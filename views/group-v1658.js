@@ -9,6 +9,7 @@ import * as CLIA from '../lib/clia-pt-acceptance-v1658.js';
 import * as PTE from '../lib/pt-event-score-v1658.js';
 import * as CAL from '../lib/calibration-verification-v1658.js';
 import * as TAT from '../lib/turnaround-time-percentile-v1658.js';
+import * as WG from '../lib/westgard-multirule-v1691.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -64,6 +65,20 @@ function tool(root, pairs, compute) {
 }
 
 export const renderers = {
+  // spec-v1691, closing spec-v1658 tool 1.
+  'westgard-multirule'(root) {
+    note(root, 'The classic multirule for two control levels: 1-3s, 2-2s, R-4s, 4-1s and 10-x reject a run, and 1-2s is a warning to inspect by those rules, never a rejection on its own. Enter previous runs oldest first, one result per line, paired run for run between the levels.');
+    numField(root, 'Level 1 mean', 'wg-mean1', 'e.g. 100');
+    numField(root, 'Level 1 SD', 'wg-sd1', 'e.g. 2');
+    numField(root, 'Level 2 mean', 'wg-mean2', 'e.g. 200');
+    numField(root, 'Level 2 SD', 'wg-sd2', 'e.g. 4');
+    numField(root, "This run's level 1 result", 'wg-cur1', 'e.g. 105');
+    numField(root, "This run's level 2 result", 'wg-cur2', 'e.g. 209');
+    areaField(root, 'Level 1 previous runs, oldest first, one per line (optional)', 'wg-prev1', '101\n102');
+    areaField(root, 'Level 2 previous runs, oldest first, one per line (optional)', 'wg-prev2', '202\n203');
+    tool(root, [['wg-mean1', 'mean1'], ['wg-sd1', 'sd1'], ['wg-mean2', 'mean2'], ['wg-sd2', 'sd2'],
+      ['wg-cur1', 'current1'], ['wg-cur2', 'current2'], ['wg-prev1', 'previous1'], ['wg-prev2', 'previous2']], WG.westgardMultirule);
+  },
   'levey-jennings-limits'(root) {
     areaField(root, 'Control results, one per line (a date or run label and a comma first is allowed)', 'lj-results', '98\n100\n102');
     numField(root, 'The laboratory\'s minimum count for setting limits (optional)', 'lj-min', 'e.g. 20');

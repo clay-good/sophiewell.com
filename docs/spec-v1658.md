@@ -48,9 +48,14 @@ Both CLIA tables matched the design row for row.
 
 ### 1. `westgard-multirule` — Westgard Multirule QC Evaluation (Two Levels, Across Runs)
 
-**Build gate.** Westgard JO, Barry PL, Hunt MR, Groth T, *Clin Chem* 1981;27:493-501 was not read: the publisher's
-article page returned a bot check on October 19, 2026, and PubMed blocks the fetch. The design requires the
-paper's own rule statements before the tool states them. A copy the owner saves would unblock it, as for spec-v1636.
+**Shipped November 7, 2026 in [spec-v1691](spec-v1691.md).** The paper is still behind the publisher
+(Oxford returned HTTP 403 again on November 7, 2026). What changed is the reading of the gate: the
+proposal's design already took the classic five rules "as the author's page describes for two levels",
+gating only the three-level alternatives on the paper, while this build record had generalized the gate
+to the whole tool. The narrower reading shipped -- the classic 1_3s / 2_2s / R_4s / 4_1s / 10_x with
+1_2s as a warning, read in the first author's own published account of his own rules and citing both it
+and the 1981 paper, as the owner's November 2026 rule asks when an original is unreachable. The
+three-level alternatives are still not evaluated, and the tile says so.
 
 ## Proof
 

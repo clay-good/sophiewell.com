@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ad2b9c58-3043-5469-84b3-9abe79120cdb",
+  "serialNumber": "urn:uuid:e4203270-4eff-564f-89f2-dba5a72c75f4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-07T09:29:30.955Z",
+    "timestamp": "2026-11-07T10:18:16.561Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2364 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2365 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fafb42632c29077e2905b8cdcebe3fcee7ba261495643d5652dc327d5b834721"
+          "content": "5994b312d0e8e75eaf5babfaca5e8f90d4b8e571248f723103ae31ce06996269"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "154774"
+          "value": "154848"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1865b27b19f4cca212b96b7d7057d6e9494a1713272c7820ef7c3afb47202cee"
+          "content": "fd3d7b953867f04662c9bd37938436fce5d2528da6eac89b048ecb35517b1639"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "646680"
+          "value": "646849"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "653ef0535ac11423760d44edab209228984234fa1bd989e86f0f82612b959d93"
+          "content": "74283cf169e7a8667b9804111821adda4e2627928896f91266f61baf659ac8c5"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "297902"
+          "value": "298031"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5554b6948a1b8f50d0f0cbe44922434791ae879a6b164d3cd4f1e119190633df"
+          "content": "8c80d8e432ef219555e176ed543340d6131c1faaf1a73b4cc27bdab4cf588929"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "145693"
+          "value": "145775"
         }
       ]
     },
@@ -14321,7 +14321,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e0c7001ccdafeaf2cd6b80ee0530cb0ac57ac420cfdb448e08dea4a4b5f07872"
+          "content": "d9b830316b09052250b8a0372ac676e9156b588d3cbded796770fd677bcb99c0"
         }
       ],
       "properties": [
@@ -14331,7 +14331,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3779"
+          "value": "4178"
         }
       ]
     },
@@ -18059,7 +18059,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dd7457acb168ad8e9e0e68d18a025e623a7d615028b8347542fb6cd532a9f5bc"
+          "content": "0c620e5375c538bbd4747b34b296bccfecc51858cd2ecd4a9abfad3f9349c009"
         }
       ],
       "properties": [
@@ -18069,7 +18069,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3064221"
+          "value": "3064980"
         }
       ]
     },
@@ -32413,6 +32413,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5826"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/westgard-multirule-v1691.js",
+      "type": "file",
+      "name": "lib/westgard-multirule-v1691.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8959c5b07ac76d8028b8cce7b57deef856e1ae80af05b2c24a748d52646c5137"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12847"
         }
       ]
     },
@@ -62111,6 +62132,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/westgard-multirule-v1691.js",
+      "type": "file",
+      "name": "mcp/adapters/westgard-multirule-v1691.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5f21154b90eab05ac81a7c0821d2cf64885a756070a945c95d33615dd9362c95"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1683"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/wexner-v324.js",
       "type": "file",
       "name": "mcp/adapters/wexner-v324.js",
@@ -62768,7 +62810,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "23f41cdfe827ae8174df8c0b97ac09209d915d47db96710aab7d3f7d932ca8a6"
+          "content": "4c706009a21b9ee0b5cbd798d9210054086ad7a3f3b8935db3737005a62b0b3c"
         }
       ],
       "properties": [
@@ -62778,7 +62820,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "170341"
+          "value": "170474"
         }
       ]
     },
@@ -67619,7 +67661,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "894894f6f96eec4e76ef607713f9d8ee199969798fa338c4d76332e0986be27f"
+          "content": "bafc46aeb1b1c2edf0aa3e48bb7f263f212ac5ca07eb95fd3d6a15be7014f796"
         }
       ],
       "properties": [
@@ -67629,7 +67671,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5244"
+          "value": "6490"
         }
       ]
     },
@@ -99818,6 +99860,7 @@
         "urn:sophiewell:file:source:lib/wbct20-v1555.js",
         "urn:sophiewell:file:source:lib/weiss-v648.js",
         "urn:sophiewell:file:source:lib/wellens-criteria-v1441.js",
+        "urn:sophiewell:file:source:lib/westgard-multirule-v1691.js",
         "urn:sophiewell:file:source:lib/wexner-v324.js",
         "urn:sophiewell:file:source:lib/who-advanced-hiv-v1554.js",
         "urn:sophiewell:file:source:lib/who-anc-schedule-v1559.js",
@@ -102188,6 +102231,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/wbct20-v1555.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/weiss-v648.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wellens-criteria-v1441.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/westgard-multirule-v1691.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wexner-v324.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-advanced-hiv-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-anc-schedule-v1559.js",
@@ -102324,7 +102368,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ad2b9c5830434469"
+      "value": "e42032704eff064f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -102336,7 +102380,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3923"
+      "value": "3925"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

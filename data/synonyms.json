@@ -13292,6 +13292,15 @@
     },
     {
       "phrases": [
+        "westgard rules",
+        "westgard multirule",
+        "westgard"
+      ],
+      "tile": "westgard-multirule",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "device utilization ratio",
         "central line utilization ratio",
         "catheter utilization ratio",

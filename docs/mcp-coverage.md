@@ -9427,6 +9427,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/daly-v1690.js (spec-v1690: DALYs as YLL plus YLD, WHO simplified form)
 - `daly`
 
+### lib/westgard-multirule-v1691.js (spec-v1691: the classic Westgard multirule, two levels)
+- `westgard-multirule`
+
 ### lib/device-utilization-ratio-v1655.js (spec-v1655: NHSN device utilization ratio — administrative disclaimer)
 - `device-utilization-ratio`
 

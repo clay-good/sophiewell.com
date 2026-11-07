@@ -1125,6 +1125,7 @@ import surgicalProphylaxisRedoseV1636 from './adapters/surgical-prophylaxis-redo
 import nhsnSirV1655 from './adapters/nhsn-sir-v1655.js';
 import handHygieneComplianceV1689 from './adapters/hand-hygiene-compliance-v1689.js';
 import dalyV1690 from './adapters/daly-v1690.js';
+import westgardMultiruleV1691 from './adapters/westgard-multirule-v1691.js';
 import deviceUtilizationRatioV1655 from './adapters/device-utilization-ratio-v1655.js';
 import deviceInfectionRateV1655 from './adapters/device-infection-rate-v1655.js';
 import outbreakAttackRatesV1655 from './adapters/outbreak-attack-rates-v1655.js';
@@ -2520,6 +2521,7 @@ const ADAPTER_MODULES = [
   ['nhsn-sir-v1655', nhsnSirV1655],
   ['hand-hygiene-compliance-v1689', handHygieneComplianceV1689],
   ['daly-v1690', dalyV1690],
+  ['westgard-multirule-v1691', westgardMultiruleV1691],
   ['device-utilization-ratio-v1655', deviceUtilizationRatioV1655],
   ['device-infection-rate-v1655', deviceInfectionRateV1655],
   ['outbreak-attack-rates-v1655', outbreakAttackRatesV1655],
