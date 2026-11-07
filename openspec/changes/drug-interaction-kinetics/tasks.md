@@ -40,7 +40,7 @@
       `pk-steady-state-predict`. Tool 4 accepts the `drug-list` file kind (add it to that kind's `tools`).
 - [x] 4.2 (spec-v1699 to v1701) META: citations name the M12 section and table, the FDA page's "current as of" date, the Ohno
       abstracts and the Tod papers; examples reproduce the spec scenarios byte for byte.
-- [ ] 4.3 Backfills: related links from `pk-suite`, `pk-steady-state-predict`, `cyp2d6-phenoconversion`,
+- [x] 4.3 (spec-v1702: the four related lists now link the new tools; the prefill into `pk-suite` was not built, because its fields are concentrations in mg/L and an AUC ratio would sit under a mg/L label, so `ddi-static-aucr` prints 1/AUCR as the exposure-matching dose fraction for linear drugs instead) Backfills: related links from `pk-suite`, `pk-steady-state-predict`, `cyp2d6-phenoconversion`,
       `dips-interaction`; the AUCR-to-dose prefill into `pk-suite` (linear drugs only, said on the page).
 - [x] 4.4 (all nine, spec-v1699 to v1701) MCP adapters for all nine with the existing field kinds; lists as one string, one item per line.
       Synonyms: "drug interaction", "DDI", "CYP3A4 inhibitor", "strong inhibitor", "AUC ratio", "AUCR",
@@ -49,5 +49,5 @@
       "polypharmacy".
 
 ## 5. Ship
-- [ ] 5.1 Count surfaces; `node scripts/build-search-corpus.mjs`; `node scripts/build-unbuilt-index.mjs`;
+- [x] 5.1 (each of spec-v1699 to v1702) Count surfaces; `node scripts/build-search-corpus.mjs`; `node scripts/build-unbuilt-index.mjs`;
       `npm run release:check`; CHANGELOG; `docs/spec-vNNNN.md` build record.

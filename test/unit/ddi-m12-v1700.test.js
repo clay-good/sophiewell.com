@@ -80,6 +80,7 @@ test('static model: inhibition and induction together are run three ways, and th
   assert.ok(r.notes.some((n) => n.includes('Inhibition alone (C = 1): AUCR 2.5') && n.includes('Induction alone (A = B = 1): AUCR 0.3571')));
   assert.ok(r.notes.some((n) => n.includes('can mask either effect')));
   assert.ok(r.notes.some((n) => n.includes('negligible extrahepatic clearance')));
+  assert.ok(aucr({ fm: '0.9', ih: '1', ki: '0.5' }).notes.some((n) => n.startsWith('For a substrate with linear kinetics') && n.includes('0.4 of the dose')));
 });
 
 test('static model refusals', () => {

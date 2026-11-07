@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The mechanistic static model now states the exposure-matching dose fraction (1/AUCR) for a drug with linear
+  kinetics, and the pharmacokinetics suite, the one-compartment predictor, CYP2D6 phenoconversion and DIPS link the new
+  dose-history, strength and FDA-examples tools.
 - FDA's CYP interaction examples for a medication list: each drug FDA's Table 1 names is shown with its cells and
   footnotes, and every pair where one listed drug is an inhibitor or inducer and another a substrate of the same
   enzyme. A drug not in the table reads "not on this edition of FDA's examples", never "no interaction". The table is
