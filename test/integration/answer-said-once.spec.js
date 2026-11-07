@@ -32,6 +32,19 @@ test('no tile opens its answer with a line the next line repeats', async ({ page
       const live = document.querySelector('#q-results');
       if (!live) return null;
       const flat = (n) => (n.textContent || '').replace(/\s+/g, ' ').trim();
+      // A status chip is appended INSIDE the line it grades, so its label is
+      // part of that line's textContent. Compared raw, no explanation could
+      // ever open with "...moderate insomnia.Moderate", so this check would
+      // quietly switch itself off for every tile carrying a chip. Compare the
+      // line's own words; a chip is a glance, not a sentence.
+      const chipless = (n) => {
+        const copy = n.cloneNode(true);
+        for (const chip of copy.querySelectorAll('.chip')) chip.remove();
+        return flat(copy);
+      };
+      // ...and for the same reason, a paragraph whose only element child is a
+      // chip is still a plain sentence and must stay in the comparison.
+      const onlyChipChildren = (n) => [...n.children].every((c) => c.classList.contains('chip'));
       // A repeat that could be undone: `full` opens with `short`, and what is
       // left of it starts a sentence on its own. A remainder beginning
       // "for this region: ..." or "; original score 2.2" is left alone, and so
@@ -44,17 +57,18 @@ test('no tile opens its answer with a line the next line repeats', async ({ page
 
       // A heading and the paragraph under it.
       for (const head of live.querySelectorAll('h2, h3')) {
-        if (head.children.length) continue;
+        if (head.children.length && !onlyChipChildren(head)) continue;
         const next = head.nextElementSibling;
-        if (!next || next.tagName !== 'P' || next.children.length) continue;
-        if (repeats(flat(next), flat(head))) return `"${flat(head)}" then "${flat(next).slice(0, 70)}"`;
+        if (!next || next.tagName !== 'P') continue;
+        if (next.children.length && !onlyChipChildren(next)) continue;
+        if (repeats(chipless(next), chipless(head))) return `"${chipless(head)}" then "${chipless(next).slice(0, 70)}"`;
       }
       // A result-band row and the explanation further down.
       const band = live.querySelector('li.result-band');
       if (band) {
         for (const para of live.querySelectorAll('p')) {
-          if (para.children.length) continue;
-          if (repeats(flat(para), flat(band))) return `band "${flat(band)}" then "${flat(para).slice(0, 70)}"`;
+          if (para.children.length && !onlyChipChildren(para)) continue;
+          if (repeats(chipless(para), chipless(band))) return `band "${chipless(band)}" then "${chipless(para).slice(0, 70)}"`;
         }
       }
       return null;
