@@ -60,3 +60,11 @@ test('refusals: no rate, too short, no beats', () => {
   assert.match(qrsDetectTrace({ samplingRate: '360', samples: '1,2,3' }).message, /at least 5/);
   assert.match(qrsDetectTrace({ samplingRate: '360', samples: new Array(3600).fill(0).join(',') }).message, /Fewer than two beats/);
 });
+
+test('spec-v1715: one overflowing sample is refused, not allowed to end detection silently', () => {
+  const tr = Array.from({ length: 3600 }, (_, i) => (i % 360 < 8 ? 1 : 0));
+  tr[1000] = 1e308;
+  const r = qrsDetectTrace({ samplingRate: 360, samples: tr.join('\n') });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /Sample 1001/);
+});

@@ -66,6 +66,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Biosignal tools, after an independent review:
+  - HRV no longer prints a ULF band that its 64-second window cannot resolve, and VLF needs 5 minutes for 24-hour
+    recordings too;
+  - SpO2 accuracy compares with FDA's typical Arms only over 70% to 100% SpO2, as the guidance states it, and
+    refuses readings typed as fractions;
+  - unit slips are refused in PWV (cm, seconds), ectopy burden (minutes as hours) and the EEG window;
+  - one overflowing ECG sample no longer silently ends QRS detection.
 - Drug-interaction tools, after an independent review:
   - the FDA CYP list check now finds St. John's wort, smoking, oral contraceptives and peginterferon alfa-2a, and
     reads "lopinavir/ritonavir" by its parts;

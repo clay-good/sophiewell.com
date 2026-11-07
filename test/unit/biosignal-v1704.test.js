@@ -83,3 +83,16 @@ test('PWV: 80% of 600 mm over 60 ms is 8.0 m/s with the 10 m/s reference; subtra
   assert.ok(!b.notes.some((n) => n.includes('10 m/s (')));
   assert.match(pwv({ method: 'subtraction', notchFemoralMm: '100', notchCarotidMm: '150', transitMs: '60' }).message, /longer than/);
 });
+
+test('spec-v1715 review fixes: unit slips are refused; the 2013 Arms comparison uses 70% to 100% SpO2 only', () => {
+  assert.match(pwv({ method: 'direct80', directMm: 60, transitMs: 60 }).message, /600 mm/);
+  assert.match(pwv({ method: 'direct80', directMm: 600, transitMs: 0.06 }).message, /60 ms/);
+  assert.equal(pwv({ method: 'direct80', directMm: 600, transitMs: 60 }).valid, true);
+  assert.match(burden({ totalBeats: 100000, ventricular: 5000, monitoredHours: 1440 }).message, /check that the monitored time is in hours/);
+  assert.equal(burden({ totalBeats: 100000, ventricular: 5000, monitoredHours: 1e-300 }).valid, false);
+  assert.equal(burden({ totalBeats: 100000, ventricular: 5000, monitoredHours: 24 }).valid, true);
+  const mk = (f) => { const L = []; for (let s = 1; s <= 12; s += 1) for (let k = 0; k < 3; k += 1) { const sa = 60 + ((s * 3 + k) % 39); L.push([`S${s}`, f(sa), sa].join(',')); } return L.join('\n'); };
+  assert.match(arms({ sensor: 'transmittance', pairs: mk((sa) => (sa + 1) / 100).replace(/,(\d+)$/gm, (a, b) => `,${b / 100}`) }).message, /percentages/);
+  const r = arms({ sensor: 'transmittance', pairs: mk((sa) => (sa < 70 ? sa - 3 : sa + 1)) });
+  assert.match(r.notes.join(' '), /over the 29 pairs with SpO2 from 70% to 100% \(7 outside that range left out/);
+});

@@ -50,3 +50,15 @@ test('EEG: gamma above the Nyquist frequency is not measurable; refusals', () =>
   assert.match(eeg({ samples: sine(10) }).message, /sampling rate/);
   assert.match(eeg({ samplingRate: '256', samples: '1,2,3' }).message, /window needs 512/);
 });
+
+test('spec-v1715 review fixes: no ULF (the window cannot resolve it); VLF needs 5 minutes for either type; EEG window 2 s or more', () => {
+  const mk = (sec) => { const a = []; let t = 0; while (t < sec) { const x = 800 + 40 * Math.sin(2 * Math.PI * 0.25 * t) + 30 * Math.sin(2 * Math.PI * 0.1 * t); a.push(x.toFixed(1)); t += x / 1000; } return a.join('\n'); };
+  const short24 = hrv({ recording: 'long', intervals: mk(110) });
+  assert.equal(short24.vlf, null);
+  assert.doesNotMatch(short24.notes.join(' '), /^ULF \(/m);
+  assert.match(short24.notes.join(' '), /ULF \(below 0\.003 Hz\) is not computed/);
+  assert.notEqual(hrv({ recording: 'long', intervals: mk(400) }).vlf, null);
+  const sine = Array.from({ length: 256 * 20 }, (_, i) => Math.sin((2 * Math.PI * 10 * i) / 256).toFixed(4)).join('\n');
+  for (const seg of ['0.001', '0.01', '1']) assert.equal(eeg({ samplingRate: 256, samples: sine, segmentSeconds: seg }).valid, false);
+  assert.match(eeg({ samplingRate: 256, samples: sine, segmentSeconds: '2' }).band, /alpha/);
+});

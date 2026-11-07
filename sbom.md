@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `39d86ac130473b50`
-Generated: 2026-11-07T23:10:14.089Z
+Build ID: `c60672a510d49cac`
+Generated: 2026-11-07T23:25:36.734Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -454,13 +454,13 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/echo-v158.js` | 15164 | `55bac83d93e35727f1f5e46df9d3ffbffb6232e5d609d9d5ac78c6c75c8d4270` |
 | `lib/eckardt-v519.js` | 6397 | `747cca98ef4bbaab5a3aed5780cd808e444fc5d3d8959e68b820f946070343e0` |
 | `lib/ecst-carotid-v1242.js` | 6245 | `cfc8ab0f58975dffa37c97ab643003bfd8223068aa448f087678d92cc5d76a8f` |
-| `lib/ectopy-burden-v1704.js` | 3345 | `c7d90aeb3d0ea9d6063856eb388b6387e6a4c0308cb533c293d01c31d7bb150e` |
+| `lib/ectopy-burden-v1704.js` | 4014 | `60a301ec73cb610d836244cec30ec68d3d361a8c425cb69dee773f4e1c91f22d` |
 | `lib/ed-decision-v218.js` | 17814 | `f84ec952e06f549817814fd55c1139911791e63193fb36d9428fcdd3771b0307` |
 | `lib/eddecision-v107.js` | 15720 | `cc276ccb3b9781ad5ab4153b20195864c49f58993ca835b7c98ca38c7cefb0d3` |
 | `lib/edinburgh-caa-v610.js` | 10304 | `fb5605e75a11370d90b16fc49949021691ed4ede58851ccc5bc6fcb199698944` |
 | `lib/edinburgh-claudication-v702.js` | 5035 | `297c5fc34263f6b57507236d4e43bd1e7a6fa6a8046f60bc6ef4adf4dde9097f` |
 | `lib/edmonton-frail-scale-v690.js` | 4396 | `f14692db0410fde4259da7cc3197d98f962fd5196b1c132fd57e66ebba727f3a` |
-| `lib/eeg-band-power-v1705.js` | 4858 | `6b4d9bd847bdcb50148b1d8084e58e99a27d2c1674f3a815dff6bb8bcd1f3af1` |
+| `lib/eeg-band-power-v1705.js` | 5169 | `d1ae770f41ee47ffc8fd8bbeb84281d84e69903bda78033f0710be8ea77e9c2a` |
 | `lib/effective-osmolality-v683.js` | 5268 | `3aa889223199cfef42cba1c8627cc1481e223cb336b9847fb4019e232cbaaa2c` |
 | `lib/egpa-v641.js` | 3821 | `25c4c9e830b415f41dcd6de2d22ba26e7776f4f9fc055edd66d28a388b2e3a96` |
 | `lib/ehit-v531.js` | 10332 | `718b6a6de8e755b57849081fcff223b8888955ce85c8bef8c9d348e4145822df` |
@@ -677,7 +677,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hpt-worker.js` | 1092 | `7d62f64cc7c26dadf569116ce948df0b9c5f030da26338f5ad4384617dd3660d` |
 | `lib/hrs-aki-v808.js` | 5530 | `1c0f95ac894d64cfa61e232142bcea6c972b1eb9d79dd7ce9a9a2bc88d44d40b` |
 | `lib/hrsa-womens-guidelines.js` | 10999 | `a6cd000bf2761a092f621fa1e968e22f5cf3bc1f29a1cbfccb89883f192ce7bc` |
-| `lib/hrv-frequency-domain-v1705.js` | 5513 | `ab6faa64096003f275c5e347da6c46288c1198498fef0b87d7b9e167d5393f8c` |
+| `lib/hrv-frequency-domain-v1705.js` | 5872 | `325d73907bbd5dbe2da1a402b7b8611a24b7280044a0aa6c8435edf5fe8f8fda` |
 | `lib/hrv-time-domain-v1704.js` | 5715 | `97630f905a331c8e439014c121352c246aa9e622fcad443e73564aa71e5a3838` |
 | `lib/hsa-predeductible-check.js` | 12776 | `db826f0ad02ebbf2aac3fed5322aa4c713c97c179ca0547ac074c58417b62f87` |
 | `lib/hughes-gbs-v800.js` | 3821 | `7eccbcbfa3b119a77f179e32c09a0d60436e093d390a0cbcdcd2c615e53964fa` |
@@ -911,7 +911,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3084921 | `a25e4f3d98853c16b9eb13ff8170bfb6af94550bb21d84763e8e2055fda52cfd` |
+| `lib/meta.js` | 3084936 | `19bc3e597a21d34109426aff8e7839abcaf9c32e6f493bfd63f5688a6891cf0f` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 22551 | `2968b0f8bd9102322d6bd43aa9e7447c56e9ec8a42ccb299a9b3e82e051cf7c5` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1251,11 +1251,11 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pulmonary-risk-v221.js` | 14512 | `f6345be19103c701523d6644a837be1ce4632b4cde943b9e87f9860c6dec48a3` |
 | `lib/puqe24-v553.js` | 10456 | `d2593fdc70bc2cc959ddac33b9c0d578d7ac5decf655bfff3e35f1b412b6a781` |
 | `lib/push-tool-v662.js` | 4843 | `0c6fa9721ac595d78e6f85f229f31092e1d6b1b11e9bc770a02b48c8195bb0c2` |
-| `lib/pwv-carotid-femoral-v1704.js` | 3331 | `06f7593748f7e6339d4b45bb980eb7c067b44355d5b3d8cc01d26a259851c123` |
+| `lib/pwv-carotid-femoral-v1704.js` | 3789 | `ca54a714e8fa615569b143cb4d5733f83a61df3b4d53669a8b563778645d3e61` |
 | `lib/qcsi-v698.js` | 4519 | `ecfdfe60902df4a88f1d6a2ce2c850251ebc70378caadc4415cceab065bb669f` |
 | `lib/qio-discharge-appeal-v1503.js` | 5611 | `517a90637c3bc8197f95c7aab27e78540a21e276bb3d3045c809ade5a10af23c` |
 | `lib/qpitt-v587.js` | 10218 | `a62e42423fe772330c1dce867e4669b68e446b877b9eddf3d057f54a5c5e45b8` |
-| `lib/qrs-detect-trace-v1706.js` | 13752 | `b3ae15f76bca8fbaab3aa3c945dbccd074a2d0e7dc581ee9c7804020d475e134` |
+| `lib/qrs-detect-trace-v1706.js` | 14150 | `6992fab97bcb56accd15e367da6bcd34a5175b9e3e9a03438c350649ff96ec7b` |
 | `lib/quantity-limit-check-v1502.js` | 3650 | `a84ea2b359e22ea0f1e8c1a0308241ea2e598af5e352b5b9e7f17f50ea505945` |
 | `lib/quantity-to-dispense-v1639.js` | 11207 | `5c2db989ddf90d2f33e2713e2cd798f849883fb82a9fc41e0011cfc4ddfadea9` |
 | `lib/query-compute.js` | 18609 | `ba68703b5e8cae2b887d6db070f1a7384f2b90bef9a8b6e50ea5a5e6aaafb086` |
@@ -1428,7 +1428,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/spigelman-v520.js` | 7864 | `047fb55c94811d32fb93e2cfd025945f4d3ae1282930b45613c19d74997081dd` |
 | `lib/spine-v146.js` | 21128 | `d3cb6a1d1e2c3cc1235cc2336a0385a1ae6e0a1ea65b741a2d6c25e5cb527917` |
 | `lib/spitz-atresia-v479.js` | 2772 | `82c5ecf9649558c4767feb5ae6dac08de927b4ccf53b29a987524255891eb031` |
-| `lib/spo2-arms-accuracy-v1704.js` | 10990 | `1c3e3cd34fc423de102978cf738a20aff267b2dc5b6b99e2571102ca335e749a` |
+| `lib/spo2-arms-accuracy-v1704.js` | 12220 | `1964488755a58f8a5327af30acdf1c4384307c72524817a636215602b170f207` |
 | `lib/sportsmsk-v244.js` | 6969 | `4b4589408faef5ff873d2acd2a7593f9c6d6b1ab303bb01bdd35eabd939abd9f` |
 | `lib/staff-turnover-rate-v1657.js` | 4301 | `747d45d0c335fe6650a9e2699711f56ee56f95f3e27d66bd98e7cef80a262766` |
 | `lib/staffing-committee-check-v1396.js` | 5243 | `06ebbf0f1bff4d9b2ac92219c5d6fd79358dbeb9426b741552d5daf0c95445ff` |
