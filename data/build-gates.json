@@ -33,19 +33,19 @@
       "tool": "kdri-kdpi",
       "spec": "spec-v1661",
       "source": "OPTN, Guide to Calculating and Interpreting the KDPI",
-      "url": "https://www.hrsa.gov/optn",
+      "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/kdpi_guide.pdf",
       "kind": "waf-blocked",
       "lastStatus": 403,
-      "note": "The host recorded in the original gate, optn.transplant.hrsa.gov, no longer serves the site: it answers 301 to this URL. The new host refuses an automated client for the root as well as any document, over both a browser user-agent and the build's own fetcher. The task asks for a download by hand, which is why."
+      "note": "Re-probed November 7, 2026. The HTML pages on www.hrsa.gov/optn now open in a browser (the KDPI calculator page, last reviewed December 2025, links the guide and the mapping table at hrsa.gov/sites/default/files/hrsa/optn/kdpi_guide.pdf and kdpi_mapping_table.pdf), but both PDFs arrive as file downloads, and a scripted fetch is refused. Getting past that refusal with a disguised client would defeat a bot check, so the two PDFs still need saving by hand."
     },
     {
       "tool": "epts-score",
       "spec": "spec-v1661",
       "source": "OPTN, Guide to Calculating and Interpreting the EPTS",
-      "url": "https://www.hrsa.gov/optn",
+      "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/epts_mapping_table.pdf",
       "kind": "waf-blocked",
       "lastStatus": 403,
-      "note": "The same host and the same refusal as kdri-kdpi: optn.transplant.hrsa.gov answers 301 to https://www.hrsa.gov/optn, which returns 403 to an automated client for the root as well as any document."
+      "note": "Half open. The guide (updated April 7, 2026; SHA-256 a62d935a…, saved by hand) was read November 7, 2026, and its formula reproduces all three worked examples to seven decimals (openspec design, tool 2). The score is a percentile from the EPTS mapping table, a separate PDF (hrsa.gov/sites/default/files/hrsa/optn/epts_mapping_table.pdf) that arrives as a download and is still to be saved by hand. Without it the tool could print only the raw value, not the 20% line allocation uses."
     },
     {
       "tool": "ed-throughput-measures",

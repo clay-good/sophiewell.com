@@ -50,6 +50,23 @@ with EPTS 20% or less, as policy states it; confirm wording).
 **Data.** As tool 1: the mapping table is versioned data with a watch.
 **Tests.** The guide's worked example; dialysis time of 0; the 20% boundary on both sides.
 
+**Read November 7, 2026** (the guide, *updated April 07, 2026*, 6 pages, SHA-256
+`a62d935a97629e681a482490fe22c94db6648adc8964e46f52c1cccf84c3d79a`, saved by hand from
+hrsa.gov/sites/default/files/hrsa/optn/epts_guide.pdf). This replaces the expectations above:
+
+- Raw EPTS = 0.047·max(Age − 25, 0) − 0.015·D·max(Age − 25, 0) + 0.398·P − 0.237·D·P
+  + 0.315·ln(Y + 1) − 0.099·D·ln(Y + 1) + 0.130·[Y = 0] − 0.348·D·[Y = 0] + 1.262·D, where D is any
+  current diabetes (type does not matter), P is one or more prior solid organ transplants (the number does
+  not matter), and Age and Y are full days from birth and from dialysis start to the date, divided by 365.25.
+- Missing or unverified factors give a missing score, treated in allocation as outside the top 20%; EPTS
+  does not apply under 18.
+- The score is the cumulative percentage from the **mapping table** (percentiles 1 to 100 of raw EPTS over
+  all adult waiting-list candidates on December 31 of the prior year; below the minimum is 0%, above the
+  maximum 100%), updated each spring. The table is a separate PDF and is **not yet saved**, so it is the
+  remaining gate.
+- Worked examples, all reproduced to seven decimals: 0.9667934 (9%), 1.4404346 (18%), 1.8687507 (32%),
+  each as of January 1, 2025 against the December 31, 2024 reference population.
+
 ### 3. `ischemia-time-clock` — Cold and Warm Ischemia Time From Clamp, Flush and Reperfusion Times
 
 **Input.** Timestamps with time zones or a single zone: aortic cross-clamp (or, for DCD,

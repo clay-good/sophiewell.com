@@ -11,12 +11,18 @@
       transcribe every coefficient, reference point, the scaling factor and the mapping table
       into a data file with its SHA-256.
 - [ ] 1.2 The same for the EPTS guide (April 2025 or newer).
+      Guide read November 7, 2026 (April 7, 2026 edition, from a copy saved by hand; formula and the three
+      examples in `design.md`, all reproduced). Open: the EPTS mapping table, a separate PDF
+      (`epts_mapping_table.pdf`) that the site serves only as a download.
 - [ ] 1.3 OPTN policy 8: the KDPI and EPTS bands used in allocation.
 - [ ] 1.4 (not read; tool 3 names intervals by the reader's events) OPTN data definitions for cold and warm ischemia time.
       Re-tested November 7, 2026: `optn.transplant.hrsa.gov` no longer serves the site, answering 301 to
       `https://www.hrsa.gov/optn`, and that host returns HTTP 403 to an automated client (both a browser
       user-agent over curl and the build's own fetcher, for the root as well as any document). The block is
       on scripted access, which is why 1.1 and 1.2 ask for a download by hand in the first place.
+      November 7, 2026, later: the HTML pages open in a browser and name the four PDFs (kdpi_guide,
+      kdpi_mapping_table, epts_guide, epts_mapping_table under hrsa.gov/sites/default/files/hrsa/optn/);
+      the PDFs still arrive only as downloads.
 
 ## 2. Lib
 - [ ] 2.1 `lib/transplant-allocation-vNNNN.js`: `kdriKdpi`, `epts`, `ischemiaIntervals`,
