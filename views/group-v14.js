@@ -179,6 +179,10 @@ export const renderers = {
         { label: 'Potassium ≥ 6 (or +25%)', value: c.kMet === null ? 'not entered' : metTag(c.kMet) },
         { label: 'Phosphate ≥ threshold (or +25%)', value: c.phosMet === null ? 'not entered' : metTag(c.phosMet) },
         { label: 'Corrected calcium ≤ 7 (or −25%)', value: c.caMet === null ? 'not entered' : metTag(c.caMet) },
+        // spec-v1696: the renal criterion gets the same three states as the four above
+        // it. Before, a creatinine nobody drew had no row at all while the band said
+        // nothing end-organ was entered whether it was or not.
+        { label: 'Creatinine ≥ 1.5 × ULN', value: c.renalCriterion === null ? 'not entered' : metTag(c.renalCriterion) },
       ]);
       note(o, r.note);
     }));
