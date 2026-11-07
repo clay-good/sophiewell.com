@@ -1,7 +1,7 @@
 # spec-v1698 — VCF readers (variant-interpretation-math tools 3 and 4)
 
-> Status: **SHIPPED (2026-11-07)**: `vcf-variant-lookup` and `vcf-qc-summary`, and the `vcf` file kind. Open: task
-> 4.4's measurement on a real public whole-genome VCF (below, a synthetic file stands in).
+> Status: **SHIPPED (2026-11-07)**: `vcf-variant-lookup` and `vcf-qc-summary`, and the `vcf` file kind. Task 4.4's
+> measurement on a real whole genome is in [spec-v1707](spec-v1707.md).
 
 The last two tools of the [variant-interpretation-math](../openspec/changes/variant-interpretation-math/proposal.md)
 change, after [spec-v1697](spec-v1697.md) (tools 1 and 2) and the shared BGZF reader.

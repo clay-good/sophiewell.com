@@ -40,8 +40,8 @@
       "ACMG", "AMP", "variant classification", "pathogenic", "likely pathogenic", "VUS", "benign", "Bayesian
       points", "allele frequency", "too common", "gnomAD filter", "FAF", "VCF", "genotype", "zygosity", "allele
       balance", "Ti/Tv".
-- [ ] 4.4 Measure tools 3 and 4 on a real public whole-genome VCF; record throughput in the build record.
+- [x] 4.4 (spec-v1707: GIAB HG002 NISTv4.2.1 GRCh38, 156 MB, 4,048,342 records summarized in 12.3 s in Node; Ti/Tv 2.09) Measure tools 3 and 4 on a real public whole-genome VCF; record throughput in the build record.
 
 ## 5. Ship
-- [ ] 5.1 Count surfaces; `node scripts/build-search-corpus.mjs`; `node scripts/build-unbuilt-index.mjs`;
+- [x] 5.1 (spec-v1697, v1698) Count surfaces; `node scripts/build-search-corpus.mjs`; `node scripts/build-unbuilt-index.mjs`;
       `npm run release:check`; CHANGELOG; `docs/spec-vNNNN.md` build record.
