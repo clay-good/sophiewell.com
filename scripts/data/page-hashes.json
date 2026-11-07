@@ -7,6 +7,10 @@
     "sha256": "b78f5f019d9690dd467c9107f1e854ab9f6991f443d7e537a86f97706824a4f4",
     "recorded": "2026-10-11"
   },
+  "https://database.ich.org/sites/default/files/ICH_M12_Step4_Guideline_2024_0521.pdf": {
+    "sha256": "ff0624ed9f587b1162af6d2e2d55ff4b83541b831834d5532f292951916397ce",
+    "recorded": "2026-11-07"
+  },
   "https://pmc.ncbi.nlm.nih.gov/articles/PMC8249478/": {
     "sha256": "ff8d5e635ac8f7c182604530436d23a5bac21bb6dd22ac9ef1294d4330886c00",
     "recorded": "2026-10-15"

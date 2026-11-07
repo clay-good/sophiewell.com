@@ -13727,6 +13727,38 @@
       ],
       "tile": "emax-hill-effect",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ich m12 basic method",
+        "time dependent inhibition screen kinact"
+      ],
+      "tile": "ddi-basic-screen",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mechanistic static model",
+        "ich m12 static model aucr"
+      ],
+      "tile": "ddi-static-aucr",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "contribution ratio and inhibition ratio",
+        "ohno method cyp3a4"
+      ],
+      "tile": "ddi-cr-ir-predict",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cyp recovery after induction",
+        "cyp recovery after stopping a drug"
+      ],
+      "tile": "enzyme-recovery-time",
+      "audience": "clinicians"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d0192aee-44a3-5345-8270-3bd261149e97",
+  "serialNumber": "urn:uuid:622a1a59-10dc-59e7-8426-a245e6c5cb1b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-07T19:04:39.150Z",
+    "timestamp": "2026-11-07T19:30:16.023Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2373 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2377 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2a16db2a5471cc849c21224facdc10989ada2d4b423cc5cae6c33322834c839d"
+          "content": "9c9dfab2271411a8778a4101a3ad92300f97433a8d811d538f68f12df9db8f08"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "155359"
+          "value": "155666"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cd23d234fa30849bf1109c22e88d2e92033d4cb2e2a53c3ee20662a7b901ca7e"
+          "content": "c2d649c0ab0b9f5fe0dfa0d2c931845ab9793219f3c3e50e5b509864bf1d63c9"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "648392"
+          "value": "649144"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5efabc4fd40a8e61f49d988e52e1146acc921bbb459bab8fd0226a2d0e25fe4b"
+          "content": "3253d1fc2956fccfbf83a1625630eb3d0b1d42130acfc3a5d1814a47292c2f5f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "299078"
+          "value": "299590"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1cab40815b5195ad6cf26efe3823b4c19f26db0a26d2e67cf996cebea3409b90"
+          "content": "7228ba32788d67c2cc5f425519d6868eef35f80a63e77ea56dae052417675319"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "146365"
+          "value": "146700"
         }
       ]
     },
@@ -7196,6 +7196,69 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ddi-basic-screen-v1700.js",
+      "type": "file",
+      "name": "lib/ddi-basic-screen-v1700.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ea28e7a31b8484eb25dca882d8dfeea101ae58cbed63101bb540f82b44cc3e35"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7007"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ddi-cr-ir-predict-v1700.js",
+      "type": "file",
+      "name": "lib/ddi-cr-ir-predict-v1700.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "519c66d81e89753386f115ea10c32fcde3f4ccad8aaa8c9627de9862617a8a6e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5597"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ddi-static-aucr-v1700.js",
+      "type": "file",
+      "name": "lib/ddi-static-aucr-v1700.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9499b6687ab2a94ca37ff6f9d60d931b084d65d62877b44f230663f0228bbcae"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9922"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ddi-strength-classify-v1699.js",
       "type": "file",
       "name": "lib/ddi-strength-classify-v1699.js",
@@ -9418,6 +9481,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8342"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/enzyme-recovery-time-v1700.js",
+      "type": "file",
+      "name": "lib/enzyme-recovery-time-v1700.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "263d35a09dc27bf19d07f254266454117512f89f6b23fab0bef3085b0d51b21c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3791"
         }
       ]
     },
@@ -13618,6 +13702,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7464"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ich-m12.js",
+      "type": "file",
+      "name": "lib/ich-m12.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ad6698aabf5f5decabb1fb11139de1f7a0560bf7f67f930d6e57c9cf9b22e8c6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2114"
         }
       ]
     },
@@ -18185,7 +18290,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f3785782acb7350cf0ec8de3142fce460a2fd50961e16afa9172dadd0399cad0"
+          "content": "44481f91f4f1b59af6e866bc2e9e8d619a25975fb3dbee6f9cffb9e86410645e"
         }
       ],
       "properties": [
@@ -18195,7 +18300,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3070944"
+          "value": "3073830"
         }
       ]
     },
@@ -39893,6 +39998,69 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ddi-basic-screen-v1700.js",
+      "type": "file",
+      "name": "mcp/adapters/ddi-basic-screen-v1700.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "23bc097292d5c1704e21b781d0a3754b935671179d6329babc9ac242fad3646b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2021"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ddi-cr-ir-predict-v1700.js",
+      "type": "file",
+      "name": "mcp/adapters/ddi-cr-ir-predict-v1700.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e825631891a4c40432fce30d064ba5cf6d00fcb536d6bdfb6a943cf3c7d493bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1222"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ddi-static-aucr-v1700.js",
+      "type": "file",
+      "name": "mcp/adapters/ddi-static-aucr-v1700.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fa3a5497b80750c3f3e4685482f57a115cbfe39224cb58a75d4b6d87ec156693"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3044"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ddi-strength-classify-v1699.js",
       "type": "file",
       "name": "mcp/adapters/ddi-strength-classify-v1699.js",
@@ -41989,6 +42157,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2371"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/enzyme-recovery-time-v1700.js",
+      "type": "file",
+      "name": "mcp/adapters/enzyme-recovery-time-v1700.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0011d8d67774e49ec1dd8a187982e6e77f9f3b177f20730c0eb9020bc88059ca"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1174"
         }
       ]
     },
@@ -63146,7 +63335,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "80469d3cd5ecf9a62218099ac99ed2f92015a816f1ada32ba2826bf590eae8b6"
+          "content": "f566f837761ff0f394250336de1bbb46d507ed70d15f0735d10bade12b4cc4c8"
         }
       ],
       "properties": [
@@ -63156,7 +63345,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "171334"
+          "value": "171840"
         }
       ]
     },
@@ -68239,6 +68428,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "12857"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1700.js",
+      "type": "file",
+      "name": "views/group-v1700.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "54646b838f2295c5072d5a2171b81c1fd7f4d6783e70bf6b267fd0a718b01139"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8592"
         }
       ]
     },
@@ -99058,6 +99268,9 @@
         "urn:sophiewell:file:source:lib/dated-data.js",
         "urn:sophiewell:file:source:lib/days-supply-v1511.js",
         "urn:sophiewell:file:source:lib/ddd-rate-v1636.js",
+        "urn:sophiewell:file:source:lib/ddi-basic-screen-v1700.js",
+        "urn:sophiewell:file:source:lib/ddi-cr-ir-predict-v1700.js",
+        "urn:sophiewell:file:source:lib/ddi-static-aucr-v1700.js",
         "urn:sophiewell:file:source:lib/ddi-strength-classify-v1699.js",
         "urn:sophiewell:file:source:lib/de-winter-pattern-v1443.js",
         "urn:sophiewell:file:source:lib/dea-222-validity-v1637.js",
@@ -99164,6 +99377,7 @@
         "urn:sophiewell:file:source:lib/enturopsych-v254.js",
         "urn:sophiewell:file:source:lib/enviro-v111.js",
         "urn:sophiewell:file:source:lib/environ-v242.js",
+        "urn:sophiewell:file:source:lib/enzyme-recovery-time-v1700.js",
         "urn:sophiewell:file:source:lib/eortc-msg-ifd-v869.js",
         "urn:sophiewell:file:source:lib/eoss-v713.js",
         "urn:sophiewell:file:source:lib/epinephrine-device-weight-band-v1639.js",
@@ -99364,6 +99578,7 @@
         "urn:sophiewell:file:source:lib/icans-v306.js",
         "urn:sophiewell:file:source:lib/icdas-caries-v1485.js",
         "urn:sophiewell:file:source:lib/icer-dominance-v1634.js",
+        "urn:sophiewell:file:source:lib/ich-m12.js",
         "urn:sophiewell:file:source:lib/icrs-v338.js",
         "urn:sophiewell:file:source:lib/id-v137.js",
         "urn:sophiewell:file:source:lib/idcrit-v99.js",
@@ -100559,6 +100774,7 @@
         "urn:sophiewell:file:source:views/group-v1698.js",
         "urn:sophiewell:file:source:views/group-v1699.js",
         "urn:sophiewell:file:source:views/group-v17.js",
+        "urn:sophiewell:file:source:views/group-v1700.js",
         "urn:sophiewell:file:source:views/group-v173.js",
         "urn:sophiewell:file:source:views/group-v174.js",
         "urn:sophiewell:file:source:views/group-v175.js",
@@ -101574,6 +101790,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dantrolene-mh-vials-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/days-supply-v1511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ddd-rate-v1636.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ddi-basic-screen-v1700.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ddi-cr-ir-predict-v1700.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ddi-static-aucr-v1700.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ddi-strength-classify-v1699.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/de-winter-pattern-v1443.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dea-222-validity-v1637.js",
@@ -101674,6 +101893,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/enturopsych-v254.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/enviro-v111.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/environ-v242.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/enzyme-recovery-time-v1700.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eortc-msg-ifd-v869.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eoss-v713.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/epinephrine-device-weight-band-v1639.js",
@@ -102786,7 +103006,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "d0192aee44a37345"
+      "value": "622a1a5910dc39e7"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -102798,7 +103018,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3944"
+      "value": "3954"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

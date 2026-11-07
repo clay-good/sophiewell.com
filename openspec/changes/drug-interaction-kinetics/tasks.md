@@ -11,9 +11,9 @@
       §7. Tools 6-9 ship with value tables if this has not landed; no answer waits on it.
 
 ## 1. Re-read at build
-- [ ] 1.1 ICH M12 §2.1.2, §7.5.1, Table 3, Table 6; record the PDF hash in `scripts/data/page-hashes.json`.
+- [x] 1.1 (re-read November 7, 2026 for spec-v1700: sections 2.1.2.1-2, 7.5.1, Tables 3 and 6 match design.md; SHA-256 ff0624ed... recorded) ICH M12 §2.1.2, §7.5.1, Table 3, Table 6; record the PDF hash in `scripts/data/page-hashes.json`.
 - [x] 1.2 (re-read November 7, 2026 for spec-v1699: 108,266 bytes, current as of 05/29/2026, Table 2 definitions unchanged; Table 1 is read again when tool 4's builder lands) The FDA table page: Table 1 columns, row count, the legend tables, the "current as of" date.
-- [ ] 1.3 The Ohno 2007 and 2008 abstracts and Tod 2013 and 2014 equations (tool 5); if the full Ohno texts
+- [x] 1.3 (spec-v1700: the abstracts' equations and validation sentence as design.md records them; full texts still not open) The Ohno 2007 and 2008 abstracts and Tod 2013 and 2014 equations (tool 5); if the full Ohno texts
       have become open, read their stated validity conditions and add them to the page.
 
 ## 2. Data
@@ -25,10 +25,10 @@
 - [ ] 2.2 Fixture tests for the builder from a saved copy of the page: the 245 rows, aprepitant merged,
       ciprofloxacin's in-cell marker, the ritonavir marker list, the paritaprevir combination, an empty cell,
       a page with Table 1 moved to second position, a page with 20% of rows removed.
-- [ ] 2.3 Route B: M12 Table 6 as a dated constant with a staleness-ledger row.
+- [x] 2.3 (`lib/ich-m12.js`, route B, under the weekly page watch; spec-v1700) Route B: M12 Table 6 as a dated constant with a staleness-ledger row.
 
 ## 3. Lib
-- [ ] 3.1 `lib/ddi-vNNNN.js`: basic-method ratios, the M12 AUCR with the three runs and the concentration
+- [x] 3.1 (built one lib per tool: `lib/ddi-basic-screen-v1700.js`, `lib/ddi-static-aucr-v1700.js`, `lib/ddi-cr-ir-predict-v1700.js`, `lib/enzyme-recovery-time-v1700.js`, with `lib/ddi-strength-classify-v1699.js`) `lib/ddi-vNNNN.js`: basic-method ratios, the M12 AUCR with the three runs and the concentration
       estimates, the Table 2 classifier, CR-IR and its back-calculations, enzyme recovery.
 - [x] 3.2 (built as three libs, one per tool: `lib/dose-history-level-v1699.js`, `lib/two-compartment-params-v1699.js`, `lib/emax-hill-effect-v1699.js`) `lib/pk-multidose-vNNNN.js`: superposition (bolus, infusion, Bateman with the limit form),
       two-compartment conversion, sigmoid Emax and its inverse.

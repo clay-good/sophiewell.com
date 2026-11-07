@@ -1172,6 +1172,10 @@ import ddiStrengthClassifyV1699 from './adapters/ddi-strength-classify-v1699.js'
 import doseHistoryLevelV1699 from './adapters/dose-history-level-v1699.js';
 import twoCompartmentParamsV1699 from './adapters/two-compartment-params-v1699.js';
 import emaxHillEffectV1699 from './adapters/emax-hill-effect-v1699.js';
+import ddiBasicScreenV1700 from './adapters/ddi-basic-screen-v1700.js';
+import ddiStaticAucrV1700 from './adapters/ddi-static-aucr-v1700.js';
+import ddiCrIrPredictV1700 from './adapters/ddi-cr-ir-predict-v1700.js';
+import enzymeRecoveryTimeV1700 from './adapters/enzyme-recovery-time-v1700.js';
 import ischemiaTimeClockV1661 from './adapters/ischemia-time-clock-v1661.js';
 import donorRecipientSizeMatchV1661 from './adapters/donor-recipient-size-match-v1661.js';
 import tMacsV1662 from './adapters/t-macs-v1662.js';
@@ -2574,6 +2578,10 @@ const ADAPTER_MODULES = [
   ['dose-history-level-v1699', doseHistoryLevelV1699],
   ['two-compartment-params-v1699', twoCompartmentParamsV1699],
   ['emax-hill-effect-v1699', emaxHillEffectV1699],
+  ['ddi-basic-screen-v1700', ddiBasicScreenV1700],
+  ['ddi-static-aucr-v1700', ddiStaticAucrV1700],
+  ['ddi-cr-ir-predict-v1700', ddiCrIrPredictV1700],
+  ['enzyme-recovery-time-v1700', enzymeRecoveryTimeV1700],
   ['ischemia-time-clock-v1661', ischemiaTimeClockV1661],
   ['donor-recipient-size-match-v1661', donorRecipientSizeMatchV1661],
   ['t-macs-v1662', tMacsV1662],

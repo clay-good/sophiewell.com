@@ -902,6 +902,10 @@ import * as ddiStrengthClassifyV1699 from '../../lib/ddi-strength-classify-v1699
 import * as doseHistoryLevelV1699 from '../../lib/dose-history-level-v1699.js';
 import * as twoCompartmentParamsV1699 from '../../lib/two-compartment-params-v1699.js';
 import * as emaxHillEffectV1699 from '../../lib/emax-hill-effect-v1699.js';
+import * as ddiBasicScreenV1700 from '../../lib/ddi-basic-screen-v1700.js';
+import * as ddiStaticAucrV1700 from '../../lib/ddi-static-aucr-v1700.js';
+import * as ddiCrIrPredictV1700 from '../../lib/ddi-cr-ir-predict-v1700.js';
+import * as enzymeRecoveryTimeV1700 from '../../lib/enzyme-recovery-time-v1700.js';
 import * as ischemiaTimeClockV1661 from '../../lib/ischemia-time-clock-v1661.js';
 import * as donorRecipientSizeMatchV1661 from '../../lib/donor-recipient-size-match-v1661.js';
 import * as tMacsV1662 from '../../lib/t-macs-v1662.js';
@@ -2088,6 +2092,10 @@ const MODULES = {
   'dose-history-level-v1699.js': doseHistoryLevelV1699,
   'two-compartment-params-v1699.js': twoCompartmentParamsV1699,
   'emax-hill-effect-v1699.js': emaxHillEffectV1699,
+  'ddi-basic-screen-v1700.js': ddiBasicScreenV1700,
+  'ddi-static-aucr-v1700.js': ddiStaticAucrV1700,
+  'ddi-cr-ir-predict-v1700.js': ddiCrIrPredictV1700,
+  'enzyme-recovery-time-v1700.js': enzymeRecoveryTimeV1700,
   'ischemia-time-clock-v1661.js': ischemiaTimeClockV1661,
   'donor-recipient-size-match-v1661.js': donorRecipientSizeMatchV1661,
   't-macs-v1662.js': tMacsV1662,

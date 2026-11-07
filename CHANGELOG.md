@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- ICH M12 drug-interaction arithmetic for development work: the basic in vitro screens (reversible, intestinal CYP3A,
+  time-dependent), the mechanistic static model with M12's concentration estimates and its three-run check for a drug
+  that both inhibits and induces, CYP recovery after induction or inactivation at Table 6's turnover, and Ohno's
+  CR and IR method for CYP3A4, with the back-calculations.
 - Drug-interaction and pharmacokinetic arithmetic: the FDA strength class of an observed AUC ratio (strong, moderate
   or weak inhibitor or inducer; sensitive or moderate sensitive substrate), the level from the doses actually given
   (late, missed or doubled) beside the on-schedule level by superposition, two-compartment parameters from a

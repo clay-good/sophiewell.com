@@ -9568,6 +9568,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/emax-hill-effect-v1699.js (spec-v1699: sigmoid Emax effect and its inverse — clinical disclaimer)
 - `emax-hill-effect`
 
+### lib/ddi-basic-screen-v1700.js (spec-v1700: ICH M12 basic in vitro inhibition screen — clinical disclaimer)
+- `ddi-basic-screen`
+
+### lib/ddi-static-aucr-v1700.js (spec-v1700: ICH M12 mechanistic static model — clinical disclaimer)
+- `ddi-static-aucr`
+
+### lib/ddi-cr-ir-predict-v1700.js (spec-v1700: CYP3A4 interaction from CR and IR — clinical disclaimer)
+- `ddi-cr-ir-predict`
+
+### lib/enzyme-recovery-time-v1700.js (spec-v1700: enzyme recovery after an inducer or inactivator — clinical disclaimer)
+- `enzyme-recovery-time`
+
 ### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
 - `ischemia-time-clock`
 

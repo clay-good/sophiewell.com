@@ -1004,3 +1004,5 @@ experience**.
 > v1698, VCF Readers — [spec-v1698](spec-v1698.md), which adds `vcf-variant-lookup` and `vcf-qc-summary`, reading plain and bgzipped VCFs in the browser tab without loading them whole, against the VCFv4.5 and SAMv1 specifications read November 7, 2026 — is 2369.)
 
 > v1699, Drug-Interaction Kinetics, First Slice — [spec-v1699](spec-v1699.md), which adds `ddi-strength-classify` (FDA's Table 2 potency definitions, re-read November 7, 2026), `dose-history-level`, `two-compartment-params` and `emax-hill-effect` (stated pharmacokinetic arithmetic) — is 2373.)
+
+> v1700, Drug-Interaction Kinetics, ICH M12 Slice — [spec-v1700](spec-v1700.md), which adds `ddi-basic-screen`, `ddi-static-aucr` and `enzyme-recovery-time` from ICH M12 (Step 4, 2024), and `ddi-cr-ir-predict` from Ohno's abstracts and Tod 2014, all read November 7, 2026 — is 2377.)
