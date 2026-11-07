@@ -57,6 +57,12 @@ The rollout, not the system: more banded tiles can author a severity, and the re
 results can opt into the grid. `test/integration/design-conformance-probe.spec.js` (`RUN_PROBES=1`)
 counts both, and `openspec/changes/design-system-cleanup/tasks.md` tracks the waves.
 
+It counts both only as of chip batch 5. This section claimed it did while the probe had no chip
+category at all -- it sized the stat-grid wave and the two formatting categories, and the chip
+rollout was tracked by reading commits. The probe now reports the banded answers that carry no chip
+(1,452 calls) and, of those, the ones whose own compute already returns an ordinal tier (37), which
+is the shape where a chip is a mapping rather than a new claim.
+
 The probe's own count was wrong until the third stat-grid batch. It read each `resultRow` call
 through a fixed 40-line window, and a single-line `resultRow(o, [...]);` does not end on a line the
 window recognized as a terminator -- so the read ran on into the tiles below and counted their

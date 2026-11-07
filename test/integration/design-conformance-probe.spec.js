@@ -109,6 +109,56 @@ test('design-conformance finder: non-conforming spots by category', () => {
     if (pick.length) { statPickable.push(`${file}:${pick.join('/')}`); pickableTotal += pick.length; }
   }
 
+  // Wave 3.1 sizing: a banded answer with no status chip. The pickable ones are
+  // where the chip is a mapping and not a judgment -- the view's own compute
+  // already returns an ordinal tier at its published cut, so the view maps that
+  // tier to a severity token and authors no threshold. A compute with fewer than
+  // two tier literals is not banded, and one the view never renders as a band
+  // line has nowhere to put a chip.
+  const LIB_DIR = join(ROOT, 'lib');
+  const tierLiterals = (src) => new Set([
+    ...[...src.matchAll(/\b(?:tier|category|stratum):\s*'([^']+)'/g)].map((m) => m[1]),
+  ]);
+  const libCache = new Map();
+  const tiersOfLib = (rel) => {
+    if (!libCache.has(rel)) {
+      try {
+        libCache.set(rel, tierLiterals(readFileSync(join(LIB_DIR, rel), 'utf8')));
+      } catch {
+        libCache.set(rel, new Set());
+      }
+    }
+    return libCache.get(rel);
+  };
+
+  const chipCandidates = [];
+  const chipPickable = [];
+  let chipTotal = 0;
+  let chipPickableTotal = 0;
+  for (const file of views) {
+    const src = readFileSync(join(viewsDir, file), 'utf8');
+    // The tiers every lib this view computes with can return.
+    const tiers = new Set();
+    for (const m of src.matchAll(/from '\.\.\/lib\/([^']+)'/g)) {
+      for (const t of tiersOfLib(m[1])) tiers.add(t);
+    }
+    const bare = [];
+    for (const { call, line } of callsIn(src)) {
+      // Each band item in the call: `{ text: ... }` without an authored severity.
+      for (const item of call.split(/\{\s*(?=text:)/).slice(1)) {
+        const body = item.slice(0, item.search(/\}\s*,|\}\s*\]/) + 1);
+        if (/\bseverity:/.test(body)) continue;
+        bare.push(line);
+        break;
+      }
+    }
+    if (bare.length) {
+      chipCandidates.push(`${file}:${bare.length}`);
+      chipTotal += bare.length;
+      if (tiers.size >= 2) { chipPickable.push(`${file}:${bare.length}`); chipPickableTotal += bare.length; }
+    }
+  }
+
   const css = readFileSync(join(ROOT, 'styles.css'), 'utf8');
   const hexLiterals = (css.match(/#[0-9a-fA-F]{3,8}\b/g) || []).length;
 
@@ -122,4 +172,8 @@ test('design-conformance finder: non-conforming spots by category', () => {
     statTotal, statCandidates.join(', ') || '(none)');
   console.log('[design-conformance] ...of those, every labeled row is a number (pickable now):',
     pickableTotal, statPickable.join(', ') || '(none)');
+  console.log('[design-conformance] banded answers with no status chip (file:calls):',
+    chipTotal, chipCandidates.join(', ') || '(none)');
+  console.log('[design-conformance] ...of those, whose compute already returns an ordinal tier:',
+    chipPickableTotal, chipPickable.join(', ') || '(none)');
 });
