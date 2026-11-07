@@ -1,5 +1,11 @@
 # Change: IV thrombolysis eligibility decision aid for acute ischemic stroke (AHA/ASA 2026)
 
+> **Re-verified November 7, 2026:** the 2026 guideline was read in full where it bears on IV thrombolysis. Its
+> structure differs from the 2019 lists summarized under "What Changes" below: one 4.5-hour window plus three
+> imaging-based extended windows, and Table 8's three tiers (benefit generally greater than risk, relative
+> contraindications, absolute contraindications) in place of absolute and ECASS-III relative exclusions. `design.md`
+> holds the verified criteria and supersedes the list below.
+
 > **GUIDELINE CURRENCY (updated 2026-07-11):** the governing guideline is now the **2026**
 > AHA/ASA acute ischemic stroke guideline (published 2026-01-26, *Stroke*,
 > doi:10.1161/STR.0000000000000513), which **replaces the 2018 guidelines and the 2019 update**.

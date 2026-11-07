@@ -75,4 +75,4 @@ The reason is the change's own sentence.
 
 | Tool | Change | Open tasks | What has to happen first |
 |---|---|---|---|
-| `tpa-eligibility` | [tpa-eligibility](../openspec/changes/tpa-eligibility/) | 9 | Before building, re-verify every time window, exclusion criterion, and threshold in `design.md` against the **AHA/ASA 2026 guideline** (Stroke 2026, doi:10.1161/STR.0000000000000513, which REPLACES the 2019 update) + the tenecteplase/alteplase package inserts (spec-v97 discipline). |
+| `tpa-eligibility` | [tpa-eligibility](../openspec/changes/tpa-eligibility/) | 9 | Before building, read the tenecteplase (TNKase) and alteplase (Activase) package inserts on DailyMed for their stroke indication, contraindications and dosing, and confirm they agree with Table 7 (spec-v97 discipline). |
