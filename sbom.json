@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:07ed0ba5-19b1-5125-84b0-91dea71d0c8d",
+  "serialNumber": "urn:uuid:6521640e-1d26-5bd2-8142-3dc6930b5b89",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-07T12:35:18.365Z",
+    "timestamp": "2026-11-07T18:04:50.715Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2365 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2367 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5994b312d0e8e75eaf5babfaca5e8f90d4b8e571248f723103ae31ce06996269"
+          "content": "22f39cc69e03f42f9e67e4bf2ec851628bf43fff392eb2a6eb4e6f5637ccf863"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "154848"
+          "value": "154965"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fd3d7b953867f04662c9bd37938436fce5d2528da6eac89b048ecb35517b1639"
+          "content": "476c40ea8c2dd61cd163db84365a07343d7bbad257da04b509571e7f27079841"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "646849"
+          "value": "647241"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "74283cf169e7a8667b9804111821adda4e2627928896f91266f61baf659ac8c5"
+          "content": "a3b0ba8a32c294f40ac27a1019ff5c24f8c34f13b16cb7cff571aaeabbe03814"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "298031"
+          "value": "298303"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8c80d8e432ef219555e176ed543340d6131c1faaf1a73b4cc27bdab4cf588929"
+          "content": "a7b9d3f8d5064a21067dd205c9d5d6d41391fbc1a42d07455ec8d4679b54495d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "145775"
+          "value": "145922"
         }
       ]
     },
@@ -724,6 +724,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "25627"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/acmg-variant-classify-v1697.js",
+      "type": "file",
+      "name": "lib/acmg-variant-classify-v1697.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "26a62007ac28611b1d084314c23a3ae7a578a5730a406aad5d3f671a8e939c12"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "13588"
         }
       ]
     },
@@ -2803,6 +2824,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3856"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/bgzf.js",
+      "type": "file",
+      "name": "lib/bgzf.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1ddbf0c732adda9f811f5e342fc4e57d557b3d6ea816f0bb8502a150a2b3a048"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2965"
         }
       ]
     },
@@ -14048,7 +14090,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bb20d6cb19e8436b15b5b855a2463d9517eb98e931c3f2b069f66a1c755d8612"
+          "content": "4a5df179ac4bbcfb3e13c60413e395bf8a1665783688d480302a5609a8ea0a63"
         }
       ],
       "properties": [
@@ -14058,7 +14100,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4328"
+          "value": "4551"
         }
       ]
     },
@@ -17339,6 +17381,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/max-credible-allele-frequency-v1697.js",
+      "type": "file",
+      "name": "lib/max-credible-allele-frequency-v1697.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "28b96a4ae312150b792ed4d85f1421fbe73b68575081883b0a8c93499bbb9969"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8666"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/max-ich-v1453.js",
       "type": "file",
       "name": "lib/max-ich-v1453.js",
@@ -18059,7 +18122,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "90a7f37b8eebcb93875474918a51a2cf3900f8a5a308a007386e55bb16435b3d"
+          "content": "8f49ca336b8487071ab076d6b94d93e07dd16ab6f57f324168f96a6e6d954ea1"
         }
       ],
       "properties": [
@@ -18069,7 +18132,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3065305"
+          "value": "3067201"
         }
       ]
     },
@@ -33494,7 +33557,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3f16236087dc9ebcad4a9886b46a1c0079ceaf6ea63e2ad999345df81e4133e7"
+          "content": "fc396cbf82983e5a1bcf4e8e38878ae076661ee39382602c69964fd4519255ac"
         }
       ],
       "properties": [
@@ -33504,7 +33567,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4135"
+          "value": "4897"
         }
       ]
     },
@@ -33736,6 +33799,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4906"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/acmg-variant-classify-v1697.js",
+      "type": "file",
+      "name": "mcp/adapters/acmg-variant-classify-v1697.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5d5b0fa501939b56e719b853b55f66029c584d0b9c57f330a7b7d1311acdc0bd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1047"
         }
       ]
     },
@@ -48902,6 +48986,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/max-credible-allele-frequency-v1697.js",
+      "type": "file",
+      "name": "mcp/adapters/max-credible-allele-frequency-v1697.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "430f304f2bd6c2bd0f78044ef13a38535a9729cf870796a7a0fbe905d80c076a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1584"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/max-ich-v1453.js",
       "type": "file",
       "name": "mcp/adapters/max-ich-v1453.js",
@@ -62810,7 +62915,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4c706009a21b9ee0b5cbd798d9210054086ad7a3f3b8935db3737005a62b0b3c"
+          "content": "5c1c5fc9f624b09857c90d1373983e795bc6b58e660097ac3ad270f137a08569"
         }
       ],
       "properties": [
@@ -62820,7 +62925,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "170474"
+          "value": "170790"
         }
       ]
     },
@@ -67819,6 +67924,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5884"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1697.js",
+      "type": "file",
+      "name": "views/group-v1697.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dc15b1f0a9f2b5b1704e50c8dc2c420bc0399bcf82767c60844d5d8d3baebb94"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4827"
         }
       ]
     },
@@ -98351,6 +98477,7 @@
         "urn:sophiewell:file:source:lib/aca-sep-window-v1507.js",
         "urn:sophiewell:file:source:lib/acef-v595.js",
         "urn:sophiewell:file:source:lib/acidbase-v129.js",
+        "urn:sophiewell:file:source:lib/acmg-variant-classify-v1697.js",
         "urn:sophiewell:file:source:lib/acr-eular-boolean-v671.js",
         "urn:sophiewell:file:source:lib/acromegaly-biochem-v835.js",
         "urn:sophiewell:file:source:lib/acs-v193.js",
@@ -98450,6 +98577,7 @@
         "urn:sophiewell:file:source:lib/bethesda-thyroid-v424.js",
         "urn:sophiewell:file:source:lib/bethesda-v593.js",
         "urn:sophiewell:file:source:lib/bewe-v715.js",
+        "urn:sophiewell:file:source:lib/bgzf.js",
         "urn:sophiewell:file:source:lib/bi-rads-v322.js",
         "urn:sophiewell:file:source:lib/biffl-bcvi-v436.js",
         "urn:sophiewell:file:source:lib/bigliani-acromion-v488.js",
@@ -99142,6 +99270,7 @@
         "urn:sophiewell:file:source:lib/mason-radial-head-v341.js",
         "urn:sophiewell:file:source:lib/massive-transfusion-v265.js",
         "urn:sophiewell:file:source:lib/mat-injection-admin-deadline-v1637.js",
+        "urn:sophiewell:file:source:lib/max-credible-allele-frequency-v1697.js",
         "urn:sophiewell:file:source:lib/max-ich-v1453.js",
         "urn:sophiewell:file:source:lib/mayfield-perilunate-v414.js",
         "urn:sophiewell:file:source:lib/mayo-adpkd-v563.js",
@@ -100146,6 +100275,7 @@
         "urn:sophiewell:file:source:views/group-v1662.js",
         "urn:sophiewell:file:source:views/group-v167.js",
         "urn:sophiewell:file:source:views/group-v169.js",
+        "urn:sophiewell:file:source:views/group-v1697.js",
         "urn:sophiewell:file:source:views/group-v17.js",
         "urn:sophiewell:file:source:views/group-v173.js",
         "urn:sophiewell:file:source:views/group-v174.js",
@@ -100879,6 +101009,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/aca-sep-window-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acef-v595.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acidbase-v129.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/acmg-variant-classify-v1697.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acr-eular-boolean-v671.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acromegaly-biochem-v835.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acs-v193.js",
@@ -101601,6 +101732,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mason-radial-head-v341.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/massive-transfusion-v265.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mat-injection-admin-deadline-v1637.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/max-credible-allele-frequency-v1697.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/max-ich-v1453.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mayfield-perilunate-v414.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mayo-adpkd-v563.js",
@@ -102368,7 +102500,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "07ed0ba519b1e125"
+      "value": "6521640e1d26ebd2"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -102380,7 +102512,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3925"
+      "value": "3931"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

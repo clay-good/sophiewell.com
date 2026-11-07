@@ -9550,6 +9550,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/bayes-risk-table-v1660.js (spec-v1660: Bayesian risk table — clinical disclaimer)
 - `bayes-risk-table`
 
+### lib/acmg-variant-classify-v1697.js (spec-v1697: ACMG/AMP variant class from evidence codes — clinical disclaimer)
+- `acmg-variant-classify`
+
+### lib/max-credible-allele-frequency-v1697.js (spec-v1697: maximum credible allele frequency — clinical disclaimer)
+- `max-credible-allele-frequency`
+
 ### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
 - `ischemia-time-clock`
 

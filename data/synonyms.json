@@ -13656,6 +13656,26 @@
       ],
       "tile": "t-macs",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "acmg variant classification",
+        "acmg amp classification",
+        "variant of uncertain significance classification",
+        "likely pathogenic variant classification"
+      ],
+      "tile": "acmg-variant-classify",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "maximum credible allele frequency",
+        "variant allele frequency too common",
+        "gnomad filtering allele frequency",
+        "allele count ceiling for a disease model"
+      ],
+      "tile": "max-credible-allele-frequency",
+      "audience": "clinicians"
     }
   ]
 }

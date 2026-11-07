@@ -998,3 +998,5 @@ experience**.
 > v1661, Transplant Size Match and Event Intervals — [spec-v1661](spec-v1661.md), which adds `ischemia-time-clock` and `donor-recipient-size-match`, the two transplant tools that need no OPTN coefficient — is 2361.)
 
 > v1662, T-MACS — [spec-v1662](spec-v1662.md), which adds `t-macs` from two open reprints of the equation and the authors' protocol for the risk groups, read October 20, 2026 — is 2365.)
+
+> v1697, Variant Interpretation Arithmetic — [spec-v1697](spec-v1697.md), which adds `acmg-variant-classify` (Richards 2015 Table 5, Tavtigian 2018 and 2020) and `max-credible-allele-frequency` (Whiffin 2017 and the authors' calculator), read November 7, 2026 — is 2367.)

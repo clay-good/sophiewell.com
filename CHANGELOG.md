@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- ACMG/AMP variant class from the evidence codes a curator applied, by three published methods side by side: the 2015
+  combining rules naming the rule that fired, the 2020 point system, and the 2018 posterior. Changed strengths print in
+  ClinGen notation (PM2_Supporting), and the page says when the methods disagree and why.
+- Maximum credible allele frequency for a dominant or recessive disease model (Whiffin 2017, as the authors' calculator
+  computes it), with the 95% Poisson allele-count ceiling at the reader's allele number and a too-common decision from
+  an allele count or a filtering allele frequency.
 - Standardized mortality ratio: an exact 95% confidence interval (Poisson limits on the observed count, as NCI's
   SEER*Stat documents them) and a plain statement of whether it lies above 1, below 1, or includes it. The NHSN
   SIR tool keeps pointing to the NHSN report, whose interval uses NHSN's own mid-P method.

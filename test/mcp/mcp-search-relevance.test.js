@@ -923,6 +923,8 @@ const PROBES = [
   ['x linked carrier unaffected sons', ['x-linked-bayes-risk']],
   ['first cousins inbreeding coefficient', ['coefficient-of-relationship']],
   ['bayesian risk table', ['bayes-risk-table']],
+  ['acmg variant classification evidence codes', ['acmg-variant-classify']],
+  ['maximum credible allele frequency', ['max-credible-allele-frequency']],
   ['clamp to reperfusion time', ['ischemia-time-clock']],
   ['donor recipient weight ratio', ['donor-recipient-size-match']],
   ['t-macs chest pain troponin', ['t-macs']],
