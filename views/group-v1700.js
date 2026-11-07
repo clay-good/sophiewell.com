@@ -3,6 +3,7 @@
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
+import { plot } from '../lib/components.js';
 import * as DBS from '../lib/ddi-basic-screen-v1700.js';
 import * as DSA from '../lib/ddi-static-aucr-v1700.js';
 import * as DCI from '../lib/ddi-cr-ir-predict-v1700.js';
@@ -69,12 +70,19 @@ function show(r, o) {
   list(o, r.notes);
   note(o, r.note);
 }
-function tool(root, pairs, compute) {
+// chart(result) -> a plot figure or null. It renders beside the answer region, not in it, so the live region
+// announces the answer and not a table of plotted values (docs/design.md 7).
+function tool(root, pairs, compute, chart) {
   const o = out(); root.appendChild(o);
+  const area = el('div', { class: 'plot-area' });
+  root.appendChild(area);
   wire(pairs.map(([d]) => d), () => safe(o, () => {
+    clear(area);
     const args = {};
     for (const [dom, arg] of pairs) args[arg] = val(dom);
-    show(compute(args), o);
+    const r = compute(args);
+    show(r, o);
+    if (chart && r.valid) { const fig = chart(r); if (fig) area.appendChild(fig); }
   }));
 }
 
@@ -138,6 +146,10 @@ export const renderers = {
     numField(root, 'Starting level as a fraction of baseline (0 if fully inactivated; above 1 if induced)', 'ert-e0', '3');
     numField(root, 'Hours since the drug was stopped (optional)', 'ert-hours', '72');
     numField(root, 'Washout of the drug itself before recovery starts, hours (optional)', 'ert-washout', '');
-    tool(root, [['ert-enzyme', 'enzyme'], ['ert-kdeg', 'kdeg'], ['ert-e0', 'startLevel'], ['ert-hours', 'hoursSinceStop'], ['ert-washout', 'washoutHours']], ERT.enzymeRecoveryTime);
+    tool(root, [['ert-enzyme', 'enzyme'], ['ert-kdeg', 'kdeg'], ['ert-e0', 'startLevel'], ['ert-hours', 'hoursSinceStop'], ['ert-washout', 'washoutHours']], ERT.enzymeRecoveryTime, (r) => plot({
+      title: 'Enzyme level after stopping', xLabel: 'hours since stopping', yLabel: 'percent of baseline',
+      series: [{ label: 'Enzyme level', points: r.curve.map((c) => [c.t, c.percent]) }],
+      table: { headers: ['Hours', 'Percent of baseline'], rows: r.curve.filter((_, i) => i % 2 === 0).map((c) => [c.t, c.percent]) },
+    }));
   },
 };

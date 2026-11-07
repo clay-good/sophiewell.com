@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- A shared line plot: the drug level from a dose history (as given and on schedule), enzyme recovery and the sigmoid
+  Emax curve now draw their curve, with a text alternative and every plotted value in a table beneath it.
 - The mechanistic static model now states the exposure-matching dose fraction (1/AUCR) for a drug with linear
   kinetics, and the pharmacokinetics suite, the one-compartment predictor, CYP2D6 phenoconversion and DIPS link the new
   dose-history, strength and FDA-examples tools.

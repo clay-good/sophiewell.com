@@ -3,6 +3,7 @@
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
+import { plot } from '../lib/components.js';
 import * as DSC from '../lib/ddi-strength-classify-v1699.js';
 import * as DHL from '../lib/dose-history-level-v1699.js';
 import * as TCP from '../lib/two-compartment-params-v1699.js';
@@ -69,12 +70,19 @@ function show(r, o) {
   list(o, r.notes);
   note(o, r.note);
 }
-function tool(root, pairs, compute) {
+// chart(result) -> a plot figure or null. It renders beside the answer region, not in it, so the live region
+// announces the answer and not a table of plotted values (docs/design.md 7).
+function tool(root, pairs, compute, chart) {
   const o = out(); root.appendChild(o);
+  const area = el('div', { class: 'plot-area' });
+  root.appendChild(area);
   wire(pairs.map(([d]) => d), () => safe(o, () => {
+    clear(area);
     const args = {};
     for (const [dom, arg] of pairs) args[arg] = val(dom);
-    show(compute(args), o);
+    const r = compute(args);
+    show(r, o);
+    if (chart && r.valid) { const fig = chart(r); if (fig) area.appendChild(fig); }
   }));
 }
 
@@ -98,7 +106,11 @@ export const renderers = {
     numField(root, 'Oral: absorption rate constant ka (per h)', 'dhl-ka', '1');
     numField(root, 'Oral: bioavailability F (0 to 1)', 'dhl-f', '1');
     textField(root, 'Times to evaluate, separated by semicolons (same form as the dose times)', 'dhl-eval', '24');
-    tool(root, [['dhl-route', 'route'], ['dhl-doses', 'doses'], ['dhl-vd', 'vd'], ['dhl-hl', 'halfLife'], ['dhl-cl', 'clearance'], ['dhl-tau', 'interval'], ['dhl-tinf', 'infusionHours'], ['dhl-ka', 'ka'], ['dhl-f', 'bioavailability'], ['dhl-eval', 'evalTimes']], DHL.doseHistoryLevel);
+    tool(root, [['dhl-route', 'route'], ['dhl-doses', 'doses'], ['dhl-vd', 'vd'], ['dhl-hl', 'halfLife'], ['dhl-cl', 'clearance'], ['dhl-tau', 'interval'], ['dhl-tinf', 'infusionHours'], ['dhl-ka', 'ka'], ['dhl-f', 'bioavailability'], ['dhl-eval', 'evalTimes']], DHL.doseHistoryLevel, (r) => plot({
+      title: 'Level over time', xLabel: 'hours from the first dose', yLabel: 'level (mg/L)',
+      series: [{ label: 'As given', points: r.curve.map((c) => [c.t, c.actual]) }, { label: 'On schedule', points: r.curve.map((c) => [c.t, c.onTime]) }],
+      table: { headers: ['Hours', 'As given (mg/L)', 'On schedule (mg/L)'], rows: r.curve.filter((_, i) => i % 4 === 0).map((c) => [c.t, c.actual, c.onTime]) },
+    }));
   },
   'two-compartment-params'(root) {
     numField(root, 'IV bolus dose (mg)', 'tcp-dose', '150');
@@ -115,6 +127,10 @@ export const renderers = {
     numField(root, 'Hill coefficient n (1 for the plain Emax model)', 'ehe-n', '1');
     numField(root, 'Concentration, to get its effect', 'ehe-c', '20');
     numField(root, 'Or a target effect, to get the concentration', 'ehe-target', '');
-    tool(root, [['ehe-e0', 'e0'], ['ehe-emax', 'emax'], ['ehe-ec50', 'ec50'], ['ehe-n', 'hill'], ['ehe-c', 'concentration'], ['ehe-target', 'targetEffect']], EHE.emaxHillEffect);
+    tool(root, [['ehe-e0', 'e0'], ['ehe-emax', 'emax'], ['ehe-ec50', 'ec50'], ['ehe-n', 'hill'], ['ehe-c', 'concentration'], ['ehe-target', 'targetEffect']], EHE.emaxHillEffect, (r) => plot({
+      title: 'Effect against concentration', xLabel: 'concentration (log scale)', yLabel: 'effect', xLog: true, yFromZero: false,
+      series: [{ label: 'Effect', points: r.curve.map((c) => [c.c, c.effect]) }],
+      table: { headers: ['Concentration', 'Effect'], rows: r.curve.filter((_, i) => i % 5 === 0).map((c) => [c.c, c.effect]) },
+    }));
   },
 };

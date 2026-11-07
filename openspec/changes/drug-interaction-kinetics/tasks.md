@@ -6,7 +6,7 @@
 > November 7, 2026), then re-read ICH M12 and the FDA page and diff against `design.md`.
 
 ## 0. Prerequisite
-- [ ] 0.1 Plot component: add it to `docs/design.md` §4 (inline SVG, tokens only, `role="img"` with a text
+- [x] 0.1 (spec-v1703: `plot()` in `lib/components.js`, `lib/plot.js`, design.md 4 and 7; drawn by tools 6, 7 and 9) Plot component: add it to `docs/design.md` §4 (inline SVG, tokens only, `role="img"` with a text
       alternative, values repeated in a `.lookup-table` inside `<details>`), with its accessibility gate in
       §7. Tools 6-9 ship with value tables if this has not landed; no answer waits on it.
 

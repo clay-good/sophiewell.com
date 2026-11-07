@@ -104,6 +104,7 @@ These exist today and are the canonical building blocks. Reuse before you add.
 | Table scroll | `.table-scroll` + `.lookup-table` | wide tables pan inside their box |
 | Code/handoff | `pre`, `.sbar-output`, `.tile-derivation-formula` | mono, wraps, never side-scrolls |
 | Disclosure | `<details>`/`summary` | collapsed proof; opens for print |
+| Plot | `.plot` + `plot()` (`lib/components.js`, geometry in `lib/plot.js`) | an inline SVG line plot of one to three series: `role="img"` with a text alternative naming what is plotted and its range, series told apart by dash pattern as well as token color, and every value repeated in a `.lookup-table` inside `<details>`. It renders beside the answer region, never in the live region, and no answer depends on it |
 
 ## 5. Modern card/chip set we are adopting
 
@@ -167,6 +168,7 @@ Buttons dip on `:active` (`translateY(1px) scale(0.985)`). Every motion rule has
 | Proof prints (details open on `beforeprint`) | `print-details.spec.js` |
 | Native controls match theme | `theme-color-scheme.spec.js` |
 | Contrast / a11y audit | `scripts/a11y-check.mjs`, `.lighthouserc.json` |
+| A plot is an image with a text alternative and a value table, outside the live region, within 320px | `plot-accessible.spec.js`, `test/unit/plot-geometry.test.js` |
 
 Single `<h1>` per tool (from `renderToolView`); section headings are `<h2>`/`<h3>` in
 order. Every focusable control shows the focus ring. Live regions carry results and

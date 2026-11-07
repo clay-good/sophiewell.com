@@ -6,7 +6,7 @@
 > `pwv-carotid-femoral`; they were on November 7, 2026), then re-read the sources in `design.md`.
 
 ## 0. Prerequisite
-- [ ] 0.1 The plot component in `docs/design.md` (shared with `drug-interaction-kinetics` task 0.1). Answers ship
+- [x] 0.1 (landed in spec-v1703, shared with drug-interaction-kinetics) The plot component in `docs/design.md` (shared with `drug-interaction-kinetics` task 0.1). Answers ship
       without it if it has not landed.
 
 ## 1. Re-read at build
