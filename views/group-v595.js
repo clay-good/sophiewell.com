@@ -70,7 +70,7 @@ export const renderers = {
         { label: 'ACEF II', value: `${r.acefII}` },
         { label: 'Age / EF', value: `${r.ratio}` },
         { label: 'Hematocrit points', value: `${r.hematocritPoints}` },
-      ]);
+      ], { stats: true });
       note(o, r.bandText);
       note(o, r.note);
     }));

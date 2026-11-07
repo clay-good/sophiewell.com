@@ -70,7 +70,7 @@ export const renderers = {
         { label: 'Fistulas', value: `${r.fistulaPoints}` },
         { label: 'Distance', value: `${r.distancePoints}` },
         { label: 'Separation', value: `${r.separationPoints}` },
-      ]);
+      ], { stats: true });
       note(o, r.bandText);
       note(o, r.note);
     }));

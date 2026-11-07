@@ -735,7 +735,7 @@ export const renderers = {
           { label: 'Dextrose', value: `${r.dextroseG.toFixed(1)} g (${r.kcalDextrose.toFixed(0)} kcal)` },
           { label: 'Protein', value: `${r.proteinG.toFixed(1)} g (${r.kcalProtein.toFixed(0)} kcal)` },
           { label: 'Lipid', value: `${r.lipidG.toFixed(1)} g (${r.kcalLipid.toFixed(0)} kcal)` },
-        ]);
+        ], { stats: true });
         out.appendChild(el('p', { class: 'muted', text: r.note }));
       } catch (err) {
         out.appendChild(el('p', { class: 'muted', text: err.message }));

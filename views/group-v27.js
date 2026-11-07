@@ -117,7 +117,7 @@ export const renderers = {
         { label: 'MAGGIC points', value: String(r.total) },
         { label: '1-year mortality', value: `${r.mortality1yr}%` },
         { label: '3-year mortality', value: `${r.mortality3yr}%` },
-      ]);
+      ], { stats: true });
       derivation(o, 'Points by component (age and SBP scored by EF tier):', r.items);
       note(o, r.note);
     }));

@@ -78,7 +78,7 @@ export const renderers = {
         { label: 'UIQ-7', value: `${r.uiq.toFixed(2)}/100` },
         { label: 'CRAIQ-7', value: `${r.craiq.toFixed(2)}/100` },
         { label: 'POPIQ-7', value: `${r.popiq.toFixed(2)}/100` },
-      ]);
+      ], { stats: true });
       note(o, r.detail);
       note(o, r.note);
     }));

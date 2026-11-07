@@ -274,7 +274,7 @@ export const renderers = {
         { label: 'OME/day', value: `${r.ome} mg` },
         { label: 'Equianalgesic', value: `${r.equi} ${r.targetUnit}` },
         { label: `Start (−${r.reductionPct}%)`, value: `${r.starting} ${r.targetUnit}` },
-      ]);
+      ], { stats: true });
       note(o, r.detail);
       note(o, r.note);
     }));

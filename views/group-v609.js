@@ -59,7 +59,7 @@ export const renderers = {
         { label: 'Cisternal', value: `${r.cisternal} of ${r.cisternalMax}` },
         { label: 'Ventricular', value: `${r.ventricular} of ${r.ventricularMax}` },
         { label: 'Sites with blood', value: `${r.cisternsWithBlood + r.ventriclesWithBlood} of ${M.CISTERNS.length + M.VENTRICLES.length}` },
-      ]);
+      ], { stats: true });
       note(o, r.bandText);
       note(o, r.note);
     }));

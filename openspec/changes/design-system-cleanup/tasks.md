@@ -50,10 +50,15 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
 - [x] 3.2 Short mutually-exclusive enums (sex, two-way formula toggles): convert the `<select>`
       to `.segmented` (D3). Leave long/open lists as selects. Canonical-first-option invariant kept.
 - [x] 3.3 Multi-output tiles: render the secondary numbers as a `.stat` grid (D5).
-      `statGrid()` + the `{ stats: true }` opt-in on `resultRow`; 19 tiles shipped over two
+      `statGrid()` + the `{ stats: true }` opt-in on `resultRow`; 30 tiles shipped over three
       batches, rollout continues per tile. The probe counts what is left; a candidate qualifies
       only when EVERY labeled row is a number (a criteria checklist or a yes/no flag is not a
-      stat cell).
+      stat cell). Batch 3 also fixed the probe that sizes this wave: it read each `resultRow`
+      call through a fixed 40-line window, so a single-line call never terminated and borrowed
+      the `label:` rows of the tiles below it -- reporting 218 candidates where 133 existed, and
+      flagging one-row calls. It now balances parentheses, and a second line applies this task's
+      own bar (every labeled row a number) so a wave is pickable without hand-reading all of
+      them: 122 three-row calls remain, 27 of them pickable.
 - [x] 3.4 Already held by older machinery, kept as is: the "enter a weight to calculate" line
       sits inside the answer card (a shared `.empty-state` card there would be a card in a card),
       and out-of-range input already pairs `aria-invalid` with an `aria-describedby` message in a

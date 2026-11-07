@@ -90,7 +90,7 @@ export const renderers = {
         { label: 'POPDI-6', value: `${r.popdi.toFixed(1)}/100` },
         { label: 'CRADI-8', value: `${r.cradi.toFixed(1)}/100` },
         { label: 'UDI-6', value: `${r.udi.toFixed(1)}/100` },
-      ]);
+      ], { stats: true });
       note(o, r.detail);
       note(o, r.note);
     }));

@@ -105,7 +105,7 @@ export const renderers = {
     wire(['ukpbc-alp', 'ukpbc-trans', 'ukpbc-bili', 'ukpbc-alb', 'ukpbc-plt'], () => safe(o, () => {
       const r = M.ukPbcRisk({ alp: val('ukpbc-alp'), transaminase: val('ukpbc-trans'), bili: val('ukpbc-bili'), albumin: val('ukpbc-alb'), platelets: val('ukpbc-plt') });
       if (!r.valid) { showInvalid(o, r); return; }
-      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: '5-yr', value: `${r.r5}%` }, { label: '10-yr', value: `${r.r10}%` }, { label: '15-yr', value: `${r.r15}%` }]);
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: '5-yr', value: `${r.r5}%` }, { label: '10-yr', value: `${r.r10}%` }, { label: '15-yr', value: `${r.r15}%` }], { stats: true });
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

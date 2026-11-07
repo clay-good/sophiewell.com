@@ -154,7 +154,7 @@ export const renderers = {
     wire(['select-nihss', 'select-laa', 'select-early', 'select-cortical', 'select-territory'], () => safe(o, () => {
       const r = M.selectPse({ nihss: val('select-nihss'), laa: chk('select-laa'), early: chk('select-early'), cortical: chk('select-cortical'), territory: chk('select-territory') });
       if (!r.valid) { showInvalid(o, r); return; }
-      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Score', value: `${r.score}` }, { label: '1-yr', value: `${r.risk1}%` }, { label: '5-yr', value: `${r.risk5}%` }]);
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Score', value: `${r.score}` }, { label: '1-yr', value: `${r.risk1}%` }, { label: '5-yr', value: `${r.risk5}%` }], { stats: true });
       note(o, r.detail); note(o, r.note);
     }));
     postureNote(root);

@@ -74,7 +74,7 @@ export const renderers = {
         { label: 'Exhaustion', value: `${r.exhaustion}/32` },
         { label: 'Disengagement', value: `${r.disengagement}/32` },
         { label: 'Total', value: `${r.total}/64` },
-      ]);
+      ], { stats: true });
       note(o, r.detail);
       note(o, r.note);
     }));
