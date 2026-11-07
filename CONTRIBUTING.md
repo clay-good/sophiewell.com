@@ -356,6 +356,29 @@ two minutes, against the same assertion CI uses. Prefer spaces and
 commas to slash-joined or underscore-joined tokens, and keep any string
 that renders as its own line short.
 
+### Before you pick up a build-gated tool
+
+A tool that `docs/unbuilt-tools.md` lists is waiting on a source, and the reason
+it gives is a claim about a URL on a date rather than a property of the
+document. Re-check it before trusting it:
+
+```bash
+node scripts/probe-build-gates.mjs            # every gated source
+node scripts/probe-build-gates.mjs --offline  # just what is recorded
+```
+
+On November 7, 2026 four of those sentences were wrong. Three sources recorded
+as unreachable were open, and a fourth named a host that no longer served the
+site at all, so re-probing it could only ever report a refusal. Three tools
+shipped out of simply re-trying (spec-v1689 to spec-v1693).
+
+It cuts the other way too, which is why the probe reads the body and not only
+the status: QualityNet answers 200 with a single-page-application shell that
+carries no document.
+
+A changed status is not permission to build. Read the document, write the tool
+against it, and update the row in `data/build-gates.json` with what you found.
+
 ## How to add or change a commitment
 
 A commitment is a guarantee Sophie makes to its users about its own

@@ -1,0 +1,141 @@
+{
+  "comment": "The sources that gate an unbuilt tool, and what the last probe found. A gate's reason is a claim about a URL on a date, and this is the dated part. scripts/probe-build-gates.mjs re-probes every row and prints what changed; test/unit/build-gates.test.js keeps the rows honest against docs/unbuilt-tools.md. Reachable does NOT mean buildable: a reachable row still needs the document read and the tool written.",
+  "probedOn": "2026-11-07",
+  "gates": [
+    {
+      "tool": "herd-immunity-threshold",
+      "spec": "spec-v1659",
+      "source": "Fine, Eames and Heymann, \"Herd immunity: a rough guide\", Clin Infect Dis 2011;52:911",
+      "url": "https://doi.org/10.1093/cid/cir007",
+      "kind": "publisher-paywall",
+      "lastStatus": 403,
+      "note": "PubMed record 21427399 carries no PMC id, so there is no open copy; the full texts that surface are a course-site PDF and a document-sharing upload, neither a publisher copy nor a verified reprint."
+    },
+    {
+      "tool": "sample-size-proportion",
+      "spec": "spec-v1659",
+      "source": "Lwanga and Lemeshow, Sample Size Determination in Health Studies, WHO 1991 (ISBN 9241544058)",
+      "url": "https://iris.who.int/search?query=Lwanga",
+      "kind": "priced-publication",
+      "lastStatus": 200,
+      "note": "The search page answers, the book is not in it. A priced 1991 WHO publication with no IRIS copy; the reachable PDFs are third-party scans on university and document-sharing servers, which are not verified reprints. A 200 here means the catalogue is up, not that the manual is available."
+    },
+    {
+      "tool": "sample-size-two-groups",
+      "spec": "spec-v1659",
+      "source": "The same manual",
+      "url": "https://iris.who.int/search?query=Lwanga",
+      "kind": "priced-publication",
+      "lastStatus": 200,
+      "note": "See sample-size-proportion."
+    },
+    {
+      "tool": "kdri-kdpi",
+      "spec": "spec-v1661",
+      "source": "OPTN, Guide to Calculating and Interpreting the KDPI",
+      "url": "https://www.hrsa.gov/optn",
+      "kind": "waf-blocked",
+      "lastStatus": 403,
+      "note": "The host recorded in the original gate, optn.transplant.hrsa.gov, no longer serves the site: it answers 301 to this URL. The new host refuses an automated client for the root as well as any document, over both a browser user-agent and the build's own fetcher. The task asks for a download by hand, which is why."
+    },
+    {
+      "tool": "epts-score",
+      "spec": "spec-v1661",
+      "source": "OPTN, Guide to Calculating and Interpreting the EPTS",
+      "url": "https://www.hrsa.gov/optn",
+      "kind": "waf-blocked",
+      "lastStatus": 403,
+      "note": "The same host and the same refusal as kdri-kdpi: optn.transplant.hrsa.gov answers 301 to https://www.hrsa.gov/optn, which returns 403 to an automated client for the root as well as any document."
+    },
+    {
+      "tool": "ed-throughput-measures",
+      "spec": "spec-v1657",
+      "source": "CMS Hospital OQR Specifications Manual (OP-18, OP-22)",
+      "url": "https://qualitynet.cms.gov/outpatient/specifications-manuals",
+      "kind": "script-rendered",
+      "lastStatus": 200,
+      "note": "A 200 that carries nothing: the page is a 5.7 KB single-page-application shell whose only hrefs are its own bundle, favicon and stylesheet. The manual is behind a client-side fetch, so a status code alone would read this gate as open."
+    },
+    {
+      "tool": "westgard-multirule-three-level",
+      "spec": "spec-v1658",
+      "source": "Westgard, Barry, Hunt and Groth, Clin Chem 1981;27:493 (for the three-level rules 2of3-2s, 3-1s, 6-x, 9-x)",
+      "url": "https://doi.org/10.1093/clinchem/27.3.493",
+      "kind": "publisher-paywall",
+      "lastStatus": 403,
+      "note": "The classic two-level rules shipped in spec-v1691 from the first author's own published account; the three-level alternatives were gated on the paper specifically and stay unevaluated."
+    },
+    {
+      "tool": "warfarin-maintenance-adjust",
+      "spec": "spec-v1634",
+      "source": "Van Spall et al., Circulation 2012;126:2309",
+      "url": "https://doi.org/10.1161/CIRCULATIONAHA.112.101808",
+      "kind": "publisher-paywall",
+      "lastStatus": 403,
+      "note": "The abstract-level summary says \"10% to 15% weekly dose changes\" only, which is not an algorithm."
+    },
+    {
+      "tool": "tpa-eligibility",
+      "spec": "spec-v1636",
+      "source": "AHA/ASA 2026 guideline for the early management of acute ischemic stroke, Stroke 2026",
+      "url": "https://doi.org/10.1161/STR.0000000000000513",
+      "kind": "publisher-paywall",
+      "lastStatus": 403,
+      "note": "No PMC copy. A 2026 commentary on the guideline is open (PMC13506147) but a commentary is not the criteria table, and this tool may not ship a criterion unconfirmed against the guideline text. NOT IN docs/unbuilt-tools.md: that index is generated from the tool headings in docs/spec-*.md, and this tool is specified only as an openspec change (openspec/changes/tpa-eligibility, 0 of 9 tasks) with no spec-v document, so the index cannot see it. It is unbuilt and tracked here instead."
+    },
+    {
+      "tool": "aminoglycoside-initial-dose",
+      "spec": "spec-v1631",
+      "source": "Hull and Sarubbi, Ann Intern Med 1976;85:183",
+      "url": "https://doi.org/10.7326/0003-4819-85-2-183",
+      "kind": "publisher-paywall",
+      "lastStatus": 403,
+      "note": "The decisive problem is not only reach: two incompatible coefficient sets circulate (k = 0.00293 x CrCl + 0.014 against 0.0024 x CrCl + 0.01) and neither primary paper is open, so a dosing tool cannot pick one."
+    },
+    {
+      "tool": "levey-jennings-1950",
+      "spec": "spec-v1658",
+      "source": "Levey and Jennings, Am J Clin Pathol 1950;20:1059 (task 1.5, cited for the chart's name only)",
+      "url": "https://academic.oup.com/ajcp/article/20/11/1059/1766748",
+      "kind": "publisher-paywall",
+      "lastStatus": 403,
+      "note": "Also searched the Internet Archive, which this project has used for a 1922 paper: its AJCP 1950 holding is a volume index only, not the issues. The task's own fallback applies, and levey-jennings-limits says the paper was not opened."
+    },
+    {
+      "tool": "compound-interstate-share",
+      "spec": "spec-v1629",
+      "source": "An FDA final rule on certain distributions of compounded human drug products, or an updated standard MOU",
+      "url": null,
+      "kind": "not-yet-published",
+      "lastStatus": null,
+      "note": "There is no document to probe. The tool is built once one of them exists."
+    },
+    {
+      "tool": "340b-rebate-model-clock",
+      "spec": "spec-v1509",
+      "source": "A rebate model that survives challenge",
+      "url": null,
+      "kind": "policy-unsettled",
+      "lastStatus": null,
+      "note": "The earlier pilot was vacated in February 2026 and the revised model may be challenged again."
+    },
+    {
+      "tool": "patient-pa-record-reader",
+      "spec": "spec-v1602",
+      "source": "Real patient-access API exports to test against",
+      "url": null,
+      "kind": "date-conditioned",
+      "lastStatus": null,
+      "note": "Built after January 1, 2027, when the exports exist."
+    },
+    {
+      "tool": "fluoride-supplement-schedule",
+      "spec": "spec-v1639",
+      "source": "Dropped, not gated",
+      "url": null,
+      "kind": "dropped",
+      "lastStatus": null,
+      "note": "FDA's October 2025 enforcement notices conflict with the schedule's 6-months-to-3-years cell, so the tool is not wanted rather than not reachable."
+    }
+  ]
+}
