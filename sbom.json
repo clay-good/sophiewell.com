@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:dd2fca49-f4fe-5b8c-8411-62cd3a573743",
+  "serialNumber": "urn:uuid:ad2b9c58-3043-5469-84b3-9abe79120cdb",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-07T08:52:28.760Z",
+    "timestamp": "2026-11-07T09:29:30.955Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2363 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2364 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d00396905b0674e357a17e6c3f81cb3f2608125ec5e6403024356ccd66cdfebd"
+          "content": "fafb42632c29077e2905b8cdcebe3fcee7ba261495643d5652dc327d5b834721"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "154709"
+          "value": "154774"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "86328b10b8638af3492b0e30ea64bceb5d6194e04ba7a03881187c3dba075541"
+          "content": "1865b27b19f4cca212b96b7d7057d6e9494a1713272c7820ef7c3afb47202cee"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "646534"
+          "value": "646680"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b6e54490bfdc61f63aff2a42bbcfe4045b66d7785f38662834aff804df839e34"
+          "content": "653ef0535ac11423760d44edab209228984234fa1bd989e86f0f82612b959d93"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "297787"
+          "value": "297902"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0d2cab2ba1a38529d7df34866d6a3b40c14f5c04c01868679fd942c096815eaa"
+          "content": "5554b6948a1b8f50d0f0cbe44922434791ae879a6b164d3cd4f1e119190633df"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "145634"
+          "value": "145693"
         }
       ]
     },
@@ -7024,6 +7024,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8696"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/daly-v1690.js",
+      "type": "file",
+      "name": "lib/daly-v1690.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cc864eb1f4bc031772158b93a54efc6962b78ff64fedfde7eba7ca5f6e46b3f6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8319"
         }
       ]
     },
@@ -18038,7 +18059,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cd9193b9fdec57ca8b9a90f9c27edb9f010672a8d9af67cf8d7eaf8c9f5c07ad"
+          "content": "dd7457acb168ad8e9e0e68d18a025e623a7d615028b8347542fb6cd532a9f5bc"
         }
       ],
       "properties": [
@@ -18048,7 +18069,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3063398"
+          "value": "3064221"
         }
       ]
     },
@@ -39532,6 +39553,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1712"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/daly-v1690.js",
+      "type": "file",
+      "name": "mcp/adapters/daly-v1690.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2fb4de4074f26ccb845eee731cfd77ba7c474ad20c3431d41abe5b3841917646"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1324"
         }
       ]
     },
@@ -62726,7 +62768,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e07a3fa32941106702a7292cb43c64df3e1d24b53d39f453b5693bfe6d32eb71"
+          "content": "23f41cdfe827ae8174df8c0b97ac09209d915d47db96710aab7d3f7d932ca8a6"
         }
       ],
       "properties": [
@@ -62736,7 +62778,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "170262"
+          "value": "170341"
         }
       ]
     },
@@ -67598,7 +67640,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "26bc2fc2b748bb2148d55a0bdbb66deeff0e6da79a6dec282506e307d03809a0"
+          "content": "3673070f4c18da9e55f9aba10b87ecdc3ab72805b5dcc2b576ff078c494555da"
         }
       ],
       "properties": [
@@ -67608,7 +67650,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7330"
+          "value": "8164"
         }
       ]
     },
@@ -98567,6 +98609,7 @@
         "urn:sophiewell:file:source:lib/cyp2d6-activity-score-v1640.js",
         "urn:sophiewell:file:source:lib/cyp2d6-phenoconversion-v1640.js",
         "urn:sophiewell:file:source:lib/cystic-echinococcosis-stage-v1562.js",
+        "urn:sophiewell:file:source:lib/daly-v1690.js",
         "urn:sophiewell:file:source:lib/dantrolene-mh-vials-v1636.js",
         "urn:sophiewell:file:source:lib/data.js",
         "urn:sophiewell:file:source:lib/dated-data.js",
@@ -101071,6 +101114,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cyp2d6-activity-score-v1640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cyp2d6-phenoconversion-v1640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cystic-echinococcosis-stage-v1562.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/daly-v1690.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dantrolene-mh-vials-v1636.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/days-supply-v1511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ddd-rate-v1636.js",
@@ -102280,7 +102324,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "dd2fca49f4fe3b8c"
+      "value": "ad2b9c5830434469"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -102292,7 +102336,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3921"
+      "value": "3923"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -1124,6 +1124,7 @@ import medAdminWindowV1636 from './adapters/med-admin-window-v1636.js';
 import surgicalProphylaxisRedoseV1636 from './adapters/surgical-prophylaxis-redose-v1636.js';
 import nhsnSirV1655 from './adapters/nhsn-sir-v1655.js';
 import handHygieneComplianceV1689 from './adapters/hand-hygiene-compliance-v1689.js';
+import dalyV1690 from './adapters/daly-v1690.js';
 import deviceUtilizationRatioV1655 from './adapters/device-utilization-ratio-v1655.js';
 import deviceInfectionRateV1655 from './adapters/device-infection-rate-v1655.js';
 import outbreakAttackRatesV1655 from './adapters/outbreak-attack-rates-v1655.js';
@@ -2518,6 +2519,7 @@ const ADAPTER_MODULES = [
   ['surgical-prophylaxis-redose-v1636', surgicalProphylaxisRedoseV1636],
   ['nhsn-sir-v1655', nhsnSirV1655],
   ['hand-hygiene-compliance-v1689', handHygieneComplianceV1689],
+  ['daly-v1690', dalyV1690],
   ['device-utilization-ratio-v1655', deviceUtilizationRatioV1655],
   ['device-infection-rate-v1655', deviceInfectionRateV1655],
   ['outbreak-attack-rates-v1655', outbreakAttackRatesV1655],

@@ -2833,6 +2833,7 @@ const UTILITIES = [
   { id: 'au-rate-saar', name: 'Antimicrobial Days per 1,000 Days Present, per 100 Admissions, and SAAR (NHSN)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'cdi-labid-category', name: 'C. difficile LabID Event: Onset Category, Incident or Recurrent, and Rate (NHSN)', group: 'Q', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'nhsn-sir', name: 'Standardized Infection Ratio (NHSN, Observed Over Predicted)', group: 'J', audiences: ['clinicians', 'educators'], clinical: false },
+  { id: 'daly', name: 'DALYs From Deaths and Prevalent Cases (YLL + YLD)', group: 'J', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'hand-hygiene-compliance', name: 'Hand Hygiene Compliance Rate (WHO Observed Opportunities)', group: 'J', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'device-utilization-ratio', name: 'Device Utilization Ratio (NHSN, Device Days Over Patient Days)', group: 'J', audiences: ['clinicians', 'educators'], clinical: false },
   { id: 'device-infection-rate', name: 'CLABSI, CAUTI or VAE Rate per 1,000 Device Days (NHSN)', group: 'J', audiences: ['clinicians', 'educators'], clinical: false },

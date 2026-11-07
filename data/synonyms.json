@@ -13282,6 +13282,16 @@
     },
     {
       "phrases": [
+        "daly",
+        "disability adjusted life years",
+        "years of life lost plus disability",
+        "burden of disease dalys"
+      ],
+      "tile": "daly",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "device utilization ratio",
         "central line utilization ratio",
         "catheter utilization ratio",

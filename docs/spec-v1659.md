@@ -45,16 +45,25 @@ October 19, 2026.
 
 ### 6. `herd-immunity-threshold` — Herd Immunity Threshold From R0 and Coverage Needed
 
-**Build gate.** Fine 1993 (*Epidemiol Rev*) and Fine, Eames and Heymann 2011 (*Clin Infect Dis*) were not read; the
-threshold and the imperfect-vaccine correction must be read there first.
+**Build gate, re-tested November 7, 2026 and still shut.** Fine 1993 (*Epidemiol Rev*) and Fine, Eames
+and Heymann 2011 (*Clin Infect Dis* 52:911, doi:10.1093/cid/cir007) are behind the publisher. The only
+full texts reachable are a course-site PDF and a document-sharing upload, neither a publisher copy nor
+a verified reprint. The threshold and the imperfect-vaccine correction must be read in one of those
+papers first.
 
 ### 9. `daly` — DALYs From Deaths and Prevalent Cases (YLL + YLD)
 
-**Build gate.** The WHO global burden of disease methods paper was not read.
+**Shipped November 7, 2026 in [spec-v1690](spec-v1690.md).** The gate recorded here was that the WHO
+global burden of disease methods paper was not read. It is freely published on WHO's own CDN and
+downloads in one call; the current edition is GHE/2026.3, September 2026. Table 2.1's loss function,
+the YLL and YLD formulas and the no-discounting / no-age-weights rule were read there.
 
 ### 10. `sample-size-proportion` — Sample Size for a Proportion or a Mean
 
-**Build gate.** Lwanga and Lemeshow 1991 (WHO) was not read; the WHO copy returned 403.
+**Build gate, re-tested November 7, 2026 and still shut.** Lwanga and Lemeshow 1991 is a priced WHO
+publication (ISBN 9241544058) with no copy in WHO IRIS; the reachable PDFs are third-party scans on
+university and document-sharing servers, which are not the verified reprints the owner's November rule
+allows. This needs a copy of the manual, not another search.
 
 ### 11. `sample-size-two-groups` — Sample Size to Compare Two Proportions or Two Means
 

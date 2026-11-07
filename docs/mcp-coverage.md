@@ -9424,6 +9424,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hand-hygiene-compliance-v1689.js (spec-v1689: WHO hand hygiene compliance from observed opportunities)
 - `hand-hygiene-compliance`
 
+### lib/daly-v1690.js (spec-v1690: DALYs as YLL plus YLD, WHO simplified form)
+- `daly`
+
 ### lib/device-utilization-ratio-v1655.js (spec-v1655: NHSN device utilization ratio — administrative disclaimer)
 - `device-utilization-ratio`
 

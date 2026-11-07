@@ -11,6 +11,7 @@ import * as AP from '../lib/attributable-proportion-v1659.js';
 import * as VE from '../lib/vaccine-effectiveness-v1659.js';
 import * as SMR from '../lib/smr-v1659.js';
 import * as DAS from '../lib/direct-age-standardization-v1659.js';
+import * as DALY from '../lib/daly-v1690.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -66,6 +67,15 @@ function tool(root, pairs, compute) {
 }
 
 export const renderers = {
+  // spec-v1690, closing spec-v1659 tool 9.
+  'daly'(root) {
+    note(root, 'A DALY is the years of life lost to death plus the years lived with disability, with no time discounting and no age weights. Enter one side or both; a blank side is reported as missing, not as a zero.');
+    numField(root, 'Deaths from this cause', 'daly-deaths', 'e.g. 100');
+    selectField(root, 'Age range the deaths fall in', 'daly-age', DALY.AGE_RANGES);
+    numField(root, 'People living with this cause (prevalent cases)', 'daly-cases', 'e.g. 2000');
+    numField(root, 'Disability weight for the condition (0-1)', 'daly-weight', 'e.g. 0.133');
+    tool(root, [['daly-deaths', 'deaths'], ['daly-age', 'ageRange'], ['daly-cases', 'prevalentCases'], ['daly-weight', 'disabilityWeight']], DALY.daly);
+  },
   'incidence-prevalence'(root) {
     selectField(root, 'Measure', 'ipv-measure', IP.MEASURES);
     numField(root, 'New cases, or people with the condition for prevalence', 'ipv-cases', 'e.g. 16');
