@@ -406,6 +406,7 @@ export const RULED = new Map(Object.entries({
   'hf-gdmt-target-percent|hf-stages-abcd': 'DISTINCT -- dose targets against stages from one guideline.',
   'baveno-vii|hvpg': 'DISTINCT -- the Baveno rule-out against a measured pressure gradient.',
   'hepatopulmonary-syndrome|portopulmonary-hypertension': 'DISTINCT -- two pulmonary complications of liver disease from one task force.',
+  'hrv-frequency-domain|hrv-time-domain': 'DISTINCT -- the two halves of the 1996 Task Force standard: Table 1 statistics of the intervals against Table 2 band powers of their spectrum (spec-v1705).',
 }));
 
 function main() {

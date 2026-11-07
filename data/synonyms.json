@@ -13801,6 +13801,23 @@
       ],
       "tile": "pwv-carotid-femoral",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hrv frequency domain",
+        "hrv spectral analysis",
+        "low frequency to high frequency ratio hrv"
+      ],
+      "tile": "hrv-frequency-domain",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "eeg band power",
+        "eeg spectral power"
+      ],
+      "tile": "eeg-band-power",
+      "audience": "clinicians"
     }
   ]
 }

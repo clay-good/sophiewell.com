@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e593fa60-846d-50f7-807d-135dc2841452",
+  "serialNumber": "urn:uuid:df629014-eb32-5cba-8c50-e2d329cb1ba5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-07T20:32:18.766Z",
+    "timestamp": "2026-11-07T20:47:18.468Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2382 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2384 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "07f945fa6d24c7c67f36c74d6c9e9b07acc1d96c6bc69ea85d7ba6f4087357c8"
+          "content": "a3be08ba0a387c025f151e50abc8e8fab95e509dfc4e9f182d17497fb0f345ec"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "155971"
+          "value": "156110"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "73d6a6fb91144f1a143cb3b784983784e755e6d731170cd609a0ca551ecd0f28"
+          "content": "b0fb5d1f46d9e359d0a803d10709a010c4f5c5a2bf3d9af4f8d92b2eb4076d81"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "650089"
+          "value": "650487"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f45a3e2746ed7c3ad1672d536499e1f9a0334db7fee9ac5150191dc1f9a65365"
+          "content": "261f7a8b8c13ec5f245ca8d0bb96c4b2be54f10fc488e886d30d73dd0770f22f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "300224"
+          "value": "300480"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b85ba88f4897e8c0d34eb7ca67edc7cc6a97e232b55c928d6d8a9074350b2516"
+          "content": "9bcf723233a28a1208b1c6305d4d2acf7c484db2233ff78fda7d1bac2ecb8e7d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "147034"
+          "value": "147187"
         }
       ]
     },
@@ -8645,6 +8645,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/dsp.js",
+      "type": "file",
+      "name": "lib/dsp.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fea6829aa0afe27e67394ef6dc4d85d814f3c83a13034dee999370e5eddda3b0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4912"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/dst-v304.js",
       "type": "file",
       "name": "lib/dst-v304.js",
@@ -8956,6 +8977,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4396"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/eeg-band-power-v1705.js",
+      "type": "file",
+      "name": "lib/eeg-band-power-v1705.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6b4d9bd847bdcb50148b1d8084e58e99a27d2c1674f3a815dff6bb8bcd1f3af1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4858"
         }
       ]
     },
@@ -13492,6 +13534,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10999"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hrv-frequency-domain-v1705.js",
+      "type": "file",
+      "name": "lib/hrv-frequency-domain-v1705.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab6faa64096003f275c5e347da6c46288c1198498fef0b87d7b9e167d5393f8c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5513"
         }
       ]
     },
@@ -18395,7 +18458,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "020ddcd5df32ef934d47030f26e9fc52e6eab1fe9dc06e6ecae85adc4c1595bd"
+          "content": "1f0b2b4383ac8a95b1f8b5ed6df8972c7a3281523af90477ee21741cbd1892de"
         }
       ],
       "properties": [
@@ -18405,7 +18468,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3077368"
+          "value": "3080391"
         }
       ]
     },
@@ -41804,6 +41867,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/eeg-band-power-v1705.js",
+      "type": "file",
+      "name": "mcp/adapters/eeg-band-power-v1705.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2eeead2108453fb65ea10506d75311d80f1fed6cb4b8db164cfc342eac3d0d3e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "910"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/effective-osmolality-v683.js",
       "type": "file",
       "name": "mcp/adapters/effective-osmolality-v683.js",
@@ -45895,6 +45979,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1860"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hrv-frequency-domain-v1705.js",
+      "type": "file",
+      "name": "mcp/adapters/hrv-frequency-domain-v1705.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3ccc2761d9ab1d018569f881eaa4979193b58c3d3105a1490638b6e63bf50d1a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "730"
         }
       ]
     },
@@ -63608,7 +63713,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4c20cc337472d34ae8cc83f54f1540256b6da88d0532978ae439e52d1428199a"
+          "content": "035bc3372d44d1d9e62714f4ca07065439cba1a9db1cc3d544e9606cefd38c8c"
         }
       ],
       "properties": [
@@ -63618,7 +63723,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "172453"
+          "value": "172707"
         }
       ]
     },
@@ -68785,6 +68890,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5954"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1705.js",
+      "type": "file",
+      "name": "views/group-v1705.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "303dd718822c8a9c9fc28a21efe56b076ed05bbaee554cb5ab4d83ed688cc493"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5111"
         }
       ]
     },
@@ -99673,6 +99799,7 @@
         "urn:sophiewell:file:source:lib/dscsa-exemption-v1637.js",
         "urn:sophiewell:file:source:lib/dscsa-small-dispenser-check-v1637.js",
         "urn:sophiewell:file:source:lib/dscsa-suspect-sample-size-v1637.js",
+        "urn:sophiewell:file:source:lib/dsp.js",
         "urn:sophiewell:file:source:lib/dst-v304.js",
         "urn:sophiewell:file:source:lib/e-faced-v571.js",
         "urn:sophiewell:file:source:lib/eat-sleep-console-v884.js",
@@ -99688,6 +99815,7 @@
         "urn:sophiewell:file:source:lib/edinburgh-caa-v610.js",
         "urn:sophiewell:file:source:lib/edinburgh-claudication-v702.js",
         "urn:sophiewell:file:source:lib/edmonton-frail-scale-v690.js",
+        "urn:sophiewell:file:source:lib/eeg-band-power-v1705.js",
         "urn:sophiewell:file:source:lib/effective-osmolality-v683.js",
         "urn:sophiewell:file:source:lib/egpa-v641.js",
         "urn:sophiewell:file:source:lib/ehit-v531.js",
@@ -99904,6 +100032,7 @@
         "urn:sophiewell:file:source:lib/hpt-worker.js",
         "urn:sophiewell:file:source:lib/hrs-aki-v808.js",
         "urn:sophiewell:file:source:lib/hrsa-womens-guidelines.js",
+        "urn:sophiewell:file:source:lib/hrv-frequency-domain-v1705.js",
         "urn:sophiewell:file:source:lib/hrv-time-domain-v1704.js",
         "urn:sophiewell:file:source:lib/hsa-predeductible-check.js",
         "urn:sophiewell:file:source:lib/hughes-gbs-v800.js",
@@ -101121,6 +101250,7 @@
         "urn:sophiewell:file:source:views/group-v1700.js",
         "urn:sophiewell:file:source:views/group-v1701.js",
         "urn:sophiewell:file:source:views/group-v1704.js",
+        "urn:sophiewell:file:source:views/group-v1705.js",
         "urn:sophiewell:file:source:views/group-v173.js",
         "urn:sophiewell:file:source:views/group-v174.js",
         "urn:sophiewell:file:source:views/group-v175.js",
@@ -102214,6 +102344,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/edinburgh-caa-v610.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/edinburgh-claudication-v702.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/edmonton-frail-scale-v690.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/eeg-band-power-v1705.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/effective-osmolality-v683.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/egpa-v641.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ehit-v531.js",
@@ -102409,6 +102540,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hospital-fap-v1508.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hrs-aki-v808.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hrv-frequency-domain-v1705.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hrv-time-domain-v1704.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hsa-predeductible-check.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hughes-gbs-v800.js",
@@ -103358,7 +103490,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e593fa60846d10f7"
+      "value": "df629014eb322cba"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -103370,7 +103502,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3970"
+      "value": "3976"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -9595,6 +9595,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pwv-carotid-femoral-v1704.js (spec-v1704: carotid-femoral pulse wave velocity — clinical disclaimer)
 - `pwv-carotid-femoral`
 
+### lib/hrv-frequency-domain-v1705.js (spec-v1705: HRV frequency domain — clinical disclaimer)
+- `hrv-frequency-domain`
+
+### lib/eeg-band-power-v1705.js (spec-v1705: EEG band power — clinical disclaimer)
+- `eeg-band-power`
+
 ### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
 - `ischemia-time-clock`
 

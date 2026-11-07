@@ -1181,6 +1181,8 @@ import hrvTimeDomainV1704 from './adapters/hrv-time-domain-v1704.js';
 import ectopyBurdenV1704 from './adapters/ectopy-burden-v1704.js';
 import spo2ArmsAccuracyV1704 from './adapters/spo2-arms-accuracy-v1704.js';
 import pwvCarotidFemoralV1704 from './adapters/pwv-carotid-femoral-v1704.js';
+import hrvFrequencyDomainV1705 from './adapters/hrv-frequency-domain-v1705.js';
+import eegBandPowerV1705 from './adapters/eeg-band-power-v1705.js';
 import ischemiaTimeClockV1661 from './adapters/ischemia-time-clock-v1661.js';
 import donorRecipientSizeMatchV1661 from './adapters/donor-recipient-size-match-v1661.js';
 import tMacsV1662 from './adapters/t-macs-v1662.js';
@@ -2592,6 +2594,8 @@ const ADAPTER_MODULES = [
   ['ectopy-burden-v1704', ectopyBurdenV1704],
   ['spo2-arms-accuracy-v1704', spo2ArmsAccuracyV1704],
   ['pwv-carotid-femoral-v1704', pwvCarotidFemoralV1704],
+  ['hrv-frequency-domain-v1705', hrvFrequencyDomainV1705],
+  ['eeg-band-power-v1705', eegBandPowerV1705],
   ['ischemia-time-clock-v1661', ischemiaTimeClockV1661],
   ['donor-recipient-size-match-v1661', donorRecipientSizeMatchV1661],
   ['t-macs-v1662', tMacsV1662],

@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Spectral biosignal tools: heart rate variability in the frequency domain (VLF, LF, HF, normalized units and LF/HF,
+  with the bands a recording's length supports) and EEG band power by the IFCN glossary's bands, each drawing its power
+  spectrum. They run on a new signal library (FFT, Hann window, Welch averaging, detrending, cubic spline).
 - Biosignal arithmetic from the reader's own numbers: heart rate variability in the time domain (SDNN, RMSSD, NN50,
   pNN50 and the triangular index, as the 1996 Task Force defines them, with both pNN50 denominators shown), ectopic
   beat and arrhythmia burden, pulse oximeter accuracy from paired readings (Arms, bias and Bland-Altman limits for

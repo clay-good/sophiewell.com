@@ -911,6 +911,8 @@ import * as hrvTimeDomainV1704 from '../../lib/hrv-time-domain-v1704.js';
 import * as ectopyBurdenV1704 from '../../lib/ectopy-burden-v1704.js';
 import * as spo2ArmsAccuracyV1704 from '../../lib/spo2-arms-accuracy-v1704.js';
 import * as pwvCarotidFemoralV1704 from '../../lib/pwv-carotid-femoral-v1704.js';
+import * as hrvFrequencyDomainV1705 from '../../lib/hrv-frequency-domain-v1705.js';
+import * as eegBandPowerV1705 from '../../lib/eeg-band-power-v1705.js';
 import * as ischemiaTimeClockV1661 from '../../lib/ischemia-time-clock-v1661.js';
 import * as donorRecipientSizeMatchV1661 from '../../lib/donor-recipient-size-match-v1661.js';
 import * as tMacsV1662 from '../../lib/t-macs-v1662.js';
@@ -2106,6 +2108,8 @@ const MODULES = {
   'ectopy-burden-v1704.js': ectopyBurdenV1704,
   'spo2-arms-accuracy-v1704.js': spo2ArmsAccuracyV1704,
   'pwv-carotid-femoral-v1704.js': pwvCarotidFemoralV1704,
+  'hrv-frequency-domain-v1705.js': hrvFrequencyDomainV1705,
+  'eeg-band-power-v1705.js': eegBandPowerV1705,
   'ischemia-time-clock-v1661.js': ischemiaTimeClockV1661,
   'donor-recipient-size-match-v1661.js': donorRecipientSizeMatchV1661,
   't-macs-v1662.js': tMacsV1662,

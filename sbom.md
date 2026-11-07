@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e593fa60846d10f7`
-Generated: 2026-11-07T20:32:18.766Z
+Build ID: `df629014eb322cba`
+Generated: 2026-11-07T20:47:18.468Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 155971 | `07f945fa6d24c7c67f36c74d6c9e9b07acc1d96c6bc69ea85d7ba6f4087357c8` |
+| `index.html` | 156110 | `a3be08ba0a387c025f151e50abc8e8fab95e509dfc4e9f182d17497fb0f345ec` |
 | `styles.css` | 87914 | `1f9a3673b22924aeca160cdf0260f0e81f3387d1f3364153ffe55ae966c3ad1a` |
-| `app.js` | 650089 | `73d6a6fb91144f1a143cb3b784983784e755e6d731170cd609a0ca551ecd0f28` |
+| `app.js` | 650487 | `b0fb5d1f46d9e359d0a803d10709a010c4f5c5a2bf3d9af4f8d92b2eb4076d81` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 6994 | `215b6fa7b871cac7b775393d28a00c11ff3ccd1ce1b3230b378bcb8d8f881b40` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 300224 | `f45a3e2746ed7c3ad1672d536499e1f9a0334db7fee9ac5150191dc1f9a65365` |
+| `sitemap.xml` | 300480 | `261f7a8b8c13ec5f245ca8d0bb96c4b2be54f10fc488e886d30d73dd0770f22f` |
 | `_headers` | 2063 | `1a500c03dd4add8641287d189c20f15afa3657931417b11ea2a51f39b501773f` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 147034 | `b85ba88f4897e8c0d34eb7ca67edc7cc6a97e232b55c928d6d8a9074350b2516` |
+| `report-catalog.js` | 147187 | `9bcf723233a28a1208b1c6305d4d2acf7c484db2233ff78fda7d1bac2ecb8e7d` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -444,6 +444,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dscsa-exemption-v1637.js` | 1922 | `4a1d7d522fbf5694c818c8ade470fa963f7e8329c76638a2df302e6996660d20` |
 | `lib/dscsa-small-dispenser-check-v1637.js` | 5560 | `076e6e023713332da6cd0d93f1e8c55d3015e161e76462081cd4daae324b6047` |
 | `lib/dscsa-suspect-sample-size-v1637.js` | 3528 | `bdf7e19bf7b59d23467c3ab5ebab2c3922a5178b4866cb2acd3dea9c0fc5c950` |
+| `lib/dsp.js` | 4912 | `fea6829aa0afe27e67394ef6dc4d85d814f3c83a13034dee999370e5eddda3b0` |
 | `lib/dst-v304.js` | 3761 | `1020a889910971989f6789c8c56dcd0c19e29ea191ef50aaba85f6c7960d7331` |
 | `lib/e-faced-v571.js` | 9870 | `5f9c76ad0e8f01f00bf32601245e755b644f2527b61e6cc555adb00ad43f3033` |
 | `lib/eat-sleep-console-v884.js` | 8499 | `cd6cde5c6890361af9303b274ac15995a7d017f28acec6228762dceb05933e11` |
@@ -459,6 +460,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/edinburgh-caa-v610.js` | 10304 | `fb5605e75a11370d90b16fc49949021691ed4ede58851ccc5bc6fcb199698944` |
 | `lib/edinburgh-claudication-v702.js` | 5035 | `297c5fc34263f6b57507236d4e43bd1e7a6fa6a8046f60bc6ef4adf4dde9097f` |
 | `lib/edmonton-frail-scale-v690.js` | 4396 | `f14692db0410fde4259da7cc3197d98f962fd5196b1c132fd57e66ebba727f3a` |
+| `lib/eeg-band-power-v1705.js` | 4858 | `6b4d9bd847bdcb50148b1d8084e58e99a27d2c1674f3a815dff6bb8bcd1f3af1` |
 | `lib/effective-osmolality-v683.js` | 5268 | `3aa889223199cfef42cba1c8627cc1481e223cb336b9847fb4019e232cbaaa2c` |
 | `lib/egpa-v641.js` | 3821 | `25c4c9e830b415f41dcd6de2d22ba26e7776f4f9fc055edd66d28a388b2e3a96` |
 | `lib/ehit-v531.js` | 10332 | `718b6a6de8e755b57849081fcff223b8888955ce85c8bef8c9d348e4145822df` |
@@ -675,6 +677,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hpt-worker.js` | 1092 | `7d62f64cc7c26dadf569116ce948df0b9c5f030da26338f5ad4384617dd3660d` |
 | `lib/hrs-aki-v808.js` | 5530 | `1c0f95ac894d64cfa61e232142bcea6c972b1eb9d79dd7ce9a9a2bc88d44d40b` |
 | `lib/hrsa-womens-guidelines.js` | 10999 | `a6cd000bf2761a092f621fa1e968e22f5cf3bc1f29a1cbfccb89883f192ce7bc` |
+| `lib/hrv-frequency-domain-v1705.js` | 5513 | `ab6faa64096003f275c5e347da6c46288c1198498fef0b87d7b9e167d5393f8c` |
 | `lib/hrv-time-domain-v1704.js` | 5715 | `97630f905a331c8e439014c121352c246aa9e622fcad443e73564aa71e5a3838` |
 | `lib/hsa-predeductible-check.js` | 12776 | `db826f0ad02ebbf2aac3fed5322aa4c713c97c179ca0547ac074c58417b62f87` |
 | `lib/hughes-gbs-v800.js` | 3821 | `7eccbcbfa3b119a77f179e32c09a0d60436e093d390a0cbcdcd2c615e53964fa` |
@@ -908,7 +911,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3077368 | `020ddcd5df32ef934d47030f26e9fc52e6eab1fe9dc06e6ecae85adc4c1595bd` |
+| `lib/meta.js` | 3080391 | `1f0b2b4383ac8a95b1f8b5ed6df8972c7a3281523af90477ee21741cbd1892de` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 22551 | `2968b0f8bd9102322d6bd43aa9e7447c56e9ec8a42ccb299a9b3e82e051cf7c5` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -2023,6 +2026,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/edinburgh-caa-v610.js` | 3852 | `8ef271b9e97bf5be1ffc2f4bb701cf6481e525d493c8d87f99050db6bf2236a4` |
 | `mcp/adapters/edinburgh-claudication-v702.js` | 1837 | `7da44a6d472f728213634cc841b64f85f9a882d38f7c41d062f57d315ec3cc55` |
 | `mcp/adapters/edmonton-frail-scale-v690.js` | 2341 | `75de15cb4c4cda0bee37e3b0bdc125a66e06b6166dd8bdde2473c2153e992f7e` |
+| `mcp/adapters/eeg-band-power-v1705.js` | 910 | `2eeead2108453fb65ea10506d75311d80f1fed6cb4b8db164cfc342eac3d0d3e` |
 | `mcp/adapters/effective-osmolality-v683.js` | 1028 | `f9299e35b654b9c51d6986a8919de5bc7741470c238bb2555765e3852e7663c2` |
 | `mcp/adapters/egpa-v641.js` | 2018 | `6c76cd7c21dbd099b5921733fe1a5bd3014ffba81abfbdb48292474964bfaeed` |
 | `mcp/adapters/ehit-v531.js` | 4605 | `9060e439ff5afc4722ec36b25dda15611274f5aaef803d9e11b95084647dcc54` |
@@ -2218,6 +2222,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hospital-fap-v1508.js` | 4605 | `1ccef662739011776a6e37b55576f20178ad299f22952da0e9507ce8a0c2f2cb` |
 | `mcp/adapters/hpa-glaucoma-v801.js` | 1292 | `c078b894368db3080fc815dca25c82ccebb6593ce6e11bb1feae681ef46f17c2` |
 | `mcp/adapters/hrs-aki-v808.js` | 1860 | `815c9cd9adc744661d1acd27df7874b7f21068f7dbb5de9fa4fdf9d44e05548f` |
+| `mcp/adapters/hrv-frequency-domain-v1705.js` | 730 | `3ccc2761d9ab1d018569f881eaa4979193b58c3d3105a1490638b6e63bf50d1a` |
 | `mcp/adapters/hrv-time-domain-v1704.js` | 734 | `1f144bcd5b48e2c104f464661b47bcd811b24ff1440ab095fdabc5d1dd71b048` |
 | `mcp/adapters/hsa-predeductible-check.js` | 1688 | `35e8344640b3b457248b606c650cdb66931b75c7c70da6042af8c729da01a2ba` |
 | `mcp/adapters/hughes-gbs-v800.js` | 1029 | `b558601b33d86d737442f9cc179ef58df497dab4b455e5850b26adc71033454a` |
@@ -3061,7 +3066,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zika-case-def-v1563.js` | 1545 | `09efb04a1b9bceec1819cf865b27f0dfde4579b3c440771247ec65f03b2ba077` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 172453 | `4c20cc337472d34ae8cc83f54f1540256b6da88d0532978ae439e52d1428199a` |
+| `mcp/catalog.js` | 172707 | `035bc3372d44d1d9e62714f4ca07065439cba1a9db1cc3d544e9606cefd38c8c` |
 | `mcp/cpic-disk.js` | 835 | `0330f6f5bef6e8755d0763ae8643c64ab674351720e50fc647619bad2730af4c` |
 | `mcp/fda-ddi-disk.js` | 784 | `c58b9984e45b3c47192aac3d74c36b8170fd654b5be3e096f29919860fdff4e9` |
 | `mcp/fields.js` | 9785 | `9becef68aa819332c60561f07119b555152c77834f97ff727214a1944a9bf955` |
@@ -3308,6 +3313,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1700.js` | 9378 | `2a79641118170140cf5f019c602a27bd2f1ac402849a5f9ba99634e4ac1378c7` |
 | `views/group-v1701.js` | 3206 | `7c2c2b2117e4fe9c9dfb4c9991a7f1a7d9c4064b9f5423c1fd227e4fce283d77` |
 | `views/group-v1704.js` | 5954 | `6a17a07a3ff6ff5f059f09acccc9022f91d9c6cd52506a72a9917587eecb357d` |
+| `views/group-v1705.js` | 5111 | `303dd718822c8a9c9fc28a21efe56b076ed05bbaee554cb5ab4d83ed688cc493` |
 | `views/group-v173.js` | 9172 | `171c798a13dcd854771ff613715bb696adc981a7e72fa3d0ce6b1ba4af21b415` |
 | `views/group-v174.js` | 13653 | `71b77268acf0ad70cbf4e9a7cb336d4becadb893014bb43100c09af493f3422a` |
 | `views/group-v175.js` | 8449 | `49010ab3be90473324c5560538b2c77c0184792c48093f0dde5f3c7deb1cadf0` |
