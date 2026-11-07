@@ -47,3 +47,14 @@ test('past its check date the tool does not answer; a missing table and an empty
   assert.match(check({ drugs: 'clarithromycin' }, null, now).message, /did not load/);
   assert.match(check({ drugs: '' }, db, now).message, /^Enter the medications/);
 });
+
+test('spec-v1714: names with punctuation are found, and a slash combination is read by its parts', () => {
+  const r = check({ drugs: "St. John's wort 300 mg\nmidazolam" }, db, now);
+  assert.match(r.band, /^2 of 2 on FDA's examples; 1 CYP pair/);
+  for (const name of ['St. John\u2019s wort', 'tobacco (smoking)', 'oral contraceptives', 'peginterferon alpha-2a']) {
+    assert.match(check({ drugs: name }, db, now).band, /^1 of 1 /, name);
+  }
+  const combo = check({ drugs: 'lopinavir/ritonavir\nmidazolam' }, db, now);
+  assert.match(combo.band, /^3 of 3 /);
+  assert.match(check({ drugs: 'foo/bar' }, db, now).band, /^0 of 2 /);
+});

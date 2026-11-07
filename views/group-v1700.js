@@ -106,7 +106,7 @@ export const renderers = {
   'ddi-static-aucr'(root) {
     note(root, 'All concentrations in µM. Leave a mechanism blank to leave it out.');
     numField(root, 'fm: fraction of the substrate\'s hepatic clearance by this enzyme', 'dsa-fm', '0.9');
-    numField(root, 'Fg: the substrate\'s fraction escaping gut metabolism (blank: 1)', 'dsa-fg', '');
+    numField(root, 'Fg: the substrate\'s fraction escaping gut metabolism (needed with a gut concentration; 1 if none)', 'dsa-fg', '');
     numField(root, 'Reversible: Ki', 'dsa-ki', '0.5');
     numField(root, 'Time-dependent: kinact (per minute)', 'dsa-kinact', '');
     numField(root, 'Time-dependent: KI', 'dsa-ki2', '');

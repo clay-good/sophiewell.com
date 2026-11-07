@@ -66,6 +66,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Drug-interaction tools, after an independent review:
+  - the FDA CYP list check now finds St. John's wort, smoking, oral contraceptives and peginterferon alfa-2a, and
+    reads "lopinavir/ritonavir" by its parts;
+  - the static AUC-ratio model no longer reads a blank substrate Fg as 1 once a gut concentration is in play;
+  - an enzyme turnover (kdeg) typed per hour is refused rather than read per minute;
+  - impossible magnitudes are refused instead of printed.
 - Maximum credible allele frequency: inputs that give a frequency above 1 are refused. Before, that gave a ceiling
   so high no variant could ever be called too common.
 - The ACMG classifier now says plainly that its points and posterior leave out BA1 when BA1 sits beside pathogenic

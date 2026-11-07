@@ -106,3 +106,9 @@ test('sigmoid Emax and its inverse', () => {
   assert.match(ehe({ ...base, hill: '1', concentration: '1', targetEffect: '2' }).message, /not both/);
   assert.match(ehe({ ...base, hill: '0', concentration: '1' }).message, /Hill coefficient/);
 });
+
+test('spec-v1714: an AUC ratio outside 0.0001 to 10,000 is refused, not classed', () => {
+  assert.equal(dsc({ role: 'precipitant', ratio: 1e308 }).valid, false);
+  assert.equal(dsc({ role: 'precipitant', aucWith: 1e-300, aucWithout: 1e300 }).valid, false);
+  assert.equal(dsc({ role: 'precipitant', ratio: 5 }).valid, true);
+});

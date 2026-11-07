@@ -64,7 +64,7 @@ test('static model: the gut factor with Fg 0.5, [I]g 10 µM and Ki 1 µM is 1.83
 });
 
 test('static model: concentration estimates with M12\'s defaults', () => {
-  const r = aucr({ fm: '0.9', ki: '1', estimate: 'true', fup: '0.1', cmax: '2', dose: '100', mw: '500', rb: '1' });
+  const r = aucr({ fm: '0.9', fg: '1', ki: '1', estimate: 'true', fup: '0.1', cmax: '2', dose: '100', mw: '500', rb: '1' });
   assert.ok(r.notes.some((n) => n.includes('1.437 µM') && n.includes('66.67 µM')));
   assert.match(aucr({ fm: '0.9', ki: '1', estimate: true, fup: '0.1', cmax: '2', dose: '100', mw: '500' }).message, /RB/);
 });
@@ -108,4 +108,30 @@ test('CYP3A4 recovery: 50% at 36.1 h, 90% at 119.9 h; threefold induced is 150.2
   assert.deepEqual(recovery({ enzyme: 'CYP3A4', startLevel: '0', washoutHours: '24' }).t50, 60.1);
   assert.match(recovery({ enzyme: 'CYP3A4', startLevel: '1' }).message, /already at baseline/);
   assert.match(recovery({ startLevel: '0' }).message, /Choose the enzyme/);
+});
+
+test('spec-v1714 review fixes: a blank Fg is not read as 1 with a gut concentration; kdeg per hour is caught; magnitudes are fenced', () => {
+  // A blank substrate Fg would drop the gut term (the most favorable value); refused once [I]g is entered or estimated.
+  assert.match(aucr({ fm: 0.9, ki: 10, estimate: true, fup: 0.1, cmax: 1, dose: 100, mw: 500, rb: 1 }).message, /Enter Fg/);
+  assert.match(aucr({ fm: 0.9, ki: 10, ih: 0.3, ig: 10 }).message, /Enter Fg/);
+  assert.equal(aucr({ fm: 0.9, fg: 0.5, ki: 10, ih: 0.3, ig: 10 }).aucr, 1.369);
+  assert.equal(aucr({ fm: 0.9, fg: 0, ki: 10, ih: 0.3, ig: 10 }).valid, true, 'Fg 0 is inside 0 to 1');
+  const noGut = aucr({ fm: 0.9, ki: 10, ih: 0.3 });
+  assert.match(noGut.notes.join(" "), /the gut term \(no Fg and no \[I\]g\)/);
+  // CYP3A4's turnover written per hour (0.0193) is refused everywhere kdeg is entered.
+  for (const r of [
+    screen({ mechanism: 'tdi', unit: 'uM', cmaxu: 0.05, kI: 5, kinact: 0.05, kdeg: 0.0193 }),
+    aucr({ fm: 0.9, fg: 1, kinact: 0.05, kI: 5, kdegH: 0.0193, ih: 0.3 }),
+    recovery({ kdeg: 0.0193, startLevel: 0 }),
+  ]) assert.match(r.message, /Enter kdeg per minute/);
+  assert.equal(screen({ mechanism: 'tdi', unit: 'uM', cmaxu: 0.05, kI: 5, kinact: 0.05, enzyme: 'CYP3A4' }).valid, true);
+  for (const r of [
+    recovery({ kdeg: 0.0003, startLevel: 1e308, hoursSinceStop: 1 }),
+    recovery({ kdeg: 1e-300, startLevel: 0 }),
+    aucr({ fm: 1, fg: 1, ki: 1e-200, ih: 1e100 }),
+    crir({ mode: 'induction', cr: 1, ic: 1e300 }),
+  ]) {
+    assert.equal(r.valid, false);
+    assert.doesNotMatch(r.message, /Infinity|NaN|e\+/);
+  }
 });

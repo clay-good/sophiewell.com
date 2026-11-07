@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `76f657874a728cbd`
-Generated: 2026-11-07T22:56:52.332Z
+Build ID: `39d86ac130473b50`
+Generated: 2026-11-07T23:10:14.089Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -366,7 +366,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cvrisk-engines-v202.js` | 4552 | `267e28ecb23f930b00527a39a07b2c6159154a0edbb85b4a5e4567c9183daaa2` |
 | `lib/cvrisk-v103.js` | 25207 | `a3ee1fe19c69bc0fd5a9492c1329dae65b8b4017c3b16b1d44444542783ae413` |
 | `lib/cyanide-antidote-dose-v1636.js` | 5358 | `37a920efd474624f1715c9e975dc8242961fcbbaeee294fa301c0f373bf321aa` |
-| `lib/cyp-list-check-v1701.js` | 8184 | `95b2aa8c3c876b6b63495b3ab5d07892cfff28368b8cccee0c58402aa0db9538` |
+| `lib/cyp-list-check-v1701.js` | 9340 | `0992da1452b2e5a882f8fadfc99a6a4a8e0c7ae28d845ba463390cbb9b46b6da` |
 | `lib/cyp2d6-activity-score-v1640.js` | 5918 | `042004b3656d487d801b616cb9d72004c16cbfe882e8dc25d5fb8d6f00436534` |
 | `lib/cyp2d6-phenoconversion-v1640.js` | 5914 | `bd3e5f122dd117c31ff0585644a52a83e7df9343338d0e48c367c3ae327054f6` |
 | `lib/cystic-echinococcosis-stage-v1562.js` | 8696 | `97bd771e1baf758d51ed779d088c38e454e83fe32f06cf2c4ffc48da22a960d0` |
@@ -376,10 +376,10 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dated-data.js` | 2051 | `453ea6398e1ada17f48a48a58f8f94b3cc0123262a6ce19022e012714102f6ef` |
 | `lib/days-supply-v1511.js` | 11966 | `6c89fb47f7c264ad1453f1095233a86a671d13d4729bcf662a1f5d02ce99b93b` |
 | `lib/ddd-rate-v1636.js` | 3460 | `edfad6f5764536fe0ece8195d575672aa3f493892fbec88f0e64416149b83610` |
-| `lib/ddi-basic-screen-v1700.js` | 7007 | `ea28e7a31b8484eb25dca882d8dfeea101ae58cbed63101bb540f82b44cc3e35` |
-| `lib/ddi-cr-ir-predict-v1700.js` | 5597 | `519c66d81e89753386f115ea10c32fcde3f4ccad8aaa8c9627de9862617a8a6e` |
-| `lib/ddi-static-aucr-v1700.js` | 10155 | `b4c3e68a13c9bee7c52de4f5ad98f2f589f22adb86d546c62e1c1509aa49c508` |
-| `lib/ddi-strength-classify-v1699.js` | 5359 | `2cb3da67dc9f691586546e51cae83d0ac411539b33bb0673d12115f2d020b808` |
+| `lib/ddi-basic-screen-v1700.js` | 7020 | `06b2e4e9fa2a97c591bc96fb059bb16f3c7a86d721396695e4f931dda32f1b01` |
+| `lib/ddi-cr-ir-predict-v1700.js` | 5613 | `1e5b05a3a488c7d02d43edefd3fc0f1a16b5f66d32fb1baab11b8ab791e7136a` |
+| `lib/ddi-static-aucr-v1700.js` | 10655 | `044958297d75c0a76b967fc604accd35de9add74132f2ad96778049238872427` |
+| `lib/ddi-strength-classify-v1699.js` | 5563 | `68b58f474a6f3b316c34f4d4c9df0ab37ac6f96e0051718a2e1d23353e2f2ec7` |
 | `lib/de-winter-pattern-v1443.js` | 3588 | `55058d3040772d5dbe9cd92f4f1485cc502781c96c1bf756c27eb4f4e78a11b1` |
 | `lib/dea-222-validity-v1637.js` | 6414 | `214814d39c0301ba6139d6f7e9ab7155c2240d1287f151cd335e12eda268be1b` |
 | `lib/dea-number-check-v1637.js` | 3997 | `bacf7d99faff4c508d7fcad73df2ed33d34ba27ff3d96156a2ce981b099e2b99` |
@@ -488,7 +488,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/enturopsych-v254.js` | 8040 | `fda74506629d3035d3c24c18a3cf6faf49a5fa79e3807f01d188c73d6720bd83` |
 | `lib/enviro-v111.js` | 18385 | `a94186fe62f2496908c50141286183ff903e9b6c926a182fd9e997651fa903ef` |
 | `lib/environ-v242.js` | 8342 | `0ee94c20331ce2267db719d39b34f95d6004b740f731e6409de9412da10641e9` |
-| `lib/enzyme-recovery-time-v1700.js` | 4001 | `8222cd6b35657eb979c8466852183ce2d252f228cd1dcd4ea219956b7e645076` |
+| `lib/enzyme-recovery-time-v1700.js` | 4047 | `52fd2dccad2142f96eb0a1a825ce391d991554abf378aa76821fb5cd896516bd` |
 | `lib/eortc-msg-ifd-v869.js` | 9785 | `846502bc39581253f8ffe1cf38dcd5e926144f344ae528fcfab13c02cc24ba01` |
 | `lib/eoss-v713.js` | 3955 | `150229c936465a637e488f83903837324b8752c7051b42903c784ffbae404441` |
 | `lib/epinephrine-device-weight-band-v1639.js` | 7155 | `b32758b431565d3824f182f8e4ecde02d3087bac2b2ffc8366c4e1211097a112` |
@@ -693,7 +693,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/icans-v306.js` | 7107 | `3f1b56270aee2de6696e6212b665fd1a3b46e4b12927eb3f693ba359383fe965` |
 | `lib/icdas-caries-v1485.js` | 3582 | `790b1d4c020b6a4f30e7e6916ceb08587e0792d645627587dc0bd78cbc5d274c` |
 | `lib/icer-dominance-v1634.js` | 7464 | `f7c585936819529f57448a3c3579c65855ed4e87a2ffe5123f87d304d83f1537` |
-| `lib/ich-m12.js` | 2114 | `ad6698aabf5f5decabb1fb11139de1f7a0560bf7f67f930d6e57c9cf9b22e8c6` |
+| `lib/ich-m12.js` | 2953 | `5a7cc22e75460b4072e35f80f5df7a36b44a122129eb5cb08d6bc556f38e2f4b` |
 | `lib/icrs-v338.js` | 4467 | `5e29e3d578cccf7cab83c738db4091fe8c9bb8c0c766b3e34e0ec6022499524b` |
 | `lib/id-v137.js` | 21838 | `0cd0ceb5e54d477d240cbfdc819b217ce26539bf22ae5b0b4da4ec04ae12dd17` |
 | `lib/idcrit-v99.js` | 22445 | `17122b0764715ce1d87b67c2749b6aaeaf4be14893f855bf4bdf138a1df0c288` |
@@ -3314,7 +3314,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1698.js` | 5750 | `34cababe7c0c47abde94e21bdd0b51505a3700172d9bfa4f72a1870f4527ab3b` |
 | `views/group-v1699.js` | 7488 | `eb06c699a55ef3c92cdbb2a2f88d14a75845dee3b9535376b03ba9a45fbeeabd` |
 | `views/group-v17.js` | 12857 | `2a087afd46fa623becd4d939bfb7d8c382db047ab27dc2536a41ec2dcbaaf46c` |
-| `views/group-v1700.js` | 9378 | `2a79641118170140cf5f019c602a27bd2f1ac402849a5f9ba99634e4ac1378c7` |
+| `views/group-v1700.js` | 9412 | `b3b802d2ed90f7443c684acf5eb19c2ec4825ce653c82e3defc28b1d55a0fedd` |
 | `views/group-v1701.js` | 3206 | `7c2c2b2117e4fe9c9dfb4c9991a7f1a7d9c4064b9f5423c1fd227e4fce283d77` |
 | `views/group-v1704.js` | 5954 | `6a17a07a3ff6ff5f059f09acccc9022f91d9c6cd52506a72a9917587eecb357d` |
 | `views/group-v1705.js` | 5111 | `303dd718822c8a9c9fc28a21efe56b076ed05bbaee554cb5ab4d83ed688cc493` |
