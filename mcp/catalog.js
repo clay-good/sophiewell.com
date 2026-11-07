@@ -1168,6 +1168,10 @@ import coefficientOfRelationshipV1660 from './adapters/coefficient-of-relationsh
 import bayesRiskTableV1660 from './adapters/bayes-risk-table-v1660.js';
 import acmgVariantClassifyV1697 from './adapters/acmg-variant-classify-v1697.js';
 import maxCredibleAlleleFrequencyV1697 from './adapters/max-credible-allele-frequency-v1697.js';
+import ddiStrengthClassifyV1699 from './adapters/ddi-strength-classify-v1699.js';
+import doseHistoryLevelV1699 from './adapters/dose-history-level-v1699.js';
+import twoCompartmentParamsV1699 from './adapters/two-compartment-params-v1699.js';
+import emaxHillEffectV1699 from './adapters/emax-hill-effect-v1699.js';
 import ischemiaTimeClockV1661 from './adapters/ischemia-time-clock-v1661.js';
 import donorRecipientSizeMatchV1661 from './adapters/donor-recipient-size-match-v1661.js';
 import tMacsV1662 from './adapters/t-macs-v1662.js';
@@ -2566,6 +2570,10 @@ const ADAPTER_MODULES = [
   ['bayes-risk-table-v1660', bayesRiskTableV1660],
   ['acmg-variant-classify-v1697', acmgVariantClassifyV1697],
   ['max-credible-allele-frequency-v1697', maxCredibleAlleleFrequencyV1697],
+  ['ddi-strength-classify-v1699', ddiStrengthClassifyV1699],
+  ['dose-history-level-v1699', doseHistoryLevelV1699],
+  ['two-compartment-params-v1699', twoCompartmentParamsV1699],
+  ['emax-hill-effect-v1699', emaxHillEffectV1699],
   ['ischemia-time-clock-v1661', ischemiaTimeClockV1661],
   ['donor-recipient-size-match-v1661', donorRecipientSizeMatchV1661],
   ['t-macs-v1662', tMacsV1662],

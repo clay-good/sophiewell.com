@@ -9556,6 +9556,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/max-credible-allele-frequency-v1697.js (spec-v1697: maximum credible allele frequency — clinical disclaimer)
 - `max-credible-allele-frequency`
 
+### lib/ddi-strength-classify-v1699.js (spec-v1699: FDA strength class from an AUC ratio — clinical disclaimer)
+- `ddi-strength-classify`
+
+### lib/dose-history-level-v1699.js (spec-v1699: drug level from an actual dose history — clinical disclaimer)
+- `dose-history-level`
+
+### lib/two-compartment-params-v1699.js (spec-v1699: two-compartment parameters from a biexponential fit — clinical disclaimer)
+- `two-compartment-params`
+
+### lib/emax-hill-effect-v1699.js (spec-v1699: sigmoid Emax effect and its inverse — clinical disclaimer)
+- `emax-hill-effect`
+
 ### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
 - `ischemia-time-clock`
 

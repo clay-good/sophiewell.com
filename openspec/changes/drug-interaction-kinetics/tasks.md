@@ -12,7 +12,7 @@
 
 ## 1. Re-read at build
 - [ ] 1.1 ICH M12 §2.1.2, §7.5.1, Table 3, Table 6; record the PDF hash in `scripts/data/page-hashes.json`.
-- [ ] 1.2 The FDA table page: Table 1 columns, row count, the legend tables, the "current as of" date.
+- [x] 1.2 (re-read November 7, 2026 for spec-v1699: 108,266 bytes, current as of 05/29/2026, Table 2 definitions unchanged; Table 1 is read again when tool 4's builder lands) The FDA table page: Table 1 columns, row count, the legend tables, the "current as of" date.
 - [ ] 1.3 The Ohno 2007 and 2008 abstracts and Tod 2013 and 2014 equations (tool 5); if the full Ohno texts
       have become open, read their stated validity conditions and add them to the page.
 
@@ -30,7 +30,7 @@
 ## 3. Lib
 - [ ] 3.1 `lib/ddi-vNNNN.js`: basic-method ratios, the M12 AUCR with the three runs and the concentration
       estimates, the Table 2 classifier, CR-IR and its back-calculations, enzyme recovery.
-- [ ] 3.2 `lib/pk-multidose-vNNNN.js`: superposition (bolus, infusion, Bateman with the limit form),
+- [x] 3.2 (built as three libs, one per tool: `lib/dose-history-level-v1699.js`, `lib/two-compartment-params-v1699.js`, `lib/emax-hill-effect-v1699.js`) `lib/pk-multidose-vNNNN.js`: superposition (bolus, infusion, Bateman with the limit form),
       two-compartment conversion, sigmoid Emax and its inverse.
 - [ ] 3.3 Unit tests: every vector in `design.md` **Tests** and every scenario in the spec delta, each cutoff
       on both sides of its boundary.

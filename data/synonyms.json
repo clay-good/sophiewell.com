@@ -13694,6 +13694,39 @@
       ],
       "tile": "vcf-qc-summary",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "strong cyp3a inhibitor definition",
+        "exposure ratio inhibitor strength",
+        "inducer strength from exposure decrease"
+      ],
+      "tile": "ddi-strength-classify",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "level after a late dose",
+        "drug level from actual dosing times"
+      ],
+      "tile": "dose-history-level",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "two compartment model parameters",
+        "biexponential fit micro constants"
+      ],
+      "tile": "two-compartment-params",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sigmoid emax model",
+        "hill equation concentration effect"
+      ],
+      "tile": "emax-hill-effect",
+      "audience": "clinicians"
     }
   ]
 }

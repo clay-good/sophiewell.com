@@ -898,6 +898,10 @@ import * as coefficientOfRelationshipV1660 from '../../lib/coefficient-of-relati
 import * as bayesRiskTableV1660 from '../../lib/bayes-risk-table-v1660.js';
 import * as acmgVariantClassifyV1697 from '../../lib/acmg-variant-classify-v1697.js';
 import * as maxCredibleAlleleFrequencyV1697 from '../../lib/max-credible-allele-frequency-v1697.js';
+import * as ddiStrengthClassifyV1699 from '../../lib/ddi-strength-classify-v1699.js';
+import * as doseHistoryLevelV1699 from '../../lib/dose-history-level-v1699.js';
+import * as twoCompartmentParamsV1699 from '../../lib/two-compartment-params-v1699.js';
+import * as emaxHillEffectV1699 from '../../lib/emax-hill-effect-v1699.js';
 import * as ischemiaTimeClockV1661 from '../../lib/ischemia-time-clock-v1661.js';
 import * as donorRecipientSizeMatchV1661 from '../../lib/donor-recipient-size-match-v1661.js';
 import * as tMacsV1662 from '../../lib/t-macs-v1662.js';
@@ -2080,6 +2084,10 @@ const MODULES = {
   'bayes-risk-table-v1660.js': bayesRiskTableV1660,
   'acmg-variant-classify-v1697.js': acmgVariantClassifyV1697,
   'max-credible-allele-frequency-v1697.js': maxCredibleAlleleFrequencyV1697,
+  'ddi-strength-classify-v1699.js': ddiStrengthClassifyV1699,
+  'dose-history-level-v1699.js': doseHistoryLevelV1699,
+  'two-compartment-params-v1699.js': twoCompartmentParamsV1699,
+  'emax-hill-effect-v1699.js': emaxHillEffectV1699,
   'ischemia-time-clock-v1661.js': ischemiaTimeClockV1661,
   'donor-recipient-size-match-v1661.js': donorRecipientSizeMatchV1661,
   't-macs-v1662.js': tMacsV1662,

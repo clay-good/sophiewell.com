@@ -1002,3 +1002,5 @@ experience**.
 > v1697, Variant Interpretation Arithmetic — [spec-v1697](spec-v1697.md), which adds `acmg-variant-classify` (Richards 2015 Table 5, Tavtigian 2018 and 2020) and `max-credible-allele-frequency` (Whiffin 2017 and the authors' calculator), read November 7, 2026 — is 2367.)
 
 > v1698, VCF Readers — [spec-v1698](spec-v1698.md), which adds `vcf-variant-lookup` and `vcf-qc-summary`, reading plain and bgzipped VCFs in the browser tab without loading them whole, against the VCFv4.5 and SAMv1 specifications read November 7, 2026 — is 2369.)
+
+> v1699, Drug-Interaction Kinetics, First Slice — [spec-v1699](spec-v1699.md), which adds `ddi-strength-classify` (FDA's Table 2 potency definitions, re-read November 7, 2026), `dose-history-level`, `two-compartment-params` and `emax-hill-effect` (stated pharmacokinetic arithmetic) — is 2373.)
