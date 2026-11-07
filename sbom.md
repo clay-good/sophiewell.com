@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `04cc82b634077e00`
-Generated: 2026-11-07T21:52:20.114Z
+Build ID: `edd59d6121b982f8`
+Generated: 2026-11-07T22:16:35.240Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -404,7 +404,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dermscore-v234.js` | 10315 | `58335c5bdf538d7a5c4eb21fbc649356637efb8b7a34f0e0e59b48cd0da1be26` |
 | `lib/dermuro-v191.js` | 14756 | `79f290f8e1c58ffc5c634c4ce5758fe737920c989bb5200b41db6a80c78f9f68` |
 | `lib/desensitization-12-step-v1635.js` | 5268 | `414958c6ebb98ed5d0ef758c08673c7ee58f8a90e52d2b1c97d7036e0539bb59` |
-| `lib/device-infection-rate-v1655.js` | 3311 | `3fe81bcd581eab45572a0fc8d325075bcfe3dffb5a3fb1c2e74e99866013f791` |
+| `lib/device-infection-rate-v1655.js` | 4384 | `c0a56e0ed051efda1a05e7260bc7bef4e949321ad94fea19066f9749022fcf51` |
 | `lib/device-utilization-ratio-v1655.js` | 2790 | `4b1e22b907c404849da4ec4d4e84aac9736d700abb8169aa709c572fbed751c8` |
 | `lib/deworming-dose-who-v1550.js` | 5253 | `34b808b71f4b220a1067ae73ab8ad8b346c37007a9cab80996c0b79d42717ef0` |
 | `lib/dexrazoxane-ratio-dose-v1635.js` | 4575 | `e3d182286840dedd8139b46894da57d9d61b064c18e22289e8d9536eabbe7140` |
@@ -911,7 +911,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3084582 | `9b492885f101f233b826d39de1fc99f5206976e90e602afc845e816828c151d4` |
+| `lib/meta.js` | 3084715 | `a9573108638a0b1f27edd0e52e3fb18230826fc4706724edd950388385ceeada` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 22551 | `2968b0f8bd9102322d6bd43aa9e7447c56e9ec8a42ccb299a9b3e82e051cf7c5` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |

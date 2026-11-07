@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- CLABSI, CAUTI and VAE rates per thousand device days now come with the 95% interval
+  NHSN's rate tables print, from NHSN's own mid-P macro.
 - The NHSN SIR tool now gives the two-sided p-value and 95% interval, computed the way NHSN's own published SAS macros
   compute them (mid-P exact, Byar's approximation above 100 observed). It reproduces the three figures NHSN prints in
   its guides, so the numbers should match a facility's report.

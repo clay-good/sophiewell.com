@@ -60,6 +60,13 @@ test('DUR: device days over patient days, refused when device days are more', ()
 });
 
 test('rate: the SIR guide facility, 5 CLABSIs over 1,850 central line days, is 2.70 per 1,000', () => {
+  // NHSN macro guide, May 2021, p. 7: rateCIcomp on 12 / 35 -> 185.767 to 582.877 per 1,000.
+  const ci = rate({ device: 'central-line', events: '12', deviceDays: '35' });
+  assert.deepEqual([ci.lower, ci.upper], [185.767, 582.877]);
+  assert.match(ci.notes[0], /185\.767 to 582\.877 per 1,000 central line days/);
+  const zero = rate({ device: 'urinary-catheter', events: '0', deviceDays: '400' });
+  assert.equal(zero.lower, null);
+  assert.match(zero.notes[0], /no lower limit/);
   assert.equal(rate({ device: 'central-line', events: '5', deviceDays: '1850' }).rate, 2.7);
   const v = rate({ device: 'ventilator', events: '3', deviceDays: '600', episodes: '120' });
   assert.equal(v.rate, 5);
