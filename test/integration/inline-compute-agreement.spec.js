@@ -76,7 +76,12 @@ test('every inline-compute template agrees with the tile it opens', async ({ pag
     await expect(page).toHaveURL(new RegExp(`#${tile}\\b`), { timeout: 10_000 });
     await page.waitForTimeout(250);
 
-    const delivered = await page.locator('#q-results').textContent();
+    // innerText(), not textContent(): the stat grid (design-system wave 3.3)
+    // puts a cell's value and its label in adjacent blocks with no
+    // separator of their own, so textContent fuses a label that ends in a
+    // digit into the next value -- "PAO2" + "19.73" reads as "219.73" and
+    // the real number disappears. innerText keeps the block boundaries.
+    const delivered = await page.locator('#q-results').innerText();
     const deliveredNums = (String(delivered).match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
     // Rounding differs between surfaces (60 vs 60.0, 24-28 vs 24.0 to 28.0), so
     // the tolerance is a rounding step, not an equality.

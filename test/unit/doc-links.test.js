@@ -7,6 +7,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { classify, sameDestination, urlsIn, skipReason, livingDocs } from '../../scripts/check-doc-links.mjs';
+import { isBotWall404 } from '../../scripts/lib/bot-wall.mjs';
 
 test('404, 410, 5xx and a failed request are DEAD', () => {
   for (const s of [404, 410, 500, 503, 0]) {
@@ -75,4 +76,16 @@ test('frozen spec documents are never scanned', () => {
     assert.ok(!list.some((f) => f.endsWith('.txt')));
     assert.ok(list.includes('README.md') && list.includes('CONTRIBUTING.md'));
   });
+});
+
+// issue #39: the living docs cite one fda.gov page, and the runner is given a 404
+// for it while a reader is given the page. Same bot wall as a 403.
+test('a 404 from fda.gov is BLOCKED; every other 404 is still DEAD', () => {
+  const fda = 'https://www.fda.gov/drugs/drug-approvals-and-databases/national-drug-code-directory';
+  assert.equal(classify(fda, 404, fda), 'BLOCKED');
+  assert.equal(classify('https://example.gov/gone', 404, 'https://example.gov/gone'), 'DEAD');
+  // A request that never landed, and a server error, stay unresolved.
+  assert.equal(classify(fda, 0, fda), 'DEAD');
+  assert.equal(classify(fda, 503, fda), 'DEAD');
+  assert.equal(isBotWall404(fda), true);
 });

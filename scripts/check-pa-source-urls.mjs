@@ -49,6 +49,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isAuthWall } from './check-pa-rule-citations.mjs';
+import { isBotWall404 } from './lib/bot-wall.mjs';
 import { secondLook } from './lib/second-look.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
@@ -102,7 +103,9 @@ export function sameAddress(declared, final) {
 export function classify({ status, finalUrl, declaredUrl, error, softNotFound }) {
   if (error) return 'DEAD';
   if (status === 403 || status === 429) return 'BLOCKED';
-  if (status >= 400) return 'DEAD';
+  // fda.gov refuses the runner with a 404 rather than a 403; a 4xx from it says
+  // nothing about whether the page is there (scripts/lib/bot-wall.mjs).
+  if (status >= 400) return isBotWall404(declaredUrl) ? 'BLOCKED' : 'DEAD';
   if (status >= 200 && status < 400) {
     if (softNotFound) return 'DEAD';
     if (!finalUrl || sameAddress(declaredUrl, finalUrl)) return 'OK';

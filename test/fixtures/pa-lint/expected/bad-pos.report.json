@@ -10355,9 +10355,9 @@
         {
           "id": "billing-sequestration-rate",
           "label": "Medicare sequestration rate (2% of the program-payment portion; Budget Control Act of 2011 Pub. L. 112-25 251A) backing sequestration-adjust. Overridable to model the suspended/phased rates Congress has set.",
-          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title2-section901a&num=0&edition=prelim",
+          "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title2/html/USCODE-2023-title2-chap20-subchapI-sec901a.htm",
           "ruleFamily": "billing-v78",
-          "lastVerified": "2026-10-07"
+          "lastVerified": "2026-11-01"
         },
         {
           "id": "billing-surgical-payment-percentages",
