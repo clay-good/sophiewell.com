@@ -12,6 +12,7 @@ import { open, realpath, stat } from 'node:fs/promises';
 import { openAsBlob } from 'node:fs';
 import { basename, isAbsolute, relative, sep } from 'node:path';
 import { recognize, LIMITS, kindInfo } from '../lib/file-kinds.js';
+import { blockLengthAt } from '../lib/bgzf.js';
 import { CSV_TOOLS } from '../lib/upload-fields.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import * as R835 from '../lib/x12-835-run.js';
@@ -126,7 +127,8 @@ async function recognizePath(r) {
   const version = await sniffVcfGz(await openAsBlob(r.real));
   if (!version) return res;
   const info = kindInfo('vcf');
-  return { kind: 'vcf', label: info.label, family: info.family, confidence: 'certain', evidence: [`It is bgzip-compressed, and its first block starts ##fileformat=${version}.`], tools: info.tools };
+  const bgzf = (await blockLengthAt(await openAsBlob(r.real), 0)) !== null;
+  return { kind: 'vcf', label: info.label, family: info.family, confidence: 'certain', evidence: [bgzf ? `It is bgzip-compressed, and its first block starts ##fileformat=${version}.` : `It is gzip-compressed (not bgzip), and its decompressed start is ##fileformat=${version}.`], tools: info.tools };
 }
 
 export async function recognizeFile(args, { roots }) {
@@ -154,7 +156,10 @@ export async function analyzeFile(args, { roots }) {
   if (VCF_TOOLS[tool]) {
     // Streamed, so no size limit. A lookup takes CHROM:POS or an ID.
     const pos = String((args && args.position) || '').trim();
-    const m = /^([^:\s]+):([\d,]+)$/.exec(pos);
+    // CHROM:POS, the chromosome taken up to the last colon (contig names such as HLA alleles contain colons);
+    // anything else is an ID, except a range, which is refused rather than read as an ID (spec-v1716).
+    if (/:[\d,]+-[\d,]+$/.test(pos)) return refusal({ code: 'BAD_POSITION' }, 'Give one position as CHROM:POS (for example chr1:100), not a range.');
+    const m = /^(\S+):([\d,]+)$/.exec(pos);
     const query = m ? { chrom: m[1], pos: m[2] } : { id: pos };
     const { result, receipts } = await runVcf(tool, await openAsBlob(r.real), r.name, { query, sample: args && args.sample });
     if (!result.valid) return refusal({ code: 'UNREADABLE' }, result.message);

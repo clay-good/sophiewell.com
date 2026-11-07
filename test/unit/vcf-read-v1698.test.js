@@ -139,3 +139,43 @@ test('the run gives a receipt only when the whole file was read', async () => {
   const early = await runVcf('vcf-variant-lookup', plain(), 'sample.vcf', { query: { chrom: '20', pos: '14370' } });
   assert.equal(early.receipts, null);
 });
+
+// spec-v1716: review fixes.
+const vcf = (body, samples = 'S1\tS2') => new Blob([`##fileformat=VCFv4.4\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\t${samples}\n${body}`]);
+
+test('spec-v1716: a leading phase mark is read (VCFv4.4); a malformed GT is not called heterozygous', () => {
+  assert.equal(genotype(['GT'], '|1').zygosity, 'haploid or hemizygous, alternate');
+  assert.equal(genotype(['GT'], '|1').phased, true);
+  assert.equal(genotype(['GT'], '|0/1').zygosity, 'heterozygous');
+  assert.match(genotype(['GT'], '1/').zygosity, /not a readable genotype/);
+  assert.match(genotype(['GT'], 'A/1').zygosity, /not a readable genotype/);
+});
+
+test('spec-v1716: a position inside a called deletion says the deletion spans it', async () => {
+  const r = await readVcf(vcf('1\t100\t.\tACGT\tA\t50\tPASS\t.\tGT\t1/1\t0/0\n1\t200\t.\tC\tT\t50\tPASS\t.\tGT\t0/1\t0/1\n'), { mode: 'lookup', query: { chrom: '1', pos: '102' } });
+  assert.equal(r.found, false);
+  assert.match(r.band, /1:102 has no record of its own, but the record at 1:100 \(REF ACGT, ALT A, GT 1\/1\) spans it/);
+  assert.equal(r.covering.length, 1);
+});
+
+test('spec-v1716: ID "." is refused; N is not an SNV; a hex or empty POS is refused; skipped genotypes are counted', async () => {
+  assert.match((await readVcf(vcf('1\t100\t.\tA\tG\t50\tPASS\t.\tGT\t0/1\t0/1\n'), { mode: 'lookup', query: { id: '.' } })).message, /missing value/);
+  assert.equal(alleleType('N', 'A'), 'other');
+  const sum = await readVcf(vcf('1\t100\t.\tN\tA\t50\tPASS\t.\tGT\t0/1\t0/1\n1\t101\t.\tA\tG\t50\tPASS\t.\tGT\t0/1\t0/1\n1\t102\t.\tC\tT\t50\tPASS\t.\n'), { mode: 'summary' });
+  assert.deepEqual([sum.totals.transitions, sum.totals.transversions], [2, 0]);
+  assert.match(sum.notes.join(' '), /1 record with no genotype column for this sample, not counted/);
+  assert.match((await readVcf(vcf('1\t0x64\t.\tA\tG\t50\tPASS\t.\tGT\t0/1\t0/1\n'), { mode: 'summary' })).message, /not a whole number/);
+  assert.match((await readVcf(vcf('1\t\t.\tA\tG\t50\tPASS\t.\tGT\t0/1\t0/1\n'), { mode: 'summary' })).message, /not a whole number/);
+});
+
+test('spec-v1716: a damaged BGZF block names itself; a sample name is in a receipt only by its hash', async () => {
+  const blocks = [block(BYTES.subarray(0, 700)), block(BYTES.subarray(700, 1300)), block(BYTES.subarray(1300)), Buffer.from(BGZF_EOF)];
+  blocks[1][30] ^= 0xff;
+  const bad = await readVcf(new Blob(blocks), { mode: 'summary' });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /The BGZF block at byte \d+ is damaged/);
+  const { receipts } = await runVcf('vcf-qc-summary', plain(), 'jane.vcf', { sample: 'NA00002' });
+  assert.equal(JSON.stringify(receipts.shareable).includes('NA00002'), false);
+  assert.equal(JSON.stringify(receipts.receipt).includes('NA00002'), false);
+  assert.match(receipts.shareable.options.sample.sha256, /^[0-9a-f]{64}$/);
+});

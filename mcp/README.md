@@ -141,7 +141,7 @@ English `message`, so you can branch without parsing prose: `UNKNOWN_TOOL`,
 `minimum`/`maximum`), `INCOMPLETE`, `COMPUTE_ERROR`, `NO_MATCH`, `NO_VALUES`, `MISSING_INPUTS`,
 `AMBIGUOUS`, `NOT_EXPOSED`, `LABEL_WITHHELD` (an older tool whose drug label changed or passed review;
 `labelLinks` gives the current labels), and from the file tools `NO_ROOTS`, `OUTSIDE_ROOTS`,
-`NOT_A_FILE`, `NO_TOOL`, `NOT_AVAILABLE`, `TOO_LARGE`, `UNREADABLE`.
+`NOT_A_FILE`, `NO_TOOL`, `NOT_AVAILABLE`, `TOO_LARGE`, `UNREADABLE`, `BAD_POSITION`.
 
 **`catalogVersion`** (`{ contentHash, tileCount, exposedCount, deterministic,
 cacheable }`) rides on the discovery tools. Because compute is deterministic, you

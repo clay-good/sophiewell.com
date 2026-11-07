@@ -66,6 +66,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- VCF readers, after an independent review:
+  - a VCFv4.4 genotype with a leading phase mark ("|1") is no longer called heterozygous;
+  - a position inside a called deletion says the deletion spans it, instead of "not in this file";
+  - a file with no line break can no longer grow memory without bound;
+  - a damaged bgzip block names itself instead of giving a blank error;
+  - receipts record the sample name only by its hash;
+  - ID "." is refused;
+  - records skipped from the genotype counts are counted;
+  - N is not counted as a transversion;
+  - agents can read plain-gzip VCFs and get a clear refusal for a range.
 - Biosignal tools, after an independent review:
   - HRV no longer prints a ULF band that its 64-second window cannot resolve, and VLF needs 5 minutes for 24-hour
     recordings too;

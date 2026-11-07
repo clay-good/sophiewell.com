@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c60672a510d49cac`
-Generated: 2026-11-07T23:25:36.734Z
+Build ID: `c2b351973f0add63`
+Generated: 2026-11-07T23:42:22.364Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1571,8 +1571,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/vascular-v105.js` | 21159 | `78983bdb8025880a6ac5a817195498f51bc416ef9356c7665c47055800fc3b69` |
 | `lib/vasi-v556.js` | 13112 | `f755315186adfbed1264147d6fb9426fd94178ebad24c9683e275ec6406526f2` |
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
-| `lib/vcf-read-v1698.js` | 19937 | `451c1ff4cc76bde1a7aba9d023e8aee89b3939e2ac3d5220c11a9e088aa6eea5` |
-| `lib/vcf-run-v1698.js` | 1408 | `bbbd2ea9646a550af54ebc2efc7613f07039ebcabffc8fa0afb653f29d18ea78` |
+| `lib/vcf-read-v1698.js` | 23213 | `4e293a0901debb77d6949ed88a32040df9a4f9b6b5686911a1471abea7cc2dec` |
+| `lib/vcf-run-v1698.js` | 1723 | `5a4c39124130e812d7d831523f68c0f8f3f9fa4ac314e50237d708dcb1b53c9c` |
 | `lib/vcf-worker.js` | 885 | `2b1f5b28e3cd19458da7a210c4422d891c97eda53562ab06ce0c745d25538edc` |
 | `lib/veau-cleft-v1497.js` | 2842 | `5c354e47020c67285f8d683a8e18cd9ca4ff13187a9911fd16e5dc15d120126c` |
 | `lib/vent-v195.js` | 11019 | `97c542dc908480ff6101c0bb42db07ceb9818ab281ee6f5b882782543ffbd993` |
@@ -3074,7 +3074,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/cpic-disk.js` | 835 | `0330f6f5bef6e8755d0763ae8643c64ab674351720e50fc647619bad2730af4c` |
 | `mcp/fda-ddi-disk.js` | 784 | `c58b9984e45b3c47192aac3d74c36b8170fd654b5be3e096f29919860fdff4e9` |
 | `mcp/fields.js` | 9785 | `9becef68aa819332c60561f07119b555152c77834f97ff727214a1944a9bf955` |
-| `mcp/file-tools.js` | 12392 | `9eb6538ccba610b9caba7798787650f74d5eb996b817af6d1d2b36a67bb328f0` |
+| `mcp/file-tools.js` | 12978 | `094df4778642dda51dc6b3d03540ae118a85b4c9d4aed6d618d9469994b247f3` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
 | `mcp/tools.js` | 66947 | `4d6f9cf669506bee5c021e344b16c7177f3358017e1605698947e1f7e312ebe9` |
 | `vendored/README.md` | 1874 | `308637ae66d2bf5f78f147a342362718809a7bdde38463b1ec2a5e72ef49fe79` |
