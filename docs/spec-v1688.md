@@ -75,5 +75,15 @@ itself on a second line, separating a unit in the template text (`${r.total} of 
 prose that reads as a verdict (`${r.yesCount} yes`), a `metTag()` row, or a `(enter a weight)`
 fallback. It over-reports rather than under-reports -- a bare `r.someProperty` could be either, so it
 counts as a number and the pick is confirmed against the rendered tile. That narrowed 133 calls to
-38 worth reading, of which 11 qualified and shipped; 122 three-row calls remain, 27 of them
-pickable.
+38 worth reading, of which 11 qualified and shipped.
+
+Then the classifier itself was wrong twice, both found by reading its own output rather than by a
+test: `NUMERIC` matched `age` inside `stage`, and the name test only looked at a bare `r.x`, so a
+value whose text is only a separator, with both halves read from word-valued properties, left no
+literal word behind to catch. Names are matched by camelCase segment now, and every read in a value is tested.
+That takes the list from 27 to **3** -- and those three are judged rather than pending: the
+enoxaparin panel mixes conditional text rows into its numbers, the naloxone doses are strings
+("0.4 mg IV") behind neutrally-named reads, and a Fazekas grade is an ordinal printed as a digit.
+Checked the other way too: stripping the opt-in off four shipped tiles brings all four back onto
+the list, so the tighter rule hides nothing real. **The stat-grid rollout is complete**, 122
+three-row calls notwithstanding -- the rest state a verdict in at least one row.

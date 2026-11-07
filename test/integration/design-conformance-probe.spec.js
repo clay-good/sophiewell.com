@@ -74,16 +74,46 @@ test('design-conformance finder: non-conforming spots by category', () => {
     }
     return chunk.slice(m.index + m[0].length, i);
   });
+  // A property read is the classifier's blind spot: `r.opScore` is a number and
+  // `r.riskGroup` is a word, and nothing in the expression says which. The name
+  // does. Reviewing the first list by hand turned up the vocabulary a result
+  // object uses for its word-valued verdicts, so those are rejected by name
+  // rather than offered again every wave.
+  //
+  // Two things this has to get right, both learned from getting them wrong: the
+  // name is matched by camelCase SEGMENT, not by substring (`stage` is not an
+  // `age`), and the test applies to every read in the value, not only to a bare
+  // one: a value whose text is only a separator, with both halves read from
+  // word-valued properties, leaves no literal word behind to catch.
+  const WORDY = new Set(['label', 'band', 'bandlabel', 'tier', 'category', 'group', 'stratum', 'stage',
+    'class', 'profile', 'interpretation', 'severity', 'risk', 'status', 'version', 'activity',
+    'survival', 'probability', 'pattern', 'grade', 'finding', 'scale', 'definition', 'examples',
+    'text', 'note', 'message', 'reading', 'verdict', 'recommendation', 'action', 'ventilation',
+    'vasoactive', 'uncorrectedband']);
+  const NUMERIC = new Set(['score', 'total', 'count', 'sum', 'index', 'ratio', 'pct', 'percent',
+    'point', 'points', 'pts', 'mg', 'ml', 'dose', 'rate', 'area', 'volume', 'mortality',
+    'morbidity', 'gap', 'number', 'age', 'day', 'days', 'hour', 'hours', 'min', 'mins', 'max']);
+  // 'laboratoryTier' -> ['laboratory', 'tier']; the whole name is kept too, so a
+  // compound like 'bandLabel' can be named outright.
+  const segments = (name) => [name.toLowerCase(), ...name.split(/(?=[A-Z])/).map((w) => w.toLowerCase())];
+  const readsWord = (name) => {
+    const segs = segments(name);
+    return segs.some((w) => WORDY.has(w)) && !segs.some((w) => NUMERIC.has(w));
+  };
+
   const isNumeric = (value) => {
     if (!value) return false;
     // A ternary or a `||` fallback that can yield a word is a verdict, not a number.
     if (/metTag\s*\(/.test(value)) return false;
     if (/[?|]{1,2}\s*['"]/.test(value) || /:\s*['"]/.test(value)) return false;
     if (/fallback:\s*['"]\(/.test(value)) return false;
-    // Drop the property reads and the helper names, then every alphabetic word
-    // still standing is literal text in the template -- and literal text may
-    // only be a unit. That is what separates `${r.yesCount} yes` (prose: a
-    // count of answers, read as a verdict) from `${r.total} of ${r.max}`.
+    // Any read whose name says it holds a word disqualifies the row.
+    for (const m of value.matchAll(/\.([A-Za-z][A-Za-z0-9]*)/g)) {
+      if (readsWord(m[1])) return false;
+    }
+    // Then every alphabetic word still standing is literal text in the template,
+    // and literal text may only be a unit. That separates `${r.yesCount} yes`
+    // (prose: a count of answers, read as a verdict) from `${r.total} of ${r.max}`.
     const words = value
       .replace(/\.[A-Za-z][A-Za-z0-9]*/g, ' ')
       .replace(/\b(?:r|fmt|Number|Math|String)\b/g, ' ')

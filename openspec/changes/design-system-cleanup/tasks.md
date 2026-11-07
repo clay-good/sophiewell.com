@@ -91,6 +91,16 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       flagging one-row calls. It now balances parentheses, and a second line applies this task's
       own bar (every labeled row a number) so a wave is pickable without hand-reading all of
       them: 122 three-row calls remain, 27 of them pickable.
+      The classifier was then wrong twice, both found by reading its own list: `NUMERIC` matched
+      `age` inside `stage`, and the name test only looked at a bare `r.x`, so a value carrying
+      its prose in the property names, both halves read from word-valued properties, left no
+      literal word behind to catch. Names are now matched by camelCase segment, and every read in the value is tested.
+      That takes the pickable list from 27 to **3**, and those three are judged, not pending: the
+      enoxaparin panel mixes conditional text rows into its numbers, the naloxone doses are
+      strings ("0.4 mg IV") behind neutrally-named reads, and a Fazekas grade is an ordinal
+      printed as a digit. Checked for the opposite error too -- stripping the opt-in off four
+      shipped tiles brings all four back onto the list, so nothing real is being hidden. **The
+      stat-grid rollout is complete**; what is left is the judgment calls above.
 - [x] 3.4 Already held by older machinery, kept as is: the "enter a weight to calculate" line
       sits inside the answer card (a shared `.empty-state` card there would be a card in a card),
       and out-of-range input already pairs `aria-invalid` with an `aria-describedby` message in a
