@@ -47,3 +47,18 @@ example sweep reads.
 The rollout, not the system: more banded tiles can author a severity, and the remaining multi-number
 results can opt into the grid. `test/integration/design-conformance-probe.spec.js` (`RUN_PROBES=1`)
 counts both, and `openspec/changes/design-system-cleanup/tasks.md` tracks the waves.
+
+The probe's own count was wrong until the third stat-grid batch. It read each `resultRow` call
+through a fixed 40-line window, and a single-line `resultRow(o, [...]);` does not end on a line the
+window recognized as a terminator -- so the read ran on into the tiles below and counted their
+`label:` rows as part of the call. One-row calls were reported as three-row candidates, and the
+total read 218 against a true 133. The call is now read by balancing parentheses.
+
+A truthful total still was not a pickable list, because the bar is narrower than three labeled rows:
+a stat cell holds a **number**, so every labeled row has to be one. The probe now applies that bar
+itself on a second line, separating a unit in the template text (`${r.total} of ${r.max}`) from
+prose that reads as a verdict (`${r.yesCount} yes`), a `metTag()` row, or a `(enter a weight)`
+fallback. It over-reports rather than under-reports -- a bare `r.someProperty` could be either, so it
+counts as a number and the pick is confirmed against the rendered tile. That narrowed 133 calls to
+38 worth reading, of which 11 qualified and shipped; 122 three-row calls remain, 27 of them
+pickable.
