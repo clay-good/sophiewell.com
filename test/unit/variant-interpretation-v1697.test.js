@@ -153,3 +153,15 @@ test('maxAF refusals', () => {
   assert.match(maf({ ...base, alleleCount: '30', alleleNumber: '20' }).message, /cannot exceed/);
   assert.match(maf({ ...base, alleleNumber: '12.5' }).message, /whole number/);
 });
+
+test('spec-v1713 review fixes: an impossible maxAF is refused; BA1 beside pathogenic codes flags the unscored posterior', () => {
+  const r = maf({ inheritance: 'dominant', prevalence: '0.5', allelicContribution: '1', penetrance: '0.1', alleleCount: '1', alleleNumber: '100' });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /2\.5, above 1/);
+  assert.equal(maf({ inheritance: 'recessive', prevalence: '0.5', allelicContribution: '1', penetrance: '0.1', alleleCount: '100', alleleNumber: '100' }).valid, false);
+  const mixed = acmg({ codes: 'BA1\nPVS1\nPS1' });
+  assert.equal(mixed.richardsClass, 'Uncertain significance');
+  assert.match(mixed.notes.join(' '), /BA1 is not scored, so the points/);
+  assert.match(acmg({ codes: 'BA1\nPP3' }).notes.join(' '), /leave the stand-alone benign evidence out/);
+  assert.doesNotMatch(acmg({ codes: 'BA1' }).notes.join(' '), /not scored, so the points/);
+});

@@ -66,6 +66,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Maximum credible allele frequency: inputs that give a frequency above 1 are refused. Before, that gave a ceiling
+  so high no variant could ever be called too common.
+- The ACMG classifier now says plainly that its points and posterior leave out BA1 when BA1 sits beside pathogenic
+  codes, instead of showing that posterior with no warning.
 - The IV thrombolysis checklist, after an independent review:
   - a label sentence no longer appears once the labels are withheld;
   - a partial lab panel names the blank labs and keeps the warning about recent warfarin;

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a57107aecce69ac9`
-Generated: 2026-11-07T22:44:03.822Z
+Build ID: `76f657874a728cbd`
+Generated: 2026-11-07T22:56:52.332Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -67,7 +67,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/aca-sep-window-v1507.js` | 5301 | `20abd848c581d742987468d57a073c6a23c7cdc250a6db09d28c7541c71bc6b4` |
 | `lib/acef-v595.js` | 13058 | `1e62c5253fb8fe196a4277b4ee49af39527a6bb620fb98f67f3f0fb83f10fa83` |
 | `lib/acidbase-v129.js` | 25627 | `9874f82b6ae4a2f07fa907d27b7cac99307bfa293c63bb33439339c1dbfe2697` |
-| `lib/acmg-variant-classify-v1697.js` | 13588 | `26a62007ac28611b1d084314c23a3ae7a578a5730a406aad5d3f671a8e939c12` |
+| `lib/acmg-variant-classify-v1697.js` | 13891 | `bbede44930f7021109ec48df48754fed554eaa2409e46bffe261be87f2b851c3` |
 | `lib/acr-eular-boolean-v671.js` | 4453 | `79e79312ee4df6fc97bcb44e121482e68c9d62323446f27087d26beac5478fba` |
 | `lib/acromegaly-biochem-v835.js` | 10976 | `d5fa8c2648b6ede227d183b1100449bc9be17f1187669c4a7dc586ddb1ee1f52` |
 | `lib/acs-v193.js` | 17117 | `c68191b4b0ee4b9da60fbad8549c688ddafe119ff9b256f0a4a52bda799dd43a` |
@@ -876,7 +876,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/mason-radial-head-v341.js` | 4841 | `5f3e5f6a2c2324d646a167f847a587dc1068e54cfb876bc4723212ea057cd4e2` |
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/mat-injection-admin-deadline-v1637.js` | 3750 | `5e4cadf31c6da537b7b271d5a3ae75ed677a852db8fe61fda0b22264c29ffd60` |
-| `lib/max-credible-allele-frequency-v1697.js` | 8666 | `28b96a4ae312150b792ed4d85f1421fbe73b68575081883b0a8c93499bbb9969` |
+| `lib/max-credible-allele-frequency-v1697.js` | 9092 | `7288235558545bf70ce852b070708f292cbdd4b090f11d3d9ea641800c9390cd` |
 | `lib/max-ich-v1453.js` | 6302 | `f7bb8c025b5f0fac7f3185cc6c3b0f7ade1f622a305a16ca9c3bd4d9250b69fb` |
 | `lib/mayfield-perilunate-v414.js` | 4219 | `dbec2e4abce7912c621e5cee9f8bdb1fa3555240da1d08a3f75f448fd0297fc4` |
 | `lib/mayo-adpkd-v563.js` | 15179 | `f1128363d3b5bcfe5e5723ab3c8e0fbd01e427ddabbf1f43359e7243a6e9208f` |
