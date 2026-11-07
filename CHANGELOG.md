@@ -66,6 +66,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The IV thrombolysis checklist, after an independent review:
+  - a label sentence no longer appears once the labels are withheld;
+  - a partial lab panel names the blank labs and keeps the warning about recent warfarin;
+  - half a blood pressure is called half a check;
+  - an unrecognized thrombectomy answer is refused instead of being read as "yes";
+  - out-of-range numbers are refused by name, including platelets typed as 50000 rather than 50;
+  - the "no benefit for non-disabling deficits" line is cited only within 4.5 hours.
 - A dropped `.gz` made of several gzip members, which is how every bgzipped `.vcf.gz` is written (BGZF), is now
   unpacked instead of refused. The browser's and Node's gzip decoder reads only the first member and threw on the
   rest; BGZF files are now split at the block sizes they record and read block by block (`lib/bgzf.js`), a file

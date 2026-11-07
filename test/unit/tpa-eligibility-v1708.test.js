@@ -99,3 +99,29 @@ test('a lapsed or superseded label withholds the label statements; the guideline
   assert.ok(!r.notes.some((n) => n.includes('A labeled contraindication')));
   assert.match(r.band, /^No absolute contraindication was ticked/);
 });
+
+test('spec-v1712 review fixes: label gate, partial labs, half a BP, unknown answers, fences, band per window', () => {
+  const b = { timing: 'within-3h', disabling: 'yes', sbp: '160', dbp: '90', glucose: '120' };
+  // 1. With the labels lapsed, no label sentence rides on the BP note.
+  const lapsed = tpa({ ...b, sbp: '200' }, new Date('2028-06-01'));
+  assert.ok(lapsed.notes.some((n) => /^BP 200\/90/.test(n)));
+  assert.ok(!lapsed.notes.some((n) => /labels contraindicate/.test(n)));
+  // 2. A partial lab panel names what was left blank, and recent warfarin still warns.
+  const partial = tpa({ ...b, recentAnticoagulant: true, platelets: '200' });
+  assert.match(partial.notes.join(' '), /Not entered: INR, aPTT, PT/);
+  assert.match(partial.notes.join(' '), /applies only without recent warfarin or heparin/);
+  // 3. Half a blood pressure is said to be half a check.
+  assert.match(tpa({ ...b, dbp: '' }).notes.join(' '), /Diastolic BP was not entered, so only half/);
+  // 4. An unrecognized thrombectomy answer is refused, not read as "yes".
+  for (const evt of ['maybe', {}, true]) assert.equal(tpa({ ...b, timing: '4.5-9h', perfusionPenumbra: true, evtCandidate: evt }).valid, false);
+  // 5 and 6. Arrays, overflow and a platelet count typed in units are refused by name.
+  for (const bad of [{ glucose: [] }, { platelets: -1e308 }, { sbp: 1e308 }, { dbp: NaN }, { platelets: 50000 }]) {
+    const r = tpa({ ...b, ...bad });
+    assert.equal(r.valid, false);
+    assert.doesNotMatch(r.message, /NaN|Infinity|undefined|e\+/);
+  }
+  // Band per window: the within-4.5-hours "No Benefit" line is not cited outside 4.5 hours.
+  assert.equal(tpa({ ...b, disabling: 'no' }).bandLabel, 'Not recommended (non-disabling)');
+  assert.doesNotMatch(tpa({ ...b, disabling: 'no', timing: 'beyond-24h' }).band, /within 4\.5 hours, as it has not shown/);
+  assert.equal(tpa({ ...b, disabling: 'no', timing: '4.5-9h', perfusionPenumbra: true, evtCandidate: 'no' }).bandLabel, 'Non-disabling, extended window');
+});
