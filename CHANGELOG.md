@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The SAAR now comes with its two-sided p-value and 95% interval, by the same NHSN method its Statistics Calculator
+  applies to the SIR and the SAAR.
 - CLABSI, CAUTI and VAE rates per thousand device days now come with the 95% interval
   NHSN's rate tables print, from NHSN's own mid-P macro.
 - The NHSN SIR tool now gives the two-sided p-value and 95% interval, computed the way NHSN's own published SAS macros

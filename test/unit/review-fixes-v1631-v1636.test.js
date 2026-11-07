@@ -91,3 +91,20 @@ test('fomepizole: no "during dialysis" time that falls before dialysis began', (
   assert.match(late.band, /4 hours from the last dose was before dialysis started/);
   assert.equal(fomepizoleSchedule({ weight: 70, dosesGiven: 2, dialysis: 'dialysis-begins', lastDoseTime: '2026-10-20T00:00', dialysisTime: '2026-10-20T02:00' }, now).at, '2026-10-20 04:00');
 });
+
+test('SAAR (spec-v1711): NHSN\'s p-value and interval, as for the SIR, and refused where the method does not apply', () => {
+  const base = { scope: 'one-location', daysPresent: '1000' };
+  // The SIR guide's printed case read as a SAAR: 5 observed over 2.365 predicted -> p 0.1251, 0.775 to 4.686.
+  let r = auRateSaar({ ...base, antimicrobialDays: '5', predictedDays: '2.365' });
+  assert.deepEqual([r.saarP, r.saarLower, r.saarUpper], [0.1251, 0.775, 4.686]);
+  r = auRateSaar({ ...base, antimicrobialDays: '650', predictedDays: '700' });
+  assert.match(r.notes.join(' '), /Byar approximation/);
+  r = auRateSaar({ ...base, antimicrobialDays: '0', predictedDays: '3' });
+  assert.equal(r.saarLower, null);
+  r = auRateSaar({ ...base, antimicrobialDays: '650', predictedDays: '0.5' });
+  assert.equal(r.saarP, null);
+  assert.match(r.notes.join(' '), /No SAAR p-value or interval: NHSN's method needs 1 or more predicted days\./);
+  r = auRateSaar({ ...base, antimicrobialDays: '650' });
+  assert.equal(r.saarP, null);
+  assert.doesNotMatch(r.notes.join(' '), /p-value/);
+});
