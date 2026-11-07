@@ -10,12 +10,14 @@
 - [ ] 1.3 SAMv1 §4.1 (BGZF) and VCFv4.5 §1.
 
 ## 2. Shared reading code (lands first; it fixes a live defect)
-- [ ] 2.1 `lib/bgzf.js`: split at the `BC` subfield, decode each block with `DecompressionStream`, report a missing
+- [x] 2.1 (built November 7, 2026, ahead of the tools, because it fixes a live defect) `lib/bgzf.js`: split at the `BC` subfield, decode each block with `DecompressionStream`, report a missing
       EOF marker, refuse unsplittable multi-member gzip. Pure; runs in the worker and in Node.
-- [ ] 2.2 `lib/intake.js` uses it in place of `gunzipBlob` for `.gz` members; `gunzipBlob` stays for single-member
+- [x] 2.2 (built; `gunzipBlob` now delegates to `gunzipDetail`, which reads BGZF block by block and any other gzip
+      as before) `lib/intake.js` uses it in place of `gunzipBlob` for `.gz` members; `gunzipBlob` stays for single-member
       callers or is retired if none remain.
 - [ ] 2.3 `lib/file-kinds.js`: a `vcf` kind on a first line `##fileformat=VCFv`, routed to tools 3 and 4.
-- [ ] 2.4 Tests: multi-block BGZF with and without the EOF marker, single-member gzip, a two-member gzip without
+- [ ] 2.4 (Node tests in `test/unit/bgzf.test.js` built, including the intake regression with a `.vcf.gz`; checked by
+      hand in Chrome 152 against the real modules; not yet in the Playwright suite) Tests: multi-block BGZF with and without the EOF marker, single-member gzip, a two-member gzip without
       `BC`, and a regression test that the intake inventory now recognizes a `.vcf.gz`; run the same tests under
       Node and in the Playwright browser suite.
 

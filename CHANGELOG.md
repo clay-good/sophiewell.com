@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- A dropped `.gz` made of several gzip members, which is how every bgzipped `.vcf.gz` is written (BGZF), is now
+  unpacked instead of refused. The browser's and Node's gzip decoder reads only the first member and threw on the
+  rest; BGZF files are now split at the block sizes they record and read block by block (`lib/bgzf.js`), a file
+  missing BGZF's end-of-file marker is noted as possibly truncated, and other multi-member gzip files are refused
+  with an instruction to decompress them first.
 - Three resting-energy equations (Mifflin-St Jeor, Harris-Benedict, Penn State) no longer assume a male patient when
   the sex is left blank; they ask for it, as the Ireton-Jones equation in the same module already did. A blank sex had
   biased the estimate upward (Mifflin by 166 kcal/day).
