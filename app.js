@@ -896,6 +896,7 @@ import { renderers as RV1658 } from './views/group-v1658.js';
 import { renderers as RV1659 } from './views/group-v1659.js';
 import { renderers as RV1660 } from './views/group-v1660.js';
 import { renderers as RV1697 } from './views/group-v1697.js';
+import { renderers as RV1698, acceptFiles as AF1698 } from './views/group-v1698.js';
 import { renderers as RV1661 } from './views/group-v1661.js';
 import { renderers as RV1662 } from './views/group-v1662.js';
 import { renderers as RV1635 } from './views/group-v1635.js';
@@ -1006,7 +1007,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1515, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV1601, ...RV1550, ...RV1548, ...RV1551, ...RV1546, ...RV1560, ...RV1555, ...RV1557, ...RV1558, ...RV1553, ...RV1562, ...RV1563, ...RV1552, ...RV1549, ...RV1559, ...RV1554, ...RV1560b, ...RV1561, ...RV1555b, ...RV1556, ...RV1550b, ...RV1564, ...RV1546b, ...RV1602, ...RV1603, ...RV1604, ...RV1629, ...RV1630, ...RV1631, ...RV1632, ...RV1633, ...RV1634, ...RV1635, ...RV1636, ...RV1637, ...RV1638, ...RV1639, ...RV1640, ...RV1655, ...RV1656, ...RV1657, ...RV1658, ...RV1659, ...RV1660, ...RV1661, ...RV1662, ...RV1697, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1515, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV1601, ...RV1550, ...RV1548, ...RV1551, ...RV1546, ...RV1560, ...RV1555, ...RV1557, ...RV1558, ...RV1553, ...RV1562, ...RV1563, ...RV1552, ...RV1549, ...RV1559, ...RV1554, ...RV1560b, ...RV1561, ...RV1555b, ...RV1556, ...RV1550b, ...RV1564, ...RV1546b, ...RV1602, ...RV1603, ...RV1604, ...RV1629, ...RV1630, ...RV1631, ...RV1632, ...RV1633, ...RV1634, ...RV1635, ...RV1636, ...RV1637, ...RV1638, ...RV1639, ...RV1640, ...RV1655, ...RV1656, ...RV1657, ...RV1658, ...RV1659, ...RV1660, ...RV1661, ...RV1662, ...RV1697, ...RV1698, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -3437,6 +3438,8 @@ const UTILITIES = [
   { id: 'bayes-risk-table', name: 'Bayesian Risk Table: Prior, Conditional, Joint and Posterior', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'acmg-variant-classify', name: 'ACMG/AMP Variant Class From Evidence Codes', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'max-credible-allele-frequency', name: 'Maximum Credible Allele Frequency (Whiffin)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'vcf-variant-lookup', name: 'Genotype at a Position in My VCF', group: 'E', audiences: ['clinicians', 'educators', 'patients'], clinical: true },
+  { id: 'vcf-qc-summary', name: 'VCF Summary: Variant Counts, Ti/Tv and Zygosity', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ischemia-time-clock', name: 'Organ Recovery and Implant Time Intervals (Ischemia Clock)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'donor-recipient-size-match', name: 'Donor-to-Recipient Weight, Height and BSA Ratios (Size Match)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
@@ -6299,7 +6302,7 @@ let currentRouteId = null;
 
 // spec-v1623 step 4: dropped and chosen files. The hand-off maps come from the
 // views that read files; see views/home-files.js.
-const ACCEPT_FILES = { ...AF1503, ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AF1604, ...AF1602, ...AF1502, ...AF1510, ...AF1512, ...AF1506, ...AF1507, ...AF1508, ...AF1511, ...AF63, ...AF1514, ...AF1636, ...AF1630, ...AF1638, ...AFPALINT };
+const ACCEPT_FILES = { ...AF1503, ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AF1604, ...AF1602, ...AF1502, ...AF1510, ...AF1512, ...AF1506, ...AF1507, ...AF1508, ...AF1511, ...AF63, ...AF1514, ...AF1636, ...AF1630, ...AF1638, ...AF1698, ...AFPALINT };
 function navigateTo(hash) {
   currentRouteId = null;
   if (window.location.hash === hash) route();

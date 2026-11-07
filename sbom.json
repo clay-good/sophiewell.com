@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:6521640e-1d26-5bd2-8142-3dc6930b5b89",
+  "serialNumber": "urn:uuid:ace27846-180e-59d6-83fe-1b289256c62f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-07T18:04:50.715Z",
+    "timestamp": "2026-11-07T18:37:43.679Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2367 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2369 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "22f39cc69e03f42f9e67e4bf2ec851628bf43fff392eb2a6eb4e6f5637ccf863"
+          "content": "b1ecfba8102ad9f5a97030f5c46b9530b0c9d85b5b3cbcef0281625bd056d464"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "154965"
+          "value": "155076"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "476c40ea8c2dd61cd163db84365a07343d7bbad257da04b509571e7f27079841"
+          "content": "a10e0267d5f8eb8d0f2a2b84163f1b24ed6149df13780786ff0915f531d28702"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "647241"
+          "value": "647655"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a3b0ba8a32c294f40ac27a1019ff5c24f8c34f13b16cb7cff571aaeabbe03814"
+          "content": "0b8bef650debdaee55280599ddd0aea8441086139799211aa5bd6d05556eb47c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "298303"
+          "value": "298557"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a7b9d3f8d5064a21067dd205c9d5d6d41391fbc1a42d07455ec8d4679b54495d"
+          "content": "18410614e8da11b14aff7029024220487be2e8e9c528063191b788d1b0fd23ce"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "145922"
+          "value": "146045"
         }
       ]
     },
@@ -2834,7 +2834,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1ddbf0c732adda9f811f5e342fc4e57d557b3d6ea816f0bb8502a150a2b3a048"
+          "content": "ff9ac63d9157296442c4f74f68a17d1b635543edffb0e255e58497738a6ba867"
         }
       ],
       "properties": [
@@ -2844,7 +2844,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2965"
+          "value": "2972"
         }
       ]
     },
@@ -10163,7 +10163,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3ca2ddbb2d37e3bdeb281bfd105cc6b1ee7dc88b57996dc026df02405c28541a"
+          "content": "08c492a96ceda952f265d52895089e7e7b932f421ba836de7634a49dbbc7e0d8"
         }
       ],
       "properties": [
@@ -10173,7 +10173,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "32527"
+          "value": "32958"
         }
       ]
     },
@@ -18122,7 +18122,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8f49ca336b8487071ab076d6b94d93e07dd16ab6f57f324168f96a6e6d954ea1"
+          "content": "be0feb875b4ece3f5ea9c8f3f854c3f0057046f9a401676944a308f45245d004"
         }
       ],
       "properties": [
@@ -18132,7 +18132,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3067201"
+          "value": "3068467"
         }
       ]
     },
@@ -31846,6 +31846,69 @@
         {
           "name": "sophiewell:bytes",
           "value": "4207"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/vcf-read-v1698.js",
+      "type": "file",
+      "name": "lib/vcf-read-v1698.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "451c1ff4cc76bde1a7aba9d023e8aee89b3939e2ac3d5220c11a9e088aa6eea5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "19937"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/vcf-run-v1698.js",
+      "type": "file",
+      "name": "lib/vcf-run-v1698.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bbbd2ea9646a550af54ebc2efc7613f07039ebcabffc8fa0afb653f29d18ea78"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1408"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/vcf-worker.js",
+      "type": "file",
+      "name": "lib/vcf-worker.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2b1f5b28e3cd19458da7a210c4422d891c97eda53562ab06ce0c745d25538edc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "885"
         }
       ]
     },
@@ -62978,7 +63041,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7a2aa853195af4f25f5eae871bb586bb460aec75c9e0c3cb2aa5a510fd481219"
+          "content": "9eb6538ccba610b9caba7798787650f74d5eb996b817af6d1d2b36a67bb328f0"
         }
       ],
       "properties": [
@@ -62988,7 +63051,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10616"
+          "value": "12392"
         }
       ]
     },
@@ -67945,6 +68008,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4827"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1698.js",
+      "type": "file",
+      "name": "views/group-v1698.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "34cababe7c0c47abde94e21bdd0b51505a3700172d9bfa4f72a1870f4527ab3b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5750"
         }
       ]
     },
@@ -99959,6 +100043,9 @@
         "urn:sophiewell:file:source:lib/vascular-v105.js",
         "urn:sophiewell:file:source:lib/vasi-v556.js",
         "urn:sophiewell:file:source:lib/vaughan-williams-v427.js",
+        "urn:sophiewell:file:source:lib/vcf-read-v1698.js",
+        "urn:sophiewell:file:source:lib/vcf-run-v1698.js",
+        "urn:sophiewell:file:source:lib/vcf-worker.js",
         "urn:sophiewell:file:source:lib/veau-cleft-v1497.js",
         "urn:sophiewell:file:source:lib/vent-v195.js",
         "urn:sophiewell:file:source:lib/vesikari-v530.js",
@@ -100276,6 +100363,7 @@
         "urn:sophiewell:file:source:views/group-v167.js",
         "urn:sophiewell:file:source:views/group-v169.js",
         "urn:sophiewell:file:source:views/group-v1697.js",
+        "urn:sophiewell:file:source:views/group-v1698.js",
         "urn:sophiewell:file:source:views/group-v17.js",
         "urn:sophiewell:file:source:views/group-v173.js",
         "urn:sophiewell:file:source:views/group-v174.js",
@@ -102500,7 +102588,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "6521640e1d26ebd2"
+      "value": "ace27846180ef9d6"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -102512,7 +102600,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3931"
+      "value": "3935"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

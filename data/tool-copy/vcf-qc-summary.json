@@ -1,0 +1,19 @@
+{
+  "whatThisIs": "Count what is in your own VCF without uploading it: records, PASS calls, variant types, transitions and transversions, and one sample's zygosity. Large and bgzipped files are read a piece at a time.",
+  "whenToUse": "Use this to check a VCF before using it: whether it is the file you think it is, how many calls passed the caller's filters, and whether its Ti/Tv and het/hom-alt ratios look like the kind of data it should be.",
+  "inputs": "A .vcf, .vcf.gz or .vcf.bgz file and, if it has more than one sample, the sample to count. The file stays in the browser tab.",
+  "output": "Record, PASS, reference-only and multiallelic counts; SNV, insertion, deletion and other ALT alleles; transitions, transversions and Ti/Tv; the sample's heterozygous, homozygous-alternate, reference and missing calls and het/hom-alt; counts per chromosome; the bytes read. No expected range is printed.",
+  "example": {
+    "rows": [
+      [
+        "Records",
+        "5, 4 PASS"
+      ],
+      [
+        "NA00003",
+        "0 heterozygous, 3 homozygous alternate"
+      ]
+    ],
+    "result": "5 records, 4 PASS; Ti/Tv 1.00; NA00003 het/hom-alt 0.00."
+  }
+}

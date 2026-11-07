@@ -26,6 +26,7 @@ const EXPECT = {
   'x12-277ca.277': ['x12-277ca', 'certain', 'GS08 is 005010X214'],
   'x12-278.278': ['x12-278', 'certain', '005010X217'],
   'x12-999.999': ['x12-999', 'certain', 'ST01 is 999'],
+  'sample.vcf': ['vcf', 'certain', '##fileformat=VCFv4.5'],
   'x12-other.edi': ['x12-other', 'certain', 'Transaction set 834 (enrollment)'],
   'ccd.xml': ['ccda-ccd', 'certain', 'Continuity of Care Document template id'],
   'ccda-discharge.xml': ['ccda-other', 'certain', 'C-CDA Discharge Summary'],

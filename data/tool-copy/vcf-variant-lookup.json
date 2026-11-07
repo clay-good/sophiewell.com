@@ -1,0 +1,19 @@
+{
+  "whatThisIs": "Look up the genotype at one position, or one ID, in your own VCF without uploading it. Large and bgzipped files are read a piece at a time, with progress and a Stop button.",
+  "whenToUse": "Use this when a report or a paper names a variant and you want to see what your VCF says at that position: the genotype as written, its zygosity, depth, quality and allele balance.",
+  "inputs": "A .vcf, .vcf.gz or .vcf.bgz file; a chromosome and position (with REF and ALT if you know them) or an ID from the ID column; a sample name if the file has more than one. The file stays in the browser tab.",
+  "output": "The matching record's REF, ALT, QUAL and FILTER, and the sample's GT as written, phase, zygosity, DP, GQ and allele balance, with the assembly the file states. A position the file does not list reads \"not in this file\", never \"reference\".",
+  "example": {
+    "rows": [
+      [
+        "Position",
+        "20:14370 in NA00003"
+      ],
+      [
+        "Record",
+        "REF G, ALT A, QUAL 29, FILTER PASS"
+      ]
+    ],
+    "result": "20:14370: 1/1, homozygous alternate in NA00003."
+  }
+}

@@ -11,7 +11,7 @@
 import { open, realpath, stat } from 'node:fs/promises';
 import { openAsBlob } from 'node:fs';
 import { basename, isAbsolute, relative, sep } from 'node:path';
-import { recognize, LIMITS } from '../lib/file-kinds.js';
+import { recognize, LIMITS, kindInfo } from '../lib/file-kinds.js';
 import { CSV_TOOLS } from '../lib/upload-fields.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import * as R835 from '../lib/x12-835-run.js';
@@ -25,11 +25,13 @@ import { runTic } from '../lib/tic-run.js';
 import { run as runCarin, CLAIM_HEADERS, claimRow } from '../lib/carin-run.js';
 import { checkPasBundle, profileSet } from '../lib/pas-bundle-check.js';
 import { fileFacts, receiptFor } from '../lib/receipt-worker.js';
+import { runVcf, TOOLS as VCF_TOOLS } from '../lib/vcf-run-v1698.js';
+import { sniffVcfGz } from '../lib/vcf-read-v1698.js';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const X12_RUNS = { 'x12-835-reader': R835, 'x12-837-check': R837, 'x12-271-reader': R271, 'x12-277-reader': R277, 'x12-999-reader': R999, 'x12-278-reader': R278 };
-export const ANALYZABLE = [...Object.keys(X12_RUNS), 'hpt-file-check', 'tic-file-check', 'carin-eob-reader', 'pas-bundle-check'];
+export const ANALYZABLE = [...Object.keys(X12_RUNS), 'hpt-file-check', 'tic-file-check', 'carin-eob-reader', 'pas-bundle-check', ...Object.keys(VCF_TOOLS)];
 const PREVIEW_ROWS = 20;
 
 const readOnly = (title) => ({ title, readOnlyHint: true, idempotentHint: true, openWorldHint: false });
@@ -65,6 +67,8 @@ export const FILE_TOOL_DEFS = [
       properties: {
         path: { type: 'string', maxLength: 4096, description: 'Absolute path to the file, inside a shared directory.' },
         tool: { type: 'string', maxLength: 80, description: 'A tool id to run instead of the one recognition picks.' },
+        position: { type: 'string', maxLength: 200, description: 'vcf-variant-lookup only: CHROM:POS as the file writes the chromosome (20:14370), or an ID from the ID column (rs6054257).' },
+        sample: { type: 'string', maxLength: 200, description: 'VCF tools only: the sample column to report (default the first).' },
       },
       required: ['path'],
       additionalProperties: false,
@@ -115,17 +119,27 @@ async function resolve(args, roots) {
   return { real, size: st.size, name: basename(real) };
 }
 
+// A bgzipped VCF's head is compressed, so recognize() calls it gzip; its first block says whether it is a VCF.
+async function recognizePath(r) {
+  const res = recognize(await head(r.real), { name: r.name, size: r.size }, { csvTools: CSV_TOOLS });
+  if (res.kind !== 'gzip') return res;
+  const version = await sniffVcfGz(await openAsBlob(r.real));
+  if (!version) return res;
+  const info = kindInfo('vcf');
+  return { kind: 'vcf', label: info.label, family: info.family, confidence: 'certain', evidence: [`It is bgzip-compressed, and its first block starts ##fileformat=${version}.`], tools: info.tools };
+}
+
 export async function recognizeFile(args, { roots }) {
   const r = await resolve(args, roots);
   if (r.error) return r.error;
-  const res = recognize(await head(r.real), { name: r.name, size: r.size }, { csvTools: CSV_TOOLS });
+  const res = await recognizePath(r);
   return { valid: true, name: r.name, size: r.size, kind: res.kind, label: res.label, confidence: res.confidence, evidence: res.evidence, tools: res.tools.filter((t) => !t.route), ambiguous: Boolean(res.ambiguous) };
 }
 
 export async function analyzeFile(args, { roots }) {
   const r = await resolve(args, roots);
   if (r.error) return r.error;
-  const rec = recognize(await head(r.real), { name: r.name, size: r.size }, { csvTools: CSV_TOOLS });
+  const rec = await recognizePath(r);
   const tool = (args && args.tool) || (rec.tools.find((t) => t.status === 'live' && !t.route) || {}).id;
   if (!tool) return refusal({ code: 'NO_TOOL' }, `${rec.label}: no tool here reads it. ${rec.evidence.join(' ')}`);
   if (!ANALYZABLE.includes(tool)) return refusal({ code: 'NOT_AVAILABLE' }, `${tool} runs on the site but not here yet. Tools available here: ${ANALYZABLE.join(', ')}.`);
@@ -136,6 +150,19 @@ export async function analyzeFile(args, { roots }) {
   if (tool === 'tic-file-check') {
     const { result, receipts } = await runTic([{ blob: await openAsBlob(r.real), name: r.name }]);
     return { valid: true, tool, kind: rec.kind, findings: result, receipt: receipts.receipt, shareableReceipt: receipts.shareable };
+  }
+  if (VCF_TOOLS[tool]) {
+    // Streamed, so no size limit. A lookup takes CHROM:POS or an ID.
+    const pos = String((args && args.position) || '').trim();
+    const m = /^([^:\s]+):([\d,]+)$/.exec(pos);
+    const query = m ? { chrom: m[1], pos: m[2] } : { id: pos };
+    const { result, receipts } = await runVcf(tool, await openAsBlob(r.real), r.name, { query, sample: args && args.sample });
+    if (!result.valid) return refusal({ code: 'UNREADABLE' }, result.message);
+    return {
+      valid: true, tool, kind: 'vcf', totals: { band: result.band, ...(result.totals || {}), file: result.file },
+      findings: { notes: result.notes, ...(result.matches ? { matches: result.matches } : {}) },
+      ...(receipts ? { receipt: receipts.receipt, shareableReceipt: receipts.shareable } : {}),
+    };
   }
   if (r.size > MAX_FILE_BYTES) return refusal({ code: 'TOO_LARGE' }, `${r.name} is over the 50 MB limit these tools share with the site.`);
   const fh = await open(r.real, 'r');

@@ -13676,6 +13676,24 @@
       ],
       "tile": "max-credible-allele-frequency",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "genotype in my vcf",
+        "genotype at a position in a vcf",
+        "zygosity from a vcf file"
+      ],
+      "tile": "vcf-variant-lookup",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "vcf summary statistics",
+        "ti tv ratio vcf",
+        "heterozygous to homozygous ratio vcf"
+      ],
+      "tile": "vcf-qc-summary",
+      "audience": "clinicians"
     }
   ]
 }

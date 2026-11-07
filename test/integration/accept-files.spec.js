@@ -19,6 +19,8 @@ const CASES = {
   'x12-271-reader': ['group-v1515', 'x12-271.271', 'x271-file', 'x12-271'],
   'x12-277-reader': ['group-v1515', 'x12-277.277', 'x277-files', 'x12-277'],
   'x12-999-reader': ['group-v1515', 'x12-999.999', 'x999-files', 'x12-999'],
+  'vcf-variant-lookup': ['group-v1698', 'sample.vcf', 'vcfl-file', 'vcf'],
+  'vcf-qc-summary': ['group-v1698', 'sample.vcf', 'vcfs-file', 'vcf'],
   'x12-278-reader': ['group-v1515', 'x12-278.278', 'x278-files', 'x12-278'],
   'hpt-file-check': ['group-v1515', 'hpt-tall.csv', 'hpt-file', 'hpt-csv'],
   'tic-file-check': ['group-v1604', 'tic-in-network.json', 'tic-files', 'tic-in-network'],

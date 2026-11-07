@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Two VCF readers that never upload the file or load it whole: the genotype at a position or ID in your own VCF
+  (as written, with phase, zygosity, depth, quality and allele balance, and "not in this file" rather than "reference"
+  for an unlisted position), and a summary of the file's records, PASS calls, variant types, Ti/Tv and one sample's
+  zygosity. Plain and bgzipped files of any size are streamed with progress and a Stop button; agents can run both
+  through `analyze_file`, which now also recognizes a bgzipped VCF by its first block.
 - ACMG/AMP variant class from the evidence codes a curator applied, by three published methods side by side: the 2015
   combining rules naming the rule that fired, the 2020 point system, and the 2018 posterior. Changed strengths print in
   ClinGen notation (PM2_Supporting), and the page says when the methods disagree and why.

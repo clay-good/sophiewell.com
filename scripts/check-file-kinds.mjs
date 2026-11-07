@@ -34,6 +34,9 @@ export const FILE_INPUTS = {
   'x271-file': 'x12-271-reader',
   'x277-files': 'x12-277-reader',
   'x999-files': 'x12-999-reader',
+  // views/group-v1698.js builds both VCF readers' inputs from one helper: vcfl-file (vcf-variant-lookup)
+  // and vcfs-file (vcf-qc-summary).
+  '${prefix}-file': 'vcf-variant-lookup',
   'x278-files': 'x12-278-reader',
   'hpt-file': 'hpt-file-check',
   'hptc-files': 'hpt-price-compare',

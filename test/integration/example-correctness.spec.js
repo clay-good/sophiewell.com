@@ -112,6 +112,8 @@ const FILE_DRIVEN = new Map([
   ['x12-271-reader', 'x12-271-reader.spec.js'],
   ['x12-277-reader', 'x12-277-reader.spec.js'],
   ['x12-999-reader', 'x12-999-reader.spec.js'],
+  ['vcf-variant-lookup', 'vcf-readers.spec.js'],
+  ['vcf-qc-summary', 'vcf-readers.spec.js'],
   ['x12-278-reader', 'x12-278-reader.spec.js'],
   ['denial-pattern-report', 'remittance-analysis.spec.js'],
   ['underpayment-check', 'remittance-analysis.spec.js'],
