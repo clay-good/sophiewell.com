@@ -37,6 +37,32 @@ watch compares the guide's hash and the tool fails closed on change until re-rea
 each piecewise breakpoint; an input outside the guide's range refused by name.
 **Rule.** Nothing ships until the guide is read; the spec states no coefficient on purpose.
 
+**Read November 7, 2026** (the guide, *updated April 23, 2026*, 11 pages, SHA-256
+`7e6f39ad54923f8d84ad85b55e6b3fb8baad4467e40feff490cbdcafb9e56bb7`, saved by hand from
+hrsa.gov/sites/default/files/hrsa/optn/kdpi_guide.pdf). It confirms the eight factors (the October 31, 2024 refit,
+without race and HCV) and replaces the expectations above:
+
+| Factor | Applies to | Xβ component |
+|---|---|---|
+| Age (integer years) | all; under 18; over 50 | 0.0092(age − 40); + 0.0113(age − 18); + 0.0067(age − 50) |
+| Height (cm) | all | −0.0557(height − 170)/10 |
+| Weight (kg) | under 80 kg | −0.0333(weight − 80)/5 |
+| Hypertension, diabetes | if present | 0.1106; 0.2577 |
+| Cause of death CVA | if CVA | 0.0743 |
+| Serum creatinine (mg/dL) | all; over 1.5 | 0.2128(Cr − 1); − 0.2199(Cr − 1.5) |
+| DCD | if DCD | 0.1966 |
+
+- KDRI_RAO = e^Xβ; KDRI_SCALED = KDRI_RAO ÷ the scaling factor, the median KDRI_RAO of the prior calendar year's
+  recovered donors (1.40436817065005 for 2024). The factor *in use* is printed at the bottom of the KDRI-to-KDPI
+  mapping table document, so even the scaled KDRI needs that document.
+- KDPI is the mapping table's integer percentage (0% below every reference donor; 100% above 99% of them).
+- Worked example (age 52, 183 cm, 81 kg, hypertensive, not diabetic, CVA, creatinine 1.7, DCD): Xβ 0.53787,
+  KDRI_RAO 1.71235565748184, KDRI_SCALED 1.21930679808076, KDPI 72% on the 2024 table. Reproduced exactly except
+  the KDPI, which needs the table.
+- The guide's own caution belongs on screen: the KDPI's c-statistic is about 0.60, it should not be made a
+  yes/no cutoff, and it should never alone rule a kidney in.
+- **Remaining gate:** `kdpi_mapping_table.pdf` (same folder), not yet saved.
+
 ### 2. `epts-score` — Estimated Post-Transplant Survival Score (OPTN)
 
 **Input.** Candidate age; years on dialysis (or dialysis start date and the offer date); current

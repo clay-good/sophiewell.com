@@ -33,10 +33,10 @@
       "tool": "kdri-kdpi",
       "spec": "spec-v1661",
       "source": "OPTN, Guide to Calculating and Interpreting the KDPI",
-      "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/kdpi_guide.pdf",
+      "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/kdpi_mapping_table.pdf",
       "kind": "waf-blocked",
       "lastStatus": 403,
-      "note": "Re-probed November 7, 2026. The HTML pages on www.hrsa.gov/optn now open in a browser (the KDPI calculator page, last reviewed December 2025, links the guide and the mapping table at hrsa.gov/sites/default/files/hrsa/optn/kdpi_guide.pdf and kdpi_mapping_table.pdf), but both PDFs arrive as file downloads, and a scripted fetch is refused. Getting past that refusal with a disguised client would defeat a bot check, so the two PDFs still need saving by hand."
+      "note": "Half open. The guide (updated April 23, 2026; SHA-256 7e6f39ad…, saved by hand) was read November 7, 2026: all eight coefficients, and its worked example reproduces exactly (openspec design, tool 1). The KDPI and the scaling factor in use are in the KDRI-to-KDPI mapping table, a separate PDF that arrives only as a download and is still to be saved by hand. A scripted fetch is refused, and disguising the client would defeat a bot check."
     },
     {
       "tool": "epts-score",

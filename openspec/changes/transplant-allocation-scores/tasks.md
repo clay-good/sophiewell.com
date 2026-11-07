@@ -10,6 +10,8 @@
 - [ ] 1.1 Download the KDPI guide (October 2024 or newer) by hand; record the edition date;
       transcribe every coefficient, reference point, the scaling factor and the mapping table
       into a data file with its SHA-256.
+      Guide read November 7, 2026 (April 23, 2026 edition; coefficients and the example in `design.md`,
+      reproduced exactly). Open: the mapping table PDF, which also carries the scaling factor in use.
 - [ ] 1.2 The same for the EPTS guide (April 2025 or newer).
       Guide read November 7, 2026 (April 7, 2026 edition, from a copy saved by hand; formula and the three
       examples in `design.md`, all reproduced). Open: the EPTS mapping table, a separate PDF
