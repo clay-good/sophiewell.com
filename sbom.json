@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:eaa21d29-b500-51d2-87a9-e568a6017e66",
+  "serialNumber": "urn:uuid:750b6c15-6f42-5a8a-847a-40a92b667797",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-07T21:00:28.525Z",
+    "timestamp": "2026-11-07T21:33:57.566Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2385 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2386 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2f9fa6f9b6ac35fb956b9c42c80445ff23a7373741b6b542631f51c2a97f5a65"
+          "content": "d2974bd19fa8c623e90ae67c6b19ed484aafe854d029e61e872ff5f13a4727f8"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "156182"
+          "value": "156264"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "238963529d8a881a10e7581265a2b871cee57c2964fbe9b0157dd6a9a9db20f8"
+          "content": "ec20d316ae13de3af39559f097eb827e5e21799eaab8ab536c0fb0d58e74175d"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "650724"
+          "value": "650970"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d5a90aa33ea4d91a8d8723bb81df3f8c991c6abebb9d34159b4f58e31eadce3f"
+          "content": "600f07f77daffd911474333c35d2b8be07d03750bc1e98d445de59661c8afc42"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "300607"
+          "value": "300733"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "229d3fbe6e0af6702b253f84f3a2729e92ea76d54af1d75e60e2d792a306117d"
+          "content": "ac75a9d78280545a9529d67a58dca771ba357bb43966f055ffe7a72b5f2c682a"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "147265"
+          "value": "147352"
         }
       ]
     },
@@ -18458,7 +18458,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9aab9f439add3552b05964ed008e2c9b979b40d19232be0b4a94b51c4c6abbb0"
+          "content": "74c5c6cec1fc09a59ce1080ecbd0f5f267283f017e94dd01ca09aef42c638ae3"
         }
       ],
       "properties": [
@@ -18468,7 +18468,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3083057"
+          "value": "3084251"
         }
       ]
     },
@@ -30859,6 +30859,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "14404"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tpa-eligibility-v1708.js",
+      "type": "file",
+      "name": "lib/tpa-eligibility-v1708.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6ed4f05fefbf8dbd8abed6a12e00255bf00a43d99924b708eb3987f86b827bc5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "17290"
         }
       ]
     },
@@ -61166,6 +61187,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tpa-eligibility-v1708.js",
+      "type": "file",
+      "name": "mcp/adapters/tpa-eligibility-v1708.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6e9188a99d5b1d88209d3dfc9a73d630f3348635180cfcf6632fcd769e29914e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2690"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tpmt-nudt15-thiopurine-dose-v1635.js",
       "type": "file",
       "name": "mcp/adapters/tpmt-nudt15-thiopurine-dose-v1635.js",
@@ -63755,7 +63797,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "75eab8d80e5954f6b7686658e6cb2d34bc7386fd39fd3ec7079f6e8c8b15ddbb"
+          "content": "689d747cb179bf46e968be85db7ccc3c96ec1e37139efc6eddf7a4a44e4f1bf0"
         }
       ],
       "properties": [
@@ -63765,7 +63807,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "172830"
+          "value": "172951"
         }
       ]
     },
@@ -68974,6 +69016,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3267"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1708.js",
+      "type": "file",
+      "name": "views/group-v1708.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "525306efccfbd2a6f17d7cb4c1e7dc73abafdbddbfb9cdb1db171b201b9c27bb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5814"
         }
       ]
     },
@@ -100920,6 +100983,7 @@
         "urn:sophiewell:file:source:lib/topical-quantity-ftu-v1639.js",
         "urn:sophiewell:file:source:lib/tox-v110.js",
         "urn:sophiewell:file:source:lib/tox-v86.js",
+        "urn:sophiewell:file:source:lib/tpa-eligibility-v1708.js",
         "urn:sophiewell:file:source:lib/tpmt-nudt15-thiopurine-dose-v1635.js",
         "urn:sophiewell:file:source:lib/trachoma-grade-v1561.js",
         "urn:sophiewell:file:source:lib/tranexamic-acid-renal-dose-v1632.js",
@@ -101316,6 +101380,7 @@
         "urn:sophiewell:file:source:views/group-v1704.js",
         "urn:sophiewell:file:source:views/group-v1705.js",
         "urn:sophiewell:file:source:views/group-v1706.js",
+        "urn:sophiewell:file:source:views/group-v1708.js",
         "urn:sophiewell:file:source:views/group-v173.js",
         "urn:sophiewell:file:source:views/group-v174.js",
         "urn:sophiewell:file:source:views/group-v175.js",
@@ -103327,6 +103392,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/topical-quantity-ftu-v1639.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tox-v110.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tox-v86.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tpa-eligibility-v1708.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tpmt-nudt15-thiopurine-dose-v1635.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/trachoma-grade-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tranexamic-acid-renal-dose-v1632.js",
@@ -103556,7 +103622,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "eaa21d29b50091d2"
+      "value": "750b6c156f42ea8a"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -103568,7 +103634,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3979"
+      "value": "3982"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

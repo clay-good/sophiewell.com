@@ -13826,6 +13826,16 @@
       ],
       "tile": "qrs-detect-trace",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "is this patient a tpa candidate",
+        "tpa eligibility",
+        "thrombolysis checklist",
+        "thrombolytic contraindications"
+      ],
+      "tile": "tpa-eligibility",
+      "audience": "clinicians"
     }
   ]
 }

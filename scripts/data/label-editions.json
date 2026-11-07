@@ -82,14 +82,17 @@
     "labeler": "GENENTECH, INC.",
     "setId": "c669f77c-fa48-478b-a14b-80b20a0139c2",
     "tools": [
-      "thrombolytic-dose"
+      "thrombolytic-dose",
+      "tpa-eligibility"
     ],
     "splVersion": 15,
     "publishedOn": "2026-01-26",
     "verifiedOn": "2026-10-12",
     "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "1b0af64b615191b0874b242ded998707f4221e6964fdbf986c9ef3e57468a44d"
+      "34068-7": "1b0af64b615191b0874b242ded998707f4221e6964fdbf986c9ef3e57468a44d",
+      "34067-9": "cd823b99a15b65023e2f34d689a8a5a55c832758b2ab84dc8973cd674df88461",
+      "34070-3": "a255c955bcedcec80ad60cf4538eddb15b25b9ccb1c8e92f465fa09c83e4ea42"
     }
   },
   {
@@ -4195,14 +4198,17 @@
     "labeler": "GENENTECH, INC.",
     "setId": "e647640d-c395-4b4b-a0be-1162f9c21d84",
     "tools": [
-      "thrombolytic-dose"
+      "thrombolytic-dose",
+      "tpa-eligibility"
     ],
     "splVersion": 4,
     "publishedOn": "2025-12-23",
     "verifiedOn": "2026-10-12",
     "validThrough": "2027-10-12",
     "sections": {
-      "34068-7": "4b467719dd830426b292437814e2f98e6aa5ac3d8df8f8b196b3d7ce859e4114"
+      "34068-7": "4b467719dd830426b292437814e2f98e6aa5ac3d8df8f8b196b3d7ce859e4114",
+      "34067-9": "51a3e314674a0837530bce8bbae098808e3525c5dfe6ccdf58d9c31f2cd89ca3",
+      "34070-3": "c7c429b250cb5af5c3361e9e48d4c9a7c4a1ff5ec1306ebaa0dd7ae879c0a6dc"
     }
   },
   {

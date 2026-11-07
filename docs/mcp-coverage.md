@@ -9604,6 +9604,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/qrs-detect-trace-v1706.js (spec-v1706: R-peaks from an ECG trace — clinical disclaimer)
 - `qrs-detect-trace`
 
+### lib/tpa-eligibility-v1708.js (spec-v1708: IV thrombolysis checklist, AHA/ASA 2026 — clinical disclaimer)
+- `tpa-eligibility`
+
 ### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
 - `ischemia-time-clock`
 

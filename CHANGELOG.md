@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- An IV thrombolysis checklist for acute ischemic stroke from the AHA/ASA 2026 guideline: the 4.5-hour window and the
+  three imaging-based extended windows with their classes, disabling deficits, and Table 8's three tiers (benefit
+  generally greater than risk, relative and absolute contraindications), each beside what the TNKase and Activase labels
+  say where they differ. It never reads as an order and never treats an unanswered question as a favorable answer.
 - Beat detection in a single-lead ECG trace by the Pan-Tompkins algorithm: R-peak times, RR intervals and mean rate,
   drawn as a tachogram and handed to the HRV tools by link. It shipped only after scoring 99.79% sensitivity and 99.08%
   positive predictivity on the 44 non-paced MIT-BIH records; `scripts/validate-qrs-mitdb.mjs` reruns that check.

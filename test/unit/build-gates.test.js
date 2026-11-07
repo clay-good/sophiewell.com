@@ -60,9 +60,12 @@ test('the index lists the openspec-only tools, which it could not see before', (
   // tpa-eligibility is specified only as an openspec change with no spec-v document. Until the
   // generator learned to collect those, it was unbuilt and absent from the one page that answers
   // "what is left".
+  // It shipped in spec-v1708, so the index must now leave it out, and any openspec-only row it does list
+  // must still be missing from the catalog.
   const { openspecOnly } = indexIds();
-  assert.ok(openspecOnly.includes('tpa-eligibility'),
-    `expected the openspec-only table to list tpa-eligibility, found ${openspecOnly.join(', ') || 'nothing'}`);
+  assert.ok(!openspecOnly.includes('tpa-eligibility'), 'tpa-eligibility shipped in spec-v1708 and must leave the index');
+  const app = readFileSync(new URL('../../app.js', import.meta.url), 'utf8');
+  for (const id of openspecOnly) assert.ok(!app.includes(`id: '${id}'`), `${id} is in the catalog but still listed as unbuilt`);
 });
 
 test('a gate row for a tool that has shipped is stale and fails', () => {
