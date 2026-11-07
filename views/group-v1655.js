@@ -1,6 +1,6 @@
 // spec-v1655: infection prevention arithmetic and healthcare personnel clocks.
 // nhsn-sir, device-utilization-ratio, device-infection-rate, outbreak-attack-rates,
-// hcp-exposure-clock, hcp-illness-return-date.
+// hcp-exposure-clock, hcp-illness-return-date, and hand-hygiene-compliance (spec-v1689).
 
 import { el, clear } from '../lib/dom.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -10,6 +10,7 @@ import * as DIR from '../lib/device-infection-rate-v1655.js';
 import * as OAR from '../lib/outbreak-attack-rates-v1655.js';
 import * as HCE from '../lib/hcp-exposure-clock-v1655.js';
 import * as HCI from '../lib/hcp-illness-return-date-v1655.js';
+import * as HHC from '../lib/hand-hygiene-compliance-v1689.js';
 
 const NA = { value: '', text: '— choose —' };
 const YES_NO = [{ value: 'yes', text: 'Yes' }, { value: 'no', text: 'No' }];
@@ -115,6 +116,18 @@ export const renderers = {
     selectField(root, 'Pertussis: likely to interact with persons at increased risk of severe pertussis?', 'hce-high-risk', YES_NO);
     selectField(root, 'Pertussis: receiving postexposure prophylaxis?', 'hce-pep', YES_NO);
     tool(root, [['hce-pathogen', 'pathogen'], ['hce-first', 'firstExposure'], ['hce-last', 'lastExposure'], ['hce-immunity', 'immunity'], ['hce-mmr', 'firstMmrBeforeExposure'], ['hce-second-dose', 'secondDoseWithin5Days'], ['hce-varizig', 'immuneGlobulin'], ['hce-high-risk', 'highRiskContact'], ['hce-pep', 'prophylaxis']], HCE.hcpExposureClock);
+  },
+  // spec-v1689, closing spec-v1655 tool 5. A pair per moment because that is the shape the
+  // manual's own observation form records; an unobserved moment is left blank.
+  'hand-hygiene-compliance'(root) {
+    note(root, 'Enter what was observed, moment by moment. Count a performed action only where it answered an opportunity: a positive action does not always sit on one, and the manual counts only those that do.');
+    const pairs = [];
+    for (const m of HHC.MOMENTS) {
+      numField(root, `Moment ${m.n} (${m.label.toLowerCase()}): opportunities`, `hhc-${m.key}-opp`, m.n === 1 ? 'e.g. 6' : '');
+      numField(root, `Moment ${m.n} (${m.label.toLowerCase()}): actions at those opportunities`, `hhc-${m.key}-act`, m.n === 1 ? 'e.g. 3' : '');
+      pairs.push([`hhc-${m.key}-opp`, `${m.key}Opportunities`], [`hhc-${m.key}-act`, `${m.key}Actions`]);
+    }
+    tool(root, pairs, HHC.handHygieneCompliance);
   },
   'hcp-illness-return-date'(root) {
     selectField(root, 'Infection', 'hci-condition', HCI.CONDITIONS);

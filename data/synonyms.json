@@ -13272,6 +13272,16 @@
     },
     {
       "phrases": [
+        "hand hygiene compliance",
+        "hand hygiene audit",
+        "who five moments compliance",
+        "handwashing compliance rate"
+      ],
+      "tile": "hand-hygiene-compliance",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "device utilization ratio",
         "central line utilization ratio",
         "catheter utilization ratio",

@@ -45,16 +45,22 @@ salad (30 of 99) and shigellosis secondary attack rate (17 of 86 − 18, 25.0%) 
   to stop answering on a change; no tool in the catalog does that for a watched page, and adding it is a
   separate change.
 
-## Specified, not built
+## Specified, and built later
 
 ### 5. `hand-hygiene-compliance` — Hand Hygiene Compliance Rate From Observed Opportunities
 
-**Build gate.** The WHO *Hand Hygiene Technical Reference Manual* (2009) returned a bot-check page from WHO
-IRIS and PAHO on October 19, 2026, so its compliance formula and its definitions of opportunity and action
-were not read.
+**Shipped November 7, 2026 in [spec-v1689](spec-v1689.md).** The build gate recorded here was that the
+WHO *Hand Hygiene Technical Reference Manual* (2009) returned a bot-check page from WHO IRIS and PAHO on
+October 19, 2026, so its compliance formula and its definitions of opportunity and action were not read.
+Re-tested on November 7, 2026 the manual downloads from WHO IRIS over `curl` (HTTP 200, 34 pages); the
+403 comes from one fetcher, not from the document. The formula, the definitions and the five reporting
+rules of section III.7 were read there and the tile was built on them.
 
-The arithmetic proposed is actions ÷ opportunities × 100, overall and per WHO moment or role, with the
-opportunity count beside each figure and no target rate.
+The arithmetic proposed was actions ÷ opportunities × 100, overall and per WHO moment or role, with the
+opportunity count beside each figure and no target rate. What shipped is that, per moment, plus the two
+things the source adds: an action counts only where it answered an opportunity (so the manual's own
+Figure 8 is 3 of 6, not 4 of 6), and the 200-opportunity principle reads as precision on the
+denominator rather than as a pass mark.
 
 ## Proof
 

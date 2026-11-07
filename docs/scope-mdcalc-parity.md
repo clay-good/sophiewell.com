@@ -997,4 +997,4 @@ experience**.
 
 > v1661, Transplant Size Match and Event Intervals — [spec-v1661](spec-v1661.md), which adds `ischemia-time-clock` and `donor-recipient-size-match`, the two transplant tools that need no OPTN coefficient — is 2361.)
 
-> v1662, T-MACS — [spec-v1662](spec-v1662.md), which adds `t-macs` from two open reprints of the equation and the authors' protocol for the risk groups, read October 20, 2026 — is 2362.)
+> v1662, T-MACS — [spec-v1662](spec-v1662.md), which adds `t-macs` from two open reprints of the equation and the authors' protocol for the risk groups, read October 20, 2026 — is 2363.)

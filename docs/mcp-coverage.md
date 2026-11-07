@@ -9421,6 +9421,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nhsn-sir-v1655.js (spec-v1655: NHSN standardized infection ratio — administrative disclaimer)
 - `nhsn-sir`
 
+### lib/hand-hygiene-compliance-v1689.js (spec-v1689: WHO hand hygiene compliance from observed opportunities)
+- `hand-hygiene-compliance`
+
 ### lib/device-utilization-ratio-v1655.js (spec-v1655: NHSN device utilization ratio — administrative disclaimer)
 - `device-utilization-ratio`
 

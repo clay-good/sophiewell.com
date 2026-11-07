@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:0cef2975-9f7d-503e-8859-0ea112a05117",
+  "serialNumber": "urn:uuid:dd2fca49-f4fe-5b8c-8411-62cd3a573743",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-07T05:40:24.183Z",
+    "timestamp": "2026-11-07T08:52:28.760Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2362 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2363 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ba16d9efcfd5e9956a856b21f115296a7d69a2c3162f5472075318aa68ac1b73"
+          "content": "d00396905b0674e357a17e6c3f81cb3f2608125ec5e6403024356ccd66cdfebd"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "154636"
+          "value": "154709"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7a71edaa10dcb77e2faff1c595dc49c9836e67de3c7d0653379012ef8d8f3954"
+          "content": "86328b10b8638af3492b0e30ea64bceb5d6194e04ba7a03881187c3dba075541"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "646361"
+          "value": "646534"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d2c06213d6b55ebb64d2855d3d93f077da662d78ceab00af9cd3753b7de53f78"
+          "content": "b6e54490bfdc61f63aff2a42bbcfe4045b66d7785f38662834aff804df839e34"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "297653"
+          "value": "297787"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7f111d3413f4815e3ded9a1cde73a6a321b72627ba292a7dc9250e2e9f99ab66"
+          "content": "0d2cab2ba1a38529d7df34866d6a3b40c14f5c04c01868679fd942c096815eaa"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "145548"
+          "value": "145634"
         }
       ]
     },
@@ -11774,6 +11774,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hand-hygiene-compliance-v1689.js",
+      "type": "file",
+      "name": "lib/hand-hygiene-compliance-v1689.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a9339a1490ee7d3641dd546b5b638736f21ea0ec73a66d87a29fdcaa40171cc4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8771"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hand-off.js",
       "type": "file",
       "name": "lib/hand-off.js",
@@ -18017,7 +18038,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b4af516a012c65fe21a51672174ca9557fbfbf4f59750e22ba8ec04dc737d206"
+          "content": "cd9193b9fdec57ca8b9a90f9c27edb9f010672a8d9af67cf8d7eaf8c9f5c07ad"
         }
       ],
       "properties": [
@@ -18027,7 +18048,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3062612"
+          "value": "3063398"
         }
       ]
     },
@@ -43883,6 +43904,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hand-hygiene-compliance-v1689.js",
+      "type": "file",
+      "name": "mcp/adapters/hand-hygiene-compliance-v1689.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e210e973641d60d05d44b423798a73340401a508adfb132fd75b56c38dc92937"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1409"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hardman-v536.js",
       "type": "file",
       "name": "mcp/adapters/hardman-v536.js",
@@ -62684,7 +62726,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7d8fdc99d748bb3bd8e99ec9000bdb6fd9c9235b42117a8f7ce37126ea749fab"
+          "content": "e07a3fa32941106702a7292cb43c64df3e1d24b53d39f453b5693bfe6d32eb71"
         }
       ],
       "properties": [
@@ -62694,7 +62736,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "170111"
+          "value": "170262"
         }
       ]
     },
@@ -67472,7 +67514,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "04965e7e4a1bca5a0e0e188df83cd64d2b2fcbafd242707dda188228e9280cd7"
+          "content": "7cf9e31b765a24cbb3354d4806d19d0deda7611624e048a929d171893f5b5047"
         }
       ],
       "properties": [
@@ -67482,7 +67524,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7339"
+          "value": "8364"
         }
       ]
     },
@@ -98751,6 +98793,7 @@
         "urn:sophiewell:file:source:lib/hakki-valve-area-v1455.js",
         "urn:sophiewell:file:source:lib/hamada-v439.js",
         "urn:sophiewell:file:source:lib/hamp-furcation-v1490.js",
+        "urn:sophiewell:file:source:lib/hand-hygiene-compliance-v1689.js",
         "urn:sophiewell:file:source:lib/hand-off.js",
         "urn:sophiewell:file:source:lib/hardman-v536.js",
         "urn:sophiewell:file:source:lib/hardy-adenoma-v391.js",
@@ -101236,6 +101279,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hakki-valve-area-v1455.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hamada-v439.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hamp-furcation-v1490.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hand-hygiene-compliance-v1689.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hardman-v536.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hardy-adenoma-v391.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hardy-weinberg-carrier-v1660.js",
@@ -102236,7 +102280,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "0cef29759f7d203e"
+      "value": "dd2fca49f4fe3b8c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -102248,7 +102292,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3919"
+      "value": "3921"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
