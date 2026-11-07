@@ -1,7 +1,7 @@
 // spec-v1655: the six infection-prevention tools, against the worked examples their sources print.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { nhsnSir } from '../../lib/nhsn-sir-v1655.js';
+import { nhsnSir, nhsnMidP, nhsnMidPLimits } from '../../lib/nhsn-sir-v1655.js';
 import { deviceUtilizationRatio as dur } from '../../lib/device-utilization-ratio-v1655.js';
 import { deviceInfectionRate as rate } from '../../lib/device-infection-rate-v1655.js';
 import { outbreakAttackRates as oar, parseRows } from '../../lib/outbreak-attack-rates-v1655.js';
@@ -12,6 +12,35 @@ test('SIR: the guide example, 5 observed over 2.365 predicted, is 2.114', () => 
   const r = nhsnSir({ observed: '5', predicted: '2.365' });
   assert.equal(r.sir, 2.114);
   assert.match(r.band, /more infections were observed than predicted/);
+});
+
+test('SIR p-value and interval reproduce the three figures NHSN prints', () => {
+  // SIR guide (March 2024) p. 13: 5 / 2.365 -> SIR_pval 0.1251, sir95ci 0.775, 4.686.
+  let r = nhsnSir({ observed: '5', predicted: '2.365' });
+  assert.deepEqual([r.pValue, r.lower, r.upper], [0.1251, 0.775, 4.686]);
+  // Statistics Calculator guide p. 4: 1 / 1.05 -> p 1.0000, 0.048 to 4.697.
+  r = nhsnSir({ observed: '1', predicted: '1.05' });
+  assert.deepEqual([r.pValue, r.lower, r.upper], [1, 0.048, 4.697]);
+  assert.match(r.notes.join(' '), /not significantly different/);
+  // Macro guide (May 2021) p. 7: rateCIcomp on 12 / 35 -> 185.767 to 582.877 per 1,000.
+  const l = nhsnMidPLimits(12);
+  assert.equal(Math.round((l.lower / 35) * 1e6) / 1000, 185.767);
+  assert.equal(Math.round((l.upper / 35) * 1e6) / 1000, 582.877);
+});
+
+test('SIR p-value: 0 observed has no lower limit; above 100 observed uses Byar; refusals are null', () => {
+  const r = nhsnSir({ observed: '0', predicted: '1.5' });
+  assert.equal(r.lower, null);
+  assert.match(r.notes[0], /no lower limit/);
+  assert.equal(r.pValue, 0.2231); // 2 x (0.5 x e^-1.5), as the macro computes it
+  const big = nhsnSir({ observed: '150', predicted: '120' });
+  assert.match(big.notes[0], /Byar/);
+  assert.ok(big.pValue < 0.05 && big.lower > 1);
+  assert.match(big.notes[1], /is significantly different/);
+  assert.equal(nhsnMidP(1.5, 2), null);
+  assert.equal(nhsnMidP(3, 0.5), null);
+  assert.equal(nhsnMidP(3, 1e308), 0);
+  assert.equal(nhsnMidPLimits(-1), null);
 });
 
 test('SIR: no ratio below 1.0 predicted; 1.0 itself is calculated', () => {

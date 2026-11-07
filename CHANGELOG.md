@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The NHSN SIR tool now gives the two-sided p-value and 95% interval, computed the way NHSN's own published SAS macros
+  compute them (mid-P exact, Byar's approximation above 100 observed). It reproduces the three figures NHSN prints in
+  its guides, so the numbers should match a facility's report.
 - An IV thrombolysis checklist for acute ischemic stroke from the AHA/ASA 2026 guideline: the 4.5-hour window and the
   three imaging-based extended windows with their classes, disabling deficits, and Table 8's three tiers (benefit
   generally greater than risk, relative and absolute contraindications), each beside what the TNKase and Activase labels

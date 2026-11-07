@@ -892,7 +892,7 @@ carries the specific date that could change it.
 | in-use-discard-time | CDC Preventing Unsafe Injection Practices: the 28-day sentence for an opened multi-dose vial | US | 2026-10-11 | page dated 2024-03-26; under the weekly page watch | 2027-10-11 |
 | au-rate-saar | CDC NHSN Antimicrobial Use and Resistance (AUR) Module protocol: Table 4 rates and the SAAR | US | 2026-10-12 | July 2026 edition; CDC reissues the protocol each January and July | 2027-02-01 |
 | cdi-labid-category | CDC NHSN MDRO and CDI Module protocol: duplicate, onset, incident and recurrent definitions | US | 2026-10-12 | January 2026 edition; CDC reissues the protocol each January | 2027-02-01 |
-| nhsn-sir | CDC NHSN SIR Guide: the SIR and the 1.0-predicted minimum | US | 2026-10-19 | updated March 2024; CDC revises the guide with each re-baseline | 2027-04-19 |
+| nhsn-sir | CDC NHSN SIR Guide: the SIR and the 1.0-predicted minimum; NHSN SAS macros: mid-P p-value and interval | US | 2026-11-07 | guide updated March 2024, macros May 2021; CDC revises the guide with each re-baseline | 2027-05-07 |
 | device-utilization-ratio | CDC NHSN Patient Safety Component Manual chapters 4, 7 and 10: device utilization ratio | US | 2026-10-19 | January 2026 edition; CDC reissues the manual each January | 2027-02-01 |
 | device-infection-rate | CDC NHSN Patient Safety Component Manual chapters 4, 7 and 10: CLABSI, CAUTI and VAE rates | US | 2026-10-19 | January 2026 edition; CDC reissues the manual each January | 2027-02-01 |
 | outbreak-attack-rates | CDC Principles of Epidemiology in Public Health Practice, 3rd ed., Lesson 3 sections 2 and 5 | US | 2026-10-19 | archived third edition; definitions stable | 2027-10-19 |

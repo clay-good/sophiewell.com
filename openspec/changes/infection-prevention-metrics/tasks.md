@@ -20,7 +20,8 @@
       formula; cite the section in tool 5.
 - [x] 1.3 NHSN PSC Manual chapters 6 and 10: confirm the DUR and rate formulas for urinary
       catheter and ventilator days (tools 2 and 3).
-- [ ] 1.4 (not read; tool 1 ships without an interval) The exact-Poisson interval for observed ÷ predicted: read it in a source before
+- [x] 1.4 (read November 7, 2026 in NHSN's own SAS macros, p-value-of-sir-compared-to-nominal.sas and rateCIcomp.sas, and
+      added to tool 1 in spec-v1709: NHSN's mid-P method, not the plain exact interval, reproducing all three printed examples) The exact-Poisson interval for observed ÷ predicted: read it in a source before
       shipping an interval in tool 1; otherwise ship without it.
 - [x] 1.5 CDC personnel summary: the day-0 convention and the pertussis high-risk wording.
 

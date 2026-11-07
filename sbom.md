@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `750b6c156f42ea8a`
-Generated: 2026-11-07T21:33:57.566Z
+Build ID: `04cc82b634077e00`
+Generated: 2026-11-07T21:52:20.114Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -911,7 +911,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3084251 | `74c5c6cec1fc09a59ce1080ecbd0f5f267283f017e94dd01ca09aef42c638ae3` |
+| `lib/meta.js` | 3084582 | `9b492885f101f233b826d39de1fc99f5206976e90e602afc845e816828c151d4` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 22551 | `2968b0f8bd9102322d6bd43aa9e7447c56e9ec8a42ccb299a9b3e82e051cf7c5` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1002,7 +1002,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/newborn-size-category-v1559.js` | 3373 | `2ce9432abcbd987b9a3792288a6e2a3c079dc42b9cdc7169cfde63fdced2f70e` |
 | `lib/newborn-temperature-who-v1559.js` | 4242 | `152eb2d3a99988d529f9cac84180a5d3314d8738a11e77b7b1f9eab487723075` |
 | `lib/ng-tube-length-v1445.js` | 3145 | `ca0786de784c977444a38b86fa018512c9753056d45be7377cc8807240059d9d` |
-| `lib/nhsn-sir-v1655.js` | 3048 | `004fbb524565df38f74344f86b06d96374f62da47703202ad60720315c9532ff` |
+| `lib/nhsn-sir-v1655.js` | 6953 | `7bb229d8c46feb8a3ac3df0a7ee9fd4880b364acd5740cceec9ad802d41ec8ee` |
 | `lib/nhsn-vae-v876.js` | 10644 | `8f707c47b76db63a5d19364f2f06aacbd90c09e7ab403a836e7c7889a90d146f` |
 | `lib/ni-rads-v373.js` | 4140 | `80126c64912eaf0c7f60e81f5c78b25dc6b415007fda80987dd4c453dd3777cb` |
 | `lib/nice-v335.js` | 4617 | `2228aaf825a831a865f6baa57e505306b9dd51492d04b6ab5f5de14fa67ddc7e` |
@@ -2513,7 +2513,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/newborn-size-category-v1559.js` | 954 | `129408e4d7650937db1e6d3c2a1cb1d2ac0afc4eca35bd807c0465891bb63e36` |
 | `mcp/adapters/newborn-temperature-who-v1559.js` | 898 | `ec43f8c3fda94be04b86f7b64b376565e4a3ee3fa2c72d47da351ef7673a9899` |
 | `mcp/adapters/ng-tube-length-v1445.js` | 659 | `cd29b6b5d55532e44ee1ef52076b7b8fed63d2a5b1bf568a7852fe08b63535a2` |
-| `mcp/adapters/nhsn-sir-v1655.js` | 782 | `efe84ee011616f4c4351681dc8cf8e411829a7db95506eec32f169fa063c5040` |
+| `mcp/adapters/nhsn-sir-v1655.js` | 855 | `817b60f41364dbd0d25e4c42fe0494ee909de0dc9c60818ae4ff101f88e58d99` |
 | `mcp/adapters/nhsn-vae-v876.js` | 3017 | `4ee00daad439acb70fd441aed43c0d7a962e4bd3642dc65b5c61e7b91884709b` |
 | `mcp/adapters/ni-rads-v373.js` | 1480 | `4da1757092450b2693ea71a1b5d860653ea099b78d938d58420d7deb258ca47d` |
 | `mcp/adapters/nice-v335.js` | 1482 | `f769b4b1ac1530b100e2221e0ea34120f7b02a57853eb59e9dde5f948acb9fc5` |
