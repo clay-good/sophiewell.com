@@ -941,6 +941,7 @@ const PROBES = [
   ['hrv frequency domain lf hf', ['hrv-frequency-domain']],
   ['hrv spectral analysis', ['hrv-frequency-domain']],
   ['eeg alpha band power', ['eeg-band-power']],
+  ['pan tompkins qrs detection', ['qrs-detect-trace']],
   ['clamp to reperfusion time', ['ischemia-time-clock']],
   ['donor recipient weight ratio', ['donor-recipient-size-match']],
   ['t-macs chest pain troponin', ['t-macs']],

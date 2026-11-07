@@ -13818,6 +13818,14 @@
       ],
       "tile": "eeg-band-power",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pan tompkins",
+        "detect heartbeats"
+      ],
+      "tile": "qrs-detect-trace",
+      "audience": "clinicians"
     }
   ]
 }

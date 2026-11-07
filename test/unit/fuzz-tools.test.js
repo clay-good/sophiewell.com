@@ -913,6 +913,7 @@ import * as spo2ArmsAccuracyV1704 from '../../lib/spo2-arms-accuracy-v1704.js';
 import * as pwvCarotidFemoralV1704 from '../../lib/pwv-carotid-femoral-v1704.js';
 import * as hrvFrequencyDomainV1705 from '../../lib/hrv-frequency-domain-v1705.js';
 import * as eegBandPowerV1705 from '../../lib/eeg-band-power-v1705.js';
+import * as qrsDetectTraceV1706 from '../../lib/qrs-detect-trace-v1706.js';
 import * as ischemiaTimeClockV1661 from '../../lib/ischemia-time-clock-v1661.js';
 import * as donorRecipientSizeMatchV1661 from '../../lib/donor-recipient-size-match-v1661.js';
 import * as tMacsV1662 from '../../lib/t-macs-v1662.js';
@@ -2110,6 +2111,7 @@ const MODULES = {
   'pwv-carotid-femoral-v1704.js': pwvCarotidFemoralV1704,
   'hrv-frequency-domain-v1705.js': hrvFrequencyDomainV1705,
   'eeg-band-power-v1705.js': eegBandPowerV1705,
+  'qrs-detect-trace-v1706.js': qrsDetectTraceV1706,
   'ischemia-time-clock-v1661.js': ischemiaTimeClockV1661,
   'donor-recipient-size-match-v1661.js': donorRecipientSizeMatchV1661,
   't-macs-v1662.js': tMacsV1662,

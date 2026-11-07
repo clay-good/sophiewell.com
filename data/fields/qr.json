@@ -1,0 +1,1 @@
+{"qrs-detect-trace":[{"d":"qrs-fs","k":"number","l":"Sampling rate (Hz)","r":1},{"d":"qrs-x","k":"string","l":"ECG samples of one lead, one per line","r":1}]}

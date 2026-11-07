@@ -1012,3 +1012,5 @@ experience**.
 > v1704, Biosignal Analysis, First Slice — [spec-v1704](spec-v1704.md), which adds `hrv-time-domain` (Task Force 1996), `ectopy-burden`, `spo2-arms-accuracy` (FDA's 2013 guidance and 2025 draft, Bland and Altman 2007) and `pwv-carotid-femoral` (Van Bortel 2012, AHA 2015), read November 7, 2026 — is 2382.)
 
 > v1705, Biosignal Analysis, Spectral Slice — [spec-v1705](spec-v1705.md), which adds `hrv-frequency-domain` (Task Force 1996 Table 2) and `eeg-band-power` (the IFCN glossary's bands, Kane 2017 and its 2019 corrigendum) on a new `lib/dsp.js` — is 2384.)
+
+> v1706, Beat Detection (Pan-Tompkins) — [spec-v1706](spec-v1706.md), which adds `qrs-detect-trace`, shipped after its MIT-BIH validation (sensitivity 99.79%, positive predictivity 99.08% on the 44 non-paced records), completing the biosignal-analysis change — is 2385.)

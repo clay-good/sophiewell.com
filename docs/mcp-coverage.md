@@ -9601,6 +9601,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/eeg-band-power-v1705.js (spec-v1705: EEG band power — clinical disclaimer)
 - `eeg-band-power`
 
+### lib/qrs-detect-trace-v1706.js (spec-v1706: R-peaks from an ECG trace — clinical disclaimer)
+- `qrs-detect-trace`
+
 ### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
 - `ischemia-time-clock`
 

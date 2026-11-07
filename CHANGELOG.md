@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Beat detection in a single-lead ECG trace by the Pan-Tompkins algorithm: R-peak times, RR intervals and mean rate,
+  drawn as a tachogram and handed to the HRV tools by link. It shipped only after scoring 99.79% sensitivity and 99.08%
+  positive predictivity on the 44 non-paced MIT-BIH records; `scripts/validate-qrs-mitdb.mjs` reruns that check.
 - Spectral biosignal tools: heart rate variability in the frequency domain (VLF, LF, HF, normalized units and LF/HF,
   with the bands a recording's length supports) and EEG band power by the IFCN glossary's bands, each drawing its power
   spectrum. They run on a new signal library (FFT, Hann window, Welch averaging, detrending, cubic spline).
