@@ -24,12 +24,12 @@
     "fetchedAt": "2026-09-29"
   },
   "nadac": {
-    "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=as_of_date&conditions[0][value]=2026-10-21&conditions[0][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
-    "edition": "2026-10-21 weekly",
-    "sha256": "fc409ac41f52bcba487319ef665c0556644e2d3746815bf15e25f1b994fdb7b5",
-    "etag": "\"1792925337-gzip\"",
-    "lastModified": "Sun, 25 Oct 2026 10:48:57 GMT",
-    "fetchedAt": "2026-10-25"
+    "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=as_of_date&conditions[0][value]=2026-11-04&conditions[0][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
+    "edition": "2026-11-04 weekly",
+    "sha256": "e4cc3a814286fd5f75575105fae477c134f1d82a2734b94b5ae4a9b6b0dd09d7",
+    "etag": "\"1794014244-gzip\"",
+    "lastModified": "Sat, 07 Nov 2026 01:17:24 GMT",
+    "fetchedAt": "2026-11-07"
   },
   "asp": {
     "url": "https://www.cms.gov/files/zip/october-2026-medicare-part-b-payment-limit-files-final.zip",
@@ -49,11 +49,11 @@
   },
   "mcd-articles": {
     "url": "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/current_article.zip",
-    "edition": "2026-10-19 weekly",
-    "sha256": "0817cfacd1988ee2f896f8c6a55278c79a01e4f136e78dd7a8725c2c82c3bfed",
-    "etag": "\"f684c3a273ebd7226d6000e93054a46e:1792634411.669175\"",
-    "lastModified": "Thu, 22 Oct 2026 02:00:12 GMT",
-    "fetchedAt": "2026-10-25"
+    "edition": "2026-11-02 weekly",
+    "sha256": "fb2903d24ae36a702552e514857a97cef7244596be897273bd0fdab5a6a73c0f",
+    "etag": "\"2bbbdacc1e5490f17f9ecf8e17b5cc0f:1793862010.504963\"",
+    "lastModified": "Thu, 05 Nov 2026 07:00:11 GMT",
+    "fetchedAt": "2026-11-07"
   },
   "purple-book": {
     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/PurpleBook/2026/purplebook-search-September-data-download.csv",
