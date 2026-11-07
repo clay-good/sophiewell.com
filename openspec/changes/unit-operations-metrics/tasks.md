@@ -13,6 +13,8 @@
 - [x] 1.3 (shipped with pasted weights only) CMS IPPS Table 5 for the current fiscal year: fetch, hash, manifest (tool 10), or
       ship with pasted weights only.
 - [ ] 1.4 (not read: QualityNet returned a script shell; tool 11 stays gated) Hospital OQR Specifications Manual, current version: OP-18 and OP-22 (tool 11).
+      November 7, 2026: in a browser the page renders (2027 v20.0, 2026 v19.0a), but each PDF opens only after
+      the reader accepts the AMA CPT license, an owner decision; scripts still get the HTML shell.
 
 ## 2. Lib
 - [x] 2.1 (one lib per tool, `lib/*-v1657.js`; `edThroughput` not built) `lib/unit-ops-vNNNN.js`: `hppd`, `pbjHoursPerResidentDay`, `pbjCaseMixAdjusted`,

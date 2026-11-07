@@ -54,7 +54,7 @@
       "url": "https://qualitynet.cms.gov/outpatient/specifications-manuals",
       "kind": "script-rendered",
       "lastStatus": 200,
-      "note": "A 200 that carries nothing: the page is a 5.7 KB single-page-application shell whose only hrefs are its own bundle, favicon and stylesheet. The manual is behind a client-side fetch, so a status code alone would read this gate as open."
+      "note": "A 200 that carries nothing: the page is a 5.7 KB single-page-application shell whose only hrefs are its own bundle, favicon and stylesheet. The manual is behind a client-side fetch, so a status code alone would read this gate as open. Re-probed November 7, 2026 in a browser: the page renders and lists the 2027 manual (version 20.0, ED-Throughput set 1d_ED_Throughput_set_v20.0.pdf) and the 2026 manual (19.0a). A script still gets the HTML shell, and opening a PDF first asks the reader to accept the AMA's CPT license. Accepting a license is the owner's decision, so the set is still unread."
     },
     {
       "tool": "westgard-multirule-three-level",
