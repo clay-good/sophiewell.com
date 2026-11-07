@@ -99,12 +99,18 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       ordered severity word with no unassigned state, now carry a chip. What is left needs a
       judgment about the INSTRUMENT, not about the code, and each one read differently when
       checked:
-      - SNOT-22 and GAGS are chippable but need the guard to accept a DELIBERATELY unmapped value.
-        Both model their gap honestly already (SNOT-22 returns a distinct band below 8 marked
-        `named: false` and says it is "NOT the mild band"; GAGS returns `band: null` at exactly 39,
-        where the published table assigns none), so the lookup yields no chip on its own. The
-        guard cannot currently tell an intentional omission from a missed tier, which is the whole
-        point of it, so it would need an explicit per-tile opt-out with the reason stated.
+      - SNOT-22 SHIPPED in chip batch 8 once the guard learned to take a DELIBERATELY unmapped
+        value. A pair may now list such values with the reason in the open, and the guard holds the
+        exception honest both ways: a listed value the compute never returns fails, and dropping the
+        listing turns the value back into a missed tier. SNOT-22's three named bands carry a chip
+        and the range below 8 carries none, which is what the source supports -- its stratification
+        "defines nothing under 8" and the lib's own text says "This is NOT the mild band". Verified
+        in the browser: no chip at 0, Moderate at 22, Severe at 66 and 110.
+      - GAGS is NOT taken, for the same reason the Edmonton Frail Scale is not: it has five band
+        values (None, Mild, Moderate, Severe and a `Very severe` above 38) and four tokens, so it
+        needs a collapse, and choosing where to collapse is a judgment about the instrument rather
+        than a mapping. Its `band: null` at the score the published table leaves unassigned would
+        already render no chip.
       - Global ARDS was left alone on purpose. Its own lib header says it is "a DEFINITION for
         identifying a syndrome, not a severity score", two of its four categories carry no grade
         at all, and it warns that patients move between categories during an illness. A severity

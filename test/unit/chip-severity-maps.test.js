@@ -8,6 +8,13 @@
 // So the map's key set must be exactly the set of tiers its compute can return.
 // Both are read from source: the tier literals the lib assigns, and the keys
 // the view's map declares.
+//
+// One exception has to be DECLARED, never inferred: an instrument may return a
+// value that is not a severity at all, and the honest rendering is no chip. The
+// guard cannot tell that apart from a missed tier -- which is the whole reason
+// it exists -- so a pair may list such values in a fifth entry, with the reason
+// here in the open. A listed value the compute does not actually return fails
+// too, so the exception cannot outlive the band it was written for.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -47,6 +54,11 @@ const PAIRS = [
   ['lib/rassi-chagas-v851.js', 'views/group-v851.js', 'RASSI_SEVERITY', 'label'],
   ['lib/propkd-v564.js', 'views/group-v564.js', 'PROPKD_SEVERITY', 'label'],
   ['lib/sarnat-hie-v429.js', 'views/group-v429.js', 'SARNAT_SEVERITY', 'stage'],
+  // SNOT-22's stratification "defines nothing under 8", and the lib returns a
+  // distinct band for that range marked `named: false`, whose own text says
+  // "This is NOT the mild band." Colouring it would invent the band the source
+  // declines to define, so it is deliberately unmapped and shows no chip.
+  ['lib/snot22-v552.js', 'views/group-v552.js', 'SNOT22_SEVERITY', 'label', ['Below the mild threshold']],
 ];
 
 const TOKENS = new Set(['low', 'moderate', 'high', 'critical']);
@@ -81,18 +93,26 @@ function mapIn(src, name) {
   return new Map(entries.map((e) => [e[1], { token: e[2], label: e[3] }]));
 }
 
-for (const [libPath, viewPath, mapName, literalsField] of PAIRS) {
+for (const [libPath, viewPath, mapName, literalsField, unmapped = []] of PAIRS) {
   test(`${mapName} covers every tier ${libPath.split('/').pop()} can return`, () => {
     const viewSrc = read(viewPath);
     const tiers = tiersIn(read(libPath), literalsField);
     const map = mapIn(viewSrc, mapName);
     assert.ok(tiers.size >= 2, `${libPath}: expected a banded compute, found tiers ${[...tiers]}`);
 
-    const missing = [...tiers].filter((t) => !map.has(t));
+    // A declared exception must name a value the compute really returns.
+    const phantom = unmapped.filter((u) => !tiers.has(u));
+    assert.deepEqual(phantom, [], `${mapName} declares ${phantom.join(', ')} unmapped, but the compute never returns it`);
+
+    const missing = [...tiers].filter((t) => !map.has(t) && !unmapped.includes(t));
     assert.deepEqual(missing, [], `${mapName} has no entry for ${missing.join(', ')} -- those bands would show no chip`);
 
     const stale = [...map.keys()].filter((k) => !tiers.has(k));
     assert.deepEqual(stale, [], `${mapName} maps ${stale.join(', ')}, which the compute never returns`);
+
+    // And an exception is an exception: it must not also be mapped.
+    const both = unmapped.filter((u) => map.has(u));
+    assert.deepEqual(both, [], `${mapName} both maps and declares unmapped: ${both.join(', ')}`);
   });
 
   test(`${mapName} is looked up on a field ${libPath.split('/').pop()} fills`, () => {

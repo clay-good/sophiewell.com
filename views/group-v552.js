@@ -13,6 +13,13 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/snot22-v552.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// SNOT-22 bands (Toma and Hopkins 2016, as the compute names them). The range
+// below 8 is absent on purpose: the stratification defines nothing there and the
+// compute marks it `named: false`, so it gets no chip rather than a colour the
+// source does not support. test/unit/chip-severity-maps.test.js holds that
+// omission to the compute's own band list.
+const SNOT22_SEVERITY = { Mild: ['low', 'Mild'], Moderate: ['moderate', 'Moderate'], Severe: ['high', 'Severe'] };
+
 function select(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -69,7 +76,8 @@ export const renderers = {
       const r = M.snot22(input);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.bandText },
+        { text: r.bandText,
+          severity: (SNOT22_SEVERITY[r.band] || [])[0], severityLabel: (SNOT22_SEVERITY[r.band] || [])[1] },
         { label: 'Total', value: `${r.total} of ${r.max}` },
         { label: 'Band', value: r.namedBand ? r.band : `${r.band} (no named band below 8)` },
         { label: 'Marked most important', value: r.mostImportant.length ? `${r.mostImportant.length} item(s), not scored` : 'none' },
