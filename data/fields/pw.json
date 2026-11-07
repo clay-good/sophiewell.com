@@ -1,0 +1,1 @@
+{"pwv-carotid-femoral":[{"d":"pwv-method","k":"enum","l":"Path length method","r":1,"v":["direct80","subtraction"]},{"d":"pwv-direct","k":"number","l":"Direct carotid-femoral distance (mm)"},{"d":"pwv-nf","k":"number","l":"Sternal notch to femoral (mm)"},{"d":"pwv-nc","k":"number","l":"Sternal notch to carotid (mm)"},{"d":"pwv-tt","k":"number","l":"Transit time (ms)","r":1}]}

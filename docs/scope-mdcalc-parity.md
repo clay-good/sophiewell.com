@@ -1008,3 +1008,5 @@ experience**.
 > v1700, Drug-Interaction Kinetics, ICH M12 Slice — [spec-v1700](spec-v1700.md), which adds `ddi-basic-screen`, `ddi-static-aucr` and `enzyme-recovery-time` from ICH M12 (Step 4, 2024), and `ddi-cr-ir-predict` from Ohno's abstracts and Tod 2014, all read November 7, 2026 — is 2377.)
 
 > v1701, FDA's CYP Interaction Examples — [spec-v1701](spec-v1701.md), which adds `cyp-list-check` on a new weekly dataset, `data/fda-ddi-examples` (FDA's Table 1, current as of 05/29/2026, read November 7, 2026) — is 2378.)
+
+> v1704, Biosignal Analysis, First Slice — [spec-v1704](spec-v1704.md), which adds `hrv-time-domain` (Task Force 1996), `ectopy-burden`, `spo2-arms-accuracy` (FDA's 2013 guidance and 2025 draft, Bland and Altman 2007) and `pwv-carotid-femoral` (Van Bortel 2012, AHA 2015), read November 7, 2026 — is 2382.)

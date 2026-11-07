@@ -9583,6 +9583,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cyp-list-check-v1701.js (spec-v1701: FDA's CYP examples for a medication list — clinical disclaimer)
 - `cyp-list-check`
 
+### lib/hrv-time-domain-v1704.js (spec-v1704: HRV time domain — clinical disclaimer)
+- `hrv-time-domain`
+
+### lib/ectopy-burden-v1704.js (spec-v1704: ectopic beat and arrhythmia burden — clinical disclaimer)
+- `ectopy-burden`
+
+### lib/spo2-arms-accuracy-v1704.js (spec-v1704: pulse oximeter accuracy from paired readings — clinical disclaimer)
+- `spo2-arms-accuracy`
+
+### lib/pwv-carotid-femoral-v1704.js (spec-v1704: carotid-femoral pulse wave velocity — clinical disclaimer)
+- `pwv-carotid-femoral`
+
 ### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
 - `ischemia-time-clock`
 

@@ -934,6 +934,10 @@ carries the specific date that could change it.
 | coefficient-of-relationship | Wright S, Am Nat 1922;56:330-338 (the path rule) | International | 2026-10-19 | a 1922 paper; stable | 2027-10-19 |
 | bayes-risk-table | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity | 2027-10-19 |
 | acmg-variant-classify | Richards 2015 Table 5; Tavtigian 2018 and 2020; ClinGen SVI strength notation (2017) and PM2 recommendation (2020) | International | 2026-11-07 | ClinGen SVI may change a default strength (PM2 did in 2020); recheck the SVI pages | 2027-05-07 |
+| hrv-time-domain | Task Force of the ESC and NASPE, Circulation 1996, Table 1 | International | 2026-11-07 | a 1996 standard; stable | 2027-11-07 |
+| ectopy-burden | Stated arithmetic: counts over their denominators | International | 2026-11-07 | an identity | 2027-11-07 |
+| spo2-arms-accuracy | FDA pulse oximeter guidance (2013 final; January 2025 draft); Bland and Altman 2007 | US | 2026-11-07 | the draft may be finalized; both PDFs are under the weekly page watch and the tool stops answering after 2027-05-07 until re-read | 2027-05-07 |
+| pwv-carotid-femoral | Van Bortel 2012 consensus (abstract); AHA 2015 Recommendation 6.1 | International | 2026-11-07 | consensus values; recheck for a newer statement | 2027-11-07 |
 | cyp-list-check | FDA Examples of Drugs that Interact with CYP Enzymes and Transporter Systems, Table 1 (weekly dataset) | US | 2026-11-07 | read weekly; the tool stops answering 14 days after the last successful fetch | 2027-05-07 |
 | ddi-basic-screen | ICH M12 (Step 4, May 21, 2024), sections 2.1.2.1 and 2.1.2.2, Table 6 | International | 2026-11-07 | ICH may issue a Q&A or revision; the PDF is under the weekly page watch | 2027-05-07 |
 | ddi-static-aucr | ICH M12 (Step 4, May 21, 2024), section 7.5.1, Table 3 | International | 2026-11-07 | ICH may issue a Q&A or revision; the PDF is under the weekly page watch | 2027-05-07 |

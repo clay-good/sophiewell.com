@@ -13768,6 +13768,39 @@
       ],
       "tile": "cyp-list-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hrv time domain",
+        "rmssd and sdnn",
+        "pnn50"
+      ],
+      "tile": "hrv-time-domain",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pvc burden",
+        "af burden from a holter"
+      ],
+      "tile": "ectopy-burden",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pulse oximeter arms",
+        "oximeter accuracy bland altman"
+      ],
+      "tile": "spo2-arms-accuracy",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pulse wave velocity",
+        "arterial stiffness pwv"
+      ],
+      "tile": "pwv-carotid-femoral",
+      "audience": "clinicians"
     }
   ]
 }

@@ -11,11 +11,11 @@
 
 ## 1. Re-read at build
 - [ ] 1.1 Pan-Tompkins eq 3, 9, 11-29 and the high-pass sentence; the erratum if it has become readable.
-- [ ] 1.2 Task Force Tables 1 and 2 and the recording-length sentences.
+- [x] 1.2 (read for the design the same day; the DOI confirmed through Crossref for spec-v1704) Task Force Tables 1 and 2 and the recording-length sentences.
 - [ ] 1.3 Kane 2017 bands and the 2019 corrigendum.
-- [ ] 1.4 FDA's guidance index for the 2025 draft's status; both guidance pages hashed in
+- [x] 1.4 (spec-v1704: both PDFs re-read, figures match design.md, the draft still marked "Draft - Not for Implementation"; hashes recorded) FDA's guidance index for the 2025 draft's status; both guidance pages hashed in
       `scripts/data/page-hashes.json`.
-- [ ] 1.5 Van Bortel 2012 full text if it has become open; AHA 2015 Recommendation 6.1.
+- [x] 1.5 (spec-v1704: the PMID confirmed; full text still not open, so the abstract and AHA 2015 are cited) Van Bortel 2012 full text if it has become open; AHA 2015 Recommendation 6.1.
 
 ## 2. Lib
 - [ ] 2.1 `lib/dsp-vNNNN.js`: radix-2 FFT with zero-padding, periodic Hann window, Welch averaging, linear detrend,
@@ -29,7 +29,7 @@
 ## 3. Views, META, agents
 - [ ] 3.1 Group E renderers beside `qtc` and `ecg-axis`; CSV intake through the file-reader archetype; in-page sample
       limits measured on a mid-range phone and stated.
-- [ ] 3.2 Refresh: page watches on both FDA pulse oximeter guidance pages, failing tool 6 closed on a change.
+- [x] 3.2 (spec-v1704: both guidance PDFs under the weekly page watch; the tool stops answering after its validThrough, 2027-05-07, until they are re-read) Refresh: page watches on both FDA pulse oximeter guidance pages, failing tool 6 closed on a change.
 - [ ] 3.3 MCP adapters with the existing field kinds (samples as one string, one value per line); tools 1-4 added to
       `ANALYZABLE` for files. Synonyms: "HRV", "heart rate variability", "RMSSD", "SDNN", "pNN50", "LF/HF", "QRS
       detection", "R peak", "Pan-Tompkins", "EEG band power", "alpha power", "PVC burden", "AF burden", "pulse

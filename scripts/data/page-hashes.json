@@ -107,6 +107,14 @@
     "sha256": "03dc1153787ace403f5d5381bd3a9269109ff58c0cfe6c8df9f9b573162e5552",
     "recorded": "2026-10-15"
   },
+  "https://www.fda.gov/media/184896/download": {
+    "sha256": "8d653632b6cb4ecd3c7fb2a618c0fe80711a115bd95228869c9f1a8a6754d881",
+    "recorded": "2026-11-07"
+  },
+  "https://www.fda.gov/media/72470/download": {
+    "sha256": "b30c463ddba41620e4026f001c7f2a523d552eb058c236b7673b47a9660199b4",
+    "recorded": "2026-11-07"
+  },
   "https://www.fda.gov/medical-devices/precision-medicine/table-pharmacogenetic-associations": {
     "sha256": "f37f380f4b311949a0dab17c990db6959da6c3496e06376bd4f65972be8f59c2",
     "recorded": "2026-10-15"

@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Biosignal arithmetic from the reader's own numbers: heart rate variability in the time domain (SDNN, RMSSD, NN50,
+  pNN50 and the triangular index, as the 1996 Task Force defines them, with both pNN50 denominators shown), ectopic
+  beat and arrhythmia burden, pulse oximeter accuracy from paired readings (Arms, bias and Bland-Altman limits for
+  repeated measures, against FDA's 2013 guidance and, labeled as a draft, its 2025 draft), and carotid-femoral pulse
+  wave velocity with the 10 m/s reference shown only for the 80% method.
 - A shared line plot: the drug level from a dose history (as given and on schedule), enzyme recovery and the sigmoid
   Emax curve now draw their curve, with a text alternative and every plotted value in a table beneath it.
 - The mechanistic static model now states the exposure-matching dose fraction (1/AUCR) for a drug with linear

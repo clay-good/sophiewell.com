@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1feaf5d3-e1e1-5781-84bc-bed35f175a8a",
+  "serialNumber": "urn:uuid:e593fa60-846d-50f7-807d-135dc2841452",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-07T20:05:46.430Z",
+    "timestamp": "2026-11-07T20:32:18.766Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2378 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2382 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "03df3bcc83bb4f70758f20a2190f53b0ce1e90156456f3d24ef706afaae3186b"
+          "content": "07f945fa6d24c7c67f36c74d6c9e9b07acc1d96c6bc69ea85d7ba6f4087357c8"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "155734"
+          "value": "155971"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3b8b825fbf07a7c2becd832357efbbd77d684c14f9b8cce59f2320746c20f351"
+          "content": "73d6a6fb91144f1a143cb3b784983784e755e6d731170cd609a0ca551ecd0f28"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "649410"
+          "value": "650089"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "52eb672d3226160d65c5001ff3c93942b9ba21d21e50bcdb957a0f9be6148afb"
+          "content": "f45a3e2746ed7c3ad1672d536499e1f9a0334db7fee9ac5150191dc1f9a65365"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "299715"
+          "value": "300224"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a7ae98bd4cd111a89e6f59bbd9d96dcde2ce6136f2970a06b8f3602343bd9f64"
+          "content": "b85ba88f4897e8c0d34eb7ca67edc7cc6a97e232b55c928d6d8a9074350b2516"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "146772"
+          "value": "147034"
         }
       ]
     },
@@ -8834,6 +8834,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ectopy-burden-v1704.js",
+      "type": "file",
+      "name": "lib/ectopy-burden-v1704.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c7d90aeb3d0ea9d6063856eb388b6387e6a4c0308cb533c293d01c31d7bb150e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3345"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ed-decision-v218.js",
       "type": "file",
       "name": "lib/ed-decision-v218.js",
@@ -10027,6 +10048,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "33300"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/fda-pulse-oximeter.js",
+      "type": "file",
+      "name": "lib/fda-pulse-oximeter.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9dbbe0ea3479a45d8514c1fa771cee178c41df2def38f8f933278da25531cde3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2008"
         }
       ]
     },
@@ -13450,6 +13492,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10999"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hrv-time-domain-v1704.js",
+      "type": "file",
+      "name": "lib/hrv-time-domain-v1704.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "97630f905a331c8e439014c121352c246aa9e622fcad443e73564aa71e5a3838"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5715"
         }
       ]
     },
@@ -18332,7 +18395,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ee09e5b68de369da557d0e8e4ec75d849e22ceb03136096eea1aea9c2e542e69"
+          "content": "020ddcd5df32ef934d47030f26e9fc52e6eab1fe9dc06e6ecae85adc4c1595bd"
         }
       ],
       "properties": [
@@ -18342,7 +18405,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3074723"
+          "value": "3077368"
         }
       ]
     },
@@ -25466,6 +25529,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/pwv-carotid-femoral-v1704.js",
+      "type": "file",
+      "name": "lib/pwv-carotid-femoral-v1704.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "06f7593748f7e6339d4b45bb980eb7c067b44355d5b3d8cc01d26a259851c123"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3331"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/qcsi-v698.js",
       "type": "file",
       "name": "lib/qcsi-v698.js",
@@ -29137,6 +29221,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2772"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/spo2-arms-accuracy-v1704.js",
+      "type": "file",
+      "name": "lib/spo2-arms-accuracy-v1704.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1c3e3cd34fc423de102978cf738a20aff267b2dc5b6b99e2571102ca335e749a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10990"
         }
       ]
     },
@@ -41573,6 +41678,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ectopy-burden-v1704.js",
+      "type": "file",
+      "name": "mcp/adapters/ectopy-burden-v1704.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bd15e9bca6b11e2284aeb9484483e09c15afb632111f2d2b4360ede8b3b7690b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1152"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ed-decision-v218.js",
       "type": "file",
       "name": "mcp/adapters/ed-decision-v218.js",
@@ -45769,6 +45895,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1860"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hrv-time-domain-v1704.js",
+      "type": "file",
+      "name": "mcp/adapters/hrv-time-domain-v1704.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1f144bcd5b48e2c104f464661b47bcd811b24ff1440ab095fdabc5d1dd71b048"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "734"
         }
       ]
     },
@@ -56420,6 +56567,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pwv-carotid-femoral-v1704.js",
+      "type": "file",
+      "name": "mcp/adapters/pwv-carotid-femoral-v1704.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6c1d95fabf5a3c9285a59ac89c6ed3dea87a76520c2f7a55265a718eba375137"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1101"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/qcsi-v698.js",
       "type": "file",
       "name": "mcp/adapters/qcsi-v698.js",
@@ -59545,6 +59713,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1121"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/spo2-arms-accuracy-v1704.js",
+      "type": "file",
+      "name": "mcp/adapters/spo2-arms-accuracy-v1704.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "775f774903deea74f9b1e79b1b159de9931008c0713d81c1af288a347085d75a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "975"
         }
       ]
     },
@@ -63419,7 +63608,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f3829c3669a3316a01790d4a31a2d69322323723c46d9913327a90ede6bd1748"
+          "content": "4c20cc337472d34ae8cc83f54f1540256b6da88d0532978ae439e52d1428199a"
         }
       ],
       "properties": [
@@ -63429,7 +63618,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "171955"
+          "value": "172453"
         }
       ]
     },
@@ -68575,6 +68764,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3206"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1704.js",
+      "type": "file",
+      "name": "views/group-v1704.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6a17a07a3ff6ff5f059f09acccc9022f91d9c6cd52506a72a9917587eecb357d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5954"
         }
       ]
     },
@@ -99472,6 +99682,7 @@
         "urn:sophiewell:file:source:lib/echo-v158.js",
         "urn:sophiewell:file:source:lib/eckardt-v519.js",
         "urn:sophiewell:file:source:lib/ecst-carotid-v1242.js",
+        "urn:sophiewell:file:source:lib/ectopy-burden-v1704.js",
         "urn:sophiewell:file:source:lib/ed-decision-v218.js",
         "urn:sophiewell:file:source:lib/eddecision-v107.js",
         "urn:sophiewell:file:source:lib/edinburgh-caa-v610.js",
@@ -99529,6 +99740,7 @@
         "urn:sophiewell:file:source:lib/fda-books-load.js",
         "urn:sophiewell:file:source:lib/fda-ddi-load.js",
         "urn:sophiewell:file:source:lib/fda-pgx-associations-2026.js",
+        "urn:sophiewell:file:source:lib/fda-pulse-oximeter.js",
         "urn:sophiewell:file:source:lib/feno-v888.js",
         "urn:sophiewell:file:source:lib/fentanyl-patch-initial-dose-v1633.js",
         "urn:sophiewell:file:source:lib/fernandez-radius-v489.js",
@@ -99692,6 +99904,7 @@
         "urn:sophiewell:file:source:lib/hpt-worker.js",
         "urn:sophiewell:file:source:lib/hrs-aki-v808.js",
         "urn:sophiewell:file:source:lib/hrsa-womens-guidelines.js",
+        "urn:sophiewell:file:source:lib/hrv-time-domain-v1704.js",
         "urn:sophiewell:file:source:lib/hsa-predeductible-check.js",
         "urn:sophiewell:file:source:lib/hughes-gbs-v800.js",
         "urn:sophiewell:file:source:lib/hvpg-v1416.js",
@@ -100264,6 +100477,7 @@
         "urn:sophiewell:file:source:lib/pulmonary-risk-v221.js",
         "urn:sophiewell:file:source:lib/puqe24-v553.js",
         "urn:sophiewell:file:source:lib/push-tool-v662.js",
+        "urn:sophiewell:file:source:lib/pwv-carotid-femoral-v1704.js",
         "urn:sophiewell:file:source:lib/qcsi-v698.js",
         "urn:sophiewell:file:source:lib/qio-discharge-appeal-v1503.js",
         "urn:sophiewell:file:source:lib/qpitt-v587.js",
@@ -100439,6 +100653,7 @@
         "urn:sophiewell:file:source:lib/spigelman-v520.js",
         "urn:sophiewell:file:source:lib/spine-v146.js",
         "urn:sophiewell:file:source:lib/spitz-atresia-v479.js",
+        "urn:sophiewell:file:source:lib/spo2-arms-accuracy-v1704.js",
         "urn:sophiewell:file:source:lib/sportsmsk-v244.js",
         "urn:sophiewell:file:source:lib/staff-turnover-rate-v1657.js",
         "urn:sophiewell:file:source:lib/staffing-committee-check-v1396.js",
@@ -100905,6 +101120,7 @@
         "urn:sophiewell:file:source:views/group-v17.js",
         "urn:sophiewell:file:source:views/group-v1700.js",
         "urn:sophiewell:file:source:views/group-v1701.js",
+        "urn:sophiewell:file:source:views/group-v1704.js",
         "urn:sophiewell:file:source:views/group-v173.js",
         "urn:sophiewell:file:source:views/group-v174.js",
         "urn:sophiewell:file:source:views/group-v175.js",
@@ -101992,6 +102208,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/echo-v158.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eckardt-v519.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ecst-carotid-v1242.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ectopy-burden-v1704.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ed-decision-v218.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eddecision-v107.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/edinburgh-caa-v610.js",
@@ -102192,6 +102409,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hospital-fap-v1508.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hrs-aki-v808.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hrv-time-domain-v1704.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hsa-predeductible-check.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hughes-gbs-v800.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hvpg-v1416.js",
@@ -102699,6 +102917,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pulmonary-risk-v221.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/puqe24-v553.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/push-tool-v662.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pwv-carotid-femoral-v1704.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/qcsi-v698.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/qio-discharge-appeal-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/qpitt-v587.js",
@@ -102848,6 +103067,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/spigelman-v520.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/spine-v146.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/spitz-atresia-v479.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/spo2-arms-accuracy-v1704.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sportsmsk-v244.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/staff-turnover-rate-v1657.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/staffing-committee-check-v1396.js",
@@ -103138,7 +103358,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1feaf5d3e1e13781"
+      "value": "e593fa60846d10f7"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -103150,7 +103370,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3960"
+      "value": "3970"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -1177,6 +1177,10 @@ import ddiStaticAucrV1700 from './adapters/ddi-static-aucr-v1700.js';
 import ddiCrIrPredictV1700 from './adapters/ddi-cr-ir-predict-v1700.js';
 import enzymeRecoveryTimeV1700 from './adapters/enzyme-recovery-time-v1700.js';
 import cypListCheckV1701 from './adapters/cyp-list-check-v1701.js';
+import hrvTimeDomainV1704 from './adapters/hrv-time-domain-v1704.js';
+import ectopyBurdenV1704 from './adapters/ectopy-burden-v1704.js';
+import spo2ArmsAccuracyV1704 from './adapters/spo2-arms-accuracy-v1704.js';
+import pwvCarotidFemoralV1704 from './adapters/pwv-carotid-femoral-v1704.js';
 import ischemiaTimeClockV1661 from './adapters/ischemia-time-clock-v1661.js';
 import donorRecipientSizeMatchV1661 from './adapters/donor-recipient-size-match-v1661.js';
 import tMacsV1662 from './adapters/t-macs-v1662.js';
@@ -2584,6 +2588,10 @@ const ADAPTER_MODULES = [
   ['ddi-cr-ir-predict-v1700', ddiCrIrPredictV1700],
   ['enzyme-recovery-time-v1700', enzymeRecoveryTimeV1700],
   ['cyp-list-check-v1701', cypListCheckV1701],
+  ['hrv-time-domain-v1704', hrvTimeDomainV1704],
+  ['ectopy-burden-v1704', ectopyBurdenV1704],
+  ['spo2-arms-accuracy-v1704', spo2ArmsAccuracyV1704],
+  ['pwv-carotid-femoral-v1704', pwvCarotidFemoralV1704],
   ['ischemia-time-clock-v1661', ischemiaTimeClockV1661],
   ['donor-recipient-size-match-v1661', donorRecipientSizeMatchV1661],
   ['t-macs-v1662', tMacsV1662],
