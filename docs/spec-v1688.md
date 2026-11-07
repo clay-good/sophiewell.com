@@ -57,6 +57,17 @@ The rollout, not the system: more banded tiles can author a severity, and the re
 results can opt into the grid. `test/integration/design-conformance-probe.spec.js` (`RUN_PROBES=1`)
 counts both, and `openspec/changes/design-system-cleanup/tasks.md` tracks the waves.
 
+The chip rollout's mechanical shapes are spent as of batch 7: every compute that hands its view an
+ordinal tier carries a chip, as do the four whose band helper assigns an ordered severity word with
+no unassigned state. What is left turns on the instrument rather than the code. Two tiles (SNOT-22,
+GAGS) are chippable but would need the map guard to accept a deliberately unmapped value -- both
+already model their gap honestly, returning a band marked "NOT the mild band" below 8 and a null
+band at the one score the published table leaves out, so the lookup yields no chip by itself; the
+guard just cannot yet tell an intentional omission from a missed tier. Global ARDS was left alone
+because its own copy says it is a definition and not a severity score, and two of its four
+categories carry no grade. The rest have no tier at all, so a chip there means authoring a cut per
+tile -- and a wrong colour on a banded answer states a clinical claim the instrument does not make.
+
 It counts both only as of chip batch 5. This section claimed it did while the probe had no chip
 category at all -- it sized the stat-grid wave and the two formatting categories, and the chip
 rollout was tracked by reading commits. The probe now reports the banded answers that carry no chip

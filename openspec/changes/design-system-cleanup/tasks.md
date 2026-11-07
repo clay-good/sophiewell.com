@@ -88,6 +88,24 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       severity can be "none assigned", SNOT-22 has no named band below 8, GAGS leaves 39
       unassigned) -- a chip there must be absent for exactly those answers, which needs a per-tile
       reading rather than a sweep.
+      **Where the rollout stops, and why it is an owner call.** The mechanical shapes are spent:
+      every compute that hands the view an ordinal tier, and the four whose band helper assigns an
+      ordered severity word with no unassigned state, now carry a chip. What is left needs a
+      judgment about the INSTRUMENT, not about the code, and each one read differently when
+      checked:
+      - SNOT-22 and GAGS are chippable but need the guard to accept a DELIBERATELY unmapped value.
+        Both model their gap honestly already (SNOT-22 returns a distinct band below 8 marked
+        `named: false` and says it is "NOT the mild band"; GAGS returns `band: null` at exactly 39,
+        where the published table assigns none), so the lookup yields no chip on its own. The
+        guard cannot currently tell an intentional omission from a missed tier, which is the whole
+        point of it, so it would need an explicit per-tile opt-out with the reason stated.
+      - Global ARDS was left alone on purpose. Its own lib header says it is "a DEFINITION for
+        identifying a syndrome, not a severity score", two of its four categories carry no grade
+        at all, and it warns that patients move between categories during an illness. A severity
+        chip on that answer argues against the tile's own copy.
+      The remaining ~1,400 banded answers have no tier field, so a chip means reading a published
+      cut per tile and authoring it -- the pass the owner deferred, and the one where a wrong
+      colour states a clinical claim the instrument does not make.
 - [x] 3.2 Short mutually-exclusive enums (sex, two-way formula toggles): convert the `<select>`
       to `.segmented` (D3). Leave long/open lists as selects. Canonical-first-option invariant kept.
 - [x] 3.3 Multi-output tiles: render the secondary numbers as a `.stat` grid (D5).
