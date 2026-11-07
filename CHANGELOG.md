@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- FDA's CYP interaction examples for a medication list: each drug FDA's Table 1 names is shown with its cells and
+  footnotes, and every pair where one listed drug is an inhibitor or inducer and another a substrate of the same
+  enzyme. A drug not in the table reads "not on this edition of FDA's examples", never "no interaction". The table is
+  a new weekly dataset, `data/fda-ddi-examples`; a medication list file can be dropped in.
 - ICH M12 drug-interaction arithmetic for development work: the basic in vitro screens (reversible, intestinal CYP3A,
   time-dependent), the mechanistic static model with M12's concentration estimates and its three-run check for a drug
   that both inhibits and induces, CYP recovery after induction or inactivation at Table 6's turnover, and Ohno's

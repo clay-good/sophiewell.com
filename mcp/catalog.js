@@ -1176,6 +1176,7 @@ import ddiBasicScreenV1700 from './adapters/ddi-basic-screen-v1700.js';
 import ddiStaticAucrV1700 from './adapters/ddi-static-aucr-v1700.js';
 import ddiCrIrPredictV1700 from './adapters/ddi-cr-ir-predict-v1700.js';
 import enzymeRecoveryTimeV1700 from './adapters/enzyme-recovery-time-v1700.js';
+import cypListCheckV1701 from './adapters/cyp-list-check-v1701.js';
 import ischemiaTimeClockV1661 from './adapters/ischemia-time-clock-v1661.js';
 import donorRecipientSizeMatchV1661 from './adapters/donor-recipient-size-match-v1661.js';
 import tMacsV1662 from './adapters/t-macs-v1662.js';
@@ -2582,6 +2583,7 @@ const ADAPTER_MODULES = [
   ['ddi-static-aucr-v1700', ddiStaticAucrV1700],
   ['ddi-cr-ir-predict-v1700', ddiCrIrPredictV1700],
   ['enzyme-recovery-time-v1700', enzymeRecoveryTimeV1700],
+  ['cyp-list-check-v1701', cypListCheckV1701],
   ['ischemia-time-clock-v1661', ischemiaTimeClockV1661],
   ['donor-recipient-size-match-v1661', donorRecipientSizeMatchV1661],
   ['t-macs-v1662', tMacsV1662],

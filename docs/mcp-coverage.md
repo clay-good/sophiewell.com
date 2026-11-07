@@ -9580,6 +9580,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/enzyme-recovery-time-v1700.js (spec-v1700: enzyme recovery after an inducer or inactivator — clinical disclaimer)
 - `enzyme-recovery-time`
 
+### lib/cyp-list-check-v1701.js (spec-v1701: FDA's CYP examples for a medication list — clinical disclaimer)
+- `cyp-list-check`
+
 ### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
 - `ischemia-time-clock`
 

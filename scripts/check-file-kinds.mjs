@@ -57,6 +57,7 @@ export const FILE_INPUTS = {
   'pa-file-picker': 'pa-lint',
   'se-file': 'storage-excursion-summary',
   'hdl-file': 'hazardous-drug-list-check',
+  'clc-file': 'cyp-list-check',
   'abg-file': 'antibiogram-builder',
   'supd-members-file': 'supd-measure',
   'supd-fills-file': 'supd-measure',

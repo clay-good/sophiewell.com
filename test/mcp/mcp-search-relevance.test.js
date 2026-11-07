@@ -933,6 +933,7 @@ const PROBES = [
   ['mechanistic static model aucr', ['ddi-static-aucr']],
   ['contribution ratio inhibition ratio cyp3a4', ['ddi-cr-ir-predict']],
   ['enzyme recovery after stopping an inducer', ['enzyme-recovery-time']],
+  ['fda list of cyp3a inhibitors and substrates', ['cyp-list-check']],
   ['clamp to reperfusion time', ['ischemia-time-clock']],
   ['donor recipient weight ratio', ['donor-recipient-size-match']],
   ['t-macs chest pain troponin', ['t-macs']],

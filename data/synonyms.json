@@ -13759,6 +13759,15 @@
       ],
       "tile": "enzyme-recovery-time",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "fda cyp examples list",
+        "which of my medications affect cyp3a",
+        "fda cyp examples for a medication list"
+      ],
+      "tile": "cyp-list-check",
+      "audience": "clinicians"
     }
   ]
 }

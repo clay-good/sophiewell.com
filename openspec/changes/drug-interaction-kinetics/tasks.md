@@ -17,12 +17,12 @@
       have become open, read their stated validity conditions and add them to the page.
 
 ## 2. Data
-- [ ] 2.1 `scripts/data/builders/fda-ddi-examples.mjs` on the `cpic.mjs` pattern: select Table 1 by its first
+- [x] 2.1 (built, spec-v1701; 245 rows merge to 244 drugs; 21 footnotes and the not-comprehensive sentence kept) `scripts/data/builders/fda-ddi-examples.mjs` on the `cpic.mjs` pattern: select Table 1 by its first
       header, strip `&nbsp;` and `<sup>` markers into a separate field, split multi-enzyme cells, merge
       duplicate drug rows, index combination rows under each component; `sourceEdition` from "Content current
       as of", 14-day `expiresOn` renewed on every successful fetch, `recordBounds` from the first build with a
       10% drop failing the build.
-- [ ] 2.2 Fixture tests for the builder from a saved copy of the page: the 245 rows, aprepitant merged,
+- [x] 2.2 (`test/unit/data-builder-fda-ddi-examples.test.js` on `test/fixtures/data-sources/fda-ddi-examples/page-2026-05-29.html`, the page as read with its scripts removed, spec-v1701) Fixture tests for the builder from a saved copy of the page: the 245 rows, aprepitant merged,
       ciprofloxacin's in-cell marker, the ritonavir marker list, the paritaprevir combination, an empty cell,
       a page with Table 1 moved to second position, a page with 20% of rows removed.
 - [x] 2.3 (`lib/ich-m12.js`, route B, under the weekly page watch; spec-v1700) Route B: M12 Table 6 as a dated constant with a staleness-ledger row.
@@ -32,17 +32,17 @@
       estimates, the Table 2 classifier, CR-IR and its back-calculations, enzyme recovery.
 - [x] 3.2 (built as three libs, one per tool: `lib/dose-history-level-v1699.js`, `lib/two-compartment-params-v1699.js`, `lib/emax-hill-effect-v1699.js`) `lib/pk-multidose-vNNNN.js`: superposition (bolus, infusion, Bateman with the limit form),
       two-compartment conversion, sigmoid Emax and its inverse.
-- [ ] 3.3 Unit tests: every vector in `design.md` **Tests** and every scenario in the spec delta, each cutoff
+- [x] 3.3 (spec-v1699, v1700, v1701 test files) Unit tests: every vector in `design.md` **Tests** and every scenario in the spec delta, each cutoff
       on both sides of its boundary.
 
 ## 4. Views, META, agents
-- [ ] 4.1 Renderers: tools 1-6 in group Q beside `cyp2d6-phenoconversion`; tools 7-9 in group F beside
+- [x] 4.1 (spec-v1699 to v1701; tool 4 takes the drug-list file kind) Renderers: tools 1-6 in group Q beside `cyp2d6-phenoconversion`; tools 7-9 in group F beside
       `pk-steady-state-predict`. Tool 4 accepts the `drug-list` file kind (add it to that kind's `tools`).
-- [ ] 4.2 META: citations name the M12 section and table, the FDA page's "current as of" date, the Ohno
+- [x] 4.2 (spec-v1699 to v1701) META: citations name the M12 section and table, the FDA page's "current as of" date, the Ohno
       abstracts and the Tod papers; examples reproduce the spec scenarios byte for byte.
 - [ ] 4.3 Backfills: related links from `pk-suite`, `pk-steady-state-predict`, `cyp2d6-phenoconversion`,
       `dips-interaction`; the AUCR-to-dose prefill into `pk-suite` (linear drugs only, said on the page).
-- [ ] 4.4 MCP adapters for all nine with the existing field kinds; lists as one string, one item per line.
+- [x] 4.4 (all nine, spec-v1699 to v1701) MCP adapters for all nine with the existing field kinds; lists as one string, one item per line.
       Synonyms: "drug interaction", "DDI", "CYP3A4 inhibitor", "strong inhibitor", "AUC ratio", "AUCR",
       "static model", "Ki", "kinact", "time-dependent inhibition", "induction", "contribution ratio",
       "inhibition ratio", "missed dose", "late dose", "two-compartment", "Emax", "Hill equation",

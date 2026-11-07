@@ -118,5 +118,13 @@
     "etag": null,
     "lastModified": null,
     "fetchedAt": "2026-11-01"
+  },
+  "fda-ddi-examples": {
+    "url": "https://www.fda.gov/drugs/drug-interactions-labeling/healthcare-professionals-fdas-examples-drugs-interact-cyp-enzymes-and-transporter-systems",
+    "edition": "2026-05-29",
+    "sha256": "ca053955c152f5c4c5e5ab21b413239106e364e68cb6c5075799f1684bb506d7",
+    "etag": "\"1794070208\"",
+    "lastModified": "Sat, 07 Nov 2026 16:50:08 GMT",
+    "fetchedAt": "2026-11-07"
   }
 }

@@ -22,5 +22,6 @@ import povertyguidelines from './poverty-guidelines.mjs';
 import mfpnegotiatedprices from './mfp-negotiated-prices.mjs';
 import acaful from './aca-ful.mjs';
 import cpic from './cpic.mjs';
+import fdaddiexamples from './fda-ddi-examples.mjs';
 
-export const BUILDERS = [mpfs, drg, mue, nadac, asp, aspndc, mcdarticles, orangebook, purplebook, pasprofiles, uspstf, povertyguidelines, mfpnegotiatedprices, acaful, cpic];
+export const BUILDERS = [mpfs, drg, mue, nadac, asp, aspndc, mcdarticles, orangebook, purplebook, pasprofiles, uspstf, povertyguidelines, mfpnegotiatedprices, acaful, cpic, fdaddiexamples];

@@ -934,6 +934,7 @@ carries the specific date that could change it.
 | coefficient-of-relationship | Wright S, Am Nat 1922;56:330-338 (the path rule) | International | 2026-10-19 | a 1922 paper; stable | 2027-10-19 |
 | bayes-risk-table | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity | 2027-10-19 |
 | acmg-variant-classify | Richards 2015 Table 5; Tavtigian 2018 and 2020; ClinGen SVI strength notation (2017) and PM2 recommendation (2020) | International | 2026-11-07 | ClinGen SVI may change a default strength (PM2 did in 2020); recheck the SVI pages | 2027-05-07 |
+| cyp-list-check | FDA Examples of Drugs that Interact with CYP Enzymes and Transporter Systems, Table 1 (weekly dataset) | US | 2026-11-07 | read weekly; the tool stops answering 14 days after the last successful fetch | 2027-05-07 |
 | ddi-basic-screen | ICH M12 (Step 4, May 21, 2024), sections 2.1.2.1 and 2.1.2.2, Table 6 | International | 2026-11-07 | ICH may issue a Q&A or revision; the PDF is under the weekly page watch | 2027-05-07 |
 | ddi-static-aucr | ICH M12 (Step 4, May 21, 2024), section 7.5.1, Table 3 | International | 2026-11-07 | ICH may issue a Q&A or revision; the PDF is under the weekly page watch | 2027-05-07 |
 | ddi-cr-ir-predict | Ohno 2007 and 2008 (abstracts); Tod 2014 | International | 2026-11-07 | published papers; the equations do not change | 2027-11-07 |
