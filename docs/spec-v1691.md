@@ -85,9 +85,13 @@ and was isolated by removing the row and re-running. The row is now `westgard ru
   control with a 1-2s warning; opposite sides → R-4s and not 2-2s; past 3s → 1-3s.
 - `docs/unbuilt-tools.md` regenerates to 12 unbuilt, down from 13.
 
-## Two gates in this spec that stay shut
+## What is left in this spec
 
-`42 CFR 493.803` (the 80% event score) and `42 CFR 493.1255` (calibration verification) were not
-opened. eCFR is reachable and this is worth a later pass; it was not done here because both belong to
-different tools in spec-v1658 that already ship, and widening this change to them would put two
-unreviewed regulatory readings behind one commit.
+One item, and it is conditional: task 1.5 asks for Levey and Jennings 1950 (*Am J Clin Pathol*
+20:1059) "if reachable; otherwise leave 'not opened' on the page", which is what the
+`levey-jennings-limits` tile says today.
+
+An earlier draft of this spec claimed `42 CFR 493.803` and `493.1255` were unopened. That was wrong:
+the change's task list records both as read on October 19, 2026 (1.3 with 493.841 and 493.851, where
+the 80% and two-of-three rules sit, and 1.4 for calibration verification). The "not opened" marks sit
+in the proposal's source table, which the build then superseded.
