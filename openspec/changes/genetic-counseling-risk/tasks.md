@@ -16,7 +16,17 @@
       not separately opened; the 2021 resource is the current one and supersedes it for this arithmetic)
       The ACMG carrier-screening position statement (2013) and the 2021 ACMG practice
       resource's caution on residual risk (tool 2).
-- [ ] 1.3 (not read; the prior stays reader-typed, no preset) A text stating the 2/3 prior for the sister of an isolated X-linked case and its
+- [x] 1.3 (READ November 7, 2026, and the preset is deliberately NOT built -- spec-v1693. The source is
+      Ferlini, Neri and Gualandi, Acta Myol 2012;31:195, PMC3631803, open access. It contradicts the design's
+      preset twice. First, the two-thirds figure is the MOTHER's, from Haldane's mutation-selection
+      equilibrium -- "in every generation one third of mutated alleles is 'lost' from the population ...
+      compensated for by an equivalent rate (i.e. one third) of de novo mutations" -- so a sister's prior is
+      the mother's times the one-half chance of inheriting the mutant X, and offering a sister 2/3 would
+      double her risk. Second, even for the mother the clean 2/3 assumes equal mutation rates in the sexes,
+      which the paper contradicts by mutation type, and it cites Passos-Bueno's empirical split of 62.3%
+      carrier / 6.7% germline mosaic / 31% neither -- three outcomes, not the two a 2/3-against-1/3 prior
+      implies. The prior stays reader-typed and the result now names which relative the figure belongs to)
+      A text stating the 2/3 prior for the sister of an isolated X-linked case and its
       assumptions (tool 4 preset).
 - [x] 1.4 (read at archive.org; the picker's F values are computed from the path rule) Wright 1922 for path counting and the standard coefficients (tool 5).
 

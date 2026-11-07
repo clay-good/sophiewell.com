@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `79c02dabb36746de`
-Generated: 2026-11-07T11:06:35.669Z
+Build ID: `d509f57a53fabb69`
+Generated: 2026-11-07T11:32:48.612Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -892,7 +892,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7836 | `bbe10805c71db370c274bb8f2bf5518364669b496b9c8f8cf743d2c0d52b1f1a` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3065113 | `db5252d25cd0ffa9e6653423a3e54160081a4bb6f61c6824adbefaf898ef7c36` |
+| `lib/meta.js` | 3065305 | `90a7f37b8eebcb93875474918a51a2cf3900f8a5a308a007386e55bb16435b3d` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 20000 | `4eeccaaa932a195505744d7861634943291200baf0f432e33bb653b7d49c6b4c` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1597,7 +1597,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/winquist-hansen-v381.js` | 4270 | `285352c99d2f0a5d567e14be8216500bdae9e24158cb7bfc4bbf4e192a202e1e` |
 | `lib/workflow-v4.js` | 9314 | `d321df2b6df08619c19dfc8382a71924d58c583684b461bc7d6cacd9c34ad605` |
 | `lib/woundid-v248.js` | 8410 | `ad5b79b2a78ea627ba269f3a4be243ada11aecbce612881892375dd0a231473d` |
-| `lib/x-linked-bayes-risk-v1660.js` | 2492 | `6dc3bc7d95d828c2c2981361002f9a31ac0b2a49cd65ffae8c32226ee4f6178c` |
+| `lib/x-linked-bayes-risk-v1660.js` | 4799 | `663c3c73064131eb0db91671c45c4d245749c497131c902cc9039fdb580ffe8c` |
 | `lib/x12-271-run.js` | 3816 | `44802d7ed3e3c381dd2235be44eb86d9efb70b7efee34786e48db66b632ce6a7` |
 | `lib/x12-271-v1515.js` | 12425 | `cbcad2788066e0e832aa1dc6b5b2bd28bf61f2c8c94feb611fd949df9714613d` |
 | `lib/x12-271-worker.js` | 1756 | `e7948d51fd2e30723dd3463a778cfa15a60e6224e587334afbc1d82ff70e8edf` |
