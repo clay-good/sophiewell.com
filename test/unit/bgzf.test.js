@@ -49,9 +49,14 @@ test('a single-member gzip reads as before', async () => {
   assert.equal(d.bgzf, false);
 });
 
-test('several plain gzip members with no block sizes are refused with an instruction', async () => {
+// Runtimes differ here: Chrome 152 and Node 26 throw on the second member, so the file is refused with an
+// instruction; Node 22 (CI's .nvmrc) decodes every member in full. Either is correct. The one wrong answer
+// would be the first member alone, a silent truncation.
+test('several plain gzip members with no block sizes are refused with an instruction, or read whole', async () => {
   const joined = new Blob([gzipSync(Buffer.from('a\n')), gzipSync(Buffer.from('b\n'))]);
-  await assert.rejects(gunzipBlob(joined), /decompress it first/);
+  let text = null;
+  try { text = await (await gunzipBlob(joined)).text(); } catch (err) { assert.match(err.message, /decompress it first/); }
+  if (text !== null) assert.equal(text, 'a\nb\n');
 });
 
 test('a block size that runs past the end of the file is named as damage', async () => {
