@@ -47,6 +47,16 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
 
 - [x] 3.1 Band-outputting tiles (starter set shipped; rollout continues per tile): show `.chip--status` on the answer card using the band the tile
       already computes (D4). No new thresholds. Text label always present.
+      Chip batch 4 takes the cleanest remaining shape: a compute that already returns an
+      ordinal `tier` at its published cut, so the view maps that tier to a severity token and
+      authors nothing. Six tiles (Heckerling, ORT, AUSDRISK, Pederson, Loe-Silness, ISI). Where
+      the tile also printed the tier as a `Risk:`/`Severity:` list row, the chip takes that row
+      over rather than saying it twice -- safe because each band sentence already states the
+      tier word, so the copy payload still carries it. `test/unit/chip-severity-maps.test.js`
+      holds every map to its compute's tier set: a missed tier renders NO chip for exactly the
+      patients in it and nothing else fails, so it needs a gate rather than a reading.
+      `check-design-system.mjs` now also counts the chips authored on a band item, which it had
+      been reporting as absent (9 direct; 18 in total).
 - [x] 3.2 Short mutually-exclusive enums (sex, two-way formula toggles): convert the `<select>`
       to `.segmented` (D3). Leave long/open lists as selects. Canonical-first-option invariant kept.
 - [x] 3.3 Multi-output tiles: render the secondary numbers as a `.stat` grid (D5).

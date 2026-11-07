@@ -10,6 +10,10 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/heckerling-pneumonia-v673.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Heckerling tiers (Heckerling 1990): the compute's own probability tier -- 0-1 low,
+// 2-3 intermediate, 4-5 high -- named beside the band. No new cut is read here.
+const HECKERLING_SEVERITY = { low: ['low', 'Low'], intermediate: ['moderate', 'Intermediate'], high: ['high', 'High'] };
+
 function checkField(label, id) {
   const wrap = el('p');
   const cb = el('input', { id, type: 'checkbox' });
@@ -52,7 +56,8 @@ export const renderers = {
         noAsthma: checked('heck-noasthma'),
       });
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (HECKERLING_SEVERITY[r.tier] || [])[0], severityLabel: (HECKERLING_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/5` },
         { label: 'Approx. probability', value: r.approxProbability },
       ]);

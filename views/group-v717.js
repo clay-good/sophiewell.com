@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/pederson-difficulty-v717.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Pederson difficulty tiers (Pederson 1988), as the compute names them.
+const PEDERSON_SEVERITY = { slight: ['low', 'Slight'], moderate: ['moderate', 'Moderate'], 'very-difficult': ['high', 'Very difficult'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -47,7 +50,8 @@ export const renderers = {
       const r = M.pedersonDifficulty({ angulation: val('ped-angulation'), depth: val('ped-depth'), ramus: val('ped-ramus') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (PEDERSON_SEVERITY[r.tier] || [])[0], severityLabel: (PEDERSON_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/10` },
       ]);
       note(o, r.detail);

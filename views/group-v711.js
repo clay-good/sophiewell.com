@@ -10,6 +10,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/ausdrisk-v711.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// AUSDRISK risk tiers (Chen 2010), as the compute names them.
+const AUSDRISK_SEVERITY = { low: ['low', 'Low'], intermediate: ['moderate', 'Intermediate'], high: ['high', 'High'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -75,9 +78,9 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (AUSDRISK_SEVERITY[r.tier] || [])[0], severityLabel: (AUSDRISK_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/35` },
-        { label: 'Risk', value: r.tier },
       ]);
       note(o, r.detail);
       note(o, r.note);

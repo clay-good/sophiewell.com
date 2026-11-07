@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/loe-silness-gingival-index-v722.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Loe-Silness gingival-severity tiers (Loe and Silness 1963), as the compute names them.
+const GI_SEVERITY = { healthy: ['low', 'Healthy'], mild: ['moderate', 'Mild'], moderate: ['high', 'Moderate'], severe: ['critical', 'Severe'] };
+
 function numberField(label, id) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -41,7 +44,8 @@ export const renderers = {
       const r = M.loeSilnessGingivalIndex({ score0: val('gi-0'), score1: val('gi-1'), score2: val('gi-2'), score3: val('gi-3') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (GI_SEVERITY[r.tier] || [])[0], severityLabel: (GI_SEVERITY[r.tier] || [])[1] },
         { label: 'GI', value: `${r.index}` },
         { label: 'Surfaces', value: `${r.surfaces}` },
       ]);

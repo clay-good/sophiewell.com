@@ -36,6 +36,7 @@ const files = (await readdir(VIEWS)).filter((f) => f.endsWith('.js')).sort();
 const failures = [];
 let fileInputs = 0;
 let statusChips = 0;
+let optInChips = 0;
 
 for (const name of files) {
   const path = join(VIEWS, name);
@@ -67,6 +68,11 @@ for (const name of files) {
     }
   }
   statusChips += (src.match(/\bstatusChip\s*\(/g) || []).length;
+  // A view may also author a severity on the band item it hands a shared
+  // renderer (`resultRow`), which calls statusChip() for it. Those chips are
+  // just as real on screen, so the count says so rather than reporting only
+  // the direct calls -- a number that reads as the rollout's reach.
+  optInChips += (src.match(/\bseverityLabel:/g) || []).length;
 }
 
 if (failures.length) {
@@ -77,4 +83,6 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`check-design-system: clean (${files.length} views, ${fileInputs} file inputs all on the dropzone card, ${statusChips} status chips all built with a label, no inline presentation).`);
+console.log(`check-design-system: clean (${files.length} views, ${fileInputs} file inputs all on the dropzone card, `
+  + `${statusChips + optInChips} status chips all built with a label (${statusChips} direct, ${optInChips} authored on a band), `
+  + 'no inline presentation).');

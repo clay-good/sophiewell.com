@@ -10,6 +10,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/isi-v726.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// ISI severity tiers (Bastien 2001 / Morin 2011), as the compute names them.
+const ISI_SEVERITY = { none: ['low', 'None'], subthreshold: ['moderate', 'Subthreshold'], moderate: ['high', 'Moderate'], severe: ['critical', 'Severe'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -52,9 +55,9 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (ISI_SEVERITY[r.tier] || [])[0], severityLabel: (ISI_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}/28` },
-        { label: 'Severity', value: r.tier },
       ]);
       note(o, r.detail);
       note(o, r.note);

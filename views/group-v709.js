@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/opioid-risk-tool-v709.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// ORT risk tiers (Webster 2005), as the compute names them.
+const ORT_SEVERITY = { low: ['low', 'Low'], moderate: ['moderate', 'Moderate'], high: ['high', 'High'] };
+
 function selectField(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -65,9 +68,9 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (ORT_SEVERITY[r.tier] || [])[0], severityLabel: (ORT_SEVERITY[r.tier] || [])[1] },
         { label: 'Score', value: `${r.score}` },
-        { label: 'Risk', value: r.tier },
       ]);
       note(o, r.factors.length ? `Points: ${r.factors.join(', ')}.` : 'No risk factors (score 0).');
       note(o, r.detail);

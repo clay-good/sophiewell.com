@@ -13,7 +13,7 @@ built against it, and what now holds it in place.
 |---|---|---|
 | Dropzone card | `dropzone(input)` in `lib/components.js` wraps the native input, which stays the accessible control | every file reader; `intake` keeps its own folder/zip drop handling inside the same card |
 | Segmented control | `segmentedFromSelect(select)` renders a radiogroup **over** a `<select>` that stays in the DOM as the value model | the short sex and formula choices, in place of a dropdown |
-| Status chip | `statusChip(severity, label)` | the answer card of a banded score, with severity authored from the band the tile already computes |
+| Status chip | `statusChip(severity, label)` | the answer card of a banded score, with severity authored from the band the tile already computes (directly, or by putting `severity` + `severityLabel` on the band item a shared renderer takes) |
 | Stat grid | `statGrid(cells)`, reached by `resultRow(o, items, { stats: true })` | a tile that answers with several numbers at once |
 | Input chip | `.chip--input` with a remove button | the files chosen or dropped on a dropzone |
 
@@ -36,6 +36,7 @@ example sweep reads.
 ## Proof
 
 - `test/unit/result-copy-stats.test.js` — document order survives the grid, the copy payload does not change, and the list path is untouched without the opt-in.
+- `test/unit/chip-severity-maps.test.js` — every per-tile tier-to-severity map covers exactly the tiers its compute can return, and maps them only to real tokens with a word. A map that misses a tier is the quiet failure here: the lookup yields nothing, so the band renders **no chip** for exactly the patients in that tier while everything else still reads correctly. Checked against both dirtied shapes (a mistyped key, a token that does not exist).
 - `test/unit/design-components.test.js` — a status chip carries its word; a band authoring a severity with no label renders no chip rather than a wordless one.
 - `scripts/check-design-system.mjs` (in `npm run lint`) — no view styles itself inline, no file input sits off the dropzone card, and `.chip--status` is reachable only through the builder. Checked against a deliberately dirtied view.
 - `mobile-no-hscroll` samples the three new shapes at 320 and 360px; `mobile-touch-targets` holds the segmented options and the remove chip to 44px. Both were checked to fail when the component shrinks.
