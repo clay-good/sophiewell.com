@@ -2,6 +2,11 @@
 // scripts/build-unbuilt-index.mjs -- the one page that answers "what is specified but not built, and
 // what would unblock it".
 //
+// A tool can also be specified as an openspec change that never got a spec-v document, and such a
+// tool was INVISIBLE here until spec-v1695: the page said "Across every spec", which was true and
+// narrower than it read. `tpa-eligibility` sat unbuilt with nine open tasks and no row. Those changes
+// are collected separately, keyed on the id-absence check their own tasks file carries.
+//
 // Every spec names its tools in a heading: a number, the id in backticks, a dash and the name. This reads all of them, compares
 // each id with the UTILITIES list in app.js, and for each id that is not in the catalog pulls the
 // sentence in that spec which says why: a "**Build gate.**" paragraph, or the first sentence of the
@@ -13,7 +18,7 @@
 //
 // Run: `node scripts/build-unbuilt-index.mjs`. Idempotent.
 
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -106,7 +111,57 @@ export function collect() {
   return rows.filter((r) => (seen.has(r.id) ? false : seen.add(r.id)));
 }
 
-export function renderDoc(rows, totals) {
+// A tool specified only as an openspec change, with no spec-v document naming it.
+//
+// The key is the convention those changes already use: before building, the tasks file greps for the
+// id's absence from the catalog (`grep -c "id: 'tpa-eligibility'" app.js`). So an id written as
+// `id: '...'` anywhere in the change, and missing from the catalog, is a specified-but-unbuilt tool.
+// Across all fifteen changes this names exactly one and nothing else, which is the point: a looser
+// key (any backticked token) would pull in file names and prose.
+export function collectOpenspec(live, alreadyListed) {
+  const dir = join(ROOT, 'openspec', 'changes');
+  if (!existsSync(dir)) return [];
+  const rows = [];
+  for (const name of readdirSync(dir).sort()) {
+    const changeDir = join(dir, name);
+    if (!statSync(changeDir).isDirectory()) continue;
+    const files = readdirSync(changeDir).filter((f) => f.endsWith('.md'));
+    const ids = new Set();
+    let tasks = '';
+    let proposal = '';
+    for (const f of files) {
+      const text = readFileSync(join(changeDir, f), 'utf8');
+      if (f === 'tasks.md') tasks = text;
+      if (f === 'proposal.md') proposal = text;
+      for (const m of text.matchAll(/id: ['"]([a-z0-9][a-z0-9-]{2,})['"]/g)) ids.add(m[1]);
+    }
+    const openTasks = (tasks.match(/^\s*- \[ \]/gm) || []).length;
+    for (const id of [...ids].sort()) {
+      if (live.has(id) || alreadyListed.has(id)) continue;
+      rows.push({ change: name, id, openTasks, reason: openspecReason(tasks, proposal) });
+    }
+  }
+  return rows;
+}
+
+// The change's own sentence about what has to happen first: the "before building" clause its tasks
+// file opens with, or the proposal's gate line.
+export function openspecReason(tasks, proposal) {
+  for (const text of [tasks, proposal]) {
+    if (!text) continue;
+    const quote = [...text.matchAll(/^>\s?(.*)$/gm)].map((m) => m[1]).join(' ');
+    const flat = quote.replace(/\s+/g, ' ').trim();
+    const at = flat.search(/\bBefore building\b|\bbuild-gated\b|\bHIGH-STAKES\b/i);
+    if (at >= 0) {
+      const from = flat.lastIndexOf('. ', at);
+      return firstSentence(flat.slice(from < 0 ? 0 : from + 2));
+    }
+    if (flat) return firstSentence(flat);
+  }
+  return null;
+}
+
+export function renderDoc(rows, totals, openspecRows = []) {
   const esc = (s) => String(s || '').replace(/\|/g, '\\|');
   const bySpec = new Map();
   for (const r of rows) {
@@ -121,6 +176,9 @@ export function renderDoc(rows, totals) {
     'after shipping a tool; `test/unit/unbuilt-index.test.js` fails when this page and the specs disagree.',
     '',
     `Across every spec, ${totals.specified} are named; ${totals.built} have shipped and ${rows.length} are not built yet.`,
+    ...(openspecRows.length
+      ? ['', `${openspecRows.length} more ${openspecRows.length === 1 ? 'is' : 'are'} specified only as an openspec change with no spec document, and ${openspecRows.length === 1 ? 'is' : 'are'} listed at the end.`]
+      : []),
     '',
     'A tool is listed here only while its id is missing from the catalog, so the page empties itself as',
     'tools ship. The reason is the spec\'s own sentence, not a summary written here.',
@@ -129,6 +187,16 @@ export function renderDoc(rows, totals) {
   for (const [spec, items] of bySpec) {
     lines.push(`## [${spec}](${spec}.md)`, '', '| Tool | Name | Why it is not built |', '|---|---|---|');
     for (const r of items) lines.push(`| ${r.num}. \`${r.id}\` | ${esc(r.name)} | ${esc(r.reason) || '_no reason stated in the spec_'} |`);
+    lines.push('');
+  }
+  if (openspecRows.length) {
+    lines.push('## Specified only as an openspec change', '',
+      'These have no `docs/spec-v*.md` document naming them, so the headings above cannot see them.',
+      'The reason is the change\'s own sentence.', '',
+      '| Tool | Change | Open tasks | What has to happen first |', '|---|---|---|---|');
+    for (const r of openspecRows) {
+      lines.push(`| \`${r.id}\` | [${r.change}](../openspec/changes/${r.change}/) | ${r.openTasks} | ${esc(r.reason) || '_no reason stated in the change_'} |`);
+    }
     lines.push('');
   }
   return `${lines.join('\n').trimEnd()}\n`;
@@ -143,12 +211,15 @@ export function build() {
   }
   const rows = collect();
   const built = [...specified].filter((id) => live.has(id)).length;
-  return renderDoc(rows, { specified: specified.size, built });
+  const openspecRows = collectOpenspec(live, new Set(rows.map((r) => r.id)));
+  return renderDoc(rows, { specified: specified.size, built }, openspecRows);
 }
 
 if (process.argv[1] && process.argv[1].endsWith('build-unbuilt-index.mjs')) {
   const text = build();
   writeFileSync(DOC, text, 'utf8');
   const n = (text.match(/^\| \d/gm) || []).length;
-  console.log(`build-unbuilt-index: wrote docs/unbuilt-tools.md (${n} tool(s) specified but not built)`);
+  const extra = (text.match(/^\| `[a-z0-9-]+` \| \[/gm) || []).length;
+  console.log(`build-unbuilt-index: wrote docs/unbuilt-tools.md (${n} tool(s) specified but not built`
+    + `${extra ? `, plus ${extra} specified only as an openspec change` : ''})`);
 }

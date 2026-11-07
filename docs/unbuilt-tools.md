@@ -6,6 +6,8 @@ after shipping a tool; `test/unit/unbuilt-index.test.js` fails when this page an
 
 Across every spec, 382 are named; 370 have shipped and 12 are not built yet.
 
+1 more is specified only as an openspec change with no spec document, and is listed at the end.
+
 A tool is listed here only while its id is missing from the catalog, so the page empties itself as
 tools ship. The reason is the spec's own sentence, not a summary written here.
 
@@ -65,3 +67,12 @@ tools ship. The reason is the spec's own sentence, not a summary written here.
 |---|---|---|
 | 1. `kdri-kdpi` | Kidney Donor Risk Index and Profile Index (OPTN) | The OPTN *Guide to Calculating and Interpreting the KDPI* returned 403 to every fetcher on October 19, 2026, and the browser offered a file download. |
 | 2. `epts-score` | Estimated Post-Transplant Survival Score (OPTN) | The same, for the EPTS guide. |
+
+## Specified only as an openspec change
+
+These have no `docs/spec-v*.md` document naming them, so the headings above cannot see them.
+The reason is the change's own sentence.
+
+| Tool | Change | Open tasks | What has to happen first |
+|---|---|---|---|
+| `tpa-eligibility` | [tpa-eligibility](../openspec/changes/tpa-eligibility/) | 9 | Before building, re-verify every time window, exclusion criterion, and threshold in `design.md` against the **AHA/ASA 2026 guideline** (Stroke 2026, doi:10.1161/STR.0000000000000513, which REPLACES the 2019 update) + the tenecteplase/alteplase package inserts (spec-v97 discipline). |

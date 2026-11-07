@@ -38,22 +38,38 @@ test('a row with no URL is one of the kinds that cannot have one', () => {
   }
 });
 
-test('every tool in the generated unbuilt index has a gate row', () => {
-  // docs/unbuilt-tools.md is generated from the specs, so it is the list that moves when a tool
-  // ships. A tool that is unbuilt and unexplained here is the gap this file exists to close.
+// Every id the index lists, from both of its tables: the numbered spec rows and the
+// openspec-only rows the generator gained in spec-v1695.
+function indexIds() {
   const md = readFileSync(new URL('../../docs/unbuilt-tools.md', import.meta.url), 'utf8');
-  const listed = [...md.matchAll(/^\|\s*\d+\.\s*`([^`]+)`/gm)].map((m) => m[1]);
-  assert.ok(listed.length > 5, `expected the index to list tools, found ${listed.length}`);
-  const missing = listed.filter((id) => !byTool.has(id));
+  const numbered = [...md.matchAll(/^\|\s*\d+\.\s*`([^`]+)`/gm)].map((m) => m[1]);
+  const openspecOnly = [...md.matchAll(/^\|\s*`([a-z0-9-]+)`\s*\|\s*\[/gm)].map((m) => m[1]);
+  return { numbered, openspecOnly, all: [...numbered, ...openspecOnly] };
+}
+
+test('every tool in the generated unbuilt index has a gate row', () => {
+  // docs/unbuilt-tools.md is generated, so it is the list that moves when a tool ships. A tool that
+  // is unbuilt and unexplained here is the gap this file exists to close.
+  const { all } = indexIds();
+  assert.ok(all.length > 5, `expected the index to list tools, found ${all.length}`);
+  const missing = all.filter((id) => !byTool.has(id));
   assert.deepEqual(missing, [], `unbuilt with no gate row: ${missing.join(', ')}`);
+});
+
+test('the index lists the openspec-only tools, which it could not see before', () => {
+  // tpa-eligibility is specified only as an openspec change with no spec-v document. Until the
+  // generator learned to collect those, it was unbuilt and absent from the one page that answers
+  // "what is left".
+  const { openspecOnly } = indexIds();
+  assert.ok(openspecOnly.includes('tpa-eligibility'),
+    `expected the openspec-only table to list tpa-eligibility, found ${openspecOnly.join(', ') || 'nothing'}`);
 });
 
 test('a gate row for a tool that has shipped is stale and fails', () => {
   // The rows that are not in the index are the ones that describe something other than a listed
   // tool -- a sub-part of a shipped tool, or a source cited for a name only. Those are allowed, but
   // each must say so, so a row cannot quietly outlive the tool it gated.
-  const md = readFileSync(new URL('../../docs/unbuilt-tools.md', import.meta.url), 'utf8');
-  const listed = new Set([...md.matchAll(/^\|\s*\d+\.\s*`([^`]+)`/gm)].map((m) => m[1]));
+  const listed = new Set(indexIds().all);
   for (const g of doc.gates) {
     if (listed.has(g.tool)) continue;
     assert.match(g.note + g.source, /shipped|name only|three-level|not wanted|dropped|task 1\.5|NOT IN docs\/unbuilt-tools\.md/i,

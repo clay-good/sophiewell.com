@@ -15,7 +15,13 @@
 - ~~1.2 A Westgard paper stating TE = |bias| + 1.65 CV (tool 4).~~ Tool 4 dropped as an overlap.
 - [x] 1.3 (read, with 493.841 and 493.851, where the 80% and two-of-three rules sit) 42 CFR 493.803 and 493.2: successful and unsuccessful participation (tool 5).
 - [x] 1.4 42 CFR 493.1255: calibration verification rules (tool 6).
-- [ ] 1.5 (not opened; cited for the name only) Levey and Jennings 1950, if reachable; otherwise leave "not opened" on the page.
+- [x] 1.5 (tested for reach November 7, 2026 and NOT reachable, so this task's own fallback applies and is
+      in place. Oxford answers the article page with HTTP 403. The Internet Archive, which this project used
+      to read Wright 1922, holds only a VOLUME INDEX for Am J Clin Pathol 1950 vol 20
+      (`sim_american-journal-of-clinical-pathology_1950_20_index`) and not the issues, so the paper itself is
+      not there either. `levey-jennings-limits` says in as many words that the paper was not opened, and the
+      row is recorded in `data/build-gates.json` so the reach can be re-tested without re-deriving it)
+      Levey and Jennings 1950, if reachable; otherwise leave "not opened" on the page.
 
 ## 2. Lib
 - [x] 2.1 (`lib/lab-stats.js` shared; one lib per tool; no multirule) `lib/lab-stats-vNNNN.js` (mean, sample SD, CV, nearest-rank percentile, least squares);

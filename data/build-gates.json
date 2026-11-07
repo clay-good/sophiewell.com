@@ -81,7 +81,7 @@
       "url": "https://doi.org/10.1161/STR.0000000000000513",
       "kind": "publisher-paywall",
       "lastStatus": 403,
-      "note": "No PMC copy. A 2026 commentary on the guideline is open (PMC13506147) but a commentary is not the criteria table, and this tool may not ship a criterion unconfirmed against the guideline text. NOT IN docs/unbuilt-tools.md: that index is generated from the tool headings in docs/spec-*.md, and this tool is specified only as an openspec change (openspec/changes/tpa-eligibility, 0 of 9 tasks) with no spec-v document, so the index cannot see it. It is unbuilt and tracked here instead."
+      "note": "No PMC copy. A 2026 commentary on the guideline is open (PMC13506147) but a commentary is not the criteria table, and this tool may not ship a criterion unconfirmed against the guideline text. Specified only as an openspec change (openspec/changes/tpa-eligibility, 0 of 9 tasks) with no spec-v document: it was invisible to docs/unbuilt-tools.md until spec-v1695 taught the generator to collect those, and it now appears in that page’s openspec-only table."
     },
     {
       "tool": "aminoglycoside-initial-dose",
