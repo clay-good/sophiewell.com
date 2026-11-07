@@ -11,6 +11,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/sarnat-hie-v429.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Sarnat stages (Sarnat and Sarnat 1976): 1 mild, 2 moderate, 3 severe.
+const SARNAT_SEVERITY = { 1: ['low', 'Mild'], 2: ['moderate', 'Moderate'], 3: ['high', 'Severe'] };
+
 function select(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -45,8 +48,8 @@ export const renderers = {
     wire(['sarnat-stage'], () => safe(o, () => {
       const r = M.sarnatHie({ stage: val('sarnat-stage') });
       resultRow(o, [
-        { text: r.band },
-        { label: 'Stage', value: r.bandLabel },
+        { text: r.band,
+          severity: (SARNAT_SEVERITY[r.stage] || [])[0], severityLabel: (SARNAT_SEVERITY[r.stage] || [])[1] },
       ]);
       note(o, r.note);
     }));

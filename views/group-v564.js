@@ -13,6 +13,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/propkd-v564.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// PROPKD risk bands (Cornec-Le Gall 2016), as the compute names them.
+const PROPKD_SEVERITY = { 'Low risk': ['low', 'Low'], 'Intermediate risk': ['moderate', 'Intermediate'], 'High risk': ['high', 'High'] };
+
 function select(label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -71,9 +74,9 @@ export const renderers = {
       const r = M.propkd(input);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.bandText },
+        { text: r.bandText,
+          severity: (PROPKD_SEVERITY[r.band] || [])[0], severityLabel: (PROPKD_SEVERITY[r.band] || [])[1] },
         { label: 'PROPKD', value: `${r.total} of ${r.max}` },
-        { label: 'Risk band', value: r.band },
         { label: 'Median age for ESRD in this band', value: `${r.medianEsrdAge} years (population figure)` },
       ]);
       note(o, r.note);

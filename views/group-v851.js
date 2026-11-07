@@ -9,6 +9,9 @@ import { el, clear } from '../lib/dom.js';
 import * as R from '../lib/rassi-chagas-v851.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Rassi risk bands for Chagas cardiomyopathy (Rassi 2006), as the compute names them.
+const RASSI_SEVERITY = { low: ['low', 'Low'], intermediate: ['moderate', 'Intermediate'], high: ['high', 'High'] };
+
 function checkField(label, id) {
   const wrap = el('p');
   wrap.appendChild(el('input', { id, type: 'checkbox' }));
@@ -48,7 +51,8 @@ export const renderers = {
         maleSex: checked('rassi-male'),
       });
       if (!r.valid) { note(o, r.message); return; }
-      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }]);
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null,
+          severity: (RASSI_SEVERITY[r.riskLabel] || [])[0], severityLabel: (RASSI_SEVERITY[r.riskLabel] || [])[1] }]);
       note(o, r.bandMeaningNote);
       note(o, r.noEfNote);
       if (r.sexNote) note(o, r.sexNote);

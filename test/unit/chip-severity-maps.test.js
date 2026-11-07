@@ -41,6 +41,12 @@ const PAIRS = [
   ['lib/reimers-migration-percentage-v703.js', 'views/group-v703.js', 'REIMERS_SEVERITY'],
   ['lib/mna-sf-v712.js', 'views/group-v712.js', 'MNA_SEVERITY'],
   ['lib/silness-loe-plaque-index-v723.js', 'views/group-v723.js', 'PLI_SEVERITY'],
+  // A fourth entry names the lib field whose string literals ARE the tier set,
+  // for a compute that bands on `label` or `stage` rather than on `tier`.
+  ['lib/van-nuys-vnpi-v652.js', 'views/group-v652.js', 'VNPI_SEVERITY', 'group'],
+  ['lib/rassi-chagas-v851.js', 'views/group-v851.js', 'RASSI_SEVERITY', 'label'],
+  ['lib/propkd-v564.js', 'views/group-v564.js', 'PROPKD_SEVERITY', 'label'],
+  ['lib/sarnat-hie-v429.js', 'views/group-v429.js', 'SARNAT_SEVERITY', 'stage'],
 ];
 
 const TOKENS = new Set(['low', 'moderate', 'high', 'critical']);
@@ -51,7 +57,11 @@ const read = (p) => readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8')
 // so the literals and the field the view reads are not always the same word.
 // Whether that read field exists at all is the next test's job.
 const TIER_FIELDS = /\b(?:tier|category|stratum):\s*'([^']+)'/g;
-const tiersIn = (src) => new Set([...src.matchAll(TIER_FIELDS)].map((m) => m[1]));
+const tiersIn = (src, field) => new Set(
+  field
+    ? [...src.matchAll(new RegExp(`\\b${field}:\\s*'([^']+)'`, 'g'))].map((m) => m[1])
+    : [...src.matchAll(TIER_FIELDS)].map((m) => m[1]),
+);
 
 // A view reads the tier off whichever field its compute exposes -- `r.tier`
 // for most, `r.category` for the two that name it that way. The lookup field
@@ -67,14 +77,14 @@ function lookupFieldIn(src, name) {
 function mapIn(src, name) {
   const m = new RegExp(`const ${name} = \\{([^;]*)\\};`).exec(src);
   assert.ok(m, `${name} is not declared as a single-statement object literal`);
-  const entries = [...m[1].matchAll(/'?([A-Za-z][A-Za-z0-9 -]*?)'?:\s*\['([^']+)',\s*'([^']+)'\]/g)];
+  const entries = [...m[1].matchAll(/'?([A-Za-z0-9][A-Za-z0-9 -]*?)'?:\s*\['([^']+)',\s*'([^']+)'\]/g)];
   return new Map(entries.map((e) => [e[1], { token: e[2], label: e[3] }]));
 }
 
-for (const [libPath, viewPath, mapName] of PAIRS) {
+for (const [libPath, viewPath, mapName, literalsField] of PAIRS) {
   test(`${mapName} covers every tier ${libPath.split('/').pop()} can return`, () => {
     const viewSrc = read(viewPath);
-    const tiers = tiersIn(read(libPath));
+    const tiers = tiersIn(read(libPath), literalsField);
     const map = mapIn(viewSrc, mapName);
     assert.ok(tiers.size >= 2, `${libPath}: expected a banded compute, found tiers ${[...tiers]}`);
 

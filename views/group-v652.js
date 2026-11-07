@@ -11,6 +11,9 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/van-nuys-vnpi-v652.js';
 import { resultRow } from '../lib/result-copy.js';
 
+// Van Nuys VNPI risk groups (Silverstein 2003), as the compute names them.
+const VNPI_SEVERITY = { low: ['low', 'Low'], intermediate: ['moderate', 'Intermediate'], high: ['high', 'High'] };
+
 function numberField(label, id) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -55,9 +58,9 @@ export const renderers = {
       const r = M.vanNuysVnpi({ size: val('vnpi-size'), margin: val('vnpi-margin'), classification: val('vnpi-class'), age: val('vnpi-age') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
-        { text: r.bandLabel, cls: r.abnormal ? 'warn' : null },
+        { text: r.bandLabel, cls: r.abnormal ? 'warn' : null,
+          severity: (VNPI_SEVERITY[r.group] || [])[0], severityLabel: (VNPI_SEVERITY[r.group] || [])[1] },
         { label: 'Total', value: `${r.total}/12` },
-        { label: 'Risk', value: r.groupLabel },
       ]);
       note(o, r.detail);
       note(o, r.note);

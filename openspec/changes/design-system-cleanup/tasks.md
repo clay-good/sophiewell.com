@@ -79,6 +79,15 @@ MCP adapter, catalog count, or deep-link hash. After every wave: `npm run lint`,
       Bethesda cytology I-VI (six tiers), the HINTS pattern, ARC-HBR's per-criterion major/minor
       weights, and Caton-Deschamps (alta/normal/baja -- abnormal in both directions). PECARN is
       ordinal but already states its tier as the answer heading, so a chip would only repeat it.
+      Chip batch 7 opens the next shape: a compute with no `tier` field at all, but whose own band
+      helper assigns an ordered severity WORD (`label: 'low risk'`, `stage: '2'`). Keying on that
+      is the same authoring the first Wells chip used, and 24 libs have it. Four shipped: the
+      USC/VNPI, the Rassi score, PROPKD and Sarnat staging. The guard takes an optional fourth
+      entry naming the lib field whose literals are the tier set, so it still holds each map to
+      its compute. Left in this shape: the instruments with an UNASSIGNED state (global ARDS
+      severity can be "none assigned", SNOT-22 has no named band below 8, GAGS leaves 39
+      unassigned) -- a chip there must be absent for exactly those answers, which needs a per-tile
+      reading rather than a sweep.
 - [x] 3.2 Short mutually-exclusive enums (sex, two-way formula toggles): convert the `<select>`
       to `.segmented` (D3). Leave long/open lists as selects. Canonical-first-option invariant kept.
 - [x] 3.3 Multi-output tiles: render the secondary numbers as a `.stat` grid (D5).
