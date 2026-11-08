@@ -7,11 +7,13 @@
 > `design.md` states a coefficient. Confirm the four ids absent (they were on October 19, 2026).
 
 ## 1. Obtain and read the sources
-- [ ] 1.1 Download the KDPI guide (October 2024 or newer) by hand; record the edition date;
+- [x] 1.1 Download the KDPI guide (October 2024 or newer) by hand; record the edition date;
       transcribe every coefficient, reference point, the scaling factor and the mapping table
       into a data file with its SHA-256.
       Guide read November 7, 2026 (April 23, 2026 edition; coefficients and the example in `design.md`,
-      reproduced exactly). Open: the mapping table PDF, which also carries the scaling factor in use.
+      reproduced exactly). The mapping table (2025 reference year, SHA-256 4ffb25a3…) was saved and read the same day:
+      `lib/optn-kdpi.js` holds its 100 bounds, the 2025 scaling factor and the unknown-status shares. Shipped as
+      `kdri-kdpi` in spec-v1717.
 - [ ] 1.2 The same for the EPTS guide (April 2025 or newer).
       Guide read November 7, 2026 (April 7, 2026 edition, from a copy saved by hand; formula and the three
       examples in `design.md`, all reproduced). Open: the EPTS mapping table, a separate PDF
@@ -27,6 +29,11 @@
       the PDFs still arrive only as downloads.
 
 ## 2. Lib
+
+> **KDPI half done in spec-v1717** (`lib/kdri-kdpi-v1717.js`, `lib/optn-kdpi.js`, view, adapter, META, tests). Items
+> 2 to 4 stay open for EPTS, which waits on its mapping table. One deviation: there is one lib per tool, not a shared
+> `transplant-allocation` lib, and the table is guarded by a re-read date (`validThrough`) instead of a weekly hash
+> watch, because the PDFs cannot be fetched by a script.
 - [ ] 2.1 `lib/transplant-allocation-vNNNN.js`: `kdriKdpi`, `epts`, `ischemiaIntervals`,
       `sizeMatch`; mapping tables loaded from `data/optn/` with the year.
 - [ ] 2.2 Unit tests: each guide's worked example to the printed figure; piecewise breakpoints;

@@ -13836,6 +13836,14 @@
       ],
       "tile": "tpa-eligibility",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "kdpi",
+        "kdri"
+      ],
+      "tile": "kdri-kdpi",
+      "audience": "clinicians"
     }
   ]
 }

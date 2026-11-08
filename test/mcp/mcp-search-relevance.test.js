@@ -944,6 +944,7 @@ const PROBES = [
   ['pan tompkins qrs detection', ['qrs-detect-trace']],
   ['is this patient a tpa candidate', ['tpa-eligibility']],
   ['clamp to reperfusion time', ['ischemia-time-clock']],
+  ['kidney donor profile index', ['kdri-kdpi']],
   ['donor recipient weight ratio', ['donor-recipient-size-match']],
   ['t-macs chest pain troponin', ['t-macs']],
   ['adjusted patient days calculation', ['adjusted-patient-days']],

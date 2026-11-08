@@ -36,7 +36,7 @@
       "url": "https://www.hrsa.gov/sites/default/files/hrsa/optn/kdpi_mapping_table.pdf",
       "kind": "waf-blocked",
       "lastStatus": 403,
-      "note": "Half open. The guide (updated April 23, 2026; SHA-256 7e6f39ad…, saved by hand) was read November 7, 2026: all eight coefficients, and its worked example reproduces exactly (openspec design, tool 1). The KDPI and the scaling factor in use are in the KDRI-to-KDPI mapping table, a separate PDF that arrives only as a download and is still to be saved by hand. A scripted fetch is refused, and disguising the client would defeat a bot check."
+      "note": "Shipped in spec-v1717 (November 7, 2026). The guide (April 23, 2026; SHA-256 7e6f39ad…) and the KDRI-to-KDPI mapping table (2025 reference year; SHA-256 4ffb25a3…) were saved by hand, because the site serves both only as downloads and refuses a scripted fetch. The tool refuses after June 30, 2027 until the next spring table is read."
     },
     {
       "tool": "epts-score",

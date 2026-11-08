@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The Kidney Donor Profile Index (KDPI) and Kidney Donor Risk Index (KDRI), from OPTN's April 2026 guide (the eight
+  donor factors, without race or hepatitis C) and its 2025 mapping table. Unknown hypertension or diabetes enters at
+  the share OPTN uses, and the result carries the guide's cautions on what a KDPI can and cannot say.
 - The SAAR now comes with its two-sided p-value and 95% interval, by the same NHSN method its Statistics Calculator
   applies to the SIR and the SAAR.
 - CLABSI, CAUTI and VAE rates per thousand device days now come with the 95% interval

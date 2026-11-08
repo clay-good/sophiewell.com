@@ -1016,3 +1016,5 @@ experience**.
 > v1706, Beat Detection (Pan-Tompkins) — [spec-v1706](spec-v1706.md), which adds `qrs-detect-trace`, shipped after its MIT-BIH validation (sensitivity 99.79%, positive predictivity 99.08% on the 44 non-paced records), completing the biosignal-analysis change — is 2385.)
 
 > v1708, IV Thrombolysis Checklist — [spec-v1708](spec-v1708.md), which adds `tpa-eligibility` from the AHA/ASA 2026 acute ischemic stroke guideline (Table 8's three tiers, the 4.5-hour and extended windows, its July 2026 correction) beside the TNKase and Activase labels, read November 7, 2026 — is 2386.)
+
+> v1717, Kidney Donor Profile Index — [spec-v1717](spec-v1717.md), which adds `kdri-kdpi` from OPTN's April 2026 KDPI guide (the October 2024 refit without race or HCV) and its 2025 KDRI-to-KDPI mapping table, both read November 7, 2026 — is 2387.)

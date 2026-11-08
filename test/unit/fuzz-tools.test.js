@@ -916,6 +916,7 @@ import * as eegBandPowerV1705 from '../../lib/eeg-band-power-v1705.js';
 import * as qrsDetectTraceV1706 from '../../lib/qrs-detect-trace-v1706.js';
 import * as tpaEligibilityV1708 from '../../lib/tpa-eligibility-v1708.js';
 import * as ischemiaTimeClockV1661 from '../../lib/ischemia-time-clock-v1661.js';
+import * as kdriKdpiV1717 from '../../lib/kdri-kdpi-v1717.js';
 import * as donorRecipientSizeMatchV1661 from '../../lib/donor-recipient-size-match-v1661.js';
 import * as tMacsV1662 from '../../lib/t-macs-v1662.js';
 import * as adjustedPatientDaysV1636 from '../../lib/adjusted-patient-days-v1636.js';
@@ -2115,6 +2116,7 @@ const MODULES = {
   'qrs-detect-trace-v1706.js': qrsDetectTraceV1706,
   'tpa-eligibility-v1708.js': tpaEligibilityV1708,
   'ischemia-time-clock-v1661.js': ischemiaTimeClockV1661,
+  'kdri-kdpi-v1717.js': kdriKdpiV1717,
   'donor-recipient-size-match-v1661.js': donorRecipientSizeMatchV1661,
   't-macs-v1662.js': tMacsV1662,
   'adjusted-patient-days-v1636.js': adjustedPatientDaysV1636,

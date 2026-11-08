@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c2b35197-3f0a-5d63-8230-0b8bb1214a3f",
+  "serialNumber": "urn:uuid:28ef1dda-333d-53eb-8a73-740a0d4ac64b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-07T23:42:22.364Z",
+    "timestamp": "2026-11-08T00:31:19.315Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2386 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2387 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d2974bd19fa8c623e90ae67c6b19ed484aafe854d029e61e872ff5f13a4727f8"
+          "content": "82a30a59863d7f35180e7383560e63f884945be34454e5e782709f4601ef3ce0"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "156264"
+          "value": "156348"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ec20d316ae13de3af39559f097eb827e5e21799eaab8ab536c0fb0d58e74175d"
+          "content": "808b1d9fa208df5181ccfbe96b736afc94b3a7441e842b4562cbfac57c0228cd"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "650970"
+          "value": "651212"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "600f07f77daffd911474333c35d2b8be07d03750bc1e98d445de59661c8afc42"
+          "content": "2ff65afebe41c42bfcab15592feafc2eca94cff00aac249ff3557dd5b133db82"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "300733"
+          "value": "300853"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ac75a9d78280545a9529d67a58dca771ba357bb43966f055ffe7a72b5f2c682a"
+          "content": "782cec979e53fcf4fdc774b6e312e016765beaab5b1686800da5177d2d7f61fd"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "147352"
+          "value": "147435"
         }
       ]
     },
@@ -15365,6 +15365,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/kdri-kdpi-v1717.js",
+      "type": "file",
+      "name": "lib/kdri-kdpi-v1717.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "728e264a3a617759a11564efaa54a264599499e252c4c2b38f99dd90a6e3fe8f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6722"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/kennedy-edentulous-v719.js",
       "type": "file",
       "name": "lib/kennedy-edentulous-v719.js",
@@ -18458,7 +18479,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "19bc3e597a21d34109426aff8e7839abcaf9c32e6f493bfd63f5688a6891cf0f"
+          "content": "4cbda116cc9d5c7ef682fe786fd6481e90801a2d2c4599494bbcfd14f1a29bb2"
         }
       ],
       "properties": [
@@ -18468,7 +18489,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3084936"
+          "value": "3085917"
         }
       ]
     },
@@ -21808,6 +21829,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "13835"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/optn-kdpi.js",
+      "type": "file",
+      "name": "lib/optn-kdpi.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e8cfb6308d0e2781ce0f806122923d3efa1946dd5a8b164b3f6f6785a31a810b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3335"
         }
       ]
     },
@@ -47642,6 +47684,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/kdri-kdpi-v1717.js",
+      "type": "file",
+      "name": "mcp/adapters/kdri-kdpi-v1717.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1599226b6b92ac48be4e02f82fb0992e57b07c12561d35bc08756f116000df0e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1609"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/kennedy-edentulous-v719.js",
       "type": "file",
       "name": "mcp/adapters/kennedy-edentulous-v719.js",
@@ -63797,7 +63860,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "689d747cb179bf46e968be85db7ccc3c96ec1e37139efc6eddf7a4a44e4f1bf0"
+          "content": "b068a303a68232f978eadbfd4ba873a6eb863c90efe760846380fc46f7785e76"
         }
       ],
       "properties": [
@@ -63807,7 +63870,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "172951"
+          "value": "173048"
         }
       ]
     },
@@ -69037,6 +69100,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5814"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1717.js",
+      "type": "file",
+      "name": "views/group-v1717.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3761b49325d9046a874b1ca78f97d694ed5590beec987d2a115ca1329b7b60e9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3257"
         }
       ]
     },
@@ -100245,6 +100329,7 @@
         "urn:sophiewell:file:source:lib/kadish-v443.js",
         "urn:sophiewell:file:source:lib/kanavel-signs-v1444.js",
         "urn:sophiewell:file:source:lib/katagiri-v606.js",
+        "urn:sophiewell:file:source:lib/kdri-kdpi-v1717.js",
         "urn:sophiewell:file:source:lib/kennedy-edentulous-v719.js",
         "urn:sophiewell:file:source:lib/ketorolac-limit-check-v1632.js",
         "urn:sophiewell:file:source:lib/keyboard.js",
@@ -100552,6 +100637,7 @@
         "urn:sophiewell:file:source:lib/opioid-risk-tool-v709.js",
         "urn:sophiewell:file:source:lib/opps-addendum-b.js",
         "urn:sophiewell:file:source:lib/ops-v63.js",
+        "urn:sophiewell:file:source:lib/optn-kdpi.js",
         "urn:sophiewell:file:source:lib/or-rr-to-nnt-v1634.js",
         "urn:sophiewell:file:source:lib/oral-suspension-course-v1639.js",
         "urn:sophiewell:file:source:lib/ortho-v144.js",
@@ -101381,6 +101467,7 @@
         "urn:sophiewell:file:source:views/group-v1705.js",
         "urn:sophiewell:file:source:views/group-v1706.js",
         "urn:sophiewell:file:source:views/group-v1708.js",
+        "urn:sophiewell:file:source:views/group-v1717.js",
         "urn:sophiewell:file:source:views/group-v173.js",
         "urn:sophiewell:file:source:views/group-v174.js",
         "urn:sophiewell:file:source:views/group-v175.js",
@@ -102747,6 +102834,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/kadish-v443.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kanavel-signs-v1444.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/katagiri-v606.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/kdri-kdpi-v1717.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kennedy-edentulous-v719.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ketorolac-limit-check-v1632.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kikuchi-v333.js",
@@ -103622,7 +103710,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c2b351973f0add63"
+      "value": "28ef1dda333dc3eb"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -103634,7 +103722,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3982"
+      "value": "3986"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

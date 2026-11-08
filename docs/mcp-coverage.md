@@ -9607,6 +9607,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/tpa-eligibility-v1708.js (spec-v1708: IV thrombolysis checklist, AHA/ASA 2026 — clinical disclaimer)
 - `tpa-eligibility`
 
+### lib/kdri-kdpi-v1717.js (spec-v1717: KDRI and KDPI, OPTN 2026 guide and 2025 mapping table — clinical disclaimer)
+- `kdri-kdpi`
+
 ### lib/ischemia-time-clock-v1661.js (spec-v1661: organ recovery and implant event intervals — clinical disclaimer)
 - `ischemia-time-clock`
 
