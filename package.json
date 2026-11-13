@@ -44,7 +44,7 @@
   "devDependencies": {
     "@playwright/test": "1.59.1",
     "eslint": "9.39.4",
-    "openlore": "2.1.3",
+    "openlore": "3.6.0",
     "wrangler": "4.156.0"
   },
   "overrides": {
