@@ -4,7 +4,7 @@
   "serialNumber": "urn:uuid:1838ac55-f0ec-5dc4-840d-a7f048ea7b2a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-11-14T14:53:46.344Z",
+    "timestamp": "2026-11-14T15:45:26.795Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -85994,9 +85994,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@hono/node-server",
       "type": "library",
       "name": "@hono/node-server",
-      "version": "2.1.5",
+      "version": "2.1.8",
       "scope": "optional",
-      "purl": "pkg:npm/%40hono/node-server@2.1.5",
+      "purl": "pkg:npm/%40hono/node-server@2.1.8",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -86006,7 +86006,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "3203ff234e8676fb22943b29324fea991ce993c2ce512b4fea31406d2462e345b4f43868c949fe323edec8a2023ea7982b26ce8d514b548010cefbb56df21aed"
+          "content": "8dd7fb14787a0359738e91c7414831b20d86784476bcc7ad9c039f78072dcdca258ba8da9a52be340c0be83b2be45977052ded61443309db598d4f10c6fedb10"
         }
       ],
       "licenses": [
@@ -87309,6 +87309,33 @@
         {
           "license": {
             "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@isaacs/nonrecursive-glob-match",
+      "type": "library",
+      "name": "@isaacs/nonrecursive-glob-match",
+      "version": "1.1.0",
+      "scope": "optional",
+      "purl": "pkg:npm/%40isaacs/nonrecursive-glob-match@1.1.0",
+      "properties": [
+        {
+          "name": "sophiewell:lockfile",
+          "value": "package-lock.json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "18f9bf0dbbe4e512e68519f15c86bb9d3a4ad31b65e04d308f432c96cb8d889d45211394fb6fbd960502fdd805ec4cb84025a17c4b20c6294c44c09d1cf7c37f"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BlueOak-1.0.0"
           }
         }
       ]
@@ -91529,9 +91556,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/hono",
       "type": "library",
       "name": "hono",
-      "version": "4.13.13",
+      "version": "4.13.18",
       "scope": "optional",
-      "purl": "pkg:npm/hono@4.13.13",
+      "purl": "pkg:npm/hono@4.13.18",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -91541,7 +91568,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "090e3a53466400699b4ffe14c5dcf3189a5a70fd8878a818e1ae7fb4e23d00005ba4e31f2bbdfdc1f0d79afd6eb0293edd190a8f5850cb8fdf8e18b06b6c65ac"
+          "content": "1fdabf1355e2cda5acb49c545bcf357662f1123fadfd3ac61a7cb120d926e3eb0ad2a530b0cb45768d81588f55b377084b5f4c53a6fa8828a3a14a047f87f70c"
         }
       ],
       "licenses": [
@@ -93061,9 +93088,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/minimatch",
       "type": "library",
       "name": "minimatch",
-      "version": "10.2.5",
+      "version": "11.0.8",
       "scope": "optional",
-      "purl": "pkg:npm/minimatch@10.2.5",
+      "purl": "pkg:npm/minimatch@11.0.8",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -93073,7 +93100,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "3142e454b7ca1980c561e8cfd3b40ebab0cb2d0a5c8e4ec5c3eee35d2d91d9ccd1433479eb21d1bde5393432443af887fa111364a4a4224e5cf93db71a315432"
+          "content": "9c542e6124d5ac6bf2b15069b39221fb405d9d814dfc28f70bcd7aafafa9ef22be147ad52c61383b837d005c3292b94d96f3361d8b7e45a775522ae8ea1f3c22"
         }
       ],
       "licenses": [
@@ -97070,9 +97097,9 @@
       "bom-ref": "urn:sophiewell:npm:mcp/package-lock.json:node_modules/@hono/node-server",
       "type": "library",
       "name": "@hono/node-server",
-      "version": "2.1.5",
+      "version": "2.1.8",
       "scope": "required",
-      "purl": "pkg:npm/%40hono/node-server@2.1.5",
+      "purl": "pkg:npm/%40hono/node-server@2.1.8",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -97082,7 +97109,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "3203ff234e8676fb22943b29324fea991ce993c2ce512b4fea31406d2462e345b4f43868c949fe323edec8a2023ea7982b26ce8d514b548010cefbb56df21aed"
+          "content": "8dd7fb14787a0359738e91c7414831b20d86784476bcc7ad9c039f78072dcdca258ba8da9a52be340c0be83b2be45977052ded61443309db598d4f10c6fedb10"
         }
       ],
       "licenses": [
@@ -98177,9 +98204,9 @@
       "bom-ref": "urn:sophiewell:npm:mcp/package-lock.json:node_modules/hono",
       "type": "library",
       "name": "hono",
-      "version": "4.13.13",
+      "version": "4.13.18",
       "scope": "required",
-      "purl": "pkg:npm/hono@4.13.13",
+      "purl": "pkg:npm/hono@4.13.18",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -98189,7 +98216,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "090e3a53466400699b4ffe14c5dcf3189a5a70fd8878a818e1ae7fb4e23d00005ba4e31f2bbdfdc1f0d79afd6eb0293edd190a8f5850cb8fdf8e18b06b6c65ac"
+          "content": "1fdabf1355e2cda5acb49c545bcf357662f1123fadfd3ac61a7cb120d926e3eb0ad2a530b0cb45768d81588f55b377084b5f4c53a6fa8828a3a14a047f87f70c"
         }
       ],
       "licenses": [
@@ -103726,7 +103753,7 @@
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
-      "value": "477"
+      "value": "478"
     },
     {
       "name": "sophiewell:mcpLockedPackageCount",
