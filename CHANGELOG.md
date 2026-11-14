@@ -69,6 +69,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The weekly data refresh now reaches a person even when one of the FDA labels the tools read has
+  changed. When a label's wording moves, the tools that quote it withhold their figures until
+  somebody re-reads it, and the checks that assert those figures fail, correctly. That failure used
+  to stop the refresh before it packaged anything, so no pull request opened, the "Data freshness"
+  issue went unwritten, and every other dataset's update for that week was thrown away. The refresh
+  of November 8, 2026 was lost that way and the issue stood a fortnight out of date. The week's work
+  is packaged and published first now; the checks still run on the same bytes and still decide
+  whether anything may merge.
 - The Rivermead Mobility Index read a count of 16 items (it has 15) as 0, the least mobile score; the
   Hidradenitis Suppurativa Severity Score (IHS4) read a lesion count above 500 as none. Both are refused now.
 - The Balance Error Scoring System refused to count an error tally above the 10 a stance is scored out of,
