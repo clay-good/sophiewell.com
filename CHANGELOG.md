@@ -81,6 +81,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - The oral bioavailability field in the dose-history level tool is labelled "0 to 1" and now enforces
   that range in the browser, as the library and the agent interface already did.
 
+### Security
+
+- The agent server's web framework (hono 4.13.18, @hono/node-server 2.1.8) and a development-only file
+  matcher (minimatch 11.0.8) moved past their published advisories; the 14 open dependency alerts are closed.
+
 ### Changed
 
 - Continuous integration runs the browser tests in under an hour instead of nearly three: Chromium
