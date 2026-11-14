@@ -216,6 +216,13 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "sepsis-bundle-clock",
   "systemic-mastocytosis",
   "timely-filing",
+  // spec-v1718: a Table 8 checklist, not a calculation. The verdict comes from two required selects (the
+  // time from last known well, whether the deficits are disabling) and from Table 8 rows the clinician
+  // ticks; an unticked row is the criterion answered "no", which is what a checklist means by blank. Every
+  // number field is a measurement, and each one left blank is named in the answer rather than read as a
+  // value: "No coagulation results were entered", "Blood pressure was not entered", "Glucose was not
+  // entered", each with the guideline section that asks for it. Nothing is computed from a zero.
+  "tpa-eligibility",
   // spec-v1389: the deadline runs from the ENTERED presentation time; the only number field is
   // the count of daily weather or disaster extension orders, and a blank one means none were
   // ordered -- the criterion answered "no", not a measurement nobody took.

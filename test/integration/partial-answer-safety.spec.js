@@ -20,6 +20,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { tileName } from '../../scripts/lib/tile-name.mjs';
+import { saysIncomplete as declines } from '../lib/asking-language.js';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -52,7 +53,12 @@ const human = (l) => String(l || '').split('. ')[0].split(':')[0]
   .replace(/\[[^\]]*\]?/g, ' ').replace(/\([^)]*\)/g, ' ').replace(/\d+(?:\.\d+)?/g, ' ')
   .replace(/[^a-z\s/-]/gi, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
 
-const TILES = riskyTiles(Number(process.env.PARTIAL_SAMPLE || 40));
+// spec-v1718: 40 was thin, and thin here is worse than slow. The sample is every Nth risky tile, so
+// WHICH tiles it reaches moves every time the catalog grows -- `fmcsa-bp-certification` had been
+// refusing correctly for weeks and only walked into the sample when spec-v1717 changed the step, and
+// `dofetilide-dose-algorithm`'s "Say whether ..." refusal had never been reached at all. Raised to 120
+// (about 80 seconds) after a 400-tile run, which is green and found both of those.
+const TILES = riskyTiles(Number(process.env.PARTIAL_SAMPLE || 120));
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'partial-answer sweep is chromium-only');
 
@@ -117,8 +123,10 @@ test('a partly answered question never shows a confident number', async ({ page 
     // any of these verbs ("Helsinki CT score 5 -- higher predicted mortality"),
     // and a keyword-anywhere match would read that as a request for input and
     // wave the failure through.
-    const saysIncomplete = /^(enter|supply|provide|select|choose|score|answer|rate|specify|pick|set|add|give|complete|fill|need)\b/i.test(outcome.text)
-      || /\b(required|missing)\b/i.test(outcome.text);
+    // spec-v1718: the vocabulary moved to test/lib/asking-language.js, beside ASKING and DISCLOSING,
+    // and gained the house's envelope refusal on the way (see the note there). It had known only one of
+    // the two ways a tile declines, and `fmcsa-bp-certification` was read as answering while it refused.
+    const saysIncomplete = declines(outcome.text);
     const showsNumber = outcome.visible && /\d/.test(outcome.text) && !saysIncomplete;
 
     if (outcome.unset.length && showsNumber && !outcome.asking) {

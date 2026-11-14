@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `28ef1dda333dc3eb`
-Generated: 2026-11-08T00:31:19.315Z
+Build ID: `b1ec2a71dc77df83`
+Generated: 2026-11-14T13:27:00.876Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -3315,7 +3315,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v169.js` | 5884 | `d527fdc63a88de9544a91a312765ef303828b9618fabd619a2973501549d8303` |
 | `views/group-v1697.js` | 4827 | `dc15b1f0a9f2b5b1704e50c8dc2c420bc0399bcf82767c60844d5d8d3baebb94` |
 | `views/group-v1698.js` | 5750 | `34cababe7c0c47abde94e21bdd0b51505a3700172d9bfa4f72a1870f4527ab3b` |
-| `views/group-v1699.js` | 7488 | `eb06c699a55ef3c92cdbb2a2f88d14a75845dee3b9535376b03ba9a45fbeeabd` |
+| `views/group-v1699.js` | 7780 | `f6afd8a5fd0144e4fdffb432af5efed23a93089867636e96e1835562deecf1b7` |
 | `views/group-v17.js` | 12857 | `2a087afd46fa623becd4d939bfb7d8c382db047ab27dc2536a41ec2dcbaaf46c` |
 | `views/group-v1700.js` | 9412 | `b3b802d2ed90f7443c684acf5eb19c2ec4825ce653c82e3defc28b1d55a0fedd` |
 | `views/group-v1701.js` | 3206 | `7c2c2b2117e4fe9c9dfb4c9991a7f1a7d9c4064b9f5423c1fd227e4fce283d77` |

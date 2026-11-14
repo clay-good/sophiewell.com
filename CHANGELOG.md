@@ -69,6 +69,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The oral bioavailability field in the dose-history level tool is labelled "0 to 1" and now enforces
+  that range in the browser, as the library and the agent interface already did.
+
+### Changed
+
+- Three tiles that hold a source read on a date -- the pulse oximeter accuracy figures, the FDA
+  drug-interaction examples table and the OPTN KDPI mapping table -- are recorded as reading differently
+  once that date passes. Each already said so on the page; the test that watches for an answer drifting
+  with the calendar now knows the difference between that and rot.
+- Two whole-catalog safety sweeps were corrected rather than the tiles they flagged: the empty-form
+  sweep now carries the tPA checklist, whose verdict comes from answered selects and ticked criteria and
+  which names every measurement left blank, and the partial-answer sweep now recognises three more ways
+  a tool declines to answer -- its range refusal ("... must be between 60 and 300 mmHg. Check the value
+  entered."), "Say whether ..." and "Grade the ..." -- while no longer excusing a tool that answers after
+  saying something is *not* missing. That sweep also checks three times as many tools as it did.
+
+### Fixed
+
 - VCF readers, after an independent review:
   - a VCFv4.4 genotype with a leading phase mark ("|1") is no longer called heterozygous;
   - a position inside a called deletion says the deletion spans it, instead of "not in this file";

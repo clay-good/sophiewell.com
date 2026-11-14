@@ -61,6 +61,13 @@
 // it ("That is 43 days from today", later "That was 322 days ago") is the countdown the tool is for.
 // spec-v1637: the DEA date tools are filing clocks: the dates come from the dates entered and do not move, and
 // the line beside them ("That is 19 days from today") is the countdown.
+//
+// spec-v1718: three more tiles joined on the fail-closed rule, and they are the same answer as
+// `cpic-gene-drug` above, not a new one. A tile that holds a read-on-a-date source -- a fetched table with a
+// check date, a transcribed guide with a re-read date -- stops computing once that date passes and says which
+// source went stale (spec-v1622, spec-v1628). A year with no refresh and no re-reading is exactly the case
+// that rule exists for, so the sweep is right that the reading changed; what it changed TO is the refusal,
+// never a different number. Each refusal below names its source and what to use instead.
 export const CLOCK_DEPENDENT = new Set([
   'appeal-deadline',
   'claims-pct-medicare',
@@ -74,6 +81,9 @@ export const CLOCK_DEPENDENT = new Set([
   'cs-biennial-inventory',
   'cs-disposal-clock',
   'cs-theft-loss-clock',
+  // spec-v1718: reads the FDA drug-interaction examples table, fetched with a check date two weeks out; past
+  // it the page says the table has passed its check date instead of classifying a pair.
+  'cyp-list-check',
   'cyp2d6-activity-score',
   'dea-222-validity',
   'dea-registration-renewal',
@@ -84,6 +94,10 @@ export const CLOCK_DEPENDENT = new Set([
   'fda-adverse-event-report-clock',
   'ind-annual-report-due',
   'ind-safety-report-clock',
+  // spec-v1718: holds the OPTN KDRI-to-KDPI mapping table, which OPTN republishes each spring; past the
+  // re-read date on the copy it holds it says so and points at the OPTN calculator rather than mapping a
+  // KDRI to a percentile from a table that is a reference year out of date.
+  'kdri-kdpi',
   'mat-injection-admin-deadline',
   'overpayment-60day',
   'pa-turnaround',
@@ -94,6 +108,10 @@ export const CLOCK_DEPENDENT = new Set([
   'psychotropic-prn-clock',
   'preg-dating',
   'preventive-owed',
+  // spec-v1718: holds the typical accuracy figures transcribed from FDA's pulse oximeter guidance, under a
+  // re-read date; past it the page says the guidance is due to be read again rather than judging an Arms
+  // against a number nobody has re-checked.
+  'spo2-arms-accuracy',
   'substitution-check',
   'timely-filing',
   'tpmt-nudt15-thiopurine-dose',

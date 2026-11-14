@@ -1,0 +1,97 @@
+# spec-v1718 — The six whole-catalog sweeps that were red on main
+
+> Status: **SHIPPED (2026-11-14)**. The catalog stays 2,387; no tool's answer changes.
+
+The `ci` run on the spec-v1717 push went red. Two of its three jobs passed; the end-to-end job
+reported six chromium failures, 1,030 passes and seven firefox flakes that cleared on retry. The six
+are below, each reproduced locally before it was touched and re-run green after.
+
+## A source with a re-read date is a clock-dependent tile
+
+Three tiles failed `clock-dependent.spec.js`: `spo2-arms-accuracy`, `cyp-list-check` and the new
+`kdri-kdpi`. The sweep reads each tile today and a year from today and fails on any that answers
+differently without a ledger line.
+
+All three are the same case, and it is the one `cpic-gene-drug` was already in. A tile that holds a
+source read on a date — a fetched table with a check date, a transcribed guide with a re-read date —
+stops computing once that date passes and says which source went stale, by the fail-closed rule of
+spec-v1622 and spec-v1628. A year with no refresh and no re-reading is precisely the case that rule
+exists for. The reading they change to is a refusal naming the source, never a different number.
+
+| Tile | What it holds | What it says past the date |
+|---|---|---|
+| `spo2-arms-accuracy` | the typical-accuracy figures from FDA's pulse oximeter guidance | the guidance is due to be read again |
+| `cyp-list-check` | FDA's drug-interaction examples table, fetched with a check date | the table has passed its check date |
+| `kdri-kdpi` | the OPTN KDRI-to-KDPI mapping table, republished each spring | points at the OPTN calculator instead of mapping from a stale reference year |
+
+All three are now in `test/integration/clock-dependent-ledger.js`, under one paragraph naming the
+class rather than three unrelated lines, so the next tile with a re-read date has somewhere to go.
+
+## A label naming a range that the input did not enforce
+
+`dose-history-level`'s oral bioavailability field is labelled "F (0 to 1)" and carried no `min` or
+`max`, which `label-states-a-range.spec.js` reads as a promise the browser does not keep. The MCP
+adapter already declared 0 to 1 and the library already refuses anything outside it; only the input
+element was silent. `numField` in `views/group-v1699.js` takes an optional range now, and the field
+passes it.
+
+## tPA eligibility is a checklist, not a calculation
+
+`no-answer-from-nothing-sweep.spec.js` clears every number, text and textarea field and fails on any
+tile that still reads as an answer. It left `tpa-eligibility`'s two required selects set, as it leaves
+every select, and the tile answered.
+
+It is right to. The verdict comes from those selects and from Table 8 rows the clinician ticks, where
+an unticked row is the criterion answered "no" — what a checklist means by blank. Every number field
+is a measurement, and each one left blank is named in the answer rather than read as a value: "No
+coagulation results were entered", "Blood pressure was not entered", "Glucose was not entered", each
+with the guideline section that asks for it. Nothing is computed from a zero. It is in
+`test/integration/empty-form-ledger.js` with that sentence.
+
+## A gate that knew one of the ways the house declines
+
+`partial-answer-safety.spec.js` flagged `fmcsa-bp-certification` for showing a number while a required
+enum was unset. The number was in its refusal: "The systolic pressure must be between 60 and 300 mmHg.
+Check the value entered."
+
+That sentence is the house's envelope refusal, written once in `inputFault` and `rangeFault` in
+`lib/num.js` and reaching seventeen library files. The gate recognised one refusal shape — a reading
+that opens on an imperative — and this one opens on an article and carries its bounds as digits. It is
+the drift of [[project_duplicated_rule_drift]]: one rule, two hands, one phrasing known.
+
+The tile was never the defect, and it was not flagged last week either. The sweep samples every Nth
+risky tile, so which tiles it reaches moves every time the catalog grows; shipping `kdri-kdpi` changed
+the step and walked `fmcsa-bp-certification` into the sample, refusing correctly, for the first time.
+
+The vocabulary was a third copy, inline in the spec file, beside the two in
+`test/lib/asking-language.js` that exist to stop exactly this. It lives there now, as
+`saysIncomplete`, and pulling it into the light cost three more findings:
+
+| | Was | Now |
+|---|---|---|
+| the house's envelope refusal | read as an answer | a reading that ENDS on "Check the value(s) entered." declined |
+| "Say whether the patient is on dialysis" (59 uses across `lib/`), "Grade the ..." (8) | read as an answer; `dofetilide-dose-algorithm` had never been sampled | `say` and `grade` join the opening imperatives |
+| "... this is not a missing measurement." | the bare word `missing` inside a DENIAL excused the whole reading | a sentence saying a thing is not missing is not a tile saying it is |
+
+The end anchor on the first row is the whole care in it. `outOfRange` in
+`lib/critcare-severity-v200.js` prints that same sentence ABOVE an answer (spec-v1203,
+`declared-ranges.spec.js`), where the tile does answer and must stay flaggable — and it was that tile
+which showed the third row's hole. `stage` and `check` were looked at as imperatives and left out: a
+real answer opens "Stage 3 hypertension", and "Check the value entered." is already safe at the end
+anchor.
+
+`test/unit/asking-language-v1718.test.js` pins both directions, because no end-to-end sweep can see the
+one that matters: a pattern that excuses too much makes the gate quiet, not red.
+
+The sample itself was the fourth finding. At 40 tiles it had been reaching neither of the two tiles
+above. It runs 120 now, about 80 seconds, after a 400-tile run that is green.
+
+## Not fixed here
+
+- The scheduled `data-refresh` run is red on `pgx-label-dose-limit: example expected numbers not in
+  result: 62.5, 50`. That is the fail-closed rule firing as designed on refreshed DailyMed data: the
+  label edition the tool read was superseded, so the tool withholds its dose statements and its example
+  stops producing numbers. It needs the new label edition read by a person, not a code change, and it
+  does not fail on the data in the repository.
+- The end-to-end job runs 2.7 hours. Nothing in it is failing for time, but `every-tool-is-wired`
+  (11.3 minutes) and the four `example-correctness` shards (9.3 to 9.5 minutes each) carry most of it.

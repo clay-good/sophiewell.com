@@ -264,3 +264,48 @@ export function ownsTheGap(after, before) {
   if (!moved) return true;   // nothing added: no new claim was made
   return ASKING.test(moved) || DISCLOSING.test(moved);
 }
+
+// spec-v1718: the THIRD question, and the narrowest -- "did this reading decline outright?"
+//
+// `partial-answer-safety.spec.js` asks it of a tile reached with its required enum unanswered, and it
+// cannot use ASKING above. ASKING matches a phrase anywhere in the reading, which is right for a sweep
+// that cleared the form and expects nothing but a refusal; this sweep starts from a tile that may
+// legitimately print a long answer, and a keyword-anywhere match would read "Helsinki CT score 5 --
+// higher predicted mortality" as a request for input and wave a real failure through. So it anchors.
+//
+// It had its own copy inline, and that copy knew ONE of the two ways the house declines. A tile that
+// opens on an imperative was recognised; the envelope refusal written once in `inputFault` and
+// `rangeFault` (lib/num.js) and reaching seventeen library files was not -- "The systolic pressure must
+// be between 60 and 300 mmHg. Check the value entered." opens on an article and carries its bounds as
+// digits. That is the drift this file exists to stop, so the copy lives here now.
+//
+// THE END ANCHOR ON THE THIRD CLAUSE IS THE WHOLE CARE. `outOfRange` in lib/critcare-severity-v200.js
+// prints the same sentence ABOVE an answer (spec-v1203, declared-ranges.spec.js); that tile does answer
+// and must stay flaggable. A reading that ENDS on it declined and rendered nothing else.
+//
+// A string, because the browser sweeps ship this into page.evaluate.
+// spec-v1718: `say` and `grade` joined the imperatives, and they are the same drift as the envelope
+// refusal below -- the house writes "Say whether the patient is on dialysis" 59 times across lib/ and
+// "Grade the ..." 8 times, and neither word was here. Measured over a 400-tile sample before adding:
+// `say` moves exactly one tile from flagged to exempt, `dofetilide-dose-algorithm`, which refuses with
+// "Say whether there is a ventricular conduction abnormality" and shows no result. `grade` moves none
+// in that sample and is added with it because it is the same sentence in another hand.
+//
+// `stage` and `check` were looked at and deliberately left out: a real answer opens "Stage 3 ..." and
+// the house's "Check the value entered." is handled by the END anchor below, where it is safe.
+const OPENS_ON_AN_IMPERATIVE = /^(enter|supply|provide|select|choose|score|answer|rate|specify|pick|set|add|give|complete|fill|need|say|grade)\b/i;
+// spec-v1718: and the gap words are matched anywhere, which is how the inline copy was written and is
+// the loosest clause here. It had a hole the end anchor above made visible: `outOfRange` in
+// lib/critcare-severity-v200.js warns "... is outside 80 to 180. Check the value entered -- this is not
+// a missing measurement." and then answers, and the bare word `missing` inside that DENIAL excused the
+// whole reading. A sentence saying a thing is NOT missing is not a tile saying it is.
+const NAMES_A_GAP = /\b(required|missing)\b/i;
+const DENIES_A_GAP = /\b(?:not|never|no)\s+(?:an?\s+|any\s+)?(?:required|missing)\b/i;
+const ENDS_ON_THE_HOUSE_ENVELOPE_REFUSAL = /check the values? entered\.?$/i;
+
+export function saysIncomplete(text) {
+  const t = String(text || '').trim();
+  if (OPENS_ON_AN_IMPERATIVE.test(t)) return true;
+  if (NAMES_A_GAP.test(t) && !DENIES_A_GAP.test(t)) return true;
+  return ENDS_ON_THE_HOUSE_ENVELOPE_REFUSAL.test(t);
+}

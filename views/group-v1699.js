@@ -39,11 +39,15 @@ function checkField(root, label, id) {
   wrap.appendChild(el('label', { for: id, text: ` ${label}` }));
   root.appendChild(wrap);
 }
-function numField(root, label, id, placeholder) {
+function numField(root, label, id, placeholder, range) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
-  wrap.appendChild(el('input', { id, type: 'number', step: 'any', inputmode: 'decimal', placeholder }));
+  // spec-v1718: a label that names a range carries that range on the input, so the browser enforces what
+  // the label states (test/integration/label-states-a-range.spec.js).
+  const attrs = { id, type: 'number', step: 'any', inputmode: 'decimal', placeholder };
+  if (range) { attrs.min = String(range[0]); attrs.max = String(range[1]); }
+  wrap.appendChild(el('input', attrs));
   root.appendChild(wrap);
 }
 function list(root, items) {
@@ -104,7 +108,7 @@ export const renderers = {
     numField(root, 'Scheduled dosing interval (h)', 'dhl-tau', '12');
     numField(root, 'IV infusion: duration (h)', 'dhl-tinf', '1');
     numField(root, 'Oral: absorption rate constant ka (per h)', 'dhl-ka', '1');
-    numField(root, 'Oral: bioavailability F (0 to 1)', 'dhl-f', '1');
+    numField(root, 'Oral: bioavailability F (0 to 1)', 'dhl-f', '1', [0, 1]);
     textField(root, 'Times to evaluate, separated by semicolons (same form as the dose times)', 'dhl-eval', '24');
     tool(root, [['dhl-route', 'route'], ['dhl-doses', 'doses'], ['dhl-vd', 'vd'], ['dhl-hl', 'halfLife'], ['dhl-cl', 'clearance'], ['dhl-tau', 'interval'], ['dhl-tinf', 'infusionHours'], ['dhl-ka', 'ka'], ['dhl-f', 'bioavailability'], ['dhl-eval', 'evalTimes']], DHL.doseHistoryLevel, (r) => plot({
       title: 'Level over time', xLabel: 'hours from the first dose', yLabel: 'level (mg/L)',
