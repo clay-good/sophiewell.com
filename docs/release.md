@@ -60,8 +60,10 @@ keyboard shortcuts, the pinning system, and the CSP/storage assertions.
 ## Promotion to production
 
 1. Open a PR from `develop` (or a topic branch) into `main`.
-2. CI runs `unit`, `mcp`, and `e2e` jobs (see
-   [`.github/workflows/ci.yml`](../.github/workflows/ci.yml)).
+2. CI runs `unit`, `mcp`, `e2e` (Chromium, the whole suite, in four parallel
+   shards) and `e2e-cross-browser` (Firefox and WebKit: the smoke spec on a push,
+   the whole suite nightly and on a manual run). See
+   [`.github/workflows/ci.yml`](../.github/workflows/ci.yml).
 3. Merge to `main`, build `dist`, and upload the static Worker version:
 
    ```sh

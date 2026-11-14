@@ -1,0 +1,33 @@
+# spec-v1719 — End-to-end CI in parallel, Firefox and WebKit nightly
+
+> Status: **SHIPPED (2026-11-14)**. CI only; no tool changes.
+
+The `e2e` job had grown to **2 hours 42 minutes** on one runner: every spec in three browsers, waiting
+behind the 12-minute `unit` job. The owner asked for a faster loop that keeps building.
+
+| | Was | Now |
+|---|---|---|
+| Chromium, whole suite | one runner, after `unit` | four runners in parallel (`--shard=N/4`), not waiting on `unit` |
+| Firefox and WebKit, on a push | whole suite | `smoke.spec.js` only |
+| Firefox and WebKit, whole suite | every push | nightly at 07:00 UTC, and on a manual run |
+| Wall clock for a push (expected) | about 2.9 hours | about half an hour |
+
+## What this keeps
+
+All of the safety signal. Every whole-catalog sweep — the empty-form sweep, the clock sweep, the
+partial-answer sweep, example correctness, label ranges, every tool wired — already skipped Firefox and
+WebKit, so the Chromium shards run every gate the project relies on, unchanged.
+
+## What this gives up
+
+A regression that only Firefox or WebKit shows, in a spec other than smoke, is caught the next morning
+rather than on the push that caused it. The smoke spec still catches an engine that cannot boot the app.
+Those two engines also produced all seven flakes on the spec-v1717 run, so a push is quieter too.
+
+## Notes
+
+- `runs-on` stays the first line under each job key, and the comments sit above the keys:
+  `test/unit/release-check-covers-ci.test.js` finds a job's end that way.
+- Each shard and engine uploads its own Playwright report (`playwright-report-chromium-1` and so on).
+- The schedule also runs `unit`, `mcp` and the Chromium shards, so a night with no pushes still verifies
+  `main` against the browsers of that day.

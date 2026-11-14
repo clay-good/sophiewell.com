@@ -69,6 +69,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The Balance Error Scoring System refused to count an error tally above the 10 a stance is scored out of,
+  and was reading it as none: with the other five stances at 3 errors each, recording 10 errors gave a BESS
+  of 25 and recording 11 gave 15. A blank, a negative number and a word did the same. Each is now refused by
+  name, on the page and for agents.
 - The Kidney Donor Profile Index now applies the limit its guide puts on serum creatinine: a value above
   8 mg/dL is calculated as 8, and the page says so. Without it the index fell as the creatinine rose, so a
   donor in dialysis-dependent kidney injury was reported as a better kidney than the same donor with a
@@ -79,6 +83,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Continuous integration runs the browser tests in about half an hour instead of nearly three: Chromium
+  runs the whole suite across four machines at once, and Firefox and WebKit run a smoke check on every
+  change and their whole suite nightly.
 - Three tiles that hold a source read on a date -- the pulse oximeter accuracy figures, the FDA
   drug-interaction examples table and the OPTN KDPI mapping table -- are recorded as reading differently
   once that date passes. Each already said so on the page; the test that watches for an answer drifting

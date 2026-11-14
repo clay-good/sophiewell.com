@@ -5,6 +5,11 @@ on:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
+  # spec-v1719: the full Firefox and WebKit run moved off every push and onto this
+  # schedule (see the `e2e-cross-browser` job). 07:00 UTC, after the US day's pushes.
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch:
 
 # spec-v983: the e2e job takes about 57 minutes. Without a concurrency group, a
 # contributor pushing a fixup to their own pull request leaves the superseded run
@@ -99,17 +104,36 @@ jobs:
       - name: MCP tool tests
         run: npm run test:mcp
 
+  # spec-v1719: the e2e job had grown to 2.7 hours on one runner -- every spec in
+  # three browsers, behind the 12-minute unit job. It is now:
+  #
+  #   e2e                 Chromium, the whole suite, split across four runners in
+  #                       parallel and no longer waiting on `unit`. Every catalog
+  #                       sweep was already Chromium-only, so this is all of the
+  #                       safety signal, in roughly a quarter of the wall clock.
+  #   e2e-cross-browser   Firefox and WebKit. On a push, the smoke spec only -- an
+  #                       engine that cannot boot the app fails here in minutes. The
+  #                       full suite in both engines runs nightly and on demand.
+  #
+  # What that gives up, said plainly: a Firefox- or WebKit-only regression in a
+  # spec other than smoke is caught the next morning, not on the push. Those two
+  # engines also produced every one of the seven flakes on the spec-v1717 run.
+  #
   # Pinned, not `ubuntu-latest`: on 2026-10-27 the hosted image rolled to Ubuntu
   # 26.04 and `playwright install` refused it outright ("Playwright does not
   # support chromium on ubuntu26.04-x64"), failing every push on an image change
   # rather than on a code change. The browsers are the one thing in this workflow
-  # that cares which distro it is, so this job names the image it was tested on;
-  # bumping @playwright/test to a release that supports 26.04 is what lets it go
-  # back to `ubuntu-latest`. The comment sits above the job key on purpose: the
-  # release:check coverage test finds a job's end by `  <name>:` + `runs-on`.
+  # that cares which distro it is, so these jobs name the image they were tested
+  # on; bumping @playwright/test to a release that supports 26.04 is what lets
+  # them go back to `ubuntu-latest`. The comment sits above the job key on
+  # purpose: the release:check coverage test finds a job's end by `  <name>:` +
+  # `runs-on`, so `runs-on` stays the first line of every job.
   e2e:
     runs-on: ubuntu-24.04
-    needs: unit
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
@@ -120,7 +144,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install --with-deps chromium
       - name: Build seed data
         run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
       - name: Seed data is byte-stable
@@ -128,13 +152,53 @@ jobs:
         # used to carry a `fetchDate` restamped on every run, so this could not
         # be checked; now a diff here means a builder is not deterministic.
         run: git diff --exit-code -- data ':!data/search-corpus'
-      - name: End-to-end tests
-        run: npm run test:e2e
+      - name: Static build
+        run: npm run build
+      - name: End-to-end tests (Chromium, shard ${{ matrix.shard }} of 4)
+        run: npx playwright test --project=chromium --shard=${{ matrix.shard }}/4
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         with:
-          name: playwright-report
+          name: playwright-report-chromium-${{ matrix.shard }}
+          path: playwright-report/
+          retention-days: 7
+          if-no-files-found: ignore
+
+  # spec-v1719: see the note above `e2e`. A push runs the smoke spec in both
+  # engines; the schedule and a manual run take the whole suite.
+  e2e-cross-browser:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [firefox, webkit]
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+      - name: Build seed data
+        run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
+      - name: Static build
+        run: npm run build
+      - name: Smoke (${{ matrix.browser }})
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
+        run: npx playwright test --project=${{ matrix.browser }} test/integration/smoke.spec.js
+      - name: Full suite (${{ matrix.browser }})
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: npx playwright test --project=${{ matrix.browser }}
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: playwright-report-${{ matrix.browser }}
           path: playwright-report/
           retention-days: 7
           if-no-files-found: ignore
