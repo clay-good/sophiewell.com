@@ -50,12 +50,12 @@ export default [
     summary: 'Balance Error Scoring System (Riemann & Guskiewicz 1999): error counts (max 10 each) across 6 stances totaling 0-60.',
     compute: F.bess,
     fields: [
-      { dom: 'bess-df', arg: 'dlFirm', kind: 'number', required: true, label: 'Double-leg, firm (errors)' },
-      { dom: 'bess-sf', arg: 'slFirm', kind: 'number', required: true, label: 'Single-leg, firm (errors)' },
-      { dom: 'bess-tf', arg: 'tandemFirm', kind: 'number', required: true, label: 'Tandem, firm (errors)' },
-      { dom: 'bess-dm', arg: 'dlFoam', kind: 'number', required: true, label: 'Double-leg, foam (errors)' },
-      { dom: 'bess-sm', arg: 'slFoam', kind: 'number', required: true, label: 'Single-leg, foam (errors)' },
-      { dom: 'bess-tm', arg: 'tandemFoam', kind: 'number', required: true, label: 'Tandem, foam (errors)' },
+      { dom: 'bess-df', arg: 'dlFirm', kind: 'number', min: 0, max: 10, required: true, label: 'Double-leg, firm (errors)' },
+      { dom: 'bess-sf', arg: 'slFirm', kind: 'number', min: 0, max: 10, required: true, label: 'Single-leg, firm (errors)' },
+      { dom: 'bess-tf', arg: 'tandemFirm', kind: 'number', min: 0, max: 10, required: true, label: 'Tandem, firm (errors)' },
+      { dom: 'bess-dm', arg: 'dlFoam', kind: 'number', min: 0, max: 10, required: true, label: 'Double-leg, foam (errors)' },
+      { dom: 'bess-sm', arg: 'slFoam', kind: 'number', min: 0, max: 10, required: true, label: 'Single-leg, foam (errors)' },
+      { dom: 'bess-tm', arg: 'tandemFoam', kind: 'number', min: 0, max: 10, required: true, label: 'Tandem, foam (errors)' },
     ],
   },
 ];

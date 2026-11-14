@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c2308bffd6821e40`
-Generated: 2026-11-14T14:27:06.889Z
+Build ID: `1838ac55f0ecfdc4`
+Generated: 2026-11-14T14:53:46.344Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1431,7 +1431,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/spine-v146.js` | 21128 | `d3cb6a1d1e2c3cc1235cc2336a0385a1ae6e0a1ea65b741a2d6c25e5cb527917` |
 | `lib/spitz-atresia-v479.js` | 2772 | `82c5ecf9649558c4767feb5ae6dac08de927b4ccf53b29a987524255891eb031` |
 | `lib/spo2-arms-accuracy-v1704.js` | 12220 | `1964488755a58f8a5327af30acdf1c4384307c72524817a636215602b170f207` |
-| `lib/sportsmsk-v244.js` | 6969 | `4b4589408faef5ff873d2acd2a7593f9c6d6b1ab303bb01bdd35eabd939abd9f` |
+| `lib/sportsmsk-v244.js` | 8449 | `b318fcfd2446c3a2ee53a62c2957dcb0ff22dd11bccb9087a3a28cb4503eeeb8` |
 | `lib/staff-turnover-rate-v1657.js` | 4301 | `747d45d0c335fe6650a9e2699711f56ee56f95f3e27d66bd98e7cef80a262766` |
 | `lib/staffing-committee-check-v1396.js` | 5243 | `06ebbf0f1bff4d9b2ac92219c5d6fd79358dbeb9426b741552d5daf0c95445ff` |
 | `lib/staffing-grid-v1657.js` | 3135 | `b93149d78b9aeaa2fded514d54dafaaa8fd63c5e628a8a809534a72322ac924f` |
@@ -2888,7 +2888,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/spine-v146.js` | 5058 | `1430c9662712b1036ba4e4ad42b25289232fb927e81eb8c11cef2d9960ae8338` |
 | `mcp/adapters/spitz-atresia-v479.js` | 1121 | `1ec233964c0f38f3e29a6f32b4f34508138d6b9bf182a4614e48cf6a13e5ce33` |
 | `mcp/adapters/spo2-arms-accuracy-v1704.js` | 975 | `775f774903deea74f9b1e79b1b159de9931008c0713d81c1af288a347085d75a` |
-| `mcp/adapters/sportsmsk-v244.js` | 4398 | `9d1978dd4e7201de1aebd65a4dc4285ad73dac025659e54f69191e164b0e3f36` |
+| `mcp/adapters/sportsmsk-v244.js` | 4500 | `6a079d983b242f64e0410df0aa18d0ac0b48539277c103c3ecb47c7eee1f8c54` |
 | `mcp/adapters/staff-turnover-rate-v1657.js` | 1370 | `e09d02f98b1d32136777d92808f9850c4cb39d1563e2f16a70d1bcdc0dee95a4` |
 | `mcp/adapters/staffing-committee-check-v1396.js` | 1720 | `73c69092e2d035e0177072b26a4bbed486ad19a6ecd7b92c03022ab61cdd9646` |
 | `mcp/adapters/staffing-grid-v1657.js` | 1138 | `4851c7abd5b2c3a1614e733d728e1d498a576d600af0ba676b3a66e6d1bddd8e` |

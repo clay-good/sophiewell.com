@@ -117,6 +117,63 @@ the host refuses a scripted fetch, which is why spec-v1717 was built from a copy
 wording of that section, and whether a cap is stated for any variable other than creatinine, are written into
 the change's `design.md` as the thing to confirm on the next hand-read.
 
+## A finder for the shape, and the one more tile it caught
+
+The KDPI defect has a shape, and the shape is findable without reading a source: a piecewise formula with
+a correction term is monotone over most of its range, then turns **once**, and keeps going to the fence.
+`scripts/probe-reversal.mjs` sweeps every numeric field across its range and reports that.
+
+Its own negative test first, which is the rule for a new finder: with the cap removed, it reports
+`kdri-kdpi`'s creatinine at an 88% retrace on four separate outputs; with the cap in, it reports nothing.
+
+**2,894 field sweeps, 404 of them over a range the tool declares. 93 rows across 37 calculators, every
+one read. One defect.**
+
+`bess-balance-error`. Its `errs()` returned `0` for any value it did not like — blank, negative, a word,
+and anything above 10:
+
+| Errors recorded on one stance | BESS total (others at 3 each) |
+|---|---|
+| 8 | 23 |
+| 10 | 25 |
+| **11** | **15** |
+| 150 | 15 |
+
+A rater who recorded 11 errors scored that stance as if they had recorded **none**, and the total fell by
+ten. A silent zero in the reassuring direction, on a concussion measure, from a plausible typo — and it
+reached the browser, where the input's `max="10"` only marks a typed 12 invalid rather than blocking it,
+as well as every agent, where nothing declared the range at all.
+
+It is refused by name now, in the library both surfaces share, with `min` and `max` on the adapter fields.
+Capping an 11 at 10 was the other reading and is worse: the trial is scored out of 10, so a count above it
+is a recording error, and quietly rewriting a recorded observation is what
+[[project_silent_substitution_vein]] is about.
+
+**The defect had a passing unit test guarding it**, called `bess: caps each stance at 10`, whose body
+asserted that 99 errors score zero, with a comment reading `// out of range -> 0`. The name claimed the
+cap; the body pinned its absence. That is worth more than the tile: a test whose name and body disagree
+is worse than no test, because it answers the question nobody re-asks.
+
+### The other 36, and an honest false-positive profile
+
+They are faithful instruments, and saying so is the point. A severity score gives points for a sodium that
+is high *or* low, so APACHE II, SAPS II, NEWS2, MEWS, REMS, LODS, OASIS, PIM3, FGSI, MEOWS and psofa all
+turn once by design. `predicted-spirometry` peaks in the early twenties because lungs do. `palbi` is
+quadratic in log platelets because its published formula is. `adult-appendicitis-score` really does score a
+CRP over 152 *lower* than one of 50 after 24 hours of symptoms, as Sammalkorpi 2014 prints it. NNT and the
+percent-difference tools turn where their denominator crosses zero.
+
+One sharper-looking signature was tried and dropped. The BESS series returned to *exactly* its starting
+value (15 → 25 → 15), which reads like a discarded input. Across the catalog 37 rows do that, and 36 are
+symmetric severity scores where an extreme high and an extreme low are the same points on purpose.
+
+### What the probe does not reach
+
+Only 573 of the catalog's 13,230 fields declare both bounds. A field without them is swept around its own
+worked example over a guessed band and reported separately, as a weaker row; a field with neither a
+declared range nor a positive numeric example cannot be swept at all. "Clean" here is a claim about 2,894
+sweeps, not about the catalog.
+
 ## Not fixed here
 
 - The scheduled `data-refresh` run is red on `pgx-label-dose-limit: example expected numbers not in
