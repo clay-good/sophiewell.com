@@ -12,7 +12,7 @@ export default [
       { dom: 'kdpi-age', arg: 'age', kind: 'number', min: 0, max: 100, required: true, label: 'Donor age (whole years)' },
       { dom: 'kdpi-height', arg: 'heightCm', kind: 'number', min: 30, max: 250, required: true, label: 'Height (cm)' },
       { dom: 'kdpi-weight', arg: 'weightKg', kind: 'number', min: 1, max: 300, required: true, label: 'Weight (kg)' },
-      { dom: 'kdpi-cr', arg: 'creatinine', kind: 'number', min: 0.1, max: 20, required: true, label: 'Serum creatinine (mg/dL)' },
+      { dom: 'kdpi-cr', arg: 'creatinine', kind: 'number', min: 0.01, max: 40, required: true, label: 'Serum creatinine (mg/dL); above 8 enters the KDRI as 8, as the guide caps it' },
       { dom: 'kdpi-htn', arg: 'hypertension', kind: 'enum', values: ['yes', 'no', 'unknown'], required: true, label: 'History of hypertension' },
       { dom: 'kdpi-dm', arg: 'diabetes', kind: 'enum', values: ['yes', 'no', 'unknown'], required: true, label: 'History of diabetes' },
       { dom: 'kdpi-cva', arg: 'cva', kind: 'enum', values: ['yes', 'no'], required: true, label: 'Cause of death CVA' },

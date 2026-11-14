@@ -23,8 +23,12 @@ The coefficients and the design notes are in the change's [design.md](../openspe
   bin's upper bound is inclusive and its lower bound exclusive, as the table prints them. Above 2.0147 the KDPI is
   100%.
 - **Unknown history** enters at the 2025 share and is named on the page. A blank answer is refused.
-- **Fences:** age 0 to 100 whole years, height 30 to 250 cm, weight 1 to 300 kg, creatinine 0.1 to 20 mg/dL. Feet
-  typed as cm, or µmol/L typed as mg/dL, are refused.
+- **Fences:** age 0 to 100 whole years, height 30 to 250 cm, weight 1 to 300 kg, creatinine 0.01 to 40 mg/dL
+  (the guide's own entry range; **corrected in spec-v1718**, which shipped at 0.1 to 20). Feet typed as cm, or
+  µmol/L typed as mg/dL, are refused.
+- **Creatinine cap:** a value above 8 mg/dL enters the KDRI as 8, and the page says it did. **Added in
+  spec-v1718**; this build read the guide's Table 1 but not its extreme-value rule, and without the cap the
+  KDPI fell as the creatinine rose, without end.
 - **Text on the page:** the guide's cautions, always (c about 0.60, no yes/no cutoffs, never alone to rule a kidney
   in). The longevity-matching sentence appears at a KDPI of 20% or less.
 - **Re-read date:** after June 30, 2027 the tool refuses until OPTN's next spring table is read.

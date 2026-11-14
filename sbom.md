@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b1ec2a71dc77df83`
-Generated: 2026-11-14T13:27:00.876Z
+Build ID: `c2308bffd6821e40`
+Generated: 2026-11-14T14:27:06.889Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -764,7 +764,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/kadish-v443.js` | 3108 | `75d880fa7d037d9c0f95a49002d8072db568e4628e994117a2ddd9b63d35e2bb` |
 | `lib/kanavel-signs-v1444.js` | 2626 | `9499499b27bd04e8ac91582c31d575a411b68b98f1d970c3f25b4b543e48a5ce` |
 | `lib/katagiri-v606.js` | 12523 | `25c9e0325c85733e3dff37804267bbba20cb56892fcf59b372a25337d09747b1` |
-| `lib/kdri-kdpi-v1717.js` | 6722 | `728e264a3a617759a11564efaa54a264599499e252c4c2b38f99dd90a6e3fe8f` |
+| `lib/kdri-kdpi-v1717.js` | 8286 | `b1a7449f8bdd94a065ac2dff6e0031259c355250e16f18ce4774aeb2abd179c0` |
 | `lib/kennedy-edentulous-v719.js` | 5218 | `0acbb98949908d90c41a208f1ee94bea2ab998669ec0c4e30e5ea384ba8b3443` |
 | `lib/ketorolac-limit-check-v1632.js` | 7793 | `e5102fc211ef78f6e6302f24b483cba25a3fbe4f9c9909b277a9ba22844733b8` |
 | `lib/keyboard.js` | 4876 | `631f85b7b49a68ca7aa8e3c3d31cfbfbefb44360a5aace83305ed27d5e0d8ee0` |
@@ -2303,7 +2303,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/kadish-v443.js` | 1121 | `2b22cd2f0bf55d35e566745223a4cb331e0cbad0a860e1d825ca4096cbea52ba` |
 | `mcp/adapters/kanavel-signs-v1444.js` | 1072 | `c841b1305a07fd220bb411a1cff5e88065ccf84428c460cf2a8a08df3d59cc1f` |
 | `mcp/adapters/katagiri-v606.js` | 5204 | `47d045e03061d18f75f812798534d625f6b307e7b7bb34d42039ae3ba7a2d6b0` |
-| `mcp/adapters/kdri-kdpi-v1717.js` | 1609 | `1599226b6b92ac48be4e02f82fb0992e57b07c12561d35bc08756f116000df0e` |
+| `mcp/adapters/kdri-kdpi-v1717.js` | 1662 | `3d954d12136e6708fd5d93c278cd6f57634466a17855ccad6acd893d61cd14d3` |
 | `mcp/adapters/kennedy-edentulous-v719.js` | 1256 | `b43df4f0e860384ee5a12c0abdad493ad6e06e40b56b50db4bb58600714b6430` |
 | `mcp/adapters/ketorolac-limit-check-v1632.js` | 1621 | `95d8c5a1cbabaa0bbffe486d3077336405dd6117a60a7299924707d4a29e435a` |
 | `mcp/adapters/kikuchi-v333.js` | 1452 | `113caa3e1f3389cbf6667e207c2670e912e2e03fc6dbba0a0dff16f68d27be4a` |

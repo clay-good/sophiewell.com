@@ -86,6 +86,37 @@ one that matters: a pattern that excuses too much makes the gate quiet, not red.
 The sample itself was the fourth finding. At 40 tiles it had been reaching neither of the two tiles
 above. It runs 120 now, about 80 seconds, after a 400-tile run that is green.
 
+## And then the tool the red build shipped
+
+Three of the six failures came from `kdri-kdpi`'s arrival, so it was read again while it was in hand. The
+guide's Table 1 was transcribed exactly — the unit tests reproduce its printed Xβ and KDRI_RAO to 1e-12 — but
+its **extreme-value rule was not**: a serum creatinine above 8 mg/dL enters the KDRI as 8, so 8, 9, 15 and 25
+all give the same KDRI, and OPTN's own calculator prints a note when the cap applies.
+
+That is not a tidy-up. The two creatinine terms sum to a slope of 0.2128 − 0.2199 = −0.0071 per mg/dL above
+1.5, so the published formula **falls** as creatinine rises, and uncapped it falls without end:
+
+| Donor creatinine | KDPI shipped in spec-v1717 | KDPI now |
+|---|---|---|
+| 1.7 mg/dL | 67% | 67% |
+| 8 mg/dL | 63% | 63% |
+| 15 mg/dL | 57% | 63% |
+| 20 mg/dL | 54% | 63% |
+
+The guide's own example donor was being reported as a *better* kidney the sicker the creatinine — a donor in
+dialysis-dependent acute kidney injury reading nine points more favorably than the same donor with a
+near-normal creatinine. Wrong, and in the unsafe direction.
+
+The cap is in `xBeta`, so every caller gets it, and the page names it when it bites. The creatinine fence also
+moves to the guide's own entry range, 0.01 to 40 mg/dL, from the 0.1 to 20 that shipped: with the cap nothing
+between 8 and 40 changes an answer, so that fence only decided whether a value OPTN accepts was refused. A
+µmol/L reading typed as mg/dL (150) is still well outside it.
+
+The cap was confirmed from two independent readings of the cited guide. The PDF was not opened directly —
+the host refuses a scripted fetch, which is why spec-v1717 was built from a copy saved by hand — so the exact
+wording of that section, and whether a cap is stated for any variable other than creatinine, are written into
+the change's `design.md` as the thing to confirm on the next hand-read.
+
 ## Not fixed here
 
 - The scheduled `data-refresh` run is red on `pgx-label-dose-limit: example expected numbers not in

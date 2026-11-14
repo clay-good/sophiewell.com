@@ -69,6 +69,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The Kidney Donor Profile Index now applies the limit its guide puts on serum creatinine: a value above
+  8 mg/dL is calculated as 8, and the page says so. Without it the index fell as the creatinine rose, so a
+  donor in dialysis-dependent kidney injury was reported as a better kidney than the same donor with a
+  near-normal creatinine (KDPI 54% instead of 63% at 20 mg/dL). Creatinine entry now matches the guide's own
+  range, 0.01 to 40 mg/dL.
 - The oral bioavailability field in the dose-history level tool is labelled "0 to 1" and now enforces
   that range in the browser, as the library and the agent interface already did.
 

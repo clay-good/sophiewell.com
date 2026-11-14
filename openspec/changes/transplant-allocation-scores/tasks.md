@@ -14,6 +14,10 @@
       reproduced exactly). The mapping table (2025 reference year, SHA-256 4ffb25a3…) was saved and read the same day:
       `lib/optn-kdpi.js` holds its 100 bounds, the 2025 scaling factor and the unknown-status shares. Shipped as
       `kdri-kdpi` in spec-v1717.
+      **Incomplete, corrected November 14, 2026 (spec-v1718):** "transcribe every coefficient" was read as Table 1
+      alone, and the guide's extreme-value rule was missed -- a creatinine above 8 mg/dL enters the KDRI as 8.
+      Uncapped, the KDPI fell as the creatinine rose. The cap and the guide's 0.01-to-40 entry range are in now;
+      `design.md` records what to confirm on the next hand-read, since the PDF cannot be fetched by script.
 - [ ] 1.2 The same for the EPTS guide (April 2025 or newer).
       Guide read November 7, 2026 (April 7, 2026 edition, from a copy saved by hand; formula and the three
       examples in `design.md`, all reproduced). Open: the EPTS mapping table, a separate PDF

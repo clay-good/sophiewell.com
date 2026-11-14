@@ -1,7 +1,7 @@
 // spec-v1717: kdri-kdpi against OPTN's April 2026 guide and its 2025 mapping table.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { kdriKdpi, xBeta, kdpiFromScaled } from '../../lib/kdri-kdpi-v1717.js';
+import { kdriKdpi, xBeta, kdpiFromScaled, CREATININE_CAP } from '../../lib/kdri-kdpi-v1717.js';
 import { KDPI_TABLE, UPPERS } from '../../lib/optn-kdpi.js';
 
 const now = new Date('2026-11-07T12:00:00Z');
@@ -64,4 +64,38 @@ test('KDPI 20% or less names longevity matching; the guide\'s cautions are alway
   assert.ok(young.kdpi <= 20);
   assert.match(young.notes.join(' '), /EPTS is 20% or less/);
   assert.match(kdriKdpi(example, now).notes.join(' '), /never alone rule a kidney in/);
+});
+
+// spec-v1718: the guide's extreme-value rule. Left out of the November 7 transcription, and the formula
+// it governs runs the wrong way without it: the two creatinine terms sum to -0.0071 per mg/dL above 1.5,
+// so an uncapped KDRI FALLS as the donor's creatinine rises, without end.
+test('creatinine above 8 mg/dL enters the KDRI as 8, and the page says it did', () => {
+  assert.equal(CREATININE_CAP, 8);
+  const at8 = kdriKdpi({ ...example, creatinine: 8 }, now);
+  for (const cr of [8.01, 9, 15, 25, 40]) {
+    const r = kdriKdpi({ ...example, creatinine: cr }, now);
+    assert.equal(r.kdpi, at8.kdpi, `Cr ${cr} must read the same KDPI as Cr 8`);
+    assert.equal(r.kdriScaled, at8.kdriScaled, `Cr ${cr} must read the same KDRI as Cr 8`);
+    assert.match(r.notes.join(' '), /entered the KDRI as 8 mg\/dL/);
+  }
+  // At or below the cap nothing is capped and nothing is said.
+  assert.doesNotMatch(at8.notes.join(' '), /entered the KDRI as 8 mg\/dL/);
+  assert.equal(kdriKdpi({ ...example, creatinine: 8 }, now).kdpi, 63);
+});
+
+test('without the cap the guide\'s own donor would read as a BETTER kidney the sicker the creatinine', () => {
+  // The defect this fixes, pinned as arithmetic so it cannot come back quietly.
+  const uncapped = (cr) => xBeta({ age: 52, heightCm: 183, weightKg: 81, hypertension: 1, diabetes: 0, cva: true, dcd: true, creatinine: cr });
+  assert.ok(uncapped(20) === uncapped(8), 'xBeta caps, so 20 and 8 agree');
+  const raw = (cr) => 0.2128 * (cr - 1) - (cr > 1.5 ? 0.2199 * (cr - 1.5) : 0);
+  assert.ok(raw(20) < raw(1.7), 'the published terms really do fall above 1.5 -- this is why the cap matters');
+  assert.equal(kdriKdpi({ ...example, creatinine: 20 }, now).kdpi, 63, 'capped, not 54');
+});
+
+test('the guide\'s own entry range for creatinine is accepted, and a unit slip still is not', () => {
+  assert.equal(kdriKdpi({ ...example, creatinine: 0.01 }, now).valid, true);
+  assert.equal(kdriKdpi({ ...example, creatinine: 40 }, now).valid, true);
+  assert.equal(kdriKdpi({ ...example, creatinine: 40.1 }, now).valid, false);
+  assert.equal(kdriKdpi({ ...example, creatinine: 0 }, now).valid, false);
+  assert.equal(kdriKdpi({ ...example, creatinine: 150 }, now).valid, false, 'µmol/L typed as mg/dL');
 });

@@ -61,6 +61,35 @@ without race and HCV) and replaces the expectations above:
   the KDPI, which needs the table.
 - The guide's own caution belongs on screen: the KDPI's c-statistic is about 0.60, it should not be made a
   yes/no cutoff, and it should never alone rule a kidney in.
+- **Extreme values (added November 14, 2026, spec-v1718).** The November 7 transcription above is Table 1 only
+  and missed the guide's extreme-value rule: **a serum creatinine above 8 mg/dL enters the KDRI as 8**, so 8, 9,
+  15 and 25 all give the same KDRI, and OPTN's calculator prints a note when the cap applies. The guide's app
+  accepts creatinine from 0.01 to 40.
+
+  This is not cosmetic. The two creatinine terms above sum to a slope of 0.2128 − 0.2199 = −0.0071 per mg/dL
+  above 1.5, so the published formula FALLS as creatinine rises; uncapped it falls without end, and the guide's
+  own example donor reads KDPI 67% at 1.7 mg/dL and 54% at 20 — a donor in dialysis-dependent acute kidney
+  injury reported as a better kidney than the same donor with a near-normal creatinine.
+
+  **To confirm on the next hand-read of the PDF:** the exact wording of the extreme-value section, whether the
+  cap is stated for any variable other than creatinine, and the entry range 0.01 to 40. The cap itself was
+  confirmed from two independent readings of the cited guide; the section was not opened directly, because the
+  host refuses a scripted fetch (task 1.4).
+
+  Also reported in that section, and **not** acted on, because the sourcing was secondary and nothing in it
+  changes an answer: height limited to 7'11" (241.3 cm) and weight to between 1 lb (0.454 kg) and 650 lb
+  (294 kg). The tool's fences (30 to 250 cm, 1 to 300 kg) are plausibility fences that sit just outside those,
+  so they refuse the same unit slips and no real reported value. Confirm the figures on the hand-read and
+  narrow them then, not before.
+
+  **Checked and NOT a defect.** A search summary claimed the June 2024 refit notice gives the age coefficient
+  as 0.0128 against the guide's 0.0092. It has them the wrong way round: 0.0128, with height −0.0464, weight
+  −0.0199, hypertension 0.1260, diabetes 0.1300, CVA 0.0881, creatinine 0.2200 and −0.2090, DCD 0.1330, plus
+  race 0.1790 and HCV 0.2400, is the PRE-refit set — the one that still carries the two factors the refit
+  removed. Every coefficient in the table above differs from it, there is no race or HCV term, and the age
+  term under 18 changed sign, all of which is what a refit looks like. The decisive check is already in the
+  test suite: the guide's own printed worked example reproduces to 1e-12 from these coefficients, which a
+  mixed set could not do.
 - **Remaining gate:** `kdpi_mapping_table.pdf` (same folder), not yet saved.
 
 ### 2. `epts-score` — Estimated Post-Transplant Survival Score (OPTN)
