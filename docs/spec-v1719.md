@@ -31,6 +31,24 @@ minutes: Playwright splits by test count, and the catalog sweeps (every tool wir
 example-correctness shards at 9 each) landed together. It is eight shards now; each pays about four
 minutes of setup, and no single test runs longer than about 12.
 
+## Superseded runs on `main` are cancelled now
+
+The eight-shard run proved the split: every shard finished in 6 to 13 minutes. But its jobs started over
+almost half an hour, because five runs on `main` were in flight at once and a push fans out to a dozen
+runners. The workflow had grouped `main` runs by commit and never cancelled one, so that each commit was
+verified on its own.
+
+A newer push to a branch now cancels that branch's older in-progress run. Pull requests already worked
+that way. The cost is that when several commits land close together, only the newest is verified, and a
+failure points at a range of commits instead of one. Deploying is a manual step made from a green commit
+(`docs/release.md`), so nothing unverified ships.
+
+The concurrency group includes the event name, so a push never cancels the nightly run, which is the only
+full Firefox and WebKit run.
+
+The two runs still on the old three-hour layout were cancelled by hand. Both commits are ancestors of
+`d837f49eb`, whose run was fully green.
+
 ## Notes
 
 - `runs-on` stays the first line under each job key, and the comments sit above the keys:

@@ -11,24 +11,28 @@ on:
     - cron: '0 7 * * *'
   workflow_dispatch:
 
-# spec-v983: the e2e job takes about 57 minutes. Without a concurrency group, a
-# contributor pushing a fixup to their own pull request leaves the superseded run
-# grinding through the full browser matrix for another hour, and four pushes queue
-# four hours of runner time to verify code that no longer exists.
+# spec-v983: without a concurrency group, a contributor pushing a fixup to their
+# own pull request left the superseded run grinding through the browser matrix,
+# and four pushes queued hours of runner time to verify code that no longer
+# existed. Superseded PR runs are cancelled.
 #
-# Superseded PR runs are cancelled. Runs on `main` are untouched -- and that is
-# deliberate, not an oversight. The deployed site tracks `main`, so every commit
-# on it is a deploy candidate that has to be verified on its own.
+# spec-v1719: and now superseded `main` runs are too. They used to be grouped by
+# commit and never cancelled, so that every commit on main was verified on its
+# own. That rule cost more than it bought once the e2e job fanned out to a dozen
+# runners per push: on November 14, 2026 five main runs were in flight at once,
+# and a new push's shards sat queued for half an hour behind runs whose code a
+# newer, already-green run had verified.
 #
-# Which is why a push is grouped by `github.sha`: one group per commit means main
-# runs never collide, so nothing of theirs is ever cancelled OR queued. Grouping
-# main by branch instead would be worse than it looks -- GitHub keeps only ONE
-# pending run per group, so a third push would silently cancel the second
-# commit's pending run and leave it unverified in the history of a site people
-# use at a bedside.
+# What it gives up: when several commits land on main in quick succession, only
+# the newest is verified, so a failure points at a range of commits rather than
+# one. Deploying is a manual step (docs/release.md) and is made from a commit whose
+# run is green, so no unverified commit ships. Grouping by branch keeps one run
+# per branch; GitHub's one-pending-run-per-group rule is the point now, not a
+# hazard. The event name is in the group so that a morning push never cancels the
+# nightly run, which is the only full Firefox and WebKit run there is.
 concurrency:
-  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: ci-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
