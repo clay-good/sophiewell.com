@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1838ac55f0ecfdc4`
-Generated: 2026-11-14T15:45:26.795Z
+Build ID: `0f7d85d7c4a9f3f8`
+Generated: 2026-11-14T17:11:45.889Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -639,7 +639,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heme-risk-v189.js` | 13799 | `d94b111f4a8a7efc34646567508d2eaa16eee64ebbe5284faf6935d578d9c2a0` |
 | `lib/heme-staging-v188.js` | 14818 | `780860ca16797b8cfad923f347e86700c04bc36c9b857312d9197858ae7b4243` |
 | `lib/heme-v132.js` | 16879 | `b8efc09695da0d762446d04a61a8269f62ec63f2c8d35fe8547375b1e603b333` |
-| `lib/hemederm-v245.js` | 8777 | `5a88d0385d540dce813fc3cefbfab4470c6ab9063e7da0acecd628d633deba76` |
+| `lib/hemederm-v245.js` | 9168 | `c03dfc1e7e9813ab6afa6b29b3303a74e854ed99930ec9684e6feb237c5cc02d` |
 | `lib/hemo-v194.js` | 12479 | `946075d0e9472b5a77284bd02c196e4dddb9e7b17b379c38c5700297ab21fbc5` |
 | `lib/hemodynamics-v87.js` | 11286 | `cd886d31932230a557fcc1012e24af5a2e1cd720cf98a768d1b7cc57355237ba` |
 | `lib/hemonc-v94.js` | 23706 | `66b93dcc9007e17f6d4e62ba597c83258baf6148241769bdd3b94869d9d2c0bf` |
@@ -1300,7 +1300,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/regan-morrey-v404.js` | 3237 | `6b740bafcf5b1f9e8e306ba3b6863513bc950c73c0f6c46d00a095816929c04a` |
 | `lib/region-footing-v1093.js` | 3587 | `ab6509b0a1999202d9fb7783a94d21f6f8b34146baa1bf65d539800d8b778147` |
 | `lib/regulatory.js` | 10236 | `5c6ad943f4f3aa86f9d182994a6e3904cded72f4651660946b4ad91958387b5d` |
-| `lib/rehab-v240.js` | 7276 | `e8b9fd62ad9fe90d994cdfd93be11c4632b7a730d3f0b056ad1356c0d047de97` |
+| `lib/rehab-v240.js` | 8044 | `e2d417bc2993325be93fcf5a90bca3c617f6f86c2b0d1f7b18362d7e80360901` |
 | `lib/reid-bronchiectasis-v450.js` | 3073 | `9809861f8d6ce7f9543cfb95473e2c325891c69181ebe4b3f463f7cdc54c2949` |
 | `lib/reimers-migration-percentage-v703.js` | 3689 | `67fa353034191fbd609fb538725f8eec0f5789daee1ddb2e6ca26ea9d96718bd` |
 | `lib/related.js` | 4698 | `9dfc547d46c29521a700c5382ff44ec8c6ab4aca66c08848e769738621f429f1` |
@@ -2195,7 +2195,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/heme-risk-v189.js` | 5507 | `e82a606dfd5b23c2cea1e0eae5d1858559c2d127e9b564b2cbc270f2a889f6da` |
 | `mcp/adapters/heme-staging-v188.js` | 4412 | `847497ff66d40abafb73fce6aee40690482ac6a345fea7fb395d10b098414de1` |
 | `mcp/adapters/heme-v132.js` | 5021 | `a7051298a0fd9fb910924e4a63fa1e637b57cd62e5d6a1ee024a94adc53268ff` |
-| `mcp/adapters/hemederm-v245.js` | 2558 | `f167b9cbc55e8616fff7300edddf947bfa4c99c10510115011dcf2ad57bb903f` |
+| `mcp/adapters/hemederm-v245.js` | 2612 | `b515b65e57dac08f07c83cc40d35c3c3ac7d5465054cf7480d06084b8e308db2` |
 | `mcp/adapters/hemo-v194.js` | 3515 | `f914dfeb62c69ecb9e57586c1635f270320c3076d4461adf6ba89837cf12f63d` |
 | `mcp/adapters/hemodynamics-v87.js` | 3203 | `c8250212fb9bd87754ad045b6de18450c6f9d2eff3b69174189795f1daaba71e` |
 | `mcp/adapters/hemonc-v94.js` | 5606 | `cdedee258495d5f6d7c1a8af13d3a5e052406ac40ebb97c1e79442c616af78f3` |

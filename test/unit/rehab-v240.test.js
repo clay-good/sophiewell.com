@@ -36,3 +36,12 @@ test('quickdash: [(mean) - 1] x 25', () => {
 test('quickdash: needs >= 10 answered', () => {
   assert.equal(quickDash({ i1: 3, i2: 3 }).valid, false);
 });
+
+// spec-v1720: a count of 16 -- one more item than the index has -- read RMI 0 of 15, the least mobile a
+// patient can be. Found by scripts/probe-impossible-as-zero.mjs and confirmed on the page.
+test('rivermead: a count outside 0 to 15, a fraction or a blank is refused, never read as 0', () => {
+  assert.equal(rivermead({ count: 15 }).score, 15);
+  assert.equal(rivermead({ count: 0 }).score, 0);
+  for (const bad of [16, 999999, -1, 2.5, '', null]) assert.equal(rivermead({ count: bad }).valid, false, JSON.stringify(bad));
+  assert.match(rivermead({ count: 16 }).message, /between 0 and 15/);
+});

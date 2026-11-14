@@ -41,9 +41,9 @@ export default [
     summary: 'IHS4 (Zouboulis 2017) = nodules x 1 + abscesses x 2 + draining tunnels x 4; 0-3 mild, 4-10 moderate, >= 11 severe.',
     compute: F.ihs4,
     fields: [
-      { dom: 'ihs4-nod', arg: 'nodules', kind: 'number', required: true, label: 'Inflammatory nodules (count)' },
-      { dom: 'ihs4-abs', arg: 'abscesses', kind: 'number', required: true, label: 'Abscesses (count)' },
-      { dom: 'ihs4-tun', arg: 'tunnels', kind: 'number', required: true, label: 'Draining tunnels (count)' },
+      { dom: 'ihs4-nod', arg: 'nodules', kind: 'number', min: 0, max: 500, required: true, label: 'Inflammatory nodules (count)' },
+      { dom: 'ihs4-abs', arg: 'abscesses', kind: 'number', min: 0, max: 500, required: true, label: 'Abscesses (count)' },
+      { dom: 'ihs4-tun', arg: 'tunnels', kind: 'number', min: 0, max: 500, required: true, label: 'Draining tunnels (count)' },
     ],
   },
 ];

@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The Rivermead Mobility Index read a count of 16 items (it has 15) as 0, the least mobile score; the
+  Hidradenitis Suppurativa Severity Score (IHS4) read a lesion count above 500 as none. Both are refused now.
 - The Balance Error Scoring System refused to count an error tally above the 10 a stance is scored out of,
   and was reading it as none: with the other five stances at 3 errors each, recording 10 errors gave a BESS
   of 25 and recording 11 gave 15. A blank, a negative number and a word did the same. Each is now refused by

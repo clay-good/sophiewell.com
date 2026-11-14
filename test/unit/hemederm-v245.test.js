@@ -53,3 +53,12 @@ test('shineLal and greenKing: a value on the cutoff reads indeterminate', () => 
   assert.match(g.band, /at the cutoff \(indeterminate\)/);
   assert.doesNotMatch(g.band, /> 65/);
 });
+
+// spec-v1720: a lesion count above 500 scored as none, so a severe IHS4 could read mild.
+test('ihs4: a count above 500 is refused, never scored as zero', () => {
+  assert.equal(ihs4({ nodules: 500, abscesses: 2, tunnels: 1 }).score, 508);
+  for (const k of ['nodules', 'abscesses', 'tunnels']) {
+    const r = ihs4({ nodules: 3, abscesses: 2, tunnels: 1, [k]: 501 });
+    assert.equal(r.valid, false, k);
+  }
+});
