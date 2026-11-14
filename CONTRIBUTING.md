@@ -319,8 +319,8 @@ Before opening a PR, run `npm run release:check` locally.
 **It is not the whole of CI.** CI runs `unit`, `mcp` and the end-to-end jobs,
 and `release:check` covers the first two. It **does not run the end-to-end
 suite**, which needs Playwright browsers, so a green `release:check` is not a
-green CI. On a push the e2e suite runs in Chromium across four parallel runners
-(about half an hour), plus a smoke spec in Firefox and WebKit; the full suite in
+green CI. On a push the e2e suite runs in Chromium across eight parallel runners
+(under an hour), plus a smoke spec in Firefox and WebKit; the full suite in
 those two engines runs nightly, so an engine-specific regression outside the
 smoke spec shows up the next morning rather than on your push. `test/unit/release-check-covers-ci.test.js`
 holds the two reproducible jobs in step with the local chain: a new CI step in

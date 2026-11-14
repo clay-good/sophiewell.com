@@ -83,8 +83,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- Continuous integration runs the browser tests in about half an hour instead of nearly three: Chromium
-  runs the whole suite across four machines at once, and Firefox and WebKit run a smoke check on every
+- Continuous integration runs the browser tests in under an hour instead of nearly three: Chromium
+  runs the whole suite across eight machines at once, and Firefox and WebKit run a smoke check on every
   change and their whole suite nightly.
 - Three tiles that hold a source read on a date -- the pulse oximeter accuracy figures, the FDA
   drug-interaction examples table and the OPTN KDPI mapping table -- are recorded as reading differently

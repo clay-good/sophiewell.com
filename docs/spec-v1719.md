@@ -7,10 +7,10 @@ behind the 12-minute `unit` job. The owner asked for a faster loop that keeps bu
 
 | | Was | Now |
 |---|---|---|
-| Chromium, whole suite | one runner, after `unit` | four runners in parallel (`--shard=N/4`), not waiting on `unit` |
+| Chromium, whole suite | one runner, after `unit` | eight runners in parallel (`--shard=N/8`), not waiting on `unit` |
 | Firefox and WebKit, on a push | whole suite | `smoke.spec.js` only |
 | Firefox and WebKit, whole suite | every push | nightly at 07:00 UTC, and on a manual run |
-| Wall clock for a push (expected) | about 2.9 hours | about half an hour |
+| Wall clock for a push | about 2.9 hours | 47 minutes on four shards (first run); eight shards since |
 
 ## What this keeps
 
@@ -23,6 +23,13 @@ WebKit, so the Chromium shards run every gate the project relies on, unchanged.
 A regression that only Firefox or WebKit shows, in a spec other than smoke, is caught the next morning
 rather than on the push that caused it. The smoke spec still catches an engine that cannot boot the app.
 Those two engines also produced all seven flakes on the spec-v1717 run, so a push is quieter too.
+
+## First run
+
+Green, and `main` green for the first time since spec-v1716. The four Chromium shards took 9, 17, 30 and 47
+minutes: Playwright splits by test count, and the catalog sweeps (every tool wired at 11 minutes, the
+example-correctness shards at 9 each) landed together. It is eight shards now; each pays about four
+minutes of setup, and no single test runs longer than about 12.
 
 ## Notes
 

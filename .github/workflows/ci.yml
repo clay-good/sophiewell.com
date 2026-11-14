@@ -107,10 +107,11 @@ jobs:
   # spec-v1719: the e2e job had grown to 2.7 hours on one runner -- every spec in
   # three browsers, behind the 12-minute unit job. It is now:
   #
-  #   e2e                 Chromium, the whole suite, split across four runners in
+  #   e2e                 Chromium, the whole suite, split across eight runners in
   #                       parallel and no longer waiting on `unit`. Every catalog
   #                       sweep was already Chromium-only, so this is all of the
-  #                       safety signal, in roughly a quarter of the wall clock.
+  #                       safety signal. Four shards ran 9 to 47 minutes on the
+  #                       first run (the heavy sweeps cluster), so it is eight.
   #   e2e-cross-browser   Firefox and WebKit. On a push, the smoke spec only -- an
   #                       engine that cannot boot the app fails here in minutes. The
   #                       full suite in both engines runs nightly and on demand.
@@ -133,7 +134,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4]
+        shard: [1, 2, 3, 4, 5, 6, 7, 8]
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
@@ -154,8 +155,8 @@ jobs:
         run: git diff --exit-code -- data ':!data/search-corpus'
       - name: Static build
         run: npm run build
-      - name: End-to-end tests (Chromium, shard ${{ matrix.shard }} of 4)
-        run: npx playwright test --project=chromium --shard=${{ matrix.shard }}/4
+      - name: End-to-end tests (Chromium, shard ${{ matrix.shard }} of 8)
+        run: npx playwright test --project=chromium --shard=${{ matrix.shard }}/8
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
