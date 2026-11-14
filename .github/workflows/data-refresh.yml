@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    # spec-v1721: the two facts the jobs below need, and the reason they are outputs rather than
+    # "did this job pass". `packaged` says the patch and the reports exist, so there is something to
+    # publish; `suite` says whether lint and the unit tests passed on those same bytes. They are
+    # separate because a superseded FDA label makes the second false ON PURPOSE (see below), and the
+    # week's work must still reach a person.
+    outputs:
+      packaged: ${{ steps.pack.outputs.packaged }}
+      suite: ${{ steps.suite.outcome }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
@@ -82,12 +90,6 @@ jobs:
           node scripts/build-label-editions.mjs
           node scripts/build-sbom.mjs
 
-      - name: Run full test suite on refreshed data
-        run: |
-          npm run lint
-          npm run test:unit
-          npm run test:a11y
-
       # spec-v1622 step 5: the one list of every dataset and dated constant,
       # which the freshness job below publishes as an issue.
       - name: Freshness report
@@ -96,11 +98,13 @@ jobs:
       # ':!data/search-corpus' -- see the rebuild step. The corpus belongs to
       # whoever changed the catalog; a data refresh must not carry it.
       - name: Package reviewed changes
+        id: pack
         # A new edition can add shard files; `git add -N` makes git diff show
         # them, since it lists only tracked paths.
         run: |
           git add --intent-to-add -- data scripts/expected-hashes.json scripts/data/label-editions.json
           git diff --binary -- data scripts/expected-hashes.json scripts/data/label-editions.json lib/label-editions.js sbom.json sbom.md ':!data/search-corpus' > data-refresh.patch
+          echo "packaged=true" >> "$GITHUB_OUTPUT"
 
       - name: Upload reviewed changes
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
@@ -113,8 +117,55 @@ jobs:
             freshness.md
           retention-days: 1
 
+      # spec-v1721: this runs AFTER the patch is packaged and uploaded, and it does not abort the job.
+      #
+      # It used to run before them, and that quietly cost a whole week of refreshing. The label watch
+      # above marks a row superseded the moment DailyMed changes a section a tool reads, and
+      # build-label-editions.mjs writes that state into lib/, by the fail-closed rule of spec-v1628
+      # route D. The tiles that read the row then answer with a withholding notice and no figure --
+      # which is correct, and which `check-mcp-catalog` (the example round-trip) and the unit tests
+      # that assert those labels answer both read as failures. They are right to: a person must
+      # re-read the label. But the job died here, so `Package reviewed changes` never ran, the
+      # artifact was never uploaded, and the two jobs below were skipped. No pull request, no
+      # freshness issue, and every other dataset's update for that week thrown away. The 2026-11-08
+      # run failed exactly this way on one superseded label, and the `data-review` branch the publish
+      # job below writes for this very case was unreachable.
+      #
+      # So the suite still runs on the refreshed bytes and its result still decides whether anything
+      # may merge -- the publish job forces review when it is not green -- but it no longer decides
+      # whether the week's work reaches a person.
+      - name: Run full test suite on refreshed data
+        id: suite
+        continue-on-error: true
+        run: |
+          npm run lint
+          npm run test:unit
+          npm run test:a11y
+
+  # spec-v1721: the red X the refresh job gives up by packaging first, as a job of its own rather
+  # than a failing step at the end of `refresh`.
+  #
+  # The difference matters. If `refresh` itself failed, everything below would hang on whether GitHub
+  # hands a FAILED job's outputs to its dependents -- and if it does not, `packaged` reads empty,
+  # publish and freshness skip, and the week's work is lost exactly as it is today, silently. Leaving
+  # `refresh` to conclude successfully puts that question beyond doubt. The run still goes red here.
+  suite-result:
+    needs: refresh
+    # Wrapped in ${{ }} because a bare leading `!` is a YAML tag indicator, not a negation.
+    if: ${{ !cancelled() && needs.refresh.outputs.suite != 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: The suite did not pass on the refreshed data
+        run: |
+          echo "::error::lint, test:unit or test:a11y failed on the refreshed data (see the refresh job's log). The pull request is open for review and must not be merged until this is green."
+          exit 1
+
   publish:
     needs: refresh
+    # spec-v1721: gated on the artifact existing, not on the refresh job passing. A superseded FDA
+    # label reddens the suite by design, and that is exactly the week a person most needs this pull
+    # request: it carries the fail-closed state and the list of labels to re-read.
+    if: ${{ !cancelled() && needs.refresh.outputs.packaged == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -129,6 +180,22 @@ jobs:
           path: .data-refresh
       - name: Apply reviewed changes
         run: git apply .data-refresh/data-refresh.patch
+
+      # spec-v1721: say it at the top of the pull request, and of the freshness issue, which is
+      # rewritten from this same file. A reader must not have to open the run log to learn that the
+      # gates did not pass on the bytes in front of them.
+      - name: Say so when the suite did not pass
+        if: needs.refresh.outputs.suite != 'success'
+        run: |
+          {
+            echo "> **The refresh job's lint, unit and accessibility checks did not pass on these bytes.**"
+            echo "> Do not merge until they are green. A label row marked superseded below is the usual"
+            echo "> reason: the tools that read it withhold their figures until a person re-reads the"
+            echo "> label and records it, and the checks that assert those figures fail meanwhile."
+            echo
+            cat .data-refresh/data-refresh-summary.md
+          } > /tmp/body.md
+          mv /tmp/body.md .data-refresh/data-refresh-summary.md
       - name: Open pull request if data changed
         id: cpr
         uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6
@@ -162,6 +229,10 @@ jobs:
           # spec-v1628 section 1: a label section a tool reads changed, or its set id was retired.
           # The row is marked superseded in this pull request; a person re-reads the label before it merges.
           if grep -q -E '^- .*(Re-read these rows in|Re-read the label for)' .data-refresh/data-refresh-summary.md; then decision=review; fi
+          # spec-v1721: the refresh job's own comment below this one used to be able to say "the lint
+          # and unit tests already ran on these bytes" and stop there, because a red suite killed the
+          # run. The suite no longer does that, so the merge decision has to read its result itself.
+          if [ "${{ needs.refresh.outputs.suite }}" != "success" ]; then decision=review; fi
           if [ "$decision" = "merge" ]; then
             gh pr merge "$PR" --squash --delete-branch --repo "$GITHUB_REPOSITORY"
           else
@@ -174,6 +245,9 @@ jobs:
   # without reading the repository. Pinning it is one click for the maintainer.
   freshness:
     needs: refresh
+    # spec-v1721: as above. A week whose suite went red is a week the freshness issue must still be
+    # rewritten -- the 2026-11-08 failure left it stating the state of 2026-11-01 for a fortnight.
+    if: ${{ !cancelled() && needs.refresh.outputs.packaged == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
