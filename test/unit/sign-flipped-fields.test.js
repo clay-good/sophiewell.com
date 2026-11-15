@@ -70,6 +70,7 @@ for (const [id, dom] of ADAPTER) {
     const v = validateInputs({ ...ex, [dom]: String(-Number(ex[dom])) }, e.fields);
     assert.equal(v.valid, false);
     assert.equal(v.code, 'OUT_OF_RANGE');
-    assert.match(v.message, /must be at least 0; got -/);
+    // spec-v1729: ABI's pressures take the page's own floor of 20 mmHg (lib/bounds.js).
+    assert.match(v.message, new RegExp(`must be at least ${id === 'abi' ? 20 : 0}; got -`));
   });
 }

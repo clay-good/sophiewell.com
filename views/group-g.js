@@ -1162,7 +1162,10 @@ export const renderers = {
         el('label', { for: id, text: l }), el('br'),
         // spec-v1028: blank, not zero -- this scale times a buprenorphine
         // induction.
-        el('input', { id, type: 'number', min: '0', max: '5', step: '1', placeholder: '0' }),
+        // spec-v1729: each item's own top score, from the scale in its label. One
+        // shared max of 5 let the range warning pass a sweating score of 5, which
+        // the scale (0/1/2/3/4) and the library both refuse.
+        el('input', { id, type: 'number', min: '0', max: String(Math.max(...l.match(/\(([\d/]+)\)/)[1].split('/').map(Number))), step: '1', placeholder: '0' }),
       ]));
     }
     const o = out(); root.appendChild(o);

@@ -15,10 +15,10 @@ export default [
     summary: 'Ankle-brachial index (higher ankle / higher brachial per leg) with the PAD severity bands; the lower of the two legs governs (Aboyans 2012).',
     compute: F.abi,
     fields: [
-      { dom: 'abi-ra', arg: 'rightAnkle', kind: 'number', required: false, label: 'Right ankle systolic pressure (higher of DP / PT)', unit: 'mmHg', min: 0 },
-      { dom: 'abi-la', arg: 'leftAnkle', kind: 'number', required: false, label: 'Left ankle systolic pressure (higher of DP / PT)', unit: 'mmHg', min: 0 },
-      { dom: 'abi-rb', arg: 'rightBrachial', kind: 'number', required: false, label: 'Right brachial systolic pressure', unit: 'mmHg', min: 0 },
-      { dom: 'abi-lb', arg: 'leftBrachial', kind: 'number', required: false, label: 'Left brachial systolic pressure', unit: 'mmHg', min: 0 },
+      { dom: 'abi-ra', arg: 'rightAnkle', kind: 'number', required: false, label: 'Right ankle systolic pressure (higher of DP / PT)', unit: 'mmHg', min: 20 },
+      { dom: 'abi-la', arg: 'leftAnkle', kind: 'number', required: false, label: 'Left ankle systolic pressure (higher of DP / PT)', unit: 'mmHg', min: 20 },
+      { dom: 'abi-rb', arg: 'rightBrachial', kind: 'number', required: false, label: 'Right brachial systolic pressure', unit: 'mmHg', min: 20 },
+      { dom: 'abi-lb', arg: 'leftBrachial', kind: 'number', required: false, label: 'Left brachial systolic pressure', unit: 'mmHg', min: 20 },
     ],
   },
   {

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6c83fd92e0b8cdf6`
-Generated: 2026-11-15T23:37:39.876Z
+Build ID: `fdbf417f642f1560`
+Generated: 2026-11-15T23:52:53.415Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -3008,7 +3008,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/vanc-hd-dose-v1631.js` | 1375 | `93a518947d66962bcdb21e319296983e28d29a9509b0d81bc8de90631fa2a293` |
 | `mcp/adapters/vanc-initial-dose-v1631.js` | 1904 | `e28ae9c7dec200113c1c988a3bf0c31cacb57c963ab59958cad6b0494fea1674` |
 | `mcp/adapters/vancouver-periprosthetic-v483.js` | 1299 | `a9bb257eefe842fce5a08f1b676ef644a7fe664009b31efc0445b246c60ffb8e` |
-| `mcp/adapters/vascular-v105.js` | 5144 | `06074206c76b2d680244250f602aff23d0d67c0ac991ef87bf15e4c63de2bab0` |
+| `mcp/adapters/vascular-v105.js` | 5148 | `e925a66589adb870c2c61761a74fef918c063e40b23707e143fe0e8ad365cbb8` |
 | `mcp/adapters/vasi-v556.js` | 5967 | `05b55d5819701e231d4359631a9a3b970934a8a5c5e2aac4a344bd451477c257` |
 | `mcp/adapters/vaughan-williams-v427.js` | 1364 | `61d1f278dbbf3e257e045c85f6805311b58ae67456bfc89f04b5f7729a477686` |
 | `mcp/adapters/veau-cleft-v1497.js` | 716 | `6bc09e4db3c3453020c265b6174354f446e9d2c702fd6762a91d8962e8706240` |
@@ -3100,7 +3100,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 57424 | `36d44ab5300c4593dda9914093927dc4edc6572ad77b0a952d80f1daf8c4e0b2` |
 | `views/group-f.js` | 58426 | `cf2bdb5c3ec47946ab03944beff66e2d745d80ff414789590df14dd3e0204abf` |
-| `views/group-g.js` | 255250 | `bee1772f403624396790143ad4b3c1e2cd22ba088d554be911e67132b97a0fab` |
+| `views/group-g.js` | 255545 | `6eda1b6aa298cc728e08abc8f4d22d24591b735370d7a4aa8b362b70f201842f` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
 | `views/group-i.js` | 28770 | `ff0046f1eec61558f904085c297aff9600ade00ed77f267df71040c63708800c` |
 | `views/group-j.js` | 11210 | `08f23a251b1bb0cc5b6f33176a06c66c494a80492b0e9668f85c6a7195355279` |
@@ -3220,7 +3220,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1487.js` | 2116 | `2f27115b9b27efa325b8790fc747ef2812db9093927fe10abfe63f058f7b4670` |
 | `views/group-v1488.js` | 2396 | `cb0e64aa419937a7b865b73e293a72eb7e26da40cb8c4b229778680c7a783d3a` |
 | `views/group-v1489.js` | 3055 | `e9e68222998b140b29d4fd12008a4d6b2d3c979a8d3f27c8180360685c55d588` |
-| `views/group-v149.js` | 6579 | `ff06c0dbb5b73724d7ccffaba318ab80022ddda68f50cc9c80efd217e5fd9712` |
+| `views/group-v149.js` | 6579 | `dc5485098fdd6798bed7b3e6bbb0a2bb8dbb00291021dd419baabcc0f2cf25ef` |
 | `views/group-v1490.js` | 2545 | `c6c78a71c5a90f972796c0a858acc187afd4199588bbe94ff86a49c213f7cb2b` |
 | `views/group-v1491.js` | 2681 | `54c45c16e281cb874a62b4fe99dddbac7148abd330437ae42f247077f7d8ca5a` |
 | `views/group-v1492.js` | 2385 | `c6748bc6fc6f3df631a26ee5834643703a221eac2db00d37066ee3a9d6da7dc1` |
