@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ccee9598813af7aa`
-Generated: 2026-11-15T19:48:59.343Z
+Build ID: `632453d95a06be7d`
+Generated: 2026-11-15T20:01:25.060Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -90,7 +90,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/alligation-v1629.js` | 8257 | `499ecc86725e59f304dc200dde81eb1e840dff8e03e53793c798eaaa2729b925` |
 | `lib/alsfrs-r-v537.js` | 12461 | `03eee4c606f4b4635d52d18f7b8af8b278dbb184bf6216a017126ee755a0c3e0` |
 | `lib/aminoglycoside-label-renal-v1631.js` | 13194 | `1c267026ee710177cf7b992ca7a699841683f7aa7aa89406e4a2f8d75053be96` |
-| `lib/amsler-krumeich-v707.js` | 5712 | `08e6a45118d315743269a37f73f3caa6520ca86b41b54e08e3e17620f240bb01` |
+| `lib/amsler-krumeich-v707.js` | 6387 | `128a039e1a92e67d9a4cd4013375116a5d34b262d7bb66453cdab760420c0ea9` |
 | `lib/amsterdam-ii-v592.js` | 12218 | `26cf7e2a336259e90436d1bf8348ebcb252359c0ec988e9b0359a0d091b1d122` |
 | `lib/amts-v805.js` | 4385 | `d89e7931345da27e8df7b4b084ab3bcd7bcd89eeb02a710c31baf23dc1c29857` |
 | `lib/anaphylaxis-criteria-v803.js` | 4952 | `43bb47b10fe03fa200c26f8ee54d45923b26d28540016f6e32a8ed8a4422d8ee` |
@@ -577,7 +577,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gerdq-v679.js` | 4410 | `1b59ff708ec0a30c39ae0bc7ed356bf1704dac46be643eb922ec1376759df951` |
 | `lib/geri-v241.js` | 7721 | `760acaa9761d944cb735f846853aacdf6e0107ca4e803135bf290dcc88134d53` |
 | `lib/gerontonet-adr-risk-v1634.js` | 4639 | `da5d6ec237ae27b45b5a748a2940e701dcbf770173857ce73644d4b8c8ca1e55` |
-| `lib/ghent-marfan-v821.js` | 12808 | `b490f1cb70ceacd3e3bc184c4e6dc9c664d861d75e49a6e04a6e89ffa851ab5e` |
+| `lib/ghent-marfan-v821.js` | 13655 | `ef9bd910dfcc6c8cb3d41e3cbae2e6e28ea2b7eddf0cb7ad1446e5eb3d72d213` |
 | `lib/gi-drug-dose-check-v1632.js` | 8937 | `d7e3bcaff8dd40a24868fddf430f04fe1932693d20efdabbe211a30e9362507b` |
 | `lib/gi-v126.js` | 23640 | `f239bafcd6d4e61c65afff855f323ef635c10e87f635485e4c8d2edf49e14493` |
 | `lib/gisurg-v239.js` | 9243 | `952c45af610bdbb555a3d66e3e447aa102ea0079253afad4e158cb8edd94297b` |

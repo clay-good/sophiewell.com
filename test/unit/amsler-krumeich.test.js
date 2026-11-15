@@ -66,3 +66,15 @@ test('spec-v1096: an unrecorded refraction does not hold the stage down', () => 
   assert.equal(stage4.stage, 4);
   assert.doesNotMatch(stage4.band, /was not entered/);
 });
+
+// spec-v1724: myopia is written negative. A -9 D refraction was dropped as "not
+// entered" and K 50 / 450 microns read stage 2, where 9 D makes it stage 3.
+test('a negative refraction is refused with how to enter it, not dropped', () => {
+  const r = amslerKrumeich({ meanK: 50, thinnestThickness: 450, refraction: -9 });
+  assert.equal(r.valid, false);
+  assert.equal(r.field, 'refraction');
+  assert.match(r.message, /without the minus sign \(for -9 D, enter 9\)\. Check the value entered\.$/);
+  const ok = amslerKrumeich({ meanK: 50, thinnestThickness: 450, refraction: 9 });
+  assert.equal(ok.stage, 3);
+  assert.equal(ok.refractionEntered, true);
+});

@@ -27,10 +27,11 @@ test('ghent: the aortic Z threshold is age-dependent, but ONLY with a family his
 test('ghent: FBN1 has three states, and the middle one changes the diagnosis', () => {
   // Known with aortic disease: Marfan. Not known with it: ectopia lentis syndrome.
   assert.equal(gm({ ectopiaLentis: true, fbn1: 'known-with-ao' }).diagnosis, 'Marfan syndrome');
-  const els = gm({ ectopiaLentis: true, fbn1: 'not-known-with-ao' });
+  // spec-v1724: ectopia lentis syndrome needs a measured, non-dilated aortic root.
+  const els = gm({ ectopiaLentis: true, fbn1: 'not-known-with-ao', aorticZScore: 1 });
   assert.equal(els.diagnosis, 'Ectopia lentis syndrome');
   assert.ok(els.fbn1Note.includes('does not satisfy rule 4'));
-  assert.equal(gm({ ectopiaLentis: true }).diagnosis, 'Ectopia lentis syndrome');
+  assert.equal(gm({ ectopiaLentis: true, aorticZScore: 1 }).diagnosis, 'Ectopia lentis syndrome');
 });
 
 test('ghent: MASS needs a systemic score of 5 with at least one SKELETAL feature', () => {
@@ -99,4 +100,20 @@ test('ghent: empty, invalid and out-of-range input', () => {
   assert.equal(gm({ aorticZScore: 1e308 }).valid, false);
   assert.equal(gm().valid, true);
   assert.doesNotMatch(JSON.stringify(gm({ aorticZScore: 3, ectopiaLentis: true })), /NaN|Infinity/);
+});
+
+// spec-v1724: a blank aortic root Z score must not decide the diagnosis.
+test('ectopia lentis with no Z score asks for it instead of diagnosing ectopia lentis syndrome', () => {
+  const r = gm({ ectopiaLentis: true });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /^Enter the aortic root Z score\. .*Marfan syndrome \(rule 1\)/);
+  assert.equal(gm({ ectopiaLentis: true, aorticZScore: 1 }).diagnosis, 'Ectopia lentis syndrome');
+  assert.equal(gm({ ectopiaLentis: true, aorticZScore: 3 }).diagnosis, 'Marfan syndrome');
+  // Rule 4 does not need the aorta.
+  assert.equal(gm({ ectopiaLentis: true, fbn1: 'known-with-ao' }).diagnosis, 'Marfan syndrome');
+});
+
+test('"no diagnosis" with the Z score blank says it cannot rule Marfan syndrome out', () => {
+  assert.match(gm({}).band, /Z score was not entered.*cannot rule Marfan syndrome out\.$/);
+  assert.doesNotMatch(gm({ aorticZScore: 0 }).band, /not entered/);
 });

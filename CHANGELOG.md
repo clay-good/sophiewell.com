@@ -69,6 +69,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The revised Ghent nosology diagnosed ectopia lentis syndrome with the aortic root Z score left blank. That
+  diagnosis needs a non-dilated aorta, and the same patient with a Z of 2 is Marfan syndrome, so it now asks
+  for the Z score. With the Z score blank and no diagnosis met, it now says it cannot rule Marfan syndrome out.
+- Amsler-Krumeich keratoconus staging dropped a refraction written as a negative number (the usual way to
+  write myopia) and said it was not entered, which could understage severe keratoconus as moderate. It now
+  asks for the amount without the minus sign.
 - Eighty-three tools answered a value outside a field's range as if the field were blank: a waist of 300 cm,
   an aldosterone of 999,999, or a wind-chill temperature of 25 C got "Enter the waist circumference" and no
   hint of what was wrong. Each now names the field and its range. Six of them were quietly replacing or
