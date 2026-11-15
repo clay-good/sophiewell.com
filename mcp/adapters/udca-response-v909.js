@@ -15,7 +15,7 @@ export default [
       { dom: 'ur-months', arg: 'monthsOnUdca', kind: 'number', required: true, label: 'Months on ursodeoxycholic acid (the time point is part of each criterion)' },
       { dom: 'ur-alp', arg: 'alp', kind: 'number', required: true, label: 'Alkaline phosphatase now', unit: 'U/L' },
       { dom: 'ur-alpuln', arg: 'alpUln', kind: 'number', required: true, label: 'Alkaline phosphatase upper limit of normal', unit: 'U/L' },
-      { dom: 'ur-baselinealp', arg: 'baselineAlp', kind: 'number', required: false, label: 'Alkaline phosphatase before treatment (Barcelona only)', unit: 'U/L' },
+      { dom: 'ur-baselinealp', arg: 'baselineAlp', kind: 'number', required: false, label: 'Alkaline phosphatase before treatment (Barcelona only)', unit: 'U/L', min: 0 },
       { dom: 'ur-ast', arg: 'ast', kind: 'number', required: false, label: 'AST (the Paris sets only)', unit: 'U/L' },
       { dom: 'ur-astuln', arg: 'astUln', kind: 'number', required: false, label: 'AST upper limit of normal', unit: 'U/L' },
       { dom: 'ur-bilirubin', arg: 'bilirubin', kind: 'number', required: false, label: 'Total bilirubin (the Paris sets only)', unit: 'mg/dL' },

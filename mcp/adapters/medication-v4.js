@@ -132,6 +132,10 @@ export default [
       // spec-v931: a bag concentration is a mass per volume, and neither is negative. The dose
       // and rate below are already gated on `> 0`; the concentration was echoed back unchecked.
       if (!(a.concUgPerMl > 0)) return null;
+      // spec-v1728: an optional value entered with an impossible sign read as not entered (or as the default).
+      for (const [k, label] of [['dose', 'The dose'], ['rateMlHr', 'The pump rate']]) {
+        if (a[k] != null && a[k] !== '' && !(Number(a[k]) > 0)) return { valid: false, message: `${label} must be greater than 0. Check the value entered.` };
+      }
       const out = { drug: a.drug, doseUnits: rawUnits, concUgPerMl: a.concUgPerMl, weightKg: a.weightKg ?? null };
       if (a.dose > 0) { out.dose = a.dose; out.rateMlHr = F.vasopressorRateMlHr({ dose: a.dose, units, weightKg: a.weightKg, concUgPerMl: a.concUgPerMl }); }
       if (a.rateMlHr > 0) { out.inputRateMlHr = a.rateMlHr; out.doseFromRate = F.vasopressorDose({ rateMlHr: a.rateMlHr, units, weightKg: a.weightKg, concUgPerMl: a.concUgPerMl }); }

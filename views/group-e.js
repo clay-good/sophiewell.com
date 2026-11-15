@@ -804,7 +804,12 @@ export const renderers = {
             : `LMP-derived EDD: ${lmpRes.edd}. The LMP entered is ${lmpRes.gaWeeks} weeks ago, past the ~42 weeks a pregnancy is dated to, so no current gestational age is shown.`,
         }));
       }
-      if (crl > 0) {
+      // spec-v1728: a CRL outside 1 to 120 mm was skipped as if none had been
+      // entered; the same range the agent path (lib/preg-dating.js) refuses.
+      const crlEntered = document.getElementById('pd-crl').value.trim() !== '';
+      if (crlEntered && !(crl >= 1 && crl <= 120)) {
+        lines.push(el('li', { text: 'The crown-rump length must be between 1 and 120 mm. Check the value entered.' }));
+      } else if (crl > 0) {
         usRes = V4.gaFromCrl({ crlMm: crl, ultrasoundDateIso: us || undefined });
         lines.push(el('li', { text: `CRL-derived GA at ultrasound: ${usRes.gaWeeks}w ${usRes.gaRemainderDays}d; implied EDD ${usRes.edd}` }));
       }

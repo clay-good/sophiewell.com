@@ -309,7 +309,9 @@ export const renderers = {
       const residual = resRaw === '' ? 200 : Number(resRaw);
       const target = nv('o2-target');
       if (!(psi > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the gauge pressure with a flow rate (or a target transport time).' })); return; }
-      const r = C8.o2CylinderDuration({ factorLPsi: factor, gaugePsi: psi, flowLpm: flow > 0 ? flow : 0, residualPsi: residual, targetMinutes: target > 0 ? target : 0 });
+      // spec-v1728: a negative flow was passed as 0 and read as "no flow entered";
+      // pass it through so the library's own range check names it.
+      const r = C8.o2CylinderDuration({ factorLPsi: factor, gaugePsi: psi, flowLpm: flow > 0 || flow < 0 ? flow : 0, residualPsi: residual, targetMinutes: target > 0 ? target : 0 });
       const items = [{ label: 'Usable oxygen volume', value: fmt(r.usableVolumeL), units: `L (above the ${fmt(residual)} psi residual)` }];
       if (r.atOrBelowResidual) {
         items.push({ text: 'Gauge is at or below the safe residual - swap the cylinder now.', cls: 'flag' });
@@ -670,6 +672,13 @@ export const renderers = {
         const dose = Number(document.getElementById('vp-dose').value);
         const rate = Number(document.getElementById('vp-rate').value);
         if (!(conc > 0)) return;
+        // spec-v1728: a dose or rate entered as 0 or below was skipped as if blank.
+        for (const [id, label] of [['vp-dose', 'The dose'], ['vp-rate', 'The pump rate']]) {
+          if (document.getElementById(id).value.trim() !== '' && !(Number(document.getElementById(id).value) > 0)) {
+            out.appendChild(el('p', { class: 'muted', text: `${label} must be greater than 0. Check the value entered.` }));
+            return;
+          }
+        }
         out.appendChild(el('h2', { text: `${row.drug} - label dosing: ${row.typicalRange}` }));
         try {
           if (dose > 0) {

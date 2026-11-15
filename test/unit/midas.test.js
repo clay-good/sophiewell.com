@@ -27,11 +27,14 @@ test('ancillary frequency and intensity are reported but not scored', () => {
   assert.equal(r.grade, 'I');
 });
 
-test('blanks coerce to 0 and day-counts clamp to 92', () => {
+test('blanks coerce to 0; an off-scale day count or intensity is refused (spec-v1728)', () => {
   assert.equal(midas({}).total, 0);
   assert.equal(midas({}).grade, 'I');
-  const clamped = midas({ q1: 1000, q2: 0, q3: 0, q4: 0, q5: 0 });
-  assert.equal(clamped.total, 92);
-  const intClamp = midas({ q1: 0, q2: 0, q3: 0, q4: 0, q5: 0, intensity: 50 });
-  assert.equal(intClamp.intensity, 10);
+  // These used to clamp silently: 1000 days read as 92, an intensity of 50 as 10.
+  const days = midas({ q1: 1000, q2: 0, q3: 0, q4: 0, q5: 0 });
+  assert.equal(days.valid, false);
+  assert.match(days.band, /Q1\) must be between 0 and 92\. Check the value entered\.$/);
+  const intensity = midas({ q1: 0, q2: 0, q3: 0, q4: 0, q5: 0, intensity: 50 });
+  assert.equal(intensity.valid, false);
+  assert.match(intensity.band, /intensity .* must be between 0 and 10/);
 });

@@ -46,7 +46,8 @@ test('null when nothing computable is supplied', () => {
   assert.equal(pregnancyDating({}), null);
   assert.equal(pregnancyDating(), null);
   assert.equal(pregnancyDating({ ultrasoundDateIso: '2026-03-12' }), null); // date alone
-  assert.equal(pregnancyDating({ crlMm: 0 }), null);                        // non-positive CRL
+  // spec-v1728: a CRL that WAS entered but is not usable is refused, not null.
+  assert.match(pregnancyDating({ crlMm: 0 }).message, /between 1 and 120 mm/);
 });
 
 test('malformed date throws (surfaced as COMPUTE_ERROR by the MCP layer)', () => {
@@ -55,13 +56,11 @@ test('malformed date throws (surfaced as COMPUTE_ERROR by the MCP layer)', () =>
 
 test('implausible CRL is out of the dating range: no crl output, no overflow', () => {
   // An absurd CRL (past the Robinson-Fleming range) must never overflow the date
-  // math into a non-finite value; it is simply not treated as a usable CRL.
+  // math into a non-finite value. spec-v1728: it used to be dropped as if it had
+  // not been entered; it is refused by name now, before any date math runs.
   const r = pregnancyDating({ lmpIso: '2025-12-23', crlMm: 1e308, ultrasoundDateIso: '2026-03-12' });
-  assert.equal(r.lmpEdd, '2026-09-29');       // LMP path still works
-  assert.equal(r.crlGaWeeks, undefined);      // CRL dropped as out of range
-  assert.equal(r.crlEdd, undefined);
-  assert.equal(r.discordanceDays, undefined);
+  assert.equal(r.valid, false);
+  assert.match(r.message, /between 1 and 120 mm\. Check the value entered\.$/);
   assert.doesNotMatch(JSON.stringify(r), /NaN|Infinity/);
-  // CRL-only but out of range -> nothing computable -> null.
-  assert.equal(pregnancyDating({ crlMm: 5000 }), null);
+  assert.equal(pregnancyDating({ crlMm: 5000 }).valid, false);
 });

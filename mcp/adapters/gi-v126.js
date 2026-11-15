@@ -76,8 +76,8 @@ export default [
     compute: F.modifiedMarshall,
     fields: [
       { dom: 'mm-pao2', arg: 'pao2', kind: 'number', label: 'PaO2', unit: 'mmHg' },
-      { dom: 'mm-fio2', arg: 'fio2', kind: 'number', label: 'FiO2', unit: '%' },
-      { dom: 'mm-creat', arg: 'creatinine', kind: 'number', label: 'Creatinine', unit: 'mg/dL' },
+      { dom: 'mm-fio2', arg: 'fio2', kind: 'number', label: 'FiO2', unit: '%', min: 0 },
+      { dom: 'mm-creat', arg: 'creatinine', kind: 'number', label: 'Creatinine', unit: 'mg/dL', min: 0 },
       { dom: 'mm-cv', arg: 'cardiovascular', kind: 'number', label: 'Cardiovascular score (0-4, pre-banded; blank = not assessed)', values: ['0', '1', '2', '3', '4'] },
     ],
   },

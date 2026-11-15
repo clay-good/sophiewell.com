@@ -155,7 +155,10 @@ export function validateInputs(inputs, fields) {
       // past it is refused. Libs met it three wrong ways: clamped (Aldrete 3 -> 2),
       // summed (CIWA nausea 8), or dropped (Roland-Morris 25 scored 0).
       if ((Number.isFinite(f.min) && n < f.min) || (Number.isFinite(f.max) && n > f.max)) {
-        return { valid: false, code: 'OUT_OF_RANGE', field: f.dom, message: `"${f.dom}" must be from ${f.min} to ${f.max}; got ${n}.` };
+        // spec-v1728: a one-sided range read "from 0 to undefined".
+        const range = Number.isFinite(f.min) && Number.isFinite(f.max) ? `from ${f.min} to ${f.max}`
+          : (Number.isFinite(f.min) ? `at least ${f.min}` : `at most ${f.max}`);
+        return { valid: false, code: 'OUT_OF_RANGE', field: f.dom, message: `"${f.dom}" must be ${range}; got ${n}.` };
       }
     } else if (f.kind === 'bool') {
       if (!isBoolLike(v)) return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be a boolean.` };

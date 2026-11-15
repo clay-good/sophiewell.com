@@ -69,6 +69,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Seven tools dropped an optional value entered with an impossible sign and then asked for it: Kt/V said
+  "enter UF volume" after -3 was typed, the ECMO titration replaced a negative target PaCO2 with 40, and the
+  pregnancy dating skipped a CRL outside 1 to 120 mm. MIDAS also clamped a day count above 92 to 92. Each now
+  says what is wrong with the value. Eighteen more fields refused a negative value on the page but not
+  through the agent interface; they do now.
 - The billing tools rounded a fraction of a unit or a minute without saying so: 4.5 units billed against an
   MUE became 4, 104.5 critical-care minutes became 104, and an RVU payment for 0 units was priced as 1. The
   MUE check, RVU payment, therapy units, critical-care time, prolonged services, site-of-care comparison,

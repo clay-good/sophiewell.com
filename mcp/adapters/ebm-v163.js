@@ -28,7 +28,7 @@ export default [
       { dom: 'dx-fp', arg: 'fp', kind: 'number', required: true, label: 'False positives' },
       { dom: 'dx-fn', arg: 'fn', kind: 'number', required: true, label: 'False negatives' },
       { dom: 'dx-tn', arg: 'tn', kind: 'number', required: true, label: 'True negatives' },
-      { dom: 'dx-prev', arg: 'prevalence', kind: 'number', required: false, label: 'Target prevalence (recomputes PPV/NPV)', unit: '%' },
+      { dom: 'dx-prev', arg: 'prevalence', kind: 'number', required: false, label: 'Target prevalence (recomputes PPV/NPV)', unit: '%', min: 0 },
     ],
   },
   {
