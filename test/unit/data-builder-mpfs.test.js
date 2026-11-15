@@ -73,3 +73,38 @@ test('parse refuses a moved column and a QPP file that disagrees', async () => {
   const qpp = read('PPRRVU2026_Oct_QPP.csv').toString('latin1').replace(/^99213,,,A,,1\.30/m, '99213,,,A,,1.31');
   await assert.rejects(parse(rvuZip({ qpp: Buffer.from(qpp, 'latin1') }), {}), /RVUs differ for 99213/);
 });
+
+// From RVU27A CMS ships one 35-column file: PRIC IND is gone (ENDO BASE and CONV
+// FACTOR move left and right), and the QPP factor is appended. A fix that only
+// widened the member name would read the supervision code as the endoscopic base
+// and the calculation flag as the conversion factor.
+function combinedZip(rvu = read('PPRRVU2027_Jan.csv')) {
+  return makeZip([
+    { name: 'GPCI2027.csv', data: read('GPCI2027.csv') },
+    { name: 'PPRRVU2027_Jan.csv', data: rvu },
+    { name: 'RVU27A.pdf', data: '%PDF', method: 0 },
+  ]);
+}
+
+test('parse reads the RVU27A single file by its own columns and passes the RVU27A canaries', async () => {
+  const { records, ancillary } = await parse(combinedZip(), { edition: 'RVU27A', effectiveFrom: '2027-01-01' });
+  assert.deepEqual(records.find((r) => r.code === '99213'), {
+    code: '99213', statusCode: 'A', workRvu: 1.3, peRvuNonFacility: 1.42, peRvuFacility: 0.29, mpRvu: 0.1,
+    totalNonFacility: 2.82, totalFacility: 1.69, pctc: '0', globalPeriod: 'XXX',
+    multProc: '0', bilatSurg: '0', asstSurg: '0', coSurg: '0', teamSurg: '0',
+  });
+  assert.equal(records.find((r) => r.code === '29806').endoBase, '29805');
+  assert.ok(records.every((r) => !('description' in r) && !JSON.stringify(r).includes('Office')));
+  assert.equal(ancillary['conversion-factor.json'].conversionFactor, 32.6286);
+  assert.equal(ancillary['conversion-factor.json'].qppConversionFactor, 32.9548);
+  assert.equal(ancillary['conversion-factor.json'].effectiveDate, '2027-01-01');
+  assert.deepEqual(ancillary['gpci.json'].find((g) => g.state === 'AK'), { mac: '02102', state: 'AK', locality: '01', name: 'ALASKA', workGpci: 1.5, peGpci: 1.049, mpGpci: 0.511 });
+  const check = checkDataset({ records, ancillary, canaries: [...mpfs.stableCanaries, ...mpfs.canaries.RVU27A], shape: mpfs.shape });
+  assert.deepEqual(check.problems, []);
+});
+
+test('parse refuses an RVU27A file whose columns moved', async () => {
+  const text = read('PPRRVU2027_Jan.csv').toString('latin1');
+  const moved = text.replace('SURG,SURG,BASE,PROCEDURES', 'SURG,SURG,IND,BASE,PROCEDURES');
+  await assert.rejects(parse(combinedZip(Buffer.from(moved, 'latin1')), {}), /header changed/);
+});
