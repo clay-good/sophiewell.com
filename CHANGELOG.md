@@ -69,6 +69,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Eighty-three tools answered a value outside a field's range as if the field were blank: a waist of 300 cm,
+  an aldosterone of 999,999, or a wind-chill temperature of 25 C got "Enter the waist circumference" and no
+  hint of what was wrong. Each now names the field and its range. Six of them were quietly replacing or
+  dropping the value instead: the Free Thyroxine Index put 30 in for an off-scale reference T3RU, nitrogen
+  balance put 4 g in for insensible loss, Qp:Qs put 98% in for pulmonary-vein saturation, the adrenal washout
+  skipped absolute washout, the pure-tone average dropped the 4 kHz threshold, and the CKD and albuminuria tools dropped
+  a negative albumin. Those are refused too; a blank field still uses the default.
 - Twenty-three scores counted in whole steps (Epworth, ESAS, ISTH-BAT, MMT-8, NISS, IHS4, the Crohn's
   indices, the Harris Hip Score, and others) took a fraction such as 1.49 and quietly rounded it to the
   nearest step, so the total and its band moved without a word. A fraction in an item or a count is now

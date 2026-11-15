@@ -34,5 +34,6 @@ test('ratio matches the formula (units cancel in matched pairs)', () => {
 test('zero denominator -> complete-the-fields (guarded)', () => {
   const r = cccr({ urineCa: 6, serumCa: 0, serumCr: 1.0, urineCr: 100 });
   assert.equal(r.valid, false);
-  assert.match(r.message, /positive/);
+  // spec-v1723: a typed 0 is refused by name rather than asked for again.
+  assert.match(r.message, /^The serum calcium must be greater than 0 .*Check the value entered\.$/);
 });
