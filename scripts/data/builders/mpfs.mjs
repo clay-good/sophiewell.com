@@ -1,7 +1,7 @@
 // scripts/data/builders/mpfs.mjs -- spec-v1621 §3.1.
 //
 // The CMS physician fee schedule relative value file (PPRRVU), its GPCIs and
-// its conversion factors, from the newest quarterly release (RVU26D today).
+// its conversion factors, from the newest quarterly release (RVU27A today).
 //
 // Licensing: the CSV carries AMA CPT short descriptors. The DESCRIPTION column
 // is dropped here and never written. Codes, modifiers, RVUs, indicators and
@@ -15,7 +15,15 @@ export const LANDING = 'https://www.cms.gov/medicare/payment/fee-schedules/physi
 
 // The last of the four stacked header rows, asserted so a moved column fails
 // the parse instead of shifting every value one place.
+//
+// Two layouts. Through RVU26D the rows came twice, a nonQPP and a QPP file of
+// 32 columns with one conversion factor each. From RVU27A they come once, in
+// 35 columns: the PRIC IND column is gone (so ENDO BASE and CONV FACTOR move),
+// and a QPP CONV FACTOR and three QPP OPPS amounts are appended.
 export const PPRRVU_HEADER = ['HCPCS', 'MOD', 'DESCRIPTION', 'CODE', 'PAYMENT', 'RVU', 'PE RVU', 'INDICATOR', 'PE RVU', 'INDICATOR', 'RVU', 'TOTAL', 'TOTAL', 'IND', 'DAYS', 'OP', 'OP', 'OP', 'PROC', 'SURG', 'SURG', 'SURG', 'SURG', 'IND', 'BASE', 'FACTOR', 'PROCEDURES', 'FLAG', 'INDICATOR', 'AMOUNT', 'AMOUNT', 'AMOUNT'];
+export const PPRRVU_HEADER_COMBINED = ['HCPCS', 'MOD', 'DESCRIPTION', 'CODE', 'PAYMENT', 'RVU', 'PE RVU', 'INDICATOR', 'PE RVU', 'INDICATOR', 'RVU', 'TOTAL', 'TOTAL', 'IND', 'DAYS', 'OP', 'OP', 'OP', 'PROC', 'SURG', 'SURG', 'SURG', 'SURG', 'BASE', 'PROCEDURES', 'FLAG', 'INDICATOR', 'FACTOR', 'AMOUNT', 'AMOUNT', 'AMOUNT', 'FACTOR', 'PAYMENT AMOUNT', 'PAYMENT AMOUNT', 'PAYMENT AMOUNT'];
+const SPLIT = { header: PPRRVU_HEADER, endoBase: 24, cf: 25 };
+const COMBINED = { header: PPRRVU_HEADER_COMBINED, endoBase: 23, cf: 27, qppCf: 31 };
 
 // release key: rvu26d -> [26, 'd', correction?, n]. rvu24ar and rvu24ar1 are
 // corrections of rvu24a; rvu25d-0 is a Drupal duplicate-slug suffix.
@@ -56,11 +64,11 @@ export async function discover(http) {
   return { url: zip, release, edition: key.edition, ...releaseDates(key) };
 }
 
-function rvuRows(bytes, pattern) {
+function rvuRows(bytes, pattern, layout) {
   const hit = zipFind(bytes, pattern);
   if (!hit) throw new Error(`mpfs: no member matching ${pattern}`);
   const { header, rows } = skipPreamble(parseCsv(decode(hit.data, 'latin1')), (r) => r[0] === 'HCPCS');
-  if (header.length !== PPRRVU_HEADER.length || header.some((h, i) => h.trim() !== PPRRVU_HEADER[i])) {
+  if (header.length !== layout.header.length || header.some((h, i) => h.trim() !== layout.header[i])) {
     throw new Error(`mpfs: ${hit.entry.name} header changed: ${header.join(',')}`);
   }
   return rows.filter((r) => /^[A-Z0-9]{5}$/.test(r[0]));
@@ -68,7 +76,7 @@ function rvuRows(bytes, pattern) {
 
 const str = (v) => (v || '').trim();
 
-function toRecord(r) {
+const toRecord = (layout) => (r) => {
   const rec = {
     code: r[0],
     ...(str(r[1]) ? { modifier: str(r[1]) } : {}),
@@ -89,29 +97,40 @@ function toRecord(r) {
     coSurg: str(r[21]),
     teamSurg: str(r[22]),
   };
-  const endo = str(r[24]);
+  const endo = str(r[layout.endoBase]);
   if (endo) rec.endoBase = endo;
   return rec;
-}
+};
 
-function conversionFactor(rows, label) {
-  const cfs = new Set(rows.map((r) => str(r[25])));
+function conversionFactor(rows, label, col) {
+  const cfs = new Set(rows.map((r) => str(r[col])));
   if (cfs.size !== 1) throw new Error(`mpfs: ${label} rows carry ${cfs.size} conversion factors`);
   return num([...cfs][0]);
 }
 
-export async function parse(bytes, found) {
-  const nonQpp = rvuRows(bytes, /PPRRVU\d{4}_\w+_nonQPP\.csv$/i);
-  const qpp = rvuRows(bytes, /PPRRVU\d{4}_\w+_QPP\.csv$/i);
-  // The QPP file repeats the RVUs for the codes a qualifying APM participant
-  // bills; only the conversion factor differs. Prove that rather than assume it,
-  // so one record set and two factors are the whole truth.
+// Through RVU26D: two files. The QPP file repeats the RVUs for the codes a
+// qualifying APM participant bills; only the conversion factor differs. Prove
+// that rather than assume it, so one record set and two factors are the whole truth.
+function splitRows(bytes) {
+  const nonQpp = rvuRows(bytes, /PPRRVU\d{4}_\w+_nonQPP\.csv$/i, SPLIT);
+  const qpp = rvuRows(bytes, /PPRRVU\d{4}_\w+_QPP\.csv$/i, SPLIT);
   const byKey = new Map(nonQpp.map((r) => [`${r[0]}|${r[1]}`, r]));
   for (const r of qpp) {
     const x = byKey.get(`${r[0]}|${r[1]}`);
     if (!x) throw new Error(`mpfs: QPP code ${r[0]} is not in the nonQPP file`);
     for (const i of [5, 6, 8, 10, 11, 12]) if (r[i] !== x[i]) throw new Error(`mpfs: QPP and nonQPP RVUs differ for ${r[0]}`);
   }
+  return { rows: nonQpp, layout: SPLIT, cf: conversionFactor(nonQpp, 'nonQPP', SPLIT.cf), qppCf: conversionFactor(qpp, 'QPP', SPLIT.cf) };
+}
+
+// From RVU27A: one file carrying both factors.
+function combinedRows(bytes) {
+  const rows = rvuRows(bytes, /PPRRVU\d{4}_[A-Za-z]+\.csv$/i, COMBINED);
+  return { rows, layout: COMBINED, cf: conversionFactor(rows, 'nonQPP', COMBINED.cf), qppCf: conversionFactor(rows, 'QPP', COMBINED.qppCf) };
+}
+
+export async function parse(bytes, found) {
+  const pp = zipFind(bytes, /PPRRVU\d{4}_\w+_nonQPP\.csv$/i) ? splitRows(bytes) : combinedRows(bytes);
   const gpciHit = zipFind(bytes, /GPCI\d{4}\.csv$/i);
   if (!gpciHit) throw new Error('mpfs: no GPCI member');
   const { rows: gRows } = skipPreamble(parseCsv(decode(gpciHit.data, 'latin1')), (r) => /Locality Number/i.test(r[2] || ''));
@@ -122,13 +141,13 @@ export async function parse(bytes, found) {
   }
   if (gpci.length < 100 || gpci.length > 130) throw new Error(`mpfs: ${gpci.length} GPCI localities, outside 100-130`);
   const cf = {
-    conversionFactor: conversionFactor(nonQpp, 'nonQPP'),
-    qppConversionFactor: conversionFactor(qpp, 'QPP'),
+    conversionFactor: pp.cf,
+    qppConversionFactor: pp.qppCf,
     effectiveDate: found.effectiveFrom,
     edition: found.edition,
     source: `CMS PFS relative value file ${found.edition}: nonqualifying and qualifying APM conversion factors`,
   };
-  return { records: nonQpp.map(toRecord), ancillary: { 'gpci.json': gpci, 'conversion-factor.json': cf } };
+  return { records: pp.rows.map(toRecord(pp.layout)), ancillary: { 'gpci.json': gpci, 'conversion-factor.json': cf } };
 }
 
 const rvu = (code, field) => (records) => records.find((r) => r.code === code && !r.modifier)[field];
@@ -158,6 +177,14 @@ export default {
       { label: '99213 work RVU', value: rvu('99213', 'workRvu'), expect: 1.3 },
       { label: '99213 non-facility total', value: rvu('99213', 'totalNonFacility'), expect: 2.85 },
       { label: '99213 facility total', value: rvu('99213', 'totalFacility'), expect: 1.72 },
+      { label: '99214 work RVU', value: rvu('99214', 'workRvu'), expect: 1.92 },
+    ],
+    RVU27A: [
+      { label: 'nonQPP conversion factor', value: (_, a) => a['conversion-factor.json'].conversionFactor, expect: 32.6286 },
+      { label: 'QPP conversion factor', value: (_, a) => a['conversion-factor.json'].qppConversionFactor, expect: 32.9548 },
+      { label: '99213 work RVU', value: rvu('99213', 'workRvu'), expect: 1.3 },
+      { label: '99213 non-facility total', value: rvu('99213', 'totalNonFacility'), expect: 2.82 },
+      { label: '99213 facility total', value: rvu('99213', 'totalFacility'), expect: 1.69 },
       { label: '99214 work RVU', value: rvu('99214', 'workRvu'), expect: 1.92 },
     ],
   },
