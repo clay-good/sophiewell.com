@@ -48,7 +48,6 @@ Tests: `test/unit/entered-asked-for-batch-{1,2,3,4}.test.js` drive every row thr
 
 ## Left open
 
-- `ild-gap`: an out-of-range select value (subtype, age band, DLCO band) reads as 0. A select cannot carry one
-  on the page; agents are fenced by the adapter's `values`.
-- `amsler-krumeich`: a negative refraction is treated as not entered.
+- `ild-gap`: an out-of-range select value read as 0. Refused in spec-v1727, with `resp-score`.
+- `amsler-krumeich`: a negative refraction was treated as not entered. Fixed in spec-v1724.
 - spec-v1722's billing and administration counts: decided by the owner and refused in spec-v1726.

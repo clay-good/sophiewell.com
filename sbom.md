@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `839b3750b7da9b44`
-Generated: 2026-11-15T22:13:16.379Z
+Build ID: `00e44cf0696f2cc4`
+Generated: 2026-11-15T23:15:03.760Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1250,7 +1250,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pulm-v114.js` | 16068 | `0267a9b881929d371166516691979f4fdce8b15875dafcbfbad6c21bbbcc5ee5` |
 | `lib/pulm-v91.js` | 19423 | `8accba2f6eb4d5f394473d33dcf62336f388078c155ad57c6482f412328e662d` |
 | `lib/pulmnod-v115.js` | 19707 | `bda10ab55422e34da8e69b4e7dc537cf758ae0a401a8ea05f38e68bf47eb5139` |
-| `lib/pulmonary-risk-v221.js` | 15108 | `d55f3b96ba39a4dfaee03dfe9f3e9409630760e3a79a7cec9460be88c348b302` |
+| `lib/pulmonary-risk-v221.js` | 16206 | `503e119cc9fe7ec3ef9d40351d78e1f80e9808c27a94e2988a7dad6f408956c0` |
 | `lib/puqe24-v553.js` | 10456 | `d2593fdc70bc2cc959ddac33b9c0d578d7ac5decf655bfff3e35f1b412b6a781` |
 | `lib/push-tool-v662.js` | 4843 | `0c6fa9721ac595d78e6f85f229f31092e1d6b1b11e9bc770a02b48c8195bb0c2` |
 | `lib/pwv-carotid-femoral-v1704.js` | 4735 | `ba8a34a64f89d3c094ed84c1b1902ae36ab75db8a1743c60953ee6f5f91ec878` |

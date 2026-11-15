@@ -39,7 +39,7 @@ test('resp: class from score', () => {
   assert.equal(r.riskClass, 'II');
 });
 test('resp: negative modifiers drop class', () => {
-  const r = resp({ ageBand: '-3', diagnosis: '0', cns: true }); // -3-7
+  const r = resp({ ageBand: '-3', mvBand: '0', diagnosis: '0', cns: true }); // -3+0+0-7 (spec-v1727: mvBand is required)
   assert.equal(r.score, -10);
   assert.equal(r.riskClass, 'V');
 });
@@ -69,4 +69,21 @@ test('pneumothorax: Collins formula', () => {
 test('pneumothorax: caps at 100', () => {
   const r = pneumothoraxVolume({ apex: 20, midUpper: 20, midLower: 20 });
   assert.equal(r.percent, 100);
+});
+
+// spec-v1727: a select value that is not one of the options, or none at all, is
+// refused by name. It used to score as 0, the most favorable band.
+test('ild-gap and resp refuse a missing or out-of-set choice', () => {
+  const gap = { subtype: '0', ageBand: '2', fvc: 60, dlcoBand: '1', male: true };
+  assert.equal(ildGap(gap).valid, true);
+  for (const bad of [{ ageBand: '5' }, { ageBand: '' }, { dlcoBand: '9' }, { subtype: '-1' }]) {
+    const r = ildGap({ ...gap, ...bad });
+    assert.equal(r.valid, false, JSON.stringify(bad));
+    assert.match(r.message, /^Choose the .* from the options listed\.$/);
+  }
+  const rs = { ageBand: '-2', mvBand: '1', diagnosis: '3' };
+  assert.equal(resp(rs).valid !== false, true);
+  for (const bad of [{ ageBand: '1' }, { mvBand: '' }, { diagnosis: '4' }]) {
+    assert.match(resp({ ...rs, ...bad }).message, /^Choose the .* from the options listed\.$/, JSON.stringify(bad));
+  }
 });
