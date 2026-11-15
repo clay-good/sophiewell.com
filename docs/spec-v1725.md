@@ -1,20 +1,33 @@
-# spec-v1725 — The catalog walk, in four parts
+# spec-v1725 — The catalog sweeps, in their own CI lanes
 
-> Status: **SHIPPED (2026-11-15)**: test layout only. No tool changes; the catalog stays 2,387.
+> Status: **SHIPPED (2026-11-15)**: test and CI layout only. No tool changes; the catalog stays 2,387.
 
-`test/integration/every-tool-is-wired.spec.js` walks every tool (find it by name, open it, check it has
-something to fill in) as one serial test. It took 9.1 minutes locally and held Chromium CI shard 2 for 25 to
-40 minutes, close to its own 30-minute timeout, while most other shards finished in 4 to 15.
+Chromium CI shard 2 took 39 to 40 minutes on every push while the other seven took 4 to 28. Its job log says
+why: it held both whole-catalog sweeps.
 
-It now runs as four tests, each walking every fourth tool (`index % 4`), plus one test that the catalog is
-still the catalog (over 1,500 tools). The checks per tool are unchanged and every tool is still walked
-exactly once. This is the same layout `example-correctness.spec.js` already uses.
+| Test (CI shard 2, two workers) | Time |
+|---|---|
+| `example-correctness.spec.js`, each of 4 parts | about 9.3 min |
+| `every-tool-is-wired.spec.js`, then one serial test | about 20 min |
 
-| | Before | After |
-|---|---|---|
-| Local, one file | 9.1 min | 2.3 min |
-| CI | one test on one worker | four tests across shard 2's two workers |
+## Step 1 (`02825ee5c`): the catalog walk in four parts
 
-Playwright shards by contiguous runs of tests, so all four parts still land on CI shard 2, alongside
-`example-correctness`'s four. Spreading them across shards would mean steering file order by name; that is
-left as a follow-up.
+`every-tool-is-wired.spec.js` walked all 2,387 tools in one serial test, close to its 30-minute timeout in CI.
+It now runs as four tests, each walking every fourth tool (`index % 4`), plus a check that the catalog is still
+over 1,500 tools. Locally: 9.1 min to 2.3 min.
+
+It did not shorten CI: shard 2 went from 40 to 39 minutes. Playwright shards by contiguous runs of tests and has
+no weighting, so the four new parts landed on shard 2 beside example-correctness's four.
+
+## Step 2: twelve lanes
+
+Each part of both sweeps is tagged `@sweep` and `@sweep-N`. The `e2e` job in `.github/workflows/ci.yml` now has
+twelve lanes instead of eight shards:
+
+| Lane | Runs |
+|---|---|
+| `1/8` to `8/8` | `--shard=N/8 --grep-invert @sweep`: everything except the sweeps, 56 or 57 tests each |
+| `sweep-1` to `sweep-4` | `--grep @sweep-N`: part N of both sweeps, 2 tests |
+
+Checked with `--list`: the twelve lanes list 462 tests, the same 462 the full suite lists, none twice.
+Same tests, same checks, same total runner time; the longest lane is what changes.

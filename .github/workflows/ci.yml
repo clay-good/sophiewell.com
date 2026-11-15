@@ -133,12 +133,19 @@ jobs:
   # them go back to `ubuntu-latest`. The comment sits above the job key on
   # purpose: the release:check coverage test finds a job's end by `  <name>:` +
   # `runs-on`, so `runs-on` stays the first line of every job.
+  #
+  # spec-v1725: twelve lanes, not eight shards. Playwright shards by contiguous
+  # runs of tests and has no weighting, so the two whole-catalog sweeps
+  # (example-correctness, about 9 minutes per part, and every-tool-is-wired, about
+  # 3) always landed on shard 2 together: 39 to 40 minutes while the other shards
+  # took 4 to 28. Their parts are tagged `@sweep-N`. The eight shards skip
+  # `@sweep`, and four lanes each run part N of both sweeps. Same tests, run once.
   e2e:
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6, 7, 8]
+        lane: ['1/8', '2/8', '3/8', '4/8', '5/8', '6/8', '7/8', '8/8', 'sweep-1', 'sweep-2', 'sweep-3', 'sweep-4']
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
@@ -159,13 +166,17 @@ jobs:
         run: git diff --exit-code -- data ':!data/search-corpus'
       - name: Static build
         run: npm run build
-      - name: End-to-end tests (Chromium, shard ${{ matrix.shard }} of 8)
-        run: npx playwright test --project=chromium --shard=${{ matrix.shard }}/8
+      - name: End-to-end tests (Chromium, shard ${{ matrix.lane }})
+        if: ${{ !startsWith(matrix.lane, 'sweep-') }}
+        run: npx playwright test --project=chromium --shard=${{ matrix.lane }} --grep-invert @sweep
+      - name: End-to-end tests (Chromium, catalog sweeps, ${{ matrix.lane }})
+        if: ${{ startsWith(matrix.lane, 'sweep-') }}
+        run: npx playwright test --project=chromium --grep @${{ matrix.lane }}
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         with:
-          name: playwright-report-chromium-${{ matrix.shard }}
+          name: playwright-report-chromium-${{ strategy.job-index }}
           path: playwright-report/
           retention-days: 7
           if-no-files-found: ignore

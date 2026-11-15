@@ -50,9 +50,9 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep 
 // spec-v1725: split the catalog across PARTS tests by index, as
 // example-correctness.spec.js does. As one serial test the walk took about 9
 // minutes locally and held a whole CI shard for 25 to 40, close to its 30-minute
-// timeout. `fullyParallel` is on, so the parts run on separate workers and land on
-// separate CI shards. Every tile is still walked exactly once (index % PARTS), with
-// the same checks.
+// timeout. Each part is tagged `@sweep-N` and runs in its own CI lane (see the
+// e2e job in .github/workflows/ci.yml). Every tile is still walked exactly once
+// (index % PARTS), with the same checks.
 const PARTS = 4;
 
 test('the catalog is big enough to be the catalog', () => {
@@ -60,7 +60,8 @@ test('the catalog is big enough to be the catalog', () => {
 });
 
 for (let part = 0; part < PARTS; part++) {
-  test(`every tool is findable, openable, and usable (part ${part + 1} of ${PARTS})`, async ({ page }) => {
+  // Tagged for its own CI lane, with example-correctness's part of the same number.
+  test(`every tool is findable, openable, and usable (part ${part + 1} of ${PARTS})`, { tag: ['@sweep', `@sweep-${part + 1}`] }, async ({ page }) => {
     test.setTimeout(1_800_000);
     const tiles = catalog().filter((_, i) => i % PARTS === part);
 

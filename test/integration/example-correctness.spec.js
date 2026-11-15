@@ -235,8 +235,13 @@ async function checkTile(page, id, expected) {
   return null;
 }
 
+// spec-v1725: each part is tagged so CI can run it in its own lane. Playwright
+// shards by contiguous runs of tests, so all four parts used to land on one CI
+// shard together with every-tool-is-wired's four (about 48 minutes of work on two
+// workers). `@sweep-N` lanes run part N of both sweeps; the eight ordinary shards
+// skip `@sweep`. See the e2e job in .github/workflows/ci.yml.
 for (let shard = 0; shard < SHARDS; shard++) {
-  test(`every example payload produces the documented numeric output (shard ${shard + 1} of ${SHARDS})`, async ({ page }) => {
+  test(`every example payload produces the documented numeric output (shard ${shard + 1} of ${SHARDS})`, { tag: ['@sweep', `@sweep-${shard + 1}`] }, async ({ page }) => {
     test.setTimeout(SHARD_TIMEOUT_MS);
 
     const examples = await loadExamples(page);
