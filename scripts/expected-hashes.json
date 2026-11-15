@@ -24,12 +24,12 @@
     "fetchedAt": "2026-09-29"
   },
   "nadac": {
-    "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=as_of_date&conditions[0][value]=2026-11-04&conditions[0][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
-    "edition": "2026-11-04 weekly",
-    "sha256": "e4cc3a814286fd5f75575105fae477c134f1d82a2734b94b5ae4a9b6b0dd09d7",
-    "etag": "\"1794014244-gzip\"",
-    "lastModified": "Sat, 07 Nov 2026 01:17:24 GMT",
-    "fetchedAt": "2026-11-07"
+    "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=as_of_date&conditions[0][value]=2026-11-11&conditions[0][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
+    "edition": "2026-11-11 weekly",
+    "sha256": "d2ab8301057d036b246506767c907fc2c4e5a805519e58ee3eec1abb44e63216",
+    "etag": "\"1794749389-gzip\"",
+    "lastModified": "Sun, 15 Nov 2026 13:29:49 GMT",
+    "fetchedAt": "2026-11-15"
   },
   "asp": {
     "url": "https://www.cms.gov/files/zip/october-2026-medicare-part-b-payment-limit-files-final.zip",
@@ -49,11 +49,11 @@
   },
   "mcd-articles": {
     "url": "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/current_article.zip",
-    "edition": "2026-11-02 weekly",
-    "sha256": "fb2903d24ae36a702552e514857a97cef7244596be897273bd0fdab5a6a73c0f",
-    "etag": "\"2bbbdacc1e5490f17f9ecf8e17b5cc0f:1793862010.504963\"",
-    "lastModified": "Thu, 05 Nov 2026 07:00:11 GMT",
-    "fetchedAt": "2026-11-07"
+    "edition": "2026-11-09 weekly",
+    "sha256": "63d304f1d406a9ee83c670b1fdfb21a14e80c7e8ef0c462ce9ea68ef92eed984",
+    "etag": "\"2fcda327e62643b3ce9f348bdd4b5126:1794466811.709917\"",
+    "lastModified": "Thu, 12 Nov 2026 07:00:12 GMT",
+    "fetchedAt": "2026-11-15"
   },
   "purple-book": {
     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/PurpleBook/2026/purplebook-search-September-data-download.csv",
@@ -65,11 +65,11 @@
   },
   "orange-book": {
     "url": "https://www.fda.gov/media/76860/download?attachment",
-    "edition": "2026-10 (products.txt of 2026-10-09)",
-    "sha256": "c2088c7a36db1930a152b63db23e7a995c471bf4b18c960b1d28190580984e4d",
+    "edition": "2026-11 (products.txt of 2026-11-13)",
+    "sha256": "d4dbc9d85df4fbd78c5e448f130a55b05054f529d2054a46df10735437792241",
     "etag": null,
-    "lastModified": "Tue, 13 Oct 2026 16:09:04 GMT",
-    "fetchedAt": "2026-10-25"
+    "lastModified": "Fri, 13 Nov 2026 16:03:15 GMT",
+    "fetchedAt": "2026-11-15"
   },
   "pas-profiles": {
     "url": "https://packages.fhir.org/hl7.fhir.us.davinci-pas/2.2.1",
@@ -81,11 +81,11 @@
   },
   "uspstf": {
     "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation-topics/uspstf-a-and-b-recommendations",
-    "edition": "A and B list read 2026-11-01 (latest release 2025-06)",
-    "sha256": "3f2a6909dc06d6fb9382132931676bd56cc1d2d85b2602dad389434c8e903214",
+    "edition": "A and B list read 2026-11-15 (latest release 2025-06)",
+    "sha256": "897809f49398536891c42cd5fe07df65126ae781840359df3fc08ef94571c954",
     "etag": null,
     "lastModified": null,
-    "fetchedAt": "2026-11-01"
+    "fetchedAt": "2026-11-15"
   },
   "poverty-guidelines": {
     "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines/api/2025/us/1",
@@ -117,14 +117,14 @@
     "sha256": "cf05986205e39c3f64806a7a291ca4144639cdd7b0deaed6ec60b1662688c41a",
     "etag": null,
     "lastModified": null,
-    "fetchedAt": "2026-11-01"
+    "fetchedAt": "2026-11-15"
   },
   "fda-ddi-examples": {
     "url": "https://www.fda.gov/drugs/drug-interactions-labeling/healthcare-professionals-fdas-examples-drugs-interact-cyp-enzymes-and-transporter-systems",
     "edition": "2026-05-29",
-    "sha256": "ca053955c152f5c4c5e5ab21b413239106e364e68cb6c5075799f1684bb506d7",
-    "etag": "\"1794070208\"",
-    "lastModified": "Sat, 07 Nov 2026 16:50:08 GMT",
-    "fetchedAt": "2026-11-07"
+    "sha256": "623ad3ad5042a04b709cf39b7996da5e469396476484396818d786c2212491b4",
+    "etag": "\"1794687495\"",
+    "lastModified": "Sat, 14 Nov 2026 20:18:15 GMT",
+    "fetchedAt": "2026-11-15"
   }
 }

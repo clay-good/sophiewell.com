@@ -6,122 +6,122 @@
   "agency": "FDA",
   "status": "public-domain",
   "cadence": "monthly",
-  "recordCount": 25579,
+  "recordCount": 25660,
   "shardLayout": "shards",
   "shards": [
     {
       "name": "A.json",
-      "sha256": "06e727e5aabd0efdf4023aff9340a1e92b624926b5dfb07363ac08d17bd41107",
-      "records": 2484,
-      "bytes": 597754
+      "sha256": "e17d9f2056d19f5ee522f1f9e0d964d02c7fc5e17e7f58fe11b73c8d10deed9f",
+      "records": 2499,
+      "bytes": 601375
     },
     {
       "name": "B.json",
-      "sha256": "4c924fe3e6b030498b33c6cdededa532d10efcd7be4a822c0a54b5cf546cd831",
-      "records": 1126,
-      "bytes": 255216
+      "sha256": "857b3e56d65c17335cf62c7b0ddba8aacf9d8f35fc9264aa7a05462f206c026e",
+      "records": 1139,
+      "bytes": 258074
     },
     {
       "name": "C.json",
-      "sha256": "d0e5bd987718be986efc73b94392d1b8d1d664d0a2366f4d810c9a492f3973ba",
-      "records": 2342,
-      "bytes": 522816
+      "sha256": "5cd072b9eaeaf15bf6367850a3a6cbcc2b0bf912e7d0ce66ed24a953c9c8a457",
+      "records": 2358,
+      "bytes": 526378
     },
     {
       "name": "D.json",
-      "sha256": "702048c20d5e0559f97c44e76e6c49d5344d91f0ec31d62de082916e9bb6a0e5",
-      "records": 2396,
-      "bytes": 549680
+      "sha256": "459dd586417679b12818cdbb4240872bfe5f808d0ffc8078ea4aace597bf1427",
+      "records": 2388,
+      "bytes": 547634
     },
     {
       "name": "E.json",
-      "sha256": "68c3e7ba4988df84c1cf58878f67d04efc5c607949e09e718df2ddee02fdc0e3",
-      "records": 1352,
-      "bytes": 302226
+      "sha256": "9aab186e243d1651247070205cd0c0f4980d035debfe29281183b58aa32e789b",
+      "records": 1360,
+      "bytes": 304306
     },
     {
       "name": "F.json",
-      "sha256": "9c703928fd5f249d2b8500a63a259a51b0634062f21502e65b2eb30bc89d8773",
-      "records": 1158,
-      "bytes": 253701
+      "sha256": "a90047d8c4d2ba97adaa905b2c37a548245786a458e22c2ff506d3762107dcc5",
+      "records": 1159,
+      "bytes": 253985
     },
     {
       "name": "G.json",
-      "sha256": "6f45df4ca1a3d66a79ed8d1fd0cee85ad16e9de68ae08b354f3168541ad84900",
-      "records": 709,
-      "bytes": 156274
+      "sha256": "b6d5fd18c7f748b6c74ab1a0577a63f2ede32f71df45fc1236a0ea6baba86924",
+      "records": 706,
+      "bytes": 155482
     },
     {
       "name": "H.json",
-      "sha256": "1e47cafb94e223eac547f6f972ba0d83342272e58afc6af3ab88e34a69cecd57",
-      "records": 727,
-      "bytes": 168543
+      "sha256": "128b26227654c9af0916c7a83b794eec235dd5fe94a6547d3534399f4ab3f8e8",
+      "records": 729,
+      "bytes": 168859
     },
     {
       "name": "I.json",
-      "sha256": "1a91316d96171fea461c58275ccf1c11b8b2191de3016f5656744dca4962f547",
-      "records": 685,
-      "bytes": 145444
+      "sha256": "86ced8f3e2f8e4b12c51cf51fdc53099a530fb44160d4292d01c659ae30ed655",
+      "records": 686,
+      "bytes": 145639
     },
     {
       "name": "K.json",
-      "sha256": "f3203252f39a2271cf1b418c1321155fbd160f3b8bf672722e0a0ac114ca4d1b",
-      "records": 86,
-      "bytes": 18963
+      "sha256": "c5a2c15ada0b831d823b437b6b647aa196c7260f1d9ebebbc23735bb481d9031",
+      "records": 89,
+      "bytes": 19769
     },
     {
       "name": "L.json",
-      "sha256": "e941cebd7178d4a0f32eb86062cf6481d7985e4ddd663e3a02d3ac436c12d3bb",
-      "records": 2018,
-      "bytes": 447894
+      "sha256": "030ca08ce198ed08011005563e1443d8891c056a780e7cdeaf0353ad90e97a9b",
+      "records": 2021,
+      "bytes": 448443
     },
     {
       "name": "M.json",
-      "sha256": "463b787306294366f3ab26cf270cf6c555d3598860e79bd46a9fc0ecd2b27fe6",
-      "records": 1933,
-      "bytes": 435429
+      "sha256": "8b241fea44314cff1857e6b68dd885bce53685d5315ff7238c64747efd4ef55b",
+      "records": 1935,
+      "bytes": 435793
     },
     {
       "name": "N.json",
-      "sha256": "a5ade47d5fe755a84e59038749d8a771e1e0ecda8d6b7bdc0070f07ba13e266a",
-      "records": 866,
-      "bytes": 190633
+      "sha256": "793674e03dc00457a9f735a5ded0011892f5470db4a78a837e3368a2e4c6b24b",
+      "records": 865,
+      "bytes": 190394
     },
     {
       "name": "O.json",
-      "sha256": "9ea309122832fa1f080ce8d00a3c9a56ad17bd85335192184b49795aa0502975",
-      "records": 832,
-      "bytes": 182319
+      "sha256": "b01dd5464759f21dba5ed35c43832e96eef09378242cf0eb799a1d5e4e2476b8",
+      "records": 839,
+      "bytes": 183811
     },
     {
       "name": "P.json",
-      "sha256": "002c6447ff3c0f21d03af88bd56d25bafe2da61d9d4faf689f3d874527139b09",
-      "records": 2018,
-      "bytes": 448253
+      "sha256": "99b122a5882c4156aa87db9ed10c51ad873cc6878221a8d14e1dc618e4236894",
+      "records": 2017,
+      "bytes": 447839
     },
     {
       "name": "Q.json",
-      "sha256": "e37ed5495f934c4ccbd29d2426d1bc7e2fddcf917ea48c3466e01814b955db51",
-      "records": 165,
-      "bytes": 37116
+      "sha256": "29d9a610565b6553096f5b545c7e0ed0915349b4acb5ea8a45a8eb759d9ec1ae",
+      "records": 161,
+      "bytes": 36177
     },
     {
       "name": "R.json",
-      "sha256": "237998da5d7015e3ccbe479c3ed31898e5a04fae03f0b026f91cbb12c399fc48",
-      "records": 915,
-      "bytes": 196195
+      "sha256": "fcc78bca3dd2de62f8641e8e232726766c4800b19735cc37ea4449bdedb679f5",
+      "records": 922,
+      "bytes": 197654
     },
     {
       "name": "S.json",
-      "sha256": "dace95b6af8be25de5c794efaa1702642a805536fe68de1f05b4dd850587384f",
-      "records": 1115,
-      "bytes": 244974
+      "sha256": "795e19c7bdb4030b687f9234d9afd11fa6ad321f2f65182b11039d60983614e3",
+      "records": 1116,
+      "bytes": 245133
     },
     {
       "name": "T.json",
-      "sha256": "551e1560878241fbd34bd169918f18925e2815a6a25bad09a56cfd8b869dbe4a",
-      "records": 1697,
-      "bytes": 359542
+      "sha256": "d07e5cc3fad83a2a0b2c51e13a1c094ea5584f58884fdac70e82510c3db9be76",
+      "records": 1709,
+      "bytes": 362102
     },
     {
       "name": "U.json",
@@ -131,9 +131,9 @@
     },
     {
       "name": "V.json",
-      "sha256": "e5adcbb155a0d7cc3d685e3fc7474594c3dbe42fb676ef1ac3eab66533c031ca",
-      "records": 626,
-      "bytes": 140636
+      "sha256": "968d76deab7aa81641b6656afce03c4270cd89949aed53ad10e91f96144a4b7b",
+      "records": 633,
+      "bytes": 142169
     },
     {
       "name": "W.json",
@@ -159,14 +159,14 @@
   ],
   "notes": "One record per marketed (Rx or OTC) product from products.txt: ingredient, dosage form and route, strength, trade name, applicant, application and product number, therapeutic equivalence code, and the RLD and RS flags. Discontinued products are dropped. The Orange Book has no NDCs.",
   "coverage": "full",
-  "sourceEdition": "2026-10 (products.txt of 2026-10-09)",
-  "effectiveFrom": "2026-10-09",
-  "fetchedAt": "2026-10-25",
-  "contentChangedAt": "2026-10-25",
-  "expiresOn": "2026-12-09",
-  "nextExpected": "2026-11-13",
-  "sourceSha256": "c2088c7a36db1930a152b63db23e7a995c471bf4b18c960b1d28190580984e4d",
-  "recordsSha256": "148d4c9a105bc2d9de019ac622e47c5fd2d7f6516bcf6ee7a3381c0f0a56648d",
+  "sourceEdition": "2026-11 (products.txt of 2026-11-13)",
+  "effectiveFrom": "2026-11-13",
+  "fetchedAt": "2026-11-15",
+  "contentChangedAt": "2026-11-15",
+  "expiresOn": "2027-01-13",
+  "nextExpected": "2026-12-18",
+  "sourceSha256": "d4dbc9d85df4fbd78c5e448f130a55b05054f529d2054a46df10735437792241",
+  "recordsSha256": "f06efd0c258b29e068f367e2a207d0597d6741bf5b58cbe8baf3d1f46867753a",
   "recordBounds": {
     "min": 15000,
     "max": 40000

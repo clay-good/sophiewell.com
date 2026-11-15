@@ -9,7 +9,7 @@
     "splVersion": 73,
     "publishedOn": "2025-02-03",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8772ba8bbbd682a1a965c88a9e8560c376710891b7b50740dfab38b9004864cc"
     }
@@ -24,7 +24,7 @@
     "splVersion": 6,
     "publishedOn": "2025-04-10",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "53fe4c9d601a66fcaae0a42325278a2cb5e090bb8cc9c3e1b93b75b9c0757bee"
     }
@@ -40,7 +40,7 @@
     "splVersion": 27,
     "publishedOn": "2026-03-30",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d7562901732bc4776960dbdc31db3ad7b6f733e0cd24901088dca3d51e138a5f"
     }
@@ -56,7 +56,7 @@
     "splVersion": 17,
     "publishedOn": "2025-07-30",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "1279a0fb4181aba3c5be41c71c0b1e34d7db764978ff2a13c02646b2f00f33b8"
     }
@@ -72,7 +72,7 @@
     "splVersion": 22,
     "publishedOn": "2026-05-25",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "553afacae77223ea1d966b97a7bb261ad419563355efe16e98788d6bd8f179c3"
     }
@@ -88,7 +88,7 @@
     "splVersion": 15,
     "publishedOn": "2026-01-26",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "1b0af64b615191b0874b242ded998707f4221e6964fdbf986c9ef3e57468a44d",
       "34067-9": "cd823b99a15b65023e2f34d689a8a5a55c832758b2ab84dc8973cd674df88461",
@@ -106,7 +106,7 @@
     "splVersion": 31,
     "publishedOn": "2026-05-11",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "43684-0": "6f47edcd86ef6e483042c165dec7a9eeac6e13c4ee224220709a5e74db4f306a",
       "34068-7": "2fcf1b4a79a7e1d7cc9bc253ca908c06622e564a537a4500353b4a1e0d95b73d"
@@ -122,7 +122,7 @@
     "splVersion": 7,
     "publishedOn": "2023-07-07",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d2c2b34f3d6184867f833836a5d30b2f508d1839a7b3fd54a1338cfc67ae0b1c"
     }
@@ -138,7 +138,7 @@
     "splVersion": 9,
     "publishedOn": "2024-01-12",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "adbd07ceaf8e2a4ff14f0fc24a4037deae8c2ce9c1512763622825d37ff6938a"
     }
@@ -153,7 +153,7 @@
     "splVersion": 10,
     "publishedOn": "2024-04-15",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0d99fc0c30efefd85f52e011f9e5f4e9bc82b326db1c0c2bff282e616298150a"
     }
@@ -168,7 +168,7 @@
     "splVersion": 37,
     "publishedOn": "2026-07-31",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e6e4c5f8f90d2dee598d15e65a988f77d6c3f454d0e466baec594ad82f34e2fd"
     }
@@ -184,7 +184,7 @@
     "splVersion": 18,
     "publishedOn": "2024-12-26",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9046f254d62c81167fb3582e26d64b09355429f0b2ae19032ca86fcb8ec87e81"
     }
@@ -199,7 +199,7 @@
     "splVersion": 25,
     "publishedOn": "2025-12-01",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a3607c6dff190a00342731b9cf30f3c888be5aed35574da9e1d6c32c824dd833"
     }
@@ -214,7 +214,7 @@
     "splVersion": 12,
     "publishedOn": "2025-12-08",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "14b939a7bc8ebe64984a65e08c57d9dab9d8e9d43438b68630de61945884e50b"
     }
@@ -229,7 +229,7 @@
     "splVersion": 59,
     "publishedOn": "2023-06-28",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e58669bb3ebabb46fbbda88d917a6afca060ee4b2138eaa3b48b8c25466ebe70"
     }
@@ -244,7 +244,7 @@
     "splVersion": 15,
     "publishedOn": "2026-09-07",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "34f3a89fa98ca0606cf603effe7045d4ca0a3697a5f05f6aa8acdc6f28415442"
     }
@@ -259,7 +259,7 @@
     "splVersion": 27,
     "publishedOn": "2026-05-25",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d4ce1027cb866f63c95a8c68b1c9ddd3dabc7c86bc5e7de61d131d8b50fbaca0"
     }
@@ -274,7 +274,7 @@
     "splVersion": 10,
     "publishedOn": "2026-08-03",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0a0e0428337129ce1e7fe33e3383e3dfeeede1382f2588daa8013f3f3d3263df"
     }
@@ -289,7 +289,7 @@
     "splVersion": 29,
     "publishedOn": "2026-05-25",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8ad06a314e421dcc4ac2eabbb83683b996549eb20ef2011f54c1920c9a82cc6b",
       "34089-3": "01da29a43eb9ac0795c08b90dbeed73e2719e011e48d12031a28ec6a4fcf6146"
@@ -321,7 +321,7 @@
     "splVersion": 27,
     "publishedOn": "2025-07-09",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "3db0bfabf9ac679aaa9ab70a14d32a9e28c4bb193d6319ead7e57102bd159f47"
     }
@@ -336,7 +336,7 @@
     "splVersion": 6,
     "publishedOn": "2026-07-09",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0e00ad90dbfd82b15f38edeaf3bb81b4a887c3b547173409f651a6dadb1956be"
     }
@@ -351,7 +351,7 @@
     "splVersion": 20,
     "publishedOn": "2025-07-18",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "bfcc116f51ace958815f100ca40db7e9f879d5b367676d910a76aa46d5e7de55"
     }
@@ -366,7 +366,7 @@
     "splVersion": 24,
     "publishedOn": "2026-01-26",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0ddbae65243e2d6facad5bb971d99ca70b868fac089a4c6b71146586b5507a94"
     }
@@ -381,7 +381,7 @@
     "splVersion": 9,
     "publishedOn": "2026-08-03",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a99a04b7a95d27a6fd43657a453b44770f7f58102f63c331831fdf79948b16c7",
       "43678-2": "d18dc0a8d0e2bf421e697b59b64f228f5e9a0fa306d0526d4b45454619c7aa53"
@@ -398,7 +398,7 @@
     "splVersion": 161,
     "publishedOn": "2026-07-21",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9fbe93abd2ab6f5df44aeb617d838237f5fbabf6ba7262a9adbafd7ad910e38e"
     }
@@ -414,7 +414,7 @@
     "splVersion": 29,
     "publishedOn": "2026-06-05",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "094f11fe309ad3656eff8386a8d082f32bdbd9dd9de4408cc8864e8580f623ea"
     }
@@ -430,7 +430,7 @@
     "splVersion": 32,
     "publishedOn": "2025-02-10",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "eb16e6d5a3cb0d73c7aa1942b94dbc66481e86966d11002792847c36008d63d4"
     }
@@ -445,7 +445,7 @@
     "splVersion": 13,
     "publishedOn": "2025-02-03",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "1bd39db7825c52c1c91be707b4a14b380eee71401c402779b5bb2634d05e242b",
       "34070-3": "8595e247d279fe03ac4e3c470ebc1f316d5048ea37ce995dd44854dd3980b22b"
@@ -461,7 +461,7 @@
     "splVersion": 28,
     "publishedOn": "2026-04-22",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "873298a5d2de9da28623888b06c98d9405ed30d32014bc3b6d8788709551ff0a"
     }
@@ -491,7 +491,7 @@
     "splVersion": 21,
     "publishedOn": "2025-10-06",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9871645252db98776c58d5125c7e543b773a64274b2dca809789c96bc0def187"
     }
@@ -506,7 +506,7 @@
     "splVersion": 15,
     "publishedOn": "2025-12-23",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d0349b699b9038304a6e4951339a7b44f50e009945bb265cf551163a02f84904"
     }
@@ -521,7 +521,7 @@
     "splVersion": 14,
     "publishedOn": "2025-12-10",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "296aabb35a68f5f168dcbc5b91941ac29785bc98c2531f9c4b96ab8f9365f0f0",
       "34067-9": "da6ac702961f332985f3ffaf9a4e2b930ee01268b9de3d6bbb798b8b7e54a064"
@@ -537,7 +537,7 @@
     "splVersion": 18,
     "publishedOn": "2025-01-01",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "23047a0768705f5f8e0f72023ce0ad41e77c727549962dd269f2d74c0bf94554"
     }
@@ -552,7 +552,7 @@
     "splVersion": 5,
     "publishedOn": "2022-07-04",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d77f5bff48faa96080765c4b645f262ec0d09d781b97ed08e778825d850c3565",
       "34069-5": "628f806566f7274e677c50559a2d7d8da1afca7099718311d5e7e30a008d22d4"
@@ -568,7 +568,7 @@
     "splVersion": 4,
     "publishedOn": "2023-11-30",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "daa268ebd25913b8240b4e76166f8c2b358c1addb8bf6b768527b1b7e45b0af7",
       "34067-9": "967ff12b411f0383acb2b067eb1439298395e5e6705d18560d1b22b5d1be18b3"
@@ -585,7 +585,7 @@
     "splVersion": 42,
     "publishedOn": "2025-12-22",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2e57a5d042ce86a6d838345fa9cdd75c53c7f11f23cd5e61cb05f3969327c2d4"
     }
@@ -601,7 +601,7 @@
     "splVersion": 35,
     "publishedOn": "2026-08-10",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "eea0870ccde56c7c6a862a7a8ab0cfe6c64c65af049b3f04a0a14615d0578bb0",
       "34069-5": "784f6ae8edd7b5c129a54d8086b167df9b155c7be64adc9cfd4cecb5c2216ccb"
@@ -617,7 +617,7 @@
     "splVersion": 11,
     "publishedOn": "2026-07-07",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "17cf8d9e55a074a4355e30547973ffb931c2b18eda09cfd775120bf91ea3cff4"
     }
@@ -632,7 +632,7 @@
     "splVersion": 8,
     "publishedOn": "2025-12-05",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8e64a1c5038aca386f31fe2aa2261cbb1aebb7dc9b06f300a361be0e57457039"
     }
@@ -647,7 +647,7 @@
     "splVersion": 18,
     "publishedOn": "2026-01-06",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a04b1687bba8c2347596e0608ae0563cb03a61caced7c0be24a2ea8f76adbb36"
     }
@@ -662,7 +662,7 @@
     "splVersion": 6,
     "publishedOn": "2023-06-29",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "97fb7926b0c225bcf741c42346e3df9284f00880eb7271a06f899dc83e3244b4"
     }
@@ -677,7 +677,7 @@
     "splVersion": 10,
     "publishedOn": "2024-06-27",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "67e94681912fc92dba0e0a8419ae5bec58ce9db41fe965515691ad724e73aa6f"
     }
@@ -693,7 +693,7 @@
     "splVersion": 3,
     "publishedOn": "2026-04-22",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34066-1": "c38d7fdff428a4063bd103d8c85c590a5382b18a4b4940c96790e5fb60e851f0",
       "34068-7": "baeb95691f0a85a7a1da92e0449666e0616c842f67e3fba1775ce9bb9e73373d",
@@ -710,7 +710,7 @@
     "splVersion": 18,
     "publishedOn": "2024-01-17",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2606f4ae6ade2063ad273c3568663aa135534fe08e419bc131b67e9893960ffd",
       "43678-2": "d8761fa275083fe1a7fdcb25d580bd7c8c36857853206ce949013224b7385c1c"
@@ -727,7 +727,7 @@
     "splVersion": 6,
     "publishedOn": "2026-01-06",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d421b0a7cf91df7285df2d1a45f2ec18ccb98091e92f151bdac290fae5600009"
     }
@@ -742,7 +742,7 @@
     "splVersion": 5,
     "publishedOn": "2026-03-25",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5b8ef1524c6d4e8772018faf2e5083bee90ee2ddbd3ea69c20c7e07ef8e45dd3",
       "34090-1": "9b28973bc8430be7cd0243aa5d0d98624ecf499c89c59dbda3fd0ea8b5a28e52"
@@ -758,7 +758,7 @@
     "splVersion": 7,
     "publishedOn": "2026-08-07",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "43684-0": "e18019856ceb3959fc211d365120a485d742316eb33a8d532221de4f585baed5",
       "34089-3": "d908b82d92cc8037df013d9bab9fe8bbe7c8fd7b4a9258862eb184f2054541e9"
@@ -774,7 +774,7 @@
     "splVersion": 32,
     "publishedOn": "2026-05-13",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2ddfe533cbca06980b93f0378eb325bf094baa55a1e6e435acf9310cb42d2d92"
     }
@@ -789,7 +789,7 @@
     "splVersion": 10,
     "publishedOn": "2026-08-10",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0d3f2a517c24c551290707cebadb87f5bb76620490437916ef1accb3b75bfbb5"
     }
@@ -804,7 +804,7 @@
     "splVersion": 2,
     "publishedOn": "2026-09-10",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "dc598dd2e68686b9c117a7bf1d921a1d291af03ad8a3b518e7e0968084979ff6"
     }
@@ -821,7 +821,7 @@
     "splVersion": 5,
     "publishedOn": "2026-09-18",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "23ace05216ff63948d84a99143d7751e777dba0a2bcc45cf2d94a276dc9d8817"
     }
@@ -851,7 +851,7 @@
     "splVersion": 1,
     "publishedOn": "2026-08-04",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "91a1c8a10f4615a7637b8067245d6f26faa3eace5b4e003ffccdbe57cc2fdef0"
     }
@@ -869,7 +869,7 @@
     "splVersion": 21,
     "publishedOn": "2026-06-18",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "3fd6f17688fb1ca371a8ec77d3eeda523f57e5aa3eeeda2dbda9f6b2dadc2efe",
       "34068-7": "990df50161ea0ed4e6752ab2e1e464ffc187b3a163d2143495c939f9c3ae471f",
@@ -886,7 +886,7 @@
     "splVersion": 18,
     "publishedOn": "2026-01-23",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "163acf67919c7820b1521f653d79845164589b525cc82d2b4097da0dffb9d06f"
     }
@@ -901,7 +901,7 @@
     "splVersion": 21,
     "publishedOn": "2025-04-09",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "1ccbac9385505894230a86e32bbac3b39f87c6e37fc1e2947f94a4f352ae12a7"
     }
@@ -916,7 +916,7 @@
     "splVersion": 2,
     "publishedOn": "2023-05-12",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2f5ae39ce8edfaf265b3bb2138682f4cbcf5a6771f7d7a3a554cfa40991bc1f3"
     }
@@ -931,7 +931,7 @@
     "splVersion": 13,
     "publishedOn": "2025-12-18",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "780491d40e55dd6781737655ee74246d9d53f5aa8108b62b3ed2ec7641d146ff",
       "43684-0": "08b4f97ee7a8e58d72e724d1d8517bad56c0f201a8cb94168e6f4deebf69917e"
@@ -947,7 +947,7 @@
     "splVersion": 40,
     "publishedOn": "2026-08-20",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "ce2979f0ced6f5e4468fbe9111b3101fce154d6d3f8be48c1861c3354cefe1ea"
     }
@@ -962,7 +962,7 @@
     "splVersion": 51,
     "publishedOn": "2026-08-10",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "51554fcd8081e3b830ad4be6dbb362a675f9ddc1679c46ba2fc3f62f409db705"
     }
@@ -977,7 +977,7 @@
     "splVersion": 19,
     "publishedOn": "2026-10-02",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e36a4e540bbbfb3a1d9763027828888a6e7438446f4b52babb5a22b924320b30"
     }
@@ -992,7 +992,7 @@
     "splVersion": 13,
     "publishedOn": "2024-03-11",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34067-9": "fb61567d8a3e7e9022c00d623f6bad804f60529e9dc2a2b196f780f5ff5e04f0",
       "34068-7": "13b99b880d608fb3699b6176b640944a07d2919007704e41bcc4be0acdb8f56a",
@@ -1013,7 +1013,7 @@
     "splVersion": 38,
     "publishedOn": "2025-08-29",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "bfde3ef25e4edb2625dbf5eba1814dd96057eb974e789db21013515ab09b7d5a"
     }
@@ -1029,7 +1029,7 @@
     "splVersion": 49,
     "publishedOn": "2026-01-23",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "aa8c473e5544eb2f9dfa52d94545784d068a01d2bc59bc3a7cb8dca475f44f70"
     }
@@ -1044,7 +1044,7 @@
     "splVersion": 10,
     "publishedOn": "2025-07-14",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e2366a7a8d19e2b6fc8d9e0e4f0976b911cf0d6bbc4bec6097d104f02007c3ed"
     }
@@ -1059,7 +1059,7 @@
     "splVersion": 15,
     "publishedOn": "2026-10-09",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "386d9907d3112580b210161c1bbbad05c21642223958382a0f1b5c425acd9186"
     }
@@ -1074,7 +1074,7 @@
     "splVersion": 8,
     "publishedOn": "2025-11-17",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "502c7e969c79e0ab50c1eac5745da05fb2b545a2bd19fb03cedd3350f72bf77c"
     }
@@ -1089,7 +1089,7 @@
     "splVersion": 9,
     "publishedOn": "2024-11-11",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "bc3edee2f0aba6c9796e75998b0f1ddae2a13a4b987077cd1d7ca45b31e63684"
     }
@@ -1104,7 +1104,7 @@
     "splVersion": 11,
     "publishedOn": "2026-04-17",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "198eccc3bf9a7015b6733dd6920d004bb3632c40b1f9687d3683ae2d052d1061"
     }
@@ -1119,7 +1119,7 @@
     "splVersion": 3,
     "publishedOn": "2026-06-16",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "25d14d8ab08c12efdbdc9452bc231a80cacb564e3cac023eb86bfd3c263e1447"
     }
@@ -1134,7 +1134,7 @@
     "splVersion": 32,
     "publishedOn": "2026-03-04",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "df3fb02eaf47aca9fc9bfc8f7721a8cba2d35ab19fb5094c2bc1c002bc5f586f"
     }
@@ -1149,7 +1149,7 @@
     "splVersion": 7,
     "publishedOn": "2025-12-02",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "49d652e2483199489bd88b6d3cec705d17669252a8c517776f5bd1ff67e4cb26"
     }
@@ -1164,7 +1164,7 @@
     "splVersion": 17,
     "publishedOn": "2026-06-08",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0b7ac273955adf0303fc7571da26b4bb80a325ccc2bdf8710a0a6e40b5ee3b24"
     }
@@ -1181,7 +1181,7 @@
     "splVersion": 14,
     "publishedOn": "2026-06-05",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d2b4af416db8a5346d0bf6b0b1679edb2d7c9acb152e2676b6dd76b88467120f",
       "34089-3": "880740b109348bcbbfc8de007fd1ea27d50ea20883fef129b502c651bcc83ea9",
@@ -1201,7 +1201,7 @@
     "splVersion": 24,
     "publishedOn": "2026-06-11",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "99612a27613b8cb930a5ea3a1a3e003e6a8d6f335a9fa553042711b807ccca63",
       "34089-3": "a612555511be33bb37761ca97eef13d6c16d84b3b19d9852abfb3784e50dd563"
@@ -1217,7 +1217,7 @@
     "splVersion": 25,
     "publishedOn": "2025-12-31",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34070-3": "9ae11c4c3ef48f714f141bcc65abbf496fe6cb405d7c3b0d5beccfac69cb1ef9",
       "43685-7": "0fbcf26ad6eb68fee65a4567f32568d6fede3e5fd1155c3bbc20240fc21c4cdb"
@@ -1233,7 +1233,7 @@
     "splVersion": 18,
     "publishedOn": "2025-03-28",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5167f224173e3c67c02d53b47fcc7b7d173b99b952e7319a5dd923131400dd20",
       "34070-3": "0df866ffa8b6dd3a083420b38d550e0662cc251844f13c251505aad8558602e0"
@@ -1249,7 +1249,7 @@
     "splVersion": 27,
     "publishedOn": "2026-06-22",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "6fd31dc6342c3cb24e3c6a12f8c30d639d9d18b10a612696d99aadb0ea37b777"
     }
@@ -1264,7 +1264,7 @@
     "splVersion": 30,
     "publishedOn": "2026-04-22",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a79cac31e7e84545a5ea70456ca3ffe4d33fadf63fcffb93ca030c23b913ab61"
     }
@@ -1279,7 +1279,7 @@
     "splVersion": 3,
     "publishedOn": "2025-04-28",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9eb0f07fcba07683601e0e96aca88ff3ebbb995dd46058d18e2f4f38c4e8c4a4"
     }
@@ -1295,7 +1295,7 @@
     "splVersion": 19,
     "publishedOn": "2026-09-30",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "ab11d3a6c92578a8c3c0b645354e39c7a3293ee51b0a3f508f34a1479c3c21cd",
       "34092-7": "ca95b18601f60651f47624793294e26e1e967f34f2e5bb7a5bd4aaa2c5545265"
@@ -1311,7 +1311,7 @@
     "splVersion": 21,
     "publishedOn": "2026-06-01",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "45c111b7ae0fc745e44ece310f624e5a41a2d5b4e94c5269fcb1b8cca49556fc"
     }
@@ -1326,7 +1326,7 @@
     "splVersion": 22,
     "publishedOn": "2025-06-20",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "62afb097b1b94f49c8704380591e965f0d702ed016992beecfcb19df79090a02"
     }
@@ -1341,7 +1341,7 @@
     "splVersion": 2,
     "publishedOn": "2023-05-04",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "297e3c0c6181468c8c988e4a3bc99083b033feaabbcf04955d913b767afc1403",
       "43684-0": "fba92894cb4738b850df54b462d130258f9a45a99f9540b1b0ecd1fb8fd38556"
@@ -1357,7 +1357,7 @@
     "splVersion": 34,
     "publishedOn": "2025-09-08",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "b876b939098bbbe0f97d33506c4a27bbf72ca71073a934af4e321a9d488a3c1d"
     }
@@ -1372,7 +1372,7 @@
     "splVersion": 15,
     "publishedOn": "2026-04-28",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e5956c2d6a9351e50373cee6c7e4f4e7322671ba34108d4ce203958b6ad8b701",
       "34089-3": "ab085eb287bd2319ee78e5b38f2c84f8d37409af950de1c943a526ad264a489a"
@@ -1389,7 +1389,7 @@
     "splVersion": 6,
     "publishedOn": "2024-02-16",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34066-1": "1483a80a7034704c4b438682bfd381495aa78f38685030443d61de3fd9afa2d7",
       "34071-1": "5f6b86908244256b3a3cdc61f2dd572f3a7e64647035022bf92a025a46971bb7",
@@ -1406,7 +1406,7 @@
     "splVersion": 9,
     "publishedOn": "2026-07-03",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8b1e93f237fe9a1f2f4e67af7b8eb795c0287e86235de55ed9806c448d50e533"
     }
@@ -1422,7 +1422,7 @@
     "splVersion": 15,
     "publishedOn": "2026-09-11",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "44718d8220df5c701ef9ea3eb4e2938edc84100f4d32ffa66c4e2eebc3593208"
     }
@@ -1437,7 +1437,7 @@
     "splVersion": 1658,
     "publishedOn": "2026-04-13",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9e3fd7099dfc743745faa08ccadaaaa16dabbfb651dfb6c8e4b1d5997965de9e"
     }
@@ -1452,7 +1452,7 @@
     "splVersion": 29,
     "publishedOn": "2026-08-28",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9bcfee2c1818c6b0eea1522d37d7029b633240bebd1681c05c8d95f07294e909"
     }
@@ -1467,7 +1467,7 @@
     "splVersion": 21,
     "publishedOn": "2025-12-19",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "3d39d1892dc7da7d004743cc3313b2ac14cb9e7c043de0f935b9dd8cab5dec84"
     }
@@ -1483,7 +1483,7 @@
     "splVersion": 2,
     "publishedOn": "2026-08-17",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34067-9": "4e04a7d49471928680d8f916179cc6de514b31e654d36799007350c3c0145983",
       "34068-7": "097b7c125188b7e837f537e4f5a993d5277c6c5bb190d87279fda4b658491d19"
@@ -1499,7 +1499,7 @@
     "splVersion": 34,
     "publishedOn": "2026-07-15",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a96eb6ca776c5de6dfe556fe0d19d96ae1ed1d009db9e5861ba6026870542b89",
       "34089-3": "1472b48e0823b37493d1043d65d3b2abdd23044b07a7e2d61049a24136c8fca7"
@@ -1515,7 +1515,7 @@
     "splVersion": 57,
     "publishedOn": "2026-04-09",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "f401f503ad7d260e12d30afd65fb4abc23ddbc493bf7104708b2baa2f7159f04"
     }
@@ -1532,7 +1532,7 @@
     "splVersion": 20,
     "publishedOn": "2026-08-17",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "ec6be07a4dcc79197b777121cf095b060db40c69dacbea3eeab2aaf979c69255"
     }
@@ -1549,7 +1549,7 @@
     "splVersion": 3,
     "publishedOn": "2025-04-10",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d713b5aeadc67a1503e02c36445043298c7037398f2f11ea0207b1b2f005c179"
     }
@@ -1564,7 +1564,7 @@
     "splVersion": 58,
     "publishedOn": "2026-05-21",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "478733506c9896a2023b0bf37a04fd4b506fdbe9ba027662770e1bc0d0992f5a"
     }
@@ -1579,7 +1579,7 @@
     "splVersion": 9,
     "publishedOn": "2026-10-05",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34066-1": "a8d921dd9b6db92082f2d55165c63d998e61ead8ff2fef9d3e679efde56e4f3e",
       "43685-7": "3e3fab7dc2268d6a290acb6d8c206676064589ffbcba282d982103f2ad2aed60",
@@ -1597,7 +1597,7 @@
     "splVersion": 28,
     "publishedOn": "2026-05-07",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "428e6e4546d46804094a37344581bc2cab658036c93ac95b5ca3067abd176f0d",
       "43685-7": "a1aaae86d73e6d6202ededa350ab8da1adfd9cf848f8abad56ccebe4caba6099"
@@ -1613,7 +1613,7 @@
     "splVersion": 26,
     "publishedOn": "2026-06-08",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "20cd037d6962c56ea47716bf3a4869efda77b3e10574f5073523d1ba06c67e57"
     }
@@ -1628,7 +1628,7 @@
     "splVersion": 17,
     "publishedOn": "2022-06-30",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "c99b9a0c2d6d8b9eb5fa3136962026ba7010e0eb9d25025af390956ee3c96711",
       "43678-2": "7842aa2ebb192b949d077af3ef02d91e5bc61f6cdf2b30ca3c74aa6ab3c98ce9"
@@ -1644,7 +1644,7 @@
     "splVersion": 60,
     "publishedOn": "2026-08-07",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34069-5": "fdce1502a1653f2c35d64790715b8b87632fbd65d66f09956669b8f5269d7167"
     }
@@ -1659,7 +1659,7 @@
     "splVersion": 3,
     "publishedOn": "2025-03-03",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e787a977370599d0816aee4da40f382559078627a98f2be0144c55396cb367cf"
     }
@@ -1674,7 +1674,7 @@
     "splVersion": 3,
     "publishedOn": "2026-04-10",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "097b55a608fcaf8311a99134b10777cda5e55ce7bc54fab1b7f5e17f32b8f498"
     }
@@ -1695,7 +1695,9 @@
     "validThrough": "2027-10-12",
     "sections": {
       "34068-7": "736d4d82c00b0a32af8260afe954c418fc20303872927ed2451ffbe8317e0588"
-    }
+    },
+    "supersededOn": "2026-11-15",
+    "supersededBy": "version 39 (2026-11-12)"
   },
   {
     "label": "Elitek (rasburicase)",
@@ -1707,7 +1709,7 @@
     "splVersion": 25,
     "publishedOn": "2026-08-04",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a114d4351fbfdb18962a96a68b07c9ded0ae7b21aa0402b6603419f0dc4b46f9",
       "34070-3": "5c910eb99c8d7b05c6da84b4020b35db830d2b17331c928d5189e24342c9391a",
@@ -1724,7 +1726,7 @@
     "splVersion": 7,
     "publishedOn": "2026-07-24",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d33161f12356b1004ae29d818b2bd08cb040bb61b0d65fe329d7bd893cc7c1b9"
     }
@@ -1740,7 +1742,7 @@
     "splVersion": 26,
     "publishedOn": "2026-07-30",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34066-1": "bec2509582e2e78eee3d15744587699402be6b41453da51a904f6a2cb3f89e57",
       "43685-7": "39280ec919080d6ee542caf79c64296e41967df161fca23936cc4c8972dcfc9e",
@@ -1758,7 +1760,7 @@
     "splVersion": 216,
     "publishedOn": "2026-03-09",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34069-5": "f5cd9af4219823cdea69a9bc3194b2fa0c3a33883f2d5a345d39642b7a5117bc"
     }
@@ -1775,7 +1777,7 @@
     "splVersion": 25,
     "publishedOn": "2026-07-07",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "fa8924c127588623fbbcbc24ad8f9912e19f78632cfb131a759bed1caaa6f8dc",
       "43684-0": "547dc73f83147f71928d30d66f6caa5090da633d908e3b946023849a38eaea3f"
@@ -1791,7 +1793,7 @@
     "splVersion": 16,
     "publishedOn": "2025-03-03",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "63edc1cfc99e51aa65f9b60d211be79f67b435c98727b2180e8d05ad3af445b2",
       "43678-2": "5b66bdb18ac0a4eacf561b824eb3dd8bbc5f6fba1f847ac1313e6d0b322533e5"
@@ -1807,7 +1809,7 @@
     "splVersion": 37,
     "publishedOn": "2025-02-12",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "b6cc7065f5ffa0ec10e3b3c440e1ba18ada4a3c831700413625e9acc6ee75b6c"
     }
@@ -1822,7 +1824,7 @@
     "splVersion": 24,
     "publishedOn": "2026-09-14",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a994ff38292ed8c4cdcadc922d5587598da5b504c16f3195de9d149979b8403f"
     }
@@ -1837,7 +1839,7 @@
     "splVersion": 137,
     "publishedOn": "2026-07-01",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a8cdf7abf155160083edbdff61524e668f587b49159a6d5f18585a402160a143"
     }
@@ -1852,7 +1854,7 @@
     "splVersion": 13,
     "publishedOn": "2026-05-21",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "4aa0c02a74152d3e496ac00f16ce71fba02e1961e16cad3b5cbe92f602b08acd",
       "34070-3": "274eaea4e7862ba551440439f8f4a648e3e21efa3af898ace3d599f92fa4ace4"
@@ -1869,7 +1871,7 @@
     "splVersion": 7,
     "publishedOn": "2026-03-10",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "532aea775a7e9e15ffb8c7c8879bdbd2538ab0a8cf9ff8a7d2d193bf6856316e"
     }
@@ -1884,7 +1886,7 @@
     "splVersion": 19,
     "publishedOn": "2023-08-07",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "f7258159e2d61f80d15343ec19ad8c56a2c67b07c6ef6c57371bc18b1fda3791"
     }
@@ -1899,7 +1901,7 @@
     "splVersion": 21,
     "publishedOn": "2026-08-14",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "71270de00e1316b0659d0d53154d87f81166a8b964a3da8074a1f6eab499b3d4"
     }
@@ -1914,7 +1916,7 @@
     "splVersion": 35,
     "publishedOn": "2026-05-13",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "83261ef3483b58cea535eecd127282695951e6063e5bc728c6e94c17b9b3d626"
     }
@@ -1929,7 +1931,7 @@
     "splVersion": 49,
     "publishedOn": "2026-09-11",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2f4b8640ad2a263e51a56da5b70d63e4df0d2cedfc32b521a0b2260c7345f1a2"
     }
@@ -1944,7 +1946,7 @@
     "splVersion": 27,
     "publishedOn": "2026-03-04",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5c6ee95eec415c52ed78b658c64248193715e047a7cc8693a3e3e094665361f8"
     }
@@ -1959,7 +1961,7 @@
     "splVersion": 58,
     "publishedOn": "2026-05-06",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "264618768374ceb06eee69b0754be3f277303639da6b97f64f9330ac73e61450",
       "34067-9": "c0f26eb6534f8d5ba50a7aadf82b226e7c5819bb5beee70eda27fbd57c54ddb8"
@@ -1975,7 +1977,7 @@
     "splVersion": 23,
     "publishedOn": "2026-06-04",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2bf09f143a36627b761664abee4392388a4f112d19f22b7d19b755dd73ba57dd"
     }
@@ -1991,7 +1993,7 @@
     "splVersion": 13,
     "publishedOn": "2026-06-11",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "e35b933c471602f154a54fb68bec26d586603d49de98239f3486ff93f3f10db9"
     }
@@ -2006,7 +2008,7 @@
     "splVersion": 5,
     "publishedOn": "2025-04-16",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "93352a494c74b05dde163b70bdb9d2e7db6d929dc44ec375179f99057bc17197"
     }
@@ -2021,7 +2023,7 @@
     "splVersion": 8,
     "publishedOn": "2025-11-21",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "925b1f0f27adc74409ccd9fad48906768ec8475645a034c70fb8080886781f54"
     }
@@ -2036,7 +2038,7 @@
     "splVersion": 44,
     "publishedOn": "2026-08-19",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34069-5": "619cfdfb3c53212138600e28de592e1475444f60f645ebfdbdaeafcd2a26becf"
     }
@@ -2052,7 +2054,7 @@
     "splVersion": 10,
     "publishedOn": "2026-03-16",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "43684-0": "88ad4b15e08a7b8b70838890e60d907ab61fada46ffba07ea9ffeb87690b6ea4",
       "34068-7": "ce8ddc80c971d7365017202b1e415bc361cc3a1401051b1e0fb49751f16a445c"
@@ -2068,7 +2070,7 @@
     "splVersion": 27,
     "publishedOn": "2025-10-02",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "4d89e2e074a7539cf249ac6ff82823dab13b08da33dc2fb00f26b43c6cbf031c"
     }
@@ -2083,7 +2085,7 @@
     "splVersion": 8,
     "publishedOn": "2026-02-12",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "13e26f11120ccf1e7c8cba8e82465cd0b2ceb1fe4131537b2b243e212c7f034d"
     }
@@ -2098,7 +2100,7 @@
     "splVersion": 21,
     "publishedOn": "2026-10-09",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "1d63290ca9fdd05f02c9a8f88c063ff0163af2ea2bf903673d45262eab0184e9"
     }
@@ -2113,7 +2115,7 @@
     "splVersion": 4,
     "publishedOn": "2025-12-24",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "69e528e30c202556d04bedabf3d0514a5db4c422809cd06816f7f3d9b2c8ab50"
     }
@@ -2129,7 +2131,7 @@
     "splVersion": 10,
     "publishedOn": "2025-01-31",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "bfc560381fe67bb9d4f966b2a54451032fe9e2241522434a6bfda97d11416f27"
     }
@@ -2144,7 +2146,7 @@
     "splVersion": 87,
     "publishedOn": "2026-08-10",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34069-5": "0c0a4b86ab2702ed88960fe67c64135373f09429a991736eb7680260ad46b7f6"
     }
@@ -2159,7 +2161,7 @@
     "splVersion": 2154,
     "publishedOn": "2026-02-06",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34069-5": "637f76701e3bd3cbca27873d168068e6ce0d89275ad726ac4a33194ab6f9db5e"
     }
@@ -2171,10 +2173,10 @@
     "tools": [
       "passive-immunization-dose"
     ],
-    "splVersion": 26,
-    "publishedOn": "2024-10-04",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "splVersion": 27,
+    "publishedOn": "2026-11-05",
+    "verifiedOn": "2026-11-15",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "13071d3be7d7346c850b1933da5b724cb9b4c786d820daa583cb4e5a6bb83d69"
     }
@@ -2186,10 +2188,10 @@
     "tools": [
       "rabies-pep"
     ],
-    "splVersion": 10,
-    "publishedOn": "2024-10-07",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "splVersion": 11,
+    "publishedOn": "2026-11-06",
+    "verifiedOn": "2026-11-15",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "bd013700168eaa2c4b7e5cd2f750eebae1f1dae80d5b0de0c9c2055d55a75156",
       "43678-2": "e4388173ecce624de115a9486bcbc4e6db8d64b391b1bd6d998b667db7379cf4"
@@ -2202,10 +2204,10 @@
     "tools": [
       "passive-immunization-dose"
     ],
-    "splVersion": 20,
-    "publishedOn": "2024-10-07",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "splVersion": 21,
+    "publishedOn": "2026-11-05",
+    "verifiedOn": "2026-11-15",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "66c9507e5641bc9353207b75711063506295148329522e065aab49731267a231"
     }
@@ -2220,7 +2222,7 @@
     "splVersion": 17,
     "publishedOn": "2026-06-18",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "dc15312871fbc7d10517a55c0e1183164a0a5217e0217828db1d157833dd0320",
       "43678-2": "ad23a6837968fb1539217c7ce352373e7a17fdd36f2b622273b09bd5e5c1aed6"
@@ -2236,7 +2238,7 @@
     "splVersion": 6,
     "publishedOn": "2026-08-27",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5bc797fd0e7ee7dbcee2a62bc45fcbfef0a749099eca3da9233567ef92712f9b"
     }
@@ -2252,7 +2254,7 @@
     "splVersion": 27,
     "publishedOn": "2026-04-17",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "43685-7": "fef583f766afe7e75b3ee7c3a5652c242a1b54577fb2b898e178823608f40f3a",
       "34068-7": "9670bad9aafdb4a5461bba3ca18d06cfe8485e30494dd578f0e78a93e8d3ca70"
@@ -2269,7 +2271,7 @@
     "splVersion": 13,
     "publishedOn": "2025-09-29",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a2d9a040e1cc9f52da7e182fcae3412e06c63d1309c6641904937a83f921d499"
     }
@@ -2284,7 +2286,7 @@
     "splVersion": 10,
     "publishedOn": "2025-09-29",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0575c75804be7cefe874d9a5a3aea0100389c8082ecc86bce6bba65b4c150057"
     }
@@ -2299,7 +2301,7 @@
     "splVersion": 10,
     "publishedOn": "2026-07-01",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e4171f864262f3d48ce5eb0c64e49d9e753291ca421b347ee32958d5b8cd657e"
     }
@@ -2314,7 +2316,7 @@
     "splVersion": 12,
     "publishedOn": "2026-08-07",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "164e9b23602e471c12c5293b8490b5d0628dc71055582f4df65958423fd758db"
     }
@@ -2329,7 +2331,7 @@
     "splVersion": 19,
     "publishedOn": "2025-05-12",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "03755f325cae7556a7765dcd2120222371fbc43b5c245af3ee5f167173948cab"
     }
@@ -2344,7 +2346,7 @@
     "splVersion": 7,
     "publishedOn": "2025-08-20",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8d3df54e3aec2036834ea6d199eb35f0dd2fb7eae7f0f64244a56b2d617a3a17"
     }
@@ -2359,7 +2361,7 @@
     "splVersion": 34,
     "publishedOn": "2026-04-22",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "3dec8549c988d8c167d05c1a676f9c7c747f1a30ac887e3a290f6cea8e77ffa0"
     }
@@ -2374,7 +2376,7 @@
     "splVersion": 30,
     "publishedOn": "2026-08-20",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9f7d63a508cca5b838c2de191f481f8f715b040f3c69c7c34b7cc3f9c6bf85fa"
     }
@@ -2389,7 +2391,7 @@
     "splVersion": 6,
     "publishedOn": "2026-02-06",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2d17fc5704bdf56ef0f4d20abeba0358494698588c04f5aec7f06cc02310a3b9",
       "34070-3": "a2c90b6926dd828a0c35373b577247ef2c572cda527aba936b987688c0152653"
@@ -2408,7 +2410,7 @@
     "splVersion": 3,
     "publishedOn": "2025-11-27",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "367f763eaf37c508900ee1686be01adf7f59681d4d65a936610cd721d63bf36b",
       "34089-3": "a80537da73b94ee8ef8a86e342e3362ac1cbe8c70a8a7bfb16be40a230ad5cf2"
@@ -2427,7 +2429,7 @@
     "splVersion": 4,
     "publishedOn": "2025-11-19",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d92c2532bb80becdadf2c76419a26153b2fe3331fe888efe2896a2a9cff9e918",
       "34089-3": "ea0f090033818d9906651dda877c6b172eceda1022df112a9a3116611a5eb376"
@@ -2443,7 +2445,7 @@
     "splVersion": 42,
     "publishedOn": "2026-04-09",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "f41eddc6be4e465975b64a3a70fd6199e65b780df0cf17e9bb9fcd03881720a0"
     }
@@ -2459,7 +2461,7 @@
     "splVersion": 8,
     "publishedOn": "2025-02-21",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "7b89f1f04cd535183f06f09ef5b8f789da91c81d5d141c19dba4494d1659f2b4"
     }
@@ -2475,7 +2477,7 @@
     "splVersion": 41,
     "publishedOn": "2025-02-17",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "596968b1dc04ed50087c0b84ac66a6136f0e40c3a0ce50544549f1f54c948003"
     }
@@ -2491,7 +2493,7 @@
     "splVersion": 25,
     "publishedOn": "2025-02-17",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "79f0694f55f5407c4c43f68cb735009f212d9ac318494ef3a802439e7b77b012"
     }
@@ -2506,7 +2508,7 @@
     "splVersion": 32,
     "publishedOn": "2026-06-15",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "474352e487d4e09892e1151682c38f82f65a518c4e8544cbe3b814066a0212f3"
     }
@@ -2536,7 +2538,7 @@
     "splVersion": 71,
     "publishedOn": "2025-11-17",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "197316ef483fc7c3c299f9e5aac34b7492f2bd14015fef248a52d3ea378343d8"
     }
@@ -2548,10 +2550,10 @@
     "tools": [
       "diabetes-drug-egfr-check"
     ],
-    "splVersion": 31,
-    "publishedOn": "2026-02-02",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "splVersion": 32,
+    "publishedOn": "2026-11-13",
+    "verifiedOn": "2026-11-15",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "7034c74ae08991d0808cc7efdb2e16e1db642418883728c237ea579b47b8505d",
       "43684-0": "5213783d5952f911f71b7036a7b5e16184bb9629cb4adccaf13e3ab38b1d9f3b"
@@ -2567,7 +2569,7 @@
     "splVersion": 9,
     "publishedOn": "2025-10-06",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8565869530d9741b33e172972ec119e8248cb72636bce74df819a7d0ad9671b4"
     }
@@ -2582,7 +2584,7 @@
     "splVersion": 13,
     "publishedOn": "2023-05-17",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8ff199027b6b2fe18642f80dd90bccea6f73e68e955d605bbdbe44bafb7369ee",
       "34067-9": "4413435c98df1495f485414392f0d78418c0962595908c9726db3e145336c558"
@@ -2598,7 +2600,7 @@
     "splVersion": 7,
     "publishedOn": "2024-02-23",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "4b5c193fafbb89fd378f369cdf27b15bb736e7b4dc213a4421ad718315296bba",
       "43678-2": "1f2373e590a563cdf2815851113f2bc440e80f965804979f924e9e46f00d8f59"
@@ -2615,7 +2617,7 @@
     "splVersion": 36,
     "publishedOn": "2026-01-29",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "628bd744d00b886cb647e91d402b77618f83dc1a9304fbc8fd53f23a5e73b687"
     }
@@ -2630,7 +2632,7 @@
     "splVersion": 29,
     "publishedOn": "2025-07-02",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2db67b35f188b72e9ebb976cdee81f76f0502d85cc42c7bfd45e9c7c9c95400c"
     }
@@ -2645,7 +2647,7 @@
     "splVersion": 33,
     "publishedOn": "2026-03-26",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "3c5ad2a52f6dcdc2c8ee86d259a2c8d8bc07818aafd592d7db5c8996332e9c5a",
       "43678-2": "fd33238841afd0d76ff354377d40e6bfae5461a3ba9409c9959c0bc78263549b",
@@ -2662,7 +2664,7 @@
     "splVersion": 36,
     "publishedOn": "2026-07-21",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5c3c715e15462b71ab91e5c55dc0af83ad6ec4be68e034ed2180f2ac1e5aa115",
       "34070-3": "be2a95f7ecc04f8735b040ba41f97c6cc1c902e26f7e89d0810977c2b10d2be6"
@@ -2678,7 +2680,7 @@
     "splVersion": 19,
     "publishedOn": "2025-01-06",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "4a467e71652784a6f7f82486a0a1510624d5cd9319e707eb966b8bcf4ededd9b"
     }
@@ -2693,7 +2695,7 @@
     "splVersion": 2,
     "publishedOn": "2026-10-09",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "1e496d795fb9f0caad3b393a8805adbf7fa4dc9b9d29dfcebc4c912e6e3f82ca"
     }
@@ -2708,7 +2710,7 @@
     "splVersion": 45,
     "publishedOn": "2026-08-20",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "971e1a71cc35140804e3310079c4584dfc73e9509c8b5072846cc3f4aae9a49b",
       "34090-1": "c02758752e909d16ea778b00f40febc7663f5eaff5ab822a6c27b53f9a17556c"
@@ -2724,7 +2726,7 @@
     "splVersion": 44,
     "publishedOn": "2026-08-20",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "824eb284c1fd8f4090c988cce093694ca619b6a9cf63b46c9dbce89a06bc04e4"
     }
@@ -2740,7 +2742,7 @@
     "splVersion": 35,
     "publishedOn": "2025-07-02",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "21ec73a5b8f78b0ac3658e35255586cb68cf08abd9317a2351fd74e50b1d525d",
       "34069-5": "72fe13faba507d987b03df06dd5cb7afc742c52b3cb93a8bda5426c0b1be9a05"
@@ -2756,7 +2758,7 @@
     "splVersion": 10,
     "publishedOn": "2026-07-23",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e9b5f4814ea9388e232ec1d1e2ec8015cf04bfc522be53e6b29410b6a2fda0ea"
     }
@@ -2771,7 +2773,7 @@
     "splVersion": 23,
     "publishedOn": "2024-07-01",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "6e2dd740edd6beba56934fb0cf7ec9849e1b437cf02d556d6a0b76f10814ece9"
     }
@@ -2786,7 +2788,7 @@
     "splVersion": 28,
     "publishedOn": "2023-11-29",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "54727b8ec95c898eddca9095d7daa1deb7da06cd8f3c181e3c97048e1f65e493"
     }
@@ -2801,7 +2803,7 @@
     "splVersion": 3,
     "publishedOn": "2026-09-10",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "bf9012cb88c63d7eb9cb1e13a8cf05f2995a1e26f33a64193577e01624bffd85"
     }
@@ -2816,7 +2818,7 @@
     "splVersion": 33,
     "publishedOn": "2026-05-29",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "43333c3f2b6dace072ecbd23957d05bc75467373257f9d2e31912dc9667bea69",
       "43684-0": "a217465b286040ea5cc610554ba6511acf88c97fe9debf350a603523f6677e6a"
@@ -2833,7 +2835,7 @@
     "splVersion": 12,
     "publishedOn": "2026-01-16",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "2d708db88868417a51e1ecbcdeea390b483e3ffd5eb457cc63cd0101791c5946"
     }
@@ -2848,7 +2850,7 @@
     "splVersion": 59,
     "publishedOn": "2025-09-29",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "14c8724043b99d1a39c384029bc1a3dc517babf470633543b2a55a48bd95fc9a"
     }
@@ -2863,7 +2865,7 @@
     "splVersion": 27,
     "publishedOn": "2026-10-12",
     "verifiedOn": "2026-10-13",
-    "validThrough": "2027-10-13",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0dd65d14db707712739aadd0f041527e166f6414ae496ec7434e4281b1336eba",
       "34070-3": "9d8001df15bf37df532de165986b35d2c66f7ce15520a798e2e773cd8a3daf13"
@@ -2879,7 +2881,7 @@
     "splVersion": 9,
     "publishedOn": "2026-02-12",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "3655fec0795d571d4e6a9debc6731490ee92d222b803231eff31a13e18c6d651"
     }
@@ -2894,7 +2896,7 @@
     "splVersion": 17,
     "publishedOn": "2026-07-10",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "db258585e2934c94c84b162eb977b9a8ba38be8690043ea732413dea6fd4d3d9",
       "34070-3": "3ef7e01894b0b4e2375dc59ee954a8f9d91765e19362008e97d5aaaa578c115c",
@@ -2911,7 +2913,7 @@
     "splVersion": 17,
     "publishedOn": "2026-03-09",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d8d3a2b602be6c3e741438bb1ac6916dda93c4d0a1dd3dda9a8cbab312ae7d40"
     }
@@ -2926,7 +2928,7 @@
     "splVersion": 13,
     "publishedOn": "2025-12-31",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0ef8a6f101886ba7324d42af622c4755f37a33d7885bea9b7cfa74e1c22ae9f1"
     }
@@ -2941,7 +2943,7 @@
     "splVersion": 25,
     "publishedOn": "2025-08-08",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8077534759439a19f1647cb7ab991731588b69ae4ff147dc94309a4447b36250"
     }
@@ -2956,7 +2958,7 @@
     "splVersion": 10,
     "publishedOn": "2026-05-28",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5b0038614407a25a53894ae388747f78ee3ce3a5c6795e5ab11ba97578bc2463",
       "43678-2": "310be99150813fd97ec03b0061404af41fd9eb95a561c60aaa968ad5f3b68975"
@@ -2972,7 +2974,7 @@
     "splVersion": 17,
     "publishedOn": "2026-08-17",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "3175b05297772be7a464b3ab98f95c5c908d61ff414e5d13b00fcaa3e63b93cc"
     }
@@ -2988,7 +2990,7 @@
     "splVersion": 9,
     "publishedOn": "2026-01-30",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "4f56573027fb674d01c00d2bc30c764bcbad9b02f5714bf69b6773848d8805c5"
     }
@@ -3004,7 +3006,7 @@
     "splVersion": 7,
     "publishedOn": "2026-09-07",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e4d3c32022ff32928ec3927f5fa2233b2971e929589cccfdbb627081ef3f6f9e",
       "34089-3": "dd274f1fa58706e81526e81f96c11f8c00550e6bfd7f1d79424d37e2015dad63"
@@ -3020,7 +3022,7 @@
     "splVersion": 24,
     "publishedOn": "2026-05-06",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "dee2abafc2eb561f37e853793fa838772193f11d44a33748c932e599d6f44dc2"
     }
@@ -3035,7 +3037,7 @@
     "splVersion": 10,
     "publishedOn": "2026-08-17",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5ea555ccf011ee0fb42f91604221cec64df452b294cb9f710784bd024351ca2c"
     }
@@ -3050,7 +3052,7 @@
     "splVersion": 25,
     "publishedOn": "2025-07-17",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34066-1": "4a517dbbdde6ce0fa1abb37ecdf152437289d3201579b161de00165ace807850",
       "34068-7": "aae9fc32ed2f14df4a75086bd1a02ba62be65ca5f0e1c22bed44bcaaffbfbad6",
@@ -3070,7 +3072,9 @@
     "validThrough": "2027-10-11",
     "sections": {
       "34068-7": "799ad58687e72edfdbafe0c3a9ebdd1ed1847d5ef7e6375ce5be30a2ff8d1dd0"
-    }
+    },
+    "supersededOn": "2026-11-15",
+    "supersededBy": "version 15 (2026-11-04)"
   },
   {
     "label": "Mounjaro (tirzepatide) injection, Lilly",
@@ -3084,7 +3088,7 @@
     "splVersion": 40,
     "publishedOn": "2026-09-02",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8c9843965cf5e7ac10f02bcf8d15bc6fadab65127715f4bf1569bf4e78bddb34",
       "34069-5": "e15417da363e5a80d542a3aa7c1a56b83c8ccc8af8b697085073b6e252b973b7"
@@ -3100,7 +3104,7 @@
     "splVersion": 4,
     "publishedOn": "2024-08-26",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "ffaa48c8bf581d13992b35c11986f6e2c26fbab39f49b976b43628f180f29d31"
     }
@@ -3115,7 +3119,7 @@
     "splVersion": 36,
     "publishedOn": "2026-08-11",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34067-9": "6a2548517ae0bd150989ef6e3b97e863a2f1f01739d2e7892c6edb543fbdbf16",
       "34090-1": "19faa237bf95b044f344d6085e2ae943e8b3746cbe4a049bdaf227290ca311e0"
@@ -3131,7 +3135,7 @@
     "splVersion": 17,
     "publishedOn": "2024-08-20",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "02941fc27a66ce62769922bfe80e9f1dc48a59b393eee397ca41eddc125927e1"
     }
@@ -3146,7 +3150,7 @@
     "splVersion": 8,
     "publishedOn": "2025-04-16",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e7cde8653164459dbf9e8382c7621925e1d11eb912d31dbb593cb2046478054c"
     }
@@ -3161,7 +3165,7 @@
     "splVersion": 35,
     "publishedOn": "2026-05-28",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "3e6ee7a74bf8dec4e49b657b8f319d86060600b0ff3191d1ee8cc641620aba92"
     }
@@ -3176,7 +3180,7 @@
     "splVersion": 7,
     "publishedOn": "2026-04-14",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e382b490c625a8f523a70a629c6e4abd3a5c319e94e34b1b3bb2cdcb747275f9"
     }
@@ -3191,7 +3195,7 @@
     "splVersion": 30,
     "publishedOn": "2026-08-11",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5e453c9466edf6888d9d9a8058fe44398722e3119c7ed780a7155e7e96085079",
       "34071-1": "a094477e3765ec5301f8b0a4a40a22ac91c94495db067497702a2fac08ab6e62"
@@ -3207,7 +3211,7 @@
     "splVersion": 22,
     "publishedOn": "2025-03-24",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9810e742997150dcb4007820b94ff17f5f70d5e0abca73a9ae40a27ca88c82f4"
     }
@@ -3223,7 +3227,7 @@
     "splVersion": 23,
     "publishedOn": "2026-07-07",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "004abf04be1e27fc601267a21287b6291aa8f6fdb1e4a11b4423d86d154458ba",
       "34089-3": "51b98aaaa904f1482002fbc5b93c55eca304067ed480cda226775677cd736316"
@@ -3251,10 +3255,10 @@
     "tools": [
       "gcsf-timing-check"
     ],
-    "splVersion": 166,
-    "publishedOn": "2026-07-29",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "splVersion": 167,
+    "publishedOn": "2026-11-13",
+    "verifiedOn": "2026-11-15",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "df83c00c9fca887484ad4e440734a40cc6962247e21f902f766ac3b0b58ab815"
     }
@@ -3269,7 +3273,7 @@
     "splVersion": 48,
     "publishedOn": "2026-08-06",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "4107924ec146a8e2be8b261bcb7c727ab3a21a5d5b6cc7b0f036dae97d4bf96a"
     }
@@ -3284,7 +3288,7 @@
     "splVersion": 14,
     "publishedOn": "2025-07-16",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "b028acb374bf39fb8411dc85e4120f79e267d211c5a1865c38463391a02b2059"
     }
@@ -3299,7 +3303,7 @@
     "splVersion": 27,
     "publishedOn": "2024-08-15",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "51ee575077afaf5e26573c3a83a21a1db6c948a167a82bf3ab198142bbecf416"
     }
@@ -3314,7 +3318,7 @@
     "splVersion": 8,
     "publishedOn": "2025-06-06",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "f6721bb9038d0bde37c37809d9233cdfb8afee8240eaa95c7a21db24b6360e7d"
     }
@@ -3329,7 +3333,7 @@
     "splVersion": 10,
     "publishedOn": "2025-11-17",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "dce45a91d6a58ffa64ad6d1f3e9d16834d54f81514909f274b7321a741ee770e"
     }
@@ -3344,7 +3348,7 @@
     "splVersion": 34,
     "publishedOn": "2025-01-22",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34069-5": "2a682541a90f6aaef667ef6848fd7614e82b9fc74c97fa68a2392adff9951263"
     }
@@ -3360,7 +3364,7 @@
     "splVersion": 17,
     "publishedOn": "2022-02-22",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "e88314be13feef74838ee56ff941bac108b66a633ad272a6152d93fe974f8169"
     }
@@ -3378,7 +3382,7 @@
     "splVersion": 6,
     "publishedOn": "2025-09-29",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "729b00585fdc56ecc2bbc40efa366fe6a81ab56121717dd8de80c8db26afdfc5",
       "34089-3": "96d06429fdd2e4cd63ca6daad4a757a730e3295f437e79eff29412de50a36b83"
@@ -3394,7 +3398,7 @@
     "splVersion": 17,
     "publishedOn": "2025-07-23",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "47a6705316682bb910a96bae7dca16f65c45a68aeac05028483da4c9877b832f"
     }
@@ -3409,7 +3413,7 @@
     "splVersion": 38,
     "publishedOn": "2026-09-11",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "93e2d71309920155fc7b428724a5c99eadc7a3a5b87988531396bedb397a3d7a"
     }
@@ -3426,7 +3430,7 @@
     "splVersion": 20,
     "publishedOn": "2026-06-10",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "aa8e1c1330f7ba227f8071bd5ed6bbe5c0fb5463bdf1aa1f3b6073fba38f956f",
       "34069-5": "4d64a6754e832327b73154b70dd3b763f523abd45ca47295533277495f61a124"
@@ -3442,7 +3446,7 @@
     "splVersion": 33,
     "publishedOn": "2026-07-03",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "f34b3f56ab8abc517d5dfb4b46dd2a746884817ab729a2c6764a94c57a0c1285"
     }
@@ -3458,7 +3462,7 @@
     "splVersion": 12,
     "publishedOn": "2026-02-23",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0abad0a63a72fb23826366cd2aa11ce31b381485072fe151addcf820432e2651"
     }
@@ -3473,7 +3477,7 @@
     "splVersion": 18,
     "publishedOn": "2025-02-21",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d0a64510a23f31ffeef511cf813c3c8278da6ec0beb0ef6db34de55ba782da57"
     }
@@ -3489,7 +3493,7 @@
     "splVersion": 27,
     "publishedOn": "2024-04-10",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "3dc750ecdee4a804e8b0bffed9481dc29f60ef3c6103f878f646889e2964f985"
     }
@@ -3504,7 +3508,7 @@
     "splVersion": 5,
     "publishedOn": "2026-09-07",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "b9a9fce7d26e116da84c488f47b42ba9688fa73103c6905719b3488532ea462b"
     }
@@ -3519,7 +3523,7 @@
     "splVersion": 1,
     "publishedOn": "2026-09-30",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "c1a8c69d8c4a001cffc6085dbbbb8d0f6515e6900f2794a361ed1cf60bde193c"
     }
@@ -3537,7 +3541,9 @@
     "validThrough": "2027-10-10",
     "sections": {
       "34068-7": "80d60492f2cb80f363f87e465e83e2620f83aae653882295acdfa0ecd0a7bfca"
-    }
+    },
+    "supersededOn": "2026-11-15",
+    "supersededBy": "version 8 (2026-11-13)"
   },
   {
     "label": "Plan B One-Step (levonorgestrel 1.5 mg), Foundation Consumer Healthcare",
@@ -3549,7 +3555,7 @@
     "splVersion": 5,
     "publishedOn": "2023-02-02",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "7d148a7bb3dee4b762734538e837506ae48b8698e142ba62001da25ad45e3358"
     }
@@ -3564,7 +3570,7 @@
     "splVersion": 23,
     "publishedOn": "2026-07-06",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "4d860424f5f22e4ed58a941fc9b4f091b93b3a86504ede33018f48a7a88933d2"
     }
@@ -3581,7 +3587,7 @@
     "splVersion": 2,
     "publishedOn": "2026-07-15",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "22c3bb9b770fcb67040fc00757e7c0ea86b2aa3ebbd7d3b8e6bb22f6c14d2339",
       "34070-3": "282e952725682e83a2d55f6c4d3a6271ee49e5b20d5dec6b899ba7e20f64c34d"
@@ -3600,7 +3606,7 @@
     "splVersion": 48,
     "publishedOn": "2025-06-30",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5880785c3875a8939ae0bf104ca6fb1a5af1b4e2a5f6d20f1943c4244ce3cdc3"
     }
@@ -3631,7 +3637,7 @@
     "splVersion": 67,
     "publishedOn": "2026-04-27",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "f5bbf902b5b2fce395ee0f22cc48954ae657b2e38f91e0cd7c6b91be24ab85e6"
     }
@@ -3646,7 +3652,7 @@
     "splVersion": 16,
     "publishedOn": "2026-09-24",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "800bb2919091f285364cfdb4c1806071ab577875a09a03e3801e630c90fe0928"
     }
@@ -3661,7 +3667,7 @@
     "splVersion": 1,
     "publishedOn": "2025-05-15",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "702ce9516588a3ed3d32e1fc59f83dc8d0535d3f32f741dde3415b700272f344"
     }
@@ -3676,7 +3682,7 @@
     "splVersion": 15,
     "publishedOn": "2026-03-30",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "3cfd593cacba80c74dd9a52cbf0100320f62ae0753911e9387c81ebdf9ca945e"
     }
@@ -3691,7 +3697,7 @@
     "splVersion": 28,
     "publishedOn": "2025-06-12",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5f07dba380a63c44d23ec8f54e18ed828ea93c95c7b0869349176f4f0c40730f",
       "34070-3": "90e9f18e5b32b75211d4f3f215cecc2bbe7ac6971be10d2b1888d82f4e8bafc4"
@@ -3708,7 +3714,7 @@
     "splVersion": 3,
     "publishedOn": "2026-02-13",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "48154152204c8d7ab45d1d9e6446f42bfd19046ddd1e27514c237806d3800a11",
       "34070-3": "f1a7112f433b642c434fabda4f3d3d929e1eb86cd7504793123f951aa1ee8227"
@@ -3725,7 +3731,7 @@
     "splVersion": 8,
     "publishedOn": "2026-02-16",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "3d08243a63a34182327d0810c5d1ecc64613e9af49a2ee161a59b1afde0de187"
     }
@@ -3770,7 +3776,7 @@
     "splVersion": 2,
     "publishedOn": "2024-05-27",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "7619a1d130bccdbf47d2d4efbb31cb61b641a23cda5d5462bf0fbed3e331d644",
       "34089-3": "3b2c9a78fba179eeb96bc391ea5cd283a98b8d260b3d094691134f1c9fc18161"
@@ -3786,7 +3792,7 @@
     "splVersion": 26,
     "publishedOn": "2026-05-28",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9bcad186e1ea9e74c1cfd1608d9b8ecdbf033d43b7e3ebf11dc04911d354d824"
     }
@@ -3801,7 +3807,7 @@
     "splVersion": 38,
     "publishedOn": "2025-11-17",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "230b2fda9014b5bf71c264b07e2454b7f3cc728703bc4b6297cbd03a1143165b"
     }
@@ -3831,7 +3837,7 @@
     "splVersion": 1,
     "publishedOn": "2026-10-06",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9da85cd56ddefa9cc5ecd0b56385c0c05f722f29f20cde7d43771b18d13fc496",
       "43678-2": "00d0f39780362370bb28ddb893e58320b9ff7f95923fede5366a66f71dd3959e"
@@ -3847,7 +3853,7 @@
     "splVersion": 10,
     "publishedOn": "2024-11-01",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "943692ef0adedc5593e33c148b0cbcf7104d2a032dfc83de28ce826a7a5c3d0b",
       "34089-3": "6468ef6828e6519dfd94a7ddf0fbad7b7a73b7d86e9006ede851c1b83896e95a"
@@ -3864,7 +3870,7 @@
     "splVersion": 14,
     "publishedOn": "2026-08-19",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "83a131558305189869e08decd90b0e8af9a6706f0c3010c990c183d428a6674f"
     }
@@ -3879,7 +3885,7 @@
     "splVersion": 10,
     "publishedOn": "2026-05-28",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "844d138c01d72d8061a9d2710899771ee55435ccf7c19b38e62792f3aadafbd1"
     }
@@ -3897,7 +3903,7 @@
     "splVersion": 28,
     "publishedOn": "2025-07-14",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "7a33cd844e37793d85468844110e0f40433b56ce62109eb0bd8446074b24acd2",
       "43684-0": "a85b2ebaa9771f9fe7743a7280a338a7dba95522a6b9fc1688a33eabd3d4c8e6",
@@ -3915,7 +3921,7 @@
     "splVersion": 4,
     "publishedOn": "2025-03-24",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8ff9801873990ac2fbfbdb5a9688489d094d2f19a1968555237117dde8b19dc3"
     }
@@ -3932,7 +3938,7 @@
     "splVersion": 22,
     "publishedOn": "2026-06-15",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "53964965bb044977a7ad3609baf47ed3c3f53c8549ee4649f8469c8450f08d74",
       "34069-5": "f09baec0538e0bd1c80634d035ff35cbffe091b186b5c8d0ebb33c4df869d624"
@@ -3951,7 +3957,7 @@
     "splVersion": 11,
     "publishedOn": "2025-09-17",
     "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "ee04a8e1b0018fdcf99b2d8178bba51279fcd9fae3d5b70a3c862078b40d0282",
       "34089-3": "d8714dd09a0b0b6730196adabab6293fe49ff3659eb54c5efa9f5c70d6ddf03f"
@@ -3967,7 +3973,7 @@
     "splVersion": 1,
     "publishedOn": "2026-08-26",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "c5916734f07b8b9a1e52e521626ef7ace10ccfa305b9a45d90ac9bba73a290fe"
     }
@@ -3983,7 +3989,7 @@
     "splVersion": 1,
     "publishedOn": "2025-08-14",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "b1a82d18c41c93f9cc6be3f162b9cdf40e4770efe21de6c497b7c27917181004",
       "34089-3": "60036e085d717f984c2b74eb2f04d847eebc1a726ae8f35ec94116a4be28af78"
@@ -3999,7 +4005,7 @@
     "splVersion": 6,
     "publishedOn": "2026-01-29",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0564128eb15048c5cfdcac85a2cde7666890267328748519c886385ac443773c"
     }
@@ -4014,7 +4020,7 @@
     "splVersion": 69,
     "publishedOn": "2026-07-23",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "036177210154e2d9d0241f4f280c18239ba457b3a3cb7ea4af89e89131d6490e"
     }
@@ -4031,7 +4037,7 @@
     "splVersion": 43,
     "publishedOn": "2026-07-28",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "01ff0be85d4ad70bcd1a9eb78f58b0a077e974bdd62d321fa0fd84dc73bd74cc",
       "34069-5": "ce10aa86e3051ecefccbc3021bbbb0d1e773113d57e81bfb35b6726cd1d925b2"
@@ -4047,7 +4053,7 @@
     "splVersion": 1537,
     "publishedOn": "2024-02-29",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d65240409f6ef8df919f9d0b7bb86b2312e3f775991e42fcb1152d1124d75fba",
       "43678-2": "50520ca02cbdad0db251aa55ee1d4c2dbde5a9aec4d2316f5f459fb70ad264f9"
@@ -4063,7 +4069,7 @@
     "splVersion": 45,
     "publishedOn": "2025-12-19",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "69e013e26a0d8b8c08378653d7b56a8aab277bbf8a83c92981e6a296e78ce2b1"
     }
@@ -4078,7 +4084,7 @@
     "splVersion": 30,
     "publishedOn": "2024-07-05",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "82d37889686b9a5e94d3c3547c95b0e1bd4cf8dfef5d82edf8ea1bdf59c30012"
     }
@@ -4096,7 +4102,7 @@
     "splVersion": 17,
     "publishedOn": "2024-11-06",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "2572316c7177e3c2d41f8f40bfb472022c683676beb3843b26ba6afb7d00b57b"
     }
@@ -4111,7 +4117,7 @@
     "splVersion": 43,
     "publishedOn": "2025-11-17",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "02de87a599d3e4f30b7accc157ba9ed93aff541f37cf820907346dcb44877d1b"
     }
@@ -4126,7 +4132,7 @@
     "splVersion": 39,
     "publishedOn": "2026-08-21",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "9f40845998fdb0415f8b19e6ec0ea1fa415af04903c0a9a844ab579e453b9192"
     }
@@ -4141,7 +4147,7 @@
     "splVersion": 2,
     "publishedOn": "2026-05-01",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "dd3cc04ced90c496b15a8146905e5f91a953a48233627aa63a0c7ce13b3cf929"
     }
@@ -4157,7 +4163,7 @@
     "splVersion": 10,
     "publishedOn": "2025-12-23",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "5d600a1425b2d70d68f153bfd9b73c295cae7267c2bdca1b53bd1a9223b09fae"
     }
@@ -4172,7 +4178,7 @@
     "splVersion": 4,
     "publishedOn": "2026-07-15",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e7689bfc59ab9563107d1d3590da7d009797f53299dbe4d8d7b18e0930fe6d73"
     }
@@ -4188,7 +4194,7 @@
     "splVersion": 30,
     "publishedOn": "2026-04-22",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "6cadb9472c50aa5e946c2c78223d69cc02f22fe211efd0a43acaea62578267e2"
     }
@@ -4204,7 +4210,7 @@
     "splVersion": 4,
     "publishedOn": "2025-12-23",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "4b467719dd830426b292437814e2f98e6aa5ac3d8df8f8b196b3d7ce859e4114",
       "34067-9": "51a3e314674a0837530bce8bbae098808e3525c5dfe6ccdf58d9c31f2cd89ca3",
@@ -4223,7 +4229,7 @@
     "splVersion": 8,
     "publishedOn": "2026-08-27",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2ee0c00a42951709975199f12097c4c1003db4824a23b422aff231af0f0f5401",
       "34066-1": "ac17be963febdb10ce87da9bb537bddf7ba1ee2d6fa94274da94ac67c77bc14d"
@@ -4240,7 +4246,7 @@
     "splVersion": 31,
     "publishedOn": "2026-10-06",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "bf378069f268e4ce368e41ed9542582d77e260d70a18e08228152065568703e9"
     }
@@ -4256,7 +4262,7 @@
     "splVersion": 25,
     "publishedOn": "2025-06-12",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "5a846a394fab651d52503c95f77788974f0e0ec101e4205352b0a98dccb76c73",
       "34069-5": "88e577f4959231e453b07c9c03d54715ea0f115cfd8e44cb73491f11801e8ac1"
@@ -4272,7 +4278,7 @@
     "splVersion": 10,
     "publishedOn": "2026-07-28",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "89548c68da6c11407fc31a6fcc832d1010c59238dd551a664735c4790b64cb1e"
     }
@@ -4288,7 +4294,7 @@
     "splVersion": 51,
     "publishedOn": "2026-01-28",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "f0a5299f696ff98feb0f65f803fa8f11ba22103def610de644e6535dfa60c344",
       "34070-3": "a6e9bc2e564f2633ef77448e2b36ca3cb9a1e10661db10b888a38c5baa9fa609",
@@ -4305,7 +4311,7 @@
     "splVersion": 4,
     "publishedOn": "2025-09-22",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "132cd1deeb2d638923c114c957a9eca78bda367a311be7595842b53b2d9bfdc9"
     }
@@ -4317,10 +4323,10 @@
     "tools": [
       "pn-amino-acid-order"
     ],
-    "splVersion": 16,
-    "publishedOn": "2025-02-10",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "splVersion": 17,
+    "publishedOn": "2026-11-06",
+    "verifiedOn": "2026-11-15",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "6faa307432fef1b8c5e9eb02ed9be1a153224d39e5574badc5f873c9225f075d"
     }
@@ -4336,7 +4342,7 @@
     "splVersion": 14,
     "publishedOn": "2022-07-20",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "c3d0498669328e6338951d9c26b1db817e54928afc96c68a8cd859485138aed7",
       "34069-5": "6d87e32ef23dbb604547d75d8d09f8d96df158d181ed7b2c17ed9e2d36aafef2"
@@ -4352,7 +4358,7 @@
     "splVersion": 18,
     "publishedOn": "2025-03-11",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2f12185d02321f11a6a93e42ef1b17ea4518158bb8d210a62f622d573ebe9c9d"
     }
@@ -4368,7 +4374,7 @@
     "splVersion": 10,
     "publishedOn": "2026-08-24",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d0004ea67c3c40651fe551b227aa07a8807e5fbf6b55b9c38d5884c3d8f1515a",
       "34089-3": "dbc60d45bbef5a72bc7a0cc6553d74d771c9dffd15a9609e28b5c82e3cd092ac"
@@ -4386,7 +4392,7 @@
     "splVersion": 62,
     "publishedOn": "2026-08-10",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "6536b544eeca0f54a71ec5a54b95624d213ecdc59f2cc7ac5a464e464091c474",
       "34069-5": "64bb533f707d27d2cb529d8dfab9a2c993696d9f9e109ae0f3f736010539e55e"
@@ -4403,7 +4409,7 @@
     "splVersion": 32,
     "publishedOn": "2025-07-25",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "894f1efa63d31375f8888960412e756eedef9d3bd5e70499a4f62115b691b8b8"
     }
@@ -4418,7 +4424,7 @@
     "splVersion": 50,
     "publishedOn": "2025-11-19",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "b873a4c3b6a2fff8154e233a7e96d62bb30dade73c8d4d27326e14a3c7d87a52"
     }
@@ -4433,7 +4439,7 @@
     "splVersion": 46,
     "publishedOn": "2026-07-20",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a73c2175b8a281d3ce6990b5b084f403a67f6ff10fc9ad301eb74eabc063aa85"
     }
@@ -4448,7 +4454,7 @@
     "splVersion": 30,
     "publishedOn": "2026-07-23",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "11df89e40363e99306b9f15c1e3284f6988ea2a55ec4668cdf92bb1dfa551190"
     }
@@ -4463,7 +4469,7 @@
     "splVersion": 8,
     "publishedOn": "2026-09-14",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "c1b8187a1a24917fd5ddad9883fbc0cc4bb2e5b5b469422e5ee7313a329c2521"
     }
@@ -4478,7 +4484,7 @@
     "splVersion": 24,
     "publishedOn": "2025-12-10",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "13a270286bc75fc7240a2ae615ceab679fdd3f902dfd60ec54cb78ad24f72c13"
     }
@@ -4493,7 +4499,7 @@
     "splVersion": 3,
     "publishedOn": "2026-06-22",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "4bc8000af2eb777a68744d5ace7cac937889a046ec36838b817246f3f12ec3ac"
     }
@@ -4508,7 +4514,7 @@
     "splVersion": 32,
     "publishedOn": "2026-06-10",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a004577b53301c2dc1798ac02b40b4dfca39ae14dcf2383200ed6b86746aef3a"
     }
@@ -4525,7 +4531,7 @@
     "splVersion": 10,
     "publishedOn": "2026-02-02",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "8e068f11e8adafbe53d19ad8cb93f3cf4b7d6765a3af668fe4dda7a9909a98a2"
     }
@@ -4540,7 +4546,7 @@
     "splVersion": 19,
     "publishedOn": "2026-07-22",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "b0c7155ad7bf9d7a4534aed21fd7bdd52570603e0565f4d648e8114697b96961"
     }
@@ -4570,7 +4576,7 @@
     "splVersion": 24,
     "publishedOn": "2026-08-07",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "a5a621b88811f5da92ddc576a050442610e0ae4821a8db88120550dddd913f5a"
     }
@@ -4585,7 +4591,7 @@
     "splVersion": 45,
     "publishedOn": "2026-03-20",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "982107c891c7c2e853dc02d81821316f76731be6abb37b6a223b2005353e9ff7"
     }
@@ -4600,7 +4606,7 @@
     "splVersion": 58,
     "publishedOn": "2026-03-02",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "aff9565ae516c805af1b6593268ae79907b60f1d37e6beb35fe7f84cff99dc82"
     }
@@ -4617,7 +4623,7 @@
     "splVersion": 31,
     "publishedOn": "2025-11-17",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "351a13d8a484f8960100ba26523518e3701691cb53e17670e7126b00062a26dd",
       "34069-5": "84f6eb0b38cc6c4ed6f9b99ed24daa4ef5dff7571c9480a73af9d0ea191c7c0d"
@@ -4634,7 +4640,7 @@
     "splVersion": 63,
     "publishedOn": "2026-05-13",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "738715a53b0d2d964cf89480e8c375943720489d51a6937cf78f0cbc432b5333"
     }
@@ -4649,7 +4655,7 @@
     "splVersion": 16,
     "publishedOn": "2026-02-19",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "81376ee466e76ab0ca42cda1cfc85e0599d5d6dad750405fee01aa064a0b11cd"
     }
@@ -4665,7 +4671,7 @@
     "splVersion": 31,
     "publishedOn": "2025-02-24",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "ddd826d98bbfea3491009ed4e838d670eaeeca60f13fcb8d95888e50d9f019e1"
     }
@@ -4680,7 +4686,7 @@
     "splVersion": 39,
     "publishedOn": "2026-07-24",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "2f8ee3b4e5a0b9e1037b21034e9d0eb7766286588cde7cbbc29fe6bae13ed9f5"
     }
@@ -4696,7 +4702,7 @@
     "splVersion": 10,
     "publishedOn": "2024-12-02",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34067-9": "9fcf4d2fabe0babbe61d1f4dee445d1698d1ef91dff2d46d5d7768ea4acb69d7",
       "34068-7": "561d616c9365006fff203a46e799990be42996be8fd420816f316488e786a68a",
@@ -4713,7 +4719,7 @@
     "splVersion": 18,
     "publishedOn": "2026-02-26",
     "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "80af41ee061d68575cff8b86bd97380437c15eeef884aad2db24d9a5dd12ec14"
     }
@@ -4730,7 +4736,7 @@
     "splVersion": 19,
     "publishedOn": "2026-06-30",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "c6c3fed138793feeced32d913a1fe6e3112126f85e851bd55b0f5f0fa11a66ff",
       "34069-5": "f60678db2b82e73904527f0bb4d92c08c04b41e745a08a01f9ffc424ff0654b1"
@@ -4750,7 +4756,7 @@
     "splVersion": 65,
     "publishedOn": "2026-09-11",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "13698281595712c0fba642e5ce074a149bfe814601b1b5037d2d568688a518e3"
     }
@@ -4767,7 +4773,7 @@
     "splVersion": 32,
     "publishedOn": "2026-02-06",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "f218b75949aef058da9292a2fd536eaab240fea3372776e7979037527bb2e209"
     }
@@ -4785,7 +4791,9 @@
     "validThrough": "2027-10-14",
     "sections": {
       "34068-7": "4ef8a9c23301c737c646b980da35218a342b602ae8fdaf17ea609b1138a98559"
-    }
+    },
+    "supersededOn": "2026-11-15",
+    "supersededBy": "version 22 (2026-11-06)"
   },
   {
     "label": "Xofigo (radium Ra 223 dichloride)",
@@ -4798,7 +4806,7 @@
     "splVersion": 17,
     "publishedOn": "2026-03-04",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34089-3": "ddcedaaa4df7cf882bc74b097b66c6a31be3bbc4dec5ad3c48f7fd61da89b18b"
     }
@@ -4815,7 +4823,7 @@
     "splVersion": 40,
     "publishedOn": "2026-09-02",
     "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "0e884645accf9522ab84a501e3ff9a91f1736255b0d7e77fdffd3f216160cf52",
       "34069-5": "20c888c854430edb97206046dc1717f12fb54f73bfc4a98de3415d178c75459a"
@@ -4831,7 +4839,7 @@
     "splVersion": 2,
     "publishedOn": "2025-05-05",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "d6f11efe733578a03d341cc963c5965ef7f5db2c360f18e2f55d4aa42a0b09be"
     }
@@ -4846,7 +4854,7 @@
     "splVersion": 22,
     "publishedOn": "2023-09-22",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "e8996571fc37917268e48a9ee811e13666955523aa28e3c304cccbc92b1448d3"
     }
@@ -4861,7 +4869,7 @@
     "splVersion": 27,
     "publishedOn": "2025-12-31",
     "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "validThrough": "2027-11-15",
     "sections": {
       "34068-7": "1468aca291c22c8259b41e2257d5808b0e7b417486848422fa0149e265e76fbf"
     }
