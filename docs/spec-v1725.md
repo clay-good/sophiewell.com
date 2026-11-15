@@ -49,3 +49,6 @@ Shard 8's log showed the same shape: `tool-interactions.spec.js`'s four parts at
 minutes of work on two workers. Its parts are tagged `@sweep-N` too, so each sweep lane now runs part N of all
 three sweeps (three tests). `--list` still gives 462 tests across the twelve lanes, the same set as the full
 suite, none twice.
+
+Measured on CI (run for `16e4f3ce3`, all 16 jobs green): shard 8 went from 28 minutes to 8, the sweep lanes take
+15 each, and the longest lane is shard 2 at 17. The run's longest lane went from 40 minutes to 17.
