@@ -518,10 +518,10 @@
   "AMCINONIDE": [
     "A"
   ],
-  "FIRDAPSE": [
+  "AMIFAMPRIDINE PHOSPHATE": [
     "A"
   ],
-  "AMIFAMPRIDINE PHOSPHATE": [
+  "FIRDAPSE": [
     "A"
   ],
   "ETHYOL": [
@@ -1028,6 +1028,9 @@
   "IOPIDINE": [
     "A"
   ],
+  "BRYTLY": [
+    "A"
+  ],
   "APREMILAST": [
     "A"
   ],
@@ -1527,6 +1530,9 @@
   "OZOBAX DS": [
     "B"
   ],
+  "LYVISPAH": [
+    "B"
+  ],
   "FLEQSUVY": [
     "B"
   ],
@@ -1537,9 +1543,6 @@
     "B"
   ],
   "BALSALAZIDE DISODIUM": [
-    "B"
-  ],
-  "COLAZAL": [
     "B"
   ],
   "OLUMIANT": [
@@ -1750,6 +1753,12 @@
     "B"
   ],
   "BENZTROPINE MESYLATE": [
+    "B"
+  ],
+  "HIBSAGO": [
+    "B"
+  ],
+  "BEPIROVIRSEN SODIUM": [
     "B"
   ],
   "BEPOTASTINE BESILATE": [
@@ -2394,6 +2403,9 @@
   "CALCIUM CHLORIDE 10% IN PLASTIC CONTAINER": [
     "C"
   ],
+  "CALREZDY": [
+    "C"
+  ],
   "BSS PLUS": [
     "C"
   ],
@@ -2589,10 +2601,10 @@
   "CAMIZESTRANT": [
     "C"
   ],
-  "CANAGLIFLOZIN": [
+  "INVOKANA": [
     "C"
   ],
-  "INVOKANA": [
+  "CANAGLIFLOZIN": [
     "C"
   ],
   "INVOKAMET": [
@@ -2638,6 +2650,9 @@
     "C"
   ],
   "CAPECITABINE": [
+    "C"
+  ],
+  "XORIDRONO": [
     "C"
   ],
   "TRUQAP": [
@@ -2968,6 +2983,12 @@
     "C"
   ],
   "CENOBAMATE": [
+    "C"
+  ],
+  "SIMTRIYO": [
+    "C"
+  ],
+  "CENTANAFADINE HYDROCHLORIDE": [
     "C"
   ],
   "CEPHALEXIN": [
@@ -3337,6 +3358,9 @@
     "C"
   ],
   "CISPLATIN": [
+    "C"
+  ],
+  "AXYCIS": [
     "C"
   ],
   "CITALOPRAM HYDROBROMIDE": [
@@ -4944,9 +4968,6 @@
   "LANOXIN": [
     "D"
   ],
-  "LANOXIN PEDIATRIC": [
-    "D"
-  ],
   "DIHYDROERGOTAMINE MESYLATE": [
     "D"
   ],
@@ -6015,10 +6036,13 @@
   "DELESTROGEN": [
     "E"
   ],
-  "CLIMARA PRO": [
+  "ESTRADIOL AND LEVONORGESTREL": [
     "E"
   ],
   "ESTRADIOL; LEVONORGESTREL": [
+    "E"
+  ],
+  "CLIMARA PRO": [
     "E"
   ],
   "ESTRADIOL AND NORETHINDRONE ACETATE": [
@@ -6985,9 +7009,6 @@
     "F"
   ],
   "FLUOCINONIDE EMULSIFIED BASE": [
-    "F"
-  ],
-  "VANOS": [
     "F"
   ],
   "FLUORESCEIN SODIUM": [
@@ -8410,6 +8431,9 @@
   "ISOVUE-250": [
     "I"
   ],
+  "ISOVUE READI": [
+    "I"
+  ],
   "ULTRAVIST 370": [
     "I"
   ],
@@ -9359,9 +9383,6 @@
     "L"
   ],
   "LOTEMAX SM": [
-    "L"
-  ],
-  "INVELTYS": [
     "L"
   ],
   "EYSUVIS": [
@@ -10522,9 +10543,6 @@
   "NARCAN": [
     "N"
   ],
-  "REXTOVY": [
-    "N"
-  ],
   "KLOXXADO": [
     "N"
   ],
@@ -11005,6 +11023,9 @@
   "ZYPREXA ZYDIS": [
     "O"
   ],
+  "WELTRUZA": [
+    "O"
+  ],
   "ZYPREXA RELPREVV": [
     "O"
   ],
@@ -11366,9 +11387,6 @@
     "P"
   ],
   "PANTOPRAZOLE SODIUM": [
-    "P"
-  ],
-  "PROTONIX": [
     "P"
   ],
   "PROTONIX IV": [
@@ -11741,12 +11759,6 @@
     "P"
   ],
   "ACTOS": [
-    "P"
-  ],
-  "PIPERACILLIN": [
-    "P"
-  ],
-  "PIPERACILLIN SODIUM": [
     "P"
   ],
   "PIPERACILLIN AND TAZOBACTAM": [
@@ -12122,6 +12134,12 @@
     "P"
   ],
   "MYSOLINE": [
+    "P"
+  ],
+  "HOVILPRI": [
+    "P"
+  ],
+  "PRITELIVIR MESYLATE": [
     "P"
   ],
   "PROBALAN": [
@@ -12550,6 +12568,9 @@
   "XARELTO": [
     "R"
   ],
+  "YULZETY": [
+    "R"
+  ],
   "RIVASTIGMINE": [
     "R"
   ],
@@ -12883,10 +12904,10 @@
   "SINECATECHINS": [
     "S"
   ],
-  "MAYZENT": [
+  "SIPONIMOD": [
     "S"
   ],
-  "SIPONIMOD": [
+  "MAYZENT": [
     "S"
   ],
   "SIROLIMUS": [
@@ -13273,12 +13294,6 @@
   "SULFAMETHOXAZOLE; TRIMETHOPRIM": [
     "S"
   ],
-  "BACTRIM": [
-    "S"
-  ],
-  "BACTRIM DS": [
-    "S"
-  ],
   "SULFATRIM PEDIATRIC": [
     "S"
   ],
@@ -13379,6 +13394,9 @@
     "T"
   ],
   "TAFAMIDIS": [
+    "T"
+  ],
+  "TAFAMIDIS MEGLUMINE": [
     "T"
   ],
   "ARAKODA": [
@@ -14309,6 +14327,12 @@
     "T"
   ],
   "TRIPTODUR KIT": [
+    "T"
+  ],
+  "CIENBY": [
+    "T"
+  ],
+  "TRISODIUM CITRATE": [
     "T"
   ],
   "DAYBUE": [

@@ -6,7 +6,7 @@
   "agency": "CMS",
   "status": "public-domain",
   "cadence": "weekly",
-  "recordCount": 1088,
+  "recordCount": 1085,
   "shardLayout": "shards",
   "shards": [
     {
@@ -107,9 +107,9 @@
     },
     {
       "name": "52451.json",
-      "sha256": "6343053f17b223d1ce2b956b828d64e81087839c59b95aaff923adad3cc1bc90",
+      "sha256": "83be1edadb31cc79c9f4bb178383805300e7797aacef0a0611bfcfdaf922ed7e",
       "records": 1,
-      "bytes": 13688
+      "bytes": 13565
     },
     {
       "name": "52453.json",
@@ -1784,12 +1784,6 @@
       "sha256": "b7116e17913cf6e41f9567737954263a81a302e339937dfae6e99d7898d70dff",
       "records": 1,
       "bytes": 6603
-    },
-    {
-      "name": "56609.json",
-      "sha256": "6b644e4eb4ca1f312fcea1a08b519b5aa919caf003f66dbe72ef4f450626e175",
-      "records": 1,
-      "bytes": 953
     },
     {
       "name": "56610.json",
@@ -3497,9 +3491,9 @@
     },
     {
       "name": "57520.json",
-      "sha256": "6b78c920ac091aff7845eb0e9303a2a5219712e9f03034acf8b89705501a7725",
+      "sha256": "a61844e2d65771fd7d609ce987f937711f341df8843eb0969705549f4ef346f3",
       "records": 1,
-      "bytes": 6513
+      "bytes": 6516
     },
     {
       "name": "57526.json",
@@ -4805,9 +4799,9 @@
     },
     {
       "name": "58801.json",
-      "sha256": "40c09d503b8d456e7bd3ea803a9e612f5b60255dcfa3aabecfc69e73cb07b7ea",
+      "sha256": "28208049fe3beb986fef8c38497e7eace0a753647034ffd3e236d280f2c70efe",
       "records": 1,
-      "bytes": 23449
+      "bytes": 24189
     },
     {
       "name": "58808.json",
@@ -4823,9 +4817,9 @@
     },
     {
       "name": "58812.json",
-      "sha256": "8f0dad5287905e039b864c4ade138a4a36123df2cd633f538122533c03ef1dae",
+      "sha256": "d2500c2308a5b464dac5076748aa5a706260ddb98621475f68d18b06c65be539",
       "records": 1,
-      "bytes": 23414
+      "bytes": 24154
     },
     {
       "name": "58814.json",
@@ -5771,9 +5765,9 @@
     },
     {
       "name": "60146.json",
-      "sha256": "8e1ec0efb18ce80ede73a5d02108c04aeb3114d6233fc3b9e3f9be09e619fa5c",
+      "sha256": "07cd728cc255c9b28b899b988817174e450fcf4fb7e41f1b00fe990ad319bcf1",
       "records": 1,
-      "bytes": 572
+      "bytes": 580
     },
     {
       "name": "60151.json",
@@ -5783,9 +5777,9 @@
     },
     {
       "name": "60152.json",
-      "sha256": "0a8973950d42bedc03ea81d55bdf2208fe9396da56c00a02ffe5fa9acf5da157",
+      "sha256": "47a2bdd3b97b8ba6391c210a3f11bf7b70a1607e0472eed4733511b9958b27a8",
       "records": 1,
-      "bytes": 656
+      "bytes": 665
     },
     {
       "name": "60154.json",
@@ -5795,9 +5789,9 @@
     },
     {
       "name": "60155.json",
-      "sha256": "1d03c18b1bcb6964d43b2978447ae988eef195e510aa50528b63e4ea6974a848",
+      "sha256": "ac433dfb60e67171e2175e61028d3d73a18b71c8a5534caab0129bf066f42641",
       "records": 1,
-      "bytes": 627
+      "bytes": 635
     },
     {
       "name": "60160.json",
@@ -5816,18 +5810,6 @@
       "sha256": "325aa7dcf28983d464c8f01a9c8d58a8ff2aab705f3ddec3bee0c6e8108e198b",
       "records": 1,
       "bytes": 2497
-    },
-    {
-      "name": "60178.json",
-      "sha256": "7a7b62cf55b53e87b62875f3e88bf1ad76c496f40ebcd16d81ef3bc1236b3b3a",
-      "records": 1,
-      "bytes": 500
-    },
-    {
-      "name": "60179.json",
-      "sha256": "da4fc77844d0e36299ce53fa6b249d2502ca21bf1a147b9634d4f965bd7cb185",
-      "records": 1,
-      "bytes": 471
     },
     {
       "name": "60181.json",
@@ -6005,9 +5987,9 @@
     },
     {
       "name": "60274.json",
-      "sha256": "0faac95692a47b1ed03fb66fc5adc1887c3f2c84aa0ed48a3323f0c74efcd6ec",
+      "sha256": "c5db7c20fd581bffb6ec0df5da0782d9f245802e1ea62b3ea671c3c67f83095b",
       "records": 1,
-      "bytes": 815
+      "bytes": 823
     },
     {
       "name": "60276.json",
@@ -6543,14 +6525,14 @@
   ],
   "notes": "One record per current article that lists HCPCS/CPT codes: code groups, covered and non-covered ICD-10-CM groups (ranges already listed code by code in the export), group paragraphs as plain text, asterisked codes, and the states its contractors serve. index.json maps each code to [article id, group]. Descriptions dropped.",
   "coverage": "full",
-  "sourceEdition": "2026-11-02 weekly",
-  "effectiveFrom": "2026-11-02",
-  "fetchedAt": "2026-11-07",
-  "contentChangedAt": "2026-11-07",
-  "expiresOn": "2026-11-16",
-  "nextExpected": "2026-11-09",
-  "sourceSha256": "fb2903d24ae36a702552e514857a97cef7244596be897273bd0fdab5a6a73c0f",
-  "recordsSha256": "2d9e09619fd5da1d47ff04244398ea42142c993bf564276c5b5bbe0f2338c10f",
+  "sourceEdition": "2026-11-09 weekly",
+  "effectiveFrom": "2026-11-09",
+  "fetchedAt": "2026-11-15",
+  "contentChangedAt": "2026-11-15",
+  "expiresOn": "2026-11-23",
+  "nextExpected": "2026-11-16",
+  "sourceSha256": "63d304f1d406a9ee83c670b1fdfb21a14e80c7e8ef0c462ce9ea68ef92eed984",
+  "recordsSha256": "325685d92429837dd37a993f879629c8f8ba75ea4c992c4a94f9c412af5e841b",
   "recordBounds": {
     "min": 400,
     "max": 3000
