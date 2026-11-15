@@ -31,3 +31,14 @@ twelve lanes instead of eight shards:
 
 Checked with `--list`: the twelve lanes list 462 tests, the same 462 the full suite lists, none twice.
 Same tests, same checks, same total runner time; the longest lane is what changes.
+
+## Measured on CI (run for `1137531f7`, all green)
+
+| Lane | Before (shards) | After (lanes) |
+|---|---|---|
+| shard 2 | 39 to 40 min | 16 min |
+| `sweep-1` to `sweep-4` | (inside shard 2) | 11 min each |
+| shard 8 | 28 min | 28 min, now the longest lane |
+| every other shard | 4 to 12 min | 4 to 13 min |
+
+The run's longest lane went from 40 minutes to 28. Shard 8 is the next thing to look at.
