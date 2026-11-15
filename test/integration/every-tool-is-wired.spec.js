@@ -47,54 +47,67 @@ function catalog() {
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep is chromium-only');
 
-test('every tool is findable, openable, and usable', async ({ page }) => {
-  test.setTimeout(1_800_000);
-  const tiles = catalog();
-  expect(tiles.length).toBeGreaterThan(1500);
+// spec-v1725: split the catalog across PARTS tests by index, as
+// example-correctness.spec.js does. As one serial test the walk took about 9
+// minutes locally and held a whole CI shard for 25 to 40, close to its 30-minute
+// timeout. `fullyParallel` is on, so the parts run on separate workers and land on
+// separate CI shards. Every tile is still walked exactly once (index % PARTS), with
+// the same checks.
+const PARTS = 4;
 
-  const pageErrors = [];
-  page.on('pageerror', (e) => pageErrors.push(String(e)));
-  await page.goto('/');
-
-  const notFirst = [];
-  const noBody = [];
-  const noInputs = [];
-
-  for (const t of tiles) {
-    const r = await page.evaluate(async ({ id, name }) => {
-      window.location.hash = '';
-      await new Promise((res) => setTimeout(res, 25));
-      const input = document.getElementById('hero-search');
-      input.focus();
-      input.value = name;
-      input.dispatchEvent(new Event('input', { bubbles: true }));
-      await new Promise((res) => setTimeout(res, 90));
-      const rows = [...document.querySelectorAll('.hero-search-result')].map((n) => n.dataset.tool);
-      // Open by hash so the body checks stay independent of ranking.
-      window.location.hash = '#' + id;
-      await new Promise((res) => setTimeout(res, 60));
-      const body = document.getElementById('tool-body');
-      return {
-        first: rows[0] === id,
-        found: rows.includes(id),
-        hasBody: !!body,
-        inputs: body ? body.querySelectorAll('input, select, textarea').length : 0,
-      };
-    }, t);
-
-    if (!r.hasBody) noBody.push(t.id);
-    else if (!r.inputs && !REFERENCE_ONLY.has(t.id)) noInputs.push(t.id);
-
-    if (r.first) continue;
-    if (SINGLE_TOKEN_NAMES.has(t.id)) {
-      expect(r.found, `${t.id} fell out of the results entirely`).toBe(true);
-      continue;
-    }
-    notFirst.push({ id: t.id, name: t.name });
-  }
-
-  expect(noBody, `tiles that opened to nothing:\n${JSON.stringify(noBody, null, 2)}`).toEqual([]);
-  expect(noInputs, `tiles with nothing to fill in:\n${JSON.stringify(noInputs, null, 2)}`).toEqual([]);
-  expect(notFirst, `tiles their own name does not find first:\n${JSON.stringify(notFirst, null, 2)}`).toEqual([]);
-  expect(pageErrors, `page errors while walking the catalog:\n${pageErrors.slice(0, 10).join('\n')}`).toEqual([]);
+test('the catalog is big enough to be the catalog', () => {
+  expect(catalog().length).toBeGreaterThan(1500);
 });
+
+for (let part = 0; part < PARTS; part++) {
+  test(`every tool is findable, openable, and usable (part ${part + 1} of ${PARTS})`, async ({ page }) => {
+    test.setTimeout(1_800_000);
+    const tiles = catalog().filter((_, i) => i % PARTS === part);
+
+    const pageErrors = [];
+    page.on('pageerror', (e) => pageErrors.push(String(e)));
+    await page.goto('/');
+
+    const notFirst = [];
+    const noBody = [];
+    const noInputs = [];
+
+    for (const t of tiles) {
+      const r = await page.evaluate(async ({ id, name }) => {
+        window.location.hash = '';
+        await new Promise((res) => setTimeout(res, 25));
+        const input = document.getElementById('hero-search');
+        input.focus();
+        input.value = name;
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        await new Promise((res) => setTimeout(res, 90));
+        const rows = [...document.querySelectorAll('.hero-search-result')].map((n) => n.dataset.tool);
+        // Open by hash so the body checks stay independent of ranking.
+        window.location.hash = '#' + id;
+        await new Promise((res) => setTimeout(res, 60));
+        const body = document.getElementById('tool-body');
+        return {
+          first: rows[0] === id,
+          found: rows.includes(id),
+          hasBody: !!body,
+          inputs: body ? body.querySelectorAll('input, select, textarea').length : 0,
+        };
+      }, t);
+
+      if (!r.hasBody) noBody.push(t.id);
+      else if (!r.inputs && !REFERENCE_ONLY.has(t.id)) noInputs.push(t.id);
+
+      if (r.first) continue;
+      if (SINGLE_TOKEN_NAMES.has(t.id)) {
+        expect(r.found, `${t.id} fell out of the results entirely`).toBe(true);
+        continue;
+      }
+      notFirst.push({ id: t.id, name: t.name });
+    }
+
+    expect(noBody, `tiles that opened to nothing:\n${JSON.stringify(noBody, null, 2)}`).toEqual([]);
+    expect(noInputs, `tiles with nothing to fill in:\n${JSON.stringify(noInputs, null, 2)}`).toEqual([]);
+    expect(notFirst, `tiles their own name does not find first:\n${JSON.stringify(notFirst, null, 2)}`).toEqual([]);
+    expect(pageErrors, `page errors while walking the catalog:\n${pageErrors.slice(0, 10).join('\n')}`).toEqual([]);
+  });
+}
