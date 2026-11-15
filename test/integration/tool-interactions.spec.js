@@ -24,8 +24,11 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'fuzz pass is chromiu
 // Raise SHARDS if a shard's runtime approaches its budget.
 const SHARDS = 4;
 
+// spec-v1725: tagged for the CI sweep lanes with example-correctness and
+// every-tool-is-wired. Its four parts (about 10 minutes each) held CI shard 8
+// for 28 minutes. See the e2e job in .github/workflows/ci.yml.
 for (let shard = 0; shard < SHARDS; shard += 1) {
-  test(`every tool tolerates indiscriminate interaction without crashing (shard ${shard + 1} of ${SHARDS})`, async ({ page }) => {
+  test(`every tool tolerates indiscriminate interaction without crashing (shard ${shard + 1} of ${SHARDS})`, { tag: ['@sweep', `@sweep-${shard + 1}`] }, async ({ page }) => {
     // Serial, full-catalog interaction sweep: one navigation + a burst of input
     // edits per tile. Its wall-clock grows linearly with the catalog (~1s/tile)
     // and contends for CPU with the other browser projects under

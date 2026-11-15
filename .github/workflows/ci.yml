@@ -139,7 +139,9 @@ jobs:
   # (example-correctness, about 9 minutes per part, and every-tool-is-wired, about
   # 3) always landed on shard 2 together: 39 to 40 minutes while the other shards
   # took 4 to 28. Their parts are tagged `@sweep-N`. The eight shards skip
-  # `@sweep`, and four lanes each run part N of both sweeps. Same tests, run once.
+  # `@sweep`, and four lanes each run part N of every sweep. Same tests, run once.
+  # tool-interactions (about 10 minutes per part, which held shard 8 for 28) is
+  # the third sweep in those lanes.
   e2e:
     runs-on: ubuntu-24.04
     strategy:

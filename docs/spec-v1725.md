@@ -42,3 +42,10 @@ Same tests, same checks, same total runner time; the longest lane is what change
 | every other shard | 4 to 12 min | 4 to 13 min |
 
 The run's longest lane went from 40 minutes to 28. Shard 8 is the next thing to look at.
+
+## Step 3: the third sweep
+
+Shard 8's log showed the same shape: `tool-interactions.spec.js`'s four parts at about 10 minutes each, 41
+minutes of work on two workers. Its parts are tagged `@sweep-N` too, so each sweep lane now runs part N of all
+three sweeps (three tests). `--list` still gives 462 tests across the twelve lanes, the same set as the full
+suite, none twice.
