@@ -24,9 +24,13 @@ test('lis-murray severe: average > 2.5', () => {
   assert.match(r.band, /severe lung injury/);
 });
 
-test('lis-murray quadrants clamped to 0-4', () => {
-  const r = lisMurray({ quadrants: 99, pao2: 300, fio2: 0.4, peep: 5, complianceMlPerCmH2O: 80 });
-  assert.equal(r.parts.quadrants, 4);
+// spec-v1722: a chest film has four quadrants; 99 (once clamped to 4) and 2.5 are refused.
+test('lis-murray refuses an off-scale or fractional quadrant count', () => {
+  for (const quadrants of [99, 2.5]) {
+    const r = lisMurray({ quadrants, pao2: 300, fio2: 0.4, peep: 5, complianceMlPerCmH2O: 80 });
+    assert.equal(r.score, null);
+    assert.match(r.band, /quadrant count must be/);
+  }
 });
 
 // spec-v59 §2.1/§2.2: refuse from an empty instrument; no magic P/F of 300.

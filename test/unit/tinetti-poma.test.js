@@ -38,8 +38,9 @@ test('max 28 low; sub-scores clamp to their ranges; blank -> valid:false', () =>
   const max = tinettiPoma({ balance: 16, gait: 12 });
   assert.equal(max.score, 28);
   assert.equal(max.bandLabel, 'Low fall risk');
-  // gait clamps at 12 (15 -> 12) so total 16+12 = 28, not 31.
-  assert.equal(tinettiPoma({ balance: 16, gait: 15 }).score, 28);
+  // spec-v1722: a gait of 15 (once clamped to 12) and a fraction are refused.
+  assert.match(tinettiPoma({ balance: 16, gait: 15 }).message, /gait subscore must be between 0 and 12/);
+  assert.match(tinettiPoma({ balance: 15.5, gait: 12 }).message, /balance subscore must be a whole number/);
   assert.equal(tinettiPoma({ balance: 10 }).valid, false);
   assert.match(tinettiPoma({ gait: 5 }).message, /balance subscore/i);
 });

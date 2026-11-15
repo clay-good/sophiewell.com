@@ -69,6 +69,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Twenty-three scores counted in whole steps (Epworth, ESAS, ISTH-BAT, MMT-8, NISS, IHS4, the Crohn's
+  indices, the Harris Hip Score, and others) took a fraction such as 1.49 and quietly rounded it to the
+  nearest step, so the total and its band moved without a word. A fraction in an item or a count is now
+  refused by name. Seven of them also read an off-scale value as zero or as "not entered" (a Groningen
+  count of 16 read "not frail", a Roland-Morris count of 25 read no disability, a HEART score of 11 asked
+  for a HEART score); those are refused too.
+- ACR TI-RADS read a nodule diameter above 20 cm, or of 0, as no diameter and asked the reader to enter
+  one. It now says what is wrong with the value entered.
 - The weekly data refresh now reaches a person even when one of the FDA labels the tools read has
   changed. When a label's wording moves, the tools that quote it withhold their figures until
   somebody re-reads it, and the checks that assert those figures fail, correctly. That failure used
@@ -3314,7 +3322,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - **Four tools were left without a plausibility check that the tool beside them had
   just been given.** The Toronto HCC risk score took a platelet count of 20,000
-  while its neighbour refused one; the two fatty-liver scores took any BMI at all.
+  while its neighbor refused one; the two fatty-liver scores took any BMI at all.
   Found by the repo's own sweep for exactly that -- one function in a file guarding
   a measurement while its siblings do not -- which had been sitting at zero and was
   refilled by this run's own earlier changes.
@@ -5853,11 +5861,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   references, and the two tools link to each other. See `docs/spec-v978.md`.
 
 - **A related-tools test froze a derived ranking and went red for a change that
-  did nothing to it.** `abg` offered the same four neighbours it always had,
+  did nothing to it.** `abg` offered the same four neighbors it always had,
   in a different order, because retiring four duplicate tiles reweighted the
   token rarity the fill ranks by. The test now asserts the set, that a tile is
-  not its own neighbour, and — stronger than the frozen list ever was — that the
-  in-app list and the pre-rendered page name the same neighbours, which is what
+  not its own neighbor, and — stronger than the frozen list ever was — that the
+  in-app list and the pre-rendered page name the same neighbors, which is what
   both calling `lib/related.js` was for. See `docs/spec-v977.md`.
 
 ### Added

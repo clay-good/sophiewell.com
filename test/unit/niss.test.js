@@ -27,10 +27,17 @@ test('takes the three highest when more than three given is not possible; lowest
   assert.equal(r.major, false);
 });
 
-test('AIS clamps to 1-6 and rounds', () => {
-  const r = niss({ ais1: 9, ais2: 0.4, ais3: 4 });
+test('AIS clamps to 1-6', () => {
+  const r = niss({ ais1: 9, ais3: 4 });
   // 9 -> 6 forces 75
   assert.equal(r.score, 75);
+});
+
+// spec-v1722: an AIS of 0.4 was rounded to 0 and dropped; a fraction is refused now.
+test('a fractional AIS is refused', () => {
+  const r = niss({ ais1: 5, ais2: 0.4, ais3: 4 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /second-highest AIS must be a whole number/);
 });
 
 test('single AIS scores its square', () => {

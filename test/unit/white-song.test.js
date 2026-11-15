@@ -40,13 +40,16 @@ test('white-song 0 of 14 -> NOT fast-track', () => {
   assert.equal(r.fastTrackEligible, false);
 });
 
-test('white-song clamps per-domain out-of-range to [0, 2]', () => {
-  const r = whiteSong({ loc: 99, physicalActivity: -1, hemodynamicStability: 2, respiratoryStability: 2, oxygenSaturation: 2, postoperativePain: 2, postoperativeEmesis: 2 });
-  assert.equal(r.parts.loc, 2);
-  assert.equal(r.parts.physicalActivity, 0);
-  assert.equal(r.score, 12);
-  // physicalActivity = 0 means per-domain floor fails
-  assert.equal(r.fastTrackEligible, false);
+// spec-v1722: an off-scale domain (99 was clamped to 2, the best rating) or a
+// fraction is refused, so it cannot make a fast-track decision.
+test('white-song refuses an out-of-range or fractional domain', () => {
+  const base = { loc: 2, physicalActivity: 2, hemodynamicStability: 2, respiratoryStability: 2, oxygenSaturation: 2, postoperativePain: 2, postoperativeEmesis: 2 };
+  for (const bad of [{ loc: 99 }, { physicalActivity: -1 }, { loc: 1.5 }]) {
+    const r = whiteSong({ ...base, ...bad });
+    assert.equal(r.valid, false);
+    assert.equal(r.fastTrackEligible, null);
+    assert.match(r.band, /Check the value entered\.$/);
+  }
 });
 
 // spec-v1082: a discharge decision is not made by a form nobody filled in.

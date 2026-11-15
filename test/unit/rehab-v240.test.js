@@ -9,9 +9,12 @@ test('esas: sum of 9 symptoms', () => {
   const r = esas({ pain: 5, tiredness: 5, drowsiness: 5, nausea: 5, appetite: 5, dyspnea: 5, depression: 5, anxiety: 5, wellbeing: 5 });
   assert.equal(r.score, 45);
 });
-test('esas: caps each item at 10', () => {
-  const r = esas({ pain: 99 }); // out of range -> 0
-  assert.equal(r.score, 0);
+// spec-v1722: a pain rating of 99 used to read as 0, no symptom burden; refused now.
+test('esas: an item above 10, or a fraction, is refused', () => {
+  assert.equal(esas({ pain: 99 }).valid, false);
+  assert.match(esas({ pain: 99 }).message, /between 0 and 10/);
+  assert.match(esas({ pain: 4.5 }).message, /whole number/);
+  assert.equal(esas({ pain: 10 }).score, 10);
 });
 
 test('rivermead: count', () => {

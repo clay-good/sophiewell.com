@@ -31,8 +31,12 @@ test('roland-morris: count of applicable statements', () => {
   const r = rolandMorris({ count: 14 });
   assert.equal(r.score, 14);
 });
-test('roland-morris: caps at 24', () => {
-  assert.equal(rolandMorris({ count: 30 }).score, 0); // out of range -> 0 via lvl guard
+// spec-v1722: 30 statements of 24 used to read as 0 ("no disability"); refused now.
+test('roland-morris: a count above 24, or a fraction, is refused', () => {
+  assert.equal(rolandMorris({ count: 30 }).valid, false);
+  assert.match(rolandMorris({ count: 30 }).message, /between 0 and 24/);
+  assert.match(rolandMorris({ count: 3.5 }).message, /whole number/);
+  assert.equal(rolandMorris({ count: 24 }).score, 24);
 });
 
 test('neck-disability-index: moderate band', () => {

@@ -1,0 +1,80 @@
+#!/usr/bin/env node
+// spec-v1722: a fractional value in a whole-number field, silently rounded.
+//
+// The silent-zero helper copied into some twenty-five libraries ends
+//
+//     if (!Number.isFinite(n) || n < 0 || n > hi) return 0;
+//     return Math.round(n);
+//
+// spec-v1720 settled the first line. The second one means a count typed as
+// 2.5 is scored as 3, and nothing on the screen says so. A number input with no
+// `step` marks 2.5 invalid and passes it on anyway, so the page reaches the
+// library with it.
+//
+// Oracle, on the library path (`compute(toArgs(...))`, the page's path): take a
+// whole-number example value x where x and x+1 give different answers. If
+// x+0.49 answers exactly like x and x+0.51 answers exactly like x+1, the library
+// rounded the fraction away. (A continuous input whose ANSWER is rounded flips
+// wherever its slope puts the next half-unit, almost never at exactly x+0.5.) A field that measures something continuous with a
+// cutoff at x+0.5 would match too, so a row is a suspect to read, not a defect.
+//
+// WHAT IT FOUND, first run (spec-v1722). 151 fields across 69 calculators. On the
+// page 16 are sliders (they cannot hold 1.49) and 135 are typed boxes. 81 of those,
+// ordinal items and clinical counts in 23 scores, now refuse a fraction through
+// `gradeFault`'s fifth element / `wholeFault`. The 70 rows it still prints are the
+// sliders, continuous measurements whose answer is rounded with a slope of 1 (each
+// checked at its cutoff and correct), and billing/administration counts left for
+// an owner decision (docs/spec-v1722.md).
+//
+// Asserts nothing; prints a report.
+//
+//   node scripts/probe-fraction-rounded.mjs
+//   node scripts/probe-fraction-rounded.mjs --id rivermead-mobility-index
+//   node scripts/probe-fraction-rounded.mjs --json > /tmp/fr.json   (rows for the page probe:
+//   FR_ROWS=/tmp/fr.json RUN_PROBES=1 npx playwright test test/integration/fraction-rounded-probe.spec.js --project=chromium)
+
+import { META } from '../lib/meta.js';
+import { REGISTRY } from '../mcp/catalog.js';
+
+const i = process.argv.indexOf('--id');
+const onlyId = i > -1 ? process.argv[i + 1] : null;
+
+const run = (e, inputs) => {
+  try {
+    const raw = e.compute(e.toArgs(inputs));
+    if (raw == null || raw.valid === false) return null;
+    // The RAW result, not the formatted one: a continuous input whose answer
+    // is rounded for display would otherwise look rounded on the way in.
+    return JSON.stringify(raw);
+  } catch { return null; }
+};
+
+const rows = [];
+let tiles = 0; let fields = 0;
+for (const [id, e] of REGISTRY) {
+  if (onlyId && id !== onlyId) continue;
+  const ex = META[id] && META[id].example && META[id].example.fields;
+  if (!ex) continue;
+  if (run(e, ex) === null) continue;
+  tiles += 1;
+  for (const f of e.fields || []) {
+    if (f.kind !== 'number' || Array.isArray(f.values)) continue;
+    if (!Object.prototype.hasOwnProperty.call(ex, f.dom)) continue;
+    const x = Number(String(ex[f.dom]).trim());
+    if (!Number.isInteger(x)) continue;
+    // Step down when x+1 is outside the field's range, so a top-of-scale
+    // example still gets asked.
+    const lo = Number.isFinite(f.max) && x + 1 > f.max ? x - 1 : x;
+    const at = (v) => run(e, { ...ex, [f.dom]: String(v) });
+    const a = at(lo); const b = at(lo + 1);
+    if (a === null || b === null || a === b) continue;
+    fields += 1;
+    if (at(lo + 0.49) === a && at(lo + 0.51) === b) rows.push({ id, dom: f.dom, label: f.label, x: lo });
+  }
+}
+
+rows.sort((p, q) => (p.id < q.id ? -1 : p.id > q.id ? 1 : 0));
+if (process.argv.includes('--json')) { console.log(JSON.stringify(rows)); process.exit(0); }
+console.log(`${rows.length} field(s) across ${new Set(rows.map((r) => r.id)).size} calculator(s) round a fraction to the nearest whole number without saying so.`);
+console.log(`Reach: ${tiles} calculators with a working example, ${fields} whole-number fields where one step changes the answer.\n`);
+for (const r of rows) console.log(`  ${r.id}  ${r.dom}: ${r.x + 0.49} -> ${r.x}, ${r.x + 0.51} -> ${r.x + 1}  (${r.label})`);

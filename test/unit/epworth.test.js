@@ -43,10 +43,16 @@ test('epworth 24 of 24 -> severe band (16-24)', () => {
   assert.match(r.band, /severe/i);
 });
 
-test('epworth clamps per-item out-of-range to [0, 3]', () => {
-  const r = epworth({ reading: 99, tv: -5, publicPlace: 0, carPassenger: 0, lyingDown: 0, sittingTalking: 0, afterLunch: 0, carTraffic: 0 });
-  assert.equal(r.parts.reading, 3);
-  assert.equal(r.parts.tv, 0);
+// spec-v1722: an off-scale or fractional rating is refused by name. It used to be
+// clamped (99 -> 3, -5 -> 0), which scored a rating nobody could have given.
+test('epworth refuses an out-of-range or fractional rating', () => {
+  const base = { reading: 0, tv: 0, publicPlace: 0, carPassenger: 0, lyingDown: 0, sittingTalking: 0, afterLunch: 0, carTraffic: 0 };
+  for (const bad of [{ reading: 99 }, { tv: -5 }, { tv: 1.5 }]) {
+    const r = epworth({ ...base, ...bad });
+    assert.equal(r.valid, false);
+    assert.equal(r.score, null);
+    assert.match(r.text, /Check the value entered\.$/);
+  }
 });
 
 // spec-v1086: an unrated situation is not "would never doze".

@@ -373,7 +373,8 @@ for (const [label, inputs, expected] of [
   ['example 6/24', { reading: 1, tv: 1, publicPlace: 0, carPassenger: 1, lyingDown: 2, sittingTalking: 0, afterLunch: 1, carTraffic: 0 }, 6],
   ['all-zero', { reading: 0, tv: 0, publicPlace: 0, carPassenger: 0, lyingDown: 0, sittingTalking: 0, afterLunch: 0, carTraffic: 0 }, 0],
   ['max 24', { reading: 3, tv: 3, publicPlace: 3, carPassenger: 3, lyingDown: 3, sittingTalking: 3, afterLunch: 3, carTraffic: 3 }, 24],
-  ['clamps out-of-range ratings to 0-3', { reading: 9, tv: -1, publicPlace: 3, carPassenger: 3, lyingDown: 0, sittingTalking: 0, afterLunch: 0, carTraffic: 0 }, 9],
+  // spec-v1722: an out-of-range rating is refused now, not clamped, so it has no
+  // score for the derivation to sum to (test/unit/epworth.test.js).
 ]) {
   test(`epworth components sum equals epworth() score (${label})`, () => {
     const r = epworth(inputs);

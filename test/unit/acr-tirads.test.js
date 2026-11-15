@@ -44,3 +44,16 @@ test('TR1 benign and guards for missing categorical fields', () => {
   assert.equal(acrTirads({ composition: 'solid' }).valid, false);
   assert.equal(acrTirads({}).valid, false);
 });
+
+// spec-v1722: an entered diameter the tool cannot use is refused by name, not
+// read as "no diameter" (which asked the reader to enter what they had typed).
+test('an out-of-range diameter is refused, not read as blank', () => {
+  const base = { composition: 'solid', echogenicity: 'veryhypo', shape: 'wider', margin: 'smooth', fociPunctate: true };
+  for (const diameter of [25, 0, -1, '999999']) {
+    const r = acrTirads({ ...base, diameter });
+    assert.equal(r.valid, false, `diameter ${diameter}`);
+    assert.match(r.message, /nodule maximum diameter must be greater than 0 and at most 20/i);
+  }
+  assert.equal(acrTirads({ ...base, diameter: 20 }).valid, true);
+  assert.match(acrTirads({ ...base, diameter: '' }).detail, /^Enter the nodule maximum diameter/);
+});
