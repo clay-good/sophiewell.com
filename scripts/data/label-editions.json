@@ -1689,15 +1689,13 @@
       "doac-periprocedural-timing",
       "missed-dose-label-rule"
     ],
-    "splVersion": 30,
-    "publishedOn": "2025-05-05",
-    "verifiedOn": "2026-10-12",
-    "validThrough": "2027-10-12",
+    "splVersion": 39,
+    "publishedOn": "2026-11-12",
+    "verifiedOn": "2026-11-15",
+    "validThrough": "2027-11-15",
     "sections": {
-      "34068-7": "736d4d82c00b0a32af8260afe954c418fc20303872927ed2451ffbe8317e0588"
-    },
-    "supersededOn": "2026-11-15",
-    "supersededBy": "version 39 (2026-11-12)"
+      "34068-7": "5c5b74c33c5577d82069c81d16b22fce7755cf58ccbb87f44ee5d35fde285345"
+    }
   },
   {
     "label": "Elitek (rasburicase)",
@@ -3066,15 +3064,13 @@
     "tools": [
       "iv-iron-course"
     ],
-    "splVersion": 13,
-    "publishedOn": "2025-12-10",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-10-11",
+    "splVersion": 15,
+    "publishedOn": "2026-11-04",
+    "verifiedOn": "2026-11-15",
+    "validThrough": "2027-11-15",
     "sections": {
-      "34068-7": "799ad58687e72edfdbafe0c3a9ebdd1ed1847d5ef7e6375ce5be30a2ff8d1dd0"
-    },
-    "supersededOn": "2026-11-15",
-    "supersededBy": "version 15 (2026-11-04)"
+      "34068-7": "3679fa19c1bb120335d0f040d5e32087c5785f8732cbb8e116e823e4b9978758"
+    }
   },
   {
     "label": "Mounjaro (tirzepatide) injection, Lilly",
@@ -3535,15 +3531,13 @@
     "tools": [
       "abx-renal"
     ],
-    "splVersion": 7,
-    "publishedOn": "2025-12-19",
-    "verifiedOn": "2026-10-10",
-    "validThrough": "2027-10-10",
+    "splVersion": 8,
+    "publishedOn": "2026-11-13",
+    "verifiedOn": "2026-11-15",
+    "validThrough": "2027-11-15",
     "sections": {
-      "34068-7": "80d60492f2cb80f363f87e465e83e2620f83aae653882295acdfa0ecd0a7bfca"
-    },
-    "supersededOn": "2026-11-15",
-    "supersededBy": "version 8 (2026-11-13)"
+      "34068-7": "27894bc49fed49322d04c0a0f1106342ea2fbc28e30bf0fba9030e1a8d1b448e"
+    }
   },
   {
     "label": "Plan B One-Step (levonorgestrel 1.5 mg), Foundation Consumer Healthcare",
@@ -4785,15 +4779,13 @@
     "tools": [
       "pgx-label-dose-limit"
     ],
-    "splVersion": 21,
-    "publishedOn": "2022-08-05",
-    "verifiedOn": "2026-10-14",
-    "validThrough": "2027-10-14",
+    "splVersion": 22,
+    "publishedOn": "2026-11-06",
+    "verifiedOn": "2026-11-15",
+    "validThrough": "2027-11-15",
     "sections": {
-      "34068-7": "4ef8a9c23301c737c646b980da35218a342b602ae8fdaf17ea609b1138a98559"
-    },
-    "supersededOn": "2026-11-15",
-    "supersededBy": "version 22 (2026-11-06)"
+      "34068-7": "c1f75ebbf3d8faa0c82f08760eccc7d1d212cdb916199e8d5a68c3f244187f41"
+    }
   },
   {
     "label": "Xofigo (radium Ra 223 dichloride)",

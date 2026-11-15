@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0a02df6ea3d537a3`
-Generated: 2026-11-15T13:34:21.855Z
+Build ID: `f9ca5559ba47fc08`
+Generated: 2026-11-15T14:41:42.241Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -424,7 +424,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dme-v307.js` | 4101 | `0fa5891d588c79a927bcd10662181d79cf571f68e8138f58d0ec5c4c92873568` |
 | `lib/dmepos-refill-window-v1638.js` | 5493 | `ef1ff7f9ae543c194f5096bc40cf960aceb5c8c8f1a5d022430c373ccb7172b2` |
 | `lib/dmft-caries-v716.js` | 3722 | `e535a145b103c28a450bc854df168c2eb29c23ea0c1dec766ec8fbf2f38d1022` |
-| `lib/doac-dose-check-v1632.js` | 17236 | `f80c3567f2b45ca022a5901e046a2c3b76f685108f77036ae210fda5c4c44180` |
+| `lib/doac-dose-check-v1632.js` | 17263 | `e02bc3fcfc22279cf18a9e9ad1f26bf788969c8355657a07d3efd5dcf32b3f59` |
 | `lib/doac-periprocedural-timing-v1633.js` | 12763 | `12f6b953167c8e14de58d32c4f93f59c6e987cd06ad56f9c7c6198413db2e45e` |
 | `lib/dofetilide-dose-algorithm-v1632.js` | 7727 | `19b7b24707726362b82b5f6654089ec5c5de03921bfed98672aa46a6dda45362` |
 | `lib/dom-fields.js` | 3941 | `7815860d170b0780dfaecb8567a3bb80cc6f7bc42d3eea123329c29f31c5a683` |
@@ -748,7 +748,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/itemized-bill-check.js` | 15335 | `b95981bacef7852e1975cd3c7e85134e02fb98edc1673668afc23476e3298980` |
 | `lib/itemized-bill-worker.js` | 2862 | `83f3f27fbedfeb66380732de78dd066259e8c1aeda2dc912e38f3faf9b0d3dfb` |
 | `lib/iv-antithrombotic-renal-check-v1632.js` | 11380 | `d3c04ee9d306528f5a8a70b170df5271730783e9bb3f42d44e77bcf83da3d2ff` |
-| `lib/iv-iron-course-v1633.js` | 16736 | `e617078185e34f5a749fb7af23ba975076876c60610381ac69ead52bd7870047` |
+| `lib/iv-iron-course-v1633.js` | 16736 | `7c70f675df26ab8c6a12a7620edefc9e87710d17142b40dac53d2dc6edc678db` |
 | `lib/iv-label-rate-check-v1630.js` | 15171 | `91ba8c58816bb530a1e55588237f82f14132cfbb28e90c54c71a560bc861f334` |
 | `lib/iv-phosphate-order-check-v1630.js` | 12740 | `5f62a234c3dba00771fc4dadbbab14c1967eb0e9e74c6399297f0d2da4038c25` |
 | `lib/jemt-papilla-v1487.js` | 3382 | `ed174c99d577b1548f2308be50cfdcbc2384001e6cae8343203e81f0ee5f6b07` |
@@ -784,7 +784,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/lab-interpret.js` | 30577 | `c3e4c2152edc8cdf36b3f2885b4e9de6a6867d5a69e10eafa91e4c675efb04e7` |
 | `lib/lab-stats.js` | 2566 | `0ba85e42d062c175fa5505be5c86e339b2f4c0e9f6b51d6b954f6617eb2c570b` |
 | `lib/label-dose.js` | 8030 | `32955c2d3c6dab36d25f512f012a722c3d6955f7c3ac719e75c3c7f4d44cd99f` |
-| `lib/label-editions.js` | 69254 | `6e534b54fdcbbfb27e4f90cf886321348ab965b3f8420781a1af3bd0e996eeb3` |
+| `lib/label-editions.js` | 68931 | `a61b0969f1d890977ba405cb459f3768273a41cc9817235f2be75e30dcacdef7` |
 | `lib/label-formulation-switch-v1633.js` | 9255 | `c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8` |
 | `lib/label-gate.js` | 4326 | `fd5031c8a1f22c1150e7cb6fa3c5f8bcee966f1a81dedee3a554498529fc4111` |
 | `lib/label-row.js` | 2619 | `1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1` |
@@ -1184,7 +1184,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pfiq7-v776.js` | 5161 | `e03ec8c7c563207cedc8b10a0d7c80dc9622d09aaa8f1cbe738f96cfbb9a8b90` |
 | `lib/pfirrmann-disc-v434.js` | 3552 | `cd219b3462006d853f88f88cb4d271b49d4c254eec61a0af4a228f320351d2c9` |
 | `lib/pgx-diplotype-phenotype-v1640.js` | 5696 | `cd2035bb3fda238dbd7d8355d47994b3e311a335b71dbb3a740c700b321e3fc5` |
-| `lib/pgx-label-dose-limit-v1640.js` | 23597 | `3d50df3342870eb40adda8d2924b28861876a9d701d48afdd180c9d5cc006760` |
+| `lib/pgx-label-dose-limit-v1640.js` | 23597 | `f6177c0cf6499711b41ddb5f09b89d045829720cb52f3ea127e46a35d52795a1` |
 | `lib/pgx-panel-review-v1640.js` | 6832 | `6a5cea7b7cb358d668183972b4b43f05c7d5533eb63595727368fe6295e4b04d` |
 | `lib/ph-hemodynamics-2022-v826.js` | 8398 | `afadd40e4072a1eb5d09d88ba9d6cb9cd91d1d9dfefec86f2542f0a82146e00f` |
 | `lib/pharmacy-effective-rate-v1638.js` | 12885 | `fc90ab20282657b2b7374c00d6cdafde49283bbb68d02c37aeac28beb2ea08e3` |
