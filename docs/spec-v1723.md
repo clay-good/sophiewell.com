@@ -51,5 +51,4 @@ Tests: `test/unit/entered-asked-for-batch-{1,2,3,4}.test.js` drive every row thr
 - `ild-gap`: an out-of-range select value (subtype, age band, DLCO band) reads as 0. A select cannot carry one
   on the page; agents are fenced by the adapter's `values`.
 - `amsler-krumeich`: a negative refraction is treated as not entered.
-- spec-v1722's billing and administration counts (MUE units, RVU units, doses per year) still accept a
-  fraction, pending an owner decision on payer convention.
+- spec-v1722's billing and administration counts: decided by the owner and refused in spec-v1726.

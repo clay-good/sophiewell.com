@@ -51,4 +51,4 @@ Tests: `test/unit/fraction-in-whole-field.test.js` and `test/unit/acr-tirads.tes
 | Rows | Why they stay |
 |---|---|
 | Continuous measurements (QTc, urine anion gap, ABI, shunt fraction, ages, heart rates, labs) | The answer is rounded for display with a slope of 1, so it flips at x+0.5 too. Each was checked at its cutoff: Hodgkin hemoglobin 10.4 vs 10.5, GRIm albumin 3.4 vs 3.5, staffing hours 349.6 vs 350, age 79.6 vs 80. All correct. |
-| Billing and administration counts (MUE units, RVU units, administrations per year, dose counts, therapy and critical-care minutes) | Whether a fraction is ever legitimate depends on payer convention. Left for an owner decision, not guessed. |
+| Billing and administration counts (MUE units, RVU units, administrations per year, dose counts, therapy and critical-care minutes) | Left for an owner decision; decided 2026-11-15 and refused in spec-v1726. |

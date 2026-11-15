@@ -69,6 +69,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The billing tools rounded a fraction of a unit or a minute without saying so: 4.5 units billed against an
+  MUE became 4, 104.5 critical-care minutes became 104, and an RVU payment for 0 units was priced as 1. The
+  MUE check, RVU payment, therapy units, critical-care time, prolonged services, site-of-care comparison,
+  benefits summary and dose calendar now ask for a whole number.
 - The revised Ghent nosology diagnosed ectopia lentis syndrome with the aortic root Z score left blank. That
   diagnosis needs a non-dilated aorta, and the same patient with a Z of 2 is Marfan syndrome, so it now asks
   for the Z score. With the Z score blank and no diagnosis met, it now says it cannot rule Marfan syndrome out.

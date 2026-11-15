@@ -193,7 +193,7 @@ export const renderers = {
           peRvuFacility: numv('rvu-pef') || 0,
           mpRvu: numv('rvu-mp') || 0,
           workGpci: numv('rvu-wg'), peGpci: numv('rvu-peg'), mpGpci: numv('rvu-mpg'),
-          conversionFactor: numv('rvu-cf'), units: Math.max(1, Math.round(numv('rvu-units') || 1)),
+          conversionFactor: numv('rvu-cf'), units: rawEmpty('rvu-units') ? 1 : numv('rvu-units'),
         });
         o.appendChild(el('h2', { text: `Non-facility allowed: ${usd(r.nonFacilityCents)}` }));
         o.appendChild(el('p', { text: `Facility allowed: ${usd(r.facilityCents)}` }));
@@ -411,7 +411,7 @@ export const renderers = {
     wire(['mue-units', 'mue-value', 'mue-mai', 'mue-split'], () => safe(o, () => {
       if (rawEmpty('mue-units') || rawEmpty('mue-value')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the units billed and the MUE value.' })); return; }
       const r = Edit.mueCheck({
-        unitsBilled: Math.round(numv('mue-units')), mueValue: Math.round(numv('mue-value')),
+        unitsBilled: numv('mue-units'), mueValue: numv('mue-value'),
         mai: Math.round(numv('mue-mai')), splitAcrossLines: checked('mue-split'),
       });
       o.appendChild(el('h2', { text: r.pass ? `Passes -- ${r.payableUnits} unit(s) payable` : `Over the MUE -- ${r.payableUnits} payable, ${r.unitsAtRisk} at risk` }));
@@ -575,7 +575,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['cc-payer', 'cc-total', 'cc-proc'], () => safe(o, () => {
       if (rawEmpty('cc-total')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the total critical-care minutes.' })); return; }
-      const r = Em.criticalCareTime({ totalMinutes: Math.round(numv('cc-total')), procedureMinutes: Math.round(numv('cc-proc') || 0), payer: str('cc-payer') });
+      const r = Em.criticalCareTime({ totalMinutes: numv('cc-total'), procedureMinutes: numv('cc-proc') || 0, payer: str('cc-payer') });
       o.appendChild(el('h2', { text: r.isCriticalCare ? (r.units99292 ? `99291 + 99292 x${r.units99292}` : '99291') : 'Not critical care' }));
       verdictLine(o, r.note, r.isCriticalCare ? null : 'flag');
       o.appendChild(derivation([
@@ -646,7 +646,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['ps-code', 'ps-payer', 'ps-min'], () => safe(o, () => {
       if (rawEmpty('ps-min')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the total documented time.' })); return; }
-      const r = Em.prolongedServices({ primaryCode: str('ps-code'), totalMinutes: Math.round(numv('ps-min')), payer: str('ps-payer') });
+      const r = Em.prolongedServices({ primaryCode: str('ps-code'), totalMinutes: numv('ps-min'), payer: str('ps-payer') });
       o.appendChild(el('h2', { text: r.units ? `${r.prolongedCode} x${r.units}` : 'Below the prolonged-service threshold' }));
       verdictLine(o, r.note, r.units ? null : 'flag');
       o.appendChild(derivation([
@@ -674,7 +674,7 @@ export const renderers = {
       const rule = str('tu-rule');
       if (rule === 'medicare') {
         if (rawEmpty('tu-total')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the total timed minutes.' })); return; }
-        const r = Em.therapyUnits({ rule, totalMinutes: Math.round(numv('tu-total')) });
+        const r = Em.therapyUnits({ rule, totalMinutes: numv('tu-total') });
         o.appendChild(el('h2', { text: `${r.units} unit(s)` }));
         verdictLine(o, r.note, r.units ? null : 'flag');
         o.appendChild(derivation([['Total timed minutes', String(r.totalMinutes)], ['Band', r.band], ['Units', String(r.units)]]));

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `632453d95a06be7d`
-Generated: 2026-11-15T20:01:25.060Z
+Build ID: `839b3750b7da9b44`
+Generated: 2026-11-15T22:13:16.379Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -161,7 +161,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/bctq-v774.js` | 3483 | `6d1cab9250cf31f91e435c3af2833721a7c424eb755d8edf1a1e5287d2f2ec9f` |
 | `lib/bed-occupancy-alos-v1657.js` | 4686 | `c17b5aaff2408ee9bcbb4716ab8258d0040dc8cfb592685ffda92eae9d771145` |
 | `lib/bell-nec-v431.js` | 4461 | `a8a0e560e740c82134a0e9eccb40b53e6b4e5da01eff8f994d0ba3c52366ad15` |
-| `lib/benefits-v1505.js` | 7605 | `fe7a208b08c3053a0b270ac7f47098eb688b87cf96eb87f45595627faa21a515` |
+| `lib/benefits-v1505.js` | 8010 | `0098056de94570c67608de0c9e38d5cc9d6d335c187ad5a62e21e4ea13f749a9` |
 | `lib/benzo-equiv-v296.js` | 6663 | `e3687bd4d03cac5d36b3a3c1355beab4c52841e620f8572e64956635fb271da7` |
 | `lib/berndt-harty-v403.js` | 3412 | `86e138dcdf6e8810773fad12b4be6c7e43086d33349075f87c987136da52bba5` |
 | `lib/bethesda-thyroid-v424.js` | 3705 | `8112250a30620de3b4bf748e10429d4f58394b0ef6ee03232e5ae4cbbd34e9e2` |
@@ -171,9 +171,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/bi-rads-v322.js` | 5295 | `22615c3018830dc91339396fc952be1aa0e111df6eaef1fdb5f223942fdc4ccb` |
 | `lib/biffl-bcvi-v436.js` | 3300 | `a1bfde85051febe4916a21db1bf8850bada786470c51db16ffe7f2aeaccccc0e` |
 | `lib/bigliani-acromion-v488.js` | 2861 | `52b33e049e6db1a656f37ce906fe5035a3ad1a32ba42b68e817b919813f211ae` |
-| `lib/billing-v78.js` | 13316 | `183769d22468e7c6aa2bacd3c7a0fe6799d2ff38620c8382c3e8043f52038537` |
-| `lib/billing-v79.js` | 23592 | `38855e98322bcb40f603c1255fdc32f784ecccef5f861e72ae27732a67413d1d` |
-| `lib/billing-v80.js` | 25327 | `adebf31567014b687bd7fdcb9e0a60a4b3518185cb29ea0baf64cd11ec5b17c5` |
+| `lib/billing-v78.js` | 13536 | `0f26b4d3b179177701841019cf6011b0eef8dd727816ad4db9b5e15cbef1f44b` |
+| `lib/billing-v79.js` | 23854 | `5f5355521903de4700e70c30c13d342356a40d2102637e39ded33b6f6c9b267c` |
+| `lib/billing-v80.js` | 26185 | `303755e9b83298013a8651d73458c7e4bae3c8a94685b780dd83cf96387e0774` |
 | `lib/billing-v81.js` | 16760 | `a6fab93c9220fdd227e21f3dd6c5f624f246ce3ea0741e6dab46a906ae759c05` |
 | `lib/billing-v82.js` | 25884 | `dbc4291dbcb05782e6fc34c0c063bc3cbba0bb675736761a4e5afbb00a69726a` |
 | `lib/billing-v83.js` | 21528 | `284251bb90c87242d8982a29c6f05c452e320fc79af24f2a918fd5a2f635b863` |
@@ -431,7 +431,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/donor-recipient-size-match-v1661.js` | 2989 | `e02071de9b9ae11b1afe9065777a69dee101c8d229686234a9fb0c02e1b0e1bd` |
 | `lib/dorr-femur-v499.js` | 3385 | `b2b7a006e152b4301decb8c63f6f5367332bd6366e4606ec410ab3689be5e991` |
-| `lib/dose-calendar-v1512.js` | 14281 | `b0a2dbc5a011bfbcb1b0831c5e8412b069185f6cde5eafe1a04888586dbfed11` |
+| `lib/dose-calendar-v1512.js` | 14395 | `3bfb2d5a51da1724bc6cb82c52f5bd659ce6c6dc9def3f442b456a6b5809f0e3` |
 | `lib/dose-history-level-v1699.js` | 10751 | `3e136f5497ccc829f55f949a471dff6fc947f1f7a0dd5c0bf164ecc1dee088e2` |
 | `lib/dose-schedule.js` | 1291 | `6bd747010b2e79ea5b45cbe11ebb8eb4d97f9524c2e0e2a9adcc91c1a96f7147` |
 | `lib/downton-fall-risk-v688.js` | 4415 | `f85971f29ae4e1e476e9104ce0ab63e43b6308bc9c9f042afb58c937a6ee530d` |
@@ -3096,7 +3096,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `vendored/tesseract/tesseract.min.js` | 66695 | `a8e29918d098b2b06e1012bdaeffb4aec0445c5d5654709023e0bd1f442a80e8` |
 | `vendored/tesseract/worker.min.js` | 123724 | `aca1229639fc9907d86f96e825955a2b7c5716d17f3bc3acd71f9c7ab66181fc` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
-| `views/group-b.js` | 75361 | `d287057670c489fd18c62693ba624648623adf3a7adcf9ca79552dd34f265911` |
+| `views/group-b.js` | 75287 | `db16efb1a2900e8c8712510364abfdc6a719cc5d4c48c4e8759d014481b2e7d2` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 57007 | `e0a0e681f390689d9b7d436b91bddcc9fb3502aa517d2737345fa7a285a3d83a` |
 | `views/group-f.js` | 57800 | `b11dc1a501aad1add3a4cc2a541581f5141502efa220cb790b1a49432a7021b9` |
