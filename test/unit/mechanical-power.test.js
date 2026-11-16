@@ -33,3 +33,18 @@ test('any missing ventilator value surfaces a valid:false fallback', () => {
   assert.match(r.band, /peak/i);
   assert.equal(mechanicalPower({}).valid, false);
 });
+
+// spec-v1736: 0 <= PEEP <= plateau <= peak by definition. Out of order, the bracket went negative
+// and a negative power was called "below the higher-VILI-risk threshold".
+test('pressures out of their definitional order are refused, not read as low power', () => {
+  const b = { respiratoryRate: 20, tidalVolume: 450, plateau: 25, peep: 8, peak: 30 };
+  for (const [o, re] of [[{ plateau: 80 }, /peak pressure \(30\) is below the plateau/], [{ plateau: 999 }, /below the plateau/],
+    [{ peep: 30 }, /plateau pressure \(25\) is below PEEP \(30\)/], [{ peep: -10 }, /PEEP cannot be negative/]]) {
+    const r = mechanicalPower({ ...b, ...o });
+    assert.equal(r.valid, false, JSON.stringify(o));
+    assert.match(r.band, re);
+  }
+  // Equal pressures are possible (pressure control: peak ~ plateau; zero driving pressure).
+  assert.equal(mechanicalPower({ ...b, plateau: 30, peak: 30 }).valid, true);
+  assert.equal(mechanicalPower({ ...b, peep: 0 }).valid, true);
+});

@@ -44,7 +44,7 @@ The remaining 49 library rows (32 on the page) need an envelope that does not ex
 | ~~hCG~~ (done in spec-v1735), interval hours | `barnhart-hcg` |
 | Tumor count and size | `milan-criteria` |
 | Stone dimensions, tract length, Hounsfield units | `stone-nephrolithometry` (HU is not definitional: extended-scale CT reports past 3,071) |
-| Tidal volume, plateau, PEEP, peak pressure | `mechanical-power` |
+| Tidal volume, ~~plateau, PEEP, peak pressure~~ (pressure order: done in spec-v1736) | `mechanical-power` |
 | Contrast volume | `mehran-cin` |
 | Estimated blood loss | `surgical-apgar` |
 | Vd, CL, Cp, dosing interval | `pk-suite` |

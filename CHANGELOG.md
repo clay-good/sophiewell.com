@@ -69,6 +69,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Ventilator pressures out of their natural order (PEEP below plateau below peak) or below zero gave answers.
+  Mechanical power called a plateau of 80 over a peak of 30 "below the higher-risk threshold", Murray's lung
+  injury score read a PEEP of -5 as no lung injury, and the breathing-trial check called a patient ready on a
+  PEEP of -5, an FiO2 of 0.05 or a P/F ratio of 99,999. These now say what is wrong. Mean airway pressure and
+  driving pressure check the same order.
 - DAS28, PCDAI, Truelove and Witts and the Kawasaki criteria answered an ESR past the Westergren scale (it reads
   0 to 200 mm/h); BODE and REVEAL Lite 2 gave their best walk points for a 6-minute walk no one could cover; and
   IGCCCG, WHO/FIGO and the serial-hCG rise answered an hCG of 50 million. Each now says the value is out of range.

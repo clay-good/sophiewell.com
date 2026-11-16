@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1be6c65b4c928c90`
-Generated: 2026-11-16T14:29:07.460Z
+Build ID: `9b92769fe43f3028`
+Generated: 2026-11-16T14:42:54.208Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -299,7 +299,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
 | `lib/clinical-v4.js` | 22801 | `d52d47187af85487fabd6ed0a56d254ef7a0058704275b6241c97b2d36149cc8` |
 | `lib/clinical-v5.js` | 26940 | `9d75aa30b97b5dd05ebc62e30eff334027d441bc186ece1d826b3e9238eefa7d` |
-| `lib/clinical-v6.js` | 17029 | `546b3f749b758d099654b8ecdd89742e0a603583846708705e4871e3f6f47612` |
+| `lib/clinical-v6.js` | 17579 | `5b1bb0c6597896b1bfd9ffb16a02cca222a96de564eaebc71c16e47ef4b72241` |
 | `lib/clinical-v7.js` | 27587 | `46dd1705a10e87cd387b7b3ef23b742e0bda3e79ec5f4fd71516bf0606d20062` |
 | `lib/clinical-v8.js` | 28200 | `3d63d553285920856a96febaede4ac2bd9ecf44fa3ae221218cfe6e1e51efe6c` |
 | `lib/clinical.js` | 29269 | `f93388d4b80c11e67ace4f610bc52df2bfc5c5b74a57939d59cab6831dd28a8e` |
@@ -641,7 +641,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heme-v132.js` | 16879 | `b8efc09695da0d762446d04a61a8269f62ec63f2c8d35fe8547375b1e603b333` |
 | `lib/hemederm-v245.js` | 9186 | `2a54f2acb8e1db72e887094991e92e9eca8d19f74ecc80942fb444ea4fc1853f` |
 | `lib/hemo-v194.js` | 12479 | `946075d0e9472b5a77284bd02c196e4dddb9e7b17b379c38c5700297ab21fbc5` |
-| `lib/hemodynamics-v87.js` | 12411 | `e74f5e3c37801e4cd16fbe916f0bc7c0da23b2dbc40b20e9a120a82a4b67fc74` |
+| `lib/hemodynamics-v87.js` | 13263 | `dfa46cb78bfa99ece9f9524cbf447fd7d4e5a802b3f55ea26b6372d0f336458d` |
 | `lib/hemonc-v94.js` | 24417 | `63390ae46c47eb5f547ee1eab0ec04112e6ba19042fb28f7451dfa9ec9b543b2` |
 | `lib/hep-fibrosis-portal-v212.js` | 7921 | `93f3523d0b77872b3a351fc28a630c781e1f5469bffc631f70ad84ccffaed494` |
 | `lib/hep-v124.js` | 18394 | `1a8183089caf8e9363584f110105c1dd0400b057d710cd201c22b5521e86a08d` |
@@ -1064,7 +1064,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/olbi-v785.js` | 4769 | `3d9e020059516dbd9442bb9b585a68342216dff03e2ed93ca88c55195faa7971` |
 | `lib/onc-staging-v187.js` | 13617 | `2586cb2c1f5dd3f0e4ca008783ff9d90e8e6fea2a470ee986cf06a4e8a133d8a` |
 | `lib/onc-v134.js` | 16934 | `6335c7bb64652b213491db50ec0b0a04eddcab52c9bfea55d5dd26ba48ce86b5` |
-| `lib/oneformula-v167.js` | 16004 | `0248b6b7cc1c506b67a821b5a89cb89f34137271151a6c713887bfd495fe5ca0` |
+| `lib/oneformula-v167.js` | 16363 | `1ed03e34920190ebbd4824d1943044d988641e3d07342108c46440ec78b2ec68` |
 | `lib/op-atropine-titration-v1556.js` | 5161 | `90758b34c22e5915fef19b556b147f0d0d4412059e10c1b46d261d10ec71c62e` |
 | `lib/ophtho-v164.js` | 12043 | `0d05264db0c9c99ce048830efe40d16d7d1eca0cbdd554a758a244782042644d` |
 | `lib/ophtho-v236.js` | 8962 | `4065c5e4db96d5601037f699ffbbee1468a512701b80e912c9f7b2908b26e54b` |
@@ -1377,7 +1377,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schumock-thornton-preventability-v1634.js` | 4099 | `89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 331948 | `70b0109f8cf3ded8cb3018884c30f787d37ce16de0dbdcc5d668755254c28b40` |
+| `lib/scoring-v4.js` | 333313 | `92aec92d6c4feeb0e4e9f949e47846eba0b2712b136e8d437f72fea75ff076a5` |
 | `lib/scoring-v5.js` | 14272 | `23a5019c7d081d634d4d3c42593fe124cea6bb961b3070455765466c1a573395` |
 | `lib/scoring-v6.js` | 29620 | `ffbcb86b0bf2cec27c385ed41da4036dd30102fae83a186c506ef6b1900a2621` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
