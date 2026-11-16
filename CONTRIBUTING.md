@@ -280,6 +280,17 @@ node scripts/probe-static-exemption.mjs
 node scripts/probe-static-exemption.mjs --all      # including rows whose verdict did not move
 ```
 
+`scripts/probe-adapter-only-bounds.mjs` asks whether a range is held by the agent adapter alone. The
+adapter's validator refuses an agent's value outside a field's `min`/`max`, but the page calls the library
+directly, so the library must refuse it too (`docs/spec-v1744.md`). A row on a range slider is unreachable on
+the page; a row on a number input is a defect. An ordering rule lives in `lib/num.js` beside `gradeFault`:
+`orderFault` for two values whose order is fixed by definition (a diastolic below the systolic, an HDL below
+the total cholesterol; `docs/spec-v1737.md`).
+
+```bash
+node scripts/probe-adapter-only-bounds.mjs
+```
+
 **If you add a phrase to `test/lib/asking-language.js`, measure it first.** That
 file's own rules say to check which tools it stops flagging before adding one, and
 the sweeps that clear ONE field now match it against what the reading ADDED rather
