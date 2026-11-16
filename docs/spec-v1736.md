@@ -1,6 +1,6 @@
-# spec-v1736 — Ventilator pressures in their definitional order
+# spec-v1736 — Ventilator and hemodynamic pressures in their definitional order
 
-> Status: **SHIPPED (2026-11-16)**: 5 tools. The catalog stays 2,387.
+> Status: **SHIPPED (2026-11-16)**: 5 ventilator tools, then 3 hemodynamic tools. The catalog stays 2,387.
 
 spec-v1731 listed `mechanical-power`'s pressures as unbounded. They need no outside source: peak is plateau plus
 the resistive pressure, and plateau is PEEP plus the driving pressure, so **0 <= PEEP <= plateau <= peak**.
@@ -17,6 +17,19 @@ Driving the sibling ventilator tools found the same gap in four more.
 The 0-50 cmH2O PEEP range is the one `driving-pressure` already enforced. Equal pressures still answer (pressure
 control: peak about plateau). `airway-resistance`, `auto-peep`, `apps-ards` and `nhsn-vae` already refused.
 
-Tests: `test/unit/ventilator-pressure-order-v1736.test.js`, and a new case in `test/unit/mechanical-power.test.js`.
+## Second batch: hemodynamic pressures
 
-Still open from spec-v1731: `mechanical-power`'s tidal volume, and the other quantities in its table.
+Blood flows down its pressure gradient, so each resistance's upstream pressure is the higher one.
+
+| Tool | Before | Now |
+|---|---|---|
+| `hemodynamic-suite` | PCWP 30 over mPAP 20: PVR -2 Wood units flagged "normal"; CVP 95 over MAP 90: SVR -80 flagged "low" | PCWP > mPAP and CVP >= MAP refused |
+| `transpulmonary-gradient` | PCWP above mPAP: a negative TPG "within the historically normal range"; PA diastolic above the mean answered | both refused; a negative DPG still answers (it is reported in practice) |
+| `portopulmonary-hypertension` | wedge 40 over mPAP 23: "does not meet" | refused (`ph-hemodynamics-2022` already did this) |
+
+CVP above mPAP is deliberately NOT refused: a Fontan circulation has no subpulmonary ventricle, and its caval
+pressure sits at or just above the PA pressure.
+
+Tests: `test/unit/ventilator-pressure-order-v1736.test.js` (ventilator); new cases in `hemodynamic-suite.test.js`, `transpulmonary-gradient.test.js`, `liver-endoscopy-classifications.test.js`, and a new case in `test/unit/mechanical-power.test.js`.
+
+Still open from spec-v1731: `mechanical-power`'s tidal volume; `hemodynamic-suite`'s cardiac output, CVP and BSA ceilings; and the other quantities in its table.

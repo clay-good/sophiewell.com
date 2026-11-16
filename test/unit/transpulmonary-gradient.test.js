@@ -22,3 +22,10 @@ test('guards: PCWP required', () => {
   const r = pressureGradients({mpap:40,padp:30});
   assert.equal(r.valid, false);
 });
+
+// spec-v1736: neither the PA diastolic nor the PCWP can exceed the mean PA pressure; a negative DPG still answers.
+test('a PCWP or PA diastolic above the mean PA pressure is refused; a negative DPG is not', () => {
+  assert.match(pressureGradients({ mpap: 10, padp: 8, pcwp: 14 }).message, /PCWP \(14\) is above the mean PA pressure \(10\)/);
+  assert.equal(pressureGradients({ mpap: 40, padp: 50, pcwp: 20 }).valid, false);
+  assert.equal(pressureGradients({ mpap: 40, padp: 15, pcwp: 20 }).dpg, -5);
+});

@@ -75,3 +75,13 @@ test('an entered BSA or heart rate that is not above zero is refused, not read a
   assert.equal(hemodynamicSuite({ cardiacOutput: 5, heartRate: 70 }).valid, true, 'blank BSA still answers');
   assert.equal(hemodynamicSuite({ cardiacOutput: 5, heartRate: 70 }).ci, null);
 });
+
+// spec-v1736: a resistance's upstream pressure exceeds its downstream one; out of order the PVR or SVR
+// went negative and was flagged "normal" / "low".
+test('hemodynamic-suite: PCWP above mPAP or CVP at or above MAP is refused; Fontan-like CVP > mPAP is not', () => {
+  const b = { cardiacOutput: 5, heartRate: 80, bsa: 2, map: 90, cvp: 5, mpap: 20, pcwp: 10 };
+  assert.match(hemodynamicSuite({ ...b, pcwp: 30 }).band, /PCWP \(30\) is above the mean pulmonary artery pressure \(20\)/);
+  assert.equal(hemodynamicSuite({ ...b, cvp: 90 }).valid, false);
+  assert.equal(hemodynamicSuite({ ...b, pcwp: 20 }).valid, true, 'equal answers');
+  assert.equal(hemodynamicSuite({ ...b, cvp: 14, mpap: 13, pcwp: 6 }).valid, true, 'Fontan: CVP just above mPAP');
+});

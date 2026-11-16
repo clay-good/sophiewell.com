@@ -132,3 +132,10 @@ test('poph: portal hypertension is asked, not assumed', () => {
   assert.equal(r.valid, false);
   assert.match(r.message, /a blank is not a no/);
 });
+
+// spec-v1736: a wedge pressure above the mean PA pressure is refused, not read as "does not meet".
+test('portopulmonary hypertension: wedge above mPAP is refused', () => {
+  const r = portopulmonaryHypertension({ mpap: 23, pvrWood: 2.5, wedge: 40, portalHypertension: 'yes' });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /wedge pressure \(40\) is above the mean pulmonary artery pressure \(23\)/);
+});

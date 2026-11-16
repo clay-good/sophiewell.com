@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9b92769fe43f3028`
-Generated: 2026-11-16T14:42:54.208Z
+Build ID: `12c992a3ed4c14fb`
+Generated: 2026-11-16T14:54:32.701Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -640,8 +640,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heme-staging-v188.js` | 15128 | `8afc42a2c7d9b437a7cd5abefbf431cace4216435fbaf87ebe97594020970093` |
 | `lib/heme-v132.js` | 16879 | `b8efc09695da0d762446d04a61a8269f62ec63f2c8d35fe8547375b1e603b333` |
 | `lib/hemederm-v245.js` | 9186 | `2a54f2acb8e1db72e887094991e92e9eca8d19f74ecc80942fb444ea4fc1853f` |
-| `lib/hemo-v194.js` | 12479 | `946075d0e9472b5a77284bd02c196e4dddb9e7b17b379c38c5700297ab21fbc5` |
-| `lib/hemodynamics-v87.js` | 13263 | `dfa46cb78bfa99ece9f9524cbf447fd7d4e5a802b3f55ea26b6372d0f336458d` |
+| `lib/hemo-v194.js` | 13307 | `78074d36aff74b1c5e0e119fe8bafd316295a18d8d06a737e8ef7c79113ad7ba` |
+| `lib/hemodynamics-v87.js` | 14325 | `d557761f8d54ebae34dafa2b758c6f145d7e90ec19fc8e095c4e72f6034ccab5` |
 | `lib/hemonc-v94.js` | 24417 | `63390ae46c47eb5f547ee1eab0ec04112e6ba19042fb28f7451dfa9ec9b543b2` |
 | `lib/hep-fibrosis-portal-v212.js` | 7921 | `93f3523d0b77872b3a351fc28a630c781e1f5469bffc631f70ad84ccffaed494` |
 | `lib/hep-v124.js` | 18394 | `1a8183089caf8e9363584f110105c1dd0400b057d710cd201c22b5521e86a08d` |
@@ -1211,7 +1211,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/poi-diagnosis-v834.js` | 8980 | `51f5aef7d5ff7d875fe26634d55222aa36e7978e4500c7dfc84983a91c33dc88` |
 | `lib/pollock-flickinger-v601.js` | 14703 | `315524a569fec67d153afdc2d2864aee43bdc27e93ba4e5438fd1571617a1271` |
 | `lib/polyp-surveillance-v882.js` | 11284 | `1e6a593b36dd4e6c200bbc1aaf5c649d95cb08c6dfb7650c6d2a05eb7009b8fa` |
-| `lib/portopulmonary-hypertension-v1243.js` | 7497 | `2dd798e891fee08e59fcc904fcc5376ac7e9a4770cc362bdd827b6d1684b32e2` |
+| `lib/portopulmonary-hypertension-v1243.js` | 7925 | `464e74c453ceca768f639c10889f977a11dbaaf83ef4b274092d710fff72b256` |
 | `lib/posas-observer-scar-v691.js` | 3697 | `dcb2792ef4faae3bbe45ac5e09c3322b3d79bd3f5708adb4443ad2e51df78c23` |
 | `lib/posas-patient-scar-v783.js` | 4310 | `58b2fefabafaf9466dd29beb9821909c3fd3feaa9e2f76cfcca6333f18035481` |
 | `lib/poseidon-v549.js` | 14464 | `9e03014da62b136861306d39992b287b5d9ac49230c33d0e728965dc548d7441` |

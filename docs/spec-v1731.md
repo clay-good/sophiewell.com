@@ -34,7 +34,7 @@ The remaining 49 library rows (32 on the page) need an envelope that does not ex
 | Quantity | Tools |
 |---|---|
 | LVOT diameter, VTI | `aortic-valve-area` |
-| Cardiac output, CVP, mPAP, PCWP, BSA | `cardiac-power-output`, `hemodynamic-suite` |
+| Cardiac output, CVP, ~~mPAP, PCWP~~ (pressure order: done in spec-v1736), BSA | `cardiac-power-output`, `hemodynamic-suite` |
 | Treadmill minutes, ST deviation | `duke-treadmill` |
 | Lead I / aVF net QRS amplitude | `ecg-axis` |
 | FEV1 % predicted, ~~6-minute walk distance~~ (walk: done in spec-v1735) | `gold-spirometry`, `bode-index` |

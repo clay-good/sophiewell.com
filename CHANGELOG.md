@@ -69,6 +69,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The hemodynamic tools answered pressures that cannot occur together. A wedge pressure above the mean pulmonary
+  artery pressure gave a negative PVR flagged normal, a negative transpulmonary gradient read as within the normal
+  range, and portopulmonary hypertension read it as not met. A CVP above the MAP gave a negative SVR. These now say
+  which pair is out of order.
 - Ventilator pressures out of their natural order (PEEP below plateau below peak) or below zero gave answers.
   Mechanical power called a plateau of 80 over a peak of 30 "below the higher-risk threshold", Murray's lung
   injury score read a PEEP of -5 as no lung injury, and the breathing-trial check called a patient ready on a
