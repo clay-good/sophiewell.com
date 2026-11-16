@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2f983fc5f06e7b4d`
-Generated: 2026-11-16T20:17:13.464Z
+Build ID: `31a591163093bcdc`
+Generated: 2026-11-16T21:47:12.949Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -695,7 +695,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/icer-dominance-v1634.js` | 7464 | `f7c585936819529f57448a3c3579c65855ed4e87a2ffe5123f87d304d83f1537` |
 | `lib/ich-m12.js` | 2953 | `5a7cc22e75460b4072e35f80f5df7a36b44a122129eb5cb08d6bc556f38e2f4b` |
 | `lib/icrs-v338.js` | 4467 | `5e29e3d578cccf7cab83c738db4091fe8c9bb8c0c766b3e34e0ec6022499524b` |
-| `lib/id-v137.js` | 23409 | `54bd2d95d51592e3eb40d9b7d13a49df0d5f781b5528bc601afd6c117949f675` |
+| `lib/id-v137.js` | 23934 | `cf51234bd4d3d654f90d87dc403fdc19e1eabded4a51fe6e34e0d4de65316e4c` |
 | `lib/idcrit-v99.js` | 22833 | `db52cf6cb7dd693284476773e3d9fae0a506c0ea74e0cfae141c6f704b51a165` |
 | `lib/ideberg-glenoid-v409.js` | 4070 | `b7cde0877f7d560cb68fc68b7e39b1f8867024c9bccdb1a3fedd89300faff0a9` |
 | `lib/ids-accountability-reconcile-v1635.js` | 7926 | `9a6c2aac334b8da4ff403b7ee1b5b3d011b3646cc4b182bfa2edc7b352b045db` |
@@ -1003,7 +1003,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/newborn-size-category-v1559.js` | 3373 | `2ce9432abcbd987b9a3792288a6e2a3c079dc42b9cdc7169cfde63fdced2f70e` |
 | `lib/newborn-temperature-who-v1559.js` | 4242 | `152eb2d3a99988d529f9cac84180a5d3314d8738a11e77b7b1f9eab487723075` |
 | `lib/ng-tube-length-v1445.js` | 3145 | `ca0786de784c977444a38b86fa018512c9753056d45be7377cc8807240059d9d` |
-| `lib/nhsn-sir-v1655.js` | 6953 | `7bb229d8c46feb8a3ac3df0a7ee9fd4880b364acd5740cceec9ad802d41ec8ee` |
+| `lib/nhsn-sir-v1655.js` | 7346 | `5f8c3ddf067f5f4eeb118366d49161055d7a14968f2d3a397d4e685fd5d38e70` |
 | `lib/nhsn-vae-v876.js` | 10644 | `8f707c47b76db63a5d19364f2f06aacbd90c09e7ab403a836e7c7889a90d146f` |
 | `lib/ni-rads-v373.js` | 4140 | `80126c64912eaf0c7f60e81f5c78b25dc6b415007fda80987dd4c453dd3777cb` |
 | `lib/nice-v335.js` | 4617 | `2228aaf825a831a865f6baa57e505306b9dd51492d04b6ab5f5de14fa67ddc7e` |
@@ -1321,7 +1321,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheum-classification-v222.js` | 13915 | `95c66ddc0349e0fd38cde0662c0862de9c06e7e0534e4a21bab1108257f5a09b` |
 | `lib/rheum-fn-v280.js` | 8137 | `27469e9bd77ea9899b3446127f132ca1661759f0e860ecd88bc7c2c5a6349534` |
 | `lib/rheum-ob-v156.js` | 17427 | `00478a61066705ade80bb2d28b90acd3368634aa6bd4ef041210c4beb4b63e1a` |
-| `lib/rheum-periop-v89.js` | 20898 | `62c8d8cc8b4b49899dfe97ce0fda8fc6240ceaf7abc304008ce3f0122269f34c` |
+| `lib/rheum-periop-v89.js` | 21808 | `75fcd17dd6205fedc902cdef97a11bfacfaf1e1600341c05c45a6ba8cb3bb639` |
 | `lib/rheum-v147.js` | 28396 | `2684e744e39599fe5bdd32b8447a8078db34ffd2c4fdcba14f7b24c240101040` |
 | `lib/rheum-v148.js` | 32277 | `cd3f2f4cd892eed2e173c7e78db1fc9907c405d89d307b15385ecd2358825305` |
 | `lib/rheum-v160.js` | 13620 | `68d47f6494870967d734ef45898a21d2295ecf498736bbaaabd7b139ac0213cb` |

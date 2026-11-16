@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The test suite no longer spends nine minutes on one helper: the NHSN mid-P interval stops at the 1,000,000 its tools already stop at.
+- The King's College criteria took any creatinine and the ISARIC 4C score any urea, in either unit; a creatinine
+  of ten million met the renal limb. Both now refuse values past the plausible range, stated in the unit entered.
 - PIM3, TASH and the BIG trauma score answered a base excess or base deficit of a million; BIG read one as below
   its high-mortality threshold. They now refuse values past the extremes patients have survived.
 - Sixty-six tools answered an impossible entry, such as a negative weight or a hemoglobin of 999,999, by asking

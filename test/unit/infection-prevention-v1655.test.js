@@ -150,3 +150,10 @@ test('illness: varicella sets no date until lesions are crusted; 24-hour rules u
   assert.equal(ret({ condition: 'meningococcal', therapyStart: '2026-03-01T22:30' }).endsAt, '2026-03-02T22:30');
   assert.equal(ret({ condition: 'group-a-strep' }).valid, false);
 });
+
+// spec-v1749: the limits helper is linear in n; past the 1,000,000 every caller stops at, it returns null
+// rather than run for minutes (the unit fuzz matrix passes 1e9).
+test('nhsnMidPLimits returns null past 1,000,000 and answers at it', () => {
+  assert.equal(nhsnMidPLimits(1e9), null);
+  assert.ok(nhsnMidPLimits(1000000).upper > 1000000);
+});
