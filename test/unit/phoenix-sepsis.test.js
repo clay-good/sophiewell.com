@@ -155,3 +155,12 @@ test('phoenix-sepsis: missing age or empty input is invalid (no NaN)', () => {
   assert.equal(phoenixSepsis({}).valid, false);
   assert.equal(phoenixSepsis().valid, false);
 });
+
+// spec-v1743: a GCS outside 3-15 was read as not entered and the score answered without it.
+test('a GCS outside 3-15 is refused by name; a blank is still not entered', () => {
+  const r = phoenixSepsis({ ageMonths: 24, gcs: 150, platelets: 50 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /Glasgow Coma Scale must be between 3 and 15/);
+  assert.equal(phoenixSepsis({ ageMonths: 24, gcs: 10, platelets: 50 }).valid, true);
+  assert.equal(phoenixSepsis({ ageMonths: 24, gcs: '', platelets: 50 }).valid, true);
+});

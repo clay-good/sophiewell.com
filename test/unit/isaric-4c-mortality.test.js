@@ -67,3 +67,10 @@ test('spec-v1741: an age of 1300 names its range; a blank is still asked for; 12
   assert.match(isaric4cMortality({ ...base, age: '' }).message, /^Enter age/);
   assert.equal(isaric4cMortality({ ...base, age: 120 }).valid, true);
 });
+
+test('spec-v1743: an entered GCS outside 3-15 is told its range, not asked for again', () => {
+  const r = isaric4cMortality({ ...base, gcs: 20 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /GCS must be between 3 and 15/);
+  assert.equal(isaric4cMortality({ ...base, gcs: 15 }).valid, true);
+});

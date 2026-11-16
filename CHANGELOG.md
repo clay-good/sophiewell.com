@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The Phoenix pediatric sepsis score read a Glasgow Coma Scale of 150 as not entered and still answered, and the
+  ISARIC 4C score asked again for a GCS of 20 as if it had been left blank. Both now say the scale runs 3 to 15.
 - Thirteen scores accepted a heart rate of 3,000 or a breathing rate of 800 and answered, including the fetal
   heart-rate categories and the shock index. They now say the value is out of range.
 - Another 38 scores and doses answered values no patient has, such as an antidote dose for a 5,000 kg weight, a

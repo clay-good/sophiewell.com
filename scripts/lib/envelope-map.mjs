@@ -12,7 +12,8 @@ import { META } from '../../lib/meta.js';
 // by the self-check below, the rest by reading the labels they exclude.
 // spec-v1742: a bare `rate` term excluded every HEART rate and RESPIRATORY rate field (and ESR) along with the
 // infusion and flow rates it was written for; the vital signs and the sedimentation rate are let through now.
-export const EXCLUDE = /\bair\b|additive|ambient|outdoor|wind|room |bag |infusate|\burine|urinary|csf|cerebrospinal|dialysate|drain|ascit|pleural|stool|saliva|sweat|24-?h|fractional|excret|clearance|ratio|same unit|delta|change|target|goal|desired|corrected|expected|predicted|per kg|dose|(?<!heart |respiratory |breathing |pulse |sedimentation )\brate\b|infusion/i;
+// spec-v1743: an upper limit of normal is not the measurement.
+export const EXCLUDE = /\bair\b|additive|ambient|outdoor|wind|room |bag |infusate|\burine|urinary|csf|cerebrospinal|dialysate|drain|ascit|pleural|stool|saliva|sweat|24-?h|fractional|excret|clearance|ratio|same unit|delta|change|target|goal|desired|corrected|expected|predicted|per kg|dose|(?<!heart |respiratory |breathing |pulse |sedimentation )\brate\b|infusion|upper limit|\bULN\b/i;
 
 // label pattern, and the unit that confirms the quantity is in the envelope's
 // own unit rather than a convertible one.
@@ -59,6 +60,12 @@ export const MAP = [
   ['bmi', /\bBMI\b|body mass index/i, /kg\/m/i],
   // spec-v1742: ESR (spec-v1735's envelope), once the `rate` exclusion stopped hiding it.
   ['esr', /sedimentation rate|\bESR\b/i, /mm\s*\/?\s*h|mm per hour/i],
+  // spec-v1743: spec-v1734's sourced envelopes were applied by hand and never mapped, so the finder and the page
+  // test could not hold them. GCS is the TOTAL only: an eye, verbal or motor component is not on 3-15.
+  ['triglycerides', /^(?!.*fibrinogen).*triglyceride/i, /mg\/dL/i],  // HLH-2004's fibrinogen label names triglycerides
+  ['alt', /\bALT\b|alanine aminotransferase/i, /^U\/L$|IU\/L/i],
+  ['ast', /\bAST\b|aspartate aminotransferase/i, /^U\/L$|IU\/L/i],
+  ['gcs', /^(?!.*\b(eye|verbal|motor|component|pediatric|modified)\b).*(\bGCS\b|Glasgow Coma)/i, /^$|points|score|3.?15/i],
   // spec-v1735. ESR is not mapped: EXCLUDE drops every label with "rate" (sedimentation RATE);
   // its tools are pinned in test/unit/bounds-sourced-v1735.test.js instead.
   ['sixMinuteWalkM', /6-?minute walk|six-?minute walk|\b6MWD?\b/i, /^m$|met(er|re)s?/i],

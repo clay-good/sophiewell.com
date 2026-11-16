@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ac649c58b9ec9657`
-Generated: 2026-11-16T17:35:23.180Z
+Build ID: `771e7d2aeedd7146`
+Generated: 2026-11-16T17:49:13.073Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -695,7 +695,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/icer-dominance-v1634.js` | 7464 | `f7c585936819529f57448a3c3579c65855ed4e87a2ffe5123f87d304d83f1537` |
 | `lib/ich-m12.js` | 2953 | `5a7cc22e75460b4072e35f80f5df7a36b44a122129eb5cb08d6bc556f38e2f4b` |
 | `lib/icrs-v338.js` | 4467 | `5e29e3d578cccf7cab83c738db4091fe8c9bb8c0c766b3e34e0ec6022499524b` |
-| `lib/id-v137.js` | 23278 | `bfabd28dc00bb542d044f136a31930d1d738a9e0f4f7d1dff0b2ea36e344e3e2` |
+| `lib/id-v137.js` | 23409 | `54bd2d95d51592e3eb40d9b7d13a49df0d5f781b5528bc601afd6c117949f675` |
 | `lib/idcrit-v99.js` | 22833 | `db52cf6cb7dd693284476773e3d9fae0a506c0ea74e0cfae141c6f704b51a165` |
 | `lib/ideberg-glenoid-v409.js` | 4070 | `b7cde0877f7d560cb68fc68b7e39b1f8867024c9bccdb1a3fedd89300faff0a9` |
 | `lib/ids-accountability-reconcile-v1635.js` | 7926 | `9a6c2aac334b8da4ff403b7ee1b5b3d011b3646cc4b182bfa2edc7b352b045db` |
@@ -1164,7 +1164,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/peds-growth-v141.js` | 18955 | `82e9fc50672946ae7aede69c3cb45d59ad07bdd0a843dcb3af758989f963a992` |
 | `lib/peds-heparin-nomogram-v1634.js` | 6376 | `b6a9606893a23e74d5e5d59d8dc2cd5707b6655033e8ba17ad23d5872443603b` |
 | `lib/peds-percentile-v169.js` | 9229 | `49e333e801583f1c601509c67df2074cff43bedf5f7d4a51e1f1e944f6abdffa` |
-| `lib/peds-sepsis-v278.js` | 13271 | `fe0a8c2da7076c0f0fb748159eb034749b00e9eb2022136b1b2b3b8a758f540c` |
+| `lib/peds-sepsis-v278.js` | 13628 | `2b4a216064c679de521947eadf1542b07c47234b271bc50438c24fc7e495eb62` |
 | `lib/peds-v140.js` | 25313 | `fdd4953989ae11881df5508eac0255fd5d941b1e8781badb1cb6c02e3fa24824` |
 | `lib/peds-v98.js` | 19339 | `db8cefb43e0b81aa74984c331547bada3a42c0a811774cd10d715873481b84fb` |
 | `lib/peds-warfarin-nomogram-v1634.js` | 6812 | `9c3a2fd3a323b88d61f6c92bf01cd8661ea7b3f61dd66558d857348639c78338` |
