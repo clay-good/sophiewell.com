@@ -69,6 +69,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- DAS28, PCDAI, Truelove and Witts and the Kawasaki criteria answered an ESR past the Westergren scale (it reads
+  0 to 200 mm/h); BODE and REVEAL Lite 2 gave their best walk points for a 6-minute walk no one could cover; and
+  IGCCCG, WHO/FIGO and the serial-hCG rise answered an hCG of 50 million. Each now says the value is out of range.
+  A real extreme (ESR 140, a walk of 700 m, an hCG near 1.9 million from a molar pregnancy) still answers.
 - Eighteen liver and lipid tools (FIB-4, APRI, BARD, NAFLD fibrosis, the fatty liver and hepatic steatosis
   indexes, HScore, HLH-2004, RUCAM, Hy's law and others) gave a confident reading for an AST, ALT or triglyceride
   past anything ever reported, such as 999,999. They now say the value is out of range. The limits sit above

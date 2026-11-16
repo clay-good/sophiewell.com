@@ -55,6 +55,10 @@ export const MAP = [
   ['bun', /\bBUN\b|urea nitrogen/i, /mg\/dL/i],
   ['eGFR', /eGFR|\bGFR\b/i, /mL\/min/i],
   ['bmi', /\bBMI\b|body mass index/i, /kg\/m/i],
+  // spec-v1735. ESR is not mapped: EXCLUDE drops every label with "rate" (sedimentation RATE);
+  // its tools are pinned in test/unit/bounds-sourced-v1735.test.js instead.
+  ['sixMinuteWalkM', /6-?minute walk|six-?minute walk|\b6MWD?\b/i, /^m$|met(er|re)s?/i],
+  ['hcg', /\bhCG\b|chorionic gonadotropin/i, /mIU\/mL|IU\/L/i],
 ];
 
 // Tools whose "Height" or "Length" is an organ's dimension, labelled with the bare word.

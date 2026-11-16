@@ -37,11 +37,11 @@ The remaining 49 library rows (32 on the page) need an envelope that does not ex
 | Cardiac output, CVP, mPAP, PCWP, BSA | `cardiac-power-output`, `hemodynamic-suite` |
 | Treadmill minutes, ST deviation | `duke-treadmill` |
 | Lead I / aVF net QRS amplitude | `ecg-axis` |
-| FEV1 % predicted, 6-minute walk distance | `gold-spirometry`, `bode-index` |
+| FEV1 % predicted, ~~6-minute walk distance~~ (walk: done in spec-v1735) | `gold-spirometry`, `bode-index` |
 | Fasting insulin, HDL, waist (triglycerides: done in spec-v1734) | `homa-ir`, `quicki`, `metabolic-syndrome` |
 | ~~ALT, AST~~ (done in spec-v1734) | `hepatic-steatosis-index` |
 | CA-125, HE4 | `roma-ovarian`, `rmi-ovarian` |
-| hCG, interval hours | `barnhart-hcg` |
+| ~~hCG~~ (done in spec-v1735), interval hours | `barnhart-hcg` |
 | Tumor count and size | `milan-criteria` |
 | Stone dimensions, tract length, Hounsfield units | `stone-nephrolithometry` (HU is not definitional: extended-scale CT reports past 3,071) |
 | Tidal volume, plateau, PEEP, peak pressure | `mechanical-power` |
@@ -50,4 +50,4 @@ The remaining 49 library rows (32 on the page) need an envelope that does not ex
 | Vd, CL, Cp, dosing interval | `pk-suite` |
 | D-dimer | `peged` |
 | Urine creatinine | `urine-calcium-cr` |
-| ESR | `das28` |
+| ~~ESR~~ (done in spec-v1735) | `das28` |
