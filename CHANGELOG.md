@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Twenty-one tools accepted a diastolic pressure above the systolic, or an HDL or LDL above the total cholesterol
+  it is part of, and answered: a mean arterial pressure above the systolic, a 0.6% Framingham risk and "Low" ASCVD
+  risk from an HDL four times the total. They now say which value is out of order.
 - The hemodynamic tools answered pressures that cannot occur together. A wedge pressure above the mean pulmonary
   artery pressure gave a negative PVR flagged normal, a negative transpulmonary gradient read as within the normal
   range, and portopulmonary hypertension read it as not met. A CVP above the MAP gave a negative SVR. These now say
