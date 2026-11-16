@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `75f3775c12b2c5a8`
-Generated: 2026-11-16T02:22:54.266Z
+Build ID: `5ce91d84b5f16554`
+Generated: 2026-11-16T02:53:27.793Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -175,7 +175,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/billing-v79.js` | 23854 | `5f5355521903de4700e70c30c13d342356a40d2102637e39ded33b6f6c9b267c` |
 | `lib/billing-v80.js` | 26185 | `303755e9b83298013a8651d73458c7e4bae3c8a94685b780dd83cf96387e0774` |
 | `lib/billing-v81.js` | 16760 | `a6fab93c9220fdd227e21f3dd6c5f624f246ce3ea0741e6dab46a906ae759c05` |
-| `lib/billing-v82.js` | 25884 | `dbc4291dbcb05782e6fc34c0c063bc3cbba0bb675736761a4e5afbb00a69726a` |
+| `lib/billing-v82.js` | 26501 | `6008ec7621b241ea541c981777f4da48817698deac690522d19d552055fada64` |
 | `lib/billing-v83.js` | 21528 | `284251bb90c87242d8982a29c6f05c452e320fc79af24f2a918fd5a2f635b863` |
 | `lib/bilsky-escc-v604.js` | 10899 | `001a75fe88ef711e5693d88ff5bdd4c9a4656fc04c5a0c8b6977567c562acc6a` |
 | `lib/biological-variation-goals-v923.js` | 8186 | `1a3b7d925d3422230687197f83a0e84f3868b94eb0a09ae338685b37f388790f` |

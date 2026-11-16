@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The allowed-amount tool applied a cost-share term left blank as zero without saying so: with the remaining
+  deductible blank, the patient share fell from $200 to $120. It now names the terms that were not entered.
 - Nursing hours per patient day left a blank staff category out of the total without saying so, so RN hours
   that were never entered read as a unit with no RNs and a shortfall against the target. It now names the
   category that was not entered.

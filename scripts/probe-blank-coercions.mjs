@@ -16,6 +16,11 @@
 // bound -- reached by a renderer that passes null for a blank field. Run it when
 // touching a coercion helper, and read the hits rather than fixing them in bulk.
 //
+// DRIVEN 2026-11-15 (spec-v1733): rather than read the 165 greps, every number
+// field was blanked on the page's path and compared with an entered 0. 138 answer
+// identically; the 41 an agent can leave out were read, and one was a defect
+// (allowed-amount applied a blank cost-share term as zero without a word).
+//
 // Usage: node scripts/probe-blank-coercions.mjs
 import { readdirSync, readFileSync } from 'node:fs';
 const files = readdirSync('lib').filter((f) => f.endsWith('.js'));

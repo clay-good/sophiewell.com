@@ -188,3 +188,13 @@ test('cob-calc lesser-of is the NAIC model\'s secondary rule: its normal benefit
   assert.equal(cobCalc({ ...base, method: 'lesser-of', primaryPaidCents: 8000, secondaryWouldPayCents: 9600 }).secondaryPaysCents, 2000, 'capped at the allowable expense left unpaid');
   assert.equal(cobCalc({ ...base, method: 'lesser-of', primaryPaidCents: 5000, secondaryWouldPayCents: 3000 }).secondaryPaysCents, 3000, 'never more than its own benefit');
 });
+
+// spec-v1733: a cost-share term left blank among the others was applied as zero
+// without a word (a blank deductible took the patient share from $200 to $120).
+test('allowedAmount names the cost-share terms that were not entered', () => {
+  const r = allowedAmount({ billedChargeCents: 100000, allowedCents: 60000, coinsurancePct: 20 });
+  assert.equal(r.patientResponsibilityCents, 12000);
+  assert.match(r.note, /The remaining deductible and copay were not entered, so none is applied\.$/);
+  const full = allowedAmount({ billedChargeCents: 100000, allowedCents: 60000, deductibleRemainingCents: 10000, coinsurancePct: 20, copayCents: 0 });
+  assert.doesNotMatch(full.note, /not entered/);
+});
