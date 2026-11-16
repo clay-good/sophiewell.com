@@ -20,6 +20,11 @@
 //   - a disclosure this script's vocabulary does not recognise. `modified-marshall`
 //     says "assessed: renal 2", which is honest and matches nothing in DISCLOSING.
 //
+// REVIEWED 2026-11-15 (spec-v1732): 168 rows; the 30 tools added after v1431
+// (never read: spec-v1432 covered v1412-v1431) were driven. One defect,
+// nursing-hppd (a blank category silently out of the total); the rest disclose,
+// are optional extras, or are real zeros. docs/spec-v1732.md lists them.
+//
 // Read each one against the tile. Asserts nothing; prints a report.
 //
 //   node scripts/probe-omitted-item.mjs

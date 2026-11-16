@@ -150,3 +150,11 @@ test('staffing grid: HPPD × census ÷ 24, rounded up', () => {
   assert.equal(grid({ targetHppd: '0', shiftHours: '8', censusFrom: '1', censusTo: '2' }).valid, false);
   assert.equal(grid({ targetHppd: '6', shiftHours: '25', censusFrom: '1', censusTo: '2' }).valid, false);
 });
+
+// spec-v1732: a blank category was silently out of the total; the answer now says so.
+test('nursing-hppd names a category left blank instead of reading it as no hours', () => {
+  const r = nursingHppd({ patientDays: 600, lpnHours: 600, aideHours: 1800, targetHppd: 8.5 });
+  assert.match(r.band, /RN hours were not entered, so they are not in this total\./);
+  const all = nursingHppd({ patientDays: 600, rnHours: 3000, lpnHours: 600, aideHours: 1800 });
+  assert.doesNotMatch(all.band, /not entered/);
+});

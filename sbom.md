@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fd59799e843a054d`
-Generated: 2026-11-16T01:23:56.175Z
+Build ID: `75f3775c12b2c5a8`
+Generated: 2026-11-16T02:22:54.266Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1037,7 +1037,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nurse-staffing-ratio-check-v1396.js` | 9223 | `f4fc16e9f231cc085c5009e6a6638637836c3c1883d24fcf4e17f2a2b1dadca1` |
 | `lib/nursing-home-staffing-check-v1396.js` | 7698 | `4c8cd87f24ddd72825957f214e47c90ea7bd78baeb190829104e7b175e8ae820` |
 | `lib/nursing-home-staffing-star-v1657.js` | 7505 | `785e53a7bca158f932932eacbb85fbf9a16831f7fea0104c625b2bad13883ffa` |
-| `lib/nursing-hppd-v1657.js` | 3304 | `7ce54fbcab066242ec8b68b81ac0953fa9c94f5131647420e54a73c56ccb2ebb` |
+| `lib/nursing-hppd-v1657.js` | 3657 | `b58448db425c86555a2ecb42773e85ac761937a97ca791f9edb3f19885165b3a` |
 | `lib/nutrition-energy-v152.js` | 17358 | `6f8b7bee38420b0f889c6a517763c5203b4e52a092e480efed0cf74e6dcbc43b` |
 | `lib/nutrition-maternal-v208.js` | 13898 | `87bc77d0cd2eb03f708b658a0dc31bbe879d4ead770b01d2b8c1299a422160d0` |
 | `lib/nutrition-v276.js` | 3685 | `5e511e6c115a25c49b47227f60072cf08bc5bbfc5d6e778913d234be07a61553` |

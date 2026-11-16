@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Nursing hours per patient day left a blank staff category out of the total without saying so, so RN hours
+  that were never entered read as a unit with no RNs and a shortfall against the target. It now names the
+  category that was not entered.
 - Ten tools answered an impossible value with a confident reading and no warning: DAS28 counted a tender-joint
   entry of 999,999 as 28, and cardiac power output, BODE, HOMA-IR, CLIF-C ACLF, the hepatic steatosis index,
   surgical Apgar, mechanical power, the hemodynamic suite and IOM weight gain did the same with a heart rate,
