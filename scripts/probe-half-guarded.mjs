@@ -23,6 +23,18 @@
 // in probe-omitted-field-decides.mjs; what it adds is the evidence that this
 // particular tile already agrees the question is worth asking.
 //
+// REVIEWED 2026-11-15 (spec-v1730): spec-v1696 opened one of its 21 rows (TLS);
+// the other 20 were read. One was a defect: mfp-refund-check read a blank
+// "refund already received" as "no" and stated "No refund received" as a fact
+// (fixed in spec-v1730). The rest need no change. HEAR refuses the very-low band
+// and lists what is ungraded; NISS reports a partial total as a floor and says so;
+// the case definitions (chikungunya, zika, yellow fever) and the antivenom tiles
+// stay at the lower category or "not decided"; DALY says "No deaths were entered,
+// so this is the disability side only"; HAT assumes follow-up is NOT assured (the
+// safe direction) and says so; the syphilis sequence names the next test; SAAR,
+// the dose and week fields are optional extras whose absence changes no verdict; the PJI, NP-tracker and levodopa fields are boxes and doses where
+// absence is a real "no". A new row after this date is one nobody has read.
+//
 // Asserts nothing; prints a report.
 //
 //   node scripts/probe-half-guarded.mjs

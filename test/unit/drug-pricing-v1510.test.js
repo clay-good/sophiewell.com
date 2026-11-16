@@ -15,8 +15,15 @@ test('mfp-refund-check: the standard default refund is (WAC - MFP) x quantity', 
 
 test('mfp-refund-check: late after the expected date unless received; no refund without a negotiated price', () => {
   const base = { drug: 'eliquis', serviceDate: '2026-08-01', quantity: '60', wac: '10', mfpUnit: '4' };
-  assert.equal(m(base, now).bandLabel, 'Refund late');
+  // spec-v1730: three states. "no" is late; a blank does not assert that nothing arrived.
+  assert.equal(m({ ...base, received: 'no' }, now).bandLabel, 'Refund late');
+  assert.match(m({ ...base, received: 'no' }, now).band, /No refund received by/);
+  const blank = m(base, now);
+  assert.equal(blank.bandLabel, 'Refund past due date');
+  assert.doesNotMatch(blank.band, /No refund received/);
+  assert.match(blank.band, /If it has not arrived by .*, follow up with the manufacturer/);
   assert.notEqual(m({ ...base, received: 'yes' }, now).bandLabel, 'Refund late');
+  assert.equal(m({ ...base, received: 'yes' }, now).abnormal, false);
   assert.equal(m({ drug: 'ozempic', serviceDate: '2026-09-01' }, now).refund, 0);
 });
 

@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The negotiated-price refund check stated "No refund received" when the question had been left blank. It now
+  says when the refund was due and to follow up if it has not arrived; an answer of "no" still reads as late.
 - The Clinical Opiate Withdrawal Scale let every item take up to 5, so a sweating score of 5 (the item runs 0 to
   4) passed without the range warning; each item now has its own top score. The pediatric weight estimate's
   age field now matches its own "1-14" label (infants use the months field), and the ankle-brachial index's
