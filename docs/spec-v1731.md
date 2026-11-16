@@ -40,7 +40,7 @@ The remaining 49 library rows (32 on the page) need an envelope that does not ex
 | FEV1 % predicted, ~~6-minute walk distance~~ (walk: done in spec-v1735) | `gold-spirometry`, `bode-index` |
 | Fasting insulin, HDL, waist (triglycerides: done in spec-v1734) | `homa-ir`, `quicki`, `metabolic-syndrome` |
 | ~~ALT, AST~~ (done in spec-v1734) | `hepatic-steatosis-index` |
-| CA-125, HE4 | `roma-ovarian`, `rmi-ovarian` |
+| CA-125, HE4 | `roma-ovarian`, `rmi-ovarian` (searched again in spec-v1747: reports name a highest only within a category -- 2,897 U/mL benign postmenopausal, 9,537 U/mL endometriosis -- and an unverified 28,831 U/mL; malignant disease can run higher, so no ceiling is set) |
 | ~~hCG~~ (done in spec-v1735), interval hours | `barnhart-hcg` |
 | Tumor count and size | `milan-criteria` |
 | Stone dimensions, tract length, Hounsfield units | `stone-nephrolithometry` (HU is not definitional: extended-scale CT reports past 3,071) |
