@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Pregnancy dating accepted an ultrasound dated before the last period, the New York newborn-screen planner listed
+  a specimen drawn before birth, and the out-of-fridge discard tool counted 23 days left on a 14-day limit when the
+  date asked about came before the product left the refrigerator. Each now says the dates are out of order.
 - GOLD spirometry read an FEV1 larger than the FVC as a ratio of 2 and "no obstruction", and let an entered ratio
   overrule volumes that disagreed with it; the GLI predicted-spirometry tool reported the same ratio of 2 as within
   normal limits. Both now say what is wrong.

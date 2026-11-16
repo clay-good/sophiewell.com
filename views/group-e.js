@@ -791,6 +791,12 @@ export const renderers = {
       const lmp = document.getElementById('pd-lmp').value.trim();
       const crl = num('pd-crl');
       const us = document.getElementById('pd-us').value.trim();
+      // spec-v1738: the same refusal as the agent path (lib/preg-dating.js): a scan that measured a fetus
+      // cannot predate the last menstrual period.
+      if (lmp && us && us.slice(0, 10) <= lmp.slice(0, 10)) {
+        o.appendChild(el('p', { class: 'muted', text: `The ultrasound date (${us}) is not after the last menstrual period (${lmp}); a scan that measured a crown-rump length comes after it. Check the dates entered.` }));
+        return;
+      }
       const lines = [];
       let lmpRes = null, usRes = null;
       if (lmp) {

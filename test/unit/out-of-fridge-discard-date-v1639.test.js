@@ -59,3 +59,10 @@ test('a withheld label shows no date', () => {
   assert.deepEqual([r.withheld, r.discardDate], [true, undefined]);
   assert.equal(run({}).valid, false);
 });
+
+// spec-v1738: "as of" before the product left the refrigerator counted days that had not begun.
+test('as-of before leaving the refrigerator is refused; the same day answers', () => {
+  const b = { product: 'trulicity', kept: 'inside-stated-range' };
+  assert.equal(fd({ ...b, outOfFridge: '2026-10-10', asOf: '2026-10-01' }).valid, false);
+  assert.equal(fd({ ...b, outOfFridge: '2026-10-01', asOf: '2026-10-01' }).daysLeft, 14);
+});

@@ -64,3 +64,11 @@ test('implausible CRL is out of the dating range: no crl output, no overflow', (
   assert.doesNotMatch(JSON.stringify(r), /NaN|Infinity/);
   assert.equal(pregnancyDating({ crlMm: 5000 }).valid, false);
 });
+
+// spec-v1738: an ultrasound dated on or before the LMP is refused, not dated and called discordant.
+test('an ultrasound date not after the LMP is refused', () => {
+  const r = pregnancyDating({ lmpIso: '2026-03-12', crlMm: 50, ultrasoundDateIso: '2025-12-23' });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /not after the last menstrual period/);
+  assert.equal(pregnancyDating({ lmpIso: '2025-12-23', crlMm: 50, ultrasoundDateIso: '2026-03-12' }).discordant, false);
+});

@@ -103,3 +103,11 @@ test('prenatal: NJ HIV under N.J.A.C. 8:61', () => {
   assert.doesNotMatch(pns({ state: 'NJ', setting: 'delivery', ga: '39', hiv3: 'yes' }).band, /expedited/);
   assert.equal(pns({ state: 'NJ', setting: 'delivery', ga: '39' }).valid, false);
 });
+
+// spec-v1738: an event before the birth, or a last transfusion before the first, is refused.
+test('nys newborn screen: events before birth are refused', () => {
+  const b = { birth: '2026-09-11T12:00', weightG: '1450', nicu: 'yes' };
+  assert.match(nbs({ ...b, first: '2026-09-10T08:00' }).message, /first specimen .* is before the birth/);
+  assert.match(nbs({ ...b, transfusionFirst: '2026-09-12T08:00', transfusionLast: '2026-09-11T20:00' }).message, /last transfusion .* is before the first/);
+  assert.equal(nbs({ ...b, first: '2026-09-11T12:00' }).valid, true, 'at birth answers');
+});
