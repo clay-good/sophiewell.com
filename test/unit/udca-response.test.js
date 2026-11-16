@@ -101,3 +101,16 @@ test('spec-v1744: a negative baseline alkaline phosphatase is refused', () => {
   assert.equal(udcaResponse({ ...ex, baselineAlp: '0' }).valid, true);
   assert.equal(udcaResponse({ ...ex, baselineAlp: '' }).valid, true);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: udca-response names the range of an impossible entry and still asks for a blank one', () => {
+  const ex = { monthsOnUdca: 12, alp: 240, alpUln: 120, baselineAlp: 500, ast: 60, astUln: 40, bilirubin: 0.8 };
+  assert.equal(udcaResponse(ex).valid, true);
+  const uln = udcaResponse({ ...ex, alpUln: -999999 });
+  assert.equal(uln.valid, false);
+  assert.match(uln.message, /alkaline phosphatase upper limit of normal must be greater than 0/);
+  assert.match(udcaResponse({ ...ex, alpUln: '' }).message, /^Enter the current alkaline phosphatase/);
+  const months = udcaResponse({ ...ex, monthsOnUdca: -999999 });
+  assert.match(months.message, /months on ursodeoxycholic acid must be at least 0/);
+  assert.match(udcaResponse({ ...ex, monthsOnUdca: '' }).message, /^Enter the months on ursodeoxycholic acid/);
+});

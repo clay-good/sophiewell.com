@@ -40,3 +40,12 @@ test('missing neck -> complete-the-fields', () => {
   assert.equal(r.valid, false);
   assert.match(r.message, /neck circumference/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range neck circumference is told its range, a blank is still asked for', () => {
+  assert.equal(sacs({ neck: 42, hypertension: 1, snoring: 1 }).valid, true);
+  for (const v of [999999, -999999, 19]) {
+    assert.match(sacs({ neck: v }).message, /neck circumference in cm must be between 20 and 80/);
+  }
+  assert.match(sacs({ neck: '' }).message, /^Enter the measured neck circumference/);
+});

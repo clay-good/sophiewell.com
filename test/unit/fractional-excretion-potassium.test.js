@@ -30,3 +30,14 @@ test('inputs are validated', () => {
   assert.equal(fractionalExcretionPotassium({ urineK: '40', plasmaK: '4', urineCr: '100' }).field, 'plasmaCr');
   assert.equal(fractionalExcretionPotassium({ urineK: '0', plasmaK: '4', urineCr: '100', plasmaCr: '1' }).field, 'urineK');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a value of -999999 is told its range; a blank is still asked for', () => {
+  const bad = fractionalExcretionPotassium({ urineK: '40', plasmaK: '-999999', urineCr: '100', plasmaCr: '1.0' });
+  assert.equal(bad.valid, false);
+  assert.equal(bad.field, 'plasmaK');
+  assert.match(bad.message, /potassium in mEq\/L must be greater than 0/);
+  const blank = fractionalExcretionPotassium({ urineK: '40', plasmaK: '', urineCr: '100', plasmaCr: '1.0' });
+  assert.equal(blank.message, 'Enter plasma/serum potassium (mEq/L).');
+  assert.equal(fractionalExcretionPotassium({ urineK: '40', plasmaK: '4.0', urineCr: '100', plasmaCr: '1.0' }).valid, true);
+});

@@ -26,3 +26,12 @@ test('Blank or negative time -> complete-the-fields fallback', () => {
   assert.equal(fourStageBalance({ tandemSeconds: -1 }).valid, false);
   assert.equal(fourStageBalance({}).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a hold time of -999999 s is told its range; a blank is still asked for', () => {
+  const bad = fourStageBalance({ tandemSeconds: -999999 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /must be at least 0/);
+  assert.equal(fourStageBalance({ tandemSeconds: '' }).message, 'Enter the time (seconds) the full tandem stance was held.');
+  assert.equal(fourStageBalance({ tandemSeconds: 8 }).valid, true);
+});

@@ -119,3 +119,15 @@ test('reference-change-value: a dropped half of the pair is named', () => {
   const zero = referenceChangeValue({ ...base, previousResult: 0, currentResult: 1.08 });
   assert.match(zero.band, /a percentage change from zero is not defined/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: a negative CV is told its range, a blank is still asked for', () => {
+  const EX = { ...CVS, probability: 'two-95', previousResult: '1.0', currentResult: '1.08' };
+  for (const k of ['cvAnalytical', 'cvIntraindividual']) {
+    const r = referenceChangeValue({ ...EX, [k]: '-999999' });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be at least 0/);
+  }
+  assert.match(referenceChangeValue({ ...EX, cvAnalytical: '' }).message, /^Enter the analytical imprecision/);
+  assert.equal(referenceChangeValue(EX).valid, true);
+});

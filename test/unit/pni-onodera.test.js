@@ -19,3 +19,15 @@ test('PNI guards blanks', () => {
   assert.equal(pniOnodera({ albuminGdl: 4.0 }).valid, false);
   assert.equal(pniOnodera({}).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: pni-onodera names the range of an impossible entry and still asks for a blank one', () => {
+  const ex = { albuminGdl: 4, lymphocytes: 1500 };
+  assert.equal(pniOnodera(ex).valid, true);
+  for (const k of Object.keys(ex)) {
+    const r = pniOnodera({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be greater than 0/);
+    assert.match(pniOnodera({ ...ex, [k]: '' }).message, /^Enter serum albumin \(g\/dL\) and total lymphocyte/);
+  }
+});

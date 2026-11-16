@@ -54,3 +54,16 @@ test('the creatinine arm stays optional: urine output alone still classifies', (
   // gradeFault skips a blank, so a tile scored from urine output is untouched.
   assert.equal(rifleAki({ uoClass: 2 }).class, 2);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: an impossible creatinine is told its range, a blank is still asked for', () => {
+  for (const k of ['baselineCr', 'currentCr']) {
+    const r = rifleAki({ baselineCr: '1.0', currentCr: '2.2', [k]: '-999999' });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be between/);
+  }
+  assert.match(rifleAki({ baselineCr: '1.0', currentCr: '' }).message, /^Enter the current creatinine too/);
+  const ex = rifleAki({ baselineCr: '1.0', currentCr: '2.2' });
+  assert.equal(ex.valid, true);
+  assert.equal(ex.className, 'Injury');
+});

@@ -32,3 +32,15 @@ test('any blank field -> valid:false; scalar -> valid:false', () => {
   assert.equal(baseExcess({ ph: 7.4, hemoglobin: 15 }).valid, false);
   assert.equal(baseExcess(0).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const ex = { ph: 7.2, bicarbonate: 15, hemoglobin: 15 };
+  assert.equal(baseExcess(ex).valid, true);
+  for (const k of ['ph', 'bicarbonate', 'hemoglobin']) {
+    const r = baseExcess({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be greater than 0/);
+    assert.match(baseExcess({ ...ex, [k]: '' }).message, /^Enter arterial pH/);
+  }
+});

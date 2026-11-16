@@ -57,3 +57,13 @@ test('missing age -> complete-the-fields fallback', () => {
   assert.equal(r.valid, false);
   assert.match(r.band, /Enter the patient age/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: a negative age is told its range, a blank age is still asked for', () => {
+  const r = goFar({ age: -999999 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /must be greater than 0/);
+  assert.match(goFar({}).band, /^Enter the patient age/);
+  const ex = goFar({ age: 82, septicemia: true, respiratory: true });
+  assert.equal(ex.valid, true);
+});

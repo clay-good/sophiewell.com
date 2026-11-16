@@ -24,3 +24,11 @@ test('blank field -> valid:false; scalar -> valid:false; zero volume guarded', (
   assert.equal(psaDensity(7).valid, false);
   assert.equal(psaDensity({ psa: 6, volume: 0 }).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a PSA or volume of -999999 is told its range; a blank is still asked for', () => {
+  assert.match(psaDensity({ psa: -999999, volume: 30 }).message, /PSA in ng\/mL must be greater than 0/);
+  assert.match(psaDensity({ psa: 6, volume: -999999 }).message, /volume in cc must be greater than 0/);
+  assert.equal(psaDensity({ psa: '', volume: 30 }).message, 'Enter the serum PSA (ng/mL) and the prostate volume (cc).');
+  assert.equal(psaDensity({ psa: 6, volume: 30 }).valid, true);
+});

@@ -24,3 +24,12 @@ test('any blank dimension -> valid:false; scalar -> valid:false', () => {
   assert.equal(prostateVolume(7).valid, false);
   assert.equal(prostateVolume({ ap: 0, tr: 5, cc: 4 }).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a dimension of -999999 cm is told its range; a blank is still asked for', () => {
+  const bad = prostateVolume({ ap: 4, tr: -999999, cc: 4 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /transverse dimension in cm must be greater than 0/);
+  assert.equal(prostateVolume({ ap: 4, tr: '', cc: 4 }).message, 'Enter the anteroposterior, transverse, and craniocaudal dimensions in centimeters.');
+  assert.equal(prostateVolume({ ap: 4, tr: 5, cc: 4 }).valid, true);
+});

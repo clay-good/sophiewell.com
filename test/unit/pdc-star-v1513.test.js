@@ -83,3 +83,14 @@ test('a fill line repeated exactly is counted, and named so a rebilled claim can
   assert.match(a({ fills, year: '2026', asOf: '2026-03-01' }).notes.join(' '), /repeats an earlier line exactly/);
   assert.doesNotMatch(p({ fills: fills.split('\n').slice(0, 2).join('\n'), year: '2026' }).notes.join(' '), /repeat/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range measurement year is told its range, a blank is still asked for', () => {
+  assert.equal(p({ fills: ann, year: '2026' }).valid, true);
+  assert.equal(a({ fills: ann, year: '2026', asOf: '2026-09-26' }).valid, true);
+  for (const f of [p, a]) {
+    assert.match(f({ fills: ann, year: '999999' }).message, /measurement year must be between 2000 and 2100/);
+    assert.match(f({ fills: ann, year: '2026.5' }).message, /must be a whole number/);
+    assert.equal(f({ fills: ann, year: '' }).message, 'Enter the measurement year as a four-digit year.');
+  }
+});

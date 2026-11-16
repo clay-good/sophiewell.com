@@ -31,3 +31,15 @@ test('pre must exceed post (no negative generation) and inputs guarded', () => {
   assert.equal(npcrPna({}).valid, false);
   assert.equal(npcrPna(3).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: npcr-pna names the range of an impossible entry and still asks for a blank one', () => {
+  const ex = { postBun: 24, preBun: 70, hours: 44 };
+  assert.equal(npcrPna(ex).valid, true);
+  for (const k of Object.keys(ex)) {
+    const r = npcrPna({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be greater than 0/);
+    assert.match(npcrPna({ ...ex, [k]: '' }).message, /^Enter post-dialysis BUN/);
+  }
+});

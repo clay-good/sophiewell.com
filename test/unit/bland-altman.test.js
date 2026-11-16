@@ -65,3 +65,17 @@ test('bland-altman: a bias of zero still has limits, and the note says why that 
   assert.match(r.signNote, /says nothing about how far apart any single pair can be/);
   assert.match(BLAND_ALTMAN_NOTE, /only the plot will/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: bland-altman names the range of an impossible entry and still asks for a blank one', () => {
+  const ex = { meanDifference: -0.4, sdOfDifferences: 1.2, pairs: 85 };
+  assert.equal(blandAltman(ex).valid, true);
+  const sd = blandAltman({ ...ex, sdOfDifferences: -999999 });
+  assert.equal(sd.valid, false);
+  assert.match(sd.message, /standard deviation of the differences must be at least 0/);
+  assert.match(blandAltman({ ...ex, sdOfDifferences: '' }).message, /^Enter the standard deviation of the differences/);
+  const pairs = blandAltman({ ...ex, pairs: -999999 });
+  assert.match(pairs.message, /number of paired measurements must be at least 2/);
+  assert.match(blandAltman({ ...ex, pairs: 85.5 }).message, /must be a whole number/);
+  assert.match(blandAltman({ ...ex, pairs: '' }).message, /^Enter the number of paired measurements/);
+});

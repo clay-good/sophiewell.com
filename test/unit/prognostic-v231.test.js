@@ -63,3 +63,15 @@ test('nmr: a blank count is still asked for', () => {
 test('nmr: a real pair still computes', () => {
   assert.equal(nmr({ anc: 3.5, amc: 0.5 }).score, 7);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: naples: an out-of-range cholesterol, NLR or LMR is told its range, a blank is still asked for', () => {
+  const EX = { albumin: '3.5', cholesterol: '160', nlr: '4.0', lmr: '3.0' };
+  for (const k of ['cholesterol', 'nlr', 'lmr']) {
+    const r = naples({ ...EX, [k]: '999999' });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be between/);
+  }
+  assert.match(naples({ ...EX, nlr: '' }).message, /^Enter serum albumin/);
+  assert.equal(naples(EX).valid, true);
+});

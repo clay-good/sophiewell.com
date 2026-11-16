@@ -89,3 +89,17 @@ test('the >= 6 cut is unchanged: 6 is high risk, 5 is not', () => {
   assert.ok(at6.score >= 6, `expected a score at or above 6, got ${at6.score}`);
   assert.equal(at6.abnormal, true);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: mcmahon-rhabdo names the range of an impossible entry and still asks for a blank one', () => {
+  const ex = { age: 60, sex: 'female', creatinine: 2.5, calcium: 7, cpk: 50000, cause: 'other', phosphate: 5, bicarbonate: 18 };
+  assert.equal(mcmahonRhabdo(ex).valid, true);
+  const asked = { creatinine: /^Enter initial creatinine/, calcium: /^Enter initial calcium/, cpk: /^Enter initial CPK/, phosphate: /^Enter initial phosphate/, bicarbonate: /^Enter initial bicarbonate/ };
+  for (const [k, sentence] of Object.entries(asked)) {
+    const r = mcmahonRhabdo({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.equal(r.field, k);
+    assert.match(r.message, /must be (at least 0|greater than 0)/);
+    assert.match(mcmahonRhabdo({ ...ex, [k]: '' }).message, sentence);
+  }
+});

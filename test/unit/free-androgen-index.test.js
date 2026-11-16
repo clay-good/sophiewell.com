@@ -37,3 +37,13 @@ test('inputs are validated', () => {
   assert.equal(freeAndrogenIndex({ sex: 'female', testosterone: '2' }).field, 'shbg');
   assert.equal(freeAndrogenIndex({ sex: 'x', testosterone: '2', shbg: '30' }).field, 'sex');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const ex = { sex: 'female', testosterone: 2.5, shbg: 30 };
+  assert.equal(freeAndrogenIndex(ex).valid, true);
+  assert.match(freeAndrogenIndex({ ...ex, testosterone: -999999 }).message, /testosterone in nmol\/L must be greater than 0/);
+  assert.match(freeAndrogenIndex({ ...ex, shbg: -999999 }).message, /SHBG in nmol\/L must be greater than 0/);
+  assert.match(freeAndrogenIndex({ ...ex, testosterone: '' }).message, /^Enter total testosterone/);
+  assert.equal(freeAndrogenIndex({ ...ex, shbg: '' }).message, 'Enter SHBG in nmol/L.');
+});

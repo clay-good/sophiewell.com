@@ -53,3 +53,16 @@ test('spec-v1741: an age past the envelope is refused, an old real one and the e
   assert.equal(triss({ mechanism: 'blunt', rts: 6, iss: 25, age: 60 }).band,
     'TRISS probability of survival 65.8% (blunt mechanism; RTS 6, ISS 25, age >= 55).');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: an out-of-range RTS, ISS or age is told its range, a blank is still asked for', () => {
+  const EX = { mechanism: 'blunt', rts: 6, iss: 25, age: 60 };
+  for (const [k, v] of [['rts', 999999], ['iss', 999999], ['age', -999999]]) {
+    const r = triss({ ...EX, [k]: v });
+    assert.equal(r.valid, false);
+    assert.match(r.band, /must be/);
+  }
+  assert.match(triss({ ...EX, age: null }).band, /^Enter the patient age/);
+  assert.match(triss({ ...EX, iss: null }).band, /^Enter the Injury Severity Score/);
+  assert.equal(triss(EX).valid, true);
+});

@@ -74,3 +74,16 @@ test('kobayashi: the low side names the cutoff it is below', () => {
   assert.ok(r.score < 4);
   assert.match(r.band, /low risk of IVIG resistance \(below the >= 4 cutoff\)/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const EX = { sodium: '131', illnessDay: '4', ast: '150', neutrophil: '84', crp: '11', ageMonths: '8', platelets: '350' };
+  for (const [k, v] of [['sodium', '-999999'], ['illnessDay', '999999'], ['ast', '-999999'], ['neutrophil', '999999'], ['crp', '-999999'], ['ageMonths', '999999'], ['platelets', '-999999']]) {
+    const r = kobayashiKawasaki({ ...EX, [k]: v });
+    assert.equal(r.valid, false);
+    assert.equal(r.field, k);
+    assert.match(r.message, /must be/);
+  }
+  assert.equal(kobayashiKawasaki({ ...EX, ast: '' }).message, 'Enter AST in IU/L.');
+  assert.equal(kobayashiKawasaki(EX).valid, true);
+});

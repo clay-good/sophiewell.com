@@ -37,3 +37,13 @@ test('negative / missing pocket -> valid:false', () => {
   assert.equal(afi({ q1: -1, q2: 4, q3: 4, q4: 4 }).valid, false);
   assert.equal(afi({ q1: 4, q2: 4, q3: 4 }).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const ex = { q1: 1, q2: 1, q3: 1, q4: 1 };
+  assert.equal(afi(ex).valid, true);
+  for (const k of Object.keys(ex)) {
+    assert.match(afi({ ...ex, [k]: -999999 }).message, /pocket depth in cm must be at least 0/);
+    assert.equal(afi({ ...ex, [k]: '' }).message, 'Enter all four quadrant pocket depths (cm).');
+  }
+});

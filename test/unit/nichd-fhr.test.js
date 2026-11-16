@@ -172,3 +172,13 @@ test('omitted features are reported as not entered, and the label never says "nu
   assert.equal(r.bandLabel, 'Not yet categorized');
   assert.equal(nichdFhr({ baseline: 140, variability: 'moderate', lateDecels: 'absent', variableDecels: 'absent', sinusoidal: 'absent' }).variability, 'moderate');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: a negative baseline is told its range, a blank is still asked for', () => {
+  const EX = { baseline: '140', variability: 'minimal', lateDecels: 'recurrent', variableDecels: 'absent', sinusoidal: 'absent' };
+  const r = nichdFhr({ ...EX, baseline: '-999999' });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /must be greater than 0/);
+  assert.match(nichdFhr({ ...EX, baseline: '' }).message, /^Enter the baseline fetal heart rate/);
+  assert.equal(nichdFhr(EX).valid, true);
+});

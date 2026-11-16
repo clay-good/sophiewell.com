@@ -47,3 +47,16 @@ test('inputs validated; total cannot be less than largest', () => {
   assert.equal(ucsfHcc({ nodules: '0', largest: '3', total: '3' }).field, 'nodules');
   assert.equal(ucsfHcc({ nodules: '2', largest: '5', total: '3' }).field, 'total'); // total < largest
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const ex = { nodules: '2', largest: '4.0', total: '7.0' };
+  assert.equal(ucsfHcc(ex).valid, true);
+  assert.match(ucsfHcc({ ...ex, nodules: '999999' }).message, /nodules must be between 1 and 50/);
+  assert.match(ucsfHcc({ ...ex, nodules: '2.5' }).message, /must be a whole number/);
+  assert.match(ucsfHcc({ ...ex, largest: '-999999' }).message, /largest tumor diameter in cm must be greater than 0/);
+  assert.match(ucsfHcc({ ...ex, total: '-999999' }).message, /total tumor diameter in cm must be greater than 0/);
+  assert.match(ucsfHcc({ ...ex, nodules: '' }).message, /^Enter the number of tumor nodules/);
+  assert.equal(ucsfHcc({ ...ex, largest: '' }).message, 'Enter the largest tumor diameter in cm.');
+  assert.equal(ucsfHcc({ ...ex, total: '' }).message, 'Enter the total (summed) tumor diameter in cm.');
+});

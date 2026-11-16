@@ -39,3 +39,18 @@ test('shock index reported when HR and SBP present, null otherwise', () => {
   assert.equal(rabtScore({ hr: 120, sbp: 100 }).shockIndex, 1.2);
   assert.equal(rabtScore({ pelvis: true }).shockIndex, null);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: a negative heart rate or SBP is told its range, a blank is still asked for', () => {
+  const EX = { hr: 130, sbp: 100, pelvis: true };
+  for (const k of ['hr', 'sbp']) {
+    const r = rabtScore({ ...EX, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.equal(r.total, null);
+    assert.match(r.band, /must be greater than 0/);
+  }
+  assert.match(rabtScore({ pelvis: true, sbp: 100 }).band, /^Enter heart rate/);
+  const ex = rabtScore(EX);
+  assert.equal(ex.valid, true);
+  assert.equal(ex.total, 2);
+});

@@ -175,3 +175,13 @@ test('spec-v1744: a negative oxygenation ratio, vasoactive count or MAP is refus
     assert.equal(phoenixSepsis({ ...ex, [k]: '0' }).valid, true, k);
   }
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: phoenix-sepsis names the range of an impossible age and still asks for a blank one', () => {
+  const ex = { ageMonths: 24, ratioType: 'pf', ratio: 150, support: 'imv', vasoactives: 1, lactate: 6, map: 30, platelets: 80, gcs: 10 };
+  assert.equal(phoenixSepsis(ex).valid, true);
+  const r = phoenixSepsis({ ...ex, ageMonths: 999999 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /age in months must be between 0 and 300/);
+  assert.match(phoenixSepsis({ ...ex, ageMonths: '' }).message, /^Enter the patient age \(in months\)/);
+});

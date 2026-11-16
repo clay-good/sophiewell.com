@@ -69,3 +69,15 @@ test('missing definition / sex / waist standard / any value surfaces the fallbac
   assert.equal(metabolicSyndrome({ ...base, waistStandard: '' }).valid, false);
   assert.equal(metabolicSyndrome({ ...base, glucose: null }).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: a negative measurement is told its range, a blank is still asked for', () => {
+  const EX = { definition: 'harmonized', sex: 'male', waistStandard: 'us', waist: '104', tg: '160', tgTreated: 'no', hdl: '45', hdlTreated: 'no', sbp: '128', dbp: '82', bpTreated: 'no', glucose: '105', glucoseTreated: 'no' };
+  for (const k of ['waist', 'tg', 'hdl', 'sbp', 'dbp', 'glucose']) {
+    const r = metabolicSyndrome({ ...EX, [k]: '-999999' });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be greater than 0/);
+  }
+  assert.match(metabolicSyndrome({ ...EX, hdl: '' }).message, /^Choose the definition/);
+  assert.equal(metabolicSyndrome(EX).valid, true);
+});

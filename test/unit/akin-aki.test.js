@@ -72,3 +72,16 @@ test('an impossible baseline creatinine used to erase the whole staging', () => 
 test('the creatinine arm stays optional: urine output alone still stages', () => {
   assert.match(akinAki({ uoClass: 2 }).band, /AKIN stage 2/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: an impossible creatinine is told its range, a blank is still asked for', () => {
+  for (const k of ['baselineCr', 'currentCr']) {
+    const r = akinAki({ baselineCr: '1.0', currentCr: '3.5', [k]: '-999999' });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be between/);
+  }
+  assert.match(akinAki({ baselineCr: '1.0', currentCr: '' }).message, /^Enter both a baseline and a current creatinine/);
+  const ex = akinAki({ baselineCr: '1.0', currentCr: '3.5' });
+  assert.equal(ex.valid, true);
+  assert.equal(ex.stage, 3);
+});

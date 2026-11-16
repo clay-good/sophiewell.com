@@ -34,3 +34,13 @@ test('zero / missing initial -> valid:false (no divide by zero)', () => {
   assert.equal(barnhartHcg({ initial: 0, repeat: 1400, hours: 48 }).valid, false);
   assert.equal(barnhartHcg({ repeat: 1400, hours: 48 }).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const ex = { initial: 1000, repeat: 1400, hours: 48 };
+  assert.equal(barnhartHcg(ex).valid, true);
+  for (const k of Object.keys(ex)) {
+    assert.match(barnhartHcg({ ...ex, [k]: -999999 }).message, /must be greater than 0/);
+    assert.equal(barnhartHcg({ ...ex, [k]: '' }).message, 'Enter the initial hCG, repeat hCG, and interval in hours.');
+  }
+});

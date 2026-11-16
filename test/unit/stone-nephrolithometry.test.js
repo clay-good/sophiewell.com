@@ -38,3 +38,15 @@ test('a blank measurement or an out-of-range component surfaces valid:false', ()
   assert.equal(stoneNephrolithometry({ length: 20, width: 20, tract: 80, obstruction: 3, calices: 1, hu: 800 }).valid, false); // obstruction 1-2
   assert.equal(stoneNephrolithometry(6).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: a negative measurement is told its range, a blank is still asked for', () => {
+  const EX = { length: '20', width: '20', tract: '80', obstruction: '1', calices: '1', hu: '800' };
+  for (const k of ['length', 'width', 'tract', 'hu']) {
+    const r = stoneNephrolithometry({ ...EX, [k]: '-999999' });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be greater than 0/);
+  }
+  assert.match(stoneNephrolithometry({ ...EX, hu: '' }).message, /^Enter stone length/);
+  assert.equal(stoneNephrolithometry(EX).valid, true);
+});

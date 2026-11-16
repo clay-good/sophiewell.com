@@ -88,3 +88,13 @@ test('spec-v1134: above the cut-off the verdict holds, and the total says it is 
   assert.equal(graded.floorOnly, false);
   assert.match(graded.band, /^HEAR score 4:/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: a negative age is told its range, a blank age is still asked for', () => {
+  const EX = { history: 'h1', ecg: 'e1', age: 58, risk: 'r1' };
+  const r = hear({ ...EX, age: -999999 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /must be greater than 0/);
+  assert.match(hear({ ...EX, age: null }).band, /^Enter the patient age/);
+  assert.equal(hear(EX).valid, true);
+});

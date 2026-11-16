@@ -37,3 +37,8 @@ test('non-positive / missing inputs -> valid:false', () => {
   assert.equal(iomGwg({ weight: 150 }).valid, false);
   assert.equal(iomGwg(5).valid, false);
 });
+
+test('spec-v1746: iom-gwg tells an out-of-range weight or height its range; a blank is still asked for', () => {
+  assert.match(iomGwg({ weight: -150, height: 64 }).message, /must be greater than 0/);
+  assert.match(iomGwg({ weight: '', height: 64 }).message, /^Enter pre-pregnancy weight/);
+});

@@ -35,3 +35,15 @@ test('any blank required field -> valid:false; scalar -> valid:false', () => {
   assert.equal(stewartSidSig({ sodium: 140, potassium: 4, calcium: 2.4, magnesium: 1, chloride: 100, lactate: 2, bicarbonate: 14, albumin: 4 }).valid, false);
   assert.equal(stewartSidSig(7).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const ex = { sodium: 140, potassium: 4, calcium: 2.4, magnesium: 1.0, chloride: 100, lactate: 2, bicarbonate: 14, albumin: 4.0, phosphate: 4 };
+  assert.equal(stewartSidSig(ex).valid, true);
+  for (const k of ['calcium', 'magnesium', 'lactate', 'bicarbonate', 'albumin', 'phosphate']) {
+    const r = stewartSidSig({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be (at least 0|greater than 0)/);
+    assert.match(stewartSidSig({ ...ex, [k]: '' }).message, /^Enter sodium/);
+  }
+});

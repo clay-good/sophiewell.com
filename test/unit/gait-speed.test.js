@@ -29,3 +29,12 @@ test('Gait speed guards the time denominator (zero/blank/negative -> valid:false
   assert.equal(gaitSpeed({ distanceM: 0, timeS: 5 }).valid, false);
   assert.equal(gaitSpeed({}).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a distance of -999999 m is told its range; a blank is still asked for', () => {
+  const bad = gaitSpeed({ distanceM: -999999, timeS: 5 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /distance in m must be greater than 0/);
+  assert.equal(gaitSpeed({ distanceM: '', timeS: 5 }).message, 'Enter the walked distance (m) and the time taken (s).');
+  assert.equal(gaitSpeed({ distanceM: 4, timeS: 5 }).valid, true);
+});

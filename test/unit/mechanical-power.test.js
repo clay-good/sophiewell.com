@@ -48,3 +48,14 @@ test('pressures out of their definitional order are refused, not read as low pow
   assert.equal(mechanicalPower({ ...b, plateau: 30, peak: 30 }).valid, true);
   assert.equal(mechanicalPower({ ...b, peep: 0 }).valid, true);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a rate or tidal volume of -999999 is told its range; a blank is still asked for', () => {
+  const ex = { respiratoryRate: 22, tidalVolume: 420, plateau: 26, peep: 12, peak: 32 };
+  const bad = mechanicalPower({ ...ex, respiratoryRate: -999999 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.band, /respiratory rate in breaths\/min must be greater than 0/);
+  assert.match(mechanicalPower({ ...ex, tidalVolume: -999999 }).band, /tidal volume in mL must be greater than 0/);
+  assert.equal(mechanicalPower({ ...ex, tidalVolume: null }).band, 'Enter respiratory rate, tidal volume, plateau, PEEP, and peak pressure.');
+  assert.equal(mechanicalPower(ex).valid, true);
+});

@@ -46,3 +46,15 @@ test('blank or non-finite inputs surface valid:false, never a partial score', ()
   assert.equal(plasmicTtp({ ...base, hemolysis: '' }).valid, false);
   assert.equal(plasmicTtp(7).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: a negative lab is told its range, a blank is still asked for', () => {
+  const EX = { platelet: '18', hemolysis: 'yes', activeCancer: 'no', transplant: 'no', mcv: '85', inr: '1.2', creatinine: '2.4' };
+  for (const k of ['platelet', 'mcv', 'inr', 'creatinine']) {
+    const r = plasmicTtp({ ...EX, [k]: '-999999' });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be greater than 0/);
+  }
+  assert.match(plasmicTtp({ ...EX, mcv: '' }).message, /^Enter platelet count, MCV/);
+  assert.equal(plasmicTtp(EX).valid, true);
+});

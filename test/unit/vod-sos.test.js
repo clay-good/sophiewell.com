@@ -144,3 +144,10 @@ test('vod-sos: a split still names a definition left open by the blank weight', 
   assert.match(r.band, /still turn on it/);
   assert.deepEqual(r.openOnWeightGain, ['Baltimore', 'EBMT 2016 (adult)']);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range day count is told its range, a blank is still asked for', () => {
+  assert.equal(vodSos({ daysSinceTransplant: '12', hepatomegalyOrRuqPain: 'true', weightGain: 'over2' }).valid, true);
+  assert.match(vodSos({ daysSinceTransplant: '-999999' }).message, /days since the transplant must be at least 0/);
+  assert.match(vodSos({ daysSinceTransplant: '' }).message, /^Enter the number of days since the transplant/);
+});

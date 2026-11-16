@@ -73,3 +73,16 @@ test('hys-law: the signal, cholestasis, potential-case and timing notes print on
   assert.match(r.scopeNote, /does not attribute the injury to any drug/);
   assert.match(HYS_LAW_NOTE, /wider population/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: hys-law names the range of an impossible entry and still asks for a blank one', () => {
+  const ex = { alt: 250, altUln: 40, bilirubin: 3.5, bilirubinUln: 1.2, alp: 150, alpUln: 120 };
+  assert.equal(hysLaw(ex).valid, true);
+  const asked = { alt: /^Enter an ALT or an AST/, altUln: /^Enter an ALT or an AST/, bilirubin: /^Enter a total bilirubin/, bilirubinUln: /^Enter a total bilirubin/, alp: /^Enter an alkaline phosphatase/, alpUln: /^Enter an alkaline phosphatase/ };
+  for (const [k, sentence] of Object.entries(asked)) {
+    const r = hysLaw({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be (at least 0|greater than 0)/);
+    assert.match(hysLaw({ ...ex, [k]: '' }).message, sentence);
+  }
+});

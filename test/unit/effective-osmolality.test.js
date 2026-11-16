@@ -45,3 +45,12 @@ test('inputs are validated', () => {
   assert.equal(effectiveOsmolality({ sodium: '140' }).field, 'glucose');
   assert.equal(effectiveOsmolality({ sodium: '0', glucose: '90' }).field, 'sodium');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  assert.equal(effectiveOsmolality({ sodium: 140, glucose: 900 }).valid, true);
+  const r = effectiveOsmolality({ sodium: 140, glucose: -999999 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /glucose \(mg\/dL\) must be at least 0/);
+  assert.equal(effectiveOsmolality({ sodium: 140, glucose: '' }).message, 'Enter serum glucose in mg/dL.');
+});

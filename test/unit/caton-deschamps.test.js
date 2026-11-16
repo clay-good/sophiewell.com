@@ -33,3 +33,15 @@ test('inputs are validated', () => {
   assert.equal(catonDeschamps({ distanceA: '12' }).field, 'lengthB');
   assert.equal(catonDeschamps({ distanceA: '0', lengthB: '10' }).field, 'distanceA');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: a negative A or B is told its range, a blank is still asked for', () => {
+  for (const k of ['distanceA', 'lengthB']) {
+    const r = catonDeschamps({ distanceA: '18', lengthB: '12', [k]: '-999999' });
+    assert.equal(r.valid, false);
+    assert.equal(r.field, k);
+    assert.match(r.message, /must be greater than 0/);
+  }
+  assert.match(catonDeschamps({ distanceA: '', lengthB: '12' }).message, /^Enter distance A/);
+  assert.equal(catonDeschamps({ distanceA: '18', lengthB: '12' }).valid, true);
+});

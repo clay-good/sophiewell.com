@@ -39,3 +39,15 @@ test('an impossible weight is refused the same way', () => {
 test('a real session still computes', () => {
   assert.equal(ufrDialysis({ volume: 2, hours: 4, weight: 70 }).ufr, 7.14);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: a negative volume, hours or weight is told its range, a blank is still asked for', () => {
+  const EX = { volume: '3.5', hours: '3', weight: '70' };
+  for (const k of ['volume', 'hours', 'weight']) {
+    const r = ufrDialysis({ ...EX, [k]: '-999999' });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be greater than 0/);
+  }
+  assert.match(ufrDialysis({ ...EX, hours: '' }).message, /^Enter ultrafiltration volume/);
+  assert.equal(ufrDialysis(EX).valid, true);
+});

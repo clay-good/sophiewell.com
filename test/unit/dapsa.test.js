@@ -34,3 +34,15 @@ test('blanks / out-of-range fall back', () => {
   assert.equal(dapsa({ tjc68: 5, sjc66: 3, global: 4, pain: 4 }).valid, false); // no CRP
   assert.equal(dapsa({}).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const ex = { tjc68: 5, sjc66: 3, global: 4, pain: 4, crp: 1.2 };
+  assert.equal(dapsa(ex).valid, true);
+  const ranges = { tjc68: /between 0 and 68/, sjc66: /between 0 and 66/, global: /between 0 and 10/, pain: /between 0 and 10/, crp: /between 0 and 100/ };
+  for (const [k, re] of Object.entries(ranges)) {
+    assert.match(dapsa({ ...ex, [k]: 999999 }).message, re);
+    assert.match(dapsa({ ...ex, [k]: -999999 }).message, re);
+    assert.match(dapsa({ ...ex, [k]: '' }).message, /^Enter the /);
+  }
+});

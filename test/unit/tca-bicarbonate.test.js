@@ -46,3 +46,9 @@ test('spec-v1741: a weight past the envelope is refused, a heavy real one and th
   assert.equal(tcaBicarbonate({ qrs: 120, weight: 70 }).band,
     'QRS 120 ms (>= 100 ms): seizure risk -- give sodium bicarbonate 1-2 mEq/kg = 70-140 mEq, target serum pH 7.45-7.55.');
 });
+
+test('spec-v1746: an out-of-range weight or QRS is told its range; a blank is still asked for', () => {
+  assert.match(tcaBicarbonate({ weight: -70, qrs: 120 }).band, /must be greater than 0/);
+  assert.match(tcaBicarbonate({ weight: 70, qrs: -5 }).band, /must be at least 0/);
+  assert.match(tcaBicarbonate({ weight: '', qrs: 120 }).band, /^Enter a positive body weight/);
+});

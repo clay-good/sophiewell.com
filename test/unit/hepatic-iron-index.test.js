@@ -63,3 +63,13 @@ test('hepatic-iron-index: the superseded, biopsy and scope lines print on every 
   assert.match(HII_NOTE, /fifty-six-fold/);
   assert.equal(CONCENTRATION_UNIT_OPTIONS.length, 2);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const ex = { hepaticIronConcentration: 6700, concentrationUnit: 'ug', ageYears: 45 };
+  assert.equal(hepaticIronIndex(ex).valid, true);
+  assert.match(hepaticIronIndex({ ...ex, hepaticIronConcentration: -999999 }).message, /concentration must be at least 0/);
+  assert.match(hepaticIronIndex({ ...ex, ageYears: -999999 }).message, /age in years must be greater than 0/);
+  assert.match(hepaticIronIndex({ ...ex, hepaticIronConcentration: '' }).message, /^Enter the hepatic iron concentration/);
+  assert.match(hepaticIronIndex({ ...ex, ageYears: '' }).message, /^Enter the age in years/);
+});

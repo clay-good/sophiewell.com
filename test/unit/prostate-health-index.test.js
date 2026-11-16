@@ -39,3 +39,14 @@ test('inputs are validated; free PSA cannot exceed total PSA', () => {
   assert.equal(bad.valid, false);
   assert.equal(bad.code, 'INVALID_INPUT');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a PSA value of -999999 is told its range; a blank is still asked for', () => {
+  const bad = prostateHealthIndex({ totalPsa: '-999999', freePsa: '0.5', p2psa: '12' });
+  assert.equal(bad.valid, false);
+  assert.equal(bad.field, 'totalPsa');
+  assert.match(bad.message, /total PSA in ng\/mL must be greater than 0/i);
+  assert.match(prostateHealthIndex({ totalPsa: '4', freePsa: '0.5', p2psa: '-999999' }).message, /pg\/mL must be greater than 0/);
+  assert.equal(prostateHealthIndex({ totalPsa: '', freePsa: '0.5', p2psa: '12' }).message, 'Enter total PSA (ng/mL).');
+  assert.equal(prostateHealthIndex({ totalPsa: '4', freePsa: '0.5', p2psa: '12' }).valid, true);
+});

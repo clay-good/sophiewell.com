@@ -40,3 +40,12 @@ test('guards blank / negative level', () => {
   assert.equal(lithiumExtrip({}).valid, false);
   assert.equal(lithiumExtrip({ level: -1 }).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a lithium level of -999999 is told its range; a blank is still asked for', () => {
+  const bad = lithiumExtrip({ level: -999999 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.band, /lithium level in mmol\/L must be at least 0/);
+  assert.equal(lithiumExtrip({ level: null }).band, 'Enter the serum lithium level (mmol/L) to walk the EXTRIP decision.');
+  assert.equal(lithiumExtrip({ level: 1.5, seizures: true }).valid, true);
+});

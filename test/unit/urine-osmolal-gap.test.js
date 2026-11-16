@@ -100,3 +100,15 @@ test('a blank field is still asked for, not reported out of range', () => {
   const r = urineOsmolalGap({ measuredOsm: 500, urineK: 30, urineUrea: 300, urineGlucose: 0 });
   assert.match(r.message, /Enter measured urine osmolality/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const ex = { measuredOsm: 600, urineNa: 40, urineK: 20, urineUrea: 280, urineGlucose: 0 };
+  assert.equal(urineOsmolalGap(ex).valid, true);
+  for (const k of Object.keys(ex)) {
+    const r = urineOsmolalGap({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be (at least 0|greater than 0)/);
+    assert.match(urineOsmolalGap({ ...ex, [k]: '' }).message, /^Enter measured urine osmolality/);
+  }
+});

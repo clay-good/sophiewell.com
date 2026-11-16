@@ -40,3 +40,12 @@ test('testicular-volume: Lambert 0.71', () => {
   const r = testicularVolume({ length: 4, width: 3, height: 2.5 });
   assert.equal(r.score, 21.3);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: genant-vertebral-fracture names the range of an impossible height loss and still asks for a blank one', () => {
+  assert.equal(genantVertebralFracture({ heightLoss: 30 }).valid, true);
+  const r = genantVertebralFracture({ heightLoss: 999999 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /vertebral height loss \(%\) must be between 0 and 100/);
+  assert.equal(genantVertebralFracture({ heightLoss: '' }).message, 'Enter the vertebral height loss (%).');
+});

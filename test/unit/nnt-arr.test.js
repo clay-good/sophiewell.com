@@ -43,3 +43,13 @@ test('guards: blank rates', () => {
   assert.equal(nntArr({}).valid, false);
   assert.equal(nntArr({ cer: 120, eer: 10 }).valid, false); // out of range
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 an event rate of 999999% is told its range; a blank is still asked for', () => {
+  const bad = nntArr({ cer: 999999, eer: 15 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /control event rate \(%\) must be between 0 and 100/);
+  assert.match(nntArr({ cer: 20, eer: 999999 }).message, /experimental event rate \(%\) must be between 0 and 100/);
+  assert.equal(nntArr({ cer: '', eer: 15 }).message, 'Enter the control event rate (%).');
+  assert.equal(nntArr({ cer: 20, eer: 15 }).valid, true);
+});

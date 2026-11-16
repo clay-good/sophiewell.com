@@ -141,3 +141,16 @@ test('implausible flags for weight-for-length and head circumference are beyond 
   assert.ok(thin.z < -5);
   assert.equal(thin.implausible, true);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a weight or length of -999999 is told its range; a blank is still asked for', () => {
+  const base = { sex: 'male', measure: 'wfl', ageMonths: 6, position: 'lying', edema: 'no' };
+  const badVal = whoGrowthZscore({ ...base, value: -999999, lengthCm: 65 });
+  assert.equal(badVal.valid, false);
+  assert.match(badVal.message, /weight in kg must be greater than 0/);
+  const badLen = whoGrowthZscore({ ...base, value: 7, lengthCm: -999999 });
+  assert.match(badLen.message, /length or height in cm must be greater than 0/);
+  assert.equal(whoGrowthZscore({ ...base, value: '', lengthCm: 65 }).message, 'Enter the measured weight in kg.');
+  assert.equal(whoGrowthZscore({ ...base, value: 7, lengthCm: '' }).message, 'Enter the length or height in cm.');
+  assert.equal(whoGrowthZscore({ sex: 'male', measure: 'weight', ageMonths: 6, value: 5.5, edema: 'no' }).valid, true);
+});

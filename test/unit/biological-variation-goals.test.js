@@ -68,3 +68,10 @@ test('biological-variation-goals: the source and hierarchy lines print on every 
   assert.match(r.scopeNote, /does not judge a method/);
   assert.match(BV_GOALS_NOTE, /three tiers, not one/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  assert.equal(biologicalVariationGoals({ cvWithinSubject: 4.4, cvBetweenSubject: 12.9 }).valid, true);
+  assert.match(biologicalVariationGoals({ cvWithinSubject: -999999 }).message, /must be greater than 0/);
+  assert.match(biologicalVariationGoals({ cvWithinSubject: '' }).message, /^Enter the within-subject biological variation/);
+});

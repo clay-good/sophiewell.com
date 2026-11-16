@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Sixty-six tools answered an impossible entry, such as a negative weight or a hemoglobin of 999,999, by asking
+  for the value again as if the field were blank, so retyping it got the same sentence. They now say what range
+  the field takes.
 - The ASCVD and PREVENT risk estimates answered an HDL of zero or below, and the ankle-brachial index said an
   entered pressure below 20 mmHg "was not entered". These now say the value cannot be used.
 - Nineteen scores and dosing checks refused an out-of-range value from an AI agent but still answered it on the

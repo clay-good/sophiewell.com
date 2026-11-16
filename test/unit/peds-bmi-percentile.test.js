@@ -50,3 +50,13 @@ test('spec-v1741: an entered BMI past the envelope is refused, a high real one a
   assert.equal(pedsBmiPercentile({ sex: 'male', ageYears: 16, bmi: 30 }).band,
     'BMI 30 kg/m² at age 16 y: 98th percentile (z 1.97) \u2014 obese (95th percentile or above).');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a BMI of -999999 is told its range; a blank is still asked for', () => {
+  const bad = pedsBmiPercentile({ sex: 'male', ageYears: 16, bmi: -999999 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /BMI must be greater than 0/);
+  const blank = pedsBmiPercentile({ sex: 'male', ageYears: 16, bmi: '' });
+  assert.equal(blank.message, 'Enter BMI, or both weight (kg) and height (cm).');
+  assert.equal(pedsBmiPercentile({ sex: 'male', ageYears: 16, bmi: 30 }).valid, true);
+});

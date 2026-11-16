@@ -26,3 +26,15 @@ test('GNRI guards a non-positive ideal body weight and blanks', () => {
   assert.equal(gnri({ albuminGL: 35, weightKg: 60, heightCm: 165 }).valid, false);
   assert.equal(gnri({}).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: gnri names the range of an impossible entry and still asks for a blank one', () => {
+  const ex = { albuminGL: 35, weightKg: 60, heightCm: 165, sex: 'female' };
+  assert.equal(gnri(ex).valid, true);
+  for (const k of ['albuminGL', 'weightKg', 'heightCm']) {
+    const r = gnri({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be greater than 0/);
+    assert.match(gnri({ ...ex, [k]: '' }).message, /^Enter serum albumin \(g\/L\), weight/);
+  }
+});

@@ -49,3 +49,17 @@ test('inputs are validated', () => {
   assert.equal(sanoKawasaki({ ast: '100', bilirubin: '0.5' }).field, 'crp');
   assert.equal(sanoKawasaki({ ast: '-1', bilirubin: '0.5', crp: '2' }).field, 'ast');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: sano-kawasaki names the range of an impossible entry and still asks for a blank one', () => {
+  const ex = { ast: 250, bilirubin: 0.5, crp: 9 };
+  assert.equal(sanoKawasaki(ex).valid, true);
+  const asked = { ast: 'Enter AST in IU/L.', bilirubin: 'Enter total bilirubin in mg/dL.', crp: 'Enter CRP in mg/dL.' };
+  for (const [k, sentence] of Object.entries(asked)) {
+    const r = sanoKawasaki({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.equal(r.field, k);
+    assert.match(r.message, /must be at least 0/);
+    assert.equal(sanoKawasaki({ ...ex, [k]: '' }).message, sentence);
+  }
+});

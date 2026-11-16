@@ -30,3 +30,14 @@ test('guards: missing parent, implausible height, missing sex -> valid:false', (
   assert.equal(midParentalHeight({ motherCm: 165, fatherCm: 180 }).valid, false);
   assert.equal(midParentalHeight(0).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a mother height of -999999 cm is told its range; a blank is still asked for', () => {
+  const bad = midParentalHeight({ sex: 'male', motherCm: -999999, fatherCm: 180 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /must be greater than 0/);
+  assert.doesNotMatch(bad.message, /^Enter/);
+  const blank = midParentalHeight({ sex: 'male', motherCm: '', fatherCm: 180 });
+  assert.equal(blank.message, 'Enter the mother’s and father’s heights in cm.');
+  assert.equal(midParentalHeight({ sex: 'male', motherCm: 165, fatherCm: 180 }).valid, true);
+});

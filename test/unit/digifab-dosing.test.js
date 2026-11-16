@@ -63,3 +63,15 @@ test('spec-v1741: a weight past the envelope is refused, a heavy real one and th
   assert.equal(digifabDosing({ mode: 'level', level: 4.5, weight: 70 }).band,
     'DigiFab 4 vials by steady-state serum level (4.5 ng/mL x 70 kg / 100, rounded up).');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range entry is told its range, a blank is still asked for', () => {
+  const ex = { mode: 'level', level: 4.5, weight: 70 };
+  assert.equal(digifabDosing(ex).valid, true);
+  assert.match(digifabDosing({ ...ex, level: -999999 }).band, /level in ng\/mL must be at least 0/);
+  assert.match(digifabDosing({ ...ex, weight: -999999 }).band, /weight in kg must be greater than 0/);
+  assert.match(digifabDosing({ mode: 'amount', amount: -5 }).band, /must be greater than 0/);
+  assert.match(digifabDosing({ ...ex, level: null }).band, /^Enter the steady-state serum digoxin level/);
+  assert.match(digifabDosing({ ...ex, weight: null }).band, /^Enter a positive body weight/);
+  assert.match(digifabDosing({ mode: 'amount', amount: null }).band, /^Enter the amount of digoxin/);
+});

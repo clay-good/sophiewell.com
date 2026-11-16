@@ -39,3 +39,14 @@ test('inputs are validated; lateral cannot exceed total', () => {
   assert.equal(bad.valid, false);
   assert.equal(bad.code, 'INVALID_INPUT');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 a width of -999999 mm is told its range; a blank is still asked for', () => {
+  const bad = reimersMigrationPercentage({ lateralWidth: '-999999', totalWidth: '50' });
+  assert.equal(bad.valid, false);
+  assert.equal(bad.field, 'lateralWidth');
+  assert.match(bad.message, /must be at least 0/);
+  assert.match(reimersMigrationPercentage({ lateralWidth: '20', totalWidth: '-999999' }).message, /total femoral-head width in mm must be greater than 0/);
+  assert.equal(reimersMigrationPercentage({ lateralWidth: '20', totalWidth: '' }).message, 'Enter the total femoral-head width (mm).');
+  assert.equal(reimersMigrationPercentage({ lateralWidth: '20', totalWidth: '50' }).valid, true);
+});

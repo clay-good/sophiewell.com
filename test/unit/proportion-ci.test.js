@@ -33,3 +33,15 @@ test('guards: events cannot exceed n; n must be > 0', () => {
   assert.equal(proportionCi({ events: 5 }).valid, false);
   assert.equal(proportionCi({}).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: an out-of-range n or events is told its range, a blank is still asked for', () => {
+  const EX = { events: '8', n: '10', level: '95' };
+  for (const k of ['events', 'n']) {
+    const r = proportionCi({ ...EX, [k]: '-999999' });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be/);
+  }
+  assert.match(proportionCi({ ...EX, events: '' }).message, /^Enter the number of events/);
+  assert.equal(proportionCi(EX).valid, true);
+});

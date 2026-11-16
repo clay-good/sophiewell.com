@@ -133,3 +133,12 @@ test('spec-v1107: an unrecognised value is unstated, not the reference level', (
   assert.ok(typo.unstated.includes('the urgency'));
   assert.equal(typo.mortality, euroScore2({ age: 70 }).mortality);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 an age of -999999 is told its range; a blank is still asked for', () => {
+  const bad = euroScore2({ age: -999999, urgency: 'elective', weightOfIntervention: 'cabg' });
+  assert.equal(bad.valid, false);
+  assert.match(bad.band, /age in years must be greater than 0/);
+  assert.equal(euroScore2({ age: null }).band, 'Enter the patient age (years) to compute EuroSCORE II.');
+  assert.equal(euroScore2({ age: 60, urgency: 'elective', weightOfIntervention: 'cabg' }).valid, true);
+});

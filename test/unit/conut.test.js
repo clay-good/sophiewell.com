@@ -28,3 +28,15 @@ test('CONUT guards blanks', () => {
   assert.equal(conut({ albuminGdl: 3.2, cholesterol: 150 }).valid, false);
   assert.equal(conut({}).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: conut names the range of an impossible entry and still asks for a blank one', () => {
+  const ex = { albuminGdl: 3.2, cholesterol: 150, lymphocytes: 1000 };
+  assert.equal(conut(ex).valid, true);
+  for (const k of Object.keys(ex)) {
+    const r = conut({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.match(r.message, /must be greater than 0/);
+    assert.match(conut({ ...ex, [k]: '' }).message, /^Enter serum albumin \(g\/dL\), total cholesterol/);
+  }
+});

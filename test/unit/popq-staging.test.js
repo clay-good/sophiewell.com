@@ -67,3 +67,13 @@ test('a blank D is still post-hysterectomy, not a fault', () => {
   const r = popqStaging({ aa: -1, ba: -1, c: -5, ap: -3, bp: -3, d: '', tvl: 9 });
   assert.equal(r.valid, true);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: popq-staging names the range of an impossible TVL and still asks for a blank one', () => {
+  const ex = { aa: 2, ba: 3, c: -2, d: -6, ap: -3, bp: -3, tvl: 9 };
+  assert.equal(popqStaging(ex).valid, true);
+  const r = popqStaging({ ...ex, tvl: -999999 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /Total vaginal length \(TVL, cm\) must be greater than 0/);
+  assert.equal(popqStaging({ ...ex, tvl: '' }).message, 'Enter the total vaginal length (TVL, cm).');
+});

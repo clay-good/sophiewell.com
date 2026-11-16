@@ -56,3 +56,18 @@ test('the result derives each salt fraction from its formula mass', () => {
   assert.doesNotMatch(elementalIronIngested({ ...base, saltType: 'elemental' }).detail, /formula mass/);
   assert.equal(elementalIronIngested({ ...base, saltType: 'constructor' }).field, 'saltType');
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: elemental-iron-ingested names the range of an impossible entry and still asks for a blank one', () => {
+  const ex = { tablets: 20, mgPerTablet: 325, saltType: 'ferrous-sulfate', weightKg: 20 };
+  assert.equal(elementalIronIngested(ex).valid, true);
+  const asked = { tablets: /^Enter the number of tablets/, mgPerTablet: /^Enter the mg of iron salt/, weightKg: /^Enter body weight in kg/ };
+  for (const [k, sentence] of Object.entries(asked)) {
+    const r = elementalIronIngested({ ...ex, [k]: -999999 });
+    assert.equal(r.valid, false);
+    assert.equal(r.code, 'OUT_OF_RANGE');
+    assert.equal(r.field, k);
+    assert.match(r.message, /must be greater than 0/);
+    assert.match(elementalIronIngested({ ...ex, [k]: '' }).message, sentence);
+  }
+});

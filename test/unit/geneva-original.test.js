@@ -79,3 +79,13 @@ test('a negative heart rate is refused, not read as a normal pulse', () => {
   assert.equal(genevaOriginal({ ...ex, heartRate: 40 }).valid, true);
   assert.equal(genevaOriginal(ex).valid, true);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746: geneva-original names the range of an impossible age and still asks for a blank one', () => {
+  const ex = { age: 85, heartRate: 110, priorVte: false, recentSurgery: false, paco2Band: 'low2', pao2Band: 'b4' };
+  assert.equal(genevaOriginal(ex).valid, true);
+  const r = genevaOriginal({ ...ex, age: -999999 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /patient age \(years\) must be greater than 0/);
+  assert.equal(genevaOriginal({ ...ex, age: undefined }).band, 'Enter the patient age (years) to compute the original Geneva score.');
+});

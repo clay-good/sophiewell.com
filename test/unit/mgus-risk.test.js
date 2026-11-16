@@ -41,3 +41,11 @@ test('blank fields or an unrecognised isotype surface the fallback', () => {
   assert.equal(mgusRisk({ mspike: 1.0, isotype: 'IgD', flcRatio: 1.0 }).valid, false);
   assert.equal(mgusRisk({}).valid, false);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again.
+test('spec-v1746 an M-protein or FLC ratio of -999999 is told its range; a blank is still asked for', () => {
+  assert.match(mgusRisk({ mspike: -999999, isotype: 'IgG', flcRatio: 1.0 }).message, /M-protein in g\/dL must be greater than 0/);
+  assert.match(mgusRisk({ mspike: 0.8, isotype: 'IgG', flcRatio: -999999 }).message, /free-light-chain ratio must be greater than 0/);
+  assert.match(mgusRisk({ mspike: '', isotype: 'IgG', flcRatio: 1.0 }).message, /^Enter the serum M-protein/);
+  assert.equal(mgusRisk({ mspike: 0.8, isotype: 'IgG', flcRatio: 1.0 }).valid, true);
+});

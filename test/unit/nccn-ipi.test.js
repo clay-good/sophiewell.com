@@ -60,3 +60,11 @@ test('spec-v1741: an entered age outside 0-130 is named, not asked again', () =>
   assert.equal(nccnIpi({ ...ex, age: 110 }).valid, true);
   assert.match(nccnIpi({ ...ex, age: '' }).message, /^Enter age/);
 });
+
+// spec-v1746: an entered value outside the range read as blank and was asked for again; it is told its range now.
+test('spec-v1746: an out-of-range LDH ratio is told its range, a blank is still asked for', () => {
+  const ex = { age: 70, ldhRatio: 2.5, stageAdvanced: 'yes', ecog2: 'no', extranodalMajor: 'no' };
+  assert.equal(nccnIpi(ex).valid, true);
+  assert.match(nccnIpi({ ...ex, ldhRatio: -999999 }).message, /LDH normalized ratio must be greater than 0/);
+  assert.match(nccnIpi({ ...ex, ldhRatio: '' }).message, /^Enter age \(years\) and the LDH normalized ratio/);
+});
