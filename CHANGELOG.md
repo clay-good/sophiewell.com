@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Fourteen dosing clocks and schedules accepted a date in 1850, or 30 February, and computed from it (a dose
+  "1,545,985 hours late"). They now ask for a real date from 1900 to 2100.
 - The test suite no longer spends nine minutes on one helper: the NHSN mid-P interval stops at the 1,000,000 its tools already stop at.
 - The King's College criteria took any creatinine and the ISARIC 4C score any urea, in either unit; a creatinine
   of ten million met the renal limb. Both now refuse values past the plausible range, stated in the unit entered.
