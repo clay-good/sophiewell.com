@@ -115,7 +115,9 @@ test('a tile recovers once the value is back in range', async ({ page }) => {
   expect(before).toContain('Cardiac power output');
 
   await set('1e308');
-  expect(await read()).toContain('too large or too small');
+  // spec-v1731: the MAP field now has its own range (lib/bounds.js's diastolic
+  // floor to systolic ceiling), which refuses before the overflow guard does.
+  expect(await read()).toContain('mean arterial pressure in mmHg must be between 5 and 300');
 
   await set('80');
   expect(await read()).toContain('Cardiac power output');
