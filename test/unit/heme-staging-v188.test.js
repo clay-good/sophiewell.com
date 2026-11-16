@@ -56,3 +56,10 @@ test('hasford: guards', () => {
   assert.equal(hasfordCml({ age: '60', spleen: '10', platelets: '400', blasts: '5', eosinophils: '5' }).valid, false);
   assert.equal(hasfordCml({}).valid, false);
 });
+
+// spec-v1739: blasts, eosinophils and basophils are shares of one differential.
+test('hasford: a differential summing past 100% is refused; exactly 100 answers', () => {
+  const b = { age: '60', spleen: '10', platelets: '400' };
+  assert.match(hasfordCml({ ...b, blasts: '60', eosinophils: '30', basophils: '30' }).message, /\(120\) is above the whole differential/);
+  assert.equal(hasfordCml({ ...b, blasts: '60', eosinophils: '20', basophils: '20' }).valid, true);
+});

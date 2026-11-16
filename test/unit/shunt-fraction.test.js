@@ -20,3 +20,13 @@ test('guards: missing mixed-venous invalid', () => {
   const r = shuntFraction({hb:15,pAO2:110,sao2:99,pao2:95});
   assert.equal(r.valid, false);
 });
+
+// spec-v1739: oxygen out of its gradient (venous above arterial, arterial above alveolar) is refused, not a
+// shunt of 497%.
+test('oxygen values out of their gradient are refused', () => {
+  const b = { hb: 15, pAO2: 110, sao2: 99, pao2: 95, svo2: 75, pvo2: 40 };
+  assert.match(shuntFraction({ ...b, sao2: 70, svo2: 95 }).message, /mixed-venous SvO₂ \(95\) is above the arterial SaO₂ \(70\)/);
+  assert.equal(shuntFraction({ ...b, pvo2: 120 }).valid, false);
+  assert.equal(shuntFraction({ ...b, pao2: 120 }).valid, false);
+  assert.equal(shuntFraction({ ...b, pao2: 110 }).valid, true, 'equal tensions answer');
+});

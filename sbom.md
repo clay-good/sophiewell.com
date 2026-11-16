@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c9403f42795ce4fd`
-Generated: 2026-11-16T15:35:34.952Z
+Build ID: `1faea922d7ce2cd3`
+Generated: 2026-11-16T15:45:53.292Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -637,10 +637,10 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heme-onc-risk-v211.js` | 11804 | `cbe39fe689c3723cd7eef4796c470a780d23dd31ac350a9cbd19bad2a05561c9` |
 | `lib/heme-prognostic-v216.js` | 14805 | `fe2c3962dad9432fa3252b929f994941ce66e9db17f4910e4a3ad78bdc712a55` |
 | `lib/heme-risk-v189.js` | 13799 | `d94b111f4a8a7efc34646567508d2eaa16eee64ebbe5284faf6935d578d9c2a0` |
-| `lib/heme-staging-v188.js` | 15128 | `8afc42a2c7d9b437a7cd5abefbf431cace4216435fbaf87ebe97594020970093` |
+| `lib/heme-staging-v188.js` | 15515 | `f9eb183fb9d727988ee64153859f2aeeaafdd0e5e83f5742c555f2d08924a2e3` |
 | `lib/heme-v132.js` | 16879 | `b8efc09695da0d762446d04a61a8269f62ec63f2c8d35fe8547375b1e603b333` |
 | `lib/hemederm-v245.js` | 9186 | `2a54f2acb8e1db72e887094991e92e9eca8d19f74ecc80942fb444ea4fc1853f` |
-| `lib/hemo-v194.js` | 13307 | `78074d36aff74b1c5e0e119fe8bafd316295a18d8d06a737e8ef7c79113ad7ba` |
+| `lib/hemo-v194.js` | 14101 | `82872182e490fcc7e30568ac0d774a19aba578926f6ed938853f7c3bede4b5e2` |
 | `lib/hemodynamics-v87.js` | 14325 | `d557761f8d54ebae34dafa2b758c6f145d7e90ec19fc8e095c4e72f6034ccab5` |
 | `lib/hemonc-v94.js` | 24417 | `63390ae46c47eb5f547ee1eab0ec04112e6ba19042fb28f7451dfa9ec9b543b2` |
 | `lib/hep-fibrosis-portal-v212.js` | 7921 | `93f3523d0b77872b3a351fc28a630c781e1f5469bffc631f70ad84ccffaed494` |
