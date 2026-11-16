@@ -14,8 +14,8 @@ answered.
 
 Each `parseWhen` now applies `inDateWindow`, and its callers' messages name the rule ("a real date from 1900 to
 2100") so a reader who typed a well-shaped 1850 is not asked for the same shape again. The rabies `validDate` is now
-`ymdFault`; iMID refuses an entered start date that fails it. The twelve copies are still twelve copies; folding
-them into one shared parser is a follow-up.
+`ymdFault`; iMID refuses an entered start date that fails it. The twelve copies were folded into one shared parser in
+spec-v1751.
 
 After: 0 of 714.
 

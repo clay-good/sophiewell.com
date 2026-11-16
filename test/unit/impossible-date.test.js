@@ -181,3 +181,13 @@ test('naegele still dates an ordinary LMP, and still flags a stale one', () => {
   assert.equal(typeof stale.dueDate, 'string');
   assert.throws(() => naegele({ lmpIso: '2026-2-3' }), /YYYY-MM-DD/);
 });
+
+// spec-v1751: one wall-clock parser for the twelve libraries that each carried a copy.
+test('wallClockUtc: a real datetime in the window, else null', async () => {
+  const { wallClockUtc } = await import('../../lib/num.js');
+  assert.equal(wallClockUtc('2026-11-16T08:30'), Date.UTC(2026, 10, 16, 8, 30));
+  assert.equal(wallClockUtc('2026-11-16 08:30'), Date.UTC(2026, 10, 16, 8, 30));
+  for (const bad of ['1850-06-01T08:00', '2026-02-30T08:00', '2026-13-01T08:00', '2026-11-16T24:00', '2026-11-16', '', null, undefined]) {
+    assert.equal(wallClockUtc(bad), null, String(bad));
+  }
+});
