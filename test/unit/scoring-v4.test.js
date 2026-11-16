@@ -353,3 +353,9 @@ test('psi: the female age adjustment and the Class I gate both survive a string 
   assert.equal(psi({ age: '45', sex: 'M' }).band, 'Class I (outpatient)');
   assert.equal(psi({ age: '55', sex: 'M' }).band, 'Class II (outpatient)');
 });
+
+test('geneva: a negative heart rate is refused, not scored as a rate under 75 (spec-v1740)', () => {
+  assert.throws(() => geneva({ hr: -105 }), /Heart rate \(bpm\) must be at least 0/);
+  assert.equal(geneva({ hr: 0 }).score, 0);
+  assert.equal(geneva({ hr: 105 }).score, 5);
+});

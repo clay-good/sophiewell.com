@@ -110,7 +110,7 @@ export default [
       let totalMg = 0;
       let doses = 0;
       for (const [dose, freq] of [[a.doseMg1, a.dosesPerDay1], [a.doseMg2, a.dosesPerDay2], [a.doseMg3, a.dosesPerDay3]]) {
-        if (dose > 0 && freq > 0) {
+        if (dose < 0 || freq < 0 || (dose > 0 && freq > 0)) { // spec-v1740: a negative reaches apapSourceTotal and is refused.
           const t = F.apapSourceTotal({ doseMg: dose, dosesPerDay: freq });
           if (t && t.totalMg > 0) { totalMg += t.totalMg; doses += freq; }
         }

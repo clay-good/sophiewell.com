@@ -114,3 +114,12 @@ test('tls-cairo-bishop: an unmeasured lab is not a criterion that failed', () =>
   assert.equal(viaBaseline.criteriaAssessed.k, true);
   assert.equal(viaBaseline.criteria.kMet, true);
 });
+
+test('spec-v1740: a negative uric acid is refused, not read as below the criterion', () => {
+  const ex = { pediatric: false, uricAcid: 9, potassium: 6.5, phosphate: 5, calcium: 6, creatinine: 2.4, creatinineUln: 1.2, arrhythmia: 'none', seizure: 'none' };
+  const neg = tlsCairoBishop({ ...ex, uricAcid: -9 });
+  assert.equal(neg.valid, false);
+  assert.match(neg.band, /uric acid/);
+  assert.equal(tlsCairoBishop({ ...ex, uricAcid: 0 }).valid, true);
+  assert.equal(tlsCairoBishop(ex).valid, true);
+});

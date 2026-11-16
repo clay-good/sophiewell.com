@@ -36,3 +36,14 @@ test('all eight items met -> 8', () => {
 test('no items entered returns a surfaced guard', () => {
   assert.equal(glasgowImrie({}).valid, false);
 });
+
+test('spec-v1740: a negative calcium, urea, albumin or glucose is refused', () => {
+  const ex = { pao2: 55, age: 60, wbc: 12, calcium: 2.2, urea: 20, ldh: 500, albumin: 35, glucose: 12 };
+  for (const k of ['calcium', 'urea', 'albumin', 'glucose']) {
+    const neg = glasgowImrie({ ...ex, [k]: -ex[k] });
+    assert.equal(neg.valid, false, k);
+    assert.match(neg.band, new RegExp(k), k);
+    assert.equal(glasgowImrie({ ...ex, [k]: 0 }).valid, true, k);
+  }
+  assert.equal(glasgowImrie(ex).valid, true);
+});

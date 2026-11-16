@@ -69,6 +69,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- A negative entered where a negative is impossible (a length of stay, a ketone level, an ST deviation, a blood
+  loss, a dose) was quietly read as zero, often landing in the reassuring band: LACE "low risk", NUTRIC "low
+  nutritional risk", Duke "99% 5-year survival", DKA "criteria not met". 38 scores and checks now say the value
+  cannot be negative. Zero still answers wherever zero is a real reading.
 - A mixed-venous saturation entered above the arterial one made the shunt fraction read 497%, and the Hasford CML
   score graded a white-cell differential adding to 120%. Both now say what is wrong.
 - Pregnancy dating accepted an ultrasound dated before the last period, the New York newborn-screen planner listed

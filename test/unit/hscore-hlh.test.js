@@ -30,3 +30,18 @@ test('item weights map the temperature and ferritin bands', () => {
   assert.equal(hscoreHlh({ temp: 39.5 }).items.find((i) => i.label === 'Temperature').points, 49);
   assert.equal(hscoreHlh({ ferritin: 6001 }).items.find((i) => i.label === 'Ferritin').points, 50);
 });
+
+test('spec-v1740: a negative ferritin is refused, not scored as 0 points', () => {
+  const ex = { immunosuppression: 'no', temp: 40, organomegaly: 'both', cytopenias: '2', ferritin: 4000, triglyceride: 3, fibrinogen: 2, ast: 100, hemophagocytosis: 'yes' };
+  const neg = hscoreHlh({ ...ex, ferritin: -4000 });
+  assert.equal(neg.valid, false);
+  assert.match(neg.band, /ferritin/);
+  assert.equal(hscoreHlh({ ...ex, ferritin: 0 }).valid, true);
+  assert.equal(hscoreHlh(ex).valid, true);
+});
+
+test('spec-v1740: a negative fibrinogen is refused, not scored as low fibrinogen', () => {
+  const r = hscoreHlh({ temp: 40, ferritin: 4000, triglyceride: 3, fibrinogen: -2, ast: 100 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /fibrinogen/);
+});

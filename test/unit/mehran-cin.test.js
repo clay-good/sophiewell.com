@@ -90,3 +90,13 @@ test('spec-v1139: an unstated factor keeps the low band withheld', () => {
   assert.match(r.band, /hypotension/);
   assert.match(r.band, /can only add points/);
 });
+
+// spec-v1740: a negative contrast volume was clamped to 0 and read as no contrast given.
+test('a negative contrast volume is refused, not read as 0 mL', () => {
+  const ex = { chf: true, diabetes: true, contrastVolume: 300, egfr: 30 };
+  const r = mehranCin({ ...ex, contrastVolume: -300 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /contrast volume/);
+  assert.equal(mehranCin({ ...ex, contrastVolume: 0 }).valid, true);
+  assert.equal(mehranCin(ex).total, 15);
+});

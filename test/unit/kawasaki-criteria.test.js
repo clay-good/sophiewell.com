@@ -43,3 +43,14 @@ test('blank fever duration surfaces the complete-the-fields fallback', () => {
   assert.equal(r.valid, false);
   assert.ok(!/NaN/.test(r.band));
 });
+
+test('spec-v1740: a negative fever duration (or one past 60 days) is refused, not read as "Fever 0 days"', () => {
+  const principal = ['conjunctivitis', 'oral', 'lymphadenopathy', 'extremity'];
+  const neg = kawasakiCriteria({ feverDays: -6, principal });
+  assert.equal(neg.valid, false);
+  assert.doesNotMatch(neg.band, /Fever 0 days/);
+  assert.equal(kawasakiCriteria({ feverDays: 61, principal }).valid, false);
+  assert.equal(kawasakiCriteria({ feverDays: 0, principal }).valid, true);
+  assert.equal(kawasakiCriteria({ feverDays: 60, principal }).pathway, 'classic');
+  assert.equal(kawasakiCriteria({ feverDays: 6, principal }).pathway, 'classic');
+});

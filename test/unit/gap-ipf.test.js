@@ -60,3 +60,13 @@ test('spec-v1116: an unstated sex is not a male GAP point', () => {
   assert.equal(r.valid, false);
   assert.match(r.band, /Enter sex/);
 });
+
+test('spec-v1740: a negative FVC or DLCO % predicted is refused; cannot-perform still answers', () => {
+  const base = { sex: 'male', age: 68, fvcPct: 60, dlcoPct: 40 };
+  assert.equal(gapIpf({ ...base, fvcPct: -60 }).valid, false);
+  assert.equal(gapIpf({ ...base, dlcoPct: -40 }).valid, false);
+  assert.match(gapIpf({ ...base, dlcoPct: -40 }).band, /DLCO/);
+  assert.equal(gapIpf({ ...base, fvcPct: 0 }).valid, true);
+  assert.equal(gapIpf({ ...base, dlcoPct: undefined, dlcoCannotPerform: true }).valid, true);
+  assert.equal(gapIpf(base).total, 5);
+});

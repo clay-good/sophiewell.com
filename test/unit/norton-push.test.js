@@ -44,10 +44,10 @@ test('push 17 (all maxima) -> high total', () => {
   assert.equal(r.pushTotal, 17);
 });
 
-test('push clamps out-of-range', () => {
+test('push clamps an out-of-range size score (exudate and tissue type outside their range are refused since spec-v1740)', () => {
   const r = nortonPush({
     physicalCondition: 4, mentalCondition: 4, activity: 4, mobility: 4, incontinence: 4,
-    lengthWidthBand: 99, exudate: -1, tissueType: 99,
+    lengthWidthBand: 99, exudate: 0, tissueType: 4,
   });
   assert.equal(r.pushTotal, 10 + 0 + 4);
 });
@@ -126,4 +126,14 @@ test('a measured length and width set the PUSH size score', () => {
   const half = nortonPush({ lengthCm: 3, exudate: 2, tissueType: 3 });
   assert.equal(half.pushTotal, null);
   assert.equal(half.pushAreaCm2, null);
+});
+
+test('norton-push: a negative or out-of-range exudate or tissue type is refused, not clamped (spec-v1740)', () => {
+  const ex = { physicalCondition: 3, mentalCondition: 4, activity: 2, mobility: 2, incontinence: 3,
+    lengthWidthBand: 6, exudate: 2, tissueType: 3 };
+  assert.throws(() => nortonPush({ ...ex, exudate: -2 }), /PUSH exudate amount must be between 0 and 3/);
+  assert.throws(() => nortonPush({ ...ex, tissueType: -3 }), /PUSH tissue type must be between 0 and 4/);
+  assert.throws(() => nortonPush({ ...ex, tissueType: 99 }), /PUSH tissue type must be between 0 and 4/);
+  assert.equal(nortonPush({ ...ex, exudate: 0, tissueType: 0 }).pushTotal, 6);
+  assert.equal(nortonPush(ex).pushTotal, 11);
 });

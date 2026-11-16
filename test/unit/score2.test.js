@@ -51,3 +51,12 @@ test('an age outside the fitted 40-69 is refused, not clamped', () => {
   }
   assert.equal(score2({ age: 40, male: true, smoker: false, sbp: 120, totalChol: 5, hdl: 1.3, region: 'low' }).valid, true);
 });
+
+// spec-v1740: a negative HDL was clamped to the 0.2 mmol/L floor and read as a very low HDL.
+test('a negative HDL is refused, not clamped to the model floor', () => {
+  const r = score2({ ...base, male: true, region: 'very-high', hdl: -1.3 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /HDL/);
+  assert.equal(score2({ ...base, male: true, region: 'very-high', hdl: 0 }).valid, true);
+  assert.equal(score2({ ...base, male: true, region: 'very-high' }).valid, true);
+});

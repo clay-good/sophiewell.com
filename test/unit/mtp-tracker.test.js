@@ -38,9 +38,19 @@ test('Cumulative units sum across all products', () => {
   assert.equal(r.cumulativeUnits, 14);
 });
 
-test('Negative or non-integer inputs are clamped / truncated', () => {
-  const r = mtpTracker({ prbcUnits: -2, ffpUnits: 3.9, plateletUnits: 'x' });
+test('Non-integer inputs are truncated (a negative is refused since spec-v1740)', () => {
+  const r = mtpTracker({ prbcUnits: 0, ffpUnits: 3.9, plateletUnits: 'x' });
   assert.equal(r.prbcUnits, 0);
   assert.equal(r.ffpUnits, 3);
   assert.equal(r.plateletUnits, 0);
+});
+
+test('mtp-tracker: a negative unit count is refused, not read as nothing transfused (spec-v1740)', () => {
+  const ex = { prbcUnits: 6, ffpUnits: 4, plateletUnits: 1, cryoUnits: 0 };
+  for (const [k, re] of [['prbcUnits', /PRBC units must be at least 0/], ['ffpUnits', /FFP \/ plasma units must be at least 0/],
+    ['plateletUnits', /Platelet apheresis doses must be at least 0/], ['cryoUnits', /Cryoprecipitate doses must be at least 0/]]) {
+    assert.throws(() => mtpTracker({ ...ex, [k]: -2 }), re);
+    assert.doesNotThrow(() => mtpTracker({ ...ex, [k]: 0 }), k);
+  }
+  assert.equal(mtpTracker(ex).ratio, '6:4:6');
 });

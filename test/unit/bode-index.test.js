@@ -43,3 +43,11 @@ test('mMRC clamped to 0-4; partial input refused', () => {
   assert.equal(bodeIndex({ bmi: 25, fev1Pct: 90, mmrc: 9, sixMwd: 400 }).dysPts, 3);
   assert.equal(bodeIndex({ bmi: 25, fev1Pct: 90, mmrc: 2 }).valid, false);
 });
+
+test('spec-v1740: a negative FEV1 % predicted is refused, not scored as severe obstruction', () => {
+  const r = bodeIndex({ bmi: 24, fev1Pct: -45, mmrc: 2, sixMwd: 300 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /FEV1/);
+  assert.equal(bodeIndex({ bmi: 24, fev1Pct: 0, mmrc: 2, sixMwd: 300 }).valid, true);
+  assert.equal(bodeIndex({ bmi: 24, fev1Pct: 45, mmrc: 2, sixMwd: 300 }).total, 4);
+});

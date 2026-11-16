@@ -40,3 +40,14 @@ test('hospital-score prior admissions bands (Donze 2016): 0-1 = 0; 2-5 = 2; more
   assert.equal(f(6), 5);
   assert.equal(f(10), 5);
 });
+
+test('hospital-score: a negative admission count is refused, not read as none (spec-v1740)', () => {
+  const ex = { hgbLt12: true, oncologyDischarge: false, sodiumLt135: true,
+    anyProcedure: true, urgentAdmission: true, losGe5: true };
+  const neg = hospitalScore({ ...ex, priorAdmissions12mo: -2 });
+  assert.equal(neg.valid, false);
+  assert.equal(neg.score, null);
+  assert.match(neg.band, /Admissions in the past 12 months must be at least 0/);
+  assert.equal(hospitalScore({ ...ex, priorAdmissions12mo: 0 }).score, 6);
+  assert.equal(hospitalScore({ ...ex, priorAdmissions12mo: 2 }).score, 8);
+});

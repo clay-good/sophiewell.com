@@ -36,3 +36,12 @@ test('partial input returns a complete-the-fields fallback', () => {
   assert.equal(nosasScore({ neck: 42 }).valid, false);
   assert.equal(nosasScore({}).valid, false);
 });
+
+test('spec-v1740: a negative neck, BMI or age is refused, not scored 0 points', () => {
+  const base = { neck: 42, bmi: 31, age: 58, male: true };
+  for (const [k, v] of [['neck', -42], ['bmi', -31], ['age', -58]]) {
+    const r = nosasScore({ ...base, [k]: v });
+    assert.equal(r.valid, false, k);
+  }
+  assert.equal(nosasScore(base).total, 15);
+});

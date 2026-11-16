@@ -55,3 +55,14 @@ test('SGA and multiple seizures are checkbox add-ons', () => {
   // And on their own they are still not a score.
   assert.equal(snappeII({ sga: true }).score, null);
 });
+
+test('spec-v1740: a negative MAP, PaO2, FiO2, urine output or birth weight is refused', () => {
+  const base = { map: 25, temp: 34.5, pao2: 50, fio2: 80, ph: 7.05, seizures: false, urine: 0.5, bw: 800, sga: false, apgar5: 5 };
+  for (const k of ['map', 'pao2', 'fio2', 'urine', 'bw']) {
+    const r = snappeII({ ...base, [k]: -Math.abs(base[k]) });
+    assert.equal(r.valid, false, k);
+    assert.equal(r.score, null, k);
+  }
+  assert.equal(snappeII({ ...base, urine: 0 }).valid, true);
+  assert.equal(snappeII(base).score, 89);
+});

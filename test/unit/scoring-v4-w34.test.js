@@ -158,3 +158,13 @@ test('miniCog: 1 word + normal clock = 3 -> Negative', () => {
 test('miniCog: clamps wordsRecalled', () => {
   assert.equal(miniCog({ wordsRecalled: 99, clockNormal: true }).score, 5);
 });
+
+test('bishop: a negative effacement is refused, not scored as 0% (spec-v1740)', () => {
+  const ex = { dilation: 3, station: -1, consistency: 'medium', position: 'anterior' };
+  const neg = bishop({ ...ex, effacement: -60 });
+  assert.equal(neg.valid, false);
+  assert.equal(neg.score, null);
+  assert.match(neg.band, /Effacement \(%\) must be at least 0/);
+  assert.equal(typeof bishop({ ...ex, effacement: 0 }).score, 'number');
+  assert.equal(bishop({ ...ex, effacement: 60 }).score, 9);
+});

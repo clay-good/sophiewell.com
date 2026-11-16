@@ -74,3 +74,12 @@ test('nothing entered -> complete-the-fields fallback', () => {
   assert.equal(r.valid, false);
   assert.match(r.band, /Enter/);
 });
+
+// spec-v1740: a negative blood loss fell into the <= 100 mL band and scored the best 3 points.
+test('a negative blood loss is refused, not scored as the best band', () => {
+  const r = surgicalApgar({ ebl: -200, lowestMap: 60, lowestHr: 80 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /blood loss/);
+  assert.equal(surgicalApgar({ ebl: 0, lowestMap: 60, lowestHr: 80 }).valid, true);
+  assert.equal(surgicalApgar({ ebl: 200, lowestMap: 60, lowestHr: 80 }).valid, true);
+});

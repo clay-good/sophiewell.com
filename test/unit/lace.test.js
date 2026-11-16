@@ -41,3 +41,13 @@ test('lace Charlson and ED caps: Charlson >=4 -> 5; ED >=4 -> 4', () => {
   assert.equal(r.parts.charlson, 5);
   assert.equal(r.parts.ed, 4);
 });
+
+test('lace: a negative length of stay is refused, not read as low risk (spec-v1740)', () => {
+  const ex = { acuteAdmission: false, charlsonScore: 0, edVisits6mo: 0 };
+  const neg = lace({ ...ex, losDays: -3 });
+  assert.equal(neg.valid, false);
+  assert.equal(neg.score, null);
+  assert.match(neg.band, /Length of stay \(days\) must be at least 0/);
+  assert.equal(lace({ ...ex, losDays: 0 }).score, 0);
+  assert.equal(lace({ ...ex, losDays: 3 }).score, 3);
+});

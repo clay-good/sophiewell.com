@@ -146,6 +146,8 @@ export const renderers = {
         impairedKidney: chk('sal-ckd'),
         standardTherapyFailing: chk('sal-failing'),
       });
+      // spec-v1740: a negative level is refused by the library; show the refusal and nothing else.
+      if (r.valid === false) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       const recommend = /recommended|suggested/i.test(r.recommendation);
       const items = [li(r.recommendation, recommend ? 'warn' : null)];
       if (r.levelMgDl != null) items.push(li(`Salicylate level: ${fmt(r.levelMgDl, { digits: 1, unit: 'mg/dL' })}${r.severity ? ` (${r.severity})` : ''}`));

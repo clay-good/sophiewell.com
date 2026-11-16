@@ -40,3 +40,12 @@ test('a blank input renders the complete-the-fields fallback', () => {
   assert.equal(cardiacPowerOutput({ map: 80 }).valid, false);
   assert.equal(cardiacPowerOutput({ co: 5 }).valid, false);
 });
+
+// spec-v1740: a negative cardiac output was clamped to 0 and read as 0 W, below the shock threshold.
+test('a negative cardiac output is refused, not read as 0 W', () => {
+  const r = cardiacPowerOutput({ map: 80, co: -5 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /cardiac output/);
+  assert.equal(cardiacPowerOutput({ map: 80, co: 0 }).valid, true);
+  assert.equal(cardiacPowerOutput({ map: 80, co: 5 }).valid, true);
+});

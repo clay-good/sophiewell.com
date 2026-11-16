@@ -100,3 +100,20 @@ test('saps-ii: a ventilated patient with no blood gas gets a floor, not a total'
   assert.equal(notVent.score, 55);
   assert.doesNotMatch(notVent.band, /at least/);
 });
+
+test('spec-v1740: a negative FiO2 is refused, not read as a missing blood gas', () => {
+  const ex = { age: 70, heartRate: 130, sbp: 90, temperature: 38, ventilated: true, paO2: 80, fio2: 0.5, urineOutput: 0.4, bun: 60, sodium: 140, potassium: 4.0, bicarbonate: 18, bilirubin: 2.0, wbc: 15, gcs: 12, chronicDisease: 'none', admissionType: 'medical' };
+  const neg = sapsII({ ...ex, fio2: -0.5 });
+  assert.equal(neg.valid, false);
+  assert.match(neg.band, /FiO2/);
+  assert.equal(sapsII({ ...ex, fio2: 0 }).valid, true);
+  const r = sapsII(ex);
+  assert.equal(r.valid, true);
+  assert.equal(r.pfMissing, false);
+});
+
+test('spec-v1740: a negative urine output is refused, not scored as anuria', () => {
+  const ex = { age: 70, heartRate: 130, sbp: 90, temperature: 38, ventilated: true, paO2: 80, fio2: 0.5, urineOutput: -0.4, bun: 60, sodium: 140, potassium: 4.0, bicarbonate: 18, bilirubin: 2.0, wbc: 15, gcs: 12, chronicDisease: 'none', admissionType: 'medical' };
+  assert.match(sapsII(ex).band, /urine output must be at least 0/);
+  assert.equal(sapsII({ ...ex, urineOutput: 0 }).valid, true);
+});

@@ -54,3 +54,15 @@ test('nutric: a total of 5 without IL-6 cannot read as low risk', () => {
   assert.equal(three.highRisk, false);
   assert.match(three.band, /would not reach the >=6 cutoff/);
 });
+
+test('nutric: a negative APACHE II or SOFA is refused, not read as low risk (spec-v1740)', () => {
+  const ex = { ageYears: 55, apache2: 18, sofa: 6, comorbidities: 1, daysHospitalToIcu: 0, il6Pg: 0 };
+  for (const [k, v, re] of [['apache2', -18, /APACHE II score must be at least 0/], ['sofa', -6, /SOFA score must be at least 0/]]) {
+    const neg = nutric({ ...ex, [k]: v });
+    assert.equal(neg.valid, false, k);
+    assert.equal(neg.score, null, k);
+    assert.match(neg.band, re);
+    assert.equal(typeof nutric({ ...ex, [k]: 0 }).score, 'number', k);
+  }
+  assert.equal(nutric(ex).score, 3);
+});

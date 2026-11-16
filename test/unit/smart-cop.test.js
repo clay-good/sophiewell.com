@@ -101,3 +101,14 @@ test('smart-cop: 7 or more is the very-high band', () => {
   assert.ok(r.score >= 7);
   assert.match(r.band, /very high risk/);
 });
+
+test('smart-cop: a negative respiratory rate is refused, not read as unmeasured (spec-v1740)', () => {
+  const ex = { ageYears: 55, sbpLt90: false, multilobar: false, albuminLt35: false, rr: 20,
+    pao2: 90, spo2: 96, pfRatio: 400, hrGe125: false, confusion: false, phLt735: false };
+  const neg = smartCop({ ...ex, rr: -20 });
+  assert.equal(neg.valid, false);
+  assert.equal(neg.score, null);
+  assert.match(neg.band, /Respiratory rate \(breaths\/min\) must be at least 0/);
+  assert.notEqual(smartCop({ ...ex, rr: 0 }).valid, false);
+  assert.equal(smartCop(ex).score, 0);
+});

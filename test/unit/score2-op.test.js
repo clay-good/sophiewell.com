@@ -44,3 +44,13 @@ test('an age under the 70 the model is intended for is refused, not clamped', ()
   assert.match(r.band, /fitted on ages 70 and over/);
   assert.equal(score2Op({ age: 70, male: true, smoker: false, sbp: 150, totalChol: 6, hdl: 1.4, diabetes: false, region: 'low' }).valid, true);
 });
+
+// spec-v1740: a negative HDL was clamped to the 0.2 mmol/L floor and read as a very low HDL.
+test('a negative HDL is refused, not clamped to the model floor', () => {
+  const ex = { age: 75, male: false, sbp: 150, totalChol: 5.5, hdl: 1.4, region: 'high' };
+  const r = score2Op({ ...ex, hdl: -1.4 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /HDL/);
+  assert.equal(score2Op({ ...ex, hdl: 0 }).valid, true);
+  assert.equal(score2Op(ex).valid, true);
+});

@@ -1988,6 +1988,7 @@ export const renderers = {
         losGe5: checked('hs-los'),
       };
       const r = S4.hospitalScore(inputs);
+      if (r.valid === false) { o.appendChild(el('p', { text: r.band })); clearDerivationSteps(deriv); return; } // spec-v1740
       // spec-v1029: prior admissions are worth up to 5 points; no band without them.
       if (!r.incomplete) o.appendChild(el('h2', { text: `HOSPITAL ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
@@ -2030,6 +2031,7 @@ export const renderers = {
         edVisits6mo: nvOrNull('lc-ed'),
       };
       const r = S4.lace(inputs);
+      if (r.valid === false) { o.appendChild(el('p', { text: r.band })); clearDerivationSteps(deriv); return; } // spec-v1740
       if (!r.awaiting) o.appendChild(el('h2', { text: `LACE ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;

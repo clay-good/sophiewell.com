@@ -47,3 +47,15 @@ test('an age outside 45-85 is refused, not clamped', () => {
   }
   assert.equal(mesaChd({ age: 60, male: true, race: 'white', totalChol: 200, hdl: 50, sbp: 120, cac: 100 }).valid, true);
 });
+
+// spec-v1740: a negative HDL was clamped to 5 mg/dL and a negative CAC to 0 (a real, reassuring score).
+test('a negative HDL or CAC is refused; a CAC of 0 still answers', () => {
+  for (const bad of [{ hdl: -50 }, { cac: -100 }]) {
+    const r = mesaChd({ ...base, cac: 100, ...bad });
+    assert.equal(r.valid, false, JSON.stringify(bad));
+  }
+  const zero = mesaChd({ ...base, cac: 0 });
+  assert.equal(zero.valid, true);
+  assert.match(zero.band, /with CAC 0/);
+  assert.equal(mesaChd({ ...base, cac: 100 }).valid, true);
+});

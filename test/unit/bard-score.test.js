@@ -40,3 +40,16 @@ test('scalar fuzz arg -> refuses to rule out, never NaN', () => {
   assert.equal(r.total, null);
   assert.match(r.band, /cannot rule advanced fibrosis out/);
 });
+
+test('spec-v1740: a negative BMI, AST or ALT meets the envelope instead of reading as not entered', () => {
+  const ex = { bmi: 30, ast: 45, alt: 40, diabetes: true };
+  for (const k of ['bmi', 'ast', 'alt']) {
+    const neg = bardScore({ ...ex, [k]: -ex[k] });
+    assert.equal(neg.valid, false, k);
+    assert.match(neg.band, /plausible range/, k);
+  }
+  // Blank is still asked for, not refused as out of range.
+  assert.doesNotMatch(bardScore({ ...ex, bmi: '' }).band, /plausible range/);
+  assert.equal(bardScore(ex).valid, true);
+  assert.equal(bardScore(ex).total, 4);
+});

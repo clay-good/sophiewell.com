@@ -38,3 +38,13 @@ test('out-of-table sum clamps to the 0-50 mortality row, no undefined', () => {
   assert.equal(r.mortality1yr, 84.2);
   assert.equal(r.mortality3yr, 98.5);
 });
+
+// spec-v1740: a negative ejection fraction was clamped to 0 and scored as the lowest-EF points.
+test('a negative ejection fraction is refused, not clamped to 0', () => {
+  const ex = { age: 70, male: true, lvef: 30, nyha: 3, sbp: 120, bmi: 24, creatinine: 1.2, diabetes: true, hfOver18mo: true, onBetaBlocker: true, onAceArb: true };
+  const r = maggic({ ...ex, lvef: -30 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /ejection fraction/);
+  assert.equal(maggic({ ...ex, lvef: 0 }).valid, true);
+  assert.equal(maggic(ex).valid, true);
+});

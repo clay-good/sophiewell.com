@@ -65,3 +65,13 @@ test('news2 Scale 2 on O2: SpO2 97 -> 3 points for SpO2', () => {
   assert.equal(r.parts.spo2, 3);
   assert.equal(r.parts.supplementalO2, 2);
 });
+
+test('news2: a negative SpO2 is refused, not scored as an SpO2 of 0 (spec-v1740)', () => {
+  const ex = { rr: 14, spo2: 98, scale2: false, onO2: false, sbp: 124, pulse: 78, acvpu: 'A', temp: 37.0 };
+  const neg = news2({ ...ex, spo2: -98 });
+  assert.equal(neg.valid, false);
+  assert.equal(neg.score, null);
+  assert.match(neg.band, /SpO2 \(%\) must be between 0 and 100/);
+  assert.equal(typeof news2({ ...ex, spo2: 0 }).score, 'number');
+  assert.equal(news2(ex).score, 0);
+});

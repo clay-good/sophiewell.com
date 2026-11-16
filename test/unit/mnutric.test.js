@@ -24,3 +24,15 @@ test('mnutric maximum 9', () => {
     daysHospitalToIcu: 5 });
   assert.equal(r.score, 9);
 });
+
+test('mnutric: a negative APACHE II or SOFA is refused, not read as low risk (spec-v1740)', () => {
+  const ex = { ageYears: 55, apache2: 18, sofa: 6, comorbidities: 1, daysHospitalToIcu: 0 };
+  for (const [k, v, re] of [['apache2', -18, /APACHE II score must be at least 0/], ['sofa', -6, /SOFA score must be at least 0/]]) {
+    const neg = mnutric({ ...ex, [k]: v });
+    assert.equal(neg.valid, false, k);
+    assert.equal(neg.score, null, k);
+    assert.match(neg.band, re);
+    assert.equal(typeof mnutric({ ...ex, [k]: 0 }).score, 'number', k);
+  }
+  assert.equal(mnutric(ex).score, 3);
+});

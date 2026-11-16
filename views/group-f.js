@@ -377,6 +377,7 @@ export const renderers = {
       for (const [d, n] of [['apap-d1', 'apap-n1'], ['apap-d2', 'apap-n2'], ['apap-d3', 'apap-n3']]) {
         const dose = nvOrNull(d);
         const freq = nvOrNull(n);
+        if (dose < 0 || freq < 0) C8.apapSourceTotal({ doseMg: dose, dosesPerDay: freq }); // spec-v1740: refuses a negative.
         if (dose > 0 && freq > 0) { sources += 1; doses += freq; total += C8.apapSourceTotal({ doseMg: dose, dosesPerDay: freq }).totalMg; }
       }
       // "Remaining to ceiling: 4000 mg" from an empty form reads as headroom

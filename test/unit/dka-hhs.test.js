@@ -110,3 +110,12 @@ test('spec-v1099: HHS is not classified from ketones nobody measured', () => {
   // The DKA path was already guarded and stays that way.
   assert.equal(dkaHhs({ glucose: 520, ph: 6.95, bicarbonate: 6, mental: 'stupor', sodium: 130, chloride: 95 }).classification, 'none');
 });
+
+test('spec-v1740: a negative beta-hydroxybutyrate is refused, not read as no ketosis', () => {
+  const ex = { glucose: 520, ph: 6.95, bicarbonate: 6, betaHydroxybutyrate: 6, mental: 'stupor', sodium: 130, chloride: 95 };
+  const neg = dkaHhs({ ...ex, betaHydroxybutyrate: -6 });
+  assert.equal(neg.valid, false);
+  assert.match(neg.band, /beta-hydroxybutyrate/);
+  assert.notEqual(dkaHhs({ ...ex, betaHydroxybutyrate: 0 }).valid, false);
+  assert.equal(dkaHhs(ex).classification, 'DKA');
+});

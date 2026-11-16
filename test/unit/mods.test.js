@@ -62,3 +62,13 @@ test('mods threshold check: creatinine 1.1 falls into the <=1.1 -> 0 band', () =
   assert.equal(r.parts.renal, 0);
   assert.equal(r.score, 0);
 });
+
+test('mods: a negative P/F ratio is refused, not scored as a P/F of 0 (spec-v1740)', () => {
+  const ex = { creatinineMgDl: 1.0, bilirubinMgDl: 1.0, par: 8, plateletsK: 200, gcs: 15 };
+  const neg = mods({ ...ex, pfRatio: -350 });
+  assert.equal(neg.valid, false);
+  assert.equal(neg.score, null);
+  assert.match(neg.band, /PaO2\/FiO2 ratio must be at least 0/);
+  assert.equal(mods({ ...ex, pfRatio: 0 }).parts.respiratory, 4);
+  assert.equal(mods({ ...ex, pfRatio: 350 }).parts.respiratory, 0);
+});

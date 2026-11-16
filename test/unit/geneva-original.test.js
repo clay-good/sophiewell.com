@@ -67,3 +67,13 @@ test('a blank heart rate may not read as low probability (spec-v1064)', () => {
   assert.equal(full.hrMissing, false);
   assert.doesNotMatch(full.band, /can only raise it/);
 });
+
+// spec-v1740: a negative heart rate fell below the > 100 cut and read as a normal pulse.
+test('a negative heart rate is refused, not read as a normal pulse', () => {
+  const ex = { age: 85, priorVte: true, recentSurgery: true, heartRate: 110, paco2Band: 'low2', pao2Band: 'b4' };
+  const r = genevaOriginal({ ...ex, heartRate: -110 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /heart rate/);
+  assert.equal(genevaOriginal({ ...ex, heartRate: 0 }).valid, true);
+  assert.equal(genevaOriginal(ex).valid, true);
+});

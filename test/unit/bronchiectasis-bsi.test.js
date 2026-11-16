@@ -46,3 +46,14 @@ test('partial input returns a complete-the-fields fallback', () => {
   assert.equal(bronchiectasisBsi({ age: 72 }).valid, false);
   assert.equal(bronchiectasisBsi({}).valid, false);
 });
+
+test('spec-v1740: a negative age, FEV1 or exacerbation count is refused, not banded', () => {
+  const base = { age: 72, bmi: 17, fev1: 45, exacerbations: 3, mrc: 4, priorAdmission: true, pseudomonas: true };
+  for (const [k, v] of [['age', -5], ['fev1', -10], ['exacerbations', -2]]) {
+    const r = bronchiectasisBsi({ ...base, [k]: v });
+    assert.equal(r.valid, false, k);
+    assert.match(r.band, /at least 0/, k);
+  }
+  assert.equal(bronchiectasisBsi({ ...base, exacerbations: 0 }).valid, true);
+  assert.equal(bronchiectasisBsi(base).total, 20);
+});

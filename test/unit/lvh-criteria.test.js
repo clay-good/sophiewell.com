@@ -44,9 +44,17 @@ test('the larger of RV5/RV6 is used for Sokolow-Lyon', () => {
   assert.equal(r.sokolowSum, 39); // 20 + 19
 });
 
-test('voltages clamp to a non-negative magnitude', () => {
-  const r = lvhCriteria({ sV1: -20, rV5: 18, sex: 'male' });
-  assert.equal(r.sokolowSum, 18); // -20 clamped to 0
+// spec-v1740: a negative amplitude used to clamp to 0 (an absent wave); it is a sign mistake, refused by name.
+test('a negative wave amplitude is refused, not clamped to 0', () => {
+  for (const k of ['sV1', 'rV5', 'rV6', 'sV3', 'rAVL', 'sD', 'sV4']) {
+    const r = lvhCriteria({ sV1: 20, rV5: 18, rV6: 16, sV3: 12, rAVL: 10, sD: 15, sV4: 10, sex: 'male', [k]: -5 });
+    assert.equal(r.valid, false, k);
+    assert.match(r.band, /mm/, k);
+  }
+  const zero = lvhCriteria({ sV1: 0, rV5: 18, sex: 'male' });
+  assert.equal(zero.valid, true);
+  assert.equal(zero.sokolowSum, 18);
+  assert.equal(lvhCriteria({ sV1: 20, rV5: 18, rV6: 16, sV3: 12, rAVL: 10, sex: 'male' }).sokolowSum, 38);
 });
 
 test('a partial limb is reported as unknown, not a false negative', () => {

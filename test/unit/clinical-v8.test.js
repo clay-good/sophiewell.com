@@ -308,3 +308,21 @@ test('apap child mode counts doses against 5 in 24 hours', async () => {
   assert.equal(apapChildDoseCheck({ doses: 6 }).over, true);
   assert.equal(apapChildDoseCheck({ doses: 6 }).remainingDoses, -1);
 });
+
+test('spec-v1740: a negative acetaminophen dose or doses/day is refused, not skipped as a source not taken', async () => {
+  assert.throws(() => C.apapSourceTotal({ doseMg: -650, dosesPerDay: 4 }), /milligrams per dose/);
+  assert.throws(() => C.apapSourceTotal({ doseMg: 650, dosesPerDay: -4 }), /doses per day/);
+  assert.equal(C.apapSourceTotal({ doseMg: 0, dosesPerDay: 4 }).totalMg, 0);
+  const { computeCalculator } = await import('../../mcp/tools.js');
+  const ex = { 'apap-d1': '650', 'apap-n1': '4', 'apap-d2': '325', 'apap-n2': '4', 'apap-d3': '0', 'apap-n3': '0', 'apap-ceiling': '4000' };
+  const run = (inputs) => computeCalculator({ id: 'apap-24h-max', inputs });
+  for (const k of ['apap-d1', 'apap-n1', 'apap-d2', 'apap-n2']) {
+    const neg = run({ ...ex, [k]: String(-Number(ex[k])) });
+    assert.equal(neg.valid, false, k);
+    assert.match(neg.message, /per dose|per day/, k);
+    assert.notEqual(run({ ...ex, [k]: '0' }).valid, false, k);
+  }
+  const base = run(ex);
+  assert.notEqual(base.valid, false);
+  assert.equal(base.result.totalMg, 3900);
+});

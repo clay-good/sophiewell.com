@@ -118,3 +118,13 @@ test('spec-v1093: a SCORAD scored without the subjective half says so', () => {
   // The band really does move on the subjective half.
   assert.ok(both.score > neither.score);
 });
+
+test('spec-v1740: a negative extent is refused, not clamped to 0%', () => {
+  const ex = { extent: 30, erythema: 2, edema: 1, oozing: 1, excoriation: 2, lichenification: 1, dryness: 1, pruritus: 5, sleeplessness: 3 };
+  const neg = scorad({ ...ex, extent: -30 });
+  assert.equal(neg.valid, false);
+  assert.equal(neg.score, null);
+  assert.match(neg.band, /extent/);
+  assert.equal(scorad({ ...ex, extent: 0 }).valid, true);
+  assert.equal(scorad(ex).valid, true);
+});

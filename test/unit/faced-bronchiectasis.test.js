@@ -37,3 +37,11 @@ test('partial input returns a complete-the-fields fallback', () => {
   assert.equal(facedBronchiectasis({ fev1: 45 }).valid, false);
   assert.equal(facedBronchiectasis({}).valid, false);
 });
+
+test('spec-v1740: a negative age is refused, not read as under 70', () => {
+  const r = facedBronchiectasis({ fev1: 45, age: -72, pseudomonas: true });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /age/i);
+  assert.equal(facedBronchiectasis({ fev1: 45, age: 0 }).valid, true);
+  assert.equal(facedBronchiectasis({ fev1: 45, age: 72, pseudomonas: true }).total, 5);
+});

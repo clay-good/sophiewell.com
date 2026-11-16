@@ -67,3 +67,11 @@ test('spec-v1089: an unmeasured zero reads differently from a measured one', () 
   assert.match(absent.band, /Computed without base excess/);
   assert.doesNotMatch(measured.band, /Computed without base excess/);
 });
+
+test('spec-v1740: a negative SBP is refused; an SBP of 0 (cardiac arrest) still answers', () => {
+  const neg = pim3({ sbp: -90, mechVent: true, baseExcess: -5, riskCategory: 'high' });
+  assert.equal(neg.valid, false);
+  assert.match(neg.band, /systolic/i);
+  assert.equal(pim3({ sbp: 0, mechVent: true, riskCategory: 'high' }).valid, true);
+  assert.equal(pim3({ sbp: 90, mechVent: true, baseExcess: -5, riskCategory: 'high' }).x, -1.9);
+});

@@ -81,3 +81,13 @@ test('spec-v1136: with no level there is nothing to disclose', () => {
   assert.match(r.recommendation, /Hemodialysis recommended/);
   assert.doesNotMatch(r.recommendation, /Read against a salicylate/);
 });
+
+test('spec-v1740: a negative salicylate level is refused, not read as no level', () => {
+  const ex = { level: 110, unit: 'mgdl', poisoningType: 'acute' };
+  const neg = salicylateToxicity({ ...ex, level: -110 });
+  assert.equal(neg.valid, false);
+  assert.match(neg.band, /salicylate level/);
+  assert.doesNotMatch(neg.recommendation, /No listed EXTRIP/);
+  assert.notEqual(salicylateToxicity({ ...ex, level: 0 }).valid, false);
+  assert.match(salicylateToxicity(ex).recommendation, /Hemodialysis recommended/);
+});
