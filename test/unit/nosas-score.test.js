@@ -45,3 +45,16 @@ test('spec-v1740: a negative neck, BMI or age is refused, not scored 0 points', 
   }
   assert.equal(nosasScore(base).total, 15);
 });
+
+test('spec-v1741: a value ten times past its envelope is refused, not scored', () => {
+  const ex = { neck: 42, bmi: 31, age: 58, male: true };
+  assert.equal(nosasScore(ex).valid, true);
+  const badBmi = nosasScore({ ...ex, bmi: 2000 });
+  assert.equal(badBmi.valid, false);
+  assert.match(badBmi.band, /body mass index/);
+  assert.equal(nosasScore({ ...ex, bmi: 80 }).valid, true);
+  const badAge = nosasScore({ ...ex, age: 1300 });
+  assert.equal(badAge.valid, false);
+  assert.match(badAge.band, /age/);
+  assert.equal(nosasScore({ ...ex, age: 110 }).valid, true);
+});

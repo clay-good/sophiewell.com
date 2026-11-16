@@ -67,3 +67,14 @@ test('blank start times print no deadline', () => {
   assert.equal(t1799({}).valid, false);
   assert.equal(tMinor({ age: '15', criterion: 'danger-self' }).valid, false);
 });
+
+// spec-v1741: an entered age outside 0 to 120 is told its range by name, not asked for again.
+test('spec-v1741: 5585 minor hold names the age range for 1200; a blank is still asked for; the worked example answers', () => {
+  const ex = { age: '15', criterion: 'danger-self', detained: '2026-09-18T20:00', parentNotified: '2026-09-18T21:30' };
+  assert.equal(tMinor(ex).valid, true);
+  const r = tMinor({ ...ex, age: '1200' });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /age in years must be between 0 and 120/);
+  assert.match(tMinor({ ...ex, age: '' }).message, /^Enter the age/);
+  assert.equal(tMinor({ ...ex, age: '17' }).valid, true);
+});

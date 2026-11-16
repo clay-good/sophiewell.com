@@ -57,3 +57,16 @@ test('spec-v1740: a negative age, FEV1 or exacerbation count is refused, not ban
   assert.equal(bronchiectasisBsi({ ...base, exacerbations: 0 }).valid, true);
   assert.equal(bronchiectasisBsi(base).total, 20);
 });
+
+test('spec-v1741: a value ten times past its envelope is refused, not scored', () => {
+  const ex = { age: 72, bmi: 17, fev1: 45, exacerbations: 3, mrc: 4, priorAdmission: true, pseudomonas: true };
+  assert.equal(bronchiectasisBsi(ex).valid, true);
+  const badAge = bronchiectasisBsi({ ...ex, age: 1300 });
+  assert.equal(badAge.valid, false);
+  assert.match(badAge.band, /age/);
+  assert.equal(bronchiectasisBsi({ ...ex, age: 110 }).valid, true);
+  const badBmi = bronchiectasisBsi({ ...ex, bmi: 2000 });
+  assert.equal(badBmi.valid, false);
+  assert.match(badBmi.band, /body mass index/);
+  assert.equal(bronchiectasisBsi({ ...ex, bmi: 80 }).valid, true);
+});

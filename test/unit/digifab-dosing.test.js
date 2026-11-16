@@ -54,3 +54,12 @@ test('spec-v1467: a blank empiric setting is asked for, never dosed as acute', (
   assert.equal(digifabDosing({ mode: 'empiric', timing: 'subacute' }).valid, false);
   assert.equal(digifabDosing({ mode: 'level', level: 4.5, weight: 70 }).valid, true, 'the setting is not needed outside empiric dosing');
 });
+
+test('spec-v1741: a weight past the envelope is refused, a heavy real one and the example answer', () => {
+  const tenX = digifabDosing({ mode: 'level', level: 4.5, weight: 5000 });
+  assert.equal(tenX.valid, false);
+  assert.match(tenX.band, /plausible range for weight/);
+  assert.equal(digifabDosing({ mode: 'level', level: 4.5, weight: 250 }).valid, true);
+  assert.equal(digifabDosing({ mode: 'level', level: 4.5, weight: 70 }).band,
+    'DigiFab 4 vials by steady-state serum level (4.5 ng/mL x 70 kg / 100, rounded up).');
+});

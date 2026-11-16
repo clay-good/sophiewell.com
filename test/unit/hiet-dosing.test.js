@@ -37,3 +37,12 @@ test('guards zero / blank / negative weight', () => {
   assert.equal(hietDosing({}).valid, false);
   assert.equal(hietDosing({ weight: -10 }).valid, false);
 });
+
+test('spec-v1741: a weight past the envelope is refused, a heavy real one and the example answer', () => {
+  const tenX = hietDosing({ weight: 5000 });
+  assert.equal(tenX.valid, false);
+  assert.match(tenX.band, /plausible range for weight/);
+  assert.equal(hietDosing({ weight: 250 }).valid, true);
+  assert.equal(hietDosing({ weight: 80 }).band,
+    'HIET: bolus 80 units (1 unit/kg), starting infusion 80 units/hr (1 unit/kg/hr), titration ceiling 800 units/hr (10 unit/kg/hr); pair with a dextrose infusion to maintain euglycemia.');
+});

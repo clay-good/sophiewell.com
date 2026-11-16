@@ -37,3 +37,12 @@ test('partial inputs render a complete-the-fields fallback', () => {
   assert.equal(r.valid, false);
   assert.match(r.band, /Enter the patient age and the baseline NIHSS/);
 });
+
+test('spec-v1741: a value ten times past its envelope is refused, not scored', () => {
+  const ex = { glucose: 'high', early: true, dense: true, age: 80, nihss: 12 };
+  assert.equal(sedanScore(ex).valid, true);
+  const badAge = sedanScore({ ...ex, age: 1300 });
+  assert.equal(badAge.valid, false);
+  assert.match(badAge.band, /age/);
+  assert.equal(sedanScore({ ...ex, age: 110 }).valid, true);
+});

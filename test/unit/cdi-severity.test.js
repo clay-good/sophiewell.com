@@ -64,3 +64,12 @@ test('non-fulminant missing one lab is invalid', () => {
   assert.equal(cdiSeverity({ creatinine: '1.0' }).valid, false);
   assert.equal(cdiSeverity({ wbc: '9000' }).valid, false);
 });
+
+// spec-v1741: a creatinine ten times past its envelope is refused, not classified severe.
+test('spec-v1741: a creatinine of 250 mg/dL is refused; 20 and the worked example answer', () => {
+  const r = cdiSeverity({ wbc: '18000', creatinine: '250' });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /plausible range for serum creatinine/);
+  assert.equal(cdiSeverity({ wbc: '18000', creatinine: '20' }).category, 'severe');
+  assert.equal(cdiSeverity({ wbc: '18000', creatinine: '1.2' }).category, 'severe');
+});

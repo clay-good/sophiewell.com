@@ -49,3 +49,19 @@ test('blank inputs surface the fallback', () => {
   assert.equal(hodgkinIps({}).valid, false);
   assert.equal(hodgkinIps({ albumin: 3 }).valid, false);
 });
+
+test('spec-v1741: albumin/hemoglobin past the envelope refused; an out-of-range age named, not asked again', () => {
+  const ex = { albumin: 3.5, hgb: 10, male: 'yes', age: 48, stage4: 'no', wbc: 12, lymphCount: 700, lymphPct: 10 };
+  assert.equal(hodgkinIps(ex).valid, true);
+  const alb = hodgkinIps({ ...ex, albumin: 70 });
+  assert.equal(alb.valid, false);
+  assert.match(alb.message, /plausible range for serum albumin/);
+  const hgb = hodgkinIps({ ...ex, hgb: 250 });
+  assert.equal(hgb.valid, false);
+  assert.match(hgb.message, /plausible range for hemoglobin/);
+  const age = hodgkinIps({ ...ex, age: 1300 });
+  assert.equal(age.valid, false);
+  assert.match(age.message, /Age must be between 0 and 130/);
+  assert.equal(hodgkinIps({ ...ex, albumin: 6, hgb: 20, age: 110 }).valid, true);
+  assert.match(hodgkinIps({ ...ex, age: '' }).message, /^Enter/);
+});

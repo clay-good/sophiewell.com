@@ -48,3 +48,12 @@ test('domain guards: age < 2, age > 20, missing sex/height -> valid:false', () =
   assert.equal(cdcStatureForAge({ ageYears: 10, heightCm: 138 }).valid, false);
   assert.equal(cdcStatureForAge({ sex: 'male', ageYears: 10 }).valid, false);
 });
+
+test('spec-v1741: a height past the envelope (checked in m) is refused, a tall real one and the example answer', () => {
+  const tenX = cdcStatureForAge({ sex: 'male', ageYears: 10, heightCm: 2500 });
+  assert.equal(tenX.valid, false);
+  assert.match(tenX.message, /plausible range for height/);
+  assert.equal(cdcStatureForAge({ sex: 'male', ageYears: 18, heightCm: 210 }).valid, true);
+  assert.equal(cdcStatureForAge({ sex: 'male', ageYears: 10, heightCm: 138 }).band,
+    'Height 138 cm at age 10 y: 46th percentile (z -0.09) \u2014 within the CDC reference range (5th to under the 95th percentile).');
+});

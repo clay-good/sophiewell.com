@@ -56,3 +56,12 @@ test('missing fields surface a complete-the-fields fallback', () => {
   assert.match(mipi({}).message, /still needed/);
   assert.match(mipi({ age: 65, ldh: 300, uln: 250, wbc: 8000 }).message, /ECOG/);
 });
+
+test('spec-v1741: an age ten times past its envelope is refused', () => {
+  const ex = { age: 65, ecog: '0', ldh: 300, uln: 250, wbc: 8000 };
+  assert.equal(mipi(ex).valid, true);
+  const r = mipi({ ...ex, age: 1300 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /plausible range for age/);
+  assert.equal(mipi({ ...ex, age: 110 }).valid, true);
+});

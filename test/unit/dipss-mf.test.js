@@ -36,3 +36,16 @@ test('blank fields surface the fallback', () => {
   assert.equal(dipssMf({ age: 70, wbc: 8, hgb: 13, blasts: 0 }).valid, false);
   assert.equal(dipssMf({}).valid, false);
 });
+
+test('spec-v1741: a hemoglobin past the envelope refused; an out-of-range age named, not asked again', () => {
+  const ex = { age: 68, wbc: 12, hgb: 9.5, blasts: 1, constitutional: 'no' };
+  assert.equal(dipssMf(ex).valid, true);
+  const hgb = dipssMf({ ...ex, hgb: 250 });
+  assert.equal(hgb.valid, false);
+  assert.match(hgb.message, /plausible range for hemoglobin/);
+  const age = dipssMf({ ...ex, age: 1300 });
+  assert.equal(age.valid, false);
+  assert.match(age.message, /Age must be greater than 0 and at most 130/);
+  assert.equal(dipssMf({ ...ex, age: 110, hgb: 20 }).valid, true);
+  assert.match(dipssMf({ ...ex, age: '' }).message, /^Enter age/);
+});

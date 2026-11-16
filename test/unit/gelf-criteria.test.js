@@ -41,3 +41,17 @@ test('any blank field surfaces the fallback', () => {
   assert.equal(gelfCriteria({}).valid, false);
   assert.equal(gelfCriteria({ maxMassCm: 8 }).valid, false);
 });
+
+test('spec-v1741: a hemoglobin or platelet count ten times past its envelope is refused', () => {
+  const ex = { maxMassCm: 8, nodalSites3cm: 'no', bSymptoms: 'no', splenomegaly: 'no', effusion: 'no', hgb: 12, platelet: 220, leukemicPhase: 'no' };
+  assert.equal(gelfCriteria(ex).valid, true);
+  const hgb = gelfCriteria({ ...ex, hgb: 250 });
+  assert.equal(hgb.valid, false);
+  assert.match(hgb.message, /plausible range for hemoglobin/);
+  const plt = gelfCriteria({ ...ex, platelet: 20000 });
+  assert.equal(plt.valid, false);
+  assert.match(plt.message, /plausible range for platelet count/);
+  assert.equal(gelfCriteria({ ...ex, hgb: 20, platelet: 1500 }).valid, true);
+  assert.equal(gelfCriteria({ ...ex, hgb: '' }).valid, false);
+  assert.match(gelfCriteria({ ...ex, hgb: '' }).message, /^Enter/);
+});

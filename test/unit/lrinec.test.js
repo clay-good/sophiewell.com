@@ -80,3 +80,15 @@ test('a complete panel reads exactly as before', () => {
   assert.equal(r.partialFrom, null);
   assert.doesNotMatch(r.band, /Scored from/);
 });
+
+test('spec-v1741: a WBC, hemoglobin or sodium past the envelope is refused; high real values and the example answer', () => {
+  const ex = { crp: 180, wbc: 26, hemoglobin: 10, sodium: 134 };
+  for (const [k, v, label] of [['wbc', 2000, /white blood cell count/], ['hemoglobin', 250, /hemoglobin/], ['sodium', 2000, /serum sodium/]]) {
+    const r = lrinec({ ...ex, [k]: v });
+    assert.equal(r.valid, false, k);
+    assert.equal(r.total, null, k);
+    assert.match(r.band, label);
+  }
+  assert.equal(lrinec({ ...ex, wbc: 150, hemoglobin: 22, sodium: 175 }).total, 6);
+  assert.ok(lrinec(ex).band.startsWith('LRINEC 10: high risk of necrotizing fasciitis (> 75%). A score >= 6 should raise suspicion.'));
+});

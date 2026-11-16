@@ -41,3 +41,12 @@ test('partial inputs render a complete-the-fields fallback', () => {
   assert.equal(r.valid, false);
   assert.match(r.band, /Enter the eGFR, systolic BP, heart rate, and 6-minute walk distance/);
 });
+
+test('spec-v1741: a value ten times past its envelope is refused, not scored', () => {
+  const ex = { egfr: 72, who: '3', sbp: 104, hr: 88, mwd: 300, bnp: 'high2' };
+  assert.equal(revealLite2(ex).valid, true);
+  const badEgfr = revealLite2({ ...ex, egfr: 2000 });
+  assert.equal(badEgfr.valid, false);
+  assert.match(badEgfr.band, /estimated GFR/);
+  assert.equal(revealLite2({ ...ex, egfr: 150 }).valid, true);
+});

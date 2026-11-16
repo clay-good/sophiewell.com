@@ -33,3 +33,12 @@ test('blank or non-positive inputs surface the fallback', () => {
   assert.equal(myelomaIss({ b2m: 4 }).valid, false);
   assert.equal(myelomaIss({ b2m: 0, albumin: 4 }).valid, false);
 });
+
+test('spec-v1741: an albumin ten times past its envelope (g/dL) is refused', () => {
+  const ex = { b2m: 3.2, albumin: 4 };
+  assert.equal(myelomaIss(ex).valid, true);
+  const r = myelomaIss({ ...ex, albumin: 70 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /plausible range for serum albumin/);
+  assert.equal(myelomaIss({ ...ex, albumin: 6 }).valid, true);
+});

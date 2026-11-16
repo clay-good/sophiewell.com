@@ -37,7 +37,19 @@ test('out-of-range RTS / ISS reject', () => {
 });
 
 test('overflow-safe: extreme age does not leak NaN/Infinity', () => {
-  const r = triss({ mechanism: 'blunt', rts: 7.8408, iss: 75, age: 1e9 });
+  // spec-v1741: age now has an envelope (0 to 130 years), so the probe sits at its
+  // top; an age of 1e9 is refused.
+  const r = triss({ mechanism: 'blunt', rts: 7.8408, iss: 75, age: 130 });
   assert.equal(r.valid, true);
   assert.ok(Number.isFinite(r.pct));
+  assert.equal(triss({ mechanism: 'blunt', rts: 7.8408, iss: 75, age: 1e9 }).valid, false);
+});
+
+test('spec-v1741: an age past the envelope is refused, an old real one and the example answer', () => {
+  const tenX = triss({ mechanism: 'blunt', rts: 6, iss: 25, age: 1300 });
+  assert.equal(tenX.valid, false);
+  assert.match(tenX.band, /plausible range for age/);
+  assert.equal(triss({ mechanism: 'blunt', rts: 6, iss: 25, age: 110 }).valid, true);
+  assert.equal(triss({ mechanism: 'blunt', rts: 6, iss: 25, age: 60 }).band,
+    'TRISS probability of survival 65.8% (blunt mechanism; RTS 6, ISS 25, age >= 55).');
 });

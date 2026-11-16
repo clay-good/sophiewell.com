@@ -40,3 +40,12 @@ test('partial inputs render a complete-the-fields fallback', () => {
   assert.equal(r.valid, false);
   assert.match(r.band, /Enter the patient age and the serum albumin/);
 });
+
+test('spec-v1741: a value ten times past its envelope is refused, not scored', () => {
+  const ex = { urea: 'high', age: 74, nonPurulent: true, hospitalAcquired: true, albumin: 24 };
+  assert.equal(rapidPleural(ex).valid, true);
+  const badAge = rapidPleural({ ...ex, age: 1300 });
+  assert.equal(badAge.valid, false);
+  assert.match(badAge.band, /age/);
+  assert.equal(rapidPleural({ ...ex, age: 110 }).valid, true);
+});

@@ -29,7 +29,8 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep 
 // The catalog's refusals, in the words they use: the shared envelope sentence, gradeFault's, and
 // each older tool's own ("PCE valid for ages 40-79 only", "core temp C must be 0-38", "above ~7,
 // beyond recorded extremes", "Enter a serum sodium between 80 and 200 mmol/L").
-const REFUSED = /plausible range|beyond (?:a plausible|recorded)|outside (?:that|the) range|valid for ages|must be (?:a number|between|greater|at least|no more|[\d.]+\s*(?:-|to)\s*[\d.]+)|between -?[\d.]+ and -?[\d.]+|no more than|Check the value/i;
+// spec-v1741: "must be FROM 30 to 250 cm" (kdri-kdpi) is a refusal with a range too.
+const REFUSED = /plausible range|beyond (?:a plausible|recorded)|outside (?:that|the) range|valid for ages|must be (?:a number|between|greater|at least|no more|(?:from\s+)?[\d.]+\s*(?:-|to)\s*[\d.]+)|between -?[\d.]+ and -?[\d.]+|no more than|Check the value/i;
 const LEAK = /(?:^|[^A-Za-z])(?:null|undefined|NaN|-?Infinity)(?![A-Za-z])/;
 
 test('a value past its envelope is refused on the page, with a range and no null', async ({ page }) => {

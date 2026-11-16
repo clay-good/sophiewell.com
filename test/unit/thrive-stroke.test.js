@@ -43,3 +43,12 @@ test('partial inputs render a complete-the-fields fallback', () => {
   assert.equal(r.valid, false);
   assert.match(r.band, /Enter the patient age and the baseline NIHSS/);
 });
+
+test('spec-v1741: a value ten times past its envelope is refused, not scored', () => {
+  const ex = { nihss: 22, age: 82, htn: true, diabetes: true, afib: true };
+  assert.equal(thriveStroke(ex).valid, true);
+  const badAge = thriveStroke({ ...ex, age: 1300 });
+  assert.equal(badAge.valid, false);
+  assert.match(badAge.band, /age/);
+  assert.equal(thriveStroke({ ...ex, age: 110 }).valid, true);
+});

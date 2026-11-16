@@ -45,3 +45,12 @@ test('spec-v1740: a negative age is refused, not read as under 70', () => {
   assert.equal(facedBronchiectasis({ fev1: 45, age: 0 }).valid, true);
   assert.equal(facedBronchiectasis({ fev1: 45, age: 72, pseudomonas: true }).total, 5);
 });
+
+test('spec-v1741: a value ten times past its envelope is refused, not scored', () => {
+  const ex = { fev1: 45, age: 72, pseudomonas: true };
+  assert.equal(facedBronchiectasis(ex).valid, true);
+  const badAge = facedBronchiectasis({ ...ex, age: 1300 });
+  assert.equal(badAge.valid, false);
+  assert.match(badAge.band, /age/);
+  assert.equal(facedBronchiectasis({ ...ex, age: 110 }).valid, true);
+});

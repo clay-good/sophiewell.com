@@ -45,7 +45,20 @@ test('all variables clamp to the published 0-31 maximum', () => {
 });
 
 test('overflow-safe: extreme inputs do not leak non-finite', () => {
-  const r = tashScore({ hb: 1e9, baseExcess: -1e9, sbp: -1e9, hr: 1e9 });
+  // spec-v1741: hemoglobin now has an envelope (2 to 25 g/dL), so the probe sits at
+  // its floor; a hemoglobin of 1e9 is refused.
+  const r = tashScore({ hb: 2, baseExcess: -1e9, sbp: -1e9, hr: 1e9 });
   assert.ok(Number.isFinite(r.pct));
   assert.ok(Number.isFinite(r.total));
+  assert.equal(tashScore({ hb: 1e9, baseExcess: -1e9, sbp: -1e9, hr: 1e9 }).valid, false);
+});
+
+test('spec-v1741: a hemoglobin past the envelope is refused, a high real one and the example answer', () => {
+  const base = { baseExcess: -7, sbp: 95, hr: 130, fast: 1 };
+  const tenX = tashScore({ ...base, hb: 250 });
+  assert.equal(tenX.valid, false);
+  assert.equal(tenX.total, null);
+  assert.match(tenX.band, /plausible range for hemoglobin/);
+  assert.equal(tashScore({ ...base, hb: 22 }).total, 12);
+  assert.equal(tashScore({ ...base, hb: 9.5 }).band, 'TASH score 16: ~47.5% probability of mass transfusion.');
 });

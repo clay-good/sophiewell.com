@@ -48,3 +48,13 @@ test('missing any predictor surfaces the fallback (never scores a blank as 0)', 
 test('comorbidity count is allowed to be 0 and still valid', () => {
   assert.equal(covidGram({ ...base, comorbidities: 0 }).valid, true);
 });
+
+// spec-v1741: an entered age past 130 is told its range, not asked for again as if blank.
+test('spec-v1741: an age of 1300 names its range; a blank is still asked for; 120 and the worked example answer', () => {
+  assert.equal(covidGram(base).valid, true);
+  const r = covidGram({ ...base, age: 1300 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /age in years must be between 0 and 130/);
+  assert.match(covidGram({ ...base, age: '' }).message, /^Answer the five/);
+  assert.equal(covidGram({ ...base, age: 120 }).valid, true);
+});

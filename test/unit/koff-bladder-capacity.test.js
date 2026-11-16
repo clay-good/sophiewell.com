@@ -29,3 +29,11 @@ test('missing age -> valid:false', () => {
   assert.equal(koffBladderCapacity({}).valid, false);
   assert.equal(koffBladderCapacity(0).valid, false);
 });
+
+test('spec-v1741: an age ten times past the human envelope is refused', () => {
+  const bad = koffBladderCapacity({ age: 1300 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /age/);
+  assert.equal(koffBladderCapacity({ age: 110 }).valid, true);
+  assert.equal(koffBladderCapacity({ age: 4 }).capacity, 180);
+});

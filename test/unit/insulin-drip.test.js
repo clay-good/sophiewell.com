@@ -40,3 +40,11 @@ test('null on unknown protocol or non-numeric glucose', () => {
   assert.equal(insulinDripRate({}), null);
   assert.equal(insulinDripRate(), null);
 });
+
+// spec-v1741: a glucose ten times past its envelope is refused by name, not given the top rung.
+test('spec-v1741: a glucose of 20000 mg/dL is refused; 1500 and the worked example answer', () => {
+  assert.throws(() => insulinDripRate({ protocol: 'low', bg: 20000 }), /plausible range for serum glucose/);
+  assert.equal(insulinDripRate({ protocol: 'mod', bg: 1500 }).rate, 4);
+  assert.equal(insulinDripRate({ protocol: 'low', bg: '180' }).rate, 1);
+  assert.equal(insulinDripRate({ protocol: 'low', bg: '' }), null);
+});

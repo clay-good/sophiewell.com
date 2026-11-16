@@ -41,8 +41,20 @@ test('zero or negative size renders a guard fallback (no ln/power on a non-posit
 });
 
 test('extreme inputs do not overflow to NaN/Infinity', () => {
-  const r = brockNodule({ age: 1e9, size: 1e-9, count: 1 });
+  // spec-v1741: an age of 1e9 is past the human envelope and refused now; the
+  // overflow probe keeps the extreme size with the oldest age the envelope allows.
+  assert.equal(brockNodule({ age: 1e9, size: 1e-9, count: 1 }).valid, false);
+  const r = brockNodule({ age: 130, size: 1e-9, count: 1 });
   assert.equal(r.valid, true);
   assert.ok(Number.isFinite(r.pct));
   assert.ok(r.pct <= 100);
+});
+
+test('spec-v1741: a value ten times past its envelope is refused, not scored', () => {
+  const ex = { age: 65, female: true, emphysema: true, size: 15, type: 'solid', upperlobe: true, count: 2, spiculation: true };
+  assert.equal(brockNodule(ex).valid, true);
+  const badAge = brockNodule({ ...ex, age: 1300 });
+  assert.equal(badAge.valid, false);
+  assert.match(badAge.band, /age/);
+  assert.equal(brockNodule({ ...ex, age: 110 }).valid, true);
 });

@@ -49,3 +49,12 @@ test('domain guards: age < 2, age > 20, missing sex/weight -> valid:false', () =
   assert.equal(cdcWeightForAge({ ageYears: 8, weightKg: 25 }).valid, false);
   assert.equal(cdcWeightForAge({ sex: 'female', ageYears: 8 }).valid, false);
 });
+
+test('spec-v1741: a weight past the envelope is refused, a heavy real one and the example answer', () => {
+  const tenX = cdcWeightForAge({ sex: 'female', ageYears: 8, weightKg: 5000 });
+  assert.equal(tenX.valid, false);
+  assert.match(tenX.message, /plausible range for weight/);
+  assert.equal(cdcWeightForAge({ sex: 'female', ageYears: 17, weightKg: 180 }).valid, true);
+  assert.equal(cdcWeightForAge({ sex: 'female', ageYears: 8, weightKg: 38.5 }).band,
+    'Weight 38.5 kg at age 8 y: 97th percentile (z 1.9) \u2014 95th percentile or above (high weight-for-age).');
+});

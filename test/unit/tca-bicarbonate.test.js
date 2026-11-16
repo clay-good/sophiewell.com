@@ -37,3 +37,12 @@ test('guards zero / blank / negative weight and missing QRS', () => {
   assert.equal(tcaBicarbonate({ weight: 70 }).valid, false);
   assert.equal(tcaBicarbonate({ qrs: -10, weight: 70 }).valid, false);
 });
+
+test('spec-v1741: a weight past the envelope is refused, a heavy real one and the example answer', () => {
+  const tenX = tcaBicarbonate({ qrs: 120, weight: 5000 });
+  assert.equal(tenX.valid, false);
+  assert.match(tenX.band, /plausible range for weight/);
+  assert.equal(tcaBicarbonate({ qrs: 120, weight: 250 }).valid, true);
+  assert.equal(tcaBicarbonate({ qrs: 120, weight: 70 }).band,
+    'QRS 120 ms (>= 100 ms): seizure risk -- give sodium bicarbonate 1-2 mEq/kg = 70-140 mEq, target serum pH 7.45-7.55.');
+});

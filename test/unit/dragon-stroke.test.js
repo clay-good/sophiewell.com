@@ -40,3 +40,12 @@ test('partial inputs render a complete-the-fields fallback', () => {
   assert.equal(r.valid, false);
   assert.match(r.band, /Enter the patient age, the onset-to-treatment time/);
 });
+
+test('spec-v1741: a value ten times past its envelope is refused, not scored', () => {
+  const ex = { ct: 'both', mrs: true, age: 82, glucose: true, onset: 120, nihss: 18 };
+  assert.equal(dragonStroke(ex).valid, true);
+  const badAge = dragonStroke({ ...ex, age: 1300 });
+  assert.equal(badAge.valid, false);
+  assert.match(badAge.band, /age/);
+  assert.equal(dragonStroke({ ...ex, age: 110 }).valid, true);
+});

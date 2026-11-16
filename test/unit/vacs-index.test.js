@@ -61,3 +61,19 @@ test('zero/blank platelets or ALT surface the fallback (no divide-by-zero / sqrt
   assert.equal(vacsIndex({}).valid, false);
   assert.equal(vacsIndex({ ...base, hepC: '' }).valid, false);
 });
+
+// spec-v1741: hemoglobin/platelets/eGFR past their envelopes are refused; an entered age past 130 is told its range.
+test('spec-v1741: envelope refusals and a named age range; high real values and the worked example answer', () => {
+  assert.equal(vacsIndex(base).valid, true);
+  for (const [k, v] of [['hgb', 250], ['platelets', 20000], ['egfr', 2000]]) {
+    const r = vacsIndex({ ...base, [k]: v });
+    assert.equal(r.valid, false, `${k} ${v}`);
+    assert.match(r.message, /plausible range/);
+  }
+  assert.equal(vacsIndex({ ...base, hgb: 20, platelets: 1500, egfr: 150 }).valid, true);
+  const age = vacsIndex({ ...base, age: 1300 });
+  assert.equal(age.valid, false);
+  assert.match(age.message, /age in years must be between 0 and 130/);
+  assert.match(vacsIndex({ ...base, age: '' }).message, /^Enter age/);
+  assert.equal(vacsIndex({ ...base, age: 120 }).valid, true);
+});

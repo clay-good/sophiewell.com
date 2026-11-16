@@ -63,6 +63,9 @@ export const MAP = [
 
 // Tools whose "Height" or "Length" is an organ's dimension, labelled with the bare word.
 export const NOT_A_BODY = new Set(['testicular-volume']);
+// spec-v1741: one field that takes EITHER of two quantities (a hematocrit in % or a hemoglobin in g/dL), so no
+// single envelope is its own.
+export const NOT_ONE_QUANTITY = new Set(['max-allowable-blood-loss']);
 // Tools whose "pH" is a solution's or a compartment's (0 to 14), not arterial blood's.
 export const NOT_BLOOD_PH = new Set(['percent-ionized']);
 
@@ -70,17 +73,22 @@ export function candidates({ onlyKey = null } = {}) {
   const rows = [];
   for (const tool of allCalculators()) {
     if (NOT_A_BODY.has(tool.id)) continue;
+    if (NOT_ONE_QUANTITY.has(tool.id)) continue;
     for (const f of (tool.fields || [])) {
       if (f.kind !== 'number' || Array.isArray(f.values)) continue;
-      const text = `${f.label || ''} ${f.unit || ''}`;
+      // spec-v1741: some adapters carry the unit only in the label ("Heart rate (beats/min)"), and the unit test
+      // below read an empty string, so every such field was invisible here (FGSI's nine vitals and labs). The
+      // trailing parenthetical stands in for a missing unit.
+      const unit = f.unit || ((String(f.label || '').match(/\(([^()]*)\)\s*$/) || [])[1] || '');
+      const text = `${f.label || ''} ${unit}`;
       if (EXCLUDE.test(text)) continue;
       for (const [key, labRe, unitRe, scale = 1] of MAP) {
         if (onlyKey && key !== onlyKey) continue;
         if (key === 'pH' && NOT_BLOOD_PH.has(tool.id)) continue;
-        if (labRe.test(text) && unitRe.test(String(f.unit || ''))) {
+        if (labRe.test(text) && unitRe.test(unit)) {
           rows.push({
             id: tool.id, dom: f.dom, key, scale,
-            label: String(f.label || '').slice(0, 44), unit: f.unit,
+            label: String(f.label || '').slice(0, 44), unit,
             ex: META[tool.id]?.example?.fields?.[f.dom],
           });
           break;

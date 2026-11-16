@@ -40,10 +40,13 @@ test('PaO2/FiO2 ratio bands: 80/40 = 2.0 -> 5 points', () => {
   assert.equal(snappeII({ pao2: 90, fio2: 30 }).score, 0); // ratio 3.0 -> 0
 });
 
-test('zero FiO2 is guarded (oxygenation scores 0, no divide-by-zero)', () => {
+test('zero FiO2 is refused rather than scored (spec-v1741: below room air is impossible)', () => {
+  // Before spec-v1741 an FiO2 of 0% answered a 0-point oxygenation score; it is
+  // below the 21% floor of BOUNDS.fio2, so it is refused now. Room air still scores.
   const r = snappeII({ pao2: 50, fio2: 0 });
-  assert.equal(r.valid, true);
-  assert.equal(r.score, 0);
+  assert.equal(r.valid, false);
+  assert.equal(r.score, null);
+  assert.equal(snappeII({ pao2: 90, fio2: 21 }).valid, true);
 });
 
 test('SGA and multiple seizures are checkbox add-ons', () => {
@@ -65,4 +68,17 @@ test('spec-v1740: a negative MAP, PaO2, FiO2, urine output or birth weight is re
   }
   assert.equal(snappeII({ ...base, urine: 0 }).valid, true);
   assert.equal(snappeII(base).score, 89);
+});
+
+test('spec-v1741: a temperature, PaO2 or FiO2 ten times past its envelope is refused', () => {
+  const base = { map: 25, temp: 34.5, pao2: 50, fio2: 80, ph: 7.05, seizures: false, urine: 0.5, bw: 800, sga: false, apgar5: 5 };
+  assert.equal(snappeII(base).score, 89);
+  for (const [k, bad, ok] of [['temp', 450, 40], ['pao2', 7000, 600], ['fio2', 1000, 100]]) {
+    const r = snappeII({ ...base, [k]: bad });
+    assert.equal(r.valid, false, k);
+    assert.equal(r.score, null, k);
+    assert.equal(snappeII({ ...base, [k]: ok }).valid, true, k);
+  }
+  assert.match(snappeII({ ...base, fio2: 1000 }).band, /FiO2 \(21 to 100 %\)/);
+  assert.match(snappeII({ ...base, temp: 450 }).band, /core temperature/);
 });

@@ -34,3 +34,12 @@ test('blank fields surface the fallback', () => {
   assert.equal(myelomaRIss({ b2m: 2.0, albumin: 4.0, ldhHigh: 'no' }).valid, false);
   assert.equal(myelomaRIss({}).valid, false);
 });
+
+test('spec-v1741: an albumin ten times past its envelope (g/dL) is refused', () => {
+  const ex = { b2m: 6, albumin: 3, ldhHigh: 'yes', highRiskFish: 'no' };
+  assert.equal(myelomaRIss(ex).valid, true);
+  const r = myelomaRIss({ ...ex, albumin: 70 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /plausible range for serum albumin/);
+  assert.equal(myelomaRIss({ ...ex, albumin: 6 }).valid, true);
+});

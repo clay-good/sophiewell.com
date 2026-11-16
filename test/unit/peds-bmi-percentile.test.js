@@ -41,3 +41,12 @@ test('domain guards: age < 2 and missing inputs -> valid:false', () => {
   assert.equal(pedsBmiPercentile({ sex: 'male', ageYears: 10 }).valid, false);
   assert.equal(pedsBmiPercentile(0).valid, false);
 });
+
+test('spec-v1741: an entered BMI past the envelope is refused, a high real one and the example answer', () => {
+  const tenX = pedsBmiPercentile({ sex: 'male', ageYears: 16, bmi: 2000 });
+  assert.equal(tenX.valid, false);
+  assert.match(tenX.message, /plausible range for body mass index/);
+  assert.equal(pedsBmiPercentile({ sex: 'male', ageYears: 16, bmi: 60 }).valid, true);
+  assert.equal(pedsBmiPercentile({ sex: 'male', ageYears: 16, bmi: 30 }).band,
+    'BMI 30 kg/m² at age 16 y: 98th percentile (z 1.97) \u2014 obese (95th percentile or above).');
+});

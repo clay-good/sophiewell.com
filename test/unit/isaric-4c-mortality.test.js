@@ -57,3 +57,13 @@ test('missing or out-of-range inputs surface the fallback', () => {
   assert.equal(isaric4cMortality({ ...base, gcs: 16 }).valid, false);
   assert.equal(isaric4cMortality({ ...base, crp: null }).valid, false);
 });
+
+// spec-v1741: an entered age past 130 is told its range, not asked for again as if blank.
+test('spec-v1741: an age of 1300 names its range; a blank is still asked for; 120 and the worked example answer', () => {
+  assert.equal(isaric4cMortality(base).valid, true);
+  const r = isaric4cMortality({ ...base, age: 1300 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /age in years must be between 0 and 130/);
+  assert.match(isaric4cMortality({ ...base, age: '' }).message, /^Enter age/);
+  assert.equal(isaric4cMortality({ ...base, age: 120 }).valid, true);
+});

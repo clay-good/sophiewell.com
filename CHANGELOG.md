@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Another 38 scores and doses answered values no patient has, such as an antidote dose for a 5,000 kg weight, a
+  survival estimate for an age of 1,300 and a gangrene severity score from a temperature of 450 C. Their units sat
+  in the field label, where the range check never looked. They now say the value is out of range.
 - A negative entered where a negative is impossible (a length of stay, a ketone level, an ST deviation, a blood
   loss, a dose) was quietly read as zero, often landing in the reassuring band: LACE "low risk", NUTRIC "low
   nutritional risk", Duke "99% 5-year survival", DKA "criteria not met". 38 scores and checks now say the value

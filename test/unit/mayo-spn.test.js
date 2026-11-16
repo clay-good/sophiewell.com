@@ -32,8 +32,20 @@ test('partial inputs render a complete-the-fields fallback', () => {
 });
 
 test('extreme diameter does not overflow to NaN/Infinity', () => {
-  const r = mayoSpn({ age: 1e9, diameter: 1e9 });
+  // spec-v1741: an age of 1e9 is past the human envelope and refused now; the
+  // overflow probe keeps the extreme diameter with the oldest age the envelope allows.
+  assert.equal(mayoSpn({ age: 1e9, diameter: 1e9 }).valid, false);
+  const r = mayoSpn({ age: 130, diameter: 1e9 });
   assert.equal(r.valid, true);
   assert.ok(Number.isFinite(r.pct));
   assert.ok(r.pct <= 100);
+});
+
+test('spec-v1741: a value ten times past its envelope is refused, not scored', () => {
+  const ex = { age: 51, diameter: 12, smoking: true, spiculation: true, upperlobe: true };
+  assert.equal(mayoSpn(ex).valid, true);
+  const badAge = mayoSpn({ ...ex, age: 1300 });
+  assert.equal(badAge.valid, false);
+  assert.match(badAge.band, /age/);
+  assert.equal(mayoSpn({ ...ex, age: 110 }).valid, true);
 });

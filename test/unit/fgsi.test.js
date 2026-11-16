@@ -50,3 +50,16 @@ test('all nine parameters are required', () => {
   assert.equal(fgsi(partial).valid, false);
   assert.equal(fgsi(partial).code, 'MISSING_INPUT');
 });
+
+// spec-v1741: a value ten times past its physiologic envelope is refused by name, not scored.
+test('spec-v1741: values past the lib/bounds.js envelopes are refused; high real values and the worked example answer', () => {
+  const ex = { temp: '39', hr: '120', rr: '30', na: '150', k: '3.2', creatinine: '2.5', hct: '28', wbc: '22', bicarbonate: '19' };
+  assert.equal(fgsi(ex).valid, true);
+  for (const [k, v] of [['temp', '450'], ['na', '2000'], ['k', '100'], ['creatinine', '250'], ['hct', '750'], ['wbc', '2000'], ['bicarbonate', '600']]) {
+    const r = fgsi({ ...ex, [k]: v });
+    assert.equal(r.valid, false, `${k} ${v}`);
+    assert.match(r.message, /plausible range/);
+  }
+  const high = fgsi({ ...ex, temp: '42', na: '185', k: '8', creatinine: '12', hct: '65', wbc: '150', bicarbonate: '55' });
+  assert.equal(high.valid, true);
+});

@@ -40,3 +40,12 @@ test('an unselected DIPSS group or blank flag surfaces the fallback', () => {
   assert.equal(dipssPlusMf({ dipssGroup: '', platelet: 90, transfusion: 'no', karyotype: 'no' }).valid, false);
   assert.equal(dipssPlusMf({ dipssGroup: 'low', platelet: 90 }).valid, false);
 });
+
+test('spec-v1741: a platelet count ten times past its envelope is refused', () => {
+  const ex = { dipssGroup: 'int-2', platelet: 90, transfusion: 'no', karyotype: 'no' };
+  assert.equal(dipssPlusMf(ex).valid, true);
+  const r = dipssPlusMf({ ...ex, platelet: 20000 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /plausible range for platelet count/);
+  assert.equal(dipssPlusMf({ ...ex, platelet: 1500 }).valid, true);
+});

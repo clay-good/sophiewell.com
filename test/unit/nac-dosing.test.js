@@ -65,3 +65,12 @@ test('UK choice: 150/50/100 mg/kg with a 110 kg ceiling weight and no diluent vo
   assert.match(at120.note, /MHRA/);
   assert.equal(nacDosing({ weight: 105, regimen: 'three-bag' }).totalMg, 30000, 'the US label still fixes the dose at 100 kg');
 });
+
+test('spec-v1741: a weight past the envelope is refused, a heavy real one and the example answer', () => {
+  const tenX = nacDosing({ weight: 5000, regimen: 'three-bag' });
+  assert.equal(tenX.valid, false);
+  assert.match(tenX.band, /plausible range for weight/);
+  assert.equal(nacDosing({ weight: 250, regimen: 'three-bag' }).valid, true);
+  assert.equal(nacDosing({ weight: 120, regimen: 'three-bag' }).band,
+    'NAC three-bag (21 h), dose fixed at 100 kg and above (entered 120 kg): bag 1 15000 mg in 200 mL over 1 h, bag 2 5000 mg in 500 mL over 4 h, bag 3 10000 mg in 1000 mL over 16 h (total 30000 mg).');
+});

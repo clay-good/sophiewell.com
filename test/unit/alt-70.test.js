@@ -34,3 +34,12 @@ test('thresholds are inclusive at the boundary', () => {
   assert.equal(alt70({ wbc: 10, hr: 89, age: 69 }).total, 1); // wbc>=10 only
   assert.equal(alt70({ wbc: 9.9, hr: 90, age: 70 }).total, 3); // hr>=90 (1) + age>=70 (2)
 });
+
+test('spec-v1741: a WBC past the envelope is refused, a high real one and the example answer', () => {
+  const tenX = alt70({ asymmetry: 1, wbc: 2000, hr: 92 });
+  assert.equal(tenX.valid, false);
+  assert.equal(tenX.total, null);
+  assert.match(tenX.band, /plausible range for white blood cell count/);
+  assert.equal(alt70({ asymmetry: 1, wbc: 150, hr: 92 }).total, 5);
+  assert.ok(alt70({ asymmetry: 1, wbc: 11, hr: 92 }).band.startsWith('ALT-70 5: cellulitis likely (>= 82% likelihood of cellulitis).'));
+});

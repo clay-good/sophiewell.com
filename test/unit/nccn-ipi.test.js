@@ -50,3 +50,13 @@ test('blank inputs surface the fallback', () => {
   assert.equal(nccnIpi({}).valid, false);
   assert.equal(nccnIpi({ age: 70 }).valid, false);
 });
+
+test('spec-v1741: an entered age outside 0-130 is named, not asked again', () => {
+  const ex = { age: 70, ldhRatio: 2.5, stageAdvanced: 'yes', ecog2: 'no', extranodalMajor: 'no' };
+  assert.equal(nccnIpi(ex).valid, true);
+  const r = nccnIpi({ ...ex, age: 1300 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /Age must be between 0 and 130/);
+  assert.equal(nccnIpi({ ...ex, age: 110 }).valid, true);
+  assert.match(nccnIpi({ ...ex, age: '' }).message, /^Enter age/);
+});
