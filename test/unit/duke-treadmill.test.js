@@ -95,3 +95,12 @@ test('spec-v1132: a blank select is not a zero', () => {
     assert.equal(r.valid, false, `blank ${JSON.stringify(blank)} answered`);
   }
 });
+
+// spec-v1740: a negative ST deviation or exercise time used to be clamped to 0, toward the low-risk band.
+test('a negative ST deviation or exercise time is refused, not clamped to 0', () => {
+  const st = dukeTreadmill({ exerciseTime: 7, stDeviation: -10, anginaIndex: 0 });
+  assert.equal(st.valid, false);
+  assert.match(st.band, /positive number of millimeters/);
+  assert.equal(dukeTreadmill({ exerciseTime: -5, stDeviation: 1, anginaIndex: 0 }).valid, false);
+  assert.equal(dukeTreadmill({ exerciseTime: 7, stDeviation: 0, anginaIndex: 0 }).score, 7);
+});
