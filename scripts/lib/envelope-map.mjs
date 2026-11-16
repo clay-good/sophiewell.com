@@ -13,7 +13,9 @@ import { META } from '../../lib/meta.js';
 // spec-v1742: a bare `rate` term excluded every HEART rate and RESPIRATORY rate field (and ESR) along with the
 // infusion and flow rates it was written for; the vital signs and the sedimentation rate are let through now.
 // spec-v1743: an upper limit of normal is not the measurement.
-export const EXCLUDE = /\bair\b|additive|ambient|outdoor|wind|room |bag |infusate|\burine|urinary|csf|cerebrospinal|dialysate|drain|ascit|pleural|stool|saliva|sweat|24-?h|fractional|excret|clearance|ratio|same unit|delta|change|target|goal|desired|corrected|expected|predicted|per kg|dose|(?<!heart |respiratory |breathing |pulse |sedimentation )\brate\b|infusion|upper limit|\bULN\b/i;
+// spec-v1752: `ratio` matched inside "satuRATIOn" and hid every oxygen-saturation field; SpO2 "on room air" is a
+// blood saturation, not the air or room the `air` and `room` terms were written for.
+export const EXCLUDE = /(?<!room )\bair\b|additive|ambient|outdoor|wind|room (?!air)|bag |infusate|\burine|urinary|csf|cerebrospinal|dialysate|drain|ascit|pleural|stool|saliva|sweat|24-?h|fractional|excret|clearance|\bratio\b|same unit|delta|change|target|goal|desired|corrected|expected|predicted|per kg|dose|(?<!heart |respiratory |breathing |pulse |sedimentation )\brate\b|infusion|upper limit|\bULN\b/i;
 
 // label pattern, and the unit that confirms the quantity is in the envelope's
 // own unit rather than a convertible one.
@@ -68,6 +70,8 @@ export const MAP = [
   // spec-v1747: base excess and base deficit (the same quantity with the sign turned).
   ['baseExcess', /base excess/i, /mmol\/L|mEq\/L/i],
   ['baseDeficit', /base deficit/i, /mmol\/L|mEq\/L/i],
+  // spec-v1752: oxygen saturation in percent (SpO2, SaO2, ScvO2, SvO2).
+  ['spo2', /\bSpO2\b|SpO₂|\bSaO2\b|SaO₂|\bS[cv]+O2\b|oxygen saturation|O2 saturation/i, /^%$|percent/i],
   ['gcs', /^(?!.*\b(eye|verbal|motor|component|pediatric|modified)\b).*(\bGCS\b|Glasgow Coma)/i, /^$|points|score|3.?15/i],
   // spec-v1735. ESR is not mapped: EXCLUDE drops every label with "rate" (sedimentation RATE);
   // its tools are pinned in test/unit/bounds-sourced-v1735.test.js instead.

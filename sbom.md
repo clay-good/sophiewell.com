@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `805e8936225f23c2`
-Generated: 2026-11-16T23:08:16.611Z
+Build ID: `ada31524f1c00113`
+Generated: 2026-11-16T23:53:20.948Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -189,7 +189,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/borden-davf-v441.js` | 3109 | `d08c660355725cc46ea8461c2706155f110f269ad2aba82522745e71ecc16e44` |
 | `lib/borrmann-gastric-v394.js` | 3865 | `df918e05475876bcc710c4fc8997aa67ee7d4832f352f1ae062fa1ab3d4678b1` |
 | `lib/botulism-antitoxin-dose-v1636.js` | 8255 | `059a120105337ffa818b03f6721da3133049c3a01a9c36e28505e0aaac1ceff6` |
-| `lib/bounds.js` | 11860 | `5be0581899f15faf2f40bfc6ba4d1947f7e125b408852959317a0e265752dd69` |
+| `lib/bounds.js` | 12190 | `f28d48f52a3291411359f76189f4d1707fead3206c7fcce4462a058cbcf3fea4` |
 | `lib/boyd-griffin-v458.js` | 3748 | `7f5f81294d8ba43ad3a72d67bc9f47c590ddaf6f4a003c713715d1336927934c` |
 | `lib/bp-categories-v843.js` | 6552 | `9d0291a7f64273cf1fa5c94601e7725fe5c376d28b8dcec30d22fbf5f5db3eb3` |
 | `lib/bpe-periodontal-v1481.js` | 4402 | `c633bd68826107e537eb99ecfd74d1a007c33e7bdf76d623fe170df1e0816585` |
@@ -695,7 +695,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/icer-dominance-v1634.js` | 7464 | `f7c585936819529f57448a3c3579c65855ed4e87a2ffe5123f87d304d83f1537` |
 | `lib/ich-m12.js` | 2953 | `5a7cc22e75460b4072e35f80f5df7a36b44a122129eb5cb08d6bc556f38e2f4b` |
 | `lib/icrs-v338.js` | 4467 | `5e29e3d578cccf7cab83c738db4091fe8c9bb8c0c766b3e34e0ec6022499524b` |
-| `lib/id-v137.js` | 23934 | `cf51234bd4d3d654f90d87dc403fdc19e1eabded4a51fe6e34e0d4de65316e4c` |
+| `lib/id-v137.js` | 24150 | `dfc8ef1e8c4781f10a91daf0f664b84d830cff57c69c0ee09f5eec415c862ea3` |
 | `lib/idcrit-v99.js` | 22833 | `db52cf6cb7dd693284476773e3d9fae0a506c0ea74e0cfae141c6f704b51a165` |
 | `lib/ideberg-glenoid-v409.js` | 4070 | `b7cde0877f7d560cb68fc68b7e39b1f8867024c9bccdb1a3fedd89300faff0a9` |
 | `lib/ids-accountability-reconcile-v1635.js` | 7926 | `9a6c2aac334b8da4ff403b7ee1b5b3d011b3646cc4b182bfa2edc7b352b045db` |
@@ -1052,7 +1052,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nyhus-hernia-v400.js` | 4753 | `e95f3e6d388ce3f0e80744bbbe6db2cd4a072334c1cef4efde87ac9155e6f7be` |
 | `lib/nys-newborn-screen-planner-v1394.js` | 7801 | `768e7f1be941a3f622b158d57f147764994c8d6afff6e838394aabe6a2ba1e74` |
 | `lib/o-rads-v326.js` | 4404 | `92d6104c9737cad58b5bfd157d613629c1aef44e853eaee54256638ed7d64eeb` |
-| `lib/ob-v138.js` | 20724 | `28f5ec8b96ad2e104b237509d908e466df91e65ec8dc856bed9397cffd0396c8` |
+| `lib/ob-v138.js` | 20997 | `7f6a17a6f1e07de46aacd681389b97f9cda6eb52a401655083d7111c155c3f53` |
 | `lib/obgyn-v225.js` | 14973 | `3e284773c5a117e403f13176df6cf1481be338e2f7652035ed2ff68384abd4b3` |
 | `lib/obgyn-v250.js` | 8248 | `1931805de1029b27fb32028c2776a1d4bd350abb0f0d9a7c4f0148328d2933aa` |
 | `lib/occupational-dose-limit-check-v1635.js` | 6182 | `782eb92e7ce1d90a0c56e6f0a6394ceb6b023cfdd548778561701cbbaa7ca3b5` |
@@ -1119,7 +1119,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pai-periapical-v1486.js` | 3234 | `9122c544dd57bbf45d7cc005c6c226f33ca37153d47064c42acde4baa30cdc38` |
 | `lib/painscore-v235.js` | 7622 | `46731e319a44e331a7836e9a61c7c58ed28a9e89f45bef83de7541598df77450` |
 | `lib/palm-coein-v545.js` | 13316 | `8da3a972bae20d9741a8ef6c58f919a2dd252a100fdaf5ba09e15e58f985871b` |
-| `lib/panc3-v597.js` | 11263 | `463bcc63a2fb2eef150b8a2f59f398342326f3c0743137bf9ad4293fe0fe081c` |
+| `lib/panc3-v597.js` | 11474 | `b6b2852ed888ebc009e9941af96a145291d965645812c8418818fdc26cfd8cfa` |
 | `lib/papile-ivh-v430.js` | 3474 | `7c7d68337e45baf7e37362080edb026f9fc68b1e4cfa25fde9c736e8b7d8c2cb` |
 | `lib/paprosky-acetabular-v1418.js` | 6751 | `b2d8a8033a2fd6fb15de7722561b492468fd7d9ba8d57bf4b035380a35fde5cc` |
 | `lib/paprosky-femoral-v1420.js` | 5860 | `5a49219196ff69973c5384bdd910810bded0ea4979384d15939e0a40c11980a1` |
@@ -1377,7 +1377,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schumock-thornton-preventability-v1634.js` | 4099 | `89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 340922 | `d641f2650dbb1fff45949fa15ff694d01df2963ac04d5e8f1a49b895822a0511` |
+| `lib/scoring-v4.js` | 341373 | `53731e53df89d05f6556cd4c5f268f1a45cff16c50563ba184a5da525360427c` |
 | `lib/scoring-v5.js` | 14272 | `23a5019c7d081d634d4d3c42593fe124cea6bb961b3070455765466c1a573395` |
 | `lib/scoring-v6.js` | 29620 | `ffbcb86b0bf2cec27c385ed41da4036dd30102fae83a186c506ef6b1900a2621` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |

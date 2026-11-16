@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- fullPIERS read an oxygen saturation of 150% as its lowest-risk band and ISARIC 4C scored it as normal; PANC 3
+  and the ECMO titration aid took a hematocrit, PaCO2 or hemoglobin far past anything measured. They now refuse.
 - Fourteen dosing clocks and schedules accepted a date in 1850, or 30 February, and computed from it (a dose
   "1,545,985 hours late"). They now ask for a real date from 1900 to 2100.
 - The test suite no longer spends nine minutes on one helper: the NHSN mid-P interval stops at the 1,000,000 its tools already stop at.
