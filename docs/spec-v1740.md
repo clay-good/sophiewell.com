@@ -38,3 +38,7 @@ Tests: one spec-v1740 case in each tool's own unit test file. Three tests that p
 
 Finder: `/tmp/probes/neg-clamp.mjs`-style sweep (negated example value answering exactly like 0, excluding fields
 with no effect at all). After the fix it reports only the two signed fields.
+
+Follow-up: `pim3` also clamped an SBP above 300 down to 300 without a word; 300 is the page's maximum and
+`BOUNDS.sbp`'s ceiling, so it is refused now. Its overflow test drives the predictor through base excess instead.
+Still open: PIM3's base excess has no envelope (1e9 answers); it is signed, so it needs a sourced range.

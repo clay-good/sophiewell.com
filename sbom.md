@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `71ccb3f317b0accd`
-Generated: 2026-11-16T16:15:46.677Z
+Build ID: `c5a51318d0a3f062`
+Generated: 2026-11-16T16:35:35.817Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1166,7 +1166,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/peds-percentile-v169.js` | 8779 | `d7c4774976ace42e3ff044e33d8470097563afc423da5ac88ad3166461a8f245` |
 | `lib/peds-sepsis-v278.js` | 13271 | `fe0a8c2da7076c0f0fb748159eb034749b00e9eb2022136b1b2b3b8a758f540c` |
 | `lib/peds-v140.js` | 23935 | `fecf3116b805e4dea45e2b63d06b41b6cd2ebfb6ba470c7e43b82d6af1df5d67` |
-| `lib/peds-v98.js` | 19231 | `14cb65480925d55ec6dae85fe604cd17988e803f3d2dd0b95772b1a415a22265` |
+| `lib/peds-v98.js` | 19339 | `db8cefb43e0b81aa74984c331547bada3a42c0a811774cd10d715873481b84fb` |
 | `lib/peds-warfarin-nomogram-v1634.js` | 6812 | `9c3a2fd3a323b88d61f6c92bf01cd8661ea7b3f61dd66558d857348639c78338` |
 | `lib/pedstox-v247.js` | 8091 | `8381ca9211880df0739ca4c7889b927df5b2f2e808b637d56593587a01f84168` |
 | `lib/pef-zones-v891.js` | 7014 | `89c4f4f48e058334ed15e1cdf7eb61aa3af745ac025498ba9e9c3665003c92df` |

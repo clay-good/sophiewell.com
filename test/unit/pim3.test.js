@@ -14,7 +14,9 @@ test('worked logistic probability matches the published equation', () => {
 });
 
 test('overflow guard: a huge linear predictor yields a finite probability in [0,100]', () => {
-  const r = pim3({ sbp: 1e9, mechVent: true, baseExcess: 1e9, riskCategory: 'very-high' });
+  // spec-v1740: an SBP of 1e9 is refused now (above 300); the predictor is driven through base excess instead.
+  assert.equal(pim3({ sbp: 1e9, mechVent: true, baseExcess: 1e9, riskCategory: 'very-high' }).valid, false);
+  const r = pim3({ sbp: 300, mechVent: true, baseExcess: 1e9, riskCategory: 'very-high' });
   assert.equal(r.valid, true);
   assert.ok(Number.isFinite(r.risk));
   assert.ok(r.risk >= 0 && r.risk <= 100);
@@ -74,4 +76,11 @@ test('spec-v1740: a negative SBP is refused; an SBP of 0 (cardiac arrest) still 
   assert.match(neg.band, /systolic/i);
   assert.equal(pim3({ sbp: 0, mechVent: true, riskCategory: 'high' }).valid, true);
   assert.equal(pim3({ sbp: 90, mechVent: true, baseExcess: -5, riskCategory: 'high' }).x, -1.9);
+});
+
+test('spec-v1740: an SBP above 300 is refused rather than clamped to 300', () => {
+  const r = pim3({ sbp: 400, mechVent: true, baseExcess: -5, riskCategory: 'high' });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /systolic blood pressure/);
+  assert.equal(pim3({ sbp: 300, mechVent: true, baseExcess: -5, riskCategory: 'high' }).valid, true);
 });
