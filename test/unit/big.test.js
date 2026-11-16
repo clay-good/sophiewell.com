@@ -61,3 +61,8 @@ test('big: a typed 0 is still an answer', () => {
   assert.equal(r.incomplete, undefined);
   assert.equal(r.score, 2.5);
 });
+
+test('spec-v1747: a base deficit past the sourced envelope is refused, not read as below the threshold', () => {
+  assert.throws(() => big({ baseDeficit: -1e6, inr: 1.2, gcs: 15 }), /plausible range for base deficit/);
+  assert.ok(Number.isFinite(big({ baseDeficit: 40, inr: 1.2, gcs: 15 }).score));
+});

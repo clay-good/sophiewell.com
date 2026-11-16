@@ -65,6 +65,9 @@ export const MAP = [
   ['triglycerides', /^(?!.*fibrinogen).*triglyceride/i, /mg\/dL/i],  // HLH-2004's fibrinogen label names triglycerides
   ['alt', /\bALT\b|alanine aminotransferase/i, /^U\/L$|IU\/L/i],
   ['ast', /\bAST\b|aspartate aminotransferase/i, /^U\/L$|IU\/L/i],
+  // spec-v1747: base excess and base deficit (the same quantity with the sign turned).
+  ['baseExcess', /base excess/i, /mmol\/L|mEq\/L/i],
+  ['baseDeficit', /base deficit/i, /mmol\/L|mEq\/L/i],
   ['gcs', /^(?!.*\b(eye|verbal|motor|component|pediatric|modified)\b).*(\bGCS\b|Glasgow Coma)/i, /^$|points|score|3.?15/i],
   // spec-v1735. ESR is not mapped: EXCLUDE drops every label with "rate" (sedimentation RATE);
   // its tools are pinned in test/unit/bounds-sourced-v1735.test.js instead.

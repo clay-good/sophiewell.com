@@ -16,7 +16,9 @@ test('worked logistic probability matches the published equation', () => {
 test('overflow guard: a huge linear predictor yields a finite probability in [0,100]', () => {
   // spec-v1740: an SBP of 1e9 is refused now (above 300); the predictor is driven through base excess instead.
   assert.equal(pim3({ sbp: 1e9, mechVent: true, baseExcess: 1e9, riskCategory: 'very-high' }).valid, false);
-  const r = pim3({ sbp: 300, mechVent: true, baseExcess: 1e9, riskCategory: 'very-high' });
+  // spec-v1747: base excess has an envelope too (-60 to 70), so the probe sits at both ceilings.
+  assert.equal(pim3({ sbp: 300, mechVent: true, baseExcess: 1e9, riskCategory: 'very-high' }).valid, false);
+  const r = pim3({ sbp: 300, mechVent: true, baseExcess: 70, riskCategory: 'very-high' });
   assert.equal(r.valid, true);
   assert.ok(Number.isFinite(r.risk));
   assert.ok(r.risk >= 0 && r.risk <= 100);

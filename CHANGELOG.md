@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- PIM3, TASH and the BIG trauma score answered a base excess or base deficit of a million; BIG read one as below
+  its high-mortality threshold. They now refuse values past the extremes patients have survived.
 - Sixty-six tools answered an impossible entry, such as a negative weight or a hemoglobin of 999,999, by asking
   for the value again as if the field were blank, so retyping it got the same sentence. They now say what range
   the field takes.
