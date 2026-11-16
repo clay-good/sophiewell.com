@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a97d871ff6ac3864`
-Generated: 2026-11-16T18:33:35.317Z
+Build ID: `8ae5e3c4eb13f126`
+Generated: 2026-11-16T18:55:03.361Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1377,7 +1377,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schumock-thornton-preventability-v1634.js` | 4099 | `89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 340158 | `490cd7e958e29d9ffacc515ba9a383c6c5d66b2c968c9a279ba1932ded081049` |
+| `lib/scoring-v4.js` | 340682 | `c7fb66678f118fc1b02aee1a721b456233dcfb516eb75b8d0b07460e4d0808f5` |
 | `lib/scoring-v5.js` | 14272 | `23a5019c7d081d634d4d3c42593fe124cea6bb961b3070455765466c1a573395` |
 | `lib/scoring-v6.js` | 29620 | `ffbcb86b0bf2cec27c385ed41da4036dd30102fae83a186c506ef6b1900a2621` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
@@ -1570,7 +1570,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/vanc-hd-dose-v1631.js` | 5712 | `b281d563698a83b4ec27b3e236bd86a7cad09d9ba8574e499b0e4187afe0ceac` |
 | `lib/vanc-initial-dose-v1631.js` | 15136 | `85bd0e4f5e3bf2a46c8c4a349905e4067cb12d4a2f47ba04667a5d1b7c25848c` |
 | `lib/vancouver-periprosthetic-v483.js` | 3496 | `49ecf63cc801a1b465268edd621659b820dad6556472ff09b40e428eb12575bf` |
-| `lib/vascular-v105.js` | 21159 | `78983bdb8025880a6ac5a817195498f51bc416ef9356c7665c47055800fc3b69` |
+| `lib/vascular-v105.js` | 21740 | `6d023391326265e1ee26eea65ed7f657df3c4bf53a2ebcc6b5cb42e0d24bee23` |
 | `lib/vasi-v556.js` | 13112 | `f755315186adfbed1264147d6fb9426fd94178ebad24c9683e275ec6406526f2` |
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
 | `lib/vcf-read-v1698.js` | 23213 | `4e293a0901debb77d6949ed88a32040df9a4f9b6b5686911a1471abea7cc2dec` |

@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The ASCVD and PREVENT risk estimates answered an HDL of zero or below, and the ankle-brachial index said an
+  entered pressure below 20 mmHg "was not entered". These now say the value cannot be used.
 - Nineteen scores and dosing checks refused an out-of-range value from an AI agent but still answered it on the
   page: a withdrawal-scale item of 70, an antivenom dose of 1,000 vials, a skin area of 1,000%, a negative drug
   clearance. The page now refuses the same values the agents are refused.

@@ -101,3 +101,12 @@ test('spec-v1100: one brachial pressure can only inflate the index, and says so'
   assert.equal(high.governing.band, 'non-compressible');
   assert.match(high.band, /Only the/);
 });
+
+// spec-v1745: a pressure below the adapter's 20 mmHg floor was read as "not entered".
+test('a pressure below 20 mmHg is refused, not called not entered', () => {
+  const r = abi({ rightAnkle: -50, leftAnkle: 120, rightBrachial: 130, leftBrachial: 128 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /right ankle pressure must be at least 20/);
+  assert.equal(abi({ rightAnkle: 0, leftAnkle: 120, rightBrachial: 130, leftBrachial: 128 }).valid, false);
+  assert.equal(abi({ rightAnkle: 20, leftAnkle: 120, rightBrachial: 130, leftBrachial: 128 }).valid, true);
+});

@@ -123,3 +123,15 @@ test('every refusal on these two engines says so in the field an agent reads', (
   assert.equal(prevent10yr({ age: 20, sex: 'M', totalChol: 200, hdl: 50, sbp: 120, bmi: 27, egfr: 80 }).valid, false);
   assert.equal(ascvdPce({ age: 60, sex: 'M', race: 'white', totalChol: 200, hdl: 50 }).valid, false);
 });
+
+// spec-v1745: a cholesterol is a positive concentration; ASCVD and PREVENT answered a negative or zero HDL.
+test('ascvd and prevent refuse a non-positive HDL or total cholesterol', () => {
+  const a = { age: 60, sex: 'M', race: 'white', totalChol: 200, hdl: 50, sbp: 130 };
+  for (const over of [{ hdl: -40 }, { hdl: 0 }, { totalChol: 0 }]) {
+    assert.equal(ascvdPce({ ...a, ...over }).valid, false, JSON.stringify(over));
+  }
+  assert.notEqual(ascvdPce(a).valid, false);
+  const p = { age: 60, sex: 'M', totalChol: 200, hdl: 50, sbp: 130, bmi: 27, egfr: 80 };
+  assert.equal(prevent10yr({ ...p, hdl: -40 }).valid, false);
+  assert.notEqual(prevent10yr(p).valid, false);
+});
