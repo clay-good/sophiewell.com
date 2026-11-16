@@ -38,8 +38,8 @@ The remaining 49 library rows (32 on the page) need an envelope that does not ex
 | Treadmill minutes, ST deviation | `duke-treadmill` |
 | Lead I / aVF net QRS amplitude | `ecg-axis` |
 | FEV1 % predicted, 6-minute walk distance | `gold-spirometry`, `bode-index` |
-| Fasting insulin, triglycerides, HDL, waist | `homa-ir`, `quicki`, `tyg-index`, `metabolic-syndrome` |
-| ALT, AST | `hepatic-steatosis-index` |
+| Fasting insulin, HDL, waist (triglycerides: done in spec-v1734) | `homa-ir`, `quicki`, `metabolic-syndrome` |
+| ~~ALT, AST~~ (done in spec-v1734) | `hepatic-steatosis-index` |
 | CA-125, HE4 | `roma-ovarian`, `rmi-ovarian` |
 | hCG, interval hours | `barnhart-hcg` |
 | Tumor count and size | `milan-criteria` |

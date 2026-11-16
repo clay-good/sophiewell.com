@@ -19,9 +19,12 @@ test('rule-out (< 0.2)', () => {
 });
 
 test('overflow-safe: extreme inputs stay in [0,1]', () => {
-  const hi = lokIndex({ platelets: 0.001, ast: 1e9, alt: 0.001, inr: 20 });
+  // spec-v1734: AST and ALT now have envelopes (1 to 30000 U/L), so the probe
+  // sits at their edges; an AST of 1e9 is refused.
+  const hi = lokIndex({ platelets: 0.001, ast: 30000, alt: 1, inr: 20 });
   assert.equal(hi.probability, 1);
   assert.equal(Number.isFinite(hi.probability), true);
+  assert.equal(lokIndex({ platelets: 0.001, ast: 1e9, alt: 0.001, inr: 20 }).valid, false);
   // spec-v1406: an INR of 1e9 is outside the BOUNDS.inr envelope and is refused.
   assert.equal(lokIndex({ platelets: 0.001, ast: 1e9, alt: 0.001, inr: 1e9 }).valid, false);
 });

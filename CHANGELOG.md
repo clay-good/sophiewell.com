@@ -69,6 +69,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Eighteen liver and lipid tools (FIB-4, APRI, BARD, NAFLD fibrosis, the fatty liver and hepatic steatosis
+  indexes, HScore, HLH-2004, RUCAM, Hy's law and others) gave a confident reading for an AST, ALT or triglyceride
+  past anything ever reported, such as 999,999. They now say the value is out of range. The limits sit above
+  the highest values in the published literature (22,228 mg/dL triglycerides; AST about 15,500 U/L), so a real
+  extreme still answers.
 - The allowed-amount tool applied a cost-share term left blank as zero without saying so: with the remaining
   deductible blank, the patient share fell from $200 to $120. It now names the terms that were not entered.
 - Nursing hours per patient day left a blank staff category out of the total without saying so, so RN hours

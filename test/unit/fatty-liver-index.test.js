@@ -24,9 +24,11 @@ test('overflow-safe: extreme inputs cap at 100, never Infinity', () => {
   // rest. A BMI past it is refused, not computed. (The fifth test in this
   // programme found using an impossible value as a convenience -- see
   // docs/spec-v1234.md.)
-  const r = fattyLiverIndex({ tg: 1e9, bmi: 200, ggt: 1e9, waist: 1e9 });
+  // spec-v1734: triglycerides now have an envelope too (30000 mg/dL at the top).
+  const r = fattyLiverIndex({ tg: 30000, bmi: 200, ggt: 1e9, waist: 1e9 });
   assert.equal(r.fli, 100);
   assert.equal(Number.isFinite(r.fli), true);
+  assert.equal(fattyLiverIndex({ tg: 1e9, bmi: 30, ggt: 60, waist: 100 }).valid, false);
   assert.equal(fattyLiverIndex({ tg: 150, bmi: 1e9, ggt: 60, waist: 100 }).valid, false);
 });
 
