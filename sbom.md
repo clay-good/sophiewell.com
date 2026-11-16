@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fdbf417f642f1560`
-Generated: 2026-11-15T23:52:53.415Z
+Build ID: `47b4e4afdd0df005`
+Generated: 2026-11-16T00:06:40.683Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -197,7 +197,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/brazil-lonomia-antivenom-v1556.js` | 2900 | `e97403f0158c9ddb926ec18e45b337458aedb13bd2a4fa488142181abaefe2e8` |
 | `lib/brazil-scorpion-antivenom-v1556.js` | 2777 | `7ec36d37c37b1cff7f2e1ac6382fa56c50729b94a7443f965d3ea4daf8bc01b5` |
 | `lib/brazil-snakebite-antivenom-v1556.js` | 6380 | `6dc56e0ef3de1bf0738aa0cac0ce9a35925d96acbf9a39e4826bd637c61e7482` |
-| `lib/brazil-spider-antivenom-v1556.js` | 5106 | `87c7bca02fed31de7750b9602be2e3e3903e238df4863dbd38f483e12ff96fe8` |
+| `lib/brazil-spider-antivenom-v1556.js` | 5530 | `1b7986301b81aea6f3ed93f4420d255c9669e52e2a9e6b55e58c4a64249afed6` |
 | `lib/brodsky-tonsil-v388.js` | 3325 | `9b3c2d6d23116ecb9c6249b5ab2cd6436e5304574981a4a4a6c87e59339ff697` |
 | `lib/bromage-scale-v467.js` | 3093 | `9247f0b4421fca3c360e3fd27504c23e02ca612b34cc2b33daea168762c0ce64` |
 | `lib/brooker-v452.js` | 3050 | `a04239b3721fad434f4c86321e7bcf34c3f1e149e2eeb079339b026f452931db` |

@@ -15,3 +15,14 @@ test('Phoneutria and Loxosceles', () => {
   assert.equal(r({ spider: 'latrodectus' }).bandLabel, 'Supportive, 24 h');
   assert.equal(r({ spider: 'phoneutria' }).valid, false);
 });
+
+// spec-v1729: a child's weight that was entered but is out of range read "weight:
+// not entered". The prednisone line now says what is wrong; the vials still stand.
+test('an out-of-range child weight is named in the prednisone line, not called "not entered"', () => {
+  const base = { spider: 'loxosceles', moderate: 'yes', severe: 'no', ageGroup: 'child' };
+  const notes = (w) => r({ ...base, weight: w }).notes.join(' ');
+  assert.match(notes('1'), /no mg dose: The weight must be between 2 and 150 kg\. Check the value entered\./);
+  assert.match(notes(''), /weight: not entered, so no mg dose/);
+  assert.match(notes('20'), /Prednisone 20 mg a day/);
+  assert.match(r({ ...base, weight: '1' }).band, /5 vials/);
+});

@@ -28,13 +28,19 @@ For the 100, each was driven through the library at a value between the two boun
 
 All three checked on the page.
 
-## Not verified
+## The conditional fields, driven in their own branches
 
 ABI and COWS came from the 92 (the library refused, but the two published ranges still disagreed); the
-pediatric weight estimate came from the 8. The other seven of the 8, in six tools, are conditional fields: the
-worked example takes a branch that never reads them, so the in-between value changed nothing and settled
-nothing. Their adapter minimum is stricter than the page's `min="0"`:
-`cholera-rehydration` pregnancy SBP (30), `newborn-hypoglycemia-who` sick-infant weight (0.4 kg),
-`brazil-spider-antivenom` child weight (2 kg), `iron-supplement-who` pregnancy Hb (30 g/L) and preterm weight
-(0.3 kg), `antivenom-repeat` initial dose (1 vial), `td-pregnancy-schedule` prior adult Td doses (1). Each needs
-its own branch driven before either side is changed.
+pediatric weight estimate came from the 8. The other seven of the 8, in six tools, are conditional fields the
+worked example never reads, so each was driven again in the branch that uses it:
+
+| Tool | Field (adapter minimum) | In its own branch |
+|---|---|---|
+| `cholera-rehydration` | pregnancy SBP (30) | the library refuses below 30 too: consistent |
+| `newborn-hypoglycemia-who` | sick-infant weight (0.4 kg) | refuses below 0.4: consistent |
+| `iron-supplement-who` | pregnancy Hb (30 g/L), preterm weight (0.3 kg) | refuses below each: consistent |
+| `antivenom-repeat` | initial dose (1 vial) | refuses below 1: consistent |
+| `td-pregnancy-schedule` | prior adult Td doses (1) | refuses below 1: consistent |
+| `brazil-spider-antivenom` | child weight (2 kg) | **a defect**: the weight only feeds the Loxosceles prednisone line, and an entered weight below 2 kg read "weight: not entered, so no mg dose". It now says "no mg dose: The weight must be between 2 and 150 kg. Check the value entered." The vial count, which does not depend on weight, still stands. Checked on the page. |
+
+Tests: `test/unit/sign-flipped-fields.test.js` (ABI's floor), the spider-bite test file (the prednisone line).

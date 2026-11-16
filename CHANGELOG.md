@@ -73,6 +73,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   4) passed without the range warning; each item now has its own top score. The pediatric weight estimate's
   age field now matches its own "1-14" label (infants use the months field), and the ankle-brachial index's
   agent interface now refuses a pressure below 20 mmHg, as the page does.
+- The Brazilian spider-bite tool said a child's weight was "not entered" when one below 2 kg had been typed,
+  and gave no prednisone dose; it now says what is wrong with the weight.
 - Seven tools dropped an optional value entered with an impossible sign and then asked for it: Kt/V said
   "enter UF volume" after -3 was typed, the ECMO titration replaced a negative target PaCO2 with 40, and the
   pregnancy dating skipped a CRL outside 1 to 120 mm. MIDAS also clamped a day count above 92 to 92. Each now

@@ -20,7 +20,8 @@
 // the in-between value (only the warning differs), and 8 where it answered. ABI and
 // COWS (from the 92) and the pediatric weight estimate (from the 8) were settled;
 // the other seven of the 8 are conditional fields the worked example never
-// reaches, left unverified (docs/spec-v1729.md).
+// reaches; driven in their own branches, six are consistent and one was a defect
+// (brazil-spider-antivenom's child weight; docs/spec-v1729.md).
 //
 // A FINDER, not a gate (the `-probe.spec.js` suffix keeps it out of CI):
 //
