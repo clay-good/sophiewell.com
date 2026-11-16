@@ -164,3 +164,14 @@ test('a GCS outside 3-15 is refused by name; a blank is still not entered', () =
   assert.equal(phoenixSepsis({ ageMonths: 24, gcs: 10, platelets: 50 }).valid, true);
   assert.equal(phoenixSepsis({ ageMonths: 24, gcs: '', platelets: 50 }).valid, true);
 });
+
+// spec-v1744: the adapter declared 0 or more; pos() read a negative ratio, count or MAP as not entered.
+test('spec-v1744: a negative oxygenation ratio, vasoactive count or MAP is refused', () => {
+  const ex = { ageMonths: '24', ratioType: 'pf', ratio: '150', support: 'imv', vasoactives: '1', lactate: '6', map: '30', platelets: '80', gcs: '10' };
+  assert.equal(phoenixSepsis(ex).valid, true);
+  for (const k of ['ratio', 'vasoactives', 'map']) {
+    assert.equal(phoenixSepsis({ ...ex, [k]: '-10' }).valid, false, k);
+    assert.match(phoenixSepsis({ ...ex, [k]: '-10' }).message, /must be at least 0/);
+    assert.equal(phoenixSepsis({ ...ex, [k]: '0' }).valid, true, k);
+  }
+});

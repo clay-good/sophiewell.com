@@ -128,3 +128,18 @@ test('spec-v1740: a negative extent is refused, not clamped to 0%', () => {
   assert.equal(scorad({ ...ex, extent: 0 }).valid, true);
   assert.equal(scorad(ex).valid, true);
 });
+
+test('scorad: a pruritus or sleeplessness score outside 0-10 is refused, not clamped (spec-v1744)', () => {
+  const ex = { extent: 30, erythema: 2, edema: 1, oozing: 1, excoriation: 2, lichenification: 1, dryness: 1, pruritus: 5, sleeplessness: 3 };
+  for (const k of ['pruritus', 'sleeplessness']) {
+    const hi = scorad({ ...ex, [k]: 11 });
+    assert.equal(hi.valid, false, k); assert.equal(hi.score, null, k);
+    assert.equal(scorad({ ...ex, [k]: -1 }).valid, false, k);
+    assert.equal(typeof scorad({ ...ex, [k]: 0 }).score, 'number', k);
+    assert.equal(typeof scorad({ ...ex, [k]: 10 }).score, 'number', k);
+  }
+  assert.match(scorad({ ...ex, pruritus: 100 }).band, /pruritus score \(0-10\) must be between 0 and 10/);
+  const r = scorad(ex); // worked example
+  assert.equal(typeof r.score, 'number');
+  assert.equal(r.bandLabel, 'Moderate');
+});

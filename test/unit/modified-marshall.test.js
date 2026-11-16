@@ -86,3 +86,17 @@ test('a cardiovascular score off the 0-4 band table is refused', () => {
   assert.match(modifiedMarshall({ cardiovascular: 9999 }).message, /cardiovascular score must be between 0 and 4/);
   assert.equal(modifiedMarshall({ cardiovascular: 4 }).valid, true);
 });
+
+test('modified-marshall: a negative FiO2 or creatinine is refused, not read as not entered (spec-v1744)', () => {
+  const ex = { pao2: 200, fio2: 100, creatinine: 2.0 };
+  const f = modifiedMarshall({ ...ex, fio2: -10 });
+  assert.equal(f.valid, false); assert.match(f.band, /FiO2 as a percent must be at least 0/);
+  const c = modifiedMarshall({ ...ex, creatinine: -10 });
+  assert.equal(c.valid, false); assert.match(c.band, /serum creatinine in mg\/dL must be at least 0/);
+  assert.equal(modifiedMarshall({ ...ex, creatinine: 0 }).valid, true);
+  assert.equal(modifiedMarshall({ ...ex, fio2: 0 }).valid, true);
+  const r = modifiedMarshall(ex); // worked example
+  assert.equal(r.valid, true);
+  assert.equal(r.organFailure, true);
+  assert.equal(modifiedMarshall({ pao2: 200, fio2: 100 }).valid, true);
+});

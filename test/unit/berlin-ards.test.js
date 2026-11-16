@@ -33,3 +33,14 @@ test('berlin-ards P/F > 300 fails severity criterion', () => {
   assert.equal(r.ards, false);
   assert.match(r.band, /not met/);
 });
+
+test('berlin-ards: an FiO2 outside 0-1 (a percent, or a negative) is refused (spec-v1744)', () => {
+  assert.throws(() => berlinArds({ ...allFour, pao2: 120, fio2: 50 }), /FiO2 \(decimal\) must be between 0 and 1/);
+  assert.throws(() => berlinArds({ ...allFour, pao2: 120, fio2: 1.01 }), RangeError);
+  assert.throws(() => berlinArds({ ...allFour, pao2: 120, fio2: -0.5 }), RangeError);
+  assert.equal(berlinArds({ ...allFour, pao2: 120, fio2: 0 }).pfRatio, null);
+  assert.equal(berlinArds({ ...allFour, pao2: 120, fio2: 1 }).severity, 'moderate');
+  assert.equal(berlinArds({ ...allFour, pao2: 120, fio2: 0.5 }).severity, 'mild');
+  // worked example: nothing checked, gases blank
+  assert.equal(berlinArds({ pao2: '', fio2: '' }).ards, false);
+});

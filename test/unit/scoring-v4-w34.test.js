@@ -155,8 +155,9 @@ test('miniCog: 0 words + normal clock = 2 -> Positive', () => {
 test('miniCog: 1 word + normal clock = 3 -> Negative', () => {
   assert.match(miniCog({ wordsRecalled: 1, clockNormal: true }).band, /Negative/);
 });
-test('miniCog: clamps wordsRecalled', () => {
-  assert.equal(miniCog({ wordsRecalled: 99, clockNormal: true }).score, 5);
+// spec-v1744: this pinned the clamp; 99 words recalled is now refused.
+test('miniCog: an out-of-range wordsRecalled is refused, not clamped', () => {
+  assert.throws(() => miniCog({ wordsRecalled: 99, clockNormal: true }), /Words recalled must be between 0 and 3/);
 });
 
 test('bishop: a negative effacement is refused, not scored as 0% (spec-v1740)', () => {
@@ -167,4 +168,14 @@ test('bishop: a negative effacement is refused, not scored as 0% (spec-v1740)', 
   assert.match(neg.band, /Effacement \(%\) must be at least 0/);
   assert.equal(typeof bishop({ ...ex, effacement: 0 }).score, 'number');
   assert.equal(bishop({ ...ex, effacement: 60 }).score, 9);
+});
+
+test('mini-cog: words recalled outside 0-3 are refused, not clamped (spec-v1744)', () => {
+  assert.throws(() => miniCog({ wordsRecalled: 4, clockNormal: true }), RangeError);
+  assert.throws(() => miniCog({ wordsRecalled: -1, clockNormal: true }), RangeError);
+  assert.throws(() => miniCog({ wordsRecalled: 1.5, clockNormal: true }), /whole number/);
+  assert.equal(miniCog({ wordsRecalled: 0, clockNormal: false }).score, 0);
+  assert.equal(miniCog({ wordsRecalled: 3, clockNormal: false }).score, 3);
+  assert.equal(miniCog({ wordsRecalled: 2, clockNormal: true }).score, 4); // worked example
+  assert.equal(miniCog({ wordsRecalled: '', clockNormal: true }).incomplete, true);
 });

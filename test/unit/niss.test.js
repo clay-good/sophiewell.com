@@ -27,10 +27,11 @@ test('takes the three highest when more than three given is not possible; lowest
   assert.equal(r.major, false);
 });
 
-test('AIS clamps to 1-6', () => {
+// spec-v1744: this pinned the clamp (9 -> 6, forcing 75); an AIS above 6 is now refused.
+test('AIS outside 1-6 is refused', () => {
   const r = niss({ ais1: 9, ais3: 4 });
-  // 9 -> 6 forces 75
-  assert.equal(r.score, 75);
+  assert.equal(r.valid, false);
+  assert.match(r.band, /highest AIS must be between 1 and 6/);
 });
 
 // spec-v1722: an AIS of 0.4 was rounded to 0 and dropped; a fraction is refused now.
@@ -43,4 +44,19 @@ test('a fractional AIS is refused', () => {
 test('single AIS scores its square', () => {
   const r = niss({ ais1: 4 });
   assert.equal(r.score, 16);
+});
+
+test('niss: an AIS outside 1-6 is refused, not clamped (spec-v1744)', () => {
+  const ex = { ais1: 6, ais2: 3, ais3: 2 };
+  for (const k of ['ais2', 'ais3']) {
+    assert.equal(niss({ ...ex, [k]: 7 }).valid, false, k);
+    assert.equal(niss({ ...ex, [k]: 0 }).valid, false, k);
+    assert.equal(niss({ ...ex, [k]: 1 }).valid, true, k);
+    assert.equal(niss({ ...ex, [k]: 6 }).valid, true, k);
+  }
+  assert.match(niss({ ...ex, ais2: 60 }).band, /second-highest AIS must be between 1 and 6/);
+  const r = niss(ex); // worked example
+  assert.equal(r.valid, true);
+  assert.equal(r.score, 75);
+  assert.equal(niss({ ais1: 5, ais2: null, ais3: null }).valid, true);
 });

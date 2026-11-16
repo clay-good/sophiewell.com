@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Nineteen scores and dosing checks refused an out-of-range value from an AI agent but still answered it on the
+  page: a withdrawal-scale item of 70, an antivenom dose of 1,000 vials, a skin area of 1,000%, a negative drug
+  clearance. The page now refuses the same values the agents are refused.
 - The Phoenix pediatric sepsis score read a Glasgow Coma Scale of 150 as not entered and still answered, and the
   ISARIC 4C score asked again for a GCS of 20 as if it had been left blank. Both now say the scale runs 3 to 15.
 - Thirteen scores accepted a heart rate of 3,000 or a breathing rate of 800 and answered, including the fetal

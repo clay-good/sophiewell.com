@@ -97,3 +97,17 @@ test('spec-v1092: a PASI scored from some of the regions says which are missing'
   // The score itself is untouched.
   assert.equal(pasi(all).score, pasi({ ...all }).score);
 });
+
+test('pasi: a region area outside 0-100% is refused, not clamped (spec-v1744)', () => {
+  const ex = { headE: 2, headI: 2, headD: 2, headArea: 25, upperE: 1, upperI: 1, upperD: 1, upperArea: 5, lowerE: 3, lowerI: 3, lowerD: 3, lowerArea: 60 };
+  for (const k of ['headArea', 'upperArea', 'trunkArea', 'lowerArea']) {
+    assert.equal(pasi({ ...ex, [k]: 101 }).valid, false, k);
+    assert.equal(pasi({ ...ex, [k]: -1 }).valid, false, k);
+    assert.equal(pasi({ ...ex, [k]: 0 }).valid, true, k);
+    assert.equal(pasi({ ...ex, [k]: 100 }).valid, true, k);
+  }
+  assert.match(pasi({ ...ex, headArea: 1000 }).band, /head\/neck area \(%\) must be between 0 and 100/);
+  const r = pasi(ex); // worked example
+  assert.equal(r.valid, true);
+  assert.equal(r.bandLabel, 'Moderate');
+});

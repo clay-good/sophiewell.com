@@ -40,3 +40,17 @@ test('malaria-endemic remarks: no oral iron without prevention and treatment; in
   assert.doesNotMatch(school, /an infant gets iron/);
   assert.doesNotMatch(r({ group: 'woman', prevalence: 'ge40' }).notes.join(' '), /malaria/);
 });
+
+// spec-v1744: the adapter declared 0.3-6 kg; the page passed 60 through for a child group and answered.
+test('spec-v1744: a weight outside 0.3-6 kg is refused in every group', () => {
+  const ex = { group: 'c24', prevalence: 'ge40', rutf: 'no' };
+  assert.equal(r(ex).bandLabel, '30 mg daily');
+  for (const weight of ['60', '0.2', '-1']) {
+    assert.equal(r({ ...ex, weight }).valid, false, weight);
+    assert.equal(r({ group: 'preterm', weight }).valid, false, weight);
+  }
+  for (const weight of ['0.3', '6']) {
+    assert.equal(r({ ...ex, weight }).valid, true, weight);
+    assert.equal(r({ group: 'preterm', weight }).valid, true, weight);
+  }
+});

@@ -44,20 +44,21 @@ test('push 17 (all maxima) -> high total', () => {
   assert.equal(r.pushTotal, 17);
 });
 
-test('push clamps an out-of-range size score (exudate and tissue type outside their range are refused since spec-v1740)', () => {
-  const r = nortonPush({
+// spec-v1744: these two pinned the clamps; an out-of-range size score or Norton item is now refused.
+test('push refuses an out-of-range size score', () => {
+  assert.throws(() => nortonPush({
     physicalCondition: 4, mentalCondition: 4, activity: 4, mobility: 4, incontinence: 4,
     lengthWidthBand: 99, exudate: 0, tissueType: 4,
-  });
-  assert.equal(r.pushTotal, 10 + 0 + 4);
+  }), /PUSH size score must be between 0 and 10/);
 });
 
-test('norton clamps each item to 1-4', () => {
-  const r = nortonPush({
-    physicalCondition: 0, mentalCondition: 5, activity: 4, mobility: 4, incontinence: 4,
-  });
-  assert.equal(r.norton.physicalCondition, 1);
-  assert.equal(r.norton.mentalCondition, 4);
+test('norton refuses an item outside 1-4', () => {
+  assert.throws(() => nortonPush({
+    physicalCondition: 0, mentalCondition: 4, activity: 4, mobility: 4, incontinence: 4,
+  }), /Norton physical condition must be between 1 and 4/);
+  assert.throws(() => nortonPush({
+    physicalCondition: 4, mentalCondition: 5, activity: 4, mobility: 4, incontinence: 4,
+  }), /Norton mental condition must be between 1 and 4/);
 });
 
 // spec-v1083: two instruments on one tile, so it answers with the half it has.
@@ -136,4 +137,23 @@ test('norton-push: a negative or out-of-range exudate or tissue type is refused,
   assert.throws(() => nortonPush({ ...ex, tissueType: 99 }), /PUSH tissue type must be between 0 and 4/);
   assert.equal(nortonPush({ ...ex, exudate: 0, tissueType: 0 }).pushTotal, 6);
   assert.equal(nortonPush(ex).pushTotal, 11);
+});
+
+test('norton-push: Norton items outside 1-4 and a PUSH size score outside 0-10 are refused (spec-v1744)', () => {
+  const ex = { physicalCondition: 3, mentalCondition: 4, activity: 2, mobility: 2, incontinence: 3,
+    lengthWidthBand: 6, exudate: 2, tissueType: 3 };
+  for (const k of ['physicalCondition', 'mentalCondition', 'activity', 'mobility', 'incontinence']) {
+    assert.throws(() => nortonPush({ ...ex, [k]: 5 }), RangeError, k);
+    assert.throws(() => nortonPush({ ...ex, [k]: 0 }), RangeError, k);
+    assert.equal(typeof nortonPush({ ...ex, [k]: 1 }).nortonTotal, 'number');
+    assert.equal(typeof nortonPush({ ...ex, [k]: 4 }).nortonTotal, 'number');
+  }
+  assert.throws(() => nortonPush({ ...ex, activity: 2.5 }), /whole number/);
+  assert.throws(() => nortonPush({ ...ex, lengthWidthBand: 11 }), RangeError);
+  assert.throws(() => nortonPush({ ...ex, lengthWidthBand: -1 }), RangeError);
+  assert.equal(nortonPush({ ...ex, lengthWidthBand: 0 }).pushTotal, 5);
+  assert.equal(nortonPush({ ...ex, lengthWidthBand: 10 }).pushTotal, 15);
+  const r = nortonPush(ex); // worked example
+  assert.equal(r.nortonTotal, 14);
+  assert.equal(r.pushTotal, 11);
 });

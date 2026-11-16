@@ -91,3 +91,13 @@ test('udca-response: disagreement, timing, purpose and scope are stated on every
   assert.match(r.scopeNote, /does not choose therapy/);
   assert.match(UDCA_RESPONSE_NOTE, /primary biliary cholangitis/);
 });
+
+// spec-v1744: the adapter declared a baseline ALP of 0 or more; the Barcelona drop skipped a negative.
+test('spec-v1744: a negative baseline alkaline phosphatase is refused', () => {
+  const ex = { monthsOnUdca: '12', alp: '240', alpUln: '120', baselineAlp: '500', ast: '60', astUln: '40', bilirubin: '0.8' };
+  assert.equal(udcaResponse(ex).valid, true);
+  assert.equal(udcaResponse({ ...ex, baselineAlp: '-10' }).valid, false);
+  assert.match(udcaResponse({ ...ex, baselineAlp: '-10' }).message, /cannot be negative/);
+  assert.equal(udcaResponse({ ...ex, baselineAlp: '0' }).valid, true);
+  assert.equal(udcaResponse({ ...ex, baselineAlp: '' }).valid, true);
+});

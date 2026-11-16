@@ -17,12 +17,21 @@ test('Phoneutria and Loxosceles', () => {
 });
 
 // spec-v1729: a child's weight that was entered but is out of range read "weight:
-// not entered". The prednisone line now says what is wrong; the vials still stand.
-test('an out-of-range child weight is named in the prednisone line, not called "not entered"', () => {
+// not entered". spec-v1744 goes further: the weight is refused by name, as the agent adapter refuses it.
+test('an out-of-range child weight is named, not called "not entered"', () => {
   const base = { spider: 'loxosceles', moderate: 'yes', severe: 'no', ageGroup: 'child' };
   const notes = (w) => r({ ...base, weight: w }).notes.join(' ');
-  assert.match(notes('1'), /no mg dose: The weight must be between 2 and 150 kg\. Check the value entered\./);
+  assert.equal(r({ ...base, weight: '1' }).valid, false);
+  assert.match(r({ ...base, weight: '1' }).message, /weight must be between 2 and 150/);
   assert.match(notes(''), /weight: not entered, so no mg dose/);
   assert.match(notes('20'), /Prednisone 20 mg a day/);
-  assert.match(r({ ...base, weight: '1' }).band, /5 vials/);
+});
+
+// spec-v1744: the adapter declared 2-150 kg; the page passed 1500 through and answered a vial count.
+test('spec-v1744: a weight outside 2-150 kg is refused; the ends and the worked example answer', () => {
+  const ex = { spider: 'loxosceles', moderate: 'yes', severe: 'no', ageGroup: 'child', weight: '20' };
+  assert.equal(r(ex).bandLabel, 'Moderate: 5 vials');
+  for (const weight of ['1500', '1.9', '-1']) assert.equal(r({ ...ex, weight }).valid, false, weight);
+  for (const weight of ['2', '150']) assert.equal(r({ ...ex, weight }).valid, true, weight);
+  assert.equal(r({ ...ex, weight: '' }).valid, true);
 });

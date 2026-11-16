@@ -41,8 +41,9 @@ test('ciwaAr: 25 -> Very severe', () => {
   const r = ciwaAr({ tremor: 7, anxiety: 7, sweats: 7, agitation: 7 });
   assert.match(r.band, /Very severe/);
 });
-test('ciwaAr: clamps each item', () => {
-  const r = ciwaAr({ tremor: 99 }); assert.equal(r.score, 7);
+// spec-v1744: this pinned the clamp; an item of 99 is now refused.
+test('ciwaAr: an out-of-range item is refused, not clamped', () => {
+  assert.throws(() => ciwaAr({ tremor: 99 }), /Tremor must be between 0 and 7/);
 });
 
 // --- 158 COWS ----------------------------------------------------------
@@ -158,4 +159,22 @@ test('PREVENT: race-free contract (no race input accepted)', () => {
 });
 test('PREVENT: throws on bad sex', () => {
   assert.throws(() => prevent10yr({ age: 50, sex: 'X', totalChol: 200, hdl: 50, sbp: 120, diabetes: false, smoker: false, bmi: 25, egfr: 90 }));
+});
+
+test('ciwa: an item outside its range is refused, not clamped (spec-v1744)', () => {
+  const ex = { nausea: 2, tremor: 2, sweats: 2, anxiety: 2, agitation: 1,
+    tactile: 0, auditory: 0, visual: 0, headache: 1, orientation: 0 };
+  for (const k of ['nausea', 'tremor', 'sweats', 'anxiety', 'agitation', 'tactile', 'auditory', 'visual', 'headache']) {
+    assert.throws(() => ciwaAr({ ...ex, [k]: 8 }), RangeError, k);
+    assert.throws(() => ciwaAr({ ...ex, [k]: -1 }), RangeError, k);
+    assert.equal(ciwaAr({ ...ex, [k]: 0 }).incomplete, undefined);
+    assert.equal(typeof ciwaAr({ ...ex, [k]: 7 }).score, 'number');
+  }
+  assert.throws(() => ciwaAr({ ...ex, orientation: 5 }), /Orientation must be between 0 and 4/);
+  assert.throws(() => ciwaAr({ ...ex, orientation: -1 }), RangeError);
+  assert.throws(() => ciwaAr({ ...ex, nausea: 2.5 }), /whole number/);
+  assert.equal(ciwaAr({ ...ex, orientation: 4 }).score, 14);
+  assert.equal(ciwaAr(CIWA_ZEROED).score, 0);
+  assert.equal(ciwaAr(ex).score, 10); // worked example
+  assert.match(ciwaAr(ex).band, /Moderate/);
 });

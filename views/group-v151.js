@@ -103,6 +103,7 @@ export const renderers = {
         arg[k + 'D'] = selVal(`pasi-${k}-d`); arg[k + 'Area'] = optNum(`pasi-${k}-area`);
       }
       const r = M.pasi(arg);
+      if (r.valid === false) { note(o, r.band); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'PASI', value: `${r.score}/72` },
@@ -140,6 +141,7 @@ export const renderers = {
         arg[k + 'Ex'] = selVal(`easi-${k}-ex`); arg[k + 'L'] = selVal(`easi-${k}-l`); arg[k + 'Area'] = optNum(`easi-${k}-area`);
       }
       const r = M.easi(arg);
+      if (r.valid === false) { note(o, r.band); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'EASI', value: `${r.score}/72` },

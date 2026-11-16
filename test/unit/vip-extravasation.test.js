@@ -39,10 +39,10 @@ test('ins grade 4 without vesicant -> escalate but no antidote banner', () => {
   assert.ok(!r.banners.some((b) => b.startsWith('Grade 4 vesicant')));
 });
 
-test('clamps out-of-range vip and ins', () => {
-  const r = vipExtravasation({ vip: 99, insGrade: -1 });
-  assert.equal(r.vip, 5);
-  assert.equal(r.insGrade, 0);
+// spec-v1744: this pinned the clamp; out-of-range grades are now refused.
+test('refuses out-of-range vip and ins', () => {
+  assert.throws(() => vipExtravasation({ vip: 99, insGrade: 0 }), /VIP score must be between 0 and 5/);
+  assert.throws(() => vipExtravasation({ vip: 0, insGrade: -1 }), /INS infiltration grade must be between 0 and 4/);
 });
 
 // spec-v1083: on both of these scales, 0 is a finding.
@@ -71,4 +71,18 @@ test('spec-v1083: an ungraded scale is asked for; a graded 0 still reports clean
   assert.equal(vipOnly.insGrade, null);
   assert.match(vipOnly.text, /INS infiltration \/ extravasation not scored/);
   assert.ok(vipOnly.banners.some((b) => b.includes('remove cannula')));
+});
+
+test('vip-extravasation: grades outside VIP 0-5 and INS 0-4 are refused, not clamped (spec-v1744)', () => {
+  assert.throws(() => vipExtravasation({ vip: 6, insGrade: 2 }), RangeError);
+  assert.throws(() => vipExtravasation({ vip: -1, insGrade: 2 }), RangeError);
+  assert.throws(() => vipExtravasation({ vip: 3, insGrade: 5 }), RangeError);
+  assert.throws(() => vipExtravasation({ vip: 3, insGrade: -1 }), RangeError);
+  assert.throws(() => vipExtravasation({ vip: 2.5, insGrade: 2 }), /whole number/);
+  assert.equal(vipExtravasation({ vip: 0, insGrade: 0 }).vip, 0);
+  const top = vipExtravasation({ vip: 5, insGrade: 4 });
+  assert.equal(top.vip, 5); assert.equal(top.insGrade, 4);
+  const ex = vipExtravasation({ vip: 3, insGrade: 2 }); // worked example
+  assert.equal(ex.vip, 3); assert.equal(ex.insGrade, 2);
+  assert.equal(vipExtravasation({ vip: '', insGrade: 2 }).vipUnrated, true);
 });

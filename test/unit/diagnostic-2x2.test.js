@@ -39,3 +39,16 @@ test('guards: empty disease column and blank cells', () => {
   assert.equal(diagnostic2x2({ tp: 90, fp: 10, fn: 10 }).valid, false); // missing TN
   assert.equal(diagnostic2x2({}).valid, false);
 });
+
+// spec-v1744: the adapter declared a prevalence of 0 or more; pct() read -10 (and 150) as not entered.
+test('spec-v1744: a target prevalence outside 0-100% is refused; the ends answer', () => {
+  const ex = { tp: '90', fp: '10', fn: '10', tn: '90', prevalence: '5' };
+  assert.equal(diagnostic2x2(ex).targetPrev, 5);
+  for (const prevalence of ['-10', '150']) {
+    assert.equal(diagnostic2x2({ ...ex, prevalence }).valid, false, prevalence);
+    assert.match(diagnostic2x2({ ...ex, prevalence }).message, /target prevalence must be between 0 and 100/);
+  }
+  assert.equal(diagnostic2x2({ ...ex, prevalence: '0' }).valid, true);
+  assert.equal(diagnostic2x2({ ...ex, prevalence: '100' }).valid, true);
+  assert.equal(diagnostic2x2({ ...ex, prevalence: '' }).targetPrev, null);
+});

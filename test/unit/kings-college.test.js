@@ -125,3 +125,16 @@ test('spec-v1102: an unstated encephalopathy grade is not an absent one', () => 
   // And an entirely empty call still asks for the fields.
   assert.equal(kingsCollege({}).valid, false);
 });
+
+test('kings-college: a negative INR or creatinine is refused, not read as not entered (spec-v1744)', () => {
+  const ex = { inr: 7, creatinine: 4.0, creatinineUnit: 'mg/dl', encephalopathy: 'yes' };
+  const i = kingsCollege({ ...ex, inr: -10 });
+  assert.equal(i.valid, false); assert.match(i.band, /INR must be at least 0/);
+  const c = kingsCollege({ ...ex, creatinine: -10 });
+  assert.equal(c.valid, false); assert.match(c.band, /creatinine must be at least 0/);
+  assert.equal(kingsCollege({ ...ex, creatinine: 0 }).valid, true);
+  assert.equal(kingsCollege({ ...ex, inr: 0 }).valid, true);
+  const r = kingsCollege(ex); // worked example
+  assert.equal(r.valid, true);
+  assert.equal(r.meets, true);
+});

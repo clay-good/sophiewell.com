@@ -89,3 +89,17 @@ test('spec-v1125: an ungraded intensity item is disclosed too, not only a missin
   assert.match(easi(noOne).footing, /head\/neck edema was not entered/);
   assert.ok(easi(noOne).score < easi(all).score, 'the ungraded item lowered the score');
 });
+
+test('easi: a region area outside 0-100% is refused, not clamped (spec-v1744)', () => {
+  const ex = { age: 'adult', headE: 1, headEd: 1, headEx: 1, headArea: 25, lowerE: 2, lowerEd: 2, lowerEx: 2, lowerL: 2, lowerArea: 60 };
+  for (const k of ['headArea', 'upperArea', 'trunkArea', 'lowerArea']) {
+    assert.equal(easi({ ...ex, [k]: 101 }).valid, false, k);
+    assert.equal(easi({ ...ex, [k]: -1 }).valid, false, k);
+    assert.equal(easi({ ...ex, [k]: 0 }).valid, true, k);
+    assert.equal(easi({ ...ex, [k]: 100 }).valid, true, k);
+  }
+  assert.match(easi({ ...ex, lowerArea: 1000 }).band, /lower limbs area \(%\) must be between 0 and 100/);
+  const r = easi(ex); // worked example
+  assert.equal(r.valid, true);
+  assert.equal(r.bandLabel, 'Moderate');
+});

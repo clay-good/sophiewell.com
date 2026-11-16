@@ -49,3 +49,18 @@ test('refusals', () => {
   assert.equal(r({ ...base, hours: '' }).valid, false);
   assert.equal(r({ ...base, neuro: '' }).valid, false);
 });
+
+// spec-v1744: the adapter declared 1-100 vials; India mode passed 1000 through and answered "Repeat now".
+test('spec-v1744: an initial dose outside 1-100 vials is refused in every protocol', () => {
+  const ex = { protocol: 'india', regimen: 'neuro', hours: '1', wbct: 'clots', bleeding: 'no', neuro: 'same', ventilated: 'no', given: '10' };
+  assert.equal(r(ex).valid, true);
+  for (const dose of ['1000', '0.5', '-1']) {
+    assert.equal(r({ ...ex, dose }).valid, false, dose);
+    assert.match(r({ ...ex, dose }).message, /initial dose in vials must be between 1 and 100/);
+    assert.equal(r({ ...ex, protocol: 'searo', dose }).valid, false, dose);
+  }
+  for (const dose of ['1', '100']) {
+    assert.equal(r({ ...ex, dose }).valid, true, dose);
+    assert.equal(r({ ...ex, protocol: 'searo', dose }).valid, true, dose);
+  }
+});

@@ -67,3 +67,14 @@ test('half-life uses ln 2, not 0.693', () => {
   // ln 2 x 1000 / 1 = 693.15; 0.693 x 1000 would be 693.
   assert.equal(pkSuite({ vd: 1000, cl: 1 }).halfLife, 693.15);
 });
+
+// spec-v1744: the adapter declared 0 or more; pos() read a negative Vd, CL, Cp or tau as not entered.
+test('spec-v1744: a negative Vd, CL, target concentration or interval is refused', () => {
+  const ex = { vd: '50', cl: '5', cp: '20', f: '1', tau: '12' };
+  assert.equal(pkSuite(ex).valid, true);
+  for (const k of ['vd', 'cl', 'cp', 'tau']) {
+    assert.equal(pkSuite({ ...ex, [k]: '-10' }).valid, false, k);
+    assert.match(pkSuite({ ...ex, [k]: '-10' }).message, /must be at least 0/);
+    assert.equal(pkSuite({ ...ex, [k]: '0' }).valid, true, k);
+  }
+});

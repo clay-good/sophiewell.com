@@ -1203,9 +1203,9 @@ test('ciwa components sum equals ciwaAr() (max 67)', () => {
 
 test('ciwa components clamp out-of-range values (10 in a 0-7 field -> 7)', () => {
   const inputs = { nausea: 10, tremor: 0, sweats: 0, anxiety: 0, agitation: 0, tactile: 0, auditory: 0, visual: 0, headache: 0, orientation: 0 };
-  // clamp 10 -> 7
+  // clamp 10 -> 7 in the derivation display; spec-v1744: the library itself now refuses the 10.
   assert.equal(sumComponents(META.ciwa, inputs), 7);
-  assert.equal(ciwaAr(inputs).score, 7);
+  assert.throws(() => ciwaAr(inputs), /Nausea \/ vomiting must be between 0 and 7/);
 });
 
 test('four-score components sum equals fourScore() (max 16)', () => {
