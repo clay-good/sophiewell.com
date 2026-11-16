@@ -138,3 +138,11 @@ test('kings-college: a negative INR or creatinine is refused, not read as not en
   assert.equal(r.valid, true);
   assert.equal(r.meets, true);
 });
+
+// spec-v1748: the creatinine envelope, in the unit it was entered in.
+test('an impossible creatinine is refused in either unit; a real one answers', () => {
+  const b = { inr: 7, encephalopathy: 'yes' };
+  assert.match(kingsCollege({ ...b, creatinine: 10000000, creatinineUnit: 'umol/l' }).band, /9 to 2210 umol\/L/);
+  assert.match(kingsCollege({ ...b, creatinine: 10000000, creatinineUnit: 'mg/dl' }).band, /0\.1 to 25 mg\/dL/);
+  assert.notEqual(kingsCollege({ ...b, creatinine: 350, creatinineUnit: 'umol/l' }).valid, false);
+});

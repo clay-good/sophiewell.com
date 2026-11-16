@@ -74,3 +74,9 @@ test('spec-v1743: an entered GCS outside 3-15 is told its range, not asked for a
   assert.match(r.message, /GCS must be between 3 and 15/);
   assert.equal(isaric4cMortality({ ...base, gcs: 15 }).valid, true);
 });
+
+test('spec-v1748: an impossible urea is refused in the unit it was entered in', () => {
+  assert.match(isaric4cMortality({ ...base, urea: 10000000 }).message, /mmol\/L/);
+  assert.match(isaric4cMortality({ ...base, urea: 10000000, ureaUnit: 'bun-mgdl' }).message, /BUN 1 to 300 mg\/dL/);
+  assert.equal(isaric4cMortality({ ...base, urea: 40, ureaUnit: 'bun-mgdl' }).valid, true);
+});
