@@ -47,7 +47,8 @@ test('all variables clamp to the published 0-31 maximum', () => {
 test('overflow-safe: extreme inputs do not leak non-finite', () => {
   // spec-v1741: hemoglobin now has an envelope (2 to 25 g/dL), so the probe sits at
   // its floor; a hemoglobin of 1e9 is refused.
-  const r = tashScore({ hb: 2, baseExcess: -1e9, sbp: -1e9, hr: 1e9 });
+  // spec-v1742: so does heart rate (10 to 300 bpm); the probe sits at its ceiling.
+  const r = tashScore({ hb: 2, baseExcess: -1e9, sbp: -1e9, hr: 300 });
   assert.ok(Number.isFinite(r.pct));
   assert.ok(Number.isFinite(r.total));
   assert.equal(tashScore({ hb: 1e9, baseExcess: -1e9, sbp: -1e9, hr: 1e9 }).valid, false);

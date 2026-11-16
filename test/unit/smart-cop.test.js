@@ -109,6 +109,8 @@ test('smart-cop: a negative respiratory rate is refused, not read as unmeasured 
   assert.equal(neg.valid, false);
   assert.equal(neg.score, null);
   assert.match(neg.band, /Respiratory rate \(breaths\/min\) must be at least 0/);
-  assert.notEqual(smartCop({ ...ex, rr: 0 }).valid, false);
+  // spec-v1742: the rate envelope (lib/bounds.js) now refuses a rate below its floor, so a low REAL rate stands in for 0.
+  assert.equal(smartCop({ ...ex, rr: 0 }).valid, false);
+  assert.notEqual(smartCop({ ...ex, rr: 8 }).valid, false);
   assert.equal(smartCop(ex).score, 0);
 });

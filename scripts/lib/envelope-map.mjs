@@ -10,7 +10,9 @@ import { META } from '../../lib/meta.js';
 // A quantity in another compartment, another substance, or a derived figure is
 // not the envelope's subject. Each term here was earned: the three at the front
 // by the self-check below, the rest by reading the labels they exclude.
-export const EXCLUDE = /\bair\b|additive|ambient|outdoor|wind|room |bag |infusate|\burine|urinary|csf|cerebrospinal|dialysate|drain|ascit|pleural|stool|saliva|sweat|24-?h|fractional|excret|clearance|ratio|same unit|delta|change|target|goal|desired|corrected|expected|predicted|per kg|dose|rate|infusion/i;
+// spec-v1742: a bare `rate` term excluded every HEART rate and RESPIRATORY rate field (and ESR) along with the
+// infusion and flow rates it was written for; the vital signs and the sedimentation rate are let through now.
+export const EXCLUDE = /\bair\b|additive|ambient|outdoor|wind|room |bag |infusate|\burine|urinary|csf|cerebrospinal|dialysate|drain|ascit|pleural|stool|saliva|sweat|24-?h|fractional|excret|clearance|ratio|same unit|delta|change|target|goal|desired|corrected|expected|predicted|per kg|dose|(?<!heart |respiratory |breathing |pulse |sedimentation )\brate\b|infusion/i;
 
 // label pattern, and the unit that confirms the quantity is in the envelope's
 // own unit rather than a convertible one.
@@ -55,6 +57,8 @@ export const MAP = [
   ['bun', /\bBUN\b|urea nitrogen/i, /mg\/dL/i],
   ['eGFR', /eGFR|\bGFR\b/i, /mL\/min/i],
   ['bmi', /\bBMI\b|body mass index/i, /kg\/m/i],
+  // spec-v1742: ESR (spec-v1735's envelope), once the `rate` exclusion stopped hiding it.
+  ['esr', /sedimentation rate|\bESR\b/i, /mm\s*\/?\s*h|mm per hour/i],
   // spec-v1735. ESR is not mapped: EXCLUDE drops every label with "rate" (sedimentation RATE);
   // its tools are pinned in test/unit/bounds-sourced-v1735.test.js instead.
   ['sixMinuteWalkM', /6-?minute walk|six-?minute walk|\b6MWD?\b/i, /^m$|met(er|re)s?/i],

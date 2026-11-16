@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Thirteen scores accepted a heart rate of 3,000 or a breathing rate of 800 and answered, including the fetal
+  heart-rate categories and the shock index. They now say the value is out of range.
 - Another 38 scores and doses answered values no patient has, such as an antidote dose for a 5,000 kg weight, a
   survival estimate for an age of 1,300 and a gangrene severity score from a temperature of 450 C. Their units sat
   in the field label, where the range check never looked. They now say the value is out of range.

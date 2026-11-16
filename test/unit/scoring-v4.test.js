@@ -356,6 +356,8 @@ test('psi: the female age adjustment and the Class I gate both survive a string 
 
 test('geneva: a negative heart rate is refused, not scored as a rate under 75 (spec-v1740)', () => {
   assert.throws(() => geneva({ hr: -105 }), /Heart rate \(bpm\) must be at least 0/);
-  assert.equal(geneva({ hr: 0 }).score, 0);
+  // spec-v1742: the rate envelope (lib/bounds.js) now refuses a rate below its floor, so a low REAL rate stands in for 0.
+  assert.throws(() => geneva({ hr: 0 }), /plausible range for heart rate/);
+  assert.equal(geneva({ hr: 40 }).score, 0);
   assert.equal(geneva({ hr: 105 }).score, 5);
 });

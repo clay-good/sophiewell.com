@@ -74,6 +74,8 @@ test('a negative heart rate is refused, not read as a normal pulse', () => {
   const r = genevaOriginal({ ...ex, heartRate: -110 });
   assert.equal(r.valid, false);
   assert.match(r.band, /heart rate/);
-  assert.equal(genevaOriginal({ ...ex, heartRate: 0 }).valid, true);
+  // spec-v1742: the rate envelope (lib/bounds.js) now refuses a rate below its floor, so a low REAL rate stands in for 0.
+  assert.equal(genevaOriginal({ ...ex, heartRate: 0 }).valid, false);
+  assert.equal(genevaOriginal({ ...ex, heartRate: 40 }).valid, true);
   assert.equal(genevaOriginal(ex).valid, true);
 });
