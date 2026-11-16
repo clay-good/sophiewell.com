@@ -240,6 +240,9 @@ test('converted stragglers accept US units (heparin bolus in lb, hypothermia sta
 // `Label: Value Units` lines (lib/clipboard.js formatCopyAll) rather than a
 // scraped innerText blob.
 test('multi-output tiles offer a labeled "Copy results" button', async ({ page }) => {
+  // 29 page loads in one test run ~26 s of the default 30 s and time out under a loaded runner
+  // (seen locally beside six other specs); the budget scales with the list, as all-tools.spec.js does.
+  test.setTimeout(90_000);
   // Group E (A4) plus the v61 bedside calc tiles (A3 rollout): every tile that
   // produces two or more numeric results surfaces the clean-copy affordance.
   const ids = [
