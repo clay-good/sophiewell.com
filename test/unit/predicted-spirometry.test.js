@@ -65,3 +65,12 @@ test('spec-v1116: an unstated sex refuses; the ethnicity fallback is left alone'
   assert.equal(fell.valid, true);
   assert.equal(fell.ethnicityFallback, true);
 });
+
+// spec-v1737: a measured FEV1 above the measured FVC is refused, not reported as a ratio of 2 above the LLN.
+test('predicted-spirometry: measured FEV1 above FVC is refused', () => {
+  const base = { age: 40, heightCm: 175, sex: 'male', ethnicity: 'caucasian' };
+  const r = predictedSpirometry({ ...base, measuredFev1: 4, measuredFvc: 2 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /measured FEV1 \(4\) is above the measured FVC \(2\)/);
+  assert.equal(predictedSpirometry({ ...base, measuredFev1: 3.5, measuredFvc: 4.5 }).valid, true);
+});

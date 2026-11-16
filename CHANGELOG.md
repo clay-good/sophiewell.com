@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- GOLD spirometry read an FEV1 larger than the FVC as a ratio of 2 and "no obstruction", and let an entered ratio
+  overrule volumes that disagreed with it; the GLI predicted-spirometry tool reported the same ratio of 2 as within
+  normal limits. Both now say what is wrong.
 - Twenty-one tools accepted a diastolic pressure above the systolic, or an HDL or LDL above the total cholesterol
   it is part of, and answered: a mean arterial pressure above the systolic, a 0.6% Framingham risk and "Low" ASCVD
   risk from an HDL four times the total. They now say which value is out of order.

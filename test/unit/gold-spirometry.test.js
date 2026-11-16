@@ -47,3 +47,13 @@ test('no usable ratio -> surfaced complete-the-fields fallback (no NaN)', () => 
   assert.equal(r.valid, false);
   assert.ok(!/NaN|Infinity/.test(r.band));
 });
+
+// spec-v1737: an FEV1 above the FVC, a ratio outside 0-1, and an entered ratio that disagrees with the
+// volumes were each silently resolved (two of them to "no obstruction"); each is refused now.
+test('gold-spirometry: impossible or conflicting ratio inputs are refused', () => {
+  assert.match(goldSpirometry({ fev1Pct: 45, fev1L: 4, fvcL: 2 }).band, /FEV1 \(4\) is above the FVC \(2\)/);
+  assert.equal(goldSpirometry({ fev1Pct: 45, ratio: 1.5, fev1L: 1.5, fvcL: 3 }).valid, false);
+  assert.match(goldSpirometry({ fev1Pct: 90, ratio: 0.8, fev1L: 1, fvcL: 3 }).band, /does not match the volumes/);
+  assert.equal(goldSpirometry({ fev1Pct: 45, ratio: 0.5, fev1L: 1.5, fvcL: 3 }).grade, 3, 'agreeing inputs answer');
+  assert.equal(goldSpirometry({ fev1Pct: 45, fev1L: 1.5, fvcL: 3 }).grade, 3, 'volumes alone answer');
+});
