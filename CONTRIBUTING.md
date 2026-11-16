@@ -291,6 +291,18 @@ the total cholesterol; `docs/spec-v1737.md`).
 node scripts/probe-adapter-only-bounds.mjs
 ```
 
+Two more ask about values a reader cannot mean. `scripts/probe-negative-as-zero.mjs` enters each worked
+example's value as a negative and lists fields that answer exactly as they answer 0, a silent clamp that
+usually lands in the reassuring band (`docs/spec-v1740.md`); POP-Q points and the aortic Z score are signed by
+definition and stay. `scripts/probe-order-swapped.mjs` swaps two values whose order is fixed (systolic and
+diastolic, total and HDL cholesterol, two dates) and lists tools that still answer (`docs/spec-v1737.md`,
+`docs/spec-v1738.md`); most date swaps are honest different situations, so read each row.
+
+```bash
+node scripts/probe-negative-as-zero.mjs
+node scripts/probe-order-swapped.mjs
+```
+
 **If you add a phrase to `test/lib/asking-language.js`, measure it first.** That
 file's own rules say to check which tools it stops flagging before adding one, and
 the sweeps that clear ONE field now match it against what the reading ADDED rather
