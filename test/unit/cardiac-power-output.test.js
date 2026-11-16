@@ -28,10 +28,12 @@ test('CPO scales linearly with MAP and CO', () => {
   assert.equal(dbl.cpo, 1.77);
 });
 
-test('negative inputs clamp to a non-negative result', () => {
+// spec-v1731: a MAP of -80 used to clamp to 0 and read as below the
+// cardiogenic-shock threshold -- a shock reading from an impossible input.
+test('an impossible MAP is refused, not clamped into a shock reading', () => {
   const r = cardiacPowerOutput({ map: -80, co: 5 });
-  assert.equal(r.cpo, 0);
-  assert.equal(r.belowThreshold, true);
+  assert.equal(r.valid, false);
+  assert.match(r.band, /mean arterial pressure in mmHg must be between 5 and 300/);
 });
 
 test('a blank input renders the complete-the-fields fallback', () => {

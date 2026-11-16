@@ -42,10 +42,12 @@ test('moderate band (ESR)', () => {
   assert.equal(r.activity, 'moderate');
 });
 
-test('joint counts clamp to the 28-joint range', () => {
-  const a = das28({ tjc28: 40, sjc28: 40, form: 'esr', esr: 30, globalHealth: 50 });
-  const b = das28({ tjc28: 28, sjc28: 28, form: 'esr', esr: 30, globalHealth: 50 });
-  assert.equal(a.score, b.score);
+// spec-v1731: a count above 28 used to be clamped to 28 and scored; it is refused now.
+test('a joint count above the 28 joints counted is refused, not clamped', () => {
+  const a = das28({ tjc28: 40, sjc28: 4, form: 'esr', esr: 30, globalHealth: 50 });
+  assert.equal(a.valid, false);
+  assert.match(a.band, /tender joint count must be between 0 and 28/);
+  assert.notEqual(das28({ tjc28: 28, sjc28: 28, form: 'esr', esr: 30, globalHealth: 50 }).valid, false);
 });
 
 test('ESR form guards the logarithm domain (ESR must be > 0)', () => {

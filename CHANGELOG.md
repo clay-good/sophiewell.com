@@ -69,6 +69,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Ten tools answered an impossible value with a confident reading and no warning: DAS28 counted a tender-joint
+  entry of 999,999 as 28, and cardiac power output, BODE, HOMA-IR, CLIF-C ACLF, the hepatic steatosis index,
+  surgical Apgar, mechanical power, the hemodynamic suite and IOM weight gain did the same with a heart rate,
+  BMI, glucose, age or pressure past any recorded extreme. Each now says which value is out of range.
 - The negotiated-price refund check stated "No refund received" when the question had been left blank. It now
   says when the refund was due and to follow up if it has not arrived; an answer of "no" still reads as late.
 - The Clinical Opiate Withdrawal Scale let every item take up to 5, so a sweating score of 5 (the item runs 0 to

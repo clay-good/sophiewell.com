@@ -22,6 +22,11 @@
 // A row is a SUSPECT. Some functions legitimately take no measurement at all, and
 // the reach line below says how many were skipped for that reason.
 //
+// DRIVEN 2026-11-15 (spec-v1731): the 45 functions' tools were given 999999 in
+// every number field. 65 fields answered; 16 now refuse through an existing
+// lib/bounds.js envelope or a definitional bound. The other 49 need envelopes
+// bounds.js does not have yet; docs/spec-v1731.md lists them by quantity.
+//
 // Asserts nothing; prints a report.
 //
 //   node scripts/probe-unguarded-sibling.mjs
