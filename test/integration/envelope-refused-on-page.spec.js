@@ -45,7 +45,9 @@ test('a value past its envelope is refused on the page, with a range and no null
   const byTool = new Map();
   for (const r of rows) {
     if (!byTool.has(r.id)) byTool.set(r.id, []);
-    byTool.get(r.id).push({ dom: r.dom, unit: r.unit, over: String(envelope(r).max * 10) });
+    // spec-v1753: just past the ceiling (1.5x), not ten times it. A tool with its own looser limit refused the
+    // absurd and answered the merely impossible; the agent-side finder drives both, and this is the stricter one.
+    byTool.get(r.id).push({ dom: r.dom, unit: r.unit, over: String(Number((envelope(r).max * 1.5).toPrecision(6))) });
   }
 
   const bad = [];
