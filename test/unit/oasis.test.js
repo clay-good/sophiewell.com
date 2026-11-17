@@ -36,3 +36,13 @@ test('score never exceeds the published maximum of 75', () => {
   assert.ok(r.score <= 75);
   assert.equal(r.score, 75);
 });
+
+// spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
+test('spec-v1753: a respiratory rate past the 80/min envelope is refused', () => {
+  const ex = { preIcuHours: 2, age: 70, gcs: 10, hr: 130, map: 55, rr: 28, temp: 35, urine: 500, mechVent: true };
+  const past = oasis({ ...ex, rr: 120 });
+  assert.equal(past.valid, false);
+  assert.match(past.message, /respiratory rate/);
+  assert.equal(oasis({ ...ex, rr: 80 }).valid, true);
+  assert.equal(oasis(ex).score, 51);
+});

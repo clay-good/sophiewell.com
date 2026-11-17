@@ -83,3 +83,26 @@ test('sii: composite value', () => {
 test('sii: invalid without all three', () => {
   assert.equal(sii({ plt: 300, anc: 6 }).valid, false);
 });
+
+// spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: aec refuses a WBC past the 200 x10^3/uL envelope', () => {
+  const r = aec({ wbc: 300, eosPct: 12 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /white blood cell count/);
+  assert.equal(aec({ wbc: 200, eosPct: 12 }).valid, true);
+  assert.equal(aec({ wbc: 8, eosPct: 12 }).score, 960);
+});
+test('spec-v1753: plr refuses platelets past the 2000 x10^3/uL envelope', () => {
+  const r = plr({ plt: 3000, alc: 1.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /platelet count/);
+  assert.equal(plr({ plt: 2000, alc: 1.5 }).valid, true);
+  assert.equal(plr({ plt: 300, alc: 1.5 }).score, 200);
+});
+test('spec-v1753: sii refuses platelets past the 2000 x10^3/uL envelope', () => {
+  const r = sii({ plt: 3000, anc: 6, alc: 1.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /platelet count/);
+  assert.equal(sii({ plt: 2000, anc: 6, alc: 1.5 }).valid, true);
+  assert.equal(sii({ plt: 300, anc: 6, alc: 1.5 }).score, 1200);
+});

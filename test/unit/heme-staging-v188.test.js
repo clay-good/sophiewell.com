@@ -63,3 +63,25 @@ test('hasford: a differential summing past 100% is refused; exactly 100 answers'
   assert.match(hasfordCml({ ...b, blasts: '60', eosinophils: '30', basophils: '30' }).message, /\(120\) is above the whole differential/);
   assert.equal(hasfordCml({ ...b, blasts: '60', eosinophils: '20', basophils: '20' }).valid, true);
 });
+
+// spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: binetCll refuses platelets past the 2000 x10^9/L envelope', () => {
+  assert.equal(binetCll({ areas: 4, hb: 12, platelets: 3000 }).valid, false);
+  assert.match(binetCll({ areas: 4, hb: 12, platelets: 3000 }).message, /platelet/i);
+  assert.equal(binetCll({ areas: 4, hb: 12, platelets: 2000 }).valid, true);
+  assert.equal(binetCll({ areas: 4, hb: 12, platelets: 150 }).valid, true);
+});
+test('spec-v1753: raiCll refuses platelets past the 2000 x10^9/L envelope', () => {
+  const base = { lymphocytosis: true, lymphadenopathy: true, hb: 14 };
+  assert.equal(raiCll({ ...base, platelets: 3000 }).valid, false);
+  assert.match(raiCll({ ...base, platelets: 3000 }).message, /platelet/i);
+  assert.equal(raiCll({ ...base, platelets: 2000 }).valid, true);
+  assert.equal(raiCll({ ...base, platelets: 250 }).valid, true);
+});
+test('spec-v1753: hasfordCml refuses platelets past the 2000 x10^9/L envelope', () => {
+  const base = { age: 60, spleen: 10, blasts: 5, eosinophils: 5, basophils: 5 };
+  assert.equal(hasfordCml({ ...base, platelets: 3000 }).valid, false);
+  assert.match(hasfordCml({ ...base, platelets: 3000 }).message, /platelet/i);
+  assert.equal(hasfordCml({ ...base, platelets: 2000 }).valid, true);
+  assert.equal(hasfordCml({ ...base, platelets: 400 }).valid, true);
+});

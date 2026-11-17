@@ -69,3 +69,12 @@ test('energy equations refuse a height or weight past lib/bounds.js', async () =
   assert.equal(m.iretonJones({ mode: 'ventilated', age: 55, sex: 'male', weight: 800 }).valid, false);
   assert.equal(m.katchMcArdle({ weight: 800, bodyFat: 20 }).valid, false);
 });
+
+// spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: iretonJones refuses an age past the 130-year envelope', () => {
+  const base = { mode: 'ventilated', weight: 80, sex: 'male' };
+  assert.equal(iretonJones({ ...base, age: 195 }).valid, false);
+  assert.match(iretonJones({ ...base, age: 195 }).message, /age/i);
+  assert.equal(iretonJones({ ...base, age: 130 }).valid, true);
+  assert.equal(iretonJones({ ...base, age: 55 }).valid, true);
+});

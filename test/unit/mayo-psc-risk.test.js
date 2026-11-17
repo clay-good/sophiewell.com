@@ -20,3 +20,13 @@ test('guards: AST must be positive for log', () => {
   const r = mayoPscRisk({age:55,bilirubin:5,albumin:3,ast:0});
   assert.equal(r.valid, false);
 });
+
+// spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
+test('spec-v1753: a bilirubin past the 60 mg/dL envelope is refused', () => {
+  const ex = { age: 55, bilirubin: 5, albumin: 3.0, ast: 120, variceal: true };
+  const past = mayoPscRisk({ ...ex, bilirubin: 90 });
+  assert.equal(past.valid, false);
+  assert.match(past.message, /bilirubin/);
+  assert.equal(mayoPscRisk({ ...ex, bilirubin: 60 }).valid, true);
+  assert.equal(mayoPscRisk(ex).value, 3.82);
+});

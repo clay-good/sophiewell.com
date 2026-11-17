@@ -31,3 +31,12 @@ test('cci no rise: post equals pre -> 0, refractory', () => {
 test('cci rejects impossible input', () => {
   assert.throws(() => cciPlatelet({ prePlt: 10, postPlt: 40, bsaM2: 1.8, doseE11: 0 }), /dose\sE11/);
 });
+
+// spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
+test('spec-v1753: a pre- or post-transfusion platelet count past the 2000 envelope is refused', () => {
+  const ex = { prePlt: 10, postPlt: 40, bsaM2: 1.8, doseE11: 3.0 };
+  assert.throws(() => cciPlatelet({ ...ex, postPlt: 3000 }), /platelet count/);
+  assert.throws(() => cciPlatelet({ ...ex, prePlt: 3000 }), /platelet count/);
+  assert.equal(typeof cciPlatelet({ ...ex, postPlt: 2000 }).cci, 'number');
+  assert.equal(cciPlatelet(ex).cci, 18000);
+});

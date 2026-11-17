@@ -36,3 +36,12 @@ test('car: CRP / albumin', () => {
 test('car: invalid without both', () => {
   assert.equal(car({ crp: 20 }).valid, false);
 });
+
+// spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: piv refuses platelets past the 2000 x10^3/uL envelope', () => {
+  const base = { anc: 4.0, amc: 0.5, alc: 2.0 };
+  assert.equal(piv({ ...base, plt: 3000 }).valid, false);
+  assert.match(piv({ ...base, plt: 3000 }).message, /platelet/i);
+  assert.equal(piv({ ...base, plt: 2000 }).valid, true);
+  assert.equal(piv({ ...base, plt: 250 }).valid, true);
+});

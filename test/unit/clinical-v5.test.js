@@ -477,3 +477,10 @@ test('kdigoAki: a urine output nobody measured is not a sub-stage of 0', () => {
   assert.equal(V5.kdigoAki({ baselineCr: 1, currentCr: 1, uoMlPerKgPerHour: 0.4, uoDurationHours: 14 }).stage, 2);
   assert.equal(V5.kdigoAki({ baselineCr: 1, currentCr: 1, uoMlPerKgPerHour: 0.2, uoDurationHours: 26 }).stage, 3);
 });
+
+// spec-v1753: an envelope lib/bounds.js already declares; the tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: rFactorLiver refuses an ALT past the 30,000 U/L envelope', () => {
+  assert.throws(() => V5.rFactorLiver({ alt: 45000, altUln: 40, alp: 100, alpUln: 120 }), (e) => e instanceof RangeError && /ALT/.test(e.message));
+  assert.equal(V5.rFactorLiver({ alt: 30000, altUln: 40, alp: 100, alpUln: 120 }).pattern, 'Hepatocellular');
+  assert.deepEqual(V5.rFactorLiver({ alt: 500, altUln: 40, alp: 100, alpUln: 120 }), { rFactor: 15, pattern: 'Hepatocellular' });
+});

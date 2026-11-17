@@ -20,3 +20,15 @@ test('guards: INR required', () => {
   const r = abicScore({age:50,bilirubin:8,creatinine:1});
   assert.equal(r.valid, false);
 });
+
+// spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
+test('spec-v1753: bilirubin and creatinine past their envelopes are refused', () => {
+  const ex = { age: 50, bilirubin: 8, creatinine: 1.0, inr: 1.5 };
+  for (const [k, v, re] of [['bilirubin', 90, /bilirubin/], ['creatinine', 37.5, /creatinine/]]) {
+    const r = abicScore({ ...ex, [k]: v });
+    assert.equal(r.valid, false, k);
+    assert.match(r.message, re);
+  }
+  assert.equal(abicScore({ ...ex, bilirubin: 60, creatinine: 25 }).valid, true);
+  assert.equal(abicScore(ex).value, 7.14);
+});

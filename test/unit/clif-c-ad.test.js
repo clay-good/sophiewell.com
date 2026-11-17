@@ -61,3 +61,15 @@ test('missing INR -> complete-the-fields', () => {
   const r = clifcAd({ age: 60, creatinine: 1.5, wbc: 8, sodium: 132 });
   assert.equal(r.valid, false);
 });
+
+// spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
+test('spec-v1753: creatinine, INR and WBC past their envelopes are refused', () => {
+  const ex = { age: 65, creatinine: 2.0, inr: 1.6, wbc: 12, sodium: 128 };
+  for (const [k, v, re] of [['creatinine', 37.5, /creatinine/], ['inr', 30, /INR/], ['wbc', 300, /white blood cell/]]) {
+    const r = clifcAd({ ...ex, [k]: v });
+    assert.equal(r.valid, false, k);
+    assert.match(r.message, re);
+  }
+  assert.equal(clifcAd({ ...ex, creatinine: 25, inr: 20, wbc: 200 }).valid, true);
+  assert.equal(clifcAd(ex).score, 70);
+});

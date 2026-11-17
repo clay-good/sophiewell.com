@@ -34,3 +34,13 @@ test('halp: out-of-range inputs are rejected', () => {
   assert.equal(halp({ hgb: -1, albumin: 40, alc: 2.0, plt: 250 }).valid, false);
   assert.equal(halp({ hgb: 140, albumin: 40, alc: 2.0, plt: 0 }).valid, false);
 });
+
+// spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
+test('spec-v1753: halp refuses a platelet count past the 2000 envelope', () => {
+  const ex = { hgb: 140, albumin: 40, alc: 2.0, plt: 250 };
+  const past = halp({ ...ex, plt: 3000 });
+  assert.equal(past.valid, false);
+  assert.match(past.message, /platelet count/);
+  assert.equal(halp({ ...ex, plt: 2000 }).valid, true);
+  assert.equal(halp(ex).score, 44.8);
+});

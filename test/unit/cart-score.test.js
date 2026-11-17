@@ -44,3 +44,13 @@ test('incomplete inputs -> complete-the-fields', () => {
   const r = cart({ rr: 27, hr: 145 });
   assert.equal(r.valid, false);
 });
+
+// spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
+test('spec-v1753: a respiratory rate past the 80/min envelope is refused', () => {
+  const ex = { rr: 27, hr: 145, dbp: 38, age: 72 };
+  const past = cart({ ...ex, rr: 120 });
+  assert.equal(past.valid, false);
+  assert.match(past.message, /respiratory rate/);
+  assert.equal(cart({ ...ex, rr: 80 }).valid, true);
+  assert.equal(cart(ex).score, 43);
+});

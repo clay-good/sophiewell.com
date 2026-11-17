@@ -37,3 +37,15 @@ test('sex is asked, not assumed male (spec fix)', () => {
   assert.equal(r.valid, false);
   assert.match(r.message, /sex/i);
 });
+
+// spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: pennStateRee refuses an age past 130 or a Tmax past 45 C', () => {
+  const base = { weight: 70, height: 175, age: 40, sex: 'male', tmax: 38.5, ve: 9 };
+  assert.equal(pennStateRee({ ...base, age: 195 }).valid, false);
+  assert.match(pennStateRee({ ...base, age: 195 }).message, /age/i);
+  assert.equal(pennStateRee({ ...base, tmax: 67.5 }).valid, false);
+  assert.match(pennStateRee({ ...base, tmax: 67.5 }).message, /temperature/i);
+  assert.equal(pennStateRee({ ...base, tmax: 45 }).valid, true);
+  assert.equal(pennStateRee({ ...base, age: 100 }).valid, true);
+  assert.equal(pennStateRee(base).valid, true);
+});

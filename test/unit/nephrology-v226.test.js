@@ -54,3 +54,27 @@ test('corrected-k: rule of thumb', () => {
   assert.equal(r.corrected, 4.2);
 });
 test('corrected-k: invalid pH out of range', () => { assert.equal(correctedPotassiumPh({ potassium: 4, ph: 5 }).valid, false); });
+
+// spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: salazarCorcoran refuses a creatinine past the 25 mg/dL envelope', () => {
+  const base = { age: 50, weight: 120, height: 170, female: false };
+  assert.equal(salazarCorcoran({ ...base, creatinine: 37.5 }).valid, false);
+  assert.match(salazarCorcoran({ ...base, creatinine: 37.5 }).message, /creatinine/i);
+  assert.equal(salazarCorcoran({ ...base, creatinine: 25 }).valid, true);
+  assert.equal(salazarCorcoran({ ...base, creatinine: 1.2 }).valid, true);
+});
+test('spec-v1753: feBicarbonate refuses a plasma bicarbonate past 60 or a plasma creatinine past 25', () => {
+  const base = { urineHco3: 20, plasmaHco3: 24, plasmaCr: 1.0, urineCr: 50 };
+  assert.equal(feBicarbonate({ ...base, plasmaHco3: 90 }).valid, false);
+  assert.match(feBicarbonate({ ...base, plasmaHco3: 90 }).message, /bicarbonate/i);
+  assert.equal(feBicarbonate({ ...base, plasmaCr: 37.5 }).valid, false);
+  assert.match(feBicarbonate({ ...base, plasmaCr: 37.5 }).message, /creatinine/i);
+  assert.equal(feBicarbonate({ ...base, plasmaHco3: 60, plasmaCr: 25 }).valid, true);
+  assert.equal(feBicarbonate(base).valid, true);
+});
+test('spec-v1753: correctedPotassiumPh refuses a potassium past the 10 mmol/L envelope', () => {
+  assert.equal(correctedPotassiumPh({ potassium: 15, ph: 7.2 }).valid, false);
+  assert.match(correctedPotassiumPh({ potassium: 15, ph: 7.2 }).message, /potassium/i);
+  assert.equal(correctedPotassiumPh({ potassium: 10, ph: 7.4 }).valid, true);
+  assert.equal(correctedPotassiumPh({ potassium: 5.4, ph: 7.2 }).valid, true);
+});

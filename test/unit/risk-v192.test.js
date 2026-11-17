@@ -103,3 +103,12 @@ test('findrisc: an unstated sex gives the range the two waist bands span', () =>
   assert.equal(male.waistDecided, true);
   assert.equal(absent.waistDecided, false);
 });
+
+// spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: adhereHf refuses an entered creatinine past the 25 mg/dL envelope', () => {
+  const base = { bun: 50, sbp: 100 };
+  assert.equal(adhereHf({ ...base, creatinine: 37.5 }).valid, false);
+  assert.match(adhereHf({ ...base, creatinine: 37.5 }).message, /creatinine/i);
+  assert.equal(adhereHf({ ...base, creatinine: 25 }).valid, true);
+  assert.equal(adhereHf({ ...base, creatinine: 3.0 }).valid, true);
+});

@@ -72,3 +72,18 @@ test('gpr: below cutoff', () => {
   assert.equal(r.abnormal, false);
 });
 test('gpr: invalid on zero platelets', () => { assert.equal(ggtPlatelet({ ggt: 100, ggtUln: 50, platelets: 0 }).valid, false); });
+
+// spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: astAltRatio refuses AST or ALT past the 30,000 U/L envelope', () => {
+  assert.match(astAltRatio({ ast: 45000, alt: 30 }).message, /AST/);
+  assert.match(astAltRatio({ ast: 60, alt: 45000 }).message, /ALT/);
+  assert.equal(astAltRatio({ ast: 30000, alt: 30000 }).valid, true);
+  assert.equal(astAltRatio({ ast: 60, alt: 30 }).ratio, 2);
+});
+test('spec-v1753: ggtPlatelet refuses platelets past the 2000 x10^9/L envelope', () => {
+  const r = ggtPlatelet({ ggt: 100, ggtUln: 50, platelets: 3000 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /platelet count/);
+  assert.equal(ggtPlatelet({ ggt: 100, ggtUln: 50, platelets: 2000 }).valid, true);
+  assert.equal(ggtPlatelet({ ggt: 100, ggtUln: 50, platelets: 200 }).gpr, 1);
+});

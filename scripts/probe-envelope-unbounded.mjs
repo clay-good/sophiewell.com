@@ -76,9 +76,16 @@ for (const r of usable) {
   const base = computeCalculator({ id: r.id, inputs: { ...ex } });
   if (base.valid === false) continue;
   const b = envelope(r);
-  const over = b.max * 10;
-  const res = computeCalculator({ id: r.id, inputs: { ...ex, [r.dom]: String(over) } });
-  if (res.valid === false) continue;
+  // spec-v1753: ten times the ceiling alone missed a tool that refused the absurd but answered anything up to it
+  // (fullPIERS refused an SpO2 of 1,000 and scored 150). Just past the ceiling is driven too; the first one that
+  // answers is the row.
+  let over = null;
+  let res = null;
+  for (const v of [Number((b.max * 1.5).toPrecision(6)), b.max * 10]) {
+    const r2 = computeCalculator({ id: r.id, inputs: { ...ex, [r.dom]: String(v) } });
+    if (r2.valid !== false) { over = v; res = r2; break; }
+  }
+  if (!res) continue;
   const o = res.result || {};
   const say = [o.bandLabel, o.band, o.verdict, o.interpretation, o.detail]
     .filter((x) => typeof x === 'string').join(' | ');

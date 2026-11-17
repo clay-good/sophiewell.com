@@ -45,3 +45,10 @@ test('anc grades follow both CTCAE versions (spec-v1641 row 5)', () => {
   assert.deepEqual(g(5, 60), [3000, null, null]);
   assert.doesNotMatch(anc({ wbc: 2, segs: 40, bands: 0 }).grade, /grade 2-3/);
 });
+
+// spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
+test('spec-v1753: a white cell count past the 200 envelope is refused', () => {
+  assert.throws(() => anc({ wbc: 300, segs: 60, bands: 5 }), /white blood cell count/);
+  assert.equal(anc({ wbc: 200, segs: 60, bands: 5 }).anc, 130000);
+  assert.equal(anc({ wbc: 5, segs: 60, bands: 5 }).anc, 3250);
+});

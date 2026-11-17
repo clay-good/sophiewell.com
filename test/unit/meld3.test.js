@@ -59,3 +59,16 @@ test('inputs are validated', () => {
   assert.equal(meld3({ sex: 'female', bilirubin: '2', inr: '1.5', creatinine: '2', sodium: '130' }).field, 'albumin');
   assert.equal(meld3({ sex: 'x', bilirubin: '2', inr: '1.5', creatinine: '2', sodium: '130', albumin: '2.5' }).field, 'sex');
 });
+
+// spec-v1753: an envelope lib/bounds.js already declares; the tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: meld3 refuses bilirubin, INR, or creatinine past their envelopes (the scoring caps stay)', () => {
+  const base = { sex: 'female', bilirubin: '4.0', inr: '2.0', creatinine: '2.0', sodium: '130', albumin: '2.5' };
+  for (const [over, field] of [[{ bilirubin: '90' }, 'bilirubin'], [{ inr: '30' }, 'inr'], [{ creatinine: '37.5' }, 'creatinine']]) {
+    const r = meld3({ ...base, ...over });
+    assert.equal(r.valid, false, field);
+    assert.equal(r.field, field);
+    assert.equal(r.code, 'INVALID_INPUT');
+  }
+  assert.equal(meld3({ ...base, bilirubin: '60', inr: '20', creatinine: '25' }).valid, true);
+  assert.equal(meld3(base).score, 32);
+});

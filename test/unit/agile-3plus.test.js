@@ -49,3 +49,13 @@ test('score always within 0..1', () => {
   const r = agile3plus({ lsm: 75, ast: 500, alt: 20, platelets: 30, diabetes: true, sex: 'male', age: 80 });
   assert.ok(r.score >= 0 && r.score <= 1);
 });
+
+// spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
+test('spec-v1753: a platelet count past the 2000 envelope is refused', () => {
+  const ex = { lsm: 12, ast: 50, alt: 40, platelets: 180, age: 60, sex: 'male', diabetes: true };
+  const past = agile3plus({ ...ex, platelets: 3000 });
+  assert.equal(past.valid, false);
+  assert.match(past.message, /platelet count/);
+  assert.equal(agile3plus({ ...ex, platelets: 2000 }).valid, true);
+  assert.equal(agile3plus(ex).score, 0.868);
+});

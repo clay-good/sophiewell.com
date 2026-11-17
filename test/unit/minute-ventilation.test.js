@@ -35,3 +35,11 @@ test('minuteVentilation: impossible inputs throw (no NaN/Infinity leak)', () => 
   assert.throws(() => C.minuteVentilation({ respiratoryRate: NaN, tidalVolumeMl: 450 }), TypeError);
   assert.throws(() => C.minuteVentilation({ respiratoryRate: 16, tidalVolumeMl: -1 }), RangeError);
 });
+
+// spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: minuteVentilation refuses a current PaCO2 past the 200 mmHg envelope', () => {
+  const base = { respiratoryRate: 16, tidalVolumeMl: 450, targetPaco2: 40 };
+  assert.throws(() => C.minuteVentilation({ ...base, currentPaco2: 300 }), /PaCO2/);
+  assert.equal(C.minuteVentilation({ ...base, currentPaco2: 200 }).requiredRate, 80);
+  assert.equal(C.minuteVentilation({ ...base, currentPaco2: 60 }).requiredRate, 24);
+});

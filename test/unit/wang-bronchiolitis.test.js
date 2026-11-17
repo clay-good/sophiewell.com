@@ -56,3 +56,14 @@ test('inputs are validated', () => {
   assert.equal(wangBronchiolitis({ respiratoryRate: '40', wheezing: '0', retraction: '0' }).field, 'generalCondition');
   assert.equal(wangBronchiolitis({ respiratoryRate: '40', wheezing: '5', retraction: '0', generalCondition: '0' }).field, 'wheezing');
 });
+
+// spec-v1753: an envelope lib/bounds.js already declares; the tool refused ten times the ceiling but answered just past it.
+test('spec-v1753: wangBronchiolitis refuses a respiratory rate past the 80/min envelope', () => {
+  const base = { respiratoryRate: '50', wheezing: '2', retraction: '1', generalCondition: '3' };
+  const r = wangBronchiolitis({ ...base, respiratoryRate: '120' });
+  assert.equal(r.valid, false);
+  assert.equal(r.field, 'respiratoryRate');
+  assert.match(r.message, /respiratory rate/);
+  assert.equal(wangBronchiolitis({ ...base, respiratoryRate: '80' }).valid, true);
+  assert.equal(wangBronchiolitis(base).score, 8);
+});
