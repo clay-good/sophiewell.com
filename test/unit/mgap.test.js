@@ -52,3 +52,12 @@ test('mgap: a blank systolic is a gap, and a decided band still stands', () => {
   // A typed 0 is an answer.
   assert.equal(mgap({ mechanismBlunt: true, gcs: 15, ageLt60: true, sbp: 0 }).sbpStated, true);
 });
+
+test('spec-v1754: mgap refuses a fractional GCS; 3, 15 and the worked example answer', () => {
+  const ex = { mechanismBlunt: true, gcs: 15, ageLt60: true, sbp: 130 };
+  for (const gcs of [12.5, '12.5']) {
+    assert.throws(() => mgap({ ...ex, gcs }), (e) => e instanceof RangeError && /whole number/.test(e.message));
+  }
+  for (const gcs of [3, 15]) assert.notEqual(mgap({ ...ex, gcs }).score, null);
+  assert.notEqual(mgap(ex).score, null);
+});

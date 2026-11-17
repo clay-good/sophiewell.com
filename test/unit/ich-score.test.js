@@ -51,3 +51,12 @@ test('ich-score rejects bad inputs', () => {
   assert.throws(() => ichScore({ gcs: 15, age: -1, ichVolumeMl: 10 }));
   assert.throws(() => ichScore({ gcs: 15, age: 50, ichVolumeMl: -1 }));
 });
+
+test('spec-v1754: ich-score refuses a fractional GCS; 3, 15 and the worked example answer', () => {
+  const ex = { gcs: 15, age: 70, ichVolumeMl: 10 };
+  for (const gcs of [12.5, '12.5']) {
+    assert.throws(() => ichScore({ ...ex, gcs }), (e) => e instanceof RangeError && /whole number/.test(e.message));
+  }
+  for (const gcs of [3, 15]) assert.notEqual(ichScore({ ...ex, gcs }).score, null);
+  assert.notEqual(ichScore(ex).score, null);
+});

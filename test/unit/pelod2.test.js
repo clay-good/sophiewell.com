@@ -32,3 +32,19 @@ test('WBC of exactly 2 scores 2 (0 points only above 2)', () => {
   assert.equal(wbc(2), 2);
   assert.equal(wbc(2.1), 0);
 });
+
+// spec-v1754: the Glasgow Coma Scale total takes whole steps 3 to 15. A GCS of
+// 12.5 was scored from wherever it fell between the cutoffs; it is refused now.
+test('spec-v1754: a fractional GCS is refused; GCS 3, 15 and the worked example answer', () => {
+  const EX_V1754 = { ageMonths: 24, gcs: 12, lactate: 6, map: 50, creatinine: 60, pao2fio2: 300, paco2: 40, invasiveVent: true, wbc: 5, platelets: 100 };
+  const said = (gcs) => {
+    try {
+      const r = pelod2({ ...EX_V1754, gcs });
+      return r && r.valid === false ? `refused: ${r.message || r.band}` : 'answered';
+    } catch (e) { return `refused: ${e.message}`; }
+  };
+  assert.match(said(12.5), /^refused: .*Glasgow Coma Scale must be a whole number/);
+  assert.equal(said(3), 'answered');
+  assert.equal(said(15), 'answered');
+  assert.equal(said(EX_V1754.gcs), 'answered');
+});

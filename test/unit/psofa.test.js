@@ -32,3 +32,19 @@ test('over 216 months uses the adult row: MAP 70, creatinine 1.2 / 2.0 / 3.5 / 5
   assert.equal(r.parts.find((p) => p[0] === 'Renal')[1], 0);
   assert.equal(psofa({ ...base, ageMonths: 216, map: 68 }).parts.find((p) => p[0] === 'Cardiovascular')[1], 0);
 });
+
+// spec-v1754: the Glasgow Coma Scale total takes whole steps 3 to 15. A GCS of
+// 12.5 was scored from wherever it fell between the cutoffs; it is refused now.
+test('spec-v1754: a fractional GCS is refused; GCS 3, 15 and the worked example answer', () => {
+  const EX_V1754 = { ageMonths: 24, pao2fio2: 250, vent: true, platelets: 120, bilirubin: 1.5, map: 50, gcs: 13, creatinine: 0.7 };
+  const said = (gcs) => {
+    try {
+      const r = psofa({ ...EX_V1754, gcs });
+      return r && r.valid === false ? `refused: ${r.message || r.band}` : 'answered';
+    } catch (e) { return `refused: ${e.message}`; }
+  };
+  assert.match(said(12.5), /^refused: .*Glasgow Coma Scale must be a whole number/);
+  assert.equal(said(3), 'answered');
+  assert.equal(said(15), 'answered');
+  assert.equal(said(EX_V1754.gcs), 'answered');
+});

@@ -46,3 +46,19 @@ test('spec-v1753: a respiratory rate past the 80/min envelope is refused', () =>
   assert.equal(oasis({ ...ex, rr: 80 }).valid, true);
   assert.equal(oasis(ex).score, 51);
 });
+
+// spec-v1754: the Glasgow Coma Scale total takes whole steps 3 to 15. A GCS of
+// 12.5 was scored from wherever it fell between the cutoffs; it is refused now.
+test('spec-v1754: a fractional GCS is refused; GCS 3, 15 and the worked example answer', () => {
+  const EX_V1754 = { preIcuHours: 2, age: 70, gcs: 10, hr: 130, map: 55, rr: 28, temp: 35, urine: 500, mechVent: true };
+  const said = (gcs) => {
+    try {
+      const r = oasis({ ...EX_V1754, gcs });
+      return r && r.valid === false ? `refused: ${r.message || r.band}` : 'answered';
+    } catch (e) { return `refused: ${e.message}`; }
+  };
+  assert.match(said(12.5), /^refused: .*Glasgow Coma Scale must be a whole number/);
+  assert.equal(said(3), 'answered');
+  assert.equal(said(15), 'answered');
+  assert.equal(said(EX_V1754.gcs), 'answered');
+});

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5242dff7a334bdfd`
-Generated: 2026-11-17T00:45:03.625Z
+Build ID: `ae67d588d4f8ab57`
+Generated: 2026-11-17T01:07:11.106Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -343,7 +343,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/crag-screen-fluconazole-v1554.js` | 6675 | `b30c919b474b919d18bff96dd7d3d57a9caa2cedaf9a11ced9133d7d4243632a` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
 | `lib/crcl-label-weight-v1632.js` | 4836 | `d2f6f83bfcd0df851db123bcbe459c165d3b5c9b1a6579a4d1cce30e5b065f50` |
-| `lib/critcare-severity-v200.js` | 19278 | `93f38f0ce2c4e99c12f8755219931d9625e2b380722a740692ad5aa8ca7bb966` |
+| `lib/critcare-severity-v200.js` | 19742 | `7b81f5ece9dac0cf22cf7dc5ec8a8ae634e31e2e577cb03ff7d5999927dcd379` |
 | `lib/critcare-v112.js` | 17993 | `6d449e6adb2377b5d69623a48581813f50c7956243b008a27a1b509872265d0d` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
 | `lib/crrt-drug-clearance-v1631.js` | 6401 | `41116ffb472cd43980f00a9ff7cb25c4f82e58e597ce522fc78a02b4ed1a72bf` |
@@ -696,7 +696,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ich-m12.js` | 2953 | `5a7cc22e75460b4072e35f80f5df7a36b44a122129eb5cb08d6bc556f38e2f4b` |
 | `lib/icrs-v338.js` | 4467 | `5e29e3d578cccf7cab83c738db4091fe8c9bb8c0c766b3e34e0ec6022499524b` |
 | `lib/id-v137.js` | 24150 | `dfc8ef1e8c4781f10a91daf0f664b84d830cff57c69c0ee09f5eec415c862ea3` |
-| `lib/idcrit-v99.js` | 22833 | `db52cf6cb7dd693284476773e3d9fae0a506c0ea74e0cfae141c6f704b51a165` |
+| `lib/idcrit-v99.js` | 23071 | `482612e014b7ae1fc71ee75bca5acbb47fa3830fcb069092bf45027dec7608fa` |
 | `lib/ideberg-glenoid-v409.js` | 4070 | `b7cde0877f7d560cb68fc68b7e39b1f8867024c9bccdb1a3fedd89300faff0a9` |
 | `lib/ids-accountability-reconcile-v1635.js` | 7926 | `9a6c2aac334b8da4ff403b7ee1b5b3d011b3646cc4b182bfa2edc7b352b045db` |
 | `lib/igcccg-v567.js` | 15893 | `8dadafa8d9af56181d9a992d407678b35b319d4adced3f6a4e1c757b0b45436e` |
@@ -1317,7 +1317,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/residual-carrier-risk-v1660.js` | 5711 | `49ecc13b1c299b0fbbfcd92d2dc4c877ac209b91021935ec41e6424a7e1f272b` |
 | `lib/respiratory-maternal-v263.js` | 11737 | `3bdaec61254f30a6dd896797a997700e082d92ddd86672d5de184c5c8eeff0ee` |
 | `lib/result-copy.js` | 4997 | `c53291c0bf8124b247e72c4a641531325fa8c4fa73ca552883b78e87d1259896` |
-| `lib/resus-trauma-v207.js` | 11427 | `e6e39f093ea3c820b14139fe468838be67915f6d4a1d8ea15cd0395ea5655708` |
+| `lib/resus-trauma-v207.js` | 11558 | `bfb9bc7b6956525922ec4aa027cfabe573faecb9bf66614f245ee796794d5497` |
 | `lib/rheum-classification-v222.js` | 13915 | `95c66ddc0349e0fd38cde0662c0862de9c06e7e0534e4a21bab1108257f5a09b` |
 | `lib/rheum-fn-v280.js` | 8137 | `27469e9bd77ea9899b3446127f132ca1661759f0e860ecd88bc7c2c5a6349534` |
 | `lib/rheum-ob-v156.js` | 17427 | `00478a61066705ade80bb2d28b90acd3368634aa6bd4ef041210c4beb4b63e1a` |
@@ -1377,9 +1377,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schumock-thornton-preventability-v1634.js` | 4099 | `89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 341373 | `53731e53df89d05f6556cd4c5f268f1a45cff16c50563ba184a5da525360427c` |
-| `lib/scoring-v5.js` | 14272 | `23a5019c7d081d634d4d3c42593fe124cea6bb961b3070455765466c1a573395` |
-| `lib/scoring-v6.js` | 29620 | `ffbcb86b0bf2cec27c385ed41da4036dd30102fae83a186c506ef6b1900a2621` |
+| `lib/scoring-v4.js` | 342954 | `90d1ee2251d070cd51b06b1e8a4a2bfc4543902b0e2ae1b935a214b860988140` |
+| `lib/scoring-v5.js` | 14500 | `8a08d26909a622561be0ec2858606b1c6e6e7cb99f220531c68f47f5072be328` |
+| `lib/scoring-v6.js` | 30268 | `706d995161a6f08bd60518f570132f5f594a5fb410b04d3386f89d698d8719d2` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
 | `lib/screener.js` | 7165 | `57d6e8732933cab53c5a10e4cf2c9ea282c186c4e6562827e1b5e97dd8194007` |
@@ -1477,7 +1477,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/taper-calendar-v1633.js` | 21009 | `2fc4348bba78d53945db69b548a272645d01a5b1655206a7e0f7b202f3791599` |
 | `lib/tb-4-month-eligibility-v1553.js` | 8780 | `4a311c4e6756e06d5b3792bb5a45f5d041666f5934a2abb56d69c9e9831b8b1b` |
 | `lib/tb-testing.js` | 1776 | `e9e3e3b34e3f4416e9572f37eae05118db6dd2f1bcf30bae56ba0e3faa24c152` |
-| `lib/tbi-stroke-v206.js` | 14126 | `d4d323dec158311d32c19d5aa0a0f365ff186e91c9d9ac8a7d8f9153324dbac5` |
+| `lib/tbi-stroke-v206.js` | 14253 | `f9db0e69fbe7967b13a4ce12a2783d99c53310ef109eeed40fec11be83a94d9c` |
 | `lib/td-pregnancy-schedule-v1559.js` | 5158 | `24843d7c79e9109be56ee23f108064dded94f8ee0241f330d623dfc499e95f8b` |
 | `lib/tegner-activity-v500.js` | 4131 | `db8258facb99a0cde768edff7c6b13fa9a513d97da08812e804f5a7398e6e8d3` |
 | `lib/tension-headache-ichd3-v818.js` | 10604 | `13263ddc177195e2f75a8536d08bcfd7eff0dbe5e85f853a9dbb4605071d448d` |

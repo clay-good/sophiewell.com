@@ -56,3 +56,19 @@ test('spec-v1753: creatinine, WBC, platelets and bilirubin past their envelopes 
   assert.equal(lods({ ...ex, creatinine: 25, wbc: 200, platelets: 2000, bilirubin: 60 }).valid, true);
   assert.equal(lods(ex).score, 4);
 });
+
+// spec-v1754: the Glasgow Coma Scale total takes whole steps 3 to 15. A GCS of
+// 12.5 was scored from wherever it fell between the cutoffs; it is refused now.
+test('spec-v1754: a fractional GCS is refused; GCS 3, 15 and the worked example answer', () => {
+  const EX_V1754 = { gcs: 13, hr: 80, sbp: 120, bun: 30, creatinine: 1, urineL: 1.5, wbc: 8, platelets: 200, bilirubin: 1 };
+  const said = (gcs) => {
+    try {
+      const r = lods({ ...EX_V1754, gcs });
+      return r && r.valid === false ? `refused: ${r.message || r.band}` : 'answered';
+    } catch (e) { return `refused: ${e.message}`; }
+  };
+  assert.match(said(12.5), /^refused: .*Glasgow Coma Scale must be a whole number/);
+  assert.equal(said(3), 'answered');
+  assert.equal(said(15), 'answered');
+  assert.equal(said(EX_V1754.gcs), 'answered');
+});

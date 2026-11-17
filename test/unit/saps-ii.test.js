@@ -117,3 +117,19 @@ test('spec-v1740: a negative urine output is refused, not scored as anuria', () 
   assert.match(sapsII(ex).band, /urine output must be at least 0/);
   assert.equal(sapsII({ ...ex, urineOutput: 0 }).valid, true);
 });
+
+// spec-v1754: the Glasgow Coma Scale total takes whole steps 3 to 15. A GCS of
+// 12.5 was scored from wherever it fell between the cutoffs; it is refused now.
+test('spec-v1754: a fractional GCS is refused; GCS 3, 15 and the worked example answer', () => {
+  const EX_V1754 = { age: 70, heartRate: 130, sbp: 90, temperature: 38, ventilated: true, paO2: 80, fio2: 0.5, urineOutput: 0.4, bun: 60, sodium: 140, potassium: 4, bicarbonate: 18, bilirubin: 2, wbc: 15, gcs: 12, chronicDisease: 'none', admissionType: 'medical' };
+  const said = (gcs) => {
+    try {
+      const r = sapsII({ ...EX_V1754, gcs });
+      return r && r.valid === false ? `refused: ${r.message || r.band}` : 'answered';
+    } catch (e) { return `refused: ${e.message}`; }
+  };
+  assert.match(said(12.5), /^refused: .*Glasgow Coma Scale must be a whole number/);
+  assert.equal(said(3), 'answered');
+  assert.equal(said(15), 'answered');
+  assert.equal(said(EX_V1754.gcs), 'answered');
+});

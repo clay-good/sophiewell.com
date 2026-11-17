@@ -38,3 +38,19 @@ test('GCS contributes 15 - GCS; age and chronic points add', () => {
 test('out-of-range pH throws', () => {
   assert.throws(() => apache2({ ...base, ph: 5 }));
 });
+
+// spec-v1754: the Glasgow Coma Scale total takes whole steps 3 to 15. A GCS of
+// 12.5 was scored from wherever it fell between the cutoffs; it is refused now.
+test('spec-v1754: a fractional GCS is refused; GCS 3, 15 and the worked example answer', () => {
+  const EX_V1754 = { temp: 39, map: 60, hr: 120, rr: 30, oxy: 65, ph: 7.3, na: 150, k: 5.6, creatinine: 2, hct: 48, wbc: 18, gcs: 13, age: 60 };
+  const said = (gcs) => {
+    try {
+      const r = apache2({ ...EX_V1754, gcs });
+      return r && r.valid === false ? `refused: ${r.message || r.band}` : 'answered';
+    } catch (e) { return `refused: ${e.message}`; }
+  };
+  assert.match(said(12.5), /^refused: .*Glasgow Coma Scale must be a whole number/);
+  assert.equal(said(3), 'answered');
+  assert.equal(said(15), 'answered');
+  assert.equal(said(EX_V1754.gcs), 'answered');
+});

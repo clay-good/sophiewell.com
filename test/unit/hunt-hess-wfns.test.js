@@ -46,3 +46,12 @@ test('GCS 15 with a focal motor deficit is not graded, not grade 1', () => {
   assert.match(r.text, /WFNS not graded/);
   assert.equal(huntHessWfns({ huntHess: 1, gcs: 15, focalMotorDeficit: false }).wfnsNote, null);
 });
+
+test('spec-v1754: hunt-hess-wfns refuses a fractional GCS; 3, 15 and the worked example answer', () => {
+  const ex = { huntHess: 3, gcs: 14 };
+  for (const gcs of [12.5, '12.5']) {
+    assert.throws(() => huntHessWfns({ ...ex, gcs }), (e) => e instanceof RangeError && /whole number/.test(e.message));
+  }
+  for (const gcs of [3, 15]) assert.notEqual(huntHessWfns({ ...ex, gcs }).wfns, null);
+  assert.notEqual(huntHessWfns(ex).wfns, null);
+});

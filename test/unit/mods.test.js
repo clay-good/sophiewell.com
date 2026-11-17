@@ -72,3 +72,15 @@ test('mods: a negative P/F ratio is refused, not scored as a P/F of 0 (spec-v174
   assert.equal(mods({ ...ex, pfRatio: 0 }).parts.respiratory, 4);
   assert.equal(mods({ ...ex, pfRatio: 350 }).parts.respiratory, 0);
 });
+
+test('spec-v1754: mods refuses a fractional GCS; 3, 15 and the worked example answer', () => {
+  const ex = { pfRatio: 350, creatinineMgDl: 1, bilirubinMgDl: 1, par: 8, plateletsK: 200, gcs: 15 };
+  for (const gcs of [12.5, '12.5']) {
+    const r = mods({ ...ex, gcs });
+    assert.equal(r.valid, false);
+    assert.equal(r.score, null);
+    assert.match(r.band, /Glasgow Coma Scale must be a whole number/);
+  }
+  for (const gcs of [3, 15]) assert.notEqual(mods({ ...ex, gcs }).score, null);
+  assert.notEqual(mods(ex).score, null);
+});

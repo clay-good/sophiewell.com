@@ -48,3 +48,15 @@ test('hacor refuses when FiO2 <= 0 (P/F undefined), not a magic ratio', () => {
   assert.equal(r.score, null);
   assert.equal(r.pfRatio, null);
 });
+
+test('spec-v1754: hacor refuses a fractional GCS; 3, 15 and the worked example answer', () => {
+  const ex = { hr: 110, ph: 7.4, gcs: 15, pao2: 120, fio2: 0.5, rr: 25 };
+  for (const gcs of [12.5, '12.5']) {
+    const r = hacor({ ...ex, gcs });
+    assert.equal(r.valid, false);
+    assert.equal(r.score, null);
+    assert.match(r.band, /Glasgow Coma Scale must be a whole number/);
+  }
+  for (const gcs of [3, 15]) assert.notEqual(hacor({ ...ex, gcs }).score, null);
+  assert.notEqual(hacor(ex).score, null);
+});

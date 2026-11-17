@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Sixteen scores took a Glasgow Coma Scale of 12.5 and scored it between their cutoffs; the scale has no value
+  between its whole steps, so they now ask for a whole number from 3 to 15.
 - Forty-one scores refused a lab value ten times past anything measured but answered one just past it: a creatinine
   of 37.5 mg/dL in MELD-Na, platelets of 3,000 in the CLL staging systems, an INR of 30. They now refuse anything
   past the plausible range.

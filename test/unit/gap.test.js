@@ -56,3 +56,12 @@ test('gap: a blank systolic is a gap, and the worst case is labelled as one', ()
   assert.equal(decided.risk, 'high');
   assert.match(decided.band, /every value it could take leaves the band at high/);
 });
+
+test('spec-v1754: gap refuses a fractional GCS; 3, 15 and the worked example answer', () => {
+  const ex = { gcs: 15, ageLt60: true, sbp: 130 };
+  for (const gcs of [12.5, '12.5']) {
+    assert.throws(() => gap({ ...ex, gcs }), (e) => e instanceof RangeError && /whole number/.test(e.message));
+  }
+  for (const gcs of [3, 15]) assert.notEqual(gap({ ...ex, gcs }).score, null);
+  assert.notEqual(gap(ex).score, null);
+});

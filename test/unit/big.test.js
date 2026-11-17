@@ -66,3 +66,12 @@ test('spec-v1747: a base deficit past the sourced envelope is refused, not read 
   assert.throws(() => big({ baseDeficit: -1e6, inr: 1.2, gcs: 15 }), /plausible range for base deficit/);
   assert.ok(Number.isFinite(big({ baseDeficit: 40, inr: 1.2, gcs: 15 }).score));
 });
+
+test('spec-v1754: big refuses a fractional GCS; 3, 15 and the worked example answer', () => {
+  const ex = { baseDeficit: 0, inr: 1, gcs: 15 };
+  for (const gcs of [12.5, '12.5']) {
+    assert.throws(() => big({ ...ex, gcs }), (e) => e instanceof RangeError && /whole number/.test(e.message));
+  }
+  for (const gcs of [3, 15]) assert.notEqual(big({ ...ex, gcs }).score, null);
+  assert.notEqual(big(ex).score, null);
+});
