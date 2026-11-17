@@ -302,6 +302,7 @@ diastolic, total and HDL cholesterol, two dates) and lists tools that still answ
 node scripts/probe-negative-as-zero.mjs
 node scripts/probe-order-swapped.mjs
 node scripts/probe-impossible-dates.mjs   # 30 February, month 13, 1850, 25:00 (docs/spec-v1750.md)
+node scripts/probe-half-step.mjs          # an ordinal item or count scored at x + 0.5 (docs/spec-v1755.md)
 ```
 
 **If you add a phrase to `test/lib/asking-language.js`, measure it first.** That
