@@ -48,3 +48,12 @@ test('rivermead: a count outside 0 to 15, a fraction or a blank is refused, neve
   for (const bad of [16, 999999, -1, 2.5, '', null]) assert.equal(rivermead({ count: bad }).valid, false, JSON.stringify(bad));
   assert.match(rivermead({ count: 16 }).message, /between 0 and 15/);
 });
+
+test('spec-v1755: a half-step QuickDASH item is refused; whole items and the worked example answer', () => {
+  const ex = { i1: 2, i2: 2, i3: 2, i4: 2, i5: 2, i6: 2, i7: 2, i8: 2, i9: 2, i10: 2, i11: 2 };
+  const r = quickDash({ ...ex, i1: 2.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(quickDash({ ...ex, i1: 3 }).valid, true);
+  assert.equal(quickDash(ex).score, 25);
+});

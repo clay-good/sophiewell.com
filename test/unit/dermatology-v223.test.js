@@ -72,3 +72,23 @@ test('glasgow7: minor only below threshold', () => {
   assert.equal(r.score, 2);
   assert.equal(r.abnormal, false);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: hiscr refuses a fractional lesion count; whole counts and the worked example answer', () => {
+  const ex = { baselineAbscess: 2, baselineNodule: 6, baselineFistula: 1, currentAbscess: 1, currentNodule: 2, currentFistula: 1 };
+  const r = hiscr({ ...ex, baselineAbscess: 2.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /baseline abscess count must be a whole number/i);
+  assert.equal(hiscr({ ...ex, currentFistula: 1.5 }).valid, false);
+  assert.equal(hiscr({ ...ex, currentFistula: 2 }).achieved, false);
+  assert.equal(hiscr(ex).achieved, true);
+});
+
+test('spec-v1755: poem refuses a half-step item; whole values and the worked example answer', () => {
+  const ex = { itch: 3, sleep: 2, bleeding: 0, weeping: 0, cracking: 0, flaking: 2, dryness: 4 };
+  const r = poem({ ...ex, itch: 3.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /itch item must be a whole number/i);
+  assert.equal(poem({ ...ex, bleeding: 1 }).score, 12);
+  assert.equal(poem(ex).score, 11);
+});

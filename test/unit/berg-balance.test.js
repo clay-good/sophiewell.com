@@ -54,3 +54,13 @@ test('max 56 lower-risk; blank task -> valid:false', () => {
   assert.equal(bergBalance(partial).valid, false);
   assert.match(bergBalance(partial).message, /Score all 14/);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: berg-balance refuses a half-step task score; whole values and the worked example answer', () => {
+  const ex = Object.fromEntries(Array.from({ length: 14 }, (_, i) => [`q${i + 1}`, 3]));
+  const r = bergBalance({ ...ex, q7: 3.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /task 7 must be a whole number/i);
+  assert.equal(bergBalance({ ...ex, q7: 4 }).score, 43);
+  assert.equal(bergBalance(ex).score, 42);
+});

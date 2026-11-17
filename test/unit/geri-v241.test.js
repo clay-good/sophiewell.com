@@ -42,3 +42,13 @@ test('five-times-sit-to-stand: >= 12 s increased fall risk', () => {
 test('five-times-sit-to-stand: < 12 s below cutoff', () => {
   assert.equal(fiveTimesSitToStand({ time: 9 }).abnormal, false);
 });
+
+// spec-v1755: an SPPB sub-score has no value between its steps; a fraction was rounded.
+test('spec-v1755: sppb refuses a half-step sub-score; whole sub-scores and the worked example answer', () => {
+  const ex = { balance: 3, gait: 3, chair: 2 };
+  assert.equal(sppb(ex).score, 8);
+  const half = sppb({ ...ex, chair: '2.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(sppb({ ...ex, chair: '3' }).score, 9);
+});

@@ -82,3 +82,14 @@ test('spec-v1080: an unrated subscale is asked for, not banded', () => {
   assert.deepEqual(partial.missing, ['friction and shear']);
   assert.match(partial.text, /friction and shear/);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: braden refuses a half-step subscale; whole values and the worked example answer', () => {
+  const ex = { sensory: 2, moisture: 3, activity: 2, mobility: 2, nutrition: 3, friction: 2 };
+  const r = braden({ ...ex, mobility: 2.5 });
+  assert.equal(r.valid, false);
+  assert.equal(r.score, null);
+  assert.match(r.text, /Mobility must be a whole number/);
+  assert.equal(braden({ ...ex, mobility: 3 }).score, 15);
+  assert.equal(braden(ex).score, 14);
+});

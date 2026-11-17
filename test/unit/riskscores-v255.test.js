@@ -41,3 +41,12 @@ test('koivuranta: zero factors', () => {
   assert.equal(r.score, 0);
   assert.match(r.band, /17%/);
 });
+
+test('spec-v1755: VCSS refuses a half-step attribute', () => {
+  const ex = { pain: 2, varicose: 2, edema: 1, pigmentation: 1, inflammation: 1 };
+  assert.equal(vcss(ex).score, 7);
+  const r = vcss({ ...ex, edema: 1.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /edema attribute must be a whole number/i);
+  assert.equal(vcss({ ...ex, edema: 2 }).score, 8);
+});

@@ -49,3 +49,12 @@ test('neck-disability-index: no disability', () => {
   assert.equal(r.score, 4);
   assert.equal(r.abnormal, false);
 });
+
+test('spec-v1755: NDI refuses a half-step section score', () => {
+  const ex = { pain: 2, care: 2, lifting: 2, reading: 2, headaches: 2, concentration: 2, work: 2, driving: 2, sleeping: 2, recreation: 2 };
+  assert.equal(neckDisabilityIndex(ex).score, 40);
+  const r = neckDisabilityIndex({ ...ex, lifting: 2.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /lifting section must be a whole number/i);
+  assert.equal(neckDisabilityIndex({ ...ex, lifting: 3 }).score, 42);
+});

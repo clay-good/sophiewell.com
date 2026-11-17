@@ -58,3 +58,13 @@ test('spec-v1741: a value ten times past its envelope is refused, not scored', (
   assert.match(badAge.band, /age/);
   assert.equal(brockNodule({ ...ex, age: 110 }).valid, true);
 });
+
+// spec-v1755: a nodule count has no value between its steps; a fraction entered the model.
+test('spec-v1755: brockNodule refuses a half nodule; whole counts and the worked example answer', () => {
+  const ex = { age: 70, size: 20, count: 1, type: 'part-solid', female: true, familyHistory: true, emphysema: true, upperlobe: true, spiculation: true };
+  assert.equal(brockNodule(ex).pct, 80.1);
+  const half = brockNodule({ ...ex, count: 1.5 });
+  assert.equal(half.valid, false);
+  assert.match(half.band, /whole number/);
+  assert.equal(brockNodule({ ...ex, count: 2 }).valid, true);
+});

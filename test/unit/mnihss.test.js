@@ -99,3 +99,11 @@ test('mnihss bands are named as the full NIHSS bands, not Meyer 2002', () => {
   assert.match(r.band, /^mNIHSS 12 of 31: moderate stroke on the bands used with the full NIHSS\./);
   assert.match(r.band, /can only understate/);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: mnihss refuses a half-step item; whole values and the worked example answer', () => {
+  const ex = { locQuestions: 1, locCommands: 0, gaze: 1, visualFields: 2, motorArmL: 0, motorArmR: 3, motorLegL: 0, motorLegR: 2, sensory: 1, language: 1, extinction: 1 };
+  assert.throws(() => mnihss({ ...ex, motorArmL: 0.5 }), /Motor arm left must be a whole number/);
+  assert.equal(mnihss({ ...ex, motorArmL: 1 }).total, 13);
+  assert.equal(mnihss(ex).total, 12);
+});

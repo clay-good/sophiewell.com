@@ -38,3 +38,13 @@ test('increment-cpe: low risk', () => {
   assert.equal(r.score, 3);
   assert.equal(r.abnormal, false);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: atlas-cdi refuses a half-step item; whole points and the worked example answer', () => {
+  const ex = { age: 1, antibiotics: 2, leukocyte: 1, albumin: 1, creatinine: 1 };
+  const r = atlasCdi({ ...ex, leukocyte: 1.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /leukocyte points must be a whole number/i);
+  assert.equal(atlasCdi({ ...ex, leukocyte: 2 }).score, 7);
+  assert.equal(atlasCdi(ex).score, 6);
+});

@@ -31,3 +31,12 @@ test('padss clamps out-of-range inputs', () => {
   // 5 -> clamped to 2; -1 -> clamped to 0; rest are valid
   assert.equal(r.score, 2 + 0 + 2 + 2 + 2);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: padss refuses a half-step item; whole values and the worked example answer', () => {
+  const ex = { vitalSigns: 2, ambulation: 2, nauseaVomiting: 2, pain: 2, surgicalBleeding: 2 };
+  assert.throws(() => padss({ ...ex, ambulation: 1.5 }), /whole number/);
+  assert.throws(() => padss({ ...ex, surgicalBleeding: 0.5 }), /whole number/);
+  assert.equal(padss({ ...ex, ambulation: 1 }).score, 9);
+  assert.equal(padss(ex).score, 10);
+});

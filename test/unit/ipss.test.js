@@ -53,3 +53,13 @@ test('partial / blank answers -> valid:false complete-the-fields', () => {
   assert.equal(ipss({ ...all(1), q7: '' }).valid, false);
   assert.match(ipss({ q1: 1 }).message, /Answer all 7/);
 });
+
+test('spec-v1755: a half-step answer is refused; whole answers and the worked example answer', () => {
+  const ex = { q1: 2, q2: 1, q3: 1, q4: 1, q5: 1, q6: 1, q7: 1, qol: 2 };
+  const r = ipss({ ...ex, q1: 2.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(ipss({ ...ex, q7: 1.5 }).valid, false);
+  assert.equal(ipss({ ...ex, q1: 3 }).score, 9);
+  assert.equal(ipss(ex).score, 8);
+});

@@ -163,6 +163,8 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['wh-grade'], () => safe(o, () => {
       const r = M.westHavenHe({ grade: selVal('wh-grade') });
+      // spec-v1755: the library refuses a fractional grade (an agent can send one); show the refusal, not "Grade null".
+      if (r.valid === false) { showInvalid(o, r); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'West Haven', value: `Grade ${r.grade}` },

@@ -31,7 +31,17 @@ test('max 8 -> moderate to severe', () => {
   assert.equal(r.abnormal, true);
 });
 
-test('out-of-range items clamp to 0-2', () => {
-  assert.equal(clinicalDehydrationScale({ appearance: 9, eyes: 9, mucous: 9, tears: 9 }).score, 8);
+test('out-of-range items are refused (spec-v1755; once clamped to 0-2)', () => {
+  assert.match(clinicalDehydrationScale({ appearance: 9, eyes: 9, mucous: 9, tears: 9 }).message, /general appearance must be between 0 and 2/i);
+  assert.equal(clinicalDehydrationScale({ appearance: 2, eyes: 2, mucous: 2, tears: 2 }).score, 8);
   assert.equal(clinicalDehydrationScale({}).score, 0);
+});
+
+test('spec-v1755: a half-step item is refused, not rounded', () => {
+  const ex = { appearance: 1, eyes: 1, mucous: 2, tears: 1 };
+  assert.equal(clinicalDehydrationScale(ex).score, 5);
+  const r = clinicalDehydrationScale({ ...ex, eyes: 1.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /eyes must be a whole number/i);
+  assert.equal(clinicalDehydrationScale({ ...ex, eyes: 2 }).score, 6);
 });

@@ -326,3 +326,13 @@ test('deIndexEgfr: eGFR in mL/min = indexed value x BSA / 1.73 (FDA 2024; spec-v
   assert.equal(small.egfrMlMin, 51);
   assert.throws(() => deIndexEgfr({ egfr: 60, weightKg: 0, heightCm: 170 }));
 });
+
+test('spec-v1755: GCS and NIHSS refuse a half-step item', () => {
+  assert.equal(C.gcs({ eye: 3, verbal: 4, motor: 5 }).total, 12);
+  assert.throws(() => C.gcs({ eye: 3.5, verbal: 4, motor: 5 }), /eye opening must be a whole number/i);
+  assert.equal(C.gcs({ eye: 4, verbal: 4, motor: 5 }).total, 13);
+  const ex = { '1a': 1, '1b': 0, '1c': 0, 2: 0, 3: 0, 4: 1, 5: 2, 6: 0, 7: 0, 8: 0, 9: 1, 10: 0, 11: 0 };
+  assert.equal(C.nihss(ex).total, 5);
+  assert.throws(() => C.nihss({ ...ex, 5: 2.5 }), /whole number/);
+  assert.equal(C.nihss({ ...ex, 5: 3 }).total, 6);
+});

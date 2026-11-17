@@ -66,3 +66,14 @@ test('nutric: a negative APACHE II or SOFA is refused, not read as low risk (spe
   }
   assert.equal(nutric(ex).score, 3);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: nutric refuses a fractional comorbidity count; whole counts and the worked example answer', () => {
+  const ex = { ageYears: 55, apache2: 18, sofa: 6, comorbidities: 1, daysHospitalToIcu: 0, il6Pg: 0 };
+  const r = nutric({ ...ex, comorbidities: 1.5 });
+  assert.equal(r.valid, false);
+  assert.equal(r.score, null);
+  assert.match(r.band, /whole number/);
+  assert.equal(nutric({ ...ex, comorbidities: 2 }).score, 4);
+  assert.equal(nutric(ex).score, 3);
+});

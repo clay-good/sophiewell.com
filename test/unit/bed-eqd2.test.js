@@ -28,3 +28,13 @@ test('guards: any missing / non-positive input falls back', () => {
   assert.equal(bedEqd2({ n: 30, d: 2, ab: 0 }).valid, false);
   assert.equal(bedEqd2({}).valid, false);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: bed-eqd2 refuses a fractional number of fractions; whole counts and the worked example answer', () => {
+  const r = bedEqd2({ n: 30.5, d: 2, ab: 10 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /number of fractions must be a whole number/i);
+  assert.equal(bedEqd2({ n: 30, d: 2.5, ab: 10 }).valid, true);
+  assert.equal(bedEqd2({ n: 25, d: 2, ab: 10 }).bed, 60);
+  assert.equal(bedEqd2({ n: 30, d: 2, ab: 10 }).bed, 72);
+});

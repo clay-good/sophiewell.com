@@ -179,6 +179,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['wil-weight', 'wil-headneck', 'wil-jaw', 'wil-mandible', 'wil-teeth'], () => safe(o, () => {
       const r = M.wilsonAirway({ weight: selVal('wil-weight'), headneck: selVal('wil-headneck'), jaw: selVal('wil-jaw'), mandible: selVal('wil-mandible'), teeth: selVal('wil-teeth') });
+      if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'Wilson Risk Sum', value: `${r.score}/10` },

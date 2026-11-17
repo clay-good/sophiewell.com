@@ -87,3 +87,12 @@ test('spec-v1105: "no envenomation findings scored" needs all six examined', () 
   );
   assert.doesNotMatch(snakebiteSeverity({ pulmonary: 0 }).band, /no envenomation findings scored/);
 });
+
+test('spec-v1755: a half-step subscore is refused, not rounded', () => {
+  const ex = { pulmonary: 3, cardiovascular: 3, local: 4, gi: 2, hematologic: 1, cns: 1 };
+  assert.equal(snakebiteSeverity(ex).total, 14);
+  const r = snakebiteSeverity({ ...ex, hematologic: 1.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /hematologic subscore must be a whole number/i);
+  assert.equal(snakebiteSeverity({ ...ex, hematologic: 2 }).total, 15);
+});

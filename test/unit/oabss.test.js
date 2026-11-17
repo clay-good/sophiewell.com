@@ -58,3 +58,13 @@ test('max 15 severe; blank item -> valid:false', () => {
   assert.equal(oabss({ daytime: 1, nocturia: 1, urgency: 1 }).valid, false);
   assert.match(oabss({ daytime: 1 }).message, /Answer all 4/);
 });
+
+test('spec-v1755: a half-step item is refused; whole items and the worked example answer', () => {
+  const ex = { daytime: 1, nocturia: 2, urgency: 3, incontinence: 2 };
+  const r = oabss({ ...ex, nocturia: 2.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(oabss({ ...ex, urgency: 3.5 }).valid, false);
+  assert.equal(oabss({ ...ex, nocturia: 3 }).score, 9);
+  assert.equal(oabss(ex).score, 8);
+});

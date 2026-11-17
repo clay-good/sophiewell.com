@@ -80,3 +80,11 @@ test('spec-v1748: an impossible urea is refused in the unit it was entered in', 
   assert.match(isaric4cMortality({ ...base, urea: 10000000, ureaUnit: 'bun-mgdl' }).message, /BUN 1 to 300 mg\/dL/);
   assert.equal(isaric4cMortality({ ...base, urea: 40, ureaUnit: 'bun-mgdl' }).valid, true);
 });
+
+test('spec-v1755: a fractional comorbidity count is refused; whole counts and the worked example answer', () => {
+  const r = isaric4cMortality({ ...base, comorbidities: 2.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(isaric4cMortality({ ...base, comorbidities: 3 }).valid, true);
+  assert.equal(isaric4cMortality(base).total, 8);
+});

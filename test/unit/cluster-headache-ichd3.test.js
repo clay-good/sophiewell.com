@@ -88,3 +88,14 @@ test('ichd3 cluster: empty and invalid input', () => {
   assert.equal(clusterHeadacheIchd3({ attackDuration: -5 }).valid, false);
   assert.equal(clusterHeadacheIchd3().valid, true);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: cluster-headache-ichd3 refuses a fractional attack count; whole counts and the worked example answer', () => {
+  const ex = { attackCount: 6, severeUnilateralPain: true, attackDuration: 60, attacksPerDay: 2, miosisPtosis: true, noBetterExplanation: true };
+  const r = clusterHeadacheIchd3({ ...ex, attackCount: 4.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /attack count must be a whole number/i);
+  assert.equal(clusterHeadacheIchd3({ ...ex, attacksPerDay: 0.5 }).criteriaMet, true);
+  assert.equal(clusterHeadacheIchd3({ ...ex, attackCount: 4 }).criteriaMet, false);
+  assert.equal(clusterHeadacheIchd3(ex).criteriaMet, true);
+});

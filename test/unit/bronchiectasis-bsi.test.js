@@ -70,3 +70,13 @@ test('spec-v1741: a value ten times past its envelope is refused, not scored', (
   assert.match(badBmi.band, /body mass index/);
   assert.equal(bronchiectasisBsi({ ...ex, bmi: 80 }).valid, true);
 });
+
+test('spec-v1755: a half-step MRC grade or exacerbation count is refused', () => {
+  const ex = { age: 72, bmi: 17, fev1: 45, exacerbations: 3, mrc: 4, priorAdmission: true, pseudomonas: true };
+  assert.equal(bronchiectasisBsi(ex).total, 20);
+  const r = bronchiectasisBsi({ ...ex, mrc: 4.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /MRC dyspnea score must be a whole number/);
+  assert.equal(bronchiectasisBsi({ ...ex, exacerbations: 2.5 }).valid, false);
+  assert.equal(bronchiectasisBsi({ ...ex, mrc: 5 }).total, 21);
+});

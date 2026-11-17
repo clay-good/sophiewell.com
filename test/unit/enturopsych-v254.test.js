@@ -41,3 +41,12 @@ test('fagerstrom: very low', () => {
   assert.equal(r.score, 1);
   assert.equal(r.abnormal, false);
 });
+
+test('spec-v1755: a half-step RSI item is refused; whole items and the worked example answer', () => {
+  const ex = { hoarseness: 3, clearing: 3, mucus: 3, swallowing: 3, cough1: 3 };
+  const r = refluxSymptomIndex({ ...ex, clearing: 3.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(refluxSymptomIndex({ ...ex, clearing: 4 }).score, 16);
+  assert.equal(refluxSymptomIndex(ex).score, 15);
+});

@@ -20,3 +20,12 @@ test('guards: site required', () => {
   const r = figoGtn({age:30,antecedent:'mole',interval:3,hcg:500,size:2,mets:0,priorChemo:'none'});
   assert.equal(r.valid, false);
 });
+
+test('spec-v1755: a fractional metastasis count is refused; whole counts and the worked example answer', () => {
+  const ex = { age: 45, antecedent: 'term', interval: 14, hcg: 200000, size: 6, site: 'liverbrain', mets: 10, priorChemo: 'single' };
+  const x = figoGtn({ ...ex, mets: 10.5 });
+  assert.equal(x.valid, false);
+  assert.match(x.message, /whole number/);
+  assert.equal(figoGtn({ ...ex, mets: 11 }).valid, true);
+  assert.equal(figoGtn(ex).score, 23);
+});

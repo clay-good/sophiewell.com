@@ -67,3 +67,11 @@ test('a blank group is still asked for, not reported out of range', () => {
   delete partial.hipL;
   assert.match(mrcSumScore(partial).band, /Grade all 12 muscle groups/);
 });
+
+test('spec-v1755: a half-step grade is refused; whole grades and the worked example answer', () => {
+  const r = mrcSumScore({ ...all(4), shoulderL: 4.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /whole number/);
+  assert.equal(mrcSumScore({ ...all(4), shoulderL: 5 }).total, 49);
+  assert.equal(mrcSumScore(all(4)).total, 48);
+});

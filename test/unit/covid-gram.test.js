@@ -58,3 +58,11 @@ test('spec-v1741: an age of 1300 names its range; a blank is still asked for; 12
   assert.match(covidGram({ ...base, age: '' }).message, /^Answer the five/);
   assert.equal(covidGram({ ...base, age: 120 }).valid, true);
 });
+
+test('spec-v1755: a fractional comorbidity count is refused; whole counts and the worked example answer', () => {
+  const r = covidGram({ ...base, comorbidities: 0.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(covidGram({ ...base, comorbidities: 1 }).valid, true);
+  assert.equal(covidGram(base).valid, true);
+});

@@ -23,3 +23,12 @@ test('villalta: >= 15 severe', () => {
   assert.match(villalta({ pain: 3, cramps: 3, heaviness: 3, edema: 3, induration: 3 }).band, /severe/); // 15
 });
 
+
+test('spec-v1755: Villalta refuses a half-step item', () => {
+  const ex = { pain: 2, heaviness: 2, edema: 2, induration: 2, hyperpigmentation: 2, ectasia: 2 };
+  assert.equal(villalta(ex).score, 12);
+  const r = villalta({ ...ex, ectasia: 2.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /ectasia item must be a whole number/i);
+  assert.equal(villalta({ ...ex, ectasia: 3 }).score, 13);
+});

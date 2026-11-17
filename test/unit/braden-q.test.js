@@ -16,3 +16,11 @@ test('all 4 -> 28 lower risk; boundary 16 is at risk', () => {
 test('out-of-range subscale throws', () => {
   assert.throws(() => bradenQ(mk(5)));
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: braden-q refuses a half-step subscale; whole values and the worked example answer', () => {
+  const ex = { mobility: 2, activity: 2, sensory: 2, moisture: 2, friction: 2, nutrition: 2, perfusion: 2 };
+  assert.throws(() => bradenQ({ ...ex, mobility: 2.5 }), /Mobility must be a whole number/);
+  assert.equal(bradenQ({ ...ex, mobility: 3 }).total, 15);
+  assert.equal(bradenQ(ex).total, 14);
+});

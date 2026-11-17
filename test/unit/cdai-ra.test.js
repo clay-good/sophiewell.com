@@ -39,3 +39,15 @@ test('blank input -> complete-the-fields, never a partial total', () => {
   assert.equal(r.valid, false);
   assert.match(r.message, /physician global/);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: cdai-ra refuses a fractional joint count; whole counts and the worked example answer', () => {
+  const ex = { sjc: 6, tjc: 8, pga: 3, ega: 2 };
+  const r = cdaiRa({ ...ex, sjc: 6.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /swollen-joint count must be a whole number/i);
+  assert.equal(cdaiRa({ ...ex, tjc: 8.5 }).valid, false);
+  assert.equal(cdaiRa({ ...ex, pga: 3.5 }).score, 19.5);
+  assert.equal(cdaiRa({ ...ex, sjc: 7 }).score, 20);
+  assert.equal(cdaiRa(ex).score, 19);
+});

@@ -70,3 +70,13 @@ test('spec-v1131: unfavourable rules in from a subset', () => {
   assert.equal(r.floorOnly, false);
   assert.match(r.band, /unfavorable for balloon valvuloplasty/);
 });
+
+// spec-v1755: a Wilkins grade has no value between its steps; a fraction was rounded.
+test('spec-v1755: wilkinsScore refuses a half-grade; whole grades and the worked example answer', () => {
+  const ex = { mobility: 2, thickening: 2, calcification: 2, subvalvular: 2 };
+  assert.equal(wilkinsScore(ex).score, 8);
+  const half = wilkinsScore({ ...ex, mobility: '2.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(wilkinsScore({ ...ex, mobility: '3' }).score, 9);
+});

@@ -77,3 +77,13 @@ test('esspri: mean of three', () => {
   assert.equal(r.abnormal, true);
 });
 test('esspri: invalid without all three', () => { assert.equal(esspri({ dryness: 5 }).valid, false); });
+
+test('spec-v1755: mRSS refuses a half-step skin-thickness grade', () => {
+  const ex = { fingersR: 2, fingersL: 2, face: 1, chest: 3 };
+  assert.equal(mrss(ex).score, 8);
+  const r = mrss({ ...ex, chest: 2.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /chest skin thickness must be a whole number/i);
+  assert.equal(mrss({ ...ex, chest: 2 }).score, 7);
+  assert.equal(mrss({ ...ex, chest: '' }).score, 5);
+});

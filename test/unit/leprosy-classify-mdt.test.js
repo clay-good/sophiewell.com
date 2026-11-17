@@ -30,3 +30,12 @@ test('refusals', () => {
   assert.equal(l({ lesions: '0', nerve: 'no', age: '30' }).valid, false);
   assert.equal(l({ age: '30' }).valid, false);
 });
+
+test('spec-v1755: a fractional lesion count is refused, not floored', () => {
+  const ex = { lesions: 3, nerve: 'no', smear: 'negative', age: 30 };
+  assert.match(l(ex).bandLabel, /^PB/);
+  const r = l({ ...ex, lesions: 5.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /skin lesions must be a whole number/);
+  assert.match(l({ ...ex, lesions: 6 }).bandLabel, /^MB/);
+});

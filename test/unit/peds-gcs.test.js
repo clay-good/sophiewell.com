@@ -50,3 +50,12 @@ test('peds-gcs band names age group', () => {
   const r = pedsGcs({ eye: 4, verbal: 5, motor: 6, ageBand: 'under-2' });
   assert.match(r.band, /under 2 years/);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: peds-gcs refuses a half-step component; whole values and the worked example answer', () => {
+  const ex = { eye: 3, verbal: 4, motor: 5, ageBand: 'older' };
+  assert.throws(() => pedsGcs({ ...ex, eye: 3.5 }), /Eye opening must be a whole number/);
+  assert.throws(() => pedsGcs({ ...ex, motor: 5.5 }), /whole number/);
+  assert.equal(pedsGcs({ ...ex, eye: 4 }).score, 13);
+  assert.equal(pedsGcs(ex).score, 12);
+});

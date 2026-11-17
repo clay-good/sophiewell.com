@@ -55,3 +55,11 @@ test('spec-v1754: a fractional GCS is refused; GCS 3, 15 and the worked example 
   assert.equal(said(15), 'answered');
   assert.equal(said(EX_V1754.gcs), 'answered');
 });
+
+// spec-v1755: an AIS region score has no value between its steps; a fraction was squared into the ISS.
+test('spec-v1755: issRts refuses a half-step AIS; whole AIS and the worked example answer', () => {
+  const ex = { ais1: 4, ais2: 3, ais3: 2, gcs: 14, sbp: 120, rr: 18 };
+  assert.equal(issRts(ex).iss, 29);
+  assert.throws(() => issRts({ ...ex, ais1: 4.5 }), /whole number/);
+  assert.equal(issRts({ ...ex, ais3: 3 }).iss, 34);
+});

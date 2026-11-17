@@ -22,3 +22,11 @@ test('rejects wrong length and out-of-range', () => {
   assert.throws(() => auditFull({ items: [0, 0, 0] }), /array of 10/);
   assert.throws(() => auditFull({ items: [5, 0, 0, 0, 0, 0, 0, 0, 0, 0] }), /item1/);
 });
+
+// spec-v1755: an ordinal item has no value between its steps; a fraction was summed.
+test('spec-v1755: auditFull refuses a half-step item; whole items and the worked example answer', () => {
+  const ex = [4, 4, 2, 0, 0, 0, 0, 0, 0, 0];
+  assert.equal(auditFull({ items: ex }).total, 10);
+  assert.throws(() => auditFull({ items: [4, 4, 2.5, 0, 0, 0, 0, 0, 0, 0] }), /whole number/);
+  assert.equal(auditFull({ items: [4, 4, 3, 0, 0, 0, 0, 0, 0, 0] }).total, 11);
+});

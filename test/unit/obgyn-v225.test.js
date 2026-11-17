@@ -134,3 +134,40 @@ test('pbac: a blank item type still reaches the footing that reports it', () => 
   assert.equal(r.score, 7);
   assert.match(r.footing, /2 of 8 item types/);
 });
+
+// spec-v1755: an ordinal item has no value between its steps; a fraction was scored.
+test('spec-v1755: ferrimanGallwey refuses a half-grade; whole grades and the worked example answer', () => {
+  const ex = { upperLip: 2, chin: 2, chest: 2, upperAbdomen: 0, lowerAbdomen: 0, upperArm: 0, thigh: 2, upperBack: 0, lowerBack: 0 };
+  assert.equal(ferrimanGallwey(ex).score, 8);
+  const half = ferrimanGallwey({ ...ex, upperLip: '2.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(ferrimanGallwey({ ...ex, upperLip: '3' }).score, 9);
+});
+
+test('spec-v1755: thompsonHie refuses a half-grade; whole grades and the worked example answer', () => {
+  const ex = { tone: 2, consciousness: 2, seizures: 0, posture: 2, moro: 0, grasp: 0, suck: 0, respiration: 2, fontanelle: 0 };
+  assert.equal(thompsonHie(ex).score, 8);
+  const half = thompsonHie({ ...ex, tone: '2.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(thompsonHie({ ...ex, tone: '3' }).score, 9);
+});
+
+test('spec-v1755: menopauseRating refuses a half-rating; whole ratings and the worked example answer', () => {
+  const ex = { hotFlushes: 3, heartDiscomfort: 0, sleepProblems: 2, depressive: 2, irritability: 2, anxiety: 0, exhaustion: 0, sexualProblems: 0, bladderProblems: 0, vaginalDryness: 0, jointMuscle: 0 };
+  assert.equal(menopauseRating(ex).score, 9);
+  const half = menopauseRating({ ...ex, sleepProblems: '2.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(menopauseRating({ ...ex, sleepProblems: '3' }).score, 10);
+});
+
+test('spec-v1755: kupperman refuses a half-severity; whole severities and the worked example answer', () => {
+  const ex = { hotFlushes: 3, paresthesia: 0, insomnia: 2, nervousness: 2, melancholia: 0, vertigo: 0, weakness: 0, arthralgia: 0, headache: 0, palpitations: 0, formication: 0 };
+  assert.equal(kupperman(ex).score, 20);
+  const half = kupperman({ ...ex, paresthesia: '0.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(kupperman({ ...ex, paresthesia: '1' }).score, 22);
+});

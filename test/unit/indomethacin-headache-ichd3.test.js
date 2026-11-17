@@ -95,3 +95,11 @@ test('spec-v1076: a blank attack duration does not rule the indomethacin sets ou
   assert.deepEqual(entered.notEntered, [], 'a duration that was entered is not outstanding');
   assert.notEqual(blank.band, entered.band, 'not measured must not read as not met');
 });
+
+test('spec-v1755: a fractional attack count is refused; whole counts and the worked example answer', () => {
+  const x = ind({ ...ph, attackCount: 30.5 });
+  assert.equal(x.valid, false);
+  assert.match(x.message, /whole number/);
+  assert.deepEqual(ind({ ...ph, attackCount: 31 }).diagnoses, ['3.2 Paroxysmal hemicrania']);
+  assert.deepEqual(ind(ph).diagnoses, ['3.2 Paroxysmal hemicrania']);
+});

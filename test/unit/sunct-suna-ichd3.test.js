@@ -82,3 +82,12 @@ test('sunct/suna: empty and out-of-range input', () => {
   assert.equal(ss().valid, true);
   assert.doesNotMatch(JSON.stringify(ss({ attackCount: 1e308 })), /NaN|Infinity/);
 });
+
+test('spec-v1755: a fractional attack count is refused', () => {
+  const ex = { attackCount: 30, moderateOrSevereUnilateral: true, attackSeconds: 60, stabbingPattern: true, attacksPerDay: 5, conjunctivalInjection: true, lacrimation: true, noBetterExplanation: true };
+  assert.equal(ss(ex).criteriaMet, true);
+  const r = ss({ ...ex, attackCount: 19.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /attack count must be a whole number/);
+  assert.equal(ss({ ...ex, attackCount: 20 }).criteriaMet, true);
+});

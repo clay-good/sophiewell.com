@@ -34,3 +34,12 @@ test('aldrete clamps per-domain out-of-range to [0, 2]', () => {
   assert.equal(r.parts.respiration, 0);
   assert.equal(r.score, 8);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: aldrete refuses a half-step item; whole values and the worked example answer', () => {
+  const ex = { activity: 2, respiration: 2, circulation: 2, consciousness: 2, oxygenSaturation: 2 };
+  assert.throws(() => aldrete({ ...ex, activity: 1.5 }), /whole number/);
+  assert.throws(() => aldrete({ ...ex, consciousness: '0.5' }), /whole number/);
+  assert.equal(aldrete({ ...ex, activity: 1 }).score, 9);
+  assert.equal(aldrete(ex).score, 10);
+});

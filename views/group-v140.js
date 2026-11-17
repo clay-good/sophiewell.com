@@ -191,6 +191,7 @@ export const renderers = {
         retSupraclav: selVal('rd-supra'), retIntercostal: selVal('rd-inter'), retSubcostal: selVal('rd-sub'),
         talRr: selVal('rd-trr'), talWheeze: selVal('rd-twhz'), talCyanosis: selVal('rd-tcyan'), talAccessory: selVal('rd-tacc'),
       });
+      if (!r.valid) { showInvalid(o, r); return; }
       const rows = [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'RDAI', value: `${r.rdai}/17` },
@@ -220,6 +221,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['cd-app', 'cd-eyes', 'cd-muc', 'cd-tears'], () => safe(o, () => {
       const r = M.clinicalDehydrationScale({ appearance: selVal('cd-app'), eyes: selVal('cd-eyes'), mucous: selVal('cd-muc'), tears: selVal('cd-tears') });
+      if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'CDS', value: `${r.score}/8` },

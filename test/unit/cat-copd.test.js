@@ -47,3 +47,13 @@ test('out-of-range item is rejected', () => {
   const r = cat({ ...full(2), cough: 6 });
   assert.equal(r.valid, false);
 });
+
+// spec-v1755: a CAT item has no value between its steps; a fraction was summed.
+test('spec-v1755: cat refuses a half-step item; whole items and the worked example answer', () => {
+  const ex = { cough: 4, phlegm: 3, chest: 2, breathless: 4, activity: 3, confidence: 2, sleep: 3, energy: 3 };
+  assert.equal(cat(ex).score, 24);
+  const half = cat({ ...ex, phlegm: '3.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(cat({ ...ex, phlegm: '4' }).score, 25);
+});

@@ -35,3 +35,13 @@ test('randleman-erss: low-risk case', () => {
   assert.equal(r.score, 0);
   assert.equal(r.abnormal, false);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: randleman-erss refuses a half-step topography grade; whole grades and the worked example answer', () => {
+  const ex = { topo: 3, rsb: 250, age: 20, cct: 445, mrse: -15 };
+  const r = randlemanErss({ ...ex, topo: 3.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /topography grade must be a whole number/i);
+  assert.equal(randlemanErss({ ...ex, topo: 4 }).score, 19);
+  assert.equal(randlemanErss(ex).score, 18);
+});

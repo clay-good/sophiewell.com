@@ -122,3 +122,11 @@ test('polyp-surveillance: the documented example', () => {
   assert.equal(r.interval, '3 years');
   assert.match(r.band, /an adenoma of 12 mm/);
 });
+
+test('spec-v1755: a fractional adenoma count is refused; whole counts and the worked example answer', () => {
+  const x = p({ ...exam, histology: 'tubular-adenoma', adenomaCount: '1.5', largestSizeMm: '12' });
+  assert.equal(x.valid, false);
+  assert.match(x.message, /whole number/);
+  assert.equal(p({ ...exam, histology: 'tubular-adenoma', adenomaCount: '2', largestSizeMm: '12' }).interval, '3 years');
+  assert.equal(p({ ...exam, histology: 'tubular-adenoma', adenomaCount: '1', largestSizeMm: '12' }).interval, '3 years');
+});

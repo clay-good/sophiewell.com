@@ -80,3 +80,23 @@ test('the graded siblings refuse a grade off their own scale', () => {
   assert.equal(vancouverScarScale({ pigmentation: 2, vascularity: 3, pliability: 5, height: 3 }).score, 13);
   assert.equal(napsi({ matrix: 4, bed: 4 }).score, 8);
 });
+
+test('spec-v1755: a half-step in a MASI, NAPSI or VSS item is refused; whole values and the worked examples answer', () => {
+  const ex = { fA: 4, fD: 2, fH: 2, rmrA: 3, rmrD: 2, rmrH: 1, lmrA: 3, lmrD: 2, lmrH: 1, mA: 2, mD: 1, mH: 1 };
+  const m = masi({ ...ex, fA: 4.5 });
+  assert.equal(m.valid, false);
+  assert.match(m.message, /whole number/);
+  assert.equal(masi(ex).valid, true);
+  assert.equal(masi({ ...ex, fA: 5 }).valid, true);
+  const n = napsi({ matrix: 3.5, bed: 2 });
+  assert.equal(n.valid, false);
+  assert.match(n.message, /whole number/);
+  assert.equal(napsi({ matrix: 3, bed: 2 }).valid, true);
+  assert.equal(napsi({ matrix: 4, bed: 2 }).score, 6);
+  const v = vancouverScarScale({ pigmentation: 1.5, vascularity: 2, pliability: 3, height: 2 });
+  assert.equal(v.valid, false);
+  assert.match(v.message, /whole number/);
+  assert.equal(vancouverScarScale({ pigmentation: 1, vascularity: 2.5, pliability: 3, height: 2 }).valid, false);
+  assert.equal(vancouverScarScale({ pigmentation: 1, vascularity: 2, pliability: 3, height: 2 }).valid, true);
+  assert.equal(vancouverScarScale({ pigmentation: 2, vascularity: 2, pliability: 3, height: 2 }).score, 9);
+});

@@ -48,3 +48,12 @@ test('blank item -> valid:false complete-the-fields', () => {
   assert.equal(iief5({ q1: 4, q2: 4, q3: 4, q4: 4, q5: '' }).valid, false);
   assert.match(iief5({ q1: 4 }).message, /Answer all 5/);
 });
+
+test('spec-v1755: a half-step answer is refused; whole answers and the worked example answer', () => {
+  const r = iief5({ q1: 4.5, q2: 4, q3: 4, q4: 4, q5: 3 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(iief5({ q1: 4, q2: 4, q3: 4, q4: 4, q5: 3.5 }).valid, false);
+  assert.equal(iief5({ q1: 5, q2: 4, q3: 4, q4: 4, q5: 3 }).score, 20);
+  assert.equal(iief5({ q1: 4, q2: 4, q3: 4, q4: 4, q5: 3 }).score, 19);
+});

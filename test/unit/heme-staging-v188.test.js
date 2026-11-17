@@ -85,3 +85,13 @@ test('spec-v1753: hasfordCml refuses platelets past the 2000 x10^9/L envelope', 
   assert.equal(hasfordCml({ ...base, platelets: 2000 }).valid, true);
   assert.equal(hasfordCml({ ...base, platelets: 400 }).valid, true);
 });
+
+// spec-v1755: a count of involved lymphoid areas has no value between its steps; a fraction was staged.
+test('spec-v1755: binetCll refuses a half area; whole counts and the worked example answer', () => {
+  const ex = { areas: 4, hb: 12, platelets: 150 };
+  assert.equal(binetCll(ex).stage, 'B');
+  const half = binetCll({ ...ex, areas: '2.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(binetCll({ ...ex, areas: '2' }).stage, 'A');
+});

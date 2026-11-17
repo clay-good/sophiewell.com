@@ -46,3 +46,15 @@ test('spec-v1746: an out-of-range entry is told its range, a blank is still aske
     assert.match(dapsa({ ...ex, [k]: '' }).message, /^Enter the /);
   }
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: dapsa refuses a fractional joint count but keeps fractional VAS; the worked example answers', () => {
+  const ex = { tjc68: 5, sjc66: 3, global: 4, pain: 4, crp: 1.2 };
+  const r = dapsa({ ...ex, tjc68: 5.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /tender count must be a whole number/i);
+  assert.equal(dapsa({ ...ex, sjc66: 3.5 }).valid, false);
+  assert.equal(dapsa({ ...ex, global: 4.5 }).score, 17.7);
+  assert.equal(dapsa({ ...ex, sjc66: 4 }).score, 18.2);
+  assert.equal(dapsa(ex).score, 17.2);
+});

@@ -21,3 +21,11 @@ test('rejects out-of-range items', () => {
   assert.throws(() => phq2Gad2({ d1: 4, d2: 0, a1: 0, a2: 0 }), /d1/);
   assert.throws(() => phq2Gad2({ d1: NaN, d2: 0, a1: 0, a2: 0 }), /d1/);
 });
+
+// spec-v1755: a PHQ-2 / GAD-2 item has no value between its steps; a fraction was summed.
+test('spec-v1755: phq2Gad2 refuses a half-step item; whole items and the worked example answer', () => {
+  const ex = { d1: 2, d2: 2, a1: 1, a2: 1 };
+  assert.equal(phq2Gad2(ex).phq2, 4);
+  assert.throws(() => phq2Gad2({ ...ex, d1: 2.5 }), /whole number/);
+  assert.equal(phq2Gad2({ ...ex, a1: 2 }).gad2, 3);
+});

@@ -37,3 +37,13 @@ test('atherogenic-index-of-plasma: low risk', () => {
   assert.ok(r.score < 0.11);
   assert.equal(r.abnormal, false);
 });
+
+// spec-v1755: a frame count has no value between its steps; a fraction was normalized.
+test('spec-v1755: correctedTimiFrameCount refuses a half frame; whole counts and the worked example answer', () => {
+  const ex = { frames: 34, fps: 30, vessel: 'lad' };
+  assert.equal(correctedTimiFrameCount(ex).score, 20);
+  const half = correctedTimiFrameCount({ ...ex, frames: '34.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(correctedTimiFrameCount({ ...ex, frames: '35' }).valid, true);
+});

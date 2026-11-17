@@ -113,3 +113,13 @@ test('spec-v1467: a diagnosis resting on a blank nausea says it was counted as n
   assert.match(r.band, /No nausea severity was entered, so it was counted as none/);
   assert.doesNotMatch(tth({ ...episodic, nausea: 'none', headacheDaysPerMonth: 8 }).band, /was entered/);
 });
+
+// spec-v1755: an episode count has no value between its steps; a fraction was compared with the threshold.
+test('spec-v1755: tensionHeadacheIchd3 refuses a half episode; whole counts and the worked example answer', () => {
+  const ex = { headacheDaysPerMonth: 8, episodeCount: 20, monthsOfPattern: 6, duration: 'hours-to-7-days', bilateral: true, pressing: true, noBetterExplanation: true };
+  assert.deepEqual(tth(ex).diagnoses, ['2.2 Frequent episodic tension-type headache']);
+  const half = tth({ ...ex, episodeCount: '9.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(tth({ ...ex, episodeCount: '10' }).valid, true);
+});

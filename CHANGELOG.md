@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Seventy-four scores took a half step in an item that has none, such as a Braden subscale of 2.5 or 5.5 skin
+  lesions, and scored it between cutoffs; one leprosy count of 5.5 was rounded down into the shorter regimen. They
+  now ask for a whole number.
 - Sixteen scores took a Glasgow Coma Scale of 12.5 and scored it between their cutoffs; the scale has no value
   between its whole steps, so they now ask for a whole number from 3 to 15.
 - Forty-one scores refused a lab value ten times past anything measured but answered one just past it: a creatinine

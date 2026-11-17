@@ -23,8 +23,9 @@ test('Tal omitted when no Tal input is entered', () => {
   assert.ok(!/Tal respiratory score/.test(r.band));
 });
 
-test('sub-scores clamp to their ranges (out-of-range values do not over-count)', () => {
-  const r = rdaiTal({ wheezeExp: 9, wheezeInsp: 9, wheezeLoc: 9, retSupraclav: 9, retIntercostal: 9, retSubcostal: 9 });
+test('out-of-range sub-scores are refused (spec-v1755; once clamped to their ranges)', () => {
+  assert.equal(rdaiTal({ wheezeExp: 9, wheezeInsp: 9, wheezeLoc: 9, retSupraclav: 9, retIntercostal: 9, retSubcostal: 9 }).valid, false);
+  const r = rdaiTal({ wheezeExp: 4, wheezeInsp: 2, wheezeLoc: 2, retSupraclav: 3, retIntercostal: 3, retSubcostal: 3 });
   assert.equal(r.rdai, 17); // 4 + 2 + 2 + 3 + 3 + 3
 });
 
@@ -39,4 +40,15 @@ test('empty input -> RDAI 0, no Tal', () => {
   const r = rdaiTal({});
   assert.equal(r.rdai, 0);
   assert.equal(r.tal, null);
+});
+
+test('spec-v1755: a half-step RDAI or Tal item is refused, not rounded', () => {
+  const ex = { wheezeExp: 3, wheezeInsp: 2, wheezeLoc: 2, retSupraclav: 2, retIntercostal: 2, retSubcostal: 1, talRr: 2, talWheeze: 2, talCyanosis: 1, talAccessory: 2 };
+  const base = rdaiTal(ex);
+  assert.equal(base.rdai, 12); assert.equal(base.tal, 7);
+  const r = rdaiTal({ ...ex, wheezeExp: 3.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /expiratory wheeze must be a whole number/);
+  assert.equal(rdaiTal({ ...ex, talCyanosis: 1.5 }).valid, false);
+  assert.equal(rdaiTal({ ...ex, wheezeExp: 4 }).rdai, 13);
 });

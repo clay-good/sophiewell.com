@@ -120,3 +120,13 @@ test('the scope note refuses the treatment decision and names the successor', ()
   assert.match(r.note, /not a reason to decline treatment or to advise donor oocytes/);
   assert.match(r.note, /POSEIDON classification was proposed/);
 });
+
+// spec-v1755: an antral follicle count has no value between its steps; a fraction was compared.
+test('spec-v1755: bolognaPor refuses a half-step antral follicle count; whole counts and the worked example answer', () => {
+  const ex = { age: 41, otherRiskFactor: 'no', previousPorConventional: 'yes', maximalStimulationPorEpisodes: 0, afc: 12, afcCutoff: 7, amh: 2.5, amhCutoff: 1.1 };
+  assert.equal(bolognaPor(ex).poorResponder, true);
+  const half = bolognaPor({ ...ex, afc: '12.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(bolognaPor({ ...ex, afc: '13' }).valid, true);
+});

@@ -44,3 +44,12 @@ test('pass clamps per-item out-of-range to [0, 2]', () => {
   assert.equal(r.parts.workOfBreathing, 0);
   assert.equal(r.score, 3);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: pass-asthma refuses a half-step item; whole values and the worked example answer', () => {
+  const ex = { wheezing: 2, workOfBreathing: 2, prolongedExpiration: 1 };
+  assert.throws(() => passAsthma({ ...ex, wheezing: 1.5 }), /whole number/);
+  assert.throws(() => passAsthma({ ...ex, workOfBreathing: '0.5' }), /whole number/);
+  assert.equal(passAsthma({ ...ex, wheezing: 1 }).score, 4);
+  assert.equal(passAsthma(ex).score, 5);
+});

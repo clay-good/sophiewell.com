@@ -102,3 +102,13 @@ test('action-icu: mid HR/SBP bands score 1 each', () => {
   const r = actionIcu({ heartRate: 90, sbp: 130 });
   assert.equal(r.score, 2);
 });
+
+test('spec-v1755: CAAP-AF refuses a fractional count of failed drugs', () => {
+  const ex = { laDiameter: 4.2, age: 72, failedAad: 1, cad: true, persistentAf: false, female: true };
+  assert.equal(caapAf(ex).score, 7);
+  const r = caapAf({ ...ex, failedAad: 2.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /failed antiarrhythmic drugs must be a whole number/);
+  assert.equal(caapAf({ ...ex, failedAad: 3 }).score, 8);
+  assert.equal(caapAf({ ...ex, laDiameter: 4.25 }).valid, true);
+});

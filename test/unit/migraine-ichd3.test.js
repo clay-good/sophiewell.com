@@ -127,3 +127,13 @@ test('spec-v1076: a blank attack count does not rule migraine out', () => {
   assert.match(blank.band, /cannot be ruled out|can be ruled out/);
   assert.notEqual(blank.band, short.band, 'not measured must not read as not met');
 });
+
+// spec-v1755: an attack count has no value between its steps; a fraction was compared with the threshold.
+test('spec-v1755: migraineIchd3 refuses a half attack; whole counts and the worked example answer', () => {
+  const ex = { attackCount: 6, headacheHours: 12, unilateral: true, pulsating: true, nauseaVomiting: true, noBetterExplanation: true };
+  assert.deepEqual(migraineIchd3(ex).diagnoses, ['1.1 Migraine without aura']);
+  const half = migraineIchd3({ ...ex, attackCount: '4.5' });
+  assert.equal(half.valid, false);
+  assert.match(half.message, /whole number/);
+  assert.equal(migraineIchd3({ ...ex, attackCount: '5' }).valid, true);
+});

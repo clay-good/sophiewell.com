@@ -28,3 +28,12 @@ test('max 10/10 and blank factors score 0', () => {
   assert.equal(wilsonAirway({ weight: 2, headneck: 2, jaw: 2, mandible: 2, teeth: 2 }).score, 10);
   assert.equal(wilsonAirway({}).score, 0);
 });
+
+test('spec-v1755: a half-step factor is refused; whole factors and the worked example answer', () => {
+  const r = wilsonAirway({ weight: 1.5, headneck: 0, jaw: 0, mandible: 0, teeth: 0 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(wilsonAirway({ weight: 0, headneck: 0.5, jaw: 1, mandible: 1, teeth: 0 }).valid, false);
+  assert.equal(wilsonAirway({ weight: 0, headneck: 1, jaw: 1, mandible: 1, teeth: 0 }).score, 3);
+  assert.equal(wilsonAirway({ weight: 0, headneck: 0, jaw: 0, mandible: 0, teeth: 0 }).score, 0);
+});

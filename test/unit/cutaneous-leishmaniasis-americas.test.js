@@ -31,3 +31,11 @@ test('special cases and refusals', () => {
   assert.equal(r({ ...ok, site: '' }).valid, false);
   assert.equal(r({ diameter: '2' }).valid, false);
 });
+
+test('spec-v1755: a fractional lesion count is refused; whole counts and the worked example answer', () => {
+  const x = r({ ...ok, lesions: '2.5' });
+  assert.equal(x.valid, false);
+  assert.match(x.message, /whole number/);
+  assert.equal(r({ ...ok, lesions: '3' }).bandLabel, 'Local treatment');
+  assert.equal(r(ok).bandLabel, 'Local treatment');
+});

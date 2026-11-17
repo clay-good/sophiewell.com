@@ -28,3 +28,11 @@ test('refusals', () => {
   assert.equal(r({ ...b }).valid, false);
   assert.equal(r({ ...b, diameter: '3', weight: '' }).valid, false);
 });
+
+test('spec-v1755: a fractional lesion count is refused; whole counts and the worked example answer', () => {
+  const x = r({ ...b, diameter: '4', lesions: '1.5' });
+  assert.equal(x.valid, false);
+  assert.match(x.message, /whole number/);
+  assert.equal(r({ ...b, diameter: '4', lesions: '2' }).bandLabel, 'Category III');
+  assert.equal(r({ ...b, diameter: '4' }).bandLabel, 'Category I');
+});

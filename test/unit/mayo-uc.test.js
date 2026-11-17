@@ -35,3 +35,13 @@ test('out-of-range subscore is clamped', () => {
   assert.equal(r.components.stoolFreq, 3);
   assert.equal(r.clamped, true);
 });
+
+// spec-v1755: a Mayo subscore has no value between its steps; a fraction was summed.
+test('spec-v1755: mayoUc refuses a half-step subscore; whole subscores and the worked example answer', () => {
+  const ex = { stoolFreq: 2, rectalBleeding: 2, physicianGlobal: 2, endoscopy: 2 };
+  assert.equal(mayoUc(ex).total, 8);
+  const half = mayoUc({ ...ex, stoolFreq: 2.5 });
+  assert.equal(half.valid, false);
+  assert.match(half.band, /whole number/);
+  assert.equal(mayoUc({ ...ex, stoolFreq: 3 }).total, 9);
+});

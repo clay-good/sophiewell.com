@@ -39,3 +39,13 @@ test('a higher anatomic finding still wins over a lower vascular grade', () => {
   assert.equal(r.grade, 5);
   assert.equal(r.vascularSet, false);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: aast-organ-injury refuses a half-step anatomic grade; whole grades and the worked example answer', () => {
+  const ex = { organ: 'spleen', finding: 2, vascular: 'contained' };
+  const r = aastOrganInjury({ ...ex, finding: 2.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /whole number/);
+  assert.equal(aastOrganInjury({ organ: 'spleen', finding: 3 }).grade, 3);
+  assert.equal(aastOrganInjury(ex).grade, 4);
+});

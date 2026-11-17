@@ -37,3 +37,15 @@ test('shock and age default to 0 when omitted', () => {
   const r = mangledExtremity({ skeletal: 1, ischemia: 1 });
   assert.equal(r.total, 2);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: mangled-extremity refuses a half-step grade; whole grades and the worked example answer', () => {
+  const ex = { skeletal: 3, ischemia: 2, ischemiaOver6h: true, shock: 0, age: 0 };
+  for (const k of ['ischemia', 'shock', 'skeletal', 'age']) {
+    const r = mangledExtremity({ ...ex, [k]: ex[k] + 0.5 });
+    assert.equal(r.valid, false, k);
+    assert.match(r.band, /whole number/, k);
+  }
+  assert.equal(mangledExtremity({ ...ex, shock: 1 }).total, 8);
+  assert.equal(mangledExtremity(ex).total, 7);
+});

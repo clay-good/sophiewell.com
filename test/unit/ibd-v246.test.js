@@ -41,3 +41,11 @@ test('simplified-aih: >= 7 definite', () => {
   assert.equal(r.score, 7);
   assert.match(r.band, /definite/);
 });
+
+test('spec-v1755: a half-step BBPS segment is refused; whole segments and the worked example answer', () => {
+  const r = bbpsBoston({ right: 2.5, transverse: 2, left: 2 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(bbpsBoston({ right: 3, transverse: 2, left: 2 }).score, 7);
+  assert.equal(bbpsBoston({ right: 2, transverse: 2, left: 2 }).score, 6);
+});

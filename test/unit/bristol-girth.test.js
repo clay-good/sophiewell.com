@@ -81,3 +81,10 @@ test('A girth typed as 0 is still a measurement', () => {
   });
   assert.equal(r.girthDeltaCm, 95);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: bristol-girth refuses a half-step stool type; whole types and the worked example answer', () => {
+  assert.throws(() => bristolGirth({ bristolType: 4.5 }), /whole number/);
+  assert.equal(bristolGirth({ bristolType: 5 }).category, 'soft');
+  assert.equal(bristolGirth({ bristolType: 4 }).category, 'normal');
+});

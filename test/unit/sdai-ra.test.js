@@ -37,3 +37,14 @@ test('blank CRP -> complete-the-fields', () => {
   assert.equal(r.valid, false);
   assert.match(r.message, /CRP/);
 });
+
+// spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
+test('spec-v1755: sdai-ra refuses a fractional joint count; whole counts and the worked example answer', () => {
+  const ex = { sjc: 6, tjc: 8, pga: 3, ega: 2, crp: 1.5 };
+  const r = sdaiRa({ ...ex, tjc: 8.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /tender-joint count must be a whole number/i);
+  assert.equal(sdaiRa({ ...ex, sjc: 6.5 }).valid, false);
+  assert.equal(sdaiRa({ ...ex, tjc: 9 }).score, 21.5);
+  assert.equal(sdaiRa(ex).score, 20.5);
+});

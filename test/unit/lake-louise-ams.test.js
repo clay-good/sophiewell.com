@@ -55,3 +55,12 @@ test('the top of the scale still scores 12 and reads severe', () => {
 test('partial input returns a complete-the-fields fallback', () => {
   assert.equal(lakeLouiseAms({ headache: 2, gi: 1 }).valid, false);
 });
+
+test('spec-v1755: a half-step symptom rating is refused, not rounded', () => {
+  const ex = { headache: 1, gi: 1, fatigue: 1, dizziness: 0 };
+  assert.equal(lakeLouiseAms(ex).total, 3);
+  const r = lakeLouiseAms({ ...ex, gi: 1.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /GI-symptom rating must be a whole number/i);
+  assert.equal(lakeLouiseAms({ ...ex, gi: 2 }).total, 4);
+});

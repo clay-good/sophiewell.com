@@ -61,3 +61,12 @@ test('dhi: moderate band', () => {
 test('dhi: invalid when yes+sometimes > 25', () => {
   assert.equal(dhi({ numberYes: 20, numberSometimes: 10 }).valid, false);
 });
+
+test('spec-v1755: DHI refuses a fractional answer count', () => {
+  const ex = { numberYes: 10, numberSometimes: 5 };
+  assert.equal(dhi(ex).score, 50);
+  const r = dhi({ ...ex, numberYes: 10.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /"Yes" answers must be a whole number/);
+  assert.equal(dhi({ ...ex, numberYes: 11 }).score, 54);
+});
