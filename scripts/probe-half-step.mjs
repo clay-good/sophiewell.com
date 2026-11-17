@@ -16,7 +16,7 @@
 import { META } from '../lib/meta.js';
 import { REGISTRY } from '../mcp/catalog.js';
 
-const WHOLE = /\(\s*-?\d+\s*(?:-|–|to)\s*\d+\s*\)|\bgrade\b|\bcount\b|number of|\bitems?\b|\bepisodes?\b|\bscore\b(?!.*(?:%|mg|mmol))|\bpoints?\b|\bAIS\b|\bECOG\b|\bASA\b|\bNYHA\b|stage\b|\bpregnanc|\bpara\b|\bgravid|\bdrinks?\b|\bfractures?\b|\bnodules?\b|\blesions?\b|\bvisits?\b|\badmissions\b|\bfalls\b|\bteeth\b|\bjoints?\b/i;
+const WHOLE = /\(\s*-?\d+\s*(?:-|\u2013|to)\s*\d+\s*\)|\bgrade\b|\bcount\b|number of|\bitems?\b|\bepisodes?\b|\bscore\b(?!.*(?:%|mg|mmol))|\bpoints?\b|\bAIS\b|\bECOG\b|\bASA\b|\bNYHA\b|stage\b|\bpregnanc|\bpara\b|\bgravid|\bdrinks?\b|\bfractures?\b|\bnodules?\b|\blesions?\b|\bvisits?\b|\badmissions\b|\bfalls\b|\bteeth\b|\bjoints?\b/i;
 const run = (e, inputs) => { try { const r = e.compute(e.toArgs(inputs)); return r == null ? { valid: false } : r; } catch { return { valid: false }; } };
 let rows = 0, n = 0;
 for (const [id, e] of REGISTRY) {
