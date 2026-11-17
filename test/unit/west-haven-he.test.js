@@ -25,8 +25,10 @@ test('grade 4 -> coma', () => {
   assert.match(westHavenHe({ grade: 4 }).band, /coma/);
 });
 
-test('out-of-range / scalar clamps to 0-4, never throws', () => {
-  assert.equal(westHavenHe({ grade: 9 }).grade, 4);
+// spec-v1756: an out-of-range grade is refused, not clamped to grade 4 (or a -1 to grade 0, "minimal").
+test('an out-of-range grade is refused; a scalar input never throws', () => {
+  assert.equal(westHavenHe({ grade: 9 }).valid, false);
+  assert.equal(westHavenHe({ grade: -1 }).valid, false);
   assert.equal(westHavenHe(9).grade, 0);
 });
 

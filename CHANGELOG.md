@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The Berg balance scale read task scores of 99 as "walking independently", and West Haven read a grade of -1 as
+  minimal. Berg, West Haven, POEM, ATLAS, AAST and MESS now refuse a value outside each item's range.
 - Seventy-four scores took a half step in an item that has none, such as a Braden subscale of 2.5 or 5.5 skin
   lesions, and scored it between cutoffs; one leprosy count of 5.5 was rounded down into the shorter regimen. They
   now ask for a whole number.

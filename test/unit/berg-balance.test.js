@@ -64,3 +64,12 @@ test('spec-v1755: berg-balance refuses a half-step task score; whole values and 
   assert.equal(bergBalance({ ...ex, q7: 4 }).score, 43);
   assert.equal(bergBalance(ex).score, 42);
 });
+
+// spec-v1756: an out-of-range task score was clamped and read "Walking independently".
+test('spec-v1756: a Berg task outside 0-4 is refused', async () => {
+  const { META } = await import('../../lib/meta.js');
+  const { computeCalculator } = await import('../../mcp/tools.js');
+  const ex = { ...META['berg-balance'].example.fields };
+  for (const v of ['99', '-1']) assert.equal(computeCalculator({ id: 'berg-balance', inputs: { ...ex, 'berg-q1': v } }).valid, false, v);
+  assert.notEqual(computeCalculator({ id: 'berg-balance', inputs: ex }).valid, false);
+});

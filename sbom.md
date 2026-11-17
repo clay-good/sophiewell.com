@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e40245f3f5b44e4d`
-Generated: 2026-11-17T01:38:33.593Z
+Build ID: `aec82d84d076b477`
+Generated: 2026-11-17T01:56:29.698Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -400,7 +400,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/depot-injection-window-v1639.js` | 14573 | `556470798026f3522f2dd9b730df084060faee6ffe32cd6eab330db4854791d3` |
 | `lib/derivation.js` | 8016 | `a0fcfa34306bef8683031d8e2757bc08f3448235b2f69649ef3354afdba7edec` |
 | `lib/derm-v151.js` | 21853 | `7561f8900e493a924399a4fb522971db4ad624aea9349e947da8923032b73736` |
-| `lib/dermatology-v223.js` | 14446 | `3670f154d7235bfe307ddf7cbfa41f0384ff543fe951c65032ebb65989450b2d` |
+| `lib/dermatology-v223.js` | 14563 | `2d0a9c83cb8ac09eac0e39c64f10859bcad57f59524d73c23918b75e1c487438` |
 | `lib/dermscore-v234.js` | 11119 | `c885c8f004c87977e00a2d0973c37f74c0cdf09af9fab0d6de73e9187ef68348` |
 | `lib/dermuro-v191.js` | 14756 | `79f290f8e1c58ffc5c634c4ce5758fe737920c989bb5200b41db6a80c78f9f68` |
 | `lib/desensitization-12-step-v1635.js` | 5268 | `414958c6ebb98ed5d0ef758c08673c7ee58f8a90e52d2b1c97d7036e0539bb59` |
@@ -555,7 +555,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/frisen-v616.js` | 10213 | `422476aa3eabcdb45abceda2ceecef6128fae715897041e02748d5d388d87af7` |
 | `lib/fss-v732.js` | 2867 | `5826dd477a6cf0c59dc5e6608086e427c79b6c06b934d71bea15e488b31f7391` |
 | `lib/fte-from-hours-v1657.js` | 3274 | `3c562f4a229ddd27b0466587cce1ce72dec8690f57ad7c1c0831d8716ccb5dc4` |
-| `lib/function-v154.js` | 15701 | `e5c08e2321197c32131896babe3d71d71adf089a4a7497c208e648c0f7ced1bb` |
+| `lib/function-v154.js` | 15818 | `951748895886486c66e5fba976a11efcd3c087ceac9a7b148520e1de8d925e53` |
 | `lib/furst-ratio-v794.js` | 4867 | `d6562d22ab7570339a03e121ca6b744b17379165c4de552761d9546a7af36760` |
 | `lib/g8-geriatric-v710.js` | 4205 | `600b9a252fbfaf82138bf6d9513ac68c9648f002f098ea623a309e6628e4d4d8` |
 | `lib/gabapentinoid-renal-dose-v1632.js` | 8453 | `1c323a1cbe558430509c8226c40ad0c8a23cd0c5c6dbc9553a5a5128b48375f6` |
@@ -645,7 +645,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hemonc-v94.js` | 24798 | `8cbdc968207578edcb5cf7014461da7d2d8017efd6f7f7e4533dd62190b94a41` |
 | `lib/hep-fibrosis-portal-v212.js` | 7921 | `93f3523d0b77872b3a351fc28a630c781e1f5469bffc631f70ad84ccffaed494` |
 | `lib/hep-v124.js` | 18705 | `47ede2bd5763c188e75d6c0df5997e878c379c86d581f160afd94f913b56c8fb` |
-| `lib/hep-v125.js` | 14602 | `19e59665da0a82bf895603a9229b284e3f1c8888a754c5b9775475bd57ccf515` |
+| `lib/hep-v125.js` | 14731 | `c88a91f50b93dad61cfa14675236e963cd37edbe81a4be71ecfe0239b15033e8` |
 | `lib/hepatic-iron-index-v932.js` | 7686 | `a267b83a46977f886b3b110bffe8cd76135cc29a2e2d309bc1a549e96970268f` |
 | `lib/hepatic-label-dose-v1632.js` | 8955 | `25d94563d9eebf714fb093f4e2d00de63352315f5818d12d0bfcd9c2ccfdd3de` |
 | `lib/hepatology-gibleed-v201.js` | 21768 | `17a58e5a62a50c0aa2bfd61857adedaae5d80394a79ef4c37cb9979a46128535` |
@@ -1511,7 +1511,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/transfusion-v292.js` | 6590 | `895fbd0c4ef9636fe84d9ad207b94319070361b76ddbfdfcb6faa65ca0d1c1a5` |
 | `lib/transplant-formulation-switch-v1633.js` | 7426 | `0e9ef9c63a49bb29fcf09a467a035861ed391f1e718eca09443be26e29a928a2` |
 | `lib/trauma-v108.js` | 22969 | `3c66d51eca00032e3269211f415b9a5572b3909038ebe9565d914bac66088a5a` |
-| `lib/traumaclass-v109.js` | 22097 | `5b2026600e237ac9b188cb9ea510fd4f4aa772f9401c3652037c463b744f7076` |
+| `lib/traumaclass-v109.js` | 22348 | `634f087b5edb777875b297fe228e72a29b08558fa27cb21e39267a170990405e` |
 | `lib/traynelis-v448.js` | 2912 | `9d4abfa8bb4d994648678605ccd5e3e4749993a66f49f232310d39cd8cfd4cad` |
 | `lib/tree.js` | 5187 | `947cd24aa948c81432844601adc03446917bcb5e32ac187f66491bcd3420df08` |
 | `lib/trend.js` | 3082 | `bd68d2bc396abe4e244f9dee35a4100b735b43e215c5881814952e0af27811d5` |
@@ -1626,7 +1626,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/wiltse-spondylolisthesis-v481.js` | 3497 | `6cc7aba8c22ffdce234a0e6a36d2d607bd25642494da50f5f5add4a06f8163a7` |
 | `lib/winquist-hansen-v381.js` | 4270 | `285352c99d2f0a5d567e14be8216500bdae9e24158cb7bfc4bbf4e192a202e1e` |
 | `lib/workflow-v4.js` | 9314 | `d321df2b6df08619c19dfc8382a71924d58c583684b461bc7d6cacd9c34ad605` |
-| `lib/woundid-v248.js` | 8815 | `318dc727464da6887d8178b74f5b176fd2314b2a4ede9fad4ca3aa63c2df5dbc` |
+| `lib/woundid-v248.js` | 8980 | `f7973193514a33d13bbb30dd788549c8ef23928b4d403927ff9ec4a84f219f9c` |
 | `lib/x-linked-bayes-risk-v1660.js` | 4799 | `663c3c73064131eb0db91671c45c4d245749c497131c902cc9039fdb580ffe8c` |
 | `lib/x12-271-run.js` | 3816 | `44802d7ed3e3c381dd2235be44eb86d9efb70b7efee34786e48db66b632ce6a7` |
 | `lib/x12-271-v1515.js` | 12425 | `cbcad2788066e0e832aa1dc6b5b2bd28bf61f2c8c94feb611fd949df9714613d` |
