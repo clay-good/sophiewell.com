@@ -2384,13 +2384,12 @@ test('aldrete-padss Aldrete components sum equals aldrete() (max 10)', () => {
   assert.equal(r.score, 10);
 });
 
-test('aldrete-padss Aldrete clamps out-of-range values to 0-2', () => {
-  // Out-of-range inputs should clamp into [0, 2].
-  const inputs = { activity: -1, respiration: 5, circulation: 2, consciousness: 1, oxygenSaturation: 2 };
-  const r = aldrete(inputs);
-  assert.equal(sumComponents(META['aldrete-padss'], inputs), r.score);
-  // -1 -> 0; 5 -> 2; 2; 1; 2 = 7
-  assert.equal(r.score, 7);
+// spec-v1756: the library refuses an out-of-range domain; the derivation agrees on in-range values.
+test('aldrete-padss Aldrete refuses out-of-range values; derivation agrees in range', () => {
+  assert.throws(() => aldrete({ activity: -1, respiration: 5, circulation: 2, consciousness: 1, oxygenSaturation: 2 }), RangeError);
+  const inputs = { activity: 0, respiration: 2, circulation: 2, consciousness: 1, oxygenSaturation: 2 };
+  assert.equal(sumComponents(META['aldrete-padss'], inputs), aldrete(inputs).score);
+  assert.equal(aldrete(inputs).score, 7);
 });
 
 const PADSS_META = { derivation: META['aldrete-padss'].derivationPadss };
@@ -2733,12 +2732,12 @@ test('pass-asthma components sum equals passAsthma() (max 6)', () => {
   assert.equal(r.score, 6);
 });
 
-test('pass-asthma clamps out-of-range values to 0-2', () => {
-  const inputs = { wheezing: -1, workOfBreathing: 5, prolongedExpiration: 1 };
-  const r = passAsthma(inputs);
-  assert.equal(sumComponents(META['pass-asthma'], inputs), r.score);
-  // -1 -> 0; 5 -> 2; 1 = 3
-  assert.equal(r.score, 3);
+// spec-v1756: the library refuses an out-of-range item; the derivation agrees on in-range values.
+test('pass-asthma refuses out-of-range values; derivation agrees in range', () => {
+  assert.throws(() => passAsthma({ wheezing: -1, workOfBreathing: 5, prolongedExpiration: 1 }), RangeError);
+  const inputs = { wheezing: 0, workOfBreathing: 2, prolongedExpiration: 1 };
+  assert.equal(sumComponents(META['pass-asthma'], inputs), passAsthma(inputs).score);
+  assert.equal(passAsthma(inputs).score, 3);
 });
 
 // --- Wave 48-4j: Bishop, ABC MTP, MGAP, GAP -----------------------------

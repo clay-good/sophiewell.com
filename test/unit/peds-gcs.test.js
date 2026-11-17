@@ -39,11 +39,11 @@ test('peds-gcs 3 (min)', () => {
   assert.equal(r.severity, 'severe');
 });
 
-test('peds-gcs clamps per-component to component range', () => {
-  const r = pedsGcs({ eye: 99, verbal: -1, motor: 99 });
-  assert.equal(r.parts.eye, 4);
-  assert.equal(r.parts.verbal, 1);
-  assert.equal(r.parts.motor, 6);
+// spec-v1756: a component outside its own range is refused, not clamped (eye 1-4, verbal 1-5, motor 1-6).
+test('peds-gcs refuses a component outside its range', () => {
+  assert.throws(() => pedsGcs({ eye: 99, verbal: 5, motor: 6 }), /Eye opening must be between 1 and 4/);
+  assert.throws(() => pedsGcs({ eye: 4, verbal: -1, motor: 6 }), /verbal response must be between 1 and 5/);
+  assert.throws(() => pedsGcs({ eye: 4, verbal: 5, motor: 99 }), /motor response must be between 1 and 6/);
 });
 
 test('peds-gcs band names age group', () => {

@@ -26,10 +26,10 @@ test('padss 10 (all maxima) -> ready for discharge', () => {
   assert.equal(r.readyForDischarge, true);
 });
 
-test('padss clamps out-of-range inputs', () => {
-  const r = padss({ vitalSigns: 5, ambulation: -1, nauseaVomiting: 2, pain: 2, surgicalBleeding: 2 });
-  // 5 -> clamped to 2; -1 -> clamped to 0; rest are valid
-  assert.equal(r.score, 2 + 0 + 2 + 2 + 2);
+// spec-v1756: an out-of-range item is refused, not clamped into [0, 2].
+test('padss refuses an item outside [0, 2]', () => {
+  assert.throws(() => padss({ vitalSigns: 5, ambulation: 2, nauseaVomiting: 2, pain: 2, surgicalBleeding: 2 }), /between 0 and 2/);
+  assert.throws(() => padss({ vitalSigns: 2, ambulation: -1, nauseaVomiting: 2, pain: 2, surgicalBleeding: 2 }), /between 0 and 2/);
 });
 
 // spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.

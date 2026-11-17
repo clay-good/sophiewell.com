@@ -28,11 +28,10 @@ test('aldrete 0 of 10 -> not ready for discharge', () => {
   assert.equal(r.readyForDischarge, false);
 });
 
-test('aldrete clamps per-domain out-of-range to [0, 2]', () => {
-  const r = aldrete({ activity: 99, respiration: -1, circulation: 2, consciousness: 2, oxygenSaturation: 2 });
-  assert.equal(r.parts.activity, 2);
-  assert.equal(r.parts.respiration, 0);
-  assert.equal(r.score, 8);
+// spec-v1756: an out-of-range domain is refused, not clamped into [0, 2].
+test('aldrete refuses a per-domain value outside [0, 2]', () => {
+  assert.throws(() => aldrete({ activity: 99, respiration: 2, circulation: 2, consciousness: 2, oxygenSaturation: 2 }), /between 0 and 2/);
+  assert.throws(() => aldrete({ activity: 2, respiration: -1, circulation: 2, consciousness: 2, oxygenSaturation: 2 }), /between 0 and 2/);
 });
 
 // spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.

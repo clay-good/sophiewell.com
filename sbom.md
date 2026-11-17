@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `aec82d84d076b477`
-Generated: 2026-11-17T01:56:29.698Z
+Build ID: `071e45b178ab413e`
+Generated: 2026-11-17T02:29:48.485Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1377,7 +1377,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schumock-thornton-preventability-v1634.js` | 4099 | `89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 345762 | `2172b83f478c079879c778b522407a1edb63d80eeabc682ac7ae0e29762f99cd` |
+| `lib/scoring-v4.js` | 346373 | `29df4e708a00b2dfa700d41647b01215dea93e3f5de8f5e8d7fceedecc217098` |
 | `lib/scoring-v5.js` | 15299 | `79cce7f31ab863854f6ff9c24dab9898e054ce2c239171623a8e9e9e38e6343b` |
 | `lib/scoring-v6.js` | 30667 | `da6b9c85af382ee3e762fcf8440c7f85acb400ea904df69b2e1bad75e61d7872` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |

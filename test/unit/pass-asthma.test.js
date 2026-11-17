@@ -38,11 +38,10 @@ test('pass 6 (max) -> severe', () => {
   assert.match(r.band, /severe/);
 });
 
-test('pass clamps per-item out-of-range to [0, 2]', () => {
-  const r = passAsthma({ wheezing: 99, workOfBreathing: -1, prolongedExpiration: 1 });
-  assert.equal(r.parts.wheezing, 2);
-  assert.equal(r.parts.workOfBreathing, 0);
-  assert.equal(r.score, 3);
+// spec-v1756: an out-of-range item is refused, not clamped into [0, 2].
+test('pass refuses an item outside [0, 2]', () => {
+  assert.throws(() => passAsthma({ wheezing: 99, workOfBreathing: 1, prolongedExpiration: 1 }), /between 0 and 2/);
+  assert.throws(() => passAsthma({ wheezing: 1, workOfBreathing: -1, prolongedExpiration: 1 }), /between 0 and 2/);
 });
 
 // spec-v1755: an ordinal item or a count has no value between its steps; a half-step is refused.
