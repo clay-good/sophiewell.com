@@ -39,7 +39,9 @@ for (const [id, e] of REGISTRY) {
     if (f.kind !== 'number') continue;
     for (const [side, v] of [['max', f.max], ['min', f.min]]) {
       if (typeof v !== 'number' || !Number.isFinite(v)) continue;
-      const probe = side === 'max' ? (v === 0 ? 10 : v * 10) : (v > 0 ? v / 10 - 1 : v - 10);
+      // spec-v1753: just past the bound, not only far past it -- a library with a looser limit of its own refuses
+      // the absurd and answers the merely out-of-range.
+      const probe = side === 'max' ? (v === 0 ? 1 : Math.max(v + 1, Number((v * 1.5).toPrecision(6)))) : (v > 0 ? v / 2 : v - 1);
       checked++;
       const r = run(e, { ...ex, [f.dom]: String(probe) });
       if (r.valid === false) continue;

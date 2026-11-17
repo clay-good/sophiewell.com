@@ -22,3 +22,9 @@ calcium below 3 mg/dL, INR below 0.5, creatinine below 0.1 mg/dL, PaCO2 below 5 
 Done by three parallel agents split by library file. The finder reports 0.
 
 Tests: one spec-v1753 case in each tool's own unit test file.
+
+Follow-ups: the page test `envelope-refused-on-page.spec.js` now drives 1.5 times the ceiling too (951 fields, all
+refused), and `scripts/probe-adapter-only-bounds.mjs` drives just past each adapter bound. That found `batt`'s own
+GCS check at 0-15 where its label and adapter say 3-15; it is now 3-15 in whole steps. The finder's other rows are
+range sliders, `o2-cylinder-duration` (spec-v1744) and `peds-weight-est`'s 0.5 years, which it reads correctly as 6
+months.

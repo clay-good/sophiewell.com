@@ -66,3 +66,10 @@ test('dengue: without warning signs', () => {
   assert.match(r.tier, /without warning/);
   assert.equal(r.abnormal, false);
 });
+
+test('spec-v1753: BATT refuses a GCS below 3 or between whole steps', () => {
+  const b = { age: 40, sbp: 120, gcs: 15 };
+  assert.match(batt({ ...b, gcs: 1.5 }).message, /GCS/);
+  assert.equal(batt({ ...b, gcs: 12.5 }).valid, false);
+  assert.notEqual(batt({ ...b, gcs: 3 }).valid, false);
+});

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fe95481335c2e083`
-Generated: 2026-11-17T00:19:32.343Z
+Build ID: `5242dff7a334bdfd`
+Generated: 2026-11-17T00:45:03.625Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -938,7 +938,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/missed-dose-label-rule-v1639.js` | 28298 | `f890b4df051a1172cbb18216ed8fe1fdfc9a883df872ccb9cb66066ed40d0413` |
 | `lib/mitral-regurgitation-stage-v847.js` | 11352 | `ba47ad4c74266e61fca7cba3ebf57759abc04349542c5e225caa206e81633e3c` |
 | `lib/mitral-stenosis-stage-v845.js` | 10237 | `c7e9a9b1f16a458f0ca2448a2ccab7dc283556c39e1887de682c0119bacc4213` |
-| `lib/mixed-v227.js` | 14143 | `cf5a71f391188406117f4d1772ab278737b69b6e6415ebfdf01f2a2f4ae36971` |
+| `lib/mixed-v227.js` | 14265 | `1d83550adeabf75953c1188b3b3e071772e594e468e7ebe4499840b3c4e2ada0` |
 | `lib/mixed-v228.js` | 10358 | `428c385203c230b79a4f7249b35803171422ec1cc8cca1f8809a5ad6ca8c0638` |
 | `lib/mna-sf-v712.js` | 4069 | `ba533e0cae11b180905f08b01f990e6da7b4041109cc21f5c99241cb9417be02` |
 | `lib/modic-changes-v433.js` | 2948 | `7f5d7eae4da97b87d6c2829caa3c3c1fd7f1005ec927b4fa45c3c8f50e73c20e` |
