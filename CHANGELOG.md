@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- 18 more tools read a negative as 0 or scored a half step in a field their worked example leaves blank: a HIET
+  bolus override of -1 gave "bolus 0 units", and a pSOFA vasoactive grade of 2.5 scored 2.5. Each now refuses it.
 - 41 tools answered from an impossible value in a field their worked example leaves blank: pneumonia severity scored
   a temperature of 67.5 C, Fick output read a heart rate of 450 as a normal cardiac index, and dosing tools dosed a
   750 kg weight. Each now refuses a value outside its plausible range, whatever mode is chosen. Berlin ARDS no longer

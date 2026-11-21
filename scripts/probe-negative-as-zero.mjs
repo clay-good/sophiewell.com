@@ -31,14 +31,23 @@ for (const t of allCalculators()) {
   if (base.valid === false) continue;
   for (const f of (t.fields || [])) {
     if (f.kind !== 'number' || Array.isArray(f.values)) continue;
-    const x = Number(ex[f.dom]);
-    if (ex[f.dom] === '' || !Number.isFinite(x) || x <= 0) continue;
+    let x = Number(ex[f.dom]);
+    let here = base;
+    if (ex[f.dom] === undefined || ex[f.dom] === '') {
+      // spec-v1759: a field the worked example leaves blank was never driven. Fill it with a positive value the tool
+      // answers from (the adapter's midpoint, else 1, 10 or 50) and ask the same question; 14 fields answered.
+      const mid = Number.isFinite(f.min) && Number.isFinite(f.max) ? (f.min + f.max) / 2 : null;
+      x = [mid, 1, 10, 50].find((v) => v !== null && v > 0 && computeCalculator({ id: t.id, inputs: { ...ex, [f.dom]: String(v) } }).valid !== false);
+      if (x === undefined) continue;
+      here = computeCalculator({ id: t.id, inputs: { ...ex, [f.dom]: String(x) } });
+    }
+    if (!Number.isFinite(x) || x <= 0) continue;
     const neg = computeCalculator({ id: t.id, inputs: { ...ex, [f.dom]: String(-x) } });
     if (neg.valid === false) continue;
     const zero = computeCalculator({ id: t.id, inputs: { ...ex, [f.dom]: '0' } });
     if (zero.valid === false) continue;
     if (raw(neg) !== raw(zero)) continue; // -x does not answer exactly like 0
-    if (raw(neg) === raw(base)) continue; // the field changed nothing at all
+    if (raw(neg) === raw(here)) continue; // the field changed nothing at all
     rows++;
     const o = neg.result || {};
     console.log(`${t.id}\t${f.arg}\t${x}\t${String(f.label || '').slice(0, 40)}\t${String(o.bandLabel || o.band || o.verdict || '').slice(0, 80)}`);

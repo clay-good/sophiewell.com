@@ -25,7 +25,13 @@ for (const [id, e] of REGISTRY) {
   for (const f of e.fields) {
     if (f.kind !== 'number' || !WHOLE.test(f.label || '')) continue;
     if (/%|mg|mmol|\/|kg|cm|mm|mL|hours?|minutes?|days?|weeks?|months?|years?|\bage\b|ratio|index\b|level|rate/i.test((f.label||'')+' '+(f.unit||''))) continue;
-    const x = Number(ex[f.dom]); if (ex[f.dom] === '' || !Number.isInteger(x) || x > 60) continue;
+    let x = Number(ex[f.dom]);
+    if (ex[f.dom] === undefined || ex[f.dom] === '') {
+      // spec-v1759: a field the worked example leaves blank is filled with a whole value the tool answers from.
+      x = [Number.isFinite(f.min) ? Math.ceil(f.min) + 1 : null, 1, 2, 0].find((v) => v !== null && run(e, { ...ex, [f.dom]: String(v) }).valid !== false);
+      if (x === undefined) continue;
+    }
+    if (!Number.isInteger(x) || x > 60) continue;
     n++;
     const r = run(e, { ...ex, [f.dom]: String(x + 0.5) });
     if (r.valid === false) continue;

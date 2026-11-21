@@ -5,7 +5,7 @@
 
 import { el, clear } from '../lib/dom.js';
 import { segmentedFromSelect } from '../lib/components.js';
-import { fmt, usDate } from '../lib/num.js';
+import { fmt, usDate, gradeFault } from '../lib/num.js';
 import { boundsAdvisory } from '../lib/bounds.js';
 import * as C from '../lib/clinical.js';
 import * as C8 from '../lib/clinical-v8.js';
@@ -399,6 +399,8 @@ export const renderers = {
       const age = numOrNull('age');
       const weightKg = unitNumOpt('w');
       if (needValues(o, [['an age', age], ['a weight', weightKg], ['a serum creatinine', scr]])) { clearDerivationSteps(deriv); return; }
+      // spec-v1759: a negative height answered exactly as 0 (no ideal/adjusted rows); refused before any result prints.
+      { const f = gradeFault([['the height', unitNumOpt('cg-h'), 0, Infinity]]); if (f) throw new RangeError(f); }
       const inputs = { age, weightKg, scr, sex: document.getElementById('sex').value };
       const v = C.cockcroftGault(inputs);
       o.appendChild(el('p', { text: `Creatinine clearance: ${v} mL/min` }));
@@ -714,6 +716,8 @@ export const renderers = {
       const scr = num('es-scr'), age = num('es-age');
       const w = numOrNull('es-w') === null ? null : unitNum('es-w');
       const sex = document.getElementById('es-sex').value;
+      // spec-v1759: a negative height answered exactly as 0 (the mL/min row dropped); refused before any result prints.
+      { const f = gradeFault([['the height', unitNumOpt('es-h'), 0, Infinity]]); if (f) throw new RangeError(f); }
       const ckdEpi = C.egfrCkdEpi2021({ scr, age, sex });
       const mdrd = V4.egfrMdrd({ scr, age, sex });
       resultRow(o, [

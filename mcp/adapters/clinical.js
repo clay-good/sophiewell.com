@@ -12,6 +12,7 @@ import * as F from '../../lib/clinical.js';
 import { DRUGS as CG_LABEL_DRUGS, crclForLabel } from '../../lib/crcl-label-weight-v1632.js';
 import * as V4 from '../../lib/clinical-v4.js';
 import { boundsAdvisory } from '../../lib/bounds.js';
+import { gradeFault } from '../../lib/num.js';
 
 export default [
   {
@@ -142,6 +143,9 @@ export default [
     id: 'cockcroft-gault',
     summary: 'Cockcroft-Gault creatinine clearance from age, weight, creatinine, sex (mL/min), on the weight as entered. With a height it returns the clearance on actual, ideal (Devine) and adjusted (0.4) weight, because drug labels differ on which weight to use, with what Winter 2012 found for each. The creatinine is never rounded up.',
     compute: (a) => {
+      // spec-v1759: a negative height answered exactly as 0 (no height, so no ideal/adjusted rows) -- a sign
+      // slip read as a blank. Refused by name; a blank height stays optional.
+      { const f = gradeFault([['the height in cm', a.heightCm, 0, Infinity]]); if (f) throw new RangeError(f); }
       const hasHeight = a.heightCm !== null && a.heightCm !== undefined && a.heightCm !== '' && Number(a.heightCm) > 0;
       const hasDrug = a.drug !== null && a.drug !== undefined && String(a.drug).trim() !== '';
       if (!hasHeight && !hasDrug) return F.cockcroftGault(a);
@@ -257,6 +261,9 @@ export default [
       // spec-v1045: Cockcroft-Gault is the only one of the three that needs a
       // weight, and it was holding the other two hostage.
       const have = (...vs) => vs.every((v) => v !== null && v !== undefined && v !== '');
+      // spec-v1759: a negative height answered exactly as 0 (the mL/min and ideal/adjusted rows dropped) -- a
+      // sign slip read as a blank. Refused by name; a blank height stays optional.
+      { const f = gradeFault([['the height in cm', a.heightCm, 0, Infinity]]); if (f) throw new RangeError(f); }
       const ckdEpi2021 = F.egfrCkdEpi2021({ scr: a.scr, age: a.age, sex: a.sex });
       const mdrd = V4.egfrMdrd({ scr: a.scr, age: a.age, sex: a.sex });
       const cockcroftGault = have(a.weightKg)

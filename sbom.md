@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5e4e752fd3b0408b`
-Generated: 2026-11-21T15:27:37.823Z
+Build ID: `6a4882776d8e6587`
+Generated: 2026-11-21T15:50:39.705Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -402,9 +402,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/derm-v151.js` | 21853 | `7561f8900e493a924399a4fb522971db4ad624aea9349e947da8923032b73736` |
 | `lib/dermatology-v223.js` | 14563 | `2d0a9c83cb8ac09eac0e39c64f10859bcad57f59524d73c23918b75e1c487438` |
 | `lib/dermscore-v234.js` | 11119 | `c885c8f004c87977e00a2d0973c37f74c0cdf09af9fab0d6de73e9187ef68348` |
-| `lib/dermuro-v191.js` | 14756 | `79f290f8e1c58ffc5c634c4ce5758fe737920c989bb5200b41db6a80c78f9f68` |
+| `lib/dermuro-v191.js` | 15054 | `1f289050c73f67c55d17abcce41b72f593b89c17903d9c8f8d555c86c7147594` |
 | `lib/desensitization-12-step-v1635.js` | 5268 | `414958c6ebb98ed5d0ef758c08673c7ee58f8a90e52d2b1c97d7036e0539bb59` |
-| `lib/device-infection-rate-v1655.js` | 4384 | `c0a56e0ed051efda1a05e7260bc7bef4e949321ad94fea19066f9749022fcf51` |
+| `lib/device-infection-rate-v1655.js` | 4712 | `19a2826f8444a431b9fae8f95a617197c4c4d2b0b4f88ed6e7288ce51538b004` |
 | `lib/device-utilization-ratio-v1655.js` | 2790 | `4b1e22b907c404849da4ec4d4e84aac9736d700abb8169aa709c572fbed751c8` |
 | `lib/deworming-dose-who-v1550.js` | 5253 | `34b808b71f4b220a1067ae73ab8ad8b346c37007a9cab80996c0b79d42717ef0` |
 | `lib/dexrazoxane-ratio-dose-v1635.js` | 4575 | `e3d182286840dedd8139b46894da57d9d61b064c18e22289e8d9536eabbe7140` |
@@ -579,7 +579,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gerontonet-adr-risk-v1634.js` | 4639 | `da5d6ec237ae27b45b5a748a2940e701dcbf770173857ce73644d4b8c8ca1e55` |
 | `lib/ghent-marfan-v821.js` | 13655 | `ef9bd910dfcc6c8cb3d41e3cbae2e6e28ea2b7eddf0cb7ad1446e5eb3d72d213` |
 | `lib/gi-drug-dose-check-v1632.js` | 8937 | `d7e3bcaff8dd40a24868fddf430f04fe1932693d20efdabbe211a30e9362507b` |
-| `lib/gi-v126.js` | 24024 | `9f3241108ae01944557be559fb531e8880a967cc3cdad25d2a88e353b3e481c8` |
+| `lib/gi-v126.js` | 24147 | `511c6bbd35b91db45970a2d0404ce71d3b2c527b992c032536a3a4445945e78d` |
 | `lib/gisurg-v239.js` | 9243 | `952c45af610bdbb555a3d66e3e447aa102ea0079253afad4e158cb8edd94297b` |
 | `lib/glass-stage-v550.js` | 13408 | `42ec4b461aa71b8aa586f00d20f9088773dbf3a478e9847e590af687b2c2acf5` |
 | `lib/glenoid-track-v1571.js` | 4078 | `aa43d899e2b672625596c51e81ef0047694b5df7dea76a94e764d2a007a8c75f` |
@@ -885,7 +885,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/mccormack-v646.js` | 4324 | `39180949542a68666f56729a738845bb7d137c2a2dbb324de4afcf1af7cfecaa` |
 | `lib/mccormick-v444.js` | 3548 | `226844081eb702e3917925b1fb684495c90fd90d83717106c632f91f09fad0c6` |
 | `lib/mcd-load.js` | 1369 | `5ec2e73749ffccf7467bcd6e21daeb7c2997335058cc0883e94ec84fced84e55` |
-| `lib/mchat-v862.js` | 10797 | `d4679dd64d1f655847d7a7e2a5914b98cb98591f5fe594dc686df8337b1ff003` |
+| `lib/mchat-v862.js` | 11098 | `ecb6299d7e6e9157b7c49697eac502a419e3e520205654367c51cee4a5674fa7` |
 | `lib/mcmahon-rhabdo-v677.js` | 8524 | `97011a315e922b745b9413661fd4db8bf169e31d4d4090241b90ccf3f19b8d55` |
 | `lib/mcpherson-pji-v1427.js` | 8293 | `47a22311f24c4c12690c6cba38474d56effabf06a523f60860a0a62ac487a9e9` |
 | `lib/mda-psoriatic-v672.js` | 3497 | `e7c82444dbf39ca9b8e6cac36422ad6d754179545affa74b8779a1469309cc74` |
@@ -914,7 +914,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
 | `lib/meta.js` | 3085903 | `3cebb1757392cbda1c5da821908207a6529ca47458af089d5e6585df6bca6821` |
 | `lib/metabolic-hepatic-v219.js` | 15643 | `60ee7dc75b331fab7e35811f23d03b514474c18ba333aa515ff9c12ebf69b871` |
-| `lib/metabolic-onc-v88.js` | 23866 | `47fa41da0d5c2b785390a93cc018ff2561479cef45dbe4fb4c669d4de498ffe9` |
+| `lib/metabolic-onc-v88.js` | 24039 | `53ad46127d7df9271107c3a919def14326d4aa994997c489998af893781d2777` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
 | `lib/metabolic-v273.js` | 4021 | `a7237fdf44ea0ab8564369c88197962e7cf4208439f29a89fc249130c94659bc` |
 | `lib/metavir-activity-v505.js` | 3062 | `750a1451913ae545ea922fdb3584efd83e1043cafdb85259a78d4d3c72f6b6a2` |
@@ -1137,7 +1137,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/partd-dmp-notice-clock-v1638.js` | 9200 | `905852090424d85f73cb387c37e90cbd427835eb1474a0f621888ecd5c3620f5` |
 | `lib/partd-insulin-cost-cap-v1638.js` | 5424 | `1d8e607f3fb0fd48e376349a2ce1079a743061a9b81085a90848cfcfa4a0b50a` |
 | `lib/partd-opioid-measures-v1638.js` | 13649 | `7f6c3567cb90c9427063acaa060bd8e97bb923215ba594eff9417d7e4f641ef3` |
-| `lib/partd-opioid-safety-edit-v1638.js` | 9832 | `f4ae6acbc17d2f567f9577fbc93e821e77ec7e2ec162253dcd12844d411d0c37` |
+| `lib/partd-opioid-safety-edit-v1638.js` | 10034 | `1365953f2fa5af844026a8a1ebb24ffec6f44ff638ba3defacc485645a48ff1c` |
 | `lib/partd-prompt-pay-clock-v1638.js` | 9404 | `c4e76d33d74fabaf899b282249b11a69f96ddcb913c8af0df6abb3179c464042` |
 | `lib/partd-transition-fill-v1638.js` | 13227 | `3f6448360d020b0b094a0f88f53e35a85963fb72444b70085cc83f4b9d06c403` |
 | `lib/pas-bundle-check.js` | 5368 | `2a876c49d1315cafa7879fc2b7f5c33f376dc2e3c54a29b346fa15fca04b2f64` |
@@ -1197,7 +1197,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pirani-clubfoot-v386.js` | 3487 | `787ccfe1abcbcf66a2a9d8ea1218c443f22882983faccd94d3929dfe1c024da5` |
 | `lib/pires-interprosthetic-v1423.js` | 6808 | `9e8c417e5d3fe3ee46f5c5f2893be49477ef248ea300a77907dd9f4378f26823` |
 | `lib/pk-steady-state-predict-v1631.js` | 8001 | `75ace380c8f7e851dd07a2a5769ad4f99eebaf7b6b279acc1a8b5ffac5ffa696` |
-| `lib/pk-v166.js` | 10986 | `6d3a07553905273e9492ecb8ddf20ec77f3e5221acd788fe69a41935bed43d32` |
+| `lib/pk-v166.js` | 11352 | `2aa2c2b149c26b209fa70a9514e8c467f76c02aaff71ded6c79b09992bb6c78e` |
 | `lib/plaque-control-record-v721.js` | 3352 | `417598406d2a4834fa47f8badd4f97c593b27952c0917d70f93bbf5c9ca17bb0` |
 | `lib/plot.js` | 3813 | `e0ac0523c3e248d25bebb86b7f051a11d607ee74b9e9e71743412a42e572d83e` |
 | `lib/pmp-check-required-v1393.js` | 15326 | `36e31f0f049a911bee6db1c7c43e58ba8fc2ca921ffc63d38488e4b9c54013ee` |
@@ -1214,7 +1214,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/portopulmonary-hypertension-v1243.js` | 7925 | `464e74c453ceca768f639c10889f977a11dbaaf83ef4b274092d710fff72b256` |
 | `lib/posas-observer-scar-v691.js` | 3697 | `dcb2792ef4faae3bbe45ac5e09c3322b3d79bd3f5708adb4443ad2e51df78c23` |
 | `lib/posas-patient-scar-v783.js` | 4310 | `58b2fefabafaf9466dd29beb9821909c3fd3feaa9e2f76cfcca6333f18035481` |
-| `lib/poseidon-v549.js` | 14464 | `9e03014da62b136861306d39992b287b5d9ac49230c33d0e728965dc548d7441` |
+| `lib/poseidon-v549.js` | 14748 | `6f735f481301ef1351a1368d1b8a7e646fedb538a15dc65c38291438478b75e4` |
 | `lib/post-acute-clocks-v1514.js` | 40971 | `47f427663475ff90c032c55efb36f4671bbd708dfe7b13792cfb1ab621f779f0` |
 | `lib/powers-ratio-v1454.js` | 6850 | `ca80d3aaa568bfe3d4c4d6c01aaa04e626dacf97c671246fb002c354b2836841` |
 | `lib/pph-who-2025-v1558.js` | 9920 | `6287ef390fab250f2117808bfe1f6770711ac6419b619a7bb45fca1f626c4609` |
@@ -1248,7 +1248,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pufa-index-v1491.js` | 4112 | `f4458cbd2a0f04bab58c40cdef58b6817178094b1311140e2a9bf21dce63fb1c` |
 | `lib/pulm-copd-v205.js` | 16763 | `f6f1fdf0db2257c2caf40d143329085f9fb2a8e1a3f59a251c7a657b6d005239` |
 | `lib/pulm-v114.js` | 18091 | `7e692b5eccac090314c972214c9b30020002a3a56a6d27b1f73fded3579cba21` |
-| `lib/pulm-v91.js` | 21669 | `eb5ddba4ef6ca637c16e0ea51047305fdd7c2d2a301219c164676a8f2ac2677a` |
+| `lib/pulm-v91.js` | 22071 | `f374225ca83a80c5e87d4390b2338bda2a1b17d371c222fc94c9966582b9ee32` |
 | `lib/pulmnod-v115.js` | 21298 | `b40848ee2c05e7341223d16c0ed678bde9cfbd346073d914adbf378cc33425b7` |
 | `lib/pulmonary-risk-v221.js` | 16582 | `1af92deec92724f086b1077b7ad438ef9974e7a8022eddd9bd234369209d129f` |
 | `lib/puqe24-v553.js` | 10456 | `d2593fdc70bc2cc959ddac33b9c0d578d7ac5decf655bfff3e35f1b412b6a781` |
@@ -1377,9 +1377,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schumock-thornton-preventability-v1634.js` | 4099 | `89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 347438 | `a22364e2723c2632f46eed6b80de5109e5834d82cce0da1cd61df6f345ac8d31` |
+| `lib/scoring-v4.js` | 348858 | `90fab0d3806c57b811744bad4961ba294deedb802d0ef031e5ad2e77386d7792` |
 | `lib/scoring-v5.js` | 15299 | `79cce7f31ab863854f6ff9c24dab9898e054ce2c239171623a8e9e9e38e6343b` |
-| `lib/scoring-v6.js` | 30667 | `da6b9c85af382ee3e762fcf8440c7f85acb400ea904df69b2e1bad75e61d7872` |
+| `lib/scoring-v6.js` | 30894 | `48a72b75ec89c2ffc20b0e31ecc1ccbf91d726e2235869fe33a033900b077cb4` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
 | `lib/screener.js` | 7165 | `57d6e8732933cab53c5a10e4cf2c9ea282c186c4e6562827e1b5e97dd8194007` |
@@ -1461,7 +1461,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/sunct-suna-ichd3-v820.js` | 8469 | `ab7f743d3f4674a773055f23c41f875f84e091668775a9a4eecdad04e2a945aa` |
 | `lib/sunnybrook-facial-v509.js` | 6479 | `44a4dccd9400ffcde761ed885ef5cc3588b42ed8e7a0822e8653a1261fd1b8b5` |
 | `lib/supd-measure-v1638.js` | 9330 | `62447151efaa0eff95a5ef876669c02dff383bdba0a00cec03f9651279e966ce` |
-| `lib/suppository-displacement-v1629.js` | 6978 | `d6cbd66aa0e380027487b1922a8ce0eda5107638b940dc3bf1ac87779a93f1b4` |
+| `lib/suppository-displacement-v1629.js` | 7284 | `4a858afdbbfc0bb0b7d7e7fbc246477bea7c80d2e0a4a2032007142327d734c8` |
 | `lib/surg-v142.js` | 17346 | `ba81e7219f6f69c45426efeb79f10ac5f219265376c3b25d333e45961ee89343` |
 | `lib/surgical-prophylaxis-redose-v1636.js` | 10157 | `342a3b24c88c4bb5c0b9264de387a80fdf53951c56f9644db6ae027e9021af4a` |
 | `lib/synonyms.js` | 3813 | `95d65001246939cb582331c67925d1da1a0b312f40ac9a872eff3fb905e38e5a` |
@@ -1502,8 +1502,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/todani-choledochal-v473.js` | 3608 | `e6e1d1726ce48bafecb6edbad0d7f61300adf435b2c1b1427aeeeb98c8fc21ab` |
 | `lib/tonnis-hip-oa-v354.js` | 3924 | `856bbea20809afb3acd30bbdc56331611ceba4deb17726ba2bcde7a36c87d957` |
 | `lib/topical-quantity-ftu-v1639.js` | 5042 | `4d2eeaca5eadd228dfd888f0951c9a798b1489c07b3be5167f5f0a5e6265ee34` |
-| `lib/tox-v110.js` | 20447 | `19f3bf4ea5791261c12a4c4ed469ea159b3736189937c789d4d0964e216b24ca` |
-| `lib/tox-v86.js` | 15035 | `f9bfdea88ee8ead7b7461621e4692e941fe4d1e59652d369a54bea03e9b067f5` |
+| `lib/tox-v110.js` | 20883 | `365390fb89e719accce75b1d09d0440370637bef7fd30070aeae4de5b85af424` |
+| `lib/tox-v86.js` | 15283 | `e7e54d605244a994120e6d438918f48c236c6b952614e14ee8fe2b246e54cb62` |
 | `lib/tpa-eligibility-v1708.js` | 20497 | `71bf52434311cc2139d7cd1437f29b4a49b8dbf6e3090a9e6cd7ef476eee34c9` |
 | `lib/tpmt-nudt15-thiopurine-dose-v1635.js` | 2138 | `470f9d9fa0ee1ea10180275c2c3f7aa9ebd65cac81e218423ba7e424a1f90623` |
 | `lib/trachoma-grade-v1561.js` | 4055 | `899fd785c08aa0075f51fb10ef1593b9b48d4a8da2ab53fb38fdd032bbeea666` |
@@ -1891,7 +1891,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v6.js` | 9113 | `d3f9dda4bf8279b153c0faceff8bd7c12addb0ffd0857142b5155efe2a41fc4b` |
 | `mcp/adapters/clinical-v7.js` | 9320 | `3e53f0e857f07cb6f80e5efb3ca7bd90d021ef538c4860730bc647ec113a53f4` |
 | `mcp/adapters/clinical-v8.js` | 17159 | `7a7dcfb4e5240ffe489afee8fef7ca1036202dd47d71be4957e394affce32190` |
-| `mcp/adapters/clinical.js` | 31000 | `1ed74a49f28cedc94e620412b73642386ceaa3cd0a2abdd89a8beb71f042ed3a` |
+| `mcp/adapters/clinical.js` | 31657 | `66243c7b1d0f3bbe54c34177f9ec662f1f06abc36e02a6553d2d3e2125b82f32` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/cmea-sales-limit-v1637.js` | 2142 | `0bc92156b2b0001f7c6976c12585f83fbc1be5c2781d18d0934b0a1382d615eb` |
 | `mcp/adapters/cns-renal-dose-check-v1632.js` | 1690 | `caeec305d713a62fd217c13b25df096aaf521d81623b7ba6ff752566fd8c7552` |
@@ -3098,7 +3098,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 75287 | `db16efb1a2900e8c8712510364abfdc6a719cc5d4c48c4e8759d014481b2e7d2` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
-| `views/group-e.js` | 58225 | `1d1bd243838a142706802b7dd5b859d07a6361eadb60b3b55fcc9a06da39860c` |
+| `views/group-e.js` | 58709 | `b8d5a1739b5a588af680f6c280ccc75cb3f381a9b561b2b712189b8dcae6aabf` |
 | `views/group-f.js` | 58552 | `b7a8e2cfa129a413c218a9b735f739f792a5ff434826fd8a6d12e1ae43ac5c35` |
 | `views/group-g.js` | 255998 | `d45ebdcb36c39efeba12a47b099af7c486ea7b3c5b5d0d5c81861e904432348e` |
 | `views/group-h.js` | 33005 | `165bbb081d483a9c2c168b43f9aa234ee3ebaa7a8e45b7284851c0da5ac82dd4` |
