@@ -25,3 +25,8 @@ Not in scope: weight, age, height and BMI rows, which are mostly a tool's valida
 refusing 206 g, an age of 126 past the oldest verified human).
 
 Tests: `test/unit/inside-envelope-v1766-{a,b}.test.js`; seven tests that pinned old caps now pin the envelope.
+
+Follow-up (same day): 11 page fields still declared an HTML limit narrower than the library now accepts (heart rate
+400 on OASIS, LODS, REMS, CART and the hemodynamic suite; mitral stenosis 20-250; gastric-emptying glucose 1,500;
+compartment diastolic 250; OASIS temperature 20; PIM3 base excess 50), so the page flagged a value it answered. Each
+now holds the envelope.

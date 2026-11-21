@@ -70,7 +70,7 @@ export const renderers = {
   // ----- 2.1 hemodynamic-suite -------------------------------------------
   'hemodynamic-suite'(root) {
     root.appendChild(field('Cardiac output (L/min)', 'hs-co', { placeholder: 'e.g. 5' }));
-    root.appendChild(field('Heart rate (bpm, for stroke volume)', 'hs-hr', { min: 0, max: 400, placeholder: 'e.g. 80' }));
+    root.appendChild(field('Heart rate (bpm, for stroke volume)', 'hs-hr', { min: 0, max: 600, placeholder: 'e.g. 80' }));
     root.appendChild(field('Body surface area (m^2, for indexed values)', 'hs-bsa', { placeholder: 'e.g. 1.9' }));
     root.appendChild(field('Mean arterial pressure (mmHg, for SVR)', 'hs-map', { placeholder: 'e.g. 90' }));
     root.appendChild(field('Central venous pressure (mmHg, for SVR)', 'hs-cvp', { placeholder: 'e.g. 8' }));

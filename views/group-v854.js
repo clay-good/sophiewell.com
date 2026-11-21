@@ -41,7 +41,7 @@ export const renderers = {
     numField(root, 'At 4 hours (percent; this is the value that grades the study, delayed above 10)', 'ges-h4', { min: '0', max: '100', step: '1' });
 
     root.appendChild(el('h2', { text: 'Conditions the study was run under' }));
-    numField(root, 'Blood glucose at the time of the study (mg/dL)', 'ges-glu', { min: '20', max: '1500', step: '1' });
+    numField(root, 'Blood glucose at the time of the study (mg/dL)', 'ges-glu', { min: '20', max: '3000', step: '1' });
     root.appendChild(checkField('Drugs that speed emptying up or slow it down were stopped two days beforehand', 'ges-drugs'));
 
     const ids = ['ges-h1', 'ges-h2', 'ges-h4', 'ges-glu', 'ges-drugs'];

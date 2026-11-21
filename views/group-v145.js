@@ -186,7 +186,7 @@ export const renderers = {
   // ----- 2.5 compartment-delta-pressure ---------------------------------
   'compartment-delta-pressure'(root) {
     note(root, 'Compartment delta pressure (McQueen & Court-Brown 1996): ΔP = diastolic BP − measured compartment pressure. ΔP < 30 mmHg is the published fasciotomy threshold. One data point alongside the serial clinical exam.');
-    root.appendChild(numField('Diastolic blood pressure (mmHg)', 'comp-dia', { step: '1', min: 0, max: 250, placeholder: 'e.g. 70' }));
+    root.appendChild(numField('Diastolic blood pressure (mmHg)', 'comp-dia', { step: '1', min: 0, max: 400, placeholder: 'e.g. 70' }));
     root.appendChild(numField('Measured compartment pressure (mmHg)', 'comp-icp', { step: '1', min: 0, max: 250, placeholder: 'e.g. 45' }));
     const o = out(); root.appendChild(o);
     wire(['comp-dia', 'comp-icp'], () => safe(o, () => {

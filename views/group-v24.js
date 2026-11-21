@@ -147,7 +147,7 @@ export const renderers = {
     root.appendChild(checkField('Both pupils > 3 mm and fixed to light', 'pim-pupils'));
     root.appendChild(field('FiO2 (fraction, e.g. 0.5) -- if ventilated', 'pim-fio2', { min: 0, max: 1, step: '0.01', placeholder: '0.5' }));
     root.appendChild(field('PaO2 (mmHg) -- if ventilated', 'pim-pao2', { min: 0, max: 800, placeholder: '80' }));
-    root.appendChild(field('Base excess (mmol/L)', 'pim-be', { min: -50, max: 50, step: '0.1', placeholder: '-5' }));
+    root.appendChild(field('Base excess (mmol/L)', 'pim-be', { min: -50, max: 70, step: '0.1', placeholder: '-5' }));
     root.appendChild(checkField('Mechanical ventilation in first hour', 'pim-vent'));
     root.appendChild(checkField('Elective admission', 'pim-elective'));
     root.appendChild(selectField('Recovery from procedure', 'pim-recovery', [

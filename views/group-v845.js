@@ -60,7 +60,7 @@ export const renderers = {
 
     root.appendChild(el('h2', { text: 'Recorded, but not used to stage' }));
     numField(root, 'Mean mitral gradient (mmHg)', 'mvs-mg', { min: '0', max: '60', step: '1' });
-    numField(root, 'Heart rate (beats per minute)', 'mvs-hr', { min: '20', max: '250', step: '1' });
+    numField(root, 'Heart rate (beats per minute)', 'mvs-hr', { min: '10', max: '600', step: '1' });
 
     root.appendChild(el('h2', { text: 'Symptoms' }));
     root.appendChild(checkField('Reduced exercise tolerance or breathlessness on exertion', 'mvs-sx'));
