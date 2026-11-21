@@ -115,6 +115,11 @@ export default [
     id: 'egfr',
     summary: 'Estimated GFR by CKD-EPI 2021 race-free equation from creatinine, age, sex (mL/min/1.73m^2). With height and weight it also returns eGFR in mL/min (multiplied by BSA and divided by 1.73), the form FDA guidance (March 2024) says to use for drug dosing.',
     compute: (a) => {
+      // spec-v1758: an envelope lib/bounds.js already declares; the field was blank in the worked example, so no finder had driven it.
+      // An entered height or weight was only checked when the other came with it. Height is in cm; the envelope is in metres.
+      for (const [key, v] of [['heightM', a.heightCm == null || a.heightCm === '' ? null : Number(a.heightCm) / 100], ['weightKg', a.weightKg == null || a.weightKg === '' ? null : Number(a.weightKg)]]) {
+        const f = v == null ? null : boundsAdvisory(key, v); if (f) throw new RangeError(f);
+      }
       const egfr = F.egfrCkdEpi2021(a);
       if (egfr == null) return null;
       const out = { egfr, unit: 'mL/min/1.73m^2' };

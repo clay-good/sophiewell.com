@@ -318,7 +318,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const pop = document.getElementById('nx-pop').value;
-      const r = naloxoneDose({ population: pop, route: document.getElementById('nx-route').value, weightKg: pop === 'pediatric' ? nv('nx-w') : undefined });
+      const r = naloxoneDose({ population: pop, route: document.getElementById('nx-route').value, weightKg: pop === 'pediatric' ? nv('nx-w') : (nvOrNull('nx-w') ?? undefined) }); // spec-v1758: an entered weight is checked for an adult too, as agents' is
       resultRow(o, [
         { label: 'Initial', value: r.dose },
         { label: 'Re-dose', value: r.redose },

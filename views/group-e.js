@@ -359,6 +359,8 @@ export const renderers = {
       const egAge = numOrNull('age');
       if (needValues(o, [['a serum creatinine', egScr], ['an age', egAge]])) { clearDerivationSteps(deriv); return; }
       const inputs = { scr: egScr, age: egAge, sex: document.getElementById('sex').value };
+      // spec-v1758: an entered height or weight is checked on its own, not only when the other came with it.
+      { const h = unitNumOpt('egfr-h'); const w = unitNumOpt('egfr-w'); const f = (h != null ? boundsAdvisory('heightM', h / 100) : null) || (w != null ? boundsAdvisory('weightKg', w) : null); if (f) throw new RangeError(f); }
       const v = C.egfrCkdEpi2021(inputs);
       o.appendChild(el('p', { text: `eGFR: ${v} mL/min/1.73 m^2 (CKD-EPI 2021 race-free)` }));
       // spec-v1641 row 23: the value for drug dosing is in mL/min, de-indexed by the patient's own body surface area.

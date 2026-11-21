@@ -131,7 +131,14 @@ export const renderers = {
 
       results.appendChild(el('h2', { text: `Interpretation (${entries.length} value${entries.length === 1 ? '' : 's'})` }));
       for (const entry of entries) {
-        const r = interpretLab(entry.analyteId, entry.value, opts);
+        // spec-v1758: a value outside its lib/bounds.js envelope (or a negative one) is refused; print the refusal
+        // alone rather than leave the values interpreted before it on screen.
+        let r;
+        try { r = interpretLab(entry.analyteId, entry.value, opts); } catch (err) {
+          clear(results);
+          results.appendChild(el('p', { class: 'muted', text: err.message }));
+          return;
+        }
         renderResult(results, r);
       }
       results.appendChild(el('p', { class: 'muted lab-result-footer',

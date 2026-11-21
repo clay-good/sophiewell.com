@@ -69,6 +69,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- 41 tools answered from an impossible value in a field their worked example leaves blank: pneumonia severity scored
+  a temperature of 67.5 C, Fick output read a heart rate of 450 as a normal cardiac index, and dosing tools dosed a
+  750 kg weight. Each now refuses a value outside its plausible range, whatever mode is chosen. Berlin ARDS no longer
+  grades a blank PaO2 as severe.
 - New York nurse training: the updated child-abuse course was due November 17, 2026. That date has passed, so the
   tool now says "was due by" and tells a nurse who has not taken it to take it now. NYSED's page, re-read November 21,
   2026, shows no extension.

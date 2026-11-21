@@ -244,7 +244,8 @@ export const renderers = {
       if (needValues(o, [['a pH', pH], ['a PaCO2', paco2], ['a bicarbonate', hco3]])) return;
       const r = C.abgInterpret({
         pH, paco2, hco3,
-        pao2: nv('pao2'), fio2: nv('fio2'),
+        // spec-v1758: a blank PaO2 reads as null, not 0, now that abgInterpret checks an entered PaO2 on its own.
+        pao2: nvOrNull('pao2'), fio2: nv('fio2'),
       });
       const items = [el('li', { text: `Primary disorder: ${r.primary}` })];
       if (r.compensation) items.push(el('li', { text: r.compensation }));
@@ -2714,7 +2715,7 @@ export const renderers = {
         bilateralOpacities: checked('ba-bilat'),
         notExplainedByCardiacOrOverload: checked('ba-not'),
         peepGe5cmH2O: checked('ba-peep'),
-        pao2: nv('ba-pao2'),
+        pao2: nvOrNull('ba-pao2'), // spec-v1758: blank stays missing, not 0 (the PaO2 floor would refuse 0)
         fio2: nv('ba-fio2'),
       });
       o.appendChild(el('h2', { text: r.ards ? `ARDS, ${r.severity || '(severity pending)'}` : 'ARDS criteria not met' }));

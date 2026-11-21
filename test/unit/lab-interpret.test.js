@@ -121,10 +121,12 @@ test('flag taxonomy: every result uses one of the four bands from spec-v6 §3.3'
   const seen = new Set();
   for (const id of Object.keys(LAB_ANALYTES)) {
     const a = LAB_ANALYTES[id];
-    seen.add(interpretLab(id, a.refLow + (a.refHigh - a.refLow) / 2).flag);
+    // spec-v1758: a low probe below the analyte's lib/bounds.js envelope (BUN 0.5, AST/ALT/triglycerides 0) is refused, not banded.
+    const probe = (v) => { try { seen.add(interpretLab(id, v).flag); } catch (e) { if (!(e instanceof RangeError)) throw e; } };
+    probe(a.refLow + (a.refHigh - a.refLow) / 2);
     // spec-v1682: a negative concentration is refused, so the low probes stop at 0 for the one-sided lipids.
-    seen.add(interpretLab(id, Math.max(0, a.refLow - (a.refHigh - a.refLow) * 0.02)).flag);
-    seen.add(interpretLab(id, Math.max(0, a.refLow - (a.refHigh - a.refLow) * 0.5)).flag);
+    probe(Math.max(0, a.refLow - (a.refHigh - a.refLow) * 0.02));
+    probe(Math.max(0, a.refLow - (a.refHigh - a.refLow) * 0.5));
   }
   for (const f of seen) {
     assert.ok(
@@ -143,6 +145,8 @@ test('oneSidedLow analytes never flag low (spec-v59 §2.3 regression)', () => {
     if (!LAB_ANALYTES[id].oneSidedLow) continue;
     // An impossibly low value (and a moderately low one) must not be flagged low.
     for (const v of [0, 1, 10]) {
+      // spec-v1758: a triglyceride of 0 is below its lib/bounds.js envelope (1 mg/dL) and is refused.
+      if (id === 'triglycerides' && v === 0) { assert.throws(() => interpretLab(id, v), RangeError); continue; }
       const r = interpretLab(id, v);
       assert.notEqual(r.direction, 'low', `${id} at ${v} should not flag low`);
       assert.equal(r.flag, 'within-range', `${id} at ${v} should be within-range`);
