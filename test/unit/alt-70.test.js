@@ -36,7 +36,8 @@ test('thresholds are inclusive at the boundary', () => {
 });
 
 test('spec-v1741: a WBC past the envelope is refused, a high real one and the example answer', () => {
-  const tenX = alt70({ asymmetry: 1, wbc: 2000, hr: 92 });
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  const tenX = alt70({ asymmetry: 1, wbc: 2001, hr: 92 });
   assert.equal(tenX.valid, false);
   assert.equal(tenX.total, null);
   assert.match(tenX.band, /plausible range for white blood cell count/);

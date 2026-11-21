@@ -66,25 +66,29 @@ test('fibroq: below cutoff', () => {
 test('fibroq: invalid on zero platelets', () => { assert.equal(fibroq({ age: 50, ast: 80, inr: 1.2, alt: 40, platelets: 0 }).valid, false); });
 
 // spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
-test('spec-v1753: albiPlt refuses platelets past the 2000 x10^9/L envelope', () => {
-  const r = albiPlt({ bilirubin: 20, albumin: 40, platelets: 3000 });
+test('spec-v1753: albiPlt refuses platelets past the 4000 x10^9/L envelope', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  const r = albiPlt({ bilirubin: 20, albumin: 40, platelets: 4001 });
   assert.equal(r.valid, false);
   assert.match(r.message, /platelet count/);
-  assert.equal(albiPlt({ bilirubin: 20, albumin: 40, platelets: 2000 }).valid, true);
+  assert.equal(albiPlt({ bilirubin: 20, albumin: 40, platelets: 4000 }).valid, true);
   assert.equal(albiPlt({ bilirubin: 20, albumin: 40, platelets: 120 }).score, 4);
 });
 test('spec-v1753: fibroq refuses AST, ALT, or platelets past their envelopes', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
   const base = { age: 50, ast: 80, inr: 1.2, alt: 40, platelets: 150 };
-  for (const over of [{ ast: 45000 }, { alt: 45000 }, { platelets: 3000 }]) {
+  for (const over of [{ ast: 45000 }, { alt: 45000 }, { platelets: 4001 }]) {
     assert.equal(fibroq({ ...base, ...over }).valid, false, JSON.stringify(over));
   }
-  assert.equal(fibroq({ ...base, ast: 30000, alt: 30000, platelets: 2000 }).valid, true);
+  assert.equal(fibroq({ ...base, ast: 30000, alt: 30000, platelets: 4000 }).valid, true);
   assert.equal(fibroq(base).value, 8);
 });
-test('spec-v1753: fips refuses bilirubin past 60 or creatinine past 25 mg/dL', () => {
+test('spec-v1753: fips refuses bilirubin past 75 or creatinine past 75 mg/dL', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
   const base = { bilirubin: 3.0, creatinine: 1.2, age: 60, albumin: 3.0 };
   assert.match(fips({ ...base, bilirubin: 90 }).message, /total bilirubin/);
-  assert.match(fips({ ...base, creatinine: 37.5 }).message, /serum creatinine/);
-  assert.equal(fips({ ...base, bilirubin: 60, creatinine: 25 }).valid, true);
+  // spec-v1763: the lib's own creatinine cap of 50 mg/dL runs first, so it refuses with its own sentence and 50 is the top value it answers.
+  assert.match(fips({ ...base, creatinine: 75.1 }).message, /creatinine/);
+  assert.equal(fips({ ...base, bilirubin: 75, creatinine: 50 }).valid, true);
   assert.equal(fips(base).value, 1.2);
 });

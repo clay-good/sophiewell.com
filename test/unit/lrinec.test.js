@@ -83,7 +83,8 @@ test('a complete panel reads exactly as before', () => {
 
 test('spec-v1741: a WBC, hemoglobin or sodium past the envelope is refused; high real values and the example answer', () => {
   const ex = { crp: 180, wbc: 26, hemoglobin: 10, sodium: 134 };
-  for (const [k, v, label] of [['wbc', 2000, /white blood cell count/], ['hemoglobin', 250, /hemoglobin/], ['sodium', 2000, /serum sodium/]]) {
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  for (const [k, v, label] of [['wbc', 2001, /white blood cell count/], ['hemoglobin', 250, /hemoglobin/], ['sodium', 2000, /serum sodium/]]) {
     const r = lrinec({ ...ex, [k]: v });
     assert.equal(r.valid, false, k);
     assert.equal(r.total, null, k);

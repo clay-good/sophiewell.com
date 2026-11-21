@@ -65,7 +65,8 @@ test('an impossible baseline creatinine used to erase the whole staging', () => 
   assert.match(real.band, /AKIN stage 3/);
   const bad = akinAki({ baselineCr: 250, currentCr: 3.0 });
   assert.equal(bad.valid, false);
-  assert.match(bad.message, /baseline creatinine in mg\/dL must be between 0.1 and 25/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.match(bad.message, /baseline creatinine in mg\/dL must be between 0.1 and 75/);
   assert.ok(!/no AKI criteria met/.test(bad.message));
 });
 

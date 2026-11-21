@@ -30,13 +30,13 @@ const REPORT = 150_000; // what the lab report says
 const FIELD = 150; // what the field wants
 
 test('the ceiling is the one lib/bounds.js already declared', () => {
-  assert.equal(BOUNDS.platelets.max, 2000);
+  assert.equal(BOUNDS.platelets.max, 4000); // spec-v1763: bound widened (source in lib/bounds.js)
   assert.match(BOUNDS.platelets.note, /beyond recorded extremes/);
 });
 
 test('fib4 and apri refuse the report figure and name the conversion', () => {
   assert.throws(() => fib4({ ageYears: 55, ast: 60, alt: 40, plateletsK: REPORT }),
-    /above ~2000.*entered as 150\./s);
+    /above ~4000.*entered as 150\./s); // spec-v1763: bound widened (source in lib/bounds.js)
   assert.throws(() => apri({ ast: 60, astUln: 40, plateletsK: REPORT }),
     /entered as 150\./);
   // and still answer the figure the field asks for

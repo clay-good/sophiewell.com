@@ -9,22 +9,22 @@ import clinicalAdapters from '../../mcp/adapters/clinical.js';
 
 const LAB = [
   // [analyte, just past the ceiling, in range]
-  ['sodium', 200.1, 140],
+  ['sodium', 210.1, 140], // spec-v1763: bound widened (source in lib/bounds.js)
   ['potassium', 15.1, 4], // spec-v1762: the ceiling rose to 15 (survival from 14.0 mmol/L is reported)
   ['chloride', 160.1, 100],
-  ['bicarbonate', 60.1, 24],
+  ['bicarbonate', 75.1, 24], // spec-v1763: bound widened (source in lib/bounds.js)
   ['bun', 300.1, 15],
-  ['creatinine', 25.1, 1],
-  ['glucose', 2000.1, 90],
-  ['calcium', 20.1, 9.5],
+  ['creatinine', 75.1, 1], // spec-v1763: bound widened (source in lib/bounds.js)
+  ['glucose', 3000.1, 90], // spec-v1763: bound widened (source in lib/bounds.js)
+  ['calcium', 25.1, 9.5], // spec-v1763: bound widened (source in lib/bounds.js)
   ['albumin', 7.1, 4],
   ['ast', 30001, 25],
   ['alt', 30001, 25],
-  ['bilirubin', 60.1, 0.8],
-  ['wbc', 200.1, 7],
+  ['bilirubin', 75.1, 0.8], // spec-v1763: bound widened (source in lib/bounds.js)
+  ['wbc', 2000.1, 7], // spec-v1763: bound widened (source in lib/bounds.js)
   ['hemoglobin', 25.1, 14],
   ['hematocrit', 75.1, 42],
-  ['platelets', 2000.1, 250],
+  ['platelets', 4000.1, 250], // spec-v1763: bound widened (source in lib/bounds.js)
   ['triglycerides', 30001, 120],
 ];
 
@@ -43,7 +43,7 @@ test('abg: an entered PaO2 past the envelope is refused even without an FiO2', (
 });
 
 test('cerebral-perfusion-pressure: a diastolic past the envelope is refused; blank (0) still allowed', () => {
-  assert.throws(() => cerebralPerfusionPressure({ map: 90, dbp: 200.1, icp: 20 }), RangeError);
+  assert.throws(() => cerebralPerfusionPressure({ map: 90, dbp: 400.1, icp: 20 }), RangeError); // spec-v1763: bound widened (source in lib/bounds.js)
   assert.equal(cerebralPerfusionPressure({ map: 90, dbp: 60, icp: 20 }).cpp, 70);
   assert.equal(cerebralPerfusionPressure({ map: 90, icp: 20 }).cpp, 70);
 });

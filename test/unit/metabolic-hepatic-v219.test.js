@@ -80,10 +80,11 @@ test('spec-v1753: astAltRatio refuses AST or ALT past the 30,000 U/L envelope', 
   assert.equal(astAltRatio({ ast: 30000, alt: 30000 }).valid, true);
   assert.equal(astAltRatio({ ast: 60, alt: 30 }).ratio, 2);
 });
-test('spec-v1753: ggtPlatelet refuses platelets past the 2000 x10^9/L envelope', () => {
-  const r = ggtPlatelet({ ggt: 100, ggtUln: 50, platelets: 3000 });
+test('spec-v1753: ggtPlatelet refuses platelets past the 4000 x10^9/L envelope', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  const r = ggtPlatelet({ ggt: 100, ggtUln: 50, platelets: 4001 });
   assert.equal(r.valid, false);
   assert.match(r.message, /platelet count/);
-  assert.equal(ggtPlatelet({ ggt: 100, ggtUln: 50, platelets: 2000 }).valid, true);
+  assert.equal(ggtPlatelet({ ggt: 100, ggtUln: 50, platelets: 4000 }).valid, true);
   assert.equal(ggtPlatelet({ ggt: 100, ggtUln: 50, platelets: 200 }).gpr, 1);
 });

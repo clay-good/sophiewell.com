@@ -22,7 +22,7 @@ const answered = (r) => assert.notEqual(r.valid, false, JSON.stringify(r));
 
 test('kfre: the 8-variable labs are checked even on the 4-variable form', () => {
   const base = { mode: '4', age: 60, male: true, egfr: 30, acr: 300 };
-  for (const [k, past, ok] of [['calcium', 20.1, 9.5], ['phosphate', 20.1, 4], ['bicarbonate', 60.1, 24], ['albumin', 7.1, 4]]) {
+  for (const [k, past, ok] of [['calcium', 25.1, 9.5], ['phosphate', 20.1, 4], ['bicarbonate', 75.1, 24], ['albumin', 7.1, 4]]) { // spec-v1763: bound widened (source in lib/bounds.js)
     refused(kfre({ ...base, [k]: past }));
     refused(kfre({ ...base, mode: '8', calcium: 9.5, phosphate: 4, bicarbonate: 24, albumin: 4, [k]: past }));
     answered(kfre({ ...base, [k]: ok }));
@@ -37,7 +37,7 @@ test('ckd-epi-cystatin: height (cm) and weight (kg)', () => {
 });
 
 test('4peps: heart rate and SpO2', () => {
-  refused(fourPeps({ age: 50, heartRate: 301 }));
+  refused(fourPeps({ age: 50, heartRate: 601 })); // spec-v1763: bound widened (source in lib/bounds.js)
   refused(fourPeps({ age: 50, spo2: 101 }));
   answered(fourPeps({ age: 50, heartRate: 90, spo2: 96 }));
 });
@@ -45,7 +45,7 @@ test('4peps: heart rate and SpO2', () => {
 test('fick-cardiac-output: age and heart rate are checked even with a measured VO2', () => {
   const base = { method: 'measured', vo2: 250, hb: 14, sao2: 98, svo2: 70, bsa: 1.9 };
   refused(fickCardiacOutput({ ...base, age: 131 }));
-  refused(fickCardiacOutput({ ...base, hr: 301 }));
+  refused(fickCardiacOutput({ ...base, hr: 601 })); // spec-v1763: bound widened (source in lib/bounds.js)
   answered(fickCardiacOutput({ ...base, age: 50, hr: 80 }));
 });
 
@@ -63,7 +63,7 @@ test('kawasaki-criteria: ESR on the classic pathway', () => {
 
 test('kings-college: lactate', () => {
   const base = { ph: 7.2, lactateTiming: 'early' };
-  refused(kingsCollege({ ...base, lactate: 40.1 }));
+  refused(kingsCollege({ ...base, lactate: 50.1 })); // spec-v1763: bound widened (source in lib/bounds.js)
   answered(kingsCollege({ ...base, lactate: 4 }));
 });
 
@@ -71,7 +71,7 @@ test('tls-cairo-bishop: the three baselines', () => {
   const base = { potassium: 5, phosphate: 4, calcium: 9, uricAcid: 7 };
   refused(tlsCairoBishop({ ...base, potassiumBaseline: 15.1 }));
   refused(tlsCairoBishop({ ...base, phosphateBaseline: 20.1 }));
-  refused(tlsCairoBishop({ ...base, calciumBaseline: 20.1 }));
+  refused(tlsCairoBishop({ ...base, calciumBaseline: 25.1 })); // spec-v1763: bound widened (source in lib/bounds.js)
   answered(tlsCairoBishop({ ...base, potassiumBaseline: 4, phosphateBaseline: 3.5, calciumBaseline: 9.5 }));
 });
 
@@ -89,7 +89,7 @@ test('peds-bmi-percentile: weight and height are checked even when a BMI is ente
 });
 
 test('sbp-ascitic-fluid: bilirubin', () => {
-  refused(sbpAsciticFluid({ pmnCount: 300, bilirubin: 60.1 }));
+  refused(sbpAsciticFluid({ pmnCount: 300, bilirubin: 75.1 })); // spec-v1763: bound widened (source in lib/bounds.js)
   answered(sbpAsciticFluid({ pmnCount: 300, bilirubin: 5 }));
 });
 

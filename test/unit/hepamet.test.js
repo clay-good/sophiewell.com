@@ -44,9 +44,10 @@ test('score always within 0..1', () => {
 });
 
 // spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
-test('spec-v1753: a platelet count past the 2000 envelope is refused', () => {
+test('spec-v1753: a platelet count past the 4000 envelope is refused', () => {
   const ex = { age: 68, sex: 'male', ast: 90, albumin: 3.5, platelets: 120, diabetes: true };
-  const past = hepamet({ ...ex, platelets: 3000 });
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  const past = hepamet({ ...ex, platelets: 4001 });
   assert.equal(past.valid, false);
   assert.match(past.message, /platelet count/);
   assert.equal(hepamet({ ...ex, platelets: 2000 }).valid, true);

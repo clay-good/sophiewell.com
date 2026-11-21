@@ -56,20 +56,24 @@ test('corrected-k: rule of thumb', () => {
 test('corrected-k: invalid pH out of range', () => { assert.equal(correctedPotassiumPh({ potassium: 4, ph: 5 }).valid, false); });
 
 // spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
-test('spec-v1753: salazarCorcoran refuses a creatinine past the 25 mg/dL envelope', () => {
+test('spec-v1753: salazarCorcoran refuses a creatinine past the 75 mg/dL envelope', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
   const base = { age: 50, weight: 120, height: 170, female: false };
-  assert.equal(salazarCorcoran({ ...base, creatinine: 37.5 }).valid, false);
-  assert.match(salazarCorcoran({ ...base, creatinine: 37.5 }).message, /creatinine/i);
-  assert.equal(salazarCorcoran({ ...base, creatinine: 25 }).valid, true);
+  assert.equal(salazarCorcoran({ ...base, creatinine: 75.1 }).valid, false);
+  assert.match(salazarCorcoran({ ...base, creatinine: 75.1 }).message, /creatinine/i);
+  // spec-v1763: the lib's own creatinine cap of 50 mg/dL still refuses 50-75 (named in the spec-v1763 report), so 50 is the top value it answers.
+  assert.equal(salazarCorcoran({ ...base, creatinine: 50 }).valid, true);
   assert.equal(salazarCorcoran({ ...base, creatinine: 1.2 }).valid, true);
 });
-test('spec-v1753: feBicarbonate refuses a plasma bicarbonate past 60 or a plasma creatinine past 25', () => {
+test('spec-v1753: feBicarbonate refuses a plasma bicarbonate past 75 or a plasma creatinine past 75', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
   const base = { urineHco3: 20, plasmaHco3: 24, plasmaCr: 1.0, urineCr: 50 };
   assert.equal(feBicarbonate({ ...base, plasmaHco3: 90 }).valid, false);
   assert.match(feBicarbonate({ ...base, plasmaHco3: 90 }).message, /bicarbonate/i);
-  assert.equal(feBicarbonate({ ...base, plasmaCr: 37.5 }).valid, false);
-  assert.match(feBicarbonate({ ...base, plasmaCr: 37.5 }).message, /creatinine/i);
-  assert.equal(feBicarbonate({ ...base, plasmaHco3: 60, plasmaCr: 25 }).valid, true);
+  assert.equal(feBicarbonate({ ...base, plasmaCr: 75.1 }).valid, false);
+  assert.match(feBicarbonate({ ...base, plasmaCr: 75.1 }).message, /creatinine/i);
+  // spec-v1763: the lib's own plasma creatinine cap of 50 mg/dL still refuses 50-75 (named in the spec-v1763 report), so 50 is the top value it answers.
+  assert.equal(feBicarbonate({ ...base, plasmaHco3: 75, plasmaCr: 50 }).valid, true);
   assert.equal(feBicarbonate(base).valid, true);
 });
 // spec-v1762: the envelope ceiling rose from 10 to 15 mmol/L (survival from 14.0 is reported).

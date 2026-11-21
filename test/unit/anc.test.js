@@ -47,8 +47,10 @@ test('anc grades follow both CTCAE versions (spec-v1641 row 5)', () => {
 });
 
 // spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
-test('spec-v1753: a white cell count past the 200 envelope is refused', () => {
-  assert.throws(() => anc({ wbc: 300, segs: 60, bands: 5 }), /white blood cell count/);
+test('spec-v1753: a white cell count past the 2000 envelope is refused', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  // lib/clinical-v6.js still caps wbc at 500 itself, so that message can come first.
+  assert.throws(() => anc({ wbc: 2001, segs: 60, bands: 5 }), /white blood cell count|wbc must be between/);
   assert.equal(anc({ wbc: 200, segs: 60, bands: 5 }).anc, 130000);
   assert.equal(anc({ wbc: 5, segs: 60, bands: 5 }).anc, 3250);
 });

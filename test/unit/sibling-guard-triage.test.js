@@ -34,7 +34,8 @@ import { BOUNDS } from '../../lib/bounds.js';
 
 test('toronto-hcc-risk refuses the platelet count its sibling already refused', () => {
   const T = { age: 60, sex: 'male', etiology: 'hcv', platelets: 150 };
-  assert.match(torontoHccRisk({ ...T, platelets: 20000 }).message, /^Platelet count .* must be between 0 and 2000/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.match(torontoHccRisk({ ...T, platelets: 20000 }).message, /^Platelet count .* must be between 0 and 4000/);
   assert.match(torontoHccRisk({ ...T, age: 900 }).message, /^Age \(years\) must be/);
   assert.equal(torontoHccRisk(T).valid, true);
   // A blank field is still asked for, in the tile's own words.
@@ -57,7 +58,8 @@ test('salicylate reads its pH envelope from the table rather than a second copy'
   // The two ends are BOUNDS.pH's, so a pH outside it adds no criterion.
   const outside = salicylateToxicity({ level: 45, unit: 'mgdl', pH: BOUNDS.pH.min });
   assert.doesNotMatch(String(outside.criteria || []), /arterial pH/);
-  assert.equal(BOUNDS.pH.min, 6.5);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.equal(BOUNDS.pH.min, 6.3);
   assert.equal(BOUNDS.pH.max, 8);
 });
 

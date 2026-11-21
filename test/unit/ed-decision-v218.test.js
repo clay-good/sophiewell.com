@@ -88,19 +88,23 @@ test('aas: CRP band depends on duration', () => {
 });
 
 // spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
-test('spec-v1753: airScore refuses a WBC past the 200 x10^9/L envelope', () => {
+test('spec-v1753: airScore refuses a WBC past the 2000 x10^9/L envelope', () => {
   const base = { vomiting: true, rifPain: true, rebound: '2', fever: true, wbc: 16, pmnPct: 86, crp: 60 };
-  const r = airScore({ ...base, wbc: 300 });
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  const r = airScore({ ...base, wbc: 2001 });
   assert.equal(r.valid, false);
-  assert.match(r.message, /white blood cell count/);
+  // The lib's own (narrower) cap now refuses first, in its own wording.
+  assert.match(r.message, /white blood cell count|WBC/);
   assert.equal(airScore({ ...base, wbc: 200 }).valid, true);
   assert.equal(airScore(base).score, 11);
 });
-test('spec-v1753: adultAppendicitis refuses a WBC past the 200 x10^9/L envelope', () => {
+test('spec-v1753: adultAppendicitis refuses a WBC past the 2000 x10^9/L envelope', () => {
   const base = { rlqPain: true, relocation: true, tenderness: true, age: 55, guarding: '4', wbc: 15, pmnPct: 84, crp: 100 };
-  const r = adultAppendicitis({ ...base, wbc: 300 });
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  const r = adultAppendicitis({ ...base, wbc: 2001 });
   assert.equal(r.valid, false);
-  assert.match(r.message, /white blood cell count/);
+  // The lib's own (narrower) cap now refuses first, in its own wording.
+  assert.match(r.message, /white blood cell count|WBC/);
   assert.equal(adultAppendicitis({ ...base, wbc: 200 }).valid, true);
   assert.equal(adultAppendicitis(base).score, 19);
 });

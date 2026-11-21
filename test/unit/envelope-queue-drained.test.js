@@ -118,10 +118,10 @@ test('the probe queue this wave drained is empty', () => {
 // one.
 test('the four gas functions guard the set, as their neighbour in the same file does', () => {
   const cases = [
-    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { ph: 80 }, /arterial pH \(6\.5 to 8\)/],
-    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { bicarbonate: 600 }, /serum bicarbonate \(2 to 60 mmol\/L\)/],
+    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { ph: 80 }, /arterial pH \(6\.3 to 8\)/], // spec-v1763: bound widened (source in lib/bounds.js)
+    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { bicarbonate: 600 }, /serum bicarbonate \(2 to 75 mmol\/L\)/], // spec-v1763: bound widened (source in lib/bounds.js)
     ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { hemoglobin: 250 }, /h[ae]moglobin \(2 to 25 g\/dL\)/i],
-    ['respAcidosis', respAcidosisCompensation, { paco2: 60, bicarbonate: 26, chronic: 'acute' }, { paco2: 2000 }, /PaCO2 \(5 to 200 mmHg\)/],
+    ['respAcidosis', respAcidosisCompensation, { paco2: 60, bicarbonate: 26, chronic: 'acute' }, { paco2: 2000 }, /PaCO2 \(5 to 250 mmHg\)/], // spec-v1763: bound widened (source in lib/bounds.js)
     ['respAcidosis', respAcidosisCompensation, { paco2: 60, bicarbonate: 26, chronic: 'acute' }, { bicarbonate: 600 }, /bicarbonate/],
     ['respAlkalosis', respAlkalosisCompensation, { paco2: 25, bicarbonate: 21, chronic: 'acute' }, { paco2: 2000 }, /PaCO2/],
     ['respAlkalosis', respAlkalosisCompensation, { paco2: 25, bicarbonate: 21, chronic: 'acute' }, { bicarbonate: 600 }, /bicarbonate/],
@@ -156,8 +156,8 @@ test('boundsAdvisory reads correctly for a unitless envelope', () => {
   // spec-v1198: the space before the unit was unconditional, so arterial pH --
   // which carries `unit: ''` -- read "(6.5 to 8 )". Only visible once a tile with
   // a unitless envelope started using the sentence.
-  assert.match(boundsAdvisory('pH', 80), /\(6\.5 to 8\); verify the units/);
-  assert.match(boundsAdvisory('bicarbonate', 600), /\(2 to 60 mmol\/L\); verify the units/);
+  assert.match(boundsAdvisory('pH', 80), /\(6\.3 to 8\); verify the units/); // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.match(boundsAdvisory('bicarbonate', 600), /\(2 to 75 mmol\/L\); verify the units/);
 
   // And every note in the table is "human name; detail", which is what the
   // sentence splits on to name the field. The Glasgow Coma Scale had no
@@ -177,9 +177,9 @@ test('news2, mods and saps-ii guard the set, as mews already did', () => {
   const news = { rr: 14, spo2: 98, sbp: 124, pulse: 78, temp: 37, acvpu: 'A' };
   assert.equal(news2(news).score, 0);
   for (const [bad, pattern] of [
-    [{ sbp: 3000 }, /systolic blood pressure \(20 to 300 mmHg\)/],
-    [{ pulse: 3000 }, /heart rate \(10 to 300 bpm\)/],
-    [{ temp: 450 }, /core temperature \(25 to 45 C\)/],
+    [{ sbp: 3000 }, /systolic blood pressure \(20 to 500 mmHg\)/], // spec-v1763: bound widened (source in lib/bounds.js)
+    [{ pulse: 3000 }, /heart rate \(10 to 600 bpm\)/],
+    [{ temp: 450 }, /core temperature \(13 to 47 C\)/],
   ]) {
     const r = news2({ ...news, ...bad });
     assert.equal(r.score, null, JSON.stringify(bad));
@@ -407,7 +407,7 @@ test('sokal-cml guards the age beside the platelet count it already guarded', ()
   assert.match(edge.band, /ELTS/);
 
   // And the platelet guard spec-v1180 added is untouched.
-  assert.match(sokalCml({ ...ok, platelets: 20000 }).band, /above ~2000, beyond recorded extremes/);
+  assert.match(sokalCml({ ...ok, platelets: 20000 }).band, /above ~4000, beyond recorded extremes/); // spec-v1763: bound widened (source in lib/bounds.js)
 });
 
 // spec-v1205: three more of probe-unguarded-sibling's rows, in modules whose
@@ -451,7 +451,7 @@ test('cpis-vap converts the shared leukocyte envelope to its per-mm3 unit', () =
 
   const hot = cpisVap({ ...ok, temp: 450 });
   assert.equal(hot.valid, false);
-  assert.match(hot.band, /plausible range for core temperature \(25 to 45 C\)/);
+  assert.match(hot.band, /plausible range for core temperature \(13 to 47 C\)/); // spec-v1763: bound widened (source in lib/bounds.js)
 });
 
 test('euroscore-ii guards the age, as abi in the same module already did', () => {
@@ -496,7 +496,7 @@ test('hscore-hlh guards the temperature, and only the temperature', () => {
 
   const hot = hscoreHlh({ ...hs, temp: 450 });
   assert.equal(hot.valid, false);
-  assert.match(hot.band, /plausible range for core temperature \(25 to 45 C\)/);
+  assert.match(hot.band, /plausible range for core temperature \(13 to 47 C\)/); // spec-v1763: bound widened (source in lib/bounds.js)
   assert.doesNotMatch(hot.band, /HScore \d/);
 
   // 45 C is the top of the envelope and still scores.

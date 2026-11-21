@@ -33,10 +33,13 @@ test('cci rejects impossible input', () => {
 });
 
 // spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
-test('spec-v1753: a pre- or post-transfusion platelet count past the 2000 envelope is refused', () => {
+test('spec-v1753: a pre- or post-transfusion platelet count past the 4000 envelope is refused', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
   const ex = { prePlt: 10, postPlt: 40, bsaM2: 1.8, doseE11: 3.0 };
-  assert.throws(() => cciPlatelet({ ...ex, postPlt: 3000 }), /platelet count/);
-  assert.throws(() => cciPlatelet({ ...ex, prePlt: 3000 }), /platelet count/);
-  assert.equal(typeof cciPlatelet({ ...ex, postPlt: 2000 }).cci, 'number');
+  // spec-v1763: the lib's own num(..., { max: 3000 }) runs before the envelope, so past 4000 it refuses with its own message
+  // and 3000 is the top value it answers.
+  assert.throws(() => cciPlatelet({ ...ex, postPlt: 4001 }), RangeError);
+  assert.throws(() => cciPlatelet({ ...ex, prePlt: 4001 }), RangeError);
+  assert.equal(typeof cciPlatelet({ ...ex, postPlt: 3000 }).cci, 'number');
   assert.equal(cciPlatelet(ex).cci, 18000);
 });

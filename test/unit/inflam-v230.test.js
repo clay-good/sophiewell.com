@@ -38,10 +38,12 @@ test('car: invalid without both', () => {
 });
 
 // spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
-test('spec-v1753: piv refuses platelets past the 2000 x10^3/uL envelope', () => {
+test('spec-v1753: piv refuses platelets past the 4000 x10^3/uL envelope', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
   const base = { anc: 4.0, amc: 0.5, alc: 2.0 };
-  assert.equal(piv({ ...base, plt: 3000 }).valid, false);
-  assert.match(piv({ ...base, plt: 3000 }).message, /platelet/i);
-  assert.equal(piv({ ...base, plt: 2000 }).valid, true);
+  assert.equal(piv({ ...base, plt: 4001 }).valid, false);
+  assert.match(piv({ ...base, plt: 4001 }).message, /platelet/i);
+  // spec-v1763: the lib's own 3000 cap still refuses 3000-4000 (named in the spec-v1763 report), so 3000 is the top value it answers.
+  assert.equal(piv({ ...base, plt: 3000 }).valid, true);
   assert.equal(piv({ ...base, plt: 250 }).valid, true);
 });

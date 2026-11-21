@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c2870f7a6e6f21c2`
-Generated: 2026-11-21T17:25:08.447Z
+Build ID: `929b67d00a8ac906`
+Generated: 2026-11-21T18:10:50.461Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -189,7 +189,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/borden-davf-v441.js` | 3109 | `d08c660355725cc46ea8461c2706155f110f269ad2aba82522745e71ecc16e44` |
 | `lib/borrmann-gastric-v394.js` | 3865 | `df918e05475876bcc710c4fc8997aa67ee7d4832f352f1ae062fa1ab3d4678b1` |
 | `lib/botulism-antitoxin-dose-v1636.js` | 8255 | `059a120105337ffa818b03f6721da3133049c3a01a9c36e28505e0aaac1ceff6` |
-| `lib/bounds.js` | 13378 | `2b24640aa91f8b8079b418f4d40370ca125a5bc73f1e52efd3ddcfd29fc5489f` |
+| `lib/bounds.js` | 15865 | `1ad2879cae64926b1dac28e7d6c62fa2895221e49f3a6e1895baf97eae377522` |
 | `lib/boyd-griffin-v458.js` | 3748 | `7f5f81294d8ba43ad3a72d67bc9f47c590ddaf6f4a003c713715d1336927934c` |
 | `lib/bp-categories-v843.js` | 6552 | `9d0291a7f64273cf1fa5c94601e7725fe5c376d28b8dcec30d22fbf5f5db3eb3` |
 | `lib/bpe-periodontal-v1481.js` | 4402 | `c633bd68826107e537eb99ecfd74d1a007c33e7bdf76d623fe170df1e0816585` |

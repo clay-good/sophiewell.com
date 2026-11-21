@@ -51,11 +51,13 @@ test('score always within 0..1', () => {
 });
 
 // spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
-test('spec-v1753: a platelet count past the 2000 envelope is refused', () => {
+test('spec-v1753: a platelet count past the 4000 envelope is refused', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
   const ex = { lsm: 12, ast: 50, alt: 40, platelets: 180, age: 60, sex: 'male', diabetes: true };
-  const past = agile3plus({ ...ex, platelets: 3000 });
+  const past = agile3plus({ ...ex, platelets: 4001 });
   assert.equal(past.valid, false);
   assert.match(past.message, /platelet count/);
-  assert.equal(agile3plus({ ...ex, platelets: 2000 }).valid, true);
+  // spec-v1763: the lib's own positive(platelets, 3000) cap still refuses 3000-4000, so the top answered value is 3000.
+  assert.equal(agile3plus({ ...ex, platelets: 3000 }).valid, true);
   assert.equal(agile3plus(ex).score, 0.868);
 });

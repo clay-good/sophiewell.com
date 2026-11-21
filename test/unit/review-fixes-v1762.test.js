@@ -25,7 +25,8 @@ test('critical-low hemoglobin, hematocrit, albumin and glucose are flagged, not 
     assert.doesNotThrow(() => interpretLab(analyte, low), analyte);
     assert.equal(envelopeAdvisory(analyte, low), null, analyte);
   }
-  assert.throws(() => interpretLab('glucose', 3000), /plausible range/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.throws(() => interpretLab('glucose', 3001), /plausible range/);
   for (const key of CEILING_ONLY) assert.match(String(envelopeAdvisory(key, BOUNDS[key].max * 2)), /plausible range/, key);
 });
 

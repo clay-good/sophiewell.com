@@ -29,15 +29,17 @@ import { map, aaGradient, pfRatio, egfrCkdEpi2021, cockcroftGault } from '../../
 import { BOUNDS } from '../../lib/bounds.js';
 
 test('map refuses a pressure no patient has', () => {
-  assert.throws(() => map({ sbp: 3000, dbp: 80 }), /sbp must be between 20 and 300/);
-  assert.throws(() => map({ sbp: 120, dbp: 2000 }), /dbp must be between 5 and 200/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.throws(() => map({ sbp: 3000, dbp: 80 }), /sbp must be between 20 and 500/);
+  assert.throws(() => map({ sbp: 120, dbp: 2000 }), /dbp must be between 5 and 400/);
   assert.equal(map({ sbp: 120, dbp: 80 }), 93.3);
   assert.equal(typeof map({ sbp: BOUNDS.sbp.max, dbp: BOUNDS.dbp.max }), 'number');
 });
 
 test('aa-gradient refuses the tension that made the gradient negative', () => {
   assert.throws(() => aaGradient({ fio2: 0.21, paco2: 40, pao2: 7000 }), /pao2 must be between 10 and 700/);
-  assert.throws(() => aaGradient({ fio2: 0.21, paco2: 2000, pao2: 90 }), /paco2 must be between 5 and 200/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.throws(() => aaGradient({ fio2: 0.21, paco2: 2000, pao2: 90 }), /paco2 must be between 5 and 250/);
   assert.equal(aaGradient({ fio2: 0.21, paco2: 40, pao2: 90 }).aaGradient, 9.73);
 });
 
@@ -51,10 +53,11 @@ test('pf-ratio refuses the PaO2 that read as Normal', () => {
 });
 
 test('the two clearance estimates refuse a creatinine that compresses to zero', () => {
-  assert.throws(() => egfrCkdEpi2021({ scr: 250, age: 60, sex: 'M' }), /scr must be between 0.1 and 25/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.throws(() => egfrCkdEpi2021({ scr: 250, age: 60, sex: 'M' }), /scr must be between 0.1 and 75/);
   assert.throws(() => egfrCkdEpi2021({ scr: 1.0, age: 900, sex: 'M' }), /age must be between 0 and 130/);
   assert.equal(egfrCkdEpi2021({ scr: 1.0, age: 60, sex: 'M' }), 86.2);
-  assert.throws(() => cockcroftGault({ age: 60, weightKg: 80, scr: 250, sex: 'M' }), /scr must be between 0.1 and 25/);
+  assert.throws(() => cockcroftGault({ age: 60, weightKg: 80, scr: 250, sex: 'M' }), /scr must be between 0.1 and 75/);
   assert.throws(() => cockcroftGault({ age: 60, weightKg: 9000, scr: 1.0, sex: 'M' }), /weight kg must be between 0.2 and 500/);
   assert.equal(cockcroftGault({ age: 60, weightKg: 80, scr: 1.0, sex: 'M' }), 88.89);
   // The hard denominator floor is still the compute function's own.

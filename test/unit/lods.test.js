@@ -48,7 +48,8 @@ test('total is capped at the published maximum of 22', () => {
 // spec-v1753: the envelope lib/bounds.js declares; 1.5 times its ceiling was answered, ten times was refused.
 test('spec-v1753: creatinine, WBC, platelets and bilirubin past their envelopes are refused', () => {
   const ex = { gcs: 13, hr: 80, sbp: 120, bun: 30, creatinine: 1.0, urineL: 1.5, wbc: 8, platelets: 200, bilirubin: 1 };
-  for (const [k, v, re] of [['creatinine', 37.5, /creatinine/], ['wbc', 300, /white blood cell/], ['platelets', 3000, /platelet count/], ['bilirubin', 90, /bilirubin/]]) {
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  for (const [k, v, re] of [['creatinine', 75.5, /creatinine/i], ['wbc', 2001, /white blood cell|wbc/i], ['platelets', 4001, /platelet/i], ['bilirubin', 90, /bilirubin/i]]) {
     const r = lods({ ...ex, [k]: v });
     assert.equal(r.valid, false, k);
     assert.match(r.message, re);

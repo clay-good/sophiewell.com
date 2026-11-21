@@ -8,7 +8,8 @@ import { startTriage, jumpStartTriage, naloxoneDose } from '../../lib/field.js';
 import { lrinec, alt70 } from '../../lib/traumaclass-v109.js';
 
 const psiBase = { age: 60, sex: 'M' };
-for (const [arg, over, ok] of [['temp', 45.1, 37], ['bun', 301, 20], ['sodium', 201, 140], ['glucose', 2001, 110], ['hct', 75.1, 40], ['pao2', 701, 80]]) {
+// spec-v1763: bound widened (source in lib/bounds.js)
+for (const [arg, over, ok] of [['temp', 47.1, 37], ['bun', 301, 20], ['sodium', 211, 140], ['glucose', 3001, 110], ['hct', 75.1, 40], ['pao2', 701, 80]]) {
   test(`psi refuses ${arg} past its envelope and scores an in-range value`, () => {
     const bad = psi({ ...psiBase, [arg]: over });
     assert.equal(bad.valid, false);
@@ -27,8 +28,9 @@ test('berlin-ards refuses a PaO2 past 700 mmHg and grades an in-range one', () =
   assert.equal(berlinArds({ ...all, pao2: null }).pfRatio, null);
 });
 
-test('hellp refuses a platelet nadir past 2000 and classes an in-range one', () => {
-  assert.throws(() => hellp({ plateletNadirThousands: 2001 }), RangeError);
+test('hellp refuses a platelet nadir past 4000 and classes an in-range one', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.throws(() => hellp({ plateletNadirThousands: 4001 }), RangeError);
   assert.equal(hellp({ plateletNadirThousands: 40 }).mississippiClass, 1);
   assert.equal(hellp({ plateletNadirThousands: '' }).mississippiClass, null);
 });
@@ -52,7 +54,8 @@ test('naloxone refuses a weight past 500 kg and doses an in-range one', () => {
 });
 
 const lrLabs = { crp: 180, wbc: 26, hemoglobin: 10, sodium: 134, creatinine: 1.2, glucose: 120 };
-for (const [arg, over] of [['creatinine', 25.1], ['glucose', 2001]]) {
+// spec-v1763: bound widened (source in lib/bounds.js)
+for (const [arg, over] of [['creatinine', 75.1], ['glucose', 3001]]) {
   test(`lrinec refuses ${arg} past its envelope and scores an in-range value`, () => {
     const bad = lrinec({ ...lrLabs, [arg]: over });
     assert.equal(bad.valid, false);

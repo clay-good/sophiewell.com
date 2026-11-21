@@ -18,11 +18,11 @@
 //
 // Every one is a number a reader acts on, computed from a pressure ten times the
 // highest ever recorded. The envelope and the sentence are `BOUNDS.sbp` and
-// `boundsAdvisory` in lib/bounds.js (20-300 mmHg); no clinical number is
+// `boundsAdvisory` in lib/bounds.js (20-500 mmHg); no clinical number is
 // invented here.
 //
 // Each test also pins the other half: the tile still answers at its worked
-// example, and at 300 mmHg -- the top of the envelope, which is a hypertensive
+// example, and at 500 mmHg -- the top of the envelope (spec-v1763: widened from 300), a hypertensive
 // emergency and not an error.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -36,7 +36,7 @@ const REFUSAL = /plausible range for systolic blood pressure/i;
 
 test('the envelope these guards read is the one lib/bounds.js publishes', () => {
   assert.equal(BOUNDS.sbp.min, 20);
-  assert.equal(BOUNDS.sbp.max, 300);
+  assert.equal(BOUNDS.sbp.max, 500); // spec-v1763: bound widened (source in lib/bounds.js)
 });
 
 test('score2 refuses an impossible systolic BP instead of banding it very-high', () => {

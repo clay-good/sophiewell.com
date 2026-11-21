@@ -62,18 +62,20 @@ test('rome-iv-ibs: met/not-met and subtype', () => {
 });
 
 // spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
-test('spec-v1753: palbi refuses bilirubin past 60 mg/dL or platelets past 2000 x10^9/L', () => {
+test('spec-v1753: palbi refuses bilirubin past 75 mg/dL or platelets past 4000 x10^9/L', () => {
   const base = { bilirubin: 1.0, albumin: 4.0, platelets: 250 };
   assert.equal(palbi({ ...base, bilirubin: 90 }).valid, false);
   assert.match(palbi({ ...base, bilirubin: 90 }).message, /bilirubin/i);
-  assert.equal(palbi({ ...base, platelets: 3000 }).valid, false);
-  assert.match(palbi({ ...base, platelets: 3000 }).message, /platelet/i);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.equal(palbi({ ...base, platelets: 4001 }).valid, false);
+  assert.match(palbi({ ...base, platelets: 4001 }).message, /platelet/i);
   assert.equal(palbi({ ...base, bilirubin: 60, platelets: 2000 }).valid, true);
   assert.equal(palbi(base).valid, true);
 });
-test('spec-v1753: meldNa refuses bilirubin past 60, INR past 20, or creatinine past 25', () => {
+test('spec-v1753: meldNa refuses bilirubin past 75, INR past 20, or creatinine past 75', () => {
   const base = { bilirubin: 2, inr: 1.5, creatinine: 1.5, sodium: 130 };
-  for (const [k, v, re] of [['bilirubin', 90, /bilirubin/i], ['inr', 30, /INR/], ['creatinine', 37.5, /creatinine/i]]) {
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  for (const [k, v, re] of [['bilirubin', 90, /bilirubin/i], ['inr', 30, /INR/], ['creatinine', 75.5, /creatinine/i]]) {
     const r = meldNa({ ...base, [k]: v });
     assert.equal(r.valid, false, k);
     assert.match(r.message, re);

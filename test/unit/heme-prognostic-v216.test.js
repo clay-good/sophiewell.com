@@ -98,10 +98,11 @@ test('talcott: comorbidity is group II', () => {
 });
 
 // spec-v1753: an envelope lib/bounds.js already declares; the tool refused ten times the ceiling but answered just past it.
-test('spec-v1753: durieSalmon refuses calcium past 20 or creatinine past 25 mg/dL', () => {
+test('spec-v1753: durieSalmon refuses calcium past 25 or creatinine past 75 mg/dL', () => {
   const base = { hemoglobin: 7, calcium: 10, boneLesions: 4, mProtein: '2', creatinine: 1.0 };
   assert.match(durieSalmon({ ...base, calcium: 30 }).message, /serum calcium/);
-  assert.match(durieSalmon({ ...base, creatinine: 37.5 }).message, /serum creatinine/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.match(durieSalmon({ ...base, creatinine: 75.5 }).message, /serum creatinine/i);
   assert.equal(durieSalmon({ ...base, calcium: 20, creatinine: 25 }).stage, 'IIIB');
   assert.equal(durieSalmon(base).stage, 'IIIA');
 });

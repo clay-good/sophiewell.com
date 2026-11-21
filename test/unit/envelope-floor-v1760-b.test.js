@@ -81,9 +81,10 @@ test('lods heart rate (10), systolic BP (20) and BUN (1) floors', () => {
   assert.equal(lods(base).valid, true);
 });
 
-test('delta-gap bicarbonate (2) and sodium (90) floors', () => {
+test('delta-gap bicarbonate (2) and sodium (85) floors', () => {
   assert.match(deltaGap({ na: 140, cl: 100, hco3: 1 }).message, PLAUSIBLE);
-  assert.match(deltaGap({ na: 85, cl: 60, hco3: 12 }).message, PLAUSIBLE);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.match(deltaGap({ na: 84, cl: 60, hco3: 12 }).message, PLAUSIBLE);
   assert.equal(deltaGap({ na: 140, cl: 100, hco3: 12 }).valid, true);
 });
 

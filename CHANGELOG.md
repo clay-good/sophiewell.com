@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Sixteen plausibility limits refused values patients have survived: a core temperature of 13.7 C, a glucose of
+  2,700 mg/dL, a pH of 6.33, a sodium of 208. Each limit now sits just past the most extreme survived value in a
+  published case report, cited beside it in the code.
 - Some of the new range checks refused values real patients have had: a 250 g premature baby's weight, a potassium of
   12 to 14 mmol/L, and critical-low glucose, hemoglobin, hematocrit or albumin. The weight floor is now 0.2 kg, the
   potassium ceiling 15 mmol/L (both below or above a reported survival), and the four critical-low labs are flagged

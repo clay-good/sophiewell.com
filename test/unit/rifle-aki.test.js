@@ -46,7 +46,7 @@ test('an impossible baseline creatinine used to erase the whole staging', () => 
   assert.match(real.band, /RIFLE class Failure/);
   const bad = rifleAki({ baselineCr: 250, currentCr: 3.0 });
   assert.equal(bad.valid, false);
-  assert.match(bad.message, /baseline creatinine in mg\/dL must be between 0.1 and 25/);
+  assert.match(bad.message, /baseline creatinine in mg\/dL must be between 0.1 and 75/); // spec-v1763: bound widened (source in lib/bounds.js)
   assert.ok(!/no criteria met/.test(bad.message));
 });
 

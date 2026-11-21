@@ -60,7 +60,7 @@ test('spec-v1103: a typed zero is still a measurement, not a gap', () => {
   // the two produce different sentences on the agent surface too.
   const zero = computeCalculator({ id: 'toxic-alcohol', inputs: { ...FULL, 'ta-glu': 0, 'ta-bun': 0 } });
   assert.equal(zero.valid, false);
-  assert.match(JSON.stringify(zero), /must be between 5 and 2000/);
+  assert.match(JSON.stringify(zero), /must be between 5 and 3000/); // spec-v1763: glucose ceiling 3000 (survival from 2,700)
   const blank = computeCalculator({ id: 'toxic-alcohol', inputs: { ...FULL, 'ta-glu': '' } });
   assert.equal(blank.valid, false);
   assert.notEqual(JSON.stringify(zero), JSON.stringify(blank));

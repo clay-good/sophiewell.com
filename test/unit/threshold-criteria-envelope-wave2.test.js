@@ -67,7 +67,7 @@ test('meld-xi refuses the labs it floors and logs', () => {
 
 test('glasgow-imrie checks the two items whose unit matches, and only those', () => {
   const G = { pao2: 70, age: 60, wbc: 12, calcium: 2.2, urea: 10, ldh: 400, albumin: 35, glucose: 8 };
-  assert.match(glasgowImrie({ ...G, wbc: 2000 }).band, /white blood cell count/);
+  assert.match(glasgowImrie({ ...G, wbc: 2001 }).band, /white blood cell count/); // spec-v1763: bound widened (source in lib/bounds.js)
   assert.match(glasgowImrie({ ...G, pao2: 7000 }).band, /arterial PaO2/);
   // THE NEGATIVE HALF: calcium 2.2 mmol/L, albumin 35 g/L and glucose 8 mmol/L
   // are all outside their BOUNDS entries read as mg/dL and g/dL, and all three

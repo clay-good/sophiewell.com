@@ -78,7 +78,8 @@ test('FiO2 is a PERCENT here, so the envelope is stated in percent', () => {
 });
 
 test('an impossible creatinine is refused rather than scored as failure', () => {
-  assert.match(modifiedMarshall({ creatinine: 9999 }).message, /creatinine in mg\/dL must be between 0.1 and 25/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.match(modifiedMarshall({ creatinine: 9999 }).message, /creatinine in mg\/dL must be between 0.1 and 75/);
   assert.equal(modifiedMarshall({ creatinine: 2.0 }).valid, true);
 });
 

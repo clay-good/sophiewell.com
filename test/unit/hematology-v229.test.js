@@ -85,24 +85,30 @@ test('sii: invalid without all three', () => {
 });
 
 // spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
-test('spec-v1753: aec refuses a WBC past the 200 x10^3/uL envelope', () => {
-  const r = aec({ wbc: 300, eosPct: 12 });
+test('spec-v1753: aec refuses a WBC past the 2000 x10^3/uL envelope', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  const r = aec({ wbc: 2001, eosPct: 12 });
   assert.equal(r.valid, false);
-  assert.match(r.message, /white blood cell count/);
-  assert.equal(aec({ wbc: 200, eosPct: 12 }).valid, true);
+  // spec-v1763: the lib's own 0-500 WBC range runs first, so it refuses with its own sentence and 500 is the top value it answers.
+  assert.match(r.message, /WBC|white blood cell count/);
+  assert.equal(aec({ wbc: 500, eosPct: 12 }).valid, true);
   assert.equal(aec({ wbc: 8, eosPct: 12 }).score, 960);
 });
-test('spec-v1753: plr refuses platelets past the 2000 x10^3/uL envelope', () => {
-  const r = plr({ plt: 3000, alc: 1.5 });
+test('spec-v1753: plr refuses platelets past the 4000 x10^3/uL envelope', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  const r = plr({ plt: 4001, alc: 1.5 });
   assert.equal(r.valid, false);
-  assert.match(r.message, /platelet count/);
-  assert.equal(plr({ plt: 2000, alc: 1.5 }).valid, true);
+  // spec-v1763: the lib's own 3000 cap still refuses 3000-4000 (named in the spec-v1763 report), so 3000 is the top value it answers.
+  assert.match(r.message, /platelet count/i);
+  assert.equal(plr({ plt: 3000, alc: 1.5 }).valid, true);
   assert.equal(plr({ plt: 300, alc: 1.5 }).score, 200);
 });
-test('spec-v1753: sii refuses platelets past the 2000 x10^3/uL envelope', () => {
-  const r = sii({ plt: 3000, anc: 6, alc: 1.5 });
+test('spec-v1753: sii refuses platelets past the 4000 x10^3/uL envelope', () => {
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  const r = sii({ plt: 4001, anc: 6, alc: 1.5 });
   assert.equal(r.valid, false);
-  assert.match(r.message, /platelet count/);
-  assert.equal(sii({ plt: 2000, anc: 6, alc: 1.5 }).valid, true);
+  // spec-v1763: the lib's own 3000 cap still refuses 3000-4000 (named in the spec-v1763 report), so 3000 is the top value it answers.
+  assert.match(r.message, /platelet count/i);
+  assert.equal(sii({ plt: 3000, anc: 6, alc: 1.5 }).valid, true);
   assert.equal(sii({ plt: 300, anc: 6, alc: 1.5 }).score, 1200);
 });

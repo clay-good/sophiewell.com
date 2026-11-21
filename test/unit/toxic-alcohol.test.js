@@ -88,13 +88,14 @@ test('both missing are named together, and the refusal says why', () => {
 
 test('a typed zero is a measurement, not a gap (rule 1)', () => {
   // spec-v1211: a glucose of 0 and a BUN of 0 are now OUTSIDE the envelopes
-  // lib/bounds.js declares (glucose 5-2000, BUN 1-300), so this no longer
+  // lib/bounds.js declares (glucose 5-3000, BUN 1-300), so this no longer
   // computes -- but the property the test exists for is unchanged and is now
   // asserted directly: a typed 0 is read as a value the reader ENTERED and
   // judged on its merits, never as a field they left blank. The two produce
   // different sentences.
   const zero = toxicAlcohol({ measuredOsm: 300, sodium: 140, glucose: 0, bun: 0, recentIngestion: true });
-  assert.match(zero.band, /glucose in mg\/dL must be between 5 and 2000/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.match(zero.band, /glucose in mg\/dL must be between 5 and 3000/);
   const blank = toxicAlcohol({ measuredOsm: 300, sodium: 140, bun: 14, recentIngestion: true });
   assert.match(blank.band, /Enter a glucose/);
   assert.notEqual(zero.band, blank.band);
@@ -120,7 +121,8 @@ test('an impossible sodium used to erase the fomepizole indication', () => {
   assert.match(real.band, /Fomepizole indicated/);
   const bad = toxicAlcohol({ measuredOsm: 330, sodium: 2000, glucose: 90, bun: 14, recentIngestion: true });
   assert.equal(bad.valid, false);
-  assert.match(bad.band, /serum sodium in mEq\/L must be between 90 and 200/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.match(bad.band, /serum sodium in mEq\/L must be between 85 and 210/);
   assert.ok(!/No AACT fomepizole indication/.test(bad.band), 'must not rule out the antidote from an impossible sodium');
 });
 
@@ -131,7 +133,8 @@ test('the top of the sodium envelope still answers', () => {
 
 test('an impossible glucose is refused the same way', () => {
   const r = toxicAlcohol({ measuredOsm: 330, sodium: 140, glucose: 20000, bun: 14, recentIngestion: true });
-  assert.match(r.band, /glucose in mg\/dL must be between 5 and 2000/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.match(r.band, /glucose in mg\/dL must be between 5 and 3000/);
 });
 
 test('a blank glucose is still asked for, not reported out of range', () => {
@@ -161,5 +164,6 @@ test('a pH of 0 is a measurement, and is refused', () => {
     measuredOsm: 305, sodium: 140, glucose: 90, bun: 14, recentIngestion: true, pH: 0,
   });
   assert.equal(r.valid, false);
-  assert.match(r.band, /arterial pH must be between 6.5 and 8/);
+  // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.match(r.band, /arterial pH must be between 6.3 and 8/);
 });
