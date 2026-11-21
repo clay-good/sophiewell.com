@@ -31,6 +31,12 @@ const PAIRS = [
   ['tca>=ica', /total calcium/i, /ioni[sz]ed/i],
   ['mpap>=pcwp', /mean (PA|pulmonary)/i, /\bPCWP\b|wedge/i],
   ['sao2>=svo2', /arterial Sa?O2|\bSaO2\b/i, /mixed-venous|\bSvO2\b/i],
+  ['wbc>=anc', /\bWBC\b|white (blood )?cell/i, /neutrophil|\bANC\b/i],
+  ['wbc>=alc', /\bWBC\b|white (blood )?cell/i, /lymphocyte|\bALC\b/i],
+  ['tbili>=dbili', /total bilirubin/i, /direct|conjugated/i],
+  ['tibc>=iron', /\bTIBC\b|iron.binding/i, /serum iron|^iron\b/i],
+  ['age>=onset', /^(current |patient )?age\b/i, /age at|onset age|age of onset|age when/i],
+  ['max>=min', /\b(max(imum)?|highest)\b/i, /\b(min(imum)?|lowest)\b/i],
 ];
 const isDate = (v) => /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2})?$/.test(String(v || ''));
 
