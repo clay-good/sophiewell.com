@@ -26,7 +26,9 @@ const COLUMNS = ['IPAY', 'Selected Drug Name', 'Active Ingredient Name or Active
 
 export async function discover(http) {
   const html = await http.getText(LANDING);
-  const [href] = findLinks(html, /selected-drug-list-negotiated-prices[^/]*\.zip$/i, LANDING);
+  // CMS renamed the file on November 2, 2026: "...selected-drug-list-negotiated-prices..." became
+  // "cms-negotiation-program-selected-drug-list-maximum-fair-price-data-file-20261102.zip". Both match.
+  const [href] = findLinks(html, /selected-drug-list-(negotiated-prices|maximum-fair-price)[^/]*\.zip$/i, LANDING);
   if (!href) return null;
   // The edition is set by parse() from the CSV's file name.
   return { url: href, edition: 'pending', expiresOn: null };

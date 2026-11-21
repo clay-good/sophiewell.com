@@ -5,7 +5,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { makeZip } from '../lib/zip-fixture.js';
-import builder, { drugId, drugTable } from '../../scripts/data/builders/mfp-negotiated-prices.mjs';
+import builder, { drugId, drugTable, discover } from '../../scripts/data/builders/mfp-negotiated-prices.mjs';
 import { MFP_FILE } from '../../data/mfp-negotiated-prices/drugs.js';
 import { DATED_MFP, DRUGS } from '../../lib/mfp-prices-v1506.js';
 
@@ -63,4 +63,13 @@ test('the shipped table is the one the price check reads', () => {
   assert.deepEqual(DATED_MFP[id].values.drugs.map(([d, , y, p]) => [d, y, p]), MFP_FILE.drugs.map(([d, , y, p]) => [d, y, p]));
   assert.equal(DRUGS.find((d) => d.value === 'novolog').text, 'NovoLog / Fiasp (all pens and vials)');
   assert.equal(DRUGS.find((d) => d.value === 'austedo').text, 'Austedo / Austedo XR');
+});
+
+test('discover finds the ZIP under the old name and the name CMS used from November 2, 2026', async () => {
+  const page = (href) => ({ getText: async () => `<a href="/files/zip/mfp-explanation-ofev.zip">x</a><a href="${href}">Selected Drug List</a>` });
+  const renamed = await discover(page('/files/zip/cms-negotiation-program-selected-drug-list-maximum-fair-price-data-file-20261102.zip'));
+  assert.equal(renamed.url, 'https://www.cms.gov/files/zip/cms-negotiation-program-selected-drug-list-maximum-fair-price-data-file-20261102.zip');
+  const old = await discover(page('/files/zip/selected-drug-list-negotiated-prices-20260921.zip'));
+  assert.match(old.url, /selected-drug-list-negotiated-prices-20260921\.zip$/);
+  assert.equal(await discover(page('/files/zip/unrelated.zip')), null);
 });
