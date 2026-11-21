@@ -33,7 +33,7 @@ minute ventilation's blank 0, SAPS II FiO2 0 (not entered). `boundsAdvisory` che
 tool ceilings tightened to the envelope (APACHE II rate 100 -> 80 and potassium 12 -> 10; LODS, OASIS and SCORTEN
 heart rate 350-400 -> 300).
 
-Left for a sourced floor: APACHE II sodium 80-89 (its own minimum is 80).
+APACHE II sodium 80-89 (its own minimum was 80, scored +4) is refused too (follow-up, same day).
 
 Gates: `test/unit/probe-envelope-floor.test.js` (zero rows across at least 550 fields); the page test
 `test/integration/envelope-refused-on-page.spec.js` drives half the floor as well as 1.5x the ceiling.

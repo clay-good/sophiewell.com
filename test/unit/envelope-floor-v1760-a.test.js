@@ -122,3 +122,13 @@ test('toe-brachial-index: a brachial systolic below 20 is refused; the toe press
   assert.equal(toeBrachialIndex({ toe: 80, brachial: 120 }).valid, true);
   assert.equal(toeBrachialIndex({ toe: 5, brachial: 120 }).valid, true);
 });
+
+test('apache2: a sodium of 85 is refused (its own minimum of 80 had let 80-89 score +4)', async () => {
+  const { computeCalculator } = await import('../../mcp/tools.js');
+  const { META } = await import('../../lib/meta.js');
+  const ex = META.apache2.example.fields;
+  const low = computeCalculator({ id: 'apache2', inputs: { ...ex, 'ap-na': '85' } });
+  assert.equal(low.valid, false);
+  assert.match(low.message, /plausible range for serum sodium/);
+  assert.notEqual(computeCalculator({ id: 'apache2', inputs: { ...ex, 'ap-na': '135' } }).valid, false);
+});

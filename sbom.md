@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `8c74a9364faed2e3`
-Generated: 2026-11-21T16:46:36.828Z
+Build ID: `332e9ee9ac1578b0`
+Generated: 2026-11-21T16:50:48.810Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1379,7 +1379,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
 | `lib/scoring-v4.js` | 349021 | `2390dd1c688823f58c8f81e4307574c5dad228db85524d846d48e3c24ba3e2ce` |
 | `lib/scoring-v5.js` | 15569 | `4541af93d94d9194d11263380a0cdef367e77696f7e1b07173479e497b5ae415` |
-| `lib/scoring-v6.js` | 32419 | `df3b4ca2ed6fec846b5c05748752778a5af8afbb5f4ab6939cf49629e51044b9` |
+| `lib/scoring-v6.js` | 32547 | `3b470598d577291f709340f31b0d48c75e322866e49b944717b01de7732b54a3` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
 | `lib/screener.js` | 7165 | `57d6e8732933cab53c5a10e4cf2c9ea282c186c4e6562827e1b5e97dd8194007` |
