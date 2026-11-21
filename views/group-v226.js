@@ -110,7 +110,7 @@ export const renderers = {
   'corrected-potassium-ph'(root) {
     note(root, 'pH-corrected serum potassium (Adrogué & Madias 1981): corrected K = measured K − 0.6 × [(7.4 − pH) / 0.1]. A rule of thumb (organic acidosis ~0.3).');
     root.appendChild(num('Measured serum potassium (mEq/L)', 'kc-k', { min: '0' }));
-    root.appendChild(num('Arterial pH', 'kc-ph', { min: '6.5', max: '8' }));
+    root.appendChild(num('Arterial pH', 'kc-ph', { min: '6.3', max: '8' }));
     const o = out(); root.appendChild(o);
     wire(['kc-k', 'kc-ph'], () => safe(o, () => {
       const r = M.correctedPotassiumPh({ potassium: val('kc-k'), ph: val('kc-ph') });

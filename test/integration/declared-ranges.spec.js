@@ -21,7 +21,7 @@
 import { test, expect } from '@playwright/test';
 
 const CASES = [
-  ['rabt-score', 'ra-hr', 3007, /Heart rate.*is 3007, outside the 0 to 300/, '110'],
+  ['rabt-score', 'ra-hr', 3007, /Heart rate.*is 3007, outside the 0 to 600/, '110'], // spec-v1763: hr ceiling 600
   ['saps-ii', 'saps-age', 1307, /Age.*is 1307, outside the 0 to 130/, '72'],
   ['hiet-dosing', 'hi-bolus', 17, /Bolus.*is 17, outside the 0 to 1/, '1'],
   // A tile that already refuses out-of-range input gets the same warning, and

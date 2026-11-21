@@ -76,7 +76,7 @@ export const renderers = {
     root.appendChild(num('Age (years)', 'charge-age', { max: 130, min: '18' }));
     root.appendChild(num('Height (cm)', 'charge-height', { min: '100' }));
     root.appendChild(num('Weight (kg)', 'charge-weight', { min: '20' }));
-    root.appendChild(num('Systolic BP (mmHg)', 'charge-sbp', { max: 300, min: '60' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'charge-sbp', { max: 500, min: '60' }));
     root.appendChild(num('Diastolic BP (mmHg)', 'charge-dbp', { min: '30' }));
     root.appendChild(checkField('White race', 'charge-white'));
     root.appendChild(checkField('Current smoker', 'charge-smoker'));

@@ -93,8 +93,9 @@ test('spec-v1753: airScore refuses a WBC past the 2000 x10^9/L envelope', () => 
   // spec-v1763: bound widened (source in lib/bounds.js)
   const r = airScore({ ...base, wbc: 2001 });
   assert.equal(r.valid, false);
-  // The lib's own (narrower) cap now refuses first, in its own wording.
+  // spec-v1764: the lib's own cap is the envelope now, so 2000 is the top value it answers.
   assert.match(r.message, /white blood cell count|WBC/);
+  assert.equal(airScore({ ...base, wbc: 2000 }).valid, true);
   assert.equal(airScore({ ...base, wbc: 200 }).valid, true);
   assert.equal(airScore(base).score, 11);
 });
@@ -103,8 +104,9 @@ test('spec-v1753: adultAppendicitis refuses a WBC past the 2000 x10^9/L envelope
   // spec-v1763: bound widened (source in lib/bounds.js)
   const r = adultAppendicitis({ ...base, wbc: 2001 });
   assert.equal(r.valid, false);
-  // The lib's own (narrower) cap now refuses first, in its own wording.
+  // spec-v1764: the lib's own cap is the envelope now, so 2000 is the top value it answers.
   assert.match(r.message, /white blood cell count|WBC/);
+  assert.equal(adultAppendicitis({ ...base, wbc: 2000 }).valid, true);
   assert.equal(adultAppendicitis({ ...base, wbc: 200 }).valid, true);
   assert.equal(adultAppendicitis(base).score, 19);
 });

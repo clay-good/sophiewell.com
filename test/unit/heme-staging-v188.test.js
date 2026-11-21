@@ -69,8 +69,8 @@ test('spec-v1753: binetCll refuses platelets past the 4000 x10^9/L envelope', ()
   // spec-v1763: bound widened (source in lib/bounds.js)
   assert.equal(binetCll({ areas: 4, hb: 12, platelets: 4001 }).valid, false);
   assert.match(binetCll({ areas: 4, hb: 12, platelets: 4001 }).message, /platelet/i);
-  // spec-v1763: the lib's own 3000 cap still refuses 3000-4000 (named in the spec-v1763 report), so 3000 is the top value it answers.
-  assert.equal(binetCll({ areas: 4, hb: 12, platelets: 3000 }).valid, true);
+  // spec-v1764: the platelet cap is the envelope (4000), not the lib's own 3000.
+  assert.equal(binetCll({ areas: 4, hb: 12, platelets: 4000 }).valid, true);
   assert.equal(binetCll({ areas: 4, hb: 12, platelets: 150 }).valid, true);
 });
 test('spec-v1753: raiCll refuses platelets past the 4000 x10^9/L envelope', () => {
@@ -78,8 +78,8 @@ test('spec-v1753: raiCll refuses platelets past the 4000 x10^9/L envelope', () =
   const base = { lymphocytosis: true, lymphadenopathy: true, hb: 14 };
   assert.equal(raiCll({ ...base, platelets: 4001 }).valid, false);
   assert.match(raiCll({ ...base, platelets: 4001 }).message, /platelet/i);
-  // spec-v1763: the lib's own 3000 cap still refuses 3000-4000 (named in the spec-v1763 report), so 3000 is the top value it answers.
-  assert.equal(raiCll({ ...base, platelets: 3000 }).valid, true);
+  // spec-v1764: the platelet cap is the envelope (4000), not the lib's own 3000.
+  assert.equal(raiCll({ ...base, platelets: 4000 }).valid, true);
   assert.equal(raiCll({ ...base, platelets: 250 }).valid, true);
 });
 test('spec-v1753: hasfordCml refuses platelets past the 4000 x10^9/L envelope', () => {

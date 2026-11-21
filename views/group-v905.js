@@ -28,9 +28,9 @@ export const renderers = {
     note(root, 'A glucose below 200 is one of four conditions, not the answer. Two of the other three are needed with it.');
 
     root.appendChild(el('h2', { text: 'The values' }));
-    numField(root, 'Glucose, mg/dL', 'dr-glucosemgdl', { min: '0', max: '2000', step: '1' });
-    numField(root, 'Serum bicarbonate, mEq/L', 'dr-bicarbonate', { min: '0', max: '60', step: '0.1' });
-    numField(root, 'Venous pH', 'dr-venousph', { min: '6.5', max: '8', step: '0.01' });
+    numField(root, 'Glucose, mg/dL', 'dr-glucosemgdl', { min: '0', max: '3000', step: '1' });
+    numField(root, 'Serum bicarbonate, mEq/L', 'dr-bicarbonate', { min: '0', max: '75', step: '0.1' });
+    numField(root, 'Venous pH', 'dr-venousph', { min: '6.3', max: '8', step: '0.01' });
     numField(root, 'Anion gap, mEq/L', 'dr-aniongap', { min: '0', max: '60', step: '0.1' });
 
     const o = out(); root.appendChild(o);

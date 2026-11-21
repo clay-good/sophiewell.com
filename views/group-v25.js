@@ -160,7 +160,7 @@ export const renderers = {
     root.appendChild(field('Potassium (mEq/L)', 'saps-k', { min: B.potassium.min, max: B.potassium.max, step: '0.1', placeholder: '4.0' }));
     root.appendChild(field('Bicarbonate (mEq/L)', 'saps-hco3', { min: B.bicarbonate.min, max: B.bicarbonate.max, placeholder: '18' }));
     root.appendChild(field('Bilirubin (mg/dL)', 'saps-bili', { min: B.bilirubin.min, max: B.bilirubin.max, step: '0.1', placeholder: '2.0' }));
-    root.appendChild(field('WBC (x10^3/mm^3)', 'saps-wbc', { min: 0, max: 200, step: '0.1', placeholder: '15' }));
+    root.appendChild(field('WBC (x10^3/mm^3)', 'saps-wbc', { min: 0, max: 2000, step: '0.1', placeholder: '15' }));
     root.appendChild(field('Glasgow Coma Scale (3-15)', 'saps-gcs', { min: 3, max: 15, placeholder: '12' }));
     root.appendChild(selectField('Chronic disease', 'saps-chronic', [
       { value: 'none', text: 'None (0)' },

@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Twenty-three tools still refused a survivable creatinine, white count, platelet count, sodium, heart rate or blood
+  pressure with an older cap of their own. They now follow the widened limits; scoring rules such as MELD's
+  creatinine cap of 4.0 are unchanged. The page no longer flags those values as out of range.
 - Sixteen plausibility limits refused values patients have survived: a core temperature of 13.7 C, a glucose of
   2,700 mg/dL, a pH of 6.33, a sodium of 208. Each limit now sits just past the most extreme survived value in a
   published case report, cited beside it in the code.

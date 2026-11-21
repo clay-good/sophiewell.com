@@ -43,7 +43,7 @@ test('spec-v1753: piv refuses platelets past the 4000 x10^3/uL envelope', () => 
   const base = { anc: 4.0, amc: 0.5, alc: 2.0 };
   assert.equal(piv({ ...base, plt: 4001 }).valid, false);
   assert.match(piv({ ...base, plt: 4001 }).message, /platelet/i);
-  // spec-v1763: the lib's own 3000 cap still refuses 3000-4000 (named in the spec-v1763 report), so 3000 is the top value it answers.
-  assert.equal(piv({ ...base, plt: 3000 }).valid, true);
+  // spec-v1764: the platelet cap is the envelope (4000), not the lib's own 3000.
+  assert.equal(piv({ ...base, plt: 4000 }).valid, true);
   assert.equal(piv({ ...base, plt: 250 }).valid, true);
 });

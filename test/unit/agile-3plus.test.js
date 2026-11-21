@@ -57,7 +57,7 @@ test('spec-v1753: a platelet count past the 4000 envelope is refused', () => {
   const past = agile3plus({ ...ex, platelets: 4001 });
   assert.equal(past.valid, false);
   assert.match(past.message, /platelet count/);
-  // spec-v1763: the lib's own positive(platelets, 3000) cap still refuses 3000-4000, so the top answered value is 3000.
-  assert.equal(agile3plus({ ...ex, platelets: 3000 }).valid, true);
+  // spec-v1764: the lib's own cap is the envelope now (4000), so 4000 is the top value it answers.
+  assert.equal(agile3plus({ ...ex, platelets: 4000 }).valid, true);
   assert.equal(agile3plus(ex).score, 0.868);
 });

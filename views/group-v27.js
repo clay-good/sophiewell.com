@@ -181,7 +181,7 @@ export const renderers = {
     root.appendChild(checkField('Previous MI or CABG (1)', 'cs-mi'));
     root.appendChild(checkField('ACS etiology (1)', 'cs-acs'));
     root.appendChild(checkField('LVEF < 40% (1)', 'cs-ef'));
-    root.appendChild(field('Blood lactate (mmol/L)', 'cs-lactate', { min: 0, max: 40, step: '0.1', placeholder: '2.5' }));
+    root.appendChild(field('Blood lactate (mmol/L)', 'cs-lactate', { min: 0, max: 50, step: '0.1', placeholder: '2.5' }));
     root.appendChild(field('eGFR (mL/min/1.73m^2)', 'cs-egfr', { min: 0, max: 200, placeholder: '55' }));
     const o = out(); root.appendChild(o);
     const ids = ['cs-age', 'cs-confusion', 'cs-mi', 'cs-acs', 'cs-ef', 'cs-lactate', 'cs-egfr'];

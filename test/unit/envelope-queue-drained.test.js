@@ -246,7 +246,8 @@ test('lods says "out of range", not "still missing"', () => {
 
   const bad = lods({ ...ok, creatinine: 250 });
   assert.equal(bad.valid, false);
-  assert.match(bad.message, /Creatinine 250 is outside 0 to 40/);
+  // spec-v1764: the creatinine cap is the envelope of lib/bounds.js (75 mg/dL), not the lib's own 40.
+  assert.match(bad.message, /Creatinine 250 is outside 0 to 75/);
   assert.match(bad.message, /not a missing measurement/);
   assert.doesNotMatch(bad.message, /^Enter /);
 
@@ -329,7 +330,8 @@ test('oasis, delta-gap and apps-ards say "out of range", as lods now does', () =
   assert.equal(oasis(oa).valid, true);
   const fastHeart = oasis({ ...oa, hr: 3000 });
   assert.equal(fastHeart.valid, false);
-  assert.match(fastHeart.message, /heart rate 3000 is outside 0 to 350/);
+  // spec-v1764: the heart-rate cap is the envelope of lib/bounds.js (600 bpm), not the lib's own 350.
+  assert.match(fastHeart.message, /heart rate 3000 is outside 0 to 600/);
   assert.match(fastHeart.message, /not a missing measurement/);
   // A genuinely absent one still gets the ten-variable sentence.
   assert.match(oasis({ ...oa, hr: '' }).message, /^Enter all ten OASIS variables/);
@@ -441,12 +443,13 @@ test('cpis-vap converts the shared leukocyte envelope to its per-mm3 unit', () =
   assert.notEqual(cpisVap(ok).valid, false);
   assert.notEqual(cpisVap({ ...ok, wbc: 25000 }).valid, false, 'a real leukocytosis still scores');
   assert.notEqual(cpisVap({ ...ok, wbc: 800 }).valid, false, 'and a real leukopenia does too');
-  assert.notEqual(cpisVap({ ...ok, wbc: 200000 }).valid, false, 'the converted ceiling still scores');
+  // spec-v1764: the converted ceiling follows BOUNDS.wbc (2000 x10^9/L is 2,000,000/mm^3), not the stale 200,000.
+  assert.notEqual(cpisVap({ ...ok, wbc: 2000000 }).valid, false, 'the converted ceiling still scores');
 
-  for (const wbc of [-1, 200001]) {
+  for (const wbc of [-1, 2000001]) {
     const result = cpisVap({ ...ok, wbc });
     assert.equal(result.valid, false, String(wbc));
-    assert.match(result.band, /Leukocyte count \(per mm\^3\) must be between 0 and 200000/, String(wbc));
+    assert.match(result.band, /Leukocyte count \(per mm\^3\) must be between 0 and 2000000/, String(wbc));
   }
 
   const hot = cpisVap({ ...ok, temp: 450 });

@@ -89,26 +89,26 @@ test('spec-v1753: aec refuses a WBC past the 2000 x10^3/uL envelope', () => {
   // spec-v1763: bound widened (source in lib/bounds.js)
   const r = aec({ wbc: 2001, eosPct: 12 });
   assert.equal(r.valid, false);
-  // spec-v1763: the lib's own 0-500 WBC range runs first, so it refuses with its own sentence and 500 is the top value it answers.
+  // spec-v1764: the WBC cap is the envelope (2000), not the lib's own 500.
   assert.match(r.message, /WBC|white blood cell count/);
-  assert.equal(aec({ wbc: 500, eosPct: 12 }).valid, true);
+  assert.equal(aec({ wbc: 2000, eosPct: 12 }).valid, true);
   assert.equal(aec({ wbc: 8, eosPct: 12 }).score, 960);
 });
 test('spec-v1753: plr refuses platelets past the 4000 x10^3/uL envelope', () => {
   // spec-v1763: bound widened (source in lib/bounds.js)
   const r = plr({ plt: 4001, alc: 1.5 });
   assert.equal(r.valid, false);
-  // spec-v1763: the lib's own 3000 cap still refuses 3000-4000 (named in the spec-v1763 report), so 3000 is the top value it answers.
+  // spec-v1764: the platelet cap is the envelope (4000), not the lib's own 3000.
   assert.match(r.message, /platelet count/i);
-  assert.equal(plr({ plt: 3000, alc: 1.5 }).valid, true);
+  assert.equal(plr({ plt: 4000, alc: 1.5 }).valid, true);
   assert.equal(plr({ plt: 300, alc: 1.5 }).score, 200);
 });
 test('spec-v1753: sii refuses platelets past the 4000 x10^3/uL envelope', () => {
   // spec-v1763: bound widened (source in lib/bounds.js)
   const r = sii({ plt: 4001, anc: 6, alc: 1.5 });
   assert.equal(r.valid, false);
-  // spec-v1763: the lib's own 3000 cap still refuses 3000-4000 (named in the spec-v1763 report), so 3000 is the top value it answers.
+  // spec-v1764: the platelet cap is the envelope (4000), not the lib's own 3000.
   assert.match(r.message, /platelet count/i);
-  assert.equal(sii({ plt: 3000, anc: 6, alc: 1.5 }).valid, true);
+  assert.equal(sii({ plt: 4000, anc: 6, alc: 1.5 }).valid, true);
   assert.equal(sii({ plt: 300, anc: 6, alc: 1.5 }).score, 1200);
 });

@@ -87,8 +87,9 @@ test('spec-v1753: fips refuses bilirubin past 75 or creatinine past 75 mg/dL', (
   // spec-v1763: bound widened (source in lib/bounds.js)
   const base = { bilirubin: 3.0, creatinine: 1.2, age: 60, albumin: 3.0 };
   assert.match(fips({ ...base, bilirubin: 90 }).message, /total bilirubin/);
-  // spec-v1763: the lib's own creatinine cap of 50 mg/dL runs first, so it refuses with its own sentence and 50 is the top value it answers.
+  // spec-v1764: the creatinine cap is the envelope (75 mg/dL), not the lib's own 50.
+  assert.equal(fips({ ...base, creatinine: 75.1 }).valid, false);
   assert.match(fips({ ...base, creatinine: 75.1 }).message, /creatinine/);
-  assert.equal(fips({ ...base, bilirubin: 75, creatinine: 50 }).valid, true);
+  assert.equal(fips({ ...base, bilirubin: 75, creatinine: 75 }).valid, true);
   assert.equal(fips(base).value, 1.2);
 });

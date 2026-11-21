@@ -172,7 +172,7 @@ export const renderers = {
       { value: '4', text: 'Class IV (+2)' },
     ]));
     root.appendChild(field('Systolic BP (mm Hg)', 'rv-sbp', { max: 300, step: '1', min: 0, placeholder: 'e.g. 104' }));
-    root.appendChild(field('Heart rate (beats/min)', 'rv-hr', { max: 300, step: '1', min: 0, placeholder: 'e.g. 88' }));
+    root.appendChild(field('Heart rate (beats/min)', 'rv-hr', { max: 600, step: '1', min: 0, placeholder: 'e.g. 88' }));
     root.appendChild(field('6-minute walk distance (m)', 'rv-mwd', { step: '1', min: 0, placeholder: 'e.g. 300' }));
     root.appendChild(selectField('BNP / NT-proBNP band', 'rv-bnp', [
       { value: 'low', text: 'BNP < 50 / NT-proBNP < 300 pg/mL (-2)' },

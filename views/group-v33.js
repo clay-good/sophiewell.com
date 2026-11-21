@@ -134,7 +134,7 @@ export const renderers = {
     root.appendChild(field('Hemoglobin (g/dL)', 'ta-hb', { step: '0.1', min: 0, max: 25, placeholder: '9.5' }));
     root.appendChild(field('Base excess (mmol/L)', 'ta-be', { step: '0.1', placeholder: '-7' }));
     root.appendChild(field('Systolic BP (mmHg)', 'ta-sbp', { min: 0, max: 300, placeholder: '95' }));
-    root.appendChild(field('Heart rate (bpm)', 'ta-hr', { min: 0, max: 300, placeholder: '130' }));
+    root.appendChild(field('Heart rate (bpm)', 'ta-hr', { min: 0, max: 600, placeholder: '130' }));
     root.appendChild(checkField('Positive FAST (free intraabdominal fluid)', 'ta-fast'));
     root.appendChild(checkField('Clinically unstable pelvic fracture', 'ta-pelvis'));
     root.appendChild(checkField('Open or dislocated femur fracture', 'ta-femur'));
@@ -162,7 +162,7 @@ export const renderers = {
   // ----- 2.4 rabt-score -------------------------------------------------
   'rabt-score'(root) {
     note(root, 'Shock index (heart rate / systolic BP) > 1 scores the first point; enter heart rate and systolic BP to compute it.');
-    root.appendChild(field('Heart rate (bpm)', 'ra-hr', { min: 0, max: 300, placeholder: '130' }));
+    root.appendChild(field('Heart rate (bpm)', 'ra-hr', { min: 0, max: 600, placeholder: '130' }));
     root.appendChild(field('Systolic BP (mmHg)', 'ra-sbp', { min: 0, max: 300, placeholder: '100' }));
     root.appendChild(checkField('Pelvic fracture', 'ra-pelvis'));
     root.appendChild(checkField('Penetrating mechanism', 'ra-pen'));

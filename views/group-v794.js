@@ -39,7 +39,7 @@ export const renderers = {
     note(root, 'Furst formula: urine sodium plus urine potassium, divided by serum sodium, all in mmol/L. Under 0.5 the published starting point is a 1000 mL/day restriction; between 0.5 and 1.0 it is 500 mL/day; above 1.0 no electrolyte-free water is being excreted and restriction alone is unlikely to help.');
     root.appendChild(numberField('Urine sodium (mmol/L)', 'furst-una', { min: 0, max: 400, placeholder: 'e.g. 60' }));
     root.appendChild(numberField('Urine potassium (mmol/L)', 'furst-uk', { min: 0, max: 400, placeholder: 'e.g. 40' }));
-    root.appendChild(numberField('Serum sodium (mmol/L)', 'furst-sna', { min: 80, max: 200, placeholder: 'e.g. 125' }));
+    root.appendChild(numberField('Serum sodium (mmol/L)', 'furst-sna', { min: 80, max: 210, placeholder: 'e.g. 125' }));
     const ids = ['furst-una', 'furst-uk', 'furst-sna'];
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {

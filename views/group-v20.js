@@ -135,7 +135,7 @@ export const renderers = {
     // library refuses outside the envelope either way -- so this changes what the
     // page SAYS, not what it computes.
     root.appendChild(field('Hemoglobin (g/dL)', 'ir-hgb', { min: B.hemoglobin.min, max: B.hemoglobin.max, placeholder: 'e.g. 9', inputmode: 'decimal' }));
-    root.appendChild(field('Platelets (×10⁹/L)', 'ir-plt', { max: 2000, min: 0, placeholder: 'e.g. 150', inputmode: 'decimal' }));
+    root.appendChild(field('Platelets (×10⁹/L)', 'ir-plt', { max: 4000, min: 0, placeholder: 'e.g. 150', inputmode: 'decimal' }));
     root.appendChild(field('Absolute neutrophil count (×10⁹/L)', 'ir-anc', { min: 0, placeholder: 'e.g. 1.5', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);
     wire(['ir-cyto', 'ir-blasts', 'ir-hgb', 'ir-plt', 'ir-anc'], () => safe(o, () => {
@@ -226,7 +226,7 @@ export const renderers = {
   'sokal-cml'(root) {
     root.appendChild(field('Age (years)', 'sk-age', { min: 0, max: 130, placeholder: 'e.g. 50', inputmode: 'numeric' }));
     root.appendChild(field('Spleen (cm below costal margin)', 'sk-spleen', { placeholder: 'e.g. 5', inputmode: 'decimal' }));
-    root.appendChild(field('Platelet count (×10⁹/L) — must be > 0', 'sk-plt', { max: 2000, placeholder: 'e.g. 300', inputmode: 'decimal' }));
+    root.appendChild(field('Platelet count (×10⁹/L) — must be > 0', 'sk-plt', { max: 4000, placeholder: 'e.g. 300', inputmode: 'decimal' }));
     root.appendChild(field('Peripheral-blood blasts (%)', 'sk-blasts', { min: 0, max: 100, placeholder: 'e.g. 2', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);
     wire(['sk-age', 'sk-spleen', 'sk-plt', 'sk-blasts'], () => safe(o, () => {

@@ -47,7 +47,7 @@ export const renderers = {
     root.appendChild(numberField('C-reactive protein (mg/L) (cutoff 10)', 'rome-crp', { min: 0, max: 500, step: '1', placeholder: 'e.g. 20' }));
     root.appendChild(el('h2', { text: 'Arterial blood gas (a separate gate for severe)' }));
     root.appendChild(numberField('PaCO2 (mmHg)', 'rome-paco2', { min: 10, max: 150, step: '1', placeholder: 'e.g. 55' }));
-    root.appendChild(numberField('pH', 'rome-ph', { min: 6.5, max: 8, step: '0.01', placeholder: 'e.g. 7.30' }));
+    root.appendChild(numberField('pH', 'rome-ph', { min: 6.3, max: 8, step: '0.01', placeholder: 'e.g. 7.30' }));
     const ids = ['rome-vas', 'rome-rr', 'rome-hr', 'rome-spo2', 'rome-drop', 'rome-crp', 'rome-paco2', 'rome-ph'];
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {

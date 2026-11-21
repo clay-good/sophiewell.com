@@ -58,7 +58,7 @@ export const renderers = {
     root.appendChild(num('Heart rate (bpm)', 'oasis-hr', { max: 400, min: '0' }));
     root.appendChild(num('Mean arterial pressure (mmHg)', 'oasis-map', { min: '0' }));
     root.appendChild(num('Respiratory rate (breaths/min)', 'oasis-rr', { min: '0' }));
-    root.appendChild(num('Temperature (°C)', 'oasis-temp', { min: '20', max: '45' }));
+    root.appendChild(num('Temperature (°C)', 'oasis-temp', { min: '20', max: '47' }));
     root.appendChild(num('Urine output (mL / 24 h)', 'oasis-urine', { min: '0' }));
     root.appendChild(checkField('On mechanical ventilation (+9)', 'oasis-vent'));
     root.appendChild(checkField('Elective surgical admission (0 pts; leave unchecked for urgent / emergency / medical, +6)', 'oasis-elective'));
@@ -82,7 +82,7 @@ export const renderers = {
     note(root, 'LODS (Le Gall 1996): a six-system organ-dysfunction model. The worst first-24-hour value in each system maps to 0/1/3/5; total 0–22 drives predicted hospital mortality. A calibrated complement to SOFA.');
     root.appendChild(num('Glasgow Coma Scale (3–15)', 'lods-gcs', { min: '3', max: '15' }));
     root.appendChild(num('Heart rate (bpm)', 'lods-hr', { max: 400, min: '0' }));
-    root.appendChild(num('Systolic BP (mmHg)', 'lods-sbp', { max: 300, min: '0' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'lods-sbp', { max: 500, min: '0' }));
     root.appendChild(num('BUN (mg/dL)', 'lods-bun', { min: '0' }));
     root.appendChild(num('Creatinine (mg/dL)', 'lods-creat', { min: '0' }));
     root.appendChild(num('Urine output (L / day)', 'lods-urine', { min: '0' }));
@@ -110,7 +110,7 @@ export const renderers = {
   // ----- 2.4 delta-gap -------------------------------------------------------
   'delta-gap'(root) {
     note(root, 'Delta gap / delta ratio (Wrenn 1990; Rastegar 2007): flags a mixed metabolic disorder behind a high anion gap. Delta ratio = (AG − normal AG) / (normal HCO₃ − HCO₃).');
-    root.appendChild(num('Sodium (mEq/L)', 'dg-na', { max: 200, min: '0' }));
+    root.appendChild(num('Sodium (mEq/L)', 'dg-na', { max: 210, min: '0' }));
     root.appendChild(num('Chloride (mEq/L)', 'dg-cl', { min: '0' }));
     root.appendChild(num('Bicarbonate (mEq/L)', 'dg-hco3', { min: '0' }));
     root.appendChild(num('Albumin (g/dL) — optional, for corrected AG', 'dg-alb', { min: '0' }));

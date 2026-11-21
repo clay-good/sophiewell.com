@@ -128,7 +128,7 @@ export const renderers = {
     root.appendChild(select('Antiplatelet therapy', 'sits-ap', [['0', 'None (0)'], ['1', 'Aspirin alone (1)'], ['2', 'Aspirin + clopidogrel (2)']]));
     root.appendChild(num('Admission NIHSS', 'sits-nihss', { min: '0', max: '42' }));
     root.appendChild(num('Blood glucose (mg/dL)', 'sits-glu', { min: '0' }));
-    root.appendChild(num('Systolic BP (mmHg)', 'sits-sbp', { max: 300, min: '0' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'sits-sbp', { max: 500, min: '0' }));
     root.appendChild(num('Weight (kg)', 'sits-wt', { min: '0' }));
     root.appendChild(num('Age (years)', 'sits-age', { max: 130, min: '0' }));
     root.appendChild(check('Onset-to-treatment >= 180 minutes (+1)', 'sits-onset'));

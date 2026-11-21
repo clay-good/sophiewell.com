@@ -39,14 +39,15 @@ test('formula matches a hand computation', () => {
 test('non-positive lab -> the range, named, not "enter it"', () => {
   const r = clifcAd({ age: 60, creatinine: 0, inr: 1.4, wbc: 8, sodium: 132 });
   assert.equal(r.valid, false);
-  assert.match(r.message, /creatinine must be greater than 0 and at most 40 mg\/dL/);
+  // spec-v1764: the cap is the creatinine envelope of lib/bounds.js (75 mg/dL), not the lib's own 40.
+  assert.match(r.message, /creatinine must be greater than 0 and at most 75 mg\/dL/);
   assert.match(r.message, /Check the value entered/);
   assert.doesNotMatch(r.message, /^Enter /);
 });
 
 test('an out-of-range lab is not reported as a missing one', () => {
   const entered = clifcAd({ age: 60, creatinine: 250, inr: 1.4, wbc: 8, sodium: 132 });
-  assert.match(entered.message, /creatinine must be greater than 0 and at most 40/);
+  assert.match(entered.message, /creatinine must be greater than 0 and at most 75/);
 
   // A genuinely absent one still gets the other sentence.
   const absent = clifcAd({ age: 60, inr: 1.4, wbc: 8, sodium: 132 });
@@ -54,7 +55,7 @@ test('an out-of-range lab is not reported as a missing one', () => {
 
   // And the sodium keeps its own two-sided bound.
   assert.match(clifcAd({ age: 60, creatinine: 1.5, inr: 1.4, wbc: 8, sodium: 2000 }).message,
-    /sodium must be between 100 and 180 mmol\/L/);
+    /sodium must be between 85 and 210 mmol\/L/); // spec-v1764: the sodium envelope of lib/bounds.js
 });
 
 test('missing INR -> complete-the-fields', () => {

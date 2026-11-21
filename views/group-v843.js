@@ -29,8 +29,8 @@ export const renderers = {
     note(root, 'Where the systolic and the diastolic fall in different categories, the higher one applies.');
 
     root.appendChild(el('h2', { text: 'Blood pressure' }));
-    numField(root, 'Systolic pressure (mmHg)', 'bpc-sbp', { min: '50', max: '300', step: '1' });
-    numField(root, 'Diastolic pressure (mmHg)', 'bpc-dbp', { min: '20', max: '200', step: '1' });
+    numField(root, 'Systolic pressure (mmHg)', 'bpc-sbp', { min: '50', max: '500', step: '1' });
+    numField(root, 'Diastolic pressure (mmHg)', 'bpc-dbp', { min: '20', max: '400', step: '1' });
 
     const ids = ['bpc-sbp', 'bpc-dbp'];
     const o = out(); root.appendChild(o);

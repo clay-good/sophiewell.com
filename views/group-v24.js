@@ -143,7 +143,7 @@ export const renderers = {
 
   // ----- 2.3 pim3 --------------------------------------------------------
   'pim3'(root) {
-    root.appendChild(field('Systolic blood pressure (mmHg)', 'pim-sbp', { min: 0, max: 300, placeholder: '90' }));
+    root.appendChild(field('Systolic blood pressure (mmHg)', 'pim-sbp', { min: 0, max: 500, placeholder: '90' }));
     root.appendChild(checkField('Both pupils > 3 mm and fixed to light', 'pim-pupils'));
     root.appendChild(field('FiO2 (fraction, e.g. 0.5) -- if ventilated', 'pim-fio2', { min: 0, max: 1, step: '0.01', placeholder: '0.5' }));
     root.appendChild(field('PaO2 (mmHg) -- if ventilated', 'pim-pao2', { min: 0, max: 800, placeholder: '80' }));

@@ -46,7 +46,7 @@ export const renderers = {
     root.appendChild(el('h2', { text: 'Findings' }));
     checkField(root, 'Fever', 'sea-fever');
     numField(root, 'Sedimentation rate (mm per hour)', 'sea-esr', { min: '0', max: '200', step: '1' });
-    numField(root, 'White cell count (thousand per microliter)', 'sea-wbc', { min: '0', max: '200', step: '0.1' });
+    numField(root, 'White cell count (thousand per microliter)', 'sea-wbc', { min: '0', max: '2000', step: '0.1' });
 
     const ids = ['sea-deficit', 'sea-fever', 'sea-esr', 'sea-wbc'].concat(S.RISK_FACTORS.map((r) => domId(r.key)));
     const o = out(); root.appendChild(o);

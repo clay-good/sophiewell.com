@@ -376,7 +376,7 @@ export const renderers = {
     root.appendChild(scaleField('3rd highest AIS region', 'ir-ais3', 6));
     root.appendChild(el('p', { class: 'muted', text: 'Revised Trauma Score physiology:' }));
     root.appendChild(field('GCS (3-15)', 'ir-gcs', { min: 3, max: 15, placeholder: 'e.g. 14' }));
-    root.appendChild(field('Systolic BP (mmHg)', 'ir-sbp', { min: 0, max: 300, placeholder: 'e.g. 120' }));
+    root.appendChild(field('Systolic BP (mmHg)', 'ir-sbp', { min: 0, max: 500, placeholder: 'e.g. 120' }));
     root.appendChild(field('Respiratory rate (/min)', 'ir-rr', { placeholder: 'e.g. 18' }));
     const o = out(); root.appendChild(o);
     wire(['ir-ais1', 'ir-ais2', 'ir-ais3', 'ir-gcs', 'ir-sbp', 'ir-rr'], () => safe(o, () => {
@@ -399,7 +399,7 @@ export const renderers = {
   sipa(root) {
     root.appendChild(field('Age (years, 4-16 validated)', 'sp-age', { placeholder: 'e.g. 5' }));
     root.appendChild(field('Heart rate (bpm)', 'sp-hr', { min: 0, max: 400, placeholder: 'e.g. 140' }));
-    root.appendChild(field('Systolic BP (mmHg)', 'sp-sbp', { min: 0, max: 300, placeholder: 'e.g. 100' }));
+    root.appendChild(field('Systolic BP (mmHg)', 'sp-sbp', { min: 0, max: 500, placeholder: 'e.g. 100' }));
     const o = out(); root.appendChild(o);
     wire(['sp-age', 'sp-hr', 'sp-sbp'], () => safe(o, () => {
       // spec-v1063: a blank heart rate made the shock index 0, and 0 is below every
