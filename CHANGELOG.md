@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Sample sizes for proportions from the WHO manual of Lwanga and Lemeshow (1991): one proportion to an absolute or
+  relative precision, and two proportions by hypothesis test or by the precision of their difference, each with an
+  optional design effect. Each rounds as the manual's tables do, and the manual's worked examples are the tests.
 - The Kidney Donor Profile Index (KDPI) and Kidney Donor Risk Index (KDRI), from OPTN's April 2026 guide (the eight
   donor factors, without race or hepatitis C) and its 2025 mapping table. Unknown hypertension or diabetes enters at
   the share OPTN uses, and the result carries the guide's cautions on what a KDPI can and cannot say.

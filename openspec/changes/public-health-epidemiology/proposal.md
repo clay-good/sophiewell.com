@@ -1,7 +1,7 @@
 # Change: Public health epidemiology and biostatistics measures
 
 **Status:** Built October 19, 2026: seven tools shipped, recorded in [docs/spec-v1659.md](../../../docs/spec-v1659.md).
-The herd immunity threshold, DALYs and both sample-size tools stay gated, as do the PAF and the SMR interval.
+The herd immunity threshold and DALYs stay gated, as do the PAF and the SMR interval. Both sample-size tools shipped for proportions in spec-v1769 (2026-11-21); their means branches stay gated, because the WHO manual covers proportions only.
 **Audience:** the health department epidemiologist, the public health nurse, the MPH student,
 the quality analyst who has to turn counts into rates, and the clinician reading a paper.
 **Program index:** [docs/spec-v1654.md](../../../docs/spec-v1654.md).
@@ -42,8 +42,8 @@ biostatistics corner:
 | 7 | `smr` | Standardized Mortality or Incidence Ratio (Observed Over Expected) | Lesson 3 §3 and Breslow and Day 1987 (build gate on the interval) |
 | 8 | `direct-age-standardization` | Directly Age-Standardized Rate | Lesson 3 §4 (build gate: not opened) |
 | 9 | `daly` | DALYs From Deaths and Prevalent Cases (YLL + YLD) | WHO GHE methods 2000-2021 (build gate: not opened) |
-| 10 | `sample-size-proportion` | Sample Size for a Proportion or a Mean | WHO, Lwanga and Lemeshow 1991 (build gate: not opened) |
-| 11 | `sample-size-two-groups` | Sample Size to Compare Two Proportions or Two Means | same (build gate) |
+| 10 | `sample-size-proportion` | Sample Size for a Proportion or a Mean | WHO, Lwanga and Lemeshow 1991 (read 2026-11-21; proportions shipped in spec-v1769, means gated) |
+| 11 | `sample-size-two-groups` | Sample Size to Compare Two Proportions or Two Means | same (proportions shipped in spec-v1769, means gated) |
 
 Five of the eleven are build-gated on a source not yet opened; their arithmetic is standard and
 written out in `design.md`, but no number or formula ships until it is read on the page.

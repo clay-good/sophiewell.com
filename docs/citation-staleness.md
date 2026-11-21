@@ -935,6 +935,8 @@ carries the specific date that could change it.
 | bayes-risk-table | Stated arithmetic: Bayes' theorem | International | 2026-10-19 | an identity | 2027-10-19 |
 | acmg-variant-classify | Richards 2015 Table 5; Tavtigian 2018 and 2020; ClinGen SVI strength notation (2017) and PM2 recommendation (2020) | International | 2026-11-07 | ClinGen SVI may change a default strength (PM2 did in 2020); recheck the SVI pages | 2027-05-07 |
 | tpa-eligibility | AHA/ASA 2026 acute ischemic stroke guideline (sections 4.3, 4.6; Tables 7, 8) and its July 27, 2026 correction; TNKase and Activase labels | US | 2026-11-07 | AHA issues focused updates and corrections; recheck the guideline page for a newer correction and the labels on DailyMed | 2027-05-07 |
+| sample-size-proportion | Lwanga and Lemeshow, Sample size determination in health studies (WHO, 1991), Tables 1 and 2 | International | 2026-11-21 | a 1991 manual; stable | 2027-11-21 |
+| sample-size-two-groups | Lwanga and Lemeshow, Sample size determination in health studies (WHO, 1991), Tables 4 and 5 | International | 2026-11-21 | a 1991 manual; stable | 2027-11-21 |
 | kdri-kdpi | OPTN KDPI guide (April 23, 2026) and KDRI-to-KDPI mapping table (2025 reference population) | US | 2026-11-07 | OPTN updates the mapping table and scaling factor each spring; the tool refuses after June 30, 2027 until the next table is read | 2027-05-07 |
 | qrs-detect-trace | Pan and Tompkins 1985; MIT-BIH Arrhythmia Database (validation) | International | 2026-11-07 | a 1985 algorithm; rerun scripts/validate-qrs-mitdb.mjs after any change to the detector | 2027-11-07 |
 | hrv-frequency-domain | Task Force of the ESC and NASPE, Circulation 1996, Table 2 | International | 2026-11-07 | a 1996 standard; stable | 2027-11-07 |

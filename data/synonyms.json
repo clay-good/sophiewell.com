@@ -13844,6 +13844,23 @@
       ],
       "tile": "kdri-kdpi",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sample size for a proportion",
+        "how many subjects to enroll",
+        "lwanga lemeshow"
+      ],
+      "tile": "sample-size-proportion",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "power calculation",
+        "sample size per group in a trial"
+      ],
+      "tile": "sample-size-two-groups",
+      "audience": "clinicians"
     }
   ]
 }

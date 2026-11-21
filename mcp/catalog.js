@@ -1187,6 +1187,7 @@ import qrsDetectTraceV1706 from './adapters/qrs-detect-trace-v1706.js';
 import tpaEligibilityV1708 from './adapters/tpa-eligibility-v1708.js';
 import ischemiaTimeClockV1661 from './adapters/ischemia-time-clock-v1661.js';
 import kdriKdpiV1717 from './adapters/kdri-kdpi-v1717.js';
+import sampleSizeV1769 from './adapters/sample-size-v1769.js';
 import donorRecipientSizeMatchV1661 from './adapters/donor-recipient-size-match-v1661.js';
 import tMacsV1662 from './adapters/t-macs-v1662.js';
 import adjustedPatientDaysV1636 from './adapters/adjusted-patient-days-v1636.js';
@@ -2603,6 +2604,7 @@ const ADAPTER_MODULES = [
   ['tpa-eligibility-v1708', tpaEligibilityV1708],
   ['ischemia-time-clock-v1661', ischemiaTimeClockV1661],
   ['kdri-kdpi-v1717', kdriKdpiV1717],
+  ['sample-size-v1769', sampleSizeV1769],
   ['donor-recipient-size-match-v1661', donorRecipientSizeMatchV1661],
   ['t-macs-v1662', tMacsV1662],
   ['adjusted-patient-days-v1636', adjustedPatientDaysV1636],

@@ -15,19 +15,19 @@
       "tool": "sample-size-proportion",
       "spec": "spec-v1659",
       "source": "Lwanga and Lemeshow, Sample Size Determination in Health Studies, WHO 1991 (ISBN 9241544058)",
-      "url": "https://iris.who.int/search?query=Lwanga",
+      "url": "https://iris.who.int/handle/10665/40062",
       "kind": "priced-publication",
       "lastStatus": 200,
-      "note": "The search page answers, the book is not in it. A priced 1991 WHO publication with no IRIS copy; the reachable PDFs are third-party scans on university and document-sharing servers, which are not verified reprints. A 200 here means the catalogue is up, not that the manual is available."
+      "note": "Shipped in spec-v1769 (November 21, 2026), proportion formulas only. The manual is in WHO IRIS after all, as handle 10665/40062 (scanned PDFs), and was read there: Tables 1, 2, 4 and 5 and Examples 1 to 12. It covers proportions only, so the means branches of the design stay unbuilt, and it gives no finite-population correction or non-response allowance."
     },
     {
       "tool": "sample-size-two-groups",
       "spec": "spec-v1659",
       "source": "The same manual",
-      "url": "https://iris.who.int/search?query=Lwanga",
+      "url": "https://iris.who.int/handle/10665/40062",
       "kind": "priced-publication",
       "lastStatus": 200,
-      "note": "See sample-size-proportion."
+      "note": "Shipped in spec-v1769 with sample-size-proportion: the two-proportion test (Table 5) and the difference with absolute precision (Table 4). See that row."
     },
     {
       "tool": "kdri-kdpi",

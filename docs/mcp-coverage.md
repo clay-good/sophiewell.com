@@ -9607,6 +9607,10 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/tpa-eligibility-v1708.js (spec-v1708: IV thrombolysis checklist, AHA/ASA 2026 — clinical disclaimer)
 - `tpa-eligibility`
 
+### lib/sample-size-v1769.js (spec-v1769: sample sizes for one or two proportions, WHO Lwanga and Lemeshow 1991 — administrative disclaimer)
+- `sample-size-proportion`
+- `sample-size-two-groups`
+
 ### lib/kdri-kdpi-v1717.js (spec-v1717: KDRI and KDPI, OPTN 2026 guide and 2025 mapping table — clinical disclaimer)
 - `kdri-kdpi`
 

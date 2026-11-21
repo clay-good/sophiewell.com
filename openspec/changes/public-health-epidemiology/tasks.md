@@ -1,7 +1,8 @@
 # Tasks — Public health epidemiology and biostatistics measures
 
 > **Built October 19, 2026** ([docs/spec-v1659.md](../../../docs/spec-v1659.md)); tool 9 followed on
-> November 7, 2026 ([docs/spec-v1690.md](../../../docs/spec-v1690.md)). Unticked items were not done;
+> November 7, 2026 ([docs/spec-v1690.md](../../../docs/spec-v1690.md)); tools 10 and 11, proportions only, on
+> November 21, 2026 ([docs/spec-v1769.md](../../../docs/spec-v1769.md)). Unticked items were not done;
 > the build record says why.
 >
 > Originally a docs-only proposal. Confirm id absence for all eleven ids before building (all absent on
@@ -24,11 +25,17 @@
       discounting for time or unequal age weights", section 2.2 and Table 2.1 for the standard loss function.
       Table 2.1's 75-79 cell is mistyped "17,19" in the source and is recorded as 17.19) WHO GHE methods paper, current edition: YLL, YLD, no age weighting or discounting
       (tool 9).
-- [ ] 1.6 (not read; tools 10 and 11 stay gated) Lwanga and Lemeshow 1991: the formulas and one worked example each (tools 10, 11).
+- [x] 1.6 (read November 21, 2026 in WHO IRIS, handle 10665/40062: Tables 1, 2, 4 and 5 and Examples 1 to 12; tools 10
+      and 11 SHIPPED in spec-v1769 for proportions only. The manual covers proportions only ("Continuous response
+      variables are not considered in this manual"), and gives no finite-population correction, non-response
+      allowance or unequal allocation, so the means branches and those adjustments stay unbuilt) Lwanga and Lemeshow 1991: the formulas and one worked example each (tools 10, 11).
 - [x] 1.7 (the 2000 standard read from SEER's table, script-transcribed, page hash recorded; NCHS returned 403) NCHS 2000 US standard population: fetch to disk, hash, manifest row (tool 8).
 
 ## 2. Lib
-- [x] 2.1 (one lib per tool; `observedOverExpected` not shared with `nhsn-sir`, which stays as it is) `lib/epi-measures-vNNNN.js`: pure functions for tools 1 to 9; `lib/sample-size-vNNNN.js`
+- [x] 2.1 (one lib per tool; `observedOverExpected` not shared with `nhsn-sir`, which stays as it is; tools 10 and 11
+      built November 21, 2026 as `lib/sample-size-v1769.js`, proportion branches only, with
+      `views/group-v1769.js`, `mcp/adapters/sample-size-v1769.js` and `test/unit/sample-size-v1769.test.js`
+      from the manual's Examples 1 to 4 and 9 to 12) `lib/epi-measures-vNNNN.js`: pure functions for tools 1 to 9; `lib/sample-size-vNNNN.js`
       for 10 and 11. `observedOverExpected` is one function used by `smr` and `nhsn-sir`.
 - [x] 2.2 Unit tests from the CDC examples listed in `design.md` (person-time rate 2.5 per
       1,000; crude 832.1 per 100,000; case fatality 0.5%; death-to-case 7.82; YPLL 117,033 and

@@ -1018,3 +1018,5 @@ experience**.
 > v1708, IV Thrombolysis Checklist — [spec-v1708](spec-v1708.md), which adds `tpa-eligibility` from the AHA/ASA 2026 acute ischemic stroke guideline (Table 8's three tiers, the 4.5-hour and extended windows, its July 2026 correction) beside the TNKase and Activase labels, read November 7, 2026 — is 2386.)
 
 > v1717, Kidney Donor Profile Index — [spec-v1717](spec-v1717.md), which adds `kdri-kdpi` from OPTN's April 2026 KDPI guide (the October 2024 refit without race or HCV) and its 2025 KDRI-to-KDPI mapping table, both read November 7, 2026 — is 2387.)
+
+> v1769, Sample Size for Proportions — [spec-v1769](spec-v1769.md), which adds `sample-size-proportion` and `sample-size-two-groups` from the WHO manual of Lwanga and Lemeshow (1991, read in WHO IRIS November 21, 2026), proportion formulas only — is 2389.)

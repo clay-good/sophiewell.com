@@ -945,6 +945,8 @@ const PROBES = [
   ['is this patient a tpa candidate', ['tpa-eligibility']],
   ['clamp to reperfusion time', ['ischemia-time-clock']],
   ['kidney donor profile index', ['kdri-kdpi']],
+  ['sample size to estimate a prevalence', ['sample-size-proportion']],
+  ['sample size to compare two proportions', ['sample-size-two-groups']],
   ['donor recipient weight ratio', ['donor-recipient-size-match']],
   ['t-macs chest pain troponin', ['t-macs']],
   ['adjusted patient days calculation', ['adjusted-patient-days']],
