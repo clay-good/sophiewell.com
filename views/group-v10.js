@@ -492,7 +492,7 @@ export const renderers = {
     root.appendChild(el('p', { class: 'muted', text: 'Enter the worst value in the first 24 ICU hours for each variable.' }));
     root.appendChild(unitField('Temperature', 'ap-temp', TEMP_UNITS, { placeholder: 'e.g. 39' }));
     root.appendChild(field('Mean arterial pressure (mmHg)', 'ap-map', { min: 0, placeholder: 'e.g. 60' }));
-    root.appendChild(field('Heart rate (bpm)', 'ap-hr', { min: 0, max: 400, placeholder: 'e.g. 120' }));
+    root.appendChild(field('Heart rate (bpm)', 'ap-hr', { min: 0, max: 600, placeholder: 'e.g. 120' }));
     root.appendChild(field('Respiratory rate (/min)', 'ap-rr', { placeholder: 'e.g. 30' }));
     root.appendChild(field('Oxygenation: PaO2 (mmHg)', 'ap-oxy', { placeholder: 'e.g. 65' }));
     root.appendChild(field('Arterial pH', 'ap-ph', { min: 0, placeholder: 'e.g. 7.3' }));

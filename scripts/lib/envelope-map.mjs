@@ -97,6 +97,8 @@ export const OWN_RANGE = new Set([
   // spec-v1760: not the quantity the envelope describes. Pulmonary-artery pressures (PAPi, TPG) are not systemic:
   // a PA diastolic is 4-12 mmHg and a PA systolic 15-30 in health; a toe pressure is 0-10 mmHg in critical limb ischemia; a natural
   // wet-bulb temperature is the air's, not a body's.
+  // spec-v1766: R factor's ALT field is the lab's upper limit of normal, not a measured ALT.
+  'r-factor|altu',
   'papi|papi-padp', 'papi|papi-pasp', 'transpulmonary-gradient|tpg-padp', 'toe-brachial-index|tbi-toe', 'wbgt|wbgt-nwb',
 ]);
 

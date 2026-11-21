@@ -90,8 +90,8 @@ export const renderers = {
   'abcd3-i'(root) {
     note(root, 'ABCD3-I score (Merwick 2010): the imaging-augmented refinement of ABCD² for early stroke risk after TIA — the ABCD² items plus dual TIA within 7 days (+2), ipsilateral ≥ 50% carotid stenosis (+2), and abnormal DWI (+2), total 0–13. Strata: low 0–3, medium 4–7, high 8–13.');
     root.appendChild(numField('Age (years)', 'abcd3i-age', { max: 130, min: '0' }));
-    root.appendChild(numField('Systolic BP (mmHg)', 'abcd3i-sbp', { max: 500, min: '30' }));
-    root.appendChild(numField('Diastolic BP (mmHg)', 'abcd3i-dbp', { min: '10' }));
+    root.appendChild(numField('Systolic BP (mmHg)', 'abcd3i-sbp', { max: 500, min: '20' }));
+    root.appendChild(numField('Diastolic BP (mmHg)', 'abcd3i-dbp', { min: '5' }));
     root.appendChild(selectField('Clinical features', 'abcd3i-clinical', [
       { value: 'weakness', text: 'Unilateral weakness (+2)' },
       { value: 'speech', text: 'Speech disturbance without weakness (+1)' },

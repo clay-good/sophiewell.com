@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- About 60 more tools refused a lab value or vital sign that patients have survived, through a limit of their own
+  (APACHE II refused a temperature below 20 C and a heart rate above 300). They now accept the full plausible range;
+  neonatal, pediatric and guideline-category tools keep their own documented ranges.
 - Eight more limits refused values measured in patients who survived, among them an INR of 189, a hematocrit of 88%
   in a newborn and a triglyceride level of 33,727 mg/dL. Each now sits just past the published case.
 - Twenty-three tools still refused a survivable creatinine, white count, platelet count, sodium, heart rate or blood

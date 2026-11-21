@@ -77,9 +77,10 @@ test('dka-resolution: with no glucose it asks for one rather than guessing', () 
 });
 
 test('dka-resolution: out-of-range values are refused', () => {
-  assert.equal(d({ glucoseMgDl: 2001 }).valid, false);
+  // spec-v1766: past the envelopes (glucose 3000, bicarbonate 75), not the older 2000 and 60
+  assert.equal(d({ glucoseMgDl: 3001 }).valid, false);
   assert.equal(d({ venousPh: 9 }).valid, false);
-  assert.equal(d({ bicarbonate: 61 }).valid, false);
+  assert.equal(d({ bicarbonate: 76 }).valid, false);
   assert.equal(d({ anionGap: -1 }).valid, false);
 });
 

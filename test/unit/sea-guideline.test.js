@@ -68,7 +68,7 @@ test('sea: a missing fever is called out rather than counted against', () => {
 test('sea: implausible values are refused', () => {
   assert.equal(sea({ injectionDrugUse: true, esr: 300 }).valid, false);
   assert.equal(sea({ injectionDrugUse: true, esr: -1 }).valid, false);
-  assert.equal(sea({ injectionDrugUse: true, wbc: 500 }).valid, false);
+  assert.equal(sea({ injectionDrugUse: true, wbc: 2500 }).valid, false); // spec-v1766: past the 2,000 envelope (lib/bounds.js)
 });
 
 test('sea: string values from the DOM behave like numbers and checkboxes', () => {

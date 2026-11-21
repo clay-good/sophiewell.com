@@ -47,7 +47,7 @@ test('epvs names the hematocrit it rejected instead of asking for it again', () 
 
 test('corrected-potassium-ph names whichever of the two is out of range', () => {
   assert.match(correctedPotassiumPh({ potassium: 100, ph: 7.2 }).message, /potassium in mEq\/L must be greater than 0 and at most 20/i);
-  assert.match(correctedPotassiumPh({ potassium: 4, ph: 9 }).message, /arterial pH must be between 6.5 and 8/i);
+  assert.match(correctedPotassiumPh({ potassium: 4, ph: 9 }).message, /arterial pH must be between 6.3 and 8/i); // spec-v1766: the pH envelope floor (source in lib/bounds.js)
   assert.match(correctedPotassiumPh({ ph: 7.2 }).message, ASKS);
   assert.equal(correctedPotassiumPh({ potassium: 4, ph: 7.2 }).corrected, 2.8);
 });

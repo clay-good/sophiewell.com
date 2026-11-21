@@ -67,7 +67,7 @@ test('ms stage: guards', () => {
   assert.equal(ms({ valveArea: 20 }).valid, false);
   assert.equal(ms({ pressureHalfTime: 9000 }).valid, false);
   assert.equal(ms({ valveArea: 1.2, meanGradient: 300 }).valid, false);
-  assert.equal(ms({ valveArea: 1.2, heartRate: 500 }).valid, false);
+  assert.equal(ms({ valveArea: 1.2, heartRate: 601 }).valid, false); // spec-v1766: past the hr envelope (600)
   assert.doesNotMatch(JSON.stringify(ms({ valveArea: 1.2, symptoms: true })), /NaN|Infinity/);
 });
 

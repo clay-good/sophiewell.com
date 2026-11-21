@@ -44,7 +44,7 @@ const CHECK = /must be .* Check the value entered\.$/;
 
 test('the refusal names the value and its range, not the field as missing', () => {
   assert.match(renalFailureIndex({ urineNa: 20, plasmaCr: 250, urineCr: 60 }).message,
-    /^Plasma creatinine \(mg\/dL\) must be between 0.1 and 30/);
+    /^Plasma creatinine \(mg\/dL\) must be between 0.1 and 75/); // spec-v1766: the scr envelope
   assert.match(feua({ urineUA: 300, serumCr: 250, serumUA: 6, urineCr: 60 }).message, /^Serum creatinine \(mg\/dL\) must be/);
   assert.match(nlr({ anc: 200000, alc: 1.5 }).message, /^Absolute neutrophil count .* must be/);
   assert.match(piv({ anc: 8, plt: 20000, amc: 0.5, alc: 1.5 }).message, /^Platelet count .* must be/);

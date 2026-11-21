@@ -39,6 +39,6 @@ test('blank / non-finite inputs -> invalid (no NaN leak)', () => {
 });
 
 test('out-of-range pressures -> invalid', () => {
-  assert.equal(compartmentDeltaPressure({ diastolic: 300, compartment: 10 }).valid, false);
+  assert.equal(compartmentDeltaPressure({ diastolic: 401, compartment: 10 }).valid, false); // spec-v1766: past the dbp envelope (400)
   assert.equal(compartmentDeltaPressure({ diastolic: 70, compartment: -5 }).valid, false);
 });
