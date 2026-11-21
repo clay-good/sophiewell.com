@@ -4,7 +4,7 @@
 // One map, so the two surfaces cannot disagree about which field holds which quantity.
 
 import { allCalculators } from '../../mcp/catalog.js';
-import { BOUNDS } from '../../lib/bounds.js';
+import { BOUNDS, CEILING_ONLY } from '../../lib/bounds.js';
 import { META } from '../../lib/meta.js';
 import { computeCalculator } from '../../mcp/tools.js';
 
@@ -105,7 +105,7 @@ export const OWN_RANGE = new Set([
 // albumin (congenital analbuminemia runs below 0.1 g/dL), glucose (neonatal lows read in single digits). By field:
 // hypothermia-rewarm's core temperature (survival from 13.7 C is recorded), SNAPPE-II's neonatal temperature
 // (spec-v1741 skipped that floor on purpose), START and JumpSTART's respiratory rate (apnea is its own question).
-export const NO_FLOOR_KEYS = new Set(['hemoglobin', 'hematocrit', 'albumin', 'glucose']);
+export const NO_FLOOR_KEYS = CEILING_ONLY; // lib/bounds.js owns the list (spec-v1762), so the libs and the finders agree
 // The Revised Trauma Score (iss-rts) codes a systolic of 1-49 and a rate of 1-5 as 1: values under these floors are its own bands.
 export const NO_FLOOR_FIELDS = new Set(['hypothermia-rewarm|hyp-t', 'snappe-ii|sn-temp', 'start-triage|st-rr', 'jumpstart-triage|js-rr',
   'iss-rts|ir-sbp', 'iss-rts|ir-rr']);

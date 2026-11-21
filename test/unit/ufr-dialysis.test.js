@@ -33,7 +33,7 @@ test('an impossible session length used to read below the risk threshold', () =>
 });
 
 test('an impossible weight is refused the same way', () => {
-  assert.match(ufrDialysis({ volume: 2, hours: 4, weight: 9999 }).message, /post-dialysis weight in kg must be between 0.3 and 500/);
+  assert.match(ufrDialysis({ volume: 2, hours: 4, weight: 9999 }).message, /post-dialysis weight in kg must be between 0.2 and 500/);
 });
 
 test('a real session still computes', () => {

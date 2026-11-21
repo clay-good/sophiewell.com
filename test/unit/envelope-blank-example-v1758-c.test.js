@@ -69,7 +69,7 @@ test('kings-college: lactate', () => {
 
 test('tls-cairo-bishop: the three baselines', () => {
   const base = { potassium: 5, phosphate: 4, calcium: 9, uricAcid: 7 };
-  refused(tlsCairoBishop({ ...base, potassiumBaseline: 10.1 }));
+  refused(tlsCairoBishop({ ...base, potassiumBaseline: 15.1 }));
   refused(tlsCairoBishop({ ...base, phosphateBaseline: 20.1 }));
   refused(tlsCairoBishop({ ...base, calciumBaseline: 20.1 }));
   answered(tlsCairoBishop({ ...base, potassiumBaseline: 4, phosphateBaseline: 3.5, calciumBaseline: 9.5 }));

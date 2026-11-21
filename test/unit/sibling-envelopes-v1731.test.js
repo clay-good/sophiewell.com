@@ -24,7 +24,7 @@ const ROWS = [
   ['surgical-apgar', 'sa-hr', /heart rate/],
   ['hemodynamic-suite', 'hs-hr', /heart rate/],
   ['mechanical-power', 'mp-rr', /respiratory rate/],
-  ['iom-gwg', 'ig-wt', /pre-pregnancy weight must be between 0\.66 and 1,102 lb/],
+  ['iom-gwg', 'ig-wt', /pre-pregnancy weight must be between 0\.44 and 1,102 lb/], // spec-v1762: floor 0.2 kg
   ['iom-gwg', 'ig-ht', /height must be between 17\.7 and 98\.4 inches/],
   // bounds that follow by definition
   ['cardiac-power-output', 'cp-map', /mean arterial pressure in mmHg must be between 5 and 300/],

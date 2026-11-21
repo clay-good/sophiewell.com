@@ -69,6 +69,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Some of the new range checks refused values real patients have had: a 250 g premature baby's weight, a potassium of
+  12 to 14 mmol/L, and critical-low glucose, hemoglobin, hematocrit or albumin. The weight floor is now 0.2 kg, the
+  potassium ceiling 15 mmol/L (both below or above a reported survival), and the four critical-low labs are flagged
+  rather than refused.
 - Six tools dropped a negative entry as if the field were blank (delta-gap swapped in its default normal anion gap
   of 12; Phoenix sepsis left a negative D-dimer out of the score). Each now refuses it.
 - 80 tools answered from a value below any plausible floor: diabetes risk tools scored a BMI of 2.5, VBAC gave

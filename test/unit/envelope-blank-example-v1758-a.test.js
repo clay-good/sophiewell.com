@@ -10,7 +10,7 @@ import clinicalAdapters from '../../mcp/adapters/clinical.js';
 const LAB = [
   // [analyte, just past the ceiling, in range]
   ['sodium', 200.1, 140],
-  ['potassium', 10.1, 4],
+  ['potassium', 15.1, 4], // spec-v1762: the ceiling rose to 15 (survival from 14.0 mmol/L is reported)
   ['chloride', 160.1, 100],
   ['bicarbonate', 60.1, 24],
   ['bun', 300.1, 15],

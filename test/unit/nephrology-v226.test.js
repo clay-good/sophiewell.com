@@ -72,9 +72,10 @@ test('spec-v1753: feBicarbonate refuses a plasma bicarbonate past 60 or a plasma
   assert.equal(feBicarbonate({ ...base, plasmaHco3: 60, plasmaCr: 25 }).valid, true);
   assert.equal(feBicarbonate(base).valid, true);
 });
-test('spec-v1753: correctedPotassiumPh refuses a potassium past the 10 mmol/L envelope', () => {
-  assert.equal(correctedPotassiumPh({ potassium: 15, ph: 7.2 }).valid, false);
-  assert.match(correctedPotassiumPh({ potassium: 15, ph: 7.2 }).message, /potassium/i);
+// spec-v1762: the envelope ceiling rose from 10 to 15 mmol/L (survival from 14.0 is reported).
+test('spec-v1753: correctedPotassiumPh refuses a potassium past the 15 mmol/L envelope', () => {
+  assert.equal(correctedPotassiumPh({ potassium: 20, ph: 7.2 }).valid, false);
+  assert.match(correctedPotassiumPh({ potassium: 20, ph: 7.2 }).message, /potassium/i);
   assert.equal(correctedPotassiumPh({ potassium: 10, ph: 7.4 }).valid, true);
   assert.equal(correctedPotassiumPh({ potassium: 5.4, ph: 7.2 }).valid, true);
 });

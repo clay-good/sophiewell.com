@@ -55,7 +55,7 @@ test('the two clearance estimates refuse a creatinine that compresses to zero', 
   assert.throws(() => egfrCkdEpi2021({ scr: 1.0, age: 900, sex: 'M' }), /age must be between 0 and 130/);
   assert.equal(egfrCkdEpi2021({ scr: 1.0, age: 60, sex: 'M' }), 86.2);
   assert.throws(() => cockcroftGault({ age: 60, weightKg: 80, scr: 250, sex: 'M' }), /scr must be between 0.1 and 25/);
-  assert.throws(() => cockcroftGault({ age: 60, weightKg: 9000, scr: 1.0, sex: 'M' }), /weight kg must be between 0.3 and 500/);
+  assert.throws(() => cockcroftGault({ age: 60, weightKg: 9000, scr: 1.0, sex: 'M' }), /weight kg must be between 0.2 and 500/);
   assert.equal(cockcroftGault({ age: 60, weightKg: 80, scr: 1.0, sex: 'M' }), 88.89);
   // The hard denominator floor is still the compute function's own.
   assert.throws(() => cockcroftGault({ age: 60, weightKg: 80, scr: 0, sex: 'M' }), /scr/);
