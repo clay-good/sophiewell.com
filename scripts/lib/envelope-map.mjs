@@ -99,6 +99,8 @@ export const OWN_RANGE = new Set([
   // wet-bulb temperature is the air's, not a body's.
   // spec-v1766: R factor's ALT field is the lab's upper limit of normal, not a measured ALT.
   'r-factor|altu',
+  // spec-v1768: EBV/MABL's minimum acceptable hematocrit is a target the clinician sets, not a measurement.
+  'ebv-mabl|em-min',
   'papi|papi-padp', 'papi|papi-pasp', 'transpulmonary-gradient|tpg-padp', 'toe-brachial-index|tbi-toe', 'wbgt|wbgt-nwb',
 ]);
 

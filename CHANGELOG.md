@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Hemoglobin and hematocrit now have a floor taken from a published survival (1.4 g/dL): a value below 1 g/dL or
+  3% is refused as impossible, while the critically low values patients have survived are still read.
 - The LTBI regimen, thrombolytic, neostigmine and pegfilgrastim doses are capped by their labels, so a body weight
   as high as 500 kg is now accepted there. Where a per-kilogram dose has no ceiling, a very high weight is still refused.
 - About 60 more tools refused a lab value or vital sign that patients have survived, through a limit of their own

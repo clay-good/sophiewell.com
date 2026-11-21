@@ -120,7 +120,7 @@ test('the four gas functions guard the set, as their neighbour in the same file 
   const cases = [
     ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { ph: 80 }, /arterial pH \(6\.3 to 8\)/], // spec-v1763: bound widened (source in lib/bounds.js)
     ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { bicarbonate: 600 }, /serum bicarbonate \(1 to 75 mmol\/L\)/], // spec-v1763, spec-v1765: bound widened (source in lib/bounds.js)
-    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { hemoglobin: 250 }, /h[ae]moglobin \(2 to 26 g\/dL\)/i], // spec-v1765: bound widened (source in lib/bounds.js)
+    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { hemoglobin: 250 }, /h[ae]moglobin \(1 to 26 g\/dL\)/i], // spec-v1765: bound widened (source in lib/bounds.js)
     ['respAcidosis', respAcidosisCompensation, { paco2: 60, bicarbonate: 26, chronic: 'acute' }, { paco2: 2000 }, /PaCO2 \(5 to 250 mmHg\)/], // spec-v1763: bound widened (source in lib/bounds.js)
     ['respAcidosis', respAcidosisCompensation, { paco2: 60, bicarbonate: 26, chronic: 'acute' }, { bicarbonate: 600 }, /bicarbonate/],
     ['respAlkalosis', respAlkalosisCompensation, { paco2: 25, bicarbonate: 21, chronic: 'acute' }, { paco2: 2000 }, /PaCO2/],
@@ -482,7 +482,7 @@ test('haps guards the same two analytes cdai-crohns does, in the same module', (
   // An impossible value used to fail the "normal" test and move the answer to
   // "not harmless" -- alarming rather than reassuring, and still a verdict from a
   // number that cannot be.
-  assert.match(haps({ ...ok, hct: 750 }).message, /plausible range for h[ae]matocrit \(5 to 90 %\)/i); // spec-v1765: bound widened (source in lib/bounds.js)
+  assert.match(haps({ ...ok, hct: 750 }).message, /plausible range for h[ae]matocrit \(3 to 90 %\)/i); // spec-v1765: bound widened (source in lib/bounds.js)
   assert.equal(haps({ ...ok, hct: 750 }).valid, false);
   assert.match(haps({ ...ok, creatinine: 250 }).message, /plausible range for serum creatinine/);
 
