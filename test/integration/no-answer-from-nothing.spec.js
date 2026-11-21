@@ -200,7 +200,7 @@ test('the plausible-range advisory names the quantity, not the variable', async 
   await page.waitForTimeout(350);
   await page.locator('#kd-wt').fill('0.1');
   const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
-  expect(text).toMatch(/plausible range for weight \(0.3 to 500 kg\)/);
+  expect(text).toMatch(/plausible range for weight \(0.2 to 500 kg\)/); // spec-v1762: floor 0.2 kg
   expect(text).not.toMatch(/weightKg/);
 });
 
