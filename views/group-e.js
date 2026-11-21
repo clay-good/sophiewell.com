@@ -685,6 +685,8 @@ export const renderers = {
       if (needValues(o, [['a height', heightIn]])) return;
       const ibw = V4.ibwDevine({ heightInches: heightIn, sex });
       const heightCm = heightIn * 2.54;
+      // spec-v1760: a value below the floor lib/bounds.js declares answered; no finder had driven a floor. A blank weight stays allowed.
+      { const f = weightKg != null ? boundsAdvisory('weightKg', weightKg) : null; if (f) throw new RangeError(f); }
       const rows = [{ text: `IBW (Devine): ${ibw.toFixed(1)} kg` }];
       if (weightKg != null) {
         rows.push({ text: `AdjBW (IBW + 0.4 × excess): ${V4.adjBW({ ibw, actualKg: weightKg }).toFixed(1)} kg` });

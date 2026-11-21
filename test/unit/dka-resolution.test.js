@@ -35,7 +35,8 @@ test('dka-resolution: two of three, and one is not enough', () => {
 });
 
 test('dka-resolution: each secondary threshold is read strictly', () => {
-  const base = { glucoseMgDl: 180, bicarbonate: 0, venousPh: 7.0, anionGap: 30 };
+  // spec-v1760: a bicarbonate of 0 is below the 2 mmol/L floor and is refused now; 5 is unmet and in range.
+  const base = { glucoseMgDl: 180, bicarbonate: 5, venousPh: 7.0, anionGap: 30 };
   assert.equal(d({ ...base, bicarbonate: 15 }).metCount, 1);
   assert.equal(d({ ...base, bicarbonate: 14.9 }).metCount, 0);
   assert.equal(d({ ...base, venousPh: 7.31 }).metCount, 1);

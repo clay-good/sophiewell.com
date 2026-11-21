@@ -33,7 +33,9 @@ export const MAP = [
   ['glucose', /\bglucose\b/i, /mg\/dL/i],
   ['paO2', /PaO2|arterial oxygen tension/i, /mmHg/i],
   ['paCO2', /PaCO2/i, /mmHg/i],
-  ['pH', /\bpH\b/i, /^$|arterial/i],
+  // spec-v1760: a label's trailing parenthetical stands in for a missing unit (spec-v1741), so "Arterial pH (optional)"
+  // read its unit as "optional" and five blood-pH fields were never mapped (PSI scored a pH of -999999 as acidemic).
+  ['pH', /\bpH\b/i, /^$|arterial|venous|optional|resuscitation|scores|met above|6\.5/i],
   ['hr', /heart rate|pulse/i, /bpm|beats/i],
   ['sbp', /systolic/i, /mmHg/i],
   ['dbp', /diastolic/i, /mmHg/i],
@@ -90,7 +92,24 @@ export const NOT_BLOOD_PH = new Set(['percent-ionized']);
 // spec-v1758: fields whose tool sets a wider range on purpose, with the reason. hypothermia-rewarm refuses
 // potassium outside 0-30 mmol/L because its ECPR exclusion fires above 12 mmol/L (ERC 2021, Lott 2021);
 // the serum envelope's 10 would make that branch unreachable.
-export const OWN_RANGE = new Set(['hypothermia-rewarm|hyp-k']);
+export const OWN_RANGE = new Set([
+  'hypothermia-rewarm|hyp-k',
+  // spec-v1760: not the quantity the envelope describes. Pulmonary-artery pressures (PAPi, TPG) are not systemic:
+  // a PA diastolic is 4-12 mmHg and a PA systolic 15-30 in health; a toe pressure is 0-10 mmHg in critical limb ischemia; a natural
+  // wet-bulb temperature is the air's, not a body's.
+  'papi|papi-padp', 'papi|papi-pasp', 'transpulmonary-gradient|tpg-padp', 'toe-brachial-index|tbi-toe', 'wbgt|wbgt-nwb',
+]);
+
+// spec-v1760: where the CEILING applies but the FLOOR is not a recorded extreme, so a value below it is not
+// impossible. By envelope key: hemoglobin (0.7 g/dL has been survived without transfusion), hematocrit with it,
+// albumin (congenital analbuminemia runs below 0.1 g/dL), glucose (neonatal lows read in single digits). By field:
+// hypothermia-rewarm's core temperature (survival from 13.7 C is recorded), SNAPPE-II's neonatal temperature
+// (spec-v1741 skipped that floor on purpose), START and JumpSTART's respiratory rate (apnea is its own question).
+export const NO_FLOOR_KEYS = new Set(['hemoglobin', 'hematocrit', 'albumin', 'glucose']);
+// The Revised Trauma Score (iss-rts) codes a systolic of 1-49 and a rate of 1-5 as 1: values under these floors are its own bands.
+export const NO_FLOOR_FIELDS = new Set(['hypothermia-rewarm|hyp-t', 'snappe-ii|sn-temp', 'start-triage|st-rr', 'jumpstart-triage|js-rr',
+  'iss-rts|ir-sbp', 'iss-rts|ir-rr']);
+export const floorApplies = (r) => !NO_FLOOR_KEYS.has(r.key) && !NO_FLOOR_FIELDS.has(`${r.id}|${r.dom}`);
 
 export function candidates({ onlyKey = null } = {}) {
   const rows = [];

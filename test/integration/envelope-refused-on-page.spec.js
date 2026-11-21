@@ -21,7 +21,7 @@
 // A range slider cannot hold a value past its own max, so the browser clamps it and there is
 // nothing to refuse; those fields are counted and skipped.
 import { test, expect } from '@playwright/test';
-import { candidates, envelope, fillFor } from '../../scripts/lib/envelope-map.mjs';
+import { candidates, envelope, fillFor, floorApplies } from '../../scripts/lib/envelope-map.mjs';
 import { META } from '../../lib/meta.js';
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep is chromium-only');
@@ -51,6 +51,8 @@ test('a value past its envelope is refused on the page, with a range and no null
     // spec-v1753: just past the ceiling (1.5x), not ten times it. A tool with its own looser limit refused the
     // absurd and answered the merely impossible; the agent-side finder drives both, and this is the stricter one.
     byTool.get(r.id).push({ dom: r.dom, unit: r.unit, over: String(Number((envelope(r).max * 1.5).toPrecision(6))) });
+    // spec-v1760: and half the floor, where the floor is a recorded extreme (floorApplies) and above 0.
+    if (envelope(r).min > 0 && floorApplies(r)) byTool.get(r.id).push({ dom: r.dom, unit: r.unit, over: String(Number((envelope(r).min / 2).toPrecision(4))) });
   }
 
   const bad = [];
@@ -126,6 +128,6 @@ test('a value past its envelope is refused on the page, with a range and no null
   }
   console.log(`envelope-refused-on-page: ${driven} driven, ${sliders} sliders, ${absent} not on the page,`
     + ` of ${rows.length} field(s) across ${byTool.size} tool(s)`);
-  expect(driven).toBeGreaterThan(500);
+  expect(driven).toBeGreaterThan(1400);
   expect(bad).toEqual([]);
 });

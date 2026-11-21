@@ -69,6 +69,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- 80 tools answered from a value below any plausible floor: diabetes risk tools scored a BMI of 2.5, VBAC gave
+  98.9% success from a 150 g weight, MELD took a sodium of 45, and pneumonia severity scored an arterial pH of
+  -999999 as acidemic. Each now refuses it, with the range.
 - 18 more tools read a negative as 0 or scored a half step in a field their worked example leaves blank: a HIET
   bolus override of -1 gave "bolus 0 units", and a pSOFA vasoactive grade of 2.5 scored 2.5. Each now refuses it.
 - 41 tools answered from an impossible value in a field their worked example leaves blank: pneumonia severity scored

@@ -5,6 +5,7 @@
 
 import * as F from '../../lib/clinical-v4.js';
 import * as C from '../../lib/clinical.js';
+import { boundsAdvisory } from '../../lib/bounds.js';
 import { obstetricShockBand } from '../../lib/shock-index-obstetric-v1558.js';
 
 export default [
@@ -97,6 +98,8 @@ export default [
     compute: (a) => {
       const ibw = F.ibwDevine({ heightInches: a.heightInches, sex: a.sex });
       if (ibw == null) return null;
+      // spec-v1760: a value below the floor lib/bounds.js declares answered; no finder had driven a floor. A blank weight stays allowed.
+      { const f = a.actualKg == null ? null : boundsAdvisory('weightKg', a.actualKg); if (f) throw new RangeError(f); }
       const adjusted = F.adjBW({ ibw, actualKg: a.actualKg });
       const heightCm = a.heightInches == null ? null : a.heightInches * 2.54;
       const bsaMosteller = heightCm == null ? null : C.bsaMosteller({ weightKg: a.actualKg, heightCm });
