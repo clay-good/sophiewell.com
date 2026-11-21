@@ -68,7 +68,7 @@ export const renderers = {
       { value: 'female', text: 'Female' },
     ]));
     segmentedFromSelect(root.querySelector('#gbs-sex'));
-    root.appendChild(num('Hemoglobin (g/dL)', 'gbs-hb', { min: '1', max: '25' }));
+    root.appendChild(num('Hemoglobin (g/dL)', 'gbs-hb', { min: '1', max: '26' }));
     root.appendChild(num('Systolic BP (mmHg)', 'gbs-sbp', { max: 500, min: '20' }));
     root.appendChild(checkField('Pulse ≥ 100 /min (+1)', 'gbs-pulse'));
     root.appendChild(checkField('Presentation with melena (+1)', 'gbs-melena'));

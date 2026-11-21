@@ -24,9 +24,9 @@ const NOW = new Date('2026-11-21T12:00:00Z');
 // [name, compute, worked-example args, field, just past the ceiling, in range]
 // spec-v1763: bound widened (source in lib/bounds.js): creatinine and bilirubin rows.
 const CASES = [
-  ['iv-iron-course hb', ivIronCourse, { regimen: 'injectafer-ida', weightKg: '70' }, 'hb', '25.5', '12'],
+  ['iv-iron-course hb', ivIronCourse, { regimen: 'injectafer-ida', weightKg: '70' }, 'hb', '26.5', '12'], // spec-v1765: bound widened (source in lib/bounds.js)
   ['iv-iron-course height (cm)', ivIronCourse, { regimen: 'injectafer-ida', weightKg: '70' }, 'heightCm', '251', '170'],
-  ['iv-iron-course hematocrit', ivIronCourse, { regimen: 'injectafer-ida', weightKg: '70' }, 'hematocrit', '76', '35'],
+  ['iv-iron-course hematocrit', ivIronCourse, { regimen: 'injectafer-ida', weightKg: '70' }, 'hematocrit', '91', '35'], // spec-v1765: bound widened (source in lib/bounds.js)
   ['mra-potassium-dose-check eGFR', mraPotassiumDoseCheck, { mode: 'eplerenone-adjust', potassium: '5.7', currentDose: '50-daily' }, 'egfr', '201', '60'],
   ['mra-potassium-dose-check creatinine', mraPotassiumDoseCheck, { mode: 'eplerenone-adjust', potassium: '5.7', currentDose: '50-daily' }, 'creatinine', '75.5', '1.2'],
   ['chemo-organ-label-dose direct bilirubin', chemoOrganLabelDose, { drug: 'doxorubicin', bilirubin: '2' }, 'directBilirubin', '76', '1'],

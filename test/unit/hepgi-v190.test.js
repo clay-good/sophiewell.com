@@ -72,10 +72,11 @@ test('spec-v1753: palbi refuses bilirubin past 75 mg/dL or platelets past 4000 x
   assert.equal(palbi({ ...base, bilirubin: 60, platelets: 2000 }).valid, true);
   assert.equal(palbi(base).valid, true);
 });
-test('spec-v1753: meldNa refuses bilirubin past 75, INR past 20, or creatinine past 75', () => {
+test('spec-v1753: meldNa refuses bilirubin past 75, INR past 200, or creatinine past 75', () => {
   const base = { bilirubin: 2, inr: 1.5, creatinine: 1.5, sodium: 130 };
   // spec-v1763: bound widened (source in lib/bounds.js)
-  for (const [k, v, re] of [['bilirubin', 90, /bilirubin/i], ['inr', 30, /INR/], ['creatinine', 75.5, /creatinine/i]]) {
+  // spec-v1765: bound widened (source in lib/bounds.js)
+  for (const [k, v, re] of [['bilirubin', 90, /bilirubin/i], ['inr', 201, /INR/], ['creatinine', 75.5, /creatinine/i]]) {
     const r = meldNa({ ...base, [k]: v });
     assert.equal(r.valid, false, k);
     assert.match(r.message, re);

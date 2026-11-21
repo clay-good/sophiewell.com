@@ -102,7 +102,7 @@ export const renderers = {
     root.appendChild(selectField('Systemic (B) symptoms?', 'gelf-bsymp', YN));
     root.appendChild(selectField('Symptomatic splenomegaly?', 'gelf-spleen', YN));
     root.appendChild(selectField('Pleural or peritoneal effusion?', 'gelf-effusion', YN));
-    root.appendChild(field('Hemoglobin (g/dL)', 'gelf-hgb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 12' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'gelf-hgb', { max: 26, step: '0.1', min: 0, placeholder: 'e.g. 12' }));
     root.appendChild(field('Platelet count (×10⁹/L)', 'gelf-plt', { max: 4000, step: '1', min: 0, placeholder: 'e.g. 220' }));
     root.appendChild(selectField('Leukemic phase (> 5.0 ×10⁹/L circulating malignant cells)?', 'gelf-leuk', YN));
     const o = out(); root.appendChild(o);
@@ -119,7 +119,7 @@ export const renderers = {
   'hodgkin-ips'(root) {
     note(root, 'Hasenclever IPS for advanced Hodgkin lymphoma (Hasenclever & Diehl 1998): seven adverse factors, one each — albumin <4 g/dL, hemoglobin <10.5 g/dL, male sex, age ≥45, stage IV, WBC ≥15 ×10⁹/L, lymphocytopenia (<600/µL or <8% of WBC). Each factor lowers 5-yr freedom from progression ~7–8% (~84% at 0 down to ~42% at ≥5). Cross-links FLIPI and the R-IPI.');
     root.appendChild(field('Serum albumin (g/dL)', 'hips-alb', { step: '0.1', min: 0, placeholder: 'e.g. 3.5' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'hips-hgb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 10' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'hips-hgb', { max: 26, step: '0.1', min: 0, placeholder: 'e.g. 10' }));
     root.appendChild(selectField('Male sex?', 'hips-male', YN));
     root.appendChild(field('Age (years)', 'hips-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 48' }));
     root.appendChild(selectField('Ann Arbor stage IV?', 'hips-stage', YN));

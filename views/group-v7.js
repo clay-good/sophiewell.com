@@ -200,7 +200,7 @@ export const renderers = {
 
   // ----- 2.7 cao2-do2 -----------------------------------------------------
   'cao2-do2'(root) {
-    root.appendChild(field('Hemoglobin (g/dL)', 'cao2-hb', { min: 0, max: 25, placeholder: 'e.g. 15' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'cao2-hb', { min: 0, max: 26, placeholder: 'e.g. 15' }));
     root.appendChild(field('SaO2 (%)', 'cao2-sao2', { min: 0, max: 100, placeholder: 'e.g. 98' }));
     root.appendChild(field('PaO2 (mmHg)', 'cao2-pao2', { placeholder: 'e.g. 100' }));
     root.appendChild(field('Cardiac output (L/min, optional for DO2)', 'cao2-co', { placeholder: 'optional' }));

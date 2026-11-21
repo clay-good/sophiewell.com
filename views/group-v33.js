@@ -131,7 +131,7 @@ export const renderers = {
 
   // ----- 2.3 tash-score -------------------------------------------------
   'tash-score'(root) {
-    root.appendChild(field('Hemoglobin (g/dL)', 'ta-hb', { step: '0.1', min: 0, max: 25, placeholder: '9.5' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'ta-hb', { step: '0.1', min: 0, max: 26, placeholder: '9.5' }));
     root.appendChild(field('Base excess (mmol/L)', 'ta-be', { step: '0.1', placeholder: '-7' }));
     root.appendChild(field('Systolic BP (mmHg)', 'ta-sbp', { min: 0, max: 300, placeholder: '95' }));
     root.appendChild(field('Heart rate (bpm)', 'ta-hr', { min: 0, max: 600, placeholder: '130' }));

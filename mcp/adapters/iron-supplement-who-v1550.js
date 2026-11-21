@@ -2,6 +2,7 @@
 // The dom keys mirror views/group-v1550b.js and META['iron-supplement-who'].example. Clinical domain.
 
 import * as M from '../../lib/iron-supplement-who-v1550.js';
+import { BOUNDS } from '../../lib/bounds.js';
 
 export default [
   {
@@ -12,7 +13,7 @@ export default [
       { dom: 'fe-group', arg: 'group', kind: 'enum', required: true, label: 'Group', values: M.GROUP_OPTIONS.map((d) => d.value) },
       { dom: 'fe-prev', arg: 'prevalence', kind: 'enum', label: 'Anemia prevalence in this group locally', values: M.PREV_OPTIONS.map((d) => d.value) },
       { dom: 'fe-rutf', arg: 'rutf', kind: 'enum', label: 'Child on RUTF for severe acute malnutrition', values: M.YES_NO.map((d) => d.value) },
-      { dom: 'fe-hb', arg: 'hb', kind: 'number', label: 'Pregnancy: hemoglobin, g/L (optional)', min: 30, max: 200 },
+      { dom: 'fe-hb', arg: 'hb', kind: 'number', label: 'Pregnancy: hemoglobin, g/L (optional)', min: 30, max: BOUNDS.hemoglobin.max * 10 }, // spec-v1765: the envelope, not a narrower copy
       { dom: 'fe-tri', arg: 'trimester', kind: 'enum', label: 'Pregnancy: trimester', values: M.TRIM_OPTIONS.map((d) => d.value) },
       { dom: 'fe-daily', arg: 'dailyOk', kind: 'enum', label: 'Pregnancy: daily iron tolerated', values: M.YES_NO.map((d) => d.value) },
       { dom: 'fe-weight', arg: 'weight', kind: 'number', label: 'Preterm or low-birth-weight infant: weight in kg', min: 0.3, max: 6 },

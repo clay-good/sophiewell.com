@@ -265,7 +265,7 @@ export const renderers = {
     // panel, one module over -- has carried `max: 200` on its sodium since it was
     // written, and these three carried nothing.
     root.appendChild(field('Sodium (mEq/L)', 'na', { max: 210 }));
-    root.appendChild(field('Chloride (mEq/L)', 'cl', { max: 160 }));
+    root.appendChild(field('Chloride (mEq/L)', 'cl', { max: 180 }));
     root.appendChild(field('Bicarbonate (mEq/L)', 'hco3', { max: 75 }));
     root.appendChild(unitField('Albumin (optional)', 'alb', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);
@@ -498,7 +498,7 @@ export const renderers = {
 
   'anion-gap-dd'(root) {
     root.appendChild(field('Sodium (mEq/L)', 'na', { max: 210 }));
-    root.appendChild(field('Chloride (mEq/L)', 'cl', { max: 160 }));
+    root.appendChild(field('Chloride (mEq/L)', 'cl', { max: 180 }));
     root.appendChild(field('HCO3 (mEq/L)', 'hco3', { max: 75 }));
     root.appendChild(unitField('Albumin (optional)', 'alb', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);

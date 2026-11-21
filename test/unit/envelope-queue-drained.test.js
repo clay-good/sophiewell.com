@@ -119,8 +119,8 @@ test('the probe queue this wave drained is empty', () => {
 test('the four gas functions guard the set, as their neighbour in the same file does', () => {
   const cases = [
     ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { ph: 80 }, /arterial pH \(6\.3 to 8\)/], // spec-v1763: bound widened (source in lib/bounds.js)
-    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { bicarbonate: 600 }, /serum bicarbonate \(2 to 75 mmol\/L\)/], // spec-v1763: bound widened (source in lib/bounds.js)
-    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { hemoglobin: 250 }, /h[ae]moglobin \(2 to 25 g\/dL\)/i],
+    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { bicarbonate: 600 }, /serum bicarbonate \(1 to 75 mmol\/L\)/], // spec-v1763, spec-v1765: bound widened (source in lib/bounds.js)
+    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { hemoglobin: 250 }, /h[ae]moglobin \(2 to 26 g\/dL\)/i], // spec-v1765: bound widened (source in lib/bounds.js)
     ['respAcidosis', respAcidosisCompensation, { paco2: 60, bicarbonate: 26, chronic: 'acute' }, { paco2: 2000 }, /PaCO2 \(5 to 250 mmHg\)/], // spec-v1763: bound widened (source in lib/bounds.js)
     ['respAcidosis', respAcidosisCompensation, { paco2: 60, bicarbonate: 26, chronic: 'acute' }, { bicarbonate: 600 }, /bicarbonate/],
     ['respAlkalosis', respAlkalosisCompensation, { paco2: 25, bicarbonate: 21, chronic: 'acute' }, { paco2: 2000 }, /PaCO2/],
@@ -157,7 +157,7 @@ test('boundsAdvisory reads correctly for a unitless envelope', () => {
   // which carries `unit: ''` -- read "(6.5 to 8 )". Only visible once a tile with
   // a unitless envelope started using the sentence.
   assert.match(boundsAdvisory('pH', 80), /\(6\.3 to 8\); verify the units/); // spec-v1763: bound widened (source in lib/bounds.js)
-  assert.match(boundsAdvisory('bicarbonate', 600), /\(2 to 75 mmol\/L\); verify the units/);
+  assert.match(boundsAdvisory('bicarbonate', 600), /\(1 to 75 mmol\/L\); verify the units/); // spec-v1765: bound widened (source in lib/bounds.js)
 
   // And every note in the table is "human name; detail", which is what the
   // sentence splits on to name the field. The Glasgow Coma Scale had no
@@ -429,7 +429,7 @@ test('sic-score: a platelet count in US units is refused, not scored as normal',
   assert.match(usUnits.band, /plausible range for platelet count/);
   assert.equal(usUnits.met, undefined);
 
-  assert.match(sicScore({ platelet: 120, inr: 99, sofa: 3 }).band, /plausible range for INR \(0\.5 to 20\)/);
+  assert.match(sicScore({ platelet: 120, inr: 201, sofa: 3 }).band, /plausible range for INR \(0\.5 to 200\)/); // spec-v1765: bound widened (source in lib/bounds.js)
   assert.equal(sicScore({ platelet: 120, inr: 1.3, sofa: 3 }).valid, true);
 });
 
@@ -482,12 +482,12 @@ test('haps guards the same two analytes cdai-crohns does, in the same module', (
   // An impossible value used to fail the "normal" test and move the answer to
   // "not harmless" -- alarming rather than reassuring, and still a verdict from a
   // number that cannot be.
-  assert.match(haps({ ...ok, hct: 750 }).message, /plausible range for h[ae]matocrit \(5 to 75 %\)/i);
+  assert.match(haps({ ...ok, hct: 750 }).message, /plausible range for h[ae]matocrit \(5 to 90 %\)/i); // spec-v1765: bound widened (source in lib/bounds.js)
   assert.equal(haps({ ...ok, hct: 750 }).valid, false);
   assert.match(haps({ ...ok, creatinine: 250 }).message, /plausible range for serum creatinine/);
 
   // The top of the envelope is a real, abnormal value and still answers.
-  assert.match(haps({ ...ok, hct: 75 }).band, /not harmless/);
+  assert.match(haps({ ...ok, hct: 90 }).band, /not harmless/); // spec-v1765: bound widened (source in lib/bounds.js)
 });
 
 test('hscore-hlh guards the temperature, and only the temperature', () => {

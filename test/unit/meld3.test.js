@@ -64,7 +64,8 @@ test('inputs are validated', () => {
 test('spec-v1753: meld3 refuses bilirubin, INR, or creatinine past their envelopes (the scoring caps stay)', () => {
   const base = { sex: 'female', bilirubin: '4.0', inr: '2.0', creatinine: '2.0', sodium: '130', albumin: '2.5' };
   // spec-v1763: bound widened (source in lib/bounds.js)
-  for (const [over, field] of [[{ bilirubin: '90' }, 'bilirubin'], [{ inr: '30' }, 'inr'], [{ creatinine: '75.5' }, 'creatinine']]) {
+  // spec-v1765: bound widened (source in lib/bounds.js)
+  for (const [over, field] of [[{ bilirubin: '90' }, 'bilirubin'], [{ inr: '201' }, 'inr'], [{ creatinine: '75.5' }, 'creatinine']]) {
     const r = meld3({ ...base, ...over });
     assert.equal(r.valid, false, field);
     assert.equal(r.field, field);

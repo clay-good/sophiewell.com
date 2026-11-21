@@ -9,7 +9,8 @@ import { lrinec, alt70 } from '../../lib/traumaclass-v109.js';
 
 const psiBase = { age: 60, sex: 'M' };
 // spec-v1763: bound widened (source in lib/bounds.js)
-for (const [arg, over, ok] of [['temp', 47.1, 37], ['bun', 301, 20], ['sodium', 211, 140], ['glucose', 3001, 110], ['hct', 75.1, 40], ['pao2', 701, 80]]) {
+// spec-v1765: bound widened (source in lib/bounds.js)
+for (const [arg, over, ok] of [['temp', 47.1, 37], ['bun', 311, 20], ['sodium', 211, 140], ['glucose', 3001, 110], ['hct', 90.1, 40], ['pao2', 701, 80]]) {
   test(`psi refuses ${arg} past its envelope and scores an in-range value`, () => {
     const bad = psi({ ...psiBase, [arg]: over });
     assert.equal(bad.valid, false);

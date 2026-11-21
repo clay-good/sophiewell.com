@@ -240,7 +240,7 @@ export const renderers = {
     note(root, 'Six routine labs distinguish necrotizing fasciitis from other soft-tissue infections. A low score does not rule it out.');
     root.appendChild(field('CRP (mg/L)', 'lr-crp', { step: '0.1', min: 0, placeholder: '180' }));
     root.appendChild(field('White blood cell count (x10^3/uL)', 'lr-wbc', { max: 2000, step: '0.1', min: 0, placeholder: '16' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'lr-hb', { step: '0.1', min: 0, max: 25, placeholder: '12' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'lr-hb', { step: '0.1', min: 0, max: 26, placeholder: '12' }));
     root.appendChild(field('Sodium (mmol/L)', 'lr-na', { step: '0.1', min: 0, placeholder: '134' }));
     root.appendChild(field('Creatinine (mg/dL)', 'lr-cr', { step: '0.01', min: 0, placeholder: '1.8' }));
     root.appendChild(field('Glucose (mg/dL)', 'lr-glu', { step: '1', min: 0, placeholder: '200' }));

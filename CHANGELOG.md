@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Eight more limits refused values measured in patients who survived, among them an INR of 189, a hematocrit of 88%
+  in a newborn and a triglyceride level of 33,727 mg/dL. Each now sits just past the published case.
 - Twenty-three tools still refused a survivable creatinine, white count, platelet count, sodium, heart rate or blood
   pressure with an older cap of their own. They now follow the widened limits; scoring rules such as MELD's
   creatinine cap of 4.0 are unchanged. The page no longer flags those values as out of range.

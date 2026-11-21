@@ -22,7 +22,7 @@ const answered = (r) => assert.notEqual(r.valid, false, JSON.stringify(r));
 
 test('kfre: the 8-variable labs are checked even on the 4-variable form', () => {
   const base = { mode: '4', age: 60, male: true, egfr: 30, acr: 300 };
-  for (const [k, past, ok] of [['calcium', 25.1, 9.5], ['phosphate', 20.1, 4], ['bicarbonate', 75.1, 24], ['albumin', 7.1, 4]]) { // spec-v1763: bound widened (source in lib/bounds.js)
+  for (const [k, past, ok] of [['calcium', 25.1, 9.5], ['phosphate', 60.1, 4], ['bicarbonate', 75.1, 24], ['albumin', 7.1, 4]]) { // spec-v1763, spec-v1765: bound widened (source in lib/bounds.js)
     refused(kfre({ ...base, [k]: past }));
     refused(kfre({ ...base, mode: '8', calcium: 9.5, phosphate: 4, bicarbonate: 24, albumin: 4, [k]: past }));
     answered(kfre({ ...base, [k]: ok }));
@@ -70,7 +70,7 @@ test('kings-college: lactate', () => {
 test('tls-cairo-bishop: the three baselines', () => {
   const base = { potassium: 5, phosphate: 4, calcium: 9, uricAcid: 7 };
   refused(tlsCairoBishop({ ...base, potassiumBaseline: 15.1 }));
-  refused(tlsCairoBishop({ ...base, phosphateBaseline: 20.1 }));
+  refused(tlsCairoBishop({ ...base, phosphateBaseline: 60.1 })); // spec-v1765: bound widened (source in lib/bounds.js)
   refused(tlsCairoBishop({ ...base, calciumBaseline: 25.1 })); // spec-v1763: bound widened (source in lib/bounds.js)
   answered(tlsCairoBishop({ ...base, potassiumBaseline: 4, phosphateBaseline: 3.5, calciumBaseline: 9.5 }));
 });

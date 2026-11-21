@@ -105,7 +105,7 @@ export const renderers = {
   },
   'durie-salmon'(root) {
     note(root, 'Durie-Salmon staging (Durie 1975): stage from hemoglobin, calcium, bone lesions, and M-protein burden; subclass A/B by creatinine.');
-    root.appendChild(num('Hemoglobin (g/dL)', 'ds-hb', { max: 25, min: '0' }));
+    root.appendChild(num('Hemoglobin (g/dL)', 'ds-hb', { max: 26, min: '0' }));
     root.appendChild(num('Serum calcium (mg/dL)', 'ds-ca', { min: '0' }));
     root.appendChild(num('Number of lytic bone lesions', 'ds-lesions', { min: '0' }));
     root.appendChild(select('M-protein burden', 'ds-mprot', [['0', 'Low (IgG < 5, IgA < 3 g/dL; urine BJ < 4 g/24h)'], ['1', 'Intermediate'], ['2', 'High (IgG > 7, IgA > 5 g/dL; urine BJ > 12 g/24h)']]));

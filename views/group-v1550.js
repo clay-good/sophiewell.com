@@ -44,7 +44,7 @@ function wire(ids, run) {
 export const renderers = {
   'who-anemia-hb'(root) {
     const pairs = [['ahb-hb', 'hb'], ['ahb-unit', 'unit'], ['ahb-group', 'group'], ['ahb-elev', 'elevation'], ['ahb-smoke', 'smoking']];
-    numField(root, 'Hemoglobin', 'ahb-hb', 'e.g. 11.2', '250', 'any');
+    numField(root, 'Hemoglobin', 'ahb-hb', 'e.g. 11.2', '260', 'any'); // spec-v1765: the envelope in g/L
     selectField(root, 'Unit', 'ahb-unit', A.UNITS, { blank: false, selected: 'gdl' });
     selectField(root, 'Group (age, sex, pregnancy)', 'ahb-group', A.GROUPS);
     numField(root, 'Elevation where the person lives, meters (optional)', 'ahb-elev', 'e.g. 1600', '4999', '1');

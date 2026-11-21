@@ -28,8 +28,8 @@ import { BOUNDS } from '../../lib/bounds.js';
 
 test('anion-gap refuses an impossible sodium or bicarbonate', () => {
   assert.throws(() => anionGap({ sodium: 2000, chloride: 100, bicarbonate: 24 }), /sodium must be between 85 and 210/); // spec-v1763: bound widened (source in lib/bounds.js)
-  assert.throws(() => anionGap({ sodium: 140, chloride: 100, bicarbonate: 600 }), /bicarbonate must be between 2 and 75/); // spec-v1763: bound widened (source in lib/bounds.js)
-  assert.throws(() => anionGap({ sodium: 140, chloride: 1600, bicarbonate: 24 }), /chloride must be between 50 and 160/);
+  assert.throws(() => anionGap({ sodium: 140, chloride: 100, bicarbonate: 600 }), /bicarbonate must be between 1 and 75/); // spec-v1763, spec-v1765: bound widened (source in lib/bounds.js)
+  assert.throws(() => anionGap({ sodium: 140, chloride: 1600, bicarbonate: 24 }), /chloride must be between 45 and 180/); // spec-v1765: bound widened (source in lib/bounds.js)
   assert.equal(anionGap({ sodium: 140, chloride: 100, bicarbonate: 24 }).anionGap, 16);
   // The envelope's own edges are legitimate readings, not errors.
   assert.equal(typeof anionGap({ sodium: BOUNDS.sodium.max, chloride: 100, bicarbonate: 24 }).anionGap, 'number');
@@ -56,17 +56,17 @@ test('osmolal-gap refuses the sodium that doubled into the calculated osmolality
   const ok = { measuredOsm: 300, sodium: 140, glucoseMgDl: 90, bunMgDl: 14 };
   assert.throws(() => osmolalGap({ ...ok, sodium: 2000 }), /sodium must be between 85 and 210/); // spec-v1763: bound widened (source in lib/bounds.js)
   assert.throws(() => osmolalGap({ ...ok, glucoseMgDl: 20000 }), /glucose must be between 5 and 3000/); // spec-v1763: bound widened (source in lib/bounds.js)
-  assert.throws(() => osmolalGap({ ...ok, bunMgDl: 3000 }), /BUN must be between 1 and 300/);
+  assert.throws(() => osmolalGap({ ...ok, bunMgDl: 3000 }), /BUN must be between 1 and 310/); // spec-v1765: bound widened (source in lib/bounds.js)
   assert.equal(Math.round(osmolalGap(ok).calculatedOsm), 290);
 });
 
 test('winters refuses a bicarbonate that predicts a PaCO2 nobody has', () => {
-  assert.throws(() => wintersFormula({ hco3: 600 }), /HCO3 must be between 2 and 75/); // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.throws(() => wintersFormula({ hco3: 600 }), /HCO3 must be between 1 and 75/); // spec-v1763, spec-v1765: bound widened (source in lib/bounds.js)
   assert.equal(wintersFormula({ hco3: 14 }).expectedPaco2Low, 27);
 });
 
 test('abg refuses an impossible bicarbonate or PaCO2', () => {
-  assert.throws(() => abgInterpret({ pH: 7.2, paco2: 30, hco3: 600 }), /hco3 must be between 2 and 75/); // spec-v1763: bound widened (source in lib/bounds.js)
+  assert.throws(() => abgInterpret({ pH: 7.2, paco2: 30, hco3: 600 }), /hco3 must be between 1 and 75/); // spec-v1763, spec-v1765: bound widened (source in lib/bounds.js)
   assert.throws(() => abgInterpret({ pH: 7.2, paco2: 2000, hco3: 14 }), /paco2 must be between 5 and 250/); // spec-v1763: bound widened (source in lib/bounds.js)
   assert.equal(abgInterpret({ pH: 7.2, paco2: 30, hco3: 14 }).primary, 'Metabolic acidosis');
 });

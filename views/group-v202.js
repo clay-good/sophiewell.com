@@ -40,7 +40,7 @@ export const renderers = {
   // ----- 2.3 mecki -----------------------------------------------------------
   mecki(root) {
     note(root, 'MECKI score (Agostoni 2013): a cardiopulmonary-exercise-anchored heart-failure prognostic score from six variables — hemoglobin, sodium, LVEF, peak VO₂ (% predicted), VE/VCO₂ slope, and MDRD-eGFR. The score is the model’s estimated 2-year risk of cardiovascular death, urgent transplant, or LVAD.');
-    root.appendChild(num('Hemoglobin (g/dL)', 'mecki-hb', { min: '3', max: '25' }));
+    root.appendChild(num('Hemoglobin (g/dL)', 'mecki-hb', { min: '3', max: '26' }));
     root.appendChild(num('Sodium (mEq/L)', 'mecki-na', { min: '100', max: '180' }));
     root.appendChild(num('LVEF (%)', 'mecki-lvef', { min: '5', max: '80' }));
     root.appendChild(num('Peak VO₂ (% predicted)', 'mecki-ppvo2', { min: '5' }));

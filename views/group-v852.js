@@ -57,7 +57,7 @@ export const renderers = {
 
     root.appendChild(el('h2', { text: 'Blood tests and weight' }));
     numField(root, 'Creatinine (mg/dL)', 'sbp-cr', { min: '0', max: '30', step: '0.1' });
-    numField(root, 'Blood urea nitrogen (mg/dL)', 'sbp-bun', { min: '0', max: '300', step: '1' });
+    numField(root, 'Blood urea nitrogen (mg/dL)', 'sbp-bun', { min: '0', max: '310', step: '1' });
     numField(root, 'Total bilirubin (mg/dL)', 'sbp-bili', { min: '0', max: '100', step: '0.1' });
     numField(root, 'Weight (kg)', 'sbp-wt', { min: '20', max: '400', step: '1' });
 

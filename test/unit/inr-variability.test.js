@@ -22,5 +22,6 @@ test('blank, malformed and out-of-range input refuses', () => {
   assert.equal(vgr({ series: '2.0 2', target: '' }).valid, false);
   assert.equal(vgr({ series: '2.0', target: '2.5' }).valid, false);
   assert.equal(vgr({ series: '2.0 0', target: '2.5' }).valid, false);
-  assert.equal(vgr({ series: '2.0 2\n25 1', target: '2.5' }).valid, false);
+  assert.equal(vgr({ series: '2.0 2\n201 1', target: '2.5' }).valid, false); // spec-v1765: bound widened (source in lib/bounds.js)
+  assert.equal(vgr({ series: '2.0 2\n189 1', target: '2.5' }).valid, true); // spec-v1765: a survived INR answers
 });

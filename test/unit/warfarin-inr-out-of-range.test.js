@@ -53,10 +53,11 @@ test('refusals', () => {
 });
 
 // spec-v1753: an envelope lib/bounds.js already declares; each tool refused ten times the ceiling but answered just past it.
-test('spec-v1753: refuses an INR past the 20 envelope', () => {
+test('spec-v1753: refuses an INR past the 200 envelope', () => {
   const base = { targetLow: 2, targetHigh: 3, bleeding: 'none', stable: 'yes' };
-  assert.equal(d({ ...base, inr: 25 }).valid, false);
-  assert.match(d({ ...base, inr: 25 }).message, /INR/);
-  assert.equal(d({ ...base, inr: 20 }).valid, true);
+  // spec-v1765: bound widened (source in lib/bounds.js)
+  assert.equal(d({ ...base, inr: 201 }).valid, false);
+  assert.match(d({ ...base, inr: 201 }).message, /INR/);
+  assert.equal(d({ ...base, inr: 200 }).valid, true);
   assert.equal(d({ ...base, inr: 3.4 }).valid, true);
 });

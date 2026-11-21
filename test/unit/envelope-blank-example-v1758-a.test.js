@@ -11,9 +11,9 @@ const LAB = [
   // [analyte, just past the ceiling, in range]
   ['sodium', 210.1, 140], // spec-v1763: bound widened (source in lib/bounds.js)
   ['potassium', 15.1, 4], // spec-v1762: the ceiling rose to 15 (survival from 14.0 mmol/L is reported)
-  ['chloride', 160.1, 100],
+  ['chloride', 180.1, 100], // spec-v1765: bound widened (source in lib/bounds.js)
   ['bicarbonate', 75.1, 24], // spec-v1763: bound widened (source in lib/bounds.js)
-  ['bun', 300.1, 15],
+  ['bun', 310.1, 15], // spec-v1765: bound widened (source in lib/bounds.js)
   ['creatinine', 75.1, 1], // spec-v1763: bound widened (source in lib/bounds.js)
   ['glucose', 3000.1, 90], // spec-v1763: bound widened (source in lib/bounds.js)
   ['calcium', 25.1, 9.5], // spec-v1763: bound widened (source in lib/bounds.js)
@@ -22,10 +22,10 @@ const LAB = [
   ['alt', 30001, 25],
   ['bilirubin', 75.1, 0.8], // spec-v1763: bound widened (source in lib/bounds.js)
   ['wbc', 2000.1, 7], // spec-v1763: bound widened (source in lib/bounds.js)
-  ['hemoglobin', 25.1, 14],
-  ['hematocrit', 75.1, 42],
+  ['hemoglobin', 26.1, 14], // spec-v1765: bound widened (source in lib/bounds.js)
+  ['hematocrit', 90.1, 42], // spec-v1765: bound widened (source in lib/bounds.js)
   ['platelets', 4000.1, 250], // spec-v1763: bound widened (source in lib/bounds.js)
-  ['triglycerides', 30001, 120],
+  ['triglycerides', 35001, 120], // spec-v1765: bound widened (source in lib/bounds.js)
 ];
 
 for (const [id, over, ok] of LAB) {

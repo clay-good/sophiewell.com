@@ -89,9 +89,9 @@ test('arc-risk-scores: a creatinine below 0.1 mg/dL is refused', () => {
   assert.equal(arcRiskScores(b).valid, true);
 });
 
-test('dka-resolution: a bicarbonate below 2 is refused; a blank stays allowed', () => {
+test('dka-resolution: a bicarbonate below 1 is refused; a blank stays allowed', () => {
   const b = { glucoseMgDl: 180, venousPh: 7.35, anionGap: 10 };
-  assert.ok(refused(dkaResolution({ ...b, bicarbonate: 1 })));
+  assert.ok(refused(dkaResolution({ ...b, bicarbonate: 0.5 }))); // spec-v1765: bound widened (source in lib/bounds.js)
   assert.equal(dkaResolution({ ...b, bicarbonate: 18 }).valid, true);
   assert.equal(dkaResolution(b).valid, true);
 });

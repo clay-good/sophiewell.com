@@ -35,7 +35,7 @@ export const renderers = {
     selectField(root, 'Group', 'fe-group', M0.GROUP_OPTIONS, true);
     selectField(root, 'Anemia prevalence in this group locally', 'fe-prev', M0.PREV_OPTIONS, false);
     selectField(root, 'Child on RUTF for severe acute malnutrition', 'fe-rutf', M0.YES_NO, false);
-    numField(root, 'Pregnancy: hemoglobin, g/L (optional)', 'fe-hb', 'e.g. 112', '200');
+    numField(root, 'Pregnancy: hemoglobin, g/L (optional)', 'fe-hb', 'e.g. 112', '260'); // spec-v1765: the envelope in g/L
     selectField(root, 'Pregnancy: trimester', 'fe-tri', M0.TRIM_OPTIONS, false);
     selectField(root, 'Pregnancy: daily iron tolerated', 'fe-daily', M0.YES_NO, false);
     numField(root, 'Preterm or low-birth-weight infant: weight in kg', 'fe-weight', 'e.g. 1.5', '6');

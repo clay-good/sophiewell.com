@@ -74,7 +74,7 @@ export const renderers = {
   'epvs'(root) {
     note(root, 'Estimated plasma volume status (Duarte 2015): ePVS = 100 × (1 − hematocrit fraction) / hemoglobin. Higher = more congestion.');
     root.appendChild(num('Hematocrit (%)', 'ep-hct', { min: '0', max: '100' }));
-    root.appendChild(num('Hemoglobin (g/dL)', 'ep-hb', { max: 25, min: '0' }));
+    root.appendChild(num('Hemoglobin (g/dL)', 'ep-hb', { max: 26, min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['ep-hct', 'ep-hb'], () => safe(o, () => {
       const r = M.epvs({ hematocrit: val('ep-hct'), hemoglobin: val('ep-hb') });

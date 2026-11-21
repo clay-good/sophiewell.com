@@ -46,20 +46,20 @@ test('magnesium-replacement: serum Mg floor (0.3 mg/dL)', () => {
   assert.equal(magnesiumReplacement({ serumMg: 1.2, severity: 2 }).doseLow, 2);
 });
 
-test('rsbi rr floor (3) and corrected-anion-gap bicarbonate floor (2)', () => {
+test('rsbi rr floor (3) and corrected-anion-gap bicarbonate floor (1)', () => {
   assert.throws(() => rsbi({ respiratoryRate: 1.5, tidalVolumeMl: 400 }), PLAUSIBLE);
   assert.equal(rsbi({ respiratoryRate: 20, tidalVolumeMl: 400 }).rsbi, 50);
-  assert.throws(() => correctedAnionGap({ na: 140, cl: 104, hco3: 1, albuminGdl: 4 }), PLAUSIBLE);
+  assert.throws(() => correctedAnionGap({ na: 140, cl: 104, hco3: 0.5, albuminGdl: 4 }), PLAUSIBLE); // spec-v1765: bound widened (source in lib/bounds.js)
   assert.equal(correctedAnionGap({ na: 140, cl: 104, hco3: 24, albuminGdl: 4 }).correctedAg, 12);
 });
 
-test('cao2-do2 and oxygenation-index PaO2 floor (10); acid-base-deficit bicarbonate floor (2)', () => {
+test('cao2-do2 and oxygenation-index PaO2 floor (10); acid-base-deficit bicarbonate floor (1)', () => {
   assert.throws(() => cao2Do2({ hb: 15, sao2: 98, pao2: 5 }), PLAUSIBLE);
   assert.ok(cao2Do2({ hb: 15, sao2: 98, pao2: 100 }).cao2 > 0);
   assert.throws(() => oxygenationIndex({ fio2: 0.6, map: 15, pao2: 5 }), PLAUSIBLE);
   assert.equal(oxygenationIndex({ fio2: 0.6, map: 15, pao2: 60 }).oi, 15);
   const abd = { weightKg: 70, sex: 'M', targetHco3: 24, measuredNa: 140, targetNa: 140 };
-  assert.throws(() => acidBaseDeficit({ ...abd, measuredHco3: 1 }), PLAUSIBLE);
+  assert.throws(() => acidBaseDeficit({ ...abd, measuredHco3: 0.5 }), /measured Hco3 must be between 1 and/); // spec-v1765: bound widened (source in lib/bounds.js); the tool's own floor of 1 now matches it
   assert.equal(acidBaseDeficit({ ...abd, measuredHco3: 14 }).hco3DeficitMeq, 350);
 });
 
@@ -81,16 +81,16 @@ test('lods heart rate (10), systolic BP (20) and BUN (1) floors', () => {
   assert.equal(lods(base).valid, true);
 });
 
-test('delta-gap bicarbonate (2) and sodium (85) floors', () => {
-  assert.match(deltaGap({ na: 140, cl: 100, hco3: 1 }).message, PLAUSIBLE);
+test('delta-gap bicarbonate (1) and sodium (85) floors', () => {
+  assert.match(deltaGap({ na: 140, cl: 100, hco3: 0.5 }).message, /bicarbonate 0\.5 is outside 1 to/); // spec-v1765: bound widened (source in lib/bounds.js); the tool's own floor of 1 now matches it
   // spec-v1763: bound widened (source in lib/bounds.js)
   assert.match(deltaGap({ na: 84, cl: 60, hco3: 12 }).message, PLAUSIBLE);
   assert.equal(deltaGap({ na: 140, cl: 100, hco3: 12 }).valid, true);
 });
 
-test('scorten heart rate (10), BUN (1) and bicarbonate (2) floors; blank stays allowed', () => {
+test('scorten heart rate (10), BUN (1) and bicarbonate (1) floors; blank stays allowed', () => {
   const base = { age: 50, heartRate: 90, bsaDetached: 5, bun: 20, bicarbonate: 24, glucose: 120, malignancy: false };
-  for (const [k, v] of [['heartRate', 5], ['bun', 0.5], ['bicarbonate', 1]]) {
+  for (const [k, v] of [['heartRate', 5], ['bun', 0.5], ['bicarbonate', 0.5]]) { // spec-v1765: bound widened (source in lib/bounds.js)
     const r = scorten({ ...base, [k]: v });
     assert.equal(r.valid, false, k);
     assert.match(r.message, PLAUSIBLE, k);
