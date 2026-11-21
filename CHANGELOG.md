@@ -69,6 +69,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- New York nurse training: the updated child-abuse course was due November 17, 2026. That date has passed, so the
+  tool now says "was due by" and tells a nurse who has not taken it to take it now. NYSED's page, re-read November 21,
+  2026, shows no extension.
+- 340B billing: the Part D repository note still called the CY2027 rule "proposed". The final rule (November 9, 2026)
+  makes submission mandatory from January 1, 2027, with the first two quarters due by September 30, 2027.
 - The Berg balance scale read task scores of 99 as "walking independently", and West Haven read a grade of -1 as
   minimal. Berg, West Haven, POEM, ATLAS, AAST and MESS now refuse a value outside each item's range.
 - Seventy-four scores took a half step in an item that has none, such as a Braden subscale of 2.5 or 5.5 skin

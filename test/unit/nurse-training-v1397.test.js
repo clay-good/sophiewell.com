@@ -5,14 +5,14 @@ import { nurseLicenseTrainingRequirements as nlt, NLT_STATES } from '../../lib/n
 
 const B = { state: 'NY', license: 'RN', practicingNY: 'yes', infectionDate: '2023-05-10' };
 
-test('acceptance: trained March 2024 sees the 15-minute addendum due by November 17, 2026', () => {
+test('acceptance: trained March 2024 sees the 15-minute addendum was due by November 17, 2026', () => {
   const r = nlt({ ...B, abuseDate: '2024-03-15' });
-  assert.match(r.items[0].text, /15-minute addendum .* due by November 17, 2026/);
+  assert.match(r.items[0].text, /15-minute addendum .* was due by November 17, 2026\. If it is not done, take it now\./);
 });
 
-test('acceptance: trained in 2019 sees the updated 2-hour course due by November 17, 2026', () => {
+test('acceptance: trained in 2019 sees the updated 2-hour course was due by November 17, 2026', () => {
   const r = nlt({ ...B, abuseDate: '2019-06-01' });
-  assert.match(r.items[0].text, /updated two-hour course is due by November 17, 2026/);
+  assert.match(r.items[0].text, /updated two-hour course was due by November 17, 2026\. If it is not done, take it now\./);
 });
 
 test('the window edges: 2022-11-01 and 2025-08-31 are addendum; 2025-09-01 is met', () => {

@@ -108,3 +108,12 @@ test('340b-ceiling-price: basic and inflation rebates, the pre-2024 cap and penn
   assert.equal(cp({ category: 'brand', amp: '10', bestPrice: '0.5', baselineAmp: '4', baselineCpi: '200', currentCpi: '300', year: '2023' }).ura, 10);
   assert.equal(cp({ category: 'brand', amp: '10', baselineAmp: '4' }).valid, false);
 });
+
+test('Part D: the repository note states the CY2027 final rule, not the proposal', () => {
+  const r = dd({ payer: 'partd' });
+  assert.equal(r.valid, true);
+  const note = r.notes.join(' ');
+  assert.doesNotMatch(note, /proposed rule/);
+  assert.match(note, /mandatory .*91 FR 70992/);
+  assert.match(note, /September 30, 2027/);
+});

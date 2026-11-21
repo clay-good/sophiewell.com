@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `071e45b178ab413e`
-Generated: 2026-11-17T02:29:48.485Z
+Build ID: `574e3ee97eed3e95`
+Generated: 2026-11-21T14:45:13.447Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -301,7 +301,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v5.js` | 27530 | `43bdd589d6107e0effc873c92c09e538ee686389b4af2b391eac399812e186c8` |
 | `lib/clinical-v6.js` | 18396 | `13bf764995caeb7e1bf5a049fe00e97e0d0c38f19ff4e11c568504cca8c68061` |
 | `lib/clinical-v7.js` | 27587 | `46dd1705a10e87cd387b7b3ef23b742e0bda3e79ec5f4fd71516bf0606d20062` |
-| `lib/clinical-v8.js` | 28806 | `947b1c0fd3f16cf3b8db6ff7065d41c1c1e60fdc2c614e9fb4d8170e18bb3a32` |
+| `lib/clinical-v8.js` | 28807 | `a9e606b32a14e2bde8f3a1330623d4435664ca34007b6c7f3e2635605c0428b4` |
 | `lib/clinical.js` | 30097 | `d0c7a3a31c30e3fcedb341ad443195a85b6be4dd38f8a29af899a838c5da5705` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7954 | `7b448718002edeeef4b815519a80c050dc3b7373875d4828d079772f7d83cb12` |
@@ -483,7 +483,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/endoleak-type-v1242.js` | 7013 | `0c7acf6f3309f0acfa12325560daf827daf286376356c511bcc4eb849b7ebb2b` |
 | `lib/enneking-v460.js` | 3397 | `5f0a323b907db13850e71165ddd2b21e7531734f7a26c12086c36710e01c27e3` |
 | `lib/enteric-fever-regimen-v1560.js` | 5365 | `6f0acf257eb2c5b632ac2ad022a5c299c3b0d61aa4dc301da084e5a76cc0d470` |
-| `lib/entity-340b-v1509.js` | 25863 | `9fdcd180b695d1452de0f908912f8fefe8bbd132319ea9fc48dfa9662ecbba6e` |
+| `lib/entity-340b-v1509.js` | 26329 | `33f82f87aeed31063698418bdb38ee6fff6fe6ae48d5902a341e085fb04ce773` |
 | `lib/entsleep-v243.js` | 8321 | `dabca94848df988abb60c2e22a249c646916c20371459c3b17d6e26b92975b95` |
 | `lib/enturopsych-v254.js` | 8833 | `55855746ce6b36e02382a6faa86ea4f6d0f675a5f546e4b37136efedafea7557` |
 | `lib/enviro-v111.js` | 18637 | `acf1567761b7cbba808c4a4a51b08073438f36672f385bd8f4bd13374986fb4e` |
@@ -912,7 +912,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7411 | `fa49263b490f67155c0e089a1446f134a5d07e523195c3048e342572dcf60a26` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3085902 | `0a1d99c753cad6af4f9a021960cab72212002c789f6828ade289033d7cf8e9d5` |
+| `lib/meta.js` | 3085903 | `3cebb1757392cbda1c5da821908207a6529ca47458af089d5e6585df6bca6821` |
 | `lib/metabolic-hepatic-v219.js` | 15643 | `60ee7dc75b331fab7e35811f23d03b514474c18ba333aa515ff9c12ebf69b871` |
 | `lib/metabolic-onc-v88.js` | 23438 | `d183c7e32c0bb7d04851284b4a194d7afdb48f1c8c690d774796e10fc149a424` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1033,7 +1033,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nuc-med-breastfeeding-interruption-v1635.js` | 8015 | `7bed890c2ebf1edb3e129993c1d879af43e364a115d08b3969d45a8d7ddbc792` |
 | `lib/num.js` | 21669 | `f6d9c171383446189c5f6f0c1281523678bf304fd7cb8b0a3e9cff7e3f2ee360` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
-| `lib/nurse-license-training-requirements-v1397.js` | 12402 | `f0ac90b1f1246bc302bed06086bbdb2b70d2e2862ef9bcabc932fccb56cfc68f` |
+| `lib/nurse-license-training-requirements-v1397.js` | 12627 | `76373d6aa53f8e9b30a28e775b39f85a6e738ed4c6c2a2e65b006122c99cd98b` |
 | `lib/nurse-staffing-ratio-check-v1396.js` | 9223 | `f4fc16e9f231cc085c5009e6a6638637836c3c1883d24fcf4e17f2a2b1dadca1` |
 | `lib/nursing-home-staffing-check-v1396.js` | 7698 | `4c8cd87f24ddd72825957f214e47c90ea7bd78baeb190829104e7b175e8ae820` |
 | `lib/nursing-home-staffing-star-v1657.js` | 7505 | `785e53a7bca158f932932eacbb85fbf9a16831f7fea0104c625b2bad13883ffa` |
@@ -2544,7 +2544,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ntm-pulmonary-v827.js` | 2301 | `1433bceef43a9c3f5f6bc3d99d39f523d96f731271878589a52bbd30b7bf47b4` |
 | `mcp/adapters/nuc-med-breastfeeding-interruption-v1635.js` | 1208 | `1466404b39af46abab64bcd9be2c8900551a74ded9fe81579e64a4d111f34c60` |
 | `mcp/adapters/nunley-vertullo-v455.js` | 1155 | `1b0419937c6fcc04382aa2c11914ac309a4e6d18e1c6010f876281a54efe34e8` |
-| `mcp/adapters/nurse-license-training-requirements-v1397.js` | 2803 | `3155c22ddcea26887002d5bc614a7a9eaa7406b0740e391a591c4da78254f1d3` |
+| `mcp/adapters/nurse-license-training-requirements-v1397.js` | 2813 | `aa4bb8bf94d3de79eacdddec42c475273f3aacddf5221b5eba5e9983bb0c68f3` |
 | `mcp/adapters/nurse-staffing-ratio-check-v1396.js` | 1515 | `c025603dcc65e0714a62098741b1b4a8ad7a0487f7d6b18db166df15dbf4e743` |
 | `mcp/adapters/nursing-home-staffing-check-v1396.js` | 1726 | `97ba50ba8177aceb66b6adb392a4637246bc2feaeecbd24320aeaa5d560f96a8` |
 | `mcp/adapters/nursing-home-staffing-star-v1657.js` | 2057 | `4386842c3f2f0c9d9977d5c1136155a0bce03c8112f56e0821a9e0f5780dfe3b` |

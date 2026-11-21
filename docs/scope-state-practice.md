@@ -77,7 +77,7 @@ and is printed only where a primary source confirms it.
 
 Build order recommendation: v1388 first (everything depends on it), then v1389, v1393, v1395, and
 v1400. Those are the questions a floor nurse or ED clinician asks most often. v1397 contains the
-only hard external deadline: New York's updated child-abuse training is due **November 17, 2026**.
+only hard external deadline: New York's updated child-abuse training was due **November 17, 2026** (re-read November 21, 2026: no extension; the tile now says "was due by").
 
 ## Existing tiles: data backfill, not new tiles
 
