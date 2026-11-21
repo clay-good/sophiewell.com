@@ -52,28 +52,40 @@ for (const [id, e] of REGISTRY) {
   if (base === null) continue;
   for (const f of e.fields || []) {
     if (f.kind !== 'number' || Array.isArray(f.values)) continue;
-    if (!Object.prototype.hasOwnProperty.call(ex, f.dom)) continue;
-    const x = Number(String(ex[f.dom]).trim());
+    let x = Number(String(ex[f.dom] ?? '').trim());
+    let here = ex;
+    let filledFromBlank = false;
+    if (String(ex[f.dom] ?? '').trim() === '') {
+      // spec-v1761: a field the worked example leaves blank was never asked. Fill it with a positive value the tool
+      // answers from and that moves the answer (adapter midpoint, else 1, 10 or 50); the blank example is then
+      // exactly the "left blank" answer to compare with.
+      const mid = Number.isFinite(f.min) && Number.isFinite(f.max) ? (f.min + f.max) / 2 : null;
+      x = [mid, 1, 10, 50].find((v) => { if (v === null || !(v > 0)) return false; const r = run(e, { ...ex, [f.dom]: String(v) }); return r !== null && r !== base; });
+      if (x === undefined) continue;
+      here = { ...ex, [f.dom]: String(x) };
+      filledFromBlank = true;
+    }
     if (!(x > 0)) continue;
     fields += 1;
+    const baseHere = filledFromBlank ? run(e, here) : base;
     const neg = run(e, { ...ex, [f.dom]: String(-x) });
     if (neg === null) continue;                                  // refused: fine
     const row = { id, dom: f.dom, x, label: f.label };
-    if (neg === base) {
+    if (neg === baseHere) {
       // A band coincidence looks the same at x (-x and x both in the lowest band),
       // so ask again at a magnitude that answers differently from x. A real silent
       // Math.abs mirrors there too; a band does not, because -y stays low.
       const ys = [x * 1.5, x * 2, x * 0.5, x + 1];
       const mirrored = ys.some((y) => {
         const pos = run(e, { ...ex, [f.dom]: String(y) });
-        return pos !== null && pos !== base && run(e, { ...ex, [f.dom]: String(-y) }) === pos;
+        return pos !== null && pos !== baseHere && run(e, { ...ex, [f.dom]: String(-y) }) === pos;
       });
       if (mirrored) asAbs.push(row);
       continue;
     }
     if (!f.required) {
       const blank = run(e, { ...ex, [f.dom]: '' });
-      if (blank !== null && blank !== base && neg === blank) asBlank.push(row);
+      if (blank !== null && blank !== baseHere && neg === blank) asBlank.push(row);
     }
   }
 }

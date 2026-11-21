@@ -59,8 +59,12 @@ for (const [id, e] of REGISTRY) {
   tiles += 1;
   for (const f of e.fields || []) {
     if (f.kind !== 'number' || Array.isArray(f.values)) continue;
-    if (!Object.prototype.hasOwnProperty.call(ex, f.dom)) continue;
-    const x = Number(String(ex[f.dom]).trim());
+    let x = Number(String(ex[f.dom] ?? '').trim());
+    if (String(ex[f.dom] ?? '').trim() === '') {
+      // spec-v1761: a field the worked example leaves blank is asked too, from a whole value the tool answers from.
+      x = [Number.isFinite(f.min) ? Math.ceil(f.min) + 1 : null, 1, 2, 5, 10].find((v) => v !== null && run(e, { ...ex, [f.dom]: String(v) }) !== null);
+      if (x === undefined) continue;
+    }
     if (!Number.isInteger(x)) continue;
     // Step down when x+1 is outside the field's range, so a top-of-scale
     // example still gets asked.

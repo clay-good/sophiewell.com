@@ -69,6 +69,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Six tools dropped a negative entry as if the field were blank (delta-gap swapped in its default normal anion gap
+  of 12; Phoenix sepsis left a negative D-dimer out of the score). Each now refuses it.
 - 80 tools answered from a value below any plausible floor: diabetes risk tools scored a BMI of 2.5, VBAC gave
   98.9% success from a 150 g weight, MELD took a sodium of 45, and pneumonia severity scored an arterial pH of
   -999999 as acidemic. Each now refuses it, with the range.
