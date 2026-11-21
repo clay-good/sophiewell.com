@@ -36,7 +36,7 @@
 
 import { BOUNDS } from '../lib/bounds.js';
 import { META } from '../lib/meta.js';
-import { candidates, envelope } from './lib/envelope-map.mjs';
+import { candidates, envelope, fillFor } from './lib/envelope-map.mjs';
 import { computeCalculator } from '../mcp/tools.js';
 
 const onlyKey = (() => {
@@ -54,10 +54,19 @@ const usable = [];
 for (const r of rows) {
   const b = envelope(r);
   const n = Number(r.ex);
-  if (r.ex === undefined || String(r.ex).trim() === '' || !Number.isFinite(n)) continue;
+  if (r.ex === undefined || String(r.ex).trim() === '' || !Number.isFinite(n)) {
+    // spec-v1758: a field the worked example leaves blank was never driven, and 77 of 103 such fields
+    // answered past the ceiling (PSI scored a temperature of 67.5 C). Fill it with a value inside the
+    // envelope -- the first of a few that the tool answers from -- and drive it like the rest.
+    const fill = fillFor(r);
+    if (fill !== null) usable.push({ ...r, fill });
+    continue;
+  }
   if (n < b.min || n > b.max) misMapped.push({ ...r, n, b });
   else usable.push(r);
 }
+// The worked example, with a blank field filled where the row needed one.
+const exOf = (r) => (r.fill === undefined ? META[r.id].example.fields : { ...META[r.id].example.fields, [r.dom]: r.fill });
 
 if (misMapped.length) {
   console.log('MIS-MAPPED -- a worked example outside the envelope this probe assigned it.');
@@ -72,7 +81,7 @@ if (misMapped.length) {
 // --- the question ----------------------------------------------------------
 const flagged = [];
 for (const r of usable) {
-  const ex = META[r.id].example.fields;
+  const ex = exOf(r);
   const base = computeCalculator({ id: r.id, inputs: { ...ex } });
   if (base.valid === false) continue;
   const b = envelope(r);
@@ -204,7 +213,7 @@ for (const f of rest) console.log(line(f));
 // say -- "albumin gdl must be between 0.5 and 8. Check the value entered."
 const refusing = [];
 for (const r of usable) {
-  const ex = META[r.id].example.fields;
+  const ex = exOf(r);
   const b = envelope(r);
   const res = computeCalculator({ id: r.id, inputs: { ...ex, [r.dom]: String(b.max * 10) } });
   const msg = String(res.message || res.result?.band || res.result?.message || '');
@@ -220,5 +229,6 @@ console.log('for non-numeric AND for out-of-range, and every caller reads null a
 for (const f of refusing) console.log(`  ${f.id}|${f.dom} [${f.key}] -> ${f.msg.slice(0, 90)}`);
 
 console.log(`\nReach: ${rows.length} field(s) map to one of ${Object.keys(BOUNDS).length} envelopes;`);
-console.log(`${usable.length} have a worked example inside that envelope and are testable,`);
+const filled = usable.filter((r) => r.fill !== undefined).length;
+console.log(`${usable.length} are testable (${filled} of them blank in the worked example and filled inside the envelope),`);
 console.log(`${misMapped.length} are mis-mapped (above), and ${rows.length - usable.length - misMapped.length} carry no usable example.`);

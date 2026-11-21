@@ -6,6 +6,7 @@
 import { allCalculators } from '../../mcp/catalog.js';
 import { BOUNDS } from '../../lib/bounds.js';
 import { META } from '../../lib/meta.js';
+import { computeCalculator } from '../../mcp/tools.js';
 
 // A quantity in another compartment, another substance, or a derived figure is
 // not the envelope's subject. Each term here was earned: the three at the front
@@ -86,6 +87,10 @@ export const NOT_A_BODY = new Set(['testicular-volume']);
 export const NOT_ONE_QUANTITY = new Set(['max-allowable-blood-loss']);
 // Tools whose "pH" is a solution's or a compartment's (0 to 14), not arterial blood's.
 export const NOT_BLOOD_PH = new Set(['percent-ionized']);
+// spec-v1758: fields whose tool sets a wider range on purpose, with the reason. hypothermia-rewarm refuses
+// potassium outside 0-30 mmol/L because its ECPR exclusion fires above 12 mmol/L (ERC 2021, Lott 2021);
+// the serum envelope's 10 would make that branch unreachable.
+export const OWN_RANGE = new Set(['hypothermia-rewarm|hyp-k']);
 
 export function candidates({ onlyKey = null } = {}) {
   const rows = [];
@@ -100,6 +105,7 @@ export function candidates({ onlyKey = null } = {}) {
       const unit = f.unit || ((String(f.label || '').match(/\(([^()]*)\)\s*$/) || [])[1] || '');
       const text = `${f.label || ''} ${unit}`;
       if (EXCLUDE.test(text)) continue;
+      if (OWN_RANGE.has(`${tool.id}|${f.dom}`)) continue;
       for (const [key, labRe, unitRe, scale = 1] of MAP) {
         if (onlyKey && key !== onlyKey) continue;
         if (key === 'pH' && NOT_BLOOD_PH.has(tool.id)) continue;
@@ -122,4 +128,18 @@ export function candidates({ onlyKey = null } = {}) {
 export function envelope(r) {
   const b = BOUNDS[r.key];
   return { min: b.min * r.scale, max: b.max * r.scale, unit: b.unit };
+}
+
+// spec-v1758: a value inside the envelope for a field the worked example leaves blank -- the first of a few the
+// tool answers from -- or null when none does (the field conflicts with one the example fills, as kinetic-egfr's
+// maximum creatinine rise does with its weight). The finder and the page test both drive only filled fields.
+export function fillFor(r) {
+  const ex = META[r.id]?.example?.fields;
+  if (!ex) return null;
+  const b = envelope(r);
+  for (const at of [0.05, 0.2, 0.5, 0.01]) {
+    const fill = String(Number((b.min + (b.max - b.min) * at).toPrecision(4)));
+    if (computeCalculator({ id: r.id, inputs: { ...ex, [r.dom]: fill } }).valid !== false) return fill;
+  }
+  return null;
 }

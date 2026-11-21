@@ -21,7 +21,7 @@
 // A range slider cannot hold a value past its own max, so the browser clamps it and there is
 // nothing to refuse; those fields are counted and skipped.
 import { test, expect } from '@playwright/test';
-import { candidates, envelope } from '../../scripts/lib/envelope-map.mjs';
+import { candidates, envelope, fillFor } from '../../scripts/lib/envelope-map.mjs';
 import { META } from '../../lib/meta.js';
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep is chromium-only');
@@ -36,9 +36,12 @@ const LEAK = /(?:^|[^A-Za-z])(?:null|undefined|NaN|-?Infinity)(?![A-Za-z])/;
 test('a value past its envelope is refused on the page, with a range and no null', async ({ page }) => {
   test.setTimeout(2_400_000);
   const rows = candidates().filter((r) => {
+    // spec-v1758: a field the worked example leaves blank is driven too (it is put back to blank after).
+    // Skipping them hid 77 fields that answered past the ceiling, PSI's temperature among them.
+    if (r.ex === undefined || String(r.ex).trim() === '') return fillFor(r) !== null;
     const n = Number(r.ex);
     const b = envelope(r);
-    return r.ex !== undefined && String(r.ex).trim() !== '' && Number.isFinite(n) && n >= b.min && n <= b.max;
+    return Number.isFinite(n) && n >= b.min && n <= b.max;
   });
   expect(rows.length).toBeGreaterThan(600);
 
@@ -58,7 +61,9 @@ test('a value past its envelope is refused on the page, with a range and no null
     await page.goto(`/#${id}`);
     const got = await page.evaluate(async ({ fields, example }) => {
       const wait = (ms) => new Promise((ok) => setTimeout(ok, ms));
-      const fire = (el) => { el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); };
+      // spec-v1758: two tools compute only on a button (lab-interpret's "Interpret values"); press it after each change.
+      const go = () => { const b = document.querySelector('main button[id$="-go"]'); if (b) b.click(); };
+      const fire = (el) => { el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); go(); };
       const read = () => {
         const q = document.querySelector('#q-results') || document.querySelector('.screener-result') || document.querySelector('main');
         return (q ? q.innerText : '').replace(/\s+/g, ' ').trim();
@@ -76,6 +81,7 @@ test('a value past its envelope is refused on the page, with a range and no null
       let settled = false;
       for (let i = 0; i < 100 && !settled; i++) { settled = Object.entries(example).every(took); if (!settled) await wait(50); }
       if (!settled) return { unsettled: Object.entries(example).filter((e) => !took(e)).map(([fid]) => fid) };
+      go();
       // And for its answer: some tools fetch a table before they can compute anything.
       for (let i = 0; i < 60 && !read(); i++) await wait(50);
 
