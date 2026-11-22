@@ -52,10 +52,10 @@
   "notes": "Allele function, diplotype-to-phenotype rules, recommendations, guidelines and gene-drug pairs read from the CPIC API (CC0). The PharmGKB columns of pair_view are not kept. The edition is the newest CPIC change-log date; the check date is the fetch plus 14 days.",
   "coverage": "full",
   "sourceEdition": "2026-08-03",
-  "fetchedAt": "2026-11-15",
+  "fetchedAt": "2026-11-22",
   "contentChangedAt": "2026-11-01",
-  "expiresOn": "2026-11-29",
-  "nextExpected": "2026-11-22",
+  "expiresOn": "2026-12-06",
+  "nextExpected": "2026-11-29",
   "sourceSha256": "cf05986205e39c3f64806a7a291ca4144639cdd7b0deaed6ec60b1662688c41a",
   "recordsSha256": "d5d55fbc00fd01b10a049ef1306c098503ac13a9c64e1ce9c6c429fc6e1c935a",
   "recordBounds": {

@@ -306,7 +306,7 @@
     "splVersion": 18,
     "publishedOn": "2026-10-14",
     "verifiedOn": "2026-10-18",
-    "validThrough": "2027-10-18",
+    "validThrough": "2027-11-22",
     "sections": {
       "34089-3": "38bf98a2b10b6bcd38e820005187a18a69d24ee33baeb97421a5ac991c8b9e4b"
     }
@@ -476,7 +476,7 @@
     "splVersion": 36,
     "publishedOn": "2026-10-16",
     "verifiedOn": "2026-10-18",
-    "validThrough": "2027-10-18",
+    "validThrough": "2027-11-22",
     "sections": {
       "34068-7": "72afe60e10624610843b401f1ac70c4bf2c0e54aaa9c8babfe82233c1770ed83"
     }
@@ -836,7 +836,7 @@
     "splVersion": 42,
     "publishedOn": "2026-10-14",
     "verifiedOn": "2026-10-18",
-    "validThrough": "2027-10-18",
+    "validThrough": "2027-11-22",
     "sections": {
       "34068-7": "4edb8721cceb197f5adbdc0197f2b91d42642b91e0862ef4c96989033df7d5e4"
     }
@@ -2521,7 +2521,7 @@
     "splVersion": 8,
     "publishedOn": "2026-08-24",
     "verifiedOn": "2026-10-15",
-    "validThrough": "2027-10-15",
+    "validThrough": "2027-11-22",
     "sections": {
       "34068-7": "eac9246b5dafdb5b949ce90c23a7d67678c7523a5b652e1dfb113902ab60c23d"
     }
@@ -2627,10 +2627,10 @@
     "tools": [
       "aed-formulation-switch"
     ],
-    "splVersion": 29,
-    "publishedOn": "2025-07-02",
-    "verifiedOn": "2026-10-11",
-    "validThrough": "2027-11-15",
+    "splVersion": 30,
+    "publishedOn": "2026-11-16",
+    "verifiedOn": "2026-11-22",
+    "validThrough": "2027-11-22",
     "sections": {
       "34068-7": "2db67b35f188b72e9ebb976cdee81f76f0502d85cc42c7bfd45e9c7c9c95400c"
     }
@@ -4555,7 +4555,7 @@
     "splVersion": 7,
     "publishedOn": "2026-10-15",
     "verifiedOn": "2026-10-18",
-    "validThrough": "2027-10-18",
+    "validThrough": "2027-11-22",
     "sections": {
       "34068-7": "dfe844caae062d390b93a477901d97b10c77da912326d5d7f49aacb184c2aca8"
     }
