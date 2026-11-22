@@ -6,14 +6,14 @@
   "agency": "CMS",
   "status": "public-domain",
   "cadence": "as updated",
-  "recordCount": 560,
+  "recordCount": 556,
   "shardLayout": "shards",
   "shards": [
     {
       "name": "prices.json",
-      "sha256": "a5873f24d0ddab3348c8aebf3c2dbc34cd60a4229681c800a513c2bd16b1fadd",
-      "records": 560,
-      "bytes": 153371
+      "sha256": "8bcf83b532c46ce6ddd7f6a4935b8eaf1584f8586ec0aedbc277e63a5f57af3b",
+      "records": 556,
+      "bytes": 152255
     }
   ],
   "ancillary": [
@@ -21,13 +21,13 @@
   ],
   "notes": "One record per NDC-11 and price period, every row of the file kept (it is a dated history): drug, NDC-9 and NDC-11, HCPCS code, effective and end dates, the single price per 30-day equivalent supply, the NDC-9 per-unit price, and the type of update. drugs.js carries the per-drug periods for partd-mfp-price-check.",
   "coverage": "full",
-  "sourceEdition": "2026-09-21",
-  "effectiveFrom": "2026-09-21",
-  "fetchedAt": "2026-10-03",
-  "contentChangedAt": "2026-10-03",
+  "sourceEdition": "2026-11-02",
+  "effectiveFrom": "2026-11-02",
+  "fetchedAt": "2026-11-22",
+  "contentChangedAt": "2026-11-22",
   "expiresOn": "2027-12-31",
-  "sourceSha256": "6fa6b047bd20b0dc3dc8c8aa554a2c133aa95511efaa021dc7a669ea109d0ed1",
-  "recordsSha256": "1ad7a72cc956aff6cf438ca0c637e85cd0e6351864fc8118c1a01ea5aa3d565f",
+  "sourceSha256": "49fbb15dbf066c4e41d0593e7525dac7dd2633a2d342b6c5c01bdbcceeff3601",
+  "recordsSha256": "9a6cae39cc1416d9b03745d54c287239fdca10b9d9bf07a3de9a5fad3462438f",
   "recordBounds": {
     "min": 300,
     "max": 5000

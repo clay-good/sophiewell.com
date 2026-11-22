@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d6f7ecc69ca39ff7`
-Generated: 2026-11-21T21:09:11.041Z
+Build ID: `0e800b932625232a`
+Generated: 2026-11-22T14:12:09.396Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -784,7 +784,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/lab-interpret.js` | 31474 | `823abfe5877d39cc1a7f3a7911b53d368ba8dccc2bae254d2691e772f241f698` |
 | `lib/lab-stats.js` | 2566 | `0ba85e42d062c175fa5505be5c86e339b2f4c0e9f6b51d6b954f6617eb2c570b` |
 | `lib/label-dose.js` | 8030 | `32955c2d3c6dab36d25f512f012a722c3d6955f7c3ac719e75c3c7f4d44cd99f` |
-| `lib/label-editions.js` | 68931 | `a61b0969f1d890977ba405cb459f3768273a41cc9817235f2be75e30dcacdef7` |
+| `lib/label-editions.js` | 68931 | `6d593b4d7155f3a71c51a19f9cb6a5385d448519247ce9b0ef41c0486fec04ad` |
 | `lib/label-formulation-switch-v1633.js` | 9255 | `c842e3adafe95a74dd710fcb4c749592c7ad127984d5c1ed35eccd1da7b7e7e8` |
 | `lib/label-gate.js` | 4326 | `fd5031c8a1f22c1150e7cb6fa3c5f8bcee966f1a81dedee3a554498529fc4111` |
 | `lib/label-row.js` | 2619 | `1cc6cfcb0b55aad9fac77f007b06516bca0ca29bafba89cc1b2a26513fdf54a1` |

@@ -1,7 +1,7 @@
 {
-  "conversionFactor": 33.4009,
-  "qppConversionFactor": 33.5675,
-  "effectiveDate": "2026-10-01",
-  "edition": "RVU26D",
-  "source": "CMS PFS relative value file RVU26D: nonqualifying and qualifying APM conversion factors"
+  "conversionFactor": 32.6286,
+  "qppConversionFactor": 32.9548,
+  "effectiveDate": "2027-01-01",
+  "edition": "RVU27A",
+  "source": "CMS PFS relative value file RVU27A: nonqualifying and qualifying APM conversion factors"
 }

@@ -1,11 +1,11 @@
 {
   "mpfs": {
-    "url": "https://www.cms.gov/files/zip/rvu26d-updated-08-26-2026.zip",
-    "edition": "RVU26D",
-    "sha256": "521ff0f4ecbf13b5d99dc1dc04d9f82e5361e55c6b4b6b3033043598bf8406e6",
+    "url": "https://www.cms.gov/files/zip/rvu27a-updated-11-10-2026.zip",
+    "edition": "RVU27A",
+    "sha256": "dbf4b741249e4557839cdd6dc0790135411f00f16bfe92b7686fc14a721b013b",
     "etag": null,
-    "lastModified": "Wed, 26 Aug 2026 20:20:03 GMT",
-    "fetchedAt": "2026-09-29"
+    "lastModified": "Tue, 10 Nov 2026 20:23:17 GMT",
+    "fetchedAt": "2026-11-22"
   },
   "drg": {
     "url": "https://www.cms.gov/files/zip/fy2027-ipps-fr-table-5.zip",
@@ -24,12 +24,12 @@
     "fetchedAt": "2026-09-29"
   },
   "nadac": {
-    "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=as_of_date&conditions[0][value]=2026-11-11&conditions[0][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
-    "edition": "2026-11-11 weekly",
-    "sha256": "d2ab8301057d036b246506767c907fc2c4e5a805519e58ee3eec1abb44e63216",
-    "etag": "\"1794749389-gzip\"",
-    "lastModified": "Sun, 15 Nov 2026 13:29:49 GMT",
-    "fetchedAt": "2026-11-15"
+    "url": "https://data.medicaid.gov/api/1/datastore/query/fbb83258-11c7-47f5-8b18-5f8e79f7e704/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=as_of_date&conditions[0][value]=2026-11-25&conditions[0][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
+    "edition": "2026-11-25 weekly",
+    "sha256": "da884fb73ca28cddc7ba442e1c2bcfe5ef5f049ea2dc67558edd287731d53e3e",
+    "etag": "\"1795356439-gzip\"",
+    "lastModified": "Sun, 22 Nov 2026 14:07:19 GMT",
+    "fetchedAt": "2026-11-22"
   },
   "asp": {
     "url": "https://www.cms.gov/files/zip/october-2026-medicare-part-b-payment-limit-files-final.zip",
@@ -49,11 +49,11 @@
   },
   "mcd-articles": {
     "url": "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/current_article.zip",
-    "edition": "2026-11-09 weekly",
-    "sha256": "63d304f1d406a9ee83c670b1fdfb21a14e80c7e8ef0c462ce9ea68ef92eed984",
-    "etag": "\"2fcda327e62643b3ce9f348bdd4b5126:1794466811.709917\"",
-    "lastModified": "Thu, 12 Nov 2026 07:00:12 GMT",
-    "fetchedAt": "2026-11-15"
+    "edition": "2026-11-16 weekly",
+    "sha256": "ea9e1e1bfd151be3cfbc4c6a3649276e96ada622dd514a71028461d6394863f9",
+    "etag": "\"d8f2f4c64d583229deb82f1feb7e54d6:1795071614.814501\"",
+    "lastModified": "Thu, 19 Nov 2026 07:00:15 GMT",
+    "fetchedAt": "2026-11-22"
   },
   "purple-book": {
     "url": "https://www.accessdata.fda.gov/drugsatfda_docs/PurpleBook/2026/purplebook-search-September-data-download.csv",
@@ -81,11 +81,11 @@
   },
   "uspstf": {
     "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation-topics/uspstf-a-and-b-recommendations",
-    "edition": "A and B list read 2026-11-15 (latest release 2025-06)",
-    "sha256": "897809f49398536891c42cd5fe07df65126ae781840359df3fc08ef94571c954",
+    "edition": "A and B list read 2026-11-22 (latest release 2025-06)",
+    "sha256": "9bf7f26c7a36e79292d329df037ae8feb87c6b631a30dae748b51ba7a826ca4c",
     "etag": null,
     "lastModified": null,
-    "fetchedAt": "2026-11-15"
+    "fetchedAt": "2026-11-22"
   },
   "poverty-guidelines": {
     "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines/api/2025/us/1",
@@ -96,12 +96,12 @@
     "fetchedAt": "2026-10-03"
   },
   "mfp-negotiated-prices": {
-    "url": "https://www.cms.gov/files/zip/selected-drug-list-negotiated-prices-also-known-maximum-fair-prices-statutezip.zip",
-    "edition": "2026-09-21",
-    "sha256": "6fa6b047bd20b0dc3dc8c8aa554a2c133aa95511efaa021dc7a669ea109d0ed1",
+    "url": "https://www.cms.gov/files/zip/cms-negotiation-program-selected-drug-list-maximum-fair-price-data-file-20261102.zip",
+    "edition": "2026-11-02",
+    "sha256": "49fbb15dbf066c4e41d0593e7525dac7dd2633a2d342b6c5c01bdbcceeff3601",
     "etag": null,
-    "lastModified": "Mon, 21 Sep 2026 15:48:14 GMT",
-    "fetchedAt": "2026-10-03"
+    "lastModified": "Mon, 02 Nov 2026 18:11:48 GMT",
+    "fetchedAt": "2026-11-22"
   },
   "aca-ful": {
     "url": "https://data.medicaid.gov/api/1/datastore/query/ce4cf49b-a21b-5a53-bbc3-509414940847/0?limit=5000&offset=0&count=true&results=true&schema=false&keys=true&conditions[0][property]=year&conditions[0][value]=2026&conditions[0][operator]=%3D&conditions[1][property]=month&conditions[1][value]=10&conditions[1][operator]=%3D&sorts[0][property]=ndc&sorts[0][order]=asc",
@@ -117,14 +117,14 @@
     "sha256": "cf05986205e39c3f64806a7a291ca4144639cdd7b0deaed6ec60b1662688c41a",
     "etag": null,
     "lastModified": null,
-    "fetchedAt": "2026-11-15"
+    "fetchedAt": "2026-11-22"
   },
   "fda-ddi-examples": {
     "url": "https://www.fda.gov/drugs/drug-interactions-labeling/healthcare-professionals-fdas-examples-drugs-interact-cyp-enzymes-and-transporter-systems",
     "edition": "2026-05-29",
-    "sha256": "623ad3ad5042a04b709cf39b7996da5e469396476484396818d786c2212491b4",
-    "etag": "\"1794687495\"",
-    "lastModified": "Sat, 14 Nov 2026 20:18:15 GMT",
-    "fetchedAt": "2026-11-15"
+    "sha256": "90cbce8316dd7d0736d64b01987f905a8206683b65bf949eeaa828d9b7167227",
+    "etag": "\"1795275900\"",
+    "lastModified": "Sat, 21 Nov 2026 15:45:00 GMT",
+    "fetchedAt": "2026-11-22"
   }
 }
