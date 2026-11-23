@@ -946,6 +946,7 @@ const PROBES = [
   ['clamp to reperfusion time', ['ischemia-time-clock']],
   ['kidney donor profile index', ['kdri-kdpi']],
   ['sample size to estimate a prevalence', ['sample-size-proportion']],
+  ['herd immunity threshold from r0', ['herd-immunity-threshold']],
   ['sample size to compare two proportions', ['sample-size-two-groups']],
   ['donor recipient weight ratio', ['donor-recipient-size-match']],
   ['t-macs chest pain troponin', ['t-macs']],

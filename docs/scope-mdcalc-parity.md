@@ -1020,3 +1020,5 @@ experience**.
 > v1717, Kidney Donor Profile Index — [spec-v1717](spec-v1717.md), which adds `kdri-kdpi` from OPTN's April 2026 KDPI guide (the October 2024 refit without race or HCV) and its 2025 KDRI-to-KDPI mapping table, both read November 7, 2026 — is 2387.)
 
 > v1769, Sample Size for Proportions — [spec-v1769](spec-v1769.md), which adds `sample-size-proportion` and `sample-size-two-groups` from the WHO manual of Lwanga and Lemeshow (1991, read in WHO IRIS November 21, 2026), proportion formulas only — is 2389.)
+
+> v1772, Herd Immunity Threshold — [spec-v1772](spec-v1772.md), which adds `herd-immunity-threshold` from Randolph and Barreiro (Immunity 2020) and chapter 9 of Martcheva's An Introduction to Mathematical Epidemiology (Springer 2015), both read openly November 23, 2026 after the papers the spec named stayed behind their publisher — is 2390.)

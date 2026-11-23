@@ -9611,6 +9611,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `sample-size-proportion`
 - `sample-size-two-groups`
 
+### lib/herd-immunity-v1772.js (spec-v1772: herd immunity threshold and the coverage a vaccine needs, Randolph and Barreiro 2020 with Martcheva 2015 — administrative disclaimer)
+- `herd-immunity-threshold`
+
 ### lib/kdri-kdpi-v1717.js (spec-v1717: KDRI and KDPI, OPTN 2026 guide and 2025 mapping table — clinical disclaimer)
 - `kdri-kdpi`
 

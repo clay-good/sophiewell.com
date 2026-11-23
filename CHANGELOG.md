@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The herd immunity threshold: the share of a population that has to be immune before an infection stops
+  spreading, and the coverage a vaccination program must reach when its vaccine is less than perfectly
+  efficacious. It says plainly when an efficacy is too low for any coverage to reach the threshold, and it
+  reproduces the eight diseases of the table it is sourced from.
 - Sample sizes for proportions from the WHO manual of Lwanga and Lemeshow (1991): one proportion to an absolute or
   relative precision, and two proportions by hypothesis test or by the precision of their difference, each with an
   optional design effect. Each rounds as the manual's tables do, and the manual's worked examples are the tests.

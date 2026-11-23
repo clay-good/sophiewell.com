@@ -3,15 +3,6 @@
   "probedOn": "2026-11-07",
   "gates": [
     {
-      "tool": "herd-immunity-threshold",
-      "spec": "spec-v1659",
-      "source": "Fine, Eames and Heymann, \"Herd immunity: a rough guide\", Clin Infect Dis 2011;52:911",
-      "url": "https://doi.org/10.1093/cid/cir007",
-      "kind": "publisher-paywall",
-      "lastStatus": 403,
-      "note": "PubMed record 21427399 carries no PMC id, so there is no open copy; the full texts that surface are a course-site PDF and a document-sharing upload, neither a publisher copy nor a verified reprint. The task's other allowed source, Fine 1993 (Epidemiol Rev 15:265-302, PubMed 8174658, doi 10.1093/oxfordjournals.epirev.a036121), was checked November 7, 2026: no PMC id either, and OUP answered a browser with a bot challenge (HTTP 403), which this project does not get past."
-    },
-    {
       "tool": "sample-size-proportion",
       "spec": "spec-v1659",
       "source": "Lwanga and Lemeshow, Sample Size Determination in Health Studies, WHO 1991 (ISBN 9241544058)",
@@ -90,7 +81,7 @@
       "url": "https://doi.org/10.7326/0003-4819-85-2-183",
       "kind": "publisher-paywall",
       "lastStatus": 403,
-      "note": "The decisive problem is not only reach: two incompatible coefficient sets circulate (k = 0.00293 x CrCl + 0.014 against 0.0024 x CrCl + 0.01) and neither primary paper is open, so a dosing tool cannot pick one."
+      "note": "The decisive problem is not only reach: two incompatible coefficient sets circulate (k = 0.00293 x CrCl + 0.014 against 0.0024 x CrCl + 0.01) and neither primary paper is open, so a dosing tool cannot pick one. Re-checked November 23, 2026 against the two-open-sources rule that unblocked herd-immunity-threshold (spec-v1772): PMC7915939 restates Hull and Sarubbi's elimination constant verbatim (ke = 0.00293 x CrCl + 0.014, CrCl adjusted for body surface area), but it is the ONLY open restatement found, and no open source states the population volume of distribution per kilogram this tool also needs. One source is not two, so the gate holds."
     },
     {
       "tool": "levey-jennings-1950",

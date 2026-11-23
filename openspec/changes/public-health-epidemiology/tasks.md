@@ -14,8 +14,15 @@
 - [x] 1.2 (read October 20, 2026 in two open restatements, PMC10445975 Eq. 3 and PMC10904572 Eq. 2; shipped in spec-v1663 as an
       optional field) Levin 1953 or an open secondary source stating Levin's formula (tool 4, population
       fraction).
-- [ ] 1.3 (not read; tool 6 stays gated) Fine 1993 or Fine, Eames and Heymann 2011: threshold and imperfect-vaccine coverage
-      (tool 6). Both re-checked November 7, 2026: neither has a PMC copy; OUP shows a bot challenge to a browser.
+- [x] 1.3 (NOT read, and tool 6 SHIPPED anyway in spec-v1772 on November 23, 2026, from two open sources that state the
+      same mathematics -- the way task 1.2 sourced Levin's formula. Randolph and Barreiro, Immunity 2020;52(5):737-743
+      (PMC7236739): "the herd immunity threshold is defined by 1 - 1/R0 (e.g., if R0 = 4, the corresponding herd immunity
+      threshold is 0.75)". Martcheva, An Introduction to Mathematical Epidemiology (Springer 2015), chapter 9, open in
+      PMC: the same threshold as the critical vaccination proportion, the imperfect-vaccine coverage (1/efficacy)(1 - 1/R0),
+      the condition that efficacy must exceed the threshold, and Table 9.3 for eight diseases, which is the test. The two
+      agree. Fine 1993 and Fine, Eames and Heymann 2011 are still behind their publisher, re-checked November 23, 2026:
+      no PMC copy for either, HTTP 403 from OUP) Fine 1993 or Fine, Eames and Heymann 2011: threshold and imperfect-vaccine coverage
+      (tool 6).
 - [x] 1.4 (read October 20, 2026 in NCI SEER*Stat help, after Sahai and Khurshid; shipped in spec-v1663. `nhsn-sir` keeps
       NHSN's own mid-P interval on its report) Exact Poisson limits for observed ÷ expected (Breslow and Day 1987 or Ulm 1990)
       (tool 7 interval; shared with `nhsn-sir`).
