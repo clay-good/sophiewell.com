@@ -19,6 +19,9 @@ jobs:
     outputs:
       packaged: ${{ steps.pack.outputs.packaged }}
       suite: ${{ steps.suite.outcome }}
+      # spec-v1770: true in a week when a REFRESHED DATASET is what changed the search corpus, so the
+      # pull request must carry it. See `Baseline search corpus` and `Package reviewed changes`.
+      carryCorpus: ${{ steps.pack.outputs.carryCorpus }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
@@ -34,6 +37,16 @@ jobs:
           mkdir -p /tmp/prev-data
           if [ -d data ]; then cp -R data /tmp/prev-data/; fi
 
+      # spec-v1770: the corpus as the CURRENT CATALOG builds it, before a single dataset moves. It is
+      # the yardstick that tells catalog drift (not ours to carry) from a dataset that reached the
+      # corpus (ours, or main goes red). The committed bytes are put straight back.
+      - name: Baseline search corpus
+        run: |
+          node scripts/build-search-corpus.mjs
+          mkdir -p /tmp/corpus-baseline
+          cp data/search-corpus/*.json /tmp/corpus-baseline/
+          git checkout -- data/search-corpus
+
       - name: Build curated datasets
         run: node scripts/build-data.mjs
 
@@ -47,14 +60,21 @@ jobs:
       - name: Verify integrity
         run: node scripts/verify-integrity.mjs
 
+      # spec-v1770: the "Fetched federal datasets" table states every dataset's edition and record
+      # count, and `build-data-sources-doc.mjs --check` is in the lint chain, so a refresh that did not
+      # rewrite it would fail its own checks -- and did, for ten rows, before this step existed.
+      - name: Rewrite the dataset table in docs/data-sources.md
+        run: node scripts/build-data-sources-doc.mjs
+
       # spec-v987: rebuilt so THIS job's own lint and determinism checks pass on
       # the branch -- and deliberately kept out of the pull request below.
       #
-      # The comment here used to say the corpus is derived from data/ and that a
-      # refresh can change its bytes. It is not, and it cannot:
-      # build-search-corpus.mjs reads app.js, lib/meta.js, mcp/catalog.js and
-      # data/tool-copy/, all of them catalog, none of them fetched weekly.
-      # Editing a dataset and rebuilding leaves corpus.json byte-identical.
+      # spec-v1770: a refresh CAN change the corpus, and on 2026-11-22 it did. The comment here said it
+      # could not, reasoning that the builder reads app.js, lib/meta.js, mcp/catalog.js and
+      # data/tool-copy/, all of them catalog. It does -- but a picker's `values` can come FROM a weekly
+      # dataset, and the corpus writes those values into a tool's `answers`. The CMS negotiated-prices
+      # file dropped BOTOX, the two MFP tools lost it from their answers, this pull request excluded the
+      # corpus, and main went red on a test that called the staleness a non-deterministic builder.
       #
       # What the rebuild actually picks up is CATALOG drift that landed on main
       # since the corpus was last committed -- and shipping that inside a DATA
@@ -95,15 +115,25 @@ jobs:
       - name: Freshness report
         run: node scripts/report-freshness.mjs > freshness.md
 
-      # ':!data/search-corpus' -- see the rebuild step. The corpus belongs to
-      # whoever changed the catalog; a data refresh must not carry it.
+      # The corpus belongs to whoever changed the catalog: carrying catalog drift inside a data pull
+      # request is what left #13 unmergeable. So it is excluded UNLESS it differs from the baseline
+      # taken before any dataset moved -- in which case a dataset is what changed it, and leaving it
+      # out is what reddens main (spec-v1770).
       - name: Package reviewed changes
         id: pack
         # A new edition can add shard files; `git add -N` makes git diff show
         # them, since it lists only tracked paths.
         run: |
           git add --intent-to-add -- data scripts/expected-hashes.json scripts/data/label-editions.json
-          git diff --binary -- data scripts/expected-hashes.json scripts/data/label-editions.json lib/label-editions.js sbom.json sbom.md ':!data/search-corpus' > data-refresh.patch
+          paths=(data scripts/expected-hashes.json scripts/data/label-editions.json lib/label-editions.js sbom.json sbom.md docs/data-sources.md)
+          if diff -q -r /tmp/corpus-baseline data/search-corpus >/dev/null 2>&1; then
+            paths+=(':!data/search-corpus')
+            echo "The refreshed datasets left the search corpus byte-identical; it is not carried."
+          else
+            echo "carryCorpus=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::A refreshed dataset changed the search corpus, so this pull request carries data/search-corpus."
+          fi
+          git diff --binary -- "${paths[@]}" > data-refresh.patch
           echo "packaged=true" >> "$GITHUB_OUTPUT"
 
       - name: Upload reviewed changes
@@ -207,12 +237,13 @@ jobs:
           body-path: .data-refresh/data-refresh-summary.md
           add-paths: |
             data/**
-            :!data/search-corpus/**
+            ${{ needs.refresh.outputs.carryCorpus == 'true' && 'data/search-corpus/**' || ':!data/search-corpus/**' }}
             scripts/expected-hashes.json
             scripts/data/label-editions.json
             lib/label-editions.js
             sbom.json
             sbom.md
+            docs/data-sources.md
 
       # spec-v1621 §5: merge the pull request only when the run's own
       # decision says every dataset is unchanged or updated cleanly -- canaries

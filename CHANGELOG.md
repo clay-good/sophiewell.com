@@ -72,6 +72,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The weekly data refresh now carries the search corpus when one of the refreshed datasets is what changed it. A
+  drug leaving the CMS negotiated-price file left the search index naming it for a day.
+- The table of fetched federal datasets in the data-sources documentation is now written from the datasets
+  themselves, so the edition and record count it states are the ones on disk. Eleven of its sixteen rows had aged,
+  one of them by a whole quarter of the physician fee schedule.
 - Hemoglobin and hematocrit now have a floor taken from a published survival (1.4 g/dL): a value below 1 g/dL or
   3% is refused as impossible, while the critically low values patients have survived are still read.
 - The LTBI regimen, thrombolytic, neostigmine and pegfilgrastim doses are capped by their labels, so a body weight

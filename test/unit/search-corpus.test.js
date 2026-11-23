@@ -98,12 +98,23 @@ test('search-corpus: Tier-2 detail gzip is within its guardrail budget', () => {
     `Tier-2 corpus-detail is ${gzip} bytes gzipped, over the ${manifest.detail.budgetGzip}-byte guardrail`);
 });
 
-test('search-corpus: builder is deterministic (rebuild is byte-identical, both tiers)', () => {
-  const before = readFileSync(CORPUS_PATH);
-  const beforeDetail = readFileSync(DETAIL_PATH);
+// Two different faults used to share one message. A rebuild that does not reproduce the committed bytes
+// means the CORPUS IS STALE -- someone changed the catalog, or a weekly dataset behind a picker's values,
+// and did not rebuild. A rebuild that does not reproduce ITSELF means the BUILDER is non-deterministic.
+// Main went red on November 22, 2026 for the first and was told the second: the CMS negotiated-prices
+// file dropped a drug, the two MFP tools' `answers` lost it, and the refresh pull request excludes the
+// corpus by design. Each fault now names itself, with the command that fixes the stale one.
+test('search-corpus: the committed corpus is current, and the builder is deterministic (both tiers)', () => {
+  const committed = readFileSync(CORPUS_PATH);
+  const committedDetail = readFileSync(DETAIL_PATH);
   execFileSync(process.execPath, [BUILDER], { stdio: 'pipe' });
-  assert.ok(before.equals(readFileSync(CORPUS_PATH)), 'rebuilding Tier 1 changed its bytes -- non-deterministic builder');
-  assert.ok(beforeDetail.equals(readFileSync(DETAIL_PATH)), 'rebuilding Tier 2 changed its bytes -- non-deterministic builder');
+  const first = readFileSync(CORPUS_PATH);
+  const firstDetail = readFileSync(DETAIL_PATH);
+  assert.ok(committed.equals(first), 'the committed Tier-1 corpus is stale -- rebuild with `node scripts/build-search-corpus.mjs` and commit it');
+  assert.ok(committedDetail.equals(firstDetail), 'the committed Tier-2 corpus-detail is stale -- rebuild with `node scripts/build-search-corpus.mjs` and commit it');
+  execFileSync(process.execPath, [BUILDER], { stdio: 'pipe' });
+  assert.ok(first.equals(readFileSync(CORPUS_PATH)), 'rebuilding Tier 1 twice gave different bytes -- non-deterministic builder');
+  assert.ok(firstDetail.equals(readFileSync(DETAIL_PATH)), 'rebuilding Tier 2 twice gave different bytes -- non-deterministic builder');
 });
 
 // spec-v759: a one-liner that is shortened must still read as a finished

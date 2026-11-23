@@ -145,6 +145,7 @@ When one fails it names itself; this is where to look it up.
 | `check-helper-drift.mjs` | two copies of one view helper that no longer behave the same |
 | `check-design-system.mjs` | a view that styles itself inline, a file input off the shared dropzone card, or a status chip built without its word |
 | `check-doc-internal-links.mjs` | a markdown link pointing at a file, heading or npm script that is not there |
+| `build-data-sources-doc.mjs --check` | an edition or record count in `docs/data-sources.md` that no longer matches the dataset's manifest |
 | `check-gates-documented.mjs` | a gate joining this chain without a row in this table |
 | `build-report-catalog.mjs --check` | the report Worker's id/name map out of date with the catalog |
 

@@ -2,6 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { mfpPriceCheck as m, DRUGS } from '../../lib/mfp-prices-v1506.js';
+import { MFP_FILE } from '../../data/mfp-negotiated-prices/drugs.js';
 
 test('the spec example: Eliquis $231 in 2026, $237.25 from January 1, 2027', () => {
   const r = m({ drug: 'eliquis', date: '2026-06-01' });
@@ -26,8 +27,18 @@ test('past the table\'s end it asks instead of printing a stale price', () => {
   assert.equal(m({ drug: 'eliquis', date: '2028-01-01' }).valid, false);
 });
 
-test('40 drugs, a blank drug asks, a blank date uses today and says so', () => {
-  assert.equal(DRUGS.length, 40);
+test('the picker is the CMS file\'s own roster, a blank drug asks, a blank date uses today and says so', () => {
+  // The count is data, not a rule. This test asserted 40 and reddened main on November 22, 2026, when
+  // the CMS file of November 2 dropped BOTOX's four NDC rows -- the D.D.C. held the same day, in
+  // AbbVie's suit, that a plasma-derived biological product should not have been selected. A roster the
+  // weekly refresh rewrites cannot be a constant in a test; what must hold is that the picker IS the
+  // file's roster, in its order, every entry named, with the ten first-cycle drugs still offered.
+  assert.equal(DRUGS.length, MFP_FILE.drugs.length);
+  assert.deepEqual(DRUGS.map((d) => d.value), MFP_FILE.drugs.map(([id]) => id));
+  assert.ok(DRUGS.every((d) => typeof d.text === 'string' && d.text.trim() !== ''), 'every drug has a display name');
+  for (const id of ['eliquis', 'enbrel', 'entresto', 'farxiga', 'imbruvica', 'januvia', 'jardiance', 'novolog', 'stelara', 'xarelto']) {
+    assert.ok(DRUGS.some((d) => d.value === id), `${id} is one of the ten drugs priced from January 1, 2026`);
+  }
   assert.equal(m({}).valid, false);
   assert.match(m({ drug: 'eliquis' }, new Date(Date.UTC(2026, 8, 26))).notes[0], /today/);
 });
