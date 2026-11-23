@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0e800b932625232a`
-Generated: 2026-11-22T14:12:09.396Z
+Build ID: `d262efb16d9e8384`
+Generated: 2026-11-23T16:35:41.014Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -411,7 +411,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/diabetes-diagnosis-v841.js` | 12118 | `0e5332bcefca745f96e2aa54aabbdb2fcfcadd6fdccc33cd7e5fa3021e3e4c3c` |
 | `lib/diabetes-drug-egfr-check-v1632.js` | 9326 | `0343f7bcf708f9a6494d0baf8f8c12b8bb4bb211a26107cf5d3e4aa4cd3625d6` |
 | `lib/diastolic-function-ase-v664.js` | 5179 | `d1c0e03acdda55f16e805b7ebecf3a08d325f41b5ef8be6da27ac60e00f68d0d` |
-| `lib/digoxin-label-dose-v1631.js` | 11210 | `18d2c787b39bb9e438eb83ca29b3109ad60a0c019d349618498eefa22c4441c0` |
+| `lib/digoxin-label-dose-v1631.js` | 11620 | `27a0d96fbc713cd9cffcc38b51762c7fec98b9910ffa707f5d6e718553bad5ed` |
 | `lib/dilution-c1v1-v1629.js` | 8056 | `da0a754205c06b7a461975c772154eca66f560f2c202ae9ec565ad526dd8f17b` |
 | `lib/dimeglio-clubfoot-v387.js` | 4101 | `8351af759d2ea16e3c0fa77d3bf9ff1b21aa38e5ce0af9fddf8f8d70c978ac98` |
 | `lib/diphtheria-antitoxin-dose-v1560.js` | 5102 | `0b5a0a3da6c709492873780c18614ec3a312010c21d9a718d84c8ff819cddd66` |
@@ -1204,7 +1204,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pn-aluminum-load-v1630.js` | 5432 | `21a25db3ffe5fcb8b252bbe98d5a9fd499981cdedd2266eae986f45bc41b3a49` |
 | `lib/pn-amino-acid-order-v1630.js` | 10343 | `5ac869d026e2054e7add5e0191df1999f4e1385bc20c9ed95058f3c750b23629` |
 | `lib/pn-calcium-phosphate-check-v1630.js` | 8999 | `bf092ef2c8d64e6454b4898e833d7c8e9c0e96a4951be1ec11995186448b19be` |
-| `lib/pn-micronutrient-volume-v1630.js` | 11054 | `9b63d176ceeace1c8cefbf371f7eb6fa47bb2772fbbf9ba77992246f1d0a0667` |
+| `lib/pn-micronutrient-volume-v1630.js` | 11610 | `09f60ace821334c42ad760d7ed42d5e01c884d74659cdc64f234a1e30dbb25fc` |
 | `lib/pn-order-summary-v1630.js` | 8428 | `d2ebe91899458ecde52c8ae3240b023eee35cab033fd4bf66d5f1d231eaab128` |
 | `lib/pneumonia-risk-v260.js` | 7249 | `029d9c0701f969f39f61031ea2648625c6b5b43b21d5d8c3c8b19f030391add4` |
 | `lib/podoconiosis-stage-v1564.js` | 5411 | `25ff97dae3c12175d0ae216a9a16272727502e15783b5fb2b877752193766aa9` |

@@ -1,0 +1,194 @@
+#!/usr/bin/env node
+// spec-v1771: the same quantity in the other unit must get the same answer.
+//
+// A tool with a unit toggle holds the conversion itself, written by hand in the lib. Nothing has ever
+// checked that the two readings agree: enter 70 kg or 154.3 lb and the answer must not move. When it
+// does, one of three things is wrong -- the factor is truncated (2.2 for 2.2046), the conversion runs on
+// one branch and not another (a band compared in mg/dL after the value was converted to micromol/L), or
+// the toggle is read for the printed label only and never applied.
+//
+// For every enum field whose values are a unit set this file knows -- weight, length, pressure, and the
+// mg/dL <-> SI pair of a named analyte -- it converts the worked example's figures into each other unit
+// with the canonical factor, re-asks, and prints the pair when the answers differ.
+//
+// Two answers in different units are never byte-identical: each echoes the figure entered and names its
+// unit. So the comparison is deliberately deaf to that. Numbers are compared with a 2% tolerance (the
+// example's own rounding moves the last digit of a derived figure), and words with every digit and unit
+// token stripped out, which leaves a changed verdict or list visible and an echoed input silent. Only a
+// claim the first answer makes and the second does NOT counts, because entering a weight in pounds adds a
+// line converting it, and an answer that says everything it said before plus "2.646 lb = 1.2 kg" has not
+// changed its mind about anything.
+//
+// Three rows are known and benign: `otc-child-label-dose`, `epinephrine-device-weight-band` and
+// `glasgow-blatchford` each REPLACE a line of their answer with one that converts the figure entered,
+// which reads as a lost claim and is the tool doing the right thing.
+//
+// A row is a suspect, not a defect. NOFACTOR and UNPAIRED rows are toggles this file did not drive -- it
+// could not name the analyte, or the example left the governed figure blank -- and are printed because
+// "clean" is a claim about reach.
+//
+// Asserts nothing; prints a report.
+//
+//   node scripts/probe-unit-equivalent.mjs
+//   TOOLS=digoxin-label-dose node scripts/probe-unit-equivalent.mjs
+//   VERBOSE=1 node scripts/probe-unit-equivalent.mjs    # every pair driven
+
+import { META } from '../lib/meta.js';
+import { computeCalculator } from '../mcp/tools.js';
+import { allCalculators } from '../mcp/catalog.js';
+
+// Each table converts one of its units into the group's canonical unit (kg, cm, mmHg). The factors are
+// lib/unit-convert.js's own, which is this repository's statement of each conversion.
+const WEIGHT = { kg: 1, g: 0.001, mg: 0.000001, lb: 0.45359237, oz: 0.028349523125 };
+const LENGTH = { cm: 1, m: 100, mm: 0.1, in: 2.54, ft: 30.48 };
+const PRESSURE = { mmhg: 1, kpa: 1 / 0.133322, cmh2o: 1 / 1.35951 };
+
+// mg/dL -> SI multipliers, by analyte. One analyte is matched per governed figure, longest name first
+// ('phosphate' before 'urate' would be wrong, and 'cholesterol' must beat 'chol').
+const ANALYTE = {
+  creatinine: 88.4, bilirubin: 17.104, glucose: 1 / 18.0182, urea: 1 / 2.8, bun: 1 / 2.8,
+  calcium: 1 / 4.008, phosphate: 1 / 3.097, phosphorus: 1 / 3.097, cholesterol: 1 / 38.67,
+  chol: 1 / 38.67, hdl: 1 / 38.67, ldl: 1 / 38.67, triglyceride: 1 / 88.57, lactate: 1 / 9.008,
+  albumin: 10, uricacid: 59.48, urate: 59.48, magnesium: 1 / 2.431, salicylate: 1 / 13.812,
+};
+const ANALYTE_NAMES = Object.keys(ANALYTE).sort((a, b) => b.length - a.length);
+const SI_ALIASES = ['mmol', 'mmoll', 'mmol/l', 'mmol-l', 'umol', 'umol/l', 'micromol/l', 'g/l'];
+const US_ALIASES = ['mg', 'mgdl', 'mg/dl', 'mg-dl', 'g/dl', 'bun-mgdl'];
+
+const norm = (v) => String(v).trim().toLowerCase();
+// The field's OWN name first, then its label, and only then the tool's id. Reading the id first gave
+// every figure of `calcium-phosphate-product` the phosphate factor, calcium included.
+const analyteOf = (numField, tool) => {
+  for (const hay of [norm(numField.arg), norm(numField.label || ''), norm(tool.id)]) {
+    const hit = ANALYTE_NAMES.find((a) => hay.includes(a));
+    if (hit) return hit;
+  }
+  return null;
+};
+
+// A plan for one toggle: how to convert ONE governed figure from one of the toggle's units to another.
+// `scale(numField, unit)` is the multiplier into the group's canonical unit, or null when unknown.
+function planFor(field, tool) {
+  const vals = field.values.map(norm);
+  const dimension = (table, anchors) => (vals.every((v) => v in table) && anchors.some((a) => vals.includes(a))
+    ? Object.fromEntries(field.values.map((v) => [v, table[norm(v)]]))
+    : null);
+  const w = dimension(WEIGHT, ['kg', 'lb']); if (w) return { kind: 'weight', scale: (_n, u) => w[u] };
+  const l = dimension(LENGTH, ['cm', 'in']); if (l) return { kind: 'length', scale: (_n, u) => l[u] };
+  const p = dimension(PRESSURE, ['mmhg', 'kpa']); if (p) return { kind: 'pressure', scale: (_n, u) => p[u] };
+  if (vals.length === 2 && vals.some((v) => SI_ALIASES.includes(v)) && vals.some((v) => US_ALIASES.includes(v))) {
+    return {
+      kind: 'analyte',
+      analyteNeeded: true,
+      scale: (n, u) => {
+        const a = analyteOf(n, tool);
+        return a ? (SI_ALIASES.includes(norm(u)) ? 1 / ANALYTE[a] : 1) : null;
+      },
+    };
+  }
+  return null;
+}
+
+// The stem a unit field governs: 'weightUnit' -> 'weight', 'unit' -> ''.
+const stemOf = (arg) => String(arg).replace(/_?[Uu]nits?$/, '').replace(/[^a-z]/gi, '').toLowerCase();
+
+const ONLY = process.env.TOOLS ? new Set(process.env.TOOLS.split(',')) : null;
+
+// Every number a converted answer prints, in order, so two answers can be compared loosely.
+function numbersOf(x, out = []) {
+  if (typeof x === 'number') out.push(x);
+  else if (Array.isArray(x)) x.forEach((v) => numbersOf(v, out));
+  else if (x && typeof x === 'object') Object.keys(x).sort().forEach((k) => numbersOf(x[k], out));
+  return out;
+}
+function wordsOf(x, out = []) {
+  if (typeof x === 'string') out.push(x);
+  else if (Array.isArray(x)) x.forEach((v) => wordsOf(v, out));
+  else if (x && typeof x === 'object') Object.keys(x).sort().forEach((k) => wordsOf(x[k], out));
+  return out;
+}
+// Every digit group and every unit word taken out: what is left is the answer's claim, not its arithmetic.
+const UNIT_WORDS = /\b(kg|kgs|g|mg|mcg|lb|lbs|pound|pounds|oz|cm|mm|m|in|inch|inches|ft|feet|mmhg|kpa|cmh2o|mmol|micromol|umol|mol|l|dl|ml)\b/gi;
+const claim = (s) => s.replace(/[\d.,]+/g, '#').replace(UNIT_WORDS, '').replace(/[^a-z#]+/gi, ' ').trim();
+
+let rows = 0; let skipped = 0; let checked = 0;
+for (const t of allCalculators()) {
+  if (ONLY && !ONLY.has(t.id)) continue;
+  const ex = META[t.id]?.example?.fields;
+  if (!ex) continue;
+  const nums = (t.fields || []).filter((f) => f.kind === 'number' && !Array.isArray(f.values));
+  for (const f of (t.fields || [])) {
+    if (f.kind !== 'enum' || !Array.isArray(f.values) || f.values.length < 2) continue;
+    const plan = planFor(f, t);
+    if (!plan) continue;
+    // The figures this toggle governs. A named stem ('weightUnit') claims the fields carrying it; a bare
+    // 'unit' claims every figure whose own analyte this file knows, and each is converted by ITS OWN
+    // factor -- the calcium-phosphate product reads two figures through one toggle, 4.008 and 3.097.
+    const stem = stemOf(f.arg);
+    let governed = stem ? nums.filter((n) => norm(n.arg).includes(stem) || norm(n.label || '').includes(stem)) : [];
+    if (!governed.length && plan.analyteNeeded) {
+      governed = nums.filter((n) => plan.scale(n, f.values[0]) !== null);
+      if (!governed.length && nums.length === 1) governed = nums;
+    }
+    if (!governed.length || governed.some((n) => plan.scale(n, f.values[0]) === null)) {
+      skipped++;
+      const why = plan.analyteNeeded ? `no mg/dL-to-SI factor here for ${governed.map((n) => n.arg).join(',') || 'any figure'}` : 'no figure carries this toggle\'s name';
+      console.log(`NOFACTOR\t${t.id}\t${f.arg}\t${f.values.join('|')}\t(${why})`);
+      continue;
+    }
+    const from = ex[f.dom] ?? f.values.find((v) => v === f.default) ?? f.values[0];
+    if (!f.values.includes(from)) continue;
+    const base = computeCalculator({ id: t.id, inputs: { ...ex } });
+    if (base.valid === false) continue;
+    const have = governed.filter((n) => ex[n.dom] !== '' && ex[n.dom] !== undefined && Number.isFinite(Number(ex[n.dom])));
+    if (!have.length) { skipped++; console.log(`UNPAIRED\t${t.id}\t${f.arg}\t(the example leaves ${governed.map((g) => g.arg).join(',')} blank)`); continue; }
+    for (const to of f.values) {
+      if (to === from) continue;
+      const inputs = { ...ex, [f.dom]: to };
+      for (const n of have) {
+        const v = Number(ex[n.dom]) * plan.scale(n, from) / plan.scale(n, to);
+        inputs[n.dom] = String(Number(v.toPrecision(10)));
+      }
+      const other = computeCalculator({ id: t.id, inputs });
+      checked++;
+      if (process.env.VERBOSE) console.log(`DRIVEN\t${t.id}\t${f.arg}\t${from}->${to}\t${plan.kind}\t${have.map((n) => n.arg).join(',')}`);
+      if (other.valid === false) { rows++; console.log(`REFUSED\t${t.id}\t${f.arg}\t${from}->${to}\t${plan.kind}\t${String(other.message || other.error || '').slice(0, 80)}`); continue; }
+      const a = numbersOf(base.result ?? base); const b = numbersOf(other.result ?? other);
+      // A figure an answer states IN THE UNIT ENTERED must move, and move by exactly the conversion: a
+      // non-HDL cholesterol of 150 mg/dL is 3.879 mmol/L, and that is the same answer. So a changed
+      // number is accepted when its ratio is one the conversion itself explains -- one governed factor,
+      // its reciprocal, or a product of two (the calcium-phosphate product is a figure in mg2/dL2) --
+      // within 0.1%, which is tight enough to leave a truncated factor (2.2 for 2.2046) visible.
+      const factors = have.map((n) => plan.scale(n, from) / plan.scale(n, to));
+      const explained = new Set([1]);
+      for (const r of factors) for (const q of [1, ...factors]) { explained.add(r * q); explained.add(1 / (r * q)); explained.add(r / q); }
+      // The converted figure is compared at the precision it is PRINTED to: a non-HDL of 130 mg/dL shown
+      // as 3.4 mmol/L is 3.3617 rounded to one decimal, which is right, while a truncated factor is off
+      // by more than half of that last digit and stays visible.
+      const halfDigit = (y) => { const d = (String(y).split('.')[1] || '').length; return 0.5 * 10 ** -Math.min(d, 6); };
+      const moved = (x, y) => {
+        if (Math.abs(x - y) <= Math.max(0.02 * Math.abs(x), 1e-9)) return false;
+        if (x === 0) return true;
+        return ![...explained].some((r) => Math.abs(y - x * r) <= Math.max(halfDigit(y), 1e-9));
+      };
+      const numMoved = a.length !== b.length || a.some((x, i) => moved(x, b[i]));
+      const bag = new Map();
+      for (const w of wordsOf(other.result ?? other).map(claim)) bag.set(w, (bag.get(w) || 0) + 1);
+      const dropped = [];
+      for (const w of wordsOf(base.result ?? base).map(claim)) {
+        if (bag.get(w)) bag.set(w, bag.get(w) - 1); else dropped.push(w);
+      }
+      if (!numMoved && !dropped.length) continue;
+      rows++;
+      console.log(`${dropped.length ? 'WORDS' : 'NUMBER'}\t${t.id}\t${f.arg}\t${from}->${to}\t${plan.kind}\t${have.map((n) => `${n.arg}=${ex[n.dom]}->${inputs[n.dom]}`).join(' ')}`);
+      if (dropped.length) {
+        const said = wordsOf(base.result ?? base);
+        console.log(`\t\t${dropped.map((w) => said.find((s) => claim(s) === w) || w).slice(0, 2).join(' ;; ').slice(0, 300)}`);
+      } else {
+        const d = a.map((x, i) => (moved(x, b[i]) ? `${x} => ${b[i]}` : null)).filter(Boolean);
+        console.log(`\t\t${d.slice(0, 6).join(' ; ')}`);
+      }
+    }
+  }
+}
+console.error(`${checked} unit pair(s) driven, ${rows} suspect(s), ${skipped} toggle(s) not driven. VERBOSE=1 lists every pair driven.`);

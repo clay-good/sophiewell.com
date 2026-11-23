@@ -307,6 +307,7 @@ node scripts/probe-half-step.mjs          # an ordinal item or count scored at x
 node scripts/probe-dated-claims.mjs       # a date that has passed, still written as "is due by" or "proposed" (docs/spec-v1757.md)
 node scripts/probe-envelope-floor.mjs     # a value below a lib/bounds.js floor still answered (docs/spec-v1760.md)
 node scripts/probe-envelope-inside.mjs    # a survivable value just inside an envelope refused by a narrower cap (docs/spec-v1766.md)
+node scripts/probe-unit-equivalent.mjs     # the same quantity in the other unit answered differently (docs/spec-v1771.md)
 ```
 
 **If you add a phrase to `test/lib/asking-language.js`, measure it first.** That

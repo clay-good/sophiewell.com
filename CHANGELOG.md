@@ -72,6 +72,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Two tools answered differently when the same quantity was entered in another unit, both from the last bit
+  of a double: the digoxin maintenance table was read one weight column too low for a lean weight entered in
+  pounds, and the pediatric trace-element tool reported a requirement it met exactly as a shortfall of
+  0.000000000075 mcg.
 - The weekly data refresh now carries the search corpus when one of the refreshed datasets is what changed it. A
   drug leaving the CMS negotiated-price file left the search index naming it for a day.
 - The table of fetched federal datasets in the data-sources documentation is now written from the datasets

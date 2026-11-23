@@ -82,3 +82,18 @@ test('product, weight and unit are required', () => {
   assert.match(m({ product: 'multrys', weightUnit: 'kg' }, now).message, /weight/);
   assert.equal(vol('tralement', 55.1156, 'lb').volumeMl, 0.4);
 });
+
+// spec-v1771: a shortfall the tool cannot print is not a shortfall. A weight entered in grams or pounds
+// reaches kilograms with a rounding error of about 1e-16, and the gap was taken between the raw doubles,
+// so copper and selenium -- met exactly at 2.7 kg -- were reported 0.000000000075 mcg short and the band
+// read "short of the label's daily amount for zinc, copper, selenium".
+test('the same weight in grams or pounds names the same shortfall as in kilograms', () => {
+  const inKg = vol('multrys', 2.7);
+  assert.deepEqual(inKg.shortfall, { zinc: 180 });
+  for (const [weight, unit] of [[2700, 'g'], [5.952481079, 'lb']]) {
+    const r = vol('multrys', weight, unit);
+    assert.equal(r.weightKg, 2.7, `${weight} ${unit}`);
+    assert.deepEqual(r.shortfall, inKg.shortfall, `${weight} ${unit}`);
+    assert.equal(r.band, inKg.band, `${weight} ${unit}`);
+  }
+});

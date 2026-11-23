@@ -106,3 +106,18 @@ test('a tablet dose converts to IV at 0.8, naming a printed pair and saying when
   assert.match(q.notes.join(' '), /not one of the printed pairs/);
   assert.match(dg({ ...adult, tabletDose: -1 }, now).message, /tablet dose to convert/);
 });
+
+// spec-v1771: the table column is read at the weight the answer states, so the two lines of the answer
+// cannot disagree. 154.3235835 lb is 70 kg, and 69.99999998 by double arithmetic: the answer said
+// "70 kg of lean weight" and then "read at ... 60 kg", one column too low and 62.5 mcg a day short.
+test('a lean weight entered in pounds reads the same table cell as the same weight in kilograms', () => {
+  const inKg = dg({ ...adult }, now);
+  const inLb = dg({ ...adult, leanWeight: 154.3235835, weightUnit: 'lb' }, now);
+  assert.equal(inLb.leanWeightKg, 70);
+  assert.equal(inLb.tableColumn, inKg.tableColumn);
+  assert.equal(inLb.maintenanceByTableMcg, inKg.maintenanceByTableMcg);
+  assert.match(inLb.notes.join(' '), /read at 50 mL\/min and 70 kg/);
+  // A weight below the column, however close, still reads the column below: the label's rule is "at or
+  // below the values entered".
+  assert.equal(dg({ ...adult, leanWeight: 154.3, weightUnit: 'lb' }, now).tableColumn, 60);
+});
