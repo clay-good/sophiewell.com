@@ -76,8 +76,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   of a double: the digoxin maintenance table was read one weight column too low for a lean weight entered in
   pounds, and the pediatric trace-element tool reported a requirement it met exactly as a shortfall of
   0.000000000075 mcg.
-- The weekly data refresh now carries the search corpus when one of the refreshed datasets is what changed it. A
-  drug leaving the CMS negotiated-price file left the search index naming it for a day.
+- The weekly data refresh now carries the search corpus and the field index when one of the refreshed datasets
+  is what changed them. A drug leaving the CMS negotiated-price file was still offered by search, by the
+  plain-language query filler and to agents, and nothing compared either index with the catalog.
 - The table of fetched federal datasets in the data-sources documentation is now written from the datasets
   themselves, so the edition and record count it states are the ones on disk. Eleven of its sixteen rows had aged,
   one of them by a whole quarter of the physician fee schedule.

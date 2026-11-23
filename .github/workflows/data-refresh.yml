@@ -22,6 +22,7 @@ jobs:
       # spec-v1770: true in a week when a REFRESHED DATASET is what changed the search corpus, so the
       # pull request must carry it. See `Baseline search corpus` and `Package reviewed changes`.
       carryCorpus: ${{ steps.pack.outputs.carryCorpus }}
+      carryFields: ${{ steps.pack.outputs.carryFields }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
@@ -37,15 +38,21 @@ jobs:
           mkdir -p /tmp/prev-data
           if [ -d data ]; then cp -R data /tmp/prev-data/; fi
 
-      # spec-v1770: the corpus as the CURRENT CATALOG builds it, before a single dataset moves. It is
-      # the yardstick that tells catalog drift (not ours to carry) from a dataset that reached the
-      # corpus (ours, or main goes red). The committed bytes are put straight back.
-      - name: Baseline search corpus
+      # spec-v1770: the two generated artifacts as the CURRENT CATALOG builds them, before a single
+      # dataset moves. They are the yardstick that tells catalog drift (not ours to carry) from a dataset
+      # that reached them (ours, or main goes red). The committed bytes are put straight back.
+      #
+      # Both are built from mcp/catalog.js, and a picker's `values` can come from a weekly dataset, so
+      # both go stale the same way: the search corpus writes those values into a tool's `answers`, and
+      # data/fields/ hands them to query-fill and to the browser.
+      - name: Baseline the generated indexes
         run: |
           node scripts/build-search-corpus.mjs
-          mkdir -p /tmp/corpus-baseline
+          node scripts/build-field-index.mjs
+          mkdir -p /tmp/corpus-baseline /tmp/fields-baseline
           cp data/search-corpus/*.json /tmp/corpus-baseline/
-          git checkout -- data/search-corpus
+          cp data/fields/*.json /tmp/fields-baseline/
+          git checkout -- data/search-corpus data/fields
 
       - name: Build curated datasets
         run: node scripts/build-data.mjs
@@ -81,8 +88,10 @@ jobs:
       # pull request is what makes the PR go stale. #13 sat open across a day of
       # catalog work and could no longer merge: its dataset content was
       # unchanged, and its two corpus byte counts were four days old.
-      - name: Rebuild search corpus
-        run: node scripts/build-search-corpus.mjs
+      - name: Rebuild the generated indexes
+        run: |
+          node scripts/build-search-corpus.mjs
+          node scripts/build-field-index.mjs
 
       - name: Generate data change summary
         run: |
@@ -132,6 +141,13 @@ jobs:
           else
             echo "carryCorpus=true" >> "$GITHUB_OUTPUT"
             echo "::notice::A refreshed dataset changed the search corpus, so this pull request carries data/search-corpus."
+          fi
+          if diff -q -r /tmp/fields-baseline data/fields >/dev/null 2>&1; then
+            paths+=(':!data/fields')
+            echo "The refreshed datasets left the field index byte-identical; it is not carried."
+          else
+            echo "carryFields=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::A refreshed dataset changed the field index, so this pull request carries data/fields."
           fi
           git diff --binary -- "${paths[@]}" > data-refresh.patch
           echo "packaged=true" >> "$GITHUB_OUTPUT"
@@ -232,12 +248,17 @@ jobs:
         with:
           token: ${{ github.token }}
           branch: data/weekly-refresh
+          # spec-v1770: opened as a DRAFT when the gates did not pass on these bytes, which is the one
+          # state GitHub itself will not let anyone merge. The label and the banner at the top of the body
+          # said so on 2026-11-22 and #47 was merged anyway, leaving main red for a day.
+          draft: ${{ needs.refresh.outputs.suite != 'success' }}
           title: 'data: weekly refresh'
           commit-message: 'data: weekly refresh of bundled datasets'
           body-path: .data-refresh/data-refresh-summary.md
           add-paths: |
             data/**
             ${{ needs.refresh.outputs.carryCorpus == 'true' && 'data/search-corpus/**' || ':!data/search-corpus/**' }}
+            ${{ needs.refresh.outputs.carryFields == 'true' && 'data/fields/**' || ':!data/fields/**' }}
             scripts/expected-hashes.json
             scripts/data/label-editions.json
             lib/label-editions.js
@@ -265,6 +286,9 @@ jobs:
           # run. The suite no longer does that, so the merge decision has to read its result itself.
           if [ "${{ needs.refresh.outputs.suite }}" != "success" ]; then decision=review; fi
           if [ "$decision" = "merge" ]; then
+            # An earlier week may have opened this same branch's pull request as a draft (above). The
+            # gates pass on these bytes, so take it out of draft before merging it.
+            gh pr ready "$PR" --repo "$GITHUB_REPOSITORY" 2>/dev/null || true
             gh pr merge "$PR" --squash --delete-branch --repo "$GITHUB_REPOSITORY"
           else
             gh label create data-review --color D93F0B --description "Weekly data refresh needs a person" --repo "$GITHUB_REPOSITORY" 2>/dev/null || true

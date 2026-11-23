@@ -146,6 +146,7 @@ When one fails it names itself; this is where to look it up.
 | `check-design-system.mjs` | a view that styles itself inline, a file input off the shared dropzone card, or a status chip built without its word |
 | `check-doc-internal-links.mjs` | a markdown link pointing at a file, heading or npm script that is not there |
 | `build-data-sources-doc.mjs --check` | an edition or record count in `docs/data-sources.md` that no longer matches the dataset's manifest |
+| `build-field-index.mjs --check` | a committed `data/fields/` bucket that no longer matches the adapters (only `npm run build` rewrites them) |
 | `check-gates-documented.mjs` | a gate joining this chain without a row in this table |
 | `build-report-catalog.mjs --check` | the report Worker's id/name map out of date with the catalog |
 

@@ -29,8 +29,14 @@
 // files, until a bucket outgrew the budget below.)
 //
 // Output: `data/fields/<bucket>.json`, each `{ "<tileId>": [ ...fields ] }`.
+//
+// spec-v1770: `--check` compares the committed buckets with what the adapters say now, and fails without
+// writing. A picker's `values` can come FROM a weekly dataset, so this index goes stale the same way the
+// search corpus does, and it did: the CMS negotiated-price file dropped BOTOX on 2026-11-02 and the two
+// MFP tools still offered it to an agent and to query-fill, because only `npm run build` rewrites these
+// files and nothing compared them.
 
-import { writeFile, mkdir, rm } from 'node:fs/promises';
+import { writeFile, mkdir, rm, readFile, readdir } from 'node:fs/promises';
 import { gzipSync } from 'node:zlib';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
@@ -85,6 +91,7 @@ export function buildIndex(calculators) {
 }
 
 async function main() {
+  const check = process.argv.includes('--check');
   const { index, fieldCount } = buildIndex(allCalculators());
   const ids = Object.keys(index).sort();
   if (ids.length === 0) throw new Error('build-field-index: zero tiles indexed; adapter registry stale?');
@@ -96,9 +103,12 @@ async function main() {
     buckets.get(b)[id] = index[id];
   }
 
-  await rm(OUT_DIR, { recursive: true, force: true });
-  await mkdir(OUT_DIR, { recursive: true });
+  if (!check) {
+    await rm(OUT_DIR, { recursive: true, force: true });
+    await mkdir(OUT_DIR, { recursive: true });
+  }
 
+  const stale = [];
   let biggestGzip = 0;
   let biggestBucket = '';
   let totalGzip = 0;
@@ -113,7 +123,26 @@ async function main() {
     }
     if (gzip > biggestGzip) { biggestGzip = gzip; biggestBucket = b; }
     totalGzip += gzip;
-    await writeFile(join(OUT_DIR, `${b}.json`), json, 'utf8');
+    if (!check) { await writeFile(join(OUT_DIR, `${b}.json`), json, 'utf8'); continue; }
+    const have = await readFile(join(OUT_DIR, `${b}.json`), 'utf8').catch(() => null);
+    if (have === null) stale.push(`${b}.json is missing`);
+    else if (have !== json) {
+      const now = JSON.parse(have);
+      const ids2 = [...new Set([...Object.keys(now), ...Object.keys(rows)])].sort();
+      const which = ids2.filter((id) => JSON.stringify(now[id]) !== JSON.stringify(rows[id]));
+      stale.push(`${b}.json differs (${which.length} tile(s): ${which.slice(0, 4).join(', ')})`);
+    }
+  }
+  if (check) {
+    const extra = (await readdir(OUT_DIR).catch(() => [])).filter((f) => f.endsWith('.json') && !buckets.has(f.replace(/\.json$/, '')));
+    for (const f of extra) stale.push(`${f} is no longer a bucket`);
+    if (stale.length) {
+      console.error(`check-field-index: ${stale.length} bucket(s) of data/fields/ do not match the adapters. Rebuild with \`node scripts/build-field-index.mjs\`.`);
+      for (const line of stale) console.error(`  ${line}`);
+      process.exit(1);
+    }
+    console.log(`check-field-index: clean (${buckets.size} buckets / ${ids.length} tiles / ${fieldCount} fields match the adapters).`);
+    return;
   }
 
   console.log(
