@@ -45,8 +45,18 @@ and `test/unit/finder-ledgers.test.js` fails on either side of it:
 
 Both directions were negative-tested by removing a ledger row and by adding a bogus one.
 
-The unit-equivalence finder got the same ledger and the same test in the same change: its five rows are tools
-that rewrite a line of their answer to convert the figure entered, each with the reason.
+Three more finders got the same ledger and the same test in the same change, so every finder this project
+runs by hand is now silent until something new appears:
+
+| Finder | Judged rows | What they are |
+|---|---|---|
+| `probe-half-step.mjs` | 44 | fractional by definition (rating lines, measurements, CPIC half steps) |
+| `probe-unit-equivalent.mjs` | 5 | tools that rewrite a line of their answer to convert the figure entered |
+| `probe-negative-as-zero.mjs` | 5 | signed by definition (a POP-Q point, a Z score), an owner decision, and two false positives of the method -- a field where 0 is refused too answers a negative with the same range message |
+| `probe-sign-flipped.mjs` | 2 | the same owner decision of 2026-11-17 |
+
+`test/unit/finder-ledgers.test.js` drives all four from one table, with a single `--all` run each, and fails
+on an unjudged row, a stale judgement, or a reason too short to be worth reading.
 
 Tests: the three guards in each tool's own test file, including every value each scale does print; the ledger
 test above.

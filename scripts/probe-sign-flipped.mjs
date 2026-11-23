@@ -91,8 +91,29 @@ for (const [id, e] of REGISTRY) {
 }
 
 const by = (p, q) => (p.id < q.id ? -1 : p.id > q.id ? 1 : 0);
+// spec-v1775: rows already judged, with the reason, so the report prints only what is not. A report that
+// prints the same two rows every run is a report people learn to skip.
+const JUDGED = {
+  'o2-cylinder-duration:o2-flow': 'owner decision of 2026-11-17: this tool keeps reading a negative optional flow as absent (docs/spec-v1759.md)',
+  'o2-cylinder-duration:o2-target': 'owner decision of 2026-11-17: this tool keeps reading a negative optional target as absent (docs/spec-v1759.md)',
+};
+const ALL = process.argv.includes('--all');
+const judgedSeen = new Set();
+const unjudged = (list) => list.filter((r) => {
+  const key = `${r.id}:${r.dom}`;
+  if (!JUDGED[key]) return true;
+  judgedSeen.add(key);
+  if (ALL) console.log(`JUDGED\t${r.id}\t${r.dom}\t${-r.x}\t${JUDGED[key]}`);
+  return false;
+});
+
+const blankRows = unjudged(asBlank);
+const absRows = unjudged(asAbs);
 console.log(`Reach: ${fields} number fields with a positive worked-example value.\n`);
-console.log(`READ AS BLANK: ${asBlank.length} optional field(s) where -x answers exactly like the field left blank.`);
-for (const r of asBlank.sort(by)) console.log(`  ${r.id}  ${r.dom} = ${-r.x}  (${r.label})`);
-console.log(`\nREAD AS ITS ABSOLUTE VALUE: ${asAbs.length} field(s) where -x answers exactly like x.`);
-for (const r of asAbs.sort(by)) console.log(`  ${r.id}  ${r.dom} = ${-r.x}  (${r.label})`);
+console.log(`READ AS BLANK: ${blankRows.length} optional field(s) where -x answers exactly like the field left blank.`);
+for (const r of blankRows.sort(by)) console.log(`  ${r.id}  ${r.dom} = ${-r.x}  (${r.label})`);
+console.log(`\nREAD AS ITS ABSOLUTE VALUE: ${absRows.length} field(s) where -x answers exactly like x.`);
+for (const r of absRows.sort(by)) console.log(`  ${r.id}  ${r.dom} = ${-r.x}  (${r.label})`);
+const staleLedger = Object.keys(JUDGED).filter((k) => !judgedSeen.has(k));
+for (const k of staleLedger) console.log(`STALE-LEDGER\t${k}\t(judged here, but the finder no longer reaches it)`);
+console.log(`\n${judgedSeen.size} row(s) judged${staleLedger.length ? `, ${staleLedger.length} ledger row(s) STALE` : ''}. --all lists them and why.`);

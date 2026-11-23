@@ -301,7 +301,7 @@ diastolic, total and HDL cholesterol, two dates) and lists tools that still answ
 `docs/spec-v1738.md`); most date swaps are honest different situations, so read each row.
 
 ```bash
-node scripts/probe-negative-as-zero.mjs
+node scripts/probe-negative-as-zero.mjs    # judged ledger: it prints nothing until a NEW row appears (docs/spec-v1775.md)
 node scripts/probe-order-swapped.mjs
 node scripts/probe-impossible-dates.mjs   # 30 February, month 13, 1850, 25:00 (docs/spec-v1750.md)
 node scripts/probe-half-step.mjs          # an ordinal item or count scored at x + 0.5, judged ledger and all (docs/spec-v1755.md, docs/spec-v1775.md)
