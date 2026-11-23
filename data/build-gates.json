@@ -54,7 +54,7 @@
       "url": "https://doi.org/10.1093/clinchem/27.3.493",
       "kind": "publisher-paywall",
       "lastStatus": 403,
-      "note": "The classic two-level rules shipped in spec-v1691 from the first author's own published account; the three-level alternatives were gated on the paper specifically and stay unevaluated."
+      "note": "The classic two-level rules shipped in spec-v1691 from the first author's own published account; the three-level alternatives were gated on the paper specifically and stay unevaluated. Searched again on November 23, 2026 through Europe PMC for two open sources DEFINING the set, which is what unblocked spec-v1772: the closest is PMC11654237, which defines 3-1s exactly (\"three consecutive control results are greater than the +/- 1SD and are on the same side of the mean\") but calls 2of3-2s only \"a variant of the 2-2s rule\" and never mentions 6-x or 9-x. One partial source is not two full ones, so the gate holds."
     },
     {
       "tool": "warfarin-maintenance-adjust",

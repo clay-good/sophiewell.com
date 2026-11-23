@@ -17,6 +17,15 @@ Two rows are now dated with a second route tried, so the next session does not s
 | `aminoglycoside-initial-dose` | **Europe PMC**, an index independent of PubMed Central. Still one open restatement of Hull and Sarubbi's elimination constant (PMC7915939) and none of the volume of distribution, so the two-source rule that unblocked [spec-v1772](spec-v1772.md) is still unmet. The one open paper that evaluates the "Hull-Sarubbi table" (PMC4140707) evaluates the DOSING TABLE, not the equations. |
 | `ed-throughput-measures` | **The Federal Register's API**, which is open and scriptable. The CY2024 OPPS final rule names both measures in full -- "Median Time from ED Arrival to ED Departure for Discharged ED Patients (OP-18)" and "Left Without Being Seen (OP-22)" -- while declining to add them to the Rural Emergency Hospital program, and no rule since mentions either. A rule that NAMES a measure does not SPECIFY it: the numerator, denominator and exclusions are in the OQR manual. |
 
+A third row was chased the same way and also holds. `westgard-multirule-three-level` wanted two open sources
+**defining** 2of3-2s, 3-1s, 6-x and 9-x; the closest, PMC11654237, defines 3-1s exactly ("three consecutive
+control results are greater than the +/- 1SD and are on the same side of the mean"), calls 2of3-2s only "a
+variant of the 2-2s rule", and never mentions 6-x or 9-x. One partial source is not two full ones.
+
+Every index and route available here was used: PubMed Central, Europe PMC (an independent index of the same
+open corpus), the Federal Register's API, and direct fetches of the publishing hosts. The eight are not
+waiting on another search.
+
 `probedOn` in `data/build-gates.json` now reads 2026-11-23, and `test/unit/build-gates.test.js` still holds
 the rows against the unbuilt index, so a row cannot outlive the tool it gates.
 
