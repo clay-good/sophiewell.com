@@ -43,3 +43,16 @@ The other gate: `test/unit/time-zone-independent.test.js` drives all 2,346 worke
 fails on any answer that moves. A tool that reads the real clock could straddle midnight between two reads,
 so a difference counts only when a second UTC read reproduces the first exactly. Negative-tested by putting
 one of the ten back.
+
+## The rest of the family, swept and clean
+
+Time zone was the one that moved. The other ways an answer could depend on something other than its inputs
+were swept the same day, and are recorded here so the next session does not sweep them again:
+
+| Swept | Result |
+|---|---|
+| Locale: a `toLocaleString` or `toLocaleDateString` with no locale argument | none in `lib/`, `views/`, `mcp/` or `app.js`; every call names `en-US` |
+| Environment: a `process.env` read inside `lib/` | one, `SOPHIEWELL_NOW` in `lib/pa/date.js`, which exists to pin the date |
+| Input order: every example driven again with its keys reversed | 0 of 2,004 answers moved |
+| Repetition: every example computed three times in one process | 0 of 2,346 answers moved |
+| Mutation: the inputs object after the call | 0 of 2,346 were touched |
