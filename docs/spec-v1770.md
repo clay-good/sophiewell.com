@@ -35,9 +35,11 @@ and compares after the refresh. A difference is the refresh's own, and the pull 
 **And the same thing had happened to `data/fields/`, where nothing was looking at all.** That index is the
 same catalog, short-keyed for the browser and for `query-fill`: `data/fields/mf.json` and `pa.json` still
 offered BOTOX to an agent and to a plain-language query. Only `npm run build` rewrites those buckets, the
-refresh job never ran it, and no gate compared them with the adapters. `build-field-index.mjs --check` now
-does, in the `lint` chain, and the refresh job baselines, rebuilds and carries the index by the same rule as
-the corpus.
+refresh job never ran it, and the only thing that compared them was the "The build must be idempotent" step
+of `ci.yml` -- which runs AFTER lint, the unit tests and the accessibility check, so on the day main went red
+it never ran at all, and which reports a path rather than a tile. `build-field-index.mjs --check` now
+compares them in the `lint` chain, locally and first, naming the tiles that differ, and the refresh job
+baselines, rebuilds and carries the index by the same rule as the corpus.
 
 The pull request is also opened as a **draft** when the gates did not pass on its bytes, which is the one
 state GitHub itself will not let anyone merge. The `data-review` label and the banner at the top of the body
