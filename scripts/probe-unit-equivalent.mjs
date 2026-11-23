@@ -21,11 +21,9 @@
 // line converting it, and an answer that says everything it said before plus "2.646 lb = 1.2 kg" has not
 // changed its mind about anything.
 //
-// Five rows are known and benign. `otc-child-label-dose`, `epinephrine-device-weight-band`,
-// `glasgow-blatchford` and `salicylate-toxicity` each REWRITE a line of their answer to convert the figure
-// entered ("44.09 lb is 20 kg", "7.96 mmol/L entered"), which reads as a lost claim and is the tool doing
-// the right thing. `storage-excursion-summary` prints the storage range the publisher states in the unit
-// chosen -- 2 to 8 degrees Celsius, 36 to 46 Fahrenheit, which is CDC's own pair and not 35.6 to 46.4.
+// Five rows are known and benign, and each is in the JUDGED ledger below with its reason rather than in
+// this paragraph: a report that prints the same five rows every run is a report people learn to skip
+// (spec-v1775 did the same for the half-step finder). What prints is what is NOT judged.
 //
 // A row is a suspect, not a defect. NOFACTOR and UNPAIRED rows are toggles this file did not drive -- it
 // could not name the analyte, or the example left the governed figure blank -- and are printed because
@@ -117,6 +115,19 @@ const convertLines = (text, f) => String(text).split('\n').map((line) => {
   const v = Number(Number(f(Number(m[0])).toPrecision(10)));
   return line.slice(0, m.index) + String(v) + line.slice(m.index + m[0].length);
 }).join('\n');
+
+// Rows whose difference is the tool doing the right thing, keyed by tool and unit field. Four of these
+// REWRITE a line of their answer to convert the figure entered, which reads to the comparison below as a
+// claim the first answer made and the second did not.
+const JUDGED = {
+  'otc-child-label-dose:weightUnit': 'replaces its first line with one converting the weight ("18.14 kg is 40 lb; the chart is in pounds")',
+  'epinephrine-device-weight-band:weightUnit': 'replaces its weight line with one converting it, and says which labels give pounds',
+  'glasgow-blatchford:ureaUnit': 'names the BUN in mg/dL beside the urea in mmol/L when the reader enters mg/dL',
+  'salicylate-toxicity:unit': 'appends the figure entered ("7.96 mmol/L entered") to its recommendation line',
+  'storage-excursion-summary:unit': 'prints the storage range its publisher states in the unit chosen: 2 to 8 degrees Celsius, 36 to 46 Fahrenheit, which is CDC\'s own pair and not the arithmetic 35.6 to 46.4',
+};
+const ALL = process.argv.includes('--all');
+const judgedSeen = new Set();
 
 // A plausible figure per dimension, for a governed field the worked example leaves blank.
 const FILL = { weight: 70, length: 170, pressure: 100, analyte: 100 };
@@ -213,7 +224,11 @@ for (const t of allCalculators()) {
       const other = computeCalculator({ id: t.id, inputs });
       checked++;
       if (process.env.VERBOSE) console.log(`DRIVEN\t${t.id}\t${f.arg}\t${from}->${to}\t${plan.kind}\t${have.map((n) => n.arg).join(',')}`);
-      if (other.valid === false) { rows++; console.log(`REFUSED\t${t.id}\t${f.arg}\t${from}->${to}\t${plan.kind}\t${String(other.message || other.error || '').slice(0, 80)}`); continue; }
+      if (other.valid === false) {
+        const key = `${t.id}:${f.arg}`;
+        if (JUDGED[key]) { judgedSeen.add(key); if (ALL) console.log(`JUDGED\t${t.id}\t${f.arg}\t${from}->${to}\t${JUDGED[key]}`); continue; }
+        rows++; console.log(`REFUSED\t${t.id}\t${f.arg}\t${from}->${to}\t${plan.kind}\t${String(other.message || other.error || '').slice(0, 80)}`); continue;
+      }
       const a = numbersOf(base.result ?? base); const b = numbersOf(other.result ?? other);
       // A figure an answer states IN THE UNIT ENTERED must move, and move by exactly the conversion: a
       // non-HDL cholesterol of 150 mg/dL is 3.879 mmol/L, and that is the same answer. So a changed
@@ -246,6 +261,12 @@ for (const t of allCalculators()) {
         if (bag.get(w)) bag.set(w, bag.get(w) - 1); else dropped.push(w);
       }
       if (!numMoved && !dropped.length) continue;
+      const key = `${t.id}:${f.arg}`;
+      if (JUDGED[key]) {
+        judgedSeen.add(key);
+        if (ALL) console.log(`JUDGED\t${t.id}\t${f.arg}\t${from}->${to}\t${JUDGED[key]}`);
+        continue;
+      }
       rows++;
       console.log(`${dropped.length ? 'WORDS' : 'NUMBER'}\t${t.id}\t${f.arg}\t${from}->${to}\t${plan.kind}\t${have.map((n) => `${n.arg}=${String(ex[n.dom]).replace(/\n/g, ';').slice(0, 30)}->${String(inputs[n.dom]).replace(/\n/g, ';').slice(0, 30)}`).join(' ')}`);
       if (dropped.length) {
@@ -258,4 +279,9 @@ for (const t of allCalculators()) {
     }
   }
 }
-console.error(`${checked} unit pair(s) driven, ${rows} suspect(s), ${skipped} toggle(s) not driven. VERBOSE=1 lists every pair driven.`);
+// A judged row that no longer differs: the ledger has to be corrected, or the tool has.
+const staleLedger = Object.keys(JUDGED).filter((k) => !judgedSeen.has(k));
+for (const k of staleLedger) console.log(`STALE-LEDGER\t${k}\t(judged benign here, but its answers no longer differ)`);
+console.error(`${checked} unit pair(s) driven, ${rows} suspect(s) not in the ledger, ${judgedSeen.size} judged`
+  + `${staleLedger.length ? `, ${staleLedger.length} ledger row(s) STALE` : ''}, ${skipped} toggle(s) not driven.`
+  + ' --all lists the judged rows and why; VERBOSE=1 lists every pair driven.');

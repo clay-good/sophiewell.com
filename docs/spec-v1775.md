@@ -38,12 +38,15 @@ center's own antral follicle count cutoff, a tablet count where half a tablet is
 authorization's units, and the coded Revised Trauma Score.
 
 The report now prints **only what is not in the ledger** (`--all` lists the judged rows and their reasons),
-and `test/unit/half-step-ledger.test.js` fails on either side of it:
+and `test/unit/finder-ledgers.test.js` fails on either side of it:
 
 - a half-step row that is **not** judged -- so a new one is a decision someone takes, not a line in a report;
 - a judged row the finder **no longer reaches** -- so a reason cannot outlive the field it describes.
 
 Both directions were negative-tested by removing a ledger row and by adding a bogus one.
+
+The unit-equivalence finder got the same ledger and the same test in the same change: its five rows are tools
+that rewrite a line of their answer to convert the figure entered, each with the reason.
 
 Tests: the three guards in each tool's own test file, including every value each scale does print; the ledger
 test above.

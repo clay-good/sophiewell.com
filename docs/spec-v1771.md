@@ -28,12 +28,9 @@ the last bit of a double.
 | `digoxin-label-dose` | 154.3235835 lb is 70 kg, and 69.99999998 by double arithmetic, so the answer said "70 kg of lean weight" and then "read at 50 mL/min and **60 kg**" — one column too low, 187.5 mcg a day where the label's table gives 250 | the column is read at the weight the answer states. A weight genuinely below a column still reads the column below |
 | `pn-micronutrient-volume` | a weight entered in grams or pounds reached kilograms 1e-16 off, and the gap to the label's daily requirement was taken between raw doubles, so copper and selenium — met exactly at 2.7 kg — came back 0.000000000075 mcg short and the band read "short of the label's daily amount for zinc, **copper, selenium**" | the gap is between the two figures as the tool prints them. A shortfall it cannot print is not a shortfall |
 
-Five rows of the report are benign and named in the probe's own header. `otc-child-label-dose`,
-`epinephrine-device-weight-band`, `glasgow-blatchford` and `salicylate-toxicity` each rewrite a line of
-their answer to convert the figure entered ("44.09 lb is 20 kg", "7.96 mmol/L entered"), which reads as a
-lost claim and is the tool doing the right thing. `storage-excursion-summary` prints the storage range its
-publisher states in the unit chosen: 2 to 8 degrees Celsius, 36 to 46 Fahrenheit, which is CDC's own pair
-and not the arithmetic 35.6 to 46.4.
+Five rows of the report are benign, and spec-v1775 moved them into the finder's own JUDGED ledger with a
+reason each, so the report prints only what is not judged and `test/unit/finder-ledgers.test.js` fails on a
+new row or a stale judgement.
 
 What the probe also settles: the analyte conversions of `calcium-phosphate-product` (two figures through
 one toggle, 4.008 and 3.097), `non-hdl-remnant`, `homa-ir`, `gmi`, `salicylate-toxicity`, `kings-college`,
