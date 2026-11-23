@@ -92,6 +92,9 @@ function planFor(field, tool) {
 // The stem a unit field governs: 'weightUnit' -> 'weight', 'unit' -> ''.
 const stemOf = (arg) => String(arg).replace(/_?[Uu]nits?$/, '').replace(/[^a-z]/gi, '').toLowerCase();
 
+// A plausible figure per dimension, for a governed field the worked example leaves blank.
+const FILL = { weight: 70, length: 170, pressure: 100, analyte: 100 };
+
 const ONLY = process.env.TOOLS ? new Set(process.env.TOOLS.split(',')) : null;
 
 // Every number a converted answer prints, in order, so two answers can be compared loosely.
@@ -114,8 +117,10 @@ const claim = (s) => s.replace(/[\d.,]+/g, '#').replace(UNIT_WORDS, '').replace(
 let rows = 0; let skipped = 0; let checked = 0;
 for (const t of allCalculators()) {
   if (ONLY && !ONLY.has(t.id)) continue;
-  const ex = META[t.id]?.example?.fields;
-  if (!ex) continue;
+  // A COPY: the fill below writes into it, and META's example is shared with every other reader.
+  const example = META[t.id]?.example?.fields;
+  if (!example) continue;
+  const ex = { ...example };
   const nums = (t.fields || []).filter((f) => f.kind === 'number' && !Array.isArray(f.values));
   for (const f of (t.fields || [])) {
     if (f.kind !== 'enum' || !Array.isArray(f.values) || f.values.length < 2) continue;
@@ -138,10 +143,27 @@ for (const t of allCalculators()) {
     }
     const from = ex[f.dom] ?? f.values.find((v) => v === f.default) ?? f.values[0];
     if (!f.values.includes(from)) continue;
+    let have = governed.filter((n) => ex[n.dom] !== '' && ex[n.dom] !== undefined && Number.isFinite(Number(ex[n.dom])));
+    // spec-v1759's lesson: a figure the worked example leaves blank was never driven. Fill it with a value
+    // in the toggle's current unit that the tool answers from, so an optional weight behind a unit toggle
+    // is asked the same question as a required one.
+    if (!have.length) {
+      const filled = [];
+      for (const n of governed) {
+        const mid = Number.isFinite(n.min) && Number.isFinite(n.max) ? (n.min + n.max) / 2 : null;
+        const v = [mid, FILL[plan.kind], 10, 1].find((x) => x !== null && x > 0
+          && computeCalculator({ id: t.id, inputs: { ...ex, [f.dom]: from, [n.dom]: String(x) } }).valid !== false);
+        if (v !== undefined) { ex[n.dom] = String(v); filled.push(n); }
+      }
+      have = filled;
+      if (!have.length) { skipped++; console.log(`UNPAIRED\t${t.id}\t${f.arg}\t(the example leaves ${governed.map((g) => g.arg).join(',')} blank, and no value this file tried was answered)`); continue; }
+      console.log(`FILLED\t${t.id}\t${f.arg}\t${have.map((n) => `${n.arg}=${ex[n.dom]} ${from}`).join(' ')}`);
+    }
+    // The unit is written in explicitly: an example that leaves the toggle to its default is still asking
+    // its question in `from`, and a filled figure without its unit is refused.
+    ex[f.dom] = from;
     const base = computeCalculator({ id: t.id, inputs: { ...ex } });
     if (base.valid === false) continue;
-    const have = governed.filter((n) => ex[n.dom] !== '' && ex[n.dom] !== undefined && Number.isFinite(Number(ex[n.dom])));
-    if (!have.length) { skipped++; console.log(`UNPAIRED\t${t.id}\t${f.arg}\t(the example leaves ${governed.map((g) => g.arg).join(',')} blank)`); continue; }
     for (const to of f.values) {
       if (to === from) continue;
       const inputs = { ...ex, [f.dom]: to };
