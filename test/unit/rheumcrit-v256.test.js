@@ -73,3 +73,16 @@ test('MMT-8: a grade off the 0-10 scale is refused, not read as the weakest', ()
   // A real 0 is a real grade and still scores.
   assert.equal(mmt8({ ...full, neck: 0 }).score, 70);
 });
+
+// spec-v1775: the Cormack-Lehane grade is one of four, and the library rounded a 2.5 into a grade 3
+// without saying so. The three count items beside it were already refused (spec-v1755).
+test('ids: a fractional Cormack-Lehane grade is refused, not rounded', () => {
+  const base = { extraAttempts: 0, extraOperators: 0, altTechniques: 0, cormack: 2 };
+  assert.equal(intubationDifficultyScale(base).score, 1);
+  for (const bad of [2.5, 1.5, 3.5]) {
+    const r = intubationDifficultyScale({ ...base, cormack: bad });
+    assert.equal(r.valid, false, String(bad));
+    assert.match(r.message, /whole number/);
+  }
+  for (const g of [1, 2, 3, 4]) assert.equal(intubationDifficultyScale({ ...base, cormack: g }).valid, true, String(g));
+});

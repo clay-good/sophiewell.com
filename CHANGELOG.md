@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Three scored tools accepted a point value their scale has no row for when called directly: the
+  Burch-Wartofsky thyroid-storm scale took 7 points where it prints 0, 5, 10, 15, 20, 25 and 30, and the
+  Helsinki CT score read a mass lesion type it does not have as "none". Each scale now lives in one place and
+  is refused by name.
 - Ten deadline clocks gave a different answer on a machine in a different time zone, because each worked out
   "today" from the local calendar date and called it UTC. The controlled-substance theft clock said a form was
   due today on one machine and a day late on another, from the same inputs. They all count from the same date

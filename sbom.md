@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f91ab40981164aa5`
-Generated: 2026-11-23T19:13:58.451Z
+Build ID: `35bb6cec43c20358`
+Generated: 2026-11-23T20:13:17.876Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1032,7 +1032,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nsofa-v526.js` | 11758 | `35f75433e2290fe9f2b93a6f79962c5d5fad98e5df6699650703da2efbc1d644` |
 | `lib/ntm-pulmonary-v827.js` | 8077 | `51b554704f575d5ffce2a350e5d8013ee70f0b42f5b85b86d7415d4479de1696` |
 | `lib/nuc-med-breastfeeding-interruption-v1635.js` | 8015 | `7bed890c2ebf1edb3e129993c1d879af43e364a115d08b3969d45a8d7ddbc792` |
-| `lib/num.js` | 21669 | `f6d9c171383446189c5f6f0c1281523678bf304fd7cb8b0a3e9cff7e3f2ee360` |
+| `lib/num.js` | 23040 | `72f07e398f41eabae75378171230c01d67e877786810212125abfd4be7a9914e` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nurse-license-training-requirements-v1397.js` | 12627 | `76373d6aa53f8e9b30a28e775b39f85a6e738ed4c6c2a2e65b006122c99cd98b` |
 | `lib/nurse-staffing-ratio-check-v1396.js` | 9223 | `f4fc16e9f231cc085c5009e6a6638637836c3c1883d24fcf4e17f2a2b1dadca1` |
@@ -1273,7 +1273,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/radioactive-decay-v1635.js` | 11811 | `4f6374ad16b460a196093c99bc747de32d7ed33aa90b7ec7e793a76fc8730ded` |
 | `lib/radiology-v165.js` | 16307 | `2e597e7d4b52cf6df2453a0a1cab54911f51e2e82d0bacdee206e4af82b27c18` |
 | `lib/radiopharm-dispense-volume-v1635.js` | 6825 | `8e315565a6fa80facce800d40601e244ddbb7d8a4ba4fe653b58732bf9951780` |
-| `lib/radmeasure-v253.js` | 8014 | `fc2a9dbadd239b9b43ea80b28dcd4d708ecd06a69a3690d9805dd424fa74ebbf` |
+| `lib/radmeasure-v253.js` | 8656 | `95976c7f0cb399ca682617a749c62601a970f320d3d05d9e5822def8fa8f6fbc` |
 | `lib/ramsay-sedation-v358.js` | 3651 | `d7ee3190c3179b4290c1b77a3bf187cd447b9632442f0005478e3b627bcea8bf` |
 | `lib/ranawat-myelopathy-v495.js` | 2972 | `d59f866e53d94e91c1f344de59f31431f17b5511a10a356c0e26cee40aefee3c` |
 | `lib/rasburicase-dose-v1635.js` | 5158 | `624fb96a707c52ab3fb9bd4989e9c705f7ee679e2c94f61b475116666c3deed0` |
@@ -1326,7 +1326,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheum-v147.js` | 28920 | `317a33b600d784565e58f322e70c382a5d9bc7ccbfde11764004ee85ef70f596` |
 | `lib/rheum-v148.js` | 32277 | `cd3f2f4cd892eed2e173c7e78db1fc9907c405d89d307b15385ecd2358825305` |
 | `lib/rheum-v160.js` | 14014 | `86a778ab3cbfa2d29df874c7ffb364e503bed31513eba42064b30be40d5bc9ae` |
-| `lib/rheumcrit-v256.js` | 11173 | `b694d5936b7ee7f2fe213bf8fd6d479186a964ca8740f16c40b2fb4d5febfc97` |
+| `lib/rheumcrit-v256.js` | 11434 | `f568ec24df2447631b94fc5570b5a900d963ef7ac6eebccb9b956599333bbf84` |
 | `lib/ridley-jopling-v534.js` | 13454 | `fb4f0363664d9c1bd23f3d5c8ef32b627ed0c4741342457fb3fdbe253a02c3a2` |
 | `lib/riosord-v1634.js` | 8372 | `4f3d49a701175423895b0cb30f35686642e49e8b699fa2fdbf421f3067459311` |
 | `lib/risk-scores-v215.js` | 17985 | `9712e411cb74a14f7ea5ead69546ed6bde29bd7b79f02552f3aa25941b530b50` |
@@ -1381,7 +1381,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
 | `lib/scoring-v4.js` | 349041 | `bdb8430d080a318c50f614a13e9b2e563c633e59bf159168c31fbbafdf8e17be` |
 | `lib/scoring-v5.js` | 15672 | `df55fc673b49339df3409eb8ebfe8c67fbd38dedf144c9e8aae02abb8318ee61` |
-| `lib/scoring-v6.js` | 33586 | `d4d7d9432472d14e1fefa40d84d2a5c24a46eb4ee2b8446a70a2bc75dc02f4c6` |
+| `lib/scoring-v6.js` | 34734 | `d92c1187e267ebb2dd1fc4b823f02c2a924e25e1addf2c9fd7b4e1f1582edef0` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
 | `lib/screener.js` | 7165 | `57d6e8732933cab53c5a10e4cf2c9ea282c186c4e6562827e1b5e97dd8194007` |
@@ -2754,7 +2754,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/radioactive-decay-v1635.js` | 1878 | `9716a28b39339ec16b296a2feb0d9eded0f80355efaf1e96188e22a43c2c4f41` |
 | `mcp/adapters/radiology-v165.js` | 3257 | `48412e18fc76b91419160c11c3470dc5a77b950c9a940e936512bad64b0b6bf4` |
 | `mcp/adapters/radiopharm-dispense-volume-v1635.js` | 2649 | `8def7b3750c1c5ac10698fe8370be36d7f2d195a2bd373787e6b4a037e580497` |
-| `mcp/adapters/radmeasure-v253.js` | 2466 | `912fcbb45b9cb56fcebce1c95616eb73813a3b272794031b4b6dfe6dd4a02558` |
+| `mcp/adapters/radmeasure-v253.js` | 2493 | `c1004a0642358abaab63fc565a0444d9e8714e6d1250702e2381494f5c2c77d5` |
 | `mcp/adapters/ramsay-sedation-v358.js` | 1252 | `1ab224fc37910c7658d443e861e0b5878861bfe4f83816c6376cdf2b5ce071c9` |
 | `mcp/adapters/ranawat-myelopathy-v495.js` | 1353 | `d0e138d96a2fccba9c2a1a7e70921d4a3e98d74a556fee34219b937d1fcfd093` |
 | `mcp/adapters/rasburicase-dose-v1635.js` | 1064 | `2bf5e2940af8e49be15055c84d284b19e39d6db152983a9f48b84d7c788d3d21` |
@@ -2845,7 +2845,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
 | `mcp/adapters/scoring-v4.js` | 167252 | `de250acae5a56c3d102994d2cd060c8576d829d03fb56617c238049935b2b31c` |
 | `mcp/adapters/scoring-v5.js` | 12701 | `08ff9b46c34f0bc7d4c5bb14d58fb0be3217c0c87bf956826dc953327d1e21a0` |
-| `mcp/adapters/scoring-v6.js` | 20337 | `eb9fe6963f4241cd19d6ab333931ee511002075de8f24879118ec67716974093` |
+| `mcp/adapters/scoring-v6.js` | 20350 | `9c15b79696de78f64bc5b15e7d634104f3648ebe12c971fbed406a505b55a10c` |
 | `mcp/adapters/scorpion-grade-india-v1556.js` | 1284 | `3cd3d399c2af7f57769e85a6ad4edeb3e77354249b3a6db361b0981e71233aed` |
 | `mcp/adapters/scp-pushing-v562.js` | 5791 | `79ec7c5fbd7258c6647f6679be5fd535867c03246e6fd071d291393ab8705fed` |
 | `mcp/adapters/scrub-typhus-icmr-v1560.js` | 1807 | `ba4ba2a4538b9f580aec47168f12387ec29fc9a5254ccda8485599e02b5c6d1d` |
