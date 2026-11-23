@@ -7,9 +7,11 @@
 // one branch and not another (a band compared in mg/dL after the value was converted to micromol/L), or
 // the toggle is read for the printed label only and never applied.
 //
-// For every enum field whose values are a unit set this file knows -- weight, length, pressure, and the
-// mg/dL <-> SI pair of a named analyte -- it converts the worked example's figures into each other unit
-// with the canonical factor, re-asks, and prints the pair when the answers differ.
+// For every enum field whose values are a unit set this file knows -- weight, length, pressure, temperature,
+// and the mg/dL <-> SI pair of a named analyte -- it converts the worked example's figures into each other
+// unit with the canonical factor, re-asks, and prints the pair when the answers differ. Temperature is the
+// one that is not a factor at all: Celsius to Fahrenheit is (v x 9/5) + 32, and a tool that scales it
+// instead is the classic way to get this wrong.
 //
 // Two answers in different units are never byte-identical: each echoes the figure entered and names its
 // unit. So the comparison is deliberately deaf to that. Numbers are compared with a 2% tolerance (the
@@ -19,9 +21,11 @@
 // line converting it, and an answer that says everything it said before plus "2.646 lb = 1.2 kg" has not
 // changed its mind about anything.
 //
-// Three rows are known and benign: `otc-child-label-dose`, `epinephrine-device-weight-band` and
-// `glasgow-blatchford` each REPLACE a line of their answer with one that converts the figure entered,
-// which reads as a lost claim and is the tool doing the right thing.
+// Five rows are known and benign. `otc-child-label-dose`, `epinephrine-device-weight-band`,
+// `glasgow-blatchford` and `salicylate-toxicity` each REWRITE a line of their answer to convert the figure
+// entered ("44.09 lb is 20 kg", "7.96 mmol/L entered"), which reads as a lost claim and is the tool doing
+// the right thing. `storage-excursion-summary` prints the storage range the publisher states in the unit
+// chosen -- 2 to 8 degrees Celsius, 36 to 46 Fahrenheit, which is CDC's own pair and not 35.6 to 46.4.
 //
 // A row is a suspect, not a defect. NOFACTOR and UNPAIRED rows are toggles this file did not drive -- it
 // could not name the analyte, or the example left the governed figure blank -- and are printed because
@@ -42,6 +46,13 @@ import { allCalculators } from '../mcp/catalog.js';
 const WEIGHT = { kg: 1, g: 0.001, mg: 0.000001, lb: 0.45359237, oz: 0.028349523125 };
 const LENGTH = { cm: 1, m: 100, mm: 0.1, in: 2.54, ft: 30.48 };
 const PRESSURE = { mmhg: 1, kpa: 1 / 0.133322, cmh2o: 1 / 1.35951 };
+// Celsius is canonical; the pair is affine, not a scale (lib/unit-convert.js: fToC, cToF).
+const TEMPERATURE = {
+  c: { to: (v) => v, from: (v) => v },
+  celsius: { to: (v) => v, from: (v) => v },
+  f: { to: (v) => (v - 32) * 5 / 9, from: (v) => v * 9 / 5 + 32 },
+  fahrenheit: { to: (v) => (v - 32) * 5 / 9, from: (v) => v * 9 / 5 + 32 },
+};
 
 // mg/dL -> SI multipliers, by analyte. One analyte is matched per governed figure, longest name first
 // ('phosphate' before 'urate' would be wrong, and 'cholesterol' must beat 'chol').
@@ -76,6 +87,10 @@ function planFor(field, tool) {
   const w = dimension(WEIGHT, ['kg', 'lb']); if (w) return { kind: 'weight', scale: (_n, u) => w[u] };
   const l = dimension(LENGTH, ['cm', 'in']); if (l) return { kind: 'length', scale: (_n, u) => l[u] };
   const p = dimension(PRESSURE, ['mmhg', 'kpa']); if (p) return { kind: 'pressure', scale: (_n, u) => p[u] };
+  if (vals.length === 2 && vals.every((v) => v in TEMPERATURE) && vals.some((v) => v.startsWith('f'))) {
+    const by = Object.fromEntries(field.values.map((v) => [v, TEMPERATURE[norm(v)]]));
+    return { kind: 'temperature', affine: true, scale: () => 1, convert: (_n, v, from, to) => by[to].from(by[from].to(v)) };
+  }
   if (vals.length === 2 && vals.some((v) => SI_ALIASES.includes(v)) && vals.some((v) => US_ALIASES.includes(v))) {
     return {
       kind: 'analyte',
@@ -91,6 +106,17 @@ function planFor(field, tool) {
 
 // The stem a unit field governs: 'weightUnit' -> 'weight', 'unit' -> ''.
 const stemOf = (arg) => String(arg).replace(/_?[Uu]nits?$/, '').replace(/[^a-z]/gi, '').toLowerCase();
+
+// With no stem ('unit'), the figures a DIMENSION toggle governs are the ones whose own name says so.
+const DIMENSION_WORDS = { weight: /weight|mass/i, length: /height|length/i, pressure: /pressure/i, temperature: /temp/i };
+// A line of readings carries its value last: "20" is the value, and so is the 5 in
+// "2026-10-01 08:00, 5". Converting the last number on each line leaves dates and times alone.
+const convertLines = (text, f) => String(text).split('\n').map((line) => {
+  const m = [...line.matchAll(/-?\d+(?:\.\d+)?/g)].pop();
+  if (!m) return line;
+  const v = Number(Number(f(Number(m[0])).toPrecision(10)));
+  return line.slice(0, m.index) + String(v) + line.slice(m.index + m[0].length);
+}).join('\n');
 
 // A plausible figure per dimension, for a governed field the worked example leaves blank.
 const FILL = { weight: 70, length: 170, pressure: 100, analyte: 100 };
@@ -112,7 +138,7 @@ function wordsOf(x, out = []) {
 }
 // Every digit group and every unit word taken out: what is left is the answer's claim, not its arithmetic.
 const UNIT_WORDS = /\b(kg|kgs|g|mg|mcg|lb|lbs|pound|pounds|oz|cm|mm|m|in|inch|inches|ft|feet|mmhg|kpa|cmh2o|mmol|micromol|umol|mol|l|dl|ml)\b/gi;
-const claim = (s) => s.replace(/[\d.,]+/g, '#').replace(UNIT_WORDS, '').replace(/[^a-z#]+/gi, ' ').trim();
+const claim = (s) => s.replace(/\u00b0\s*[CF]/g, '').replace(/[\d.,]+/g, '#').replace(UNIT_WORDS, '').replace(/[^a-z#]+/gi, ' ').trim();
 
 let rows = 0; let skipped = 0; let checked = 0;
 for (const t of allCalculators()) {
@@ -131,6 +157,16 @@ for (const t of allCalculators()) {
     // factor -- the calcium-phosphate product reads two figures through one toggle, 4.008 and 3.097.
     const stem = stemOf(f.arg);
     let governed = stem ? nums.filter((n) => norm(n.arg).includes(stem) || norm(n.label || '').includes(stem)) : [];
+    // A bare 'unit' on a dimension toggle: the figures whose own name says what they measure, plus a
+    // readings box, which is where a temperature tool keeps its series.
+    if (!governed.length && DIMENSION_WORDS[plan.kind]) {
+      const word = DIMENSION_WORDS[plan.kind];
+      governed = nums.filter((n) => word.test(`${n.arg} ${n.label || ''}`));
+      if (plan.kind === 'temperature') {
+        const series = (t.fields || []).filter((n) => n.kind === 'string' && /reading/i.test(`${n.arg} ${n.label || ''}`));
+        governed = [...governed, ...series];
+      }
+    }
     if (!governed.length && plan.analyteNeeded) {
       governed = nums.filter((n) => plan.scale(n, f.values[0]) !== null);
       if (!governed.length && nums.length === 1) governed = nums;
@@ -143,7 +179,8 @@ for (const t of allCalculators()) {
     }
     const from = ex[f.dom] ?? f.values.find((v) => v === f.default) ?? f.values[0];
     if (!f.values.includes(from)) continue;
-    let have = governed.filter((n) => ex[n.dom] !== '' && ex[n.dom] !== undefined && Number.isFinite(Number(ex[n.dom])));
+    let have = governed.filter((n) => ex[n.dom] !== '' && ex[n.dom] !== undefined
+      && (n.kind === 'string' ? /\d/.test(String(ex[n.dom])) : Number.isFinite(Number(ex[n.dom]))));
     // spec-v1759's lesson: a figure the worked example leaves blank was never driven. Fill it with a value
     // in the toggle's current unit that the tool answers from, so an optional weight behind a unit toggle
     // is asked the same question as a required one.
@@ -168,8 +205,10 @@ for (const t of allCalculators()) {
       if (to === from) continue;
       const inputs = { ...ex, [f.dom]: to };
       for (const n of have) {
-        const v = Number(ex[n.dom]) * plan.scale(n, from) / plan.scale(n, to);
-        inputs[n.dom] = String(Number(v.toPrecision(10)));
+        const one = (x) => (plan.convert ? plan.convert(n, x, from, to) : x * plan.scale(n, from) / plan.scale(n, to));
+        inputs[n.dom] = n.kind === 'string'
+          ? convertLines(ex[n.dom], one)
+          : String(Number(one(Number(ex[n.dom])).toPrecision(10)));
       }
       const other = computeCalculator({ id: t.id, inputs });
       checked++;
@@ -181,7 +220,7 @@ for (const t of allCalculators()) {
       // number is accepted when its ratio is one the conversion itself explains -- one governed factor,
       // its reciprocal, or a product of two (the calcium-phosphate product is a figure in mg2/dL2) --
       // within 0.1%, which is tight enough to leave a truncated factor (2.2 for 2.2046) visible.
-      const factors = have.map((n) => plan.scale(n, from) / plan.scale(n, to));
+      const factors = plan.affine ? [] : have.map((n) => plan.scale(n, from) / plan.scale(n, to));
       const explained = new Set([1]);
       for (const r of factors) for (const q of [1, ...factors]) { explained.add(r * q); explained.add(1 / (r * q)); explained.add(r / q); }
       // The converted figure is compared at the precision it is PRINTED to: a non-HDL of 130 mg/dL shown
@@ -190,6 +229,12 @@ for (const t of allCalculators()) {
       const halfDigit = (y) => { const d = (String(y).split('.')[1] || '').length; return 0.5 * 10 ** -Math.min(d, 6); };
       const moved = (x, y) => {
         if (Math.abs(x - y) <= Math.max(0.02 * Math.abs(x), 1e-9)) return false;
+        // A temperature an answer restates in the unit entered moves by the affine conversion, and a
+        // DIFFERENCE between two temperatures moves by the scale alone (9/5), which is why both are here.
+        if (plan.affine) {
+          return ![plan.convert(have[0], x, from, to), x * 9 / 5, x * 5 / 9]
+            .some((want) => Math.abs(y - want) <= Math.max(halfDigit(y), 1e-9));
+        }
         if (x === 0) return true;
         return ![...explained].some((r) => Math.abs(y - x * r) <= Math.max(halfDigit(y), 1e-9));
       };
@@ -202,7 +247,7 @@ for (const t of allCalculators()) {
       }
       if (!numMoved && !dropped.length) continue;
       rows++;
-      console.log(`${dropped.length ? 'WORDS' : 'NUMBER'}\t${t.id}\t${f.arg}\t${from}->${to}\t${plan.kind}\t${have.map((n) => `${n.arg}=${ex[n.dom]}->${inputs[n.dom]}`).join(' ')}`);
+      console.log(`${dropped.length ? 'WORDS' : 'NUMBER'}\t${t.id}\t${f.arg}\t${from}->${to}\t${plan.kind}\t${have.map((n) => `${n.arg}=${String(ex[n.dom]).replace(/\n/g, ';').slice(0, 30)}->${String(inputs[n.dom]).replace(/\n/g, ';').slice(0, 30)}`).join(' ')}`);
       if (dropped.length) {
         const said = wordsOf(base.result ?? base);
         console.log(`\t\t${dropped.map((w) => said.find((s) => claim(s) === w) || w).slice(0, 2).join(' ;; ').slice(0, 300)}`);
