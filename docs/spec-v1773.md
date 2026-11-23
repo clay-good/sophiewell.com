@@ -26,13 +26,17 @@ already built. The measurement beside each one stays fractional and is tested th
 the months of exposure in the Pearl index, the coded RTS in TRISS, anesthesia time in minutes, and the two
 VAS lines in RAPID3.
 
-Three more rows of the finder are left where they are, on the rule of [spec-v1744](spec-v1744.md): the
-Burch-Wartofsky point fields, the Helsinki mass-lesion type and the Cormack-Lehane grade are selects on the
-page and declare their value list to an agent, which `mcp/fields.js` already enforces -- a direct library
-call is the only way to reach them. `auth-runout`'s approved and used units are left too: nothing there is
-rounded or banded, and a payer's "units" are not an ordinal scale.
+Three more rows were left here on the rule of [spec-v1744](spec-v1744.md) -- the Burch-Wartofsky point
+fields, the Helsinki mass-lesion type and the Cormack-Lehane grade are selects on the page and declare their
+value list to an agent, which `mcp/fields.js` already enforces, so a direct library call was the only way to
+reach them. [spec-v1775](spec-v1775.md) closed that the same day: the library refuses them too now, and for
+two of the three a whole-number check was not enough, because their scales have gaps.
 
-The finder is down from 61 rows to 51.
+`auth-runout`'s approved and used units stay accepted, and the reason is now written in the finder's own
+ledger rather than here: nothing there is rounded or banded, and a payer's "units" are not an ordinal scale.
+
+The finder went from 61 rows to 51 here, and spec-v1775 took the remaining 44 into a judged ledger, so it
+prints nothing until something new appears.
 
 Tests: one case in each tool's own unit test file, each asserting the refusal and the fractional
 measurement beside it.
