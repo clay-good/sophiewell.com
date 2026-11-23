@@ -185,3 +185,11 @@ test('spec-v1746: phoenix-sepsis names the range of an impossible age and still 
   assert.match(r.message, /age in months must be between 0 and 300/);
   assert.match(phoenixSepsis({ ...ex, ageMonths: '' }).message, /^Enter the patient age \(in months\)/);
 });
+
+// spec-v1773: the vasoactive medication count is whole. A count of 1.5 fell in the band for one and
+// scored it.
+test('a half-step vasoactive count is refused', () => {
+  const r = phoenixSepsis({ ageMonths: 60, vasoactives: 1.5, lactate: 2, platelets: 150, inr: 1.1, dDimer: 1, fibrinogen: 200, gcs: 15, pupils: 'reactive', ratio: 300, respSupport: 'none' });
+  assert.equal(r.valid, false);
+  assert.match(String(r.message || r.band), /whole number/);
+});

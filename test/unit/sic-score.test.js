@@ -56,3 +56,12 @@ test('a real SOFA still scores', () => {
   assert.equal(sicScore({ platelet: 90, inr: 1.5, sofa: 1 }).sofaPts, 1);
   assert.equal(sicScore({ platelet: 90, inr: 1.5, sofa: 24 }).sofaPts, 2);
 });
+
+// spec-v1773: the SOFA total is six integer sub-scores summed, so it has no half step. A SOFA of 0.5 used
+// to score half a point and make a SIC total of 4.5 out of 6.
+test('a half-step SOFA total is refused, not scored', () => {
+  const r = sicScore({ platelet: 80, inr: 1.6, sofa: 0.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /whole number/);
+  assert.equal(sicScore({ platelet: 80, inr: 1.6, sofa: 1 }).total, 5);
+});

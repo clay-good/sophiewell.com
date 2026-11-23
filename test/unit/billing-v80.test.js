@@ -234,3 +234,11 @@ test('split-shared: a blank time is not a time of zero on the time basis', () =>
   // The MDM basis never reads the times and is unchanged.
   assert.equal(splitShared({ basis: 'mdm', mdmBy: 'physician' }).billingProvider, 'physician');
 });
+
+// spec-v1773, by the rule of spec-v1726: base and modifying units are whole units in the ASA guide, and a
+// half unit went straight into the total and the payment. Time units are not: they are minutes / 15.
+test('anesthesia base and modifying units are whole; time stays in minutes', () => {
+  assert.throws(() => anesthesiaUnits({ baseUnits: 5.5, timeMinutes: 60, conversionFactor: 22, medicalDirection: 'aa' }), /whole number/);
+  assert.throws(() => anesthesiaUnits({ baseUnits: 5, timeMinutes: 60, modifyingUnits: 1.5, conversionFactor: 22, medicalDirection: 'aa' }), /whole number/);
+  assert.equal(anesthesiaUnits({ baseUnits: 5, timeMinutes: 67, conversionFactor: 22, medicalDirection: 'aa' }).totalUnits, 9.5);
+});

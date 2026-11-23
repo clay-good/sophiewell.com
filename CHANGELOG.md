@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Ten tools accepted a half step in a score or a count that has none: a SOFA total of 0.5, an Injury Severity
+  Score of 25.5, an NIHSS of 22.5, half a pregnancy, half a vasoactive medication, half an anesthesia base unit,
+  a Beighton score of 6.5, half a tooth lost, a fractional MDHAQ function sum, and a laboratory minimum of 10.5
+  results. Each now says so instead of scoring it; the measurements beside them stay fractional.
 - Two tools answered differently when the same quantity was entered in another unit, both from the last bit
   of a double: the digoxin maintenance table was read one weight column too low for a lean weight entered in
   pounds, and the pediatric trace-element tool reported a requirement it met exactly as a shortfall of

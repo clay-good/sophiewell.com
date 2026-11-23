@@ -35,3 +35,12 @@ test('blanks / out-of-range fall back', () => {
   assert.equal(rapid3({ fnRaw: 18, pain: 4 }).valid, false); // no global
   assert.equal(rapid3({}).valid, false);
 });
+
+// spec-v1773: the MDHAQ function sum is ten items scored 0 to 3, so the sum is whole. 18.5 divided into a
+// RAPID3 of its own and was banded; the two VAS lines beside it stay fractional on purpose.
+test('a half-step MDHAQ function sum is refused; the VAS lines are not', () => {
+  const r = rapid3({ fnRaw: 18.5, pain: 4, global: 5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(rapid3({ fnRaw: 18, pain: 4.5, global: 5.5 }).valid, true);
+});

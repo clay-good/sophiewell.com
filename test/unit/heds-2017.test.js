@@ -110,3 +110,11 @@ test('heds: invalid and out-of-range input', () => {
   assert.equal(h({ ageGroup: 'middle-aged' }).valid, false);
   assert.doesNotMatch(JSON.stringify(h(met)), /NaN|Infinity/);
 });
+
+// spec-v1773: the Beighton score is nine yes-or-no manoeuvres. A 6.5 was read against the cutoff and
+// decided criterion 1 for the reader.
+test('a half-step Beighton score is refused', () => {
+  const r = h({ beightonScore: 6.5, ageGroup: 'pubertal-to-50' });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+});

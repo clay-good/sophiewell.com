@@ -85,3 +85,11 @@ test('turnaround: median, nearest-rank 90th, share meeting target', () => {
   assert.equal(tat({ minutes: '' }).valid, false);
   assert.equal(tat({ minutes: '10', percentile: '100' }).valid, false);
 });
+
+// spec-v1773: a laboratory's minimum count of results for setting limits is a count, so it is whole.
+test('a half-step minimum count is refused', () => {
+  const r = lj({ results: '10\n10.2\n9.8\n10.1\n9.9\n10.3', minimumCount: 10.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(lj({ results: '10\n10.2\n9.8\n10.1\n9.9\n10.3', minimumCount: 10 }).valid, true);
+});

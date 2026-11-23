@@ -61,3 +61,10 @@ test('the stage, the tooth count and the grade evidence are asked for, never ass
     assert.match(r.message, ASKING);
   }
 });
+
+// spec-v1773: teeth are counted whole. Half a tooth lost raised the stage exactly as one did.
+test('a half-step tooth count is refused', () => {
+  const r = pd({ cal: 5, toothLoss: 0.5, maxPd: 6, boneLossPct: 40, age: 50, rbl: 'middle-third' });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+});

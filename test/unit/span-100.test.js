@@ -35,3 +35,12 @@ test('incomplete inputs -> complete-the-fields', () => {
   const r = span({ age: 80 });
   assert.equal(r.valid, false);
 });
+
+// spec-v1773: the NIHSS is a whole number. An NIHSS of 22.5 made a SPAN-100 index of 102.5 against a
+// cutoff of 100; the age beside it is a measurement and stays fractional.
+test('a half-step NIHSS is refused; a fractional age is not', () => {
+  const r = span({ age: 80, nihss: 22.5 });
+  assert.equal(r.valid, false);
+  assert.match(r.message || r.band, /whole number/);
+  assert.equal(span({ age: 80.5, nihss: 22 }).valid, true);
+});

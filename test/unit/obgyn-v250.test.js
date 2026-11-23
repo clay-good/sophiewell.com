@@ -38,3 +38,12 @@ test('malinas-score: < 6 transportable', () => {
   assert.equal(r.score, 2);
   assert.equal(r.abnormal, false);
 });
+
+// spec-v1773: pregnancies are counted, so a half one is refused rather than turned into a rate. The
+// months of exposure beside it are a total and stay fractional.
+test('a half-step pregnancy count is refused; fractional months are not', () => {
+  const r = pearlIndex({ pregnancies: 2.5, months: 1200 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /whole number/);
+  assert.equal(pearlIndex({ pregnancies: 2, months: 1200.5 }).valid, true);
+});

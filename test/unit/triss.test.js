@@ -66,3 +66,12 @@ test('spec-v1746: an out-of-range RTS, ISS or age is told its range, a blank is 
   assert.match(triss({ ...EX, iss: null }).band, /^Enter the Injury Severity Score/);
   assert.equal(triss(EX).valid, true);
 });
+
+// spec-v1773: the ISS is the sum of the squares of three AIS grades, so 25.5 is not a score anyone has.
+// The coded RTS beside it is a weighted sum and stays fractional.
+test('a half-step ISS is refused; the coded RTS stays fractional', () => {
+  const r = triss({ rts: 7.8408, iss: 25.5, age: 40, mechanism: 'blunt' });
+  assert.equal(r.valid, false);
+  assert.match(r.message || r.band, /whole number/);
+  assert.equal(triss({ rts: 6.9041, iss: 25, age: 40, mechanism: 'blunt' }).valid, true);
+});
