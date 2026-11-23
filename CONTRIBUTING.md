@@ -142,7 +142,7 @@ When one fails it names itself; this is where to look it up.
 | `check-pa-staleness.mjs` | a prior-auth source unverified past its window |
 | `check-pa-rule-citations.mjs` | a rule citing a URL the staleness ledger does not carry |
 | `audit-pa.mjs` | a change to prior-auth output that the golden reports did not expect |
-| `check-helper-drift.mjs` | two copies of one view helper that no longer behave the same |
+| `check-helper-drift.mjs` | two copies of one view helper that no longer behave the same, or a library re-declaring a helper that belongs to one module (`todayUtc`) |
 | `check-design-system.mjs` | a view that styles itself inline, a file input off the shared dropzone card, or a status chip built without its word |
 | `check-doc-internal-links.mjs` | a markdown link pointing at a file, heading or npm script that is not there |
 | `build-data-sources-doc.mjs --check` | an edition or record count in `docs/data-sources.md` that no longer matches the dataset's manifest |

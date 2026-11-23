@@ -27,6 +27,14 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = join(ROOT, 'views');
+const LIB = join(ROOT, 'lib');
+
+// spec-v1774: names that belong to ONE module, in `lib/`, and must not be re-declared. `todayUtc` is the
+// case: `lib/pa/date.js` exports it as the UTC calendar date of `now`, and ten clock libraries had written
+// their own as the LOCAL calendar date called UTC, so their day counts moved with the machine's time zone.
+// Unlike the view helpers below, where a copy per module is the convention, here a second declaration is
+// the defect however it behaves.
+const OWNED = [{ name: 'todayUtc', owner: 'lib/pa/date.js' }];
 
 // The readers whose disagreement is a correctness question, not a style one.
 const WATCHED = ['optNum', 'nvOrNull', 'numOrNull', 'unitNumOpt', 'needValues', 'needItems'];
@@ -67,6 +75,31 @@ for (const entry of readdirSync(DIR)) {
   }
 }
 
+// The owned names first: one declaration, in its own module.
+const reDeclared = [];
+for (const dir of [LIB, DIR]) {
+  const walk = (d) => {
+    for (const entry of readdirSync(d, { withFileTypes: true })) {
+      const full = join(d, entry.name);
+      if (entry.isDirectory()) { walk(full); continue; }
+      if (!entry.name.endsWith('.js')) continue;
+      const rel = relative(ROOT, full);
+      const src = readFileSync(full, 'utf8');
+      for (const { name, owner } of OWNED) {
+        if (rel === owner) continue;
+        const re = new RegExp(`^\\s*(?:export\\s+)?(?:function\\s+${name}\\b|(?:const|let)\\s+${name}\\s*=)`, 'm');
+        if (re.test(src)) reDeclared.push({ name, owner, rel });
+      }
+    }
+  };
+  walk(dir);
+}
+if (reDeclared.length) {
+  console.error(`check-helper-drift: ${reDeclared.length} re-declaration(s) of a helper that belongs to one module.`);
+  for (const r of reDeclared) console.error(`  ${r.rel} declares its own \`${r.name}\`; import it from ${r.owner}, or \`clockToday\` from lib/deadline.js for the "no clock, no day count" contract (docs/spec-v1774.md).`);
+  process.exit(1);
+}
+
 const drifted = [];
 let copies = 0;
 for (const [name, variants] of byName) {
@@ -91,4 +124,4 @@ if (drifted.length) {
   console.error('them. Make the bodies identical (docs/spec-v1057.md).');
   process.exit(1);
 }
-console.log(`check-helper-drift: clean (${copies} copies of ${byName.size} watched helpers, one behaviour each).`);
+console.log(`check-helper-drift: clean (${copies} copies of ${byName.size} watched helpers, one behaviour each; ${OWNED.length} owned name(s) declared once).`);

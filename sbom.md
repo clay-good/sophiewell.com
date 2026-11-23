@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `cddccbc1d852386f`
-Generated: 2026-11-23T18:10:00.054Z
+Build ID: `f91ab40981164aa5`
+Generated: 2026-11-23T19:13:58.451Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -348,13 +348,13 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
 | `lib/crrt-drug-clearance-v1631.js` | 6401 | `41116ffb472cd43980f00a9ff7cb25c4f82e58e597ce522fc78a02b4ed1a72bf` |
 | `lib/crs-v305.js` | 5412 | `ef4acb9a6090b2dee839747bc0cc8b5b7adecc9c3d96e89fdc601b72fa835c71` |
-| `lib/cs-biennial-inventory-v1637.js` | 7610 | `b944340e4d4e77874ee4fcecc67ba999c4d567d5efa9f8334cdec777453986f1` |
+| `lib/cs-biennial-inventory-v1637.js` | 7475 | `4b9ddbb5942b6f3c09e0ad7804b65f5d6ffa88a67e4e6effdfe7e7cfca7917be` |
 | `lib/cs-dispensing-v1511.js` | 11545 | `eb996ab6f5fc148ac6a28a4a487995fd50cc8386beac204c565d1027beea253e` |
-| `lib/cs-disposal-clock-v1637.js` | 5603 | `0b2a144b4f1a10ad96c8fc64353b2753817f87c17064517278c181b2c7b076f9` |
+| `lib/cs-disposal-clock-v1637.js` | 5610 | `09efca1ec0eb27d9770f40a43c3cd8c839480193b991bf5c7fb5a5053664fa25` |
 | `lib/cs-five-percent-rule-v1637.js` | 5894 | `b8615ee7732f6a75da356666a6cd3dfcb54e8ea2a88e863db9f01434a2be611a` |
 | `lib/cs-record-retention-v1637.js` | 7059 | `9c14934e4cccace4f1203347d964d8759c7f20df5013b3ccd9316169679b5540` |
 | `lib/cs-rx-transfer-check-v1637.js` | 10296 | `ade915b6fa1c689b63b4859f40af3cd6cefe7136f5df29f432662416bc392742` |
-| `lib/cs-theft-loss-clock-v1637.js` | 6395 | `f31874be56b42ecdf037322cab51d7d9705051c20567488bfeb2522ad9e58298` |
+| `lib/cs-theft-loss-clock-v1637.js` | 6260 | `4b53f939818462641202645c1e0e4a84a9b3fcf90dca1380f75b85ef07b1b58e` |
 | `lib/csendes-mirizzi-v1240.js` | 6926 | `a1725f3613e479c96d32f940cc281b60fb120d1e9b5ab4c8d435e7bd2c2ad9ac` |
 | `lib/csv-out.js` | 795 | `8c00c2b11b5db58bae5ec38ff065c67cb73920bc3668aef01bb04322dd5d6447` |
 | `lib/csv-rows.js` | 861 | `b699e28b0fc719d09535666919b22d778d6e820b2af7a439794e6ab25cb06d49` |
@@ -381,10 +381,10 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ddi-static-aucr-v1700.js` | 10655 | `044958297d75c0a76b967fc604accd35de9add74132f2ad96778049238872427` |
 | `lib/ddi-strength-classify-v1699.js` | 5563 | `68b58f474a6f3b316c34f4d4c9df0ab37ac6f96e0051718a2e1d23353e2f2ec7` |
 | `lib/de-winter-pattern-v1443.js` | 3588 | `55058d3040772d5dbe9cd92f4f1485cc502781c96c1bf756c27eb4f4e78a11b1` |
-| `lib/dea-222-validity-v1637.js` | 6414 | `214814d39c0301ba6139d6f7e9ab7155c2240d1287f151cd335e12eda268be1b` |
+| `lib/dea-222-validity-v1637.js` | 6279 | `f08cf5467a2da490d3b4131ac2300641b86420394ecfae21465b3978bad9517d` |
 | `lib/dea-number-check-v1637.js` | 3997 | `bacf7d99faff4c508d7fcad73df2ed33d34ba27ff3d96156a2ce981b099e2b99` |
-| `lib/dea-registration-renewal-v1637.js` | 11784 | `ba2b4b70a04f3b89211afdf25d13ed899ff2d033b19d25915dd9ff3d137354b3` |
-| `lib/deadline.js` | 9429 | `beb8669b48940e72cbe75e8210b82fc3acce0bd8c2c74906bcc1f7796d07a63b` |
+| `lib/dea-registration-renewal-v1637.js` | 11649 | `bca26ee78f25491807fc2e10ca5df95de77ec9417f6876a7c8f7e5b72a748ab3` |
+| `lib/deadline.js` | 10174 | `42be78ebaa183486dee246c7ad470814cb79298c4f5fcd5fe93da9baa3692f92` |
 | `lib/dean-fluorosis-cfi-v1484.js` | 3666 | `6f2b2dc31e0dbbfe227805df0e65db9001698fbc80d59238fef29278f2f7c378` |
 | `lib/deauville-v314.js` | 3653 | `06e9bfdbf337b56c341a3ac22ee5452152e62e19faca722bd33f7ae609c78119` |
 | `lib/debakey-v461.js` | 3357 | `2f7d5d94592ed414b8b181de35309d2804f5c9fa9638074f38c2d6ef52ea03a2` |
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/fabq-v782.js` | 5927 | `9d8ea59172578b6c0a9122a4e819919d4c3a2ac793980fa9e3f7d98496975bf4` |
 | `lib/fast-dementia-v294.js` | 5928 | `ca241cbeef3ca9c9ba2a8d46c024d617b2691c1519265d5454caa2d5887af661` |
 | `lib/fazekas-v349.js` | 3945 | `21bb6a7dee337f80109349b3a983b97ffff33057f2a96cda79cef09cd91ddfed` |
-| `lib/fda-adverse-event-report-clock-v1634.js` | 11069 | `245caca83a0afa2cd5006cab29a93111d5ecb160f0523c9db729264afddcf030` |
+| `lib/fda-adverse-event-report-clock-v1634.js` | 11060 | `b98ef563ccbd12cc9feb4450ea4fca649da988ea1a4b10e674ac17bab7a5cbdf` |
 | `lib/fda-books-load.js` | 2335 | `8c2821c90dbc5944f1bf0aac18f5c6c3fe64f3166a104a5ceb9e1c8c4f72df97` |
 | `lib/fda-ddi-load.js` | 909 | `34bad8b3369e25109e788bb24d0b1cbb8995d59546cbdba7586c465b66443f78` |
 | `lib/fda-pgx-associations-2026.js` | 33300 | `09fa93225b0cefc61ad4c937cc9ac54c6b990b1ca713af0bac28d7dc14d3a04f` |
@@ -709,8 +709,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/in-use-discard-time-v1630.js` | 7471 | `58f9bd23f6d91dad105648457222c387251ac48b9c9ad83a7c475199d69f09ca` |
 | `lib/incidence-prevalence-v1659.js` | 3403 | `d0ad14adfaec87f34f2570d159f9104caeb09c736f8b45754d2691c8030e620a` |
 | `lib/income-screens-v1506.js` | 9258 | `a59497359b693b7f0ff091e7f44c22c97b6a5c2f6dd568797a101d0023bcc7b5` |
-| `lib/ind-annual-report-due-v1635.js` | 5289 | `01c7afd7309babc60e7d328a9996dc4a74cd4cbbbc0a4ff0ba94d4fba267de10` |
-| `lib/ind-safety-report-clock-v1635.js` | 7760 | `839fef5cab9aa5139dca3365de1b0e91fd3904d7ac4d50991a638121885de892` |
+| `lib/ind-annual-report-due-v1635.js` | 5241 | `fecf8ed13ca1740bbe4e2275f5ff918d1796ae43acfc4fc259ec377d519e596b` |
+| `lib/ind-safety-report-clock-v1635.js` | 7707 | `389487fc8d10ac949208db15c5e5eda0d6244d1ba2c142cc224c35f20a511584` |
 | `lib/indomethacin-headache-ichd3-v819.js` | 10773 | `b731d0f0e7cde7786b4a7f81bd494701fd3da67fa3bf570b797725eca9e9e2a2` |
 | `lib/infant-arv-prophylaxis-v1554.js` | 6658 | `a5b29cd5b28d236cbcee98c9275ffe502aae4ecbd34f9d3052a982768d3bbe4d` |
 | `lib/infant-hiv-test-schedule-v1554.js` | 6262 | `b1b6fe7eadac20962a4deded4dadd003e4ab14b1b21f6ff5fde4d50ae3290794` |
@@ -877,7 +877,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/masld-criteria-v837.js` | 15684 | `d469fd2a688e1c027542d76a65efe5b3b035675878a7a25afa7cab10ce7cbf83` |
 | `lib/mason-radial-head-v341.js` | 4841 | `5f3e5f6a2c2324d646a167f847a587dc1068e54cfb876bc4723212ea057cd4e2` |
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
-| `lib/mat-injection-admin-deadline-v1637.js` | 3750 | `5e4cadf31c6da537b7b271d5a3ae75ed677a852db8fe61fda0b22264c29ffd60` |
+| `lib/mat-injection-admin-deadline-v1637.js` | 3757 | `c063d3a6259273504f0dcba9c55886e286c731e93bd5f7e71edb58cf43779f86` |
 | `lib/max-credible-allele-frequency-v1697.js` | 9092 | `7288235558545bf70ce852b070708f292cbdd4b090f11d3d9ea641800c9390cd` |
 | `lib/max-ich-v1453.js` | 6302 | `f7bb8c025b5f0fac7f3185cc6c3b0f7ade1f622a305a16ca9c3bd4d9250b69fb` |
 | `lib/mayfield-perilunate-v414.js` | 4219 | `dbec2e4abce7912c621e5cee9f8bdb1fa3555240da1d08a3f75f448fd0297fc4` |
@@ -1244,7 +1244,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pss10-v806.js` | 3774 | `345503d089cc1e3741f638539279784197b108044da41cfbb2d941e7481c3445` |
 | `lib/psych-v123.js` | 21812 | `8a06d1957abe88d594034533c654070b2dad1be4ae172ddbcb7bd96cdef56be0` |
 | `lib/psych-v96.js` | 16837 | `6aa2f2a4550dc4dc0f1e5d486bb8d7e83faac28cc1112a1e299a36d13833fc39` |
-| `lib/psychotropic-prn-clock-v1638.js` | 6616 | `1fc9f5101857b69adbd4e5348b509c61a7fafd156dc5b8cde6d82917eab977e3` |
+| `lib/psychotropic-prn-clock-v1638.js` | 6623 | `75b15557286435c44e9e437dc2d877cbe6cb338e08261f60c30932b755832cae` |
 | `lib/pt-event-score-v1658.js` | 4909 | `e4e7efdd67afc2286ac60d00aeb8be98a4bea6abb2e918059e92337083ed73d3` |
 | `lib/pufa-index-v1491.js` | 4112 | `f4458cbd2a0f04bab58c40cdef58b6817178094b1311140e2a9bf21dce63fb1c` |
 | `lib/pulm-copd-v205.js` | 16763 | `f6f1fdf0db2257c2caf40d143329085f9fb2a8e1a3f59a251c7a657b6d005239` |

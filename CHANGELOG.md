@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Ten deadline clocks gave a different answer on a machine in a different time zone, because each worked out
+  "today" from the local calendar date and called it UTC. The controlled-substance theft clock said a form was
+  due today on one machine and a day late on another, from the same inputs. They all count from the same date
+  now, and every worked example in the catalog is checked in four time zones.
 - Ten tools accepted a half step in a score or a count that has none: a SOFA total of 0.5, an Injury Severity
   Score of 25.5, an NIHSS of 22.5, half a pregnancy, half a vasoactive medication, half an anesthesia base unit,
   a Beighton score of 6.5, half a tooth lost, a fractional MDHAQ function sum, and a laboratory minimum of 10.5
