@@ -1,6 +1,6 @@
 {
   "comment": "The sources that gate an unbuilt tool, and what the last probe found. A gate's reason is a claim about a URL on a date, and this is the dated part. scripts/probe-build-gates.mjs re-probes every row and prints what changed; test/unit/build-gates.test.js keeps the rows honest against docs/unbuilt-tools.md. Reachable does NOT mean buildable: a reachable row still needs the document read and the tool written.",
-  "probedOn": "2026-11-07",
+  "probedOn": "2026-11-23",
   "gates": [
     {
       "tool": "sample-size-proportion",
@@ -45,7 +45,7 @@
       "url": "https://qualitynet.cms.gov/outpatient/specifications-manuals",
       "kind": "script-rendered",
       "lastStatus": 200,
-      "note": "A 200 that carries nothing: the page is a 5.7 KB single-page-application shell whose only hrefs are its own bundle, favicon and stylesheet. The manual is behind a client-side fetch, so a status code alone would read this gate as open. Re-probed November 7, 2026 in a browser: the page renders and lists the 2027 manual (version 20.0, ED-Throughput set 1d_ED_Throughput_set_v20.0.pdf) and the 2026 manual (19.0a). A script still gets the HTML shell, and opening a PDF first asks the reader to accept the AMA's CPT license. Accepting a license is the owner's decision, so the set is still unread."
+      "note": "A 200 that carries nothing: the page is a 5.7 KB single-page-application shell whose only hrefs are its own bundle, favicon and stylesheet. The manual is behind a client-side fetch, so a status code alone would read this gate as open. Re-probed November 7, 2026 in a browser: the page renders and lists the 2027 manual (version 20.0, ED-Throughput set 1d_ED_Throughput_set_v20.0.pdf) and the 2026 manual (19.0a). A script still gets the HTML shell, and opening a PDF first asks the reader to accept the AMA's CPT license. Accepting a license is the owner's decision, so the set is still unread. Re-probed November 23, 2026, and the Federal Register was read as a second route (its API is open and scriptable): the CY2024 OPPS final rule (2023-24293) names both measures in full -- \"Median Time from ED Arrival to ED Departure for Discharged ED Patients (OP-18)\" and \"Left Without Being Seen (OP-22)\" -- while declining to add them to the Rural Emergency Hospital program, and no rule since mentions either. A rule that names a measure does not specify it: the numerator, denominator and exclusions are in the OQR manual and nowhere else reachable."
     },
     {
       "tool": "westgard-multirule-three-level",
@@ -81,7 +81,7 @@
       "url": "https://doi.org/10.7326/0003-4819-85-2-183",
       "kind": "publisher-paywall",
       "lastStatus": 403,
-      "note": "The decisive problem is not only reach: two incompatible coefficient sets circulate (k = 0.00293 x CrCl + 0.014 against 0.0024 x CrCl + 0.01) and neither primary paper is open, so a dosing tool cannot pick one. Re-checked November 23, 2026 against the two-open-sources rule that unblocked herd-immunity-threshold (spec-v1772): PMC7915939 restates Hull and Sarubbi's elimination constant verbatim (ke = 0.00293 x CrCl + 0.014, CrCl adjusted for body surface area), but it is the ONLY open restatement found, and no open source states the population volume of distribution per kilogram this tool also needs. One source is not two, so the gate holds."
+      "note": "The decisive problem is not only reach: two incompatible coefficient sets circulate (k = 0.00293 x CrCl + 0.014 against 0.0024 x CrCl + 0.01) and neither primary paper is open, so a dosing tool cannot pick one. Re-checked November 23, 2026 against the two-open-sources rule that unblocked herd-immunity-threshold (spec-v1772): PMC7915939 restates Hull and Sarubbi's elimination constant verbatim (ke = 0.00293 x CrCl + 0.014, CrCl adjusted for body surface area), but it is the ONLY open restatement found, and no open source states the population volume of distribution per kilogram this tool also needs. One source is not two, so the gate holds. Searched again on November 23, 2026 through Europe PMC, an index independent of PubMed Central: no second open restatement of either coefficient. The one paper that evaluates the \"Hull-Sarubbi table\" openly (PMC4140707) evaluates the DOSING TABLE, not the equations, and prints neither the elimination constant nor a volume of distribution per kilogram."
     },
     {
       "tool": "levey-jennings-1950",

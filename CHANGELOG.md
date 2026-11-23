@@ -76,6 +76,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The sources that gate the eight specified-but-unbuilt tools were all re-probed, and two were chased through a
+  second route (Europe PMC, and the Federal Register's API). None has moved; each row is dated, and what each
+  tool needs is written down in one place.
 - Three scored tools accepted a point value their scale has no row for when called directly: the
   Burch-Wartofsky thyroid-storm scale took 7 points where it prints 0, 5, 10, 15, 20, 25 and 30, and the
   Helsinki CT score read a mass lesion type it does not have as "none". Each scale now lives in one place and
