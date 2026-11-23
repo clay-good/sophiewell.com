@@ -22,6 +22,10 @@
       Guide read November 7, 2026 (April 7, 2026 edition, from a copy saved by hand; formula and the three
       examples in `design.md`, all reproduced). Open: the EPTS mapping table, a separate PDF
       (`epts_mapping_table.pdf`) that the site serves only as a download.
+      Re-tested November 23, 2026 from a third kind of client (not curl, not the build's fetcher):
+      `https://www.hrsa.gov/sites/default/files/hrsa/optn/epts_mapping_table.pdf` and `epts_guide.pdf` both
+      answer HTTP 403. The refusal is of scripted clients as such, not of one tool, so this stays a download
+      by hand and no further retry is worth a loop's time.
 - [ ] 1.3 OPTN policy 8: the KDPI and EPTS bands used in allocation.
 - [ ] 1.4 (not read; tool 3 names intervals by the reader's events) OPTN data definitions for cold and warm ischemia time.
       Re-tested November 7, 2026: `optn.transplant.hrsa.gov` no longer serves the site, answering 301 to
