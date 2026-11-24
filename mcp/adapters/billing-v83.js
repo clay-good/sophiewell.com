@@ -53,10 +53,10 @@ export default [
     summary: 'IPPS DRG payment estimate: relative weight x the wage-index-adjusted operating+capital base, with the per-diem transfer reduction. Operating model only.',
     compute: C.drgPayment,
     fields: [
-      { dom: 'drg-weight', arg: 'relativeWeight', kind: 'number', required: true, label: 'MS-DRG relative weight' },
+      { dom: 'drg-weight', arg: 'relativeWeight', kind: 'number', required: true, label: 'MS-DRG relative weight', max: 1000 },
       { dom: 'drg-oper', arg: 'operatingBaseCents', kind: 'number', required: true, label: 'Operating base rate', unit: '$', to: (v) => Math.round(v * 100) },
       { dom: 'drg-cap', arg: 'capitalBaseCents', kind: 'number', label: 'Capital base rate', unit: '$', to: (v) => Math.round(v * 100) },
-      { dom: 'drg-wage', arg: 'wageIndex', kind: 'number', label: 'Wage index (default 1.0)' },
+      { dom: 'drg-wage', arg: 'wageIndex', kind: 'number', label: 'Wage index (default 1.0)', max: 10 },
       { dom: 'drg-transfer', arg: 'isTransfer', kind: 'bool', label: 'Post-acute transfer (apply the per-diem reduction)' },
       { dom: 'drg-los', arg: 'lengthOfStay', kind: 'number', label: 'Length of stay in days (transfer only)' },
       { dom: 'drg-gmlos', arg: 'gmlos', kind: 'number', label: 'Geometric mean LOS in days (transfer only)' },
@@ -71,8 +71,8 @@ export default [
     compute: C.apcPayment,
     fields: [
       { dom: 'apc-list', arg: 'lines', kind: 'string', required: true, label: 'APC lines, one per line as "weight, status indicator" (e.g. "10, T")' },
-      { dom: 'apc-cf', arg: 'conversionFactorCents', kind: 'number', required: true, label: 'OPPS conversion factor', unit: '$ per weight unit' },
-      { dom: 'apc-wage', arg: 'wageIndex', kind: 'number', label: 'Wage index (default 1.0)' },
+      { dom: 'apc-cf', arg: 'conversionFactorCents', kind: 'number', required: true, label: 'OPPS conversion factor', unit: '$ per weight unit', bound: 'hcg' },
+      { dom: 'apc-wage', arg: 'wageIndex', kind: 'number', label: 'Wage index (default 1.0)', max: 10 },
       { dom: 'apc-disc', arg: 'discountPct', kind: 'number', label: 'Multiple-procedure discount %, default 50' },
     ],
     // The lib takes a parsed lines array + cents; replicate the view's parse.

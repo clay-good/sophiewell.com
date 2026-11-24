@@ -20,8 +20,8 @@ export default [
       { dom: 'sea-immunosuppression', arg: 'immunosuppression', kind: 'boolean', required: false, label: 'Immunosuppression, including diabetes, HIV, cancer, dialysis, and alcohol use disorder' },
       { dom: 'sea-spinalprocedure', arg: 'spinalProcedure', kind: 'boolean', required: false, label: 'A spinal procedure or spinal surgery within the past year' },
       { dom: 'sea-fever', arg: 'fever', kind: 'boolean', required: false, label: 'Fever' },
-      { dom: 'sea-esr', arg: 'esr', kind: 'number', required: false, label: 'Sedimentation rate', unit: 'mm per hour' },
-      { dom: 'sea-wbc', arg: 'wbc', kind: 'number', required: false, label: 'White cell count', unit: 'thousand per microliter' },
+      { dom: 'sea-esr', arg: 'esr', kind: 'number', required: false, label: 'Sedimentation rate', unit: 'mm per hour', bound: 'esr' },
+      { dom: 'sea-wbc', arg: 'wbc', kind: 'number', required: false, label: 'White cell count', unit: 'thousand per microliter', bound: 'wbc' },
     ],
   },
 ];

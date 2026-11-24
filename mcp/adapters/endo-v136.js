@@ -61,7 +61,7 @@ export default [
     summary: 'OST and ORAI osteoporosis DXA pre-screen indices from age, weight, and current estrogen use.',
     compute: E.osteoporosisPrescreen,
     fields: [
-      { dom: 'ost-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ost-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'ost-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'ost-estrogen', arg: 'estrogen', kind: 'enum', values: YESNO, label: 'Currently using estrogen' },
     ],

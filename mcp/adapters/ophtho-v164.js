@@ -32,7 +32,7 @@ export default [
     summary: 'Mean, systolic and diastolic ocular perfusion pressure from blood pressure and intraocular pressure; a low mean OPP is a glaucoma-risk marker.',
     compute: F.ocularPerfusionPressure,
     fields: [
-      { dom: 'opp-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'opp-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', min: 20 },
       { dom: 'opp-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg' },
       { dom: 'opp-iop', arg: 'iop', kind: 'number', required: true, label: 'Intraocular pressure', unit: 'mmHg' },
     ],

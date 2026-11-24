@@ -42,7 +42,7 @@ export default [
     summary: 'CRP-to-albumin ratio: C-reactive protein (mg/L) / serum albumin (g/dL); a combined inflammation / nutrition marker where higher values are less favorable.',
     compute: F.car,
     fields: [
-      { dom: 'car-crp', arg: 'crp', kind: 'number', required: true, label: 'C-reactive protein', unit: 'mg/L' },
+      { dom: 'car-crp', arg: 'crp', kind: 'number', required: true, label: 'C-reactive protein', unit: 'mg/L', max: 1000 },
       { dom: 'car-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', min: 0.1, max: 8 },
     ],
   },

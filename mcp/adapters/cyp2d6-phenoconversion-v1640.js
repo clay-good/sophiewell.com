@@ -9,7 +9,7 @@ export default [
     summary: 'A CYP2D6 activity score adjusted for an inhibitor by the CPIC opioid guideline\'s rule: strong sets it to 0, moderate halves it. For codeine, tramadol and hydrocodone only; the inhibitor\'s strength is the caller\'s input.',
     compute: (a) => PC.cyp2d6Phenoconversion(a, new Date()),
     fields: [
-      { dom: 'cpc-score', arg: 'activityScore', kind: 'number', required: true, label: 'CYP2D6 activity score from the genotype' },
+      { dom: 'cpc-score', arg: 'activityScore', kind: 'number', required: true, label: 'CYP2D6 activity score from the genotype', max: 8 },
       { dom: 'cpc-inhibitor', arg: 'inhibitor', kind: 'enum', required: true, values: PC.STRENGTHS.map((s) => s.value), label: 'Strength of the CYP2D6 inhibitor taken: none, weak, moderate or strong' },
     ],
   },

@@ -13,8 +13,8 @@ export default [
     compute: F.absiBurn,
     fields: [
       { dom: 'absi-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
-      { dom: 'absi-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'absi-tbsa', arg: 'tbsa', kind: 'number', required: true, label: '%TBSA burned', unit: '%' },
+      { dom: 'absi-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
+      { dom: 'absi-tbsa', arg: 'tbsa', kind: 'number', required: true, label: '%TBSA burned', unit: '%', max: 100 },
       { dom: 'absi-inhal', arg: 'inhalation', kind: 'bool', required: true, label: 'Inhalation injury' },
       { dom: 'absi-ft', arg: 'fullThickness', kind: 'bool', required: true, label: 'Full-thickness (third-degree) burn' },
     ],

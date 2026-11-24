@@ -43,7 +43,7 @@ export default [
     compute: F.dlcoCorrection,
     fields: [
       { dom: 'dlco-dlco', arg: 'dlco', kind: 'number', required: true, label: 'Measured DLCO', unit: 'mL/min/mmHg' },
-      { dom: 'dlco-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'dlco-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
       { dom: 'dlco-va', arg: 'va', kind: 'number', required: true, label: 'Alveolar volume VA', unit: 'L' },
       { dom: 'dlco-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
     ],

@@ -30,7 +30,7 @@ export default [
     fields: [
       { dom: 'gorlin-valve', arg: 'valve', kind: 'enum', values: ['aortic', 'mitral'], required: true, label: 'Valve' },
       { dom: 'gorlin-co', arg: 'co', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min' },
-      { dom: 'gorlin-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'gorlin-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10 },
       { dom: 'gorlin-period', arg: 'period', kind: 'number', required: true, label: 'Ejection/filling period', unit: 's per beat' },
       { dom: 'gorlin-grad', arg: 'grad', kind: 'number', required: true, label: 'Mean pressure gradient', unit: 'mmHg' },
     ],
@@ -53,7 +53,7 @@ export default [
     fields: [
       { dom: 'lvot-d', arg: 'd', kind: 'number', required: true, label: 'LVOT diameter', unit: 'cm' },
       { dom: 'lvot-vti', arg: 'vti', kind: 'number', required: true, label: 'LVOT VTI', unit: 'cm' },
-      { dom: 'lvot-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'lvot-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10 },
       { dom: 'lvot-bsa', arg: 'bsa', kind: 'number', required: true, label: 'Body surface area', unit: 'm²' },
     ],
   },

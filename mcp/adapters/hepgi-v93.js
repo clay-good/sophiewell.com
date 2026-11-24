@@ -13,13 +13,13 @@ export default [
     summary: 'NAFLD Fibrosis Score (Angulo 2007): age, BMI, impaired fasting glucose / diabetes, AST/ALT ratio, platelets, and albumin; NFS < -1.455 excludes and > 0.676 indicates advanced (F3-F4) fibrosis.',
     compute: F.nafldFibrosis,
     fields: [
-      { dom: 'nf-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'nf-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'nf-bmi', concept: 'bmi', arg: 'bmi', kind: 'number', required: true, label: 'Body mass index', unit: 'kg/m^2', bound: 'bmi' },
       { dom: 'nf-ifg', arg: 'ifgDm', kind: 'bool', label: 'Impaired fasting glucose or diabetes' },
       { dom: 'nf-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
       { dom: 'nf-alt', concept: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L', bound: 'alt' },
-      { dom: 'nf-plt', concept: 'platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: 'x10^9/L' },
-      { dom: 'nf-alb', concept: 'albumin', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
+      { dom: 'nf-plt', concept: 'platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: 'x10^9/L', bound: 'platelets' },
+      { dom: 'nf-alb', concept: 'albumin', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', bound: 'baseExcess', boundScale: 0.1 },
     ],
   },
   {
@@ -28,8 +28,8 @@ export default [
     compute: F.glasgowImrie,
     fields: [
       { dom: 'gi-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'kPa', bound: 'paO2' },
-      { dom: 'gi-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'gi-wbc', arg: 'wbc', kind: 'number', required: true, label: 'White blood cell count', unit: 'x10^9/L' },
+      { dom: 'gi-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'gi-wbc', arg: 'wbc', kind: 'number', required: true, label: 'White blood cell count', unit: 'x10^9/L', bound: 'wbc' },
       { dom: 'gi-ca', arg: 'calcium', kind: 'number', required: true, label: 'Calcium', unit: 'mmol/L' },
       { dom: 'gi-urea', arg: 'urea', kind: 'number', required: true, label: 'Urea', unit: 'mmol/L' },
       { dom: 'gi-ldh', arg: 'ldh', kind: 'number', required: true, label: 'LDH', unit: 'U/L' },
@@ -55,7 +55,7 @@ export default [
       { dom: 'tw-temp', arg: 'temp', kind: 'number', label: 'Temperature (any one systemic criterion is enough for severe)', unit: 'degrees C', bound: 'temperature' },
       { dom: 'tw-hr', arg: 'heartRate', kind: 'number', label: 'Heart rate (any one systemic criterion is enough for severe)', unit: 'bpm', bound: 'hr' },
       { dom: 'tw-hgb', arg: 'hemoglobin', kind: 'number', label: 'Hemoglobin (any one systemic criterion is enough for severe)', unit: 'g/dL', bound: 'hemoglobin' },
-      { dom: 'tw-esr', arg: 'esr', kind: 'number', label: 'ESR (any one systemic criterion is enough for severe)', unit: 'mm/hr' },
+      { dom: 'tw-esr', arg: 'esr', kind: 'number', label: 'ESR (any one systemic criterion is enough for severe)', unit: 'mm/hr', bound: 'esr' },
     ],
   },
   {

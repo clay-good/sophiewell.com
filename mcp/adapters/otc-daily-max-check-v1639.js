@@ -11,7 +11,7 @@ export default [
     compute: DM.otcDailyMaxCheck,
     fields: [
       { dom: 'odm-ingredient', arg: 'ingredient', kind: 'enum', required: true, values: DM.INGREDIENTS.map((i) => i.value), label: 'Active ingredient' },
-      { dom: 'odm-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'odm-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
       { dom: 'odm-amount', arg: 'amount24h', kind: 'number', label: 'Units taken or planned in 24 hours (capsules, tablets, caplets, mL, or 17 g doses)' },
       { dom: 'odm-unitmg', arg: 'unitMg', kind: 'number', label: 'Monograph ingredients: milligrams in each unit', unit: 'mg' },
       { dom: 'odm-single', arg: 'singleDose', kind: 'number', label: 'Units in one dose (optional)' },

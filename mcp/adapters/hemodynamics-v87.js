@@ -15,7 +15,7 @@ export default [
       { dom: 'hs-co', arg: 'cardiacOutput', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min' },
       { dom: 'hs-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
       { dom: 'hs-bsa', arg: 'bsa', kind: 'number', required: false, label: 'Body surface area', unit: 'm^2' },
-      { dom: 'hs-map', arg: 'map', kind: 'number', required: false, label: 'Mean arterial pressure', unit: 'mmHg' },
+      { dom: 'hs-map', arg: 'map', kind: 'number', required: false, label: 'Mean arterial pressure', unit: 'mmHg', min: 5, max: 300 },
       { dom: 'hs-cvp', arg: 'cvp', kind: 'number', required: false, label: 'Central venous pressure', unit: 'mmHg' },
       { dom: 'hs-mpap', arg: 'mpap', kind: 'number', required: false, label: 'Mean pulmonary artery pressure', unit: 'mmHg' },
       { dom: 'hs-pcwp', arg: 'pcwp', kind: 'number', required: false, label: 'Pulmonary capillary wedge pressure', unit: 'mmHg' },

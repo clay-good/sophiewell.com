@@ -11,7 +11,7 @@ export default [
     compute: PK.pkSteadyStatePredict,
     fields: [
       { dom: 'pk-dose', arg: 'dose', kind: 'number', required: true, label: 'Dose', unit: 'mg' },
-      { dom: 'pk-tinf', arg: 'infusionHours', kind: 'number', required: true, label: 'Infusion time (0 for a bolus)', unit: 'hours' },
+      { dom: 'pk-tinf', arg: 'infusionHours', kind: 'number', required: true, label: 'Infusion time (0 for a bolus)', unit: 'hours', max: 1000 },
       { dom: 'pk-tau', arg: 'interval', kind: 'number', required: true, label: 'Dosing interval', unit: 'hours', min: 0 },
       { dom: 'pk-vd', arg: 'vd', kind: 'number', required: true, label: 'Volume of distribution', unit: 'L', min: 0 },
       { dom: 'pk-half', arg: 'halfLife', kind: 'number', required: false, label: 'Half-life (enter one of half-life, k or clearance)', unit: 'hours' },

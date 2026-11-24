@@ -31,10 +31,10 @@ export default [
     summary: 'Severity of Alopecia Tool (Olsen 2004): % terminal hair loss per scalp region weighted top 0.40, back 0.24, right 0.18, left 0.18; range 0-100 with S0-S5 bands.',
     compute: F.saltScore,
     fields: [
-      { dom: 'salt-top', arg: 'top', kind: 'number', required: true, label: 'Top of scalp — % hair loss', unit: '%' },
-      { dom: 'salt-back', arg: 'back', kind: 'number', required: true, label: 'Back of scalp — % hair loss', unit: '%' },
-      { dom: 'salt-right', arg: 'right', kind: 'number', required: true, label: 'Right side — % hair loss', unit: '%' },
-      { dom: 'salt-left', arg: 'left', kind: 'number', required: true, label: 'Left side — % hair loss', unit: '%' },
+      { dom: 'salt-top', arg: 'top', kind: 'number', required: true, label: 'Top of scalp — % hair loss', unit: '%', max: 100 },
+      { dom: 'salt-back', arg: 'back', kind: 'number', required: true, label: 'Back of scalp — % hair loss', unit: '%', max: 100 },
+      { dom: 'salt-right', arg: 'right', kind: 'number', required: true, label: 'Right side — % hair loss', unit: '%', max: 100 },
+      { dom: 'salt-left', arg: 'left', kind: 'number', required: true, label: 'Left side — % hair loss', unit: '%', max: 100 },
     ],
   },
   {

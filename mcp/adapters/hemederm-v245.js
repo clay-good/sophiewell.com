@@ -30,7 +30,7 @@ export default [
     summary: 'Percent platelet recovery = [(post - pre) platelet count x blood volume] / platelets transfused; a transfusion response metric.',
     compute: F.percentPlateletRecovery,
     fields: [
-      { dom: 'ppr-pre', arg: 'pre', kind: 'number', required: true, label: 'Pre-transfusion platelet count', unit: 'x10^9/L' },
+      { dom: 'ppr-pre', arg: 'pre', kind: 'number', required: true, label: 'Pre-transfusion platelet count', unit: 'x10^9/L', bound: 'platelets' },
       { dom: 'ppr-post', arg: 'post', kind: 'number', required: true, label: 'Post-transfusion platelet count', unit: 'x10^9/L' },
       { dom: 'ppr-bv', arg: 'bloodVolume', kind: 'number', required: true, label: 'Blood volume', unit: 'L', min: 1, max: 12 },
       { dom: 'ppr-tx', arg: 'transfused', kind: 'number', required: true, label: 'Platelets transfused', unit: 'x10^11' },

@@ -15,8 +15,8 @@ export default [
     fields: [
       { dom: 'cdai-sjc', arg: 'sjc', kind: 'number', min: 0, max: 28, required: true, label: 'Swollen-joint count (0-28)' },
       { dom: 'cdai-tjc', arg: 'tjc', kind: 'number', min: 0, max: 28, required: true, label: 'Tender-joint count (0-28)' },
-      { dom: 'cdai-pga', arg: 'pga', kind: 'number', required: true, label: 'Patient global assessment (0-10 cm VAS)' },
-      { dom: 'cdai-ega', arg: 'ega', kind: 'number', required: true, label: 'Physician global assessment (0-10 cm VAS)' },
+      { dom: 'cdai-pga', arg: 'pga', kind: 'number', required: true, label: 'Patient global assessment (0-10 cm VAS)', max: 10 },
+      { dom: 'cdai-ega', arg: 'ega', kind: 'number', required: true, label: 'Physician global assessment (0-10 cm VAS)', max: 10 },
     ],
   },
   {
@@ -26,9 +26,9 @@ export default [
     fields: [
       { dom: 'sdai-sjc', arg: 'sjc', kind: 'number', min: 0, max: 28, required: true, label: 'Swollen-joint count (0-28)' },
       { dom: 'sdai-tjc', arg: 'tjc', kind: 'number', min: 0, max: 28, required: true, label: 'Tender-joint count (0-28)' },
-      { dom: 'sdai-pga', arg: 'pga', kind: 'number', required: true, label: 'Patient global assessment (0-10 cm VAS)' },
-      { dom: 'sdai-ega', arg: 'ega', kind: 'number', required: true, label: 'Physician global assessment (0-10 cm VAS)' },
-      { dom: 'sdai-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/dL' },
+      { dom: 'sdai-pga', arg: 'pga', kind: 'number', required: true, label: 'Patient global assessment (0-10 cm VAS)', max: 10 },
+      { dom: 'sdai-ega', arg: 'ega', kind: 'number', required: true, label: 'Physician global assessment (0-10 cm VAS)', max: 10 },
+      { dom: 'sdai-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/dL', bound: 'lactate' },
     ],
   },
   {
@@ -116,7 +116,7 @@ export default [
       { dom: 'fib-headache', arg: 'somHeadache', kind: 'bool', required: false, label: 'Headaches (somatic-symptom count, past 6 months)' },
       { dom: 'fib-abdominal', arg: 'somAbdominal', kind: 'bool', required: false, label: 'Lower-abdominal pain or cramps (somatic-symptom count)' },
       { dom: 'fib-depression', arg: 'somDepression', kind: 'bool', required: false, label: 'Depression (somatic-symptom count)' },
-      { dom: 'fib-regions', arg: 'genRegions', kind: 'number', required: true, label: 'Generalized pain: regions with pain (of 5)' },
+      { dom: 'fib-regions', arg: 'genRegions', kind: 'number', required: true, label: 'Generalized pain: regions with pain (of 5)', bound: 'lactate', boundScale: 0.1 },
       { dom: 'fib-duration', arg: 'duration', kind: 'bool', required: true, label: 'Symptoms present at a similar level for >=3 months' },
     ],
   },

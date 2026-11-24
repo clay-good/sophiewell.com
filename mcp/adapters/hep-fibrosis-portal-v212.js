@@ -13,7 +13,7 @@ export default [
     compute: F.kingScore,
     fields: [
       { dom: 'king-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'king-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L' },
+      { dom: 'king-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L', min: 1 },
       { dom: 'king-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
       { dom: 'king-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],

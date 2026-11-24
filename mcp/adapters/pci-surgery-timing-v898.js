@@ -13,7 +13,7 @@ export default [
     compute: pciSurgeryTiming,
     fields: [
       { dom: 'pci-procedure', arg: 'procedure', kind: 'enum', required: false, label: 'What was done', values: ['des', 'bms', 'balloon'] },
-      { dom: 'pci-dayssince', arg: 'daysSince', kind: 'number', required: false, label: 'Days since the coronary intervention', unit: 'days' },
+      { dom: 'pci-dayssince', arg: 'daysSince', kind: 'number', required: false, label: 'Days since the coronary intervention', unit: 'days', max: 3650 },
       { dom: 'pci-urgentoremergency', arg: 'urgentOrEmergency', kind: 'boolean', required: false, label: 'The surgery is urgent or an emergency (these intervals do not govern it)' },
     ],
   },

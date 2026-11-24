@@ -12,7 +12,7 @@ export default [
     summary: 'Applies the ICHD-3 tension-type headache criteria. All three subtypes are assessed together: 2.1 infrequent episodic (10+ episodes on under 1 day a month), 2.2 frequent episodic (10+ on 1-14 days a month for over 3 months) and 2.3 chronic (15+ days a month for over 3 months, no episode count needed). The symptom rule LOOSENS in the chronic form - mild nausea blocks the episodic forms and is allowed in the chronic one.',
     compute: tensionHeadacheIchd3,
     fields: [
-      { dom: 'tth-days', arg: 'headacheDaysPerMonth', kind: 'number', required: false, label: 'Headache days per month' },
+      { dom: 'tth-days', arg: 'headacheDaysPerMonth', kind: 'number', required: false, label: 'Headache days per month', max: 31 },
       { dom: 'tth-episodes', arg: 'episodeCount', kind: 'number', required: false, label: 'Number of episodes' },
       { dom: 'tth-months', arg: 'monthsOfPattern', kind: 'number', required: false, label: 'Months the pattern has run' },
       { dom: 'tth-duration', arg: 'duration', kind: 'enum', required: false, label: 'Episode duration', values: ['under-30-min', '30-min-to-2-hours', 'hours-to-7-days', 'over-7-days-or-unremitting'] },

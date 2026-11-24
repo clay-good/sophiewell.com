@@ -13,7 +13,7 @@ export default [
     compute: F.binetCll,
     fields: [
       { dom: 'binet-areas', arg: 'areas', kind: 'number', min: 0, max: 5, required: true, label: 'Involved lymphoid areas (0–5)' },
-      { dom: 'binet-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'binet-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
       { dom: 'binet-platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],
   },
@@ -25,7 +25,7 @@ export default [
       { dom: 'rai-lymphocytosis', arg: 'lymphocytosis', kind: 'bool', required: true, label: 'Blood + marrow lymphocytosis (required)' },
       { dom: 'rai-lymphadenopathy', arg: 'lymphadenopathy', kind: 'bool', required: false, label: 'Lymphadenopathy' },
       { dom: 'rai-organomegaly', arg: 'organomegaly', kind: 'bool', required: false, label: 'Splenomegaly / hepatomegaly' },
-      { dom: 'rai-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'rai-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
       { dom: 'rai-platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],
   },
@@ -58,11 +58,11 @@ export default [
     compute: F.hasfordCml,
     fields: [
       { dom: 'hasford-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'hasford-spleen', arg: 'spleen', kind: 'number', required: true, label: 'Spleen (cm below costal margin)' },
+      { dom: 'hasford-spleen', arg: 'spleen', kind: 'number', required: true, label: 'Spleen (cm below costal margin)', bound: 'platelets', boundScale: 0.01 },
       { dom: 'hasford-platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
-      { dom: 'hasford-blasts', arg: 'blasts', kind: 'number', required: true, label: 'Peripheral blasts', unit: '%' },
-      { dom: 'hasford-eosinophils', arg: 'eosinophils', kind: 'number', required: true, label: 'Peripheral eosinophils', unit: '%' },
-      { dom: 'hasford-basophils', arg: 'basophils', kind: 'number', required: true, label: 'Peripheral basophils', unit: '%' },
+      { dom: 'hasford-blasts', arg: 'blasts', kind: 'number', required: true, label: 'Peripheral blasts', unit: '%', max: 100 },
+      { dom: 'hasford-eosinophils', arg: 'eosinophils', kind: 'number', required: true, label: 'Peripheral eosinophils', unit: '%', max: 100 },
+      { dom: 'hasford-basophils', arg: 'basophils', kind: 'number', required: true, label: 'Peripheral basophils', unit: '%', max: 100 },
     ],
   },
 ];

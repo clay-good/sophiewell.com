@@ -31,8 +31,8 @@ export default [
     compute: F.grobmanVbac,
     fields: [
       { dom: 'grobman-age', arg: 'age', kind: 'number', required: true, label: 'Maternal age', unit: 'years' },
-      { dom: 'grobman-weight', arg: 'weight', kind: 'number', required: true, label: 'Pre-pregnancy weight', unit: 'kg' },
-      { dom: 'grobman-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
+      { dom: 'grobman-weight', arg: 'weight', kind: 'number', required: true, label: 'Pre-pregnancy weight', unit: 'kg', min: 0.2 },
+      { dom: 'grobman-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
       { dom: 'grobman-vaginalHistory', arg: 'vaginalHistory', kind: 'enum', values: ['none', 'before', 'vbac'], required: false, label: 'Prior vaginal delivery history' },
       { dom: 'grobman-arrestIndication', arg: 'arrestIndication', kind: 'bool', required: false, label: 'Prior cesarean for an arrest disorder' },
       { dom: 'grobman-chronicHtn', arg: 'chronicHtn', kind: 'bool', required: false, label: 'Treated chronic hypertension' },
@@ -55,9 +55,9 @@ export default [
     summary: 'ADHERE classification-tree mortality risk for acute decompensated heart failure, branching on BUN, systolic blood pressure, and creatinine.',
     compute: F.adhereHf,
     fields: [
-      { dom: 'adhere-bun', arg: 'bun', kind: 'number', required: true, label: 'BUN', unit: 'mg/dL' },
-      { dom: 'adhere-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
-      { dom: 'adhere-creatinine', arg: 'creatinine', kind: 'number', required: false, label: 'Creatinine (needed if BUN ≥ 43 and SBP < 115)', unit: 'mg/dL' },
+      { dom: 'adhere-bun', arg: 'bun', kind: 'number', required: true, label: 'BUN', unit: 'mg/dL', min: 1 },
+      { dom: 'adhere-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', min: 20 },
+      { dom: 'adhere-creatinine', arg: 'creatinine', kind: 'number', required: false, label: 'Creatinine (needed if BUN ≥ 43 and SBP < 115)', unit: 'mg/dL', min: 0.1 },
     ],
   },
 ];

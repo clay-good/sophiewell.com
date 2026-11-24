@@ -15,7 +15,7 @@ export default [
     fields: [
       { dom: 'nar-sleepy', arg: 'dailySleepiness', kind: 'boolean', required: false, label: 'Daily irrepressible sleep or lapses into sleep for at least three months' },
       { dom: 'nar-cata', arg: 'cataplexy', kind: 'boolean', required: false, label: 'Cataplexy: brief loss of muscle tone triggered by emotion' },
-      { dom: 'nar-latency', arg: 'meanSleepLatency', kind: 'number', required: false, label: 'Mean sleep latency on the latency test: the threshold is 8 or less', unit: 'minutes' },
+      { dom: 'nar-latency', arg: 'meanSleepLatency', kind: 'number', required: false, label: 'Mean sleep latency on the latency test: the threshold is 8 or less', unit: 'minutes', max: 20 },
       { dom: 'nar-soremp', arg: 'msltSoremps', kind: 'number', required: false, label: 'Sleep-onset REM periods on the latency test: the threshold is 2' },
       { dom: 'nar-psg', arg: 'psgSoremp', kind: 'boolean', required: false, label: 'A sleep-onset REM period on the overnight study, which may count as one of the two' },
       { dom: 'nar-hcrt', arg: 'hypocretin', kind: 'number', required: false, label: 'Hypocretin-1 in the spinal fluid: 110 or less is type 1 on its own', unit: 'pg/mL' },

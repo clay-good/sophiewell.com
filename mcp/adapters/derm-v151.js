@@ -66,7 +66,7 @@ export default [
     summary: 'SCORAD (European Task Force on Atopic Dermatitis 1993): extent (A) + six intensity items (B) + subjective pruritus and sleeplessness VAS (C) → a 0–103 atopic-dermatitis severity score (with the objective oSCORAD).',
     compute: F.scorad,
     fields: [
-      { dom: 'scorad-extent', arg: 'extent', kind: 'number', label: 'Extent (% BSA affected)' },
+      { dom: 'scorad-extent', arg: 'extent', kind: 'number', label: 'Extent (% BSA affected)', max: 100 },
       { dom: 'scorad-erythema', arg: 'erythema', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Erythema (0–3)' },
       { dom: 'scorad-edema', arg: 'edema', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Edema / papulation (0–3)' },
       { dom: 'scorad-oozing', arg: 'oozing', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Oozing / crusting (0–3)' },

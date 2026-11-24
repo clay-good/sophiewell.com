@@ -14,8 +14,8 @@ export default [
     compute: constrictivePericarditisEcho,
     fields: [
       { dom: 'cpe-shift', arg: 'septalShift', kind: 'boolean', required: false, label: 'Ventricular septal shift that moves with respiration, required for either combination' },
-      { dom: 'cpe-medial', arg: 'medialE', kind: 'number', required: false, label: 'Medial or septal annular early diastolic velocity, criterion at 9 or more', unit: 'cm/s' },
-      { dom: 'cpe-lateral', arg: 'lateralE', kind: 'number', required: false, label: 'Lateral annular early diastolic velocity, not a criterion but shows the reversed relationship', unit: 'cm/s' },
+      { dom: 'cpe-medial', arg: 'medialE', kind: 'number', required: false, label: 'Medial or septal annular early diastolic velocity, criterion at 9 or more', unit: 'cm/s', max: 30 },
+      { dom: 'cpe-lateral', arg: 'lateralE', kind: 'number', required: false, label: 'Lateral annular early diastolic velocity, not a criterion but shows the reversed relationship', unit: 'cm/s', max: 30 },
       { dom: 'cpe-hvr', arg: 'hepaticVeinRatio', kind: 'number', required: false, label: 'Hepatic vein expiratory diastolic reversal ratio, criterion at 0.79 or more' },
       { dom: 'cpe-hvrev', arg: 'hepaticVeinReversalVelocity', kind: 'number', required: false, label: 'Hepatic vein expiratory diastolic reversal velocity, used with the forward velocity to make the ratio', unit: 'cm/s' },
       { dom: 'cpe-hvfwd', arg: 'hepaticVeinForwardVelocity', kind: 'number', required: false, label: 'Hepatic vein diastolic forward velocity, used with the reversal velocity to make the ratio', unit: 'cm/s' },

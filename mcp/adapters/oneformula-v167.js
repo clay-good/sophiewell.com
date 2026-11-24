@@ -32,7 +32,7 @@ export default [
     compute: F.toeBrachialIndex,
     fields: [
       { dom: 'tbi-toe', arg: 'toe', kind: 'number', required: true, label: 'Toe systolic pressure', unit: 'mmHg' },
-      { dom: 'tbi-brachial', arg: 'brachial', kind: 'number', required: true, label: 'Brachial systolic pressure', unit: 'mmHg' },
+      { dom: 'tbi-brachial', arg: 'brachial', kind: 'number', required: true, label: 'Brachial systolic pressure', unit: 'mmHg', min: 20 },
     ],
   },
   {
@@ -40,8 +40,8 @@ export default [
     summary: 'Stool osmotic gap (Eherer & Fordtran 1992): 290 − 2·(stool Na + stool K); > 100 osmotic, < 50 secretory diarrhea.',
     compute: F.stoolOsmoticGap,
     fields: [
-      { dom: 'sog-na', arg: 'na', kind: 'number', required: true, label: 'Stool sodium', unit: 'mEq/L' },
-      { dom: 'sog-k', arg: 'k', kind: 'number', required: true, label: 'Stool potassium', unit: 'mEq/L' },
+      { dom: 'sog-na', arg: 'na', kind: 'number', required: true, label: 'Stool sodium', unit: 'mEq/L', max: 200 },
+      { dom: 'sog-k', arg: 'k', kind: 'number', required: true, label: 'Stool potassium', unit: 'mEq/L', max: 200 },
     ],
   },
   {
@@ -49,10 +49,10 @@ export default [
     summary: 'Pure-tone average: mean of the air-conduction thresholds at 500/1000/2000 Hz (3FA), plus 4000 Hz for the 4FA, mapped to a hearing-loss severity band.',
     compute: F.pureToneAverage,
     fields: [
-      { dom: 'pta-500', arg: 't500', kind: 'number', required: true, label: 'Air-conduction threshold at 500 Hz', unit: 'dB HL' },
-      { dom: 'pta-1000', arg: 't1000', kind: 'number', required: true, label: 'Air-conduction threshold at 1000 Hz', unit: 'dB HL' },
-      { dom: 'pta-2000', arg: 't2000', kind: 'number', required: true, label: 'Air-conduction threshold at 2000 Hz', unit: 'dB HL' },
-      { dom: 'pta-4000', arg: 't4000', kind: 'number', label: 'Air-conduction threshold at 4000 Hz (optional, for the 4-frequency average)', unit: 'dB HL' },
+      { dom: 'pta-500', arg: 't500', kind: 'number', required: true, label: 'Air-conduction threshold at 500 Hz', unit: 'dB HL', bound: 'ageYears' },
+      { dom: 'pta-1000', arg: 't1000', kind: 'number', required: true, label: 'Air-conduction threshold at 1000 Hz', unit: 'dB HL', bound: 'ageYears' },
+      { dom: 'pta-2000', arg: 't2000', kind: 'number', required: true, label: 'Air-conduction threshold at 2000 Hz', unit: 'dB HL', bound: 'ageYears' },
+      { dom: 'pta-4000', arg: 't4000', kind: 'number', label: 'Air-conduction threshold at 4000 Hz (optional, for the 4-frequency average)', unit: 'dB HL', bound: 'ageYears' },
     ],
   },
   {

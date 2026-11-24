@@ -12,8 +12,8 @@ export default [
     compute: hpaGlaucoma,
     fields: [
       { dom: 'hpa-md', arg: 'meanDeviation', kind: 'number', required: false, label: 'Mean deviation', unit: 'dB' },
-      { dom: 'hpa-pct5', arg: 'percentBelow5', kind: 'number', required: false, label: 'Points below 5% level', unit: '%' },
-      { dom: 'hpa-count1', arg: 'countBelow1', kind: 'number', required: false, label: 'Points below 1% level (of 76)' },
+      { dom: 'hpa-pct5', arg: 'percentBelow5', kind: 'number', required: false, label: 'Points below 5% level', unit: '%', max: 100 },
+      { dom: 'hpa-count1', arg: 'countBelow1', kind: 'number', required: false, label: 'Points below 1% level (of 76)', max: 76 },
       { dom: 'hpa-central', arg: 'central', kind: 'enum', values: ['all-above-15', 'one-hemifield', 'both-or-zero'], required: false, label: 'Central 5 degrees' },
     ],
   },

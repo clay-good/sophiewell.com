@@ -44,7 +44,7 @@ export default [
     summary: 'EuroSCORE II: predicted in-hospital mortality after cardiac surgery from the logistic risk model (Nashef 2012).',
     compute: F.euroScore2,
     fields: [
-      { dom: 'es-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'es-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'es-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex' },
       { dom: 'es-nyha', arg: 'nyha', kind: 'enum', values: ['1', '2', '3', '4'], required: false, label: 'NYHA class' },
       { dom: 'es-ccs4', arg: 'ccs4', kind: 'bool', required: false, label: 'CCS class 4 angina' },

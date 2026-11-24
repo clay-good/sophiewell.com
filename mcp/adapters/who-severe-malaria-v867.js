@@ -13,7 +13,7 @@ export default [
     compute: whoSevereMalaria,
     fields: [
       { dom: 'sm-age', arg: 'age', kind: 'enum', required: false, label: 'Age group', values: ['adult', 'child'] },
-      { dom: 'sm-parasitemia', arg: 'parasitemia', kind: 'number', required: false, label: 'Parasitemia, percent of parasitized red cells' },
+      { dom: 'sm-parasitemia', arg: 'parasitemia', kind: 'number', required: false, label: 'Parasitemia, percent of parasitized red cells', max: 100 },
       { dom: 'sm-impairedconsciousness', arg: 'impairedConsciousness', kind: 'boolean', required: false, label: 'Impaired consciousness (GCS below 11 in adults, Blantyre below 3 in children)' },
       { dom: 'sm-prostration', arg: 'prostration', kind: 'boolean', required: false, label: 'Prostration (unable to sit, stand or walk unassisted)' },
       { dom: 'sm-convulsions', arg: 'convulsions', kind: 'boolean', required: false, label: 'More than two convulsions in 24 hours' },

@@ -25,9 +25,9 @@ export default [
     summary: 'CAAP-AF score (Winkle 2016): coronary disease, left-atrial diameter, age, persistent AF, number of failed antiarrhythmic drugs, and female sex give a 0–13 score; a higher score marks lower freedom from AF after ablation.',
     compute: F.caapAf,
     fields: [
-      { dom: 'caap-la', arg: 'laDiameter', kind: 'number', required: true, label: 'Left-atrial diameter', unit: 'cm' },
-      { dom: 'caap-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'caap-aad', arg: 'failedAad', kind: 'number', required: true, label: 'Number of failed antiarrhythmic drugs' },
+      { dom: 'caap-la', arg: 'laDiameter', kind: 'number', required: true, label: 'Left-atrial diameter', unit: 'cm', max: 20 },
+      { dom: 'caap-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'caap-aad', arg: 'failedAad', kind: 'number', required: true, label: 'Number of failed antiarrhythmic drugs', bound: 'lactate' },
       { dom: 'caap-cad', arg: 'cad', kind: 'bool', required: false, label: 'Coronary artery disease (+1)' },
       { dom: 'caap-pers', arg: 'persistentAf', kind: 'bool', required: false, label: 'Persistent / long-standing persistent AF (+2)' },
       { dom: 'caap-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex (+1)' },
@@ -38,7 +38,7 @@ export default [
     summary: 'ATLAS score (Mesquita 2018): age > 60, non-paroxysmal AF, indexed LA volume, female sex, and current smoking give a score banding AF-recurrence risk after ablation (low < 6, intermediate 6–10, high > 10).',
     compute: F.atlas,
     fields: [
-      { dom: 'atl-lavi', arg: 'laVolumeIndex', kind: 'number', required: true, label: 'Indexed LA volume', unit: 'mL/m²' },
+      { dom: 'atl-lavi', arg: 'laVolumeIndex', kind: 'number', required: true, label: 'Indexed LA volume', unit: 'mL/m²', bound: 'platelets', boundScale: 0.1 },
       { dom: 'atl-age', arg: 'ageOver60', kind: 'bool', required: false, label: 'Age > 60 years (+1)' },
       { dom: 'atl-np', arg: 'nonParoxysmal', kind: 'bool', required: false, label: 'Non-paroxysmal AF (+2)' },
       { dom: 'atl-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex (+4)' },
@@ -62,7 +62,7 @@ export default [
     summary: 'MB-LATER score (Mujović 2017): male sex, bundle-branch block, large left atrium, AF type (0 paroxysmal / 1 persistent / 2 long-standing), and early recurrence give a 0–6 score; ≥ 2 predicts very-late AF recurrence after ablation.',
     compute: F.mbLater,
     fields: [
-      { dom: 'mbl-type', arg: 'afType', kind: 'number', required: true, label: 'AF type (0 = paroxysmal, 1 = persistent, 2 = long-standing persistent)' },
+      { dom: 'mbl-type', arg: 'afType', kind: 'number', required: true, label: 'AF type (0 = paroxysmal, 1 = persistent, 2 = long-standing persistent)', max: 2 },
       { dom: 'mbl-male', arg: 'male', kind: 'bool', required: false, label: 'Male sex (+1)' },
       { dom: 'mbl-bbb', arg: 'bbb', kind: 'bool', required: false, label: 'Bundle-branch block (+1)' },
       { dom: 'mbl-la', arg: 'laLarge', kind: 'bool', required: false, label: 'Left atrium ≥ 47 mm (+1)' },

@@ -11,7 +11,7 @@ export default [
     summary: 'NASCET carotid stenosis (NEJM 1991): % stenosis = (1 - narrowest residual lumen / normal distal ICA diameter) x 100; >= 70% is severe.',
     compute: F.nascetCarotidStenosis,
     fields: [
-      { dom: 'ns-narrow', arg: 'narrowest', kind: 'number', required: true, label: 'Narrowest residual lumen', unit: 'mm' },
+      { dom: 'ns-narrow', arg: 'narrowest', kind: 'number', required: true, label: 'Narrowest residual lumen', unit: 'mm', max: 30 },
       { dom: 'ns-distal', arg: 'distal', kind: 'number', required: true, label: 'Normal distal ICA diameter', unit: 'mm', min: 0.5, max: 30 },
     ],
   },
@@ -31,7 +31,7 @@ export default [
     summary: 'Genant semiquantitative vertebral-fracture grade (1993): grade 0-3 by vertebral height loss (< 20%, 20-25%, 26-40%, > 40%).',
     compute: F.genantVertebralFracture,
     fields: [
-      { dom: 'ge-loss', arg: 'heightLoss', kind: 'number', required: true, label: 'Vertebral height loss', unit: '%' },
+      { dom: 'ge-loss', arg: 'heightLoss', kind: 'number', required: true, label: 'Vertebral height loss', unit: '%', max: 100 },
     ],
   },
   {

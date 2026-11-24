@@ -17,7 +17,7 @@ export default [
       { dom: 'cs-delivery', arg: 'delivery', kind: 'string', label: 'Delivery date (YYYY-MM-DD)' },
       { dom: 'cs-reinfection', arg: 'reinfection', kind: 'enum', label: 'Maternal evidence of reinfection or relapse', values: ['yes', 'no'] },
       { dom: 'cs-lowstable', arg: 'maternalLowStable', kind: 'enum', label: 'Maternal titer low and stable, if treated before pregnancy', values: ['yes', 'no'] },
-      { dom: 'cs-weight', arg: 'weightKg', kind: 'number', label: 'Infant weight (kg)' },
+      { dom: 'cs-weight', arg: 'weightKg', kind: 'number', label: 'Infant weight (kg)', min: 0.3, max: 10 },
     ],
   },
 ];

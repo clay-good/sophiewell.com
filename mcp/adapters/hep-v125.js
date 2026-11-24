@@ -13,7 +13,7 @@ export default [
     compute: F.peldScore,
     fields: [
       { dom: 'pe-alb', arg: 'albumin', kind: 'number', label: 'Albumin (g/dL)', bound: 'albumin' },
-      { dom: 'pe-bili', arg: 'bilirubin', kind: 'number', label: 'Total bilirubin (mg/dL)' },
+      { dom: 'pe-bili', arg: 'bilirubin', kind: 'number', label: 'Total bilirubin (mg/dL)', bound: 'bilirubin' },
       { dom: 'pe-inr', arg: 'inr', kind: 'number', label: 'INR', bound: 'inr' },
       { dom: 'pe-age', arg: 'ageUnder1', kind: 'bool', label: 'Age < 1 year at listing' },
       { dom: 'pe-growth', arg: 'growthFailure', kind: 'bool', label: 'Growth failure (< −2 SD)' },
@@ -30,8 +30,8 @@ export default [
       { dom: 'cl-coag', arg: 'coag', kind: 'enum', values: ['1', '2', '3'], label: 'Coagulation — INR sub-score' },
       { dom: 'cl-circ', arg: 'circ', kind: 'enum', values: ['1', '2', '3'], label: 'Circulation — MAP / vasopressor sub-score' },
       { dom: 'cl-resp', arg: 'resp', kind: 'enum', values: ['1', '2', '3'], label: 'Respiration — PaO2/FiO2 sub-score' },
-      { dom: 'cl-age', arg: 'age', kind: 'number', label: 'Age (years)' },
-      { dom: 'cl-wbc', arg: 'wbc', kind: 'number', label: 'White-cell count (×10⁹/L)' },
+      { dom: 'cl-age', arg: 'age', kind: 'number', label: 'Age (years)', bound: 'ageYears' },
+      { dom: 'cl-wbc', arg: 'wbc', kind: 'number', label: 'White-cell count (×10⁹/L)', bound: 'wbc' },
     ],
   },
   {
@@ -39,7 +39,7 @@ export default [
     summary: 'Glasgow Alcoholic Hepatitis Score (Forrest 2005): from age, WBC, urea, INR, and bilirubin; ≥ 9 identifies the higher-mortality cohort in which corticosteroids showed benefit.',
     compute: F.gahs,
     fields: [
-      { dom: 'ga-age', arg: 'age', kind: 'number', label: 'Age (years)' },
+      { dom: 'ga-age', arg: 'age', kind: 'number', label: 'Age (years)', bound: 'ageYears' },
       { dom: 'ga-wbc', arg: 'wbc', kind: 'number', label: 'White-cell count (×10⁹/L)' },
       { dom: 'ga-urea', arg: 'urea', kind: 'number', label: 'Urea (mmol/L)' },
       { dom: 'ga-inr', arg: 'inr', kind: 'number', label: 'INR', bound: 'inr' },

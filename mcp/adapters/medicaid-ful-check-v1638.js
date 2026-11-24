@@ -12,8 +12,8 @@ export default [
     compute: (a) => medicaidFulCheck(String(a.ndc ?? '').trim() ? { ...a, lookup: fulLookupFromDisk(a.ndc) } : a),
     fields: [
       { dom: 'mfc-ndc', arg: 'ndc', kind: 'string', label: 'NDC, to read the limit from CMS\'s file' },
-      { dom: 'mfc-amp', arg: 'weightedAmp', kind: 'number', label: 'Weighted average of the monthly AMPs, per unit (by hand)', unit: 'dollars' },
-      { dom: 'mfc-nadac', arg: 'surveyCost', kind: 'number', label: 'National survey acquisition cost (NADAC), per unit', unit: 'dollars' },
+      { dom: 'mfc-amp', arg: 'weightedAmp', kind: 'number', label: 'Weighted average of the monthly AMPs, per unit (by hand)', unit: 'dollars', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'mfc-nadac', arg: 'surveyCost', kind: 'number', label: 'National survey acquisition cost (NADAC), per unit', unit: 'dollars', bound: 'hcg', boundScale: 0.1 },
       { dom: 'mfc-qty', arg: 'quantity', kind: 'number', label: 'Quantity', unit: 'units' },
       { dom: 'mfc-fee', arg: 'dispensingFee', kind: 'number', label: 'State professional dispensing fee', unit: 'dollars' },
     ],

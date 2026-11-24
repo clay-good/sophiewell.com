@@ -29,7 +29,7 @@ export default [
     compute: L.lepine,
     fields: [
       { dom: 'lep-ldh', arg: 'pleuralLdh', kind: 'number', unit: 'U/L', required: true, label: 'Pleural fluid LDH.' },
-      { dom: 'lep-uln', arg: 'serumLdhUln', kind: 'number', unit: 'U/L', required: true, label: `THE LABORATORY'S upper limit of normal for SERUM LDH - a reference value, not the patient's blood. REQUIRED AND NOT DEFAULTED: Lepine's cutoff is ${L.LDH_MULTIPLIER} times this and Heffner's is ${L.HEFFNER_LDH_MULTIPLIER} times it, and both differ between laboratories.` },
+      { dom: 'lep-uln', arg: 'serumLdhUln', kind: 'number', unit: 'U/L', required: true, label: `THE LABORATORY'S upper limit of normal for SERUM LDH - a reference value, not the patient's blood. REQUIRED AND NOT DEFAULTED: Lepine's cutoff is ${L.LDH_MULTIPLIER} times this and Heffner's is ${L.HEFFNER_LDH_MULTIPLIER} times it, and both differ between laboratories.`, min: 1 },
       { dom: 'lep-chol', arg: 'pleuralCholesterol', kind: 'number', unit: 'mg/dL', required: true, label: `Pleural fluid cholesterol. Exudate above ${L.CHOLESTEROL_THRESHOLD} mg/dL - LOWER than Heffner's ${L.HEFFNER_CHOLESTEROL_THRESHOLD}, so easier to trigger on this axis.` },
     ],
   },

@@ -14,7 +14,7 @@ export default [
     summary: 'Essen Stroke Risk Score (Diener 2005): age plus hypertension, diabetes, prior MI, other cardiovascular disease, peripheral arterial disease, smoking, and prior stroke/TIA give a 0–9 risk of recurrent stroke; ≥ 3 marks a high annual recurrence.',
     compute: F.essenStroke,
     fields: [
-      { dom: 'essen-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'essen-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
       { dom: 'essen-htn', arg: 'hypertension', kind: 'bool', required: false, label: 'Hypertension (+1)' },
       { dom: 'essen-dm', arg: 'diabetes', kind: 'bool', required: false, label: 'Diabetes (+1)' },
       { dom: 'essen-mi', arg: 'priorMi', kind: 'bool', required: false, label: 'Prior myocardial infarction (+1)' },
@@ -51,8 +51,8 @@ export default [
     summary: 'FUNC score (Rost 2008): a point model for the likelihood of functional independence (GOS ≥ 4) at 90 days after primary ICH from ICH volume, age, location, GCS, and pre-ICH cognitive impairment; total 0–11.',
     compute: F.funcScore,
     fields: [
-      { dom: 'func-vol', arg: 'ichVolume', kind: 'number', required: true, label: 'ICH volume', unit: 'cc' },
-      { dom: 'func-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'func-vol', arg: 'ichVolume', kind: 'number', required: true, label: 'ICH volume', unit: 'cc', bound: 'lactate', boundScale: 10 },
+      { dom: 'func-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
       { dom: 'func-loc', arg: 'location', kind: 'enum', values: ['lobar', 'deep', 'infratentorial'], required: true, label: 'ICH location' },
       { dom: 'func-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3–15)' },
       { dom: 'func-cog', arg: 'cognitiveImpairment', kind: 'bool', required: false, label: 'Pre-ICH cognitive impairment (present scores 0; absent scores +1)' },

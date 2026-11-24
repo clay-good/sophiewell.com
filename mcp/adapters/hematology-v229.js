@@ -12,8 +12,8 @@ export default [
     summary: 'Absolute eosinophil count: total WBC × eosinophil percentage; ~500–1500 is mild, 1500–5000 moderate, and > 5000 cells/µL marked hypereosinophilia.',
     compute: F.aec,
     fields: [
-      { dom: 'aec-wbc', arg: 'wbc', kind: 'number', required: true, label: 'Total WBC', unit: '×10⁹/L' },
-      { dom: 'aec-eos', arg: 'eosPct', kind: 'number', required: true, label: 'Eosinophil percentage', unit: '%' },
+      { dom: 'aec-wbc', arg: 'wbc', kind: 'number', required: true, label: 'Total WBC', unit: '×10⁹/L', bound: 'wbc' },
+      { dom: 'aec-eos', arg: 'eosPct', kind: 'number', required: true, label: 'Eosinophil percentage', unit: '%', max: 100 },
     ],
   },
   {

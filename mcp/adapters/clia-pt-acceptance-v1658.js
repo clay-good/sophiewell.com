@@ -10,8 +10,8 @@ export default [
     compute: CLIA.cliaPtAcceptance,
     fields: [
       { dom: 'clia-analyte', arg: 'analyte', kind: 'enum', values: CLIA.ANALYTES.map((a) => a[0]), required: true, label: 'Analyte' },
-      { dom: 'clia-target', arg: 'target', kind: 'number', required: true, label: 'Program\'s target value' },
-      { dom: 'clia-response', arg: 'response', kind: 'number', required: true, label: 'Laboratory\'s response' },
+      { dom: 'clia-target', arg: 'target', kind: 'number', required: true, label: 'Program\'s target value', bound: 'hcg' },
+      { dom: 'clia-response', arg: 'response', kind: 'number', required: true, label: 'Laboratory\'s response', bound: 'hcg' },
       { dom: 'clia-sd', arg: 'sd', kind: 'number', required: false, label: 'Program\'s SD (white cell differential only)' },
       { dom: 'clia-decision', arg: 'decisionLevel', kind: 'number', required: false, label: 'Decision level, for the limit as a percent (optional)' },
     ]

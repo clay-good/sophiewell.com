@@ -11,7 +11,7 @@ export default [
       { dom: 'mpr-fills', arg: 'fills', kind: 'string', required: true, label: 'Fills, one per line: fill date (YYYY-MM-DD), days supply' },
       { dom: 'mpr-start', arg: 'periodStart', kind: 'string', required: false, label: 'Period start (YYYY-MM-DD; blank for the first fill)' },
       { dom: 'mpr-end', arg: 'periodEnd', kind: 'string', required: false, label: 'Period end (YYYY-MM-DD; blank for December 31)' },
-      { dom: 'mpr-gap', arg: 'gapDays', kind: 'number', required: false, label: 'List gaps longer than this many days', unit: 'days' },
+      { dom: 'mpr-gap', arg: 'gapDays', kind: 'number', required: false, label: 'List gaps longer than this many days', unit: 'days', max: 365 },
     ],
   },
   {

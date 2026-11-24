@@ -12,9 +12,9 @@ export default [
     summary: 'Sorts membranous nephropathy into the four KDIGO 2021 risk categories. Low is a preserved eGFR with proteinuria below 3.5 g per day and a serum albumin above 3.0 g/dL, or proteinuria halved after six months of supportive therapy. Moderate is a preserved eGFR with proteinuria above 3.5 g per day and no high-risk feature. High is an eGFR below 60, or proteinuria above 8 g per day persisting beyond six months, or nephrotic-range proteinuria with a serum albumin below 2.5 g/dL, an anti-PLA2R above 50 RU/mL, or raised urinary alpha-1 microglobulin or IgG. Very high is a life-threatening nephrotic syndrome or a rapid unexplained fall in kidney function. THE CATEGORY, NOT THE PROTEINURIA ALONE, IS WHAT THE GUIDELINE ACTS ON. SIX MONTHS OF SUPPORTIVE THERAPY IS PART OF THE DEFINITION. A HIGH ANTI-PLA2R DOES NOT RAISE THE CATEGORY ON ITS OWN. Very high risk is a clinical picture, not a number.',
     compute: membranousRisk,
     fields: [
-      { dom: 'mn-egfr', arg: 'egfr', kind: 'number', required: false, label: 'eGFR, mL/min per 1.73 square meters', unit: 'mL/min/1.73m2' },
-      { dom: 'mn-proteinuria', arg: 'proteinuria', kind: 'number', required: false, label: 'Proteinuria, grams per day', unit: 'g/day' },
-      { dom: 'mn-albumin', arg: 'albumin', kind: 'number', required: false, label: 'Serum albumin, g/dL', unit: 'g/dL' },
+      { dom: 'mn-egfr', arg: 'egfr', kind: 'number', required: false, label: 'eGFR, mL/min per 1.73 square meters', unit: 'mL/min/1.73m2', bound: 'eGFR' },
+      { dom: 'mn-proteinuria', arg: 'proteinuria', kind: 'number', required: false, label: 'Proteinuria, grams per day', unit: 'g/day', bound: 'lactate' },
+      { dom: 'mn-albumin', arg: 'albumin', kind: 'number', required: false, label: 'Serum albumin, g/dL', unit: 'g/dL', max: 8 },
       { dom: 'mn-pla2r', arg: 'pla2r', kind: 'number', required: false, label: 'Anti-PLA2R antibody, RU/mL (counts only alongside proteinuria above 3.5 g/day)', unit: 'RU/mL' },
       { dom: 'mn-urinarymarkersraised', arg: 'urinaryMarkersRaised', kind: 'boolean', required: false, label: 'Urinary alpha-1 microglobulin or IgG excretion is raised' },
       { dom: 'mn-sixmonthssupportive', arg: 'sixMonthsSupportive', kind: 'boolean', required: false, label: 'Six months of supportive therapy have been given' },

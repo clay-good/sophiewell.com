@@ -8,7 +8,7 @@ export default [
     summary: 'Blackburne-Peel index of patellar height on a lateral knee radiograph at about 30 degrees of flexion. The index is A / B, where A is the perpendicular from the inferior patellar articular surface to the tibial plateau line and B is the patellar articular surface length (mm). The reading is given against both published cutoff sets: the original normal range 0.54 to 1.06, and the categories low below 0.80, normal 0.80 to 1.00, high above 1.00.',
     compute: BP.blackburnePeel,
     fields: [
-      { dom: 'bp-a', arg: 'distanceA', kind: 'number', unit: 'mm', required: true, label: 'Distance A (inferior patellar articular surface to the tibial plateau line)' },
+      { dom: 'bp-a', arg: 'distanceA', kind: 'number', unit: 'mm', required: true, label: 'Distance A (inferior patellar articular surface to the tibial plateau line)', max: 80 },
       { dom: 'bp-b', arg: 'lengthB', kind: 'number', unit: 'mm', required: true, label: 'Length B (patellar articular surface)', min: 10, max: 80 },
     ],
   },

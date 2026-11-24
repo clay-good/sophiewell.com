@@ -11,7 +11,7 @@ export default [
     summary: 'Checks the six WIC 5972 criteria for California CARE Court and names any that fail. An adult with a serious mental disorder in the schizophrenia spectrum, or, since SB 27 (January 1, 2026), bipolar I disorder with psychotic features. The person is not stabilized in voluntary treatment, is deteriorating or needs support to prevent relapse, and CARE is the least restrictive alternative and likely to help. Psychosis from current intoxication, a medical or neurologic cause, and a substance use disorder alone do not qualify.',
     compute: CARE.caCareCourtEligibility,
     fields: [
-      { dom: 'care-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'care-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', max: 120 },
       { dom: 'care-dx', arg: 'diagnosis', kind: 'enum', required: true, label: 'Diagnosis', values: CARE.DIAGNOSES.map((d) => d.value) },
       { dom: 'care-serious', arg: 'serious', kind: 'enum', label: '(b) Serious mental disorder (5600.3)', values: C },
       { dom: 'care-stabilized', arg: 'notStabilized', kind: 'enum', label: '(c) Not stabilized in ongoing voluntary treatment', values: C },

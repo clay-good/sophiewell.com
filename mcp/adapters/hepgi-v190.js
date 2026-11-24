@@ -23,8 +23,8 @@ export default [
     fields: [
       { dom: 'meldna-bilirubin', concept: 'bilirubin', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
       { dom: 'meldna-inr', concept: 'inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
-      { dom: 'meldna-creatinine', concept: 'creatinine', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL' },
-      { dom: 'meldna-sodium', concept: 'sodium', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mmol/L' },
+      { dom: 'meldna-creatinine', concept: 'creatinine', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL', min: 0.1 },
+      { dom: 'meldna-sodium', concept: 'sodium', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mmol/L', min: 85 },
       { dom: 'meldna-dialysis', arg: 'dialysis', kind: 'bool', required: false, label: 'Dialysis ≥ 2× in the prior week' },
     ],
   },
@@ -33,8 +33,8 @@ export default [
     summary: 'Clichy criteria for emergency liver transplant in acute liver failure: hepatic encephalopathy plus an age-branched coagulation factor-V threshold.',
     compute: F.clichy,
     fields: [
-      { dom: 'clichy-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'clichy-factorV', arg: 'factorV', kind: 'number', required: true, label: 'Coagulation factor V', unit: '% of normal' },
+      { dom: 'clichy-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'clichy-factorV', arg: 'factorV', kind: 'number', required: true, label: 'Coagulation factor V', unit: '% of normal', max: 200 },
       { dom: 'clichy-encephalopathy', arg: 'encephalopathy', kind: 'bool', required: false, label: 'Hepatic encephalopathy (grade 3–4)' },
     ],
   },

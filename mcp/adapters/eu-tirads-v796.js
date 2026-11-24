@@ -15,7 +15,7 @@ export default [
       { dom: 'eutr-margins', arg: 'irregularMargins', kind: 'boolean', required: false, label: 'Irregular margins' },
       { dom: 'eutr-microcalc', arg: 'microcalcifications', kind: 'boolean', required: false, label: 'Microcalcifications' },
       { dom: 'eutr-hypo', arg: 'markedHypoechogenicity', kind: 'boolean', required: false, label: 'Marked hypoechogenicity' },
-      { dom: 'eutr-size', arg: 'sizeMm', kind: 'number', required: false, label: 'Largest diameter', unit: 'mm' },
+      { dom: 'eutr-size', arg: 'sizeMm', kind: 'number', required: false, label: 'Largest diameter', unit: 'mm', max: 200 },
     ],
   },
 ];

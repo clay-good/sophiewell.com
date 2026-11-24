@@ -12,10 +12,10 @@ export default [
     summary: 'SCORTEN severity-of-illness score for toxic epidermal necrolysis / Stevens-Johnson syndrome: seven bedside risk factors mapping to a predicted mortality band.',
     compute: F.scorten,
     fields: [
-      { dom: 'scorten-age', arg: 'age', kind: 'number', required: false, label: 'Age', unit: 'years' },
-      { dom: 'scorten-heartRate', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'scorten-age', arg: 'age', kind: 'number', required: false, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'scorten-heartRate', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm', min: 10 },
       { dom: 'scorten-bsaDetached', arg: 'bsaDetached', kind: 'number', required: false, label: 'Body surface area detached', unit: '%' },
-      { dom: 'scorten-bun', arg: 'bun', kind: 'number', required: false, label: 'BUN', unit: 'mg/dL' },
+      { dom: 'scorten-bun', arg: 'bun', kind: 'number', required: false, label: 'BUN', unit: 'mg/dL', min: 1 },
       { dom: 'scorten-bicarbonate', arg: 'bicarbonate', kind: 'number', required: false, label: 'Serum bicarbonate', unit: 'mEq/L' },
       { dom: 'scorten-glucose', arg: 'glucose', kind: 'number', required: false, label: 'Serum glucose', unit: 'mg/dL' },
       { dom: 'scorten-malignancy', arg: 'malignancy', kind: 'bool', required: false, label: 'Associated malignancy' },

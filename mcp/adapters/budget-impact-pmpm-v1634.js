@@ -10,7 +10,7 @@ export default [
     compute: BI.budgetImpactPmpm,
     fields: [
       { dom: 'bip-impact', arg: 'budgetImpact', kind: 'number', required: true, label: 'Budget impact over the period', unit: 'USD' },
-      { dom: 'bip-members', arg: 'members', kind: 'number', required: true, label: 'Members covered' },
+      { dom: 'bip-members', arg: 'members', kind: 'number', required: true, label: 'Members covered', min: 1 },
       { dom: 'bip-months', arg: 'months', kind: 'number', required: true, label: 'Months in the period', min: 1, max: 600 },
     ],
   },

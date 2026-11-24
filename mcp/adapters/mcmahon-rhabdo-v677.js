@@ -11,7 +11,7 @@ export default [
     summary: 'McMahon Score for rhabdomyolysis (McMahon 2013): predicts in-hospital death or AKI needing renal replacement from admission values. Points: age (51-70=1.5, 71-80=2.5, >80=3), female sex (1), creatinine (1.4-2.2=1.5, >2.2=3 mg/dL), calcium <7.5 mg/dL (2), CPK >40,000 U/L (2), cause not seizure/syncope/exercise/statin/myositis (3), phosphate (4.0-5.4=1.5, >5.4=3 mg/dL), bicarbonate <19 mEq/L (2). Total 0-19; <6 low (~2-3%), >=6 high risk.',
     compute: mcmahonRhabdo,
     fields: [
-      { dom: 'mcm-age', arg: 'age', kind: 'number', unit: 'years', required: true, label: 'Age (years)' },
+      { dom: 'mcm-age', arg: 'age', kind: 'number', unit: 'years', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'mcm-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex (female adds 1 point)' },
       { dom: 'mcm-creat', arg: 'creatinine', kind: 'number', unit: 'mg/dL', required: true, label: 'Initial creatinine (mg/dL)', bound: 'scr' },
       { dom: 'mcm-ca', arg: 'calcium', kind: 'number', unit: 'mg/dL', required: true, label: 'Initial calcium (mg/dL; < 7.5 adds 2)', bound: 'calcium' },

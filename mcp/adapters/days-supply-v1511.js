@@ -20,7 +20,7 @@ export default [
       { dom: 'ds-pens', arg: 'pens', kind: 'number', required: false, label: 'Insulin: pens or vials dispensed' },
       { dom: 'ds-uday', arg: 'unitsPerDay', kind: 'number', required: false, label: 'Insulin: units injected per day' },
       { dom: 'ds-inj', arg: 'injectionsPerDay', kind: 'number', required: false, label: 'Insulin: injections per day' },
-      { dom: 'ds-prime', arg: 'primingUnits', kind: 'number', required: false, label: 'Insulin: priming units per injection (from the label)' },
+      { dom: 'ds-prime', arg: 'primingUnits', kind: 'number', required: false, label: 'Insulin: priming units per injection (from the label)', max: 20 },
       { dom: 'ds-act', arg: 'actuations', kind: 'number', required: false, label: 'Inhaler: actuations per canister' },
       { dom: 'ds-can', arg: 'canisters', kind: 'number', required: false, label: 'Inhaler: canisters dispensed' },
       { dom: 'ds-puffs', arg: 'puffsPerDose', kind: 'number', required: false, label: 'Inhaler: puffs per dose' },

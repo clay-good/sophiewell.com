@@ -12,7 +12,7 @@ export default [
     compute: AOT.nyAotKendrasLaw,
     fields: [
       { dom: 'aot-asof', arg: 'asOf', kind: 'string', required: true, label: 'Petition date (YYYY-MM-DD)' },
-      { dom: 'aot-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'aot-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', max: 120 },
       { dom: 'aot-mi', arg: 'mentalIllness', kind: 'enum', label: '(2) Suffering from a mental illness', values: C },
       { dom: 'aot-survive', arg: 'unlikelySurvive', kind: 'enum', label: '(3) Unlikely to survive safely without supervision', values: C },
       { dom: 'aot-voluntary', arg: 'unlikelyVoluntary', kind: 'enum', label: '(5) Unlikely to take part in treatment voluntarily', values: C },

@@ -21,7 +21,7 @@ export default [
       { dom: 'cl-hypothermia', arg: 'hypothermia', kind: 'boolean', required: false, label: 'Hypothermia below 96.8 F (36.0 C) (accepted for a patient one year old or younger)' },
       { dom: 'cl-apnea', arg: 'apnea', kind: 'boolean', required: false, label: 'Apnea (accepted for a patient one year old or younger)' },
       { dom: 'cl-bradycardia', arg: 'bradycardia', kind: 'boolean', required: false, label: 'Bradycardia (accepted for a patient one year old or younger)' },
-      { dom: 'cl-linedays', arg: 'lineDays', kind: 'number', required: false, label: 'Consecutive calendar days the central line has been in place, counting the day of insertion as day 1' },
+      { dom: 'cl-linedays', arg: 'lineDays', kind: 'number', required: false, label: 'Consecutive calendar days the central line has been in place, counting the day of insertion as day 1', max: 3650 },
       { dom: 'cl-linepresentonordaybefore', arg: 'linePresentOnOrDayBefore', kind: 'boolean', required: false, label: 'The line was in place on the day of the event, or the day before' },
     ],
   },

@@ -21,7 +21,7 @@ export default [
     summary: 'Mantle-cell lymphoma International Prognostic Index (Hoster 2008): a continuous score from age, ECOG, LDH/ULN ratio, and white-cell count → low / intermediate / high risk.',
     compute: F.mipi,
     fields: [
-      { dom: 'mipi-age', arg: 'age', kind: 'number', label: 'Age (years)' },
+      { dom: 'mipi-age', arg: 'age', kind: 'number', label: 'Age (years)', bound: 'ageYears' },
       { dom: 'mipi-ecog', arg: 'ecog', kind: 'enum', values: ['0', '1'], label: 'ECOG performance status (0–1 vs 2–4)' },
       { dom: 'mipi-ldh', arg: 'ldh', kind: 'number', label: 'LDH (U/L)' },
       { dom: 'mipi-uln', arg: 'uln', kind: 'number', label: 'LDH upper limit of normal (U/L)' },

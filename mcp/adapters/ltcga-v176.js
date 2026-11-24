@@ -24,8 +24,8 @@ export default [
     summary: '30-Second Chair Stand (CDC STEADI): full sit-to-stand repetitions in 30 seconds compared with the below-average cut-point for age and sex.',
     compute: F.chairStand30s,
     fields: [
-    { dom: 'chair-stands', arg: 'stands', kind: 'number', required: true, label: 'Stands' },
-    { dom: 'chair-age', arg: 'age', kind: 'number', required: true, label: 'Age' },
+    { dom: 'chair-stands', arg: 'stands', kind: 'number', required: true, label: 'Stands', max: 100 },
+    { dom: 'chair-age', arg: 'age', kind: 'number', required: true, label: 'Age', bound: 'ageYears' },
     { dom: 'chair-sex', arg: 'sex', kind: 'enum', values: ["male","female"], required: true, label: 'Sex' },
     ],
   },
@@ -43,7 +43,7 @@ export default [
     compute: F.functionalReach,
     fields: [
     { dom: 'reach-distance', arg: 'reachCm', kind: 'number', required: true, label: 'Reach Cm' },
-    { dom: 'reach-age', arg: 'age', kind: 'number', required: true, label: 'Age' },
+    { dom: 'reach-age', arg: 'age', kind: 'number', required: true, label: 'Age', bound: 'ageYears' },
     { dom: 'reach-sex', arg: 'sex', kind: 'enum', values: ["male","female"], required: true, label: 'Sex' },
     ],
   },

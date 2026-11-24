@@ -12,7 +12,7 @@ export default [
       { dom: 'boa-beds', arg: 'beds', kind: 'number', required: false, label: 'Beds' },
       { dom: 'boa-days', arg: 'days', kind: 'number', required: false, label: 'Days in the period' },
       { dom: 'boa-periods', arg: 'bedPeriods', kind: 'string', required: false, label: 'When the bed count changed, one line per part: beds, days' },
-      { dom: 'boa-ip-days', arg: 'inpatientDays', kind: 'number', required: true, label: 'Inpatient days' },
+      { dom: 'boa-ip-days', arg: 'inpatientDays', kind: 'number', required: true, label: 'Inpatient days', bound: 'hcg', boundScale: 10 },
       { dom: 'boa-discharges', arg: 'discharges', kind: 'number', required: false, label: 'Discharges, including deaths, excluding newborns and DOAs' },
     ]
   },

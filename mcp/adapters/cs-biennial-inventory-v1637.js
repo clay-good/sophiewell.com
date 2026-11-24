@@ -13,7 +13,7 @@ export default [
       { dom: 'cbi-state', arg: 'stateIntervalMonths', kind: 'number', label: 'State inventory interval, if shorter', unit: 'months' },
       { dom: 'cbi-schedule', arg: 'schedule', kind: 'enum', values: BI.SCHEDULES.map((k) => k.value).filter(Boolean), label: 'Schedule of the drug in the container' },
       { dom: 'cbi-container', arg: 'container', kind: 'enum', values: BI.CONTAINERS.map((k) => k.value).filter(Boolean), label: 'Container' },
-      { dom: 'cbi-count', arg: 'labeledCount', kind: 'number', label: 'Tablets or capsules the container holds' },
+      { dom: 'cbi-count', arg: 'labeledCount', kind: 'number', label: 'Tablets or capsules the container holds', min: 1, max: 1000000 },
       { dom: 'cbi-effective', arg: 'newlyScheduledEffective', kind: 'string', label: 'Effective date of a rule newly scheduling the drug (YYYY-MM-DD)' },
     ],
   },

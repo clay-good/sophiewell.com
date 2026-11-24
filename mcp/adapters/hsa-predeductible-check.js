@@ -24,7 +24,7 @@ export default [
       box('hpd-bleeding', 'bleeding', 'a bleeding disorder'),
       box('hpd-depression', 'depression', 'depression'),
       { dom: 'hpd-purpose', arg: 'purpose', kind: 'enum', required: false, values: vals(HP.YES_NO), label: 'Prescribed to prevent worsening or a secondary condition' },
-      { dom: 'hpd-year', arg: 'planYear', kind: 'number', required: false, label: 'Year the plan year begins', unit: 'year' },
+      { dom: 'hpd-year', arg: 'planYear', kind: 'number', required: false, label: 'Year the plan year begins', unit: 'year', min: 2026, max: 2026 },
     ],
   },
 ];

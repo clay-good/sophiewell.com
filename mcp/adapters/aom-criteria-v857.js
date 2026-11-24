@@ -12,7 +12,7 @@ export default [
     summary: 'Applies the AAP criteria for acute otitis media and reports which management route the guideline leaves open. The diagnosis needs objective evidence of fluid behind the eardrum plus one of moderate to severe bulging, new drainage from the ear not from an outer-ear infection, or mild bulging with ear pain starting within 48 hours or intense redness. REDNESS ALONE MEETS NONE OF THEM and the diagnosis is not made without evidence of fluid. Severe is moderate or severe pain, pain for 48 hours or more, or a temperature of 102.2 degrees Fahrenheit or higher. Antibiotics are recommended for severe disease at any age and between 6 and 23 months when both ears are affected; otherwise observation with close follow-up is an option. It does not prescribe or select an antibiotic.',
     compute: aomCriteria,
     fields: [
-      { dom: 'aom-age', arg: 'ageMonths', kind: 'number', required: false, label: 'Age of the child', unit: 'months' },
+      { dom: 'aom-age', arg: 'ageMonths', kind: 'number', required: false, label: 'Age of the child', unit: 'months', max: 216 },
       { dom: 'aom-bilat', arg: 'bilateral', kind: 'boolean', required: false, label: 'Both ears affected, which changes the answer only between 6 and 23 months' },
       { dom: 'aom-effusion', arg: 'effusion', kind: 'boolean', required: false, label: 'Objective evidence of fluid behind the eardrum, without which no criterion is met' },
       { dom: 'aom-bulge', arg: 'bulging', kind: 'enum', values: ['none', 'mild', 'moderate-severe'], required: false, label: 'Bulging of the eardrum' },

@@ -11,16 +11,34 @@
 // Not every row is a defect. A score's documented input domain, a value the tool itself treats as out of its
 // validated population, or a field whose quantity the map mistook, can rightly be narrower; read each row.
 //
+// spec-v1781: "documented" now has a machine-readable meaning, so the report stops printing the rows that
+// have one. A field whose own `min`/`max` (resolved through `fieldRange`, so an envelope named with `bound:`
+// counts) already excludes the value this probe drives is a cap the tool STATES: it reaches the published
+// input schema, and an agent reading `describe_calculator` is told the range before it calls. That is a
+// validated population declared, not a survivable value turned away in silence, and
+// [spec-v1777](../docs/spec-v1777.md) and [spec-v1779](../docs/spec-v1779.md) declared 709 of them. 116 of
+// this finder's 213 rows were that, which is most of what anyone reading the report had to re-decide every
+// run. What is left is the thing it was written for: a narrower cap nothing declares.
+//
 //   node scripts/probe-envelope-inside.mjs            TOOLS=apache2 node scripts/probe-envelope-inside.mjs
 
 import { META } from '../lib/meta.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { candidates, envelope, fillFor, floorApplies } from './lib/envelope-map.mjs';
+import { REGISTRY } from '../mcp/catalog.js';
+import { fieldRange } from '../mcp/fields.js';
+
+// The field's own declared range, resolved; null when it declares none.
+function declaredFor(id, dom) {
+  const f = (REGISTRY.get(id)?.fields || []).find((x) => x.dom === dom);
+  return f ? fieldRange(f) : null;
+}
 
 const ONLY = process.env.TOOLS ? new Set(process.env.TOOLS.split(',')) : null;
 const RANGE = /plausible range|must be (?:between|at most|at least|from|no more)|between -?[\d.,]+ and -?[\d.,]+|outside -?[\d.,]+ to|no more than|beyond (?:a plausible|recorded)/i;
 let driven = 0;
 let rows = 0;
+let stated = 0;
 for (const r of candidates()) {
   if (ONLY && !ONLY.has(r.id)) continue;
   let ex = META[r.id]?.example?.fields;
@@ -33,8 +51,15 @@ for (const r of candidates()) {
   } else if (!(Number(r.ex) >= b.min && Number(r.ex) <= b.max)) continue;
   const probes = [['ceiling', Number((b.max * 0.97).toPrecision(5))]];
   if (b.min > 0 && floorApplies(r)) probes.push(['floor', Number((b.min * 1.03).toPrecision(5))]);
+  const declared = declaredFor(r.id, r.dom);
   for (const [side, v] of probes) {
     driven++;
+    // The cap is STATED: the field's own declared range already excludes this value, so it is in the
+    // published input schema and no reader or agent meets it unannounced.
+    if (declared && ((declared.min !== null && v < declared.min) || (declared.max !== null && v > declared.max))) {
+      stated++;
+      continue;
+    }
     const res = computeCalculator({ id: r.id, inputs: { ...ex, [r.dom]: String(v) } });
     if (res.valid !== false) continue;
     const msg = String(res.message || res.result?.band || '');
@@ -43,4 +68,6 @@ for (const r of candidates()) {
     console.log(`${r.id}\t${r.dom}\t${r.key} ${side} drove=${v} [${b.min}, ${b.max}]\t${msg.slice(0, 110)}`);
   }
 }
-console.error(`${rows} of ${driven} value(s) just inside an envelope are refused by a narrower cap.`);
+console.error(`${rows} of ${driven} value(s) just inside an envelope are refused by a narrower cap that nothing declares`
+  + `; ${stated} more are outside a range the field itself declares, which is a validated population stated rather `
+  + `than a survivable value turned away (spec-v1781).`);

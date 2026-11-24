@@ -15,7 +15,7 @@ export default [
       { dom: 'tm-vomit', arg: 'vomiting', kind: 'enum', values: ['yes', 'no'], required: true, label: 'Pain associated with vomiting' },
       { dom: 'tm-sweat', arg: 'sweating', kind: 'enum', values: ['yes', 'no'], required: true, label: 'Sweating observed' },
       { dom: 'tm-hypo', arg: 'hypotension', kind: 'enum', values: ['yes', 'no'], required: true, label: 'Hypotension (systolic below 100 mm Hg)' },
-      { dom: 'tm-tnt', arg: 'troponinT', kind: 'number', required: true, label: 'High-sensitivity troponin T on arrival (ng/L)' },
+      { dom: 'tm-tnt', arg: 'troponinT', kind: 'number', required: true, label: 'High-sensitivity troponin T on arrival (ng/L)', bound: 'hcg', boundScale: 0.01 },
     ]
   },
 ];

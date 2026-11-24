@@ -28,9 +28,9 @@ export default [
     summary: "Crohn's Disease Activity Index (Best 1976): liquid stools (×2) + abdominal pain (×5) + general well-being (×7) + complications (×20) + antidiarrheal use (30) + abdominal mass (×10) + hematocrit deficit (×6) + percent below standard weight; < 150 remission, 150-220 mild, 221-450 moderate, > 450 severe.",
     compute: F.cdaiCrohns,
     fields: [
-      { dom: 'cd-stools', arg: 'stools', kind: 'number', label: 'Liquid/soft stools (sum over 7 days)' },
-      { dom: 'cd-pain', arg: 'pain', kind: 'number', label: 'Abdominal pain (sum of daily 0-3 over 7 days)' },
-      { dom: 'cd-well', arg: 'wellbeing', kind: 'number', label: 'General well-being (sum of daily 0-4 over 7 days)' },
+      { dom: 'cd-stools', arg: 'stools', kind: 'number', label: 'Liquid/soft stools (sum over 7 days)', max: 1000 },
+      { dom: 'cd-pain', arg: 'pain', kind: 'number', label: 'Abdominal pain (sum of daily 0-3 over 7 days)', max: 21 },
+      { dom: 'cd-well', arg: 'wellbeing', kind: 'number', label: 'General well-being (sum of daily 0-4 over 7 days)', max: 28 },
       { dom: 'cd-comp', arg: 'complications', kind: 'number', min: 0, max: 6, label: 'Number of complications (0-6)' },
       { dom: 'cd-anti', arg: 'antidiarrheal', kind: 'bool', label: 'Antidiarrheal use' },
       { dom: 'cd-mass', arg: 'abdMass', kind: 'number', required: true, label: 'Abdominal mass (0 none, 2 questionable, 5 definite)', values: ['0', '2', '5'] },

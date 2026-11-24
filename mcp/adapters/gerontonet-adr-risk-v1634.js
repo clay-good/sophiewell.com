@@ -10,7 +10,7 @@ export default [
     summary: 'GerontoNet ADR risk score for an inpatient 65 or older. It adds points for the number of drugs, a previous ADR, heart failure, liver disease, 4 or more conditions and renal failure (Onder 2010), with the cohort ADR rate at that score.',
     compute: GN.gerontonetAdrRisk,
     fields: [
-      { dom: 'gn-drugs', arg: 'drugs', kind: 'number', required: true, label: 'Number of drugs' },
+      { dom: 'gn-drugs', arg: 'drugs', kind: 'number', required: true, label: 'Number of drugs', max: 100 },
       { dom: 'gn-adr', arg: 'previousAdr', kind: 'enum', required: true, values: yn, label: 'Previous adverse drug reaction' },
       { dom: 'gn-com', arg: 'comorbidities', kind: 'enum', required: true, values: yn, label: '4 or more comorbid conditions' },
       { dom: 'gn-hf', arg: 'heartFailure', kind: 'enum', required: true, values: yn, label: 'Heart failure' },

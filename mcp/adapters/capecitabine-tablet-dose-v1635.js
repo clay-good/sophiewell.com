@@ -13,7 +13,7 @@ export default [
       { dom: 'cap-level', arg: 'level', kind: 'enum', required: true, values: CP.LEVELS.map((l) => l.value), label: 'Dose level per dose, mg/m² twice daily' },
       { dom: 'cap-typed', arg: 'typedLevel', kind: 'number', label: 'Another dose level', unit: 'mg/m²' },
       { dom: 'cap-bsa', arg: 'bsa', kind: 'number', required: true, label: 'Body surface area', unit: 'm²', min: 0.2, max: 3.5 },
-      { dom: 'cap-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance (Cockcroft-Gault)', unit: 'mL/min' },
+      { dom: 'cap-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance (Cockcroft-Gault)', unit: 'mL/min', max: 300 },
       { dom: 'cap-percent', arg: 'percent', kind: 'enum', required: true, values: CP.PERCENTS.map((p) => p.value), label: 'Percent of the dose for this cycle' },
       { dom: 'cap-days', arg: 'daysOn', kind: 'number', label: 'Days of treatment in the cycle (optional)', unit: 'days' },
     ],

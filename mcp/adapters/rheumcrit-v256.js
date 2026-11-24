@@ -46,7 +46,7 @@ export default [
     summary: 'Intubation Difficulty Scale (Adnet 1997): sums N1-N7 (extra attempts, extra operators, alternative techniques, Cormack-Lehane grade - 1, lifting force, laryngeal pressure, cord adduction); 0 easy, 1-5 moderate, > 5 difficult.',
     compute: F.intubationDifficultyScale,
     fields: [
-      { dom: 'ids-attempts', arg: 'extraAttempts', kind: 'number', required: true, label: 'Attempts beyond the first (N1)' },
+      { dom: 'ids-attempts', arg: 'extraAttempts', kind: 'number', required: true, label: 'Attempts beyond the first (N1)', max: 20 },
       { dom: 'ids-operators', arg: 'extraOperators', kind: 'number', required: false, label: 'Operators beyond the first (N2)' },
       { dom: 'ids-tech', arg: 'altTechniques', kind: 'number', required: false, label: 'Alternative techniques used (N3)' },
       { dom: 'ids-cormack', arg: 'cormack', kind: 'number', required: true, label: 'Cormack-Lehane grade (N4 = grade - 1)', values: ['1', '2', '3', '4'] },

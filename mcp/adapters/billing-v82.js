@@ -31,7 +31,7 @@ export default [
     fields: [
       { dom: 'mc-part', arg: 'part', kind: 'enum', values: ['A', 'B', 'SNF'], required: true, label: 'Medicare benefit: A (inpatient hospital), B (outpatient), or SNF' },
       { dom: 'mc-allowed', arg: 'allowedCents', kind: 'number', required: true, label: 'Medicare-allowed amount', unit: '$', to: usd },
-      { dom: 'mc-ded', arg: 'deductibleRemainingCents', kind: 'number', label: 'Remaining deductible (defaults to the current Part B deductible)', unit: '$', to: usd },
+      { dom: 'mc-ded', arg: 'deductibleRemainingCents', kind: 'number', label: 'Remaining deductible (defaults to the current Part B deductible)', unit: '$', to: usd, bound: 'hcg' },
     ],
   },
   {
@@ -56,8 +56,8 @@ export default [
     fields: [
       { dom: 'aa-charge', arg: 'billedChargeCents', kind: 'number', required: true, label: 'Billed charge', unit: '$', to: usd },
       { dom: 'aa-allowed', arg: 'allowedCents', kind: 'number', required: true, label: 'Allowed amount', unit: '$', to: usd },
-      { dom: 'aa-ded', arg: 'deductibleRemainingCents', kind: 'number', label: 'Remaining deductible', unit: '$', to: usd },
-      { dom: 'aa-coins', arg: 'coinsurancePct', kind: 'number', label: 'Coinsurance percentage' },
+      { dom: 'aa-ded', arg: 'deductibleRemainingCents', kind: 'number', label: 'Remaining deductible', unit: '$', to: usd, bound: 'hcg' },
+      { dom: 'aa-coins', arg: 'coinsurancePct', kind: 'number', label: 'Coinsurance percentage', max: 100 },
     ],
   },
   {
@@ -74,7 +74,7 @@ export default [
       // balance-bill figure, which is reported as $0 without it. Declared required,
       // the agent surface refused every call that only wanted the cost-share.
       { dom: 'nsa-charge', arg: 'billedChargeCents', kind: 'number', label: 'Billed charge (for the prohibited balance-bill amount)', unit: '$', to: usd },
-      { dom: 'nsa-coins', arg: 'coinsurancePct', kind: 'number', label: 'In-network coinsurance percentage' },
+      { dom: 'nsa-coins', arg: 'coinsurancePct', kind: 'number', label: 'In-network coinsurance percentage', max: 100 },
     ],
   },
 ];

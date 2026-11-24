@@ -19,7 +19,7 @@ export default [
       // and the view reads it with `optNum`. The weight-based initial bolus and rate
       // need only the weight and the indication; the aPTT drives the adjustment
       // step, which is the second half of the nomogram.
-      { dom: 'hep-aptt', arg: 'aptt', kind: 'number', label: 'Current aPTT (optional; for the adjustment step)', unit: 'seconds' },
+      { dom: 'hep-aptt', arg: 'aptt', kind: 'number', label: 'Current aPTT (optional; for the adjustment step)', unit: 'seconds', min: 1, max: 400 },
     ],
   },
   {
@@ -28,9 +28,9 @@ export default [
     compute: F.vancAuc,
     fields: [
       { dom: 'va-peak', arg: 'peak', kind: 'number', required: true, label: 'Peak level', unit: 'mg/L', min: 0.1, max: 200 },
-      { dom: 'va-tpeak', arg: 'tPeak', kind: 'number', required: true, label: 'Peak draw time after infusion end', unit: 'h' },
+      { dom: 'va-tpeak', arg: 'tPeak', kind: 'number', required: true, label: 'Peak draw time after infusion end', unit: 'h', max: 48 },
       { dom: 'va-trough', arg: 'trough', kind: 'number', required: true, label: 'Trough level', unit: 'mg/L', min: 0.01, max: 200 },
-      { dom: 'va-ttrough', arg: 'tTrough', kind: 'number', required: true, label: 'Trough draw time after infusion end', unit: 'h' },
+      { dom: 'va-ttrough', arg: 'tTrough', kind: 'number', required: true, label: 'Trough draw time after infusion end', unit: 'h', max: 48 },
       { dom: 'va-tinf', arg: 'tInf', kind: 'number', required: true, label: 'Infusion duration', unit: 'h', min: 0.1, max: 12 },
       { dom: 'va-tau', arg: 'tau', kind: 'number', required: true, label: 'Dosing interval', unit: 'h', min: 1, max: 48 },
       { dom: 'va-mic', arg: 'mic', kind: 'number', required: true, label: 'MIC', unit: 'mg/L', min: 0.1, max: 16 },
@@ -45,7 +45,7 @@ export default [
     fields: [
       { dom: 'ag-drug', arg: 'drug', kind: 'enum', values: ['gentamicin', 'tobramycin', 'amikacin'], required: true, label: 'Drug' },
       { dom: 'ag-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Dosing weight', unit: 'kg', min: 1, max: 400 },
-      { dom: 'ag-crcl', arg: 'crCl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
+      { dom: 'ag-crcl', arg: 'crCl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min', max: 250 },
       { dom: 'ag-dialysis', arg: 'dialysis', kind: 'bool', required: false, label: 'On dialysis' },
     ],
   },
@@ -59,7 +59,7 @@ export default [
     },
     fields: [
       { dom: 'apap-h', arg: 'hours', kind: 'number', required: true, label: 'Hours since single acute ingestion (4-24 h)', unit: 'h', min: 4, max: 24 },
-      { dom: 'apap-lvl', arg: 'levelUgMl', kind: 'number', required: true, label: 'Serum acetaminophen', unit: 'ug/mL' },
+      { dom: 'apap-lvl', arg: 'levelUgMl', kind: 'number', required: true, label: 'Serum acetaminophen', unit: 'ug/mL', max: 2000 },
     ],
   },
   {
@@ -67,15 +67,15 @@ export default [
     summary: 'Digoxin maintenance guidance and level interpretation: renal/age-adjusted dose guidance, an indication-specific target range (the 0.5-0.9 ng/mL heart-failure target is ACC/AHA/HFSA 2022), a <6 h post-dose timing warning, and the digoxin label\'s own level statements, returned separately because the label gives no target range.',
     compute: F.digoxin,
     fields: [
-      { dom: 'dig-crcl', arg: 'crCl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
+      { dom: 'dig-crcl', arg: 'crCl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min', max: 250 },
       { dom: 'dig-age', arg: 'ageYears', kind: 'number', required: false, label: 'Age (optional)', unit: 'years' },
       { dom: 'dig-ind', arg: 'indication', kind: 'enum', values: ['hf', 'af'], required: true, label: 'Indication' },
       // spec-v1152: both labels already said "(optional)" beside `required: true`,
       // and the view reads both with `optNum`. The maintenance dose comes from the
       // clearance and the indication; the level interpretation is the second half
       // and only appears when a level is given.
-      { dom: 'dig-lvl', arg: 'levelNgMl', kind: 'number', label: 'Measured level (optional; for the level interpretation)', unit: 'ng/mL' },
-      { dom: 'dig-hrs', arg: 'hoursPostDose', kind: 'number', label: 'Hours post-dose (optional; for the draw-timing warning)', unit: 'h' },
+      { dom: 'dig-lvl', arg: 'levelNgMl', kind: 'number', label: 'Measured level (optional; for the level interpretation)', unit: 'ng/mL', max: 20 },
+      { dom: 'dig-hrs', arg: 'hoursPostDose', kind: 'number', label: 'Hours post-dose (optional; for the draw-timing warning)', unit: 'h', max: 48 },
     ],
   },
   {
@@ -116,7 +116,7 @@ export default [
     },
     fields: [
       { dom: 'pca-conc', arg: 'concMgPerMl', kind: 'number', required: true, label: 'Concentration', unit: 'mg/mL', min: 0.001, max: 100 },
-      { dom: 'pca-demand', arg: 'demandMg', kind: 'number', required: true, label: 'Demand (bolus) dose', unit: 'mg' },
+      { dom: 'pca-demand', arg: 'demandMg', kind: 'number', required: true, label: 'Demand (bolus) dose', unit: 'mg', max: 100 },
       { dom: 'pca-lockout', arg: 'lockoutMin', kind: 'number', required: true, label: 'Lockout interval', unit: 'min', min: 1, max: 120 },
       { dom: 'pca-basal', arg: 'basalMgPerH', kind: 'number', required: false, label: 'Continuous (basal) rate', unit: 'mg/h', to: (v) => v || 0 },
       { dom: 'pca-limit', arg: 'oneHourLimitMg', kind: 'number', required: false, label: '1-hour limit', unit: 'mg' },
@@ -156,7 +156,7 @@ export default [
     compute: F.pedsFluidDeficit,
     fields: [
       { dom: 'pfd-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.5, max: 100 },
-      { dom: 'pfd-pct', arg: 'dehydrationPct', kind: 'number', required: true, label: 'Estimated dehydration', unit: '%' },
+      { dom: 'pfd-pct', arg: 'dehydrationPct', kind: 'number', required: true, label: 'Estimated dehydration', unit: '%', max: 20 },
     ],
   },
   {

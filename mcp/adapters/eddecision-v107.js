@@ -15,7 +15,7 @@ export default [
     fields: [
       { dom: 'hr-hist', arg: 'history', kind: 'enum', values: ['h0', 'h1', 'h2'], label: 'History (slightly / moderately / highly suspicious)' },
       { dom: 'hr-ecg', arg: 'ecg', kind: 'enum', values: ['e0', 'e1', 'e2'], label: 'ECG (normal / non-specific repolarization / significant ST deviation)' },
-      { dom: 'hr-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'hr-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'hr-risk', arg: 'risk', kind: 'enum', values: ['r0', 'r1', 'r2'], label: 'Risk factors (none / 1-2 / ≥ 3 or known atherosclerotic disease)' },
     ],
   },
@@ -38,7 +38,7 @@ export default [
     summary: 'GO-FAR score (Ebell 2013): predicts the probability of survival to discharge with good neurologic function after in-hospital cardiac arrest, from age plus 12 admission variables.',
     compute: F.goFar,
     fields: [
-      { dom: 'gf-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'gf-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'gf-neuro', arg: 'neuroIntact', kind: 'bool', label: 'Neurologically intact or minimal deficit at admission' },
       { dom: 'gf-trauma', arg: 'majorTrauma', kind: 'bool', label: 'Major trauma' },
       { dom: 'gf-stroke', arg: 'acuteStroke', kind: 'bool', label: 'Acute stroke' },

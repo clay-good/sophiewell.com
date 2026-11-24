@@ -13,9 +13,9 @@ export default [
     compute: priapismGas,
     fields: [
       { dom: 'pg-po2', arg: 'po2', kind: 'number', required: false, label: 'pO2 in blood drawn from the corpus cavernosum', unit: 'mmHg' },
-      { dom: 'pg-pco2', arg: 'pco2', kind: 'number', required: false, label: 'pCO2 in blood drawn from the corpus cavernosum', unit: 'mmHg' },
-      { dom: 'pg-ph', arg: 'ph', kind: 'number', required: false, label: 'pH in blood drawn from the corpus cavernosum' },
-      { dom: 'pg-hours', arg: 'hours', kind: 'number', required: false, label: 'Hours since the erection began', unit: 'hours' },
+      { dom: 'pg-pco2', arg: 'pco2', kind: 'number', required: false, label: 'pCO2 in blood drawn from the corpus cavernosum', unit: 'mmHg', max: 250 },
+      { dom: 'pg-ph', arg: 'ph', kind: 'number', required: false, label: 'pH in blood drawn from the corpus cavernosum', min: 6, max: 8 },
+      { dom: 'pg-hours', arg: 'hours', kind: 'number', required: false, label: 'Hours since the erection began', unit: 'hours', max: 2000 },
       { dom: 'pg-flow', arg: 'flow', kind: 'enum', values: ['', 'absent', 'normal'], required: false, label: 'Color duplex finding, if done' },
       { dom: 'pg-trauma', arg: 'trauma', kind: 'enum', values: ['', 'no', 'yes'], required: false, label: 'Perineal or straddle trauma before onset' },
       { dom: 'pg-sickle', arg: 'sickle', kind: 'enum', values: ['', 'no', 'yes'], required: false, label: 'Sickle cell disease' },

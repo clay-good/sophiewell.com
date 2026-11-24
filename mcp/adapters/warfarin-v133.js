@@ -18,7 +18,7 @@ export default [
     summary: 'IWPC pharmacogenetic warfarin dose (Klein, NEJM 2009): a published linear model predicting the stable weekly maintenance dose from age, height, weight, race, enzyme-inducer and amiodarone use, and the VKORC1 / CYP2C9 genotypes.',
     compute: F.warfarinIwpc,
     fields: [
-      { dom: 'iw-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'iw-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'iw-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
       { dom: 'iw-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'iw-vk', arg: 'vkorc1', kind: 'enum', values: ['GG', 'AG', 'AA', 'unknown'], required: true, label: 'VKORC1 (-1639 G>A) genotype' },
@@ -33,7 +33,7 @@ export default [
     summary: 'Gage pharmacogenomic warfarin dose (Gage, Clin Pharmacol Ther 2008): a published exponential model predicting the therapeutic daily dose from body-surface area, age, target INR, smoking, amiodarone, race, DVT/PE indication, and the CYP2C9 / VKORC1 genotypes.',
     compute: F.warfarinGage,
     fields: [
-      { dom: 'ga-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ga-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'ga-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
       { dom: 'ga-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'ga-inr', arg: 'targetInr', kind: 'number', required: true, label: 'Target INR' },

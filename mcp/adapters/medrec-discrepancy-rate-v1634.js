@@ -9,10 +9,10 @@ export default [
     summary: 'The endorsed measure of reconciliation errors at admission and discharge (CBE 2456). Divides unintentional discrepancies by the gold standard medications plus unintentionally ordered extra ones.',
     compute: MR.medrecDiscrepancyRate,
     fields: [
-      { dom: 'mrd-disc', arg: 'discrepancies', kind: 'number', required: true, label: 'Unintentional discrepancies, admission plus discharge orders' },
-      { dom: 'mrd-gold', arg: 'goldMeds', kind: 'number', required: true, label: 'Medications on the gold standard lists' },
-      { dom: 'mrd-extra', arg: 'extraMeds', kind: 'number', required: true, label: 'Unintentionally ordered additional medications' },
-      { dom: 'mrd-patients', arg: 'patients', kind: 'number', required: false, label: 'Patients sampled' },
+      { dom: 'mrd-disc', arg: 'discrepancies', kind: 'number', required: true, label: 'Unintentional discrepancies, admission plus discharge orders', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'mrd-gold', arg: 'goldMeds', kind: 'number', required: true, label: 'Medications on the gold standard lists', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'mrd-extra', arg: 'extraMeds', kind: 'number', required: true, label: 'Unintentionally ordered additional medications', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'mrd-patients', arg: 'patients', kind: 'number', required: false, label: 'Patients sampled', min: 1, max: 100000 },
     ],
   },
 ];

@@ -14,8 +14,8 @@ export default [
       // spec-v1138: required. Well and poor are two entities, not two grades, and the
       // library no longer assumes one.
       { dom: 'nen-diff', arg: 'differentiation', kind: 'enum', values: ['well', 'poor'], required: true, label: 'Differentiation' },
-      { dom: 'nen-ki67', arg: 'ki67', kind: 'number', required: false, label: 'Ki-67 index', unit: '%' },
-      { dom: 'nen-mitoses', arg: 'mitoses', kind: 'number', required: false, label: 'Mitoses per 2 mm2' },
+      { dom: 'nen-ki67', arg: 'ki67', kind: 'number', required: false, label: 'Ki-67 index', unit: '%', max: 100 },
+      { dom: 'nen-mitoses', arg: 'mitoses', kind: 'number', required: false, label: 'Mitoses per 2 mm2', bound: 'lactate', boundScale: 10 },
     ],
   },
 ];

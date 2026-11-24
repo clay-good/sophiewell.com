@@ -10,7 +10,7 @@ export default [
     compute: ADJ.pbjCaseMixAdjustedHours,
     fields: [
       { dom: 'cma-staff', arg: 'staffType', kind: 'enum', values: ADJ.STAFF.map((x) => x.value), required: false, label: 'Staff type' },
-      { dom: 'cma-reported', arg: 'reported', kind: 'number', required: true, label: 'Reported hours per resident day' },
+      { dom: 'cma-reported', arg: 'reported', kind: 'number', required: true, label: 'Reported hours per resident day', max: 24 },
       { dom: 'cma-casemix', arg: 'caseMix', kind: 'number', required: true, label: 'Case-mix hours per resident day (CMS staffing file)' },
       { dom: 'cma-national', arg: 'national', kind: 'number', required: true, label: 'National average case-mix hours (State US Averages)' },
     ]

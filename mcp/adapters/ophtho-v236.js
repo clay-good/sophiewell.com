@@ -12,7 +12,7 @@ export default [
     summary: 'Spherical equivalent = sphere + cylinder / 2 (the axis is dropped); lands the eye at the circle of least confusion.',
     compute: F.sphericalEquivalent,
     fields: [
-      { dom: 'se-sph', arg: 'sphere', kind: 'number', required: true, label: 'Sphere', unit: 'D' },
+      { dom: 'se-sph', arg: 'sphere', kind: 'number', required: true, label: 'Sphere', unit: 'D', bound: 'platelets', boundScale: 0.01 },
       { dom: 'se-cyl', arg: 'cylinder', kind: 'number', required: true, label: 'Cylinder', unit: 'D' },
     ],
   },
@@ -22,7 +22,7 @@ export default [
     compute: F.vertexDistance,
     fields: [
       { dom: 'vx-power', arg: 'power', kind: 'number', required: true, label: 'Spectacle-plane power', unit: 'D' },
-      { dom: 'vx-mm', arg: 'vertexMm', kind: 'number', required: true, label: 'Vertex distance', unit: 'mm' },
+      { dom: 'vx-mm', arg: 'vertexMm', kind: 'number', required: true, label: 'Vertex distance', unit: 'mm', max: 30 },
     ],
   },
   {
@@ -31,7 +31,7 @@ export default [
     compute: F.percentTissueAltered,
     fields: [
       { dom: 'pta-flap', arg: 'flap', kind: 'number', required: true, label: 'Flap thickness', unit: 'um', min: 1, max: 400 },
-      { dom: 'pta-abl', arg: 'ablation', kind: 'number', required: true, label: 'Ablation depth', unit: 'um' },
+      { dom: 'pta-abl', arg: 'ablation', kind: 'number', required: true, label: 'Ablation depth', unit: 'um', bound: 'platelets', boundScale: 0.1 },
       { dom: 'pta-cct', arg: 'cct', kind: 'number', required: true, label: 'Central corneal thickness', unit: 'um', bound: 'qtMs' },
     ],
   },

@@ -10,7 +10,7 @@ export default [
     summary: 'Whether a pharmacy is a small business dispenser under FDA\'s DSCSA exemptions. The test is 25 or fewer full-time pharmacists and pharmacy technicians across the company that owns it, as of November 27, 2026. Lists what the exemption covers and that it runs until November 27, 2027 (FDA letter of August 6, 2026).',
     compute: (args) => SD.dscsaSmallDispenserCheck(args, new Date()),
     fields: [
-      { dom: 'dsd-staff', arg: 'fullTimeStaff', kind: 'number', required: true, label: 'Full-time pharmacists and pharmacy technicians, company-wide' },
+      { dom: 'dsd-staff', arg: 'fullTimeStaff', kind: 'number', required: true, label: 'Full-time pharmacists and pharmacy technicians, company-wide', bound: 'hcg', boundScale: 0.01 },
     ],
   },
 ];

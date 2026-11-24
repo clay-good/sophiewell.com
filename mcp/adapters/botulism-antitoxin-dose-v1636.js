@@ -10,8 +10,8 @@ export default [
     compute: (args) => BA.botulismAntitoxinDose(args, new Date()),
     fields: [
       { dom: 'bad-product', arg: 'product', kind: 'enum', required: true, values: BA.PRODUCTS.map((x) => x.value), label: 'Product' },
-      { dom: 'bad-age', arg: 'age', kind: 'number', required: true, label: 'Age (a fraction for an infant: 6 months is 0.5)', unit: 'years' },
-      { dom: 'bad-weight', arg: 'weight', kind: 'number', label: 'Weight (needed under 17 years, and for BabyBIG)', unit: 'kg' },
+      { dom: 'bad-age', arg: 'age', kind: 'number', required: true, label: 'Age (a fraction for an infant: 6 months is 0.5)', unit: 'years', max: 120 },
+      { dom: 'bad-weight', arg: 'weight', kind: 'number', label: 'Weight (needed under 17 years, and for BabyBIG)', unit: 'kg', min: 0.4, max: 300 },
     ],
   },
 ];

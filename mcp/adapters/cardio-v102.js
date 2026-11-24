@@ -14,7 +14,7 @@ export default [
     fields: [
       { dom: 'mg-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 18, max: 120 },
       { dom: 'mg-male', arg: 'male', kind: 'bool', label: 'Male sex' },
-      { dom: 'mg-ef', arg: 'lvef', kind: 'number', required: true, label: 'LV ejection fraction', unit: '%' },
+      { dom: 'mg-ef', arg: 'lvef', kind: 'number', required: true, label: 'LV ejection fraction', unit: '%', max: 90 },
       { dom: 'mg-nyha', arg: 'nyha', kind: 'enum', values: ['1', '2', '3', '4'], required: true, label: 'NYHA class' },
       { dom: 'mg-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
       { dom: 'mg-bmi', arg: 'bmi', kind: 'number', required: true, label: 'Body mass index', unit: 'kg/m^2', min: 5, max: 80 },
@@ -60,8 +60,8 @@ export default [
       { dom: 'cs-mi', arg: 'priorMiCabg', kind: 'bool', label: 'Previous MI or CABG' },
       { dom: 'cs-acs', arg: 'acs', kind: 'bool', label: 'ACS etiology' },
       { dom: 'cs-ef', arg: 'lowEf', kind: 'bool', label: 'LVEF < 40%' },
-      { dom: 'cs-lactate', arg: 'lactate', kind: 'number', required: true, label: 'Blood lactate', unit: 'mmol/L' },
-      { dom: 'cs-egfr', arg: 'egfr', kind: 'number', required: true, label: 'eGFR', unit: 'mL/min/1.73m^2' },
+      { dom: 'cs-lactate', arg: 'lactate', kind: 'number', required: true, label: 'Blood lactate', unit: 'mmol/L', bound: 'lactate' },
+      { dom: 'cs-egfr', arg: 'egfr', kind: 'number', required: true, label: 'eGFR', unit: 'mL/min/1.73m^2', bound: 'eGFR' },
     ],
   },
 ];

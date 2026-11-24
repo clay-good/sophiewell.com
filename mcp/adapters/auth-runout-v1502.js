@@ -10,12 +10,12 @@ export default [
     fields: [
       { dom: 'ar-start', arg: 'startDate', kind: 'string', required: true, label: 'Approval start date (YYYY-MM-DD)' },
       { dom: 'ar-end', arg: 'endDate', kind: 'string', required: true, label: 'Approval end date (YYYY-MM-DD)' },
-      { dom: 'ar-approved', arg: 'approved', kind: 'number', required: true, label: 'Units or visits approved' },
-      { dom: 'ar-used', arg: 'used', kind: 'number', required: true, label: 'Units or visits used so far (0 if none)' },
+      { dom: 'ar-approved', arg: 'approved', kind: 'number', required: true, label: 'Units or visits approved', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'ar-used', arg: 'used', kind: 'number', required: true, label: 'Units or visits used so far (0 if none)', bound: 'hcg', boundScale: 0.01 },
       { dom: 'ar-per', arg: 'perDose', kind: 'number', required: true, label: 'Units given at each administration' },
-      { dom: 'ar-every', arg: 'intervalDays', kind: 'number', required: true, label: 'Days between administrations' },
+      { dom: 'ar-every', arg: 'intervalDays', kind: 'number', required: true, label: 'Days between administrations', min: 56 },
       { dom: 'ar-next', arg: 'nextDose', kind: 'string', required: true, label: 'Next scheduled administration (YYYY-MM-DD)' },
-      { dom: 'ar-lead', arg: 'leadDays', kind: 'number', required: false, label: 'Days ahead to submit the renewal (default 14)', unit: 'days' },
+      { dom: 'ar-lead', arg: 'leadDays', kind: 'number', required: false, label: 'Days ahead to submit the renewal (default 14)', unit: 'days', max: 365 },
     ],
   },
 ];

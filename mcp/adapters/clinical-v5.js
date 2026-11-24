@@ -101,7 +101,7 @@ export default [
     compute: (a) => F.saag(a),
     fields: [
       { dom: 'sa', arg: 'serumAlbumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', min: 0.1, max: 8 },
-      { dom: 'aa', arg: 'ascitesAlbumin', kind: 'number', required: true, label: 'Ascites albumin', unit: 'g/dL' },
+      { dom: 'aa', arg: 'ascitesAlbumin', kind: 'number', required: true, label: 'Ascites albumin', unit: 'g/dL', max: 8 },
     ],
   },
   {
@@ -182,11 +182,11 @@ export default [
     summary: 'ABCD2 score for stroke risk after TIA (Johnston 2007): age >= 60 (1), BP >= 140/90 (1), clinical features (unilateral weakness 2, speech disturbance without weakness 1), duration (>= 60 min 2, 10-59 min 1), diabetes (1); total 0-7 with the 2-day stroke-risk band. Returns the component breakdown and interpretation.',
     compute: F.abcd2,
     fields: [
-      { dom: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
       { dom: 'dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg', bound: 'dbp' },
       { dom: 'clin', arg: 'clinicalFeatures', kind: 'enum', values: ['weakness', 'speech', 'other'], required: true, label: 'Clinical features (weakness 2 / speech 1 / other 0)' },
-      { dom: 'dur', arg: 'durationMinutes', kind: 'number', required: true, label: 'Symptom duration', unit: 'minutes' },
+      { dom: 'dur', arg: 'durationMinutes', kind: 'number', required: true, label: 'Symptom duration', unit: 'minutes', max: 1440 },
       { dom: 'diab', arg: 'diabetes', kind: 'bool', label: 'Diabetes (1)' },
     ],
   },

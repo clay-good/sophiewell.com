@@ -13,8 +13,8 @@ export default [
     compute: F.galadHcc,
     fields: [
       { dom: 'galad-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
-      { dom: 'galad-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'galad-afpl3', arg: 'afpL3', kind: 'number', required: true, label: 'AFP-L3', unit: '%' },
+      { dom: 'galad-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
+      { dom: 'galad-afpl3', arg: 'afpL3', kind: 'number', required: true, label: 'AFP-L3', unit: '%', max: 100 },
       { dom: 'galad-afp', arg: 'afp', kind: 'number', required: true, label: 'AFP', unit: 'ng/mL', min: 0.0001, max: 5000000 },
       { dom: 'galad-dcp', arg: 'dcp', kind: 'number', required: true, label: 'DCP / PIVKA-II', unit: 'mAU/mL', min: 0.0001, max: 5000000 },
     ],
@@ -24,10 +24,10 @@ export default [
     summary: 'Toronto HCC Risk Index (THRI; Sharma 2017) — a validated score for 10-year HCC risk in cirrhosis from age, sex, cirrhosis etiology, and platelet count (total 0-366). Age <45/45-60/>60 = 0/50/100; etiology autoimmune or HCV-SVR = 0, other = 36, steatohepatitis = 54, HCV or HBV = 97; male = 80; platelets >200/140-200/80-139/<80 = 0/20/70/89 (x10^9/L). Bands: low < 120 (~3% 10-year HCC), medium 120-240 (~10%), high > 240 (~32%). A surveillance-risk category, not a surveillance-interval order.',
     compute: F.torontoHccRisk,
     fields: [
-      { dom: 'thri-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'thri-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'thri-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
       { dom: 'thri-etiology', arg: 'etiology', kind: 'enum', values: ['hbv', 'hcv', 'steatohepatitis', 'other', 'hcv-svr', 'autoimmune'], required: true, label: 'Cirrhosis etiology' },
-      { dom: 'thri-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L' },
+      { dom: 'thri-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L', bound: 'platelets' },
     ],
   },
 ];

@@ -44,8 +44,8 @@ export default [
     summary: 'Nitrogen balance for nutrition support: (24-h protein intake ÷ 6.25) − (24-h urine urea nitrogen + insensible losses). A positive balance is anabolic, a negative balance catabolic.',
     compute: F.nitrogenBalance,
     fields: [
-      { dom: 'nbal-protein', arg: 'protein', kind: 'number', required: true, label: '24-hour protein intake', unit: 'g' },
-      { dom: 'nbal-uun', arg: 'uun', kind: 'number', required: true, label: '24-hour urine urea nitrogen', unit: 'g' },
+      { dom: 'nbal-protein', arg: 'protein', kind: 'number', required: true, label: '24-hour protein intake', unit: 'g', max: 1000 },
+      { dom: 'nbal-uun', arg: 'uun', kind: 'number', required: true, label: '24-hour urine urea nitrogen', unit: 'g', max: 200 },
       { dom: 'nbal-insensible', arg: 'insensible', kind: 'number', required: false, label: 'Insensible losses (default 4)', unit: 'g/day' },
     ],
   },

@@ -10,7 +10,7 @@ export default [
     compute: (args) => GD.glucarpidaseDose(args, new Date()),
     fields: [
       { dom: 'gcd-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.4, max: 300 },
-      { dom: 'gcd-mtx', arg: 'methotrexate', kind: 'number', required: true, label: 'Plasma methotrexate', unit: 'µmol/L' },
+      { dom: 'gcd-mtx', arg: 'methotrexate', kind: 'number', required: true, label: 'Plasma methotrexate', unit: 'µmol/L', bound: 'lactate', boundScale: 100 },
       { dom: 'gcd-delayed', arg: 'delayed', kind: 'enum', required: true, values: GD.DELAYED.map((x) => x.value), label: 'Delayed methotrexate clearance from impaired renal function' },
       { dom: 'gcd-when', arg: 'glucarpidaseTime', kind: 'string', label: 'Planned glucarpidase time (YYYY-MM-DDTHH:MM, optional)' },
       { dom: 'gcd-last', arg: 'lastLeucovorin', kind: 'string', label: 'Last leucovorin dose (YYYY-MM-DDTHH:MM, optional)' },

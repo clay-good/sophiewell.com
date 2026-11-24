@@ -12,7 +12,7 @@ export default [
       { dom: 'uad-product', arg: 'product', kind: 'enum', required: true, values: AV.PRODUCTS.map((x) => x.value), label: 'Product' },
       { dom: 'uad-dose', arg: 'dose', kind: 'enum', required: true, values: AV.DOSES.map((x) => x.value), label: 'Which dose this is' },
       { dom: 'uad-vials', arg: 'vials', kind: 'number', label: 'Vials in this dose (CroFab initial or further dose: the label gives a range)' },
-      { dom: 'uad-before', arg: 'vialsBefore', kind: 'number', label: 'Vials given before this dose (optional)' },
+      { dom: 'uad-before', arg: 'vialsBefore', kind: 'number', label: 'Vials given before this dose (optional)', max: 200 },
       { dom: 'uad-control', arg: 'controlTime', kind: 'string', label: 'Time initial control was achieved (YYYY-MM-DDTHH:MM, optional)' },
     ],
   },

@@ -15,7 +15,7 @@ export default [
       { dom: 'ntm-cxr', arg: 'nodularOrCavitary', kind: 'boolean', required: false, label: 'Nodular or cavitary opacities on radiograph' },
       { dom: 'ntm-hrct', arg: 'hrctBronchiectasis', kind: 'boolean', required: false, label: 'HRCT bronchiectasis with multiple small nodules' },
       { dom: 'ntm-excluded', arg: 'alternativesExcluded', kind: 'boolean', required: false, label: 'Other diagnoses excluded' },
-      { dom: 'ntm-sputum', arg: 'positiveSputumCultures', kind: 'number', required: false, label: 'Separate sputum samples with positive culture' },
+      { dom: 'ntm-sputum', arg: 'positiveSputumCultures', kind: 'number', required: false, label: 'Separate sputum samples with positive culture', max: 100 },
       { dom: 'ntm-species', arg: 'sameSpecies', kind: 'boolean', required: false, label: 'Sputum samples grew the same species' },
       { dom: 'ntm-wash', arg: 'bronchialWashPositive', kind: 'boolean', required: false, label: 'Bronchial wash or lavage culture positive' },
       { dom: 'ntm-biopsy', arg: 'biopsyHistology', kind: 'boolean', required: false, label: 'Biopsy with mycobacterial histologic features' },

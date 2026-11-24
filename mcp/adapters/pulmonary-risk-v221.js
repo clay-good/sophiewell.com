@@ -77,7 +77,7 @@ export default [
     fields: [
       { dom: 'ild-sub', arg: 'subtype', kind: 'enum', values: ['0', '-2'], required: true, label: 'ILD subtype (points)' },
       { dom: 'ild-age', arg: 'ageBand', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Age band (points)' },
-      { dom: 'ild-fvc', arg: 'fvc', kind: 'number', required: true, label: 'FVC % predicted' },
+      { dom: 'ild-fvc', arg: 'fvc', kind: 'number', required: true, label: 'FVC % predicted', max: 200 },
       { dom: 'ild-dlco', arg: 'dlcoBand', kind: 'enum', values: ['0', '1', '2', '3'], required: true, label: 'DLCO % predicted band (points)' },
       { dom: 'ild-male', arg: 'male', kind: 'bool', required: false, label: 'Male sex (+1)' },
     ],
@@ -87,8 +87,8 @@ export default [
     summary: 'du Bois IPF score (du Bois 2011): age, respiratory hospitalization, baseline FVC % predicted, and 24-week FVC change give a 0–61 score predicting 1-year mortality in idiopathic pulmonary fibrosis.',
     compute: F.duBoisIpf,
     fields: [
-      { dom: 'db-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'db-fvc', arg: 'fvc', kind: 'number', required: true, label: 'Baseline FVC % predicted' },
+      { dom: 'db-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'db-fvc', arg: 'fvc', kind: 'number', required: true, label: 'Baseline FVC % predicted', max: 200 },
       { dom: 'db-dfvc', arg: 'deltaFvc', kind: 'number', required: true, label: '24-week change in FVC % predicted (signed)' },
       { dom: 'db-hosp', arg: 'hospitalization', kind: 'bool', required: false, label: 'Respiratory hospitalization in prior 6 months (+14)' },
     ],
@@ -98,9 +98,9 @@ export default [
     summary: 'Collins pneumothorax-size estimate (Collins 1995): percent = 4.2 + 4.7 × (A + B + C), where A, B, and C are the interpleural distances (cm) at the apex, mid-upper, and mid-lower lung.',
     compute: F.pneumothoraxVolume,
     fields: [
-      { dom: 'ptx-a', arg: 'apex', kind: 'number', required: true, label: 'Apex interpleural distance', unit: 'cm' },
-      { dom: 'ptx-b', arg: 'midUpper', kind: 'number', required: true, label: 'Mid-upper interpleural distance', unit: 'cm' },
-      { dom: 'ptx-c', arg: 'midLower', kind: 'number', required: true, label: 'Mid-lower interpleural distance', unit: 'cm' },
+      { dom: 'ptx-a', arg: 'apex', kind: 'number', required: true, label: 'Apex interpleural distance', unit: 'cm', max: 30 },
+      { dom: 'ptx-b', arg: 'midUpper', kind: 'number', required: true, label: 'Mid-upper interpleural distance', unit: 'cm', max: 30 },
+      { dom: 'ptx-c', arg: 'midLower', kind: 'number', required: true, label: 'Mid-lower interpleural distance', unit: 'cm', max: 30 },
     ],
   },
 ];

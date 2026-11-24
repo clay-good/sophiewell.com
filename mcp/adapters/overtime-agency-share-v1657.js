@@ -9,12 +9,12 @@ export default [
     summary: 'Overtime share of employee hours and agency share of all worked hours. With hourly rates, also the premium paid over regular pay.',
     compute: OT.overtimeAgencyShare,
     fields: [
-      { dom: 'oas-regular', arg: 'regular', kind: 'number', required: true, label: 'Regular hours' },
-      { dom: 'oas-overtime', arg: 'overtime', kind: 'number', required: true, label: 'Overtime hours' },
-      { dom: 'oas-agency', arg: 'agency', kind: 'number', required: true, label: 'Agency hours' },
-      { dom: 'oas-regular-rate', arg: 'regularRate', kind: 'number', required: false, label: 'Regular hourly rate ($)' },
-      { dom: 'oas-overtime-rate', arg: 'overtimeRate', kind: 'number', required: false, label: 'Overtime hourly rate ($)' },
-      { dom: 'oas-agency-rate', arg: 'agencyRate', kind: 'number', required: false, label: 'Agency hourly rate ($)' },
+      { dom: 'oas-regular', arg: 'regular', kind: 'number', required: true, label: 'Regular hours', bound: 'hcg', boundScale: 10 },
+      { dom: 'oas-overtime', arg: 'overtime', kind: 'number', required: true, label: 'Overtime hours', bound: 'hcg', boundScale: 10 },
+      { dom: 'oas-agency', arg: 'agency', kind: 'number', required: true, label: 'Agency hours', bound: 'hcg', boundScale: 10 },
+      { dom: 'oas-regular-rate', arg: 'regularRate', kind: 'number', required: false, label: 'Regular hourly rate ($)', max: 10000 },
+      { dom: 'oas-overtime-rate', arg: 'overtimeRate', kind: 'number', required: false, label: 'Overtime hourly rate ($)', max: 10000 },
+      { dom: 'oas-agency-rate', arg: 'agencyRate', kind: 'number', required: false, label: 'Agency hourly rate ($)', max: 10000 },
     ]
   },
 ];

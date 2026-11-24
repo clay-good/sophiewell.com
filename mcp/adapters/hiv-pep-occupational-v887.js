@@ -13,7 +13,7 @@ export default [
     compute: hivPepOccupational,
     fields: [
       { dom: 'pep-exposuretype', arg: 'exposureType', kind: 'enum', required: false, label: 'What happened', values: ['none', 'percutaneous', 'mucous-membrane', 'non-intact-skin', 'bite-with-blood', 'intact-skin'] },
-      { dom: 'pep-hourssinceexposure', arg: 'hoursSinceExposure', kind: 'number', required: false, label: 'Hours since the exposure', unit: 'h' },
+      { dom: 'pep-hourssinceexposure', arg: 'hoursSinceExposure', kind: 'number', required: false, label: 'Hours since the exposure', unit: 'h', max: 2000 },
       { dom: 'pep-sourcestatus', arg: 'sourceStatus', kind: 'enum', required: false, label: 'Source HIV status', values: ['positive', 'unknown', 'negative'] },
       { dom: 'pep-sourceriskfactors', arg: 'sourceRiskFactors', kind: 'boolean', required: false, label: 'Risk factors for HIV are known in the source (relevant only when the status is unknown)' },
       { dom: 'pep-state', arg: 'state', kind: 'enum', required: false, label: 'State line (optional)', values: ['NY'] },

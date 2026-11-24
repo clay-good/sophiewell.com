@@ -39,7 +39,7 @@ export default [
     summary: 'BATT score (Ageron 2019): age, systolic BP, and GCS bands plus respiratory, heart-rate, penetrating-injury, and high-energy items give a 0–27 prehospital trauma score; ≥ 2 has guided tranexamic-acid use.',
     compute: F.batt,
     fields: [
-      { dom: 'batt-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'batt-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'batt-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
       { dom: 'batt-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'GCS (3–15)' },
       { dom: 'batt-rr', arg: 'rrAbnormal', kind: 'bool', required: false, label: 'Abnormal respiratory rate or SpO₂' },
@@ -67,7 +67,7 @@ export default [
     compute: F.ets,
     fields: [
       { dom: 'ets-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
-      { dom: 'ets-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ets-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'ets-fluid', arg: 'freeFluid', kind: 'bool', required: false, label: 'Free intra-abdominal fluid on FAST' },
       { dom: 'ets-pelvis', arg: 'unstablePelvis', kind: 'bool', required: false, label: 'Unstable pelvic fracture' },
       { dom: 'ets-scene', arg: 'fromScene', kind: 'bool', required: false, label: 'Admission directly from the scene' },

@@ -10,7 +10,7 @@ export default [
     compute: DSC.ddiStrengthClassify,
     fields: [
       { dom: 'dsc-role', arg: 'role', kind: 'enum', values: ['precipitant', 'substrate'], required: true, label: 'Which drug is classified' },
-      { dom: 'dsc-ratio', arg: 'ratio', kind: 'number', required: false, label: 'AUC ratio (with / without)' },
+      { dom: 'dsc-ratio', arg: 'ratio', kind: 'number', required: false, label: 'AUC ratio (with / without)', min: 0.0001, max: 10000 },
       { dom: 'dsc-with', arg: 'aucWith', kind: 'number', required: false, label: 'AUC with the other drug' },
       { dom: 'dsc-without', arg: 'aucWithout', kind: 'number', required: false, label: 'AUC without it' },
       { dom: 'dsc-strong', arg: 'strongInhibitor', kind: 'boolean', required: false, label: 'Substrate study used a strong inhibitor' },

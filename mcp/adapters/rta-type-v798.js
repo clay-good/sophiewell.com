@@ -11,7 +11,7 @@ export default [
     compute: rtaType,
     fields: [
       { dom: 'rta-k', arg: 'potassium', kind: 'enum', values: ['low', 'normal', 'high'], required: false, label: 'Serum potassium' },
-      { dom: 'rta-ph', arg: 'urinePh', kind: 'number', required: false, label: 'Urine pH in acidosis' },
+      { dom: 'rta-ph', arg: 'urinePh', kind: 'number', required: false, label: 'Urine pH in acidosis', min: 4, max: 9 },
       { dom: 'rta-fehco3', arg: 'feHco3', kind: 'number', required: false, label: 'FE bicarbonate (supporting)', unit: '%' },
       { dom: 'rta-uag', arg: 'urineAnionGap', kind: 'number', required: false, label: 'Urine anion gap (supporting)', unit: 'mEq/L' },
     ],

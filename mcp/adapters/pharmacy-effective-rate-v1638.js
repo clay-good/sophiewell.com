@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'per-awp', arg: 'awp', kind: 'number', required: false, label: 'Sum of AWP for the claims the contract counts', unit: 'dollars' },
       { dom: 'per-paid', arg: 'ingredientPaid', kind: 'number', required: false, label: 'Ingredient cost paid on those claims', unit: 'dollars' },
-      { dom: 'per-guarantee', arg: 'guaranteedDiscountPercent', kind: 'number', label: 'Guaranteed discount off AWP', unit: 'percent' },
+      { dom: 'per-guarantee', arg: 'guaranteedDiscountPercent', kind: 'number', label: 'Guaranteed discount off AWP', unit: 'percent', max: 100 },
       { dom: 'per-rx', arg: 'prescriptions', kind: 'number', label: 'Number of prescriptions' },
       { dom: 'per-fees', arg: 'dispensingFees', kind: 'number', label: 'Dispensing fees paid (0 if none)', unit: 'dollars' },
       { dom: 'per-conc', arg: 'concessions', kind: 'number', label: 'Price concessions and later fees taken (0 if none)', unit: 'dollars' },

@@ -70,7 +70,7 @@ export default [
     compute: F.burnFluid,
     fields: [
       { dom: 'bf-w', arg: 'weightKg', kind: 'number', required: true, label: 'Patient weight', unit: 'kg', min: 0.2, max: 400 },
-      { dom: 'bf-bsa', arg: 'tbsaPercent', kind: 'number', required: true, label: 'Burn surface area', unit: '% TBSA' },
+      { dom: 'bf-bsa', arg: 'tbsaPercent', kind: 'number', required: true, label: 'Burn surface area', unit: '% TBSA', max: 100 },
       { dom: 'bf-h', arg: 'hoursSinceInjury', kind: 'number', label: 'Hours since injury (optional, 0-8)' },
     ],
   },
@@ -79,7 +79,7 @@ export default [
     summary: 'Pediatric endotracheal-tube size and insertion depth: uncuffed internal diameter = age/4 + 4 mm (cuffed = age/4 + 3.5), depth at the lip = 3 x tube size.',
     compute: F.pediatricEtt,
     fields: [
-      { dom: 'pet-age', arg: 'ageYears', kind: 'number', required: true, label: 'Patient age', unit: 'years' },
+      { dom: 'pet-age', arg: 'ageYears', kind: 'number', required: true, label: 'Patient age', unit: 'years', max: 18 },
       { dom: 'pet-cuffed', arg: 'cuffed', kind: 'enum', values: ['uncuffed', 'cuffed'], required: true, label: 'Tube type', to: (v) => v === 'cuffed' },
     ],
   },

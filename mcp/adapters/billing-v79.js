@@ -26,8 +26,8 @@ export default [
     summary: 'Medically Unlikely Edit check: units billed vs the MUE value under the MAI (1 line-edit, 2 date-of-service absolute, 3 per-visit), giving payable units and whether the excess is rescuable.',
     compute: C.mueCheck,
     fields: [
-      { dom: 'mue-units', arg: 'unitsBilled', kind: 'number', required: true, label: 'Units billed' },
-      { dom: 'mue-value', arg: 'mueValue', kind: 'number', required: true, label: 'MUE value (the ceiling)' },
+      { dom: 'mue-units', arg: 'unitsBilled', kind: 'number', required: true, label: 'Units billed', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'mue-value', arg: 'mueValue', kind: 'number', required: true, label: 'MUE value (the ceiling)', bound: 'hcg', boundScale: 0.1 },
       { dom: 'mue-mai', arg: 'mai', kind: 'number', required: true, label: 'MUE Adjudication Indicator (1, 2, or 3)', values: ['1', '2', '3'] },
       { dom: 'mue-split', arg: 'splitAcrossLines', kind: 'bool', label: 'Units split across multiple lines' },
     ],

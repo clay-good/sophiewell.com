@@ -9,9 +9,9 @@ export default [
     compute: GT.glenoidTrack,
     fields: [
       { dom: 'gt-width', arg: 'glenoidWidth', kind: 'number', required: true, label: 'Glenoid width (D)', unit: 'mm', min: 10, max: 60 },
-      { dom: 'gt-defect', arg: 'defect', kind: 'number', required: true, label: 'Anterior glenoid defect (d), 0 if none', unit: 'mm' },
-      { dom: 'gt-hs', arg: 'hsWidth', kind: 'number', required: true, label: 'Hill-Sachs lesion width', unit: 'mm' },
-      { dom: 'gt-bridge', arg: 'bridge', kind: 'number', required: true, label: 'Bone bridge to the cuff footprint', unit: 'mm' },
+      { dom: 'gt-defect', arg: 'defect', kind: 'number', required: true, label: 'Anterior glenoid defect (d), 0 if none', unit: 'mm', max: 30 },
+      { dom: 'gt-hs', arg: 'hsWidth', kind: 'number', required: true, label: 'Hill-Sachs lesion width', unit: 'mm', bound: 'lactate' },
+      { dom: 'gt-bridge', arg: 'bridge', kind: 'number', required: true, label: 'Bone bridge to the cuff footprint', unit: 'mm', bound: 'platelets', boundScale: 0.01 },
     ],
   },
 ];

@@ -12,7 +12,7 @@ export default [
     compute: sanoKawasaki,
     fields: [
       { dom: 'sano-ast', arg: 'ast', kind: 'number', unit: 'IU/L', required: true, label: 'AST (IU/L)', bound: 'ast' },
-      { dom: 'sano-bili', arg: 'bilirubin', kind: 'number', unit: 'mg/dL', required: true, label: 'Total bilirubin (mg/dL)' },
+      { dom: 'sano-bili', arg: 'bilirubin', kind: 'number', unit: 'mg/dL', required: true, label: 'Total bilirubin (mg/dL)', bound: 'bilirubin' },
       { dom: 'sano-crp', arg: 'crp', kind: 'number', unit: 'mg/dL', required: true, label: 'CRP (mg/dL)' },
     ],
   },

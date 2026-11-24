@@ -47,7 +47,7 @@ export default [
     compute: F.recist,
     fields: [
       { dom: 'recist-baseline', arg: 'baseline', kind: 'number', required: true, label: 'Baseline sum of diameters', unit: 'mm' },
-      { dom: 'recist-current', arg: 'current', kind: 'number', required: true, label: 'Current sum of diameters', unit: 'mm' },
+      { dom: 'recist-current', arg: 'current', kind: 'number', required: true, label: 'Current sum of diameters', unit: 'mm', max: 10000 },
       { dom: 'recist-nadir', arg: 'nadir', kind: 'number', required: true, label: 'Nadir sum of diameters', unit: 'mm' },
       { dom: 'recist-newLesion', arg: 'newLesion', kind: 'bool', required: false, label: 'A new lesion has appeared' },
       { dom: 'recist-nonTarget', arg: 'nonTarget', kind: 'bool', required: false, label: 'Unequivocal non-target progression' },
@@ -58,7 +58,7 @@ export default [
     summary: 'Modified Glasgow Prognostic Score (mGPS): a 0–2 inflammation-based prognostic score from CRP and albumin.',
     compute: F.glasgowPrognosticScore,
     fields: [
-      { dom: 'mgps-crp', arg: 'crp', kind: 'number', required: true, label: 'C-reactive protein', unit: 'mg/L' },
+      { dom: 'mgps-crp', arg: 'crp', kind: 'number', required: true, label: 'C-reactive protein', unit: 'mg/L', max: 1000 },
       { dom: 'mgps-albumin', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL' },
     ],
   },

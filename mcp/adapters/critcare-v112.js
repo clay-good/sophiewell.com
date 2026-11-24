@@ -29,7 +29,7 @@ export default [
     summary: 'SIC score (ISTH 2019): the Sepsis-Induced Coagulopathy score from platelet count, PT-INR, and total SOFA; SIC is met at total >= 4 with a platelet + PT-INR subscore >= 3.',
     compute: F.sicScore,
     fields: [
-      { dom: 'si-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count', unit: 'x10^9/L' },
+      { dom: 'si-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count', unit: 'x10^9/L', bound: 'platelets' },
       { dom: 'si-inr', arg: 'inr', kind: 'number', required: true, label: 'PT-INR', bound: 'inr' },
       { dom: 'si-sofa', arg: 'sofa', kind: 'number', required: true, label: 'Total SOFA score' },
     ],
@@ -40,7 +40,7 @@ export default [
     compute: F.cpisVap,
     fields: [
       { dom: 'cp-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'degrees C', bound: 'temperature' },
-      { dom: 'cp-wbc', arg: 'wbc', kind: 'number', required: true, label: 'Leukocyte count', unit: 'per mm^3' },
+      { dom: 'cp-wbc', arg: 'wbc', kind: 'number', required: true, label: 'Leukocyte count', unit: 'per mm^3', bound: 'wbc', boundScale: 1000 },
       { dom: 'cp-band', arg: 'bandForms', kind: 'bool', label: 'Band forms >= 50%' },
       { dom: 'cp-sec', arg: 'secretions', kind: 'enum', values: ['none', 'non-purulent', 'purulent'], label: 'Tracheal secretions' },
       { dom: 'cp-oxy', arg: 'oxygenation', kind: 'enum', values: ['normal', 'low'], label: 'Oxygenation (PaO2/FiO2)' },
@@ -54,8 +54,8 @@ export default [
     summary: 'Lactate clearance: (initial - repeat) / initial x 100; a clearance >= 10% is the cited favorable early-resuscitation range.',
     compute: F.lactateClearance,
     fields: [
-      { dom: 'la-init', arg: 'initial', kind: 'number', required: true, label: 'Initial lactate', unit: 'mmol/L' },
-      { dom: 'la-rep', arg: 'repeat', kind: 'number', required: true, label: 'Repeat lactate', unit: 'mmol/L' },
+      { dom: 'la-init', arg: 'initial', kind: 'number', required: true, label: 'Initial lactate', unit: 'mmol/L', bound: 'lactate' },
+      { dom: 'la-rep', arg: 'repeat', kind: 'number', required: true, label: 'Repeat lactate', unit: 'mmol/L', bound: 'lactate' },
     ],
   },
   {

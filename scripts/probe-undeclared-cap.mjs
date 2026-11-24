@@ -53,7 +53,7 @@
 import { META } from '../lib/meta.js';
 import { computeCalculator, describeCalculator } from '../mcp/tools.js';
 import { allCalculators } from '../mcp/catalog.js';
-import { BOUNDS } from '../lib/bounds.js';
+import { BOUNDS, CEILING_ONLY } from '../lib/bounds.js';
 
 const limitArg = process.argv.indexOf('--limit');
 const LIMIT = limitArg > -1 ? Number(process.argv[limitArg + 1]) : Infinity;
@@ -75,11 +75,56 @@ const UNIT_SELECT = /unit|imperial|metric|\blbs?\b|\bkg\b|celsius|fahrenheit/i;
 // against an envelope in m, a decimal fraction against a percent.
 const SCALES = [1, 0.01, 0.1, 10, 100, 1000];
 const near = (a, b) => Math.abs(a - b) <= Math.max(Math.abs(b) * 0.005, 1e-9);
-function sharedEnvelope(min, max) {
-  if (min === null || max === null) return null;
+
+// Four pairs of envelopes share their edges exactly, and two of those pairs are round numbers that any
+// number of quantities stop at on their own: 0 to 100 (percentWeightLoss and spo2) and 0 to 2,000 (wbc and
+// sixMinuteWalkM). A percentage capped at 100 is the field's OWN domain, not an envelope it happens to
+// coincide with, and calling it one declares a reference that would follow the wrong number if either
+// envelope ever moved. So an ambiguous match counts as an envelope only where the field names which
+// quantity it is; otherwise it is the tool's own cap and gets a literal (spec-v1781).
+const EDGE_SIG = new Map();
+for (const [k, b] of Object.entries(BOUNDS)) {
+  if (!Number.isFinite(b.min) || !Number.isFinite(b.max)) continue;
+  const sig = `${b.min}|${b.max}`;
+  if (!EDGE_SIG.has(sig)) EDGE_SIG.set(sig, []);
+  EDGE_SIG.get(sig).push(k);
+}
+const KEY_WORDS = {
+  wbc: /wbc|white (blood )?cell|leuko/i, sixMinuteWalkM: /walk|6mwd|six.?minute/i,
+  eGFR: /egfr|gfr|filtration/i, esr: /esr|sedimentation/i,
+  percentWeightLoss: /weight loss/i, spo2: /spo2|sao2|saturation/i,
+  alt: /\balt\b|alanine/i, ast: /\bast\b|aspartate/i,
+};
+function identifies(key, text) {
+  const sharers = EDGE_SIG.get(`${BOUNDS[key].min}|${BOUNDS[key].max}`) || [key];
+  if (sharers.length < 2) return key;
+  const named = sharers.filter((k) => KEY_WORDS[k] && KEY_WORDS[k].test(text));
+  return named.length === 1 ? named[0] : null;
+}
+
+function sharedEnvelope(min, max, text = '') {
   for (const [key, b] of Object.entries(BOUNDS)) {
     if (!Number.isFinite(b.min) || !Number.isFinite(b.max)) continue;
-    for (const s of SCALES) if (near(min, b.min * s) && near(max, b.max * s)) return `${key}${s === 1 ? '' : ` x${s}`}`;
+    for (const s of SCALES) {
+      if (min !== null && max !== null && near(min, b.min * s) && near(max, b.max * s)) {
+        const id = identifies(key, text);
+        if (id) return `${id}${s === 1 ? '' : ` x${s}`}`;
+      }
+      // spec-v1781: a CEILING ALONE is still the envelope when the envelope's floor is 0 or below. There is
+      // nothing to probe under such a floor -- the decade walk downward is never refused -- so the ceiling
+      // is the only edge this finder can find, and requiring both sides sent BOUNDS.wbc x1000 and
+      // BOUNDS.ageYears into the declarable list as literals. Two tests caught it: CPIS's leukocyte count
+      // and SMART-COP's age each assert the envelope's own sentence, which a literal pre-empts.
+      if (max !== null && min === null && b.min * s <= 0 && near(max, b.max * s)) {
+        const id = identifies(key, text);
+        if (id) return `${id}${s === 1 ? '' : ` x${s}`}`;
+      }
+      // The mirror, for the envelopes whose ceiling is not enforced at all (spec-v1762).
+      if (min !== null && max === null && CEILING_ONLY.has(key) && near(min, b.min * s)) {
+        const id = identifies(key, text);
+        if (id) return `${id}${s === 1 ? '' : ` x${s}`}`;
+      }
+    }
   }
   return null;
 }
@@ -229,7 +274,7 @@ for (const [id, meta] of Object.entries(META)) {
     }
     if (varies) { sections.VARIES.push(row); continue; }
     if (contradicted) { sections.DISAGREES.push(row); continue; }
-    const shared = sharedEnvelope(foundMin, foundMax);
+    const shared = sharedEnvelope(foundMin, foundMax, `${f.arg || ''} ${f.label || ''} ${f.unit || ''}`);
     if (shared) { sections.ENVELOPE.push(`${row}\t[= BOUNDS.${shared}]`); continue; }
     sections.DECLARABLE.push(row);
   }

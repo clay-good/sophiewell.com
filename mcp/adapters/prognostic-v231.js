@@ -13,8 +13,8 @@ export default [
     fields: [
       { dom: 'nap-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', min: 0.1, max: 8 },
       { dom: 'nap-chol', arg: 'cholesterol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL', min: 10, max: 800 },
-      { dom: 'nap-nlr', arg: 'nlr', kind: 'number', required: true, label: 'Neutrophil-to-lymphocyte ratio (NLR)' },
-      { dom: 'nap-lmr', arg: 'lmr', kind: 'number', required: true, label: 'Lymphocyte-to-monocyte ratio (LMR)' },
+      { dom: 'nap-nlr', arg: 'nlr', kind: 'number', required: true, label: 'Neutrophil-to-lymphocyte ratio (NLR)', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'nap-lmr', arg: 'lmr', kind: 'number', required: true, label: 'Lymphocyte-to-monocyte ratio (LMR)', bound: 'hcg', boundScale: 0.01 },
     ],
   },
   {

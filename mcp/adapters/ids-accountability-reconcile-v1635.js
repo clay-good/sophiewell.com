@@ -11,8 +11,8 @@ export default [
     compute: IR.idsAccountabilityReconcile,
     fields: [
       { dom: 'iac-visits', arg: 'visits', kind: 'string', label: 'Visits, one per line: code, dispensed, returned, dispense date, return date, units per day, hold days (optional)' },
-      { dom: 'iac-low', arg: 'rangeLow', kind: 'number', label: 'Protocol compliance range, lower end (optional)', unit: '%' },
-      { dom: 'iac-high', arg: 'rangeHigh', kind: 'number', label: 'Protocol compliance range, upper end (optional)', unit: '%' },
+      { dom: 'iac-low', arg: 'rangeLow', kind: 'number', label: 'Protocol compliance range, lower end (optional)', unit: '%', max: 1000 },
+      { dom: 'iac-high', arg: 'rangeHigh', kind: 'number', label: 'Protocol compliance range, upper end (optional)', unit: '%', max: 1000 },
       { dom: 'iac-received', arg: 'received', kind: 'number', label: 'Site balance: units received' },
       { dom: 'iac-dispensed', arg: 'dispensedTotal', kind: 'number', label: 'Site balance: units dispensed' },
       { dom: 'iac-restocked', arg: 'returnedToStock', kind: 'number', label: 'Site balance: units returned to stock' },

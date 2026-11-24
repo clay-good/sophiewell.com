@@ -34,7 +34,7 @@ export default [
       { dom: 'rvu-peg', arg: 'peGpci', kind: 'number', required: true, label: 'Practice-expense GPCI' },
       { dom: 'rvu-mpg', arg: 'mpGpci', kind: 'number', required: true, label: 'Malpractice GPCI' },
       { dom: 'rvu-cf', arg: 'conversionFactor', kind: 'number', required: true, label: 'Conversion factor ($)' },
-      { dom: 'rvu-units', arg: 'units', kind: 'number', label: 'Units (default 1)' },
+      { dom: 'rvu-units', arg: 'units', kind: 'number', label: 'Units (default 1)', min: 1, max: 1000 },
     ],
     // Map the RVU/GPCI/CF inputs.
     toArgs: (i) => {
@@ -82,7 +82,7 @@ export default [
     fields: [
       { dom: 'seq-allowed', arg: 'allowedCents', kind: 'number', required: true, label: 'Allowed amount', unit: '$', to: (v) => Math.round(v * 100) },
       { dom: 'seq-patient', arg: 'patientResponsibilityCents', kind: 'number', label: 'Patient responsibility (deductible/coinsurance)', unit: '$', to: (v) => Math.round(v * 100) },
-      { dom: 'seq-pct', arg: 'seqPct', kind: 'number', label: 'Sequestration percentage (default 2)' },
+      { dom: 'seq-pct', arg: 'seqPct', kind: 'number', label: 'Sequestration percentage (default 2)', max: 100 },
     ],
   },
 ];

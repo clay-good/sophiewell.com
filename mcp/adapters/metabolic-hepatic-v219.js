@@ -65,8 +65,8 @@ export default [
     compute: F.conicity,
     fields: [
       { dom: 'con-wc', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm' },
-      { dom: 'con-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'con-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
+      { dom: 'con-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.2 },
+      { dom: 'con-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
     ],
   },
   {
@@ -74,8 +74,8 @@ export default [
     summary: 'AST/ALT (De Ritis) ratio: AST / ALT; < 1 suggests NAFLD/viral/acute injury, 1–2 advanced fibrosis, and > 2 classic alcoholic liver disease.',
     compute: F.astAltRatio,
     fields: [
-      { dom: 'aar-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L' },
-      { dom: 'aar-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'IU/L' },
+      { dom: 'aar-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L', min: 1 },
+      { dom: 'aar-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'IU/L', min: 1 },
     ],
   },
   {

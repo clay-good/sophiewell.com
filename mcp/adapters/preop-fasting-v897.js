@@ -12,7 +12,7 @@ export default [
     compute: preopFasting,
     fields: [
       { dom: 'pf-lastintake', arg: 'lastIntake', kind: 'enum', required: false, label: 'What was last taken', values: ['clear-liquid', 'breast-milk', 'formula', 'light-meal', 'heavy-meal'] },
-      { dom: 'pf-hourssinceintake', arg: 'hoursSinceIntake', kind: 'number', required: false, label: 'Hours since then, counted to induction rather than to the scheduled time', unit: 'h' },
+      { dom: 'pf-hourssinceintake', arg: 'hoursSinceIntake', kind: 'number', required: false, label: 'Hours since then, counted to induction rather than to the scheduled time', unit: 'h', max: 72 },
     ],
   },
 ];

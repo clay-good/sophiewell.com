@@ -10,7 +10,7 @@ export default [
     compute: OLP.oshaLeadAirbornePelShift,
     fields: [
       { dom: 'olp-hours', arg: 'hours', kind: 'number', required: true, label: 'Hours worked in the day' },
-      { dom: 'olp-measured', arg: 'measuredTwa', kind: 'number', required: false, label: 'Measured airborne lead, TWA for the day (µg/m³)' },
+      { dom: 'olp-measured', arg: 'measuredTwa', kind: 'number', required: false, label: 'Measured airborne lead, TWA for the day (µg/m³)', max: 10000 },
     ]
   },
 ];

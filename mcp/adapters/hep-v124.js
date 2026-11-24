@@ -10,8 +10,8 @@ export default [
     summary: 'Albumin-Bilirubin (ALBI) grade (Johnson 2015): an objective liver-function grade from albumin and bilirubin alone.',
     compute: M.albiGrade,
     fields: [
-      { dom: 'al-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL' },
-      { dom: 'al-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
+      { dom: 'al-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', bound: 'baseExcess', boundScale: 0.1 },
+      { dom: 'al-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL', bound: 'bilirubin' },
     ],
   },
   {
@@ -19,7 +19,7 @@ export default [
     summary: 'MELD-XI (Heuman 2007): the INR-independent MELD for the anticoagulated patient whose INR is uninterpretable.',
     compute: M.meldXi,
     fields: [
-      { dom: 'mx-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
+      { dom: 'mx-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL', bound: 'bilirubin' },
       { dom: 'mx-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
     ],
   },
@@ -28,9 +28,9 @@ export default [
     summary: 'Forns index for HCV fibrosis (Forns 2002): a four-variable serum estimate of significant fibrosis.',
     compute: M.fornsIndex,
     fields: [
-      { dom: 'fo-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'fo-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'fo-ggt', arg: 'ggt', kind: 'number', required: true, label: 'GGT', unit: 'U/L' },
-      { dom: 'fo-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L' },
+      { dom: 'fo-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L', bound: 'platelets' },
       { dom: 'fo-chol', arg: 'cholesterol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },
     ],
   },
@@ -61,7 +61,7 @@ export default [
     summary: 'Lok index for cirrhosis (Lok 2005, HALT-C): a logistic probability from platelets, the AST/ALT ratio, and INR.',
     compute: M.lokIndex,
     fields: [
-      { dom: 'lk-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L' },
+      { dom: 'lk-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L', bound: 'platelets' },
       { dom: 'lk-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
       { dom: 'lk-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L', bound: 'alt' },
       { dom: 'lk-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },

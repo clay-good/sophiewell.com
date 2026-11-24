@@ -11,7 +11,7 @@ export default [
     summary: 'Applies the 2017 international criteria for hypermobile Ehlers-Danlos syndrome. All three must hold: generalized joint hypermobility on an age- and sex-adjusted Beighton cutoff (6 pre-pubertal, 5 to age 50, 4 above 50, with a five-part questionnaire rescue exactly one point below); two of three features; and three exclusion prerequisites. With an ACQUIRED connective-tissue disorder, features A and B are both required and feature C cannot be counted.',
     compute: heds2017,
     fields: [
-      { dom: 'heds-beighton', arg: 'beightonScore', kind: 'number', required: false, label: 'Beighton score out of 9' },
+      { dom: 'heds-beighton', arg: 'beightonScore', kind: 'number', required: false, label: 'Beighton score out of 9', max: 9 },
       { dom: 'heds-group', arg: 'ageGroup', kind: 'enum', required: false, label: 'Which Beighton cutoff applies', values: ['prepubertal-or-adolescent', 'pubertal-to-50', 'over-50'] },
       { dom: 'heds-q1', arg: 'q1', kind: 'boolean', required: false, label: 'Hands flat on the floor' },
       { dom: 'heds-q2', arg: 'q2', kind: 'boolean', required: false, label: 'Thumb to forearm' },

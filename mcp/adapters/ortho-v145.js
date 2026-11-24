@@ -51,7 +51,7 @@ export default [
     compute: F.compartmentDeltaPressure,
     fields: [
       { dom: 'comp-dia', arg: 'diastolic', kind: 'number', required: true, label: 'Diastolic blood pressure', unit: 'mmHg', bound: 'dbp' },
-      { dom: 'comp-icp', arg: 'compartment', kind: 'number', required: true, label: 'Measured compartment pressure', unit: 'mmHg' },
+      { dom: 'comp-icp', arg: 'compartment', kind: 'number', required: true, label: 'Measured compartment pressure', unit: 'mmHg', max: 250 },
     ],
   },
 ];

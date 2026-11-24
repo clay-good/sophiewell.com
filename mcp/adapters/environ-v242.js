@@ -12,7 +12,7 @@ export default [
     compute: F.heatIndex,
     fields: [
       { dom: 'hi-temp', arg: 'tempF', kind: 'number', required: true, label: 'Air temperature', unit: 'F' },
-      { dom: 'hi-rh', arg: 'humidity', kind: 'number', required: true, label: 'Relative humidity', unit: '%' },
+      { dom: 'hi-rh', arg: 'humidity', kind: 'number', required: true, label: 'Relative humidity', unit: '%', max: 100 },
     ],
   },
   {
@@ -30,7 +30,7 @@ export default [
     compute: F.windChill,
     fields: [
       { dom: 'wc-temp', arg: 'tempC', kind: 'number', required: true, label: 'Air temperature', unit: 'C' },
-      { dom: 'wc-wind', arg: 'windKmh', kind: 'number', required: true, label: 'Wind speed', unit: 'km/h' },
+      { dom: 'wc-wind', arg: 'windKmh', kind: 'number', required: true, label: 'Wind speed', unit: 'km/h', max: 200 },
     ],
   },
   {

@@ -13,10 +13,10 @@ export default [
     fields: [
       { dom: 'rome-vas', arg: 'dyspneaVas', kind: 'number', min: 0, max: 10, required: false, label: 'Dyspnea VAS (0-10)' },
       { dom: 'rome-rr', arg: 'respiratoryRate', kind: 'number', required: false, label: 'Respiratory rate', unit: '/min', bound: 'rr' },
-      { dom: 'rome-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: '/min' },
-      { dom: 'rome-spo2', arg: 'spo2', kind: 'number', required: false, label: 'Oxygen saturation', unit: '%' },
+      { dom: 'rome-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: '/min', min: 10, max: 250 },
+      { dom: 'rome-spo2', arg: 'spo2', kind: 'number', required: false, label: 'Oxygen saturation', unit: '%', min: 50, max: 100 },
       { dom: 'rome-drop', arg: 'spo2DropFromBaseline', kind: 'number', required: false, label: 'Fall in saturation', unit: 'points' },
-      { dom: 'rome-crp', arg: 'crp', kind: 'number', required: false, label: 'C-reactive protein', unit: 'mg/L' },
+      { dom: 'rome-crp', arg: 'crp', kind: 'number', required: false, label: 'C-reactive protein', unit: 'mg/L', bound: 'lactate', boundScale: 10 },
       { dom: 'rome-paco2', arg: 'paco2', kind: 'number', required: false, label: 'PaCO2', unit: 'mmHg' },
       { dom: 'rome-ph', arg: 'ph', kind: 'number', required: false, label: 'Arterial pH' },
     ],

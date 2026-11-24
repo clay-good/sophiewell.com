@@ -10,7 +10,7 @@ export default [
     compute: (args) => RS.rsiDoseSheet(args, new Date()),
     fields: [
       { dom: 'rds-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.4, max: 300 },
-      { dom: 'rds-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'rds-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
       { dom: 'rds-patient', arg: 'patient', kind: 'enum', required: true, values: RS.PATIENTS.map((x) => x.value), label: 'Patient group' },
       { dom: 'rds-ketamine', arg: 'ketamineConcentration', kind: 'enum', required: true, values: RS.KETAMINE.map((x) => x.value), label: 'Ketamine concentration in hand' },
     ],

@@ -30,8 +30,8 @@ export default [
     summary: 'Age-adjusted D-dimer cutoff (ADJUST-PE, JAMA 2014): 500 ug/L up to age 50 and age × 10 ug/L above age 50; below the cutoff makes VTE unlikely at a non-high pretest probability.',
     compute: F.ageAdjustedDDimer,
     fields: [
-      { dom: 'add-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'add-dd', arg: 'ddimer', kind: 'number', required: true, label: 'D-dimer', unit: 'ug/L FEU' },
+      { dom: 'add-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'add-dd', arg: 'ddimer', kind: 'number', required: true, label: 'D-dimer', unit: 'ug/L FEU', bound: 'hcg', boundScale: 0.01 },
     ],
   },
   {

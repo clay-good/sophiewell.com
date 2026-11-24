@@ -57,7 +57,7 @@ export default [
     compute: F.lrinec,
     fields: [
       { dom: 'lr-crp', arg: 'crp', kind: 'number', required: true, label: 'C-reactive protein (mg/L)' },
-      { dom: 'lr-wbc', arg: 'wbc', kind: 'number', required: true, label: 'White blood cell count (x10^3/uL)' },
+      { dom: 'lr-wbc', arg: 'wbc', kind: 'number', required: true, label: 'White blood cell count (x10^3/uL)', bound: 'wbc' },
       { dom: 'lr-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin (g/dL)', bound: 'hemoglobin' },
       { dom: 'lr-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium (mmol/L)', bound: 'sodium' },
       { dom: 'lr-cr', arg: 'creatinine', kind: 'number', label: 'Creatinine (mg/dL)' },
@@ -70,7 +70,7 @@ export default [
     compute: F.alt70,
     fields: [
       { dom: 'al-asym', arg: 'asymmetry', kind: 'bool', label: 'Asymmetry (unilateral leg involvement)' },
-      { dom: 'al-wbc', arg: 'wbc', kind: 'number', required: true, label: 'White blood cell count (x10^3/uL)' },
+      { dom: 'al-wbc', arg: 'wbc', kind: 'number', required: true, label: 'White blood cell count (x10^3/uL)', bound: 'wbc' },
       { dom: 'al-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate (beats/min)', bound: 'hr' },
       { dom: 'al-age', arg: 'age', kind: 'number', label: 'Age (years)' },
     ],

@@ -10,7 +10,7 @@ export default [
     compute: SF.partbSupplyDispensingFee,
     fields: [
       { dom: 'psf-category', arg: 'category', kind: 'enum', required: true, values: SF.CATEGORIES.map((k) => k.value), label: 'Drug category' },
-      { dom: 'psf-count', arg: 'prescriptions', kind: 'number', label: 'Prescriptions supplied in this 30-day period' },
+      { dom: 'psf-count', arg: 'prescriptions', kind: 'number', label: 'Prescriptions supplied in this 30-day period', min: 1, max: 200 },
       { dom: 'psf-first', arg: 'first', kind: 'enum', values: SF.FIRST.map((k) => k.value), label: 'The first prescription in the period' },
       { dom: 'psf-transplant', arg: 'transplant', kind: 'enum', values: SF.TRANSPLANT.map((k) => k.value), label: 'Immunosuppressive, the initial prescription after a transplant' },
       { dom: 'psf-supply', arg: 'supply', kind: 'enum', values: SF.SUPPLY.map((k) => k.value), label: 'Inhalation drug, the supply dispensed' },

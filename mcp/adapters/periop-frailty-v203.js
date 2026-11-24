@@ -33,11 +33,11 @@ export default [
     summary: 'ABCD3-I score (Merwick 2010): age, blood pressure, clinical features, TIA duration, diabetes, dual TIA, carotid stenosis, and DWI abnormality give a 0–13 early-stroke risk after TIA.',
     compute: F.abcd3i,
     fields: [
-      { dom: 'abcd3i-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'abcd3i-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'abcd3i-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
       { dom: 'abcd3i-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg', bound: 'dbp' },
       { dom: 'abcd3i-clinical', arg: 'clinical', kind: 'enum', values: ['weakness', 'speech', 'other'], required: true, label: 'Clinical features' },
-      { dom: 'abcd3i-dur', arg: 'durationMinutes', kind: 'number', required: true, label: 'TIA duration', unit: 'minutes' },
+      { dom: 'abcd3i-dur', arg: 'durationMinutes', kind: 'number', required: true, label: 'TIA duration', unit: 'minutes', max: 1440 },
       { dom: 'abcd3i-dm', arg: 'diabetes', kind: 'bool', required: false, label: 'Diabetes (+1)' },
       { dom: 'abcd3i-dual', arg: 'dualTia', kind: 'bool', required: false, label: 'Dual TIA (prior TIA within 7 days, +2)' },
       { dom: 'abcd3i-carotid', arg: 'carotidStenosis', kind: 'bool', required: false, label: 'Ipsilateral carotid stenosis ≥ 50% (+2)' },
@@ -51,7 +51,7 @@ export default [
     fields: [
       { dom: 'sort-asa', arg: 'asa', kind: 'enum', values: ['I', 'II', 'III', 'IV', 'V'], required: true, label: 'ASA physical status' },
       { dom: 'sort-urgency', arg: 'urgency', kind: 'enum', values: ['elective', 'expedited', 'urgent', 'immediate'], required: true, label: 'Urgency' },
-      { dom: 'sort-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'sort-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'sort-highrisk', arg: 'highRiskSpecialty', kind: 'bool', required: false, label: 'High-risk surgical specialty' },
       { dom: 'sort-major', arg: 'majorComplex', kind: 'bool', required: false, label: 'Major or complex (xmajor) surgery' },
       { dom: 'sort-cancer', arg: 'cancer', kind: 'bool', required: false, label: 'Cancer' },

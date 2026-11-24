@@ -14,10 +14,10 @@ export default [
       { dom: 'kob-na', arg: 'sodium', kind: 'number', unit: 'mmol/L', required: true, label: 'Serum sodium (mmol/L)', bound: 'sodium' },
       { dom: 'kob-day', arg: 'illnessDay', kind: 'number', unit: 'days', required: true, label: 'Day of illness at start of treatment' },
       { dom: 'kob-ast', arg: 'ast', kind: 'number', unit: 'IU/L', required: true, label: 'AST (IU/L)', bound: 'ast' },
-      { dom: 'kob-neut', arg: 'neutrophil', kind: 'number', unit: '%', required: true, label: 'Neutrophil percentage (%)' },
+      { dom: 'kob-neut', arg: 'neutrophil', kind: 'number', unit: '%', required: true, label: 'Neutrophil percentage (%)', max: 100 },
       { dom: 'kob-crp', arg: 'crp', kind: 'number', unit: 'mg/dL', required: true, label: 'CRP (mg/dL)' },
-      { dom: 'kob-age', arg: 'ageMonths', kind: 'number', unit: 'months', required: true, label: 'Age (months)' },
-      { dom: 'kob-plt', arg: 'platelets', kind: 'number', unit: 'x10^3/uL', required: true, label: 'Platelet count (x10^3/uL)' },
+      { dom: 'kob-age', arg: 'ageMonths', kind: 'number', unit: 'months', required: true, label: 'Age (months)', max: 300 },
+      { dom: 'kob-plt', arg: 'platelets', kind: 'number', unit: 'x10^3/uL', required: true, label: 'Platelet count (x10^3/uL)', bound: 'platelets' },
     ],
   },
 ];

@@ -29,7 +29,7 @@ export default [
     summary: 'Meyerding grade (1932): percent anterior slip = (anterior displacement / caudal-endplate AP width) x 100; grades I-V by 25% bands.',
     compute: F.meyerdingSpondylolisthesis,
     fields: [
-      { dom: 'my-disp', arg: 'displacement', kind: 'number', required: true, label: 'Anterior displacement', unit: 'mm' },
+      { dom: 'my-disp', arg: 'displacement', kind: 'number', required: true, label: 'Anterior displacement', unit: 'mm', max: 200 },
       { dom: 'my-width', arg: 'width', kind: 'number', required: true, label: 'Caudal-endplate AP width', unit: 'mm', min: 1, max: 100 },
     ],
   },

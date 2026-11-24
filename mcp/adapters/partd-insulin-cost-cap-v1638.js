@@ -13,7 +13,7 @@ export default [
       { dom: 'pic-year', arg: 'planYear', kind: 'number', required: true, label: 'Plan year (2026 or later)', min: 2000, max: 2100 },
       { dom: 'pic-days', arg: 'daysSupply', kind: 'number', required: true, label: 'Days supply of the fill', unit: 'days', min: 1, max: 366 },
       { dom: 'pic-month', arg: 'monthDays', kind: 'number', required: true, label: 'Days in a one-month supply under the plan', unit: 'days', min: 1, max: 100 },
-      { dom: 'pic-price', arg: 'negotiatedPrice', kind: 'number', required: true, label: 'Negotiated price for a one-month supply', unit: 'dollars' },
+      { dom: 'pic-price', arg: 'negotiatedPrice', kind: 'number', required: true, label: 'Negotiated price for a one-month supply', unit: 'dollars', bound: 'hcg', boundScale: 0.1 },
       { dom: 'pic-mfp', arg: 'maxFairPrice', kind: 'number', label: 'Maximum fair price for a one-month supply, if the insulin has one', unit: 'dollars' },
       { dom: 'pic-charged', arg: 'charged', kind: 'number', label: 'Cost sharing the claim charged', unit: 'dollars' },
     ],

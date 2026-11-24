@@ -36,9 +36,9 @@ export default [
     summary: 'Electrolyte-free water clearance (Rose 1986): urine volume × [1 − (urine Na + urine K) / plasma Na]; a positive value means the kidney is excreting free water, a negative value means net free-water retention.',
     compute: F.efwClearance,
     fields: [
-      { dom: 'efwc-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine sodium', unit: 'mEq/L' },
-      { dom: 'efwc-uk', arg: 'urineK', kind: 'number', required: true, label: 'Urine potassium', unit: 'mEq/L' },
-      { dom: 'efwc-pna', arg: 'plasmaNa', kind: 'number', required: true, label: 'Plasma sodium', unit: 'mEq/L' },
+      { dom: 'efwc-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine sodium', unit: 'mEq/L', bound: 'platelets', boundScale: 0.1 },
+      { dom: 'efwc-uk', arg: 'urineK', kind: 'number', required: true, label: 'Urine potassium', unit: 'mEq/L', bound: 'platelets', boundScale: 0.1 },
+      { dom: 'efwc-pna', arg: 'plasmaNa', kind: 'number', required: true, label: 'Plasma sodium', unit: 'mEq/L', min: 85 },
       { dom: 'efwc-vol', arg: 'urineVolume', kind: 'number', required: true, label: 'Urine volume over the interval', unit: 'mL' },
     ],
   },

@@ -17,10 +17,10 @@ export default [
     summary: 'Cerebral perfusion pressure CPP = MAP - ICP (MAP measured or derived from SBP/DBP); BTF target band ~60-70 mmHg.',
     compute: F.cerebralPerfusionPressure,
     fields: [
-      { dom: 'cpp-map', arg: 'map', kind: 'number', required: true, label: 'MAP', unit: 'mmHg' },
+      { dom: 'cpp-map', arg: 'map', kind: 'number', required: true, label: 'MAP', unit: 'mmHg', max: 300 },
       { dom: 'cpp-sbp', arg: 'sbp', kind: 'number', required: false, label: 'Systolic BP', unit: 'mmHg' },
       { dom: 'cpp-dbp', arg: 'dbp', kind: 'number', required: false, label: 'Diastolic BP', unit: 'mmHg' },
-      { dom: 'cpp-icp', arg: 'icp', kind: 'number', required: true, label: 'ICP', unit: 'mmHg' },
+      { dom: 'cpp-icp', arg: 'icp', kind: 'number', required: true, label: 'ICP', unit: 'mmHg', max: 200 },
     ],
   },
   // minute-ventilation is intentionally NOT adapted: its META.example.expected
@@ -54,7 +54,7 @@ export default [
       { dom: 'ar-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
             // spec-v1155: read only on the warfarin path, where the library now requires
       // it -- so both surfaces agree in both directions (rule 25).
-      { dom: 'ar-inr', arg: 'inr', kind: 'number', label: 'INR (required for warfarin; not read for the other agents)' },
+      { dom: 'ar-inr', arg: 'inr', kind: 'number', label: 'INR (required for warfarin; not read for the other agents)', max: 200 },
       { dom: 'ar-heparin', arg: 'heparinUnits', kind: 'number', required: false, label: 'Heparin dose in last 2-3 h (units, UFH branch)' },
       { dom: 'ar-min', arg: 'minutesSince', kind: 'number', required: false, label: 'Minutes since the last heparin dose (UFH branch, optional; adds the pediatric CHEST 2012 row)', unit: 'min' },
     ],
@@ -80,15 +80,15 @@ export default [
       return any ? out : null;
     },
     fields: [
-      { dom: 'itr-vol', arg: 'volumeMl', kind: 'number', required: true, label: 'Volume remaining', unit: 'mL' },
+      { dom: 'itr-vol', arg: 'volumeMl', kind: 'number', required: true, label: 'Volume remaining', unit: 'mL', bound: 'hcg', boundScale: 0.01 },
       // spec-v1152: two calculators on one page, and the page says so -- the third
       // field is labelled "OR: make this volume last (hours)". The rate answers
       // "time to empty" and the hours answer "rate to last that long"; each is
       // required only for its own half, and the view guards both on `vol > 0 &&
       // rate > 0` / `vol > 0 && hrs > 0`. Declared required, the agent surface
       // refused every call that wanted one of the two.
-      { dom: 'itr-rate', arg: 'rateMlHr', kind: 'number', label: 'Current rate (for the time-to-empty answer)', unit: 'mL/hr' },
-      { dom: 'itr-hrs', arg: 'hours', kind: 'number', label: 'Target duration (for the rate-to-last answer)', unit: 'hours' },
+      { dom: 'itr-rate', arg: 'rateMlHr', kind: 'number', label: 'Current rate (for the time-to-empty answer)', unit: 'mL/hr', min: 0.001, max: 100000 },
+      { dom: 'itr-hrs', arg: 'hours', kind: 'number', label: 'Target duration (for the rate-to-last answer)', unit: 'hours', min: 0.001, max: 1000 },
     ],
   },
   {
@@ -96,9 +96,9 @@ export default [
     summary: 'ASPEN 2017 enteral free-water math: free water in formula = daily volume x free-water fraction; additional flush to goal, split per q6h shift.',
     compute: F.enteralFreeWater,
     fields: [
-      { dom: 'efw-vol', arg: 'dailyVolumeMl', kind: 'number', required: true, label: 'Daily formula volume', unit: 'mL/day' },
-      { dom: 'efw-fw', arg: 'freeWaterPct', kind: 'number', required: true, label: 'Formula free-water fraction', unit: '%' },
-      { dom: 'efw-goal', arg: 'goalMl', kind: 'number', required: true, label: 'Daily free-water goal', unit: 'mL' },
+      { dom: 'efw-vol', arg: 'dailyVolumeMl', kind: 'number', required: true, label: 'Daily formula volume', unit: 'mL/day', max: 20000 },
+      { dom: 'efw-fw', arg: 'freeWaterPct', kind: 'number', required: true, label: 'Formula free-water fraction', unit: '%', max: 100 },
+      { dom: 'efw-goal', arg: 'goalMl', kind: 'number', required: true, label: 'Daily free-water goal', unit: 'mL', max: 20000 },
     ],
   },
   {
@@ -121,10 +121,10 @@ export default [
       return check == null ? null : { totalMg, ceilingMg: a.ceilingMg, windowHours: 24, ...check };
     },
     fields: [
-      { dom: 'apap-d1', arg: 'doseMg1', kind: 'number', required: true, label: 'Source 1 dose', unit: 'mg' },
-      { dom: 'apap-n1', arg: 'dosesPerDay1', kind: 'number', required: true, label: 'Source 1 doses/day' },
-      { dom: 'apap-d2', arg: 'doseMg2', kind: 'number', required: true, label: 'Source 2 dose', unit: 'mg' },
-      { dom: 'apap-n2', arg: 'dosesPerDay2', kind: 'number', required: true, label: 'Source 2 doses/day' },
+      { dom: 'apap-d1', arg: 'doseMg1', kind: 'number', required: true, label: 'Source 1 dose', unit: 'mg', max: 10000 },
+      { dom: 'apap-n1', arg: 'dosesPerDay1', kind: 'number', required: true, label: 'Source 1 doses/day', max: 48 },
+      { dom: 'apap-d2', arg: 'doseMg2', kind: 'number', required: true, label: 'Source 2 dose', unit: 'mg', max: 10000 },
+      { dom: 'apap-n2', arg: 'dosesPerDay2', kind: 'number', required: true, label: 'Source 2 doses/day', max: 48 },
       { dom: 'apap-d3', arg: 'doseMg3', kind: 'number', required: true, label: 'Source 3 dose', unit: 'mg' },
       { dom: 'apap-n3', arg: 'dosesPerDay3', kind: 'number', required: true, label: 'Source 3 doses/day' },
       { dom: 'apap-ceiling', arg: 'ceilingMg', kind: 'enum', values: ['4000', '3000', '2000', 'child'], required: true, label: 'Daily ceiling (mg, or child: 5 doses)', to: (v) => (v === 'child' ? 'child' : Number(v)) },
@@ -156,7 +156,7 @@ export default [
     compute: F.enoxaparinDose,
     fields: [
       { dom: 'vte-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
-      { dom: 'vte-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
+      { dom: 'vte-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min', max: 300 },
       { dom: 'vte-ind', arg: 'indication', kind: 'enum', values: ['prophylaxis', 'hip-knee', 'treatment', 'ua-nstemi', 'stemi-under-75', 'stemi-75-plus'], required: true, label: 'Indication' },
       { dom: 'vte-reg', arg: 'regimen', kind: 'enum', values: ['q12', 'daily'], required: true, label: 'Regimen (deep vein thrombosis treatment only)' },
     ],
@@ -166,11 +166,11 @@ export default [
     summary: 'Kotani 2023 norepinephrine-equivalent (NEE) score: total mcg/kg/min equivalent from NE, epinephrine, dopamine, phenylephrine, vasopressin (units/min), and angiotensin II (ng/kg/min).',
     compute: F.norepinephrineEquivalent,
     fields: [
-      { dom: 'nee-ne', arg: 'norepinephrine', kind: 'number', required: true, label: 'Norepinephrine', unit: 'mcg/kg/min', to: (v) => v || 0 },
-      { dom: 'nee-epi', arg: 'epinephrine', kind: 'number', required: true, label: 'Epinephrine', unit: 'mcg/kg/min', to: (v) => v || 0 },
+      { dom: 'nee-ne', arg: 'norepinephrine', kind: 'number', required: true, label: 'Norepinephrine', unit: 'mcg/kg/min', to: (v) => v || 0, max: 100 },
+      { dom: 'nee-epi', arg: 'epinephrine', kind: 'number', required: true, label: 'Epinephrine', unit: 'mcg/kg/min', to: (v) => v || 0, max: 100 },
       { dom: 'nee-dopa', arg: 'dopamine', kind: 'number', required: true, label: 'Dopamine', unit: 'mcg/kg/min', to: (v) => v || 0 },
       { dom: 'nee-phe', arg: 'phenylephrine', kind: 'number', required: true, label: 'Phenylephrine', unit: 'mcg/kg/min', to: (v) => v || 0 },
-      { dom: 'nee-vaso', arg: 'vasopressin', kind: 'number', required: true, label: 'Vasopressin', unit: 'units/min', to: (v) => v || 0 },
+      { dom: 'nee-vaso', arg: 'vasopressin', kind: 'number', required: true, label: 'Vasopressin', unit: 'units/min', to: (v) => v || 0, max: 10 },
       { dom: 'nee-at2', arg: 'angiotensin2', kind: 'number', required: true, label: 'Angiotensin II', unit: 'ng/kg/min', to: (v) => v || 0 },
     ],
   },
@@ -194,14 +194,14 @@ export default [
     },
     fields: [
       { dom: 'o2-size', arg: 'size', kind: 'enum', values: ['E', 'D', 'M', 'G', 'H'], required: true, label: 'Cylinder size' },
-      { dom: 'o2-psi', arg: 'gaugePsi', kind: 'number', required: true, label: 'Gauge pressure', unit: 'psi' },
+      { dom: 'o2-psi', arg: 'gaugePsi', kind: 'number', required: true, label: 'Gauge pressure', unit: 'psi', max: 10000 },
       // spec-v1152: the same shape. Cylinder size and gauge pressure give the
       // usable volume; the flow turns that into a time. And a field whose own label
       // says "default 200" cannot be required -- the view substitutes 200 psi when
       // it is blank and the reading names it ("above the 200 psi residual"), which
       // is the spec-v1133 model.
       { dom: 'o2-flow', arg: 'flowLpm', kind: 'number', label: 'Flow rate (for the duration answer; omit for the usable volume alone)', unit: 'L/min', min: 0 },
-      { dom: 'o2-res', arg: 'residualPsi', kind: 'number', label: 'Residual pressure (defaults to 200 psi, which the reading names)', unit: 'psi' },
+      { dom: 'o2-res', arg: 'residualPsi', kind: 'number', label: 'Residual pressure (defaults to 200 psi, which the reading names)', unit: 'psi', max: 10000 },
       { dom: 'o2-target', arg: 'targetMinutes', kind: 'number', required: false, label: 'Target duration (optional)', unit: 'minutes' },
     ],
   },
@@ -239,10 +239,10 @@ export default [
     compute: F.minuteVentilation,
     fields: [
       { dom: 'mv-rr', arg: 'respiratoryRate', kind: 'number', required: true, label: 'Respiratory rate', unit: '/min', bound: 'rr' },
-      { dom: 'mv-vt', arg: 'tidalVolumeMl', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL' },
+      { dom: 'mv-vt', arg: 'tidalVolumeMl', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL', max: 3000 },
       { dom: 'mv-ibw', arg: 'ibwKg', kind: 'number', label: 'Ideal body weight (optional, for alveolar ventilation)', unit: 'kg' },
       { dom: 'mv-paco2', arg: 'currentPaco2', kind: 'number', label: 'Current PaCO2 (optional)', unit: 'mmHg', bound: 'paCO2' },
-      { dom: 'mv-target', arg: 'targetPaco2', kind: 'number', label: 'Target PaCO2 (optional)', unit: 'mmHg' },
+      { dom: 'mv-target', arg: 'targetPaco2', kind: 'number', label: 'Target PaCO2 (optional)', unit: 'mmHg', max: 300 },
     ],
   },
 ];

@@ -10,7 +10,7 @@ export default [
     compute: (args) => AU.auRateSaar(args),
     fields: [
       { dom: 'aur-scope', arg: 'scope', kind: 'enum', required: true, values: AU.SCOPES.map((x) => x.value), label: 'Scope' },
-      { dom: 'aur-days', arg: 'antimicrobialDays', kind: 'number', required: true, label: 'Antimicrobial days' },
+      { dom: 'aur-days', arg: 'antimicrobialDays', kind: 'number', required: true, label: 'Antimicrobial days', bound: 'hcg', boundScale: 10 },
       { dom: 'aur-present', arg: 'daysPresent', kind: 'number', required: true, label: 'Days present' },
       { dom: 'aur-admissions', arg: 'admissions', kind: 'number', label: 'Admissions (facility-wide inpatient only; optional)' },
       { dom: 'aur-predicted', arg: 'predictedDays', kind: 'number', label: 'Predicted antimicrobial days from the NHSN report (optional, for the SAAR)' },

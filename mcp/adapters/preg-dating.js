@@ -13,7 +13,7 @@ export default [
     compute: pregnancyDating,
     fields: [
       { dom: 'pd-lmp', arg: 'lmpIso', kind: 'string', required: false, label: 'LMP date (YYYY-MM-DD)' },
-      { dom: 'pd-crl', arg: 'crlMm', kind: 'number', required: false, label: 'Ultrasound CRL (mm)' },
+      { dom: 'pd-crl', arg: 'crlMm', kind: 'number', required: false, label: 'Ultrasound CRL (mm)', min: 1, max: 120 },
       { dom: 'pd-us', arg: 'ultrasoundDateIso', kind: 'string', required: false, label: 'Ultrasound date (YYYY-MM-DD)' },
     ],
   },

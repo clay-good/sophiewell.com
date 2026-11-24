@@ -8,8 +8,8 @@ export default [
     summary: 'Cairo classification of gingival recession, RT1 to RT3, from the interproximal and buccal attachment loss.',
     compute: CR.cairoRecession,
     fields: [
-      { dom: 'cr-buccal', arg: 'buccalCal', kind: 'number', required: true, label: 'Buccal attachment loss at the recession', unit: 'mm' },
-      { dom: 'cr-inter', arg: 'interproximalCal', kind: 'number', required: true, label: 'Interproximal attachment loss (0 if none)', unit: 'mm' },
+      { dom: 'cr-buccal', arg: 'buccalCal', kind: 'number', required: true, label: 'Buccal attachment loss at the recession', unit: 'mm', max: 20 },
+      { dom: 'cr-inter', arg: 'interproximalCal', kind: 'number', required: true, label: 'Interproximal attachment loss (0 if none)', unit: 'mm', max: 20 },
     ],
   },
 ];

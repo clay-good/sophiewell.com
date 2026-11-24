@@ -10,8 +10,8 @@ export default [
     compute: PI.percentIonized,
     fields: [
       { dom: 'pi-type', arg: 'type', kind: 'enum', required: true, values: PI.DRUG_TYPES.map((t) => t.value), label: 'The drug is a weak acid or a weak base' },
-      { dom: 'pi-pka', arg: 'pKa', kind: 'number', required: true, label: 'pKa (for a weak base, of its conjugate acid)' },
-      { dom: 'pi-ph', arg: 'pH', kind: 'number', required: true, label: 'pH' },
+      { dom: 'pi-pka', arg: 'pKa', kind: 'number', required: true, label: 'pKa (for a weak base, of its conjugate acid)', max: 20 },
+      { dom: 'pi-ph', arg: 'pH', kind: 'number', required: true, label: 'pH', max: 14 },
     ],
   },
 ];

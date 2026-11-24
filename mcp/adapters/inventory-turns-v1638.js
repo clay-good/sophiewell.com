@@ -10,7 +10,7 @@ export default [
     compute: inventoryTurns,
     fields: [
       { dom: 'inv-cogs', arg: 'cogs', kind: 'number', label: 'Cost of goods sold for the period', unit: 'dollars' },
-      { dom: 'inv-days', arg: 'periodDays', kind: 'number', label: 'Days in the period', unit: 'days' },
+      { dom: 'inv-days', arg: 'periodDays', kind: 'number', label: 'Days in the period', unit: 'days', min: 1, max: 3660 },
       { dom: 'inv-begin', arg: 'beginningInventory', kind: 'number', label: 'Beginning inventory at cost', unit: 'dollars' },
       { dom: 'inv-end', arg: 'endingInventory', kind: 'number', label: 'Ending inventory at cost', unit: 'dollars' },
       { dom: 'inv-target', arg: 'targetDaysOnHand', kind: 'number', label: 'Target days on hand', unit: 'days' },

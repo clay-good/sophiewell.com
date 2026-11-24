@@ -29,9 +29,9 @@ export default [
     summary: 'LENT score for malignant pleural effusion prognosis (Clive 2014): pleural fluid LDH, ECOG performance status, serum neutrophil-to-lymphocyte ratio, and tumor type give a 0–7 score banding median survival.',
     compute: F.lent,
     fields: [
-      { dom: 'lent-ldh', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural fluid LDH', unit: 'IU/L' },
+      { dom: 'lent-ldh', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural fluid LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
       { dom: 'lent-ecog', arg: 'ecog', kind: 'enum', values: ['0', '1', '2', '3-4'], required: true, label: 'ECOG performance status' },
-      { dom: 'lent-nlr', arg: 'nlr', kind: 'number', required: true, label: 'Serum neutrophil-to-lymphocyte ratio' },
+      { dom: 'lent-nlr', arg: 'nlr', kind: 'number', required: true, label: 'Serum neutrophil-to-lymphocyte ratio', max: 10000 },
       { dom: 'lent-tumor', arg: 'tumorType', kind: 'enum', values: ['low', 'moderate', 'high'], required: true, label: 'Tumor type' },
     ],
   },
@@ -40,9 +40,9 @@ export default [
     summary: 'ADO index (Puhan 2009): a primary-care COPD mortality index needing no walk test — age, mMRC dyspnea grade, and FEV₁ % predicted give a 0–10 score predicting 3-year all-cause mortality.',
     compute: F.adoIndex,
     fields: [
-      { dom: 'ado-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ado-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
       { dom: 'ado-mmrc', arg: 'mmrc', kind: 'enum', values: ['0', '1', '2', '3', '4'], required: true, label: 'mMRC dyspnea grade' },
-      { dom: 'ado-fev1', arg: 'fev1', kind: 'number', required: true, label: 'FEV₁ (% predicted)' },
+      { dom: 'ado-fev1', arg: 'fev1', kind: 'number', required: true, label: 'FEV₁ (% predicted)', max: 200 },
     ],
   },
   {

@@ -16,7 +16,7 @@ export default [
       { dom: 'eca-weight', arg: 'weight', kind: 'number', label: 'Weight (needed for a schedule dosed per kg)', unit: 'kg' },
       { dom: 'eca-months', arg: 'monthsPlanned', kind: 'number', label: 'Not started: months of chemotherapy still planned', unit: 'months' },
       { dom: 'eca-dose', arg: 'currentDose', kind: 'number', label: 'On therapy: current dose per administration (Units for epoetin, mcg for darbepoetin)' },
-      { dom: 'eca-weeks', arg: 'weeksOnTherapy', kind: 'number', label: 'On therapy: weeks on the ESA', unit: 'weeks' },
+      { dom: 'eca-weeks', arg: 'weeksOnTherapy', kind: 'number', label: 'On therapy: weeks on the ESA', unit: 'weeks', max: 520 },
       { dom: 'eca-hgb-2wk', arg: 'hemoglobinTwoWeeksAgo', kind: 'number', label: 'On therapy: hemoglobin 2 weeks ago (optional)', unit: 'g/dL', bound: 'hemoglobin' },
       { dom: 'eca-hgb-start', arg: 'hemoglobinAtStart', kind: 'number', label: 'On therapy: hemoglobin when the ESA was started (optional)', unit: 'g/dL' },
       { dom: 'eca-level', arg: 'transfusionLevel', kind: 'enum', values: EA.TRANSFUSION_LEVELS.map((x) => x.value), label: 'On therapy: transfusion-avoiding level, where the hemoglobin stands' },

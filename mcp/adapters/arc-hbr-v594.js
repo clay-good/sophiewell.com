@@ -36,9 +36,9 @@ export default [
     fields: [
       { dom: 'arc-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: `Sex. Used ONLY for the anemia MINOR band (${A.HB_MAJOR_BELOW} to ${A.HB_MINOR_MAX_MALE} for men, ${A.HB_MAJOR_BELOW} to ${A.HB_MINOR_MAX_FEMALE} for women). The major anemia threshold is the same for both.` },
       { dom: 'arc-hemoglobin', arg: 'hemoglobin', kind: 'number', unit: 'g/dL', required: true, label: `Hemoglobin. BANDED: under ${A.HB_MAJOR_BELOW} is MAJOR, the sex-specific band above it is MINOR, and the same patient cannot be both.`, bound: 'hemoglobin' },
-      { dom: 'arc-egfr', arg: 'egfr', kind: 'number', unit: 'mL/min', required: true, label: `eGFR. BANDED: under ${A.EGFR_MAJOR_BELOW} is MAJOR, ${A.EGFR_MAJOR_BELOW} to ${A.EGFR_MINOR_BELOW - 1} is MINOR.` },
-      { dom: 'arc-platelets', arg: 'platelets', kind: 'number', unit: 'x10^9/L', required: true, label: `Platelet count. Under ${A.PLATELET_MAJOR_BELOW} is a MAJOR criterion.` },
-      { dom: 'arc-age', arg: 'age', kind: 'number', unit: 'years', required: true, label: `Age. ${A.AGE_MINOR_AT_LEAST} or over is a MINOR criterion.` },
+      { dom: 'arc-egfr', arg: 'egfr', kind: 'number', unit: 'mL/min', required: true, label: `eGFR. BANDED: under ${A.EGFR_MAJOR_BELOW} is MAJOR, ${A.EGFR_MAJOR_BELOW} to ${A.EGFR_MINOR_BELOW - 1} is MINOR.`, bound: 'eGFR' },
+      { dom: 'arc-platelets', arg: 'platelets', kind: 'number', unit: 'x10^9/L', required: true, label: `Platelet count. Under ${A.PLATELET_MAJOR_BELOW} is a MAJOR criterion.`, bound: 'platelets' },
+      { dom: 'arc-age', arg: 'age', kind: 'number', unit: 'years', required: true, label: `Age. ${A.AGE_MINOR_AT_LEAST} or over is a MINOR criterion.`, bound: 'ageYears' },
       { dom: 'arc-priorBleeding', arg: 'priorBleeding', kind: 'enum', values: A.BLEEDING_OPTIONS.map((b) => b.value), required: true, label: `Prior spontaneous bleeding. BANDED across major and minor by TIMING [${A.BLEEDING_OPTIONS.map((b) => `${b.value} = ${b.tier || 'no criterion'}`).join('; ')}]` },
       { dom: 'arc-priorStroke', arg: 'priorStroke', kind: 'enum', values: A.STROKE_OPTIONS.map((s) => s.value), required: true, label: `Prior ischemic stroke. BANDED across major and minor [${A.STROKE_OPTIONS.map((s) => `${s.value} = ${s.tier || 'no criterion'}`).join('; ')}]` },
       ...A.MAJOR_BOOLEANS.map((m) => ({

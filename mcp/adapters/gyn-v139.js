@@ -84,7 +84,7 @@ export default [
     summary: 'POP-Q prolapse staging from points Aa, Ba, C, D, Ap, Bp and total vaginal length (cm); the leading (most positive) edge sets the stage 0–IV.',
     compute: F.popqStaging,
     fields: [
-      { dom: 'pq-aa', arg: 'aa', kind: 'number', required: true, label: 'Point Aa', unit: 'cm' },
+      { dom: 'pq-aa', arg: 'aa', kind: 'number', required: true, label: 'Point Aa', unit: 'cm', max: 3 },
       { dom: 'pq-ba', arg: 'ba', kind: 'number', required: true, label: 'Point Ba', unit: 'cm' },
       { dom: 'pq-c', arg: 'c', kind: 'number', required: true, label: 'Point C', unit: 'cm' },
       { dom: 'pq-d', arg: 'd', kind: 'number', required: false, label: 'Point D (absent after hysterectomy)', unit: 'cm' },

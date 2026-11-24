@@ -13,7 +13,7 @@ export default [
     compute: pertussisCaseDefinition,
     fields: [
       { dom: 'pcd-age', arg: 'age', kind: 'enum', required: false, label: 'Age group', values: ['older', 'infant'] },
-      { dom: 'pcd-coughweeks', arg: 'coughWeeks', kind: 'number', required: false, label: 'Duration of the cough illness, in weeks' },
+      { dom: 'pcd-coughweeks', arg: 'coughWeeks', kind: 'number', required: false, label: 'Duration of the cough illness, in weeks', max: 104 },
       { dom: 'pcd-paroxysms', arg: 'paroxysms', kind: 'boolean', required: false, label: 'Paroxysms of coughing' },
       { dom: 'pcd-whoop', arg: 'whoop', kind: 'boolean', required: false, label: 'Inspiratory whoop' },
       { dom: 'pcd-posttussivevomiting', arg: 'postTussiveVomiting', kind: 'boolean', required: false, label: 'Post-tussive vomiting' },

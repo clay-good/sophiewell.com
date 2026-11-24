@@ -13,9 +13,9 @@ export default [
     compute: ewgsop2,
     fields: [
       { dom: 'ew-sex', arg: 'sex', kind: 'enum', required: true, label: 'Sex, for the cutoffs', values: ['male', 'female'] },
-      { dom: 'ew-gripstrength', arg: 'gripStrength', kind: 'number', required: false, label: 'Grip strength, kg (low below 27 in men, 16 in women)', unit: 'kg' },
+      { dom: 'ew-gripstrength', arg: 'gripStrength', kind: 'number', required: false, label: 'Grip strength, kg (low below 27 in men, 16 in women)', unit: 'kg', max: 150 },
       { dom: 'ew-chairriseseconds', arg: 'chairRiseSeconds', kind: 'number', required: false, label: 'Five chair rises, seconds (low strength above 15)', unit: 's' },
-      { dom: 'ew-asm', arg: 'asm', kind: 'number', required: false, label: 'Appendicular skeletal muscle mass, kg (low below 20 in men, 15 in women)', unit: 'kg' },
+      { dom: 'ew-asm', arg: 'asm', kind: 'number', required: false, label: 'Appendicular skeletal muscle mass, kg (low below 20 in men, 15 in women)', unit: 'kg', max: 100 },
       { dom: 'ew-asmi', arg: 'asmi', kind: 'number', required: false, label: 'Muscle mass index, kg per square meter (low below 7.0 in men, 5.5 in women)', unit: 'kg/m2' },
       { dom: 'ew-gaitspeed', arg: 'gaitSpeed', kind: 'number', required: false, label: 'Gait speed, meters per second (low at or below 0.8)', unit: 'm/s' },
       { dom: 'ew-sppb', arg: 'sppb', kind: 'number', required: false, label: 'Short Physical Performance Battery, 0 to 12 (low at or below 8)' },

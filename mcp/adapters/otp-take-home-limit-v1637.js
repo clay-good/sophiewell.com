@@ -14,7 +14,7 @@ export default [
       { dom: 'oth-admitted', arg: 'admitted', kind: 'string', label: 'Admission date (YYYY-MM-DD)' },
       { dom: 'oth-on', arg: 'dispensedOn', kind: 'string', label: 'Date the supply would be dispensed (YYYY-MM-DD)' },
       { dom: 'oth-day', arg: 'treatmentDay', kind: 'number', label: 'Treatment day, in place of the two dates' },
-      { dom: 'oth-proposed', arg: 'proposedDays', kind: 'number', label: 'Proposed take-home supply', unit: 'days' },
+      { dom: 'oth-proposed', arg: 'proposedDays', kind: 'number', label: 'Proposed take-home supply', unit: 'days', max: 90 },
       { dom: 'oth-state', arg: 'stateCeilingDays', kind: 'number', label: 'State ceiling, if lower', unit: 'days' },
       { dom: 'oth-dose', arg: 'firstDayDose', kind: 'number', label: 'Total methadone dose on the first day', unit: 'mg' },
     ],

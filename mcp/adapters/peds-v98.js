@@ -69,7 +69,7 @@ export default [
     summary: 'Pediatric Index of Mortality 3 (Straney 2013): a logistic PICU mortality model from SBP, pupils, oxygenation (FiO2, PaO2), base excess, ventilation, elective/recovery status, and diagnosis-risk category.',
     compute: F.pim3,
     fields: [
-      { dom: 'pim-sbp', arg: 'sbp', kind: 'number', label: 'Systolic blood pressure (mmHg)' },
+      { dom: 'pim-sbp', arg: 'sbp', kind: 'number', label: 'Systolic blood pressure (mmHg)', min: 20, max: 300 },
       { dom: 'pim-pupils', arg: 'pupilsFixed', kind: 'bool', label: 'Both pupils > 3 mm and fixed' },
       { dom: 'pim-fio2', arg: 'fio2', kind: 'number', label: 'FiO2 (fraction) — if ventilated' },
       { dom: 'pim-pao2', arg: 'paO2', kind: 'number', label: 'PaO2 (mmHg) — if ventilated' },

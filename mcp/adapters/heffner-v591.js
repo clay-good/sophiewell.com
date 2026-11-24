@@ -33,7 +33,7 @@ export default [
     compute: H.heffner,
     fields: [
       { dom: 'heff-ldh', arg: 'pleuralLdh', kind: 'number', unit: 'U/L', required: true, label: 'Pleural fluid LDH.' },
-      { dom: 'heff-uln', arg: 'serumLdhUln', kind: 'number', unit: 'U/L', required: true, label: `THE LABORATORY'S upper limit of normal for SERUM LDH - a reference value, not the patient's blood. REQUIRED AND NOT DEFAULTED: the cutoff is ${H.LDH_MULTIPLIER} times this, and it differs between laboratories and assays.` },
+      { dom: 'heff-uln', arg: 'serumLdhUln', kind: 'number', unit: 'U/L', required: true, label: `THE LABORATORY'S upper limit of normal for SERUM LDH - a reference value, not the patient's blood. REQUIRED AND NOT DEFAULTED: the cutoff is ${H.LDH_MULTIPLIER} times this, and it differs between laboratories and assays.`, min: 1 },
       { dom: 'heff-chol', arg: 'pleuralCholesterol', kind: 'number', unit: 'mg/dL', required: true, label: `Pleural fluid cholesterol. Exudate above ${H.CHOLESTEROL_THRESHOLD} mg/dL.` },
       { dom: 'heff-protein', arg: 'pleuralProtein', kind: 'number', unit: 'g/dL', required: true, label: `Pleural fluid protein. Exudate above ${H.PROTEIN_THRESHOLD} g/dL - NOT 3.0. This is the test the two-test rule drops.` },
     ],

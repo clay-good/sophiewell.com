@@ -14,7 +14,7 @@ export default [
     fields: [
       { dom: 'abic-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'abic-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Serum bilirubin', unit: 'mg/dL' },
-      { dom: 'abic-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'abic-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', min: 0.1 },
       { dom: 'abic-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
     ],
   },
@@ -60,7 +60,7 @@ export default [
       { dom: 'mayopsc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'mayopsc-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Bilirubin', unit: 'mg/dL' },
       { dom: 'mayopsc-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
-      { dom: 'mayopsc-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L' },
+      { dom: 'mayopsc-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', min: 1 },
       { dom: 'mayopsc-var', arg: 'variceal', kind: 'bool', required: false, label: 'History of variceal bleeding' },
     ],
   },

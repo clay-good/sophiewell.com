@@ -12,7 +12,7 @@ export default [
     summary: 'Scores the M-CHAT-R/F toddler autism screen over its twenty items, for children between 16 and 30 months. A total of 0 to 2 is low risk. A TOTAL OF 3 TO 7 IS MEDIUM RISK AND IS AN INSTRUCTION TO ADMINISTER THE FOLLOW-UP, not a referral and not a pass: referring every child who scores 3 over-refers heavily, and discharging them misses the children the instrument exists to find. On the Follow-Up, 2 or more is a positive screen. A TOTAL OF 8 OR MORE IS HIGH RISK AND BYPASSES THE FOLLOW-UP, referring immediately. THREE ITEMS ARE REVERSE-SCORED — on items 2, 5 and 12 the at-risk answer is yes, and on the other seventeen it is no. A negative screen does not rule out autism. It does not diagnose autism and no total replaces a diagnostic evaluation.',
     compute: mchatScore,
     fields: [
-      { dom: 'mc-age', arg: 'ageMonths', kind: 'number', required: false, label: 'Age', unit: 'months' },
+      { dom: 'mc-age', arg: 'ageMonths', kind: 'number', required: false, label: 'Age', unit: 'months', max: 240 },
       { dom: 'mc-i1', arg: 'item1', kind: 'enum', values: ['', 'yes', 'no'], required: false, label: 'Item 1. Looks across the room when you point at something' },
       { dom: 'mc-i2', arg: 'item2', kind: 'enum', values: ['', 'yes', 'no'], required: false, label: 'Item 2. Any concern that the child might not hear well (reverse-scored: yes is the at-risk answer)' },
       { dom: 'mc-i3', arg: 'item3', kind: 'enum', values: ['', 'yes', 'no'], required: false, label: 'Item 3. Pretend or imaginative play' },

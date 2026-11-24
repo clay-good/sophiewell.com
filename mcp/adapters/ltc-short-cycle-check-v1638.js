@@ -14,7 +14,7 @@ export default [
       { dom: 'lsc-solid', arg: 'solidOral', kind: 'enum', required: true, values: ['yes', 'no'], label: 'A solid oral dose' },
       { dom: 'lsc-abx', arg: 'antibiotic', kind: 'enum', required: true, values: ['yes', 'no'], label: 'An antibiotic' },
       { dom: 'lsc-orig', arg: 'originalContainer', kind: 'enum', required: true, values: ['yes', 'no'], label: 'Dispensed in its original container or packaging' },
-      { dom: 'lsc-days', arg: 'daysToDispense', kind: 'number', label: 'Days supply to dispense', unit: 'days' },
+      { dom: 'lsc-days', arg: 'daysToDispense', kind: 'number', label: 'Days supply to dispense', unit: 'days', min: 1, max: 366 },
       { dom: 'lsc-total', arg: 'totalDays', kind: 'number', label: 'Total days ordered', unit: 'days' },
     ],
   },

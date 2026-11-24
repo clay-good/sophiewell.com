@@ -61,7 +61,7 @@ export default [
     summary: 'Glucose infusion rate: GIR (mg/kg/min) = dextrose % x rate (mL/hr) / (6 x weight kg); banded against neonatal targets (typical 4-8 mg/kg/min).',
     compute: F.gir,
     fields: [
-      { dom: 'gir-dex', arg: 'dextrosePct', kind: 'number', required: true, label: 'Dextrose concentration', unit: '%' },
+      { dom: 'gir-dex', arg: 'dextrosePct', kind: 'number', required: true, label: 'Dextrose concentration', unit: '%', max: 100 },
       { dom: 'gir-rate', arg: 'rateMlHr', kind: 'number', required: true, label: 'Infusion rate', unit: 'mL/hr' },
       { dom: 'gir-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
     ],
@@ -73,7 +73,7 @@ export default [
     fields: [
       { dom: 'kd-k', arg: 'serumK', kind: 'number', required: true, label: 'Serum potassium', unit: 'mEq/L', bound: 'potassium' },
       { dom: 'kd-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
-      { dom: 'kd-target', arg: 'targetK', kind: 'number', required: true, label: 'Target potassium', unit: 'mEq/L' },
+      { dom: 'kd-target', arg: 'targetK', kind: 'number', required: true, label: 'Target potassium', unit: 'mEq/L', max: 10 },
     ],
   },
   {
@@ -91,7 +91,7 @@ export default [
     compute: F.calciumReplacement,
     fields: [
       { dom: 'cap-prod', arg: 'product', kind: 'enum', values: ['gluconate', 'chloride'], required: true, label: 'Calcium product' },
-      { dom: 'cap-dose', arg: 'doseGrams', kind: 'number', required: true, label: 'Dose (g of salt)', unit: 'g' },
+      { dom: 'cap-dose', arg: 'doseGrams', kind: 'number', required: true, label: 'Dose (g of salt)', unit: 'g', max: 100 },
       { dom: 'cap-ind', arg: 'indication', kind: 'enum', values: ['hyperkalemia', 'hypocalcemia', 'citrate'], required: true, label: 'Indication' },
     ],
   },
@@ -104,8 +104,8 @@ export default [
       return has ? { ...r, byComponents: F.ivOsmolarityByComponents({ components: a.components }) } : r;
     },
     fields: [
-      { dom: 'io-dex', arg: 'dextrosePct', kind: 'number', required: true, label: 'Dextrose', unit: '%' },
-      { dom: 'io-aa', arg: 'aminoAcidPct', kind: 'number', required: true, label: 'Amino acids', unit: '%' },
+      { dom: 'io-dex', arg: 'dextrosePct', kind: 'number', required: true, label: 'Dextrose', unit: '%', max: 100 },
+      { dom: 'io-aa', arg: 'aminoAcidPct', kind: 'number', required: true, label: 'Amino acids', unit: '%', max: 100 },
       { dom: 'io-na', arg: 'naMeqL', kind: 'number', required: true, label: 'Sodium additives', unit: 'mEq/L' },
       { dom: 'io-k', arg: 'kMeqL', kind: 'number', required: true, label: 'Potassium additives', unit: 'mEq/L' },
       { dom: 'io-comp', arg: 'components', kind: 'string', required: false, label: 'By component (optional), one per line: labeled osmolarity in mOsm/L, volume in mL' },
@@ -119,8 +119,8 @@ export default [
       { dom: 'ci-carbs', arg: 'carbsG', kind: 'number', required: true, label: 'Carbohydrates', unit: 'g' },
       { dom: 'ci-ic', arg: 'icRatio', kind: 'number', required: true, label: 'Insulin-to-carb ratio (1 unit : N g)' },
       { dom: 'ci-isf', arg: 'isf', kind: 'number', required: true, label: 'Correction factor / ISF', unit: 'mg/dL per unit' },
-      { dom: 'ci-cur', arg: 'currentGlucose', kind: 'number', required: true, label: 'Current glucose', unit: 'mg/dL' },
-      { dom: 'ci-tgt', arg: 'targetGlucose', kind: 'number', required: true, label: 'Target glucose', unit: 'mg/dL' },
+      { dom: 'ci-cur', arg: 'currentGlucose', kind: 'number', required: true, label: 'Current glucose', unit: 'mg/dL', max: 3000 },
+      { dom: 'ci-tgt', arg: 'targetGlucose', kind: 'number', required: true, label: 'Target glucose', unit: 'mg/dL', max: 2000 },
     ],
   },
   {
@@ -129,7 +129,7 @@ export default [
     compute: F.rhigDose,
     fields: [
       { dom: 'rh-bv', arg: 'maternalBloodVolumeMl', kind: 'number', required: true, label: 'Maternal blood volume (mL)', unit: 'mL' },
-      { dom: 'rh-kb', arg: 'fetalCellPct', kind: 'number', required: true, label: 'Fetal cells on Kleihauer-Betke (%)', unit: '%' },
+      { dom: 'rh-kb', arg: 'fetalCellPct', kind: 'number', required: true, label: 'Fetal cells on Kleihauer-Betke (%)', unit: '%', max: 100 },
     ],
   },
   {
@@ -137,7 +137,7 @@ export default [
     summary: 'Pediatric PRBC transfusion volume for a desired hemoglobin rise: volume mL = weight x Hb rise x factor scaled by product hematocrit, also reported as mL/kg.',
     compute: F.pedsTransfusionVolume,
     fields: [
-      { dom: 'pt-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg (canonical)' },
+      { dom: 'pt-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg (canonical)', bound: 'lactate', boundScale: 10 },
       { dom: 'pt-rise', arg: 'hbRise', kind: 'number', required: true, label: 'Desired hemoglobin rise (g/dL)', unit: 'g/dL' },
       { dom: 'pt-hct', arg: 'productHctPct', kind: 'enum', values: ['60', '55', '70'], required: true, label: 'Product hematocrit (%)', to: Number },
     ],

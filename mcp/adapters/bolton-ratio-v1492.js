@@ -9,9 +9,9 @@ export default [
     compute: BR.boltonRatio,
     fields: [
       { dom: 'br-max6', arg: 'maxAnterior', kind: 'number', required: false, label: 'Maxillary canine-to-canine sum of widths', unit: 'mm', bound: 'qtMs', boundScale: 0.1 },
-      { dom: 'br-mand6', arg: 'mandAnterior', kind: 'number', required: false, label: 'Mandibular canine-to-canine sum of widths', unit: 'mm' },
-      { dom: 'br-max12', arg: 'maxOverall', kind: 'number', required: false, label: 'Maxillary first-molar-to-first-molar sum', unit: 'mm' },
-      { dom: 'br-mand12', arg: 'mandOverall', kind: 'number', required: false, label: 'Mandibular first-molar-to-first-molar sum', unit: 'mm' },
+      { dom: 'br-mand6', arg: 'mandAnterior', kind: 'number', required: false, label: 'Mandibular canine-to-canine sum of widths', unit: 'mm', min: 14, max: 80 },
+      { dom: 'br-max12', arg: 'maxOverall', kind: 'number', required: false, label: 'Maxillary first-molar-to-first-molar sum', unit: 'mm', min: 60, max: 140 },
+      { dom: 'br-mand12', arg: 'mandOverall', kind: 'number', required: false, label: 'Mandibular first-molar-to-first-molar sum', unit: 'mm', min: 42, max: 140 },
     ],
   },
 ];

@@ -33,7 +33,7 @@ export default [
     compute: C.criticalCareTime,
     fields: [
       { dom: 'cc-payer', arg: 'payer', kind: 'enum', values: ['medicare', 'ama'], required: true, label: 'Whose 99292 rule to apply: medicare (from 104 minutes) or ama (CPT, from 75)' },
-      { dom: 'cc-total', arg: 'totalMinutes', kind: 'number', required: true, label: 'Total critical-care minutes' },
+      { dom: 'cc-total', arg: 'totalMinutes', kind: 'number', required: true, label: 'Total critical-care minutes', bound: 'hcg', boundScale: 0.01 },
       { dom: 'cc-proc', arg: 'procedureMinutes', kind: 'number', label: 'Separately-billable procedure minutes to subtract' },
     ],
   },
@@ -43,8 +43,8 @@ export default [
     compute: C.splitShared,
     fields: [
       { dom: 'ss-basis', arg: 'basis', kind: 'enum', values: ['time', 'mdm'], required: true, label: 'Substantive-portion basis: time or medical decision making' },
-      { dom: 'ss-phys', arg: 'physicianTime', kind: 'number', label: 'Physician minutes (time basis)' },
-      { dom: 'ss-npp', arg: 'nppTime', kind: 'number', label: 'NPP minutes (time basis)' },
+      { dom: 'ss-phys', arg: 'physicianTime', kind: 'number', label: 'Physician minutes (time basis)', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'ss-npp', arg: 'nppTime', kind: 'number', label: 'NPP minutes (time basis)', bound: 'hcg', boundScale: 0.01 },
     ],
   },
   {
@@ -53,7 +53,7 @@ export default [
     compute: C.prolongedServices,
     fields: [
       { dom: 'ps-code', arg: 'primaryCode', kind: 'enum', values: ['99205', '99215', '99223', '99233'], required: true, label: 'Primary E&M code the prolonged-services add-on attaches to' },
-      { dom: 'ps-min', arg: 'totalMinutes', kind: 'number', required: true, label: 'Total time in minutes' },
+      { dom: 'ps-min', arg: 'totalMinutes', kind: 'number', required: true, label: 'Total time in minutes', bound: 'hcg', boundScale: 0.01 },
       { dom: 'ps-payer', arg: 'payer', kind: 'enum', values: ['medicare', 'ama'], required: true, label: 'Whose prolonged-services rule to apply: medicare (G2212) or ama (CPT 99417)' },
     ],
   },
@@ -62,7 +62,7 @@ export default [
     summary: 'Timed-therapy billable units from cumulative minutes under the Medicare 8-minute rule or the AMA/SPM substantial-portion rule.',
     compute: C.therapyUnits,
     fields: [
-      { dom: 'tu-total', arg: 'totalMinutes', kind: 'number', required: true, label: 'Total timed treatment minutes' },
+      { dom: 'tu-total', arg: 'totalMinutes', kind: 'number', required: true, label: 'Total timed treatment minutes', bound: 'hcg', boundScale: 0.01 },
       { dom: 'tu-rule', arg: 'rule', kind: 'enum', values: ['medicare', 'rule-of-eights'], required: true, label: 'Timed-code rule: medicare (8-minute) or rule-of-eights (per service)' },
     ],
   },

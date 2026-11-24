@@ -14,8 +14,8 @@ export default [
     compute: gastricEmptyingScintigraphy,
     fields: [
       { dom: 'ges-h1', arg: 'retention1h', kind: 'number', required: false, label: 'Meal still in the stomach at 1 hour: normal 30 to 90, below 30 is rapid', unit: 'percent' },
-      { dom: 'ges-h2', arg: 'retention2h', kind: 'number', required: false, label: 'Meal still in the stomach at 2 hours: delayed above 60', unit: 'percent' },
-      { dom: 'ges-h4', arg: 'retention4h', kind: 'number', required: false, label: 'Meal still in the stomach at 4 hours: the value that grades the study, delayed above 10', unit: 'percent' },
+      { dom: 'ges-h2', arg: 'retention2h', kind: 'number', required: false, label: 'Meal still in the stomach at 2 hours: delayed above 60', unit: 'percent', max: 100 },
+      { dom: 'ges-h4', arg: 'retention4h', kind: 'number', required: false, label: 'Meal still in the stomach at 4 hours: the value that grades the study, delayed above 10', unit: 'percent', max: 100 },
       { dom: 'ges-glu', arg: 'glucose', kind: 'number', required: false, label: 'Blood glucose at the time of the study', unit: 'mg/dL' },
       { dom: 'ges-drugs', arg: 'drugsHeld', kind: 'boolean', required: false, label: 'Drugs that speed emptying up or slow it down were stopped two days beforehand' },
     ],

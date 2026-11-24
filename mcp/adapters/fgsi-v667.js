@@ -19,7 +19,7 @@ export default [
       { dom: 'fgsi-k', arg: 'k', kind: 'number', required: true, label: 'Serum potassium (mmol/L)', bound: 'potassium' },
       { dom: 'fgsi-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine (mg/dL)', bound: 'scr' },
       { dom: 'fgsi-hct', arg: 'hct', kind: 'number', required: true, label: 'Hematocrit (%)', bound: 'hematocrit' },
-      { dom: 'fgsi-wbc', arg: 'wbc', kind: 'number', required: true, label: 'White blood cell count (x10^3/mm3)' },
+      { dom: 'fgsi-wbc', arg: 'wbc', kind: 'number', required: true, label: 'White blood cell count (x10^3/mm3)', bound: 'wbc' },
       { dom: 'fgsi-bicarb', arg: 'bicarbonate', kind: 'number', required: true, label: 'Serum bicarbonate (mmol/L)', bound: 'bicarbonate' },
       { dom: 'fgsi-arf', arg: 'acuteRenalFailure', kind: 'bool', required: false, label: 'Acute renal failure (doubles the creatinine points)' },
     ],

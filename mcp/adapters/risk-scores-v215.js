@@ -17,7 +17,7 @@ export default [
       { dom: 'dlcn-fam', arg: 'familyHistory', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Family history (0/1/2 points)' },
       { dom: 'dlcn-clin', arg: 'clinicalHistory', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Personal clinical history (0/1/2 points)' },
       { dom: 'dlcn-exam', arg: 'physicalExam', kind: 'enum', values: ['0', '4', '6'], required: true, label: 'Physical examination (0/4/6 points)' },
-      { dom: 'dlcn-ldl', arg: 'ldl', kind: 'number', required: true, label: 'Untreated LDL-C', unit: 'mmol/L' },
+      { dom: 'dlcn-ldl', arg: 'ldl', kind: 'number', required: true, label: 'Untreated LDL-C', unit: 'mmol/L', bound: 'lactate' },
       { dom: 'dlcn-dna', arg: 'dnaMutation', kind: 'bool', required: false, label: 'Causative DNA mutation (LDLR/APOB/PCSK9)' },
     ],
   },
@@ -26,7 +26,7 @@ export default [
     summary: 'Simon Broome criteria for familial hypercholesterolemia: total cholesterol / LDL-C thresholds plus tendon xanthoma, DNA mutation, and family history of MI or hypercholesterolemia classify definite vs possible FH.',
     compute: F.simonBroomeFh,
     fields: [
-      { dom: 'sb-tc', arg: 'totalChol', kind: 'number', required: false, label: 'Total cholesterol', unit: 'mmol/L' },
+      { dom: 'sb-tc', arg: 'totalChol', kind: 'number', required: false, label: 'Total cholesterol', unit: 'mmol/L', bound: 'lactate' },
       { dom: 'sb-ldl', arg: 'ldl', kind: 'number', required: false, label: 'LDL-C', unit: 'mmol/L' },
       { dom: 'sb-child', arg: 'child', kind: 'bool', required: false, label: 'Child < 16 years (uses pediatric thresholds)' },
       { dom: 'sb-xanthoma', arg: 'tendonXanthoma', kind: 'bool', required: false, label: 'Tendon xanthoma (patient or 1st/2nd-degree relative)' },
@@ -41,7 +41,7 @@ export default [
     compute: F.padit,
     fields: [
       { dom: 'padit-prior', arg: 'priorProcedures', kind: 'enum', values: ['0', '1', '4'], required: true, label: 'Prior CIED procedures (0/1/≥2 points)' },
-      { dom: 'padit-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'padit-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'padit-type', arg: 'procedureType', kind: 'enum', values: ['0', '2', '4', '5'], required: true, label: 'Procedure type (points)' },
       { dom: 'padit-egfr', arg: 'egfrLow', kind: 'bool', required: false, label: 'Depressed renal function (eGFR < 30)' },
       { dom: 'padit-immuno', arg: 'immunocompromised', kind: 'bool', required: false, label: 'Immunocompromised' },
@@ -52,8 +52,8 @@ export default [
     summary: 'GRIm-Score (Bigot 2017): serum albumin, neutrophil-to-lymphocyte ratio, and elevated LDH give a 0–3 score where a higher total marks worse survival on immunotherapy.',
     compute: F.grimScore,
     fields: [
-      { dom: 'grim-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL' },
-      { dom: 'grim-nlr', arg: 'nlr', kind: 'number', required: true, label: 'Neutrophil-to-lymphocyte ratio' },
+      { dom: 'grim-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', max: 10 },
+      { dom: 'grim-nlr', arg: 'nlr', kind: 'number', required: true, label: 'Neutrophil-to-lymphocyte ratio', max: 1000 },
       { dom: 'grim-ldh', arg: 'ldhHigh', kind: 'bool', required: false, label: 'LDH above the upper limit of normal' },
     ],
   },

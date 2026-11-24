@@ -13,7 +13,7 @@ export default [
       { dom: 'cfd-nbs', arg: 'newbornScreenPositive', kind: 'boolean', required: false, label: 'Positive newborn screen' },
       { dom: 'cfd-clinical', arg: 'clinicalFeatures', kind: 'boolean', required: false, label: 'Clinical features consistent with CF' },
       { dom: 'cfd-sibling', arg: 'affectedSibling', kind: 'boolean', required: false, label: 'Sibling with cystic fibrosis' },
-      { dom: 'cfd-sweat', arg: 'sweatChloride', kind: 'number', required: false, label: 'Sweat chloride, mmol/L' },
+      { dom: 'cfd-sweat', arg: 'sweatChloride', kind: 'number', required: false, label: 'Sweat chloride, mmol/L', max: 200 },
       { dom: 'cfd-age', arg: 'ageMonths', kind: 'number', required: false, label: 'Age in months' },
       { dom: 'cfd-cftr', arg: 'cftrVariants', kind: 'enum', required: false, label: 'CFTR genetic analysis', values: ['not-tested', 'two-cf-causing', 'one-or-none'] },
     ],

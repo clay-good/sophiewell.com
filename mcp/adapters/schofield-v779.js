@@ -12,7 +12,7 @@ export default [
     compute: schofield,
     fields: [
       { dom: 'schof-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
-      { dom: 'schof-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr' },
+      { dom: 'schof-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr', max: 120 },
       { dom: 'schof-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
     ],
   },

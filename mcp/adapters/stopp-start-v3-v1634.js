@@ -15,7 +15,7 @@ export default [
       conditions: SS.CONDITIONS.filter((t) => a[`cond:${t.value}`]).map((t) => t.value),
     }),
     fields: [
-      { dom: 'ss3-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age, years (65 or older)' },
+      { dom: 'ss3-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age, years (65 or older)', max: 120 },
       { dom: 'ss3-egfr', arg: 'egfr', kind: 'number', required: false, label: 'eGFR, mL/min/1.73 m² (optional, for the kidney criteria)' },
       ...SS.DRUGS.map((t) => ({ dom: `ss3-d-${t.value}`, arg: `drug:${t.value}`, kind: 'bool', required: false, label: t.text })),
       ...SS.CONDITIONS.map((t) => ({ dom: `ss3-c-${t.value}`, arg: `cond:${t.value}`, kind: 'bool', required: false, label: t.text })),

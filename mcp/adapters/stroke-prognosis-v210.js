@@ -10,7 +10,7 @@ export default [
     summary: 'SPAN-100 index (Saposnik 2013): age plus NIHSS; an index ≥ 100 (SPAN-100 positive) marks a substantially worse acute-ischemic-stroke prognosis with a much lower favorable-outcome rate.',
     compute: F.spanScore,
     fields: [
-      { dom: 'span-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'span-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
       { dom: 'span-nihss', arg: 'nihss', kind: 'number', min: 0, max: 42, required: true, label: 'NIHSS (0–42)' },
     ],
   },

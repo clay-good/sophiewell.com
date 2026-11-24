@@ -13,8 +13,8 @@ export default [
     compute: quinteroTtts,
     fields: [
       { dom: 'ttts-mcda', arg: 'monochorionicDiamniotic', kind: 'boolean', required: false, label: 'Monochorionic diamniotic, confirmed' },
-      { dom: 'ttts-donor', arg: 'donorMvp', kind: 'number', required: false, label: 'Donor maximum vertical pocket, cm' },
-      { dom: 'ttts-recipient', arg: 'recipientMvp', kind: 'number', required: false, label: 'Recipient maximum vertical pocket, cm' },
+      { dom: 'ttts-donor', arg: 'donorMvp', kind: 'number', required: false, label: 'Donor maximum vertical pocket, cm', bound: 'platelets', boundScale: 0.01 },
+      { dom: 'ttts-recipient', arg: 'recipientMvp', kind: 'number', required: false, label: 'Recipient maximum vertical pocket, cm', bound: 'platelets', boundScale: 0.01 },
       { dom: 'ttts-bladder', arg: 'donorBladderVisible', kind: 'boolean', required: false, label: 'Donor bladder visible' },
       { dom: 'ttts-doppler', arg: 'criticallyAbnormalDoppler', kind: 'boolean', required: false, label: 'Critically abnormal Doppler in either twin' },
       { dom: 'ttts-hydrops', arg: 'hydrops', kind: 'boolean', required: false, label: 'Hydrops' },

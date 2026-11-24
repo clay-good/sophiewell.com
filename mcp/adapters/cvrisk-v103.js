@@ -28,7 +28,7 @@ export default [
     summary: 'SCORE2-OP (ESC 2021): the older-persons 10-year fatal + non-fatal CVD risk for adults >= 70, region-calibrated, from age, sex, smoking, diabetes, systolic BP, and total / HDL cholesterol (mmol/L).',
     compute: F.score2Op,
     fields: [
-      { dom: 'op-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'op-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'op-sex', arg: 'male', kind: 'bool', label: 'Male sex' },
       { dom: 'op-smoke', arg: 'smoker', kind: 'bool', label: 'Current smoker' },
       { dom: 'op-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes mellitus' },
@@ -77,7 +77,7 @@ export default [
     summary: 'Reynolds Risk Score (Ridker 2007/2008): 10-year cardiovascular risk adding high-sensitivity CRP and family history of premature MI to age, sex, BP, lipids, and smoking (with HbA1c for diabetic women).',
     compute: F.reynoldsRisk,
     fields: [
-      { dom: 'rr-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'rr-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'rr-sex', arg: 'male', kind: 'bool', label: 'Male sex' },
       { dom: 'rr-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
       { dom: 'rr-tc', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },

@@ -18,7 +18,7 @@ export default [
       { dom: 'ur-baselinealp', arg: 'baselineAlp', kind: 'number', required: false, label: 'Alkaline phosphatase before treatment (Barcelona only)', unit: 'U/L', min: 0 },
       { dom: 'ur-ast', arg: 'ast', kind: 'number', required: false, label: 'AST (the Paris sets only)', unit: 'U/L', bound: 'ast' },
       { dom: 'ur-astuln', arg: 'astUln', kind: 'number', required: false, label: 'AST upper limit of normal', unit: 'U/L' },
-      { dom: 'ur-bilirubin', arg: 'bilirubin', kind: 'number', required: false, label: 'Total bilirubin (the Paris sets only)', unit: 'mg/dL' },
+      { dom: 'ur-bilirubin', arg: 'bilirubin', kind: 'number', required: false, label: 'Total bilirubin (the Paris sets only)', unit: 'mg/dL', bound: 'bilirubin' },
     ],
   },
 ];

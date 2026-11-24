@@ -21,7 +21,7 @@ export default [
       { dom: 'cx-pregnant', arg: 'pregnant', kind: 'boolean', required: false, label: 'Pregnancy' },
       { dom: 'cx-persistent', arg: 'persistent', kind: 'boolean', required: false, label: 'Symptoms persisting after high-flow oxygen' },
       { dom: 'cx-oxygen', arg: 'oxygen', kind: 'enum', values: ['', 'none', 'high-flow', 'hyperbaric'], required: false, label: 'Oxygen already running when the sample was drawn' },
-      { dom: 'cx-hours', arg: 'hoursOnOxygen', kind: 'number', required: false, label: 'Hours on oxygen before the sample', unit: 'hours' },
+      { dom: 'cx-hours', arg: 'hoursOnOxygen', kind: 'number', required: false, label: 'Hours on oxygen before the sample', unit: 'hours', max: 100 },
       { dom: 'cx-spo2', arg: 'spo2', kind: 'number', required: false, label: 'Pulse oximeter reading, which does not measure carboxyhemoglobin', unit: 'percent' },
     ],
   },

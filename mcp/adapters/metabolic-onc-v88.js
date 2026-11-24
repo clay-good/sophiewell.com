@@ -28,7 +28,7 @@ export default [
     compute: F.calvertCarboplatin,
     fields: [
       { dom: 'cv-auc', arg: 'targetAuc', kind: 'number', required: true, label: 'Target AUC', unit: 'mg·min/mL' },
-      { dom: 'cv-gfr', arg: 'gfr', kind: 'number', required: true, label: 'GFR (or Cockcroft-Gault CrCl)', unit: 'mL/min' },
+      { dom: 'cv-gfr', arg: 'gfr', kind: 'number', required: true, label: 'GFR (or Cockcroft-Gault CrCl)', unit: 'mL/min', bound: 'eGFR' },
       { dom: 'cv-cap', arg: 'capGfr', kind: 'enum', values: ['on', 'off'], label: 'Cap GFR at 125 mL/min (FDA recommendation)' },
     ],
   },

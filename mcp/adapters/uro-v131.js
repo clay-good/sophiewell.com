@@ -13,7 +13,7 @@ export default [
     summary: 'UCSF CAPRA score (Cooperberg 2005): a 0-10 predictor of biochemical recurrence after radical prostatectomy from age, PSA, the Gleason axis, clinical stage, and percent positive biopsy cores; 0-2 low, 3-5 intermediate, 6-10 high.',
     compute: F.capraScore,
     fields: [
-      { dom: 'capra-age', arg: 'age', kind: 'number', required: true, label: 'Age at diagnosis', unit: 'years' },
+      { dom: 'capra-age', arg: 'age', kind: 'number', required: true, label: 'Age at diagnosis', unit: 'years', bound: 'ageYears' },
       { dom: 'capra-psa', arg: 'psa', kind: 'number', required: true, label: 'PSA at diagnosis', unit: 'ng/mL' },
       { dom: 'capra-gp', arg: 'gleasonPrimary', kind: 'enum', values: ['1', '2', '3', '4', '5'], required: true, label: 'Primary Gleason pattern' },
       { dom: 'capra-gs', arg: 'gleasonSecondary', kind: 'enum', values: ['1', '2', '3', '4', '5'], required: true, label: 'Secondary Gleason pattern' },

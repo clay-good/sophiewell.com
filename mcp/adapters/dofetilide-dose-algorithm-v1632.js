@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'dof-base', arg: 'baselineQt', kind: 'number', required: true, label: 'Baseline QTc (QT if heart rate under 60)', unit: 'msec', bound: 'qtMs' },
       { dom: 'dof-cond', arg: 'conduction', kind: 'enum', required: true, values: DF.YES_NO.map((y) => y.value), label: 'Ventricular conduction abnormality' },
-      { dom: 'dof-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance (actual weight)', unit: 'mL/min' },
+      { dom: 'dof-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance (actual weight)', unit: 'mL/min', max: 250 },
       { dom: 'dof-first', arg: 'firstDoseQt', kind: 'number', label: 'QTc or QT 2 to 3 h after dose 1 (optional)', unit: 'msec' },
       { dom: 'dof-later', arg: 'laterQt', kind: 'number', label: 'QTc or QT after a later dose (optional)', unit: 'msec' },
     ],

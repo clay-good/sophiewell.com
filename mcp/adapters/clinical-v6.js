@@ -11,9 +11,9 @@ export default [
     summary: 'Absolute neutrophil count = WBC * (segs + bands)/100; grades neutropenia under both CTCAE v6.0 (grade 1 below 1,500, 2 below 1,000, 3 below 500, 4 below 100) and v5.0 (grade 2 below 1,500, 3 below 1,000, 4 below 500). Neutropenic-precautions flag below 500.',
     compute: F.anc,
     fields: [
-      { dom: 'anc-wbc', arg: 'wbc', kind: 'number', required: true, label: 'WBC', unit: 'x10^9/L' },
-      { dom: 'anc-segs', arg: 'segs', kind: 'number', required: true, label: 'Segmented neutrophils', unit: '%' },
-      { dom: 'anc-bands', arg: 'bands', kind: 'number', required: true, label: 'Bands', unit: '%' },
+      { dom: 'anc-wbc', arg: 'wbc', kind: 'number', required: true, label: 'WBC', unit: 'x10^9/L', bound: 'wbc' },
+      { dom: 'anc-segs', arg: 'segs', kind: 'number', required: true, label: 'Segmented neutrophils', unit: '%', max: 100 },
+      { dom: 'anc-bands', arg: 'bands', kind: 'number', required: true, label: 'Bands', unit: '%', max: 100 },
     ],
   },
   {
@@ -21,7 +21,7 @@ export default [
     summary: 'Reticulocyte production index: corrected retic and RPI using a maturation factor from hematocrit; RPI <2 inadequate marrow response.',
     compute: F.reticIndex,
     fields: [
-      { dom: 'ri-retic', arg: 'reticPct', kind: 'number', required: true, label: 'Reticulocyte', unit: '%' },
+      { dom: 'ri-retic', arg: 'reticPct', kind: 'number', required: true, label: 'Reticulocyte', unit: '%', max: 100 },
       { dom: 'ri-hct', arg: 'hct', kind: 'number', required: true, label: 'Hematocrit', unit: '%', bound: 'hematocrit' },
     ],
   },
@@ -30,7 +30,7 @@ export default [
     summary: 'Transferrin saturation = 100*iron/TIBC; with ferritin, characterizes iron-deficiency vs overload pattern.',
     compute: F.tsat,
     fields: [
-      { dom: 'ts-iron', arg: 'ironUgDl', kind: 'number', required: true, label: 'Serum iron', unit: 'ug/dL' },
+      { dom: 'ts-iron', arg: 'ironUgDl', kind: 'number', required: true, label: 'Serum iron', unit: 'ug/dL', max: 1000 },
       { dom: 'ts-tibc', arg: 'tibcUgDl', kind: 'number', required: true, label: 'TIBC', unit: 'ug/dL', min: 1, max: 1500 },
       // spec-v1154: the page label reads "Ferritin (ng/mL, optional)" and the
       // library already discloses without it -- "TSAT <20%: iron-deficient pattern
@@ -44,8 +44,8 @@ export default [
     summary: 'Corrected count increment for platelet transfusion = increment*BSA/dose; low CCI at 1h/24h indicates refractoriness.',
     compute: F.cciPlatelet,
     fields: [
-      { dom: 'cci-pre', arg: 'prePlt', kind: 'number', required: true, label: 'Pre-transfusion platelet', unit: 'x10^9/L' },
-      { dom: 'cci-post', arg: 'postPlt', kind: 'number', required: true, label: 'Post-transfusion platelet', unit: 'x10^9/L' },
+      { dom: 'cci-pre', arg: 'prePlt', kind: 'number', required: true, label: 'Pre-transfusion platelet', unit: 'x10^9/L', bound: 'platelets' },
+      { dom: 'cci-post', arg: 'postPlt', kind: 'number', required: true, label: 'Post-transfusion platelet', unit: 'x10^9/L', bound: 'platelets' },
       { dom: 'cci-bsa', arg: 'bsaM2', kind: 'number', required: true, label: 'Body surface area', unit: 'm^2', min: 0.1, max: 3 },
       { dom: 'cci-dose', arg: 'doseE11', kind: 'number', required: true, label: 'Platelet dose', unit: 'x10^11', min: 0.1, max: 20 },
     ],
@@ -91,7 +91,7 @@ export default [
       // returns a null OI when the PaO2 is absent and a null OSI when the SpO2 is, so either
       // one alone is a legitimate call.
       { dom: 'oi-pao2', arg: 'pao2', kind: 'number', required: false, label: 'PaO2 (omit for the saturation index alone)', unit: 'mmHg', bound: 'paO2' },
-      { dom: 'oi-spo2', arg: 'spo2', kind: 'number', required: false, label: 'SpO2 (omit for the oxygenation index alone)', unit: '%' },
+      { dom: 'oi-spo2', arg: 'spo2', kind: 'number', required: false, label: 'SpO2 (omit for the oxygenation index alone)', unit: '%', min: 1, max: 100 },
     ],
   },
   {
@@ -99,8 +99,8 @@ export default [
     summary: 'Ventilator driving pressure dP = plateau - PEEP, plus static compliance; dP >15 cmH2O flags elevated risk.',
     compute: F.drivingPressure,
     fields: [
-      { dom: 'dp-plat', arg: 'plateau', kind: 'number', required: true, label: 'Plateau pressure', unit: 'cmH2O' },
-      { dom: 'dp-peep', arg: 'peep', kind: 'number', required: true, label: 'PEEP', unit: 'cmH2O' },
+      { dom: 'dp-plat', arg: 'plateau', kind: 'number', required: true, label: 'Plateau pressure', unit: 'cmH2O', max: 80 },
+      { dom: 'dp-peep', arg: 'peep', kind: 'number', required: true, label: 'PEEP', unit: 'cmH2O', bound: 'lactate' },
       { dom: 'dp-vt', arg: 'tidalVolume', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL', min: 1, max: 3000 },
     ],
   },
@@ -109,11 +109,11 @@ export default [
     summary: 'Transtubular potassium gradient = (urine K/plasma K)/(urine osm/plasma osm); assesses renal K handling. Valid only when urine osm >= plasma and urine Na > 25.',
     compute: F.ttkg,
     fields: [
-      { dom: 'ttkg-uk', arg: 'urineK', kind: 'number', required: true, label: 'Urine K', unit: 'mEq/L' },
+      { dom: 'ttkg-uk', arg: 'urineK', kind: 'number', required: true, label: 'Urine K', unit: 'mEq/L', bound: 'platelets', boundScale: 0.1 },
       { dom: 'ttkg-pk', arg: 'plasmaK', kind: 'number', required: true, label: 'Plasma K', unit: 'mEq/L', bound: 'potassium' },
       { dom: 'ttkg-uosm', arg: 'urineOsm', kind: 'number', required: true, label: 'Urine osmolality', unit: 'mOsm/kg', min: 1, max: 1500 },
       { dom: 'ttkg-posm', arg: 'plasmaOsm', kind: 'number', required: true, label: 'Plasma osmolality', unit: 'mOsm/kg', min: 100, max: 400 },
-      { dom: 'ttkg-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine Na', unit: 'mEq/L' },
+      { dom: 'ttkg-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine Na', unit: 'mEq/L', bound: 'platelets', boundScale: 0.1 },
     ],
   },
   {
@@ -121,9 +121,9 @@ export default [
     summary: 'Urine anion gap = urine Na + urine K - urine Cl; negative suggests GI HCO3 loss, positive suggests renal (RTA) cause of NAGMA.',
     compute: F.urineAnionGap,
     fields: [
-      { dom: 'uag-na', arg: 'urineNa', kind: 'number', required: true, label: 'Urine Na', unit: 'mEq/L' },
-      { dom: 'uag-k', arg: 'urineK', kind: 'number', required: true, label: 'Urine K', unit: 'mEq/L' },
-      { dom: 'uag-cl', arg: 'urineCl', kind: 'number', required: true, label: 'Urine Cl', unit: 'mEq/L' },
+      { dom: 'uag-na', arg: 'urineNa', kind: 'number', required: true, label: 'Urine Na', unit: 'mEq/L', bound: 'platelets', boundScale: 0.1 },
+      { dom: 'uag-k', arg: 'urineK', kind: 'number', required: true, label: 'Urine K', unit: 'mEq/L', bound: 'platelets', boundScale: 0.1 },
+      { dom: 'uag-cl', arg: 'urineCl', kind: 'number', required: true, label: 'Urine Cl', unit: 'mEq/L', bound: 'platelets', boundScale: 0.1 },
     ],
   },
   {

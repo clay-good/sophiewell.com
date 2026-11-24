@@ -13,7 +13,7 @@ export default [
       { dom: 'pwn-inr', arg: 'inr', kind: 'number', required: true, label: 'INR (baseline on day 1)', bound: 'inr' },
       { dom: 'pwn-start', arg: 'start', kind: 'enum', values: PW.STARTS.map((x) => x.value), label: 'Day 1 start' },
       { dom: 'pwn-wt', arg: 'weightKg', kind: 'number', label: 'Weight (day 1)', unit: 'kg' },
-      { dom: 'pwn-dose', arg: 'doseMg', kind: 'number', label: 'Loading dose or current dose', unit: 'mg' },
+      { dom: 'pwn-dose', arg: 'doseMg', kind: 'number', label: 'Loading dose or current dose', unit: 'mg', min: 0.1, max: 50 },
     ],
   },
 ];

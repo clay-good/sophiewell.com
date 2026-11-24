@@ -21,8 +21,8 @@ export default [
       { dom: 'wh-l1000', arg: 'left1000', kind: 'number', required: false, label: 'Left ear threshold at 1 kHz', unit: 'dB' },
       { dom: 'wh-l2000', arg: 'left2000', kind: 'number', required: false, label: 'Left ear threshold at 2 kHz', unit: 'dB' },
       { dom: 'wh-l4000', arg: 'left4000', kind: 'number', required: false, label: 'Left ear threshold at 4 kHz', unit: 'dB' },
-      { dom: 'wh-rpta', arg: 'rightPta', kind: 'number', required: false, label: 'Right ear average over the four frequencies, if already worked out', unit: 'dB' },
-      { dom: 'wh-lpta', arg: 'leftPta', kind: 'number', required: false, label: 'Left ear average over the four frequencies, if already worked out', unit: 'dB' },
+      { dom: 'wh-rpta', arg: 'rightPta', kind: 'number', required: false, label: 'Right ear average over the four frequencies, if already worked out', unit: 'dB', bound: 'ageYears' },
+      { dom: 'wh-lpta', arg: 'leftPta', kind: 'number', required: false, label: 'Left ear average over the four frequencies, if already worked out', unit: 'dB', bound: 'ageYears' },
     ],
   },
 ];

@@ -11,7 +11,7 @@ export default [
     fields: [
       { dom: 'fzl-indication', arg: 'indication', kind: 'enum', required: true, values: FL.INDICATIONS.map((x) => x.value), label: 'Indication' },
       { dom: 'fzl-patient', arg: 'patient', kind: 'enum', required: true, values: FL.PATIENTS.map((x) => x.value), label: 'Patient' },
-      { dom: 'fzl-given', arg: 'dosesGiven', kind: 'number', required: true, label: 'Doses given so far in this series (0 before the first)' },
+      { dom: 'fzl-given', arg: 'dosesGiven', kind: 'number', required: true, label: 'Doses given so far in this series (0 before the first)', max: 20 },
       { dom: 'fzl-weight', arg: 'weight', kind: 'number', label: 'Weight (needed for a pediatric patient)', unit: 'kg' },
     ],
   },

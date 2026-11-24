@@ -16,7 +16,7 @@ export default [
       { dom: 'trs-jet', arg: 'jetArea', kind: 'number', required: false, label: 'Jet area, severe at 10 or more', unit: 'square cm' },
       { dom: 'trs-vc', arg: 'venaContracta', kind: 'number', required: false, label: 'Vena contracta width, severe at 0.7 or more', unit: 'cm' },
       { dom: 'trs-ero', arg: 'regurgitantOrifice', kind: 'number', required: false, label: 'Effective regurgitant orifice area, severe at 0.40 or more', unit: 'square cm' },
-      { dom: 'trs-rvol', arg: 'regurgitantVolume', kind: 'number', required: false, label: 'Regurgitant volume, severe at 45 or more', unit: 'mL per beat' },
+      { dom: 'trs-rvol', arg: 'regurgitantVolume', kind: 'number', required: false, label: 'Regurgitant volume, severe at 45 or more', unit: 'mL per beat', max: 300 },
       { dom: 'trs-hv', arg: 'hepaticVeinReversal', kind: 'boolean', required: false, label: 'Systolic flow reversal in the hepatic veins' },
       { dom: 'trs-mech', arg: 'mechanism', kind: 'enum', values: ['secondary', 'primary'], required: false, label: 'Mechanism: secondary (normal valve pulled open) or primary (abnormal valve)' },
       { dom: 'trs-risk', arg: 'atRiskValve', kind: 'boolean', required: false, label: 'At-risk valve: leaflet abnormality, annular dilation, right-sided remodeling or a lead' },

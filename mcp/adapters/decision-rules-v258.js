@@ -39,7 +39,7 @@ export default [
     summary: 'McIsaac score — the age-corrected Centor score for streptococcal pharyngitis: temperature > 38 C (+1), absence of cough (+1), tender anterior cervical adenopathy (+1), tonsillar swelling/exudate (+1), plus an age adjustment (3-14 +1, 15-44 0, >= 45 -1). The total maps to the estimated probability of group A strep and a testing strategy; it recommends testing, never an antibiotic order.',
     compute: F.mcisaacScore,
     fields: [
-      { dom: 'mci-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'mci-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
       { dom: 'mci-fever', arg: 'fever', kind: 'bool', label: 'Temperature > 38 C' },
       { dom: 'mci-cough', arg: 'absentCough', kind: 'bool', label: 'Absence of cough' },
       { dom: 'mci-adeno', arg: 'adenopathy', kind: 'bool', label: 'Tender anterior cervical adenopathy' },

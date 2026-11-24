@@ -10,7 +10,7 @@ export default [
     compute: XL.xLinkedBayesRisk,
     fields: [
       { dom: 'xl-prior', arg: 'prior', kind: 'string', required: true, label: 'Prior carrier probability' },
-      { dom: 'xl-sons', arg: 'unaffectedSons', kind: 'number', required: true, label: 'Unaffected sons' },
+      { dom: 'xl-sons', arg: 'unaffectedSons', kind: 'number', required: true, label: 'Unaffected sons', max: 30 },
       { dom: 'xl-dr', arg: 'detectionRate', kind: 'string', required: false, label: 'A negative carrier test\'s detection rate (optional)' },
     ]
   },

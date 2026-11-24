@@ -46,7 +46,7 @@ export default [
     summary: 'Bladder outlet obstruction index (Abrams 1999): BOOI = PdetQmax - 2 x Qmax and BCI = PdetQmax + 5 x Qmax; pressure-flow indices of obstruction and detrusor contractility.',
     compute: F.bladderOutletObstructionIndex,
     fields: [
-      { dom: 'boo-pdet', arg: 'pdet', kind: 'number', required: true, label: 'Detrusor pressure at max flow (PdetQmax)', unit: 'cmH2O' },
+      { dom: 'boo-pdet', arg: 'pdet', kind: 'number', required: true, label: 'Detrusor pressure at max flow (PdetQmax)', unit: 'cmH2O', max: 300 },
       { dom: 'boo-qmax', arg: 'qmax', kind: 'number', required: true, label: 'Maximum flow rate (Qmax)', unit: 'mL/s' },
     ],
   },

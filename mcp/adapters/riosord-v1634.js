@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'rio-version', arg: 'version', kind: 'enum', required: true, values: RO.VERSIONS.map((x) => x.value), label: 'Version' },
       ...RO.ITEMS.map((it) => ({ dom: `rio-${it.dom}`, arg: it.arg, kind: 'enum', values: ['yes', 'no'], label: it.text })),
-      { dom: 'rio-mme', arg: 'mme', kind: 'number', required: true, label: 'Maximum prescribed opioid dose', unit: 'MME/day' },
+      { dom: 'rio-mme', arg: 'mme', kind: 'number', required: true, label: 'Maximum prescribed opioid dose', unit: 'MME/day', bound: 'lactate', boundScale: 100 },
     ],
   },
 ];

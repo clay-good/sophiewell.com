@@ -20,11 +20,11 @@ export default [
     summary: 'Disease Activity in Psoriatic Arthritis (DAPSA): 68-joint tender + 66-joint swollen counts + patient-global + pain VAS + CRP (mg/dL); banded remission / low / moderate / high.',
     compute: F.dapsa,
     fields: [
-      { dom: 'dapsa-tjc', arg: 'tjc68', kind: 'number', required: true, label: '68-joint tender count' },
-      { dom: 'dapsa-sjc', arg: 'sjc66', kind: 'number', required: true, label: '66-joint swollen count' },
+      { dom: 'dapsa-tjc', arg: 'tjc68', kind: 'number', required: true, label: '68-joint tender count', max: 68 },
+      { dom: 'dapsa-sjc', arg: 'sjc66', kind: 'number', required: true, label: '66-joint swollen count', max: 66 },
       { dom: 'dapsa-global', arg: 'global', kind: 'number', min: 0, max: 10, required: true, label: 'Patient-global VAS (0–10)' },
       { dom: 'dapsa-pain', arg: 'pain', kind: 'number', min: 0, max: 10, required: true, label: 'Pain VAS (0–10)' },
-      { dom: 'dapsa-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/dL' },
+      { dom: 'dapsa-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/dL', max: 100 },
     ],
   },
   {

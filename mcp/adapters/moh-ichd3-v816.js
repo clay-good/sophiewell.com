@@ -11,9 +11,9 @@ export default [
     summary: 'Applies the ICHD-3 criteria for medication-overuse headache. Needs headache on 15 or more days a month, regular overuse for more than 3 months, and no better explanation. The overuse threshold DIFFERS by class: 10 days a month for ergotamine, triptans, opioids and combination analgesics, but 15 for simple analgesics. A patient overusing no single class but reaching 10 total days across classes is 8.2.6.',
     compute: mohIchd3,
     fields: [
-      { dom: 'moh-headache-days', arg: 'headacheDays', kind: 'number', required: false, label: 'Headache days per month' },
-      { dom: 'moh-months', arg: 'overuseMonths', kind: 'number', required: false, label: 'Months of regular overuse' },
-      { dom: 'moh-triptan', arg: 'triptanDays', kind: 'number', required: false, label: 'Triptan days per month' },
+      { dom: 'moh-headache-days', arg: 'headacheDays', kind: 'number', required: false, label: 'Headache days per month', max: 31 },
+      { dom: 'moh-months', arg: 'overuseMonths', kind: 'number', required: false, label: 'Months of regular overuse', max: 1200 },
+      { dom: 'moh-triptan', arg: 'triptanDays', kind: 'number', required: false, label: 'Triptan days per month', max: 31 },
       { dom: 'moh-ergotamine', arg: 'ergotamineDays', kind: 'number', required: false, label: 'Ergotamine days per month' },
       { dom: 'moh-opioid', arg: 'opioidDays', kind: 'number', required: false, label: 'Opioid days per month' },
       { dom: 'moh-combination', arg: 'combinationDays', kind: 'number', required: false, label: 'Combination analgesic days per month' },

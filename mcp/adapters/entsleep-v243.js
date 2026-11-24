@@ -39,7 +39,7 @@ export default [
     compute: F.noApnea,
     fields: [
       { dom: 'na-neck', arg: 'neck', kind: 'number', required: true, label: 'Neck circumference', unit: 'cm', min: 20, max: 70 },
-      { dom: 'na-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'na-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
     ],
   },
   {
@@ -47,7 +47,7 @@ export default [
     summary: 'Sleep-efficiency index: total sleep time / time in bed x 100; >= 85% normal, < 75% poor.',
     compute: F.sleepEfficiency,
     fields: [
-      { dom: 'se-tst', arg: 'tst', kind: 'number', required: true, label: 'Total sleep time', unit: 'minutes' },
+      { dom: 'se-tst', arg: 'tst', kind: 'number', required: true, label: 'Total sleep time', unit: 'minutes', max: 1440 },
       { dom: 'se-tib', arg: 'tib', kind: 'number', required: true, label: 'Time in bed', unit: 'minutes', min: 1, max: 1440 },
     ],
   },

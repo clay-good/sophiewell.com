@@ -11,7 +11,7 @@ export default [
     fields: [
       { dom: 'uk-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
       { dom: 'uk-creat', arg: 'creatinineMgDl', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
-      { dom: 'uk-bili', arg: 'bilirubinMgDl', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
+      { dom: 'uk-bili', arg: 'bilirubinMgDl', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL', bound: 'bilirubin' },
       { dom: 'uk-na', arg: 'sodium', kind: 'number', required: true, label: 'Serum sodium', unit: 'mmol/L', bound: 'sodium' },
     ],
   },

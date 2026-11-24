@@ -11,7 +11,7 @@ export default [
     summary: 'INTERCHEST rule (Aerts 2017): probability that chest pain is coronary in primary care. Age/sex (female >=65 or male >=55) +1, history of CAD +1, pain on exertion +1, pressure-like pain +1, physician suspected serious/cardiac +1, reproducible by palpation -1. Sum -1 to +5; <2 CAD unlikely (~2.1%, NPV ~98%), >=2 ~43% (expedite testing). Primary-care rule, not for ED ACS triage.',
     compute: interchest,
     fields: [
-      { dom: 'ic-age', arg: 'age', kind: 'number', unit: 'years', required: true, label: 'Age (years)' },
+      { dom: 'ic-age', arg: 'age', kind: 'number', unit: 'years', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'ic-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex' },
       { dom: 'ic-cad', arg: 'historyCad', kind: 'boolean', required: false, label: 'History of coronary artery disease' },
       { dom: 'ic-exertion', arg: 'exertion', kind: 'boolean', required: false, label: 'Pain brought on by exertion' },

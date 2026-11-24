@@ -26,7 +26,7 @@ export default [
       { dom: 'bo-bmi', arg: 'bmi', kind: 'number', required: true, label: 'Body-mass index', unit: 'kg/m^2', bound: 'bmi' },
       { dom: 'bo-pct', arg: 'fev1Pct', kind: 'number', required: true, label: 'FEV1', unit: '% predicted' },
       { dom: 'bo-mmrc', arg: 'mmrc', kind: 'enum', values: ['0', '1', '2', '3', '4'], label: 'mMRC dyspnea grade', to: (v) => Number(v) },
-      { dom: 'bo-6mwd', arg: 'sixMwd', kind: 'number', required: true, label: '6-minute walk distance', unit: 'm' },
+      { dom: 'bo-6mwd', arg: 'sixMwd', kind: 'number', required: true, label: '6-minute walk distance', unit: 'm', bound: 'sixMinuteWalkM' },
     ],
   },
   {
@@ -35,7 +35,7 @@ export default [
     compute: P.gapIpf,
     fields: [
       { dom: 'gp-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Sex' },
-      { dom: 'gp-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'gp-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'gp-fvc', arg: 'fvcPct', kind: 'number', required: true, label: 'FVC', unit: '% predicted' },
       { dom: 'gp-dlco', arg: 'dlcoPct', kind: 'number', label: 'DLCO', unit: '% predicted' },
       { dom: 'gp-dlco-cannot', arg: 'dlcoCannotPerform', kind: 'enum', values: ['no', 'yes'], label: 'DLCO cannot be performed (3 points)', to: (v) => v === 'yes' },

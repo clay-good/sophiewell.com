@@ -10,7 +10,7 @@ export default [
     compute: (args) => TD.thrombolyticDose(args, new Date()),
     fields: [
       { dom: 'thd-regimen', arg: 'regimen', kind: 'enum', required: true, values: TD.REGIMENS.map((x) => x.value), label: 'Drug and indication' },
-      { dom: 'thd-weight', arg: 'weight', kind: 'number', label: 'Weight (not needed for pulmonary embolism)', unit: 'kg' },
+      { dom: 'thd-weight', arg: 'weight', kind: 'number', label: 'Weight (not needed for pulmonary embolism)', unit: 'kg', min: 0.4, max: 500 },
       { dom: 'thd-lumen', arg: 'lumenVolume', kind: 'number', label: 'Cathflo under 30 kg: internal lumen volume of the catheter', unit: 'mL' },
     ],
   },

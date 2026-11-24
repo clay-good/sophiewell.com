@@ -14,7 +14,7 @@ export default [
     fields: [
       { dom: 'eos-inc', arg: 'incidence', kind: 'enum', values: ['0.5', '0.6', '0.4', '0.3'], label: 'EOS baseline incidence (per 1,000)' },
       { dom: 'eos-ga', arg: 'ga', kind: 'number', label: 'Gestational age (weeks)' },
-      { dom: 'eos-temp', arg: 'tempF', kind: 'number', label: 'Maximum maternal temperature (°F)' },
+      { dom: 'eos-temp', arg: 'tempF', kind: 'number', label: 'Maximum maternal temperature (°F)', min: 90, max: 110 },
       { dom: 'eos-rom', arg: 'rom', kind: 'number', label: 'Duration of ROM (hours)' },
       { dom: 'eos-gbs', arg: 'gbs', kind: 'enum', values: ['negative', 'positive', 'unknown'], label: 'Maternal GBS status' },
       { dom: 'eos-abx', arg: 'abx', kind: 'enum', values: ['none', 'tx1', 'tx2'], label: 'Intrapartum antibiotics' },
@@ -27,7 +27,7 @@ export default [
     compute: F.snappeII,
     fields: [
       { dom: 'sn-map', arg: 'map', kind: 'number', label: 'Mean arterial pressure (mmHg)' },
-      { dom: 'sn-temp', arg: 'temp', kind: 'number', label: 'Lowest temperature (°C)' },
+      { dom: 'sn-temp', arg: 'temp', kind: 'number', label: 'Lowest temperature (°C)', max: 47 },
       { dom: 'sn-pao2', arg: 'pao2', kind: 'number', label: 'PaO2 (mmHg)', bound: 'paO2' },
       { dom: 'sn-fio2', arg: 'fio2', kind: 'number', label: 'FiO2 (%)', bound: 'fio2', boundScale: 100 },
       { dom: 'sn-ph', arg: 'ph', kind: 'number', label: 'Lowest pH', bound: 'pH' },
@@ -71,7 +71,7 @@ export default [
     summary: 'Koff expected bladder capacity (Koff 1983): (age in years + 2) × 30 mL.',
     compute: F.koffBladderCapacity,
     fields: [
-      { dom: 'kb-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'kb-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
     ],
   },
 ];

@@ -36,7 +36,7 @@ export default [
     summary: 'Bronchiectasis Severity Index (Chalmers 2014): predicts mortality and exacerbation risk from age, BMI, FEV1, colonization, radiology, and exacerbation history.',
     compute: F.bronchiectasisBsi,
     fields: [
-      { dom: 'bs-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'bs-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'bs-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI (kg/m^2)', bound: 'bmi' },
       { dom: 'bs-fev1', arg: 'fev1', kind: 'number', required: true, label: 'FEV1 (% predicted)' },
       { dom: 'bs-exac', arg: 'exacerbations', kind: 'number', required: true, label: 'Exacerbations in the prior year' },
@@ -54,7 +54,7 @@ export default [
     compute: F.facedBronchiectasis,
     fields: [
       { dom: 'fa-fev1', arg: 'fev1', kind: 'number', required: true, label: 'FEV1 (% predicted)' },
-      { dom: 'fa-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'fa-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'fa-ps', arg: 'pseudomonas', kind: 'bool', label: 'Pseudomonas colonization' },
       { dom: 'fa-ext', arg: 'extension', kind: 'bool', label: 'More than 2 lobes involved' },
       { dom: 'fa-dys', arg: 'dyspnea', kind: 'bool', label: 'MRC dyspnea grade 3-5' },
@@ -67,7 +67,7 @@ export default [
     fields: [
       { dom: 'no-neck', arg: 'neck', kind: 'number', required: true, label: 'Neck circumference (cm)' },
       { dom: 'no-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI (kg/m^2)', bound: 'bmi' },
-      { dom: 'no-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'no-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'no-snore', arg: 'snoring', kind: 'bool', label: 'Snoring' },
       { dom: 'no-male', arg: 'male', kind: 'bool', label: 'Male sex' },
     ],

@@ -10,9 +10,9 @@ export default [
     compute: FHS.fmcsaHearingStandard,
     fields: [
       { dom: 'fhs-whisper', arg: 'whisperFeet', kind: 'number', required: false, label: 'Forced whisper first perceived in the better ear at (feet)' },
-      { dom: 'fhs-500', arg: 'hz500', kind: 'number', required: false, label: 'Better ear, 500 Hz (dB)' },
-      { dom: 'fhs-1000', arg: 'hz1000', kind: 'number', required: false, label: 'Better ear, 1,000 Hz (dB)' },
-      { dom: 'fhs-2000', arg: 'hz2000', kind: 'number', required: false, label: 'Better ear, 2,000 Hz (dB)' },
+      { dom: 'fhs-500', arg: 'hz500', kind: 'number', required: false, label: 'Better ear, 500 Hz (dB)', max: 120 },
+      { dom: 'fhs-1000', arg: 'hz1000', kind: 'number', required: false, label: 'Better ear, 1,000 Hz (dB)', max: 120 },
+      { dom: 'fhs-2000', arg: 'hz2000', kind: 'number', required: false, label: 'Better ear, 2,000 Hz (dB)', max: 120 },
       { dom: 'fhs-calibration', arg: 'calibration', kind: 'enum', values: ['ansi', 'iso'], required: false, label: 'Audiometer calibration' },
     ]
   },

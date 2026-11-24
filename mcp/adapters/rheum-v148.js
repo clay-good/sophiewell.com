@@ -23,7 +23,7 @@ export default [
       { dom: 'asdas-ms', arg: 'morningStiffness', kind: 'number', min: 0, max: 10, required: true, label: 'Morning stiffness (0–10)' },
       { dom: 'asdas-pg', arg: 'patientGlobal', kind: 'number', min: 0, max: 10, required: true, label: 'Patient global (0–10)' },
       { dom: 'asdas-pp', arg: 'peripheralPain', kind: 'number', min: 0, max: 10, required: true, label: 'Peripheral pain/swelling (0–10)' },
-      { dom: 'asdas-crp', arg: 'crp', kind: 'number', required: false, label: 'CRP (preferred)', unit: 'mg/L' },
+      { dom: 'asdas-crp', arg: 'crp', kind: 'number', required: false, label: 'CRP (preferred)', unit: 'mg/L', bound: 'lactate', boundScale: 10 },
       { dom: 'asdas-esr', arg: 'esr', kind: 'number', required: false, label: 'ESR (if no CRP)', unit: 'mm/h' },
     ],
   },
@@ -88,7 +88,7 @@ export default [
     compute: F.opioidConversion,
     fields: [
       { dom: 'opc-source', arg: 'source', kind: 'enum', values: OPIOID_AGENTS, required: true, label: 'Source opioid and route' },
-      { dom: 'opc-dose', arg: 'dose', kind: 'number', required: true, label: 'Total source daily dose', unit: 'mg or mcg/day' },
+      { dom: 'opc-dose', arg: 'dose', kind: 'number', required: true, label: 'Total source daily dose', unit: 'mg or mcg/day', bound: 'hcg', boundScale: 0.01 },
       { dom: 'opc-target', arg: 'target', kind: 'enum', values: OPIOID_AGENTS, required: true, label: 'Target opioid and route' },
       { dom: 'opc-reduction', arg: 'reduction', kind: 'enum', values: ['r0', 'r25', 'r33', 'r50'], required: false, label: 'Cross-tolerance reduction (r0/r25/r33/r50)' },
     ],

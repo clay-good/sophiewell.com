@@ -11,7 +11,7 @@ export default [
     compute: TM.tmicBetaLactam,
     fields: [
       { dom: 'tm-dose', arg: 'dose', kind: 'number', required: true, label: 'Dose', unit: 'mg' },
-      { dom: 'tm-tinf', arg: 'infusionHours', kind: 'number', required: true, label: 'Infusion time (0 for a bolus)', unit: 'hours' },
+      { dom: 'tm-tinf', arg: 'infusionHours', kind: 'number', required: true, label: 'Infusion time (0 for a bolus)', unit: 'hours', max: 1000 },
       { dom: 'tm-tau', arg: 'interval', kind: 'number', required: true, label: 'Dosing interval', unit: 'hours' },
       { dom: 'tm-vd', arg: 'vd', kind: 'number', required: true, label: 'Volume of distribution', unit: 'L' },
       { dom: 'tm-half', arg: 'halfLife', kind: 'number', required: false, label: 'Half-life (or enter k)', unit: 'hours' },

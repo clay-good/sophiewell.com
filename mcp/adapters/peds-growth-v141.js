@@ -43,8 +43,8 @@ export default [
     compute: F.midParentalHeight,
     fields: [
       { dom: 'mp-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Child sex' },
-      { dom: 'mp-mom', arg: 'motherCm', kind: 'number', label: "Mother's height (cm)" },
-      { dom: 'mp-dad', arg: 'fatherCm', kind: 'number', label: "Father's height (cm)" },
+      { dom: 'mp-mom', arg: 'motherCm', kind: 'number', label: "Mother's height (cm)", min: 100, max: 230 },
+      { dom: 'mp-dad', arg: 'fatherCm', kind: 'number', label: "Father's height (cm)", min: 100, max: 230 },
     ],
   },
   {
@@ -53,7 +53,7 @@ export default [
     compute: F.correctedAge,
     fields: [
       { dom: 'ca-age', arg: 'chronoMonths', kind: 'number', label: 'Chronological age (months)' },
-      { dom: 'ca-ga', arg: 'gaWeeks', kind: 'number', label: 'Gestational age at birth (weeks)' },
+      { dom: 'ca-ga', arg: 'gaWeeks', kind: 'number', label: 'Gestational age at birth (weeks)', min: 22, max: 42 },
     ],
   },
 ];

@@ -13,7 +13,7 @@ export default [
       { dom: 'mes-damage', arg: 'permanentDamage', kind: 'enum', values: ['yes', 'no'], label: 'Unintended permanent functional damage, per a physician (with patient intervention)' },
       { dom: 'mes-wrong', arg: 'wrongAdministration', kind: 'enum', values: ME.WRONG.map((w) => w.value), label: 'Wrong drug, route, individual or mode, or a leaking source' },
       { dom: 'mes-kind', arg: 'doseKind', kind: 'enum', values: ME.DOSE_KINDS.map((k) => k.value), label: 'Kind of dose estimated' },
-      { dom: 'mes-dose', arg: 'doseRem', kind: 'number', label: 'Dose difference from prescribed, or the dose from a wrong administration', unit: 'rem' },
+      { dom: 'mes-dose', arg: 'doseRem', kind: 'number', label: 'Dose difference from prescribed, or the dose from a wrong administration', unit: 'rem', bound: 'hcg', boundScale: 0.1 },
       { dom: 'mes-prescribed', arg: 'prescribed', kind: 'number', label: 'Prescribed total dose or dosage' },
       { dom: 'mes-delivered', arg: 'delivered', kind: 'number', label: 'Delivered total dose or dosage (same unit)' },
       { dom: 'mes-range', arg: 'outsideRange', kind: 'enum', values: ['yes', 'no'], label: 'Dosage outside the prescribed range' },

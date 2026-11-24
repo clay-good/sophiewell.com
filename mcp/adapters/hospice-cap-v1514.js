@@ -9,7 +9,7 @@ export default [
     compute: HC.hospiceAggregateCap,
     fields: [
       { dom: 'hac-year', arg: 'capYear', kind: 'number', required: false, label: 'Cap year, federal fiscal year (blank for the current one)' },
-      { dom: 'hac-benes', arg: 'beneficiaries', kind: 'number', required: true, label: 'Medicare beneficiaries for the cap year (may be fractional)' },
+      { dom: 'hac-benes', arg: 'beneficiaries', kind: 'number', required: true, label: 'Medicare beneficiaries for the cap year (may be fractional)', bound: 'hcg', boundScale: 0.1 },
       { dom: 'hac-method', arg: 'method', kind: 'enum', required: false, values: HC.METHODS.map((m) => m.value), label: 'Counting method' },
       { dom: 'hac-paid', arg: 'payments', kind: 'number', required: true, label: 'Medicare hospice payments for the cap year', unit: 'USD' },
     ],

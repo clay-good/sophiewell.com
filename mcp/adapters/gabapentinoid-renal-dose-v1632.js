@@ -11,7 +11,7 @@ export default [
     compute: GB.gabapentinoidRenalDose,
     fields: [
       { dom: 'gbr-drug', arg: 'drug', kind: 'enum', required: true, values: GB.DRUGS.map((d) => d.value), label: 'Drug' },
-      { dom: 'gbr-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
+      { dom: 'gbr-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min', max: 250 },
       { dom: 'gbr-hd', arg: 'hemodialysis', kind: 'enum', required: true, values: GB.YES_NO.map((y) => y.value), label: 'On hemodialysis' },
       { dom: 'gbr-normal', arg: 'normalDose', kind: 'enum', values: GB.NORMAL_DOSES.map((n) => n.value), label: 'Pregabalin: normal daily dose, mg/day' },
     ],

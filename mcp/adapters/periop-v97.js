@@ -27,7 +27,7 @@ export default [
     summary: 'Gupta MICA: predicted 30-day risk of perioperative MI or cardiac arrest from age, ASA class, functional status, creatinine, and procedure.',
     compute: P.guptaMica,
     fields: [
-      { dom: 'mica-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'mica-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'mica-asa', arg: 'asa', kind: 'enum', values: ASA, label: 'ASA physical status class' },
       { dom: 'mica-func', arg: 'functional', kind: 'enum', values: FUNCTIONAL, label: 'Functional status' },
       { dom: 'mica-creat', arg: 'creatinine', kind: 'enum', values: ['normal', 'elevated', 'unknown'], label: 'Serum creatinine' },
@@ -86,7 +86,7 @@ export default [
     summary: 'POSPOM (Le Manach 2016): the Preoperative Score to predict PostOperative Mortality — age band + procedure category + comorbidity points map to predicted in-hospital mortality.',
     compute: P.pospom,
     fields: [
-      { dom: 'pospom-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'pospom-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'pospom-surg', arg: 'surgery', kind: 'enum', values: POSPOM_SURGERY, required: true, label: 'Planned surgery category' },
       ...POSPOM_COMORB_FIELDS,
     ],

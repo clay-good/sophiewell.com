@@ -64,7 +64,7 @@ export default [
     fields: [
       { dom: 'el-sah', arg: 'earlierSah', kind: 'enum', values: YESNO, label: 'Earlier subarachnoid hemorrhage', to: (v) => v === 'yes' },
       { dom: 'el-loc', arg: 'location', kind: 'enum', values: ['icaAcaAcom', 'mca', 'pcomPost'], label: 'Location of aneurysm' },
-      { dom: 'el-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'el-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'el-pop', arg: 'population', kind: 'enum', values: ['na', 'japan', 'finland'], label: 'Population' },
       { dom: 'el-size', arg: 'size', kind: 'number', required: true, label: 'Aneurysm size', unit: 'mm' },
       { dom: 'el-irregular', arg: 'irregular', kind: 'bool', label: 'Irregular shape (+4)' },
@@ -79,7 +79,7 @@ export default [
     fields: [
       { dom: 'ph-pop', arg: 'population', kind: 'enum', values: ['na', 'japanese', 'finnish'], label: 'Population' },
       { dom: 'ph-htn', arg: 'htn', kind: 'bool', label: 'Hypertension (+1)' },
-      { dom: 'ph-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ph-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'ph-size', arg: 'size', kind: 'number', required: true, label: 'Aneurysm size', unit: 'mm' },
       { dom: 'ph-sah', arg: 'earlierSah', kind: 'bool', label: 'Earlier SAH from a different aneurysm (+1)' },
       { dom: 'ph-site', arg: 'site', kind: 'enum', values: ['ica', 'mca', 'acaPcomPost'], label: 'Aneurysm site' },

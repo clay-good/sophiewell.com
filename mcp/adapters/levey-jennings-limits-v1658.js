@@ -10,7 +10,7 @@ export default [
     compute: LJ.leveyJenningsLimits,
     fields: [
       { dom: 'lj-results', arg: 'results', kind: 'string', required: true, label: 'Control results, one per line (a date or run label and a comma first is allowed)' },
-      { dom: 'lj-min', arg: 'minimumCount', kind: 'number', required: false, label: 'The laboratory\'s minimum count for setting limits (optional)' },
+      { dom: 'lj-min', arg: 'minimumCount', kind: 'number', required: false, label: 'The laboratory\'s minimum count for setting limits (optional)', min: 2, max: 1000 },
     ]
   },
 ];

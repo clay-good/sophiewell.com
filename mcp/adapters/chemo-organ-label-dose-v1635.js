@@ -11,7 +11,7 @@ export default [
     compute: (args) => CO.chemoOrganLabelDose(args, new Date()),
     fields: [
       { dom: 'col-drug', arg: 'drug', kind: 'enum', required: true, values: CO.DRUGS.map((x) => x.value), label: 'Drug' },
-      { dom: 'col-bili', arg: 'bilirubin', kind: 'number', label: 'Total bilirubin', unit: 'mg/dL' },
+      { dom: 'col-bili', arg: 'bilirubin', kind: 'number', label: 'Total bilirubin', unit: 'mg/dL', bound: 'bilirubin' },
       { dom: 'col-dbili', arg: 'directBilirubin', kind: 'number', label: 'Direct bilirubin (vincristine)', unit: 'mg/dL' },
       { dom: 'col-bili-uln', arg: 'bilirubinXuln', kind: 'number', label: 'Bilirubin as a multiple of the upper limit of normal (3-hour paclitaxel, docetaxel)' },
       { dom: 'col-ast-uln', arg: 'transaminaseXuln', kind: 'number', label: 'AST or ALT as a multiple of the upper limit of normal' },

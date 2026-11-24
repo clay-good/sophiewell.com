@@ -11,7 +11,7 @@ export default [
     compute: (args) => GB.generatorBreakthroughCheck(args, new Date()),
     fields: [
       { dom: 'gbc-generator', arg: 'generator', kind: 'enum', required: true, values: GB.GENERATORS.map((g) => g.value), label: 'Generator' },
-      { dom: 'gbc-mo99', arg: 'mo99MicroCi', kind: 'number', label: 'Technetium generator: Mo-99 at elution', unit: 'µCi' },
+      { dom: 'gbc-mo99', arg: 'mo99MicroCi', kind: 'number', label: 'Technetium generator: Mo-99 at elution', unit: 'µCi', bound: 'hcg' },
       { dom: 'gbc-tc99m', arg: 'tc99mMilliCi', kind: 'number', label: 'Technetium generator: Tc-99m at elution', unit: 'mCi' },
       { dom: 'gbc-hours', arg: 'hoursToAdministration', kind: 'number', label: 'Technetium generator: hours from elution to administration (optional)', unit: 'h' },
       { dom: 'gbc-aluminum', arg: 'aluminumMcgPerMl', kind: 'number', label: 'Technetium generator: aluminum in the eluate (optional)', unit: 'µg/mL' },

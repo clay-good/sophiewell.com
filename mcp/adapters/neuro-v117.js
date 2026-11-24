@@ -42,7 +42,7 @@ export default [
     fields: [
       { dom: 'dr-ct', arg: 'ct', kind: 'enum', values: ['neither', 'either', 'both'], required: true, label: 'Hyperdense MCA sign / early infarct on CT' },
       { dom: 'dr-mrs', arg: 'mrs', kind: 'bool', label: 'Pre-stroke mRS > 1' },
-      { dom: 'dr-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'dr-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'dr-glu', arg: 'glucose', kind: 'bool', label: 'Baseline glucose > 8 mmol/L (>144 mg/dL)' },
       { dom: 'dr-ott', arg: 'onset', kind: 'number', required: true, label: 'Onset-to-treatment time (min)' },
       { dom: 'dr-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS' },
@@ -66,7 +66,7 @@ export default [
       { dom: 'se-glu', arg: 'glucose', kind: 'enum', values: ['low', 'mid', 'high'], required: true, label: 'Baseline blood glucose band' },
       { dom: 'se-early', arg: 'early', kind: 'bool', label: 'Early infarct signs on CT' },
       { dom: 'se-dense', arg: 'dense', kind: 'bool', label: 'Hyperdense cerebral artery sign' },
-      { dom: 'se-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'se-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'se-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS' },
     ],
   },
@@ -76,7 +76,7 @@ export default [
     compute: F.thriveStroke,
     fields: [
       { dom: 'tv-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS' },
-      { dom: 'tv-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'tv-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'tv-htn', arg: 'htn', kind: 'bool', label: 'History of hypertension' },
       { dom: 'tv-dm', arg: 'diabetes', kind: 'bool', label: 'History of diabetes' },
       { dom: 'tv-af', arg: 'afib', kind: 'bool', label: 'History of atrial fibrillation' },

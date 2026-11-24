@@ -19,7 +19,7 @@ export default [
     fields: [
       { dom: 'msj-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'msj-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
-      { dom: 'msj-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr' },
+      { dom: 'msj-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr', bound: 'ageYears' },
       { dom: 'msj-sex', arg: 'sex', kind: 'enum', values: SEX, required: true, label: 'Sex' },
       { dom: 'msj-act', arg: 'activity', kind: 'enum', values: ACTIVITY, required: false, label: 'Activity factor (optional, for TDEE)' },
     ],
@@ -31,7 +31,7 @@ export default [
     fields: [
       { dom: 'hb-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'hb-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
-      { dom: 'hb-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr' },
+      { dom: 'hb-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr', bound: 'ageYears' },
       { dom: 'hb-sex', arg: 'sex', kind: 'enum', values: SEX, required: true, label: 'Sex' },
       { dom: 'hb-act', arg: 'activity', kind: 'enum', values: ACTIVITY, required: false, label: 'Activity factor (optional, for TDEE)' },
     ],
@@ -54,10 +54,10 @@ export default [
     fields: [
       { dom: 'ps-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'ps-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
-      { dom: 'ps-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr' },
+      { dom: 'ps-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr', bound: 'ageYears' },
       { dom: 'ps-sex', arg: 'sex', kind: 'enum', values: SEX, required: true, label: 'Sex' },
       { dom: 'ps-tmax', arg: 'tmax', kind: 'number', required: true, label: 'Maximum temperature in prior 24 h', unit: '°C' },
-      { dom: 'ps-ve', arg: 've', kind: 'number', required: true, label: 'Minute ventilation', unit: 'L/min' },
+      { dom: 'ps-ve', arg: 've', kind: 'number', required: true, label: 'Minute ventilation', unit: 'L/min', max: 588.635 },
     ],
   },
   {
@@ -66,7 +66,7 @@ export default [
     compute: F.iretonJones,
     fields: [
       { dom: 'ij-mode', arg: 'mode', kind: 'enum', values: ['ventilated', 'spontaneous'], required: false, label: 'Ventilation status' },
-      { dom: 'ij-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr' },
+      { dom: 'ij-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr', bound: 'ageYears' },
       { dom: 'ij-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'ij-ht', arg: 'height', kind: 'number', required: false, label: 'Height (spontaneous form, for BMI)', unit: 'cm' },
       { dom: 'ij-sex', arg: 'sex', kind: 'enum', values: SEX, required: false, label: 'Sex (male indicator, ventilated form)' },

@@ -34,7 +34,7 @@ export default [
     compute: A.acef,
     fields: [
       { dom: 'acef-age', arg: 'age', kind: 'number', unit: 'years', required: true, label: 'Age. The NUMERATOR of the ratio.' },
-      { dom: 'acef-ef', arg: 'ejectionFraction', kind: 'number', unit: '%', required: true, label: 'Left ventricular ejection fraction. THE DENOMINATOR, not a scored item: halving it doubles the score.' },
+      { dom: 'acef-ef', arg: 'ejectionFraction', kind: 'number', unit: '%', required: true, label: 'Left ventricular ejection fraction. THE DENOMINATOR, not a scored item: halving it doubles the score.', max: 100 },
       { dom: 'acef-creatinine', arg: 'creatinine', kind: 'number', unit: 'mg/dL', required: true, label: `Serum creatinine. Above ${A.CREATININE_THRESHOLD} adds ${A.ACEF_CREATININE_POINTS} to ACEF and ${A.ACEF2_CREATININE_POINTS} to ACEF II. Exactly ${A.CREATININE_THRESHOLD} is the one value where published renderings disagree.`, bound: 'scr' },
       { dom: 'acef-emergency', arg: 'emergency', kind: 'enum', values: ['no', 'yes'], required: true, label: `Emergency surgery. Adds ${A.ACEF2_EMERGENCY_POINTS} to ACEF II ONLY - the original has no emergency term and was derived in elective surgery.` },
       { dom: 'acef-hematocrit', arg: 'hematocrit', kind: 'number', unit: '%', required: true, label: `Hematocrit. ACEF II adds ${A.HCT_POINTS_PER_POINT_BELOW} for EACH point below ${A.HCT_REFERENCE} and nothing above it. Continuous, not a threshold flag.`, min: 3, max: 100 },

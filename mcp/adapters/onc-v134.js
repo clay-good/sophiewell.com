@@ -67,7 +67,7 @@ export default [
     compute: F.dipssPlusMf,
     fields: [
       { dom: 'dpp-grp', arg: 'dipssGroup', kind: 'enum', values: ['low', 'int-1', 'int-2', 'high'], label: 'DIPSS risk group' },
-      { dom: 'dpp-plt', arg: 'platelet', kind: 'number', label: 'Platelets (×10⁹/L)' },
+      { dom: 'dpp-plt', arg: 'platelet', kind: 'number', label: 'Platelets (×10⁹/L)', bound: 'platelets' },
       { dom: 'dpp-tx', arg: 'transfusion', kind: 'enum', values: ['no', 'yes'], label: 'Red-cell transfusion need' },
       { dom: 'dpp-kar', arg: 'karyotype', kind: 'enum', values: ['no', 'yes'], label: 'Unfavorable karyotype' },
     ],

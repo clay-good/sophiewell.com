@@ -37,7 +37,7 @@ export default [
     compute: F.bmi,
     fields: [
       { dom: 'w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
-      { dom: 'h', concept: 'body-height', arg: 'heightM', kind: 'number', required: true, label: 'Height', unit: 'm' },
+      { dom: 'h', concept: 'body-height', arg: 'heightM', kind: 'number', required: true, label: 'Height', unit: 'm', min: 0.01 },
     ],
   },
   {
@@ -133,7 +133,7 @@ export default [
     },
     fields: [
       { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
-      { dom: 'age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
       { dom: 'egfr-h', concept: 'body-height', arg: 'heightCm', kind: 'number', required: false, label: 'Height (optional; with weight gives eGFR in mL/min)', unit: 'cm' },
       { dom: 'egfr-w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: false, label: 'Weight (optional)', unit: 'kg' },
@@ -161,7 +161,7 @@ export default [
       return out;
     },
     fields: [
-      { dom: 'age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
@@ -251,7 +251,7 @@ export default [
       { dom: 'sf-fio2', arg: 'fio2', kind: 'number', min: 0.21, max: 1, required: true, label: 'FiO2 (0.21-1)' },
       { dom: 'sf-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg', bound: 'paO2' },
       { dom: 'sf-paco2', arg: 'paco2', kind: 'number', label: 'PaCO2', unit: 'mmHg', bound: 'paCO2' },
-      { dom: 'sf-age', arg: 'age', kind: 'number', label: 'Age', unit: 'years' },
+      { dom: 'sf-age', arg: 'age', kind: 'number', label: 'Age', unit: 'years', bound: 'ageYears' },
     ],
   },
   {
@@ -284,7 +284,7 @@ export default [
     },
     fields: [
       { dom: 'es-scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
-      { dom: 'es-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'es-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       // spec-v1045: the label already says it -- the weight is Cockcroft-Gault's
       // alone, so requiring it withheld both eGFRs from an agent that had no
       // weight to give.
@@ -299,7 +299,7 @@ export default [
     compute: F.dripRate,
     fields: [
       { dom: 'v', arg: 'volumeMl', kind: 'number', required: true, label: 'Volume', unit: 'mL' },
-      { dom: 't', arg: 'durationMin', kind: 'number', required: true, label: 'Duration', unit: 'minutes' },
+      { dom: 't', arg: 'durationMin', kind: 'number', required: true, label: 'Duration', unit: 'minutes', min: 0.001 },
       { dom: 'df', arg: 'dropFactor', kind: 'number', required: true, label: 'Drop factor', unit: 'gtts/mL' },
     ],
   },

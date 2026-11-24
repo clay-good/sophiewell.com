@@ -13,7 +13,7 @@ export default [
     summary: 'KDIGO CKD staging: G-stage by eGFR and A-stage by UACR (or a direct albuminuria category) mapped to the heat-map risk color (KDIGO 2024).',
     compute: F.ckdStaging,
     fields: [
-      { dom: 'cs-egfr', arg: 'egfr', kind: 'number', required: true, label: 'eGFR', unit: 'mL/min/1.73m^2' },
+      { dom: 'cs-egfr', arg: 'egfr', kind: 'number', required: true, label: 'eGFR', unit: 'mL/min/1.73m^2', bound: 'eGFR' },
       { dom: 'cs-uacr', arg: 'uacr', kind: 'number', required: false, label: 'Urine albumin-to-creatinine ratio', unit: 'mg/g' },
       { dom: 'cs-acat', arg: 'aCategory', kind: 'enum', values: ['A1', 'A2', 'A3'], required: false, label: 'Albuminuria category (use only if no UACR)' },
     ],
@@ -53,7 +53,7 @@ export default [
       { dom: 'me-anemia', arg: 'anemia', kind: 'enum', values: ['no', 'yes'], required: false, label: 'Anemia (3)' },
       { dom: 'me-dm', arg: 'diabetes', kind: 'enum', values: ['no', 'yes'], required: false, label: 'Diabetes (3)' },
       { dom: 'me-contrast', arg: 'contrastVolume', kind: 'number', required: false, label: 'Contrast volume (1 per 100 mL)', unit: 'mL' },
-      { dom: 'me-egfr', arg: 'egfr', kind: 'number', required: false, label: 'eGFR (40-60 = 2, 20-40 = 4, <20 = 6)', unit: 'mL/min/1.73m^2' },
+      { dom: 'me-egfr', arg: 'egfr', kind: 'number', required: false, label: 'eGFR (40-60 = 2, 20-40 = 4, <20 = 6)', unit: 'mL/min/1.73m^2', bound: 'eGFR' },
     ],
   },
   {
@@ -63,7 +63,7 @@ export default [
     fields: [
       { dom: 'cc-cys', concept: 'cystatin-c', arg: 'cystatinC', kind: 'number', required: true, label: 'Serum cystatin C', unit: 'mg/L' },
       { dom: 'cc-cr', concept: 'creatinine', arg: 'creatinine', kind: 'number', required: false, label: 'Serum creatinine (for the combined estimate)', unit: 'mg/dL', bound: 'scr' },
-      { dom: 'cc-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'cc-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'cc-sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: false, label: 'Sex' },
       { dom: 'cc-h', concept: 'body-height', arg: 'heightCm', kind: 'number', required: false, label: 'Height (optional; with weight gives eGFR in mL/min)', unit: 'cm' },
       { dom: 'cc-w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: false, label: 'Weight (optional)', unit: 'kg' },

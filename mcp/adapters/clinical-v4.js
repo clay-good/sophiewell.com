@@ -158,10 +158,10 @@ export default [
     summary: 'FIB-4 hepatic fibrosis index (Sterling 2006) = age*AST/(platelets*sqrt(ALT)). <1.45 low, >3.25 high risk of advanced fibrosis.',
     compute: F.fib4,
     fields: [
-      { dom: 'fib4-age', concept: 'age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'fib4-age', concept: 'age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'fib4-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
       { dom: 'fib4-alt', concept: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L', bound: 'alt' },
-      { dom: 'fib4-plt', concept: 'platelets', arg: 'plateletsK', kind: 'number', required: true, label: 'Platelets', unit: 'x10^9/L' },
+      { dom: 'fib4-plt', concept: 'platelets', arg: 'plateletsK', kind: 'number', required: true, label: 'Platelets', unit: 'x10^9/L', bound: 'platelets' },
     ],
   },
   {
@@ -171,7 +171,7 @@ export default [
     fields: [
       { dom: 'apri-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
       { dom: 'apri-uln', arg: 'astUln', kind: 'number', required: true, label: 'AST upper limit of normal', unit: 'U/L' },
-      { dom: 'apri-plt', concept: 'platelets', arg: 'plateletsK', kind: 'number', required: true, label: 'Platelets', unit: 'x10^9/L' },
+      { dom: 'apri-plt', concept: 'platelets', arg: 'plateletsK', kind: 'number', required: true, label: 'Platelets', unit: 'x10^9/L', bound: 'platelets' },
     ],
   },
   {

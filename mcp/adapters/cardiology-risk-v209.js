@@ -15,7 +15,7 @@ export default [
       { dom: 'hcm-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 16, max: 120 },
       { dom: 'hcm-mwt', arg: 'wallThickness', kind: 'number', required: true, label: 'Maximal LV wall thickness', unit: 'mm', min: 5, max: 35 },
       { dom: 'hcm-la', arg: 'laDiameter', kind: 'number', required: true, label: 'Left-atrial diameter', unit: 'mm', bound: 'qtMs', boundScale: 0.1 },
-      { dom: 'hcm-lvot', arg: 'lvotGradient', kind: 'number', required: true, label: 'Maximal (rest/Valsalva) LVOT gradient', unit: 'mmHg' },
+      { dom: 'hcm-lvot', arg: 'lvotGradient', kind: 'number', required: true, label: 'Maximal (rest/Valsalva) LVOT gradient', unit: 'mmHg', max: 300 },
       { dom: 'hcm-fhx', arg: 'fhxScd', kind: 'bool', required: false, label: 'Family history of sudden cardiac death' },
       { dom: 'hcm-nsvt', arg: 'nsvt', kind: 'bool', required: false, label: 'Non-sustained VT on Holter' },
       { dom: 'hcm-syncope', arg: 'syncope', kind: 'bool', required: false, label: 'Unexplained syncope' },

@@ -11,8 +11,8 @@ export default [
     compute: LI.lithiumLevelCheck,
     fields: [
       { dom: 'li-phase', arg: 'phase', kind: 'enum', required: true, values: LI.PHASES.map((p) => p.value), label: 'Acute manic or mixed episode (acute) or maintenance treatment (maintenance)' },
-      { dom: 'li-level', arg: 'level', kind: 'number', required: true, label: 'Serum lithium level', unit: 'mEq/L' },
-      { dom: 'li-hours', arg: 'hoursSinceDose', kind: 'number', required: true, label: 'Hours since the last dose', unit: 'hours' },
+      { dom: 'li-level', arg: 'level', kind: 'number', required: true, label: 'Serum lithium level', unit: 'mEq/L', max: 10 },
+      { dom: 'li-hours', arg: 'hoursSinceDose', kind: 'number', required: true, label: 'Hours since the last dose', unit: 'hours', max: 200 },
       { dom: 'li-crcl', arg: 'creatinineClearance', kind: 'number', required: false, label: 'Creatinine clearance (optional)', unit: 'mL/min' },
       { dom: 'li-dose', arg: 'dailyDose', kind: 'number', required: false, label: 'Current daily dose (optional, with a target)', unit: 'mg/day' },
       { dom: 'li-target', arg: 'target', kind: 'number', required: false, label: 'Target level (optional)', unit: 'mEq/L' },

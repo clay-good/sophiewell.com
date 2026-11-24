@@ -24,7 +24,7 @@ export default [
     summary: 'CHA2DS2-VA (2024 ESC, sex point removed): CHF/LV dysfunction (1) + hypertension (1) + age ≥ 75 (2) / 65-74 (1) + diabetes (1) + prior stroke/TIA/TE (2) + vascular disease (1); total 0-8, score ≥ 2 favors oral anticoagulation.',
     compute: F.cha2ds2Va,
     fields: [
-      { dom: 'va-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'va-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'va-chf', arg: 'chf', kind: 'bool', label: 'CHF / LV dysfunction' },
       { dom: 'va-htn', arg: 'hypertension', kind: 'bool', label: 'Hypertension' },
       { dom: 'va-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes mellitus' },
@@ -37,7 +37,7 @@ export default [
     summary: 'CHADS-65 Canadian pathway (2020 CCS/CHRS): age ≥ 65 → oral anticoagulant; else any CHADS2 risk factor → oral anticoagulant; else coronary/peripheral arterial disease → antiplatelet; else no antithrombotic. Returns the gate that fired.',
     compute: F.chads65,
     fields: [
-      { dom: 'c65-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'c65-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'c65-chf', arg: 'chf', kind: 'bool', label: 'Congestive heart failure' },
       { dom: 'c65-htn', arg: 'hypertension', kind: 'bool', label: 'Hypertension' },
       { dom: 'c65-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes mellitus' },
@@ -50,7 +50,7 @@ export default [
     summary: 'ATRIA Stroke Risk Score (Singer 2013): age scored from the prior-stroke / no-prior-stroke column, plus female sex, diabetes, CHF, hypertension, proteinuria, and eGFR < 45/ESRD (1 each); total 0-15 with low/intermediate/high bands.',
     compute: F.atriaStroke,
     fields: [
-      { dom: 'atria-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'atria-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'atria-stroke-hx', arg: 'priorStroke', kind: 'bool', label: 'Prior stroke (selects the age-point column)' },
       { dom: 'atria-female', arg: 'female', kind: 'bool', label: 'Female sex' },
       { dom: 'atria-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes mellitus' },

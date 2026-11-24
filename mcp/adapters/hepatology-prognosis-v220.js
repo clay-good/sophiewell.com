@@ -14,7 +14,7 @@ export default [
     compute: F.fips,
     fields: [
       { dom: 'fips-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
-      { dom: 'fips-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL' },
+      { dom: 'fips-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL', min: 0.1 },
       { dom: 'fips-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'fips-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
     ],
@@ -68,9 +68,9 @@ export default [
     compute: F.fibroq,
     fields: [
       { dom: 'fq-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'fq-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L' },
+      { dom: 'fq-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L', min: 1 },
       { dom: 'fq-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
-      { dom: 'fq-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'IU/L' },
+      { dom: 'fq-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'IU/L', min: 1 },
       { dom: 'fq-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],
   },

@@ -42,11 +42,11 @@ export default [
     summary: "Light's criteria (Light 1972): a pleural effusion is an exudate if the pleural/serum protein ratio > 0.5, the pleural/serum LDH ratio > 0.6, or pleural LDH exceeds two-thirds the upper limit of normal serum LDH; none met means a transudate.",
     compute: F.lightCriteria,
     fields: [
-      { dom: 'lc-pprot', arg: 'pleuralProtein', kind: 'number', required: true, label: 'Pleural fluid total protein', unit: 'g/dL' },
+      { dom: 'lc-pprot', arg: 'pleuralProtein', kind: 'number', required: true, label: 'Pleural fluid total protein', unit: 'g/dL', max: 100 },
       { dom: 'lc-sprot', arg: 'serumProtein', kind: 'number', required: true, label: 'Serum total protein', unit: 'g/dL' },
-      { dom: 'lc-pldh', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural fluid LDH', unit: 'IU/L' },
+      { dom: 'lc-pldh', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural fluid LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
       { dom: 'lc-sldh', arg: 'serumLdh', kind: 'number', required: true, label: 'Serum LDH', unit: 'IU/L' },
-      { dom: 'lc-uln', arg: 'serumLdhUln', kind: 'number', required: true, label: 'Upper limit of normal for serum LDH', unit: 'IU/L' },
+      { dom: 'lc-uln', arg: 'serumLdhUln', kind: 'number', required: true, label: 'Upper limit of normal for serum LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
     ],
   },
   {
@@ -54,8 +54,8 @@ export default [
     summary: 'Baux score (Baux 1961): a burn mortality estimate equal to age + burned %TBSA; a value near 100 was near-universally fatal in the pre-modern era, with modern burn care shifting survivable thresholds higher.',
     compute: F.bauxScore,
     fields: [
-      { dom: 'bx-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'bx-tbsa', arg: 'tbsa', kind: 'number', required: true, label: 'Burned total body surface area', unit: '%TBSA' },
+      { dom: 'bx-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'bx-tbsa', arg: 'tbsa', kind: 'number', required: true, label: 'Burned total body surface area', unit: '%TBSA', max: 100 },
     ],
   },
   {
@@ -63,8 +63,8 @@ export default [
     summary: 'Revised Baux score (Osler 2010): age + burned %TBSA + 17 for inhalation injury; the LD50 in the best modern burn units is a score of ~130–140.',
     compute: F.revisedBaux,
     fields: [
-      { dom: 'rbx-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'rbx-tbsa', arg: 'tbsa', kind: 'number', required: true, label: 'Burned total body surface area', unit: '%TBSA' },
+      { dom: 'rbx-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'rbx-tbsa', arg: 'tbsa', kind: 'number', required: true, label: 'Burned total body surface area', unit: '%TBSA', max: 100 },
       { dom: 'rbx-inh', arg: 'inhalation', kind: 'bool', required: false, label: 'Inhalation injury present (+17)' },
     ],
   },

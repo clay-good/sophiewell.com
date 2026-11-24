@@ -22,7 +22,7 @@ export default [
     summary: '4PEPS: a 13-item weighted clinical pretest-probability score for PE, ruling out at the very-low and low strata (Roy 2021).',
     compute: F.fourPeps,
     fields: [
-      { dom: 'pp-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'pp-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'pp-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm' },
       { dom: 'pp-spo2', arg: 'spo2', kind: 'number', required: false, label: 'Pulse-oximetry O2 saturation', unit: '%' },
       { dom: 'pp-male', arg: 'male', kind: 'bool', required: false, label: 'Male sex' },
@@ -70,7 +70,7 @@ export default [
     summary: 'The original (objective) Geneva score for PE pretest probability: age, prior VTE, recent surgery, heart rate, arterial blood gas, and chest-film findings (Wicki 2001).',
     compute: F.genevaOriginal,
     fields: [
-      { dom: 'gv-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'gv-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'gv-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
       { dom: 'gv-vte', arg: 'priorVte', kind: 'bool', required: false, label: 'Previous DVT or PE' },
       { dom: 'gv-surg', arg: 'recentSurgery', kind: 'bool', required: false, label: 'Surgery within 4 weeks' },

@@ -12,7 +12,7 @@ export default [
     compute: homeOxygen,
     fields: [
       { dom: 'ho-pao2', arg: 'pao2', kind: 'number', required: false, label: 'Arterial oxygen tension, mmHg', unit: 'mmHg' },
-      { dom: 'ho-spo2', arg: 'spo2', kind: 'number', required: false, label: 'Oxygen saturation, percent', unit: '%' },
+      { dom: 'ho-spo2', arg: 'spo2', kind: 'number', required: false, label: 'Oxygen saturation, percent', unit: '%', min: 40, max: 100 },
       { dom: 'ho-roomair', arg: 'roomAir', kind: 'boolean', required: false, label: 'The measurement was taken on room air' },
       { dom: 'ho-clinicallystable', arg: 'clinicallyStable', kind: 'boolean', required: false, label: 'The measurement was taken while the patient is clinically stable' },
       { dom: 'ho-dependentedema', arg: 'dependentEdema', kind: 'boolean', required: false, label: 'Dependent edema suggesting congestive heart failure (a supporting finding)' },

@@ -15,7 +15,7 @@ export default [
       { dom: 'sz-tinf', arg: 'infusionHours', kind: 'number', required: true, label: 'Infusion time', unit: 'hours' },
       { dom: 'sz-tau', arg: 'interval', kind: 'number', required: true, label: 'Dosing interval', unit: 'hours' },
       { dom: 'sz-c1', arg: 'level1', kind: 'number', required: true, label: 'First level', unit: 'mg/L' },
-      { dom: 'sz-t1', arg: 'time1', kind: 'number', required: true, label: 'First level: hours after the infusion ended', unit: 'hours' },
+      { dom: 'sz-t1', arg: 'time1', kind: 'number', required: true, label: 'First level: hours after the infusion ended', unit: 'hours', max: 10000 },
       { dom: 'sz-c2', arg: 'level2', kind: 'number', required: true, label: 'Second level', unit: 'mg/L' },
       { dom: 'sz-t2', arg: 'time2', kind: 'number', required: true, label: 'Second level: hours after the infusion ended', unit: 'hours' },
       { dom: 'sz-pre', arg: 'preDose', kind: 'number', required: false, label: 'Pre-dose level (first dose only; optional)', unit: 'mg/L' },

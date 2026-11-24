@@ -14,8 +14,8 @@ export default [
     compute: hfEfClassification,
     fields: [
       { dom: 'hfef-symptomatic', arg: 'symptomaticHeartFailure', kind: 'boolean', required: false, label: 'Symptomatic heart failure present' },
-      { dom: 'hfef-current', arg: 'currentLvef', kind: 'number', required: false, label: 'Current LVEF, percent' },
-      { dom: 'hfef-baseline', arg: 'baselineLvef', kind: 'number', required: false, label: 'Baseline LVEF, percent' },
+      { dom: 'hfef-current', arg: 'currentLvef', kind: 'number', required: false, label: 'Current LVEF, percent', max: 100 },
+      { dom: 'hfef-baseline', arg: 'baselineLvef', kind: 'number', required: false, label: 'Baseline LVEF, percent', max: 100 },
     ],
   },
 ];

@@ -8,7 +8,7 @@ export default [
     summary: "Whether a Texas prescriptive authority agreement meets the statute: the seven-FTE cap, nine required elements, and monthly meetings. Under Occupations Code section 157.0512 a physician may be party to agreements with no more than seven APRNs and PAs, or their full-time equivalent, except in a practice serving a medically underserved population or a hospital facility-based practice. The agreement must be written and signed, name the parties, state the practice, identify drugs that may or may not be prescribed, and plan for referral, emergencies, communication, alternate physicians, and quality assurance. Quality assurance meetings are documented and held at least once a month.",
     compute: PAA.txPrescriptiveAuthorityAgreement,
     fields: [
-      { dom: 'paa-fte', arg: 'fte', kind: 'number', required: true, label: 'APRNs and PAs under agreement (FTE)' },
+      { dom: 'paa-fte', arg: 'fte', kind: 'number', required: true, label: 'APRNs and PAs under agreement (FTE)', max: 100 },
       { dom: 'paa-exempt', arg: 'exempt', kind: 'enum', required: true, label: 'Underserved or hospital facility-based practice', values: ['yes', 'no'] },
       { dom: 'paa-signed', arg: 'signed', kind: 'enum', label: 'Signed and dated in writing', values: ['yes', 'no'] },
       { dom: 'paa-parties', arg: 'parties', kind: 'enum', label: 'Parties named with addresses and licenses', values: ['yes', 'no'] },

@@ -15,8 +15,8 @@ export default [
     compute: F.watsonTbw,
     fields: [
       { dom: 'wt-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'wt-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
-      { dom: 'wt-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'wt-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
+      { dom: 'wt-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.2 },
       { dom: 'wt-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex' },
     ],
   },
@@ -26,8 +26,8 @@ export default [
     compute: F.salazarCorcoran,
     fields: [
       { dom: 'sc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'sc-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'sc-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
+      { dom: 'sc-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.2 },
+      { dom: 'sc-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
       { dom: 'sc-scr', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
       { dom: 'sc-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex' },
     ],
@@ -37,8 +37,8 @@ export default [
     summary: 'Estimated plasma volume status (Duarte 2015): 100 × (1 − hematocrit fraction) / hemoglobin; a higher value marks more congestion in heart failure.',
     compute: F.epvs,
     fields: [
-      { dom: 'ep-hct', arg: 'hematocrit', kind: 'number', required: true, label: 'Hematocrit', unit: '%' },
-      { dom: 'ep-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'ep-hct', arg: 'hematocrit', kind: 'number', required: true, label: 'Hematocrit', unit: '%', min: 3 },
+      { dom: 'ep-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
     ],
   },
   {
@@ -46,8 +46,8 @@ export default [
     summary: 'Furosemide stress test (Chawla 2013): 1.0 mg/kg (loop-naive) or 1.5 mg/kg (prior loop) IV furosemide; a 2-hour urine output ≤ 200 mL predicts progression to stage 3 AKI.',
     compute: F.furosemideStressTest,
     fields: [
-      { dom: 'fst-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'fst-uop', arg: 'urineOutput2h', kind: 'number', required: true, label: '2-hour urine output', unit: 'mL' },
+      { dom: 'fst-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.2 },
+      { dom: 'fst-uop', arg: 'urineOutput2h', kind: 'number', required: true, label: '2-hour urine output', unit: 'mL', bound: 'hcg', boundScale: 0.01 },
       { dom: 'fst-prior', arg: 'priorExposure', kind: 'bool', required: false, label: 'Prior loop-diuretic exposure (uses 1.5 mg/kg dose)' },
     ],
   },
@@ -57,8 +57,8 @@ export default [
     compute: F.feBicarbonate,
     fields: [
       { dom: 'fe-uhco3', arg: 'urineHco3', kind: 'number', required: true, label: 'Urine bicarbonate', unit: 'mEq/L' },
-      { dom: 'fe-phco3', arg: 'plasmaHco3', kind: 'number', required: true, label: 'Plasma bicarbonate', unit: 'mEq/L' },
-      { dom: 'fe-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL' },
+      { dom: 'fe-phco3', arg: 'plasmaHco3', kind: 'number', required: true, label: 'Plasma bicarbonate', unit: 'mEq/L', min: 1 },
+      { dom: 'fe-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL', min: 0.1 },
       { dom: 'fe-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
     ],
   },

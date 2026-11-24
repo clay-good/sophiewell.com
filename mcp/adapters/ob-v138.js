@@ -14,7 +14,7 @@ export default [
       { dom: 'he-bpd', arg: 'bpd', kind: 'number', required: true, label: 'Biparietal diameter', unit: 'cm' },
       { dom: 'he-hc', arg: 'hc', kind: 'number', required: true, label: 'Head circumference', unit: 'cm' },
       { dom: 'he-ac', arg: 'ac', kind: 'number', required: true, label: 'Abdominal circumference', unit: 'cm' },
-      { dom: 'he-fl', arg: 'fl', kind: 'number', required: true, label: 'Femur length', unit: 'cm' },
+      { dom: 'he-fl', arg: 'fl', kind: 'number', required: true, label: 'Femur length', unit: 'cm', max: 154.5103091 },
     ],
   },
   {
@@ -24,8 +24,8 @@ export default [
     fields: [
       { dom: 'fp-ga', arg: 'ga', kind: 'number', required: true, label: 'Gestational age', unit: 'weeks' },
       { dom: 'fp-chest', arg: 'chestPainDyspnea', kind: 'bool', required: false, label: 'Chest pain or dyspnea' },
-      { dom: 'fp-spo2', arg: 'spo2', kind: 'number', required: true, label: 'Oxygen saturation', unit: '%' },
-      { dom: 'fp-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
+      { dom: 'fp-spo2', arg: 'spo2', kind: 'number', required: true, label: 'Oxygen saturation', unit: '%', bound: 'spo2' },
+      { dom: 'fp-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L', bound: 'platelets' },
       { dom: 'fp-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'µmol/L' },
       { dom: 'fp-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
     ],
@@ -65,8 +65,8 @@ export default [
     summary: 'Barnhart minimal serial-hCG rise: compares the observed rise (repeat − initial)/initial against the minimal expected rise scaled from the 53%-over-48-h anchor for a potentially viable IUP.',
     compute: F.barnhartHcg,
     fields: [
-      { dom: 'bh-init', arg: 'initial', kind: 'number', required: true, label: 'Initial hCG', unit: 'mIU/mL' },
-      { dom: 'bh-rep', arg: 'repeat', kind: 'number', required: true, label: 'Repeat hCG', unit: 'mIU/mL' },
+      { dom: 'bh-init', arg: 'initial', kind: 'number', required: true, label: 'Initial hCG', unit: 'mIU/mL', bound: 'hcg' },
+      { dom: 'bh-rep', arg: 'repeat', kind: 'number', required: true, label: 'Repeat hCG', unit: 'mIU/mL', bound: 'hcg' },
       { dom: 'bh-hrs', arg: 'hours', kind: 'number', required: true, label: 'Interval', unit: 'hours' },
     ],
   },

@@ -37,7 +37,7 @@ export default [
     compute: F.nntArr,
     fields: [
       { dom: 'nnt-cer', arg: 'cer', kind: 'number', required: true, label: 'Control event rate', unit: '%' },
-      { dom: 'nnt-eer', arg: 'eer', kind: 'number', required: true, label: 'Experimental event rate', unit: '%' },
+      { dom: 'nnt-eer', arg: 'eer', kind: 'number', required: true, label: 'Experimental event rate', unit: '%', max: 100 },
     ],
   },
 ];

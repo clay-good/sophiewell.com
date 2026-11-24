@@ -13,7 +13,7 @@ export default [
     compute: lymeTwoTier,
     fields: [
       { dom: 'lyme-erythemamigrans', arg: 'erythemaMigrans', kind: 'boolean', required: false, label: 'Erythema migrans is present (a clinical diagnosis; serology is not indicated)' },
-      { dom: 'lyme-dayssinceonset', arg: 'daysSinceOnset', kind: 'number', required: false, label: 'Days since symptom onset (an IgM-only second tier counts only within 30)' },
+      { dom: 'lyme-dayssinceonset', arg: 'daysSinceOnset', kind: 'number', required: false, label: 'Days since symptom onset (an IgM-only second tier counts only within 30)', max: 3650 },
       { dom: 'lyme-firsttier', arg: 'firstTier', kind: 'enum', required: false, label: 'First tier: enzyme immunoassay or immunofluorescence assay', values: ['not-done', 'negative', 'equivocal', 'positive'] },
       { dom: 'lyme-secondtier', arg: 'secondTier', kind: 'enum', required: false, label: 'Second tier: immunoblot, or a second enzyme immunoassay', values: ['not-done', 'negative', 'igm-only', 'igg'] },
     ],

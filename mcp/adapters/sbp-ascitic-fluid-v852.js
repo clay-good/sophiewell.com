@@ -13,8 +13,8 @@ export default [
     summary: 'Applies the ascitic-fluid criterion for spontaneous bacterial peritonitis. The line is a corrected neutrophil count of 250 per cubic millimeter, where the correction subtracts one neutrophil for every 250 red cells, because a bloody tap carries neutrophils in with the blood and can cross 250 on blood alone. The threshold is the neutrophil count, not the total nucleated count. A count at or above the line with no growth is culture-negative neutrocytic ascites and is managed the same way as culture-positive disease; a single organism below the line is bacterascites; more than one organism points toward a perforated viscus. It also reports whether the albumin criteria studied in this setting are met. It does not select an antibiotic, a dose or a route.',
     compute: sbpAsciticFluid,
     fields: [
-      { dom: 'sbp-pmn', arg: 'pmnCount', kind: 'number', required: false, label: 'Neutrophils in the fluid', unit: 'cells per cubic mm' },
-      { dom: 'sbp-rbc', arg: 'redCellCount', kind: 'number', required: false, label: 'Red cells in the fluid, used to correct the neutrophil count', unit: 'cells per cubic mm' },
+      { dom: 'sbp-pmn', arg: 'pmnCount', kind: 'number', required: false, label: 'Neutrophils in the fluid', unit: 'cells per cubic mm', max: 500000 },
+      { dom: 'sbp-rbc', arg: 'redCellCount', kind: 'number', required: false, label: 'Red cells in the fluid, used to correct the neutrophil count', unit: 'cells per cubic mm', max: 5000000 },
       { dom: 'sbp-wbc', arg: 'nucleatedCount', kind: 'number', required: false, label: 'Total nucleated cells, if the neutrophil count was reported as a percentage', unit: 'cells per cubic mm' },
       { dom: 'sbp-pct', arg: 'pmnPercent', kind: 'number', required: false, label: 'Percentage of the nucleated cells that are neutrophils', unit: 'percent' },
       { dom: 'sbp-cult', arg: 'culture', kind: 'enum', values: ['pending', 'none', 'single', 'polymicrobial'], required: false, label: 'What has grown in the culture' },

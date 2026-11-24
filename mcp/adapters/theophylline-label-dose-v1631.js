@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'thl-mode', arg: 'mode', kind: 'enum', required: true, values: TH.MODES.map((m) => m.value), label: 'Mode: IV start or adjustment' },
       { dom: 'thl-product', arg: 'product', kind: 'enum', values: TH.PRODUCTS.map((p) => p.value), label: 'IV start: product' },
-      { dom: 'thl-weight', arg: 'weight', kind: 'number', label: 'IV start: ideal body weight', unit: 'kg' },
+      { dom: 'thl-weight', arg: 'weight', kind: 'number', label: 'IV start: ideal body weight', unit: 'kg', min: 0.4, max: 200 },
       { dom: 'thl-group', arg: 'group', kind: 'enum', values: TH.GROUPS.map((g) => g.value), label: 'IV start: patient group' },
       { dom: 'thl-weeks', arg: 'ageWeeks', kind: 'number', label: 'IV start, infant group: age', unit: 'weeks' },
       { dom: 'thl-prior', arg: 'prior', kind: 'enum', values: TH.PRIOR.map((p) => p.value), label: 'IV start: theophylline in the past 24 hours' },

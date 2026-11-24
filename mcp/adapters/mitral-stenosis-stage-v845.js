@@ -13,8 +13,8 @@ export default [
     summary: 'Applies the ACC/AHA rheumatic mitral stenosis stages. A is valve doming without commissural fusion; B is progressive, with fusion, an area above 1.5 square cm and a half-time below 150 ms; C is asymptomatic severe at an area of 1.5 square cm or less OR a half-time of 150 ms or more; D is the same with symptoms. Very severe is an area of 1.0 or less or a half-time of 220 or more. THE MEAN GRADIENT DOES NOT GRADE MITRAL STENOSIS: it rises with heart rate and cardiac output, and is accepted here only to be reported alongside.',
     compute: mitralStenosisStage,
     fields: [
-      { dom: 'mvs-mva', arg: 'valveArea', kind: 'number', required: false, label: 'Mitral valve area', unit: 'square cm' },
-      { dom: 'mvs-pht', arg: 'pressureHalfTime', kind: 'number', required: false, label: 'Diastolic pressure half-time', unit: 'ms' },
+      { dom: 'mvs-mva', arg: 'valveArea', kind: 'number', required: false, label: 'Mitral valve area', unit: 'square cm', max: 8 },
+      { dom: 'mvs-pht', arg: 'pressureHalfTime', kind: 'number', required: false, label: 'Diastolic pressure half-time', unit: 'ms', max: 800 },
       { dom: 'mvs-anat', arg: 'anatomy', kind: 'enum', values: ['doming', 'fusion'], required: false, label: 'Rheumatic changes: doming only, or commissural fusion' },
       { dom: 'mvs-mg', arg: 'meanGradient', kind: 'number', required: false, label: 'Mean mitral gradient, recorded but not used to stage', unit: 'mmHg' },
       { dom: 'mvs-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate, for reading the gradient', unit: 'beats per minute' },

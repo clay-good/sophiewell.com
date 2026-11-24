@@ -14,7 +14,7 @@ export default [
     summary: 'Mayo Clinic solitary-pulmonary-nodule model (Swensen 1997): estimates malignancy probability from age, diameter, smoking, prior cancer, spiculation, and upper-lobe location.',
     compute: F.mayoSpn,
     fields: [
-      { dom: 'ms-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'ms-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'ms-diam', arg: 'diameter', kind: 'number', required: true, label: 'Nodule diameter (mm)' },
       { dom: 'ms-smoke', arg: 'smoking', kind: 'bool', label: 'Current or former smoker' },
       { dom: 'ms-cancer', arg: 'cancer', kind: 'bool', label: 'History of extrathoracic cancer (> 5 years prior)' },
@@ -27,7 +27,7 @@ export default [
     summary: 'Brock University nodule model (McWilliams 2013): estimates malignancy probability of a screen-detected pulmonary nodule from size, type, and clinical factors.',
     compute: F.brockNodule,
     fields: [
-      { dom: 'bn-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'bn-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'bn-size', arg: 'size', kind: 'number', required: true, label: 'Nodule diameter (mm)' },
       { dom: 'bn-count', arg: 'count', kind: 'number', required: true, label: 'Number of nodules' },
       { dom: 'bn-type', arg: 'type', kind: 'enum', values: ['solid', 'part-solid', 'non-solid'], required: true, label: 'Nodule type' },
@@ -54,11 +54,11 @@ export default [
     summary: 'REVEAL Lite 2 (Benza 2021): a simplified pulmonary-arterial-hypertension risk score (1-14) predicting 1-year mortality from six routinely collected variables.',
     compute: F.revealLite2,
     fields: [
-      { dom: 'rv-egfr', arg: 'egfr', kind: 'number', required: true, label: 'eGFR (mL/min/1.73 m^2)' },
+      { dom: 'rv-egfr', arg: 'egfr', kind: 'number', required: true, label: 'eGFR (mL/min/1.73 m^2)', bound: 'eGFR' },
       { dom: 'rv-who', arg: 'who', kind: 'enum', values: ['1', '2', '3', '4'], required: true, label: 'WHO functional class' },
       { dom: 'rv-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP (mm Hg)' },
       { dom: 'rv-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate (beats/min)', bound: 'hr' },
-      { dom: 'rv-mwd', arg: 'mwd', kind: 'number', required: true, label: '6-minute walk distance (m)' },
+      { dom: 'rv-mwd', arg: 'mwd', kind: 'number', required: true, label: '6-minute walk distance (m)', bound: 'sixMinuteWalkM' },
       { dom: 'rv-bnp', arg: 'bnp', kind: 'enum', values: ['low', 'mid', 'high1', 'high2'], required: true, label: 'BNP / NT-proBNP band' },
     ],
   },
@@ -68,7 +68,7 @@ export default [
     compute: F.rapidPleural,
     fields: [
       { dom: 'rp-urea', arg: 'urea', kind: 'enum', values: ['low', 'mid', 'high'], required: true, label: 'Serum urea band' },
-      { dom: 'rp-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'rp-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'rp-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin (g/L)' },
       { dom: 'rp-nonpur', arg: 'nonPurulent', kind: 'bool', label: 'Non-purulent pleural fluid' },
       { dom: 'rp-hosp', arg: 'hospitalAcquired', kind: 'bool', label: 'Hospital-acquired infection' },

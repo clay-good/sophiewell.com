@@ -12,11 +12,11 @@ export default [
     summary: 'CRUSADE major-bleeding risk score for NSTEMI (Subherwal 2009): hematocrit, creatinine clearance, heart rate, sex, heart-failure signs, prior vascular disease, diabetes, and a U-shaped systolic-BP term map to in-hospital major-bleeding risk bands.',
     compute: F.crusade,
     fields: [
-      { dom: 'crusade-hct', arg: 'hct', kind: 'number', required: true, label: 'Baseline hematocrit', unit: '%' },
+      { dom: 'crusade-hct', arg: 'hct', kind: 'number', required: true, label: 'Baseline hematocrit', unit: '%', min: 3 },
       { dom: 'crusade-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
-      { dom: 'crusade-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'crusade-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10 },
       { dom: 'crusade-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex' },
-      { dom: 'crusade-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg' },
+      { dom: 'crusade-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20 },
       { dom: 'crusade-chf', arg: 'chf', kind: 'bool', required: false, label: 'Signs of heart failure at presentation' },
       { dom: 'crusade-vasc', arg: 'vasc', kind: 'bool', required: false, label: 'Prior vascular disease (PAD or stroke)' },
       { dom: 'crusade-dm', arg: 'dm', kind: 'bool', required: false, label: 'Diabetes mellitus' },
@@ -27,8 +27,8 @@ export default [
     summary: 'SCAI SHOCK cardiogenic-shock stage A–E (Naidu 2022; Kadosh/Kapur operationalization) from systolic BP, lactate, and the level of vasoactive/mechanical support, with a cardiac-arrest modifier.',
     compute: F.scaiShock,
     fields: [
-      { dom: 'scai-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg' },
-      { dom: 'scai-lactate', arg: 'lactate', kind: 'number', required: true, label: 'Serum lactate', unit: 'mmol/L' },
+      { dom: 'scai-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20 },
+      { dom: 'scai-lactate', arg: 'lactate', kind: 'number', required: true, label: 'Serum lactate', unit: 'mmol/L', bound: 'lactate' },
       { dom: 'scai-support', arg: 'support', kind: 'enum', values: ['none', 'one', 'multiple', 'maximal'], required: true, label: 'Vasoactive / mechanical support level' },
       { dom: 'scai-arrest', arg: 'arrest', kind: 'bool', required: false, label: 'Cardiac arrest / circulatory collapse' },
       { dom: 'scai-persist', arg: 'persist', kind: 'bool', required: false, label: 'Hypotension/hypoperfusion persisting despite initial support' },
@@ -52,9 +52,9 @@ export default [
     summary: 'TIMI Risk Index (Wiviott 2006; Morrow 2001): heart rate × (age/10)² / systolic BP; a higher index marks higher 30-day and long-term mortality across the published quintiles.',
     compute: F.timiRiskIndex,
     fields: [
-      { dom: 'tri-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'tri-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10 },
       { dom: 'tri-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'tri-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg' },
+      { dom: 'tri-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20 },
     ],
   },
   {

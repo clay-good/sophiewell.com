@@ -13,7 +13,7 @@ export default [
     fields: [
       { dom: 'ba-bias', arg: 'meanDifference', kind: 'number', required: true, label: 'Mean of the differences, in the units measured' },
       { dom: 'ba-sd', arg: 'sdOfDifferences', kind: 'number', required: true, label: 'Standard deviation of the differences' },
-      { dom: 'ba-pairs', arg: 'pairs', kind: 'number', required: true, label: 'Number of paired measurements' },
+      { dom: 'ba-pairs', arg: 'pairs', kind: 'number', required: true, label: 'Number of paired measurements', min: 2 },
     ],
   },
 ];

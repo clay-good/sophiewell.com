@@ -32,7 +32,7 @@ export default [
       { dom: 'snf-admit', arg: 'inpatientAdmit', kind: 'string', required: true, label: 'Inpatient admission date (YYYY-MM-DD)' },
       { dom: 'snf-discharge', arg: 'inpatientDischarge', kind: 'string', required: true, label: 'Hospital discharge date (YYYY-MM-DD)' },
       { dom: 'snf-snfadmit', arg: 'snfAdmit', kind: 'string', required: false, label: 'SNF admission date (YYYY-MM-DD)' },
-      { dom: 'snf-used', arg: 'daysUsed', kind: 'number', required: false, label: 'SNF days already used this benefit period' },
+      { dom: 'snf-used', arg: 'daysUsed', kind: 'number', required: false, label: 'SNF days already used this benefit period', max: 100 },
     ],
   },
   {

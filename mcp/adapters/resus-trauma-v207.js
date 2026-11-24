@@ -26,11 +26,11 @@ export default [
     summary: 'Rapid Emergency Medicine Score (Olsson 2004): an abbreviated-APACHE-II in-hospital-mortality score needing no labs — age, mean arterial pressure, heart rate, respiratory rate, SpO₂, and GCS give a 0–26 score (low < 6, medium 6–13, high > 13).',
     compute: F.rems,
     fields: [
-      { dom: 'rems-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'rems-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg' },
+      { dom: 'rems-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
+      { dom: 'rems-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg', max: 300 },
       { dom: 'rems-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
       { dom: 'rems-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
-      { dom: 'rems-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO₂', unit: '%' },
+      { dom: 'rems-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO₂', unit: '%', bound: 'spo2' },
       { dom: 'rems-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3–15)' },
     ],
   },
@@ -42,7 +42,7 @@ export default [
       { dom: 'cart-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
       { dom: 'cart-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
       { dom: 'cart-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic blood pressure', unit: 'mmHg', bound: 'dbp' },
-      { dom: 'cart-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'cart-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
     ],
   },
 ];

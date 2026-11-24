@@ -10,7 +10,7 @@ export default [
     compute: DIR.deviceInfectionRate,
     fields: [
       { dom: 'dir-device', arg: 'device', kind: 'enum', values: DIR.DEVICES.map((d) => d.value), required: true, label: 'Device and event' },
-      { dom: 'dir-events', arg: 'events', kind: 'number', required: true, label: 'Events in the period' },
+      { dom: 'dir-events', arg: 'events', kind: 'number', required: true, label: 'Events in the period', bound: 'hcg', boundScale: 0.1 },
       { dom: 'dir-device-days', arg: 'deviceDays', kind: 'number', required: true, label: 'Device days' },
       { dom: 'dir-episodes', arg: 'episodes', kind: 'number', required: false, label: 'Episodes of mechanical ventilation (VAE only)' },
     ]

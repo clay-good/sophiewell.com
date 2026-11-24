@@ -10,7 +10,7 @@ export default [
     compute: (args) => CH.chelationDose(args, new Date()),
     fields: [
       { dom: 'chd-regimen', arg: 'regimen', kind: 'enum', required: true, values: CH.REGIMENS.map((x) => x.value), label: 'Agent and poisoning' },
-      { dom: 'chd-weight', arg: 'weight', kind: 'number', label: 'Weight (succimer and dimercaprol)', unit: 'kg' },
+      { dom: 'chd-weight', arg: 'weight', kind: 'number', label: 'Weight (succimer and dimercaprol)', unit: 'kg', min: 0.4, max: 300 },
       { dom: 'chd-bsa', arg: 'bsa', kind: 'number', label: 'Body surface area (edetate calcium disodium)', unit: 'm²' },
       { dom: 'chd-cr', arg: 'creatinine', kind: 'number', label: 'Serum creatinine (edetate, lead nephropathy)', unit: 'mg/dL' },
       { dom: 'chd-start', arg: 'start', kind: 'string', label: 'First dose, YYYY-MM-DDTHH:MM (optional, for the dose calendar)' },

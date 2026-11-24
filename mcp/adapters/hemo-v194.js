@@ -34,8 +34,8 @@ export default [
     summary: 'Tei myocardial performance index (Tei 1995): (isovolumic contraction + isovolumic relaxation time) / ejection time; a higher index marks worse combined systolic-diastolic function.',
     compute: F.teiIndex,
     fields: [
-      { dom: 'tei-ivct', arg: 'ivct', kind: 'number', required: true, label: 'Isovolumic contraction time (IVCT)', unit: 'ms' },
-      { dom: 'tei-ivrt', arg: 'ivrt', kind: 'number', required: true, label: 'Isovolumic relaxation time (IVRT)', unit: 'ms' },
+      { dom: 'tei-ivct', arg: 'ivct', kind: 'number', required: true, label: 'Isovolumic contraction time (IVCT)', unit: 'ms', max: 2000 },
+      { dom: 'tei-ivrt', arg: 'ivrt', kind: 'number', required: true, label: 'Isovolumic relaxation time (IVRT)', unit: 'ms', max: 2000 },
       { dom: 'tei-et', arg: 'et', kind: 'number', required: true, label: 'Ejection time (ET)', unit: 'ms' },
     ],
   },
@@ -44,7 +44,7 @@ export default [
     summary: 'Pulmonary shunt fraction Qs/Qt (Berggren 1942): from hemoglobin and the alveolar, arterial, and mixed-venous O₂ saturations and tensions, the fraction of cardiac output bypassing gas exchange; normal ~4–10%.',
     compute: F.shuntFraction,
     fields: [
-      { dom: 'shunt-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'shunt-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
       { dom: 'shunt-pao2a', arg: 'pAO2', kind: 'number', required: true, label: 'Alveolar / end-capillary O₂ tension', unit: 'mmHg' },
       { dom: 'shunt-sao2', arg: 'sao2', kind: 'number', required: true, label: 'Arterial SaO₂', unit: '%', min: 1, max: 100 },
       { dom: 'shunt-pao2', arg: 'pao2', kind: 'number', required: true, label: 'Arterial PaO₂', unit: 'mmHg' },

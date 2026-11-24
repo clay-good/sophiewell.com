@@ -9,7 +9,7 @@ export default [
     compute: MC.minorSelfConsent,
     fields: [
       { dom: 'msc-state', arg: 'state', kind: 'enum', required: true, label: 'State', values: MC.MSC_STATES.map((s) => s.value) },
-      { dom: 'msc-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
+      { dom: 'msc-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', max: 120 },
       { dom: 'msc-service', arg: 'service', kind: 'enum', required: true, label: 'Service', values: MC.SERVICES.map((s) => s.value) },
       { dom: 'msc-apart', arg: 'livingApart', kind: 'enum', label: 'Living apart from parents', values: ['yes', 'no'] },
       { dom: 'msc-finances', arg: 'ownFinances', kind: 'enum', label: 'Managing own finances', values: ['yes', 'no'] },
