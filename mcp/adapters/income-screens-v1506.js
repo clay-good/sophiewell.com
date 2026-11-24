@@ -10,7 +10,7 @@ export default [
     summary: 'Income as a percent of the federal poverty guidelines. Uses the right guideline year for the program, with an optional limit to check.',
     compute: IN.fplPercent,
     fields: [
-      { dom: 'fpl-size', arg: 'size', kind: 'number', required: true, label: 'Household size' },
+      { dom: 'fpl-size', arg: 'size', kind: 'number', required: true, label: 'Household size', min: 1, max: 30 },
       { dom: 'fpl-income', arg: 'income', kind: 'number', required: true, label: 'Household income', unit: 'USD' },
       { dom: 'fpl-period', arg: 'period', kind: 'enum', required: false, values: vals(IN.PERIODS), label: 'Income period (annual by default)' },
       { dom: 'fpl-region', arg: 'region', kind: 'enum', required: true, values: vals(IN.REGIONS), label: 'Where the household lives' },

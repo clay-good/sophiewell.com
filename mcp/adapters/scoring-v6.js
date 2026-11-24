@@ -97,7 +97,7 @@ export default [
     fields: [
       { dom: 'bb-hours', arg: 'ageHours', kind: 'number', required: true, label: 'Age (hours)', unit: 'hours' },
       { dom: 'bb-tsb', arg: 'tsb', kind: 'number', required: true, label: 'Total serum bilirubin', unit: 'mg/dL (canonical)' },
-      { dom: 'bb-ga', arg: 'gaWeeks', kind: 'number', required: true, label: 'Gestational age (weeks, 35-44)', unit: 'weeks' },
+      { dom: 'bb-ga', arg: 'gaWeeks', kind: 'number', required: true, label: 'Gestational age (weeks, 35-44)', unit: 'weeks', min: 35, max: 44 },
       { dom: 'bb-risk', arg: 'riskFactors', kind: 'bool', required: false, label: 'Neurotoxicity risk factor(s) present' },
     ],
   },
@@ -123,7 +123,7 @@ export default [
       return r == null ? r : { ...r, tsb: a.tsb };
     },
     fields: [
-      { dom: 'np-ga', arg: 'gaWeeks', kind: 'number', required: true, label: 'Gestational age (weeks, 35-44)', unit: 'weeks' },
+      { dom: 'np-ga', arg: 'gaWeeks', kind: 'number', required: true, label: 'Gestational age (weeks, 35-44)', unit: 'weeks', min: 35, max: 44 },
       { dom: 'np-hours', arg: 'ageHours', kind: 'number', required: true, label: 'Age (hours, 0-336)', unit: 'hours' },
       { dom: 'np-tsb', arg: 'tsb', kind: 'number', required: true, label: 'Total serum bilirubin', unit: 'mg/dL (canonical)' },
       { dom: 'np-risk', arg: 'riskFactors', kind: 'bool', required: false, label: 'Neurotoxicity risk factor(s) present' },
@@ -142,7 +142,7 @@ export default [
       { dom: 'p2-lactate', arg: 'lactate', kind: 'number', required: true, label: 'Lactate', unit: 'mmol/L' },
       { dom: 'p2-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg' },
       { dom: 'p2-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'umol/L' },
-      { dom: 'p2-pf', arg: 'pao2fio2', kind: 'number', required: true, label: 'PaO2/FiO2', unit: 'mmHg' },
+      { dom: 'p2-pf', arg: 'pao2fio2', kind: 'number', required: true, label: 'PaO2/FiO2', unit: 'mmHg', min: 10, max: 1000 },
       { dom: 'p2-paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
       { dom: 'p2-vent', arg: 'invasiveVent', kind: 'bool', label: 'Invasive ventilation' },
       { dom: 'p2-wbc', arg: 'wbc', kind: 'number', required: true, label: 'WBC', unit: 'x10^3/uL' },
@@ -155,7 +155,7 @@ export default [
     compute: F.psofa,
     fields: [
       { dom: 'ps-age', arg: 'ageMonths', kind: 'number', required: true, label: 'Age', unit: 'months' },
-      { dom: 'ps-pf', arg: 'pao2fio2', kind: 'number', required: true, label: 'PaO2/FiO2', unit: 'mmHg' },
+      { dom: 'ps-pf', arg: 'pao2fio2', kind: 'number', required: true, label: 'PaO2/FiO2', unit: 'mmHg', min: 10, max: 1000 },
       { dom: 'ps-vent', arg: 'vent', kind: 'bool', label: 'Mechanically ventilated' },
       { dom: 'ps-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelets', unit: 'x10^3/uL' },
       { dom: 'ps-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Bilirubin', unit: 'mg/dL' },
@@ -198,7 +198,7 @@ export default [
     summary: 'APACHE II score (Knaus 1985): twelve acute-physiology variables (temperature, MAP, heart rate, respiratory rate, oxygenation, pH, sodium, potassium, creatinine, hematocrit, WBC, GCS) plus age points and chronic-health points; total 0-71 with the mortality band. Enter the worst first-24-hour value for each variable.',
     compute: F.apache2,
     fields: [
-      { dom: 'ap-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'C' },
+      { dom: 'ap-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'C', min: 13, max: 46 },
       { dom: 'ap-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg' },
       { dom: 'ap-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
       { dom: 'ap-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: '/min' },

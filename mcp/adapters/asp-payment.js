@@ -30,7 +30,7 @@ export default [
     fields: [
       { dom: 'asp-code', arg: 'code', kind: 'string', required: true, label: 'HCPCS code of the drug' },
       { dom: 'asp-dos', arg: 'serviceDate', kind: 'string', required: false, label: 'Date of service (YYYY-MM-DD)' },
-      { dom: 'asp-units', arg: 'units', kind: 'number', required: true, label: 'Units billed', unit: 'HCPCS dosage units' },
+      { dom: 'asp-units', arg: 'units', kind: 'number', required: true, label: 'Units billed', unit: 'HCPCS dosage units', min: 0.001, max: 1000000 },
       { dom: 'asp-limit', arg: 'limit', kind: 'number', required: false, label: 'Payment limit per unit from another quarter', unit: 'USD' },
       { dom: 'asp-coins', arg: 'coinsurance', kind: 'number', required: false, label: 'Coinsurance with that limit', unit: 'percent' },
     ],

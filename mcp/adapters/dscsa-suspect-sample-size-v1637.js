@@ -10,7 +10,7 @@ export default [
     summary: 'How many packages of a suspect lot a dispenser must verify under the DSCSA. At least 3 packages or 10 percent, whichever is greater, rounded up, or all of them if fewer than 3 (21 U.S.C. 360eee-1(d)(4)(A)(ii)(II)). Says when a small business dispenser is exempted, which FDA has granted until November 27, 2027.',
     compute: (args) => SS.dscsaSuspectSampleSize(args, new Date()),
     fields: [
-      { dom: 'dss-packages', arg: 'packages', kind: 'number', required: true, label: 'Packages of the suspect product in your possession' },
+      { dom: 'dss-packages', arg: 'packages', kind: 'number', required: true, label: 'Packages of the suspect product in your possession', min: 1, max: 10000000 },
       { dom: 'dss-dispenser', arg: 'dispenser', kind: 'enum', required: true, values: SS.SMALL.map((k) => k.value), label: 'Small business dispenser?' },
     ],
   },

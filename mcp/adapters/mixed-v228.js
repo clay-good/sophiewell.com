@@ -12,8 +12,8 @@ export default [
     summary: 'England & Fraser discriminant function: MCV − RBC − (5 × Hb) − 3.4; a negative value favors beta-thalassemia trait over iron-deficiency anemia.',
     compute: F.englandFraser,
     fields: [
-      { dom: 'ef-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL' },
-      { dom: 'ef-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L' },
+      { dom: 'ef-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL', min: 30, max: 200 },
+      { dom: 'ef-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L', min: 0.5, max: 10 },
       { dom: 'ef-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
     ],
   },
@@ -22,8 +22,8 @@ export default [
     summary: 'Sirdah index: MCV − RBC − (3 × Hb); a value below ~27 favors beta-thalassemia trait over iron-deficiency anemia.',
     compute: F.sirdah,
     fields: [
-      { dom: 'sd-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL' },
-      { dom: 'sd-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L' },
+      { dom: 'sd-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL', min: 30, max: 200 },
+      { dom: 'sd-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L', min: 0.5, max: 10 },
       { dom: 'sd-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
     ],
   },
@@ -32,9 +32,9 @@ export default [
     summary: 'RDW index (RDWI): (MCV × RDW) / RBC; a value below ~220 favors beta-thalassemia trait over iron-deficiency anemia.',
     compute: F.rdwi,
     fields: [
-      { dom: 'rdwi-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL' },
-      { dom: 'rdwi-rdw', arg: 'rdw', kind: 'number', required: true, label: 'RDW', unit: '%' },
-      { dom: 'rdwi-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L' },
+      { dom: 'rdwi-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL', min: 30, max: 200 },
+      { dom: 'rdwi-rdw', arg: 'rdw', kind: 'number', required: true, label: 'RDW', unit: '%', min: 5, max: 60 },
+      { dom: 'rdwi-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L', min: 0.5, max: 10 },
     ],
   },
   {
@@ -42,8 +42,8 @@ export default [
     summary: 'Srivastava index: MCH / RBC; a value below ~3.8 favors beta-thalassemia trait over iron-deficiency anemia.',
     compute: F.srivastava,
     fields: [
-      { dom: 'sv-mch', arg: 'mch', kind: 'number', required: true, label: 'MCH', unit: 'pg' },
-      { dom: 'sv-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L' },
+      { dom: 'sv-mch', arg: 'mch', kind: 'number', required: true, label: 'MCH', unit: 'pg', min: 5, max: 60 },
+      { dom: 'sv-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L', min: 0.5, max: 10 },
     ],
   },
   {
@@ -51,8 +51,8 @@ export default [
     summary: 'Ehsani index: MCV − (10 × RBC); a value below ~15 favors beta-thalassemia trait over iron-deficiency anemia.',
     compute: F.ehsani,
     fields: [
-      { dom: 'eh-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL' },
-      { dom: 'eh-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L' },
+      { dom: 'eh-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL', min: 30, max: 200 },
+      { dom: 'eh-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L', min: 0.5, max: 10 },
     ],
   },
 ];

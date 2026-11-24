@@ -10,8 +10,8 @@ export default [
     summary: 'Waist-to-height ratio (Ashwell) = waist circumference / height, any consistent unit; a value at or above the 0.5 boundary marks increased central-adiposity risk.',
     compute: F.whtr,
     fields: [
-      { dom: 'whtr-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm' },
-      { dom: 'whtr-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
+      { dom: 'whtr-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm', min: 20, max: 300 },
+      { dom: 'whtr-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 50, max: 260 },
     ],
   },
 ];

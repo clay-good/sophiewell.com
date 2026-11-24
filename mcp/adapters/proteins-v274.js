@@ -10,8 +10,8 @@ export default [
     summary: 'Albumin-to-globulin ratio = albumin / (total protein - albumin), both in g/dL; a lower value is less favorable and interpretation is context-dependent (typical range ~1.1-2.5).',
     compute: F.agr,
     fields: [
-      { dom: 'agr-albumin', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL' },
-      { dom: 'agr-tp', arg: 'totalProtein', kind: 'number', required: true, label: 'Total protein', unit: 'g/dL' },
+      { dom: 'agr-albumin', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', min: 0.1, max: 8 },
+      { dom: 'agr-tp', arg: 'totalProtein', kind: 'number', required: true, label: 'Total protein', unit: 'g/dL', min: 1, max: 20 },
     ],
   },
 ];

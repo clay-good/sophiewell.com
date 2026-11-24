@@ -15,7 +15,7 @@ export default [
     fields: [
       { dom: 'furst-una', arg: 'urineSodium', kind: 'number', required: true, label: 'Urine sodium', unit: 'mmol/L' },
       { dom: 'furst-uk', arg: 'urinePotassium', kind: 'number', required: true, label: 'Urine potassium', unit: 'mmol/L' },
-      { dom: 'furst-sna', arg: 'serumSodium', kind: 'number', required: true, label: 'Serum sodium', unit: 'mmol/L' },
+      { dom: 'furst-sna', arg: 'serumSodium', kind: 'number', required: true, label: 'Serum sodium', unit: 'mmol/L', min: 80, max: 210 },
     ],
   },
 ];

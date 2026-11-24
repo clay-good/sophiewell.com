@@ -46,9 +46,9 @@ export default [
     fields: [
       { dom: 'shunt-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
       { dom: 'shunt-pao2a', arg: 'pAO2', kind: 'number', required: true, label: 'Alveolar / end-capillary O₂ tension', unit: 'mmHg' },
-      { dom: 'shunt-sao2', arg: 'sao2', kind: 'number', required: true, label: 'Arterial SaO₂', unit: '%' },
+      { dom: 'shunt-sao2', arg: 'sao2', kind: 'number', required: true, label: 'Arterial SaO₂', unit: '%', min: 1, max: 100 },
       { dom: 'shunt-pao2', arg: 'pao2', kind: 'number', required: true, label: 'Arterial PaO₂', unit: 'mmHg' },
-      { dom: 'shunt-svo2', arg: 'svo2', kind: 'number', required: true, label: 'Mixed-venous SvO₂', unit: '%' },
+      { dom: 'shunt-svo2', arg: 'svo2', kind: 'number', required: true, label: 'Mixed-venous SvO₂', unit: '%', min: 1, max: 100 },
       { dom: 'shunt-pvo2', arg: 'pvo2', kind: 'number', required: true, label: 'Mixed-venous PvO₂', unit: 'mmHg' },
     ],
   },

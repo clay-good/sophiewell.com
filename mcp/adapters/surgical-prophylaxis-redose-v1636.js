@@ -11,7 +11,7 @@ export default [
     fields: [
       { dom: 'spr-agent', arg: 'agent', kind: 'enum', values: SP.AGENTS.map((a) => a.value), required: true, label: 'Antimicrobial' },
       { dom: 'spr-patient', arg: 'patient', kind: 'enum', values: ['adult', 'child'], required: true, label: 'Adult or child' },
-      { dom: 'spr-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Actual weight', unit: 'kg' },
+      { dom: 'spr-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Actual weight', unit: 'kg', min: 0.3, max: 350 },
       { dom: 'spr-ibw', arg: 'ibwKg', kind: 'number', required: false, label: 'Ideal body weight (gentamicin only)', unit: 'kg' },
       { dom: 'spr-pip-age', arg: 'pipAge', kind: 'enum', values: ['infant', 'child'], required: false, label: 'Age band (piperacillin-tazobactam in a child)' },
       { dom: 'spr-start', arg: 'startTime', kind: 'string', required: false, label: 'Preoperative dose started (YYYY-MM-DDTHH:MM)' },

@@ -33,7 +33,7 @@ export default [
     summary: 'Weight-driven pediatric quick-dose panel (AAP, NLM/DailyMed, manufacturer labels): per-drug mg dose ranges at the entered weight with per-dose caps applied.',
     compute: F.pedsDosePanel,
     fields: [
-      { dom: 'pd-w', arg: 'weightKg', kind: 'number', required: true, label: 'Child weight', unit: 'kg' },
+      { dom: 'pd-w', arg: 'weightKg', kind: 'number', required: true, label: 'Child weight', unit: 'kg', min: 0.3, max: 150 },
     ],
   },
   {
@@ -215,8 +215,8 @@ export default [
       return { ...r, weightKg: a.weightKg, mlPerKgDay: a.mlPerKgDay, intervalHours };
     },
     fields: [
-      { dom: 'nfv-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight (kg)', unit: 'kg' },
-      { dom: 'nfv-mlkg', arg: 'mlPerKgDay', kind: 'number', required: true, label: 'Target volume (mL/kg/day, term ~150)', unit: 'mL/kg/day' },
+      { dom: 'nfv-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight (kg)', unit: 'kg', min: 0.3, max: 10 },
+      { dom: 'nfv-mlkg', arg: 'mlPerKgDay', kind: 'number', required: true, label: 'Target volume (mL/kg/day, term ~150)', unit: 'mL/kg/day', min: 1, max: 300 },
       { dom: 'nfv-freq', arg: 'feedsPerDay', kind: 'enum', values: ['8', '12', '6'], required: true, label: 'Feeding frequency', to: Number },
     ],
   },

@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'agl-drug', arg: 'drug', kind: 'enum', required: true, values: AG.DRUGS.map((d) => d.value), label: 'Drug' },
       { dom: 'agl-severity', arg: 'severity', kind: 'enum', values: AG.SEVERITIES.map((s) => s.value), label: 'Severity (gentamicin, tobramycin): serious or life' },
-      { dom: 'agl-weight', arg: 'weight', kind: 'number', required: true, label: 'Actual body weight', unit: 'kg' },
+      { dom: 'agl-weight', arg: 'weight', kind: 'number', required: true, label: 'Actual body weight', unit: 'kg', min: 30, max: 300 },
       { dom: 'agl-basis', arg: 'basis', kind: 'enum', required: true, values: AG.BASES.map((b) => b.value), label: 'Dose on actual weight or a lean estimate' },
       { dom: 'agl-lean', arg: 'leanWeight', kind: 'number', label: 'Lean weight estimate (if dosing on it)', unit: 'kg' },
       { dom: 'agl-creatinine', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },

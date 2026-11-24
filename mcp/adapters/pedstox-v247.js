@@ -36,7 +36,7 @@ export default [
     compute: F.widmarkBac,
     fields: [
       { dom: 'wid-grams', arg: 'grams', kind: 'number', required: true, label: 'Pure alcohol consumed', unit: 'g' },
-      { dom: 'wid-weight', arg: 'weight', kind: 'number', required: true, label: 'Body weight', unit: 'kg' },
+      { dom: 'wid-weight', arg: 'weight', kind: 'number', required: true, label: 'Body weight', unit: 'kg', min: 20, max: 300 },
       { dom: 'wid-hours', arg: 'hours', kind: 'number', required: true, label: 'Hours since drinking', unit: 'h' },
       { dom: 'wid-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
     ],

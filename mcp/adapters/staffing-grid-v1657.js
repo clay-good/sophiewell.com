@@ -10,9 +10,9 @@ export default [
     compute: GRID.staffingGrid,
     fields: [
       { dom: 'sg-hppd', arg: 'targetHppd', kind: 'number', required: true, label: 'Target HPPD' },
-      { dom: 'sg-shift', arg: 'shiftHours', kind: 'number', required: true, label: 'Shift length (hours)' },
-      { dom: 'sg-from', arg: 'censusFrom', kind: 'number', required: true, label: 'Lowest census' },
-      { dom: 'sg-to', arg: 'censusTo', kind: 'number', required: true, label: 'Highest census' },
+      { dom: 'sg-shift', arg: 'shiftHours', kind: 'number', required: true, label: 'Shift length (hours)', min: 1, max: 24 },
+      { dom: 'sg-from', arg: 'censusFrom', kind: 'number', required: true, label: 'Lowest census', min: 1, max: 500 },
+      { dom: 'sg-to', arg: 'censusTo', kind: 'number', required: true, label: 'Highest census', min: 1, max: 500 },
       { dom: 'sg-step', arg: 'step', kind: 'number', required: false, label: 'Census step (default 1)' },
       { dom: 'sg-rn-share', arg: 'rnShare', kind: 'number', required: false, label: 'RN share of staff (%)' },
     ]

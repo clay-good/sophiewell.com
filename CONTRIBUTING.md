@@ -289,9 +289,26 @@ the page; a row on a number input is a defect. An ordering rule lives in `lib/nu
 `orderFault` for two values whose order is fixed by definition (a diastolic below the systolic, an HDL below
 the total cholesterol; `docs/spec-v1737.md`).
 
+Two finders ask the opposite question of the same declaration. `scripts/probe-undeclared-cap.mjs` bisects
+each field's enforced edge from its worked example and lists the caps the library enforces with nothing
+declaring them -- an agent reads the schema, sees a plain number, and is refused by a sentence it had no way
+to anticipate. Its four other sections are the caps that must NOT simply be copied onto the descriptor: one
+of the 45 `lib/bounds.js` envelopes (a literal there freezes a number that moves), a field a unit select
+rescales (the declaration has to be the union of its units), a cap that moves with another input, and a
+declaration that contradicts the library. `scripts/probe-declared-cap-configs.mjs` then drives every
+declared bound across CONFIGURATIONS -- each other number at half and twice its example, each enum at every
+option -- because a cap written inside one branch of a library is invisible to the single configuration
+probe-adapter-only-bounds asks from (`docs/spec-v1777.md`).
+
 ```bash
 node scripts/probe-adapter-only-bounds.mjs
+node scripts/probe-undeclared-cap.mjs          # a cap the library enforces and nothing declares (docs/spec-v1777.md)
+node scripts/probe-declared-cap-configs.mjs    # a declared bound the library enforces at the worked example and nowhere else
 ```
+
+`test/unit/declared-cap-honest.test.js` holds the third side of it: the library must ACCEPT the edge a
+declaration allows. A bound whose edge the library states as exclusive declares `exclusiveMin` /
+`exclusiveMax` beside it, which reaches the input schema as `exclusiveMinimum` / `exclusiveMaximum`.
 
 Two more ask about values a reader cannot mean. `scripts/probe-negative-as-zero.mjs` enters each worked
 example's value as a negative and lists fields that answer exactly as they answer 0, a silent clamp that

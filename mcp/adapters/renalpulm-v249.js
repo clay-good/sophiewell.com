@@ -12,9 +12,9 @@ export default [
     summary: 'Renal failure index = urine sodium x plasma creatinine / urine creatinine; < 1 favors prerenal azotemia, > 1 favors acute tubular necrosis.',
     compute: F.renalFailureIndex,
     fields: [
-      { dom: 'rfi-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine sodium', unit: 'mEq/L' },
+      { dom: 'rfi-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine sodium', unit: 'mEq/L', min: 1, max: 300 },
       { dom: 'rfi-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL' },
-      { dom: 'rfi-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
+      { dom: 'rfi-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL', min: 1, max: 500 },
     ],
   },
   {
@@ -43,9 +43,9 @@ export default [
     summary: 'Integrative weaning index (Nemer 2009) = static compliance x SaO2 / RSBI; an IWI >= 25 predicts weaning success from mechanical ventilation.',
     compute: F.integrativeWeaningIndex,
     fields: [
-      { dom: 'iwi-cst', arg: 'compliance', kind: 'number', required: true, label: 'Static compliance', unit: 'mL/cmH2O' },
-      { dom: 'iwi-sao2', arg: 'sao2', kind: 'number', required: true, label: 'SaO2', unit: '%' },
-      { dom: 'iwi-rsbi', arg: 'rsbi', kind: 'number', required: true, label: 'RSBI / f/VT', unit: 'breaths/min/L' },
+      { dom: 'iwi-cst', arg: 'compliance', kind: 'number', required: true, label: 'Static compliance', unit: 'mL/cmH2O', min: 1, max: 200 },
+      { dom: 'iwi-sao2', arg: 'sao2', kind: 'number', required: true, label: 'SaO2', unit: '%', min: 50, max: 100 },
+      { dom: 'iwi-rsbi', arg: 'rsbi', kind: 'number', required: true, label: 'RSBI / f/VT', unit: 'breaths/min/L', min: 1, max: 500 },
     ],
   },
 ];

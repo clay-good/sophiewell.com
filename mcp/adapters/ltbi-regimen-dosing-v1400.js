@@ -9,7 +9,7 @@ export default [
     compute: LT.ltbiRegimenDosing,
     fields: [
       { dom: 'ltbi-regimen', arg: 'regimen', kind: 'enum', required: true, label: 'Regimen', values: LT.REGIMENS.map((a) => a.value) },
-      { dom: 'ltbi-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight (kg)' },
+      { dom: 'ltbi-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight (kg)', min: 2, max: 500 },
       { dom: 'ltbi-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age (years)' },
       { dom: 'ltbi-pregnant', arg: 'pregnant', kind: 'enum', required: true, label: 'Pregnant, or expecting pregnancy during treatment', values: ['yes', 'no'] },
       { dom: 'ltbi-hiv', arg: 'hiv', kind: 'enum', required: true, label: 'HIV status', values: LT.HIV_STATUS.map((a) => a.value) },

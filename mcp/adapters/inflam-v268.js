@@ -11,9 +11,9 @@ export default [
     compute: F.ali,
     fields: [
       { dom: 'ali-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2' },
-      { dom: 'ali-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL' },
-      { dom: 'ali-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '10^9/L' },
-      { dom: 'ali-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '10^9/L' },
+      { dom: 'ali-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', min: 0.1, max: 8 },
+      { dom: 'ali-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '10^9/L', min: 0.001, max: 500 },
+      { dom: 'ali-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '10^9/L', min: 0.001, max: 500 },
     ],
   },
 ];

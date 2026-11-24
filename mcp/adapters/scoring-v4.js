@@ -1682,7 +1682,7 @@ export default [
       { dom: 'hc-ph', arg: 'ph', kind: 'number', required: true, label: 'Arterial pH' },
       { dom: 'hc-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3-15)' },
       { dom: 'hc-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
-      { dom: 'hc-fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, required: true, label: 'FiO2 (0-1)' },
+      { dom: 'hc-fio2', arg: 'fio2', kind: 'number', min: 0.21, max: 1, required: true, label: 'FiO2 (0.21-1)' },
       { dom: 'hc-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
     ],
   },
@@ -1706,7 +1706,7 @@ export default [
     fields: [
       { dom: 'lm-quad', arg: 'quadrants', kind: 'number', min: 0, max: 4, required: true, label: 'CXR quadrants with consolidation (0-4)' },
       { dom: 'lm-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
-      { dom: 'lm-fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, required: true, label: 'FiO2 (0-1)' },
+      { dom: 'lm-fio2', arg: 'fio2', kind: 'number', min: 0.21, max: 1, required: true, label: 'FiO2 (0.21-1)' },
       { dom: 'lm-peep', arg: 'peep', kind: 'number', required: true, label: 'PEEP', unit: 'cmH2O' },
       { dom: 'lm-comp', arg: 'complianceMlPerCmH2O', kind: 'number', required: true, label: 'Compliance', unit: 'mL/cmH2O' },
     ],
@@ -2047,7 +2047,7 @@ export default [
       return { ...r, criteriaTotal, criteriaMet };
     },
     fields: [
-      { dom: 'vs-pf', arg: 'pao2FiO2', kind: 'number', required: true, label: 'PaO2 / FiO2 ratio' },
+      { dom: 'vs-pf', arg: 'pao2FiO2', kind: 'number', required: true, label: 'PaO2 / FiO2 ratio', min: 10, max: 3334 },
       { dom: 'vs-peep', arg: 'peep', kind: 'number', required: true, label: 'Current PEEP', unit: 'cm H2O' },
       { dom: 'vs-fio2', arg: 'fio2', kind: 'number', required: true, label: 'Current FiO2 (fraction 0-1)' },
       { dom: 'vs-vaso', arg: 'vasopressors', kind: 'bool', label: 'Vasopressors at more than minimal dose' },

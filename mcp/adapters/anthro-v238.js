@@ -12,7 +12,7 @@ export default [
     summary: 'Relative fat mass (Woolcott & Bergman, Sci Rep 2018) = 64 - 20 x (height / waist circumference) + 12 x sex (female = 1, male = 0); height and waist in the same units, estimating whole-body fat %.',
     compute: F.relativeFatMass,
     fields: [
-      { dom: 'rfm-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm or in' },
+      { dom: 'rfm-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm or in', min: 50, max: 250 },
       { dom: 'rfm-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference (same units)' },
       { dom: 'rfm-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
     ],
@@ -45,7 +45,7 @@ export default [
     fields: [
       { dom: 'egdr-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm' },
       { dom: 'egdr-htn', arg: 'hypertension', kind: 'bool', required: true, label: 'Hypertension (treated or BP >= 140/90)' },
-      { dom: 'egdr-a1c', arg: 'a1c', kind: 'number', required: true, label: 'HbA1c', unit: '%' },
+      { dom: 'egdr-a1c', arg: 'a1c', kind: 'number', required: true, label: 'HbA1c', unit: '%', min: 2, max: 20 },
     ],
   },
 ];

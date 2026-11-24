@@ -13,7 +13,7 @@ export default [
       { dom: 'ptf-status', arg: 'drugStatus', kind: 'enum', required: true, values: TF.STATUS.map((k) => k.value), label: 'Status of the drug on the plan' },
       { dom: 'ptf-effective', arg: 'coverageEffective', kind: 'string', required: true, label: 'Date coverage under the plan took effect (YYYY-MM-DD)' },
       { dom: 'ptf-requested', arg: 'requested', kind: 'string', required: true, label: 'Date of the fill request (YYYY-MM-DD)' },
-      { dom: 'ptf-month', arg: 'monthDays', kind: 'number', required: true, label: 'Days in the approved one-month supply', unit: 'days' },
+      { dom: 'ptf-month', arg: 'monthDays', kind: 'number', required: true, label: 'Days in the approved one-month supply', unit: 'days', min: 1, max: 100 },
       { dom: 'ptf-already', arg: 'alreadySupplied', kind: 'number', required: true, label: 'Days already supplied under transition for this drug (0 if none)', unit: 'days' },
       { dom: 'ptf-change', arg: 'immediateChange', kind: 'enum', required: true, values: TF.CHANGE.map((k) => k.value), label: 'An immediate formulary change' },
       { dom: 'ptf-written', arg: 'daysWritten', kind: 'number', label: 'Days written on the prescription', unit: 'days' },

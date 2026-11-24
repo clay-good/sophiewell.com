@@ -10,7 +10,7 @@ export default [
     compute: MC.premiumTaxCredit,
     fields: [
       { dom: 'ptc-magi', arg: 'magi', kind: 'number', required: true, label: 'Household income (MAGI) a year', unit: 'USD' },
-      { dom: 'ptc-size', arg: 'size', kind: 'number', required: true, label: 'Household size' },
+      { dom: 'ptc-size', arg: 'size', kind: 'number', required: true, label: 'Household size', min: 1, max: 30 },
       { dom: 'ptc-region', arg: 'region', kind: 'enum', required: true, values: REGIONS.map((r) => r.value), label: 'Where the household lives' },
       { dom: 'ptc-bench', arg: 'benchmark', kind: 'number', required: true, label: 'Benchmark silver premium a month', unit: 'USD' },
       { dom: 'ptc-year', arg: 'year', kind: 'number', required: false, label: 'Coverage year (blank for this year)' },

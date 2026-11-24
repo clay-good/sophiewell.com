@@ -11,7 +11,7 @@ export default [
     summary: 'The pediatric heparin protocol in the CHEST 2012 guideline, as doses. Without an aPTT it gives the loading dose and starting rate by weight and age group; with an aPTT and the current rate it gives the bolus, hold, new rate and repeat time from the adjustment table. The table assumes an aPTT of 60 to 85 seconds reflects an anti-Xa of 0.35 to 0.70; a local protocol takes precedence.',
     compute: PH.pedsHeparinNomogram,
     fields: [
-      { dom: 'phn-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'phn-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.4, max: 150 },
       { dom: 'phn-age', arg: 'age', kind: 'enum', values: PH.AGES.map((a) => a.value), label: 'Age group (for the starting rate)' },
       { dom: 'phn-aptt', arg: 'aptt', kind: 'number', label: 'aPTT, to adjust a running infusion', unit: 'seconds' },
       { dom: 'phn-rate', arg: 'currentRate', kind: 'number', label: 'Current infusion rate (with an aPTT)', unit: 'units/h' },

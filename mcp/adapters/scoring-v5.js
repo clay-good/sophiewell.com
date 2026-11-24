@@ -110,7 +110,7 @@ export default [
     summary: 'Emergency Department Assessment of Chest pain Score: age points, male sex, known CAD or >= 3 risk factors (age 18-50), diaphoresis (3), pain radiating (5), pain worse on inspiration (-4), pain reproduced by palpation (-6); EDACS-ADP low risk needs score < 16 with a non-ischemic ECG and negative 0/2-hour troponins.',
     compute: F.edacs,
     fields: [
-      { dom: 'ed-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ed-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 18, max: 120 },
       { dom: 'ed-male', arg: 'male', kind: 'bool', label: 'Male sex' },
       { dom: 'ed-risk', arg: 'riskOrCad', kind: 'bool', label: 'Known CAD or >= 3 risk factors (age 18-50)' },
       { dom: 'ed-diaph', arg: 'diaphoresis', kind: 'bool', label: 'Diaphoresis (+3)' },
@@ -175,9 +175,9 @@ export default [
     summary: 'Shock Index, Pediatric Age-adjusted (SIPA): heart rate / systolic BP compared to the age-banded elevated cutoff (1.22 for 4-6 years, 1.0 for 7-12, 0.9 for 13-16); above the cutoff is an elevated SIPA.',
     compute: F.sipa,
     fields: [
-      { dom: 'sp-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'sp-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
-      { dom: 'sp-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'sp-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years', min: 1, max: 18 },
+      { dom: 'sp-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10, max: 300 },
+      { dom: 'sp-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', min: 20, max: 300 },
     ],
   },
 ];

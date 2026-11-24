@@ -49,7 +49,7 @@ export default [
     compute: F.surgicalApgar,
     fields: [
       { dom: 'sa-ebl', arg: 'ebl', kind: 'number', required: true, label: 'Estimated blood loss', unit: 'mL' },
-      { dom: 'sa-map', arg: 'lowestMap', kind: 'number', required: true, label: 'Lowest MAP', unit: 'mmHg' },
+      { dom: 'sa-map', arg: 'lowestMap', kind: 'number', required: true, label: 'Lowest MAP', unit: 'mmHg', min: 5, max: 300 },
       { dom: 'sa-hr', arg: 'lowestHr', kind: 'number', required: true, label: 'Lowest heart rate', unit: 'bpm' },
     ],
   },

@@ -11,8 +11,8 @@ export default [
     summary: 'Corrected TIMI frame count (Gibson 1996): cine frames for contrast to reach the distal landmark, normalized to 30 frames/s and divided by 1.7 for the LAD; higher = slower coronary flow.',
     compute: F.correctedTimiFrameCount,
     fields: [
-      { dom: 'ctfc-frames', arg: 'frames', kind: 'number', required: true, label: 'Frame count to distal landmark' },
-      { dom: 'ctfc-fps', arg: 'fps', kind: 'number', required: true, label: 'Acquisition frame rate', unit: 'frames/s' },
+      { dom: 'ctfc-frames', arg: 'frames', kind: 'number', required: true, label: 'Frame count to distal landmark', min: 1, max: 500 },
+      { dom: 'ctfc-fps', arg: 'fps', kind: 'number', required: true, label: 'Acquisition frame rate', unit: 'frames/s', min: 5, max: 120 },
       { dom: 'ctfc-vessel', arg: 'vessel', kind: 'enum', values: ['other', 'lad'], required: true, label: 'Vessel' },
     ],
   },
@@ -21,7 +21,7 @@ export default [
     summary: 'Tp-e/QT ratio (Gupta 2008): the T-peak-to-T-end interval divided by the QT interval, a marker of transmural dispersion of repolarization; reference ~0.21.',
     compute: F.tpeQtRatio,
     fields: [
-      { dom: 'tpe-tpe', arg: 'tpe', kind: 'number', required: true, label: 'Tp-e interval', unit: 'ms' },
+      { dom: 'tpe-tpe', arg: 'tpe', kind: 'number', required: true, label: 'Tp-e interval', unit: 'ms', min: 20, max: 400 },
       { dom: 'tpe-qt', arg: 'qt', kind: 'number', required: true, label: 'QT interval', unit: 'ms' },
     ],
   },
@@ -30,9 +30,9 @@ export default [
     summary: 'SPISE (Paulmichl 2016) = 600 x HDL^0.185 / (TG^0.2 x BMI^1.338), lipids in mg/dL; a lower value reflects greater insulin resistance.',
     compute: F.spise,
     fields: [
-      { dom: 'spise-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },
+      { dom: 'spise-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL', min: 5, max: 150 },
       { dom: 'spise-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL' },
-      { dom: 'spise-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2' },
+      { dom: 'spise-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2', min: 8, max: 100 },
     ],
   },
   {
@@ -41,7 +41,7 @@ export default [
     compute: F.atherogenicIndexOfPlasma,
     fields: [
       { dom: 'aip-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mmol/L' },
-      { dom: 'aip-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mmol/L' },
+      { dom: 'aip-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mmol/L', min: 0.1, max: 5 },
     ],
   },
 ];

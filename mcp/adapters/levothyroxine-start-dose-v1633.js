@@ -11,7 +11,7 @@ export default [
     compute: LX.levothyroxineStartDose,
     fields: [
       { dom: 'lsd-group', arg: 'group', kind: 'enum', required: true, values: LX.GROUPS.map((d) => d.value), label: 'Patient group' },
-      { dom: 'lsd-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'lsd-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.5, max: 400 },
       { dom: 'lsd-hyper', arg: 'hyperactivityRisk', kind: 'enum', values: LX.YES_NO.map((d) => d.value), label: 'Children: at risk for hyperactivity, yes or no' },
     ],
   },

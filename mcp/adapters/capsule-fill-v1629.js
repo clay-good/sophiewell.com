@@ -11,7 +11,7 @@ export default [
     compute: CF.capsuleFill,
     fields: [
       { dom: 'cf-method', arg: 'method', kind: 'enum', required: true, values: CF.METHODS.map((m) => m.value), label: 'Method: measured fill weights of each powder alone (weights), or capsule volume and tapped densities (densities)' },
-      { dom: 'cf-count', arg: 'capsules', kind: 'number', required: true, label: 'Number of capsules' },
+      { dom: 'cf-count', arg: 'capsules', kind: 'number', required: true, label: 'Number of capsules', min: 1, max: 1000000 },
       { dom: 'cf-extra', arg: 'overage', kind: 'number', required: false, label: 'Extra capsules to allow for loss (optional)' },
       { dom: 'cf-active', arg: 'activeMg', kind: 'number', required: true, label: 'Active per capsule', unit: 'mg' },
       { dom: 'cf-afill', arg: 'activeFillMg', kind: 'number', required: false, label: 'Weights method: active alone that fills one capsule', unit: 'mg' },

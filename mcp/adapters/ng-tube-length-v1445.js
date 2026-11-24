@@ -8,7 +8,7 @@ export default [
     summary: 'Turns an adult nose-earlobe-xiphoid (NEX) measurement into a nasogastric tube insertion length with the corrected NEX formula. It shows the NEX and Hanson lengths for comparison and says the length never replaces checking where the tip is.',
     compute: NG.ngTubeLength,
     fields: [
-      { dom: 'ng-nex', arg: 'nexCm', kind: 'number', required: true, label: 'NEX distance (nose tip to earlobe to xiphoid)', unit: 'cm' },
+      { dom: 'ng-nex', arg: 'nexCm', kind: 'number', required: true, label: 'NEX distance (nose tip to earlobe to xiphoid)', unit: 'cm', min: 20, max: 120 },
     ],
   },
 ];

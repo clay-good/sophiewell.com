@@ -11,7 +11,7 @@ export default [
     fields: [
       { dom: 'tp-needed', arg: 'needed', kind: 'number', required: true, label: 'Drug needed', unit: 'mg' },
       { dom: 'tp-strength', arg: 'strength', kind: 'number', required: true, label: 'Labeled strength per tablet', unit: 'mg' },
-      { dom: 'tp-count', arg: 'count', kind: 'number', required: true, label: 'Number of whole tablets weighed' },
+      { dom: 'tp-count', arg: 'count', kind: 'number', required: true, label: 'Number of whole tablets weighed', min: 1, max: 10000 },
       { dom: 'tp-total', arg: 'totalWeight', kind: 'number', required: true, label: 'Total weight of those tablets', unit: 'mg' },
       { dom: 'tp-extra', arg: 'extra', kind: 'number', required: false, label: 'Extra tablets to crush (optional)' },
     ],

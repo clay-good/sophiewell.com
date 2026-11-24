@@ -12,8 +12,8 @@ export default [
     summary: 'Lymphocyte-to-monocyte ratio: absolute lymphocyte count / absolute monocyte count; a prognostic inflammation marker where a lower value is less favorable.',
     compute: F.lmr,
     fields: [
-      { dom: 'lmr-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10³/µL' },
-      { dom: 'lmr-amc', arg: 'amc', kind: 'number', required: true, label: 'Absolute monocyte count', unit: '×10³/µL' },
+      { dom: 'lmr-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10³/µL', min: 0.001, max: 500 },
+      { dom: 'lmr-amc', arg: 'amc', kind: 'number', required: true, label: 'Absolute monocyte count', unit: '×10³/µL', min: 0.001, max: 500 },
     ],
   },
   {
@@ -21,9 +21,9 @@ export default [
     summary: 'Systemic inflammation response index: ANC × AMC / ALC (Qi 2016); higher values reflect a more pro-inflammatory state.',
     compute: F.siri,
     fields: [
-      { dom: 'siri-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '×10³/µL' },
-      { dom: 'siri-amc', arg: 'amc', kind: 'number', required: true, label: 'Absolute monocyte count', unit: '×10³/µL' },
-      { dom: 'siri-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10³/µL' },
+      { dom: 'siri-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '×10³/µL', min: 0.001, max: 500 },
+      { dom: 'siri-amc', arg: 'amc', kind: 'number', required: true, label: 'Absolute monocyte count', unit: '×10³/µL', min: 0.001, max: 500 },
+      { dom: 'siri-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10³/µL', min: 0.001, max: 500 },
     ],
   },
   {
@@ -31,10 +31,10 @@ export default [
     summary: 'Pan-immune-inflammation value: ANC × platelets × AMC / ALC (Fucà 2020); higher values reflect a more pro-inflammatory state.',
     compute: F.piv,
     fields: [
-      { dom: 'piv-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '×10³/µL' },
-      { dom: 'piv-plt', arg: 'plt', kind: 'number', required: true, label: 'Platelet count', unit: '×10³/µL' },
-      { dom: 'piv-amc', arg: 'amc', kind: 'number', required: true, label: 'Absolute monocyte count', unit: '×10³/µL' },
-      { dom: 'piv-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10³/µL' },
+      { dom: 'piv-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '×10³/µL', min: 0.001, max: 500 },
+      { dom: 'piv-plt', arg: 'plt', kind: 'number', required: true, label: 'Platelet count', unit: '×10³/µL', min: 0.1, max: 4000 },
+      { dom: 'piv-amc', arg: 'amc', kind: 'number', required: true, label: 'Absolute monocyte count', unit: '×10³/µL', min: 0.001, max: 500 },
+      { dom: 'piv-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10³/µL', min: 0.001, max: 500 },
     ],
   },
   {
@@ -43,7 +43,7 @@ export default [
     compute: F.car,
     fields: [
       { dom: 'car-crp', arg: 'crp', kind: 'number', required: true, label: 'C-reactive protein', unit: 'mg/L' },
-      { dom: 'car-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL' },
+      { dom: 'car-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', min: 0.1, max: 8 },
     ],
   },
 ];

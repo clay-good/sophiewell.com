@@ -107,7 +107,7 @@ export default [
     summary: 'Alveolar-arterial oxygen gradient: PAO2 = FiO2*(760-47) - PaCO2/0.8, A-a = PAO2 - PaO2.',
     compute: F.aaGradient,
     fields: [
-      { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, required: true, label: 'FiO2 (0-1)' },
+      { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0.21, max: 1, required: true, label: 'FiO2 (0.21-1)' },
       { dom: 'paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
       { dom: 'pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
     ],
@@ -193,7 +193,7 @@ export default [
     compute: F.pfRatio,
     fields: [
       { dom: 'pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
-      { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, required: true, label: 'FiO2 (0-1)' },
+      { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0.01, max: 1, required: true, label: 'FiO2 (0.01-1)' },
     ],
   },
   {
@@ -248,7 +248,7 @@ export default [
     // is only in the A-a gradient and the age only in the age-expected value, so
     // an agent with a blood gas and no age still gets a P/F ratio.
     fields: [
-      { dom: 'sf-fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, required: true, label: 'FiO2 (0-1)' },
+      { dom: 'sf-fio2', arg: 'fio2', kind: 'number', min: 0.21, max: 1, required: true, label: 'FiO2 (0.21-1)' },
       { dom: 'sf-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
       { dom: 'sf-paco2', arg: 'paco2', kind: 'number', label: 'PaCO2', unit: 'mmHg' },
       { dom: 'sf-age', arg: 'age', kind: 'number', label: 'Age', unit: 'years' },
@@ -365,7 +365,7 @@ export default [
     summary: 'Arterial blood gas interpretation: primary acid-base disorder from pH / PaCO2 / HCO3 with the expected-compensation note (Winter formula, Boston rules); optional PaO2 + FiO2 adds the A-a gradient and P/F ratio.',
     compute: F.abgInterpret,
     fields: [
-      { dom: 'pH', arg: 'pH', kind: 'number', required: true, label: 'Arterial pH' },
+      { dom: 'pH', arg: 'pH', kind: 'number', required: true, label: 'Arterial pH', min: 6, max: 8 },
       { dom: 'paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
       { dom: 'hco3', arg: 'hco3', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L' },
       { dom: 'pao2', arg: 'pao2', kind: 'number', label: 'PaO2 (optional, enables oxygenation indices)', unit: 'mmHg' },

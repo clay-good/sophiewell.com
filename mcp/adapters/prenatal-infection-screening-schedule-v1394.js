@@ -11,7 +11,7 @@ export default [
     fields: [
       { dom: 'pns-state', arg: 'state', kind: 'enum', required: true, label: 'State', values: PNS.PNS_STATES.map((s) => s.value) },
       { dom: 'pns-setting', arg: 'setting', kind: 'enum', required: true, label: 'Setting', values: PNS.SETTINGS.map((s) => s.value) },
-      { dom: 'pns-ga', arg: 'ga', kind: 'number', required: true, label: 'Gestational age (weeks)' },
+      { dom: 'pns-ga', arg: 'ga', kind: 'number', required: true, label: 'Gestational age (weeks)', min: 1, max: 45 },
       { dom: 'pns-syph1', arg: 'syphFirst', kind: 'enum', label: 'First-visit syphilis result on record', values: ['yes', 'no'] },
       { dom: 'pns-syph3', arg: 'syph3', kind: 'enum', label: 'Third-trimester syphilis result on record', values: ['yes', 'no'] },
       { dom: 'pns-hiv1', arg: 'hivFirst', kind: 'enum', label: 'First-visit HIV result on record', values: ['yes', 'no'] },

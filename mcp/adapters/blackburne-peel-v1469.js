@@ -9,7 +9,7 @@ export default [
     compute: BP.blackburnePeel,
     fields: [
       { dom: 'bp-a', arg: 'distanceA', kind: 'number', unit: 'mm', required: true, label: 'Distance A (inferior patellar articular surface to the tibial plateau line)' },
-      { dom: 'bp-b', arg: 'lengthB', kind: 'number', unit: 'mm', required: true, label: 'Length B (patellar articular surface)' },
+      { dom: 'bp-b', arg: 'lengthB', kind: 'number', unit: 'mm', required: true, label: 'Length B (patellar articular surface)', min: 10, max: 80 },
     ],
   },
 ];

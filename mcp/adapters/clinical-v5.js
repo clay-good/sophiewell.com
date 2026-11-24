@@ -19,11 +19,11 @@ export default [
       return pct == null ? r : { ...r, infusateSalinePercent: pct };
     },
     fields: [
-      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 1, max: 400 },
       { dom: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
       { dom: 'na', arg: 'currentNa', kind: 'number', required: true, label: 'Current serum Na', unit: 'mEq/L' },
       { dom: 'infusate', arg: 'infusate', kind: 'enum', values: ['3pct-saline', '0.9-saline', '0.45-saline', 'lr', 'd5w'], required: true, label: 'Infusate' },
-      { dom: 'tgt', arg: 'targetChangePer24h', kind: 'number', required: true, label: 'Target change in 24 h', unit: 'mEq/L' },
+      { dom: 'tgt', arg: 'targetChangePer24h', kind: 'number', required: true, label: 'Target change in 24 h', unit: 'mEq/L', min: 0.1, max: 12 },
       { dom: 'acuity', arg: 'acuity', kind: 'enum', values: ['chronic', 'acute'], required: false, label: 'Acuity' },
     ],
   },
@@ -36,11 +36,11 @@ export default [
       return r == null ? r : { ...r, replaceOverHours: a.replaceOverHours };
     },
     fields: [
-      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 1, max: 400 },
       { dom: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
-      { dom: 'na', arg: 'currentNa', kind: 'number', required: true, label: 'Current serum Na', unit: 'mEq/L' },
-      { dom: 'tgt', arg: 'targetNa', kind: 'number', required: true, label: 'Target Na', unit: 'mEq/L' },
-      { dom: 'hrs', arg: 'replaceOverHours', kind: 'number', required: true, label: 'Replace over', unit: 'hours' },
+      { dom: 'na', arg: 'currentNa', kind: 'number', required: true, label: 'Current serum Na', unit: 'mEq/L', min: 130, max: 210 },
+      { dom: 'tgt', arg: 'targetNa', kind: 'number', required: true, label: 'Target Na', unit: 'mEq/L', min: 130, max: 160 },
+      { dom: 'hrs', arg: 'replaceOverHours', kind: 'number', required: true, label: 'Replace over', unit: 'hours', min: 1, max: 168 },
     ],
   },
   {
@@ -48,9 +48,9 @@ export default [
     summary: 'Predicted body weight (Devine) and ARDSnet lung-protective tidal-volume target (default 6 mL/kg PBW, range 4-8).',
     compute: F.pbwArdsnet,
     fields: [
-      { dom: 'h', arg: 'heightCm', kind: 'number', required: true, label: 'Height', unit: 'cm' },
+      { dom: 'h', arg: 'heightCm', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 100, max: 230 },
       { dom: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
-      { dom: 'mlkg', arg: 'mlPerKg', kind: 'number', required: true, label: 'Target Vt', unit: 'mL/kg PBW' },
+      { dom: 'mlkg', arg: 'mlPerKg', kind: 'number', required: true, label: 'Target Vt', unit: 'mL/kg PBW', min: 4, max: 8 },
     ],
   },
   {
@@ -70,7 +70,7 @@ export default [
       { dom: 'na', arg: 'na', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
       { dom: 'cl', arg: 'cl', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L' },
       { dom: 'hco3', arg: 'hco3', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L' },
-      { dom: 'alb', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
+      { dom: 'alb', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', min: 0.5, max: 8 },
     ],
   },
   {
@@ -78,9 +78,9 @@ export default [
     summary: 'Ganzoni 1970 total iron deficit: weight x (target Hb - current Hb) x 2.4 + iron stores (default stores applied when no override given).',
     compute: F.ironDeficitGanzoni,
     fields: [
-      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 1, max: 400 },
       { dom: 'hb', arg: 'currentHb', kind: 'number', required: true, label: 'Current Hb', unit: 'g/dL' },
-      { dom: 'tgt', arg: 'targetHb', kind: 'number', required: true, label: 'Target Hb', unit: 'g/dL' },
+      { dom: 'tgt', arg: 'targetHb', kind: 'number', required: true, label: 'Target Hb', unit: 'g/dL', min: 5, max: 25 },
       { dom: 'stores', arg: 'ironStoresMg', kind: 'number', required: false, label: 'Iron stores override', unit: 'mg' },
     ],
   },
@@ -91,8 +91,8 @@ export default [
     summary: 'Mentzer index = MCV / RBC count: < 13 favors beta-thalassemia trait, > 13 favors iron-deficiency anemia.',
     compute: (a) => F.mentzerIndex(a),
     fields: [
-      { dom: 'mcv', arg: 'mcvFl', kind: 'number', required: true, label: 'MCV', unit: 'fL' },
-      { dom: 'rbc', arg: 'rbcMillionsPerUl', kind: 'number', required: true, label: 'RBC count', unit: 'x10^12/L' },
+      { dom: 'mcv', arg: 'mcvFl', kind: 'number', required: true, label: 'MCV', unit: 'fL', min: 30, max: 200 },
+      { dom: 'rbc', arg: 'rbcMillionsPerUl', kind: 'number', required: true, label: 'RBC count', unit: 'x10^12/L', min: 0.5, max: 10 },
     ],
   },
   {
@@ -100,7 +100,7 @@ export default [
     summary: 'Serum-ascites albumin gradient = serum albumin - ascites albumin: >= 1.1 g/dL indicates portal hypertension, < 1.1 a non-portal etiology.',
     compute: (a) => F.saag(a),
     fields: [
-      { dom: 'sa', arg: 'serumAlbumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL' },
+      { dom: 'sa', arg: 'serumAlbumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', min: 0.1, max: 8 },
       { dom: 'aa', arg: 'ascitesAlbumin', kind: 'number', required: true, label: 'Ascites albumin', unit: 'g/dL' },
     ],
   },
@@ -110,9 +110,9 @@ export default [
     compute: (a) => F.rFactorLiver(a),
     fields: [
       { dom: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L' },
-      { dom: 'altu', arg: 'altUln', kind: 'number', required: true, label: 'ALT upper-normal limit', unit: 'U/L' },
-      { dom: 'alp', arg: 'alp', kind: 'number', required: true, label: 'ALP', unit: 'U/L' },
-      { dom: 'alpu', arg: 'alpUln', kind: 'number', required: true, label: 'ALP upper-normal limit', unit: 'U/L' },
+      { dom: 'altu', arg: 'altUln', kind: 'number', required: true, label: 'ALT upper-normal limit', unit: 'U/L', min: 1, max: 500 },
+      { dom: 'alp', arg: 'alp', kind: 'number', required: true, label: 'ALP', unit: 'U/L', min: 0.1, max: 20000 },
+      { dom: 'alpu', arg: 'alpUln', kind: 'number', required: true, label: 'ALP upper-normal limit', unit: 'U/L', min: 1, max: 500 },
     ],
   },
   {

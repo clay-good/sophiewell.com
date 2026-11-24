@@ -12,7 +12,7 @@ export default [
     compute: F.nascetCarotidStenosis,
     fields: [
       { dom: 'ns-narrow', arg: 'narrowest', kind: 'number', required: true, label: 'Narrowest residual lumen', unit: 'mm' },
-      { dom: 'ns-distal', arg: 'distal', kind: 'number', required: true, label: 'Normal distal ICA diameter', unit: 'mm' },
+      { dom: 'ns-distal', arg: 'distal', kind: 'number', required: true, label: 'Normal distal ICA diameter', unit: 'mm', min: 0.5, max: 30 },
     ],
   },
   {
@@ -39,9 +39,9 @@ export default [
     summary: 'Testicular volume (Lambert formula) = length x width x height (cm) x 0.71; normal adult ~12-30 mL.',
     compute: F.testicularVolume,
     fields: [
-      { dom: 'tv-l', arg: 'length', kind: 'number', required: true, label: 'Length', unit: 'cm' },
-      { dom: 'tv-w', arg: 'width', kind: 'number', required: true, label: 'Width', unit: 'cm' },
-      { dom: 'tv-h', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
+      { dom: 'tv-l', arg: 'length', kind: 'number', required: true, label: 'Length', unit: 'cm', min: 0.5, max: 15 },
+      { dom: 'tv-w', arg: 'width', kind: 'number', required: true, label: 'Width', unit: 'cm', min: 0.5, max: 15 },
+      { dom: 'tv-h', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 0.5, max: 15 },
     ],
   },
 ];

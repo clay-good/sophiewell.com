@@ -12,7 +12,7 @@ export default [
     compute: F.pearlIndex,
     fields: [
       { dom: 'pi-preg', arg: 'pregnancies', kind: 'number', required: true, label: 'Accidental pregnancies' },
-      { dom: 'pi-months', arg: 'months', kind: 'number', required: true, label: 'Total months of exposure', unit: 'months' },
+      { dom: 'pi-months', arg: 'months', kind: 'number', required: true, label: 'Total months of exposure', unit: 'months', min: 1, max: 10000000 },
     ],
   },
   {
@@ -20,7 +20,7 @@ export default [
     summary: 'Robinson-Fleming crown-rump-length dating: gestational age (days) = 8.052 x sqrt(1.037 x CRL) + 23.73, CRL in mm; validated for CRL 5-84 mm.',
     compute: F.robinsonCrlDating,
     fields: [
-      { dom: 'crl-mm', arg: 'crl', kind: 'number', required: true, label: 'Crown-rump length', unit: 'mm' },
+      { dom: 'crl-mm', arg: 'crl', kind: 'number', required: true, label: 'Crown-rump length', unit: 'mm', min: 1, max: 120 },
     ],
   },
   {

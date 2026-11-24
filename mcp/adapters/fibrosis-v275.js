@@ -10,8 +10,8 @@ export default [
     summary: 'RDW-to-platelet ratio (Chen 2013) = red cell distribution width (%) / platelet count (10^9/L); a non-invasive liver-fibrosis marker where a higher ratio marks more advanced fibrosis (derivation cutoff ~0.1, etiology-dependent).',
     compute: F.rpr,
     fields: [
-      { dom: 'rpr-rdw', arg: 'rdw', kind: 'number', required: true, label: 'Red cell distribution width', unit: '%' },
-      { dom: 'rpr-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L' },
+      { dom: 'rpr-rdw', arg: 'rdw', kind: 'number', required: true, label: 'Red cell distribution width', unit: '%', min: 5, max: 60 },
+      { dom: 'rpr-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L', min: 1, max: 4000 },
     ],
   },
 ];

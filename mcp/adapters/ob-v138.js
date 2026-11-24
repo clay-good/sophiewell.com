@@ -75,8 +75,8 @@ export default [
     summary: 'IOM gestational weight gain: the recommended total gain and second/third-trimester weekly rate by pre-pregnancy BMI category (computed from weight and height), singleton or twin.',
     compute: F.iomGwg,
     fields: [
-      { dom: 'ig-wt', arg: 'weight', kind: 'number', required: true, label: 'Pre-pregnancy weight', unit: 'lb' },
-      { dom: 'ig-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'in' },
+      { dom: 'ig-wt', arg: 'weight', kind: 'number', required: true, label: 'Pre-pregnancy weight', unit: 'lb', min: 0.4409245247, max: 1102.311 },
+      { dom: 'ig-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'in', min: 17.71653544, max: 98.42519683 },
       { dom: 'ig-twin', arg: 'twin', kind: 'bool', required: false, label: 'Twin pregnancy' },
     ],
   },

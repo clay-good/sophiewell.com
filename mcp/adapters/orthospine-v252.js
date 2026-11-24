@@ -12,7 +12,7 @@ export default [
     compute: F.insallSalvati,
     fields: [
       { dom: 'is-tendon', arg: 'tendon', kind: 'number', required: true, label: 'Patellar-tendon length', unit: 'mm' },
-      { dom: 'is-patella', arg: 'patella', kind: 'number', required: true, label: 'Patellar-bone length', unit: 'mm' },
+      { dom: 'is-patella', arg: 'patella', kind: 'number', required: true, label: 'Patellar-bone length', unit: 'mm', min: 1, max: 100 },
     ],
   },
   {
@@ -20,7 +20,7 @@ export default [
     summary: 'Torg-Pavlov ratio (1987) = sagittal spinal-canal diameter / vertebral-body diameter on a lateral cervical radiograph; <= 0.8 indicates developmental cervical canal stenosis.',
     compute: F.torgPavlov,
     fields: [
-      { dom: 'tp-canal', arg: 'canal', kind: 'number', required: true, label: 'Spinal-canal sagittal diameter', unit: 'mm' },
+      { dom: 'tp-canal', arg: 'canal', kind: 'number', required: true, label: 'Spinal-canal sagittal diameter', unit: 'mm', min: 1, max: 50 },
       { dom: 'tp-body', arg: 'body', kind: 'number', required: true, label: 'Vertebral-body sagittal diameter', unit: 'mm' },
     ],
   },
@@ -30,7 +30,7 @@ export default [
     compute: F.meyerdingSpondylolisthesis,
     fields: [
       { dom: 'my-disp', arg: 'displacement', kind: 'number', required: true, label: 'Anterior displacement', unit: 'mm' },
-      { dom: 'my-width', arg: 'width', kind: 'number', required: true, label: 'Caudal-endplate AP width', unit: 'mm' },
+      { dom: 'my-width', arg: 'width', kind: 'number', required: true, label: 'Caudal-endplate AP width', unit: 'mm', min: 1, max: 100 },
     ],
   },
   {

@@ -38,7 +38,7 @@ export default [
     summary: 'No-Apnea OSA screen (Duarte 2018): neck circumference plus age scored 0-9; > 3 indicates high obstructive-sleep-apnea risk.',
     compute: F.noApnea,
     fields: [
-      { dom: 'na-neck', arg: 'neck', kind: 'number', required: true, label: 'Neck circumference', unit: 'cm' },
+      { dom: 'na-neck', arg: 'neck', kind: 'number', required: true, label: 'Neck circumference', unit: 'cm', min: 20, max: 70 },
       { dom: 'na-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
     ],
   },
@@ -48,7 +48,7 @@ export default [
     compute: F.sleepEfficiency,
     fields: [
       { dom: 'se-tst', arg: 'tst', kind: 'number', required: true, label: 'Total sleep time', unit: 'minutes' },
-      { dom: 'se-tib', arg: 'tib', kind: 'number', required: true, label: 'Time in bed', unit: 'minutes' },
+      { dom: 'se-tib', arg: 'tib', kind: 'number', required: true, label: 'Time in bed', unit: 'minutes', min: 1, max: 1440 },
     ],
   },
 ];

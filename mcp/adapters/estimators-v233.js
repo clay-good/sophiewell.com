@@ -11,8 +11,8 @@ export default [
     summary: 'Evans index: maximum frontal-horn width / inner-skull (biparietal) diameter on the same axial slice; > 0.30 defines ventricular enlargement (radiologic hydrocephalus threshold).',
     compute: F.evansIndex,
     fields: [
-      { dom: 'ev-frontal', arg: 'frontal', kind: 'number', required: true, label: 'Maximum frontal-horn width', unit: 'mm' },
-      { dom: 'ev-skull', arg: 'skull', kind: 'number', required: true, label: 'Maximum inner-skull (biparietal) diameter', unit: 'mm' },
+      { dom: 'ev-frontal', arg: 'frontal', kind: 'number', required: true, label: 'Maximum frontal-horn width', unit: 'mm', min: 1, max: 200 },
+      { dom: 'ev-skull', arg: 'skull', kind: 'number', required: true, label: 'Maximum inner-skull (biparietal) diameter', unit: 'mm', min: 1, max: 300 },
     ],
   },
   {
@@ -20,8 +20,8 @@ export default [
     summary: 'Frontal-occipital horn ratio: (frontal-horn + occipital-horn width) / (2 × biparietal diameter); >= 0.55 marks clinically significant ventriculomegaly.',
     compute: F.fohr,
     fields: [
-      { dom: 'fo-frontal', arg: 'frontal', kind: 'number', required: true, label: 'Maximum frontal-horn width', unit: 'mm' },
-      { dom: 'fo-occipital', arg: 'occipital', kind: 'number', required: true, label: 'Maximum occipital-horn width', unit: 'mm' },
+      { dom: 'fo-frontal', arg: 'frontal', kind: 'number', required: true, label: 'Maximum frontal-horn width', unit: 'mm', min: 1, max: 200 },
+      { dom: 'fo-occipital', arg: 'occipital', kind: 'number', required: true, label: 'Maximum occipital-horn width', unit: 'mm', min: 1, max: 200 },
       { dom: 'fo-bpd', arg: 'bpd', kind: 'number', required: true, label: 'Biparietal diameter', unit: 'mm' },
     ],
   },
@@ -40,7 +40,7 @@ export default [
     compute: F.deurenberg,
     fields: [
       { dom: 'db-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2' },
-      { dom: 'db-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'db-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 2, max: 130 },
       { dom: 'db-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
     ],
   },

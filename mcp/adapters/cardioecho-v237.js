@@ -36,7 +36,7 @@ export default [
     summary: 'Mitral valve area by pressure half-time (Hatle 1979) = 220 / pressure half-time (ms); > 1.5 cm^2 mild, 1.0-1.5 moderate, < 1.0 severe mitral stenosis.',
     compute: F.mitralValveAreaPht,
     fields: [
-      { dom: 'mva-pht', arg: 'pht', kind: 'number', required: true, label: 'Pressure half-time', unit: 'ms' },
+      { dom: 'mva-pht', arg: 'pht', kind: 'number', required: true, label: 'Pressure half-time', unit: 'ms', min: 11, max: 2000 },
     ],
   },
   {
@@ -44,7 +44,7 @@ export default [
     summary: 'Aortic dimensionless index = LVOT VTI / aortic-valve VTI (or peak velocities); <= 0.25 severe aortic stenosis, 0.25-0.50 moderate, > 0.50 mild.',
     compute: F.aorticDvi,
     fields: [
-      { dom: 'dvi-lvot', arg: 'lvot', kind: 'number', required: true, label: 'LVOT VTI (or peak velocity)' },
+      { dom: 'dvi-lvot', arg: 'lvot', kind: 'number', required: true, label: 'LVOT VTI (or peak velocity)', min: 0.1, max: 200 },
       { dom: 'dvi-av', arg: 'av', kind: 'number', required: true, label: 'Aortic-valve VTI (or peak velocity)' },
     ],
   },

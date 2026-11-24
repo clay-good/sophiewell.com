@@ -12,7 +12,7 @@ export default [
       { dom: 'sg-overseas', arg: 'overseas', kind: 'enum', required: true, label: 'Overseas ivermectin documented', values: ['yes', 'no'] },
       { dom: 'sg-pregnant', arg: 'pregnant', kind: 'enum', required: true, label: 'Pregnant or breastfeeding an infant under 1 week', values: ['yes', 'no'] },
       { dom: 'sg-steroids', arg: 'steroids', kind: 'enum', required: true, label: 'Corticosteroids or immunosuppression planned', values: ['yes', 'no'] },
-      { dom: 'sg-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight (kg)' },
+      { dom: 'sg-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight (kg)', min: 1, max: 300 },
     ],
   },
 ];

@@ -32,7 +32,7 @@ export default [
     fields: [
       { dom: 'nm-ndc', arg: 'ndc', kind: 'string', required: false, label: 'NDC (11 digits, or with its hyphens)' },
       { dom: 'nm-dos', arg: 'serviceDate', kind: 'string', required: false, label: 'Date of service (YYYY-MM-DD)' },
-      { dom: 'nm-qty', arg: 'quantity', kind: 'number', required: true, label: 'Quantity dispensed', unit: 'units' },
+      { dom: 'nm-qty', arg: 'quantity', kind: 'number', required: true, label: 'Quantity dispensed', unit: 'units', min: 0.001, max: 1000000 },
       { dom: 'nm-paid', arg: 'reimbursed', kind: 'number', required: true, label: 'Reimbursement', unit: 'USD' },
       { dom: 'nm-cost', arg: 'cost', kind: 'number', required: false, label: 'Invoice cost per unit', unit: 'USD' },
     ],

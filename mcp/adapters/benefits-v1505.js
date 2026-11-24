@@ -12,7 +12,7 @@ export default [
     compute: BN.biSummary,
     fields: [
       usd('bi-allowed', 'allowed', 'Allowed amount per administration', true),
-      { dom: 'bi-n', arg: 'perYear', kind: 'number', required: true, label: 'Administrations in the plan year' },
+      { dom: 'bi-n', arg: 'perYear', kind: 'number', required: true, label: 'Administrations in the plan year', min: 1, max: 366 },
       { dom: 'bi-n90', arg: 'in90', kind: 'number', required: false, label: 'Administrations in the first 90 days' },
       usd('bi-ded', 'deductibleLeft', 'Deductible still to meet', true),
       usd('bi-oop', 'oopLeft', 'Out-of-pocket maximum still to meet', true),
@@ -27,7 +27,7 @@ export default [
     summary: 'What a therapy costs the plan and the patient at each site of care. Compares up to four sites over the plan year.',
     compute: BN.siteOfCareCompare,
     fields: [
-      { dom: 'soc-n', arg: 'perYear', kind: 'number', required: true, label: 'Administrations in the plan year' },
+      { dom: 'soc-n', arg: 'perYear', kind: 'number', required: true, label: 'Administrations in the plan year', min: 1, max: 366 },
       usd('soc-ded', 'deductibleLeft', 'Deductible still to meet'),
       usd('soc-oop', 'oopLeft', 'Out-of-pocket maximum still to meet'),
       ...[1, 2, 3, 4].flatMap((k) => [

@@ -77,7 +77,7 @@ export default [
     summary: 'Cardiac power output (Fincke 2004): (MAP x cardiac output) / 451 in watts, against the 0.6 W cardiogenic-shock threshold.',
     compute: C.cardiacPowerOutput,
     fields: [
-      { dom: 'cp-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg' },
+      { dom: 'cp-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg', min: 5, max: 300 },
       { dom: 'cp-co', arg: 'co', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min' },
     ],
   },

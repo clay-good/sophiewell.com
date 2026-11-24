@@ -10,9 +10,9 @@ export default [
     summary: 'Nutritional Risk Index (Buzby, VA-TPN) = 1.519 x albumin (g/L) + 41.7 x (current weight / usual weight); bands >100 none, 97.5-100 mild, 83.5-97.5 moderate, <83.5 severe. A lower value marks greater perioperative nutritional risk.',
     compute: F.nri,
     fields: [
-      { dom: 'nri-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/L' },
-      { dom: 'nri-current', arg: 'currentWeight', kind: 'number', required: true, label: 'Current weight', unit: 'kg' },
-      { dom: 'nri-usual', arg: 'usualWeight', kind: 'number', required: true, label: 'Usual weight', unit: 'kg' },
+      { dom: 'nri-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/L', min: 5, max: 80 },
+      { dom: 'nri-current', arg: 'currentWeight', kind: 'number', required: true, label: 'Current weight', unit: 'kg', min: 1, max: 500 },
+      { dom: 'nri-usual', arg: 'usualWeight', kind: 'number', required: true, label: 'Usual weight', unit: 'kg', min: 1, max: 500 },
     ],
   },
 ];

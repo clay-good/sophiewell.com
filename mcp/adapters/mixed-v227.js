@@ -53,7 +53,7 @@ export default [
     summary: 'Denver ED Trauma Organ Failure score (Vogel 2014): age ≥ 65, intubation, hematocrit band, SBP < 90, BUN ≥ 30, and WBC ≥ 20,000 give a multiple-organ-failure risk (0–1 low, 2–3 moderate, ≥ 4 high).',
     compute: F.denverEdTof,
     fields: [
-      { dom: 'den-hct', arg: 'hematocrit', kind: 'number', required: true, label: 'Hematocrit', unit: '%' },
+      { dom: 'den-hct', arg: 'hematocrit', kind: 'number', required: true, label: 'Hematocrit', unit: '%', min: 3, max: 100 },
       { dom: 'den-age', arg: 'ageOver65', kind: 'bool', required: false, label: 'Age ≥ 65' },
       { dom: 'den-intub', arg: 'intubation', kind: 'bool', required: false, label: 'Intubation' },
       { dom: 'den-sbp', arg: 'sbpLow', kind: 'bool', required: false, label: 'Systolic BP < 90 mmHg' },

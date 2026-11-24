@@ -12,7 +12,7 @@ export default [
     compute: F.shineLal,
     fields: [
       { dom: 'sl-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL' },
-      { dom: 'sl-mch', arg: 'mch', kind: 'number', required: true, label: 'MCH', unit: 'pg' },
+      { dom: 'sl-mch', arg: 'mch', kind: 'number', required: true, label: 'MCH', unit: 'pg', min: 10, max: 50 },
     ],
   },
   {
@@ -21,8 +21,8 @@ export default [
     compute: F.greenKing,
     fields: [
       { dom: 'gk-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL' },
-      { dom: 'gk-rdw', arg: 'rdw', kind: 'number', required: true, label: 'RDW', unit: '%' },
-      { dom: 'gk-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'gk-rdw', arg: 'rdw', kind: 'number', required: true, label: 'RDW', unit: '%', min: 5, max: 40 },
+      { dom: 'gk-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 3, max: 26 },
     ],
   },
   {
@@ -32,7 +32,7 @@ export default [
     fields: [
       { dom: 'ppr-pre', arg: 'pre', kind: 'number', required: true, label: 'Pre-transfusion platelet count', unit: 'x10^9/L' },
       { dom: 'ppr-post', arg: 'post', kind: 'number', required: true, label: 'Post-transfusion platelet count', unit: 'x10^9/L' },
-      { dom: 'ppr-bv', arg: 'bloodVolume', kind: 'number', required: true, label: 'Blood volume', unit: 'L' },
+      { dom: 'ppr-bv', arg: 'bloodVolume', kind: 'number', required: true, label: 'Blood volume', unit: 'L', min: 1, max: 12 },
       { dom: 'ppr-tx', arg: 'transfused', kind: 'number', required: true, label: 'Platelets transfused', unit: 'x10^11' },
     ],
   },

@@ -13,8 +13,8 @@ export default [
     summary: 'Applies the ACC/AHA blood pressure categories for adults. Normal is under 120 AND under 80; elevated is 120 to 129 AND under 80; stage 1 hypertension is 130 to 139 OR 80 to 89; stage 2 is 140 or more OR 90 or more. Where the systolic and diastolic fall in different categories the HIGHER one applies, so 135/95 is stage 2. Readings above 180/120 are flagged as severe hypertension alongside the category.',
     compute: bpCategories,
     fields: [
-      { dom: 'bpc-sbp', arg: 'systolic', kind: 'number', required: true, label: 'Systolic pressure', unit: 'mmHg' },
-      { dom: 'bpc-dbp', arg: 'diastolic', kind: 'number', required: true, label: 'Diastolic pressure', unit: 'mmHg' },
+      { dom: 'bpc-sbp', arg: 'systolic', kind: 'number', required: true, label: 'Systolic pressure', unit: 'mmHg', min: 50, max: 300 },
+      { dom: 'bpc-dbp', arg: 'diastolic', kind: 'number', required: true, label: 'Diastolic pressure', unit: 'mmHg', min: 20, max: 200 },
     ],
   },
 ];

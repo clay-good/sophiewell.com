@@ -11,8 +11,8 @@ export default [
     summary: 'SpO₂/FiO₂ (S/F) ratio with an estimated P/F ratio (Rice 2007): a noninvasive surrogate for P/F that avoids an arterial gas; lower values mark ARDS-range oxygenation.',
     compute: F.sfRatio,
     fields: [
-      { dom: 'sf-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO₂', unit: '%' },
-      { dom: 'sf-fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO₂ (fraction, 0.21–1.0)' },
+      { dom: 'sf-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO₂', unit: '%', min: 1, max: 100 },
+      { dom: 'sf-fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO₂ (fraction, 0.21–1.0)', min: 0.18, max: 1 },
     ],
   },
   {

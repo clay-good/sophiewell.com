@@ -43,7 +43,7 @@ export default [
     summary: 'Toxic-alcohol osmolar gap (Smithline 1976) with the AACT fomepizole indication: calculated osmolality, signed osmolar gap, and which indication limb is met.',
     compute: T.toxicAlcohol,
     fields: [
-      { dom: 'ta-osm', arg: 'measuredOsm', kind: 'number', required: true, label: 'Measured serum osmolality', unit: 'mOsm/kg' },
+      { dom: 'ta-osm', arg: 'measuredOsm', kind: 'number', required: true, label: 'Measured serum osmolality', unit: 'mOsm/kg', min: 100, max: 500 },
       { dom: 'ta-na', arg: 'sodium', kind: 'number', required: true, label: 'Serum sodium', unit: 'mEq/L' },
       // spec-v1103: required, like the osmolality and the sodium. Both are terms
       // in the calculated osmolality, so an omitted one widens the osmolar gap.

@@ -15,7 +15,7 @@ export default [
     summary: 'Restrictive transfusion threshold (AABB 2023): given a hemoglobin (g/dL) and a patient population, reports the population-specific restrictive threshold and whether the value is below it. 7 g/dL for stable hospitalized adults (incl. critically ill), stable critically ill children, and hematologic/oncologic patients; 7.5 cardiac surgery; 8 orthopedic surgery or preexisting cardiovascular disease. Acute coronary syndrome has no AABB numeric recommendation. Reports a guideline threshold comparison, not a transfusion order.',
     compute: F.transfusionThreshold,
     fields: [
-      { dom: 'tt-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'tt-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1, max: 30 },
       { dom: 'tt-pop', arg: 'population', kind: 'enum', required: true, values: ['stable-adult', 'cardiac-surgery', 'orthopedic-surgery', 'cardiovascular-disease', 'stable-child', 'heme-onc', 'acute-coronary-syndrome'], label: 'Patient population' },
       { dom: 'tt-sympt', arg: 'symptomatic', kind: 'bool', label: 'Active symptomatic anemia' },
     ],

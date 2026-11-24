@@ -21,8 +21,8 @@ export default [
     summary: 'Neutrophil-to-lymphocyte ratio: absolute neutrophil count / absolute lymphocyte count; a typical reference is roughly 1–3 and > 3 is often considered elevated.',
     compute: F.nlr,
     fields: [
-      { dom: 'nlr-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '×10⁹/L' },
-      { dom: 'nlr-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10⁹/L' },
+      { dom: 'nlr-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '×10⁹/L', min: 0.001, max: 500 },
+      { dom: 'nlr-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10⁹/L', min: 0.001, max: 500 },
     ],
   },
   {
@@ -30,8 +30,8 @@ export default [
     summary: 'Platelet-to-lymphocyte ratio: platelet count / absolute lymphocyte count, reported against a healthy reference interval of 46.8-218.0; there is no validated general cut-off.',
     compute: F.plr,
     fields: [
-      { dom: 'plr-plt', arg: 'plt', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
-      { dom: 'plr-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10⁹/L' },
+      { dom: 'plr-plt', arg: 'plt', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L', min: 0.1, max: 4000 },
+      { dom: 'plr-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10⁹/L', min: 0.001, max: 500 },
     ],
   },
   {
@@ -39,9 +39,9 @@ export default [
     summary: 'Systemic immune-inflammation index: platelets × neutrophils / lymphocytes; a composite inflammatory marker whose interpretation is context-dependent.',
     compute: F.sii,
     fields: [
-      { dom: 'sii-plt', arg: 'plt', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
-      { dom: 'sii-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '×10⁹/L' },
-      { dom: 'sii-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10⁹/L' },
+      { dom: 'sii-plt', arg: 'plt', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L', min: 0.1, max: 4000 },
+      { dom: 'sii-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '×10⁹/L', min: 0.001, max: 500 },
+      { dom: 'sii-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10⁹/L', min: 0.001, max: 500 },
     ],
   },
 ];

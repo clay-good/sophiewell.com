@@ -93,8 +93,12 @@ export function fieldSchema(fields) {
       // lesion type" typed only as `number` told an agent nothing about which
       // numbers mean anything, and 0 / 2 / -3 is not guessable.
       if (Array.isArray(f.values)) p.enum = f.values.map(Number);
-      if (Number.isFinite(f.min)) p.minimum = f.min;
-      if (Number.isFinite(f.max)) p.maximum = f.max;
+      // spec-v1777: `exclusiveMin` / `exclusiveMax` mark an edge the library itself refuses. Three fields
+      // declared an inclusive bound their library states as exclusive -- a pre-test probability "between 0
+      // and 100% (exclusive)", a bioavailability and a salt factor "between 0 (exclusive) and 1" -- so the
+      // schema said 0 was allowed and the library then turned it away.
+      if (Number.isFinite(f.min)) p[f.exclusiveMin ? 'exclusiveMinimum' : 'minimum'] = f.min;
+      if (Number.isFinite(f.max)) p[f.exclusiveMax ? 'exclusiveMaximum' : 'maximum'] = f.max;
     }
     else if (f.kind === 'bool') p.type = 'boolean';
     else if (f.kind === 'enum') { p.type = 'string'; p.enum = f.values.slice(); }
@@ -154,10 +158,16 @@ export function validateInputs(inputs, fields) {
       // spec-v1646: a field whose label states its range declares it, and a value
       // past it is refused. Libs met it three wrong ways: clamped (Aldrete 3 -> 2),
       // summed (CIWA nausea 8), or dropped (Roland-Morris 25 scored 0).
-      if ((Number.isFinite(f.min) && n < f.min) || (Number.isFinite(f.max) && n > f.max)) {
+      // spec-v1777: an exclusive edge is refused, and the sentence says which edge it was, so "must be
+      // from 0 to 1" cannot be read as permitting the 0 the library turns away.
+      const underMin = Number.isFinite(f.min) && (f.exclusiveMin ? n <= f.min : n < f.min);
+      const overMax = Number.isFinite(f.max) && (f.exclusiveMax ? n >= f.max : n > f.max);
+      if (underMin || overMax) {
+        const lo = `${f.min}${f.exclusiveMin ? ' (exclusive)' : ''}`;
+        const hi = `${f.max}${f.exclusiveMax ? ' (exclusive)' : ''}`;
         // spec-v1728: a one-sided range read "from 0 to undefined".
-        const range = Number.isFinite(f.min) && Number.isFinite(f.max) ? `from ${f.min} to ${f.max}`
-          : (Number.isFinite(f.min) ? `at least ${f.min}` : `at most ${f.max}`);
+        const range = Number.isFinite(f.min) && Number.isFinite(f.max) ? `from ${lo} to ${hi}`
+          : (Number.isFinite(f.min) ? `at least ${lo}` : `at most ${hi}`);
         return { valid: false, code: 'OUT_OF_RANGE', field: f.dom, message: `"${f.dom}" must be ${range}; got ${n}.` };
       }
     } else if (f.kind === 'bool') {

@@ -41,7 +41,7 @@ export default [
     summary: 'MYSEC-PM for post-PV/ET secondary myelofibrosis survival (Passamonti 2017): age plus anemia, circulating blasts, CALR-unmutated status, thrombocytopenia, and constitutional symptoms give a weighted survival score.',
     compute: F.mysecPm,
     fields: [
-      { dom: 'mysec-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'mysec-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 12, max: 110 },
       { dom: 'mysec-hb', arg: 'hb', kind: 'bool', required: false, label: 'Hemoglobin < 11 g/dL (+2)' },
       { dom: 'mysec-blasts', arg: 'blasts', kind: 'bool', required: false, label: 'Circulating blasts ≥ 3% (+2)' },
       { dom: 'mysec-nocalr', arg: 'noCalr', kind: 'bool', required: false, label: 'CALR-unmutated (+2)' },

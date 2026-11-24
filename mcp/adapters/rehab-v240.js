@@ -38,8 +38,8 @@ export default [
     fields: [
       { dom: 'smwd-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
       { dom: 'smwd-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
-      { dom: 'smwd-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'smwd-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'smwd-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 18, max: 110 },
+      { dom: 'smwd-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 20, max: 300 },
     ],
   },
   {

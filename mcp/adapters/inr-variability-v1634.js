@@ -10,7 +10,7 @@ export default [
     compute: IV.inrVariability,
     fields: [
       { dom: 'iv-series', arg: 'series', kind: 'string', required: true, label: 'INRs, one per line: INR then weeks since the previous INR' },
-      { dom: 'iv-target', arg: 'target', kind: 'number', required: true, label: 'Target INR' },
+      { dom: 'iv-target', arg: 'target', kind: 'number', required: true, label: 'Target INR', min: 1.5, max: 4.5 },
     ],
   },
 ];

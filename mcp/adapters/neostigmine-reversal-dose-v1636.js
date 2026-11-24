@@ -9,7 +9,7 @@ export default [
     summary: 'Neostigmine dose to reverse neuromuscular blockade, as the BLOXIVERZ label states it. It gives 0.03 or 0.07 mg/kg by the train-of-four response and the blocker\'s half-life, the mL to draw, and the label maximum (0.07 mg/kg or 5 mg, whichever is less). When the two criteria point to different rows both doses are shown. Under 10% first twitch it gives no dose.',
     compute: (args) => NS.neostigmineReversalDose(args, new Date()),
     fields: [
-      { dom: 'nrd-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'nrd-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.4, max: 500 },
       { dom: 'nrd-twitch', arg: 'twitch', kind: 'enum', required: true, values: NS.TWITCH.map((x) => x.value), label: 'Train-of-four response' },
       { dom: 'nrd-half-life', arg: 'halfLife', kind: 'enum', required: true, values: NS.HALF_LIFE.map((x) => x.value), label: 'Half-life class of the blocker' },
       { dom: 'nrd-conc', arg: 'concentration', kind: 'enum', required: true, values: NS.CONCENTRATIONS.map((x) => x.value), label: 'Concentration' },

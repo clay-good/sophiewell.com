@@ -30,8 +30,8 @@ export default [
     summary: 'Osteoporosis Self-assessment Tool (Koh LK, et al. Osteoporos Int 2001) = (weight kg - age years) x 0.2 truncated to an integer; > -1 low, -1 to -4 moderate, < -4 high risk of low bone mineral density.',
     compute: F.ost,
     fields: [
-      { dom: 'ost-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'ost-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'ost-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 25, max: 300 },
+      { dom: 'ost-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 18, max: 120 },
     ],
   },
   {
@@ -39,7 +39,7 @@ export default [
     summary: 'Five-times sit-to-stand test (Csuka M, McCarty DJ. Am J Med 1985): the time in seconds to complete five sit-to-stand cycles with arms folded; >= 12 s indicates increased fall risk and >= 15 s recurrent-faller risk.',
     compute: F.fiveTimesSitToStand,
     fields: [
-      { dom: 'ftsts-time', arg: 'time', kind: 'number', required: true, label: 'Time for five sit-to-stand cycles', unit: 'seconds' },
+      { dom: 'ftsts-time', arg: 'time', kind: 'number', required: true, label: 'Time for five sit-to-stand cycles', unit: 'seconds', min: 1, max: 120 },
     ],
   },
 ];

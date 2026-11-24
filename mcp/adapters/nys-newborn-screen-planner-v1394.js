@@ -10,7 +10,7 @@ export default [
     compute: NBS.nysNewbornScreenPlanner,
     fields: [
       { dom: 'nbs-birth', arg: 'birth', kind: 'string', required: true, label: 'Birth (YYYY-MM-DDTHH:MM)' },
-      { dom: 'nbs-weight', arg: 'weightG', kind: 'number', required: true, label: 'Birth weight (g)' },
+      { dom: 'nbs-weight', arg: 'weightG', kind: 'number', required: true, label: 'Birth weight (g)', min: 200, max: 7000 },
       { dom: 'nbs-nicu', arg: 'nicu', kind: 'enum', required: true, label: 'Admitted to the NICU', values: ['yes', 'no'] },
       { dom: 'nbs-first', arg: 'first', kind: 'string', label: 'First specimen drawn (YYYY-MM-DDTHH:MM)' },
       { dom: 'nbs-discharge', arg: 'discharge', kind: 'string', label: 'Discharged (YYYY-MM-DDTHH:MM)' },

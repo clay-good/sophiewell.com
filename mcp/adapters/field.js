@@ -69,7 +69,7 @@ export default [
     summary: 'Burn resuscitation fluid: the Parkland (4 mL/kg/%TBSA) and modified Brooke (2 mL/kg/%TBSA) formulas from weight and burn surface area, each split into the first-8-hour and subsequent-16-hour volumes; an optional hours-since-injury shows the remaining volume owed in the first-8-hour window.',
     compute: F.burnFluid,
     fields: [
-      { dom: 'bf-w', arg: 'weightKg', kind: 'number', required: true, label: 'Patient weight', unit: 'kg' },
+      { dom: 'bf-w', arg: 'weightKg', kind: 'number', required: true, label: 'Patient weight', unit: 'kg', min: 0.2, max: 400 },
       { dom: 'bf-bsa', arg: 'tbsaPercent', kind: 'number', required: true, label: 'Burn surface area', unit: '% TBSA' },
       { dom: 'bf-h', arg: 'hoursSinceInjury', kind: 'number', label: 'Hours since injury (optional, 0-8)' },
     ],
@@ -100,7 +100,7 @@ export default [
     summary: 'Weight-based pediatric resuscitation dosing: the per-dose amount for a chosen medication recipe (epinephrine IV/IO or IM, atropine, amiodarone, naloxone, D10 dextrose, normal-saline bolus) from the patient weight, with the per-dose cap applied when the weight-based dose exceeds it.',
     compute: F.pedsDose,
     fields: [
-      { dom: 'pwd-w', arg: 'weightKg', kind: 'number', required: true, label: 'Patient weight', unit: 'kg' },
+      { dom: 'pwd-w', arg: 'weightKg', kind: 'number', required: true, label: 'Patient weight', unit: 'kg', min: 0.2, max: 250 },
       { dom: 'pwd-r', arg: 'recipe', kind: 'enum', values: ['epinephrine-iv-io', 'epinephrine-im-anaphyl', 'atropine', 'amiodarone', 'naloxone', 'dextrose-d10', 'fluid-bolus-ns'], required: true, label: 'Medication recipe' },
     ],
   },

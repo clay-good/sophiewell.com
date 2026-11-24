@@ -10,9 +10,9 @@ export default [
     summary: 'Whether a member meets the Part D medication therapy management targeting criteria. Group 1 needs the plan\'s minimum chronic diseases and Part D drugs and a projected annual drug cost at or above CMS\'s threshold ($1,623 for 2025, $1,276 for 2026, $1,340 for 2027); group 2 is any at-risk beneficiary (42 CFR 423.153(d)(2)).',
     compute: MT.mtmEligibilityCheck,
     fields: [
-      { dom: 'mtm-year', arg: 'planYear', kind: 'number', required: true, label: 'Plan year' },
-      { dom: 'mtm-min-dis', arg: 'planMinDiseases', kind: 'number', required: true, label: 'Plan minimum number of chronic diseases (2 or 3)' },
-      { dom: 'mtm-min-drugs', arg: 'planMinDrugs', kind: 'number', required: true, label: 'Plan minimum number of Part D drugs (2 to 8)' },
+      { dom: 'mtm-year', arg: 'planYear', kind: 'number', required: true, label: 'Plan year', min: 2025, max: 2100 },
+      { dom: 'mtm-min-dis', arg: 'planMinDiseases', kind: 'number', required: true, label: 'Plan minimum number of chronic diseases (2 or 3)', min: 2, max: 10 },
+      { dom: 'mtm-min-drugs', arg: 'planMinDrugs', kind: 'number', required: true, label: 'Plan minimum number of Part D drugs (2 to 8)', min: 2, max: 20 },
       { dom: 'mtm-dis', arg: 'memberDiseases', kind: 'number', required: true, label: 'Member chronic diseases that the plan counts' },
       { dom: 'mtm-drugs', arg: 'memberDrugs', kind: 'number', required: true, label: 'Member Part D drugs that the plan counts' },
       { dom: 'mtm-cost', arg: 'annualCost', kind: 'number', required: true, label: 'Projected annual covered Part D drug cost', unit: 'dollars' },

@@ -8,8 +8,8 @@ export default [
     summary: 'Classifies a knee into one of the nine CPAK phenotypes from the medial proximal tibial and lateral distal femoral angles. It computes the arithmetic HKA (MPTA minus LDFA) and the joint line obliquity (their sum).',
     compute: CP.cpak,
     fields: [
-      { dom: 'cpak-mpta', arg: 'mpta', kind: 'number', required: true, label: 'Medial proximal tibial angle (MPTA)', unit: 'degrees' },
-      { dom: 'cpak-ldfa', arg: 'ldfa', kind: 'number', required: true, label: 'Lateral distal femoral angle (LDFA)', unit: 'degrees' },
+      { dom: 'cpak-mpta', arg: 'mpta', kind: 'number', required: true, label: 'Medial proximal tibial angle (MPTA)', unit: 'degrees', min: 60, max: 120 },
+      { dom: 'cpak-ldfa', arg: 'ldfa', kind: 'number', required: true, label: 'Lateral distal femoral angle (LDFA)', unit: 'degrees', min: 60, max: 120 },
     ],
   },
 ];

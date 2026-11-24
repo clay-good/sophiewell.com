@@ -12,8 +12,8 @@ export default [
     summary: 'HCM Risk-SCD (O’Mahony 2014): the ESC 5-year sudden-cardiac-death model for hypertrophic cardiomyopathy from age, maximal LV wall thickness, left-atrial diameter, LVOT gradient, family history of SCD, non-sustained VT, and unexplained syncope.',
     compute: F.hcmRiskScd,
     fields: [
-      { dom: 'hcm-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'hcm-mwt', arg: 'wallThickness', kind: 'number', required: true, label: 'Maximal LV wall thickness', unit: 'mm' },
+      { dom: 'hcm-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 16, max: 120 },
+      { dom: 'hcm-mwt', arg: 'wallThickness', kind: 'number', required: true, label: 'Maximal LV wall thickness', unit: 'mm', min: 5, max: 35 },
       { dom: 'hcm-la', arg: 'laDiameter', kind: 'number', required: true, label: 'Left-atrial diameter', unit: 'mm' },
       { dom: 'hcm-lvot', arg: 'lvotGradient', kind: 'number', required: true, label: 'Maximal (rest/Valsalva) LVOT gradient', unit: 'mmHg' },
       { dom: 'hcm-fhx', arg: 'fhxScd', kind: 'bool', required: false, label: 'Family history of sudden cardiac death' },
@@ -26,9 +26,9 @@ export default [
     summary: 'CHARGE-AF (Alonso 2013): a 5-year incident-atrial-fibrillation risk model from age, height, weight, blood pressure, race, smoking, antihypertensive use, diabetes, heart failure, and prior MI; ≥ 5% is often used to select for AF screening.',
     compute: F.chargeAf,
     fields: [
-      { dom: 'charge-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'charge-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
-      { dom: 'charge-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'charge-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 18, max: 120 },
+      { dom: 'charge-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 100, max: 250 },
+      { dom: 'charge-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 20, max: 400 },
       { dom: 'charge-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
       { dom: 'charge-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg' },
       { dom: 'charge-white', arg: 'white', kind: 'bool', required: false, label: 'White race' },

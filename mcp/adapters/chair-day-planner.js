@@ -8,7 +8,7 @@ export default [
     summary: 'An infusion center\'s chair day, scheduled first-fit. Each appointment\'s premedication, infusion and observation time per chair, the ones that do not fit, and utilization.',
     compute: CD.chairDayPlanner,
     fields: [
-      { dom: 'cdp-chairs', arg: 'chairs', kind: 'number', required: true, label: 'Chairs' },
+      { dom: 'cdp-chairs', arg: 'chairs', kind: 'number', required: true, label: 'Chairs', min: 1, max: 200 },
       { dom: 'cdp-open', arg: 'open', kind: 'string', required: true, label: 'Opening time (HH:MM)' },
       { dom: 'cdp-close', arg: 'close', kind: 'string', required: true, label: 'Closing time (HH:MM)' },
       { dom: 'cdp-appts', arg: 'appointments', kind: 'string', required: true, label: 'Appointments, one per line: reference, chair minutes, premedication minutes, observation minutes, preferred start (HH:MM, optional)' },

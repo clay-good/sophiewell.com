@@ -13,7 +13,7 @@ export default [
     summary: 'Raschke 1993 weight-based heparin nomogram: VTE 80 u/kg bolus + 18 u/kg/h or ACS 60 u/kg (max 4000) + 12 u/kg/h (max 1000), with aPTT-driven titration steps.',
     compute: F.heparinNomogram,
     fields: [
-      { dom: 'hep-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'hep-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 1, max: 400 },
       { dom: 'hep-ind', arg: 'indication', kind: 'enum', values: ['vte', 'acs'], required: true, label: 'Indication' },
       // spec-v1152: this label already said "(optional)" beside `required: true`,
       // and the view reads it with `optNum`. The weight-based initial bolus and rate
@@ -27,13 +27,13 @@ export default [
     summary: 'AUC-guided vancomycin (ASHP/IDSA 2020, target AUC24/MIC 400-600) by the first-order two-level Sawchuk-Zaske method: k, half-life, extrapolated Cmax/Cmin, AUC24, and AUC24/MIC. With the current daily dose and a target AUC24 it also gives the dose by proportion (dose × target ÷ measured), which assumes unchanged clearance.',
     compute: F.vancAuc,
     fields: [
-      { dom: 'va-peak', arg: 'peak', kind: 'number', required: true, label: 'Peak level', unit: 'mg/L' },
+      { dom: 'va-peak', arg: 'peak', kind: 'number', required: true, label: 'Peak level', unit: 'mg/L', min: 0.1, max: 200 },
       { dom: 'va-tpeak', arg: 'tPeak', kind: 'number', required: true, label: 'Peak draw time after infusion end', unit: 'h' },
-      { dom: 'va-trough', arg: 'trough', kind: 'number', required: true, label: 'Trough level', unit: 'mg/L' },
+      { dom: 'va-trough', arg: 'trough', kind: 'number', required: true, label: 'Trough level', unit: 'mg/L', min: 0.01, max: 200 },
       { dom: 'va-ttrough', arg: 'tTrough', kind: 'number', required: true, label: 'Trough draw time after infusion end', unit: 'h' },
-      { dom: 'va-tinf', arg: 'tInf', kind: 'number', required: true, label: 'Infusion duration', unit: 'h' },
-      { dom: 'va-tau', arg: 'tau', kind: 'number', required: true, label: 'Dosing interval', unit: 'h' },
-      { dom: 'va-mic', arg: 'mic', kind: 'number', required: true, label: 'MIC', unit: 'mg/L' },
+      { dom: 'va-tinf', arg: 'tInf', kind: 'number', required: true, label: 'Infusion duration', unit: 'h', min: 0.1, max: 12 },
+      { dom: 'va-tau', arg: 'tau', kind: 'number', required: true, label: 'Dosing interval', unit: 'h', min: 1, max: 48 },
+      { dom: 'va-mic', arg: 'mic', kind: 'number', required: true, label: 'MIC', unit: 'mg/L', min: 0.1, max: 16 },
       { dom: 'va-dose', arg: 'dailyDose', kind: 'number', label: 'Current daily dose (optional; to revise it)', unit: 'mg/day' },
       { dom: 'va-target', arg: 'targetAuc', kind: 'number', label: 'Target AUC24 (with a daily dose)', unit: 'mg·h/L' },
     ],
@@ -44,7 +44,7 @@ export default [
     compute: F.aminoglycoside,
     fields: [
       { dom: 'ag-drug', arg: 'drug', kind: 'enum', values: ['gentamicin', 'tobramycin', 'amikacin'], required: true, label: 'Drug' },
-      { dom: 'ag-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Dosing weight', unit: 'kg' },
+      { dom: 'ag-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Dosing weight', unit: 'kg', min: 1, max: 400 },
       { dom: 'ag-crcl', arg: 'crCl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
       { dom: 'ag-dialysis', arg: 'dialysis', kind: 'bool', required: false, label: 'On dialysis' },
     ],
@@ -58,7 +58,7 @@ export default [
       return r == null ? r : { ...r, hoursPostIngestion: a.hours, levelUgMl: a.levelUgMl, validWindowHours: { from: 4, to: 24 } };
     },
     fields: [
-      { dom: 'apap-h', arg: 'hours', kind: 'number', required: true, label: 'Hours since single acute ingestion (4-24 h)', unit: 'h' },
+      { dom: 'apap-h', arg: 'hours', kind: 'number', required: true, label: 'Hours since single acute ingestion (4-24 h)', unit: 'h', min: 4, max: 24 },
       { dom: 'apap-lvl', arg: 'levelUgMl', kind: 'number', required: true, label: 'Serum acetaminophen', unit: 'ug/mL' },
     ],
   },
@@ -88,8 +88,8 @@ export default [
     },
     fields: [
       { dom: 'la-agent', arg: 'agent', kind: 'enum', values: ['lidocaine', 'lidocaine-epi', 'bupivacaine', 'bupivacaine-epi', 'ropivacaine'], required: true, label: 'Agent' },
-      { dom: 'la-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'la-conc', arg: 'concPct', kind: 'number', required: true, label: 'Solution concentration', unit: '%' },
+      { dom: 'la-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 1, max: 400 },
+      { dom: 'la-conc', arg: 'concPct', kind: 'number', required: true, label: 'Solution concentration', unit: '%', min: 0.01, max: 10 },
     ],
   },
   {
@@ -103,7 +103,7 @@ export default [
     fields: [
       { dom: 'mg-load', arg: 'loadG', kind: 'enum', values: ['4', '6'], required: true, label: 'Loading dose', to: Number },
       { dom: 'mg-maint', arg: 'maintGPerH', kind: 'enum', values: ['2', '1'], required: true, label: 'Maintenance rate', to: Number },
-      { dom: 'mg-conc', arg: 'concGPerMl', kind: 'number', required: true, label: 'Bag concentration', unit: 'g/mL' },
+      { dom: 'mg-conc', arg: 'concGPerMl', kind: 'number', required: true, label: 'Bag concentration', unit: 'g/mL', min: 0.001, max: 0.5 },
       { dom: 'mg-renal', arg: 'renalImpairment', kind: 'bool', required: false, label: 'Renal impairment' },
     ],
   },
@@ -115,9 +115,9 @@ export default [
       return r == null ? r : { ...r, lockoutMin: a.lockoutMin };
     },
     fields: [
-      { dom: 'pca-conc', arg: 'concMgPerMl', kind: 'number', required: true, label: 'Concentration', unit: 'mg/mL' },
+      { dom: 'pca-conc', arg: 'concMgPerMl', kind: 'number', required: true, label: 'Concentration', unit: 'mg/mL', min: 0.001, max: 100 },
       { dom: 'pca-demand', arg: 'demandMg', kind: 'number', required: true, label: 'Demand (bolus) dose', unit: 'mg' },
-      { dom: 'pca-lockout', arg: 'lockoutMin', kind: 'number', required: true, label: 'Lockout interval', unit: 'min' },
+      { dom: 'pca-lockout', arg: 'lockoutMin', kind: 'number', required: true, label: 'Lockout interval', unit: 'min', min: 1, max: 120 },
       { dom: 'pca-basal', arg: 'basalMgPerH', kind: 'number', required: false, label: 'Continuous (basal) rate', unit: 'mg/h', to: (v) => v || 0 },
       { dom: 'pca-limit', arg: 'oneHourLimitMg', kind: 'number', required: false, label: '1-hour limit', unit: 'mg' },
     ],
@@ -130,7 +130,7 @@ export default [
       return r == null ? r : { ...r, weightKg: a.weightKg, concentrationMgPerMl: 100 };
     },
     fields: [
-      { dom: 'sug-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Actual body weight', unit: 'kg' },
+      { dom: 'sug-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Actual body weight', unit: 'kg', min: 1, max: 400 },
       { dom: 'sug-depth', arg: 'depth', kind: 'enum', values: ['t2', 'ptc', 'immediate'], required: true, label: 'Depth of block' },
     ],
   },
@@ -146,8 +146,8 @@ export default [
     },
     fields: [
       { dom: 'kp-agent', arg: 'agent', kind: 'enum', values: ['ketamine', 'propofol', 'ketofol'], required: true, label: 'Agent' },
-      { dom: 'kp-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'kp-mgkg', arg: 'mgkg', kind: 'number', required: true, label: 'Selected dose', unit: 'mg/kg' },
+      { dom: 'kp-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 1, max: 400 },
+      { dom: 'kp-mgkg', arg: 'mgkg', kind: 'number', required: true, label: 'Selected dose', unit: 'mg/kg', min: 0.1, max: 5 },
     ],
   },
   {
@@ -155,7 +155,7 @@ export default [
     summary: 'Pediatric dehydration plan (Holliday-Segar 4-2-1): maintenance mL/h, total deficit = % dehydration x kg x 10, and first-8-h / next-16-h rates (maintenance + half deficit each).',
     compute: F.pedsFluidDeficit,
     fields: [
-      { dom: 'pfd-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'pfd-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.5, max: 100 },
       { dom: 'pfd-pct', arg: 'dehydrationPct', kind: 'number', required: true, label: 'Estimated dehydration', unit: '%' },
     ],
   },
@@ -167,7 +167,7 @@ export default [
       return r == null ? r : { ...r, weightKg: a.weightKg, mlPerKg: a.mlPerKg };
     },
     fields: [
-      { dom: 'pr-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'pr-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.5, max: 150 },
       { dom: 'pr-ml', arg: 'mlPerKg', kind: 'enum', values: ['20', '10'], required: true, label: 'Bolus size', to: Number },
       { dom: 'pr-ctx', arg: 'context', kind: 'enum', values: ['sepsis', 'cardiac-dka'], required: true, label: 'Context' },
     ],

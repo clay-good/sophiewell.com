@@ -12,7 +12,7 @@ export default [
       { dom: 'pb-price', arg: 'benchmarkPrice', kind: 'number', required: true, label: 'Benchmark price per unit', unit: 'USD' },
       { dom: 'pb-pct', arg: 'percent', kind: 'number', required: false, label: 'Contract percentage (negative for a discount)', unit: '%' },
       { dom: 'pb-fee', arg: 'fee', kind: 'number', required: false, label: 'Dispensing fee', unit: 'USD' },
-      { dom: 'pb-qty', arg: 'quantity', kind: 'number', required: true, label: 'Quantity (units)' },
+      { dom: 'pb-qty', arg: 'quantity', kind: 'number', required: true, label: 'Quantity (units)', min: 0.001, max: 1000000 },
       { dom: 'pb-paid', arg: 'paid', kind: 'number', required: true, label: 'Amount paid (plan plus patient)', unit: 'USD' },
       { dom: 'pb-cost', arg: 'cost', kind: 'number', required: false, label: 'Acquisition cost per unit', unit: 'USD' },
     ],

@@ -15,8 +15,8 @@ export default [
       { dom: 'galad-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
       { dom: 'galad-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'galad-afpl3', arg: 'afpL3', kind: 'number', required: true, label: 'AFP-L3', unit: '%' },
-      { dom: 'galad-afp', arg: 'afp', kind: 'number', required: true, label: 'AFP', unit: 'ng/mL' },
-      { dom: 'galad-dcp', arg: 'dcp', kind: 'number', required: true, label: 'DCP / PIVKA-II', unit: 'mAU/mL' },
+      { dom: 'galad-afp', arg: 'afp', kind: 'number', required: true, label: 'AFP', unit: 'ng/mL', min: 0.0001, max: 5000000 },
+      { dom: 'galad-dcp', arg: 'dcp', kind: 'number', required: true, label: 'DCP / PIVKA-II', unit: 'mAU/mL', min: 0.0001, max: 5000000 },
     ],
   },
   {

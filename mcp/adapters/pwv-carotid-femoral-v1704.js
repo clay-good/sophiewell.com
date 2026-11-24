@@ -13,7 +13,7 @@ export default [
       { dom: 'pwv-direct', arg: 'directMm', kind: 'number', required: false, label: 'Direct carotid-femoral distance (mm)' },
       { dom: 'pwv-nf', arg: 'notchFemoralMm', kind: 'number', required: false, label: 'Sternal notch to femoral (mm)' },
       { dom: 'pwv-nc', arg: 'notchCarotidMm', kind: 'number', required: false, label: 'Sternal notch to carotid (mm)' },
-      { dom: 'pwv-tt', arg: 'transitMs', kind: 'number', required: true, label: 'Transit time (ms)' },
+      { dom: 'pwv-tt', arg: 'transitMs', kind: 'number', required: true, label: 'Transit time (ms)', min: 10, max: 500 },
     ]
   },
 ];

@@ -13,7 +13,7 @@ export default [
     summary: 'Bonacini cirrhosis discriminant score (Bonacini M, et al. Am J Gastroenterol 1997): platelets, ALT/AST ratio, and INR each binned to points for a 0-11 total, where <= 3 makes cirrhosis unlikely and >= 8 likely.',
     compute: F.bonaciniCds,
     fields: [
-      { dom: 'bon-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count', unit: '10^3/uL' },
+      { dom: 'bon-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count', unit: '10^3/uL', min: 1, max: 4000 },
       { dom: 'bon-ratio', arg: 'altAstRatio', kind: 'number', required: true, label: 'ALT / AST ratio' },
       { dom: 'bon-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
     ],
@@ -24,9 +24,9 @@ export default [
     compute: F.guci,
     fields: [
       { dom: 'guci-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L' },
-      { dom: 'guci-uln', arg: 'astUln', kind: 'number', required: true, label: 'AST upper limit of normal', unit: 'U/L' },
+      { dom: 'guci-uln', arg: 'astUln', kind: 'number', required: true, label: 'AST upper limit of normal', unit: 'U/L', min: 5, max: 100 },
       { dom: 'guci-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
-      { dom: 'guci-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L' },
+      { dom: 'guci-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L', min: 1, max: 4000 },
     ],
   },
   {

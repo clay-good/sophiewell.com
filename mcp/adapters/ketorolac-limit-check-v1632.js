@@ -11,8 +11,8 @@ export default [
     compute: KT.ketorolacLimitCheck,
     fields: [
       { dom: 'ket-route', arg: 'route', kind: 'enum', required: true, values: KT.ROUTES.map((r) => r.value), label: 'Route and regimen' },
-      { dom: 'ket-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'ket-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'ket-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 17, max: 120 },
+      { dom: 'ket-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 20, max: 400 },
       { dom: 'ket-renal', arg: 'renal', kind: 'enum', required: true, values: KT.RENAL.map((r) => r.value), label: 'Renal impairment: no, impaired or advanced' },
       { dom: 'ket-days', arg: 'daysSoFar', kind: 'number', required: true, label: 'Days of ketorolac so far, any route', unit: 'days' },
       { dom: 'ket-mg', arg: 'mg24h', kind: 'number', label: 'Ketorolac in the last 24 hours (multiple dose)', unit: 'mg' },

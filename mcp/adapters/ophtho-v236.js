@@ -30,7 +30,7 @@ export default [
     summary: 'Percent tissue altered (Santhiago 2014) = (flap thickness + ablation depth) / central corneal thickness x 100; PTA >= 40% is the strongest single predictor of post-LASIK ectasia.',
     compute: F.percentTissueAltered,
     fields: [
-      { dom: 'pta-flap', arg: 'flap', kind: 'number', required: true, label: 'Flap thickness', unit: 'um' },
+      { dom: 'pta-flap', arg: 'flap', kind: 'number', required: true, label: 'Flap thickness', unit: 'um', min: 1, max: 400 },
       { dom: 'pta-abl', arg: 'ablation', kind: 'number', required: true, label: 'Ablation depth', unit: 'um' },
       { dom: 'pta-cct', arg: 'cct', kind: 'number', required: true, label: 'Central corneal thickness', unit: 'um' },
     ],
@@ -41,8 +41,8 @@ export default [
     compute: F.randlemanErss,
     fields: [
       { dom: 'er-topo', arg: 'topo', kind: 'number', required: true, label: 'Topography grade (0-4)', values: ['0', '2', '3', '4'] },
-      { dom: 'er-rsb', arg: 'rsb', kind: 'number', required: true, label: 'Residual stromal bed', unit: 'um' },
-      { dom: 'er-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'er-rsb', arg: 'rsb', kind: 'number', required: true, label: 'Residual stromal bed', unit: 'um', min: 100, max: 500 },
+      { dom: 'er-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 10, max: 90 },
       { dom: 'er-cct', arg: 'cct', kind: 'number', required: true, label: 'Central corneal thickness', unit: 'um' },
       { dom: 'er-mrse', arg: 'mrse', kind: 'number', required: true, label: 'Manifest refraction spherical equivalent', unit: 'D' },
     ],

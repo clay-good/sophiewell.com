@@ -9,7 +9,7 @@ export default [
     summary: 'The next fomepizole dose and its time, as the label states them. Loading dose 15 mg/kg, then 10 mg/kg every 12 hours for 4 doses, then 15 mg/kg every 12 hours; every 4 hours during hemodialysis, with the label\'s rules at the start and end of dialysis (no dose, half a dose, or the next scheduled dose, by the time since the last dose).',
     compute: (args) => FO.fomepizoleSchedule(args, new Date()),
     fields: [
-      { dom: 'fms-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'fms-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.4, max: 300 },
       { dom: 'fms-given', arg: 'dosesGiven', kind: 'number', required: true, label: 'Doses given so far, counting the loading dose (0 if none)' },
       { dom: 'fms-dialysis', arg: 'dialysis', kind: 'enum', required: true, values: FO.DIALYSIS.map((x) => x.value), label: 'Hemodialysis' },
       { dom: 'fms-last', arg: 'lastDoseTime', kind: 'string', label: 'Time of the last dose (YYYY-MM-DDTHH:MM; needed once a dose is given)' },
