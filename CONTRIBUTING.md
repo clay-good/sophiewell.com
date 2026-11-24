@@ -340,7 +340,7 @@ diastolic, total and HDL cholesterol, two dates) and lists tools that still answ
 ```bash
 node scripts/probe-absent-example-field.mjs  # 863 number fields are ABSENT from their worked example, so the three sweeps above skip or defer them; this one fills each in a configuration that reads it, judged ledger and all (docs/spec-v1778.md)
 node scripts/probe-negative-as-zero.mjs    # judged ledger: it prints nothing until a NEW row appears (docs/spec-v1775.md)
-node scripts/probe-order-swapped.mjs
+node scripts/probe-order-swapped.mjs    # judged ledger; for a DATE pair the oracle is an IDENTICAL answer, since a swap that moves the answer is the tool reading a different chronology and saying so (docs/spec-v1784.md)
 node scripts/probe-impossible-dates.mjs   # 30 February, month 13, 1850, 25:00 (docs/spec-v1750.md)
 node scripts/probe-half-step.mjs          # an ordinal item or count scored at x + 0.5, judged ledger and all (docs/spec-v1755.md, docs/spec-v1775.md)
 node scripts/probe-dated-claims.mjs       # a date that has passed, still written as "is due by" or "proposed" (docs/spec-v1757.md); judged ledger and two structural rules -- a date still ahead in the same clause is what the tense is about, and a worked example is dated by its own inputs (docs/spec-v1782.md)

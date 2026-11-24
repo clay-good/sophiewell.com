@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1a3db06771cb29c8`
-Generated: 2026-11-24T05:23:00.395Z
+Build ID: `493493ca324d4608`
+Generated: 2026-11-24T06:12:31.715Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -299,7 +299,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
 | `lib/clinical-v4.js` | 23198 | `ae4097c58ac0f6953c8b43bd52609f50c77a3deff416457487aa830c147723a7` |
 | `lib/clinical-v5.js` | 29146 | `2a77f1af42af37dcad8b95924e34b90751b267ad81d549b3e9e202575714a88d` |
-| `lib/clinical-v6.js` | 19685 | `98d5426cf466b669c8e543e50a57dca2d49c50cda5e174a14e104c1ff021baea` |
+| `lib/clinical-v6.js` | 20537 | `205e779ec41e51ce17f581f436655e781f666e6b651aad8e8715d862ee2d912f` |
 | `lib/clinical-v7.js` | 30046 | `ee1ea6e25951b69eccca57fd70cd4dbc695c885999f4d06f5ac31d9f4cc8e0dd` |
 | `lib/clinical-v8.js` | 30255 | `69ec2488af02c8e86bf388f85f260586a6470e46e088804e5eef953752a4c17e` |
 | `lib/clinical.js` | 31971 | `49ad311d75f2d29bd87387e1110d7b9b44ed8e9b2a8b6762300a8abeb96b8a38` |

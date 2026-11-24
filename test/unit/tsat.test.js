@@ -34,3 +34,21 @@ test('tsat overload pattern: TSAT > 50%', () => {
 test('tsat rejects impossible input', () => {
   assert.throws(() => tsat({ ironUgDl: 50, tibcUgDl: 0 }), /tibc\sug\sdl/);
 });
+
+// spec-v1784: with the iron and TIBC the wrong way round -- iron 450, TIBC 30 -- this reported "TSAT 1500%"
+// and offered a hemochromatosis work-up. TIBC is a capacity, so a saturation above 100% means the iron is
+// above the capacity to bind it.
+test('a saturation above 100% says the iron is above the binding capacity (spec-v1784)', () => {
+  const swapped = tsat({ ironUgDl: 450, tibcUgDl: 30 });
+  assert.equal(swapped.tsat, 1500);
+  assert.match(swapped.pattern, /above the total iron-binding capacity/);
+  assert.doesNotMatch(swapped.pattern, /hemochromatosis/);
+  // Not refused: the serum iron genuinely can exceed TIBC in acute iron ingestion, and the arithmetic stays.
+  assert.notEqual(swapped.valid, false);
+  // Exactly 100% is a real saturation, so the overload band still reads as before.
+  assert.match(tsat({ ironUgDl: 300, tibcUgDl: 300 }).pattern, /iron-overload pattern/);
+  assert.match(tsat({ ironUgDl: 301, tibcUgDl: 300 }).pattern, /above the total iron-binding capacity/);
+  // And the ordinary readings are untouched.
+  assert.match(tsat({ ironUgDl: 30, tibcUgDl: 450 }).pattern, /TSAT <20%/);
+  assert.match(tsat({ ironUgDl: 100, tibcUgDl: 400 }).pattern, /within the usual reference range/);
+});

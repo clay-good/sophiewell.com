@@ -50,6 +50,14 @@ const FINDERS = [
     minJudged: 2,
   },
   {
+    probe: 'probe-order-swapped.mjs',
+    what: 'two values whose order is fixed by definition, entered the other way round and answered as if they were not',
+    fix: 'Refuse the pair with orderFault in lib/num.js (docs/spec-v1737.md), say what the reading means '
+      + '(docs/spec-v1784.md), or add it to JUDGED in the finder with the reason either order is a real situation',
+    informational: ['--all lists'],
+    minJudged: 6,
+  },
+  {
     probe: 'probe-impossible-as-zero.mjs',
     what: 'an impossible value scored exactly as 0 on the path the page takes',
     fix: 'Refuse it where the ceiling already is (docs/spec-v1783.md), or add it to JUDGED in the finder with '
