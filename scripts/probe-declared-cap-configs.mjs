@@ -34,6 +34,19 @@ import { REGISTRY } from '../mcp/catalog.js';
 import { fieldRange } from '../mcp/fields.js';
 
 const ONLY = process.env.TOOLS ? new Set(process.env.TOOLS.split(',')) : null;
+const ALL = process.argv.includes('--all');
+
+// Rows read and judged, with their reason (docs/spec-v1780.md). The report prints only what is not here, so
+// a new row is a decision someone takes rather than a line in a report that already prints a known one
+// (spec-v1775's rule).
+const JUDGED = {
+  // The library converts a sub-1 value to months and applies the APLS 0-12 month formula, which is the
+  // right answer for an infant's age typed into the years box. Closing the gap means either widening the
+  // declaration and its label to 0-14, or refusing a fallback that was added on purpose -- a reader-facing
+  // choice, left for the owner.
+  'peds-weight-est:pw-years:min': 'the years field deliberately falls back to the APLS months formula below 1, and the label states 1-14: widening it is a reader-facing choice (docs/spec-v1780.md)',
+};
+const judgedSeen = new Set();
 
 const answers = (e, inputs) => {
   let r;
@@ -77,7 +90,14 @@ for (const [id, e] of REGISTRY) {
       configurations += 1;
       for (const [side, declared, v] of probes) {
         if (!answers(e, { ...cfg, [f.dom]: String(v) })) continue;
-        rows.push(`${id}\t${f.dom}\t${side}=${declared}\tanswers at ${Number(v.toPrecision(8))}\twhen ${label}`);
+        const key = `${id}:${f.dom}:${side}`;
+        const row = `${id}\t${f.dom}\t${side}=${declared}\tanswers at ${Number(v.toPrecision(8))}\twhen ${label}`;
+        if (JUDGED[key]) {
+          judgedSeen.add(key);
+          if (ALL) console.log(`JUDGED\t${row}\t${JUDGED[key]}`);
+          continue;
+        }
+        rows.push(row);
       }
     }
   }
@@ -85,5 +105,9 @@ for (const [id, e] of REGISTRY) {
 
 for (const r of rows) console.log(r);
 const distinct = new Set(rows.map((r) => r.split('\t').slice(0, 2).join(' '))).size;
-console.error(`${rows.length} configuration(s) where the library answers past a declared bound, across ${distinct} field(s).\n`
-  + `Reach: ${fields} field(s) with a declared bound, driven in ${configurations} configuration(s) their worked example still computes in.`);
+const stale = Object.keys(JUDGED).filter((k) => !judgedSeen.has(k));
+for (const k of stale) console.log(`STALE-LEDGER\t${k}\t(judged here, but the finder no longer reaches it)`);
+console.error(`${rows.length} configuration(s) where the library answers past a declared bound, across ${distinct} field(s)`
+  + `; ${judgedSeen.size} judged${stale.length ? `, ${stale.length} ledger row(s) STALE` : ''}.\n`
+  + `Reach: ${fields} field(s) with a declared bound, driven in ${configurations} configuration(s) their worked `
+  + `example still computes in. --all lists the judged rows and why.`);

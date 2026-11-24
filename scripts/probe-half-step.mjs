@@ -49,7 +49,10 @@ const JUDGED = {
   'dapsa:dapsa-global': 'a rating line the instrument scores on a visual-analogue or 0-10 scale, where a half step is a real reading',
   'dapsa:dapsa-pain': 'a rating line the instrument scores on a visual-analogue or 0-10 scale, where a half step is a real reading',
   'das28:da-gh': 'a rating line the instrument scores on a visual-analogue or 0-10 scale, where a half step is a real reading',
-  'dose-history-level:dhl-f': 'an oral bioavailability from 0 to 1, a fraction by definition',
+  // spec-v1780 removed this row: the bioavailability was judged fractional here, which it is, but the half
+  // step the finder drove was 1.5 -- outside the fraction entirely. The range check was sitting on the oral
+  // route only, so the finder reached it on another route and the tool answered. Hoisted above the split,
+  // the tool refuses 1.5 and the finder no longer reaches the field at all.
   'elemental-iron-ingested:iron-tabs': 'a tablet count, where half a tablet is a real ingestion (spec-v1755)',
   'esspri:esp-dry': 'a rating line the instrument scores on a visual-analogue or 0-10 scale, where a half step is a real reading',
   'esspri:esp-fat': 'a rating line the instrument scores on a visual-analogue or 0-10 scale, where a half step is a real reading',

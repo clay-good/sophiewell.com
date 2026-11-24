@@ -298,12 +298,15 @@ rescales (the declaration has to be the union of its units), a cap that moves wi
 declaration that contradicts the library. `scripts/probe-declared-cap-configs.mjs` then drives every
 declared bound across CONFIGURATIONS -- each other number at half and twice its example, each enum at every
 option -- because a cap written inside one branch of a library is invisible to the single configuration
-probe-adapter-only-bounds asks from (`docs/spec-v1777.md`).
+probe-adapter-only-bounds asks from (`docs/spec-v1777.md`). It found 26 such fields, and every one had a
+guard that existed and sat inside a branch; the fix is always the same, a `gradeFault` hoisted above the
+branch split, which `iron-supplement-who` has carried as a worked example since spec-v1744
+(`docs/spec-v1780.md`). `gradeFault` skips a blank, so the tool keeps its own missing-value sentence.
 
 ```bash
 node scripts/probe-adapter-only-bounds.mjs
 node scripts/probe-undeclared-cap.mjs          # a cap the library enforces and nothing declares (docs/spec-v1777.md)
-node scripts/probe-declared-cap-configs.mjs    # a declared bound the library enforces at the worked example and nowhere else
+node scripts/probe-declared-cap-configs.mjs    # a declared bound the library enforces at the worked example and nowhere else, judged ledger and all (docs/spec-v1780.md)
 ```
 
 `test/unit/declared-cap-honest.test.js` holds the third side of it: the library must ACCEPT the edge a
