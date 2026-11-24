@@ -10,7 +10,7 @@ export default [
     compute: (args) => DS.desensitization12Step(args),
     fields: [
       { dom: 'd12-dose', arg: 'targetDose', kind: 'number', required: true, label: 'Total target dose', unit: 'mg' },
-      { dom: 'd12-volume', arg: 'bagVolume', kind: 'number', required: true, label: 'Volume of each bag (250 in the published table)', unit: 'mL' },
+      { dom: 'd12-volume', arg: 'bagVolume', kind: 'number', required: true, label: 'Volume of each bag (250 in the published table)', unit: 'mL', bound: 'bmi', boundScale: 10 },
       { dom: 'd12-rate', arg: 'finalRate', kind: 'number', required: true, label: 'Final rate, step 12 (80 in the published table)', unit: 'mL/h', min: 40, max: 500 },
     ],
   },

@@ -31,6 +31,7 @@
 
 import { META } from '../lib/meta.js';
 import { REGISTRY } from '../mcp/catalog.js';
+import { fieldRange } from '../mcp/fields.js';
 
 const ONLY = process.env.TOOLS ? new Set(process.env.TOOLS.split(',')) : null;
 
@@ -51,8 +52,10 @@ for (const [id, e] of REGISTRY) {
   const nums = e.fields.filter((f) => f.kind === 'number' && !Array.isArray(f.values));
   const enums = e.fields.filter((f) => f.kind === 'enum' && Array.isArray(f.values));
   for (const f of nums) {
-    const hasMax = Number.isFinite(f.max);
-    const hasMin = Number.isFinite(f.min) && f.min > 0;
+    // spec-v1779: the resolved range, so a bound declared by envelope name is driven like a literal.
+    const declared = fieldRange(f);
+    const hasMax = declared.max !== null;
+    const hasMin = declared.min !== null && declared.min > 0;
     if (!hasMax && !hasMin) continue;
     fields += 1;
     const configs = [['the example', { ...ex }]];
@@ -67,8 +70,8 @@ for (const [id, e] of REGISTRY) {
     const probes = [];
     // 5% past the edge, and never only a rounding away from it: a library whose own limit is the same
     // number must still refuse this.
-    if (hasMax) probes.push(['max', f.max, f.max * 1.05 + 1e-6]);
-    if (hasMin) probes.push(['min', f.min, f.min * 0.95]);
+    if (hasMax) probes.push(['max', declared.max, declared.max * 1.05 + 1e-6]);
+    if (hasMin) probes.push(['min', declared.min, declared.min * 0.95]);
     for (const [label, cfg] of configs) {
       if (!answers(e, cfg)) continue; // the configuration itself is refused; it proves nothing
       configurations += 1;

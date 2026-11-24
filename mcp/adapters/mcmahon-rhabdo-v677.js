@@ -13,12 +13,12 @@ export default [
     fields: [
       { dom: 'mcm-age', arg: 'age', kind: 'number', unit: 'years', required: true, label: 'Age (years)' },
       { dom: 'mcm-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex (female adds 1 point)' },
-      { dom: 'mcm-creat', arg: 'creatinine', kind: 'number', unit: 'mg/dL', required: true, label: 'Initial creatinine (mg/dL)' },
-      { dom: 'mcm-ca', arg: 'calcium', kind: 'number', unit: 'mg/dL', required: true, label: 'Initial calcium (mg/dL; < 7.5 adds 2)' },
+      { dom: 'mcm-creat', arg: 'creatinine', kind: 'number', unit: 'mg/dL', required: true, label: 'Initial creatinine (mg/dL)', bound: 'scr' },
+      { dom: 'mcm-ca', arg: 'calcium', kind: 'number', unit: 'mg/dL', required: true, label: 'Initial calcium (mg/dL; < 7.5 adds 2)', bound: 'calcium' },
       { dom: 'mcm-cpk', arg: 'cpk', kind: 'number', unit: 'U/L', required: true, label: 'Initial CPK / creatine kinase (U/L; > 40,000 adds 2)' },
       { dom: 'mcm-cause', arg: 'cause', kind: 'enum', values: ['benign', 'other'], required: true, label: 'Cause: benign (seizures/syncope/exercise/statins/myositis) or other (adds 3)' },
-      { dom: 'mcm-phos', arg: 'phosphate', kind: 'number', unit: 'mg/dL', required: true, label: 'Initial phosphate (mg/dL)' },
-      { dom: 'mcm-bicarb', arg: 'bicarbonate', kind: 'number', unit: 'mEq/L', required: true, label: 'Initial bicarbonate (mEq/L; < 19 adds 2)' },
+      { dom: 'mcm-phos', arg: 'phosphate', kind: 'number', unit: 'mg/dL', required: true, label: 'Initial phosphate (mg/dL)', bound: 'phosphate' },
+      { dom: 'mcm-bicarb', arg: 'bicarbonate', kind: 'number', unit: 'mEq/L', required: true, label: 'Initial bicarbonate (mEq/L; < 19 adds 2)', bound: 'bicarbonate' },
     ],
   },
 ];

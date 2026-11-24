@@ -22,14 +22,14 @@ export default [
       return dd == null ? gap : { ...gap, ...dd };
     },
     fields: [
-      { dom: 'na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
-      { dom: 'cl', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L' },
-      { dom: 'hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L' },
+      { dom: 'na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L', bound: 'sodium' },
+      { dom: 'cl', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L', bound: 'chloride' },
+      { dom: 'hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L', bound: 'bicarbonate' },
       // spec-v1150: the albumin is the OPTIONAL correction term -- the summary
       // above says so, the page label says "Albumin (optional)", and the library
       // returns the uncorrected gap without it. Declared required, the agent
       // surface refused every call the browser answers.
-      { dom: 'alb', arg: 'albuminGdl', kind: 'number', label: 'Albumin (optional; omit for the uncorrected gap)', unit: 'g/dL' },
+      { dom: 'alb', arg: 'albuminGdl', kind: 'number', label: 'Albumin (optional; omit for the uncorrected gap)', unit: 'g/dL', bound: 'albumin' },
     ],
   },
   {
@@ -38,9 +38,9 @@ export default [
     compute: F.osmolalGap,
     fields: [
       { dom: 'measured', arg: 'measuredOsm', kind: 'number', required: true, label: 'Measured serum osmolality', unit: 'mOsm/kg' },
-      { dom: 'og-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
-      { dom: 'og-glu', arg: 'glucoseMgDl', kind: 'number', required: true, label: 'Glucose', unit: 'mg/dL' },
-      { dom: 'og-bun', arg: 'bunMgDl', kind: 'number', required: true, label: 'BUN', unit: 'mg/dL' },
+      { dom: 'og-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L', bound: 'sodium' },
+      { dom: 'og-glu', arg: 'glucoseMgDl', kind: 'number', required: true, label: 'Glucose', unit: 'mg/dL', bound: 'glucose' },
+      { dom: 'og-bun', arg: 'bunMgDl', kind: 'number', required: true, label: 'BUN', unit: 'mg/dL', bound: 'bun' },
       // spec-v1150: the label on the page reads "EtOH (mg/dL, optional)", and
       // spec-v1103 recorded that the ethanol stays optional -- the calculated
       // osmolality without it is the standard formula, and the ethanol term is an
@@ -54,12 +54,12 @@ export default [
     summary: 'Winters formula expected PaCO2 for metabolic acidosis = 1.5*HCO3 + 8 +/- 2; flags secondary respiratory disorder if measured PaCO2 given.',
     compute: F.wintersFormula,
     fields: [
-      { dom: 'wf-hco3', arg: 'hco3', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L' },
+      { dom: 'wf-hco3', arg: 'hco3', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L', bound: 'bicarbonate' },
       // spec-v1150: Winter's formula produces the EXPECTED PaCO2 from the
       // bicarbonate; the measured one is only for the comparison that names a
       // secondary disorder. The page label says "optional" and the library
       // returns the expected range without it.
-      { dom: 'wf-paco2', arg: 'measuredPaco2', kind: 'number', label: 'Measured PaCO2 (optional; only for the compensation comparison)', unit: 'mmHg' },
+      { dom: 'wf-paco2', arg: 'measuredPaco2', kind: 'number', label: 'Measured PaCO2 (optional; only for the compensation comparison)', unit: 'mmHg', bound: 'paCO2' },
     ],
   },
   {
@@ -86,9 +86,9 @@ export default [
       // modified shock index; the heart rate gives the two shock indices. An
       // agent with a pressure and a pulse gets the shock index without having to
       // invent a diastolic.
-      { dom: 'si-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
-      { dom: 'si-dbp', arg: 'dbp', kind: 'number', label: 'Diastolic BP', unit: 'mmHg' },
-      { dom: 'si-hr', arg: 'hr', kind: 'number', label: 'Heart rate', unit: 'bpm' },
+      { dom: 'si-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
+      { dom: 'si-dbp', arg: 'dbp', kind: 'number', label: 'Diastolic BP', unit: 'mmHg', bound: 'dbp' },
+      { dom: 'si-hr', arg: 'hr', kind: 'number', label: 'Heart rate', unit: 'bpm', bound: 'hr' },
       { dom: 'si-ob', arg: 'bands', kind: 'enum', label: 'Shock index bands', values: ['general', 'obstetric'] },
     ],
   },
@@ -109,7 +109,7 @@ export default [
     },
     fields: [
       { dom: 'bw-hin', arg: 'heightInches', kind: 'number', required: true, label: 'Height', unit: 'inches', min: 17.71653544, max: 98.42519682 },
-      { dom: 'bw-kg', arg: 'actualKg', kind: 'number', required: true, label: 'Actual weight', unit: 'kg' },
+      { dom: 'bw-kg', arg: 'actualKg', kind: 'number', required: true, label: 'Actual weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'bw-sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
     ],
   },
@@ -128,11 +128,11 @@ export default [
       // FeUrea exists precisely for the patient who has had a diuretic and whose
       // FeNa is not interpretable.
       { dom: 'fn-una', arg: 'urineNa', kind: 'number', label: 'Urine sodium', unit: 'mEq/L' },
-      { dom: 'fn-pna', arg: 'plasmaNa', kind: 'number', label: 'Plasma sodium', unit: 'mEq/L' },
+      { dom: 'fn-pna', arg: 'plasmaNa', kind: 'number', label: 'Plasma sodium', unit: 'mEq/L', bound: 'sodium' },
       { dom: 'fn-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
-      { dom: 'fn-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL' },
+      { dom: 'fn-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'fu-uu', arg: 'urineUrea', kind: 'number', label: 'Urine urea', unit: 'mg/dL' },
-      { dom: 'fu-pu', arg: 'plasmaUrea', kind: 'number', label: 'Plasma urea (BUN)', unit: 'mg/dL' },
+      { dom: 'fu-pu', arg: 'plasmaUrea', kind: 'number', label: 'Plasma urea (BUN)', unit: 'mg/dL', bound: 'bun' },
     ],
   },
   {
@@ -150,7 +150,7 @@ export default [
       return { mlPerHour, tiers: { first10kg: first10, next10kg: next10, above20kg: above20 } };
     },
     fields: [
-      { dom: 'mf-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'mf-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
     ],
   },
   {
@@ -159,8 +159,8 @@ export default [
     compute: F.fib4,
     fields: [
       { dom: 'fib4-age', concept: 'age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'fib4-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L' },
-      { dom: 'fib4-alt', concept: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L' },
+      { dom: 'fib4-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
+      { dom: 'fib4-alt', concept: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L', bound: 'alt' },
       { dom: 'fib4-plt', concept: 'platelets', arg: 'plateletsK', kind: 'number', required: true, label: 'Platelets', unit: 'x10^9/L' },
     ],
   },
@@ -169,7 +169,7 @@ export default [
     summary: 'AST-to-platelet ratio index (Wai 2003) = (AST/AST-ULN)*100/platelets. Wai 2003 thresholds: significant fibrosis ruled out at 0.5 or below and ruled in above 1.5; cirrhosis ruled out at 1.0 or below and ruled in above 2.0; between them is indeterminate.',
     compute: F.apri,
     fields: [
-      { dom: 'apri-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L' },
+      { dom: 'apri-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
       { dom: 'apri-uln', arg: 'astUln', kind: 'number', required: true, label: 'AST upper limit of normal', unit: 'U/L' },
       { dom: 'apri-plt', concept: 'platelets', arg: 'plateletsK', kind: 'number', required: true, label: 'Platelets', unit: 'x10^9/L' },
     ],
@@ -181,7 +181,7 @@ export default [
     fields: [
       { dom: 'rx-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO2', unit: '%' },
       { dom: 'rx-fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, exclusiveMin: true, required: true, label: 'FiO2 (0-1)' },
-      { dom: 'rx-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
+      { dom: 'rx-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
       // spec-v1154: spec-v1131 taught this to ask for the timepoint only in the
       // range where the timepoint decides -- the success cutoff is >= 4.88 at every
       // timepoint and a score under 2.85 is failure-predicting at every one, so the

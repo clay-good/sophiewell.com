@@ -9,10 +9,10 @@ export default [
     summary: 'Computes UKELD, the United Kingdom model for end-stage liver disease, from INR, creatinine, bilirubin and sodium. It compares the score with 49, the UK threshold for listing for elective liver transplantation, and says the score is not interchangeable with MELD.',
     compute: UK.ukeld,
     fields: [
-      { dom: 'uk-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
-      { dom: 'uk-creat', arg: 'creatinineMgDl', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'uk-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
+      { dom: 'uk-creat', arg: 'creatinineMgDl', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'uk-bili', arg: 'bilirubinMgDl', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
-      { dom: 'uk-na', arg: 'sodium', kind: 'number', required: true, label: 'Serum sodium', unit: 'mmol/L' },
+      { dom: 'uk-na', arg: 'sodium', kind: 'number', required: true, label: 'Serum sodium', unit: 'mmol/L', bound: 'sodium' },
     ],
   },
 ];

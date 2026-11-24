@@ -57,7 +57,7 @@ export default [
       { dom: 'rv-egfr', arg: 'egfr', kind: 'number', required: true, label: 'eGFR (mL/min/1.73 m^2)' },
       { dom: 'rv-who', arg: 'who', kind: 'enum', values: ['1', '2', '3', '4'], required: true, label: 'WHO functional class' },
       { dom: 'rv-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP (mm Hg)' },
-      { dom: 'rv-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate (beats/min)' },
+      { dom: 'rv-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate (beats/min)', bound: 'hr' },
       { dom: 'rv-mwd', arg: 'mwd', kind: 'number', required: true, label: '6-minute walk distance (m)' },
       { dom: 'rv-bnp', arg: 'bnp', kind: 'enum', values: ['low', 'mid', 'high1', 'high2'], required: true, label: 'BNP / NT-proBNP band' },
     ],

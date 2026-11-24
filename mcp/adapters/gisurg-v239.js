@@ -14,8 +14,8 @@ export default [
     compute: F.bonaciniCds,
     fields: [
       { dom: 'bon-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count', unit: '10^3/uL', min: 1, max: 4000 },
-      { dom: 'bon-ratio', arg: 'altAstRatio', kind: 'number', required: true, label: 'ALT / AST ratio' },
-      { dom: 'bon-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
+      { dom: 'bon-ratio', arg: 'altAstRatio', kind: 'number', required: true, label: 'ALT / AST ratio', bound: 'inr', boundScale: 0.1 },
+      { dom: 'bon-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
     ],
   },
   {
@@ -23,9 +23,9 @@ export default [
     summary: 'Goteborg University Cirrhosis Index (Islam S, et al. Scand J Gastroenterol 2005) = (AST / upper-limit-of-normal) x INR x 100 / platelet count (10^9/L); a value > 1.0 suggests cirrhosis.',
     compute: F.guci,
     fields: [
-      { dom: 'guci-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L' },
+      { dom: 'guci-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
       { dom: 'guci-uln', arg: 'astUln', kind: 'number', required: true, label: 'AST upper limit of normal', unit: 'U/L', min: 5, max: 100 },
-      { dom: 'guci-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
+      { dom: 'guci-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
       { dom: 'guci-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L', min: 1, max: 4000 },
     ],
   },

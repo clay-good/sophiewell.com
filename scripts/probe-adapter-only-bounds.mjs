@@ -18,6 +18,7 @@
 
 import { META } from '../lib/meta.js';
 import { REGISTRY } from '../mcp/catalog.js';
+import { fieldRange } from '../mcp/fields.js';
 
 const run = (e, inputs) => {
   try {
@@ -37,7 +38,9 @@ for (const [id, e] of REGISTRY) {
   if (base.valid === false) continue;
   for (const f of e.fields) {
     if (f.kind !== 'number') continue;
-    for (const [side, v] of [['max', f.max], ['min', f.min]]) {
+    // spec-v1779: the resolved range, so a bound declared by envelope name is policed like a literal.
+    const declared = fieldRange(f);
+    for (const [side, v] of [['max', declared.max], ['min', declared.min]]) {
       if (typeof v !== 'number' || !Number.isFinite(v)) continue;
       // spec-v1753: just past the bound, not only far past it -- a library with a looser limit of its own refuses
       // the absurd and answers the merely out-of-range.

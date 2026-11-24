@@ -12,8 +12,8 @@ export default [
     compute: dkaResolution,
     fields: [
       { dom: 'dr-glucosemgdl', arg: 'glucoseMgDl', kind: 'number', required: false, label: 'Glucose, mg/dL (resolution needs it below 200)', unit: 'mg/dL' },
-      { dom: 'dr-bicarbonate', arg: 'bicarbonate', kind: 'number', required: false, label: 'Serum bicarbonate, mEq/L (met at 15 or above)', unit: 'mEq/L' },
-      { dom: 'dr-venousph', arg: 'venousPh', kind: 'number', required: false, label: 'Venous pH (met above 7.30)' },
+      { dom: 'dr-bicarbonate', arg: 'bicarbonate', kind: 'number', required: false, label: 'Serum bicarbonate, mEq/L (met at 15 or above)', unit: 'mEq/L', bound: 'bicarbonate' },
+      { dom: 'dr-venousph', arg: 'venousPh', kind: 'number', required: false, label: 'Venous pH (met above 7.30)', bound: 'pH' },
       { dom: 'dr-aniongap', arg: 'anionGap', kind: 'number', required: false, label: 'Anion gap, mEq/L (met at 12 or below; this is the variable that tracks the ketosis)', unit: 'mEq/L' },
     ],
   },

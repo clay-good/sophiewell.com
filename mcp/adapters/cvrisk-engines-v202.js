@@ -11,11 +11,11 @@ export default [
     compute: F.mecki,
     fields: [
       { dom: 'mecki-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 3, max: 26 },
-      { dom: 'mecki-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
+      { dom: 'mecki-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L', bound: 'sodium' },
       { dom: 'mecki-lvef', arg: 'lvef', kind: 'number', required: true, label: 'LVEF', unit: '%', min: 5, max: 80 },
-      { dom: 'mecki-ppvo2', arg: 'ppvo2', kind: 'number', required: true, label: 'Peak VO₂ (% predicted)' },
+      { dom: 'mecki-ppvo2', arg: 'ppvo2', kind: 'number', required: true, label: 'Peak VO₂ (% predicted)', bound: 'bmi' },
       { dom: 'mecki-veco2', arg: 'veco2', kind: 'number', required: true, label: 'VE/VCO₂ slope', min: 10, max: 120 },
-      { dom: 'mecki-egfr', arg: 'egfr', kind: 'number', required: true, label: 'MDRD-eGFR', unit: 'mL/min/1.73 m²' },
+      { dom: 'mecki-egfr', arg: 'egfr', kind: 'number', required: true, label: 'MDRD-eGFR', unit: 'mL/min/1.73 m²', bound: 'magnesium', boundScale: 10 },
     ],
   },
 ];

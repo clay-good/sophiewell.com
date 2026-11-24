@@ -310,6 +310,23 @@ node scripts/probe-declared-cap-configs.mjs    # a declared bound the library en
 declaration allows. A bound whose edge the library states as exclusive declares `exclusiveMin` /
 `exclusiveMax` beside it, which reaches the input schema as `exclusiveMinimum` / `exclusiveMaximum`.
 
+**A field whose cap is one of the 45 `lib/bounds.js` envelopes NAMES it rather than restating it**:
+`bound: 'weightKg'`, resolved against `BOUNDS` on every read, so the declaration cannot fall behind the
+envelope (`fieldRange` in `mcp/fields.js`, `docs/spec-v1779.md`). `boundScale` is for a field stated in a
+sub-unit of the envelope's -- a height in cm against an envelope in metres is
+`bound: 'heightM', boundScale: 100`. An explicit `min`/`max` always wins, which is how a tool with a
+narrower validated range of its own keeps it. Copying the envelope's numbers in as literals is the thing to
+avoid: specs v1762-v1765 widened four envelopes past values verified in survivors and then spent three specs
+chasing the narrower copies left behind.
+
+**A named envelope DOCUMENTS the range; it does not refuse.** The range reaches the published input schema,
+and the refusal stays with the library, which already turns these values away in the words the reader sees
+on the page -- two different builders write them (`boundsAdvisory` in `lib/bounds.js`, `rangeFault` in
+`lib/num.js`), so no sentence composed in `mcp/fields.js` can match both, and pre-refusing would give the
+agent a worse sentence than the page. A literal `min`/`max` still refuses before the library runs, as
+spec-v1646 set out. `test/unit/field-bound-names.test.js` refuses a `bound` that names no envelope, because
+an unknown name resolves to no range at all.
+
 Two more ask about values a reader cannot mean. `scripts/probe-negative-as-zero.mjs` enters each worked
 example's value as a negative and lists fields that answer exactly as they answer 0, a silent clamp that
 usually lands in the reassuring band (`docs/spec-v1740.md`); POP-Q points and the aortic Z score are signed by
@@ -318,6 +335,7 @@ diastolic, total and HDL cholesterol, two dates) and lists tools that still answ
 `docs/spec-v1738.md`); most date swaps are honest different situations, so read each row.
 
 ```bash
+node scripts/probe-absent-example-field.mjs  # 863 number fields are ABSENT from their worked example, so the three sweeps above skip or defer them; this one fills each in a configuration that reads it, judged ledger and all (docs/spec-v1778.md)
 node scripts/probe-negative-as-zero.mjs    # judged ledger: it prints nothing until a NEW row appears (docs/spec-v1775.md)
 node scripts/probe-order-swapped.mjs
 node scripts/probe-impossible-dates.mjs   # 30 February, month 13, 1850, 25:00 (docs/spec-v1750.md)

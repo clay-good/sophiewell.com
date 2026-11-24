@@ -22,7 +22,7 @@ export default [
     compute: F.tpeQtRatio,
     fields: [
       { dom: 'tpe-tpe', arg: 'tpe', kind: 'number', required: true, label: 'Tp-e interval', unit: 'ms', min: 20, max: 400 },
-      { dom: 'tpe-qt', arg: 'qt', kind: 'number', required: true, label: 'QT interval', unit: 'ms' },
+      { dom: 'tpe-qt', arg: 'qt', kind: 'number', required: true, label: 'QT interval', unit: 'ms', bound: 'qtMs' },
     ],
   },
   {
@@ -31,7 +31,7 @@ export default [
     compute: F.spise,
     fields: [
       { dom: 'spise-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL', min: 5, max: 150 },
-      { dom: 'spise-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL' },
+      { dom: 'spise-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL', bound: 'triglycerides' },
       { dom: 'spise-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2', min: 8, max: 100 },
     ],
   },

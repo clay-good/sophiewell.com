@@ -13,7 +13,7 @@ export default [
     fields: [
       { dom: 'mcrcl-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL', min: 1, max: 1000 },
       { dom: 'mcrcl-uvol', arg: 'urineVolume', kind: 'number', required: true, label: 'Urine volume', unit: 'mL', min: 1, max: 20000 },
-      { dom: 'mcrcl-scr', arg: 'serumCr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'mcrcl-scr', arg: 'serumCr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'mcrcl-hours', arg: 'hours', kind: 'number', required: true, label: 'Collection time', unit: 'hours', min: 0.5, max: 72 },
     ],
   },

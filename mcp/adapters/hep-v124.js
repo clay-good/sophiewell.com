@@ -20,7 +20,7 @@ export default [
     compute: M.meldXi,
     fields: [
       { dom: 'mx-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
-      { dom: 'mx-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'mx-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
     ],
   },
   {
@@ -39,9 +39,9 @@ export default [
     summary: 'BARD score for NAFLD advanced fibrosis (Harrison 2008): BMI >= 28 (+1), AST/ALT ratio >= 0.8 (+2), diabetes (+1).',
     compute: M.bardScore,
     fields: [
-      { dom: 'bd-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2' },
-      { dom: 'bd-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L' },
-      { dom: 'bd-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L' },
+      { dom: 'bd-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2', bound: 'bmi' },
+      { dom: 'bd-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
+      { dom: 'bd-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L', bound: 'alt' },
       { dom: 'bd-dm', arg: 'diabetes', kind: 'bool', label: 'Diabetes mellitus' },
     ],
   },
@@ -50,8 +50,8 @@ export default [
     summary: 'Fatty Liver Index (Bedogni 2006): a logistic steatosis-probability index from triglycerides, BMI, GGT, and waist.',
     compute: M.fattyLiverIndex,
     fields: [
-      { dom: 'fl-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL' },
-      { dom: 'fl-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2' },
+      { dom: 'fl-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL', bound: 'triglycerides' },
+      { dom: 'fl-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2', bound: 'bmi' },
       { dom: 'fl-ggt', arg: 'ggt', kind: 'number', required: true, label: 'GGT', unit: 'U/L' },
       { dom: 'fl-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm' },
     ],
@@ -62,9 +62,9 @@ export default [
     compute: M.lokIndex,
     fields: [
       { dom: 'lk-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L' },
-      { dom: 'lk-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L' },
-      { dom: 'lk-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L' },
-      { dom: 'lk-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
+      { dom: 'lk-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
+      { dom: 'lk-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L', bound: 'alt' },
+      { dom: 'lk-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
     ],
   },
 ];

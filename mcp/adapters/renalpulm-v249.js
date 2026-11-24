@@ -13,7 +13,7 @@ export default [
     compute: F.renalFailureIndex,
     fields: [
       { dom: 'rfi-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine sodium', unit: 'mEq/L', min: 1, max: 300 },
-      { dom: 'rfi-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL' },
+      { dom: 'rfi-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'rfi-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL', min: 1, max: 500 },
     ],
   },

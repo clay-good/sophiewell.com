@@ -35,7 +35,7 @@ export default [
       { dom: 'clifad-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL' },
       { dom: 'clifad-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
       { dom: 'clifad-wbc', arg: 'wbc', kind: 'number', required: true, label: 'WBC', unit: '×10⁹/L' },
-      { dom: 'clifad-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mmol/L' },
+      { dom: 'clifad-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mmol/L', bound: 'sodium' },
     ],
   },
   {
@@ -45,8 +45,8 @@ export default [
     fields: [
       { dom: 'hep-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'hep-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
-      { dom: 'hep-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L' },
-      { dom: 'hep-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
+      { dom: 'hep-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L', bound: 'ast' },
+      { dom: 'hep-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', bound: 'albumin' },
       { dom: 'hep-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelets', unit: '×10⁹/L' },
       { dom: 'hep-dm', arg: 'diabetes', kind: 'bool', required: false, label: 'Diabetes mellitus (if set, HOMA-IR is not needed)' },
       { dom: 'hep-homa', arg: 'homa', kind: 'number', required: false, label: 'HOMA-IR (non-diabetic only)' },

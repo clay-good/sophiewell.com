@@ -27,7 +27,7 @@ export default [
       { dom: 'fp-spo2', arg: 'spo2', kind: 'number', required: true, label: 'Oxygen saturation', unit: '%' },
       { dom: 'fp-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
       { dom: 'fp-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'µmol/L' },
-      { dom: 'fp-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L' },
+      { dom: 'fp-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
     ],
   },
   {
@@ -37,7 +37,7 @@ export default [
     fields: [
       { dom: 'mp-multip', arg: 'multiparous', kind: 'bool', required: false, label: 'Multiparous' },
       { dom: 'mp-ga', arg: 'ga', kind: 'number', required: true, label: 'Gestational age', unit: 'weeks' },
-      { dom: 'mp-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg' },
+      { dom: 'mp-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', bound: 'sbp' },
       // `lt2` is the reference category the three published coefficients are
       // measured against, and the select offers it as "Negative, trace, or 1+".
       // Leaving it undeclared made it reachable only by omitting the field --

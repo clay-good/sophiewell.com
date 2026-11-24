@@ -10,7 +10,7 @@ export default [
     summary: 'Cardiometabolic Index (Wakabayashi 2015) = (triglycerides / HDL, mg/dL) x waist-to-height ratio; a higher value marks a worse cardiometabolic profile (no universal cut-point).',
     compute: F.cmi,
     fields: [
-      { dom: 'cmi-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL' },
+      { dom: 'cmi-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL', bound: 'triglycerides' },
       { dom: 'cmi-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL', min: 1, max: 500 },
       { dom: 'cmi-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm', min: 20, max: 300 },
       { dom: 'cmi-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 50, max: 260 },

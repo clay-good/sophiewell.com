@@ -28,8 +28,8 @@ export default [
     summary: 'RIFLE criteria (ADQI, Bellomo 2004): the acute-kidney-injury class (Risk / Injury / Failure) from the creatinine ratio (or eGFR fall) and the urine-output category; the worse of the two governs.',
     compute: F.rifleAki,
     fields: [
-      { dom: 'ri-base', arg: 'baselineCr', kind: 'number', label: 'Baseline creatinine', unit: 'mg/dL' },
-      { dom: 'ri-curr', arg: 'currentCr', kind: 'number', label: 'Current creatinine', unit: 'mg/dL' },
+      { dom: 'ri-base', arg: 'baselineCr', kind: 'number', label: 'Baseline creatinine', unit: 'mg/dL', bound: 'scr' },
+      { dom: 'ri-curr', arg: 'currentCr', kind: 'number', label: 'Current creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'ri-uo', arg: 'uoClass', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Urine-output category' },
     ],
   },
@@ -38,8 +38,8 @@ export default [
     summary: 'AKIN criteria (Mehta 2007): the acute-kidney-injury stage 1-3 from the creatinine rise (absolute or ratio within 48 h), the urine-output category, or initiation of renal replacement therapy; the worst criterion governs.',
     compute: F.akinAki,
     fields: [
-      { dom: 'ak-base', arg: 'baselineCr', kind: 'number', label: 'Baseline creatinine', unit: 'mg/dL' },
-      { dom: 'ak-curr', arg: 'currentCr', kind: 'number', label: 'Current creatinine', unit: 'mg/dL' },
+      { dom: 'ak-base', arg: 'baselineCr', kind: 'number', label: 'Baseline creatinine', unit: 'mg/dL', bound: 'scr' },
+      { dom: 'ak-curr', arg: 'currentCr', kind: 'number', label: 'Current creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'ak-rrt', arg: 'rrt', kind: 'bool', label: 'Renal replacement therapy initiated' },
       { dom: 'ak-uo', arg: 'uoClass', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Urine-output category' },
     ],
@@ -51,7 +51,7 @@ export default [
     fields: [
       { dom: 'uf-vol', arg: 'volume', kind: 'number', required: true, label: 'Ultrafiltration volume', unit: 'L' },
       { dom: 'uf-hr', arg: 'hours', kind: 'number', required: true, label: 'Session duration', unit: 'hours' },
-      { dom: 'uf-wt', arg: 'weight', kind: 'number', required: true, label: 'Post-dialysis weight', unit: 'kg' },
+      { dom: 'uf-wt', arg: 'weight', kind: 'number', required: true, label: 'Post-dialysis weight', unit: 'kg', bound: 'weightKg' },
     ],
   },
 ];

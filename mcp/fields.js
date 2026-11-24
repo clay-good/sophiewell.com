@@ -36,6 +36,7 @@
 // here, at the contract, and mcp/catalog.js rejects an unknown kind outright.
 
 import { parseDecimal, GROUPING_MESSAGE } from '../lib/num.js';
+import { BOUNDS, CEILING_ONLY } from '../lib/bounds.js';
 
 export const FIELD_KINDS = Object.freeze(['number', 'bool', 'enum', 'string']);
 
@@ -82,6 +83,64 @@ export function scaleValues(max, min = 0) {
 // touch more lenient so DOM-string example payloads round-trip unchanged.
 const MAX_STRING_LENGTH = 2048;
 
+// spec-v1779: a field may NAME its envelope instead of restating it.
+//
+// [spec-v1777](../docs/spec-v1777.md) declared 285 caps that libraries enforce and nothing stated, and left
+// 435 undeclared on purpose: those are one of the 45 `lib/bounds.js` envelopes, and a descriptor holds only
+// literals. Copying an envelope into 435 descriptors rebuilds the problem specs v1762-v1765 spent three
+// specs undoing -- four envelopes were widened past values verified in survivors, and every narrower copy
+// left behind in a library had to be chased.
+//
+// So `bound: 'weightKg'` resolves against `BOUNDS` on every read, and a declaration cannot fall behind the
+// envelope it names. `boundScale` is for a field stated in a sub-unit of the envelope's: a height in cm
+// against an envelope in metres is `bound: 'heightM', boundScale: 100`. An explicit `min`/`max` always wins,
+// which is how a tool whose own validated range is narrower than survival keeps it.
+//
+// **A named envelope DOCUMENTS the range; it does not refuse.** That split is the whole of this mechanism's
+// behaviour, and it is deliberate. `validateInputs` refuses a literal `min`/`max` before the library runs,
+// and the sentence it returns is its own: `"ap-na" must be from 90 to 208; got 84.` The libraries already
+// refuse these same values -- that is how the probe found them -- and they do it in the words a reader sees
+// on the page: "Input below the plausible range for serum sodium (90 to 208 mEq/L); verify the units", or
+// "PaO2 (mmHg) must be between 10 and 700. Check the value entered." Pre-refusing would replace the page's
+// sentence with a worse one on the agent surface only, which is the divergence spec-v1743 exists to stop.
+// Three tests said so immediately: apache2's sodium, SMART-COP's PaO2 and toxic-alcohol's typed zero each
+// assert the library's own wording.
+//
+// So an envelope-named range reaches the published input schema -- which is the gap
+// [spec-v1777](../docs/spec-v1777.md) set out to close, an agent being told the input is a number and
+// nothing more -- while the refusal stays where the sentence is. `declaredLiterals` below is what enforces,
+// and `scripts/probe-declared-cap-configs.mjs` is what holds the library to the documented range.
+export function fieldRange(f) {
+  let min = Number.isFinite(f.min) ? f.min : null;
+  let max = Number.isFinite(f.max) ? f.max : null;
+  if (f.bound && (min === null || max === null)) {
+    const b = BOUNDS[f.bound];
+    // A name that is not an envelope is a typo, and silently widening a field to "no bound at all" is the
+    // worst reading of one. test/unit/field-bound-names.test.js refuses it at the gate; here it is left as
+    // whatever the descriptor stated, so a typo cannot loosen a field that also declares a literal.
+    if (b) {
+      const s = Number.isFinite(f.boundScale) && f.boundScale > 0 ? f.boundScale : 1;
+      // A CEILING_ONLY envelope has no floor to publish: a hemoglobin of 1.4 g/dL and an albumin below 0.1
+      // have been survived, so lib/bounds.js flags a critical low rather than refusing it (spec-v1762), and
+      // a published minimum would claim a floor the library does not hold.
+      if (min === null && Number.isFinite(b.min) && !CEILING_ONLY.has(f.bound)) min = Number((b.min * s).toPrecision(12));
+      if (max === null && Number.isFinite(b.max)) max = Number((b.max * s).toPrecision(12));
+    }
+  }
+  return { min, max, exclusiveMin: !!f.exclusiveMin, exclusiveMax: !!f.exclusiveMax };
+}
+
+// What `validateInputs` refuses on: the literals only. See the note above `fieldRange` for why a named
+// envelope documents without refusing.
+function declaredLiterals(f) {
+  return {
+    min: Number.isFinite(f.min) ? f.min : null,
+    max: Number.isFinite(f.max) ? f.max : null,
+    exclusiveMin: !!f.exclusiveMin,
+    exclusiveMax: !!f.exclusiveMax,
+  };
+}
+
 export function fieldSchema(fields) {
   const properties = {};
   const required = [];
@@ -97,8 +156,9 @@ export function fieldSchema(fields) {
       // declared an inclusive bound their library states as exclusive -- a pre-test probability "between 0
       // and 100% (exclusive)", a bioavailability and a salt factor "between 0 (exclusive) and 1" -- so the
       // schema said 0 was allowed and the library then turned it away.
-      if (Number.isFinite(f.min)) p[f.exclusiveMin ? 'exclusiveMinimum' : 'minimum'] = f.min;
-      if (Number.isFinite(f.max)) p[f.exclusiveMax ? 'exclusiveMaximum' : 'maximum'] = f.max;
+      const r = fieldRange(f);
+      if (r.min !== null) p[r.exclusiveMin ? 'exclusiveMinimum' : 'minimum'] = r.min;
+      if (r.max !== null) p[r.exclusiveMax ? 'exclusiveMaximum' : 'maximum'] = r.max;
     }
     else if (f.kind === 'bool') p.type = 'boolean';
     else if (f.kind === 'enum') { p.type = 'string'; p.enum = f.values.slice(); }
@@ -160,14 +220,15 @@ export function validateInputs(inputs, fields) {
       // summed (CIWA nausea 8), or dropped (Roland-Morris 25 scored 0).
       // spec-v1777: an exclusive edge is refused, and the sentence says which edge it was, so "must be
       // from 0 to 1" cannot be read as permitting the 0 the library turns away.
-      const underMin = Number.isFinite(f.min) && (f.exclusiveMin ? n <= f.min : n < f.min);
-      const overMax = Number.isFinite(f.max) && (f.exclusiveMax ? n >= f.max : n > f.max);
+      const range0 = declaredLiterals(f);
+      const underMin = range0.min !== null && (range0.exclusiveMin ? n <= range0.min : n < range0.min);
+      const overMax = range0.max !== null && (range0.exclusiveMax ? n >= range0.max : n > range0.max);
       if (underMin || overMax) {
-        const lo = `${f.min}${f.exclusiveMin ? ' (exclusive)' : ''}`;
-        const hi = `${f.max}${f.exclusiveMax ? ' (exclusive)' : ''}`;
+        const lo = `${range0.min}${range0.exclusiveMin ? ' (exclusive)' : ''}`;
+        const hi = `${range0.max}${range0.exclusiveMax ? ' (exclusive)' : ''}`;
         // spec-v1728: a one-sided range read "from 0 to undefined".
-        const range = Number.isFinite(f.min) && Number.isFinite(f.max) ? `from ${lo} to ${hi}`
-          : (Number.isFinite(f.min) ? `at least ${lo}` : `at most ${hi}`);
+        const range = range0.min !== null && range0.max !== null ? `from ${lo} to ${hi}`
+          : (range0.min !== null ? `at least ${lo}` : `at most ${hi}`);
         return { valid: false, code: 'OUT_OF_RANGE', field: f.dom, message: `"${f.dom}" must be ${range}; got ${n}.` };
       }
     } else if (f.kind === 'bool') {

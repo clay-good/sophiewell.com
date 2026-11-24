@@ -51,7 +51,7 @@ export default [
     },
     fields: [
       { dom: 'ar-agent', arg: 'agent', kind: 'enum', values: ['warfarin', 'dabigatran', 'apixaban-rivaroxaban', 'heparin-ufh'], required: true, label: 'Anticoagulant' },
-      { dom: 'ar-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'ar-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
             // spec-v1155: read only on the warfarin path, where the library now requires
       // it -- so both surfaces agree in both directions (rule 25).
       { dom: 'ar-inr', arg: 'inr', kind: 'number', label: 'INR (required for warfarin; not read for the other agents)' },
@@ -145,7 +145,7 @@ export default [
       return r == null ? r : { ...r, weightKg: a.weightKg };
     },
     fields: [
-      { dom: 'int-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'int-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'int-kcal', arg: 'kcalRange', kind: 'enum', values: ['25-30', '20-25'], required: true, label: 'Energy target', unit: 'kcal/kg/day' },
       { dom: 'int-pro', arg: 'proteinRange', kind: 'enum', values: ['1.2-2.0', '2.0-2.5'], required: true, label: 'Protein target', unit: 'g/kg/day' },
     ],
@@ -155,7 +155,7 @@ export default [
     summary: 'Enoxaparin dose by indication, weight and kidney function, from the Lovenox label. It covers prophylaxis (abdominal surgery, medical illness, hip or knee replacement), deep vein thrombosis treatment (1 mg/kg q12h or 1.5 mg/kg q24h), unstable angina, and STEMI under or over 75 years with the bolus and the first-two-dose maximum, each with the CrCl <30 mL/min row of the label\'s Table 1. Each result names the label section its row comes from, and prophylaxis results quote the label on obesity.',
     compute: F.enoxaparinDose,
     fields: [
-      { dom: 'vte-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'vte-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'vte-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
       { dom: 'vte-ind', arg: 'indication', kind: 'enum', values: ['prophylaxis', 'hip-knee', 'treatment', 'ua-nstemi', 'stemi-under-75', 'stemi-75-plus'], required: true, label: 'Indication' },
       { dom: 'vte-reg', arg: 'regimen', kind: 'enum', values: ['q12', 'daily'], required: true, label: 'Regimen (deep vein thrombosis treatment only)' },
@@ -238,10 +238,10 @@ export default [
     summary: 'Minute ventilation and gas-exchange targets: minute ventilation (V̇E, L/min) = respiratory rate x tidal volume; with ideal body weight it also gives alveolar ventilation (subtracting ~2.2 mL/kg dead space), and with a current and target PaCO2 the rate to reach the target (rate x current/target PaCO2). A planning estimate, not a ventilator-mode order.',
     compute: F.minuteVentilation,
     fields: [
-      { dom: 'mv-rr', arg: 'respiratoryRate', kind: 'number', required: true, label: 'Respiratory rate', unit: '/min' },
+      { dom: 'mv-rr', arg: 'respiratoryRate', kind: 'number', required: true, label: 'Respiratory rate', unit: '/min', bound: 'rr' },
       { dom: 'mv-vt', arg: 'tidalVolumeMl', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL' },
       { dom: 'mv-ibw', arg: 'ibwKg', kind: 'number', label: 'Ideal body weight (optional, for alveolar ventilation)', unit: 'kg' },
-      { dom: 'mv-paco2', arg: 'currentPaco2', kind: 'number', label: 'Current PaCO2 (optional)', unit: 'mmHg' },
+      { dom: 'mv-paco2', arg: 'currentPaco2', kind: 'number', label: 'Current PaCO2 (optional)', unit: 'mmHg', bound: 'paCO2' },
       { dom: 'mv-target', arg: 'targetPaco2', kind: 'number', label: 'Target PaCO2 (optional)', unit: 'mmHg' },
     ],
   },

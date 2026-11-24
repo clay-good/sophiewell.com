@@ -34,11 +34,11 @@ export default [
     summary: 'Hemodialysis adequacy: urea reduction ratio (URR) and the Daugirdas second-generation single-pool Kt/V against the KDOQI minimum targets (Daugirdas 1993).',
     compute: F.ktvUrr,
     fields: [
-      { dom: 'kt-pre', arg: 'preBun', kind: 'number', required: true, label: 'Pre-dialysis BUN', unit: 'mg/dL' },
-      { dom: 'kt-post', arg: 'postBun', kind: 'number', required: true, label: 'Post-dialysis BUN', unit: 'mg/dL' },
+      { dom: 'kt-pre', arg: 'preBun', kind: 'number', required: true, label: 'Pre-dialysis BUN', unit: 'mg/dL', bound: 'bun' },
+      { dom: 'kt-post', arg: 'postBun', kind: 'number', required: true, label: 'Post-dialysis BUN', unit: 'mg/dL', bound: 'bun' },
       { dom: 'kt-uf', arg: 'ufVolume', kind: 'number', required: false, label: 'Ultrafiltration volume', unit: 'L' },
       { dom: 'kt-time', arg: 'dialysisTime', kind: 'number', required: false, label: 'Dialysis session time', unit: 'h' },
-      { dom: 'kt-wt', arg: 'postWeight', kind: 'number', required: false, label: 'Post-dialysis weight', unit: 'kg' },
+      { dom: 'kt-wt', arg: 'postWeight', kind: 'number', required: false, label: 'Post-dialysis weight', unit: 'kg', bound: 'weightKg' },
     ],
   },
   {
@@ -62,7 +62,7 @@ export default [
     compute: F.ckdEpiCystatin,
     fields: [
       { dom: 'cc-cys', concept: 'cystatin-c', arg: 'cystatinC', kind: 'number', required: true, label: 'Serum cystatin C', unit: 'mg/L' },
-      { dom: 'cc-cr', concept: 'creatinine', arg: 'creatinine', kind: 'number', required: false, label: 'Serum creatinine (for the combined estimate)', unit: 'mg/dL' },
+      { dom: 'cc-cr', concept: 'creatinine', arg: 'creatinine', kind: 'number', required: false, label: 'Serum creatinine (for the combined estimate)', unit: 'mg/dL', bound: 'scr' },
       { dom: 'cc-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'cc-sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: false, label: 'Sex' },
       { dom: 'cc-h', concept: 'body-height', arg: 'heightCm', kind: 'number', required: false, label: 'Height (optional; with weight gives eGFR in mL/min)', unit: 'cm' },

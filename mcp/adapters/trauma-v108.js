@@ -40,10 +40,10 @@ export default [
     summary: 'TASH score (Yucel 2006): predicts the probability of mass transfusion after severe trauma from hemoglobin, base excess, hemodynamics, FAST, and injury pattern.',
     compute: F.tashScore,
     fields: [
-      { dom: 'ta-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin (g/dL)' },
+      { dom: 'ta-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin (g/dL)', bound: 'hemoglobin' },
       { dom: 'ta-be', arg: 'baseExcess', kind: 'number', required: true, label: 'Base excess (mmol/L)' },
       { dom: 'ta-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP (mm Hg)' },
-      { dom: 'ta-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate (beats/min)' },
+      { dom: 'ta-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate (beats/min)', bound: 'hr' },
       { dom: 'ta-fast', arg: 'fast', kind: 'bool', label: 'Positive FAST' },
       { dom: 'ta-pelvis', arg: 'pelvis', kind: 'bool', label: 'Unstable pelvic fracture' },
       { dom: 'ta-femur', arg: 'femur', kind: 'bool', label: 'Open or dislocated femur fracture' },
@@ -55,8 +55,8 @@ export default [
     summary: 'RABT score (Joseph 2018): predicts the need for massive transfusion (>= 2 of 4) from shock index, pelvic fracture, penetrating mechanism, and FAST.',
     compute: F.rabtScore,
     fields: [
-      { dom: 'ra-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate (beats/min)' },
-      { dom: 'ra-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP (mm Hg)' },
+      { dom: 'ra-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate (beats/min)', bound: 'hr' },
+      { dom: 'ra-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP (mm Hg)', bound: 'sbp' },
       { dom: 'ra-pelvis', arg: 'pelvis', kind: 'bool', label: 'Pelvic fracture' },
       { dom: 'ra-pen', arg: 'penetrating', kind: 'bool', label: 'Penetrating mechanism' },
       { dom: 'ra-fast', arg: 'fast', kind: 'bool', label: 'Positive FAST' },

@@ -34,8 +34,8 @@ export default [
     compute: F.abcd3i,
     fields: [
       { dom: 'abcd3i-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'abcd3i-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
-      { dom: 'abcd3i-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg' },
+      { dom: 'abcd3i-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
+      { dom: 'abcd3i-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg', bound: 'dbp' },
       { dom: 'abcd3i-clinical', arg: 'clinical', kind: 'enum', values: ['weakness', 'speech', 'other'], required: true, label: 'Clinical features' },
       { dom: 'abcd3i-dur', arg: 'durationMinutes', kind: 'number', required: true, label: 'TIA duration', unit: 'minutes' },
       { dom: 'abcd3i-dm', arg: 'diabetes', kind: 'bool', required: false, label: 'Diabetes (+1)' },

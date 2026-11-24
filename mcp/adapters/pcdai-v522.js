@@ -42,9 +42,9 @@ export default [
         required: true,
         label: `Age and sex band for the hematocrit threshold - there is no single low-hematocrit cut [${C.HCT_BANDS.map((b) => `${b.value} = ${b.text}, 0 points at ${b.zeroAtOrAbove} or above, 2.5 points at ${b.halfAtOrAbove} or above, 5 points below that`).join('; ')}]`,
       },
-      { dom: 'pcd-hct', arg: 'hct', kind: 'number', unit: 'percent', label: 'Hematocrit, scored against the age and sex band above' },
+      { dom: 'pcd-hct', arg: 'hct', kind: 'number', unit: 'percent', label: 'Hematocrit, scored against the age and sex band above', bound: 'hematocrit' },
       { dom: 'pcd-esr', arg: 'esr', kind: 'number', unit: 'mm/hr', label: 'ESR - below 20 scores 0, 20 to 50 scores 2.5, above 50 scores 5' },
-      { dom: 'pcd-albumin', arg: 'albumin', kind: 'number', unit: 'g/dL', label: 'Serum albumin - 3.5 or above scores 0, 3.1 to 3.4 scores 5, 3.0 or below scores 10. Note this lab is full weight, unlike hematocrit and ESR' },
+      { dom: 'pcd-albumin', arg: 'albumin', kind: 'number', unit: 'g/dL', label: 'Serum albumin - 3.5 or above scores 0, 3.1 to 3.4 scores 5, 3.0 or below scores 10. Note this lab is full weight, unlike hematocrit and ESR', bound: 'albumin' },
     ],
   },
 ];

@@ -10,7 +10,7 @@ export default [
     compute: PW.pedsWarfarinNomogram,
     fields: [
       { dom: 'pwn-phase', arg: 'phase', kind: 'enum', required: true, values: PW.PHASES.map((x) => x.value), label: 'Phase' },
-      { dom: 'pwn-inr', arg: 'inr', kind: 'number', required: true, label: 'INR (baseline on day 1)' },
+      { dom: 'pwn-inr', arg: 'inr', kind: 'number', required: true, label: 'INR (baseline on day 1)', bound: 'inr' },
       { dom: 'pwn-start', arg: 'start', kind: 'enum', values: PW.STARTS.map((x) => x.value), label: 'Day 1 start' },
       { dom: 'pwn-wt', arg: 'weightKg', kind: 'number', label: 'Weight (day 1)', unit: 'kg' },
       { dom: 'pwn-dose', arg: 'doseMg', kind: 'number', label: 'Loading dose or current dose', unit: 'mg' },

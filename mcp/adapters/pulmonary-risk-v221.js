@@ -15,7 +15,7 @@ export default [
     summary: 'Simplified revised Geneva score (Klok 2008): age > 65, prior VTE, recent surgery/fracture, malignancy, unilateral limb pain, hemoptysis, palpation pain with edema, and heart rate give a pretest probability of pulmonary embolism (≥ 3 likely).',
     compute: F.simplifiedGeneva,
     fields: [
-      { dom: 'sg-hr', arg: 'heartRate', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'sg-hr', arg: 'heartRate', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
       { dom: 'sg-age', arg: 'ageOver65', kind: 'bool', required: false, label: 'Age > 65 (+1)' },
       { dom: 'sg-vte', arg: 'priorVte', kind: 'bool', required: false, label: 'Previous DVT/PE (+1)' },
       { dom: 'sg-surg', arg: 'surgeryFracture', kind: 'bool', required: false, label: 'Surgery or fracture ≤ 1 month (+1)' },

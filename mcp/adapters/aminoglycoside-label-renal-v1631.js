@@ -15,7 +15,7 @@ export default [
       { dom: 'agl-weight', arg: 'weight', kind: 'number', required: true, label: 'Actual body weight', unit: 'kg', min: 30, max: 300 },
       { dom: 'agl-basis', arg: 'basis', kind: 'enum', required: true, values: AG.BASES.map((b) => b.value), label: 'Dose on actual weight or a lean estimate' },
       { dom: 'agl-lean', arg: 'leanWeight', kind: 'number', label: 'Lean weight estimate (if dosing on it)', unit: 'kg' },
-      { dom: 'agl-creatinine', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'agl-creatinine', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
     ],
   },
 ];

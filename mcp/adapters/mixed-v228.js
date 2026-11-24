@@ -14,7 +14,7 @@ export default [
     fields: [
       { dom: 'ef-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL', min: 30, max: 200 },
       { dom: 'ef-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L', min: 0.5, max: 10 },
-      { dom: 'ef-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'ef-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', bound: 'hemoglobin' },
     ],
   },
   {
@@ -24,7 +24,7 @@ export default [
     fields: [
       { dom: 'sd-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL', min: 30, max: 200 },
       { dom: 'sd-rbc', arg: 'rbc', kind: 'number', required: true, label: 'RBC count', unit: '×10¹²/L', min: 0.5, max: 10 },
-      { dom: 'sd-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'sd-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', bound: 'hemoglobin' },
     ],
   },
   {

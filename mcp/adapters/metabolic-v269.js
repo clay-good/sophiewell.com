@@ -11,9 +11,9 @@ export default [
     compute: F.metsIr,
     fields: [
       { dom: 'metsir-fpg', arg: 'fpg', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL', min: 20, max: 3000 },
-      { dom: 'metsir-tg', arg: 'tg', kind: 'number', required: true, label: 'Fasting triglycerides', unit: 'mg/dL' },
+      { dom: 'metsir-tg', arg: 'tg', kind: 'number', required: true, label: 'Fasting triglycerides', unit: 'mg/dL', bound: 'triglycerides' },
       { dom: 'metsir-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },
-      { dom: 'metsir-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2' },
+      { dom: 'metsir-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2', bound: 'bmi' },
     ],
   },
 ];

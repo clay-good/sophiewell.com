@@ -17,7 +17,7 @@ export default [
     compute: C.cdiSeverity,
     fields: [
       { dom: 'cdi-wbc', arg: 'wbc', kind: 'number', label: 'WBC (cells/uL)' },
-      { dom: 'cdi-cr', arg: 'creatinine', kind: 'number', label: 'Serum creatinine (mg/dL)' },
+      { dom: 'cdi-cr', arg: 'creatinine', kind: 'number', label: 'Serum creatinine (mg/dL)', bound: 'scr' },
       { dom: 'cdi-hypotension', arg: 'hypotension', kind: 'bool', label: 'Hypotension or shock [fulminant]' },
       { dom: 'cdi-ileus', arg: 'ileus', kind: 'bool', label: 'Ileus [fulminant]' },
       { dom: 'cdi-megacolon', arg: 'megacolon', kind: 'bool', label: 'Megacolon (toxic megacolon) [fulminant]' },

@@ -20,8 +20,8 @@ export default [
       { dom: 'pl-ca', arg: 'activeCancer', kind: 'enum', values: YN, required: true, label: 'Active cancer in the past year' },
       { dom: 'pl-tx', arg: 'transplant', kind: 'enum', values: YN, required: true, label: 'Prior solid-organ or stem-cell transplant' },
       { dom: 'pl-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL' },
-      { dom: 'pl-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
-      { dom: 'pl-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL' },
+      { dom: 'pl-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
+      { dom: 'pl-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL', bound: 'scr' },
     ],
   },
   {
@@ -30,7 +30,7 @@ export default [
     compute: F.frenchTtp,
     fields: [
       { dom: 'ft-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
-      { dom: 'ft-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL' },
+      { dom: 'ft-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'ft-ana', arg: 'ana', kind: 'enum', values: YN, required: true, label: 'Antinuclear antibody (ANA) positive' },
     ],
   },

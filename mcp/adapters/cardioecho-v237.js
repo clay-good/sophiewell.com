@@ -53,8 +53,8 @@ export default [
     summary: 'Rate-pressure product = heart rate (bpm) x systolic BP (mmHg); a surrogate for myocardial oxygen demand.',
     compute: F.ratePressureProduct,
     fields: [
-      { dom: 'rpp-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
-      { dom: 'rpp-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'rpp-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
+      { dom: 'rpp-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
     ],
   },
 ];

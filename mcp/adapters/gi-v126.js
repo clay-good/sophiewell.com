@@ -35,9 +35,9 @@ export default [
       { dom: 'cd-anti', arg: 'antidiarrheal', kind: 'bool', label: 'Antidiarrheal use' },
       { dom: 'cd-mass', arg: 'abdMass', kind: 'number', required: true, label: 'Abdominal mass (0 none, 2 questionable, 5 definite)', values: ['0', '2', '5'] },
       { dom: 'cd-female', arg: 'female', kind: 'bool', label: 'Female (sets the hematocrit reference to 42)' },
-      { dom: 'cd-hct', arg: 'hct', kind: 'number', required: true, label: 'Hematocrit', unit: '%' },
-      { dom: 'cd-wt', arg: 'weight', kind: 'number', required: true, label: 'Current weight', unit: 'kg' },
-      { dom: 'cd-std', arg: 'standardWeight', kind: 'number', required: true, label: 'Standard/ideal body weight', unit: 'kg' },
+      { dom: 'cd-hct', arg: 'hct', kind: 'number', required: true, label: 'Hematocrit', unit: '%', bound: 'hematocrit' },
+      { dom: 'cd-wt', arg: 'weight', kind: 'number', required: true, label: 'Current weight', unit: 'kg', bound: 'weightKg' },
+      { dom: 'cd-std', arg: 'standardWeight', kind: 'number', required: true, label: 'Standard/ideal body weight', unit: 'kg', bound: 'weightKg' },
     ],
   },
   {
@@ -57,8 +57,8 @@ export default [
     fields: [
       { dom: 'ha-perit', arg: 'peritonitis', kind: 'bool', label: 'Rebound tenderness or guarding present' },
       { dom: 'ha-female', arg: 'female', kind: 'bool', label: 'Female (sets the hematocrit threshold to 39.6)' },
-      { dom: 'ha-hct', arg: 'hct', kind: 'number', required: true, label: 'Hematocrit', unit: '%' },
-      { dom: 'ha-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL' },
+      { dom: 'ha-hct', arg: 'hct', kind: 'number', required: true, label: 'Hematocrit', unit: '%', bound: 'hematocrit' },
+      { dom: 'ha-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL', bound: 'scr' },
     ],
   },
   {
@@ -75,7 +75,7 @@ export default [
     summary: 'Modified Marshall organ-dysfunction score (Banks 2013, Revised Atlanta): respiratory by PaO2/FiO2, renal by creatinine, and cardiovascular each scored 0-4; a score ≥ 2 in any system is organ failure.',
     compute: F.modifiedMarshall,
     fields: [
-      { dom: 'mm-pao2', arg: 'pao2', kind: 'number', label: 'PaO2', unit: 'mmHg' },
+      { dom: 'mm-pao2', arg: 'pao2', kind: 'number', label: 'PaO2', unit: 'mmHg', bound: 'paO2' },
       { dom: 'mm-fio2', arg: 'fio2', kind: 'number', label: 'FiO2', unit: '%', min: 0 },
       { dom: 'mm-creat', arg: 'creatinine', kind: 'number', label: 'Creatinine', unit: 'mg/dL', min: 0 },
       { dom: 'mm-cv', arg: 'cardiovascular', kind: 'number', label: 'Cardiovascular score (0-4, pre-banded; blank = not assessed)', values: ['0', '1', '2', '3', '4'] },

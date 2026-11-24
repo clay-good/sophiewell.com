@@ -22,7 +22,7 @@ export default [
     compute: F.reticIndex,
     fields: [
       { dom: 'ri-retic', arg: 'reticPct', kind: 'number', required: true, label: 'Reticulocyte', unit: '%' },
-      { dom: 'ri-hct', arg: 'hct', kind: 'number', required: true, label: 'Hematocrit', unit: '%' },
+      { dom: 'ri-hct', arg: 'hct', kind: 'number', required: true, label: 'Hematocrit', unit: '%', bound: 'hematocrit' },
     ],
   },
   {
@@ -56,8 +56,8 @@ export default [
     compute: F.ldlCalc,
     fields: [
       { dom: 'ldl-tc', concept: 'total-cholesterol', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL', min: 50, max: 1000 },
-      { dom: 'ldl-hdl', concept: 'hdl-cholesterol', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },
-      { dom: 'ldl-tg', concept: 'triglycerides', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL' },
+      { dom: 'ldl-hdl', concept: 'hdl-cholesterol', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL', bound: 'bmi' },
+      { dom: 'ldl-tg', concept: 'triglycerides', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL', bound: 'triglycerides' },
     ],
   },
   {
@@ -73,10 +73,10 @@ export default [
     summary: 'Arterial oxygen content CaO2 = 1.34*Hb*SaO2 + 0.003*PaO2, and O2 delivery DO2 = CaO2*cardiac output*10.',
     compute: F.cao2Do2,
     fields: [
-      { dom: 'cao2-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'cao2-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', bound: 'hemoglobin' },
       { dom: 'cao2-sao2', arg: 'sao2', kind: 'number', required: true, label: 'SaO2', unit: '%', min: 1, max: 100 },
-      { dom: 'cao2-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
-      { dom: 'cao2-co', arg: 'cardiacOutput', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min' },
+      { dom: 'cao2-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg', bound: 'paO2' },
+      { dom: 'cao2-co', arg: 'cardiacOutput', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min', bound: 'bmi', boundScale: 0.1 },
     ],
   },
   {
@@ -85,12 +85,12 @@ export default [
     compute: F.oxygenationIndex,
     fields: [
       { dom: 'oi-fio2', arg: 'fio2', kind: 'number', min: 0.21, max: 1, required: true, label: 'FiO2 (0.21-1.0)' },
-      { dom: 'oi-map', arg: 'map', kind: 'number', required: true, label: 'Mean airway pressure', unit: 'cmH2O' },
+      { dom: 'oi-map', arg: 'map', kind: 'number', required: true, label: 'Mean airway pressure', unit: 'cmH2O', bound: 'hr', boundScale: 0.1 },
       // spec-v913 retired osi-oxygenation, which computed the saturation index on its own.
       // Neither of these can stay required or that capability goes with it: the library already
       // returns a null OI when the PaO2 is absent and a null OSI when the SpO2 is, so either
       // one alone is a legitimate call.
-      { dom: 'oi-pao2', arg: 'pao2', kind: 'number', required: false, label: 'PaO2 (omit for the saturation index alone)', unit: 'mmHg' },
+      { dom: 'oi-pao2', arg: 'pao2', kind: 'number', required: false, label: 'PaO2 (omit for the saturation index alone)', unit: 'mmHg', bound: 'paO2' },
       { dom: 'oi-spo2', arg: 'spo2', kind: 'number', required: false, label: 'SpO2 (omit for the oxygenation index alone)', unit: '%' },
     ],
   },
@@ -110,7 +110,7 @@ export default [
     compute: F.ttkg,
     fields: [
       { dom: 'ttkg-uk', arg: 'urineK', kind: 'number', required: true, label: 'Urine K', unit: 'mEq/L' },
-      { dom: 'ttkg-pk', arg: 'plasmaK', kind: 'number', required: true, label: 'Plasma K', unit: 'mEq/L' },
+      { dom: 'ttkg-pk', arg: 'plasmaK', kind: 'number', required: true, label: 'Plasma K', unit: 'mEq/L', bound: 'potassium' },
       { dom: 'ttkg-uosm', arg: 'urineOsm', kind: 'number', required: true, label: 'Urine osmolality', unit: 'mOsm/kg', min: 1, max: 1500 },
       { dom: 'ttkg-posm', arg: 'plasmaOsm', kind: 'number', required: true, label: 'Plasma osmolality', unit: 'mOsm/kg', min: 100, max: 400 },
       { dom: 'ttkg-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine Na', unit: 'mEq/L' },
@@ -133,9 +133,9 @@ export default [
     fields: [
       { dom: 'abd-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 1, max: 400 },
       { dom: 'abd-sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex (TBW fraction)' },
-      { dom: 'abd-mhco3', arg: 'measuredHco3', kind: 'number', required: true, label: 'Measured HCO3', unit: 'mEq/L' },
+      { dom: 'abd-mhco3', arg: 'measuredHco3', kind: 'number', required: true, label: 'Measured HCO3', unit: 'mEq/L', bound: 'bicarbonate' },
       { dom: 'abd-thco3', arg: 'targetHco3', kind: 'number', required: true, label: 'Target HCO3', unit: 'mEq/L', min: 1, max: 50 },
-      { dom: 'abd-mna', arg: 'measuredNa', kind: 'number', required: true, label: 'Measured Na', unit: 'mEq/L' },
+      { dom: 'abd-mna', arg: 'measuredNa', kind: 'number', required: true, label: 'Measured Na', unit: 'mEq/L', bound: 'sodium' },
       { dom: 'abd-tna', arg: 'targetNa', kind: 'number', required: true, label: 'Target Na', unit: 'mEq/L', min: 90, max: 200 },
     ],
   },

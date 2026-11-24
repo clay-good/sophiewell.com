@@ -13,7 +13,7 @@ export default [
     compute: insulinDripRate,
     fields: [
       { dom: 'p', arg: 'protocol', kind: 'enum', values: ['low', 'mod'], required: true, label: 'Example protocol (low or moderate intensity)' },
-      { dom: 'bg', arg: 'bg', kind: 'number', required: true, label: 'Current blood glucose (mg/dL)' },
+      { dom: 'bg', arg: 'bg', kind: 'number', required: true, label: 'Current blood glucose (mg/dL)', bound: 'glucose' },
     ],
   },
 ];

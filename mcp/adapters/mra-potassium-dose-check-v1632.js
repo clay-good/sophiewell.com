@@ -11,7 +11,7 @@ export default [
     compute: MR.mraPotassiumDoseCheck,
     fields: [
       { dom: 'mra-mode', arg: 'mode', kind: 'enum', required: true, values: MR.MODES.map((m) => m.value), label: 'Drug and question' },
-      { dom: 'mra-k', arg: 'potassium', kind: 'number', required: true, label: 'Serum potassium', unit: 'mEq/L' },
+      { dom: 'mra-k', arg: 'potassium', kind: 'number', required: true, label: 'Serum potassium', unit: 'mEq/L', bound: 'potassium' },
       { dom: 'mra-egfr', arg: 'egfr', kind: 'number', label: 'Spironolactone: eGFR', unit: 'mL/min/1.73 m²' },
       { dom: 'mra-dose', arg: 'currentDose', kind: 'enum', values: MR.EPLERENONE_DOSES.map((d) => d.value), label: 'Eplerenone adjustment: current dose' },
       { dom: 'mra-crcl', arg: 'crcl', kind: 'number', label: 'Eplerenone start: creatinine clearance', unit: 'mL/min' },

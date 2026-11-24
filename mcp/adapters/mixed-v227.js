@@ -40,7 +40,7 @@ export default [
     compute: F.batt,
     fields: [
       { dom: 'batt-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'batt-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'batt-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
       { dom: 'batt-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'GCS (3–15)' },
       { dom: 'batt-rr', arg: 'rrAbnormal', kind: 'bool', required: false, label: 'Abnormal respiratory rate or SpO₂' },
       { dom: 'batt-hr', arg: 'hrHigh', kind: 'bool', required: false, label: 'Heart rate high' },
@@ -66,7 +66,7 @@ export default [
     summary: 'Emergency Transfusion Score (Ruchholtz 2006): systolic BP and age bands plus free intra-abdominal fluid, unstable pelvis, scene arrival, traffic mechanism, and fall > 3 m; ≥ 3 flags a likely need for blood products.',
     compute: F.ets,
     fields: [
-      { dom: 'ets-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'ets-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
       { dom: 'ets-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'ets-fluid', arg: 'freeFluid', kind: 'bool', required: false, label: 'Free intra-abdominal fluid on FAST' },
       { dom: 'ets-pelvis', arg: 'unstablePelvis', kind: 'bool', required: false, label: 'Unstable pelvic fracture' },

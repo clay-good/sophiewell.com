@@ -13,7 +13,7 @@ export default [
     compute: F.hemodynamicSuite,
     fields: [
       { dom: 'hs-co', arg: 'cardiacOutput', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min' },
-      { dom: 'hs-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'hs-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
       { dom: 'hs-bsa', arg: 'bsa', kind: 'number', required: false, label: 'Body surface area', unit: 'm^2' },
       { dom: 'hs-map', arg: 'map', kind: 'number', required: false, label: 'Mean arterial pressure', unit: 'mmHg' },
       { dom: 'hs-cvp', arg: 'cvp', kind: 'number', required: false, label: 'Central venous pressure', unit: 'mmHg' },
@@ -29,7 +29,7 @@ export default [
     // the plain-ASCII unit so the JSON result is self-describing for an agent.
     formatResult: (raw) => (raw && raw.valid ? { ...raw, drivingPressureUnit: 'cmH2O' } : raw),
     fields: [
-      { dom: 'mp-rr', arg: 'respiratoryRate', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
+      { dom: 'mp-rr', arg: 'respiratoryRate', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
       { dom: 'mp-vt', arg: 'tidalVolume', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL' },
       { dom: 'mp-plat', arg: 'plateau', kind: 'number', required: true, label: 'Plateau pressure', unit: 'cmH2O' },
       { dom: 'mp-peep', arg: 'peep', kind: 'number', required: true, label: 'PEEP', unit: 'cmH2O' },
@@ -41,7 +41,7 @@ export default [
     summary: 'Physiologic dead-space fraction (Vd/Vt) by the Bohr-Enghoff equation; above 0.6 carried independent mortality risk in ARDS (Nuckton 2002).',
     compute: F.deadSpace,
     fields: [
-      { dom: 'ds-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Arterial PaCO2', unit: 'mmHg' },
+      { dom: 'ds-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Arterial PaCO2', unit: 'mmHg', bound: 'paCO2' },
       { dom: 'ds-source', arg: 'source', kind: 'enum', values: ['peco2', 'etco2'], required: true, label: 'Expired CO2 source' },
       { dom: 'ds-eco2', arg: 'expiredCo2', kind: 'number', required: true, label: 'Expired CO2 value', unit: 'mmHg' },
     ],

@@ -14,7 +14,7 @@ export default [
       { dom: 'iron-tabs', arg: 'tablets', kind: 'number', required: true, label: 'Number of tablets ingested' },
       { dom: 'iron-mg', arg: 'mgPerTablet', kind: 'number', unit: 'mg', required: true, label: 'Iron salt per tablet (mg)' },
       { dom: 'iron-salt', arg: 'saltType', kind: 'enum', values: ['ferrous-sulfate', 'ferrous-gluconate', 'ferrous-fumarate', 'elemental'], required: true, label: 'Iron salt' },
-      { dom: 'iron-wt', arg: 'weightKg', kind: 'number', unit: 'kg', required: true, label: 'Body weight (kg)' },
+      { dom: 'iron-wt', arg: 'weightKg', kind: 'number', unit: 'kg', required: true, label: 'Body weight (kg)', bound: 'weightKg' },
     ],
   },
 ];

@@ -10,7 +10,7 @@ export default [
     compute: HY.hypoglycemiaLevel,
     fields: [
       { dom: 'hy-assist', arg: 'needsAssistance', kind: 'enum', required: true, label: 'Altered mental or physical status, needing help to treat', values: HY.HYPO_YES_NO.map((x) => x.value) },
-      { dom: 'hy-glucose', arg: 'glucoseMgDl', kind: 'number', label: 'Glucose', unit: 'mg/dL' },
+      { dom: 'hy-glucose', arg: 'glucoseMgDl', kind: 'number', label: 'Glucose', unit: 'mg/dL', bound: 'glucose' },
     ],
   },
 ];

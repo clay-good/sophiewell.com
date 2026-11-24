@@ -10,7 +10,7 @@ export default [
     summary: 'The dofetilide initiation steps on the Tikosyn label. From the baseline QTc or QT, a ventricular conduction abnormality and the creatinine clearance it reports the starting dose or the contraindication; with the interval after the first dose, whether the label steps the dose down (a rise above 15% or above 500 msec); with a later interval, whether the label says to discontinue. It starts, adjusts and stops nothing.',
     compute: DF.dofetilideDoseAlgorithm,
     fields: [
-      { dom: 'dof-base', arg: 'baselineQt', kind: 'number', required: true, label: 'Baseline QTc (QT if heart rate under 60)', unit: 'msec' },
+      { dom: 'dof-base', arg: 'baselineQt', kind: 'number', required: true, label: 'Baseline QTc (QT if heart rate under 60)', unit: 'msec', bound: 'qtMs' },
       { dom: 'dof-cond', arg: 'conduction', kind: 'enum', required: true, values: DF.YES_NO.map((y) => y.value), label: 'Ventricular conduction abnormality' },
       { dom: 'dof-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance (actual weight)', unit: 'mL/min' },
       { dom: 'dof-first', arg: 'firstDoseQt', kind: 'number', label: 'QTc or QT 2 to 3 h after dose 1 (optional)', unit: 'msec' },

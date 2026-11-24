@@ -12,7 +12,7 @@ export default [
     compute: romeEcopd,
     fields: [
       { dom: 'rome-vas', arg: 'dyspneaVas', kind: 'number', min: 0, max: 10, required: false, label: 'Dyspnea VAS (0-10)' },
-      { dom: 'rome-rr', arg: 'respiratoryRate', kind: 'number', required: false, label: 'Respiratory rate', unit: '/min' },
+      { dom: 'rome-rr', arg: 'respiratoryRate', kind: 'number', required: false, label: 'Respiratory rate', unit: '/min', bound: 'rr' },
       { dom: 'rome-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: '/min' },
       { dom: 'rome-spo2', arg: 'spo2', kind: 'number', required: false, label: 'Oxygen saturation', unit: '%' },
       { dom: 'rome-drop', arg: 'spo2DropFromBaseline', kind: 'number', required: false, label: 'Fall in saturation', unit: 'points' },

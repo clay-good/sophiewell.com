@@ -50,7 +50,7 @@ export default [
     summary: 'Compartment delta pressure ΔP = diastolic blood pressure − measured intracompartmental pressure (mmHg); ΔP < 30 mmHg is the published fasciotomy threshold.',
     compute: F.compartmentDeltaPressure,
     fields: [
-      { dom: 'comp-dia', arg: 'diastolic', kind: 'number', required: true, label: 'Diastolic blood pressure', unit: 'mmHg' },
+      { dom: 'comp-dia', arg: 'diastolic', kind: 'number', required: true, label: 'Diastolic blood pressure', unit: 'mmHg', bound: 'dbp' },
       { dom: 'comp-icp', arg: 'compartment', kind: 'number', required: true, label: 'Measured compartment pressure', unit: 'mmHg' },
     ],
   },

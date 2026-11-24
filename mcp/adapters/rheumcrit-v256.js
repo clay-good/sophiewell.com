@@ -62,10 +62,10 @@ export default [
     fields: [
       { dom: 'crop-cdyn', arg: 'compliance', kind: 'number', required: true, label: 'Dynamic compliance', unit: 'mL/cmH2O', min: 1, max: 200 },
       { dom: 'crop-pimax', arg: 'pimax', kind: 'number', required: true, label: 'Maximal inspiratory pressure PImax (magnitude)', unit: 'cmH2O', min: 1, max: 200 },
-      { dom: 'crop-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
-      { dom: 'crop-fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO2 (fraction, 0.21-1.0)' },
-      { dom: 'crop-paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
-      { dom: 'crop-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
+      { dom: 'crop-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg', bound: 'paO2' },
+      { dom: 'crop-fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO2 (fraction, 0.21-1.0)', bound: 'fio2' },
+      { dom: 'crop-paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg', bound: 'paCO2' },
+      { dom: 'crop-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
     ],
   },
 ];

@@ -16,7 +16,7 @@ export default [
     fields: [
       { dom: 'dg-mode', arg: 'mode', kind: 'enum', values: ['level', 'amount', 'empiric'], required: true, label: 'Dosing basis' },
       { dom: 'dg-level', arg: 'level', kind: 'number', label: 'Steady-state serum digoxin level (ng/mL)' },
-      { dom: 'dg-weight', arg: 'weight', kind: 'number', label: 'Body weight (kg)' },
+      { dom: 'dg-weight', arg: 'weight', kind: 'number', label: 'Body weight (kg)', bound: 'weightKg' },
       { dom: 'dg-amount', arg: 'amount', kind: 'number', label: 'Known amount ingested (mg)' },
       { dom: 'dg-timing', arg: 'timing', kind: 'enum', values: ['acute', 'chronic'], label: 'Empiric setting' },
     ],
@@ -26,7 +26,7 @@ export default [
     summary: 'N-acetylcysteine dosing for acetaminophen poisoning: computes the per-bag milligrams for the three-bag (21 h) or two-bag (label alternative, 20 h, 41 kg and over) IV regimen of the Acetadote label, with the diluent volume for each bag; the dose is fixed at 100 kg and above and no dose is given under 5 kg. A UK choice applies the MHRA 2017 posology and its 110 kg ceiling weight.',
     compute: F.nacDosing,
     fields: [
-      { dom: 'nc-weight', arg: 'weight', kind: 'number', required: true, label: 'Body weight (kg)' },
+      { dom: 'nc-weight', arg: 'weight', kind: 'number', required: true, label: 'Body weight (kg)', bound: 'weightKg' },
       { dom: 'nc-reg', arg: 'regimen', kind: 'enum', values: ['three-bag', 'two-bag', 'uk-three-bag'], required: true, label: 'IV NAC regimen' },
     ],
   },
@@ -35,7 +35,7 @@ export default [
     summary: 'High-dose insulin euglycemia therapy (HIET) dosing for calcium-channel-blocker / beta-blocker poisoning: bolus, starting infusion, and titration ceiling from weight.',
     compute: F.hietDosing,
     fields: [
-      { dom: 'hi-weight', arg: 'weight', kind: 'number', required: true, label: 'Body weight (kg)' },
+      { dom: 'hi-weight', arg: 'weight', kind: 'number', required: true, label: 'Body weight (kg)', bound: 'weightKg' },
       { dom: 'hi-bolus', arg: 'bolus', kind: 'number', label: 'Bolus dose override (units/kg)' },
       { dom: 'hi-rate', arg: 'rate', kind: 'number', label: 'Starting infusion override (units/kg/hr)' },
     ],
@@ -46,7 +46,7 @@ export default [
     compute: F.tcaBicarbonate,
     fields: [
       { dom: 'tc-qrs', arg: 'qrs', kind: 'number', required: true, label: 'QRS duration (ms)' },
-      { dom: 'tc-weight', arg: 'weight', kind: 'number', required: true, label: 'Body weight (kg)' },
+      { dom: 'tc-weight', arg: 'weight', kind: 'number', required: true, label: 'Body weight (kg)', bound: 'weightKg' },
     ],
   },
   {

@@ -19,8 +19,8 @@ export default [
     compute: F.warfarinIwpc,
     fields: [
       { dom: 'iw-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'iw-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
-      { dom: 'iw-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'iw-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
+      { dom: 'iw-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'iw-vk', arg: 'vkorc1', kind: 'enum', values: ['GG', 'AG', 'AA', 'unknown'], required: true, label: 'VKORC1 (-1639 G>A) genotype' },
       { dom: 'iw-cyp', arg: 'cyp2c9', kind: 'enum', values: ['*1/*1', '*1/*2', '*1/*3', '*2/*2', '*2/*3', '*3/*3', 'unknown'], required: true, label: 'CYP2C9 genotype' },
       { dom: 'iw-race', arg: 'race', kind: 'enum', values: ['white', 'asian', 'black', 'mixed'], required: true, label: 'Race / ethnicity' },
@@ -34,8 +34,8 @@ export default [
     compute: F.warfarinGage,
     fields: [
       { dom: 'ga-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'ga-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
-      { dom: 'ga-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'ga-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
+      { dom: 'ga-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'ga-inr', arg: 'targetInr', kind: 'number', required: true, label: 'Target INR' },
       { dom: 'ga-vk', arg: 'vkorc1', kind: 'enum', values: ['GG', 'AG', 'AA'], required: true, label: 'VKORC1 (-1639 G>A) genotype' },
       { dom: 'ga-cyp', arg: 'cyp2c9', kind: 'enum', values: ['*1/*1', '*1/*2', '*1/*3', '*2/*2', '*2/*3', '*3/*3'], required: true, label: 'CYP2C9 genotype' },
@@ -51,7 +51,7 @@ export default [
     compute: F.warfarinInit10mg,
     fields: [
       { dom: 'w10-day', arg: 'day', kind: 'number', required: true, label: 'Protocol day (1–7)', values: ['1', '2', '3', '4', '5', '6', '7'] },
-      { dom: 'w10-inr3', arg: 'inr3', kind: 'number', label: 'Day-3 INR (required from day 3)' },
+      { dom: 'w10-inr3', arg: 'inr3', kind: 'number', label: 'Day-3 INR (required from day 3)', bound: 'inr' },
       { dom: 'w10-inr5', arg: 'inr5', kind: 'number', label: 'Day-5 INR (required from day 5)' },
     ],
   },
@@ -61,7 +61,7 @@ export default [
     compute: F.warfarinInit5mg,
     fields: [
       { dom: 'w5-day', arg: 'day', kind: 'number', required: true, label: 'Protocol day (1–6)', values: ['1', '2', '3', '4', '5', '6'] },
-      { dom: 'w5-inr', arg: 'inr', kind: 'number', label: 'INR (required from day 3)' },
+      { dom: 'w5-inr', arg: 'inr', kind: 'number', label: 'INR (required from day 3)', bound: 'inr' },
     ],
   },
 ];

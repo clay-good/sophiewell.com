@@ -21,7 +21,7 @@ export default [
     fields: [
       { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 1, max: 400 },
       { dom: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
-      { dom: 'na', arg: 'currentNa', kind: 'number', required: true, label: 'Current serum Na', unit: 'mEq/L' },
+      { dom: 'na', arg: 'currentNa', kind: 'number', required: true, label: 'Current serum Na', unit: 'mEq/L', bound: 'sodium' },
       { dom: 'infusate', arg: 'infusate', kind: 'enum', values: ['3pct-saline', '0.9-saline', '0.45-saline', 'lr', 'd5w'], required: true, label: 'Infusate' },
       { dom: 'tgt', arg: 'targetChangePer24h', kind: 'number', required: true, label: 'Target change in 24 h', unit: 'mEq/L', min: 0.1, max: 12 },
       { dom: 'acuity', arg: 'acuity', kind: 'enum', values: ['chronic', 'acute'], required: false, label: 'Acuity' },
@@ -58,8 +58,8 @@ export default [
     summary: 'Rapid shallow breathing index = respiratory rate / tidal volume(L); <105 predicts extubation success.',
     compute: F.rsbi,
     fields: [
-      { dom: 'rr', arg: 'respiratoryRate', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
-      { dom: 'vt', arg: 'tidalVolumeMl', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL' },
+      { dom: 'rr', arg: 'respiratoryRate', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
+      { dom: 'vt', arg: 'tidalVolumeMl', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL', bound: 'bmi', boundScale: 10 },
     ],
   },
   {
@@ -67,9 +67,9 @@ export default [
     summary: 'Albumin-corrected anion gap (Figge): AG + 2.5*(4.0 - albumin), with optional potassium inclusion.',
     compute: F.correctedAnionGap,
     fields: [
-      { dom: 'na', arg: 'na', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
-      { dom: 'cl', arg: 'cl', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L' },
-      { dom: 'hco3', arg: 'hco3', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L' },
+      { dom: 'na', arg: 'na', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L', bound: 'sodium' },
+      { dom: 'cl', arg: 'cl', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L', bound: 'chloride' },
+      { dom: 'hco3', arg: 'hco3', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L', bound: 'bicarbonate' },
       { dom: 'alb', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', min: 0.5, max: 8 },
     ],
   },
@@ -79,7 +79,7 @@ export default [
     compute: F.ironDeficitGanzoni,
     fields: [
       { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 1, max: 400 },
-      { dom: 'hb', arg: 'currentHb', kind: 'number', required: true, label: 'Current Hb', unit: 'g/dL' },
+      { dom: 'hb', arg: 'currentHb', kind: 'number', required: true, label: 'Current Hb', unit: 'g/dL', bound: 'hemoglobin' },
       { dom: 'tgt', arg: 'targetHb', kind: 'number', required: true, label: 'Target Hb', unit: 'g/dL', min: 5, max: 25 },
       { dom: 'stores', arg: 'ironStoresMg', kind: 'number', required: false, label: 'Iron stores override', unit: 'mg' },
     ],
@@ -109,7 +109,7 @@ export default [
     summary: 'R-factor for drug-induced liver injury = (ALT/ALT-ULN) / (ALP/ALP-ULN): >= 5 hepatocellular, <= 2 cholestatic, between 2 and 5 mixed pattern.',
     compute: (a) => F.rFactorLiver(a),
     fields: [
-      { dom: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L' },
+      { dom: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L', bound: 'alt' },
       { dom: 'altu', arg: 'altUln', kind: 'number', required: true, label: 'ALT upper-normal limit', unit: 'U/L', min: 1, max: 500 },
       { dom: 'alp', arg: 'alp', kind: 'number', required: true, label: 'ALP', unit: 'U/L', min: 0.1, max: 20000 },
       { dom: 'alpu', arg: 'alpUln', kind: 'number', required: true, label: 'ALP upper-normal limit', unit: 'U/L', min: 1, max: 500 },
@@ -120,8 +120,8 @@ export default [
     summary: 'KDIGO acute-kidney-injury staging from the creatinine ratio to baseline (and optional 48-hour rise, urine output, anuria duration, and RRT); returns the creatinine and urine-output sub-stages and the overall stage.',
     compute: F.kdigoAki,
     fields: [
-      { dom: 'base', arg: 'baselineCr', kind: 'number', required: true, label: 'Baseline serum creatinine', unit: 'mg/dL' },
-      { dom: 'cur', arg: 'currentCr', kind: 'number', required: true, label: 'Current serum creatinine', unit: 'mg/dL' },
+      { dom: 'base', arg: 'baselineCr', kind: 'number', required: true, label: 'Baseline serum creatinine', unit: 'mg/dL', bound: 'scr' },
+      { dom: 'cur', arg: 'currentCr', kind: 'number', required: true, label: 'Current serum creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'rise', arg: 'riseInLast48h', kind: 'number', label: 'Rise in last 48 h (optional)', unit: 'mg/dL' },
       { dom: 'uo', arg: 'uoMlPerKgPerHour', kind: 'number', label: 'Urine output (optional)', unit: 'mL/kg/h' },
       { dom: 'uoh', arg: 'uoDurationHours', kind: 'number', label: 'Urine-output duration (optional)', unit: 'hours' },
@@ -183,8 +183,8 @@ export default [
     compute: F.abcd2,
     fields: [
       { dom: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
-      { dom: 'dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg' },
+      { dom: 'sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
+      { dom: 'dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg', bound: 'dbp' },
       { dom: 'clin', arg: 'clinicalFeatures', kind: 'enum', values: ['weakness', 'speech', 'other'], required: true, label: 'Clinical features (weakness 2 / speech 1 / other 0)' },
       { dom: 'dur', arg: 'durationMinutes', kind: 'number', required: true, label: 'Symptom duration', unit: 'minutes' },
       { dom: 'diab', arg: 'diabetes', kind: 'bool', label: 'Diabetes (1)' },

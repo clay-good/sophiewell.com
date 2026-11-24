@@ -71,7 +71,7 @@ export default [
     compute: F.genevaOriginal,
     fields: [
       { dom: 'gv-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'gv-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'gv-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
       { dom: 'gv-vte', arg: 'priorVte', kind: 'bool', required: false, label: 'Previous DVT or PE' },
       { dom: 'gv-surg', arg: 'recentSurgery', kind: 'bool', required: false, label: 'Surgery within 4 weeks' },
       { dom: 'gv-co2', arg: 'paco2Band', kind: 'enum', values: ['normal', 'low1', 'low2'], required: false, label: 'PaCO2 (arterial)' },

@@ -10,7 +10,7 @@ export default [
     summary: 'Advanced Lung Cancer Inflammation Index (Jafri 2013) = BMI (kg/m^2) x serum albumin (g/dL) / neutrophil-to-lymphocyte ratio (ANC / ALC); a higher value is more favorable, so a lower value marks a worse profile (cohort-specific cutoff).',
     compute: F.ali,
     fields: [
-      { dom: 'ali-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2' },
+      { dom: 'ali-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2', bound: 'bmi' },
       { dom: 'ali-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', min: 0.1, max: 8 },
       { dom: 'ali-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '10^9/L', min: 0.001, max: 500 },
       { dom: 'ali-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '10^9/L', min: 0.001, max: 500 },

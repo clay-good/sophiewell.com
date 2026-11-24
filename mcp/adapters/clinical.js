@@ -36,7 +36,7 @@ export default [
     summary: 'Body mass index = weight(kg) / height(m)^2, with WHO category. Threshold: >=25 overweight, >=30 obese.',
     compute: F.bmi,
     fields: [
-      { dom: 'w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'h', concept: 'body-height', arg: 'heightM', kind: 'number', required: true, label: 'Height', unit: 'm' },
     ],
   },
@@ -51,8 +51,8 @@ export default [
       return duBois == null && mosteller == null ? null : { duBois, mosteller, unit: 'm^2' };
     },
     fields: [
-      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'h', arg: 'heightCm', kind: 'number', required: true, label: 'Height', unit: 'cm' },
+      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
+      { dom: 'h', arg: 'heightCm', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
     ],
   },
   {
@@ -60,8 +60,8 @@ export default [
     summary: 'Mean arterial pressure = (SBP + 2*DBP)/3.',
     compute: F.map,
     fields: [
-      { dom: 's', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
-      { dom: 'd', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg' },
+      { dom: 's', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
+      { dom: 'd', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg', bound: 'dbp' },
     ],
   },
   {
@@ -69,14 +69,14 @@ export default [
     summary: 'Serum anion gap = Na - (Cl + HCO3), with optional albumin correction. Normal roughly 8-12 mEq/L.',
     compute: F.anionGap,
     fields: [
-      { dom: 'na', concept: 'sodium', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
-      { dom: 'cl', concept: 'chloride', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L' },
-      { dom: 'hco3', concept: 'bicarbonate', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L' },
+      { dom: 'na', concept: 'sodium', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L', bound: 'sodium' },
+      { dom: 'cl', concept: 'chloride', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L', bound: 'chloride' },
+      { dom: 'hco3', concept: 'bicarbonate', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L', bound: 'bicarbonate' },
       // spec-v1150: the albumin is the OPTIONAL correction term -- the summary
       // above says so, the page label says "Albumin (optional)", and the library
       // returns the uncorrected gap without it. Declared required, the agent
       // surface refused every call the browser answers.
-      { dom: 'alb', concept: 'albumin', arg: 'albuminGdl', kind: 'number', label: 'Albumin (optional; omit for the uncorrected gap)', unit: 'g/dL' },
+      { dom: 'alb', concept: 'albumin', arg: 'albuminGdl', kind: 'number', label: 'Albumin (optional; omit for the uncorrected gap)', unit: 'g/dL', bound: 'albumin' },
     ],
   },
   {
@@ -84,8 +84,8 @@ export default [
     summary: 'Albumin-corrected calcium = measured Ca + 0.8*(4.0 - albumin). Returns a single number (mg/dL).',
     compute: F.correctedCalcium,
     fields: [
-      { dom: 'ca', concept: 'calcium', arg: 'measuredCa', kind: 'number', required: true, label: 'Measured calcium', unit: 'mg/dL' },
-      { dom: 'alb', concept: 'albumin', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
+      { dom: 'ca', concept: 'calcium', arg: 'measuredCa', kind: 'number', required: true, label: 'Measured calcium', unit: 'mg/dL', bound: 'calcium' },
+      { dom: 'alb', concept: 'albumin', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', bound: 'albumin' },
     ],
   },
   {
@@ -98,8 +98,8 @@ export default [
       return r == null ? null : { ...r, katzFactor: 1.6, hillierFactor: 2.4 };
     },
     fields: [
-      { dom: 'na', arg: 'measuredNa', kind: 'number', required: true, label: 'Measured sodium', unit: 'mEq/L' },
-      { dom: 'g', arg: 'glucose', kind: 'number', required: true, label: 'Glucose', unit: 'mg/dL' },
+      { dom: 'na', arg: 'measuredNa', kind: 'number', required: true, label: 'Measured sodium', unit: 'mEq/L', bound: 'sodium' },
+      { dom: 'g', arg: 'glucose', kind: 'number', required: true, label: 'Glucose', unit: 'mg/dL', bound: 'glucose' },
     ],
   },
   {
@@ -108,8 +108,8 @@ export default [
     compute: F.aaGradient,
     fields: [
       { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0.21, max: 1, required: true, label: 'FiO2 (0.21-1)' },
-      { dom: 'paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
-      { dom: 'pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
+      { dom: 'paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg', bound: 'paCO2' },
+      { dom: 'pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg', bound: 'paO2' },
     ],
   },
   {
@@ -132,7 +132,7 @@ export default [
       return out;
     },
     fields: [
-      { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
       { dom: 'egfr-h', concept: 'body-height', arg: 'heightCm', kind: 'number', required: false, label: 'Height (optional; with weight gives eGFR in mL/min)', unit: 'cm' },
@@ -162,8 +162,8 @@ export default [
     },
     fields: [
       { dom: 'age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
+      { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
       { dom: 'cg-h', concept: 'body-height', arg: 'heightCm', kind: 'number', required: false, label: 'Height (optional; gives ideal- and adjusted-weight results)', unit: 'cm' },
       { dom: 'cg-drug', arg: 'drug', kind: 'enum', values: CG_LABEL_DRUGS.map((d) => d.value), required: false, label: 'For which drug\'s label (optional): returns the clearance on the weight that label names' },
@@ -183,8 +183,8 @@ export default [
     summary: 'Corrected QT by Bazett, Fridericia, Framingham, and Hodges from QT interval and heart rate.',
     compute: F.qtc,
     fields: [
-      { dom: 'qt', arg: 'qtMs', kind: 'number', required: true, label: 'QT interval', unit: 'ms' },
-      { dom: 'hr', arg: 'hrBpm', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'qt', arg: 'qtMs', kind: 'number', required: true, label: 'QT interval', unit: 'ms', bound: 'qtMs' },
+      { dom: 'hr', arg: 'hrBpm', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
     ],
   },
   {
@@ -192,7 +192,7 @@ export default [
     summary: 'PaO2/FiO2 ratio with ARDS severity category (<=300 mild, <=200 moderate, <=100 severe).',
     compute: F.pfRatio,
     fields: [
-      { dom: 'pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
+      { dom: 'pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg', bound: 'paO2' },
       { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0.01, max: 1, required: true, label: 'FiO2 (0.01-1)' },
     ],
   },
@@ -221,10 +221,10 @@ export default [
     // neither pair is complete, compute returns null and the caller gets
     // INCOMPLETE.
     fields: [
-      { dom: 'ca', arg: 'measuredCa', kind: 'number', label: 'Measured calcium', unit: 'mg/dL' },
-      { dom: 'cca-alb', arg: 'albuminGdl', kind: 'number', label: 'Albumin', unit: 'g/dL' },
-      { dom: 'csna-na', arg: 'measuredNa', kind: 'number', label: 'Measured sodium', unit: 'mEq/L' },
-      { dom: 'glu', arg: 'glucose', kind: 'number', label: 'Glucose', unit: 'mg/dL' },
+      { dom: 'ca', arg: 'measuredCa', kind: 'number', label: 'Measured calcium', unit: 'mg/dL', bound: 'calcium' },
+      { dom: 'cca-alb', arg: 'albuminGdl', kind: 'number', label: 'Albumin', unit: 'g/dL', bound: 'albumin' },
+      { dom: 'csna-na', arg: 'measuredNa', kind: 'number', label: 'Measured sodium', unit: 'mEq/L', bound: 'sodium' },
+      { dom: 'glu', arg: 'glucose', kind: 'number', label: 'Glucose', unit: 'mg/dL', bound: 'glucose' },
     ],
   },
   {
@@ -249,8 +249,8 @@ export default [
     // an agent with a blood gas and no age still gets a P/F ratio.
     fields: [
       { dom: 'sf-fio2', arg: 'fio2', kind: 'number', min: 0.21, max: 1, required: true, label: 'FiO2 (0.21-1)' },
-      { dom: 'sf-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
-      { dom: 'sf-paco2', arg: 'paco2', kind: 'number', label: 'PaCO2', unit: 'mmHg' },
+      { dom: 'sf-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg', bound: 'paO2' },
+      { dom: 'sf-paco2', arg: 'paco2', kind: 'number', label: 'PaCO2', unit: 'mmHg', bound: 'paCO2' },
       { dom: 'sf-age', arg: 'age', kind: 'number', label: 'Age', unit: 'years' },
     ],
   },
@@ -283,12 +283,12 @@ export default [
       return out;
     },
     fields: [
-      { dom: 'es-scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'es-scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'es-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       // spec-v1045: the label already says it -- the weight is Cockcroft-Gault's
       // alone, so requiring it withheld both eGFRs from an agent that had no
       // weight to give.
-      { dom: 'es-w', concept: 'body-weight', arg: 'weightKg', kind: 'number', label: 'Weight (Cockcroft-Gault; with height, CKD-EPI in mL/min)', unit: 'kg' },
+      { dom: 'es-w', concept: 'body-weight', arg: 'weightKg', kind: 'number', label: 'Weight (Cockcroft-Gault; with height, CKD-EPI in mL/min)', unit: 'kg', bound: 'weightKg' },
       { dom: 'es-h', concept: 'body-height', arg: 'heightCm', kind: 'number', label: 'Height (optional; with weight gives CKD-EPI in mL/min)', unit: 'cm' },
       { dom: 'es-sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
     ],
@@ -308,7 +308,7 @@ export default [
     summary: 'Weight-based total dose: total = weight (kg) x per-kg dose. Standard formulary arithmetic; the dose-unit text is display-only.',
     compute: F.weightDose,
     fields: [
-      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'd', arg: 'dosePerKg', kind: 'number', required: true, label: 'Dose per kg' },
       // spec-v1155: the unit is a display LABEL and no part of the arithmetic --
       // weight x dose per kg is the whole calculation. The page falls back to
@@ -366,8 +366,8 @@ export default [
     compute: F.abgInterpret,
     fields: [
       { dom: 'pH', arg: 'pH', kind: 'number', required: true, label: 'Arterial pH', min: 6, max: 8 },
-      { dom: 'paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
-      { dom: 'hco3', arg: 'hco3', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L' },
+      { dom: 'paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg', bound: 'paCO2' },
+      { dom: 'hco3', arg: 'hco3', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L', bound: 'bicarbonate' },
       { dom: 'pao2', arg: 'pao2', kind: 'number', label: 'PaO2 (optional, enables oxygenation indices)', unit: 'mmHg' },
       { dom: 'fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, label: 'FiO2 (0-1, optional, enables oxygenation indices)' },
     ],

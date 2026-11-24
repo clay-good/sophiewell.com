@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'cs-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Sex' },
       { dom: 'cs-age', arg: 'ageYears', kind: 'number', label: 'Age (years, 2–20)' },
-      { dom: 'cs-ht', arg: 'heightCm', kind: 'number', label: 'Height (cm)' },
+      { dom: 'cs-ht', arg: 'heightCm', kind: 'number', label: 'Height (cm)', bound: 'heightM', boundScale: 100 },
     ],
   },
   {
@@ -22,7 +22,7 @@ export default [
     fields: [
       { dom: 'cw-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Sex' },
       { dom: 'cw-age', arg: 'ageYears', kind: 'number', label: 'Age (years, 2–20)' },
-      { dom: 'cw-wt', arg: 'weightKg', kind: 'number', label: 'Weight (kg)' },
+      { dom: 'cw-wt', arg: 'weightKg', kind: 'number', label: 'Weight (kg)', bound: 'weightKg' },
     ],
   },
 ];

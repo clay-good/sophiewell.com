@@ -16,8 +16,8 @@ export default [
       { dom: 'walter-adl', arg: 'adl', kind: 'enum', values: ['none', 'some', 'all'], required: true, label: 'ADL dependence at discharge: none, some (1-4 of 5), all (5 of 5) — bathing, dressing, transferring, toileting, eating' },
       { dom: 'walter-chf', arg: 'chf', kind: 'bool', label: 'Congestive heart failure' },
       { dom: 'walter-cancer', arg: 'cancer', kind: 'enum', values: ['none', 'solitary', 'metastatic'], required: true, label: 'Cancer status' },
-      { dom: 'walter-creat', arg: 'creatinine', kind: 'number', unit: 'mg/dL', required: true, label: 'Serum creatinine (points if > 3.0 mg/dL)' },
-      { dom: 'walter-alb', arg: 'albumin', kind: 'number', unit: 'g/dL', required: true, label: 'Serum albumin (1 point if 3.0-3.4, 2 points if < 3.0 g/dL)' },
+      { dom: 'walter-creat', arg: 'creatinine', kind: 'number', unit: 'mg/dL', required: true, label: 'Serum creatinine (points if > 3.0 mg/dL)', bound: 'scr' },
+      { dom: 'walter-alb', arg: 'albumin', kind: 'number', unit: 'g/dL', required: true, label: 'Serum albumin (1 point if 3.0-3.4, 2 points if < 3.0 g/dL)', bound: 'albumin' },
     ],
   },
 ];

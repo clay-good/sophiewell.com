@@ -30,7 +30,7 @@ export default [
     compute: F.sicScore,
     fields: [
       { dom: 'si-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count', unit: 'x10^9/L' },
-      { dom: 'si-inr', arg: 'inr', kind: 'number', required: true, label: 'PT-INR' },
+      { dom: 'si-inr', arg: 'inr', kind: 'number', required: true, label: 'PT-INR', bound: 'inr' },
       { dom: 'si-sofa', arg: 'sofa', kind: 'number', required: true, label: 'Total SOFA score' },
     ],
   },
@@ -39,7 +39,7 @@ export default [
     summary: 'Clinical Pulmonary Infection Score (Pugin 1991): temperature, leukocyte count and bands, tracheal secretions, oxygenation, chest radiograph, and tracheal-aspirate culture; CPIS 0-12, with > 6 suggesting ventilator-associated pneumonia.',
     compute: F.cpisVap,
     fields: [
-      { dom: 'cp-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'degrees C' },
+      { dom: 'cp-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'degrees C', bound: 'temperature' },
       { dom: 'cp-wbc', arg: 'wbc', kind: 'number', required: true, label: 'Leukocyte count', unit: 'per mm^3' },
       { dom: 'cp-band', arg: 'bandForms', kind: 'bool', label: 'Band forms >= 50%' },
       { dom: 'cp-sec', arg: 'secretions', kind: 'enum', values: ['none', 'non-purulent', 'purulent'], label: 'Tracheal secretions' },

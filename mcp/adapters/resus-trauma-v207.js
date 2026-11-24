@@ -28,8 +28,8 @@ export default [
     fields: [
       { dom: 'rems-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'rems-map', arg: 'map', kind: 'number', required: true, label: 'Mean arterial pressure', unit: 'mmHg' },
-      { dom: 'rems-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
-      { dom: 'rems-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
+      { dom: 'rems-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
+      { dom: 'rems-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
       { dom: 'rems-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO₂', unit: '%' },
       { dom: 'rems-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3–15)' },
     ],
@@ -39,9 +39,9 @@ export default [
     summary: 'Cardiac Arrest Risk Triage score (Churpek 2012): a ward early-warning model from respiratory rate, heart rate, diastolic BP, and age banded to 0–57; > 20 marks markedly elevated risk of ward cardiac arrest within 48 hours.',
     compute: F.cartScore,
     fields: [
-      { dom: 'cart-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
-      { dom: 'cart-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
-      { dom: 'cart-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic blood pressure', unit: 'mmHg' },
+      { dom: 'cart-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
+      { dom: 'cart-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
+      { dom: 'cart-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic blood pressure', unit: 'mmHg', bound: 'dbp' },
       { dom: 'cart-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
     ],
   },

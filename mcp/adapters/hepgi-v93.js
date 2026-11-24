@@ -14,10 +14,10 @@ export default [
     compute: F.nafldFibrosis,
     fields: [
       { dom: 'nf-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'nf-bmi', concept: 'bmi', arg: 'bmi', kind: 'number', required: true, label: 'Body mass index', unit: 'kg/m^2' },
+      { dom: 'nf-bmi', concept: 'bmi', arg: 'bmi', kind: 'number', required: true, label: 'Body mass index', unit: 'kg/m^2', bound: 'bmi' },
       { dom: 'nf-ifg', arg: 'ifgDm', kind: 'bool', label: 'Impaired fasting glucose or diabetes' },
-      { dom: 'nf-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L' },
-      { dom: 'nf-alt', concept: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L' },
+      { dom: 'nf-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
+      { dom: 'nf-alt', concept: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L', bound: 'alt' },
       { dom: 'nf-plt', concept: 'platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: 'x10^9/L' },
       { dom: 'nf-alb', concept: 'albumin', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
     ],
@@ -27,7 +27,7 @@ export default [
     summary: 'Modified Glasgow (Imrie) pancreatitis score: one point each for PaO2 < 60, age > 55, WBC > 15, calcium < 2, urea > 16, LDH > 600, albumin < 32, glucose > 10; a total >= 3 predicts severe pancreatitis.',
     compute: F.glasgowImrie,
     fields: [
-      { dom: 'gi-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'kPa' },
+      { dom: 'gi-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'kPa', bound: 'paO2' },
       { dom: 'gi-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'gi-wbc', arg: 'wbc', kind: 'number', required: true, label: 'White blood cell count', unit: 'x10^9/L' },
       { dom: 'gi-ca', arg: 'calcium', kind: 'number', required: true, label: 'Calcium', unit: 'mmol/L' },
@@ -52,9 +52,9 @@ export default [
       // including the ones that already rule severe colitis IN. Rule 27: optional
       // one at a time, required as a set, and the set is enforced by the library's
       // own "cannot yet rule severe colitis out" footing.
-      { dom: 'tw-temp', arg: 'temp', kind: 'number', label: 'Temperature (any one systemic criterion is enough for severe)', unit: 'degrees C' },
-      { dom: 'tw-hr', arg: 'heartRate', kind: 'number', label: 'Heart rate (any one systemic criterion is enough for severe)', unit: 'bpm' },
-      { dom: 'tw-hgb', arg: 'hemoglobin', kind: 'number', label: 'Hemoglobin (any one systemic criterion is enough for severe)', unit: 'g/dL' },
+      { dom: 'tw-temp', arg: 'temp', kind: 'number', label: 'Temperature (any one systemic criterion is enough for severe)', unit: 'degrees C', bound: 'temperature' },
+      { dom: 'tw-hr', arg: 'heartRate', kind: 'number', label: 'Heart rate (any one systemic criterion is enough for severe)', unit: 'bpm', bound: 'hr' },
+      { dom: 'tw-hgb', arg: 'hemoglobin', kind: 'number', label: 'Hemoglobin (any one systemic criterion is enough for severe)', unit: 'g/dL', bound: 'hemoglobin' },
       { dom: 'tw-esr', arg: 'esr', kind: 'number', label: 'ESR (any one systemic criterion is enough for severe)', unit: 'mm/hr' },
     ],
   },

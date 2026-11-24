@@ -13,9 +13,9 @@ export default [
     compute: nhsnVae,
     fields: [
       { dom: 'vae-stabilityperiod', arg: 'stabilityPeriod', kind: 'boolean', required: false, label: 'At least two calendar days of stable or decreasing daily minimum settings' },
-      { dom: 'vae-baselinefio2', arg: 'baselineFio2', kind: 'number', required: false, label: 'Baseline daily minimum FiO2, percent', unit: '%' },
+      { dom: 'vae-baselinefio2', arg: 'baselineFio2', kind: 'number', required: false, label: 'Baseline daily minimum FiO2, percent', unit: '%', bound: 'fio2', boundScale: 100 },
       { dom: 'vae-baselinepeep', arg: 'baselinePeep', kind: 'number', required: false, label: 'Baseline daily minimum PEEP, cmH2O', unit: 'cmH2O' },
-      { dom: 'vae-eventfio2', arg: 'eventFio2', kind: 'number', required: false, label: 'Event daily minimum FiO2, percent', unit: '%' },
+      { dom: 'vae-eventfio2', arg: 'eventFio2', kind: 'number', required: false, label: 'Event daily minimum FiO2, percent', unit: '%', bound: 'fio2', boundScale: 100 },
       { dom: 'vae-eventpeep', arg: 'eventPeep', kind: 'number', required: false, label: 'Event daily minimum PEEP, cmH2O', unit: 'cmH2O' },
       { dom: 'vae-sustainedtwodays', arg: 'sustainedTwoDays', kind: 'boolean', required: false, label: 'The rise was sustained for at least two calendar days' },
       { dom: 'vae-temperatureabnormal', arg: 'temperatureAbnormal', kind: 'boolean', required: false, label: 'Temperature above 100.4 F or below 96.8 F' },

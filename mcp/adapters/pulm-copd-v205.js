@@ -61,7 +61,7 @@ export default [
     summary: 'Sleep Apnea Clinical Score (Flemons 1994): adjusted neck circumference = measured neck (cm) + 4 (hypertension) + 3 (habitual snoring) + 3 (nocturnal gasping/choking); ≤ 43 low, 43–48 intermediate, > 48 high pretest probability of OSA.',
     compute: F.sacsOsa,
     fields: [
-      { dom: 'sacs-neck', arg: 'neck', kind: 'number', required: true, label: 'Measured neck circumference', unit: 'cm' },
+      { dom: 'sacs-neck', arg: 'neck', kind: 'number', required: true, label: 'Measured neck circumference', unit: 'cm', bound: 'qtMs', boundScale: 0.1 },
       { dom: 'sacs-htn', arg: 'hypertension', kind: 'bool', required: false, label: 'Hypertension (+4)' },
       { dom: 'sacs-snore', arg: 'snoring', kind: 'bool', required: false, label: 'Habitual snoring (+3)' },
       { dom: 'sacs-choke', arg: 'choking', kind: 'bool', required: false, label: 'Nocturnal gasping / choking (+3)' },

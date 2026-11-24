@@ -85,8 +85,8 @@ export default [
     summary: 'ACTION ICU score (Fanaroff 2018): age, heart rate, systolic BP, creatinine, troponin, heart failure, ST depression, no prior revascularization, and chronic lung disease give a 0–20 score predicting complications needing critical care in NSTEMI.',
     compute: F.actionIcu,
     fields: [
-      { dom: 'aic-hr', arg: 'heartRate', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
-      { dom: 'aic-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
+      { dom: 'aic-hr', arg: 'heartRate', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
+      { dom: 'aic-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
       { dom: 'aic-age', arg: 'ageOver70', kind: 'bool', required: false, label: 'Age ≥ 70 years (+1)' },
       { dom: 'aic-cr', arg: 'creatHigh', kind: 'bool', required: false, label: 'Creatinine ≥ 1.1 mg/dL (+1)' },
       { dom: 'aic-trop', arg: 'tropHigh', kind: 'bool', required: false, label: 'Initial troponin / ULN ≥ 12 (+2)' },

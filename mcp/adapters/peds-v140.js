@@ -28,9 +28,9 @@ export default [
     fields: [
       { dom: 'sn-map', arg: 'map', kind: 'number', label: 'Mean arterial pressure (mmHg)' },
       { dom: 'sn-temp', arg: 'temp', kind: 'number', label: 'Lowest temperature (°C)' },
-      { dom: 'sn-pao2', arg: 'pao2', kind: 'number', label: 'PaO2 (mmHg)' },
-      { dom: 'sn-fio2', arg: 'fio2', kind: 'number', label: 'FiO2 (%)' },
-      { dom: 'sn-ph', arg: 'ph', kind: 'number', label: 'Lowest pH' },
+      { dom: 'sn-pao2', arg: 'pao2', kind: 'number', label: 'PaO2 (mmHg)', bound: 'paO2' },
+      { dom: 'sn-fio2', arg: 'fio2', kind: 'number', label: 'FiO2 (%)', bound: 'fio2', boundScale: 100 },
+      { dom: 'sn-ph', arg: 'ph', kind: 'number', label: 'Lowest pH', bound: 'pH' },
       { dom: 'sn-seiz', arg: 'seizures', kind: 'bool', label: 'Seizures' },
       { dom: 'sn-urine', arg: 'urine', kind: 'number', label: 'Urine output (mL/kg/hr)' },
       { dom: 'sn-bw', arg: 'bw', kind: 'number', label: 'Birth weight (g)' },

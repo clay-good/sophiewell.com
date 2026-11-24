@@ -37,7 +37,7 @@ export default [
     compute: F.bronchiectasisBsi,
     fields: [
       { dom: 'bs-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
-      { dom: 'bs-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI (kg/m^2)' },
+      { dom: 'bs-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI (kg/m^2)', bound: 'bmi' },
       { dom: 'bs-fev1', arg: 'fev1', kind: 'number', required: true, label: 'FEV1 (% predicted)' },
       { dom: 'bs-exac', arg: 'exacerbations', kind: 'number', required: true, label: 'Exacerbations in the prior year' },
       { dom: 'bs-mrc', arg: 'mrc', kind: 'number', required: true, label: 'MRC dyspnea grade (1-5)', values: ['1', '4', '5'] },
@@ -66,7 +66,7 @@ export default [
     compute: F.nosasScore,
     fields: [
       { dom: 'no-neck', arg: 'neck', kind: 'number', required: true, label: 'Neck circumference (cm)' },
-      { dom: 'no-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI (kg/m^2)' },
+      { dom: 'no-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI (kg/m^2)', bound: 'bmi' },
       { dom: 'no-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)' },
       { dom: 'no-snore', arg: 'snoring', kind: 'bool', label: 'Snoring' },
       { dom: 'no-male', arg: 'male', kind: 'bool', label: 'Male sex' },

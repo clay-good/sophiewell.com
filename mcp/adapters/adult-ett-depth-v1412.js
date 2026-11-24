@@ -10,7 +10,7 @@ export default [
     compute: ETT.adultEttDepth,
     fields: [
       { dom: 'aed-sex', arg: 'sex', kind: 'enum', label: 'Sex', values: ETT.ETT_SEXES.map((s) => s.value) },
-      { dom: 'aed-ht', arg: 'heightCm', kind: 'number', label: 'Height', unit: 'cm' },
+      { dom: 'aed-ht', arg: 'heightCm', kind: 'number', label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
     ],
   },
 ];

@@ -24,7 +24,7 @@ export default [
     compute: E.quicki,
     fields: [
       { dom: 'qui-insulin', arg: 'insulin', kind: 'number', required: true, label: 'Fasting insulin', unit: 'uU/mL' },
-      { dom: 'qui-glucose', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL' },
+      { dom: 'qui-glucose', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL', bound: 'glucose' },
     ],
   },
   {
@@ -32,8 +32,8 @@ export default [
     summary: 'Triglyceride-glucose (TyG) index, a surrogate of insulin resistance from fasting triglycerides and glucose (mg/dL).',
     compute: E.tygIndex,
     fields: [
-      { dom: 'tyg-tg', concept: 'triglycerides', arg: 'tg', kind: 'number', required: true, label: 'Fasting triglycerides', unit: 'mg/dL' },
-      { dom: 'tyg-glucose', concept: 'glucose-fasting', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL' },
+      { dom: 'tyg-tg', concept: 'triglycerides', arg: 'tg', kind: 'number', required: true, label: 'Fasting triglycerides', unit: 'mg/dL', bound: 'triglycerides' },
+      { dom: 'tyg-glucose', concept: 'glucose-fasting', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL', bound: 'glucose' },
     ],
   },
   {
@@ -45,14 +45,14 @@ export default [
       { dom: 'ms-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Sex' },
       { dom: 'ms-wstd', arg: 'waistStandard', kind: 'enum', values: ['us', 'europid', 'asian'], label: 'Waist cut-point standard' },
       { dom: 'ms-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm' },
-      { dom: 'ms-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL' },
+      { dom: 'ms-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL', bound: 'triglycerides' },
       { dom: 'ms-tgtx', arg: 'tgTreated', kind: 'enum', values: YESNO, label: 'On treatment for high triglycerides' },
       { dom: 'ms-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },
       { dom: 'ms-hdltx', arg: 'hdlTreated', kind: 'enum', values: YESNO, label: 'On treatment for low HDL' },
-      { dom: 'ms-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
-      { dom: 'ms-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg' },
+      { dom: 'ms-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
+      { dom: 'ms-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg', bound: 'dbp' },
       { dom: 'ms-bptx', arg: 'bpTreated', kind: 'enum', values: YESNO, label: 'On antihypertensive treatment' },
-      { dom: 'ms-glu', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL' },
+      { dom: 'ms-glu', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL', bound: 'glucose' },
       { dom: 'ms-glutx', arg: 'glucoseTreated', kind: 'enum', values: YESNO, label: 'On treatment for elevated glucose' },
     ],
   },
@@ -62,7 +62,7 @@ export default [
     compute: E.osteoporosisPrescreen,
     fields: [
       { dom: 'ost-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'ost-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'ost-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'ost-estrogen', arg: 'estrogen', kind: 'enum', values: YESNO, label: 'Currently using estrogen' },
     ],
   },

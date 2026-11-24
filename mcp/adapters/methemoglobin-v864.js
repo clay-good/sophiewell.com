@@ -27,7 +27,7 @@ export default [
       { dom: 'mh-g6pd', arg: 'g6pd', kind: 'boolean', required: false, label: 'Known G6PD deficiency' },
       { dom: 'mh-serotonergic', arg: 'serotonergic', kind: 'boolean', required: false, label: 'Taking a serotonergic drug' },
       { dom: 'mh-spo2', arg: 'spo2', kind: 'number', required: false, label: 'Pulse oximeter reading, which does not measure methemoglobin', unit: 'percent' },
-      { dom: 'mh-pao2', arg: 'pao2', kind: 'number', required: false, label: 'Arterial oxygen tension, which is normal in methemoglobinemia', unit: 'mmHg' },
+      { dom: 'mh-pao2', arg: 'pao2', kind: 'number', required: false, label: 'Arterial oxygen tension, which is normal in methemoglobinemia', unit: 'mmHg', bound: 'paO2' },
       { dom: 'mh-weight', arg: 'weight', kind: 'number', required: false, label: 'Weight, for the label dose of methylene blue', unit: 'kg' },
       { dom: 'mh-kidney', arg: 'kidney', kind: 'enum', required: false, values: KIDNEY.map((k) => k.value).filter(Boolean), label: 'Kidney function, for the label dose' },
     ],

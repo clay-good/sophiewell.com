@@ -12,7 +12,7 @@ export default [
     compute: effectiveOsmolality,
     fields: [
       { dom: 'eosm-na', arg: 'sodium', kind: 'number', unit: 'mEq/L', required: true, label: 'Serum sodium (mEq/L)' },
-      { dom: 'eosm-glu', arg: 'glucose', kind: 'number', unit: 'mg/dL', required: true, label: 'Serum glucose (mg/dL)' },
+      { dom: 'eosm-glu', arg: 'glucose', kind: 'number', unit: 'mg/dL', required: true, label: 'Serum glucose (mg/dL)', bound: 'glucose' },
     ],
   },
 ];

@@ -22,6 +22,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { REGISTRY } from '../../mcp/catalog.js';
 import { META } from '../../lib/meta.js';
+import { fieldRange } from '../../mcp/fields.js';
 
 const JUDGED = {
   'dhi:dhi-yes:max': 'the two answer counts share a budget of 25, so 25 is reachable only when the other is 0',
@@ -59,11 +60,13 @@ test('every declared bound is an edge the library accepts', () => {
     if (run(e, { ...ex }).valid === false) continue;
     for (const f of e.fields) {
       if (f.kind !== 'number' || Array.isArray(f.values)) continue;
-      for (const [side, v] of [['max', f.max], ['min', f.min]]) {
+      // spec-v1779: the resolved range, so a bound declared by envelope name is held to the same promise.
+      const declared = fieldRange(f);
+      for (const [side, v] of [['max', declared.max], ['min', declared.min]]) {
         if (typeof v !== 'number' || !Number.isFinite(v)) continue;
         // An exclusive bound promises the edge is NOT allowed, so the library is right to refuse it.
-        if (side === 'max' && f.exclusiveMax) continue;
-        if (side === 'min' && f.exclusiveMin) continue;
+        if (side === 'max' && declared.exclusiveMax) continue;
+        if (side === 'min' && declared.exclusiveMin) continue;
         checked += 1;
         const r = run(e, { ...ex, [f.dom]: String(v) });
         if (r.valid !== false) continue;

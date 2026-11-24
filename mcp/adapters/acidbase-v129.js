@@ -13,15 +13,15 @@ export default [
     summary: 'Stewart strong ion difference / strong ion gap (Stewart 1983; Figge 1992): the unmeasured-anion burden from a full electrolyte panel.',
     compute: M.stewartSidSig,
     fields: [
-      { dom: 'ss-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
-      { dom: 'ss-k', arg: 'potassium', kind: 'number', required: true, label: 'Potassium', unit: 'mEq/L' },
+      { dom: 'ss-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L', bound: 'sodium' },
+      { dom: 'ss-k', arg: 'potassium', kind: 'number', required: true, label: 'Potassium', unit: 'mEq/L', bound: 'potassium' },
       { dom: 'ss-ca', arg: 'calcium', kind: 'number', required: true, label: 'Ionized calcium', unit: 'mEq/L' },
       { dom: 'ss-mg', arg: 'magnesium', kind: 'number', required: true, label: 'Ionized magnesium', unit: 'mEq/L' },
-      { dom: 'ss-cl', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L' },
+      { dom: 'ss-cl', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L', bound: 'chloride' },
       { dom: 'ss-lac', arg: 'lactate', kind: 'number', required: true, label: 'Lactate', unit: 'mEq/L' },
-      { dom: 'ss-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L' },
+      { dom: 'ss-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L', bound: 'bicarbonate' },
       { dom: 'ss-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
-      { dom: 'ss-phos', arg: 'phosphate', kind: 'number', required: true, label: 'Phosphate', unit: 'mg/dL' },
+      { dom: 'ss-phos', arg: 'phosphate', kind: 'number', required: true, label: 'Phosphate', unit: 'mg/dL', bound: 'phosphate' },
     ],
   },
   {
@@ -29,9 +29,9 @@ export default [
     summary: 'Standard base excess (Siggaard-Andersen Van Slyke equation, NCCLS constants): the hemoglobin-corrected metabolic component of a blood gas.',
     compute: M.baseExcess,
     fields: [
-      { dom: 'be-ph', arg: 'ph', kind: 'number', required: true, label: 'Arterial pH' },
-      { dom: 'be-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L' },
-      { dom: 'be-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'be-ph', arg: 'ph', kind: 'number', required: true, label: 'Arterial pH', bound: 'pH' },
+      { dom: 'be-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L', bound: 'bicarbonate' },
+      { dom: 'be-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', bound: 'hemoglobin' },
     ],
   },
   {
@@ -39,8 +39,8 @@ export default [
     summary: 'Expected HCO3 in respiratory acidosis (Brackett 1965 acute; Schwartz 1965 chronic): the appropriate-compensation band vs the measured HCO3.',
     compute: M.respAcidosisCompensation,
     fields: [
-      { dom: 'ra-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO2', unit: 'mmHg' },
-      { dom: 'ra-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Measured HCO3', unit: 'mEq/L' },
+      { dom: 'ra-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO2', unit: 'mmHg', bound: 'paCO2' },
+      { dom: 'ra-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Measured HCO3', unit: 'mEq/L', bound: 'bicarbonate' },
       // spec-v1137: `v === 'chronic'` turns every other value into `false`, which the
       // library reads as "acute, stated" -- the same trap as Number(''), in boolean
       // form. The raw value goes through so an absent choice stays absent.
@@ -52,8 +52,8 @@ export default [
     summary: 'Expected HCO3 in respiratory alkalosis (Gennari 1972): the appropriate-compensation band vs the measured HCO3.',
     compute: M.respAlkalosisCompensation,
     fields: [
-      { dom: 'rl-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO2', unit: 'mmHg' },
-      { dom: 'rl-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Measured HCO3', unit: 'mEq/L' },
+      { dom: 'rl-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO2', unit: 'mmHg', bound: 'paCO2' },
+      { dom: 'rl-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Measured HCO3', unit: 'mEq/L', bound: 'bicarbonate' },
       { dom: 'rl-ch', arg: 'chronic', kind: 'enum', values: ACUTE_CHRONIC, label: 'Acute or chronic' },
     ],
   },
@@ -62,8 +62,8 @@ export default [
     summary: 'Expected PaCO2 in metabolic alkalosis (Narins-Emmett 1980): the respiratory-compensation band vs the measured PaCO2.',
     compute: M.metAlkalosisCompensation,
     fields: [
-      { dom: 'ma-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Measured HCO3', unit: 'mEq/L' },
-      { dom: 'ma-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO2', unit: 'mmHg' },
+      { dom: 'ma-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Measured HCO3', unit: 'mEq/L', bound: 'bicarbonate' },
+      { dom: 'ma-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO2', unit: 'mmHg', bound: 'paCO2' },
     ],
   },
   {

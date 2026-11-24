@@ -8,7 +8,7 @@ export default [
     summary: 'Bolton anterior and overall tooth-size ratios against 77.2% and 91.3%, with the excess in mm.',
     compute: BR.boltonRatio,
     fields: [
-      { dom: 'br-max6', arg: 'maxAnterior', kind: 'number', required: false, label: 'Maxillary canine-to-canine sum of widths', unit: 'mm' },
+      { dom: 'br-max6', arg: 'maxAnterior', kind: 'number', required: false, label: 'Maxillary canine-to-canine sum of widths', unit: 'mm', bound: 'qtMs', boundScale: 0.1 },
       { dom: 'br-mand6', arg: 'mandAnterior', kind: 'number', required: false, label: 'Mandibular canine-to-canine sum of widths', unit: 'mm' },
       { dom: 'br-max12', arg: 'maxOverall', kind: 'number', required: false, label: 'Maxillary first-molar-to-first-molar sum', unit: 'mm' },
       { dom: 'br-mand12', arg: 'mandOverall', kind: 'number', required: false, label: 'Mandibular first-molar-to-first-molar sum', unit: 'mm' },

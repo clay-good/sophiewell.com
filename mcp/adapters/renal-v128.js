@@ -13,9 +13,9 @@ export default [
     compute: F.fepo4,
     fields: [
       { dom: 'fp-up', arg: 'urinePhos', kind: 'number', required: true, label: 'Urine phosphate', unit: 'mg/dL' },
-      { dom: 'fp-pp', arg: 'plasmaPhos', kind: 'number', required: true, label: 'Plasma phosphate', unit: 'mg/dL' },
+      { dom: 'fp-pp', arg: 'plasmaPhos', kind: 'number', required: true, label: 'Plasma phosphate', unit: 'mg/dL', bound: 'phosphate' },
       { dom: 'fp-uc', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
-      { dom: 'fp-pc', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL' },
+      { dom: 'fp-pc', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL', bound: 'scr' },
     ],
   },
   {
@@ -24,9 +24,9 @@ export default [
     compute: F.femg,
     fields: [
       { dom: 'fm-um', arg: 'urineMg', kind: 'number', required: true, label: 'Urine magnesium', unit: 'mg/dL' },
-      { dom: 'fm-pm', arg: 'plasmaMg', kind: 'number', required: true, label: 'Plasma magnesium', unit: 'mg/dL' },
+      { dom: 'fm-pm', arg: 'plasmaMg', kind: 'number', required: true, label: 'Plasma magnesium', unit: 'mg/dL', bound: 'magnesium' },
       { dom: 'fm-uc', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
-      { dom: 'fm-pc', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL' },
+      { dom: 'fm-pc', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL', bound: 'scr' },
     ],
   },
   {
@@ -34,8 +34,8 @@ export default [
     summary: 'Normalized protein catabolic rate (nPCR / nPNA) from the interdialytic BUN rise: a surrogate of dietary protein intake in g/kg/day against the ~1.0-1.2 g/kg/day nutrition target.',
     compute: F.npcrPna,
     fields: [
-      { dom: 'np-post', arg: 'postBun', kind: 'number', required: true, label: 'Post-dialysis BUN', unit: 'mg/dL' },
-      { dom: 'np-pre', arg: 'preBun', kind: 'number', required: true, label: 'Pre-dialysis BUN (next session)', unit: 'mg/dL' },
+      { dom: 'np-post', arg: 'postBun', kind: 'number', required: true, label: 'Post-dialysis BUN', unit: 'mg/dL', bound: 'bun' },
+      { dom: 'np-pre', arg: 'preBun', kind: 'number', required: true, label: 'Pre-dialysis BUN (next session)', unit: 'mg/dL', bound: 'bun' },
       { dom: 'np-hr', arg: 'hours', kind: 'number', required: true, label: 'Interdialytic interval', unit: 'hours' },
     ],
   },

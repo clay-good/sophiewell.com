@@ -13,7 +13,7 @@ export default [
     compute: F.myelomaIss,
     fields: [
       { dom: 'iss-b2m', arg: 'b2m', kind: 'number', label: 'β2-microglobulin (mg/L)' },
-      { dom: 'iss-alb', arg: 'albumin', kind: 'number', label: 'Albumin (g/dL)' },
+      { dom: 'iss-alb', arg: 'albumin', kind: 'number', label: 'Albumin (g/dL)', bound: 'albumin' },
     ],
   },
   {
@@ -22,7 +22,7 @@ export default [
     compute: F.myelomaRIss,
     fields: [
       { dom: 'riss-b2m', arg: 'b2m', kind: 'number', label: 'β2-microglobulin (mg/L)' },
-      { dom: 'riss-alb', arg: 'albumin', kind: 'number', label: 'Albumin (g/dL)' },
+      { dom: 'riss-alb', arg: 'albumin', kind: 'number', label: 'Albumin (g/dL)', bound: 'albumin' },
       { dom: 'riss-ldh', arg: 'ldhHigh', kind: 'enum', values: ['no', 'yes'], label: 'LDH above normal' },
       { dom: 'riss-fish', arg: 'highRiskFish', kind: 'enum', values: ['no', 'yes'], label: 'High-risk iFISH: del(17p), t(4;14), or t(14;16)' },
     ],
@@ -56,7 +56,7 @@ export default [
     fields: [
       { dom: 'dp-age', arg: 'age', kind: 'number', label: 'Age (years)' },
       { dom: 'dp-wbc', arg: 'wbc', kind: 'number', label: 'White-cell count (×10⁹/L)' },
-      { dom: 'dp-hgb', arg: 'hgb', kind: 'number', label: 'Hemoglobin (g/dL)' },
+      { dom: 'dp-hgb', arg: 'hgb', kind: 'number', label: 'Hemoglobin (g/dL)', bound: 'hemoglobin' },
       { dom: 'dp-blast', arg: 'blasts', kind: 'number', label: 'Peripheral blasts (%)' },
       { dom: 'dp-const', arg: 'constitutional', kind: 'enum', values: ['no', 'yes'], label: 'Constitutional symptoms' },
     ],

@@ -13,7 +13,7 @@ export default [
     fields: [
       { dom: 'uo-vol', arg: 'volumeMl', kind: 'number', required: true, label: 'Total urine volume', unit: 'mL' },
       { dom: 'uo-int', arg: 'intervalHr', kind: 'number', required: true, label: 'Collection interval', unit: 'hr' },
-      { dom: 'uo-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'uo-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
     ],
   },
   {
@@ -33,7 +33,7 @@ export default [
     compute: F.correctedPhenytoin,
     fields: [
       { dom: 'cp-meas', arg: 'measured', kind: 'number', required: true, label: 'Measured total phenytoin', unit: 'ug/mL' },
-      { dom: 'cp-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL' },
+      { dom: 'cp-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', bound: 'albumin' },
       { dom: 'cp-esrd', arg: 'esrd', kind: 'bool', required: false, label: 'CrCl <10 mL/min or ESRD (0.1 factor)' },
       { dom: 'cp-coef', arg: 'coefficient', kind: 'enum', values: F.PHENYTOIN_COEFFICIENTS.map((c) => c.value), label: 'Albumin coefficient (default 0.2)' },
     ],
@@ -43,7 +43,7 @@ export default [
     summary: 'Target hourly urine output for burn resuscitation from weight, with pediatric and electrical-injury/pigmenturia adjustments.',
     compute: F.burnUopTarget,
     fields: [
-      { dom: 'bu-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'bu-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
     ],
   },
   {
@@ -53,7 +53,7 @@ export default [
     fields: [
       { dom: 'fb-in', arg: 'intakeMl', kind: 'number', required: true, label: 'Total intake', unit: 'mL' },
       { dom: 'fb-out', arg: 'outputMl', kind: 'number', required: true, label: 'Total output', unit: 'mL' },
-      { dom: 'fb-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'fb-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
     ],
   },
   {
@@ -63,7 +63,7 @@ export default [
     fields: [
       { dom: 'gir-dex', arg: 'dextrosePct', kind: 'number', required: true, label: 'Dextrose concentration', unit: '%' },
       { dom: 'gir-rate', arg: 'rateMlHr', kind: 'number', required: true, label: 'Infusion rate', unit: 'mL/hr' },
-      { dom: 'gir-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'gir-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
     ],
   },
   {
@@ -71,8 +71,8 @@ export default [
     summary: 'Total-body potassium deficit estimate (Kruse-Carlson heuristic, ~10 mEq per 0.1 mEq/L below target scaled by weight) from serum K, weight, and target K.',
     compute: F.potassiumDeficit,
     fields: [
-      { dom: 'kd-k', arg: 'serumK', kind: 'number', required: true, label: 'Serum potassium', unit: 'mEq/L' },
-      { dom: 'kd-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'kd-k', arg: 'serumK', kind: 'number', required: true, label: 'Serum potassium', unit: 'mEq/L', bound: 'potassium' },
+      { dom: 'kd-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
       { dom: 'kd-target', arg: 'targetK', kind: 'number', required: true, label: 'Target potassium', unit: 'mEq/L' },
     ],
   },
@@ -81,7 +81,7 @@ export default [
     summary: 'Banded IV magnesium sulfate repletion (Tong-Rude): mild 1-2 g, moderate 2-4 g, severe 4-8 g, keyed to the entered serum magnesium and severity band.',
     compute: F.magnesiumReplacement,
     fields: [
-      { dom: 'mg-serum', arg: 'serumMg', kind: 'number', required: true, label: 'Serum magnesium', unit: 'mg/dL' },
+      { dom: 'mg-serum', arg: 'serumMg', kind: 'number', required: true, label: 'Serum magnesium', unit: 'mg/dL', bound: 'magnesium' },
       { dom: 'mg-sev', arg: 'severity', kind: 'enum', values: ['1', '2', '3'], required: true, label: 'Severity', to: Number },
     ],
   },

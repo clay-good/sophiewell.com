@@ -10,7 +10,7 @@ export default [
     summary: 'What the CHEST 2012 guideline suggests for an out-of-range INR on warfarin. It matches the INR, target range, prior stability and bleeding to the numbered recommendations (3.1, 3.2, 9.1a, 9.1b, 9.3) and quotes each with its grade. Where none applies it says so; it gives no vitamin K dose the recommendation does not state.',
     compute: WI.warfarinInrOutOfRange,
     fields: [
-      { dom: 'wio-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
+      { dom: 'wio-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
       { dom: 'wio-low', arg: 'targetLow', kind: 'number', required: true, label: 'Target range, lower end', min: 1, max: 5 },
       { dom: 'wio-high', arg: 'targetHigh', kind: 'number', required: true, label: 'Target range, upper end', min: 1, max: 5 },
       { dom: 'wio-bleeding', arg: 'bleeding', kind: 'enum', required: true, values: WI.BLEEDING.map((b) => b.value), label: 'Bleeding' },

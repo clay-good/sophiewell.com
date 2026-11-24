@@ -23,7 +23,7 @@ export default [
     summary: 'BODE index (Celli 2004): BMI, FEV1 % predicted, mMRC dyspnea, and 6-minute walk distance mapped to a 0-10 score and quartile survival.',
     compute: P.bodeIndex,
     fields: [
-      { dom: 'bo-bmi', arg: 'bmi', kind: 'number', required: true, label: 'Body-mass index', unit: 'kg/m^2' },
+      { dom: 'bo-bmi', arg: 'bmi', kind: 'number', required: true, label: 'Body-mass index', unit: 'kg/m^2', bound: 'bmi' },
       { dom: 'bo-pct', arg: 'fev1Pct', kind: 'number', required: true, label: 'FEV1', unit: '% predicted' },
       { dom: 'bo-mmrc', arg: 'mmrc', kind: 'enum', values: ['0', '1', '2', '3', '4'], label: 'mMRC dyspnea grade', to: (v) => Number(v) },
       { dom: 'bo-6mwd', arg: 'sixMwd', kind: 'number', required: true, label: '6-minute walk distance', unit: 'm' },
@@ -47,7 +47,7 @@ export default [
     compute: P.predictedSpirometry,
     fields: [
       { dom: 'ps-age', arg: 'age', kind: 'number', min: 3, max: 95, required: true, label: 'Age (3-95)', unit: 'years' },
-      { dom: 'ps-height', arg: 'heightCm', kind: 'number', required: true, label: 'Height', unit: 'cm' },
+      { dom: 'ps-height', arg: 'heightCm', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
       { dom: 'ps-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Sex' },
       { dom: 'ps-eth', arg: 'ethnicity', kind: 'enum', values: ['caucasian', 'african-american', 'ne-asian', 'se-asian', 'other'], label: 'Ethnicity group (GLI-2012)' },
       { dom: 'ps-fev1', arg: 'measuredFev1', kind: 'number', label: 'Measured FEV1 (optional, for % predicted)', unit: 'L' },
