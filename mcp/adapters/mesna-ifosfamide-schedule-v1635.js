@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'mis-dose', arg: 'dose', kind: 'number', required: true, label: 'Ifosfamide dose' },
       { dom: 'mis-unit', arg: 'unit', kind: 'enum', required: true, values: MS.UNITS.map((x) => x.value), label: 'Dose unit' },
-      { dom: 'mis-bsa', arg: 'bsa', kind: 'number', label: 'Body surface area (needed for a dose per m²)', unit: 'm²' },
+      { dom: 'mis-bsa', arg: 'bsa', kind: 'number', label: 'Body surface area (needed for a dose per m²)', unit: 'm²', min: 0.1, max: 3.5 },
       { dom: 'mis-plan', arg: 'plan', kind: 'enum', required: true, values: MS.PLANS.map((x) => x.value), label: 'Route plan' },
       { dom: 'mis-start', arg: 'start', kind: 'string', label: 'Ifosfamide start (YYYY-MM-DDTHH:MM, optional)' },
     ],

@@ -13,7 +13,7 @@ export default [
       { dom: 'ps-weight', arg: 'weight', kind: 'number', required: true, label: 'Patient weight' },
       { dom: 'ps-wunit', arg: 'weightUnit', kind: 'enum', required: true, values: PS.WEIGHT_UNITS.map((u) => u.value), label: 'Weight unit' },
       { dom: 'ps-dex', arg: 'dextroseGrams', kind: 'number', required: true, label: 'Dextrose, hydrous', unit: 'g' },
-      { dom: 'ps-aa', arg: 'aminoAcidGrams', kind: 'number', required: true, label: 'Amino acids', unit: 'g' },
+      { dom: 'ps-aa', arg: 'aminoAcidGrams', kind: 'number', required: true, label: 'Amino acids', unit: 'g', max: 2000 },
       { dom: 'ps-n', arg: 'nitrogenGrams', kind: 'number', required: false, label: 'Nitrogen, from the amino acid label (optional)', unit: 'g' },
       { dom: 'ps-lipid', arg: 'lipidProduct', kind: 'enum', required: false, values: PS.LIPID_OPTIONS.map((p) => p.value), label: 'Lipid product (needed when lipid grams are entered)' },
       { dom: 'ps-lipidg', arg: 'lipidGrams', kind: 'number', required: false, label: 'Lipid (optional)', unit: 'g' },

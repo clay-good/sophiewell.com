@@ -9,7 +9,7 @@ export default [
     summary: 'Drops per mL of one dropper from the reader\'s own count, and a dose in whole drops with its rounding error. The figure belongs to one dropper with one liquid; no standard drops-per-mL figure is assumed.',
     compute: DC.dropperCalibration,
     fields: [
-      { dom: 'dc-drops', arg: 'drops', kind: 'number', required: true, label: 'Drops counted' },
+      { dom: 'dc-drops', arg: 'drops', kind: 'number', required: true, label: 'Drops counted', min: 1, max: 100000 },
       { dom: 'dc-vol', arg: 'volume', kind: 'number', required: true, label: 'Volume those drops made', unit: 'mL' },
       { dom: 'dc-dose', arg: 'dose', kind: 'number', required: false, label: 'Dose (optional)' },
       { dom: 'dc-unit', arg: 'doseUnit', kind: 'enum', required: false, values: DC.DOSE_UNITS.map((u) => u.value), label: 'Dose unit: mL, or mg with the concentration' },

@@ -14,7 +14,7 @@ export default [
       { dom: 'viv-live', arg: 'live', kind: 'enum', required: true, values: VI.LIVE.map((k) => k.value), label: 'Kind of vaccine' },
       { dom: 'viv-grace', arg: 'graceRule', kind: 'enum', required: true, values: VI.GRACE.map((k) => k.value), label: 'Grace period rule' },
       { dom: 'viv-prev', arg: 'previousDose', kind: 'string', label: 'Date of the previous dose (YYYY-MM-DD)' },
-      { dom: 'viv-interval', arg: 'minInterval', kind: 'number', label: 'Minimum interval from the previous dose' },
+      { dom: 'viv-interval', arg: 'minInterval', kind: 'number', label: 'Minimum interval from the previous dose', max: 1500 },
       { dom: 'viv-interval-unit', arg: 'minIntervalUnit', kind: 'enum', values: VI.UNITS.map((k) => k.value), label: 'Unit of the minimum interval' },
       { dom: 'viv-birth', arg: 'birthDate', kind: 'string', label: 'Date of birth (YYYY-MM-DD)' },
       { dom: 'viv-age', arg: 'minAge', kind: 'number', label: 'Minimum age for this dose' },

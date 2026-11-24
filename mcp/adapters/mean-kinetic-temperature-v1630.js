@@ -13,7 +13,7 @@ export default [
     fields: [
       { dom: 'mk-unit', arg: 'unit', kind: 'enum', required: true, values: MK.UNITS.map((u) => u.value), label: 'Unit of the readings: Celsius (C) or Fahrenheit (F)' },
       { dom: 'mk-readings', arg: 'readings', kind: 'string', required: true, label: 'Readings, one per line (at equal intervals; or temperature, then hours, on every line)' },
-      { dom: 'mk-ea', arg: 'activationEnergy', kind: 'number', required: true, label: 'Activation energy (83.144 when the manufacturer\'s data are not available)', unit: 'kJ/mol' },
+      { dom: 'mk-ea', arg: 'activationEnergy', kind: 'number', required: true, label: 'Activation energy (83.144 when the manufacturer\'s data are not available)', unit: 'kJ/mol', min: 1, max: 500 },
       { dom: 'mk-limit', arg: 'limit', kind: 'number', required: false, label: 'Product\'s labeled limit, in the unit of the readings (optional)' },
     ],
   },

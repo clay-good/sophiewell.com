@@ -16,7 +16,7 @@ export default [
       { dom: 'tpc-unit', arg: 'unit', kind: 'enum', required: true, values: TC.UNITS.map((d) => d.value), label: 'Dose unit' },
       { dom: 'tpc-mode', arg: 'mode', kind: 'enum', required: true, values: TC.MODES.map((d) => d.value), label: 'How each step is taken' },
       { dom: 'tpc-reduction', arg: 'reduction', kind: 'number', required: true, label: 'Reduction per step (percent, or the fixed amount)' },
-      { dom: 'tpc-interval', arg: 'intervalDays', kind: 'number', required: true, label: 'Days between steps', unit: 'days' },
+      { dom: 'tpc-interval', arg: 'intervalDays', kind: 'number', required: true, label: 'Days between steps', unit: 'days', min: 28, max: 280 },
       { dom: 'tpc-date', arg: 'startDate', kind: 'string', required: true, label: 'Start date (YYYY-MM-DD)' },
       { dom: 'tpc-smallest', arg: 'smallestDose', kind: 'number', required: true, label: 'Smallest dose that can be dispensed (steps round down to multiples of it)' },
       { dom: 'tpc-stop', arg: 'stopTarget', kind: 'number', label: 'Stop target dose (optional)' },

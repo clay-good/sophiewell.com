@@ -12,7 +12,7 @@ export default [
     compute: PM.paMetricsCompare,
     fields: [
       { dom: 'pam-program', arg: 'program', kind: 'enum', required: true, values: vals(PM.PROGRAMS), label: 'Kind of plan' },
-      { dom: 'pam-year', arg: 'reportYear', kind: 'number', required: true, label: 'Calendar year the report covers', unit: 'year' },
+      { dom: 'pam-year', arg: 'reportYear', kind: 'number', required: true, label: 'Calendar year the report covers', unit: 'year', min: 2025, max: 2100 },
       { dom: 'pam-list', arg: 'list', kind: 'enum', required: false, values: vals(PM.YES_NO), label: 'Posts the list of items and services needing prior authorization' },
       n('pam-std-appr', 'stdApprovedPct', 'Standard requests approved', 'percent'),
       n('pam-std-deny', 'stdDeniedPct', 'Standard requests denied', 'percent'),

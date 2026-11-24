@@ -11,7 +11,7 @@ export default [
     compute: EP.ethanolProof,
     fields: [
       { dom: 'ep-mode', arg: 'mode', kind: 'enum', required: true, values: EP.MODES.map((m) => m.value), label: 'What to work out: percent and proof (convert), proof gallons (gallons), tax, or water to add to reduce proof (reduce)' },
-      { dom: 'ep-pct', arg: 'percent', kind: 'number', required: false, label: 'Convert: percent ethanol by volume (give this or the proof)' },
+      { dom: 'ep-pct', arg: 'percent', kind: 'number', required: false, label: 'Convert: percent ethanol by volume (give this or the proof)', max: 100 },
       { dom: 'ep-proof', arg: 'proof', kind: 'number', required: false, label: 'Convert or gallons: proof' },
       { dom: 'ep-vol', arg: 'volume', kind: 'number', required: false, label: 'Gallons: volume of spirits' },
       { dom: 'ep-vunit', arg: 'volumeUnit', kind: 'enum', required: false, values: EP.VOLUME_UNITS.map((u) => u.value), label: 'Gallons: unit of the volume (wine gallons or liters)' },

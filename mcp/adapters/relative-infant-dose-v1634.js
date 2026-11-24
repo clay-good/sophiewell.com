@@ -15,7 +15,7 @@ export default [
       { dom: 'rid-plasma', arg: 'plasmaConcentration', kind: 'number', label: 'Average maternal plasma concentration' },
       { dom: 'rid-unit', arg: 'unit', kind: 'enum', required: true, values: RD.UNITS.map((u) => u.value), label: 'Concentration unit' },
       { dom: 'rid-dose', arg: 'maternalDose', kind: 'number', required: true, label: 'Maternal dose', unit: 'mg/day' },
-      { dom: 'rid-weight', arg: 'maternalWeight', kind: 'number', required: true, label: 'Maternal weight', unit: 'kg' },
+      { dom: 'rid-weight', arg: 'maternalWeight', kind: 'number', required: true, label: 'Maternal weight', unit: 'kg', min: 20, max: 400 },
       { dom: 'rid-approved', arg: 'approvedInfantDose', kind: 'number', label: 'Approved infant dose (optional)', unit: 'mg/kg/day' },
     ],
   },

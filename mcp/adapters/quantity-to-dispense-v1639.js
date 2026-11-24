@@ -17,7 +17,7 @@ export default [
       { dom: 'qd-doseml', arg: 'doseMl', kind: 'number', label: 'Liquid: dose volume', unit: 'mL' },
       { dom: 'qd-uday', arg: 'unitsPerDay', kind: 'number', label: 'Insulin: units injected per day', unit: 'units' },
       { dom: 'qd-inj', arg: 'injectionsPerDay', kind: 'number', label: 'Insulin: injections per day' },
-      { dom: 'qd-prime', arg: 'primingUnits', kind: 'number', label: 'Insulin: priming units per injection (from the label)', unit: 'units' },
+      { dom: 'qd-prime', arg: 'primingUnits', kind: 'number', label: 'Insulin: priming units per injection (from the label)', unit: 'units', max: 20 },
       { dom: 'qd-upml', arg: 'unitsPerMl', kind: 'number', label: 'Insulin: units per mL' },
       { dom: 'qd-mlpen', arg: 'mlPerPen', kind: 'number', label: 'Insulin: mL per pen or vial', unit: 'mL' },
       { dom: 'qd-discard', arg: 'discardDays', kind: 'number', label: 'Insulin: in-use discard limit, if the label gives one', unit: 'days' },

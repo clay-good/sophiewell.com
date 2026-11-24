@@ -244,11 +244,22 @@ for (const [id, meta] of Object.entries(META)) {
     // Already declared on every side that exists, and in agreement: nothing to report.
     if (!contradicted && (!hi || declaredMax !== null) && (!lo || declaredMin !== null)) continue;
 
-    // A rescaled field is settled before anything else is asked of it. Its declaration is deliberately the
-    // UNION of the units it accepts -- wasting-classify declares MUAC as 8 to 250, which is 8 cm through
-    // 250 mm -- so comparing it to a cap measured in one unit reads three honest declarations as wrong.
-    if (unitSelect) {
+    // A rescaled field is settled before anything else is asked of it, BUT ONLY IF IT IS ACTUALLY RESCALED.
+    // spec-v1787: this used to ask whether the TOOL carried a unit-looking select, and was wrong three
+    // ways at once -- `iv-iron-course`'s sex select is labelled "INFeD above 15 kg: sex" and matched on the
+    // kilograms; `mayo-adpkd`'s imaging-morphology class matched on a word further along its label; and
+    // `chatelut-carboplatin` has a real unit select, for the CREATININE, which rescales neither the weight
+    // nor the age. All three had their caps held back from a declaration that was safe. The question is
+    // answered below by flipping the select and re-bisecting: a cap that does not move is not rescaled.
+    // Where a declaration IS on a rescaled field it is deliberately the UNION of its units --
+    // wasting-classify reads MUAC as 8 to 250, which is 8 cm through 250 mm -- so it is never compared to a
+    // cap measured in one unit.
+    if (unitSelect && declaredMax === null && declaredMin === null && contradicted) {
       sections['UNIT-TOGGLED'].push(`${row}\t[rescaled by ${unitSelect.dom}]`);
+      continue;
+    }
+    if (contradicted && unitSelect) {
+      sections['UNIT-TOGGLED'].push(`${row}\t[declaration spans the units of ${unitSelect.dom}]`);
       continue;
     }
 
@@ -259,6 +270,7 @@ for (const [id, meta] of Object.entries(META)) {
     const other = Object.entries(props).find(([k, q]) => k !== dom && q.type === 'number'
       && !Array.isArray(q.enum) && Number.isFinite(Number(example[k])) && Number(example[k]) > 0);
     let varies = false;
+    let movedBy = null;
     if (other) {
       // A counted quantity has to stay a whole number or the shifted configuration is simply refused, and
       // the probe would then learn nothing about whether the cap moved. DHI's two answer counts share a
@@ -273,9 +285,42 @@ for (const [id, meta] of Object.entries(META)) {
         const moved = (a, b) => (!a) !== (!b)
           || (a && b && Math.abs(a.accepted - b.accepted) > Math.max(Math.abs(a.accepted) * 0.01, 1e-9));
         varies = moved(hi, hi2) || moved(lo, lo2);
+        if (varies) movedBy = other[0];
       }
     }
-    if (varies) { sections.VARIES.push(row); continue; }
+    // spec-v1787: and every enum option, which is how a unit select is now identified -- by the cap moving
+    // when it flips, rather than by the look of its label. A select that does not move the cap does not
+    // rescale the field, whatever it is called.
+    if (!varies) {
+      const enums = (tool.fields || []).filter((q) => q.kind === 'enum' && Array.isArray(q.values));
+      for (const q of enums) {
+        for (const v of q.values.slice(0, 6)) {
+          if (String(example[q.dom]) === String(v)) continue;
+          const cfg = { ...example, [q.dom]: String(v) };
+          if (computeCalculator({ id, inputs: cfg }).valid !== true) {
+            // The flip left the worked example itself uncomputable, so this configuration proves nothing --
+            // and for a UNIT select that is the loudest evidence there is. `gmi`'s mean glucose example of
+            // 180 mg/dL is absurd as mmol/L, so the configuration was skipped and the probe never learned
+            // that the library's 40-600 guard is applied to a converted number. It declared 40 to 600 on a
+            // field a reader can put 8.3 in, and probe-unit-equivalent caught it (spec-v1787).
+            if (unitSelect && q.dom === unitSelect.dom) { varies = true; movedBy = q.dom; break; }
+            continue;
+          }
+          const set3 = (x) => ({ ...cfg, [dom]: String(x) });
+          const hi3 = hi ? edge(id, set3, Number(cfg[dom]), 1) : null;
+          const lo3 = lo ? edge(id, set3, Number(cfg[dom]), -1) : null;
+          const moved3 = (a, b) => (!a) !== (!b)
+            || (a && b && Math.abs(a.accepted - b.accepted) > Math.max(Math.abs(a.accepted) * 0.01, 1e-9));
+          if (moved3(hi, hi3) || moved3(lo, lo3)) { varies = true; movedBy = q.dom; break; }
+        }
+        if (varies) break;
+      }
+    }
+    if (varies) {
+      const rescaled = movedBy && unitSelect && movedBy === unitSelect.dom;
+      sections[rescaled ? 'UNIT-TOGGLED' : 'VARIES'].push(`${row}\t[moves with ${movedBy}]`);
+      continue;
+    }
     if (contradicted) { sections.DISAGREES.push(row); continue; }
     const shared = sharedEnvelope(foundMin, foundMax, `${f.arg || ''} ${f.label || ''} ${f.unit || ''}`);
     if (shared) { sections.ENVELOPE.push(`${row}\t[= BOUNDS.${shared}]`); continue; }

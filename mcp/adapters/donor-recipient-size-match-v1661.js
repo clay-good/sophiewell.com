@@ -13,8 +13,8 @@ export default [
       { dom: 'drs-hunit', arg: 'heightUnit', kind: 'enum', values: ['cm', 'in'], required: true, label: 'Height unit' },
       { dom: 'drs-dw', arg: 'donorWeight', kind: 'number', required: true, label: 'Donor weight' },
       { dom: 'drs-rw', arg: 'recipientWeight', kind: 'number', required: true, label: 'Recipient weight' },
-      { dom: 'drs-dh', arg: 'donorHeight', kind: 'number', required: true, label: 'Donor height' },
-      { dom: 'drs-rh', arg: 'recipientHeight', kind: 'number', required: true, label: 'Recipient height' },
+      { dom: 'drs-dh', arg: 'donorHeight', kind: 'number', required: true, label: 'Donor height', min: 45 },
+      { dom: 'drs-rh', arg: 'recipientHeight', kind: 'number', required: true, label: 'Recipient height', min: 45 },
     ]
   },
 ];

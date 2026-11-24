@@ -12,8 +12,8 @@ export default [
     fields: [
       { dom: 'dxr-dose', arg: 'doxorubicinDose', kind: 'number', required: true, label: 'Doxorubicin dose' },
       { dom: 'dxr-unit', arg: 'unit', kind: 'enum', required: true, values: DX.UNITS.map((u) => u.value), label: 'Dose unit' },
-      { dom: 'dxr-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
-      { dom: 'dxr-cumulative', arg: 'cumulativeDoxorubicin', kind: 'number', label: 'Cumulative doxorubicin to date (optional)', unit: 'mg/m²' },
+      { dom: 'dxr-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min', max: 300 },
+      { dom: 'dxr-cumulative', arg: 'cumulativeDoxorubicin', kind: 'number', label: 'Cumulative doxorubicin to date (optional)', unit: 'mg/m²', max: 2000 },
     ],
   },
 ];

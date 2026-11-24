@@ -18,7 +18,7 @@ export default [
       { dom: 'cr2-sa', arg: 'saturationCoefficient', kind: 'number', required: false, label: 'Saturation coefficient (dialysis modes)' },
       { dom: 'cr2-qp', arg: 'plasmaFlow', kind: 'number', required: false, label: 'Plasma flow (with fluid before the filter)' },
       { dom: 'cr2-pre', arg: 'preFilterFlow', kind: 'number', required: false, label: 'Pre-filter flow' },
-      { dom: 'cr2-other', arg: 'otherClearance', kind: 'number', required: false, label: 'Patient\'s other clearance (optional)', unit: 'mL/min' },
+      { dom: 'cr2-other', arg: 'otherClearance', kind: 'number', required: false, label: 'Patient\'s other clearance (optional)', unit: 'mL/min', max: 10000 },
     ],
   },
 ];
