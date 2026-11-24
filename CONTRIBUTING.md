@@ -359,6 +359,13 @@ wide, so prove the finder still reports what it is for. `probe-dated-claims` is 
 `--as-of 2028-01-01`, past every future claim in the catalog, and must still find the ones stale by then
 (`docs/spec-v1782.md`).
 
+**A label that says what a blank means is a promise the READING has to keep.** `test/unit/blank-label-promise.test.js`
+holds it: a field whose label states a substitution for a blank -- "blank is 1", "500 if blank", "the
+measure's usual one if blank" -- must have a reading that names the substitute when it is used. The label is
+not the answer; a reader fills a form once and then reads a result, and the result is what they act on and
+copy into a note (`docs/spec-v1789.md`). `omit for X` is a different promise and is not covered: it offers
+another ANSWER rather than a substituted value, and the answer itself changes to the one named.
+
 **If you add a phrase to `test/lib/asking-language.js`, measure it first.** That
 file's own rules say to check which tools it stops flagging before adding one, and
 the sweeps that clear ONE field now match it against what the reading ADDED rather
