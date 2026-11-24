@@ -51,3 +51,17 @@ test('a blank cause is named when the CSPH caveat depends on it (spec-v1432)', (
   assert.ok(hvpg({ whvp: 20, fhvp: 7 }).notes.some((n) => /^No cause entered; choose it/.test(n)));
   assert.ok(!hvpg({ whvp: 20, fhvp: 7, etiology: 'other' }).notes.some((n) => /No cause entered/.test(n)));
 });
+
+test('a pressure past the recorded diastolic extreme is refused, not read as blank (spec-v1778)', () => {
+  // The IVC pressure is optional and absent from the worked example, which is the one shape no finder
+  // drove: at 999999 the outflow-obstruction comparison `free - ivc > 2` was simply false, so the note
+  // disappeared and nothing on screen mentioned the number the reader had entered.
+  const silent = hvpg({ whvp: 22, fhvp: 10, ivc: 999999 });
+  assert.equal(silent.valid, false);
+  assert.match(silent.message, /IVC pressure must be between 0 and 400/);
+  assert.equal(hvpg({ whvp: 999999, fhvp: 10 }).valid, false);
+  assert.equal(hvpg({ whvp: 22, fhvp: 10, ivc: -1 }).valid, false);
+  // The ceiling refuses the impossible and nothing plausible: a tracing at the extreme still answers.
+  assert.equal(hvpg({ whvp: 22, fhvp: 10, ivc: 400 }).valid, true);
+  assert.ok(hvpg({ whvp: 22, fhvp: 10, ivc: 0 }).notes.some((n) => /outflow obstruction/.test(n)));
+});
