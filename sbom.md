@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7eb905e52cf68fe4`
-Generated: 2026-11-24T08:12:53.336Z
+Build ID: `dac48781a9833c3c`
+Generated: 2026-11-24T08:47:34.574Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -654,7 +654,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hepgi-v190.js` | 13839 | `ab095cf2eaf8275410e6bf9b652801957bd57bc3f0b0279667a5b36e8ac2c26f` |
 | `lib/hepgi-v93.js` | 24374 | `6748f6ff3b7a9959622ea161857e580bfab6ec1190db441de30715d47d876285` |
 | `lib/herbert-scaphoid-v1241.js` | 6072 | `56b3a6e0c50dbaef9aba6b750bee9ffe6e7507963780b04e9bdfc6b956bb8fe1` |
-| `lib/herd-immunity-v1772.js` | 6110 | `818a8659765748b1eb64369260dfad358d397bd3f56060c6a0a00a230ad0e160` |
+| `lib/herd-immunity-v1772.js` | 7165 | `fa39c7308fcd11818d2f412cb8ae4b6584f373cc0d794832c67ccd963963d4e5` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
 | `lib/hf-ef-classification-v840.js` | 8457 | `0bad4e5a061adb07e622c7dd555bd141cd22660ce2e567eb25f3c6699eaed995` |
 | `lib/hf-gdmt-target-percent-v1633.js` | 8060 | `eedb0118fa63e8d367158290b39bd508294854d39d6710282cf7cc9297b15267` |

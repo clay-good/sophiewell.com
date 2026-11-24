@@ -109,3 +109,32 @@ test('the answer always carries what the threshold assumes', () => {
   assert.match(h({ r0: 4 }).note, /mixes evenly/);
   assert.match(h({ r0: 4 }).note, /not a guarantee/);
 });
+
+// spec-v1788: with the efficacy blank, coverage is compared with the threshold ITSELF -- the arithmetic for
+// a vaccine that protects every person it reaches. The field's label said so; the reading did not, and the
+// reading is what a reader acts on. At the worked example that meant "coverage of 80% is at or above the 75%
+// needed, by 5% of the population", where the same example WITH its 95% efficacy needs 78.9% and clears it
+// by 1.1. probe-half-guarded found it: this tool refuses a missing R0 and was silent on the efficacy beside
+// it.
+test('spec-v1788: a blank efficacy says it assumes a perfect vaccine, and what that costs', () => {
+  const assumed = h({ r0: '4', coverage: '80' });
+  assert.equal(assumed.valid, true);
+  const note = assumed.notes.join(' ');
+  assert.match(note, /No vaccine efficacy was entered/);
+  assert.match(note, /protects every single person it reaches/);
+  // It names the cost with arithmetic the reader can follow, not just a caveat.
+  assert.match(note, /at 90% efficacy, 75% \/ 90% = 83\.3%/);
+
+  // Where even a good vaccine cannot reach the threshold, the note says so.
+  assert.match(h({ r0: '12', coverage: '80' }).notes.join(' '), /101\.9%, which no coverage reaches/);
+
+  // With an efficacy entered there is nothing to assume, so the note stays away.
+  assert.doesNotMatch(h({ r0: '4', efficacy: '95', coverage: '80' }).notes.join(' '), /No vaccine efficacy/);
+  // And with no coverage there is no comparison to qualify.
+  assert.doesNotMatch(h({ r0: '4' }).notes.join(' '), /No vaccine efficacy/);
+
+  // The arithmetic itself is untouched: the threshold and the comparison are what they were.
+  assert.equal(assumed.thresholdPercent, 75);
+  assert.equal(assumed.gapPoints, -5);
+  assert.equal(assumed.reachesTarget, true);
+});

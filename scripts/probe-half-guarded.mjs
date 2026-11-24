@@ -35,6 +35,19 @@
 // the dose and week fields are optional extras whose absence changes no verdict; the PJI, NP-tracker and levodopa fields are boxes and doses where
 // absence is a real "no". A new row after this date is one nobody has read.
 //
+// REVIEWED 2026-11-24 (spec-v1788): four tiles had appeared since, and one was a defect.
+// `herd-immunity-threshold` refuses a missing R0 and was silent on the vaccine efficacy beside it: with the
+// efficacy blank it compared coverage with the THRESHOLD ITSELF, the arithmetic for a vaccine that protects
+// every person it reaches, and said "coverage of 80% is at or above the 75% needed, by 5% of the
+// population" -- where the same example with its 95% efficacy needs 78.9% and clears it by 1.1. The field's
+// label said a blank is a perfect vaccine; the reading did not, and the reading is what a reader acts on.
+// Fixed. The other three disclose, and well: `hf-ef-classification` says "With no baseline measurement this
+// is HFmrEF. The same 45 percent in a patient whose baseline was at or below 40 percent ... would be
+// HFimpEF - a different category and a different conversation"; `osha-lead-airborne-pel-shift` reports the
+// day's limit and ASKS for the measured TWA rather than claiming compliance; `palm-coein` leaves the
+// tertiary type out of the notation it prints, where its absence is visible. A new row after THIS date is
+// one nobody has read.
+//
 // Asserts nothing; prints a report.
 //
 //   node scripts/probe-half-guarded.mjs
