@@ -72,9 +72,28 @@ test('half-life uses ln 2, not 0.693', () => {
 test('spec-v1744: a negative Vd, CL, target concentration or interval is refused', () => {
   const ex = { vd: '50', cl: '5', cp: '20', f: '1', tau: '12' };
   assert.equal(pkSuite(ex).valid, true);
-  for (const k of ['vd', 'cl', 'cp', 'tau']) {
+  for (const k of ['vd', 'cl', 'cp']) {
     assert.equal(pkSuite({ ...ex, [k]: '-10' }).valid, false, k);
     assert.match(pkSuite({ ...ex, [k]: '-10' }).message, /must be at least 0/);
     assert.equal(pkSuite({ ...ex, [k]: '0' }).valid, true, k);
   }
+  // spec-v1783: the interval's row is two-sided now, so its sentence names both ends.
+  assert.equal(pkSuite({ ...ex, tau: '-10' }).valid, false);
+  assert.match(pkSuite({ ...ex, tau: '-10' }).message, /must be between 0 and 1000/);
+  assert.equal(pkSuite({ ...ex, tau: '0' }).valid, true);
+});
+
+// spec-v1783: `pos(o.tau, 1000)` returned null above its ceiling and every caller reads null as absent, so
+// a dosing interval of 999999 h gave the answer a BLANK interval gives -- no maintenance dose, and nothing
+// said why. The ceiling is not new; it moved from where it discarded a number to where it refuses one.
+test('spec-v1783: an interval above the ceiling is refused, not read as blank', () => {
+  const ex = { vd: '50', cl: '5', cp: '20', f: '1', tau: '12' };
+  assert.equal(pkSuite({ ...ex, tau: '1000' }).valid, true);
+  assert.equal(pkSuite({ ...ex, tau: '1001' }).valid, false);
+  assert.match(pkSuite({ ...ex, tau: '999999' }).message, /dosing interval must be between 0 and 1000/);
+  // A blank interval stays optional: it is the one reading that SHOULD leave the maintenance dose out.
+  const blank = pkSuite({ ...ex, tau: '' });
+  assert.equal(blank.valid, true);
+  assert.equal(blank.maintenance, null);
+  assert.notEqual(pkSuite(ex).maintenance, null);
 });

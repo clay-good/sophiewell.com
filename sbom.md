@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `66af303065acd7e1`
-Generated: 2026-11-24T04:18:26.003Z
+Build ID: `1a3db06771cb29c8`
+Generated: 2026-11-24T05:23:00.395Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1198,7 +1198,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pirani-clubfoot-v386.js` | 3487 | `787ccfe1abcbcf66a2a9d8ea1218c443f22882983faccd94d3929dfe1c024da5` |
 | `lib/pires-interprosthetic-v1423.js` | 6808 | `9e8c417e5d3fe3ee46f5c5f2893be49477ef248ea300a77907dd9f4378f26823` |
 | `lib/pk-steady-state-predict-v1631.js` | 8001 | `75ace380c8f7e851dd07a2a5769ad4f99eebaf7b6b279acc1a8b5ffac5ffa696` |
-| `lib/pk-v166.js` | 11352 | `2aa2c2b149c26b209fa70a9514e8c467f76c02aaff71ded6c79b09992bb6c78e` |
+| `lib/pk-v166.js` | 11859 | `9da1dfb4a3947442b0e8627cbcbbb9dc5f4a70217a086a56cc35a96e5d082111` |
 | `lib/plaque-control-record-v721.js` | 3352 | `417598406d2a4834fa47f8badd4f97c593b27952c0917d70f93bbf5c9ca17bb0` |
 | `lib/plot.js` | 3813 | `e0ac0523c3e248d25bebb86b7f051a11d607ee74b9e9e71743412a42e572d83e` |
 | `lib/pmp-check-required-v1393.js` | 15326 | `36e31f0f049a911bee6db1c7c43e58ba8fc2ca921ffc63d38488e4b9c54013ee` |
@@ -1428,7 +1428,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/spaulding-classification-v478.js` | 3914 | `3769b89a89709f65be882a19360c23f6a8f371168daa90b3563d32e554767142` |
 | `lib/specialtymath-v186.js` | 18169 | `c802d0f4b2341d2abafe56000b1873c8ca592d6a04a36b99fd2fb10754fd5ab2` |
 | `lib/specific-gravity-v1629.js` | 4789 | `8dbc44977b5272e0210f7fac650578190ce42c132278e1288cd49aadf1dd1981` |
-| `lib/spetzler-ponce-v384.js` | 4231 | `772c79598424299e9aec418f92d9878cd29f53fa96a9694ab4f935b8eec6c992` |
+| `lib/spetzler-ponce-v384.js` | 4729 | `2346dd727ff77f8232638a12090e42d64109c14d079911b7b75db6c2d1dbaac9` |
 | `lib/spigelman-v520.js` | 7864 | `047fb55c94811d32fb93e2cfd025945f4d3ae1282930b45613c19d74997081dd` |
 | `lib/spine-v146.js` | 21128 | `d3cb6a1d1e2c3cc1235cc2336a0385a1ae6e0a1ea65b741a2d6c25e5cb527917` |
 | `lib/spitz-atresia-v479.js` | 2772 | `82c5ecf9649558c4767feb5ae6dac08de927b4ccf53b29a987524255891eb031` |

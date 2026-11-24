@@ -50,6 +50,14 @@ const FINDERS = [
     minJudged: 2,
   },
   {
+    probe: 'probe-impossible-as-zero.mjs',
+    what: 'an impossible value scored exactly as 0 on the path the page takes',
+    fix: 'Refuse it where the ceiling already is (docs/spec-v1783.md), or add it to JUDGED in the finder with '
+      + 'the reason the verdict is right for both values, or the clamp is unreachable',
+    informational: ['Reach:', '"agents fenced"', '0 field', '1 field', '2 field', '3 field'],
+    minJudged: 4,
+  },
+  {
     probe: 'probe-dated-claims.mjs',
     what: 'a date that has passed, written in the future tense',
     fix: 'Re-read it against its source and rewrite it in the past tense or update it (docs/spec-v1782.md), '

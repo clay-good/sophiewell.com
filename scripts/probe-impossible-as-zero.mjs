@@ -47,6 +47,19 @@
 import { META } from '../lib/meta.js';
 import { REGISTRY } from '../mcp/catalog.js';
 
+// spec-v1783: rows read and judged, with the reason. Two kinds appear, and neither is a tool discarding a
+// number: an instrument whose own criterion fails an absurd value exactly as it fails 0 -- so the verdict is
+// RIGHT for both, and bounding the field would need a domain the instrument does not state -- and a clamp no
+// surface can reach. The report prints only what is not here (spec-v1775's rule).
+const JUDGED = {
+  'cluster-headache-ichd3:chi-duration': 'ICHD-3 3.1 asks for attacks of 15 to 180 minutes, and 999,999 minutes fails that criterion exactly as 0 does: "criteria not met" is right for both. A domain for the field would have to be WIDER than the criterion, or no reader could enter a duration that fails it, and ICHD-3 states no such domain',
+  'migraine-ichd3:mig-hours': 'ICHD-3 1.1 criterion B asks for 4 to 72 hours, and 999,999 hours fails it exactly as 0 does: the verdict is right for both, and the field has to admit values that fail the criterion',
+  'du-bois-ipf:db-dfvc': 'the 24-week FVC change scores by category, and +999,999% falls in the model\'s "greater than 0" band exactly as 0 does, so the score is right for both; a ceiling on the change is a claim du Bois does not make',
+  'o2-cylinder-duration:o2-flow': 'the clamp is in the adapter\'s own compute wrapper, where it exists to pass 0 for an absent optional field; the field declares a minimum of 0 so validateInputs refuses a negative first, and the page reaches the library directly, where num() refuses it. No surface reaches the clamp',
+};
+const ALL = process.argv.includes('--all');
+const judgedSeen = new Set();
+
 const i = process.argv.indexOf('--id');
 const onlyId = i > -1 ? process.argv[i + 1] : null;
 const IMPOSSIBLE = ['999999', '-999999'];
@@ -60,6 +73,7 @@ const run = (e, inputs) => {
 };
 
 const rows = [];
+const judgedRows = [];
 let tiles = 0; let fields = 0;
 for (const [id, e] of REGISTRY) {
   if (onlyId && id !== onlyId) continue;
@@ -80,14 +94,19 @@ for (const [id, e] of REGISTRY) {
       const r = run(e, { ...ex, [f.dom]: bad });
       if (r === null) continue;                      // refused: correct
       if (r !== zero) continue;                      // used it, or did something else
-      rows.push({ id, dom: f.dom, label: f.label, bad, required: !!f.required, fencedForAgents: Number.isFinite(f.max) || Number.isFinite(f.min) });
+      const row = { id, dom: f.dom, label: f.label, bad, required: !!f.required, fencedForAgents: Number.isFinite(f.max) || Number.isFinite(f.min) };
+      if (JUDGED[`${id}:${f.dom}`]) { judgedSeen.add(`${id}:${f.dom}`); if (ALL) judgedRows.push(row); continue; }
+      rows.push(row);
       break;
     }
   }
 }
 
 rows.sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
-console.log(`${rows.length} field(s) across ${new Set(rows.map((r) => r.id)).size} calculator(s) score an impossible value exactly as 0, on the library path.`);
+const stale = Object.keys(JUDGED).filter((k) => !judgedSeen.has(k));
+for (const k of stale) console.log(`STALE-LEDGER\t${k}\t(judged here, but the finder no longer reaches it)`);
+for (const r of judgedRows) console.log(`JUDGED\t${r.id}\t${r.dom}\t${r.bad}\t${JUDGED[`${r.id}:${r.dom}`]}`);
+console.log(`${rows.length} field(s) across ${new Set(rows.map((r) => r.id)).size} calculator(s) score an impossible value exactly as 0, on the library path, and are not judged; ${judgedSeen.size} judged.`);
 console.log(`Reach: ${tiles} calculators with a working example, ${fields} numeric fields where 0 changes the answer.`);
 console.log('"agents fenced" means the adapter declares a range, so only the page reaches the library with it.\n');
 for (const r of rows) {

@@ -14,6 +14,9 @@ const BY_DESIGN = new Map([
   ['med-sync-plan', 'medicationRows'],
   ['chair-day-planner', 'apptRows'],
   // An alternate route from a Spetzler-Martin grade; both surfaces ask for the class itself.
+  // spec-v1783: this judgement is about the missing INPUT. It said nothing about what the tool TELLS a
+  // reader, and the refusal asked for the Spetzler-Martin grade no surface offers until that spec read
+  // it. When a row is judged by design here, read the tool's own refusal as well.
   ['spetzler-ponce', 'smGrade'],
 ]);
 
