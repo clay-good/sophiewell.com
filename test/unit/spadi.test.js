@@ -88,7 +88,7 @@ test('an omitted item is refused, and the refusal explains that the rules disagr
   const r = spadi(o);
   assert.equal(r.valid, false);
   assert.match(r.message, /DISAGREE/);
-  assert.match(r.message, /washBack/);
+  assert.match(r.message, /Washing back/);  // spec-v1790: the item, not its key
 });
 
 test('no missing-data imputation happens silently', () => {

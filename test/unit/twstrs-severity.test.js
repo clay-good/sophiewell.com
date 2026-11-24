@@ -103,7 +103,7 @@ test('the guards', () => {
   assert.equal(twstrsSeverity({}).valid, false);
   const partial = twstrsSeverity({ rotation: '1' });
   assert.equal(partial.valid, false);
-  assert.match(partial.message, /laterocollis/);
+  assert.match(partial.message, /Laterocollis \(tilt to the shoulder\)/);  // spec-v1790: the item, not its key
   assert.equal(zero({ duration: '2.5' }).valid, false);
   assert.equal(zero({ duration: '-1' }).valid, false);
 });

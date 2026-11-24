@@ -82,7 +82,7 @@ test('a missing item is refused and named', () => {
   delete o.pseudomonas;
   const r = eFaced(o);
   assert.equal(r.valid, false);
-  assert.match(r.message, /pseudomonas/);
+  assert.match(r.message, /Chronic colonization with Pseudomonas aeruginosa/);  // spec-v1790: the item, not its key
 });
 
 test('an unrecognized answer is refused', () => {

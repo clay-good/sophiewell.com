@@ -59,7 +59,8 @@ test('4Ts: the timing wording is days 5 to 14, not 5 to 10', () => {
 test('4Ts: a blank domain is asked for, not scored 0, and out-of-range values are refused (spec-v1674)', () => {
   // The Society says missing information should push the score up; a blank form must not read "do not test".
   assert.equal(fts({}).valid, false);
-  assert.match(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 2 }).message, /otherCauses is blank/);
+  // spec-v1790: the fourth T is named as the reader knows it, not as `otherCauses`.
+  assert.match(fts({ thrombocytopenia: 2, timing: 2, thrombosis: 2 }).message, /other causes for thrombocytopenia is blank/);
   assert.equal(fts({ thrombocytopenia: 3, timing: 0, thrombosis: 0, otherCauses: 0 }).valid, false);
   assert.equal(fts({ timing: -1, thrombocytopenia: 0, thrombosis: 0, otherCauses: 0 }).valid, false);
   assert.equal(fts({ thrombosis: 1e308, thrombocytopenia: 0, timing: 0, otherCauses: 0 }).valid, false);

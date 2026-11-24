@@ -359,6 +359,22 @@ wide, so prove the finder still reports what it is for. `probe-dated-claims` is 
 `--as-of 2028-01-01`, past every future claim in the catalog, and must still find the ones stale by then
 (`docs/spec-v1782.md`).
 
+**A refusal names the thing by the reader's name for it, never by the code's.** `lib/num.js`'s `readable()`
+does that for every caller that passes a value through it, but a message assembled from a table's `key` does
+not touch it -- so `spadi` refused with "Unrecognized: painWorst" where the item reads "Pain at its worst",
+and `free-water-deficit` said "extend replaceOverHours or raise targetNa". `check-tile-copy` scans `views/`
+for house vocabulary and these strings live in `lib/`, which is where refusals are written.
+`scripts/probe-identifier-in-refusal.mjs` reports a reading whose prose contains one of the tool's own
+camelCase argument names (`docs/spec-v1790.md`); the fix is the item table's own `text` or `name`, which
+`thwaites` has always printed. Two traps: a table may carry BOTH a short `name` and a paragraph-long `text`,
+and a key may already BE the instrument's notation (`mest-c`'s M/E/S/T/C), so read the table rather than
+rewriting `.key` everywhere. And do not space a camelCase key for prose: it turns `dsDnaOrSm` into "ds dna
+or sm".
+
+```bash
+node scripts/probe-identifier-in-refusal.mjs
+```
+
 **A label that says what a blank means is a promise the READING has to keep.** `test/unit/blank-label-promise.test.js`
 holds it: a field whose label states a substitution for a blank -- "blank is 1", "500 if blank", "the
 measure's usual one if blank" -- must have a reading that names the substitute when it is used. The label is

@@ -126,7 +126,7 @@ test('a missing criterion is refused and named', () => {
   delete o.atopicDermatitis;
   const r = mapiAsthma(o);
   assert.equal(r.valid, false);
-  assert.match(r.message, /atopicDermatitis/);
+  assert.match(r.message, /Physician-diagnosed atopic dermatitis/);  // spec-v1790: the criterion, not its key
 });
 
 test('the scope note states the horizon and refuses to indicate a controller', () => {

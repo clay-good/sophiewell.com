@@ -80,7 +80,7 @@ test('yes/no parsing and the guards', () => {
   assert.equal(neos({}).valid, false);
   const partial = neos({ icu: 'yes', noEarlyTreatment: 'no' });
   assert.equal(partial.valid, false);
-  assert.match(partial.message, /noImprovement/);
+  assert.match(partial.message, /No clinical improvement 4 weeks after starting treatment/);  // spec-v1790
   assert.equal(neos({ icu: 'maybe', noEarlyTreatment: 'no', noImprovement: 'no',
     abnormalMri: 'no', csfPleocytosis: 'no' }).valid, false);
   assert.equal(neos({ icu: true, noEarlyTreatment: 1, noImprovement: false,

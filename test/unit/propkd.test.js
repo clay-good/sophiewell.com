@@ -136,7 +136,7 @@ test('an out-of-range age is refused', () => {
 test('a missing clinical variable is refused and named', () => {
   const r = propkd({ mutation: 'pkd2', male: 'yes' });
   assert.equal(r.valid, false);
-  assert.match(r.message, /earlyHypertension/);
+  assert.match(r.message, /Both clinical variables are gated at age 35/);  // spec-v1790: no longer named by key
 });
 
 test('the predictive values are attributed to a separate review', () => {
