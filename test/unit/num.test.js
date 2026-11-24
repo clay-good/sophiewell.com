@@ -139,3 +139,35 @@ test('gradeFault skips a whitespace-only value the way it skips a blank', () => 
   assert.equal(gradeFault([['PaO2 (mmHg)', '   ', 10, 700]]), null);
   assert.match(gradeFault([['PaO2 (mmHg)', ' 5 ', 10, 700]]), /between 10 and 700/);
 });
+
+// spec-v1785: `num()` guards computed values as well as entered ones, and the sentence it threw for a
+// computed value ended "Check the value entered" -- about a number nobody entered. A reader who typed a
+// hemoglobin was told "cardiac output must be between 0 and 30. Check the value entered"; one who typed an
+// arterial pH was told "kcorr must be between 0 and 20".
+test('spec-v1785: a computed value says where it came from, and its label stays prose', () => {
+  // The entered-value sentence is unchanged.
+  assert.throws(() => num('weightKg', 600, { min: 0, max: 500 }),
+    /^RangeError: weight kg must be between 0 and 500\. Check the value entered\.$/);
+
+  // The computed one names the quantity, shows what it worked out to, and sends the reader to the inputs.
+  assert.throws(() => num('the cardiac output', 71.4, { min: 0, max: 30, computed: true }),
+    /^RangeError: the cardiac output works out to 71\.4, which is outside the range this tool reports \(0 to 30\)\. Check the values entered\.$/);
+
+  // A `computed` label is prose, not an argument name, so readable() does not touch it: proper nouns keep
+  // their capitals and an acronym is not split into letters.
+  assert.throws(() => num('the pH-corrected potassium', 21, { min: 0, max: 20, computed: true }),
+    /the pH-corrected potassium works out to 21,/);
+  assert.throws(() => num('the Salazar-Corcoran creatinine clearance', 1145.6, { min: 0, max: 1000, computed: true }),
+    /the Salazar-Corcoran creatinine clearance works out to 1145\.6,/);
+  assert.throws(() => num('the aMAP score', -190.5, { min: 0, max: 100, computed: true }),
+    /the aMAP score works out to -190\.5,/);
+
+  // One-sided ranges read as sentences too.
+  assert.throws(() => num('the fractional excretion of uric acid', 606.3, { max: 200, computed: true }),
+    /outside the range this tool reports \(up to 200\)\./);
+  assert.throws(() => num('the clearance', -1, { min: 0, computed: true }),
+    /outside the range this tool reports \(0 or more\)\./);
+
+  // In range, it still returns the value either way.
+  assert.equal(num('the cardiac output', 5.2, { min: 0, max: 30, computed: true }), 5.2);
+});

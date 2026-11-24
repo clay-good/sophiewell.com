@@ -36,7 +36,10 @@ const JUDGED = {
 };
 
 // The sentence shapes every library in lib/ refuses an out-of-range value with.
-const RANGE = /plausible range|must be (?:between|at most|at least|from|no more|a number)|between -?[\d.,]+ and -?[\d.,]+|outside -?[\d.,]+ to|no more than|beyond (?:a plausible|recorded)/i;
+// spec-v1785: the `computed: true` sentence shape. When those twelve call sites stopped saying "must be
+// between X and Y" about a number nobody entered, every row vanished from this report -- not fixed, just
+// unrecognised. A finder's sentence list is part of its reach, and a better message must not silence it.
+const RANGE = /plausible range|must be (?:between|at most|at least|from|no more|a number)|between -?[\d.,]+ and -?[\d.,]+|outside -?[\d.,]+ to|no more than|beyond (?:a plausible|recorded)|works out to [-\d.,]+, which is outside the range this tool reports/i;
 
 // A thrown range message is a refusal too, and reading only returned ones hid four of the offenders: the
 // A-a gradient, its suite and the P/F ratio all throw "fio2 must be between 0.21 and 1" rather than

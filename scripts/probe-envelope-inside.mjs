@@ -35,7 +35,10 @@ function declaredFor(id, dom) {
 }
 
 const ONLY = process.env.TOOLS ? new Set(process.env.TOOLS.split(',')) : null;
-const RANGE = /plausible range|must be (?:between|at most|at least|from|no more)|between -?[\d.,]+ and -?[\d.,]+|outside -?[\d.,]+ to|no more than|beyond (?:a plausible|recorded)/i;
+// spec-v1785: the `computed: true` sentence shape. When those twelve call sites stopped saying "must be
+// between X and Y" about a number nobody entered, every row vanished from this report -- not fixed, just
+// unrecognised. A finder's sentence list is part of its reach, and a better message must not silence it.
+const RANGE = /plausible range|must be (?:between|at most|at least|from|no more)|between -?[\d.,]+ and -?[\d.,]+|outside -?[\d.,]+ to|no more than|beyond (?:a plausible|recorded)|works out to [-\d.,]+, which is outside the range this tool reports/i;
 let driven = 0;
 let rows = 0;
 let stated = 0;
