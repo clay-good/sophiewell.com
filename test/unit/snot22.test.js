@@ -114,7 +114,7 @@ test('a missing item is refused and named', () => {
   delete o.cough;
   const r = snot22(o);
   assert.equal(r.valid, false);
-  assert.match(r.message, /cough/);
+  assert.match(r.message, /Cough/);  // spec-v1790: the item, not its key
 });
 
 test('an out-of-range or non-integer item is refused', () => {

@@ -107,7 +107,7 @@ test('a missing region is refused and named', () => {
   for (const r of GAGS_REGIONS.slice(0, 5)) o[r.key] = '2';
   const r = gags(o);
   assert.equal(r.valid, false);
-  assert.match(r.message, /trunk/);
+  assert.match(r.message, /Chest and/);  // spec-v1790: the item, not its key
 });
 
 test('an out-of-range or non-integer grade is refused', () => {

@@ -107,7 +107,7 @@ test('the derived diseases are not flagged', () => {
 // Input handling and scope.
 test('every factor is required', () => {
   assert.equal(ffs1996({}).valid, false);
-  assert.match(ffs1996({ ...NONE, cns: '' }).message, /cns/);
+  assert.match(ffs1996({ ...NONE, cns: '' }).message, /Central nervous system involvement/);  // spec-v1790: the item, not its key
 });
 
 test('the scope note separates prognosis from diagnosis, classification and activity', () => {

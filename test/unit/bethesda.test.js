@@ -102,7 +102,7 @@ test('every criterion is required and the message states the OR rule', () => {
   assert.equal(bethesda({}).valid, false);
   const r = bethesda({ ...NONE, underFifty: '' });
   assert.equal(r.valid, false);
-  assert.match(r.message, /underFifty/);
+  assert.match(r.message, /Colorectal cancer diagnosed under age 50/);  // spec-v1790: the item, not its key
   assert.match(r.message, /ANY ONE criterion is enough/);
 });
 

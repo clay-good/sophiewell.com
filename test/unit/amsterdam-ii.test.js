@@ -111,7 +111,7 @@ test('every requirement is required and the message states the rule', () => {
   assert.equal(amsterdamII({}).valid, false);
   const r = amsterdamII({ ...ALL, allThreeColorectal: 'yes', fapExcluded: '' });
   assert.equal(r.valid, false);
-  assert.match(r.message, /fapExcluded/);
+  assert.match(r.message, /Familial adenomatous polyposis excluded/);  // spec-v1790: the item, not its key
   assert.match(r.message, /CONJUNCTION, not a count/);
 });
 

@@ -97,7 +97,7 @@ test('the gastrostomy answer is required, and it selects the scale', () => {
 test('a missing or out-of-range item is invalid', () => {
   const partial = alsfrsR({ hasGastrostomy: 'no', speech: '4' });
   assert.equal(partial.valid, false);
-  assert.match(partial.message, /salivation/);
+  assert.match(partial.message, /Salivation/);  // spec-v1790: the item, not its key
   assert.equal(fill('no', '4', { speech: '5' }).valid, false);
   assert.equal(fill('no', '4', { speech: '-1' }).valid, false);
   assert.equal(fill('no', '4', { speech: '2.5' }).valid, false);

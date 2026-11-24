@@ -150,7 +150,7 @@ test('the setting is required and names the grading asymmetry', () => {
 test('missing common criteria are refused and named', () => {
   const r = globalArds({ setting: 'intubated', ratioType: 'pf', ratioValue: '150' });
   assert.equal(r.valid, false);
-  assert.match(r.message, /riskFactor/);
+  assert.match(r.message, /An acute predisposing/);  // spec-v1790: the item, not its key
 });
 
 test('the ratio types are the published two', () => {

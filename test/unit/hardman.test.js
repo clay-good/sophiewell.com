@@ -79,7 +79,7 @@ test('yes/no parsing and the guards', () => {
   assert.equal(hardman({}).valid, false);
   const partial = hardman({ age: 'yes', creatinine: 'no' });
   assert.equal(partial.valid, false);
-  assert.match(partial.message, /hemoglobin/);
+  assert.match(partial.message, /Hemoglobin below 9\.0 g\/dL/);  // spec-v1790: the item, not its key
   assert.equal(score({ age: 'maybe' }).valid, false);
   assert.equal(hardman({ age: true, creatinine: 1, hemoglobin: false, unconscious: 0, ecgIschemia: 'no' }).total, 2);
 });

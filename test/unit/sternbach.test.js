@@ -88,7 +88,7 @@ test('every feature and requirement is required, and the message says why', () =
   assert.equal(sternbach({}).valid, false);
   const r = sternbach({ ...BASE, fever: '' });
   assert.equal(r.valid, false);
-  assert.match(r.message, /fever/);
+  assert.match(r.message, /Fever/);  // spec-v1790: the item, not its key
   assert.match(r.message, /NOT symptoms, and one of them is a negative/);
 });
 
