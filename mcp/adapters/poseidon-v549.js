@@ -32,6 +32,8 @@ export default [
     fields: [
       {
         dom: 'poseidon-age', arg: 'age', kind: 'number', unit: 'years', required: true,
+        // spec-v1786: the library already refused outside 12 to 60 in every configuration; now it says so.
+        min: 12, max: 60,
         label: 'Patient age. The classification splits at 35: under 35 gives groups 1 and 3, 35 or over gives groups 2 and 4.',
       },
       {

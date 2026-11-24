@@ -12,7 +12,9 @@ export default [
     fields: [
       { dom: 'vr-basis', arg: 'basis', kind: 'enum', required: true, values: VR.BASES.map((b) => b.value), label: 'Dose ordered in' },
       n('vr-dose', 'dose', 'Ordered dose', true),
-      n('vr-weight', 'weight', 'Weight (for mg/kg)', false, 'kg'),
+      // spec-v1786: the library's 0.3-350 kg range is hoisted above the basis split now, so it holds on
+      // every basis and the declaration is true.
+      { ...n('vr-weight', 'weight', 'Weight (for mg/kg)', false, 'kg'), min: 0.3, max: 350 },
       n('vr-bsa', 'bsa', 'Body surface area (for mg/m²)', false, 'm²'),
       n('vr-v1', 'vial1', 'Vial size 1', true, 'mg'),
       n('vr-c1', 'cost1', 'Vial 1 cost', false, 'USD'),

@@ -12,7 +12,7 @@ export default [
       { dom: 'pxd-patient', arg: 'patient', kind: 'enum', required: true, values: PX.PATIENTS.map((x) => x.value), label: 'Patient' },
       { dom: 'pxd-route', arg: 'route', kind: 'enum', required: true, values: PX.ROUTES.map((x) => x.value), label: 'Route or product' },
       { dom: 'pxd-severity', arg: 'severity', kind: 'enum', values: PX.SEVERITIES.map((x) => x.value), label: 'Severity (intramuscular and DuoDote)' },
-      { dom: 'pxd-weight', arg: 'weight', kind: 'number', label: 'Weight (pediatric patients, and DuoDote)', unit: 'kg' },
+      { dom: 'pxd-weight', arg: 'weight', kind: 'number', label: 'Weight (pediatric patients, and DuoDote)', unit: 'kg', min: 0.4, max: 300 },
     ],
   },
 ];

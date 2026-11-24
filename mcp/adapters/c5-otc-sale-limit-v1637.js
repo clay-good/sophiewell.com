@@ -14,7 +14,7 @@ export default [
       { dom: 'c5s-contents', arg: 'contents', kind: 'enum', values: OS.CONTENTS.map((k) => k.value), label: 'Contents' },
       { dom: 'c5s-form', arg: 'form', kind: 'enum', values: OS.FORMS.map((k) => k.value), label: 'Form' },
       { dom: 'c5s-requested', arg: 'requested', kind: 'number', label: 'Quantity requested (mL or dosage units)' },
-      { dom: 'c5s-age', arg: 'age', kind: 'number', label: 'Purchaser age', unit: 'years' },
+      { dom: 'c5s-age', arg: 'age', kind: 'number', label: 'Purchaser age', unit: 'years', max: 120 },
       { dom: 'c5s-time', arg: 'saleTime', kind: 'string', label: 'Date and time of this sale (YYYY-MM-DDTHH:MM)' },
       { dom: 'c5s-earlier', arg: 'earlierSales', kind: 'string', label: 'Earlier sales to this purchaser, one per line: date and time, then the quantity' },
     ],

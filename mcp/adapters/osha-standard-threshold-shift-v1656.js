@@ -22,8 +22,8 @@ export default [
       ...audiogram,
       { dom: 'sts-correct', arg: 'ageCorrection', kind: 'enum', values: ['yes', 'no'], required: false, label: 'Apply the Appendix F age correction' },
       { dom: 'sts-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: false, label: 'Sex (selects Table F-1 or F-2)' },
-      { dom: 'sts-baseline-age', arg: 'baselineAge', kind: 'number', required: false, label: 'Age at the baseline audiogram (years)' },
-      { dom: 'sts-recent-age', arg: 'recentAge', kind: 'number', required: false, label: 'Age at the recent audiogram (years)' },
+      { dom: 'sts-baseline-age', arg: 'baselineAge', kind: 'number', required: false, label: 'Age at the baseline audiogram (years)', max: 120 },
+      { dom: 'sts-recent-age', arg: 'recentAge', kind: 'number', required: false, label: 'Age at the recent audiogram (years)', max: 120 },
     ]
   },
 ];

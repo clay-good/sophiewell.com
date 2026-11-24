@@ -11,7 +11,7 @@ export default [
     compute: WR.medicaidWorkRequirement,
     fields: [
       { dom: 'wr-exception', arg: 'exception', kind: 'enum', required: true, values: vals(WR.EXCEPTIONS), label: 'Exception that applies, or none' },
-      { dom: 'wr-age', arg: 'age', kind: 'number', required: false, label: 'Age', unit: 'years' },
+      { dom: 'wr-age', arg: 'age', kind: 'number', required: false, label: 'Age', unit: 'years', max: 120 },
       { dom: 'wr-medicare', arg: 'medicare', kind: 'enum', required: false, values: vals(WR.YES_NO), label: 'Has Medicare Part A or B' },
       { dom: 'wr-work', arg: 'workHours', kind: 'number', required: false, label: 'Hours of work in the month' },
       { dom: 'wr-service', arg: 'serviceHours', kind: 'number', required: false, label: 'Hours of community service' },

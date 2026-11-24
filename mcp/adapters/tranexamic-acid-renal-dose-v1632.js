@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'txa-route', arg: 'route', kind: 'enum', required: true, values: TX.ROUTES.map((r) => r.value), label: 'Route: iv or oral' },
       { dom: 'txa-scr', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine (not a clearance)', unit: 'mg/dL', min: 0.1, max: 20 },
-      { dom: 'txa-weight', arg: 'weight', kind: 'number', label: 'Intravenous: actual body weight', unit: 'kg' },
+      { dom: 'txa-weight', arg: 'weight', kind: 'number', label: 'Intravenous: actual body weight', unit: 'kg', min: 20, max: 400 },
     ],
   },
 ];

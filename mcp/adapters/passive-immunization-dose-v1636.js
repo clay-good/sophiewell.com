@@ -10,7 +10,7 @@ export default [
     compute: (args) => PI.passiveImmunizationDose(args, new Date()),
     fields: [
       { dom: 'pid-product', arg: 'product', kind: 'enum', required: true, values: PI.PRODUCTS.map((x) => x.value), label: 'Product and situation' },
-      { dom: 'pid-weight', arg: 'weight', kind: 'number', label: 'Weight (hepatitis B after exposure, VARIZIG, and tetanus under 7 years)', unit: 'kg' },
+      { dom: 'pid-weight', arg: 'weight', kind: 'number', label: 'Weight (hepatitis B after exposure, VARIZIG, and tetanus under 7 years)', unit: 'kg', min: 0.4, max: 300 },
       { dom: 'pid-age', arg: 'age', kind: 'number', label: 'Age (tetanus immune globulin)', unit: 'years' },
     ],
   },
