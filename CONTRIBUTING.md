@@ -343,11 +343,21 @@ node scripts/probe-negative-as-zero.mjs    # judged ledger: it prints nothing un
 node scripts/probe-order-swapped.mjs
 node scripts/probe-impossible-dates.mjs   # 30 February, month 13, 1850, 25:00 (docs/spec-v1750.md)
 node scripts/probe-half-step.mjs          # an ordinal item or count scored at x + 0.5, judged ledger and all (docs/spec-v1755.md, docs/spec-v1775.md)
-node scripts/probe-dated-claims.mjs       # a date that has passed, still written as "is due by" or "proposed" (docs/spec-v1757.md)
+node scripts/probe-dated-claims.mjs       # a date that has passed, still written as "is due by" or "proposed" (docs/spec-v1757.md); judged ledger and two structural rules -- a date still ahead in the same clause is what the tense is about, and a worked example is dated by its own inputs (docs/spec-v1782.md)
 node scripts/probe-envelope-floor.mjs     # a value below a lib/bounds.js floor still answered (docs/spec-v1760.md)
-node scripts/probe-envelope-inside.mjs    # a survivable value just inside an envelope refused by a narrower cap (docs/spec-v1766.md)
+node scripts/probe-envelope-inside.mjs    # a survivable value just inside an envelope refused by a narrower cap NOTHING DECLARES -- a cap the field's own min/max already excludes is a validated population stated, and is not reported (docs/spec-v1766.md, docs/spec-v1781.md)
 node scripts/probe-unit-equivalent.mjs     # the same quantity in the other unit answered differently, judged ledger and all (docs/spec-v1771.md)
 ```
+
+**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds seven of them
+in both directions: an unjudged row fails the gate, so it is a decision someone takes rather than a line in
+a report that already prints known ones, and a judged row the finder no longer reaches fails too, so a
+reason cannot outlive what it describes. Negative-test both directions when you add one, by removing a
+ledger row and by breaking a key. **A finder you NARROW with a structural rule needs the other half of that
+gate**: a rule is a claim that certain rows are honest, and the cheapest quiet report is a rule that is too
+wide, so prove the finder still reports what it is for. `probe-dated-claims` is driven at
+`--as-of 2028-01-01`, past every future claim in the catalog, and must still find the ones stale by then
+(`docs/spec-v1782.md`).
 
 **If you add a phrase to `test/lib/asking-language.js`, measure it first.** That
 file's own rules say to check which tools it stops flagging before adding one, and

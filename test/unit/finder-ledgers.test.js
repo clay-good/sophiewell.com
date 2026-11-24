@@ -50,6 +50,31 @@ const FINDERS = [
     minJudged: 2,
   },
   {
+    probe: 'probe-dated-claims.mjs',
+    what: 'a date that has passed, written in the future tense',
+    fix: 'Re-read it against its source and rewrite it in the past tense or update it (docs/spec-v1782.md), '
+      + 'or add it to JUDGED in the finder with the reason the date belongs to a source or to a rule\'s start',
+    informational: ['A line whose', '--all lists'],
+    minJudged: 5,
+  },
+  {
+    probe: 'probe-declared-cap-configs.mjs',
+    what: 'a declared bound the library answers past in some configuration, so the page answers what the agent is refused',
+    fix: 'Hoist the guard above the branch split with gradeFault (docs/spec-v1780.md), drop the declaration, '
+      + 'or add it to JUDGED in the finder with the reason',
+    informational: ['Reach:', '--all lists'],
+    minJudged: 1,
+  },
+  {
+    probe: 'probe-absent-example-field.mjs',
+    what: 'a field absent from its worked example that discards an impossible value in silence',
+    fix: 'Refuse the impossible value (docs/spec-v1778.md), or add it to JUDGED in the finder with the reason '
+      + 'the value was used, or read as absent AND disclosed',
+    informational: ['Reach:', '0 field'],
+    isFinding: (l) => l.includes('\t') && !l.startsWith('==') && !l.startsWith('NEVER-READ'),
+    minJudged: 7,
+  },
+  {
     probe: 'probe-unit-equivalent.mjs',
     what: 'an answer that moves when the same quantity is entered in another unit',
     fix: 'Fix the conversion (docs/spec-v1771.md), or add it to JUDGED in the finder with the reason the difference is right',
@@ -86,3 +111,16 @@ for (const f of FINDERS) {
     }
   });
 }
+
+// spec-v1782: a precision rule is a claim that certain rows are honest, and the cheapest way to get a quiet
+// report is to write one that is too wide. The dated-claims finder skips a passed date beside a date still
+// ahead in the same clause, and skips a worked example's expected output. Driven at a date past every future
+// claim in the catalog, it must still report the ones that have then gone stale -- so the rules narrow it
+// rather than blind it.
+test('probe-dated-claims.mjs still finds a claim once its own future date has passed', () => {
+  const out = run('probe-dated-claims.mjs', ['--as-of', '2028-01-01']);
+  const rows = out.split('\n').filter((l) => /^(lib|views|mcp)\/.*\t20\d\d-\d\d-\d\d/.test(l));
+  assert.ok(rows.length > 10, `only ${rows.length} rows as of 2028-01-01; the structural rules may be too wide`);
+  assert.ok(rows.some((l) => l.includes('2027-11-27')),
+    'the DSCSA exemptions run until November 27, 2027, so that claim must be stale as of 2028');
+});

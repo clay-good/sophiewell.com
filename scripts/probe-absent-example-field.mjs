@@ -146,7 +146,9 @@ for (const [name, rows] of Object.entries(sections)) {
   if (!rows.length) continue;
   if (name === 'NEVER-READ' && !ALL) continue;
   console.log(`\n== ${name} (${rows.length})`);
-  for (const r of rows.sort()) console.log(r);
+  // NEVER-READ is another finder's class, not a finding of this one, so each of its rows says so on the
+  // line: test/unit/finder-ledgers.test.js reads this report and would otherwise count them as findings.
+  for (const r of rows.sort()) console.log(name === 'NEVER-READ' ? `NEVER-READ\t${r}` : r);
 }
 
 const stale = Object.keys(JUDGED).filter((k) => !judgedSeen.has(k));
