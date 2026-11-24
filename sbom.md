@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7b3de71631d6f000`
-Generated: 2026-11-24T12:03:27.707Z
+Build ID: `67410b84cdc3549e`
+Generated: 2026-11-24T13:18:49.824Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -91,7 +91,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/alsfrs-r-v537.js` | 12463 | `10637dd17e49efba2a818deb4a43b103616d2b45966816183099350ecfdb663c` |
 | `lib/aminoglycoside-label-renal-v1631.js` | 13614 | `47248747d28f80853c9b9bac49ea50224ab72a8e86e29065d6377763a0f11ac4` |
 | `lib/amsler-krumeich-v707.js` | 6387 | `128a039e1a92e67d9a4cd4013375116a5d34b262d7bb66453cdab760420c0ea9` |
-| `lib/amsterdam-ii-v592.js` | 12219 | `b846db46350b2056d50e7ef9fe9d11daff8168d605b1139fbb0bc1ad3ce8bd87` |
+| `lib/amsterdam-ii-v592.js` | 12243 | `1dfac49f6343cfde1942d864ac5cd95ce4b168183f6fb467666c860a12145e68` |
 | `lib/amts-v805.js` | 4385 | `d89e7931345da27e8df7b4b084ab3bcd7bcd89eeb02a710c31baf23dc1c29857` |
 | `lib/anaphylaxis-criteria-v803.js` | 4952 | `43bb47b10fe03fa200c26f8ee54d45923b26d28540016f6e32a8ed8a4422d8ee` |
 | `lib/anaphylaxis-v303.js` | 3399 | `7238b07c62535c8540d017cb268b841ffbc1a1bba2430bccc89c23c7f69fafbd` |
@@ -120,7 +120,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/appeal-path-v1505.js` | 7091 | `3783c15fad2d10eeb2f4c743116cf85aa155db3313fdcd0ca2eacfe2d1e84a9b` |
 | `lib/aqi-pm25-v1398.js` | 5799 | `56cafa4aafca82a40408bbd87c0798ac08a175bfbae1b45ba7edfd4eddd1e832` |
 | `lib/arbovirus-admission-check-v1563.js` | 5706 | `7e0a894084ef4985b60def2df062dea0ceb05be5b088767cfd97bb2bfdde0918` |
-| `lib/arc-hbr-v594.js` | 17543 | `a52b658114a8666537c092b6ae2f14f120eae64215e5cfabfb26433b30cab493` |
+| `lib/arc-hbr-v594.js` | 17547 | `4113d0af87a6db314273bc2590e408372c6ca5fece2fad4d4d906ac524cd5b88` |
 | `lib/arc-risk-scores-v1631.js` | 5328 | `600e1dc7ccdfdc3a96cad6e2c31d6f07c5cefec0a0b9aa70df3eafdcc02ed8be` |
 | `lib/areds-v615.js` | 11067 | `7da2179ea02ee6b4f983417d4fedc03f50d680c2b945213a0cf75fefd6411857` |
 | `lib/arpraziquantel-dose-v1562.js` | 4494 | `f6be8624644953ae03f128ee02707cb88e5ef28fcd2bcf0614b06cfd8cef7c37` |
@@ -759,12 +759,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/jones-v315.js` | 9250 | `8889f265232d9fad2c2554e59b20a138b43a9a706a3f9d2463bc22dc5fad5b9a` |
 | `lib/json-head.js` | 5123 | `6ad864eab10e66cb8dfda07de590eeaaf0b704782606aab573c3f48fb46a8f78` |
 | `lib/json-stream.js` | 5855 | `a29d79b009dce2e8a2b651e8c27487d4f420c366507769119ebc551d08ff4821` |
-| `lib/jta-thyroid-storm-v598.js` | 14051 | `8f6959ef88be9b2659bf425a4fc2c15b3954df437436903e9cb5168ecf6fd429` |
+| `lib/jta-thyroid-storm-v598.js` | 14081 | `72f906bc5cb809691364b89e41fcdb27c3fb5e9b621d54b693a129aac0557e60` |
 | `lib/just-culture-v919.js` | 8189 | `89eefe58560fa67d08bc85ce4b16faca75539add242174ffb422465532002263` |
 | `lib/k6-v735.js` | 2836 | `3fa2ac4a54058b1dd4e36c93f001bc8e04766fa78b042d4ea6ec3a399770cd31` |
 | `lib/kadish-v443.js` | 3108 | `75d880fa7d037d9c0f95a49002d8072db568e4628e994117a2ddd9b63d35e2bb` |
 | `lib/kanavel-signs-v1444.js` | 2626 | `9499499b27bd04e8ac91582c31d575a411b68b98f1d970c3f25b4b543e48a5ce` |
-| `lib/katagiri-v606.js` | 12523 | `25c9e0325c85733e3dff37804267bbba20cb56892fcf59b372a25337d09747b1` |
+| `lib/katagiri-v606.js` | 12532 | `556d89dfed353c6839348ce1df2b1e867e8912adc71050a506982dede8f145ca` |
 | `lib/kdri-kdpi-v1717.js` | 8286 | `b1a7449f8bdd94a065ac2dff6e0031259c355250e16f18ce4774aeb2abd179c0` |
 | `lib/kennedy-edentulous-v719.js` | 5218 | `0acbb98949908d90c41a208f1ee94bea2ab998669ec0c4e30e5ea384ba8b3443` |
 | `lib/ketorolac-limit-check-v1632.js` | 7793 | `e5102fc211ef78f6e6302f24b483cba25a3fbe4f9c9909b277a9ba22844733b8` |
@@ -960,7 +960,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/mue-load.js` | 1396 | `b041386112a0e4aeaff46956efb6985c62d0ca6596340e27a9b5dbad2c22249f` |
 | `lib/mue-reference.js` | 3288 | `a4b1d7bc4344607062853a729bc2b954060aaa44d9e03bf3114937b7445a0474` |
 | `lib/myeloid-prognosis-v199.js` | 12222 | `041504929805fb1abd2c6098c5cf666dae34858d87d6cd4d6bd552fd86b03bab` |
-| `lib/myxedema-coma-v599.js` | 15439 | `76c6237db1eafb935ba2908633c46d61b59545cb05488f892d4d599eadd17637` |
+| `lib/myxedema-coma-v599.js` | 15444 | `7305f79972f96ccbded18f8295b773188cc9ea05b4f583eefc612a21240a0649` |
 | `lib/nac-attr-stage-v583.js` | 12479 | `3894987b3a1f91c1326058d110806a5357f3d646e4f411654984fef80332dd00` |
 | `lib/nac-oral-regimen-v1636.js` | 8430 | `b2a368f876467640a9d9bfa225ca249366bdcd8fc854840e30949c45b59d0b20` |
 | `lib/nadac-load.js` | 1118 | `c981f8f85621a5f824080c6d12f34d85ad84dcdf57690f889626ff66b96af23c` |
@@ -1085,7 +1085,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/osha-noise-dose-v1656.js` | 7318 | `141c3b8f06c3d25a1da4e641b2abaab1b1117d2dc8bb5e7a9d7dd3f02d6923c9` |
 | `lib/osha-standard-threshold-shift-v1656.js` | 9685 | `ed50dc3a70231f062bee791416c4ffb2dd1451a213dba8a0d880abe57b25a2ad` |
 | `lib/osi-onychomycosis-v674.js` | 3577 | `cdc4873826dd624fe21fbb25d9cbc2b446af8815030a15e176db5ee08160d8f9` |
-| `lib/oswestry-v643.js` | 5216 | `44dc716614f464136aa8878c90d53debba8a13972319888424479b1f6abdd4b3` |
+| `lib/oswestry-v643.js` | 5217 | `e5114aeb1e52343886a87a690561074c1d0466ccd39062cdb22eaaa8e21fa1b7` |
 | `lib/otc-child-label-dose-v1639.js` | 16987 | `9390079332b85aaa82c4b1ed264f14c5cb988ffcf9cadecb504a289d2bc0dd68` |
 | `lib/otc-daily-max-check-v1639.js` | 16922 | `9f3ecbb42a62adba00d770961a8060b14ffcb650c3508ce09fc47725d9f63563` |
 | `lib/otp-admission-clock-v1637.js` | 7975 | `66af295a1fcefecacef06920b1729d842a70a91359a1a95cac4d8c0f769057e7` |
@@ -1344,7 +1344,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ross-hf-peds-v368.js` | 3656 | `fad8260eae2c6c117dfee9177dfbf5f2a20042e72b049799b94588ae426449ce` |
 | `lib/rsi-dose-sheet-v1636.js` | 9489 | `863999daf6da060298ab2428cd2ecb79bd3fd55139438ff2d5b3f44440854c9a` |
 | `lib/rta-type-v798.js` | 6162 | `579a9ff194c428b201b7756291181b5a2d6897eabc5d287d0785f687f5c549d1` |
-| `lib/rucam-v585.js` | 18518 | `8cd787948597fc706aa3097f93c3bb17e2b1504ba1c8fe85b20e91eae4cf3ecf` |
+| `lib/rucam-v585.js` | 18526 | `9deaa3a54856100a5f5ff6b6e4cd24be7e56a4f84a84b6b1738d372972b59711` |
 | `lib/rudas-v792.js` | 3925 | `bd0032baa9f9b96b4082830d28b0fdf2d9f2576f1765a6517bbf7765734978d6` |
 | `lib/ruedi-allgower-pilon-v490.js` | 2967 | `dd1e44e6aea6ec383f19e98e0ce9414fc77ae84355c5050306b3f3330406aaa6` |
 | `lib/russe-scaphoid-v416.js` | 4054 | `393fb761d9bcfb169b583f73ec59e807a0894591bc9c4726821d7597796440f2` |
@@ -1367,7 +1367,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/sarnat-hie-v429.js` | 3448 | `d937b361ddf87357471d77034d89c0778faf26885e337a95fe775e1f8bdce4c6` |
 | `lib/sartorius-hs-v607.js` | 12996 | `2dfbda2c127f0249e15b5ed8bbd37f4e1eadedda8cb2ad5e90088b66a45a171e` |
 | `lib/savary-miller-v405.js` | 3874 | `224df20e17cf0c2a8e40cb4423623f24271f6c61f38e3eea5f02720f1b17f1ff` |
-| `lib/save-score-v543.js` | 11462 | `7971d57cf736e6028af9db609eed67dead869b8cc05f48746f09c3955bca1183` |
+| `lib/save-score-v543.js` | 11481 | `4963231eef0ad1d1f634b1e425e4821fd4c640360412645f89b8b302dec5a4dd` |
 | `lib/sawchuk-zaske-dosing-v1631.js` | 9206 | `fad796dce32919f561310dd7bbd18af0e12c6d34aee4dd8141420d3d5bde7655` |
 | `lib/sbp-ascitic-fluid-v852.js` | 12602 | `bbbf53ee08ca1f6a6fe67507c96007ddeb0bf0373af46b5d9480552c63dcf8a4` |
 | `lib/scabies-diagnosis-mda-v1561.js` | 7243 | `146285f17ceab8518610edafb1c1810f8d4f515d1891966170b7d36c2e0f97b5` |
@@ -1445,7 +1445,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/steinberg-avn-v407.js` | 4524 | `ccb1b143de3be3104e76ed0e4250a99d285f9a59a9428fded38d4a5adc07e93f` |
 | `lib/steinbrocker-ra-v469.js` | 3579 | `a2fc9925c8ec0461e7b245f71e15664a453dca69636a548f6cf0f012a185c14f` |
 | `lib/step-therapy-v1502.js` | 7907 | `40287cfc7922d98f235d50fce150a3c873edf69844d4cbab4b80f30f71201ac8` |
-| `lib/sternbach-v589.js` | 13054 | `7a5fa32ec1407bd440f66412a3c9b6844705b0c3632a26d44be74d2213b476cb` |
+| `lib/sternbach-v589.js` | 13055 | `713f457131704adfc068500adfaa664f895a2567ddf9c7ab48665065cf918f20` |
 | `lib/stopp-start-v3-v1634.js` | 75922 | `d37359d8820292c2578c31716c34fd6bfd78348fac777dcc1b2bfff742c99986` |
 | `lib/stoppfall-check-v1634.js` | 3615 | `16754b78dbbc1e64a6189e6d523b261fe4234529582e5785c732a6e48b8f1a17` |
 | `lib/storage-excursion-summary-v1630.js` | 12947 | `e8fdab1c6a2c17397ede97a675c953b3c903555a886d7d87fde8a39c7de533b6` |

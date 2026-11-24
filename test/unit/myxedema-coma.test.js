@@ -128,7 +128,7 @@ test('every item is required and the additive structure is named in the message'
   assert.equal(myxedemaComa({}).valid, false);
   const r = myxedemaComa({ ...CLEAN, hyponatremia: '' });
   assert.equal(r.valid, false);
-  assert.match(r.message, /hyponatremia/);
+  assert.match(r.message, /Hyponatremia/);  // spec-v1792: the item, not its key
   assert.match(r.message, /ADDITIVE - each adds independently/);
 });
 
