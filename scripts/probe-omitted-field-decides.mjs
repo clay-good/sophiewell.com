@@ -50,7 +50,7 @@
 import { allCalculators } from '../mcp/catalog.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { META } from '../lib/meta.js';
-import { ASKING, DISCLOSING } from '../test/lib/asking-language.js';
+import { ASKING, DISCLOSING, saysGap } from '../test/lib/asking-language.js';
 
 const only = (() => {
   const i = process.argv.indexOf('--tile');
@@ -229,8 +229,9 @@ for (const tool of allCalculators()) {
         // `sequestration-adjust`, whose disclosures spec-v1143 wrote, and
         // `era-balance`'s two adjustment groups, whose reading when one is
         // dropped IS "OUT OF BALANCE ... a posting line is missing".
-        const said = `${texts(got.result).join(' ')} ${String(got.result?.note || '')}`;
-        if (!ASKING.test(said) && !DISCLOSING.test(said)) {
+        // spec-v1812: each string on its own, because two of the vocabulary's phrases are anchored.
+        const said = [...texts(got.result), String(got.result?.note || '')];
+        if (!saysGap(said)) {
           const after = numbersIn(got.result);
           const moved = Object.keys(fullNumbers).filter((k) => after[k] !== undefined && after[k] !== fullNumbers[k]);
           if (moved.length) {
@@ -259,8 +260,9 @@ for (const tool of allCalculators()) {
       const base = computeCalculator({ id: tool.id, inputs: partial });
       if (base?.valid !== true) continue;                    // refused: correct
 
-      const said = texts(base.result).join(' ');
-      if (ASKING.test(said) || DISCLOSING.test(said)) continue;  // said so
+      const parts = texts(base.result);
+      if (saysGap(parts)) continue;  // said so (spec-v1812: per string)
+      const said = parts.join(' ');
 
       const baseVerdict = verdict(base.result);
       const baseAbnormal = base.result?.abnormal;

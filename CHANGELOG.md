@@ -76,6 +76,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Three calculators that answer on a partial set were said to be answering in silence, and they were not:
+  the DALY burden, the antimicrobial-use SAAR and the compounding anticipatory limit each say in their
+  first line that a figure was not entered and which side of the answer the rest supports. The internal
+  list of the words a calculator uses when it owns up to a gap knew that sentence in the singular and not
+  in the plural. The HEAR score was in the same position for a different reason: it says its total is a
+  floor ("HEAR score at least 3"), and the checks that look for exactly that sentence were reading a
+  calculator's whole answer as one run of text, where a phrase that has to come first never can.
 - Nine more input fields stop answering a value the reader entered with "Enter it". Five waves of this
   cleanup each placed a range check into the library by a slightly different rule, and in seventeen
   functions two of them landed in the same place -- where only the first one can ever run, so a field whose

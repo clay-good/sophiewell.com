@@ -74,6 +74,17 @@ const FINDERS = [
     minJudged: 5,
   },
   {
+    probe: 'probe-half-guarded.mjs',
+    what: 'a tile that guards one missing input and stays silent on another that moves its answer',
+    fix: 'Own the gap in the reading (docs/spec-v1805.md, docs/spec-v1812.md), or add it to JUDGED in the '
+      + 'finder with the reason the silence is right -- the verdict cannot move, the gap is visible in what '
+      + 'is printed, or the field is an optional extra',
+    // Its report is a three-line preamble and then a tile per indented block; a row is what is indented.
+    isFinding: (l) => l.startsWith('  '),
+    informational: [],
+    minJudged: 13,
+  },
+  {
     probe: 'probe-declared-cap-configs.mjs',
     what: 'a declared bound the library answers past in some configuration, so the page answers what the agent is refused',
     fix: 'Hoist the guard above the branch split with gradeFault (docs/spec-v1780.md), drop the declaration, '

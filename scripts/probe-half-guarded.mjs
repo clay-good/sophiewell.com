@@ -56,7 +56,7 @@
 import { allCalculators } from '../mcp/catalog.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { META } from '../lib/meta.js';
-import { ASKING, DISCLOSING } from '../test/lib/asking-language.js';
+import { ASKING, DISCLOSING, saysGap } from '../test/lib/asking-language.js';
 
 const only = (() => {
   const i = process.argv.indexOf('--tile');
@@ -113,6 +113,48 @@ function verdictKey(r) {
   return parts.length ? parts.join(' | ').replace(/[\d.]+/g, '') : null;
 }
 
+// spec-v1812: the rows that have been READ, with the reason each one is right.
+//
+// The two reviews above read every row and changed what needed changing; the rows that remained kept
+// printing, so a new row arrived into a report of eleven known ones and nobody could tell it apart. The
+// reasons move into a ledger keyed by the tile and the silent field, the probe prints only what is NOT
+// in it, and `test/unit/finder-ledgers.test.js` fails on an unjudged row in one direction and on a
+// judged row the probe no longer reaches in the other -- so a reason cannot outlive what it describes.
+const JUDGED = {
+  'niss:ni-a2': 'The band lists the AIS values it summed ("three worst AIS 6, 2"), so a reader can see one is '
+    + 'absent; and the example carries an AIS 6, which forces 75 by convention whatever the other two are',
+  'niss:ni-a3': 'The same: the band enumerates what it summed, and the AIS 6 forces the maximal score',
+  'palm-coein:pc-leiomyomaType': 'spec-v1788: the tertiary type is left out of the notation the tool prints '
+    + '(L1(SM) rather than L1(SM)-3), so its absence is on screen in the answer itself',
+  'hf-ef-classification:hfef-baseline': 'spec-v1788: read and sound -- with no baseline it says HFmrEF, which '
+    + 'is what the current measurement alone supports, and the tile asks for the baseline on the other path',
+  'syphilis-serology-sequence:syq-nontreponemal': 'The reading NAMES the test that is missing as the next step '
+    + '("The next test is a quantitative nontreponemal test (RPR or VDRL) on the same specimen"), which is the '
+    + 'whole purpose of a sequence tool and a stronger disclosure than saying the field is blank',
+  'mfp-refund-check:mr-recv': 'spec-v1730 fixed the assertion this row was raised for. The reading is now '
+    + 'CONDITIONAL on the thing it does not know -- "The refund was due by September 29, 2026. If it has not '
+    + 'arrived by ..., follow up with the manufacturer" -- so it states no fact about whether one arrived',
+  'hat-treatment:hat-follow': 'It assumes follow-up is NOT assured, which is the safe direction, and says so in '
+    + 'the band: "Gambiense HAT needing a lumbar puncture (follow-up not assured)"',
+  'yellow-fever-case-def:yfd-igm': 'A case definition stays at the lower category when a tier is not met: '
+    + '"Suspected yellow fever" is what fever with jaundice supports, and the probable and confirmed tiers it '
+    + 'does not reach are the ones the IgM decides',
+  'leprosy-reaction-prednisolone:lr-week': 'The week is an optional extra that selects which line of the track to '
+    + 'highlight; with it blank the tool prints the WHOLE 20-week track week by week, so nothing is withheld',
+  'osha-lead-airborne-pel-shift:olp-measured': 'spec-v1788: it reports the day\'s limit and ASKS for the '
+    + 'measured TWA -- "Enter the measured TWA for the day to compare it with the limit and the 30 µg/m³ action '
+    + 'level" -- and claims no compliance. The sentence is in the top-level `note`, which this probe skips '
+    + 'because a note is usually standing prose; here it is the conditional ask, and the probe cannot tell',
+  'levodopa-equivalent-dose:led-pramipexole-salt': 'The notes itemise every drug that WAS entered with its '
+    + 'factor and the band says how many items the total is from ("from 2 items"), so a drug left out is absent '
+    + 'from a list the reader is looking at rather than silently scored as zero',
+  'levodopa-equivalent-dose:led-comt': 'The same itemised list and item count',
+  'dropper-calibration:dc-dose': 'The dose is optional and feeds a second, separate line; without it the tool '
+    + 'gives the drops-per-mL identity it was asked for and says nothing about a dose',
+};
+const ALL = process.argv.includes('--all');
+const judgedSeen = new Set();
+
 const rows = [];
 for (const tool of allCalculators()) {
   if (only && tool.id !== only) continue;
@@ -141,9 +183,17 @@ for (const tool of allCalculators()) {
     // A refusal is the strongest form of guarding.
     if (got?.valid !== true) { guarded.push({ dom: f.dom, how: 'refuses' }); continue; }
 
-    const said = texts(got.result).join(' ');
-    if (ASKING.test(said)) { guarded.push({ dom: f.dom, how: 'asks' }); continue; }
-    if (DISCLOSING.test(said)) { guarded.push({ dom: f.dom, how: 'discloses' }); continue; }
+    // spec-v1812: EACH string, not the lot of them joined. Two phrases in the shared vocabulary are
+    // ANCHORED to the start of the reading on purpose -- DISCLOSING's floor pattern
+    // (`^[^.]{0,40}\bat least \d`), which spec-v1805 anchored so a criterion quoted mid-sentence could
+    // not pass as a total stated as a floor. Joining a tile's strings puts whatever `Object.entries`
+    // reaches first in front of the band, so the anchor could never match here, and `hear` -- the very
+    // tile spec-v1805 measured that pattern on -- was still being reported as answering in silence while
+    // it said "HEAR score at least 3". Testing the strings one at a time is what the anchor was written
+    // for; a phrase matched anywhere still matches, because every string is still read.
+    const said = texts(got.result);
+    if (said.some((x) => ASKING.test(x))) { guarded.push({ dom: f.dom, how: 'asks' }); continue; }
+    if (saysGap(said)) { guarded.push({ dom: f.dom, how: 'discloses' }); continue; }
 
     // Silent. Only interesting if the answer actually moved.
     const gotVerdict = verdictKey(got.result);
@@ -153,7 +203,14 @@ for (const tool of allCalculators()) {
   }
 
   if (guarded.length && silent.length) {
-    rows.push({ id: tool.id, guarded, silent });
+    const unjudged = silent.filter((x) => {
+      const key = `${tool.id}:${x.dom}`;
+      if (!JUDGED[key]) return true;
+      judgedSeen.add(key);
+      if (ALL) console.log(`JUDGED\t${key}\t${JUDGED[key]}`);
+      return false;
+    });
+    if (unjudged.length) rows.push({ id: tool.id, guarded, silent: unjudged });
   }
 }
 
@@ -165,4 +222,9 @@ for (const r of rows) {
   console.log(`  ${r.id}`);
   console.log(`      guards : ${r.guarded.map((g) => `${g.dom} (${g.how})`).join(', ')}`);
   console.log(`      silent : ${r.silent.map((s) => `${s.dom}: ${s.label}`).join('; ')}`);
+}
+const stale = Object.keys(JUDGED).filter((k) => !judgedSeen.has(k));
+if (stale.length) {
+  console.log(`\nSTALE-LEDGER: ${stale.length} judged row(s) this run no longer reaches: ${stale.join(', ')}.`);
+  console.log('A reason cannot outlive what it describes -- re-read the tile and remove the row.');
 }

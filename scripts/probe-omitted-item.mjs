@@ -33,7 +33,7 @@
 import { allCalculators } from '../mcp/catalog.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { META } from '../lib/meta.js';
-import { ASKING, DISCLOSING } from '../test/lib/asking-language.js';
+import { ASKING, DISCLOSING, saysGap } from '../test/lib/asking-language.js';
 
 const only = (() => {
   const i = process.argv.indexOf('--tile');
@@ -101,8 +101,9 @@ for (const tool of allCalculators()) {
     if (got?.valid !== true) continue;                     // refused: correct
     if (JSON.stringify(got.result) === JSON.stringify(full.result)) continue;  // did not matter
 
-    const after = texts(got.result).join(' ');
-    if (ASKING.test(after) || DISCLOSING.test(after)) continue;  // said so
+    const parts = texts(got.result);
+    if (saysGap(parts)) continue;  // said so (spec-v1812: per string)
+    const after = parts.join(' ');
 
     const a = nums(full.result);
     const b = nums(got.result);

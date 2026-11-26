@@ -193,7 +193,23 @@ export const DISCLOSING = new RegExp([
   // is dropped, so it is static prose about this row and the movement rule
   // ignores it. Added alone they would have bought two false exemptions to fix
   // four true ones.
-  'no [a-z][a-z -]{0,40} (?:is|was) (?:entered|recorded)',
+  // spec-v1812: and the PLURAL of it, which the pattern above could not match because its verb
+  // alternation was singular. The house writes the sentence both ways -- 33 singular uses across lib/
+  // and 10 plural ones in 8 files ("No deaths were entered", "No predicted antimicrobial days were
+  // entered", "No coagulation results were entered") -- and knowing one of the two is the drift this
+  // file exists to stop, the same shape as `can only add` in spec-v1094 and `is needed` in spec-v1097.
+  // Found by walking probe-half-guarded's rows and asking which of them actually disclose: `daly` and
+  // `au-rate-saar` both name the gap in their first note and were read as answering in silence.
+  //
+  // Measured before adding, as the rule at the top requires:
+  //   probe-half-guarded            14 calculators -> 12  (`daly`, `au-rate-saar`)
+  //   probe-omitted-field-decides   128 fields / 63 calculators -> 124 / 60  (section 3)
+  // Its four rows are `daly` on the deaths and on the cases, `au-rate-saar` on the predicted days, and
+  // `compound-anticipatory-limit` on the units on hand -- each of which names the gap in its first note
+  // and gives the side of the answer the entered figures support ("No units on hand were entered, so
+  // only the ceiling is given"). Sections 1, 2 and 4 do not move, and neither empty-form sweep reads
+  // DISCLOSING at all.
+  'no [a-z][a-z -]{0,40} (?:is|was|were) (?:entered|recorded)',
   'what was entered',
   'does not rule', 'cannot yet rule', 'items assessed',
   // "3 of 6 components", "7 of 8 items", "0 of 1 criteria assessed"
@@ -236,6 +252,29 @@ export const DISCLOSING = new RegExp([
   // `chikungunya-case-def` and `zika-case-def`, each of which answers "Not decided" and says why.
   'not fully assessed',
 ].join('|'), 'i');
+
+// spec-v1812: ask the question of EACH string a reading is made of, not of all of them joined.
+//
+// Two phrases in the lists above are ANCHORED to the start of a reading on purpose. DISCLOSING's floor
+// pattern (`^[^.]{0,40}\bat least \d`) is anchored because spec-v1805 measured a bare `at least \d` at 30
+// rows and found five of them a CRITERION quoted mid-sentence rather than a total stated as a floor.
+//
+// A reading assembled from an object's string fields has no reliable order -- whatever `Object.entries`
+// reaches first lands in front of the band -- so joining the fields and then testing the join puts an
+// anchor somewhere it can never match. `hear`, the tile spec-v1805 measured that very pattern on, was
+// still reported as answering in silence by two finders while it said "HEAR score at least 3".
+//
+// Testing the strings one at a time is what the anchor was written for. A phrase matched anywhere still
+// matches, because every string is still read; only the anchored ones change, and they change to the
+// behaviour their comment claims.
+//
+// `ownsTheGap` below is the same shape and is deliberately NOT changed here: its callers are the browser
+// sweeps, where the reading is one live-region string and splitting it would GRANT exemptions rather than
+// find them. That is the unsafe direction, and it needs its own measurement in those sweeps.
+export function saysGap(parts) {
+  const list = Array.isArray(parts) ? parts : [String(parts || '')];
+  return list.some((x) => ASKING.test(x) || DISCLOSING.test(x));
+}
 
 // spec-v1196: WHERE the words come from, which the two rules at the top do not say.
 //

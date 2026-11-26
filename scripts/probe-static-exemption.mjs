@@ -43,7 +43,7 @@
 import { allCalculators } from '../mcp/catalog.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { META } from '../lib/meta.js';
-import { ASKING, DISCLOSING } from '../test/lib/asking-language.js';
+import { ASKING, DISCLOSING, saysGap } from '../test/lib/asking-language.js';
 
 const arg = (name) => {
   const i = process.argv.indexOf(name);
@@ -103,13 +103,16 @@ for (const tool of allCalculators()) {
     if (got?.valid !== true) continue;
 
     const all = strings(got.result);
-    const said = all.join(' ');
-    const grantedBy = said.match(ASKING) || said.match(DISCLOSING);
-    if (!grantedBy) continue;
+    // spec-v1812: each string on its own, because two of the vocabulary's phrases are anchored. The
+    // phrase and its context are reported, so the string that granted the exemption is the one quoted.
+    const granting = all.find((x) => ASKING.test(x) || DISCLOSING.test(x));
+    if (granting === undefined) continue;
+    const grantedBy = granting.match(ASKING) || granting.match(DISCLOSING);
+    const said = granting;
     examined += 1;
 
-    const moved = all.filter((s) => !before.has(s)).join(' ');
-    if (ASKING.test(moved) || DISCLOSING.test(moved)) continue;
+    const moved = all.filter((s) => !before.has(s));
+    if (saysGap(moved)) continue;
 
     const verdictMoved = !!(fullVerdict && verdictKey(got.result) && verdictKey(got.result) !== fullVerdict);
     if (!verdictMoved && !showAll) continue;
