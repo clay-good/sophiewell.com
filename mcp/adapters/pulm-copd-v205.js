@@ -51,9 +51,9 @@ export default [
     compute: F.doseIndex,
     fields: [
       { dom: 'dose-mmrc', arg: 'mmrc', kind: 'enum', values: ['0', '1', '2', '3', '4'], required: true, label: 'mMRC dyspnea grade' },
-      { dom: 'dose-fev1', arg: 'fev1', kind: 'number', required: true, label: 'FEV₁ (% predicted)' },
+      { dom: 'dose-fev1', arg: 'fev1', kind: 'number', required: true, label: 'FEV₁ (% predicted)', min: 0, max: 200 },
       { dom: 'dose-smoker', arg: 'smoker', kind: 'bool', required: false, label: 'Current smoker (+1)' },
-      { dom: 'dose-exac', arg: 'exacerbations', kind: 'number', required: true, label: 'Exacerbations in the past year' },
+      { dom: 'dose-exac', arg: 'exacerbations', kind: 'number', required: true, label: 'Exacerbations in the past year', min: 0, max: 100 },
     ],
   },
   {

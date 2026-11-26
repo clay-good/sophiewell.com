@@ -76,6 +76,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The last calculator that answered an impossible number by asking for it again -- the COPD DOSE index --
+  now says the range instead, using the limits it was already applying internally. That closes a cleanup
+  that began with 225 such fields, and the build now fails if another one appears.
 - Three controlled-substance tools accepted a days-supplied their own refusal excludes: each says "from 1 to
   365" and each accepted a fraction of a day. A prescription is dispensed in whole days, which two sibling
   tools in the same codebase already required. Six tools in total now answer an impossible value with the

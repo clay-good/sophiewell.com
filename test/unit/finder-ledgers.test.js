@@ -208,6 +208,18 @@ const FINDERS = [
     minJudged: 6,
   },
   {
+    probe: 'probe-entered-asked-for.mjs',
+    what: 'a field that answers a value the reader ENTERED with the sentence an empty box gets, naming no '
+      + 'range at all -- the strong half of the report, where retyping the value produces the same words',
+    fix: 'State the range in the refusal, taking the number from what the tool already enforces -- a reader\'s '
+      + 'literal, a regex, a label\'s parenthetical (docs/spec-v1829.md, docs/spec-v1830.md, docs/spec-v1831.md)',
+    // The strong rows carry a `=` marker; the weak ones (whose sentence DOES state a range) are indented
+    // plainly and are a reading list, not a gate.
+    isFinding: (l) => l.startsWith('  = '),
+    informational: [],
+    minJudged: 0,
+  },
+  {
     probe: 'probe-declared-cap-configs.mjs',
     what: 'a declared bound the library answers past in some configuration, so the page answers what the agent is refused',
     fix: 'Hoist the guard above the branch split with gradeFault (docs/spec-v1780.md), drop the declaration, '

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `39c9b914fbaed5ef`
-Generated: 2026-11-26T18:52:48.939Z
+Build ID: `6653976749387ba4`
+Generated: 2026-11-26T19:22:54.225Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1247,7 +1247,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/psychotropic-prn-clock-v1638.js` | 6623 | `75b15557286435c44e9e437dc2d877cbe6cb338e08261f60c30932b755832cae` |
 | `lib/pt-event-score-v1658.js` | 4909 | `e4e7efdd67afc2286ac60d00aeb8be98a4bea6abb2e918059e92337083ed73d3` |
 | `lib/pufa-index-v1491.js` | 4112 | `f4458cbd2a0f04bab58c40cdef58b6817178094b1311140e2a9bf21dce63fb1c` |
-| `lib/pulm-copd-v205.js` | 17157 | `0a157864a4218e0e5e133ee99f85e6031e0b9271ade71d790389188dab8144d9` |
+| `lib/pulm-copd-v205.js` | 17658 | `3fee26d1381a759e9921041df89b9d70716b22c75e27ff9e28d31f62fc74184d` |
 | `lib/pulm-v114.js` | 18455 | `dfa16add429f4bf2d5eceb5457a98a2c1ebe1f01e57cac250a9ee1ccb555e4c6` |
 | `lib/pulm-v91.js` | 22418 | `b1974ee48a3fdb7987de69ee6ba9878336b709eea6270185fca4a53595e17a49` |
 | `lib/pulmnod-v115.js` | 21560 | `461778e4e4ab4ae8b4e98ac25d490e9c6c4a587e8f79d313d3356b3866d98909` |
@@ -2732,7 +2732,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/psychotropic-prn-clock-v1638.js` | 1548 | `7d50ab75ccb9f0b0a5fbac6550869d45da9b62d2f2894e55299df55ea18c7b9d` |
 | `mcp/adapters/pt-event-score-v1658.js` | 992 | `8faf6a60ce393e1b4a6f492067fb334e5d17ab486a1f4d87ec0bb01e279a4799` |
 | `mcp/adapters/pufa-index-v1491.js` | 772 | `156c4717a11bc25ada64ab049a8779cc15f5d5d71fb2d391f360e23f81c93957` |
-| `mcp/adapters/pulm-copd-v205.js` | 4969 | `53c86d29a9ab0373d66d5348811c2f19cd9ec8e8f91a6bf402d82b0a2b053b2f` |
+| `mcp/adapters/pulm-copd-v205.js` | 5005 | `5b7cc42f46ef66daa6c0857887bd85dc646460262e99aea8653366bfe9293e6d` |
 | `mcp/adapters/pulm-v114.js` | 5067 | `c980f8b80557dc93e43231bb7e6d3a3e37344ef1cf203c411eba49ef866170b8` |
 | `mcp/adapters/pulm-v91.js` | 3996 | `b0d3ed4ee4af4e2b1d7cab4098591670ede2dc0049439e24a6bf4fcf8eb56d29` |
 | `mcp/adapters/pulmnod-v115.js` | 5201 | `eb42e1b9fcd75fcc0dc69054bd91690058a7b6a02a8e48dc88fb984949c8f6d3` |
