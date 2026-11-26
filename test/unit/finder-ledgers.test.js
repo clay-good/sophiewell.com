@@ -124,6 +124,15 @@ const FINDERS = [
     minJudged: 0,
   },
   {
+    probe: 'probe-envelope-floor.mjs',
+    what: 'a value at half of a lib/bounds.js floor above zero, still answered',
+    fix: 'Apply the envelope\'s floor where the value is read (docs/spec-v1760.md)',
+    // Its rows are tab-separated columns at the left margin, like probe-impossible-dates.
+    isFinding: (l) => /^[a-z0-9-]+\t/.test(l),
+    informational: [],
+    minJudged: 0,
+  },
+  {
     probe: 'probe-impossible-dates.mjs',
     what: 'an impossible date or time (February 30th, 25:00) still answered',
     fix: 'Refuse it where the date is read (docs/spec-v1737.md)',

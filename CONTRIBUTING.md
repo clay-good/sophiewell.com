@@ -350,7 +350,7 @@ node scripts/probe-unit-equivalent.mjs     # the same quantity in the other unit
 node scripts/probe-note-lost-in-a-branch.mjs  # a tile that owns a gap in some configurations of its other fields and answers without owning it in the rest, where the field could still move the verdict there -- no judgement in the row, because the tile has already made it (docs/spec-v1814.md)
 ```
 
-**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds thirty-three of them
+**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds thirty-four of them
 in both directions: an unjudged row fails the gate, so it is a decision someone takes rather than a line in
 a report that already prints known ones, and a judged row the finder no longer reaches fails too, so a
 reason cannot outlive what it describes. Negative-test both directions when you add one, by removing a
@@ -366,6 +366,10 @@ and the next regression prints a row into a file no one opens. Six finders were 
 `console.log` that prints a ROW before writing `isFinding` -- five of those six indent their rows and
 `probe-impossible-dates` prints tab-separated columns at the left margin, so the indent rule the others
 share would have made it blind.
+
+**One finder stays out of that test on purpose.** `probe-build-gates` FETCHES each gated tool's source
+document, so gating it would put the network in the unit suite and make a publisher's outage look like
+a code failure. It is run by hand, and `data/build-gates.json` records what it found and when.
 
 **A refusal names the thing by the reader's name for it, never by the code's.** `lib/num.js`'s `readable()`
 does that for every caller that passes a value through it, but a message assembled from a table's `key` does

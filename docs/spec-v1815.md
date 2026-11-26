@@ -35,3 +35,14 @@ archive keeps only the current point release — so once a new one is published 
 every push fails on a mirror change rather than a code change. That is the same failure mode the
 `ubuntu-24.04` pin exists to stop, arriving by another route. `sudo apt-get update` runs first now, in both
 lanes.
+
+## Afterword (same day): a seventh, and one left out on purpose
+
+`probe-envelope-floor` — a value at **half** of a `lib/bounds.js` floor above zero, still answered — was in
+the same state and is gated with the rest, at 0 of 647 fields. Its rows are tab-separated columns at the
+left margin, like `probe-impossible-dates`.
+
+`probe-build-gates` is the one finder deliberately left out. It **fetches** each gated tool's source
+document to see whether the paywall, the WAF or the policy that blocks the build has moved. Gating it would
+put the network in the unit suite and make a publisher's outage look like a code failure. It is run by hand,
+and `data/build-gates.json` records what it found and when.
