@@ -27,6 +27,16 @@
 // lib/bounds.js envelope or a definitional bound. The other 49 need envelopes
 // bounds.js does not have yet; docs/spec-v1731.md lists them by quantity.
 //
+// RE-MEASURED 2026-11-26 (spec-v1833), after the envelopes of spec-v1823 and spec-v1825 landed: 16 modules
+// and 23 functions became 15 and 19. The cholesterol, CRP and urine-creatinine envelopes closed one module
+// and four siblings outright, which is what this probe is for -- it names the guard that is already in the
+// file, and those four were waiting on a key `lib/bounds.js` did not have.
+//
+// RE-MEASURED 2026-11-26 (spec-v1833), after the envelopes of spec-v1823 and spec-v1825 landed: 16
+// modules and 23 functions became 15 and 19. The cholesterol, CRP and urine-creatinine envelopes closed
+// one module and four siblings outright, which is what this probe is for -- it names the guard that is
+// already in the file, and those four were waiting on a key `lib/bounds.js` did not have.
+//
 // RE-DRIVEN 2026-11-26 (spec-v1820). The declaration programme of spec-v1793 to spec-v1819 has taken the
 // residue from 49 to FIFTEEN, and the one of those fifteen that needed no source is fixed in spec-v1820:
 // the four NIHSS fields in lib/neuro-v117.js now state the scale's own 0-42. The fourteen left are a

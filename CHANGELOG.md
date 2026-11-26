@@ -76,6 +76,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The second of the two long internal review lists was sorted for the one direction that can hurt -- an
+  answer that reads reassuring only because a field was left out -- and the two entries that had not already
+  been reviewed are both a calculator leaving a line out rather than inventing one.
 - The check for a calculator that cannot tell an empty field from a typed zero now runs the whole catalog
   and fails the build on anything new, instead of printing 162 lines of source for someone to read. Every
   field where an empty box and a typed zero give the same answer is written down with the reason zero is a
