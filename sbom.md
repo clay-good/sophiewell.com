@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a6a07062db0d340f`
-Generated: 2026-11-26T05:06:02.420Z
+Build ID: `6aba2992daea363a`
+Generated: 2026-11-26T05:41:46.714Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -300,9 +300,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v4.js` | 23198 | `ae4097c58ac0f6953c8b43bd52609f50c77a3deff416457487aa830c147723a7` |
 | `lib/clinical-v5.js` | 29159 | `c5e747849d81b2c774422e075399521b589cf99b1d097ebdfd9126010beaa5a4` |
 | `lib/clinical-v6.js` | 20537 | `205e779ec41e51ce17f581f436655e781f666e6b651aad8e8715d862ee2d912f` |
-| `lib/clinical-v7.js` | 30046 | `ee1ea6e25951b69eccca57fd70cd4dbc695c885999f4d06f5ac31d9f4cc8e0dd` |
-| `lib/clinical-v8.js` | 30287 | `d3ed1c3a50129ce3ef15f50f8268393a5aeb00a8136c44ac5fedbe4d08475439` |
-| `lib/clinical.js` | 32202 | `1336d54eb07d86b1ab6b7ab91a4208cfc0f4f23f4fe9986d2960680b0c486797` |
+| `lib/clinical-v7.js` | 30260 | `b03586265bec93ea83582155ff82f4d948fd46685bc315dfbf837d0501068d17` |
+| `lib/clinical-v8.js` | 30485 | `fc3ede0e7e408fc3b5911814bb78677e2d1035a373fc4c15a6f89ed20c97bcfc` |
+| `lib/clinical.js` | 32434 | `265e51db58e7a32dd57d96035d8f97ad6c4d86c20075747f185f7d386e018d7e` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7954 | `7b448718002edeeef4b815519a80c050dc3b7373875d4828d079772f7d83cb12` |
 | `lib/cmea-sales-limit-v1637.js` | 10263 | `0c4fe373f19ea64b85bcf0c23b628fd4fe86da3046edeec001fcb81a9a762249` |
@@ -1891,9 +1891,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v4.js` | 13745 | `db9b96229345aae70c7b26b715f3f2733052a12d17d3b9122ddaa5e2671a3abc` |
 | `mcp/adapters/clinical-v5.js` | 12610 | `de4cc5ec9985695d57fc0831149d8dd67047c52ac1e8e32d58af1254c8ef20f1` |
 | `mcp/adapters/clinical-v6.js` | 9907 | `a42f0795ecb5a07cde9afdaec973df6ef1ccd229d769182ecdad33710129d277` |
-| `mcp/adapters/clinical-v7.js` | 9788 | `dd5aca5a944444eed6adc675b40b011978307e7021c691758d26f8433fa46e0f` |
+| `mcp/adapters/clinical-v7.js` | 9888 | `7642bf84bcb0bbf5324dba66ff71511dc7178be8fc315fc1b71366857ec1d6a4` |
 | `mcp/adapters/clinical-v8.js` | 17613 | `9f1d0306298381bcc247503b6a4b4005dae804fe01e845f27c555587302fca53` |
-| `mcp/adapters/clinical.js` | 32351 | `46868fde27a3d2816382de767db9a832e1e3a806bf99845a68c5ae71e6ace968` |
+| `mcp/adapters/clinical.js` | 32658 | `ccd416232ac8801d0200137ddf2bcd6e4699c225f20be9610244683960bcbae5` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/cmea-sales-limit-v1637.js` | 2262 | `9d19afb48dafa65929ff797a6b40e3dd6e5bc7bc888dab502e5c5f9be24daa72` |
 | `mcp/adapters/cns-renal-dose-check-v1632.js` | 1690 | `caeec305d713a62fd217c13b25df096aaf521d81623b7ba6ff752566fd8c7552` |
@@ -2843,7 +2843,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schofield-v779.js` | 1232 | `a592b13745b52ad62d8070460cba4fdbd99ab4069a2714a70f48bfd8f92c2db7` |
 | `mcp/adapters/schumock-thornton-preventability-v1634.js` | 1699 | `1076046b53bf7fa9c95d1907670da32babe615ba9b0870eb6b66061537b01122` |
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
-| `mcp/adapters/scoring-v4.js` | 168552 | `3d6ca4136b91beea773b2b734ee0cb7c4071fa9ff0993426301131d32d7e582e` |
+| `mcp/adapters/scoring-v4.js` | 169402 | `fec0b252b22c1248b7aac5f553806d012768aa57c60e36269a06b23da553ec26` |
 | `mcp/adapters/scoring-v5.js` | 13023 | `bcd0350973f20a082be1a5392c287bbf2d57b76bec6294816f6cd3fdccf59c65` |
 | `mcp/adapters/scoring-v6.js` | 20857 | `02f1d8ebef6309a8c9e0e6e50aa8c352197529df799d6b58ed0e615fcdd31fff` |
 | `mcp/adapters/scorpion-grade-india-v1556.js` | 1284 | `3cd3d399c2af7f57769e85a6ad4edeb3e77354249b3a6db361b0981e71233aed` |

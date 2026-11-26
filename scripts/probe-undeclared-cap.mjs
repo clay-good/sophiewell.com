@@ -237,6 +237,22 @@ const round = (v) => {
   return p;
 };
 
+// spec-v1801: a judged ledger, so this prints nothing until something NEW appears. It is the last of the
+// declaration finders to get one, because it is the last to reach zero: every DECLARABLE row it has found
+// since spec-v1777 has been declared, and the two that remain are not declarations.
+const JUDGED = {
+  // The cap is on the OUTPUT, reached through the only input that feeds it: the treadmill time is refused
+  // above 35.3156 minutes because that is where the VO2max it reports leaves its range. A literal there
+  // would be a derived number that drifts with the output range (docs/spec-v1795.md).
+  'vo2max-exercise:vo2-time': 'the cap is where the VO2max it reports leaves ITS range, not a property of the time; a literal would be a derived number that drifts',
+  // One field carries either a coinsurance percent or a dollar copay, picked by the select beside it, so
+  // the library refuses above 100 in the one and above 1,000,000 in the other. A union fails both ways
+  // round, and both gates said so (docs/spec-v1798.md).
+  'site-of-care-compare:soc-share2': 'the field is a percent OR dollars by a sibling select; declared-cap-honest refuses 1,000,000 as a percent and declared-cap-configs answers 1,050,000 as a copay',
+};
+const ALL_ROWS = process.argv.includes('--all');
+const judgedSeen = new Set();
+
 const byId = new Map(allCalculators().map((t) => [t.id, t]));
 const sections = { DECLARABLE: [], ENVELOPE: [], 'UNIT-TOGGLED': [], VARIES: [], DISAGREES: [] };
 let tools = 0;
@@ -455,17 +471,28 @@ for (const [id, meta] of Object.entries(META)) {
     if (contradicted) { sections.DISAGREES.push(row); continue; }
     const shared = sharedEnvelope(foundMin, foundMax, `${f.arg || ''} ${f.label || ''} ${f.unit || ''}`);
     if (shared) { sections.ENVELOPE.push(`${row}\t[= BOUNDS.${shared}]`); continue; }
+    const jk = `${id}:${dom}`;
+    if (JUDGED[jk]) { judgedSeen.add(jk); if (ALL_ROWS) console.log(`JUDGED\t${jk}\t${JUDGED[jk]}`); continue; }
     sections.DECLARABLE.push(row);
   }
 }
 
+// spec-v1801: DECLARABLE and DISAGREES are findings -- a cap to state, and a declaration the library does
+// not keep. The other three sections are the finder showing its work: why a cap was NOT offered. They are
+// counted in the reach line always and printed only with `--all`, so the default report is what is left to
+// do rather than 377 rows of correct classification.
+const FINDINGS = new Set(['DECLARABLE', 'DISAGREES']);
 for (const [name, rows] of Object.entries(sections)) {
-  if (!rows.length) continue;
+  if (!rows.length || (!FINDINGS.has(name) && !ALL_ROWS)) continue;
   console.log(`\n== ${name} (${rows.length})`);
   for (const r of rows.sort()) console.log(r);
 }
 
-console.error(`\n${sections.DECLARABLE.length} field(s) enforce a stable, unit-free cap that nothing declares; `
+for (const k of Object.keys(JUDGED)) {
+  if (!judgedSeen.has(k)) console.log(`STALE-LEDGER\t${k}\t(judged here, but the finder no longer reaches it)`);
+}
+console.error(`\n${sections.DECLARABLE.length} field(s) enforce a stable, unit-free cap that nothing declares `
+  + `(${judgedSeen.size} judged); `
   + `${sections.DISAGREES.length} declare one the library does not enforce.\n`
   + `Reach: ${tools} tool(s) with a computable worked example, ${fields} free numeric field(s) driven, `
   + `${capped} of them enforce a cap at all; ${sections.ENVELOPE.length} are refused by the shared envelope `

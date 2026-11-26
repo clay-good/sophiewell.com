@@ -48,7 +48,11 @@ export const ALIASES = {
 // is a borrowed envelope and renaming it to `sodium` would only borrow a closer one. These words mark a
 // field as measured somewhere other than blood, and an envelope keyed on a blood analyte cannot fit it.
 export const COMPARTMENT = new Set(['urine', 'urinary', 'pleural', 'csf', 'ascitic', 'ascites', 'dialysate',
-  'drain', 'sputum', 'saliva', 'stool', 'fecal', 'synovial', 'peritoneal', 'effusion']);
+  'drain', 'sputum', 'saliva', 'stool', 'fecal', 'synovial', 'peritoneal', 'effusion',
+  // spec-v1801: SWEAT chloride is the cystic-fibrosis test, 30 to 60 mmol/L at the diagnostic edges where
+  // serum chloride is 80 to 120; and `priapism-gas` draws its blood gas from the CORPUS CAVERNOSUM, which
+  // is the whole point of the tool -- the pCO2 there is far outside an arterial range by design.
+  'sweat', 'cavernous', 'cavernosum', 'corpus']);
 // AND A BODY QUANTITY IS NOT THE SAME QUANTITY MEASURED OFF THE BODY. BOUNDS.temperature is 13 to 47 C
 // because it is a BODY temperature; a wet-bulb globe temperature of 6.5 C is ordinary weather, and
 // `wind-chill` reads an air temperature. BOUNDS.weightKg is a patient's weight; `specific-gravity` weighs
@@ -56,6 +60,9 @@ export const COMPARTMENT = new Set(['urine', 'urinary', 'pleural', 'csf', 'ascit
 export const NOT_THE_PATIENT = new Set(['globe', 'bulb', 'dewpoint', 'dew', 'air', 'ambient', 'outdoor',
   'room', 'wind', 'water', 'cylinder', 'empty', 'tare', 'container', 'bag', 'package', 'load', 'vial',
   'bottle', 'tablet', 'capsule', 'powder', 'diluent', 'syringe',
+  // spec-v1801: an MS-DRG RELATIVE WEIGHT is a payment multiplier, and a buffer's working temperature is a
+  // bench temperature, not a patient's.
+  'relative', 'drg', 'buffer', 'working',
   // A CONCENTRATION per unit mass of tissue is not a body weight: `hepatic-iron-index` reads micromoles of
   // iron per gram of liver, "dry weight".
   'dry', 'concentration']);
@@ -63,7 +70,9 @@ export const BODY = new Set(['temperature', 'weightKg', 'heightM', 'bmi', 'perce
 
 export const BLOOD = new Set(['sodium', 'potassium', 'chloride', 'bicarbonate', 'scr', 'bun', 'albumin',
   'bilirubin', 'glucose', 'calcium', 'magnesium', 'phosphate', 'lactate', 'alt', 'ast', 'wbc',
-  'hemoglobin', 'hematocrit', 'platelets', 'triglycerides', 'esr', 'hcg', 'inr']);
+  'hemoglobin', 'hematocrit', 'platelets', 'triglycerides', 'esr', 'hcg', 'inr',
+  // spec-v1801: a blood gas is a blood analyte too, and `priapism-gas` draws its from the corpus cavernosum.
+  'paO2', 'paCO2', 'pH', 'baseExcess', 'spo2']);
 
 // Does a field's own vocabulary name this envelope? Its key, split into words, or any of its aliases.
 // spec-v1800: A FIELD NAMES ITS QUANTITY IN THE FIRST CLAUSE OF ITS LABEL; what follows is explanation,
@@ -154,7 +163,9 @@ export const NOT_A_MEASUREMENT = new Set(['uln', 'lln', 'upper', 'lower', 'limit
   'score', 'agatston', 'constant', 'coefficient', 'threshold', 'cutoff', 'target', 'multiple',
   // spec-v1800: A CHANGE IN A QUANTITY IS NOT THE QUANTITY. `peds-transfusion-volume` asks for the desired
   // hemoglobin RISE, and a rise of 0.5 g/dL is an ordinary transfusion order, not a hemoglobin of 0.5.
-  'rise', 'increment', 'change', 'delta', 'difference', 'drop', 'fall', 'gain', 'deficit']);
+  'rise', 'increment', 'change', 'delta', 'difference', 'drop', 'fall', 'gain', 'deficit',
+  // spec-v1801: a pKa is a dissociation constant that happens to be quoted AT a temperature.
+  'pka', 'pkb']);
 // And an end-tidal CO2 is not an arterial one, which is the compartment rule in its respiratory spelling.
 export const NOT_ARTERIAL = new Set(['etco2', 'endtidal', 'tidal', 'expired', 'exhaled', 'alveolar']);
 

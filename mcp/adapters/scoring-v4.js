@@ -56,7 +56,11 @@ export default [
       { dom: 'mgap-mech', arg: 'mechanismBlunt', kind: 'enum', values: ['blunt', 'pen'], required: true, label: 'Mechanism', to: (v) => v === 'blunt' },
       { dom: 'mgap-gcs', arg: 'gcs', kind: 'number', required: true, label: 'GCS' },
       { dom: 'mgap-age', arg: 'ageLt60', kind: 'enum', values: ['lt60', 'ge60'], required: true, label: 'Age', to: (v) => v === 'lt60' },
-      { dom: 'mgap-sbp', arg: 'sbp', kind: 'number', required: true, label: 'SBP', unit: 'mmHg' },
+      // spec-v1801: the CEILING only, as a literal. These two apply BOUNDS.sbp's ceiling and not its
+      // floor -- spec-v1154 settled that a typed 0 systolic is a real trauma reading -- and `bound: 'sbp'`
+      // would publish the floor too, which probe-declared-cap-configs would then find the library
+      // answering past. If the envelope's ceiling ever moves, probe-adapter-only-bounds finds this copy.
+      { dom: 'mgap-sbp', arg: 'sbp', kind: 'number', required: true, label: 'SBP', unit: 'mmHg', max: 500 },
     ],
   },
   {
@@ -66,7 +70,11 @@ export default [
     fields: [
       { dom: 'gap-gcs', arg: 'gcs', kind: 'number', required: true, label: 'GCS' },
       { dom: 'gap-age', arg: 'ageLt60', kind: 'enum', values: ['lt60', 'ge60'], required: true, label: 'Age', to: (v) => v === 'lt60' },
-      { dom: 'gap-sbp', arg: 'sbp', kind: 'number', required: true, label: 'SBP', unit: 'mmHg' },
+      // spec-v1801: the CEILING only, as a literal. These two apply BOUNDS.sbp's ceiling and not its
+      // floor -- spec-v1154 settled that a typed 0 systolic is a real trauma reading -- and `bound: 'sbp'`
+      // would publish the floor too, which probe-declared-cap-configs would then find the library
+      // answering past. If the envelope's ceiling ever moves, probe-adapter-only-bounds finds this copy.
+      { dom: 'gap-sbp', arg: 'sbp', kind: 'number', required: true, label: 'SBP', unit: 'mmHg', max: 500 },
     ],
   },
   {

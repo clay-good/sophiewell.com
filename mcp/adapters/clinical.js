@@ -37,7 +37,10 @@ export default [
     compute: F.bmi,
     fields: [
       { dom: 'w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
-      { dom: 'h', concept: 'body-height', arg: 'heightM', kind: 'number', required: true, label: 'Height', unit: 'm', min: 0.01 },
+      // spec-v1801: the ceiling the library gained in the same spec. The floor stays the mathematical one
+      // (0.01 m, since the height is squared in the denominator); the envelope's 0.45 is an advisory beside
+      // the result, which is the choice spec-v53 made and this does not change.
+      { dom: 'h', concept: 'body-height', arg: 'heightM', kind: 'number', required: true, label: 'Height', unit: 'm', min: 0.01, max: 2.5 },
     ],
   },
   {

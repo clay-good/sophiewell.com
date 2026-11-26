@@ -94,6 +94,19 @@ const FINDERS = [
     minJudged: 7,
   },
   {
+    // spec-v1801: the last of the declaration finders to become a gate, because it is the last to reach
+    // zero. Every DECLARABLE row it has found since spec-v1777 is now declared -- 2,667 of 5,189 number
+    // fields -- and the two it still reaches are not declarations at all.
+    probe: 'probe-undeclared-cap.mjs',
+    what: 'a field whose library enforces a stable, unit-free cap that nothing declares',
+    fix: 'Declare it on the adapter descriptor as a literal min/max (docs/spec-v1795.md), or name the '
+      + 'envelope where the library applies one, or add it to JUDGED in the finder with the reason it is not a declaration',
+    // --all also prints the three sections that explain why a cap was NOT offered; those are not findings.
+    informational: ['== ', 'Reach:'],
+    isFinding: (l) => l.includes('\t') && !l.startsWith('JUDGED') && !/\t\[(= BOUNDS|moves with|rescaled by|declaration spans)/.test(l),
+    minJudged: 2,
+  },
+  {
     // spec-v1800: promoted the day its last row was judged. Its findings CAN be deliberate -- an infusate's
     // electrolytes are not a patient's, a unit converter converts, and a rewarming tool is opened for the
     // record-breaking case -- so unlike probe-borrowed-envelope it carries a ledger.
@@ -103,7 +116,7 @@ const FINDERS = [
       + 'docs/spec-v1800.md), or add it to JUDGED in the finder with the reason the value is ordinary',
     informational: [],
     isFinding: (l) => l.includes('\t') && !l.startsWith('OK'),
-    minJudged: 9,
+    minJudged: 11,
   },
   {
     // spec-v1797: promoted the day it was written, because the 163 rows it found were all one refactor --

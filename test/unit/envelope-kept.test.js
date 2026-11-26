@@ -25,6 +25,10 @@ const CASES = [
   ['gnri', 'gnri-weight', 0.1, 70],
   ['calcium-phosphate-product', 'capo4-ca', 1.5, 9.5],
   ['calcium-phosphate-product', 'capo4-po', 0.1, 4],
+  // spec-v1801: found once the finder stopped skipping a whole field because ONE of its edges was declared.
+  ['anticoag-reversal', 'ar-inr', 0.25, 3.2],
+  ['bmi', 'h', 5, 1.75],
+  ['ebv-mabl', 'em-min', 1.5, 25],
 ];
 
 for (const [id, dom, outside, inside] of CASES) {

@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Five more measurements held to their published range: an INR of 0.25 was reversed, a height of 5 m gave
+  a body mass index of 2.8 and read "Underweight", and a minimum acceptable hematocrit of 1.5% gave an
+  allowable blood loss. Two others are left as they are on purpose -- a neonatal lowest temperature, and a
+  trauma score that scores a respiratory rate of 0 as apnoea, which is what it is for.
 - Eleven measurements that have a published plausible range behind them are now held to it. A systolic
   blood pressure of 1,000 mmHg scored two trauma scores and a pulmonary-hypertension risk score; an
   albumin of 14 g/dL, twice anything recorded, scored the top band of two nutritional indexes; a fetal

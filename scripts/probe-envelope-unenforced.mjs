@@ -49,6 +49,12 @@ const JUDGED = {
   // at some length in both functions. The CEILING is applied; the floor would turn away the worst case.
   'gap:gap-sbp:below': 'spec-v1154: a typed 0 systolic is a real reading in a trauma score (no recordable BP), kept distinct from a blank; the ceiling IS applied',
   'mgap:mgap-sbp:below': 'spec-v1154: the same, in MGAP',
+  // Two floors that are OFF ON PURPOSE, each with a spec behind it.
+  // spec-v1234 kept the 25 C floor off a neonatal LOWEST temperature; the ceiling is applied in the library.
+  'snappe-ii:sn-temp:below': 'spec-v1234: the floor is deliberately off a neonatal lowest temperature; the CEILING is applied',
+  // The Revised Trauma Score has a respiratory-rate band for APNOEA -- a rate of 0 scores 0 points, which
+  // is the reading the score exists to capture.
+  'iss-rts:ir-rr:below': 'the RTS scores apnoea: a respiratory rate of 0 is a band of its own, not an implausible value',
   // A CONVERTER converts. Refusing a weight outside the envelope would stop the one tool whose whole job is
   // to say what a number in one unit is in the other, and it reads no patient and scores nothing.
   'peds-weight-conv:pw-kg:above': 'a unit converter: it states what a weight in kg is in lb and reads nothing else, so there is no patient to be implausible',
@@ -91,15 +97,20 @@ for (const t of allCalculators()) {
     const b = BOUNDS[key];
     if (!Number.isFinite(b.min) || !Number.isFinite(b.max)) continue;
     matched += 1;
-    // A field that states its own range has already answered this question, one way or the other.
+    // A field that states its own range has already answered this question -- but PER SIDE, not for the
+    // whole field. spec-v1801 declared a ceiling of 500 on `gap`'s and `mgap`'s systolic pressure, whose
+    // FLOOR is deliberately not the envelope's (spec-v1154: a typed 0 is a real trauma reading). Skipping
+    // the whole field on one declared edge made both judged rows go stale and hid the unexamined floor.
     const r = fieldRange(f);
-    if (r.min !== null || r.max !== null) { declared += 1; continue; }
+    if (r.min !== null && r.max !== null) { declared += 1; continue; }
     // spec-v1800: HALVING A NEGATIVE FLOOR MOVES IT INWARD. BOUNDS.baseExcess starts at -60, and -60/2 is
     // -30, which the envelope permits -- so every signed quantity was being driven to a value it allows and
     // reported when the tool answered, which is correct behaviour. Out is `* 2` below zero and `/ 2` above.
     const out = (v, dir) => (dir > 0 ? (v > 0 ? v * 2 : v / 2) : (v > 0 ? v / 2 : v * 2));
-    const sides = [['above', out(b.max, 1)]];
-    if (CEILING_ONLY.has(key)) ceilingOnly += 1; else sides.push(['below', out(b.min, -1)]);
+    const sides = [];
+    if (r.max === null) sides.push(['above', out(b.max, 1)]);
+    if (CEILING_ONLY.has(key)) ceilingOnly += 1; else if (r.min === null) sides.push(['below', out(b.min, -1)]);
+    if (!sides.length) { declared += 1; continue; }
     // spec-v1800: THE VALUE MUST BE ANSWERED IN EVERY CONFIGURATION, not just the worked example's. A unit
     // select rescales the field, so the envelope's numbers do not apply to the value as entered:
     // `calcium-phosphate-product` reads calcium in mg/dL or mmol/L through one select shared by both of its

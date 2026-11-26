@@ -24,7 +24,8 @@ export default [
       { dom: 'em-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
       { dom: 'em-factor', arg: 'ebvFactor', kind: 'enum', values: ['100', '90', '80', '75', '65'], required: true, label: 'Patient type (EBV factor, mL/kg)', to: Number },
       { dom: 'em-start', arg: 'startHct', kind: 'number', required: true, label: 'Starting hematocrit', unit: '%' },
-      { dom: 'em-min', arg: 'minHct', kind: 'number', required: true, label: 'Minimum acceptable hematocrit', unit: '%', max: 100 },
+      // spec-v1801: the floor the library gained in the same spec, from BOUNDS.hematocrit.
+      { dom: 'em-min', arg: 'minHct', kind: 'number', required: true, label: 'Minimum acceptable hematocrit', unit: '%', min: 3, max: 100 },
     ],
   },
   {
