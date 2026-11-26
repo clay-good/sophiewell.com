@@ -399,9 +399,12 @@ test('sokal-cml guards the age beside the platelet count it already guarded', ()
     assert.doesNotMatch(r.band, /ELTS \d/, `${age}: no index is reported`);
   }
 
-  // A negative age was already caught, by the completeness guard above this one,
-  // and keeps that sentence -- the new check is on the ceiling nobody held.
-  assert.match(sokalCml({ ...ok, age: -1 }).band, /^Enter age \(years\)/);
+  // spec-v1807: a negative age USED TO be caught by the completeness guard above this one and keep its
+  // sentence -- "Enter age (years), spleen size, platelet count and peripheral-blood blasts" -- which is
+  // the defect spec-v1723 named: the reader typed a value and was told to type one. It is told its floor
+  // now. The ceiling is still the envelope's, from the check this test was written for.
+  assert.match(sokalCml({ ...ok, age: -1 }).band, /age must be at least 0/i);
+  assert.doesNotMatch(sokalCml({ ...ok, age: -1 }).band, /^Enter age \(years\)/);
 
   // The oldest age the envelope admits still answers, with both indices.
   const edge = sokalCml({ ...ok, age: 130 });

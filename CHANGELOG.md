@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Nineteen more input fields the same way, in the tools whose code reads its inputs by name rather than
+  through an object. While that was being done, thirteen tiles briefly gained a refusal the page would not
+  have shown at all -- correct for an agent, invisible to a reader -- and the check that watches for
+  exactly that caught it before it shipped.
 - Fourteen more input fields the same way, two of which already had the right check -- it ran one branch
   too late. The 4PEPS score and the acetylcysteine regimen have always known the plausible range for an
   age and a weight, and never applied it to a negative one, because the "enter a value" branch answered
