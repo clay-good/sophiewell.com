@@ -38,6 +38,20 @@
 //   a lung-nodule diameter in mm (fleischner-2017), a chronological age in MONTHS (corrected-age) and a
 //   spot urine creatinine (urine-calcium-cr).
 //
+// spec-v1823 took the first two quantities on that list: `cholesterol` and `crp` are envelopes now, and
+// ten tools stopped scoring past them. What is left, with what each one needs:
+//
+//   fleischner-2017's nodule diameter is NOT an envelope question but a SCOPE one, and the most useful of
+//   the remainder. The 2017 statement is guidance for incidental pulmonary NODULES, and the Fleischner
+//   Society's glossary (Hansell DM et al, "Fleischner Society: glossary of terms for thoracic imaging",
+//   Radiology 2008;246(3):697-722) is where the nodule/mass boundary is defined. The tool currently reads
+//   a lesion of 999999 mm as "single solid, > 8 mm: consider CT at 3 months, PET/CT, or tissue sampling".
+//   The boundary was NOT confirmed from either paper here, so it is not encoded: read the glossary, then
+//   refuse past it the way `fittedAgeFault` refuses outside a model's fitted ages.
+//
+//   The urine creatinine and the age in months are the trap spec-v1797 named, below. The FEV1 percent
+//   predicted, the QRS amplitude and the ABC/2 diameters each want an extreme-value source of their own.
+//
 // The last two are the trap spec-v1797 named: `ageYears` x 12 and `scr` are envelopes for a DIFFERENT
 // quantity, and borrowing one for its ceiling is an obfuscated literal, not a bound.
 //
