@@ -33,7 +33,7 @@
 import { allCalculators } from '../mcp/catalog.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { META } from '../lib/meta.js';
-import { ASKING, DISCLOSING, saysGap } from '../test/lib/asking-language.js';
+import { ASKING, DISCLOSING, saysGap, ownsAGapKey } from '../test/lib/asking-language.js';
 
 const only = (() => {
   const i = process.argv.indexOf('--tile');
@@ -102,7 +102,10 @@ for (const tool of allCalculators()) {
     if (JSON.stringify(got.result) === JSON.stringify(full.result)) continue;  // did not matter
 
     const parts = texts(got.result);
-    if (saysGap(parts)) continue;  // said so (spec-v1812: per string)
+    // spec-v1821: the gap a tile owns in a STRUCTURED field -- an `unanswered` or `missing` list that
+    // gained the field that was dropped -- counts as saying so, and the sentence in it is the field's
+    // own name, which no vocabulary can recognise.
+    if (saysGap(parts) || ownsAGapKey(got.result, full.result)) continue;
     const after = parts.join(' ');
 
     const a = nums(full.result);

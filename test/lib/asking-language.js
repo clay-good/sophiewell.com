@@ -319,6 +319,58 @@ export function saysGap(parts) {
   return list.some((x) => ASKING.test(x) || DISCLOSING.test(x));
 }
 
+// spec-v1821: the gap a tile owns in its STRUCTURE rather than in a sentence.
+//
+// `tx-prescriptive-authority-agreement` checks the nine elements Texas Occupations Code 157.0512 requires
+// of a prescriptive authority agreement. Drop one and it puts that element's name into an `unanswered`
+// array -- "In writing, signed and dated by the parties" -- which is the tile owning the gap exactly. The
+// vocabulary could not see it, because the SENTENCE is the element's name and the meaning is in the KEY.
+//
+// 140 (tile, field) pairs across the catalog do this, under eleven key names: `missing` (47), `unrated`
+// (22), `unanswered` (19), `notEntered` (15), `unscored` (13), `unassessed` (11), `intensityMissing` (6),
+// `unadministered` (3), `missingAtCeiling` (2), `missingCriteria` and `unassessedSupporting`.
+//
+// THE MOVEMENT RULE STILL GOVERNS (spec-v1196). A tile whose `missing` array is non-empty whatever you
+// drop is describing something else, and exempting it would be the static-prose trap in another shape. So
+// this asks for an entry the FULL reading did not have: the field that was dropped has to be what the list
+// gained.
+//
+// Measured before adding, as the rule at the top requires: across every tile and every dropped field it
+// moves THIRTEEN rows across three calculators, and nothing else.
+//   probe-omitted-item            131 fields / 80 calculators -> 118 / 77
+//   probe-omitted-field-decides   121 fields / 59 calculators -> 108 / 56  (section 3)
+// Sections 1, 2 and 4 do not move, probe-half-guarded stays at zero with no judgement going stale, and
+// probe-static-exemption still reports zero -- which is the check that none of the thirteen rests on a
+// list that was already populated before a field was dropped.
+//
+// The three are `tx-prescriptive-authority-agreement` on nine of the elements Texas Occupations Code
+// 157.0512 requires ("In writing, signed and dated by the parties" into `unanswered`), `hpa-glaucoma` on
+// its three visual-field measures (`unassessed`: "the mean deviation"), and `igg4-rd-2020` on the serum
+// IgG4 (`missing`: "item 2, a serum IgG4 of 135 mg/dL or more").
+//
+// Matched on the key's camelCase SEGMENTS rather than as a substring, which is the rule
+// `scripts/lib/quantity-name.mjs` had to learn in spec-v1796: a substring is not a word. `intensityMissing`
+// and `missingAtCeiling` both carry the segment `missing`; a key like `dismissing` would not.
+const GAP_WORDS = new Set(['missing', 'unanswered', 'unassessed', 'unrated', 'unscored', 'unadministered',
+  'absent', 'omitted']);
+// `notEntered` and `notStated` are two segments, not one, so the joined form is tested as well.
+const GAP_PHRASES = /\bnot (?:entered|stated|answered|assessed|rated|scored|administered|recorded|graded)\b/;
+const segments = (k) => String(k).replace(/([a-z0-9])([A-Z])/g, '$1 $2').toLowerCase().split(/[^a-z0-9]+/);
+const isGapKey = (k) => {
+  const words = segments(k);
+  return words.some((w) => GAP_WORDS.has(w)) || GAP_PHRASES.test(words.join(' '));
+};
+export function ownsAGapKey(after, before) {
+  if (!after || typeof after !== 'object') return false;
+  const listOf = (o, k) => (Array.isArray(o?.[k]) ? o[k].filter((x) => typeof x === 'string') : []);
+  for (const k of Object.keys(after)) {
+    if (!isGapKey(k)) continue;
+    const had = new Set(listOf(before, k));
+    if (listOf(after, k).some((x) => !had.has(x))) return true;
+  }
+  return false;
+}
+
 // spec-v1196: WHERE the words come from, which the two rules at the top do not say.
 //
 // Rule 2 above says a phrase here is matched against the whole reading. A tile

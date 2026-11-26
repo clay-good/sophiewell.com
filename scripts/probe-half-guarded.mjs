@@ -56,7 +56,7 @@
 import { allCalculators } from '../mcp/catalog.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { META } from '../lib/meta.js';
-import { ASKING, DISCLOSING, saysGap } from '../test/lib/asking-language.js';
+import { ASKING, DISCLOSING, saysGap, ownsAGapKey } from '../test/lib/asking-language.js';
 
 const only = (() => {
   const i = process.argv.indexOf('--tile');
@@ -193,7 +193,7 @@ for (const tool of allCalculators()) {
     // for; a phrase matched anywhere still matches, because every string is still read.
     const said = texts(got.result);
     if (said.some((x) => ASKING.test(x))) { guarded.push({ dom: f.dom, how: 'asks' }); continue; }
-    if (saysGap(said)) { guarded.push({ dom: f.dom, how: 'discloses' }); continue; }
+    if (saysGap(said) || ownsAGapKey(got.result, full.result)) { guarded.push({ dom: f.dom, how: 'discloses' }); continue; }
 
     // Silent. Only interesting if the answer actually moved.
     const gotVerdict = verdictKey(got.result);

@@ -50,7 +50,7 @@
 import { allCalculators } from '../mcp/catalog.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { META } from '../lib/meta.js';
-import { ASKING, DISCLOSING, saysGap } from '../test/lib/asking-language.js';
+import { ASKING, DISCLOSING, saysGap, ownsAGapKey } from '../test/lib/asking-language.js';
 
 const only = (() => {
   const i = process.argv.indexOf('--tile');
@@ -261,7 +261,8 @@ for (const tool of allCalculators()) {
       if (base?.valid !== true) continue;                    // refused: correct
 
       const parts = texts(base.result);
-      if (saysGap(parts)) continue;  // said so (spec-v1812: per string)
+      // spec-v1821: a structured `unanswered` / `missing` list that gained the dropped field says so too.
+      if (saysGap(parts) || ownsAGapKey(base.result, full.result)) continue;
       const said = parts.join(' ');
 
       const baseVerdict = verdict(base.result);

@@ -76,6 +76,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Three calculators were being reported internally as answering without saying what they were missing, and
+  all three were saying it -- in a list of the items nobody answered, rather than in a sentence. The Texas
+  prescriptive-authority-agreement check names each of the statute's nine elements that way. The checks that
+  look for a calculator deciding from an incomplete form now read that list too, and still ignore one that
+  was already populated before anything was left out.
 - The DRAGON, HAT, SEDAN and THRIVE stroke scores accepted a baseline NIH Stroke Scale score above 42, which
   the scale cannot produce -- 42 is the sum of its fifteen items' maxima -- and scored it as the worst
   severity band. The catalog's four other NIHSS fields already refused it. All eight now state the same
