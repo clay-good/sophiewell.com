@@ -12,10 +12,11 @@ export default [
     summary: 'ACR/EULAR Boolean-based remission for rheumatoid arthritis (Felson 2011; 2022 revision): a strict AND requiring TJC28 <= 1, SJC28 <= 1, CRP <= 1 mg/dL (= 10 mg/L), and patient global assessment <= 1 (2011) or <= 2 (2022 Boolean 2.0) on a 0-10 scale. Only the patient-global threshold differs between versions. Reports both verdicts. Not the index-based SDAI <= 3.3 definition.',
     compute: acrEularBoolean,
     fields: [
-      { dom: 'boolean-tjc', arg: 'tjc', kind: 'number', required: true, label: 'Tender joint count (28-joint), 0-28' },
-      { dom: 'boolean-sjc', arg: 'sjc', kind: 'number', required: true, label: 'Swollen joint count (28-joint), 0-28' },
+      // spec-v1809: the ranges the library enforces, which it has always stated in its own refusals.
+      { dom: 'boolean-tjc', arg: 'tjc', kind: 'number', required: true, label: 'Tender joint count (28-joint), 0-28', min: 0, max: 28 },
+      { dom: 'boolean-sjc', arg: 'sjc', kind: 'number', required: true, label: 'Swollen joint count (28-joint), 0-28', min: 0, max: 28 },
       { dom: 'boolean-crp', arg: 'crp', kind: 'number', unit: 'mg/dL', required: true, label: 'C-reactive protein (mg/dL; threshold <= 1 mg/dL = 10 mg/L)' },
-      { dom: 'boolean-ptga', arg: 'ptga', kind: 'number', required: true, label: 'Patient global assessment of disease activity (0-10 scale)' },
+      { dom: 'boolean-ptga', arg: 'ptga', kind: 'number', required: true, label: 'Patient global assessment of disease activity (0-10 scale)', min: 0, max: 10 },
     ],
   },
 ];

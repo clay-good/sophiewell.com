@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Fourteen more input fields the same way. Two tools answered back usefully: the ACR/EULAR Boolean
+  remission check already validated every item and names which one is wrong, so its own check was kept and
+  sharpened rather than replaced; and the VEXUS grade was treating a negative vena-cava diameter as an
+  empty box, where a zero genuinely is one, because the grade divides by it.
 - Nineteen more input fields the same way, in the tools whose code reads its inputs by name rather than
   through an object. While that was being done, thirteen tiles briefly gained a refusal the page would not
   have shown at all -- correct for an agent, invisible to a reader -- and the check that watches for

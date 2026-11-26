@@ -71,7 +71,15 @@ test('an unrecognised or blank waveform is never read as severe, and the grade i
 });
 
 test('a missing or non-positive IVC asks for it instead of guessing', () => {
-  for (const v of ['', null, undefined, 'abc', 0, -1]) {
+  // spec-v1809: a NEGATIVE diameter is no longer lumped in with a blank one. It was read as absent -- the
+  // same null -- so a reader who typed -1 was told to enter a diameter; it is told its floor now, and the
+  // sentence still names the quantity the way the control does. 0 stays with the blanks: the tool divides
+  // by it, so "enter a diameter" is the right answer there.
+  const negative = vexusGrade({ ivcDiameterCm: -1, hepaticVein: 'severe' });
+  assert.equal(negative.valid, false);
+  assert.match(negative.message, /IVC diameter in centimeters must be at least 0/i);
+
+  for (const v of ['', null, undefined, 'abc', 0]) {
     const r = vexusGrade({ ivcDiameterCm: v, hepaticVein: 'severe' });
     assert.equal(r.valid, false, String(v));
     assert.match(r.message, /IVC diameter in centimeters/);
