@@ -14,6 +14,26 @@
 // absent. A refusal that names the value's range ("must be between ...") is the
 // right answer and is not reported.
 //
+// THE WEAK HALF WAS CHECKED TOO (spec-v1835, 2026-11-26), and it holds. The strong half -- a refusal that
+// names no range at all -- is gated at zero (225 rows when the programme opened). The weak half is the 120
+// fields whose refusal DOES state its range and happens to share that sentence with the blank case, and
+// spec-v1831 left them as a reading list on the grounds that a reader told "from 1 to 365" has been told
+// what is wrong.
+//
+// That left one question worth asking, because spec-v1830 had just found three tools SAYING "from 1 to
+// 365" and ACCEPTING 0.95: does each of the 120 enforce the range its own sentence states? Driven -- parse
+// the range out of the refusal, enter a value just outside it -- the answer is yes. Four rows came back
+// and all four are the EXTRACTOR reading the wrong numbers:
+//
+//   glycemia-risk-index   "Time from 54 to 69 mg/dL" is the field's NAME, the glucose band it measures
+//   ddi-static-aucr       "no AUC ratio between 0.0001 and 10,000" is about the OUTPUT
+//   vanc-initial-dose     "(guideline 400 to 600)" is the GUIDELINE TARGET; the field accepts wider on
+//   vanc-continuous-infusion                                            purpose, and says its own rule next
+//
+// Same mistake as a key that matches a word inside a longer name (spec-v1823's NOT_THE_TOTAL): numbers in
+// a label are not the field's range. So the three spec-v1830 fixed were the exceptions, not the first of
+// a hundred.
+//
 // Asserts nothing; prints a report.
 //
 //   node scripts/probe-entered-asked-for.mjs

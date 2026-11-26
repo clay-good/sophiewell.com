@@ -76,6 +76,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Every calculator whose refusal states a range was checked against its own words, after three were found
+  last night saying "from 1 to 365" and accepting less than a day. All 120 enforce what they say; the three
+  were exceptions, not the start of a pattern.
 - The last unread section of an internal review report was read, and all five of its entries turn out to be
   the same question answered elsewhere: a calculator that cannot tell an empty box from a typed zero, in
   four cases where zero is genuinely what an empty box means.
