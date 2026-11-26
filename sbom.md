@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6653976749387ba4`
-Generated: 2026-11-26T19:22:54.225Z
+Build ID: `031955b06388ef99`
+Generated: 2026-11-26T21:09:57.516Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -3080,7 +3080,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/catalog.js` | 173266 | `52409689277c30c89974d0f882918a967c08fa47458b7c4a37003615078aa58e` |
 | `mcp/cpic-disk.js` | 835 | `0330f6f5bef6e8755d0763ae8643c64ab674351720e50fc647619bad2730af4c` |
 | `mcp/fda-ddi-disk.js` | 784 | `c58b9984e45b3c47192aac3d74c36b8170fd654b5be3e096f29919860fdff4e9` |
-| `mcp/fields.js` | 15596 | `744313b9132eb9fdcd0b4bd736a2c424439bcdbaea63b2a421fa9678ec5fa99d` |
+| `mcp/fields.js` | 16651 | `d79c1690bad24707043634483ec839282343a0feecfd2ca3f4f1b315ac6c973d` |
 | `mcp/file-tools.js` | 12978 | `094df4778642dda51dc6b3d03540ae118a85b4c9d4aed6d618d9469994b247f3` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
 | `mcp/tools.js` | 66947 | `4d6f9cf669506bee5c021e344b16c7177f3358017e1605698947e1f7e312ebe9` |

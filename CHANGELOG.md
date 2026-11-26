@@ -74,6 +74,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Attributable proportion: an optional share of the population exposed adds the population attributable fraction
   (Levin's formula), with a note that it assumes no confounding.
 
+- When a value sent through the programmatic interface is outside a field's range, the message now names
+  the field the way the page labels it in every case. A hundred and fourteen fields with longer labels were
+  being named by their internal key instead -- "ni-a2" where the page reads "Second-highest AIS".
+
 ### Fixed
 
 - Every calculator whose refusal states a range was checked against its own words, after three were found

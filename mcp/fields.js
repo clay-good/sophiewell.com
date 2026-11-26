@@ -234,8 +234,19 @@ export function validateInputs(inputs, fields) {
         // count" and not `"ldt-alc1"` -- and the rule was being kept only by the library, so declaring a
         // range on such a field quietly replaced a named refusal with an anonymous one. A long label is no
         // use in a sentence, so the key stands in above sixty characters.
-        const label = typeof f.label === 'string' && f.label.length <= 60
-          ? `${f.label}${f.unit ? ` (${f.unit})` : ''}` : `"${f.dom}"`;
+        //
+        // spec-v1836: EXCEPT THAT THE KEY IS NEVER AN IMPROVEMENT, and sixty characters sent 114 fields to
+        // it -- `niss` told the reader `"ni-a2" must be from 1 to 6`, where the control says "Second-highest
+        // AIS". A FIELD NAMES ITS QUANTITY IN THE FIRST CLAUSE OF ITS LABEL and the rest is explanation,
+        // which is the rule spec-v1800 wrote for `scripts/lib/quantity-name.mjs`; taking that clause fits
+        // every one of the 114 inside sixty characters. The dom is left for a field with no label at all.
+        // The cap on a CLAUSE is looser than the cap on a whole label, because a clause is already the
+        // short form: `cauti-nhsn`'s is "Consecutive calendar days the indwelling catheter has been in
+        // place", 67 characters and perfectly readable, where its label runs to 107.
+        const firstClause = typeof f.label === 'string' ? f.label.split(/[.(;:]|,\s+(?=[a-z])/)[0].trim() : '';
+        const named = firstClause && firstClause.length <= 80 ? firstClause
+          : (typeof f.label === 'string' && f.label.length <= 60 ? f.label : '');
+        const label = named ? `${named}${f.unit ? ` (${f.unit})` : ''}` : `"${f.dom}"`;
         return { valid: false, code: 'OUT_OF_RANGE', field: f.dom, message: `${label} must be ${range}; got ${n}.` };
       }
     } else if (f.kind === 'bool') {
