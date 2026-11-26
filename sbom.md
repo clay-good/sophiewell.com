@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6aba2992daea363a`
-Generated: 2026-11-26T05:41:46.714Z
+Build ID: `7a0e4907c6cfac16`
+Generated: 2026-11-26T06:02:46.391Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -568,7 +568,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gartland-supracondylar-v377.js` | 4725 | `75c9dd3adaacb34df1e9041fda9aa71520517822e12f3308651aeb99a88ba426` |
 | `lib/gass-macular-hole-v471.js` | 3421 | `dc7d16ffdb39dde5b8e700a6679f2211affc0cf67e58b36be830640b59405b15` |
 | `lib/gastric-emptying-scintigraphy-v854.js` | 8318 | `27d27b0cc4304c9fac8d59987dc15dc266f25edd67521f6c69b5c6689d2a8826` |
-| `lib/gcsf-timing-check-v1635.js` | 9909 | `13773a267603b623218f005364aba026a0ab40ae22a710372ea60b355dbdd650` |
+| `lib/gcsf-timing-check-v1635.js` | 10444 | `1f74487cdcf541908ff4b8ce045b4ab3f363118d9954c9cd0dfcac7db794c0e7` |
 | `lib/gdr-attempt-check-v1638.js` | 7594 | `926a4a42f19efca0051dd3c1c94a6c599eb55302919da3400e5164b876421888` |
 | `lib/gds-v295.js` | 5895 | `794bac1f4250b91a60e003d3e21c03aa5b14a07e6a2a0862214a6b6188f7a9ca` |
 | `lib/geissler-carpal-v415.js` | 4276 | `cbe71ed50683d29523e8b5eded8d640d32879ccf2e5c3f39a836b89c3e448392` |
@@ -1978,7 +1978,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/derm-v151.js` | 5099 | `b399908c5a5621ae3b009756e1d40e646ffed1a0411c6068403d03d7ee46d013` |
 | `mcp/adapters/dermatology-v223.js` | 7201 | `7e5881e2722efb57a8d27fb53ea92cb3303d5010e0816aaccd6640de3abc7c18` |
 | `mcp/adapters/dermscore-v234.js` | 4666 | `1fb7115455b0cc40f58b44fd4dd5ec53bcad658ec4a99e581bd5d49ce253b7ec` |
-| `mcp/adapters/dermuro-v191.js` | 3314 | `75ac05b1ef094fe4bf13159283c6600aa896b6d58603a945e8622a815982c8b7` |
+| `mcp/adapters/dermuro-v191.js` | 3353 | `92d2bc54e5e55a1e9cbb79e1a12b3a29e023fa303a4324ffdd927a56c42f6903` |
 | `mcp/adapters/desensitization-12-step-v1635.js` | 1289 | `7fcd2f2687f1eafcafb484f8d601f8e02da73f6f7f37cd3394d0ee1cba4e94d0` |
 | `mcp/adapters/device-infection-rate-v1655.js` | 1113 | `d022e1c91bb57fc46487c1b3e212135681a3a303b22f1e45403b18ebf44ec103` |
 | `mcp/adapters/device-utilization-ratio-v1655.js` | 978 | `872dcc0bcfd12aa989f762c0157f2170c521fb5006b949c6731b12145a681273` |
@@ -2125,12 +2125,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/gadolinium-nsf-v895.js` | 1555 | `b06cd988540c35b39ab198a0aa7a3ef5724892b15fc5ec60a2be791cc0c68e1d` |
 | `mcp/adapters/gags-v554.js` | 4750 | `ca91536ddfbd3ac1d20c08ff3811e15db15e1a146efb648a3738731d985b518e` |
 | `mcp/adapters/gapp-v569.js` | 7368 | `28cc0ba61f51da94019b7457ba2b4865ace278feb07c794e1bc07796d027af93` |
-| `mcp/adapters/gaps-v185.js` | 7648 | `52f14d5260d3817159a89186b3fcc9394174a4113490b1981e36760e588d9192` |
+| `mcp/adapters/gaps-v185.js` | 7764 | `8761fdb21af6f0fe4250817cd8ccacf9b9fd8b763e74c3e1c8628aa12834929b` |
 | `mcp/adapters/gardner-robertson-v802.js` | 1246 | `aa3d243f66b2307d901aa4ce6b383f83ab89682578a85eda2d9c2a46b9c435e4` |
 | `mcp/adapters/gartland-supracondylar-v377.js` | 1598 | `8903bab27c305b2422ef4b905c0e252ecd841341d3f3b081404d984fa4c5ff55` |
 | `mcp/adapters/gass-macular-hole-v471.js` | 1207 | `3803556ddbe17cc277d9dfa5b902f11bbaff5d9fd1e2bf71fbed9d86c641580d` |
 | `mcp/adapters/gastric-emptying-scintigraphy-v854.js` | 2311 | `6cb4cb2ffb4df796e799645d04ff78af8637b623b56a17fcfa1b3df07555c426` |
-| `mcp/adapters/gcsf-timing-check-v1635.js` | 1657 | `938c804559a82fa0978a003dade1ebedadb6b1eff48d462535500f88e395708a` |
+| `mcp/adapters/gcsf-timing-check-v1635.js` | 1677 | `3355eeb35b59c822278f4b579c5f7d2998765c5273ec6e311fcef7996323c918` |
 | `mcp/adapters/gdr-attempt-check-v1638.js` | 1234 | `d479d4d83e7d4609191c10f7546f4f09f92e2e99f04886bcd003800e6a808e4c` |
 | `mcp/adapters/gds-v295.js` | 1330 | `07704629ce11b2a24c01f4d591483deadb88551764b5a660e714a57c7b96f8c3` |
 | `mcp/adapters/geissler-carpal-v415.js` | 1392 | `756e93a90fb3185fe565055996a80538fe2fa4d183007322efe88ca932ea67ae` |
@@ -2201,7 +2201,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hemo-v194.js` | 3894 | `5d3d6ebc0c68438344c2b5bff5fd1fcdff7efd740df4438f8b056ab6608f9da2` |
 | `mcp/adapters/hemodynamics-v87.js` | 3263 | `3f9bd92e4359ee444b12f2b94342ae6e93bc8709f2cddcf06f1d6ecb397e54f9` |
 | `mcp/adapters/hemonc-v94.js` | 5722 | `3ae0a7aff63f28ccbdd22f8a19888da057920157381d35f223f7994aee63bfee` |
-| `mcp/adapters/hep-fibrosis-portal-v212.js` | 1931 | `d4e286a4cd9bfc98813c2676f67a1542bc9924d2dd905dc35002f6eea09ae50d` |
+| `mcp/adapters/hep-fibrosis-portal-v212.js` | 1970 | `12ab0df663bce32290e2cb6839aac17bd5e46c5d6c30165be77049baa101aa68` |
 | `mcp/adapters/hep-v124.js` | 3960 | `a45a175c0d2cb4c6792545422395f702a983d305d926ff0e8a929cda3c291409` |
 | `mcp/adapters/hep-v125.js` | 4079 | `f76c00a9c4f8b70924715f1aae549772806d38cea38a4d80dcd2749da0ea10b2` |
 | `mcp/adapters/hepatic-iron-index-v932.js` | 1926 | `0cd5e595ae56b7e3c70a554776adc11741a44d939a998ad069eacc17977a61c4` |
@@ -2224,7 +2224,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hiv-pep-occupational-v887.js` | 2194 | `9b4d9e4170928fb713a5b69f71de3b40638cb5c33528da72b3caf1b5cab86dbe` |
 | `mcp/adapters/hlb-blend-v1629.js` | 2327 | `ba9e6f882adb7e275972a894b9ef8e8af032e268c248195a6b22d0693e54d414` |
 | `mcp/adapters/hlh-2004-v582.js` | 9304 | `4d4869a1e084dce198f13699bc086bb2bf26fd4f326989a669629f96a9283c12` |
-| `mcp/adapters/home-oxygen-v889.js` | 2351 | `70a1fa98578651285bbb0b203b5ca404e4d19d4737cd576c1467b91429f3c806` |
+| `mcp/adapters/home-oxygen-v889.js` | 2370 | `671ccf03b6c6b4bb89a075e4bf8ba52c56da7cd149ab07f545b94614891face4` |
 | `mcp/adapters/hospice-cap-v1514.js` | 1022 | `c13b2d0cf9a7f69addc3e96243b555a9cf6a7d8add94c7f37383cc7d5d418eb8` |
 | `mcp/adapters/hospital-fap-v1508.js` | 4734 | `78a1675514e0c1b499f4badc81c84f5a5f230149ffae3523fa7a99753e124977` |
 | `mcp/adapters/hpa-glaucoma-v801.js` | 1311 | `1befdd34874ac18e9bcda328298b20fe2c341b2d80a028009013601d102ae1f2` |
@@ -2723,7 +2723,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/priapism-gas-v859.js` | 2448 | `a53fbf4e830c1bd9fe7448074b3552f090e179242a745d379e040295ff17ece5` |
 | `mcp/adapters/primaquine-single-low-dose-v1552.js` | 1121 | `336a58dc5dc904a0abce22dca6a55914598cebd918d1687651f274887de8a68b` |
 | `mcp/adapters/prognostic-v231.js` | 2240 | `e2045717b68e503beaef0bebf810a3dc870a234a9c320db2b1ea3cdfb74d7af3` |
-| `mcp/adapters/propkd-v564.js` | 6328 | `a6fc0101e2db9d138232be3f4d71a00da5f321c9a5f7daaf53b8543625498d92` |
+| `mcp/adapters/propkd-v564.js` | 6339 | `3860533a191986d96833184f356dc8424a899375625b15a775efb27f58b14e6f` |
 | `mcp/adapters/prostate-health-index-v714.js` | 1219 | `d62162fd242c8e35a190560e23f3b2f111786a75ae03201804d55d8061b435ea` |
 | `mcp/adapters/proteins-v274.js` | 826 | `c9746f4e278c231d6052e80f632476f6364d62cfe10f23742cd3f24d123a21a1` |
 | `mcp/adapters/pss10-v806.js` | 1859 | `07dc2197ec650dec258d9f33437d1faad8fabf60a638cba13e8777834226c2b1` |
@@ -2834,7 +2834,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/savary-miller-v405.js` | 1464 | `6d5ee4874cf846b7963f0aac21849e97eb3490cb9a0020f76bc5daf7afce72d2` |
 | `mcp/adapters/save-score-v543.js` | 6577 | `7316a908cc429df35c8c4a9bafd6c3cbf279b257a436182cf77d1a02e3854d93` |
 | `mcp/adapters/sawchuk-zaske-dosing-v1631.js` | 2619 | `33bffc0845131086d4ecb9c1933b42bdc061a4ae73b14e6155272830a0a11639` |
-| `mcp/adapters/sbp-ascitic-fluid-v852.js` | 2682 | `eda54ba94f7de7191db4b31f85307c906ae334e8f2d4f8690c1eab0576670835` |
+| `mcp/adapters/sbp-ascitic-fluid-v852.js` | 2701 | `269ae1f11b32938decd716db9f3ecb4d1091e250165a63dc6c710e6353219635` |
 | `mcp/adapters/scabies-diagnosis-mda-v1561.js` | 2238 | `4cee68f457cc2c938a5fd7bb63aa9887dc0ac9feebac30b4680afd4ce53d1634` |
 | `mcp/adapters/scadding-v523.js` | 3481 | `23b36ba961ad3990a8af596721d583732e2d68e0905836559d718286910e4c63` |
 | `mcp/adapters/schenck-v647.js` | 1892 | `721c357a0f38effd2966edc49788e72f6e556c5440cb956693f7184b9f674d22` |

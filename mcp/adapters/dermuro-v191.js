@@ -17,7 +17,7 @@ export default [
       { dom: 'scorten-bsaDetached', arg: 'bsaDetached', kind: 'number', required: false, label: 'Body surface area detached', unit: '%' },
       { dom: 'scorten-bun', arg: 'bun', kind: 'number', required: false, label: 'BUN', unit: 'mg/dL', min: 1 },
       { dom: 'scorten-bicarbonate', arg: 'bicarbonate', kind: 'number', required: false, label: 'Serum bicarbonate', unit: 'mEq/L' },
-      { dom: 'scorten-glucose', arg: 'glucose', kind: 'number', required: false, label: 'Serum glucose', unit: 'mg/dL' },
+      { dom: 'scorten-glucose', arg: 'glucose', kind: 'number', required: false, label: 'Serum glucose', unit: 'mg/dL', min: 0, exclusiveMin: true, max: 2000 },
       { dom: 'scorten-malignancy', arg: 'malignancy', kind: 'bool', required: false, label: 'Associated malignancy' },
     ],
   },

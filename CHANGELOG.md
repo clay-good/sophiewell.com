@@ -76,6 +76,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Five input ranges that no check could see are now stated, because the fields are blank in their worked
+  example and one of the two checks only drives fields that are filled in. Declaring one of them found a
+  defect underneath it: the G-CSF timing tool guarded a weight only when pegfilgrastim was the product, so
+  with filgrastim picked a weight of 0.38 kg or 525 kg was taken. The guard now runs whichever product is
+  chosen.
 - Five more measurements held to their published range: an INR of 0.25 was reversed, a height of 5 m gave
   a body mass index of 2.8 and read "Underweight", and a minimum acceptable hematocrit of 1.5% gave an
   allowable blood loss. Two others are left as they are on purpose -- a neonatal lowest temperature, and a

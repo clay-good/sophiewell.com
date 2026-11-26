@@ -75,9 +75,9 @@ export default [
     summary: 'Matsuda insulin-sensitivity index from an OGTT: 10000 ÷ √(fasting glucose × fasting insulin × mean OGTT glucose × mean OGTT insulin).',
     compute: F.matsudaIndex,
     fields: [
-      { dom: 'matsuda-g0', arg: 'g0', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL' },
+      { dom: 'matsuda-g0', arg: 'g0', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL', min: 0, exclusiveMin: true, max: 1000 },
       { dom: 'matsuda-i0', arg: 'i0', kind: 'number', required: true, label: 'Fasting insulin', unit: 'µU/mL' },
-      { dom: 'matsuda-gmean', arg: 'gMean', kind: 'number', required: true, label: 'Mean OGTT glucose', unit: 'mg/dL' },
+      { dom: 'matsuda-gmean', arg: 'gMean', kind: 'number', required: true, label: 'Mean OGTT glucose', unit: 'mg/dL', min: 0, exclusiveMin: true, max: 1000 },
       { dom: 'matsuda-imean', arg: 'iMean', kind: 'number', required: true, label: 'Mean OGTT insulin', unit: 'µU/mL' },
     ],
   },
@@ -87,7 +87,7 @@ export default [
     compute: F.leanBodyWeight,
     fields: [
       { dom: 'lbw-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
-      { dom: 'lbw-weight', arg: 'weight', kind: 'number', required: true, label: 'Total body weight', unit: 'kg' },
+      { dom: 'lbw-weight', arg: 'weight', kind: 'number', required: true, label: 'Total body weight', unit: 'kg', min: 0, exclusiveMin: true, max: 400 },
       { dom: 'lbw-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
     ],
   },

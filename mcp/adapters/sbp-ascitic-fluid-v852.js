@@ -21,7 +21,7 @@ export default [
       { dom: 'sbp-cr', arg: 'creatinine', kind: 'number', required: false, label: 'Creatinine', unit: 'mg/dL' },
       { dom: 'sbp-bun', arg: 'bun', kind: 'number', required: false, label: 'Blood urea nitrogen', unit: 'mg/dL' },
       { dom: 'sbp-bili', arg: 'bilirubin', kind: 'number', required: false, label: 'Total bilirubin', unit: 'mg/dL' },
-      { dom: 'sbp-wt', arg: 'weight', kind: 'number', required: false, label: 'Weight', unit: 'kg' },
+      { dom: 'sbp-wt', arg: 'weight', kind: 'number', required: false, label: 'Weight', unit: 'kg', min: 20, max: 400 },
     ],
   },
 ];

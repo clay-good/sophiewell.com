@@ -11,7 +11,7 @@ export default [
     summary: 'Applies the qualifying criteria for long-term home oxygen therapy to a resting room-air measurement. An arterial oxygen tension at or below 55 mmHg, or a saturation at or below 88 percent, qualifies outright. A tension of 56 to 59 mmHg, or a saturation of 89 percent, qualifies only alongside dependent edema suggesting congestive heart failure, pulmonary hypertension or cor pulmonale, or a hematocrit above 56 percent. Anything above that does not qualify. THE MEASUREMENT MUST BE ON ROOM AIR AND WHILE THE PATIENT IS STABLE: a value taken during an exacerbation or on supplemental oxygen does not establish a chronic need. A SATURATION OF 89 PERCENT QUALIFIES ONLY WITH A SUPPORTING FINDING. Coverage criteria and clinical evidence are not the same question, and these are resting criteria rather than exertional or nocturnal ones.',
     compute: homeOxygen,
     fields: [
-      { dom: 'ho-pao2', arg: 'pao2', kind: 'number', required: false, label: 'Arterial oxygen tension, mmHg', unit: 'mmHg' },
+      { dom: 'ho-pao2', arg: 'pao2', kind: 'number', required: false, label: 'Arterial oxygen tension, mmHg', unit: 'mmHg', min: 10, max: 200 },
       { dom: 'ho-spo2', arg: 'spo2', kind: 'number', required: false, label: 'Oxygen saturation, percent', unit: '%', min: 40, max: 100 },
       { dom: 'ho-roomair', arg: 'roomAir', kind: 'boolean', required: false, label: 'The measurement was taken on room air' },
       { dom: 'ho-clinicallystable', arg: 'clinicallyStable', kind: 'boolean', required: false, label: 'The measurement was taken while the patient is clinically stable' },

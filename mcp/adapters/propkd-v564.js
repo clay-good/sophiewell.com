@@ -43,8 +43,7 @@ export default [
       })),
       {
         dom: 'propkd-age', arg: 'age', kind: 'number', unit: 'years', required: false,
-        label: `Optional current age. Does NOT enter the score. Used only to flag the documented limitation that the instrument may not identify rapid progression below age ${P.AGE_GATE}.`,
-      },
+        label: `Optional current age. Does NOT enter the score. Used only to flag the documented limitation that the instrument may not identify rapid progression below age ${P.AGE_GATE}.`, min: 0, max: 120 },
     ],
   },
 ];

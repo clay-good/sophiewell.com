@@ -15,7 +15,7 @@ export default [
       { dom: 'gtc-planned', arg: 'planned', kind: 'string', required: true, label: 'Planned growth-factor time (YYYY-MM-DDTHH:MM)' },
       { dom: 'gtc-next', arg: 'nextChemo', kind: 'string', label: 'Next cycle\'s chemotherapy start (YYYY-MM-DDTHH:MM, optional)' },
       { dom: 'gtc-pop', arg: 'population', kind: 'enum', values: GT.POPULATIONS.map((x) => x.value), label: 'Pegfilgrastim: adult or pediatric patient' },
-      { dom: 'gtc-weight', arg: 'weight', kind: 'number', label: 'Pegfilgrastim: weight (needed for a pediatric patient)', unit: 'kg' },
+      { dom: 'gtc-weight', arg: 'weight', kind: 'number', label: 'Pegfilgrastim: weight (needed for a pediatric patient)', unit: 'kg', min: 0.4, max: 500 },
     ],
   },
 ];

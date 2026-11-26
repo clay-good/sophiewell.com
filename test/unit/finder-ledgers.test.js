@@ -94,6 +94,18 @@ const FINDERS = [
     minJudged: 7,
   },
   {
+    // spec-v1802: the last of the envelope finders. It has no ledger because its three non-findings are
+    // MEASURED, not judged: a cap that moves with another input, a cap on the range the tool reports its
+    // output in, and a range the field itself declares. Each is counted in the reach line.
+    probe: 'probe-envelope-inside.mjs',
+    what: 'a value just inside a lib/bounds.js envelope refused by a narrower cap that nothing declares',
+    fix: 'Declare the narrower cap on the adapter descriptor (docs/spec-v1802.md), or widen the library to '
+      + 'the envelope where the narrower copy was an older one',
+    informational: ['of 1700 value'],
+    isFinding: (l) => l.includes('\t'),
+    minJudged: 0,
+  },
+  {
     // spec-v1801: the last of the declaration finders to become a gate, because it is the last to reach
     // zero. Every DECLARABLE row it has found since spec-v1777 is now declared -- 2,667 of 5,189 number
     // fields -- and the two it still reaches are not declarations at all.
