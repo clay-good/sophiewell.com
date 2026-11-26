@@ -29,7 +29,7 @@ export default [
     summary: 'LENT score for malignant pleural effusion prognosis (Clive 2014): pleural fluid LDH, ECOG performance status, serum neutrophil-to-lymphocyte ratio, and tumor type give a 0–7 score banding median survival.',
     compute: F.lent,
     fields: [
-      { dom: 'lent-ldh', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural fluid LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'lent-ldh', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural fluid LDH', unit: 'IU/L', min: 0, max: 100000 },
       { dom: 'lent-ecog', arg: 'ecog', kind: 'enum', values: ['0', '1', '2', '3-4'], required: true, label: 'ECOG performance status' },
       { dom: 'lent-nlr', arg: 'nlr', kind: 'number', required: true, label: 'Serum neutrophil-to-lymphocyte ratio', max: 10000 },
       { dom: 'lent-tumor', arg: 'tumorType', kind: 'enum', values: ['low', 'moderate', 'high'], required: true, label: 'Tumor type' },
@@ -61,7 +61,7 @@ export default [
     summary: 'Sleep Apnea Clinical Score (Flemons 1994): adjusted neck circumference = measured neck (cm) + 4 (hypertension) + 3 (habitual snoring) + 3 (nocturnal gasping/choking); ≤ 43 low, 43–48 intermediate, > 48 high pretest probability of OSA.',
     compute: F.sacsOsa,
     fields: [
-      { dom: 'sacs-neck', arg: 'neck', kind: 'number', required: true, label: 'Measured neck circumference', unit: 'cm', bound: 'qtMs', boundScale: 0.1 },
+      { dom: 'sacs-neck', arg: 'neck', kind: 'number', required: true, label: 'Measured neck circumference', unit: 'cm', min: 20, max: 80 },
       { dom: 'sacs-htn', arg: 'hypertension', kind: 'bool', required: false, label: 'Hypertension (+4)' },
       { dom: 'sacs-snore', arg: 'snoring', kind: 'bool', required: false, label: 'Habitual snoring (+3)' },
       { dom: 'sacs-choke', arg: 'choking', kind: 'bool', required: false, label: 'Nocturnal gasping / choking (+3)' },

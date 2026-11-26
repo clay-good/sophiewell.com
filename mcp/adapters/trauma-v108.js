@@ -16,7 +16,7 @@ export default [
     fields: [
       { dom: 'tr-mech', arg: 'mechanism', kind: 'enum', values: ['blunt', 'penetrating'], required: true, label: 'Mechanism' },
       { dom: 'tr-rts', arg: 'rts', kind: 'number', required: true, label: 'Revised Trauma Score', max: 7.840799995 },
-      { dom: 'tr-iss', arg: 'iss', kind: 'number', required: true, label: 'Injury Severity Score', bound: 'bilirubin' },
+      { dom: 'tr-iss', arg: 'iss', kind: 'number', required: true, label: 'Injury Severity Score', min: 0, max: 75 },
       { dom: 'tr-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
     ],
   },

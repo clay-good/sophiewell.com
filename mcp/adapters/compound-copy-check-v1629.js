@@ -18,7 +18,7 @@ export default [
       { dom: 'cc-comm', arg: 'commercialStrength', kind: 'number', required: true, label: 'Commercial strength' },
       { dom: 'cc-route', arg: 'sameRoute', kind: 'enum', required: true, values: YN, label: 'Commercial product can be used by the route prescribed (yes or no)' },
       { dom: 'cc-det', arg: 'determination', kind: 'enum', required: true, values: YN, label: 'Prescriber\'s significant-difference determination is documented (yes or no)' },
-      { dom: 'cc-count', arg: 'priorCount', kind: 'number', required: true, label: 'Prescriptions filled this month without a determination', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'cc-count', arg: 'priorCount', kind: 'number', required: true, label: 'Prescriptions filled this month without a determination', min: 0, max: 100000 },
     ],
   },
 ];

@@ -17,7 +17,7 @@ export default [
       { dom: 'dlcn-fam', arg: 'familyHistory', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Family history (0/1/2 points)' },
       { dom: 'dlcn-clin', arg: 'clinicalHistory', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Personal clinical history (0/1/2 points)' },
       { dom: 'dlcn-exam', arg: 'physicalExam', kind: 'enum', values: ['0', '4', '6'], required: true, label: 'Physical examination (0/4/6 points)' },
-      { dom: 'dlcn-ldl', arg: 'ldl', kind: 'number', required: true, label: 'Untreated LDL-C', unit: 'mmol/L', bound: 'lactate' },
+      { dom: 'dlcn-ldl', arg: 'ldl', kind: 'number', required: true, label: 'Untreated LDL-C', unit: 'mmol/L', min: 0, max: 50 },
       { dom: 'dlcn-dna', arg: 'dnaMutation', kind: 'bool', required: false, label: 'Causative DNA mutation (LDLR/APOB/PCSK9)' },
     ],
   },
@@ -26,7 +26,7 @@ export default [
     summary: 'Simon Broome criteria for familial hypercholesterolemia: total cholesterol / LDL-C thresholds plus tendon xanthoma, DNA mutation, and family history of MI or hypercholesterolemia classify definite vs possible FH.',
     compute: F.simonBroomeFh,
     fields: [
-      { dom: 'sb-tc', arg: 'totalChol', kind: 'number', required: false, label: 'Total cholesterol', unit: 'mmol/L', bound: 'lactate' },
+      { dom: 'sb-tc', arg: 'totalChol', kind: 'number', required: false, label: 'Total cholesterol', unit: 'mmol/L', min: 0, max: 50 },
       { dom: 'sb-ldl', arg: 'ldl', kind: 'number', required: false, label: 'LDL-C', unit: 'mmol/L' },
       { dom: 'sb-child', arg: 'child', kind: 'bool', required: false, label: 'Child < 16 years (uses pediatric thresholds)' },
       { dom: 'sb-xanthoma', arg: 'tendonXanthoma', kind: 'bool', required: false, label: 'Tendon xanthoma (patient or 1st/2nd-degree relative)' },

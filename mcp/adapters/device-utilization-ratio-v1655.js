@@ -10,7 +10,7 @@ export default [
     compute: DUR.deviceUtilizationRatio,
     fields: [
       { dom: 'dur-device', arg: 'device', kind: 'enum', values: DUR.DEVICES.map((d) => d.value), required: true, label: 'Device' },
-      { dom: 'dur-device-days', arg: 'deviceDays', kind: 'number', required: true, label: 'Device days', bound: 'hcg' },
+      { dom: 'dur-device-days', arg: 'deviceDays', kind: 'number', required: true, label: 'Device days', min: 0, max: 10000000 },
       { dom: 'dur-patient-days', arg: 'patientDays', kind: 'number', required: true, label: 'Patient days' },
     ]
   },

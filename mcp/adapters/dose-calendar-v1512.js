@@ -12,7 +12,7 @@ export default [
       { dom: 'dc-w2', arg: 'loadWeek2', kind: 'number', required: false, label: 'Loading dose 2 at week', min: 1, max: 52 },
       { dom: 'dc-w3', arg: 'loadWeek3', kind: 'number', required: false, label: 'Loading dose 3 at week', min: 1, max: 52 },
       { dom: 'dc-every', arg: 'everyWeeks', kind: 'number', required: false, label: 'Then every N weeks (required unless a cycle length is entered)', min: 1, max: 52 },
-      { dom: 'dc-count', arg: 'maintenanceDoses', kind: 'number', required: false, label: 'Maintenance doses to show (blank for 6)', bound: 'hemoglobin' },
+      { dom: 'dc-count', arg: 'maintenanceDoses', kind: 'number', required: false, label: 'Maintenance doses to show (blank for 6)', min: 1, max: 26 },
       { dom: 'dc-win', arg: 'windowDays', kind: 'number', required: false, label: 'Allowed window, plus or minus days' },
       { dom: 'dc-actual', arg: 'actualDate', kind: 'string', required: false, label: 'A dose actually given on (YYYY-MM-DD)' },
       { dom: 'dc-actual-n', arg: 'actualDose', kind: 'number', required: false, label: 'Which dose number that was' },

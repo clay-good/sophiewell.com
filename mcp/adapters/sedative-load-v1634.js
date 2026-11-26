@@ -9,8 +9,8 @@ export default [
     summary: 'Sedative load by the Linjakumpu model: 2 for each primary sedative and 1 for each drug with sedation as a prominent side effect, summed over the drugs taken regularly.',
     compute: SL.sedativeLoad,
     fields: [
-      { dom: 'sl-g1', arg: 'group1', kind: 'number', required: true, label: 'Group 1 drugs (primary sedatives)', bound: 'lactate' },
-      { dom: 'sl-g2', arg: 'group2', kind: 'number', required: true, label: 'Group 2 drugs (sedation a prominent side effect)', bound: 'lactate' },
+      { dom: 'sl-g1', arg: 'group1', kind: 'number', required: true, label: 'Group 1 drugs (primary sedatives)', min: 0, max: 50 },
+      { dom: 'sl-g2', arg: 'group2', kind: 'number', required: true, label: 'Group 2 drugs (sedation a prominent side effect)', min: 0, max: 50 },
     ],
   },
 ];

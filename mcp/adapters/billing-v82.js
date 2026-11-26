@@ -31,7 +31,7 @@ export default [
     fields: [
       { dom: 'mc-part', arg: 'part', kind: 'enum', values: ['A', 'B', 'SNF'], required: true, label: 'Medicare benefit: A (inpatient hospital), B (outpatient), or SNF' },
       { dom: 'mc-allowed', arg: 'allowedCents', kind: 'number', required: true, label: 'Medicare-allowed amount', unit: '$', to: usd },
-      { dom: 'mc-ded', arg: 'deductibleRemainingCents', kind: 'number', label: 'Remaining deductible (defaults to the current Part B deductible)', unit: '$', to: usd, bound: 'hcg' },
+      { dom: 'mc-ded', arg: 'deductibleRemainingCents', kind: 'number', label: 'Remaining deductible (defaults to the current Part B deductible)', unit: '$', to: usd, min: 0, max: 10000000 },
     ],
   },
   {
@@ -56,7 +56,7 @@ export default [
     fields: [
       { dom: 'aa-charge', arg: 'billedChargeCents', kind: 'number', required: true, label: 'Billed charge', unit: '$', to: usd },
       { dom: 'aa-allowed', arg: 'allowedCents', kind: 'number', required: true, label: 'Allowed amount', unit: '$', to: usd },
-      { dom: 'aa-ded', arg: 'deductibleRemainingCents', kind: 'number', label: 'Remaining deductible', unit: '$', to: usd, bound: 'hcg' },
+      { dom: 'aa-ded', arg: 'deductibleRemainingCents', kind: 'number', label: 'Remaining deductible', unit: '$', to: usd, min: 0, max: 10000000 },
       { dom: 'aa-coins', arg: 'coinsurancePct', kind: 'number', label: 'Coinsurance percentage', max: 100 },
     ],
   },

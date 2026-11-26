@@ -10,9 +10,9 @@ export default [
     compute: HPPD.nursingHppd,
     fields: [
       { dom: 'hppd-days', arg: 'patientDays', kind: 'number', required: true, label: 'Patient days in the period' },
-      { dom: 'hppd-rn', arg: 'rnHours', kind: 'number', required: false, label: 'RN hours', bound: 'hcg', boundScale: 10 },
-      { dom: 'hppd-lpn', arg: 'lpnHours', kind: 'number', required: false, label: 'LPN/LVN hours', bound: 'hcg', boundScale: 10 },
-      { dom: 'hppd-aide', arg: 'aideHours', kind: 'number', required: false, label: 'Nurse aide hours', bound: 'hcg', boundScale: 10 },
+      { dom: 'hppd-rn', arg: 'rnHours', kind: 'number', required: false, label: 'RN hours', min: 0, max: 100000000 },
+      { dom: 'hppd-lpn', arg: 'lpnHours', kind: 'number', required: false, label: 'LPN/LVN hours', min: 0, max: 100000000 },
+      { dom: 'hppd-aide', arg: 'aideHours', kind: 'number', required: false, label: 'Nurse aide hours', min: 0, max: 100000000 },
       { dom: 'hppd-hours-basis', arg: 'hoursBasis', kind: 'enum', values: ['worked', 'paid'], required: false, label: 'Hours counted' },
       { dom: 'hppd-days-basis', arg: 'daysBasis', kind: 'enum', values: ['midnight', 'adjusted'], required: false, label: 'Patient days counted' },
       { dom: 'hppd-target', arg: 'targetHppd', kind: 'number', required: false, label: 'Target HPPD the unit uses', min: 0, exclusiveMin: true, max: 48 },

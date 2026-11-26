@@ -51,7 +51,7 @@ export default [
     summary: 'FUNC score (Rost 2008): a point model for the likelihood of functional independence (GOS ≥ 4) at 90 days after primary ICH from ICH volume, age, location, GCS, and pre-ICH cognitive impairment; total 0–11.',
     compute: F.funcScore,
     fields: [
-      { dom: 'func-vol', arg: 'ichVolume', kind: 'number', required: true, label: 'ICH volume', unit: 'cc', bound: 'lactate', boundScale: 10 },
+      { dom: 'func-vol', arg: 'ichVolume', kind: 'number', required: true, label: 'ICH volume', unit: 'cc', min: 0, max: 500 },
       { dom: 'func-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
       { dom: 'func-loc', arg: 'location', kind: 'enum', values: ['lobar', 'deep', 'infratentorial'], required: true, label: 'ICH location' },
       { dom: 'func-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3–15)' },

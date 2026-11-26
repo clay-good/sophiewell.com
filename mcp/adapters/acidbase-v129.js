@@ -72,8 +72,8 @@ export default [
     compute: M.urineOsmolalGap,
     fields: [
       { dom: 'uo-meas', arg: 'measuredOsm', kind: 'number', required: true, label: 'Measured urine osmolality', unit: 'mOsm/kg', max: 1600 },
-      { dom: 'uo-na', arg: 'urineNa', kind: 'number', required: true, label: 'Urine sodium', unit: 'mEq/L', bound: 'platelets', boundScale: 0.1 },
-      { dom: 'uo-k', arg: 'urineK', kind: 'number', required: true, label: 'Urine potassium', unit: 'mEq/L', bound: 'platelets', boundScale: 0.1 },
+      { dom: 'uo-na', arg: 'urineNa', kind: 'number', required: true, label: 'Urine sodium', unit: 'mEq/L', min: 0, max: 400 },
+      { dom: 'uo-k', arg: 'urineK', kind: 'number', required: true, label: 'Urine potassium', unit: 'mEq/L', min: 0, max: 400 },
       { dom: 'uo-urea', arg: 'urineUrea', kind: 'number', required: true, label: 'Urine urea nitrogen', unit: 'mg/dL', bound: 'lactate', boundScale: 100 },
       { dom: 'uo-glu', arg: 'urineGlucose', kind: 'number', required: true, label: 'Urine glucose', unit: 'mg/dL' },
     ],

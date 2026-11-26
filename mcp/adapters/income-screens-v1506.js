@@ -11,7 +11,7 @@ export default [
     compute: IN.fplPercent,
     fields: [
       { dom: 'fpl-size', arg: 'size', kind: 'number', required: true, label: 'Household size', min: 1, max: 30 },
-      { dom: 'fpl-income', arg: 'income', kind: 'number', required: true, label: 'Household income', unit: 'USD', bound: 'hcg', boundScale: 10 },
+      { dom: 'fpl-income', arg: 'income', kind: 'number', required: true, label: 'Household income', unit: 'USD', min: 0, max: 100000000 },
       { dom: 'fpl-period', arg: 'period', kind: 'enum', required: false, values: vals(IN.PERIODS), label: 'Income period (annual by default)' },
       { dom: 'fpl-region', arg: 'region', kind: 'enum', required: true, values: vals(IN.REGIONS), label: 'Where the household lives' },
       { dom: 'fpl-program', arg: 'program', kind: 'enum', required: true, values: vals(IN.PROGRAMS), label: 'Program (sets the guideline year)' },

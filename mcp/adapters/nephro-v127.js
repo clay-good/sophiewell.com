@@ -16,7 +16,7 @@ export default [
       { dom: 'kf-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'kf-male', arg: 'male', kind: 'bool', label: 'Male sex' },
       { dom: 'kf-egfr', concept: 'egfr', arg: 'egfr', kind: 'number', required: true, label: 'eGFR', unit: 'mL/min/1.73m2', bound: 'eGFR' },
-      { dom: 'kf-acr', concept: 'urine-acr', arg: 'acr', kind: 'number', required: true, label: 'Urine albumin-creatinine ratio', unit: 'mg/g', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'kf-acr', concept: 'urine-acr', arg: 'acr', kind: 'number', required: true, label: 'Urine albumin-creatinine ratio', unit: 'mg/g', min: 0, max: 100000 },
       { dom: 'kf-ca', concept: 'calcium', arg: 'calcium', kind: 'number', label: 'Serum calcium (8-variable)', unit: 'mg/dL' },
       { dom: 'kf-po4', concept: 'phosphate', arg: 'phosphate', kind: 'number', label: 'Serum phosphate (8-variable)', unit: 'mg/dL' },
       { dom: 'kf-hco3', concept: 'bicarbonate', arg: 'bicarbonate', kind: 'number', label: 'Serum bicarbonate (8-variable)', unit: 'mEq/L' },

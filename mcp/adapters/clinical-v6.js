@@ -56,7 +56,7 @@ export default [
     compute: F.ldlCalc,
     fields: [
       { dom: 'ldl-tc', concept: 'total-cholesterol', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL', min: 50, max: 1000 },
-      { dom: 'ldl-hdl', concept: 'hdl-cholesterol', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL', bound: 'bmi' },
+      { dom: 'ldl-hdl', concept: 'hdl-cholesterol', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL', min: 5, max: 200 },
       { dom: 'ldl-tg', concept: 'triglycerides', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL', bound: 'triglycerides' },
     ],
   },
@@ -76,7 +76,7 @@ export default [
       { dom: 'cao2-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', bound: 'hemoglobin' },
       { dom: 'cao2-sao2', arg: 'sao2', kind: 'number', required: true, label: 'SaO2', unit: '%', min: 1, max: 100 },
       { dom: 'cao2-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg', bound: 'paO2' },
-      { dom: 'cao2-co', arg: 'cardiacOutput', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min', bound: 'bmi', boundScale: 0.1 },
+      { dom: 'cao2-co', arg: 'cardiacOutput', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min', min: 0.5, max: 20 },
     ],
   },
   {
@@ -85,7 +85,7 @@ export default [
     compute: F.oxygenationIndex,
     fields: [
       { dom: 'oi-fio2', arg: 'fio2', kind: 'number', min: 0.21, max: 1, required: true, label: 'FiO2 (0.21-1.0)' },
-      { dom: 'oi-map', arg: 'map', kind: 'number', required: true, label: 'Mean airway pressure', unit: 'cmH2O', bound: 'hr', boundScale: 0.1 },
+      { dom: 'oi-map', arg: 'map', kind: 'number', required: true, label: 'Mean airway pressure', unit: 'cmH2O', min: 1, max: 60 },
       // spec-v913 retired osi-oxygenation, which computed the saturation index on its own.
       // Neither of these can stay required or that capability goes with it: the library already
       // returns a null OI when the PaO2 is absent and a null OSI when the SpO2 is, so either
@@ -100,7 +100,7 @@ export default [
     compute: F.drivingPressure,
     fields: [
       { dom: 'dp-plat', arg: 'plateau', kind: 'number', required: true, label: 'Plateau pressure', unit: 'cmH2O', max: 80 },
-      { dom: 'dp-peep', arg: 'peep', kind: 'number', required: true, label: 'PEEP', unit: 'cmH2O', bound: 'lactate' },
+      { dom: 'dp-peep', arg: 'peep', kind: 'number', required: true, label: 'PEEP', unit: 'cmH2O', min: 0, max: 50 },
       { dom: 'dp-vt', arg: 'tidalVolume', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL', min: 1, max: 3000 },
     ],
   },

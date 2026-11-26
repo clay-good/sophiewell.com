@@ -11,7 +11,7 @@ export default [
     fields: [
       { dom: 'rbd-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.4, max: 300 },
       { dom: 'rbd-g6pd', arg: 'g6pd', kind: 'enum', required: true, values: RB.G6PD.map((x) => x.value), label: 'G6PD status' },
-      { dom: 'rbd-day', arg: 'day', kind: 'number', label: 'Day of the course (optional)', bound: 'hr', boundScale: 0.1 },
+      { dom: 'rbd-day', arg: 'day', kind: 'number', label: 'Day of the course (optional)', min: 1, max: 60 },
     ],
   },
 ];

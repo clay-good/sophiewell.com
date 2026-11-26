@@ -9,9 +9,9 @@ export default [
     compute: UR.medicaidUra,
     fields: [
       { dom: 'ur-cat', arg: 'category', kind: 'enum', required: true, values: UR.DRUG_CATEGORIES.map((c) => c.value), label: 'Drug category' },
-      { dom: 'ur-amp', arg: 'amp', kind: 'number', required: true, label: 'Average manufacturer price per unit', unit: 'USD', bound: 'hcg' },
+      { dom: 'ur-amp', arg: 'amp', kind: 'number', required: true, label: 'Average manufacturer price per unit', unit: 'USD', min: 0, max: 10000000 },
       { dom: 'ur-bp', arg: 'bestPrice', kind: 'number', required: false, label: 'Best price per unit (brand drugs)', unit: 'USD' },
-      { dom: 'ur-bamp', arg: 'baselineAmp', kind: 'number', required: false, label: 'Baseline AMP per unit', unit: 'USD', bound: 'hcg' },
+      { dom: 'ur-bamp', arg: 'baselineAmp', kind: 'number', required: false, label: 'Baseline AMP per unit', unit: 'USD', min: 0, max: 10000000 },
       { dom: 'ur-bcpi', arg: 'baselineCpi', kind: 'number', required: false, label: 'Baseline CPI-U', min: 1, max: 10000 },
       { dom: 'ur-ccpi', arg: 'currentCpi', kind: 'number', required: false, label: 'CPI-U for the month before the quarter', min: 1, max: 10000 },
       { dom: 'ur-year', arg: 'year', kind: 'number', required: false, label: 'Year of the rebate quarter' },

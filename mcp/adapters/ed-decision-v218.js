@@ -87,7 +87,7 @@ export default [
       { dom: 'air-fever', arg: 'fever', kind: 'bool', required: false, label: 'Temperature ≥ 38.5 °C (+1)' },
       { dom: 'air-wbc', arg: 'wbc', kind: 'number', required: true, label: 'WBC', unit: '×10⁹/L', bound: 'wbc' },
       { dom: 'air-pmn', arg: 'pmnPct', kind: 'number', required: true, label: 'Neutrophil percentage', unit: '%', max: 100 },
-      { dom: 'air-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/L', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'air-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/L', min: 0, max: 100000 },
     ],
   },
   {
@@ -103,7 +103,7 @@ export default [
       { dom: 'aas-guard', arg: 'guarding', kind: 'enum', values: ['0', '2', '4'], required: true, label: 'Guarding' },
       { dom: 'aas-wbc', arg: 'wbc', kind: 'number', required: true, label: 'WBC', unit: '×10⁹/L', bound: 'wbc' },
       { dom: 'aas-pmn', arg: 'pmnPct', kind: 'number', required: true, label: 'Neutrophil percentage', unit: '%', max: 100 },
-      { dom: 'aas-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/L', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'aas-crp', arg: 'crp', kind: 'number', required: true, label: 'CRP', unit: 'mg/L', min: 0, max: 100000 },
       { dom: 'aas-dur', arg: 'durationOver24h', kind: 'bool', required: false, label: 'Symptom duration > 24 h' },
     ],
   },

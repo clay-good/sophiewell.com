@@ -22,7 +22,7 @@ export default [
     summary: 'sFlt-1/PlGF ratio (Zeisler 2016 PROGNOSIS; Verlohren 2014): a Roche Elecsys biomarker for suspected preeclampsia; ≤ 38 rules it out for the next week, with phase-specific rule-in thresholds (≥ 85 early, ≥ 110 late).',
     compute: F.sflt1Plgf,
     fields: [
-      { dom: 'sflt-ratio', arg: 'ratio', kind: 'number', required: true, label: 'sFlt-1/PlGF ratio', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'sflt-ratio', arg: 'ratio', kind: 'number', required: true, label: 'sFlt-1/PlGF ratio', min: 0, max: 100000 },
       { dom: 'sflt-phase', arg: 'phase', kind: 'enum', values: ['early', 'late'], required: true, label: 'Gestational phase (early < 34 wk or late ≥ 34 wk)' },
     ],
   },

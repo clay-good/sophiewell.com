@@ -9,8 +9,8 @@ export default [
     summary: 'The NHSN standardized infection ratio: observed infections divided by the predicted count from the facility\'s NHSN report. No ratio when fewer than 1.0 infections are predicted, as the NHSN SIR guide (March 2024) says. Also the two-sided p-value and 95% interval by NHSN\'s own mid-P macros.',
     compute: SIR.nhsnSir,
     fields: [
-      { dom: 'sir-observed', arg: 'observed', kind: 'number', required: true, label: 'Observed infections (whole number)', bound: 'hcg', boundScale: 0.01 },
-      { dom: 'sir-predicted', arg: 'predicted', kind: 'number', required: true, label: 'Predicted infections (from the NHSN report)', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'sir-observed', arg: 'observed', kind: 'number', required: true, label: 'Observed infections (whole number)', min: 0, max: 100000 },
+      { dom: 'sir-predicted', arg: 'predicted', kind: 'number', required: true, label: 'Predicted infections (from the NHSN report)', min: 0, max: 100000 },
     ]
   },
 ];

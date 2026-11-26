@@ -11,7 +11,7 @@ export default [
     summary: 'Pearl Index: (accidental pregnancies x 1200) / total woman-months of exposure = contraceptive failures per 100 woman-years; a lower index reflects a more effective method.',
     compute: F.pearlIndex,
     fields: [
-      { dom: 'pi-preg', arg: 'pregnancies', kind: 'number', required: true, label: 'Accidental pregnancies', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'pi-preg', arg: 'pregnancies', kind: 'number', required: true, label: 'Accidental pregnancies', min: 0, max: 100000 },
       { dom: 'pi-months', arg: 'months', kind: 'number', required: true, label: 'Total months of exposure', unit: 'months', min: 1, max: 10000000 },
     ],
   },

@@ -21,7 +21,7 @@ export default [
     compute: F.equivalentAirDepth,
     fields: [
       { dom: 'ead-depth', arg: 'depth', kind: 'number', required: true, label: 'Actual depth', unit: 'm', max: 200 },
-      { dom: 'ead-fo2', arg: 'fo2', kind: 'number', required: true, label: 'Oxygen fraction FO2 (e.g. 0.32)', bound: 'fio2' },
+      { dom: 'ead-fo2', arg: 'fo2', kind: 'number', required: true, label: 'Oxygen fraction FO2 (e.g. 0.32)', min: 0.21, max: 1 },
     ],
   },
   {

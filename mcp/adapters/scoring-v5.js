@@ -130,7 +130,7 @@ export default [
       { dom: 'yp-dvt', arg: 'dvtSigns', kind: 'bool', label: 'Clinical signs of DVT' },
       { dom: 'yp-hemo', arg: 'hemoptysis', kind: 'bool', label: 'Hemoptysis' },
       { dom: 'yp-likely', arg: 'peMostLikely', kind: 'bool', label: 'PE is the most likely diagnosis' },
-      { dom: 'yp-ddimer', arg: 'dDimer', kind: 'number', required: true, label: 'D-dimer', unit: 'ng/mL FEU', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'yp-ddimer', arg: 'dDimer', kind: 'number', required: true, label: 'D-dimer', unit: 'ng/mL FEU', min: 0, max: 100000 },
     ],
   },
   {

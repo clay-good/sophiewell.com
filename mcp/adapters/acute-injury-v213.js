@@ -44,7 +44,7 @@ export default [
     fields: [
       { dom: 'lc-pprot', arg: 'pleuralProtein', kind: 'number', required: true, label: 'Pleural fluid total protein', unit: 'g/dL', max: 100 },
       { dom: 'lc-sprot', arg: 'serumProtein', kind: 'number', required: true, label: 'Serum total protein', unit: 'g/dL' },
-      { dom: 'lc-pldh', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural fluid LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'lc-pldh', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural fluid LDH', unit: 'IU/L', min: 0, max: 100000 },
       // spec-v1794: the upper limit of normal declared `bound: 'hcg'` at a hundredth -- the hCG envelope, whose
       // ceiling over 100 happens to land on 100,000 -- and spec-v1793 mirrored that onto the LDH beside it for
       // consistency. Neither field is an hCG. The library reads both 0 to 100,000 as a literal of its own, and

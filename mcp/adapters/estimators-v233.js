@@ -31,7 +31,7 @@ export default [
     compute: F.ageAdjustedDDimer,
     fields: [
       { dom: 'add-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
-      { dom: 'add-dd', arg: 'ddimer', kind: 'number', required: true, label: 'D-dimer', unit: 'ug/L FEU', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'add-dd', arg: 'ddimer', kind: 'number', required: true, label: 'D-dimer', unit: 'ug/L FEU', min: 0, max: 100000 },
     ],
   },
   {

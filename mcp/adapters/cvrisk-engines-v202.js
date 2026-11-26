@@ -13,7 +13,7 @@ export default [
       { dom: 'mecki-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 3, max: 26 },
       { dom: 'mecki-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L', bound: 'sodium' },
       { dom: 'mecki-lvef', arg: 'lvef', kind: 'number', required: true, label: 'LVEF', unit: '%', min: 5, max: 80 },
-      { dom: 'mecki-ppvo2', arg: 'ppvo2', kind: 'number', required: true, label: 'Peak VO₂ (% predicted)', bound: 'bmi' },
+      { dom: 'mecki-ppvo2', arg: 'ppvo2', kind: 'number', required: true, label: 'Peak VO₂ (% predicted)', min: 5, max: 200 },
       { dom: 'mecki-veco2', arg: 'veco2', kind: 'number', required: true, label: 'VE/VCO₂ slope', min: 10, max: 120 },
       // spec-v1796: this declared `bound: 'magnesium'` scaled by ten -- an eGFR bounded like a magnesium, for the
       // numbers. Renaming it to the eGFR envelope published 0 to 200 where the library reads 3 to 250, so the

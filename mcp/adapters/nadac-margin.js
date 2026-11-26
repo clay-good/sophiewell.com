@@ -33,8 +33,8 @@ export default [
       { dom: 'nm-ndc', arg: 'ndc', kind: 'string', required: false, label: 'NDC (11 digits, or with its hyphens)' },
       { dom: 'nm-dos', arg: 'serviceDate', kind: 'string', required: false, label: 'Date of service (YYYY-MM-DD)' },
       { dom: 'nm-qty', arg: 'quantity', kind: 'number', required: true, label: 'Quantity dispensed', unit: 'units', min: 0.001, max: 1000000 },
-      { dom: 'nm-paid', arg: 'reimbursed', kind: 'number', required: true, label: 'Reimbursement', unit: 'USD', bound: 'hcg' },
-      { dom: 'nm-cost', arg: 'cost', kind: 'number', required: false, label: 'Invoice cost per unit', unit: 'USD', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'nm-paid', arg: 'reimbursed', kind: 'number', required: true, label: 'Reimbursement', unit: 'USD', min: 0, max: 10000000 },
+      { dom: 'nm-cost', arg: 'cost', kind: 'number', required: false, label: 'Invoice cost per unit', unit: 'USD', min: 0, max: 1000000 },
     ],
   },
 ];

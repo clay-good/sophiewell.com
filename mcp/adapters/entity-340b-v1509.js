@@ -56,7 +56,7 @@ export default [
     compute: E3.ceilingPrice340b,
     fields: [
       { dom: 'cp3-cat', arg: 'category', kind: 'enum', required: true, values: vals(E3.DRUG_CATEGORIES), label: 'Drug category' },
-      { dom: 'cp3-amp', arg: 'amp', kind: 'number', required: true, label: 'Average manufacturer price per unit, prior quarter', unit: 'USD', bound: 'hcg' },
+      { dom: 'cp3-amp', arg: 'amp', kind: 'number', required: true, label: 'Average manufacturer price per unit, prior quarter', unit: 'USD', min: 0, max: 10000000 },
       { dom: 'cp3-bp', arg: 'bestPrice', kind: 'number', required: false, label: 'Best price per unit (brand drugs)', unit: 'USD' },
       { dom: 'cp3-bamp', arg: 'baselineAmp', kind: 'number', required: false, label: 'Baseline AMP per unit', unit: 'USD' },
       { dom: 'cp3-bcpi', arg: 'baselineCpi', kind: 'number', required: false, label: 'Baseline CPI-U' },

@@ -13,7 +13,7 @@ export default [
     compute: membranousRisk,
     fields: [
       { dom: 'mn-egfr', arg: 'egfr', kind: 'number', required: false, label: 'eGFR, mL/min per 1.73 square meters', unit: 'mL/min/1.73m2', bound: 'eGFR' },
-      { dom: 'mn-proteinuria', arg: 'proteinuria', kind: 'number', required: false, label: 'Proteinuria, grams per day', unit: 'g/day', bound: 'lactate' },
+      { dom: 'mn-proteinuria', arg: 'proteinuria', kind: 'number', required: false, label: 'Proteinuria, grams per day', unit: 'g/day', min: 0, max: 50 },
       { dom: 'mn-albumin', arg: 'albumin', kind: 'number', required: false, label: 'Serum albumin, g/dL', unit: 'g/dL', max: 8 },
       { dom: 'mn-pla2r', arg: 'pla2r', kind: 'number', required: false, label: 'Anti-PLA2R antibody, RU/mL (counts only alongside proteinuria above 3.5 g/day)', unit: 'RU/mL' },
       { dom: 'mn-urinarymarkersraised', arg: 'urinaryMarkersRaised', kind: 'boolean', required: false, label: 'Urinary alpha-1 microglobulin or IgG excretion is raised' },

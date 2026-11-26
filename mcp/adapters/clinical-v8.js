@@ -80,7 +80,7 @@ export default [
       return any ? out : null;
     },
     fields: [
-      { dom: 'itr-vol', arg: 'volumeMl', kind: 'number', required: true, label: 'Volume remaining', unit: 'mL', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'itr-vol', arg: 'volumeMl', kind: 'number', required: true, label: 'Volume remaining', unit: 'mL', min: 0, max: 100000 },
       // spec-v1152: two calculators on one page, and the page says so -- the third
       // field is labelled "OR: make this volume last (hours)". The rate answers
       // "time to empty" and the hours answer "rate to last that long"; each is

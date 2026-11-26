@@ -47,7 +47,7 @@ export default [
     compute: F.furosemideStressTest,
     fields: [
       { dom: 'fst-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.2 },
-      { dom: 'fst-uop', arg: 'urineOutput2h', kind: 'number', required: true, label: '2-hour urine output', unit: 'mL', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'fst-uop', arg: 'urineOutput2h', kind: 'number', required: true, label: '2-hour urine output', unit: 'mL', min: 0, max: 100000 },
       { dom: 'fst-prior', arg: 'priorExposure', kind: 'bool', required: false, label: 'Prior loop-diuretic exposure (uses 1.5 mg/kg dose)' },
     ],
   },

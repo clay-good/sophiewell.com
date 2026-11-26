@@ -33,7 +33,7 @@ export default [
       { dom: 'pbdc-dos', arg: 'serviceDate', kind: 'string', required: false, label: 'Date of service (YYYY-MM-DD)' },
       { dom: 'pbdc-units', arg: 'units', kind: 'number', required: true, label: 'Units billed', unit: 'HCPCS dosage units', min: 0.001, max: 1000000 },
       { dom: 'pbdc-months', arg: 'months', kind: 'number', required: false, label: 'Months of pump insulin supplied', unit: 'months' },
-      { dom: 'pbdc-limit', arg: 'limit', kind: 'number', required: false, label: 'Payment limit per unit from another quarter', unit: 'USD', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'pbdc-limit', arg: 'limit', kind: 'number', required: false, label: 'Payment limit per unit from another quarter', unit: 'USD', min: 0, max: 1000000 },
       { dom: 'pbdc-coins', arg: 'coinsurance', kind: 'number', required: false, label: 'Coinsurance with that limit', unit: 'percent', max: 20 },
     ],
   },

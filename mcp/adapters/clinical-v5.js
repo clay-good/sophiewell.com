@@ -59,7 +59,7 @@ export default [
     compute: F.rsbi,
     fields: [
       { dom: 'rr', arg: 'respiratoryRate', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
-      { dom: 'vt', arg: 'tidalVolumeMl', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL', bound: 'bmi', boundScale: 10 },
+      { dom: 'vt', arg: 'tidalVolumeMl', kind: 'number', required: true, label: 'Tidal volume', unit: 'mL', min: 50, max: 2000 },
     ],
   },
   {

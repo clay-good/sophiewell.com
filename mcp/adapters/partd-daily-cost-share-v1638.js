@@ -10,7 +10,7 @@ export default [
     compute: DC.partdDailyCostShare,
     fields: [
       { dom: 'pdc-sharing', arg: 'sharing', kind: 'enum', required: true, values: DC.SHARING.map((k) => k.value), label: 'The plan charges' },
-      { dom: 'pdc-copay', arg: 'monthlyCopay', kind: 'number', label: 'Monthly copayment', unit: 'dollars', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'pdc-copay', arg: 'monthlyCopay', kind: 'number', label: 'Monthly copayment', unit: 'dollars', min: 0, max: 100000 },
       { dom: 'pdc-pct', arg: 'coinsurancePercent', kind: 'number', label: 'Coinsurance', unit: 'percent' },
       { dom: 'pdc-price', arg: 'priceDispensed', kind: 'number', label: 'Price of the supply actually dispensed, for coinsurance', unit: 'dollars' },
       { dom: 'pdc-month', arg: 'monthDays', kind: 'number', required: true, label: 'Days in the approved one-month supply', unit: 'days', min: 1, max: 100 },

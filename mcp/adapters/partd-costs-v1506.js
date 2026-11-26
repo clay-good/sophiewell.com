@@ -20,8 +20,8 @@ export default [
     compute: PC.m3pMonthlyBill,
     fields: [
       { dom: 'm3p-month', arg: 'optInMonth', kind: 'number', required: true, label: 'Month of opting in, 1 to 12', min: 1, max: 12 },
-      { dom: 'm3p-prior', arg: 'priorOop', kind: 'number', required: true, label: 'Part D out-of-pocket costs already paid this year', unit: 'USD', bound: 'hcg', boundScale: 0.1 },
-      { dom: 'm3p-monthly', arg: 'monthlyOop', kind: 'number', required: true, label: 'Out-of-pocket cost each month from opting in', unit: 'USD', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'm3p-prior', arg: 'priorOop', kind: 'number', required: true, label: 'Part D out-of-pocket costs already paid this year', unit: 'USD', min: 0, max: 1000000 },
+      { dom: 'm3p-monthly', arg: 'monthlyOop', kind: 'number', required: true, label: 'Out-of-pocket cost each month from opting in', unit: 'USD', min: 0, max: 1000000 },
       { dom: 'm3p-extra', arg: 'firstMonthExtra', kind: 'number', required: false, label: 'Extra cost in the first month', unit: 'USD' },
       { dom: 'm3p-year', arg: 'year', kind: 'number', required: false, label: 'Plan year (blank for this year)' },
     ],

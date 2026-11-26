@@ -76,6 +76,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- All 163 of those stated ranges are gone, and not one published number changed. The ranges were right all
+  along: a plausible range for serum hCG, divided by a hundred, is exactly the ceiling a CRP was already
+  guarded by, so the declaration was the right number written as a sum nobody could read. Each now states
+  its own figure, which also stops 98 unrelated fields -- a payment limit, a deductible, a D-dimer, a
+  lymphocyte count -- from following the hCG range if it is ever revised.
 - A new check asks every one of the 773 input ranges that are stated by naming a shared plausible range
   whether it names the right quantity. 163 do not: the range is one the field's own words have nothing to
   do with and the tool itself never consults. None of them turns a value away, but an agent reading the

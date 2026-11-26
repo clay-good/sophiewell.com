@@ -10,8 +10,8 @@ export default [
     fields: [
       { dom: 'ar-start', arg: 'startDate', kind: 'string', required: true, label: 'Approval start date (YYYY-MM-DD)' },
       { dom: 'ar-end', arg: 'endDate', kind: 'string', required: true, label: 'Approval end date (YYYY-MM-DD)' },
-      { dom: 'ar-approved', arg: 'approved', kind: 'number', required: true, label: 'Units or visits approved', bound: 'hcg', boundScale: 0.01 },
-      { dom: 'ar-used', arg: 'used', kind: 'number', required: true, label: 'Units or visits used so far (0 if none)', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'ar-approved', arg: 'approved', kind: 'number', required: true, label: 'Units or visits approved', min: 0, max: 100000 },
+      { dom: 'ar-used', arg: 'used', kind: 'number', required: true, label: 'Units or visits used so far (0 if none)', min: 0, max: 100000 },
       { dom: 'ar-per', arg: 'perDose', kind: 'number', required: true, label: 'Units given at each administration' },
       // spec-v1794: this declared a floor of 56 days, which is the example drug's own schedule and nothing
       // else. A monthly biologic is every 28 days and the page takes it; an agent was refused. The library

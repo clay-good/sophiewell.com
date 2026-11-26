@@ -94,6 +94,18 @@ const FINDERS = [
     minJudged: 7,
   },
   {
+    // spec-v1797: promoted the day it was written, because the 163 rows it found were all one refactor --
+    // a borrowed envelope plus a scale is an obfuscated literal -- and the refactor is done. It has no
+    // ledger: a borrowed envelope is never the right answer, so there is nothing here to judge.
+    probe: 'probe-borrowed-envelope.mjs',
+    what: 'a field naming a lib/bounds.js envelope for a quantity it is not, which its library never mentions',
+    fix: 'State the range the library enforces as a literal, or name the envelope that does fit '
+      + '(docs/spec-v1796.md, docs/spec-v1797.md) -- and drop the boundScale, which was chosen for the borrowed numbers',
+    informational: [],
+    isFinding: (l) => l.includes('\t') && !l.startsWith('OK'),
+    minJudged: 0,
+  },
+  {
     // spec-v1794: promoted from a hand-run report to a gate once its eighteen rows were fixed. It is the
     // mirror of probe-declared-cap-configs: that one asks whether a declaration holds in every
     // CONFIGURATION, this one whether the library enforces it at all.

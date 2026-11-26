@@ -9,11 +9,11 @@ export default [
     summary: 'Staff turnover and vacancy rates, and CMS\'s PBJ turnover: spells ended in a 90-day gap over eligible spells. Turnover over 100% is allowed and flagged.',
     compute: TURN.staffTurnoverRate,
     fields: [
-      { dom: 'str-separations', arg: 'separations', kind: 'number', required: false, label: 'Separations in the period', bound: 'hcg', boundScale: 0.1 },
-      { dom: 'str-start', arg: 'startHeadcount', kind: 'number', required: false, label: 'Headcount at the start', bound: 'hcg', boundScale: 0.1 },
-      { dom: 'str-end', arg: 'endHeadcount', kind: 'number', required: false, label: 'Headcount at the end', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'str-separations', arg: 'separations', kind: 'number', required: false, label: 'Separations in the period', min: 0, max: 1000000 },
+      { dom: 'str-start', arg: 'startHeadcount', kind: 'number', required: false, label: 'Headcount at the start', min: 0, max: 1000000 },
+      { dom: 'str-end', arg: 'endHeadcount', kind: 'number', required: false, label: 'Headcount at the end', min: 0, max: 1000000 },
       { dom: 'str-budgeted', arg: 'budgeted', kind: 'number', required: false, label: 'Budgeted positions' },
-      { dom: 'str-filled', arg: 'filled', kind: 'number', required: false, label: 'Filled positions', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'str-filled', arg: 'filled', kind: 'number', required: false, label: 'Filled positions', min: 0, max: 1000000 },
       { dom: 'str-spells-ended', arg: 'spellsEnded', kind: 'number', required: false, label: 'CMS method: employment spells ended in a 90-day gap' },
       { dom: 'str-spells', arg: 'eligibleSpells', kind: 'number', required: false, label: 'CMS method: eligible employment spells' },
     ]

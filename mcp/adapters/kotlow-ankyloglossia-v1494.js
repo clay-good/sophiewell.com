@@ -8,7 +8,7 @@ export default [
     summary: 'Kotlow classification of ankyloglossia, Class I to IV, from the free tongue length in mm.',
     compute: KA.kotlowAnkyloglossia,
     fields: [
-      { dom: 'ka-length', arg: 'length', kind: 'number', required: true, label: 'Free tongue length', unit: 'mm', bound: 'platelets', boundScale: 0.01 },
+      { dom: 'ka-length', arg: 'length', kind: 'number', required: true, label: 'Free tongue length', unit: 'mm', min: 0, max: 40 },
     ],
   },
 ];

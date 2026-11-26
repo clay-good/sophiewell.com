@@ -11,7 +11,7 @@ export default [
     summary: 'Reads a fractional exhaled nitric oxide measurement against the age-specific cutpoints published in 2011. In a person twelve years or older, below 25 parts per billion is low, 25 to 50 is intermediate and above 50 is high; in a child under twelve, below 20 is low, 20 to 35 is intermediate and above 35 is high. IT MEASURES EOSINOPHILIC AIRWAY INFLAMMATION, NOT ASTHMA, so a low value does not exclude asthma and instead argues against eosinophilic inflammation and against a corticosteroid response at that moment. THE INTERMEDIATE BAND IS NOT A MILDLY RAISED RESULT: the guideline says to interpret it cautiously and in context. THE CUTPOINTS DIFFER BY AGE. Corticosteroids and smoking lower the number while atopy and rhinitis raise it, and a change over time says more than a single value against a population cutpoint.',
     compute: feno,
     fields: [
-      { dom: 'fe-fenoppb', arg: 'fenoPpb', kind: 'number', required: true, label: 'Fractional exhaled nitric oxide, parts per billion', unit: 'ppb', bound: 'lactate', boundScale: 10 },
+      { dom: 'fe-fenoppb', arg: 'fenoPpb', kind: 'number', required: true, label: 'Fractional exhaled nitric oxide, parts per billion', unit: 'ppb', min: 0, max: 500 },
       { dom: 'fe-agegroup', arg: 'ageGroup', kind: 'enum', required: false, label: 'Age group, for the cutpoints', values: ['adult', 'child'] },
       { dom: 'fe-oncorticosteroid', arg: 'onCorticosteroid', kind: 'boolean', required: false, label: 'On an inhaled or oral corticosteroid (lowers the number)' },
       { dom: 'fe-currentsmoker', arg: 'currentSmoker', kind: 'boolean', required: false, label: 'Currently smoking (lowers the number)' },

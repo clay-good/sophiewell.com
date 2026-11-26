@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'ig4-organ', arg: 'organSwelling', kind: 'boolean', required: false, label: 'Characteristic organ swelling, mass or nodule' },
       { dom: 'ig4-nodes', arg: 'lymphNodesOnly', kind: 'boolean', required: false, label: 'Lymph node swelling only, single organ' },
-      { dom: 'ig4-serum', arg: 'serumIgg4', kind: 'number', required: false, label: 'Serum IgG4, mg/dL', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'ig4-serum', arg: 'serumIgg4', kind: 'number', required: false, label: 'Serum IgG4, mg/dL', min: 0, max: 100000 },
       { dom: 'ig4-infiltrate', arg: 'denseInfiltrate', kind: 'boolean', required: false, label: 'Dense lymphoplasmacytic infiltration with fibrosis' },
       { dom: 'ig4-ratio', arg: 'igg4Ratio', kind: 'boolean', required: false, label: 'IgG4+/IgG+ ratio above 40 percent and over 10 per HPF' },
       { dom: 'ig4-storiform', arg: 'storiformFibrosis', kind: 'boolean', required: false, label: 'Storiform fibrosis or obliterative phlebitis' },

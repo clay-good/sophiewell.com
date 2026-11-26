@@ -9,9 +9,9 @@ export default [
     summary: 'Risk ratio, odds ratio and risk difference with 95% intervals from event counts in two groups. It also gives the number needed to treat with its interval, which passes through infinity when the difference may be zero. A zero cell withholds the ratio interval it breaks.',
     compute: TT.twoByTwoEffect,
     fields: [
-      { dom: 'tte-a', arg: 'events1', kind: 'number', required: true, label: 'Group 1 (treated or exposed): events', bound: 'hcg' },
+      { dom: 'tte-a', arg: 'events1', kind: 'number', required: true, label: 'Group 1 (treated or exposed): events', min: 0, max: 10000000 },
       { dom: 'tte-n1', arg: 'total1', kind: 'number', required: true, label: 'Group 1: total' },
-      { dom: 'tte-c', arg: 'events2', kind: 'number', required: true, label: 'Group 2 (comparison): events', bound: 'hcg' },
+      { dom: 'tte-c', arg: 'events2', kind: 'number', required: true, label: 'Group 2 (comparison): events', min: 0, max: 10000000 },
       { dom: 'tte-n2', arg: 'total2', kind: 'number', required: true, label: 'Group 2: total' },
     ],
   },

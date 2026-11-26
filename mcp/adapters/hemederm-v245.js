@@ -11,7 +11,7 @@ export default [
     summary: 'Shine & Lal index (1977) = (MCV^2 x MCH) / 100; < 1530 suggests beta-thalassemia trait, > 1530 iron deficiency.',
     compute: F.shineLal,
     fields: [
-      { dom: 'sl-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL', bound: 'gcs', boundScale: 10 },
+      { dom: 'sl-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL', min: 30, max: 150 },
       { dom: 'sl-mch', arg: 'mch', kind: 'number', required: true, label: 'MCH', unit: 'pg', min: 10, max: 50 },
     ],
   },
@@ -20,7 +20,7 @@ export default [
     summary: 'Green & King index (1989) = (MCV^2 x RDW) / (Hb x 100); < 65 suggests beta-thalassemia trait, > 65 iron deficiency.',
     compute: F.greenKing,
     fields: [
-      { dom: 'gk-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL', bound: 'gcs', boundScale: 10 },
+      { dom: 'gk-mcv', arg: 'mcv', kind: 'number', required: true, label: 'MCV', unit: 'fL', min: 30, max: 150 },
       { dom: 'gk-rdw', arg: 'rdw', kind: 'number', required: true, label: 'RDW', unit: '%', min: 5, max: 40 },
       { dom: 'gk-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 3, max: 26 },
     ],

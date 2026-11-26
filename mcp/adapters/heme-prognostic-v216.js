@@ -26,7 +26,7 @@ export default [
     fields: [
       { dom: 'mdacc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'mdacc-b2m', arg: 'b2mBand', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'Beta-2-microglobulin (× ULN band)' },
-      { dom: 'mdacc-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10⁹/L', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'mdacc-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10⁹/L', min: 0, max: 100000 },
       { dom: 'mdacc-male', arg: 'male', kind: 'bool', required: false, label: 'Male sex' },
       { dom: 'mdacc-rai', arg: 'raiAdvanced', kind: 'bool', required: false, label: 'Advanced Rai stage (III–IV)' },
       { dom: 'mdacc-nodal', arg: 'nodalHigh', kind: 'bool', required: false, label: '≥ 3 involved nodal groups' },
@@ -59,7 +59,7 @@ export default [
     fields: [
       { dom: 'ds-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1, max: 30 },
       { dom: 'ds-ca', arg: 'calcium', kind: 'number', required: true, label: 'Serum calcium', unit: 'mg/dL', bound: 'calcium' },
-      { dom: 'ds-lesions', arg: 'boneLesions', kind: 'number', required: true, label: 'Number of lytic bone lesions', bound: 'lactate', boundScale: 10 },
+      { dom: 'ds-lesions', arg: 'boneLesions', kind: 'number', required: true, label: 'Number of lytic bone lesions', min: 0, max: 500 },
       { dom: 'ds-mprot', arg: 'mProtein', kind: 'enum', values: ['0', '1', '2'], required: true, label: 'M-protein burden (low/intermediate/high)' },
       { dom: 'ds-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', bound: 'scr' },
     ],

@@ -10,10 +10,10 @@ export default [
     summary: 'Medicaid fee-for-service payment for a drug as the lowest of several amounts. Compares acquisition cost plus the professional dispensing fee, the usual and customary charge, and the federal upper limit or state maximum allowable cost when entered (42 CFR 447.512, 447.514). Shows which sets the payment. The state plan governs.',
     compute: medicaidDrugPaymentCheck,
     fields: [
-      { dom: 'mdp-aac', arg: 'aacPerUnit', kind: 'number', required: true, label: 'State actual acquisition cost, per unit', unit: 'dollars', bound: 'hcg', boundScale: 0.1 },
+      { dom: 'mdp-aac', arg: 'aacPerUnit', kind: 'number', required: true, label: 'State actual acquisition cost, per unit', unit: 'dollars', min: 0, max: 1000000 },
       { dom: 'mdp-qty', arg: 'quantity', kind: 'number', required: true, label: 'Quantity', unit: 'units' },
       { dom: 'mdp-fee', arg: 'dispensingFee', kind: 'number', required: true, label: 'State professional dispensing fee', unit: 'dollars', max: 10000 },
-      { dom: 'mdp-uc', arg: 'usualAndCustomary', kind: 'number', required: true, label: 'Usual and customary charge for the prescription', unit: 'dollars', bound: 'hcg' },
+      { dom: 'mdp-uc', arg: 'usualAndCustomary', kind: 'number', required: true, label: 'Usual and customary charge for the prescription', unit: 'dollars', min: 0, max: 10000000 },
       { dom: 'mdp-ful', arg: 'fulPerUnit', kind: 'number', label: 'Federal upper limit, per unit, if the drug has one', unit: 'dollars' },
       { dom: 'mdp-mac', arg: 'stateMacPerUnit', kind: 'number', label: 'State maximum allowable cost, per unit, if any', unit: 'dollars' },
       { dom: 'mdp-paid', arg: 'amountPaid', kind: 'number', label: 'Amount paid', unit: 'dollars' },

@@ -71,7 +71,7 @@ export default [
     compute: C.apcPayment,
     fields: [
       { dom: 'apc-list', arg: 'lines', kind: 'string', required: true, label: 'APC lines, one per line as "weight, status indicator" (e.g. "10, T")' },
-      { dom: 'apc-cf', arg: 'conversionFactorCents', kind: 'number', required: true, label: 'OPPS conversion factor', unit: '$ per weight unit', bound: 'hcg' },
+      { dom: 'apc-cf', arg: 'conversionFactorCents', kind: 'number', required: true, label: 'OPPS conversion factor', unit: '$ per weight unit', min: 0, max: 10000000 },
       { dom: 'apc-wage', arg: 'wageIndex', kind: 'number', label: 'Wage index (default 1.0)', max: 10 },
       { dom: 'apc-disc', arg: 'discountPct', kind: 'number', label: 'Multiple-procedure discount %, default 50' },
     ],

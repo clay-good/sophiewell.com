@@ -27,7 +27,7 @@ export default [
     fields: [
       { dom: 'caap-la', arg: 'laDiameter', kind: 'number', required: true, label: 'Left-atrial diameter', unit: 'cm', max: 20 },
       { dom: 'caap-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
-      { dom: 'caap-aad', arg: 'failedAad', kind: 'number', required: true, label: 'Number of failed antiarrhythmic drugs', bound: 'lactate' },
+      { dom: 'caap-aad', arg: 'failedAad', kind: 'number', required: true, label: 'Number of failed antiarrhythmic drugs', min: 0, max: 50 },
       { dom: 'caap-cad', arg: 'cad', kind: 'bool', required: false, label: 'Coronary artery disease (+1)' },
       { dom: 'caap-pers', arg: 'persistentAf', kind: 'bool', required: false, label: 'Persistent / long-standing persistent AF (+2)' },
       { dom: 'caap-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex (+1)' },
@@ -38,7 +38,7 @@ export default [
     summary: 'ATLAS score (Mesquita 2018): age > 60, non-paroxysmal AF, indexed LA volume, female sex, and current smoking give a score banding AF-recurrence risk after ablation (low < 6, intermediate 6–10, high > 10).',
     compute: F.atlas,
     fields: [
-      { dom: 'atl-lavi', arg: 'laVolumeIndex', kind: 'number', required: true, label: 'Indexed LA volume', unit: 'mL/m²', bound: 'platelets', boundScale: 0.1 },
+      { dom: 'atl-lavi', arg: 'laVolumeIndex', kind: 'number', required: true, label: 'Indexed LA volume', unit: 'mL/m²', min: 0, max: 400 },
       { dom: 'atl-age', arg: 'ageOver60', kind: 'bool', required: false, label: 'Age > 60 years (+1)' },
       { dom: 'atl-np', arg: 'nonParoxysmal', kind: 'bool', required: false, label: 'Non-paroxysmal AF (+2)' },
       { dom: 'atl-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex (+4)' },

@@ -13,8 +13,8 @@ export default [
     summary: 'Furst formula, the urine-to-plasma electrolyte ratio (Furst 2000): (urine Na + urine K) / serum Na, all mmol/L. Predicts whether fluid restriction can raise the serum sodium in SIADH. Under 0.5, restrict to 1000 mL/day; 0.5 to 1.0, restrict to 500 mL/day; above 1.0 no electrolyte-free water is being excreted so restriction alone is unlikely to help however tight. Distinct from electrolyte-free water clearance, which needs urine volume and returns a rate.',
     compute: furstRatio,
     fields: [
-      { dom: 'furst-una', arg: 'urineSodium', kind: 'number', required: true, label: 'Urine sodium', unit: 'mmol/L', bound: 'platelets', boundScale: 0.1 },
-      { dom: 'furst-uk', arg: 'urinePotassium', kind: 'number', required: true, label: 'Urine potassium', unit: 'mmol/L', bound: 'platelets', boundScale: 0.1 },
+      { dom: 'furst-una', arg: 'urineSodium', kind: 'number', required: true, label: 'Urine sodium', unit: 'mmol/L', min: 0, max: 400 },
+      { dom: 'furst-uk', arg: 'urinePotassium', kind: 'number', required: true, label: 'Urine potassium', unit: 'mmol/L', min: 0, max: 400 },
       { dom: 'furst-sna', arg: 'serumSodium', kind: 'number', required: true, label: 'Serum sodium', unit: 'mmol/L', min: 80, max: 210 },
     ],
   },

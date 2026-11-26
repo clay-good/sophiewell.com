@@ -11,7 +11,7 @@ export default [
     summary: 'Applies the ICHD-3 criteria for section 3.3 and returns the SUNCT or SUNA subtype. These are short-lasting unilateral neuralgiform headache attacks. Attacks last 1-600 SECONDS, against 2-30 minutes for paroxysmal hemicrania and 15-180 minutes for cluster headache. A cranial autonomic sign is REQUIRED here - restlessness is not an alternative as it is in 3.1 and 3.2. Both conjunctival injection and tearing is SUNCT; one or neither is SUNA.',
     compute: sunctSunaIchd3,
     fields: [
-      { dom: 'ss-attacks', arg: 'attackCount', kind: 'number', required: false, label: 'Number of attacks', bound: 'hcg', boundScale: 0.01 },
+      { dom: 'ss-attacks', arg: 'attackCount', kind: 'number', required: false, label: 'Number of attacks', min: 0, max: 100000 },
       { dom: 'ss-pain', arg: 'moderateOrSevereUnilateral', kind: 'boolean', required: false, label: 'Moderate or severe one-sided trigeminal pain' },
       { dom: 'ss-seconds', arg: 'attackSeconds', kind: 'number', required: false, label: 'Attack duration, seconds', max: 86400 },
       { dom: 'ss-pattern', arg: 'stabbingPattern', kind: 'boolean', required: false, label: 'Stabs or saw-tooth pattern' },
