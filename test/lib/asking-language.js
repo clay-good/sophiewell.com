@@ -209,7 +209,25 @@ export const DISCLOSING = new RegExp([
   // and gives the side of the answer the entered figures support ("No units on hand were entered, so
   // only the ceiling is given"). Sections 1, 2 and 4 do not move, and neither empty-form sweep reads
   // DISCLOSING at all.
-  'no [a-z][a-z -]{0,40} (?:is|was|were) (?:entered|recorded)',
+  // spec-v1813: and the participles beside `entered` and `recorded`. The negative-existential sentence is
+  // about a TICK BOX or a SELECT as often as about a typed number, and the house writes it with the verb
+  // that fits the control -- "No strictly lobar hemorrhagic lesion and no white-matter feature were
+  // marked", "No absolute contraindication was ticked", "no locality was chosen", "no medication list is
+  // supplied". 28 such uses across lib/.
+  //
+  // `given` is deliberately NOT in the list, though it is the commonest of them at 181 uses: "No dose is
+  // given" is the tool declining to state an OUTPUT, not a reader leaving an input blank, and matching it
+  // would exempt a tile for withholding a number it was never going to print.
+  //
+  // Measured before adding, as the rule at the top requires: across every tile and every dropped field it
+  // moves exactly ONE row, `boston-caa` on the strictly lobar lesion, which answers "No strictly lobar
+  // hemorrhagic lesion and no white-matter feature were marked, so neither the probable nor the possible
+  // criteria are met" -- a tile naming both gaps and declining both tiers.
+  //   probe-omitted-field-decides   17 fields / 16 calculators -> 16 / 15  (section 1)
+  //   probe-omitted-item            144 -> 143
+  // probe-static-exemption still reports 0 rows, which is the check that this bought no exemption on text
+  // that was already there before a field was dropped.
+  'no [a-z][a-z -]{0,40} (?:is|was|were|are) (?:entered|recorded|marked|ticked|answered|supplied|chosen|selected|checked)',
   'what was entered',
   'does not rule', 'cannot yet rule', 'items assessed',
   // "3 of 6 components", "7 of 8 items", "0 of 1 criteria assessed"

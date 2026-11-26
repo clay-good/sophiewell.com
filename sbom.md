@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `96a0afc0b3cf8b63`
-Generated: 2026-11-26T10:21:31.582Z
+Build ID: `ae9aa226e949bbd4`
+Generated: 2026-11-26T10:57:07.755Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -821,7 +821,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/levine-edwards-v411.js` | 4146 | `5b8fad3241eb0819b4f66f2a3229cf0a7b2ae1452ca8ed9a928ae81e7f8514e8` |
 | `lib/levodopa-equivalent-dose-v1633.js` | 10098 | `df5a07fcf9f1ff50af8d6e27c494f804790194757af106e260a8534b9fb65160` |
 | `lib/levothyroxine-start-dose-v1633.js` | 9025 | `f61c9cbcb335ab9c1027bb1305d4daa034b73feee6e984b85d0bcb6a60a4a8cf` |
-| `lib/lf-mda-regimen-v1562.js` | 6942 | `ad9f9c6e24fccf39b78fd83e45f498a67265aea09afe782284496d01c8ea220a` |
+| `lib/lf-mda-regimen-v1562.js` | 7448 | `ca2791143d4975aefdee23a1c987f37524723ee94370c003935ca621832ccbc7` |
 | `lib/li-rads-v327.js` | 4931 | `fa89bbfeffee9ee672f964665b42bfe958158a0210f07848595585bbca9ba94c` |
 | `lib/lichtiger-index-v663.js` | 4881 | `24d3ca6685de0d141e38794783ce652154ec1242c8f33b0ec882423589af6ed4` |
 | `lib/lichtman-kienbock-v345.js` | 5091 | `f95e5094050b8293882779a0592ae97d7ece27c374e7a58bc8996b4b228b18a9` |

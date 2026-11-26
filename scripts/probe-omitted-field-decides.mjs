@@ -300,6 +300,54 @@ for (const tool of allCalculators()) {
   }
 }
 
+// spec-v1813: the FIRST section's rows, read, with the reason each one is right.
+//
+// Section 1 is the one that can hurt -- the omitted reading is `abnormal: false` and some value of the
+// missing field makes it true -- and it is small enough to hold at zero. The other three sections are a
+// prioritised reading list of 150-odd rows and stay that way; this ledger covers section 1 only, keyed by
+// the tile and the field, and `test/unit/finder-ledgers.test.js` drives `--only-ruled-out` so an unjudged
+// row fails in one direction and a judged row the probe no longer reaches fails in the other.
+//
+// Four of the fifteen are a UNIT select, and they are judged for one reason: each names in its answer the
+// unit it read the value as. That is the whole of what a tile owes here -- an agent that omits the key gets
+// the house default, and the reading says which one it used, so the figure can be checked against it.
+const JUDGED_RULED_OUT = {
+  'homa-ir|hir-unit': 'The band states the unit it read: "HOMA-IR 0.74 (insulin 6 uU/mL, glucose 50 mg/dL)"',
+  'calcium-phosphate-product|capo4-unit': 'It names the assumption AND the factor: "(no unit given; the '
+    + 'calcium and phosphate were read as mg/dL, and the same pair in mmol/L would be about 12.4 times '
+    + 'this)". The vocabulary does not match it because `given` is deliberately out of the disclosing list '
+    + '-- "No dose is given" is a tool withholding an output, not a reader leaving an input blank',
+  'rmi-ovarian|rm-var': 'The band names the variant it used in its first three characters: "RMI 1 = U(3) x '
+    + 'M(3) x CA-125(20) = 180", so a reader who wanted RMI 2 can see they did not get it',
+  'vitamin-d-level|vd-unit': 'It prints BOTH units for the level it read: "50 ng/mL (124.8 nmol/L)"',
+  'newborn-hypoglycemia-who|nh-unit': 'The band carries the unit it read the glucose in: "glucose 4.8 mmol/L '
+    + '(2.6 or more)", so a value entered in mg/dL is visibly not the one being judged',
+  'osha-lead-airborne-pel-shift|olp-measured': 'It reports the day\'s limit and ASKS for the measurement '
+    + 'rather than claiming compliance -- "Enter the measured TWA for the day to compare it with the limit '
+    + 'and the 30 µg/m³ action level". The ask is in the top-level note, which this probe skips',
+  'ischemia-time-clock|itc-limit': 'The limit is an optional extra: without it the tool gives the interval it '
+    + 'was asked for and makes no statement about any threshold',
+  'herd-immunity-threshold|hit-cov': 'The coverage reached is the optional comparison; without it the tool '
+    + 'gives the threshold and the coverage needed and compares nothing',
+  'rasburicase-dose|rbd-day': 'The day is optional and the dose does not depend on it. The course limit is '
+    + 'stated unconditionally in the first note -- "once daily for up to 5 days" -- so the warning the day '
+    + 'triggers is a restatement for a reader who entered one, not a fact withheld from a reader who did not',
+  'occupational-dose-limit-check|odl-tede': 'The band says how many doses the comparison is over -- "None of '
+    + 'the 1 entered is at its limit" -- so a reader who entered one of several sees the count they gave',
+  'occupational-dose-limit-check|odl-lens': 'The same count in the same sentence',
+  'iv-phosphate-order-check|ip-k': 'Its verdict is scoped to what it checked in the words of the band: "within '
+    + 'the label rows checked", and the potassium row is simply not among them when it is blank',
+  'cleanroom-class-check|cr-air': 'The particle-count verdict is the one asked for and is complete without the '
+    + 'air sample; with a sample the tool adds a second clause about it rather than changing the first',
+  'isotonicity-e-value|ie-vol': 'The final volume is optional for the sodium-chloride-equivalent reading the '
+    + 'tool gives, and its own label says so',
+  'loe-silness-gingival-index|gi-2': 'An index over counted surfaces: a surface count left out is zero '
+    + 'surfaces at that score, which is a real answer, and it leaves the denominator as the surfaces counted',
+};
+const JUDGED_ALL = process.argv.includes('--all');
+const ONLY_RULED_OUT = process.argv.includes('--only-ruled-out');
+const judgedSeen = new Set();
+
 function report(title, rows) {
   const tiles = new Set(rows.map((r) => r.id));
   console.log(`\n${title}: ${rows.length} field(s) across ${tiles.size} calculator(s)\n`);
@@ -310,9 +358,25 @@ function report(title, rows) {
   }
 }
 
+const unjudged = ruledOut.filter((r) => {
+  const key = `${r.id}|${r.field}`;
+  if (!JUDGED_RULED_OUT[key]) return true;
+  judgedSeen.add(key);
+  if (JUDGED_ALL) console.log(`JUDGED\t${key}\t${JUDGED_RULED_OUT[key]}`);
+  return false;
+});
+const stale = Object.keys(JUDGED_RULED_OUT).filter((k) => !judgedSeen.has(k));
+if (stale.length) {
+  console.log(`STALE-LEDGER: ${stale.length} judged row(s) this run no longer reaches: ${stale.join(', ')}.`);
+  console.log('A reason cannot outlive what it describes -- re-read the tile and remove the row.');
+}
+if (ONLY_RULED_OUT) {
+  report('RULED OUT FROM A SUBSET (read these first)', unjudged);
+  process.exit(0);
+}
 console.log('Dropping one field from each worked example, then asking whether any plausible');
 console.log('value of that field would have changed the verdict -- without the tile saying so.');
-report('RULED OUT FROM A SUBSET (read these first)', ruledOut);
+report('RULED OUT FROM A SUBSET (read these first)', unjudged);
 report('NO SEVERITY FLAG, AND THE VERDICT MOVED (read these next)', unflagged);
 report('VERDICT COULD CHANGE', couldChange);
 report('THE NUMBER IS THE VERDICT (no flag, no band -- read by rule 4 first)', numberIsVerdict);

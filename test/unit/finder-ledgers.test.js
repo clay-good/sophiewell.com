@@ -85,6 +85,19 @@ const FINDERS = [
     minJudged: 13,
   },
   {
+    probe: 'probe-omitted-field-decides.mjs',
+    args: ['--all', '--only-ruled-out'],
+    what: 'a tile that rules something out from a subset: the reading with a field omitted is `abnormal: false`, '
+      + 'and some value of that field would have made it true',
+    fix: 'Give the reading its footing (docs/spec-v1091.md, docs/spec-v1813.md), or add it to JUDGED_RULED_OUT '
+      + 'in the finder with the reason -- it names the value it assumed, the field is an optional extra, or the '
+      + 'verdict is scoped to what was entered',
+    // Its report is a count line and then two indented lines per row; a row is what is indented.
+    isFinding: (l) => l.startsWith('  '),
+    informational: [],
+    minJudged: 15,
+  },
+  {
     probe: 'probe-declared-cap-configs.mjs',
     what: 'a declared bound the library answers past in some configuration, so the page answers what the agent is refused',
     fix: 'Hoist the guard above the branch split with gradeFault (docs/spec-v1780.md), drop the declaration, '
@@ -252,7 +265,9 @@ for (const f of FINDERS) {
   // rows print with their reasons, and everything else is a finding.
   test(`${f.probe}: every row is judged or gone, no judgement is stale, and each reason reads`, () => {
     let out = '';
-    try { out = run(f.probe, ['--all']); } catch (err) { assert.fail(`the finder did not run: ${err.message}`); }
+    // spec-v1813: `args` for a finder whose ledger covers ONE section of a longer report; the rest of
+    // its sections are a reading list and are not gated.
+    try { out = run(f.probe, f.args || ['--all']); } catch (err) { assert.fail(`the finder did not run: ${err.message}`); }
     const lines = out.split('\n').filter((l) => l.trim() !== '');
     const judged = lines.filter((l) => l.startsWith('JUDGED'));
     const stale = lines.filter((l) => l.startsWith('STALE-LEDGER'));

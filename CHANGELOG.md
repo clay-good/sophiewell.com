@@ -76,6 +76,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The lymphatic-filariasis MDA regimen tool could call a person eligible without saying that severe illness,
+  which excludes them, had never been answered. The sentence that said so was the last thing the tool
+  worked out, and four shorter paths through it finished first -- including the one for a person under 90 cm
+  tall, who is moved to a different regimen rather than refused. It is now said on every reading that does
+  not refuse, and no longer said where albendazole is given alone and illness is not an exclusion.
 - Three calculators that answer on a partial set were said to be answering in silence, and they were not:
   the DALY burden, the antimicrobial-use SAAR and the compounding anticipatory limit each say in their
   first line that a figure was not entered and which side of the answer the rest supports. The internal
