@@ -24,7 +24,7 @@ export default [
     summary: 'ALBI-PLT score (Chen 2018): ALBI grade points plus platelet points (2–5); a score of 2 marks very low high-risk-varices risk (screening deferrable).',
     compute: F.albiPlt,
     fields: [
-      { dom: 'ap-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'µmol/L' },
+      { dom: 'ap-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'µmol/L', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'ap-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/L', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'ap-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],
@@ -45,7 +45,7 @@ export default [
     compute: F.amap,
     fields: [
       { dom: 'amap-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'amap-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'µmol/L' },
+      { dom: 'amap-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'µmol/L', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'amap-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/L', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'amap-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
       { dom: 'amap-male', arg: 'male', kind: 'bool', required: false, label: 'Male sex' },

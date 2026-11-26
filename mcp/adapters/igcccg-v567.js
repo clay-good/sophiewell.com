@@ -52,8 +52,7 @@ export default [
       },
       {
         dom: 'igcccg-afp', arg: 'afp', kind: 'number', unit: 'ng/mL', required: false,
-        label: `NONSEMINOMA ONLY. AFP, post-orchiectomy and pre-chemotherapy. Below ${I.AFP_INTERMEDIATE} good; ${I.AFP_INTERMEDIATE} to ${I.AFP_POOR} intermediate; above ${I.AFP_POOR} poor.`,
-      },
+        label: `NONSEMINOMA ONLY. AFP, post-orchiectomy and pre-chemotherapy. Below ${I.AFP_INTERMEDIATE} good; ${I.AFP_INTERMEDIATE} to ${I.AFP_POOR} intermediate; above ${I.AFP_POOR} poor.`, max: 10000000 },
       {
         dom: 'igcccg-hcg', arg: 'hcg', kind: 'number', unit: 'IU/L', required: false,
         label: `NONSEMINOMA ONLY. hCG in IU/L, NOT IU/mL, post-orchiectomy and pre-chemotherapy. Below ${I.HCG_INTERMEDIATE} good; ${I.HCG_INTERMEDIATE} to ${I.HCG_POOR} intermediate; above ${I.HCG_POOR} poor.`,

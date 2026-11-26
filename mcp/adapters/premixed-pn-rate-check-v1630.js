@@ -13,7 +13,7 @@ export default [
       { dom: 'pr-form', arg: 'formulation', kind: 'enum', required: true, values: PR.FORMULATION_OPTIONS.map((f) => f.value), label: 'Formulation (amino acid percent / dextrose percent)' },
       { dom: 'pr-weight', arg: 'weight', kind: 'number', required: true, label: 'Patient weight (adult)' },
       { dom: 'pr-wunit', arg: 'weightUnit', kind: 'enum', required: true, values: PR.WEIGHT_UNITS.map((u) => u.value), label: 'Weight unit' },
-      { dom: 'pr-rate', arg: 'rate', kind: 'number', required: false, label: 'Rate (or enter volume and hours)', unit: 'mL/hour' },
+      { dom: 'pr-rate', arg: 'rate', kind: 'number', required: false, label: 'Rate (or enter volume and hours)', unit: 'mL/hour', min: 0, exclusiveMin: true, max: 5000 },
       { dom: 'pr-vol', arg: 'volume', kind: 'number', required: false, label: 'Volume per day', unit: 'mL' },
       { dom: 'pr-hours', arg: 'hours', kind: 'number', required: false, label: 'Hours it runs over', unit: 'hours' },
     ],

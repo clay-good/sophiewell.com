@@ -27,8 +27,8 @@ export default [
     compute: F.adrenalCtWashout,
     fields: [
       { dom: 'aw-e', arg: 'enhanced', kind: 'number', label: 'Enhanced (portal-venous) HU' },
-      { dom: 'aw-d', arg: 'delayed', kind: 'number', label: 'Delayed (15 min) HU' },
-      { dom: 'aw-u', arg: 'unenhanced', kind: 'number', label: 'Unenhanced HU' },
+      { dom: 'aw-d', arg: 'delayed', kind: 'number', label: 'Delayed (15 min) HU', min: -200, max: 600 },
+      { dom: 'aw-u', arg: 'unenhanced', kind: 'number', label: 'Unenhanced HU', min: -200, max: 600 },
     ],
   },
   {
@@ -47,7 +47,7 @@ export default [
     summary: 'CT effective dose (AAPM Report 96): effective dose (mSv) = DLP × region-specific k conversion coefficient.',
     compute: F.ctEffectiveDose,
     fields: [
-      { dom: 'ct-dlp', arg: 'dlp', kind: 'number', label: 'Dose-length product (mGy·cm)' },
+      { dom: 'ct-dlp', arg: 'dlp', kind: 'number', label: 'Dose-length product (mGy·cm)', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'ct-region', arg: 'region', kind: 'enum', values: ['head', 'headneck', 'neck', 'chest', 'abdomen', 'pelvis', 'abdomenpelvis'], label: 'Body region' },
     ],
   },

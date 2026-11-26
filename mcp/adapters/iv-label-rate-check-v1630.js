@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'rc3-drug', arg: 'drug', kind: 'enum', required: true, values: RC.DRUG_OPTIONS.map((d) => d.value), label: 'Drug' },
       { dom: 'rc3-pop', arg: 'population', kind: 'enum', required: true, values: RC.POPULATIONS.map((p) => p.value), label: 'Adult or pediatric' },
-      { dom: 'rc3-dose', arg: 'dose', kind: 'number', required: true, label: 'Dose, in the drug\'s unit (mg, mg PE or mEq)' },
+      { dom: 'rc3-dose', arg: 'dose', kind: 'number', required: true, label: 'Dose, in the drug\'s unit (mg, mg PE or mEq)', min: 0, exclusiveMin: true, max: 1000000 },
       { dom: 'rc3-vol', arg: 'finalVolume', kind: 'number', required: true, label: 'Final volume', unit: 'mL', min: 0, exclusiveMin: true, max: 20000 },
       { dom: 'rc3-min', arg: 'minutes', kind: 'number', required: true, label: 'Infusion time', unit: 'minutes', min: 0, exclusiveMin: true, max: 2880 },
       { dom: 'rc3-set', arg: 'setting', kind: 'enum', required: false, values: RC.SETTINGS.map((s) => s.value), label: 'Setting (potassium: routine or urgent; calcium: bolus or continuous)' },

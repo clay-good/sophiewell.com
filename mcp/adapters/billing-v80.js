@@ -73,9 +73,9 @@ export default [
     formatResult: withUsd,
     fields: [
       { dom: 'an-base', arg: 'baseUnits', kind: 'number', required: true, label: 'Base units (ASA base for the procedure)', max: 1000 },
-      { dom: 'an-time', arg: 'timeMinutes', kind: 'number', required: true, label: 'Anesthesia time in minutes' },
+      { dom: 'an-time', arg: 'timeMinutes', kind: 'number', required: true, label: 'Anesthesia time in minutes', min: 0, max: 100000 },
       { dom: 'an-mod', arg: 'modifyingUnits', kind: 'number', label: 'Modifying units (physical status / qualifying circumstances)', max: 1000 },
-      { dom: 'an-cf', arg: 'conversionFactor', kind: 'number', required: true, label: 'Anesthesia conversion factor ($ per unit)' },
+      { dom: 'an-cf', arg: 'conversionFactor', kind: 'number', required: true, label: 'Anesthesia conversion factor ($ per unit)', min: 0, max: 100000 },
       // spec-v1143: this defaulted to `aa` (100%) in the library, so an agent
       // that omitted it was quoted twice a medically-directed payment. Required.
       { dom: 'an-dir', arg: 'medicalDirection', kind: 'enum', values: ['aa', 'qz', 'qy', 'qk', 'qx', 'ad'], required: true, label: 'Medical direction: aa, qz (100%), qy, qk, qx (50%), ad (flat 3 base units)' },

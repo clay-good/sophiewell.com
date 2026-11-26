@@ -20,8 +20,8 @@ export default [
     summary: 'Canadian humidex (Masterton & Richardson 1979): comfort index from air temperature and dewpoint (C).',
     compute: F.humidex,
     fields: [
-      { dom: 'hx-temp', arg: 'tempC', kind: 'number', required: true, label: 'Air temperature', unit: 'C' },
-      { dom: 'hx-dew', arg: 'dewpointC', kind: 'number', required: true, label: 'Dewpoint', unit: 'C' },
+      { dom: 'hx-temp', arg: 'tempC', kind: 'number', required: true, label: 'Air temperature', unit: 'C', min: -40, max: 60 },
+      { dom: 'hx-dew', arg: 'dewpointC', kind: 'number', required: true, label: 'Dewpoint', unit: 'C', min: -60, max: 60 },
     ],
   },
   {
@@ -39,9 +39,9 @@ export default [
     compute: F.wbgt,
     fields: [
       { dom: 'wbgt-setting', arg: 'setting', kind: 'enum', required: true, label: 'Setting', values: ['outdoor', 'indoor'] },
-      { dom: 'wbgt-nwb', arg: 'naturalWetBulb', kind: 'number', required: true, label: 'Natural wet-bulb temperature', unit: '°C' },
+      { dom: 'wbgt-nwb', arg: 'naturalWetBulb', kind: 'number', required: true, label: 'Natural wet-bulb temperature', unit: '°C', min: -20, max: 60 },
       { dom: 'wbgt-globe', arg: 'globe', kind: 'number', required: true, label: 'Globe temperature (outdoor only)', unit: '°C' },
-      { dom: 'wbgt-dry', arg: 'dryBulb', kind: 'number', required: true, label: 'Dry-bulb (air) temperature', unit: '°C' },
+      { dom: 'wbgt-dry', arg: 'dryBulb', kind: 'number', required: true, label: 'Dry-bulb (air) temperature', unit: '°C', min: -20, max: 70 },
     ],
   },
 ];

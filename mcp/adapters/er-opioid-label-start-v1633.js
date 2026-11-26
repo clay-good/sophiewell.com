@@ -12,7 +12,8 @@ export default [
     fields: [
       { dom: 'eos-product', arg: 'product', kind: 'enum', required: true, values: EO.PRODUCTS.map((d) => d.value), label: 'Product' },
       { dom: 'eos-med', arg: 'morphineEquivalentMg', kind: 'number', label: 'Butrans or Belbuca: prior total daily dose in oral morphine equivalents', unit: 'mg' },
-      ...EO.HYSINGLA_FACTORS.map((f) => ({ dom: `eos-${f.name}`, arg: f.arg, kind: 'number', label: `Hysingla ER: prior daily oral ${f.name}`, unit: 'mg' })),
+      // spec-v1798: the library refuses every one of these prior-opioid doses outside 0 to 5,000 mg.
+      ...EO.HYSINGLA_FACTORS.map((f) => ({ dom: `eos-${f.name}`, arg: f.arg, kind: 'number', label: `Hysingla ER: prior daily oral ${f.name}`, unit: 'mg', min: 0, max: 5000 })),
     ],
   },
 ];

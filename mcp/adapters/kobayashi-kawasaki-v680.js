@@ -12,7 +12,7 @@ export default [
     compute: kobayashiKawasaki,
     fields: [
       { dom: 'kob-na', arg: 'sodium', kind: 'number', unit: 'mmol/L', required: true, label: 'Serum sodium (mmol/L)', bound: 'sodium' },
-      { dom: 'kob-day', arg: 'illnessDay', kind: 'number', unit: 'days', required: true, label: 'Day of illness at start of treatment' },
+      { dom: 'kob-day', arg: 'illnessDay', kind: 'number', unit: 'days', required: true, label: 'Day of illness at start of treatment', min: 0, max: 60 },
       { dom: 'kob-ast', arg: 'ast', kind: 'number', unit: 'IU/L', required: true, label: 'AST (IU/L)', bound: 'ast' },
       { dom: 'kob-neut', arg: 'neutrophil', kind: 'number', unit: '%', required: true, label: 'Neutrophil percentage (%)', max: 100 },
       { dom: 'kob-crp', arg: 'crp', kind: 'number', unit: 'mg/dL', required: true, label: 'CRP (mg/dL)' },

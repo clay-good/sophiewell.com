@@ -12,7 +12,7 @@ export default [
       { dom: 'str-separations', arg: 'separations', kind: 'number', required: false, label: 'Separations in the period', min: 0, max: 1000000 },
       { dom: 'str-start', arg: 'startHeadcount', kind: 'number', required: false, label: 'Headcount at the start', min: 0, max: 1000000 },
       { dom: 'str-end', arg: 'endHeadcount', kind: 'number', required: false, label: 'Headcount at the end', min: 0, max: 1000000 },
-      { dom: 'str-budgeted', arg: 'budgeted', kind: 'number', required: false, label: 'Budgeted positions' },
+      { dom: 'str-budgeted', arg: 'budgeted', kind: 'number', required: false, label: 'Budgeted positions', min: 0, exclusiveMin: true, max: 1000000 },
       { dom: 'str-filled', arg: 'filled', kind: 'number', required: false, label: 'Filled positions', min: 0, max: 1000000 },
       { dom: 'str-spells-ended', arg: 'spellsEnded', kind: 'number', required: false, label: 'CMS method: employment spells ended in a 90-day gap' },
       { dom: 'str-spells', arg: 'eligibleSpells', kind: 'number', required: false, label: 'CMS method: eligible employment spells' },

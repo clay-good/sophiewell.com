@@ -47,7 +47,7 @@ export default [
     compute: F.bladderOutletObstructionIndex,
     fields: [
       { dom: 'boo-pdet', arg: 'pdet', kind: 'number', required: true, label: 'Detrusor pressure at max flow (PdetQmax)', unit: 'cmH2O', max: 300 },
-      { dom: 'boo-qmax', arg: 'qmax', kind: 'number', required: true, label: 'Maximum flow rate (Qmax)', unit: 'mL/s' },
+      { dom: 'boo-qmax', arg: 'qmax', kind: 'number', required: true, label: 'Maximum flow rate (Qmax)', unit: 'mL/s', min: 0, max: 60 },
     ],
   },
   {

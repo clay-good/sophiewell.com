@@ -32,7 +32,7 @@ export default [
     summary: 'Left-ventricular meridional wall stress (Laplace): pressure × radius ÷ (2 × wall thickness), the afterload term behind wall-thinning geometry.',
     compute: F.lvWallStress,
     fields: [
-      { dom: 'lvws-p', arg: 'p', kind: 'number', required: true, label: 'LV pressure', unit: 'mmHg' },
+      { dom: 'lvws-p', arg: 'p', kind: 'number', required: true, label: 'LV pressure', unit: 'mmHg', min: 0, exclusiveMin: true, max: 400 },
       { dom: 'lvws-r', arg: 'r', kind: 'number', required: true, label: 'LV internal radius', unit: 'cm', min: 0, exclusiveMin: true, max: 12 },
       { dom: 'lvws-h', arg: 'h', kind: 'number', required: true, label: 'Wall thickness', unit: 'cm' },
     ],

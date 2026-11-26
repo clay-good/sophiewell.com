@@ -12,8 +12,8 @@ export default [
     fields: [
       { dom: 'ac-unit', arg: 'unit', kind: 'enum', required: true, values: AC.UNITS.map((u) => u.value), label: 'Unit of the additive amount' },
       { dom: 'ac-per', arg: 'per', kind: 'enum', required: true, values: AC.PER.map((p) => p.value), label: 'State the strength per mL (mL) or per liter (L)' },
-      { dom: 'ac-nominal', arg: 'nominalVolume', kind: 'number', required: true, label: 'Nominal bag volume', unit: 'mL' },
-      { dom: 'ac-overfill', arg: 'overfill', kind: 'number', required: false, label: 'Overfill, from the manufacturer (blank if not known)', unit: 'mL' },
+      { dom: 'ac-nominal', arg: 'nominalVolume', kind: 'number', required: true, label: 'Nominal bag volume', unit: 'mL', min: 0, exclusiveMin: true, max: 1000000 },
+      { dom: 'ac-overfill', arg: 'overfill', kind: 'number', required: false, label: 'Overfill, from the manufacturer (blank if not known)', unit: 'mL', min: 0, max: 1000000 },
       { dom: 'ac-withdrawn', arg: 'withdrawn', kind: 'number', required: false, label: 'Volume withdrawn before adding (optional)', unit: 'mL' },
       { dom: 'ac-adds', arg: 'additives', kind: 'string', required: true, label: 'Additions of the drug, one per line: amount, then its volume in mL' },
       { dom: 'ac-other', arg: 'otherVolume', kind: 'number', required: false, label: 'Other volume added that holds none of the drug (optional)', unit: 'mL' },

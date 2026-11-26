@@ -10,7 +10,7 @@ export default [
     summary: 'A pharmacy\'s cost of dispensing per prescription, from its own costs. Adds staff, packaging, delivery and the allocated share of overhead, the categories in the federal dispensing fee definition (42 CFR 447.502), and divides by prescriptions. Shows the gap against the fee received and a break-even prescription count. No benchmark is supplied.',
     compute: CD.costOfDispensing,
     fields: [
-      { dom: 'cod-rx', arg: 'prescriptions', kind: 'number', required: true, label: 'Prescriptions dispensed in the period' },
+      { dom: 'cod-rx', arg: 'prescriptions', kind: 'number', required: true, label: 'Prescriptions dispensed in the period', min: 0, exclusiveMin: true, max: 100000000 },
       ...CD.CATEGORIES.map((c) => ({ dom: c.dom, arg: c.arg, kind: 'number', label: c.label, unit: 'dollars' })),
       { dom: 'cod-shared', arg: 'sharedCost', kind: 'number', label: 'Shared rent, utilities, equipment and systems', unit: 'dollars' },
       { dom: 'cod-alloc', arg: 'allocationPercent', kind: 'number', label: 'Percent of the shared cost allocated to the prescription department', unit: 'percent', max: 100 },

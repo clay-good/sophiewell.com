@@ -38,7 +38,7 @@ export default [
     compute: F.epvs,
     fields: [
       { dom: 'ep-hct', arg: 'hematocrit', kind: 'number', required: true, label: 'Hematocrit', unit: '%', min: 3, max: 100 },
-      { dom: 'ep-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
+      { dom: 'ep-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1, max: 30 },
     ],
   },
   {

@@ -11,8 +11,8 @@ export default [
     compute: (args) => RS.radiationDistanceShielding(args, new Date()),
     fields: [
       { dom: 'rds-rate', arg: 'rate', kind: 'number', required: true, label: 'Measured dose rate, per hour (any unit)' },
-      { dom: 'rds-distance', arg: 'distance', kind: 'number', label: 'Distance of the measurement' },
-      { dom: 'rds-new-distance', arg: 'newDistance', kind: 'number', label: 'New distance (same unit)' },
+      { dom: 'rds-distance', arg: 'distance', kind: 'number', label: 'Distance of the measurement', min: 0, exclusiveMin: true, max: 100000 },
+      { dom: 'rds-new-distance', arg: 'newDistance', kind: 'number', label: 'New distance (same unit)', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'rds-shield', arg: 'shield', kind: 'enum', values: RS.SHIELDS.map((s) => s.value), label: 'Lead shield: source' },
       { dom: 'rds-thickness', arg: 'thicknessCm', kind: 'number', label: 'Lead thickness', unit: 'cm', max: 100 },
       { dom: 'rds-hvl', arg: 'halfValueLayerCm', kind: 'number', label: 'Half-value layer, for another source', unit: 'cm' },

@@ -8,7 +8,7 @@ export default [
     summary: 'What a Part D drug costs through the year. Walks the deductible, 25% coinsurance and the out-of-pocket cap month by month.',
     compute: PC.partdYearCost,
     fields: [
-      { dom: 'pdy-cost', arg: 'monthlyCost', kind: 'number', required: true, label: 'Drug monthly cost (plan price)', unit: 'USD' },
+      { dom: 'pdy-cost', arg: 'monthlyCost', kind: 'number', required: true, label: 'Drug monthly cost (plan price)', unit: 'USD', min: 0, exclusiveMin: true, max: 1000000 },
       { dom: 'pdy-start', arg: 'startMonth', kind: 'number', required: true, label: 'First month filled, 1 to 12', min: 1, max: 12 },
       { dom: 'pdy-ded', arg: 'deductible', kind: 'number', required: false, label: 'Plan deductible, if lower than the maximum', unit: 'USD' },
       { dom: 'pdy-year', arg: 'year', kind: 'number', required: false, label: 'Plan year (blank for this year)' },

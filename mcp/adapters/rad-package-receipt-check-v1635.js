@@ -21,7 +21,7 @@ export default [
       { dom: 'rpr-emitter', arg: 'emitter', kind: 'enum', values: RR.EMITTERS.map((e) => e.value), label: 'Emitter type (for the wipe limit)' },
       { dom: 'rpr-cpm', arg: 'netCpm', kind: 'number', label: 'Wipe: net counts per minute', unit: 'cpm' },
       { dom: 'rpr-eff', arg: 'efficiencyPercent', kind: 'number', label: 'Wipe: counter efficiency', unit: '%', min: 0, exclusiveMin: true, max: 100 },
-      { dom: 'rpr-area', arg: 'areaCm2', kind: 'number', label: 'Wipe: area wiped', unit: 'cm²' },
+      { dom: 'rpr-area', arg: 'areaCm2', kind: 'number', label: 'Wipe: area wiped', unit: 'cm²', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'rpr-wipe-eff', arg: 'wipeEfficiencyPercent', kind: 'number', label: 'Wipe efficiency, if measured (the rule allows 10% to be assumed)', unit: '%' },
       { dom: 'rpr-surface', arg: 'surfaceMremH', kind: 'number', label: 'Dose rate at the package surface', unit: 'mrem/h' },
       { dom: 'rpr-one-meter', arg: 'oneMeterMremH', kind: 'number', label: 'Dose rate at 1 meter', unit: 'mrem/h' },

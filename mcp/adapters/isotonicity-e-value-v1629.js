@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'ie-mode', arg: 'mode', kind: 'enum', required: true, values: IE.MODES.map((m) => m.value), label: 'What to work out: the tonicity agent to add (agent), or the isotonic volume of water (white-vincent)' },
       { dom: 'ie-solutes', arg: 'solutes', kind: 'string', required: true, label: 'Solutes, one per line: weight in grams, then its sodium chloride equivalent (E-value)' },
-      { dom: 'ie-vol', arg: 'volumeMl', kind: 'number', required: false, label: 'Final volume (required for the agent; optional for White-Vincent)', unit: 'mL' },
+      { dom: 'ie-vol', arg: 'volumeMl', kind: 'number', required: false, label: 'Final volume (required for the agent; optional for White-Vincent)', unit: 'mL', min: 0, exclusiveMin: true, max: 10000000 },
       { dom: 'ie-agent', arg: 'agentE', kind: 'number', required: false, label: 'Agent mode: E-value of the tonicity agent (1 for sodium chloride itself)' },
     ],
   },

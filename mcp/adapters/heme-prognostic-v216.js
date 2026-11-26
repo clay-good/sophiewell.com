@@ -69,9 +69,9 @@ export default [
     summary: 'Lymphocyte doubling time: from two absolute lymphocyte counts and the interval, the projected time to double the lymphocyte count; ≤ 12 months marks a worse CLL prognosis.',
     compute: F.ldt,
     fields: [
-      { dom: 'ldt-alc1', arg: 'alc1', kind: 'number', required: true, label: 'Earlier absolute lymphocyte count', unit: '×10⁹/L' },
-      { dom: 'ldt-alc2', arg: 'alc2', kind: 'number', required: true, label: 'Later absolute lymphocyte count', unit: '×10⁹/L' },
-      { dom: 'ldt-int', arg: 'intervalMonths', kind: 'number', required: true, label: 'Interval between counts', unit: 'months' },
+      { dom: 'ldt-alc1', arg: 'alc1', kind: 'number', required: true, label: 'Earlier absolute lymphocyte count', unit: '×10⁹/L', min: 0, exclusiveMin: true, max: 100000 },
+      { dom: 'ldt-alc2', arg: 'alc2', kind: 'number', required: true, label: 'Later absolute lymphocyte count', unit: '×10⁹/L', min: 0, exclusiveMin: true, max: 100000 },
+      { dom: 'ldt-int', arg: 'intervalMonths', kind: 'number', required: true, label: 'Interval between counts', unit: 'months', min: 0, exclusiveMin: true, max: 600 },
     ],
   },
   {

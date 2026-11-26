@@ -76,6 +76,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- 171 more input ranges are stated, which brings it to 2,667 of 5,189 number fields. These were hidden by
+  arithmetic coincidence: the check that looks for unstated ranges was treating a heart rate guarded 10 to
+  300 as "the hematocrit range, times 3.33", and an age capped at 70 as the base-excess range, because the
+  numbers happened to line up. A range borrowed from elsewhere now has to be one the field's own words
+  name.
+- A refusal on the agent surface now names a field the way the page does -- "Earlier absolute lymphocyte
+  count (x10^9/L) must be from 0 (exclusive) to 100000" rather than naming the field by its internal key.
 - All 163 of those stated ranges are gone, and not one published number changed. The ranges were right all
   along: a plausible range for serum hCG, divided by a hundred, is exactly the ceiling a CRP was already
   guarded by, so the declaration was the right number written as a sum nobody could read. Each now states

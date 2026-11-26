@@ -38,8 +38,7 @@ export default [
       },
       {
         dom: 'erez-pt', arg: 'ptDifference', kind: 'number', unit: 'seconds', required: true,
-        label: `Prothrombin time DIFFERENCE IN SECONDS: the patient value MINUS the laboratory control. NOT a ratio and NOT an INR - passing either adds 25 unearned points [${E.PT_DIFFERENCE_ROWS.map((r) => `${r.text} = ${r.points}`).join('; ')}]`,
-      },
+        label: `Prothrombin time DIFFERENCE IN SECONDS: the patient value MINUS the laboratory control. NOT a ratio and NOT an INR - passing either adds 25 unearned points [${E.PT_DIFFERENCE_ROWS.map((r) => `${r.text} = ${r.points}`).join('; ')}]`, max: 60 },
       {
         dom: 'erez-fibrinogen', arg: 'fibrinogen', kind: 'number', unit: 'g/L', required: true, min: 0, max: 20,
         label: `Fibrinogen [${E.FIBRINOGEN_ROWS.map((r) => `${r.text} = ${r.points}`).join('; ')}]`,

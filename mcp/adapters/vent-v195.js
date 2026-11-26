@@ -20,7 +20,7 @@ export default [
     summary: 'Ventilatory ratio (Sinha 2009): measured minute ventilation × PaCO₂ divided by predicted values; a ratio above 1 marks impaired CO₂ clearance / a larger dead-space fraction.',
     compute: F.ventilatoryRatio,
     fields: [
-      { dom: 'vr-ve', arg: 've', kind: 'number', required: true, label: 'Measured minute ventilation', unit: 'mL/min' },
+      { dom: 'vr-ve', arg: 've', kind: 'number', required: true, label: 'Measured minute ventilation', unit: 'mL/min', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'vr-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO₂', unit: 'mmHg', min: 0, exclusiveMin: true, max: 300 },
       { dom: 'vr-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
       { dom: 'vr-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex (for predicted body weight)' },

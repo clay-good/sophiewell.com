@@ -13,8 +13,8 @@ export default [
       { dom: 'hps-liverDisease', arg: 'liverDisease', kind: 'boolean', required: true, label: 'Liver disease or portal hypertension' },
       { dom: 'hps-ipvd', arg: 'ipvd', kind: 'boolean', required: true, label: 'Intrapulmonary vascular dilatation shown' },
       { dom: 'hps-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', min: 0, exclusiveMin: true, max: 120 },
-      { dom: 'hps-pao2', arg: 'pao2', kind: 'number', required: true, label: 'Room-air arterial oxygen, PaO2 (mmHg)' },
-      { dom: 'hps-aaGradient', arg: 'aaGradient', kind: 'number', required: true, label: 'Room-air alveolar-arterial oxygen gradient (mmHg)' },
+      { dom: 'hps-pao2', arg: 'pao2', kind: 'number', required: true, label: 'Room-air arterial oxygen, PaO2 (mmHg)', min: 0, exclusiveMin: true, max: 600 },
+      { dom: 'hps-aaGradient', arg: 'aaGradient', kind: 'number', required: true, label: 'Room-air alveolar-arterial oxygen gradient (mmHg)', min: -10, max: 600 },
     ],
   },
 ];

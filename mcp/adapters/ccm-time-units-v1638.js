@@ -10,7 +10,7 @@ export default [
     compute: CC.ccmTimeUnits,
     fields: [
       { dom: 'ccm-kind', arg: 'kind', kind: 'enum', required: true, values: CC.KINDS.map((k) => k.value), label: 'Codes being reported' },
-      { dom: 'ccm-staff', arg: 'staffMinutes', kind: 'number', label: 'Clinical staff time this calendar month', unit: 'minutes' },
+      { dom: 'ccm-staff', arg: 'staffMinutes', kind: 'number', label: 'Clinical staff time this calendar month', unit: 'minutes', min: 0, max: 6000 },
       { dom: 'ccm-own', arg: 'practitionerMinutes', kind: 'number', label: 'Time spent personally by the billing practitioner', unit: 'minutes' },
     ],
   },

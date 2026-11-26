@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'tpc-class', arg: 'drugClass', kind: 'enum', required: true, values: TC.CLASSES.map((d) => d.value), label: 'Drug class' },
       { dom: 'tpc-duration', arg: 'duration', kind: 'enum', values: TC.DURATIONS.map((d) => d.value), label: 'Opioids: taken for 1 year or more, or less' },
-      { dom: 'tpc-start', arg: 'startDose', kind: 'number', required: true, label: 'Starting daily dose' },
+      { dom: 'tpc-start', arg: 'startDose', kind: 'number', required: true, label: 'Starting daily dose', min: 0, exclusiveMin: true, max: 1000000 },
       { dom: 'tpc-unit', arg: 'unit', kind: 'enum', required: true, values: TC.UNITS.map((d) => d.value), label: 'Dose unit' },
       { dom: 'tpc-mode', arg: 'mode', kind: 'enum', required: true, values: TC.MODES.map((d) => d.value), label: 'How each step is taken' },
       { dom: 'tpc-reduction', arg: 'reduction', kind: 'number', required: true, label: 'Reduction per step (percent, or the fixed amount)' },
@@ -21,7 +21,7 @@ export default [
       // the agent surface and accepted on the page.
       { dom: 'tpc-interval', arg: 'intervalDays', kind: 'number', required: true, label: 'Days between steps', unit: 'days', min: 1, max: 365 },
       { dom: 'tpc-date', arg: 'startDate', kind: 'string', required: true, label: 'Start date (YYYY-MM-DD)' },
-      { dom: 'tpc-smallest', arg: 'smallestDose', kind: 'number', required: true, label: 'Smallest dose that can be dispensed (steps round down to multiples of it)' },
+      { dom: 'tpc-smallest', arg: 'smallestDose', kind: 'number', required: true, label: 'Smallest dose that can be dispensed (steps round down to multiples of it)', min: 0, exclusiveMin: true, max: 1000000 },
       { dom: 'tpc-stop', arg: 'stopTarget', kind: 'number', label: 'Stop target dose (optional)' },
       { dom: 'tpc-strengths', arg: 'strengths', kind: 'string', label: 'Tablet strengths stocked in mg, separated by commas (optional, for tablet counts)' },
       { dom: 'tpc-pauses', arg: 'pauses', kind: 'string', label: 'Pauses (optional), one per line: date the pause begins, then its length in days' },

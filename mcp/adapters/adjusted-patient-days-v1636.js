@@ -9,7 +9,7 @@ export default [
     summary: 'Adjusted patient days by the federal worksheet: inpatient days plus outpatient revenue divided by the revenue per inpatient day. With pharmacy worked hours or drug expense it adds hours and cost per adjusted day. It uses gross patient revenues and shows the outpatient share that drove the adjustment.',
     compute: (args) => AP.adjustedPatientDays(args),
     fields: [
-      { dom: 'apd-days', arg: 'inpatientDays', kind: 'number', required: true, label: 'Inpatient days' },
+      { dom: 'apd-days', arg: 'inpatientDays', kind: 'number', required: true, label: 'Inpatient days', min: 0, exclusiveMin: true, max: 100000000 },
       { dom: 'apd-inpatient', arg: 'inpatientRevenue', kind: 'number', required: true, label: 'Gross inpatient revenue', unit: 'USD' },
       { dom: 'apd-outpatient', arg: 'outpatientRevenue', kind: 'number', required: true, label: 'Gross outpatient revenue', unit: 'USD' },
       { dom: 'apd-hours', arg: 'workedHours', kind: 'number', label: 'Pharmacy worked hours (optional)' },

@@ -8,7 +8,7 @@ export default [
     summary: 'Reads the lateral center-edge angle of Wiberg from an AP pelvic radiograph against published hip dysplasia bands. Under 20 degrees is dysplastic, 20 to 25 borderline (18 to 25 in some studies), and 25 to 39 normal.',
     compute: LC.lateralCenterEdgeAngle,
     fields: [
-      { dom: 'lcea-angle', arg: 'angle', kind: 'number', required: true, label: 'Lateral center-edge angle', unit: 'degrees' },
+      { dom: 'lcea-angle', arg: 'angle', kind: 'number', required: true, label: 'Lateral center-edge angle', unit: 'degrees', min: -20, max: 70 },
     ],
   },
 ];

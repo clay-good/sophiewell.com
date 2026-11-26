@@ -26,7 +26,7 @@ export default [
     summary: 'Kawasaki disease criteria (AHA 2017): fever ≥ 5 days + ≥ 4 of 5 principal features = classic KD; the incomplete-KD pathway uses CRP/ESR and supplementary labs when 2-3 features are present.',
     compute: F.kawasakiCriteria,
     fields: [
-      { dom: 'kaw-fever', arg: 'feverDays', kind: 'number', required: true, label: 'Fever duration', unit: 'days' },
+      { dom: 'kaw-fever', arg: 'feverDays', kind: 'number', required: true, label: 'Fever duration', unit: 'days', min: 0, max: 60 },
       ...KAW_PRINCIPAL,
       { dom: 'kaw-crp', arg: 'crp', kind: 'number', label: 'CRP', unit: 'mg/dL' },
       { dom: 'kaw-esr', arg: 'esr', kind: 'number', label: 'ESR', unit: 'mm/hr' },

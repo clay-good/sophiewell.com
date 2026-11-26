@@ -16,7 +16,7 @@ export default [
       { dom: 'mvs-mva', arg: 'valveArea', kind: 'number', required: false, label: 'Mitral valve area', unit: 'square cm', max: 8 },
       { dom: 'mvs-pht', arg: 'pressureHalfTime', kind: 'number', required: false, label: 'Diastolic pressure half-time', unit: 'ms', max: 800 },
       { dom: 'mvs-anat', arg: 'anatomy', kind: 'enum', values: ['doming', 'fusion'], required: false, label: 'Rheumatic changes: doming only, or commissural fusion' },
-      { dom: 'mvs-mg', arg: 'meanGradient', kind: 'number', required: false, label: 'Mean mitral gradient, recorded but not used to stage', unit: 'mmHg' },
+      { dom: 'mvs-mg', arg: 'meanGradient', kind: 'number', required: false, label: 'Mean mitral gradient, recorded but not used to stage', unit: 'mmHg', min: 0, max: 60 },
       { dom: 'mvs-hr', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate, for reading the gradient', unit: 'beats per minute' },
       { dom: 'mvs-sx', arg: 'symptoms', kind: 'boolean', required: false, label: 'Reduced exercise tolerance or exertional breathlessness' },
     ],

@@ -10,9 +10,9 @@ export default [
     compute: TT.twoByTwoEffect,
     fields: [
       { dom: 'tte-a', arg: 'events1', kind: 'number', required: true, label: 'Group 1 (treated or exposed): events', min: 0, max: 10000000 },
-      { dom: 'tte-n1', arg: 'total1', kind: 'number', required: true, label: 'Group 1: total' },
+      { dom: 'tte-n1', arg: 'total1', kind: 'number', required: true, label: 'Group 1: total', min: 0, exclusiveMin: true, max: 10000000 },
       { dom: 'tte-c', arg: 'events2', kind: 'number', required: true, label: 'Group 2 (comparison): events', min: 0, max: 10000000 },
-      { dom: 'tte-n2', arg: 'total2', kind: 'number', required: true, label: 'Group 2: total' },
+      { dom: 'tte-n2', arg: 'total2', kind: 'number', required: true, label: 'Group 2: total', min: 0, exclusiveMin: true, max: 10000000 },
     ],
   },
 ];

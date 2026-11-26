@@ -9,11 +9,11 @@ export default [
     summary: 'Hospital occupancy, average daily census, average length of stay and bed turnover. Beds and discharges are counted as the CMS cost report defines them, including a mid-period bed change.',
     compute: BED.bedOccupancyAlos,
     fields: [
-      { dom: 'boa-beds', arg: 'beds', kind: 'number', required: false, label: 'Beds' },
+      { dom: 'boa-beds', arg: 'beds', kind: 'number', required: false, label: 'Beds', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'boa-days', arg: 'days', kind: 'number', required: false, label: 'Days in the period', min: 0, exclusiveMin: true, max: 3660 },
       { dom: 'boa-periods', arg: 'bedPeriods', kind: 'string', required: false, label: 'When the bed count changed, one line per part: beds, days' },
       { dom: 'boa-ip-days', arg: 'inpatientDays', kind: 'number', required: true, label: 'Inpatient days', min: 0, max: 100000000 },
-      { dom: 'boa-discharges', arg: 'discharges', kind: 'number', required: false, label: 'Discharges, including deaths, excluding newborns and DOAs' },
+      { dom: 'boa-discharges', arg: 'discharges', kind: 'number', required: false, label: 'Discharges, including deaths, excluding newborns and DOAs', min: 0, exclusiveMin: true, max: 10000000 },
     ]
   },
 ];

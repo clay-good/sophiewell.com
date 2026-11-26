@@ -28,7 +28,7 @@ export default [
     summary: 'Timed Up and Go (Podsiadlo 1991): seconds to rise, walk 3 m, turn, and sit; ≥ 12 s meets the CDC STEADI increased-fall-risk threshold.',
     compute: F.tug,
     fields: [
-      { dom: 'tug-secs', arg: 'seconds', kind: 'number', required: true, label: 'Time (seconds)' },
+      { dom: 'tug-secs', arg: 'seconds', kind: 'number', required: true, label: 'Time (seconds)', min: 0, max: 600 },
     ],
   },
   {

@@ -229,7 +229,14 @@ export function validateInputs(inputs, fields) {
         // spec-v1728: a one-sided range read "from 0 to undefined".
         const range = range0.min !== null && range0.max !== null ? `from ${lo} to ${hi}`
           : (range0.min !== null ? `at least ${lo}` : `at most ${hi}`);
-        return { valid: false, code: 'OUT_OF_RANGE', field: f.dom, message: `"${f.dom}" must be ${range}; got ${n}.` };
+        // spec-v1798: NAME THE FIELD the way the reader's page names it, not by its dom key. spec-v1248 set
+        // that rule for this exact tool -- `lymphocyte-doubling-time` must say "Earlier absolute lymphocyte
+        // count" and not `"ldt-alc1"` -- and the rule was being kept only by the library, so declaring a
+        // range on such a field quietly replaced a named refusal with an anonymous one. A long label is no
+        // use in a sentence, so the key stands in above sixty characters.
+        const label = typeof f.label === 'string' && f.label.length <= 60
+          ? `${f.label}${f.unit ? ` (${f.unit})` : ''}` : `"${f.dom}"`;
+        return { valid: false, code: 'OUT_OF_RANGE', field: f.dom, message: `${label} must be ${range}; got ${n}.` };
       }
     } else if (f.kind === 'bool') {
       if (!isBoolLike(v)) return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be a boolean.` };

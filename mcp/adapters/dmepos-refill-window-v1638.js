@@ -10,8 +10,8 @@ export default [
     compute: DR.dmeposRefillWindow,
     fields: [
       { dom: 'drw-last', arg: 'lastService', kind: 'string', label: 'Date of the last delivery or shipment (YYYY-MM-DD)' },
-      { dom: 'drw-qty', arg: 'quantity', kind: 'number', label: 'Quantity delivered' },
-      { dom: 'drw-use', arg: 'dailyUse', kind: 'number', label: 'Daily use' },
+      { dom: 'drw-qty', arg: 'quantity', kind: 'number', label: 'Quantity delivered', min: 0, exclusiveMin: true, max: 1000000 },
+      { dom: 'drw-use', arg: 'dailyUse', kind: 'number', label: 'Daily use', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'drw-end', arg: 'expectedEnd', kind: 'string', label: 'Or the expected end of the current supply (YYYY-MM-DD)' },
       { dom: 'drw-contact', arg: 'contacted', kind: 'string', label: 'Date the supplier contacted the beneficiary (YYYY-MM-DD)' },
       { dom: 'drw-planned', arg: 'plannedService', kind: 'string', label: 'Planned delivery or shipping date (YYYY-MM-DD)' },

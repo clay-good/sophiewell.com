@@ -12,9 +12,9 @@ export default [
     compute: F.meanAirwayPressure,
     fields: [
       { dom: 'maw-pip', arg: 'pip', kind: 'number', required: true, label: 'Peak inspiratory pressure (PIP)', unit: 'cmH₂O', min: 0, exclusiveMin: true, max: 120 },
-      { dom: 'maw-peep', arg: 'peep', kind: 'number', required: true, label: 'PEEP', unit: 'cmH₂O' },
+      { dom: 'maw-peep', arg: 'peep', kind: 'number', required: true, label: 'PEEP', unit: 'cmH₂O', min: 0, max: 60 },
       { dom: 'maw-ti', arg: 'ti', kind: 'number', required: true, label: 'Inspiratory time (Ti)', unit: 's', min: 0, exclusiveMin: true, max: 30 },
-      { dom: 'maw-te', arg: 'te', kind: 'number', required: true, label: 'Expiratory time (Te)', unit: 's' },
+      { dom: 'maw-te', arg: 'te', kind: 'number', required: true, label: 'Expiratory time (Te)', unit: 's', min: 0, exclusiveMin: true, max: 60 },
     ],
   },
   {
@@ -31,7 +31,7 @@ export default [
     summary: 'Toe-brachial index (Aboyans 2012): toe systolic / higher brachial systolic pressure; < 0.70 supports peripheral arterial disease.',
     compute: F.toeBrachialIndex,
     fields: [
-      { dom: 'tbi-toe', arg: 'toe', kind: 'number', required: true, label: 'Toe systolic pressure', unit: 'mmHg' },
+      { dom: 'tbi-toe', arg: 'toe', kind: 'number', required: true, label: 'Toe systolic pressure', unit: 'mmHg', min: 0, exclusiveMin: true, max: 400 },
       { dom: 'tbi-brachial', arg: 'brachial', kind: 'number', required: true, label: 'Brachial systolic pressure', unit: 'mmHg', min: 20, max: 400 },
     ],
   },

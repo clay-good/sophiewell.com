@@ -12,7 +12,7 @@ export default [
     compute: AE.antidepressantFluoxetineEquivalent,
     fields: [
       { dom: 'afe-drug', arg: 'drug', kind: 'enum', required: true, values: AE.DRUGS.map((d) => d.value), label: 'Antidepressant' },
-      { dom: 'afe-dose', arg: 'dailyDose', kind: 'number', required: true, label: 'Daily dose', unit: 'mg' },
+      { dom: 'afe-dose', arg: 'dailyDose', kind: 'number', required: true, label: 'Daily dose', unit: 'mg', min: 0, exclusiveMin: true, max: 5000 },
     ],
   },
 ];

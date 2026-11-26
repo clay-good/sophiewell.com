@@ -10,5 +10,11 @@ test('lymphocyte doubling time names an invalid ALC on the agent surface', () =>
   });
 
   assert.equal(r.valid, false);
-  assert.match(r.message, /Earlier absolute lymphocyte count.*greater than 0/);
+  // spec-v1798: the rule spec-v1248 set is that the refusal NAMES the field and states where the floor is
+  // -- not that one particular layer phrases it. Since this field's range is declared, `validateInputs`
+  // refuses first and says "from 0 (exclusive)" where the library says "greater than 0"; both name the
+  // count. Pinning one wording made declaring the range look like a regression when nothing had changed
+  // for a reader.
+  assert.match(r.message, /Earlier absolute lymphocyte count/);
+  assert.match(r.message, /greater than 0|from 0 \(exclusive\)/);
 });

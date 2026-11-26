@@ -11,7 +11,7 @@ export default [
     fields: [
       { dom: 'tat-minutes', arg: 'minutes', kind: 'string', required: true, label: 'Turnaround times in minutes, one per line' },
       { dom: 'tat-pct', arg: 'percentile', kind: 'number', required: false, label: 'Percentile (default 90)' },
-      { dom: 'tat-target', arg: 'target', kind: 'number', required: false, label: 'The laboratory\'s target in minutes (optional)' },
+      { dom: 'tat-target', arg: 'target', kind: 'number', required: false, label: 'The laboratory\'s target in minutes (optional)', min: 0, exclusiveMin: true, max: 1000000 },
     ]
   },
 ];

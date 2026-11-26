@@ -9,7 +9,7 @@ export default [
     compute: CC.copayCardRunout,
     fields: [
       { dom: 'ccr-plan', arg: 'planType', kind: 'enum', required: true, label: 'Plan type', values: CC.PLAN_TYPES.map((x) => x.value) },
-      { dom: 'ccr-cost', arg: 'costPerFill', kind: 'number', required: true, label: 'Drug cost per fill (plan price)', unit: 'USD' },
+      { dom: 'ccr-cost', arg: 'costPerFill', kind: 'number', required: true, label: 'Drug cost per fill (plan price)', unit: 'USD', min: 0, exclusiveMin: true, max: 10000000 },
       { dom: 'ccr-fills', arg: 'fills', kind: 'number', required: true, label: 'Fills a year', min: 1, max: 52 },
       { dom: 'ccr-card', arg: 'cardMax', kind: 'number', required: true, label: 'Copay card annual maximum', unit: 'USD', min: 0, max: 10000000 },
       { dom: 'ccr-perfill', arg: 'perFillMax', kind: 'number', required: false, label: 'Copay card per-fill maximum', unit: 'USD' },

@@ -14,7 +14,7 @@ export default [
     fields: [
       { dom: 'crusade-hct', arg: 'hct', kind: 'number', required: true, label: 'Baseline hematocrit', unit: '%', min: 3 },
       { dom: 'crusade-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min', min: 0, exclusiveMin: true, max: 300 },
-      { dom: 'crusade-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10 },
+      { dom: 'crusade-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10, max: 300 },
       { dom: 'crusade-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex' },
       { dom: 'crusade-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20, max: 320 },
       { dom: 'crusade-chf', arg: 'chf', kind: 'bool', required: false, label: 'Signs of heart failure at presentation' },
@@ -52,7 +52,7 @@ export default [
     summary: 'TIMI Risk Index (Wiviott 2006; Morrow 2001): heart rate × (age/10)² / systolic BP; a higher index marks higher 30-day and long-term mortality across the published quintiles.',
     compute: F.timiRiskIndex,
     fields: [
-      { dom: 'tri-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10 },
+      { dom: 'tri-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10, max: 300 },
       { dom: 'tri-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'tri-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20, max: 320 },
     ],

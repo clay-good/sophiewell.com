@@ -12,10 +12,10 @@ export default [
       { dom: 'pbj-rn', arg: 'rnHours', kind: 'number', required: true, label: 'RN hours (job codes 5 to 7)', min: 0, max: 100000000 },
       { dom: 'pbj-lpn', arg: 'lpnHours', kind: 'number', required: true, label: 'LPN hours (job codes 8 and 9)', min: 0, max: 100000000 },
       { dom: 'pbj-aide', arg: 'aideHours', kind: 'number', required: true, label: 'Nurse aide hours (job codes 10 to 12)', min: 0, max: 100000000 },
-      { dom: 'pbj-census', arg: 'census', kind: 'number', required: true, label: 'Resident census, summed over the days' },
+      { dom: 'pbj-census', arg: 'census', kind: 'number', required: true, label: 'Resident census, summed over the days', min: 0, exclusiveMin: true, max: 100000000 },
       { dom: 'pbj-wk-nurse', arg: 'weekendNurseHours', kind: 'number', required: false, label: 'Weekend nurse hours (job codes 5 to 12)', min: 0, max: 100000000 },
       { dom: 'pbj-wk-aide', arg: 'weekendAideHours', kind: 'number', required: false, label: 'Weekend nurse aide hours (job codes 10 to 12)', min: 0, max: 100000000 },
-      { dom: 'pbj-wk-census', arg: 'weekendCensus', kind: 'number', required: false, label: 'Weekend resident census, summed' },
+      { dom: 'pbj-wk-census', arg: 'weekendCensus', kind: 'number', required: false, label: 'Weekend resident census, summed', min: 0, exclusiveMin: true, max: 100000000 },
       { dom: 'pbj-no-rn', arg: 'daysWithoutRn', kind: 'number', required: false, label: 'Days with residents and no RN hours' },
     ]
   },

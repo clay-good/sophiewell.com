@@ -11,7 +11,7 @@ export default [
       { dom: 're-unit', arg: 'unit', kind: 'enum', required: true, values: RE.UNITS.map((u) => u.value), label: 'Amounts in' },
       { dom: 're-total', arg: 'total', kind: 'number', required: true, label: 'Total to infuse', min: 0.01, max: 1000000 },
       { dom: 're-start', arg: 'startRate', kind: 'number', required: true, label: 'Starting rate per hour', min: 0.01, max: 100000 },
-      { dom: 're-inc', arg: 'increment', kind: 'number', required: true, label: 'Increase per step, per hour' },
+      { dom: 're-inc', arg: 'increment', kind: 'number', required: true, label: 'Increase per step, per hour', min: 0, max: 100000 },
       { dom: 're-every', arg: 'interval', kind: 'number', required: true, label: 'Minutes between increases', unit: 'min', min: 1, max: 1440 },
       { dom: 're-max', arg: 'maxRate', kind: 'number', required: true, label: 'Maximum rate per hour', min: 0.01, max: 100000 },
       { dom: 're-time', arg: 'startTime', kind: 'string', required: false, label: 'Start time (YYYY-MM-DDTHH:MM)' },

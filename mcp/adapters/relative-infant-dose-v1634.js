@@ -10,11 +10,11 @@ export default [
     summary: 'Relative infant dose and estimated infant dosage through breast milk. From a measured milk concentration, or a milk-plasma ratio with the maternal plasma concentration, it applies the FDA draft guidance formulas at milk intakes of 150 and 200 mL/kg a day and divides by the weight-adjusted maternal dosage. The guidance gives no cutoff, and none is applied.',
     compute: RD.relativeInfantDose,
     fields: [
-      { dom: 'rid-milk', arg: 'milkConcentration', kind: 'number', label: 'Average milk concentration (or use the ratio and plasma concentration)' },
+      { dom: 'rid-milk', arg: 'milkConcentration', kind: 'number', label: 'Average milk concentration (or use the ratio and plasma concentration)', min: 0, exclusiveMin: true, max: 10000000 },
       { dom: 'rid-mp', arg: 'mpRatio', kind: 'number', label: 'Milk-plasma ratio' },
       { dom: 'rid-plasma', arg: 'plasmaConcentration', kind: 'number', label: 'Average maternal plasma concentration' },
       { dom: 'rid-unit', arg: 'unit', kind: 'enum', required: true, values: RD.UNITS.map((u) => u.value), label: 'Concentration unit' },
-      { dom: 'rid-dose', arg: 'maternalDose', kind: 'number', required: true, label: 'Maternal dose', unit: 'mg/day' },
+      { dom: 'rid-dose', arg: 'maternalDose', kind: 'number', required: true, label: 'Maternal dose', unit: 'mg/day', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'rid-weight', arg: 'maternalWeight', kind: 'number', required: true, label: 'Maternal weight', unit: 'kg', min: 20, max: 400 },
       { dom: 'rid-approved', arg: 'approvedInfantDose', kind: 'number', label: 'Approved infant dose (optional)', unit: 'mg/kg/day' },
     ],

@@ -13,7 +13,7 @@ export default [
       { dom: 'vid-pop', arg: 'population', kind: 'enum', required: true, values: VI.POPULATIONS.map((p) => p.value), label: 'Population' },
       { dom: 'vid-weight', arg: 'weight', kind: 'number', required: true, label: 'Actual body weight', unit: 'kg', min: 0.4, max: 300 },
       { dom: 'vid-crcl', arg: 'crcl', kind: 'number', label: 'Adults: creatinine clearance', unit: 'mL/min', max: 250 },
-      { dom: 'vid-load', arg: 'loadPerKg', kind: 'number', label: 'Loading dose (adults; optional in children)', unit: 'mg/kg' },
+      { dom: 'vid-load', arg: 'loadPerKg', kind: 'number', label: 'Loading dose (adults; optional in children)', unit: 'mg/kg', min: 0, exclusiveMin: true, max: 60 },
       { dom: 'vid-auc', arg: 'targetAuc', kind: 'number', label: 'Adults: target AUC24 (guideline 400 to 600)', unit: 'mg·h/L', min: 0, exclusiveMin: true, max: 1000 },
       { dom: 'vid-age', arg: 'ageYears', kind: 'number', label: 'Children: age', unit: 'years' },
       { dom: 'vid-daily', arg: 'dailyPerKg', kind: 'number', label: 'Children: daily dose', unit: 'mg/kg/day' },

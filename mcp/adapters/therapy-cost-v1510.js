@@ -11,10 +11,10 @@ export default [
     compute: TC.therapyCostCompare,
     fields: [1, 2, 3].flatMap((k) => [
       { dom: `tc-name${k}`, arg: `name${k}`, kind: 'string', required: k <= 2, label: `Regimen ${k} name` },
-      n(`tc-price${k}`, `price${k}`, `Regimen ${k} price per unit`, k <= 2, 'USD'),
+      { ...n(`tc-price${k}`, `price${k}`, `Regimen ${k} price per unit`, k <= 2, 'USD'), min: 0, max: 1e7 },
       { ...n(`tc-units${k}`, `units${k}`, `Regimen ${k} units per administration`, k <= 2), min: 0.001, max: 1e6 },
-      n(`tc-y1${k}`, `year1${k}`, `Regimen ${k} administrations in year one`, k <= 2),
-      n(`tc-later${k}`, `later${k}`, `Regimen ${k} administrations a year after year one`, k <= 2),
+      { ...n(`tc-y1${k}`, `year1${k}`, `Regimen ${k} administrations in year one`, k <= 2), min: 0, max: 400 },
+      { ...n(`tc-later${k}`, `later${k}`, `Regimen ${k} administrations a year after year one`, k <= 2), min: 0, max: 400 },
       { dom: `tc-src${k}`, arg: `source${k}`, kind: 'string', required: false, label: `Regimen ${k} price source` },
     ]),
   },

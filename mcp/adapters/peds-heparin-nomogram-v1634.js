@@ -13,7 +13,7 @@ export default [
     fields: [
       { dom: 'phn-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.4, max: 150 },
       { dom: 'phn-age', arg: 'age', kind: 'enum', values: PH.AGES.map((a) => a.value), label: 'Age group (for the starting rate)' },
-      { dom: 'phn-aptt', arg: 'aptt', kind: 'number', label: 'aPTT, to adjust a running infusion', unit: 'seconds' },
+      { dom: 'phn-aptt', arg: 'aptt', kind: 'number', label: 'aPTT, to adjust a running infusion', unit: 'seconds', min: 0, exclusiveMin: true, max: 400 },
       { dom: 'phn-rate', arg: 'currentRate', kind: 'number', label: 'Current infusion rate (with an aPTT)', unit: 'units/h', min: 0, exclusiveMin: true, max: 12600 },
     ],
   },

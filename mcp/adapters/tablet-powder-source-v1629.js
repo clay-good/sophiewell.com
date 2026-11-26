@@ -9,10 +9,10 @@ export default [
     summary: 'Crushed commercial tablets as a drug source: the tablets to crush and the weight of powder that carries the drug needed. The tablet count rounds up; the powder weight does not.',
     compute: TP.tabletPowderSource,
     fields: [
-      { dom: 'tp-needed', arg: 'needed', kind: 'number', required: true, label: 'Drug needed', unit: 'mg' },
-      { dom: 'tp-strength', arg: 'strength', kind: 'number', required: true, label: 'Labeled strength per tablet', unit: 'mg' },
+      { dom: 'tp-needed', arg: 'needed', kind: 'number', required: true, label: 'Drug needed', unit: 'mg', min: 0, exclusiveMin: true, max: 10000000 },
+      { dom: 'tp-strength', arg: 'strength', kind: 'number', required: true, label: 'Labeled strength per tablet', unit: 'mg', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'tp-count', arg: 'count', kind: 'number', required: true, label: 'Number of whole tablets weighed', min: 1, max: 10000 },
-      { dom: 'tp-total', arg: 'totalWeight', kind: 'number', required: true, label: 'Total weight of those tablets', unit: 'mg' },
+      { dom: 'tp-total', arg: 'totalWeight', kind: 'number', required: true, label: 'Total weight of those tablets', unit: 'mg', min: 0, exclusiveMin: true, max: 100000000 },
       { dom: 'tp-extra', arg: 'extra', kind: 'number', required: false, label: 'Extra tablets to crush (optional)' },
     ],
   },

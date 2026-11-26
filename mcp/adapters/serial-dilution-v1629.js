@@ -12,7 +12,7 @@ export default [
       { dom: 'sd-unit', arg: 'unit', kind: 'enum', required: true, values: SD.UNITS.map((u) => u.value), label: 'Strength unit, the same for the stock and the target' },
       { dom: 'sd-stock', arg: 'stock', kind: 'number', required: true, label: 'Stock strength' },
       { dom: 'sd-target', arg: 'target', kind: 'number', required: true, label: 'Target strength' },
-      { dom: 'sd-vol', arg: 'finalVolume', kind: 'number', required: true, label: 'Volume wanted at the last step', unit: 'mL' },
+      { dom: 'sd-vol', arg: 'finalVolume', kind: 'number', required: true, label: 'Volume wanted at the last step', unit: 'mL', min: 0, exclusiveMin: true, max: 1000000 },
       { dom: 'sd-factor', arg: 'factor', kind: 'number', required: false, label: 'Dilution factor per step (give this or the smallest measurable volume, not both)', min: 1, max: 1000000 },
       { dom: 'sd-min', arg: 'minVolume', kind: 'number', required: false, label: 'Smallest volume that can be measured', unit: 'mL' },
       { dom: 'sd-step', arg: 'stepVolume', kind: 'number', required: false, label: 'Volume of each earlier step (blank uses the last step\'s volume)', unit: 'mL' },

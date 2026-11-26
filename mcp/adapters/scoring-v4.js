@@ -148,7 +148,7 @@ export default [
       { dom: 'ec-pco', arg: 'currentPaCO2', kind: 'number', label: 'Current PaCO2 (for the sweep titration)', unit: 'mmHg', bound: 'paCO2' },
       { dom: 'ec-tgt', arg: 'targetPaCO2', kind: 'number', label: 'Target PaCO2 (defaults to 40 mmHg, which the reading names)', unit: 'mmHg', bound: 'paCO2' },
       { dom: 'ec-hb', arg: 'hb', kind: 'number', label: 'Hemoglobin (with the saturation, for DO2i and the flow suggestion)', unit: 'g/dL', bound: 'hemoglobin' },
-      { dom: 'ec-sat', arg: 'sao2', kind: 'number', label: 'SaO2 or post-oxygenator SatO2 (with the hemoglobin, for DO2i)', unit: '% or fraction' },
+      { dom: 'ec-sat', arg: 'sao2', kind: 'number', label: 'SaO2 or post-oxygenator SatO2 (with the hemoglobin, for DO2i)', unit: '% or fraction', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'ec-age', arg: 'ageGroup', kind: 'enum', values: ['neonate', 'child', 'adult'], label: 'Age group (sets the ELSO oxygen delivery figure; without it the flow is not titrated)' },
     ],
   },

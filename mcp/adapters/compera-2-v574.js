@@ -45,8 +45,7 @@ export default [
       },
       {
         dom: 'compera-ntprobnp', arg: 'ntProBnp', kind: 'number', unit: 'ng/L', required: false,
-        label: 'NT-proBNP. Optional, and TAKES PRECEDENCE over BNP when both are supplied. Under 300 = 1; 300 to 649 = 2; 650 to 1100 = 3; over 1100 = 4. A value between 649 and 650 falls in a GAP.',
-      },
+        label: 'NT-proBNP. Optional, and TAKES PRECEDENCE over BNP when both are supplied. Under 300 = 1; 300 to 649 = 2; 650 to 1100 = 3; over 1100 = 4. A value between 649 and 650 falls in a GAP.', min: 0, max: 100000 },
       {
         dom: 'compera-bnp', arg: 'bnp', kind: 'number', unit: 'ng/L', required: false,
         label: 'BNP. Optional, and IGNORED if NT-proBNP is supplied. Under 50 = 1; 50 to 199 = 2; 200 to 800 = 3; over 800 = 4. A value between 199 and 200 falls in a GAP.',

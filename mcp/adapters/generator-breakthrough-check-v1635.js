@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'gbc-generator', arg: 'generator', kind: 'enum', required: true, values: GB.GENERATORS.map((g) => g.value), label: 'Generator' },
       { dom: 'gbc-mo99', arg: 'mo99MicroCi', kind: 'number', label: 'Technetium generator: Mo-99 at elution', unit: 'µCi', min: 0, max: 10000000 },
-      { dom: 'gbc-tc99m', arg: 'tc99mMilliCi', kind: 'number', label: 'Technetium generator: Tc-99m at elution', unit: 'mCi' },
+      { dom: 'gbc-tc99m', arg: 'tc99mMilliCi', kind: 'number', label: 'Technetium generator: Tc-99m at elution', unit: 'mCi', min: 0, exclusiveMin: true, max: 1000000 },
       { dom: 'gbc-hours', arg: 'hoursToAdministration', kind: 'number', label: 'Technetium generator: hours from elution to administration (optional)', unit: 'h' },
       { dom: 'gbc-aluminum', arg: 'aluminumMcgPerMl', kind: 'number', label: 'Technetium generator: aluminum in the eluate (optional)', unit: 'µg/mL' },
       { dom: 'gbc-sr82', arg: 'sr82', kind: 'number', label: 'Rubidium generator: Sr-82 per mCi Rb-82', unit: 'µCi/mCi' },

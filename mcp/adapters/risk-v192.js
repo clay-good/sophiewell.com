@@ -32,7 +32,7 @@ export default [
     summary: 'Grobman nomogram predicting the probability of a successful vaginal birth after cesarean (VBAC) from maternal age, BMI, prior delivery history, and clinical factors.',
     compute: F.grobmanVbac,
     fields: [
-      { dom: 'grobman-age', arg: 'age', kind: 'number', required: true, label: 'Maternal age', unit: 'years' },
+      { dom: 'grobman-age', arg: 'age', kind: 'number', required: true, label: 'Maternal age', unit: 'years', min: 0, exclusiveMin: true, max: 70 },
       { dom: 'grobman-weight', arg: 'weight', kind: 'number', required: true, label: 'Pre-pregnancy weight', unit: 'kg', min: 0.2, max: 400 },
       { dom: 'grobman-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
       { dom: 'grobman-vaginalHistory', arg: 'vaginalHistory', kind: 'enum', values: ['none', 'before', 'vbac'], required: false, label: 'Prior vaginal delivery history' },

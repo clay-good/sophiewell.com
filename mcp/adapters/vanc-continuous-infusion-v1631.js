@@ -12,9 +12,9 @@ export default [
     compute: VC.vancContinuousInfusion,
     fields: [
       { dom: 'vci-weight', arg: 'weight', kind: 'number', required: true, label: 'Actual body weight', unit: 'kg', min: 20, max: 300 },
-      { dom: 'vci-load', arg: 'loadPerKg', kind: 'number', required: true, label: 'Loading dose (guideline 15 to 20)', unit: 'mg/kg' },
+      { dom: 'vci-load', arg: 'loadPerKg', kind: 'number', required: true, label: 'Loading dose (guideline 15 to 20)', unit: 'mg/kg', min: 0, exclusiveMin: true, max: 60 },
       { dom: 'vci-daily', arg: 'dailyPerKg', kind: 'number', required: true, label: 'Daily dose (guideline 30 to 40, up to 60)', unit: 'mg/kg/day', min: 0, exclusiveMin: true, max: 120 },
-      { dom: 'vci-conc', arg: 'concentration', kind: 'number', required: true, label: 'Bag concentration', unit: 'mg/mL' },
+      { dom: 'vci-conc', arg: 'concentration', kind: 'number', required: true, label: 'Bag concentration', unit: 'mg/mL', min: 0, exclusiveMin: true, max: 50 },
       { dom: 'vci-level', arg: 'level', kind: 'number', label: 'Steady-state level (optional)', unit: 'mg/L' },
       { dom: 'vci-rate', arg: 'currentRate', kind: 'number', label: 'Current rate (with a level)', unit: 'mg/h' },
       { dom: 'vci-target', arg: 'targetCss', kind: 'number', label: 'Target level (guideline 20 to 25)', unit: 'mg/L' },

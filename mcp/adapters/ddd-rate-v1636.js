@@ -10,8 +10,8 @@ export default [
     compute: (args) => DD.dddRate(args),
     fields: [
       { dom: 'ddr-grams', arg: 'gramsUsed', kind: 'number', required: true, label: 'Grams used in the period', unit: 'g', min: 0, max: 100000000 },
-      { dom: 'ddr-ddd', arg: 'ddd', kind: 'number', required: true, label: 'DDD of the agent, from the WHO index', unit: 'g' },
-      { dom: 'ddr-bed-days', arg: 'bedDays', kind: 'number', required: true, label: 'Bed-days (or patient-days) in the period' },
+      { dom: 'ddr-ddd', arg: 'ddd', kind: 'number', required: true, label: 'DDD of the agent, from the WHO index', unit: 'g', min: 0, exclusiveMin: true, max: 100000 },
+      { dom: 'ddr-bed-days', arg: 'bedDays', kind: 'number', required: true, label: 'Bed-days (or patient-days) in the period', min: 0, exclusiveMin: true, max: 100000000 },
       { dom: 'ddr-year', arg: 'indexYear', kind: 'number', label: 'Year of the index the DDD came from (optional)', min: 1990, max: 2100 },
     ],
   },

@@ -9,11 +9,11 @@ import * as HHC from '../../lib/hand-hygiene-compliance-v1689.js';
 const fields = [];
 for (const m of HHC.MOMENTS) {
   fields.push({
-    dom: `hhc-${m.key}-opp`, arg: `${m.key}Opportunities`, kind: 'number', required: false,
+    dom: `hhc-${m.key}-opp`, arg: `${m.key}Opportunities`, kind: 'number', required: false, min: 0, max: 1e6,
     label: `Moment ${m.n} (${m.label.toLowerCase()}): opportunities`,
   });
   fields.push({
-    dom: `hhc-${m.key}-act`, arg: `${m.key}Actions`, kind: 'number', required: false,
+    dom: `hhc-${m.key}-act`, arg: `${m.key}Actions`, kind: 'number', required: false, min: 0, max: 1e6,
     label: `Moment ${m.n} (${m.label.toLowerCase()}): actions at those opportunities`,
   });
 }

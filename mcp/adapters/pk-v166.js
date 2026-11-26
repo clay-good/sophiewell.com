@@ -25,7 +25,7 @@ export default [
     compute: F.chlorpromazineEquivalents,
     fields: [
       { dom: 'cpz-agent', arg: 'agent', kind: 'enum', values: ['chlorpromazine', 'haloperidol', 'risperidone', 'olanzapine', 'quetiapine', 'ziprasidone', 'aripiprazole'], required: true, label: 'Antipsychotic agent' },
-      { dom: 'cpz-dose', arg: 'dose', kind: 'number', required: true, label: 'Total daily dose (mg)' },
+      { dom: 'cpz-dose', arg: 'dose', kind: 'number', required: true, label: 'Total daily dose (mg)', min: 0, exclusiveMin: true, max: 100000 },
     ],
   },
 ];

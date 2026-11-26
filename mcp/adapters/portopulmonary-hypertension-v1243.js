@@ -12,8 +12,8 @@ export default [
     fields: [
       { dom: 'poph-portalHypertension', arg: 'portalHypertension', kind: 'boolean', required: true, label: 'Portal hypertension present' },
       { dom: 'poph-mpap', arg: 'mpap', kind: 'number', required: true, label: 'Mean pulmonary artery pressure (mmHg)', min: 0, exclusiveMin: true, max: 120 },
-      { dom: 'poph-pvrWood', arg: 'pvrWood', kind: 'number', required: true, label: 'Pulmonary vascular resistance (Wood units)' },
-      { dom: 'poph-wedge', arg: 'wedge', kind: 'number', required: true, label: 'Pulmonary artery wedge pressure (mmHg)' },
+      { dom: 'poph-pvrWood', arg: 'pvrWood', kind: 'number', required: true, label: 'Pulmonary vascular resistance (Wood units)', min: 0, exclusiveMin: true, max: 40 },
+      { dom: 'poph-wedge', arg: 'wedge', kind: 'number', required: true, label: 'Pulmonary artery wedge pressure (mmHg)', min: 0, exclusiveMin: true, max: 60 },
     ],
   },
 ];

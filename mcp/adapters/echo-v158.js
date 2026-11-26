@@ -12,8 +12,8 @@ export default [
     compute: F.lvMassIndex,
     fields: [
       { dom: 'lvmi-lvidd', arg: 'lvidd', kind: 'number', required: true, label: 'LV internal diameter, end-diastole (LVIDd)', unit: 'cm' },
-      { dom: 'lvmi-pwtd', arg: 'pwtd', kind: 'number', required: true, label: 'Posterior-wall thickness, diastole (PWTd)', unit: 'cm' },
-      { dom: 'lvmi-ivsd', arg: 'ivsd', kind: 'number', required: true, label: 'Septal-wall thickness, diastole (IVSd)', unit: 'cm' },
+      { dom: 'lvmi-pwtd', arg: 'pwtd', kind: 'number', required: true, label: 'Posterior-wall thickness, diastole (PWTd)', unit: 'cm', min: 0, exclusiveMin: true, max: 5 },
+      { dom: 'lvmi-ivsd', arg: 'ivsd', kind: 'number', required: true, label: 'Septal-wall thickness, diastole (IVSd)', unit: 'cm', min: 0, exclusiveMin: true, max: 5 },
       { dom: 'lvmi-bsa', arg: 'bsa', kind: 'number', required: true, label: 'Body surface area', unit: 'm^2' },
       { dom: 'lvmi-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
     ],

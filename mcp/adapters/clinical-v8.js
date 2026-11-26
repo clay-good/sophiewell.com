@@ -229,8 +229,8 @@ export default [
     },
     fields: [
       { dom: 'oxy-conc', arg: 'milliunitsPerMl', kind: 'enum', values: ['60', '30', '20', '10'], required: true, label: 'Bag concentration', to: Number },
-      { dom: 'oxy-dose', arg: 'doseMilliunitsMin', kind: 'number', required: true, label: 'Ordered dose (mU/min)', unit: 'mU/min', to: (v) => v || 0 },
-      { dom: 'oxy-rate', arg: 'rateMlHr', kind: 'number', required: true, label: 'Pump rate (mL/hr)', unit: 'mL/hr', to: (v) => v || 0 },
+      { dom: 'oxy-dose', arg: 'doseMilliunitsMin', kind: 'number', required: true, label: 'Ordered dose (mU/min)', unit: 'mU/min', to: (v) => v || 0, min: 0, max: 100000 },
+      { dom: 'oxy-rate', arg: 'rateMlHr', kind: 'number', required: true, label: 'Pump rate (mL/hr)', unit: 'mL/hr', to: (v) => v || 0, min: 0, max: 100000 },
     ],
   },
   {

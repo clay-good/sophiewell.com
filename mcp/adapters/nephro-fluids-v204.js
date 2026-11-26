@@ -14,7 +14,7 @@ export default [
     summary: 'Calcium/creatinine clearance ratio (CCCR): (urine Ca × serum Cr) / (serum Ca × urine Cr); a ratio < 0.01 suggests familial hypocalciuric hypercalcemia versus primary hyperparathyroidism.',
     compute: F.cccr,
     fields: [
-      { dom: 'cccr-uca', arg: 'urineCa', kind: 'number', required: true, label: 'Urine calcium (shared mass unit)' },
+      { dom: 'cccr-uca', arg: 'urineCa', kind: 'number', required: true, label: 'Urine calcium (shared mass unit)', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'cccr-sca', arg: 'serumCa', kind: 'number', required: true, label: 'Serum calcium (shared mass unit)' },
       { dom: 'cccr-scr', arg: 'serumCr', kind: 'number', required: true, label: 'Serum creatinine (shared unit)' },
       { dom: 'cccr-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine (shared unit)' },
@@ -26,7 +26,7 @@ export default [
     compute: F.maxAllowableBloodLoss,
     fields: [
       { dom: 'abl-cat', arg: 'category', kind: 'enum', values: ['neonate', 'infant', 'child', 'adult-male', 'adult-female'], required: true, label: 'Patient category (blood-volume factor)' },
-      { dom: 'abl-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'abl-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0, exclusiveMin: true, max: 400 },
       { dom: 'abl-hcti', arg: 'hctInitial', kind: 'number', required: true, label: 'Initial hematocrit (%) or hemoglobin (g/dL)', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'abl-hctf', arg: 'hctTarget', kind: 'number', required: true, label: 'Target (minimum acceptable) hematocrit or hemoglobin (same measure)', min: 0, exclusiveMin: true, max: 100 },
     ],
@@ -39,7 +39,7 @@ export default [
       { dom: 'efwc-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine sodium', unit: 'mEq/L', min: 0, max: 400 },
       { dom: 'efwc-uk', arg: 'urineK', kind: 'number', required: true, label: 'Urine potassium', unit: 'mEq/L', min: 0, max: 400 },
       { dom: 'efwc-pna', arg: 'plasmaNa', kind: 'number', required: true, label: 'Plasma sodium', unit: 'mEq/L', min: 85 },
-      { dom: 'efwc-vol', arg: 'urineVolume', kind: 'number', required: true, label: 'Urine volume over the interval', unit: 'mL' },
+      { dom: 'efwc-vol', arg: 'urineVolume', kind: 'number', required: true, label: 'Urine volume over the interval', unit: 'mL', min: 0, exclusiveMin: true, max: 100000 },
     ],
   },
   {
@@ -48,9 +48,9 @@ export default [
     compute: F.tmpGfr,
     fields: [
       { dom: 'tmp-sp', arg: 'serumP', kind: 'number', required: true, label: 'Serum phosphate (shared phosphate unit)', min: 0, exclusiveMin: true, max: 100 },
-      { dom: 'tmp-up', arg: 'urineP', kind: 'number', required: true, label: 'Urine phosphate (shared phosphate unit)' },
-      { dom: 'tmp-scr', arg: 'serumCr', kind: 'number', required: true, label: 'Serum creatinine (shared creatinine unit)' },
-      { dom: 'tmp-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine (shared creatinine unit)' },
+      { dom: 'tmp-up', arg: 'urineP', kind: 'number', required: true, label: 'Urine phosphate (shared phosphate unit)', min: 0, exclusiveMin: true, max: 100000 },
+      { dom: 'tmp-scr', arg: 'serumCr', kind: 'number', required: true, label: 'Serum creatinine (shared creatinine unit)', min: 0, exclusiveMin: true, max: 100000 },
+      { dom: 'tmp-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine (shared creatinine unit)', min: 0, exclusiveMin: true, max: 1000000 },
     ],
   },
   {

@@ -11,7 +11,7 @@ export default [
     compute: FP.fentanylPatchInitialDose,
     fields: [
       { dom: 'fpd-drug', arg: 'drug', kind: 'enum', required: true, values: FP.DRUGS.map((d) => d.value), label: 'Current opioid and route' },
-      { dom: 'fpd-mg', arg: 'dailyMg', kind: 'number', required: true, label: 'Total dose over 24 hours', unit: 'mg' },
+      { dom: 'fpd-mg', arg: 'dailyMg', kind: 'number', required: true, label: 'Total dose over 24 hours', unit: 'mg', min: 0, exclusiveMin: true, max: 5000 },
       { dom: 'fpd-tolerant', arg: 'tolerant', kind: 'enum', required: true, values: FP.TOLERANT.map((d) => d.value), label: 'Opioid tolerant by the label\'s definition: yes or no' },
     ],
   },

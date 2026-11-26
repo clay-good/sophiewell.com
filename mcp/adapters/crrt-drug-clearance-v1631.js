@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'cr2-mode', arg: 'mode', kind: 'enum', required: true, values: CR.MODES.map((m) => m.value), label: 'Mode: hemofiltration, hemodialysis or hemodiafiltration' },
       { dom: 'cr2-unit', arg: 'flowUnit', kind: 'enum', required: true, values: CR.FLOW_UNITS.map((u) => u.value), label: 'Flow unit: mL/hour (mL-h), mL/min (mL-min) or L/hour (L-h)' },
-      { dom: 'cr2-quf', arg: 'ultrafiltrateFlow', kind: 'number', required: false, label: 'Ultrafiltrate flow (filtration modes)' },
+      { dom: 'cr2-quf', arg: 'ultrafiltrateFlow', kind: 'number', required: false, label: 'Ultrafiltrate flow (filtration modes)', min: 0, exclusiveMin: true, max: 1000000 },
       { dom: 'cr2-sc', arg: 'sievingCoefficient', kind: 'number', required: false, label: 'Sieving coefficient (filtration modes)', min: 0, exclusiveMin: true, max: 1.5 },
       { dom: 'cr2-qd', arg: 'dialysateFlow', kind: 'number', required: false, label: 'Dialysate flow (dialysis modes)' },
       { dom: 'cr2-sa', arg: 'saturationCoefficient', kind: 'number', required: false, label: 'Saturation coefficient (dialysis modes)' },

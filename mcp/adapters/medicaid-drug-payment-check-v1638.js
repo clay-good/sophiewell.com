@@ -11,7 +11,7 @@ export default [
     compute: medicaidDrugPaymentCheck,
     fields: [
       { dom: 'mdp-aac', arg: 'aacPerUnit', kind: 'number', required: true, label: 'State actual acquisition cost, per unit', unit: 'dollars', min: 0, max: 1000000 },
-      { dom: 'mdp-qty', arg: 'quantity', kind: 'number', required: true, label: 'Quantity', unit: 'units' },
+      { dom: 'mdp-qty', arg: 'quantity', kind: 'number', required: true, label: 'Quantity', unit: 'units', min: 0, exclusiveMin: true, max: 10000000 },
       { dom: 'mdp-fee', arg: 'dispensingFee', kind: 'number', required: true, label: 'State professional dispensing fee', unit: 'dollars', max: 10000 },
       { dom: 'mdp-uc', arg: 'usualAndCustomary', kind: 'number', required: true, label: 'Usual and customary charge for the prescription', unit: 'dollars', min: 0, max: 10000000 },
       { dom: 'mdp-ful', arg: 'fulPerUnit', kind: 'number', label: 'Federal upper limit, per unit, if the drug has one', unit: 'dollars' },

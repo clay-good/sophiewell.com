@@ -40,7 +40,7 @@ export default [
     compute: F.homaBeta,
     fields: [
       { dom: 'homab-ins', arg: 'insulin', kind: 'number', required: true, label: 'Fasting insulin', unit: 'mU/L', min: 0, exclusiveMin: true, max: 1000 },
-      { dom: 'homab-glu', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mmol/L' },
+      { dom: 'homab-glu', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mmol/L', min: 0, exclusiveMin: true, max: 60 },
     ],
   },
   {
@@ -49,7 +49,7 @@ export default [
     compute: F.oralDispositionIndex,
     fields: [
       { dom: 'dio-i0', arg: 'i0', kind: 'number', required: true, label: 'Fasting insulin (I0)', unit: 'mU/L', min: 0, exclusiveMin: true, max: 1000 },
-      { dom: 'dio-i30', arg: 'i30', kind: 'number', required: true, label: '30-min insulin (I30)', unit: 'mU/L' },
+      { dom: 'dio-i30', arg: 'i30', kind: 'number', required: true, label: '30-min insulin (I30)', unit: 'mU/L', min: 0, exclusiveMin: true, max: 5000 },
       { dom: 'dio-g0', arg: 'g0', kind: 'number', required: true, label: 'Fasting glucose (G0)', unit: 'mg/dL', min: 0, exclusiveMin: true, max: 1000 },
       { dom: 'dio-g30', arg: 'g30', kind: 'number', required: true, label: '30-min glucose (G30)', unit: 'mg/dL', min: 0, exclusiveMin: true, max: 2000 },
     ],

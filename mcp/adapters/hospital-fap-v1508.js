@@ -34,7 +34,7 @@ export default [
     compute: HF.fapDiscount,
     fields: [
       { dom: 'fd-size', arg: 'size', kind: 'number', required: true, label: 'Household size', min: 1, max: 30 },
-      usd('fd-income', 'income', 'Annual household income', true),
+      { ...usd('fd-income', 'income', 'Annual household income', true), min: 0, max: 1e8 },
       { dom: 'fd-region', arg: 'region', kind: 'enum', required: true, values: vals(HF.REGIONS), label: 'Where the household lives' },
       { dom: 'fd-year', arg: 'year', kind: 'number', required: false, label: 'Guideline year (blank for this year)' },
       usd('fd-gross', 'gross', 'Gross charges', true),

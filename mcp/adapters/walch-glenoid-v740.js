@@ -13,7 +13,7 @@ export default [
     compute: walchGlenoid,
     fields: [
       { dom: 'walch-sublux', arg: 'subluxation', kind: 'enum', values: ['centered', 'posterior', 'anterior'], required: true, label: 'Humeral-head position (centered / posterior / anterior)' },
-      { dom: 'walch-retro', arg: 'retroversion', kind: 'number', required: true, label: 'Glenoid retroversion (degrees, anteversion negative)', unit: 'deg' },
+      { dom: 'walch-retro', arg: 'retroversion', kind: 'number', required: true, label: 'Glenoid retroversion (degrees, anteversion negative)', unit: 'deg', min: -45, max: 60 },
       { dom: 'walch-conc', arg: 'concavity', kind: 'enum', values: ['single', 'biconcave'], required: true, label: 'Glenoid concavity (single / biconcave)' },
       { dom: 'walch-eros', arg: 'erosion', kind: 'enum', values: ['minor', 'major'], required: true, label: 'Central erosion severity (minor / major)' },
       { dom: 'walch-dys', arg: 'dysplastic', kind: 'bool', required: false, label: 'Retroversion is dysplastic (congenital, not erosion-caused)' },

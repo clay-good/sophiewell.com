@@ -13,7 +13,7 @@ export default [
     compute: F.iolPower,
     fields: [
       { dom: 'iol-a', arg: 'aConst', kind: 'number', required: true, label: 'Lens A-constant' },
-      { dom: 'iol-al', arg: 'al', kind: 'number', required: true, label: 'Axial length', unit: 'mm' },
+      { dom: 'iol-al', arg: 'al', kind: 'number', required: true, label: 'Axial length', unit: 'mm', min: 0, exclusiveMin: true, max: 40 },
       { dom: 'iol-k', arg: 'k', kind: 'number', required: true, label: 'Average keratometry', unit: 'D', min: 0, exclusiveMin: true, max: 80 },
       { dom: 'iol-target', arg: 'target', kind: 'number', required: false, label: 'Target refraction (0 for emmetropia)', unit: 'D' },
     ],

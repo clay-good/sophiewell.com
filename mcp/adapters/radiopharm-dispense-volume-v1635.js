@@ -16,7 +16,7 @@ export default [
       { dom: 'rdv-half-life-unit', arg: 'halfLifeUnit', kind: 'enum', values: RD.HALF_LIFE_UNITS.map((u) => u.value), label: 'Half-life unit' },
       { dom: 'rdv-unit', arg: 'unit', kind: 'enum', required: true, values: RD.ACTIVITY_UNITS.map((u) => u.value), label: 'Activity unit' },
       { dom: 'rdv-vial-activity', arg: 'vialActivity', kind: 'number', required: true, label: 'Vial activity at calibration' },
-      { dom: 'rdv-vial-volume', arg: 'vialVolume', kind: 'number', required: true, label: 'Vial volume', unit: 'mL' },
+      { dom: 'rdv-vial-volume', arg: 'vialVolume', kind: 'number', required: true, label: 'Vial volume', unit: 'mL', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'rdv-calibration', arg: 'calibration', kind: 'string', required: true, label: 'Vial calibration date and time (YYYY-MM-DDTHH:MM)' },
       { dom: 'rdv-prescribed', arg: 'prescribed', kind: 'number', required: true, label: 'Prescribed activity at administration' },
       { dom: 'rdv-draw', arg: 'draw', kind: 'string', required: true, label: 'Draw date and time (YYYY-MM-DDTHH:MM)' },

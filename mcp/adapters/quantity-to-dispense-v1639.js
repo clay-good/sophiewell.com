@@ -31,7 +31,7 @@ export default [
       { dom: 'qd-change-unit', arg: 'changeUnit', kind: 'enum', values: QD.CHANGE_UNITS.map((u) => u.value), label: 'Patches: that time is in' },
       { dom: 'qd-worn', arg: 'patchesWorn', kind: 'number', label: 'Patches: worn at once' },
       { dom: 'qd-uses', arg: 'usesPerDay', kind: 'number', label: 'Supplies: uses per day' },
-      { dom: 'qd-pack', arg: 'packageSize', kind: 'number', label: 'Package size: units, mL, pens, canisters or patches in one (optional)' },
+      { dom: 'qd-pack', arg: 'packageSize', kind: 'number', label: 'Package size: units, mL, pens, canisters or patches in one (optional)', min: 0, exclusiveMin: true, max: 100000 },
     ],
   },
 ];

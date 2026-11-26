@@ -13,7 +13,7 @@ export default [
     compute: F.scorten,
     fields: [
       { dom: 'scorten-age', arg: 'age', kind: 'number', required: false, label: 'Age', unit: 'years', bound: 'ageYears' },
-      { dom: 'scorten-heartRate', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm', min: 10 },
+      { dom: 'scorten-heartRate', arg: 'heartRate', kind: 'number', required: false, label: 'Heart rate', unit: 'bpm', min: 10, max: 400 },
       { dom: 'scorten-bsaDetached', arg: 'bsaDetached', kind: 'number', required: false, label: 'Body surface area detached', unit: '%' },
       { dom: 'scorten-bun', arg: 'bun', kind: 'number', required: false, label: 'BUN', unit: 'mg/dL', min: 1 },
       { dom: 'scorten-bicarbonate', arg: 'bicarbonate', kind: 'number', required: false, label: 'Serum bicarbonate', unit: 'mEq/L' },

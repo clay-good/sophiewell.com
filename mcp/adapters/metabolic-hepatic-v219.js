@@ -83,7 +83,7 @@ export default [
     summary: 'GGT-to-platelet ratio (Lemoine 2016): (GGT/ULN)/platelets × 100; a cutoff of 0.32 predicts significant fibrosis.',
     compute: F.ggtPlatelet,
     fields: [
-      { dom: 'gpr-ggt', arg: 'ggt', kind: 'number', required: true, label: 'GGT', unit: 'IU/L' },
+      { dom: 'gpr-ggt', arg: 'ggt', kind: 'number', required: true, label: 'GGT', unit: 'IU/L', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'gpr-uln', arg: 'ggtUln', kind: 'number', required: true, label: 'Upper limit of normal for GGT', unit: 'IU/L' },
       { dom: 'gpr-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],

@@ -104,6 +104,18 @@ function identifies(key, text) {
   return named.length === 1 ? named[0] : null;
 }
 
+// Do the field's own words name this envelope? A word of four letters or more, equal to the key or to the
+// key with a plural dropped either way. spec-v1798 made this a REQUIREMENT for any match that rests on a
+// single edge or a free factor, because such a match has only one constraint and coincidences hit it.
+const split = (s) => String(s).replace(/([a-z0-9])([A-Z])/g, '$1 $2').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+const corroborates = (key, text) => {
+  // The KEY's words, not the key: `ageYears` is two words and a field says "age", `weightKg` is two and a
+  // field says "weight". Comparing whole keys failed every compound one, which is most of them.
+  const keyWords = split(key).filter((w) => w.length >= 3);
+  const said = new Set(split(text));
+  return keyWords.some((k) => [...said].some((w) => w.length >= 3 && (w === k || `${w}s` === k || w === `${k}s`)));
+};
+
 function sharedEnvelope(min, max, text = '') {
   for (const [key, b] of Object.entries(BOUNDS)) {
     if (!Number.isFinite(b.min) || !Number.isFinite(b.max)) continue;
@@ -117,12 +129,22 @@ function sharedEnvelope(min, max, text = '') {
       // is the only edge this finder can find, and requiring both sides sent BOUNDS.wbc x1000 and
       // BOUNDS.ageYears into the declarable list as literals. Two tests caught it: CPIS's leukocyte count
       // and SMART-COP's age each assert the envelope's own sentence, which a literal pre-empts.
-      if (max !== null && min === null && b.min * s <= 0 && near(max, b.max * s)) {
+      // spec-v1798: and the field's own words have to name the envelope. A CEILING ALONE is one constraint,
+      // so any round ceiling matches several envelopes: `grobman-vbac`'s age is capped at 70 and
+      // BOUNDS.baseExcess ends at 70, so an AGE was called the base-excess envelope and its own undeclared
+      // cap vanished from the report. The two cases this branch was built for still pass -- CPIS says
+      // "leukocyte" and SMART-COP says "age".
+      // spec-v1798: or the envelope is CEILING_ONLY, whose floor lib/bounds.js deliberately does not enforce
+      // (spec-v1762) -- so finding no floor is what that envelope looks like, whatever the sign of the floor
+      // it publishes. `stewart-sid-sig`'s albumin is refused above BOUNDS.albumin.max in the library's own
+      // words and was offered for a literal of 7, which would have frozen a copy of a moving edge.
+      if (max !== null && min === null && (b.min * s <= 0 || CEILING_ONLY.has(key))
+        && near(max, b.max * s) && corroborates(key, text)) {
         const id = identifies(key, text);
         if (id) return `${id}${s === 1 ? '' : ` x${s}`}`;
       }
       // The mirror, for the envelopes whose ceiling is not enforced at all (spec-v1762).
-      if (min !== null && max === null && CEILING_ONLY.has(key) && near(min, b.min * s)) {
+      if (min !== null && max === null && CEILING_ONLY.has(key) && near(min, b.min * s) && corroborates(key, text)) {
         const id = identifies(key, text);
         if (id) return `${id}${s === 1 ? '' : ` x${s}`}`;
       }
@@ -136,15 +158,23 @@ function sharedEnvelope(min, max, text = '') {
   // to prevent: specs v1762-v1765 widened four envelopes and then spent three specs chasing the narrower
   // copies left behind in libraries.
   //
-  // A single free factor is only admissible evidence when BOTH edges are known, because two points pin the
-  // factor and one does not: any lone ceiling is some factor times any envelope's ceiling. Requiring both,
-  // a non-zero floor, and agreement to half a percent, the match is the envelope's SHAPE -- the ratio of
-  // its edges -- which a round number pair does not imitate by accident.
+  // A single free factor is weak evidence, and spec-v1795's reading of why was wrong. Two known edges do
+  // pin the factor -- but they then leave exactly ONE constraint, the RATIO of the edges, and a ratio is one
+  // number that coincidences hit. `gorlin`'s heart rate is guarded 10 to 300, and BOUNDS.hematocrit is 3 to
+  // 90: the same ratio of 30, so the rule called a heart rate "the hematocrit envelope times 3.3333" and
+  // the tool's own undeclared cap of 300 disappeared from the report. `probe-envelope-inside` had been
+  // printing it all along, which is how two finders disagreeing gave the answer away.
+  //
+  // So a free factor needs the field's own words to corroborate it: the envelope's key, or that key with a
+  // plural dropped, must appear among them. That is what makes `hscore-hlh`'s triglyceride in mmol/L a
+  // genuine match for BOUNDS.triglycerides over 88.57 -- the field says "triglyceride" -- and what makes a
+  // heart rate not a hematocrit, whatever the arithmetic says (spec-v1798).
   if (min !== null && max !== null && min !== 0) {
     for (const [key, b] of Object.entries(BOUNDS)) {
       if (!Number.isFinite(b.min) || !Number.isFinite(b.max) || b.min === 0 || b.max === b.min) continue;
       const s = max / b.max;
       if (!(s > 0) || !near(min, b.min * s)) continue;
+      if (!corroborates(key, text)) continue;
       const id = identifies(key, text);
       if (id) return `${id} x${Number(s.toPrecision(6))}`;
     }

@@ -13,7 +13,7 @@ export default [
     compute: F.binetCll,
     fields: [
       { dom: 'binet-areas', arg: 'areas', kind: 'number', min: 0, max: 5, required: true, label: 'Involved lymphoid areas (0–5)' },
-      { dom: 'binet-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
+      { dom: 'binet-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1, max: 30 },
       { dom: 'binet-platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],
   },
@@ -25,7 +25,7 @@ export default [
       { dom: 'rai-lymphocytosis', arg: 'lymphocytosis', kind: 'bool', required: true, label: 'Blood + marrow lymphocytosis (required)' },
       { dom: 'rai-lymphadenopathy', arg: 'lymphadenopathy', kind: 'bool', required: false, label: 'Lymphadenopathy' },
       { dom: 'rai-organomegaly', arg: 'organomegaly', kind: 'bool', required: false, label: 'Splenomegaly / hepatomegaly' },
-      { dom: 'rai-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
+      { dom: 'rai-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1, max: 30 },
       { dom: 'rai-platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],
   },

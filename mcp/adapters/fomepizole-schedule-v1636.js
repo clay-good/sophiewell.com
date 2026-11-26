@@ -10,7 +10,7 @@ export default [
     compute: (args) => FO.fomepizoleSchedule(args, new Date()),
     fields: [
       { dom: 'fms-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.4, max: 300 },
-      { dom: 'fms-given', arg: 'dosesGiven', kind: 'number', required: true, label: 'Doses given so far, counting the loading dose (0 if none)' },
+      { dom: 'fms-given', arg: 'dosesGiven', kind: 'number', required: true, label: 'Doses given so far, counting the loading dose (0 if none)', min: 0, max: 60 },
       { dom: 'fms-dialysis', arg: 'dialysis', kind: 'enum', required: true, values: FO.DIALYSIS.map((x) => x.value), label: 'Hemodialysis' },
       { dom: 'fms-last', arg: 'lastDoseTime', kind: 'string', label: 'Time of the last dose (YYYY-MM-DDTHH:MM; needed once a dose is given)' },
       { dom: 'fms-dial', arg: 'dialysisTime', kind: 'string', label: 'Time hemodialysis started or ended (YYYY-MM-DDTHH:MM)' },

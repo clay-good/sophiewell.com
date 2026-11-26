@@ -34,7 +34,7 @@ export default [
     summary: 'Free Thyroxine Index (FTI / T7): total T4 × (T3-resin uptake % ÷ reference-mean T3RU %), the binding-corrected free-hormone estimate used where a direct free-T4 assay is unavailable.',
     compute: F.freeThyroxineIndex,
     fields: [
-      { dom: 'fti-t4', arg: 't4', kind: 'number', required: true, label: 'Total T4', unit: 'µg/dL' },
+      { dom: 'fti-t4', arg: 't4', kind: 'number', required: true, label: 'Total T4', unit: 'µg/dL', min: 0, exclusiveMin: true, max: 60 },
       { dom: 'fti-t3ru', arg: 't3ru', kind: 'number', required: true, label: 'T3-resin uptake', unit: '%', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'fti-ref', arg: 'reference', kind: 'number', required: false, label: 'Reference-mean T3RU % (default 30)', unit: '%' },
     ],

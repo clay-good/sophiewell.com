@@ -16,7 +16,7 @@ export default [
     fields: [
       { dom: 'ass-vmax', arg: 'peakVelocity', kind: 'number', required: false, label: 'Peak aortic velocity', unit: 'm/s', max: 10 },
       { dom: 'ass-mg', arg: 'meanGradient', kind: 'number', required: false, label: 'Mean transaortic gradient', unit: 'mmHg', max: 200 },
-      { dom: 'ass-ava', arg: 'valveArea', kind: 'number', required: false, label: 'Aortic valve area', unit: 'square cm' },
+      { dom: 'ass-ava', arg: 'valveArea', kind: 'number', required: false, label: 'Aortic valve area', unit: 'square cm', min: 0, exclusiveMin: true, max: 6 },
       { dom: 'ass-avai', arg: 'indexedValveArea', kind: 'number', required: false, label: 'Indexed aortic valve area', unit: 'square cm per square meter' },
       { dom: 'ass-lvef', arg: 'ejectionFraction', kind: 'number', required: false, label: 'Left ventricular ejection fraction', unit: 'percent', min: 5, max: 85 },
       { dom: 'ass-svi', arg: 'strokeVolumeIndex', kind: 'number', required: false, label: 'Stroke volume index', unit: 'mL per square meter' },

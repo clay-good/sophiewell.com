@@ -9,7 +9,7 @@ export default [
     summary: 'Nursing hours per patient day, in total and by RN, LPN and aide, with skill mix and the hours over or under a target. It names which hours and which patient days it divided.',
     compute: HPPD.nursingHppd,
     fields: [
-      { dom: 'hppd-days', arg: 'patientDays', kind: 'number', required: true, label: 'Patient days in the period' },
+      { dom: 'hppd-days', arg: 'patientDays', kind: 'number', required: true, label: 'Patient days in the period', min: 0, exclusiveMin: true, max: 10000000 },
       { dom: 'hppd-rn', arg: 'rnHours', kind: 'number', required: false, label: 'RN hours', min: 0, max: 100000000 },
       { dom: 'hppd-lpn', arg: 'lpnHours', kind: 'number', required: false, label: 'LPN/LVN hours', min: 0, max: 100000000 },
       { dom: 'hppd-aide', arg: 'aideHours', kind: 'number', required: false, label: 'Nurse aide hours', min: 0, max: 100000000 },

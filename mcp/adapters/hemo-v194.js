@@ -44,7 +44,7 @@ export default [
     summary: 'Pulmonary shunt fraction Qs/Qt (Berggren 1942): from hemoglobin and the alveolar, arterial, and mixed-venous O₂ saturations and tensions, the fraction of cardiac output bypassing gas exchange; normal ~4–10%.',
     compute: F.shuntFraction,
     fields: [
-      { dom: 'shunt-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
+      { dom: 'shunt-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1, max: 30 },
       { dom: 'shunt-pao2a', arg: 'pAO2', kind: 'number', required: true, label: 'Alveolar / end-capillary O₂ tension', unit: 'mmHg', min: 0, exclusiveMin: true, max: 800 },
       { dom: 'shunt-sao2', arg: 'sao2', kind: 'number', required: true, label: 'Arterial SaO₂', unit: '%', min: 1, max: 100 },
       { dom: 'shunt-pao2', arg: 'pao2', kind: 'number', required: true, label: 'Arterial PaO₂', unit: 'mmHg', min: 0, exclusiveMin: true, max: 800 },

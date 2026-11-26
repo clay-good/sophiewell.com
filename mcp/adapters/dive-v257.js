@@ -30,7 +30,7 @@ export default [
     compute: F.oxygenToxicityUnits,
     fields: [
       { dom: 'otu-po2', arg: 'po2', kind: 'number', required: true, label: 'Oxygen partial pressure PO2', unit: 'ATA', min: 0.1, max: 3 },
-      { dom: 'otu-time', arg: 'time', kind: 'number', required: true, label: 'Exposure time', unit: 'minutes' },
+      { dom: 'otu-time', arg: 'time', kind: 'number', required: true, label: 'Exposure time', unit: 'minutes', min: 0, max: 6000 },
     ],
   },
 ];

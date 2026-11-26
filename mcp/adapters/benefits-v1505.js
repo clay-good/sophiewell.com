@@ -11,11 +11,11 @@ export default [
     summary: 'What a patient will pay for a therapy under the plan found in a benefits check. The first administration, the first 90 days and the plan year.',
     compute: BN.biSummary,
     fields: [
-      usd('bi-allowed', 'allowed', 'Allowed amount per administration', true),
+      { ...usd('bi-allowed', 'allowed', 'Allowed amount per administration', true), min: 0, max: 1e7 },
       { dom: 'bi-n', arg: 'perYear', kind: 'number', required: true, label: 'Administrations in the plan year', min: 1, max: 366 },
       { dom: 'bi-n90', arg: 'in90', kind: 'number', required: false, label: 'Administrations in the first 90 days' },
-      usd('bi-ded', 'deductibleLeft', 'Deductible still to meet', true),
-      usd('bi-oop', 'oopLeft', 'Out-of-pocket maximum still to meet', true),
+      { ...usd('bi-ded', 'deductibleLeft', 'Deductible still to meet', true), min: 0, max: 1e6 },
+      { ...usd('bi-oop', 'oopLeft', 'Out-of-pocket maximum still to meet', true), min: 0, max: 1e6 },
       { dom: 'bi-kind', arg: 'shareKind', kind: 'enum', required: true, values: kinds, label: 'Coinsurance or copay' },
       { dom: 'bi-share', arg: 'share', kind: 'number', required: true, label: 'Coinsurance percent or copay dollars' },
       { dom: 'bi-pa', arg: 'priorAuth', kind: 'enum', required: false, values: BN.YES_NO.map((x) => x.value), label: 'Prior authorization required' },
@@ -28,12 +28,16 @@ export default [
     compute: BN.siteOfCareCompare,
     fields: [
       { dom: 'soc-n', arg: 'perYear', kind: 'number', required: true, label: 'Administrations in the plan year', min: 1, max: 366 },
-      usd('soc-ded', 'deductibleLeft', 'Deductible still to meet'),
-      usd('soc-oop', 'oopLeft', 'Out-of-pocket maximum still to meet'),
+      { ...usd('soc-ded', 'deductibleLeft', 'Deductible still to meet'), min: 0, max: 1e6 },
+      { ...usd('soc-oop', 'oopLeft', 'Out-of-pocket maximum still to meet'), min: 0, max: 1e6 },
       ...[1, 2, 3, 4].flatMap((k) => [
         { dom: `soc-name${k}`, arg: `site${k}`, kind: 'string', required: k <= 2, label: `Site ${k} name` },
-        usd(`soc-allowed${k}`, `allowed${k}`, `Site ${k} allowed amount per administration`, k <= 2),
+        { ...usd(`soc-allowed${k}`, `allowed${k}`, `Site ${k} allowed amount per administration`, k <= 2), min: 0, max: 1e7 },
         { dom: `soc-kind${k}`, arg: `s${k}shareKind`, kind: 'enum', required: k <= 2, values: kinds, label: `Site ${k} coinsurance or copay` },
+        // spec-v1798: NO static declaration is true here. One field carries either a coinsurance percent or
+        // a dollar copay, picked by soc-kind beside it, and the library refuses above 100 in the one and
+        // above 1,000,000 in the other. A union of the two fails both ways round: declared-cap-honest found
+        // 1,000,000 refused as a percent, and probe-declared-cap-configs found 1,050,000 answered as a copay.
         { dom: `soc-share${k}`, arg: `s${k}share`, kind: 'number', required: k <= 2, label: `Site ${k} coinsurance percent or copay dollars` },
       ]),
     ],
