@@ -166,7 +166,9 @@ export default [
       { dom: 'ir-ais2', arg: 'ais2', kind: 'number', required: true, label: '2nd highest AIS region (0-6)', values: ['0', '1', '2', '3', '4', '5', '6'] },
       { dom: 'ir-ais3', arg: 'ais3', kind: 'number', required: true, label: '3rd highest AIS region (0-6)', values: ['0', '1', '2', '3', '4', '5', '6'] },
       { dom: 'ir-gcs', arg: 'gcs', kind: 'number', min: 3, max: 15, required: true, label: 'Glasgow Coma Scale (3-15)' },
-      { dom: 'ir-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'lactate', boundScale: 10 },
+      // spec-v1796: this declared `bound: 'lactate'` scaled by ten. The sbp envelope does not fit either -- the
+      // library guards 0 to 500, not the envelope's 20 -- so its own range is stated.
+      { dom: 'ir-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', min: 0, max: 500 },
       { dom: 'ir-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: '/min', max: 80 },
     ],
   },

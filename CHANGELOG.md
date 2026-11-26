@@ -76,6 +76,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- A new check asks every one of the 773 input ranges that are stated by naming a shared plausible range
+  whether it names the right quantity. 163 do not: the range is one the field's own words have nothing to
+  do with and the tool itself never consults. None of them turns a value away, but an agent reading the
+  tool's inputs is told a range the tool does not have. Six are fixed here, among them a serum albumin
+  whose stated ceiling was 0.7 g/dL and an eGFR whose stated ceiling was 2,000.
 - Another 207 number fields now state the range their library enforces, which brings it to 2,479 of the
   catalog's 5,189. These were the ranges nothing could see: the tools state them with a sentence about a
   value "greater than 0 and at most" some ceiling, and the two checks that look for undeclared ranges had

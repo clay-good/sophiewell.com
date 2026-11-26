@@ -15,7 +15,10 @@ export default [
       { dom: 'mecki-lvef', arg: 'lvef', kind: 'number', required: true, label: 'LVEF', unit: '%', min: 5, max: 80 },
       { dom: 'mecki-ppvo2', arg: 'ppvo2', kind: 'number', required: true, label: 'Peak VO₂ (% predicted)', bound: 'bmi' },
       { dom: 'mecki-veco2', arg: 'veco2', kind: 'number', required: true, label: 'VE/VCO₂ slope', min: 10, max: 120 },
-      { dom: 'mecki-egfr', arg: 'egfr', kind: 'number', required: true, label: 'MDRD-eGFR', unit: 'mL/min/1.73 m²', bound: 'magnesium', boundScale: 10 },
+      // spec-v1796: this declared `bound: 'magnesium'` scaled by ten -- an eGFR bounded like a magnesium, for the
+      // numbers. Renaming it to the eGFR envelope published 0 to 200 where the library reads 3 to 250, so the
+      // library's own range is stated instead.
+      { dom: 'mecki-egfr', arg: 'egfr', kind: 'number', required: true, label: 'MDRD-eGFR', unit: 'mL/min/1.73 m²', min: 3, max: 250 },
     ],
   },
 ];

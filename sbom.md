@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `905b5b0d94c0c209`
-Generated: 2026-11-26T02:40:54.599Z
+Build ID: `66261b90c988161f`
+Generated: 2026-11-26T03:04:42.671Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1891,7 +1891,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v4.js` | 13745 | `db9b96229345aae70c7b26b715f3f2733052a12d17d3b9122ddaa5e2671a3abc` |
 | `mcp/adapters/clinical-v5.js` | 12620 | `7b32f1b74f44678f843e2c874666e4436edf854b5d55cfad8e5905cb66ec115e` |
 | `mcp/adapters/clinical-v6.js` | 9929 | `4c8f092989425aa185ff97a8fc5039fb4c172e48cec4f98f70052e45ce5e8a6e` |
-| `mcp/adapters/clinical-v7.js` | 9598 | `b0cbb9112d0a10e9c7bc7bb1316a23f29706939d72af4d433a57d1cedad09ba2` |
+| `mcp/adapters/clinical-v7.js` | 9788 | `dd5aca5a944444eed6adc675b40b011978307e7021c691758d26f8433fa46e0f` |
 | `mcp/adapters/clinical-v8.js` | 17582 | `56f1d308f57a911d35ff55729a050fcb525baaecc32ab0eb30b67f188374606c` |
 | `mcp/adapters/clinical.js` | 32351 | `46868fde27a3d2816382de767db9a832e1e3a806bf99845a68c5ae71e6ace968` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
@@ -1945,7 +1945,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/cuff-leak-v903.js` | 1764 | `9729fc605aff899d2b741fa28cfc951ef2519ff6456016e0cc59673a15210453` |
 | `mcp/adapters/cumulative-dose-limit-v1635.js` | 1934 | `0715db8913d12226f0cc197e45f857a3abd3378f08e10860ef787c5d9b9de982` |
 | `mcp/adapters/cutaneous-leishmaniasis-americas-v1563.js` | 2049 | `df57c9c9b74ffe8f59d4bb148256d8634b5eaf32842bc9e577db0c2335ed8a8e` |
-| `mcp/adapters/cvrisk-engines-v202.js` | 1373 | `d353cd16c67305895076cd46505cf42b35478bab3bca63294eabdfc81a198b05` |
+| `mcp/adapters/cvrisk-engines-v202.js` | 1629 | `207285b7f34a8fcc9427d087e42ce773b0a1186fcc1788aded67dce2e7646fb2` |
 | `mcp/adapters/cvrisk-v103.js` | 7411 | `2ccd54ca5e33499f3df7c116165c5a98b725f1bc42fdee59e4732eea2d45d35c` |
 | `mcp/adapters/cyp-list-check-v1701.js` | 874 | `df827d5f07e79bafe3668c40197bf4053f8f318447664b93587a3264f815ac97` |
 | `mcp/adapters/cyp2d6-activity-score-v1640.js` | 1212 | `d2a23bd67457aa7f98b18092f35d6d6eab45ae8172f9990cb67e2754aa1b978b` |
@@ -2202,7 +2202,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hemodynamics-v87.js` | 3263 | `3f9bd92e4359ee444b12f2b94342ae6e93bc8709f2cddcf06f1d6ecb397e54f9` |
 | `mcp/adapters/hemonc-v94.js` | 5722 | `3ae0a7aff63f28ccbdd22f8a19888da057920157381d35f223f7994aee63bfee` |
 | `mcp/adapters/hep-fibrosis-portal-v212.js` | 1931 | `d4e286a4cd9bfc98813c2676f67a1542bc9924d2dd905dc35002f6eea09ae50d` |
-| `mcp/adapters/hep-v124.js` | 3851 | `bc1ab410120bd6919fe3d55d1a9f95ceed00bad2de6c32addb8a1cb1637cf46a` |
+| `mcp/adapters/hep-v124.js` | 3960 | `a45a175c0d2cb4c6792545422395f702a983d305d926ff0e8a929cda3c291409` |
 | `mcp/adapters/hep-v125.js` | 4079 | `f76c00a9c4f8b70924715f1aae549772806d38cea38a4d80dcd2749da0ea10b2` |
 | `mcp/adapters/hepatic-iron-index-v932.js` | 1926 | `0cd5e595ae56b7e3c70a554776adc11741a44d939a998ad069eacc17977a61c4` |
 | `mcp/adapters/hepatic-label-dose-v1632.js` | 1137 | `bf8a41366ec2914dcb9a32683b2354ff09d7a46e43ac0213bfedb8ad48b176cc` |
@@ -2210,7 +2210,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hepatology-prognosis-v220.js` | 4753 | `f4d1c9c611e64e98fb1a7e390e8dccc6fa41b6c2393cfcb8c49548c8d998c10f` |
 | `mcp/adapters/hepatopulmonary-syndrome-v1243.js` | 1879 | `168ccbb985e52cc6a74b394669d68f836c9792e4fcb390e3588f59f6630b97f9` |
 | `mcp/adapters/hepgi-v190.js` | 3653 | `8189bdf788584361f44dae31bbafc07829694415a67346455e3404050cef5fc1` |
-| `mcp/adapters/hepgi-v93.js` | 7284 | `c4f2c3b5bd96fc87307148fd6eb303e9c43c5b042f266598df4009ed86b5a5c3` |
+| `mcp/adapters/hepgi-v93.js` | 7393 | `572630556294b6a111e222f1fa3efff65e40497140a91aaf52b17071148b6029` |
 | `mcp/adapters/herbert-scaphoid-v1241.js` | 1451 | `ac204f8e9d4454173280cc7697c30eddfc91fc55eaf7a81268fe3bf5d5c10475` |
 | `mcp/adapters/herd-immunity-v1772.js` | 1148 | `33394373f10a0863e53c11decc2b8679f6eac13b627dae7ba37875eca1665753` |
 | `mcp/adapters/herring-pillar-v347.js` | 1572 | `7dd67fd475cf24652fa9a7d739e1b056b4fdc8269a8e6b5602f54feca7f60b97` |
@@ -2245,7 +2245,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/icer-dominance-v1634.js` | 874 | `3a873121c48955baf470d924a45b4f0f0c66811b391457f414bc5aac03d624a0` |
 | `mcp/adapters/icrs-v338.js` | 1501 | `c592dba3fadd54ff789e7d31fbfa32b60f2273d36dd6976a20a19104bfccca56` |
 | `mcp/adapters/id-v137.js` | 5985 | `44be115c2a2cd0d70495528bc2cab113c0cef7227db543b121275975b48c4b8c` |
-| `mcp/adapters/idcrit-v99.js` | 8191 | `7abb8bd3f039e2b2d98dca91faa18ace1d8079827d31368a74a112a985fa3ccc` |
+| `mcp/adapters/idcrit-v99.js` | 8309 | `77084b3b9e6dbca39614529f49994cb2f6f4b7d793c5283d9c871827fdd551b6` |
 | `mcp/adapters/ideberg-glenoid-v409.js` | 1394 | `9448ea62c9d4c69bf205062fc16372e692f17cd4cab0d096d360b50b24f5b102` |
 | `mcp/adapters/ids-accountability-reconcile-v1635.js` | 1985 | `3f8971bcad8e3f13affa93e6aa389e27749704602279fc4c87bb396de9504909` |
 | `mcp/adapters/igcccg-v567.js` | 7480 | `0be1606796cd536badb1b9db2a91ae06ab1a8cb3f76ef2007670195f346ffdc0` |
@@ -2844,7 +2844,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schumock-thornton-preventability-v1634.js` | 1699 | `1076046b53bf7fa9c95d1907670da32babe615ba9b0870eb6b66061537b01122` |
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
 | `mcp/adapters/scoring-v4.js` | 168541 | `080e8237b0dca32bd6270499b70c1f11c990ec3384c282fff3aa97c1398481e1` |
-| `mcp/adapters/scoring-v5.js` | 12850 | `c32ca221edfe412cc9814d79afed2c335637611922a8f9b1042fb9f354ef6532` |
+| `mcp/adapters/scoring-v5.js` | 13034 | `884ea0686e73ae6c99797be1edc09c9ba3931e2ce0e52ee2237d6cca57c7d14c` |
 | `mcp/adapters/scoring-v6.js` | 20857 | `02f1d8ebef6309a8c9e0e6e50aa8c352197529df799d6b58ed0e615fcdd31fff` |
 | `mcp/adapters/scorpion-grade-india-v1556.js` | 1284 | `3cd3d399c2af7f57769e85a6ad4edeb3e77354249b3a6db361b0981e71233aed` |
 | `mcp/adapters/scp-pushing-v562.js` | 5791 | `79ec7c5fbd7258c6647f6679be5fd535867c03246e6fd071d291393ab8705fed` |

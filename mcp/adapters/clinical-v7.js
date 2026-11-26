@@ -137,7 +137,9 @@ export default [
     summary: 'Pediatric PRBC transfusion volume for a desired hemoglobin rise: volume mL = weight x Hb rise x factor scaled by product hematocrit, also reported as mL/kg.',
     compute: F.pedsTransfusionVolume,
     fields: [
-      { dom: 'pt-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg (canonical)', bound: 'lactate', boundScale: 10 },
+      // spec-v1796: this declared `bound: 'lactate'` scaled by ten. The weightKg envelope does not fit either --
+      // the library guards 0 to 500, not the envelope's 0.2 -- so its own range is stated.
+      { dom: 'pt-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg (canonical)', min: 0, max: 500 },
       { dom: 'pt-rise', arg: 'hbRise', kind: 'number', required: true, label: 'Desired hemoglobin rise (g/dL)', unit: 'g/dL' },
       { dom: 'pt-hct', arg: 'productHctPct', kind: 'enum', values: ['60', '55', '70'], required: true, label: 'Product hematocrit (%)', to: Number },
     ],

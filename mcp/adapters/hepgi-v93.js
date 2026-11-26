@@ -19,7 +19,8 @@ export default [
       { dom: 'nf-ast', concept: 'ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', bound: 'ast' },
       { dom: 'nf-alt', concept: 'alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'U/L', bound: 'alt' },
       { dom: 'nf-plt', concept: 'platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: 'x10^9/L', bound: 'platelets' },
-      { dom: 'nf-alb', concept: 'albumin', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', bound: 'baseExcess', boundScale: 0.1 },
+      // spec-v1796: the envelope this field names was borrowed for its numbers; a serum albumin was bounded like a base excess.
+      { dom: 'nf-alb', concept: 'albumin', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', bound: 'albumin' },
     ],
   },
   {

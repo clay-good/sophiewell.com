@@ -10,7 +10,8 @@ export default [
     summary: 'Albumin-Bilirubin (ALBI) grade (Johnson 2015): an objective liver-function grade from albumin and bilirubin alone.',
     compute: M.albiGrade,
     fields: [
-      { dom: 'al-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', bound: 'baseExcess', boundScale: 0.1 },
+      // spec-v1796: the envelope this field names was borrowed for its numbers; a serum albumin was bounded like a base excess.
+      { dom: 'al-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', bound: 'albumin' },
       { dom: 'al-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL', bound: 'bilirubin' },
     ],
   },

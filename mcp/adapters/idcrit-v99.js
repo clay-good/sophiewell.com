@@ -79,7 +79,8 @@ export default [
     fields: [
       { dom: 'ref-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2', bound: 'bmi' },
       { dom: 'ref-wl', arg: 'weightLoss', kind: 'number', required: true, label: 'Unintentional weight loss over 3-6 months', unit: '%', bound: 'percentWeightLoss' },
-      { dom: 'ref-days', arg: 'daysNoIntake', kind: 'number', required: true, label: 'Days with little or no nutritional intake', bound: 'platelets', boundScale: 0.1 },
+      // spec-v1796: the envelope this field names was borrowed for its numbers; a count of days was bounded like a platelet count.
+      { dom: 'ref-days', arg: 'daysNoIntake', kind: 'number', required: true, label: 'Days with little or no nutritional intake', bound: 'daysNoIntake' },
       { dom: 'ref-electrolytes', arg: 'lowElectrolytes', kind: 'bool', label: 'Low pre-feeding potassium, magnesium, or phosphate' },
       { dom: 'ref-history', arg: 'historyFlag', kind: 'bool', label: 'History of alcohol misuse or insulin / chemotherapy / antacids / diuretics' },
     ],
