@@ -37,3 +37,23 @@ test('refusals', () => {
   assert.equal(r({ region: 'eafrica', indication: 'primary', weight: '40', age: '30', hiv: 'yes' }).valid, false);
   assert.equal(r({ region: 'eafrica', indication: 'primary', age: '30' }).valid, false);
 });
+
+// spec-v1814: an unanswered pregnancy question is not a no.
+//
+// Pregnancy or breastfeeding excludes the paromomycin-with-miltefosine regimen this tool recommends,
+// because miltefosine is teratogenic -- and the select is not required on the agent surface, so an omitted
+// key must not read as "not pregnant" in silence (spec-v1073). The contraception note beside it answers a
+// different question and was the only one being said.
+test('an unanswered pregnancy question is named on the regimen it would exclude', () => {
+  const base = { region: 'eafrica', indication: 'primary', weight: '35', age: '30' };
+  const unanswered = r({ ...base, contraception: 'yes' });     // `pregnant` left out entirely
+  assert.equal(unanswered.bandLabel, 'Paromomycin plus miltefosine');
+  assert.ok(unanswered.notes.some((n) => /Pregnancy or breastfeeding: not entered/.test(n)),
+    'the exclusion the reading assumes an answer to is not named');
+  // Answered either way, there is nothing to name.
+  for (const pregnant of ['yes', 'no']) {
+    const got = r({ ...base, contraception: 'yes', pregnant });
+    assert.ok(!got.notes.some((n) => /Pregnancy or breastfeeding: not entered/.test(n)), pregnant);
+  }
+  assert.equal(r({ ...base, pregnant: 'yes' }).bandLabel, 'SSG plus paromomycin');
+});

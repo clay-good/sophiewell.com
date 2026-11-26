@@ -76,6 +76,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Three calculators stop reading a verdict from something nobody told them, each on one path through the
+  code while another path said so plainly. The Cairo-Bishop tumor-lysis grade is the highest of its
+  end-organ criteria, so it now says when the creatinine was never drawn -- above six times the upper limit
+  it is a grade higher. The 6CIT held its total back as a floor only while the score was still in the normal
+  range, where "consider referral" and "refer" are also two different actions an unadministered task can
+  carry a reader between. And the visceral leishmaniasis regimen read an unanswered "pregnant or
+  breastfeeding" as no, while recommending the regimen pregnancy excludes. The 6CIT's own worked example
+  also left one of its three tasks unadministered, and now does not.
 - The lymphatic-filariasis MDA regimen tool could call a person eligible without saying that severe illness,
   which excludes them, had never been answered. The sentence that said so was the last thing the tool
   worked out, and four shorter paths through it finished first -- including the one for a person under 90 cm

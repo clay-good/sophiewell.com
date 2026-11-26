@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ae9aa226e949bbd4`
-Generated: 2026-11-26T10:57:07.755Z
+Build ID: `765612dab5d1cbfc`
+Generated: 2026-11-26T11:35:01.500Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -913,9 +913,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meq-mmol-mg-v1629.js` | 10502 | `76caf755e89d99d1db8bbe2810aaece5f3211e197dfa45b43446473010e4991d` |
 | `lib/mesna-ifosfamide-schedule-v1635.js` | 7411 | `fa49263b490f67155c0e089a1446f134a5d07e523195c3048e342572dcf60a26` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 3088337 | `e64f78a6be5e5a0eec55856bb42605974b25b9b09bcf46e23c7584c4126cde69` |
+| `lib/meta.js` | 3088669 | `c0c06fc51b9ff23faa56b2627905d8d42b5972e98897964c504a7ed1bce3a657` |
 | `lib/metabolic-hepatic-v219.js` | 16676 | `c60774ec5dc93a3ab329cd7f8d72be8af8bce3bceb40c226bcce5ceaf968e8c2` |
-| `lib/metabolic-onc-v88.js` | 24414 | `ae7691de330ba326be96905d6e41dadf7985fce66eb429c07e8762b5d18af7b2` |
+| `lib/metabolic-onc-v88.js` | 25114 | `634de3c95ed5aae225861dace9da40b895031f8815414e01bee4abb7c336e8d1` |
 | `lib/metabolic-v269.js` | 4636 | `09298bce30eefb9867e122115bba1da5f5fb4a4345fef4e54fb2479605eab218` |
 | `lib/metabolic-v273.js` | 4260 | `902b7b2cde65b8f5c9e4ee32037117f8bd26affd4951fb7c87086b911deadc74` |
 | `lib/metavir-activity-v505.js` | 3062 | `750a1451913ae545ea922fdb3584efd83e1043cafdb85259a78d4d3c72f6b6a2` |
@@ -1411,7 +1411,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/simpson-angus-v515.js` | 4076 | `ac4c0ab6135693d8e2ae1d91e8bbd2d3f176262bf2be9107be355d942d0a2ca1` |
 | `lib/simpson-meningioma-v503.js` | 3590 | `a47197f0a46356bffdb89208d4b780b324ac51000a2f5bdf650db5cd8fb841ca` |
 | `lib/siponimod-cyp2c9-dose-v1640.js` | 5752 | `1ad6b6d59d98fbfe33639944c24823932f49ccc8ce9a299c4443ac7495ab895f` |
-| `lib/sixcit-v778.js` | 5945 | `7a9b78a159f3a5a89a26f36baa67d5ca830c4255005f963025a7d65b8ffa556e` |
+| `lib/sixcit-v778.js` | 6593 | `109d205dec7949ea44f0cc4d380b426b4e1701e713e74390c0015cce29e2aa79` |
 | `lib/skin-tear-v900.js` | 6149 | `5e0a2d8898a71ed903786981d79ac45820484e044915a112c307f2771900c44c` |
 | `lib/slums-v644.js` | 6237 | `9b2459d9cc261ef5599b8b8092d2a31fbd66511d666a9f2811f366fbd8c49f51` |
 | `lib/smast-v737.js` | 3334 | `15043daafddc1d9e3c9ee3119ccb3f66038d78b1e0289987e77b3aaad262834a` |
@@ -1585,7 +1585,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/vhi10-v508.js` | 3708 | `40297e81fc7f0da10cc909b1b2a13fe7a6b2048c7cf72291d8f3f1f16ac4c871` |
 | `lib/vhwg-hernia-v666.js` | 3465 | `cbf1ad3125634cff69574f4faa775b128beb2ad2ead868106673ee8b698c8776` |
 | `lib/vial-rounding-v1512.js` | 10179 | `ceeb82fc4e2be9c2ebec5ec1609761971304bfd9f477e5c12124645d3b82de2a` |
-| `lib/visceral-leishmaniasis-2026-v1563.js` | 9178 | `fc3061faada4bd29124a8a4fca408cdcd421c80c55c8d2ffce03aa8d7b7f06b1` |
+| `lib/visceral-leishmaniasis-2026-v1563.js` | 9882 | `b4a1ee2a204fec61fdbb1d58e3c8b2e4760c946ef1a946f4137bd14117247d35` |
 | `lib/vitamin-a-dose-child-v1550.js` | 7265 | `b5248ae949fb35876696a8453d3fc15e1d6d275aa0e46f067e953b782651f5a8` |
 | `lib/vitamin-d-level-v881.js` | 8175 | `f51b5e76fd6dbe1c45e4e7e4b34acc9200e83b687a3ed15d054b7bba8d067810` |
 | `lib/vitamin-iu-converter-v1633.js` | 7396 | `b38a493217a9af2e964bd5c12a89bb83d278151140ceee76ec354a7ffe2c3af2` |

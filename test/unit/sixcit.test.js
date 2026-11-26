@@ -24,11 +24,33 @@ test('every item wrong -> 28, the maximum', () => {
 });
 
 test('worked example: year wrong, one counting error, one address part missed -> 8', () => {
-  const r = sixcit({ yearWrong: 'true', countErrors: '1', addressErrors: '1' });
+  const r = sixcit(administered({ yearWrong: 'true', countErrors: '1', addressErrors: '1' }));
   assert.equal(r.score, 8);
   assert.equal(r.tier, 'mild');
   assert.equal(r.abnormal, true);
   assert.match(r.band, /6CIT 8 of 28/);
+});
+
+// spec-v1814: the floor reaches the 8-9 band too.
+//
+// spec-v1115 held the NORMAL reading back when a task was unadministered, on the argument that the score
+// is monotone so only the reassuring side waits. But 8-9 is "consider referral" and 10 or more is
+// "refer": the milder of the two actions was being read from a subset in exactly the same way. Only the
+// top band is settled, because nothing can raise a total past it.
+test('spec-v1814: the consider-referral band waits for the unadministered task too', () => {
+  const partial = sixcit({ yearWrong: 'true', countErrors: '1', addressErrors: '1' });  // months not given
+  assert.equal(partial.score, 8);
+  assert.equal(partial.tier, null, 'the band is not settled while a task can still raise the score');
+  assert.equal(partial.abnormal, true, 'above the normal range is settled');
+  assert.match(partial.band, /at least 8 of 28/);
+  assert.match(partial.band, /months in reverse was not administered/);
+  assert.match(partial.band, /refer range \(10 or more\) is not settled/);
+  // The top band cannot be raised, so it is given plainly.
+  const top = sixcit({ yearWrong: 'true', monthWrong: 'true', timeWrong: 'true', countErrors: '1' });
+  assert.ok(top.score >= 10);
+  assert.equal(top.tier, 'significant');
+  assert.match(top.band, /of 28 \u2014/);
+  assert.doesNotMatch(top.band, /at least/);
 });
 
 test('7 is still normal and 8 is the first significant score', () => {

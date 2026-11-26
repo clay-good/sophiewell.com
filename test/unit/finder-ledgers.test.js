@@ -95,7 +95,19 @@ const FINDERS = [
     // Its report is a count line and then two indented lines per row; a row is what is indented.
     isFinding: (l) => l.startsWith('  '),
     informational: [],
-    minJudged: 34,
+    minJudged: 32,
+  },
+  {
+    probe: 'probe-note-lost-in-a-branch.mjs',
+    what: 'a tile that owns a gap in some configurations of its other fields and answers without owning it in '
+      + 'the rest, where the missing field could still have moved the verdict there',
+    fix: 'Own the gap on every path that answers (docs/spec-v1813.md, docs/spec-v1814.md), or add it to JUDGED '
+      + 'in the finder with the reason -- the verdict cannot move there, the band already names what it stood '
+      + 'on, or the owning configuration is about a different field',
+    // Its report is a preamble and then three indented lines per row; a row is what is indented.
+    isFinding: (l) => l.startsWith('  '),
+    informational: [],
+    minJudged: 14,
   },
   {
     probe: 'probe-declared-cap-configs.mjs',

@@ -174,7 +174,13 @@ export const DISCLOSING = new RegExp([
   // from flagged to exempt -- `aims-tardive`, which reads "AIMS movement total
   // 4/28 (global severity not rated)" and is disclosing, not answering anyway.
   // It changes nothing in either empty-form sweep, which read ASKING only.
-  '(?:not|never) (?:yet )?(?:been )?(?:recorded|graded|rated|measured)\\b',
+  // spec-v1814: `staged`, the fifth participle of the same sentence, 15 uses across lib/. `gvhd-grade`
+  // reads "Acute GVHD grade III (modified Glucksberg) from skin not staged, liver not staged, GI stage 2"
+  // -- a grade that names, organ by organ, what it stood on -- and was read as answering in silence.
+  // Measured before adding, as the rule at the top requires: it moves exactly that one row, in
+  // probe-note-lost-in-a-branch, and nothing anywhere else. `classified` was measured with it (30 uses)
+  // and moves NOTHING, so it is not added: the list stays what the catalog needs.
+  '(?:not|never) (?:yet )?(?:been )?(?:recorded|graded|rated|measured|staged)\\b',
   // spec-v1196: the negative-existential form of the same sentence, and the
   // phrase the house uses when it answers on a partial record. `no <thing>
   // is/was entered|recorded` has 13 uses across lib/ and `what was entered` has

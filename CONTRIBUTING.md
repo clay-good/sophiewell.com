@@ -347,9 +347,10 @@ node scripts/probe-dated-claims.mjs       # a date that has passed, still writte
 node scripts/probe-envelope-floor.mjs     # a value below a lib/bounds.js floor still answered (docs/spec-v1760.md)
 node scripts/probe-envelope-inside.mjs    # a survivable value just inside an envelope refused by a narrower cap NOTHING DECLARES -- a cap the field's own min/max already excludes is a validated population stated, and is not reported (docs/spec-v1766.md, docs/spec-v1781.md)
 node scripts/probe-unit-equivalent.mjs     # the same quantity in the other unit answered differently, judged ledger and all (docs/spec-v1771.md)
+node scripts/probe-note-lost-in-a-branch.mjs  # a tile that owns a gap in some configurations of its other fields and answers without owning it in the rest, where the field could still move the verdict there -- no judgement in the row, because the tile has already made it (docs/spec-v1814.md)
 ```
 
-**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds seven of them
+**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds twenty-four of them
 in both directions: an unjudged row fails the gate, so it is a decision someone takes rather than a line in
 a report that already prints known ones, and a judged row the finder no longer reaches fails too, so a
 reason cannot outlive what it describes. Negative-test both directions when you add one, by removing a

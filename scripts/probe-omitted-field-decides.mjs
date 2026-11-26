@@ -365,9 +365,6 @@ const JUDGED_UNFLAGGED = {
   'calvert-carboplatin|cv-cap': 'The default is the FDA recommendation and the band states it was applied: '
     + '"Estimated GFR 140 mL/min capped at 125 mL/min (FDA, October 2010)". Omitting the field cannot give '
     + 'a larger dose than entering it, because the cap is the safe direction',
-  'tls-cairo-bishop|tl-arr': 'A tick box for an end-organ criterion, where an unticked box is a real "no" '
-    + '(rule 4 of the programme), and the note lists the criteria the grade is read from',
-  'tls-cairo-bishop|tl-sz': 'The same: an end-organ tick box, with the criteria listed',
   'pk-suite|pk-vd': 'A reading that LOSES a clause has fabricated nothing (spec-v1196): without the volume '
     + 'of distribution the tool prints the one line it can still compute and no half-life or loading dose',
   'pk-suite|pk-cl': 'The same: the clauses that need the clearance are absent, not wrong',
