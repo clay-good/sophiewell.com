@@ -49,8 +49,31 @@
 //   The boundary was NOT confirmed from either paper here, so it is not encoded: read the glossary, then
 //   refuse past it the way `fittedAgeFault` refuses outside a model's fitted ages.
 //
-//   The urine creatinine and the age in months are the trap spec-v1797 named, below. The FEV1 percent
-//   predicted, the QRS amplitude and the ABC/2 diameters each want an extreme-value source of their own.
+//   The age in months is the trap spec-v1797 named, below. spec-v1825 took the urine creatinine, fenced by
+//   CDC's NHANES reportable range rather than by a case report.
+//
+// spec-v1826 went after the last three and got three different answers. The searches are recorded so the
+// next reader does not repeat them:
+//
+//   FEV1 PERCENT PREDICTED IS CLOSED, and needed no fence. `gold-spirometry`, `bode-index`,
+//   `bronchiectasis-bsi` and `faced-bronchiectasis` give the IDENTICAL reading at 80, 160 and 999999
+//   percent, because every one of those instruments has an OPEN-ENDED top band (GOLD 1 is ">= 80%", BODE's
+//   top band ">= 65%", FACED's "> 50%", BSI's ">= 50%"). There is no wrong answer to fix. No individual
+//   maximum is published either: group means reach about 122% in swimmers and supra-normal values appear in
+//   14% of an elite cohort against GLI, but no extreme.
+//
+//   THE QRS AMPLITUDE IS THE ONE EXPOSURE, and it has no source. `ecg-axis` reads a net lead-I deflection
+//   of 999999 as "Mean QRS axis 0 deg: NORMAL axis" where the worked example reads 50.2 degrees -- the
+//   arctangent is right for the numbers given, so a typo silently moves the axis toward normal. A fence
+//   would need the highest R-wave amplitude the literature reports at standard calibration, which was not
+//   found.
+//
+//   THE ABC/2 DIAMETERS print an impossible volume rather than a wrong band: `ich-volume-abc2` reads
+//   "ICH volume 5,999,994 mL", where a head holds about 1,180 to 1,761 mL by MRI (a 19-subject validation
+//   series, mean 1,504 +/- 169). The stroke literature reports ICH THRESHOLDS -- 25 mL life-threatening,
+//   above 50 poor outcome, 60 with GCS under 8 over 90% 30-day mortality, 89.5 mL for lobar -- and no
+//   maximum. So a ceiling here would be a number chosen rather than cited, which is what spec-v1206 and
+//   spec-v1797 both forbid; the intracranial volume is the figure to start from when someone sources it.
 //
 // The last two are the trap spec-v1797 named: `ageYears` x 12 and `scr` are envelopes for a DIFFERENT
 // quantity, and borrowing one for its ceiling is an obfuscated literal, not a bound.

@@ -76,6 +76,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The last three measurements without a plausible range were taken as far as published sources allow. The
+  FEV1 percent predicted turned out to need none: the four tools that use it give the same answer at 80, 160
+  and 999999 percent, because each instrument's top band is open-ended. The other two -- an ECG amplitude and
+  the three diameters of a brain hemorrhage -- have no maximum anywhere in the literature, so no number was
+  invented for them; what the searches did and did not find is written down instead.
 - Seven kidney calculators that work from a urine-to-blood ratio would accept a urine creatinine of 4,000
   mg/dL -- past the top of what a laboratory reports even after diluting the sample -- and the impossible
   figure drove each ratio toward the reassuring end. The plausible range is now CDC's own reported range for
