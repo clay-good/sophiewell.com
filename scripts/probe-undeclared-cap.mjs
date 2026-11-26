@@ -129,6 +129,27 @@ function sharedEnvelope(min, max, text = '') {
       }
     }
   }
+  // spec-v1793: an envelope restated through a MOLAR CONVERSION, which no list of decade scales can cover.
+  // `hscore-hlh` reads triglyceride in mmol/L and calls `boundsAdvisory('triglycerides', tg * 88.57)`, so
+  // its enforced edges are BOUNDS.triglycerides / 88.57 -- 0.0113 and 395.168. Both are the envelope and
+  // neither is a decade of it, so the finder called them the tool's own cap and offered them for a
+  // declaration. Freezing those two numbers into a descriptor is exactly what the ENVELOPE section exists
+  // to prevent: specs v1762-v1765 widened four envelopes and then spent three specs chasing the narrower
+  // copies left behind in libraries.
+  //
+  // A single free factor is only admissible evidence when BOTH edges are known, because two points pin the
+  // factor and one does not: any lone ceiling is some factor times any envelope's ceiling. Requiring both,
+  // a non-zero floor, and agreement to half a percent, the match is the envelope's SHAPE -- the ratio of
+  // its edges -- which a round number pair does not imitate by accident.
+  if (min !== null && max !== null && min !== 0) {
+    for (const [key, b] of Object.entries(BOUNDS)) {
+      if (!Number.isFinite(b.min) || !Number.isFinite(b.max) || b.min === 0 || b.max === b.min) continue;
+      const s = max / b.max;
+      if (!(s > 0) || !near(min, b.min * s)) continue;
+      const id = identifies(key, text);
+      if (id) return `${id} x${Number(s.toPrecision(6))}`;
+    }
+  }
   return null;
 }
 
@@ -224,11 +245,69 @@ for (const [id, meta] of Object.entries(META)) {
     if (!hi && !lo) continue;
     capped += 1;
 
-    const declaredMax = Number.isFinite(p.maximum) ? p.maximum : null;
+    // Does the cap belong to this field alone? spec-v1793 rewrote this test, which was the finder's weakest
+    // part and the reason a batch of its declarations had to be judged by hand. It used to shift ONE
+    // sibling -- the first positive numeric input -- by 25%, flip each enum, and re-bisect; a cap that held
+    // under that shift was called the field's own. Driving the surviving 63 rows against every single-factor
+    // variation of the worked example instead showed 20 of them moving: `qbl-pph`'s dry tare is capped at
+    // the weighed pad mass, `popq-staging`'s point Ba at the vaginal length, `hadlock-efw`'s biometry at the
+    // abdominal circumference, and `mfp-refund-check`'s quantity at whichever drug is picked. Every one of
+    // those would have been frozen into a descriptor as a number that is only true for one worked example.
+    //
+    // So the question is no longer "did the edge move?" but the one a declaration actually makes: IS
+    // ANYTHING PAST THIS EDGE EVER ACCEPTED? It is asked of every single-factor variation that still
+    // computes -- each numeric sibling at six multiples, each enum option, each flag -- and at three
+    // distances past the edge, since a cap that merely shifts outward is still not this field's own.
+    const variants = [];
+    for (const q of tool.fields || []) {
+      if (q.dom === dom) continue;
+      if (q.kind === 'enum' && Array.isArray(q.values)) {
+        // spec-v1793: EVERY option, not the first eight. `mfp-refund-check`'s quantity ceiling moves with
+        // the drug picked, and the drug this finder needed was the ninth in the list, so the slice called a
+        // cap the field's own that a tenth of the drug list does not keep.
+        for (const v of q.values) {
+          if (String(example[q.dom]) !== String(v)) variants.push([q.dom, { ...example, [q.dom]: String(v) }]);
+        }
+      } else if (q.kind === 'number') {
+        const b = Number(example[q.dom]);
+        if (!Number.isFinite(b) || b === 0) { variants.push([q.dom, { ...example, [q.dom]: '1' }]); continue; }
+        // A counted quantity has to stay a whole number or the configuration is simply refused and proves
+        // nothing. DHI's two answer counts share a budget of 25 and were read as two contradicted
+        // declarations until the shift stayed integral.
+        for (const k of [0.1, 0.33, 0.5, 0.75, 1.25, 2, 3, 5, 10]) {
+          variants.push([q.dom, { ...example, [q.dom]: String(Number.isInteger(b) ? Math.max(1, Math.round(b * k)) : b * k) }]);
+        }
+        // A sibling whose own range is NARROW is unreachable by multiples: `corrected-potassium-ph` takes a
+        // pH of 6.3 to 8, so every multiple of its 7.4 example lands outside and is refused, no variant
+        // computes, and the finder concluded the potassium's floor was the potassium's own. It is not --
+        // the floor is where the pH-corrected potassium leaves its output range, and it moves with the pH.
+        // Where a sibling DECLARES a range, that declaration says where to look: sample inside it.
+        const sp = props[q.dom] || {};
+        const qlo = Number.isFinite(sp.minimum) ? sp.minimum : (Number.isFinite(sp.exclusiveMinimum) ? sp.exclusiveMinimum : null);
+        const qhi = Number.isFinite(sp.maximum) ? sp.maximum : (Number.isFinite(sp.exclusiveMaximum) ? sp.exclusiveMaximum : null);
+        if (qlo !== null && qhi !== null && qhi > qlo) {
+          for (const frac of [0.02, 0.25, 0.5, 0.75, 0.98]) {
+            const v = qlo + (qhi - qlo) * frac;
+            variants.push([q.dom, { ...example, [q.dom]: String(Number.isInteger(b) ? Math.round(v) : Number(v.toPrecision(10))) }]);
+          }
+        }
+      } else if (q.kind === 'bool' || q.kind === 'checkbox') {
+        variants.push([q.dom, { ...example, [q.dom]: String(example[q.dom] === 'true' ? 'false' : 'true') }]);
+      }
+    }
+
+    // spec-v1793: `exclusiveMaximum` is a declaration too. mcp/fields.js publishes an edge the library
+    // itself refuses under the exclusive key, and reading only `maximum` called `fagan-post-test`'s pre-test
+    // probability undeclared when it has declared 0 to 100 exclusive since spec-v1777 -- one of three
+    // fields that use the key, so the blind spot was the whole of it.
+    const declaredMax = Number.isFinite(p.maximum) ? p.maximum
+      : (Number.isFinite(p.exclusiveMaximum) ? p.exclusiveMaximum : null);
     // A declared minimum of 0 on a positive quantity is a non-negativity rule, not a claim about where the
     // quantity starts. Reading it as a floor would call "declared 0, enforced 0.21" a contradiction, when
     // what it is is an undeclared floor.
-    const declaredMin = Number.isFinite(p.minimum) && p.minimum !== 0 ? p.minimum : null;
+    const declaredMinAny = Number.isFinite(p.minimum) ? p.minimum
+      : (Number.isFinite(p.exclusiveMinimum) ? p.exclusiveMinimum : null);
+    const declaredMin = declaredMinAny !== null && declaredMinAny !== 0 ? declaredMinAny : null;
     const foundMax = hi ? round(hi.accepted) : null;
     const foundMin = lo ? round(lo.accepted) : null;
     // Compare the rounded edges: the bisection stops a nanometre short of the cap, and 0.9999999993 against
@@ -240,7 +319,29 @@ for (const [id, meta] of Object.entries(META)) {
     const said = messageAt(id, set(hi ? hi.refused : lo.refused)).slice(0, 96);
     const row = `${id}\t${dom}\t${f.arg || ''}\t${detail}\tdeclared=[${declaredMin ?? (p.minimum === 0 ? 0 : '-')}, ${declaredMax ?? '-'}]\t${said}`;
 
-    const contradicted = off(declaredMax, foundMax) || off(declaredMin, foundMin);
+    // spec-v1793: a DISAGREES row is the strongest claim this finder makes -- a defect either way round --
+    // so it is also the one that has to survive the most. `corrected-potassium-ph` declares a pH of 6.3 to 8
+    // and the bisection found its floor at 6.5, which looks like a declaration the library does not keep.
+    // It is neither: 6.4 is accepted whenever the potassium is high enough to leave the corrected value
+    // inside its output range, and the gap closes as the sibling moves. The edges past a cap are tested far
+    // out, where a declared floor's own refusal arrives first and hides this, so the gap BETWEEN the
+    // declaration and the found edge is sampled in its own right.
+    const gapReachable = (declared, found, side) => {
+      if (declared === null || found === null) return false;
+      const [lowEnd, highEnd] = side === 'min' ? [declared, found] : [found, declared];
+      if (!(highEnd > lowEnd)) return false;
+      for (const frac of [0.1, 0.3, 0.5, 0.7, 0.9]) {
+        const v = lowEnd + (highEnd - lowEnd) * frac;
+        for (const cfg of [example, ...variants.map(([, c]) => c)]) {
+          if (computeCalculator({ id, inputs: cfg }).valid !== true) continue;
+          const r = computeCalculator({ id, inputs: { ...cfg, [dom]: String(v) } });
+          if (r && r.valid === true) return true;
+        }
+      }
+      return false;
+    };
+    const contradicted = (off(declaredMax, foundMax) && !gapReachable(declaredMax, foundMax, 'max'))
+      || (off(declaredMin, foundMin) && !gapReachable(declaredMin, foundMin, 'min'));
     // Already declared on every side that exists, and in agreement: nothing to report.
     if (!contradicted && (!hi || declaredMax !== null) && (!lo || declaredMin !== null)) continue;
 
@@ -263,57 +364,47 @@ for (const [id, meta] of Object.entries(META)) {
       continue;
     }
 
-    // Does the cap belong to this field alone? Move another input and look again. This runs before every
-    // other verdict: a cap that is really a budget shared with a sibling (DHI's "Yes" and "Sometimes"
-    // answers must together total 25) is neither declarable nor a contradiction, and reading it as one
-    // would print a defect where the tool is right.
-    const other = Object.entries(props).find(([k, q]) => k !== dom && q.type === 'number'
-      && !Array.isArray(q.enum) && Number.isFinite(Number(example[k])) && Number(example[k]) > 0);
     let varies = false;
     let movedBy = null;
-    if (other) {
-      // A counted quantity has to stay a whole number or the shifted configuration is simply refused, and
-      // the probe would then learn nothing about whether the cap moved. DHI's two answer counts share a
-      // budget of 25 and were read as two contradicted declarations until the shift stayed integral.
-      const ov = Number(example[other[0]]);
-      const shift = Number.isInteger(ov) ? Math.max(Math.round(ov * 1.25), ov + 1) : ov * 1.25;
-      const shifted = { ...example, [other[0]]: String(shift) };
-      if (computeCalculator({ id, inputs: shifted }).valid === true) {
-        const set2 = (v) => ({ ...shifted, [dom]: String(v) });
-        const hi2 = hi ? edge(id, set2, Number(shifted[dom]), 1) : null;
-        const lo2 = lo ? edge(id, set2, Number(shifted[dom]), -1) : null;
-        const moved = (a, b) => (!a) !== (!b)
-          || (a && b && Math.abs(a.accepted - b.accepted) > Math.max(Math.abs(a.accepted) * 0.01, 1e-9));
-        varies = moved(hi, hi2) || moved(lo, lo2);
-        if (varies) movedBy = other[0];
+    for (const [src, cfg] of variants) {
+      if (computeCalculator({ id, inputs: cfg }).valid !== true) {
+        // The flip left the worked example itself uncomputable, so this configuration proves nothing --
+        // and for a UNIT select that is the loudest evidence there is. `gmi`'s mean glucose example of
+        // 180 mg/dL is absurd as mmol/L, so the configuration was skipped and the probe never learned
+        // that the library's 40-600 guard is applied to a converted number. It declared 40 to 600 on a
+        // field a reader can put 8.3 in, and probe-unit-equivalent caught it (spec-v1787).
+        if (unitSelect && src === unitSelect.dom) { varies = true; movedBy = src; break; }
+        continue;
       }
-    }
-    // spec-v1787: and every enum option, which is how a unit select is now identified -- by the cap moving
-    // when it flips, rather than by the look of its label. A select that does not move the cap does not
-    // rescale the field, whatever it is called.
-    if (!varies) {
-      const enums = (tool.fields || []).filter((q) => q.kind === 'enum' && Array.isArray(q.values));
-      for (const q of enums) {
-        for (const v of q.values.slice(0, 6)) {
-          if (String(example[q.dom]) === String(v)) continue;
-          const cfg = { ...example, [q.dom]: String(v) };
-          if (computeCalculator({ id, inputs: cfg }).valid !== true) {
-            // The flip left the worked example itself uncomputable, so this configuration proves nothing --
-            // and for a UNIT select that is the loudest evidence there is. `gmi`'s mean glucose example of
-            // 180 mg/dL is absurd as mmol/L, so the configuration was skipped and the probe never learned
-            // that the library's 40-600 guard is applied to a converted number. It declared 40 to 600 on a
-            // field a reader can put 8.3 in, and probe-unit-equivalent caught it (spec-v1787).
-            if (unitSelect && q.dom === unitSelect.dom) { varies = true; movedBy = q.dom; break; }
-            continue;
-          }
-          const set3 = (x) => ({ ...cfg, [dom]: String(x) });
-          const hi3 = hi ? edge(id, set3, Number(cfg[dom]), 1) : null;
-          const lo3 = lo ? edge(id, set3, Number(cfg[dom]), -1) : null;
-          const moved3 = (a, b) => (!a) !== (!b)
-            || (a && b && Math.abs(a.accepted - b.accepted) > Math.max(Math.abs(a.accepted) * 0.01, 1e-9));
-          if (moved3(hi, hi3) || moved3(lo, lo3)) { varies = true; movedBy = q.dom; break; }
+      for (const [side, e] of [['max', hi], ['min', lo]]) {
+        if (!e) continue;
+        for (const mult of side === 'max' ? [1.05, 1.5, 10] : [0.95, 0.5, 0.1]) {
+          const past = side === 'max' ? e.accepted * mult + 1e-6 : e.accepted * mult - 1e-9;
+          if (!Number.isFinite(past) || past === 0) continue;
+          if (!refusedByRange(id, { ...cfg, [dom]: String(past) })) { varies = true; movedBy = src; break; }
         }
         if (varies) break;
+      }
+      if (varies) break;
+    }
+    // The acceptance sweep above asks whether anything PAST the edge is ever accepted, which is the question
+    // a declaration answers -- but it is blind to a cap that moves INWARD, and that is what a unit select
+    // does. `donor-recipient-size-match` reads a weight in kg or lb and converts before the weightKg
+    // envelope, so its floor is 0.2 in kg and 0.44 in lb; nothing below either is accepted, the sweep was
+    // satisfied, and the field was offered for a declaration. It was declared, and the sibling gate
+    // answered at 525 lb against a published ceiling of 500 inside the hour. So where a unit select exists,
+    // the edge is re-bisected under each of its options and a cap that MOVES AT ALL is held back.
+    if (!varies && unitSelect && (hi || lo)) {
+      for (const v of unitSelect.values || []) {
+        if (String(example[unitSelect.dom]) === String(v)) continue;
+        const cfg = { ...example, [unitSelect.dom]: String(v) };
+        if (computeCalculator({ id, inputs: cfg }).valid !== true) { varies = true; movedBy = unitSelect.dom; break; }
+        const setU = (x) => ({ ...cfg, [dom]: String(x) });
+        const hiU = hi ? edge(id, setU, Number(cfg[dom]), 1) : null;
+        const loU = lo ? edge(id, setU, Number(cfg[dom]), -1) : null;
+        const movedU = (a, b) => (!a) !== (!b)
+          || (a && b && Math.abs(a.accepted - b.accepted) > Math.max(Math.abs(a.accepted) * 0.01, 1e-9));
+        if (movedU(hi, hiU) || movedU(lo, loU)) { varies = true; movedBy = unitSelect.dom; break; }
       }
     }
     if (varies) {

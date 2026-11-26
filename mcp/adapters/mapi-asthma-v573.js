@@ -33,7 +33,7 @@ export default [
     compute: M.mapiAsthma,
     fields: [
       {
-        dom: 'mapi-episodes', arg: 'wheezeEpisodes', kind: 'number', unit: 'episodes/year', required: true,
+        dom: 'mapi-episodes', arg: 'wheezeEpisodes', kind: 'number', unit: 'episodes/year', required: true, min: 0, max: 365,
         label: `Wheezing episodes in the past year. A literal COUNT, gating at ${M.WHEEZE_EPISODE_THRESHOLD} or more. NOT the original API's 1-to-5 rating scale.`,
       },
       ...M.MAPI_MAJOR_CRITERIA.map((c) => ({

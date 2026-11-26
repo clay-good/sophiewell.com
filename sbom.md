@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `67410b84cdc3549e`
-Generated: 2026-11-24T13:18:49.824Z
+Build ID: `20f6a16571521673`
+Generated: 2026-11-26T01:32:38.552Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1677,7 +1677,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/acs-v193.js` | 5450 | `95b652a674c14fafe5a81e8f026fbd0820f0fdd4da7b6efe327dc388de3dd020` |
 | `mcp/adapters/act-weight-band-dose-v1551.js` | 1077 | `03e4946290e4ac84a9481fe0c9b9e23ffa7de5a46e96ce8fecee2b403b145003` |
 | `mcp/adapters/acute-abdomen-v261.js` | 6654 | `6dd7300812944f88806ff61eed80ab8abb643c189c24d38d5304fbb284ae4cd8` |
-| `mcp/adapters/acute-injury-v213.js` | 5025 | `c6cc997021b68c0f82dfc772c900b3f9cb2357e5fa402d77f2a479a77db9418a` |
+| `mcp/adapters/acute-injury-v213.js` | 5057 | `86b16477f6cc593b3a0754a4d7c6c36ca6b54adb89b6ab4159a73775bc3234cf` |
 | `mcp/adapters/acute-opioid-rx-limit-v1393.js` | 2001 | `bf072507b5230ac79fc05519570627ba633e57555185c51ea08db4329951fcab` |
 | `mcp/adapters/ade-cost-avoidance-v1634.js` | 1106 | `4d56b40035ee00c82aa404c266ae99bfc55546e9bca984d8ba98e8e3fb7f9fc0` |
 | `mcp/adapters/adherence-v1513.js` | 1514 | `9edc36e7827342b4d4717743601a1cb20f81f552dec253de06a764fffd28bc74` |
@@ -1699,11 +1699,11 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/amts-v805.js` | 1940 | `ebce32bbacbb61fc21fd40b94db0d02065abb24177201998cb54d220effc097f` |
 | `mcp/adapters/anaphylaxis-criteria-v803.js` | 1879 | `6f375c020d9f6c624b7989f4b26c4b96f4e3d52258f3d243deac07b840d91c80` |
 | `mcp/adapters/anaphylaxis-v303.js` | 1197 | `d461cccd0b11a92733d2343f3e7e8269dfbecaeeba50824660a423ef6a2bd812` |
-| `mcp/adapters/anaqeeb-aeeg-v560.js` | 6164 | `893938697c7780b63d527e60bb0f535e7377e47d83bae263b2f465b6ef308c34` |
+| `mcp/adapters/anaqeeb-aeeg-v560.js` | 6200 | `c84cbc0007d5a54608e56c74d0a3014a1318f821dbf125923f8902a5759696d5` |
 | `mcp/adapters/anderson-dalonzo-v410.js` | 1349 | `eba209c7dce92f512e83d0d2ff67d99b271f4efd318bf28cc42c3c2abe196cfd` |
 | `mcp/adapters/anderson-montesano-v447.js` | 1209 | `5f286e08bebbfaaf90cb394483dd280223c055396275d164d37da8f1146ce3c7` |
 | `mcp/adapters/angle-malocclusion-v720.js` | 1227 | `e08d0869b658b41b3ce68f85ad43a706256a4c218ce8938adc96dc96c302f239` |
-| `mcp/adapters/anthro-v238.js` | 3059 | `c766fdd030730893f3c45e12b8fd2821f71f7a412d1a7fab66ad4d748b609ab3` |
+| `mcp/adapters/anthro-v238.js` | 3077 | `85b3af1565b9cd77636b0db7826046adfd6e20d50255bbd8ac1297a8c5d9f981` |
 | `mcp/adapters/anthro-v272.js` | 750 | `16d5bea3ebd9e112cfdb46c058a7072d32c709cc768d039c4df3b938cb2ed2f5` |
 | `mcp/adapters/antibiogram-builder-v1636.js` | 1267 | `169bb4e52d71077e25e3492c48b13283ba435171d70e45bd496d388bd26c18fa` |
 | `mcp/adapters/anticholinergic-list-score-v1634.js` | 1075 | `bac846e216db8be1650511836b495cee8fa393f53b2d18cff9ce2d1fca2ebc33` |
@@ -1892,7 +1892,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v5.js` | 12620 | `7b32f1b74f44678f843e2c874666e4436edf854b5d55cfad8e5905cb66ec115e` |
 | `mcp/adapters/clinical-v6.js` | 9929 | `4c8f092989425aa185ff97a8fc5039fb4c172e48cec4f98f70052e45ce5e8a6e` |
 | `mcp/adapters/clinical-v7.js` | 9598 | `b0cbb9112d0a10e9c7bc7bb1316a23f29706939d72af4d433a57d1cedad09ba2` |
-| `mcp/adapters/clinical-v8.js` | 17572 | `bd901380dc5e425c100c7627219f3b283a5ddde1693cbc71fa653830d1bbfc5d` |
+| `mcp/adapters/clinical-v8.js` | 17582 | `56f1d308f57a911d35ff55729a050fcb525baaecc32ab0eb30b67f188374606c` |
 | `mcp/adapters/clinical.js` | 32351 | `46868fde27a3d2816382de767db9a832e1e3a806bf99845a68c5ae71e6ace968` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/cmea-sales-limit-v1637.js` | 2142 | `0bc92156b2b0001f7c6976c12585f83fbc1be5c2781d18d0934b0a1382d615eb` |
@@ -2003,7 +2003,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/doac-dose-check-v1632.js` | 1771 | `aab06d1a6ca0c71268561bce038c89777e5c10da6e2248986a5a943a57e6b435` |
 | `mcp/adapters/doac-periprocedural-timing-v1633.js` | 1795 | `97e0ab456f3c9112d686498b3fbc19e7083352e62a763a771e32dc40f6620202` |
 | `mcp/adapters/dofetilide-dose-algorithm-v1632.js` | 1582 | `bcab8669b990e9ec0a5641eb31e5017345eeff075fd16a0f9867a3b2573f7795` |
-| `mcp/adapters/donor-recipient-size-match-v1661.js` | 1239 | `f42d5bfe315be811c792d2d72cb4cbd163e7831682f007932d7553a189d3b862` |
+| `mcp/adapters/donor-recipient-size-match-v1661.js` | 1636 | `b25d1e3a43733823adda7ff6a1c3ef82b9cfbee18a5ec6b030b14c9ff07f0ecf` |
 | `mcp/adapters/dorr-femur-v499.js` | 1312 | `49060760caa61c1119060165cd416b48512227df59b0b553d61a4288162fa7ae` |
 | `mcp/adapters/dose-calendar-v1512.js` | 2425 | `a8167f56b355a2d36af25309305d999804baad24fea61ed1ffc4875ca3cc33d4` |
 | `mcp/adapters/dose-history-level-v1699.js` | 1717 | `9e29e671cb2a695bb000c18a8348357fca9516e870a36f35995898bea68fcdc3` |
@@ -2021,7 +2021,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/e-faced-v571.js` | 4721 | `b5d7efc3be624a7bdc66c2d270d6f5f98dd5b34d5b18a52e76054a434cd789f8` |
 | `mcp/adapters/eat-sleep-console-v884.js` | 2876 | `5dff6660ad02a95ff12e87cf8281f4304940064e7b6c116d401504ea3a077250` |
 | `mcp/adapters/eaton-littler-v438.js` | 1235 | `bfb496ad576a3d505ed2aa301bf40584a0043f6ac3ebc8ac951af8f71127477e` |
-| `mcp/adapters/ebm-v163.js` | 2578 | `2d2ae77c694d6caa1042f560a10954fe96c20eda4339bc2fcb9dbf01e9e4d87a` |
+| `mcp/adapters/ebm-v163.js` | 2588 | `fb56ee2ffa397ecf624eb105310d140df315d456dcad26431c2e98a6775380fd` |
 | `mcp/adapters/ebmt-score-v584.js` | 6554 | `8d62ba99a69d10627fe52c8a462cb06425c49742edcc0dac60e6d44f8ebe7b33` |
 | `mcp/adapters/echo-v158.js` | 3656 | `f7d746e6915bdbded835aee6c76d598647c612963c96efc3cfd3b638ee7d625e` |
 | `mcp/adapters/eckardt-v519.js` | 2326 | `6df42d63e564ad296a356056df599fbc2e868ed378a3ed460fb3507be3c85ebe` |
@@ -2066,7 +2066,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/epinephrine-device-weight-band-v1639.js` | 1058 | `b462ffb956c9a87e4528ce6c77b9beb147b426b33ac89129e9b78e24e1627715` |
 | `mcp/adapters/er-opioid-label-start-v1633.js` | 1372 | `13aaec42f7ec60a99e358c5cebf90ec7f30a23fb2114f5be0d1d16229d882c13` |
 | `mcp/adapters/erefs-v618.js` | 2861 | `4fb7b838337edde7fb72ef98c97bf85ee1d6210ebf41965dfc126cc1dad45c5a` |
-| `mcp/adapters/erez-dic-v559.js` | 5955 | `de79f9d508eba77ed842238ba0c4ff026e221185e4d791b39fe7d0ad7708c2b3` |
+| `mcp/adapters/erez-dic-v559.js` | 5972 | `c1fb285bbfeb6696a6ebc8578a3b58f3d8f4f3c235075806da989c792121a17a` |
 | `mcp/adapters/erisa-claim-clock-v1503.js` | 1475 | `4ce6ae90a58bc5b5191fa42f852c3aab97f4bf8bfde0baf5d55486bb12768670` |
 | `mcp/adapters/esa-chemo-dose-adjust-v1635.js` | 2682 | `8a5754689a7d305c65d41d2f8bb1843f639af1cf0c8303cd307c444161d9e9ff` |
 | `mcp/adapters/esa-conversion-v1633.js` | 1806 | `64ae651f561eb36ba845742a3ed2ecd15ca5e39aa0c920dbb18acedc05706e37` |
@@ -2226,7 +2226,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hlh-2004-v582.js` | 9304 | `4d4869a1e084dce198f13699bc086bb2bf26fd4f326989a669629f96a9283c12` |
 | `mcp/adapters/home-oxygen-v889.js` | 2351 | `70a1fa98578651285bbb0b203b5ca404e4d19d4737cd576c1467b91429f3c806` |
 | `mcp/adapters/hospice-cap-v1514.js` | 1031 | `0595c74216fcc6efe91c6f9c534786692d5132774de84ae51026b2b5bc762e10` |
-| `mcp/adapters/hospital-fap-v1508.js` | 4680 | `8bf8c19222f00931cc3d2996efebe716240a5bab0ca0300f1a81def43dded5eb` |
+| `mcp/adapters/hospital-fap-v1508.js` | 4709 | `08909fc11cd2d3b0e23cf15d1eb4d732168aa2f258630147ccec11f64d858759` |
 | `mcp/adapters/hpa-glaucoma-v801.js` | 1311 | `1befdd34874ac18e9bcda328298b20fe2c341b2d80a028009013601d102ae1f2` |
 | `mcp/adapters/hrs-aki-v808.js` | 1860 | `815c9cd9adc744661d1acd27df7874b7f21068f7dbb5de9fa4fdf9d44e05548f` |
 | `mcp/adapters/hrv-frequency-domain-v1705.js` | 730 | `3ccc2761d9ab1d018569f881eaa4979193b58c3d3105a1490638b6e63bf50d1a` |
@@ -2248,7 +2248,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/idcrit-v99.js` | 8191 | `7abb8bd3f039e2b2d98dca91faa18ace1d8079827d31368a74a112a985fa3ccc` |
 | `mcp/adapters/ideberg-glenoid-v409.js` | 1394 | `9448ea62c9d4c69bf205062fc16372e692f17cd4cab0d096d360b50b24f5b102` |
 | `mcp/adapters/ids-accountability-reconcile-v1635.js` | 1985 | `3f8971bcad8e3f13affa93e6aa389e27749704602279fc4c87bb396de9504909` |
-| `mcp/adapters/igcccg-v567.js` | 7461 | `f96f2c59d483e4a9a0d65604cdb1471a59d7c4ea345a85f891180e80ecb6fe00` |
+| `mcp/adapters/igcccg-v567.js` | 7480 | `0be1606796cd536badb1b9db2a91ae06ab1a8cb3f76ef2007670195f346ffdc0` |
 | `mcp/adapters/igg4-rd-2020-v825.js` | 1688 | `29ab43c48f5175fc02439dc172832f7b889b9a688b101a52cbd7d607964641ed` |
 | `mcp/adapters/imci-oral-drug-bands-v1546.js` | 1147 | `0ba24d7a87f83cca87cdd5a97bf99c28bcb0ded032bb9449378e11e084bf8b3b` |
 | `mcp/adapters/imci-ors-plan-v1546.js` | 1269 | `65b8a3c44130f5bfb8874affe5ea16aad39b73c8af3e200d22fc998cfc793666` |
@@ -2352,7 +2352,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/letournel-acetabulum-v466.js` | 1440 | `f79e53e8e1c89d448719b2d69e7638d5da292da3c66ed3a24980e71822a8854c` |
 | `mcp/adapters/levey-jennings-limits-v1658.js` | 843 | `fe48c22983da3b401f75c82be1ca2786e85f1ddc834e7b14393c8c01ad340b93` |
 | `mcp/adapters/levine-edwards-v411.js` | 1454 | `c512f937b8a19142a062be4f1437daa292dfad8067c0311de71e2d3845d22a29` |
-| `mcp/adapters/levodopa-equivalent-dose-v1633.js` | 1783 | `9e2c7ba3d66c10cff3be9632dd9a3078f9062d0e616492d5f0a973e0f42557a7` |
+| `mcp/adapters/levodopa-equivalent-dose-v1633.js` | 1803 | `e6cdccd05eea4980b5618bc670588bd00fb82754d7d0e2cb92013fd9f03b5604` |
 | `mcp/adapters/levothyroxine-start-dose-v1633.js` | 1297 | `e55022b0b88accb739d9d560a45f49231d56c7e3ecef8f8474698216acf59a4a` |
 | `mcp/adapters/lf-mda-regimen-v1562.js` | 1749 | `3468e6bcc0257a5666fb629fb01b34176116443cbf025d57ce683f0f0f8e4f77` |
 | `mcp/adapters/li-rads-v327.js` | 1389 | `57c30c7df1f4fece84e762f04de41867efaee8da468d14d320ea81c814509a1a` |
@@ -2399,7 +2399,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/mandated-report-router-v1395.js` | 1841 | `e04d1df6233bef11b98c23dd9870f62dc91f65d43fade24cc5cb255ee8340ac4` |
 | `mcp/adapters/mandatory-overtime-check-v1396.js` | 1148 | `1e65aa0c7cf7724efc5bbce06140177e27705c0687f7872b183a744ac4b698a0` |
 | `mcp/adapters/manning-ibs-v695.js` | 1580 | `d6a0d19780d44031bed388d624ff070d3a595b37d8bf925b91d1fa0465b41c45` |
-| `mcp/adapters/mapi-asthma-v573.js` | 6412 | `2112414618894441ef4ba40ffac2d5a70c817fdd7e68b1af4c826699a96f92b8` |
+| `mcp/adapters/mapi-asthma-v573.js` | 6430 | `2e98f26d29b50856a7388461a562fbaae11f9e345a5f9cc7c791a1cff2dcda53` |
 | `mcp/adapters/marketplace-credit-v1506.js` | 2049 | `5757a192ec85ff18f2501a4c31b65c6dbbaf7185138a9936a8f2eeb22f7e2d58` |
 | `mcp/adapters/marsh-oberhuber-v423.js` | 1298 | `1bac657854fa3dfd9b57ae140d198ff22102f678b5b8a1d49d167a2eac6d8655` |
 | `mcp/adapters/marsi-v902.js` | 1731 | `283e11158a35db9b93d5e995a94e21e537060f4570e425e62332d351692b3182` |
@@ -2443,11 +2443,11 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/mest-c-v528.js` | 3681 | `c55c1123d10004fb90fc801fd637e22ef9b2941f2eacafc318c9720f5bd37b4a` |
 | `mcp/adapters/metabolic-hepatic-v219.js` | 5772 | `1a4449f15dfdb5656bb9f8ece85ec30730a20a98528ae91f66b52ce5fa5468de` |
 | `mcp/adapters/metabolic-onc-v88.js` | 4391 | `b55d419cc148004b2208096b129276fef894c073dd8014ada98f7afe8ca2b2da` |
-| `mcp/adapters/metabolic-v269.js` | 1081 | `463f018643bbd548e2f2cca7db243002fc945459f76d12858a810133f9ca9dfe` |
+| `mcp/adapters/metabolic-v269.js` | 1099 | `1ba835f5275f9dbbfd57117bbbac2e1e694b7b6d3e8b3db3375b33c1ca736920` |
 | `mcp/adapters/metabolic-v273.js` | 963 | `bf9f17b03ef0f8c83737df6adcde36ea64dae3fde05d6a411b6f035604c3e931` |
 | `mcp/adapters/metavir-activity-v505.js` | 1492 | `b10ac6e56b1a7185f063488d1b4974ffdad46b8b526685e402f69a7e6d5f2902` |
 | `mcp/adapters/metavir-fibrosis-v504.js` | 1386 | `82617314659eee4111494bc4dc3e1f72ce6a518553d528755c5c8b0fe1b51091` |
-| `mcp/adapters/methacholine-v890.js` | 1735 | `77d9b196ed62bfd615a898f11beeded90c65e84644ae79f5bdb43a79188fedeb` |
+| `mcp/adapters/methacholine-v890.js` | 2095 | `b29de0e2c5df32dbdfddb1945995d1d0ea98a9a184dad5588227fefec2a63acc` |
 | `mcp/adapters/methadone-label-conversion-v1633.js` | 1726 | `32573c5e69657ca3c2f66c4752ca8ef96f9109c1ed7e9136d93d09183e820351` |
 | `mcp/adapters/methemoglobin-v864.js` | 3377 | `229dc62d765294532b88342f948a4542862afab2919642d601b90f2c80923bd1` |
 | `mcp/adapters/meyers-mckeever-v408.js` | 1333 | `50be59c1a72be38ef287b739fef7da618e47ebde3dcd5ad16ace9b043162af39` |
@@ -2593,7 +2593,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/osha-lead-airborne-pel-shift-v1656.js` | 876 | `455ef7f8c0f1920c69f259c80450c0a90027b6530d45aed98486530d51402a1c` |
 | `mcp/adapters/osha-lead-medical-removal-v1656.js` | 1092 | `99749af748d59ff065f1c89335dd3cba5e2ca527ad5f0d90ea3d20bf8b8bfeff` |
 | `mcp/adapters/osha-noise-dose-v1656.js` | 969 | `ca26b85a312622f801e7f605a7ae38e576f39d2e76d84c23159919df2cee107f` |
-| `mcp/adapters/osha-standard-threshold-shift-v1656.js` | 1599 | `82dee317a03177a76dcabf001a5ffe63760495b8358589925caab8836c14366e` |
+| `mcp/adapters/osha-standard-threshold-shift-v1656.js` | 1619 | `3b05c52cbfc68563dc4895735a56422acca34cea09bca14b0a38d40026cc80b9` |
 | `mcp/adapters/osi-onychomycosis-v674.js` | 1462 | `1da12dcea0469f1c6d1bc8ab2519ed354d7908308c59c014b9138335636fd3fb` |
 | `mcp/adapters/oswestry-v643.js` | 1456 | `4083f9ed1d405f870c57fe3b0d7ff3433f14bc003ab312d14486e6468d572fe8` |
 | `mcp/adapters/otc-child-label-dose-v1639.js` | 1455 | `3628eb75803b59453f5fc7f6a447481165c8e5435d96824b8faeed2df1656af6` |
@@ -2607,7 +2607,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/outerbridge-v337.js` | 1485 | `227b6dcbf64100dc4df70c3ee3319ceb92fd4d72925cbf5a74097b80e202e5ee` |
 | `mcp/adapters/overtime-agency-share-v1657.js` | 1304 | `bc8b78db67d0f1d3fee84ad6e16a7b0defe65312e76e31590ed691c37bf80084` |
 | `mcp/adapters/pa-criteria-v1502.js` | 863 | `0a587fce90b4fe026283aecef8be64ade40bb5cd6925a1258e546d97c25e73b7` |
-| `mcp/adapters/pa-metrics-compare.js` | 2509 | `56a16f75406d4a9e8169a0725862fefd9b7bc8524929c2d163ef0cc81899f68d` |
+| `mcp/adapters/pa-metrics-compare.js` | 2749 | `5a505153ec6df517d51b79816b2683d739bab1de940c80f6c7ad813f635b09a9` |
 | `mcp/adapters/paed-delirium-v1499.js` | 568 | `09de517edb50c5c907fffe9479bfb0d1071ab0c92403841ce65426b8159782aa` |
 | `mcp/adapters/pai-periapical-v1486.js` | 606 | `aa78a2cc267e926b2653842d08f2b499143b2e21910f1a4a56ca6a0863ae08cd` |
 | `mcp/adapters/painscore-v235.js` | 4885 | `215d690ec8c9a8697b86065734723edb17500d0d6c503934486aa0fb1f359b24` |
@@ -2647,7 +2647,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/pc-ptsd5-v521.js` | 3458 | `e3e7e67963b7e24b36f02f6e1102d373d8e1305a8949a62213e1231bd56e0ff6` |
 | `mcp/adapters/pcdai-v522.js` | 4617 | `097990d6bbd56017639c7e1442777cab3acb493f273942de73c94eaf363c8a02` |
 | `mcp/adapters/pci-surgery-timing-v898.js` | 1715 | `75cffd8130031c3b54256cb7c77b56668dc4738e47a59f4e8977de7694a7223a` |
-| `mcp/adapters/pdc-star-v1513.js` | 1678 | `9ebac88c05efee5816964958314ed9cabce73712fc5c99d7296b7316766f1b61` |
+| `mcp/adapters/pdc-star-v1513.js` | 1700 | `117e99f46712f43cfb5797b43cfeed8600399398688d5fa4a0dcc66d3a29da2f` |
 | `mcp/adapters/pederson-difficulty-v717.js` | 1254 | `b951227a22acbec45fa9777dbd9e2b2d0223ae4e1d53aab8c272b3c55c22d733` |
 | `mcp/adapters/pediatric-acute-v262.js` | 4068 | `e4536977a73949c381fa922cbe535be9cce260951dc97ca3682634cb976df8f8` |
 | `mcp/adapters/pediatric-administered-activity-v1635.js` | 1007 | `0d46c634b5ac0e86f556dd617a10ae9de9ce84cf73d8972ef5e5d44857930ff5` |
@@ -2661,7 +2661,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/peds-warfarin-nomogram-v1634.js` | 1179 | `911ed7b558254b457dd258808714a883a70f949cde5fc67483f251aa944aca78` |
 | `mcp/adapters/pedstox-v247.js` | 3681 | `60046f6041ecab065f289ae5cc72de139cc722dcdd4146f0f0cf9148c24f2adb` |
 | `mcp/adapters/pef-zones-v891.js` | 1708 | `ec30fb4bb79cebed1d7b7de909dff8f3c596b0429bef134c390fa9e4766c27f0` |
-| `mcp/adapters/peradeniya-op-v575.js` | 6813 | `6c9b22d3dc0e258ac657247958777b5d96b7111c1e6bf3476a72081b15e6fbd2` |
+| `mcp/adapters/peradeniya-op-v575.js` | 6831 | `31bf14cf35decb9530c77b3fe40981be4e37eedd86b50ce41268adfeb701f866` |
 | `mcp/adapters/percent-ionized-v1629.js` | 931 | `88fec4c5a1380b87b4eab7153f39e089ea83a58dc4337a73e0efbc2d4c7155af` |
 | `mcp/adapters/peri-implant-status-v1489.js` | 1324 | `1e80127603914d62bb97bf21da3ff35a3ca4aad7afcfad44b750dbbd429a4204` |
 | `mcp/adapters/pericarditis-v789.js` | 1847 | `63e645efbaf53958d61a72ca98fcc619f08044a752fb965c28c15392625fe12a` |
@@ -2688,7 +2688,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/pirani-clubfoot-v386.js` | 2058 | `fcacf9479f601d3bc2482c94fa7625626bb07154dd47e2f61d99f12653e2eb05` |
 | `mcp/adapters/pires-interprosthetic-v1423.js` | 1467 | `5ef77a00cbd57957a359646cf341e5872ab4f83ceed8b56b12b2325f27a51f3a` |
 | `mcp/adapters/pk-steady-state-predict-v1631.js` | 2234 | `5b94380de53a7553d9bc68a3cbfa12c09f3d807af51a22f5a326b82e656d37f6` |
-| `mcp/adapters/pk-v166.js` | 2046 | `625b5e64f5097b47bab21a0343447c2c7952780eee6e40a769bb7899fad60fdf` |
+| `mcp/adapters/pk-v166.js` | 2057 | `b3ffab12d8db7eae98188b166caa6c1f6977856ad8b3c7f54a1aa161f2915fcb` |
 | `mcp/adapters/plaque-control-record-v721.js` | 1162 | `a0c10e3c69235f3f5c3de93b0a29c61989ffe64258a96c2e2af3d99d27618b10` |
 | `mcp/adapters/pmp-check-required-v1393.js` | 2462 | `52aa3f7a4b61f06b2558825c780139a91b37ef71bcb31067008ae44e6fcf5930` |
 | `mcp/adapters/pn-aluminum-load-v1630.js` | 1200 | `ab6cbfbd77903369f27976b82d0312ad150cdc6ead20579865be4caaf00a1de2` |
@@ -2709,7 +2709,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/powers-ratio-v1454.js` | 1157 | `9ead21ee77533b06c621f678540aea44078bf2a6e440711ca040a60a4756a5eb` |
 | `mcp/adapters/pph-who-2025-v1558.js` | 1606 | `c2b5a74518ae9b23a22a8f0ec38abeaf8b798b5100b9d703c0b7588f2d2f013e` |
 | `mcp/adapters/ppi-omeprazole-equivalent-v1633.js` | 1244 | `eface1f3e0ee2a001448b44ac31511730759ac1739c0810421778a0be3d60590` |
-| `mcp/adapters/ppm-eoai-v548.js` | 6157 | `9796251187106be52f2e8edcae9ae7672a408850db37b51530b4f980008f1582` |
+| `mcp/adapters/ppm-eoai-v548.js` | 6175 | `31815d43c2cdcaa9ab6bbb11953a39de91f681f9099e9df0399c07d89a3b8813` |
 | `mcp/adapters/pppa-special-packaging-check-v1637.js` | 1874 | `71dc2f2cde3cae0a4657fa231ea5795ddde6a25b3a3828c019b05313ba0cfe80` |
 | `mcp/adapters/prague-barrett-v365.js` | 1483 | `0ae010b0105d1757130ca6e7b4d31f485a50b3f81d32ac4940be576ae25ae332` |
 | `mcp/adapters/pralidoxime-dose-v1636.js` | 1350 | `8806ce02e78d7f47e00e896a503ad6eb904d270f4b969ff5cfccd05b5ef48e7c` |
@@ -2731,7 +2731,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/psych-v96.js` | 3905 | `45306404cc9d1aad83445cee9866ad7ff0658de4683923111139da23ab7d1469` |
 | `mcp/adapters/psychotropic-prn-clock-v1638.js` | 1548 | `7d50ab75ccb9f0b0a5fbac6550869d45da9b62d2f2894e55299df55ea18c7b9d` |
 | `mcp/adapters/pt-event-score-v1658.js` | 992 | `8faf6a60ce393e1b4a6f492067fb334e5d17ab486a1f4d87ec0bb01e279a4799` |
-| `mcp/adapters/pufa-index-v1491.js` | 549 | `df534dd94e34005c92cab94cb6ada91af811c4b68964b9e40adf8c8048a1b70e` |
+| `mcp/adapters/pufa-index-v1491.js` | 772 | `156c4717a11bc25ada64ab049a8779cc15f5d5d71fb2d391f360e23f81c93957` |
 | `mcp/adapters/pulm-copd-v205.js` | 4994 | `94e543afc76c57215eca177a25d269b1ac6632b8d0b79032ca582fdaa00e5e06` |
 | `mcp/adapters/pulm-v114.js` | 5067 | `c980f8b80557dc93e43231bb7e6d3a3e37344ef1cf203c411eba49ef866170b8` |
 | `mcp/adapters/pulm-v91.js` | 3996 | `b0d3ed4ee4af4e2b1d7cab4098591670ede2dc0049439e24a6bf4fcf8eb56d29` |
@@ -2758,7 +2758,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ramsay-sedation-v358.js` | 1252 | `1ab224fc37910c7658d443e861e0b5878861bfe4f83816c6376cdf2b5ce071c9` |
 | `mcp/adapters/ranawat-myelopathy-v495.js` | 1353 | `d0e138d96a2fccba9c2a1a7e70921d4a3e98d74a556fee34219b937d1fcfd093` |
 | `mcp/adapters/rasburicase-dose-v1635.js` | 1114 | `01356e0b9c6d97a4f1ad923deda1f8ba6e46602ad6141b1c62f542006bd1495d` |
-| `mcp/adapters/rasrm-stage-v546.js` | 5262 | `5243b4b5c768f14987065c1e56e26a9e691b1e872d23c47b216c9e5f8b7a948e` |
+| `mcp/adapters/rasrm-stage-v546.js` | 5304 | `c2c16067c66170636089ac198d7664b9d57c3d81f9b3281f3adda5ef8da8f991` |
 | `mcp/adapters/rassi-chagas-v851.js` | 2052 | `3c420f091e26c46e29019e800e28059c43e03270b2701d600e7650d3271f224a` |
 | `mcp/adapters/rastelli-avsd-v474.js` | 1243 | `d544fc5ecaa2d01a7748aa7eef9ef59f17d6f2bbd7237d2020995ae4462f6dc0` |
 | `mcp/adapters/rate-escalation-v1512.js` | 1340 | `23c3ca15e336fb28fac7eb990c140bea09aa815b23f645b9a254e771c020f9a0` |
@@ -2772,7 +2772,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/reference-change-value-v920.js` | 2336 | `2dd2447e9769fc4570e2f3ce50313eeedd85e2f95c58d304670265cd09f7b318` |
 | `mcp/adapters/regan-morrey-v404.js` | 1328 | `f0e84ff6cd74cd55acc854e0e403f7cba83add5f62eab4b057904c32c00055a4` |
 | `mcp/adapters/regulatory.js` | 1062 | `f38019ad6765a033f83b13318b141e79987512ef5e5560436ad1f8f1ac3f201c` |
-| `mcp/adapters/rehab-v240.js` | 4927 | `6984f03b1a0f9ae5ccab056241716be4e8cfe22ad31f8af81bbadda32b2f64e9` |
+| `mcp/adapters/rehab-v240.js` | 4947 | `7396f332c57dfc9f2d7c5d857ee56174ea1ea4e8ada6bccff9bd0a61c638902f` |
 | `mcp/adapters/reid-bronchiectasis-v450.js` | 1205 | `b93e4f56fed5a6427b9775f194b4c3b6e47d691cfa5498af9eee96a7a11853ca` |
 | `mcp/adapters/reimers-migration-percentage-v703.js` | 1136 | `6accfa2c508d3391d700b9e16e64025469cf1c1280ddad447ed62d98ca099fac` |
 | `mcp/adapters/relative-dose-intensity-v1635.js` | 1186 | `06e941967fd02693aa4ffa66d8ceef6ad1143bd7799a00665f2c8c6824ee1550` |
@@ -2780,7 +2780,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/renal-angina-v533.js` | 4613 | `3b4ec3fb2aac41afc173c4325fb97611b591d20039061e1169a3bf3e398902c4` |
 | `mcp/adapters/renal-v128.js` | 3137 | `879de2edaca5224e368997f3aac9738f1e4cfd790aad81a9ebebcc10491fee38` |
 | `mcp/adapters/renal-v277.js` | 1254 | `ad80aebae4000b4f46e57868e8e1cd05e9490ec9d018dedda7b3a5a1f4397334` |
-| `mcp/adapters/renalpulm-v249.js` | 3082 | `ab67663364daf61581032fade2f4811d2d6066bd1a3c90407e37e28832d4f70f` |
+| `mcp/adapters/renalpulm-v249.js` | 3121 | `317f5d18c9497c9c2327699aa2bf61139d02a796f8563783b6aa72d1071af58c` |
 | `mcp/adapters/reportable-condition-urgency-v1395.js` | 1812 | `1e403cfc1925d36cf3869175dbc45eeacab83b74779de28527c774255c58e445` |
 | `mcp/adapters/request-letters-v1504.js` | 8648 | `c04a533cf2404b2aa176e838747dcb913c73002b1f314844e8e30caa2a738a4a` |
 | `mcp/adapters/residual-carrier-risk-v1660.js` | 803 | `571189fd438e25462a4d90072881aced0e8c44d9d32ba4c9e55c6ad221f09f10` |
@@ -2845,7 +2845,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
 | `mcp/adapters/scoring-v4.js` | 168541 | `080e8237b0dca32bd6270499b70c1f11c990ec3384c282fff3aa97c1398481e1` |
 | `mcp/adapters/scoring-v5.js` | 12850 | `c32ca221edfe412cc9814d79afed2c335637611922a8f9b1042fb9f354ef6532` |
-| `mcp/adapters/scoring-v6.js` | 20845 | `29c9e20bcb3d5cee601ee8796ac2aec5793dbe23394a09094fb6ce84f2b3c609` |
+| `mcp/adapters/scoring-v6.js` | 20857 | `02f1d8ebef6309a8c9e0e6e50aa8c352197529df799d6b58ed0e615fcdd31fff` |
 | `mcp/adapters/scorpion-grade-india-v1556.js` | 1284 | `3cd3d399c2af7f57769e85a6ad4edeb3e77354249b3a6db361b0981e71233aed` |
 | `mcp/adapters/scp-pushing-v562.js` | 5791 | `79ec7c5fbd7258c6647f6679be5fd535867c03246e6fd071d291393ab8705fed` |
 | `mcp/adapters/scrub-typhus-icmr-v1560.js` | 1807 | `ba4ba2a4538b9f580aec47168f12387ec29fc9a5254ccda8485599e02b5c6d1d` |
@@ -2939,7 +2939,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/tension-headache-ichd3-v818.js` | 2651 | `aca188778e01f1420693873e57c201b7e0ac26a261cc6d645bed57ba4f8aa2c3` |
 | `mcp/adapters/thakar-aki-v568.js` | 6223 | `59fbabf84ae971b0b9941b071ca3aee91cccf7f4c4e93162da6641b277e46f1c` |
 | `mcp/adapters/theophylline-label-dose-v1631.js` | 2198 | `ae631f7062a645ef90a5e540698d198d9babe9ee91ef3b4c0caa9871df23fc4d` |
-| `mcp/adapters/therapy-cost-v1510.js` | 1182 | `38daba86240e6775a4e7d3e19015136425d1c2e8a00d9a885231aaad57fae8e6` |
+| `mcp/adapters/therapy-cost-v1510.js` | 1211 | `132890c93fbf12acdfc2505a8bdccf6378055ff38c802274ba36ce8c147dcbdf` |
 | `mcp/adapters/thi-v555.js` | 4775 | `6ba75cde3fdbf6ef0e7c13124a6156ad1fe83480c2cb6a325aa18f731984fdd3` |
 | `mcp/adapters/thomazeau-occupation-v1572.js` | 644 | `eed09d506554c74ef154abed09a80527471ff7fb25e94ec41752b87a6595ad22` |
 | `mcp/adapters/thompson-epstein-v459.js` | 1212 | `b43baf31b7bfb5a8e0a3dcb012d3c42e0bef2fccc17b3f36020a4b162201c466` |
@@ -2968,7 +2968,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/triple-i-v832.js` | 2198 | `64530f8c744ab5ecb6ca727f3504e71f9e2cf72a479110ee2628442f7a9d6651` |
 | `mcp/adapters/tryptase-v894.js` | 1666 | `a640dda3998e83b6d8745d740afaf8f025d1213f13c67b4779f7d8c6531c3d3f` |
 | `mcp/adapters/tscherne-closed-v350.js` | 1657 | `20af8c374bc99885584bd04da4ed3efe285c9bd59a0c2aa90180060b6cbcbe17` |
-| `mcp/adapters/turesky-plaque-v1496.js` | 510 | `4415f4818a17763f9d1f1a8dd87b2fb8f3fa18176c23e32e6e13c40b3a2877ca` |
+| `mcp/adapters/turesky-plaque-v1496.js` | 528 | `375db2db78ad3dc69533a88af772cf3f81496fbfe1adac33d2604ddccfc5cb3b` |
 | `mcp/adapters/turnaround-time-percentile-v1658.js` | 909 | `702a6c99f1cfd25fdabba1f2eb22977572ca4938b8f71ef446de9b10a15bf13c` |
 | `mcp/adapters/two-by-two-effect-v1634.js` | 1091 | `897baabe79be413be98110a16246ff2bdb2cd97a93c367a66db328f124191077` |
 | `mcp/adapters/two-compartment-params-v1699.js` | 1072 | `527f527883ca95bbe5cafa6965248be683c56dab3e261e2770510720ec9ba003` |
@@ -3021,7 +3021,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/vexus-v958.js` | 1999 | `9feba5487dd6ae079ded4b1f0e68569bd749bc9726d6e23dda90de2b0273d628` |
 | `mcp/adapters/vhi10-v508.js` | 1451 | `da3517224473d194527190e522db2b9e435cb5a019a54148fd6008aa842a5b12` |
 | `mcp/adapters/vhwg-hernia-v666.js` | 1344 | `6272b08d7c467ad7c2b5e76c8f3efa8dabbd0b7637831f8a0d5c5bad472b50b2` |
-| `mcp/adapters/vial-rounding-v1512.js` | 1487 | `8b59111359b3a93e816928b03ec0277bfd0df2e019819f20a7092175654b8ae7` |
+| `mcp/adapters/vial-rounding-v1512.js` | 1797 | `aa9555aea41ef30a29cfe2b18cea252217322acd2d38a7e0ed07271e9bd7a7e6` |
 | `mcp/adapters/visceral-leishmaniasis-2026-v1563.js` | 1895 | `b2b6325b465fedb3c08392c467da1d5ab0e822fe28e075469f7a3f8c6a05d87e` |
 | `mcp/adapters/vitamin-a-dose-child-v1550.js` | 1151 | `04da752d0ad594624821552250293ed8af6e5543f2e32eafbde16e04624e3c9a` |
 | `mcp/adapters/vitamin-d-level-v881.js` | 1588 | `232c350e2d11ff8e9160fb150dc9cab26614f77c116bc754ba2976c20f20abb6` |

@@ -39,6 +39,8 @@ export default [
         kind: 'number',
         required: true,
         unit: 'points',
+        min: 0,
+        max: R.RASRM_MAX,
         label: `The revised ASRM point total from the COMPLETED scoring form, a whole number from 0 to ${R.RASRM_MAX}. This tool does not compute the total from operative findings.`,
       },
     ],

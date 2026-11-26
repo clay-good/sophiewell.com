@@ -32,7 +32,7 @@ export default [
     compute: F.navyBodyFat,
     fields: [
       { dom: 'navy-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
-      { dom: 'navy-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'in' },
+      { dom: 'navy-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'in', min: 40, max: 90 },
       { dom: 'navy-neck', arg: 'neck', kind: 'number', required: true, label: 'Neck', unit: 'in' },
       { dom: 'navy-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist', unit: 'in' },
       { dom: 'navy-hip', arg: 'hip', kind: 'number', required: false, label: 'Hip (women only)', unit: 'in' },

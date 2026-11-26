@@ -46,7 +46,7 @@ export default [
         label: 'Prosthesis effective orifice area. Use the MEASURED or REFERENCE effective orifice area, not the labelled valve size, which is a manufacturing dimension and overstates the opening.',
       },
       {
-        dom: 'ppm-bsa', arg: 'bsa', kind: 'number', unit: 'm^2', required: true,
+        dom: 'ppm-bsa', arg: 'bsa', kind: 'number', unit: 'm^2', required: true, min: 0.2, max: 4,
         label: 'Patient body surface area.',
       },
     ],

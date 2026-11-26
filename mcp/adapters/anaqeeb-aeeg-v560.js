@@ -36,11 +36,11 @@ export default [
     compute: A.anaqeebAeeg,
     fields: [
       {
-        dom: 'anaqeeb-upper', arg: 'upperMargin', kind: 'number', unit: 'microV', required: true,
+        dom: 'anaqeeb-upper', arg: 'upperMargin', kind: 'number', unit: 'microV', required: true, min: 0, max: 200,
         label: `Upper margin of the aEEG trace. Compared with ${A.UPPER_THRESHOLD} microV STRICTLY: exactly ${A.UPPER_THRESHOLD} falls in no published category.`,
       },
       {
-        dom: 'anaqeeb-lower', arg: 'lowerMargin', kind: 'number', unit: 'microV', required: true,
+        dom: 'anaqeeb-lower', arg: 'lowerMargin', kind: 'number', unit: 'microV', required: true, min: 0, max: 200,
         label: `Lower margin of the aEEG trace. Compared with ${A.LOWER_THRESHOLD} microV. Cannot exceed the upper margin.`,
       },
       {

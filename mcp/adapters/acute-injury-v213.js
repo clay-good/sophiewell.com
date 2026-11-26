@@ -45,7 +45,7 @@ export default [
       { dom: 'lc-pprot', arg: 'pleuralProtein', kind: 'number', required: true, label: 'Pleural fluid total protein', unit: 'g/dL', max: 100 },
       { dom: 'lc-sprot', arg: 'serumProtein', kind: 'number', required: true, label: 'Serum total protein', unit: 'g/dL' },
       { dom: 'lc-pldh', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural fluid LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
-      { dom: 'lc-sldh', arg: 'serumLdh', kind: 'number', required: true, label: 'Serum LDH', unit: 'IU/L' },
+      { dom: 'lc-sldh', arg: 'serumLdh', kind: 'number', required: true, label: 'Serum LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
       { dom: 'lc-uln', arg: 'serumLdhUln', kind: 'number', required: true, label: 'Upper limit of normal for serum LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
     ],
   },

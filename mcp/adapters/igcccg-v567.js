@@ -59,7 +59,7 @@ export default [
         label: `NONSEMINOMA ONLY. hCG in IU/L, NOT IU/mL, post-orchiectomy and pre-chemotherapy. Below ${I.HCG_INTERMEDIATE} good; ${I.HCG_INTERMEDIATE} to ${I.HCG_POOR} intermediate; above ${I.HCG_POOR} poor.`,
       },
       {
-        dom: 'igcccg-ldh', arg: 'ldhMultiple', kind: 'number', unit: 'x upper limit of normal', required: false,
+        dom: 'igcccg-ldh', arg: 'ldhMultiple', kind: 'number', unit: 'x upper limit of normal', required: false, min: 0, max: 1000,
         label: `NONSEMINOMA ONLY. LDH as a MULTIPLE of the local upper limit of normal, not an absolute value. Below ${I.LDH_INTERMEDIATE} good; ${I.LDH_INTERMEDIATE} to under ${I.LDH_POOR} intermediate; ${I.LDH_POOR} or above poor.`,
       },
       {

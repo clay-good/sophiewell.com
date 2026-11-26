@@ -76,6 +76,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Eighty-six more number fields now state the range their library already enforces, so an agent reading a
+  tool's inputs is told where a value will be refused instead of finding out by being refused. Among them
+  are every PUFA dental code's tooth-count ceiling and every OSHA audiogram threshold, both of which the
+  library has read from a list the input descriptions were ignoring.
+- The finder that proposes those ranges was believing its own weakest test. It checked that a cap belonged
+  to one field by moving a single sibling input; driving every variation of each worked example instead
+  showed twenty of its sixty-three candidates moving with something else -- a vaginal length, an abdominal
+  circumference, the drug picked from a list -- so it now asks the question a stated range actually makes:
+  is anything past this edge ever accepted?
 - The sources that gate the eight specified-but-unbuilt tools were all re-probed, and two were chased through a
   second route (Europe PMC, and the Federal Register's API). None has moved; each row is dated, and what each
   tool needs is written down in one place.

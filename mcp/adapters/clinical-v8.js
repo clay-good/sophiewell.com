@@ -200,7 +200,7 @@ export default [
       // says "default 200" cannot be required -- the view substitutes 200 psi when
       // it is blank and the reading names it ("above the 200 psi residual"), which
       // is the spec-v1133 model.
-      { dom: 'o2-flow', arg: 'flowLpm', kind: 'number', label: 'Flow rate (for the duration answer; omit for the usable volume alone)', unit: 'L/min', min: 0 },
+      { dom: 'o2-flow', arg: 'flowLpm', kind: 'number', label: 'Flow rate (for the duration answer; omit for the usable volume alone)', unit: 'L/min', min: 0, max: 100 },
       { dom: 'o2-res', arg: 'residualPsi', kind: 'number', label: 'Residual pressure (defaults to 200 psi, which the reading names)', unit: 'psi', max: 10000 },
       { dom: 'o2-target', arg: 'targetMinutes', kind: 'number', required: false, label: 'Target duration (optional)', unit: 'minutes' },
     ],

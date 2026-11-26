@@ -3,7 +3,10 @@
 import * as PM from '../../lib/pa-metrics-compare.js';
 
 const vals = (xs) => xs.map((x) => x.value);
-const n = (dom, arg, label, unit) => ({ dom, arg, kind: 'number', required: false, label, ...(unit ? { unit } : {}) });
+const n = (dom, arg, label, unit) => ({ dom, arg, kind: 'number', required: false, label, ...(unit ? { unit } : {}),
+  // spec-v1793: every field this helper builds with a percent unit is refused outside 0 to 100 by the
+  // library; the time and count fields it also builds carry no cap of their own.
+  ...(unit === 'percent' ? { min: 0, max: 100 } : {}) });
 
 export default [
   {

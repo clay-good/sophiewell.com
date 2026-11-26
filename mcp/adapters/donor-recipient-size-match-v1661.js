@@ -11,6 +11,10 @@ export default [
     fields: [
       { dom: 'drs-wunit', arg: 'weightUnit', kind: 'enum', values: ['kg', 'lb'], required: true, label: 'Weight unit' },
       { dom: 'drs-hunit', arg: 'heightUnit', kind: 'enum', values: ['cm', 'in'], required: true, label: 'Height unit' },
+      // spec-v1793: both weights are refused outside lib/bounds.js's weightKg envelope -- but AFTER the
+      // lb-to-kg conversion, so no static declaration is true of both units. Naming the envelope published
+      // "0.2 to 500" and probe-declared-cap-configs answered at 525 lb straight away, which is 238 kg and
+      // well inside it. These wait for a declaration that can carry a unit.
       { dom: 'drs-dw', arg: 'donorWeight', kind: 'number', required: true, label: 'Donor weight' },
       { dom: 'drs-rw', arg: 'recipientWeight', kind: 'number', required: true, label: 'Recipient weight' },
       { dom: 'drs-dh', arg: 'donorHeight', kind: 'number', required: true, label: 'Donor height', min: 45 },

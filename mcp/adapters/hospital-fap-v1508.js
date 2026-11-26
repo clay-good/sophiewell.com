@@ -12,7 +12,7 @@ export default [
     compute: HF.agbPercentage,
     fields: [
       usd('agb-allowed', 'allowed', 'Total allowed amounts for the 12-month period', true),
-      usd('agb-gross', 'gross', 'Total gross charges for those claims', true),
+      { ...usd('agb-gross', 'gross', 'Total gross charges for those claims', true), min: 0.01, max: 1e12 },
       { dom: 'agb-basis', arg: 'basis', kind: 'enum', required: false, values: vals(HF.AGB_BASES), label: 'Payers included' },
       { dom: 'agb-end', arg: 'periodEnd', kind: 'string', required: false, label: 'End of the 12-month period (YYYY-MM-DD)' },
       usd('agb-bill', 'bill', 'A patient\'s gross charges'),

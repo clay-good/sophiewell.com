@@ -107,7 +107,7 @@ export default [
     compute: F.qblPph,
     fields: [
       { dom: 'qp-measured', arg: 'measuredMl', kind: 'number', required: true, label: 'Measured / collected blood (mL)', unit: 'mL', to: (v) => v || 0, max: 20000 },
-      { dom: 'qp-pad', arg: 'padGrams', kind: 'number', required: true, label: 'Weighed pads/drapes (g)', unit: 'g', to: (v) => v || 0 },
+      { dom: 'qp-pad', arg: 'padGrams', kind: 'number', required: true, label: 'Weighed pads/drapes (g)', unit: 'g', to: (v) => v || 0, max: 20000 },
       { dom: 'qp-tare', arg: 'dryTareGrams', kind: 'number', required: true, label: 'Dry-pad + irrigation tare (g)', unit: 'g', to: (v) => v || 0 },
       { dom: 'qp-vaginal', arg: 'vaginal', kind: 'bool', required: true, label: 'Vaginal birth' },
       { dom: 'qp-unstable', arg: 'unstable', kind: 'bool', required: false, label: 'Hemodynamic instability' },

@@ -10,7 +10,7 @@ export default [
     summary: 'The levodopa equivalent daily dose of a Parkinson\'s disease regimen, by the 2023 factors. Each drug\'s total daily dose is multiplied by the factor in Jost 2023, with the paper\'s rules for COMT inhibitors, istradefylline, safinamide, zonisamide and anticholinergics, and every contribution is listed. It is a comparison measure with no interpretation bands, not a dose to switch to.',
     compute: LE.levodopaEquivalentDose,
     fields: [
-      ...LE.DRUGS.map((d) => ({ dom: `led-${d.dom}`, arg: d.arg, kind: 'number', label: `${d.text}, total a day`, unit: 'mg' })),
+      ...LE.DRUGS.map((d) => ({ dom: `led-${d.dom}`, arg: d.arg, kind: 'number', label: `${d.text}, total a day`, unit: 'mg', min: 0, max: 20000 })),
       { dom: 'led-comt', arg: 'comt', kind: 'enum', values: LE.COMT.map((c) => c.value), label: 'COMT inhibitor' },
       { dom: 'led-comt-covered', arg: 'comtCoveredLed', kind: 'number', label: 'Levodopa equivalent covered by entacapone or tolcapone', unit: 'mg' },
       { dom: 'led-istradefylline', arg: 'istradefylline', kind: 'enum', values: ['no', 'yes'], label: 'Istradefylline' },

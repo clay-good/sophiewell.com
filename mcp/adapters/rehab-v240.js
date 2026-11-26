@@ -37,7 +37,7 @@ export default [
     compute: F.sixMinuteWalkPredicted,
     fields: [
       { dom: 'smwd-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
-      { dom: 'smwd-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm' },
+      { dom: 'smwd-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 100, max: 250 },
       { dom: 'smwd-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 18, max: 110 },
       { dom: 'smwd-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 20, max: 300 },
     ],

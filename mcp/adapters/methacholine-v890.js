@@ -12,7 +12,10 @@ export default [
     compute: methacholine,
     fields: [
       { dom: 'mc-metric', arg: 'metric', kind: 'enum', required: true, label: 'Which metric was reported', values: ['pd20', 'pc20'] },
-      { dom: 'mc-value', arg: 'value', kind: 'number', required: true, label: 'The reported value, in micrograms for PD20 or mg/mL for PC20' },
+      // spec-v1793: the ceiling is the UNION of the two metrics -- 10,000 micrograms for a PD20 and 200 mg/mL
+      // for a PC20 -- because one field carries both and a descriptor holds one literal. The library still
+      // refuses a PC20 over 200 in its own words; this only states the edge nothing ever gets past.
+      { dom: 'mc-value', arg: 'value', kind: 'number', required: true, label: 'The reported value, in micrograms for PD20 or mg/mL for PC20', min: 0, exclusiveMin: true, max: 10000 },
       { dom: 'mc-medicationswithheld', arg: 'medicationsWithheld', kind: 'boolean', required: false, label: 'Medications were withheld for the required intervals (a negative result depends on this)' },
     ],
   },

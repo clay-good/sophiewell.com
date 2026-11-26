@@ -71,6 +71,10 @@ for (const [id, dom] of ADAPTER) {
     assert.equal(v.valid, false);
     assert.equal(v.code, 'OUT_OF_RANGE');
     // spec-v1729: ABI's pressures take the page's own floor of 20 mmHg (lib/bounds.js).
-    assert.match(v.message, new RegExp(`must be at least ${id === 'abi' ? 20 : 0}; got -`));
+    // spec-v1793: `validateInputs` says "must be at least X" for a lone floor and "must be from X to Y"
+    // once a ceiling is declared beside it. The assertion is that the floor is the one refusing, in either
+    // sentence; pinning the first shape made three of these fail the moment their ceilings were declared.
+    const floor = id === 'abi' ? 20 : 0;
+    assert.match(v.message, new RegExp(`must be (?:at least ${floor}|from ${floor} to [\\d.e+]+); got -`));
   });
 }

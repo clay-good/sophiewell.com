@@ -6,7 +6,7 @@ const rows = (p) => [
   { dom: `${p}-fills`, arg: 'fills', kind: 'string', required: true, label: 'Fills, one per line: patient, measure (D08, D09 or D10), fill date, days supply, ingredient' },
   { dom: `${p}-stays`, arg: 'stays', kind: 'string', required: false, label: 'Inpatient or skilled nursing stays, one per line: patient, admit date, discharge date (removed for measurement years through 2025 only)' },
   { dom: `${p}-excl`, arg: 'exclusions', kind: 'string', required: false, label: 'Exclusions, one per line: patient, hospice or esrd or dialysis' },
-  { dom: `${p}-year`, arg: 'year', kind: 'number', required: true, label: 'Measurement year' },
+  { dom: `${p}-year`, arg: 'year', kind: 'number', required: true, label: 'Measurement year', min: 2000, max: 2100 },
 ];
 
 export default [

@@ -22,7 +22,7 @@ export default [
     summary: 'Fractional excretion of uric acid = 100 x (urine uric acid x serum creatinine) / (serum uric acid x urine creatinine); normal 4-11%, aiding the hyponatremia / SIADH workup.',
     compute: F.feua,
     fields: [
-      { dom: 'feua-uua', arg: 'urineUA', kind: 'number', required: true, label: 'Urine uric acid', unit: 'mg/dL' },
+      { dom: 'feua-uua', arg: 'urineUA', kind: 'number', required: true, label: 'Urine uric acid', unit: 'mg/dL', min: 0.1, max: 500 },
       { dom: 'feua-scr', arg: 'serumCr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
       { dom: 'feua-sua', arg: 'serumUA', kind: 'number', required: true, label: 'Serum uric acid', unit: 'mg/dL' },
       { dom: 'feua-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
@@ -35,7 +35,7 @@ export default [
     fields: [
       { dom: 'bdr-pre', arg: 'pre', kind: 'number', required: true, label: 'Pre-bronchodilator FEV1 or FVC', unit: 'L' },
       { dom: 'bdr-post', arg: 'post', kind: 'number', required: true, label: 'Post-bronchodilator FEV1 or FVC', unit: 'L' },
-      { dom: 'bdr-pred', arg: 'predicted', kind: 'number', required: true, label: 'Predicted FEV1 or FVC', unit: 'L' },
+      { dom: 'bdr-pred', arg: 'predicted', kind: 'number', required: true, label: 'Predicted FEV1 or FVC', unit: 'L', min: 0.5, max: 10 },
     ],
   },
   {

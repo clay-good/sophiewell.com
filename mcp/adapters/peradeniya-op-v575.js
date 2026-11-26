@@ -43,7 +43,7 @@ export default [
         label: `Respiratory rate [${P.RESPIRATORY_LEVELS.map((l) => `${l.value} = ${l.text}, ${l.points} points`).join('; ')}]`,
       },
       {
-        dom: 'pop-hr', arg: 'heartRate', kind: 'number', unit: 'per minute', required: true,
+        dom: 'pop-hr', arg: 'heartRate', kind: 'number', unit: 'per minute', required: true, min: 0, max: 300,
         label: `Heart rate. Above 60 = 0; 41 to 60 = 1; below 40 = 2. EXACTLY ${P.UNSCOREABLE_HEART_RATE} falls in NO published level and is REFUSED.`,
       },
       {

@@ -8,7 +8,7 @@ const audiogram = [];
 for (const [ear, Ear] of EARS) {
   for (const [k, when] of [['b', 'baseline'], ['r', 'recent']]) {
     for (const hz of [2, 3, 4]) {
-      audiogram.push({ dom: `sts-${ear}-${k}${hz}`, arg: `${ear}${k.toUpperCase()}${hz}`, kind: 'number', required: false, label: `${Ear} ear, ${when}, ${hz}000 Hz (dB)` });
+      audiogram.push({ dom: `sts-${ear}-${k}${hz}`, arg: `${ear}${k.toUpperCase()}${hz}`, kind: 'number', required: false, label: `${Ear} ear, ${when}, ${hz}000 Hz (dB)`, min: -10, max: 120 });
     }
   }
 }
