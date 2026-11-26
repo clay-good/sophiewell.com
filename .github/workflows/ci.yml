@@ -158,7 +158,12 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        # spec-v1815: refresh the apt index first. `--with-deps` installs the versions in the runner
+        # image's index, and the archive keeps only the current point release -- so when Ubuntu
+        # publishes a new libasound2t64 the pinned one 404s and every push fails on a mirror change
+        # rather than a code change. That is the failure the ubuntu-24.04 pin above exists to stop,
+        # arriving by another route.
+        run: sudo apt-get update && npx playwright install --with-deps chromium
       - name: Build seed data
         run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
       - name: Seed data is byte-stable
@@ -201,7 +206,8 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps ${{ matrix.browser }}
+        # spec-v1815: see the nightly lane above -- the apt index has to be refreshed first.
+        run: sudo apt-get update && npx playwright install --with-deps ${{ matrix.browser }}
       - name: Build seed data
         run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
       - name: Static build
