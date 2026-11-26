@@ -76,6 +76,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Six of the internal checks that hunt for a calculator answering from something it was never told now fail
+  the build when they find anything. All six were already finding nothing, which is the state nobody
+  notices changing: the next regression would have printed a line in a report no one runs.
 - Three calculators stop reading a verdict from something nobody told them, each on one path through the
   code while another path said so plainly. The Cairo-Bishop tumor-lysis grade is the highest of its
   end-organ criteria, so it now says when the creatinine was never drawn -- above six times the upper limit

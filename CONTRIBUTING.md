@@ -350,7 +350,7 @@ node scripts/probe-unit-equivalent.mjs     # the same quantity in the other unit
 node scripts/probe-note-lost-in-a-branch.mjs  # a tile that owns a gap in some configurations of its other fields and answers without owning it in the rest, where the field could still move the verdict there -- no judgement in the row, because the tile has already made it (docs/spec-v1814.md)
 ```
 
-**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds twenty-four of them
+**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds thirty of them
 in both directions: an unjudged row fails the gate, so it is a decision someone takes rather than a line in
 a report that already prints known ones, and a judged row the finder no longer reaches fails too, so a
 reason cannot outlive what it describes. Negative-test both directions when you add one, by removing a
@@ -359,6 +359,13 @@ gate**: a rule is a claim that certain rows are honest, and the cheapest quiet r
 wide, so prove the finder still reports what it is for. `probe-dated-claims` is driven at
 `--as-of 2028-01-01`, past every future claim in the catalog, and must still find the ones stale by then
 (`docs/spec-v1782.md`).
+
+**A finder that reports ZERO belongs there too, with no ledger** (`docs/spec-v1815.md`). A closed vein with
+no gate is the one state nobody notices changing: the report is one line of prose, nobody runs it again,
+and the next regression prints a row into a file no one opens. Six finders were in that state. Read the
+`console.log` that prints a ROW before writing `isFinding` -- five of those six indent their rows and
+`probe-impossible-dates` prints tab-separated columns at the left margin, so the indent rule the others
+share would have made it blind.
 
 **A refusal names the thing by the reader's name for it, never by the code's.** `lib/num.js`'s `readable()`
 does that for every caller that passes a value through it, but a message assembled from a table's `key` does

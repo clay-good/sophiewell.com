@@ -109,6 +109,61 @@ const FINDERS = [
     informational: [],
     minJudged: 14,
   },
+  // spec-v1815: six finders that report ZERO and were not gated. A finder at zero with no gate is the one
+  // state nobody notices changing: the next regression prints a row into a report nobody runs. None of
+  // them needs a ledger -- there is nothing to judge -- so they are here for the other half of the test,
+  // which is that a row appearing at all fails. Each one's `isFinding` is its row shape, read from the
+  // `console.log` that prints a row rather than guessed: five indent, and `probe-impossible-dates` prints
+  // tab-separated columns with no indent at all.
+  {
+    probe: 'probe-impossible-changes-nothing.mjs',
+    what: 'a field whose impossible value changed nothing in the reading',
+    fix: 'Refuse the impossible value or make it move the answer (docs/spec-v1783.md)',
+    isFinding: (l) => l.startsWith('  '),
+    informational: [],
+    minJudged: 0,
+  },
+  {
+    probe: 'probe-impossible-dates.mjs',
+    what: 'an impossible date or time (February 30th, 25:00) still answered',
+    fix: 'Refuse it where the date is read (docs/spec-v1737.md)',
+    // Its rows are tab-separated columns at the left margin; every other line it prints is prose.
+    isFinding: (l) => /^[a-z0-9-]+\t/.test(l),
+    informational: [],
+    minJudged: 0,
+  },
+  {
+    probe: 'probe-impossible-reads-as-absent.mjs',
+    what: 'an impossible value that reads as "not entered" while the reading does not say so',
+    fix: 'Refuse it rather than reading it as absent (docs/spec-v1726.md)',
+    isFinding: (l) => l.startsWith('  '),
+    informational: [],
+    minJudged: 0,
+  },
+  {
+    probe: 'probe-message-promises.mjs',
+    what: 'a field a tile NAMES in its own refusal message and then answers without',
+    fix: 'Require it, or stop naming it in the message (rule 23, docs/spec-v1181.md)',
+    isFinding: (l) => l.startsWith('  '),
+    informational: [],
+    minJudged: 0,
+  },
+  {
+    probe: 'probe-missing-list-reach.mjs',
+    what: 'a tile that refuses with a list of inputs and has OTHER inputs that move the verdict unnamed',
+    fix: 'Name them in the list, or own the gap in the reading (docs/spec-v1091.md)',
+    isFinding: (l) => l.startsWith('  '),
+    informational: [],
+    minJudged: 0,
+  },
+  {
+    probe: 'probe-envelope-unbounded.mjs',
+    what: 'a value an order of magnitude past a ceiling lib/bounds.js already declares, still answered',
+    fix: 'Apply the envelope where the value is read (docs/spec-v1404.md, docs/spec-v1741.md)',
+    isFinding: (l) => l.startsWith('  '),
+    informational: [],
+    minJudged: 0,
+  },
   {
     probe: 'probe-declared-cap-configs.mjs',
     what: 'a declared bound the library answers past in some configuration, so the page answers what the agent is refused',
