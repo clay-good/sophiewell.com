@@ -28,7 +28,7 @@ export default [
       { dom: 'sc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'sc-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.2 },
       { dom: 'sc-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
-      { dom: 'sc-scr', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'sc-scr', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', max: 75 },
       { dom: 'sc-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex' },
     ],
   },
@@ -67,7 +67,7 @@ export default [
     summary: 'pH-corrected serum potassium: adjusts measured potassium to a normal pH of 7.4 (≈ 0.6 mEq/L per 0.1 pH unit), disclosing the true potassium masked by an acid-base disturbance.',
     compute: F.correctedPotassiumPh,
     fields: [
-      { dom: 'kc-k', arg: 'potassium', kind: 'number', required: true, label: 'Measured serum potassium', unit: 'mEq/L' },
+      { dom: 'kc-k', arg: 'potassium', kind: 'number', required: true, label: 'Measured serum potassium', unit: 'mEq/L', max: 15 },
       { dom: 'kc-ph', arg: 'ph', kind: 'number', min: 6.3, max: 8, required: true, label: 'Arterial pH (6.3–8.0)' },
     ],
   },

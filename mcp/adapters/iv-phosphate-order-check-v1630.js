@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'ip-salt', arg: 'salt', kind: 'enum', required: true, values: IP.SALT_OPTIONS.map((s) => s.value), label: 'Salt: potassium or sodium phosphates' },
       { dom: 'ip-age', arg: 'ageBand', kind: 'enum', required: true, values: IP.AGE_BANDS.map((a) => a.value), label: 'Age band (under-12-months, 1-to-11-years or 12-plus)' },
-      { dom: 'ip-weight', arg: 'weight', kind: 'number', required: true, label: 'Actual body weight' },
+      { dom: 'ip-weight', arg: 'weight', kind: 'number', required: true, label: 'Actual body weight', min: 0.2 },
       { dom: 'ip-wunit', arg: 'weightUnit', kind: 'enum', required: true, values: IP.WEIGHT_UNITS.map((u) => u.value), label: 'Weight unit' },
       { dom: 'ip-dose', arg: 'dose', kind: 'number', required: true, label: 'Phosphorus ordered' },
       { dom: 'ip-dunit', arg: 'doseUnit', kind: 'enum', required: true, values: IP.DOSE_UNITS.map((u) => u.value), label: 'Dose unit: mmol or mmol/kg (mmol-kg)' },

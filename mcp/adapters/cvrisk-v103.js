@@ -95,7 +95,7 @@ export default [
     compute: F.nonHdlRemnant,
     fields: [
       { dom: 'nh-unit', arg: 'unit', kind: 'enum', values: ['mg', 'mmol'], label: 'Cholesterol unit' },
-      { dom: 'nh-tc', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol' },
+      { dom: 'nh-tc', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', max: 5000 },
       { dom: 'nh-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol' },
       { dom: 'nh-ldl', arg: 'ldl', kind: 'number', label: 'LDL cholesterol (optional, for remnant)' },
     ],

@@ -56,7 +56,7 @@ export default [
       { dom: 'ps-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
       { dom: 'ps-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'yr', bound: 'ageYears' },
       { dom: 'ps-sex', arg: 'sex', kind: 'enum', values: SEX, required: true, label: 'Sex' },
-      { dom: 'ps-tmax', arg: 'tmax', kind: 'number', required: true, label: 'Maximum temperature in prior 24 h', unit: '°C' },
+      { dom: 'ps-tmax', arg: 'tmax', kind: 'number', required: true, label: 'Maximum temperature in prior 24 h', unit: '°C', max: 47 },
       { dom: 'ps-ve', arg: 've', kind: 'number', required: true, label: 'Minute ventilation', unit: 'L/min', max: 588.635 },
     ],
   },

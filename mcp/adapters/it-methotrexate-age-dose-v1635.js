@@ -10,7 +10,7 @@ export default [
     summary: 'Intrathecal methotrexate dose by age, as the Methotrexate Injection label states it. It returns the label\'s age band (6, 8, 10 or 12 mg, or 12 to 15 mg from 9 years), the preservative-free requirement, the 1 mg/mL dilution and the label\'s interval sentences. The top band stays a range. A treatment protocol may set a different dose.',
     compute: (args) => IT.itMethotrexateAgeDose(args, new Date()),
     fields: [
-      { dom: 'itm-age', arg: 'age', kind: 'number', required: true, label: 'Age' },
+      { dom: 'itm-age', arg: 'age', kind: 'number', required: true, label: 'Age', min: 0 },
       { dom: 'itm-unit', arg: 'ageUnit', kind: 'enum', required: true, values: IT.AGE_UNITS.map((x) => x.value), label: 'Age unit' },
     ],
   },

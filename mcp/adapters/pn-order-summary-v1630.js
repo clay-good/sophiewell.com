@@ -10,7 +10,7 @@ export default [
     summary: 'Restates a parenteral nutrition order per kilogram, with GIR in mg/kg/min and energy by source. Gives g/kg/day of dextrose, amino acids and lipid, and mL/kg/day. Adds energy from each (dextrose 3.4 kcal/g, amino acids 4 kcal/g, lipid by product), kcal/kg/day, and non-protein kcal per gram of nitrogen when nitrogen is entered. Sets the dextrose rate beside the label\'s 0.5 g/kg/hour. No targets are applied.',
     compute: PS.pnOrderSummary,
     fields: [
-      { dom: 'ps-weight', arg: 'weight', kind: 'number', required: true, label: 'Patient weight' },
+      { dom: 'ps-weight', arg: 'weight', kind: 'number', required: true, label: 'Patient weight', min: 0.2 },
       { dom: 'ps-wunit', arg: 'weightUnit', kind: 'enum', required: true, values: PS.WEIGHT_UNITS.map((u) => u.value), label: 'Weight unit' },
       { dom: 'ps-dex', arg: 'dextroseGrams', kind: 'number', required: true, label: 'Dextrose, hydrous', unit: 'g' },
       { dom: 'ps-aa', arg: 'aminoAcidGrams', kind: 'number', required: true, label: 'Amino acids', unit: 'g', max: 2000 },

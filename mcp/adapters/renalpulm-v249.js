@@ -23,7 +23,7 @@ export default [
     compute: F.feua,
     fields: [
       { dom: 'feua-uua', arg: 'urineUA', kind: 'number', required: true, label: 'Urine uric acid', unit: 'mg/dL', min: 0.1, max: 500 },
-      { dom: 'feua-scr', arg: 'serumCr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'feua-scr', arg: 'serumCr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', min: 0.1 },
       { dom: 'feua-sua', arg: 'serumUA', kind: 'number', required: true, label: 'Serum uric acid', unit: 'mg/dL' },
       { dom: 'feua-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL', max: 500 },
     ],

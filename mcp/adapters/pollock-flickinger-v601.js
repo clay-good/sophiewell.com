@@ -33,7 +33,7 @@ export default [
     compute: P.pollockFlickinger,
     fields: [
       { dom: 'pf-volume', arg: 'volume', kind: 'number', unit: 'cm^3', required: true, label: `AVM volume. Multiplied by ${P.VOLUME_COEFFICIENT} in both versions.` },
-      { dom: 'pf-age', arg: 'age', kind: 'number', unit: 'years', required: true, label: `Patient age. Multiplied by ${P.AGE_COEFFICIENT} in both versions.` },
+      { dom: 'pf-age', arg: 'age', kind: 'number', unit: 'years', required: true, max: 130, label: `Patient age. Multiplied by ${P.AGE_COEFFICIENT} in both versions.` },
       {
         dom: 'pf-site', arg: 'site', kind: 'enum', values: P.SITES.map((s) => s.value), required: true,
         label: `Anatomical site. Chosen ONCE; each version's tier is derived, because the two published ladders classify the same site differently [${P.SITES.map((s) => `${s.value} = original tier ${s.originalTier}, modified tier ${s.modifiedTier === null ? 'NOT LISTED' : s.modifiedTier}`).join('; ')}]`,

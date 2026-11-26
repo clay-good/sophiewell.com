@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'gdr-regimen', arg: 'regimen', kind: 'enum', required: true, values: GT.REGIMENS.map((r) => r.value), label: 'Drug and indication' },
       { dom: 'gdr-dialysis', arg: 'dialysis', kind: 'enum', required: true, values: GT.DIALYSIS.map((d) => d.value), label: 'Dialysis: none, hd or pd' },
-      { dom: 'gdr-kidney', arg: 'kidney', kind: 'number', label: 'eGFR (allopurinol) or creatinine clearance', unit: 'mL/min' },
+      { dom: 'gdr-kidney', arg: 'kidney', kind: 'number', label: 'eGFR (allopurinol) or creatinine clearance', unit: 'mL/min', min: 0 },
     ],
   },
 ];

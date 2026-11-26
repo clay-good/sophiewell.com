@@ -76,6 +76,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The browser-test lanes stopped failing when an unrelated software repository on the build machine was
+  unreachable. The step that refreshes the package index was refreshing every repository the machine knows
+  about, including one none of these packages come from, and a single 403 from it failed the whole run.
+- Eighteen more inputs publish their plausible range, where the previous pass had left them bare on the
+  grounds that the calculator could not compute an answer exactly at the range's edge. That was true of one
+  edge and not the other: a range has two ends, and a field whose lower end is unreachable can still publish
+  its upper one. Nine are left, each because neither end is reachable or the limit changes with a dose table.
 - The last three measurements without a plausible range were taken as far as published sources allow. The
   FEV1 percent predicted turned out to need none: the four tools that use it give the same answer at 80, 160
   and 999999 percent, because each instrument's top band is open-ended. The other two -- an ECG amplitude and

@@ -15,8 +15,8 @@ export default [
       // lb-to-kg conversion, so no static declaration is true of both units. Naming the envelope published
       // "0.2 to 500" and probe-declared-cap-configs answered at 525 lb straight away, which is 238 kg and
       // well inside it. These wait for a declaration that can carry a unit.
-      { dom: 'drs-dw', arg: 'donorWeight', kind: 'number', required: true, label: 'Donor weight' },
-      { dom: 'drs-rw', arg: 'recipientWeight', kind: 'number', required: true, label: 'Recipient weight' },
+      { dom: 'drs-dw', arg: 'donorWeight', kind: 'number', required: true, label: 'Donor weight', min: 0.2 },
+      { dom: 'drs-rw', arg: 'recipientWeight', kind: 'number', required: true, label: 'Recipient weight', min: 0.2 },
       { dom: 'drs-dh', arg: 'donorHeight', kind: 'number', required: true, label: 'Donor height', min: 45 },
       { dom: 'drs-rh', arg: 'recipientHeight', kind: 'number', required: true, label: 'Recipient height', min: 45 },
     ]

@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'aa-product', arg: 'product', kind: 'enum', required: true, values: AA.PRODUCT_OPTIONS.map((p) => p.value), label: 'Product' },
       { dom: 'aa-age', arg: 'ageBand', kind: 'enum', required: true, values: AA.AGE_BANDS.map((a) => a.value), label: 'Age band: under 1 month (neonate), 1 month to under 1 year (infant), 1 to 10 years (child), over 10 to under 17 (adolescent), adult-stable, adult-critical' },
-      { dom: 'aa-weight', arg: 'weight', kind: 'number', required: true, label: 'Patient weight' },
+      { dom: 'aa-weight', arg: 'weight', kind: 'number', required: true, label: 'Patient weight', min: 0.2 },
       { dom: 'aa-wunit', arg: 'weightUnit', kind: 'enum', required: true, values: AA.WEIGHT_UNITS.map((u) => u.value), label: 'Weight unit' },
       { dom: 'aa-order', arg: 'order', kind: 'number', required: true, label: 'Amino acids ordered' },
       { dom: 'aa-ounit', arg: 'orderUnit', kind: 'enum', required: true, values: AA.ORDER_UNITS.map((u) => u.value), label: 'Order unit: g/kg/day (g-kg-day) or g per day (g)' },

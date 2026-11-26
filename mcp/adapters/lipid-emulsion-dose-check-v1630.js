@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'le-product', arg: 'product', kind: 'enum', required: true, values: LE.PRODUCT_OPTIONS.map((p) => p.value), label: 'Product' },
       { dom: 'le-age', arg: 'ageBand', kind: 'enum', required: true, values: LE.AGE_BANDS.map((a) => a.value), label: 'Age band: birth to under 2 years (birth-2), 2 to under 12 (2-11), 12 to 17 (12-17), adult' },
-      { dom: 'le-weight', arg: 'weight', kind: 'number', required: true, label: 'Patient weight' },
+      { dom: 'le-weight', arg: 'weight', kind: 'number', required: true, label: 'Patient weight', min: 0.2 },
       { dom: 'le-wunit', arg: 'weightUnit', kind: 'enum', required: true, values: LE.WEIGHT_UNITS.map((u) => u.value), label: 'Weight unit' },
       { dom: 'le-order', arg: 'order', kind: 'number', required: true, label: 'Ordered lipid' },
       { dom: 'le-ounit', arg: 'orderUnit', kind: 'enum', required: true, values: LE.ORDER_UNITS.map((u) => u.value), label: 'Order unit: g/kg/day (g-kg-day), g per day (g) or mL per day (mL)' },

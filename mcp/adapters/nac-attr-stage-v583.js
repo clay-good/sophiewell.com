@@ -46,6 +46,7 @@ export default [
       },
       {
         dom: 'nac-egfr', arg: 'egfr', kind: 'number', unit: 'ml/min', required: true,
+        min: 0, max: 200,
         label: `eGFR. Below ${N.EGFR_THRESHOLD} moves the original stage. THE SOURCE DOES NOT STATE WHICH EQUATION PRODUCED IT, and CKD-EPI and MDRD disagree by several ml/min right at this boundary.`,
       },
     ],

@@ -41,6 +41,7 @@ export default [
       },
       {
         dom: 'compera-6mwd', arg: 'sixMwd', kind: 'number', unit: 'm', required: false,
+        min: 0, max: 2000,
         label: 'Six-minute walk distance. Optional. Over 440 = 1; 440 to 320 = 2; 319 to 165 = 3; under 165 = 4. A value strictly between 319 and 320 falls in a GAP and is refused.',
       },
       {

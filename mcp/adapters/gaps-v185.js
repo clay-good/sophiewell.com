@@ -17,7 +17,7 @@ export default [
       { dom: 'fick-age', arg: 'age', kind: 'number', required: false, label: 'Age (for estimate)', unit: 'years' },
       { dom: 'fick-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: false, label: 'Sex (for estimate)' },
       { dom: 'fick-hr', arg: 'hr', kind: 'number', required: false, label: 'Heart rate (for estimate)', unit: 'bpm' },
-      { dom: 'fick-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
+      { dom: 'fick-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', max: 26 },
       { dom: 'fick-sao2', arg: 'sao2', kind: 'number', required: true, label: 'Arterial O₂ saturation SaO₂', unit: '%', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'fick-svo2', arg: 'svo2', kind: 'number', required: true, label: 'Mixed-venous O₂ saturation SvO₂', unit: '%', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'fick-bsa', arg: 'bsa', kind: 'number', required: true, label: 'Body surface area', unit: 'm²' },

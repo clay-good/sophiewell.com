@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'dme-regimen', arg: 'regimen', kind: 'enum', required: true, values: DM.REGIMENS.map((r) => r.value), label: 'Drug and use' },
       { dom: 'dme-dialysis', arg: 'dialysis', kind: 'enum', required: true, values: DM.DIALYSIS.map((d) => d.value), label: 'Dialysis: none, hd or pd' },
-      { dom: 'dme-kidney', arg: 'kidney', kind: 'number', label: 'eGFR (creatinine clearance for alogliptin)', unit: 'mL/min/1.73 m²' },
+      { dom: 'dme-kidney', arg: 'kidney', kind: 'number', label: 'eGFR (creatinine clearance for alogliptin)', unit: 'mL/min/1.73 m²', min: 0 },
     ],
   },
 ];

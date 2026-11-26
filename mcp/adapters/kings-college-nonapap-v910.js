@@ -17,7 +17,7 @@ export default [
       { dom: 'kn-age', arg: 'age', kind: 'number', required: false, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'kn-etiology', arg: 'etiology', kind: 'enum', required: false, label: 'Cause of the liver failure', values: ['other', 'seronegative', 'halothane', 'idiosyncratic-drug'] },
       { dom: 'kn-days', arg: 'jaundiceToEncephalopathyDays', kind: 'number', required: false, label: 'Days from the onset of jaundice to encephalopathy' },
-      { dom: 'kn-bilirubin', arg: 'bilirubin', kind: 'number', required: false, label: 'Total bilirubin' },
+      { dom: 'kn-bilirubin', arg: 'bilirubin', kind: 'number', required: false, label: 'Total bilirubin', min: 0 },
       { dom: 'kn-bilirubinunit', arg: 'bilirubinUnit', kind: 'enum', required: false, label: 'Bilirubin unit', values: ['mg/dl', 'umol/l'] },
     ],
   },

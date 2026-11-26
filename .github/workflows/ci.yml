@@ -163,7 +163,19 @@ jobs:
         # publishes a new libasound2t64 the pinned one 404s and every push fails on a mirror change
         # rather than a code change. That is the failure the ubuntu-24.04 pin above exists to stop,
         # arriving by another route.
-        run: sudo apt-get update && npx playwright install --with-deps chromium
+        #
+        # spec-v1828: and ONLY the Ubuntu archive. A plain `apt-get update` also refreshes the runner
+        # image's third-party lists, and on 2026-11-26 packages.microsoft.com answered 403 and took the
+        # whole step down with it -- the same shape of failure the line was added to stop, from a
+        # repository none of these packages come from. Restricting it to /etc/apt/sources.list refreshes
+        # the archive libasound2t64 lives in and touches nothing else. It still fails if the Ubuntu
+        # archive itself is unreachable, which is honest.
+        run: |
+          sudo apt-get update \
+            -o Dir::Etc::sourcelist=/etc/apt/sources.list \
+            -o Dir::Etc::sourceparts=- \
+            -o APT::Get::List-Cleanup=0
+          npx playwright install --with-deps chromium
       - name: Build seed data
         run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
       - name: Seed data is byte-stable
@@ -206,8 +218,14 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Install Playwright browsers
-        # spec-v1815: see the nightly lane above -- the apt index has to be refreshed first.
-        run: sudo apt-get update && npx playwright install --with-deps ${{ matrix.browser }}
+        # spec-v1815 / spec-v1828: see the lane above -- the apt index is refreshed first, and only the
+        # Ubuntu archive, because a third-party list answering 403 must not fail this step.
+        run: |
+          sudo apt-get update \
+            -o Dir::Etc::sourcelist=/etc/apt/sources.list \
+            -o Dir::Etc::sourceparts=- \
+            -o APT::Get::List-Cleanup=0
+          npx playwright install --with-deps ${{ matrix.browser }}
       - name: Build seed data
         run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
       - name: Static build

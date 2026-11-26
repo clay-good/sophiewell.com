@@ -46,6 +46,7 @@ export default [
       },
       {
         dom: 'thakar-creatinine', arg: 'creatinine', kind: 'number', unit: 'mg/dL', required: true,
+        min: 0.1, max: 75,
         label: `Preoperative serum creatinine. A STEPPED term, never interpolated: ${T.CREATININE_BANDS.map((b) => `${b.text} = ${b.points} points`).join('; ')}. The 2 to 5 jump is larger than any single risk factor.`,
       },
     ],
