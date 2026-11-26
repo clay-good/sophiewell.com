@@ -10,7 +10,7 @@ export default [
     fields: [
       { dom: 'lim-state', arg: 'state', kind: 'enum', required: true, label: 'State', values: LIM.RX_LIMIT_STATES.map((s) => s.value) },
       { dom: 'lim-category', arg: 'category', kind: 'enum', required: true, label: 'What the opioid is for', values: LIM.CATEGORIES.map((s) => s.value) },
-      { dom: 'lim-days', arg: 'days', kind: 'number', required: true, label: 'Days supplied' },
+      { dom: 'lim-days', arg: 'days', kind: 'number', required: true, label: 'Days supplied', min: 1, max: 365 },
       { dom: 'lim-initial', arg: 'initial', kind: 'enum', required: true, label: 'Initial prescription for this pain', values: ['yes', 'no'] },
       { dom: 'lim-refills', arg: 'refills', kind: 'enum', label: 'Refills ordered (Texas)', values: ['yes', 'no'] },
       { dom: 'lim-er', arg: 'extendedRelease', kind: 'enum', label: 'Extended-release or long-acting (New Jersey)', values: ['yes', 'no'] },

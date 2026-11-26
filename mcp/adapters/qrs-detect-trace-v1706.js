@@ -9,7 +9,7 @@ export default [
     summary: 'R-peaks, RR intervals and mean heart rate from a single-lead ECG trace by the Pan-Tompkins algorithm. Validated on the MIT-BIH Arrhythmia Database.',
     compute: QRS.qrsDetectTrace,
     fields: [
-      { dom: 'qrs-fs', arg: 'samplingRate', kind: 'number', required: true, label: 'Sampling rate (Hz)' },
+      { dom: 'qrs-fs', arg: 'samplingRate', kind: 'number', required: true, label: 'Sampling rate (Hz)', min: 100, max: 10000 },
       { dom: 'qrs-x', arg: 'samples', kind: 'string', required: true, label: 'ECG samples of one lead, one per line' },
     ]
   },

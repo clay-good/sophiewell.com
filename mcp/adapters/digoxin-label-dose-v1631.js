@@ -16,7 +16,7 @@ export default [
       { dom: 'dg-load', arg: 'loadMcgPerKg', kind: 'number', required: true, label: 'Loading dose chosen', unit: 'mcg/kg', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'dg-crcl', arg: 'creatinineClearance', kind: 'number', required: false, label: 'Corrected creatinine clearance (for maintenance, over 10 years)', unit: 'mL/min', max: 250 },
       { dom: 'dg-scr', arg: 'serumCreatinine', kind: 'number', required: false, label: 'Or, for an adult: serum creatinine (the label estimates the clearance)', unit: 'mg/dL' },
-      { dom: 'dg-years', arg: 'patientAge', kind: 'number', required: false, label: 'Age, with a serum creatinine', unit: 'years' },
+      { dom: 'dg-years', arg: 'patientAge', kind: 'number', required: false, label: 'Age, with a serum creatinine', unit: 'years', min: 0, max: 130 },
       { dom: 'dg-sex', arg: 'sex', kind: 'enum', required: false, values: DG.SEXES.map((x) => x.value), label: 'Sex, with a serum creatinine' },
       { dom: 'dg-tab', arg: 'tabletDose', kind: 'number', required: false, label: 'Tablet dose to convert to intravenous', unit: 'mcg' },
     ],

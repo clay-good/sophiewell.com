@@ -26,7 +26,7 @@ export default [
     summary: 'AJCC 8th-edition cutaneous-melanoma T category from Breslow thickness (with the 0.8 mm split) and ulceration — the a/b suffix and T element only.',
     compute: F.melanomaTStage,
     fields: [
-      { dom: 'melt-breslow', arg: 'breslow', kind: 'number', required: true, label: 'Breslow thickness', unit: 'mm' },
+      { dom: 'melt-breslow', arg: 'breslow', kind: 'number', required: true, label: 'Breslow thickness', unit: 'mm', min: 0, max: 100, exclusiveMin: true },
       { dom: 'melt-ulceration', arg: 'ulceration', kind: 'bool', required: false, label: 'Ulceration present' },
     ],
   },

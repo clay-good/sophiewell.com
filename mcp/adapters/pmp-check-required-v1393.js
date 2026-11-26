@@ -13,7 +13,7 @@ export default [
       { dom: 'pmp-schedule', arg: 'schedule', kind: 'enum', required: true, label: 'Schedule', values: PMP.SCHEDULES.map((s) => s.value) },
       { dom: 'pmp-setting', arg: 'setting', kind: 'enum', required: true, label: 'Setting', values: PMP.SETTINGS.map((s) => s.value) },
       { dom: 'pmp-first', arg: 'first', kind: 'enum', required: true, label: 'First prescription or continuing', values: PMP.FIRST_OR_CONTINUING.map((s) => s.value) },
-      { dom: 'pmp-days', arg: 'days', kind: 'number', required: true, label: 'Days supplied' },
+      { dom: 'pmp-days', arg: 'days', kind: 'number', required: true, label: 'Days supplied', min: 1, max: 365 },
       { dom: 'pmp-refills', arg: 'refills', kind: 'enum', label: 'Refills ordered', values: ['yes', 'no'] },
       { dom: 'pmp-pain', arg: 'forPain', kind: 'enum', label: 'For acute or chronic pain (New Jersey)', values: ['yes', 'no'] },
       { dom: 'pmp-24h', arg: 'within24', kind: 'enum', label: 'Within 24 hours of surgery or trauma (New Jersey)', values: ['yes', 'no'] },

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f278b6e052fbd6e7`
-Generated: 2026-11-26T18:24:13.784Z
+Build ID: `39c9b914fbaed5ef`
+Generated: 2026-11-26T18:52:48.939Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -74,7 +74,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/act-weight-band-dose-v1551.js` | 8891 | `c88fbd3d0309f7a196d537e7b0d64abcbd8e2b26ff038c38ba9e13e98e1ea055` |
 | `lib/acute-abdomen-v261.js` | 13592 | `b747bdf468169fbd5687b6a2004510e0ac77af8037eda77514096972f9d154b4` |
 | `lib/acute-injury-v213.js` | 13177 | `184baad6bd44579c24882befcefe5e17e1afc48aa9668b3eae4ed6a3740a0f3b` |
-| `lib/acute-opioid-rx-limit-v1393.js` | 9132 | `82c6cba646822fd1549477b875051f7ed020ed1ed3076a96457cd1d222f156d4` |
+| `lib/acute-opioid-rx-limit-v1393.js` | 9593 | `8bde24f4d9ae88ca68ae44cfd9aa018a20cf89af6c77eef84d766981fd366d60` |
 | `lib/ade-cost-avoidance-v1634.js` | 5332 | `2e3962731d9d7531c1fc84636349cb52ceecf5dfa9c5ff094f19cef43d97347f` |
 | `lib/adherence-v1513.js` | 11605 | `035f197777c528f98a6c6fd9784f0498508ab4fbc2666399c9835fd0250d98c0` |
 | `lib/adiposity-v270.js` | 3769 | `0af211943f78936b7e9e31efdb702c0d1bb0f7915f5dd4e6860d68507a6ac79c` |
@@ -402,7 +402,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/derm-v151.js` | 21853 | `7561f8900e493a924399a4fb522971db4ad624aea9349e947da8923032b73736` |
 | `lib/dermatology-v223.js` | 15432 | `ebe10aa3e5fe9cf9dbc07927927c78aab14fc3e8353430f006f798a4f58bd0af` |
 | `lib/dermscore-v234.js` | 11119 | `c885c8f004c87977e00a2d0973c37f74c0cdf09af9fab0d6de73e9187ef68348` |
-| `lib/dermuro-v191.js` | 15754 | `5c78dcfba1c4d163266906508ccb22b6d28436ce2af115b505f07dd3711d91e8` |
+| `lib/dermuro-v191.js` | 16097 | `0715637dcc085b812e45d1bf6a8846462a9bbda205b93b252b66ec823bd6a7af` |
 | `lib/desensitization-12-step-v1635.js` | 5268 | `414958c6ebb98ed5d0ef758c08673c7ee58f8a90e52d2b1c97d7036e0539bb59` |
 | `lib/device-infection-rate-v1655.js` | 4712 | `19a2826f8444a431b9fae8f95a617197c4c4d2b0b4f88ed6e7288ce51538b004` |
 | `lib/device-utilization-ratio-v1655.js` | 2790 | `4b1e22b907c404849da4ec4d4e84aac9736d700abb8169aa709c572fbed751c8` |
@@ -460,7 +460,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/edinburgh-caa-v610.js` | 10304 | `fb5605e75a11370d90b16fc49949021691ed4ede58851ccc5bc6fcb199698944` |
 | `lib/edinburgh-claudication-v702.js` | 5035 | `297c5fc34263f6b57507236d4e43bd1e7a6fa6a8046f60bc6ef4adf4dde9097f` |
 | `lib/edmonton-frail-scale-v690.js` | 4777 | `eb4983c2a78e0f8d4794c862ec95d78412c18b265baedf89c5dfd9ab6f7716ba` |
-| `lib/eeg-band-power-v1705.js` | 5524 | `9045f7a37dbddc2847c2ae41355ca2769198f2a2e2969843c68e716a1c0236db` |
+| `lib/eeg-band-power-v1705.js` | 6041 | `e497cd7ca5e0370e775fdab10dc2414f641abb44f3c5c17a1d0ba09016097ecc` |
 | `lib/effective-osmolality-v683.js` | 5612 | `7ff819da93decb1c65599eb797f0477bac5268b45a4a7f62f9873ab63086eb97` |
 | `lib/egpa-v641.js` | 3821 | `25c4c9e830b415f41dcd6de2d22ba26e7776f4f9fc055edd66d28a388b2e3a96` |
 | `lib/ehit-v531.js` | 10332 | `718b6a6de8e755b57849081fcff223b8888955ce85c8bef8c9d348e4145822df` |
@@ -1201,7 +1201,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pk-v166.js` | 11859 | `9da1dfb4a3947442b0e8627cbcbbb9dc5f4a70217a086a56cc35a96e5d082111` |
 | `lib/plaque-control-record-v721.js` | 3815 | `94945207c6684ef4830f75551ef125a4410be0e358f6b14359a331fbacf3c5fa` |
 | `lib/plot.js` | 3813 | `e0ac0523c3e248d25bebb86b7f051a11d607ee74b9e9e71743412a42e572d83e` |
-| `lib/pmp-check-required-v1393.js` | 15716 | `8a4ecb9253ea52b78cffdd558a7d40d5512980cce389bf78f04d571f674e0f16` |
+| `lib/pmp-check-required-v1393.js` | 16177 | `b2b4839f22f7d9d0821858d7e3940f0933aaea0adedb2c4b1e10843a7220d402` |
 | `lib/pn-aluminum-load-v1630.js` | 5432 | `21a25db3ffe5fcb8b252bbe98d5a9fd499981cdedd2266eae986f45bc41b3a49` |
 | `lib/pn-amino-acid-order-v1630.js` | 10343 | `5ac869d026e2054e7add5e0191df1999f4e1385bc20c9ed95058f3c750b23629` |
 | `lib/pn-calcium-phosphate-check-v1630.js` | 8999 | `bf092ef2c8d64e6454b4898e833d7c8e9c0e96a4951be1ec11995186448b19be` |
@@ -1258,7 +1258,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/qcsi-v698.js` | 5483 | `f4dbb31e8fa623e619726e736055ae003abe3f8513c8bcdfba1677f741f6a63c` |
 | `lib/qio-discharge-appeal-v1503.js` | 5611 | `517a90637c3bc8197f95c7aab27e78540a21e276bb3d3045c809ade5a10af23c` |
 | `lib/qpitt-v587.js` | 10219 | `b99f2899e1ad480d3c98adfe9f3b95c65980bd70adae49c48f41bb616f4504ad` |
-| `lib/qrs-detect-trace-v1706.js` | 14505 | `8a741b7146e55566e94f1e7a5ba3b1df02438d2e88de934a263340e0f1fd569f` |
+| `lib/qrs-detect-trace-v1706.js` | 14785 | `f403fd04ec59de4ace57130c66b4f130133b56659636ba7be39bd78bbb4fff2d` |
 | `lib/quantity-limit-check-v1502.js` | 3650 | `a84ea2b359e22ea0f1e8c1a0308241ea2e598af5e352b5b9e7f17f50ea505945` |
 | `lib/quantity-to-dispense-v1639.js` | 11207 | `5c2db989ddf90d2f33e2713e2cd798f849883fb82a9fc41e0011cfc4ddfadea9` |
 | `lib/query-compute.js` | 18609 | `ba68703b5e8cae2b887d6db070f1a7384f2b90bef9a8b6e50ea5a5e6aaafb086` |
@@ -1528,7 +1528,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/two-by-two-effect-v1634.js` | 6615 | `62098549c187ba3e5b1315e0e0e99046867164a1e5cab8d3a0a8bda7428a6e8d` |
 | `lib/two-compartment-params-v1699.js` | 3236 | `a1cf706d274bcfebfd63a235d78732eeed49c9c80f23fc1f5256ed208b3c05dc` |
 | `lib/twstrs-severity-v542.js` | 11899 | `e9c9c0cdba39c9944690289104224322406e59c0c99057bc48496cdba9b8224f` |
-| `lib/tx-aprn-pa-controlled-delegation-v1393.js` | 7377 | `dc374144134e45e3ab6335a508c7b4a9e42e04ff057687b4ea19e6bfbc735d64` |
+| `lib/tx-aprn-pa-controlled-delegation-v1393.js` | 7838 | `965a5397e04b3345817703b0a947a4e90b4f613cc7698a53dd5ef4779410d78e` |
 | `lib/tx-death-cert-deadline-v1392.js` | 3615 | `690d13b39855be6c034880f7e99c6577fe95faeb872572e848cfc7918ec8e056` |
 | `lib/tx-emergency-detention-clock-v1389.js` | 7978 | `e2eb941bcc86d1bcaab04d511a75ae8089be4f6b16825f584c204449269f0f2e` |
 | `lib/tx-emergency-detention-criteria-v1390.js` | 7275 | `ef316a45118613dd4c0cae0f4468ba12ebdd991b5dea88f9269b02e1dff1273f` |
@@ -1678,7 +1678,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/act-weight-band-dose-v1551.js` | 1077 | `03e4946290e4ac84a9481fe0c9b9e23ffa7de5a46e96ce8fecee2b403b145003` |
 | `mcp/adapters/acute-abdomen-v261.js` | 6654 | `6dd7300812944f88806ff61eed80ab8abb643c189c24d38d5304fbb284ae4cd8` |
 | `mcp/adapters/acute-injury-v213.js` | 5447 | `82bb1a73a3cedcc85b3f0cc2df0d5a20e71d5058b179bbd270157a1689238067` |
-| `mcp/adapters/acute-opioid-rx-limit-v1393.js` | 2001 | `bf072507b5230ac79fc05519570627ba633e57555185c51ea08db4329951fcab` |
+| `mcp/adapters/acute-opioid-rx-limit-v1393.js` | 2019 | `b8d725fabeb25c3a67fb4894b0ead4a15fbcd47de65eb817098e2025933b5bd1` |
 | `mcp/adapters/ade-cost-avoidance-v1634.js` | 1106 | `4d56b40035ee00c82aa404c266ae99bfc55546e9bca984d8ba98e8e3fb7f9fc0` |
 | `mcp/adapters/adherence-v1513.js` | 1514 | `9edc36e7827342b4d4717743601a1cb20f81f552dec253de06a764fffd28bc74` |
 | `mcp/adapters/adiposity-v270.js` | 1025 | `3fb1b036f09fbf410d3883b337eaf875b8a382f606d2d7e1fb3979520c256e46` |
@@ -1978,7 +1978,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/derm-v151.js` | 5099 | `b399908c5a5621ae3b009756e1d40e646ffed1a0411c6068403d03d7ee46d013` |
 | `mcp/adapters/dermatology-v223.js` | 7201 | `7e5881e2722efb57a8d27fb53ea92cb3303d5010e0816aaccd6640de3abc7c18` |
 | `mcp/adapters/dermscore-v234.js` | 4666 | `1fb7115455b0cc40f58b44fd4dd5ec53bcad658ec4a99e581bd5d49ce253b7ec` |
-| `mcp/adapters/dermuro-v191.js` | 3353 | `92d2bc54e5e55a1e9cbb79e1a12b3a29e023fa303a4324ffdd927a56c42f6903` |
+| `mcp/adapters/dermuro-v191.js` | 3391 | `2544778a1a0f6cdead38a5c2a1ea4b9c269ef3e6064f086557b12209402ed835` |
 | `mcp/adapters/desensitization-12-step-v1635.js` | 1289 | `7fcd2f2687f1eafcafb484f8d601f8e02da73f6f7f37cd3394d0ee1cba4e94d0` |
 | `mcp/adapters/device-infection-rate-v1655.js` | 1113 | `d022e1c91bb57fc46487c1b3e212135681a3a303b22f1e45403b18ebf44ec103` |
 | `mcp/adapters/device-utilization-ratio-v1655.js` | 978 | `872dcc0bcfd12aa989f762c0157f2170c521fb5006b949c6731b12145a681273` |
@@ -1987,7 +1987,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/diabetes-diagnosis-v841.js` | 2032 | `51a3cba7f5371d064ed01f328c62731a1a982e993b506e4dd2277a9a0f7230d8` |
 | `mcp/adapters/diabetes-drug-egfr-check-v1632.js` | 1283 | `19d0323325914c27fb639eb432173008f7ce15289952ae232b11fd48df1c53e7` |
 | `mcp/adapters/diastolic-function-ase-v664.js` | 1562 | `95c178a27ed662f2929c57b83fad29910f8a6162041f4c6102fe936542f96156` |
-| `mcp/adapters/digoxin-label-dose-v1631.js` | 2216 | `9820d5c42f466e3a646e4bc031e1c05d80211138d30df97387e50d46de59ce56` |
+| `mcp/adapters/digoxin-label-dose-v1631.js` | 2234 | `680e479046435b6a1f38f7ea686f2c045ef63182e09730e2f192c2c2407ca8ca` |
 | `mcp/adapters/dilution-c1v1-v1629.js` | 1631 | `1b15c5a071586b6840549d756c31bfd86893ff529ae3f665d164a423f54f51ac` |
 | `mcp/adapters/dimeglio-clubfoot-v387.js` | 2330 | `8718a631e4d3f3f473b9419ff199c6ba0ee6f94133307ce3431561fe4e771201` |
 | `mcp/adapters/diphtheria-antitoxin-dose-v1560.js` | 1340 | `c54639ac770b588509d167312069ff6d21f94d5faf4079b3be11d69a5ee848bf` |
@@ -2032,7 +2032,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/edinburgh-caa-v610.js` | 3852 | `8ef271b9e97bf5be1ffc2f4bb701cf6481e525d493c8d87f99050db6bf2236a4` |
 | `mcp/adapters/edinburgh-claudication-v702.js` | 1837 | `7da44a6d472f728213634cc841b64f85f9a882d38f7c41d062f57d315ec3cc55` |
 | `mcp/adapters/edmonton-frail-scale-v690.js` | 2341 | `75de15cb4c4cda0bee37e3b0bdc125a66e06b6166dd8bdde2473c2153e992f7e` |
-| `mcp/adapters/eeg-band-power-v1705.js` | 910 | `2eeead2108453fb65ea10506d75311d80f1fed6cb4b8db164cfc342eac3d0d3e` |
+| `mcp/adapters/eeg-band-power-v1705.js` | 931 | `28f7dae809497dc07fb8b5d2455d691a26a9f37b247f60eefce6edf37cf90eb2` |
 | `mcp/adapters/effective-osmolality-v683.js` | 1065 | `28b0a9e43f3c04d01462ace3c1b74cd49e2d597770e239f5b4dc3070d8543763` |
 | `mcp/adapters/egpa-v641.js` | 2018 | `6c76cd7c21dbd099b5921733fe1a5bd3014ffba81abfbdb48292474964bfaeed` |
 | `mcp/adapters/ehit-v531.js` | 4605 | `9060e439ff5afc4722ec36b25dda15611274f5aaef803d9e11b95084647dcc54` |
@@ -2292,7 +2292,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/isotonicity-freezing-point-v1629.js` | 1220 | `d9683c30d5935445d2a908c9d6c035b183abf17061d33a58366b6c6d2ef98926` |
 | `mcp/adapters/it-methotrexate-age-dose-v1635.js` | 1052 | `886f9bd7cca5cbfdf772078b80c6f26347b336c8e3d4ce7013f93e0119a65e3a` |
 | `mcp/adapters/iv-antithrombotic-renal-check-v1632.js` | 1616 | `a5ac4f3b2b854987cd3e369f34da0e8152e392cd8b185b17f881d48db3fb3c8d` |
-| `mcp/adapters/iv-iron-course-v1633.js` | 2074 | `52442fe9e44b8ac6827dbbf40397d315a9aca69d9e7a17ebdd26d8ac9689767d` |
+| `mcp/adapters/iv-iron-course-v1633.js` | 2108 | `9ef989b14362ecc39de96c94209e221d935612fd488036d869fb560939ec4931` |
 | `mcp/adapters/iv-label-rate-check-v1630.js` | 2064 | `0bb2b24b3319422a2baa2210216998307179f1eeae20621ca0184dfb63a8410a` |
 | `mcp/adapters/iv-phosphate-order-check-v1630.js` | 2402 | `9b687cdf9e7eb93179cccd608d87329e4ecdc31fcb1930db8fbf1a7e8a9a6605` |
 | `mcp/adapters/jemt-papilla-v1487.js` | 692 | `11e12c70ba85d403ce51902a79c0e8afe09fc5ea9b96bbdb3204b19a7b1b32a7` |
@@ -2690,7 +2690,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/pk-steady-state-predict-v1631.js` | 2375 | `11f91f008d4de35b7cfeac76448541749163391ef01c1d75a09b30fed93dec1e` |
 | `mcp/adapters/pk-v166.js` | 2098 | `38c9ca9fab52ed982eb8b38af9c867268e0fe2baa6c06525c17fd636f0b95f4c` |
 | `mcp/adapters/plaque-control-record-v721.js` | 1162 | `a0c10e3c69235f3f5c3de93b0a29c61989ffe64258a96c2e2af3d99d27618b10` |
-| `mcp/adapters/pmp-check-required-v1393.js` | 2462 | `52aa3f7a4b61f06b2558825c780139a91b37ef71bcb31067008ae44e6fcf5930` |
+| `mcp/adapters/pmp-check-required-v1393.js` | 2480 | `9a504639e0d31f852c8d6a3ee088e77539511d12a31f837f7a91f60cfb43adb5` |
 | `mcp/adapters/pn-aluminum-load-v1630.js` | 1210 | `5df3e9e424fbb70c47a315ee76150588a8aa670f15d63b6623036386d6bc2f3b` |
 | `mcp/adapters/pn-amino-acid-order-v1630.js` | 1973 | `45afaa3554e8c583e1fac72fa31b1cf72048d261acd9b9a42a4b807742bbbc0c` |
 | `mcp/adapters/pn-calcium-phosphate-check-v1630.js` | 2709 | `43cccab22c1aaa52b13675681028b5e5a12e4915951724f0f11fc2d8cbe7b241` |
@@ -2743,7 +2743,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/qcsi-v698.js` | 1205 | `049e48d3fa635f2ed643372724de4654576952dd6b0e0ca8096b22e175c902db` |
 | `mcp/adapters/qio-discharge-appeal-v1503.js` | 1127 | `40e8c7e5c441a3fc5b493b7e4c26455d8d988dd44f19ea023e3cfb170f0fc86e` |
 | `mcp/adapters/qpitt-v587.js` | 4540 | `eef3e8dc2667cb9facfacd970bb083359169b9fec2a946a10f7222d1f8731d6e` |
-| `mcp/adapters/qrs-detect-trace-v1706.js` | 723 | `d4e46d2460a1e5aed3074a6dbd57156c8164caee052a31c75ccb37a77024c991` |
+| `mcp/adapters/qrs-detect-trace-v1706.js` | 745 | `b7f72492ee8ca7447e109085fa311236281702b133c075206e30a9081c747679` |
 | `mcp/adapters/quantity-limit-check-v1502.js` | 1296 | `ddae3f349902b8abff830322675c9012123802f3e476dfe2dd9852ee2fff10de` |
 | `mcp/adapters/quantity-to-dispense-v1639.js` | 3577 | `b65ed4888565365b00252f7cecf12e1e1ed5c1ec326b30114096b127b11f856c` |
 | `mcp/adapters/quintero-ttts-v831.js` | 1870 | `e63da154f127455d2c11ccecddcbf1137ee442b9d6c54211ad4bff9cb117d1aa` |
@@ -2973,7 +2973,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/two-by-two-effect-v1634.js` | 1195 | `736ec8f41cc81db99dcf16e8ad3d80b6162e44b0f20a4f35f0b60d571e76ae7b` |
 | `mcp/adapters/two-compartment-params-v1699.js` | 1072 | `527f527883ca95bbe5cafa6965248be683c56dab3e261e2770510720ec9ba003` |
 | `mcp/adapters/twstrs-severity-v542.js` | 4445 | `d489ecb038615ded333ecca5e4671e4a66097e5fec7ec7bc3dfea61b475b8edb` |
-| `mcp/adapters/tx-aprn-pa-controlled-delegation-v1393.js` | 2140 | `861ba69e5e5373177177c290e7c0f1abe70e4c66e0c1c379616c5fe54f40b102` |
+| `mcp/adapters/tx-aprn-pa-controlled-delegation-v1393.js` | 2158 | `991b7f19c48f9896c132aa57900f7fbd0733b5034cf14937eec6ee80ba887257` |
 | `mcp/adapters/tx-death-cert-deadline-v1392.js` | 1036 | `4d884c6a96759395fb929132b0a70f94708a61a40a5f04438234fbabc6999fc6` |
 | `mcp/adapters/tx-emergency-detention-clock-v1389.js` | 1507 | `e65c2534fdd790026b1ef316db6f1e93472d69346c790772192845db4872b08c` |
 | `mcp/adapters/tx-emergency-detention-criteria-v1390.js` | 2753 | `156b250c1de2ed744e570bc688e96198e9ca1bee2fa699bd54e08bf931e774ac` |

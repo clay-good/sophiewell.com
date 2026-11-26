@@ -10,7 +10,7 @@ export default [
     fields: [
       { dom: 'del-schedule', arg: 'schedule', kind: 'enum', required: true, label: 'Schedule', values: DEL.SCHEDULES.map((s) => s.value) },
       { dom: 'del-setting', arg: 'setting', kind: 'enum', required: true, label: 'Setting', values: DEL.SETTINGS.map((s) => s.value) },
-      { dom: 'del-days', arg: 'days', kind: 'number', required: true, label: 'Days covered, including refills' },
+      { dom: 'del-days', arg: 'days', kind: 'number', required: true, label: 'Days covered, including refills', min: 1, max: 365 },
       { dom: 'del-refill', arg: 'refill', kind: 'enum', required: true, label: 'Is this a refill', values: ['yes', 'no'] },
       { dom: 'del-refill-c', arg: 'refillConsulted', kind: 'enum', label: 'Delegating physician consulted on the refill', values: DEL.YES_NO_UNKNOWN.map((s) => s.value) },
       { dom: 'del-under2', arg: 'under2', kind: 'enum', required: true, label: 'Patient younger than 2', values: ['yes', 'no'] },

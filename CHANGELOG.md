@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Three controlled-substance tools accepted a days-supplied their own refusal excludes: each says "from 1 to
+  365" and each accepted a fraction of a day. A prescription is dispensed in whole days, which two sibling
+  tools in the same codebase already required. Six tools in total now answer an impossible value with the
+  range they were already printing, rather than with the sentence an empty box gets.
 - The claim-denial next-step page answered a reason code of 999999 by asking for the code again. A reason
   code is one to three digits -- a format the page already checked one line further down -- so the highest
   one there can be is 999, and it says so now. A value that is not a number at all still gets the plain ask,
