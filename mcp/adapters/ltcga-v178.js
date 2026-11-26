@@ -12,7 +12,7 @@ export default [
     compute: F.gnri,
     fields: [
     { dom: 'gnri-albumin', arg: 'albuminGL', kind: 'number', required: true, label: 'Albumin G L' },
-    { dom: 'gnri-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight Kg' },
+    { dom: 'gnri-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight Kg', bound: 'weightKg' },
     { dom: 'gnri-height', arg: 'heightCm', kind: 'number', required: true, label: 'Height Cm' },
     { dom: 'gnri-sex', arg: 'sex', kind: 'enum', values: ["male","female"], required: true, label: 'Sex' },
     ],
@@ -22,7 +22,7 @@ export default [
     summary: 'Onodera Prognostic Nutritional Index: 10 × albumin (g/dL) + 0.005 × total lymphocyte count. < 45 indicates increased surgical/nutritional risk.',
     compute: F.pniOnodera,
     fields: [
-    { dom: 'pni-albumin', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin Gdl' },
+    { dom: 'pni-albumin', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin Gdl', bound: 'albumin' },
     { dom: 'pni-lymph', arg: 'lymphocytes', kind: 'number', required: true, label: 'Lymphocytes' },
     ],
   },
@@ -31,7 +31,7 @@ export default [
     summary: 'Controlling Nutritional Status score: points from albumin, total cholesterol, and lymphocyte count. Total 0–12; higher = worse nutritional status.',
     compute: F.conut,
     fields: [
-    { dom: 'conut-albumin', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin Gdl' },
+    { dom: 'conut-albumin', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin Gdl', bound: 'albumin' },
     { dom: 'conut-chol', arg: 'cholesterol', kind: 'number', required: true, label: 'Cholesterol' },
     { dom: 'conut-lymph', arg: 'lymphocytes', kind: 'number', required: true, label: 'Lymphocytes' },
     ],

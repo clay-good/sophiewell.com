@@ -15,7 +15,7 @@ export default [
       { dom: 'masld-othercause', arg: 'otherCause', kind: 'boolean', required: false, label: 'Specific other cause identified' },
       { dom: 'masld-sex', arg: 'sex', kind: 'enum', required: true, label: 'Sex', values: ['female', 'male'] },
       { dom: 'masld-ancestry', arg: 'ancestry', kind: 'enum', required: false, label: 'Ancestry for BMI and waist cuts', values: ['european', 'south-asian-chinese', 'japanese'] },
-      { dom: 'masld-bmi', arg: 'bmi', kind: 'number', required: false, label: 'Body mass index' },
+      { dom: 'masld-bmi', arg: 'bmi', kind: 'number', required: false, label: 'Body mass index', bound: 'bmi' },
       { dom: 'masld-waist', arg: 'waistCm', kind: 'number', required: false, label: 'Waist circumference, cm' },
       { dom: 'masld-glucose', arg: 'fastingGlucose', kind: 'number', required: false, label: 'Fasting glucose, mg/dL' },
       { dom: 'masld-hba1c', arg: 'hba1c', kind: 'number', required: false, label: 'HbA1c, percent' },

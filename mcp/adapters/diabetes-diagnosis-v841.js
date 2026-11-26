@@ -15,7 +15,7 @@ export default [
     fields: [
       { dom: 'dxd-a1c', arg: 'a1c', kind: 'number', required: false, label: 'A1C, percent' },
       { dom: 'dxd-a1cconfound', arg: 'a1cConfounder', kind: 'boolean', required: false, label: 'Condition that alters the A1C' },
-      { dom: 'dxd-fpg', arg: 'fastingGlucose', kind: 'number', required: false, label: 'Fasting plasma glucose, mg/dL' },
+      { dom: 'dxd-fpg', arg: 'fastingGlucose', kind: 'number', required: false, label: 'Fasting plasma glucose, mg/dL', bound: 'glucose' },
       { dom: 'dxd-ogtt', arg: 'twoHourGlucose', kind: 'number', required: false, label: '2-hour plasma glucose, mg/dL' },
       { dom: 'dxd-carbrestrict', arg: 'carbRestrictedBeforeOgtt', kind: 'boolean', required: false, label: 'Carbohydrate restricted before the tolerance test' },
       { dom: 'dxd-random', arg: 'randomGlucose', kind: 'number', required: false, label: 'Random plasma glucose, mg/dL' },

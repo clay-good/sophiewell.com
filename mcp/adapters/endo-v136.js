@@ -14,7 +14,7 @@ export default [
     compute: E.homaIr,
     fields: [
       { dom: 'hir-insulin', arg: 'insulin', kind: 'number', required: true, label: 'Fasting insulin', unit: 'uU/mL' },
-      { dom: 'hir-glucose', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose' },
+      { dom: 'hir-glucose', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', bound: 'glucose' },
       { dom: 'hir-unit', arg: 'unit', kind: 'enum', values: ['mgdl', 'mmol'], label: 'Glucose unit' },
     ],
   },

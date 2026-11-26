@@ -41,7 +41,7 @@ export default [
     fields: [
       { dom: 'zwolle-killip', arg: 'killip', kind: 'enum', values: ['1', '2', '3-4'], required: true, label: 'Killip class' },
       { dom: 'zwolle-timi', arg: 'timi', kind: 'enum', values: ['3', '2', '0-1'], required: true, label: 'Post-PCI TIMI flow' },
-      { dom: 'zwolle-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'zwolle-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'zwolle-3vd', arg: 'threeVessel', kind: 'bool', required: false, label: 'Three-vessel disease' },
       { dom: 'zwolle-ant', arg: 'anterior', kind: 'bool', required: false, label: 'Anterior infarction' },
       { dom: 'zwolle-time', arg: 'longIschemia', kind: 'bool', required: false, label: 'Ischemic time > 4 hours' },
@@ -53,7 +53,7 @@ export default [
     compute: F.timiRiskIndex,
     fields: [
       { dom: 'tri-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10, max: 300 },
-      { dom: 'tri-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'tri-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'tri-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20, max: 320 },
     ],
   },
@@ -64,7 +64,7 @@ export default [
     fields: [
       { dom: 'cad-lvef', arg: 'lvef', kind: 'number', required: true, label: 'LVEF', unit: '%', min: 0, exclusiveMin: true, max: 90 },
       { dom: 'cad-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min', min: 0, exclusiveMin: true, max: 300 },
-      { dom: 'cad-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'cad-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'cad-killip', arg: 'killip', kind: 'enum', values: ['1', '2-3'], required: true, label: 'Killip class' },
       { dom: 'cad-timi', arg: 'timi', kind: 'enum', values: ['3', '0-2'], required: true, label: 'Post-PCI TIMI flow' },
       { dom: 'cad-anemia', arg: 'anemia', kind: 'bool', required: false, label: 'Anemia (Hct < 39% men / < 36% women)' },

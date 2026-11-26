@@ -14,8 +14,8 @@ export default [
     summary: 'ADA diabetes risk test: age, BMI, male sex, gestational-diabetes history, first-degree relative, hypertension, and physical inactivity give a score where ≥ 5 flags a patient to screen for diabetes/prediabetes.',
     compute: F.adaDiabetesRisk,
     fields: [
-      { dom: 'ada-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'ada-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²' },
+      { dom: 'ada-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'ada-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²', bound: 'bmi' },
       { dom: 'ada-male', arg: 'male', kind: 'bool', required: false, label: 'Male sex' },
       { dom: 'ada-gdm', arg: 'gdm', kind: 'bool', required: false, label: 'History of gestational diabetes' },
       { dom: 'ada-rel', arg: 'relative', kind: 'bool', required: false, label: 'First-degree relative with diabetes' },
@@ -28,8 +28,8 @@ export default [
     summary: 'Cambridge Diabetes Risk Score (Griffin 2000): a logistic probability of undiagnosed type 2 diabetes from age, sex, BMI, family history, smoking, and antihypertensive/steroid use.',
     compute: F.cambridgeDiabetes,
     fields: [
-      { dom: 'camb-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'camb-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²' },
+      { dom: 'camb-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'camb-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²', bound: 'bmi' },
       { dom: 'camb-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex' },
       { dom: 'camb-htn', arg: 'antihypertensive', kind: 'bool', required: false, label: 'Antihypertensive medication' },
       { dom: 'camb-steroid', arg: 'steroids', kind: 'bool', required: false, label: 'Steroid medication' },
@@ -53,7 +53,7 @@ export default [
     compute: F.vai,
     fields: [
       { dom: 'vai-wc', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm', min: 0, exclusiveMin: true, max: 300 },
-      { dom: 'vai-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²' },
+      { dom: 'vai-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²', bound: 'bmi' },
       { dom: 'vai-tg', arg: 'triglycerides', kind: 'number', required: true, label: 'Triglycerides', unit: 'mmol/L', min: 0, exclusiveMin: true, max: 395.1 },
       { dom: 'vai-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mmol/L' },
       { dom: 'vai-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex' },

@@ -11,7 +11,7 @@ export default [
     summary: 'Platelet-albumin-bilirubin (PALBI) grade for chronic liver disease — the ALBI model augmented with platelet count, stratifying survival into three grades.',
     compute: F.palbi,
     fields: [
-      { dom: 'palbi-bilirubin', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
+      { dom: 'palbi-bilirubin', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL', bound: 'bilirubin' },
       { dom: 'palbi-albumin', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', min: 0, exclusiveMin: true, max: 10 },
       { dom: 'palbi-platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],
@@ -21,8 +21,8 @@ export default [
     summary: 'MELD-Na (sodium-augmented MELD, OPTN/UNOS coefficients) for liver-disease severity and transplant priority; sodium is applied only when MELD > 11, bounded 6–40.',
     compute: F.meldNa,
     fields: [
-      { dom: 'meldna-bilirubin', concept: 'bilirubin', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
-      { dom: 'meldna-inr', concept: 'inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
+      { dom: 'meldna-bilirubin', concept: 'bilirubin', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL', bound: 'bilirubin' },
+      { dom: 'meldna-inr', concept: 'inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
       { dom: 'meldna-creatinine', concept: 'creatinine', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL', min: 0.1 },
       { dom: 'meldna-sodium', concept: 'sodium', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mmol/L', min: 85 },
       { dom: 'meldna-dialysis', arg: 'dialysis', kind: 'bool', required: false, label: 'Dialysis ≥ 2× in the prior week' },

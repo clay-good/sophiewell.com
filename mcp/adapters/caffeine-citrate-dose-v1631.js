@@ -10,7 +10,7 @@ export default [
     summary: 'Loading and maintenance doses of caffeine citrate for apnea of prematurity from the FDA label, for a weight. Gives each in mg of caffeine citrate, mg of caffeine base and mL of the 20 mg/mL solution. A serum level is set beside the 50 mg/L the label associates with serious toxicity; the label gives no therapeutic range.',
     compute: CC.caffeineCitrateDose,
     fields: [
-      { dom: 'cf-weight', arg: 'weight', kind: 'number', required: true, label: 'Infant weight' },
+      { dom: 'cf-weight', arg: 'weight', kind: 'number', required: true, label: 'Infant weight', bound: 'weightKg' },
       { dom: 'cf-wunit', arg: 'weightUnit', kind: 'enum', required: true, values: CC.WEIGHT_UNITS.map((u) => u.value), label: 'Weight unit' },
       { dom: 'cf-level', arg: 'level', kind: 'number', required: false, label: 'Serum caffeine level (optional)', unit: 'mg/L' },
     ],

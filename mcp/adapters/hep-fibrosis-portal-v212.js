@@ -12,9 +12,9 @@ export default [
     summary: "King's Score (Cross 2009): age, AST, INR, and platelets give a non-invasive fibrosis score; below ~12.3 makes significant fibrosis / cirrhosis unlikely and above ~16.7 makes cirrhosis likely.",
     compute: F.kingScore,
     fields: [
-      { dom: 'king-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'king-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'king-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L', min: 1, max: 20000 },
-      { dom: 'king-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
+      { dom: 'king-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
       { dom: 'king-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L', min: 0, exclusiveMin: true, max: 2000 },
     ],
   },

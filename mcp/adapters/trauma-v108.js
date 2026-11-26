@@ -41,8 +41,8 @@ export default [
     compute: F.tashScore,
     fields: [
       { dom: 'ta-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin (g/dL)', bound: 'hemoglobin' },
-      { dom: 'ta-be', arg: 'baseExcess', kind: 'number', required: true, label: 'Base excess (mmol/L)' },
-      { dom: 'ta-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP (mm Hg)' },
+      { dom: 'ta-be', arg: 'baseExcess', kind: 'number', required: true, label: 'Base excess (mmol/L)', bound: 'baseExcess' },
+      { dom: 'ta-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP (mm Hg)', bound: 'sbp' },
       { dom: 'ta-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate (beats/min)', bound: 'hr' },
       { dom: 'ta-fast', arg: 'fast', kind: 'bool', label: 'Positive FAST' },
       { dom: 'ta-pelvis', arg: 'pelvis', kind: 'bool', label: 'Unstable pelvic fracture' },

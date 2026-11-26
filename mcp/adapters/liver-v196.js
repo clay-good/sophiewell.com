@@ -12,10 +12,10 @@ export default [
     summary: 'ABIC score for alcoholic hepatitis (Dominguez 2008): 0.1×age + 0.08×bilirubin + 0.3×creatinine + 0.8×INR stratifies 90-day survival into low, intermediate, and high risk.',
     compute: F.abicScore,
     fields: [
-      { dom: 'abic-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'abic-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Serum bilirubin', unit: 'mg/dL' },
+      { dom: 'abic-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'abic-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Serum bilirubin', unit: 'mg/dL', bound: 'bilirubin' },
       { dom: 'abic-creat', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', min: 0.1 },
-      { dom: 'abic-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
+      { dom: 'abic-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
     ],
   },
   {
@@ -23,7 +23,7 @@ export default [
     summary: 'GLOBE score for PBC transplant-free survival on ursodeoxycholic acid (Lammers 2015): age plus 1-year bilirubin, alkaline phosphatase, albumin, and platelets; > 0.30 marks a non-responder profile.',
     compute: F.globeScore,
     fields: [
-      { dom: 'globe-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'globe-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'globe-bili', arg: 'bili', kind: 'number', required: true, label: 'Bilirubin (× ULN)', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'globe-alp', arg: 'alp', kind: 'number', required: true, label: 'Alkaline phosphatase (× ULN)', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'globe-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin (× LLN)', min: 0, exclusiveMin: true, max: 5 },
@@ -47,7 +47,7 @@ export default [
     summary: 'PAGE-B score for HCC risk in Caucasians with chronic hepatitis B on antivirals (Papatheodoridis 2016): age, sex, and platelet count map to points; ≤ 9 low, 10–17 intermediate, ≥ 18 high 5-year HCC risk.',
     compute: F.pageB,
     fields: [
-      { dom: 'pageb-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'pageb-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'pageb-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex' },
       { dom: 'pageb-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '× 10⁹/L', min: 0, exclusiveMin: true, max: 2000 },
     ],
@@ -57,8 +57,8 @@ export default [
     summary: 'Revised Mayo PSC natural-history model (Kim 2000): age, bilirubin, albumin, AST, and a history of variceal bleeding give a relative risk score banding survival in primary sclerosing cholangitis.',
     compute: F.mayoPscRisk,
     fields: [
-      { dom: 'mayopsc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'mayopsc-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Bilirubin', unit: 'mg/dL' },
+      { dom: 'mayopsc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
+      { dom: 'mayopsc-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Bilirubin', unit: 'mg/dL', bound: 'bilirubin' },
       { dom: 'mayopsc-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', min: 0, exclusiveMin: true, max: 10 },
       { dom: 'mayopsc-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', min: 1, max: 20000 },
       { dom: 'mayopsc-var', arg: 'variceal', kind: 'bool', required: false, label: 'History of variceal bleeding' },

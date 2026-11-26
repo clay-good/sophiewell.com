@@ -76,6 +76,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Eighty-one more inputs publish the plausible range their calculator already enforces, so an agent reading
+  the interface sees the range instead of learning it by being refused. The catalog had been disagreeing
+  with itself about the same quantity: forty-two tools stated the systolic-pressure range and five did not.
 - Three calculators were being reported internally as answering without saying what they were missing, and
   all three were saying it -- in a list of the items nobody answered, rather than in a sentence. The Texas
   prescriptive-authority-agreement check names each of the statute's nine elements that way. The checks that

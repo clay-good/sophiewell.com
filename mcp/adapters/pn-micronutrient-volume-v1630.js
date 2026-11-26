@@ -11,7 +11,7 @@ export default [
     compute: MV.pnMicronutrientVolume,
     fields: [
       { dom: 'mv-product', arg: 'product', kind: 'enum', required: true, values: MV.PRODUCT_OPTIONS.map((p) => p.value), label: 'Product' },
-      { dom: 'mv-weight', arg: 'weight', kind: 'number', required: true, label: 'Patient weight' },
+      { dom: 'mv-weight', arg: 'weight', kind: 'number', required: true, label: 'Patient weight', bound: 'weightKg' },
       { dom: 'mv-wunit', arg: 'weightUnit', kind: 'enum', required: true, values: MV.WEIGHT_UNITS.map((u) => u.value), label: 'Weight unit' },
     ],
   },

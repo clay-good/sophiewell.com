@@ -179,7 +179,7 @@ export default [
     summary: 'ROX index (Roca 2019) = (SpO2/FiO2)/respiratory rate; predicts HFNC success. >=4.88 favorable.',
     compute: F.rox,
     fields: [
-      { dom: 'rx-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO2', unit: '%' },
+      { dom: 'rx-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO2', unit: '%', min: 0, max: 100, exclusiveMin: true },
       { dom: 'rx-fio2', arg: 'fio2', kind: 'number', min: 0, max: 1, exclusiveMin: true, required: true, label: 'FiO2 (0-1)' },
       { dom: 'rx-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
       // spec-v1154: spec-v1131 taught this to ask for the timepoint only in the

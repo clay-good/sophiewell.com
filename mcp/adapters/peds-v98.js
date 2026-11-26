@@ -73,7 +73,7 @@ export default [
       { dom: 'pim-pupils', arg: 'pupilsFixed', kind: 'bool', label: 'Both pupils > 3 mm and fixed' },
       { dom: 'pim-fio2', arg: 'fio2', kind: 'number', label: 'FiO2 (fraction) — if ventilated' },
       { dom: 'pim-pao2', arg: 'paO2', kind: 'number', label: 'PaO2 (mmHg) — if ventilated' },
-      { dom: 'pim-be', arg: 'baseExcess', kind: 'number', label: 'Base excess (mmol/L)' },
+      { dom: 'pim-be', arg: 'baseExcess', kind: 'number', label: 'Base excess (mmol/L)', bound: 'baseExcess' },
       { dom: 'pim-vent', arg: 'mechVent', kind: 'bool', label: 'Mechanical ventilation in the first hour' },
       { dom: 'pim-elective', arg: 'elective', kind: 'bool', label: 'Elective admission' },
       { dom: 'pim-recovery', arg: 'recovery', kind: 'enum', values: ['none', 'bypass-cardiac', 'nonbypass-cardiac', 'noncardiac'], label: 'Recovery from procedure' },

@@ -25,8 +25,8 @@ export default [
     compute: F.calciumPhosphateProduct,
     fields: [
       { dom: 'capo4-unit', arg: 'unit', kind: 'enum', values: ['mg-dl', 'mmol-l'], required: false, label: 'Input units (mg/dL or mmol/L)' },
-      { dom: 'capo4-ca', arg: 'calcium', kind: 'number', required: true, label: 'Serum calcium' },
-      { dom: 'capo4-po', arg: 'phosphate', kind: 'number', required: true, label: 'Serum phosphate' },
+      { dom: 'capo4-ca', arg: 'calcium', kind: 'number', required: true, label: 'Serum calcium', bound: 'calcium' },
+      { dom: 'capo4-po', arg: 'phosphate', kind: 'number', required: true, label: 'Serum phosphate', bound: 'phosphate' },
     ],
   },
   {

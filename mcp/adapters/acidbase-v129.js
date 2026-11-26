@@ -20,7 +20,7 @@ export default [
       { dom: 'ss-cl', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L', bound: 'chloride' },
       { dom: 'ss-lac', arg: 'lactate', kind: 'number', required: true, label: 'Lactate', unit: 'mEq/L', bound: 'lactate' },
       { dom: 'ss-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L', bound: 'bicarbonate' },
-      { dom: 'ss-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
+      { dom: 'ss-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', bound: 'albumin' },
       { dom: 'ss-phos', arg: 'phosphate', kind: 'number', required: true, label: 'Phosphate', unit: 'mg/dL', bound: 'phosphate' },
     ],
   },

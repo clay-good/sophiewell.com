@@ -54,7 +54,7 @@ export default [
     compute: F.mgap,
     fields: [
       { dom: 'mgap-mech', arg: 'mechanismBlunt', kind: 'enum', values: ['blunt', 'pen'], required: true, label: 'Mechanism', to: (v) => v === 'blunt' },
-      { dom: 'mgap-gcs', arg: 'gcs', kind: 'number', required: true, label: 'GCS' },
+      { dom: 'mgap-gcs', arg: 'gcs', kind: 'number', required: true, label: 'GCS', bound: 'gcs' },
       { dom: 'mgap-age', arg: 'ageLt60', kind: 'enum', values: ['lt60', 'ge60'], required: true, label: 'Age', to: (v) => v === 'lt60' },
       // spec-v1801: the CEILING only, as a literal. These two apply BOUNDS.sbp's ceiling and not its
       // floor -- spec-v1154 settled that a typed 0 systolic is a real trauma reading -- and `bound: 'sbp'`
@@ -68,7 +68,7 @@ export default [
     summary: 'GAP trauma triage score (Kondo 2011) from GCS, age, SBP.',
     compute: F.gap,
     fields: [
-      { dom: 'gap-gcs', arg: 'gcs', kind: 'number', required: true, label: 'GCS' },
+      { dom: 'gap-gcs', arg: 'gcs', kind: 'number', required: true, label: 'GCS', bound: 'gcs' },
       { dom: 'gap-age', arg: 'ageLt60', kind: 'enum', values: ['lt60', 'ge60'], required: true, label: 'Age', to: (v) => v === 'lt60' },
       // spec-v1801: the CEILING only, as a literal. These two apply BOUNDS.sbp's ceiling and not its
       // floor -- spec-v1154 settled that a typed 0 systolic is a real trauma reading -- and `bound: 'sbp'`
@@ -84,7 +84,7 @@ export default [
     fields: [
       { dom: 'big-bd', arg: 'baseDeficit', kind: 'number', required: true, label: 'Base deficit', unit: 'mEq/L' },
       { dom: 'big-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
-      { dom: 'big-gcs', arg: 'gcs', kind: 'number', required: true, label: 'GCS' },
+      { dom: 'big-gcs', arg: 'gcs', kind: 'number', required: true, label: 'GCS', bound: 'gcs' },
     ],
   },
   {
@@ -1097,7 +1097,7 @@ export default [
     summary: 'DAPT score (Yeh 2016): age band (65-74 = -1, >= 75 = -2), CHF/LVEF < 30% (2), vein-graft PCI (2), then MI at presentation, prior MI/PCI, diabetes, stent < 3 mm, paclitaxel stent, current smoker (1 each); >= 2 favors continuing DAPT beyond 12 months.',
     compute: F.daptScore,
     fields: [
-      { dom: 'dp-age', arg: 'ageBand', kind: 'enum', values: ['<65', '65-74', '>=75'], required: true, label: 'Age band (< 65 = 0, 65-74 = -1, >= 75 = -2)' },
+      { dom: 'dp-age', arg: 'ageBand', kind: 'enum', values: ['<65', '65-74', '>=75'], required: true, label: 'Age band (< 65 = 0, 65-74 = -1, >= 75 = -2)', bound: 'ageYears' },
       { dom: 'dp-chf', arg: 'chfOrLvefLt30', kind: 'bool', label: 'CHF or LVEF < 30% (2)' },
       { dom: 'dp-vgp', arg: 'veinGraftPci', kind: 'bool', label: 'Vein graft PCI (2)' },
       { dom: 'dp-mi', arg: 'miAtPresentation', kind: 'bool', label: 'MI at presentation (1)' },
@@ -1172,12 +1172,12 @@ export default [
     summary: 'Modified Early Obstetric Warning Score (Singh 2012): respiratory rate, SpO2, temperature (Celsius), systolic and diastolic BP, heart rate, AVPU neurological response, and a 0-3 pain score are each banded green/yellow/red; the response triggers on any one red or two or more yellows.',
     compute: F.meows,
     fields: [
-      { dom: 'mw-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min' },
+      { dom: 'mw-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', bound: 'rr' },
       { dom: 'mw-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO2', unit: '%', bound: 'spo2' },
-      { dom: 'mw-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
-      { dom: 'mw-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg' },
-      { dom: 'mw-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
-      { dom: 'mw-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'C' },
+      { dom: 'mw-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
+      { dom: 'mw-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg', bound: 'dbp' },
+      { dom: 'mw-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', bound: 'hr' },
+      { dom: 'mw-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'C', bound: 'temperature' },
       { dom: 'mw-neuro', arg: 'neuro', kind: 'enum', values: ['A', 'V', 'P', 'U'], required: true, label: 'Neurological response (AVPU)' },
       { dom: 'mw-pain', arg: 'pain', kind: 'number', min: 0, max: 3, required: true, label: 'Pain score (0-3)' },
     ],
@@ -1914,7 +1914,7 @@ export default [
     summary: 'Heat-illness severity and cooling algorithm (Bouchama 2002; WMS 2019): core temperature, CNS status, sweating (exertional vs classic subtype), and setting classify heat exhaustion vs heat stroke and select the cooling method (cold-water immersion to 38.9 C, cool-first-transport-second in the field).',
     compute: F.heatstrokeDecision,
     fields: [
-      { dom: 'hs-t', arg: 'coreTempC', kind: 'number', required: true, label: 'Core temperature', unit: 'C' },
+      { dom: 'hs-t', arg: 'coreTempC', kind: 'number', required: true, label: 'Core temperature', unit: 'C', bound: 'temperature' },
       { dom: 'hs-cns', arg: 'cns', kind: 'enum', values: ['none', 'mild-confusion', 'altered'], required: true, label: 'CNS status' },
       { dom: 'hs-sw', arg: 'sweating', kind: 'bool', label: 'Sweating present (exertional; unchecked = anhidrotic / classic)' },
       { dom: 'hs-set', arg: 'setting', kind: 'enum', values: ['field', 'hospital'], required: true, label: 'Setting' },

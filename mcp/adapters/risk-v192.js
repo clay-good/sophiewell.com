@@ -12,7 +12,7 @@ export default [
     summary: 'FINDRISC score estimating 10-year type-2-diabetes risk from age, BMI, waist circumference, activity, diet, blood-pressure treatment, glucose history, and family history.',
     compute: F.findrisc,
     fields: [
-      { dom: 'findrisc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'findrisc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       // spec-v1795: the floor is lib/bounds.js's bmi envelope (5), not the 0 the refusal sentence mentions, so
       // it is NAMED rather than copied; the ceiling of 100 is this tool's own.
       { dom: 'findrisc-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²', max: 100, bound: 'bmi' },

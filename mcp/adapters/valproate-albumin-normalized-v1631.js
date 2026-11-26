@@ -10,7 +10,7 @@ export default [
     compute: VA.valproateAlbuminNormalized,
     fields: [
       { dom: 'vpa-total', arg: 'totalLevel', kind: 'number', required: true, label: 'Total valproic acid level', unit: 'mg/L' },
-      { dom: 'vpa-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin' },
+      { dom: 'vpa-alb', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', bound: 'albumin' },
       { dom: 'vpa-alb-unit', arg: 'albuminUnit', kind: 'enum', required: true, values: VA.ALBUMIN_UNITS.map((u) => u.value), label: 'Albumin unit' },
     ],
   },

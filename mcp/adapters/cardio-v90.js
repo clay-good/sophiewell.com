@@ -50,7 +50,7 @@ export default [
     summary: 'TIMI risk score for STEMI (Morrow 2000): an 8-variable point score mapped to the derivation-cohort 30-day mortality.',
     compute: C.timiStemi,
     fields: [
-      { dom: 'ts-age', arg: 'age', kind: 'number', label: 'Age', unit: 'years' },
+      { dom: 'ts-age', arg: 'age', kind: 'number', label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'ts-hist', arg: 'diabetesHtnAngina', kind: 'enum', values: YESNO, label: 'History of diabetes, hypertension, or angina' },
       { dom: 'ts-sbp', arg: 'sbpLow', kind: 'enum', values: YESNO, label: 'Systolic BP < 100 mmHg' },
       { dom: 'ts-hr', arg: 'hrHigh', kind: 'enum', values: YESNO, label: 'Heart rate > 100 bpm' },

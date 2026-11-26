@@ -14,7 +14,7 @@ export default [
     summary: 'Watson total body water (Watson 1980): a sex-specific estimate of total body water from age, height, and weight.',
     compute: F.watsonTbw,
     fields: [
-      { dom: 'wt-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'wt-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'wt-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
       { dom: 'wt-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.2 },
       { dom: 'wt-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex' },
@@ -25,7 +25,7 @@ export default [
     summary: 'Salazar-Corcoran creatinine clearance (Salazar & Corcoran 1988): a CrCl estimate for obese patients in whom Cockcroft-Gault overestimates, from age, weight, height, and creatinine.',
     compute: F.salazarCorcoran,
     fields: [
-      { dom: 'sc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'sc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'sc-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.2 },
       { dom: 'sc-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
       { dom: 'sc-scr', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },

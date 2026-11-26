@@ -14,7 +14,7 @@ export default [
     summary: 'SCORE2 (ESC 2021): the European 10-year fatal + non-fatal CVD risk for apparently-healthy adults 40-69, calibrated to one of four risk regions, from age, sex, smoking, systolic BP, and total / HDL cholesterol (mmol/L).',
     compute: F.score2,
     fields: [
-      { dom: 's2-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 's2-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 's2-sex', arg: 'male', kind: 'bool', label: 'Male sex' },
       { dom: 's2-smoke', arg: 'smoker', kind: 'bool', label: 'Current smoker' },
       { dom: 's2-sbp', concept: 'systolic-bp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
@@ -43,7 +43,7 @@ export default [
     summary: 'MESA 10-year CHD risk (McClelland 2015): the Multi-Ethnic Study of Atherosclerosis engine, with and without the coronary artery calcium (Agatston) score, from age, sex, race/ethnicity, lipids, BP, diabetes, smoking, family history, and lipid/BP medication.',
     compute: F.mesaChd,
     fields: [
-      { dom: 'mesa-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'mesa-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'mesa-sex', arg: 'male', kind: 'bool', label: 'Male sex' },
       { dom: 'mesa-race', arg: 'race', kind: 'enum', values: ['white', 'chinese', 'black', 'hispanic'], required: true, label: 'Race / ethnicity' },
       { dom: 'mesa-tc', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },
@@ -62,7 +62,7 @@ export default [
     summary: "Framingham general CVD risk (D'Agostino 2008): 10-year risk of a first cardiovascular event and the implied vascular age, from age, sex, total / HDL cholesterol, systolic BP (treated or not), smoking, and diabetes.",
     compute: F.framinghamCvd,
     fields: [
-      { dom: 'fr-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'fr-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'fr-sex', arg: 'male', kind: 'bool', label: 'Male sex' },
       { dom: 'fr-tc', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },
       { dom: 'fr-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },

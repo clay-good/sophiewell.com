@@ -14,7 +14,7 @@ export default [
     fields: [
       { dom: 'hii-conc', arg: 'hepaticIronConcentration', kind: 'number', required: true, label: 'Hepatic iron concentration, dry weight' },
       { dom: 'hii-unit', arg: 'concentrationUnit', kind: 'enum', required: true, label: 'Unit the laboratory reported it in', values: ['umol', 'ug'] },
-      { dom: 'hii-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'hii-age', arg: 'ageYears', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
     ],
   },
 ];

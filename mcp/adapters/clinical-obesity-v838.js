@@ -14,7 +14,7 @@ export default [
     summary: 'Applies the 2025 Lancet Commission framework. Step one confirms excess adiposity by direct body fat measurement, or one anthropometric criterion PLUS body mass index, or two anthropometric criteria REGARDLESS of it, with adiposity assumed above 40. Step two classifies confirmed obesity as clinical where organ function is reduced or activities substantially limited, preclinical otherwise. Body mass index alone is not a diagnosis.',
     compute: clinicalObesity,
     fields: [
-      { dom: 'cob-bmi', arg: 'bmi', kind: 'number', required: false, label: 'Body mass index' },
+      { dom: 'cob-bmi', arg: 'bmi', kind: 'number', required: false, label: 'Body mass index', bound: 'bmi' },
       { dom: 'cob-directfat', arg: 'directBodyFatExcess', kind: 'boolean', required: false, label: 'Direct body fat measurement shows excess' },
       { dom: 'cob-waist', arg: 'waistRaised', kind: 'boolean', required: false, label: 'Waist circumference raised' },
       { dom: 'cob-waisthip', arg: 'waistHipRaised', kind: 'boolean', required: false, label: 'Waist-to-hip ratio raised' },

@@ -13,9 +13,9 @@ export default [
     summary: 'FIPS score (Freiburg index of post-TIPS survival): bilirubin, creatinine, age, and albumin give a score where ≥ 0.92 marks higher post-TIPS mortality.',
     compute: F.fips,
     fields: [
-      { dom: 'fips-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
+      { dom: 'fips-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL', bound: 'bilirubin' },
       { dom: 'fips-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL', min: 0.1 },
-      { dom: 'fips-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'fips-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'fips-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', min: 0, exclusiveMin: true, max: 10 },
     ],
   },
@@ -44,7 +44,7 @@ export default [
     summary: 'aMAP score (Fan 2020): age, sex, ALBI (bilirubin/albumin), and platelets give a 0–100 hepatocellular-carcinoma risk score (< 50 low, 50–60 medium, > 60 high).',
     compute: F.amap,
     fields: [
-      { dom: 'amap-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'amap-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'amap-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'µmol/L', min: 0, exclusiveMin: true, max: 100000 },
       { dom: 'amap-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/L', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'amap-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
@@ -67,9 +67,9 @@ export default [
     summary: 'FibroQ (Hsieh 2009): 10 × (age × AST × INR) / (ALT × platelets); a value > 1.6 predicts significant fibrosis (≥ F2).',
     compute: F.fibroq,
     fields: [
-      { dom: 'fq-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'fq-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'fq-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L', min: 1 },
-      { dom: 'fq-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
+      { dom: 'fq-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
       { dom: 'fq-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'IU/L', min: 1 },
       { dom: 'fq-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],

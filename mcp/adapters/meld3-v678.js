@@ -12,8 +12,8 @@ export default [
     compute: meld3,
     fields: [
       { dom: 'm3-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex (female adds 1.33 points)' },
-      { dom: 'm3-bili', arg: 'bilirubin', kind: 'number', unit: 'mg/dL', required: true, label: 'Serum bilirubin (mg/dL)' },
-      { dom: 'm3-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
+      { dom: 'm3-bili', arg: 'bilirubin', kind: 'number', unit: 'mg/dL', required: true, label: 'Serum bilirubin (mg/dL)', bound: 'bilirubin' },
+      { dom: 'm3-inr', arg: 'inr', kind: 'number', required: true, label: 'INR', bound: 'inr' },
       { dom: 'm3-creat', arg: 'creatinine', kind: 'number', unit: 'mg/dL', required: true, label: 'Serum creatinine (mg/dL)', min: 0.1 },
       { dom: 'm3-na', arg: 'sodium', kind: 'number', unit: 'mEq/L', required: true, label: 'Serum sodium (mEq/L)', min: 85 },
       { dom: 'm3-alb', arg: 'albumin', kind: 'number', unit: 'g/dL', required: true, label: 'Serum albumin (g/dL)', min: 0, exclusiveMin: true, max: 10 },

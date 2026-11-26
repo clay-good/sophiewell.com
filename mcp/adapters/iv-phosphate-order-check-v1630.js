@@ -20,7 +20,7 @@ export default [
       { dom: 'ip-hours', arg: 'hours', kind: 'number', required: true, label: 'Infusion time', unit: 'hours' },
       { dom: 'ip-line', arg: 'line', kind: 'enum', required: true, values: IP.LINES.map((l) => l.value), label: 'Line: peripheral or central venous catheter' },
       { dom: 'ip-phos', arg: 'serumPhosphorus', kind: 'number', required: false, label: 'Serum phosphorus (optional)', unit: 'mg/dL' },
-      { dom: 'ip-k', arg: 'serumPotassium', kind: 'number', required: false, label: 'Serum potassium (optional)', unit: 'mEq/L' },
+      { dom: 'ip-k', arg: 'serumPotassium', kind: 'number', required: false, label: 'Serum potassium (optional)', unit: 'mEq/L', bound: 'potassium' },
     ],
   },
 ];

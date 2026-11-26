@@ -16,7 +16,7 @@ export default [
       { dom: 'vnpi-size', arg: 'size', kind: 'number', required: true, label: 'Tumor size (mm); binned <=15 = 1, 16-40 = 2, >=41 = 3' },
       { dom: 'vnpi-margin', arg: 'margin', kind: 'number', required: true, label: 'Margin width (mm); binned >=10 = 1, 1 to <10 = 2, <1 = 3' },
       { dom: 'vnpi-class', arg: 'classification', kind: 'enum', values: ['1', '2', '3'], required: true, label: 'Pathologic classification: 1 = non-high grade no necrosis, 2 = non-high grade with necrosis, 3 = high grade' },
-      { dom: 'vnpi-age', arg: 'age', kind: 'number', required: true, label: 'Age (years); binned >60 = 1, 40-60 = 2, <40 = 3' },
+      { dom: 'vnpi-age', arg: 'age', kind: 'number', required: true, label: 'Age (years); binned >60 = 1, 40-60 = 2, <40 = 3', bound: 'ageYears' },
     ],
   },
 ];

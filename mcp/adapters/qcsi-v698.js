@@ -12,7 +12,7 @@ export default [
     compute: qcsi,
     fields: [
       { dom: 'qcsi-rr', arg: 'respiratoryRate', kind: 'number', unit: 'breaths/min', required: true, label: 'Respiratory rate (breaths/min)', min: 3, max: 100 },
-      { dom: 'qcsi-spo2', arg: 'spo2', kind: 'number', unit: '%', required: true, label: 'Pulse oximetry SpO2 (%)' },
+      { dom: 'qcsi-spo2', arg: 'spo2', kind: 'number', unit: '%', required: true, label: 'Pulse oximetry SpO2 (%)', bound: 'spo2' },
       { dom: 'qcsi-o2', arg: 'o2Flow', kind: 'number', unit: 'L/min', required: true, label: 'Oxygen flow rate (L/min, 0 = room air)' },
     ],
   },
