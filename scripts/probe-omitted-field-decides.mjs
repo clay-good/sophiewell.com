@@ -344,6 +344,47 @@ const JUDGED_RULED_OUT = {
   'loe-silness-gingival-index|gi-2': 'An index over counted surfaces: a surface count left out is zero '
     + 'surfaces at that score, which is a real answer, and it leaves the denominator as the surfaces counted',
 };
+// spec-v1813: and the SECOND section's rows, read the same way. It is the first section's question asked of
+// a tile that carries no boolean `abnormal`, so the verdict moving is the only signal there is -- and 19
+// rows is small enough to hold at zero too. Two reasons dominate: a reading that LOSES a clause has
+// fabricated nothing (spec-v1196), which is every `pk-suite` row; and a criteria list that says which
+// criteria were met names its own gap.
+const JUDGED_UNFLAGGED = {
+  'salicylate-toxicity|sal-unit': 'The reading names the unit it assumed and the factor to the other: "(no '
+    + 'unit given; mg/dL assumed, and a level in mmol/L is 13.81 times this)"',
+  'truelove-witts|tw-hr': 'The band ENUMERATES the systemic criteria met, and any one of them is enough for '
+    + 'severe, so the grade cannot move: this is the case spec-v1239 named when it narrowed the vocabulary',
+  'truelove-witts|tw-hgb': 'The same enumerated criteria list, and the same grade either way',
+  'truelove-witts|tw-esr': 'The same enumerated criteria list, and the same grade either way',
+  'mayo-uc|mu-en': 'It names WHICH instrument it computed: "Partial Mayo score 6 (0-9)" without the endoscopy '
+    + 'subscore and "Full Mayo score 6 (0-12)" with it, each with its own range and its own band',
+  'iol-power|iol-target': 'It states the target it assumed in the band: "Emmetropic IOL power 20.05 D '
+    + '(A-constant adjusted +0 for AL 23.5 mm)", and emmetropia is what the field\'s own label calls 0',
+  'spetzler-martin|sm-age': 'The age band is supplementary by definition and the band says what it summed: '
+    + '"grade V (core sum 5)". With the age it ADDS the supplemented Spetzler-Martin-Lawton grade beside it',
+  'calvert-carboplatin|cv-cap': 'The default is the FDA recommendation and the band states it was applied: '
+    + '"Estimated GFR 140 mL/min capped at 125 mL/min (FDA, October 2010)". Omitting the field cannot give '
+    + 'a larger dose than entering it, because the cap is the safe direction',
+  'tls-cairo-bishop|tl-arr': 'A tick box for an end-organ criterion, where an unticked box is a real "no" '
+    + '(rule 4 of the programme), and the note lists the criteria the grade is read from',
+  'tls-cairo-bishop|tl-sz': 'The same: an end-organ tick box, with the criteria listed',
+  'pk-suite|pk-vd': 'A reading that LOSES a clause has fabricated nothing (spec-v1196): without the volume '
+    + 'of distribution the tool prints the one line it can still compute and no half-life or loading dose',
+  'pk-suite|pk-cl': 'The same: the clauses that need the clearance are absent, not wrong',
+  'pk-suite|pk-cp': 'The same: no target concentration, so no loading or maintenance dose is printed',
+  'pk-suite|pk-tau': 'The same: no dosing interval, so no maintenance dose is printed',
+  'smart-cop|sc-spo2': 'The oxygenation term takes PaO2, SpO2 OR the P/F ratio, any one of which serves, and '
+    + 'the example carries all three -- so dropping the SpO2 leaves the criterion measured. spec-v1020 '
+    + 'already refuses the low-risk reading when NONE of the three is entered',
+  'palm-coein|pc-leiomyomaType': 'spec-v1788: the tertiary type is left out of the notation the tool prints '
+    + '(L1(SM) rather than L1(SM type 0)), so its absence is on screen in the answer itself',
+  'days-supply|ds-discard': 'The field is the label\'s in-use discard limit "if the label gives one", and no '
+    + 'limit entered is the label having none -- a cap that does not exist cannot shorten the supply',
+  'cyp2d6-activity-score|cas-dup': 'A duplication not reported is no duplication, which is what the field '
+    + 'asks; reporting one without the allele is the ambiguity the tool then refuses to resolve',
+  'dropper-calibration|dc-dose': 'The dose is optional and feeds a second, separate line; without it the '
+    + 'tool gives the drops-per-mL identity it was asked for and says nothing about a dose',
+};
 const JUDGED_ALL = process.argv.includes('--all');
 const ONLY_RULED_OUT = process.argv.includes('--only-ruled-out');
 const judgedSeen = new Set();
@@ -358,26 +399,30 @@ function report(title, rows) {
   }
 }
 
-const unjudged = ruledOut.filter((r) => {
+const sift = (rows, ledger) => rows.filter((r) => {
   const key = `${r.id}|${r.field}`;
-  if (!JUDGED_RULED_OUT[key]) return true;
+  if (!ledger[key]) return true;
   judgedSeen.add(key);
-  if (JUDGED_ALL) console.log(`JUDGED\t${key}\t${JUDGED_RULED_OUT[key]}`);
+  if (JUDGED_ALL) console.log(`JUDGED\t${key}\t${ledger[key]}`);
   return false;
 });
-const stale = Object.keys(JUDGED_RULED_OUT).filter((k) => !judgedSeen.has(k));
+const unjudged = sift(ruledOut, JUDGED_RULED_OUT);
+const unjudgedUnflagged = sift(unflagged, JUDGED_UNFLAGGED);
+const stale = [...Object.keys(JUDGED_RULED_OUT), ...Object.keys(JUDGED_UNFLAGGED)]
+  .filter((k) => !judgedSeen.has(k));
 if (stale.length) {
   console.log(`STALE-LEDGER: ${stale.length} judged row(s) this run no longer reaches: ${stale.join(', ')}.`);
   console.log('A reason cannot outlive what it describes -- re-read the tile and remove the row.');
 }
 if (ONLY_RULED_OUT) {
   report('RULED OUT FROM A SUBSET (read these first)', unjudged);
+  report('NO SEVERITY FLAG, AND THE VERDICT MOVED (read these next)', unjudgedUnflagged);
   process.exit(0);
 }
 console.log('Dropping one field from each worked example, then asking whether any plausible');
 console.log('value of that field would have changed the verdict -- without the tile saying so.');
 report('RULED OUT FROM A SUBSET (read these first)', unjudged);
-report('NO SEVERITY FLAG, AND THE VERDICT MOVED (read these next)', unflagged);
+report('NO SEVERITY FLAG, AND THE VERDICT MOVED (read these next)', unjudgedUnflagged);
 report('VERDICT COULD CHANGE', couldChange);
 report('THE NUMBER IS THE VERDICT (no flag, no band -- read by rule 4 first)', numberIsVerdict);
 console.log(`\nReach: ${tilesWithFlag} tiles set a boolean \`abnormal\` and ${tilesWithoutFlag} do not.`);

@@ -265,6 +265,25 @@ export const DISCLOSING = new RegExp([
   // And the plainest one, which only `arpraziquantel-dose` uses: its contraindication list says
   // "Contraindications not all entered" before giving the dose. Moves exactly THREE rows, all that tool.
   'not all entered',
+  // spec-v1813: the count stated with the word ANSWERED, which is how a variable-denominator instrument
+  // discloses what it stood on. The pattern above it knows "N of 20 items" and the four nouns the house
+  // writes there; `oswestry-odi` says "Raw 30 of 45 across 9 answered sections", and `sections` is not one
+  // of those nouns -- nor should it be, because "4 of 5 regions is absent" and "3 of 10 regions with early
+  // ischemic change" are CRITERIA restated, and matching the bare noun would exempt the tiles that quote
+  // them. The participle is the discriminator: a count of what was ANSWERED is a statement about this
+  // reading, and no instrument's definition is written that way.
+  //
+  // Measured before adding, as the rule at the top requires: across every tile and every dropped field it
+  // moves exactly the TEN Oswestry sections and nothing else.
+  //   probe-omitted-field-decides   29 fields / 14 calculators -> 19 / 13  (section 2)
+  //   probe-omitted-item            143 -> 133
+  // probe-static-exemption grants 10 more exemptions and still reports 0 rows, which is the check that
+  // none of them rests on text that was there before a field was dropped.
+  //
+  // The Oswestry index is the case the phrase exists for: its denominator IS the sections answered, which
+  // is the instrument's own published rule, and the tool prints the count it divided by. Fairbank's
+  // adjustment covers one missed section; from two, the tool already labels the reading partial.
+  '\\d+ answered [a-z]+',
   // spec-v1805: a tool that says the clinical criterion was not fully assessed, and decides nothing.
   // Moves exactly SIX rows -- `brazil-scorpion-antivenom`, `brazil-spider-antivenom`,
   // `chikungunya-case-def` and `zika-case-def`, each of which answers "Not decided" and says why.

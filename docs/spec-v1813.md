@@ -3,7 +3,8 @@
 > Status: **SHIPPED (2026-11-26)**: one tile stops calling a person eligible without saying that an
 > exclusion was never answered; the shared vocabulary learns the participles the house uses for a tick box;
 > and `probe-omitted-field-decides`'s first section — the one that can hurt — gets a JUDGED ledger and a
-> gate, as the 23rd gated finder. 1 library file, 1 test. The catalog stays 2,390.
+> gate across both of its strong sections, as the 23rd gated finder. 1 library file, 1 test. The
+> catalog stays 2,390.
 
 ## A note that four early returns sat above
 
@@ -44,12 +45,38 @@ adding, as the file's own rule requires: exactly **one** row moves, `boston-caa`
 declines both tiers. `probe-static-exemption` still reports zero, which is the check that this bought no
 exemption on text that was already there.
 
-## Fifteen read rows, and a gate on the section that can hurt
+## A count is disclosed with a participle, not a noun
+
+`oswestry-odi` was the other ten rows, and it was right all along. The Oswestry index's denominator **is
+the sections answered** — that is Fairbank's published rule, not a shortcut — and the tool prints the count
+it divided by: *"Raw 30 of 45 across 9 answered sections"*, labeling the reading partial from two missed
+sections, where the published adjustment stops covering it.
+
+The vocabulary's count pattern knows `N of 20 items` and the four nouns the house writes there, and
+`sections` is not one of them — nor should the bare noun be added, because *"4 of 5 regions is absent"* and
+*"3 of 10 regions with early ischemic change"* are **criteria restated**, and matching them would exempt the
+tiles that quote them. The **participle** is the discriminator: a count of what was *answered* is a
+statement about this reading, and no instrument's definition is written that way. `\d+ answered [a-z]+`
+moves exactly the ten Oswestry sections and nothing else.
+
+## Thirty-four read rows, and a gate on the two sections that can hurt
 
 Section 1 of `probe-omitted-field-decides` is the [spec-v1091](spec-v1091.md) shape: with a field omitted
-the reading is `abnormal: false`, and some value of that field would have made it true. It is small enough
-to hold at zero, so its fifteen remaining rows are now judged with their reasons and the section is gated.
-The other three sections are a prioritized reading list of 150-odd rows and stay that way.
+the reading is `abnormal: false`, and some value of that field would have made it true. Section 2 is the
+same question asked of a tile that carries no flag at all, so the verdict moving is the only signal there
+is. Both are small enough to hold at zero, so their remaining rows — fifteen and nineteen — are judged with
+their reasons, and `--only-ruled-out` prints just those two sections for the gate to read. Sections 3 and 4
+are a prioritized reading list of 120-odd rows and stay that way.
+
+Section 2's reasons fall into two groups. Most are **a reading that lost a clause**, which fabricates
+nothing ([spec-v1196](spec-v1196.md)): all four `pk-suite` rows print the one line they can still compute
+rather than a wrong one. The rest **name what they stood on** — `truelove-witts` enumerates the systemic
+criteria met and any one of them is enough for severe; `mayo-uc` says *"Partial Mayo score 6 (0-9)"* without
+the endoscopy subscore and *"Full Mayo score 6 (0-12)"* with it, each with its own range and its own band;
+`calvert-carboplatin` applies the FDA's GFR cap by default and says so, which is the safe direction.
+`smart-cop` is the one worth checking twice: its oxygenation term takes PaO2, SpO2 **or** the P/F ratio, any
+one of which serves, and [spec-v1020](spec-v1020.md) already refuses the low-risk reading when none of the
+three is entered.
 
 Four of the fifteen are a **unit select**, and they share one reason: each names in its answer the unit it
 read the value as — *"HOMA-IR 0.74 (insulin 6 uU/mL, glucose 50 mg/dL)"*, *"50 ng/mL (124.8 nmol/L)"*. That

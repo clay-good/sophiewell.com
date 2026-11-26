@@ -81,6 +81,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   worked out, and four shorter paths through it finished first -- including the one for a person under 90 cm
   tall, who is moved to a different regimen rather than refused. It is now said on every reading that does
   not refuse, and no longer said where albendazole is given alone and illness is not an exclusion.
+- Two of the internal checks that hunt for a calculator deciding from an incomplete form now hold at zero
+  instead of printing a list of rows somebody has already read, so a new one fails a test rather than
+  arriving among thirty-four known ones. The Oswestry Disability Index was among those rows and was
+  right all along: its percentage is defined over the sections answered, and it prints the count it
+  divided by.
 - Three calculators that answer on a partial set were said to be answering in silence, and they were not:
   the DALY burden, the antimicrobial-use SAAR and the compounding anticipatory limit each say in their
   first line that a figure was not entered and which side of the answer the rest supports. The internal

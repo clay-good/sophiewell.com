@@ -87,15 +87,15 @@ const FINDERS = [
   {
     probe: 'probe-omitted-field-decides.mjs',
     args: ['--all', '--only-ruled-out'],
-    what: 'a tile that rules something out from a subset: the reading with a field omitted is `abnormal: false`, '
-      + 'and some value of that field would have made it true',
+    what: 'a tile that decides from a subset: with one field omitted the reading is `abnormal: false` and some '
+      + 'value of that field would have made it true, or the tile carries no flag at all and its verdict moved',
     fix: 'Give the reading its footing (docs/spec-v1091.md, docs/spec-v1813.md), or add it to JUDGED_RULED_OUT '
-      + 'in the finder with the reason -- it names the value it assumed, the field is an optional extra, or the '
-      + 'verdict is scoped to what was entered',
+      + 'or JUDGED_UNFLAGGED in the finder with the reason -- it names the value it assumed, the field is an '
+      + 'optional extra, the verdict is scoped to what was entered, or the reading only LOST a clause',
     // Its report is a count line and then two indented lines per row; a row is what is indented.
     isFinding: (l) => l.startsWith('  '),
     informational: [],
-    minJudged: 15,
+    minJudged: 34,
   },
   {
     probe: 'probe-declared-cap-configs.mjs',
