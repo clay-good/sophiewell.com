@@ -38,6 +38,22 @@
 //     field (spec-v1142). Checkbox criteria dominate this section and are
 //     correct by rule 4 -- an unticked box is a real "no".
 //
+// SECTION 3 FILTERED FOR THE DANGEROUS DIRECTION (spec-v1824, 2026-11-26). Sections 1 and 2 are gated at
+// zero behind judged ledgers, and section 3's 108 rows are a prioritised reading list. They were filtered
+// for the one shape that can hurt -- the OMITTED reading reassuring and the filled one not -- and four
+// rows came back. Three are false positives of that filter: `posas-observer-scar` and
+// `posas-patient-scar` carry "6 = normal skin" as the SCALE's explanation rather than a verdict, and
+// `yellow-fever-case-def` is a case definition sitting at the tier its entered criteria support.
+//
+// The fourth was read in full and is correct, for a reason only the field's own wording gives:
+// `congenital-syphilis-scenario` reads an omitted darkfield/PCR as not meeting the Scenario 1 criterion,
+// and that option is labelled "Negative or NOT DONE". CDC's Scenario 1 needs a POSITIVE test, so a test
+// nobody did does not meet it, and the field says so where the reader chooses. An omitted select reading
+// as "no" is the same answer the page's own default gives.
+//
+// So the reassuring-direction filter is spent on this section. What is left in it has no signal to sort by
+// and is a judgement per tile.
+//
 // A row is a suspect, not a defect. A tile is right to answer from a subset when
 // the criteria are genuinely independent tests of different things; what it owes
 // is the footing, not a refusal (see docs/spec-v1091.md).

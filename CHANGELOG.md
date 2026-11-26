@@ -76,6 +76,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The remaining list of calculators whose answer could move on a field nobody entered was sorted for the one
+  direction that can hurt -- a reassuring answer that a filled-in field would have made worse -- and the four
+  it found were read. All four are right. The closest call was the congenital-syphilis scenario, where an
+  unanswered darkfield test reads as not meeting the strictest scenario: that option is labelled "negative or
+  not done", and the scenario needs a positive test, so a test nobody did genuinely does not meet it.
 - Nine cardiovascular, liver and infection calculators would score a total cholesterol or a C-reactive
   protein that no laboratory has ever reported -- a cholesterol of 10,000 mg/dL read a cardiovascular risk
   band, and a CRP of 4,000 mg/L scored the heaviest term of the necrotizing-fasciitis score. Both now have
