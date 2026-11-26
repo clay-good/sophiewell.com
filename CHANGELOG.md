@@ -76,6 +76,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Six tools that dose by weight accepted a weight of 0.1 kg and answered: a pump rate from a mcg/kg/min
+  order, a child's radiopharmaceutical activity, billing units for a mg/kg biologic, which epinephrine
+  auto-injector a label states, an over-the-counter dose from a label's weight band, and a digoxin loading
+  dose. Each took the upper end of the plausible weight range and left the lower end open, where the range
+  itself says a weight under about 0.2 kg usually means the unit is wrong. All six now refuse it, in
+  whichever unit the reader picked.
+- A new check asks, of every field that is one of the measurements with a plausible range behind it,
+  whether its tool answers outside that range. 34 places do, and they are now written down.
 - 171 more input ranges are stated, which brings it to 2,667 of 5,189 number fields. These were hidden by
   arithmetic coincidence: the check that looks for unstated ranges was treating a heart rate guarded 10 to
   300 as "the hematocrit range, times 3.33", and an age capped at 70 as the base-excess range, because the

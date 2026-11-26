@@ -43,6 +43,9 @@ import { BOUNDS } from '../lib/bounds.js';
 import { META } from '../lib/meta.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { RANGE_SENTENCE } from './lib/range-sentence.mjs';
+// spec-v1799: the matcher is shared with probe-envelope-unenforced; the four lessons that shaped it are
+// recorded there, with a test.
+import { envelopeFor, names } from './lib/quantity-name.mjs';
 
 const ALL = process.argv.includes('--all');
 const ADAPTERS = 'mcp/adapters/';
@@ -71,84 +74,6 @@ const libSrc = (f) => {
 // creatinine a respiratory rate and a staff count a pH, and the same looseness quietly ACCEPTED real
 // borrowings on the other side. Words, then, split at camelCase boundaries and at anything that is not a
 // letter or a digit.
-const words = (...parts) => new Set(
-  parts.filter(Boolean).join(' ')
-    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-    .toLowerCase()
-    .split(/[^a-z0-9]+/)
-    .filter(Boolean),
-);
-
-// What each envelope is CALLED in a field's own words, beyond its key. These are the spellings in use in
-// this catalog -- a urine potassium is `urineK`, a creatinine is `currentCr`, a haemoglobin is `hb` -- and
-// the table is deliberately explicit rather than clever: a wrong entry here accepts a borrowed envelope
-// silently, which is the failure this finder exists to catch. One entry per envelope, keys included.
-const ALIASES = {
-  sodium: ['na'], potassium: ['k'], chloride: ['cl'], bicarbonate: ['hco3'],
-  scr: ['cr', 'creat', 'creatinine'], bun: ['urea'], eGFR: ['egfr', 'gfr', 'filtration'],
-  hemoglobin: ['hb', 'hgb'], hematocrit: ['hct'], platelets: ['plt', 'platelet'],
-  albumin: ['alb'], bilirubin: ['bili', 'tbili'], inr: ['inr'],
-  alt: ['alanine'], ast: ['aspartate'], wbc: ['leukocyte', 'leukocytes', 'leucocyte', 'white'],
-  weightKg: ['weight', 'wt'], heightM: ['height', 'ht'], ageYears: ['age', 'years', 'yr'],
-  bmi: ['bmi'], percentWeightLoss: ['loss'], sixMinuteWalkM: ['walk', '6mwd'],
-  sbp: ['systolic'], dbp: ['diastolic'], hr: ['pulse', 'heart'], rr: ['respiratory'],
-  spo2: ['sao2', 'saturation'], fio2: ['fio2'], paO2: ['pao2'], paCO2: ['paco2'], pH: ['ph'],
-  qtMs: ['qt', 'qtc'], gcs: ['gcs'], temperature: ['temp'], glucose: ['glu'],
-  lactate: ['lactic'], calcium: [], magnesium: [], phosphate: ['phos'],
-  triglycerides: ['tg', 'triglyceride'], esr: ['sedimentation'], baseExcess: [],
-  // `mg`, `ca` and `be` are gone from the three above: `mg` is a MASS UNIT and matched every label that
-  // states one ("Serum IgG4, mg/dL", a CRP in mg/L), `ca` is a word fragment, and `be` is English -- it
-  // matched "...beneficiaries for the cap year (may be ...)". An alias that is also a unit or a common word
-  // suggests a rename that is pure coincidence, which is the same mistake the envelopes themselves made.
-  hcg: ['bhcg'], daysNoIntake: ['intake'], eosinophils: ['eos'],
-};
-
-// THE SAME ANALYTE IN ANOTHER COMPARTMENT IS A DIFFERENT QUANTITY. `lib/bounds.js`'s sodium envelope is a
-// SERUM sodium, 90 to 208 mEq/L; a urine sodium of 20 is ordinary. So "urineNa declares bound: 'platelets'"
-// is a borrowed envelope and renaming it to `sodium` would only borrow a closer one. These words mark a
-// field as measured somewhere other than blood, and an envelope keyed on a blood analyte cannot fit it.
-const COMPARTMENT = new Set(['urine', 'urinary', 'pleural', 'csf', 'ascitic', 'ascites', 'dialysate',
-  'drain', 'sputum', 'saliva', 'stool', 'fecal', 'synovial', 'peritoneal', 'effusion']);
-const BLOOD = new Set(['sodium', 'potassium', 'chloride', 'bicarbonate', 'scr', 'bun', 'albumin',
-  'bilirubin', 'glucose', 'calcium', 'magnesium', 'phosphate', 'lactate', 'alt', 'ast', 'wbc',
-  'hemoglobin', 'hematocrit', 'platelets', 'triglycerides', 'esr', 'hcg', 'inr']);
-
-// Does a field's own vocabulary name this envelope? Its key, split into words, or any of its aliases.
-const names = (key, f) => {
-  const have = words(f.arg, f.label, f.unit);
-  const own = [...words(key)].filter((w) => w.length > 1);
-  if (own.length && own.every((w) => have.has(w))) return true;
-  return (ALIASES[key] || []).some((a) => have.has(a));
-};
-
-// The envelope a field's own words DO name, if any -- the RENAME verdict's answer. Longest key first, so
-// `percentWeightLoss` wins over `weightKg` on a field about weight loss.
-const KEYS = Object.keys(BOUNDS).sort((a, b) => b.length - a.length);
-const elsewhere = (f) => [...words(f.arg, f.label, f.unit)].some((w) => COMPARTMENT.has(w));
-// A RATIO or an INDEX of two analytes is a third quantity. `bonacini-cds` takes an ALT/AST ratio, whose
-// words name both analytes and whose range is neither of theirs.
-const derived = (f) => [...words(f.arg, f.label)].some((w) => w === 'ratio' || w === 'index');
-// And a unit settles what is left. An envelope states one; where a field states one too and they are not
-// the same quantity's, nothing about the numbers can make them fit: `niosh-lifting` reads a load in POUNDS,
-// and `apc-payment`'s conversion factor is in "$ per weight unit", whose stray "weight" is what suggested
-// the kilogram envelope in the first place.
-const UNIT_SAME = [['mmol/l', 'meq/l'], ['yr', 'years'], ['x10^3/ul', '10^9/l'], ['c', '°c']];
-// Superscripts and spacing are presentation: BOUNDS.eGFR reads "mL/min/1.73m2" and the field beside it
-// "mL/min/1.73 m\u00b2", which are the same unit and were being called different ones.
-const SUPER = { '\u00b2': '2', '\u00b3': '3', '\u00b9': '1', '\u2070': '0' };
-const unitKey = (u) => String(u || '').toLowerCase().replace(/[\u00b2\u00b3\u00b9\u2070]/g, (c) => SUPER[c])
-  .replace(/[^a-z0-9/.]/g, '');
-const unitFits = (key, f) => {
-  const a = unitKey(f.unit);
-  const b = unitKey(BOUNDS[key].unit);
-  if (!a || !b) return true;
-  if (a === b || a.includes(b) || b.includes(a)) return true;
-  return UNIT_SAME.some(([x, y]) => (a === x && b === y) || (a === y && b === x));
-};
-const fits = (f) => KEYS.find((k) => names(k, f)
-  && !(BLOOD.has(k) && (elsewhere(f) || derived(f)))
-  && unitFits(k, f)) || null;
-
 // Does the library refuse a value past this field's declared edges, in its own words? That is the LITERAL
 // verdict's evidence: there is a rule to state, even though no envelope names it.
 const enforcesSomething = (id, f) => {
@@ -182,7 +107,7 @@ for (const t of allCalculators()) {
     const libs = libsOf.get(fileOf.get(t.id)) || [];
     if (libs.some((l) => mentions(libSrc(l), f.bound))) { accepted.push(`${t.id}\t${f.dom}\t${f.bound}\tthe library names it`); continue; }
     if (names(f.bound, f)) { accepted.push(`${t.id}\t${f.dom}\t${f.bound}\tthe field names it`); continue; }
-    const better = fits(f);
+    const better = envelopeFor(f);
     const verdict = better ? `RENAME to ${better}` : (enforcesSomething(t.id, f) ? 'LITERAL' : 'DROP');
     rows.push(`${verdict}\t${t.id}\t${f.dom}\t${f.arg || ''}\t${f.bound}\t${String(f.label || '').slice(0, 44)}`);
   }

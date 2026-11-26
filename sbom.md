@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3aed0e78f42290db`
-Generated: 2026-11-26T04:00:10.755Z
+Build ID: `c4a0d21b243c3957`
+Generated: 2026-11-26T04:22:50.503Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -140,7 +140,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/auc-trapezoid-v1631.js` | 6760 | `a21c6b67c02373bc3eaedd12632f92e40bf7897bf37b261b7c03b47f193b31af` |
 | `lib/ausdrisk-v711.js` | 5690 | `2e43a3a5c22fd00991b148f396cc6a672674605818c428e5a19304ff2361d359` |
 | `lib/auth-runout-v1502.js` | 7412 | `4947d3f8b8ccbc5ab9f28d8d059a35386968f6fec27030236540555b32726129` |
-| `lib/auth-units-request-v1502.js` | 4581 | `43358cdbb350ce76e2760dee09baf7ce107a7de3390b9006810d47d8c8c49289` |
+| `lib/auth-units-request-v1502.js` | 4717 | `3e12ff3f40f04e8a199791d15b90e1eba42d447e7df77e086671c1bceccf1715` |
 | `lib/auto-peep-v928.js` | 8334 | `8532a047f680fd843a77e4be2c87523e193651744102bae3b4da4cf5b28089fb` |
 | `lib/autoimmune-encephalitis-v824.js` | 8413 | `aea180929a1c3e96008ff75d6138ee7ee6cb7230d2e327bc6aadd89e2844eb79` |
 | `lib/av-fistula-v300.js` | 4050 | `9fa354a34bd21ab3dc8c93762767d54f281b1c4e605e00af36917098787fc1e8` |
@@ -302,7 +302,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v6.js` | 20537 | `205e779ec41e51ce17f581f436655e781f666e6b651aad8e8715d862ee2d912f` |
 | `lib/clinical-v7.js` | 30046 | `ee1ea6e25951b69eccca57fd70cd4dbc695c885999f4d06f5ac31d9f4cc8e0dd` |
 | `lib/clinical-v8.js` | 30287 | `d3ed1c3a50129ce3ef15f50f8268393a5aeb00a8136c44ac5fedbe4d08475439` |
-| `lib/clinical.js` | 31971 | `49ad311d75f2d29bd87387e1110d7b9b44ed8e9b2a8b6762300a8abeb96b8a38` |
+| `lib/clinical.js` | 32202 | `1336d54eb07d86b1ab6b7ab91a4208cfc0f4f23f4fe9986d2960680b0c486797` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7954 | `7b448718002edeeef4b815519a80c050dc3b7373875d4828d079772f7d83cb12` |
 | `lib/cmea-sales-limit-v1637.js` | 10263 | `0c4fe373f19ea64b85bcf0c23b628fd4fe86da3046edeec001fcb81a9a762249` |
@@ -411,7 +411,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/diabetes-diagnosis-v841.js` | 12118 | `0e5332bcefca745f96e2aa54aabbdb2fcfcadd6fdccc33cd7e5fa3021e3e4c3c` |
 | `lib/diabetes-drug-egfr-check-v1632.js` | 9326 | `0343f7bcf708f9a6494d0baf8f8c12b8bb4bb211a26107cf5d3e4aa4cd3625d6` |
 | `lib/diastolic-function-ase-v664.js` | 5179 | `d1c0e03acdda55f16e805b7ebecf3a08d325f41b5ef8be6da27ac60e00f68d0d` |
-| `lib/digoxin-label-dose-v1631.js` | 11620 | `27a0d96fbc713cd9cffcc38b51762c7fec98b9910ffa707f5d6e718553bad5ed` |
+| `lib/digoxin-label-dose-v1631.js` | 11917 | `27602296e1c91bf1f773ef2ef83d851ecd4582557f60be851d10fdddcbb3d8a7` |
 | `lib/dilution-c1v1-v1629.js` | 8056 | `da0a754205c06b7a461975c772154eca66f560f2c202ae9ec565ad526dd8f17b` |
 | `lib/dimeglio-clubfoot-v387.js` | 4101 | `8351af759d2ea16e3c0fa77d3bf9ff1b21aa38e5ce0af9fddf8f8d70c978ac98` |
 | `lib/diphtheria-antitoxin-dose-v1560.js` | 5102 | `0b5a0a3da6c709492873780c18614ec3a312010c21d9a718d84c8ff819cddd66` |
@@ -491,7 +491,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/enzyme-recovery-time-v1700.js` | 4047 | `52fd2dccad2142f96eb0a1a825ce391d991554abf378aa76821fb5cd896516bd` |
 | `lib/eortc-msg-ifd-v869.js` | 9785 | `846502bc39581253f8ffe1cf38dcd5e926144f344ae528fcfab13c02cc24ba01` |
 | `lib/eoss-v713.js` | 3955 | `150229c936465a637e488f83903837324b8752c7051b42903c784ffbae404441` |
-| `lib/epinephrine-device-weight-band-v1639.js` | 7155 | `b32758b431565d3824f182f8e4ecde02d3087bac2b2ffc8366c4e1211097a112` |
+| `lib/epinephrine-device-weight-band-v1639.js` | 7431 | `809681db0486165d6dde19cf7628a5252fd016431850641111d610cbf69bc278` |
 | `lib/er-opioid-label-start-v1633.js` | 10968 | `099f61a5bbd81f56d318f8e82715bd116ec80247ecc78459caa29dc9667acedd` |
 | `lib/erefs-v618.js` | 11260 | `1150b196683116439fd890c8db58d5a091ca149b10d74ab0df6cc1efb717bd70` |
 | `lib/erez-dic-v559.js` | 12920 | `88819108676bf4feac55120576028a291b150ca85c115d3b87875a2794149d5b` |
@@ -1086,7 +1086,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/osha-standard-threshold-shift-v1656.js` | 9685 | `ed50dc3a70231f062bee791416c4ffb2dd1451a213dba8a0d880abe57b25a2ad` |
 | `lib/osi-onychomycosis-v674.js` | 3577 | `cdc4873826dd624fe21fbb25d9cbc2b446af8815030a15e176db5ee08160d8f9` |
 | `lib/oswestry-v643.js` | 5217 | `e5114aeb1e52343886a87a690561074c1d0466ccd39062cdb22eaaa8e21fa1b7` |
-| `lib/otc-child-label-dose-v1639.js` | 16987 | `9390079332b85aaa82c4b1ed264f14c5cb988ffcf9cadecb504a289d2bc0dd68` |
+| `lib/otc-child-label-dose-v1639.js` | 17294 | `19092245a62ca5072af36b948783e90cf438ca19fe47db23f3437584e8ec945c` |
 | `lib/otc-daily-max-check-v1639.js` | 16922 | `9f3ecbb42a62adba00d770961a8060b14ffcb650c3508ce09fc47725d9f63563` |
 | `lib/otp-admission-clock-v1637.js` | 7975 | `66af295a1fcefecacef06920b1729d842a70a91359a1a95cac4d8c0f769057e7` |
 | `lib/otp-take-home-limit-v1637.js` | 8299 | `e37a9b8c820c29e16b6918f359e1ee57926725618f0fa62890f47dbe10cc21bc` |
@@ -1160,7 +1160,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pdc-star-v1513.js` | 14102 | `f1cafca9c9c845b9fdc625eaa8de5e744d6e83ffe643d7c818cc0b050fc6c0b9` |
 | `lib/pederson-difficulty-v717.js` | 3469 | `5f7fb47b29141583014bbf6142329bfc1e95da75272b063d20479f5631849b8e` |
 | `lib/pediatric-acute-v262.js` | 8938 | `bdd2b5540c3050cde8707837021041e85d45b358ed7a9c6a6c15b25a0e0c19cf` |
-| `lib/pediatric-administered-activity-v1635.js` | 10360 | `7b9761b8763e42af2941149f2866a8751c9d3d7be248a8efe2456debb16361c9` |
+| `lib/pediatric-administered-activity-v1635.js` | 10631 | `4111a413a959a2f85644566bf12237911dcdc67b425b65efeada1e85e47c50bb` |
 | `lib/pedis-v613.js` | 9249 | `be62ff05de4bd0d6bae3042c587f16bd94cfc6624179c76c688a5fd0892098f6` |
 | `lib/peds-growth-v141.js` | 20606 | `8dc73aea4382ebdc74bd1ee88a16ff5d583d42b909071c2c0a2d723f5328bb03` |
 | `lib/peds-heparin-nomogram-v1634.js` | 6376 | `b6a9606893a23e74d5e5d59d8dc2cd5707b6655033e8ba17ad23d5872443603b` |
