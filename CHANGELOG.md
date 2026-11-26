@@ -76,6 +76,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The check that looks for a formula running backwards at one end of its own input range -- the one that
+  caught a kidney-donor index reporting a sicker kidney as a better one -- now fails the build on anything
+  new. Its ninety-seven current readings are all instruments that turn on purpose: a severity score that
+  gives points for a blood pressure too high or too low, a published formula with a squared term, a sample
+  size that is largest at fifty percent. Each is written down with the reason, and so is how many of that
+  tool's answers turned, so a new one in a tool already read is still reported.
 - Six of the internal checks that hunt for a calculator answering from something it was never told now fail
   the build when they find anything. All six were already finding nothing, which is the state nobody
   notices changing: the next regression would have printed a line in a report no one runs.

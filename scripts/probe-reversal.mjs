@@ -114,6 +114,61 @@ function reversal(series) {
   return { turnAt, peak, retrace, first: series[0], last: series[n - 1], swing };
 }
 
+// spec-v1816: the calculators that have been READ, with the reason each one turns, and the number of its
+// outputs that turned when it was read.
+//
+// The unit is the CALCULATOR, not the output or the field, because every reason here is a property of the
+// instrument: a severity score that gives points for a sodium that is high or low turns in each of its
+// vital-sign fields for one reason, and nothing is learned by writing it eleven times. So the count is
+// part of the judgement -- a tool whose row count MOVES prints again, because a new field turning in an
+// instrument somebody has read is a new thing to read.
+//
+// None of these is a defect. The one defect this probe has ever found, `bess-balance-error`, is in its
+// header; this is the honest false-positive profile of the method, and the gate is for the next row.
+const JUDGED = {
+  'apache2': { rows: 14, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'saps-ii': { rows: 4, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'news2': { rows: 3, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'mews': { rows: 3, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'rems': { rows: 3, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'lods': { rows: 4, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'oasis': { rows: 8, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'pim3': { rows: 2, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'fgsi': { rows: 6, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'meows': { rows: 4, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'psofa': { rows: 1, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'iss-rts': { rows: 1, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'crusade': { rows: 1, why: 'A symmetric severity score: it gives points for a vital sign or analyte that is too HIGH or too LOW, so every one of its measured fields turns once at the normal band and runs to both fences. Published that way, and spec-v1718 read these first' },
+  'cpis-vap': { rows: 1, why: 'A BANDED criterion whose own label states the bands: points are earned inside a range, so the count turns at the range\'s edge. The label is the source' },
+  'refeeding-risk': { rows: 2, why: 'A BANDED criterion whose own label states the bands: points are earned inside a range, so the count turns at the range\'s edge. The label is the source' },
+  'erez-dic': { rows: 1, why: 'A BANDED criterion whose own label states the bands: points are earned inside a range, so the count turns at the range\'s edge. The label is the source' },
+  'arc-hbr': { rows: 1, why: 'A BANDED criterion whose own label states the bands: points are earned inside a range, so the count turns at the range\'s edge. The label is the source' },
+  'mcisaac': { rows: 1, why: 'A BANDED criterion whose own label states the bands: points are earned inside a range, so the count turns at the range\'s edge. The label is the source' },
+  'kings-college-nonapap': { rows: 1, why: 'A BANDED criterion whose own label states the bands: points are earned inside a range, so the count turns at the range\'s edge. The label is the source' },
+  'predicted-spirometry': { rows: 3, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap; and the lung function it predicts really does peak in the early twenties' },
+  'palbi': { rows: 2, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap; PALBI is quadratic in log platelets as published' },
+  'prevent': { rows: 4, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap; the PREVENT equations center and square the systolic pressure and the BMI' },
+  'fullpiers': { rows: 2, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap; fullPIERS carries a log and a squared term for the platelet count and the AST' },
+  'two-compartment-params': { rows: 3, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap; the micro-constants of a two-compartment fit are not monotone in the slow-phase intercept' },
+  'ddi-static-aucr': { rows: 2, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap; the static AUCR sums a competing inhibition and induction term, which cross' },
+  'tmic-beta-lactam': { rows: 2, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap' },
+  'vanc-auc': { rows: 2, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap; the dip is four units wide at a trough below 0.07 mg/L' },
+  'delta-gap': { rows: 1, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap; the bicarbonate appears in the anion gap and again in the delta, with opposite signs' },
+  'mgus-risk': { rows: 1, why: 'A two-sided reference interval: the finding is abnormal both below and above it, so the count of abnormal findings turns inside the interval' },
+  'min-weighable-quantity': { rows: 1, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap' },
+  'nnt-arr': { rows: 2, why: 'A reciprocal of a difference: the output turns where its denominator passes through its smallest value, which is arithmetic rather than a cap' },
+  'or-rr-to-nnt': { rows: 1, why: 'A reciprocal of a difference: the output turns where its denominator passes through its smallest value, which is arithmetic rather than a cap' },
+  'preg-dating': { rows: 1, why: 'The output is a DISTANCE or a disagreement between two figures, so it is smallest where they agree and grows in both directions by construction' },
+  'inr-variability': { rows: 2, why: 'The output is a DISTANCE or a disagreement between two figures, so it is smallest where they agree and grows in both directions by construction; the variance growth rate is a squared deviation from the target' },
+  'pppa-special-packaging-check': { rows: 1, why: 'The output is a DISTANCE or a disagreement between two figures, so it is smallest where they agree and grows in both directions by construction' },
+  'compound-copy-check': { rows: 1, why: 'The output is a DISTANCE or a disagreement between two figures, so it is smallest where they agree and grows in both directions by construction' },
+  'sample-size-proportion': { rows: 3, why: 'A published formula with a squared, logarithmic or reciprocal term in this input, so the turn is the formula\'s and not a missed cap; a sample size for a proportion is largest at 50% because p(1-p) is' },
+  'fap-discount': { rows: 1, why: 'The swept field is a POLICY parameter, not a measurement, and the sweep drives the schedule into an order its author would not write. The reading names the tier it used and its discount, and the note says the tiers are the hospital\'s own policy as entered' },
+  'niosh-lifting': { rows: 1, why: 'The tool already says the task is outside the equation past this input\'s limit -- \"The recommended weight limit computes to 0 lb because a vertical height of 71 inches, beyond the 70 inch limit. That is the equation saying this task is outside what it can evaluate, not that the safe weight is zero\" -- which is the cap, stated' },
+};
+const judgedSeen = new Set();
+const judgedPrinted = new Set();
+
 const rows = [];
 let swept = 0;
 let sweptGuessed = 0;
@@ -168,6 +223,31 @@ for (const calc of allCalculators()) {
 rows.sort((a, b) => (b.declared ? 1 : 0) - (a.declared ? 1 : 0) || b.retrace - a.retrace);
 
 if (asJson) { console.log(JSON.stringify(rows, null, 2)); }
+
+// Judged by calculator AND by how many of its outputs turned, so a new turning field in a tool somebody
+// has read is still a row.
+const counts = {};
+for (const r of rows) counts[r.id] = (counts[r.id] || 0) + 1;
+const unjudged = rows.filter((r) => {
+  const j = JUDGED[r.id];
+  if (!j) return true;
+  judgedSeen.add(r.id);
+  if (j.rows !== counts[r.id]) return true;          // the instrument gained or lost a turning output
+  if (process.argv.includes('--all')) {
+    if (!judgedPrinted.has(r.id)) {
+      judgedPrinted.add(r.id);
+      console.log(`JUDGED\t${r.id}\t${j.rows} output(s)\t${j.why}`);
+    }
+  }
+  return false;
+});
+const stale = Object.keys(JUDGED).filter((k) => !judgedSeen.has(k));
+if (stale.length) {
+  console.log(`STALE-LEDGER: ${stale.length} judged calculator(s) this run no longer reaches: ${stale.join(', ')}.`);
+  console.log('A reason cannot outlive what it describes -- re-read the tool and remove the row.');
+}
+rows.length = 0;
+rows.push(...unjudged);
 const declaredRows = rows.filter((r) => r.declared);
 say(`${rows.length} output(s) across ${new Set(rows.map((r) => r.id)).size} calculator(s) turn once and run on`);
 say(`to the edge of their input range: ${declaredRows.length} on a range the tool declares,`);

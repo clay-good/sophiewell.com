@@ -165,6 +165,18 @@ const FINDERS = [
     minJudged: 0,
   },
   {
+    probe: 'probe-reversal.mjs',
+    what: 'a formula that turns once and runs on to the edge of its own input range, which is the smell of a '
+      + 'cap nobody read',
+    fix: 'Apply the cap the source states (docs/spec-v1718.md), or add the calculator to JUDGED in the finder '
+      + 'with the reason it really is non-monotone -- a symmetric severity score, a banded criterion, a '
+      + 'published squared or reciprocal term, a two-sided reference interval, or a distance',
+    // Its rows are two indented lines under an indented header; a row is what is indented.
+    isFinding: (l) => l.startsWith('  '),
+    informational: [],
+    minJudged: 38,
+  },
+  {
     probe: 'probe-declared-cap-configs.mjs',
     what: 'a declared bound the library answers past in some configuration, so the page answers what the agent is refused',
     fix: 'Hoist the guard above the branch split with gradeFault (docs/spec-v1780.md), drop the declaration, '
