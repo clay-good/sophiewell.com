@@ -21,6 +21,12 @@
 // identically; the 41 an agent can leave out were read, and one was a defect
 // (allowed-amount applied a blank cost-share term as zero without a word).
 //
+// THAT DRIVE IS NOW KEPT, in `scripts/probe-blank-as-zero.mjs` (spec-v1832), with a judged ledger and a
+// gate: 3,681 filled number fields driven, 77 read a blank exactly as an entered 0, and the 41 where that
+// also moves the answer with nothing on screen saying so are judged, each with the reason a zero is a real
+// reading there. Re-driven on 2026-11-26 after this session added about a hundred guards, it found nothing
+// new -- so the GREP below stays a report, and the DRIVE is what holds the line.
+//
 // Usage: node scripts/probe-blank-coercions.mjs
 import { readdirSync, readFileSync } from 'node:fs';
 const files = readdirSync('lib').filter((f) => f.endsWith('.js'));

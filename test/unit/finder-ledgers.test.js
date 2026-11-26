@@ -220,6 +220,17 @@ const FINDERS = [
     minJudged: 0,
   },
   {
+    probe: 'probe-blank-as-zero.mjs',
+    what: 'a BLANK field read as an entered 0, where that moves the answer and nothing on screen says the '
+      + 'value was not given',
+    fix: 'Tell a blank from a zero where the quantity cannot BE zero (docs/spec-v1040.md, docs/spec-v1832.md), '
+      + 'or add it to JUDGED in the finder with the reason zero is a real reading there -- a count, an '
+      + 'amount, an unburned area, a drug not taken, or a reading that only lost a clause',
+    isFinding: (l) => l.startsWith('  '),
+    informational: ['Reach:'],
+    minJudged: 41,
+  },
+  {
     probe: 'probe-declared-cap-configs.mjs',
     what: 'a declared bound the library answers past in some configuration, so the page answers what the agent is refused',
     fix: 'Hoist the guard above the branch split with gradeFault (docs/spec-v1780.md), drop the declaration, '

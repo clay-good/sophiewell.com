@@ -349,9 +349,10 @@ node scripts/probe-envelope-inside.mjs    # a survivable value just inside an en
 node scripts/probe-unit-equivalent.mjs     # the same quantity in the other unit answered differently, judged ledger and all (docs/spec-v1771.md)
 node scripts/probe-note-lost-in-a-branch.mjs  # a tile that owns a gap in some configurations of its other fields and answers without owning it in the rest, where the field could still move the verdict there -- no judgement in the row, because the tile has already made it (docs/spec-v1814.md)
 node scripts/probe-undeclared-envelope.mjs  # a field whose library refuses outside a lib/bounds.js envelope while the agent surface publishes no range -- the fourth question about a declaration, and NOT gated: an envelope can be enforced while its edge is unanswerable (docs/spec-v1822.md)
+node scripts/probe-blank-as-zero.mjs       # a BLANK field read as an entered 0, where that moves the answer and nothing says so -- the DRIVEN half of probe-blank-coercions' grep, with a judged ledger (docs/spec-v1832.md)
 ```
 
-**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds thirty-five of them
+**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds thirty-six of them
 in both directions: an unjudged row fails the gate, so it is a decision someone takes rather than a line in
 a report that already prints known ones, and a judged row the finder no longer reaches fails too, so a
 reason cannot outlive what it describes. Negative-test both directions when you add one, by removing a

@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The check for a calculator that cannot tell an empty field from a typed zero now runs the whole catalog
+  and fails the build on anything new, instead of printing 162 lines of source for someone to read. Every
+  field where an empty box and a typed zero give the same answer is written down with the reason zero is a
+  real reading there -- no clots on a bleeding chart, no deductible left, an unburned area.
 - The last calculator that answered an impossible number by asking for it again -- the COPD DOSE index --
   now says the range instead, using the limits it was already applying internally. That closes a cleanup
   that began with 225 such fields, and the build now fails if another one appears.
