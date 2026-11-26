@@ -81,6 +81,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   it found were read. All four are right. The closest call was the congenital-syphilis scenario, where an
   unanswered darkfield test reads as not meeting the strictest scenario: that option is labelled "negative or
   not done", and the scenario needs a positive test, so a test nobody did genuinely does not meet it.
+- Three design notes said a calculator was still waiting on a source it had since been built from -- the
+  kidney donor profile index and two renal-cell-carcinoma scores all shipped months ago. The notes now say
+  where the work landed, and a test fails if another one goes stale the same way.
 - Nine cardiovascular, liver and infection calculators would score a total cholesterol or a C-reactive
   protein that no laboratory has ever reported -- a cholesterol of 10,000 mg/dL read a cardiovascular risk
   band, and a CRP of 4,000 mg/L scored the heaviest term of the necrotizing-fasciitis score. Both now have

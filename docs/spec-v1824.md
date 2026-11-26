@@ -38,6 +38,33 @@ The exam beside it is `required: true` on the agent surface, so an agent cannot 
 both titers are refused when blank. The only field of the four Scenario 1 criteria that may be left out is
 the one whose absence is already its answer.
 
+## Three spec statuses that had gone stale
+
+While the section was being sorted, the seven specs marked **DEFERRED** or **PARTIALLY SHIPPED** on
+*sourcing* grounds were checked against the catalog, because a spec that parks a tile is only as true as
+that tile's absence. Three had gone stale:
+
+| Spec | Said | Is |
+|---|---|---|
+| [spec-v170](spec-v170.md) | KDPI and EPTS parked, OPTN returned 403 | `kdri-kdpi` shipped in [spec-v1717](spec-v1717.md); EPTS still parked |
+| [spec-v264](spec-v264.md) | KDRI, KDPI and EPTS not reproducible | the same: two of three shipped |
+| [spec-v266](spec-v266.md) | Leibovich and UISS parked | both shipped the next day in [spec-v279](spec-v279.md) |
+
+Each now says where the work landed, above its original deferral, which stays as the record of why it
+waited. The gates held in both cases: the KDPI was built from a verbatim OPTN table once the guides became
+fetchable, not approximated.
+
+The other four are accurate. `gwtg-hf`, `ehmrg` and `precise-dapt` are still only in paywalled papers;
+Fenton's LMS tables are still Springer supplementary objects behind a 403; McLaughlin and the PWH massive-
+transfusion score are still not reproducible from open sources; and EPTS still needs
+`epts_mapping_table.pdf`.
+
+**And nothing was reading those statuses**, which is why three could drift. `test/unit/parked-tiles-still-
+absent.test.js` holds the eight parked ids with the spec and the reason each was parked, and fails when one
+appears in the catalog — the STALE-LEDGER shape, applied to prose. It is the other half of the rule in
+[spec-v1049](spec-v1049.md): a doc citing a **check** is only as true as the check's existence, and a doc
+citing a **parked tile** is only as true as the tile's absence.
+
 ## What this closes
 
 The reassuring-direction filter is **spent** on this section: what is left has no signal to sort by and is a

@@ -1,5 +1,12 @@
 # spec-v264.md — Deceased-donor kidney allocation: the Kidney Donor Risk Index, the Kidney Donor Profile Index, and the Estimated Post-Transplant Survival score (+3 tiles)
 
+> Status: **TWO OF THREE SHIPPED (2026-11-07), the third still deferred.** The OPTN guides became
+> fetchable, and the donor-side KDRI/KDPI pair shipped as `kdri-kdpi` in [spec-v1717](spec-v1717.md) from
+> OPTN's April 2026 guide and its 2025 mapping table — the eight donor factors, without race or hepatitis C.
+> The recipient-side **EPTS is still parked**: its raw-to-percentile mapping needs `epts_mapping_table.pdf`,
+> which has not been obtained. See also [spec-v170](spec-v170.md), which parked the same pair on the same
+> gate in June. Deferral of 2026-07-09 below.
+>
 > Status: **DEFERRED (2026-07-09) — not reproducible from open sources in-session.**
 > First feature spec of the **Advanced Sub-specialty Prognostic Instruments** program
 > (§1.1). Proposes **3** deterministic instruments a transplant team reads at the

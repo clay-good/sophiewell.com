@@ -1,5 +1,13 @@
 # spec-v170.md — Transplant allocation: KDPI (via KDRI) and EPTS (+2 tiles)
 
+> Status: **HALF REOPENED AND SHIPPED (2026-11-07), half still deferred.** The OPTN guides became
+> fetchable, and `kdri-kdpi` shipped from OPTN's April 2026 guide and its 2025 mapping table in
+> [spec-v1717](spec-v1717.md) (catalog 2,387) — the eight donor factors, without race or hepatitis C,
+> with unknown hypertension or diabetes entering at the share OPTN uses. **`epts-score` is still parked**:
+> its raw-to-percentile mapping needs `epts_mapping_table.pdf`, which has not been obtained. The gate below
+> is the reason both waited, and it held — the KDPI was built from a verbatim table, not an approximation.
+> Deferral of 2026-06-29 below.
+>
 > Status: **DEFERRED (2026-06-29) — sourcing gate failed.** The entire
 > `optn.transplant.hrsa.gov` domain returned HTTP 403 in the build environment,
 > so the annual KDPI and EPTS raw→percentile mapping tables could not be fetched

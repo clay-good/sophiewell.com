@@ -1,5 +1,9 @@
 # spec-v266.md — Localized renal-cell carcinoma prognosis after nephrectomy: the Leibovich score, the SSIGN score, and the UCLA Integrated Staging System (+3 tiles)
 
+> Status: **COMPLETED (2026-07-10).** The two parked instruments shipped the next day in
+> [spec-v279](spec-v279.md): `leibovich-rcc` and `uiss-rcc` are live, with the pN-cell and
+> staging resolutions that spec records. Original status below.
+>
 > Status: **PARTIALLY SHIPPED (2026-07-09, +1 of 3; Leibovich & UISS parked).** Third
 > feature spec of the **Advanced Sub-specialty Prognostic Instruments** program
 > ([spec-v264](spec-v264.md) §1.1). Proposes **3** post-nephrectomy prognostic instruments;
