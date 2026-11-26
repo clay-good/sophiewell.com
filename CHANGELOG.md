@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The claim-denial next-step page answered a reason code of 999999 by asking for the code again. A reason
+  code is one to three digits -- a format the page already checked one line further down -- so the highest
+  one there can be is 999, and it says so now. A value that is not a number at all still gets the plain ask,
+  since no range describes it.
 - The browser-test lanes stopped failing when an unrelated software repository on the build machine was
   unreachable. The step that refreshes the package index was refreshing every repository the machine knows
   about, including one none of these packages come from, and a single 403 from it failed the whole run.

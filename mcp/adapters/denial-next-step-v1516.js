@@ -11,7 +11,7 @@ export default [
     compute: DN.denialNextStep,
     fields: [
       { dom: 'dn-group', arg: 'group', kind: 'enum', required: true, values: vals(DN.GROUPS), label: 'Group code' },
-      { dom: 'dn-carc', arg: 'carc', kind: 'number', required: true, label: 'Claim adjustment reason code (the number)' },
+      { dom: 'dn-carc', arg: 'carc', kind: 'number', required: true, label: 'Claim adjustment reason code (the number)', min: 0, max: 999 },
       { dom: 'dn-payer', arg: 'payer', kind: 'enum', required: true, values: vals(DN.PAYERS), label: 'Payer type' },
       { dom: 'dn-remit', arg: 'remitDate', kind: 'string', required: true, label: 'Remittance date (YYYY-MM-DD)' },
       { dom: 'dn-dos', arg: 'serviceDate', kind: 'string', required: false, label: 'Date of service (YYYY-MM-DD)' },

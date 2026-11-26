@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3ba0032c3e26ee69`
-Generated: 2026-11-26T18:07:07.260Z
+Build ID: `f278b6e052fbd6e7`
+Generated: 2026-11-26T18:24:13.784Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -395,7 +395,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/delbet-femoral-neck-v378.js` | 3870 | `be1d4650275a314e54cacb832804c6b41af08843d296ec4938c2c22ac7db42cc` |
 | `lib/delta-check-v925.js` | 8973 | `6809b8f570d41d7110a53289006d384c45860fc747848087e6765f75c0684eb8` |
 | `lib/dengue-fluid-plan-v1563.js` | 6496 | `3330e840edb2f9797f0c0ed149fc7b7a341faade78278de3a806fe126266267e` |
-| `lib/denial-next-step-v1516.js` | 13304 | `9ca2be76d3b132d9e0804fc10239bd616dcb99874b7b31c28d6e0b9c21dc932c` |
+| `lib/denial-next-step-v1516.js` | 13811 | `7741df499ac622351fe2855427b6f30d39e1fd1cbfc315116678c1eee9e0d563` |
 | `lib/denis-sacral-v376.js` | 3688 | `fc489399a839b38692a0f716910e6e31f30ff38407b35cc4e160ef595baad540` |
 | `lib/depot-injection-window-v1639.js` | 14573 | `556470798026f3522f2dd9b730df084060faee6ffe32cd6eab330db4854791d3` |
 | `lib/derivation.js` | 8016 | `a0fcfa34306bef8683031d8e2757bc08f3448235b2f69649ef3354afdba7edec` |
@@ -1972,7 +1972,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/delbet-femoral-neck-v378.js` | 1590 | `e017ea5950e9708cd7f4c238d3c8ee584037f911603df88de2cecfc3bc4bc630` |
 | `mcp/adapters/delta-check-v925.js` | 2335 | `1affbbe8ca887a7821fa5100a77c8acd71b39e4cc4fa506b5b31878b17eb76c7` |
 | `mcp/adapters/dengue-fluid-plan-v1563.js` | 994 | `34ffb9e3a6c8b14e78ec09110ccf4fdd9de2adf87f3b3add0d6ce4050ac977da` |
-| `mcp/adapters/denial-next-step-v1516.js` | 1766 | `5c26c5b56ebbf19458a09ad407d47fe030d9b3ba91aad1efc96c2d1c9c248140` |
+| `mcp/adapters/denial-next-step-v1516.js` | 1784 | `59fe4010470ef808bdce87e0032b6c9c3be69b4d47732a3f337403cd53d16b11` |
 | `mcp/adapters/denis-sacral-v376.js` | 1471 | `dcbe80f2f9bdd2760d864743ee02157594f79c2231c35683051cb685ac2ce059` |
 | `mcp/adapters/depot-injection-window-v1639.js` | 1366 | `319fcaa6a575d35e2093977b472ec3fb693429fc318e21bd32c68ff6318cdc4a` |
 | `mcp/adapters/derm-v151.js` | 5099 | `b399908c5a5621ae3b009756e1d40e646ffed1a0411c6068403d03d7ee46d013` |
