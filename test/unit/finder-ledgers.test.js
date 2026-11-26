@@ -94,6 +94,41 @@ const FINDERS = [
     minJudged: 7,
   },
   {
+    // spec-v1803: nineteen rows became one once it asked the adapters whether a default can fire at all --
+    // `vis`'s six vasoactive doses are all declared required, so the zeros in its signature are unreachable
+    // -- and that one was fixed by saying the default in the label.
+    probe: 'probe-default-in-answer.mjs',
+    what: 'a defaulted parameter whose value is printed into the tool\'s own answer, as though someone had entered it',
+    fix: 'Ask for it, or say the default in the control (docs/spec-v1132.md, docs/spec-v1803.md), or add it '
+      + 'to JUDGED in the finder with the disclosure the control already makes',
+    informational: ['defaulted parameter(s)'],
+    isFinding: (l) => /^ {2}lib\/\S+\.js:\d+ {2}/.test(l),
+    minJudged: 9,
+  },
+  {
+    // spec-v1803: its one row was read and judged -- the call site guards from the RAW value, which this
+    // finder cannot see from the `num()` line alone. Its own note says a row is a suspect, not a defect,
+    // and a suspect that has been read is noise on every later run.
+    probe: 'probe-optional-read-as-zero.mjs',
+    what: 'a field the page calls optional, read with Number() so a blank arrives as a measurement of zero',
+    fix: 'Read the raw value to tell blank from 0 (docs/spec-v1213.md), or add it to JUDGED in the finder '
+      + 'with the guard the call site already has',
+    informational: ['optional-labelled fields'],
+    isFinding: (l) => /^ {2}\S+\.js:\d+ {2}/.test(l),
+    minJudged: 1,
+  },
+  {
+    // spec-v1803: a gate once it learned that lib/upload-worker.js is a surface too. It reported three
+    // libraries as reading a key nobody can say; a reader supplies all three by dropping a CSV on the page.
+    probe: 'probe-unsupplied-input.mjs',
+    what: 'a library reading an input no surface supplies, so the branch behind it decides for everyone who could not say it',
+    fix: 'Ask for it on the adapter and the page, or drop the branch (docs/spec-v1403.md, docs/spec-v1803.md), '
+      + 'or add it to JUDGED in the finder with the reason the key is an alternative to one that IS asked for',
+    informational: ['calculator(s) read', 'Reach:'],
+    isFinding: (l) => l.trim().startsWith('  ') === false && l.includes('   (mcp/adapters/'),
+    minJudged: 1,
+  },
+  {
     // spec-v1802: the last of the envelope finders. It has no ledger because its three non-findings are
     // MEASURED, not judged: a cap that moves with another input, a cap on the range the tool reports its
     // output in, and a range the field itself declares. Each is counted in the reach line.

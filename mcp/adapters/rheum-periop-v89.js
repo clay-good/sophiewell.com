@@ -13,7 +13,10 @@ export default [
     fields: [
       { dom: 'da-tjc', arg: 'tjc28', kind: 'number', required: true, label: '28-joint tender count', max: 28 },
       { dom: 'da-sjc', arg: 'sjc28', kind: 'number', required: true, label: '28-joint swollen count', max: 28 },
-      { dom: 'da-form', arg: 'form', kind: 'enum', values: ['esr', 'crp'], required: false, label: 'Inflammatory-marker form' },
+      // spec-v1803: the page's select shows "ESR (DAS28-ESR)" as its first option, so a reader sees which
+      // form is in use; an agent that omitted this was given the ESR formula and its thresholds without
+      // being told. The label says so now, the way ndc-hcpcs-units's rounding already did.
+      { dom: 'da-form', arg: 'form', kind: 'enum', values: ['esr', 'crp'], required: false, label: 'Inflammatory-marker form (default esr)' },
       { dom: 'da-esr', arg: 'esr', kind: 'number', required: false, label: 'ESR (if form = esr)', unit: 'mm/hr', bound: 'esr' },
       { dom: 'da-crp', arg: 'crp', kind: 'number', required: false, label: 'CRP (if form = crp)', unit: 'mg/L' },
       { dom: 'da-gh', arg: 'globalHealth', kind: 'number', min: 0, max: 100, required: true, label: 'Patient global health VAS (0–100)' },

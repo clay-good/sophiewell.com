@@ -21,8 +21,72 @@
 //   node scripts/probe-default-in-answer.mjs
 import { readFileSync, readdirSync } from 'node:fs';
 
+// spec-v1803: A DEFAULT THE SURFACES ALWAYS OVERRIDE CANNOT REACH THE ANSWER. `vis` takes six vasoactive
+// doses, each defaulted to 0 in the signature -- and its adapter marks all six REQUIRED, so `validateInputs`
+// refuses an agent that omits one and the page sends every box. The default is unreachable, the row is
+// noise, and nine of the nineteen this finder printed were exactly that: vis's six, free-water-deficit's
+// target sodium and replacement hours, and digoxin's indication.
+//
+// So each row is checked against the adapters: the tools whose `compute` is this function are found by
+// name, and a parameter every one of them declares `required: true` is dropped.
+const { allCalculators } = await import('../mcp/catalog.js');
+const adapterSrc = readdirSync('mcp/adapters').filter((f) => f.endsWith('.js'))
+  .map((f) => [f, readFileSync(`mcp/adapters/${f}`, 'utf8')]);
+const toolsByFn = new Map();
+for (const t of allCalculators()) {
+  const [file, src] = adapterSrc.find(([, x]) => x.includes(`id: '${t.id}'`)) || [];
+  if (!src) continue;
+  const i = src.indexOf(`id: '${t.id}'`);
+  // The entry's own text, to the next `id:` -- where its `compute:` names the library function.
+  const next = src.indexOf("id: '", i + 6);
+  const body = src.slice(i, next === -1 ? src.length : next);
+  for (const m of body.matchAll(/\b[A-Za-z_$][\w$]*\.([a-zA-Z0-9_]+)\s*[,(]/g)) {
+    if (!toolsByFn.has(m[1])) toolsByFn.set(m[1], new Set());
+    toolsByFn.get(m[1]).add(t);
+  }
+  void file;
+}
+const alwaysSupplied = (fn, param) => {
+  const tools = toolsByFn.get(fn);
+  if (!tools || !tools.size) return false;
+  let seen = false;
+  for (const t of tools) {
+    const f = (t.fields || []).find((x) => x.arg === param);
+    if (!f) continue;
+    seen = true;
+    if (!f.required) return false;
+  }
+  return seen;
+};
+
+// spec-v1803: a judged ledger. The note above says a row is a SUSPECT, not a defect -- a default is fine
+// when the control says what it means -- so a suspect that has been read is noise on every later run.
+const JUDGED = {
+  // Not an adapter entry at all, by its own file's note: "mppr is intentionally not here: its input is a
+  // variable number of fee rows". No surface can set the mode, and none is misled about one.
+  'mppr:mode': 'mppr has no adapter entry by design (billing-v78.js says so); no surface supplies or is told a mode',
+  // Controls that disclose the default in their own label.
+  'ndcHcpcsUnits:rounding': 'the field label reads "Rounding: up, down, or nearest (default up)"',
+  // spec-v1803 made this one true: the page's select already showed "ESR (DAS28-ESR)" as its first option,
+  // and the agent field now says which form it assumes.
+  'das28:form': 'the field label reads "Inflammatory-marker form (default esr)" and the page\'s select shows ESR (DAS28-ESR) first',
+  'heatstrokeDecision:sweating': 'the field label reads "Sweating present (exertional; unchecked = anhidrotic / classic)"',
+  // Defaults of ZERO on an optional quantity, where zero IS the absent case and the answer names the total
+  // rather than the default: no modifying units, no separately billable procedure minutes, no basal rate,
+  // no proposed modifier.
+  'anesthesiaUnits:modifyingUnits': 'an optional count whose absent case IS zero; the answer names the base units it computed, not the default',
+  'criticalCareTime:procedureMinutes': 'an optional count whose absent case IS zero; the answer names the net time, and zero procedures is the plain reading',
+  'pcaPump:basalMgPerH': 'an optional rate whose absent case IS zero; a PCA with no basal is the common order',
+  'ncciPtp:proposedModifier': "the default is the empty string and the sentence that names it runs only when a modifier WAS given",
+  // spec-v1236 wrote this one's disclosure into the control itself.
+  'sodiumCorrection:acuity': 'the page option reads "Chronic / unknown onset (ceiling 8)", which states the assumption the default makes',
+};
+const ALL = process.argv.includes('--all');
+const judgedSeen = new Set();
+
 const files = readdirSync('lib').filter((f) => f.endsWith('.js'));
 const rows = [];
+let supplied = 0;
 for (const f of files) {
   const src = readFileSync(`lib/${f}`, 'utf8');
   const lines = src.split('\n');
@@ -62,10 +126,21 @@ for (const f of files) {
         if (!/[a-z]{4,} [a-z]{3,}/.test(ln)) return false;   // prose, not a key
         return names.some((n) => new RegExp('\\$\\{[^}]*\\b' + n + '\\b[^}]*\\}').test(ln));
       });
-      if (hit) rows.push({ file: f, name, param: p, def: v, line: hit.trim().slice(0, 130), at: startLine });
-      else if (interp.test(body)) { /* interpolated but not into prose */ }
+      if (!hit) continue;
+      // spec-v1803: an OBJECT or ARRAY default is not a value printed into prose, and the signature parser
+      // -- which reads to the first `}` -- splits one in the middle. That is where `buildHash(state = {)`
+      // came from: a row about a brace.
+      if (/^[[{]/.test(String(v).trim())) continue;
+      if (alwaysSupplied(name, p)) { supplied += 1; continue; }
+      const jk = `${name}:${p}`;
+      if (JUDGED[jk]) { judgedSeen.add(jk); if (ALL) console.log(`JUDGED\t${jk}\t${JUDGED[jk]}`); continue; }
+      rows.push({ file: f, name, param: p, def: v, line: hit.trim().slice(0, 130), at: startLine });
     }
   }
 }
-console.log(`${rows.length} defaulted parameter(s) reach a prose string.\n`);
+for (const k of Object.keys(JUDGED)) {
+  if (!judgedSeen.has(k)) console.log(`STALE-LEDGER\t${k}\t(judged here, but the finder no longer reaches it)`);
+}
+console.log(`${rows.length} defaulted parameter(s) reach a prose string (${judgedSeen.size} judged) `
+  + `(${supplied} more are declared required by every adapter that calls the function, so the default cannot fire).\n`);
 for (const r of rows) console.log(`  lib/${r.file}:${r.at}  ${r.name}(${r.param} = ${r.def})\n      ${r.line}\n`);

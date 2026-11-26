@@ -13,15 +13,16 @@
 //   ireton-jones  fell back to `obese` when the height was blank, so every blank height was
 //                 "not obese" and lost the -609 kcal/day term.
 //
-// Two rows it prints are accepted: peds-bmi-percentile (weight and height are an alternative to
-// the BMI the adapter asks for) and spetzler-ponce (a Spetzler-Martin grade is an alternative to
-// the class). Neither answers differently for a reader who could not supply them.
+// spec-v1803: one row is accepted and judged below -- spetzler-ponce, where a Spetzler-Martin grade is an
+// alternative to the class the adapter asks for and gives the same tier. The note here used to name
+// peds-bmi-percentile as a second; the finder no longer reaches it, and the ledger said so on its first
+// run, which is what a ledger is for.
 //
 // Reach is printed. Only compute functions that read one input object named `o`
 // (`const o = input ...`) or destructure their parameter are read; helpers they call are not, and
 // an adapter with a `toArgs` transform is skipped because its args are not the library's keys.
 
-import { readdirSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -47,6 +48,29 @@ function readsOf(src) {
   return null;
 }
 
+// spec-v1803: THE FILE-UPLOAD SURFACE SUPPLIES KEYS TOO. `lib/upload-worker.js` maps a parsed file's rows
+// onto a structured key -- `fillRows` by default, and `medicationRows`, `apptRows`, `claimRows` or
+// `authRows` for the tools named there -- and calls the library with it. That is a real surface a reader
+// reaches by dropping a CSV on the page, so a library reading those keys is reading something somebody CAN
+// say. Reading only the adapter's fields called three of them unsupplied.
+//
+// The map is read from the worker's source rather than copied, so a new tool added there is covered the
+// day it is added.
+const WORKER = join(ROOT, 'lib', 'upload-worker.js');
+const workerSrc = readFileSync(WORKER, 'utf8');
+const UPLOAD_KEYS = new Set(['fillRows']);
+for (const m of workerSrc.matchAll(/'([A-Za-z_$][\w$]*Rows)'/g)) UPLOAD_KEYS.add(m[1]);
+// And the keys the worker builds by hand for the two tools it reshapes itself.
+for (const m of workerSrc.matchAll(/result = fn\(\{ \.\.\.input, (\w+) \}\)/g)) UPLOAD_KEYS.add(m[1]);
+
+// Rows where the extra key is an ALTERNATIVE the adapter's own field already covers, so no reader is
+// decided for. Each was read and is recorded here rather than printed every run.
+const JUDGED = {
+  'spetzler-ponce:smGrade': 'a Spetzler-Martin grade is an alternative to the class the adapter asks for, and gives the same tier',
+};
+const ALL = process.argv.includes('--all');
+const judgedSeen = new Set();
+
 const rows = [];
 let entries = 0;
 let read = 0;
@@ -62,13 +86,23 @@ for (const file of readdirSync(DIR).filter((f) => f.endsWith('.js')).sort()) {
     if (!keys) continue;
     read++;
     const args = new Set(e.fields.map((f) => f.arg));
-    const extra = [...keys].filter((k) => !args.has(k));
-    if (extra.length) rows.push({ id: e.id, file, extra });
+    const extra = [...keys].filter((k) => !args.has(k) && !UPLOAD_KEYS.has(k));
+    const kept = [];
+    for (const k of extra) {
+      const jk = `${e.id}:${k}`;
+      if (JUDGED[jk]) { judgedSeen.add(jk); if (ALL) console.log(`JUDGED\t${jk}\t${JUDGED[jk]}`); continue; }
+      kept.push(k);
+    }
+    if (kept.length) rows.push({ id: e.id, file, extra: kept });
   }
 }
 
-console.log(`${rows.length} calculator(s) read an input no surface supplies.\n`);
+for (const k of Object.keys(JUDGED)) {
+  if (!judgedSeen.has(k)) console.log(`STALE-LEDGER\t${k}\t(judged here, but the finder no longer reaches it)`);
+}
+console.log(`${rows.length} calculator(s) read an input no surface supplies (${judgedSeen.size} judged).\n`);
 for (const r of rows) console.log(`  ${r.id.padEnd(34)} ${r.extra.join(', ')}   (mcp/adapters/${r.file})`);
 console.log(`\nReach: ${entries} adapter entries; ${read} compute functions read directly`
   + ` (an \`o\` input object or a destructured parameter); ${reshaped} reshape their input with toArgs`
-  + ` and ${entries - read - reshaped} delegate or wrap; neither was read.`);
+  + ` and ${entries - read - reshaped} delegate or wrap; neither was read.`
+  + ` ${UPLOAD_KEYS.size} structured row key(s) are supplied by lib/upload-worker.js and counted as said.`);

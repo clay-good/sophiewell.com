@@ -74,6 +74,17 @@ function optionalNumberIds(src, builders) {
 
 let reach = 0;
 let inlineChecked = 0;
+// spec-v1803: a judged ledger, because a row here is a SUSPECT and not a defect -- the note above says so,
+// and a suspect that has been read is noise on every later run.
+const JUDGED = {
+  // The call site reads the RAW value to decide whether the field was entered, which is the guard this
+  // finder cannot see from the `num()` line alone: `crlEntered` is `.value.trim() !== ''`, a blank CRL
+  // never reaches gaFromCrl, and a typed 0 is refused against the 1 to 120 mm range.
+  'group-e.js:pd-crl': 'the call site tests the raw value for emptiness before using it, and refuses a typed 0 against the 1-120 mm range',
+};
+const ALL = process.argv.includes('--all');
+const judgedSeen = new Set();
+
 const rows = [];
 for (const entry of readdirSync('views').filter((f) => f.endsWith('.js'))) {
   const src = readFileSync(`views/${entry}`, 'utf8');
@@ -113,11 +124,16 @@ for (const entry of readdirSync('views').filter((f) => f.endsWith('.js'))) {
         || new RegExp(`const (\\w+) = ${alias};[\\s\\S]{0,1500}?\\b\\1 (?:> 0|!== ''|!= null)`).test(src)
         || new RegExp(`\\[[^\\]]*'${id}'[^\\]]*\\][\\s\\S]{0,300}?(?:Missing|missing|needValues)`).test(around);
       if (guarded) continue;
+      const jk = `${entry}:${id}`;
+      if (JUDGED[jk]) { judgedSeen.add(jk); if (ALL) console.log(`JUDGED\t${jk}\t${JUDGED[jk]}`); continue; }
       rows.push({ file: entry, line: i + 1, id, label: optional.get(id), text: line.trim().slice(0, 100) });
     }
   }
 }
 
-console.log(`${rows.length} optional-labelled fields read as zero`
+for (const k of Object.keys(JUDGED)) {
+  if (!judgedSeen.has(k)) console.log(`STALE-LEDGER\t${k}\t(judged here, but the finder no longer reaches it)`);
+}
+console.log(`${rows.length} optional-labelled fields read as zero (${judgedSeen.size} judged)`
   + ` (reach: ${reach} view modules carry the helper; ${inlineChecked} inline reads bypass it and were checked too)`);
 for (const r of rows) console.log(`  ${r.file}:${r.line}  ${r.id}  "${r.label}"\n      ${r.text}`);

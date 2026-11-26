@@ -76,6 +76,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- An agent asking for a DAS28 score without saying which inflammatory marker it had was given the ESR
+  formula and its thresholds, and told nothing. The page has always shown which form is in use; the agent
+  field now says so too.
 - Five input ranges that no check could see are now stated, because the fields are blank in their worked
   example and one of the two checks only drives fields that are filled in. Declaring one of them found a
   defect underneath it: the G-CSF timing tool guarded a weight only when pegfilgrastim was the product, so
