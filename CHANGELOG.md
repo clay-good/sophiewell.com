@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Two more calculators stop answering an impossible number by asking for it. The epilepsy-surgery outcome
+  classification accepted up to 100,000 seizure days in a year, where a year has at most 366; and the lung
+  immune prognostic index answered a neutrophil count above the white count -- which cannot happen, since
+  the white count includes the neutrophils -- with the sentence it uses for a count nobody entered.
 - A small helper that answers "is this criterion ticked?" was written out in thirty-six calculator modules,
   and three of them read the number 1 as NO -- the APACHE II group, the Glasgow-Blatchford bleeding score
   and MIPSS70. Nothing sends them a bare 1 today, because both the page and the agent interface hand them a

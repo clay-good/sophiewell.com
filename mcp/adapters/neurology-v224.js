@@ -55,8 +55,8 @@ export default [
     fields: [
       { dom: 'ilae-free', arg: 'seizureFree', kind: 'bool', required: false, label: 'Completely seizure-free, no auras' },
       { dom: 'ilae-aura', arg: 'aurasOnly', kind: 'bool', required: false, label: 'Auras only, no other seizures' },
-      { dom: 'ilae-days', arg: 'seizureDays', kind: 'number', required: true, label: 'Current seizure days per year' },
-      { dom: 'ilae-base', arg: 'baselineDays', kind: 'number', required: true, label: 'Baseline (preoperative) seizure days per year' },
+      { dom: 'ilae-days', arg: 'seizureDays', kind: 'number', required: true, label: 'Current seizure days per year', min: 0, max: 366 },
+      { dom: 'ilae-base', arg: 'baselineDays', kind: 'number', required: true, label: 'Baseline (preoperative) seizure days per year', min: 0, max: 366, exclusiveMin: true },
     ],
   },
   {

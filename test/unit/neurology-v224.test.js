@@ -70,3 +70,21 @@ test('spec-v1755: DHI refuses a fractional answer count', () => {
   assert.match(r.message, /"Yes" answers must be a whole number/);
   assert.equal(dhi({ ...ex, numberYes: 11 }).score, 54);
 });
+
+// spec-v1819: a year has at most 366 days.
+//
+// The reader capped seizure DAYS PER YEAR at 100,000, so 999999 read as blank and the tool answered it
+// with the sentence an empty form gets -- a list of four fields with no word about the one that was
+// impossible. The ceiling is definitional rather than clinical, which is why it belongs here and not with
+// a source (docs/spec-v1206.md). Both surfaces now state 0 to 366.
+test('spec-v1819: seizure days per year cannot exceed 366', () => {
+  const ok = { seizureDays: '4', baselineDays: '40' };
+  assert.equal(ilaeOutcome(ok).valid, true);
+  assert.equal(ilaeOutcome({ ...ok, seizureDays: '366' }).valid, true, '366 is a leap year');
+  for (const [field, bad] of [['seizureDays', '367'], ['seizureDays', '999999'], ['baselineDays', '400']]) {
+    const r = ilaeOutcome({ ...ok, [field]: bad });
+    assert.equal(r.valid, false, `${field}=${bad}`);
+    assert.match(r.message, /must be between 0 and 366/, `${field}=${bad}`);
+    assert.doesNotMatch(r.message, /^Enter current seizure days/, `${field}=${bad}`);
+  }
+});

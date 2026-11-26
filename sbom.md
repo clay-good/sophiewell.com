@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ff2f78cd095a1777`
-Generated: 2026-11-26T13:00:56.302Z
+Build ID: `7c0a6e42c8de1ba1`
+Generated: 2026-11-26T13:17:12.674Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -999,7 +999,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/neuro-v121.js` | 19888 | `33e8a4937da6f78afac280ae3bb7426e8b17fae47265323b31a6926ebd7c42f3` |
 | `lib/neuro-v122.js` | 11470 | `93e42d759c472fa1482d12402a5daa370ce1163060374db83e5118c68579707f` |
 | `lib/neuro-v95.js` | 15522 | `ad42a1a2c16decfaef79c11e679e6e29d377896ef6fce0f75649bab0c6b6e478` |
-| `lib/neurology-v224.js` | 13590 | `7fd59012655abaa6a5bc083ee47c46f7579c43db910f4a83dfc2e85c8fc1ad7e` |
+| `lib/neurology-v224.js` | 14086 | `6b7284c1167d282ac09d70fb529acda9dc94c42d6b77879535f862e2a798e7aa` |
 | `lib/newborn-hypoglycemia-who-v1559.js` | 5534 | `4f784b38c2ad96579a9a0fcb5bb76d6866e43c3cf6173302a61d30f74236d81c` |
 | `lib/newborn-size-category-v1559.js` | 3373 | `2ce9432abcbd987b9a3792288a6e2a3c079dc42b9cdc7169cfde63fdced2f70e` |
 | `lib/newborn-temperature-who-v1559.js` | 4242 | `152eb2d3a99988d529f9cac84180a5d3314d8738a11e77b7b1f9eab487723075` |
@@ -1329,7 +1329,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheumcrit-v256.js` | 11449 | `6f1a99200459d3eaeba71f4de1d44a36724c14e972999fb3086de689458844c5` |
 | `lib/ridley-jopling-v534.js` | 13454 | `fb4f0363664d9c1bd23f3d5c8ef32b627ed0c4741342457fb3fdbe253a02c3a2` |
 | `lib/riosord-v1634.js` | 8372 | `4f3d49a701175423895b0cb30f35686642e49e8b699fa2fdbf421f3067459311` |
-| `lib/risk-scores-v215.js` | 18346 | `b73e2e6f851bcd1ffa44dc300ba9bff3b6d6f1e1606b256339f18e9e6792489a` |
+| `lib/risk-scores-v215.js` | 18823 | `b80d6ac41f2716ad3ad8524b5f7751cd3a94ffb8dda6319622aa491d413ec8ef` |
 | `lib/risk-v192.js` | 18621 | `9519a33d4954c334bdc800e550ab639d548d7a2fb5f809ff20cbbdbf8ccb68ab` |
 | `lib/riskscores-v255.js` | 7790 | `c676617afc32d9d16766cb70525e86dcb21e620819661c00a80181ebd8b2a5cc` |
 | `lib/risser-sign-v383.js` | 4009 | `4e29f6eea9c402b63018246ff051741b23b4a2894f8a44abc3c80abdc576a67d` |
@@ -2514,7 +2514,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/neuro-v121.js` | 4490 | `3c82b1ce3752667345ede4411672f0c2853a7cff76428128ffef988d02719bda` |
 | `mcp/adapters/neuro-v122.js` | 3428 | `77fc87dd4318793c0e81914696b79be5b24cc785cd4b0b1b33c95f67c71f3456` |
 | `mcp/adapters/neuro-v95.js` | 4065 | `9bc51c0984863aa6d737b8a41213f9b336ef071748ab2b5fd1a9771db0000b29` |
-| `mcp/adapters/neurology-v224.js` | 5454 | `c3141192878fb742391fcb6ca640c295386aa41b48eb4466e6ceb02f7058893e` |
+| `mcp/adapters/neurology-v224.js` | 5510 | `8ca4e42b9fd1d78352e3cc03e97a19381036c5052f8d4ac0850af46e99b248b3` |
 | `mcp/adapters/newborn-hypoglycemia-who-v1559.js` | 1092 | `2e01d739889427c2055478b932f86db70ff9913ed57c32e5e63f8a5c9c93aaca` |
 | `mcp/adapters/newborn-size-category-v1559.js` | 954 | `129408e4d7650937db1e6d3c2a1cb1d2ac0afc4eca35bd807c0465891bb63e36` |
 | `mcp/adapters/newborn-temperature-who-v1559.js` | 898 | `ec43f8c3fda94be04b86f7b64b376565e4a3ee3fa2c72d47da351ef7673a9899` |

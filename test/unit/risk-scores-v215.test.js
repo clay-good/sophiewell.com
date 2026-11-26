@@ -149,3 +149,23 @@ test('spec-v1095: one lipid below threshold does not settle the cholesterol crit
   // Ruling IN is untouched.
   assert.equal(simonBroomeFh({ ldl: 5, tendonXanthoma: true }).definite, true);
 });
+
+// spec-v1819: an ANC above the white count is not a missing ANC.
+//
+// The LIPI divides by (WBC - ANC), so the white count includes the neutrophils and has to be the larger.
+// One branch answered a missing count and an impossible pair with the same sentence, so an ANC of 999999
+// beside a normal WBC was told to "Enter absolute neutrophil count and total WBC". spec-v1237 decided, and
+// it still holds, that no envelope belongs here -- the tile fixes the unit of neither count. The ORDER
+// needs no unit.
+test('spec-v1819: an ANC above the white count is refused as an order, not asked for again', () => {
+  const r = lipi({ anc: 999999, wbc: 7, ldhHigh: false });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /absolute neutrophil count \(999999\) is above the total white count \(7\)/);
+  assert.match(r.message, /Check the values entered/);
+  assert.doesNotMatch(r.message, /^Enter /);
+  // A genuinely missing count still asks for it.
+  assert.match(lipi({ wbc: 7 }).message, /^Enter absolute neutrophil count/);
+  assert.match(lipi({ anc: 4 }).message, /^Enter absolute neutrophil count/);
+  // And the ordinary reading is unchanged.
+  assert.equal(lipi({ anc: 4, wbc: 7, ldhHigh: false }).bandLabel, 'LIPI good');
+});
