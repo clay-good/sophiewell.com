@@ -45,7 +45,7 @@ export default [
       { dom: 'dr-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'dr-glu', arg: 'glucose', kind: 'bool', label: 'Baseline glucose > 8 mmol/L (>144 mg/dL)' },
       { dom: 'dr-ott', arg: 'onset', kind: 'number', required: true, label: 'Onset-to-treatment time (min)' },
-      { dom: 'dr-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS' },
+      { dom: 'dr-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS', unit: 'points', min: 0, max: 42 },
     ],
   },
   {
@@ -53,7 +53,7 @@ export default [
     summary: 'Hemorrhage After Thrombolysis (HAT) score (Lou 2008): estimates symptomatic-ICH risk after IV thrombolysis (0-5).',
     compute: F.hatScore,
     fields: [
-      { dom: 'ht-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS' },
+      { dom: 'ht-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS', unit: 'points', min: 0, max: 42 },
       { dom: 'ht-hypo', arg: 'hypodensity', kind: 'enum', values: ['none', 'third', 'more'], required: true, label: 'Baseline CT hypodensity extent' },
       { dom: 'ht-dm', arg: 'diabetes', kind: 'bool', label: 'History of diabetes or admission glucose > 200 mg/dL' },
     ],
@@ -67,7 +67,7 @@ export default [
       { dom: 'se-early', arg: 'early', kind: 'bool', label: 'Early infarct signs on CT' },
       { dom: 'se-dense', arg: 'dense', kind: 'bool', label: 'Hyperdense cerebral artery sign' },
       { dom: 'se-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
-      { dom: 'se-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS' },
+      { dom: 'se-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS', unit: 'points', min: 0, max: 42 },
     ],
   },
   {
@@ -75,7 +75,7 @@ export default [
     summary: 'THRIVE score (Flint 2013): predicts good functional outcome and mortality after acute ischemic stroke (0-9).',
     compute: F.thriveStroke,
     fields: [
-      { dom: 'tv-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS' },
+      { dom: 'tv-nihss', arg: 'nihss', kind: 'number', required: true, label: 'Baseline NIHSS', unit: 'points', min: 0, max: 42 },
       { dom: 'tv-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'tv-htn', arg: 'htn', kind: 'bool', label: 'History of hypertension' },
       { dom: 'tv-dm', arg: 'diabetes', kind: 'bool', label: 'History of diabetes' },

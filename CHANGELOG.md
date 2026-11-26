@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The DRAGON, HAT, SEDAN and THRIVE stroke scores accepted a baseline NIH Stroke Scale score above 42, which
+  the scale cannot produce -- 42 is the sum of its fifteen items' maxima -- and scored it as the worst
+  severity band. The catalog's four other NIHSS fields already refused it. All eight now state the same
+  range, and a fractional score is refused too, since every item of the scale is a whole number.
 - Two more calculators stop answering an impossible number by asking for it. The epilepsy-surgery outcome
   classification accepted up to 100,000 seizure days in a year, where a year has at most 366; and the lung
   immune prognostic index answered a neutrophil count above the white count -- which cannot happen, since

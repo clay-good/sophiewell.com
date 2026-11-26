@@ -49,3 +49,22 @@ test('spec-v1741: a value ten times past its envelope is refused, not scored', (
   assert.match(badAge.band, /age/);
   assert.equal(dragonStroke({ ...ex, age: 110 }).valid, true);
 });
+
+// spec-v1820: the NIHSS runs 0 to 42 by construction.
+//
+// 42 is the sum of the scale's fifteen item maxima, and four of the catalog's eight NIHSS fields enforced
+// it while these four did not -- so a baseline NIHSS of 999999 scored the top severity band in DRAGON, HAT,
+// SEDAN and THRIVE and was refused next door in max-ICH, SITS-SICH and SPAN-100. Every item of the scale is
+// a whole number, so the total is one too.
+test('spec-v1820: a baseline NIHSS above 42, or a fraction, is refused', () => {
+  // `fin` in this module takes a real number only, which is what both surfaces hand it.
+  const ok = { age: 70, onset: 100, nihss: 12, ct: 'either', mrs: false, glucose: false };
+  assert.equal(dragonStroke(ok).valid, true);
+  assert.equal(dragonStroke({ ...ok, nihss: 42 }).valid, true, '42 is the maximum, not past it');
+  for (const bad of [43, 999999, 12.5]) {
+    const r = dragonStroke({ ...ok, nihss: bad });
+    assert.equal(r.valid, false, bad);
+    assert.match(r.band, /baseline NIHSS/, bad);
+    assert.doesNotMatch(r.band, /non-negative/, bad);
+  }
+});

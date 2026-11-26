@@ -27,6 +27,20 @@
 // lib/bounds.js envelope or a definitional bound. The other 49 need envelopes
 // bounds.js does not have yet; docs/spec-v1731.md lists them by quantity.
 //
+// RE-DRIVEN 2026-11-26 (spec-v1820). The declaration programme of spec-v1793 to spec-v1819 has taken the
+// residue from 49 to FIFTEEN, and the one of those fifteen that needed no source is fixed in spec-v1820:
+// the four NIHSS fields in lib/neuro-v117.js now state the scale's own 0-42. The fourteen left are a
+// quantity bounds.js does not have, and each needs its source rather than a wave (docs/spec-v1206.md):
+//
+//   a total cholesterol (framingham-cvd, reynolds-risk, non-hdl-remnant), a high-sensitivity CRP
+//   (reynolds-risk) and a CRP in mg/L (lrinec), an FEV1 percent predicted (gold-spirometry), a net QRS
+//   deflection in mm (ecg-axis, two fields), the three ABC/2 hematoma diameters in cm (ich-volume-abc2),
+//   a lung-nodule diameter in mm (fleischner-2017), a chronological age in MONTHS (corrected-age) and a
+//   spot urine creatinine (urine-calcium-cr).
+//
+// The last two are the trap spec-v1797 named: `ageYears` x 12 and `scr` are envelopes for a DIFFERENT
+// quantity, and borrowing one for its ceiling is an obfuscated literal, not a bound.
+//
 // Asserts nothing; prints a report.
 //
 //   node scripts/probe-unguarded-sibling.mjs

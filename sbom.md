@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7c0a6e42c8de1ba1`
-Generated: 2026-11-26T13:17:12.674Z
+Build ID: `06c6574af2ce0cc2`
+Generated: 2026-11-26T13:51:59.138Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -992,7 +992,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nerot-sirveaux-v1429.js` | 4806 | `9e8a648e2fc87ea9b376aebd3d84cdfb65416fdd751934e3d9a2deb1ccc34089` |
 | `lib/nerve-injury-v297.js` | 4746 | `13741ba46f672eb344024cfed6d066a3bffd6ea90974a2fa578f282407695d00` |
 | `lib/neuro-disability-v159.js` | 15644 | `b9dd48623e3ef2b0338778acdc24cb6e44f717ef01f94e48358fb554a31e286e` |
-| `lib/neuro-v117.js` | 18816 | `c9d0049e50640bba76b16c9d7a2184259c73dd67c5546f6efc2dd01aeb7084e7` |
+| `lib/neuro-v117.js` | 20896 | `35693be52494a62661f0d997beec12932318a9543dc36fefff9912396d1b7f65` |
 | `lib/neuro-v118.js` | 25487 | `700fb5066c2fcc46d9f15edbfcd7727df12afac95143f0372ab53353b5edf5b8` |
 | `lib/neuro-v119.js` | 15180 | `7a2ee09ef5a99034461e909ba5ef426376ddfb46ad62a84454c709cee7ee7d39` |
 | `lib/neuro-v120.js` | 17519 | `5ded3d6d2782f0b51a9d40abbd2a269d7f6623102eab154f6b3c3136b1cba17a` |
@@ -2507,7 +2507,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/nerot-sirveaux-v1429.js` | 809 | `5a5b70d26016335e5843986dcad1a616bd0dd937b63207f0a516b3cbbce6b8c6` |
 | `mcp/adapters/nerve-injury-v297.js` | 1209 | `49427c1ab46d7a0ac1cdfc4846d52e99741aa8bb6d9beff4013e7991cd9b8dd4` |
 | `mcp/adapters/neuro-disability-v159.js` | 3952 | `d8fc0fb25cb692159eb3718f38c81ec777a7e10c03a515b6319a97945ddac59a` |
-| `mcp/adapters/neuro-v117.js` | 5060 | `d28734320a85892340e73c92db22281f13d8bbc72f7f36185460cc6ecd69a5fb` |
+| `mcp/adapters/neuro-v117.js` | 5192 | `fa203c2e07775e3eaa2b0495572a7dd44c3c886d65df05a4a242f7f2725d17f6` |
 | `mcp/adapters/neuro-v118.js` | 5031 | `2f7a0b1090bd0bbef221565ee72f4a33733d8056ed86b344ec1800a7d3672912` |
 | `mcp/adapters/neuro-v119.js` | 3979 | `5806f365058839b13c52cb79e6976fa54a7b6f66979cac9aa935fb62b49a16a0` |
 | `mcp/adapters/neuro-v120.js` | 4430 | `7e6c7d67416091d078526cb6f1b7d667aecc813d48812fcbedee6b6924abf9c5` |
