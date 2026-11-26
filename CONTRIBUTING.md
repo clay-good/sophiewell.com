@@ -293,7 +293,7 @@ Two finders ask the opposite question of the same declaration. `scripts/probe-un
 each field's enforced edge from its worked example and lists the caps the library enforces with nothing
 declaring them -- an agent reads the schema, sees a plain number, and is refused by a sentence it had no way
 to anticipate. Its four other sections are the caps that must NOT simply be copied onto the descriptor: one
-of the 45 `lib/bounds.js` envelopes (a literal there freezes a number that moves), a field a unit select
+of the 47 `lib/bounds.js` envelopes (a literal there freezes a number that moves), a field a unit select
 rescales (the declaration has to be the union of its units), a cap that moves with another input, and a
 declaration that contradicts the library. `scripts/probe-declared-cap-configs.mjs` then drives every
 declared bound across CONFIGURATIONS -- each other number at half and twice its example, each enum at every
@@ -313,7 +313,7 @@ node scripts/probe-declared-cap-configs.mjs    # a declared bound the library en
 declaration allows. A bound whose edge the library states as exclusive declares `exclusiveMin` /
 `exclusiveMax` beside it, which reaches the input schema as `exclusiveMinimum` / `exclusiveMaximum`.
 
-**A field whose cap is one of the 45 `lib/bounds.js` envelopes NAMES it rather than restating it**:
+**A field whose cap is one of the 47 `lib/bounds.js` envelopes NAMES it rather than restating it**:
 `bound: 'weightKg'`, resolved against `BOUNDS` on every read, so the declaration cannot fall behind the
 envelope (`fieldRange` in `mcp/fields.js`, `docs/spec-v1779.md`). `boundScale` is for a field stated in a
 sub-unit of the envelope's -- a height in cm against an envelope in metres is

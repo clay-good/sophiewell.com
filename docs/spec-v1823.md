@@ -52,6 +52,15 @@ cholesterol (optional, for remnant)"* — so a fraction claimed the total's fenc
 says nothing true about an HDL of 25. `scripts/lib/quantity-name.mjs` gains `NOT_THE_TOTAL` for that, in the
 same shape as its compartment and `NOT_ARTERIAL` rules; a fraction wants its own fence, with its own source.
 
+## And the count nobody was reading
+
+CONTRIBUTING.md names the number of envelopes **twice**, in the two rules a contributor reads before
+writing a cap — that a literal there freezes a number that moves, and that a field whose cap is one of them
+names it rather than restating it. It said **45** while the list had reached 47, and this spec would have
+left it at 45. There is now a test that reads the prose against `Object.keys(BOUNDS).length`, because an
+unlisted visible count will drift; that is the same rule the catalog count has been held to since
+[spec-v982](spec-v982.md).
+
 The cascade is the part worth remembering: each library that took the envelope made the next tool visible,
 because the finder's question is "does a field whose words name an envelope answer past it" — and until the
 envelope existed, none of these ten fields named one. Three rounds, and the finder is back to zero.
