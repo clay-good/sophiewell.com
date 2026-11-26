@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Fourteen more input fields the same way, two of which already had the right check -- it ran one branch
+  too late. The 4PEPS score and the acetylcysteine regimen have always known the plausible range for an
+  age and a weight, and never applied it to a negative one, because the "enter a value" branch answered
+  first.
 - Across 58 of the libraries behind them, 143 input fields told a reader to enter a value they had just
   entered. A count typed as 999999, or a laboratory value typed as a negative, was read as an empty box --
   so the answer was the same sentence an empty box gets, with nothing about what was wrong with the

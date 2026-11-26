@@ -57,7 +57,7 @@ export default [
       { dom: 'hips-stage', arg: 'stage4', kind: 'enum', values: ['no', 'yes'], label: 'Ann Arbor stage IV' },
       { dom: 'hips-wbc', arg: 'wbc', kind: 'number', label: 'White-cell count (×10⁹/L)' },
       { dom: 'hips-lymphct', arg: 'lymphCount', kind: 'number', label: 'Absolute lymphocyte count (cells/µL)' },
-      { dom: 'hips-lymphpct', arg: 'lymphPct', kind: 'number', label: 'Lymphocyte percentage (%)' },
+      { dom: 'hips-lymphpct', arg: 'lymphPct', kind: 'number', label: 'Lymphocyte percentage (%)', min: 0, max: 100 },
     ],
   },
   {
