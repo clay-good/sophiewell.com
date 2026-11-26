@@ -94,6 +94,27 @@ const FINDERS = [
     minJudged: 7,
   },
   {
+    // spec-v1805: already at zero when the sweep reached it, and gated so it stays there. Its exclusions
+    // are measured and printed in its reach line, so it needs no ledger.
+    probe: 'probe-refusal-unrendered.mjs',
+    what: 'a refusal the library can return that the page would not show, so a reader sees nothing where an agent is told why',
+    fix: 'Render the refusal the library returns (docs/spec-v1046.md), or make the state unreachable from either surface',
+    informational: ['actionable tile(s).', 'Excluded:', 'Reach:', 'Wrong-key and reachable'],
+    isFinding: (l) => l.includes('\t'),
+    minJudged: 0,
+  },
+  {
+    // spec-v1805: the same -- at zero, and gated. It asks whether the asking/disclosing vocabulary that
+    // exempts a dropped-field reading is earning that exemption on text the tool added for the purpose, or
+    // on words that happened to be there already.
+    probe: 'probe-static-exemption.mjs',
+    what: 'a dropped-field reading exempted only by text that was already there, about a gap that did not exist when it was written',
+    fix: 'Say what the missing field would change (docs/spec-v1778.md), or let the row be reported',
+    informational: ['row(s) across', 'Reach:', '(Verdict-moving rows only', 'about a gap that'],
+    isFinding: (l) => l.includes('\t'),
+    minJudged: 0,
+  },
+  {
     // spec-v1804: all 58 of its rows across 19 tools are fixed, and it has no ledger: a refusal that names
     // a camelCase argument is never the right answer, because no control anywhere shows that word.
     probe: 'probe-identifier-in-refusal.mjs',

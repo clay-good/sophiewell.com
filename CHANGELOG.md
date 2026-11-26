@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The internal list of words that mean "a calculator is asking rather than answering" did not know four
+  phrasings the calculators use: a total stated as a floor ("HEAR score at least 3"), "still to confirm",
+  "answer the remaining", and "not fully assessed". Thirty-eight readings that disclose a gap perfectly
+  well were being flagged as if they had answered without saying so.
 - Fifty-eight refusals across nineteen tools told a reader to fix something by a name no screen shows --
   "Select a valid score for functionalReach", "Still needed: maximalStimulationPorEpisodes", "rate
   foodPrep". Each now says what the control beside it says: functional reach, the number of poor responses

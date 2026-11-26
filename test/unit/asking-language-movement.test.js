@@ -102,3 +102,49 @@ test('the row-edge split still fires on a standalone number', () => {
   assert.equal(addedText('Anion gap: 26Albumin-corrected AG: 26delta-AG = 14',
     'Anion gap: 26delta-AG = 14'), '');
 });
+
+// spec-v1805: the five phrasings added there, and the one deliberately NOT added.
+//
+// The file's first rule is to measure which rows a phrase stops flagging before adding it, and the reason
+// is this: a phrase that can also appear in a CRITERION, an option label read back, or standing prose buys
+// an exemption the tile has not earned -- and an exempted tile is a tile the gate is not protecting.
+//
+// `at least <number>` is the case. Bare, it moves 30 rows and five of them are a criterion quoted rather
+// than a floor disclosed. Anchored to the first forty characters -- where a tile states the total it is a
+// floor FOR -- it moves exactly the 22 that disclose.
+test('spec-v1805: a floor stated with its total is recognised; a criterion quoted further in is not', () => {
+  // The three tools that disclose a partial set this way.
+  for (const said of [
+    'HEAR score at least 3: not in the very-low-risk band (> 1) -- HEART scoring with troponin is indicated.',
+    `SCORAD at least 35/103 \u2014 at least moderate atopic dermatitis (oSCORAD at least 27).`,
+    `FABQ \u2014 physical activity at least 12 of 24 over 3 of its 4 items, work 35 of 42.`,
+    `FABQ \u2014 physical activity 16 of 24, work at least 30 of 42 over 6 of its 7 items.`,
+  ]) assert.equal(ASKING.test(said) || DISCLOSING.test(said), true, said);
+
+  // And the five that must stay flagged: the phrase is in a criterion or in standing prose.
+  for (const said of [
+    `Neither ICHD-3 migraine criteria set is met \u2014 for 1.1: at least 2 of the 4 headache characteristics.`,
+    'Will not finish in time: 300 mL at 60 mL/h takes 5 h, 1 h past the 4-hour limit. It needs at least 5 h.',
+  ]) assert.equal(ASKING.test(said) || DISCLOSING.test(said), false, said);
+
+  // The anchor is POSITIONAL, and that is worth stating. `arpraziquantel-dose`'s standing dosing prose says
+  // "Disperse in at least 10 mL of water" -- which WOULD match if it were the start of a reading, and does
+  // not, because the reading opens with the dose and its own disclosure. In isolation it matches; in place
+  // it does not. The guarantee the measurement gives is over the whole catalog, not over a sentence lifted
+  // out of one: across every tile and every dropped field, the anchored form moves exactly the 22 floor
+  // disclosures above.
+  const arpraz = '4 tablets once Contraindications not all entered: rule out cysticercosis first. '
+    + 'Disperse in at least 10 mL of water, stir until uniform, and give at once.';
+  assert.equal(/^[^.]{0,40}\bat least \d/i.test(arpraz), false, 'the anchored floor pattern alone');
+  // It is exempt, but on "not all entered" -- the phrase that is actually about the gap.
+  assert.equal(DISCLOSING.test(arpraz), true);
+});
+
+test('spec-v1805: the four unambiguous phrasings', () => {
+  for (const said of [
+    'Transition to practice complete; still to confirm: passed the national NP board certification examination.',
+    'McPherson stage III, host A to C, limb 3: answer the remaining factors to fix the grades.',
+    'Not decided: the systemic signs were not fully assessed.',
+    '4 tablets once. Contraindications not all entered: rule out cysticercosis first.',
+  ]) assert.equal(ASKING.test(said) || DISCLOSING.test(said), true, said);
+});

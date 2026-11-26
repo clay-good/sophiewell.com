@@ -58,6 +58,16 @@ export const ASKING = new RegExp([
   'no criteria', 'blank', 'outstanding',
   // A tile refusing because the instrument does not apply to the value given.
   'valid for ages',
+  // spec-v1805: two house phrasings for "there is more to answer" that this list did not know, found by
+  // walking probe-half-guarded's rows and asking which of them actually disclose. Both are unambiguous --
+  // neither can be a criterion restated or an option label read back.
+  //
+  // Measured before adding, as the rule above requires: across every tile and every dropped field,
+  // "still to confirm" moves exactly THREE rows from flagged to exempt, all `ca-np-103-104-tracker`, whose
+  // reading says "Transition to practice complete; still to confirm: passed the national NP board
+  // certification examination"; and "answer the remaining" moves exactly FOUR, all `mcpherson-pji`, which
+  // says "answer the remaining factors to fix the grades" and gives a range for each grade until they are.
+  'still to confirm', 'answer the remaining',
 ].join('|'), 'i');
 
 // spec-v1067: the OTHER half of owning up, and deliberately a separate export.
@@ -206,6 +216,25 @@ export const DISCLOSING = new RegExp([
   // have not been assessed" after naming the five, and which was already
   // refusing rather than answering.
   'of (?:the )?\\d+ (?:[a-z-]+ )?(?:items|components|measurements|criteria)',
+  // spec-v1805: THE TOTAL STATED AS A FLOOR, which is how `hear`, `scorad` and `fabq` disclose a partial
+  // set -- "HEAR score at least 3", "SCORAD at least 35/103", "FABQ -- physical activity at least 12 of 24
+  // over 3 of its 4 items". The list knew "can only add" and "can only raise" for the same idea and not
+  // this one.
+  //
+  // ANCHORED, and that is the whole care in it. A bare `at least \\d` moves 30 rows, and five of them are a
+  // CRITERION restated rather than a floor disclosed: `migraine-ichd3` says "for 1.1: at least 2 of the 4
+  // headache characteristics", `blood-4h-window` "It needs at least", and `arpraziquantel-dose` "Disperse
+  // in at least 10 mL of water" -- standing dosing prose. A floor is stated with the total it is a floor
+  // for, at the start of the reading; a criterion is quoted further in. Measured at several widths: forty
+  // characters moves exactly the 22 floor disclosures (hear 3, scorad 8, fabq 11) and none of the five.
+  '^[^.]{0,40}\\bat least \\d',
+  // And the plainest one, which only `arpraziquantel-dose` uses: its contraindication list says
+  // "Contraindications not all entered" before giving the dose. Moves exactly THREE rows, all that tool.
+  'not all entered',
+  // spec-v1805: a tool that says the clinical criterion was not fully assessed, and decides nothing.
+  // Moves exactly SIX rows -- `brazil-scorpion-antivenom`, `brazil-spider-antivenom`,
+  // `chikungunya-case-def` and `zika-case-def`, each of which answers "Not decided" and says why.
+  'not fully assessed',
 ].join('|'), 'i');
 
 // spec-v1196: WHERE the words come from, which the two rules at the top do not say.
