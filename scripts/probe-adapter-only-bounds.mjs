@@ -29,6 +29,23 @@ const run = (e, inputs) => {
   }
 };
 
+// spec-v1794: a judged ledger, so this finder prints nothing until something NEW appears. It is the last of
+// the declaration finders to get one; the eighteen rows it carried until now were real and are fixed (the
+// borrowed-envelope declarations of spec-v1794), which is what makes a ledger worth having here.
+//
+// `--all` prints the judged rows with their reasons, the way the other finders do, so
+// test/unit/finder-ledgers.test.js can read both halves from one run.
+const JUDGED = {
+  // The clamp is in the adapter's own compute wrapper, where it passes 0 for an ABSENT optional flow. No
+  // surface reaches it with a negative: the field declares a minimum of 0, so `validateInputs` refuses an
+  // agent's negative first, and the page calls the library directly, where `num()` refuses it. This finder
+  // skips the validator on purpose -- that is how it models the page -- and for this one tool the page does
+  // not go through the wrapper, so the path it exercises belongs to neither surface.
+  'o2-cylinder-duration:o2-flow:min': 'owner decision of 2026-11-17: this tool keeps reading a negative optional flow as absent (docs/spec-v1759.md), and no surface reaches the adapter wrapper\'s clamp -- validateInputs refuses an agent\'s negative and the page reaches num() directly',
+};
+const ALL = process.argv.includes('--all');
+const judgedSeen = new Set();
+
 let rows = 0;
 let checked = 0;
 for (const [id, e] of REGISTRY) {
@@ -49,10 +66,20 @@ for (const [id, e] of REGISTRY) {
       const r = run(e, { ...ex, [f.dom]: String(probe) });
       if (r.valid === false) continue;
       if (JSON.stringify(r) === JSON.stringify(base)) continue; // the field changed nothing: another finder's job
-      rows++;
+      const key = `${id}:${f.dom}:${side}`;
       const say = String(r.bandLabel || r.band || r.verdict || r.text || '').slice(0, 90);
+      if (JUDGED[key]) {
+        judgedSeen.add(key);
+        if (ALL) console.log(`JUDGED\t${key}\t${JUDGED[key]}`);
+        continue;
+      }
+      rows++;
       console.log(`${id}\t${f.dom}\t${side}=${v}\tprobe=${probe}\t${say}`);
     }
   }
 }
-console.error(`${rows} row(s) of ${checked} declared bound(s) checked.`);
+for (const key of Object.keys(JUDGED)) {
+  if (!judgedSeen.has(key)) console.log(`STALE-LEDGER\t${key}\t(judged here, but the finder no longer reaches it)`);
+}
+console.error(`${rows} row(s) of ${checked} declared bound(s) checked; ${judgedSeen.size} judged. `
+  + `--all lists the judged rows and why.`);

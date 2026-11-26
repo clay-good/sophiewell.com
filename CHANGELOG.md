@@ -76,6 +76,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Eighteen input ranges stated on the agent surface were ranges the tool does not use, so a value the page
+  answers was refused. Sixteen of them named a plausible-range envelope borrowed for its ceiling: four
+  audiogram thresholds in dB and four more in a Meniere staging were bounded like an age, a refractive
+  sphere like a platelet count, and a proficiency-testing panel like a serum hCG. Each published a floor of
+  0, which turned away the -10 dB a good ear reaches, the -1.25 D of ordinary short sight, and the negative
+  base excess a laboratory reports. Each now states the range its own tool reads.
+- An agent could not ask for a prior authorization every 28 days, the schedule of an ordinary monthly
+  biologic, or taper a dose weekly -- the pace the CDC and ASAM ranges are written in -- because three
+  fields stated the example drug's own schedule as a minimum.
+- The pediatric weight estimate accepted an age under a year in its years box, converting it to months and
+  applying the infant formula, while its label, its page note and its own refusal sentence all said 1 to
+  14. They say 0 to 14 now.
 - Eighty-six more number fields now state the range their library already enforces, so an agent reading a
   tool's inputs is told where a value will be refused instead of finding out by being refused. Among them
   are every PUFA dental code's tooth-count ceiling and every OSHA audiogram threshold, both of which the

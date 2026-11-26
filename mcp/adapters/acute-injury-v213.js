@@ -45,8 +45,12 @@ export default [
       { dom: 'lc-pprot', arg: 'pleuralProtein', kind: 'number', required: true, label: 'Pleural fluid total protein', unit: 'g/dL', max: 100 },
       { dom: 'lc-sprot', arg: 'serumProtein', kind: 'number', required: true, label: 'Serum total protein', unit: 'g/dL' },
       { dom: 'lc-pldh', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural fluid LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
-      { dom: 'lc-sldh', arg: 'serumLdh', kind: 'number', required: true, label: 'Serum LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
-      { dom: 'lc-uln', arg: 'serumLdhUln', kind: 'number', required: true, label: 'Upper limit of normal for serum LDH', unit: 'IU/L', bound: 'hcg', boundScale: 0.01 },
+      // spec-v1794: the upper limit of normal declared `bound: 'hcg'` at a hundredth -- the hCG envelope, whose
+      // ceiling over 100 happens to land on 100,000 -- and spec-v1793 mirrored that onto the LDH beside it for
+      // consistency. Neither field is an hCG. The library reads both 0 to 100,000 as a literal of its own, and
+      // a declaration that rides on hCG would follow that envelope if it ever moved.
+      { dom: 'lc-sldh', arg: 'serumLdh', kind: 'number', required: true, label: 'Serum LDH', unit: 'IU/L', min: 0, max: 100000 },
+      { dom: 'lc-uln', arg: 'serumLdhUln', kind: 'number', required: true, label: 'Upper limit of normal for serum LDH', unit: 'IU/L', min: 0, max: 100000 },
     ],
   },
   {

@@ -79,7 +79,10 @@ const FINDERS = [
     fix: 'Hoist the guard above the branch split with gradeFault (docs/spec-v1780.md), drop the declaration, '
       + 'or add it to JUDGED in the finder with the reason',
     informational: ['Reach:', '--all lists'],
-    minJudged: 1,
+    // spec-v1794: 0, and deliberately. The one row this ledger carried was peds-weight-est's years floor,
+    // left as a reader-facing choice; the choice has been made and the row is closed, not judged. A ledger
+    // that empties because its last finding was FIXED is the end state this whole vein is aiming at.
+    minJudged: 0,
   },
   {
     probe: 'probe-absent-example-field.mjs',
@@ -89,6 +92,18 @@ const FINDERS = [
     informational: ['Reach:', '0 field'],
     isFinding: (l) => l.includes('\t') && !l.startsWith('==') && !l.startsWith('NEVER-READ'),
     minJudged: 7,
+  },
+  {
+    // spec-v1794: promoted from a hand-run report to a gate once its eighteen rows were fixed. It is the
+    // mirror of probe-declared-cap-configs: that one asks whether a declaration holds in every
+    // CONFIGURATION, this one whether the library enforces it at all.
+    probe: 'probe-adapter-only-bounds.mjs',
+    what: 'a range the adapter declares and the library does not enforce, so the page answers what the agent is refused',
+    fix: 'Declare the range the library actually enforces (docs/spec-v1794.md) -- never an envelope borrowed for '
+      + 'its numbers -- or add the guard to the library, or add it to JUDGED in the finder with the reason',
+    informational: ['row(s) of'],
+    isFinding: (l) => l.includes('\t') && !l.startsWith('=='),
+    minJudged: 1,
   },
   {
     probe: 'probe-unit-equivalent.mjs',

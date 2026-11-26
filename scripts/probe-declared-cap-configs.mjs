@@ -39,13 +39,11 @@ const ALL = process.argv.includes('--all');
 // Rows read and judged, with their reason (docs/spec-v1780.md). The report prints only what is not here, so
 // a new row is a decision someone takes rather than a line in a report that already prints a known one
 // (spec-v1775's rule).
-const JUDGED = {
-  // The library converts a sub-1 value to months and applies the APLS 0-12 month formula, which is the
-  // right answer for an infant's age typed into the years box. Closing the gap means either widening the
-  // declaration and its label to 0-14, or refusing a fallback that was added on purpose -- a reader-facing
-  // choice, left for the owner.
-  'peds-weight-est:pw-years:min': 'the years field deliberately falls back to the APLS months formula below 1, and the label states 1-14: widening it is a reader-facing choice (docs/spec-v1780.md)',
-};
+// spec-v1794: empty, and that is the point. The one row here was `peds-weight-est`'s years field, where the
+// library converts a sub-1 value to months and applies the APLS infant formula on purpose while the
+// declaration and the label both said 1 to 14. It was left as a reader-facing choice; the choice has been
+// made -- the floor and all three statements of it now read 0 -- so the row is closed rather than judged.
+const JUDGED = {};
 const judgedSeen = new Set();
 
 const answers = (e, inputs) => {

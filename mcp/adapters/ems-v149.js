@@ -11,7 +11,9 @@ export default [
     compute: F.pedsWeightEst,
     fields: [
       { dom: 'pw-months', arg: 'months', kind: 'number', min: 0, max: 12, label: 'Age in months (0–12)' },
-      { dom: 'pw-years', arg: 'years', kind: 'number', min: 1, max: 14, label: 'Age in years (1–14)' },
+      // spec-v1794: declared a floor of 1 year, but the library converts a year under 1 to months and applies
+      // the APLS infant formula on purpose. An agent could not send 0.5 years; the page answers it.
+      { dom: 'pw-years', arg: 'years', kind: 'number', min: 0, max: 14, label: 'Age in years (0–14)' },
     ],
   },
   {

@@ -54,17 +54,16 @@ import { META } from '../lib/meta.js';
 import { computeCalculator, describeCalculator } from '../mcp/tools.js';
 import { allCalculators } from '../mcp/catalog.js';
 import { BOUNDS, CEILING_ONLY } from '../lib/bounds.js';
+import { RANGE_SENTENCE } from './lib/range-sentence.mjs';
 
 const limitArg = process.argv.indexOf('--limit');
 const LIMIT = limitArg > -1 ? Number(process.argv[limitArg + 1]) : Infinity;
 const ONLY = process.env.TOOLS ? new Set(process.env.TOOLS.split(',')) : null;
 
-// The same sentence shapes probe-envelope-inside matches, which are how every library in lib/ says "that
-// value is outside the range I accept".
-// spec-v1785: the `computed: true` sentence shape. When those twelve call sites stopped saying "must be
-// between X and Y" about a number nobody entered, every row vanished from this report -- not fixed, just
-// unrecognised. A finder's sentence list is part of its reach, and a better message must not silence it.
-const RANGE = /plausible range|must be (?:between|at most|at least|from|no more|a number)|between -?[\d.,]+ and -?[\d.,]+|outside -?[\d.,]+ to|no more than|beyond (?:a plausible|recorded)|works out to [-\d.,]+, which is outside the range this tool reports|^enter (?:a|an|the)[^.]*between/i;
+// spec-v1794: the shapes a library uses to say "outside the range I accept" now live in one place,
+// shared with probe-envelope-inside. The note there records what each shape is and why the last one needs
+// a number after "between".
+const RANGE = RANGE_SENTENCE;
 
 // A select that rescales a numeric sibling. `unit` covers weightUnit/heightUnit/tempUnit; the rest are the
 // spellings in use for the same thing.

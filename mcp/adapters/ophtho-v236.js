@@ -12,8 +12,12 @@ export default [
     summary: 'Spherical equivalent = sphere + cylinder / 2 (the axis is dropped); lands the eye at the circle of least confusion.',
     compute: F.sphericalEquivalent,
     fields: [
-      { dom: 'se-sph', arg: 'sphere', kind: 'number', required: true, label: 'Sphere', unit: 'D', bound: 'platelets', boundScale: 0.01 },
-      { dom: 'se-cyl', arg: 'cylinder', kind: 'number', required: true, label: 'Cylinder', unit: 'D' },
+      // spec-v1794: the sphere declared `bound: 'platelets'` scaled by a hundredth -- the PLATELET envelope,
+      // 0 to 4,000, for a refractive power in diopters. It published a floor of 0, so an agent could not send
+      // the commonest refraction there is, a myopic -1.25 D, which the page takes. The library reads the
+      // sphere -40 to 40 and the cylinder -20 to 20; both are stated now.
+      { dom: 'se-sph', arg: 'sphere', kind: 'number', required: true, label: 'Sphere', unit: 'D', min: -40, max: 40 },
+      { dom: 'se-cyl', arg: 'cylinder', kind: 'number', required: true, label: 'Cylinder', unit: 'D', min: -20, max: 20 },
     ],
   },
   {

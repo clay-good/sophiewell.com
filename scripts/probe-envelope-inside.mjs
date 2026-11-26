@@ -25,6 +25,7 @@
 import { META } from '../lib/meta.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { candidates, envelope, fillFor, floorApplies } from './lib/envelope-map.mjs';
+import { RANGE_SENTENCE } from './lib/range-sentence.mjs';
 import { REGISTRY } from '../mcp/catalog.js';
 import { fieldRange } from '../mcp/fields.js';
 
@@ -38,7 +39,9 @@ const ONLY = process.env.TOOLS ? new Set(process.env.TOOLS.split(',')) : null;
 // spec-v1785: the `computed: true` sentence shape. When those twelve call sites stopped saying "must be
 // between X and Y" about a number nobody entered, every row vanished from this report -- not fixed, just
 // unrecognised. A finder's sentence list is part of its reach, and a better message must not silence it.
-const RANGE = /plausible range|must be (?:between|at most|at least|from|no more)|between -?[\d.,]+ and -?[\d.,]+|outside -?[\d.,]+ to|no more than|beyond (?:a plausible|recorded)|works out to [-\d.,]+, which is outside the range this tool reports/i;
+// spec-v1794: one shared list, see scripts/lib/range-sentence.mjs. The copy here did not know the
+// `must be a number` shape that spec-v1785 added to the other one.
+const RANGE = RANGE_SENTENCE;
 let driven = 0;
 let rows = 0;
 let stated = 0;

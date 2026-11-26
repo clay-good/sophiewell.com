@@ -10,8 +10,11 @@ export default [
     compute: CLIA.cliaPtAcceptance,
     fields: [
       { dom: 'clia-analyte', arg: 'analyte', kind: 'enum', values: CLIA.ANALYTES.map((a) => a[0]), required: true, label: 'Analyte' },
-      { dom: 'clia-target', arg: 'target', kind: 'number', required: true, label: 'Program\'s target value', bound: 'hcg' },
-      { dom: 'clia-response', arg: 'response', kind: 'number', required: true, label: 'Laboratory\'s response', bound: 'hcg' },
+      // spec-v1794: both declared `bound: 'hcg'` -- the serum hCG envelope, 0 to 10,000,000, as a stand-in for
+      // "some analyte, some unit". Its floor of 0 is wrong for a proficiency-testing panel: the library reads
+      // these from -1,000,000 deliberately, because a base excess and an anion gap are reported negative.
+      { dom: 'clia-target', arg: 'target', kind: 'number', required: true, label: 'Program\'s target value', min: -1e6, max: 1e7 },
+      { dom: 'clia-response', arg: 'response', kind: 'number', required: true, label: 'Laboratory\'s response', min: -1e6, max: 1e7 },
       { dom: 'clia-sd', arg: 'sd', kind: 'number', required: false, label: 'Program\'s SD (white cell differential only)' },
       { dom: 'clia-decision', arg: 'decisionLevel', kind: 'number', required: false, label: 'Decision level, for the limit as a percent (optional)' },
     ]

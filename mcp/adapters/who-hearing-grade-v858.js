@@ -21,8 +21,12 @@ export default [
       { dom: 'wh-l1000', arg: 'left1000', kind: 'number', required: false, label: 'Left ear threshold at 1 kHz', unit: 'dB' },
       { dom: 'wh-l2000', arg: 'left2000', kind: 'number', required: false, label: 'Left ear threshold at 2 kHz', unit: 'dB' },
       { dom: 'wh-l4000', arg: 'left4000', kind: 'number', required: false, label: 'Left ear threshold at 4 kHz', unit: 'dB' },
-      { dom: 'wh-rpta', arg: 'rightPta', kind: 'number', required: false, label: 'Right ear average over the four frequencies, if already worked out', unit: 'dB', bound: 'ageYears' },
-      { dom: 'wh-lpta', arg: 'leftPta', kind: 'number', required: false, label: 'Left ear average over the four frequencies, if already worked out', unit: 'dB', bound: 'ageYears' },
+      // spec-v1794: these declared `bound: 'ageYears'` -- the AGE envelope, 0 to 130, borrowed for a
+      // threshold in dB because the ceiling happened to fit. It published a floor of 0 the library does
+      // not have, so an agent could not send the -10 to -5 dB HL a good ear reaches and the page accepts.
+      // The library's own range, stated.
+      { dom: 'wh-rpta', arg: 'rightPta', kind: 'number', required: false, label: 'Right ear average over the four frequencies, if already worked out', unit: 'dB', min: -10, max: 130 },
+      { dom: 'wh-lpta', arg: 'leftPta', kind: 'number', required: false, label: 'Left ear average over the four frequencies, if already worked out', unit: 'dB', min: -10, max: 130 },
     ],
   },
 ];

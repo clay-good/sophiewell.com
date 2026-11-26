@@ -52,9 +52,9 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 peds-weight-est --------------------------------------------
   'peds-weight-est'(root) {
-    note(root, 'Pediatric weight estimate (APLS): a resuscitation-planning weight from age when no scale is available. Enter age in months (0-12) for an infant, or in years (1-14). Months takes precedence when both are entered.');
+    note(root, 'Pediatric weight estimate (APLS): a resuscitation-planning weight from age when no scale is available. Enter age in months (0-12) for an infant, or in years (0-14). Months takes precedence when both are entered.');
     root.appendChild(field('Age in months (0-12, for infants)', 'pw-months', { min: 0, max: 12, placeholder: 'e.g. 6' }));
-    root.appendChild(field('Age in years (1-14)', 'pw-years', { min: 1, max: 14, placeholder: 'e.g. 5' }));
+    root.appendChild(field('Age in years (0-14)', 'pw-years', { min: 0, max: 14, placeholder: 'e.g. 5' }));
     const o = out(); root.appendChild(o);
     wire(['pw-months', 'pw-years'], () => safe(o, () => {
       const r = M.pedsWeightEst({ months: optNum('pw-months'), years: optNum('pw-years') });
