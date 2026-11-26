@@ -111,7 +111,11 @@ test('a missing component is refused and named', () => {
   delete o.fibrousCrescents;
   const r = lupusNephritisIndices(o);
   assert.equal(r.valid, false);
-  assert.match(r.message, /fibrousCrescents/);
+  // spec-v1804: NAMED, in the reader's words. This asserted `fibrousCrescents`, the argument -- which is
+  // the thing spec-v1790 exists to keep out of a refusal, and the table's own `text` reads "Fibrous
+  // crescents". The rule is that the component is named, not which name is used.
+  assert.match(r.message, /Fibrous crescents/i);
+  assert.doesNotMatch(r.message, /fibrousCrescents/, 'the argument name is not the reader\'s name');
 });
 
 test('an out-of-range component is refused', () => {

@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Fifty-eight refusals across nineteen tools told a reader to fix something by a name no screen shows --
+  "Select a valid score for functionalReach", "Still needed: maximalStimulationPorEpisodes", "rate
+  foodPrep". Each now says what the control beside it says: functional reach, the number of poor responses
+  after maximal stimulation, food preparation.
 - An agent asking for a DAS28 score without saying which inflammatory marker it had was given the ESR
   formula and its thresholds, and told nothing. The page has always shown which form is in use; the agent
   field now says so too.

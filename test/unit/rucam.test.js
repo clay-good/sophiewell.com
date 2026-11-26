@@ -136,7 +136,10 @@ test('the risk domain is capped at two and the reconciliation is disclosed', () 
 test('every domain is required and named when missing', () => {
   const r = rucam({ ...HEP, priorInfo: '' });
   assert.equal(r.valid, false);
-  assert.match(r.message, /priorInfo/);
+  // spec-v1804: NAMED, in the reader's words -- the control reads "Previous information on
+  // hepatotoxicity", and `priorInfo` is on no screen.
+  assert.match(r.message, /previous information on hepatotoxicity/i);
+  assert.doesNotMatch(r.message, /priorInfo/, 'the argument name is not the reader\'s name');
 });
 
 test('the scope note separates causality from severity and refuses to justify rechallenge', () => {

@@ -94,6 +94,17 @@ const FINDERS = [
     minJudged: 7,
   },
   {
+    // spec-v1804: all 58 of its rows across 19 tools are fixed, and it has no ledger: a refusal that names
+    // a camelCase argument is never the right answer, because no control anywhere shows that word.
+    probe: 'probe-identifier-in-refusal.mjs',
+    what: 'a refusal that names an input by the developer\'s name for it, in a tool whose promise is plain language',
+    fix: 'Print the item table\'s own prose (docs/spec-v1790.md, docs/spec-v1804.md) -- add a `text` beside '
+      + 'the key where the table has none, as lib/thwaites-v529.js has always had',
+    informational: ['refusal(s) across', 'Reach:', 'The fix is'],
+    isFinding: (l) => l.includes('\t'),
+    minJudged: 0,
+  },
+  {
     // spec-v1803: nineteen rows became one once it asked the adapters whether a default can fire at all --
     // `vis`'s six vasoactive doses are all declared required, so the zeros in its signature are unreachable
     // -- and that one was fixed by saying the default in the label.
