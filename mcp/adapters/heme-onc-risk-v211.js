@@ -13,8 +13,8 @@ export default [
     summary: 'EUTOS score (Hasford 2011): peripheral-blood basophils and spleen size predict 18-month complete cytogenetic response in chronic-phase CML on imatinib; > 87 marks high risk.',
     compute: F.eutos,
     fields: [
-      { dom: 'eutos-baso', arg: 'basophils', kind: 'number', required: true, label: 'Basophils (% of peripheral blood)' },
-      { dom: 'eutos-spleen', arg: 'spleenCm', kind: 'number', required: true, label: 'Spleen size (cm below costal margin; 0 if not palpable)' },
+      { dom: 'eutos-baso', arg: 'basophils', kind: 'number', required: true, label: 'Basophils (% of peripheral blood)', min: 0, max: 100 },
+      { dom: 'eutos-spleen', arg: 'spleenCm', kind: 'number', required: true, label: 'Spleen size (cm below costal margin; 0 if not palpable)', min: 0, max: 40 },
     ],
   },
   {

@@ -11,8 +11,8 @@ export default [
     summary: 'Nitrox maximum operating depth = 10 x (PO2max / FO2 - 1) meters of sea water; below the MOD the inspired PO2 exceeds the CNS oxygen-toxicity limit.',
     compute: F.maximumOperatingDepth,
     fields: [
-      { dom: 'mod-fo2', arg: 'fo2', kind: 'number', required: true, label: 'Oxygen fraction FO2 (e.g. 0.32 for EAN32)' },
-      { dom: 'mod-po2', arg: 'po2max', kind: 'number', required: true, label: 'PO2 limit', unit: 'bar' },
+      { dom: 'mod-fo2', arg: 'fo2', kind: 'number', required: true, label: 'Oxygen fraction FO2 (e.g. 0.32 for EAN32)', min: 0.21, max: 1 },
+      { dom: 'mod-po2', arg: 'po2max', kind: 'number', required: true, label: 'PO2 limit', unit: 'bar', min: 1, max: 2 },
     ],
   },
   {

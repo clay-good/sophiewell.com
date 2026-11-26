@@ -76,6 +76,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Nine more input fields stop answering a value the reader entered with "Enter it". Five waves of this
+  cleanup each placed a range check into the library by a slightly different rule, and in seventeen
+  functions two of them landed in the same place -- where only the first one can ever run, so a field whose
+  edge a later wave had tightened quietly kept the looser one. The two are merged into one check that keeps
+  the tighter edge of each pair. Four other fields took a ceiling that was already a literal in the
+  calculator's own code: a percentage of positive biopsy cores cannot exceed 100, an oxygen fraction cannot
+  exceed 1. Those values were always refused; they were refused with the sentence an empty box gets.
 - Fourteen more, and every one of them already had its range written down for the agent interface and not
   applied to the page: the ESSPRI items run 0 to 10, the dental caries counts 0 to 32, a Glasgow Coma Scale
   total 3 to 15. An agent could never have sent a value past those; a reader could, and was told to enter

@@ -51,7 +51,13 @@ test('a year with no published limit asks for it; an entered limit is used', () 
   // Rev. Proc. 2026-24: 2027 is published and unchanged.
   assert.deepEqual(DATED_DPC['dpc-limit-2027'].values, { one: 150, more: 300 });
   assert.equal(d({ ...ok, year: '2027', fee: '151' }).verdict, d({ ...ok, year: '2026', fee: '151' }).verdict);
-  assert.match(d({ ...ok, year: '2025' }).message, /2026 or later/);
+  // spec-v1811: a year outside 2026-2100 is refused by its range, not by the asking sentence -- the
+  // floor is the statute's first month and the ceiling is the repo's year convention. Either edge,
+  // and the sentence names the pair rather than repeating "enter the year".
+  for (const year of ['2025', '1999', '2200']) {
+    assert.match(d({ ...ok, year }).message, /between 2026 and 2100/);
+  }
+  assert.doesNotMatch(d({ ...ok, year: '2025' }).message, /^Enter the year/);
   assert.deepEqual(DATED_DPC['dpc-limit-2026'].values, { one: 150, more: 300 });
 });
 

@@ -11,10 +11,10 @@ export default [
     summary: 'Whether a direct primary care arrangement keeps HSA eligibility under IRC 223(c)(1)(E): the monthly fee limit and the excluded services.',
     compute: DP.dpcHsaCheck,
     fields: [
-      { dom: 'dpc-year', arg: 'year', kind: 'number', required: true, label: 'Year', unit: 'year' },
+      { dom: 'dpc-year', arg: 'year', kind: 'number', required: true, label: 'Year', unit: 'year', min: 2026, max: 2100 },
       { dom: 'dpc-covers', arg: 'covers', kind: 'enum', required: true, values: vals(DP.COVERS), label: 'People covered' },
       { dom: 'dpc-period', arg: 'period', kind: 'enum', required: true, values: vals(DP.PERIODS), label: 'Billing period in months' },
-      { dom: 'dpc-fee', arg: 'fee', kind: 'number', required: true, label: 'Fee per billing period, all arrangements', unit: 'USD' },
+      { dom: 'dpc-fee', arg: 'fee', kind: 'number', required: true, label: 'Fee per billing period, all arrangements', unit: 'USD', min: 0, max: 1000000 },
       yn('dpc-prac', 'practitioners', 'Care only by primary care practitioners'),
       yn('dpc-fixed', 'fixedFee', 'The fee is the only charge'),
       yn('dpc-anes', 'anesthesia', 'Includes procedures needing general anesthesia'),

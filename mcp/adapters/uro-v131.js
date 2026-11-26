@@ -18,7 +18,7 @@ export default [
       { dom: 'capra-gp', arg: 'gleasonPrimary', kind: 'enum', values: ['1', '2', '3', '4', '5'], required: true, label: 'Primary Gleason pattern' },
       { dom: 'capra-gs', arg: 'gleasonSecondary', kind: 'enum', values: ['1', '2', '3', '4', '5'], required: true, label: 'Secondary Gleason pattern' },
       { dom: 'capra-stage', arg: 'stage', kind: 'enum', values: ['T1-T2', 'T3a'], required: true, label: 'Clinical T stage' },
-      { dom: 'capra-cores', arg: 'cores', kind: 'number', required: true, label: 'Positive biopsy cores', unit: '%' },
+      { dom: 'capra-cores', arg: 'cores', kind: 'number', required: true, label: 'Positive biopsy cores', unit: '%', min: 0, max: 100 },
     ],
   },
   {
