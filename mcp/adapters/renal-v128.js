@@ -14,7 +14,7 @@ export default [
     fields: [
       { dom: 'fp-up', arg: 'urinePhos', kind: 'number', required: true, label: 'Urine phosphate', unit: 'mg/dL' },
       { dom: 'fp-pp', arg: 'plasmaPhos', kind: 'number', required: true, label: 'Plasma phosphate', unit: 'mg/dL', bound: 'phosphate' },
-      { dom: 'fp-uc', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
+      { dom: 'fp-uc', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL', bound: 'urineCreatinine' },
       { dom: 'fp-pc', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL', bound: 'scr' },
     ],
   },
@@ -25,7 +25,7 @@ export default [
     fields: [
       { dom: 'fm-um', arg: 'urineMg', kind: 'number', required: true, label: 'Urine magnesium', unit: 'mg/dL' },
       { dom: 'fm-pm', arg: 'plasmaMg', kind: 'number', required: true, label: 'Plasma magnesium', unit: 'mg/dL', bound: 'magnesium' },
-      { dom: 'fm-uc', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
+      { dom: 'fm-uc', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL', bound: 'urineCreatinine' },
       { dom: 'fm-pc', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL', bound: 'scr' },
     ],
   },

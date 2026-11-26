@@ -59,7 +59,7 @@ export default [
       { dom: 'fe-uhco3', arg: 'urineHco3', kind: 'number', required: true, label: 'Urine bicarbonate', unit: 'mEq/L', min: 0, exclusiveMin: true, max: 10000 },
       { dom: 'fe-phco3', arg: 'plasmaHco3', kind: 'number', required: true, label: 'Plasma bicarbonate', unit: 'mEq/L', min: 1 },
       { dom: 'fe-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL', min: 0.1 },
-      { dom: 'fe-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
+      { dom: 'fe-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL', bound: 'urineCreatinine' },
     ],
   },
   {

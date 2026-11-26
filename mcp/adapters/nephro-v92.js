@@ -26,7 +26,7 @@ export default [
       { dom: 'uu-alb', arg: 'albumin', kind: 'number', required: false, label: 'Urine albumin', unit: 'mg/dL' },
       { dom: 'uu-unit', arg: 'albuminUnit', kind: 'enum', values: ['mg/dL', 'mg/L'], required: false, label: 'Urine albumin unit' },
       { dom: 'uu-prot', arg: 'protein', kind: 'number', required: false, label: 'Urine protein (for the UPCR)', unit: 'mg/dL' },
-      { dom: 'uu-cr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
+      { dom: 'uu-cr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL', bound: 'urineCreatinine' },
     ],
   },
   {

@@ -45,6 +45,10 @@ export const ALIASES = {
   // non-HDL, which are different quantities with different fences. `crp` covers the hs-CRP spelling
   // because a high-sensitivity CRP is the same analyte measured more precisely at the low end.
   cholesterol: ['totalchol', 'tc'], crp: ['hscrp'],
+  // spec-v1825: the urine creatinine's key already splits into the two words its fields carry, so it
+  // needs no alias -- and deliberately gets none. `ucr` and `uc` are the spellings its doms use, and an
+  // alias of two or three letters is the mistake the comment above records (`mg`, `ca`, `be`).
+  urineCreatinine: [],
 };
 
 // THE SAME ANALYTE IN ANOTHER COMPARTMENT IS A DIFFERENT QUANTITY. `lib/bounds.js`'s sodium envelope is a
@@ -185,11 +189,21 @@ const offBody = (f) => [...words(f.arg, f.label, f.unit)].some((w) => NOT_THE_PA
 // the first clause, and a false match is worse than a missed one here.
 const notMeasured = (f) => [...words(f.arg, f.label)].some((w) => NOT_A_MEASUREMENT.has(w));
 const notArterial = (f) => [...words(f.arg, f.label)].some((w) => NOT_ARTERIAL.has(w));
+// spec-v1825: A FIELD WHOSE UNIT IS SHARED WITH THE ANALYTE BESIDE IT HAS NO UNIT OF ITS OWN, so no
+// unit-specific envelope can fit it -- spec-v1205's trap, and the reason spec-v1237 left `lipi` without
+// one. 17 fields say this in their label ("spot; same mass unit as calcium", "shared creatinine unit",
+// "same unit as the current value"), and two of them were being matched: `urine-calcium-cr`'s creatinine
+// to the new urine-creatinine envelope, and `hdmtx-leucovorin-rescue`'s baseline creatinine to `scr`,
+// where the paired level can be micromolar. Neither DECLARES an envelope -- the second states a literal
+// 0 to 2,000 that covers both units, which is the right handling -- so this changes no declaration.
+const SHARED_UNIT = /\b(?:shared|same)\b[^.]{0,30}\bunits?\b|\bunits?\b[^.]{0,20}\b(?:shared|same as)\b/i;
+const unitBorrowed = (f) => SHARED_UNIT.test(`${f.label || ''} ${f.unit || ''}`);
 export const envelopeFor = (f) => KEYS.find((k) => names(k, f)
   && !(BLOOD.has(k) && (elsewhere(f) || derived(f)))
   && !(BODY.has(k) && offBody(f))
   && !notMeasured(f)
   && !(['paO2', 'paCO2'].includes(k) && notArterial(f))
   && !(k === 'cholesterol' && [...words(f.arg, f.label)].some((w) => NOT_THE_TOTAL.has(w)))
+  && !unitBorrowed(f)
   && unitFits(k, f)) || null;
 

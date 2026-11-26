@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0e824de764c1f182`
-Generated: 2026-11-26T15:33:11.053Z
+Build ID: `abddc48bbb762db0`
+Generated: 2026-11-26T16:51:03.528Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -189,7 +189,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/borden-davf-v441.js` | 3109 | `d08c660355725cc46ea8461c2706155f110f269ad2aba82522745e71ecc16e44` |
 | `lib/borrmann-gastric-v394.js` | 3865 | `df918e05475876bcc710c4fc8997aa67ee7d4832f352f1ae062fa1ab3d4678b1` |
 | `lib/botulism-antitoxin-dose-v1636.js` | 8255 | `059a120105337ffa818b03f6721da3133049c3a01a9c36e28505e0aaac1ceff6` |
-| `lib/bounds.js` | 19237 | `9ca44fc1af0124eec34e50a48e9e24808131211c24cedc37e30a7360edd1e0e3` |
+| `lib/bounds.js` | 20919 | `b664cabad546f134916768f147ddd9d19d35d4d917a50ca7cae64270f851f6fa` |
 | `lib/boyd-griffin-v458.js` | 3748 | `7f5f81294d8ba43ad3a72d67bc9f47c590ddaf6f4a003c713715d1336927934c` |
 | `lib/bp-categories-v843.js` | 6552 | `9d0291a7f64273cf1fa5c94601e7725fe5c376d28b8dcec30d22fbf5f5db3eb3` |
 | `lib/bpe-periodontal-v1481.js` | 4402 | `c633bd68826107e537eb99ecfd74d1a007c33e7bdf76d623fe170df1e0816585` |
@@ -297,7 +297,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clia-pt-acceptance-v1658.js` | 6962 | `e60d2ad1be904573d1dd6e6dd9a9670e75274088cbc53886e68a95859d8c0b9d` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
-| `lib/clinical-v4.js` | 23198 | `ae4097c58ac0f6953c8b43bd52609f50c77a3deff416457487aa830c147723a7` |
+| `lib/clinical-v4.js` | 23629 | `c76f9894834da7e484b66307a6213ecafa143b8766f8a76628a91824570264fb` |
 | `lib/clinical-v5.js` | 29159 | `c5e747849d81b2c774422e075399521b589cf99b1d097ebdfd9126010beaa5a4` |
 | `lib/clinical-v6.js` | 20537 | `205e779ec41e51ce17f581f436655e781f666e6b651aad8e8715d862ee2d912f` |
 | `lib/clinical-v7.js` | 30260 | `b03586265bec93ea83582155ff82f4d948fd46685bc315dfbf837d0501068d17` |
@@ -546,7 +546,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/forrester-hemodynamic-v362.js` | 4397 | `bf6305d1edd78604613331955b7bb42551ebe6d66163f3002418e27e299e95e7` |
 | `lib/fosphenytoin-load-rate-v1631.js` | 14730 | `6caecf0129e5d526612ea2bb2a4def9545ad92bd5623dc5d43c1d5571e1712a6` |
 | `lib/four-ts-hit-v836.js` | 9327 | `128589f42dd8556457443a4705e7aacb18045ea013a7c791aac476f11bf2e9fc` |
-| `lib/fractional-excretion-potassium-v684.js` | 6204 | `74f76e5adf5f777be0777387ab06dbb302aef5e270a284dbd24a8df5080bddae` |
+| `lib/fractional-excretion-potassium-v684.js` | 6543 | `38155d3fa0d3d20fa9b27ae6b362255d5413f583cff5584433a554a237134357` |
 | `lib/frailty-v143.js` | 14838 | `b3f8d7ad71f2922b8e6219eb145ca9c6a7d4d3b8bae1934de43ecb2c0380fb11` |
 | `lib/framingham-hf-criteria-v696.js` | 3460 | `9cf5ed21279852b01d23af1b708415f9864f9c55849838494def664ddef364c7` |
 | `lib/free-androgen-index-v685.js` | 4506 | `6e70a2f43fc01db6a8a5590702657e860bbb629114fece68c385dc593c08a0f5` |
@@ -987,8 +987,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/neostigmine-reversal-dose-v1636.js` | 7794 | `f01340992ae59706a679fc87ff81116fed2cb140fc86425dc92cbb527c944383` |
 | `lib/nephro-fluids-v204.js` | 18586 | `4c5dfaa688ca1bbb71951645586d3eda8a6a2c47c12660f0920af2d74742b4b1` |
 | `lib/nephro-v127.js` | 18370 | `f9a60e614a867ce678be8f1b772507e129b17afb2f858e0d1bd71dd05fa41a5d` |
-| `lib/nephro-v92.js` | 26911 | `4ab2c5cd3aa95c5f710cd95ffcbb129a02382609602f6ef432f12a1fe293f226` |
-| `lib/nephrology-v226.js` | 15372 | `7e8c82027ef27ad9690d0b0312138152d9986383645c9ce7d81b5f29ccf0f1b3` |
+| `lib/nephro-v92.js` | 27317 | `979bbc49b35387bb35d523c44e27fdb9bfd5ba0994ec42605d169f3c0484d9ba` |
+| `lib/nephrology-v226.js` | 15659 | `d782355a6150bf8921f88fa1f89282bd37119411c557b03ed53b288bbdc079b2` |
 | `lib/nerot-sirveaux-v1429.js` | 4806 | `9e8a648e2fc87ea9b376aebd3d84cdfb65416fdd751934e3d9a2deb1ccc34089` |
 | `lib/nerve-injury-v297.js` | 4746 | `13741ba46f672eb344024cfed6d066a3bffd6ea90974a2fa578f282407695d00` |
 | `lib/neuro-disability-v159.js` | 15644 | `b9dd48623e3ef2b0338778acdc24cb6e44f717ef01f94e48358fb554a31e286e` |
@@ -1310,7 +1310,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/remittance-analysis-v1516.js` | 8845 | `971bcf589deb2f1d50c553a0527bb4335f8800dc7d37fc932e7a5a31d3a34e0f` |
 | `lib/remittance-analysis-worker.js` | 10350 | `702ebf8804095070fe07bd05b4f9cba9d914c216646bc96f89b2c338a991888c` |
 | `lib/renal-angina-v533.js` | 9915 | `387bc572f58bc85213d4849d784e4e7e490064b06bb49f3db06a04cdab19a3f6` |
-| `lib/renal-v128.js` | 13942 | `8de4e000555198f549e99390233e59a12f0899d5a159172e8971c8c896a0c871` |
+| `lib/renal-v128.js` | 14616 | `572b16d823096f3b7234fe5d970ecf2d3f1a45a574c646b79b2ca396dfeae4dd` |
 | `lib/renal-v277.js` | 4364 | `2120afe7a1c0bde7c078e830769462738febba9f933c00da348f129fc3840ff0` |
 | `lib/renalpulm-v249.js` | 9465 | `eee18eb209349ebb1eef4eab235159271069d53ababb9adac89be4c8bb976164` |
 | `lib/reportable-condition-urgency-v1395.js` | 44131 | `306a47ba3be13084611ee8a2ce348c27343bb828f359c20b0ae2f7515ca26b36` |
@@ -1888,7 +1888,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/cleveland-constipation-v665.js` | 2348 | `39bbb867c1e4258957d5be2e63e77b711e483906066420a5d8700dbc82a4d93f` |
 | `mcp/adapters/clia-pt-acceptance-v1658.js` | 1572 | `3d268302f48b652e7ee5dc25ffe2e70e343a017475fb2898fa5b22f7586e24ef` |
 | `mcp/adapters/clinical-obesity-v838.js` | 2013 | `fdc2f7ab2f63c2c30ae1b92a989497808bb1e4e5a1df11c7c262c08449479245` |
-| `mcp/adapters/clinical-v4.js` | 13783 | `228291d636a3457e11ccb6dae7d8e455397530f6e0efd7c54c4073d8df90e856` |
+| `mcp/adapters/clinical-v4.js` | 13809 | `21885c0176abcdbc0ef013c7ed0198c741e7f5a46720f12cd446fee12cb15d82` |
 | `mcp/adapters/clinical-v5.js` | 12610 | `de4cc5ec9985695d57fc0831149d8dd67047c52ac1e8e32d58af1254c8ef20f1` |
 | `mcp/adapters/clinical-v6.js` | 9907 | `a42f0795ecb5a07cde9afdaec973df6ef1ccd229d769182ecdad33710129d277` |
 | `mcp/adapters/clinical-v7.js` | 9928 | `aeb3be1ca07e76a866c06f3b06e56f6e2783c42b13db14f359e341e6739e57fa` |
@@ -2109,7 +2109,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/forrester-hemodynamic-v362.js` | 1544 | `6a9156b140fe32bcd2579ad8dba74d84f7b38c7208f61f962ff68f6868ab466d` |
 | `mcp/adapters/fosphenytoin-load-rate-v1631.js` | 2298 | `5f109101aca1506587ef6a3c80f06f257c74d513383ec85015fdae7d86239214` |
 | `mcp/adapters/four-ts-hit-v836.js` | 1507 | `c685082aaa7914b164bbbe644f89fddf65f139ad5b5e341d060192e560de678e` |
-| `mcp/adapters/fractional-excretion-potassium-v684.js` | 1437 | `b401fb0576d2c6f88ecac8c8bef16f1f42d69cc1dffac4707b9059306f5de938` |
+| `mcp/adapters/fractional-excretion-potassium-v684.js` | 1463 | `cbf25d4db1b39740b3f188b87186eb1508ecb8931085a1752243b634155b68a4` |
 | `mcp/adapters/frailty-v143.js` | 6468 | `da43bf41f0881f1573caaf47e13c4e12a2d6a42a308f883f878e4c3a263e49b5` |
 | `mcp/adapters/framingham-hf-criteria-v696.js` | 2675 | `095245068e77f5bf824b61f70a02828f471dd16ce91cf8da7ca5d5026fd237a9` |
 | `mcp/adapters/free-androgen-index-v685.js` | 1181 | `39423f9c1cfd3d8f58b371d4c5d5a88fd0255a3ee8e9293da0b5ca4b931c06e5` |
@@ -2502,8 +2502,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/neostigmine-reversal-dose-v1636.js` | 1512 | `341495cec2b72fcd101ff8ece984fe2dc39e1f84ba4f5a69deda1cd8add73f1c` |
 | `mcp/adapters/nephro-fluids-v204.js` | 5547 | `4c4a6cea1299631ff8d3df7b0aa7341e4d293c01934c37ff10d8c29fba717b66` |
 | `mcp/adapters/nephro-v127.js` | 3970 | `33416a6d63b177a1efc9ec36f515d15ec8e31a90f72dd00981713b97e8d5df1d` |
-| `mcp/adapters/nephro-v92.js` | 5161 | `14a29bb6db46fc5db1c1e2025ae50ee8883ed2ba381dbcb7620081cc19a30269` |
-| `mcp/adapters/nephrology-v226.js` | 4588 | `38ae69ed7b460ee96cb43093f4bdaf2f16b606986387bb27a76340f5946eb179` |
+| `mcp/adapters/nephro-v92.js` | 5187 | `66f24071df01d015f668e1f412bb6cfb58bdd5e57fdd6eb007889fbe70cfcc03` |
+| `mcp/adapters/nephrology-v226.js` | 4614 | `46f68b0fdf7bbe66ee6706af629c3cd7b2dcc2b848f915332438cce43433511c` |
 | `mcp/adapters/nerot-sirveaux-v1429.js` | 809 | `5a5b70d26016335e5843986dcad1a616bd0dd937b63207f0a516b3cbbce6b8c6` |
 | `mcp/adapters/nerve-injury-v297.js` | 1209 | `49427c1ab46d7a0ac1cdfc4846d52e99741aa8bb6d9beff4013e7991cd9b8dd4` |
 | `mcp/adapters/neuro-disability-v159.js` | 3952 | `d8fc0fb25cb692159eb3718f38c81ec777a7e10c03a515b6319a97945ddac59a` |
@@ -2778,9 +2778,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/relative-dose-intensity-v1635.js` | 1186 | `06e941967fd02693aa4ffa66d8ceef6ad1143bd7799a00665f2c8c6824ee1550` |
 | `mcp/adapters/relative-infant-dose-v1634.js` | 1821 | `ac2a0eccf723b606df3356360649eb067cde86c75598e6e98ea8f7721743c174` |
 | `mcp/adapters/renal-angina-v533.js` | 4613 | `3b4ec3fb2aac41afc173c4325fb97611b591d20039061e1169a3bf3e398902c4` |
-| `mcp/adapters/renal-v128.js` | 3137 | `879de2edaca5224e368997f3aac9738f1e4cfd790aad81a9ebebcc10491fee38` |
+| `mcp/adapters/renal-v128.js` | 3189 | `d5e956c4a2f6ac6b6f20079129bd5b682e389293d6aeb2657dd006971b79850f` |
 | `mcp/adapters/renal-v277.js` | 1254 | `ad80aebae4000b4f46e57868e8e1cd05e9490ec9d018dedda7b3a5a1f4397334` |
-| `mcp/adapters/renalpulm-v249.js` | 3121 | `317f5d18c9497c9c2327699aa2bf61139d02a796f8563783b6aa72d1071af58c` |
+| `mcp/adapters/renalpulm-v249.js` | 3131 | `cb40708a7ce5f804f48f9493b096cc7bd52d369f8f687c7f67f06ba411048758` |
 | `mcp/adapters/reportable-condition-urgency-v1395.js` | 1812 | `1e403cfc1925d36cf3869175dbc45eeacab83b74779de28527c774255c58e445` |
 | `mcp/adapters/request-letters-v1504.js` | 8648 | `c04a533cf2404b2aa176e838747dcb913c73002b1f314844e8e30caa2a738a4a` |
 | `mcp/adapters/residual-carrier-risk-v1660.js` | 803 | `571189fd438e25462a4d90072881aced0e8c44d9d32ba4c9e55c6ad221f09f10` |

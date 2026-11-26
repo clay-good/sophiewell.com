@@ -76,6 +76,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Seven kidney calculators that work from a urine-to-blood ratio would accept a urine creatinine of 4,000
+  mg/dL -- past the top of what a laboratory reports even after diluting the sample -- and the impossible
+  figure drove each ratio toward the reassuring end. The plausible range is now CDC's own reported range for
+  the test, and values past it are refused. Three other tools ask for that creatinine in whatever unit the
+  value beside it uses, so no fixed range can apply to them, and they are left as they are.
 - The remaining list of calculators whose answer could move on a field nobody entered was sorted for the one
   direction that can hurt -- a reassuring answer that a filled-in field would have made worse -- and the four
   it found were read. All four are right. The closest call was the congenital-syphilis scenario, where an

@@ -129,7 +129,7 @@ export default [
       // FeNa is not interpretable.
       { dom: 'fn-una', arg: 'urineNa', kind: 'number', label: 'Urine sodium', unit: 'mEq/L' },
       { dom: 'fn-pna', arg: 'plasmaNa', kind: 'number', label: 'Plasma sodium', unit: 'mEq/L', bound: 'sodium' },
-      { dom: 'fn-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
+      { dom: 'fn-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL', bound: 'urineCreatinine' },
       { dom: 'fn-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL', bound: 'scr' },
       { dom: 'fu-uu', arg: 'urineUrea', kind: 'number', label: 'Urine urea', unit: 'mg/dL' },
       { dom: 'fu-pu', arg: 'plasmaUrea', kind: 'number', label: 'Plasma urea (BUN)', unit: 'mg/dL', bound: 'bun' },

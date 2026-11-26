@@ -13,7 +13,7 @@ export default [
     fields: [
       { dom: 'fek-uk', arg: 'urineK', kind: 'number', unit: 'mEq/L', required: true, label: 'Urine potassium (mEq/L)' },
       { dom: 'fek-pk', arg: 'plasmaK', kind: 'number', unit: 'mEq/L', required: true, label: 'Plasma/serum potassium (mEq/L)', bound: 'potassium' },
-      { dom: 'fek-ucr', arg: 'urineCr', kind: 'number', unit: 'mg/dL', required: true, label: 'Urine creatinine (mg/dL)' },
+      { dom: 'fek-ucr', arg: 'urineCr', kind: 'number', unit: 'mg/dL', required: true, label: 'Urine creatinine (mg/dL)', bound: 'urineCreatinine' },
       { dom: 'fek-pcr', arg: 'plasmaCr', kind: 'number', unit: 'mg/dL', required: true, label: 'Plasma/serum creatinine (mg/dL)', bound: 'scr' },
     ],
   },
