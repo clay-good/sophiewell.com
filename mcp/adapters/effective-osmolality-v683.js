@@ -11,7 +11,7 @@ export default [
     summary: 'Effective serum osmolality (tonicity) = 2 x sodium (mEq/L) + glucose (mg/dL) / 18. Excludes urea, unlike total calculated osmolality (the osmolal-gap tile). Reference ~275-295 mOsm/kg; > 320 mOsm/kg is a diagnostic criterion for the hyperosmolar hyperglycemic state (HHS).',
     compute: effectiveOsmolality,
     fields: [
-      { dom: 'eosm-na', arg: 'sodium', kind: 'number', unit: 'mEq/L', required: true, label: 'Serum sodium (mEq/L)', min: 85 },
+      { dom: 'eosm-na', arg: 'sodium', kind: 'number', unit: 'mEq/L', required: true, label: 'Serum sodium (mEq/L)', min: 85, max: 200 },
       { dom: 'eosm-glu', arg: 'glucose', kind: 'number', unit: 'mg/dL', required: true, label: 'Serum glucose (mg/dL)', bound: 'glucose' },
     ],
   },

@@ -13,11 +13,13 @@ export default [
     compute: F.findrisc,
     fields: [
       { dom: 'findrisc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'findrisc-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²' },
+      // spec-v1795: the floor is lib/bounds.js's bmi envelope (5), not the 0 the refusal sentence mentions, so
+      // it is NAMED rather than copied; the ceiling of 100 is this tool's own.
+      { dom: 'findrisc-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²', max: 100, bound: 'bmi' },
       // spec-v1166: already optional, and now honestly so -- an omitted sex gives
       // the range the two waist bands span rather than silently scoring as female.
       { dom: 'findrisc-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: false, label: 'Sex (sets the waist bands: 94/102 cm men, 80/88 women; omit for the range)' },
-      { dom: 'findrisc-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm' },
+      { dom: 'findrisc-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm', min: 0, exclusiveMin: true, max: 300 },
       { dom: 'findrisc-active', arg: 'active', kind: 'bool', required: false, label: 'Physically active ≥ 30 min/day' },
       { dom: 'findrisc-fruitVeg', arg: 'fruitVeg', kind: 'bool', required: false, label: 'Eats vegetables/fruit daily' },
       { dom: 'findrisc-bpMed', arg: 'bpMed', kind: 'bool', required: false, label: 'On antihypertensive medication' },
@@ -31,7 +33,7 @@ export default [
     compute: F.grobmanVbac,
     fields: [
       { dom: 'grobman-age', arg: 'age', kind: 'number', required: true, label: 'Maternal age', unit: 'years' },
-      { dom: 'grobman-weight', arg: 'weight', kind: 'number', required: true, label: 'Pre-pregnancy weight', unit: 'kg', min: 0.2 },
+      { dom: 'grobman-weight', arg: 'weight', kind: 'number', required: true, label: 'Pre-pregnancy weight', unit: 'kg', min: 0.2, max: 400 },
       { dom: 'grobman-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
       { dom: 'grobman-vaginalHistory', arg: 'vaginalHistory', kind: 'enum', values: ['none', 'before', 'vbac'], required: false, label: 'Prior vaginal delivery history' },
       { dom: 'grobman-arrestIndication', arg: 'arrestIndication', kind: 'bool', required: false, label: 'Prior cesarean for an arrest disorder' },

@@ -11,7 +11,7 @@ export default [
     compute: SL.statinLdlReduction,
     fields: [
       { dom: 'slr-statin', arg: 'statin', kind: 'enum', required: true, values: SL.STATINS.map((d) => d.value), label: 'Statin' },
-      { dom: 'slr-dose', arg: 'dose', kind: 'number', required: true, label: 'Daily dose', unit: 'mg' },
+      { dom: 'slr-dose', arg: 'dose', kind: 'number', required: true, label: 'Daily dose', unit: 'mg', min: 0, exclusiveMin: true, max: 200 },
       { dom: 'slr-ldl', arg: 'baselineLdl', kind: 'number', label: 'Baseline LDL-C (optional)', unit: 'mg/dL' },
     ],
   },

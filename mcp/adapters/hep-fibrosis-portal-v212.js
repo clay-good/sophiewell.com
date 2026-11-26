@@ -13,7 +13,7 @@ export default [
     compute: F.kingScore,
     fields: [
       { dom: 'king-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'king-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L', min: 1 },
+      { dom: 'king-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L', min: 1, max: 20000 },
       { dom: 'king-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
       { dom: 'king-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],
@@ -23,8 +23,8 @@ export default [
     summary: 'Baveno VII non-invasive rules (de Franchis 2022): liver-stiffness measurement and platelets rule clinically significant portal hypertension in (LSM ≥ 25 kPa) or out (LSM ≤ 15 kPa with platelets ≥ 150), and the favorable Baveno VI window (LSM < 20 kPa, platelets > 150) lets screening endoscopy be deferred.',
     compute: F.bavenoVii,
     fields: [
-      { dom: 'bav-lsm', arg: 'lsm', kind: 'number', required: true, label: 'Liver-stiffness measurement (transient elastography)', unit: 'kPa' },
-      { dom: 'bav-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
+      { dom: 'bav-lsm', arg: 'lsm', kind: 'number', required: true, label: 'Liver-stiffness measurement (transient elastography)', unit: 'kPa', min: 0, exclusiveMin: true, max: 100 },
+      { dom: 'bav-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L', min: 0, exclusiveMin: true, max: 2000 },
     ],
   },
 ];

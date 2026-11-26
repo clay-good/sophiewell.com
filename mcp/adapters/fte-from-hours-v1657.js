@@ -11,8 +11,8 @@ export default [
     fields: [
       { dom: 'fte-method', arg: 'method', kind: 'enum', values: FTE.METHODS.map((x) => x.value), required: true, label: 'Method' },
       { dom: 'fte-hours', arg: 'hours', kind: 'number', required: false, label: 'Hours in the period (worked or paid)' },
-      { dom: 'fte-weeks', arg: 'weeks', kind: 'number', required: false, label: 'Weeks in the period' },
-      { dom: 'fte-per-week', arg: 'hoursPerWeek', kind: 'number', required: false, label: 'Hours per FTE per week' },
+      { dom: 'fte-weeks', arg: 'weeks', kind: 'number', required: false, label: 'Weeks in the period', min: 0, exclusiveMin: true, max: 53 },
+      { dom: 'fte-per-week', arg: 'hoursPerWeek', kind: 'number', required: false, label: 'Hours per FTE per week', min: 0, exclusiveMin: true, max: 168 },
       { dom: 'fte-sample', arg: 'sampleHours', kind: 'number', required: false, label: 'Cost report: hours in the sample weeks, summed' },
     ]
   },

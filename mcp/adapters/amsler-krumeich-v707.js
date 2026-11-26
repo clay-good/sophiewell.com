@@ -12,7 +12,7 @@ export default [
     compute: amslerKrumeich,
     fields: [
       { dom: 'ak-k', arg: 'meanK', kind: 'number', unit: 'D', required: true, label: 'Mean central keratometry (diopters)', min: 30, max: 100 },
-      { dom: 'ak-thick', arg: 'thinnestThickness', kind: 'number', unit: 'um', required: true, label: 'Thinnest corneal thickness (microns)' },
+      { dom: 'ak-thick', arg: 'thinnestThickness', kind: 'number', unit: 'um', required: true, label: 'Thinnest corneal thickness (microns)', min: 0, exclusiveMin: true, max: 900 },
       { dom: 'ak-refraction', arg: 'refraction', kind: 'number', unit: 'D', required: false, label: 'Myopia + astigmatism (diopters, optional)' },
       { dom: 'ak-scar', arg: 'centralScar', kind: 'boolean', required: false, label: 'Central corneal scarring present (stage 4)' },
     ],

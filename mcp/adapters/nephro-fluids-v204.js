@@ -27,8 +27,8 @@ export default [
     fields: [
       { dom: 'abl-cat', arg: 'category', kind: 'enum', values: ['neonate', 'infant', 'child', 'adult-male', 'adult-female'], required: true, label: 'Patient category (blood-volume factor)' },
       { dom: 'abl-weight', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'abl-hcti', arg: 'hctInitial', kind: 'number', required: true, label: 'Initial hematocrit (%) or hemoglobin (g/dL)' },
-      { dom: 'abl-hctf', arg: 'hctTarget', kind: 'number', required: true, label: 'Target (minimum acceptable) hematocrit or hemoglobin (same measure)' },
+      { dom: 'abl-hcti', arg: 'hctInitial', kind: 'number', required: true, label: 'Initial hematocrit (%) or hemoglobin (g/dL)', min: 0, exclusiveMin: true, max: 100 },
+      { dom: 'abl-hctf', arg: 'hctTarget', kind: 'number', required: true, label: 'Target (minimum acceptable) hematocrit or hemoglobin (same measure)', min: 0, exclusiveMin: true, max: 100 },
     ],
   },
   {
@@ -47,7 +47,7 @@ export default [
     summary: 'TmP/GFR renal phosphate threshold (Payne 1998): tubular reabsorption of phosphate (1 − urine P × serum Cr / (serum P × urine Cr)) times serum P, using the Payne hyperbolic branch when TRP > 0.86; a low value marks renal phosphate wasting.',
     compute: F.tmpGfr,
     fields: [
-      { dom: 'tmp-sp', arg: 'serumP', kind: 'number', required: true, label: 'Serum phosphate (shared phosphate unit)' },
+      { dom: 'tmp-sp', arg: 'serumP', kind: 'number', required: true, label: 'Serum phosphate (shared phosphate unit)', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'tmp-up', arg: 'urineP', kind: 'number', required: true, label: 'Urine phosphate (shared phosphate unit)' },
       { dom: 'tmp-scr', arg: 'serumCr', kind: 'number', required: true, label: 'Serum creatinine (shared creatinine unit)' },
       { dom: 'tmp-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine (shared creatinine unit)' },

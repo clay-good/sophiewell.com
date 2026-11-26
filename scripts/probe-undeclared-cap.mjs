@@ -315,7 +315,10 @@ for (const [id, meta] of Object.entries(META)) {
       && Math.abs(declared - found) > Math.max(Math.abs(found) * 0.01, 1e-9);
 
     const detail = `${hi ? `max~${foundMax}` : ''}${hi && lo ? ' ' : ''}${lo ? `min~${foundMin}` : ''}`;
-    const said = messageAt(id, set(hi ? hi.refused : lo.refused)).slice(0, 96);
+    // spec-v1795: 200, not 96. The sentence is where the number in a declaration comes from, and a long
+    // label pushed it past the cut: baveno-vii's liver-stiffness refusal read "at most 10" where the
+    // library says 100.
+    const said = messageAt(id, set(hi ? hi.refused : lo.refused)).slice(0, 200);
     const row = `${id}\t${dom}\t${f.arg || ''}\t${detail}\tdeclared=[${declaredMin ?? (p.minimum === 0 ? 0 : '-')}, ${declaredMax ?? '-'}]\t${said}`;
 
     // spec-v1793: a DISAGREES row is the strongest claim this finder makes -- a defect either way round --
@@ -377,8 +380,16 @@ for (const [id, meta] of Object.entries(META)) {
       }
       for (const [side, e] of [['max', hi], ['min', lo]]) {
         if (!e) continue;
-        for (const mult of side === 'max' ? [1.05, 1.5, 10] : [0.95, 0.5, 0.1]) {
-          const past = side === 'max' ? e.accepted * mult + 1e-6 : e.accepted * mult - 1e-9;
+        // spec-v1795: `e.refused` FIRST, and it is the test that matters. The multipliers below step 5% out
+        // and further, which can jump clean over an edge that moves only slightly with another input:
+        // `rvsp-pasp` refuses a TR velocity above 9.8995 m/s because 4v^2 plus a right-atrial pressure of 8
+        // leaves the RVSP output range at 400, and with the RAP select on 3 the same field reaches 9.96. A
+        // 5% step lands at 10.39, refused either way, so the cap looked like the field's own and 9.8995 was
+        // offered for a declaration that would have turned away 9.95. The smallest value the bisection
+        // KNOWS is refused has no such gap and no rounding in it.
+        const steps = [e.refused, ...(side === 'max' ? [1.05, 1.5, 10] : [0.95, 0.5, 0.1])
+          .map((m) => (side === 'max' ? e.accepted * m + 1e-6 : e.accepted * m - 1e-9))];
+        for (const past of steps) {
           if (!Number.isFinite(past) || past === 0) continue;
           if (!refusedByRange(id, { ...cfg, [dom]: String(past) })) { varies = true; movedBy = src; break; }
         }

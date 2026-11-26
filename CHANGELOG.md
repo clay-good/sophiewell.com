@@ -76,6 +76,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Another 207 number fields now state the range their library enforces, which brings it to 2,479 of the
+  catalog's 5,189. These were the ranges nothing could see: the tools state them with a sentence about a
+  value "greater than 0 and at most" some ceiling, and the two checks that look for undeclared ranges had
+  both been written without that wording in their list.
+- Eleven fields published a floor and hid a ceiling. Four systolic-pressure inputs said they took anything
+  above 20 mmHg while their tool refuses above 320, and the same shape turned up in two liver scores, a
+  hematocrit, a weight and a creatinine. Each now states both ends.
 - Eighteen input ranges stated on the agent surface were ranges the tool does not use, so a value the page
   answers was refused. Sixteen of them named a plausible-range envelope borrowed for its ceiling: four
   audiogram thresholds in dB and four more in a Meniere staging were bounded like an age, a refractive

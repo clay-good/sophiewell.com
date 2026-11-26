@@ -18,7 +18,7 @@ export default [
       { dom: 'cp-aa', arg: 'aminoAcidGrams', kind: 'number', required: false, label: 'Amino acids (optional)', unit: 'g' },
       { dom: 'cp-low', arg: 'lowestVolume', kind: 'number', required: false, label: 'Volume at the point of lowest dilution (optional)', unit: 'mL' },
       { dom: 'cp-kind', arg: 'limitKind', kind: 'enum', required: false, values: CP.LIMIT_KINDS.map((k) => k.value), label: 'Your limit is a maximum calcium at this phosphate (max-calcium) or a maximum sum (sum)' },
-      { dom: 'cp-limit', arg: 'limit', kind: 'number', required: false, label: 'Your limit, from your own curve or software' },
+      { dom: 'cp-limit', arg: 'limit', kind: 'number', required: false, label: 'Your limit, from your own curve or software', min: 0, exclusiveMin: true, max: 10000 },
       { dom: 'cp-caown', arg: 'calciumPerMl', kind: 'number', required: false, label: 'Calcium mEq per mL from the vial (only if the label figure is withheld)' },
       { dom: 'cp-pown', arg: 'phosphatePerMl', kind: 'number', required: false, label: 'Phosphate mmol per mL from the vial (only if the label figure is withheld)' },
     ],

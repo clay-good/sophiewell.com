@@ -12,7 +12,7 @@ export default [
     compute: F.palbi,
     fields: [
       { dom: 'palbi-bilirubin', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
-      { dom: 'palbi-albumin', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
+      { dom: 'palbi-albumin', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', min: 0, exclusiveMin: true, max: 10 },
       { dom: 'palbi-platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],
   },

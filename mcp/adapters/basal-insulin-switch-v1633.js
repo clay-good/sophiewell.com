@@ -13,7 +13,7 @@ export default [
       { dom: 'bis-to', arg: 'to', kind: 'enum', required: true, values: BI.TARGETS.map((d) => d.value), label: 'Basal insulin being started' },
       { dom: 'bis-from', arg: 'from', kind: 'enum', required: true, values: BI.SOURCES.map((d) => d.value), label: 'Basal insulin being stopped' },
       { dom: 'bis-freq', arg: 'frequency', kind: 'enum', required: false, values: BI.FREQUENCIES.map((d) => d.value), label: 'Current basal insulin taken once or twice daily' },
-      { dom: 'bis-units', arg: 'totalUnits', kind: 'number', required: false, label: 'Current total daily basal dose (for a switch)', unit: 'units' },
+      { dom: 'bis-units', arg: 'totalUnits', kind: 'number', required: false, label: 'Current total daily basal dose (for a switch)', unit: 'units', min: 0, exclusiveMin: true, max: 1000 },
       { dom: 'bis-pop', arg: 'population', kind: 'enum', values: BI.POPULATIONS.map((d) => d.value), label: 'Adult or pediatric (Tresiba)' },
       { dom: 'bis-type', arg: 'diabetesType', kind: 'enum', values: BI.DIABETES_TYPES.map((d) => d.value), label: 'Insulin-naive start: diabetes type (1 or 2)' },
       { dom: 'bis-wt', arg: 'weightKg', kind: 'number', label: 'Insulin-naive start: weight', unit: 'kg' },

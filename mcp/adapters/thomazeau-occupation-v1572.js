@@ -8,8 +8,8 @@ export default [
     summary: 'Thomazeau occupation ratio of the supraspinatus, grade I to III, from the muscle and fossa areas.',
     compute: TO.thomazeauOccupation,
     fields: [
-      { dom: 'to-muscle', arg: 'muscle', kind: 'number', required: true, label: 'Supraspinatus muscle area', unit: 'cm^2' },
-      { dom: 'to-fossa', arg: 'fossa', kind: 'number', required: true, label: 'Supraspinatus fossa area', unit: 'cm^2' },
+      { dom: 'to-muscle', arg: 'muscle', kind: 'number', required: true, label: 'Supraspinatus muscle area', unit: 'cm^2', min: 0, exclusiveMin: true, max: 100 },
+      { dom: 'to-fossa', arg: 'fossa', kind: 'number', required: true, label: 'Supraspinatus fossa area', unit: 'cm^2', min: 0, exclusiveMin: true, max: 100 },
     ],
   },
 ];

@@ -37,7 +37,7 @@ export default [
     summary: 'Estimated plasma volume status (Duarte 2015): 100 × (1 − hematocrit fraction) / hemoglobin; a higher value marks more congestion in heart failure.',
     compute: F.epvs,
     fields: [
-      { dom: 'ep-hct', arg: 'hematocrit', kind: 'number', required: true, label: 'Hematocrit', unit: '%', min: 3 },
+      { dom: 'ep-hct', arg: 'hematocrit', kind: 'number', required: true, label: 'Hematocrit', unit: '%', min: 3, max: 100 },
       { dom: 'ep-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
     ],
   },
@@ -56,7 +56,7 @@ export default [
     summary: 'Fractional excretion of bicarbonate: (urine HCO₃ / plasma HCO₃) × (plasma Cr / urine Cr) × 100; > 15% suggests proximal (type II) RTA while < 5% is consistent with distal (type I) RTA or normal.',
     compute: F.feBicarbonate,
     fields: [
-      { dom: 'fe-uhco3', arg: 'urineHco3', kind: 'number', required: true, label: 'Urine bicarbonate', unit: 'mEq/L' },
+      { dom: 'fe-uhco3', arg: 'urineHco3', kind: 'number', required: true, label: 'Urine bicarbonate', unit: 'mEq/L', min: 0, exclusiveMin: true, max: 10000 },
       { dom: 'fe-phco3', arg: 'plasmaHco3', kind: 'number', required: true, label: 'Plasma bicarbonate', unit: 'mEq/L', min: 1 },
       { dom: 'fe-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL', min: 0.1 },
       { dom: 'fe-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },

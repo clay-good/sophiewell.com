@@ -13,7 +13,7 @@ export default [
       { dom: 'dg-age', arg: 'ageGroup', kind: 'enum', required: true, values: DG.AGE_GROUPS.map((a) => a.value), label: 'Age group: adult or child over 10 years (over-10), or 5 to 10 years (5-10)' },
       { dom: 'dg-weight', arg: 'leanWeight', kind: 'number', required: true, label: 'Lean body weight' },
       { dom: 'dg-wunit', arg: 'weightUnit', kind: 'enum', required: true, values: DG.WEIGHT_UNITS.map((u) => u.value), label: 'Weight unit' },
-      { dom: 'dg-load', arg: 'loadMcgPerKg', kind: 'number', required: true, label: 'Loading dose chosen', unit: 'mcg/kg' },
+      { dom: 'dg-load', arg: 'loadMcgPerKg', kind: 'number', required: true, label: 'Loading dose chosen', unit: 'mcg/kg', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'dg-crcl', arg: 'creatinineClearance', kind: 'number', required: false, label: 'Corrected creatinine clearance (for maintenance, over 10 years)', unit: 'mL/min', max: 250 },
       { dom: 'dg-scr', arg: 'serumCreatinine', kind: 'number', required: false, label: 'Or, for an adult: serum creatinine (the label estimates the clearance)', unit: 'mg/dL' },
       { dom: 'dg-years', arg: 'patientAge', kind: 'number', required: false, label: 'Age, with a serum creatinine', unit: 'years' },

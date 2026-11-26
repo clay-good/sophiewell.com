@@ -11,7 +11,7 @@ export default [
     compute: ML.methadoneLabelConversion,
     fields: [
       { dom: 'mlc-mode', arg: 'mode', kind: 'enum', required: true, values: ML.MODES.map((d) => d.value), label: 'Coming from: another oral opioid, or parenteral methadone' },
-      { dom: 'mlc-med', arg: 'morphineEquivalentMg', kind: 'number', label: 'Total daily oral morphine-equivalent dose (from another oral opioid)', unit: 'mg' },
+      { dom: 'mlc-med', arg: 'morphineEquivalentMg', kind: 'number', label: 'Total daily oral morphine-equivalent dose (from another oral opioid)', unit: 'mg', min: 0, exclusiveMin: true, max: 20000 },
       { dom: 'mlc-n', arg: 'dosesPerDay', kind: 'number', label: 'Methadone doses a day (from another oral opioid)', min: 1, max: 6 },
       { dom: 'mlc-tab', arg: 'tabletMg', kind: 'enum', values: ML.TABLETS.map((d) => d.value), label: 'Tablet strength in mg (from another oral opioid)' },
       { dom: 'mlc-iv', arg: 'parenteralMg', kind: 'number', label: 'Parenteral methadone dose over 24 hours (from parenteral methadone)', unit: 'mg' },

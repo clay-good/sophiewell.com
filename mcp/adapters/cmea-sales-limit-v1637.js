@@ -15,7 +15,7 @@ export default [
       { dom: 'cms-strength', arg: 'strengthMg', kind: 'number', required: true, label: 'Labeled strength', unit: 'mg' },
       { dom: 'cms-per', arg: 'perMl', kind: 'number', label: 'Liquid: the mL the strength is stated in', unit: 'mL' },
       { dom: 'cms-units', arg: 'unitsPerPackage', kind: 'number', required: true, label: 'Tablets, capsules or mL in each package' },
-      { dom: 'cms-packages', arg: 'packages', kind: 'number', required: true, label: 'Number of packages' },
+      { dom: 'cms-packages', arg: 'packages', kind: 'number', required: true, label: 'Number of packages', min: 0, exclusiveMin: true, max: 10000 },
       { dom: 'cms-seller', arg: 'seller', kind: 'enum', required: true, values: CM.SELLERS.map((k) => k.value), label: 'Seller' },
       { dom: 'cms-today', arg: 'soldToday', kind: 'number', required: true, label: 'Base already sold to this purchaser today (0 if none)', unit: 'g' },
       { dom: 'cms-thirty', arg: 'soldThirtyDays', kind: 'number', label: 'Base sold to this purchaser in the past 30 days, today included', unit: 'g' },

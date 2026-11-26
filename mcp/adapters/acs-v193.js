@@ -13,10 +13,10 @@ export default [
     compute: F.crusade,
     fields: [
       { dom: 'crusade-hct', arg: 'hct', kind: 'number', required: true, label: 'Baseline hematocrit', unit: '%', min: 3 },
-      { dom: 'crusade-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
+      { dom: 'crusade-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min', min: 0, exclusiveMin: true, max: 300 },
       { dom: 'crusade-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10 },
       { dom: 'crusade-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex' },
-      { dom: 'crusade-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20 },
+      { dom: 'crusade-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20, max: 320 },
       { dom: 'crusade-chf', arg: 'chf', kind: 'bool', required: false, label: 'Signs of heart failure at presentation' },
       { dom: 'crusade-vasc', arg: 'vasc', kind: 'bool', required: false, label: 'Prior vascular disease (PAD or stroke)' },
       { dom: 'crusade-dm', arg: 'dm', kind: 'bool', required: false, label: 'Diabetes mellitus' },
@@ -27,7 +27,7 @@ export default [
     summary: 'SCAI SHOCK cardiogenic-shock stage A–E (Naidu 2022; Kadosh/Kapur operationalization) from systolic BP, lactate, and the level of vasoactive/mechanical support, with a cardiac-arrest modifier.',
     compute: F.scaiShock,
     fields: [
-      { dom: 'scai-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20 },
+      { dom: 'scai-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20, max: 320 },
       { dom: 'scai-lactate', arg: 'lactate', kind: 'number', required: true, label: 'Serum lactate', unit: 'mmol/L', bound: 'lactate' },
       { dom: 'scai-support', arg: 'support', kind: 'enum', values: ['none', 'one', 'multiple', 'maximal'], required: true, label: 'Vasoactive / mechanical support level' },
       { dom: 'scai-arrest', arg: 'arrest', kind: 'bool', required: false, label: 'Cardiac arrest / circulatory collapse' },
@@ -54,7 +54,7 @@ export default [
     fields: [
       { dom: 'tri-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10 },
       { dom: 'tri-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'tri-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20 },
+      { dom: 'tri-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg', min: 20, max: 320 },
     ],
   },
   {
@@ -62,8 +62,8 @@ export default [
     summary: 'CADILLAC post-PCI mortality risk score (Halkin 2005): LVEF < 40%, CrCl < 60, Killip 2–3, post-PCI TIMI 0–2, age > 65, anemia, and three-vessel disease sum to 0–18 with low/intermediate/high 30-day and 1-year mortality bands.',
     compute: F.cadillacRisk,
     fields: [
-      { dom: 'cad-lvef', arg: 'lvef', kind: 'number', required: true, label: 'LVEF', unit: '%' },
-      { dom: 'cad-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
+      { dom: 'cad-lvef', arg: 'lvef', kind: 'number', required: true, label: 'LVEF', unit: '%', min: 0, exclusiveMin: true, max: 90 },
+      { dom: 'cad-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min', min: 0, exclusiveMin: true, max: 300 },
       { dom: 'cad-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'cad-killip', arg: 'killip', kind: 'enum', values: ['1', '2-3'], required: true, label: 'Killip class' },
       { dom: 'cad-timi', arg: 'timi', kind: 'enum', values: ['3', '0-2'], required: true, label: 'Post-PCI TIMI flow' },

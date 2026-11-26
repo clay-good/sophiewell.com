@@ -11,7 +11,7 @@ export default [
     compute: GL.glp1TitrationCheck,
     fields: [
       { dom: 'glp-product', arg: 'product', kind: 'enum', required: true, values: GL.PRODUCTS.map((p) => p.value), label: 'Product and indication' },
-      { dom: 'glp-dose', arg: 'currentDose', kind: 'number', required: true, label: 'Current dose', unit: 'mg' },
+      { dom: 'glp-dose', arg: 'currentDose', kind: 'number', required: true, label: 'Current dose', unit: 'mg', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'glp-start', arg: 'startDate', kind: 'string', required: true, label: 'Date the current dose began (YYYY-MM-DD)' },
       { dom: 'glp-asof', arg: 'asOf', kind: 'string', label: 'Date to check as of (YYYY-MM-DD); blank uses today' },
     ],

@@ -16,7 +16,7 @@ export default [
       { dom: 'fips-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'mg/dL' },
       { dom: 'fips-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Creatinine', unit: 'mg/dL', min: 0.1 },
       { dom: 'fips-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'fips-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
+      { dom: 'fips-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', min: 0, exclusiveMin: true, max: 10 },
     ],
   },
   {
@@ -25,7 +25,7 @@ export default [
     compute: F.albiPlt,
     fields: [
       { dom: 'ap-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'µmol/L' },
-      { dom: 'ap-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/L' },
+      { dom: 'ap-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/L', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'ap-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
     ],
   },
@@ -46,7 +46,7 @@ export default [
     fields: [
       { dom: 'amap-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'amap-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Total bilirubin', unit: 'µmol/L' },
-      { dom: 'amap-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/L' },
+      { dom: 'amap-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/L', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'amap-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
       { dom: 'amap-male', arg: 'male', kind: 'bool', required: false, label: 'Male sex' },
     ],

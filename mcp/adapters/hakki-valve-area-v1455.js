@@ -9,8 +9,8 @@ export default [
     compute: HK.hakkiValveArea,
     fields: [
       { dom: 'hak-valve', arg: 'valve', kind: 'enum', required: true, label: 'Valve', values: HK.HAKKI_VALVES.map((x) => x.value) },
-      { dom: 'hak-co', arg: 'co', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min' },
-      { dom: 'hak-grad', arg: 'grad', kind: 'number', required: true, label: 'Pressure gradient across the valve', unit: 'mmHg' },
+      { dom: 'hak-co', arg: 'co', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min', min: 0, exclusiveMin: true, max: 20 },
+      { dom: 'hak-grad', arg: 'grad', kind: 'number', required: true, label: 'Pressure gradient across the valve', unit: 'mmHg', min: 0, exclusiveMin: true, max: 200 },
     ],
   },
 ];

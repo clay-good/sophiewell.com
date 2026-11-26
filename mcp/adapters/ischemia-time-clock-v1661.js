@@ -10,7 +10,7 @@ export default [
     compute: ITC.ischemiaTimeClock,
     fields: [
       { dom: 'itc-events', arg: 'events', kind: 'string', required: true, label: 'Events in order, one per line: name, then YYYY-MM-DD HH:MM' },
-      { dom: 'itc-limit', arg: 'limitHours', kind: 'number', required: false, label: 'A limit in hours from the first event (optional)' },
+      { dom: 'itc-limit', arg: 'limitHours', kind: 'number', required: false, label: 'A limit in hours from the first event (optional)', min: 0, exclusiveMin: true, max: 200 },
     ]
   },
 ];

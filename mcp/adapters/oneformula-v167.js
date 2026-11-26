@@ -11,9 +11,9 @@ export default [
     summary: 'Mean airway pressure, square-wave approximation (Marini 1992): [(PIP·Ti) + (PEEP·Te)] / (Ti + Te) in cmH₂O.',
     compute: F.meanAirwayPressure,
     fields: [
-      { dom: 'maw-pip', arg: 'pip', kind: 'number', required: true, label: 'Peak inspiratory pressure (PIP)', unit: 'cmH₂O' },
+      { dom: 'maw-pip', arg: 'pip', kind: 'number', required: true, label: 'Peak inspiratory pressure (PIP)', unit: 'cmH₂O', min: 0, exclusiveMin: true, max: 120 },
       { dom: 'maw-peep', arg: 'peep', kind: 'number', required: true, label: 'PEEP', unit: 'cmH₂O' },
-      { dom: 'maw-ti', arg: 'ti', kind: 'number', required: true, label: 'Inspiratory time (Ti)', unit: 's' },
+      { dom: 'maw-ti', arg: 'ti', kind: 'number', required: true, label: 'Inspiratory time (Ti)', unit: 's', min: 0, exclusiveMin: true, max: 30 },
       { dom: 'maw-te', arg: 'te', kind: 'number', required: true, label: 'Expiratory time (Te)', unit: 's' },
     ],
   },
@@ -22,7 +22,7 @@ export default [
     summary: 'Cerebroplacental ratio (Gramellini 1992): MCA pulsatility index / umbilical-artery pulsatility index; < 1 indicates cerebral redistribution.',
     compute: F.cerebroplacentalRatio,
     fields: [
-      { dom: 'cpr-mca', arg: 'mca', kind: 'number', required: true, label: 'Middle-cerebral-artery pulsatility index (MCA-PI)' },
+      { dom: 'cpr-mca', arg: 'mca', kind: 'number', required: true, label: 'Middle-cerebral-artery pulsatility index (MCA-PI)', min: 0, exclusiveMin: true, max: 10 },
       { dom: 'cpr-ua', arg: 'ua', kind: 'number', required: true, label: 'Umbilical-artery pulsatility index (UA-PI)' },
     ],
   },
@@ -32,7 +32,7 @@ export default [
     compute: F.toeBrachialIndex,
     fields: [
       { dom: 'tbi-toe', arg: 'toe', kind: 'number', required: true, label: 'Toe systolic pressure', unit: 'mmHg' },
-      { dom: 'tbi-brachial', arg: 'brachial', kind: 'number', required: true, label: 'Brachial systolic pressure', unit: 'mmHg', min: 20 },
+      { dom: 'tbi-brachial', arg: 'brachial', kind: 'number', required: true, label: 'Brachial systolic pressure', unit: 'mmHg', min: 20, max: 400 },
     ],
   },
   {

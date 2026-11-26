@@ -18,7 +18,7 @@ export default [
       { dom: 'tir-macro', arg: 'fociMacro', kind: 'bool', label: 'Macrocalcifications' },
       { dom: 'tir-rim', arg: 'fociRim', kind: 'bool', label: 'Peripheral (rim) calcifications' },
       { dom: 'tir-punctate', arg: 'fociPunctate', kind: 'bool', label: 'Punctate echogenic foci' },
-      { dom: 'tir-diameter', arg: 'diameter', kind: 'number', label: 'Maximum diameter (cm)' },
+      { dom: 'tir-diameter', arg: 'diameter', kind: 'number', label: 'Maximum diameter (cm)', min: 0, exclusiveMin: true, max: 20 },
     ],
   },
   {

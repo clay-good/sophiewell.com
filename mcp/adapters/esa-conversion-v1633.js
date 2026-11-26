@@ -13,7 +13,7 @@ export default [
       { dom: 'esa-target', arg: 'target', kind: 'enum', required: true, values: ES.TARGETS.map((d) => d.value), label: 'Product being started' },
       { dom: 'esa-current', arg: 'current', kind: 'enum', required: true, values: ES.CURRENT.map((d) => d.value), label: 'Current ESA' },
       { dom: 'esa-pop', arg: 'population', kind: 'enum', required: true, values: ES.POPULATIONS.map((d) => d.value), label: 'Adult or pediatric' },
-      { dom: 'esa-dose', arg: 'weeklyDose', kind: 'number', required: true, label: 'Total weekly dose (epoetin alfa in units, darbepoetin alfa in mcg)' },
+      { dom: 'esa-dose', arg: 'weeklyDose', kind: 'number', required: true, label: 'Total weekly dose (epoetin alfa in units, darbepoetin alfa in mcg)', min: 0, exclusiveMin: true, max: 500000 },
       { dom: 'esa-freq', arg: 'epoetinFrequency', kind: 'enum', values: ES.EPOETIN_FREQUENCIES.map((d) => d.value), label: 'To Aranesp: how often the epoetin alfa is given' },
       { dom: 'esa-interval', arg: 'mirceraInterval', kind: 'enum', values: ES.MIRCERA_INTERVALS.map((d) => d.value), label: 'To Mircera, adults: monthly or every two weeks' },
     ],

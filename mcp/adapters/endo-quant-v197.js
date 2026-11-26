@@ -13,7 +13,7 @@ export default [
     compute: F.spinaGt,
     fields: [
       { dom: 'spinagt-tsh', arg: 'tsh', kind: 'number', required: true, label: 'TSH', unit: 'mU/L' },
-      { dom: 'spinagt-ft4', arg: 'ft4', kind: 'number', required: true, label: 'Free T4', unit: 'pmol/L' },
+      { dom: 'spinagt-ft4', arg: 'ft4', kind: 'number', required: true, label: 'Free T4', unit: 'pmol/L', min: 0, exclusiveMin: true, max: 200 },
     ],
   },
   {
@@ -22,7 +22,7 @@ export default [
     compute: F.spinaGd,
     fields: [
       { dom: 'spinagd-ft4', arg: 'ft4', kind: 'number', required: true, label: 'Free T4', unit: 'pmol/L' },
-      { dom: 'spinagd-ft3', arg: 'ft3', kind: 'number', required: true, label: 'Free T3', unit: 'pmol/L' },
+      { dom: 'spinagd-ft3', arg: 'ft3', kind: 'number', required: true, label: 'Free T3', unit: 'pmol/L', min: 0, exclusiveMin: true, max: 100 },
     ],
   },
   {
@@ -30,8 +30,8 @@ export default [
     summary: "Jostel's TSH index (Jostel 2009): ln(TSH) + 0.1345 × free T4, with a standardized sTSHI; a low index suggests central (secondary) hypothyroidism. Reference TSHI ~1.3–4.1.",
     compute: F.jostelTshIndex,
     fields: [
-      { dom: 'jostel-tsh', arg: 'tsh', kind: 'number', required: true, label: 'TSH', unit: 'mU/L' },
-      { dom: 'jostel-ft4', arg: 'ft4', kind: 'number', required: true, label: 'Free T4', unit: 'pmol/L' },
+      { dom: 'jostel-tsh', arg: 'tsh', kind: 'number', required: true, label: 'TSH', unit: 'mU/L', min: 0, exclusiveMin: true, max: 1000 },
+      { dom: 'jostel-ft4', arg: 'ft4', kind: 'number', required: true, label: 'Free T4', unit: 'pmol/L', min: 0, exclusiveMin: true, max: 200 },
     ],
   },
   {
@@ -39,7 +39,7 @@ export default [
     summary: 'HOMA-B steady-state beta-cell function (Matthews 1985): 20 × fasting insulin / (fasting glucose − 3.5); ~100% is the reference for beta-cell function.',
     compute: F.homaBeta,
     fields: [
-      { dom: 'homab-ins', arg: 'insulin', kind: 'number', required: true, label: 'Fasting insulin', unit: 'mU/L' },
+      { dom: 'homab-ins', arg: 'insulin', kind: 'number', required: true, label: 'Fasting insulin', unit: 'mU/L', min: 0, exclusiveMin: true, max: 1000 },
       { dom: 'homab-glu', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mmol/L' },
     ],
   },
@@ -48,10 +48,10 @@ export default [
     summary: 'Oral disposition index DIo (Utzschneider 2009): the insulinogenic index (ΔI30/ΔG30) times fasting insulin sensitivity (1/I0); a lower value predicts higher future-diabetes risk.',
     compute: F.oralDispositionIndex,
     fields: [
-      { dom: 'dio-i0', arg: 'i0', kind: 'number', required: true, label: 'Fasting insulin (I0)', unit: 'mU/L' },
+      { dom: 'dio-i0', arg: 'i0', kind: 'number', required: true, label: 'Fasting insulin (I0)', unit: 'mU/L', min: 0, exclusiveMin: true, max: 1000 },
       { dom: 'dio-i30', arg: 'i30', kind: 'number', required: true, label: '30-min insulin (I30)', unit: 'mU/L' },
-      { dom: 'dio-g0', arg: 'g0', kind: 'number', required: true, label: 'Fasting glucose (G0)', unit: 'mg/dL' },
-      { dom: 'dio-g30', arg: 'g30', kind: 'number', required: true, label: '30-min glucose (G30)', unit: 'mg/dL' },
+      { dom: 'dio-g0', arg: 'g0', kind: 'number', required: true, label: 'Fasting glucose (G0)', unit: 'mg/dL', min: 0, exclusiveMin: true, max: 1000 },
+      { dom: 'dio-g30', arg: 'g30', kind: 'number', required: true, label: '30-min glucose (G30)', unit: 'mg/dL', min: 0, exclusiveMin: true, max: 2000 },
     ],
   },
 ];

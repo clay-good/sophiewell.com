@@ -14,10 +14,10 @@ export default [
       { dom: 'sp-def', arg: 'definition', kind: 'enum', required: false, values: SD.DEFINITIONS.map((d) => d.value), label: 'Batch: which definition the factor uses (density: g of drug per g of base space; displacement: g of base displaced per g of drug)' },
       { dom: 'sp-units', arg: 'units', kind: 'number', required: false, label: 'Batch: number of units' },
       { dom: 'sp-extra', arg: 'overage', kind: 'number', required: false, label: 'Batch: extra units to allow for loss (optional)' },
-      { dom: 'sp-blank', arg: 'blankWeight', kind: 'number', required: true, label: 'One unit of plain base from this mold', unit: 'g' },
-      { dom: 'sp-drug', arg: 'drugPerUnit', kind: 'number', required: true, label: 'Drug per unit', unit: 'g' },
+      { dom: 'sp-blank', arg: 'blankWeight', kind: 'number', required: true, label: 'One unit of plain base from this mold', unit: 'g', min: 0, exclusiveMin: true, max: 1000 },
+      { dom: 'sp-drug', arg: 'drugPerUnit', kind: 'number', required: true, label: 'Drug per unit', unit: 'g', min: 0, exclusiveMin: true, max: 1000 },
       { dom: 'sp-factor', arg: 'factor', kind: 'number', required: false, label: 'Batch: the drug factor, under the definition chosen' },
-      { dom: 'sp-med', arg: 'medicatedWeight', kind: 'number', required: false, label: 'Calibrate: one medicated unit from this mold', unit: 'g' },
+      { dom: 'sp-med', arg: 'medicatedWeight', kind: 'number', required: false, label: 'Calibrate: one medicated unit from this mold', unit: 'g', min: 0, exclusiveMin: true, max: 2000 },
     ],
   },
 ];

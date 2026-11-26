@@ -11,10 +11,10 @@ export default [
     compute: BU.busulfanAucDose,
     fields: [
       { dom: 'bu-timing', arg: 'timing', kind: 'enum', required: true, values: BU.TIMINGS.map((t) => t.value), label: 'Samples followed dose 1 (dose-1) or a later dose (later)' },
-      { dom: 'bu-dose', arg: 'dose', kind: 'number', required: true, label: 'Dose given', unit: 'mg' },
+      { dom: 'bu-dose', arg: 'dose', kind: 'number', required: true, label: 'Dose given', unit: 'mg', min: 0, exclusiveMin: true, max: 2000 },
       { dom: 'bu-unit', arg: 'unit', kind: 'enum', required: true, values: BU.UNITS.map((u) => u.value), label: 'Concentration unit: micromolar (uM) or ng/mL (ng-mL)' },
       { dom: 'bu-samples', arg: 'samples', kind: 'string', required: true, label: 'Samples, one per line: hours from infusion start, then level' },
-      { dom: 'bu-target', arg: 'target', kind: 'number', required: true, label: 'Target AUC (the label gives 1125)', unit: 'µM·min' },
+      { dom: 'bu-target', arg: 'target', kind: 'number', required: true, label: 'Target AUC (the label gives 1125)', unit: 'µM·min', min: 0, exclusiveMin: true, max: 10000 },
     ],
   },
 ];

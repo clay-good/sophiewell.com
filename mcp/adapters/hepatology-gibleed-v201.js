@@ -68,9 +68,9 @@ export default [
     summary: 'Agile 3+ (Sanyal 2023): a FibroScan-anchored probability of advanced (≥ F3) fibrosis in NAFLD from liver stiffness, AST, ALT, platelets, diabetes, sex, and age; < 0.451 rules out and ≥ 0.679 rules in.',
     compute: F.agile3plus,
     fields: [
-      { dom: 'agile-lsm', arg: 'lsm', kind: 'number', required: true, label: 'Liver stiffness (LSM) by VCTE / FibroScan', unit: 'kPa' },
-      { dom: 'agile-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L', min: 1 },
-      { dom: 'agile-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'IU/L', min: 1 },
+      { dom: 'agile-lsm', arg: 'lsm', kind: 'number', required: true, label: 'Liver stiffness (LSM) by VCTE / FibroScan', unit: 'kPa', min: 0, exclusiveMin: true, max: 100 },
+      { dom: 'agile-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'IU/L', min: 1, max: 20000 },
+      { dom: 'agile-alt', arg: 'alt', kind: 'number', required: true, label: 'ALT', unit: 'IU/L', min: 1, max: 20000 },
       { dom: 'agile-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelets', unit: '×10⁹/L' },
       { dom: 'agile-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', max: 120 },
       { dom: 'agile-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },

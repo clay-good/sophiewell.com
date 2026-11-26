@@ -14,7 +14,7 @@ export default [
     summary: 'Aldosterone-renin ratio for primary-aldosteronism screening: plasma aldosterone (ng/dL) ÷ renin, with the positive-screen cutoff read against the renin assay unit (PRA vs DRC) and aldosterone ≥ 15 ng/dL.',
     compute: F.arr,
     fields: [
-      { dom: 'arr-aldo', arg: 'aldosterone', kind: 'number', required: true, label: 'Plasma aldosterone', unit: 'ng/dL' },
+      { dom: 'arr-aldo', arg: 'aldosterone', kind: 'number', required: true, label: 'Plasma aldosterone', unit: 'ng/dL', min: 0, exclusiveMin: true, max: 200 },
       { dom: 'arr-renin', arg: 'renin', kind: 'number', required: true, label: 'Renin value (> 0)' },
       { dom: 'arr-unit', arg: 'reninUnit', kind: 'enum', values: ['pra', 'drc'], required: true, label: 'Renin assay unit (PRA ng/mL/h or DRC mIU/L)' },
     ],
@@ -35,7 +35,7 @@ export default [
     compute: F.freeThyroxineIndex,
     fields: [
       { dom: 'fti-t4', arg: 't4', kind: 'number', required: true, label: 'Total T4', unit: 'µg/dL' },
-      { dom: 'fti-t3ru', arg: 't3ru', kind: 'number', required: true, label: 'T3-resin uptake', unit: '%' },
+      { dom: 'fti-t3ru', arg: 't3ru', kind: 'number', required: true, label: 'T3-resin uptake', unit: '%', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'fti-ref', arg: 'reference', kind: 'number', required: false, label: 'Reference-mean T3RU % (default 30)', unit: '%' },
     ],
   },

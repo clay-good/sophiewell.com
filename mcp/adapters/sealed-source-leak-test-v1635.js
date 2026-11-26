@@ -11,7 +11,7 @@ export default [
     fields: [
       { dom: 'slt-exemption', arg: 'exemption', kind: 'enum', required: true, values: SL.EXEMPTIONS.map((e) => e.value), label: 'Exemption under 35.67(f)' },
       { dom: 'slt-cpm', arg: 'netCpm', kind: 'number', label: 'Net counts per minute on the wipe', unit: 'cpm' },
-      { dom: 'slt-eff', arg: 'efficiencyPercent', kind: 'number', label: 'Counter efficiency', unit: '%' },
+      { dom: 'slt-eff', arg: 'efficiencyPercent', kind: 'number', label: 'Counter efficiency', unit: '%', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'slt-date', arg: 'testDate', kind: 'string', label: 'Date of the leak test (YYYY-MM-DD, optional)' },
     ],
   },

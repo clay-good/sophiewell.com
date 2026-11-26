@@ -29,7 +29,7 @@ export default [
     compute: F.gorlin,
     fields: [
       { dom: 'gorlin-valve', arg: 'valve', kind: 'enum', values: ['aortic', 'mitral'], required: true, label: 'Valve' },
-      { dom: 'gorlin-co', arg: 'co', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min' },
+      { dom: 'gorlin-co', arg: 'co', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min', min: 0, exclusiveMin: true, max: 20 },
       { dom: 'gorlin-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm', min: 10 },
       { dom: 'gorlin-period', arg: 'period', kind: 'number', required: true, label: 'Ejection/filling period', unit: 's per beat' },
       { dom: 'gorlin-grad', arg: 'grad', kind: 'number', required: true, label: 'Mean pressure gradient', unit: 'mmHg' },
@@ -41,9 +41,9 @@ export default [
     compute: F.qpQs,
     fields: [
       { dom: 'qpqs-sao2', arg: 'sao2', kind: 'number', required: true, label: 'Systemic-arterial SaO₂', unit: '%' },
-      { dom: 'qpqs-mvo2', arg: 'mvo2', kind: 'number', required: true, label: 'Mixed-venous MvO₂', unit: '%' },
-      { dom: 'qpqs-pvo2', arg: 'pvo2', kind: 'number', required: false, label: 'Pulmonary-vein PvO₂ (default 98)', unit: '%' },
-      { dom: 'qpqs-pao2', arg: 'pao2', kind: 'number', required: true, label: 'Pulmonary-artery PaO₂', unit: '%' },
+      { dom: 'qpqs-mvo2', arg: 'mvo2', kind: 'number', required: true, label: 'Mixed-venous MvO₂', unit: '%', min: 0, exclusiveMin: true, max: 100 },
+      { dom: 'qpqs-pvo2', arg: 'pvo2', kind: 'number', required: false, label: 'Pulmonary-vein PvO₂ (default 98)', unit: '%', min: 0, exclusiveMin: true, max: 100 },
+      { dom: 'qpqs-pao2', arg: 'pao2', kind: 'number', required: true, label: 'Pulmonary-artery PaO₂', unit: '%', min: 0, exclusiveMin: true, max: 100 },
     ],
   },
   {
@@ -101,8 +101,8 @@ export default [
       // warfarin range -- and the reading NAMES the range it used ("16 of 20 days in
       // range 2-3"), which is the spec-v1133 model: the assumption is visible where
       // the verdict is. A field with a default cannot be required.
-      { dom: 'ttr-low', arg: 'low', kind: 'number', label: 'Target INR low (defaults to 2.0, which the reading names)' },
-      { dom: 'ttr-high', arg: 'high', kind: 'number', label: 'Target INR high (defaults to 3.0, which the reading names)' },
+      { dom: 'ttr-low', arg: 'low', kind: 'number', label: 'Target INR low (defaults to 2.0, which the reading names)', min: 0, exclusiveMin: true, max: 10 },
+      { dom: 'ttr-high', arg: 'high', kind: 'number', label: 'Target INR high (defaults to 3.0, which the reading names)', min: 0, exclusiveMin: true, max: 15 },
     ],
   },
 ];

@@ -10,8 +10,8 @@ export default [
     compute: ON.orRrToNnt,
     fields: [
       { dom: 'orn-measure', arg: 'measure', kind: 'enum', required: true, values: ON.MEASURES.map((m) => m.value), label: 'Effect measure' },
-      { dom: 'orn-ratio', arg: 'ratio', kind: 'number', required: true, label: 'Odds ratio or relative risk' },
-      { dom: 'orn-risk', arg: 'baselineRisk', kind: 'number', required: true, label: 'Baseline risk without treatment', unit: '%' },
+      { dom: 'orn-ratio', arg: 'ratio', kind: 'number', required: true, label: 'Odds ratio or relative risk', min: 0, exclusiveMin: true, max: 1000 },
+      { dom: 'orn-risk', arg: 'baselineRisk', kind: 'number', required: true, label: 'Baseline risk without treatment', unit: '%', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'orn-lower', arg: 'lower', kind: 'number', label: 'Lower 95% confidence limit (optional)' },
       { dom: 'orn-upper', arg: 'upper', kind: 'number', label: 'Upper 95% confidence limit (optional)' },
     ],

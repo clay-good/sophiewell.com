@@ -12,7 +12,7 @@ export default [
     compute: TF.transplantFormulationSwitch,
     fields: [
       { dom: 'tfs-switch', arg: 'switch', kind: 'enum', required: true, values: TF.SWITCHES.map((d) => d.value), label: 'Drug and switch' },
-      { dom: 'tfs-dose', arg: 'dailyDose', kind: 'number', required: true, label: 'Current total daily dose', unit: 'mg' },
+      { dom: 'tfs-dose', arg: 'dailyDose', kind: 'number', required: true, label: 'Current total daily dose', unit: 'mg', min: 0, exclusiveMin: true, max: 10000 },
     ],
   },
 ];

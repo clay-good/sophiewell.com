@@ -12,7 +12,7 @@ export default [
     fields: [
       { dom: 'ar-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 18, max: 120 },
       { dom: 'ar-sex', arg: 'sex', kind: 'enum', required: true, values: AR.SEXES.map((s) => s.value), label: 'Sex' },
-      { dom: 'ar-scr', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', min: 0.1 },
+      { dom: 'ar-scr', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL', min: 0.1, max: 20 },
       { dom: 'ar-trauma', arg: 'trauma', kind: 'enum', required: true, values: AR.YES_NO.map((y) => y.value), label: 'Admission after trauma (yes or no)' },
       { dom: 'ar-sofa', arg: 'modifiedSofa', kind: 'number', required: true, label: 'Modified SOFA score (SOFA without the neurological part)', max: 20 },
     ],

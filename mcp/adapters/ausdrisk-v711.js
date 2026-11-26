@@ -22,7 +22,7 @@ export default [
       { dom: 'aus-veg', arg: 'lowVegFruit', kind: 'boolean', required: false, label: 'Does not eat vegetables and fruit every day' },
       { dom: 'aus-activity', arg: 'lowActivity', kind: 'boolean', required: false, label: 'Less than 2.5 hours of physical activity per week' },
       { dom: 'aus-waistset', arg: 'asianOrIndigenousWaist', kind: 'boolean', required: false, label: 'Use lower waist thresholds (Asian or Aboriginal/TSI descent)' },
-      { dom: 'aus-waist', arg: 'waist', kind: 'number', unit: 'cm', required: true, label: 'Waist circumference (cm)' },
+      { dom: 'aus-waist', arg: 'waist', kind: 'number', unit: 'cm', required: true, label: 'Waist circumference (cm)', min: 0, exclusiveMin: true, max: 250 },
     ],
   },
 ];

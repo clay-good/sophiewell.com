@@ -12,11 +12,11 @@ export default [
     fields: [
       { dom: 'tm-dose', arg: 'dose', kind: 'number', required: true, label: 'Dose', unit: 'mg' },
       { dom: 'tm-tinf', arg: 'infusionHours', kind: 'number', required: true, label: 'Infusion time (0 for a bolus)', unit: 'hours', max: 1000 },
-      { dom: 'tm-tau', arg: 'interval', kind: 'number', required: true, label: 'Dosing interval', unit: 'hours' },
+      { dom: 'tm-tau', arg: 'interval', kind: 'number', required: true, label: 'Dosing interval', unit: 'hours', min: 0, exclusiveMin: true, max: 10000 },
       { dom: 'tm-vd', arg: 'vd', kind: 'number', required: true, label: 'Volume of distribution', unit: 'L' },
       { dom: 'tm-half', arg: 'halfLife', kind: 'number', required: false, label: 'Half-life (or enter k)', unit: 'hours' },
       { dom: 'tm-k', arg: 'k', kind: 'number', required: false, label: 'Elimination rate constant, per hour' },
-      { dom: 'tm-fu', arg: 'unboundFraction', kind: 'number', required: true, label: 'Unbound fraction, from 0 to 1' },
+      { dom: 'tm-fu', arg: 'unboundFraction', kind: 'number', required: true, label: 'Unbound fraction, from 0 to 1', min: 0, exclusiveMin: true, max: 1 },
       { dom: 'tm-mic', arg: 'mic', kind: 'number', required: true, label: 'MIC', unit: 'mg/L' },
     ],
   },

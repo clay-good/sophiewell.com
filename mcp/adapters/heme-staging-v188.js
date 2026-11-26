@@ -57,7 +57,7 @@ export default [
     summary: 'Hasford (Euro) prognostic score for chronic-phase CML on interferon/imatinib, from age, spleen size, platelets, blasts, eosinophils, and basophils.',
     compute: F.hasfordCml,
     fields: [
-      { dom: 'hasford-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'hasford-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', min: 0, exclusiveMin: true, max: 120 },
       { dom: 'hasford-spleen', arg: 'spleen', kind: 'number', required: true, label: 'Spleen (cm below costal margin)', bound: 'platelets', boundScale: 0.01 },
       { dom: 'hasford-platelets', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },
       { dom: 'hasford-blasts', arg: 'blasts', kind: 'number', required: true, label: 'Peripheral blasts', unit: '%', max: 100 },

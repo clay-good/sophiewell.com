@@ -11,7 +11,7 @@ export default [
     summary: 'Radiobiology conversion: biologically effective dose (BED) and the 2-Gy-equivalent dose (EQD2) for a fractionation schedule, from the linear-quadratic model and the tissue α/β ratio.',
     compute: F.bedEqd2,
     fields: [
-      { dom: 'bed-n', arg: 'n', kind: 'number', required: true, label: 'Number of fractions' },
+      { dom: 'bed-n', arg: 'n', kind: 'number', required: true, label: 'Number of fractions', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'bed-d', arg: 'd', kind: 'number', required: true, label: 'Dose per fraction', unit: 'Gy' },
       { dom: 'bed-ab', arg: 'ab', kind: 'number', required: true, label: 'α/β ratio', unit: 'Gy' },
     ],
@@ -22,9 +22,9 @@ export default [
     compute: F.pisaEroa,
     fields: [
       { dom: 'pisa-r', arg: 'r', kind: 'number', required: true, label: 'PISA radius', unit: 'cm' },
-      { dom: 'pisa-va', arg: 'va', kind: 'number', required: true, label: 'Aliasing velocity', unit: 'cm/s' },
+      { dom: 'pisa-va', arg: 'va', kind: 'number', required: true, label: 'Aliasing velocity', unit: 'cm/s', min: 0, exclusiveMin: true, max: 200 },
       { dom: 'pisa-vpeak', arg: 'vpeak', kind: 'number', required: true, label: 'Peak regurgitant velocity', unit: 'cm/s' },
-      { dom: 'pisa-vti', arg: 'vti', kind: 'number', required: true, label: 'Regurgitant-jet VTI', unit: 'cm' },
+      { dom: 'pisa-vti', arg: 'vti', kind: 'number', required: true, label: 'Regurgitant-jet VTI', unit: 'cm', min: 0, exclusiveMin: true, max: 300 },
     ],
   },
   {
@@ -33,7 +33,7 @@ export default [
     compute: F.lvWallStress,
     fields: [
       { dom: 'lvws-p', arg: 'p', kind: 'number', required: true, label: 'LV pressure', unit: 'mmHg' },
-      { dom: 'lvws-r', arg: 'r', kind: 'number', required: true, label: 'LV internal radius', unit: 'cm' },
+      { dom: 'lvws-r', arg: 'r', kind: 'number', required: true, label: 'LV internal radius', unit: 'cm', min: 0, exclusiveMin: true, max: 12 },
       { dom: 'lvws-h', arg: 'h', kind: 'number', required: true, label: 'Wall thickness', unit: 'cm' },
     ],
   },
@@ -42,7 +42,7 @@ export default [
     summary: 'Hemoglobin- and alveolar-volume-corrected DLCO (ATS/ERS): the anemia/polycythemia correction plus KCO (DLCO ÷ VA).',
     compute: F.dlcoCorrection,
     fields: [
-      { dom: 'dlco-dlco', arg: 'dlco', kind: 'number', required: true, label: 'Measured DLCO', unit: 'mL/min/mmHg' },
+      { dom: 'dlco-dlco', arg: 'dlco', kind: 'number', required: true, label: 'Measured DLCO', unit: 'mL/min/mmHg', min: 0, exclusiveMin: true, max: 200 },
       { dom: 'dlco-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
       { dom: 'dlco-va', arg: 'va', kind: 'number', required: true, label: 'Alveolar volume VA', unit: 'L' },
       { dom: 'dlco-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },

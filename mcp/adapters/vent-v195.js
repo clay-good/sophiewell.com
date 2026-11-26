@@ -21,7 +21,7 @@ export default [
     compute: F.ventilatoryRatio,
     fields: [
       { dom: 'vr-ve', arg: 've', kind: 'number', required: true, label: 'Measured minute ventilation', unit: 'mL/min' },
-      { dom: 'vr-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO₂', unit: 'mmHg' },
+      { dom: 'vr-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO₂', unit: 'mmHg', min: 0, exclusiveMin: true, max: 300 },
       { dom: 'vr-height', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
       { dom: 'vr-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex (for predicted body weight)' },
     ],
@@ -32,8 +32,8 @@ export default [
     compute: F.ventilationIndex,
     fields: [
       { dom: 'vi-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: 'breaths/min', min: 3 },
-      { dom: 'vi-pip', arg: 'pip', kind: 'number', required: true, label: 'Peak inspiratory pressure', unit: 'cmH₂O' },
-      { dom: 'vi-paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO₂', unit: 'mmHg' },
+      { dom: 'vi-pip', arg: 'pip', kind: 'number', required: true, label: 'Peak inspiratory pressure', unit: 'cmH₂O', min: 0, exclusiveMin: true, max: 120 },
+      { dom: 'vi-paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO₂', unit: 'mmHg', min: 0, exclusiveMin: true, max: 300 },
     ],
   },
 ];

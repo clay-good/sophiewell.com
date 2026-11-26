@@ -9,6 +9,8 @@ export default [
     id: 'hf-gdmt-target-percent',
     summary: 'Each heart failure drug dose as a percent of the guideline target dose. For the drugs in Table 14 of the 2022 AHA/ACC/HFSA heart failure guideline (reduced ejection fraction), it divides the total daily dose by the target total daily dose, shows both ends where the table prints a range, and lists the mean dose achieved in the trials. It does not judge why a dose is below target, and digoxin is not scored.',
     compute: HG.hfGdmtTargetPercent,
-    fields: HG.DRUGS.map((d) => ({ dom: `hgt-${d.dom}`, arg: d.arg, kind: 'number', label: `${d.text}, total a day${d.entered ? `: ${d.entered}` : ''}`, unit: 'mg' })),
+    // spec-v1795: the library caps each dose at ten times that drug's own target, so the ceiling is per
+    // drug and comes from the same table the library reads.
+    fields: HG.DRUGS.map((d) => ({ dom: `hgt-${d.dom}`, arg: d.arg, kind: 'number', label: `${d.text}, total a day${d.entered ? `: ${d.entered}` : ''}`, unit: 'mg', max: d.target[1] * 10 })),
   },
 ];

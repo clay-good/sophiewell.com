@@ -11,7 +11,7 @@ export default [
     compute: PP.ppiOmeprazoleEquivalent,
     fields: [
       { dom: 'poe-ppi', arg: 'ppi', kind: 'enum', required: true, values: PP.PPIS.map((d) => d.value), label: 'Proton-pump inhibitor' },
-      { dom: 'poe-dose', arg: 'dailyDose', kind: 'number', required: true, label: 'Daily dose', unit: 'mg' },
+      { dom: 'poe-dose', arg: 'dailyDose', kind: 'number', required: true, label: 'Daily dose', unit: 'mg', min: 0, exclusiveMin: true, max: 1000 },
       { dom: 'poe-target', arg: 'target', kind: 'enum', values: PP.PPIS.map((d) => d.value), label: 'Target drug (optional)' },
     ],
   },

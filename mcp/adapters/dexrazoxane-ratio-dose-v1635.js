@@ -10,7 +10,7 @@ export default [
     summary: 'Dexrazoxane dose from the doxorubicin dose, by the label ratio. Ten times the doxorubicin dose, or five times when creatinine clearance is under 40 mL/min, with the label\'s timing line and a flag when cumulative doxorubicin is under the 300 mg/m² at which the labeled indication starts. It does not check the doxorubicin dose itself.',
     compute: (args) => DX.dexrazoxaneRatioDose(args, new Date()),
     fields: [
-      { dom: 'dxr-dose', arg: 'doxorubicinDose', kind: 'number', required: true, label: 'Doxorubicin dose' },
+      { dom: 'dxr-dose', arg: 'doxorubicinDose', kind: 'number', required: true, label: 'Doxorubicin dose', min: 0, exclusiveMin: true, max: 1000 },
       { dom: 'dxr-unit', arg: 'unit', kind: 'enum', required: true, values: DX.UNITS.map((u) => u.value), label: 'Dose unit' },
       { dom: 'dxr-crcl', arg: 'crcl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min', max: 300 },
       { dom: 'dxr-cumulative', arg: 'cumulativeDoxorubicin', kind: 'number', label: 'Cumulative doxorubicin to date (optional)', unit: 'mg/m²', max: 2000 },

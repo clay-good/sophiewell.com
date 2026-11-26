@@ -11,8 +11,8 @@ export default [
     fields: [
       { dom: 'ftu-sex', arg: 'sex', kind: 'enum', required: true, values: FT.SEXES.map((s) => s.value), label: 'Sex (sets the grams in one fingertip unit)' },
       ...FT.AREAS.map((a) => ({ dom: a.dom, arg: a.arg, kind: 'number', label: `${a.label}: how many treated (0${a.max === 2 ? ', 1 or 2' : ' or 1'})`, min: 0, max: a.max })),
-      { dom: 'ftu-apps', arg: 'applicationsPerDay', kind: 'number', required: true, label: 'Applications per day' },
-      { dom: 'ftu-days', arg: 'days', kind: 'number', required: true, label: 'Days of treatment', unit: 'days' },
+      { dom: 'ftu-apps', arg: 'applicationsPerDay', kind: 'number', required: true, label: 'Applications per day', min: 0, exclusiveMin: true, max: 12 },
+      { dom: 'ftu-days', arg: 'days', kind: 'number', required: true, label: 'Days of treatment', unit: 'days', min: 0, exclusiveMin: true, max: 365 },
       { dom: 'ftu-tube', arg: 'tubeGrams', kind: 'number', label: 'Tube size (optional)', unit: 'g' },
     ],
   },

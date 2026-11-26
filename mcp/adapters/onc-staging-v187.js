@@ -59,7 +59,7 @@ export default [
     compute: F.glasgowPrognosticScore,
     fields: [
       { dom: 'mgps-crp', arg: 'crp', kind: 'number', required: true, label: 'C-reactive protein', unit: 'mg/L', max: 1000 },
-      { dom: 'mgps-albumin', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL' },
+      { dom: 'mgps-albumin', arg: 'albumin', kind: 'number', required: true, label: 'Serum albumin', unit: 'g/dL', min: 0, exclusiveMin: true, max: 10 },
     ],
   },
 ];

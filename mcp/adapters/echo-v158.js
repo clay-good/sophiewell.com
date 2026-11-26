@@ -23,8 +23,8 @@ export default [
     summary: 'Left-atrial volume index by the biplane area-length method with the ASE severity bands (Lang 2015).',
     compute: F.laVolumeIndex,
     fields: [
-      { dom: 'lavi-a1', arg: 'a1', kind: 'number', required: true, label: 'Apical 4-chamber LA area', unit: 'cm^2' },
-      { dom: 'lavi-a2', arg: 'a2', kind: 'number', required: true, label: 'Apical 2-chamber LA area', unit: 'cm^2' },
+      { dom: 'lavi-a1', arg: 'a1', kind: 'number', required: true, label: 'Apical 4-chamber LA area', unit: 'cm^2', min: 0, exclusiveMin: true, max: 80 },
+      { dom: 'lavi-a2', arg: 'a2', kind: 'number', required: true, label: 'Apical 2-chamber LA area', unit: 'cm^2', min: 0, exclusiveMin: true, max: 80 },
       { dom: 'lavi-l', arg: 'l', kind: 'number', required: true, label: 'LA length (shorter of the two)', unit: 'cm' },
       { dom: 'lavi-bsa', arg: 'bsa', kind: 'number', required: true, label: 'Body surface area', unit: 'm^2' },
     ],
@@ -34,8 +34,8 @@ export default [
     summary: 'Teichholz LVEF and fractional shortening from linear LV dimensions, with the sex-specific ASE normal cutoffs (Teichholz 1976; ASE 2015).',
     compute: F.teichholzLvef,
     fields: [
-      { dom: 'teich-lvidd', arg: 'lvidd', kind: 'number', required: true, label: 'LV internal diameter, end-diastole (LVIDd)', unit: 'cm' },
-      { dom: 'teich-lvids', arg: 'lvids', kind: 'number', required: true, label: 'LV internal diameter, end-systole (LVIDs)', unit: 'cm' },
+      { dom: 'teich-lvidd', arg: 'lvidd', kind: 'number', required: true, label: 'LV internal diameter, end-diastole (LVIDd)', unit: 'cm', min: 0, exclusiveMin: true, max: 12 },
+      { dom: 'teich-lvids', arg: 'lvids', kind: 'number', required: true, label: 'LV internal diameter, end-systole (LVIDs)', unit: 'cm', min: 0, exclusiveMin: true, max: 12 },
       { dom: 'teich-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: true, label: 'Sex' },
     ],
   },
@@ -53,7 +53,7 @@ export default [
     summary: 'E/e′ as an LV diastolic filling-pressure estimate, by the averaged or single-site cutoff (Nagueh 2016).',
     compute: F.mitralEePrime,
     fields: [
-      { dom: 'ee-e', arg: 'e', kind: 'number', required: true, label: 'Mitral-inflow early-diastolic velocity (E)', unit: 'cm/s' },
+      { dom: 'ee-e', arg: 'e', kind: 'number', required: true, label: 'Mitral-inflow early-diastolic velocity (E)', unit: 'cm/s', min: 0, exclusiveMin: true, max: 300 },
       { dom: 'ee-eprime', arg: 'ePrime', kind: 'number', required: true, label: 'Tissue-Doppler e′ velocity', unit: 'cm/s' },
       { dom: 'ee-site', arg: 'site', kind: 'enum', values: ['septal', 'lateral', 'average'], required: true, label: 'e′ site' },
     ],

@@ -42,8 +42,8 @@ export default [
     summary: 'Lipid Accumulation Product (Kahn 2005): (waist − 65) × triglycerides in men, (waist − 58) × triglycerides in women (mmol/L); a higher value marks greater central lipid accumulation.',
     compute: F.lap,
     fields: [
-      { dom: 'lap-wc', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm' },
-      { dom: 'lap-tg', arg: 'triglycerides', kind: 'number', required: true, label: 'Triglycerides', unit: 'mmol/L' },
+      { dom: 'lap-wc', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm', min: 0, exclusiveMin: true, max: 300 },
+      { dom: 'lap-tg', arg: 'triglycerides', kind: 'number', required: true, label: 'Triglycerides', unit: 'mmol/L', min: 0, exclusiveMin: true, max: 395.1 },
       { dom: 'lap-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex' },
     ],
   },
@@ -52,9 +52,9 @@ export default [
     summary: 'Visceral Adiposity Index (Amato 2010): a sex-specific function of waist, BMI, triglycerides, and HDL (mmol/L); ~1 is typical in healthy non-obese adults, higher suggests visceral-fat dysfunction.',
     compute: F.vai,
     fields: [
-      { dom: 'vai-wc', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm' },
+      { dom: 'vai-wc', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm', min: 0, exclusiveMin: true, max: 300 },
       { dom: 'vai-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²' },
-      { dom: 'vai-tg', arg: 'triglycerides', kind: 'number', required: true, label: 'Triglycerides', unit: 'mmol/L' },
+      { dom: 'vai-tg', arg: 'triglycerides', kind: 'number', required: true, label: 'Triglycerides', unit: 'mmol/L', min: 0, exclusiveMin: true, max: 395.1 },
       { dom: 'vai-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mmol/L' },
       { dom: 'vai-female', arg: 'female', kind: 'bool', required: false, label: 'Female sex' },
     ],
@@ -64,7 +64,7 @@ export default [
     summary: 'Conicity Index (Valdez 1991): waist (m) / (0.109 × √(weight (kg) / height (m))); a higher value marks greater central adiposity.',
     compute: F.conicity,
     fields: [
-      { dom: 'con-wc', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm' },
+      { dom: 'con-wc', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm', min: 0, exclusiveMin: true, max: 300 },
       { dom: 'con-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', min: 0.2 },
       { dom: 'con-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', min: 45 },
     ],

@@ -36,7 +36,7 @@ export default [
       { dom: 'ga-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'ga-ht', arg: 'height', kind: 'number', required: true, label: 'Height', unit: 'cm', bound: 'heightM', boundScale: 100 },
       { dom: 'ga-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight', unit: 'kg', bound: 'weightKg' },
-      { dom: 'ga-inr', arg: 'targetInr', kind: 'number', required: true, label: 'Target INR' },
+      { dom: 'ga-inr', arg: 'targetInr', kind: 'number', required: true, label: 'Target INR', min: 0, exclusiveMin: true, max: 10 },
       { dom: 'ga-vk', arg: 'vkorc1', kind: 'enum', values: ['GG', 'AG', 'AA'], required: true, label: 'VKORC1 (-1639 G>A) genotype' },
       { dom: 'ga-cyp', arg: 'cyp2c9', kind: 'enum', values: ['*1/*1', '*1/*2', '*1/*3', '*2/*2', '*2/*3', '*3/*3'], required: true, label: 'CYP2C9 genotype' },
       { dom: 'ga-amio', arg: 'amiodarone', kind: 'enum', values: YESNO, required: true, label: 'Amiodarone' },

@@ -13,7 +13,7 @@ export default [
     summary: 'Neonatal ponderal index: 100 × birth weight (g) / length (cm)³; a value below ~2.0 marks disproportionate wasting (asymmetric intrauterine growth restriction).',
     compute: F.ponderalIndex,
     fields: [
-      { dom: 'pi-weight', arg: 'weightG', kind: 'number', required: true, label: 'Birth weight', unit: 'g' },
+      { dom: 'pi-weight', arg: 'weightG', kind: 'number', required: true, label: 'Birth weight', unit: 'g', min: 0, exclusiveMin: true, max: 12000 },
       { dom: 'pi-length', arg: 'lengthCm', kind: 'number', required: true, label: 'Length', unit: 'cm' },
     ],
   },

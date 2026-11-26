@@ -16,7 +16,7 @@ export default [
       { dom: 'm3-inr', arg: 'inr', kind: 'number', required: true, label: 'INR' },
       { dom: 'm3-creat', arg: 'creatinine', kind: 'number', unit: 'mg/dL', required: true, label: 'Serum creatinine (mg/dL)', min: 0.1 },
       { dom: 'm3-na', arg: 'sodium', kind: 'number', unit: 'mEq/L', required: true, label: 'Serum sodium (mEq/L)', min: 85 },
-      { dom: 'm3-alb', arg: 'albumin', kind: 'number', unit: 'g/dL', required: true, label: 'Serum albumin (g/dL)' },
+      { dom: 'm3-alb', arg: 'albumin', kind: 'number', unit: 'g/dL', required: true, label: 'Serum albumin (g/dL)', min: 0, exclusiveMin: true, max: 10 },
       { dom: 'm3-dial', arg: 'dialysis', kind: 'boolean', required: false, label: '>= 2 dialysis sessions in prior week / 24h CVVHD (sets creatinine to 3.0)' },
     ],
   },

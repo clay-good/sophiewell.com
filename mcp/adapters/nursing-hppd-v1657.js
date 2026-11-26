@@ -15,7 +15,7 @@ export default [
       { dom: 'hppd-aide', arg: 'aideHours', kind: 'number', required: false, label: 'Nurse aide hours', bound: 'hcg', boundScale: 10 },
       { dom: 'hppd-hours-basis', arg: 'hoursBasis', kind: 'enum', values: ['worked', 'paid'], required: false, label: 'Hours counted' },
       { dom: 'hppd-days-basis', arg: 'daysBasis', kind: 'enum', values: ['midnight', 'adjusted'], required: false, label: 'Patient days counted' },
-      { dom: 'hppd-target', arg: 'targetHppd', kind: 'number', required: false, label: 'Target HPPD the unit uses' },
+      { dom: 'hppd-target', arg: 'targetHppd', kind: 'number', required: false, label: 'Target HPPD the unit uses', min: 0, exclusiveMin: true, max: 48 },
     ]
   },
 ];

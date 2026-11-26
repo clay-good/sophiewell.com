@@ -14,8 +14,8 @@ export default [
     summary: 'Pulmonary Artery Pulsatility Index (Korabathina 2012): (PA systolic − PA diastolic) / right atrial pressure; a low index flags RV dysfunction in acute inferior MI, advanced heart failure, and post-LVAD RV failure.',
     compute: F.papi,
     fields: [
-      { dom: 'papi-pasp', arg: 'pasp', kind: 'number', required: true, label: 'PA systolic pressure', unit: 'mmHg' },
-      { dom: 'papi-padp', arg: 'padp', kind: 'number', required: true, label: 'PA diastolic pressure', unit: 'mmHg' },
+      { dom: 'papi-pasp', arg: 'pasp', kind: 'number', required: true, label: 'PA systolic pressure', unit: 'mmHg', min: 0, exclusiveMin: true, max: 300 },
+      { dom: 'papi-padp', arg: 'padp', kind: 'number', required: true, label: 'PA diastolic pressure', unit: 'mmHg', min: 0, exclusiveMin: true, max: 200 },
       { dom: 'papi-rap', arg: 'rap', kind: 'number', required: true, label: 'Right atrial pressure', unit: 'mmHg' },
     ],
   },
@@ -24,9 +24,9 @@ export default [
     summary: 'Transpulmonary (mean PAP − PCWP) and diastolic (PA diastolic − PCWP) pressure gradients (Naeije 2013); with PCWP > 15 mmHg a DPG ≥ 7 marks a combined pre-/post-capillary pulmonary-hypertension pattern.',
     compute: F.pressureGradients,
     fields: [
-      { dom: 'tpg-mpap', arg: 'mpap', kind: 'number', required: true, label: 'Mean PA pressure', unit: 'mmHg' },
-      { dom: 'tpg-padp', arg: 'padp', kind: 'number', required: true, label: 'PA diastolic pressure', unit: 'mmHg' },
-      { dom: 'tpg-pcwp', arg: 'pcwp', kind: 'number', required: true, label: 'Mean PCWP', unit: 'mmHg' },
+      { dom: 'tpg-mpap', arg: 'mpap', kind: 'number', required: true, label: 'Mean PA pressure', unit: 'mmHg', min: 0, exclusiveMin: true, max: 200 },
+      { dom: 'tpg-padp', arg: 'padp', kind: 'number', required: true, label: 'PA diastolic pressure', unit: 'mmHg', min: 0, exclusiveMin: true, max: 200 },
+      { dom: 'tpg-pcwp', arg: 'pcwp', kind: 'number', required: true, label: 'Mean PCWP', unit: 'mmHg', min: 0, exclusiveMin: true, max: 100 },
     ],
   },
   {
@@ -45,11 +45,11 @@ export default [
     compute: F.shuntFraction,
     fields: [
       { dom: 'shunt-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL', min: 1 },
-      { dom: 'shunt-pao2a', arg: 'pAO2', kind: 'number', required: true, label: 'Alveolar / end-capillary O₂ tension', unit: 'mmHg' },
+      { dom: 'shunt-pao2a', arg: 'pAO2', kind: 'number', required: true, label: 'Alveolar / end-capillary O₂ tension', unit: 'mmHg', min: 0, exclusiveMin: true, max: 800 },
       { dom: 'shunt-sao2', arg: 'sao2', kind: 'number', required: true, label: 'Arterial SaO₂', unit: '%', min: 1, max: 100 },
-      { dom: 'shunt-pao2', arg: 'pao2', kind: 'number', required: true, label: 'Arterial PaO₂', unit: 'mmHg' },
+      { dom: 'shunt-pao2', arg: 'pao2', kind: 'number', required: true, label: 'Arterial PaO₂', unit: 'mmHg', min: 0, exclusiveMin: true, max: 800 },
       { dom: 'shunt-svo2', arg: 'svo2', kind: 'number', required: true, label: 'Mixed-venous SvO₂', unit: '%', min: 1, max: 100 },
-      { dom: 'shunt-pvo2', arg: 'pvo2', kind: 'number', required: true, label: 'Mixed-venous PvO₂', unit: 'mmHg' },
+      { dom: 'shunt-pvo2', arg: 'pvo2', kind: 'number', required: true, label: 'Mixed-venous PvO₂', unit: 'mmHg', min: 0, exclusiveMin: true, max: 800 },
     ],
   },
 ];

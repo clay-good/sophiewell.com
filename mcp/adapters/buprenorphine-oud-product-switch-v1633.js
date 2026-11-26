@@ -12,7 +12,7 @@ export default [
     compute: BS.buprenorphineOudProductSwitch,
     fields: [
       { dom: 'bps-switch', arg: 'switch', kind: 'enum', required: true, values: BS.SWITCHES.map((d) => d.value), label: 'From which product to which' },
-      { dom: 'bps-dose', arg: 'dose', kind: 'number', required: true, label: 'Current dose: mg of buprenorphine a day (or the Brixadi weekly or monthly dose)', unit: 'mg' },
+      { dom: 'bps-dose', arg: 'dose', kind: 'number', required: true, label: 'Current dose: mg of buprenorphine a day (or the Brixadi weekly or monthly dose)', unit: 'mg', min: 0, exclusiveMin: true, max: 200 },
       { dom: 'bps-first', arg: 'firstInjection', kind: 'string', label: 'Date of the first injection (YYYY-MM-DD, optional)' },
     ],
   },

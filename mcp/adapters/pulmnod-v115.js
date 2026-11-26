@@ -29,7 +29,7 @@ export default [
     fields: [
       { dom: 'bn-age', arg: 'age', kind: 'number', required: true, label: 'Age (years)', bound: 'ageYears' },
       { dom: 'bn-size', arg: 'size', kind: 'number', required: true, label: 'Nodule diameter (mm)' },
-      { dom: 'bn-count', arg: 'count', kind: 'number', required: true, label: 'Number of nodules' },
+      { dom: 'bn-count', arg: 'count', kind: 'number', required: true, label: 'Number of nodules', min: 1 },
       { dom: 'bn-type', arg: 'type', kind: 'enum', values: ['solid', 'part-solid', 'non-solid'], required: true, label: 'Nodule type' },
       { dom: 'bn-female', arg: 'female', kind: 'bool', label: 'Female sex' },
       { dom: 'bn-fh', arg: 'familyHistory', kind: 'bool', label: 'Family history of lung cancer' },

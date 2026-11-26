@@ -11,10 +11,10 @@ export default [
     compute: KE.kineticEgfr,
     fields: [
       { dom: 'ke-base', arg: 'baselineCreatinine', kind: 'number', required: true, label: 'Baseline (steady-state) creatinine', unit: 'mg/dL', min: 0.1 },
-      { dom: 'ke-crcl', arg: 'baselineClearance', kind: 'number', required: true, label: 'Clearance or eGFR at that baseline', unit: 'mL/min' },
+      { dom: 'ke-crcl', arg: 'baselineClearance', kind: 'number', required: true, label: 'Clearance or eGFR at that baseline', unit: 'mL/min', min: 0, exclusiveMin: true, max: 300 },
       { dom: 'ke-c1', arg: 'creatinine1', kind: 'number', required: true, label: 'First creatinine', unit: 'mg/dL', min: 0.1 },
       { dom: 'ke-c2', arg: 'creatinine2', kind: 'number', required: true, label: 'Second creatinine', unit: 'mg/dL', min: 0.1 },
-      { dom: 'ke-hours', arg: 'hours', kind: 'number', required: true, label: 'Hours between the two', unit: 'hours' },
+      { dom: 'ke-hours', arg: 'hours', kind: 'number', required: true, label: 'Hours between the two', unit: 'hours', min: 0, exclusiveMin: true, max: 720 },
       { dom: 'ke-weight', arg: 'weight', kind: 'number', required: false, label: 'Weight (or enter the maximum rise per day)', unit: 'kg', min: 0.2 },
       { dom: 'ke-max', arg: 'maxRise', kind: 'number', required: false, label: 'Maximum creatinine rise per day', unit: 'mg/dL per day' },
     ],

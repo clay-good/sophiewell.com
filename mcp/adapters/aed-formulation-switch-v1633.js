@@ -11,7 +11,7 @@ export default [
     compute: AF.aedFormulationSwitch,
     fields: [
       { dom: 'afs-switch', arg: 'switch', kind: 'enum', required: true, values: AF.SWITCHES.map((d) => d.value), label: 'Drug and switch' },
-      { dom: 'afs-dose', arg: 'dailyDose', kind: 'number', required: true, label: 'Current total daily dose (mg; phenytoin to fosphenytoin in mg PE)', unit: 'mg' },
+      { dom: 'afs-dose', arg: 'dailyDose', kind: 'number', required: true, label: 'Current total daily dose (mg; phenytoin to fosphenytoin in mg PE)', unit: 'mg', min: 0, exclusiveMin: true, max: 20000 },
     ],
   },
 ];

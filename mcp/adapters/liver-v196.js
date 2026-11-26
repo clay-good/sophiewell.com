@@ -24,10 +24,10 @@ export default [
     compute: F.globeScore,
     fields: [
       { dom: 'globe-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'globe-bili', arg: 'bili', kind: 'number', required: true, label: 'Bilirubin (× ULN)' },
-      { dom: 'globe-alp', arg: 'alp', kind: 'number', required: true, label: 'Alkaline phosphatase (× ULN)' },
+      { dom: 'globe-bili', arg: 'bili', kind: 'number', required: true, label: 'Bilirubin (× ULN)', min: 0, exclusiveMin: true, max: 100 },
+      { dom: 'globe-alp', arg: 'alp', kind: 'number', required: true, label: 'Alkaline phosphatase (× ULN)', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'globe-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin (× LLN)' },
-      { dom: 'globe-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '× 10⁹/L' },
+      { dom: 'globe-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '× 10⁹/L', min: 0, exclusiveMin: true, max: 2000 },
     ],
   },
   {
@@ -35,11 +35,11 @@ export default [
     summary: 'UK-PBC risk score (Carbone 2016): from 12-month alkaline phosphatase, transaminase, and bilirubin plus baseline albumin and platelets, the 5-, 10-, and 15-year risk of end-stage liver disease in PBC.',
     compute: F.ukPbcRisk,
     fields: [
-      { dom: 'ukpbc-alp', arg: 'alp', kind: 'number', required: true, label: 'Alkaline phosphatase (× ULN, 12 mo)' },
-      { dom: 'ukpbc-trans', arg: 'transaminase', kind: 'number', required: true, label: 'Transaminase ALT or AST (× ULN, 12 mo)' },
-      { dom: 'ukpbc-bili', arg: 'bili', kind: 'number', required: true, label: 'Bilirubin (× ULN, 12 mo)' },
+      { dom: 'ukpbc-alp', arg: 'alp', kind: 'number', required: true, label: 'Alkaline phosphatase (× ULN, 12 mo)', min: 0, exclusiveMin: true, max: 100 },
+      { dom: 'ukpbc-trans', arg: 'transaminase', kind: 'number', required: true, label: 'Transaminase ALT or AST (× ULN, 12 mo)', min: 0, exclusiveMin: true, max: 100 },
+      { dom: 'ukpbc-bili', arg: 'bili', kind: 'number', required: true, label: 'Bilirubin (× ULN, 12 mo)', min: 0, exclusiveMin: true, max: 100 },
       { dom: 'ukpbc-alb', arg: 'albumin', kind: 'number', required: true, label: 'Baseline albumin (× LLN)' },
-      { dom: 'ukpbc-plt', arg: 'platelets', kind: 'number', required: true, label: 'Baseline platelets (× LLN)' },
+      { dom: 'ukpbc-plt', arg: 'platelets', kind: 'number', required: true, label: 'Baseline platelets (× LLN)', min: 0, exclusiveMin: true, max: 20 },
     ],
   },
   {
@@ -49,7 +49,7 @@ export default [
     fields: [
       { dom: 'pageb-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'pageb-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: true, label: 'Sex' },
-      { dom: 'pageb-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '× 10⁹/L' },
+      { dom: 'pageb-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '× 10⁹/L', min: 0, exclusiveMin: true, max: 2000 },
     ],
   },
   {
@@ -59,8 +59,8 @@ export default [
     fields: [
       { dom: 'mayopsc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'mayopsc-bili', arg: 'bilirubin', kind: 'number', required: true, label: 'Bilirubin', unit: 'mg/dL' },
-      { dom: 'mayopsc-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
-      { dom: 'mayopsc-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', min: 1 },
+      { dom: 'mayopsc-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL', min: 0, exclusiveMin: true, max: 10 },
+      { dom: 'mayopsc-ast', arg: 'ast', kind: 'number', required: true, label: 'AST', unit: 'U/L', min: 1, max: 20000 },
       { dom: 'mayopsc-var', arg: 'variceal', kind: 'bool', required: false, label: 'History of variceal bleeding' },
     ],
   },
