@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Fourteen more, and every one of them already had its range written down for the agent interface and not
+  applied to the page: the ESSPRI items run 0 to 10, the dental caries counts 0 to 32, a Glasgow Coma Scale
+  total 3 to 15. An agent could never have sent a value past those; a reader could, and was told to enter
+  one. Both now refuse the same values.
 - Fourteen more input fields the same way. Two tools answered back usefully: the ACR/EULAR Boolean
   remission check already validated every item and names which one is wrong, so its own check was kept and
   sharpened rather than replaced; and the VEXUS grade was treating a negative vena-cava diameter as an
