@@ -33,6 +33,39 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
+// spec-v1818: the name/arity groups that have been READ, with the reason their copies differ.
+//
+// `check-helper-drift` in the lint chain watches the readers whose disagreement is a CORRECTNESS question
+// and requires one behaviour each. This probe asks a wider question -- it DRIVES every copy of every
+// repeated name over the battery below -- and most of what it finds is not drift at all but two different
+// functions wearing one short name. Those are judged here, so a group whose copies answer the SAME
+// question differently is the only thing the report prints.
+//
+// spec-v1818 moved `bool` out of this list and into `check-helper-drift`'s watched set, because it is the
+// one group that did answer the same question: every copy asks "is this criterion ticked?", and three of
+// the thirty-six read the number 1 as NO while the other thirty-three read it as yes.
+const JUDGED = {
+  'clamp/3': 'A bound applied to a number already read, not a reader. Nine copies take (v, lo, hi) and six '
+    + 'write the comparisons out; three return null for null, which only matters to a caller that passes '
+    + 'one, and none does -- clamp is applied after the read',
+  'fin/1': 'Two different jobs under one name, both right where they are used: 31 copies accept a real '
+    + 'NUMBER only (a string reads as absent, which is what their callers want of a value the surface has '
+    + 'already coerced) and 5 accept a numeric string too. Neither surface sends a string -- makeToArgs '
+    + 'coerces a number field through parseDecimal, and the views read through numv',
+  'pct/1': 'Three different jobs under one name: a formatter ("7.2%"), a converter (x100), and a reader '
+    + 'that bounds a percentage at 100. Each module uses its own, and the disagreement is the name being '
+    + 'short rather than one rule written twice',
+  'pct/2': 'The two-argument form is a rate out of a denominator, and its copies differ in what they do '
+    + 'with a zero denominator -- null, or a formatted NaN. Not the same question as pct/1 at all',
+  'r1/1': 'A round to one decimal in two shapes: 28 copies return the NUMBER and 10 return the STRING of '
+    + 'it, and a value and a formatted value are different jobs. spec-v1818 fixed the one case where the '
+    + 'NAME lied -- two modules called a round to TWO decimals r1',
+  'r2/1': 'The same two shapes at two decimals: 30 copies return the number, 4 the string, and one returns '
+    + 'it through toLocaleString for a thousands separator',
+};
+const judgedSeen = new Set();
+const JUDGED_ALL = process.argv.includes('--all');
+
 const WATCH = ['fin', 'bool', 'B', 'r1', 'r2', 'clamp', 'pct', 'nn', 'blank'];
 
 // Plausible readings, the boundary values, and the things that are not readings
@@ -113,6 +146,12 @@ for (const [name, list] of [...copies].sort()) {
       console.log(`\n${name}/${arity}: ${group.length} copies AGREE on all ${BATTERY.length} values${tail}`);
       continue;
     }
+    const key = `${name}/${arity}`;
+    if (JUDGED[key]) {
+      judgedSeen.add(key);
+      if (JUDGED_ALL) console.log(`JUDGED\t${key}\t${JUDGED[key]}`);
+      continue;
+    }
     drifted += 1;
     console.log(`\n${name}/${arity}: ${group.length} copies, ${rows.length} of ${BATTERY.length} values DISAGREE${tail}`);
     for (const f of group) console.log(`   ${f.file}:${f.line}`);
@@ -122,5 +161,10 @@ for (const [name, list] of [...copies].sort()) {
 }
 
 rmSync(TMP, { recursive: true, force: true });
+const stale = Object.keys(JUDGED).filter((k) => !judgedSeen.has(k));
+if (stale.length) {
+  console.log(`STALE-LEDGER: ${stale.length} judged group(s) this run no longer reaches: ${stale.join(', ')}.`);
+  console.log('A reason cannot outlive what it describes -- re-read the helper and remove the row.');
+}
 console.log(`\n${drifted} watched name/arity groups disagree, ${agreed} agree`
   + ` (reach: ${WATCH.length} names across ${readdirSync('lib').filter((x) => x.endsWith('.js')).length} lib modules)`);

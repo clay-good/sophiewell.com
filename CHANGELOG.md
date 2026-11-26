@@ -76,6 +76,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- A small helper that answers "is this criterion ticked?" was written out in thirty-six calculator modules,
+  and three of them read the number 1 as NO -- the APACHE II group, the Glasgow-Blatchford bleeding score
+  and MIPSS70. Nothing sends them a bare 1 today, because both the page and the agent interface hand them a
+  real true or false; this is the kind of disagreement that waits for the surface that does. All thirty-six
+  read it the same way now, and the build fails if they drift again. Two other modules stopped calling a
+  round to two decimals by the name every other module uses for a round to one.
 - The check for a decimal silently rounded away in a whole-number field now fails the build on anything new.
   Its forty-six current readings are all figures rounding to the precision they are printed at -- a QTc in
   milliseconds, an ankle-brachial index on the published two-decimal bands, a Baux score that is defined as

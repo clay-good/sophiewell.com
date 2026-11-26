@@ -187,6 +187,18 @@ const FINDERS = [
     minJudged: 46,
   },
   {
+    probe: 'probe-helper-behaviour-drift.mjs',
+    what: 'copies of one helper name that answer the same question differently when driven over a battery '
+      + 'of plausible and impossible readings',
+    fix: 'Give them one behaviour and add the name to `check-helper-drift`\'s WATCHED set (docs/spec-v1818.md), '
+      + 'or add the name/arity to JUDGED in the finder with the reason they are two different functions '
+      + 'wearing one short name',
+    // Its rows are a group header at the left margin and indented detail beneath; a header is the finding.
+    isFinding: (l) => /DISAGREE|not comparable/.test(l),
+    informational: [],
+    minJudged: 6,
+  },
+  {
     probe: 'probe-declared-cap-configs.mjs',
     what: 'a declared bound the library answers past in some configuration, so the page answers what the agent is refused',
     fix: 'Hoist the guard above the branch split with gradeFault (docs/spec-v1780.md), drop the declaration, '

@@ -37,7 +37,7 @@ const LIB = join(ROOT, 'lib');
 const OWNED = [{ name: 'todayUtc', owner: 'lib/pa/date.js' }];
 
 // The readers whose disagreement is a correctness question, not a style one.
-const WATCHED = ['optNum', 'nvOrNull', 'numOrNull', 'unitNumOpt', 'needValues', 'needItems'];
+const WATCHED = ['optNum', 'nvOrNull', 'numOrNull', 'unitNumOpt', 'needValues', 'needItems', 'bool'];
 
 function bodiesIn(file, src) {
   const lines = src.split('\n');

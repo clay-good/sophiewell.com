@@ -350,7 +350,7 @@ node scripts/probe-unit-equivalent.mjs     # the same quantity in the other unit
 node scripts/probe-note-lost-in-a-branch.mjs  # a tile that owns a gap in some configurations of its other fields and answers without owning it in the rest, where the field could still move the verdict there -- no judgement in the row, because the tile has already made it (docs/spec-v1814.md)
 ```
 
-**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds thirty-two of them
+**A finder with a judged ledger belongs in `test/unit/finder-ledgers.test.js`**, which holds thirty-three of them
 in both directions: an unjudged row fails the gate, so it is a decision someone takes rather than a line in
 a report that already prints known ones, and a judged row the finder no longer reaches fails too, so a
 reason cannot outlive what it describes. Negative-test both directions when you add one, by removing a
