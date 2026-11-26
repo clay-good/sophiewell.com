@@ -94,6 +94,18 @@ const FINDERS = [
     minJudged: 7,
   },
   {
+    // spec-v1800: promoted the day its last row was judged. Its findings CAN be deliberate -- an infusate's
+    // electrolytes are not a patient's, a unit converter converts, and a rewarming tool is opened for the
+    // record-breaking case -- so unlike probe-borrowed-envelope it carries a ledger.
+    probe: 'probe-envelope-unenforced.mjs',
+    what: 'a field that IS one of lib/bounds.js\'s quantities, answered outside that quantity\'s envelope',
+    fix: 'Apply the envelope the 569 other fields of that quantity apply (docs/spec-v1799.md, '
+      + 'docs/spec-v1800.md), or add it to JUDGED in the finder with the reason the value is ordinary',
+    informational: [],
+    isFinding: (l) => l.includes('\t') && !l.startsWith('OK'),
+    minJudged: 9,
+  },
+  {
     // spec-v1797: promoted the day it was written, because the 163 rows it found were all one refactor --
     // a borrowed envelope plus a scale is an obfuscated literal -- and the refactor is done. It has no
     // ledger: a borrowed envelope is never the right answer, so there is nothing here to judge.

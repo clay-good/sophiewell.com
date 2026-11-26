@@ -49,8 +49,10 @@ test('overflow-safe: extreme inputs do not leak non-finite', () => {
   // its floor; a hemoglobin of 1e9 is refused.
   // spec-v1742: so does heart rate (10 to 300 bpm); the probe sits at its ceiling.
   // spec-v1747: base excess has an envelope (-60 to 70 mmol/L); the probe sits at its floor.
-  const r = tashScore({ hb: 2, baseExcess: -60, sbp: -1e9, hr: 300 });
-  assert.equal(tashScore({ hb: 2, baseExcess: -1e9, sbp: -1e9, hr: 300 }).valid, false);
+  // spec-v1800: and so does the systolic pressure (20 to 500 mmHg); the probe sits at its floor too.
+  const r = tashScore({ hb: 2, baseExcess: -60, sbp: 20, hr: 300 });
+  assert.equal(tashScore({ hb: 2, baseExcess: -1e9, sbp: 20, hr: 300 }).valid, false);
+  assert.equal(tashScore({ hb: 2, baseExcess: -60, sbp: -1e9, hr: 300 }).valid, false);
   assert.ok(Number.isFinite(r.pct));
   assert.ok(Number.isFinite(r.total));
   assert.equal(tashScore({ hb: 1e9, baseExcess: -1e9, sbp: -1e9, hr: 1e9 }).valid, false);

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c4a0d21b243c3957`
-Generated: 2026-11-26T04:22:50.503Z
+Build ID: `a6a07062db0d340f`
+Generated: 2026-11-26T05:06:02.420Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -477,7 +477,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/emergency-contraception-window-v1639.js` | 7688 | `df4b9cd7dfbf493e871ccb64985b6d5106d400760083b8175380f1a7fc1934bf` |
 | `lib/emergency-ind-clock-v1635.js` | 3178 | `5fa09de7e7d0c57780876d393a110fbe488466d70250b1c2f6c7eb11b0fdb35d` |
 | `lib/ems-v149.js` | 10778 | `40cbe6e50e8053f07d5b1501b409eaa0b41bf752d9e62d72fccc89ccba813ca5` |
-| `lib/endo-metab-v161.js` | 13476 | `04875a21de09456a2ab67c1f6c5bfc176b92a2592f33c2613df1a7c738fa89fc` |
+| `lib/endo-metab-v161.js` | 14158 | `4bf494e367148a5fa4ad4992c21daa972d56a958373c7eaef2a2f44380568a03` |
 | `lib/endo-quant-v197.js` | 12172 | `8be5abb86d3b60cb2566aedd1ca80c462689f3c36fd6628900e2e76c3ba30dc6` |
 | `lib/endo-v136.js` | 19433 | `6b1609f7a5bd4ff0cad4fb30c72e7ccb56a72f8868e0db0012128cfda880784d` |
 | `lib/endoleak-type-v1242.js` | 7013 | `0c7acf6f3309f0acfa12325560daf827daf286376356c511bcc4eb849b7ebb2b` |
@@ -846,7 +846,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ltcga-v175.js` | 8504 | `feca83c380ea8d4afac7105404b554044e47e8511d052c8697371ea70fb0ba9b` |
 | `lib/ltcga-v176.js` | 16536 | `6e2cdb891d78698e8c2b497ece44cc69a1d4bbeb3a492a69ad40ae5735ade358` |
 | `lib/ltcga-v177.js` | 9920 | `0ec323c76b737d3d64e7a4bf68a08384a10e1aaf511d250067469c2546545b2a` |
-| `lib/ltcga-v178.js` | 13540 | `2b990ef3b0635c01efd904fa5448edf93d8aabb49d28ad86fae0ff13340eb88c` |
+| `lib/ltcga-v178.js` | 14321 | `43a15d919ede0d93b6828fc121063a3f81890bfc0e22b07fa774788815a1c01f` |
 | `lib/ltcga-v179.js` | 8006 | `14892e5bf68f918dc43c225d4289e5d71c1cc1c79b271f35e12bc5648cf2ce2c` |
 | `lib/ltcga-v180.js` | 8286 | `71a911890c844ff8821a673b4257d9f4ea4283d2c6fd8a989b88ea5213558936` |
 | `lib/ltcga-v181.js` | 24381 | `32c19d0dc097ac9a01d5511da71cbd4cc990076390c5118cfde9881289ebc95f` |
@@ -1250,7 +1250,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pulm-copd-v205.js` | 16763 | `f6f1fdf0db2257c2caf40d143329085f9fb2a8e1a3f59a251c7a657b6d005239` |
 | `lib/pulm-v114.js` | 18455 | `dfa16add429f4bf2d5eceb5457a98a2c1ebe1f01e57cac250a9ee1ccb555e4c6` |
 | `lib/pulm-v91.js` | 22071 | `f374225ca83a80c5e87d4390b2338bda2a1b17d371c222fc94c9966582b9ee32` |
-| `lib/pulmnod-v115.js` | 21298 | `b40848ee2c05e7341223d16c0ed678bde9cfbd346073d914adbf378cc33425b7` |
+| `lib/pulmnod-v115.js` | 21560 | `461778e4e4ab4ae8b4e98ac25d490e9c6c4a587e8f79d313d3356b3866d98909` |
 | `lib/pulmonary-risk-v221.js` | 16582 | `1af92deec92724f086b1077b7ad438ef9974e7a8022eddd9bd234369209d129f` |
 | `lib/puqe24-v553.js` | 10458 | `97bff15d22021c1a21761c57fee54d19c8b70d286e7d3b52ab820105b0424b91` |
 | `lib/push-tool-v662.js` | 4843 | `0c6fa9721ac595d78e6f85f229f31092e1d6b1b11e9bc770a02b48c8195bb0c2` |
@@ -1379,7 +1379,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schofield-v779.js` | 4955 | `8b498620aa118c3241164e45276c69c1fdef9643f9dad0b9af4a1a4dd517d721` |
 | `lib/schumock-thornton-preventability-v1634.js` | 4099 | `89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 349041 | `bdb8430d080a318c50f614a13e9b2e563c633e59bf159168c31fbbafdf8e17be` |
+| `lib/scoring-v4.js` | 349918 | `feaffd92a381e6adef5bb35217b25160e79fd27dfbb5e5584cd4f12184b8d573` |
 | `lib/scoring-v5.js` | 15672 | `df55fc673b49339df3409eb8ebfe8c67fbd38dedf144c9e8aae02abb8318ee61` |
 | `lib/scoring-v6.js` | 34734 | `d92c1187e267ebb2dd1fc4b823f02c2a924e25e1addf2c9fd7b4e1f1582edef0` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
@@ -1512,7 +1512,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tranexamic-acid-renal-dose-v1632.js` | 5900 | `ca7a9c430fad4cef812f16b0dcfbbf808ea01289c61daf1f713b221c7298a2c7` |
 | `lib/transfusion-v292.js` | 6798 | `c73a51df1f2c06c305c62fb50de82c9e63a64c5de418037aa30d6f4f1c6b0105` |
 | `lib/transplant-formulation-switch-v1633.js` | 7426 | `0e9ef9c63a49bb29fcf09a467a035861ed391f1e718eca09443be26e29a928a2` |
-| `lib/trauma-v108.js` | 23167 | `67b46f862a3693aa9f9e9b57e9c73a12bce74f1d715d60a1d00a1daaf784229e` |
+| `lib/trauma-v108.js` | 23462 | `4bf7c6da78da3a46cea8eeeb8c76c7c020eabf5ee194e6765a7616698ed80bc9` |
 | `lib/traumaclass-v109.js` | 22765 | `ed0a634d9d21cd12caa257533d99ff407d6734e771ed79341b20ecda36346d08` |
 | `lib/traynelis-v448.js` | 2912 | `9d4abfa8bb4d994648678605ccd5e3e4749993a66f49f232310d39cd8cfd4cad` |
 | `lib/tree.js` | 5187 | `947cd24aa948c81432844601adc03446917bcb5e32ac187f66491bcd3420df08` |
@@ -1520,7 +1520,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/trial-record-retention-v1635.js` | 4609 | `7e7b041a407e5553a4b856d5b1f06dda71cc39a35d16cc6c1f3c65ad294baa53` |
 | `lib/tricuspid-regurgitation-stage-v848.js` | 10470 | `43ed5080a52905a45658c70a0398a5c08a415a9866d09677f715537d7fcd6737` |
 | `lib/trigeminal-neuralgia-ichd3-v817.js` | 6234 | `160bbd3813d9eaff32dd68f7c45d9c1fa9b13a9517bdeaf9102ef883b0125e3e` |
-| `lib/triple-i-v832.js` | 10574 | `989050130a88634ce2d91239327e1889467a577d5dd26ceb39598837be3caf2f` |
+| `lib/triple-i-v832.js` | 10918 | `06172698a05d35c7e84ec34ec65b29e94dc16eee6af10a5333780d0b2f6d1bf5` |
 | `lib/tryptase-v894.js` | 6785 | `5293ecfbc5b6bd84fb7e63e85cef192171887f26dc817fe13d609ab51a8acce9` |
 | `lib/tscherne-closed-v350.js` | 4710 | `abc1bfdfe56b3697d95e667db5677d8b54ed8bd45f11956bd8930705e2091c8c` |
 | `lib/turesky-plaque-v1496.js` | 2708 | `80f6ff739ce76b0150493e3dced5f9b5972511560bd2a5d8c6b88250bab2dd6c` |

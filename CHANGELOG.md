@@ -76,6 +76,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Eleven measurements that have a published plausible range behind them are now held to it. A systolic
+  blood pressure of 1,000 mmHg scored two trauma scores and a pulmonary-hypertension risk score; an
+  albumin of 14 g/dL, twice anything recorded, scored the top band of two nutritional indexes; a fetal
+  heart rate of 5 a minute read as the absence of tachycardia; and the calcium-phosphate product applied
+  one range to both of its units, so a calcium of 25 was accepted as mmol/L, where it is impossible.
+- A systolic blood pressure typed as 0 still reads as no recordable pressure in the two trauma scores
+  built around that, which is what they are for. Only the upper end is now refused there.
 - Six tools that dose by weight accepted a weight of 0.1 kg and answered: a pump rate from a mcg/kg/min
   order, a child's radiopharmaceutical activity, billing units for a mg/kg biologic, which epinephrine
   auto-injector a label states, an over-the-counter dose from a label's weight band, and a digoxin loading

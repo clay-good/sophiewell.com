@@ -29,7 +29,7 @@ export const ALIASES = {
   hemoglobin: ['hb', 'hgb'], hematocrit: ['hct'], platelets: ['plt', 'platelet'],
   albumin: ['alb'], bilirubin: ['bili', 'tbili'], inr: ['inr'],
   alt: ['alanine'], ast: ['aspartate'], wbc: ['leukocyte', 'leukocytes', 'leucocyte', 'white'],
-  weightKg: ['weight', 'wt'], heightM: ['height', 'ht'], ageYears: ['age', 'years', 'yr'],
+  weightKg: ['weight', 'wt'], heightM: ['height', 'ht'], ageYears: ['age'],
   bmi: ['bmi'], percentWeightLoss: [], sixMinuteWalkM: ['walk', '6mwd'],
   sbp: ['systolic'], dbp: ['diastolic'], hr: ['pulse', 'heart'], rr: ['respiratory'],
   spo2: ['sao2', 'saturation'], fio2: ['fio2'], paO2: ['pao2'], paCO2: ['paco2'], pH: ['ph'],
@@ -66,8 +66,15 @@ export const BLOOD = new Set(['sodium', 'potassium', 'chloride', 'bicarbonate', 
   'hemoglobin', 'hematocrit', 'platelets', 'triglycerides', 'esr', 'hcg', 'inr']);
 
 // Does a field's own vocabulary name this envelope? Its key, split into words, or any of its aliases.
+// spec-v1800: A FIELD NAMES ITS QUANTITY IN THE FIRST CLAUSE OF ITS LABEL; what follows is explanation,
+// and explanation names OTHER quantities. `hlh-2004`'s fibrinogen is labelled "Fibrinogen. Meets at 150
+// mg/dL or BELOW (source ...)", and the HLH criteria pair fibrinogen with triglycerides, so a sentence
+// further along named the triglyceride envelope and the field was matched to it. Up to the first full stop
+// or bracket, then. `unitOf` still reads the whole label, since a unit is often in a later parenthetical.
+const firstClause = (label) => String(label || '').split(/[.(;:]/)[0];
+
 export const names = (key, f) => {
-  const have = words(f.arg, f.label, f.unit);
+  const have = words(f.arg, firstClause(f.label), f.unit);
   // spec-v1799: a key word of two letters is not evidence, for the reason `mg` and `be` were dropped as
   // aliases: it is a unit as often as a quantity. `hr` matched the DENOMINATOR of every rate -- a urine
   // output in mL/kg/hr, an infusion in mL/hr -- and called them heart rates. Three letters or more, so
@@ -104,8 +111,18 @@ const unitKey = (u) => String(u || '').toLowerCase().replace(/[\u00b2\u00b3\u00b
 const WORD_UNITS = [[/\bpounds?\b|\blbs?\b/, 'lb'], [/\bgrams?\b/, 'g'], [/\bkilograms?\b/, 'kg'],
   [/\bmonths?\b/, 'months'], [/\bweeks?\b/, 'weeks'], [/\bpercent\b/, '%'],
   [/\binches\b|\binch\b/, 'in'], [/\bcentimet/, 'cm'], [/\bmet(er|re)s?\b/, 'm']];
+// spec-v1800: AND THE UNIT IS OFTEN THE LAST CAMEL SEGMENT OF THE ARGUMENT. `gnri` reads `albuminGL` -- an
+// albumin in g/L, where BOUNDS.albumin is g/dL -- beside `pni-onodera`'s `albuminGdl`, and neither states a
+// unit or puts one in its label. 14 g/L is 1.4 g/dL, an ordinary low albumin, so without this the two were
+// indistinguishable and one was reported as answering past its envelope when it was well inside it.
+const ARG_UNITS = { gl: 'g/L', gdl: 'g/dL', mgdl: 'mg/dL', mmol: 'mmol/L', meq: 'mEq/L', kg: 'kg', lb: 'lb',
+  cm: 'cm', mm: 'mm', ms: 'ms', pct: '%', percent: '%', mmhg: 'mmHg', iul: 'IU/L', umoll: 'umol/L' };
+
 export const unitOf = (f) => {
   if (f.unit) return String(f.unit);
+  const argWords = [...words(f.arg)];
+  const tail = argWords[argWords.length - 1];
+  if (argWords.length > 1 && tail && ARG_UNITS[tail]) return ARG_UNITS[tail];
   const label = String(f.label || '');
   // The LAST parenthetical, since a label often opens with a qualifier in brackets.
   const parens = [...label.matchAll(/\(([^)]{1,24})\)/g)].map((m) => m[1]);
@@ -134,11 +151,16 @@ export const unitFits = (key, f) => {
 // not an AST; `cac-agatston` reads a calcium SCORE, not a serum calcium; `ddi-basic-screen` reads a Ki, an
 // inhibition constant. The envelope for the analyte says nothing about any of them.
 export const NOT_A_MEASUREMENT = new Set(['uln', 'lln', 'upper', 'lower', 'limit', 'normal', 'reference',
-  'score', 'agatston', 'constant', 'coefficient', 'threshold', 'cutoff', 'target', 'multiple']);
+  'score', 'agatston', 'constant', 'coefficient', 'threshold', 'cutoff', 'target', 'multiple',
+  // spec-v1800: A CHANGE IN A QUANTITY IS NOT THE QUANTITY. `peds-transfusion-volume` asks for the desired
+  // hemoglobin RISE, and a rise of 0.5 g/dL is an ordinary transfusion order, not a hemoglobin of 0.5.
+  'rise', 'increment', 'change', 'delta', 'difference', 'drop', 'fall', 'gain', 'deficit']);
 // And an end-tidal CO2 is not an arterial one, which is the compartment rule in its respiratory spelling.
 export const NOT_ARTERIAL = new Set(['etco2', 'endtidal', 'tidal', 'expired', 'exhaled', 'alveolar']);
 
 const offBody = (f) => [...words(f.arg, f.label, f.unit)].some((w) => NOT_THE_PATIENT.has(w));
+// A disqualifier reads the WHOLE label on purpose: "per gram dry weight" or "(Agatston)" can sit after
+// the first clause, and a false match is worse than a missed one here.
 const notMeasured = (f) => [...words(f.arg, f.label)].some((w) => NOT_A_MEASUREMENT.has(w));
 const notArterial = (f) => [...words(f.arg, f.label)].some((w) => NOT_ARTERIAL.has(w));
 export const envelopeFor = (f) => KEYS.find((k) => names(k, f)

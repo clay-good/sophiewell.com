@@ -36,7 +36,28 @@ const ALL = process.argv.includes('--all');
 const ONLY = process.env.TOOLS ? new Set(process.env.TOOLS.split(',')) : null;
 
 // spec-v1799: a judged ledger, so this prints nothing until something new appears.
-const JUDGED = {};
+const JUDGED = {
+  // An INFUSATE's electrolytes, not a patient's. `iv-osmolarity` adds up what is in the bag: 154 mEq/L of
+  // sodium is normal saline, and the serum envelope (85 to 210) would turn away half the solutions a
+  // pharmacy makes. The matcher cannot see this from the field's own words, which say only "Sodium".
+  'iv-osmolarity:io-na:above': 'the sodium is the concentration IN THE BAG, not in serum; 3% saline is 513 mEq/L',
+  'iv-osmolarity:io-na:below': 'the sodium is the concentration IN THE BAG; a dilute additive solution is ordinary',
+  'iv-osmolarity:io-k:above': 'the potassium is the concentration IN THE BAG; a 40 mEq/L bag is routine and concentrates run higher',
+  'iv-osmolarity:io-k:below': 'the potassium is the concentration IN THE BAG; a dilute additive solution is ordinary',
+  // A TYPED 0 IS A READING in a trauma score. spec-v1154 settled this for GAP and MGAP: a systolic of 0 is
+  // no recordable blood pressure, which is exactly what the score is for, and is kept distinct from a blank
+  // at some length in both functions. The CEILING is applied; the floor would turn away the worst case.
+  'gap:gap-sbp:below': 'spec-v1154: a typed 0 systolic is a real reading in a trauma score (no recordable BP), kept distinct from a blank; the ceiling IS applied',
+  'mgap:mgap-sbp:below': 'spec-v1154: the same, in MGAP',
+  // A CONVERTER converts. Refusing a weight outside the envelope would stop the one tool whose whole job is
+  // to say what a number in one unit is in the other, and it reads no patient and scores nothing.
+  'peds-weight-conv:pw-kg:above': 'a unit converter: it states what a weight in kg is in lb and reads nothing else, so there is no patient to be implausible',
+  'peds-weight-conv:pw-kg:below': 'a unit converter: the same, and converting 0.1 kg to 0.22 lb is a correct answer',
+  // The one tool where the floor is the subject. BOUNDS.temperature starts at 13 C because 13.7 is the
+  // lowest survived core temperature on record -- and a rewarming tool is what a reader opens for exactly
+  // that case. Refusing below the record would turn away the next one.
+  'hypothermia-rewarm:hyp-t:below': 'a rewarming tool is opened for the record-breaking case; BOUNDS.temperature 13 C floor is the record (13.7), not a limit on what may be entered',
+};
 const judgedSeen = new Set();
 
 const rows = [];
@@ -44,6 +65,8 @@ const kept = [];
 let matched = 0;
 let declared = 0;
 let ceilingOnly = 0;
+let unitToggled = 0;
+let configDependent = 0;
 
 for (const t of allCalculators()) {
   if (ONLY && !ONLY.has(t.id)) continue;
@@ -56,20 +79,54 @@ for (const t of allCalculators()) {
     if (!Object.prototype.hasOwnProperty.call(ex, f.dom)) continue;
     const key = envelopeFor(f);
     if (!key) continue;
+    // spec-v1800: A FIELD WHOSE UNIT COMES FROM A SIBLING SELECT cannot be compared with an envelope's
+    // numbers at all. `isaric-4c-mortality` reads a urea in mmol/L or a BUN in mg/dL, picked by
+    // `is4c-ureaunit` beside it, and applies BOUNDS.bun after converting -- which spec-v1748 added. Driving
+    // the raw field to half the envelope's floor lands at 0.5, which in mmol/L is 1.4 mg/dL and well inside
+    // it, so the tool answers and the finder called that a defect.
+    const toggled = (t.fields || []).some((q) => q.kind === 'enum' && Array.isArray(q.values)
+      && (String(q.arg || '').toLowerCase() === `${String(f.arg || '').toLowerCase()}unit`
+        || String(q.dom || '').toLowerCase().replace(/-/g, '') === `${String(f.dom || '').toLowerCase().replace(/-/g, '')}unit`));
+    if (toggled) { unitToggled += 1; continue; }
     const b = BOUNDS[key];
     if (!Number.isFinite(b.min) || !Number.isFinite(b.max)) continue;
     matched += 1;
     // A field that states its own range has already answered this question, one way or the other.
     const r = fieldRange(f);
     if (r.min !== null || r.max !== null) { declared += 1; continue; }
-    const sides = [['above', b.max * 2]];
-    if (CEILING_ONLY.has(key)) ceilingOnly += 1; else sides.push(['below', b.min / 2]);
+    // spec-v1800: HALVING A NEGATIVE FLOOR MOVES IT INWARD. BOUNDS.baseExcess starts at -60, and -60/2 is
+    // -30, which the envelope permits -- so every signed quantity was being driven to a value it allows and
+    // reported when the tool answered, which is correct behaviour. Out is `* 2` below zero and `/ 2` above.
+    const out = (v, dir) => (dir > 0 ? (v > 0 ? v * 2 : v / 2) : (v > 0 ? v / 2 : v * 2));
+    const sides = [['above', out(b.max, 1)]];
+    if (CEILING_ONLY.has(key)) ceilingOnly += 1; else sides.push(['below', out(b.min, -1)]);
+    // spec-v1800: THE VALUE MUST BE ANSWERED IN EVERY CONFIGURATION, not just the worked example's. A unit
+    // select rescales the field, so the envelope's numbers do not apply to the value as entered:
+    // `calcium-phosphate-product` reads calcium in mg/dL or mmol/L through one select shared by both of its
+    // fields, and 1.5 mmol/L is 6 mg/dL, an ordinary calcium. Asking of every single-factor variation
+    // settles that without naming a unit -- and it settles the same way for a guard that exists on one
+    // branch only, which is a different finding from "the envelope is not kept".
+    const variants = [ex];
+    for (const q of t.fields || []) {
+      if (q.dom === f.dom) continue;
+      if (q.kind === 'enum' && Array.isArray(q.values)) {
+        for (const o of q.values) if (String(ex[q.dom]) !== String(o)) variants.push({ ...ex, [q.dom]: String(o) });
+      } else if (q.kind === 'bool' || q.kind === 'checkbox') {
+        variants.push({ ...ex, [q.dom]: String(ex[q.dom] === 'true' ? 'false' : 'true') });
+      }
+    }
+    const live = variants.filter((c) => { const r = computeCalculator({ id: t.id, inputs: c }); return !!r && r.valid === true; });
+    const answeredEverywhere = (v) => live.every((c) => {
+      let r; try { r = computeCalculator({ id: t.id, inputs: { ...c, [f.dom]: String(v) } }); } catch { return false; }
+      return !!r && r.valid !== false;
+    });
     let answered = false;
     for (const [side, v] of sides) {
       if (!Number.isFinite(v) || v === 0) continue;
       let res;
       try { res = computeCalculator({ id: t.id, inputs: { ...ex, [f.dom]: String(v) } }); } catch { continue; }
       if (!res || res.valid === false) continue;
+      if (!answeredEverywhere(v)) { configDependent += 1; continue; }
       answered = true;
       const kk = `${t.id}:${f.dom}:${side}`;
       if (JUDGED[kk]) { judgedSeen.add(kk); if (ALL) console.log(`JUDGED\t${kk}\t${JUDGED[kk]}`); continue; }
