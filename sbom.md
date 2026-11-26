@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `8ee4352a3915d00d`
-Generated: 2026-11-26T14:51:57.420Z
+Build ID: `0e824de764c1f182`
+Generated: 2026-11-26T15:33:11.053Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -189,7 +189,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/borden-davf-v441.js` | 3109 | `d08c660355725cc46ea8461c2706155f110f269ad2aba82522745e71ecc16e44` |
 | `lib/borrmann-gastric-v394.js` | 3865 | `df918e05475876bcc710c4fc8997aa67ee7d4832f352f1ae062fa1ab3d4678b1` |
 | `lib/botulism-antitoxin-dose-v1636.js` | 8255 | `059a120105337ffa818b03f6721da3133049c3a01a9c36e28505e0aaac1ceff6` |
-| `lib/bounds.js` | 17492 | `d4009ba960073dac6da3704e145f895ed13b90d4847b392f9032d75df1e74702` |
+| `lib/bounds.js` | 19237 | `9ca44fc1af0124eec34e50a48e9e24808131211c24cedc37e30a7360edd1e0e3` |
 | `lib/boyd-griffin-v458.js` | 3748 | `7f5f81294d8ba43ad3a72d67bc9f47c590ddaf6f4a003c713715d1336927934c` |
 | `lib/bp-categories-v843.js` | 6552 | `9d0291a7f64273cf1fa5c94601e7725fe5c376d28b8dcec30d22fbf5f5db3eb3` |
 | `lib/bpe-periodontal-v1481.js` | 4402 | `c633bd68826107e537eb99ecfd74d1a007c33e7bdf76d623fe170df1e0816585` |
@@ -364,7 +364,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cut-display.js` | 1137 | `107e2ee43bbebbda60205a5535bc0bda29d6dea8c3d82c3d4aefd6b7590a9993` |
 | `lib/cutaneous-leishmaniasis-americas-v1563.js` | 6914 | `30903542568e2a85a7c33c91a0d0637b8c6187bce27df75169f4628661b07e0a` |
 | `lib/cvrisk-engines-v202.js` | 4782 | `12626dff544986f780c271593f8d8e5cafe034e4fa1711a26953fc4e220eb594` |
-| `lib/cvrisk-v103.js` | 26609 | `0e88d10ebc82d45762881bbbb325ef5b863cf38fff1b26f4ae8480a8b68b0aed` |
+| `lib/cvrisk-v103.js` | 27813 | `6d0a3dab8e412185c526c5cbdf5c770a6149914d40912138c70b64b6d28f32f0` |
 | `lib/cyanide-antidote-dose-v1636.js` | 5358 | `37a920efd474624f1715c9e975dc8242961fcbbaeee294fa301c0f373bf321aa` |
 | `lib/cyp-list-check-v1701.js` | 9340 | `0992da1452b2e5a882f8fadfc99a6a4a8e0c7ae28d845ba463390cbb9b46b6da` |
 | `lib/cyp2d6-activity-score-v1640.js` | 5918 | `042004b3656d487d801b616cb9d72004c16cbfe882e8dc25d5fb8d6f00436534` |
@@ -644,7 +644,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hemodynamics-v87.js` | 15033 | `ee4d95ba8a01adbdf22b4a932d07b51e70c7d5424de9c025ae9c761497c05d65` |
 | `lib/hemonc-v94.js` | 25856 | `28b3c049ad31c5244c62805b55cbe101a7c0b8d2440ad96dd70d7eb3e039b668` |
 | `lib/hep-fibrosis-portal-v212.js` | 8270 | `ee3e12f5c10578d0b487b8bcfa8b7bdff59089f91de4cb7d737db485bfec7289` |
-| `lib/hep-v124.js` | 20848 | `615d6380c010817b28b512aa204d512d4b3bd973f3a630c2284428c56bca9241` |
+| `lib/hep-v124.js` | 21233 | `ebbe2a63fb92db9c94a54b5f1876452984082a25a4101c7c4494ad1a4363924a` |
 | `lib/hep-v125.js` | 16354 | `a974b383da46b6624f8349b5d604c4dc13c2b63de66483a65faf09f8b9c346ee` |
 | `lib/hepatic-iron-index-v932.js` | 7686 | `a267b83a46977f886b3b110bffe8cd76135cc29a2e2d309bc1a549e96970268f` |
 | `lib/hepatic-label-dose-v1632.js` | 8955 | `25d94563d9eebf714fb093f4e2d00de63352315f5818d12d0bfcd9c2ccfdd3de` |
@@ -696,7 +696,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/icer-dominance-v1634.js` | 7464 | `f7c585936819529f57448a3c3579c65855ed4e87a2ffe5123f87d304d83f1537` |
 | `lib/ich-m12.js` | 2953 | `5a7cc22e75460b4072e35f80f5df7a36b44a122129eb5cb08d6bc556f38e2f4b` |
 | `lib/icrs-v338.js` | 4467 | `5e29e3d578cccf7cab83c738db4091fe8c9bb8c0c766b3e34e0ec6022499524b` |
-| `lib/id-v137.js` | 25823 | `003c37eee2847d98d0b528fdf4c7873dd2940c71dbec208d87f65bac667ccb13` |
+| `lib/id-v137.js` | 26243 | `3b3d98f48c4b60457502946260a06ab59232a11a65d43edfeafa6f600ccb96ac` |
 | `lib/idcrit-v99.js` | 23409 | `ddcfcf56e001acd8bd16d74c3f7a88333807137609ea8f00c75265e14bc3730c` |
 | `lib/ideberg-glenoid-v409.js` | 4070 | `b7cde0877f7d560cb68fc68b7e39b1f8867024c9bccdb1a3fedd89300faff0a9` |
 | `lib/ids-accountability-reconcile-v1635.js` | 7926 | `9a6c2aac334b8da4ff403b7ee1b5b3d011b3646cc4b182bfa2edc7b352b045db` |
@@ -846,7 +846,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ltcga-v175.js` | 8504 | `feca83c380ea8d4afac7105404b554044e47e8511d052c8697371ea70fb0ba9b` |
 | `lib/ltcga-v176.js` | 16536 | `6e2cdb891d78698e8c2b497ece44cc69a1d4bbeb3a492a69ad40ae5735ade358` |
 | `lib/ltcga-v177.js` | 9920 | `0ec323c76b737d3d64e7a4bf68a08384a10e1aaf511d250067469c2546545b2a` |
-| `lib/ltcga-v178.js` | 14321 | `43a15d919ede0d93b6828fc121063a3f81890bfc0e22b07fa774788815a1c01f` |
+| `lib/ltcga-v178.js` | 14773 | `2bce5b3b2b82aa0352fb729ef2e319c1af467859d31b806a72dd2d0a28ab4556` |
 | `lib/ltcga-v179.js` | 8006 | `14892e5bf68f918dc43c225d4289e5d71c1cc1c79b271f35e12bc5648cf2ce2c` |
 | `lib/ltcga-v180.js` | 8286 | `71a911890c844ff8821a673b4257d9f4ea4283d2c6fd8a989b88ea5213558936` |
 | `lib/ltcga-v181.js` | 24381 | `32c19d0dc097ac9a01d5511da71cbd4cc990076390c5118cfde9881289ebc95f` |
@@ -1379,7 +1379,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schofield-v779.js` | 5313 | `031e3c1296bec6146ec66d944d52ad21ce4b309cbe3be02c34bfd60cc3f0aecd` |
 | `lib/schumock-thornton-preventability-v1634.js` | 4099 | `89efba6862ca09c62a3533d2551033c7b1a7594a22695c2e410c9a798226a3e0` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 350379 | `77fc3d091707c62252c1da7b4602c96cdb14dd9d949e9791645db5c66a58373d` |
+| `lib/scoring-v4.js` | 351425 | `f007446c54de3613e7a93a7f7bb8d515c39b2f5ff23ac854ed36fb82260751d4` |
 | `lib/scoring-v5.js` | 15672 | `df55fc673b49339df3409eb8ebfe8c67fbd38dedf144c9e8aae02abb8318ee61` |
 | `lib/scoring-v6.js` | 34734 | `d92c1187e267ebb2dd1fc4b823f02c2a924e25e1addf2c9fd7b4e1f1582edef0` |
 | `lib/scorpion-grade-india-v1556.js` | 3410 | `02342eb4a9e058cc856550a576ed20fe1122d1890fc313c2a966e5ed47ec1ad1` |
@@ -1513,7 +1513,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/transfusion-v292.js` | 6798 | `c73a51df1f2c06c305c62fb50de82c9e63a64c5de418037aa30d6f4f1c6b0105` |
 | `lib/transplant-formulation-switch-v1633.js` | 7426 | `0e9ef9c63a49bb29fcf09a467a035861ed391f1e718eca09443be26e29a928a2` |
 | `lib/trauma-v108.js` | 24188 | `65e4201fd5f7e6a43380dae1df3d08ef0272a019cb444afdd6da56f743dc50e0` |
-| `lib/traumaclass-v109.js` | 22765 | `ed0a634d9d21cd12caa257533d99ff407d6734e771ed79341b20ecda36346d08` |
+| `lib/traumaclass-v109.js` | 22977 | `da79e748f0fd00ac5b696264125a39bd0e495aa7d06102ffd0a96b7e95a3503f` |
 | `lib/traynelis-v448.js` | 2912 | `9d4abfa8bb4d994648678605ccd5e3e4749993a66f49f232310d39cd8cfd4cad` |
 | `lib/tree.js` | 5187 | `947cd24aa948c81432844601adc03446917bcb5e32ac187f66491bcd3420df08` |
 | `lib/trend.js` | 3082 | `bd68d2bc396abe4e244f9dee35a4100b735b43e215c5881814952e0af27811d5` |
@@ -1946,7 +1946,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/cumulative-dose-limit-v1635.js` | 1934 | `0715db8913d12226f0cc197e45f857a3abd3378f08e10860ef787c5d9b9de982` |
 | `mcp/adapters/cutaneous-leishmaniasis-americas-v1563.js` | 2049 | `df57c9c9b74ffe8f59d4bb148256d8634b5eaf32842bc9e577db0c2335ed8a8e` |
 | `mcp/adapters/cvrisk-engines-v202.js` | 1633 | `5c90fe1125d4f9918aeeadb634a8857c846d50acee112437f3b7e3ace61bbb2e` |
-| `mcp/adapters/cvrisk-v103.js` | 7468 | `2d9edb260e19cb374145bcc101e05ad61a9b380f6dbce0a3a34861088495a3ec` |
+| `mcp/adapters/cvrisk-v103.js` | 7548 | `773d7f5647bf1dfa9bdf8bd3b51bb7d7907e0a0fdcab26f3d4cbe98f00b87310` |
 | `mcp/adapters/cyp-list-check-v1701.js` | 874 | `df827d5f07e79bafe3668c40197bf4053f8f318447664b93587a3264f815ac97` |
 | `mcp/adapters/cyp2d6-activity-score-v1640.js` | 1212 | `d2a23bd67457aa7f98b18092f35d6d6eab45ae8172f9990cb67e2754aa1b978b` |
 | `mcp/adapters/cyp2d6-phenoconversion-v1640.js` | 972 | `0a0173f3ef54243e0f729ad3f1fbb3ea4a538ba18c95bd61ceda058130f463e7` |
@@ -2202,7 +2202,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hemodynamics-v87.js` | 3263 | `3f9bd92e4359ee444b12f2b94342ae6e93bc8709f2cddcf06f1d6ecb397e54f9` |
 | `mcp/adapters/hemonc-v94.js` | 5722 | `3ae0a7aff63f28ccbdd22f8a19888da057920157381d35f223f7994aee63bfee` |
 | `mcp/adapters/hep-fibrosis-portal-v212.js` | 2003 | `98fc2ccf8986703ce226091dc914ae801abf8b860d52a1c7eeadffe35a5bc73c` |
-| `mcp/adapters/hep-v124.js` | 3960 | `a45a175c0d2cb4c6792545422395f702a983d305d926ff0e8a929cda3c291409` |
+| `mcp/adapters/hep-v124.js` | 3982 | `a2318fa777a8ed122c997aa550c44631ab2e7b068dc2b5f90028f9eb35f18aeb` |
 | `mcp/adapters/hep-v125.js` | 4079 | `f76c00a9c4f8b70924715f1aae549772806d38cea38a4d80dcd2749da0ea10b2` |
 | `mcp/adapters/hepatic-iron-index-v932.js` | 1945 | `0d1d3f9ce6b615b21081f74f2286a0db50cdfcd766a3ce1c28641dace02a8500` |
 | `mcp/adapters/hepatic-label-dose-v1632.js` | 1137 | `bf8a41366ec2914dcb9a32683b2354ff09d7a46e43ac0213bfedb8ad48b176cc` |
@@ -2244,7 +2244,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/icdas-caries-v1485.js` | 622 | `ed45a96f4627a7125932201680122e50be07a7be6c6f292d8fe47d9da9749899` |
 | `mcp/adapters/icer-dominance-v1634.js` | 874 | `3a873121c48955baf470d924a45b4f0f0c66811b391457f414bc5aac03d624a0` |
 | `mcp/adapters/icrs-v338.js` | 1501 | `c592dba3fadd54ff789e7d31fbfa32b60f2273d36dd6976a20a19104bfccca56` |
-| `mcp/adapters/id-v137.js` | 6046 | `0090c85b9b99eadc0201b99fb25479d78568e6ae1046bc5553bbed3a76cfe89d` |
+| `mcp/adapters/id-v137.js` | 6060 | `eb4fee70a954ac6141c34dcfb01c2e87933dfed5f58318de741617536ec902f9` |
 | `mcp/adapters/idcrit-v99.js` | 8309 | `77084b3b9e6dbca39614529f49994cb2f6f4b7d793c5283d9c871827fdd551b6` |
 | `mcp/adapters/ideberg-glenoid-v409.js` | 1394 | `9448ea62c9d4c69bf205062fc16372e692f17cd4cab0d096d360b50b24f5b102` |
 | `mcp/adapters/ids-accountability-reconcile-v1635.js` | 1985 | `3f8971bcad8e3f13affa93e6aa389e27749704602279fc4c87bb396de9504909` |
@@ -2376,7 +2376,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ltcga-v175.js` | 5302 | `33233b2e2098c200b026b8f80ef0d7d2a8d9b22176eba4a881ef137c68a5410d` |
 | `mcp/adapters/ltcga-v176.js` | 4450 | `f4452906937a954cd61c3b986f1da2664e29dc752040a47fec30f4ef2aa5fe0b` |
 | `mcp/adapters/ltcga-v177.js` | 4116 | `5d2bf11cb957fe91a5886062969a66d26c0944933c700ce17be77bed45b3b393` |
-| `mcp/adapters/ltcga-v178.js` | 5618 | `c7e09f86746fd78998aeab2241a4cdd4924a3d0b33a6bc49bcda06b006c68c48` |
+| `mcp/adapters/ltcga-v178.js` | 5640 | `f6c0df4832e2939984f49373f6d3736959efc0a4eb11a50c9f2798e251164b0e` |
 | `mcp/adapters/ltcga-v179.js` | 3517 | `f697da5284eeef602c30c954bbf5fcc5c91eeff92525d11d185868beeb5839f1` |
 | `mcp/adapters/ltcga-v180.js` | 3207 | `75291f50faf53efa6eec96ac7162b3de816897954164102ae7594104b2e657e8` |
 | `mcp/adapters/ltcga-v181.js` | 2442 | `dba9259210cc6db270950608587249adb083e499a86d1a389c1938207f229cb4` |
@@ -2843,7 +2843,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schofield-v779.js` | 1232 | `a592b13745b52ad62d8070460cba4fdbd99ab4069a2714a70f48bfd8f92c2db7` |
 | `mcp/adapters/schumock-thornton-preventability-v1634.js` | 1699 | `1076046b53bf7fa9c95d1907670da32babe615ba9b0870eb6b66061537b01122` |
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
-| `mcp/adapters/scoring-v4.js` | 169561 | `8b7cdb153634223913dcba92ecbe17a384da3fb55afe7ee8368c8521397ea69c` |
+| `mcp/adapters/scoring-v4.js` | 169605 | `acc183ec048ad7c5a41f1069f0e695fc438fd616eba9b136d3343304afbe9231` |
 | `mcp/adapters/scoring-v5.js` | 13023 | `bcd0350973f20a082be1a5392c287bbf2d57b76bec6294816f6cd3fdccf59c65` |
 | `mcp/adapters/scoring-v6.js` | 20857 | `02f1d8ebef6309a8c9e0e6e50aa8c352197529df799d6b58ed0e615fcdd31fff` |
 | `mcp/adapters/scorpion-grade-india-v1556.js` | 1284 | `3cd3d399c2af7f57769e85a6ad4edeb3e77354249b3a6db361b0981e71233aed` |
@@ -2960,7 +2960,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/transfusion-v292.js` | 1783 | `9bee558f0d00e22fb2a909717ca2327dd17087b0be24d29988b7132c8f7af53d` |
 | `mcp/adapters/transplant-formulation-switch-v1633.js` | 1217 | `c27b152a8a4ecf3d0444ab9af08c32c378d5797ac8fa2774af49d74f28ed9a62` |
 | `mcp/adapters/trauma-v108.js` | 5762 | `5e3f0920d58f9ab2fc30fb014ffcf5888e8befdb26a7d16f95370e6def6c7de0` |
-| `mcp/adapters/traumaclass-v109.js` | 5321 | `a66f2ef68f0a9b0db942dc826cbc337eff55f4c2ef91ac43c8ab23c4a1e81d8c` |
+| `mcp/adapters/traumaclass-v109.js` | 5335 | `b21ac33e8c5b6134ea805c451eb0bd1399f9a82e2a2ab2ec25433a4c212d5dfe` |
 | `mcp/adapters/traynelis-v448.js` | 1112 | `c0b26e28bbf328ee6377be250723d6f8eeac0cde563dbd90cda369a919e7867c` |
 | `mcp/adapters/trial-record-retention-v1635.js` | 1303 | `308fb10064e84f2967bd83084f398d0d896cbf7b39dbc910cf8ff18f54204cc1` |
 | `mcp/adapters/tricuspid-regurgitation-stage-v848.js` | 2399 | `0dd12422ba0343ff577079961f7e2e71edcff0261b0249a9fcc91f658ffec231` |

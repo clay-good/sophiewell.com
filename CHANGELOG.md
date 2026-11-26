@@ -76,6 +76,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Nine cardiovascular, liver and infection calculators would score a total cholesterol or a C-reactive
+  protein that no laboratory has ever reported -- a cholesterol of 10,000 mg/dL read a cardiovascular risk
+  band, and a CRP of 4,000 mg/L scored the heaviest term of the necrotizing-fasciitis score. Both now have
+  a plausible range drawn from the highest values in the literature (about 2,550 mg/dL in cholestasis, and
+  839 mg/L), and values past it are refused rather than scored. An HDL or LDL is a different quantity with
+  a different range and is left alone.
 - Eighty-one more inputs publish the plausible range their calculator already enforces, so an agent reading
   the interface sees the range instead of learning it by being refused. The catalog had been disagreeing
   with itself about the same quantity: forty-two tools stated the systolic-pressure range and five did not.

@@ -31,8 +31,23 @@ test('a diabetic man is flagged as outside the derivation population', () => {
 
 test('extreme fuzzed inputs clamp risk to [0,100]', () => {
   // spec-v1224/v1406: see score2.test.js -- SBP and age at the top of their envelopes, the rest fuzzed.
-  const r = reynoldsRisk({ age: 130, male: false, sbp: 300, totalChol: 1e9, hdl: 1, hsCrp: 1e9, smoker: true, familyHx: true, diabetic: true, hba1c: 1e9 });
+  // spec-v1823: the total cholesterol and the hsCRP sit at the top of their own envelopes now rather than
+  // at 1e9. The model clamps both (600 mg/dL, 100 mg/L) and is monotone in each, so an impossible value
+  // used to read a risk band; past the envelope it is refused, and the clamp holds inside it.
+  const r = reynoldsRisk({ age: 130, male: false, sbp: 300, totalChol: 5000, hdl: 1, hsCrp: 2000, smoker: true, familyHx: true, diabetic: true, hba1c: 1e9 });
   assert.ok(r.risk >= 0 && r.risk <= 100 && Number.isFinite(r.risk));
+});
+
+test('spec-v1823: a total cholesterol or a CRP past its envelope is refused, not clamped', () => {
+  const ok = { age: 60, male: false, sbp: 120, totalChol: 220, hdl: 55, hsCrp: 2 };
+  assert.equal(reynoldsRisk(ok).valid, true);
+  for (const [field, bad] of [['totalChol', 5001], ['totalChol', 1e9], ['hsCrp', 2001], ['hsCrp', 1e9]]) {
+    const r = reynoldsRisk({ ...ok, [field]: bad });
+    assert.equal(r.valid, false, `${field}=${bad}`);
+  }
+  // The highest values the literature reports still answer: about 2,550 mg/dL and about 839 mg/L.
+  assert.equal(reynoldsRisk({ ...ok, totalChol: 2554 }).valid, true);
+  assert.equal(reynoldsRisk({ ...ok, hsCrp: 839 }).valid, true);
 });
 
 // spec-v1409: two models on two cohorts -- women 45 and older (Women's Health Study, JAMA

@@ -1984,7 +1984,7 @@ export default [
     compute: (a) => { const r = F.ascvdPce(a); return r == null ? null : { ...r, horizonYears: 10 }; },
     fields: [
       { dom: 'as-age', concept: 'age', arg: 'age', kind: 'number', min: 40, max: 79, required: true, label: 'Age (40-79)', unit: 'years' },
-      { dom: 'as-tc', concept: 'total-cholesterol', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },
+      { dom: 'as-tc', concept: 'total-cholesterol', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL', bound: 'cholesterol' },
       { dom: 'as-hdl', concept: 'hdl-cholesterol', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },
       { dom: 'as-sbp', concept: 'systolic-bp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
       { dom: 'as-sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
@@ -2001,7 +2001,7 @@ export default [
     compute: (a) => { const r = F.prevent10yr(a); return r == null ? null : { ...r, horizonYears: 10, ageYears: a.age }; },
     fields: [
       { dom: 'pv-age', concept: 'age', arg: 'age', kind: 'number', min: 30, max: 79, required: true, label: 'Age (30-79)', unit: 'years' },
-      { dom: 'pv-tc', concept: 'total-cholesterol', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },
+      { dom: 'pv-tc', concept: 'total-cholesterol', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL', bound: 'cholesterol' },
       { dom: 'pv-hdl', concept: 'hdl-cholesterol', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },
       { dom: 'pv-sbp', concept: 'systolic-bp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg', bound: 'sbp' },
       { dom: 'pv-bmi', concept: 'bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m^2', bound: 'bmi' },

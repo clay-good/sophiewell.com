@@ -30,9 +30,25 @@ test('treated BP uses the higher coefficient (treated risk > untreated)', () => 
 test('extreme fuzzed inputs clamp risk to [0,100] and vascular age finite', () => {
   // spec-v1224/v1406/v1408: SBP at the top of its envelope and age at the top of the range the model
   // was FITTED on (30-74; above it the model is not extrapolated), the rest fuzzed.
-  const r = framinghamCvd({ age: 74, male: true, totalChol: 1e9, hdl: 1, sbp: 300, smoker: true, diabetes: true });
+  //
+  // spec-v1823: the total cholesterol is at the top of ITS envelope now rather than at 1e9. The model
+  // clamps the log of it to 600 mg/dL and is monotone in it, so an impossible value used to read a risk
+  // band; a cholesterol past the envelope is refused, and the clamp still holds at every value inside it.
+  const r = framinghamCvd({ age: 74, male: true, totalChol: 5000, hdl: 1, sbp: 300, smoker: true, diabetes: true });
   assert.ok(r.risk >= 0 && r.risk <= 100 && Number.isFinite(r.risk));
   assert.ok(r.vascularAge == null || Number.isFinite(r.vascularAge));
+});
+
+test('spec-v1823: a total cholesterol past the envelope is refused, not clamped', () => {
+  const ok = { age: 60, male: true, totalChol: 213, hdl: 50, sbp: 120, smoker: false, diabetes: false };
+  assert.equal(framinghamCvd(ok).valid, true);
+  for (const totalChol of [5001, 1e9]) {
+    const r = framinghamCvd({ ...ok, totalChol });
+    assert.equal(r.valid, false, String(totalChol));
+    assert.match(r.band, /cholesterol/i, String(totalChol));
+  }
+  // The highest total cholesterol the literature reports is about 2,550 mg/dL, and it still answers.
+  assert.equal(framinghamCvd({ ...ok, totalChol: 2554 }).valid, true);
 });
 
 // spec-v1408: outside the fitted range the model used to clamp the age and answer anyway -- a

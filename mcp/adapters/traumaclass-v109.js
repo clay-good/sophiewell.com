@@ -56,7 +56,7 @@ export default [
     summary: 'LRINEC score (Wong 2004): risk-stratifies necrotizing fasciitis (0-13) from CRP, WBC, hemoglobin, sodium, creatinine, and glucose; >= 6 raises suspicion.',
     compute: F.lrinec,
     fields: [
-      { dom: 'lr-crp', arg: 'crp', kind: 'number', required: true, label: 'C-reactive protein (mg/L)' },
+      { dom: 'lr-crp', arg: 'crp', kind: 'number', required: true, label: 'C-reactive protein (mg/L)', bound: 'crp' },
       { dom: 'lr-wbc', arg: 'wbc', kind: 'number', required: true, label: 'White blood cell count (x10^3/uL)', bound: 'wbc' },
       { dom: 'lr-hb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin (g/dL)', bound: 'hemoglobin' },
       { dom: 'lr-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium (mmol/L)', bound: 'sodium' },

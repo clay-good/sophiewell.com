@@ -41,6 +41,10 @@ export const ALIASES = {
   // matched "...beneficiaries for the cap year (may be ...)". An alias that is also a unit or a common word
   // suggests a rename that is pure coincidence, which is the same mistake the envelopes themselves made.
   hcg: ['bhcg'], daysNoIntake: ['intake'], eosinophils: ['eos'],
+  // spec-v1823. `chol` alone is deliberately not an alias: it would match an HDL, an LDL and a
+  // non-HDL, which are different quantities with different fences. `crp` covers the hs-CRP spelling
+  // because a high-sensitivity CRP is the same analyte measured more precisely at the low end.
+  cholesterol: ['totalchol', 'tc'], crp: ['hscrp'],
 };
 
 // THE SAME ANALYTE IN ANOTHER COMPARTMENT IS A DIFFERENT QUANTITY. `lib/bounds.js`'s sodium envelope is a
@@ -72,7 +76,7 @@ export const BLOOD = new Set(['sodium', 'potassium', 'chloride', 'bicarbonate', 
   'bilirubin', 'glucose', 'calcium', 'magnesium', 'phosphate', 'lactate', 'alt', 'ast', 'wbc',
   'hemoglobin', 'hematocrit', 'platelets', 'triglycerides', 'esr', 'hcg', 'inr',
   // spec-v1801: a blood gas is a blood analyte too, and `priapism-gas` draws its from the corpus cavernosum.
-  'paO2', 'paCO2', 'pH', 'baseExcess', 'spo2']);
+  'paO2', 'paCO2', 'pH', 'baseExcess', 'spo2', 'cholesterol', 'crp']);
 
 // Does a field's own vocabulary name this envelope? Its key, split into words, or any of its aliases.
 // spec-v1800: A FIELD NAMES ITS QUANTITY IN THE FIRST CLAUSE OF ITS LABEL; what follows is explanation,
@@ -168,6 +172,13 @@ export const NOT_A_MEASUREMENT = new Set(['uln', 'lln', 'upper', 'lower', 'limit
   'pka', 'pkb']);
 // And an end-tidal CO2 is not an arterial one, which is the compartment rule in its respiratory spelling.
 export const NOT_ARTERIAL = new Set(['etco2', 'endtidal', 'tidal', 'expired', 'exhaled', 'alveolar']);
+// spec-v1823: AND A FRACTION OF THE CHOLESTEROL IS NOT THE TOTAL. The `cholesterol` envelope is a TOTAL
+// cholesterol, and its key splits into the word every lipid field carries -- "HDL cholesterol", "LDL
+// cholesterol (optional, for remnant)" -- so `ascvd`'s HDL claimed it and probe-envelope-unenforced said
+// so within a minute of the envelope landing. An HDL of 25 mg/dL is ordinary and the total's floor of 1
+// does not describe it; a fraction wants its own fence, with its own source.
+export const NOT_THE_TOTAL = new Set(['hdl', 'ldl', 'nonhdl', 'vldl', 'idl', 'remnant', 'apob', 'apoa',
+  'apoa1', 'lpa', 'chylomicron']);
 
 const offBody = (f) => [...words(f.arg, f.label, f.unit)].some((w) => NOT_THE_PATIENT.has(w));
 // A disqualifier reads the WHOLE label on purpose: "per gram dry weight" or "(Agatston)" can sit after
@@ -179,5 +190,6 @@ export const envelopeFor = (f) => KEYS.find((k) => names(k, f)
   && !(BODY.has(k) && offBody(f))
   && !notMeasured(f)
   && !(['paO2', 'paCO2'].includes(k) && notArterial(f))
+  && !(k === 'cholesterol' && [...words(f.arg, f.label)].some((w) => NOT_THE_TOTAL.has(w)))
   && unitFits(k, f)) || null;
 

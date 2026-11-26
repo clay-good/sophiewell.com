@@ -32,7 +32,7 @@ export default [
       { dom: 'fo-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years', bound: 'ageYears' },
       { dom: 'fo-ggt', arg: 'ggt', kind: 'number', required: true, label: 'GGT', unit: 'U/L' },
       { dom: 'fo-plt', arg: 'platelets', kind: 'number', required: true, label: 'Platelet count', unit: '10^9/L', bound: 'platelets' },
-      { dom: 'fo-chol', arg: 'cholesterol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },
+      { dom: 'fo-chol', arg: 'cholesterol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL', bound: 'cholesterol' },
     ],
   },
   {

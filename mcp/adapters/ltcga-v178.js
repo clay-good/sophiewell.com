@@ -32,7 +32,7 @@ export default [
     compute: F.conut,
     fields: [
     { dom: 'conut-albumin', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin Gdl', bound: 'albumin' },
-    { dom: 'conut-chol', arg: 'cholesterol', kind: 'number', required: true, label: 'Cholesterol' },
+    { dom: 'conut-chol', arg: 'cholesterol', kind: 'number', required: true, label: 'Cholesterol', bound: 'cholesterol' },
     { dom: 'conut-lymph', arg: 'lymphocytes', kind: 'number', required: true, label: 'Lymphocytes' },
     ],
   },

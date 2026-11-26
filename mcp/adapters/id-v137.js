@@ -19,7 +19,7 @@ export default [
       { dom: 'is4c-gcs', arg: 'gcs', kind: 'number', label: 'Glasgow Coma Scale', bound: 'gcs' },
       { dom: 'is4c-urea', arg: 'urea', kind: 'number', label: 'Urea' },
       { dom: 'is4c-ureaunit', arg: 'ureaUnit', kind: 'enum', values: ['mmol', 'bun-mgdl'], label: 'Urea unit' },
-      { dom: 'is4c-crp', arg: 'crp', kind: 'number', label: 'CRP (mg/L)' },
+      { dom: 'is4c-crp', arg: 'crp', kind: 'number', label: 'CRP (mg/L)', bound: 'crp' },
     ],
   },
   {
