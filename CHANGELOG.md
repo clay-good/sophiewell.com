@@ -76,6 +76,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Across 58 of the libraries behind them, 143 input fields told a reader to enter a value they had just
+  entered. A count typed as 999999, or a laboratory value typed as a negative, was read as an empty box --
+  so the answer was the same sentence an empty box gets, with nothing about what was wrong with the
+  number. Each now names the quantity and the range it has to be in.
 - The internal list of words that mean "a calculator is asking rather than answering" did not know four
   phrasings the calculators use: a total stated as a floor ("HEAR score at least 3"), "still to confirm",
   "answer the remaining", and "not fully assessed". Thirty-eight readings that disclose a gap perfectly
