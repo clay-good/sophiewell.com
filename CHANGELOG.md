@@ -76,6 +76,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The last unread section of an internal review report was read, and all five of its entries turn out to be
+  the same question answered elsewhere: a calculator that cannot tell an empty box from a typed zero, in
+  four cases where zero is genuinely what an empty box means.
 - The second of the two long internal review lists was sorted for the one direction that can hurt -- an
   answer that reads reassuring only because a field was left out -- and the two entries that had not already
   been reviewed are both a calculator leaving a line out rather than inventing one.

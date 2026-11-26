@@ -54,6 +54,18 @@
 // So the reassuring-direction filter is spent on this section. What is left in it has no signal to sort by
 // and is a judgement per tile.
 //
+// SECTION 4 READ (spec-v1834, 2026-11-26), and it is the blank-as-zero question wearing another hat. All
+// five rows are a field whose BLANK reads as an entered 0, and four of them are already judged with their
+// reason in `scripts/probe-blank-as-zero.mjs` (spec-v1832): `insulin-correction`'s carbohydrate, labelled
+// "omit for a correction-only dose"; `anesthesia-units`' modifying units, a count; and the pounds and
+// ounces of `peds-weight-conv`, where a blank pounds beside an entered ounces IS zero pounds.
+//
+// The fifth, `lab-interpret`'s A1C, is spec-v1196's shape: the `count` is how many labs were interpreted,
+// so dropping one interprets one fewer. A reading that lost a clause has fabricated nothing.
+//
+// So all four sections of this report are now sorted or explained: 1 and 2 are gated at zero behind judged
+// ledgers, 3 is filtered for the dangerous direction and spent (above), and 4 is this.
+//
 // A row is a suspect, not a defect. A tile is right to answer from a subset when
 // the criteria are genuinely independent tests of different things; what it owes
 // is the footing, not a refusal (see docs/spec-v1091.md).
