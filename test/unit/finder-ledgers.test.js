@@ -177,6 +177,16 @@ const FINDERS = [
     minJudged: 38,
   },
   {
+    probe: 'probe-fraction-rounded.mjs',
+    what: 'a fractional value in a whole-number field, silently rounded to the nearest whole number',
+    fix: 'Refuse the fraction with `gradeFault(..., true)` or `wholeFault` (docs/spec-v1722.md), or add it to '
+      + 'JUDGED in the finder with the reason -- only a printed figure moves, the band\'s published edges are '
+      + 'at that precision, or the score is published as an integer',
+    isFinding: (l) => l.startsWith('  '),
+    informational: ['Reach:'],
+    minJudged: 46,
+  },
+  {
     probe: 'probe-declared-cap-configs.mjs',
     what: 'a declared bound the library answers past in some configuration, so the page answers what the agent is refused',
     fix: 'Hoist the guard above the branch split with gradeFault (docs/spec-v1780.md), drop the declaration, '

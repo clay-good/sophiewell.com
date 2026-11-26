@@ -76,6 +76,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- The check for a decimal silently rounded away in a whole-number field now fails the build on anything new.
+  Its forty-six current readings are all figures rounding to the precision they are printed at -- a QTc in
+  milliseconds, an ankle-brachial index on the published two-decimal bands, a Baux score that is defined as
+  a whole number -- and each is written down with the reason, measured against the verdict rather than
+  assumed.
 - The check that looks for a formula running backwards at one end of its own input range -- the one that
   caught a kidney-donor index reporting a sicker kidney as a better one -- now fails the build on anything
   new. Its ninety-seven current readings are all instruments that turn on purpose: a severity score that
